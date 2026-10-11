@@ -36,7 +36,7 @@
             <div class="card-body">
                 <cfif len(trim(VARIABLES.uptimeStatus.error))>
                     <div class="alert alert-warning mb-0">
-                        <strong>Status indisponível.</strong> <cfoutput>#htmlEditFormat(VARIABLES.uptimeStatus.error)#</cfoutput>
+                        <strong>Status indisponível.</strong> <cfoutput>#encodeForHTML(VARIABLES.uptimeStatus.error)#</cfoutput>
                     </div>
                 <cfelseif VARIABLES.uptimeStatus.loaded>
                     <div class="row g-2 business-admin-status-metrics">
@@ -98,9 +98,9 @@
                                     <cfoutput>
                                         <tr>
                                             <td>
-                                                <strong>#htmlEditFormat(uptimeMonitorView.name)#</strong>
+                                                <strong>#encodeForHTML(uptimeMonitorView.name)#</strong>
                                                 <cfif len(trim(uptimeMonitorView.url))>
-                                                    <small class="text-muted d-block text-truncate" style="max-width: 420px;">#htmlEditFormat(uptimeMonitorView.url)#</small>
+                                                    <small class="text-muted d-block text-truncate" style="max-width: 420px;">#encodeForHTML(uptimeMonitorView.url)#</small>
                                                 </cfif>
                                             </td>
                                             <td>
@@ -110,7 +110,7 @@
                                             <td class="text-end">#uptimeMonitorView.responseTime GT 0 ? numberFormat(uptimeMonitorView.responseTime, "9") & "ms" : "-"#</td>
                                             <td>
                                                 <cfif len(trim(uptimeMonitorView.incident))>
-                                                    #htmlEditFormat(uptimeMonitorView.incident)#
+                                                    #encodeForHTML(uptimeMonitorView.incident)#
                                                     <cfif isDate(uptimeMonitorView.incidentAt)>
                                                         <small class="text-muted d-block">#lsDateFormat(uptimeMonitorView.incidentAt, "dd/mm/yyyy")# #lsTimeFormat(uptimeMonitorView.incidentAt, "HH:mm")#</small>
                                                     </cfif>
@@ -157,11 +157,11 @@
                 <hr>
                 <div class="small font-monospace">
                     <cfoutput>
-                        configSource=#htmlEditFormat(VARIABLES.uptimeStatus.configSource)#<br>
-                        configPath=#htmlEditFormat(VARIABLES.uptimeStatus.configPath)#<br>
+                        configSource=#encodeForHTML(VARIABLES.uptimeStatus.configSource)#<br>
+                        configPath=#encodeForHTML(VARIABLES.uptimeStatus.configPath)#<br>
                         configFileExists=#yesNoFormat(VARIABLES.uptimeStatus.configFileExists)#<br>
                         applicationHasKey=#yesNoFormat(structKeyExists(APPLICATION, "uptimeRobot") AND structKeyExists(APPLICATION.uptimeRobot, "apiKey") AND len(trim(APPLICATION.uptimeRobot.apiKey)) GT 0)#<br>
-                        error=#htmlEditFormat(VARIABLES.uptimeStatus.error)#
+                        error=#encodeForHTML(VARIABLES.uptimeStatus.error)#
                     </cfoutput>
                 </div>
             </cfif>

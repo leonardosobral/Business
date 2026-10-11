@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-mentone-run-a-identidade/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-mentone-run-a-identidade/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-mentone-run-a-identidade/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-mentone-run-a-identidade/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-mentone-run-a-identidade/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-mentone-run-a-identidade/",
+      "name": "MENTONE RUN - A IDENTIDADE",
+      "description": "MENTONE RUN - A IDENTIDADE takes place on 13 december 2026, in Faixa de areia do Emissário Submarino de Santos, Santos, SP, Brasil - Santos - SP.",
+      "url": "https://roadrunners.run/en/event/2026-mentone-run-a-identidade/",
+      "startDate": "2026-12-13",
+      "endDate": "2026-12-13",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/EWLNG4IOA78GZ8D2MCEA6ATX06CQK9IV85ES4H0IB9B92OKCC5.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Faixa de areia do Emissário Submarino de Santos, Santos, SP, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Santos",
+          "addressRegion": "SP",
+          "addressCountry": "BR",
+          "streetAddress": "Faixa de areia do Emissário Submarino de Santos, Santos, SP, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86560&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sp/",
+          "@type": "ListItem",
+          "name": "Races in SP"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-mentone-run-a-identidade/",
+          "@type": "ListItem",
+          "name": "MENTONE RUN - A IDENTIDADE"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

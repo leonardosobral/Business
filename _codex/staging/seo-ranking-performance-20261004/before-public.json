@@ -1,0 +1,70 @@
+[
+  {
+    "url": "https://roadrunners.run/circuitocatarinense/corridaderua/",
+    "status": 200,
+    "seconds": 8.309704,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/circuitocatarinense/corridaderua/"
+    ],
+    "title": "Circuito Catarinense - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/en/search/?distancia_inicio=5&distancia_fim=5&busca_mode=ai",
+    "status": 200,
+    "seconds": 0.356144,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/en/search/"
+    ],
+    "title": "Search - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/evento/2026-4-corrida-do-turismo-abavse-2026/",
+    "status": 200,
+    "seconds": 0.450535,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/evento/2026-4-corrida-do-turismo-abavse-2026/"
+    ],
+    "title": "4ª CORRIDA DO TURISMO - ABAVSE 2026 - corrida de rua - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/",
+    "status": 200,
+    "seconds": 0.435942,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/"
+    ],
+    "title": "4ª CORRIDA DO TURISMO - ABAVSE 2026 - corrida de rua - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  }
+]

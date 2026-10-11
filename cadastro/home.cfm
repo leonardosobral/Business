@@ -112,14 +112,14 @@
         <cfif len(trim(VARIABLES.cadastroSucesso))>
           <div class="alert alert-success cadastro-alert" role="status">
             <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-            <cfoutput>#htmlEditFormat(VARIABLES.cadastroSucesso)#</cfoutput>
+            <cfoutput>#encodeForHTML(VARIABLES.cadastroSucesso)#</cfoutput>
           </div>
         </cfif>
 
         <cfif len(trim(VARIABLES.cadastroErro))>
           <div class="alert alert-danger cadastro-alert" role="alert">
             <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
-            <cfoutput>#htmlEditFormat(VARIABLES.cadastroErro)#</cfoutput>
+            <cfoutput>#encodeForHTML(VARIABLES.cadastroErro)#</cfoutput>
           </div>
         </cfif>
 
@@ -157,7 +157,7 @@
             <div class="cadastro-google-signin">
               <div id="g_id_onload"
                    data-nonce="<cfoutput>#encodeForHTMLAttribute(SESSION.businessLoginNonce)#</cfoutput>"
-                   data-client_id="<cfoutput>#htmlEditFormat(VARIABLES.cadastroGoogleClientId)#</cfoutput>"
+                   data-client_id="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cadastroGoogleClientId)#</cfoutput>"
                    data-callback="handleCadastroCredentialResponse"
                    data-auto_select="false"
                    data-auto_prompt="false">
@@ -187,19 +187,19 @@
         <cfelse>
           <div class="cadastro-google-identity">
             <span class="cadastro-google-identity-avatar" aria-hidden="true">
-              <cfoutput>#htmlEditFormat(uCase(left(SESSION.cadastroGoogleIdentity.name, 1)))#</cfoutput>
+              <cfoutput>#encodeForHTML(uCase(left(SESSION.cadastroGoogleIdentity.name, 1)))#</cfoutput>
             </span>
             <span class="cadastro-google-identity-copy">
               <small>Conta Google confirmada</small>
-              <strong><cfoutput>#htmlEditFormat(SESSION.cadastroGoogleIdentity.name)#</cfoutput></strong>
-              <span><cfoutput>#htmlEditFormat(SESSION.cadastroGoogleIdentity.email)#</cfoutput></span>
+              <strong><cfoutput>#encodeForHTML(SESSION.cadastroGoogleIdentity.name)#</cfoutput></strong>
+              <span><cfoutput>#encodeForHTML(SESSION.cadastroGoogleIdentity.email)#</cfoutput></span>
             </span>
             <span class="cadastro-google-identity-check" aria-label="Identidade confirmada">
               <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
             </span>
             <form method="post" action="/cadastro/" class="cadastro-google-change-form">
               <input type="hidden" name="acao" value="trocar_conta_google"/>
-              <input type="hidden" name="cadastro_csrf" value="<cfoutput>#htmlEditFormat(SESSION.cadastroGoogleCsrf)#</cfoutput>"/>
+              <input type="hidden" name="cadastro_csrf" value="<cfoutput>#encodeForHTMLAttribute(SESSION.cadastroGoogleCsrf)#</cfoutput>"/>
               <button class="cadastro-google-change" type="submit">Trocar conta</button>
             </form>
           </div>

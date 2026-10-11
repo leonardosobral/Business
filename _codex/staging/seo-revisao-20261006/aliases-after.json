@@ -1,0 +1,512 @@
+{
+  "at": "2026-10-06T18:38:54.915291+00:00",
+  "pages": [
+    {
+      "method": "GET",
+      "path": "/timer/geracao-saude/",
+      "kind": "target",
+      "stats": "200 0.295000 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Assessoria Esportiva Geração Saúde - Road Runners",
+        "h1": " \n\n                \n                    Assessoria Esportiva Geração Saúde\n                    \n                        \n                        Assessoria Esportiva Geração Saúde\n                    \n                \n\n            ",
+        "canonical": [
+          "https://roadrunners.run/timer/geracao-saude/"
+        ],
+        "description": [
+          "Timers - Assessoria Esportiva Geração Saúde - Road Runners"
+        ],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/timer/zero-meia-um-saude-e-esporte/",
+      "kind": "target",
+      "stats": "200 0.322426 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Zero Meia Um - Saúde e Esporte - Road Runners",
+        "h1": " \n\n                \n                    Zero Meia Um - Saúde e Esporte\n                    \n                        \n                        Zero Meia Um - Saúde e Esporte\n                    \n                \n\n            ",
+        "canonical": [
+          "https://roadrunners.run/timer/zero-meia-um-saude-e-esporte/"
+        ],
+        "description": [
+          "Timers - Zero Meia Um - Saúde e Esporte - Road Runners"
+        ],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/timer/corpo-e-saude/",
+      "kind": "target",
+      "stats": "200 0.293757 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Corpo e Saude - Road Runners",
+        "h1": " \n\n                \n                    Corpo e Saude\n                    \n                        \n                        Corpo e Saude\n                    \n                \n\n            ",
+        "canonical": [
+          "https://roadrunners.run/timer/corpo-e-saude/"
+        ],
+        "description": [
+          "Timers - Corpo e Saude - Road Runners"
+        ],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/timer/grupo-de-corrida-espaco-saude/",
+      "kind": "target",
+      "stats": "200 0.361982 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Grupo de Corrida - Espaço Saúde - Road Runners",
+        "h1": " \n\n                \n                    Grupo de Corrida - Espaço Saúde\n                    \n                        \n                        Grupo de Corrida - Espaço Saúde\n                    \n                \n\n            ",
+        "canonical": [
+          "https://roadrunners.run/timer/grupo-de-corrida-espaco-saude/"
+        ],
+        "description": [
+          "Timers - Grupo de Corrida - Espaço Saúde - Road Runners"
+        ],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/timer/branca-esportes-saude-e-lazer/",
+      "kind": "target",
+      "stats": "200 0.315341 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Branca Esportes Saúde e Lazer - Road Runners",
+        "h1": " \n\n                \n                    Branca Esportes Saúde e Lazer\n                    \n                        \n                        Branca Esportes Saúde e Lazer\n                    \n                \n\n            ",
+        "canonical": [
+          "https://roadrunners.run/timer/branca-esportes-saude-e-lazer/"
+        ],
+        "description": [
+          "Timers - Branca Esportes Saúde e Lazer - Road Runners"
+        ],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/geracao-saude/",
+      "kind": "alias",
+      "stats": "301 0.078774 https://roadrunners.run/timer/geracao-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/geracao-saude",
+      "kind": "alias",
+      "stats": "301 0.076097 https://roadrunners.run/timer/geracao-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/assessoria/geracao-saude/",
+      "kind": "alias",
+      "stats": "301 0.074941 https://roadrunners.run/timer/geracao-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/assessoria/geracao-saude",
+      "kind": "alias",
+      "stats": "301 0.087908 https://roadrunners.run/timer/geracao-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/zero-meia-um-saude-e-esporte/",
+      "kind": "alias",
+      "stats": "301 0.081042 https://roadrunners.run/timer/zero-meia-um-saude-e-esporte/",
+      "returncode": 0,
+      "meta": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/zero-meia-um-saude-e-esporte",
+      "kind": "alias",
+      "stats": "301 0.072904 https://roadrunners.run/timer/zero-meia-um-saude-e-esporte/",
+      "returncode": 0,
+      "meta": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/assessoria/zero-meia-um-saude-e-esporte/",
+      "kind": "alias",
+      "stats": "301 0.073272 https://roadrunners.run/timer/zero-meia-um-saude-e-esporte/",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/assessoria/zero-meia-um-saude-e-esporte",
+      "kind": "alias",
+      "stats": "301 0.076806 https://roadrunners.run/timer/zero-meia-um-saude-e-esporte/",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/corpo-e-saude/",
+      "kind": "alias",
+      "stats": "301 0.072106 https://roadrunners.run/timer/corpo-e-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/corpo-e-saude",
+      "kind": "alias",
+      "stats": "301 0.088281 https://roadrunners.run/timer/corpo-e-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/assessoria/corpo-e-saude/",
+      "kind": "alias",
+      "stats": "301 0.087190 https://roadrunners.run/timer/corpo-e-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/assessoria/corpo-e-saude",
+      "kind": "alias",
+      "stats": "301 0.080398 https://roadrunners.run/timer/corpo-e-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/grupo-de-corrida-espaco-saude/",
+      "kind": "alias",
+      "stats": "301 0.073852 https://roadrunners.run/timer/grupo-de-corrida-espaco-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/grupo-de-corrida-espaco-saude",
+      "kind": "alias",
+      "stats": "301 0.083740 https://roadrunners.run/timer/grupo-de-corrida-espaco-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/assessoria/grupo-de-corrida-espaco-saude/",
+      "kind": "alias",
+      "stats": "301 0.081790 https://roadrunners.run/timer/grupo-de-corrida-espaco-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/assessoria/grupo-de-corrida-espaco-saude",
+      "kind": "alias",
+      "stats": "301 0.096717 https://roadrunners.run/timer/grupo-de-corrida-espaco-saude/",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/branca-esportes-saude-e-lazer/",
+      "kind": "alias",
+      "stats": "301 0.076458 https://roadrunners.run/timer/branca-esportes-saude-e-lazer/",
+      "returncode": 0,
+      "meta": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/branca-esportes-saude-e-lazer",
+      "kind": "alias",
+      "stats": "301 0.096512 https://roadrunners.run/timer/branca-esportes-saude-e-lazer/",
+      "returncode": 0,
+      "meta": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/assessoria/branca-esportes-saude-e-lazer/",
+      "kind": "alias",
+      "stats": "301 0.078285 https://roadrunners.run/timer/branca-esportes-saude-e-lazer/",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/assessoria/branca-esportes-saude-e-lazer",
+      "kind": "alias",
+      "stats": "301 0.077600 https://roadrunners.run/timer/branca-esportes-saude-e-lazer/",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/not-registered/",
+      "kind": "control",
+      "stats": "404 0.099278 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Esse caminho não foi encontrado · Road Runners",
+        "h1": "Esse caminho não foi encontrado",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": [
+          "noindex,follow"
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/",
+      "kind": "control",
+      "stats": "404 0.077083 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Esse caminho não foi encontrado · Road Runners",
+        "h1": "Esse caminho não foi encontrado",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": [
+          "noindex,follow"
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/geracao-saude/?action=delete",
+      "kind": "control",
+      "stats": "404 0.092837 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Esse caminho não foi encontrado · Road Runners",
+        "h1": "Esse caminho não foi encontrado",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": [
+          "noindex,follow"
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/geracao-saude/?utm_source=google",
+      "kind": "control",
+      "stats": "404 0.088360 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Esse caminho não foi encontrado · Road Runners",
+        "h1": "Esse caminho não foi encontrado",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": [
+          "noindex,follow"
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/assessoria/geracao-saude/?tag=zero-meia-um-saude-e-esporte",
+      "kind": "control",
+      "stats": "404 0.085349 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Esse caminho não foi encontrado · Road Runners",
+        "h1": "Esse caminho não foi encontrado",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": [
+          "noindex,follow"
+        ]
+      }
+    }
+  ],
+  "follow": [
+    {
+      "path": "/assessoria/geracao-saude/",
+      "stats": "200 1 https://roadrunners.run/timer/geracao-saude/",
+      "returncode": 0
+    },
+    {
+      "path": "/assessoria/zero-meia-um-saude-e-esporte/",
+      "stats": "200 1 https://roadrunners.run/timer/zero-meia-um-saude-e-esporte/",
+      "returncode": 0
+    },
+    {
+      "path": "/assessoria/corpo-e-saude/",
+      "stats": "200 1 https://roadrunners.run/timer/corpo-e-saude/",
+      "returncode": 0
+    },
+    {
+      "path": "/assessoria/grupo-de-corrida-espaco-saude/",
+      "stats": "200 1 https://roadrunners.run/timer/grupo-de-corrida-espaco-saude/",
+      "returncode": 0
+    },
+    {
+      "path": "/assessoria/branca-esportes-saude-e-lazer/",
+      "stats": "200 1 https://roadrunners.run/timer/branca-esportes-saude-e-lazer/",
+      "returncode": 0
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "events": {
+    "37728": {
+      "descricao": "Santander Track&amp;Field Run Series &eacute; uma corrida de rua &uacute;nica&#x3a; o maior circuito da Am&eacute;rica Latina, que re&uacute;ne mais de 200 mil participantes anualmente em todo o Brasil. Trata-se de uma experi&ecirc;ncia completa que vai al&eacute;m da linha de chegada, onde correr significa mais do que competir. &Eacute; sobre superar seus pr&oacute;prios limites e se inspirar nas pessoas ao seu redor. No dia 11 de Outubro, Curitiba sediar&aacute; a etapa Santander Track&amp;Field Run Series no ParkShoppingBarig&uuml;i.",
+      "descricao_es": "Santander Track&amp;Field Run Series es una carrera callejera &uacute;nica&#x3a; el circuito m&aacute;s grande de Am&eacute;rica Latina, que re&uacute;ne a m&aacute;s de 200 mil participantes anualmente en todo Brasil. Se trata de una experiencia completa que va m&aacute;s all&aacute; de la l&iacute;nea de llegada, donde correr significa m&aacute;s que competir. Es sobre superar tus propios l&iacute;mites e inspirarte en las personas a tu alrededor. El d&iacute;a 11 de Octubre, Curitiba ser&aacute; sede de la etapa Santander Track&amp;Field Run Series en el ParkShoppingBarig&uuml;i.",
+      "descricao_traducoes_meta": {
+        "es": {
+          "source_hash": "de045c995e35a5b8099f20bf748f79d1",
+          "description_hash": "1c1a9880f498f5c51d11e2c4c4735919"
+        }
+      }
+    },
+    "45211": {
+      "url_regulamento": "https://inscricaodecorrida.com.br/evento/4a-prime-night-run"
+    }
+  },
+  "routes": {
+    "62952": {
+      "data_percurso": "2026-10-10",
+      "percurso_bloqueado": true
+    },
+    "64763": {
+      "data_percurso": "2026-10-11",
+      "percurso_bloqueado": true
+    },
+    "64764": {
+      "data_percurso": "2026-10-11",
+      "percurso_bloqueado": true
+    },
+    "65892": {
+      "data_percurso": "2026-10-11",
+      "percurso_bloqueado": true
+    },
+    "65893": {
+      "data_percurso": "2026-10-11",
+      "percurso_bloqueado": true
+    },
+    "65919": {
+      "data_percurso": "2026-10-11",
+      "percurso_bloqueado": true
+    },
+    "65920": {
+      "data_percurso": "2026-10-11",
+      "percurso_bloqueado": true
+    }
+  }
+}

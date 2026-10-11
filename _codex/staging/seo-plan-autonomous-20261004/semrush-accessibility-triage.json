@@ -1,0 +1,167 @@
+{
+  "103": {
+    "data": {
+      "limit": 10,
+      "page": 0,
+      "total": 10,
+      "issue_id": 103,
+      "data": [
+        {
+          "target_url": "",
+          "page_id": "6ac29d94decc302b2663d338",
+          "source_url": "https://roadrunners.run/org/sportsland/"
+        },
+        {
+          "target_url": "",
+          "page_id": "6ac29d94decc302b2663d31b",
+          "source_url": "https://roadrunners.run/login/?redirect=/resultados/index.cfm"
+        },
+        {
+          "target_url": "",
+          "page_id": "6ac29d94decc302b2663d3ed",
+          "source_url": "https://roadrunners.run/login/?redirect=/desafios/index.cfm"
+        },
+        {
+          "target_url": "",
+          "page_id": "6ac29d94decc302b2663d388",
+          "source_url": "https://roadrunners.run/login/?redirect=/atleta/index.cfm"
+        },
+        {
+          "target_url": "",
+          "page_id": "6ac29d94decc302b2663d250",
+          "source_url": "https://roadrunners.run/login/?redirect=/atividades/index.cfm"
+        },
+        {
+          "target_url": "",
+          "page_id": "6ac29d94decc302b2663d2a0",
+          "source_url": "https://roadrunners.run/login/?redirect=/atendimento/"
+        },
+        {
+          "target_url": "",
+          "page_id": "6ac29d94decc302b2663d2c8",
+          "source_url": "https://roadrunners.run/login/?redirect=/agenda/index.cfm"
+        },
+        {
+          "target_url": "",
+          "page_id": "6ac29d94decc302b2663d251",
+          "source_url": "https://roadrunners.run/circuito/live-run-xp/"
+        },
+        {
+          "target_url": "",
+          "page_id": "6ac29d94decc302b2663d259",
+          "source_url": "https://roadrunners.run/circuito/fca-corridaderua/"
+        },
+        {
+          "target_url": "",
+          "page_id": "6ac29d94decc302b2663d311",
+          "source_url": "https://gorunners.roadrunners.run/"
+        }
+      ]
+    },
+    "metadata": {
+      "format": "json",
+      "pagination": {
+        "limit": 10
+      },
+      "url": "https://www.semrush.com/siteaudit/?id=26661911&issueid=103&limit=10&page=1&snapshot_id=6ac29b3456eeefef0a3ff73b",
+      "usage": {
+        "api_units": 0
+      }
+    }
+  },
+  "106": {
+    "data": {
+      "limit": 10,
+      "page": 0,
+      "total": 1,
+      "issue_id": 106,
+      "data": [
+        {
+          "target_url": "",
+          "page_id": "6ac29d94decc302b2663d2c4",
+          "source_url": "https://business.roadrunners.run/cadastro/"
+        }
+      ]
+    },
+    "metadata": {
+      "format": "json",
+      "pagination": {
+        "limit": 10
+      },
+      "url": "https://www.semrush.com/siteaudit/?id=26661911&issueid=106&limit=10&page=1&snapshot_id=6ac29b3456eeefef0a3ff73b",
+      "usage": {
+        "api_units": 0
+      }
+    }
+  },
+  "110": {
+    "data": {
+      "limit": 10,
+      "page": 0,
+      "total": 172,
+      "issue_id": 110,
+      "data": [
+        {
+          "target_url": "https://cdn.ticketsports.com.br/ticketagora/images/4SCZJ1Z5UT9CTYHUI9ZGEWBKO8GREDPRHE0A32HEBDGHH46H94.png",
+          "page_id": "6ac29d94decc302b2663d245",
+          "source_url": "https://roadrunners.run/evento/2027-maratona-internacional-do-parana-2027/"
+        },
+        {
+          "target_url": "https://cdn.ticketsports.com.br/ticketagora/images/FL71TVZIHIOR4DD5E4Y2I3RWUERZ6TJ8ARX995020IRPNAZAIE.png",
+          "page_id": "6ac29d94decc302b2663d260",
+          "source_url": "https://roadrunners.run/evento/2027-maratona-internacional-de-campinas-2-edicao/"
+        },
+        {
+          "target_url": "https://cdn.ticketsports.com.br/ticketagora/images/F2OZNLWXKGEUIKVUUWDQQGL044F91Y9IAOV0QVG7OD270F5TQO.png",
+          "page_id": "6ac29d94decc302b2663d383",
+          "source_url": "https://roadrunners.run/evento/2027-cats-run-mt-2027/"
+        },
+        {
+          "target_url": "https://cdn.ticketsports.com.br/ticketagora/images/S4RC30S0D35JQM8AB9XKHJL4EXEJ5IF5KLYY5AGZVYLC0N5A4A.png",
+          "page_id": "6ac29d94decc302b2663d30b",
+          "source_url": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/"
+        },
+        {
+          "target_url": "https://cdn.ticketsports.com.br/ticketagora/images/JBEEFX2ZE5LJ70S1BLRJD6OJL42AZ4U8AZ8Z4BP5DX5MDEOGWL.png",
+          "page_id": "6ac29d94decc302b2663d3a6",
+          "source_url": "https://roadrunners.run/evento/2026-sun-day-run-etapa-aracaju/"
+        },
+        {
+          "target_url": "https://cdn.ticketsports.com.br/ticketagora/images/OB002SLPY2JE0Y6NZB4YNLAJ3AU2C46NBS36K3D0GV6NMRQSZ3.png",
+          "page_id": "6ac29d94decc302b2663d256",
+          "source_url": "https://roadrunners.run/evento/2026-smurfs-run-shopping-jardins-aracaju/"
+        },
+        {
+          "target_url": "https://tiquet.com.br/visualizar/imagem/896/",
+          "page_id": "6ac29d94decc302b2663d21a",
+          "source_url": "https://roadrunners.run/evento/2026-serrinha-runners-2026/"
+        },
+        {
+          "target_url": "https://grcmlesydpcd.objectstorage.sa-saopaulo-1.oci.customer-oci.com/p/OQwcvnO-c63O08Gc2Kv4OTbJttj5ik60dguiDIyyQ0wuo5SWn-jHOLW9wNbylNqI/n/grcmlesydpcd/b/dtysppobjmntbkp01/o/media/doity/eventos/evento-279451-banner.jpeg",
+          "page_id": "6ac29d94decc302b2663d393",
+          "source_url": "https://roadrunners.run/evento/2026-segundo-corridao-da-guarda-municipal-de-afonso-bezerra-2026/"
+        },
+        {
+          "target_url": "https://cdn.ticketsports.com.br/ticketagora/images/YONO08NMC59GT8BMQ27B8YETZBK7169CBWGEZY169PKR0QRC3L.png",
+          "page_id": "6ac29d94decc302b2663d2d8",
+          "source_url": "https://roadrunners.run/evento/2026-sao-paulo-run-5km/"
+        },
+        {
+          "target_url": "https://magento.runningland.com.br/media/catalog/product/cache/4ec0339e0e27010557b958cd357e7b98/b/a/banner-evento_night-run_e1_1__2.jpg",
+          "page_id": "6ac29d94decc302b2663d3e5",
+          "source_url": "https://roadrunners.run/evento/2026-santander-night-run-etapa-1-aracaju-2026/"
+        }
+      ]
+    },
+    "metadata": {
+      "format": "json",
+      "pagination": {
+        "limit": 10
+      },
+      "url": "https://www.semrush.com/siteaudit/?id=26661911&issueid=110&limit=10&page=1&snapshot_id=6ac29b3456eeefef0a3ff73b",
+      "usage": {
+        "api_units": 0
+      }
+    }
+  }
+}

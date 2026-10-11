@@ -1,8 +1,8 @@
 <!--- Included only after the authenticated global-admin gate. Public support stays unchanged. --->
-<cfif NOT structKeyExists(VARIABLES,"helpdeskCanManage") OR NOT VARIABLES.helpdeskCanManage><cfheader statuscode="403" statustext="Forbidden"/><cfabort/></cfif>
+<cfif NOT structKeyExists(VARIABLES,"helpdeskCanManage") OR NOT VARIABLES.helpdeskCanManage><cfheader statuscode="403"/><cfabort/></cfif>
 <cfif structKeyExists(FORM,"helpdesk_action")>
   <cfif CGI.request_method NEQ "POST" OR NOT structKeyExists(FORM,"helpdesk_csrf") OR compare(FORM.helpdesk_csrf,SESSION.helpdeskCsrf) NEQ 0>
-    <cfheader statuscode="403" statustext="Forbidden"/><cfoutput><p>Sessão de atendimento expirada. Volte ao chamado e recarregue a página antes de tentar novamente.</p></cfoutput><cfabort/>
+    <cfheader statuscode="403"/><cfoutput><p>Sessão de atendimento expirada. Volte ao chamado e recarregue a página antes de tentar novamente.</p></cfoutput><cfabort/>
   </cfif>
   <cfif listFindNoCase("responder_ticket,atualizar_ticket",FORM.helpdesk_action)>
     <cfset helpdeskAdminHandled=true/>

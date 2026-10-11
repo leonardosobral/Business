@@ -5,7 +5,7 @@
 
 <cfscript>
 function cronRunnerWrite(required struct payload, numeric statusCode = 200, string statusText = "OK") {
-    cfheader(statuscode = arguments.statusCode, statustext = arguments.statusText);
+    cfheader(statuscode = arguments.statusCode);
     writeOutput(serializeJSON(arguments.payload));
     abort;
 }

@@ -1,0 +1,18 @@
+{
+  "status": "published_and_verified",
+  "event_description_updated": 39399,
+  "languages": [
+    "pt-br",
+    "en",
+    "es"
+  ],
+  "other_events_preserved": [
+    33486,
+    37483
+  ],
+  "routes_preserved": 8,
+  "dependency_tables_preserved": 13,
+  "public_urls": 9,
+  "backup": "/var/backups/seo-keyword-locales-20261004",
+  "paid_ai_calls": 0
+}

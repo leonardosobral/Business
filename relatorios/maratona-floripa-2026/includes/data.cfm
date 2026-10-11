@@ -1,12 +1,12 @@
 <cfif NOT structKeyExists(REQUEST, "mifReportAuthorized")
     OR NOT REQUEST.mifReportAuthorized>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>Acesso negado.</cfoutput>
     <cfabort/>
 </cfif>
 
 <cffunction name="mifAbortDatasetUnavailable" access="public" returntype="void" output="true">
-    <cfheader statuscode="503" statustext="Service Unavailable"/>
+    <cfheader statuscode="503"/>
     <cfcontent type="text/html; charset=utf-8" reset="true"/>
     <cfoutput><!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Dados indisponíveis</title></head>

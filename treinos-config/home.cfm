@@ -149,7 +149,7 @@
 
                 <cfoutput><form method="post" action="./?pagina=#VARIABLES.configPage#"></cfoutput>
                   <input type="hidden" name="config_action" value="salvar"/>
-                  <input type="hidden" name="config_record_id" value="<cfif qTreinoConfigEdit.recordcount><cfoutput>#htmlEditFormat(qTreinoConfigEdit[VARIABLES.treinoConfigPk][1])#</cfoutput></cfif>"/>
+                  <input type="hidden" name="config_record_id" value="<cfif qTreinoConfigEdit.recordcount><cfoutput>#encodeForHTMLAttribute(qTreinoConfigEdit[VARIABLES.treinoConfigPk][1])#</cfoutput></cfif>"/>
 
                   <div class="row g-3">
                     <cfloop query="qTreinoConfigColumns">
@@ -168,16 +168,16 @@
                         <cfoutput>
                           <div class="col-12 <cfif VARIABLES.treinoConfigFieldType EQ 'text'>col-lg-12<cfelse>col-md-6 col-lg-4</cfif>">
                             <cfif NOT VARIABLES.treinoConfigIsDateTimeField>
-                              <label class="form-label text-capitalize">#htmlEditFormat(VARIABLES.treinoConfigFieldLabel)#</label>
+                              <label class="form-label text-capitalize">#encodeForHTML(VARIABLES.treinoConfigFieldLabel)#</label>
                             </cfif>
                             <cfif qTreinoConfigColumns.column_name EQ "id_evento">
                               <cfif qTreinoConfigEdit.recordcount>
-                                <input type="hidden" name="#VARIABLES.treinoConfigFieldName#" value="#htmlEditFormat(VARIABLES.treinoConfigFieldValue)#"/>
+                                <input type="hidden" name="#VARIABLES.treinoConfigFieldName#" value="#encodeForHTMLAttribute(VARIABLES.treinoConfigFieldValue)#"/>
                                 <div class="form-control bg-body-tertiary d-flex align-items-center" style="min-height: 38px;">
                                   <cfif len(trim(VARIABLES.treinoConfigEventoNome))>
-                                    #htmlEditFormat(VARIABLES.treinoConfigFieldValue)# - #htmlEditFormat(VARIABLES.treinoConfigEventoNome)#
+                                    #encodeForHTML(VARIABLES.treinoConfigFieldValue)# - #encodeForHTML(VARIABLES.treinoConfigEventoNome)#
                                   <cfelse>
-                                    #htmlEditFormat(VARIABLES.treinoConfigFieldValue)#
+                                    #encodeForHTML(VARIABLES.treinoConfigFieldValue)#
                                   </cfif>
                                 </div>
                               <cfelse>
@@ -185,7 +185,7 @@
                                   <option value="">Selecione um evento de treino</option>
                                   <cfloop query="qTreinoEventos">
                                     <option value="#qTreinoEventos.id_evento#" <cfif VARIABLES.treinoConfigFieldValue EQ qTreinoEventos.id_evento>selected</cfif>>
-                                      #htmlEditFormat(qTreinoEventos.id_evento)# - #htmlEditFormat(qTreinoEventos.nome_evento)#
+                                      #encodeForHTML(qTreinoEventos.id_evento)# - #encodeForHTML(qTreinoEventos.nome_evento)#
                                     </option>
                                   </cfloop>
                                 </select>
@@ -198,15 +198,15 @@
                               </div>
                             <cfelseif VARIABLES.treinoConfigIsDateTimeField>
                               <div class="form-outline" data-mdb-input-init>
-                                <input class="form-control" type="datetime-local" id="#VARIABLES.treinoConfigFieldName#" name="#VARIABLES.treinoConfigFieldName#" value="#htmlEditFormat(VARIABLES.treinoConfigFieldValue)#"/>
-                                <label for="#VARIABLES.treinoConfigFieldName#" class="form-label text-capitalize active">#htmlEditFormat(VARIABLES.treinoConfigFieldLabel)#</label>
+                                <input class="form-control" type="datetime-local" id="#VARIABLES.treinoConfigFieldName#" name="#VARIABLES.treinoConfigFieldName#" value="#encodeForHTMLAttribute(VARIABLES.treinoConfigFieldValue)#"/>
+                                <label for="#VARIABLES.treinoConfigFieldName#" class="form-label text-capitalize active">#encodeForHTML(VARIABLES.treinoConfigFieldLabel)#</label>
                               </div>
                             <cfelseif VARIABLES.treinoConfigFieldType EQ "integer" OR VARIABLES.treinoConfigFieldType EQ "smallint">
-                              <input class="form-control" type="number" name="#VARIABLES.treinoConfigFieldName#" value="#htmlEditFormat(VARIABLES.treinoConfigFieldValue)#" step="1" inputmode="numeric"/>
+                              <input class="form-control" type="number" name="#VARIABLES.treinoConfigFieldName#" value="#encodeForHTMLAttribute(VARIABLES.treinoConfigFieldValue)#" step="1" inputmode="numeric"/>
                             <cfelseif VARIABLES.treinoConfigFieldType EQ "text" OR (isNumeric(qTreinoConfigColumns.character_maximum_length) AND qTreinoConfigColumns.character_maximum_length GT 160)>
-                              <textarea class="form-control" name="#VARIABLES.treinoConfigFieldName#" rows="4">#htmlEditFormat(VARIABLES.treinoConfigFieldValue)#</textarea>
+                              <textarea class="form-control" name="#VARIABLES.treinoConfigFieldName#" rows="4">#encodeForHTML(VARIABLES.treinoConfigFieldValue)#</textarea>
                             <cfelse>
-                              <input class="form-control" type="text" name="#VARIABLES.treinoConfigFieldName#" value="#htmlEditFormat(VARIABLES.treinoConfigFieldValue)#"/>
+                              <input class="form-control" type="text" name="#VARIABLES.treinoConfigFieldName#" value="#encodeForHTMLAttribute(VARIABLES.treinoConfigFieldValue)#"/>
                             </cfif>
                           </div>
                         </cfoutput>
@@ -233,7 +233,7 @@
                           <cfcase value="#VARIABLES.treinoConfigActiveColumn#"><cfset VARIABLES.treinoConfigColumnLabel = "Status"/></cfcase>
                           <cfdefaultcase><cfset VARIABLES.treinoConfigColumnLabel = Replace(qTreinoConfigColumns.column_name, "_", " ", "all")/></cfdefaultcase>
                         </cfswitch>
-                        <th>#htmlEditFormat(VARIABLES.treinoConfigColumnLabel)#</th>
+                        <th>#encodeForHTML(VARIABLES.treinoConfigColumnLabel)#</th>
                       </cfif>
                     </cfoutput>
                     <th class="config-actions-cell">Ações</th>
@@ -253,7 +253,7 @@
                               <cfcase value="#VARIABLES.treinoConfigActiveColumn#"><cfset VARIABLES.treinoConfigColumnLabel = "Status"/></cfcase>
                               <cfdefaultcase><cfset VARIABLES.treinoConfigColumnLabel = Replace(VARIABLES.treinoConfigColumnName, "_", " ", "all")/></cfdefaultcase>
                             </cfswitch>
-                            <td class="config-cell" data-label="#htmlEditFormat(VARIABLES.treinoConfigColumnLabel)#">
+                            <td class="config-cell" data-label="#encodeForHTMLAttribute(VARIABLES.treinoConfigColumnLabel)#">
                               <cfif len(trim(VARIABLES.treinoConfigActiveColumn)) AND VARIABLES.treinoConfigColumnName EQ VARIABLES.treinoConfigActiveColumn>
                                 <cfset VARIABLES.treinoConfigIsActive = IsBoolean(VARIABLES.treinoConfigColumnValue) ? VARIABLES.treinoConfigColumnValue : ListFindNoCase("true,1,yes,sim", trim(VARIABLES.treinoConfigColumnValue))/>
                                 <span class="badge <cfif VARIABLES.treinoConfigIsActive>badge-success<cfelse>badge-danger</cfif>">
@@ -267,20 +267,20 @@
                                   </cfif>
                                 </cfloop>
                                 <cfif len(trim(VARIABLES.treinoConfigEventoLabel))>
-                                  <strong>#htmlEditFormat(VARIABLES.treinoConfigColumnValue)#</strong>
-                                  <div class="small text-muted">#htmlEditFormat(VARIABLES.treinoConfigEventoLabel)#</div>
+                                  <strong>#encodeForHTML(VARIABLES.treinoConfigColumnValue)#</strong>
+                                  <div class="small text-muted">#encodeForHTML(VARIABLES.treinoConfigEventoLabel)#</div>
                                 <cfelse>
-                                  #htmlEditFormat(VARIABLES.treinoConfigColumnValue)#
+                                  #encodeForHTML(VARIABLES.treinoConfigColumnValue)#
                                 </cfif>
                               <cfelseif VARIABLES.treinoConfigColumnName EQ "data_abertura_inscricao" OR VARIABLES.treinoConfigColumnName EQ "data_encerramento_inscricao">
                                 <cfif isDate(VARIABLES.treinoConfigColumnValue)>
-                                  #htmlEditFormat(lsDateFormat(VARIABLES.treinoConfigColumnValue, "dd/mm/yyyy"))#
-                                  <div class="small text-muted">#htmlEditFormat(timeFormat(VARIABLES.treinoConfigColumnValue, "HH:mm"))#</div>
+                                  #encodeForHTML(lsDateFormat(VARIABLES.treinoConfigColumnValue, "dd/mm/yyyy"))#
+                                  <div class="small text-muted">#encodeForHTML(timeFormat(VARIABLES.treinoConfigColumnValue, "HH:mm"))#</div>
                                 <cfelse>
-                                  #htmlEditFormat(VARIABLES.treinoConfigColumnValue)#
+                                  #encodeForHTML(VARIABLES.treinoConfigColumnValue)#
                                 </cfif>
                               <cfelse>
-                                #htmlEditFormat(VARIABLES.treinoConfigColumnValue)#
+                                #encodeForHTML(VARIABLES.treinoConfigColumnValue)#
                               </cfif>
                             </td>
                           </cfif>

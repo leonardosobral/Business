@@ -20,13 +20,13 @@
 </cfif>
 
 <cfif CGI.REQUEST_METHOD NEQ "POST">
-    <cfheader statuscode="405" statustext="Method Not Allowed"/>
+    <cfheader statuscode="405"/>
     <cfoutput>#serializeJSON({success=false,message="Use os botões da ficha do atleta para iniciar o contato."})#</cfoutput>
     <cfabort/>
 </cfif>
 
 <cfif NOT VARIABLES.saudeCanOperate>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>#serializeJSON({success=false,message="Somente Médicos e Admins Globais podem iniciar contatos pela ficha."})#</cfoutput>
     <cfabort/>
 </cfif>
@@ -34,7 +34,7 @@
 <cfif NOT structKeyExists(SESSION, "saudeBusinessCsrfToken")
     OR NOT len(trim(SESSION.saudeBusinessCsrfToken & ""))
     OR compare(FORM.csrf_token & "", SESSION.saudeBusinessCsrfToken & "") NEQ 0>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>#serializeJSON({success=false,message="A sessão de segurança expirou. Recarregue o painel."})#</cfoutput>
     <cfabort/>
 </cfif>
@@ -43,7 +43,7 @@
     OR NOT isNumeric(FORM.id_inscricao) OR val(FORM.id_inscricao) LTE 0
     OR NOT listFindNoCase("atleta,emergencia", VARIABLES.saudeContactType)
     OR NOT listFindNoCase("whatsapp,telefone", VARIABLES.saudeContactChannel)>
-    <cfheader statuscode="400" statustext="Bad Request"/>
+    <cfheader statuscode="400"/>
     <cfoutput>#serializeJSON({success=false,message="Dados de contato inválidos."})#</cfoutput>
     <cfabort/>
 </cfif>
@@ -123,12 +123,12 @@
 
     <cfoutput>#serializeJSON({success=true,message="Contato registrado na cronologia.",target=VARIABLES.saudeContactTarget})#</cfoutput>
     <cfcatch type="Saude.ContatoIndisponivel">
-        <cfheader statuscode="422" statustext="Unprocessable Entity"/>
+        <cfheader statuscode="422"/>
         <cfoutput>#serializeJSON({success=false,message=cfcatch.message})#</cfoutput>
     </cfcatch>
     <cfcatch type="any">
         <cflog file="business-saude-eventos" type="error" text="contact_action event=#int(FORM.id_evento)# registration=#int(FORM.id_inscricao)# contact=#VARIABLES.saudeContactType# channel=#VARIABLES.saudeContactChannel# actor=#VARIABLES.saudeContactActorId# message=#left(cfcatch.message & '', 1000)# detail=#left(structKeyExists(cfcatch, 'detail') ? cfcatch.detail & '' : '', 3000)#"/>
-        <cfheader statuscode="500" statustext="Internal Server Error"/>
+        <cfheader statuscode="500"/>
         <cfoutput>#serializeJSON({success=false,message="Não foi possível iniciar o contato."})#</cfoutput>
     </cfcatch>
 </cftry>

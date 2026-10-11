@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://roadrunners.run/evento/2026-live-run-xp-rio-de-janeiro-2026-21k/",
+    "checks": {
+      "http200": true,
+      "metadata_preserved": true,
+      "no_cf_error": true
+    }
+  },
+  {
+    "url": "https://roadrunners.run/en/event/2026-live-run-xp-fortaleza-2026-ii/",
+    "checks": {
+      "http200": true,
+      "metadata_preserved": true,
+      "no_cf_error": true
+    }
+  },
+  {
+    "url": "https://roadrunners.run/evento/2025-maratona-internacional-de-floripa/",
+    "checks": {
+      "http200": true,
+      "metadata_preserved": true,
+      "no_cf_error": true
+    }
+  }
+]

@@ -1,0 +1,146 @@
+[
+  {
+    "id": 37728,
+    "url": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-parkshoppingbarigui/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 37728,
+    "url": "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-parkshoppingbarigui/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 37728,
+    "url": "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-parkshoppingbarigui/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45211,
+    "url": "https://roadrunners.run/evento/2026-4-prime-night-run/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45211,
+    "url": "https://roadrunners.run/en/event/2026-4-prime-night-run/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45211,
+    "url": "https://roadrunners.run/es/evento/2026-4-prime-night-run/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46069,
+    "url": "https://roadrunners.run/evento/2026-central-gym-run/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46069,
+    "url": "https://roadrunners.run/en/event/2026-central-gym-run/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46069,
+    "url": "https://roadrunners.run/es/evento/2026-central-gym-run/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46080,
+    "url": "https://roadrunners.run/evento/2026-corrida-por-patas-2026-corrida-beneficente/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46080,
+    "url": "https://roadrunners.run/en/event/2026-corrida-por-patas-2026-corrida-beneficente/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46080,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-por-patas-2026-corrida-beneficente/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  }
+]

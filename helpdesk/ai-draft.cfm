@@ -5,7 +5,7 @@
 <cfheader name="X-Content-Type-Options" value="nosniff"/>
 <cfscript>
 function helpdeskAIReply(required numeric code, required struct payload) {
-    cfheader(statuscode=arguments.code,statustext="");
+    cfheader(statuscode=arguments.code);
     var serializer=createObject("component","helpdesk.includes.HelpdeskAI");
     writeOutput(serializeJSON(serializer.wire(arguments.payload)));
 }

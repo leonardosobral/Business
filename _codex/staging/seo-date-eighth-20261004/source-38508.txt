@@ -1,0 +1,74 @@
+                if (
+        !window.location.href.includes('https://www.runningland.com.br.test') &&
+        (window.location.href.includes('https://www.runningland.com.br') ||
+          window.location.href.includes('https://runningland.com.br'))) {
+        (function (h, o, t, j, a, r) {
+          h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+          h._hjSettings = { hjid: 3044931, hjsv: 6 };
+          a = o.getElementsByTagName('head')[0];
+          r = o.createElement('script'); r.async = 1;
+          r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+          a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+      }  dataLayer = [];
+          if (!window.location.href.includes('https://www.runningland.com.br.test')) {
+            (function (w, d, s, l, i) {
+              w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                  new Date().getTime(), event: 'gtm.js'
+              }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                  'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-53224CB');
+          }  (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                  'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                  j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+              })(window, document, 'script', 'dataLayer', 'GTM-PXKPSLRJ');               .fallback-nojs {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+              }
+
+              .fallback-nojs a {
+                color: currentColor;
+              }
+
+              .fallback-closed {
+                height: 40vh;
+              }    Oops! JavaScript is disabled  To browse the Running Land,  enable JavaScript in your browser.       // Add the Facebook SDK for Javascript
+
+            (function (d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) { return; }
+              js = d.createElement(s); js.id = id;
+              js.src = "https://connect.facebook.net/en_US/sdk.js";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk')
+            );
+
+
+            window.fbAsyncInit = function () {
+              // Initialize the SDK with your app and the Graph API version for your app
+              FB.init({
+                appId: '{your-facebook-app-id}',
+                xfbml: true,
+                version: 'v18.0'
+              });
+              // If you are logged in, automatically get your name and email address, your public profile information
+              FB.login(function (response) {
+                if (response.authResponse) {
+                  console.log('Welcome!  Fetching your information.... ');
+                  FB.api('/me', { fields: 'name, email' }, function (response) {
+                    document.getElementById("profile").innerHTML = "Good to see you, " + response.name + ". i see your email address is " + response.email
+                  });
+                } else {
+                  // If you are not logged in, the login dialog will open for you to login asking for permission to get your public profile and email
+                  console.log('User cancelled login or did not fully authorize.');
+                }
+              });
+            };               

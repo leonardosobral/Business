@@ -1,0 +1,36 @@
+{
+  "selected": [
+    {
+      "id": 43533,
+      "page": "https://www.realtiming.com.br/evento/3-circuito-run",
+      "confirmed_date": "2026-10-24"
+    },
+    {
+      "id": 44805,
+      "page": "https://www.races.com.br/1-corrida-emporio-prime",
+      "confirmed_date": "2026-10-18"
+    },
+    {
+      "id": 46084,
+      "page": "https://www.sympla.com.br/evento/10-milhas-de-marilia-sp/3456105",
+      "confirmed_date": "2026-10-18"
+    },
+    {
+      "id": 47031,
+      "page": "https://www.sympla.com.br/evento/2o-patinhas-run/3540094",
+      "confirmed_date": "2026-10-18"
+    }
+  ],
+  "evidence": {
+    "43533": "Página atual RealTiming exibe24.OUT.2026/5km, consultada CUA e HTML200.",
+    "44805": "Cabeçalho, descrição e regulamentoHTML confirmam18/10/2026/3kmcaminhada5e10corrida.",
+    "46084": "PáginaSympla cabeçalho e descrição18outubro2026; 16,09kmcorrida,5kmcorrida,3kmcaminhada,Kids separado.",
+    "47031": "PáginaSympla aviso NOVA DATA,18/10 no cabeçalho e descrição,3/6km. Datas na descrição localPT/ES ainda20/09; ENNULLpreservado."
+  },
+  "excluded": {
+    "44483": "Sprinta cabeçalho e descrição18/10, mas programação19setembro17h. Não alterar com conflito interno.",
+    "40176": "Não incluído: texto local ainda17/10 com kits16/17, precisa conferir regulamento/programação atual antes de correção.",
+    "39867": "Não incluído: texto localjunho com kits20junho, precisa conferir fonte atual antes de correção."
+  },
+  "category_correction": "Marília categorias16.09km,5km,caminhada3km,kids; fonte não sustenta caminhada16.09km. IDs existentes protegidos antes do trigger, sem mudar distâncias."
+}

@@ -1,0 +1,4196 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-br">
+<head>
+<!-- Meta Tags -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<!-- Page Title -->
+<title>Real Timing - Cronometragem Profissional</title>
+<!-- Favicon and Touch Icons -->
+<link href="/imagens/favicon.png" rel="shortcut icon" type="image/png">
+<!-- Stylesheet -->
+<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<link href="/css/animate.css" rel="stylesheet" type="text/css">
+<link href="/css/css-plugin-collections.css" rel="stylesheet"/>
+<!-- CSS | menuzord megamenu skins -->
+<link href="/css/menuzord-megamenu.css" rel="stylesheet"/>
+<link id="menuzord-menu-skins" href="/css/menuzord-skins/menuzord-boxed.css" rel="stylesheet"/>
+<!-- CSS | Main style file -->
+<link href="/css/style-main.css" rel="stylesheet" type="text/css">
+<!-- CSS | Preloader Styles -->
+<!-- CSS | Custom Margin Padding Collection -->
+<link href="/css/custom-bootstrap-margin-padding.css" rel="stylesheet" type="text/css">
+<!-- CSS | Responsive media queries -->
+<link href="/css/responsive.css" rel="stylesheet" type="text/css">
+<link href="/css/fontawesome.css" rel="stylesheet" type="text/css">
+<link href="/css/all.css" rel="stylesheet" type="text/css">
+<link href="/css/style.css" rel="stylesheet" type="text/css">
+<!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
+<!-- <link href="css/style.css" rel="stylesheet" type="text/css"> -->
+<!-- revolution slider -->
+<!-- CSS | Theme Color -->
+<link href="/css/theme-skin-color-set2.css" rel="stylesheet" type="text/css">
+<script src="/js/jquery-2.2.4.min.js"></script>
+
+
+<style>
+
+.borda-cor-site-20 {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #5bc0de;
+	
+}
+
+.borda-cor-site-20-sombra {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #fff;
+	    box-shadow:
+        0 -1px 2px 0 rgba(0, 153, 255, 0.01),
+        0 2px 1px -2px rgba(0, 153, 255, 0.02),
+        0 5px 5px -2px rgba(0, 153, 255, 0.02),
+        0 10px 10px -2px rgba(0, 153, 255, 0.03),
+        0 20px 20px -2px rgba(0, 153, 255, 0.04),
+        0 40px 40px -2px rgba(0, 153, 255, 0.05);
+	
+}
+
+.borda-cor-info-20 {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #cbe0eb;
+	background-color:#d9edf7;
+	
+}
+
+.borda-cor-success-20 {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #d0e2c9;
+	background-color:#dff0d8;
+	
+}
+ 
+ 
+ .borda-cor-danger-20 {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #e2c9c9;
+	background-color:#f2dede;
+	
+}
+ 
+ 
+.borda-cor-site-10 {
+	
+	padding: 10px;
+	border-radius: 24px;
+	border: solid 1px #5bc0de;
+	
+}
+
+
+.borda-cor-site-sombra-10 {
+	
+	padding: 10px;
+	border-radius: 24px;
+	border: solid 1px #fff;
+	    box-shadow:
+        0 -1px 2px 0 rgba(0, 153, 255, 0.01),
+        0 2px 1px -2px rgba(0, 153, 255, 0.02),
+        0 5px 5px -2px rgba(0, 153, 255, 0.02),
+        0 10px 10px -2px rgba(0, 153, 255, 0.03),
+        0 20px 20px -2px rgba(0, 153, 255, 0.04),
+        0 40px 40px -2px rgba(0, 153, 255, 0.05);
+	
+}
+ 
+
+
+</style>
+
+<style>
+
+.botao-off {
+    pointer-events: none; /* impede clique */
+    opacity: 0.5;         /* efeito visual */
+}
+ 
+.background_cor_evento {
+  background: linear-gradient(to right,
+    #333333 0%,
+    #000000 30%,
+    #f4f4f4 30%,
+    #f4f4f4 100%
+  );
+}
+
+
+@media (max-width: 968px) {
+  .background_cor_evento {
+    background: linear-gradient(to bottom,
+      #333333 0%,
+      #000000 20%,
+      #f4f4f4 20%,
+      #f4f4f4 100%
+    );
+  }
+}
+
+
+
+.btn-theme-colored22{
+	
+	background-color: #000000 !important;
+	border:none;
+	
+}
+
+.borda-lateral-evento{
+	
+	border-left:solid 4px #000000	
+}
+
+
+.borda-cor-evento-20 {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #000000;
+	
+}
+ 
+ 
+.borda-cor-evento-10 {
+	
+	padding: 10px;
+	border-radius: 24px;
+	border: solid 1px #000000;
+	
+}
+ 
+
+</style>
+
+
+
+		
+<style>
+
+
+
+@layer demo, countdown;
+
+@layer countdown{
+  .countdown {
+    width: fit-content;
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 1rem;
+  }
+  .countdown > .part {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .countdown > .part > .number {
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border: 1px solid #333333;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    position: relative
+  }
+  .countdown > .part.dias { --num: 365 }
+  .countdown > .part.horas { --num: 24 }
+  .countdown > .part:where(.minutos, .segundos) { --num: 60 }
+  .countdown > .part > .number::after{
+    content: "";
+    position: absolute;
+    inset: calc(var(--border-size) * -0.5);
+    border-radius: inherit;
+
+    --degree: calc(360deg / var(--num) * (var(--num) - var(--value,0)));
+    background-image: conic-gradient(var(--accent) var(--degree), transparent calc(var(--degree) + 0.1deg));
+
+    --border-size: 4px;  
+    --mask-image: radial-gradient(100% 100%, transparent calc(50% - var(--border-size)), black calc(50% - var(--border-size) + 1px));
+    -webkit-mask-image: var(--mask-image);
+    mask-image: var(--mask-image);
+  }
+  .countdown > .part > .text {
+    text-align: center;
+    opacity: 0.75
+  }
+}
+
+
+
+
+</style>
+
+ 
+
+
+</head>
+<body class="">
+<div id="wrapper" class="clearfix">
+ <!-- Header -->
+ 
+  
+
+<style>
+
+.bg-nao-preenchido{background-color:#eee4e4 !important; border-bottom:solid 1px red; }
+.bg-preenchido{background-color:#e4f4e4 !important; border-bottom:solid 1px green; }
+
+</style>
+
+
+<!-- Header -->
+  <header id="header" class="header " >
+
+
+   
+     
+<div class="header-top  sm-text-center " style="background-color:#385894 !important" >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-xs-6 col-sm-4 hidden-xs ">
+             <div class="widget mb-0 pb-0">
+			<ul class="styled-icons icon-sm pull-left flip sm-pull-none sm-text-center mb-0 pb-0 ">
+                <li><a href="https://m.facebook.com/realtimingcronometragem?tsid=0.6841672004471742&source=result" target="_blank"><i class="fa-brands fa-facebook text-white"></i></a></li>
+                <li><a href="https://instagram.com/realtiming_cronometragem?igshid=YmMyMTA2M2Y=" target="_blank"><i class="fa-brands fa-instagram text-white"></i></a></li>
+                <li><a href="https://m.youtube.com/channel/UCmNfYR5xv8mbYPzQpJjSveA" target="_blank"><i class="fa-brands fa-youtube text-white"></i></a></li>
+              </ul>
+			  </div>
+              <p class="text-white font-14 m-0 p-0 mt-5 mt-xs-0"> 
+			  			 </p>
+			  
+             
+          </div>
+           
+          <div class="col-md-6 font-14 col-sm-8 col-xs-12">
+            <ul class="list-inline sm-pull-none sm-text-center text-right    mt-5 mb-5 mb-xs-2">
+			
+			<li class="m-0  text-white" style="font-size:15px">
+			<a href="#" class="btn btn-xs btn-default" id="bot-chamar-login-cadastro-geral"><i class="fa fa-file" aria-hidden="true"   ></i> Login / Cadastro / Minhas Inscrições</a>
+			 
+			<a href="#" class="btn btn-xs btn-default" data-toggle="modal" data-target="#modal-login-organizador"><i class="fa fa-file" aria-hidden="true"   ></i> Organizador</a>
+			
+			
+			 
+			 
+			 
+			</li>
+			
+			 
+				 
+				 
+								 
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	
+	<script>
+	
+	
+		$("#bot-chamar-login-cadastro-geral").click(function(e){
+			
+			e.preventDefault();
+			
+			$(".campo-cadastro-categoria").val("geral");
+			$(".campo-cadastro-id-evento").val("0");
+			
+			$('#seletor_tipo_documento').val('campo_form_login_cpf').trigger('change');
+			
+			var url_atual = '/sistema/aux_cadastro_v_int_cpf.php';
+			
+			chamar_aux_cadastro(token_atual,url_atual);
+			
+			$("#setor-pre-login").show();
+			$("#setor-cadastro").hide();
+			
+			$("#modal-login-cadastro").modal("show");
+			
+			 
+			
+		});
+	
+	
+	</script>
+
+	  
+    
+    <div class="header-nav"    >
+      <div class="header-nav-wrapper navbar-scrolltofixed  bg-white"  style="border-bottom: solid 2px #f4f4f4" >
+        <div class="container">
+          <nav id="menuzord-right" class="menuzord default"  >
+		  
+		  <a class="menuzord-brand pull-left flip mt-10 mb-5 mt-sm-15 mb-sm-15" href="/inicial">
+		  <img src="/imagens/logo.png" class=" " height="30"   alt=""></a>
+            <ul class="menuzord-menu">
+			
+			 
+			
+               <li class=""><a href="#">EVENTOS</a>
+				<ul class="dropdown">
+				<li class=""><a href="/eventos">O QUE VEM POR AÍ</a></li>
+				<li class=" "><a href="/eventos-realizados">EVENTOS REALIZADOS</a></li>
+				</ul>
+				
+
+				 
+				  
+			  </li>
+			  
+			  
+			  
+
+
+			   <li class=""><a href="/sobre">SOBRE</a></li>
+			   
+			   <li class=""><a href="/rankings">RANKINGS<span class="label label-success">Novo</span></a></li>
+			   
+			   
+			  
+			   
+             <li class=""><a href="/resultados">RESULTADOS</a></li>
+			 
+			 <li class=""><a href="/ao-vivo">AO VIVO</a> </li>
+			   
+			  
+			   
+			  
+			  
+			    
+			   
+			   <li class=""><a href="/contato">CONTATO</a> </li>
+			   
+			  
+			   
+               
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+	
+  	
+  </header>
+  
+  
+		
+<div class="modal fade bs-senha" id="modal-login-organizador" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+		  <div class="modal-dialog modal-df">
+                  <div class="modal-content ">
+					
+					 
+                    
+					
+					<div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <div class="text-center"><img src="/imagens/logo.png" width="200" /></div> 
+					   
+                    </div>
+                    <div class="modal-body p-30 p-xs-20">
+						 
+						<div class="col-md-12">
+						<div class="" style="border-radius:24px;">
+
+
+						<h3 class="m-0 p-0 text-primary">Sou Organizador</h3>
+						 
+						 <div id="status-login-geral-form-organizador"></div>
+                      
+					  <form id="login-geral-form-organizador">
+						  <div class="row">
+							<div class="form-group col-md-12">
+								 
+							  <label for="form_username_email" class="font-14">Seu Login/Email</label>
+							  <input id="form_username_email" name="email" class="form-control " type="text">
+							</div>
+						  </div>
+						  <div class="row">
+							<div class="form-group col-md-12 ">
+							  <label for="form_password" class="font-14">Sua Senha</label>
+							  <input  id="senha_nascimento_2" name="senha" class="form-control  " type="password">
+							  
+							</div>
+						  </div>
+						  <div class="row">
+							<div class="form-group col-md-6 ">
+							   
+							   <button type="submit" class="btn btn-success btn-circled ">Login</button>
+							  
+							</div>
+							<div class="form-group col-md-6 text-right">
+							   
+							   
+							   <a href="/admin" class="btn btn-info btn-circled" ><i class="fa fa-file" aria-hidden="true"   ></i> Entrega de Kits</a>
+							  
+							</div>
+						  </div>
+						   
+						  
+               
+						</form>	
+
+
+						<script>
+						
+						
+
+
+						$("#login-geral-form-organizador").submit(function(e){
+							
+							e.preventDefault();
+							$("#status-login-geral-form-organizador").html("");
+							
+							var dados_geral = $("#login-geral-form-organizador").serialize();
+							
+							//alert(dados_geral);
+							 
+							
+							$.ajax({
+								
+								type: 'POST',
+								url: '/sistema/valida_geral_organizador.php',
+								data: dados_geral,
+								dataType: 'JSON',
+								success: function(data){
+									
+									//alert(data);
+									if(data[0]==true){
+										
+										window.location.href = data[2];
+										
+									}
+									
+									$("#status-login-geral-form-organizador").html(data[1]);
+									
+								},
+								error: function(XMLHttpRequest, textStatus, errorThrown) { 
+									alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+								}   
+								
+							});
+							
+						});
+
+						
+						
+						</script>
+						
+						
+						</div>
+						</div>
+						
+						<div class="clearfix"></div>
+						
+						 
+						
+						<div class="clearfix"></div>
+ 
+                    </div>
+                     
+                  </div>
+                </div>
+
+		</div>
+
+
+
+ 
+ 
+<!-- Modal -->
+<div class="modal fade" id="modal-login-cadastro" style="z-index:1000000000000" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog  " role="document">
+    <div class="modal-content">
+     
+      <div class="modal-body p-20 p-xs-20">
+	  
+	   
+			<div class="col-md-12 text-center mb-20">
+			<p class="text-center mb-10"><img src="/imagens/logo.png" width="200" /></p>
+			</div>
+			
+			
+			
+			
+			<div id="setor-pre-login"  >
+				
+				
+				<div class="col-md-3">
+				<label class="font-14 font-weight-800">Seu Documento </label>
+				<select name="tipo_documento" id="seletor_tipo_documento" class="form-control">
+				<option value="campo_form_login_cpf">CPF</option>
+				<option value="campo_form_login_passaporte">PASSAPORTE</option>
+				</select>
+				</div>
+				
+				
+				
+				<script>
+				
+					var token_atual = "8d00624cf173446419094e498a5a3626";
+					var url_atual = "/sistema/aux_cadastro_v_int_cpf.php";
+				
+					$("#seletor_tipo_documento").change(function(e){
+						
+						e.preventDefault();
+						
+						var acao = $(this).val();
+						//alert(acao);
+						
+						if(acao=='campo_form_login_cpf'){
+							
+							var url_atual = '/sistema/aux_cadastro_v_int_cpf.php';
+							
+						}else{
+							
+							var url_atual = '/sistema/aux_cadastro_v_int_passaporte.php';
+							
+						}
+						
+						//alert(acao);
+						$(".campo_form_login").hide();
+						$("#"+acao).show();
+						
+						$("#campo_cpf_login_inicio").val("");
+						$("#campo_nascimento_login_inicio").val("");
+						
+						$("#campo_cpf_login_inicio_passaporte").val("");
+						$("#campo_nascimento_login_inicio_passaporte").val("");
+						
+						$("#status-form-login-topo-site").html("");
+						$("#status-form-login-passaporte").html("");
+						
+						chamar_aux_cadastro(token_atual,url_atual);
+						
+					});
+					
+					chamar_aux_cadastro(token_atual,url_atual);
+					
+					function chamar_aux_cadastro(token_atual,url_atual){
+						
+						$.ajax({
+							
+							type: 'POST',
+							url: url_atual,
+							data: {token_atual:token_atual},
+							success: function(data_aux_cadastro){
+								
+								//alert(data_aux_cadastro);
+								$("#deposito_aux_cadastro_v_int").html(data_aux_cadastro);
+								
+							}
+							
+						});
+						
+					}
+				
+				</script>
+				
+				
+				
+				
+				<div id="campo_form_login_cpf" class="campo_form_login">
+				<div class="col-md-9">
+			
+					<div id="status-form-login-topo-site" class="text-center"></div>
+					
+					<form id="form-login-topo-site"  class="reservation-form mb-0  ">
+				
+					<input name="token_cadastro" value="8d00624cf173446419094e498a5a3626" type="hidden" />
+					<input name="id_evento" class="campo-cadastro-id-evento"  value="" type="hidden" />
+					<input name="categoria_cadastro" class="campo-cadastro-categoria" value="" type="hidden" />
+					<input name="tipo_documento" value="cpf" type="hidden" />
+			
+          
+					
+					
+					<div class="col-md-6">
+					<div class="form-group  ">
+					<label class="font-14">Seu CPF </label>
+					<input  id="campo_cpf_login_inicio"  name="cpf"  class="form-control cpf-mask "   type="" required>
+					</div>
+					</div>
+					
+					<div class="col-md-6">
+					<div class="form-group  ">
+					<label class="font-14">Sua data de nascimento</label>
+					<input placeholder="" id="campo_nascimento_login_inicio"  name="senha" required="" class="nascimento-mask form-control ver_senha" aria-required="true" type="text">
+					<span class="hidden" style="position:absolute;right:30px;top:45px;z-index:1000000;cursor: pointer;" aria-hidden="true"><a href="#" class="olho_OFF"><i class="fa fa-eye"></i></a></span>
+					</div>
+					</div>
+					
+					<div class="col-md-12 ">
+					<div class="form-group mb-0 mt-0 text-left">
+					<input name="form_botcheck" class="form-control" value="" type="hidden">
+					<button type="submit" class="btn btn-success  btn-block  btn-circled btn-lg  "  >Prosseguir</button><br/>
+					</div>
+					</div>
+					
+					
+					</div><!---------------------FIM ROW-----------------------------------------> 
+					
+			
+					</form><!---------------------FIM FORM-----------------------------------------> 
+				
+					<script>
+					
+					
+
+					$("#form-login-topo-site").submit(function(e){
+						
+						e.preventDefault();
+						
+						var dados_seletor_login_form = $("#form-login-topo-site").serialize();
+						
+						$("#form-cadastro").trigger("reset");
+						$("#campo_equipe_clube_patrocinador_alerta_msg").html("<p class='font-14'>Digite 'sem', caso não possua</p>");
+						$("#campo_nome_completo_alerta_msg").html("");
+						$("#campo_email_alerta_msg").html("");
+						
+						$("#status-form-login-topo-site").html("");
+						
+						$.ajax({
+							
+							type: 'POST',
+							url: "/sistema/login-setor-inscricao-v-int.php",
+							dataType: 'json',
+							data: dados_seletor_login_form,
+							 
+							success: function(data){
+								
+								//alert(data["status"]);
+								
+								if(data["status"]=="logado_continuar_inscricao"){
+									
+			
+									$("#status-form-login-topo-site").html(data["msg"]);
+
+									
+									var cpf_cliente_logado = data["cpf_cliente"];
+									
+									chamarCategorias(id_evento,cpf_cliente_logado,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-evento");
+
+									$("#setor-pre-login").hide();
+									$("#setor-categorias").show();
+									
+									
+								
+								}else if(data["status"]=="logado_painel_cliente"){
+									
+									$("#status-form-login-topo-site").html(data["msg"]);
+									window.location.href = data["fluxo"];
+									
+									
+								}else if(data["status"]=="login_erro_senha"){
+									
+									$("#status-form-login-topo-site").html(data["msg"]);
+									
+								}else if(data["status"]=="cpf_invalido"){
+									
+									$("#status-form-login-topo-site").html(data["msg"]);
+									
+									
+									
+								}else if(data["status"]=="novo_cliente_continuar_cadastro"){
+									
+									var campo_cpf_login_inserido = data["cpf"];
+									var campo_nascimento_login_inserido = data["nascimento"];
+									var campo_token_cadastro = data["token_cadastro"];
+									var campo_categoria_cadastro = data["categoria_cadastro"];
+									
+									$("#campo_cpf_atual_cadastro_site").val(campo_cpf_login_inserido);
+									$("#campo_nascimento_atual_cadastro_site").val(campo_nascimento_login_inserido);
+									$("#campo_token_atual").val(campo_token_cadastro);
+									$("#campo_categoria_cadastro_atual").val(campo_categoria_cadastro);
+									
+									
+									$("#setor-pre-login").hide();
+									$("#setor-cadastro").show();
+									
+
+					 
+
+									
+								}
+								
+							} ,
+							 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+								
+								alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+								
+							}
+							
+						});
+						
+					});
+
+
+
+					
+					
+					</script>
+				
+				
+				</div><!---------------------FIM CAMPO LOGIN CPF-----------------------------------------> 
+				
+				
+				
+				
+				
+				<div id="campo_form_login_passaporte" class="campo_form_login" style="display:none;">
+				<div class="col-md-9">
+			
+					<div id="status-form-login-passaporte" class="text-center"></div>
+					<form id="form-login-passaporte"  class="reservation-form mb-0  ">
+				
+					<input name="token_cadastro" value="8d00624cf173446419094e498a5a3626" type="hidden" />
+					<input name="id_evento" class="campo-cadastro-id-evento"  value="" type="hidden" />
+					<input name="categoria_cadastro" class="campo-cadastro-categoria" value="" type="hidden" />
+					<input name="tipo_documento" value="passaporte" type="hidden" />
+          
+					
+					
+					<div class="col-md-6">
+					<div class="form-group  ">
+					<label class="font-14">Seu Passaporte </label>
+					<input  id="campo_cpf_login_inicio_passaporte"  name="cpf"  class="form-control cpf-mask_OFF "   type="" required>
+					</div>
+					</div>
+					
+					<div class="col-md-6">
+					<div class="form-group  ">
+					<label class="font-14">Sua data de nascimento</label>
+					<input placeholder="" id="campo_nascimento_login_inicio_passaporte"  name="senha" required="" class="nascimento-mask form-control ver_senha" aria-required="true" type="text">
+					<span class="hidden" style="position:absolute;right:30px;top:45px;z-index:1000000;cursor: pointer;" aria-hidden="true"><a href="#" class="olho_OFF"><i class="fa fa-eye"></i></a></span>
+					</div>
+					</div>
+					
+					<div class="col-md-12 ">
+					<div class="form-group mb-0 mt-0 text-left">
+					<input name="form_botcheck" class="form-control" value="" type="hidden">
+					<button type="submit" class="btn btn-success  btn-block btn-circled  btn-lg  "  >Prosseguir</button><br/>
+					</div>
+					</div>
+					
+					
+
+					</div><!---------------------FIM ROW-----------------------------------------> 
+			
+					</form><!---------------------FIM FORM-----------------------------------------> 
+					
+					
+					<script>
+					
+					$("#form-login-passaporte").submit(function(e){
+	
+						e.preventDefault();
+						
+						var dados_seletor_login_form = $("#form-login-passaporte").serialize();
+						
+						$("#form-cadastro").trigger("reset");
+						$("#campo_equipe_clube_patrocinador_alerta_msg").html("<p class='font-14'>Digite 'sem', caso não possua</p>");
+						$("#campo_nome_completo_alerta_msg").html("");
+						$("#campo_email_alerta_msg").html("");
+						
+						$("#status-form-login-passaporte").html("");
+						
+						$.ajax({
+							
+							type: 'POST',
+							url: "/sistema/login-setor-inscricao-v-int.php",
+							dataType: 'json',
+							data: dados_seletor_login_form,
+							 
+							success: function(data){
+								
+								//alert(data["cpf_cliente"]);
+								
+								if(data["status"]=="logado_continuar_inscricao"){
+									
+									//window.location.href = data["fluxo"];
+									$("#status-form-login-passaporte").html(data["msg"]);
+
+									
+									var cpf_cliente_logado = data["cpf_cliente"];
+									
+									chamarCategorias(id_evento,cpf_cliente_logado,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-evento");
+
+									$("#setor-pre-login").hide();
+									$("#setor-categorias").show();
+									
+									
+								
+								}else if(data["status"]=="logado_painel_cliente"){
+									
+									$("#status-form-login-passaporte").html(data["msg"]);
+									window.location.href = data["fluxo"];
+									
+									
+								}else if(data["status"]=="login_erro_senha"){
+									
+									$("#status-form-login-passaporte").html(data["msg"]);
+									//$("#seletor-inscricao").hide();
+									
+									
+								}else if(data["status"]=="novo_cliente_continuar_cadastro"){
+									
+									var campo_cpf_login_inserido = data["cpf"];
+									var campo_nascimento_login_inserido = data["nascimento"];
+									var campo_token_cadastro = data["token_cadastro"];
+									var campo_categoria_cadastro = data["categoria_cadastro"];
+									
+									$("#campo_cpf_atual_cadastro_site").val(campo_cpf_login_inserido);
+									$("#campo_nascimento_atual_cadastro_site").val(campo_nascimento_login_inserido);
+									$("#campo_token_atual").val(campo_token_cadastro);
+									$("#campo_categoria_cadastro_atual").val(campo_categoria_cadastro);
+									
+									//$("#modal-login-cadastro").modal("hide");
+									//$("#campo-cadastro-tipo").val("pos");
+									
+									$("#setor-pre-login").hide();
+									$("#setor-cadastro").show();
+									
+
+
+									
+								}
+								
+							} ,
+							 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+								
+								alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+								
+							}
+							
+						});
+						
+					});
+
+					
+					
+					</script>
+				
+				
+				</div><!---------------------FIM CAMPO LOGIN PASSAPORTE-----------------------------------------> 
+				
+				
+				<div class="col-md-12 ">
+				<div class="form-group mb-0 mt-0 text-center xs-text-center">
+				<p class="m-0 p-0 font-14">Não conseguiu fazer login? </p>
+				<a class="btn btn-dark btn-xs btn-circled" id="bot-esqueci" href="#">Clique aqui</a>
+				</div>
+				</div>
+				
+				<div class="clearfix"></div>
+				
+				<script>
+				
+				$("#bot-esqueci").click(function(e){
+	
+					e.preventDefault();
+					
+					$("#modal-login-cadastro").modal("hide");
+					
+					$("#modal-esqueci").modal("show");
+					
+				});
+
+					
+				
+				
+				</script>
+			
+			
+			</div><!---------------------FIM SETOR LOGIN-----------------------------------------> 
+			
+			
+			
+			<div id="setor-esqueci-senha" class="text-center" style="display:none;"  >
+				 
+			
+				 <h3>Entre em contato com nosso atendimento:</h3>
+				 <p><a href="https://api.whatsapp.com/send?phone=5582996125331&text=Olá, preciso de ajuda com meu login e senha" target="_blank" class="btn btn-success btn-xl btn-circled"><i class="fa-brands fa-whatsapp"></i> Fale Conosco Via WhatsApp</a></p>
+			
+			
+			</div><!---------------------FIM SETOR ESQUECI-----------------------------------------> 
+			
+			
+			
+			
+			
+			
+			
+			<div id="setor-cadastro" class="text-left" style="display:none;"  >
+				 
+			
+				<div id="deposito_aux_cadastro_v_int"></div>
+			
+				<div class="clearfix"></div>
+			
+			
+			</div><!---------------------FIM SELETOR CADASTRO-----------------------------------------> 
+			
+			
+			
+			<div id="setor-categorias" class="text-center" style="display:none;"  >
+				 
+				<div class="clearfix"></div>
+				 <div id="deposito-categorias-evento">
+				 <div class='alert alert-info'> <i class='fa-solid fa-triangle-exclamation text-info fa-flip '></i> Aguarde! Carregando categorias
+				 </div>
+				</div>
+			
+			</div><!---------------------FIM SETOR CATEGORIAS-----------------------------------------> 
+			
+			
+			
+			<div class="clearfix"></div>
+		   
+		  
+
+     
+    </div>
+  </div>
+</div>
+</div>
+<!-- end wrapper -->
+
+
+
+ 
+
+  
+
+  
+<script src="/js/jquery.maskedinput.min.js"></script>
+
+<script>
+
+
+$("#seletor-inscricao-cadastro-geral").hide();
+
+
+document.getElementById("campo_cpf_checar").addEventListener("input", function (e) {
+    this.value = this.value.replace(/\D/g, ""); // Remove tudo que não for número
+  });
+
+  document.getElementById("campo_cpf_checar").addEventListener("paste", function (e) {
+    e.preventDefault(); // Impede a ação padrão do "colar"
+    let text = (e.clipboardData || window.clipboardData).getData("text");
+    this.value = text.replace(/\D/g, ""); // Mantém apenas números
+  });
+
+
+
+
+
+//$("#campo_cpf_checar").mask('999.999.999-99', {placeholder:'_'});
+
+$(".form_numerico").keyup(function(){
+	
+	$(this).val(this.value.replace(/\D/g, ''));
+	
+});
+
+
+
+	 
+
+
+ 
+
+////////////////////////////////////////////////////////
+
+
+   
+
+</script>
+
+
+
+
+ 
+ 
+
+ 
+<!-- Modal -->
+<div class="modal fade" id="modal-esqueci" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+     
+		<div class="modal-body p-20">
+  
+  
+  <div class="col-md-12 text-center mb-20"><p class="text-center mb-10"><img src="/imagens/logo.png" width="200" /></p></div>
+			<div class="col-md-12 text-center">
+				<div class="p-20 bg-silver-light" style="border-radius:24px;">
+				 
+				<div id="status-esqueci-form-geral"></div>
+				
+				<h3>Entre em contato com nosso atendimento:<a href="https://api.whatsapp.com/send?phone=5582996125331&text=Olá, preciso de ajuda com meu login e senha" target="_blank" class="btn btn-success btn-xl btn-circled"><i class="fa-brands fa-whatsapp"></i> Fale Conosco Via WhatsApp</a></h3>
+				
+				
+			
+			</div>
+			</div>
+			<div class="clearfix"></div>
+  
+		</div>
+		
+  </div>
+</div>
+</div>
+  
+ 
+  <div class="main-content mb-0 pb-0">
+  
+  
+		
+		 
+	
+	 
+		
+  
+	 
+	<!-- Section: Pricing -->
+    <section  class="background_cor_evento"   >
+	
+      <div class="container-liquid p-60 p-xs-20   ">
+		 
+        <div class="section-content">
+			
+		  
+          <div class="row ">
+			
+			<div class="col-md-6 ">
+			
+					<div class="owl-carousel-1col" data-dots="true">
+					
+					<div id="item"><img src="/imagens/eventos/3-circuito-run.png" /></div>
+					
+										
+					</div>
+			
+			</div>
+			 
+			<div class="col-md-6">
+			
+			
+			
+				
+				 
+				
+								
+				
+
+				
+				<div class=" mb-20 text-left" style="">
+						
+										
+					
+					<h1 class="   font-weight-800 p-0 m-0 xs-text-center mb-xs-20 mb-20 font-36 mt-xs-20" style="line-height:1.1;">3º CIRCUITO RUN</h1>
+					
+					
+					
+										
+					
+										
+					<div class="">
+						
+													
+							 
+							<div class="col-md-12 pl-0 mb-20 hidden-md hidden-lg"> 
+							 
+														<a href="#" target="_blank"  class="btn btn-success mb-5 bot-inscricao btn-block btn-liberar botao-off font-24 font-weight-600 text-uppercase btn-circled">Inscreva-se já</a>
+														
+							</div>
+							
+														 
+						
+						 
+											
+						</div>
+					
+										
+					
+					<div class="col-md-6 pl-0">	
+						
+						<div class=" mb-10">
+						<div class="borda-cor-evento-10 ">
+						
+						<i class="fa-solid fa-calendar     " style="color:#000000"></i> <span class="font-14  ">Data:</span> <strong>24.OUT.2026</strong> 
+						
+						</div>
+						</div>
+						
+						<div class=" mb-10">
+						<div class="borda-cor-evento-10 ">
+						
+						<i class="fa-solid fa-clock  " style="color:#000000" ></i> <span class="font-14  ">Hora:</span> <strong>16:00</strong>
+						
+						</div>
+						</div>
+						
+												<div class=" mb-10">
+						<div class="borda-cor-evento-10 ">
+						
+						<i class="fa-solid fa-map-marker   " style="color:#000000" ></i> <span class="font-14  ">Local:</span> <strong>GIRAU DO PONCIANO - AL</strong>
+						
+						</div>
+						</div>
+										
+						 
+					</div>	 
+						 
+					<div class="col-md-6 pl-0">	
+						 
+						
+												<div class=" mb-10">
+						<div class="borda-cor-evento-10 ">
+						
+						<i class="fa-solid fa-file   " style="color:#000000" ></i> <span class="font-14 ">Categorias:</span> <strong>5km</strong>
+						
+						</div>
+						</div>
+												
+						<div class="  mb-10">
+						<div class="borda-cor-evento-10 ">
+						
+						<i class="fa-solid fa-user " style="color:#000000" ></i> <span class="font-14">Organizador:</span> <strong>ELENILSON SILVA </strong>
+						
+						<a href="#" class="btn btn-success btn-xs btn-circled" id="bot-contato2"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+						
+						<a href="/organizador/162" class="btn btn-primary btn-xs hidden btn-circled"><i class="fa fa-user"></i> Abrir Perfil do Organizador</a>
+						
+						</div>
+						</div>
+						
+						 
+						
+						<div class=" mb-10">
+						<div class="borda-cor-evento-10 ">
+						
+												
+							<a href="https://www.instagram.com/circuitorun/" class=" " target="_blank">
+							<i class="fa-brands fa-instagram fa-primary    " style="color:#000000" ></i> <span class="font-14">instagram:</span> <strong>@circuitorun</strong> </a>
+						
+												
+						</div>
+						</div>
+						
+												
+						
+					</div>	
+						
+						
+ 
+						
+					<div class="clearfix"></div><br/>
+						
+											
+						
+										
+					<div class="hidden-xs">
+						
+													
+							 
+							<div class="col-md-12 pl-0"> 
+							 
+														<a href="#" target="_blank"  class="btn btn-success mb-5 bot-inscricao btn-block btn-liberar botao-off font-24 font-weight-600 text-uppercase btn-circled ">Inscreva-se já</a>
+														
+							</div>
+							
+														 
+						
+												
+						</div>
+						
+ 
+												
+						<div class="col-md-6 pl-0">
+						
+							<a href="#" class="btn btn-info mb-5 btn-block btn-liberar botao-off btn-circled" data-toggle="modal" data-target="#modal-mais-detalhes" ><i class="fa fa-file"></i> Saiba mais</a>
+						
+						</div>
+						
+						<div class="col-md-6 pl-0">
+							
+							<a href="#painel_categorias" class="btn btn-info mb-5 btn-block btn-liberar botao-off bot-levar-categorias btn-circled" ><i class="fa-solid fa-list"></i> Confira as Categorias</a>
+						
+						</div>
+						
+						
+						
+						<script>
+						
+							$(".bot-levar-categorias").click(function(e){
+								
+								e.preventDefault();
+								$("#categorias_evento").click();
+								
+								$("html, body").animate({
+									scrollTop: $("#inicio_categoria_valores").offset().top
+								}, 800); // 800ms de duração
+								
+							});
+						
+						
+						</script>
+						
+						
+						
+												
+						
+												
+						
+												
+						
+												
+						
+						<div class="clearfix"></div><br/>
+						<div class="col-md-12 pl-0">
+						<div class="borda-cor-evento-20 ">
+							
+							<h3 class="m-0 p-0  mb-10 font-20 font-weight-800">Instrução para Entrega dos Kits</h3>
+							
+							<p class="font014">Em breve divulgaremos mais informações. O kit costuma ser entregue de 1 a 3 dias antes do evento. Aguarde a comunicação oficial com data, local e horário de entrega ou entre em contato com a organização.</p>
+
+						
+						</div>
+						</div>
+						
+						
+						
+												
+												
+												
+												
+												
+						<div class="clearfix"></div>
+						
+												
+						<div class="col-md-12 pl-0 ">
+							
+							<hr/>
+							<time class="countdown text-black " date-time="2026-10-24 16:00:00" style="--accent: #000000"></time>
+							
+							
+							<script>
+							
+							
+
+class Countdown {
+  constructor(el){
+    this.el = el;
+    this.targetDate = new Date(el.getAttribute("date-time"));
+    this.createCountDownParts()
+    this.countdownFunction();
+    this.countdownLoopId = setInterval(this.countdownFunction.bind(this), 1000)
+  }
+  createCountDownParts(){
+    ["dias", "horas", "minutos", "segundos"].forEach(part => {
+      const partEl = document.createElement("div");
+      partEl.classList.add("part", part);
+      const textEl = document.createElement("div");
+      textEl.classList.add("text");
+      textEl.innerText = part;
+      const numberEl = document.createElement("div");
+      numberEl.classList.add("number");
+      numberEl.innerText = 0;
+      partEl.append(numberEl, textEl);
+      this.el.append(partEl);
+      this[part] = numberEl;
+    })
+  }
+
+  countdownFunction(){
+    const currentDate = new Date();    
+    if(currentDate > this.targetDate) return clearInterval(this.countdownLoopId);
+    const remaining = this.getRemaining(this.targetDate, currentDate);
+    Object.entries(remaining).forEach(([part,value]) => {
+      this[part].style.setProperty("--value", value)
+      this[part].innerText = value
+    })  
+  }
+  
+  getRemaining(target, now){
+    let segundos = Math.floor((target - (now))/1000);
+    let minutos = Math.floor(segundos/60);
+    let horas = Math.floor(minutos/60);
+    let dias = Math.floor(horas/24);
+    horas = horas-(dias*24);
+    minutos = minutos-(dias*24*60)-(horas*60);
+    segundos = segundos-(dias*24*60*60)-(horas*60*60)-(minutos*60);
+    return { dias, horas, minutos, segundos }      
+  }
+
+}
+
+const countdownEls= document.querySelectorAll(".countdown") || [];
+countdownEls.forEach(countdownEl => new Countdown(countdownEl))
+
+							
+							</script>
+						
+						</div>
+						
+						
+												
+						
+				
+				</div>
+				
+				
+				
+				
+				
+				 
+				
+				 
+				
+				</div>
+			
+
+			</div>
+			</div>
+			</div>
+			</section>
+				
+				<div class="clearfix"></div>
+				
+			<section  class=""   >
+			<div class="container   ">
+			<div class="section-content">
+			<div class="row ">	
+				
+				
+
+				
+				
+			
+						<div id="deposito-previsao-tempo"></div>
+				
+				
+						
+			<div class="col-md-12   " id="inicio_categoria_valores" >
+			
+			 
+			<div class="wrapper-tabs-especial">
+			  <nav class="tabs-especial shadow-item ">
+				<div class="tabs-selector"></div>
+				<a href="#" id="categorias_evento" class="active bot-area-evento" id=""><i class="fa-solid fa-file"></i> Valores</a>
+
+								<a href="#" id="premiacao_evento" class="bot-area-evento" ><i class="fa-solid fa-trophy"></i> Premiação</a>
+									
+									
+									
+							  </nav>
+			</div>
+
+<style>
+
+ 
+.wrapper-tabs-especial {
+  text-align: center;
+  margin: auto;
+
+}
+
+.tabs-especial {
+  font-size: 18px;
+  padding: 0px;
+  list-style: none;
+  background: #fff;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+  border: solid 1px #000000;
+  display: inline-block;
+  border-radius: 50px;
+  position: relative;
+  z-index: 1;
+  padding:1vmin;
+
+  a {
+    text-decoration: none;
+    color:  #000000;
+    padding: 10px 20px;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    transition-duration: 0.6s;
+    
+    i {
+      display: inline;
+      max-height: 13px;
+      margin-right: 5px;
+	  
+    }
+
+    &.active {
+      color: #fff !important;
+    }
+  }
+}
+
+.tabs-especial .tabs-selector {
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  border-radius: 50px;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  background: #000000;
+  box-shadow: 0px 2px 10px rgba(0, 207, 96, 0.1);
+}
+
+ 
+</style>
+
+ 
+
+<script>
+
+//script for tabs
+jQuery().ready(function() {
+  initTabs($(".tabs-especial"));
+});
+
+function initTabs(tabs) {
+  shiftSelector(tabs);
+
+  $(window).resize(function() {
+    shiftSelector(tabs);
+  });
+
+  tabs.on("click", "a", function(e) {
+    e.preventDefault();
+    tabs.find("a").removeClass("active");
+    $(this).addClass("active");
+
+    shiftSelector(tabs);
+  });
+}
+
+function shiftSelector(tabs) {
+  let activeItem = tabs.find(".active");
+  let activeWidth = activeItem.innerWidth();
+  let activeHeight = activeItem.innerHeight();
+  let itemPos = activeItem.position();
+  tabs.find(".tabs-selector").css({
+    left: itemPos.left + "px",
+    width: activeWidth + "px",
+    height: activeHeight + "px",
+    top: itemPos.top + "px"
+  });
+
+ 
+}
+
+
+</script>
+			
+ 
+
+			
+			
+			</div>
+			
+			
+			 
+			
+			<div id="painel_categorias_evento" class="col-md-12 mt-20 mb-20 painel-area-evento " >
+				
+				 
+				<h3 class="text-sucess hidden  m-0 p-0 text-uppercase"><i class="fa fa-trophy"></i> Valores</h3>
+
+								<div class="p-20 p-xs-10   mb-10 borda-lateral-evento " style="background-color:#f4f4f4; border-radius:24px; ">	
+				<div class="col-md-12"><h4 class="m-0 p-0  font-weight-800"> 5km Corrida / Caminhada</h4></div>
+					
+				<div class=" "> 
+					
+								
+				<div class="col-md-3 ">
+				<div class="borda-cor-evento-10 mb-10" >
+				
+				<p class="font-14 m-0 p-0 font-weight-800 " style="line-height:1.1">
+				5km Feminino 16-29				</p> 
+				
+								
+				
+								
+								<p class="font-weight-600 m-0 p-0" style="line-height:1.1"><span class="font-12">R$</span>60,00</p> 
+				
+								
+				
+				
+				<div class="clearfix"></div>
+				
+				</div>
+				</div>
+				
+				
+								
+				<div class="col-md-3 ">
+				<div class="borda-cor-evento-10 mb-10" >
+				
+				<p class="font-14 m-0 p-0 font-weight-800 " style="line-height:1.1">
+				5km Feminino 30-39				</p> 
+				
+								
+				
+								
+								<p class="font-weight-600 m-0 p-0" style="line-height:1.1"><span class="font-12">R$</span>60,00</p> 
+				
+								
+				
+				
+				<div class="clearfix"></div>
+				
+				</div>
+				</div>
+				
+				
+								
+				<div class="col-md-3 ">
+				<div class="borda-cor-evento-10 mb-10" >
+				
+				<p class="font-14 m-0 p-0 font-weight-800 " style="line-height:1.1">
+				5km Feminino 40-49				</p> 
+				
+								
+				
+								
+								<p class="font-weight-600 m-0 p-0" style="line-height:1.1"><span class="font-12">R$</span>60,00</p> 
+				
+								
+				
+				
+				<div class="clearfix"></div>
+				
+				</div>
+				</div>
+				
+				
+								
+				<div class="col-md-3 ">
+				<div class="borda-cor-evento-10 mb-10" >
+				
+				<p class="font-14 m-0 p-0 font-weight-800 " style="line-height:1.1">
+				5km Feminino 50-59				</p> 
+				
+								
+				
+								
+								<p class="font-weight-600 m-0 p-0" style="line-height:1.1"><span class="font-12">R$</span>60,00</p> 
+				
+								
+				
+				
+				<div class="clearfix"></div>
+				
+				</div>
+				</div>
+				
+				
+								
+				<div class="col-md-3 ">
+				<div class="borda-cor-evento-10 mb-10" >
+				
+				<p class="font-14 m-0 p-0 font-weight-800 " style="line-height:1.1">
+				5km Feminino 60+				</p> 
+				
+								
+				
+								
+								<p class="font-weight-600 m-0 p-0" style="line-height:1.1"><span class="font-12">R$</span>30,00</p> 
+				
+								
+				
+				
+				<div class="clearfix"></div>
+				
+				</div>
+				</div>
+				
+				
+								
+				<div class="col-md-3 ">
+				<div class="borda-cor-evento-10 mb-10" >
+				
+				<p class="font-14 m-0 p-0 font-weight-800 " style="line-height:1.1">
+				5km Masculino 16-29				</p> 
+				
+								
+				
+								
+								<p class="font-weight-600 m-0 p-0" style="line-height:1.1"><span class="font-12">R$</span>60,00</p> 
+				
+								
+				
+				
+				<div class="clearfix"></div>
+				
+				</div>
+				</div>
+				
+				
+								
+				<div class="col-md-3 ">
+				<div class="borda-cor-evento-10 mb-10" >
+				
+				<p class="font-14 m-0 p-0 font-weight-800 " style="line-height:1.1">
+				5km Masculino 30-39				</p> 
+				
+								
+				
+								
+								<p class="font-weight-600 m-0 p-0" style="line-height:1.1"><span class="font-12">R$</span>60,00</p> 
+				
+								
+				
+				
+				<div class="clearfix"></div>
+				
+				</div>
+				</div>
+				
+				
+								
+				<div class="col-md-3 ">
+				<div class="borda-cor-evento-10 mb-10" >
+				
+				<p class="font-14 m-0 p-0 font-weight-800 " style="line-height:1.1">
+				5km Masculino 40-49				</p> 
+				
+								
+				
+								
+								<p class="font-weight-600 m-0 p-0" style="line-height:1.1"><span class="font-12">R$</span>60,00</p> 
+				
+								
+				
+				
+				<div class="clearfix"></div>
+				
+				</div>
+				</div>
+				
+				
+								
+				<div class="col-md-3 ">
+				<div class="borda-cor-evento-10 mb-10" >
+				
+				<p class="font-14 m-0 p-0 font-weight-800 " style="line-height:1.1">
+				5km Masculino 50-59				</p> 
+				
+								
+				
+								
+								<p class="font-weight-600 m-0 p-0" style="line-height:1.1"><span class="font-12">R$</span>60,00</p> 
+				
+								
+				
+				
+				<div class="clearfix"></div>
+				
+				</div>
+				</div>
+				
+				
+								
+				<div class="col-md-3 ">
+				<div class="borda-cor-evento-10 mb-10" >
+				
+				<p class="font-14 m-0 p-0 font-weight-800 " style="line-height:1.1">
+				5km Masculino 60+				</p> 
+				
+								
+				
+								
+								<p class="font-weight-600 m-0 p-0" style="line-height:1.1"><span class="font-12">R$</span>30,00</p> 
+				
+								
+				
+				
+				<div class="clearfix"></div>
+				
+				</div>
+				</div>
+				
+				
+					
+				
+				</div>
+				 <div class="clearfix"></div>
+				 
+				 
+				 </div>
+				
+								
+				
+				
+
+				
+				
+				
+			
+			</div>
+			 
+				
+				
+				
+				
+				
+				
+				
+												
+				
+				<div id="painel_premiacao_evento" class="col-md-12 mt-20 mb-20 painel-area-evento" >
+					
+					<h3 class="text-sucess hidden  m-0 p-0 text-uppercase"><i class="fa fa-trophy"></i> Premiação</h3>
+					<div class="p-40 p-xs-10   borda-lateral-evento " style="background-color:#f4f4f4; border-radius:24px;   ">
+					<p class="m-0 p-0">Troféu para os primeiros colocados no Geral e Faixas Etárias<br>Medalhas para todos os participantes</p>					</div>
+				
+				</div>
+				 
+								
+				
+				
+				
+				 
+				
+				
+									
+ 
+										
+										
+
+
+ 
+			
+									<div class="col-md-12 mb-20">
+			<div class="borda-cor-evento-20 ">
+			
+
+			
+			
+				<h2 class="  text-center mb-20 m-0 p-0 text-uppercase">  No 3º CIRCUITO RUN <strong>Teremos</strong></h2>
+			
+				
+				
+				
+								
+				<div class="col-md-4">
+				
+				<p class='m-0 p-0'><i class='fa fa-car  ' style='color:#000000   '></i> Carro e/ou Motos de Apoio</p><p class='m-0 p-0'><i class='fa-solid fa-apple-whole  ' style='color:#000000   '></i> Mesa de Frutas</p><p class='m-0 p-0'><i class='fa-solid fa-glass-water  ' style='color:#000000   '></i> Hidratação no Percurso</p><p class='m-0 p-0'><i class='fa fa-medal  ' style='color:#000000   '></i> Medalha</p><p class='m-0 p-0'><i class='fa-solid fa-guitar  ' style='color:#000000   '></i> Banda/Música</p>				
+				</div>
+				
+				<div class="col-md-4">
+				
+				<p class='m-0 p-0'><i class='fa fa-volume-high   ' style='color:#000000   '></i> Sistema de Som</p><p class='m-0 p-0'><i class='fa-solid fa-microphone   ' style='color:#000000   '></i> Locutor</p><p class='m-0 p-0'><i class='fa-solid fa-camera   ' style='color:#000000   '></i> Fotógrafo</p><p class='m-0 p-0'><i class='fa-solid fa-dungeon   ' style='color:#000000   '></i> Pórtico</p><p class='m-0 p-0'><i class='fa-solid fa-tablet-screen-button   ' style='color:#000000   '></i> Backdrop</p>				
+				</div>
+				
+				
+				<div class="col-md-4">
+				
+				<p class='m-0 p-0'><i class='fa fa-list-ol   ' style='color:#000000   '></i> Número de Peito</p><p class='m-0 p-0'><i class='fa-solid fa-trophy   ' style='color:#000000   '></i> Troféu</p><p class='m-0 p-0'><i class='fa-solid fa-stopwatch   ' style='color:#000000   '></i> Cronometragem Real Timing</p><p class='m-0 p-0'><i class='fa-solid fa-microchip   ' style='color:#000000   '></i> Chip de Cronometragem</p>				
+				</div>
+				
+				
+				<div class="clearfix"></div>
+				 
+				
+				
+				 
+				
+			</div>
+			</div>
+			
+			<div class="clearfix"></div>
+						  
+              
+			   
+			
+ 
+			
+			</div>
+
+             
+          </div>
+		   
+        </div>
+      </div>
+    </section>
+	
+	
+	<style>
+
+.info-cards-container {
+  display: flex;
+  flex-wrap: wrap; /* Para quebrar linha se faltar espaço */
+  gap: 2px;        /* Espaçamento entre os cards */
+  justify-content: center; /* Centraliza os cards */
+}
+	
+.info-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: transform  0.3s ease;
+}
+.info-card i {
+  font-size: 38px;
+  margin-bottom: 5px;
+  color: #5bc0de;
+}
+.info-card span {
+  font-size: 16px;
+  font-weight: bold;
+  line-height:18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.info-card:hover {
+	
+	background: #f4f4f4 !important;
+	transform: scale(1.1); 
+	
+}
+	
+	</style>
+	
+	
+	<script>
+	
+		$(".painel-area-evento").hide();
+		$("#painel_categorias_evento").show();
+			
+		$(".bot-area-evento").click(function(e){
+					
+			e.preventDefault();
+					
+			var id_area = this.id;
+ 
+					
+		 // painel atual some com animação
+			$(".painel-area-evento:visible").fadeOut(200, function() {
+
+				// quando terminar de sumir, aparece o novo
+				$("#painel_" + id_area).fadeIn(200);
+			});
+			
+			 
+					
+		});
+				
+				
+			
+			</script>
+	
+		
+		<div id="deposito_mosaico_atletas"></div>
+	 
+		<section class="hidden">
+		<div class="container pt-0 ">
+		<div class="col-md-4 col-md-offset-4">
+		
+								
+													
+							 
+							<div class="col-md-12 pl-0"> 
+							 
+														<a href="#" target="_blank"  class="btn btn-success mb-5 bot-inscricao btn-block btn-liberar botao-off font-24 font-weight-600 text-uppercase ">Inscreva-se já</a>
+														
+							</div>
+							
+														 
+						
+						 
+								
+		</div>
+		</div>
+		</section>
+		
+		
+	 
+
+	 
+		
+	<section id="pricing"  style="background-color:#fff;">
+	
+	<div class="container   ">
+	<div class="row">
+	
+	<div class="borda-cor-evento-20 ">
+			 
+	<div class="col-md-12 text-center mb-20">
+	
+		<h2 class="text-sucess text-center mb-20 m-0 p-0 text-uppercase">  Dúvidas <strong>Frequentes</strong></h2>
+		
+							
+			<a href="#" class="btn btn-info bot-faq-categ bot-faq-num-1 mb-5" id="1" >Inscrições</a>
+		
+							
+			<a href="#" class="btn btn-info bot-faq-categ bot-faq-num-2 mb-5" id="2" >Kits</a>
+		
+							
+			<a href="#" class="btn btn-info bot-faq-categ bot-faq-num-3 mb-5" id="3" >Evento</a>
+		
+							
+			<a href="#" class="btn btn-info bot-faq-categ bot-faq-num-4 mb-5" id="4" >Resultados e Premiação</a>
+		
+							
+			<a href="#" class="btn btn-info bot-faq-categ bot-faq-num-5 mb-5" id="5" >Saúde e Segurança</a>
+		
+							
+			<a href="#" class="btn btn-info bot-faq-categ bot-faq-num-6 mb-5" id="6" >Sistema</a>
+		
+					
+	</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-1">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Como faço minha inscrição?</h3>
+			
+			<p class="m-0 p-0">Clique em "Inscreva-se Já", escolha sua categoria e preencha seus dados para concluir o pagamento.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-1">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Posso me inscrever no dia do evento?</h3>
+			
+			<p class="m-0 p-0">As inscrições estão sujeitas à disponibilidade de vagas, que geralmente acabam bem antes do dia do evento. Consulte a organização para verificar outras disponibilidades.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-1">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Posso transferir minha inscrição para outra pessoa?</h3>
+			
+			<p class="m-0 p-0">Verifique as regras de transferência descritas no regulamento do evento.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-1">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Posso alterar minha categoria após a inscrição?</h3>
+			
+			<p class="m-0 p-0">Em alguns casos é possível, desde que haja vagas disponíveis e dentro do prazo estabelecido pela organização.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-1">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Quais formas de pagamento são aceitas?</h3>
+			
+			<p class="m-0 p-0">Cartão de crédito, PIX, boleto e demais opções disponibilizadas no sistema.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-2">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Quando será a entrega dos kits?</h3>
+			
+			<p class="m-0 p-0">Normalmente, entre 1 e 3 dias antes do evento. As informações oficiais serão divulgadas pela organização, podendo ter prazos e dias específicos.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-2">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Como retirar meu kit?</h3>
+			
+			<p class="m-0 p-0">Compareça ao local e horário informados pela organização levando o comprovante de inscrição e/ou um documento oficial com foto.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-2">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Posso retirar o kit de outra pessoa?</h3>
+			
+			<p class="m-0 p-0">Sim, mediante apresentação de uma foto do documento de identidade do participante ou do comprovante de inscrição.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-2">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">O que acompanha o kit do atleta?</h3>
+			
+			<p class="m-0 p-0">Consulte a seção "Teremos" para verificar os itens inclusos em cada evento. Verifique também as informações internas do evento, redes sociais e regulamento.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-3">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Qual o horário de largada?</h3>
+			
+			<p class="m-0 p-0">O horário está disponível na página do evento e pode sofrer ajustes comunicados pela organização.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-3">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">O percurso será sinalizado?</h3>
+			
+			<p class="m-0 p-0">Dependendo do tipo de evento, sim. O percurso contará com sinalização e equipe de apoio. Alguns eventos, como trekking e corrida de aventura, podem não possuir sinalização.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-3">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Haverá pontos de hidratação?</h3>
+			
+			<p class="m-0 p-0">Quando houver, essa informação será divulgada previamente pela organização da prova.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-3">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">O evento acontecerá mesmo com chuva?</h3>
+			
+			<p class="m-0 p-0">Salvo condições extremas que coloquem os participantes em risco, o evento será realizado normalmente.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-4">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Como consulto meu resultado?</h3>
+			
+			<p class="m-0 p-0">Os resultados poderão ser publicados no telão, QR Code, site e demais locais disponibilizados pela organização e pela equipe de cronometragem após a conclusão da prova.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-4">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Receberei certificado de participação?</h3>
+			
+			<p class="m-0 p-0">Quando disponibilizado pela organização, o certificado poderá ser acessado pelo sistema de resultados.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-4">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Como funciona a premiação?</h3>
+			
+			<p class="m-0 p-0">A premiação segue as regras descritas no regulamento e na aba "Premiação".</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-5">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">É obrigatório apresentar atestado médico?</h3>
+			
+			<p class="m-0 p-0">Consulte o regulamento específico de cada evento.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-5">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Haverá ambulância no local?</h3>
+			
+			<p class="m-0 p-0">Quando informado na estrutura do evento.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-5">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">O participante está segurado durante a prova?</h3>
+			
+			<p class="m-0 p-0">Os eventos que possuem seguro atleta informam essa cobertura na página do evento.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-6">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Esqueci minha senha. Como recuperar?</h3>
+			
+			<p class="m-0 p-0">Utilize a opção "Esqueci minha senha" na área de login.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-6">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Como acompanho minhas inscrições?</h3>
+			
+			<p class="m-0 p-0">Acesse a área de login, entre em sua conta e clique em "Meus Eventos" para visualizar todas as inscrições.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-6">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Não recebi o comprovante de inscrição. O que fazer?</h3>
+			
+			<p class="m-0 p-0">Verifique sua caixa de spam. Caso não encontre, faça login no site, acesse "Meus Eventos", selecione a inscrição desejada e clique em "Comprovante de Inscrição". Persistindo o problema, entre em contato com o suporte.</p>
+		
+		</div>
+		</div>
+	
+	
+			
+		<div class="col-md-12 mb-10 painel-faqs painel-faqs-6">
+		<div class="p-20 borda-lateral-evento " style="border-radius:24px;" >
+			
+			<h3 class="m-0 p-0 font-weight-800">Como entro em contato com a organização?</h3>
+			
+			<p class="m-0 p-0">Utilize os contatos informados na página do evento ou o botão de WhatsApp.</p>
+		
+		</div>
+		</div>
+	
+	
+		
+	<div class="clearfix"></div>
+	
+	</div>
+	
+	</div>
+	</div>
+	
+	</section>
+	
+		
+	
+	<script>
+	
+	$(".bot-faq-categ").click(function(e){
+		
+		e.preventDefault();
+		
+		var id = this.id;
+		
+		$(".painel-faqs").hide();
+		$(".painel-faqs-"+id).show();
+		
+		$(".bot-faq-categ").removeClass("btn-dark");
+		$(".bot-faq-categ").addClass("btn-info");
+		
+		$(this).removeClass("btn-info");
+		$(this).addClass("btn-dark");
+		
+		//alert(id);
+		
+	});
+	
+	$(".bot-faq-num-1").click();
+	
+	
+	</script>
+	
+	
+    
+  <div class="bottom-bar">
+
+    <!-- CONTAGEM -->
+    <a   class="bottom-item countdown_rodape">
+        <div class="contador-box-rodape">
+            <span class="small">Faltam</span>
+            <span class="numero">20</span>
+            <span class="small">dias</span>
+        </div>
+    </a>
+
+    <!-- INSCRIÇÃO -->
+    
+                    <a href="#" class="bottom-item inscricao bot-inscricao botao-off">
+        
+                <i class="fa-solid fa-file fa-1x"></i>
+                <span>Inscreva-se</span>
+            </a>
+
+    
+    <!-- WHATSAPP -->
+    <a href="#" id="bot-contato" class="bottom-item whatsapp">
+        <i class="fa-brands fa-whatsapp fa-1x"></i>
+        <span>WhatsApp</span>
+    </a>
+
+</div>
+
+
+<style>
+
+ 
+
+.bottom-bar{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:50px;
+    display:flex;
+    z-index:9999999;
+}
+
+.bottom-item{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:#FFF;
+    font-weight:800;
+    font-size:15px;
+}
+
+.bottom-item i{
+    margin-bottom:0px;
+	font-size:16px;
+}
+
+.countdown_rodape{
+    background:#5bc0de;
+}
+
+.inscricao{
+    background:#37b34a;
+}
+
+.whatsapp{
+    background:#0b7a3c;
+}
+
+.contador-box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    line-height:1;
+}
+
+.contador-box-rodape .small{
+    font-size:15px;
+    font-weight:300;
+}
+
+.contador-box-rodape .numero{
+    font-size:28px;
+    font-weight:900;
+    margin:3px 0;
+}
+
+.bottom-item  {
+    transition: opacity .35s ease-in-out;
+}
+
+.bottom-item:hover {
+    opacity:.8;
+	color:#fff !important;
+}
+
+</style>
+
+ 
+  </div>
+  <!-- end main-content -->
+  
+   
+
+
+<div class="modal fade" id="modal-mais-detalhes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     
+      <div class="modal-body p-40 p-xs-20">
+	  
+	   
+       
+	    <p class="m-0 p-0">Vem aí o 3º Circuito Run</p>		   
+		  
+		  
+		   
+
+	   
+      </div>
+      <div class="modal-footer">
+	  
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Fechar </button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- end wrapper -->
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-login-cadastro-terceiro" style="z-index:1000000000000" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+     
+      <div class="modal-body p-40 p-xs-20">
+	  
+	   
+			<div class="col-md-12 text-center mb-20"><p class="text-center mb-10"><img src="/imagens/logo.png" width="200" /></p></div>
+			
+			
+			
+			
+			<div id="setor-pre-login-terceiro"  >
+				 
+			
+				<div id="status-form-login-terceiro" ></div>
+				
+				<form id="form-login-terceiro"  class="reservation-form mb-0  ">
+				
+				<input name="token" value="e08b6b19a94d8838d9cad74dcdb8b7af" type="hidden" />
+				<input name="id_evento" value="529" type="hidden" />
+				<input name="cpf_master" value="" type="hidden" />
+			
+          
+				<div class="row">
+				
+					<div class="col-md-6">
+						<div class="form-group  ">
+						<label class="font-14">CPF da pessoa</label>
+						<input  id="campo_cpf_terceiro"  name="cpf"  class="form-control cpf-mask "   type="" required>
+						</div>
+					</div>
+					
+					<div class="col-md-6">
+						<div class="form-group  ">
+						<label class="font-14">Data de Nascimento da pessoa</label>
+						<input placeholder="" id="campo_nascimento_terceiro"  name="nascimento" required="" class="form-control ver_senha nascimento-mask " aria-required="true" type="text">
+						<span class="hidden" style="position:absolute;right:30px;top:45px;z-index:1000000;cursor: pointer;" aria-hidden="true"><a href="#" class="olho_OFF"><i class="fa fa-eye"></i></a></span>
+						</div>
+					</div>
+					
+					<div class="col-md-12">
+						<div class="form-group mb-0 mt-0 text-left">
+						<input name="form_botcheck" class="form-control" value="" type="hidden">
+						<button type="submit" class="btn btn-success  btn-block   btn-lg  "  >Prosseguir</button><br/>
+						
+						</div>
+					</div>
+					
+					
+
+				</div><!---------------------FIM ROW-----------------------------------------> 
+			
+				</form><!---------------------FIM FORM-----------------------------------------> 
+			
+			
+			</div><!---------------------FIM SETOR LOGIN-----------------------------------------> 
+			
+			
+			<div id="setor-atleta-terceiro" class="text-center" style="display:none;">
+			
+				
+				<p>Você está cadastrando o atleta:</p>
+				<div id="campo_nome_atleta_terceiro" class="font-weight-800"></div>
+				
+				<a href="#" id="bot-confirma-terceiro" class="btn btn-success">Confirmar</a>
+				
+				<input id="campo_id_atleta_terceiro" name="" type="hidden" value="" >
+			
+			
+			
+			</div>
+			
+			
+			
+			
+			
+			<div id="setor-cadastro-terceiro" class="" style="display:none;"  >
+				 
+			
+			<form id="form-cadastro-terceiro">
+
+			<input type="hidden" id="campo-cadastro-tipo" name="tipo" value="dependencia">
+			<input type="hidden" name="token" value="8d00624cf173446419094e498a5a3626">
+			<input type="hidden" name="id_cliente_dependencia" value="0">
+			<input type="hidden" name="id_evento" value="529">
+
+			<div class="form-group col-md-12">
+			<input name="nome_completo" id="campo_nome_completo_terceiro" style="border:1px solid #333;" class="form-control bg-nao-preenchido" type="text" placeholder="Nome Completo" value="" required>
+			<div id="campo_nome_completo_terceiro_alerta_msg"></div>
+			</div>
+
+			<div class="form-group col-md-12">
+			<input name="email" id="campo_email_terceiro" class="form-control bg-nao-preenchido" style="border:1px solid #333" type="email" value="" placeholder="E-mail" required>
+			<div id="campo_email_terceiro_alerta_msg"></div>
+			</div>
+
+			<div class="form-group col-md-6">
+			<input name="cpf" id="campo_cpf_atual_terceiro" class="form-control bg-preenchido cpf-mask" style="border:1px solid #333" type="text" placeholder="CPF" value="" readonly>
+			</div>
+
+			<div class="form-group col-md-6">
+			<input name="nascimento" id="campo_nascimento_atual_terceiro" style="border:1px solid #333" class="form-control bg-preenchido nascimento-mask " type="text" placeholder="Data de Nascimento" >
+			</div>
+			
+			<div class="clearfix"></div>
+
+			<div class="form-group col-md-12">
+			<input name="equipe_clube_patrocinador" style="border:1px solid #333" placeholder="Equipe/Clube/Patrocinador" id="campo_equipe_clube_patrocinador_terceiro" class="form-control bg-nao-preenchido " type="text" required>
+			<div id="campo_equipe_clube_patrocinador_terceiro_alerta_msg">
+			<p class='font-14'>Digite 'sem', caso não possua</p>
+			</div>
+			</div>
+
+			<div class="form-group col-md-6">
+			<select name="genero" id="genero_terceiro" style="border:1px solid #333" class="form-control bg-nao-preenchido campo_seletor_cadastro" required>
+			<option value="">Sexo</option>
+			<option value="Masculino">Masculino</option>
+			<option value="Feminino">Feminino</option>
+			</select>
+			</div>
+
+			<div class="form-group col-md-6">
+			<input id="campo_telefone_terceiro" name="telefone" style="border:1px solid #333" placeholder="Telefone(Whatsapp)" class="form-control bg-nao-preenchido telefone-mask " type="text" required>
+			</div>
+			
+			<div class="clearfix"></div>
+
+			<div class="form-group col-md-6">
+			<select name="estado" id="seletor_estado_terceiro" style="border:1px solid #333" class="form-control bg-nao-preenchido campo_seletor_cadastro" required>
+			<option value="">Selecione o Estado</option>
+						<option value="">
+						</option>
+						<option value="AL">
+			Alagoas			</option>
+						<option value="AP">
+			Amapá			</option>
+						<option value="AM">
+			Amazonas			</option>
+						<option value="BA">
+			Bahia			</option>
+						<option value="CE">
+			Ceará			</option>
+						<option value="DF">
+			Distrito Federal			</option>
+						<option value="ES">
+			Espírito Santo			</option>
+						<option value="GO">
+			Goiás			</option>
+						<option value="MA">
+			Maranhão			</option>
+						<option value="MT">
+			Mato Grosso			</option>
+						<option value="MS">
+			Mato Grosso do Sul			</option>
+						<option value="MG">
+			Minas Gerais			</option>
+						<option value="PA">
+			Pará			</option>
+						<option value="PB">
+			Paraíba			</option>
+						<option value="PR">
+			Paraná			</option>
+						<option value="PE">
+			Pernambuco			</option>
+						<option value="PI">
+			Piauí			</option>
+						<option value="RJ">
+			Rio de Janeiro			</option>
+						<option value="RN">
+			Rio Grande do Norte			</option>
+						<option value="RS">
+			Rio Grande do Sul			</option>
+						<option value="RO">
+			Rondônia			</option>
+						<option value="RR">
+			Roraima			</option>
+						<option value="SC">
+			Santa Catarina			</option>
+						<option value="SP">
+			São Paulo			</option>
+						<option value="SE">
+			Sergipe			</option>
+						<option value="TO">
+			Tocantins			</option>
+						</select>
+			</div>
+
+			<div class="form-group col-md-6">
+			<select name="cidade" class="form-control bg-nao-preenchido campo_seletor_cadastro" style="border:1px solid #333" id="seletor_cidades_terceiro" required>
+			<option value="">Selecione a Cidade</option>
+			</select>
+			</div>
+
+			<div class="form-group col-md-12">
+			<input name="instagram" id="instagram" style="border:1px solid #333" class="form-control  " type="text" placeholder="Instagram(opcional)" value="">
+			</div>
+
+			<div class="form-group col-md-12">
+			<div class=" " style="background-color:#f1f1f1">
+			<div style="padding:20px;height:150px;width:100%;border:1px solid #ccc;font:12px;overflow:auto;">
+			
+			<p class="font-12 m-0 p-0">
+			<strong>TERMOS DE PARTICIPAÇÃO E RESPONSABILIDADE:</strong>  <br/>
+			Ao concordar com este Termo de Responsabilidade e Participação você declara que leu no endereço eletrônico: www.realtiming.com.br/cadastro/..., e expressamente concorda com a Política de Privacidade e os Termos de Uso do Sistema. Na hipótese da não concordância integral, não prossiga com seu cadastro e/ou inscrição. 
+			<br/><br/>
+			<strong>CONSIDERANDO QUE:</strong> <br/>
+			- A REAL TIMING atua como INTERMEDIADORA na venda de INSCRIÇÕES para eventos, o USUÁRIO que tem interesse em adquirir uma INSCRIÇÃO para um evento que está sendo comercializado pelo site da REAL TIMING, terá que criar um usuário com uma conta no sistema REAL TIMING e declarar ter conhecimento e aceitar as seguintes cláusulas e condições: 
+			<br/><br/>
+			<strong>TERMO DE USO PARA O USUÁRIO QUE DESEJA SE INSCREVER NO EVENTO</strong> <br/>
+			Entendo e concordo que, para a boa realização dos serviços prestados pelo site da Real Timing aos organizadores, bem como aos participantes, a informação e consequente comunicação comigo é fator determinante e fundamental, sendo inequívoco e, desde já, expressamente autorizo e estou ciente que: 
+			<br/><br/>
+			- Todo o conteúdo como textos, fotos e vídeos dos eventos publicados no site da REAL TIMING são de responsabilidade integral do ORGANIZADOR do evento, cujos dados constam na página do evento e que a REAL TIMING. O ORGANIZADOR do evento é o único responsável pelo planejamento, organização e realização do evento, sendo ele quem define as contratações, programação, local de realização, descrição, datas, lotes, valores das inscrições, limite de inscritos disponíveis, idades mínimas e máximas, descontos eventuais que podem ser oferecidos entre outros. 
+			<br/><br/>
+			- Qualquer alteração na programação do evento, seja troca de datas, local ou até o seu cancelamento, bem como quaisquer ocorrências durante o EVENTO, são de responsabilidade única e exclusiva do ORGANIZADOR. 
+			<br/><br/>
+			- Estou ciente que os valores relativos à minha inscrição, em decorrência da titularidade do organizador desse evento, a ele serão transferidos, podendo tal ato ocorrer antes, durante ou depois da realização do evento, sendo certo que na hipótese de cancelamento, adiamento, ou mesmo qualquer divergência relativa à sua execução, será sempre de responsabilidade exclusiva do Organizador o consequente reembolso bem como as demais cominações legais, se houverem, isentando a Real Timing de qualquer responsabilidade;  
+			<br/><br/>
+			- Que todas as informações por você declaradas no cadastro do sistema e na compra da inscrição em eventos através do site da REAL TIMING são verdadeiras e estão de acordo com as leis vigentes. 
+			<br/><br/>
+			- Declaro, expressamente, minha total ciência que, na hipótese das minhas informações cedidas serem utilizadas em qualquer contrato, item de merchandising, propriedade de arena, arquivo de participação, lista de inscritos, certificado ou arquivo de resultado, será de minha exclusiva responsabilidade, a verificação e a correção das mesmas apontadas e utilizadas pelos Organizadores, Sistema de Inscrições e seus parceiros comerciais, não imputando-lhes, em momento algum, qualquer responsabilidade por consequências que possam advir destes erros ou omissões da minha parte, sendo certo que em caso de divergência destas informações, qualquer correção será de minha inteira, ampla e exclusiva responsabilidade e deverá ser solicitada, sempre por escrito, via o canal "Fale Conosco" ou WhatsApp da Real Timing ou do evento; Cabendo a mim, contatar a Real Timing, quando da ocorrência de qualquer dúvida ou mesmo simples correção ou pedido de informação, relacionadas. Caso não ocorra, da minha parte, nenhum tipo de comunicado nos termos supra citados, efetivamente considero que as referidas informações utilizadas são verdadeiras e corretas. 
+			<br/><br/>
+			- Que estou ciente e concordo com os REGULAMENTOS e TERMOS DE RESPONSABILIDADES dos eventos divulgados no site da REAL TIMING dos quais for participar. 
+			<br/><br/>
+			- Que possuo as habilidades técnicas e estou apto fisicamente para participar dos eventos que comprar na REAL TIMING, isentando a REAL TIMING e o ORGANIZADOR de qualquer problema que possa ocorrer pelo fato da participação no mesmo. Para a hipótese de você estar efetuando a inscrição em nome de terceiros, que você possui todos os direitos de representação de terceiros, possuindo autorização do terceiro para fornecimento dos dados de cadastro e, nos casos de realização de compras e inscrições para eles, declarando que o terceiro que participará do evento possui habilidades técnicas e está apto fisicamente a participar dos eventos que comprar na REAL TIMING, isentando a REAL TIMING e o ORGANIZADOR de qualquer problema que possa ocorrer pelo fato da participação no mesmo. Possuo a expressa autorização deste amigo para tais atos incluindo-se ai aquelas ligadas à lei Lei Geral de Proteção de Dados em particular, porem não restritas a esta, e às legislações ligadas ao uso de informações cadastrais de terceiros; Assumo em meu nome e dos amigos por mim incluídos nesta lista, cadastro ou inscrição que os mesmos estão cientes e concordam plenamente com todos os Termos e Políticas do site da REAL TIMING bem como do regulamento do evento;  
+			<br/><br/>
+			- Que autorizo o uso do seu direito de imagem, e dos terceiros por você inscritos e dos quais você possui autorização, para promoção de divulgação do evento, pelo ORGANIZADOR, REAL TIMING e patrocinadores. Como também todo o conteúdo como textos, fotos e vídeos dos eventos publicados na REAL TIMING, Organizadores seus parceiros comerciais, bem como a todos, pessoa física ou jurídica, necessariamente envolvidos na cadeia formada para a realização do evento, a enviar e compartilhar entre si ou com terceiros, sempre nos limites da Lei, os dados por mim fornecidos por qualquer meio eletrônico ou não; Desde já autorizo, a qualquer tempo, a utilização de minha imagem, endereços de correspondência eletrônico ou físico e direitos de arena pelos Organizadores, seus parceiros comerciais e a Real Timing  para realização, divulgação e ou veiculação de campanhas, informações, transmissão de TV, clipes, reapresentações, materiais jornalísticos, mídias sociais (Twitter, Facebook, Instagram, Youtube entre outros) promoções comerciais, licenciamentos e fotos, incluindo-se local, meio e mídias atualmente disponíveis ou que venham a ser implementadas no mercado renunciando ao recebimento de quaisquer rendas que vierem a ser auferidas com materiais de divulgação; 
+			<br/><br/>
+			- Que estou ciente que o simples ato de se inscrever no evento através do site da REAL TIMING não garante a sua participação no evento e não garante o seu direito à retirada de eventuais KITS, sendo os mesmos garantidos apenas mediante a confirmação do pagamento do valor integral cobrado. No caso de opção de pagamento via boleto ou cartão de crédito, apenas após a confirmação de transferência e creditação dos valores para débito do valor integral devido pela inscrição. 
+			<br/><br/>
+			- Que estou ciente de que eventuais pagamentos efetuados em valor divergente ao efetivamente devido (seja inferior ou superior) NÃO gerarão uma inscrição válida e não garantirão a sua inscrição no evento ou lhe darão direito à retirada de eventuais kits relativos ao evento. 
+			<br/><br/>
+			- Que estou ciente de que caso a inscrição dê direito à retirada de kits, os mesmos somente poderão ser retirados nas datas e horários fixados pelo ORGANIZADOR. A eventual não retirada dos kits nas datas estabelecidas resultará na PERDA DO SEU DIREITO DE RETIRAR referidos kits, e suas consequências. 
+			Em caso de arrependimento da compra, independente do motivo, a solicitação de estorno deve obedecer aos termos dos regulamentos das provas. 
+			<br/><br/>
+			- Que eu isento a REAL TIMING de qualquer responsabilidade relacionada ao evento, de modo que quaisquer reclamações, tais como, mas não limitadas a pedido de estorno, desistência de inscrições e pedidos de reembolso ou quaisquer outros assuntos relacionados ao evento deverão ser formulados diretamente ao ORGANIZADOR.     
+			<br/><br/>
+			-Estou ciente que a Real Timing, através de seu site www.realtiming.com.br, local pelo qual efetuarei e concretizarei minha solicitação de participação neste evento é simplesmente um canal de comunicação, não participando da cadeia de obrigações formada entre o organizador e eu, não imputando a Real Timing, por qualquer motivo e em tempo algum, nenhuma responsabilidade em razão de realização ou não do referido evento. 
+			<br/><br/>
+			- Que isento a REAL TIMING de qualquer responsabilidade relacionada a links existentes no "site" da REAL TIMING ou a conteúdo assinado por terceiros, tal qual, colunas, blogs, comentários nos fóruns, vídeos, fotos, comentários nas notícias, mapas de treino, entre outros são de inteira responsabilidade de seus autores. 
+			<br/><br/>
+			- Que estou ciente da impossibilidade de reprodução de qualquer conteúdo divulgado na REAL TIMING, seja integral ou parcial, seja para uso comercial, pessoal ou editorial, salvo prévia autorização por escrito da REAL TIMING ou pelo seu autor quando identificado. 
+			<br/><br/>
+			- Declaro que participarei dos eventos por livre e espontânea vontade, que estou em boa forma física e mental, com saúde perfeita e que possuo todo o material necessário para executar a tarefa a que me proponho e que estou de acordo com a taxa de serviço (quando existir no evento).  
+			<br/><br/>
+			Este termo está registrado em cartório. 
+			</p>
+			
+			</div>
+			</div>
+			</div>
+
+			<div class="form-group col-md-12 mb-10">
+			<label class="font-12 text-black">
+			<input type="checkbox" value="" required> Estou concordando com os termos acima citados.
+			</label>
+			</div>
+
+			<div class="clearfix"></div>
+			<div class="form-group col-md-12">
+			<div class="" id="status-form-cadastro-terceiro"></div>
+			</div>
+
+			<div class="form-group col-md-12">
+			<input class="btn btn-success btn-lg btn-block btn-liberar botao-off mt-15" type="submit" value="Prosseguir Com o Cadastro">
+			</div>
+			
+			
+			
+
+			</form>
+			
+			<div class="clearfix"></div>
+			
+			
+			</div><!---------------------FIM SELETOR CADASTRO-----------------------------------------> 
+			
+			
+			
+			<div id="setor-categorias-atleta-terceiro" class="text-center" style="display:none;"  >
+				 
+				<div class="clearfix"></div>
+				 
+				 <div id="deposito-categorias-atleta-terceiro">
+				 
+				 <div class='alert alert-info'></i> <i class='fa-solid fa-triangle-exclamation text-info fa-flip '></i> Aguarde! Carregando categorias</h3>
+				 </div>
+			
+			
+			</div><!---------------------FIM SETOR ESQUECI-----------------------------------------> 
+			
+			
+			
+			<div class="clearfix"></div>
+		   
+		  
+		  
+		   
+
+	   
+      </div>
+     
+    </div>
+  </div>
+</div>
+</div>
+<!-- end wrapper -->
+
+  
+
+  
+
+<!------------------------------- MODAIS ---------------------------------------------------->
+
+ 
+
+
+
+
+<style>
+
+.bg-nao-preenchido{background-color:#eee4e4 !important; border-bottom:solid 1px red; }
+.bg-preenchido{background-color:#e4f4e4 !important; border-bottom:solid 1px green; }
+
+</style>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-desabilitado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog " role="document">
+<div class="modal-content">
+     
+	<div class="modal-body p-30 p-xs-20">
+  
+		<div class="col-md-12 text-center mb-20"><p class="text-center mb-10"><img src="/imagens/logo.png" width="200" /></p></div>
+		
+		<div class="col-md-12">
+		<div class="p-20 bg-silver-light" style="border-radius:24px;">
+			
+			<h2>As inscrições estão desabilitadas para esse evento</h2>
+				
+		</div>
+		</div>
+		<div class="clearfix"></div>
+  
+	</div>
+		
+</div>
+</div>
+</div>
+
+
+<div class="modal fade" id="modal-contato" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog " role="document">
+<div class="modal-content">
+     
+	<div class="modal-body p-30 p-xs-20">
+  
+		<div class="col-md-12 text-center mb-20"><p class="text-center mb-10"><img src="/imagens/logo.png" width="200" /></p></div>
+		
+		<div class="col-md-12 text-center">
+		<div class="p-20 bg-silver-light" style="border-radius:24px;">
+				 
+				 				<a href="https://api.whatsapp.com/send?phone=5582999134920" class="btn btn-success  mb-5 btn-xl text-center font-18 font-weight-800" target="_blanl"><i class="fa-brands fa-whatsapp fa-3x"></i><br/><span class="font-12">82</span>99913-4920 <span class="font-12">ORGANIZAÇÃO</span></a>
+								 
+			
+		</div>
+		</div>
+		<div class="clearfix"></div>
+  
+	</div>
+		
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="modal-termos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog " role="document">
+<div class="modal-content ">
+     
+	<div class="modal-body p-40 p-xs-20">
+  
+		<div class="col-md-12 text-center mb-20"><p class="text-center mb-10"><img src="/imagens/seguradoras/" width="200" /></p></div>
+		
+		<div class="col-md-12 text-left">
+		<div class="p-20 bg-silver-light" style="border-radius:24px;">
+					 
+			<h4 class="text-sucess   m-0 p-0 font-weight-800">Os participantes deste evento são segurados pela  </h4><hr/ class="m-0 p-0 mb-5">
+					
+							
+		</div>
+		</div>
+		<div class="clearfix"></div>
+  
+	</div>
+		
+</div>
+</div>
+</div>
+
+  
+
+<div class="modal fade" id="modal-alerta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog modal-sm" role="document">
+<div class="modal-content">
+     
+	<div class="modal-body p-20">
+
+		<div id="deposito_alerta"></div> 
+		
+	</div>
+		
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="modal-caixa-msg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog " role="document">
+<div class="modal-content">
+     
+	<div class="modal-body p-20">
+
+		<div id="deposito_caixa_msg"></div> 
+		
+	</div>
+		
+</div>
+</div>
+</div>
+  
+  
+  
+<div class="modal fade" id="modal-codigo-liberacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog " role="document">
+<div class="modal-content">
+     
+	<div class="modal-body text-center p-30">
+		
+		<p class="text-center mb-10"><img src="/imagens/logo.png" width="200" /></p>
+
+		<h3>Digite o código para prosseguir com a sua inscrição</h3>
+		
+		<div class="p-20" style="background-color:#f4f4f4;border-radius:14px" >
+		
+		<form id="form-codigo-liberacao">
+		
+			<input name="id_evento" type="hidden" value="529" >
+			
+			<div class="col-md-8 m-0 p-0">
+			<input name="codigo_liberacao" type="text" class="form-control" required>
+			</div>
+			
+			<div class="col-md-4 m-0 p-0">
+			<input  type="submit" class="btn btn-theme-colored2  form-control " value="Enviar">
+			</div>
+			
+			<div class="clearfix"></div>
+		
+		</form>
+		
+		<div id="status-form-codigo-liberacao"></div>
+		
+		<a href='' id='bot_codigo_liberacao_prosseguir' class='btn btn-success' style='display:none;'>Prosseguir Inscrição</a>
+		
+		</div>
+		
+	</div>
+		
+</div>
+</div>
+</div>
+
+
+  
+  
+   
+<footer id="footer" class="" style="background-color:#f4f4f4;">
+    <div class="container pt-20 pb-60">
+       
+      
+        <div class="row">
+			<div class="col-xs-12 col-md-4 mt-0 xs-text-center"><img src="/imagens/logo.png" width="90%" />
+			<p class="font-12 text-left xs-text-center">Pague com:<br/><img src="/imagens/cartoes.png" width="80%" /></p>
+			</div>
+          <div class="col-xs-12 col-md-3 mt-xs-20">
+             
+               
+              <div class=" text-left xs-text-center ">
+				
+				<h4 class="m-0 p-0 font-weight-800" style="color:#2c4e8d">Entre em Contato</h4>
+				<i class="fa fa-phone text-theme-colored2  "></i> 82 <span class="font-weight-900">99612.5331 </span><br/><i class="fa-solid fa-envelope text-theme-colored2"></i> contato@realtiming.com.br				
+				
+				 
+                
+                   
+                
+                 
+              </div>
+             
+          </div>
+		  
+		  
+		  <div class="col-xs-12 col-md-3 mt-xs-20">
+             
+               
+              <div class=" text-left xs-text-center">
+				
+				<h4 class="m-0 p-0 font-weight-800" style="color:#2c4e8d">Acesso Rápido</h4>
+				<a href="/sobre" class="btn btn-xs btn-default">Sobre RealTiming</a>
+				<a href="/modalidades" class="btn btn-xs btn-default hidden-xs">Modalidades</a> 
+				<a href="/contato" class="btn btn-xs btn-default">Entre em Contato</a>
+				<a href="/orcamento" class="btn btn-xs btn-default">Solicite um Orçamento</a>
+				 
+                
+                   
+                
+                 
+              </div>
+             
+          </div>
+           
+          <div class="col-xs-12 col-md-2 text-left xs-text-center mt-xs-20 ">
+             
+			
+		<div class="mb-10 mt-0 ">	
+		
+		<div class="widget dark">
+            <h4 class="m-0 p-0 font-weight-800" style="color:#2c4e8d">Conecte-se</h4>
+            <ul class="styled-icons icon-bordered icon-sm">
+              <li><a href="https://m.facebook.com/realtimingcronometragem?tsid=0.6841672004471742&source=result" target="_blank"><i class="fa-brands fa-facebook "></i></a></li>
+                <li><a href="https://m.youtube.com/channel/UCmNfYR5xv8mbYPzQpJjSveA" target="_blank"><i class="fa-brands fa-youtube "></i></a></li>
+                <li><a href="https://instagram.com/realtiming_cronometragem?igshid=YmMyMTA2M2Y=" target="_blank"><i class="fa-brands fa-instagram "></i></a></li>
+            </ul>
+			
+			<a href="https://www.tomcarvalho.com.br" target="_blank" class="" ><img src="/imagens/tom.png" /></a>
+			
+          </div>
+		  
+		
+		 
+		
+		</div>
+		
+		 
+		<div class="mt-xs-80"></div>
+		  
+		  
+          
+          
+        </div>
+         
+      </div>
+    </div>
+	</footer>
+ 
+<!-- end wrapper -->
+
+<!-- Footer Scripts -->
+
+
+
+
+<div id="toast" class="notificacao"></div>
+
+ <style>
+    .notificacao {
+      position: fixed;
+      bottom: 60px;
+      right: 10px;
+      background: #fff;
+      border-left: 6px solid transparent;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      padding: 8px 10px;
+      font-family: sans-serif;
+      font-size: 14px;
+      color: #333;
+      z-index: 9999;
+      display: none;
+      animation: fadeIn 0.5s ease, fadeOut 0.5s ease 4.5s;
+    }
+	
+	.notificacao.approved {
+	  border-left-color: #2ecc71;  
+	}
+
+	.notificacao.pending {
+	  border-left-color: #3498db;  
+	}
+	
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(20px); }
+    }
+  </style>
+  
+
+<script>
+  const inscritos = [
+          {
+        nome: "Sidiane",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Lucas",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Adeildo",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Aldenir",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Ednalva",
+        evento: "3º CIRCUITO RUN",
+        status: "pending",
+		foto_var: "nada"
+      },
+          {
+        nome: "Ícaro",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Maria",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "JOSE",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Luan",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Rodolfo",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Mariana",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Manoel",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Paulo",
+        evento: "3º CIRCUITO RUN",
+        status: "pending",
+		foto_var: "nada"
+      },
+          {
+        nome: "Ibene",
+        evento: "3º CIRCUITO RUN",
+        status: "pending",
+		foto_var: "nada"
+      },
+          {
+        nome: "JAILSON",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Karl",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "/imagens/cadastros/da50694eb6383cb061290647532d8042/da50694eb6383cb061290647532d8042.jpeg"
+      },
+          {
+        nome: "José",
+        evento: "3º CIRCUITO RUN",
+        status: "pending",
+		foto_var: "nada"
+      },
+          {
+        nome: "Laís",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "/imagens/cadastros/9399320c27bf94dd47a899f4b612b785/9399320c27bf94dd47a899f4b612b785.jpeg"
+      },
+          {
+        nome: "Gilvaneide",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Manuel",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Luciano",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Adriana",
+        evento: "3º CIRCUITO RUN",
+        status: "pending",
+		foto_var: "nada"
+      },
+          {
+        nome: "Livia",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+      ];
+
+  let index = 0;
+
+	function exibirNotificacao() {
+	  const toast = document.getElementById("toast");
+	  const inscrito = inscritos[index];
+	
+		if(inscrito.foto_var != 'nada' ) {
+	
+		toast.innerHTML = `<div class='col-md-3 col-xs-3'><img src='https://www.realtiming.com.br/js/timthumb.php?src=${inscrito.foto_var}&w=70&h=70' class='img-circle'></div><div class='col-md-9 col-xs-9 m-0 p-0'><strong>${inscrito.nome}</strong> se inscreveu no:<br> <em>${inscrito.evento}</em></div>`;
+
+		
+		}else{
+			
+		toast.innerHTML = `<div class='col-md-12'><strong>${inscrito.nome}</strong> se inscreveu no:<br> <em>${inscrito.evento}</em></div>`;	
+			
+		}
+
+	  // Remove classes anteriores e aplica a do status atual
+	  toast.className = "notificacao " + inscrito.status;
+
+	  toast.style.display = "block";
+
+	  setTimeout(() => {
+		toast.style.display = "none";
+	  }, 5000);
+
+	  index = (index + 1) % inscritos.length;
+	}
+
+
+  // Exibe a primeira notificação imediatamente
+  //exibirNotificacao();
+
+  // Exibe a próxima notificação a cada 60 segundos (60000 ms)
+  setInterval(exibirNotificacao, 9000);
+</script>
+
+
+
+
+
+
+<div id="lgpd_barra" class="bg-black" style="border-radius:24px; width:40% !important; position:fixed;z-index:100000;bottom:8px;right: 8px; ">
+	
+	<div class="p-20 ">
+	
+	<div class="col-md-9"><p class="font-12 text-white">Usamos cookies para proporcionar melhor desempenho e experiência de navegação. Ao continuar navegando neste site, você declara estar ciente dessas condições. 
+	 
+	</p></div>
+	<div class="col-md-3">
+	
+		<a href="#" id="bot_lgpd_concordar" class="btn btn-info  ">Concordo</a>
+		 
+		
+	
+	</div>
+	<div class="clearfix"></div>
+	
+	</div>
+
+</div>
+
+<script>
+
+var ip = "179.0.59.112";
+$("#lgpd_barra").hide();
+
+$("#bot_lgpd_concordar").click(function(e){
+	
+	e.preventDefault();
+	$("#lgpd_barra").hide();
+	
+	
+	var tipo = "definir";
+	funcaoCookie(ip,"definir");
+	//$("#lgpd_barra").hide();
+	
+ 
+});
+
+function funcaoCookie(ip,tipo){
+	
+		$.ajax({
+		
+		type: 'POST',
+		url: '/sistema/lgpd.php',
+		data: {ip:ip,tipo:tipo},
+		success:function(data){
+			
+			if(data==true){
+				
+				$("#lgpd_barra").hide();
+				
+			}else{
+				
+				$("#lgpd_barra").show();
+				
+			}
+			
+		},
+		error: function (request, status, error) {
+			
+			alert(request.responseText);
+			
+		}
+		
+	});
+	
+}
+
+funcaoCookie(ip,"consultar");
+
+
+
+///////////////////////////////////////////////////////
+///////// MASCARAS
+///////////////////////////////////////////////////////////////
+
+
+
+document.querySelectorAll(".cpf-mask").forEach(input => {
+
+    input.addEventListener("input", function () {
+
+        // Remove tudo que não for número
+        let value = this.value.replace(/\D/g, '');
+
+        // Limita em 11 números
+        value = value.substring(0, 11);
+
+        // Máscara CPF
+        value = value.replace(/^(\d{3})(\d)/, '$1.$2');
+        value = value.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+        value = value.replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+
+        this.value = value;
+    });
+
+});
+
+document.querySelectorAll(".nascimento-mask").forEach(input => {
+
+    input.addEventListener("input", function () {
+
+        // Remove tudo que não for número
+        let value = this.value.replace(/\D/g, '');
+
+        // Limita em 8 números (DDMMYYYY)
+        value = value.substring(0, 8);
+
+        // Máscara data
+        if (value.length > 2) {
+            value = value.replace(/^(\d{2})(\d)/, '$1-$2');
+        }
+
+        if (value.length > 4) {
+            value = value.replace(/^(\d{2})-(\d{2})(\d)/, '$1-$2-$3');
+        }
+
+        this.value = value;
+    });
+
+});
+
+
+document.querySelectorAll(".telefone-mask").forEach(input => {
+
+    input.addEventListener("input", function () {
+
+        // Remove tudo que não for número
+        let value = this.value.replace(/\D/g, '');
+
+        // Limita em 10 números
+        value = value.substring(0, 11);
+
+        // Máscara telefone
+        value = value.replace(/\D/g, ''); // remove tudo que não for número
+		value = value.replace(/^(\d{2})(\d)/, '($1)$2');
+		value = value.replace(/^(\(\d{2}\))(\d{5})(\d)/, '$1$2-$3');
+
+        this.value = value;
+    });
+
+});
+
+</script>
+
+
+
+
+ 
+<!-- end wrapper -->
+
+<!-- JS | Custom script for all pages -->
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<!-- JS | jquery plugin collection for this theme -->
+<script src="/js/jquery-plugin-collection.js"></script>
+         <!-- revolution slider  -->
+         
+		 
+		<script src="/js/custom.js"></script>
+		
+		<script type="text/javascript">
+
+		$("#botaoBox").click(function() {
+		event.preventDefault();
+  //alert("oi");
+			$("#solicitar").click();
+});
+
+  </script>
+  
+ <script src="/js/jquery.countdown.min.js"></script>
+
+
+
+		
+ <script type="text/javascript">
+  // Turn on Bootstrap
+
+var id_evento = "529";
+var cpf_cliente = "";
+var qtd_inscritos = "80";
+var limite_inscritos = "1000";
+var inscricao_ativo = "on";
+				
+
+
+$("#bot-confirma-terceiro").click(function(e){
+								
+	e.preventDefault();
+								
+	var id_atleta_terceiro = $("#campo_id_atleta_terceiro").val();
+	//alert(id_atleta_terceiro)
+								
+	$("#setor-atleta-terceiro").hide();
+	
+	$("#setor-categorias-atleta-terceiro").show();
+	
+	chamarCategorias(id_evento,cpf_cliente,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-atleta-terceiro");
+								
+	//alert(id_amigo);
+								
+});
+
+
+
+$("#form-cadastro-terceiro").submit(function(e){
+	
+	e.preventDefault();
+	
+	var genero_terceiro = $("#genero_terceiro").val();
+	
+	$("#status-form-cadastro-terceiro").html("<div class='label label-info'  role='label'>Carregando, aguarde!</div>");
+	//alert(nome_peito);
+	
+	if(genero_terceiro==''){
+		
+		$("#status-form-cadastro-terceiro").html("<div class='label label-alert'  role='label'>Voce precisa selecionar o campo: Genero</div>");
+
+	}else{	
+		
+		var aTag = $("#inicio-cadastro-terceiro");
+		
+		$("#status-form-cadastro-terceiro").html("<div class='label label-info'  role='label'>Aguarde! Carregando</div>");
+		//$("#modal-loading").modal("show");
+
+		
+		var dados = $("#form-cadastro-terceiro").serialize();
+		var formData = new FormData(this);
+		
+		$.ajax({
+			
+			type: 'POST',
+			url: '/sistema/cadastro-vfast.php',
+			data: formData,
+			dataType: 'JSON',
+			success: function(data){
+				
+				//alert(data[""]);
+				
+				if(data["status"]==true){
+					
+					$("#setor-cadastro-terceiro").hide();
+					chamarCategorias(id_evento,cpf_cliente,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-atleta-terceiro");
+
+					$("#setor-categorias-atleta-terceiro").show();
+					
+				}else{
+					
+					$("#status-form-cadastro-terceiro").html(data["msg"]);
+
+				}
+				
+				
+				
+			},
+			cache: false,
+			contentType: false,
+			processData: false,
+			error: function (request, status, error) {
+				alert(request.responseText);
+			}
+			
+		});
+		
+		
+	}
+	
+
+	
+	 
+	
+});
+
+
+
+
+
+
+
+$("#bot-preenchimento-automatico-amigo").click(function(e){
+	
+	e.preventDefault();
+	
+	var cadastro_amigo_equipe_clube_patrocinador = "";
+	var cadastro_amigo_estado = "";
+	var cadastro_amigo_cidade = "";
+	
+	//alert(cadastro_amigo_equipe_clube_patrocinador);
+	$("#campo_cadastro_amigo_equipe_clube_patrocinador").val(cadastro_amigo_equipe_clube_patrocinador);
+	
+	document.getElementById("seletor_estado").value = cadastro_amigo_estado;
+	
+	$.ajax({
+		
+		type: 'POST',
+		url: '/sistema/seletor_cidades.php',
+		data:{uf:cadastro_amigo_estado,selecionado:cadastro_amigo_cidade},
+		dataType:'JSON',
+		success: function(data){
+			
+			//alert(data.length);
+			//$("#deposito_cidades").hmtl("aw");
+			//$("#deposito_cidades").hmtl(data);
+			
+			var seletor = $("#seletor_cidades");
+			seletor.empty();
+			
+			for(var i=0; i<data.length; i++){
+				
+				seletor.append(data[i]);
+				
+			}
+			
+		}
+		
+		
+	});
+	
+	$("#painel_cadastro_amigo_dados_recuperados").hide();
+	
+}); 
+
+
+
+//////////////////////////////////////////////////////////////////
+
+
+ 
+$(".bot-caixa-msg").click(function(e){
+	
+	e.preventDefault();
+	
+	var id = this.id;
+	var tipo = "exibir";
+	
+	$("#deposito-caixa-msg").html("");
+	
+	$.ajax({
+		
+		type: 'POST',
+		url: '/sistema/organizador_caixa_msg.php',
+		data: {id:id,tipo:tipo},
+		success: function(data){
+			
+			$("#deposito_caixa_msg").html(data);
+			$("#modal-caixa-msg").modal("show");
+			
+		}
+		
+	});
+	
+});
+
+/////////////////////////////////////////////
+
+
+$(".form_numerico_2").keyup(function(){
+	
+	$(this).val(this.value.replace(/\D/g, ''));
+	
+});
+
+
+///////////////////////////////////////////////
+
+
+$("#bot-desabilitado").click(function(e){
+	
+	e.preventDefault();
+	
+	$("#modal-desabilitado").modal("show");
+	
+});
+  
+$("#bot-termos").click(function(e){
+	
+	e.preventDefault();
+	
+	$("#modal-termos").modal("show");
+	
+});
+  
+  
+$("#bot-esqueci-pagina-evento").click(function(e){
+	
+	$("#setor-pre-login").hide();
+	$("#setor-esqueci-senha").show();
+	
+});
+  
+$("#bot-inscricao").click(function(e){
+	
+	e.preventDefault();
+	//alert("a");
+	
+	$("#form-login").trigger("reset");
+	$("#form-login-passaporte").trigger("reset");
+	
+	$(".campo_form_login").hide();
+	$(".setor-cadastro").hide();
+	
+	$("#campo_form_login_cpf").show();
+	
+	$("#modal-inscricao").modal("show");
+	
+});
+
+$(".bot-inscricao-terceiro").click(function(e){
+	
+	e.preventDefault();
+	
+	
+	$("#form-cadastro-terceiro").trigger("reset");
+	$("#form-login-terceiro").trigger("reset");
+	
+	$("#painel_cadastro_terceiro_dados_recuperados").show();
+	
+	$("#setor-atleta-terceiro").hide();
+	$("#setor-categorias-atleta-terceiro").hide();
+	$("#setor-cadastro-terceiro").hide();
+	
+	$("#setor-pre-login-terceiro").show();
+	
+	$("#modal-login-cadastro-terceiro").modal("show");
+
+	
+	$("#campo_nascimento_terceiro_atual").val("");
+	$("#campo_terceiro_amigo_atual").val("");
+	
+	$("#status-form-cadastro-terceiro").html("");
+	$("#status-form-cadastro-terceiro-2").html("");
+	
+	$("#campo_cadastro_equipe_clube_patrocinador_alerta_msg_terceiro").html("<p class='font-14'>Digite 'sem', caso não possua</p>");
+	
+	$("#campo_nome_completo_alerta_msg_terceiro").html("");
+	$("#campo_email_alerta_msg_terceiro").html("");
+	
+});
+
+
+$(".bot-inscricao").click(function(e){
+	
+	e.preventDefault();
+	
+	var cliente_logado = "";
+	var status_code_liberacao = "";
+	//alert(status_code_liberacao);
+
+		if(status_code_liberacao==true){
+			
+			$("#form-codigo-liberacao").trigger("reset");
+			$("#form-codigo-liberacao").show();
+			
+			$("#bot_codigo_liberacao_prosseguir").hide();
+			$("#status-form-codigo-liberacao").html("");
+			
+			//alert("vai pedir codigo");
+			$("#modal-codigo-liberacao").modal("show");
+			return;
+			
+		}
+	
+	//alert(cliente_logado);
+	
+	if(cliente_logado!=''){
+		
+
+		
+		$("#setor-pre-login").hide();
+		$("#setor-cadastro").hide();
+		$("#setor-esqueci").hide();
+				
+		$("#setor-categorias").show();
+				
+		$("#modal-login-cadastro").modal("show");
+		
+		$("#status-form-login").html("");
+		$("#form-login").html("");
+		
+		chamarCategorias(id_evento,cpf_cliente,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-evento");
+			
+	}else{
+		
+		$("#setor-esqueci-senha").hide();
+		$("#setor-cadastro").hide();
+				
+		$("#setor-pre-login").show();
+		
+		$("#status-form-login").html("");
+		$("#status-form-login-passaporte").html("");
+		
+		$("#campo_cpf_login_inicio").val("");
+		$("#campo_nascimento_login_inicio").val("");
+						
+		$("#campo_cpf_login_inicio_passaporte").val("");
+		$("#campo_nascimento_login_inicio_passaporte").val("");
+		
+		$(".campo-cadastro-categoria").val("evento");
+		$(".campo-cadastro-id-evento").val("529");
+		
+		$('#seletor_tipo_documento').val('campo_form_login_cpf').trigger('change');
+				
+		$("#modal-login-cadastro").modal("show");
+		
+	}
+	
+	 
+	
+
+	
+	
+});
+
+
+
+
+
+$("#bot-contato").click(function(e){
+	
+	e.preventDefault();
+	
+	$("#modal-contato").modal("show");
+	
+});
+
+$("#bot-contato2").click(function(e){
+	
+	e.preventDefault();
+	
+	$("#modal-contato").modal("show");
+	
+});
+ 
+$("#bot-esqueci").click(function(e){
+	
+	e.preventDefault();
+	
+	$("#modal-login-cadastro").modal("hide");
+	$("#modal-esqueci").modal("show");
+	
+});
+
+
+
+  // 15 days from now!
+  function get15dayFromNow() {
+    return new Date(new Date().valueOf() + 20 * 24 * 60 * 60 * 1000);
+  }
+
+  var $clock = $('#clock');
+
+  $clock.countdown(get15dayFromNow(), function(event) {
+    $(this).html(event.strftime('<i class="fa fa-clock-o fa-flip"></i> <span class="font-18">Faltam</span> <strong>%D</strong><span class="font-12">dias</span> <strong>%H</strong><span class="font-12">horas</span>  <strong>%M</strong><span class="font-12">minutos</span>  <strong>%S</strong><span class="font-12">segundos</span>    '));
+  });
+
+$("#esqueci-botao").click(function(){
+		
+		event.preventDefault();
+		$("#form1").hide();
+		$("#esqueci-botao").hide();
+		$("#form2").show();
+		
+});
+
+
+ 
+
+
+
+
+$("#form-login-terceiro").submit(function(e){
+	
+	e.preventDefault();
+	
+	var dados_seletor_login_form_terceiro = $("#form-login-terceiro").serialize();
+	
+	
+	$("#form-cadastro-terceiro").trigger("reset");
+	$("#campo_equipe_clube_patrocinador_alerta_msg_terceiro").html("<p class='font-14'>Digite 'sem', caso não possua</p>");
+	$("#campo_nome_completo_alerta_msg_terceiro").html("");
+	$("#campo_email_alerta_msg_terceiro").html("");
+	
+	$("#status-form-login-terceiro").html("");
+	
+	//alert(dados_seletor_login_form_terceiro);
+	
+	$.ajax({
+								
+		type:'POST',
+		url:'/sistema/busca_cpf_amigo_vfast.php',
+		data: dados_seletor_login_form_terceiro,
+		dataType:'JSON',
+		success: function(data){
+									
+			//alert(data["status"]);
+									
+			if(data["status"]==true){
+										
+				$("#setor-pre-login-terceiro").hide();
+				
+				$("#setor-atleta-terceiro").show();
+				
+				$("#campo_nome_atleta_terceiro").html(data["nome_atleta_terceiro"]);
+				$("#campo_id_atleta_terceiro").val(data["id_atleta_terceiro"]);				
+										
+			}else{
+										
+				if(data["status"]=='cadastro'){
+										
+					//alert(data["status"]);
+					
+					$("#setor-pre-login-terceiro").hide();
+					$("#setor-cadastro-terceiro").show();
+	
+					var cpf_atual_terceiro = $("#campo_cpf_terceiro").val();
+					var nascimento_atual_terceiro = $("#campo_nascimento_terceiro").val();
+											
+					$("#campo_cpf_atual_terceiro").val(cpf_atual_terceiro);
+					$("#campo_nascimento_atual_terceiro").val(nascimento_atual_terceiro);
+											
+					//alert(nascimento_atual);
+					//alert(cpf_atual+" - "+nascimento_atual);
+										
+				}
+										
+				if(data["status"]=='atleta_cadastrado'){
+											
+					//alert(data[1]);
+					$("#status-form-login-terceiro").html(data["msg"]);
+											
+				}
+										
+				if(data["status"]=='cpf_invalido'){
+											
+					//alert(data[1]);
+					$("#status-form-login-terceiro").html(data["msg"]);
+											
+				}
+										
+				if(data["status"]=='erro_nascimento'){
+											
+					//alert(data[1]);
+					$("#status-form-login-terceiro").html(data["msg"]);
+											
+				}						
+										
+			}
+									//
+									
+		},
+			
+			error: function(XMLHttpRequest, textStatus, errorThrown) { 
+			alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+			} 
+								
+	});
+	
+});
+
+
+
+
+
+
+ 
+
+
+function chamarCategorias(id_evento,cpf_cliente,qtd_inscritos,limite_inscritos,inscricao_ativo,deposito){
+	
+	//alert(id_evento);
+	//alert(cpf_cliente);
+	
+	//alert(id_evento+" - "+cpf_cliente+" - "+qtd_inscritos+" - "+limite_inscritos+" - "+inscricao_ativo+" - "+deposito);
+	
+	$.ajax({
+		
+		type: 'POST',
+		url: '/sistema/chamar_categorias_vfast.php',
+		data: {id_evento:id_evento,cpf_cliente:cpf_cliente,qtd_inscritos:qtd_inscritos,limite_inscritos:limite_inscritos,inscricao_ativo:inscricao_ativo},
+		success: function(data){
+			
+			//alert(data);
+			
+			$(deposito).html(data);
+			//$("#modal-inscricao").modal("show");
+			
+			
+			
+		}
+		
+	})
+	
+}
+
+
+
+
+//$("#campo_nascimento_atual_terceiro").mask('99-99-9999', {placeholder:'_'});	
+//$("#campo_nascimento_atual").mask('99-99-9999', {placeholder:'_'});
+	
+//$("#campo_telefone").mask('(99)99999.9999', {placeholder:'_'});
+//$("#campo_telefone_terceiro").mask('(99)99999.9999', {placeholder:'_'});
+
+//$("#campo_cpf_login_inicio").mask('999.999.999-99', {placeholder:'_'});
+
+ 
+
+//$("#campo_cpf_terceiro").mask('999.999.999-99', {placeholder:'_'});
+//$("#campo_nascimento_terceiro").mask('99-99-9999', {placeholder:'_'});
+
+
+
+
+
+$("#seletor_estado_terceiro").change(function(e){
+	
+	e.preventDefault();
+	
+	var uf = this.value;
+	
+	//alert(uf);
+	
+	$.ajax({
+		
+		type:'POST',
+		url:'/sistema/seletor_cidades.php',
+		data:{uf:uf},
+		dataType:'JSON',
+		success: function(data){
+			
+			
+			var seletor = $("#seletor_cidades_terceiro");
+			seletor.empty();
+			
+			for(var i=0; i<data.length; i++){
+				
+				seletor.append(data[i]);
+				
+			}
+			
+		}
+		
+	});
+	
+});	
+
+
+
+$("#cadastro-form-amigo-pos").submit(function(e){
+	
+	e.preventDefault();
+	
+	var genero_amigo_pos = $("#genero_amigo_pos").val();
+	//alert(nome_peito);
+	
+	$("#status-cadastro-form-amigo-pos-2").html("<div class='label label-info'>Aguarde, carregando informações</div>");
+	
+	if(genero_amigo_pos==''){
+		
+		alert("Voce precisa selecionar o campo: Genero");
+
+	}else{	
+		
+		 var aTag = $("#inicio-cadastro");
+
+		
+		
+		 $("#modal-loading").modal("show");
+		
+		var dados = $("#cadastro-form-amigo-pos").serialize();
+		var formData = new FormData(this);
+		//alert(dados);
+		
+		$.ajax({
+			
+			type: 'POST',
+			url: '/sistema/cadastro-vfast.php',
+			data: formData,
+			dataType: 'JSON',
+			success: function(data){
+				
+				//alert(data);
+				
+				if(data[0]==true){
+					
+					//window.location.href = data[1];
+					$("#modal-inscricao-amigo").modal("hide");
+					$("#modal-inscricao").modal("show");
+					
+					
+					
+				}else{
+					
+					$("#modal-loading").modal("hide");
+					//window.location.href = data[1];
+					$("#status-cadastro-form-amigo-pos").html(data[1]);
+					$("#status-cadastro-form-amigo-pos-2").html(data[1]);
+					$('html,body').animate({scrollTop: aTag.offset().top},'slow');
+					
+				}
+				
+				
+				
+			},
+			cache: false,
+			contentType: false,
+			processData: false,
+			error: function (request, status, error) {
+				alert(request.responseText);
+			}
+			
+		});
+		
+		
+	}
+	
+
+	
+	 
+	
+});
+
+
+
+function chamarMosaico(id_evento,titulo_evento){
+	
+	//alert(id_evento);
+	
+	$.ajax({
+		
+		type: 'POST',
+		url: "/sistema/aux_mosaico_inscritos.php",
+		data: {id_evento:id_evento,titulo_evento:titulo_evento},
+		success: function(data){
+			
+			//alert(data);
+			$("#deposito_mosaico_atletas").html(data);
+			$('[data-toggle="tooltip"]').tooltip();
+			
+		},
+      error: function (xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+      }
+		
+	});
+	
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+	
+		const botoes = document.querySelectorAll('.botao-off');
+
+		botoes.forEach(botao => {
+			// libera clique removendo a classe
+			botao.classList.remove('botao-off');
+		});
+	   
+
+	   var id_evento = "529";
+	   var titulo_evento = "3º CIRCUITO RUN";
+	   
+	   chamarMosaico(id_evento,titulo_evento)
+	   
+});
+
+ 
+
+
+
+
+</script>
+
+
+
+<script>
+
+$("#form-codigo-liberacao").submit(function(e){
+	
+	e.preventDefault();
+	
+	var dados_liberacao = $(this).serialize();
+	
+	$("#form-codigo-liberacao").hide();
+	
+	$("#status-form-codigo-liberacao").html("<div class='alert alert-info'>Aguarde, verificando código</div>");
+	
+	$.ajax({
+		
+		type: 'POST',
+		url: '/sistema/checar_codigo_liberacao.php',
+		data: dados_liberacao,
+		dataType: 'JSON',
+		success: function(data){
+			
+			if(data["status"]==true){
+				
+				$("#form-codigo-liberacao").hide();
+				$("#bot_codigo_liberacao_prosseguir").show();
+				//status_code_liberacao = false;
+				
+			}else{
+				
+				$("#form-codigo-liberacao").show();
+				
+			}
+			
+			$("#status-form-codigo-liberacao").html(data["msg"]);
+			
+		}
+		
+		
+		
+	});
+	
+	//alert(dados);
+	
+});
+
+
+$("#bot_codigo_liberacao_prosseguir").click(function(e){
+	
+	e.preventDefault();
+	
+	$("#modal-codigo-liberacao").modal("hide");
+	
+	var cliente_logado = "";
+
+	if(cliente_logado!=''){
+		
+
+		
+		$("#setor-pre-login").hide();
+		$("#setor-cadastro").hide();
+		$("#setor-esqueci").hide();
+				
+		$("#setor-categorias").show();
+				
+		$("#modal-login-cadastro").modal("show");
+		
+		$("#status-form-login").html("");
+		$("#form-login").html("");
+		
+		chamarCategorias(id_evento,cpf_cliente,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-evento");
+			
+	}else{
+		
+		$("#setor-esqueci-senha").hide();
+		$("#setor-cadastro").hide();
+				
+		$("#setor-pre-login").show();
+		$("#form-login").trigger("reset");
+		$("#status-form-login").html("");	
+				
+		$("#modal-login-cadastro").modal("show");
+		
+	}
+	
+});
+
+
+</script>
+
+</body>
+</html>
+ 
+
+ 

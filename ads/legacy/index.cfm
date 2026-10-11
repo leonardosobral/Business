@@ -9,7 +9,7 @@
 
 <cfif NOT isDefined("VARIABLES.businessRealIsAdmin") OR NOT VARIABLES.businessRealIsAdmin>
     <cfcontent reset="true"/>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <!DOCTYPE html>
     <html lang="pt-br">
     <head>

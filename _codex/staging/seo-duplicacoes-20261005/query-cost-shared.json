@@ -1,0 +1,94 @@
+{
+  "PLAN": [
+    {
+      "Triggers": [],
+      "Planning Time": 0.159,
+      "Plan": {
+        "Actual Startup Time": 50.33,
+        "Plans": [
+          {
+            "Actual Startup Time": 50.092,
+            "Sort Space Type": "Memory",
+            "Plans": [
+              {
+                "Actual Startup Time": 6.091,
+                "Plans": [
+                  {
+                    "Actual Startup Time": 3.465,
+                    "Actual Loops": 1,
+                    "Index Name": "tb_evento_corridas_agenda_lookup_idx",
+                    "Plan Rows": 34248,
+                    "Index Cond": "(ativo = true)",
+                    "Async Capable": false,
+                    "Actual Total Time": 3.465,
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Total Cost": 1373.28,
+                    "Plan Width": 0,
+                    "Actual Rows": 34851,
+                    "Node Type": "Bitmap Index Scan",
+                    "Startup Cost": 0.0
+                  }
+                ],
+                "Actual Loops": 1,
+                "Exact Heap Blocks": 16581,
+                "Filter": "(length((nome_evento)::text) >= 50)",
+                "Plan Rows": 11416,
+                "Lossy Heap Blocks": 0,
+                "Alias": "tb_evento_corridas",
+                "Async Capable": false,
+                "Actual Total Time": 39.585,
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 68161.23,
+                "Rows Removed by Filter": 31419,
+                "Rows Removed by Index Recheck": 0,
+                "Plan Width": 82,
+                "Relation Name": "tb_evento_corridas",
+                "Actual Rows": 3000,
+                "Recheck Cond": "ativo",
+                "Node Type": "Bitmap Heap Scan",
+                "Startup Cost": 1376.13
+              }
+            ],
+            "Actual Loops": 1,
+            "Plan Rows": 11416,
+            "Async Capable": false,
+            "Actual Total Time": 50.282,
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Total Cost": 68959.14,
+            "Sort Space Used": 950,
+            "Plan Width": 82,
+            "Sort Key": [
+              "(\"left\"((nome_evento)::text, 50))",
+              "(jsonb_build_object('name', nome_evento, 'city', COALESCE(cidade, ''::character varying), 'state', COALESCE(estado, ''::character varying), 'date', (data_inicial)::text))"
+            ],
+            "Actual Rows": 3000,
+            "Sort Method": "quicksort",
+            "Node Type": "Sort",
+            "Startup Cost": 68930.6
+          }
+        ],
+        "Actual Loops": 1,
+        "Filter": "(count(DISTINCT nome_evento) > 1)",
+        "Plan Rows": 3756,
+        "Strategy": "Sorted",
+        "Async Capable": false,
+        "Actual Total Time": 57.368,
+        "Parallel Aware": false,
+        "Total Cost": 69327.57,
+        "Rows Removed by Filter": 2681,
+        "Partial Mode": "Simple",
+        "Plan Width": 64,
+        "Group Key": [
+          "(\"left\"((nome_evento)::text, 50))"
+        ],
+        "Actual Rows": 100,
+        "Node Type": "Aggregate",
+        "Startup Cost": 68930.6
+      },
+      "Execution Time": 57.405
+    }
+  ]
+}

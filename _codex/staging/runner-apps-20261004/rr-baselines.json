@@ -1,0 +1,5 @@
+{
+  "public-api/Application.cfc": "f9c1776f81ed91cb508994d0799da842505ccdd8ddd6fbc1b43c5d2c2c86d977",
+  "public-api/openapi.json": "b8a2f6c54d6e589ab32d924ea757c2d592b23b3c26577812b11a78044f10b9e6",
+  "includes/estrutura/menu_apps_data.cfm": "6b2f02b5bd0d0807e08baa01df2d7f15f02c627d16cb8dcd9849ec0b67d89d2c"
+}

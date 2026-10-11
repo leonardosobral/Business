@@ -225,7 +225,7 @@ function userManagerDateInput(any value = "") {
     <div class="card-body business-page-body">
       <cfif len(VARIABLES.userManagerFeedback) AND len(VARIABLES.userManagerMessage)>
         <div class="alert <cfif VARIABLES.userManagerFeedback EQ 'sucesso'>alert-success<cfelse>alert-danger</cfif> mb-4" role="alert">
-          <cfoutput>#htmlEditFormat(VARIABLES.userManagerMessage)#</cfoutput>
+          <cfoutput>#encodeForHTML(VARIABLES.userManagerMessage)#</cfoutput>
         </div>
       </cfif>
 
@@ -264,8 +264,8 @@ function userManagerDateInput(any value = "") {
                 <p class="small text-muted"><cfif VARIABLES.mergeIsKeep>Esta conta receberá os dados e continuará existindo.<cfelse>Os dados sairão desta conta; ela será excluída ao final.</cfif></p>
                 <form method="get" action="./" class="input-group mb-3">
                   <input type="hidden" name="merge" value="1"/><input type="hidden" name="merge_manter" value="<cfoutput>#VARIABLES.userManagerMergeKeepId#</cfoutput>"/><input type="hidden" name="merge_migrar" value="<cfoutput>#VARIABLES.userManagerMergeSourceId#</cfoutput>"/>
-                  <input type="hidden" name="<cfoutput>#VARIABLES.mergeOtherSearchName#</cfoutput>" value="<cfoutput>#htmlEditFormat(VARIABLES.mergeOtherSearchValue)#</cfoutput>"/>
-                  <input class="form-control" name="busca_<cfoutput>#VARIABLES.mergeSide#</cfoutput>" value="<cfoutput>#htmlEditFormat(VARIABLES.mergeSearch)#</cfoutput>" placeholder="Nome, e-mail ou ID" required/>
+                  <input type="hidden" name="<cfoutput>#VARIABLES.mergeOtherSearchName#</cfoutput>" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.mergeOtherSearchValue)#</cfoutput>"/>
+                  <input class="form-control" name="busca_<cfoutput>#VARIABLES.mergeSide#</cfoutput>" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.mergeSearch)#</cfoutput>" placeholder="Nome, e-mail ou ID" required/>
                   <button class="btn btn-outline-warning" type="submit"><i class="fa-solid fa-search"></i></button>
                 </form>
                 <cfloop query="#VARIABLES.mergeCandidates#">
@@ -274,8 +274,8 @@ function userManagerDateInput(any value = "") {
                   <cfset VARIABLES.mergeLinkKeepId = VARIABLES.mergeIsKeep ? VARIABLES.mergeCandidateId : VARIABLES.userManagerMergeKeepId/>
                   <cfset VARIABLES.mergeLinkSourceId = !VARIABLES.mergeIsKeep ? VARIABLES.mergeCandidateId : VARIABLES.userManagerMergeSourceId/>
                   <cfoutput><a class="d-block border rounded p-2 mb-2 text-reset <cfif VARIABLES.mergeCandidateSelected>border-warning bg-warning bg-opacity-10</cfif>" href="./?merge=1&amp;merge_manter=#VARIABLES.mergeLinkKeepId#&amp;merge_migrar=#VARIABLES.mergeLinkSourceId#&amp;busca_manter=#urlEncodedFormat(VARIABLES.userManagerMergeKeepSearch)#&amp;busca_migrar=#urlEncodedFormat(VARIABLES.userManagerMergeSourceSearch)#">
-                    <div class="fw-semibold">#htmlEditFormat(VARIABLES.mergeCandidates.name)# <span class="text-muted">###VARIABLES.mergeCandidateId#</span></div>
-                    <div class="small text-muted">#htmlEditFormat(VARIABLES.mergeCandidates.email)# · #VARIABLES.mergeCandidates.paginas# página(s) · #VARIABLES.mergeCandidates.resultados# resultado(s)</div>
+                    <div class="fw-semibold">#encodeForHTML(VARIABLES.mergeCandidates.name)# <span class="text-muted">###VARIABLES.mergeCandidateId#</span></div>
+                    <div class="small text-muted">#encodeForHTML(VARIABLES.mergeCandidates.email)# · #VARIABLES.mergeCandidates.paginas# página(s) · #VARIABLES.mergeCandidates.resultados# resultado(s)</div>
                   </a></cfoutput>
                 </cfloop>
               </div>
@@ -288,9 +288,9 @@ function userManagerDateInput(any value = "") {
             <h5 class="mb-1">Confirmação da migração</h5>
             <p class="text-muted mb-3">Confira a direção: os dados saem da conta vermelha e entram na conta verde.</p>
             <div class="row g-3 mb-4">
-              <div class="col-md-5"><div class="user-manager-form-section user-manager-danger-zone h-100"><div class="text-danger small text-uppercase fw-semibold"><i class="fa-solid fa-box-open me-1"></i>Origem — será removida</div><div class="h5 mt-2 mb-1"><cfoutput>#htmlEditFormat(qUserManagerMergePreview.source_name)#</cfoutput></div><div class="text-muted small"><cfoutput>###qUserManagerMergePreview.source_id# · #htmlEditFormat(qUserManagerMergePreview.source_email)#</cfoutput></div><div class="small text-danger mt-2">Os dados saem desta conta.</div></div></div>
+              <div class="col-md-5"><div class="user-manager-form-section user-manager-danger-zone h-100"><div class="text-danger small text-uppercase fw-semibold"><i class="fa-solid fa-box-open me-1"></i>Origem — será removida</div><div class="h5 mt-2 mb-1"><cfoutput>#encodeForHTML(qUserManagerMergePreview.source_name)#</cfoutput></div><div class="text-muted small"><cfoutput>###qUserManagerMergePreview.source_id# · #encodeForHTML(qUserManagerMergePreview.source_email)#</cfoutput></div><div class="small text-danger mt-2">Os dados saem desta conta.</div></div></div>
               <div class="col-md-2 d-flex flex-column align-items-center justify-content-center user-manager-merge-arrow"><span class="small fw-semibold mb-2">MIGRAR DADOS</span><i class="fa-solid fa-arrow-right fa-2x"></i><i class="fa-solid fa-arrow-down fa-2x"></i></div>
-              <div class="col-md-5"><div class="user-manager-form-section h-100 border border-success"><div class="text-success small text-uppercase fw-semibold"><i class="fa-solid fa-circle-check me-1"></i>Destino — será mantida</div><div class="h5 mt-2 mb-1"><cfoutput>#htmlEditFormat(qUserManagerMergePreview.keep_name)#</cfoutput></div><div class="text-muted small"><cfoutput>###qUserManagerMergePreview.keep_id# · #htmlEditFormat(qUserManagerMergePreview.keep_email)#</cfoutput></div><div class="small text-success mt-2">Esta conta recebe os dados e permanece ativa.</div></div></div>
+              <div class="col-md-5"><div class="user-manager-form-section h-100 border border-success"><div class="text-success small text-uppercase fw-semibold"><i class="fa-solid fa-circle-check me-1"></i>Destino — será mantida</div><div class="h5 mt-2 mb-1"><cfoutput>#encodeForHTML(qUserManagerMergePreview.keep_name)#</cfoutput></div><div class="text-muted small"><cfoutput>###qUserManagerMergePreview.keep_id# · #encodeForHTML(qUserManagerMergePreview.keep_email)#</cfoutput></div><div class="small text-success mt-2">Esta conta recebe os dados e permanece ativa.</div></div></div>
             </div>
             <div class="text-muted small mb-2">Dados encontrados na conta de origem:</div>
             <div class="row g-2 mb-4 text-center">
@@ -298,7 +298,7 @@ function userManagerDateInput(any value = "") {
             </div>
             <cfoutput><div class="alert alert-warning small"><strong>O que acontecerá:</strong> páginas do mesmo tipo serão consolidadas; páginas sem equivalente serão transferidas. Inscrições e vínculos repetidos serão deduplicados, mantendo o registro que já pertence ao destino. Tudo ocorrerá em uma única transação. Somente após a migração, a conta de origem ###qUserManagerMergePreview.source_id# será excluída fisicamente.</div></cfoutput>
             <cfoutput><form method="post" action="./" data-confirm="Confirmar: migrar os dados da conta ###qUserManagerMergePreview.source_id# para a conta ###qUserManagerMergePreview.keep_id# e excluir a conta de origem?">
-              <input type="hidden" name="user_manager_action" value="mesclar_usuarios"/><input type="hidden" name="user_manager_csrf" value="#htmlEditFormat(VARIABLES.userManagerCsrf)#"/><input type="hidden" name="keep_user_id" value="#qUserManagerMergePreview.keep_id#"/><input type="hidden" name="source_user_id" value="#qUserManagerMergePreview.source_id#"/>
+              <input type="hidden" name="user_manager_action" value="mesclar_usuarios"/><input type="hidden" name="user_manager_csrf" value="#encodeForHTMLAttribute(VARIABLES.userManagerCsrf)#"/><input type="hidden" name="keep_user_id" value="#qUserManagerMergePreview.keep_id#"/><input type="hidden" name="source_user_id" value="#qUserManagerMergePreview.source_id#"/>
               <label class="form-label">Para confirmar <strong>origem → destino</strong>, digite <code>MESCLAR #qUserManagerMergePreview.source_id# EM #qUserManagerMergePreview.keep_id#</code></label>
               <div class="input-group"><input class="form-control" name="merge_confirmation" required autocomplete="off" placeholder="MESCLAR #qUserManagerMergePreview.source_id# EM #qUserManagerMergePreview.keep_id#"/><button class="btn btn-danger" type="submit" <cfif !VARIABLES.userManagerHasMerge>disabled</cfif>><i class="fa-solid fa-code-merge me-2"></i>Migrar para ###qUserManagerMergePreview.keep_id# e excluir ###qUserManagerMergePreview.source_id#</button></div>
             </form></cfoutput>
@@ -316,17 +316,17 @@ function userManagerDateInput(any value = "") {
         <div class="user-manager-hero p-3 p-lg-4 mb-4">
           <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 position-relative" style="z-index:1;">
             <div class="d-flex align-items-center gap-3">
-              <img class="user-manager-avatar" src="<cfoutput>#htmlEditFormat(VARIABLES.userManagerAvatar)#</cfoutput>" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/>
+              <img class="user-manager-avatar" src="<cfoutput>#encodeForHTMLAttribute(VARIABLES.userManagerAvatar)#</cfoutput>" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/>
               <div>
                 <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
-                  <h3 class="mb-0"><cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(qUserManagerUser.name)#</cfoutput><cfelse>Novo usuário</cfif></h3>
+                  <h3 class="mb-0"><cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTML(qUserManagerUser.name)#</cfoutput><cfelse>Novo usuário</cfif></h3>
                   <cfif VARIABLES.userManagerShowingDetail>
                     <span class="user-manager-status-dot <cfif VARIABLES.userManagerFormIsDeleted>is-deleted<cfelseif NOT VARIABLES.userManagerFormIsActive>is-inactive</cfif>" aria-hidden="true"></span>
                     <span class="small text-muted"><cfif VARIABLES.userManagerFormIsDeleted>Excluído<cfelseif VARIABLES.userManagerFormIsActive>Ativo<cfelse>Inativo</cfif></span>
                   </cfif>
                 </div>
                 <cfif VARIABLES.userManagerShowingDetail>
-                  <div class="text-muted small"><cfoutput>## #qUserManagerUser.id# · #htmlEditFormat(qUserManagerUser.email)#</cfoutput></div>
+                  <div class="text-muted small"><cfoutput>## #qUserManagerUser.id# · #encodeForHTML(qUserManagerUser.email)#</cfoutput></div>
                   <div class="d-flex flex-wrap gap-1 mt-2">
                     <cfif userManagerBoolean(qUserManagerUser.is_admin)><span class="badge badge-warning">ADMIN</span></cfif>
                     <cfif userManagerBoolean(qUserManagerUser.is_dev)><span class="badge badge-info">DEV</span></cfif>
@@ -345,9 +345,9 @@ function userManagerDateInput(any value = "") {
                 <cfoutput>
                   <form method="post" action="./" target="_blank" class="m-0">
                     <input type="hidden" name="user_manager_action" value="logar_como_dev"/>
-                    <input type="hidden" name="user_manager_csrf" value="#htmlEditFormat(VARIABLES.userManagerCsrf)#"/>
+                    <input type="hidden" name="user_manager_csrf" value="#encodeForHTMLAttribute(VARIABLES.userManagerCsrf)#"/>
                     <input type="hidden" name="user_id" value="#qUserManagerUser.id#"/>
-                    <input type="hidden" name="return_tab" value="#htmlEditFormat(VARIABLES.userManagerTab)#"/>
+                    <input type="hidden" name="return_tab" value="#encodeForHTMLAttribute(VARIABLES.userManagerTab)#"/>
                     <button class="btn btn-sm btn-warning" type="submit" title="Abrir o ambiente DEV autenticado como este usuário">
                       <i class="fa-solid fa-user-secret me-2"></i>Logar como no DEV
                     </button>
@@ -415,19 +415,19 @@ function userManagerDateInput(any value = "") {
                   <div class="row g-3">
                     <div class="col-12 col-lg-6">
                       <label class="form-label">Nome *</label>
-                      <input class="form-control" name="name" required maxlength="256" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(qUserManagerUser.name)#</cfoutput></cfif>"/>
+                      <input class="form-control" name="name" required maxlength="256" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(qUserManagerUser.name)#</cfoutput></cfif>"/>
                     </div>
                     <div class="col-12 col-lg-6">
                       <label class="form-label">E-mail</label>
-                      <input class="form-control" type="email" name="email" maxlength="256" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(qUserManagerUser.email)#</cfoutput></cfif>" placeholder="Vazio gera um e-mail temporário"/>
+                      <input class="form-control" type="email" name="email" maxlength="256" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(qUserManagerUser.email)#</cfoutput></cfif>" placeholder="Vazio gera um e-mail temporário"/>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
                       <label class="form-label">Username</label>
-                      <input class="form-control" name="username" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.username, ''))#</cfoutput></cfif>"/>
+                      <input class="form-control" name="username" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.username, ''))#</cfoutput></cfif>"/>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
                       <label class="form-label">Nome conhecido / AKA</label>
-                      <input class="form-control" name="aka" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.aka, ''))#</cfoutput></cfif>"/>
+                      <input class="form-control" name="aka" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.aka, ''))#</cfoutput></cfif>"/>
                     </div>
                     <div class="col-6 col-lg-3">
                       <label class="form-label">Sexo</label>
@@ -439,7 +439,7 @@ function userManagerDateInput(any value = "") {
                     </div>
                     <div class="col-6 col-lg-3">
                       <label class="form-label">CBAT</label>
-                      <input class="form-control" name="cbat" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.cbat, ''))#</cfoutput></cfif>"/>
+                      <input class="form-control" name="cbat" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.cbat, ''))#</cfoutput></cfif>"/>
                     </div>
                     <div class="col-6 col-lg-3">
                       <label class="form-label">Nascimento</label>
@@ -451,11 +451,11 @@ function userManagerDateInput(any value = "") {
                     </div>
                     <div class="col-12 col-lg-6">
                       <label class="form-label">Assessoria</label>
-                      <input class="form-control" name="assessoria" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.assessoria, ''))#</cfoutput></cfif>"/>
+                      <input class="form-control" name="assessoria" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.assessoria, ''))#</cfoutput></cfif>"/>
                     </div>
                     <div class="col-12 col-lg-6">
                       <label class="form-label">Imagem da conta</label>
-                      <input class="form-control" name="imagem_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.imagem_usuario, ''))#</cfoutput></cfif>" placeholder="URL ou caminho já existente"/>
+                      <input class="form-control" name="imagem_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.imagem_usuario, ''))#</cfoutput></cfif>" placeholder="URL ou caminho já existente"/>
                     </div>
                   </div>
                 </div>
@@ -467,7 +467,7 @@ function userManagerDateInput(any value = "") {
                       <label class="form-label">País</label>
                       <select class="form-select" name="pais">
                         <cfoutput query="qUserManagerCountries">
-                          <option value="#qUserManagerCountries.cod_alpha2#" <cfif (VARIABLES.userManagerShowingDetail AND qUserManagerUser.pais EQ qUserManagerCountries.cod_alpha2) OR (!VARIABLES.userManagerShowingDetail AND qUserManagerCountries.cod_alpha2 EQ "BR")>selected</cfif>>#htmlEditFormat(qUserManagerCountries.nome_pais)#</option>
+                          <option value="#qUserManagerCountries.cod_alpha2#" <cfif (VARIABLES.userManagerShowingDetail AND qUserManagerUser.pais EQ qUserManagerCountries.cod_alpha2) OR (!VARIABLES.userManagerShowingDetail AND qUserManagerCountries.cod_alpha2 EQ "BR")>selected</cfif>>#encodeForHTML(qUserManagerCountries.nome_pais)#</option>
                         </cfoutput>
                       </select>
                     </div>
@@ -480,27 +480,27 @@ function userManagerDateInput(any value = "") {
                     </div>
                     <div class="col-6 col-md-3">
                       <label class="form-label">Cidade</label>
-                      <input class="form-control" name="cidade" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.cidade, ''))#</cfoutput></cfif>"/>
+                      <input class="form-control" name="cidade" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.cidade, ''))#</cfoutput></cfif>"/>
                     </div>
                     <div class="col-6 col-md-3">
                       <label class="form-label">CEP</label>
-                      <input class="form-control" name="cep" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.cep, ''))#</cfoutput></cfif>"/>
+                      <input class="form-control" name="cep" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.cep, ''))#</cfoutput></cfif>"/>
                     </div>
                     <div class="col-12 col-md-6">
                       <label class="form-label">Endereço</label>
-                      <input class="form-control" name="endereco" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.endereco, ''))#</cfoutput></cfif>"/>
+                      <input class="form-control" name="endereco" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.endereco, ''))#</cfoutput></cfif>"/>
                     </div>
                     <div class="col-4 col-md-2">
                       <label class="form-label">DDI</label>
-                      <input class="form-control" name="ddi_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.ddi_usuario, ''))#</cfoutput></cfif>"/>
+                      <input class="form-control" name="ddi_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.ddi_usuario, ''))#</cfoutput></cfif>"/>
                     </div>
                     <div class="col-4 col-md-2">
                       <label class="form-label">DDD</label>
-                      <input class="form-control" name="ddd_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.ddd_usuario, ''))#</cfoutput></cfif>"/>
+                      <input class="form-control" name="ddd_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.ddd_usuario, ''))#</cfoutput></cfif>"/>
                     </div>
                     <div class="col-4 col-md-2">
                       <label class="form-label">Telefone</label>
-                      <input class="form-control" name="telefone_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.telefone_usuario, ''))#</cfoutput></cfif>"/>
+                      <input class="form-control" name="telefone_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.telefone_usuario, ''))#</cfoutput></cfif>"/>
                     </div>
                   </div>
                 </div>
@@ -508,9 +508,9 @@ function userManagerDateInput(any value = "") {
                 <div class="user-manager-form-section mb-3">
                   <div class="user-manager-form-section-title mb-3">Plataforma e permissões</div>
                   <div class="row g-3">
-                    <div class="col-12 col-md-4"><label class="form-label">Tag de usuário</label><input class="form-control" name="tag_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.tag_usuario, ''))#</cfoutput></cfif>"/></div>
-                    <div class="col-12 col-md-4"><label class="form-label">URL do usuário</label><input class="form-control" name="url_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.url_usuario, ''))#</cfoutput></cfif>"/></div>
-                    <div class="col-12 col-md-4"><label class="form-label">Fonte do lead</label><input class="form-control" name="fonte_lead" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#htmlEditFormat(userManagerDisplayValue(qUserManagerUser.fonte_lead, ''))#</cfoutput></cfif>"/></div>
+                    <div class="col-12 col-md-4"><label class="form-label">Tag de usuário</label><input class="form-control" name="tag_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.tag_usuario, ''))#</cfoutput></cfif>"/></div>
+                    <div class="col-12 col-md-4"><label class="form-label">URL do usuário</label><input class="form-control" name="url_usuario" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.url_usuario, ''))#</cfoutput></cfif>"/></div>
+                    <div class="col-12 col-md-4"><label class="form-label">Fonte do lead</label><input class="form-control" name="fonte_lead" value="<cfif VARIABLES.userManagerShowingDetail><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(qUserManagerUser.fonte_lead, ''))#</cfoutput></cfif>"/></div>
                     <div class="col-12 col-md-4"><label class="form-label">ManyChat subscriber ID</label><input class="form-control" type="number" name="manychat_subscriber_id" value="<cfif VARIABLES.userManagerShowingDetail AND val(qUserManagerUser.manychat_subscriber_id) GT 0><cfoutput>#qUserManagerUser.manychat_subscriber_id#</cfoutput></cfif>"/></div>
                     <div class="col-12 col-md-8 d-flex flex-wrap align-items-end gap-4 pb-2">
                       <div class="form-check"><input class="form-check-input" type="checkbox" name="is_email_verified" value="true" id="um-email-verified"<cfif !VARIABLES.userManagerShowingDetail OR userManagerBoolean(qUserManagerUser.is_email_verified)> checked</cfif>/><label class="form-check-label" for="um-email-verified">E-mail verificado</label></div>
@@ -551,7 +551,7 @@ function userManagerDateInput(any value = "") {
                         AND VARIABLES.userManagerSchemaReady>
                       <form method="post" action="./" class="mt-2" data-confirm="Desvincular o Strava deste usuário? As credenciais e os dados protegidos da integração serão removidos.">
                         <input type="hidden" name="user_manager_action" value="desvincular_strava"/>
-                        <input type="hidden" name="user_manager_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.userManagerCsrf)#</cfoutput>"/>
+                        <input type="hidden" name="user_manager_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.userManagerCsrf)#</cfoutput>"/>
                         <input type="hidden" name="user_id" value="<cfoutput>#qUserManagerUser.id#</cfoutput>"/>
                         <input type="hidden" name="return_tab" value="conta"/>
                         <button class="btn btn-sm btn-outline-danger" type="submit"><i class="fa-solid fa-link-slash me-2"></i>Desvincular</button>
@@ -618,8 +618,8 @@ function userManagerDateInput(any value = "") {
                   <div class="d-flex align-items-center gap-3">
                     <span class="user-manager-status-dot <cfif userManagerBoolean(qUserManagerPages.gestao_excluido)>is-deleted<cfelseif NOT userManagerBoolean(qUserManagerPages.gestao_ativo)>is-inactive</cfif>"></span>
                     <div>
-                      <div class="fw-semibold">#htmlEditFormat(qUserManagerPages.nome)#</div>
-                      <div class="small text-muted">## #qUserManagerPages.id_pagina# · /#htmlEditFormat(qUserManagerPages.tag_prefix)#/#htmlEditFormat(qUserManagerPages.tag)#/ · #LSNumberFormat(qUserManagerPages.seguidores)# seguidores</div>
+                      <div class="fw-semibold">#encodeForHTML(qUserManagerPages.nome)#</div>
+                      <div class="small text-muted">## #qUserManagerPages.id_pagina# · /#encodeForHTML(qUserManagerPages.tag_prefix)#/#encodeForHTML(qUserManagerPages.tag)#/ · #LSNumberFormat(qUserManagerPages.seguidores)# seguidores</div>
                     </div>
                   </div>
                   <div class="d-flex flex-wrap gap-2">
@@ -662,7 +662,7 @@ function userManagerDateInput(any value = "") {
                 <thead><tr><th>ID</th><th>Agenda</th><th>Modo</th><th>Status</th><th>Composição</th><th class="user-manager-actions">Ação</th></tr></thead>
                 <tbody>
                   <cfif qUserManagerAgendas.recordcount>
-                    <cfoutput query="qUserManagerAgendas"><tr><td class="user-manager-id" data-label="ID">#qUserManagerAgendas.id_agenda#</td><td data-label="Agenda"><div class="fw-semibold">#htmlEditFormat(qUserManagerAgendas.nome)#</div><div class="small text-muted">#htmlEditFormat(qUserManagerAgendas.dominio_permitido)#</div></td><td data-label="Modo">#htmlEditFormat(qUserManagerAgendas.modo)#</td><td data-label="Status"><span class="badge badge-secondary">#htmlEditFormat(qUserManagerAgendas.status)#</span></td><td data-label="Composição"><span class="small">#qUserManagerAgendas.eventos_manuais# eventos · #qUserManagerAgendas.filtros# filtros</span></td><td class="user-manager-actions" data-label="Ação"><a class="btn btn-sm btn-outline-warning" href="/portal/agendas/?agenda_id=#qUserManagerAgendas.id_agenda#">Editar</a></td></tr></cfoutput>
+                    <cfoutput query="qUserManagerAgendas"><tr><td class="user-manager-id" data-label="ID">#qUserManagerAgendas.id_agenda#</td><td data-label="Agenda"><div class="fw-semibold">#encodeForHTML(qUserManagerAgendas.nome)#</div><div class="small text-muted">#encodeForHTML(qUserManagerAgendas.dominio_permitido)#</div></td><td data-label="Modo">#encodeForHTML(qUserManagerAgendas.modo)#</td><td data-label="Status"><span class="badge badge-secondary">#encodeForHTML(qUserManagerAgendas.status)#</span></td><td data-label="Composição"><span class="small">#qUserManagerAgendas.eventos_manuais# eventos · #qUserManagerAgendas.filtros# filtros</span></td><td class="user-manager-actions" data-label="Ação"><a class="btn btn-sm btn-outline-warning" href="/portal/agendas/?agenda_id=#qUserManagerAgendas.id_agenda#">Editar</a></td></tr></cfoutput>
                   <cfelse><tr><td colspan="6"><div class="user-manager-empty"><i class="fa-regular fa-calendar-xmark fa-2x text-muted mb-3"></i><span class="text-muted">Nenhuma agenda vinculada.</span></div></td></tr></cfif>
                 </tbody>
               </table>
@@ -683,7 +683,7 @@ function userManagerDateInput(any value = "") {
             </div>
             <div class="table-responsive"><table class="table table-hover user-manager-table mb-0"><thead><tr><th>ID</th><th>Evento</th><th>Resultado</th><th>Tempo</th><th class="user-manager-actions">Ação</th></tr></thead><tbody>
               <cfif qUserManagerResults.recordcount>
-                <cfoutput query="qUserManagerResults"><tr><td class="user-manager-id" data-label="ID">#qUserManagerResults.id_resultado#</td><td data-label="Evento"><div class="fw-semibold">#htmlEditFormat(qUserManagerResults.nome_evento)#</div><div class="small text-muted">#dateFormat(qUserManagerResults.data_final,"dd/mm/yyyy")# · #htmlEditFormat(userManagerDisplayValue(qUserManagerResults.cidade))#/#htmlEditFormat(userManagerDisplayValue(qUserManagerResults.estado))#</div></td><td data-label="Resultado"><div>#htmlEditFormat(qUserManagerResults.nome)#</div><div class="small text-muted">#htmlEditFormat(userManagerDisplayValue(qUserManagerResults.modalidade))# · #userManagerDisplayValue(qUserManagerResults.percurso)# km · peito #userManagerDisplayValue(qUserManagerResults.num_peito)#</div></td><td data-label="Tempo">#userManagerDisplayValue(qUserManagerResults.tempo_total)#</td><td class="user-manager-actions" data-label="Ação"><cfif VARIABLES.userManagerCanMutateDetail><form method="post" action="./" data-confirm="Desvincular este resultado do usuário?"><input type="hidden" name="user_manager_action" value="desvincular_resultado"/><input type="hidden" name="user_manager_csrf" value="#VARIABLES.userManagerCsrf#"/><input type="hidden" name="user_id" value="#qUserManagerUser.id#"/><input type="hidden" name="return_tab" value="resultados"/><input type="hidden" name="result_id" value="#qUserManagerResults.id_resultado#"/><button class="btn btn-sm btn-outline-danger" type="submit"><i class="fa-solid fa-link-slash"></i></button></form></cfif></td></tr></cfoutput>
+                <cfoutput query="qUserManagerResults"><tr><td class="user-manager-id" data-label="ID">#qUserManagerResults.id_resultado#</td><td data-label="Evento"><div class="fw-semibold">#encodeForHTML(qUserManagerResults.nome_evento)#</div><div class="small text-muted">#dateFormat(qUserManagerResults.data_final,"dd/mm/yyyy")# · #encodeForHTML(userManagerDisplayValue(qUserManagerResults.cidade))#/#encodeForHTML(userManagerDisplayValue(qUserManagerResults.estado))#</div></td><td data-label="Resultado"><div>#encodeForHTML(qUserManagerResults.nome)#</div><div class="small text-muted">#encodeForHTML(userManagerDisplayValue(qUserManagerResults.modalidade))# · #userManagerDisplayValue(qUserManagerResults.percurso)# km · peito #userManagerDisplayValue(qUserManagerResults.num_peito)#</div></td><td data-label="Tempo">#userManagerDisplayValue(qUserManagerResults.tempo_total)#</td><td class="user-manager-actions" data-label="Ação"><cfif VARIABLES.userManagerCanMutateDetail><form method="post" action="./" data-confirm="Desvincular este resultado do usuário?"><input type="hidden" name="user_manager_action" value="desvincular_resultado"/><input type="hidden" name="user_manager_csrf" value="#VARIABLES.userManagerCsrf#"/><input type="hidden" name="user_id" value="#qUserManagerUser.id#"/><input type="hidden" name="return_tab" value="resultados"/><input type="hidden" name="result_id" value="#qUserManagerResults.id_resultado#"/><button class="btn btn-sm btn-outline-danger" type="submit"><i class="fa-solid fa-link-slash"></i></button></form></cfif></td></tr></cfoutput>
               <cfelse><tr><td colspan="5"><div class="user-manager-empty"><i class="fa-solid fa-medal fa-2x text-muted mb-3"></i><span class="text-muted">Nenhum resultado vinculado.</span></div></td></tr></cfif>
             </tbody></table></div>
           </div>
@@ -696,7 +696,7 @@ function userManagerDateInput(any value = "") {
               <cfif VARIABLES.userManagerCanMutateDetail AND qUserManagerPages.recordcount>
                 <form method="post" action="./" class="d-flex flex-wrap gap-2 align-items-end">
                   <input type="hidden" name="user_manager_action" value="adicionar_vinculo_social"/><input type="hidden" name="user_manager_csrf" value="<cfoutput>#VARIABLES.userManagerCsrf#</cfoutput>"/><input type="hidden" name="user_id" value="<cfoutput>#qUserManagerUser.id#</cfoutput>"/><input type="hidden" name="return_tab" value="social"/>
-                  <div><label class="form-label small">Página deste usuário</label><select class="form-select form-select-sm" name="origin_page_id"><cfoutput query="qUserManagerPages"><option value="#qUserManagerPages.id_pagina#">#htmlEditFormat(qUserManagerPages.nome)#</option></cfoutput></select></div>
+                  <div><label class="form-label small">Página deste usuário</label><select class="form-select form-select-sm" name="origin_page_id"><cfoutput query="qUserManagerPages"><option value="#qUserManagerPages.id_pagina#">#encodeForHTML(qUserManagerPages.nome)#</option></cfoutput></select></div>
                   <div><label class="form-label small">Seguir página ID</label><input class="form-control form-control-sm" type="number" min="1" name="destination_page_id" required/></div>
                   <input type="hidden" name="vinculo_validado" value="true"/><button class="btn btn-sm btn-outline-warning" type="submit">Adicionar</button>
                 </form>
@@ -704,7 +704,7 @@ function userManagerDateInput(any value = "") {
             </div>
             <div class="table-responsive"><table class="table table-hover user-manager-table mb-0"><thead><tr><th>Direção</th><th>Origem</th><th>Destino</th><th>Status</th><th>Data</th><th class="user-manager-actions">Ação</th></tr></thead><tbody>
               <cfif qUserManagerSocial.recordcount>
-                <cfoutput query="qUserManagerSocial"><tr><td data-label="Direção"><span class="badge <cfif userManagerBoolean(qUserManagerSocial.usuario_seguindo)>badge-info<cfelse>badge-primary</cfif>"><cfif userManagerBoolean(qUserManagerSocial.usuario_seguindo)>Seguindo<cfelse>Seguidor</cfif></span></td><td data-label="Origem"><div class="fw-semibold">#htmlEditFormat(qUserManagerSocial.origem_nome)#</div><div class="small text-muted">Página ## #qUserManagerSocial.id_pagina_origem#</div></td><td data-label="Destino"><div class="fw-semibold">#htmlEditFormat(qUserManagerSocial.destino_nome)#</div><div class="small text-muted">Página ## #qUserManagerSocial.id_pagina_destino#</div></td><td data-label="Status"><span class="badge <cfif userManagerBoolean(qUserManagerSocial.vinculo_validado)>badge-success<cfelse>badge-warning</cfif>"><cfif userManagerBoolean(qUserManagerSocial.vinculo_validado)>Confirmado<cfelse>Pendente</cfif></span></td><td data-label="Data">#dateTimeFormat(qUserManagerSocial.data_cadastramento,"dd/mm/yyyy HH:nn")#</td><td class="user-manager-actions" data-label="Ação"><div class="d-flex gap-1"><cfif VARIABLES.userManagerCanMutateDetail AND NOT userManagerBoolean(qUserManagerSocial.vinculo_validado)><form method="post" action="./"><input type="hidden" name="user_manager_action" value="aprovar_vinculo_social"/><input type="hidden" name="user_manager_csrf" value="#VARIABLES.userManagerCsrf#"/><input type="hidden" name="user_id" value="#qUserManagerUser.id#"/><input type="hidden" name="return_tab" value="social"/><input type="hidden" name="origin_page_id" value="#qUserManagerSocial.id_pagina_origem#"/><input type="hidden" name="destination_page_id" value="#qUserManagerSocial.id_pagina_destino#"/><button class="btn btn-sm btn-outline-success" title="Aprovar"><i class="fa-solid fa-check"></i></button></form></cfif><cfif VARIABLES.userManagerCanMutateDetail><form method="post" action="./" data-confirm="Remover este relacionamento?"><input type="hidden" name="user_manager_action" value="remover_vinculo_social"/><input type="hidden" name="user_manager_csrf" value="#VARIABLES.userManagerCsrf#"/><input type="hidden" name="user_id" value="#qUserManagerUser.id#"/><input type="hidden" name="return_tab" value="social"/><input type="hidden" name="origin_page_id" value="#qUserManagerSocial.id_pagina_origem#"/><input type="hidden" name="destination_page_id" value="#qUserManagerSocial.id_pagina_destino#"/><button class="btn btn-sm btn-outline-danger" title="Remover"><i class="fa-solid fa-xmark"></i></button></form></cfif></div></td></tr></cfoutput>
+                <cfoutput query="qUserManagerSocial"><tr><td data-label="Direção"><span class="badge <cfif userManagerBoolean(qUserManagerSocial.usuario_seguindo)>badge-info<cfelse>badge-primary</cfif>"><cfif userManagerBoolean(qUserManagerSocial.usuario_seguindo)>Seguindo<cfelse>Seguidor</cfif></span></td><td data-label="Origem"><div class="fw-semibold">#encodeForHTML(qUserManagerSocial.origem_nome)#</div><div class="small text-muted">Página ## #qUserManagerSocial.id_pagina_origem#</div></td><td data-label="Destino"><div class="fw-semibold">#encodeForHTML(qUserManagerSocial.destino_nome)#</div><div class="small text-muted">Página ## #qUserManagerSocial.id_pagina_destino#</div></td><td data-label="Status"><span class="badge <cfif userManagerBoolean(qUserManagerSocial.vinculo_validado)>badge-success<cfelse>badge-warning</cfif>"><cfif userManagerBoolean(qUserManagerSocial.vinculo_validado)>Confirmado<cfelse>Pendente</cfif></span></td><td data-label="Data">#dateTimeFormat(qUserManagerSocial.data_cadastramento,"dd/mm/yyyy HH:nn")#</td><td class="user-manager-actions" data-label="Ação"><div class="d-flex gap-1"><cfif VARIABLES.userManagerCanMutateDetail AND NOT userManagerBoolean(qUserManagerSocial.vinculo_validado)><form method="post" action="./"><input type="hidden" name="user_manager_action" value="aprovar_vinculo_social"/><input type="hidden" name="user_manager_csrf" value="#VARIABLES.userManagerCsrf#"/><input type="hidden" name="user_id" value="#qUserManagerUser.id#"/><input type="hidden" name="return_tab" value="social"/><input type="hidden" name="origin_page_id" value="#qUserManagerSocial.id_pagina_origem#"/><input type="hidden" name="destination_page_id" value="#qUserManagerSocial.id_pagina_destino#"/><button class="btn btn-sm btn-outline-success" title="Aprovar"><i class="fa-solid fa-check"></i></button></form></cfif><cfif VARIABLES.userManagerCanMutateDetail><form method="post" action="./" data-confirm="Remover este relacionamento?"><input type="hidden" name="user_manager_action" value="remover_vinculo_social"/><input type="hidden" name="user_manager_csrf" value="#VARIABLES.userManagerCsrf#"/><input type="hidden" name="user_id" value="#qUserManagerUser.id#"/><input type="hidden" name="return_tab" value="social"/><input type="hidden" name="origin_page_id" value="#qUserManagerSocial.id_pagina_origem#"/><input type="hidden" name="destination_page_id" value="#qUserManagerSocial.id_pagina_destino#"/><button class="btn btn-sm btn-outline-danger" title="Remover"><i class="fa-solid fa-xmark"></i></button></form></cfif></div></td></tr></cfoutput>
               <cfelse><tr><td colspan="6"><div class="user-manager-empty"><i class="fa-solid fa-user-group fa-2x text-muted mb-3"></i><span class="text-muted">Nenhum relacionamento encontrado.</span></div></td></tr></cfif>
             </tbody></table></div>
           </div>
@@ -715,7 +715,7 @@ function userManagerDateInput(any value = "") {
             <div class="mb-3"><h5 class="mb-1">Auditoria administrativa</h5><p class="small text-muted mb-0">Registro imutável das ações realizadas por este gerenciador.</p></div>
             <div class="table-responsive"><table class="table table-hover user-manager-table mb-0"><thead><tr><th>Data</th><th>Ação</th><th>Autor</th><th>Página</th><th>Origem</th></tr></thead><tbody>
               <cfif qUserManagerAudit.recordcount>
-                <cfoutput query="qUserManagerAudit"><tr><td data-label="Data">#dateTimeFormat(qUserManagerAudit.data_criacao,"dd/mm/yyyy HH:nn:ss")#</td><td data-label="Ação"><span class="badge badge-secondary">#htmlEditFormat(replace(qUserManagerAudit.acao,"_"," ","all"))#</span></td><td data-label="Autor">#htmlEditFormat(userManagerDisplayValue(qUserManagerAudit.autor_nome, "Sistema"))#</td><td data-label="Página">#htmlEditFormat(userManagerDisplayValue(qUserManagerAudit.pagina_nome))#</td><td data-label="Origem"><span class="small">#htmlEditFormat(userManagerDisplayValue(qUserManagerAudit.endereco_ip))#</span></td></tr></cfoutput>
+                <cfoutput query="qUserManagerAudit"><tr><td data-label="Data">#dateTimeFormat(qUserManagerAudit.data_criacao,"dd/mm/yyyy HH:nn:ss")#</td><td data-label="Ação"><span class="badge badge-secondary">#encodeForHTML(replace(qUserManagerAudit.acao,"_"," ","all"))#</span></td><td data-label="Autor">#encodeForHTML(userManagerDisplayValue(qUserManagerAudit.autor_nome, "Sistema"))#</td><td data-label="Página">#encodeForHTML(userManagerDisplayValue(qUserManagerAudit.pagina_nome))#</td><td data-label="Origem"><span class="small">#encodeForHTML(userManagerDisplayValue(qUserManagerAudit.endereco_ip))#</span></td></tr></cfoutput>
               <cfelse><tr><td colspan="5"><div class="user-manager-empty"><i class="fa-solid fa-shield-halved fa-2x text-muted mb-3"></i><span class="text-muted">Nenhum registro de auditoria.</span></div></td></tr></cfif>
             </tbody></table></div>
           </div>
@@ -736,7 +736,7 @@ function userManagerDateInput(any value = "") {
 
         <form class="user-manager-panel p-3 mb-4" method="get" action="./">
           <div class="row g-3 align-items-end">
-            <div class="col-12 col-lg-6"><label class="form-label">Buscar usuário</label><div class="input-group"><span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span><input class="form-control" name="busca" value="<cfoutput>#htmlEditFormat(VARIABLES.userManagerSearch)#</cfoutput>" placeholder="Nome, e-mail, username ou ID"/></div></div>
+            <div class="col-12 col-lg-6"><label class="form-label">Buscar usuário</label><div class="input-group"><span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span><input class="form-control" name="busca" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.userManagerSearch)#</cfoutput>" placeholder="Nome, e-mail, username ou ID"/></div></div>
             <div class="col-6 col-lg-2"><label class="form-label">Status</label><select class="form-select" name="status"><option value="ativos" <cfif VARIABLES.userManagerStatus EQ "ativos">selected</cfif>>Ativos</option><option value="inativos" <cfif VARIABLES.userManagerStatus EQ "inativos">selected</cfif>>Inativos</option><option value="excluidos" <cfif VARIABLES.userManagerStatus EQ "excluidos">selected</cfif>>Excluídos</option><option value="todos" <cfif VARIABLES.userManagerStatus EQ "todos">selected</cfif>>Todos</option></select></div>
             <div class="col-6 col-lg-2"><label class="form-label">Perfil</label><select class="form-select" name="papel"><option value="todos">Todos</option><option value="admin" <cfif VARIABLES.userManagerRole EQ "admin">selected</cfif>>ADMIN</option><option value="dev" <cfif VARIABLES.userManagerRole EQ "dev">selected</cfif>>DEV</option><option value="partner" <cfif VARIABLES.userManagerRole EQ "partner">selected</cfif>>PARTNER</option><option value="com_strava" <cfif VARIABLES.userManagerRole EQ "com_strava">selected</cfif>>Com Strava</option><option value="sem_pagina" <cfif VARIABLES.userManagerRole EQ "sem_pagina">selected</cfif>>Sem página</option></select></div>
             <div class="col-12 col-lg-2"><button class="btn btn-outline-warning w-100" type="submit">Aplicar filtros</button></div>
@@ -751,12 +751,12 @@ function userManagerDateInput(any value = "") {
                 <cfset VARIABLES.userManagerListAvatar = userManagerDisplayValue(qUserManagerUsers.imagem_usuario, userManagerDisplayValue(qUserManagerUsers.strava_profile, "/assets/user.png"))/>
                 <tr>
                   <td class="user-manager-id" data-label="ID">#qUserManagerUsers.id#</td>
-                  <td data-label="Usuário"><div class="d-flex align-items-center gap-2"><img class="user-manager-avatar-sm" src="#htmlEditFormat(VARIABLES.userManagerListAvatar)#" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/><div><div class="fw-semibold">#htmlEditFormat(qUserManagerUsers.name)#</div><div class="small text-muted">#htmlEditFormat(qUserManagerUsers.email)#</div><div class="d-flex flex-wrap gap-1 mt-1"><cfif userManagerBoolean(qUserManagerUsers.is_admin)><span class="badge badge-warning">ADMIN</span></cfif><cfif userManagerBoolean(qUserManagerUsers.is_dev)><span class="badge badge-info">DEV</span></cfif><cfif userManagerBoolean(qUserManagerUsers.is_partner)><span class="badge badge-primary">PARTNER</span></cfif></div></div></div></td>
+                  <td data-label="Usuário"><div class="d-flex align-items-center gap-2"><img class="user-manager-avatar-sm" src="#encodeForHTMLAttribute(VARIABLES.userManagerListAvatar)#" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/><div><div class="fw-semibold">#encodeForHTML(qUserManagerUsers.name)#</div><div class="small text-muted">#encodeForHTML(qUserManagerUsers.email)#</div><div class="d-flex flex-wrap gap-1 mt-1"><cfif userManagerBoolean(qUserManagerUsers.is_admin)><span class="badge badge-warning">ADMIN</span></cfif><cfif userManagerBoolean(qUserManagerUsers.is_dev)><span class="badge badge-info">DEV</span></cfif><cfif userManagerBoolean(qUserManagerUsers.is_partner)><span class="badge badge-primary">PARTNER</span></cfif></div></div></div></td>
                   <td data-label="Status"><div class="d-flex align-items-center gap-2"><span class="user-manager-status-dot <cfif userManagerBoolean(qUserManagerUsers.gestao_excluido)>is-deleted<cfelseif NOT userManagerBoolean(qUserManagerUsers.gestao_ativo)>is-inactive</cfif>"></span><span><cfif userManagerBoolean(qUserManagerUsers.gestao_excluido)>Excluído<cfelseif userManagerBoolean(qUserManagerUsers.gestao_ativo)>Ativo<cfelse>Inativo</cfif></span></div></td>
-                  <td data-label="Perfis"><div class="fw-semibold">#LSNumberFormat(qUserManagerUsers.total_paginas)#</div><cfif len(trim(qUserManagerUsers.pagina_principal & ""))><div class="small text-muted">#htmlEditFormat(qUserManagerUsers.pagina_principal)#</div></cfif></td>
+                  <td data-label="Perfis"><div class="fw-semibold">#LSNumberFormat(qUserManagerUsers.total_paginas)#</div><cfif len(trim(qUserManagerUsers.pagina_principal & ""))><div class="small text-muted">#encodeForHTML(qUserManagerUsers.pagina_principal)#</div></cfif></td>
                   <td data-label="Resultados">#LSNumberFormat(qUserManagerUsers.total_resultados)#</td>
                   <td data-label="Cadastro"><span class="small">#dateFormat(qUserManagerUsers.data_criacao,"dd/mm/yyyy")#</span></td>
-                  <td class="user-manager-actions" data-label="Ações"><div class="d-flex gap-1"><a class="btn btn-sm btn-outline-warning" href="./?user_id=#qUserManagerUsers.id#" title="Abrir ficha"><i class="fa-solid fa-pen-to-square"></i></a><cfif userManagerBoolean(qUserManagerUsers.gestao_ativo) AND !userManagerBoolean(qUserManagerUsers.gestao_excluido)><form method="post" action="./" target="_blank" class="m-0"><input type="hidden" name="user_manager_action" value="logar_como_dev"/><input type="hidden" name="user_manager_csrf" value="#htmlEditFormat(VARIABLES.userManagerCsrf)#"/><input type="hidden" name="user_id" value="#qUserManagerUsers.id#"/><input type="hidden" name="return_tab" value="conta"/><button class="btn btn-sm btn-outline-secondary" type="submit" title="Logar como no DEV"><i class="fa-solid fa-user-secret"></i></button></form></cfif></div></td>
+                  <td class="user-manager-actions" data-label="Ações"><div class="d-flex gap-1"><a class="btn btn-sm btn-outline-warning" href="./?user_id=#qUserManagerUsers.id#" title="Abrir ficha"><i class="fa-solid fa-pen-to-square"></i></a><cfif userManagerBoolean(qUserManagerUsers.gestao_ativo) AND !userManagerBoolean(qUserManagerUsers.gestao_excluido)><form method="post" action="./" target="_blank" class="m-0"><input type="hidden" name="user_manager_action" value="logar_como_dev"/><input type="hidden" name="user_manager_csrf" value="#encodeForHTMLAttribute(VARIABLES.userManagerCsrf)#"/><input type="hidden" name="user_id" value="#qUserManagerUsers.id#"/><input type="hidden" name="return_tab" value="conta"/><button class="btn btn-sm btn-outline-secondary" type="submit" title="Logar como no DEV"><i class="fa-solid fa-user-secret"></i></button></form></cfif></div></td>
                 </tr>
               </cfoutput>
             <cfelse><tr><td colspan="7"><div class="user-manager-empty"><i class="fa-solid fa-user-slash fa-2x text-muted mb-3"></i><h6>Nenhum usuário encontrado</h6><p class="small text-muted mb-0">Ajuste os filtros ou crie uma nova conta.</p></div></td></tr></cfif>

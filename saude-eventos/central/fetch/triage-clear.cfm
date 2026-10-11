@@ -15,13 +15,13 @@
 </cfif>
 
 <cfif CGI.REQUEST_METHOD NEQ "POST">
-    <cfheader statuscode="405" statustext="Method Not Allowed"/>
+    <cfheader statuscode="405"/>
     <cfoutput>#serializeJSON({success=false,message="Use a confirmação da Central para limpar a triagem."})#</cfoutput>
     <cfabort/>
 </cfif>
 
 <cfif NOT VARIABLES.saudeCanOperate>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>#serializeJSON({success=false,message="Somente Médicos e Admins Globais podem limpar a triagem."})#</cfoutput>
     <cfabort/>
 </cfif>
@@ -29,13 +29,13 @@
 <cfif NOT structKeyExists(SESSION, "saudeBusinessCsrfToken")
     OR NOT len(trim(SESSION.saudeBusinessCsrfToken & ""))
     OR compare(FORM.csrf_token & "", SESSION.saudeBusinessCsrfToken & "") NEQ 0>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>#serializeJSON({success=false,message="A sessão de segurança expirou. Recarregue o painel."})#</cfoutput>
     <cfabort/>
 </cfif>
 
 <cfif NOT isNumeric(FORM.id_evento) OR val(FORM.id_evento) LTE 0>
-    <cfheader statuscode="400" statustext="Bad Request"/>
+    <cfheader statuscode="400"/>
     <cfoutput>#serializeJSON({success=false,message="Evento inválido."})#</cfoutput>
     <cfabort/>
 </cfif>
@@ -102,7 +102,7 @@
     })#</cfoutput>
     <cfcatch type="any">
         <cflog file="business-saude-eventos" type="error" text="triage_clear event=#int(FORM.id_evento)# actor=#VARIABLES.saudeTriageActorId# message=#left(cfcatch.message & '', 1000)# detail=#left(structKeyExists(cfcatch, 'detail') ? cfcatch.detail & '' : '', 3000)#"/>
-        <cfheader statuscode="500" statustext="Internal Server Error"/>
+        <cfheader statuscode="500"/>
         <cfoutput>#serializeJSON({success=false,message="Não foi possível limpar a triagem."})#</cfoutput>
     </cfcatch>
 </cftry>

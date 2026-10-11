@@ -119,11 +119,11 @@
 
         <div class="saude-event-heading">
             <span class="saude-live"><i></i>Operação ativa</span>
-            <h1><cfoutput>#htmlEditFormat(qSaudeEvento.nome_evento)#</cfoutput></h1>
+            <h1><cfoutput>#encodeForHTML(qSaudeEvento.nome_evento)#</cfoutput></h1>
             <p>
-                <cfoutput>#htmlEditFormat(qSaudeEvento.nome_operacao)#</cfoutput>
-                <cfif len(trim(qSaudeEvento.diretor_medico & ""))><span>·</span><i class="fa-solid fa-user-doctor"></i><cfoutput>#htmlEditFormat(qSaudeEvento.diretor_medico)#</cfoutput></cfif>
-                <cfif len(trim(qSaudeEvento.local_atendimento & ""))><span>·</span><i class="fa-solid fa-location-dot"></i><cfoutput>#htmlEditFormat(qSaudeEvento.local_atendimento)#</cfoutput></cfif>
+                <cfoutput>#encodeForHTML(qSaudeEvento.nome_operacao)#</cfoutput>
+                <cfif len(trim(qSaudeEvento.diretor_medico & ""))><span>·</span><i class="fa-solid fa-user-doctor"></i><cfoutput>#encodeForHTML(qSaudeEvento.diretor_medico)#</cfoutput></cfif>
+                <cfif len(trim(qSaudeEvento.local_atendimento & ""))><span>·</span><i class="fa-solid fa-location-dot"></i><cfoutput>#encodeForHTML(qSaudeEvento.local_atendimento)#</cfoutput></cfif>
             </p>
         </div>
 
@@ -132,7 +132,7 @@
                 <span>Evento</span>
                 <select id="eventSelector" aria-label="Selecionar evento">
                     <cfoutput query="qSaudeEventos">
-                        <option value="#qSaudeEventos.id_evento#" <cfif qSaudeEventos.id_evento EQ qSaudeEvento.id_evento>selected</cfif>>#htmlEditFormat(qSaudeEventos.nome_evento)#</option>
+                        <option value="#qSaudeEventos.id_evento#" <cfif qSaudeEventos.id_evento EQ qSaudeEvento.id_evento>selected</cfif>>#encodeForHTML(qSaudeEventos.nome_evento)#</option>
                     </cfoutput>
                 </select>
             </label>
@@ -175,7 +175,7 @@
             <article class="saude-queue-card is-startlist">
                 <header>
                     <div><span class="saude-queue-kicker">Lista da prova</span><h2>Atletas <small id="startlistCount"></small></h2></div>
-                    <span class="saude-course-label"><cfoutput>#htmlEditFormat(VARIABLES.saudeSelectedCourseLabel)#</cfoutput></span>
+                    <span class="saude-course-label"><cfoutput>#encodeForHTML(VARIABLES.saudeSelectedCourseLabel)#</cfoutput></span>
                 </header>
                 <div class="saude-search">
                     <i class="fa-solid fa-magnifying-glass"></i>

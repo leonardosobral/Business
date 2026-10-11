@@ -1,0 +1,498 @@
+[
+  {
+    "url": "https://roadrunners.run/es/busqueda/?distancia_inicio=5&distancia_fim=5&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/busqueda/"
+    ],
+    "alternates": {},
+    "title": "Búsqueda - Road Runners",
+    "description": [
+      "Explora eventos, resultados, atletas, noticias y videos en Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/es/busqueda/?distancia_inicio=42&distancia_fim=42&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/busqueda/"
+    ],
+    "alternates": {},
+    "title": "Búsqueda - Road Runners",
+    "description": [
+      "Explora eventos, resultados, atletas, noticias y videos en Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/es/busqueda/?distancia_inicio=30&distancia_fim=30&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/busqueda/"
+    ],
+    "alternates": {},
+    "title": "Búsqueda - Road Runners",
+    "description": [
+      "Explora eventos, resultados, atletas, noticias y videos en Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/es/busqueda/?distancia_inicio=21&distancia_fim=21&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/busqueda/"
+    ],
+    "alternates": {},
+    "title": "Búsqueda - Road Runners",
+    "description": [
+      "Explora eventos, resultados, atletas, noticias y videos en Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/es/busqueda/?distancia_inicio=15&distancia_fim=15&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/busqueda/"
+    ],
+    "alternates": {},
+    "title": "Búsqueda - Road Runners",
+    "description": [
+      "Explora eventos, resultados, atletas, noticias y videos en Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/es/busqueda/?distancia_inicio=10&distancia_fim=10&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/busqueda/"
+    ],
+    "alternates": {},
+    "title": "Búsqueda - Road Runners",
+    "description": [
+      "Explora eventos, resultados, atletas, noticias y videos en Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/es/busqueda/?busca_tipo=resultados",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/busqueda/"
+    ],
+    "alternates": {},
+    "title": "Búsqueda - Road Runners",
+    "description": [
+      "Explora eventos, resultados, atletas, noticias y videos en Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/es/busqueda/?busca_tipo=eventos&context_uf=BR&rua=true&trail=true&nacional=true&internacional=false&cupom=false",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/busqueda/"
+    ],
+    "alternates": {},
+    "title": "Búsqueda - Road Runners",
+    "description": [
+      "Explora eventos, resultados, atletas, noticias y videos en Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/es/busqueda/?busca_tipo=eventos",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/busqueda/"
+    ],
+    "alternates": {},
+    "title": "Búsqueda - Road Runners",
+    "description": [
+      "Explora eventos, resultados, atletas, noticias y videos en Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/en/search/?distancia_inicio=5&distancia_fim=5&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/search/"
+    ],
+    "alternates": {},
+    "title": "Search - Road Runners",
+    "description": [
+      "Explore events, results, athletes, news and videos on Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/en/search/?distancia_inicio=42&distancia_fim=42&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/search/"
+    ],
+    "alternates": {},
+    "title": "Search - Road Runners",
+    "description": [
+      "Explore events, results, athletes, news and videos on Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/en/search/?distancia_inicio=30&distancia_fim=30&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/search/"
+    ],
+    "alternates": {},
+    "title": "Search - Road Runners",
+    "description": [
+      "Explore events, results, athletes, news and videos on Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/en/search/?distancia_inicio=21&distancia_fim=21&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/search/"
+    ],
+    "alternates": {},
+    "title": "Search - Road Runners",
+    "description": [
+      "Explore events, results, athletes, news and videos on Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/en/search/?distancia_inicio=15&distancia_fim=15&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/search/"
+    ],
+    "alternates": {},
+    "title": "Search - Road Runners",
+    "description": [
+      "Explore events, results, athletes, news and videos on Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/en/search/?distancia_inicio=10&distancia_fim=10&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/search/"
+    ],
+    "alternates": {},
+    "title": "Search - Road Runners",
+    "description": [
+      "Explore events, results, athletes, news and videos on Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/en/search/?busca_tipo=resultados",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/search/"
+    ],
+    "alternates": {},
+    "title": "Search - Road Runners",
+    "description": [
+      "Explore events, results, athletes, news and videos on Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/en/search/?busca_tipo=eventos&context_uf=BR&rua=true&trail=true&nacional=true&internacional=false&cupom=false",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/search/"
+    ],
+    "alternates": {},
+    "title": "Search - Road Runners",
+    "description": [
+      "Explore events, results, athletes, news and videos on Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/en/search/?busca_tipo=eventos",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/search/"
+    ],
+    "alternates": {},
+    "title": "Search - Road Runners",
+    "description": [
+      "Explore events, results, athletes, news and videos on Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?distancia_inicio=5&distancia_fim=5&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?distancia_inicio=42&distancia_fim=42&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?distancia_inicio=30&distancia_fim=30&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?distancia_inicio=21&distancia_fim=21&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?distancia_inicio=15&distancia_fim=15&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?distancia_inicio=10&distancia_fim=10&busca_mode=ai",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?busca_tipo=resultados",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?busca_tipo=eventos&context_uf=BR&rua=true&trail=true&nacional=true&internacional=false&cupom=false",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?busca_tipo=eventos",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?busca=&busca_mode=ai&busca_tipo=videos",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?busca=&busca_mode=ai&busca_tipo=resultados",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?busca=&busca_mode=ai&busca_tipo=noticias",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?busca=&busca_mode=ai&busca_tipo=eventos",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?busca=&busca_mode=ai&busca_tipo=atletas",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/busca/",
+      "en": "https://roadrunners.run/en/search/",
+      "es": "https://roadrunners.run/es/busqueda/",
+      "x-default": "https://roadrunners.run/busca/"
+    },
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/en/search/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/search/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/busca/",
+      "en": "https://roadrunners.run/en/search/",
+      "es": "https://roadrunners.run/es/busqueda/",
+      "x-default": "https://roadrunners.run/busca/"
+    },
+    "title": "Search - Road Runners",
+    "description": [
+      "Explore events, results, athletes, news and videos on Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/es/busqueda/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/busqueda/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/busca/",
+      "en": "https://roadrunners.run/en/search/",
+      "es": "https://roadrunners.run/es/busqueda/",
+      "x-default": "https://roadrunners.run/busca/"
+    },
+    "title": "Búsqueda - Road Runners",
+    "description": [
+      "Explora eventos, resultados, atletas, noticias y videos en Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?busca=maratona",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca: maratona - Road Runners",
+    "description": [
+      "Resultado da busca por maratona no Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/busca/?utm_source=seo-check",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/busca/"
+    ],
+    "alternates": {},
+    "title": "Busca - Road Runners",
+    "description": [
+      "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+    ],
+    "robots": []
+  }
+]

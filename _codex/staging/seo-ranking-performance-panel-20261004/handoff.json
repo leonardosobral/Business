@@ -1,0 +1,12 @@
+{
+  "status": "published_and_verified",
+  "runtime_files": [
+    "portal/includes/seo_queue_data.cfm",
+    "portal/conteudo/seo_semrush.cfm"
+  ],
+  "next": "Supplier re-audit needed to confirm crawl; investigate other RR-20 cases with evidence",
+  "vendor_score_unchanged": 76,
+  "vendor_errors_unchanged": 9,
+  "no_database_writes": true,
+  "no_git_mutations": true
+}

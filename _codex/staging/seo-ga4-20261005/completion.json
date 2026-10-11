@@ -1,0 +1,13 @@
+{
+  "runtime_files": 9,
+  "compiled_templates": 7,
+  "service_checks": 26,
+  "http_checks": 8,
+  "node_tests": 8,
+  "unrelated_dependencies_preserved": 9,
+  "anonymous_api_status": 403,
+  "public_js_status": 200,
+  "consent": "pending",
+  "real_ga4_data": "not_yet_verified",
+  "backup": "/var/backups/seo-ga4-20261005/baseline"
+}

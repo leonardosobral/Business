@@ -1,0 +1,464 @@
+ 
+     
+         
+         
+
+         
+         
+
+         Inscrições ONLINE 
+         
+         
+
+         
+         
+         
+         
+         
+
+         
+         
+         
+         
+         
+         
+
+         
+         
+         
+         
+         
+
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+
+         
+         
+         
+         
+         
+
+         
+
+         
+         
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+         
+        
+
+         
+        
+        
+
+        
+        
+
+         
+         
+
+        
+        
+
+        
+
+        
+        
+        
+
+         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+         
+        
+
+        
+        
+
+        
+
+        
+
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+         
+        
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+     
+     
+          
+
+         
+             
+                 
+                     
+                          
+                     
+                     
+                         
+                         
+                            {{aDadosFranquia.franquia_fantasia}}
+                         
+                     
+                     
+                         
+                             
+                                 
+                                     
+                                         
+                                          
+                                     
+                                 
+                             
+                         
+                         
+                             
+                                 
+                                     
+                                        Acesso Rápido
+                                     
+                                     
+                                         
+                                             
+                                                 
+                                                     
+                                                        {{aDadosAtleta.att_nome.split('
+                                                        ')[0].substr(0,1)}}
+                                                        {{aDadosAtleta.att_nome.split('
+                                                        ')[aDadosAtleta.att_nome.split('
+                                                        ').length-1].substr(0,1)}}
+                                                     
+                                                 
+                                                 
+                                             
+                                             
+                                                 
+                                                    {{(aDadosAtleta.att_apelido
+                                                    ? aDadosAtleta.att_apelido :
+                                                    aDadosAtleta.att_nome.split('
+                                                    ')[0] + ' ' +
+                                                    aDadosAtleta.att_nome.split('
+                                                    ')[aDadosAtleta.att_nome.split('
+                                                    ').length-1])}}
+                                                 
+                                             
+                                         
+                                     
+                                 
+                                 
+                                     
+                                         
+                                             
+                                                 Acesso Atleta 
+                                                 Cadastre-se 
+                                                 Recuperar senha 
+
+                                                 Painel Atleta 
+                                                 Minhas Incrições 
+                                                 Meus Dados 
+
+                                                 2ª via de Boleto 
+                                                 2ª via de Boleto 
+                                                 Termo de Responsabilidae 
+                                                 Termo de Responsabilidae 
+                                                 Comprovante de Inscrição 
+                                                 Comprovante de Inscrição 
+
+                                                 
+													   Suporte ao Atleta
+											  -->
+                                                 Acesso Organizador 
+                                                 Sair 
+                                             
+                                         
+                                     
+                                 
+                             
+                         
+                     
+
+                     
+                         
+                             
+                                 
+                                     
+                                         
+                                             
+                                                 
+                                             
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                 
+                                                    {{aDadosAtleta.att_nome.split('
+                                                    ')[0].substr(0,1)}} {{(
+                                                    !['de','DE','da','DA'].includes(aDadosAtleta.att_nome.split('
+                                                    ')[1]) ?
+                                                    aDadosAtleta.att_nome.split('
+                                                    ')[1].substr(0,1) :
+                                                    aDadosAtleta.att_nome.split('
+                                                    ')[2].substr(0,1))}}
+                                                 
+                                             
+                                             
+                                         
+                                     
+                                 
+                             
+                         
+                         
+                             
+                                 Acesso Atleta 
+                                 Cadastre-se 
+                                 Recuperar senha 
+
+                                 Painel Atleta 
+                                 Minhas Incrições 
+                                 Meus Dados 
+
+                                 2ª via de Boleto 
+                                 2ª via de Boleto 
+                                 Termo de Responsabilidae 
+                                 Termo de Responsabilidae 
+                                 Comprovante de Inscrição 
+                                 Comprovante de Inscrição 
+
+                                 
+									   Suporte ao Atleta
+							  -->
+                                 Acesso Organizador 
+                                 Sair 
+                             
+                         
+                     
+                 
+             
+
+             
+                 
+                     
+                         
+                             
+                                   Quem
+                                    Somos 
+                             
+                             
+                                   Calendário 
+                             
+                             
+                                   Resultados 
+                             
+                             
+                                   Ranking 
+                             
+                                Gameficação  
+						    Orçamento   -->
+                             
+                                 
+                                      
+                                    Suporte ao Atleta
+                                 
+                             
+                             
+                                   Evento / Orçamento 
+                             
+                                F.A.Q   -->
+                         
+                     
+                 
+             
+
+             
+                  
+             
+
+             
+                 
+                     
+                          
+                     
+                     
+                         
+                             
+                                 
+                                    EMPRESA
+                                 
+                                 
+                                     
+                                         Serviços 
+                                     
+                                     
+                                         {{adminSobre.asb_titulo}} 
+                                     
+                                 
+                             
+                             
+                                 
+                                    ATLETAS
+                                 
+                                 
+                                     
+                                         Login 
+                                     
+                                     
+                                         Cadastre-se 
+                                     
+                                     
+                                         Resultados 
+                                     
+                                     
+                                         Ranking 
+                                     
+                                      Gameficação   -->
+                                     
+                                         Fale Conosco 
+                                     
+                                     
+                                         Suporte ao Atleta 
+                                     
+                                     
+                                         Termos de Uso 
+                                     
+                                     
+                                         Políticas de Privacidade 
+                                     
+                                 
+                             
+                             
+                                 
+                                    ORGANIZADORES
+                                 
+                                 
+                                     
+                                         Área Admin 
+                                     
+                                     
+                                         Cadastre-se 
+                                     
+                                      Solicitar Orçamento   -->
+                                 
+                             
+                         
+                         
+                              
+                         
+                     
+                 
+             
+
+             
+                 
+                 
+                     
+                         
+                             
+                                ©
+                                 {{aDadosFranquia.franquia_fantasia}} 
+                                {{dHoje | date: 'yyyy'}}
+                             
+                         
+                     
+                 
+             
+
+              
+         
+          
+
+         
+             
+             
+             
+             
+             
+         
+
+          
+          
+     
+ 

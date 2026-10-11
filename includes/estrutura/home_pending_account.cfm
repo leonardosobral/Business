@@ -224,10 +224,10 @@
         <h1 class="pending-workspace-title" id="pending-workspace-title">Você já está dentro.</h1>
         <p class="pending-workspace-lead">
             <cfif VARIABLES.businessPendingIsExistingAccountRequest>
-                Seu pedido de acesso à conta <cfoutput><strong>#htmlEditFormat(VARIABLES.businessPendingAccountName)#</strong></cfoutput> foi enviado.
+                Seu pedido de acesso à conta <cfoutput><strong>#encodeForHTML(VARIABLES.businessPendingAccountName)#</strong></cfoutput> foi enviado.
                 Um OWNER da conta ou a equipe RunnerHub precisa aprovar sua entrada antes que as ferramentas sejam liberadas.
             <cfelse>
-                <cfoutput><strong>#htmlEditFormat(VARIABLES.businessPendingAccountName)#</strong></cfoutput> está sendo validada, mas você não precisa parar.
+                <cfoutput><strong>#encodeForHTML(VARIABLES.businessPendingAccountName)#</strong></cfoutput> está sendo validada, mas você não precisa parar.
                 Prepare agora o evento e a publicidade; a publicação será liberada assim que a conta for aprovada.
             </cfif>
         </p>
@@ -242,7 +242,7 @@
             <h2>Conta solicitada</h2>
             <p>Seus dados e sua identidade Google foram recebidos. Você continuará exatamente daqui nos próximos acessos.</p>
             <div class="pending-workspace-step-action">
-                <span class="badge badge-success">Protocolo <cfoutput>###htmlEditFormat(VARIABLES.businessPendingRegistrationId)#</cfoutput></span>
+                <span class="badge badge-success">Protocolo <cfoutput>###encodeForHTML(VARIABLES.businessPendingRegistrationId)#</cfoutput></span>
             </div>
         </article>
 
@@ -296,7 +296,7 @@
                 </span>
             </div>
             <h2>Prepare a campanha</h2>
-            <p><cfif VARIABLES.businessPendingIsExistingAccountRequest>A publicidade será liberada depois que o OWNER da conta ou a RunnerHub aprovar seu acesso.<cfelseif VARIABLES.businessPendingEventRequests LTE 0>Solicite primeiro o vínculo de uma prova para preparar a publicidade desse evento.<cfelseif VARIABLES.businessPendingCampaignReviewStatus EQ "CHANGES_REQUESTED">A RunnerHub solicitou ajustes.<cfif len(VARIABLES.businessPendingCampaignReviewReason)> <cfoutput>#htmlEditFormat(VARIABLES.businessPendingCampaignReviewReason)#</cfoutput></cfif><cfelseif VARIABLES.businessPendingCampaignReviewStatus EQ "PENDING_REVIEW">A conta e o evento já foram aprovados; agora a RunnerHub está analisando o anúncio.<cfelse>Escolha período, locais e orçamento agora. A campanha ficará em rascunho ou espera até concluir todas as aprovações.</cfif></p>
+            <p><cfif VARIABLES.businessPendingIsExistingAccountRequest>A publicidade será liberada depois que o OWNER da conta ou a RunnerHub aprovar seu acesso.<cfelseif VARIABLES.businessPendingEventRequests LTE 0>Solicite primeiro o vínculo de uma prova para preparar a publicidade desse evento.<cfelseif VARIABLES.businessPendingCampaignReviewStatus EQ "CHANGES_REQUESTED">A RunnerHub solicitou ajustes.<cfif len(VARIABLES.businessPendingCampaignReviewReason)> <cfoutput>#encodeForHTML(VARIABLES.businessPendingCampaignReviewReason)#</cfoutput></cfif><cfelseif VARIABLES.businessPendingCampaignReviewStatus EQ "PENDING_REVIEW">A conta e o evento já foram aprovados; agora a RunnerHub está analisando o anúncio.<cfelse>Escolha período, locais e orçamento agora. A campanha ficará em rascunho ou espera até concluir todas as aprovações.</cfif></p>
             <div class="pending-workspace-step-action">
                 <cfif VARIABLES.businessPendingIsExistingAccountRequest>
                     <span class="btn btn-outline-light disabled" aria-disabled="true">Aguardando acesso</span>

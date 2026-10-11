@@ -1,0 +1,3613 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+  <link href="/static/css/_root.css" rel="stylesheet" type="text/css">
+  <link href="/static/css/reset.css" rel="stylesheet" type="text/css">
+  <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Popins css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- Theme Config Js -->
+  <script src="/static/template/js/hyper-config.js"></script>
+  <!-- Icons css -->
+  <link href="/static/template/css/icons.min.css" rel="stylesheet" type="text/css" />
+  <!-- Plugin toast css -->
+  <link rel="stylesheet" href="/static/template/vendor/jquery-toast-plugin/jquery.toast.min.css" />
+  <!-- Select2 css -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+  <!-- Lightbox -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY9QnKE0Wqag9y38OIgEvb88cA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- App css -->
+  <link href="/static/template/css/app-saas.min.css" rel="stylesheet" type="text/css" id="app-style" />
+  <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+  <title>Corrida Águia 2026 </title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHF7QCQHTN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GHF7QCQHTN');
+  </script>
+</head>
+<body id="site-body">
+  
+  <div class="wrapper">
+    
+
+<header class="site-bg-color">
+  <nav class="navbar navbar-expand-sm" aria-label="Navbar">
+    <div class="container d-flex justify-content-between">
+      <a href="/" class="d-flex align-items-center">
+        <img src="/static/img/logo-branco.png" alt="logo" class="logo-site">
+      </a>
+      <button class="navbar-toggler collapsed" type="button-menu" data-bs-toggle="collapse" data-bs-target="#site-navbar-collapse" aria-controls="site-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+  <i class="mdi mdi-menu text-light"></i>
+</button>
+<div class="navbar-collapse collapse justify-content-md-between" id="site-navbar-collapse">
+  <ul class="navbar-nav custom-nav-site mx-auto d-flex align-items-center justify-content-center">
+    
+      <div class="d-sm-none w-100">
+        <li class="nav-item d-sm-none w-100 d-flex justify-content-between mt-2 mb-2">
+          <a role="_dark_light_border" class="nav-link w-100 m-1" href="/conta/criar/">Cadastre-se</a>
+          <a role="_light" class="nav-link w-100 m-1" href="/acessar/">Acessar</a>
+        </li>
+      </div>
+    
+    <li class="nav-item me-1">
+      <a class="nav-link" href="/">Início</a>
+    </li>
+    <li class="nav-item me-1">
+      <a class="nav-link" href="/conta/">Minha conta</a>
+    </li>
+    <li class="nav-item me-1">
+      <a class="nav-link" href="/conta/inscricoes/">Minhas inscrições</a>
+    </li>
+    <li class="nav-item me-1">
+      <a class="nav-link" href="/resultados/">Resultados</a>
+    </li>
+    <li class="nav-item me-1">
+      <a class="nav-link" href="/calendario/">Calendário</a>
+    </li>
+    <li class="nav-item">
+      
+    </li>
+  </ul>
+</div>
+      <div class="user-cart d-none d-sm-flex">
+  <ul class="navbar-nav mb-sm-0 custom-nav-site">
+    
+    
+      <div class="d-flex align-items-center d-none d-sm-flex">
+        <li class="nav-item d-none d-sm-flex"><a class="nav-link" href="/conta/criar/">Cadastre-se</a></li>
+          <div class="vertical-line"></div>
+        <li class="nav-item d-none d-sm-flex"><a class="nav-link me-md-1 ps-3 pe-3" href="/acessar/" role="_light">Acessar</a></li>
+      </div>
+    
+  </ul>
+</div>
+      <div class="d-sm-none mt-2 w-100">
+        
+      </div>
+    </div>
+  </nav>
+</header>
+<style>
+  .cart-section {
+    border: 2px solid white;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 5px 25px 5px 25px !important;
+  }
+
+  .noti-icon-badge {
+    font-size: 20px;
+  }
+
+  .badge {
+    background-color: #f3e8ff;
+  }
+
+  .cart-section i {
+    color: white !important;
+  }
+
+  .nav-item {
+    font-weight: bold;
+  }
+
+  .vertical-line {
+    height: 15px;
+    border-right: 1px solid white;
+    margin: 0px 10px 0px 10px;
+  }
+
+</style>
+
+
+
+
+
+
+    <div>
+      <div class="content">
+        
+  <div class="container content-site">
+    <h2>Corrida Águia 2026</h2>
+    <p><span>Corrida De Rua</span></p>
+    <div class="mt-3 mb-2">
+      <div class="row">
+        <div class="col-md-7 d-flex justify-content-center align-items-center">
+          <a href="/visualizar/imagem/867/" data-lightbox="lightbox">
+            <img class="event-img-site" src="/visualizar/imagem/867/" alt="image-event">
+          </a>
+        </div>
+        <div class="col-md-5 mt-2 card-section">
+          <div class="p-1">
+            <div class="d-flex align-items-center event-info">
+              <i class="mdi mdi-36px mdi-calendar dark-purple"></i><h4 class="text-dark ms-2">01/11/2026 06:00 </h4>
+            </div>
+            <div class="d-flex align-items-center event-info">
+              <i class="mdi mdi-36px mdi-google-maps dark-purple"></i><h4 class="text-dark ms-2">Craíbas - AL</h4>
+            </div>
+            <div class="d-flex align-items-center event-info">
+              <i class="mdi mdi-36px mdi-map-outline dark-purple"></i><h4 class="text-dark ms-2">Rua Pedro Gama, Centro</h4>
+            </div>
+          </div>
+          <br />
+          
+            
+              <a 
+                role="_light"
+                href="/inscricao-evento/2026-13-corrida-aguia-2026/" 
+                class="btn font-weight-bold fs-4 fw-bold w-100 p-2 m-1 " 
+              >Inscreva-se</a>
+            
+          
+          <hr/>
+          
+            <!-- <a href="#athlete-kit" class="btn btn-soft-primary font-weight-bold fw-bold shadow-sm w-100 m-1">Kit atleta</a> -->
+            <a role="_white" href="#event-documents" class="btn btn-soft-primary font-weight-bold fw-bold shadow-sm w-100 m-1">Regulamento</a>
+          
+          
+          
+            <a role="_white" href="#event-organizer" class="btn btn-outline-primary font-weight-bold fw-bold shadow-sm w-100 m-1">Fale com o organizador</a>
+          
+          <a role="_white" href="/conta/inscricoes/?search=Corrida Águia 2026" class="btn btn-outline-primary font-weight-bold fw-bold shadow-sm w-100 m-1">Pagamento 2ª via</a>
+          <a role="_white" href="/conta/inscricoes/?search=Corrida Águia 2026" class="btn btn-outline-primary font-weight-bold fw-bold shadow-sm w-100 m-1">Comprovante inscrição</a>
+        </div>
+      </div>
+    </div>
+    <!-- Categorias e Lotes -->
+    
+      <div class="p-3">
+        <div class="row">
+          <h3 class="m-2" id="categories-lots"><a href="#categories-lots" class="text-dark">Categorias e Lotes</a></h3>
+          <span class="border-bottom border-3 border-light mb-3"></span>
+          <div class="table-responsive">
+            <table class="table table-borderless table-centered payment-lot-table">
+              
+                <thead>
+                  <tr>
+                    <th>
+                      <h5>3Km (Caminhada)</h5>
+                    </th>
+                    
+                        <td>
+                          <strong> 1º Lote </strong>
+                          <br>
+                          <small>01/06 à 30/06</small>
+                        </td>
+                    
+                        <td>
+                          <strong> 2º Lote </strong>
+                          <br>
+                          <small>01/07 à 30/09</small>
+                        </td>
+                    
+                        <td>
+                          <strong> 3º Lote </strong>
+                          <br>
+                          <small>01/10 à 01/10</small>
+                        </td>
+                    
+                        <td>
+                          <strong>   Lote Extra   </strong>
+                          <br>
+                          <small>02/10 à 20/10</small>
+                        </td>
+                    
+                  </tr>
+                </thead>
+                
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">Público Geral</td>
+                        
+                          
+                            <td>
+                              
+                                R$90,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$100,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$110,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">Idoso</td>
+                        
+                          
+                            <td>
+                              
+                                R$50,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$50,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$50,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">Público Geral - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">Idoso - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+              
+                <thead>
+                  <tr>
+                    <th>
+                      <h5>5Km</h5>
+                    </th>
+                    
+                        <td>
+                          <strong> 1º Lote </strong>
+                          <br>
+                          <small>01/06 à 30/06</small>
+                        </td>
+                    
+                        <td>
+                          <strong> 2º Lote </strong>
+                          <br>
+                          <small>01/07 à 30/09</small>
+                        </td>
+                    
+                        <td>
+                          <strong> 3º Lote </strong>
+                          <br>
+                          <small>01/10 à 01/10</small>
+                        </td>
+                    
+                        <td>
+                          <strong>   Lote Extra   </strong>
+                          <br>
+                          <small>02/10 à 20/10</small>
+                        </td>
+                    
+                  </tr>
+                </thead>
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">14 a 29 Anos</td>
+                        
+                          
+                            <td>
+                              
+                                R$90,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$100,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$110,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">30 a 39 Anos</td>
+                        
+                          
+                            <td>
+                              
+                                R$90,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$100,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$110,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">40 a 49 Anos</td>
+                        
+                          
+                            <td>
+                              
+                                R$90,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$100,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$110,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">50 a 59 Anos</td>
+                        
+                          
+                            <td>
+                              
+                                R$90,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$100,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$110,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">A partir de 60 Anos</td>
+                        
+                          
+                            <td>
+                              
+                                R$50,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$50,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$50,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">14 a 29 Anos - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">30 a 39 Anos - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">40 a 49 Anos - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">50 a 59 Anos - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">A partir de 60 Anos - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                   
+                
+              
+                <thead>
+                  <tr>
+                    <th>
+                      <h5>10Km</h5>
+                    </th>
+                    
+                        <td>
+                          <strong> 1º Lote </strong>
+                          <br>
+                          <small>01/06 à 30/06</small>
+                        </td>
+                    
+                        <td>
+                          <strong> 2º Lote </strong>
+                          <br>
+                          <small>01/07 à 30/09</small>
+                        </td>
+                    
+                        <td>
+                          <strong> 3º Lote </strong>
+                          <br>
+                          <small>01/10 à 01/10</small>
+                        </td>
+                    
+                        <td>
+                          <strong>   Lote Extra   </strong>
+                          <br>
+                          <small>02/10 à 20/10</small>
+                        </td>
+                    
+                  </tr>
+                </thead>
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">14 a 29 Anos</td>
+                        
+                          
+                            <td>
+                              
+                                R$90,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$100,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$110,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">30 a 39 Anos</td>
+                        
+                          
+                            <td>
+                              
+                                R$90,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$100,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$110,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">40 a 49 Anos</td>
+                        
+                          
+                            <td>
+                              
+                                R$90,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$100,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$110,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">50 a 59 Anos</td>
+                        
+                          
+                            <td>
+                              
+                                R$90,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$100,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$110,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">A partir de 60 Anos</td>
+                        
+                          
+                            <td>
+                              
+                                R$50,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$50,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$50,00
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">14 a 29 Anos - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">30 a 39 Anos - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">40 a 49 Anos - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">50 a 59 Anos - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                  
+                    
+                  
+                    
+                   
+                
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      <tr>
+                        <td style="max-width: 120px">A partir de 60 Anos - Kit Quero Correr</td>
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                -
+                              
+                            </td>
+                          
+                        
+                          
+                            <td>
+                              
+                                R$60,00
+                              
+                            </td>
+                          
+                        
+                      </tr>
+                    
+                   
+                
+              
+            </table>
+            
+          </div>
+        </div>
+      </div>
+    
+    <!-- Informações-->
+    
+      <div class="p-3 mb-2">
+        <div class="row">
+          <h3 class="m-2" id="info"><a href="#info" class="text-dark">Informações</a></h3>
+          <span class="border-bottom border-3 border-light mb-3"></span>
+          <input id="event-description" type="hidden" value="&lt;h3&gt;&lt;span style=&quot;background-color: rgb(241, 196, 15);&quot;&gt;&lt;em&gt;&lt;strong&gt;EVENTO SOFREU MUDAN&amp;Ccedil;A DE DATA DO DIA 20/09 PARA O &lt;span style=&quot;background-color: rgb(224, 62, 45);&quot;&gt;DIA 01/11!!!&lt;/span&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/span&gt;&lt;/h3&gt;">
+          <div id="description-container"></div>
+        </div>
+      </div>
+    
+    <!-- Localaização-->
+    
+      <div class="p-3 mb-2">
+        <div class="row mb-3">
+          <h3 class="m-2" id="location"><a href="#location" class="text-dark">Localização</a></h3>
+          <span class="border-bottom border-3 border-light mb-3"></span>
+          <iframe id="map-iframe" src="" height="500px" width="100%" frameborder="0" style="border:0;border-radius:5px" allowfullscreen=""></iframe>
+        </div>
+      </div>
+    
+    <!-- Kit Atletas -->
+    
+    <!-- Imagens -->
+    
+      <div class="p-3 mb-2">
+        <div class="row mb-3">
+          <h3 class="m-2" id="event-images"><a href="#event-images" class="text-dark">Imagens</a></h3>
+          <span class="border-bottom border-3 border-light mb-3"></span>
+          
+            <div class="col-md-3">
+              <div class="p-1 d-flex flex-column align-items-center">
+                <div style="min-height: 200px;">
+                  <a href="/visualizar/imagem/867/" data-lightbox="lightbox"><img src="/visualizar/imagem/867/" alt="img" class="img-fluid event-img-site-thumbnail" /></a>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+    <!-- Documentos -->
+    
+      <div class="p-3 mb-2">
+        <div class="row mb-3">
+          <h3 class="m-2" id="event-documents"><a href="#event-documents" class="text-dark">Documentos</a></h3>
+          <span class="border-bottom border-3 border-light mb-3"></span>
+          
+            <div class="row">
+              <a href="/visualizar/documento/626/" target="_blank">
+                <div class="d-flex align-items-center">
+                  <i class="mdi mdi-48px mdi-file-pdf-box"></i>
+                  <span>REGULAMENTO_-_CORRIDA_AGUIA_-_CRAIBAS_-_AL_1.pdf</span>
+                </div>
+              </a>
+            </div>
+          
+        </div>
+      </div>
+    
+    <!-- Organizador -->
+    
+      <div class="p-3 mb-2">
+        <div class="row mb-3">
+          <h3  class="m-2" id="event-organizer"><a href="#event-organizer" class="text-dark">Fale com o organizador</a></h3>
+          <span class="border-bottom border-3 border-light mb-3"></span>
+          
+            <a role="link" href="#event-organizer" class="ms-2"><i class="mdi mdi-18px mdi-account-tie"></i> Agreste Eventos</a>
+          
+          
+            <a role="link" href="https://wa.me/+5582982016696" target="_blank" class="ms-2"><i class="mdi mdi-18px mdi-whatsapp"></i> <span data-toggle="input-mask" data-mask-format="(00) 00000-0000">82982016696</span></a>
+          
+          
+          
+          
+            <a role="link" href="https://instagram.com/agresteeventoss" target="_blank" class="ms-2"><i class="mdi mdi-18px mdi-instagram"></i> agresteeventoss</a>
+          
+        </div>
+      </div>
+    
+
+  <style>
+    .alert-content {
+      border-radius: 20px;
+      border: 2px solid #7B0EC2;
+      color: #7B0EC2;
+      cursor: pointer;
+    }
+    .alert-content:hover {
+      background-color: #f3e8ff;
+      border: 2px solid #f3e8ff;
+    }
+    .payment-lot-items {
+      border-right: 1px solid #bbc1c6 !important;
+      margin-right: 10px;
+    }
+    .payment-lot-items:last-child {
+      border-right: none !important;
+    }
+    th {
+      border-right: 1px solid #bbc1c6 !important;
+    }
+    thead {
+      border-bottom: 1px solid #bbc1c6 !important;
+    }
+    td:first-child {
+      border-right: 1px solid #bbc1c6 !important;
+    }
+  </style>
+  
+  <script>
+    $(document).ready(function() {
+      var description = $('#event-description').val();
+      $('#description-container').html(description);
+
+      var mapLink = '&lt;iframe src=&quot;https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3933.732470855659!2d-36.76929102506183!3d-9.618288201450332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7067a65717ebe67%3A0xf4a2817e3792c6e8!2sR.%20Pedro%20Gama%2C%20Cra%C3%ADbas%20-%20AL%2C%2057320-000!5e0!3m2!1spt-BR!2sbr!4v1779984494976!5m2!1spt-BR!2sbr&quot; width=&quot;600&quot; height=&quot;450&quot; style=&quot;border:0;&quot; allowfullscreen=&quot;&quot; loading=&quot;lazy&quot; referrerpolicy=&quot;no-referrer-when-downgrade&quot;&gt;&lt;/iframe&gt;';
+      var regex = /src=&quot;([^"]*)&quot;/;
+      var match = mapLink.match(regex);
+
+      if (match && match[1]) {
+        var iframeElement = document.getElementById('map-iframe');
+        iframeElement.src = match[1];
+      }
+    });
+
+    function goToCheckout() {
+      Swal.fire({
+        title: "Ops!",
+        text: "Você já possui uma inscrição neste evento. Deseja ir para o carrinho, ou deseja fazer uma nova inscrição?",
+        showDenyButton: true,
+        confirmButtonText: "Ir para o carrinho",
+        denyButtonText: "Fazer uma nova inscrição"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "/inscricao-evento/2026-13-corrida-aguia-2026/finalizar/";
+        } else if (result.isDenied) {
+          fetch('/deletar-pre-inscricao/'+ '2026-13-corrida-aguia-2026' + '/' + '' + '/')
+          .then(res => {
+            if (res.ok) {
+              res.json().then(res => {
+                Swal.fire(res.title, res.message, res.variant_alert)
+                .then(() => window.location.href = "/inscricao-evento/2026-13-corrida-aguia-2026/")
+              })
+            } else {
+              Swal.fire(res.title, res.message, res.variant_alert)
+            }
+        })
+        }
+      });
+    }
+  </script>
+
+      </div>
+    </div>
+  </div>
+  
+<footer class="bg-dark text-light py-4 w-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mb-3 text-center align-items-center">
+        <img src="/static/img/logo-branco.png" alt="logo" height="60">
+      </div>
+      <div class="col-md-6 d-flex align-items-center flex-column text-center">
+        <div class="d-flex justify-content-between">
+          <a href="https://whatsa.me/5584988400956" class="whatsapp-link me-2" target="_blank" title="Enviar mensagem no whatsapp">
+            <img src="https://whatsa.me/imagens/whatsapp.png" alt="whats-log"/>
+          </a>
+          <a
+          href="https://whatsa.me/5584988400956"
+          class="whatsapp-text"
+          target="_blank"
+          onclick="navigator.clipboard.writeText(84988400956)"
+        >(84) 9 8840-0956 </a>
+        </div>
+        <span class="text-white mt-3">© Todos os direitos reservados para <span class="light-purple">tiquet.com.br</span></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .whatsapp-text {
+    color: #4DC359;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .whatsapp-link img {
+    width: 40px;
+  }
+  .footer-sticky {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #7B0EC2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    z-index: 9999;
+    padding: 10px;
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+  footer img {
+    margin-top: -10px;
+  }
+  @media (max-width: 768px) {
+    .footer-sticky {
+      height: auto; 
+      min-height: 70px;
+    }
+  }
+
+</style>
+<script>
+function showFooterSticky({ callFunction, arg = null, labelButton = 'Próximo', textValue }) {
+  let existingFooterSticky = document.querySelector('.footer-sticky');
+
+  if (!existingFooterSticky) {
+    const footerSticky = `
+      <div class="footer-sticky">
+        <div class="container">
+          <div class="d-flex flex-column flex-sm-row w-100">
+            <div class="d-flex justify-content-between align-items-center w-100 flex-column text-section"></div>
+            <button type="button" id="btn-submit" class="btn w-100 p-1" onclick="${callFunction}(${arg})">
+              ${labelButton}
+            </button>
+          </div>
+        </div>
+      </div>`;
+    document.querySelector('footer').insertAdjacentHTML('beforebegin', footerSticky);
+    existingFooterSticky = document.querySelector('.footer-sticky');
+  }
+
+  if (textValue !== undefined) {
+    updateFooterValues(existingFooterSticky, textValue, labelButton);
+  } else {
+    const textSection = existingFooterSticky.querySelector('.text-section');
+    if (textSection) {
+      textSection.innerHTML = '<div class="d-flex mt-sm-2 mt-1 mb-sm-0 mb-2"><i class="ri-information-line text-white"></i><span class="ms-1 text-white">Selecione uma categoria!</span></div>';
+    }
+  }
+}
+
+function updateFooterValues(existingFooterSticky, textValue, labelButton) {
+  const textSection = existingFooterSticky.querySelector('.text-section');
+  const buttonSubmit = existingFooterSticky.querySelector('#btn-submit');
+
+  buttonSubmit.innerHTML = labelButton
+
+  if (textValue.includes('R$')) {
+    textSection.innerHTML = `<h2 class="text-white text-value mb-2">${textValue}</h2>`;
+  } else {
+    const [category, modality] = textValue.split('|').map(str => str.trim());
+    textSection.innerHTML = `
+      <p class="text-white category-value mb-0 fw-bold d-none d-sm-flex">${category}</p>${modality ? `<p class="text-white modality-value mb-0 d-none d-sm-flex">${modality}</p>` : ''}
+      <p class="text-white category-value mb-0 fw-bold d-sm-none">${category}</p>${modality ? `<p class="text-white modality-value mb-0 d-sm-none mb-1">${modality}</p>` : ''}`;
+  }
+}
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Vendor js -->
+  <script src="/static/template/js/vendor.min.js"></script>
+  <!-- Input Mask js -->
+  <script src="/static/template/vendor/jquery-mask-plugin/jquery.mask.min.js"></script>
+  <!-- Jquery toast -->
+  <script src="/static/template/vendor/jquery-toast-plugin/jquery.toast.min.js"></script>
+  <!-- Toastr Demo js -->
+  <script src="/static/template/js/pages/demo.toastr.js"></script>
+  <!-- App js -->
+  <script src="/static/template/js/app.min.js"></script>
+  <!-- Select2 js -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <!-- Day js -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <!-- Lightbox -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraVwkKI+Cz0SEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Custom js --> 
+  <script src="/static/js/client.js"></script>
+  <script src="/static/js/custom-functions.js?v=1"></script>
+  <script src="/static/js/test.js?v=1"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+</body>
+</html>
+<script>
+$(document).ready( function () {
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+  $('.toast').toast('show');
+} );
+
+window.addEventListener("scroll", function () {
+  const logo = document.querySelector(".logo-site");
+  if (window.scrollY > 100) {
+    logo.classList.add("shrink");
+  } else {
+    logo.classList.remove("shrink");
+  }
+});
+
+lightbox.option({
+  'resizeDuration': 200,
+  'wrapAround': true,
+  'alwaysShowNavOnTouchDevices': true,
+})
+</script>

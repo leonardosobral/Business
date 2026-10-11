@@ -1,0 +1,608 @@
+{
+  "collected_at": "2026-10-05T17:03:23.098Z",
+  "snapshot": "6ac31bf647d73ceec1b0b861",
+  "reports": [
+    {
+      "id": 6,
+      "data": {
+        "limit": 100,
+        "page": 0,
+        "total": 62,
+        "issue_id": 6,
+        "data": [
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b922d",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-rio-de-janeiro-2026-iii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8cc7",
+            "source_url": "https://roadrunners.run/evento/2025-maratona-aquatica-capivari/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8cce",
+            "source_url": "https://roadrunners.run/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8cf3",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-sao-paulo-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8d8e",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-brasilia-2026-iii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8e36",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-campinas-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8e6b",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-recife-2026-ii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8ef0",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-sao-paulo-2026-iiiiii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8ef8",
+            "source_url": "https://roadrunners.run/evento/2026-maratona-aquatica-capivari/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8fb1",
+            "source_url": "https://roadrunners.run/en/event/2026-halloween-night-training/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b9028",
+            "source_url": "https://roadrunners.run/evento/2025-halloween-night-training/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b9077",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-recife-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b9086",
+            "source_url": "https://roadrunners.run/evento/2026-circuito-bem-estar-corrida-e-caminhada-adc-embraer/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b909f",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-rio-de-janeiro-2026-21k/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b9171",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-brasilia-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b9183",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-porto-alegre-2026-ii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8c81",
+            "source_url": "https://roadrunners.run/evento/2026-circuito-bem-estar-corrida-e-caminhada-adc-embraer-botucatu-sp/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b929f",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-campinas-2026-ii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b92a4",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-sao-paulo-2026-iiii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b92ce",
+            "source_url": "https://roadrunners.run/desafiosupra/2024/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b92fc",
+            "source_url": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b933b",
+            "source_url": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b936e",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-porto-alegre-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b940c",
+            "source_url": "https://roadrunners.run/en/event/2025-halloween-night-training/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b9497",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-rio-de-janeiro-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b969e",
+            "source_url": "https://roadrunners.run/evento/2026-corrida-solidaria-das-nacoes-piracicaba-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b96a5",
+            "source_url": "https://roadrunners.run/evento/2026-1-edicao-corrida-farmelhor-rn/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b96ab",
+            "source_url": "https://roadrunners.run/desafiosupra/2025/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b96de",
+            "source_url": "https://roadrunners.run/circuito/circuito-catarinense-corrida-de-rua/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b9782",
+            "source_url": "https://roadrunners.run/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b97a3",
+            "source_url": "https://roadrunners.run/evento/2024-meia-maratona-de-joao-pessoa/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b880a",
+            "source_url": "https://roadrunners.run/evento/2027-corrida-solidaria-das-nacoes-piracicaba-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8563",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-fortaleza-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8579",
+            "source_url": "https://roadrunners.run/es/evento/2026-1-edicao-corrida-farmelhor/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8580",
+            "source_url": "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8581",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-sao-paulo-2026-iiiiiiii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8591",
+            "source_url": "https://roadrunners.run/es/evento/2025-halloween-night-training/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b85dc",
+            "source_url": "https://roadrunners.run/evento/2026-4-corrida-e-caminhada-outubro-rosa/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b85e9",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-salvador-2026-ii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b85ed",
+            "source_url": "https://roadrunners.run/evento/2026-1-edicao-corrida-farmelhor/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8634",
+            "source_url": "https://roadrunners.run/evento/2025-correr-e-caminhar-com-saude-4-etapa/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b863c",
+            "source_url": "https://roadrunners.run/evento/2026-correr-e-caminhar-com-saude-4-etapa/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b86db",
+            "source_url": "https://roadrunners.run/circuito/fca-corridaderua/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b86ea",
+            "source_url": "https://roadrunners.run/evento/2023-meia-maratona-de-joao-pessoa/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8707",
+            "source_url": "https://roadrunners.run/evento/2021-meia-maratona-de-joao-pessoa/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b872b",
+            "source_url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8749",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-brasilia-2026-ii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b854b",
+            "source_url": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8860",
+            "source_url": "https://roadrunners.run/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b88cd",
+            "source_url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b88f2",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-fortaleza-2026-ii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b891b",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-sao-paulo-2026-iiiiiiiiiiii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8978",
+            "source_url": "https://roadrunners.run/evento/2026-4-corrida-e-caminhada-outubro-rosa-sp/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8988",
+            "source_url": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b89c2",
+            "source_url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b89ea",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-sao-paulo-2026-iiiiiii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8a34",
+            "source_url": "https://roadrunners.run/es/evento/2026-halloween-night-training/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8a54",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-salvador-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8acb",
+            "source_url": "https://roadrunners.run/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8b65",
+            "source_url": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8c21",
+            "source_url": "https://roadrunners.run/evento/2026-halloween-night-training/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8c6e",
+            "source_url": "https://roadrunners.run/es/evento/2026-1-edicao-corrida-farmelhor-rn/"
+          }
+        ]
+      },
+      "metadata": {
+        "format": "json",
+        "pagination": {
+          "limit": 100
+        },
+        "url": "https://www.semrush.com/siteaudit/?id=26661911&issueid=6&limit=100&page=1&snapshot_id=6ac31bf647d73ceec1b0b861",
+        "usage": {
+          "api_units": 0
+        }
+      }
+    },
+    {
+      "id": 7,
+      "data": {
+        "limit": 100,
+        "page": 0,
+        "total": 8,
+        "issue_id": 7,
+        "data": [
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b9497",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-rio-de-janeiro-2026/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b922d",
+            "source_url": "https://roadrunners.run/evento/2026-live-run-xp-rio-de-janeiro-2026-iii/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b85ed",
+            "source_url": "https://roadrunners.run/evento/2026-1-edicao-corrida-farmelhor/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b96a5",
+            "source_url": "https://roadrunners.run/evento/2026-1-edicao-corrida-farmelhor-rn/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8579",
+            "source_url": "https://roadrunners.run/es/evento/2026-1-edicao-corrida-farmelhor/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8c6e",
+            "source_url": "https://roadrunners.run/es/evento/2026-1-edicao-corrida-farmelhor-rn/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b86db",
+            "source_url": "https://roadrunners.run/circuito/fca-corridaderua/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b96de",
+            "source_url": "https://roadrunners.run/circuito/circuito-catarinense-corrida-de-rua/"
+          }
+        ]
+      },
+      "metadata": {
+        "format": "json",
+        "pagination": {
+          "limit": 100
+        },
+        "url": "https://www.semrush.com/siteaudit/?id=26661911&issueid=7&limit=100&page=1&snapshot_id=6ac31bf647d73ceec1b0b861",
+        "usage": {
+          "api_units": 0
+        }
+      }
+    },
+    {
+      "id": 15,
+      "data": {
+        "limit": 100,
+        "page": 0,
+        "total": 4,
+        "issue_id": 15,
+        "data": [
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b96ab",
+            "source_url": "https://roadrunners.run/desafiosupra/2025/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b92ce",
+            "source_url": "https://roadrunners.run/desafiosupra/2024/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b86db",
+            "source_url": "https://roadrunners.run/circuito/fca-corridaderua/"
+          },
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b96de",
+            "source_url": "https://roadrunners.run/circuito/circuito-catarinense-corrida-de-rua/"
+          }
+        ]
+      },
+      "metadata": {
+        "format": "json",
+        "pagination": {
+          "limit": 100
+        },
+        "url": "https://www.semrush.com/siteaudit/?id=26661911&issueid=15&limit=100&page=1&snapshot_id=6ac31bf647d73ceec1b0b861",
+        "usage": {
+          "api_units": 0
+        }
+      }
+    },
+    {
+      "id": 24,
+      "data": {
+        "limit": 100,
+        "page": 0,
+        "total": 1,
+        "issue_id": 24,
+        "data": [
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b862a",
+            "source_url": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026"
+          }
+        ]
+      },
+      "metadata": {
+        "format": "json",
+        "pagination": {
+          "limit": 100
+        },
+        "url": "https://www.semrush.com/siteaudit/?id=26661911&issueid=24&limit=100&page=1&snapshot_id=6ac31bf647d73ceec1b0b861",
+        "usage": {
+          "api_units": 0
+        }
+      }
+    },
+    {
+      "id": 9,
+      "data": {
+        "limit": 100,
+        "page": 0,
+        "total": 1,
+        "issue_id": 9,
+        "data": [
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b8423",
+            "source_url": "https://roadrunners.run/sitemaps/events-history-3.xml"
+          }
+        ]
+      },
+      "metadata": {
+        "format": "json",
+        "pagination": {
+          "limit": 100
+        },
+        "url": "https://www.semrush.com/siteaudit/?id=26661911&issueid=9&limit=100&page=1&snapshot_id=6ac31bf647d73ceec1b0b861",
+        "usage": {
+          "api_units": 0
+        }
+      }
+    },
+    {
+      "id": 111,
+      "data": {
+        "limit": 100,
+        "page": 0,
+        "total": 1,
+        "issue_id": 111,
+        "data": [
+          {
+            "target_url": "",
+            "page_id": "6ac329a5d22dbac41f8b898f",
+            "source_url": "https://roadrunners.run/evento/2026-trail-in-motion-19-chacara-da-bolinha-2026/"
+          }
+        ]
+      },
+      "metadata": {
+        "format": "json",
+        "pagination": {
+          "limit": 100
+        },
+        "url": "https://www.semrush.com/siteaudit/?id=26661911&issueid=111&limit=100&page=1&snapshot_id=6ac31bf647d73ceec1b0b861",
+        "usage": {
+          "api_units": 0
+        }
+      }
+    },
+    {
+      "id": 2,
+      "data": {
+        "limit": 100,
+        "page": 0,
+        "total": 14,
+        "issue_id": 2,
+        "data": [
+          {
+            "target_url": "https://roadrunners.run/evento/2026-rock-n-run----nashville-2026/",
+            "page_id": "6ac329a5d22dbac41f8b8f11",
+            "source_url": "https://roadrunners.run/evento/2026-rock-n-run----nashville-2026/"
+          },
+          {
+            "target_url": "https://roadrunners.run/evento/2026-endorfina-run-santo-andre-ii/",
+            "page_id": "6ac329a5d22dbac41f8b92be",
+            "source_url": "https://roadrunners.run/evento/2026-endorfina-run-santo-andre-ii/"
+          },
+          {
+            "target_url": "https://roadrunners.run/evento/2026-atibaia-run-fest-trail-mode-",
+            "page_id": "6ac329a5d22dbac41f8b84ff",
+            "source_url": "https://roadrunners.run/evento/2026-atibaia-run-fest-trail-mode-"
+          },
+          {
+            "target_url": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-",
+            "page_id": "6ac329a5d22dbac41f8b8d91",
+            "source_url": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-"
+          },
+          {
+            "target_url": "https://roadrunners.run/evento/2026-",
+            "page_id": "6ac329a5d22dbac41f8b894e",
+            "source_url": "https://roadrunners.run/evento/2026-"
+          },
+          {
+            "target_url": "https://roadrunners.run/evento/2025-live-run-xp-brasilia-ii-2025/",
+            "page_id": "6ac329a5d22dbac41f8b8cb0",
+            "source_url": "https://roadrunners.run/evento/2025-live-run-xp-brasilia-ii-2025/"
+          },
+          {
+            "target_url": "https://roadrunners.run/evento/2025-live-run-xp-brasilia-i-2025/",
+            "page_id": "6ac329a5d22dbac41f8b86de",
+            "source_url": "https://roadrunners.run/evento/2025-live-run-xp-brasilia-i-2025/"
+          },
+          {
+            "target_url": "https://roadrunners.run/cdn-cgi/l/email-protection",
+            "page_id": "6ac329a5d22dbac41f8b847c",
+            "source_url": "https://roadrunners.run/cdn-cgi/l/email-protection"
+          },
+          {
+            "target_url": "https://roadrunners.run/atleta/leonardo muniz/",
+            "page_id": "6ac329a5d22dbac41f8b8898",
+            "source_url": "https://roadrunners.run/atleta/leonardo muniz/"
+          },
+          {
+            "target_url": "https://roadrunners.run/assessoria/zero-meia-um-saude-e-esporte/",
+            "page_id": "6ac329a5d22dbac41f8b85a9",
+            "source_url": "https://roadrunners.run/assessoria/zero-meia-um-saude-e-esporte/"
+          },
+          {
+            "target_url": "https://roadrunners.run/assessoria/grupo-de-corrida-espaco-saude/",
+            "page_id": "6ac329a5d22dbac41f8b8f1a",
+            "source_url": "https://roadrunners.run/assessoria/grupo-de-corrida-espaco-saude/"
+          },
+          {
+            "target_url": "https://roadrunners.run/assessoria/geracao-saude/",
+            "page_id": "6ac329a5d22dbac41f8b88d1",
+            "source_url": "https://roadrunners.run/assessoria/geracao-saude/"
+          },
+          {
+            "target_url": "https://roadrunners.run/assessoria/corpo-e-saude/",
+            "page_id": "6ac329a5d22dbac41f8b87db",
+            "source_url": "https://roadrunners.run/assessoria/corpo-e-saude/"
+          },
+          {
+            "target_url": "https://roadrunners.run/assessoria/branca-esportes-saude-e-lazer/",
+            "page_id": "6ac329a5d22dbac41f8b88e8",
+            "source_url": "https://roadrunners.run/assessoria/branca-esportes-saude-e-lazer/"
+          }
+        ]
+      },
+      "metadata": {
+        "format": "json",
+        "pagination": {
+          "limit": 100
+        },
+        "url": "https://www.semrush.com/siteaudit/?id=26661911&issueid=2&limit=100&page=1&snapshot_id=6ac31bf647d73ceec1b0b861",
+        "usage": {
+          "api_units": 0
+        }
+      }
+    }
+  ]
+}

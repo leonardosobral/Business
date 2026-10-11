@@ -1,0 +1,1 @@
+Revisão independente public_fact_review: sem bloqueadores. Escopo seis percursos; quatro eventos e treze dependências preservados; inversão validada. PDFs Serrinha/Apucarana/Manacapuru conferidos visualmente. Rio baseado na consulta CUA documentada pelo implementador; extrator independente expirou. Nenhuma alteração pelo revisor.

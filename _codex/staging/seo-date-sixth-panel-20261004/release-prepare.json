@@ -1,0 +1,16 @@
+{
+  "before": {
+    "portal/includes/seo_queue_data.cfm": "e4931a815e96c66ae2998763832988514348313e7b5b71283d6189671a9368d0"
+  },
+  "candidate": {
+    "portal/includes/seo_queue_data.cfm": "a9b865e6710b424d9e910ebbc8b79bbb2854a982ba6b204df431a669d4ec14d4"
+  },
+  "order": [
+    "portal/includes/seo_queue_data.cfm"
+  ],
+  "compile": {
+    "templates": 1,
+    "output": "successful 1\ntotal 1\nelapsed 1.884 sec\n\n",
+    "returncode": 0
+  }
+}

@@ -1,7 +1,7 @@
 <form method="post" action="/cadastro/" class="needs-validation cadastro-form" novalidate>
 
     <input type="hidden" name="acao" value="solicitar_acesso"/>
-    <input type="hidden" name="cadastro_csrf" value="<cfoutput>#htmlEditFormat(SESSION.cadastroGoogleCsrf)#</cfoutput>"/>
+    <input type="hidden" name="cadastro_csrf" value="<cfoutput>#encodeForHTMLAttribute(SESSION.cadastroGoogleCsrf)#</cfoutput>"/>
 
     <cfif VARIABLES.cadastroExistingAccountConfirmationRequired>
         <input type="hidden" name="confirmar_conta_existente" value="1"/>
@@ -9,7 +9,7 @@
             <i class="fa-solid fa-building-circle-check" aria-hidden="true"></i>
             <span>
                 Encontramos uma conta com este CPF/CNPJ:
-                <strong><cfoutput>#htmlEditFormat(VARIABLES.cadastroExistingAccountName)#</cfoutput></strong>.
+                <strong><cfoutput>#encodeForHTML(VARIABLES.cadastroExistingAccountName)#</cfoutput></strong>.
                 Ao continuar, você solicitará acesso a essa conta e aguardará a aprovação de um OWNER ou da equipe RunnerHub.
             </span>
         </div>
@@ -24,7 +24,7 @@
         <div class="col-md-8">
             <div data-mdb-input-init class="form-outline">
                 <input type="text" name="nome_empresa" id="txtNomeEmpresa" class="form-control" maxlength="160"
-                       value="<cfoutput>#htmlEditFormat(FORM.nome_empresa)#</cfoutput>" required/>
+                       value="<cfoutput>#encodeForHTMLAttribute(FORM.nome_empresa)#</cfoutput>" required/>
                 <label class="form-label" for="txtNomeEmpresa">Nome da empresa *</label>
                 <div class="invalid-feedback">Informe o nome da empresa.</div>
             </div>
@@ -35,7 +35,7 @@
                 <option value="">Tipo de atuação *</option>
                 <cfloop list="#VARIABLES.cadastroTipoPrestadorList#" item="tipoPrestadorOption">
                     <cfoutput>
-                        <option value="#htmlEditFormat(tipoPrestadorOption)#" <cfif FORM.tipo_prestador EQ tipoPrestadorOption>selected</cfif>>#htmlEditFormat(tipoPrestadorOption)#</option>
+                        <option value="#encodeForHTMLAttribute(tipoPrestadorOption)#" <cfif FORM.tipo_prestador EQ tipoPrestadorOption>selected</cfif>>#encodeForHTML(tipoPrestadorOption)#</option>
                     </cfoutput>
                 </cfloop>
             </select>
@@ -55,7 +55,7 @@
         <div class="col-md-4">
             <div data-mdb-input-init class="form-outline">
                 <input type="text" name="documento" id="txtDocumentoEmpresa" class="form-control" maxlength="20"
-                       value="<cfoutput>#htmlEditFormat(FORM.documento)#</cfoutput>" required/>
+                       value="<cfoutput>#encodeForHTMLAttribute(FORM.documento)#</cfoutput>" required/>
                 <label class="form-label" for="txtDocumentoEmpresa">CNPJ ou CPF *</label>
                 <div class="invalid-feedback">Informe o documento.</div>
             </div>
@@ -64,7 +64,7 @@
         <div class="col-md-4">
             <div data-mdb-input-init class="form-outline">
                 <input type="text" name="site" id="txtSiteEmpresa" class="form-control" maxlength="256"
-                       value="<cfoutput>#htmlEditFormat(FORM.site)#</cfoutput>"/>
+                       value="<cfoutput>#encodeForHTMLAttribute(FORM.site)#</cfoutput>"/>
                 <label class="form-label" for="txtSiteEmpresa">Site</label>
             </div>
         </div>
@@ -79,7 +79,7 @@
         <div class="col-md-5">
             <div data-mdb-input-init class="form-outline">
                 <input type="text" name="nome_responsavel" id="txtNomeResponsavel" class="form-control cadastro-identity-field" maxlength="200"
-                       value="<cfoutput>#htmlEditFormat(FORM.nome_responsavel)#</cfoutput>" readonly aria-readonly="true" required/>
+                       value="<cfoutput>#encodeForHTMLAttribute(FORM.nome_responsavel)#</cfoutput>" readonly aria-readonly="true" required/>
                 <label class="form-label" for="txtNomeResponsavel">Responsável confirmado</label>
             </div>
         </div>
@@ -87,7 +87,7 @@
         <div class="col-md-4">
             <div data-mdb-input-init class="form-outline">
                 <input type="email" name="email_responsavel" id="txtEmailResponsavel" class="form-control cadastro-identity-field" maxlength="255"
-                       value="<cfoutput>#htmlEditFormat(FORM.email_responsavel)#</cfoutput>" readonly aria-readonly="true" required/>
+                       value="<cfoutput>#encodeForHTMLAttribute(FORM.email_responsavel)#</cfoutput>" readonly aria-readonly="true" required/>
                 <label class="form-label" for="txtEmailResponsavel">E-mail Google confirmado</label>
             </div>
         </div>
@@ -95,7 +95,7 @@
         <div class="col-md-3">
             <div data-mdb-input-init class="form-outline">
                 <input type="text" name="telefone_responsavel" id="txtTelefoneResponsavel" class="form-control" maxlength="30"
-                       value="<cfoutput>#htmlEditFormat(FORM.telefone_responsavel)#</cfoutput>"/>
+                       value="<cfoutput>#encodeForHTMLAttribute(FORM.telefone_responsavel)#</cfoutput>"/>
                 <label class="form-label" for="txtTelefoneResponsavel">Telefone</label>
             </div>
         </div>
@@ -110,7 +110,7 @@
         <div class="col-md-8">
             <div data-mdb-input-init class="form-outline">
                 <input type="text" name="cidade" id="txtCidadeEmpresa" class="form-control" maxlength="128"
-                       value="<cfoutput>#htmlEditFormat(FORM.cidade)#</cfoutput>"/>
+                       value="<cfoutput>#encodeForHTMLAttribute(FORM.cidade)#</cfoutput>"/>
                 <label class="form-label" for="txtCidadeEmpresa">Cidade</label>
             </div>
         </div>
@@ -118,7 +118,7 @@
         <div class="col-md-4">
             <div data-mdb-input-init class="form-outline">
                 <input type="text" name="estado" id="txtEstadoEmpresa" class="form-control" maxlength="2"
-                       value="<cfoutput>#htmlEditFormat(FORM.estado)#</cfoutput>"/>
+                       value="<cfoutput>#encodeForHTMLAttribute(FORM.estado)#</cfoutput>"/>
                 <label class="form-label" for="txtEstadoEmpresa">UF</label>
             </div>
         </div>
@@ -126,7 +126,7 @@
 
     <div class="mb-3">
         <div data-mdb-input-init class="form-outline">
-            <textarea name="mensagem" id="txtMensagemCadastro" class="form-control" rows="4"><cfoutput>#htmlEditFormat(FORM.mensagem)#</cfoutput></textarea>
+            <textarea name="mensagem" id="txtMensagemCadastro" class="form-control" rows="4"><cfoutput>#encodeForHTML(FORM.mensagem)#</cfoutput></textarea>
             <label class="form-label" for="txtMensagemCadastro">Como sua empresa atua na corrida?</label>
         </div>
     </div>

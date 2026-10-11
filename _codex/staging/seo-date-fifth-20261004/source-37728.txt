@@ -1,0 +1,5 @@
+      TFSports              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.setAttribute('data-cookieyes','cookieyes-analytics');j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TQH97QZ');                                                                         TFSports ®   2025  • Todos os direitos reservados   Site by                        {"props":{"pageProps":{},"__N_SSG":true},"page":"/[...slug]","query":{},"buildId":"NBp_SMBjlE2S7nmNnn3Xh","isFallback":true,"gsp":true,"locale":"pt-BR","locales":["pt-BR"],"defaultLocale":"pt-BR","scriptLoader":[{"id":"cookieyes","strategy":"afterInteractive","src":"https://cdn-cookieyes.com/client_data/65f6749da8dc036dfbd7e031/script.js"}]}   

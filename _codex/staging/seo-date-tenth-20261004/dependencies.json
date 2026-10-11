@@ -1,0 +1,56 @@
+{
+  "dependencies": {
+    "tb_evento_percursos_gpx": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_badges": {
+      "count": 1,
+      "hash": "e293bb66c8a29dd9e0c68ee44cd5d5cb"
+    },
+    "tb_evento_corridas_relaciona": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist_importacao": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_permit_atualiza": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_temp": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_evento_saude_config": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_percurso_migracoes_strava": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_percurso": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_resumo": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_inscricoes": {
+      "count": 0,
+      "hash": null
+    }
+  }
+}

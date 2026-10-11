@@ -1,0 +1,173 @@
+[
+  {
+    "id": 43533,
+    "url": "https://roadrunners.run/evento/2026-3-circuito-run/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 43533,
+    "url": "https://roadrunners.run/en/event/2026-3-circuito-run/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 43533,
+    "url": "https://roadrunners.run/es/evento/2026-3-circuito-run/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 44805,
+    "url": "https://roadrunners.run/evento/2026-1-corrida-emporio-prime/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 44805,
+    "url": "https://roadrunners.run/en/event/2026-1-corrida-emporio-prime/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 44805,
+    "url": "https://roadrunners.run/es/evento/2026-1-corrida-emporio-prime/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 46084,
+    "url": "https://roadrunners.run/evento/2026-10-milhas-de-marilia-sp/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "text_change_0": true,
+      "text_change_1": true,
+      "categories_correct": true
+    }
+  },
+  {
+    "id": 46084,
+    "url": "https://roadrunners.run/en/event/2026-10-milhas-de-marilia-sp/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "text_change_0": true,
+      "text_change_1": true,
+      "categories_correct": true
+    }
+  },
+  {
+    "id": 46084,
+    "url": "https://roadrunners.run/es/evento/2026-10-milhas-de-marilia-sp/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "text_change_0": true,
+      "text_change_1": true,
+      "categories_correct": true
+    }
+  },
+  {
+    "id": 47031,
+    "url": "https://roadrunners.run/evento/2026-2-patinhas-run/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "text_change_0": true,
+      "text_change_1": true
+    }
+  },
+  {
+    "id": 47031,
+    "url": "https://roadrunners.run/en/event/2026-2-patinhas-run/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "text_change_0": true,
+      "text_change_1": true
+    }
+  },
+  {
+    "id": 47031,
+    "url": "https://roadrunners.run/es/evento/2026-2-patinhas-run/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "text_change_0": true,
+      "text_change_1": true
+    }
+  }
+]

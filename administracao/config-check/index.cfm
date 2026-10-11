@@ -555,10 +555,10 @@ for (secretRef in configCheckExpectedSecrets) {
         </div>
 
         <cfif len(configCheckActionNotice)>
-          <cfoutput><div class="alert alert-success">#htmlEditFormat(configCheckActionNotice)#</div></cfoutput>
+          <cfoutput><div class="alert alert-success">#encodeForHTML(configCheckActionNotice)#</div></cfoutput>
         </cfif>
         <cfif len(configCheckActionError)>
-          <cfoutput><div class="alert alert-danger">#htmlEditFormat(configCheckActionError)#</div></cfoutput>
+          <cfoutput><div class="alert alert-danger">#encodeForHTML(configCheckActionError)#</div></cfoutput>
         </cfif>
 
         <div class="row g-3 mb-4">
@@ -567,7 +567,7 @@ for (secretRef in configCheckExpectedSecrets) {
               <div class="card-body">
                 <div class="text-muted small text-uppercase fw-bold mb-2">Arquivo local</div>
                 <div class="h5 mb-1"><cfoutput>#VARIABLES.configCheckLocalExists ? "Encontrado" : "Nao encontrado"#</cfoutput></div>
-                <div class="small text-muted text-break"><cfoutput>#htmlEditFormat(VARIABLES.configCheckLocalPath)#</cfoutput></div>
+                <div class="small text-muted text-break"><cfoutput>#encodeForHTML(VARIABLES.configCheckLocalPath)#</cfoutput></div>
               </div>
             </div>
           </div>
@@ -576,7 +576,7 @@ for (secretRef in configCheckExpectedSecrets) {
               <div class="card-body">
                 <div class="text-muted small text-uppercase fw-bold mb-2">Chaves no arquivo</div>
                 <div class="h5 mb-1"><cfoutput>#structCount(VARIABLES.configCheckLocalConfig)#</cfoutput></div>
-                <div class="small text-muted text-break"><cfoutput>#htmlEditFormat(configCheckLocalKeys)#</cfoutput></div>
+                <div class="small text-muted text-break"><cfoutput>#encodeForHTML(configCheckLocalKeys)#</cfoutput></div>
               </div>
             </div>
           </div>
@@ -587,7 +587,7 @@ for (secretRef in configCheckExpectedSecrets) {
                 <div class="h5 mb-1">
                   <cfoutput>#structKeyExists(APPLICATION, "cronJobs") AND structKeyExists(APPLICATION.cronJobs, "enabled") AND APPLICATION.cronJobs.enabled ? "Habilitado" : "Desabilitado"#</cfoutput>
                 </div>
-                <div class="small text-muted text-break">Secrets: <cfoutput>#htmlEditFormat(configCheckApplicationCronSecrets)#</cfoutput></div>
+                <div class="small text-muted text-break">Secrets: <cfoutput>#encodeForHTML(configCheckApplicationCronSecrets)#</cfoutput></div>
               </div>
             </div>
           </div>
@@ -612,7 +612,7 @@ for (secretRef in configCheckExpectedSecrets) {
               <div class="col-6 col-xl-3">
                 <div class="border rounded p-3 h-100">
                   <div class="small text-muted">Modo Pagar.me</div>
-                  <div class="fw-bold"><cfoutput>#htmlEditFormat(VARIABLES.configCheckAdsPaymentStatus.mode)#</cfoutput></div>
+                  <div class="fw-bold"><cfoutput>#encodeForHTML(VARIABLES.configCheckAdsPaymentStatus.mode)#</cfoutput></div>
                 </div>
               </div>
               <div class="col-6 col-xl-3">
@@ -656,7 +656,7 @@ for (secretRef in configCheckExpectedSecrets) {
                   <div class="small text-muted">Role runner / DML direto</div>
                   <div class="fw-bold">
                     <cfif qConfigCheckAdsPaymentDatabase.recordcount>
-                      <cfoutput>#htmlEditFormat(qConfigCheckAdsPaymentDatabase.database_role)# · #qConfigCheckAdsPaymentDatabase.runner_direct_dml ? "Bloquear" : "Nenhum"#</cfoutput>
+                      <cfoutput>#encodeForHTML(qConfigCheckAdsPaymentDatabase.database_role)# · #qConfigCheckAdsPaymentDatabase.runner_direct_dml ? "Bloquear" : "Nenhum"#</cfoutput>
                     <cfelse>Pendente</cfif>
                   </div>
                 </div>
@@ -665,7 +665,7 @@ for (secretRef in configCheckExpectedSecrets) {
             <cfif len(VARIABLES.configCheckAdsPaymentError)>
               <div class="alert alert-warning small mt-3 mb-0">Contrato de pagamentos ainda indisponivel neste ambiente.</div>
             <cfelseif len(VARIABLES.configCheckAdsPaymentStatus.errorCode)>
-              <div class="small text-muted mt-3">Estado local: <cfoutput>#htmlEditFormat(VARIABLES.configCheckAdsPaymentStatus.errorCode)#</cfoutput>.</div>
+              <div class="small text-muted mt-3">Estado local: <cfoutput>#encodeForHTML(VARIABLES.configCheckAdsPaymentStatus.errorCode)#</cfoutput>.</div>
             </cfif>
           </div>
         </div>
@@ -678,13 +678,13 @@ for (secretRef in configCheckExpectedSecrets) {
                 <p class="text-muted small mb-0">Grava os tokens no arquivo privado do Business. Os valores atuais nunca são exibidos e campos vazios preservam a configuração existente.</p>
               </div>
               <div class="small text-muted">
-                API: <cfoutput>#htmlEditFormat(configCheckMask(configCheckStructValue(VARIABLES.configCheckLocalConfig, "focoApiToken")))#</cfoutput><br>
-                Bearer: <cfoutput>#htmlEditFormat(configCheckMask(configCheckSecretValue(VARIABLES.configCheckLocalConfig, "business_foco_eventos")))#</cfoutput>
+                API: <cfoutput>#encodeForHTML(configCheckMask(configCheckStructValue(VARIABLES.configCheckLocalConfig, "focoApiToken")))#</cfoutput><br>
+                Bearer: <cfoutput>#encodeForHTML(configCheckMask(configCheckSecretValue(VARIABLES.configCheckLocalConfig, "business_foco_eventos")))#</cfoutput>
               </div>
             </div>
             <form method="post" autocomplete="off">
               <input type="hidden" name="acao" value="salvar_foco_config">
-              <input type="hidden" name="config_check_csrf" value="<cfoutput>#htmlEditFormat(configCheckCsrf)#</cfoutput>">
+              <input type="hidden" name="config_check_csrf" value="<cfoutput>#encodeForHTMLAttribute(configCheckCsrf)#</cfoutput>">
               <div class="row g-3">
                 <div class="col-lg-5">
                   <label class="form-label" for="configCheckFocoApiToken">Token da Competition API da Foco</label>
@@ -710,19 +710,19 @@ for (secretRef in configCheckExpectedSecrets) {
                 <p class="text-muted small mb-0">Configura a YouTube Data API e o Bearer do importador no arquivo privado. Campos vazios preservam os valores existentes.</p>
               </div>
               <div class="small text-muted">
-                API: <cfoutput>#htmlEditFormat(configCheckMask(configCheckStructValue(VARIABLES.configCheckLocalConfig, "youtubeApiKey")))#</cfoutput><br>
+                API: <cfoutput>#encodeForHTML(configCheckMask(configCheckStructValue(VARIABLES.configCheckLocalConfig, "youtubeApiKey")))#</cfoutput><br>
                 Formato Google:
                 <cfif configCheckLooksLikeGoogleApiKey(configCheckStructValue(VARIABLES.configCheckLocalConfig, "youtubeApiKey"))>
                   <span class="text-success">válido</span>
                 <cfelse>
                   <span class="text-danger">inválido</span>
                 </cfif><br>
-                Chave do job: <cfoutput>#htmlEditFormat(configCheckMask(configCheckSecretValue(VARIABLES.configCheckLocalConfig, "business_youtube")))#</cfoutput>
+                Chave do job: <cfoutput>#encodeForHTML(configCheckMask(configCheckSecretValue(VARIABLES.configCheckLocalConfig, "business_youtube")))#</cfoutput>
               </div>
             </div>
             <form method="post" autocomplete="off">
               <input type="hidden" name="acao" value="salvar_youtube_config">
-              <input type="hidden" name="config_check_csrf" value="<cfoutput>#htmlEditFormat(configCheckCsrf)#</cfoutput>">
+              <input type="hidden" name="config_check_csrf" value="<cfoutput>#encodeForHTMLAttribute(configCheckCsrf)#</cfoutput>">
               <div class="row g-3">
                 <div class="col-lg-5">
                   <label class="form-label" for="configCheckYoutubeApiKey">Chave da YouTube Data API v3</label>
@@ -759,19 +759,19 @@ for (secretRef in configCheckExpectedSecrets) {
                     <cfoutput>
                       <tr>
                         <td>
-                          <div class="fw-semibold">#htmlEditFormat(configItem.label)#</div>
-                          <div class="small text-muted">#htmlEditFormat(configItem.key)#</div>
+                          <div class="fw-semibold">#encodeForHTML(configItem.label)#</div>
+                          <div class="small text-muted">#encodeForHTML(configItem.key)#</div>
                         </td>
-                        <td>#htmlEditFormat(configCheckSourceLabel(configCheckEnvironment, VARIABLES.configCheckLocalConfig, configItem.key, configItem.env, configItem.app))#</td>
+                        <td>#encodeForHTML(configCheckSourceLabel(configCheckEnvironment, VARIABLES.configCheckLocalConfig, configItem.key, configItem.env, configItem.app))#</td>
                         <td>
-                          <div class="small text-muted">#htmlEditFormat(configItem.env)#</div>
-                          #htmlEditFormat(configCheckMask(configCheckEnvValue(configCheckEnvironment, configItem.env)))#
+                          <div class="small text-muted">#encodeForHTML(configItem.env)#</div>
+                          #encodeForHTML(configCheckMask(configCheckEnvValue(configCheckEnvironment, configItem.env)))#
                         </td>
-                        <td>#htmlEditFormat(configCheckMask(configCheckStructValue(VARIABLES.configCheckLocalConfig, configItem.key)))#</td>
+                        <td>#encodeForHTML(configCheckMask(configCheckStructValue(VARIABLES.configCheckLocalConfig, configItem.key)))#</td>
                         <td>
                           <cfif len(configItem.app)>
-                            <div class="small text-muted">#htmlEditFormat(configItem.app)#</div>
-                            #htmlEditFormat(configCheckMask(configCheckApplicationValue(configItem.app)))#
+                            <div class="small text-muted">#encodeForHTML(configItem.app)#</div>
+                            #encodeForHTML(configCheckMask(configCheckApplicationValue(configItem.app)))#
                           <cfelse>
                             <span class="text-muted">nao armazenado em APPLICATION</span>
                           </cfif>
@@ -794,7 +794,7 @@ for (secretRef in configCheckExpectedSecrets) {
                 <div class="d-flex flex-column flex-xl-row align-items-xl-center justify-content-between gap-3">
                   <div>
                     Existem secrets apenas em <code>APPLICATION</code>, sem valor no arquivo local:
-                    <cfoutput>#htmlEditFormat(arrayToList(configCheckMemoryOnlySecrets, ", "))#</cfoutput>.
+                    <cfoutput>#encodeForHTML(arrayToList(configCheckMemoryOnlySecrets, ", "))#</cfoutput>.
                     Isso indica memoria carregada antes da ultima alteracao do arquivo ou de um reset da aplicacao.
                   </div>
                   <form method="post" class="m-0">
@@ -821,11 +821,11 @@ for (secretRef in configCheckExpectedSecrets) {
                     <cfset VARIABLES.configCheckAppSecret = structKeyExists(APPLICATION, "cronJobs") AND isStruct(APPLICATION.cronJobs) AND structKeyExists(APPLICATION.cronJobs, "secrets") AND isStruct(APPLICATION.cronJobs.secrets) ? configCheckStructValue(APPLICATION.cronJobs.secrets, secretRef) : ""/>
                     <cfoutput>
                       <tr>
-                        <td class="fw-semibold">#htmlEditFormat(secretRef)#</td>
-                        <td>#htmlEditFormat(configCheckSecretSource(VARIABLES.configCheckLocalConfig, secretRef))#</td>
-                        <td>#htmlEditFormat(configCheckMask(configCheckSecretValue(VARIABLES.configCheckLocalConfig, secretRef)))#</td>
-                        <td>#htmlEditFormat(configCheckMask(VARIABLES.configCheckLocalSecret))#</td>
-                        <td>#htmlEditFormat(configCheckMask(VARIABLES.configCheckAppSecret))#</td>
+                        <td class="fw-semibold">#encodeForHTML(secretRef)#</td>
+                        <td>#encodeForHTML(configCheckSecretSource(VARIABLES.configCheckLocalConfig, secretRef))#</td>
+                        <td>#encodeForHTML(configCheckMask(configCheckSecretValue(VARIABLES.configCheckLocalConfig, secretRef)))#</td>
+                        <td>#encodeForHTML(configCheckMask(VARIABLES.configCheckLocalSecret))#</td>
+                        <td>#encodeForHTML(configCheckMask(VARIABLES.configCheckAppSecret))#</td>
                       </tr>
                     </cfoutput>
                   </cfloop>
@@ -841,7 +841,7 @@ for (secretRef in configCheckExpectedSecrets) {
             <p class="text-muted small mb-3">Mostra todos os jobs com <code>auth_mode</code> diferente de <code>none</code> ou com <code>secret_ref</code> preenchido.</p>
             <cfif len(VARIABLES.configCheckCronJobsError)>
               <div class="alert alert-warning mb-0">
-                Nao foi possivel consultar <code>tb_cron_jobs</code>: <cfoutput>#htmlEditFormat(VARIABLES.configCheckCronJobsError)#</cfoutput>
+                Nao foi possivel consultar <code>tb_cron_jobs</code>: <cfoutput>#encodeForHTML(VARIABLES.configCheckCronJobsError)#</cfoutput>
               </div>
             <cfelseif qConfigCheckCronJobs.recordcount>
               <div class="table-responsive">
@@ -860,26 +860,26 @@ for (secretRef in configCheckExpectedSecrets) {
                     <cfoutput query="qConfigCheckCronJobs">
                       <tr>
                         <td>
-                          <div class="fw-semibold">#htmlEditFormat(qConfigCheckCronJobs.nome)#</div>
-                          <div class="small text-muted">###qConfigCheckCronJobs.id_cron_job# · #htmlEditFormat(qConfigCheckCronJobs.projeto)#/#htmlEditFormat(qConfigCheckCronJobs.ambiente)# · <cfif qConfigCheckCronJobs.ativo>ativo<cfelse>inativo</cfif></div>
+                          <div class="fw-semibold">#encodeForHTML(qConfigCheckCronJobs.nome)#</div>
+                          <div class="small text-muted">###qConfigCheckCronJobs.id_cron_job# · #encodeForHTML(qConfigCheckCronJobs.projeto)#/#encodeForHTML(qConfigCheckCronJobs.ambiente)# · <cfif qConfigCheckCronJobs.ativo>ativo<cfelse>inativo</cfif></div>
                         </td>
-                        <td>#htmlEditFormat(qConfigCheckCronJobs.auth_mode)#</td>
-                        <td><cfif len(trim(qConfigCheckCronJobs.secret_ref))>#htmlEditFormat(qConfigCheckCronJobs.secret_ref)#<cfelse><span class="text-muted">sem secret_ref</span></cfif></td>
+                        <td>#encodeForHTML(qConfigCheckCronJobs.auth_mode)#</td>
+                        <td><cfif len(trim(qConfigCheckCronJobs.secret_ref))>#encodeForHTML(qConfigCheckCronJobs.secret_ref)#<cfelse><span class="text-muted">sem secret_ref</span></cfif></td>
                         <td>
                           <cfif len(trim(qConfigCheckCronJobs.secret_ref))>
-                            #htmlEditFormat(configCheckSecretSource(VARIABLES.configCheckLocalConfig, qConfigCheckCronJobs.secret_ref))#
-                            <div class="small text-muted">#htmlEditFormat(configCheckMask(configCheckSecretValue(VARIABLES.configCheckLocalConfig, qConfigCheckCronJobs.secret_ref)))#</div>
+                            #encodeForHTML(configCheckSecretSource(VARIABLES.configCheckLocalConfig, qConfigCheckCronJobs.secret_ref))#
+                            <div class="small text-muted">#encodeForHTML(configCheckMask(configCheckSecretValue(VARIABLES.configCheckLocalConfig, qConfigCheckCronJobs.secret_ref)))#</div>
                           <cfelse>
                             <span class="text-muted">nao aplicavel</span>
                           </cfif>
                         </td>
                         <td>
-                          <cfif len(trim(qConfigCheckCronJobs.last_status))>#htmlEditFormat(qConfigCheckCronJobs.last_status)#<cfelse><span class="text-muted">sem execucao</span></cfif>
+                          <cfif len(trim(qConfigCheckCronJobs.last_status))>#encodeForHTML(qConfigCheckCronJobs.last_status)#<cfelse><span class="text-muted">sem execucao</span></cfif>
                           <cfif len(trim(qConfigCheckCronJobs.last_http_status & ""))>
-                            <div class="small text-muted">HTTP #htmlEditFormat(qConfigCheckCronJobs.last_http_status)#</div>
+                            <div class="small text-muted">HTTP #encodeForHTML(qConfigCheckCronJobs.last_http_status)#</div>
                           </cfif>
                           <cfif len(trim(qConfigCheckCronJobs.last_error))>
-                            <div class="small text-danger text-break">#htmlEditFormat(left(qConfigCheckCronJobs.last_error, 180))#</div>
+                            <div class="small text-danger text-break">#encodeForHTML(left(qConfigCheckCronJobs.last_error, 180))#</div>
                           </cfif>
                         </td>
                         <td><cfif len(trim(qConfigCheckCronJobs.next_run_at & ""))>#dateTimeFormat(qConfigCheckCronJobs.next_run_at, "dd/mm/yyyy HH:nn")#<cfelse><span class="text-muted">-</span></cfif></td>

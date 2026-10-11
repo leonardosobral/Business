@@ -1,0 +1,1 @@
+{"published": ["services/RunnerAppsMenuCache.cfc", "services/RunnerAppsHttpSource.cfc", "public-api/v1/discovery/runner-apps.cfm", "public-api/openapi.json", "public-api/Application.cfc", "includes/estrutura/menu_apps_data.cfm"], "backup": "/var/backups/runner-apps-20261004-v2-rr/baseline"}

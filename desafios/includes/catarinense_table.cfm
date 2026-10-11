@@ -44,16 +44,16 @@
               <td class="text-center text-muted">#VARIABLES.qCatarinenseRanking.currentRow#</td>
               <td class="catarinense-athlete">
                 <div class="d-flex align-items-center gap-2">
-                  <img class="rounded-circle catarinense-avatar" src="#htmlEditFormat(VARIABLES.qCatarinenseRanking.imagem_usuario)#" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/>
+                  <img class="rounded-circle catarinense-avatar" src="#encodeForHTMLAttribute(VARIABLES.qCatarinenseRanking.imagem_usuario)#" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/>
                   <div>
                     <div class="fw-semibold">
                       <cfif len(trim(VARIABLES.qCatarinenseRanking.tag & ""))>
-                        <a class="text-reset" href="https://roadrunners.run/atleta/#urlEncodedFormat(VARIABLES.qCatarinenseRanking.tag)#/" target="_blank" rel="noopener noreferrer">#htmlEditFormat(VARIABLES.qCatarinenseRanking.nome)#</a>
+                        <a class="text-reset" href="https://roadrunners.run/atleta/#urlEncodedFormat(VARIABLES.qCatarinenseRanking.tag)#/" target="_blank" rel="noopener noreferrer">#encodeForHTML(VARIABLES.qCatarinenseRanking.nome)#</a>
                       <cfelse>
-                        #htmlEditFormat(VARIABLES.qCatarinenseRanking.nome)#
+                        #encodeForHTML(VARIABLES.qCatarinenseRanking.nome)#
                       </cfif>
                     </div>
-                    <div class="small text-muted">ID #VARIABLES.qCatarinenseRanking.id# · #htmlEditFormat(VARIABLES.qCatarinenseRanking.cidade)#/#htmlEditFormat(VARIABLES.qCatarinenseRanking.estado)#</div>
+                    <div class="small text-muted">ID #VARIABLES.qCatarinenseRanking.id# · #encodeForHTML(VARIABLES.qCatarinenseRanking.cidade)#/#encodeForHTML(VARIABLES.qCatarinenseRanking.estado)#</div>
                   </div>
                 </div>
               </td>
@@ -75,14 +75,14 @@
               <td>
                 <span class="badge #VARIABLES.challengeMedalStatusClass#">#VARIABLES.challengeMedalStatusLabel#</span>
                 <cfif VARIABLES.qCatarinenseRanking.medalha_status EQ "entregue" AND len(trim(VARIABLES.qCatarinenseRanking.medalha_entregue_em & ""))>
-                  <div class="small text-muted mt-1">#htmlEditFormat(VARIABLES.qCatarinenseRanking.medalha_entregue_em)#</div>
+                  <div class="small text-muted mt-1">#encodeForHTML(VARIABLES.qCatarinenseRanking.medalha_entregue_em)#</div>
                 </cfif>
               </td>
               <td class="text-end">
                 <cfif listFindNoCase("proxima_etapa,imediata", VARIABLES.qCatarinenseRanking.medalha_status)>
                   <form method="post" class="d-inline" onsubmit="return confirm('Confirmar a entrega da medalha para este atleta?');">
                     <input type="hidden" name="challenge_action" value="entregar_medalha"/>
-                    <input type="hidden" name="challenge_medal_csrf" value="#htmlEditFormat(VARIABLES.challengeMedalCsrf)#"/>
+                    <input type="hidden" name="challenge_medal_csrf" value="#encodeForHTMLAttribute(VARIABLES.challengeMedalCsrf)#"/>
                     <input type="hidden" name="id_usuario" value="#VARIABLES.qCatarinenseRanking.id#"/>
                     <button class="btn btn-success btn-sm text-nowrap" type="submit"><i class="fa-solid fa-medal me-1"></i> Medalha entregue</button>
                   </form>

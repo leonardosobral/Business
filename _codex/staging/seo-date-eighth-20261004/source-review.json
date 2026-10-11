@@ -1,0 +1,48 @@
+{
+  "selected": [
+    {
+      "id": 38508,
+      "name": "Blue Run 2026 - Santos",
+      "page": "https://www.runningland.com.br/blue-run-2026-santos",
+      "date": "2026-11-01"
+    },
+    {
+      "id": 40176,
+      "name": "CORRIDA TOCA RAUL BARRA MANSA",
+      "page": "https://www.ticketsports.com.br/e/CORRIDA+TOCA+RAUL+BARRA+MANSA-86432",
+      "date": "2026-10-24"
+    },
+    {
+      "id": 43392,
+      "name": "Corrida Águia 2026",
+      "page": "https://tiquet.com.br/evento/2026-13-corrida-aguia-2026/",
+      "date": "2026-11-01"
+    },
+    {
+      "id": 45308,
+      "name": "LEGADO RUN",
+      "page": "https://www.ticketsports.com.br/e/LEGADO+RUN-87806",
+      "date": "2026-11-01"
+    },
+    {
+      "id": 47482,
+      "name": "Morro Beach Run",
+      "page": "https://www.centraldasinscricoes.com.br/evento/2026/corrida-de-rua/morro-beach-run",
+      "date": "2026-11-01"
+    }
+  ],
+  "evidence": {
+    "38508": "CUA página Blue Run Santos mostra1Nov edição2026,5K10K; regulamentoHTML remete data à página oficial. HTMLcurl é shell, não comprova data.",
+    "40176": "CUA TicketSports cabeçalho/data/texto24out2026,7kmcorrida2kmcaminhada; PDF primeira página confirma24out. Kits23/24out concordam; horários divergem entre página e PDF (sexta14h vs15h; sábado16h vs16h30), então horários existentes preservados sem validar.",
+    "43392": "Tiquet página/web e HTMLatual01/11/2026/3kmcaminhada5e10km; PDF primeira página confirma01novembro2026.",
+    "45308": "CUA TicketSports cabeçalho e descrição01/11/2026/3,6,9km; linkatualPDFnovo baixado. PDFnovo confirma modalidades/programação mas não fixa data; data vem da página.",
+    "47482": "CUA CentraldasInscrições01/11/2026/5e10km; PDFprimeirapágina01/11/26. HTMLcurl shell não é evidência da data."
+  },
+  "excluded": {
+    "39867": "Regulamento cadastrado21junho2026 e kits20junho; falta confirmação da páginaatualpara25out, não alterado.",
+    "40891": "Regulamento16agosto2026 contra cadastro25out, não resolvido; nenhuma alteração.",
+    "47013": "Não conferido integralmente neste lote.",
+    "47496": "Não conferido integralmente neste lote."
+  },
+  "limits": "Nenhuma validação universal de horários,local,preços ou disponibilidade. Nenhuma mensagem externa. Nenhuma revisão pública criada automaticamente."
+}

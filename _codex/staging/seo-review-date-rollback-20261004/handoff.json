@@ -1,0 +1,24 @@
+{
+  "status": "published_and_verified",
+  "course_reversions": 3,
+  "reverted_events": [
+    40879,
+    46585
+  ],
+  "q2_dates_retained": 2,
+  "q2_regulation_updated": true,
+  "q2_manual_summary_languages": [
+    "pt-br",
+    "en",
+    "es"
+  ],
+  "events_checked": 3,
+  "course_ids_preserved": 5,
+  "dependency_tables_preserved": 13,
+  "green_checks": 11,
+  "public_urls": 9,
+  "history_records": 4,
+  "remaining_events": 18,
+  "remaining_routes": 31,
+  "backup": "/var/backups/seo-review-date-rollback-20261004"
+}

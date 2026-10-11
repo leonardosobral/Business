@@ -1,0 +1,7 @@
+{
+  "published": [
+    "portal/includes/seo_queue_data.cfm",
+    "portal/conteudo/seo_semrush.cfm"
+  ],
+  "backup": "/var/backups/seo-assets-panel-20261008/baseline"
+}

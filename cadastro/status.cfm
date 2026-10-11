@@ -72,27 +72,27 @@
       </div>
 
       <cfoutput>
-      <span class="badge badge-warning mb-3">#htmlEditFormat(VARIABLES.pendingRegistrationBadge)#</span>
-      <h1 class="h2 mb-3">#htmlEditFormat(VARIABLES.pendingRegistrationTitle)#</h1>
+      <span class="badge badge-warning mb-3">#encodeForHTML(VARIABLES.pendingRegistrationBadge)#</span>
+      <h1 class="h2 mb-3">#encodeForHTML(VARIABLES.pendingRegistrationTitle)#</h1>
       <p class="text-muted mb-4">
-        #htmlEditFormat(VARIABLES.pendingRegistrationMessage)#
+        #encodeForHTML(VARIABLES.pendingRegistrationMessage)#
       </p>
       </cfoutput>
 
       <div class="business-pending-detail p-3 mb-4">
         <cfif isDefined("qBusinessPendingRegistration") AND qBusinessPendingRegistration.recordcount>
           <cfoutput>
-            <div class="fw-bold">#htmlEditFormat(qBusinessPendingRegistration.nome_empresa)#</div>
+            <div class="fw-bold">#encodeForHTML(qBusinessPendingRegistration.nome_empresa)#</div>
             <div class="small text-muted">Protocolo: #qBusinessPendingRegistration.id_solicitacao#</div>
-            <div class="small text-muted">Responsavel: #htmlEditFormat(VARIABLES.pendingRegistrationName)#<cfif len(trim(VARIABLES.pendingRegistrationEmail))> - #htmlEditFormat(VARIABLES.pendingRegistrationEmail)#</cfif></div>
-            <div class="small text-muted">Tipo: #htmlEditFormat(qBusinessPendingRegistration.tipo_prestador)#</div>
+            <div class="small text-muted">Responsavel: #encodeForHTML(VARIABLES.pendingRegistrationName)#<cfif len(trim(VARIABLES.pendingRegistrationEmail))> - #encodeForHTML(VARIABLES.pendingRegistrationEmail)#</cfif></div>
+            <div class="small text-muted">Tipo: #encodeForHTML(qBusinessPendingRegistration.tipo_prestador)#</div>
             <div class="small text-muted">Enviado em #dateTimeFormat(qBusinessPendingRegistration.data_criacao, "dd/mm/yyyy HH:nn")#</div>
           </cfoutput>
         <cfelse>
           <cfoutput>
-            <div class="fw-bold">#htmlEditFormat(VARIABLES.pendingRegistrationName)#</div>
+            <div class="fw-bold">#encodeForHTML(VARIABLES.pendingRegistrationName)#</div>
             <cfif len(trim(VARIABLES.pendingRegistrationEmail))>
-              <div class="small text-muted">#htmlEditFormat(VARIABLES.pendingRegistrationEmail)#</div>
+              <div class="small text-muted">#encodeForHTML(VARIABLES.pendingRegistrationEmail)#</div>
             </cfif>
           </cfoutput>
         </cfif>

@@ -1,0 +1,128 @@
+[
+  {
+    "id": 39867,
+    "url": "https://roadrunners.run/evento/2026-1-corrida-q2-eventos-de-revezamento-de-americana/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "localized_paragraph_0": true,
+      "localized_paragraph_1": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 39867,
+    "url": "https://roadrunners.run/en/event/2026-1-corrida-q2-eventos-de-revezamento-de-americana/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "localized_paragraph_0": true,
+      "localized_paragraph_1": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 39867,
+    "url": "https://roadrunners.run/es/evento/2026-1-corrida-q2-eventos-de-revezamento-de-americana/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "localized_paragraph_0": true,
+      "localized_paragraph_1": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 40879,
+    "url": "https://roadrunners.run/evento/2026-ardap-run-corrida-beneficente/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 40879,
+    "url": "https://roadrunners.run/en/event/2026-ardap-run-corrida-beneficente/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 40879,
+    "url": "https://roadrunners.run/es/evento/2026-ardap-run-corrida-beneficente/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 46585,
+    "url": "https://roadrunners.run/evento/2026-corrida-iz1-telecom/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 46585,
+    "url": "https://roadrunners.run/en/event/2026-corrida-iz1-telecom/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 46585,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-iz1-telecom/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  }
+]

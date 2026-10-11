@@ -1,0 +1,74 @@
+{
+  "events": {
+    "37769": {
+      "data_inicial": "2026-11-22",
+      "data_final": "2026-11-22"
+    }
+  },
+  "routes": {
+    "61906": {
+      "data_percurso": "2026-11-22",
+      "percurso_bloqueado": true
+    },
+    "61907": {
+      "data_percurso": "2026-11-22",
+      "percurso_bloqueado": true
+    },
+    "61826": {
+      "data_percurso": "2026-11-07",
+      "percurso_bloqueado": true
+    },
+    "61827": {
+      "data_percurso": "2026-11-07",
+      "percurso_bloqueado": true
+    },
+    "62296": {
+      "data_percurso": "2026-10-17",
+      "percurso_bloqueado": true
+    },
+    "63306": {
+      "data_percurso": "2026-11-29",
+      "percurso_bloqueado": true
+    },
+    "61916": {
+      "data_percurso": "2026-11-08",
+      "percurso_bloqueado": true
+    },
+    "61917": {
+      "data_percurso": "2026-11-08",
+      "percurso_bloqueado": true
+    },
+    "64469": {
+      "data_percurso": "2026-11-08",
+      "percurso_bloqueado": true
+    },
+    "67820": {
+      "data_percurso": "2026-11-08",
+      "percurso_bloqueado": true
+    },
+    "68451": {
+      "data_percurso": "2026-11-08",
+      "percurso_bloqueado": true
+    },
+    "68555": {
+      "data_percurso": "2026-10-25",
+      "percurso_bloqueado": true
+    },
+    "68556": {
+      "data_percurso": "2026-10-25",
+      "percurso_bloqueado": true
+    },
+    "69068": {
+      "data_percurso": "2026-11-29",
+      "percurso_bloqueado": true
+    },
+    "69069": {
+      "data_percurso": "2026-11-29",
+      "percurso_bloqueado": true
+    },
+    "69147": {
+      "data_percurso": "2026-10-31",
+      "percurso_bloqueado": true
+    }
+  }
+}

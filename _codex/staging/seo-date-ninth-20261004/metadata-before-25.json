@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-1-corrida-ab-run/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-1-corrida-ab-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-1-corrida-ab-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-1-corrida-ab-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-1-corrida-ab-run/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-1-corrida-ab-run/",
+      "name": "1ª Corrida Ab Run",
+      "description": "1ª Corrida Ab Run takes place on 29 november 2026, in 📍 AB Bike & Fitness Av. Pres. Vargas, 931 - Coral, Lages - SC, CEP 88508-110 - Lages - SC.",
+      "url": "https://roadrunners.run/en/event/2026-1-corrida-ab-run/",
+      "startDate": "2026-11-29",
+      "endDate": "2026-11-29",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.korremais.com/painel/upload/img/inscricao/thumb/img-090-29092026184121-723d8c61fce870c3474d080313a4a2fd.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "📍 AB Bike & Fitness Av. Pres. Vargas, 931 - Coral, Lages - SC, CEP 88508-110",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Lages",
+          "addressRegion": "SC",
+          "addressCountry": "BR",
+          "streetAddress": "📍 AB Bike & Fitness Av. Pres. Vargas, 931 - Coral, Lages - SC, CEP 88508-110"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.korremais.com/evento/1-corrida-ab-run"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sc/",
+          "@type": "ListItem",
+          "name": "Races in SC"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-1-corrida-ab-run/",
+          "@type": "ListItem",
+          "name": "1ª Corrida Ab Run"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

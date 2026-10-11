@@ -38,7 +38,7 @@ function portalBannerClickResolveOriginSite() {
 <cfset VARIABLES.portalBannerClickTablesList = ValueList(qPortalBannerClickTables.table_name)/>
 
 <cfif NOT ListFindNoCase(VARIABLES.portalBannerClickTablesList, "tb_portal_banners") OR NOT ListFindNoCase(VARIABLES.portalBannerClickTablesList, "tb_portal_banners_log") OR NOT isNumeric(URL.id_banner)>
-    <cfheader statuscode="404" statustext="Not Found"/>
+    <cfheader statuscode="404"/>
     <cfabort/>
 </cfif>
 
@@ -49,7 +49,7 @@ function portalBannerClickResolveOriginSite() {
 </cfquery>
 
 <cfif NOT qPortalBannerClick.recordcount>
-    <cfheader statuscode="404" statustext="Not Found"/>
+    <cfheader statuscode="404"/>
     <cfabort/>
 </cfif>
 

@@ -1,0 +1,67 @@
+{
+  "profile": {
+    "pages": [
+      {
+        "tag_prefix": "atleta",
+        "id_pagina": 58631,
+        "perfil_publico": true,
+        "tag": "leonardo muniz"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "path": "/atleta/leonardo%20muniz/",
+      "stats": "403 text/html; charset=iso-8859-1 ",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "canonical": [],
+        "robots": []
+      },
+      "apache_403": false,
+      "cf_error": false
+    },
+    {
+      "path": "/en/athlete/leonardo%20muniz/",
+      "stats": "403 text/html; charset=iso-8859-1 ",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "canonical": [],
+        "robots": []
+      },
+      "apache_403": false,
+      "cf_error": false
+    },
+    {
+      "path": "/es/atleta/leonardo%20muniz/",
+      "stats": "403 text/html; charset=iso-8859-1 ",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "canonical": [],
+        "robots": []
+      },
+      "apache_403": false,
+      "cf_error": false
+    },
+    {
+      "path": "/atleta/index.cfm?tag=leonardo%20muniz",
+      "stats": "302 text/html;charset=UTF-8 https://roadrunners.run/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "canonical": [],
+        "robots": []
+      },
+      "apache_403": false,
+      "cf_error": false
+    }
+  ],
+  "rewrite_error_messages": [
+    "AH10411: Rewritten query string contains control characters or spaces",
+    "AH10411: Rewritten query string contains control characters or spaces",
+    "AH10411: Rewritten query string contains control characters or spaces"
+  ]
+}

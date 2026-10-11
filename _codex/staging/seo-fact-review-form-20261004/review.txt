@@ -1,0 +1,1 @@
+Revisão independente fact_change_log_review: aprovado após controller real POST/CSRF/IDs passar. Os cinco casos passaram antes e após publicação. 68 assertions, 56 nomes únicos. Sem bloqueios restantes; hashes vinculados entre candidato/teste/render/compilação; migração/inversa/rollback verificados.

@@ -1,0 +1,338 @@
+{
+  "selected": [
+    {
+      "id": 39558,
+      "name": "CIRCUITO UNINTA RUN - 2026",
+      "confirmed_date": "2026-12-13",
+      "basis": "Current official event page header and/or event announcement explicitly states date",
+      "source": {
+        "id": 39558,
+        "kind": "source",
+        "requested_url": "https://esportecorrida.com.br/v3/evento.php?evt=2281",
+        "status": "200",
+        "effective_url": "https://esportecorrida.com.br/v3/evento.php?evt=2281",
+        "content_type": "text/html; charset=iso-8859-1",
+        "pdf": false,
+        "bytes": 14095,
+        "sha256": "17c23c66def0420a139ad96e49b75c8f61581ba8399b1ebe6129d15221632c10",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        61292,
+        61293,
+        61294
+      ]
+    },
+    {
+      "id": 41364,
+      "name": "TERCEIRA CORRIDA DE RUA COARACI",
+      "confirmed_date": "2026-12-06",
+      "basis": "Current official event page header and/or event announcement explicitly states date",
+      "source": {
+        "id": 41364,
+        "kind": "source",
+        "requested_url": "https://www.races.com.br/terceira-corrida-de-rua-coaraci",
+        "status": "200",
+        "effective_url": "https://www.races.com.br/terceira-corrida-de-rua-coaraci",
+        "content_type": "text/html; charset=UTF-8",
+        "pdf": false,
+        "bytes": 38648,
+        "sha256": "379b0640768172a8f7f25856a2c694c11708a446453ddf78fa7087de4aea63e3",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        60042
+      ]
+    },
+    {
+      "id": 42544,
+      "name": "Corrida UNINTER em Movimento",
+      "confirmed_date": "2026-12-06",
+      "basis": "Current official event page header and/or event announcement explicitly states date",
+      "source": {
+        "id": 42544,
+        "kind": "source",
+        "requested_url": "https://www.races.com.br/corrida-uninter-em-movimento",
+        "status": "200",
+        "effective_url": "https://www.races.com.br/corrida-uninter-em-movimento",
+        "content_type": "text/html; charset=UTF-8",
+        "pdf": false,
+        "bytes": 43293,
+        "sha256": "7d77e78a25f1dc7b9f47638efe2dfcba290d6f117bbcb35c77ab1231f0c290f9",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        60593,
+        60594,
+        60595
+      ]
+    },
+    {
+      "id": 42847,
+      "name": "SUN RUN CORRIDA E CAMINHADA 2026",
+      "confirmed_date": "2026-12-06",
+      "basis": "Current official event page header and/or event announcement explicitly states date",
+      "source": {
+        "id": 42847,
+        "kind": "source",
+        "requested_url": "https://www.races.com.br/sunrun-2026",
+        "status": "200",
+        "effective_url": "https://www.races.com.br/sunrun-2026",
+        "content_type": "text/html; charset=UTF-8",
+        "pdf": false,
+        "bytes": 54276,
+        "sha256": "fcc596b96ccc0a2f360607a8cb1d3e18f5b0d651f284fe009296515e74883fc8",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        60957,
+        60958,
+        60959,
+        60960
+      ]
+    },
+    {
+      "id": 44114,
+      "name": "Corrida Dos Romeiros - Nossa Senhora Da Penha 2026",
+      "confirmed_date": "2026-11-22",
+      "basis": "Official linked regulation, explicit race date; first PDF page visually inspected",
+      "source": {
+        "id": 44114,
+        "kind": "regulation",
+        "requested_url": "https://www.race83.com.br/painel/upload/doc/inscricao/doc-007-06092026093839-1507c3821047678b7bc0f0e281031633.pdf",
+        "status": "200",
+        "effective_url": "https://www.race83.com.br/painel/upload/doc/inscricao/doc-007-06092026093839-1507c3821047678b7bc0f0e281031633.pdf",
+        "content_type": "application/pdf",
+        "pdf": true,
+        "bytes": 193507,
+        "sha256": "21dd1ad24775cff5c5bd6afc07478e844340f5105e412363cb7a19c731e737b0",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        68241,
+        68242
+      ]
+    },
+    {
+      "id": 44134,
+      "name": "1a Corrida da UJADI",
+      "confirmed_date": "2026-11-29",
+      "basis": "Current official event page header and/or event announcement explicitly states date",
+      "source": {
+        "id": 44134,
+        "kind": "source",
+        "requested_url": "https://www.races.com.br/1a-corrida-da-ujadi",
+        "status": "200",
+        "effective_url": "https://www.races.com.br/1a-corrida-da-ujadi",
+        "content_type": "text/html; charset=UTF-8",
+        "pdf": false,
+        "bytes": 62844,
+        "sha256": "1f37142699b1e78884aa9435306c279cb53b5a1bb1814fdec224ffd795ede795",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        62514,
+        62515
+      ]
+    },
+    {
+      "id": 44550,
+      "name": "Corrida TÁtico Extreme Run",
+      "confirmed_date": "2026-12-20",
+      "basis": "Official linked regulation, explicit race date; first PDF page visually inspected",
+      "source": {
+        "id": 44550,
+        "kind": "regulation",
+        "requested_url": "https://www.chipbreubranco.com.br/painel/upload/doc/inscricao/doc-064-18092026115622-fea76b7ab660fd8591d5b3c6002add88.pdf",
+        "status": "200",
+        "effective_url": "https://www.chipbreubranco.com.br/painel/upload/doc/inscricao/doc-064-18092026115622-fea76b7ab660fd8591d5b3c6002add88.pdf",
+        "content_type": "application/pdf",
+        "pdf": true,
+        "bytes": 841107,
+        "sha256": "8c95a8c052368105e416bfec882a58f235af59fee8a8481c0001419882bc000f",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        63062
+      ]
+    },
+    {
+      "id": 44804,
+      "name": "Meia Maratona Sustentável Tubo Forte",
+      "confirmed_date": "2027-02-21",
+      "basis": "Current official event page header and/or event announcement explicitly states date",
+      "source": {
+        "id": 44804,
+        "kind": "source",
+        "requested_url": "https://www.races.com.br/meia-maratona-sustentavel-2027",
+        "status": "200",
+        "effective_url": "https://www.races.com.br/meia-maratona-sustentavel-2027",
+        "content_type": "text/html; charset=UTF-8",
+        "pdf": false,
+        "bytes": 56575,
+        "sha256": "765a91770c8455e228495739dc84e25cb61214cd17d0a866934aa0a033abbe17",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        62486,
+        62487,
+        62488,
+        62489
+      ]
+    },
+    {
+      "id": 45121,
+      "name": "1ª Corrida Ab Run",
+      "confirmed_date": "2026-11-29",
+      "basis": "Current official event page header and/or event announcement explicitly states date",
+      "source": {
+        "id": 45121,
+        "kind": "source",
+        "requested_url": "https://www.korremais.com/evento/1-corrida-ab-run",
+        "status": "200",
+        "effective_url": "https://www.korremais.com/evento/1-corrida-ab-run",
+        "content_type": "text/html; charset=UTF-8",
+        "pdf": false,
+        "bytes": 45178,
+        "sha256": "bf47b21a91eae9ff6bcbfda06384a738e3a87ce0fc1877f222f534e6f9f3c2dc",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        67751
+      ]
+    },
+    {
+      "id": 45208,
+      "name": "MATTRIC RUN 2026",
+      "confirmed_date": "2026-11-21",
+      "basis": "Official linked regulation, explicit race date; first PDF page visually inspected",
+      "source": {
+        "id": 45208,
+        "kind": "regulation",
+        "requested_url": "https://www.lmdeventosesportivos.com.br/painel/upload/doc/inscricao/doc-062-01102026085824-619b59647202cbdf6d2f263301bf7286.pdf",
+        "status": "200",
+        "effective_url": "https://www.lmdeventosesportivos.com.br/painel/upload/doc/inscricao/doc-062-01102026085824-619b59647202cbdf6d2f263301bf7286.pdf",
+        "content_type": "application/pdf",
+        "pdf": true,
+        "bytes": 199306,
+        "sha256": "f7c702d93fb2a998ffc04a2c52e3aa15687beee4abdc0381dfb77608d8179ccf",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        62896,
+        62897
+      ]
+    },
+    {
+      "id": 45377,
+      "name": "PIRANGI PRAIANO 2027",
+      "confirmed_date": "2027-01-31",
+      "basis": "Official linked regulation, explicit race date; first PDF page visually inspected",
+      "source": {
+        "id": 45377,
+        "kind": "regulation",
+        "requested_url": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/85428/faaff372fb684e8da932c36ff08b73f3639217022424885636.pdf",
+        "status": "200",
+        "effective_url": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/85428/faaff372fb684e8da932c36ff08b73f3639217022424885636.pdf",
+        "content_type": "application/pdf",
+        "pdf": true,
+        "bytes": 115322,
+        "sha256": "a280fc504bbc2c9161e04ac34ecd72b122454e4ebf557794c4df59e0d047c33f",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        64327,
+        64328
+      ]
+    },
+    {
+      "id": 45484,
+      "name": "3ª CORRIDA 7KM GALO CONCHENSE",
+      "confirmed_date": "2027-01-10",
+      "basis": "Current official event page header and/or event announcement explicitly states date",
+      "source": {
+        "id": 45484,
+        "kind": "source",
+        "requested_url": "https://www.sympla.com.br/evento/3a-corrida-7km-galo-conchense/3459801",
+        "status": "200",
+        "effective_url": "https://www.sympla.com.br/evento/3a-corrida-7km-galo-conchense/3459801",
+        "content_type": "text/html; charset=utf-8",
+        "pdf": false,
+        "bytes": 199576,
+        "sha256": "66956a3f6ffcbcc5d174a7a72f0cd8ded32d32f6f37128fea2b5ef882c90cc73",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        64609
+      ]
+    },
+    {
+      "id": 46297,
+      "name": "Corrida Rústica Trentina 2026",
+      "confirmed_date": "2026-12-06",
+      "basis": "Official linked regulation, explicit race date; first PDF page visually inspected",
+      "source": {
+        "id": 46297,
+        "kind": "regulation",
+        "requested_url": "https://www.kweventosesportivos.com.br/painel/upload/doc/inscricao/doc-042-04092026080809-6ef42a6eab211ddd71ac423a80b42d15.pdf",
+        "status": "200",
+        "effective_url": "https://www.kweventosesportivos.com.br/painel/upload/doc/inscricao/doc-042-04092026080809-6ef42a6eab211ddd71ac423a80b42d15.pdf",
+        "content_type": "application/pdf",
+        "pdf": true,
+        "bytes": 169734,
+        "sha256": "5344aa757b554ed68e798bcb0abb546da6efa871f68c16f95b21eb5b7a3b7ca4",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        66363
+      ]
+    },
+    {
+      "id": 47432,
+      "name": "27 RUN 5K ANO NOVO 5KM",
+      "confirmed_date": "2026-12-27",
+      "basis": "Current official event page header and/or event announcement explicitly states date",
+      "source": {
+        "id": 47432,
+        "kind": "source",
+        "requested_url": "https://www.sympla.com.br/evento/27-run-5k-ano-novo-5km/3566434",
+        "status": "200",
+        "effective_url": "https://www.sympla.com.br/evento/27-run-5k-ano-novo-5km/3566434",
+        "content_type": "text/html; charset=utf-8",
+        "pdf": false,
+        "bytes": 259133,
+        "sha256": "1b8f7b40b254342d7e0e939b5d810b51aaacf44a7c368dca3ac454de7e9c115e",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        69054
+      ]
+    },
+    {
+      "id": 48133,
+      "name": "CORRIDA THE LAST RUNNER 2026",
+      "confirmed_date": "2026-11-20",
+      "basis": "Official linked regulation, explicit race date; first PDF page visually inspected",
+      "source": {
+        "id": 48133,
+        "kind": "regulation",
+        "requested_url": "https://www.smcrono.com.br/painel/upload/doc/inscricao/doc-069-23092026162817-44a64c37e2c5c10ef6f6c45755af9822.pdf",
+        "status": "200",
+        "effective_url": "https://www.smcrono.com.br/painel/upload/doc/inscricao/doc-069-23092026162817-44a64c37e2c5c10ef6f6c45755af9822.pdf",
+        "content_type": "application/pdf",
+        "pdf": true,
+        "bytes": 332029,
+        "sha256": "959173e11736c080fc6c764439af24a80d65bc9e17c0c733e9af6f56ead79472",
+        "curl_exit": 0
+      },
+      "changed_route_ids": [
+        70637
+      ]
+    }
+  ],
+  "excluded_routes": {
+    "61295": "UNINTA page is Itapipoca; circuit PDF lists21km only forSobral. Preserve21km route until edition/distance reconciliation.",
+    "67752": "AB Run current page/regulation list5km+Kids;2.6km route lacks confirmation. Preserve. "
+  },
+  "limits": "Only route date fields corrected. No validation or edits of event dates, descriptions, distances, prices, schedule, location, registration, results or personal data."
+}

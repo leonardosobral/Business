@@ -284,8 +284,8 @@ for (apiMonitorTimelineItem in VARIABLES.apiMonitorSnapshot.timeline) {
   <cfif len(apiMonitorDisplayError)>
     <div class="alert alert-warning">
       <strong>Telemetria indisponível.</strong>
-      <cfoutput>#htmlEditFormat(apiMonitorDisplayError)#</cfoutput>
-      <div class="small mt-2"><cfoutput>#htmlEditFormat(apiMonitorDisplayHint)#</cfoutput></div>
+      <cfoutput>#encodeForHTML(apiMonitorDisplayError)#</cfoutput>
+      <div class="small mt-2"><cfoutput>#encodeForHTML(apiMonitorDisplayHint)#</cfoutput></div>
     </div>
   <cfelse>
     <cfif structKeyExists(VARIABLES.apiMonitorSnapshot, "skippedFiles")
@@ -295,7 +295,7 @@ for (apiMonitorTimelineItem in VARIABLES.apiMonitorSnapshot.timeline) {
         Um arquivo rotacionado nao pôde ser lido; os dados abaixo usam somente os arquivos acessíveis.
         <cfloop array="#VARIABLES.apiMonitorSnapshot.skippedFiles#" index="apiMonitorSkippedFile">
           <div class="small mt-2">
-            <cfoutput>#htmlEditFormat(apiMonitorSkippedFile.path)# (#htmlEditFormat(apiMonitorSkippedFile.error)#)</cfoutput>
+            <cfoutput>#encodeForHTML(apiMonitorSkippedFile.path)# (#encodeForHTML(apiMonitorSkippedFile.error)#)</cfoutput>
           </div>
         </cfloop>
       </div>
@@ -365,7 +365,7 @@ for (apiMonitorTimelineItem in VARIABLES.apiMonitorSnapshot.timeline) {
               <cfloop array="#VARIABLES.apiMonitorSnapshot.timeline#" index="apiMonitorTimelineItem">
                 <cfoutput>
                   <div class="api-monitor-timeline-row">
-                    <span class="small text-muted">#htmlEditFormat(apiMonitorTimelineItem.label)#</span>
+                    <span class="small text-muted">#encodeForHTML(apiMonitorTimelineItem.label)#</span>
                     <div class="api-monitor-timeline-track" title="#apiMonitorTimelineItem.total# requisições">
                       <cfif apiMonitorTimelineItem.authenticated GT 0>
                         <div class="api-monitor-timeline-segment api-monitor-authenticated"
@@ -406,7 +406,7 @@ for (apiMonitorTimelineItem in VARIABLES.apiMonitorSnapshot.timeline) {
               <tbody>
                 <cfloop array="#apiMonitorTrafficRows#" index="apiMonitorTrafficRow">
                   <cfoutput>
-                    <tr title="#htmlEditFormat(apiMonitorTrafficRow.data.description)#">
+                    <tr title="#encodeForHTMLAttribute(apiMonitorTrafficRow.data.description)#">
                       <th>
                         <span class="api-monitor-kind api-monitor-kind-#apiMonitorTrafficClass(apiMonitorTrafficRow.key)#">
                           #apiMonitorTrafficLabel(apiMonitorTrafficRow.key)#
@@ -447,7 +447,7 @@ for (apiMonitorTimelineItem in VARIABLES.apiMonitorSnapshot.timeline) {
                   <cfloop array="#VARIABLES.apiMonitorSnapshot.clients#" index="apiMonitorClient">
                     <cfoutput>
                       <tr>
-                        <td><code>#htmlEditFormat(apiMonitorClient.label)#</code></td>
+                        <td><code>#encodeForHTML(apiMonitorClient.label)#</code></td>
                         <td class="text-end">#apiMonitorClient.total#</td>
                         <td class="text-end">#apiMonitorClient.success#</td>
                         <td class="text-end">#apiMonitorClient.clientErrors#</td>
@@ -477,7 +477,7 @@ for (apiMonitorTimelineItem in VARIABLES.apiMonitorSnapshot.timeline) {
                   <cfloop array="#VARIABLES.apiMonitorSnapshot.authenticatedRoutes#" index="apiMonitorRoute">
                     <cfoutput>
                       <tr>
-                        <td class="api-monitor-route"><code>#htmlEditFormat(apiMonitorRoute.label)#</code></td>
+                        <td class="api-monitor-route"><code>#encodeForHTML(apiMonitorRoute.label)#</code></td>
                         <td class="text-end">#apiMonitorRoute.total#</td>
                         <td class="text-end">#apiMonitorRoute.clientErrors#</td>
                         <td class="text-end">#apiMonitorRoute.serverErrors#</td>
@@ -509,7 +509,7 @@ for (apiMonitorTimelineItem in VARIABLES.apiMonitorSnapshot.timeline) {
                   <cfloop array="#VARIABLES.apiMonitorSnapshot.probeRoutes#" index="apiMonitorProbeRoute">
                     <cfoutput>
                       <tr>
-                        <td class="api-monitor-route"><code>#htmlEditFormat(apiMonitorProbeRoute.label)#</code></td>
+                        <td class="api-monitor-route"><code>#encodeForHTML(apiMonitorProbeRoute.label)#</code></td>
                         <td class="text-end">#apiMonitorProbeRoute.total#</td>
                         <td class="text-end">#apiMonitorProbeRoute.success#</td>
                         <td class="text-end">#apiMonitorProbeRoute.redirects#</td>
@@ -544,7 +544,7 @@ for (apiMonitorTimelineItem in VARIABLES.apiMonitorSnapshot.timeline) {
                   <cfloop array="#VARIABLES.apiMonitorSnapshot.abuseSignals#" index="apiMonitorAbuse">
                     <cfoutput>
                       <tr>
-                        <td><code>#htmlEditFormat(apiMonitorAbuse.label)#</code></td>
+                        <td><code>#encodeForHTML(apiMonitorAbuse.label)#</code></td>
                         <td class="text-end fw-bold #apiMonitorAbuse.score GTE 100 ? 'text-danger' : 'text-warning'#">#apiMonitorAbuse.score#</td>
                         <td class="text-end">#apiMonitorAbuse.total#</td>
                         <td class="text-end">#apiMonitorAbuse.probe#</td>
@@ -583,10 +583,10 @@ for (apiMonitorTimelineItem in VARIABLES.apiMonitorSnapshot.timeline) {
                     </span>
                   </td>
                   <td><strong>#apiMonitorError.statusCode#</strong></td>
-                  <td class="api-monitor-route"><code>#htmlEditFormat(apiMonitorError.method & " " & apiMonitorError.route)#</code></td>
-                  <td><code>#htmlEditFormat(apiMonitorError.clientId)#</code></td>
-                  <td>#len(apiMonitorError.errorCode) ? htmlEditFormat(apiMonitorError.errorCode) : "-"#</td>
-                  <td><code>#htmlEditFormat(apiMonitorError.ipHash)#</code></td>
+                  <td class="api-monitor-route"><code>#encodeForHTML(apiMonitorError.method & " " & apiMonitorError.route)#</code></td>
+                  <td><code>#encodeForHTML(apiMonitorError.clientId)#</code></td>
+                  <td>#len(apiMonitorError.errorCode) ? encodeForHTML(apiMonitorError.errorCode) : "-"#</td>
+                  <td><code>#encodeForHTML(apiMonitorError.ipHash)#</code></td>
                   <td class="text-end">#apiMonitorDuration(apiMonitorError.durationMs)#</td>
                 </tr>
               </cfoutput>

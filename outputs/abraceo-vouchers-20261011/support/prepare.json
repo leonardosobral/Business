@@ -1,0 +1,31 @@
+{
+  "eligible": 40,
+  "pending": [
+    {
+      "id_conta": 45,
+      "empresa": "Morro MT",
+      "cnpj": "18305726000106",
+      "contato": "JÚNIOR DE ASSIS SOARES",
+      "fonte": "https://abraceo.com.br/filiado/morro-mt/",
+      "email_business": "__morro@morro-mt.com.br",
+      "status_conta": "PENDENTE",
+      "email": "__morro@morro-mt.com.br",
+      "emails_fonte": [
+        "__morro@morro-mt.com.br"
+      ],
+      "campos_fonte": [
+        "(65) 99277-0972",
+        "__morro@morro-mt.com.br",
+        "@morro_mt",
+        "Cidade: Cuiabá - MT",
+        "Regional: Norte"
+      ],
+      "fonte_sha256": "732f34b10694fa5e5d879a4a306850696c14c4e43ddc1ee2e0cf3ad74440e9c9",
+      "verificado_em": "2026-10-11",
+      "vence_em": "2026-11-10",
+      "status": "PENDENTE",
+      "motivo": "Endereço publicado começa com dois underscores; confirmar grafia com a ABRACEO antes de emitir"
+    }
+  ],
+  "baseline_saved": true
+}

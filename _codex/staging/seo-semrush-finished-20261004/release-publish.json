@@ -1,0 +1,7 @@
+{
+  "published": [
+    "portal/includes/seo_semrush_data.cfm",
+    "portal/conteudo/seo_semrush.cfm"
+  ],
+  "backup": "/var/backups/seo-semrush-finished-20261004/baseline"
+}

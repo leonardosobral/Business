@@ -178,15 +178,15 @@
                   <div class="row g-3 mb-4">
                     <div class="col-12 col-lg-4">
                       <div class="small text-muted">Protocolo</div>
-                      <div class="fw-semibold"><cfoutput>#htmlEditFormat(qHelpdeskTicketEdit.protocolo)#</cfoutput></div>
+                      <div class="fw-semibold"><cfoutput>#encodeForHTML(qHelpdeskTicketEdit.protocolo)#</cfoutput></div>
                     </div>
                     <div class="col-12 col-lg-4">
                       <div class="small text-muted">Setor</div>
-                      <div class="fw-semibold"><cfoutput>#htmlEditFormat(qHelpdeskTicketEdit.nome_setor)#</cfoutput></div>
+                      <div class="fw-semibold"><cfoutput>#encodeForHTML(qHelpdeskTicketEdit.nome_setor)#</cfoutput></div>
                     </div>
                     <div class="col-12 col-lg-4">
                       <div class="small text-muted">Status</div>
-                      <div class="fw-semibold"><cfoutput>#htmlEditFormat(qHelpdeskTicketEdit.status)#</cfoutput></div>
+                      <div class="fw-semibold"><cfoutput>#encodeForHTML(qHelpdeskTicketEdit.status)#</cfoutput></div>
                     </div>
                   </div>
 
@@ -197,14 +197,14 @@
                           <div class="support-message <cfif IsBoolean(qHelpdeskMensagens.is_admin) ? qHelpdeskMensagens.is_admin : ListFindNoCase('true,1,yes,sim', trim(qHelpdeskMensagens.is_admin))>is-admin</cfif>">
                             <div class="support-message-header">
                               <div>
-                                <div class="fw-semibold">#htmlEditFormat(qHelpdeskMensagens.nome_usuario)#</div>
-                                <div class="small text-muted">#htmlEditFormat(qHelpdeskMensagens.email_usuario)#</div>
+                                <div class="fw-semibold">#encodeForHTML(qHelpdeskMensagens.nome_usuario)#</div>
+                                <div class="small text-muted">#encodeForHTML(qHelpdeskMensagens.email_usuario)#</div>
                               </div>
                               <div class="text-end small text-muted">
                                 #LSDateFormat(qHelpdeskMensagens.created_at, "dd/mm/yyyy")# às #LSTimeFormat(qHelpdeskMensagens.created_at, "HH:mm")#
                               </div>
                             </div>
-                            <div class="support-message-body">#htmlEditFormat(qHelpdeskMensagens.mensagem)#</div>
+                            <div class="support-message-body">#encodeForHTML(qHelpdeskMensagens.mensagem)#</div>
                           </div>
                         </cfoutput>
                       <cfelse>
@@ -240,7 +240,7 @@
                           <option value="">Selecione o setor</option>
                           <cfoutput query="qHelpdeskSetores">
                             <cfif qHelpdeskSetores.ativo>
-                              <option value="#qHelpdeskSetores.id_setor#">#htmlEditFormat(qHelpdeskSetores.nome_setor)#</option>
+                              <option value="#qHelpdeskSetores.id_setor#">#encodeForHTML(qHelpdeskSetores.nome_setor)#</option>
                             </cfif>
                           </cfoutput>
                         </select>
@@ -278,12 +278,12 @@
                         <a class="support-ticket-card p-3 <cfif isDefined('URL.ticket_id') AND URL.ticket_id EQ qHelpdeskChamados.id_chamado>is-active</cfif>" href="./?pagina=#VARIABLES.helpdeskPage#&ticket_id=#qHelpdeskChamados.id_chamado#">
                           <div class="d-flex justify-content-between gap-3 mb-2">
                             <div>
-                              <div class="fw-semibold">#htmlEditFormat(qHelpdeskChamados.assunto)#</div>
-                              <div class="support-ticket-meta">#htmlEditFormat(qHelpdeskChamados.protocolo)#</div>
+                              <div class="fw-semibold">#encodeForHTML(qHelpdeskChamados.assunto)#</div>
+                              <div class="support-ticket-meta">#encodeForHTML(qHelpdeskChamados.protocolo)#</div>
                             </div>
-                            <span class="badge <cfif qHelpdeskChamados.status EQ 'resolvido' OR qHelpdeskChamados.status EQ 'fechado'>badge-success<cfelseif qHelpdeskChamados.status EQ 'em_atendimento'>badge-primary<cfelseif qHelpdeskChamados.status EQ 'aguardando_cliente'>badge-info<cfelse>badge-warning</cfif>">#htmlEditFormat(qHelpdeskChamados.status)#</span>
+                            <span class="badge <cfif qHelpdeskChamados.status EQ 'resolvido' OR qHelpdeskChamados.status EQ 'fechado'>badge-success<cfelseif qHelpdeskChamados.status EQ 'em_atendimento'>badge-primary<cfelseif qHelpdeskChamados.status EQ 'aguardando_cliente'>badge-info<cfelse>badge-warning</cfif>">#encodeForHTML(qHelpdeskChamados.status)#</span>
                           </div>
-                          <div class="support-ticket-meta mb-1">Setor: #htmlEditFormat(qHelpdeskChamados.nome_setor)#</div>
+                          <div class="support-ticket-meta mb-1">Setor: #encodeForHTML(qHelpdeskChamados.nome_setor)#</div>
                           <div class="support-ticket-meta">Atualizado em #LSDateFormat(qHelpdeskChamados.updated_at, "dd/mm/yyyy")# às #LSTimeFormat(qHelpdeskChamados.updated_at, "HH:mm")#</div>
                         </a>
                       </cfoutput>
@@ -299,8 +299,8 @@
                   <cfif qHelpdeskTicketEdit.recordcount>
                     <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
                       <div>
-                        <h5 class="mb-1"><cfoutput>#htmlEditFormat(qHelpdeskTicketEdit.assunto)#</cfoutput></h5>
-                        <p class="text-muted small mb-0"><cfoutput>Protocolo #htmlEditFormat(qHelpdeskTicketEdit.protocolo)#</cfoutput></p>
+                        <h5 class="mb-1"><cfoutput>#encodeForHTML(qHelpdeskTicketEdit.assunto)#</cfoutput></h5>
+                        <p class="text-muted small mb-0"><cfoutput>Protocolo #encodeForHTML(qHelpdeskTicketEdit.protocolo)#</cfoutput></p>
                       </div>
                       <cfoutput><a class="btn btn-sm btn-outline-warning" href="./?pagina=#VARIABLES.helpdeskPage#&ticket_id=#qHelpdeskTicketEdit.id_chamado#">Abrir conversa</a></cfoutput>
                     </div>
@@ -308,19 +308,19 @@
                     <div class="row g-3">
                       <div class="col-12 col-md-6">
                         <div class="small text-muted">Setor</div>
-                        <div class="fw-semibold"><cfoutput>#htmlEditFormat(qHelpdeskTicketEdit.nome_setor)#</cfoutput></div>
+                        <div class="fw-semibold"><cfoutput>#encodeForHTML(qHelpdeskTicketEdit.nome_setor)#</cfoutput></div>
                       </div>
                       <div class="col-12 col-md-6">
                         <div class="small text-muted">Responsável</div>
-                        <div class="fw-semibold"><cfoutput>#len(trim(qHelpdeskTicketEdit.nome_responsavel)) ? htmlEditFormat(qHelpdeskTicketEdit.nome_responsavel) : "Não definido"#</cfoutput></div>
+                        <div class="fw-semibold"><cfoutput>#len(trim(qHelpdeskTicketEdit.nome_responsavel)) ? encodeForHTML(qHelpdeskTicketEdit.nome_responsavel) : "Não definido"#</cfoutput></div>
                       </div>
                       <div class="col-12 col-md-6">
                         <div class="small text-muted">Solicitante</div>
-                        <div class="fw-semibold"><cfoutput>#htmlEditFormat(qHelpdeskTicketEdit.nome_usuario)#</cfoutput></div>
+                        <div class="fw-semibold"><cfoutput>#encodeForHTML(qHelpdeskTicketEdit.nome_usuario)#</cfoutput></div>
                       </div>
                       <div class="col-12 col-md-6">
                         <div class="small text-muted">Status</div>
-                        <div class="fw-semibold"><cfoutput>#htmlEditFormat(qHelpdeskTicketEdit.status)#</cfoutput></div>
+                        <div class="fw-semibold"><cfoutput>#encodeForHTML(qHelpdeskTicketEdit.status)#</cfoutput></div>
                       </div>
                     </div>
                   <cfelse>

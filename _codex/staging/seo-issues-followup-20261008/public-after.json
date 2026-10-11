@@ -1,0 +1,1499 @@
+{
+  "rows": [
+    {
+      "path": "/maratona/maratona-cidade-de-florianopolis/",
+      "name": "Maratona da Cidade de Florianópolis",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona da Cidade de Florianópolis - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona da Cidade de Florianópolis"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-cidade-de-florianopolis/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona da Cidade de Florianópolis"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-da-cidade-de-sao-luis/",
+      "name": "Maratona da Cidade de São Luís",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona da Cidade de São Luís - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona da Cidade de São Luís"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-da-cidade-de-sao-luis/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona da Cidade de São Luís"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-aracaju/",
+      "name": "Maratona de Aracaju",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Aracaju - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Aracaju"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-aracaju/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Aracaju"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-brasilia/",
+      "name": "Maratona de Brasília",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Brasília - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Brasília"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-brasilia/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Brasília"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-campinas/",
+      "name": "Maratona de Campinas",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Campinas - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Campinas"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-campinas/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Campinas"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-campo-grande/",
+      "name": "Maratona de Campo Grande",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Campo Grande - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Campo Grande"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-campo-grande/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Campo Grande"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-criciuma/",
+      "name": "Maratona de Criciúma",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Criciúma - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Criciúma"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-criciuma/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Criciúma Maratona de Criciúma"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-curitiba/",
+      "name": "Maratona de Curitiba",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Curitiba - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Curitiba"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-curitiba/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Curitiba Maratona de Curitiba"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-feira-de-santana/",
+      "name": "Maratona de Feira de Santana",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Feira de Santana - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Feira de Santana"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-feira-de-santana/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Feira de Santana"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-goiania/",
+      "name": "Maratona de Goiânia",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Goiânia - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Goiânia"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-goiania/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Goiânia"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-joao-pessoa/",
+      "name": "Maratona de João Pessoa",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de João Pessoa - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de João Pessoa"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-joao-pessoa/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de João Pessoa"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-jurere/",
+      "name": "Maratona de Jurerê",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Jurerê - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Jurerê"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-jurere/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Jurerê Maratona de Jurerê"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-londrina/",
+      "name": "Maratona de Londrina",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Londrina - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Londrina"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-londrina/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Londrina"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-marilia/",
+      "name": "Maratona de Marília",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Marília - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Marília"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-marilia/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Marília"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-niteroi/",
+      "name": "Maratona de Niterói",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Niterói - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Niterói"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-niteroi/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Niterói"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-piracicaba/",
+      "name": "Maratona de Piracicaba",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Piracicaba - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Piracicaba"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-piracicaba/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Piracicaba"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-ponta-grossa/",
+      "name": "Maratona de Ponta Grossa",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Ponta Grossa - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Ponta Grossa"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-ponta-grossa/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Ponta Grossa"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-porto-velho/",
+      "name": "Maratona de Porto Velho",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Porto Velho - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Porto Velho"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-porto-velho/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Porto Velho"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-praia-grande/",
+      "name": "Maratona de Praia Grande",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Praia Grande - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Praia Grande"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-praia-grande/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Praia Grande"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-ribeirao-preto/",
+      "name": "Maratona de Ribeirão Preto",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Ribeirão Preto - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Ribeirão Preto"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-ribeirao-preto/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Ribeirão Preto"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-salvador/",
+      "name": "Maratona de Salvador",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Salvador - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Salvador"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-salvador/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Salvador Maratona de Salvador"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-teresina/",
+      "name": "Maratona de Teresina",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Teresina - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Teresina"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-teresina/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Teresina"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-torres/",
+      "name": "Maratona de Torres",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Torres - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Torres"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-torres/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Torres"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-tubarao/",
+      "name": "Maratona de Tubarão",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Tubarão - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Tubarão"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-tubarao/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Tubarão"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-de-vitoria/",
+      "name": "Maratona de Vitória",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Vitória - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Vitória"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-de-vitoria/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Vitória"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-do-natal/",
+      "name": "Maratona do Natal",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona do Natal - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona do Natal"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-do-natal/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona do Natal"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-duque-de-caxias/",
+      "name": "Maratona de Duque de Caxias",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Duque de Caxias - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Duque de Caxias"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-duque-de-caxias/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Duque de Caxias"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-fila/",
+      "name": "Maratona Fila",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Fila - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Fila"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-fila/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Fila"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-goiania-em-movimento/",
+      "name": "Maratona de Goiânia em Movimento",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona de Goiânia em Movimento - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona de Goiânia em Movimento"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-goiania-em-movimento/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona de Goiânia em Movimento"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-blumenau/",
+      "name": "Maratona Internacional de Blumenau",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Internacional de Blumenau - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Internacional de Blumenau"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-internacional-de-blumenau/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Internacional de Blumenau Maratona Internacional de Blumenau"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-floripa/",
+      "name": "Maratona Internacional de Floripa",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Internacional de Floripa - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Internacional de Floripa"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-internacional-de-floripa/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Internacional de Floripa Maratona Internacional de Floripa"
+      ],
+      "heading_images": [
+        [
+          "Logo do evento Maratona Internacional de Floripa"
+        ]
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-foz-do-iguacu/",
+      "name": "Maratona Internacional de Foz do Iguaçu",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Internacional de Foz do Iguaçu - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Internacional de Foz do Iguaçu"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-internacional-de-foz-do-iguacu/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Internacional de Foz do Iguaçu"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-joao-pessoa/",
+      "name": "Maratona Internacional de João Pessoa",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Internacional de João Pessoa - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Internacional de João Pessoa"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-internacional-de-joao-pessoa/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Internacional de João Pessoa Maratona Internacional de João Pessoa"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-manaus/",
+      "name": "Maratona Internacional de Manaus",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Internacional de Manaus - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Internacional de Manaus"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-internacional-de-manaus/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Internacional de Manaus Maratona Internacional de Manaus"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-olinda/",
+      "name": "Maratona Internacional de Olinda",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Internacional de Olinda - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Internacional de Olinda"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-internacional-de-olinda/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Internacional de Olinda"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-porto-alegre/",
+      "name": "Maratona Internacional de Porto Alegre",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Internacional de Porto Alegre - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Internacional de Porto Alegre"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-internacional-de-porto-alegre/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Internacional de Porto Alegre Maratona Internacional de Porto Alegre"
+      ],
+      "heading_images": [
+        [
+          "Logo do evento Maratona Internacional de Porto Alegre"
+        ]
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-sao-paulo/",
+      "name": "Maratona Internacional de São Paulo",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Internacional de São Paulo - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Internacional de São Paulo"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-internacional-de-sao-paulo/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Internacional de São Paulo Maratona Internacional de São Paulo"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-internacional-do-parana/",
+      "name": "Maratona Internacional do Paraná",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Internacional do Paraná - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Internacional do Paraná"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-internacional-do-parana/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Internacional do Paraná"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-internacional-do-rio-de-janeiro/",
+      "name": "Maratona Internacional do Rio de Janeiro",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Internacional do Rio de Janeiro - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Internacional do Rio de Janeiro"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-internacional-do-rio-de-janeiro/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Internacional do Rio de Janeiro Maratona Internacional do Rio de Janeiro"
+      ],
+      "heading_images": [
+        [
+          "Logo do evento Maratona Internacional do Rio de Janeiro"
+        ]
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-internacional-mauricio-de-nassau/",
+      "name": "Maratona Internacional Mauricio de Nassau",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Internacional Mauricio de Nassau - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Internacional Mauricio de Nassau"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-internacional-mauricio-de-nassau/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Internacional Mauricio de Nassau"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-monumental-de-brasilia/",
+      "name": "Maratona Monumental de Brasília",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Monumental de Brasília - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Monumental de Brasília"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-monumental-de-brasilia/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Monumental de Brasília Maratona Monumental de Brasília"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-nilson-lima-uberlandia/",
+      "name": "Maratona Nilson Lima Uberlândia",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Nilson Lima Uberlândia - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Nilson Lima Uberlândia"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-nilson-lima-uberlandia/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Nilson Lima Uberlândia"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-novembro-azul-sorocaba/",
+      "name": "Maratona Novembro Azul Sorocaba",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Novembro Azul Sorocaba - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Novembro Azul Sorocaba"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-novembro-azul-sorocaba/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Novembro Azul Sorocaba"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-pedra-azul/",
+      "name": "Maratona Pedra Azul",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Pedra Azul - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Pedra Azul"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-pedra-azul/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Pedra Azul"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/maratona-sesc-de-pelotas/",
+      "name": "Maratona Sesc de Pelotas",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Maratona Sesc de Pelotas - Road Runners",
+        "meta": {
+          "description": "Maratonas - Maratona Sesc de Pelotas"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/maratona-sesc-de-pelotas/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Maratona Sesc de Pelotas"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/new-balance-42k-porto-alegre/",
+      "name": "New Balance 42K Porto Alegre",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "New Balance 42K Porto Alegre - Road Runners",
+        "meta": {
+          "description": "Maratonas - New Balance 42K Porto Alegre"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/new-balance-42k-porto-alegre/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "New Balance 42K Porto Alegre New Balance 42K Porto Alegre"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/maratona/sao-paulo-city-marathon/",
+      "name": "SP City Marathon",
+      "marathon": true,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "SP City Marathon - Road Runners",
+        "meta": {
+          "description": "Maratonas - SP City Marathon"
+        },
+        "canonical": [
+          "https://roadrunners.run/maratona/sao-paulo-city-marathon/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "SP City Marathon SP City Marathon"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/",
+      "marathon": false,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Road Runners - O ponto de encontro da corrida.",
+        "meta": {
+          "description": "Descubra provas, acompanhe resultados, explore conteúdo editorial e viva a corrida com mais contexto no Road Runners."
+        },
+        "canonical": [
+          "https://roadrunners.run/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/"
+          ]
+        ]
+      },
+      "headings": [
+        "Sua próxima corrida começa aqui."
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/org/sportsland/",
+      "marathon": false,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Sportsland - Road Runners",
+        "meta": {
+          "description": "Organizadores - Sportsland - Road Runners"
+        },
+        "canonical": [
+          "https://roadrunners.run/org/sportsland/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Sportsland Sportsland"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/timer/branca-esportes-saude-e-lazer/",
+      "marathon": false,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Branca Esportes Saúde e Lazer - Road Runners",
+        "meta": {
+          "description": "Timers - Branca Esportes Saúde e Lazer - Road Runners"
+        },
+        "canonical": [
+          "https://roadrunners.run/timer/branca-esportes-saude-e-lazer/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Branca Esportes Saúde e Lazer Branca Esportes Saúde e Lazer"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/circuito/live-run-xp/",
+      "marathon": false,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Circuito Live! Run XP - Road Runners",
+        "meta": {
+          "description": "Circuitos - Circuito Live! Run XP - Road Runners"
+        },
+        "canonical": [
+          "https://roadrunners.run/circuito/live-run-xp/"
+        ],
+        "alternates": []
+      },
+      "headings": [
+        "Circuito Live! Run XP Circuito Live! Run XP"
+      ],
+      "heading_images": [
+        [
+          "Logo do evento Circuito Live! Run XP"
+        ]
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/circuito/fca-corridaderua/",
+      "marathon": false,
+      "status": 301,
+      "returncode": 0,
+      "location": "/circuito/circuito-catarinense-corrida-de-rua/",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "headings": [],
+      "heading_images": [],
+      "cf_error": false
+    },
+    {
+      "path": "/evento/2026-corrida-night-run-vitoria-airport/",
+      "marathon": false,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - corrida 20/11/2026 | Road Runners",
+        "meta": {
+          "description": "CORRIDA NIGHT RUN VITÓRIA AIRPORT acontece em 20 novembro 2026, em Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES."
+        },
+        "canonical": [
+          "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+          ]
+        ]
+      },
+      "headings": [
+        "CORRIDA NIGHT RUN VITÓRIA AIRPORT"
+      ],
+      "heading_images": [
+        []
+      ],
+      "cf_error": false
+    },
+    {
+      "path": "/sitemap.xml",
+      "marathon": false,
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "application/xml;charset=utf-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "headings": [],
+      "heading_images": [],
+      "cf_error": false
+    },
+    {
+      "path": "/configuracoes/perfil/",
+      "marathon": false,
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fconfiguracoes%2Fperfil%2F",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "headings": [],
+      "heading_images": [],
+      "cf_error": false
+    }
+  ]
+}

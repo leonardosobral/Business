@@ -1,0 +1,162 @@
+{
+  "rows": [
+    {
+      "path": "/",
+      "stats": "200 https://store.roadrunners.run/roadrunnersstore/inactive",
+      "returncode": 0,
+      "metadata": {
+        "title": "Road Runners Store",
+        "meta": {
+          "description": "A Road Runners Store nasceu pra tirar a corrida da tela e colocar no seu dia a dia. Reativamos um projeto antigo com um padrão novo: camisetas Road..."
+        },
+        "canonical": [
+          "https://store.roadrunners.run/roadrunnersstore/inactive"
+        ],
+        "providers": []
+      },
+      "inactive_text": true,
+      "header_signals": [
+        "HTTP/2 301 ",
+        "content-type: text/html; charset=utf-8",
+        "location: https://store.roadrunners.run/roadrunnersstore",
+        "server: Heroku",
+        "HTTP/2 302 ",
+        "content-type: text/html; charset=utf-8",
+        "location: https://store.roadrunners.run/roadrunnersstore/inactive",
+        "server: Heroku",
+        "HTTP/2 200 ",
+        "content-type: text/html; charset=utf-8",
+        "server: Heroku",
+        "x-robots-tag: noindex"
+      ]
+    },
+    {
+      "path": "/roadrunnersstore/inactive",
+      "stats": "200 https://store.roadrunners.run/roadrunnersstore/inactive",
+      "returncode": 0,
+      "metadata": {
+        "title": "Road Runners Store",
+        "meta": {
+          "description": "A Road Runners Store nasceu pra tirar a corrida da tela e colocar no seu dia a dia. Reativamos um projeto antigo com um padrão novo: camisetas Road..."
+        },
+        "canonical": [
+          "https://store.roadrunners.run/roadrunnersstore/inactive"
+        ],
+        "providers": []
+      },
+      "inactive_text": true,
+      "header_signals": [
+        "HTTP/2 200 ",
+        "content-type: text/html; charset=utf-8",
+        "server: Heroku",
+        "x-robots-tag: noindex"
+      ]
+    },
+    {
+      "path": "/roadrunnersstore/products",
+      "stats": "200 https://store.roadrunners.run/roadrunnersstore/products",
+      "returncode": 0,
+      "metadata": {
+        "title": "Road Runners Store",
+        "meta": {
+          "description": "A Road Runners Store nasceu pra tirar a corrida da tela e colocar no seu dia a dia. Reativamos um projeto antigo com um padrão novo: camisetas Road..."
+        },
+        "canonical": [
+          "https://store.roadrunners.run/roadrunnersstore/products"
+        ],
+        "providers": []
+      },
+      "inactive_text": false,
+      "header_signals": [
+        "HTTP/2 200 ",
+        "content-type: text/html; charset=utf-8",
+        "server: Heroku"
+      ]
+    },
+    {
+      "path": "/roadrunnersstore/products?page=2",
+      "stats": "200 https://store.roadrunners.run/roadrunnersstore/products?page=2",
+      "returncode": 0,
+      "metadata": {
+        "title": "Road Runners Store",
+        "meta": {
+          "description": "A Road Runners Store nasceu pra tirar a corrida da tela e colocar no seu dia a dia. Reativamos um projeto antigo com um padrão novo: camisetas Road..."
+        },
+        "canonical": [
+          "https://store.roadrunners.run/roadrunnersstore/products?page=2"
+        ],
+        "providers": []
+      },
+      "inactive_text": false,
+      "header_signals": [
+        "HTTP/2 200 ",
+        "content-type: text/html; charset=utf-8",
+        "server: Heroku"
+      ]
+    },
+    {
+      "path": "/roadrunnersstore/store_sessions/new",
+      "stats": "200 https://store.roadrunners.run/roadrunnersstore/store_sessions/new",
+      "returncode": 0,
+      "metadata": {
+        "title": "Road Runners Store",
+        "meta": {
+          "description": "A Road Runners Store nasceu pra tirar a corrida da tela e colocar no seu dia a dia. Reativamos um projeto antigo com um padrão novo: camisetas Road..."
+        },
+        "canonical": [
+          "https://store.roadrunners.run/roadrunnersstore/store_sessions/new"
+        ],
+        "providers": []
+      },
+      "inactive_text": false,
+      "header_signals": [
+        "HTTP/2 200 ",
+        "content-type: text/html; charset=utf-8",
+        "server: Heroku"
+      ]
+    },
+    {
+      "path": "/roadrunnersstore/terms/privacy_policy",
+      "stats": "200 https://store.roadrunners.run/roadrunnersstore/terms/privacy_policy",
+      "returncode": 0,
+      "metadata": {
+        "title": "Política de privacidade | Road Runners Store",
+        "meta": {
+          "description": "A Road Runners Store nasceu pra tirar a corrida da tela e colocar no seu dia a dia. Reativamos um projeto antigo com um padrão novo: camisetas Road..."
+        },
+        "canonical": [
+          "https://store.roadrunners.run/roadrunnersstore/terms/privacy_policy"
+        ],
+        "providers": []
+      },
+      "inactive_text": false,
+      "header_signals": [
+        "HTTP/2 200 ",
+        "content-type: text/html; charset=utf-8",
+        "server: Heroku"
+      ]
+    },
+    {
+      "path": "/roadrunnersstore/terms/terms_of_use",
+      "stats": "200 https://store.roadrunners.run/roadrunnersstore/terms/terms_of_use",
+      "returncode": 0,
+      "metadata": {
+        "title": "Termos de uso | Road Runners Store",
+        "meta": {
+          "description": "A Road Runners Store nasceu pra tirar a corrida da tela e colocar no seu dia a dia. Reativamos um projeto antigo com um padrão novo: camisetas Road..."
+        },
+        "canonical": [
+          "https://store.roadrunners.run/roadrunnersstore/terms/terms_of_use"
+        ],
+        "providers": []
+      },
+      "inactive_text": false,
+      "header_signals": [
+        "HTTP/2 200 ",
+        "content-type: text/html; charset=utf-8",
+        "server: Heroku"
+      ]
+    }
+  ],
+  "matching_origin_vhosts": []
+}

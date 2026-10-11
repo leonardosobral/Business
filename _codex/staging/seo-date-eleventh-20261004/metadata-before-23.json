@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-corrida-coronel-oliveria-junior-11-gb/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-coronel-oliveria-junior-11-gb/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-coronel-oliveria-junior-11-gb/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-coronel-oliveria-junior-11-gb/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-coronel-oliveria-junior-11-gb/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-corrida-coronel-oliveria-junior-11-gb/",
+      "name": "CORRIDA CORONEL OLIVERIA JUNIOR - 11º GB",
+      "description": "CORRIDA CORONEL OLIVERIA JUNIOR - 11º GB se realiza el 05 diciembre 2026, en Taubaté: Avenida Amador Bueno da Veiga (Parque Municipal do Sedes), 220, Taubaté, SP, Brasil - Taubaté - SP.",
+      "url": "https://roadrunners.run/es/evento/2026-corrida-coronel-oliveria-junior-11-gb/",
+      "startDate": "2026-12-05",
+      "endDate": "2026-12-05",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/6207SUWCHIEDNX10RDA97YTFB2NR5IOW898NBU0IQMIT5KH0BO.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Taubaté: Avenida Amador Bueno da Veiga (Parque Municipal do Sedes), 220, Taubaté, SP, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Taubaté",
+          "addressRegion": "SP",
+          "addressCountry": "BR",
+          "streetAddress": "Taubaté: Avenida Amador Bueno da Veiga (Parque Municipal do Sedes), 220, Taubaté, SP, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87587&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sp/",
+          "@type": "ListItem",
+          "name": "Carreras en SP"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-corrida-coronel-oliveria-junior-11-gb/",
+          "@type": "ListItem",
+          "name": "CORRIDA CORONEL OLIVERIA JUNIOR - 11º GB"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

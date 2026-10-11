@@ -1,0 +1,363 @@
+{
+  "selected": [
+    {
+      "id": 39867,
+      "name": "1º CORRIDA Q2 EVENTOS DE REVEZAMENTO DE AMERICANA",
+      "source": "https://www.ticketsports.com.br/e/1o-corrida-q2-eventos-de-revezamento-de-americana-86132",
+      "stored_city": "Americana",
+      "stored_state": "SP",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        54925,
+        54926
+      ],
+      "date": "2026-10-25",
+      "distances_km": [
+        5,
+        10
+      ],
+      "excerpt": "Header25/10/2026; Americana/SP; equipe10km,2voltas5km; current visible program has no June race date",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 40457,
+      "name": "MENTONE RUN - A IDENTIDADE",
+      "source": "https://www.ticketsports.com.br/e/MENTONE+RUN+-+A+IDENTIDADE+-86560",
+      "stored_city": "Santos",
+      "stored_state": "SP",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        67097,
+        67098
+      ],
+      "date": "2026-12-13",
+      "distances_km": [
+        3,
+        7
+      ],
+      "excerpt": "Header13/12/2026; inscriçõesaté07/12/2026; Santos/SP; corrida7km/caminhada3km; current body has no conflicting race date",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 40879,
+      "name": "Ardap Run - Corrida Beneficente",
+      "source": "https://www.chipower.com.br/evento/2026/corrida-de-rua/arpad-run",
+      "stored_city": "Paulo Afonso",
+      "stored_state": "BA",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        65367,
+        65368
+      ],
+      "date": "2026-10-18",
+      "distances_km": [
+        3,
+        5
+      ],
+      "excerpt": "Header18/10/2026; program18deOutubro; Paulo Afonso/BA; caminhadaPET3KM corrida5KM",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 43239,
+      "name": "TRICOLOR RUN NOTURNA 2026 -  2ª Etapa",
+      "source": "https://www.ticketsports.com.br/e/TRICOLOR+RUN+NOTURNA+2026+-++2%C2%AA+Etapa-87210",
+      "stored_city": "São Paulo",
+      "stored_state": "SP",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        63263,
+        63264,
+        63265
+      ],
+      "date": "2026-11-21",
+      "distances_km": [
+        3,
+        5,
+        10
+      ],
+      "excerpt": "Header21/11/2026; current description21de novembro2026; MorumBIS/SP;3K5K10K; no reliance on incorrect weekday in older PDF",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 44863,
+      "name": "SUPER ACTION SOROCABA 2026",
+      "source": "https://www.ticketsports.com.br/e/SUPER+ACTION+SOROCABA+2026-87547",
+      "stored_city": "Sorocaba",
+      "stored_state": "SP",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        63647
+      ],
+      "date": "2026-11-15",
+      "distances_km": [
+        5
+      ],
+      "excerpt": "Data do evento: 15/11/2026; SUPER ACTION SOROCABA 2026; Sorocaba/SP; RUN 5k, CORRIDA 5km",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 45190,
+      "name": "15k DAS PRAIAS - 2027",
+      "source": "https://www.realtiming.com.br/evento/15k-daspraias2027",
+      "stored_city": "Maceió",
+      "stored_state": "AL",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        62422,
+        62423,
+        62424
+      ],
+      "date": "2027-01-31",
+      "distances_km": [
+        5,
+        10,
+        15
+      ],
+      "excerpt": "Official RealTiming:15kDASPRAIAS2027; Data31.JAN.2027; Praia da AvenidaMaceió/AL;5KM10KM15KM; inscriptions currently disabled",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 45302,
+      "name": "CORRIDA AILOS CIVIA PELA COOPERAÇÃO - EDIÇÃO SÃO BENTO DO SUL",
+      "source": "https://www.ticketsports.com.br/e/CORRIDA+AILOS+CIVIA+PELA+COOPERA%C3%87%C3%83O+-+EDI%C3%87%C3%83O+S%C3%83O+BENTO+DO+SUL-87819",
+      "stored_city": "São Bento do Sul",
+      "stored_state": "SC",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        63961,
+        63962
+      ],
+      "date": "2026-12-13",
+      "distances_km": [
+        3,
+        5
+      ],
+      "excerpt": "Header13/12/2026; program explicitly13dezembro2026; São Bento do Sul/SC; corrida5km/caminhada3km. Waiver mentions5.5km; distances unchanged.",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 45303,
+      "name": "CORRIDA CORONEL OLIVERIA JUNIOR - 11º GB",
+      "source": "https://www.ticketsports.com.br/e/CORRIDA+CORONEL+OLIVERIA+JUNIOR+-+11%C2%BA+GB+-87587",
+      "stored_city": "Taubaté",
+      "stored_state": "SP",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        63963,
+        63964
+      ],
+      "date": "2026-12-05",
+      "distances_km": [
+        5,
+        10
+      ],
+      "excerpt": "Header05/12/2026 and current program05dezembro2026 prova noturna; header/body bothTaubaté/SP;5km10km. Older PDF city conflict not used.",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 45651,
+      "name": "FLA RESENHA RUN",
+      "source": "https://www.ticketsports.com.br/e/FLA+RESENHA+RUN+-87863",
+      "stored_city": "Piraí",
+      "stored_state": "RJ",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        65055,
+        65056
+      ],
+      "date": "2026-11-15",
+      "distances_km": [
+        3,
+        5
+      ],
+      "excerpt": "Data do evento: 15/11/2026; description repeats 15/11/2026 domingo; Barra do Piraí/RJ; corrida5km/caminhada3km",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 45870,
+      "name": "CORRIDA E CAMINHADA LAÇOS DA VIDA",
+      "source": "https://www.ticketsports.com.br/e/CORRIDA+E+CAMINHADA+LA%C3%87OS+DA+VIDA-87964",
+      "stored_city": "São Bernardo do Campo",
+      "stored_state": "SP",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        65510,
+        65511
+      ],
+      "date": "2026-11-29",
+      "distances_km": [
+        5,
+        10
+      ],
+      "excerpt": "Header29/11/2026; description29de novembro2026 domingo; São Bernardo do Campo/SP;5K10K",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 45873,
+      "name": "16ª VOLTA A LAGOA DA CONCEIÇÃO",
+      "source": "https://www.ticketsports.com.br/e/16%C2%AA+VOLTA+A+LAGOA+DA+CONCEI%C3%87%C3%83O+-87753",
+      "stored_city": "Florianópolis",
+      "stored_state": "SC",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        65512,
+        65513,
+        65514,
+        65515
+      ],
+      "date": "2026-11-15",
+      "distances_km": [
+        4,
+        5,
+        7,
+        12
+      ],
+      "excerpt": "Header and program: 15 de novembro2026; Florianópolis; corrida12km/5km, caminhada4km, revezamento12km split7km+5km",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 46585,
+      "name": "CORRIDA IZ1 TELECOM",
+      "source": "https://www.ticketsports.com.br/e/CORRIDA+IZ1+TELECOM+-88108",
+      "stored_city": "Marataízes",
+      "stored_state": "ES",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        67993
+      ],
+      "date": "2026-11-01",
+      "distances_km": [
+        5
+      ],
+      "excerpt": "Header01/11/2026; description01Novembro2026; Marataízes/ES;5km",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 46733,
+      "name": "ALPHA RUNNER 2026",
+      "source": "https://www.ticketsports.com.br/e/ALPHA+RUNNER+2026-88079",
+      "stored_city": "Barueri",
+      "stored_state": "SP",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        68196
+      ],
+      "date": "2026-11-29",
+      "distances_km": [
+        5
+      ],
+      "excerpt": "Header29/11/2026; Barueri/SP;5km; kit23a27novembro matches current program",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 47016,
+      "name": "CORRIDA DO MEL",
+      "source": "https://smcrono.com.br/evento/2026/corrida-de-rua/corrida-do-mel",
+      "stored_city": "São Jose Dos Cordeiros",
+      "stored_state": "PB",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        68561,
+        68562
+      ],
+      "date": "2026-11-22",
+      "distances_km": [
+        3,
+        5
+      ],
+      "excerpt": "Header22/11/2026 and DATA22/11/2026; São José dos Cordeiros/PB;3KM caminhada5KM",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    },
+    {
+      "id": 47472,
+      "name": "4ª ALPHA RUNNING",
+      "source": "https://www.ticketsports.com.br/e/4%C2%AA+ALPHA+RUNNING-88315",
+      "stored_city": "Palmares",
+      "stored_state": "PE",
+      "checked_date": "2026-10-04",
+      "fields": [
+        "data_percurso",
+        "percurso_bloqueado"
+      ],
+      "route_ids": [
+        69118
+      ],
+      "date": "2026-11-15",
+      "distances_km": [
+        5
+      ],
+      "excerpt": "Header, description and program: 15/11/2026; Palmares/PE; prova5km",
+      "method": "Official source visible DOM, checked 2026-10-04"
+    }
+  ],
+  "excluded": [
+    {
+      "id": 44278,
+      "reason": "Current header and schedule29Nov but introductory body still30Aug; keep2routes unresolved."
+    },
+    {
+      "id": 47023,
+      "reason": "Header11Oct but kit25/26Sep and older PDF26Sep conflict; unchanged."
+    },
+    {
+      "id": 46589,
+      "reason": "Header11Oct but linked regulation25Oct conflicts; unchanged pending program reconciliation."
+    }
+  ]
+}

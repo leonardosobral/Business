@@ -1,0 +1,9 @@
+{
+  "status": "published_and_verified",
+  "runtime_files": 1,
+  "public_controls": 2,
+  "queries_metadata_rankings_preserved": true,
+  "scope": "literal half-marathon unit only",
+  "backup": "/var/backups/seo-circuit-distance-20261004/baseline",
+  "source": "https://worldathletics.org/disciplines/road-running/half-marathon"
+}

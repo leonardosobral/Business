@@ -1,0 +1,34 @@
+[
+  {
+    "id": 45211,
+    "name": "4ª PRIME NIGHT RUN",
+    "date": "2026-10-10",
+    "source": "https://inscricaodecorrida.com.br/evento/4a-prime-night-run",
+    "scope": "Somente datas; horarios/local/disponibilidade preservados",
+    "evidence": "Cabecalho e regulamento HTML, seção Do evento, data 10/10/2026 e corrida5km."
+  },
+  {
+    "id": 37728,
+    "name": "Track&Field Run Series 2026 - ParkShoppingBarigüi",
+    "date": "2026-10-11",
+    "source": "https://www.tfsports.com.br/run-series/park-shopping-barigui-2026/",
+    "scope": "Somente datas; horarios/local/disponibilidade preservados",
+    "evidence": "Pagina oficial verificada no navegador normal, descricao 11 de Outubro e cronograma10km/5km; ferramenta web também confirmou. curl retornou shell, nao foi usado como evidencia textual."
+  },
+  {
+    "id": 46069,
+    "name": "Central Gym Run",
+    "date": "2026-10-11",
+    "source": "https://www.sympla.com.br/evento/central-gym-run-2026/3527972",
+    "scope": "Somente datas; horarios/local/disponibilidade preservados",
+    "evidence": "Sympla organizador: cabecalho startDate/endDate11/10/2026 e descricao3km caminhada/5km corrida."
+  },
+  {
+    "id": 46080,
+    "name": "Corrida por patas 2026 - corrida beneficente",
+    "date": "2026-10-11",
+    "source": "https://www.sympla.com.br/evento/corrida-por-patas-2026-corrida-beneficente/3527067",
+    "scope": "Somente datas; horarios/local/disponibilidade preservados",
+    "evidence": "Sympla organizador: cabecalho, descricao e programacao11/10/2026 com6km/3km."
+  }
+]

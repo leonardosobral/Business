@@ -1,0 +1,450 @@
+(function () {
+    "use strict";
+
+    var MAP_STYLE = "mapbox://styles/mapbox/standard";
+    var SATELLITE_STYLE = "mapbox://styles/mapbox/standard-satellite";
+    var SEARCH_BOX_COUNTRIES = [
+        "AD", "AL", "AT", "AX", "BA", "BE", "BG", "BY", "CA", "CH", "CY",
+        "CZ", "DE", "DK", "EE", "ES", "FI", "FO", "FR", "GB", "GG", "GI",
+        "GR", "HR", "HU", "IE", "IM", "IS", "IT", "JE", "LI", "LT", "LU",
+        "LV", "MC", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO",
+        "RS", "RU", "SE", "SI", "SJ", "SK", "SM", "UA", "US", "VA"
+    ];
+    var SATELLITE_HIDDEN_FEATURES = [
+        "showRoadsAndTransit",
+        "showPedestrianRoads",
+        "showRoadLabels",
+        "showPlaceLabels",
+        "showPointOfInterestLabels"
+    ];
+
+    function isCoordinate(value) {
+        return Array.isArray(value)
+            && value.length >= 2
+            && Number.isFinite(Number(value[0]))
+            && Number.isFinite(Number(value[1]))
+            && Math.abs(Number(value[0])) <= 180
+            && Math.abs(Number(value[1])) <= 90;
+    }
+
+    function normalizedLanguage(language) {
+        var value = String(language || "pt").toLowerCase();
+
+        if (value.indexOf("pt") === 0) {
+            return "pt";
+        }
+        if (value.indexOf("es") === 0) {
+            return "es";
+        }
+        return "en";
+    }
+
+    function firstFeatureCoordinate(payload) {
+        var feature = payload
+            && Array.isArray(payload.features)
+            && payload.features.length
+                ? payload.features[0]
+                : null;
+        var coordinate = feature && feature.geometry
+            ? feature.geometry.coordinates
+            : null;
+
+        return isCoordinate(coordinate)
+            ? [Number(coordinate[0]), Number(coordinate[1])]
+            : null;
+    }
+
+    function fetchJson(url) {
+        return window.fetch(url, {
+            credentials: "omit",
+            headers: { Accept: "application/json" }
+        }).then(function (response) {
+            if (!response.ok) {
+                throw new Error("Mapbox search request failed: " + response.status);
+            }
+            return response.json();
+        });
+    }
+
+    function addCountryFilter(parameters, country) {
+        if (/^[A-Z]{2}$/.test(country)) {
+            parameters.set("country", country);
+        }
+    }
+
+    function searchBoxCoordinate(query, token, language, country) {
+        var parameters = new URLSearchParams({
+            q: String(query).slice(0, 256),
+            access_token: token,
+            language: language,
+            limit: "1"
+        });
+
+        addCountryFilter(parameters, country);
+        return fetchJson(
+            "https://api.mapbox.com/search/searchbox/v1/forward?" + parameters.toString()
+        ).then(firstFeatureCoordinate);
+    }
+
+    function geocodingCoordinate(query, token, language, country) {
+        var parameters = new URLSearchParams({
+            q: String(query).slice(0, 256),
+            access_token: token,
+            language: language,
+            autocomplete: "false",
+            limit: "1"
+        });
+
+        addCountryFilter(parameters, country);
+        return fetchJson(
+            "https://api.mapbox.com/search/geocode/v6/forward?" + parameters.toString()
+        ).then(firstFeatureCoordinate);
+    }
+
+    function resolveQueryCoordinate(query, token, language, country, useSearchBox) {
+        if (!useSearchBox) {
+            return geocodingCoordinate(query, token, language, country)
+                .catch(function () {
+                    return null;
+                });
+        }
+
+        return searchBoxCoordinate(query, token, language, country)
+            .catch(function () {
+                return null;
+            })
+            .then(function (coordinate) {
+                if (coordinate) {
+                    return coordinate;
+                }
+                return geocodingCoordinate(query, token, language, country)
+                    .catch(function () {
+                        return null;
+                    });
+            });
+    }
+
+    function resolveQueries(queries, token, language, country, useSearchBox, index) {
+        var queryIndex = index || 0;
+
+        if (!Array.isArray(queries) || queryIndex >= queries.length) {
+            return Promise.resolve(null);
+        }
+
+        return resolveQueryCoordinate(
+            queries[queryIndex],
+            token,
+            language,
+            country,
+            useSearchBox
+        )
+            .then(function (coordinate) {
+                return coordinate || resolveQueries(
+                    queries,
+                    token,
+                    language,
+                    country,
+                    useSearchBox,
+                    queryIndex + 1
+                );
+            });
+    }
+
+    function EventLocationMap(root) {
+        this.root = root;
+        this.mapShell = root.querySelector("[data-event-location-map-shell]");
+        this.mapNode = root.querySelector("[data-event-location-map]");
+        this.toolbar = root.querySelector("[data-event-location-toolbar]");
+        this.loadingNode = root.querySelector("[data-event-location-loading]");
+        this.errorNode = root.querySelector("[data-event-location-error]");
+        this.styleToggleButton = root.querySelector("[data-event-location-style-toggle]");
+        this.styleToggleLabel = root.querySelector("[data-event-location-style-label]");
+        this.refitButton = root.querySelector("[data-event-location-refit]");
+        this.googleLink = root.querySelector("[data-event-location-google]");
+        this.wazeLink = root.querySelector("[data-event-location-waze]");
+        this.configNode = root.querySelector("[data-event-location-config]");
+        this.config = JSON.parse(this.configNode.textContent);
+        this.labels = this.config.labels || {};
+        this.language = normalizedLanguage(this.config.language);
+        this.country = String(this.config.country || "").toUpperCase();
+        this.useSearchBox = SEARCH_BOX_COUNTRIES.indexOf(this.country) >= 0;
+        this.coordinate = isCoordinate(this.config.coordinates)
+            ? [Number(this.config.coordinates[0]), Number(this.config.coordinates[1])]
+            : null;
+        this.currentStyle = "map";
+        this.map = null;
+        this.marker = null;
+
+        this.bind();
+        this.initialize();
+    }
+
+    EventLocationMap.prototype.bind = function () {
+        var self = this;
+        var containPageGesture = function (event) {
+            if (event.cancelable) {
+                event.preventDefault();
+            }
+            event.stopPropagation();
+        };
+
+        this.styleToggleButton.addEventListener("click", function () {
+            self.changeStyle(self.currentStyle === "map" ? "satellite" : "map");
+        });
+        this.refitButton.addEventListener("click", function () {
+            self.centerLocation();
+        });
+        this.mapNode.addEventListener("wheel", containPageGesture, { passive: false });
+        this.mapNode.addEventListener("touchmove", containPageGesture, { passive: false });
+        this.mapNode.addEventListener("touchstart", function (event) {
+            event.stopPropagation();
+        }, { passive: true });
+
+        window.addEventListener("resize", function () {
+            if (self.map) {
+                self.map.resize();
+            }
+        });
+        document.addEventListener("fullscreenchange", function () {
+            if (self.map) {
+                window.requestAnimationFrame(function () {
+                    self.map.resize();
+                });
+            }
+        });
+    };
+
+    EventLocationMap.prototype.initialize = function () {
+        var self = this;
+
+        if (!window.mapboxgl || !window.mapboxgl.supported()) {
+            this.showError();
+            return;
+        }
+
+        if (this.coordinate) {
+            this.createMap();
+            return;
+        }
+
+        resolveQueries(
+            this.config.searchQueries || [],
+            this.config.mapboxToken,
+            this.language,
+            this.country,
+            this.useSearchBox
+        ).then(function (coordinate) {
+            if (!coordinate) {
+                self.showError();
+                return;
+            }
+            self.coordinate = coordinate;
+            self.updateNavigationLinks();
+            self.createMap();
+        }).catch(function () {
+            self.showError();
+        });
+    };
+
+    EventLocationMap.prototype.createMap = function () {
+        var self = this;
+        var settled = false;
+        var timeoutId;
+
+        window.mapboxgl.accessToken = this.config.mapboxToken;
+
+        try {
+            this.map = new window.mapboxgl.Map({
+                container: this.mapNode,
+                style: MAP_STYLE,
+                center: this.coordinate,
+                zoom: 14,
+                attributionControl: true,
+                cooperativeGestures: false
+            });
+            this.map.addControl(new window.mapboxgl.NavigationControl({
+                showCompass: false
+            }), "top-right");
+            this.map.addControl(new window.mapboxgl.FullscreenControl({
+                container: this.mapShell
+            }), "top-right");
+
+            this.map.once("load", function () {
+                if (settled) {
+                    return;
+                }
+                settled = true;
+                window.clearTimeout(timeoutId);
+                self.addMarker();
+                self.updateNavigationLinks();
+                self.loadingNode.hidden = true;
+                self.toolbar.hidden = false;
+            });
+            this.map.on("error", function (event) {
+                var message = event && event.error && event.error.message
+                    ? String(event.error.message)
+                    : "";
+
+                if (!settled && /token|unauthorized|forbidden/i.test(message)) {
+                    settled = true;
+                    window.clearTimeout(timeoutId);
+                    self.showError();
+                }
+            });
+            timeoutId = window.setTimeout(function () {
+                if (!settled) {
+                    settled = true;
+                    self.showError();
+                }
+            }, 25000);
+        } catch (error) {
+            this.showError();
+        }
+    };
+
+    EventLocationMap.prototype.addMarker = function () {
+        var markerElement = document.createElement("div");
+        var markerPin = document.createElement("div");
+        var markerIcon = document.createElement("i");
+        var popupContent = document.createElement("div");
+
+        markerElement.className = "event-location-marker";
+        markerElement.setAttribute("aria-label", this.config.locationLabel || this.config.eventName);
+        markerPin.className = "event-location-marker-pin";
+        markerIcon.className = "fa-solid fa-person-running";
+        markerIcon.setAttribute("aria-hidden", "true");
+        markerPin.appendChild(markerIcon);
+        markerElement.appendChild(markerPin);
+
+        popupContent.className = "event-location-popup";
+        popupContent.textContent = this.config.locationLabel || this.config.eventName;
+
+        this.marker = new window.mapboxgl.Marker({
+            element: markerElement,
+            anchor: "bottom"
+        })
+            .setLngLat(this.coordinate)
+            .setPopup(new window.mapboxgl.Popup({
+                closeButton: false,
+                offset: 22
+            }).setDOMContent(popupContent))
+            .addTo(this.map);
+    };
+
+    EventLocationMap.prototype.centerLocation = function () {
+        if (!this.map || !this.coordinate) {
+            return;
+        }
+        this.map.easeTo({
+            center: this.coordinate,
+            zoom: Math.max(this.map.getZoom(), 14),
+            bearing: 0,
+            pitch: 0,
+            duration: 650
+        });
+    };
+
+    EventLocationMap.prototype.changeStyle = function (style) {
+        var cameraState;
+        var styleUrl;
+
+        if (!this.map || style === this.currentStyle) {
+            return;
+        }
+
+        cameraState = {
+            center: this.map.getCenter(),
+            zoom: this.map.getZoom(),
+            bearing: this.map.getBearing(),
+            pitch: this.map.getPitch()
+        };
+        this.currentStyle = style;
+        styleUrl = style === "satellite" ? SATELLITE_STYLE : MAP_STYLE;
+        this.updateStyleToggle();
+        this.loadingNode.hidden = false;
+        this.map.setStyle(styleUrl);
+        this.map.once("style.load", function () {
+            if (style === "satellite") {
+                this.applySatelliteConfiguration();
+            }
+            window.requestAnimationFrame(function () {
+                this.map.jumpTo(cameraState);
+                this.loadingNode.hidden = true;
+            }.bind(this));
+        }.bind(this));
+    };
+
+    EventLocationMap.prototype.applySatelliteConfiguration = function () {
+        if (!this.map || typeof this.map.setConfigProperty !== "function") {
+            return;
+        }
+
+        SATELLITE_HIDDEN_FEATURES.forEach(function (property) {
+            this.map.setConfigProperty("basemap", property, false);
+        }, this);
+    };
+
+    EventLocationMap.prototype.updateStyleToggle = function () {
+        var satelliteActive = this.currentStyle === "satellite";
+        var actionLabel = satelliteActive
+            ? (this.labels.styleSwitchToMap || this.labels.map || "Mapa")
+            : (this.labels.styleSwitchToSatellite || this.labels.satellite || "Satélite");
+        var icon = this.styleToggleButton.querySelector("i");
+
+        this.styleToggleButton.setAttribute("aria-pressed", satelliteActive ? "true" : "false");
+        this.styleToggleButton.setAttribute("aria-label", actionLabel);
+        this.styleToggleButton.title = actionLabel;
+        if (icon) {
+            icon.className = satelliteActive
+                ? "fa-solid fa-satellite"
+                : "fa-solid fa-map";
+        }
+        this.styleToggleLabel.textContent = satelliteActive
+            ? this.labels.satellite
+            : this.labels.map;
+    };
+
+    EventLocationMap.prototype.updateNavigationLinks = function () {
+        var latitude;
+        var longitude;
+
+        if (!this.coordinate) {
+            return;
+        }
+
+        longitude = Number(this.coordinate[0]).toFixed(6);
+        latitude = Number(this.coordinate[1]).toFixed(6);
+        this.googleLink.href = "https://www.google.com/maps/dir/?api=1&destination="
+            + encodeURIComponent(latitude + "," + longitude)
+            + "&dir_action=navigate";
+        this.wazeLink.href = "https://www.waze.com/ul?ll="
+            + encodeURIComponent(latitude + "," + longitude)
+            + "&navigate=yes&utm_source=roadrunners";
+    };
+
+    EventLocationMap.prototype.showError = function () {
+        this.loadingNode.hidden = true;
+        this.errorNode.hidden = false;
+        this.toolbar.hidden = true;
+    };
+
+    document.querySelectorAll("[data-event-location-component]").forEach(function (root) {
+        if (!root.querySelector("[data-event-location-config]")) {
+            return;
+        }
+
+        try {
+            new EventLocationMap(root);
+        } catch (error) {
+            root.setAttribute("data-event-location-error", "initialization");
+            var loadingNode = root.querySelector("[data-event-location-loading]");
+            var errorNode = root.querySelector("[data-event-location-error]");
+            if (loadingNode) {
+                loadingNode.hidden = true;
+            }
+            if (errorNode) {
+                errorNode.hidden = false;
+            }
+        }
+    });
+}());

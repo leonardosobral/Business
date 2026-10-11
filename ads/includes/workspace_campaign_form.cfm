@@ -111,8 +111,8 @@
     <cfelse>
       <form method="post" action="./?view=campaigns#campaign-form" id="ads-campaign-wizard" data-initial-step="<cfif FORM.ads_v1_action EQ 'save_campaign' AND len(VARIABLES.adsV1Error)>4<cfelse>1</cfif>" data-is-new="<cfif len(VARIABLES.adsV1FormCampaignId)>false<cfelse>true</cfif>" data-preserve-inputs="<cfif FORM.ads_v1_action EQ 'save_campaign' AND len(VARIABLES.adsV1Error)>true<cfelse>false</cfif>" novalidate><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
         <input type="hidden" name="ads_v1_action" value="save_campaign"/>
-        <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1Csrf)#</cfoutput>"/>
-        <input type="hidden" name="campaign_id" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormCampaignId)#</cfoutput>"/>
+        <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1Csrf)#</cfoutput>"/>
+        <input type="hidden" name="campaign_id" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1FormCampaignId)#</cfoutput>"/>
 
         <div class="row g-0">
           <div class="col-lg-7 p-3 p-lg-4">
@@ -129,7 +129,7 @@
                     <cfset VARIABLES.adsV1EventImageRaw = len(trim(qAdsV1Events.url_imagem_listagem & "")) ? qAdsV1Events.url_imagem_listagem : (len(trim(qAdsV1Events.url_imagem & "")) ? qAdsV1Events.url_imagem : qAdsV1Events.imagem)/>
                     <cfset VARIABLES.adsV1EventImageResolved = adsV1EventImageUrl(VARIABLES.adsV1EventImageRaw)/>
                     <cfset VARIABLES.adsV1EventCampaignSummary = structKeyExists(VARIABLES.adsV1EventCampaignSummaries, id_evento & "") ? VARIABLES.adsV1EventCampaignSummaries[id_evento & ""] : "Sem campanha"/>
-                    <option value="#id_evento#" data-event-name="#htmlEditFormat(nome_evento)#" data-event-city="#htmlEditFormat(cidade)#" data-event-state="#htmlEditFormat(estado)#" data-event-tag="#htmlEditFormat(tag)#" data-event-start="#isDate(data_inicial) ? dateFormat(data_inicial, 'yyyy-mm-dd') : ''#" data-event-end="#isDate(data_final) ? dateFormat(data_final, 'yyyy-mm-dd') : ''#" data-event-date="#isDate(data_final) ? dateFormat(data_final, 'dd/mm/yyyy') : ''#" data-event-image="#htmlEditFormat(VARIABLES.adsV1EventImageResolved)#" data-event-status="#htmlEditFormat(event_link_status)#" <cfif val(id_evento) EQ VARIABLES.adsV1FormEventId>selected</cfif>><cfif isDate(data_final)>#dateFormat(data_final, 'dd/mm/yyyy')# — </cfif>[#htmlEditFormat(VARIABLES.adsV1EventCampaignSummary)#] — #htmlEditFormat(nome_evento)# — #htmlEditFormat(cidade)#/#htmlEditFormat(estado)# <cfif uCase(event_link_status & '') EQ 'PENDENTE'>(vínculo em análise)</cfif></option>
+                    <option value="#id_evento#" data-event-name="#encodeForHTMLAttribute(nome_evento)#" data-event-city="#encodeForHTMLAttribute(cidade)#" data-event-state="#encodeForHTMLAttribute(estado)#" data-event-tag="#encodeForHTMLAttribute(tag)#" data-event-start="#isDate(data_inicial) ? dateFormat(data_inicial, 'yyyy-mm-dd') : ''#" data-event-end="#isDate(data_final) ? dateFormat(data_final, 'yyyy-mm-dd') : ''#" data-event-date="#isDate(data_final) ? dateFormat(data_final, 'dd/mm/yyyy') : ''#" data-event-image="#encodeForHTMLAttribute(VARIABLES.adsV1EventImageResolved)#" data-event-status="#encodeForHTMLAttribute(event_link_status)#" <cfif val(id_evento) EQ VARIABLES.adsV1FormEventId>selected</cfif>><cfif isDate(data_final)>#dateFormat(data_final, 'dd/mm/yyyy')# — </cfif>[#encodeForHTML(VARIABLES.adsV1EventCampaignSummary)#] — #encodeForHTML(nome_evento)# — #encodeForHTML(cidade)#/#encodeForHTML(estado)# <cfif uCase(event_link_status & '') EQ 'PENDENTE'>(vínculo em análise)</cfif></option>
                   </cfoutput>
                 </select>
                 <div class="invalid-feedback">Selecione um evento vinculado.</div>
@@ -137,7 +137,7 @@
 
               <div>
                 <label class="form-label" for="ads-v1-name">Nome interno da campanha</label>
-                <input class="form-control" id="ads-v1-name" name="name" minlength="3" maxlength="160" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormName)#</cfoutput>" placeholder="Ex.: Divulgação — nome do evento"/>
+                <input class="form-control" id="ads-v1-name" name="name" minlength="3" maxlength="160" required value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1FormName)#</cfoutput>" placeholder="Ex.: Divulgação — nome do evento"/>
                 <div class="form-text">Esse nome serve apenas para você encontrar a campanha no Business.</div>
                 <div class="invalid-feedback">Informe um nome com pelo menos 3 caracteres.</div>
               </div>
@@ -160,17 +160,17 @@
               <div class="row g-3 align-items-stretch">
                 <div class="col-md-6">
                   <label class="form-label" for="ads-v1-cpc">Seu lance (CPC)</label>
-                  <div class="input-group"><span class="input-group-text">R$</span><input class="form-control" id="ads-v1-cpc" type="number" name="cpc_bid" min="0.51" step="0.01" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormCpcRaw)#</cfoutput>"/></div>
+                  <div class="input-group"><span class="input-group-text">R$</span><input class="form-control" id="ads-v1-cpc" type="number" name="cpc_bid" min="0.51" step="0.01" required value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1FormCpcRaw)#</cfoutput>"/></div>
                   <div class="form-text">Lance mínimo de R$ 0,51. Você paga no máximo esse valor e pode pagar menos: somente o necessário para superar o próximo anúncio.</div>
                 </div>
                 <div class="col-md-6">
                   <label class="form-label" for="ads-v1-total">Orçamento total</label>
-                  <div class="input-group"><span class="input-group-text">R$</span><input class="form-control" id="ads-v1-total" type="number" name="budget_total" min="0.01" step="0.01" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormBudgetTotalRaw)#</cfoutput>"/></div>
+                  <div class="input-group"><span class="input-group-text">R$</span><input class="form-control" id="ads-v1-total" type="number" name="budget_total" min="0.01" step="0.01" required value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1FormBudgetTotalRaw)#</cfoutput>"/></div>
                   <div class="form-text">Valor máximo reservado para a campanha.</div>
                 </div>
                 <div class="col-md-6">
                   <label class="form-label" for="ads-v1-daily">Limite diário <span class="text-muted">(opcional)</span></label>
-                  <div class="input-group"><span class="input-group-text">R$</span><input class="form-control" id="ads-v1-daily" type="number" name="budget_daily" min="0.01" step="0.01" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormBudgetDailyRaw)#</cfoutput>" placeholder="Ex.: 20,00"/></div>
+                  <div class="input-group"><span class="input-group-text">R$</span><input class="form-control" id="ads-v1-daily" type="number" name="budget_daily" min="0.01" step="0.01" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1FormBudgetDailyRaw)#</cfoutput>" placeholder="Ex.: 20,00"/></div>
                   <div class="form-text">Controla quanto pode ser gasto em um dia.</div>
                 </div>
                 <div class="col-md-6">
@@ -190,11 +190,11 @@
               <p class="ads-wizard-help mb-4">Sugerimos manter a campanha até as 23:59 do último dia do evento, incluindo o público que volta para consultar os resultados. Você pode ajustar o período e o público abaixo.</p>
 
               <div class="row g-3">
-                <div class="col-md-6"><label class="form-label" for="ads-v1-start">Início</label><input class="form-control" id="ads-v1-start" type="datetime-local" name="starts_at" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormStartsDisplay)#</cfoutput>"/></div>
-                <div class="col-md-6"><label class="form-label" for="ads-v1-end">Fim</label><input class="form-control" id="ads-v1-end" type="datetime-local" name="ends_at" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormEndsDisplay)#</cfoutput>"/><div class="form-text" id="ads-end-suggestion">Sugestão: último dia do evento, às 23:59.</div></div>
+                <div class="col-md-6"><label class="form-label" for="ads-v1-start">Início</label><input class="form-control" id="ads-v1-start" type="datetime-local" name="starts_at" required value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1FormStartsDisplay)#</cfoutput>"/></div>
+                <div class="col-md-6"><label class="form-label" for="ads-v1-end">Fim</label><input class="form-control" id="ads-v1-end" type="datetime-local" name="ends_at" required value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1FormEndsDisplay)#</cfoutput>"/><div class="form-text" id="ads-end-suggestion">Sugestão: último dia do evento, às 23:59.</div></div>
                 <div class="col-md-4"><label class="form-label" for="ads-v1-device">Dispositivo</label><select class="form-select" id="ads-v1-device" name="target_device_class"><option value="ALL" <cfif VARIABLES.adsV1FormDevice EQ "ALL">selected</cfif>>Todos</option><option value="DESKTOP" <cfif VARIABLES.adsV1FormDevice EQ "DESKTOP">selected</cfif>>Desktop</option><option value="MOBILE" <cfif VARIABLES.adsV1FormDevice EQ "MOBILE">selected</cfif>>Celular</option></select></div>
-                <div class="col-md-4"><label class="form-label" for="ads-v1-country">País</label><input class="form-control text-uppercase" id="ads-v1-country" name="target_country_code" maxlength="2" pattern="[A-Za-z]{2}" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormCountry)#</cfoutput>"/></div>
-                <div class="col-md-4"><label class="form-label" for="ads-v1-region">Estado ou região</label><input class="form-control text-uppercase" id="ads-v1-region" name="target_region_code" maxlength="40" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1FormRegion)#</cfoutput>" placeholder="Opcional, ex.: BA"/></div>
+                <div class="col-md-4"><label class="form-label" for="ads-v1-country">País</label><input class="form-control text-uppercase" id="ads-v1-country" name="target_country_code" maxlength="2" pattern="[A-Za-z]{2}" required value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1FormCountry)#</cfoutput>"/></div>
+                <div class="col-md-4"><label class="form-label" for="ads-v1-region">Estado ou região</label><input class="form-control text-uppercase" id="ads-v1-region" name="target_region_code" maxlength="40" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1FormRegion)#</cfoutput>" placeholder="Opcional, ex.: BA"/></div>
               </div>
               <div class="ads-wizard-error mt-3" data-step-error="3">O fim precisa ser posterior ao início. Revise também o país informado.</div>
             </section>
@@ -210,8 +210,8 @@
                 <div class="ads-placement-grid">
                   <cfoutput query="qAdsV1Placements">
                     <label class="ads-placement-card" for="ads-v1-placement-#currentRow#">
-                      <input class="form-check-input flex-shrink-0 mt-1" id="ads-v1-placement-#currentRow#" type="checkbox" name="placement_#htmlEditFormat(placement_key)#" value="#htmlEditFormat(placement_key)#" data-placement-label="#htmlEditFormat(adsV1PlacementLabel(placement_key))#" <cfif arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, placement_key)>checked</cfif>/>
-                      <span class="ads-placement-copy"><strong class="d-block">#htmlEditFormat(adsV1PlacementLabel(placement_key))#</strong><span class="d-block small text-muted mt-1">#htmlEditFormat(adsV1PlacementDescription(placement_key))#</span></span>
+                      <input class="form-check-input flex-shrink-0 mt-1" id="ads-v1-placement-#currentRow#" type="checkbox" name="placement_#encodeForHTMLAttribute(placement_key)#" value="#encodeForHTMLAttribute(placement_key)#" data-placement-label="#encodeForHTMLAttribute(adsV1PlacementLabel(placement_key))#" <cfif arrayFindNoCase(VARIABLES.adsV1FormPlacementKeys, placement_key)>checked</cfif>/>
+                      <span class="ads-placement-copy"><strong class="d-block">#encodeForHTML(adsV1PlacementLabel(placement_key))#</strong><span class="d-block small text-muted mt-1">#encodeForHTML(adsV1PlacementDescription(placement_key))#</span></span>
                     </label>
                   </cfoutput>
                 </div>
@@ -239,10 +239,10 @@
                 <article class="ads-native-event">
                   <div class="ads-native-sponsored">Patrocinado</div>
                   <div class="ads-native-body">
-                    <cfif len(VARIABLES.adsV1PreviewEventImage)><img class="ads-native-image" id="ads-preview-image" src="<cfoutput>#htmlEditFormat(VARIABLES.adsV1PreviewEventImage)#</cfoutput>" alt=""/><div class="ads-native-image-placeholder" id="ads-preview-image-placeholder" hidden><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i></div><cfelse><img class="ads-native-image" id="ads-preview-image" src="" alt="" hidden/><div class="ads-native-image-placeholder" id="ads-preview-image-placeholder"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i></div></cfif>
+                    <cfif len(VARIABLES.adsV1PreviewEventImage)><img class="ads-native-image" id="ads-preview-image" src="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1PreviewEventImage)#</cfoutput>" alt=""/><div class="ads-native-image-placeholder" id="ads-preview-image-placeholder" hidden><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i></div><cfelse><img class="ads-native-image" id="ads-preview-image" src="" alt="" hidden/><div class="ads-native-image-placeholder" id="ads-preview-image-placeholder"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i></div></cfif>
                     <div>
-                      <div class="ads-native-title" id="ads-preview-name"><cfoutput>#htmlEditFormat(VARIABLES.adsV1PreviewEventName)#</cfoutput></div>
-                      <div class="ads-native-meta"><span id="ads-preview-date"><cfoutput>#htmlEditFormat(VARIABLES.adsV1PreviewEventDate)#</cfoutput></span><br/><span id="ads-preview-city"><cfoutput>#htmlEditFormat(VARIABLES.adsV1PreviewEventCity)#<cfif len(VARIABLES.adsV1PreviewEventState)>/#htmlEditFormat(VARIABLES.adsV1PreviewEventState)#</cfif></cfoutput></span></div>
+                      <div class="ads-native-title" id="ads-preview-name"><cfoutput>#encodeForHTML(VARIABLES.adsV1PreviewEventName)#</cfoutput></div>
+                      <div class="ads-native-meta"><span id="ads-preview-date"><cfoutput>#encodeForHTML(VARIABLES.adsV1PreviewEventDate)#</cfoutput></span><br/><span id="ads-preview-city"><cfoutput>#encodeForHTML(VARIABLES.adsV1PreviewEventCity)#<cfif len(VARIABLES.adsV1PreviewEventState)>/#encodeForHTML(VARIABLES.adsV1PreviewEventState)#</cfif></cfoutput></span></div>
                       <a class="btn btn-sm btn-outline-light mt-3<cfif NOT len(VARIABLES.adsV1PreviewEventTag)> disabled</cfif>" id="ads-preview-link" href="<cfif len(VARIABLES.adsV1PreviewEventTag)><cfoutput>https://roadrunners.run/evento/#urlEncodedFormat(VARIABLES.adsV1PreviewEventTag)#/</cfoutput><cfelse>#</cfif>" target="_blank" rel="noopener">Ver evento</a>
                     </div>
                   </div>

@@ -1,0 +1,7 @@
+{
+  "published": [
+    "includes/card_evento_individual.cfm",
+    "includes/estrutura/event_title_date.cfm"
+  ],
+  "backup": "/var/backups/seo-event-routes-20261008-rr/baseline"
+}

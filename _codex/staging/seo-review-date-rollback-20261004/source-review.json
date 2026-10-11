@@ -1,0 +1,26 @@
+{
+  "restoration": [
+    {
+      "id": 40879,
+      "reason": "Current official page18Oct vs linkedPDF26Apr; no supersession proof. Restore pre11th course values only."
+    },
+    {
+      "id": 46585,
+      "reason": "Current official page1Nov vs same linkedPDF25Oct; no supersession proof. Restore pre11th course values only."
+    }
+  ],
+  "q2": {
+    "id": 39867,
+    "source": "https://www.ticketsports.com.br/e/1o-corrida-q2-eventos-de-revezamento-de-americana-86132",
+    "old_regulation": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/86132/8b0373fa46764c459d6590b571293991639078047107297658.pdf",
+    "current_link": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/86132/67fcf68ea1cb47d78b5b965b108ca5b4639168571610602317.pdf",
+    "current_regulation_sha256": "1bf3b13133300947f41da5575936ff08ec7dad0708b5ebf843e6706cad8de342",
+    "reviewed_articles": [
+      "1:25October2026",
+      "1.1:venue",
+      "1.3:two5kmlaps10kmteam"
+    ],
+    "course_dates_retained": "2026-10-25",
+    "old_date_unverified_restoration": false
+  }
+}

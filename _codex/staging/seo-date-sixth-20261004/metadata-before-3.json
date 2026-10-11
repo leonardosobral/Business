@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-serrinha-runners-2026/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-serrinha-runners-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-serrinha-runners-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-serrinha-runners-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-serrinha-runners-2026/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-serrinha-runners-2026/",
+      "name": "Serrinha Runners 2026",
+      "description": "Serrinha Runners 2026 acontece em 17 outubro 2026, em Centro - Serrinha - RN.",
+      "url": "https://roadrunners.run/evento/2026-serrinha-runners-2026/",
+      "startDate": "2026-10-17",
+      "endDate": "2026-10-17",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://tiquet.com.br/visualizar/imagem/896/"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Centro",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Serrinha",
+          "addressRegion": "RN",
+          "addressCountry": "BR",
+          "streetAddress": "Centro"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://tiquet.com.br/evento/2026-13-serrinha-runners-2026/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/rn/",
+          "@type": "ListItem",
+          "name": "Corridas em RN"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-serrinha-runners-2026/",
+          "@type": "ListItem",
+          "name": "Serrinha Runners 2026"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

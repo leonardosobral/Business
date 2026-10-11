@@ -1,4 +1,4 @@
-<cfif NOT structKeyExists(VARIABLES,"helpdeskCanManage") OR NOT VARIABLES.helpdeskCanManage><cfheader statuscode="403" statustext="Forbidden"/><cfabort/></cfif>
+<cfif NOT structKeyExists(VARIABLES,"helpdeskCanManage") OR NOT VARIABLES.helpdeskCanManage><cfheader statuscode="403"/><cfabort/></cfif>
 <cfoutput>
 <details class="hd-sectors" id="hd-setores" <cfif val(URL.gestao ?: 0) OR val(URL.setor_novo ?: 0) OR qHelpdeskSetorEdit.recordcount>open</cfif>>
   <summary>Setores e responsáveis <small>Organização das filas de atendimento</small></summary>

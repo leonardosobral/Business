@@ -1,0 +1,112 @@
+[
+  {
+    "nome_evento": "2026 Itaú BBA IRONMAN 70.3 Florianópolis",
+    "data_final": "2026-10-18",
+    "organizador": "UNLIMITED SPORTS",
+    "ativo": 1,
+    "contas": "[{\"status\": \"ATIVO\", \"id_conta\": 59, \"id_evento\": 36659, \"data_criacao\": \"2026-10-11T04:55:00.728646-03:00\", \"id_conta_evento\": 346, \"data_atualizacao\": \"2026-10-11T04:55:00.728646-03:00\", \"usuario_cadastro\": null}]",
+    "id_evento": 36659,
+    "fornecedores": "[]",
+    "data_inicial": "2026-10-18"
+  },
+  {
+    "nome_evento": "MARATONA INTERNACIONAL DE POMERODE 2026",
+    "data_final": "2026-10-17",
+    "organizador": "Corre Brasil Marketing Esportivo",
+    "ativo": 1,
+    "contas": "[{\"status\": \"ATIVO\", \"id_conta\": 35, \"id_evento\": 37144, \"data_criacao\": \"2026-10-11T04:55:00.728646-03:00\", \"id_conta_evento\": 345, \"data_atualizacao\": \"2026-10-11T04:55:00.728646-03:00\", \"usuario_cadastro\": null}]",
+    "id_evento": 37144,
+    "fornecedores": "[]",
+    "data_inicial": "2026-10-17"
+  },
+  {
+    "nome_evento": "2026  Nubank Ultravioleta TRIDAY Series - Bertioga II",
+    "data_final": "2026-11-08",
+    "organizador": "UNLIMITED SPORTS",
+    "ativo": 1,
+    "contas": "[{\"status\": \"ATIVO\", \"id_conta\": 59, \"id_evento\": 39384, \"data_criacao\": \"2026-10-11T04:55:00.728646-03:00\", \"id_conta_evento\": 347, \"data_atualizacao\": \"2026-10-11T04:55:00.728646-03:00\", \"usuario_cadastro\": null}]",
+    "id_evento": 39384,
+    "fornecedores": "[]",
+    "data_inicial": "2026-11-08"
+  },
+  {
+    "nome_evento": "CIRCUITO DESBRAVA - BELÉM 2026",
+    "data_final": "2026-11-01",
+    "organizador": "X3M",
+    "ativo": 1,
+    "contas": "[{\"status\": \"ATIVO\", \"id_conta\": 63, \"id_evento\": 40609, \"data_criacao\": \"2026-10-11T04:55:00.728646-03:00\", \"id_conta_evento\": 342, \"data_atualizacao\": \"2026-10-11T04:55:00.728646-03:00\", \"usuario_cadastro\": null}]",
+    "id_evento": 40609,
+    "fornecedores": "[{\"id_evento\": 40609, \"link_website\": null, \"id_fornecedor\": 60, \"id_fornecedor_tipo\": 1}]",
+    "data_inicial": "2026-11-01"
+  },
+  {
+    "nome_evento": "CIRCUITO DESBRAVA - MANAUS 2026",
+    "data_final": "2026-10-18",
+    "organizador": "X3M",
+    "ativo": 1,
+    "contas": "[{\"status\": \"ATIVO\", \"id_conta\": 63, \"id_evento\": 42066, \"data_criacao\": \"2026-10-11T04:55:00.728646-03:00\", \"id_conta_evento\": 343, \"data_atualizacao\": \"2026-10-11T04:55:00.728646-03:00\", \"usuario_cadastro\": null}]",
+    "id_evento": 42066,
+    "fornecedores": "[{\"id_evento\": 42066, \"link_website\": null, \"id_fornecedor\": 60, \"id_fornecedor_tipo\": 1}]",
+    "data_inicial": "2026-10-18"
+  },
+  {
+    "nome_evento": "Meia Maratona SC21k",
+    "data_final": "2026-11-29",
+    "organizador": "Corre Brasil Marketing Esportivo",
+    "ativo": 1,
+    "contas": "[{\"status\": \"ATIVO\", \"id_conta\": 35, \"id_evento\": 42360, \"data_criacao\": \"2026-10-11T04:55:00.728646-03:00\", \"id_conta_evento\": 344, \"data_atualizacao\": \"2026-10-11T04:55:00.728646-03:00\", \"usuario_cadastro\": null}]",
+    "id_evento": 42360,
+    "fornecedores": "[]",
+    "data_inicial": "2026-11-29"
+  },
+  {
+    "nome_evento": "XTERRA TRAIL RUN SERIES - ILHABELA",
+    "data_final": "2026-11-22",
+    "organizador": "X3M",
+    "ativo": 1,
+    "contas": "[{\"status\": \"ATIVO\", \"id_conta\": 63, \"id_evento\": 43912, \"data_criacao\": \"2026-10-11T04:55:00.728646-03:00\", \"id_conta_evento\": 341, \"data_atualizacao\": \"2026-10-11T04:55:00.728646-03:00\", \"usuario_cadastro\": null}]",
+    "id_evento": 43912,
+    "fornecedores": "[{\"id_evento\": 43912, \"link_website\": null, \"id_fornecedor\": 60, \"id_fornecedor_tipo\": 1}]",
+    "data_inicial": "2026-11-20"
+  },
+  {
+    "nome_evento": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027",
+    "data_final": "2027-05-02",
+    "organizador": "SPORTSLAND",
+    "ativo": 1,
+    "contas": "[{\"status\": \"ATIVO\", \"id_conta\": 53, \"id_evento\": 45372, \"data_criacao\": \"2026-10-11T04:53:19.375583-03:00\", \"id_conta_evento\": 337, \"data_atualizacao\": \"2026-10-11T04:53:19.375583-03:00\", \"usuario_cadastro\": null}]",
+    "id_evento": 45372,
+    "fornecedores": "[{\"id_evento\": 45372, \"link_website\": null, \"id_fornecedor\": 27, \"id_fornecedor_tipo\": 1}]",
+    "data_inicial": "2027-05-01"
+  },
+  {
+    "nome_evento": "NIGHT RUN NATAL LUZ - KOERICH",
+    "data_final": "2026-12-19",
+    "organizador": "SPORTSLAND",
+    "ativo": 1,
+    "contas": "[{\"status\": \"ATIVO\", \"id_conta\": 53, \"id_evento\": 45442, \"data_criacao\": \"2026-10-11T04:55:00.728646-03:00\", \"id_conta_evento\": 339, \"data_atualizacao\": \"2026-10-11T04:55:00.728646-03:00\", \"usuario_cadastro\": null}]",
+    "id_evento": 45442,
+    "fornecedores": "[{\"id_evento\": 45442, \"link_website\": null, \"id_fornecedor\": 27, \"id_fornecedor_tipo\": 1}]",
+    "data_inicial": "2026-12-19"
+  },
+  {
+    "nome_evento": "JURERÊ NIGHT RUN 2027",
+    "data_final": "2027-03-13",
+    "organizador": "SPORTSLAND",
+    "ativo": 1,
+    "contas": "[{\"status\": \"ATIVO\", \"id_conta\": 53, \"id_evento\": 46865, \"data_criacao\": \"2026-10-11T04:55:00.728646-03:00\", \"id_conta_evento\": 338, \"data_atualizacao\": \"2026-10-11T04:55:00.728646-03:00\", \"usuario_cadastro\": null}]",
+    "id_evento": 46865,
+    "fornecedores": "[{\"id_evento\": 46865, \"link_website\": null, \"id_fornecedor\": 27, \"id_fornecedor_tipo\": 1}]",
+    "data_inicial": "2027-03-13"
+  },
+  {
+    "nome_evento": "UPHILL CRISTO REDENTOR 2026",
+    "data_final": "2026-11-21",
+    "organizador": "X3M",
+    "ativo": 1,
+    "contas": "[{\"status\": \"ATIVO\", \"id_conta\": 63, \"id_evento\": 47969, \"data_criacao\": \"2026-10-11T04:55:00.728646-03:00\", \"id_conta_evento\": 340, \"data_atualizacao\": \"2026-10-11T04:55:00.728646-03:00\", \"usuario_cadastro\": null}]",
+    "id_evento": 47969,
+    "fornecedores": "[{\"id_evento\": 47969, \"link_website\": null, \"id_fornecedor\": 60, \"id_fornecedor_tipo\": 1}]",
+    "data_inicial": "2026-11-21"
+  }
+]

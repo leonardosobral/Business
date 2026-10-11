@@ -1,0 +1,4 @@
+    # Consolidate the slashless Costa Esmeralda alias confirmed in the SEO audit.
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+    RewriteCond %{QUERY_STRING} ^$
+    RewriteRule ^(evento|en/event|es/evento)/2026-costa-esmeralda-trail-2026$ /$1/2026-costa-esmeralda-trail-2026/ [R=301,L]

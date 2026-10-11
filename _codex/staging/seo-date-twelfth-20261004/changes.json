@@ -1,0 +1,63 @@
+{
+  "events": {
+    "43541": {
+      "url_regulamento": "https://www.trichip.com.br/painel/upload/doc/inscricao/doc-23-0d90d40c45b2fcde0689e6a73400dda6.pdf"
+    },
+    "43854": {
+      "url_regulamento": "https://www.oxyscrono.com.br/painel/upload/doc/inscricao/doc-017-24082026082940-7b1aeb59bfb3361ebb4d7ccc9d19ccc3.pdf"
+    },
+    "43166": {
+      "url_regulamento": "https://firebasestorage.googleapis.com/v0/b/kmais-app.appspot.com/o/pdfs%2F1788793065455_Regulameto%20FFSMS%20Corridas%202026.pdf?alt=media&token=b2ad35cc-770d-4c91-98cf-bd9ce8dfde67"
+    }
+  },
+  "routes": {
+    "60872": {
+      "data_percurso": "2026-12-06",
+      "percurso_bloqueado": true
+    },
+    "61656": {
+      "data_percurso": "2026-11-08",
+      "percurso_bloqueado": true
+    },
+    "65731": {
+      "data_percurso": "2026-11-29",
+      "percurso_bloqueado": true
+    },
+    "65732": {
+      "data_percurso": "2026-11-29",
+      "percurso_bloqueado": true
+    },
+    "65733": {
+      "data_percurso": "2026-11-29",
+      "percurso_bloqueado": true
+    },
+    "62255": {
+      "data_percurso": "2026-11-08",
+      "percurso_bloqueado": true
+    },
+    "62256": {
+      "data_percurso": "2026-11-08",
+      "percurso_bloqueado": true
+    },
+    "62257": {
+      "data_percurso": "2026-11-08",
+      "percurso_bloqueado": true
+    },
+    "62677": {
+      "data_percurso": "2026-11-28",
+      "percurso_bloqueado": true
+    },
+    "64286": {
+      "data_percurso": "2026-11-20",
+      "percurso_bloqueado": true
+    },
+    "64287": {
+      "data_percurso": "2026-11-20",
+      "percurso_bloqueado": true
+    },
+    "64288": {
+      "data_percurso": "2026-11-20",
+      "percurso_bloqueado": true
+    }
+  }
+}

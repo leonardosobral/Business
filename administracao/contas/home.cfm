@@ -852,7 +852,7 @@
 
           <cfif len(trim(VARIABLES.accountsNoticeMessage))>
             <div class="alert alert-success" role="alert">
-              <cfoutput>#htmlEditFormat(VARIABLES.accountsNoticeMessage)#</cfoutput>
+              <cfoutput>#encodeForHTML(VARIABLES.accountsNoticeMessage)#</cfoutput>
             </div>
           </cfif>
 
@@ -870,43 +870,43 @@
 
           <cfif len(trim(VARIABLES.accountsSaveErrorMessage)) AND VARIABLES.businessAccountsTablesReady>
             <div class="alert alert-danger" role="alert">
-              <cfoutput>#htmlEditFormat(VARIABLES.accountsSaveErrorMessage)#</cfoutput>
+              <cfoutput>#encodeForHTML(VARIABLES.accountsSaveErrorMessage)#</cfoutput>
             </div>
           </cfif>
 
           <cfif len(trim(VARIABLES.accountsUserSaveErrorMessage))>
             <div class="alert alert-danger" role="alert">
-              <cfoutput>#htmlEditFormat(VARIABLES.accountsUserSaveErrorMessage)#</cfoutput>
+              <cfoutput>#encodeForHTML(VARIABLES.accountsUserSaveErrorMessage)#</cfoutput>
             </div>
           </cfif>
 
           <cfif len(trim(VARIABLES.accountsEventSaveErrorMessage))>
             <div class="alert alert-danger" role="alert">
-              <cfoutput>#htmlEditFormat(VARIABLES.accountsEventSaveErrorMessage)#</cfoutput>
+              <cfoutput>#encodeForHTML(VARIABLES.accountsEventSaveErrorMessage)#</cfoutput>
             </div>
           </cfif>
 
           <cfif len(trim(VARIABLES.accountsRegistrationSaveErrorMessage))>
             <div class="alert alert-danger" role="alert">
-              <cfoutput>#htmlEditFormat(VARIABLES.accountsRegistrationSaveErrorMessage)#</cfoutput>
+              <cfoutput>#encodeForHTML(VARIABLES.accountsRegistrationSaveErrorMessage)#</cfoutput>
             </div>
           </cfif>
 
           <cfif len(trim(VARIABLES.accountsVoucherSaveErrorMessage))>
             <div class="alert alert-danger" role="alert">
-              <cfoutput>#htmlEditFormat(VARIABLES.accountsVoucherSaveErrorMessage)#</cfoutput>
+              <cfoutput>#encodeForHTML(VARIABLES.accountsVoucherSaveErrorMessage)#</cfoutput>
             </div>
           </cfif>
 
           <cfif len(trim(VARIABLES.accountsAccessSaveErrorMessage))>
             <div class="alert alert-danger" role="alert">
-              <cfoutput>#htmlEditFormat(VARIABLES.accountsAccessSaveErrorMessage)#</cfoutput>
+              <cfoutput>#encodeForHTML(VARIABLES.accountsAccessSaveErrorMessage)#</cfoutput>
             </div>
           </cfif>
 
           <cfif len(trim(VARIABLES.accountsMedicalAccessErrorMessage))>
             <div class="alert alert-danger" role="alert">
-              <cfoutput>#htmlEditFormat(VARIABLES.accountsMedicalAccessErrorMessage)#</cfoutput>
+              <cfoutput>#encodeForHTML(VARIABLES.accountsMedicalAccessErrorMessage)#</cfoutput>
             </div>
           </cfif>
 
@@ -917,11 +917,11 @@
                   <div>
                     <div class="business-label mb-1">Sua empresa no Business</div>
                     <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                      <h4 class="mb-0"><cfoutput>#htmlEditFormat(VARIABLES.accountsClientName)#</cfoutput></h4>
-                      <span class="accounts-status"><cfoutput>#htmlEditFormat(VARIABLES.accountsClientStatus)#</cfoutput></span>
+                      <h4 class="mb-0"><cfoutput>#encodeForHTML(VARIABLES.accountsClientName)#</cfoutput></h4>
+                      <span class="accounts-status"><cfoutput>#encodeForHTML(VARIABLES.accountsClientStatus)#</cfoutput></span>
                     </div>
                     <div class="accounts-client-chipbar">
-                      <span class="accounts-client-chip"><cfoutput>#htmlEditFormat(VARIABLES.accountsClientRoleLabel)#</cfoutput></span>
+                      <span class="accounts-client-chip"><cfoutput>#encodeForHTML(VARIABLES.accountsClientRoleLabel)#</cfoutput></span>
                       <span class="accounts-client-chip"><cfoutput>#LSNumberFormat(VARIABLES.accountsClientUsersActive)#</cfoutput> usuário(s)</span>
                       <span class="accounts-client-chip"><cfoutput>#LSNumberFormat(VARIABLES.accountsClientEventsActive)#</cfoutput> evento(s) ativo(s)</span>
                     </div>
@@ -935,7 +935,7 @@
                       <h6 class="mb-1">Conta aprovada</h6>
                       <p class="text-muted small mb-0"><cfif VARIABLES.accountsClientStatus EQ "ATIVA">Acesso liberado para operar a empresa.<cfelse>Aguardando aprovação da conta.</cfif></p>
                     </div>
-                    <span class="accounts-status"><cfoutput>#htmlEditFormat(VARIABLES.accountsClientStatus)#</cfoutput></span>
+                    <span class="accounts-status"><cfoutput>#encodeForHTML(VARIABLES.accountsClientStatus)#</cfoutput></span>
                   </div>
 
                   <div class="accounts-client-task <cfif VARIABLES.accountsClientUsersActive GT 0>is-complete<cfelse>is-current</cfif>">
@@ -995,9 +995,9 @@
                           <span class="accounts-status">Médico</span>
                         </div>
                         <p class="accounts-registration-summary">
-                          <strong class="text-body">#htmlEditFormat(usuario_nome)#</strong>
+                          <strong class="text-body">#encodeForHTML(usuario_nome)#</strong>
                           solicitou acesso médico à Central de
-                          <strong class="text-body">#htmlEditFormat(nome_evento)#</strong>.
+                          <strong class="text-body">#encodeForHTML(nome_evento)#</strong>.
                         </p>
                       </div>
                       <span class="accounts-status text-warning flex-shrink-0">Aguardando decisão</span>
@@ -1009,15 +1009,15 @@
                         <div class="accounts-request-grid small">
                           <div>
                             <span class="accounts-request-label">Conta</span>
-                            <span class="accounts-request-value">#htmlEditFormat(nome_conta)#</span>
+                            <span class="accounts-request-value">#encodeForHTML(nome_conta)#</span>
                           </div>
                           <div>
                             <span class="accounts-request-label">Usuário</span>
-                            <span class="accounts-request-value">#htmlEditFormat(usuario_nome)#</span>
+                            <span class="accounts-request-value">#encodeForHTML(usuario_nome)#</span>
                           </div>
                           <div>
                             <span class="accounts-request-label">E-mail</span>
-                            <span class="accounts-request-value">#htmlEditFormat(usuario_email)#</span>
+                            <span class="accounts-request-value">#encodeForHTML(usuario_email)#</span>
                           </div>
                           <div>
                             <span class="accounts-request-label">Perfil solicitado</span>
@@ -1027,7 +1027,7 @@
                         <cfif len(trim(mensagem & ""))>
                           <div class="small mt-3">
                             <span class="accounts-request-label">Mensagem</span>
-                            #htmlEditFormat(mensagem)#
+                            #encodeForHTML(mensagem)#
                           </div>
                         </cfif>
                         <div class="small text-muted mt-2">Criada em #dateTimeFormat(data_criacao, "dd/mm/yyyy HH:nn")#</div>
@@ -1038,7 +1038,7 @@
                           <div class="accounts-action-title">Decisão da solicitação</div>
                           <p class="accounts-request-decision-copy">Ao aprovar, o usuário será vinculado à conta com o perfil Médico e poderá operar esta Central.</p>
                           <input type="hidden" name="id_solicitacao_medica" value="#id_solicitacao#"/>
-                          <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+                          <input type="hidden" name="business_account_access_csrf" value="#encodeForHTMLAttribute(VARIABLES.businessAccountContextCsrf)#"/>
 
                           <label class="form-label small" for="nota-medica-#id_solicitacao#">Nota da decisão <span class="text-muted">(opcional)</span></label>
                           <textarea class="form-control form-control-sm mb-3" id="nota-medica-#id_solicitacao#" name="observacao_revisor_medica" rows="3"></textarea>
@@ -1077,19 +1077,19 @@
                       <div>
                         <div class="d-flex flex-wrap align-items-center gap-2">
                           <span class="accounts-status">Solicitação ## #qBusinessAccountRegistrationRequests.id_solicitacao#</span>
-                          <span class="accounts-status">#htmlEditFormat(qBusinessAccountRegistrationRequests.tipo_prestador)#</span>
-                          <span class="accounts-status">#htmlEditFormat(qBusinessAccountRegistrationRequests.tipo_titular)#</span>
+                          <span class="accounts-status">#encodeForHTML(qBusinessAccountRegistrationRequests.tipo_prestador)#</span>
+                          <span class="accounts-status">#encodeForHTML(qBusinessAccountRegistrationRequests.tipo_titular)#</span>
                           <cfif qBusinessAccountRegistrationRequests.status_conta EQ "ATIVA">
                             <span class="accounts-status">Pedido de acesso à conta existente</span>
                           </cfif>
                           <cfif len(trim(qBusinessAccountRegistrationRequests.voucher_codigo))>
-                            <span class="accounts-status">Voucher #htmlEditFormat(qBusinessAccountRegistrationRequests.voucher_codigo)#</span>
+                            <span class="accounts-status">Voucher #encodeForHTML(qBusinessAccountRegistrationRequests.voucher_codigo)#</span>
                           </cfif>
                         </div>
                         <p class="accounts-registration-summary">
-                          <strong class="text-body">#htmlEditFormat(qBusinessAccountRegistrationRequests.nome_responsavel)#</strong>
+                          <strong class="text-body">#encodeForHTML(qBusinessAccountRegistrationRequests.nome_responsavel)#</strong>
                           solicitou acesso à conta
-                          <strong class="text-body">#htmlEditFormat(qBusinessAccountRegistrationRequests.nome_empresa)#</strong>.
+                          <strong class="text-body">#encodeForHTML(qBusinessAccountRegistrationRequests.nome_empresa)#</strong>.
                         </p>
                       </div>
                       <span class="accounts-status text-warning flex-shrink-0">Aguardando decisão</span>
@@ -1103,26 +1103,26 @@
                       <div class="accounts-request-grid small">
                         <div>
                           <span class="accounts-request-label">Documento</span>
-                          <span class="accounts-request-value">#htmlEditFormat(qBusinessAccountRegistrationRequests.documento)#</span>
+                          <span class="accounts-request-value">#encodeForHTML(qBusinessAccountRegistrationRequests.documento)#</span>
                         </div>
                         <div>
                           <span class="accounts-request-label">Responsável</span>
-                          <span class="accounts-request-value">#htmlEditFormat(qBusinessAccountRegistrationRequests.nome_responsavel)#</span>
+                          <span class="accounts-request-value">#encodeForHTML(qBusinessAccountRegistrationRequests.nome_responsavel)#</span>
                         </div>
                         <div>
                           <span class="accounts-request-label">E-mail</span>
-                          <span class="accounts-request-value">#htmlEditFormat(qBusinessAccountRegistrationRequests.email_responsavel)#</span>
+                          <span class="accounts-request-value">#encodeForHTML(qBusinessAccountRegistrationRequests.email_responsavel)#</span>
                         </div>
                         <cfif len(trim(qBusinessAccountRegistrationRequests.telefone_responsavel))>
                           <div>
                             <span class="accounts-request-label">Telefone</span>
-                            <span class="accounts-request-value">#htmlEditFormat(qBusinessAccountRegistrationRequests.telefone_responsavel)#</span>
+                            <span class="accounts-request-value">#encodeForHTML(qBusinessAccountRegistrationRequests.telefone_responsavel)#</span>
                           </div>
                         </cfif>
                         <cfif len(trim(qBusinessAccountRegistrationRequests.cidade)) OR len(trim(qBusinessAccountRegistrationRequests.estado))>
                           <div>
                             <span class="accounts-request-label">Local</span>
-                            <span class="accounts-request-value">#htmlEditFormat(qBusinessAccountRegistrationRequests.cidade)#<cfif len(trim(qBusinessAccountRegistrationRequests.estado))>/#htmlEditFormat(qBusinessAccountRegistrationRequests.estado)#</cfif></span>
+                            <span class="accounts-request-value">#encodeForHTML(qBusinessAccountRegistrationRequests.cidade)#<cfif len(trim(qBusinessAccountRegistrationRequests.estado))>/#encodeForHTML(qBusinessAccountRegistrationRequests.estado)#</cfif></span>
                           </div>
                         </cfif>
                         <cfif len(trim(qBusinessAccountRegistrationRequests.site))>
@@ -1132,20 +1132,20 @@
                           </cfif>
                           <div>
                             <span class="accounts-request-label">Site</span>
-                            <span class="accounts-request-value"><a href="#htmlEditFormat(VARIABLES.accountRegistrationSiteUrl)#" target="_blank" rel="noopener">#htmlEditFormat(qBusinessAccountRegistrationRequests.site)#</a></span>
+                            <span class="accounts-request-value"><a href="#encodeForHTMLAttribute(VARIABLES.accountRegistrationSiteUrl)#" target="_blank" rel="noopener">#encodeForHTML(qBusinessAccountRegistrationRequests.site)#</a></span>
                           </div>
                         </cfif>
                         <cfif len(trim(qBusinessAccountRegistrationRequests.voucher_codigo))>
                           <div>
                             <span class="accounts-request-label">Voucher</span>
-                            <span class="accounts-request-value">#htmlEditFormat(qBusinessAccountRegistrationRequests.voucher_codigo)#<cfif len(trim(qBusinessAccountRegistrationRequests.voucher_credito))> - #LSCurrencyFormat(qBusinessAccountRegistrationRequests.voucher_credito)#</cfif></span>
+                            <span class="accounts-request-value">#encodeForHTML(qBusinessAccountRegistrationRequests.voucher_codigo)#<cfif len(trim(qBusinessAccountRegistrationRequests.voucher_credito))> - #LSCurrencyFormat(qBusinessAccountRegistrationRequests.voucher_credito)#</cfif></span>
                           </div>
                         </cfif>
                       </div>
                       <cfif len(trim(qBusinessAccountRegistrationRequests.mensagem))>
                         <div class="small mt-3">
                           <span class="accounts-request-label">Mensagem</span>
-                          #htmlEditFormat(qBusinessAccountRegistrationRequests.mensagem)#
+                          #encodeForHTML(qBusinessAccountRegistrationRequests.mensagem)#
                         </div>
                       </cfif>
                       <div class="small text-muted mt-2">Criada em #dateTimeFormat(qBusinessAccountRegistrationRequests.data_criacao, "dd/mm/yyyy HH:nn")#</div>
@@ -1156,7 +1156,7 @@
                           <div class="accounts-action-title">Decisão da solicitação</div>
                           <p class="accounts-request-decision-copy">Revise os dados e defina o acesso que este usuário receberá.</p>
                           <input type="hidden" name="id_solicitacao" value="#qBusinessAccountRegistrationRequests.id_solicitacao#"/>
-                          <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+                          <input type="hidden" name="business_account_access_csrf" value="#encodeForHTMLAttribute(VARIABLES.businessAccountContextCsrf)#"/>
 
                           <cfif qBusinessAccountRegistrationRequests.status_conta EQ "ATIVA">
                             <label class="form-label small" for="papel-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#">Papel após a aprovação</label>
@@ -1171,7 +1171,7 @@
                             <select class="form-select form-select-sm mb-3" id="conta-solicitacao-#qBusinessAccountRegistrationRequests.id_solicitacao#" name="id_conta_existente">
                               <option value="">Criar nova conta</option>
                               <cfloop query="qBusinessAccountRegistrationAccountOptions">
-                                <option value="#qBusinessAccountRegistrationAccountOptions.id_conta#">## #qBusinessAccountRegistrationAccountOptions.id_conta# - #htmlEditFormat(qBusinessAccountRegistrationAccountOptions.nome_conta)# - #htmlEditFormat(qBusinessAccountRegistrationAccountOptions.documento)# (#htmlEditFormat(qBusinessAccountRegistrationAccountOptions.status)#)</option>
+                                <option value="#qBusinessAccountRegistrationAccountOptions.id_conta#">## #qBusinessAccountRegistrationAccountOptions.id_conta# - #encodeForHTML(qBusinessAccountRegistrationAccountOptions.nome_conta)# - #encodeForHTML(qBusinessAccountRegistrationAccountOptions.documento)# (#encodeForHTML(qBusinessAccountRegistrationAccountOptions.status)#)</option>
                               </cfloop>
                             </select>
 
@@ -1199,14 +1199,14 @@
                             <form method="post" action="./" class="accounts-test-reset-form">
                               <input type="hidden" name="account_pending_reset_action" value="reset"/>
                               <input type="hidden" name="id_solicitacao" value="#qBusinessAccountRegistrationRequests.id_solicitacao#"/>
-                              <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+                              <input type="hidden" name="business_account_access_csrf" value="#encodeForHTMLAttribute(VARIABLES.businessAccountContextCsrf)#"/>
 
                               <p class="small text-muted mb-3">
                                 Remove esta solicitação, a conta provisória, vínculos de evento, reserva de voucher e rascunhos de publicidade. O usuário RoadRunners é preservado e poderá começar novamente.
                               </p>
 
                               <label class="form-label small" for="reset-email-#qBusinessAccountRegistrationRequests.id_solicitacao#">
-                                Digite <strong>#htmlEditFormat(qBusinessAccountRegistrationRequests.email_responsavel)#</strong> para confirmar
+                                Digite <strong>#encodeForHTML(qBusinessAccountRegistrationRequests.email_responsavel)#</strong> para confirmar
                               </label>
                               <input class="form-control form-control-sm mb-3" type="email" id="reset-email-#qBusinessAccountRegistrationRequests.id_solicitacao#" name="account_pending_reset_email" autocomplete="off" required/>
 
@@ -1244,12 +1244,12 @@
               <cfoutput>
                 <form method="post" action="./?<cfif len(VARIABLES.accountFormId)>conta_id=#urlEncodedFormat(VARIABLES.accountFormId)#&editar_conta=1&</cfif>busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage#<cfif len(VARIABLES.accountFormId)>##conta-gerenciamento</cfif>">
                   <input type="hidden" name="account_action" value="salvar"/>
-                  <input type="hidden" name="id_conta" value="#htmlEditFormat(VARIABLES.accountFormId)#"/>
+                  <input type="hidden" name="id_conta" value="#encodeForHTMLAttribute(VARIABLES.accountFormId)#"/>
 
                   <div class="row g-3">
                     <div class="col-12 col-lg-6">
                       <label class="form-label">Nome da conta</label>
-                      <input class="form-control" type="text" name="nome_conta" value="#htmlEditFormat(VARIABLES.accountFormNome)#" maxlength="160" required/>
+                      <input class="form-control" type="text" name="nome_conta" value="#encodeForHTMLAttribute(VARIABLES.accountFormNome)#" maxlength="160" required/>
                     </div>
 
                     <div class="col-12 col-lg-3">
@@ -1276,22 +1276,22 @@
 
                     <div class="col-12 col-lg-4">
                       <label class="form-label">Documento</label>
-                      <input class="form-control" type="text" name="documento" value="#htmlEditFormat(VARIABLES.accountFormDocumento)#" maxlength="20" required/>
+                      <input class="form-control" type="text" name="documento" value="#encodeForHTMLAttribute(VARIABLES.accountFormDocumento)#" maxlength="20" required/>
                     </div>
 
                     <div class="col-12 col-lg-8">
                       <label class="form-label">Nome do titular</label>
-                      <input class="form-control" type="text" name="nome_titular" value="#htmlEditFormat(VARIABLES.accountFormNomeTitular)#" maxlength="200" required/>
+                      <input class="form-control" type="text" name="nome_titular" value="#encodeForHTMLAttribute(VARIABLES.accountFormNomeTitular)#" maxlength="200" required/>
                     </div>
 
                     <div class="col-12 col-lg-6">
                       <label class="form-label">E-mail principal</label>
-                      <input class="form-control" type="email" name="email_principal" value="#htmlEditFormat(VARIABLES.accountFormEmail)#" maxlength="255"/>
+                      <input class="form-control" type="email" name="email_principal" value="#encodeForHTMLAttribute(VARIABLES.accountFormEmail)#" maxlength="255"/>
                     </div>
 
                     <div class="col-12 col-lg-6">
                       <label class="form-label">Telefone principal</label>
-                      <input class="form-control" type="text" name="telefone_principal" value="#htmlEditFormat(VARIABLES.accountFormTelefone)#" maxlength="30"/>
+                      <input class="form-control" type="text" name="telefone_principal" value="#encodeForHTMLAttribute(VARIABLES.accountFormTelefone)#" maxlength="30"/>
                     </div>
 
                     <div class="col-12 d-flex flex-column flex-lg-row gap-2 justify-content-between">
@@ -1308,7 +1308,7 @@
                 <cfoutput>
                   <form method="post" action="./" class="mt-3" onsubmit="return confirm('Excluir esta conta? Os vínculos de usuários também serão removidos.');">
                     <input type="hidden" name="account_action" value="excluir"/>
-                    <input type="hidden" name="id_conta" value="#htmlEditFormat(VARIABLES.accountFormId)#"/>
+                    <input type="hidden" name="id_conta" value="#encodeForHTMLAttribute(VARIABLES.accountFormId)#"/>
                     <button type="submit" class="btn btn-outline-danger btn-sm">Excluir conta</button>
                   </form>
                 </cfoutput>
@@ -1332,7 +1332,7 @@
                     <form method="get" action="./" class="mb-3">
                       <label class="form-label">Buscar conta</label>
                       <div class="accounts-list-search-row">
-                        <input class="form-control" type="text" name="busca" value="#htmlEditFormat(URL.busca)#" placeholder="Nome, titular, documento ou e-mail"/>
+                        <input class="form-control" type="text" name="busca" value="#encodeForHTMLAttribute(URL.busca)#" placeholder="Nome, titular, documento ou e-mail"/>
                         <button class="btn btn-outline-warning w-100" type="submit">Buscar</button>
                       </div>
                     </form>
@@ -1355,17 +1355,17 @@
                           <cfoutput query="qBusinessAccountList">
                             <tr <cfif qBusinessAccountEdit.recordcount AND qBusinessAccountList.id_conta EQ qBusinessAccountEdit.id_conta>class="table-active"</cfif>>
                               <td class="accounts-cell">
-                                <div class="fw-bold">#htmlEditFormat(qBusinessAccountList.nome_conta)#</div>
-                                <div class="small text-muted">#htmlEditFormat(qBusinessAccountList.nome_titular)#</div>
+                                <div class="fw-bold">#encodeForHTML(qBusinessAccountList.nome_conta)#</div>
+                                <div class="small text-muted">#encodeForHTML(qBusinessAccountList.nome_titular)#</div>
                                 <cfif len(trim(qBusinessAccountList.email_principal))>
-                                  <div class="small text-muted accounts-account-email">#htmlEditFormat(qBusinessAccountList.email_principal)#</div>
+                                  <div class="small text-muted accounts-account-email">#encodeForHTML(qBusinessAccountList.email_principal)#</div>
                                 </cfif>
                               </td>
                               <td>
-                                <div>#htmlEditFormat(qBusinessAccountList.documento)#</div>
-                                <div class="small text-muted">#htmlEditFormat(qBusinessAccountList.tipo_titular)#</div>
+                                <div>#encodeForHTML(qBusinessAccountList.documento)#</div>
+                                <div class="small text-muted">#encodeForHTML(qBusinessAccountList.tipo_titular)#</div>
                               </td>
-                              <td><span class="accounts-status">#htmlEditFormat(qBusinessAccountList.status)#</span></td>
+                              <td><span class="accounts-status">#encodeForHTML(qBusinessAccountList.status)#</span></td>
                               <td>
                                 <div>#LSNumberFormat(qBusinessAccountList.total_usuarios)#</div>
                                 <div class="small text-muted">#LSNumberFormat(qBusinessAccountList.usuarios_ativos)# ativos</div>
@@ -1415,15 +1415,15 @@
                   <div class="accounts-management-header <cfif NOT VARIABLES.businessAccountsCanAdminAll>is-client</cfif>">
                     <div>
                       <div class="accounts-action-title mb-1"><cfif VARIABLES.businessAccountsCanAdminAll>Conta selecionada<cfelse>Configuração</cfif></div>
-                      <h4 class="mb-2"<cfif VARIABLES.businessAccountsCanAdminAll> id="accountDetailModalLabel"</cfif>><cfif VARIABLES.businessAccountsCanAdminAll><cfoutput>#htmlEditFormat(qBusinessAccountEdit.nome_conta)#</cfoutput><cfelse>Equipe da conta</cfif></h4>
+                      <h4 class="mb-2"<cfif VARIABLES.businessAccountsCanAdminAll> id="accountDetailModalLabel"</cfif>><cfif VARIABLES.businessAccountsCanAdminAll><cfoutput>#encodeForHTML(qBusinessAccountEdit.nome_conta)#</cfoutput><cfelse>Equipe da conta</cfif></h4>
                       <div class="accounts-management-meta small text-muted">
                         <cfoutput>
                           <cfif VARIABLES.businessAccountsCanAdminAll>
-                            <span>Documento: #htmlEditFormat(qBusinessAccountEdit.documento)#</span>
-                            <span>Titular: #htmlEditFormat(qBusinessAccountEdit.nome_titular)#</span>
-                            <span>Status: #htmlEditFormat(qBusinessAccountEdit.status)#</span>
+                            <span>Documento: #encodeForHTML(qBusinessAccountEdit.documento)#</span>
+                            <span>Titular: #encodeForHTML(qBusinessAccountEdit.nome_titular)#</span>
+                            <span>Status: #encodeForHTML(qBusinessAccountEdit.status)#</span>
                           <cfelse>
-                            <span>#htmlEditFormat(qBusinessAccountEdit.nome_conta)#</span>
+                            <span>#encodeForHTML(qBusinessAccountEdit.nome_conta)#</span>
                           </cfif>
                           <span>#LSNumberFormat(qBusinessAccountUsers.recordcount)# usuários</span>
                           <cfif VARIABLES.businessAccountsCanAdminAll>
@@ -1501,12 +1501,12 @@
                       <cfoutput>
                         <form method="post" action="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=dados&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento">
                           <input type="hidden" name="account_action" value="salvar"/>
-                          <input type="hidden" name="id_conta" value="#htmlEditFormat(VARIABLES.accountFormId)#"/>
+                          <input type="hidden" name="id_conta" value="#encodeForHTMLAttribute(VARIABLES.accountFormId)#"/>
 
                           <div class="row g-3">
                             <div class="col-12 col-lg-6">
                               <label class="form-label">Nome da conta</label>
-                              <input class="form-control" type="text" name="nome_conta" value="#htmlEditFormat(VARIABLES.accountFormNome)#" maxlength="160" required/>
+                              <input class="form-control" type="text" name="nome_conta" value="#encodeForHTMLAttribute(VARIABLES.accountFormNome)#" maxlength="160" required/>
                             </div>
 
                             <div class="col-12 col-lg-3">
@@ -1533,22 +1533,22 @@
 
                             <div class="col-12 col-lg-4">
                               <label class="form-label">Documento</label>
-                              <input class="form-control" type="text" name="documento" value="#htmlEditFormat(VARIABLES.accountFormDocumento)#" maxlength="20" required/>
+                              <input class="form-control" type="text" name="documento" value="#encodeForHTMLAttribute(VARIABLES.accountFormDocumento)#" maxlength="20" required/>
                             </div>
 
                             <div class="col-12 col-lg-8">
                               <label class="form-label">Nome do titular</label>
-                              <input class="form-control" type="text" name="nome_titular" value="#htmlEditFormat(VARIABLES.accountFormNomeTitular)#" maxlength="200" required/>
+                              <input class="form-control" type="text" name="nome_titular" value="#encodeForHTMLAttribute(VARIABLES.accountFormNomeTitular)#" maxlength="200" required/>
                             </div>
 
                             <div class="col-12 col-lg-6">
                               <label class="form-label">E-mail principal</label>
-                              <input class="form-control" type="email" name="email_principal" value="#htmlEditFormat(VARIABLES.accountFormEmail)#" maxlength="255"/>
+                              <input class="form-control" type="email" name="email_principal" value="#encodeForHTMLAttribute(VARIABLES.accountFormEmail)#" maxlength="255"/>
                             </div>
 
                             <div class="col-12 col-lg-6">
                               <label class="form-label">Telefone principal</label>
-                              <input class="form-control" type="text" name="telefone_principal" value="#htmlEditFormat(VARIABLES.accountFormTelefone)#" maxlength="30"/>
+                              <input class="form-control" type="text" name="telefone_principal" value="#encodeForHTMLAttribute(VARIABLES.accountFormTelefone)#" maxlength="30"/>
                             </div>
 
                             <div class="col-12 d-flex flex-column flex-lg-row gap-2 justify-content-between">
@@ -1565,7 +1565,7 @@
                         <cfoutput>
                           <form method="post" action="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=dados&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento" class="mt-3" onsubmit="return confirm('Excluir esta conta? Os vínculos de usuários também serão removidos.');">
                             <input type="hidden" name="account_action" value="excluir"/>
-                            <input type="hidden" name="id_conta" value="#htmlEditFormat(VARIABLES.accountFormId)#"/>
+                            <input type="hidden" name="id_conta" value="#encodeForHTMLAttribute(VARIABLES.accountFormId)#"/>
                             <button type="submit" class="btn btn-outline-danger btn-sm">Excluir conta</button>
                           </form>
                         </cfoutput>
@@ -1577,7 +1577,7 @@
                   <div class="mb-3">
                     <h5 class="mb-1">Usuários da conta</h5>
                     <div class="text-muted small">
-                      <cfoutput>#htmlEditFormat(qBusinessAccountEdit.nome_conta)# - #LSNumberFormat(qBusinessAccountUsers.recordcount)# usuários vinculados</cfoutput>
+                      <cfoutput>#encodeForHTML(qBusinessAccountEdit.nome_conta)# - #LSNumberFormat(qBusinessAccountUsers.recordcount)# usuários vinculados</cfoutput>
                     </div>
                   </div>
 
@@ -1611,7 +1611,7 @@
                                     <select class="form-select" name="papel">
                             </cfoutput>
                                       <cfloop list="#VARIABLES.accountUserAssignablePapelList#" item="accountPapelOption">
-                                        <cfoutput><option value="#accountPapelOption#" <cfif accountPapelOption EQ "OPERADOR">selected</cfif>>#htmlEditFormat(VARIABLES.accountUserPapelLabels[accountPapelOption])#</option></cfoutput>
+                                        <cfoutput><option value="#accountPapelOption#" <cfif accountPapelOption EQ "OPERADOR">selected</cfif>>#encodeForHTML(VARIABLES.accountUserPapelLabels[accountPapelOption])#</option></cfoutput>
                                       </cfloop>
                             <cfoutput>
                                     </select>
@@ -1639,12 +1639,12 @@
                             <cfoutput>
                               <form method="get" action="./##conta-gerenciamento">
                                 <input type="hidden" name="conta_id" value="#qBusinessAccountEdit.id_conta#"/>
-                                <input type="hidden" name="busca" value="#htmlEditFormat(URL.busca)#"/>
+                                <input type="hidden" name="busca" value="#encodeForHTMLAttribute(URL.busca)#"/>
                                 <input type="hidden" name="tab" value="usuarios"/>
                                 <div class="row g-2 align-items-end">
                                   <div class="col-12 col-lg-8">
                                     <label class="form-label">Buscar usuário</label>
-                                    <input class="form-control" type="text" name="user_busca" value="#htmlEditFormat(URL.user_busca)#" placeholder="Nome, e-mail ou ID"/>
+                                    <input class="form-control" type="text" name="user_busca" value="#encodeForHTMLAttribute(URL.user_busca)#" placeholder="Nome, e-mail ou ID"/>
                                   </div>
                                   <div class="col-12 col-lg-4">
                                     <button class="btn btn-outline-warning w-100" type="submit">Buscar</button>
@@ -1670,7 +1670,7 @@
                         </cfoutput>
                                   <cfoutput query="qBusinessAccountUserSearch">
                                     <option value="#qBusinessAccountUserSearch.id#">
-                                      ## #qBusinessAccountUserSearch.id# - #htmlEditFormat(qBusinessAccountUserSearch.name)# - #htmlEditFormat(qBusinessAccountUserSearch.email)#<cfif len(trim(qBusinessAccountUserSearch.status))> - vínculo atual: #htmlEditFormat(VARIABLES.accountUserPapelLabels[qBusinessAccountUserSearch.papel])#/#qBusinessAccountUserSearch.status#</cfif>
+                                      ## #qBusinessAccountUserSearch.id# - #encodeForHTML(qBusinessAccountUserSearch.name)# - #encodeForHTML(qBusinessAccountUserSearch.email)#<cfif len(trim(qBusinessAccountUserSearch.status))> - vínculo atual: #encodeForHTML(VARIABLES.accountUserPapelLabels[qBusinessAccountUserSearch.papel])#/#qBusinessAccountUserSearch.status#</cfif>
                                     </option>
                                   </cfoutput>
                         <cfoutput>
@@ -1681,7 +1681,7 @@
                                 <select class="form-select" name="papel">
                         </cfoutput>
                                   <cfloop list="#VARIABLES.accountUserAssignablePapelList#" item="accountPapelOption">
-                                    <cfoutput><option value="#accountPapelOption#" <cfif accountPapelOption EQ "OPERADOR">selected</cfif>>#htmlEditFormat(VARIABLES.accountUserPapelLabels[accountPapelOption])#</option></cfoutput>
+                                    <cfoutput><option value="#accountPapelOption#" <cfif accountPapelOption EQ "OPERADOR">selected</cfif>>#encodeForHTML(VARIABLES.accountUserPapelLabels[accountPapelOption])#</option></cfoutput>
                                   </cfloop>
                         <cfoutput>
                                 </select>
@@ -1720,8 +1720,8 @@
                             <input type="hidden" name="id_usuario" value="#qBusinessAccountUsers.id_usuario#"/>
 
                             <div class="accounts-cell">
-                              <div class="fw-bold">#htmlEditFormat(qBusinessAccountUsers.name)#</div>
-                              <div class="small text-muted">## #qBusinessAccountUsers.id_usuario# - #htmlEditFormat(qBusinessAccountUsers.email)#</div>
+                              <div class="fw-bold">#encodeForHTML(qBusinessAccountUsers.name)#</div>
+                              <div class="small text-muted">## #qBusinessAccountUsers.id_usuario# - #encodeForHTML(qBusinessAccountUsers.email)#</div>
                               <div class="small text-muted">
                                 <cfif qBusinessAccountUsers.is_admin>ADMIN</cfif><cfif qBusinessAccountUsers.is_admin AND qBusinessAccountUsers.is_partner> / </cfif><cfif qBusinessAccountUsers.is_partner>PARTNER</cfif>
                               </div>
@@ -1731,7 +1731,7 @@
                               <label class="form-label small">Papel</label>
                               <select class="form-select form-select-sm" name="papel">
                                 <cfloop list="#VARIABLES.accountUserAssignablePapelList#" item="accountPapelOption">
-                                  <option value="#accountPapelOption#" <cfif qBusinessAccountUsers.papel EQ accountPapelOption>selected</cfif>>#htmlEditFormat(VARIABLES.accountUserPapelLabels[accountPapelOption])#</option>
+                                  <option value="#accountPapelOption#" <cfif qBusinessAccountUsers.papel EQ accountPapelOption>selected</cfif>>#encodeForHTML(VARIABLES.accountUserPapelLabels[accountPapelOption])#</option>
                                 </cfloop>
                               </select>
                             </div>
@@ -1753,14 +1753,14 @@
                         <cfelse>
                           <div class="accounts-user-row">
                             <div class="accounts-cell">
-                              <div class="fw-bold">#htmlEditFormat(qBusinessAccountUsers.name)#</div>
-                              <div class="small text-muted">## #qBusinessAccountUsers.id_usuario# - #htmlEditFormat(qBusinessAccountUsers.email)#</div>
+                              <div class="fw-bold">#encodeForHTML(qBusinessAccountUsers.name)#</div>
+                              <div class="small text-muted">## #qBusinessAccountUsers.id_usuario# - #encodeForHTML(qBusinessAccountUsers.email)#</div>
                             </div>
                             <div>
-                              <span class="accounts-status">#htmlEditFormat(VARIABLES.accountUserPapelLabels[qBusinessAccountUsers.papel])#</span>
+                              <span class="accounts-status">#encodeForHTML(VARIABLES.accountUserPapelLabels[qBusinessAccountUsers.papel])#</span>
                             </div>
                             <div>
-                              <span class="accounts-status">#htmlEditFormat(qBusinessAccountUsers.status)#</span>
+                              <span class="accounts-status">#encodeForHTML(qBusinessAccountUsers.status)#</span>
                             </div>
                           </div>
                         </cfif>
@@ -1840,9 +1840,9 @@
                               <cfoutput query="qBusinessAccountVouchers">
                                 <tr>
                                   <td class="accounts-cell">
-                                    <div class="fw-bold">#htmlEditFormat(qBusinessAccountVouchers.codigo)#</div>
+                                    <div class="fw-bold">#encodeForHTML(qBusinessAccountVouchers.codigo)#</div>
                                     <cfif len(trim(qBusinessAccountVouchers.observacao))>
-                                      <div class="small text-muted">#htmlEditFormat(qBusinessAccountVouchers.observacao)#</div>
+                                      <div class="small text-muted">#encodeForHTML(qBusinessAccountVouchers.observacao)#</div>
                                     </cfif>
                                   </td>
                                   <td>
@@ -1863,8 +1863,8 @@
                                   </td>
                                   <td class="accounts-cell">
                                     <cfif len(trim(qBusinessAccountVouchers.id_usuario_resgate))>
-                                      <div>#htmlEditFormat(qBusinessAccountVouchers.usuario_resgate_nome)#</div>
-                                      <div class="small text-muted">#htmlEditFormat(qBusinessAccountVouchers.usuario_resgate_email)#</div>
+                                      <div>#encodeForHTML(qBusinessAccountVouchers.usuario_resgate_nome)#</div>
+                                      <div class="small text-muted">#encodeForHTML(qBusinessAccountVouchers.usuario_resgate_email)#</div>
                                       <cfif len(trim(qBusinessAccountVouchers.data_resgate))>
                                         <div class="small text-muted">#dateTimeFormat(qBusinessAccountVouchers.data_resgate, "dd/mm/yyyy HH:nn")#</div>
                                       </cfif>
@@ -1920,14 +1920,14 @@
                             <form method="post" action="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=acessos##conta-gerenciamento">
                               <input type="hidden" name="account_access_action" value="salvar_permissoes"/>
                               <input type="hidden" name="id_conta" value="#qBusinessAccountEdit.id_conta#"/>
-                              <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+                              <input type="hidden" name="business_account_access_csrf" value="#encodeForHTMLAttribute(VARIABLES.businessAccountContextCsrf)#"/>
                               <div class="table-responsive mb-3">
                                 <table class="table table-sm accounts-table align-middle mb-0">
                                   <thead>
                                     <tr>
                                       <th>Capacidade</th>
                                       <cfloop list="#VARIABLES.accountUserPapelList#" item="accountAccessRole">
-                                        <th class="text-center">#htmlEditFormat(VARIABLES.accountUserPapelLabels[accountAccessRole])#</th>
+                                        <th class="text-center">#encodeForHTML(VARIABLES.accountUserPapelLabels[accountAccessRole])#</th>
                                       </cfloop>
                                     </tr>
                                   </thead>
@@ -1935,8 +1935,8 @@
                                     <cfloop query="qBusinessAccountPermissionCatalog">
                                       <tr>
                                         <td class="accounts-cell">
-                                          <code class="d-block">#htmlEditFormat(qBusinessAccountPermissionCatalog.codigo)#</code>
-                                          <span class="small text-muted">#htmlEditFormat(qBusinessAccountPermissionCatalog.descricao)#</span>
+                                          <code class="d-block">#encodeForHTML(qBusinessAccountPermissionCatalog.codigo)#</code>
+                                          <span class="small text-muted">#encodeForHTML(qBusinessAccountPermissionCatalog.descricao)#</span>
                                         </td>
                                         <cfloop list="#VARIABLES.accountUserPapelList#" item="accountAccessRole">
                                           <cfset accountAccessGrantKey = qBusinessAccountPermissionCatalog.id_permissao & ":" & accountAccessRole/>
@@ -1945,7 +1945,7 @@
                                                    type="checkbox"
                                                    name="permission_#qBusinessAccountPermissionCatalog.id_permissao#_#accountAccessRole#"
                                                    value="1"
-                                                   aria-label="#htmlEditFormat(qBusinessAccountPermissionCatalog.codigo)# para #htmlEditFormat(VARIABLES.accountUserPapelLabels[accountAccessRole])#"
+                                                   aria-label="#encodeForHTMLAttribute(qBusinessAccountPermissionCatalog.codigo)# para #encodeForHTMLAttribute(VARIABLES.accountUserPapelLabels[accountAccessRole])#"
                                                    <cfif structKeyExists(VARIABLES.accountPermissionGrantMap, accountAccessGrantKey)>checked</cfif>/>
                                           </td>
                                         </cfloop>
@@ -1971,7 +1971,7 @@
                             <form method="post" action="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=acessos##conta-gerenciamento">
                               <input type="hidden" name="account_integration_action" value="salvar"/>
                               <input type="hidden" name="id_conta" value="#qBusinessAccountEdit.id_conta#"/>
-                              <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+                              <input type="hidden" name="business_account_access_csrf" value="#encodeForHTMLAttribute(VARIABLES.businessAccountContextCsrf)#"/>
                               <div class="row g-3">
                                 <div class="col-12 col-lg-4">
                                   <label class="form-label">Client ID da API</label>
@@ -2019,13 +2019,13 @@
                                 <tbody>
                                   <cfoutput query="qBusinessAccountResultIntegrations">
                                     <tr>
-                                      <td><code>#htmlEditFormat(client_id)#</code></td>
-                                      <td><code>#htmlEditFormat(cod_timer)#</code></td>
+                                      <td><code>#encodeForHTML(client_id)#</code></td>
+                                      <td><code>#encodeForHTML(cod_timer)#</code></td>
                                       <td>
                                         <cfif abrange_contas_externas>
                                           Todas as contas externas
                                         <cfelseif len(trim(external_account_id & ""))>
-                                          <code>#htmlEditFormat(external_account_id)#</code>
+                                          <code>#encodeForHTML(external_account_id)#</code>
                                         <cfelse>
                                           Somente sem <code>external_account_id</code>
                                         </cfif>
@@ -2036,7 +2036,7 @@
                                           <input type="hidden" name="account_integration_action" value="remover"/>
                                           <input type="hidden" name="id_conta" value="#qBusinessAccountEdit.id_conta#"/>
                                           <input type="hidden" name="id_conta_integracao_resultado" value="#id_conta_integracao_resultado#"/>
-                                          <input type="hidden" name="business_account_access_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+                                          <input type="hidden" name="business_account_access_csrf" value="#encodeForHTMLAttribute(VARIABLES.businessAccountContextCsrf)#"/>
                                           <button class="btn btn-sm btn-outline-danger" type="submit">Remover</button>
                                         </form>
                                       </td>
@@ -2067,13 +2067,13 @@
                     <cfoutput>
                       <form method="get" action="./##conta-gerenciamento" class="mb-3">
                         <input type="hidden" name="conta_id" value="#qBusinessAccountEdit.id_conta#"/>
-                        <input type="hidden" name="busca" value="#htmlEditFormat(URL.busca)#"/>
-                        <input type="hidden" name="user_busca" value="#htmlEditFormat(URL.user_busca)#"/>
+                        <input type="hidden" name="busca" value="#encodeForHTMLAttribute(URL.busca)#"/>
+                        <input type="hidden" name="user_busca" value="#encodeForHTMLAttribute(URL.user_busca)#"/>
                         <input type="hidden" name="tab" value="eventos"/>
                         <div class="row g-2 align-items-end">
                           <div class="col-12 col-lg-8">
                             <label class="form-label">Buscar evento</label>
-                            <input class="form-control" type="text" name="evento_busca" value="#htmlEditFormat(URL.evento_busca)#" placeholder="Nome, tag, cidade ou ID"/>
+                            <input class="form-control" type="text" name="evento_busca" value="#encodeForHTMLAttribute(URL.evento_busca)#" placeholder="Nome, tag, cidade ou ID"/>
                           </div>
                           <div class="col-12 col-lg-4">
                             <button class="btn btn-outline-warning w-100" type="submit">Buscar</button>
@@ -2121,11 +2121,11 @@
                                     <label class="accounts-event-search-row">
                                       <input class="form-check-input" type="checkbox" name="id_evento" value="#qBusinessAccountEventSearch.id_evento#"/>
                                       <span class="accounts-cell">
-                                        <span class="fw-semibold d-block">#htmlEditFormat(qBusinessAccountEventSearch.nome_evento)#</span>
-                                        <span class="small text-muted d-block">## #qBusinessAccountEventSearch.id_evento#<cfif len(trim(qBusinessAccountEventSearch.tag))> - #htmlEditFormat(qBusinessAccountEventSearch.tag)#</cfif></span>
-                                        <span class="small text-muted d-block"><cfif isDate(qBusinessAccountEventSearch.data_inicial)>#dateFormat(qBusinessAccountEventSearch.data_inicial, "dd/mm/yyyy")#</cfif><cfif len(trim(qBusinessAccountEventSearch.cidade))> - #htmlEditFormat(qBusinessAccountEventSearch.cidade)#</cfif><cfif len(trim(qBusinessAccountEventSearch.estado))>/#htmlEditFormat(qBusinessAccountEventSearch.estado)#</cfif></span>
+                                        <span class="fw-semibold d-block">#encodeForHTML(qBusinessAccountEventSearch.nome_evento)#</span>
+                                        <span class="small text-muted d-block">## #qBusinessAccountEventSearch.id_evento#<cfif len(trim(qBusinessAccountEventSearch.tag))> - #encodeForHTML(qBusinessAccountEventSearch.tag)#</cfif></span>
+                                        <span class="small text-muted d-block"><cfif isDate(qBusinessAccountEventSearch.data_inicial)>#dateFormat(qBusinessAccountEventSearch.data_inicial, "dd/mm/yyyy")#</cfif><cfif len(trim(qBusinessAccountEventSearch.cidade))> - #encodeForHTML(qBusinessAccountEventSearch.cidade)#</cfif><cfif len(trim(qBusinessAccountEventSearch.estado))>/#encodeForHTML(qBusinessAccountEventSearch.estado)#</cfif></span>
                                       </span>
-                                      <span class="accounts-status"><cfif len(trim(qBusinessAccountEventSearch.status))>#htmlEditFormat(qBusinessAccountEventSearch.status)#<cfelse>NOVO</cfif></span>
+                                      <span class="accounts-status"><cfif len(trim(qBusinessAccountEventSearch.status))>#encodeForHTML(qBusinessAccountEventSearch.status)#<cfelse>NOVO</cfif></span>
                                     </label>
                                   </cfoutput>
                         <cfoutput>
@@ -2155,12 +2155,12 @@
                               <input type="hidden" name="id_evento" value="#qBusinessAccountEvents.id_evento#"/>
 
                               <div class="accounts-cell">
-                                <div class="fw-bold">#htmlEditFormat(qBusinessAccountEvents.nome_evento)#</div>
+                                <div class="fw-bold">#encodeForHTML(qBusinessAccountEvents.nome_evento)#</div>
                                 <div class="small text-muted">
-                                  ## #qBusinessAccountEvents.id_evento#<cfif len(trim(qBusinessAccountEvents.tag))> - #htmlEditFormat(qBusinessAccountEvents.tag)#</cfif>
+                                  ## #qBusinessAccountEvents.id_evento#<cfif len(trim(qBusinessAccountEvents.tag))> - #encodeForHTML(qBusinessAccountEvents.tag)#</cfif>
                                 </div>
                                 <div class="small text-muted">
-                                  <cfif isDate(qBusinessAccountEvents.data_inicial)>#dateFormat(qBusinessAccountEvents.data_inicial, "dd/mm/yyyy")#</cfif><cfif len(trim(qBusinessAccountEvents.cidade))> - #htmlEditFormat(qBusinessAccountEvents.cidade)#</cfif><cfif len(trim(qBusinessAccountEvents.estado))>/#htmlEditFormat(qBusinessAccountEvents.estado)#</cfif>
+                                  <cfif isDate(qBusinessAccountEvents.data_inicial)>#dateFormat(qBusinessAccountEvents.data_inicial, "dd/mm/yyyy")#</cfif><cfif len(trim(qBusinessAccountEvents.cidade))> - #encodeForHTML(qBusinessAccountEvents.cidade)#</cfif><cfif len(trim(qBusinessAccountEvents.estado))>/#encodeForHTML(qBusinessAccountEvents.estado)#</cfif>
                                 </div>
                               </div>
 
@@ -2177,16 +2177,16 @@
                           <cfelse>
                             <div class="accounts-event-row">
                               <div class="accounts-cell">
-                                <div class="fw-bold">#htmlEditFormat(qBusinessAccountEvents.nome_evento)#</div>
+                                <div class="fw-bold">#encodeForHTML(qBusinessAccountEvents.nome_evento)#</div>
                                 <div class="small text-muted">
-                                  ## #qBusinessAccountEvents.id_evento#<cfif len(trim(qBusinessAccountEvents.tag))> - #htmlEditFormat(qBusinessAccountEvents.tag)#</cfif>
+                                  ## #qBusinessAccountEvents.id_evento#<cfif len(trim(qBusinessAccountEvents.tag))> - #encodeForHTML(qBusinessAccountEvents.tag)#</cfif>
                                 </div>
                                 <div class="small text-muted">
-                                  <cfif isDate(qBusinessAccountEvents.data_inicial)>#dateFormat(qBusinessAccountEvents.data_inicial, "dd/mm/yyyy")#</cfif><cfif len(trim(qBusinessAccountEvents.cidade))> - #htmlEditFormat(qBusinessAccountEvents.cidade)#</cfif><cfif len(trim(qBusinessAccountEvents.estado))>/#htmlEditFormat(qBusinessAccountEvents.estado)#</cfif>
+                                  <cfif isDate(qBusinessAccountEvents.data_inicial)>#dateFormat(qBusinessAccountEvents.data_inicial, "dd/mm/yyyy")#</cfif><cfif len(trim(qBusinessAccountEvents.cidade))> - #encodeForHTML(qBusinessAccountEvents.cidade)#</cfif><cfif len(trim(qBusinessAccountEvents.estado))>/#encodeForHTML(qBusinessAccountEvents.estado)#</cfif>
                                 </div>
                               </div>
                               <div>
-                                <span class="accounts-status">#htmlEditFormat(qBusinessAccountEvents.status)#</span>
+                                <span class="accounts-status">#encodeForHTML(qBusinessAccountEvents.status)#</span>
                               </div>
                             </div>
                           </cfif>

@@ -1,0 +1,458 @@
+{
+  "rows": [
+    {
+      "path": "/atleta/leonardo%20muniz/",
+      "method": "GET",
+      "changed": true,
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/atleta/leonardo%20muniz/",
+      "method": "HEAD",
+      "changed": true,
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/en/athlete/leonardo%20muniz/",
+      "method": "GET",
+      "changed": true,
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/en/athlete/leonardo%20muniz/",
+      "method": "HEAD",
+      "changed": true,
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/es/atleta/leonardo%20muniz/",
+      "method": "GET",
+      "changed": true,
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/es/atleta/leonardo%20muniz/",
+      "method": "HEAD",
+      "changed": true,
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/atleta/runnerhub/",
+      "method": "GET",
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/en/athlete/runnerhub/",
+      "method": "GET",
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/es/atleta/runnerhub/",
+      "method": "GET",
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/atleta/index.cfm?tag=leonardo%20muniz",
+      "method": "GET",
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/atleta/leonardo%20muniz/?filtro=resultados",
+      "method": "GET",
+      "changed": true,
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fatleta%2Findex%2Ecfm",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/configuracoes/perfil/",
+      "method": "GET",
+      "status": 302,
+      "returncode": 0,
+      "location": "/login/?redirect=%2Fconfiguracoes%2Fperfil%2F",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/circuitocatarinense/trailrun/",
+      "method": "GET",
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Circuito Catarinense 2026: Trail Run | Road Runners",
+        "h1": "Circuito Catarinense de Trail Run\n                        \n                    ",
+        "meta": {
+          "description": "Consulte as etapas, a pontuação e a classificação de atletas no Circuito Catarinense de Trail Run 2026."
+        },
+        "canonical": [
+          "https://roadrunners.run/circuitocatarinense/trailrun/"
+        ],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Road Runners - O ponto de encontro da corrida.",
+        "h1": "\n                    Sua próxima corrida começa aqui.\n                ",
+        "meta": {
+          "description": "Descubra provas, acompanhe resultados, explore conteúdo editorial e viva a corrida com mais contexto no Road Runners."
+        },
+        "canonical": [
+          "https://roadrunners.run/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/"
+          ]
+        ]
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/estado/sp/",
+      "method": "GET",
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Corridas em São Paulo: calendário de provas | Road Runners",
+        "h1": "\n                    \n                    Corridas em São Paulo\n                ",
+        "meta": {
+          "description": "Calendário de corridas de rua e trail em São Paulo. Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+        },
+        "canonical": [
+          "https://roadrunners.run/estado/sp/"
+        ],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/evento/2026-corrida-night-run-vitoria-airport/",
+      "method": "GET",
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - corrida 20/11/2026 | Road Runners",
+        "h1": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+        "meta": {
+          "description": "CORRIDA NIGHT RUN VITÓRIA AIRPORT acontece em 20 novembro 2026, em Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES."
+        },
+        "canonical": [
+          "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+          ]
+        ]
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/evento/2025-corrida-night-run-vitoria-airport/",
+      "method": "GET",
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html;charset=UTF-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "Corrida Night Run Vitória Airport - corrida 25/10/2025 | Road Runners",
+        "h1": "Corrida Night Run Vitória Airport",
+        "meta": {
+          "description": "Corrida Night Run Vitória Airport acontece em 25 outubro 2025, em Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N - Vitória - ES."
+        },
+        "canonical": [
+          "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/"
+          ]
+        ]
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/evento/2026-costa-esmeralda-trail-2026",
+      "method": "GET",
+      "status": 301,
+      "returncode": 0,
+      "location": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+      "content_type": "text/html; charset=iso-8859-1",
+      "robots_header": "",
+      "metadata": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/en/event/2026-costa-esmeralda-trail-2026",
+      "method": "GET",
+      "status": 301,
+      "returncode": 0,
+      "location": "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+      "content_type": "text/html; charset=iso-8859-1",
+      "robots_header": "",
+      "metadata": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/es/evento/2026-costa-esmeralda-trail-2026",
+      "method": "GET",
+      "status": 301,
+      "returncode": 0,
+      "location": "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+      "content_type": "text/html; charset=iso-8859-1",
+      "robots_header": "",
+      "metadata": {
+        "title": "301 Moved Permanently",
+        "h1": "Moved Permanently",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/sitemap.xml",
+      "method": "GET",
+      "status": 200,
+      "returncode": 0,
+      "location": "",
+      "content_type": "application/xml;charset=utf-8",
+      "robots_header": "",
+      "metadata": {
+        "title": "",
+        "h1": "",
+        "meta": {},
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    },
+    {
+      "path": "/cdn-cgi/l/email-protection",
+      "method": "GET",
+      "status": 404,
+      "returncode": 0,
+      "location": "",
+      "content_type": "text/html",
+      "robots_header": "",
+      "metadata": {
+        "title": "Email Protection | Cloudflare",
+        "h1": "Email Protection",
+        "meta": {
+          "robots": "noindex, nofollow"
+        },
+        "canonical": [],
+        "alternates": []
+      },
+      "cf_error": false
+    }
+  ]
+}

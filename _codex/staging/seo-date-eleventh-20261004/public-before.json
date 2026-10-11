@@ -1,0 +1,542 @@
+[
+  {
+    "id": 39867,
+    "url": "https://roadrunners.run/evento/2026-1-corrida-q2-eventos-de-revezamento-de-americana/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 39867,
+    "url": "https://roadrunners.run/en/event/2026-1-corrida-q2-eventos-de-revezamento-de-americana/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 39867,
+    "url": "https://roadrunners.run/es/evento/2026-1-corrida-q2-eventos-de-revezamento-de-americana/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 40457,
+    "url": "https://roadrunners.run/evento/2026-mentone-run-a-identidade/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 40457,
+    "url": "https://roadrunners.run/en/event/2026-mentone-run-a-identidade/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 40457,
+    "url": "https://roadrunners.run/es/evento/2026-mentone-run-a-identidade/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 40879,
+    "url": "https://roadrunners.run/evento/2026-ardap-run-corrida-beneficente/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 40879,
+    "url": "https://roadrunners.run/en/event/2026-ardap-run-corrida-beneficente/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 40879,
+    "url": "https://roadrunners.run/es/evento/2026-ardap-run-corrida-beneficente/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 43239,
+    "url": "https://roadrunners.run/evento/2026-tricolor-run-noturna-2026-2-etapa/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 43239,
+    "url": "https://roadrunners.run/en/event/2026-tricolor-run-noturna-2026-2-etapa/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 43239,
+    "url": "https://roadrunners.run/es/evento/2026-tricolor-run-noturna-2026-2-etapa/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44863,
+    "url": "https://roadrunners.run/evento/2026-super-action-sorocaba-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44863,
+    "url": "https://roadrunners.run/en/event/2026-super-action-sorocaba-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44863,
+    "url": "https://roadrunners.run/es/evento/2026-super-action-sorocaba-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45190,
+    "url": "https://roadrunners.run/evento/2027-15k-das-praias-2027/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45190,
+    "url": "https://roadrunners.run/en/event/2027-15k-das-praias-2027/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45190,
+    "url": "https://roadrunners.run/es/evento/2027-15k-das-praias-2027/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45302,
+    "url": "https://roadrunners.run/evento/2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45302,
+    "url": "https://roadrunners.run/en/event/2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45302,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45303,
+    "url": "https://roadrunners.run/evento/2026-corrida-coronel-oliveria-junior-11-gb/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45303,
+    "url": "https://roadrunners.run/en/event/2026-corrida-coronel-oliveria-junior-11-gb/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45303,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-coronel-oliveria-junior-11-gb/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45651,
+    "url": "https://roadrunners.run/evento/2026-fla-resenha-run/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45651,
+    "url": "https://roadrunners.run/en/event/2026-fla-resenha-run/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45651,
+    "url": "https://roadrunners.run/es/evento/2026-fla-resenha-run/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45870,
+    "url": "https://roadrunners.run/evento/2026-corrida-e-caminhada-lacos-da-vida/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45870,
+    "url": "https://roadrunners.run/en/event/2026-corrida-e-caminhada-lacos-da-vida/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45870,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-lacos-da-vida/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45873,
+    "url": "https://roadrunners.run/evento/2026-16-volta-a-lagoa-da-conceicao/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45873,
+    "url": "https://roadrunners.run/en/event/2026-16-volta-a-lagoa-da-conceicao/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45873,
+    "url": "https://roadrunners.run/es/evento/2026-16-volta-a-lagoa-da-conceicao/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46585,
+    "url": "https://roadrunners.run/evento/2026-corrida-iz1-telecom/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46585,
+    "url": "https://roadrunners.run/en/event/2026-corrida-iz1-telecom/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46585,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-iz1-telecom/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46733,
+    "url": "https://roadrunners.run/evento/2026-alpha-runner-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46733,
+    "url": "https://roadrunners.run/en/event/2026-alpha-runner-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46733,
+    "url": "https://roadrunners.run/es/evento/2026-alpha-runner-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47016,
+    "url": "https://roadrunners.run/evento/2026-corrida-do-mel/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47016,
+    "url": "https://roadrunners.run/en/event/2026-corrida-do-mel/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47016,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-do-mel/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47472,
+    "url": "https://roadrunners.run/evento/2026-4-alpha-running/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47472,
+    "url": "https://roadrunners.run/en/event/2026-4-alpha-running/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47472,
+    "url": "https://roadrunners.run/es/evento/2026-4-alpha-running/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  }
+]

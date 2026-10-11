@@ -1,0 +1,24 @@
+{
+  "published": [
+    "assets/js/runner-apps-menu-lazy.min.js",
+    "assets/js/runnerhub-event-filters.min.js",
+    "assets/js/runnerhub-busca-page.min.js",
+    "assets/js/event-location-mapbox.min.js",
+    "assets/js/event-route-mapbox.min.js",
+    "assets/css/runnerhub-institutional.min.css",
+    "assets/css/event-location-mapbox.min.css",
+    "assets/css/event-route-mapbox.min.css",
+    "includes/estrutura/menu_apps.cfm",
+    "includes/estrutura/header_slim.cfm",
+    "includes/estrutura/head.cfm",
+    "busca/index.cfm",
+    "estado/index.cfm",
+    "ajuda/index.cfm",
+    "sobre/index.cfm",
+    "privacidade/index.cfm",
+    "atendimento/index.cfm",
+    "evento/index.cfm",
+    "embed/percursos/index.cfm"
+  ],
+  "backup": "/var/backups/seo-assets-20261008/baseline"
+}

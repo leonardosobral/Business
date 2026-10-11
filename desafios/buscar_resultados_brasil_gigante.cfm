@@ -14,5 +14,5 @@
 
 <!--- A busca sempre encerra dentro do backend; esta resposta cobre apenas falhas de fluxo. --->
 <cfcontent type="application/json; charset=utf-8" reset="true"/>
-<cfheader statuscode="500" statustext="Internal Server Error"/>
+<cfheader statuscode="500"/>
 <cfoutput>#serializeJSON({success=false, results=[], message="A busca nao foi inicializada."})#</cfoutput>

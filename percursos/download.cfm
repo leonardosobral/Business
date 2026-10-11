@@ -2,7 +2,7 @@
 <cfinclude template="../includes/backend/backend_login.cfm"/>
 <cfparam name="URL.id" default=""/>
 <cfparam name="URL.formato" default="original"/>
-<cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT isNumeric(URL.id)><cfheader statuscode="403" statustext="Forbidden"/><cfoutput>Acesso negado.</cfoutput><cfabort></cfif>
+<cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT isNumeric(URL.id)><cfheader statuscode="403"/><cfoutput>Acesso negado.</cfoutput><cfabort></cfif>
 <cfset VARIABLES.downloadCanViewAll = listFindNoCase("1,true,t,yes,sim,on", trim(qPerfil.is_admin & ""))
   OR listFindNoCase("1,true,t,yes,sim,on", trim(qPerfil.is_dev & ""))/>
 <cfset VARIABLES.downloadAccountIds=isDefined("VARIABLES.businessEffectiveAccountIds") ? VARIABLES.businessEffectiveAccountIds : "0"/>
@@ -41,7 +41,7 @@
     )
   </cfif>
 </cfquery>
-<cfif NOT qDownload.recordcount><cfheader statuscode="404" statustext="Not Found"/><cfoutput>Arquivo não encontrado.</cfoutput><cfabort></cfif>
+<cfif NOT qDownload.recordcount><cfheader statuscode="404"/><cfoutput>Arquivo não encontrado.</cfoutput><cfabort></cfif>
 <cfset VARIABLES.downloadRoot=""/>
 <cftry><cfset VARIABLES.downloadRoot=trim(createObject("java","java.lang.System").getenv("BUSINESS_PERCURSOS_STORAGE_PATH") & "")/><cfcatch type="any"></cfcatch></cftry>
 <cfif NOT len(VARIABLES.downloadRoot)>
@@ -55,7 +55,7 @@
   <cfset VARIABLES.downloadPath = VARIABLES.downloadRoot & "/" & VARIABLES.downloadOptimizedKey/>
   <cfif NOT fileExists(VARIABLES.downloadPath)>
     <cfset VARIABLES.downloadGeoJsonPath = VARIABLES.downloadRoot & "/" & qDownload.geojson_storage_key/>
-    <cfif NOT fileExists(VARIABLES.downloadGeoJsonPath)><cfheader statuscode="404" statustext="Not Found"/><cfoutput>Geometria normalizada não encontrada no storage.</cfoutput><cfabort></cfif>
+    <cfif NOT fileExists(VARIABLES.downloadGeoJsonPath)><cfheader statuscode="404"/><cfoutput>Geometria normalizada não encontrada no storage.</cfoutput><cfabort></cfif>
     <cflock name="business-percurso-optimized-gpx-#URL.id#" type="exclusive" timeout="60">
       <cfif NOT fileExists(VARIABLES.downloadPath)>
         <cftry>
@@ -63,7 +63,7 @@
           <cfset VARIABLES.downloadGpxService.writeGpxFromGeoJson(VARIABLES.downloadGeoJsonPath,VARIABLES.downloadPath,qDownload.percurso_nome)/>
           <cfcatch type="any">
             <cflog file="business-percursos" type="error" text="Falha ao gerar GPX otimizado do arquivo #URL.id#: #cfcatch.message# #cfcatch.detail#"/>
-            <cfheader statuscode="422" statustext="Unprocessable Entity"/><cfoutput>Não foi possível gerar o GPX otimizado.</cfoutput><cfabort>
+            <cfheader statuscode="422"/><cfoutput>Não foi possível gerar o GPX otimizado.</cfoutput><cfabort>
           </cfcatch>
         </cftry>
       </cfif>
@@ -78,7 +78,7 @@
   <cfif NOT len(VARIABLES.downloadName)><cfset VARIABLES.downloadName="percurso.arquivo"/></cfif>
   <cfset VARIABLES.downloadMime = len(trim(qDownload.mime_type & "")) ? trim(qDownload.mime_type & "") : "application/octet-stream"/>
 </cfif>
-<cfif NOT fileExists(VARIABLES.downloadPath)><cfheader statuscode="404" statustext="Not Found"/><cfoutput>Arquivo não encontrado no storage.</cfoutput><cfabort></cfif>
+<cfif NOT fileExists(VARIABLES.downloadPath)><cfheader statuscode="404"/><cfoutput>Arquivo não encontrado no storage.</cfoutput><cfabort></cfif>
 <cfheader name="Content-Disposition" value="attachment; filename=#VARIABLES.downloadName#"/>
 <cfheader name="X-Content-Type-Options" value="nosniff"/>
 <cfcontent type="#VARIABLES.downloadMime#" file="#VARIABLES.downloadPath#" reset="true"/>

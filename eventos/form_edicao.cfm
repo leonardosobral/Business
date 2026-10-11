@@ -58,9 +58,9 @@
 
 	                        <cfif isDefined("VARIABLES.adminEventoTagAdjusted") AND VARIABLES.adminEventoTagAdjusted>
 	                            <div class="alert alert-warning">
-	                                A tag <code><cfoutput>#htmlEditFormat(VARIABLES.adminEventoRequestedTag)#</cfoutput></code>
+	                                A tag <code><cfoutput>#encodeForHTML(VARIABLES.adminEventoRequestedTag)#</cfoutput></code>
 	                                já pertencia a outro evento. Este evento foi salvo com
-	                                <code><cfoutput>#htmlEditFormat(VARIABLES.adminEventoResolvedTag)#</cfoutput></code>.
+	                                <code><cfoutput>#encodeForHTML(VARIABLES.adminEventoResolvedTag)#</cfoutput></code>.
 	                            </div>
 	                        </cfif>
 

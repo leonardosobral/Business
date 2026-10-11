@@ -18,7 +18,7 @@ function stravaMapBoolean(required any value) {
 
 <cfif NOT VARIABLES.stravaMapCanExport>
     <cfcontent reset="true" type="text/plain; charset=utf-8"/>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>Acesso restrito a ADMINs e DEVs do sistema.</cfoutput>
     <cfabort/>
 </cfif>
@@ -133,14 +133,14 @@ function stravaMapBoolean(required any value) {
         <tbody>
           <cfoutput query="qStravaMaps">
             <cfset VARIABLES.stravaMapUrl = "https://www.strava.com/routes/" & trim(qStravaMaps.mapa & "") & "/export_gpx"/>
-            <tr data-search="#htmlEditFormat(lCase(qStravaMaps.nome_evento & ' ' & qStravaMaps.id_evento & ' ' & qStravaMaps.cidade & ' ' & qStravaMaps.estado & ' ' & qStravaMaps.percurso_evento & ' ' & qStravaMaps.unidade_de_medida & ' ' & qStravaMaps.mapa))#">
+            <tr data-search="#encodeForHTMLAttribute(lCase(qStravaMaps.nome_evento & ' ' & qStravaMaps.id_evento & ' ' & qStravaMaps.cidade & ' ' & qStravaMaps.estado & ' ' & qStravaMaps.percurso_evento & ' ' & qStravaMaps.unidade_de_medida & ' ' & qStravaMaps.mapa))#">
               <td>
-                <div class="event-name">#htmlEditFormat(qStravaMaps.nome_evento)#</div>
-                <div class="meta">Evento ###qStravaMaps.id_evento# · modalidade ###qStravaMaps.id_evento_percurso#<cfif isDate(qStravaMaps.data_inicial)> · #dateFormat(qStravaMaps.data_inicial, 'dd/mm/yyyy')#</cfif><cfif len(trim(qStravaMaps.cidade & ''))> · #htmlEditFormat(qStravaMaps.cidade)#<cfif len(trim(qStravaMaps.estado & ''))>/#htmlEditFormat(qStravaMaps.estado)#</cfif></cfif></div>
+                <div class="event-name">#encodeForHTML(qStravaMaps.nome_evento)#</div>
+                <div class="meta">Evento ###qStravaMaps.id_evento# · modalidade ###qStravaMaps.id_evento_percurso#<cfif isDate(qStravaMaps.data_inicial)> · #dateFormat(qStravaMaps.data_inicial, 'dd/mm/yyyy')#</cfif><cfif len(trim(qStravaMaps.cidade & ''))> · #encodeForHTML(qStravaMaps.cidade)#<cfif len(trim(qStravaMaps.estado & ''))>/#encodeForHTML(qStravaMaps.estado)#</cfif></cfif></div>
               </td>
-              <td class="distance">#htmlEditFormat(qStravaMaps.percurso_evento)# #htmlEditFormat(qStravaMaps.unidade_de_medida)#</td>
-              <td class="route-id">#htmlEditFormat(qStravaMaps.mapa)#</td>
-              <td><a class="strava-link" href="#htmlEditFormat(VARIABLES.stravaMapUrl)#" target="_blank" rel="noopener noreferrer">Abrir rota ↗</a></td>
+              <td class="distance">#encodeForHTML(qStravaMaps.percurso_evento)# #encodeForHTML(qStravaMaps.unidade_de_medida)#</td>
+              <td class="route-id">#encodeForHTML(qStravaMaps.mapa)#</td>
+              <td><a class="strava-link" href="#encodeForHTMLAttribute(VARIABLES.stravaMapUrl)#" target="_blank" rel="noopener noreferrer">Abrir rota ↗</a></td>
             </tr>
           </cfoutput>
           <cfif NOT qStravaMaps.recordcount><tr><td class="empty" colspan="4">Nenhum mapa do Strava foi encontrado.</td></tr></cfif>

@@ -1,0 +1,9 @@
+{
+  "status": "published_and_verified",
+  "events_preserved": 15,
+  "routes_preserved": 31,
+  "manual_protection": 29,
+  "dependent_tables_unchanged": 13,
+  "date_fields_unchanged": true,
+  "backup": "/var/backups/seo-date-ninth-protection-20261004"
+}

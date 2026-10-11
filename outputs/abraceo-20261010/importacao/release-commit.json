@@ -1,0 +1,373 @@
+{
+  "ACCOUNTS": [
+    {
+      "DOCUMENTO": "28674754000146",
+      "NOME_CONTA": "3LR Eventos",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 28,
+      "ID_ORIGEM": "3lr-eventos",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/3lr-eventos.jpg"
+    },
+    {
+      "DOCUMENTO": "62503087000177",
+      "NOME_CONTA": "Aclive Sports",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 29,
+      "ID_ORIGEM": "aclive-sports",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/aclive-sports.png"
+    },
+    {
+      "DOCUMENTO": "36943394000169",
+      "NOME_CONTA": "BEE SPORTS",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 30,
+      "ID_ORIGEM": "bee-sports",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/bee-sports.jpg"
+    },
+    {
+      "DOCUMENTO": "36480637000170",
+      "NOME_CONTA": "Beta Sports",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 31,
+      "ID_ORIGEM": "beta-sports",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/beta-sports.png"
+    },
+    {
+      "DOCUMENTO": "30245713000186",
+      "NOME_CONTA": "BOLT PRODUCÕES",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 32,
+      "ID_ORIGEM": "bolt-producoes",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/bolt-producoes.jpg"
+    },
+    {
+      "DOCUMENTO": "54070504000107",
+      "NOME_CONTA": "BRB Marketing Esportivo",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 33,
+      "ID_ORIGEM": "brb-marketing-esportivo",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/brb-marketing-esportivo.jpg"
+    },
+    {
+      "DOCUMENTO": "13026748000296",
+      "NOME_CONTA": "Chelso Sports",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 34,
+      "ID_ORIGEM": "chelso-sports",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/chelso-sports.jpg"
+    },
+    {
+      "DOCUMENTO": "88792965000105",
+      "NOME_CONTA": "CORPA",
+      "STATUS": "ATIVA",
+      "ID_CONTA": 6,
+      "ID_ORIGEM": "clube-dos-corredores",
+      "USUARIOS": 1,
+      "LOGO_PATH": "/assets/contas/abraceo/clube-dos-corredores.jpg"
+    },
+    {
+      "DOCUMENTO": "30704295000148",
+      "NOME_CONTA": "Corre Brasil",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 35,
+      "ID_ORIGEM": "corre-brasil",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/corre-brasil.jpg"
+    },
+    {
+      "DOCUMENTO": "55268579000160",
+      "NOME_CONTA": "Corre Paraíba",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 36,
+      "ID_ORIGEM": "corre-paraiba",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/corre-paraiba.png"
+    },
+    {
+      "DOCUMENTO": "40224688000108",
+      "NOME_CONTA": "Correr com Propósitos",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 37,
+      "ID_ORIGEM": "correr-com-propositos",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/correr-com-propositos.jpg"
+    },
+    {
+      "DOCUMENTO": "18606775000170",
+      "NOME_CONTA": "GLOBAL VITA",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 38,
+      "ID_ORIGEM": "global-vita",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/global-vita.jpg"
+    },
+    {
+      "DOCUMENTO": "32692507000140",
+      "NOME_CONTA": "Grupo STC",
+      "STATUS": "ATIVA",
+      "ID_CONTA": 1,
+      "ID_ORIGEM": "grupo-stc-eventos-ltda",
+      "USUARIOS": 6,
+      "LOGO_PATH": "/assets/contas/abraceo/grupo-stc-eventos-ltda.jpg"
+    },
+    {
+      "DOCUMENTO": "15135804000175",
+      "NOME_CONTA": "HL EVENTOS ESPORTIVOS",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 39,
+      "ID_ORIGEM": "hl-eventos-esportivos",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/hl-eventos-esportivos.jpg"
+    },
+    {
+      "DOCUMENTO": "38445093000130",
+      "NOME_CONTA": "ICE SPORTS",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 40,
+      "ID_ORIGEM": "ice-sports",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/ice-sports.jpg"
+    },
+    {
+      "DOCUMENTO": "44459412000160",
+      "NOME_CONTA": "Iguana Sports",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 41,
+      "ID_ORIGEM": "iguana-sports",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/iguana-sports.jpg"
+    },
+    {
+      "DOCUMENTO": "12234644000123",
+      "NOME_CONTA": "Jardel Moura Assessoria Esportiva",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 42,
+      "ID_ORIGEM": "jardel-moura-assessoria-esportiva",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/jardel-moura-assessoria-esportiva.png"
+    },
+    {
+      "DOCUMENTO": "27127718000108",
+      "NOME_CONTA": "L’ETAPE BRASIL",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 43,
+      "ID_ORIGEM": "letape-brasil",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/letape-brasil.jpg"
+    },
+    {
+      "DOCUMENTO": "14216548000188",
+      "NOME_CONTA": "Método Grupo Chokito",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 44,
+      "ID_ORIGEM": "metodo-grupo-chokito",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/metodo-grupo-chokito.png"
+    },
+    {
+      "DOCUMENTO": "18305726000106",
+      "NOME_CONTA": "Morro MT",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 45,
+      "ID_ORIGEM": "morro-mt",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/morro-mt.jpg"
+    },
+    {
+      "DOCUMENTO": "28416109000123",
+      "NOME_CONTA": "Mp Sports Brasil",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 46,
+      "ID_ORIGEM": "mp-sports-brasil",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/mp-sports-brasil.jpeg"
+    },
+    {
+      "DOCUMENTO": "07787987000185",
+      "NOME_CONTA": "Noblu Sports",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 47,
+      "ID_ORIGEM": "noblu-sports",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/noblu-sports.jpg"
+    },
+    {
+      "DOCUMENTO": "07120464000180",
+      "NOME_CONTA": "Oxe Eventos",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 48,
+      "ID_ORIGEM": "oxe-eventos",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/oxe-eventos.png"
+    },
+    {
+      "DOCUMENTO": "35507828000115",
+      "NOME_CONTA": "PDA Esportes",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 49,
+      "ID_ORIGEM": "pda-esportes",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/pda-esportes.png"
+    },
+    {
+      "DOCUMENTO": "46478807000135",
+      "NOME_CONTA": "Podium Chip",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 50,
+      "ID_ORIGEM": "podium-chip",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/podium-chip.png"
+    },
+    {
+      "DOCUMENTO": "50456213000109",
+      "NOME_CONTA": "SBS Sports",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 51,
+      "ID_ORIGEM": "sbs-sports",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/sbs-sports.png"
+    },
+    {
+      "DOCUMENTO": "29086536000153",
+      "NOME_CONTA": "Seven Eco",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 52,
+      "ID_ORIGEM": "seven-eco",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/seven-eco.jpg"
+    },
+    {
+      "DOCUMENTO": "49589078000182",
+      "NOME_CONTA": "Sportsland",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 53,
+      "ID_ORIGEM": "sportsland",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/sportsland.jpg"
+    },
+    {
+      "DOCUMENTO": "47234721000120",
+      "NOME_CONTA": "SuperAção Eventos",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 54,
+      "ID_ORIGEM": "superacao-eventos",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/superacao-eventos.png"
+    },
+    {
+      "DOCUMENTO": "13774425000108",
+      "NOME_CONTA": "Top Chip",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 55,
+      "ID_ORIGEM": "top-chip",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/top-chip.jpg"
+    },
+    {
+      "DOCUMENTO": "27208401000198",
+      "NOME_CONTA": "Tour da Roça",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 56,
+      "ID_ORIGEM": "tour-da-roca",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/tour-da-roca.jpg"
+    },
+    {
+      "DOCUMENTO": "32910273000160",
+      "NOME_CONTA": "TR Crono",
+      "STATUS": "ATIVA",
+      "ID_CONTA": 9,
+      "ID_ORIGEM": "trcrono",
+      "USUARIOS": 1,
+      "LOGO_PATH": "/assets/contas/abraceo/trcrono.png"
+    },
+    {
+      "DOCUMENTO": "72818198000126",
+      "NOME_CONTA": "TVCOM Running",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 57,
+      "ID_ORIGEM": "tvcom-running",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/tvcom-running.jpg"
+    },
+    {
+      "DOCUMENTO": "17332526000171",
+      "NOME_CONTA": "Uhuw Eventos",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 58,
+      "ID_ORIGEM": "uhuw-eventos",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/uhuw-eventos.png"
+    },
+    {
+      "DOCUMENTO": "34622939000100",
+      "NOME_CONTA": "UNLIMITED",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 59,
+      "ID_ORIGEM": "unlimited",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/unlimited.jpg"
+    },
+    {
+      "DOCUMENTO": "33591994000117",
+      "NOME_CONTA": "Vega Sports",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 60,
+      "ID_ORIGEM": "vega-sports",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/vega-sports.png"
+    },
+    {
+      "DOCUMENTO": "23909601000117",
+      "NOME_CONTA": "Vida Sport",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 61,
+      "ID_ORIGEM": "vida-sport",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/vida-sport.png"
+    },
+    {
+      "DOCUMENTO": "68245814000120",
+      "NOME_CONTA": "Voa Esportes",
+      "STATUS": "ATIVA",
+      "ID_CONTA": 27,
+      "ID_ORIGEM": "voa-esportes",
+      "USUARIOS": 2,
+      "LOGO_PATH": "/assets/contas/abraceo/voa-esportes.png"
+    },
+    {
+      "DOCUMENTO": "13568552000142",
+      "NOME_CONTA": "Wine Run Brasil",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 62,
+      "ID_ORIGEM": "wine-run-brasil",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/wine-run-brasil.png"
+    },
+    {
+      "DOCUMENTO": "07265942000140",
+      "NOME_CONTA": "X3M ENTRETENIMENTO LTDA",
+      "STATUS": "PENDENTE",
+      "ID_CONTA": 63,
+      "ID_ORIGEM": "x3m-entretenimento-ltda",
+      "USUARIOS": 0,
+      "LOGO_PATH": "/assets/contas/abraceo/x3m-entretenimento-ltda.jpg"
+    },
+    {
+      "DOCUMENTO": "03574107000131",
+      "NOME_CONTA": "Yescom",
+      "STATUS": "ATIVA",
+      "ID_CONTA": 7,
+      "ID_ORIGEM": "yescom",
+      "USUARIOS": 1,
+      "LOGO_PATH": "/assets/contas/abraceo/yescom.png"
+    }
+  ]
+}

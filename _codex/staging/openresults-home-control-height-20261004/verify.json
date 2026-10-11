@@ -1,0 +1,10 @@
+{
+  "url": "https://openresults.run/",
+  "before": {"state_height":34.625,"city_height":42.9453125},
+  "desktop": {"viewport_width":1280,"scroll_width":1280,"state_height":44,"city_height":44,"state_top":457.0390625,"city_top":457.0390625},
+  "mobile": {"viewport_width":390,"scroll_width":390,"state_height":44,"city_height":44,"state_top":233.34375,"city_top":233.34375},
+  "city_search": {"query":"Salvador","href":"/estado/ba/?rua=true&trail=true&cidade=salvador","label":"Salvador - BA, 334 provas no histórico"},
+  "city_menu_open_close": "passed",
+  "browser_console_errors": [],
+  "viewport_override_reset": true
+}

@@ -1,0 +1,882 @@
+﻿<!-- USANDO CACHE /home/korremai/public_html/session/04102026_www_korremais_com_evento_1_corrida_ab_run.html -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+        <title>KorreMais</title>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="KorreMais">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://www.korremais.com/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="https://www.korremais.com/styles/bootstrap-4.1.2/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.korremais.com/styles/estrutura.css">
+    <link rel="stylesheet" type="text/css" href="https://www.korremais.com/styles/responsive.css">
+    <link rel="stylesheet" type="text/css" href="https://www.korremais.com/styles/korremais/style.css">
+    <link rel="stylesheet" type="text/css" href="https://www.korremais.com/styles/korremais/geral.css?data=030414">
+    <style>
+        .modal {
+            text-align: center;
+            padding: 0!important;
+        }
+        .modal:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -4px;
+        }
+        .modal-dialog {
+            display: inline-block;
+            text-align: left;
+            vertical-align: middle;
+        }
+        .navbar-nav .nav-item .nav-link{
+            padding: 1.1em 1em!important;
+            letter-spacing: 1px;
+            color: var(--color_menu_link_top);
+            /*font-weight: lighter;*/
+        }
+        .nav-link:hover{
+            color:red;
+        }
+        .navbar-expand-md .navbar-nav .dropdown-menu{
+            border-top:3px solid red;
+        }
+        .dropdown-item{
+            font-size:90%;
+        }
+        .dropdown-item:hover{
+            background-color:#EEE;
+            color:red;
+            font-size:90%;
+        }
+        nav{
+            -webkit-transition: padding-top .3s,padding-bottom .3s;
+            -moz-transition: padding-top .3s,padding-bottom .3s;
+            transition: padding-top .3s,padding-bottom .3s;
+            border: none;
+        }
+        /* mobile view */
+        @media (max-width:500px)
+        {
+            .navbar-nav{
+                background-color:var(--background_button_eventos);
+                border-top:3px solid #fed136;
+                color:red;
+                z-index:1;
+                margin-top:5px;
+            }
+            .navbar-nav .nav-item .nav-link{
+                padding: 0.7em 1em!important;
+                font-size: 100%;
+                font-weight: 500;
+            }
+        }
+        @media (max-width:768px){
+            .banner-text{
+                padding:150px 0 150px 0;
+            }
+        }
+        @media all and (min-width: 992px) {
+            .navbar .nav-item .dropdown-menu{ display: none; }
+            .navbar .nav-item:hover .nav-link{ color: #fff;  }
+            .navbar .nav-item:hover .dropdown-menu{ display: block; }
+            .navbar .nav-item .dropdown-menu{ margin-top:0; }
+        }
+        .navbar-nav .nav-item .nav-link {
+            letter-spacing:0.5px;
+            color:var(--color_menu_link_top,yellow);
+            font-weight: lighter;
+            font-size:95%;
+            background-color:var(--background_header_top,#EEE);
+        }
+        .navbar-toggler{
+            background-color:var(--color-base-cliente,#FFF);
+            color:var(--color_menu_link_top,#FFF);
+        }
+        </style>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+</head>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="myModalPagamento">
+    <div class="modal-header" style="display:none">
+        <button id="btnOpenModalTransicaoClose" type="button" class="close" data-dismiss="modal" aria-label="Fechar">X</button>
+    </div>
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" style="background-color:transparent;border:none">
+            <div class="load" style="padding:20px;background-color:transparent"><i class="fa fa-cog fa-spin fa-5x fa-fw" style="color:black"></i></div>
+        </div>
+    </div>
+</div>
+
+<button id="btnOpenModalTransicao" type="button" data-toggle="modal" data-target="#myModalPagamento" data-backdrop="static" style="display:none"></button>
+<div class="modal fade" name="mensagemRetorno" id="mensagemRetorno" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <div class="modal-dialog modal-lg" role="document">
+                    <table style="width:100%" border="0">
+                        <tr>
+                            <td style="text-align:center;padding:10px">
+                                <i class="fa fa-exclamation-triangle fa-4x" aria-hidden="true" style="color:red"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="div-modal-mensagem-retorno" name="div-modal-mensagem-retorno" style="float:left"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" name="imagemodal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <img src="" class="imagepreview" style="width: 100%;" >
+            </div>
+        </div>
+    </div>
+</div><link rel="stylesheet" type="text/css" href="https://www.korremais.com/styles/abas-evento.css">
+<link rel="stylesheet" type="text/css" href="https://www.korremais.com/styles/ziehharmonika.css">
+<style>
+    .css_div_organizador {
+        padding-bottom:10px;
+        padding-top:10px;
+        color: #666;
+        font-weight:lighter;
+        text-decoration: none;
+    }
+    p{
+        font-family: Tahoma;
+        font-size: 14px;
+        color: #1b1b1b;
+    }
+    .btn-resultado{
+        color:white;
+        background-color:#00aa88;
+        border:none;
+        border-radius:30px;
+        padding:15px;
+        font-weight:lighter;
+        margin-right:10px;
+        margin-bottom:10px;
+    }
+    .btn-resultado:hover{
+        background-color:#00aa00;
+        cursor:pointer;
+    }
+    .class-icone-download:hover{
+        color:#EEE;
+    }
+    .class-icone-download{
+        font-size:100px;
+        color:#2b66c9;
+        padding-top:15px;
+    }
+    .button-resultados:hover{background-color:#666;cursor:pointer}
+    .button-resultados{border:none;padding:10px;width:100%;color:#fff;background-color:var(--background_button_eventos,#ccc)}
+    @media screen and (max-width:650px){
+        .espacador-menu-corpo {
+            height: 50px;
+        }
+    }
+    @media screen and (min-width:651px){
+        .espacador-menu-corpo {
+            height:80px;
+        }
+    }
+    </style>
+
+<body>
+<div class="modal fade" id="ModalListResultados" tabindex="-1" role="dialog" aria-labelledby="ModalListResultados" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Regulamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="divListResultados"></div>
+        </div>
+    </div>
+</div>
+
+<div class="super_container">
+    <!-- Menu -->
+    <div class="menu trans_500">
+        
+<style>.menu_item{height:40px;border-bottom:1px #EEE dotted}
+.menu {position: fixed;width: 100vw;height: 100vh;background:var(--background_button_cadastro_novidades,tomato);z-index: 101;opacity: 0;visibility: hidden;}
+</style>
+<div class="menu_content d-flex flex-column align-items-center justify-content-center" style="text-align: left">
+    <div class="menu_close_container"><div class="menu_close"></div></div>
+    <br>
+    <br>
+    <br>
+
+    <!-- <form action="https://www.korremais.com/eventos" class="menu_search_form" method="post"> -->
+        <input type="text" class="menu_search_input" placeholder="Search" required="required" id="input-pesquisa-geral-celular" name="input-pesquisa-geral-celular" style="border-radius:5px">
+        <button class="menu_search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <ul>
+            <li class="menu_item"><a href="https://www.korremais.com/eventos">Eventos</a></li><li class="menu_item"><a href="https://www.korremais.com/resultados-eventos">Resultados</a></li><li class="menu_item"><a href="https://www.korremais.com/minha-conta">Minha Conta</a></li>            <li class="menu_item" style="border:none"><br></li>
+        </ul>
+    <!-- </form> -->
+</div>
+<!-- MENU_PHONE2 -->
+        <!--
+<div class="menu_social">
+    <ul>
+        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+    </ul>
+</div>
+-->
+    </div>
+
+    <!-- Home -->
+    <div class="home">
+        <!-- Header -->
+        <header style="background-color:var(--background_header_top,#000);color:#FFF">
+<div class="container">
+    <div class="row" style="">
+        <nav class="navbar navbar-expand-lg navbar-dark col-12">
+            <a class="navbar-brand" href="https://www.korremais.com"><img src="https://www.korremais.com/images/logo_korremais.png" style="max-width:150px"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://www.korremais.com/eventos" target="_self">Eventos</a></li><li class="nav-item"><a class="nav-link" href="https://www.korremais.com/resultados-eventos" target="_self">Resultados</a></li><li class="nav-item"><a class="nav-link" href="https://www.korremais.com/minha-conta" target="_self">Minha Conta</a></li>                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+</header>
+
+        <div class="espacador-menu-corpo"></div>
+
+        <div class="home_container">
+            <div class="container">
+                <div class="row">
+                    <script>
+    function openNewPaginaMenu(url) {
+        $('#btnOpenModalTransicao').trigger('click');
+        window.location.href = url;
+    }
+    var listRegulamento = [];
+    onload = function() {
+        $("#btn-cabecalho-voltar").on('click', function(){
+            $('#btnOpenModalTransicao').trigger('click');
+            window.location.href = 'https://www.korremais.com/eventos';
+        });
+        $("#btn-cabecalho-inscricao").on('click', function(){
+            $('#btnOpenModalTransicao').trigger('click');
+            window.location.href = 'https://www.korremais.com/login/1-corrida-ab-run';
+        });
+        $("#btn-cabecalho-inscritos").on('click', function(){
+            $('#btnOpenModalTransicao').trigger('click');
+            window.location.href = 'https://www.korremais.com/inscritos/1-corrida-ab-run';
+        });
+        $("#btn-cabecalho-segunda-via").on('click', function(){
+            $('#btnOpenModalTransicao').trigger('click');
+            window.location.href = 'https://www.korremais.com/segunda-via/1-corrida-ab-run';
+        });
+        $("#btn-cabecalho-resultados").on('click', function(){
+            $('#btnOpenModalTransicao').trigger('click');
+            window.location.href = 'https://www.korremais.com/resultado-evento/1-corrida-ab-run';
+        });
+    };
+    function validate(){
+        alert(1)
+    }
+</script>
+<style>
+            .class-container-acao-principal{display:block;}
+        .class-container-acao-onsportsoficial{display:none;}
+        .btn-inscricao-onsport:hover{
+        background-color:#000;
+        cursor:pointer;
+    }
+    .btn-inscricao-onsport{
+        background-color:#dc6b00;
+        color:#FFF;
+        padding:25px;
+        width:100%;
+        border:none;
+        border-radius:5px;
+        font-size:120%;
+        font-weight:lighter
+    }
+    .btn-inscricao{
+        width:100%;
+        border-left:1px #FFF solid;
+        text-transform:uppercase;
+        text-align:center;
+    }
+    .btn-icon-split {
+        padding: 0;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: stretch;
+        justify-content: center;
+    }
+    .span_btn_menu{
+        padding-top:10px;
+        padding-left:10px;
+        width:100%;
+        text-align:left;
+        text-transform:uppercase;
+        background-color:tomato;
+    }
+    .btn-localizacao:hover{
+        background-color:#666;
+        cursor:pointer;
+        color:#FFF;
+    }
+    .btn-localizacao{
+        background-color:#cde2cc;
+        color:green;
+        padding:15px;
+        border:none;
+        border-radius:5px;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-xd-12 col-md-5 col-lg-5" style="padding-bottom:10px">
+            <div class="zoom"><img onclick="openModalImageCapa('https://www.korremais.com/painel/upload/img/inscricao/thumb/img-090-29092026184121-723d8c61fce870c3474d080313a4a2fd.png')" class="img-capa-evento img-thumbnail" src="https://www.korremais.com/painel/upload/img/inscricao/thumb/img-090-29092026184121-723d8c61fce870c3474d080313a4a2fd.png" width="100%"></div>
+        </div>
+        <div class="col-xd-12 col-md-7 col-lg-7">
+            <div><h3>1ª CORRIDA AB RUN</h3></div>
+            <div class="section_subtitle">Corrida de Rua</div>
+            <br>
+            <br>
+            <table style="padding:0;margin:0;width:100%" border="5">
+                <tr>
+                    <td width="30px">
+                        <i style="width:60px;color:#CCC;font-size:40px;float:left;padding-right:10px" class="fa fa-map-o"></i>
+                    </td>
+                    <td>
+                        <div style="float:left;color:#666;font-weight:normal;border-left:2px solid #CCC;padding-left:10px;font-size:110%">
+                            Lages<br>SC                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <BR>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i style="width:60px;color:#CCC;font-size:46px;float:left;padding-right:10px" class="fa fa-calendar"></i>
+                    </td>
+                    <td>
+                        <div style="float:left;color:#666;font-weight:normal;border-left:2px solid #CCC;padding-left:10px;font-size:110%">
+                            📍 AB Bike & Fitness Av. Pres. Vargas, 931 - Coral, Lages - SC, CEP 88508-110<br>29/11/2026 - 08:00h                        </div>
+                    </td>
+                </tr>
+
+                                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr>
+                        <td>
+                            <i style="width:60px;color:#CCC;font-size:46px;float:left;padding-right:10px" class="fa fa-gift"></i>
+                        </td>
+                        <td>
+                            <div style="float:left;color:#666;font-weight:normal;border-left:2px solid #CCC;padding-left:10px;font-size:110%">
+                                 <span style="color:#000">Entrega de Kits:</span><br> Sábado, 28/11/2026: das 09h00 às 15h00 — AB Bike e Fitness, Av. Pres. Vargas, 931, Coral, Lages/SC. Domingo, 29/11/2026: das 06h30 às 07h15 — 📍 AB Bike & Fitness Av. Pres. Vargas, 931 - Coral, Lages - SC, CEP 88508-110                            </div>
+                        </td>
+                    </tr>
+                
+                                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr>
+                        <td>
+                            <i style="width:60px;color:#CCC;font-size:46px;float:left;padding-right:10px" class="fa fa-home"></i>
+                        </td>
+                        <td>
+                            <div style="float:left;color:#666;font-weight:normal;border-left:2px solid #CCC;padding-left:10px;font-size:110%">
+                                <span style="color:#000">Venda presencial de ingressos:</span><br> AB Bike & Fitness                            </div>
+                        </td>
+                    </tr>
+                
+                            </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="container class-container-acao-onsportsoficial" style="margin-top:30px;margin-bottom:30px">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <a href="https://www.korremais.com/login/1-corrida-ab-run"> <button class="btn-inscricao-onsport" > <i class="fa fa-check-circle-o" aria-hidden="true"></i> INSCREVA-SE </button> </a>
+                    </div>
+    </div>
+</div>
+
+<div class="container class-container-acao-principal" style="margin-top:30px;margin-bottom:30px">
+    <div class="row">
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3" style="margin-bottom:10px">
+            <a class="text-decoration-none" href="https://www.korremais.com/login/1-corrida-ab-run">
+                <div class="card">
+                    <img src="https://www.korremais.com/images/ic-qualidade-blue-56.svg" alt="card-image-1" class="img-category">
+                    <div class="doubt-title">INSCREVA-SE</div>
+                </div>
+            </a>
+        </div>
+
+        
+            <div class="col-6 col-sm-6 col-md-3 col-lg-3" style="margin-bottom:10px">
+                <a class="text-decoration-none" href="javascript:alert('Lista de inscritos não disponível!')">
+                    <div class="card">
+                        <img src="https://www.korremais.com/images/ic-vendas-loja-blue-56.svg" alt="card-image-1" class="img-category">
+                        <div class="doubt-title">LISTA DE INSCRITOS</div>
+                    </div>
+                </a>
+            </div>
+
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3" style="margin-bottom:10px">
+            <a class="text-decoration-none" href="https://www.korremais.com/painel/upload/doc/inscricao/doc-090-29092026183029-6f5b37376322e7e1b2871c7f40b182f7.pdf" target="documento_14">
+                    <div class="card">
+                        <img src="https://www.korremais.com/images/ic-acesso-admin-blue-56.svg" alt="card-image-1" class="img-category">
+                        <div class="doubt-title">REGULAMENTO</div>
+                    </div>
+            </a>
+        </div>
+
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3" style="margin-bottom:10px">
+            <a class="text-decoration-none" href="https://www.korremais.com/minha-conta">
+                <div class="card">
+                    <img style="max-width:75px" src="https://www.korremais.com/images/usuario.svg" alt="card-image-1" class="img-category">                    <div class="doubt-title">MINHA CONTA</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+                    <div class="col-xd-12 col-md-12 col-lg-12">
+                        
+                        
+                        <div class="tab_container" style="padding-top:0px">
+                            <div class="ziehharmonika">
+                                                                                                    <h3><i class="fa fa fa-list" aria-hidden="true"></i> Preços e Categorias </h3>
+                                    <div style="font-size:14px;font-family:Tahoma;color:#333">
+                                        <table border="1" style="width:100%"><tr><td colspan="2" style="padding:8px"><br><b>5KM</b> </td></tr><tr><td style="white-space: nowrap;padding:8px;border-bottom: 1px solid #EEE;width:20%;">R$ 95,00 </td><td style="padding:8px;border-bottom: 1px solid #EEE;border-left: 1px solid #EEE;color:#000">5KM GERAL (KIT COM CAMISETA) </td></tr><tr><td style="white-space: nowrap;padding:8px;border-bottom: 1px solid #EEE;width:20%;">R$ 75,00 </td><td style="padding:8px;border-bottom: 1px solid #EEE;border-left: 1px solid #EEE;color:#000">5KM GERAL (KIT SEM CAMISETA) </td></tr><tr><td style="white-space: nowrap;padding:8px;border-bottom: 1px solid #EEE;width:20%;">R$ 60,00 </td><td style="padding:8px;border-bottom: 1px solid #EEE;border-left: 1px solid #EEE;color:#000">PCD 5KM - KIT COM CAMISETA </td></tr><tr><td style="white-space: nowrap;padding:8px;border-bottom: 1px solid #EEE;width:20%;">R$ 40,00 </td><td style="padding:8px;border-bottom: 1px solid #EEE;border-left: 1px solid #EEE;color:#000">PCD 5KM - KIT SEM CAMISETA </td></tr><tr><td style="white-space: nowrap;padding:8px;border-bottom: 1px solid #EEE;width:20%;">R$ 80,00 </td><td style="padding:8px;border-bottom: 1px solid #EEE;border-left: 1px solid #EEE;color:#000">5KM PERNAS SOLIDÁRIAS - SEM CHIP </td></tr><tr><td colspan="2" style="padding:8px"><br><b>KIDS</b> </td></tr><tr><td style="white-space: nowrap;padding:8px;border-bottom: 1px solid #EEE;width:20%;">R$ 40,00 </td><td style="padding:8px;border-bottom: 1px solid #EEE;border-left: 1px solid #EEE;color:#000">KIDS </td></tr><tr><td colspan="2" style="font-size:90%;padding:8px;"><br>*Taxa de transação bancária será adicionada</td></tr><tr> <td colspan="2" style="font-size:90%;padding:8px;"><i style="color:red" class="fa fa-plus-circle" aria-hidden="true"></i> 12.00% Cartão de Crédito</td></tr><tr> <td colspan="2" style="font-size:90%;padding:8px;"><i style="color:red" class="fa fa-plus-circle" aria-hidden="true"></i> 10.00% Pix</td></tr></table>                                    </div>
+                                
+                                                                    <h3><i class="fa fa-download" aria-hidden="true"></i> Documentos</h3>
+                                    <div>
+                                        <div style="padding-bottom:10px;padding-top:5px"> 
+                                                            <div style="display:inline-block;width:120px"> <a target="030414" href="https://www.korremais.com/painel/upload/doc/inscricao/doc-090-29092026183029-6f5b37376322e7e1b2871c7f40b182f7.pdf"><i class="fa fa-download class-icone-download" aria-hidden="true"></i></a></div>
+                                                            <div style="display:inline-block">Arquivo: <b>doc-090-29092026183029-6f5b37376322e7e1b2871c7f40b182f7.pdf</b><br> Documento 1<br><span style="font-size:80%">*Para fazer o download clique sobre o ícone <i class="fa fa-download" aria-hidden="true"></i></span></br></div>
+                                                         </div>                                    </div>
+                                
+
+                                
+                                
+                                
+                            </div>
+                        </div>
+                        
+                        <div><style> @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@500&family=Quicksand:wght@500&display=swap'); </style>
+<style> @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap'); </style>
+<style>
+    .fonte{
+        font-family: 'Fjalla One', sans-serif;	 
+        line-height:2.8;
+    }
+	.font-alerta-aguardando{
+        font-family: 'Fjalla One', sans-serif;	    
+        text-align:center;
+        font-size:50px;
+        color:#CCC;
+        line-height:2;
+        margin-top:40px;
+	}
+	body{
+		margin:0px;
+		padding:0px;
+	}
+	.table-principal{
+		font-family: 'IBM Plex Sans Arabic', sans-serif;
+		font-family: 'Quicksand', sans-serif;
+		width:100%;
+		padding:0px;
+		margin:0px;
+	}
+
+	.table-principal > tbody > tr > td{
+		line-height: 25px;
+		font-size:13px;
+	}
+
+	.span-titulo{
+		font-weight:bold;
+		font-size:110%;
+	}
+	.span-sub-titulo{
+		font-weight:bold;
+		font-size:100%;
+	}
+	.span-sub-sub-titulo{
+		font-weight:bold;
+		font-size:90%;
+		color:rebeccapurple;
+	}
+	.span-sub-sub-titulo-red{
+		font-weight:bold;
+		font-size:90%;
+		color:red;
+	}
+	.span-sub-titulo-green{
+		font-weight:bold;
+		font-size:100%;
+		color:blue;
+	}
+.table-size-shirt > tbody > tr > td{padding:10px;border:1px solid #CCC}
+.table-size-shirt > tbody > tr > th{padding:10px;border:1px solid #CCC}
+
+fieldset{
+    border:1px solid #CCC;
+    border-radius:4px;
+    PADDING:10PX;
+    display: block;
+    line-height:2.8;
+}
+legend{
+ width: auto;
+     text-transform:uppercase;
+}
+hr{
+border-top:1px dotted #EEE;
+}
+</style>
+
+<!--
+<div class="font-alerta-aguardando">AGUARDE A ABERTURA DAS INSCRIÇÕES!<br>
+EM BREVE TODAS AS INFORMAÇÕES!<div>
+-->
+
+<div class="fonte" style="background-color:#000;color:blue;padding:20px;text-align:left;border-radius:3px">
+Para ter acesso a todas informações do evento acesse a aba DOCUMENTOS e faça o download do regulamento. <br>
+</div>
+<br>
+
+<table class="table-principal">
+
+	<tr>
+		<td><p></p><p></p><p></p><p>
+</p><fieldset><legend> <span class="span-sub-titulo-green">  1ª CORRDA AB RUN 2026 </span> </legend>
+DATA: 29/11/2026<br>
+HORÁRIO: 08:00h <br>
+CIDADE: LAGES - SC<br>Endereço: <span style="background-color: rgb(246, 249, 250); color: rgb(102, 102, 102); font-family: sans-serif; font-size: 15.4px;">AB Bike e Fitness, Av. Pres. Vargas, 931, Coral, Lages/SC</span></fieldset>
+<br>
+
+<fieldset><legend> <span class="span-sub-titulo-green"> DISTÂNCIAS
+   </span> </legend>
+- 5KM<br>- Kids</fieldset><p></p><p>
+<br>
+</p><fieldset><legend> <span class="span-sub-titulo-green">  KITS
+   </span> </legend>
+KIT SEM CAMISA:<br>
+- Chip<br>
+- Número de peito<br>
+- Seguro<br>
+- Medalha finisher<r>
+- Hidratatação<br>
+- Frutas<hr>
+KIT COM CAMISETA:<br>
+- Camiseta<br>
+- Chip<br>
+- Número de peito<br>
+- Seguro<br>
+- Medalha finisher<r>
+- Hidratatação<br>
+- Frutas
+</r></r></fieldset><br>
+
+<fieldset><legend> <span class="span-sub-titulo-green"> ENTREGA DE KITS
+   </span> </legend><p class="MsoListParagraph" style="margin-top:9.45pt;margin-right:0cm;margin-bottom:
+0cm;margin-left:20.9pt;margin-bottom:.0001pt;text-indent:-20.9pt;mso-list:l0 level1 lfo1;
+tab-stops:20.9pt"><!--[if !supportLists]--><span lang="PT" style="font-family:Wingdings;
+mso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings">l</span><strong>📦 ENTREGA DOS KITS</strong></p><p><strong>📅 28/11 (Sábado)</strong><br>🕘 <strong>09h00 às 15h00</strong><br>📍 <strong>AB Bike & Fitness</strong><br><strong>Av. Pres. Vargas, 931 - Coral, Lages - SC, CEP 88508-110</strong></p><p><strong>📅 29/11 (Domingo – Dia da prova)</strong><br>🕘 <strong>06h30 às 07h15</strong><br>📍 <span style="font-weight: bolder;">AB Bike & Fitness</span><br><span style="font-weight: bolder;">Av. Pres. Vargas, 931 - Coral, Lages - SC, CEP 88508-110</span></p><p><strong>📍 LOCAL DA PROVA</strong><br>📍 <span style="font-weight: bolder;">AB Bike & Fitness</span><br><span style="font-weight: bolder;">Av. Pres. Vargas, 931 - Coral, Lages - SC, CEP 88508-110</span></p></fieldset><p></p><p></p><fieldset><span style="color: rgb(0, 0, 255); font-size: 21px; font-weight: 700; text-transform: uppercase;">largadas </span></fieldset><p></p><p></p><fieldset>08:00h – Largada 5km  (com chip)<br>09:3<span style="-webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;">0 - Largada corrida KIDS</span></fieldset><br>
+
+
+<p></p><p></p><p></p><p></p></td>
+	</tr>
+
+	</table></div><br><br>
+                                <div class="alert alert-info">
+                                <h5 style="color:#000;font-size:110%"><i class="fa fa-trophy" aria-hidden="true" style="color:green"></i> Premiação</h5>
+                                <hr class="message-inner-separator">
+                                <div><div class="WordSection1">
+
+<p class="MsoListParagraph" style="margin-top:2.3pt;margin-right:0cm;margin-bottom:
+0cm;margin-left:62.9pt;margin-bottom:.0001pt;text-indent:-20.85pt;mso-list:
+l0 level4 lfo1;tab-stops:62.9pt"><!--[if !supportLists]--></p><p class="MsoListParagraph" style="margin-top:2.3pt;margin-right:0cm;margin-bottom:
+0cm;margin-left:62.9pt;margin-bottom:.0001pt;text-indent:-20.85pt;mso-list:
+l0 level4 lfo1;tab-stops:62.9pt"><!--[if !supportLists]--></p><p class="MsoListParagraph" style="margin-top:2.3pt;margin-right:0cm;margin-bottom:
+0cm;margin-left:62.9pt;margin-bottom:.0001pt;text-indent:-20.85pt;mso-list:
+l0 level4 lfo1;tab-stops:62.9pt"><!--[if !supportLists]--></p><p>🏆 Classificação Geral – 10 troféus</p><ul><li><p>Masculino: 1º ao 5º</p></li><li><p>Feminino: 1º ao 5º</p></li></ul><p>🏆 Faixas Etárias – 66 troféus</p><ul><li><p>14 a 24 anos – Masculino e Feminino (1º ao 3º)</p></li><li><p>25 a 29 anos – Masculino e Feminino (1º ao 3º)</p></li><li><p>30 a 34 anos – Masculino e Feminino (1º ao 3º)</p></li><li><p>35 a 39 anos – Masculino e Feminino (1º ao 3º)</p></li><li><p>40 a 44 anos – Masculino e Feminino (1º ao 3º)</p></li><li><p>45 a 49 anos – Masculino e Feminino (1º ao 3º)</p></li><li><p>50 a 54 anos – Masculino e Feminino (1º ao 3º)</p></li><li><p>55 a 59 anos – Masculino e Feminino (1º ao 3º)</p></li><li><p>60 a 64 anos – Masculino e Feminino (1º ao 3º)</p></li><li><p>65 a 69 anos – Masculino e Feminino (1º ao 3º)</p></li><li><p>70+ anos – Masculino e Feminino (1º ao 3º)</p></li></ul><p>🏆 Categoria PCD – 10 troféus</p><ul><li><p>Masculino: 1º ao 5º</p></li><li><p>Feminino: 1º ao 5º</p></li></ul><p>🏆 Assessorias – 5 troféus</p><ul><li><p>1º ao 5º</p></li></ul></div></div></div>                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        <style>
+    .textarea-cadastro{
+        width: 100%;
+        border: 1px solid #C0C0C0;
+        background-color: #FFF;
+        border-radius: 5px;
+        padding:5px;
+        height:80px;
+    }
+    .input-cadastro {
+        width: 100%;
+        height: 45px;
+        border: 1px solid #C0C0C0;
+        background-color: #FFF;
+        border-radius: 5px;
+        padding:5px;
+    }
+    #button-cadastro-novidades {
+        color: #FFF;
+        width: 100%;
+        height: 45px;
+        border: 1px solid var(--background_button_cadastro_novidades,tomato);
+        background-color: var(--background_button_cadastro_novidades,tomato);
+        border-radius: 5px
+    }
+    #button-cadastro-novidades:hover {
+        color: #FFF;
+        border: 1px solid #333;
+        background-color:#333;
+        cursor:pointer;
+    }
+</style>
+
+<!-- <footer class="page-footer font-small stylish-color-dark" style="margin-top:160px;background-color:var(--background_color_rodape,#FFF);color:var(--color_texto_rodape,#FFF);"> -->
+<footer class="page-footer font-small stylish-color-dark" style="margin-top:160px;color:var(--color_texto_rodape,#FFF); background:linear-gradient(to right,var(--background_color_rodape,#000),var(--background_color_rodape_2,#000))">
+            
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+            <div class="row">
+                <div class="col-12"> &nbsp;</div>
+                <div class="col-xs-12 col-sm-12 col-md-4" style="font-weight:lighter;text-align:left">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">KorreMais</h5>
+                    <i class="fa fa-quote-right" aria-hidden="true" style="font-size:150%"></i>                    <span style="letter-spacing:0.6px;font-size:95%;text-align:justify;line-height:25px">
+                    KorreMais é uma empresa especializada em gerênciamento de inscrições de eventos esportivos. Disponibilizamos um sistema de inscrições on-line completo, rápido e seguro. Ferramentas exclusivas para seus eventos. Pensou em evento esportivo, a KorreMais tem a solução!                </span>
+
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-4" style="text-align:left;border-left: 1px solid #CCC">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">CONTATO</h5>
+                    <div style=" font-weight:lighter;letter-spacing:0.6px;text-align:justify;line-height:30px" >
+                        <ul><li> <i class="fa fa-instagram"></i> @korremais </li><li> <i class="fa fa-whatsapp"></i> (49)984007155 </li></ul>                    </div>
+                                    </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-4" style="text-align:left;border-left: 1px solid #CCC">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">MENU</h5>
+                    <li style="text-decoration:none;list-style-type:none"><ul style="text-decoration:none;padding-top:5px;padding-bottom:5px;font-weight:lighter"><a class="classe-menu-rodape" href="https://www.korremais.com/eventos">Eventos</a></ul><ul style="text-decoration:none;padding-top:5px;padding-bottom:5px;font-weight:lighter"><a class="classe-menu-rodape" href="https://www.korremais.com/resultados-eventos">Resultados</a></ul><ul style="text-decoration:none;padding-top:5px;padding-bottom:5px;font-weight:lighter"><a class="classe-menu-rodape" href="https://www.korremais.com/minha-conta">Minha Conta</a></ul></li>                </div>
+                <!--
+                <div class="col-xs-12 col-sm-12 col-md-4" style="text-align:left">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">ENVIE SUA MENSAGEM</h5>
+                    <input type="text" class="input-cadastro" style="margin-bottom:3px" placeholder="Nome" id="nome-contato-new" name="nome-contato-new" required>
+                    <input type="text" class="input-cadastro" style="margin-bottom:3px" placeholder="Email" id="email-contato-new" name="email-contato-new" required>
+                    <textarea class="textarea-cadastro" style="margin-bottom:3px" placeholder="Descrição" id="texto-contato-new" name="texto-contato-new"></textarea>
+                    <div class="form-group position-relative">
+                        <button id="button-cadastro-novidades" class="form-control is-invalid" onclick="newContato()"> <i class="fa fa-paper-plane"></i> Enviar</button>
+                        <div id="div-msg-button-cadastro-novidades" class="invalid-tooltip" style="text-align:left;display:none"></div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+
+        <!-- Footer Links -->
+        <hr style="border-color:#C0C0C0">
+                    <ul class="list-unstyled list-inline text-center" style="padding-bottom:15px;padding-top:15px">
+                <div class="col-12" style="color:#FFF;font-size:200%;padding:5px;text-align:center">
+                    <a target="instagram" href="https://www.instagram.com/korremais" style="color:orange"> <i class="fa fa-instagram"> </i></a><a target="whatsapp" href="https://web.whatsapp.com/send?phone=5599991557222" style="color:green"> <i class="fa fa-whatsapp" > </i></a>                </div>
+                <!--
+                 <div class="container">
+                         <div class="row">
+                             <div class="col-12" style="text-align:left;padding-left:15px;margin-bottom:10px;color:#666">
+                                 Quero receber as novidades por e-mail:
+                             </div>
+                             <div class="col-xs-12 col-sm-8 col-md-6" style="margin-bottom:5px">
+                                 <div class="form-group position-relative">
+                                     <input type="text" class="form-control is-invalid input-cadastro" placeholder="Email" id="email-new" name="email-new" required>
+                                     <div id="div-msg-input-email-new" class="invalid-tooltip" style="text-align:left;display:none"></div>
+                                 </div>
+                             </div>
+                             <div class="col-xs-12 col-sm-4 col-md-2">
+                                 <button id="button-cadastro-novidades" name="button-cadastro-novidades" onclick="newsletter()"> <i class="fa fa-paper-plane"></i> Enviar</button>
+                             </div>
+                         </div>
+                 </div>
+                       -->
+            </ul>
+            <hr style="border-color:#C0C0C0">
+        
+        <!-- Copyright -->
+        <div class="footer-copyright text-center" style="padding:14px;font-weight: lighter;font-size:90%">
+            KorreMais Produção e Promoção de Eventos Esportivos            <br>
+            <br><span><a class='classe-menu-rodape' href='https://www.korremais.com/politica-privacidade'>Política de privacidade</a>   </span><br>            <br>
+            © 2026 Copyright: <a href="https://www.korremais.com" style="color:var(--color_texto_rodape,#EEE);letter-spacing:0.6px;text-transform:lowercase">www.korremais.com</a>
+        </div>
+        <!-- Copyright -->
+</footer>
+
+<script>
+    var url_site_oficial = 'https://www.korremais.com/';
+    function newsletterClear(){
+        $("#email-new").val('');
+        return setTimeout(function(){ $("#div-msg-input-email-new").html('').hide()},4000);
+    }
+    function newsletter(){
+        if ($("#email-new").val().toString().trim() == '') {
+            $("#div-msg-input-email-new").html('<i class="fa fa-exclamation-circle"></i> Informe o email para continuar').show();
+            newsletterClear();
+            return false;
+        }
+        $("#div-msg-input-email-new").html('<i class="fa fa-exclamation-circle"></i> Aguarde...').show();
+        var formDataFields = new FormData();
+        formDataFields.append('newsletter',true);
+        formDataFields.append('email',$("#email-new").val().toString().trim());
+        $.ajax({
+            type: 'POST',
+            url: url_site_oficial+'register-newsletter',
+            data: formDataFields,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data.erro === false) {
+                    $("#div-msg-input-email-new").html('<i class="fa fa-thumbs-up"></i> Sucesso').show();
+                }
+                else {
+                    $("#div-msg-input-email-new").html('<i class="fa fa-exclamation-circle"></i> '+data.msg).show();
+                }
+                newsletterClear();
+
+                return false;
+            },
+            error: function (data) {
+                $erro = 'Não foi possível enviar. Tente mais tarde (newsletter)';
+                if ((typeof data.responseText != 'undefined') && (data.responseText != null)) {
+                    $erro = $erro + ': ' + data.responseText;
+                }
+                $("#div-msg-input-email-new").html('<i class="fa fa-exclamation-circle"></i> ' + $erro).show();
+                newsletterClear();
+                return false;
+            }
+        });
+    }
+    function newContatoClear(limpar){
+        if (limpar){
+            $("#nome-contato-new").val('');
+            $("#email-contato-new").val('');
+            $("#texto-contato-new").val('');
+        }
+        return setTimeout(function(){ $("#div-msg-button-cadastro-novidades").html('').hide()},3000);
+    }
+    function newContato(){
+        var nome_contato_new = $("#nome-contato-new").val().toString().trim();
+        var email_contato_new = $("#email-contato-new").val().toString().trim();
+        var texto_contato_new = $("#texto-contato-new").val().toString().trim();
+        if ((nome_contato_new == '')||(email_contato_new == '')||(texto_contato_new == '')) {
+            setTimeout(function(){ $("#div-msg-button-cadastro-novidades").html('').hide()},2000);
+            return $("#div-msg-button-cadastro-novidades").html('<i class="fa fa-exclamation-circle"></i> Preencha todos os campos').show();
+        }
+        $("#div-msg-button-cadastro-novidades").html('<i class="fa fa-exclamation-circle"></i> Aguarde...').show();
+        var formDataFields = new FormData();
+        formDataFields.append('new-contatos-angola',true);
+        formDataFields.append('nome',nome_contato_new);
+        formDataFields.append('email',email_contato_new);
+        formDataFields.append('mensagem',texto_contato_new);
+        $.ajax({
+            type: 'POST',
+            url: url_site_oficial+'register-contatos',
+            data: formDataFields,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                $("#div-msg-button-cadastro-novidades").html('<i class="fa fa-exclamation-circle"></i> '+data.msg).show();
+                newContatoClear(((data.erro)?false:true));
+            },
+            error: function (data) {
+                $erro = 'Não foi possível enviar. Tente mais tarde (newContato)';
+                if ((typeof data.responseText != 'undefined') && (data.responseText != null)) {
+                    $erro = $erro + ': ' + data.responseText;
+                }
+                $("#div-msg-button-cadastro-novidades").html('<i class="fa fa-exclamation-circle"></i> ' + $erro).show();
+                newContatoClear(false);
+            }
+        });
+    }
+    function loadListCategoriasLoja(list) {
+        if ((typeof $("#select-tipo-evento") != 'undefined') && ($("#select-tipo-evento") != null)) {
+            var total = list.length;
+            if (total > 0) {
+                for (var i = 0; i < total; i++) {
+                    var option = '<option value="' + list[i].tipo_eve_id + '">' + list[i].tipo_eve_nome + '</option>'
+                    $("#select-tipo-evento").append(option);
+                }
+            }
+        }
+    }
+    function openNewMultiplosRegulamentos(){
+        let html = '';
+        for(let i in listRegulamento) {
+            html += '<a target="'+i+'" href="'+listRegulamento[i].mid_url+'"><button class="button-resultados" style="border:none;border-radius:5px;margin-bottom:2px">'+listRegulamento[i].mid_nome+'</button></a>';
+        }
+        if (html == '') {
+            $('#divListResultados').html("<div>Nenhum registro encontrado!</div>");
+            return false;
+        }
+        $('#divListResultados').html("<div style='padding:10px'>"+html+"</div>");
+        $('#ModalListResultados').modal('show');
+    }
+</script>
+    </div>
+    <script src="https://www.korremais.com/js/jquery-3.3.1.min.js"></script>
+<script src="https://www.korremais.com/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+<script src="https://www.korremais.com/styles/bootstrap-4.1.2/bootstrap.bundle.min.js"></script>
+<script src="https://www.korremais.com/js/custom.js"></script>
+<script src="https://www.korremais.com/js/validation.js"></script>    <!-- https://github.com/atthakasem/ziehharmonika -->
+    <script src="https://www.korremais.com/js/ziehharmonika.js"></script>
+    <script>
+        $(document).ready(function() {
+             $('.ziehharmonika').ziehharmonika({collapsible:false,scroll:false});
+             //$('.ziehharmonika').ziehharmonika({collapsible:true,scroll:true});
+             //$('.ziehharmonika h3:eq(2)').ziehharmonika('open', false);
+        });
+    </script>
+</body>
+</html>

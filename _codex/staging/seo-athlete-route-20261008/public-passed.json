@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "path": "/atleta/leonardo%20muniz/",
+      "method": "GET",
+      "before": 403,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/atleta/leonardo%20muniz/",
+      "method": "HEAD",
+      "before": 403,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/en/athlete/leonardo%20muniz/",
+      "method": "GET",
+      "before": 403,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/en/athlete/leonardo%20muniz/",
+      "method": "HEAD",
+      "before": 403,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/es/atleta/leonardo%20muniz/",
+      "method": "GET",
+      "before": 403,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/es/atleta/leonardo%20muniz/",
+      "method": "HEAD",
+      "before": 403,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/atleta/runnerhub/",
+      "method": "GET",
+      "before": 302,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/en/athlete/runnerhub/",
+      "method": "GET",
+      "before": 302,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/es/atleta/runnerhub/",
+      "method": "GET",
+      "before": 302,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/atleta/index.cfm?tag=leonardo%20muniz",
+      "method": "GET",
+      "before": 302,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/atleta/leonardo%20muniz/?filtro=resultados",
+      "method": "GET",
+      "before": 403,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/configuracoes/perfil/",
+      "method": "GET",
+      "before": 302,
+      "after": 302,
+      "passed": true
+    },
+    {
+      "path": "/circuitocatarinense/trailrun/",
+      "method": "GET",
+      "before": 200,
+      "after": 200,
+      "passed": true
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "before": 200,
+      "after": 200,
+      "passed": true
+    },
+    {
+      "path": "/estado/sp/",
+      "method": "GET",
+      "before": 200,
+      "after": 200,
+      "passed": true
+    },
+    {
+      "path": "/evento/2026-corrida-night-run-vitoria-airport/",
+      "method": "GET",
+      "before": 200,
+      "after": 200,
+      "passed": true
+    },
+    {
+      "path": "/evento/2025-corrida-night-run-vitoria-airport/",
+      "method": "GET",
+      "before": 200,
+      "after": 200,
+      "passed": true
+    },
+    {
+      "path": "/evento/2026-costa-esmeralda-trail-2026",
+      "method": "GET",
+      "before": 301,
+      "after": 301,
+      "passed": true
+    },
+    {
+      "path": "/en/event/2026-costa-esmeralda-trail-2026",
+      "method": "GET",
+      "before": 301,
+      "after": 301,
+      "passed": true
+    },
+    {
+      "path": "/es/evento/2026-costa-esmeralda-trail-2026",
+      "method": "GET",
+      "before": 301,
+      "after": 301,
+      "passed": true
+    },
+    {
+      "path": "/sitemap.xml",
+      "method": "GET",
+      "before": 200,
+      "after": 200,
+      "passed": true
+    },
+    {
+      "path": "/cdn-cgi/l/email-protection",
+      "method": "GET",
+      "before": 404,
+      "after": 404,
+      "passed": true
+    }
+  ]
+}

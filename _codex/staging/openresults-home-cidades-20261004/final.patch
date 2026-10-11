@@ -1,0 +1,251 @@
+--- /dev/null
++++ b/includes/backend_home_cidades.cfm
+@@ -0,0 +1,68 @@
++<cfif NOT structKeyExists(VARIABLES,"template") OR VARIABLES.template NEQ "/" OR NOT structKeyExists(VARIABLES,"qEventosBase") OR NOT isQuery(VARIABLES.qEventosBase)>
++    <cfheader statuscode="403"/><cfcontent type="text/plain; charset=utf-8" reset="true"/>Acesso negado.<cfabort/>
++</cfif>
++<cfscript>
++REQUEST.buildHomeCityCatalog = function(required query events, required date today) {
++    var groups = {};
++    var todayDate = createDate(year(arguments.today),month(arguments.today),day(arguments.today));
++    var recentStart = dateAdd("d",-30,todayDate);
++    var annualStart = dateAdd("m",-12,todayDate);
++    for (var event in arguments.events) {
++        var uf = uCase(trim(isNull(event.estado) ? "" : event.estado));
++        var name = trim(isNull(event.cidade) ? "" : event.cidade);
++        var slug = lCase(trim(isNull(event.tag_cidade) ? "" : event.tag_cidade));
++        if (isNull(event.pais) || event.pais != "BR" || !listFind("AC,AL,AM,AP,BA,CE,DF,ES,GO,MA,MG,MS,MT,PA,PB,PE,PI,PR,RJ,RN,RO,RR,RS,SC,SE,SP,TO",uf) || !len(name) || !len(slug) || reFind("[^a-z0-9-]",slug)) continue;
++        var key = uf & ":" & slug;
++        if (!structKeyExists(groups,key)) {
++            var words = listToArray(lCase(name)," ");
++            for (var wi=1;wi<=arrayLen(words);wi++) {
++                if (wi==1 || !listFindNoCase("a,ao,aos,as,com,da,das,de,del,do,dos,e,em,na,nas,no,nos,para,por,sem,sob",words[wi])) {
++                    words[wi] = uCase(left(words[wi],1)) & mid(words[wi],2,len(words[wi]));
++                }
++            }
++            groups[key] = {name=arrayToList(words," "),uf=uf,slug=slug,total=0,recent=0,annual=0,latest=createDate(1900,1,1)};
++        }
++        groups[key].total++;
++        if (!isNull(event.data_final) && isDate(event.data_final)) {
++            var eventDay = createDate(year(event.data_final),month(event.data_final),day(event.data_final));
++            if (eventDay<=todayDate) {
++                if (eventDay>recentStart) groups[key].recent++;
++                if (eventDay>annualStart) groups[key].annual++;
++                if (eventDay>groups[key].latest) groups[key].latest=eventDay;
++            }
++        }
++    }
++    var cities = [];
++    for (var key in groups) arrayAppend(cities,groups[key]);
++    arraySort(cities,function(a,b){return compareNoCase(a.name & " " & a.uf,b.name & " " & b.uf);});
++    var recentPool = arrayFilter(cities,function(city){return city.recent>0;});
++    arraySort(recentPool,function(a,b){
++        if (a.recent!=b.recent) return b.recent-a.recent;
++        if (a.latest!=b.latest) return dateCompare(b.latest,a.latest);
++        return compareNoCase(a.name & " " & a.uf,b.name & " " & b.uf);
++    });
++    var recent = [];
++    var seen = {};
++    for (var city in recentPool) {
++        if (arrayLen(recent)==6) break;
++        arrayAppend(recent,city);seen[city.uf & ":" & city.slug]=true;
++    }
++    var popularPool = arrayFilter(cities,function(city){return city.annual>0 && !structKeyExists(seen,city.uf & ":" & city.slug);});
++    arraySort(popularPool,function(a,b){
++        if (a.annual!=b.annual) return b.annual-a.annual;
++        return compareNoCase(a.name & " " & a.uf,b.name & " " & b.uf);
++    });
++    var popular = [];
++    for (var city in popularPool) {
++        if (arrayLen(popular)==6) break;
++        arrayAppend(popular,city);
++    }
++    return {cities=cities,recent=recent,popular=popular};
++};
++VARIABLES.homeCityCatalog = REQUEST.buildHomeCityCatalog(VARIABLES.qEventosBase,now());
++VARIABLES.homeCitySearchData = [];
++for (VARIABLES.homeCityRow in VARIABLES.homeCityCatalog.cities) {
++    arrayAppend(VARIABLES.homeCitySearchData,{name=VARIABLES.homeCityRow.name,uf=VARIABLES.homeCityRow.uf,slug=VARIABLES.homeCityRow.slug,total=VARIABLES.homeCityRow.total});
++}
++VARIABLES.homeCityJson = replace(serializeJSON(VARIABLES.homeCitySearchData),"<","\u003c","all");
++</cfscript>
+--- /dev/null
++++ b/assets/css/openresults-home-cidades.css
+@@ -0,0 +1,16 @@
++.or-home-city-row { display:flex; justify-content:center; align-items:center; gap:.5rem; flex-wrap:nowrap; }
++.or-home-city-row .or-search-chip-select-wrap { min-width:0; }
++.or-home-city-row .estado-city-picker { width:210px; text-align:left; }
++.or-home-city-row .estado-city-picker summary { min-height:38px; }
++.or-home-city-row .estado-city-picker-panel { left:auto; right:0; width:390px; max-width:calc(100vw - 24px); }
++.or-home-city-row .estado-city-picker-item { align-items:flex-start; }
++.or-home-city-row .estado-city-picker-item [data-city-count] { max-width:45%; text-align:right; }
++.or-home-city-row [hidden] { display:none; }
++.home-city-group-title { margin:.7rem .4rem .2rem; font-size:.75rem; font-weight:700; color:#666; }
++@media (max-width:600px) {
++ .or-home-city-row .or-search-chip-select-wrap { flex:1 1 0; }
++ .or-home-city-row .or-search-chip-select { width:100%; min-width:0; max-width:100%; }
++ .or-home-city-row .estado-city-picker { flex:1 1 0; width:auto; min-width:0; }
++ .or-home-city-row .estado-city-picker-panel { left:auto; right:0; width:calc(100vw - 24px); max-width:calc(100vw - 24px); }
++ .or-home-city-row .estado-city-picker-list { max-height:min(360px,50vh); }
++}
+--- /dev/null
++++ b/assets/js/openresults-home-cidades.js
+@@ -0,0 +1,79 @@
++(function (window) {
++    'use strict';
++    var shared = window.OpenResultsEstadoCities;
++    function cityUrl(href, city) {
++        if (!city || !city.slug) return '';
++        var source = new URL(href);
++        if (!source.searchParams.has('rua') && !source.searchParams.has('trail')) {
++            source.searchParams.set('rua','true');
++            source.searchParams.set('trail','true');
++        }
++        return shared.buildUrl(source.href, city.uf, city.slug);
++    }
++    function findCities(cities, term, limit) {
++        function exact(city) {
++            var name = city.name;
++            var fullName = name + ' ' + city.uf;
++            return (shared.matches(name,term) && shared.matches(term,name)) || (shared.matches(fullName,term) && shared.matches(term,fullName));
++        }
++        return cities.filter(function (city) {
++            return cityUrl('https://openresults.run/',city) && shared.matches(city.name + ' ' + city.uf,term);
++        }).sort(function (a,b) {return Number(exact(b))-Number(exact(a));}).slice(0,limit);
++    }
++    function init(document) {
++        var picker = document.querySelector('[data-home-city-picker]');
++        var data = document.getElementById('home-city-data');
++        if (!picker || !data || !shared) return;
++        var cities;
++        try {
++            cities = JSON.parse(data.textContent).map(function (city) {
++                return {name:city.name || city.NAME,uf:city.uf || city.UF,slug:city.slug || city.SLUG,total:Number(city.total || city.TOTAL)};
++            });
++        } catch (_) { return; }
++        var input = picker.querySelector('input');
++        var summary = picker.querySelector('summary');
++        var suggestions = picker.querySelector('[data-home-city-suggestions]');
++        var results = picker.querySelector('[data-home-city-results]');
++        var status = picker.querySelector('[data-home-city-status]');
++        function search() {
++            var term = input.value.trim();
++            suggestions.hidden = !!term;
++            results.hidden = !term;
++            results.replaceChildren();
++            status.textContent = '';
++            if (!term) return;
++            var found = findCities(cities,term,30);
++            found.forEach(function (city) {
++                var link = document.createElement('a');
++                link.className = 'estado-city-picker-item';
++                link.href = cityUrl(window.location.href,city);
++                var name = document.createElement('span');
++                name.textContent = city.name + ' - ' + city.uf;
++                var count = document.createElement('span');
++                count.setAttribute('data-city-count','');
++                count.textContent = city.total.toLocaleString('pt-BR') + (city.total === 1 ? ' prova no histórico' : ' provas no histórico');
++                link.append(name,count);
++                results.append(link);
++            });
++            status.textContent = found.length ? (found.length === 30 ? 'Mostrando até 30 cidades. Refine a busca pelo nome ou UF.' : found.length + (found.length === 1 ? ' cidade encontrada.' : ' cidades encontradas.')) : 'Nenhuma cidade encontrada.';
++        }
++        picker.addEventListener('toggle',function () {
++            if (picker.open) input.focus();
++            else {input.value='';search();}
++        });
++        input.addEventListener('input',search);
++        picker.addEventListener('keydown',function (event) {
++            if (event.key === 'Escape') {picker.open=false;summary.focus();}
++        });
++        document.addEventListener('click',function (event) {
++            if (!picker.contains(event.target)) picker.open=false;
++        });
++        suggestions.querySelectorAll('[data-home-city-slug]').forEach(function (link) {
++            var href = cityUrl(window.location.href,{uf:link.dataset.homeCityUf,slug:link.dataset.homeCitySlug});
++            if (href) link.href=href;
++        });
++        input.disabled=false;
++        input.placeholder='Digite o nome da cidade ou UF';
++    }
++    window.OpenResultsHomeCities = {findCities:findCities,cityUrl:cityUrl,init:init};
++})(window);
+--- a/includes/form_busca_principal.cfm
++++ b/includes/form_busca_principal.cfm
+@@ -23,7 +23,7 @@
+     </div>
+ </form>
+ 
+-<div class="or-search-chip-row mt-3">
++<div class="or-search-chip-row mt-3<cfif VARIABLES.template EQ "/"> or-home-city-row</cfif>">
+     <div class="or-search-chip-select-wrap">
+         <i class="fa-solid fa-location-dot or-search-chip-select-icon"></i>
+         <select id="buscaEstado"
+@@ -61,4 +61,37 @@
+         </select>
+         <i class="fa-solid fa-chevron-down or-search-chip-select-caret"></i>
+     </div>
++    <cfif VARIABLES.template EQ "/" AND structKeyExists(VARIABLES,"homeCityCatalog")>
++        <details class="estado-city-picker" data-home-city-picker>
++            <summary><i class="fa-solid fa-city" aria-hidden="true"></i><span>Eventos por cidade</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
++            <div class="estado-city-picker-panel">
++                <label class="estado-city-picker-label" for="home-city-search">Buscar cidade</label>
++                <input type="search" id="home-city-search" placeholder="Carregando busca de cidades" disabled autocomplete="off">
++                <p class="estado-city-picker-hint">Provas com resultados disponíveis. Busque também cidades com eventos antigos.</p>
++                <div class="estado-city-picker-list" data-home-city-suggestions>
++                    <cfif arrayLen(VARIABLES.homeCityCatalog.recent)>
++                        <h3 class="home-city-group-title">Provas nos últimos 30 dias</h3>
++                        <cfloop array="#VARIABLES.homeCityCatalog.recent#" index="VARIABLES.homeCityOption"><cfoutput>
++                            <a class="estado-city-picker-item" href="/estado/#lCase(VARIABLES.homeCityOption.uf)#/?cidade=#encodeForHTMLAttribute(urlEncodedFormat(VARIABLES.homeCityOption.slug))#&amp;rua=true&amp;trail=true" data-home-city-slug="#encodeForHTMLAttribute(VARIABLES.homeCityOption.slug)#" data-home-city-uf="#VARIABLES.homeCityOption.uf#">
++                                <span>#encodeForHTML(VARIABLES.homeCityOption.name)# - #VARIABLES.homeCityOption.uf#</span><span data-city-count>#VARIABLES.homeCityOption.recent# <cfif VARIABLES.homeCityOption.recent EQ 1>prova recente<cfelse>provas recentes</cfif></span>
++                            </a>
++                        </cfoutput></cfloop>
++                    </cfif>
++                    <cfif arrayLen(VARIABLES.homeCityCatalog.popular)>
++                        <h3 class="home-city-group-title">Mais provas nos últimos 12 meses</h3>
++                        <cfloop array="#VARIABLES.homeCityCatalog.popular#" index="VARIABLES.homeCityOption"><cfoutput>
++                            <a class="estado-city-picker-item" href="/estado/#lCase(VARIABLES.homeCityOption.uf)#/?cidade=#encodeForHTMLAttribute(urlEncodedFormat(VARIABLES.homeCityOption.slug))#&amp;rua=true&amp;trail=true" data-home-city-slug="#encodeForHTMLAttribute(VARIABLES.homeCityOption.slug)#" data-home-city-uf="#VARIABLES.homeCityOption.uf#">
++                                <span>#encodeForHTML(VARIABLES.homeCityOption.name)# - #VARIABLES.homeCityOption.uf#</span><span data-city-count>#VARIABLES.homeCityOption.annual# <cfif VARIABLES.homeCityOption.annual EQ 1>prova no ano<cfelse>provas no ano</cfif></span>
++                            </a>
++                        </cfoutput></cfloop>
++                    </cfif>
++                    <cfif NOT arrayLen(VARIABLES.homeCityCatalog.recent) AND NOT arrayLen(VARIABLES.homeCityCatalog.popular)><p class="estado-city-picker-hint">Busque uma cidade pelo nome.</p></cfif>
++                </div>
++                <div class="estado-city-picker-list" data-home-city-results hidden></div>
++                <p class="estado-city-picker-status" data-home-city-status aria-live="polite"></p>
++                <noscript><p class="estado-city-picker-hint">A busca por nome precisa de JavaScript. Você pode abrir as sugestões acima ou escolher um estado.</p></noscript>
++            </div>
++        </details>
++        <script type="application/json" id="home-city-data"><cfoutput>#VARIABLES.homeCityJson#</cfoutput></script>
++    </cfif>
+ </div>
+--- a/index.cfm
++++ b/index.cfm
+@@ -14,6 +14,7 @@
+ <cfinclude template="includes/variaveis.cfm"/>
+ <cfinclude template="includes/location.cfm"/>
+ <cfinclude template="includes/backend.cfm"/>
++<cfinclude template="includes/backend_home_cidades.cfm"/>
+ 
+ <cfquery name="qTotalResultados" cachedwithin="#CreateTimeSpan(0, 0, 15, 0)#">
+     SELECT count(*)::int as total
+@@ -37,6 +38,8 @@
+     <cfinclude template="includes/seo-web-tools-body-start.cfm"/>
+ 
+     <style>
++        <cfinclude template="assets/css/openresults-estado-cidades.css"/>
++        <cfinclude template="assets/css/openresults-home-cidades.css"/>
+         body {
+             background: radial-gradient(circle at top, rgba(238, 238, 238, 1) 0%, rgba(250, 250, 250, 1) 100%);
+             background-repeat: no-repeat;
+@@ -419,6 +422,10 @@
+ 
+     <cfinclude template="includes/seo-web-tools-body-end.cfm"/>
+ 
++    <script src="/assets/js/openresults-estado-cidades.js?v=20261004"></script>
++    <script src="/assets/js/openresults-home-cidades.js?v=20261004-2"></script>
++    <script>OpenResultsHomeCities.init(document);</script>
++
+ 
+ </body>
+ 

@@ -1,0 +1,102 @@
+
+<div class="tab-pane fade show active" id="ex1-tabs-8" role="tabpanel" aria-labelledby="ex1-tab-8" tabindex="0">
+    <h6>Fontes e revisões</h6>
+    <p class="small text-muted">Conferência interna do cadastro. Consulte a fonte oficial e registre somente os dados que verificou. O registro não altera os dados do evento. A fonte das datas pode ser publicada em uma ação separada; local e situação permanecem internos.</p>
+    <div class="alert alert-info" role="status">Conferência retirada. Seu registro original foi preservado.</div>
+            <details class="border rounded p-3 mb-3" open>
+                <summary class="fw-bold">Conferir datas do evento</summary>
+                <p class="small text-muted mt-2">As datas de cada percurso precisam de conferência separada; este registro cobre somente início e término do evento.</p> 
+                <dl class="small mt-3 mb-3">
+                
+                    <dt>In&iacute;cio</dt><dd class="text-break">2026-11-20</dd>
+                
+                    <dt>T&eacute;rmino</dt><dd class="text-break">2026-11-20</dd>
+                
+                </dl>
+                <form method="post" id="fact-review-datas">
+                    <label class="form-label" for="fact-source-datas">URL da fonte oficial</label>
+                    <input class="form-control mb-2" type="url" id="fact-source-datas" name="source_url" maxlength="2048" required placeholder="https://"/>
+                    <div class="form-check mb-3"><input type="checkbox" class="form-check-input" id="fact-confirmed-datas" name="confirmed" value="1" required/><label class="form-check-label" for="fact-confirmed-datas">Consultei a fonte agora e os valores exibidos acima correspondem ao que verifiquei.</label></div>
+                    <input type="hidden" name="action" value="conferir_fatos_evento"/>
+                    <input type="hidden" name="id_evento" value="37570"/>
+                    <input type="hidden" name="grupo" value="datas"/>
+                    <input type="hidden" name="version" value="233e28b459b35cebb48b62456c7e3e19"/>
+                    <input type="hidden" name="request_id" value="75a88a92-c382-4e17-ac17-e9c30d437706"/>
+                    <input type="hidden" name="fact_csrf" value="D707509EDE30B4EFC7411C710060645F025A939A"/>
+                    <button type="submit" class="btn btn-primary">Registrar conferência</button>
+                </form>
+            </details>
+            
+            <details class="border rounded p-3 mb-3" >
+                <summary class="fw-bold">Conferir local do evento</summary>
+                
+                <dl class="small mt-3 mb-3">
+                
+                    <dt>Cidade</dt><dd class="text-break">Fortaleza</dd>
+                
+                    <dt>Estado</dt><dd class="text-break">CE</dd>
+                
+                    <dt>Pa&iacute;s</dt><dd class="text-break">BR</dd>
+                
+                    <dt>Endere&ccedil;o</dt><dd class="text-break">N&atilde;o informado</dd>
+                
+                    <dt>Coordenadas</dt><dd class="text-break">N&atilde;o informado</dd>
+                
+                </dl>
+                <form method="post" id="fact-review-local">
+                    <label class="form-label" for="fact-source-local">URL da fonte oficial</label>
+                    <input class="form-control mb-2" type="url" id="fact-source-local" name="source_url" maxlength="2048" required placeholder="https://"/>
+                    <div class="form-check mb-3"><input type="checkbox" class="form-check-input" id="fact-confirmed-local" name="confirmed" value="1" required/><label class="form-check-label" for="fact-confirmed-local">Consultei a fonte agora e os valores exibidos acima correspondem ao que verifiquei.</label></div>
+                    <input type="hidden" name="action" value="conferir_fatos_evento"/>
+                    <input type="hidden" name="id_evento" value="37570"/>
+                    <input type="hidden" name="grupo" value="local"/>
+                    <input type="hidden" name="version" value="868bdb0124785d798819620a068c7743"/>
+                    <input type="hidden" name="request_id" value="57826c28-f565-4f60-9f7c-6babd5d95089"/>
+                    <input type="hidden" name="fact_csrf" value="D707509EDE30B4EFC7411C710060645F025A939A"/>
+                    <button type="submit" class="btn btn-primary">Registrar conferência</button>
+                </form>
+            </details>
+            
+            <details class="border rounded p-3 mb-3" >
+                <summary class="fw-bold">Conferir situa&ccedil;&atilde;o do evento</summary>
+                <p class="small text-muted mt-2">A disponibilidade de vagas é verificada na aba Inscrições.</p>
+                <dl class="small mt-3 mb-3">
+                
+                    <dt>Situa&ccedil;&atilde;o</dt><dd class="text-break">N&atilde;o informado</dd>
+                
+                </dl>
+                <form method="post" id="fact-review-situacao">
+                    <label class="form-label" for="fact-source-situacao">URL da fonte oficial</label>
+                    <input class="form-control mb-2" type="url" id="fact-source-situacao" name="source_url" maxlength="2048" required placeholder="https://"/>
+                    <div class="form-check mb-3"><input type="checkbox" class="form-check-input" id="fact-confirmed-situacao" name="confirmed" value="1" required/><label class="form-check-label" for="fact-confirmed-situacao">Consultei a fonte agora e os valores exibidos acima correspondem ao que verifiquei.</label></div>
+                    <input type="hidden" name="action" value="conferir_fatos_evento"/>
+                    <input type="hidden" name="id_evento" value="37570"/>
+                    <input type="hidden" name="grupo" value="situacao"/>
+                    <input type="hidden" name="version" value="6ae4bec15a0ebfc79cf9a590db49dfc5"/>
+                    <input type="hidden" name="request_id" value="4e4df670-34ea-45cc-b4a0-a74b64f32ba0"/>
+                    <input type="hidden" name="fact_csrf" value="D707509EDE30B4EFC7411C710060645F025A939A"/>
+                    <button type="submit" class="btn btn-primary">Registrar conferência</button>
+                </form>
+            </details>
+            
+        <h6 class="mt-4">Conferências registradas</h6>
+        <p class="small text-muted">Últimas dez e a conferência mais recente de cada grupo. Somente a mais recente de cada grupo é considerada. Cadastro igual à conferência não garante que a fonte continue atualizada.</p>
+        
+            <details class="border rounded p-3 mb-2">
+                <summary><strong>Datas do evento</strong> · 04&#x2f;10&#x2f;2026 05&#x3a;37 (Brasília)
+                <span class="badge badge-secondary">Retirada</span>
+                
+                </summary>
+                <p class="small text-break mt-2">Fonte: <a href="https&#x3a;&#x2f;&#x2f;official.example.org&#x2f;source" target="_blank" rel="noopener noreferrer">https&#x3a;&#x2f;&#x2f;official.example.org&#x2f;source</a></p>
+                
+                <dl class="small"><dt>In&iacute;cio</dt><dd class="text-break">2026-11-20</dd><dt>T&eacute;rmino</dt><dd class="text-break">2026-11-20</dd></dl>
+                
+            </details>
+            
+        <details class="mt-4">
+            <summary class="fw-bold">Alterações recentes do cadastro</summary>
+            <p class="small text-muted mt-2">Últimos 20 registros, desde a implantação da captura em 04/10/2026. Uma alteração automática não comprova consulta à fonte.</p>
+            <p class="small">Nenhuma alteração capturada para este evento.</p>
+        </details>
+    
+</div>

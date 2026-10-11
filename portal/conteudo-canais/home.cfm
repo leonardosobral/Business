@@ -80,14 +80,14 @@
                       <cfset VARIABLES.contentChannelNewsFeaturedEnabled = qContentChannels[VARIABLES.contentChannelNewsFeaturedColumn][qContentChannels.currentRow]/>
                       <cfset VARIABLES.contentChannelNewsFeaturedEnabled = IsBoolean(VARIABLES.contentChannelNewsFeaturedEnabled) ? VARIABLES.contentChannelNewsFeaturedEnabled : ListFindNoCase("true,1,yes,sim", trim(VARIABLES.contentChannelNewsFeaturedEnabled))/>
                       <tr>
-                        <td>#htmlEditFormat(VARIABLES.contentChannelPkValue)#</td>
+                        <td>#encodeForHTML(VARIABLES.contentChannelPkValue)#</td>
                         <td class="content-channel-cell">
-                          <strong>#htmlEditFormat(qContentChannels.name)#</strong>
+                          <strong>#encodeForHTML(qContentChannels.name)#</strong>
                         </td>
-                        <td class="content-channel-cell">#htmlEditFormat(qContentChannels.slug)#</td>
+                        <td class="content-channel-cell">#encodeForHTML(qContentChannels.slug)#</td>
                         <td class="content-channel-cell">
                           <cfif len(trim(qContentChannels.website_url))>
-                            <a href="#htmlEditFormat(qContentChannels.website_url)#" target="_blank" rel="noopener">#htmlEditFormat(qContentChannels.website_url)#</a>
+                            <a href="#encodeForHTMLAttribute(qContentChannels.website_url)#" target="_blank" rel="noopener">#encodeForHTML(qContentChannels.website_url)#</a>
                           <cfelse>
                             <span class="text-muted">-</span>
                           </cfif>

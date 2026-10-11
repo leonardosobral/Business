@@ -1,0 +1,55 @@
+ABRACEO — BASE PARA PRÉ-CADASTRO BUSINESS
+Versão 3 — cruzamento de produção de 11/10/2026; coleta inicial em 10/10/2026.
+
+COBERTURA
+96 filiados publicados no site, com CNPJ e razão social pesquisados (inclui candidatos ainda não confirmados), 89 endereços e 96 logotipos. A referência de 98 membros veio da reunião: falta a lista nominal da associação para conciliar os universos. A diferença numérica não identifica quais membros faltam nem confirma que todos sejam organizadores.
+
+ARQUIVOS
+abraceo_pre_cadastro.xlsx: onze abas com resumo, base completa, pessoas jurídicas e alternativas, logotipos, mapeamento do formulário Business, 20 revisões prioritárias e 36 novos rascunhos selecionados.
+abraceo_filiados.csv: base completa de 96 filiados, fontes, situação, pendências e observações.
+abraceo_pessoas_juridicas.csv: 117 registros jurídicos relacionados à pesquisa. Inclui CNPJs anteriores, matriz/filial, outras empresas do grupo e candidatos; não é uma lista para importação automática.
+abraceo_revisao_cnpjs.csv: decisão, evidência e pendência dos 20 casos prioritários.
+abraceo_pre_cadastro_rascunhos.csv e .json: os mesmos 36 registros selecionados para pré-preenchimento.
+logotipos/: 96 imagens, referenciadas pelo caminho relativo logo_arquivo.
+
+FORMATO
+CSV em UTF-8 com BOM e separador ponto e vírgula. Importar CNPJ (documento), CEP e telefone como texto para preservar zeros iniciais. O Excel apresenta CNPJ com máscara; o CSV/JSON conserva os dígitos. Campos vazios significam informação não localizada ou ainda não confirmada, nunca autorização para inventar valores.
+
+CRITÉRIO DO LOTE
+Os 36 novos rascunhos têm CNPJ com dígitos válidos, situação consultada ATIVA, razão social, vínculo sustentado por fonte primária e tipo Business sugerido. Outros 55 aguardam confirmação e 5 possuem conta identificada por CNPJ exato; todos ficam fora desse lote e podem ser filtrados por status_pre_cadastro na base completa. Dos 20 casos prioritários, 13 entraram no lote; AR2, Atra-e, CHL, Cia de Eventos, Corrente Running, HJR e NK precisam de confirmação adicional. Cia de Eventos e Corrente Running mantêm CNPJ principal pesquisado não ativo; alternativas não foram adotadas sem evidência suficiente.
+
+USO NO BUSINESS
+O lote prepara dados de organizações; não cria nem ativa contas e não concede acesso ao estudo. Antes de criar qualquer registro, consultar contas existentes por CNPJ completo e raiz, considerando matriz/filial. Representante deve autenticar-se e confirmar os dados e sua relação com a empresa no primeiro acesso.
+nome_empresa, tipo_titular, documento, tipo_prestador, site, cidade e estado correspondem aos campos de organização do formulário consultado. O tipo é uma sugestão a confirmar.
+contato_publico, email_publico e telefone_publico são referências comerciais de pesquisa. E-mails podem conter mais de um contato. Não os converter automaticamente em nome_responsavel ou email_responsavel de login: esses dados devem vir da sessão autenticada. Não usar CNPJ público como senha.
+Razão social, nome fantasia, endereço completo e logotipo são dados de enriquecimento; o formulário externo atual não tem todos esses campos separados. A integração deverá decidir onde armazená-los.
+
+RASTREABILIDADE
+As fontes e datas estão nas linhas da planilha/CSVs. Situação cadastral é a retornada pela consulta pública na data indicada; reconferir no momento da ativação. Registros alternativos preservam o histórico e o motivo da decisão, sem pressupor sucessão empresarial. Contatos da ABRACEO podem divergir do cadastro jurídico; divergências relevantes estão anotadas. Nenhum contato foi acionado nesta pesquisa.
+
+
+CRUZAMENTO COM O BUSINESS — 11/10/2026
+A consulta foi somente leitura: 18 contas PJ, identificação nominal de 2 contas PF, 8 solicitações PJ, 323 fornecedores e busca dirigida no catálogo de 34.486 eventos. Nomes, CNPJs, contatos comerciais e domínios foram usados no cruzamento. Não localizada é o resultado desta busca, não uma garantia de inexistência.
+Contas encontradas por CNPJ exato: Grupo STC (1), CORPA (6), Yescom (7), TR Crono (9) e Voa Esportes (27). As cinco têm status ATIVA e somam 94 vínculos ativos de evento. Conta ativa não comprova que determinado contato seja seu representante.
+MP3 Marketing (5): e-mail e telefone coincidem com a ficha MP3 Soluções, mas o CNPJ da conta é 28.434.613/0001-56, diferente de 11.194.903/0001-77. Os dados públicos mostram sócios e endereço comuns. A conta tem cinco eventos e nenhum usuário ativo. Confirmar qual PJ será usada; não substituir o CNPJ nem transferir acesso automaticamente.
+CORPA, TR Crono, Voa e Yescom foram retiradas do lote anterior de 40 rascunhos, restando 36. Grupo STC já estava fora do lote anterior. A deduplicação é datada e deverá ser repetida imediatamente antes da criação.
+
+EVENTOS
+2.647 eventos distintos do catálogo, em 2.653 relações filiado/evento, abrangem 90 filiados. Cada par filiado/evento aparece uma única vez. Um evento pode ter empresas distintas na organização, realização e cronometragem.
+Classificação da evidência principal: 94 já vinculados às cinco contas com CNPJ exato; 5 vinculados à conta MP3 de outra PJ; 417 com fornecedor estruturado no evento; 1.304 com nome informado em organizador/cronometragem/realização; 833 com apenas domínio relacionado.
+Nome no cadastro e domínio são indícios a confirmar. Plataformas de inscrição podem hospedar eventos de terceiros; não transformar as 833 relações por site em propriedade ou permissão de acesso. Cadastro de fornecedor também não equivale a conta Business. Iguana: fornecedor 8 tem CNPJ divergente e permanece sinalizado.
+Datas e nomes dos eventos são os da base, sem auditoria do calendário. FUTURO/EM CURSO usa data_final >= 11/10/2026. Vínculo de conta ativo é diferente de evento ativo no catálogo. Outras contas já vinculadas estão indicadas para revisar coexistência e papel.
+A aba Eventos externos traz dez relações complementares em nove eventos: seis etapas do Tour da Roça, Corrida do After (HJR e Avatar, fonte secundária), congresso PULSE (VQV, corporativo) e 4ª Corrida do Leão (Chokito, já cadastrada como 36192, com regulamento). Esses registros não entram nas contagens dos eventos relacionados acima. Três filiados sem indícios no catálogo têm eventos em fontes externas (VQV, HJR e Tour da Roça). Cia de Eventos, FG Eventos e Run Eventos seguem sem vínculo suficiente encontrado.
+VQV Corridas do RS não foi equiparada à Agência VQV de Maringá. On Sports não foi equiparada à ON Eventos Esportivos. Life Run Sports e outras marcas contendo Run Eventos também foram excluídas da correspondência automática.
+Nenhuma conta, vínculo, permissão ou evento foi criado, alterado ou publicado nesta pesquisa.
+
+NOVOS ARQUIVOS
+abraceo_cruzamento_business.csv: uma linha por filiado, conta encontrada, ação sugerida e contagens de eventos.
+abraceo_contas_existentes.csv: seis correspondências, IDs, CNPJs, status, evidência e ação.
+abraceo_fornecedores_existentes.csv: treze fornecedores, divergências e fontes.
+abraceo_eventos_relacionados.csv: relações do catálogo, IDs e links, papel, evidência e ressalvas.
+abraceo_eventos_fontes_externas.csv: eventos complementares, fonte e status de confirmação.
+abraceo_logotipos_manifesto.csv: 96 imagens originais baixadas, dimensões, tamanho, origem e SHA-256. Todas abriram e passaram na validação de imagem. O ZIP separado de logotipos contém as mesmas imagens e o manifesto.
+
+ATUALIZAÇÃO DE PRODUÇÃO — 11/10/2026
+36 pré-cadastros criados, 5 contas reaproveitadas, 41 logos publicados e 11 eventos futuros associados. Consulte importacao/RESULTADO.txt e importacao/resultado_business.json. As planilhas e CSVs anteriores refletem a pesquisa antes da importação.

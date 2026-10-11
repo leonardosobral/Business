@@ -1,0 +1,16 @@
+{
+  "circuit": {
+    "url": "https://roadrunners.run/circuitocatarinense/",
+    "status": 200,
+    "metadata": {
+      "canonical": [
+        "https://roadrunners.run/circuitocatarinense/"
+      ],
+      "title": "Circuito Catarinense de Corridas - Road Runners",
+      "description": [
+        "Ranking de Atletas do Circuito de Corridas da Federação Catarinense de Atletismo"
+      ],
+      "h1": 1
+    }
+  }
+}

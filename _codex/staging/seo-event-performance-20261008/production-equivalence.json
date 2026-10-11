@@ -1,0 +1,38 @@
+{
+  "CHECKS": [
+    {
+      "CURRENT_ROWS": 19,
+      "DIFFERENCES": 0,
+      "NAME": "sao-silvestre",
+      "PREVIOUS_ROWS": 19
+    },
+    {
+      "CURRENT_ROWS": 2,
+      "DIFFERENCES": 0,
+      "NAME": "jurere",
+      "PREVIOUS_ROWS": 2
+    },
+    {
+      "CURRENT_ROWS": 6,
+      "DIFFERENCES": 0,
+      "NAME": "maratona-florianopolis",
+      "PREVIOUS_ROWS": 6
+    },
+    {
+      "CURRENT_ROWS": 5,
+      "DIFFERENCES": 0,
+      "NAME": "maratona-rio",
+      "PREVIOUS_ROWS": 5
+    },
+    {
+      "CURRENT_ROWS": 0,
+      "DIFFERENCES": 0,
+      "NAME": "empty-aggregate",
+      "PREVIOUS_ROWS": 0
+    }
+  ],
+  "failed": [],
+  "source_hash": "8c0cccaf9205a049a098e442f5f1c9918ba65d28ee22a9c162910fc8491dc10d",
+  "read_only": true,
+  "database_mutations": false
+}

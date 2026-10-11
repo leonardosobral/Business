@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-morro-beach-run/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-morro-beach-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-morro-beach-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-morro-beach-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-morro-beach-run/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-morro-beach-run/",
+      "name": "Morro Beach Run",
+      "description": "Morro Beach Run acontece em 01 novembro 2026, em Início da terceira praia - Cairu - BA.",
+      "url": "https://roadrunners.run/evento/2026-morro-beach-run/",
+      "startDate": "2026-11-01",
+      "endDate": "2026-11-01",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.centraldasinscricoes.com.br/painel/upload/img/inscricao/thumb/img-047-14092026164259-300e69f72139feaef597540971ab598e.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Início da terceira praia",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cairu",
+          "addressRegion": "BA",
+          "addressCountry": "BR",
+          "streetAddress": "Início da terceira praia"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.centraldasinscricoes.com.br/inscricao-select/2026/corrida-de-rua/morro-beach-run"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/ba/",
+          "@type": "ListItem",
+          "name": "Corridas em BA"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-morro-beach-run/",
+          "@type": "ListItem",
+          "name": "Morro Beach Run"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

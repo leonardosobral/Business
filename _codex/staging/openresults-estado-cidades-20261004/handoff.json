@@ -1,0 +1,27 @@
+{
+  "status": "published_verified",
+  "site": "https://openresults.run/estado/ba/",
+  "runtime_files": {
+    "includes/backend.cfm": "7b9902a88586097e0b784d4477082ad6aa21a28655967b93c1232a5fb45d176f",
+    "includes/backend_estado_cidades.cfm": "6587810f6b8a84ca2f80201a7ac8d8863cc7a2a658fca5f6a93add3a244e971b",
+    "assets/js/openresults-estado-cidades.js": "5a49806e7b60d408517ca2d0a194eda4850bbe0beb1280d00c7118a45d4719e7",
+    "assets/css/openresults-estado-cidades.css": "90b8137f398a326d8da27cfbed16c721739d5c46a7cab5ffb8695ea0ae36c35e",
+    "api/eventos_por_estado.cfm": "8ee34c0a54c49fd7515100089957540a9433e77523b6888e0fb6897e90c710b4",
+    "estado/index.cfm": "da2209fc96f7bb3f67b81c58cd6a98a262aea978aa6f593ef94df89b81b2e88b"
+  },
+  "recovery_git_ref": "e769528c34b23beb6fc3a16ea615184849ce5e5c",
+  "validation": {
+    "node": 7,
+    "cfml": 33,
+    "compiled_templates": 4,
+    "public_urls": 8,
+    "browser_pagination_unique_events": 73,
+    "salvador_marathons": 7,
+    "mobile_width": 390,
+    "mobile_scrollWidth": 390,
+    "console_errors_new_tab": 0
+  },
+  "report": "/Users/Shared/Projects/RunnerHub/OpenResults/_codex/docs/2026-10-04_filtro_cidades_estado.md",
+  "no_git_mutations": true,
+  "no_database_writes": true
+}

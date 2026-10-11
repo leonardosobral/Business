@@ -431,9 +431,9 @@ function raceTagResponseHeaderValue(required any rawValue) {
     </div>
 <cfelse>
 <form id="formRaceTag" action="./" method="post">
-    <input type="hidden" name="submission_id" value="<cfoutput>#htmlEditFormat(VARIABLES.raceTagSubmissionId)#</cfoutput>"/>
-    <input type="hidden" name="external_event_id" value="<cfoutput>#htmlEditFormat(FORM.external_event_id)#</cfoutput>"/>
-    <input type="hidden" name="result_import_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.raceTagCsrf)#</cfoutput>"/>
+    <input type="hidden" name="submission_id" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.raceTagSubmissionId)#</cfoutput>"/>
+    <input type="hidden" name="external_event_id" value="<cfoutput>#encodeForHTMLAttribute(FORM.external_event_id)#</cfoutput>"/>
+    <input type="hidden" name="result_import_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.raceTagCsrf)#</cfoutput>"/>
 
     <div class="mb-3">
         <label for="inputRaceTagUrl" class="form-label">URL técnica ou pública do resultado</label>
@@ -443,7 +443,7 @@ function raceTagResponseHeaderValue(required any rawValue) {
                name="url_resultado"
                required
                <cfif NOT VARIABLES.raceTagUnscopedAccess>readonly</cfif>
-               value="<cfoutput>#htmlEditFormat(FORM.url_resultado)#</cfoutput>"
+               value="<cfoutput>#encodeForHTMLAttribute(FORM.url_resultado)#</cfoutput>"
                placeholder="https://.../data/ID/event.json ou https://.../#/evento"/>
         <div class="form-text">Aceita o <code>event.json</code> direto ou a página pública RaceTag Pro.</div>
     </div>
@@ -455,16 +455,16 @@ function raceTagResponseHeaderValue(required any rawValue) {
                id="inputRaceTagPublicUrl"
                name="url_resultado_publica"
                <cfif NOT VARIABLES.raceTagUnscopedAccess>readonly</cfif>
-               value="<cfoutput>#htmlEditFormat(FORM.url_resultado_publica)#</cfoutput>"
+               value="<cfoutput>#encodeForHTMLAttribute(FORM.url_resultado_publica)#</cfoutput>"
                placeholder="https://.../#/evento"/>
         <div class="form-text">Quando a submissão vem da fila, este campo já utiliza <code>url_resultado_publica</code>.</div>
     </div>
 
     <cfif len(FORM.url_resultado) AND VARIABLES.raceTagSource.valid>
         <div class="alert alert-secondary py-2 small">
-            <strong>Base detectada:</strong> <cfoutput>#htmlEditFormat(VARIABLES.raceTagSource.baseUrl)#</cfoutput>
+            <strong>Base detectada:</strong> <cfoutput>#encodeForHTML(VARIABLES.raceTagSource.baseUrl)#</cfoutput>
             <cfif len(VARIABLES.raceTagSource.eventUrl)>
-                <br/><strong>event.json:</strong> <cfoutput>#htmlEditFormat(VARIABLES.raceTagSource.eventUrl)#</cfoutput>
+                <br/><strong>event.json:</strong> <cfoutput>#encodeForHTML(VARIABLES.raceTagSource.eventUrl)#</cfoutput>
             </cfif>
         </div>
     </cfif>
@@ -483,16 +483,16 @@ function raceTagResponseHeaderValue(required any rawValue) {
                 </cfloop>
                 <cfif NOT VARIABLES.raceTagSelectedExternalInWindow AND structKeyExists(VARIABLES.evento, "id")>
                     <cfoutput>
-                        <option value="#htmlEditFormat(VARIABLES.evento.id & '')#" selected>
-                            #htmlEditFormat(structKeyExists(VARIABLES.evento, "startDate") ? VARIABLES.evento.startDate & " · " : "")##htmlEditFormat(structKeyExists(VARIABLES.evento, "name") ? VARIABLES.evento.name & "" : "Evento " & VARIABLES.evento.id)#<cfif structKeyExists(VARIABLES.evento, "place") AND len(trim(VARIABLES.evento.place & ""))> · #htmlEditFormat(VARIABLES.evento.place & "")#</cfif>
+                        <option value="#encodeForHTMLAttribute(VARIABLES.evento.id & '')#" selected>
+                            #encodeForHTML(structKeyExists(VARIABLES.evento, "startDate") ? VARIABLES.evento.startDate & " · " : "")##encodeForHTML(structKeyExists(VARIABLES.evento, "name") ? VARIABLES.evento.name & "" : "Evento " & VARIABLES.evento.id)#<cfif structKeyExists(VARIABLES.evento, "place") AND len(trim(VARIABLES.evento.place & ""))> · #encodeForHTML(VARIABLES.evento.place & "")#</cfif>
                         </option>
                     </cfoutput>
                 </cfif>
                 <cfloop from="1" to="#VARIABLES.raceTagExternalOptionLimit#" index="raceTagExternalIndex">
                     <cfset raceTagExternalOption = VARIABLES.raceTagExternalEvents[raceTagExternalIndex]/>
                     <cfoutput>
-                        <option value="#htmlEditFormat(raceTagExternalOption.id & '')#" <cfif trim(FORM.cod_evento) EQ trim(raceTagExternalOption.id & "")>selected</cfif>>
-                            #htmlEditFormat(structKeyExists(raceTagExternalOption, "startDate") ? raceTagExternalOption.startDate & " · " : "")##htmlEditFormat(raceTagExternalOption.name & "")#<cfif structKeyExists(raceTagExternalOption, "place") AND len(trim(raceTagExternalOption.place & ""))> · #htmlEditFormat(raceTagExternalOption.place & "")#</cfif>
+                        <option value="#encodeForHTMLAttribute(raceTagExternalOption.id & '')#" <cfif trim(FORM.cod_evento) EQ trim(raceTagExternalOption.id & "")>selected</cfif>>
+                            #encodeForHTML(structKeyExists(raceTagExternalOption, "startDate") ? raceTagExternalOption.startDate & " · " : "")##encodeForHTML(raceTagExternalOption.name & "")#<cfif structKeyExists(raceTagExternalOption, "place") AND len(trim(raceTagExternalOption.place & ""))> · #encodeForHTML(raceTagExternalOption.place & "")#</cfif>
                         </option>
                     </cfoutput>
                 </cfloop>
@@ -506,7 +506,7 @@ function raceTagResponseHeaderValue(required any rawValue) {
     </button>
 
     <cfif len(VARIABLES.raceTagError)>
-        <div class="alert alert-danger"><cfoutput>#htmlEditFormat(VARIABLES.raceTagError)#</cfoutput></div>
+        <div class="alert alert-danger"><cfoutput>#encodeForHTML(VARIABLES.raceTagError)#</cfoutput></div>
     </cfif>
 
     <cfif VARIABLES.raceTagPayloadIntentAvailable>
@@ -563,7 +563,7 @@ function raceTagResponseHeaderValue(required any rawValue) {
             <div class="card-body">
                 <div class="small mb-3">
                     <strong>Status HTTP:</strong>
-                    <code><cfoutput>#htmlEditFormat(VARIABLES.raceTagEventHttpStatus)#</cfoutput></code>
+                    <code><cfoutput>#encodeForHTML(VARIABLES.raceTagEventHttpStatus)#</cfoutput></code>
                 </div>
 
                 <cfif structCount(VARIABLES.raceTagEventResponseHeaders)>
@@ -573,8 +573,8 @@ function raceTagResponseHeaderValue(required any rawValue) {
                             <tbody>
                                 <cfloop collection="#VARIABLES.raceTagEventResponseHeaders#" item="raceTagResponseHeaderName">
                                     <tr>
-                                        <th scope="row"><code><cfoutput>#htmlEditFormat(raceTagResponseHeaderName)#</cfoutput></code></th>
-                                        <td class="text-break"><cfoutput>#htmlEditFormat(raceTagResponseHeaderValue(VARIABLES.raceTagEventResponseHeaders[raceTagResponseHeaderName]))#</cfoutput></td>
+                                        <th scope="row"><code><cfoutput>#encodeForHTML(raceTagResponseHeaderName)#</cfoutput></code></th>
+                                        <td class="text-break"><cfoutput>#encodeForHTML(raceTagResponseHeaderValue(VARIABLES.raceTagEventResponseHeaders[raceTagResponseHeaderName]))#</cfoutput></td>
                                     </tr>
                                 </cfloop>
                             </tbody>
@@ -583,7 +583,7 @@ function raceTagResponseHeaderValue(required any rawValue) {
                 </cfif>
 
                 <div class="small fw-bold mb-1">Conteúdo bruto atual</div>
-                <pre class="bg-dark text-light rounded p-3 mb-1" style="max-height: 28rem; overflow: auto; white-space: pre-wrap;"><cfoutput>#htmlEditFormat(left(VARIABLES.raceTagEventRawBody, min(len(VARIABLES.raceTagEventRawBody), VARIABLES.raceTagEventRawDisplayLimit)))#</cfoutput></pre>
+                <pre class="bg-dark text-light rounded p-3 mb-1" style="max-height: 28rem; overflow: auto; white-space: pre-wrap;"><cfoutput>#encodeForHTML(left(VARIABLES.raceTagEventRawBody, min(len(VARIABLES.raceTagEventRawBody), VARIABLES.raceTagEventRawDisplayLimit)))#</cfoutput></pre>
                 <cfif len(VARIABLES.raceTagEventRawBody) GT VARIABLES.raceTagEventRawDisplayLimit>
                     <div class="text-warning small">Exibição limitada aos primeiros 256 KB. O arquivo completo continua sendo validado pelo processador.</div>
                 </cfif>
@@ -606,11 +606,11 @@ function raceTagResponseHeaderValue(required any rawValue) {
                     </cfif>
                 </div>
                 <cfoutput>
-                    <div><strong>ID externo:</strong> #htmlEditFormat(VARIABLES.evento.id & "")#</div>
-                    <cfif structKeyExists(VARIABLES.evento, "name")><div><strong>Evento:</strong> #htmlEditFormat(VARIABLES.evento.name & "")#</div></cfif>
-                    <cfif structKeyExists(VARIABLES.evento, "startDate")><div><strong>Data:</strong> #htmlEditFormat(VARIABLES.evento.startDate & "")#<cfif structKeyExists(VARIABLES.evento, "endDate") AND VARIABLES.evento.endDate NEQ VARIABLES.evento.startDate> a #htmlEditFormat(VARIABLES.evento.endDate & "")#</cfif></div></cfif>
-                    <cfif structKeyExists(VARIABLES.evento, "place")><div><strong>Local:</strong> #htmlEditFormat(VARIABLES.evento.place & "")#</div></cfif>
-                    <cfif structKeyExists(VARIABLES.evento, "organizer") AND len(trim(VARIABLES.evento.organizer & ""))><div><strong>Organizador:</strong> #htmlEditFormat(VARIABLES.evento.organizer & "")#</div></cfif>
+                    <div><strong>ID externo:</strong> #encodeForHTML(VARIABLES.evento.id & "")#</div>
+                    <cfif structKeyExists(VARIABLES.evento, "name")><div><strong>Evento:</strong> #encodeForHTML(VARIABLES.evento.name & "")#</div></cfif>
+                    <cfif structKeyExists(VARIABLES.evento, "startDate")><div><strong>Data:</strong> #encodeForHTML(VARIABLES.evento.startDate & "")#<cfif structKeyExists(VARIABLES.evento, "endDate") AND VARIABLES.evento.endDate NEQ VARIABLES.evento.startDate> a #encodeForHTML(VARIABLES.evento.endDate & "")#</cfif></div></cfif>
+                    <cfif structKeyExists(VARIABLES.evento, "place")><div><strong>Local:</strong> #encodeForHTML(VARIABLES.evento.place & "")#</div></cfif>
+                    <cfif structKeyExists(VARIABLES.evento, "organizer") AND len(trim(VARIABLES.evento.organizer & ""))><div><strong>Organizador:</strong> #encodeForHTML(VARIABLES.evento.organizer & "")#</div></cfif>
                 </cfoutput>
             </div>
         </div>
@@ -621,7 +621,7 @@ function raceTagResponseHeaderValue(required any rawValue) {
                 <option value="">Selecione o evento correto</option>
                 <cfoutput query="qRaceTagCandidates">
                     <option value="#id_evento#" <cfif val(FORM.id_evento) EQ id_evento>selected</cfif>>
-                        #lsDateFormat(data_inicial, "dd/mm/yyyy")# · #htmlEditFormat(nome_evento)# · #htmlEditFormat(cidade)#/#htmlEditFormat(estado)# · ID #id_evento#
+                        #lsDateFormat(data_inicial, "dd/mm/yyyy")# · #encodeForHTML(nome_evento)# · #encodeForHTML(cidade)#/#encodeForHTML(estado)# · ID #id_evento#
                     </option>
                 </cfoutput>
             </select>
@@ -635,7 +635,7 @@ function raceTagResponseHeaderValue(required any rawValue) {
             AND VARIABLES.raceTagOpenResultsDecision.standardAllowed>
             <div class="alert alert-warning">
                 <strong>Confirme antes de publicar:</strong>
-                <cfoutput>#htmlEditFormat(qRaceTagSelectedEvent.nome_evento)# · ID #qRaceTagSelectedEvent.id_evento#</cfoutput>.
+                <cfoutput>#encodeForHTML(qRaceTagSelectedEvent.nome_evento)# · ID #qRaceTagSelectedEvent.id_evento#</cfoutput>.
                 A importação atualizará as tabelas de resultados desse evento.
             </div>
             <button class="btn btn-warning" type="submit" name="action" value="processar">
@@ -681,7 +681,7 @@ function raceTagResponseHeaderValue(required any rawValue) {
             </button>
         <cfelse>
             <div class="alert alert-secondary mb-0">
-                Esta submissão já está <strong><cfoutput>#htmlEditFormat(qRaceTagSubmission.status_processamento)#</cfoutput></strong> e não pode ser reservada novamente por esta tela.
+                Esta submissão já está <strong><cfoutput>#encodeForHTML(qRaceTagSubmission.status_processamento)#</cfoutput></strong> e não pode ser reservada novamente por esta tela.
             </div>
         </cfif>
     </cfif>
@@ -885,7 +885,7 @@ function raceTagResponseHeaderValue(required any rawValue) {
                     </cfif>
                     <div class="alert alert-danger mt-3">
                         <strong>Falha no processamento.</strong>
-                        <cfoutput>#htmlEditFormat(cfcatch.message)#</cfoutput>
+                        <cfoutput>#encodeForHTML(cfcatch.message)#</cfoutput>
                     </div>
                 </cfcatch>
             </cftry>

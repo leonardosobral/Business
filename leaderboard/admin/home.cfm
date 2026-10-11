@@ -57,15 +57,15 @@
               <div class="leaderboard-admin-result-grid">
                 <div class="leaderboard-admin-result-item">
                   <small>ID do usuário</small>
-                  <cfoutput>#htmlEditFormat(VARIABLES.leaderboardAdminCreatedUserId)#</cfoutput>
+                  <cfoutput>#encodeForHTML(VARIABLES.leaderboardAdminCreatedUserId)#</cfoutput>
                 </div>
                 <div class="leaderboard-admin-result-item">
                   <small>ID da página</small>
-                  <cfoutput>#htmlEditFormat(VARIABLES.leaderboardAdminCreatedPageId)#</cfoutput>
+                  <cfoutput>#encodeForHTML(VARIABLES.leaderboardAdminCreatedPageId)#</cfoutput>
                 </div>
                 <div class="leaderboard-admin-result-item">
                   <small>Perfil público</small>
-                  <cfoutput><a class="link-warning" href="https://roadrunners.run/atleta/#urlEncodedFormat(VARIABLES.leaderboardAdminCreatedTag)#/" target="_blank">/atleta/#htmlEditFormat(VARIABLES.leaderboardAdminCreatedTag)#/</a></cfoutput>
+                  <cfoutput><a class="link-warning" href="https://roadrunners.run/atleta/#urlEncodedFormat(VARIABLES.leaderboardAdminCreatedTag)#/" target="_blank">/atleta/#encodeForHTML(VARIABLES.leaderboardAdminCreatedTag)#/</a></cfoutput>
                 </div>
               </div>
             </div>
@@ -82,7 +82,7 @@
               <cfelseif VARIABLES.leaderboardAdminError EQ "email_invalido">
                 O e-mail informado é inválido.
               <cfelse>
-                Não foi possível concluir o cadastro manual. <cfoutput>#htmlEditFormat(VARIABLES.leaderboardAdminError)#</cfoutput>
+                Não foi possível concluir o cadastro manual. <cfoutput>#encodeForHTML(VARIABLES.leaderboardAdminError)#</cfoutput>
               </cfif>
             </div>
           </cfif>
@@ -99,13 +99,13 @@
               <div class="row g-3">
                 <div class="col-12 col-lg-6">
                   <label class="form-label">E-mail provisório</label>
-                  <input class="form-control" type="email" name="manual_user_email" value="<cfoutput>#htmlEditFormat(VARIABLES.leaderboardAdminFormEmail)#</cfoutput>" required/>
+                  <input class="form-control" type="email" name="manual_user_email" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.leaderboardAdminFormEmail)#</cfoutput>" required/>
                   <div class="form-text">Você pode manter o valor gerado automaticamente ou ajustar manualmente.</div>
                 </div>
 
                 <div class="col-12 col-lg-6">
                   <label class="form-label">Nome</label>
-                  <input class="form-control" type="text" name="manual_user_name" value="<cfoutput>#htmlEditFormat(VARIABLES.leaderboardAdminFormName)#</cfoutput>" maxlength="255" required/>
+                  <input class="form-control" type="text" name="manual_user_name" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.leaderboardAdminFormName)#</cfoutput>" maxlength="255" required/>
                 </div>
 
                 <div class="col-12 col-md-4">
@@ -122,14 +122,14 @@
                   <select class="form-select" name="manual_user_country" required>
                     <option value="">Selecione</option>
                     <cfoutput query="qLeaderboardAdminCountries">
-                      <option value="#qLeaderboardAdminCountries.cod_alpha2#" <cfif VARIABLES.leaderboardAdminFormCountry EQ qLeaderboardAdminCountries.cod_alpha2>selected</cfif>>#htmlEditFormat(qLeaderboardAdminCountries.nome_pais)#</option>
+                      <option value="#qLeaderboardAdminCountries.cod_alpha2#" <cfif VARIABLES.leaderboardAdminFormCountry EQ qLeaderboardAdminCountries.cod_alpha2>selected</cfif>>#encodeForHTML(qLeaderboardAdminCountries.nome_pais)#</option>
                     </cfoutput>
                   </select>
                 </div>
 
                 <div class="col-12 col-md-4">
                   <label class="form-label">CBAT</label>
-                  <input class="form-control" type="text" name="manual_user_cbat" value="<cfoutput>#htmlEditFormat(VARIABLES.leaderboardAdminFormCBAT)#</cfoutput>" maxlength="50"/>
+                  <input class="form-control" type="text" name="manual_user_cbat" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.leaderboardAdminFormCBAT)#</cfoutput>" maxlength="50"/>
                 </div>
               </div>
 

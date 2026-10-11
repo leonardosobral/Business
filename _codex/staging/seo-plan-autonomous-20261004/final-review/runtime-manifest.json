@@ -1,0 +1,86 @@
+{
+  "RoadRunners/circuitocatarinense/corridaderua/index.cfm": {
+    "final_stage": "seo-circuit-distance-20261004",
+    "sha256": "1daa77d7f6a6b19249404c3cca7c3686df1cf401df0694aabe30071986bdcb86"
+  },
+  "RoadRunners/circuitocatarinense/trailrun/index.cfm": {
+    "final_stage": "seo-circuit-intent-20261004",
+    "sha256": "159b9afdbd7ebcc8f3dd448e87e69483d3f98ac9802d64ead90019f3bdf715b0"
+  },
+  "RoadRunners/assets/css/cores.min.css": {
+    "final_stage": "seo-shared-assets-20261004",
+    "sha256": "39b897a55d5d7137dfaa958b1c11df5f264a52a27bf077b7d384fbeab615f642"
+  },
+  "RoadRunners/assets/css/runnerhub-footer.min.css": {
+    "final_stage": "seo-shared-assets-20261004",
+    "sha256": "a245fbf83bf34e76b8911423068294b2b989b32f5e717c433b15a78a580e1869"
+  },
+  "RoadRunners/assets/css/rr-audience-privacy.min.css": {
+    "final_stage": "seo-shared-assets-20261004",
+    "sha256": "b14f80dc621390f5a11a26e5daebae6ef3b7ab348ff581e9202d837e112fa3e1"
+  },
+  "RoadRunners/assets/js/runnerhub-entry-prompts.min.js": {
+    "final_stage": "seo-shared-assets-20261004",
+    "sha256": "65aca1c489093895c03eb478203d87d6b57f1d81cea7098fb34c7f7f95f3f701"
+  },
+  "RoadRunners/assets/js/rr-audience-privacy.min.js": {
+    "final_stage": "seo-shared-assets-20261004",
+    "sha256": "61d84ee8c6dd8e21112f133c00b820521f63dd43f85b84ca9c9056a744c5a09d"
+  },
+  "RoadRunners/includes/estrutura/seo-web-tools-body-end.cfm": {
+    "final_stage": "seo-shared-assets-20261004",
+    "sha256": "65248dafd3058b950021902f044309343b36a31beeb2b5c6abc4f686a7a34485"
+  },
+  "RoadRunners/includes/estrutura/footer_assets.cfm": {
+    "final_stage": "seo-shared-assets-20261004",
+    "sha256": "16b38566933985074b7b0b4bfa95c0a397c710b7e3fcb27d07c999a8b540c705"
+  },
+  "RoadRunners/includes/estrutura/seo-web-tools-head.cfm": {
+    "final_stage": "seo-shared-assets-20261004",
+    "sha256": "583c71beb1209eae7b0ae1b63a471162277ac84eae908859ef2fd30d99be172d"
+  },
+  "RoadRunners/includes/analytics/privacy_controls.cfm": {
+    "final_stage": "seo-shared-assets-20261004",
+    "sha256": "88dbda4b2c92024c1b25414da8545a0b7f89b0a591ce6bc109af50de09786008"
+  },
+  "RoadRunners/sitemaps/index.cfm": {
+    "final_stage": "seo-abavse-reschedule-20261004",
+    "sha256": "25e6a0d17653be13c67f28f395d0b8b9ce22d327c41185093bc18ef06bc9cdea"
+  },
+  "RoadRunners/evento/index.cfm": {
+    "final_stage": "seo-public-accessibility-20261004",
+    "sha256": "cc12568c40eb7f48a2ee4bcad17515c4e85da36535e630bd80b8e36d80a8ccd8"
+  },
+  "RoadRunners/services/EventRedirectService.cfc": {
+    "final_stage": "seo-abavse-route-tag-20261004",
+    "sha256": "dc13e9fbde7924f0173977b5f89ee717de44fc60aa516e952199908f485a6cfd"
+  },
+  "RoadRunners/includes/estrutura/event_redirect.cfm": {
+    "final_stage": "seo-abavse-reschedule-20261004",
+    "sha256": "f956daf44200d7f08c50fb2eb6947c36751764b41f0b77591ed73656aefae68c"
+  },
+  "RoadRunners/llms.txt": {
+    "final_stage": "seo-ai-navigation-20261004",
+    "sha256": "c69ea8c386dda1c427710441982338dbebf80b28e1891d365de6257afa707fc0"
+  },
+  "RoadRunners/circuitocatarinense/index.cfm": {
+    "final_stage": "seo-ai-navigation-20261004",
+    "sha256": "d48dc7d242c58626516d5b484a3b4b79d00c5e728bd6b2aebc371f72be365e4c"
+  },
+  "RoadRunners/login/index.cfm": {
+    "final_stage": "seo-public-accessibility-20261004",
+    "sha256": "b0bbc7e88024bf83372f3043fa87d69e04794f91485bcbc970e2de5767c7993b"
+  },
+  "RoadRunners/includes/estrutura/header_tema.cfm": {
+    "final_stage": "seo-public-accessibility-20261004",
+    "sha256": "14cf0f8f4156bd5d516740e5e212aa9be98d50fdac08818f89209c2e3940276c"
+  },
+  "Business/portal/includes/seo_queue_data.cfm": {
+    "final_stage": "seo-plan-final-panel-20261004",
+    "sha256": "80457ee0c7dedf510ebe6fce082a2e1c81e716e876eeaf0b3d7a0ff407a42189"
+  },
+  "Business/portal/conteudo/seo_semrush.cfm": {
+    "final_stage": "seo-plan-final-panel-20261004",
+    "sha256": "96c26d1853e1fed89900bd3cf75770b591aa274e3cf2ad474e40a0a11d2e8f87"
+  }
+}

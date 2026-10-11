@@ -1,0 +1,11 @@
+# Histórico público das correções factuais já publicadas
+
+Entrega incremental do contrato P0 do plano SEO para IA. No RoadRunners, usar o bloco de fontes existente e acrescentar details/summary nativo com registros curados de correções já publicadas. Os recibos de datas atuais continuam vinculados ao par data_inicial/data_final; o histórico registra fato passado e permanece se o cadastro atual mudar. Texto distingue correção do cadastro de adiamento da prova. Sem queries novas, sem metadados novos, sem mudança na política de privacidade.
+
+Nove registros, oito eventos: datas de percursos dos oito e data na descrição TGS. Proveniência privada: baselines, patches e recibos de verificação dos lotes seo-date-priority-20261004 e seo-date-next-20261004. Valores anteriores e posteriores extraídos desses artefatos. Cada registro público possui campo, distâncias quando aplicável, datas anterior/corrigida, data de registro e link da fonte. Nenhum identificador de atleta, operador ou resultado é publicado. IZ1 e 5º BEC ficam fora por conflito de fonte.
+
+Arquivos RoadRunners: fact_review_data.cfm amplia recibos; fact_history_data.cfm guarda registros curados; fact_history.cfm valida/renderiza; fact_review.cfm inclui histórico depois da conferência atual. Publicar dados e renderer antes da chamada. Includes diretos403. Todos os rótulos PT/EN/ES, fontesHTTP(S),semuserinfo/backslash/quebras; saída escapada; datasISO válidas, registro não futuro; tipo de campo fechado. Registro inválido é omitido, não promove selo de correção.
+
+A gestão da proveniência no formulário Business, a captura automática de futuras edições e o histórico por campo de local/status ainda não estão entregues. O backend atual insere logs de ação em tb_log, mas não registra um par antes/depois com a fonte; registros antigos não devem ser reconstruídos por inferência. Esta publicação conserva evidência comprovada enquanto o cadastro evolui.
+
+Validação: baseline e dependências de produção; red/greenCFML; dadoscurados derivados de publicação verificada; compilação4templates; revisãoindependente;27URLs antes/depois comJSON-LD/canonical/alternates idênticos; includesdiretos; desktop/mobile e teclado; hashes pós-deploy e backup recuperável. Atualizar SH-02 parcial, sem alterar notas ou evidênciaGoogle.

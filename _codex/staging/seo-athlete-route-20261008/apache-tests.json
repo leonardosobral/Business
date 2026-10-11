@@ -1,0 +1,593 @@
+{
+  "checks": [
+    {
+      "name": "GET space atleta",
+      "before": {
+        "status": 403,
+        "returncode": 0
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "",
+          "tag": "leonardo muniz",
+          "lang": "",
+          "injected": false,
+          "utm": ""
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD space atleta",
+      "before": {
+        "status": 403,
+        "returncode": 0
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "atleta runner-hub",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "runner-hub",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "runner-hub",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "atleta a%2Bb",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "a b",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "a+b",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "atleta a%26b",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "a",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "a&b",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "atleta Jos%C3%A9",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "José",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "José",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "atleta a%2520b",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "a b",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "a%20b",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "GET space en/athlete",
+      "before": {
+        "status": 403,
+        "returncode": 0
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "",
+          "tag": "leonardo muniz",
+          "lang": "en",
+          "injected": false,
+          "utm": ""
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD space en/athlete",
+      "before": {
+        "status": 403,
+        "returncode": 0
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "en/athlete runner-hub",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "runner-hub",
+          "lang": "en",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "runner-hub",
+          "lang": "en",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "en/athlete a%2Bb",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a b",
+          "lang": "en",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a+b",
+          "lang": "en",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "en/athlete a%26b",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a",
+          "lang": "en",
+          "injected": true,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a&b",
+          "lang": "en",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "en/athlete Jos%C3%A9",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "José",
+          "lang": "en",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "José",
+          "lang": "en",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "en/athlete a%2520b",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a b",
+          "lang": "en",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a%20b",
+          "lang": "en",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "GET space es/atleta",
+      "before": {
+        "status": 403,
+        "returncode": 0
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "",
+          "tag": "leonardo muniz",
+          "lang": "es",
+          "injected": false,
+          "utm": ""
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD space es/atleta",
+      "before": {
+        "status": 403,
+        "returncode": 0
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "es/atleta runner-hub",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "runner-hub",
+          "lang": "es",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "runner-hub",
+          "lang": "es",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "es/atleta a%2Bb",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a b",
+          "lang": "es",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a+b",
+          "lang": "es",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "es/atleta a%26b",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a",
+          "lang": "es",
+          "injected": true,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a&b",
+          "lang": "es",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "es/atleta Jos%C3%A9",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "José",
+          "lang": "es",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "José",
+          "lang": "es",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "es/atleta a%2520b",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a b",
+          "lang": "es",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "athlete",
+          "filtro": "resultados",
+          "tag": "a%20b",
+          "lang": "es",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "static file",
+      "before": {
+        "status": 200,
+        "returncode": 0
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "direct entry",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "direct",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "resultados",
+          "tag": "direct",
+          "lang": "",
+          "injected": false,
+          "utm": "seo"
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "existing directory",
+      "before": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "",
+          "tag": "",
+          "lang": "",
+          "injected": false,
+          "utm": ""
+        }
+      },
+      "after": {
+        "status": 200,
+        "returncode": 0,
+        "data": {
+          "route": "",
+          "filtro": "",
+          "tag": "",
+          "lang": "",
+          "injected": false,
+          "utm": ""
+        }
+      },
+      "passed": true
+    }
+  ],
+  "hashes": {
+    ".htaccess": "028c7e47e8e77147bebf09318dd1807c95198a63b5f6017d8e44f1ba136324d4",
+    "atleta/.htaccess": "9d94fd709394957dc3ef895c711ac18be00b86dea787568b4aa0b7828aa0282d"
+  },
+  "failed": []
+}

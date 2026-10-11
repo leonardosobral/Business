@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-corrida-e-caminhada-lacos-da-vida/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-e-caminhada-lacos-da-vida/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-e-caminhada-lacos-da-vida/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-e-caminhada-lacos-da-vida/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-e-caminhada-lacos-da-vida/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-corrida-e-caminhada-lacos-da-vida/",
+      "name": "CORRIDA E CAMINHADA LAÇOS DA VIDA",
+      "description": "CORRIDA E CAMINHADA LAÇOS DA VIDA acontece em 29 novembro 2026, em Ponte Estaiada SBC: Avenida São Paulo n°10, São Bernardo do Campo, SP, Brasil - São Bernardo do Campo - SP.",
+      "url": "https://roadrunners.run/evento/2026-corrida-e-caminhada-lacos-da-vida/",
+      "startDate": "2026-11-29",
+      "endDate": "2026-11-29",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/8H0HRLBTCDNSZGRR2MT6FY86LH32BAW5VD33SWT0CG80EMM6XL.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Ponte Estaiada SBC: Avenida São Paulo n°10, São Bernardo do Campo, SP, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "São Bernardo do Campo",
+          "addressRegion": "SP",
+          "addressCountry": "BR",
+          "streetAddress": "Ponte Estaiada SBC: Avenida São Paulo n°10, São Bernardo do Campo, SP, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87964&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sp/",
+          "@type": "ListItem",
+          "name": "Corridas em SP"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-corrida-e-caminhada-lacos-da-vida/",
+          "@type": "ListItem",
+          "name": "CORRIDA E CAMINHADA LAÇOS DA VIDA"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

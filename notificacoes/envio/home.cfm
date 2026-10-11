@@ -227,7 +227,7 @@
                   <tbody>
                     <cfoutput query="qNotificationPushPlatformMetrics">
                       <tr>
-                        <td class="text-capitalize">#htmlEditFormat(platform)#</td>
+                        <td class="text-capitalize">#encodeForHTML(platform)#</td>
                         <td>#LSNumberFormat(active_devices)#</td>
                         <td>#LSNumberFormat(queued_7d)#</td>
                         <td>#LSNumberFormat(accepted_7d)#</td>
@@ -248,11 +248,11 @@
                     <cfoutput query="qNotificationPushRecentFailures">
                       <tr>
                         <td>##<span>#LSNumberFormat(id_push_delivery)#</span></td>
-                        <td><span class="badge text-bg-#status EQ 'retry' ? 'warning' : 'danger'#">#htmlEditFormat(status)#</span></td>
-                        <td>#htmlEditFormat(platform)# / #htmlEditFormat(browser)#</td>
+                        <td><span class="badge text-bg-#status EQ 'retry' ? 'warning' : 'danger'#">#encodeForHTML(status)#</span></td>
+                        <td>#encodeForHTML(platform)# / #encodeForHTML(browser)#</td>
                         <td><cfif val(last_http_status) GT 0>#int(last_http_status)#<cfelse>—</cfif></td>
                         <td>#LSNumberFormat(attempts)#</td>
-                        <td class="small">#htmlEditFormat(left(last_error & "", 300))#</td>
+                        <td class="small">#encodeForHTML(left(last_error & "", 300))#</td>
                         <td class="small">#dateTimeFormat(updated_at, "dd/mm/yyyy HH:nn:ss")#</td>
                       </tr>
                     </cfoutput>
@@ -286,37 +286,37 @@
                   #LSNumberFormat(VARIABLES.notificationSendPushDeliveries)# entrega(s) Push foram enfileiradas para processamento assíncrono em #LSNumberFormat(VARIABLES.notificationSendPushSubscriptions)# dispositivo(s).
                 </cfoutput>
                 <cfif len(trim(VARIABLES.notificationSendPushMessage))>
-                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                  <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
                 </cfif>
                 <cfif len(trim(VARIABLES.notificationSendPushDetail))>
-                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
+                  <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
                 </cfif>
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "delivery_retry">
               <div class="alert alert-warning">
                 O serviço Push não aceitou a entrega nesta tentativa. Ela permanece na fila para uma nova tentativa.
                 <cfif len(trim(VARIABLES.notificationSendPushMessage))>
-                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                  <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
                 </cfif>
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "delivery_failed">
               <div class="alert alert-danger">
                 O worker processou a fila, mas nenhuma entrega foi aceita pelo serviço Push.
                 <cfif len(trim(VARIABLES.notificationSendPushMessage))>
-                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                  <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
                 </cfif>
                 <cfif len(trim(VARIABLES.notificationSendPushDetail))>
-                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
+                  <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
                 </cfif>
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "worker_failed">
               <div class="alert alert-danger">
                 A entrega foi enfileirada, mas o worker de Push falhou antes de confirmar o envio.
                 <cfif len(trim(VARIABLES.notificationSendPushMessage))>
-                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                  <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
                 </cfif>
                 <cfif len(trim(VARIABLES.notificationSendPushDetail))>
-                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
+                  <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
                 </cfif>
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "no_active_subscriptions">
@@ -331,7 +331,7 @@
               <div class="alert alert-warning">
                 As notificações foram materializadas, mas o Road Runners não conseguiu confirmar nenhuma entrega Push.
                 <cfif len(trim(VARIABLES.notificationSendPushMessage))>
-                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                  <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
                 </cfif>
               </div>
             <cfelseif VARIABLES.notificationSendPushStatus EQ "scheduled">
@@ -354,10 +354,10 @@
               <div class="alert alert-warning">
                 A API central do Road Runners retornou erro interno ao processar o dispatch.
                 <cfif len(trim(VARIABLES.notificationSendPushMessage))>
-                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                  <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
                 </cfif>
                 <cfif len(trim(VARIABLES.notificationSendPushDetail))>
-                  <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
+                  <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
                 </cfif>
               </div>
             </cfif>
@@ -381,13 +381,13 @@
             <div class="alert alert-danger">
               O dispatch não foi aceito pela API central do Road Runners.
               <cfif len(trim(VARIABLES.notificationSendPushStatus))>
-                <span class="d-block small mt-1">Status retornado: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushStatus)#</cfoutput></span>
+                <span class="d-block small mt-1">Status retornado: <cfoutput>#encodeForHTML(VARIABLES.notificationSendPushStatus)#</cfoutput></span>
               </cfif>
               <cfif len(trim(VARIABLES.notificationSendPushMessage))>
-                <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
+                <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushMessage)#</cfoutput></span>
               </cfif>
               <cfif len(trim(VARIABLES.notificationSendPushDetail))>
-                <span class="d-block small mt-1"><cfoutput>#htmlEditFormat(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
+                <span class="d-block small mt-1"><cfoutput>#encodeForHTML(VARIABLES.notificationSendPushDetail)#</cfoutput></span>
               </cfif>
             </div>
           </cfif>
@@ -396,7 +396,7 @@
           <div class="notification-send-card p-4 mb-4">
             <form method="get" action="./">
               <input type="hidden" name="pagina" value="<cfoutput>#VARIABLES.notificationSendPage#</cfoutput>"/>
-              <input type="hidden" name="view" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendView)#</cfoutput>"/>
+              <input type="hidden" name="view" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendView)#</cfoutput>"/>
 
               <div class="row notification-send-grid">
                 <div class="col-12 col-xl-4">
@@ -409,7 +409,7 @@
                         <cfif len(trim(VARIABLES.notificationSendTemplateCampaignColumn)) AND len(trim(qNotificationSendTemplates[VARIABLES.notificationSendTemplateCampaignColumn][qNotificationSendTemplates.currentRow]))>
                           <cfset VARIABLES.notificationTemplateOptionLabel = qNotificationSendTemplates[VARIABLES.notificationSendTemplateCampaignColumn][qNotificationSendTemplates.currentRow]/>
                         </cfif>
-                        <option value="#htmlEditFormat(qNotificationSendTemplates[VARIABLES.notificationSendTemplatePk][qNotificationSendTemplates.currentRow])#" <cfif VARIABLES.notificationSendTemplateId EQ qNotificationSendTemplates[VARIABLES.notificationSendTemplatePk][qNotificationSendTemplates.currentRow]>selected</cfif>>#htmlEditFormat(VARIABLES.notificationTemplateOptionLabel)#</option>
+                        <option value="#encodeForHTMLAttribute(qNotificationSendTemplates[VARIABLES.notificationSendTemplatePk][qNotificationSendTemplates.currentRow])#" <cfif VARIABLES.notificationSendTemplateId EQ qNotificationSendTemplates[VARIABLES.notificationSendTemplatePk][qNotificationSendTemplates.currentRow]>selected</cfif>>#encodeForHTML(VARIABLES.notificationTemplateOptionLabel)#</option>
                       </cfoutput>
                     </select>
                   </div>
@@ -420,9 +420,9 @@
                     <label class="form-label">Usuário específico</label>
                     <div class="notification-user-search">
                       <input class="form-control" type="search" id="notification_user_search"
-                        value="<cfif len(trim(VARIABLES.notificationSendUserId))><cfoutput>ID #htmlEditFormat(VARIABLES.notificationSendUserId)#</cfoutput></cfif>"
+                        value="<cfif len(trim(VARIABLES.notificationSendUserId))><cfoutput>ID #encodeForHTMLAttribute(VARIABLES.notificationSendUserId)#</cfoutput></cfif>"
                         placeholder="Nome, ID ou e-mail" autocomplete="off"/>
-                      <input type="hidden" id="notification_user_id" name="user_id" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendUserId)#</cfoutput>"/>
+                      <input type="hidden" id="notification_user_id" name="user_id" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendUserId)#</cfoutput>"/>
                       <div class="notification-user-search-results d-none" id="notification_user_search_results"></div>
                     </div>
                     <div class="form-text">Selecione um resultado para limitar o envio.</div>
@@ -433,7 +433,7 @@
                   <div class="notification-send-field-card">
                     <label class="form-label" for="notification_event_id">Inscritos no evento</label>
                     <input class="form-control" type="number" id="notification_event_id" name="id_evento"
-                      value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendEventId)#</cfoutput>"
+                      value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendEventId)#</cfoutput>"
                       min="1" step="1" inputmode="numeric" placeholder="ID do evento"/>
                     <div class="form-text">Limita aos usuários presentes na <code>tb_inscricoes</code> para esse <code>id_evento</code>.</div>
                   </div>
@@ -442,14 +442,14 @@
                 <div class="col-12 col-md-6 col-xl-3">
                   <div class="notification-send-field-card">
                     <label class="form-label">Data de Publicação</label>
-                    <input class="form-control" type="datetime-local" name="data_publicacao" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendPublicacao)#</cfoutput>" step="60"/>
+                    <input class="form-control" type="datetime-local" name="data_publicacao" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendPublicacao)#</cfoutput>" step="60"/>
                   </div>
                 </div>
 
                 <div class="col-12 col-md-6 col-xl-3">
                   <div class="notification-send-field-card">
                     <label class="form-label">Expiração em Dias</label>
-                    <input class="form-control" type="number" name="dias_expiracao" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendDiasExpiracao)#</cfoutput>" step="1" min="0" inputmode="numeric"/>
+                    <input class="form-control" type="number" name="dias_expiracao" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendDiasExpiracao)#</cfoutput>" step="1" min="0" inputmode="numeric"/>
                     <div class="small text-muted mt-2">
                       <cfif VARIABLES.notificationSendPublicationIsValid AND VARIABLES.notificationSendExpirationIsValid>
                         <cfoutput>Expira em #LSDateTimeFormat(VARIABLES.notificationSendExpirationDate, "dd/mm/yyyy HH:nn")#</cfoutput>
@@ -488,7 +488,7 @@
                     <select class="form-select" name="desafio">
                       <option value="" <cfif VARIABLES.notificationSendDesafio EQ "">selected</cfif>>Todos</option>
                       <cfoutput query="qNotificationSendChallenges">
-                        <option value="#htmlEditFormat(desafio)#" <cfif VARIABLES.notificationSendDesafio EQ desafio>selected</cfif>>#htmlEditFormat(desafio)# (#LSNumberFormat(total_usuarios)#)</option>
+                        <option value="#encodeForHTMLAttribute(desafio)#" <cfif VARIABLES.notificationSendDesafio EQ desafio>selected</cfif>>#encodeForHTML(desafio)# (#LSNumberFormat(total_usuarios)#)</option>
                       </cfoutput>
                     </select>
                   </div>
@@ -555,7 +555,7 @@
                     <select class="form-select" name="pais">
                       <option value="" <cfif VARIABLES.notificationSendPais EQ "">selected</cfif>>Todos</option>
                       <cfoutput query="qNotificationSendCountries">
-                        <option value="#htmlEditFormat(qNotificationSendCountries.pais)#" <cfif VARIABLES.notificationSendPais EQ qNotificationSendCountries.pais>selected</cfif>>#htmlEditFormat(qNotificationSendCountries.nome_pais)#</option>
+                        <option value="#encodeForHTMLAttribute(qNotificationSendCountries.pais)#" <cfif VARIABLES.notificationSendPais EQ qNotificationSendCountries.pais>selected</cfif>>#encodeForHTML(qNotificationSendCountries.nome_pais)#</option>
                       </cfoutput>
                     </select>
                   </div>
@@ -567,7 +567,7 @@
                     <select class="form-select" name="estado">
                       <option value="" <cfif VARIABLES.notificationSendEstado EQ "">selected</cfif>>Todos</option>
                       <cfoutput query="qNotificationSendStates">
-                        <option value="#htmlEditFormat(qNotificationSendStates.estado)#" <cfif VARIABLES.notificationSendEstado EQ qNotificationSendStates.estado>selected</cfif>>#htmlEditFormat(qNotificationSendStates.estado)#</option>
+                        <option value="#encodeForHTMLAttribute(qNotificationSendStates.estado)#" <cfif VARIABLES.notificationSendEstado EQ qNotificationSendStates.estado>selected</cfif>>#encodeForHTML(qNotificationSendStates.estado)#</option>
                       </cfoutput>
                     </select>
                   </div>
@@ -596,20 +596,20 @@
           <cfif VARIABLES.notificationSendView EQ "compose">
           <cfif len(trim(VARIABLES.notificationSendTemplateId)) OR len(trim(VARIABLES.notificationSendUserId)) OR len(VARIABLES.notificationSendEventId) OR len(trim(VARIABLES.notificationSendAdmin)) OR len(trim(VARIABLES.notificationSendStrava)) OR len(trim(VARIABLES.notificationSendDesafio)) OR len(trim(VARIABLES.notificationSendAssessoria)) OR len(trim(VARIABLES.notificationSendDev)) OR len(trim(VARIABLES.notificationSendPartner)) OR len(trim(VARIABLES.notificationSendGenero)) OR len(trim(VARIABLES.notificationSendCBAT)) OR len(trim(VARIABLES.notificationSendPais)) OR len(trim(VARIABLES.notificationSendEstado)) OR len(trim(VARIABLES.notificationSendVerificado))>
             <div class="d-flex flex-wrap gap-2 mb-4">
-              <cfif len(trim(VARIABLES.notificationSendTemplateId))><span class="notification-send-filter-chip">Template: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendTemplateId)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendUserId))><span class="notification-send-filter-chip">Usuário: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendUserId)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendTemplateId))><span class="notification-send-filter-chip">Template: <cfoutput>#encodeForHTML(VARIABLES.notificationSendTemplateId)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendUserId))><span class="notification-send-filter-chip">Usuário: <cfoutput>#encodeForHTML(VARIABLES.notificationSendUserId)#</cfoutput></span></cfif>
               <cfif len(VARIABLES.notificationSendEventId)><span class="notification-send-filter-chip">Evento: <cfoutput>###int(VARIABLES.notificationSendEventId)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendAdmin))><span class="notification-send-filter-chip">Admin: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendAdmin)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendStrava))><span class="notification-send-filter-chip">Strava: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendStrava)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendDesafio))><span class="notification-send-filter-chip">Desafio: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendDesafio)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendAssessoria))><span class="notification-send-filter-chip">Assessoria: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendAssessoria)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendDev))><span class="notification-send-filter-chip">Dev: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendDev)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendPartner))><span class="notification-send-filter-chip">Parceiro: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendPartner)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendGenero))><span class="notification-send-filter-chip">Gênero: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendGenero)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendCBAT))><span class="notification-send-filter-chip">CBAT: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendCBAT)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendPais))><span class="notification-send-filter-chip">País: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendPais)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendEstado))><span class="notification-send-filter-chip">Estado: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendEstado)#</cfoutput></span></cfif>
-              <cfif len(trim(VARIABLES.notificationSendVerificado))><span class="notification-send-filter-chip">Verificado: <cfoutput>#htmlEditFormat(VARIABLES.notificationSendVerificado)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendAdmin))><span class="notification-send-filter-chip">Admin: <cfoutput>#encodeForHTML(VARIABLES.notificationSendAdmin)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendStrava))><span class="notification-send-filter-chip">Strava: <cfoutput>#encodeForHTML(VARIABLES.notificationSendStrava)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendDesafio))><span class="notification-send-filter-chip">Desafio: <cfoutput>#encodeForHTML(VARIABLES.notificationSendDesafio)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendAssessoria))><span class="notification-send-filter-chip">Assessoria: <cfoutput>#encodeForHTML(VARIABLES.notificationSendAssessoria)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendDev))><span class="notification-send-filter-chip">Dev: <cfoutput>#encodeForHTML(VARIABLES.notificationSendDev)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendPartner))><span class="notification-send-filter-chip">Parceiro: <cfoutput>#encodeForHTML(VARIABLES.notificationSendPartner)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendGenero))><span class="notification-send-filter-chip">Gênero: <cfoutput>#encodeForHTML(VARIABLES.notificationSendGenero)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendCBAT))><span class="notification-send-filter-chip">CBAT: <cfoutput>#encodeForHTML(VARIABLES.notificationSendCBAT)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendPais))><span class="notification-send-filter-chip">País: <cfoutput>#encodeForHTML(VARIABLES.notificationSendPais)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendEstado))><span class="notification-send-filter-chip">Estado: <cfoutput>#encodeForHTML(VARIABLES.notificationSendEstado)#</cfoutput></span></cfif>
+              <cfif len(trim(VARIABLES.notificationSendVerificado))><span class="notification-send-filter-chip">Verificado: <cfoutput>#encodeForHTML(VARIABLES.notificationSendVerificado)#</cfoutput></span></cfif>
             </div>
           </cfif>
           </cfif>
@@ -629,11 +629,11 @@
                 <cfif qNotificationSendTemplateCurrent.recordcount>
                   <div class="notification-send-template-preview">
                     <div class="notification-send-template-badge">
-                      <i class="<cfif len(trim(VARIABLES.notificationTemplateCurrentIcon))>#htmlEditFormat(VARIABLES.notificationTemplateCurrentIcon)#<cfelse>fa-solid fa-bell</cfif>"></i>
+                      <i class="<cfif len(trim(VARIABLES.notificationTemplateCurrentIcon))>#encodeForHTMLAttribute(VARIABLES.notificationTemplateCurrentIcon)#<cfelse>fa-solid fa-bell</cfif>"></i>
                       <div>
-                        <div class="fw-semibold"><cfoutput>#htmlEditFormat(len(trim(VARIABLES.notificationTemplateCurrentCampaign)) ? VARIABLES.notificationTemplateCurrentCampaign : ("Template ##" & VARIABLES.notificationSendTemplateId))#</cfoutput></div>
+                        <div class="fw-semibold"><cfoutput>#encodeForHTML(len(trim(VARIABLES.notificationTemplateCurrentCampaign)) ? VARIABLES.notificationTemplateCurrentCampaign : ("Template ##" & VARIABLES.notificationSendTemplateId))#</cfoutput></div>
                         <cfif len(trim(VARIABLES.notificationTemplateCurrentLink))>
-                          <div class="small opacity-75"><cfoutput>#htmlEditFormat(VARIABLES.notificationTemplateCurrentLink)#</cfoutput></div>
+                          <div class="small opacity-75"><cfoutput>#encodeForHTML(VARIABLES.notificationTemplateCurrentLink)#</cfoutput></div>
                         </cfif>
                       </div>
                     </div>
@@ -646,22 +646,22 @@
 
                     <form method="post" action="./?pagina=<cfoutput>#VARIABLES.notificationSendPage#</cfoutput>">
                       <input type="hidden" name="notification_send_action" value="enviar"/>
-                      <input type="hidden" name="notification_send_template_id" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendTemplateId)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_user_id" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendUserId)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_id_evento" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendEventId)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_admin" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendAdmin)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_strava" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendStrava)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_desafio" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendDesafio)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_assessoria" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendAssessoria)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_dev" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendDev)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_partner" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendPartner)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_genero" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendGenero)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_cbat" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendCBAT)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_pais" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendPais)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_estado" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendEstado)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_verificado" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendVerificado)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_data_publicacao" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendPublicacao)#</cfoutput>"/>
-                      <input type="hidden" name="notification_send_dias_expiracao" value="<cfoutput>#htmlEditFormat(VARIABLES.notificationSendDiasExpiracao)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_template_id" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendTemplateId)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_user_id" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendUserId)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_id_evento" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendEventId)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_admin" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendAdmin)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_strava" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendStrava)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_desafio" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendDesafio)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_assessoria" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendAssessoria)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_dev" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendDev)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_partner" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendPartner)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_genero" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendGenero)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_cbat" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendCBAT)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_pais" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendPais)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_estado" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendEstado)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_verificado" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendVerificado)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_data_publicacao" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendPublicacao)#</cfoutput>"/>
+                      <input type="hidden" name="notification_send_dias_expiracao" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificationSendDiasExpiracao)#</cfoutput>"/>
 
                       <div class="small text-muted mb-3">Destinatários atuais: <cfoutput>#LSNumberFormat(qNotificationSendRecipientsCount.total)#</cfoutput></div>
                       <button type="submit" class="btn btn-warning w-100"
@@ -709,8 +709,8 @@
                           <tr>
                             <td>#id#</td>
                             <td class="notification-send-recipient-cell">
-                              <div class="fw-semibold">#htmlEditFormat(name)#</div>
-                              <div class="small text-muted">#htmlEditFormat(email)#</div>
+                              <div class="fw-semibold">#encodeForHTML(name)#</div>
+                              <div class="small text-muted">#encodeForHTML(email)#</div>
                             </td>
                             <td class="notification-send-recipient-cell">
                               <div class="d-flex flex-wrap gap-1">
@@ -726,18 +726,18 @@
                               </div>
                             </td>
                             <td>
-                              <div>#htmlEditFormat(pais)#</div>
-                              <div class="small text-muted">#htmlEditFormat(estado)#</div>
+                              <div>#encodeForHTML(pais)#</div>
+                              <div class="small text-muted">#encodeForHTML(estado)#</div>
                             </td>
                             <td class="notification-send-recipient-cell">
                               <cfif len(trim(tag))>
-                                <a class="link-warning" href="https://roadrunners.run/atleta/#htmlEditFormat(tag)#/" target="_blank" rel="noopener noreferrer">#htmlEditFormat(pagina_nome)#</a>
+                                <a class="link-warning" href="https://roadrunners.run/atleta/#encodeForHTMLAttribute(tag)#/" target="_blank" rel="noopener noreferrer">#encodeForHTML(pagina_nome)#</a>
                               <cfelse>
-                                #htmlEditFormat(pagina_nome)#
+                                #encodeForHTML(pagina_nome)#
                               </cfif>
                               <div class="small text-muted">
                                 <cfif len(trim(id_pagina))>ID #id_pagina#</cfif>
-                                <cfif len(trim(tag))> | #htmlEditFormat(tag)#</cfif>
+                                <cfif len(trim(tag))> | #encodeForHTML(tag)#</cfif>
                               </div>
                               <cfif verificado><div class="small text-success">Verificada</div></cfif>
                             </td>

@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: explicit refusal persists, notifies the tracker and reloads only after the click
+ok 1 - explicit refusal persists, notifies the tracker and reloads only after the click
+  ---
+  duration_ms: 1.776333
+  type: 'test'
+  ...
+# Subtest: explicit permission clears a prior refusal and reloads after the click
+ok 2 - explicit permission clears a prior refusal and reloads after the click
+  ---
+  duration_ms: 0.502791
+  type: 'test'
+  ...
+# Subtest: refusal stays effective without reload when both preference stores are blocked
+ok 3 - refusal stays effective without reload when both preference stores are blocked
+  ---
+  duration_ms: 0.708084
+  type: 'test'
+  ...
+# Subtest: GPC prevails over stored preference without triggering an automatic reload
+ok 4 - GPC prevails over stored preference without triggering an automatic reload
+  ---
+  duration_ms: 0.396042
+  type: 'test'
+  ...
+# Subtest: a refusal from another tab updates status without reloading this page
+ok 5 - a refusal from another tab updates status without reloading this page
+  ---
+  duration_ms: 0.333708
+  type: 'test'
+  ...
+# Subtest: Escape closes the dialog and returns focus to the control that opened it
+ok 6 - Escape closes the dialog and returns focus to the control that opened it
+  ---
+  duration_ms: 0.463375
+  type: 'test'
+  ...
+# Subtest: Tab remains inside the modal while it is open
+ok 7 - Tab remains inside the modal while it is open
+  ---
+  duration_ms: 0.318417
+  type: 'test'
+  ...
+# Subtest: pages without the user-menu control initialize without errors
+ok 8 - pages without the user-menu control initialize without errors
+  ---
+  duration_ms: 0.295458
+  type: 'test'
+  ...
+# Subtest: waits for interaction and at least 20 seconds
+ok 9 - waits for interaction and at least 20 seconds
+  ---
+  duration_ms: 1.142958
+  type: 'test'
+  ...
+# Subtest: does not interrupt early interaction
+ok 10 - does not interrupt early interaction
+  ---
+  duration_ms: 0.3715
+  type: 'test'
+  ...
+# Subtest: privacy dialogs, cookies and focused fields postpone prompts
+ok 11 - privacy dialogs, cookies and focused fields postpone prompts
+  ---
+  duration_ms: 0.331084
+  type: 'test'
+  ...
+# Subtest: priority and at most one optional prompt per session
+ok 12 - priority and at most one optional prompt per session
+  ---
+  duration_ms: 0.872042
+  type: 'test'
+  ...
+# Subtest: ineligible prompt does not consume the session allowance
+ok 13 - ineligible prompt does not consume the session allowance
+  ---
+  duration_ms: 0.30925
+  type: 'test'
+  ...
+# Subtest: home limits count cards instead of style or context elements
+ok 14 - home limits count cards instead of style or context elements
+  ---
+  duration_ms: 0.299083
+  type: 'test'
+  ...
+# Subtest: all home copy is available in every supported language
+ok 15 - all home copy is available in every supported language
+  ---
+  duration_ms: 2.167875
+  type: 'test'
+  ...
+# Subtest: new home labels have a request-local fallback for stale catalogs
+ok 16 - new home labels have a request-local fallback for stale catalogs
+  ---
+  duration_ms: 0.303291
+  type: 'test'
+  ...
+# Subtest: privacy controls are rendered only once and the notice can open them independently
+ok 17 - privacy controls are rendered only once and the notice can open them independently
+  ---
+  duration_ms: 0.274083
+  type: 'test'
+  ...
+# Subtest: home review keeps the original menu and reserves space around the state select
+ok 18 - home review keeps the original menu and reserves space around the state select
+  ---
+  duration_ms: 0.42275
+  type: 'test'
+  ...
+# Subtest: desktop news uses a balanced row while the mobile summary stays hidden
+ok 19 - desktop news uses a balanced row while the mobile summary stays hidden
+  ---
+  duration_ms: 0.259291
+  type: 'test'
+  ...
+# Subtest: the sponsor group owns the bottom divider, not each ad
+ok 20 - the sponsor group owns the bottom divider, not each ad
+  ---
+  duration_ms: 0.142666
+  type: 'test'
+  ...
+# Subtest: the two original group images are included in the deployment source
+ok 21 - the two original group images are included in the deployment source
+  ---
+  duration_ms: 0.259708
+  type: 'test'
+  ...
+# Subtest: guest sidebar styles are shared by the home and reused pages
+ok 22 - guest sidebar styles are shared by the home and reused pages
+  ---
+  duration_ms: 0.83675
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 51.130542

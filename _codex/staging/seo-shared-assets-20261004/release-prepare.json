@@ -1,0 +1,36 @@
+{
+  "before": {
+    "assets/css/cores.min.css": "0a8f8d050faf60d97c5fc28b0d14298b52812432c9f9db9d4dc11425ccc15d0d",
+    "includes/analytics/privacy_controls.cfm": "de3e06815e242e8d103243b6bfc5d73f7cbe7f7622564292f3c12c9996eb2aba",
+    "includes/estrutura/footer_assets.cfm": "d08149d39b755dc644bbe8b1fc360f032f036ae517b8d12cf2c30afd8e6d1a65",
+    "includes/estrutura/seo-web-tools-body-end.cfm": "4fe0430ec37107fbc5e58ca449e8df2bdfac8af232a6460b065d1bb90599a7fd",
+    "includes/estrutura/seo-web-tools-head.cfm": "73cff56e4e09815eb51d99d0ceb13dbf65abd7a0d788e77afa3ceaf2d9e68d10"
+  },
+  "candidate": {
+    "assets/css/cores.min.css": "39b897a55d5d7137dfaa958b1c11df5f264a52a27bf077b7d384fbeab615f642",
+    "assets/css/rr-audience-privacy.min.css": "b14f80dc621390f5a11a26e5daebae6ef3b7ab348ff581e9202d837e112fa3e1",
+    "assets/css/runnerhub-footer.min.css": "a245fbf83bf34e76b8911423068294b2b989b32f5e717c433b15a78a580e1869",
+    "assets/js/rr-audience-privacy.min.js": "61d84ee8c6dd8e21112f133c00b820521f63dd43f85b84ca9c9056a744c5a09d",
+    "assets/js/runnerhub-entry-prompts.min.js": "65aca1c489093895c03eb478203d87d6b57f1d81cea7098fb34c7f7f95f3f701",
+    "includes/analytics/privacy_controls.cfm": "88dbda4b2c92024c1b25414da8545a0b7f89b0a591ce6bc109af50de09786008",
+    "includes/estrutura/footer_assets.cfm": "16b38566933985074b7b0b4bfa95c0a397c710b7e3fcb27d07c999a8b540c705",
+    "includes/estrutura/seo-web-tools-body-end.cfm": "65248dafd3058b950021902f044309343b36a31beeb2b5c6abc4f686a7a34485",
+    "includes/estrutura/seo-web-tools-head.cfm": "583c71beb1209eae7b0ae1b63a471162277ac84eae908859ef2fd30d99be172d"
+  },
+  "order": [
+    "assets/css/cores.min.css",
+    "assets/css/rr-audience-privacy.min.css",
+    "assets/css/runnerhub-footer.min.css",
+    "assets/js/rr-audience-privacy.min.js",
+    "assets/js/runnerhub-entry-prompts.min.js",
+    "includes/analytics/privacy_controls.cfm",
+    "includes/estrutura/footer_assets.cfm",
+    "includes/estrutura/seo-web-tools-body-end.cfm",
+    "includes/estrutura/seo-web-tools-head.cfm"
+  ],
+  "compile": {
+    "templates": 4,
+    "output": "successful 4\ntotal 4\nelapsed 3.032 sec\n\n",
+    "returncode": 0
+  }
+}

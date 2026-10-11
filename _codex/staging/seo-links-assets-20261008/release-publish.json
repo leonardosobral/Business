@@ -1,0 +1,14 @@
+{
+  "published": [
+    "assets/js/rr-audience.min.js",
+    "assets/css/runnerhub-home.min.css",
+    "assets/css/runnerhub-estado-cidades.min.css",
+    "assets/js/runnerhub-state-filter.min.js",
+    "assets/js/runnerhub-estado-cidades.min.js",
+    "index.cfm",
+    "estado/index.cfm",
+    "includes/filtros.cfm",
+    "includes/analytics/bootstrap.cfm"
+  ],
+  "backup": "/var/backups/seo-links-assets-20261008-rr/baseline"
+}

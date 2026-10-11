@@ -1,0 +1,1 @@
+{"parsed_workers": 154, "states": {"17": 1, "19": 1, "26": 1, "62": 1, "W\n": 8, "_\n": 67, ".\n": 75}, "route_groups_only": {"/evento/": 37, "other": 43, "/resultados/": 43, "/assets/": 1, "/busca/": 14, "/server-status": 2, "/api/": 8}, "oldest_seconds_since_request_start": 649.0, "curl_exit": 0}

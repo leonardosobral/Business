@@ -105,7 +105,7 @@ function stravaMigrationUpdate(
 
 <cfif NOT VARIABLES.stravaMigrationIsAdmin>
     <cfcontent reset="true" type="text/plain; charset=utf-8"/>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>Acesso restrito a ADMINs do sistema.</cfoutput>
     <cfabort/>
 </cfif>

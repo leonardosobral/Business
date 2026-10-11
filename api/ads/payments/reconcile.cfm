@@ -10,7 +10,7 @@ function adsPaymentReconcileWrite(
     numeric statusCode = 200,
     string statusText = "OK"
 ) output="true" {
-    cfheader(statuscode = arguments.statusCode, statustext = arguments.statusText);
+    cfheader(statuscode = arguments.statusCode);
     writeOutput(serializeJSON(arguments.payload));
     abort;
 }

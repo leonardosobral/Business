@@ -1,0 +1,63 @@
+{
+  "watch": {
+    "Application.cfc": "4b946b355d9ef6076bdbb88480b22e86acd660056efab3c4ae14fcca080e7af5",
+    ".htaccess": "028c7e47e8e77147bebf09318dd1807c95198a63b5f6017d8e44f1ba136324d4",
+    "atleta/.htaccess": "9d94fd709394957dc3ef895c711ac18be00b86dea787568b4aa0b7828aa0282d",
+    "evento/index.cfm": "6f2ebab01a12013af894580bf2995e7d12dbd2124776694dc14c796f1f87fccc",
+    "includes/estrutura/head.cfm": "dabad0d966b76f6c0aa2b1a536bf7f43f191cee68ec792cd7a6ddbc769f666e4",
+    "includes/estrutura/header_tema.cfm": "6bafed262d68c0b68df47d77357d17a311207477e42173fbef7b239816156d55",
+    "includes/estrutura/home_hero_busca.cfm": "beae33d95f7a0a7e4c7a4211ccf452ec7f9582c02e3ce0c4e45a0226c58ee630",
+    "includes/backend/backend_estado_cidades.cfm": "b1ca32e2a28486b0f831cc2ae6aef776673d6118c0b6d17482937e964613dadd",
+    "services/AudienceMeasurementService.cfc": "ece8218e02d5886540b2a1963ae0b343cf521bff7386c53aaefc7955a60ad476",
+    "services/AudienceRequestControlService.cfc": "72310cd01c1c92b04d84cc5c1be9af45bb7c3e212e9fc8af52ebba81d008f9ec",
+    "api/analytics/collect.cfm": "e9c9106159105654f45b885ba3682fbd601b5db1659d8a1ce72aed1b00baa36b",
+    "includes/analytics/privacy_controls.cfm": "88dbda4b2c92024c1b25414da8545a0b7f89b0a591ce6bc109af50de09786008",
+    "includes/backend/backend_login.cfm": "31dc89e12acd154bebcebdae9860ecfa64648426c3fc2517e63c95ab1807d4b1",
+    "assets/js/rr-audience.js": "6db9c5e7be65271262f6837cc3bbc7905194eae03ac56fad3a24f29461aaf50d",
+    "assets/css/runnerhub-home.css": "0b03e4f3f177c29a6f5cc5c9fde2a68ab340c768235e51b097eabe4e4fe2bfe0",
+    "assets/css/runnerhub-estado-cidades.css": "1898c5d42e23cf76c7a4435b60f703198e4fe8699abf68f726c42696ea58664a",
+    "assets/js/runnerhub-state-filter.js": "1b4f9b50d68e5451a2178426bc014c2300612115f0036212d89dfb18a803d3b1",
+    "assets/js/runnerhub-estado-cidades.js": "d017a1047030a278eda60a9083f8a712c09a580af025125c95ef67b3f2e3f53f"
+  },
+  "all_sources": [
+    "assets/css/cores.css",
+    "assets/css/rr-audience-privacy.css",
+    "assets/css/runnerhub-footer.css",
+    "assets/js/rr-audience-privacy.js",
+    "assets/js/runnerhub-entry-prompts.js",
+    "assets/js/runner-apps-menu-lazy.js",
+    "assets/js/runnerhub-event-filters.js",
+    "assets/js/runnerhub-busca-page.js",
+    "assets/js/event-location-mapbox.js",
+    "assets/js/event-route-mapbox.js",
+    "assets/css/runnerhub-institutional.css",
+    "assets/css/event-location-mapbox.css",
+    "assets/css/event-route-mapbox.css",
+    "assets/js/rr-audience.js",
+    "assets/css/runnerhub-home.css",
+    "assets/css/runnerhub-estado-cidades.css",
+    "assets/js/runnerhub-state-filter.js",
+    "assets/js/runnerhub-estado-cidades.js"
+  ],
+  "old_inputs": [
+    "assets/css/cores.css",
+    "assets/css/rr-audience-privacy.css",
+    "assets/css/runnerhub-footer.css",
+    "assets/js/rr-audience-privacy.js",
+    "assets/js/runnerhub-entry-prompts.js",
+    "assets/js/runner-apps-menu-lazy.js",
+    "assets/js/runnerhub-event-filters.js",
+    "assets/js/runnerhub-busca-page.js",
+    "assets/js/event-location-mapbox.js",
+    "assets/js/event-route-mapbox.js",
+    "assets/css/runnerhub-institutional.css",
+    "assets/css/event-location-mapbox.css",
+    "assets/css/event-route-mapbox.css"
+  ],
+  "before": {
+    "index.cfm": "f7175bccd72a898ce94baa4b4f183e731b3348b36dc51dd4ea40125c3c5f47fb",
+    "estado/index.cfm": "f35f2bfd41e38e2e9c5f937df1560ba663ba5df04bca2defff8e2ca8338b81ae",
+    "includes/filtros.cfm": "f98e6848e65e6eaacf626353e51e0f06fd5e5b0eca291d1b603b61a782f3da29",
+    "includes/analytics/bootstrap.cfm": "e2d1d885d4bd0854adf9bd3260a7b2bd7e1ae52b2fa44b1d70e29a614034cdbc"
+  }
+}

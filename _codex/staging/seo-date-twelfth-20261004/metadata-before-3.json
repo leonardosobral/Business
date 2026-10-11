@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-princesa-dos-montes-running/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-princesa-dos-montes-running/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-princesa-dos-montes-running/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-princesa-dos-montes-running/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-princesa-dos-montes-running/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-princesa-dos-montes-running/",
+      "name": "PRINCESA DOS MONTES RUNNING",
+      "description": "PRINCESA DOS MONTES RUNNING acontece em 08 novembro 2026, em CHÃ PRETA - AL - Chã Preta - AL.",
+      "url": "https://roadrunners.run/evento/2026-princesa-dos-montes-running/",
+      "startDate": "2026-11-08",
+      "endDate": "2026-11-08",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.realtiming.com.br/js/timthumb.php?src=imagens/eventos/princesa-dos-montes-running.jpg&w=800&h=800"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "CHÃ PRETA - AL",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Chã Preta",
+          "addressRegion": "AL",
+          "addressCountry": "BR",
+          "streetAddress": "CHÃ PRETA - AL"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.realtiming.com.br/evento/princesa-dos-montes-running"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/al/",
+          "@type": "ListItem",
+          "name": "Corridas em AL"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-princesa-dos-montes-running/",
+          "@type": "ListItem",
+          "name": "PRINCESA DOS MONTES RUNNING"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "path": "/evento/2025-live-run-xp-brasilia-i-2025/",
+    "expected": "/evento/2025-live-run-xp-brasilia-I-2025/",
+    "response": "200 https://roadrunners.run/evento/2025-live-run-xp-brasilia-I-2025/ 1",
+    "returncode": 0
+  },
+  {
+    "path": "/en/event/2025-live-run-xp-brasilia-i-2025/",
+    "expected": "/en/event/2025-live-run-xp-brasilia-I-2025/",
+    "response": "200 https://roadrunners.run/en/event/2025-live-run-xp-brasilia-I-2025/ 1",
+    "returncode": 0
+  },
+  {
+    "path": "/es/evento/2025-live-run-xp-brasilia-i-2025/",
+    "expected": "/es/evento/2025-live-run-xp-brasilia-I-2025/",
+    "response": "200 https://roadrunners.run/es/evento/2025-live-run-xp-brasilia-I-2025/ 1",
+    "returncode": 0
+  },
+  {
+    "path": "/evento/2025-live-run-xp-brasilia-ii-2025/",
+    "expected": "/evento/2025-live-run-xp-brasilia-II-2025/",
+    "response": "200 https://roadrunners.run/evento/2025-live-run-xp-brasilia-II-2025/ 1",
+    "returncode": 0
+  },
+  {
+    "path": "/en/event/2025-live-run-xp-brasilia-ii-2025/",
+    "expected": "/en/event/2025-live-run-xp-brasilia-II-2025/",
+    "response": "200 https://roadrunners.run/en/event/2025-live-run-xp-brasilia-II-2025/ 1",
+    "returncode": 0
+  },
+  {
+    "path": "/es/evento/2025-live-run-xp-brasilia-ii-2025/",
+    "expected": "/es/evento/2025-live-run-xp-brasilia-II-2025/",
+    "response": "200 https://roadrunners.run/es/evento/2025-live-run-xp-brasilia-II-2025/ 1",
+    "returncode": 0
+  },
+  {
+    "path": "/evento/2026-endorfina-run-santo-andre-ii/",
+    "expected": "/evento/2026-endorfina-run-santo-andre-II/",
+    "response": "200 https://roadrunners.run/evento/2026-endorfina-run-santo-andre-II/ 1",
+    "returncode": 0
+  },
+  {
+    "path": "/en/event/2026-endorfina-run-santo-andre-ii/",
+    "expected": "/en/event/2026-endorfina-run-santo-andre-II/",
+    "response": "200 https://roadrunners.run/en/event/2026-endorfina-run-santo-andre-II/ 1",
+    "returncode": 0
+  },
+  {
+    "path": "/es/evento/2026-endorfina-run-santo-andre-ii/",
+    "expected": "/es/evento/2026-endorfina-run-santo-andre-II/",
+    "response": "200 https://roadrunners.run/es/evento/2026-endorfina-run-santo-andre-II/ 1",
+    "returncode": 0
+  }
+]

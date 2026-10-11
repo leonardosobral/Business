@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "at": "2026-10-06T18:38:54.915291+00:00",
+  "alias_checks": 20,
+  "target_pages_preserved": 5,
+  "negative_cases_preserved": 5,
+  "audit_urls_rechecked": 34,
+  "other_urls_preserved": 29,
+  "redirect_hops": 1
+}

@@ -1,0 +1,12 @@
+{
+  "rows": 40,
+  "pending": 1,
+  "unique_codes": true,
+  "unique_emails": true,
+  "verified_in_business": 40,
+  "sheets": [
+    "Vouchers",
+    "Pendências"
+  ],
+  "sent": 0
+}

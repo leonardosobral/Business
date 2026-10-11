@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2027-meia-maratona-sustentavel-tubo-forte/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2027-meia-maratona-sustentavel-tubo-forte/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2027-meia-maratona-sustentavel-tubo-forte/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2027-meia-maratona-sustentavel-tubo-forte/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2027-meia-maratona-sustentavel-tubo-forte/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2027-meia-maratona-sustentavel-tubo-forte/",
+      "name": "Meia Maratona Sustentável Tubo Forte",
+      "description": "Meia Maratona Sustentável Tubo Forte acontece em 21 fevereiro 2027, em Boulevard Shopping - Vitória da Conquista - BA.",
+      "url": "https://roadrunners.run/evento/2027-meia-maratona-sustentavel-tubo-forte/",
+      "startDate": "2027-02-21",
+      "endDate": "2027-02-21",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.races.com.br/upload/bannerr/794_6c888e47e7aa8d6b1553a41d419bcc1b.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Boulevard Shopping",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Vitória da Conquista",
+          "addressRegion": "BA",
+          "addressCountry": "BR",
+          "streetAddress": "Boulevard Shopping"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.races.com.br/meia-maratona-sustentavel-2027"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/ba/",
+          "@type": "ListItem",
+          "name": "Corridas em BA"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2027-meia-maratona-sustentavel-tubo-forte/",
+          "@type": "ListItem",
+          "name": "Meia Maratona Sustentável Tubo Forte"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

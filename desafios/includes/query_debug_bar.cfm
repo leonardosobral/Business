@@ -108,7 +108,7 @@
             </span>
             <span>
                 Mais lenta:
-                <strong><cfoutput>#htmlEditFormat(qDesafiosQueryDebugSorted.label)# (#numberFormat(qDesafiosQueryDebugSorted.ms, "9,999")# ms)</cfoutput></strong>
+                <strong><cfoutput>#encodeForHTML(qDesafiosQueryDebugSorted.label)# (#numberFormat(qDesafiosQueryDebugSorted.ms, "9,999")# ms)</cfoutput></strong>
             </span>
         </summary>
 
@@ -120,8 +120,8 @@
 
             <cfoutput query="qDesafiosQueryDebugSorted" maxrows="20">
                 <div class="debug-row">
-                    <div class="debug-cell">#htmlEditFormat(qDesafiosQueryDebugSorted.label)#</div>
-                    <div class="debug-cell debug-type">#htmlEditFormat(qDesafiosQueryDebugSorted.type)#</div>
+                    <div class="debug-cell">#encodeForHTML(qDesafiosQueryDebugSorted.label)#</div>
+                    <div class="debug-cell debug-type">#encodeForHTML(qDesafiosQueryDebugSorted.type)#</div>
                     <div class="debug-cell debug-ms">#numberFormat(qDesafiosQueryDebugSorted.ms, "9,999")# ms</div>
                     <div class="debug-cell debug-rows"><cfif qDesafiosQueryDebugSorted.rows GTE 0>#numberFormat(qDesafiosQueryDebugSorted.rows, "9,999")#<cfelse>-</cfif></div>
                 </div>

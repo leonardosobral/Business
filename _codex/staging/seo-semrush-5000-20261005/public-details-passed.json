@@ -1,0 +1,213 @@
+{
+  "http_checks": 44,
+  "special_links": 4,
+  "supplier_links": 5,
+  "unique_titles_per_language": 6,
+  "checks": [
+    {
+      "path": "/estado/pr/palmeira/",
+      "hrefs": 281,
+      "links_safe": true
+    },
+    {
+      "path": "/estado/pb/lastro/",
+      "hrefs": 211,
+      "links_safe": true
+    },
+    {
+      "path": "/estado/sp/ubatuba/",
+      "hrefs": 552,
+      "links_safe": true
+    },
+    {
+      "path": "/estado/sp/campinas/",
+      "hrefs": 568,
+      "links_safe": true
+    },
+    {
+      "path": "/timer/branca-esportes-saude-e-lazer/",
+      "hrefs": 61,
+      "links_safe": true
+    },
+    {
+      "path": "/timer/corpo-e-saude/",
+      "hrefs": 60,
+      "links_safe": true
+    },
+    {
+      "path": "/timer/geracao-saude/",
+      "hrefs": 60,
+      "links_safe": true
+    },
+    {
+      "path": "/timer/grupo-de-corrida-espaco-saude/",
+      "hrefs": 60,
+      "links_safe": true
+    },
+    {
+      "path": "/timer/zero-meia-um-saude-e-esporte/",
+      "hrefs": 61,
+      "links_safe": true
+    },
+    {
+      "special_event_links": 4,
+      "hrefs_verified": true
+    },
+    {
+      "path": "/evento/2026-live-run-xp-sao-paulo-2026-iiiiiiii/",
+      "title": "LIVE! RUN XP São Paulo 20 - corrida de rua | 08/03/2026 | Road Runners",
+      "length": 70,
+      "date": "08/03/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/en/event/2026-live-run-xp-sao-paulo-2026-iiiiiiii/",
+      "title": "LIVE! RUN XP São Paulo 2026 - Road race | 08/03/2026 | Road Runners",
+      "length": 67,
+      "date": "08/03/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/es/evento/2026-live-run-xp-sao-paulo-2026-iiiiiiii/",
+      "title": "LIVE! RUN XP São Paulo 2 - Carrera de ruta | 08/03/2026 | Road Runners",
+      "length": 70,
+      "date": "08/03/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/evento/2026-live-run-xp-sao-paulo-2026/",
+      "title": "LIVE! RUN XP São Paulo 20 - corrida de rua | 17/05/2026 | Road Runners",
+      "length": 70,
+      "date": "17/05/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/en/event/2026-live-run-xp-sao-paulo-2026/",
+      "title": "LIVE! RUN XP São Paulo 2026 - Road race | 17/05/2026 | Road Runners",
+      "length": 67,
+      "date": "17/05/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/es/evento/2026-live-run-xp-sao-paulo-2026/",
+      "title": "LIVE! RUN XP São Paulo 2 - Carrera de ruta | 17/05/2026 | Road Runners",
+      "length": 70,
+      "date": "17/05/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/evento/2026-live-run-xp-sao-paulo-2026-iiiiii/",
+      "title": "LIVE! RUN XP São Paulo 20 - corrida de rua | 12/07/2026 | Road Runners",
+      "length": 70,
+      "date": "12/07/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/en/event/2026-live-run-xp-sao-paulo-2026-iiiiii/",
+      "title": "LIVE! RUN XP São Paulo 2026 - Road race | 12/07/2026 | Road Runners",
+      "length": 67,
+      "date": "12/07/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/es/evento/2026-live-run-xp-sao-paulo-2026-iiiiii/",
+      "title": "LIVE! RUN XP São Paulo 2 - Carrera de ruta | 12/07/2026 | Road Runners",
+      "length": 70,
+      "date": "12/07/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/evento/2026-live-run-xp-sao-paulo-2026-iiii/",
+      "title": "LIVE! RUN XP São Paulo 20 - corrida de rua | 16/08/2026 | Road Runners",
+      "length": 70,
+      "date": "16/08/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/en/event/2026-live-run-xp-sao-paulo-2026-iiii/",
+      "title": "LIVE! RUN XP São Paulo 2026 - Road race | 16/08/2026 | Road Runners",
+      "length": 67,
+      "date": "16/08/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/es/evento/2026-live-run-xp-sao-paulo-2026-iiii/",
+      "title": "LIVE! RUN XP São Paulo 2 - Carrera de ruta | 16/08/2026 | Road Runners",
+      "length": 70,
+      "date": "16/08/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/evento/2026-live-run-xp-sao-paulo-2026-iiiiiiiiiiii/",
+      "title": "LIVE! RUN XP São Paulo 20 - corrida de rua | 13/09/2026 | Road Runners",
+      "length": 70,
+      "date": "13/09/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/en/event/2026-live-run-xp-sao-paulo-2026-iiiiiiiiiiii/",
+      "title": "LIVE! RUN XP São Paulo 2026 - Road race | 13/09/2026 | Road Runners",
+      "length": 67,
+      "date": "13/09/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/es/evento/2026-live-run-xp-sao-paulo-2026-iiiiiiiiiiii/",
+      "title": "LIVE! RUN XP São Paulo 2 - Carrera de ruta | 13/09/2026 | Road Runners",
+      "length": 70,
+      "date": "13/09/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/evento/2026-live-run-xp-sao-paulo-2026-iiiiiii/",
+      "title": "LIVE! RUN XP São Paulo 20 - corrida de rua | 19/04/2026 | Road Runners",
+      "length": 70,
+      "date": "19/04/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/en/event/2026-live-run-xp-sao-paulo-2026-iiiiiii/",
+      "title": "LIVE! RUN XP São Paulo 2026 - Road race | 19/04/2026 | Road Runners",
+      "length": 67,
+      "date": "19/04/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/es/evento/2026-live-run-xp-sao-paulo-2026-iiiiiii/",
+      "title": "LIVE! RUN XP São Paulo 2 - Carrera de ruta | 19/04/2026 | Road Runners",
+      "length": 70,
+      "date": "19/04/2026",
+      "canonical_verified": true
+    },
+    {
+      "path": "/en/event/2025-live-run-xp-brasilia-i-2025/",
+      "location": "/en/event/2025-live-run-xp-brasilia-I-2025/",
+      "status": 301
+    },
+    {
+      "path": "/en/event/2025-live-run-xp-brasilia-ii-2025/",
+      "location": "/en/event/2025-live-run-xp-brasilia-II-2025/",
+      "status": 301
+    },
+    {
+      "path": "/en/event/2026-endorfina-run-santo-andre-ii/",
+      "location": "/en/event/2026-endorfina-run-santo-andre-II/",
+      "status": 301
+    },
+    {
+      "path": "/es/evento/2025-live-run-xp-brasilia-i-2025/",
+      "location": "/es/evento/2025-live-run-xp-brasilia-I-2025/",
+      "status": 301
+    },
+    {
+      "path": "/es/evento/2025-live-run-xp-brasilia-ii-2025/",
+      "location": "/es/evento/2025-live-run-xp-brasilia-II-2025/",
+      "status": 301
+    },
+    {
+      "path": "/es/evento/2026-endorfina-run-santo-andre-ii/",
+      "location": "/es/evento/2026-endorfina-run-santo-andre-II/",
+      "status": 301
+    }
+  ]
+}

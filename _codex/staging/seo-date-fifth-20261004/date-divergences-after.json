@@ -1,0 +1,1869 @@
+{
+  "events": [
+    {
+      "data_final": "2026-10-11",
+      "nome_evento": "1ª CORRE PELA FORMATURA 2026",
+      "routes": [
+        {
+          "date": "2026-10-18",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 67996
+        }
+      ],
+      "id_evento": 46589,
+      "url_hotsite": "https://pscronos.com.br/#/evento/1-corre-pela-formatura-2026",
+      "url_inscricao": "https://pscronos.com.br/#/inscricao/1-corre-pela-formatura-2026",
+      "tag": "2026-1-corre-pela-formatura-2026",
+      "data_inicial": "2026-10-11",
+      "url_regulamento": "https://midia.recebedigital.com.br/pscronos/eventos/5342373032a4e16936ef624efc69a7e1eed3d993.pdf"
+    },
+    {
+      "data_final": "2026-10-11",
+      "nome_evento": "2ª Corrida De Nossa Senhora Do Rosário",
+      "routes": [
+        {
+          "date": "2026-09-26",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 68573
+        },
+        {
+          "date": "2026-09-26",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68574
+        }
+      ],
+      "id_evento": 47023,
+      "url_hotsite": "https://www.cronosport.com.br/evento/2026/corrida-de-rua/2-corrida-de-nossa-senhora-do-rosrio",
+      "url_inscricao": "https://www.cronosport.com.br/evento/2026/corrida-de-rua/2-corrida-de-nossa-senhora-do-rosrio",
+      "tag": "2026-2-corrida-de-nossa-senhora-do-rosario",
+      "data_inicial": "2026-10-11",
+      "url_regulamento": "https://www.cronosport.com.br/painel/upload/doc/inscricao/doc-085-20082026125226-4c5a36ece913fda40f494ce164e9912f.pdf"
+    },
+    {
+      "data_final": "2026-10-11",
+      "nome_evento": "CORRIDA DO COMERCIÁRIO - ETAPA MANACAPURU 2026",
+      "routes": [
+        {
+          "date": "2026-12-11",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 70765
+        }
+      ],
+      "id_evento": 48246,
+      "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+DO+COMERCI%C3%81RIO+-+ETAPA+MANACAPURU+2026-87872",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87872&origem=novo-site&lang=en-US",
+      "tag": "2026-corrida-do-comerciario-etapa-manacapuru-2026",
+      "data_inicial": "2026-10-11",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/87872/03345b3030e84cf4a80744bc8ebbb8c0639203957598413828.pdf"
+    },
+    {
+      "data_final": "2026-10-17",
+      "nome_evento": "Itamaracá Night Run",
+      "routes": [
+        {
+          "date": "2026-09-19",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62296
+        }
+      ],
+      "id_evento": 43093,
+      "url_hotsite": "https://www.timecrono.com.br/evento/itamaraca-night-run",
+      "url_inscricao": "https://www.timecrono.com.br/inscricao-select/itamaraca-night-run",
+      "tag": "2026-itamaraca-night-run",
+      "data_inicial": "2026-10-17",
+      "url_regulamento": "https://www.timecrono.com.br/default/"
+    },
+    {
+      "data_final": "2026-10-17",
+      "nome_evento": "Serrinha Runners 2026",
+      "routes": [
+        {
+          "date": "2026-08-22",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 64896
+        }
+      ],
+      "id_evento": 44229,
+      "url_hotsite": "https://tiquet.com.br/evento/2026-13-serrinha-runners-2026/",
+      "url_inscricao": "https://tiquet.com.br/evento/2026-13-serrinha-runners-2026/",
+      "tag": "2026-serrinha-runners-2026",
+      "data_inicial": "2026-10-17",
+      "url_regulamento": "https://tiquet.com.br/visualizar/documento/646/"
+    },
+    {
+      "data_final": "2026-10-17",
+      "nome_evento": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+      "routes": [
+        {
+          "date": "2026-10-18",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65042
+        },
+        {
+          "date": "2026-10-18",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 65043
+        }
+      ],
+      "id_evento": 45646,
+      "url_hotsite": "https://www.ticketsports.com.br/e/CIRCUITO+DE+CORRIDAS+-+CORRER+%C3%89+MASSA+APOSTOU+LOTERIAS+-+ETAPA+APUCARANA-87900",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87900&origem=novo-site&lang=en-US",
+      "tag": "2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana",
+      "data_inicial": "2026-10-17",
+      "url_regulamento": "https://www.ticketsports.com.br/e/CIRCUITO+DE+CORRIDAS+-+CORRER+%C3%89+MASSA+APOSTOU+LOTERIAS+-+ETAPA+APUCARANA-87900"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "Ardap Run - Corrida Beneficente",
+      "routes": [
+        {
+          "date": "2026-10-11",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 65367
+        },
+        {
+          "date": "2026-10-11",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65368
+        }
+      ],
+      "id_evento": 40879,
+      "url_hotsite": "https://www.chipower.com.br/evento/2026/corrida-de-rua/arpad-run",
+      "url_inscricao": "https://www.chipower.com.br/evento/2026/corrida-de-rua/arpad-run",
+      "tag": "2026-ardap-run-corrida-beneficente",
+      "data_inicial": "2026-10-18",
+      "url_regulamento": "https://www.chipower.com.br/painel/upload/doc/inscricao/doc-22-7f9b589598cfd54852d148009cee4eec.pdf"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "Bota Pra Correr - Rio de Janeiro - 2026",
+      "routes": [
+        {
+          "date": "2026-11-15",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61654
+        },
+        {
+          "date": "2026-11-15",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61655
+        }
+      ],
+      "id_evento": 42850,
+      "url_hotsite": "https://www.runningland.com.br/bota-pra-correr-rio-de-janeiro-2026",
+      "url_inscricao": "https://www.runningland.com.br/bota-pra-correr-rio-de-janeiro-2026",
+      "tag": "2026-bota-pra-correr-rio-de-janeiro-2026",
+      "data_inicial": "2026-10-18",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "1ª RCC RUN - BRAGANÇA 2026",
+      "routes": [
+        {
+          "date": "2026-09-19",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 65161
+        }
+      ],
+      "id_evento": 44483,
+      "url_hotsite": "https://app.sprinta.com.br/event/3108136a2c3e26c2aaa",
+      "url_inscricao": "https://app.sprinta.com.br/event/3108136a2c3e26c2aaa",
+      "tag": "2026-1-rcc-run-braganca-2026",
+      "data_inicial": "2026-10-18",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "1ª CORRIDA EMPORIO PRIME",
+      "routes": [
+        {
+          "date": "2026-10-25",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 62495
+        },
+        {
+          "date": "2026-10-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62496
+        },
+        {
+          "date": "2026-10-25",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62497
+        }
+      ],
+      "id_evento": 44805,
+      "url_hotsite": "https://www.races.com.br/1-corrida-emporio-prime",
+      "url_inscricao": "https://www.races.com.br/1-corrida-emporio-prime",
+      "tag": "2026-1-corrida-emporio-prime",
+      "data_inicial": "2026-10-18",
+      "url_regulamento": "https://www.races.com.br/1-corrida-emporio-prime#tab2"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "10 MILHAS DE MARÍLIA SP",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 16.09,
+          "unit": "km",
+          "locked": false,
+          "id": 65923
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65924
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 65925
+        }
+      ],
+      "id_evento": 46084,
+      "url_hotsite": "https://www.sympla.com.br/evento/10-milhas-de-marilia-sp/3456105",
+      "url_inscricao": "https://www.sympla.com.br/evento/10-milhas-de-marilia-sp/3456105",
+      "tag": "2026-10-milhas-de-marilia-sp",
+      "data_inicial": "2026-10-18",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "2º PATINHAS RUN",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 6,
+          "unit": "km",
+          "locked": false,
+          "id": 68590
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 68591
+        }
+      ],
+      "id_evento": 47031,
+      "url_hotsite": "https://www.sympla.com.br/evento/2o-patinhas-run/3540094",
+      "url_inscricao": "https://www.sympla.com.br/evento/2o-patinhas-run/3540094",
+      "tag": "2026-2-patinhas-run",
+      "data_inicial": "2026-10-18",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-10-24",
+      "nome_evento": "CORRIDA TOCA RAUL BARRA MANSA",
+      "routes": [
+        {
+          "date": "2026-10-17",
+          "distance": 2,
+          "unit": "km",
+          "locked": false,
+          "id": 66939
+        },
+        {
+          "date": "2026-10-17",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 66940
+        }
+      ],
+      "id_evento": 40176,
+      "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+TOCA+RAUL+BARRA+MANSA-86432",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86432&origem=novo-site&lang=en-US",
+      "tag": "2026-corrida-toca-raul-barra-mansa",
+      "data_inicial": "2026-10-24",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/86432/94858b7911f445088f743a4e653bcc1d639227685099402999.pdf"
+    },
+    {
+      "data_final": "2026-10-24",
+      "nome_evento": "3º CIRCUITO RUN",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61688
+        }
+      ],
+      "id_evento": 43533,
+      "url_hotsite": "",
+      "url_inscricao": "https://www.realtiming.com.br/evento/3-circuito-run",
+      "tag": "2026-3-circuito-run",
+      "data_inicial": "2026-10-24",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-10-25",
+      "nome_evento": "1º CORRIDA Q2 EVENTOS DE REVEZAMENTO DE AMERICANA",
+      "routes": [
+        {
+          "date": "2026-06-21",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 54925
+        },
+        {
+          "date": "2026-06-21",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 54926
+        }
+      ],
+      "id_evento": 39867,
+      "url_hotsite": "https://www.ticketsports.com.br/e/1o-corrida-q2-eventos-de-revezamento-de-americana-86132",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86132&origem=novo-site&lang=en-US",
+      "tag": "2026-1-corrida-q2-eventos-de-revezamento-de-americana",
+      "data_inicial": "2026-10-25",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/86132/8b0373fa46764c459d6590b571293991639078047107297658.pdf"
+    },
+    {
+      "data_final": "2026-10-25",
+      "nome_evento": "Circuito Das Águas - Etapa Inverno",
+      "routes": [
+        {
+          "date": "2026-08-16",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 60218
+        }
+      ],
+      "id_evento": 40891,
+      "url_hotsite": "https://www.centraldasinscricoes.com.br/evento/circuito-das-aguas-etapa-inverno",
+      "url_inscricao": "https://www.centraldasinscricoes.com.br/evento/circuito-das-aguas-etapa-inverno",
+      "tag": "2026-circuito-das-aguas-etapa-inverno",
+      "data_inicial": "2026-10-25",
+      "url_regulamento": "https://www.centraldasinscricoes.com.br/painel/upload/doc/inscricao/doc-47-9f8d826fb327dccddd01870dda348b3d.pdf"
+    },
+    {
+      "data_final": "2026-10-25",
+      "nome_evento": "CORRE POTIRETAMA SOLIDÁRIO",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68555
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 68556
+        }
+      ],
+      "id_evento": 47013,
+      "url_hotsite": "https://braziltiming.com.br/evento/2-aquecimento-corre-potiretama",
+      "url_inscricao": "https://www.braziltiming.com.br/inscricao-select/2-aquecimento-corre-potiretama",
+      "tag": "2026-corre-potiretama-solidario",
+      "data_inicial": "2026-10-25",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-10-31",
+      "nome_evento": "Corrida nossa senhora aparecida trindad",
+      "routes": [
+        {
+          "date": "2026-10-12",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 69147
+        }
+      ],
+      "id_evento": 47496,
+      "url_hotsite": "https://www.sympla.com.br/evento/corrida-nossa-senhora-aparecida-trindad/3565602",
+      "url_inscricao": "https://www.sympla.com.br/evento/corrida-nossa-senhora-aparecida-trindad/3565602",
+      "tag": "2026-corrida-nossa-senhora-aparecida-trindad",
+      "data_inicial": "2026-10-31",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "Blue Run 2026 - Santos",
+      "routes": [
+        {
+          "date": "2026-10-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 60746
+        },
+        {
+          "date": "2026-10-25",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 60747
+        }
+      ],
+      "id_evento": 38508,
+      "url_hotsite": "https://www.runningland.com.br/blue-run-2026-santos",
+      "url_inscricao": "https://www.runningland.com.br/blue-run-2026-santos",
+      "tag": "2026-blue-run-2026-santos",
+      "data_inicial": "2026-11-01",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "Corrida Águia 2026",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 64868
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 64870
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 64871
+        }
+      ],
+      "id_evento": 43392,
+      "url_hotsite": "https://tiquet.com.br/evento/2026-13-corrida-aguia-2026/",
+      "url_inscricao": "https://tiquet.com.br/evento/2026-13-corrida-aguia-2026/",
+      "tag": "2026-corrida-aguia-2026",
+      "data_inicial": "2026-11-01",
+      "url_regulamento": "https://tiquet.com.br/visualizar/documento/626/"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "LEGADO RUN",
+      "routes": [
+        {
+          "date": "2026-11-08",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 63977
+        },
+        {
+          "date": "2026-11-08",
+          "distance": 6,
+          "unit": "km",
+          "locked": false,
+          "id": 63978
+        },
+        {
+          "date": "2026-11-08",
+          "distance": 9,
+          "unit": "km",
+          "locked": false,
+          "id": 63979
+        }
+      ],
+      "id_evento": 45308,
+      "url_hotsite": "https://www.ticketsports.com.br/e/LEGADO+RUN-87806",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87806&origem=novo-site&lang=en-US",
+      "tag": "2026-legado-run",
+      "data_inicial": "2026-11-01",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/87806/6e2672e043fd40e8b45c0cae81addf14639201539549644895.pdf"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "CORRIDA IZ1 TELECOM",
+      "routes": [
+        {
+          "date": "2026-10-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 67993
+        }
+      ],
+      "id_evento": 46585,
+      "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+IZ1+TELECOM+-88108",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88108&origem=novo-site&lang=en-US",
+      "tag": "2026-corrida-iz1-telecom",
+      "data_inicial": "2026-11-01",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88108/75d61712b6cf4b9ab80f4a39690925d7639232773246710339.pdf"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "Morro Beach Run",
+      "routes": [
+        {
+          "date": "2026-10-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 69133
+        },
+        {
+          "date": "2026-10-25",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 69134
+        }
+      ],
+      "id_evento": 47482,
+      "url_hotsite": "https://www.centraldasinscricoes.com.br/evento/2026/corrida-de-rua/morro-beach-run",
+      "url_inscricao": "https://www.centraldasinscricoes.com.br/inscricao-select/2026/corrida-de-rua/morro-beach-run",
+      "tag": "2026-morro-beach-run",
+      "data_inicial": "2026-11-01",
+      "url_regulamento": "https://www.centraldasinscricoes.com.br/painel/upload/doc/inscricao/doc-047-21092026104217-88abde0f12e557bfdb6059e842f63e57.pdf"
+    },
+    {
+      "data_final": "2026-11-07",
+      "nome_evento": "Night Run - Etapa 1 - Fortaleza 2026",
+      "routes": [
+        {
+          "date": "2026-10-03",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61826
+        },
+        {
+          "date": "2026-10-03",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61827
+        }
+      ],
+      "id_evento": 37784,
+      "url_hotsite": "https://www.runningland.com.br/night-run-etapa-1-fortaleza-2026",
+      "url_inscricao": "https://www.runningland.com.br/night-run-etapa-1-fortaleza-2026",
+      "tag": "2026-night-run-etapa-1-fortaleza-2026",
+      "data_inicial": "2026-11-07",
+      "url_regulamento": null
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "PRINCESA DOS MONTES RUNNING",
+      "routes": [
+        {
+          "date": "2026-07-26",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61656
+        }
+      ],
+      "id_evento": 43140,
+      "url_hotsite": "",
+      "url_inscricao": "https://www.realtiming.com.br/evento/princesa-dos-montes-running",
+      "tag": "2026-princesa-dos-montes-running",
+      "data_inicial": "2026-11-08",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "1ª Apaexonados Por Corrida",
+      "routes": [
+        {
+          "date": "2026-08-02",
+          "distance": 6,
+          "unit": "km",
+          "locked": false,
+          "id": 62255
+        },
+        {
+          "date": "2026-08-02",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 62256
+        },
+        {
+          "date": "2026-08-02",
+          "distance": 2,
+          "unit": "km",
+          "locked": false,
+          "id": 62257
+        }
+      ],
+      "id_evento": 43541,
+      "url_hotsite": "https://www.trichip.com.br/evento/1-apaexonados-por-corrida-2026",
+      "url_inscricao": "https://www.trichip.com.br/evento/1-apaexonados-por-corrida-2026",
+      "tag": "2026-1-apaexonados-por-corrida",
+      "data_inicial": "2026-11-08",
+      "url_regulamento": "https://www.trichip.com.br/painel/upload/doc/inscricao/doc-23-3087937a0e9238ac15ffbae415274a8b.pdf"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "Girl Power - Brasília 2026",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61916
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61917
+        }
+      ],
+      "id_evento": 44234,
+      "url_hotsite": "https://www.runningland.com.br/girl-power-brasilia-2026",
+      "url_inscricao": "https://www.runningland.com.br/girl-power-brasilia-2026",
+      "tag": "2026-girl-power-brasilia-2026",
+      "data_inicial": "2026-11-08",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "ACIG EM MOVIMENTO – CAMINHADA PELA SAÚDE 3 KM",
+      "routes": [
+        {
+          "date": "2026-09-13",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 64469
+        }
+      ],
+      "id_evento": 45435,
+      "url_hotsite": "https://maissport.com.br/evento/acig-em-movimento-caminhada-pela-sade-3-km-2026",
+      "url_inscricao": "https://www.maissport.com.br/inscricao-select/acig-em-movimento-caminhada-pela-sade-3-km-2026",
+      "tag": "2026-acig-em-movimento-–-caminhada-pela-saude-3-km",
+      "data_inicial": "2026-11-08",
+      "url_regulamento": "https://www.maissport.com.br/painel/upload/doc/inscricao/doc-41-33cc1c851c57eba736466fad8ad112ce.docx"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "SEVEN RUNNING",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 6,
+          "unit": "km",
+          "locked": false,
+          "id": 67820
+        }
+      ],
+      "id_evento": 46485,
+      "url_hotsite": "",
+      "url_inscricao": "https://www.realtiming.com.br/evento/seven-running2026",
+      "tag": "2026-seven-running",
+      "data_inicial": "2026-11-08",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "4ª Edição IVIA Em Ação",
+      "routes": [
+        {
+          "date": "2026-10-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68451
+        }
+      ],
+      "id_evento": 46944,
+      "url_hotsite": "https://smcrono.com.br/evento/1117/ivia-em-acao-2026",
+      "url_inscricao": "https://www.smcrono.com.br/inscricao-select/1117/ivia-em-acao-2026",
+      "tag": "2026-4-edicao-ivia-em-acao",
+      "data_inicial": "2026-11-08",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "CORRIDA ERGOS",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 64560
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 64561
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 64562
+        }
+      ],
+      "id_evento": 41408,
+      "url_hotsite": "https://www.sympla.com.br/evento/corrida-ergos/3400461",
+      "url_inscricao": "https://www.sympla.com.br/evento/corrida-ergos/3400461",
+      "tag": "2026-corrida-ergos",
+      "data_inicial": "2026-11-15",
+      "url_regulamento": null
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "5ª Edição Corrida E Caminhada Fazendo Meu Difícil",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 2.5,
+          "unit": "km",
+          "locked": false,
+          "id": 63150
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 63151
+        }
+      ],
+      "id_evento": 43831,
+      "url_hotsite": "https://www.centraldasinscricoes.com.br/evento/2026/treino/5-edicao-corrida-e-caminhada-fazendo-meu-dificil",
+      "url_inscricao": "https://www.centraldasinscricoes.com.br/inscricao-select/2026/treino/5-edicao-corrida-e-caminhada-fazendo-meu-dificil",
+      "tag": "2026-5-edicao-corrida-e-caminhada-fazendo-meu-dificil",
+      "data_inicial": "2026-11-15",
+      "url_regulamento": "https://www.centraldasinscricoes.com.br/painel/upload/doc/inscricao/doc-47-6ec7c4b2169a7b6c397a16dcaac99ef0.docx"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "SUPER ACTION SOROCABA 2026",
+      "routes": [
+        {
+          "date": "2026-09-13",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 63647
+        }
+      ],
+      "id_evento": 44863,
+      "url_hotsite": "https://www.ticketsports.com.br/e/SUPER+ACTION+SOROCABA+2026-87547",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87547&origem=novo-site&lang=en-US",
+      "tag": "2026-super-action-sorocaba-2026",
+      "data_inicial": "2026-11-15",
+      "url_regulamento": "https://www.ticketsports.com.br/e/SUPER+ACTION+SOROCABA+2026-87547"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "FLA RESENHA RUN",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65055
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 65056
+        }
+      ],
+      "id_evento": 45651,
+      "url_hotsite": "https://www.ticketsports.com.br/e/FLA+RESENHA+RUN+-87863",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87863&origem=novo-site&lang=en-US",
+      "tag": "2026-fla-resenha-run",
+      "data_inicial": "2026-11-15",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/87863/a00ff6ea0ed34afb8179ff33e1c37dcf639203334603377487.pdf"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "16ª VOLTA A LAGOA DA CONCEIÇÃO",
+      "routes": [
+        {
+          "date": "2026-11-01",
+          "distance": 4,
+          "unit": "km",
+          "locked": false,
+          "id": 65512
+        },
+        {
+          "date": "2026-11-01",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65513
+        },
+        {
+          "date": "2026-11-01",
+          "distance": 12,
+          "unit": "km",
+          "locked": false,
+          "id": 65514
+        },
+        {
+          "date": "2026-11-01",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 65515
+        }
+      ],
+      "id_evento": 45873,
+      "url_hotsite": "https://www.ticketsports.com.br/e/16%C2%AA+VOLTA+A+LAGOA+DA+CONCEI%C3%87%C3%83O+-87753",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87753&origem=novo-site&lang=en-US",
+      "tag": "2026-16-volta-a-lagoa-da-conceicao",
+      "data_inicial": "2026-11-15",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/87753/f86b6b5730f94f92af98770d23a50850639224006944002701.pdf"
+    },
+    {
+      "data_final": "2026-11-20",
+      "nome_evento": "LIVE!21K - FORTALEZA 2026",
+      "routes": [
+        {
+          "date": "2026-12-06",
+          "distance": 21,
+          "unit": "km",
+          "locked": false,
+          "id": 64286
+        },
+        {
+          "date": "2026-12-06",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 64287
+        },
+        {
+          "date": "2026-12-06",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 64288
+        }
+      ],
+      "id_evento": 45366,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-fortaleza-2026",
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live21k-fortaleza-2026",
+      "tag": "2026-live21k-fortaleza-2026",
+      "data_inicial": "2026-11-20",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-11-20",
+      "nome_evento": "CORRIDA THE LAST RUNNER 2026",
+      "routes": [
+        {
+          "date": "2026-11-15",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 70637
+        }
+      ],
+      "id_evento": 48133,
+      "url_hotsite": "https://smcrono.com.br/evento/2026/corrida-de-rua/corrida-the-last-runner-2026",
+      "url_inscricao": "https://www.smcrono.com.br/inscricao-select/2026/corrida-de-rua/corrida-the-last-runner-2026",
+      "tag": "2026-corrida-the-last-runner-2026",
+      "data_inicial": "2026-11-20",
+      "url_regulamento": "https://www.smcrono.com.br/painel/upload/doc/inscricao/doc-069-23092026162817-44a64c37e2c5c10ef6f6c45755af9822.pdf"
+    },
+    {
+      "data_final": "2026-11-21",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Palmas",
+      "routes": [
+        {
+          "date": "2026-12-06",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61906
+        },
+        {
+          "date": "2026-12-06",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61907
+        }
+      ],
+      "id_evento": 37769,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-palmas",
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-palmas",
+      "tag": "2026-circuito-das-estacoes-2026-verao-palmas",
+      "data_inicial": "2026-11-21",
+      "url_regulamento": null
+    },
+    {
+      "data_final": "2026-11-21",
+      "nome_evento": "Trun Caruaru 2026",
+      "routes": [
+        {
+          "date": "2026-11-28",
+          "distance": 56,
+          "unit": "km",
+          "locked": false,
+          "id": 69989
+        },
+        {
+          "date": "2026-11-28",
+          "distance": 28,
+          "unit": "km",
+          "locked": false,
+          "id": 69990
+        },
+        {
+          "date": "2026-11-28",
+          "distance": 18,
+          "unit": "km",
+          "locked": false,
+          "id": 69991
+        },
+        {
+          "date": "2026-11-28",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 69992
+        },
+        {
+          "date": "2026-11-28",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 69993
+        }
+      ],
+      "id_evento": 42042,
+      "url_hotsite": "https://www.race83.com.br/new/evento/trun-caruaru-2026",
+      "url_inscricao": "https://www.race83.com.br/inscricao-select/trun-caruaru-2026",
+      "tag": "2026-trun-caruaru-2026",
+      "data_inicial": "2026-11-21",
+      "url_regulamento": "https://www.race83.com.br/painel/upload/doc/inscricao/doc-007-16092026055659-4b970a20ca54eda1d7c9747a2ddeed78.pdf"
+    },
+    {
+      "data_final": "2026-11-21",
+      "nome_evento": "TRICOLOR RUN NOTURNA 2026 -  2ª Etapa",
+      "routes": [
+        {
+          "date": "2026-12-12",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 63263
+        },
+        {
+          "date": "2026-12-12",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 63264
+        },
+        {
+          "date": "2026-12-12",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 63265
+        }
+      ],
+      "id_evento": 43239,
+      "url_hotsite": "https://www.ticketsports.com.br/e/TRICOLOR+RUN+NOTURNA+2026+-++2%C2%AA+Etapa-87210",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87210&origem=novo-site&lang=en-US",
+      "tag": "2026-tricolor-run-noturna-2026-2-etapa",
+      "data_inicial": "2026-11-21",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/87210/24eb1f272e324b8fb68c50510e03a828639250682046434002.pdf"
+    },
+    {
+      "data_final": "2026-11-21",
+      "nome_evento": "MATTRIC RUN 2026",
+      "routes": [
+        {
+          "date": "2026-11-15",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62896
+        },
+        {
+          "date": "2026-11-15",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62897
+        }
+      ],
+      "id_evento": 45208,
+      "url_hotsite": "https://www.lmdeventosesportivos.com.br/evento/mattric-run-2026",
+      "url_inscricao": "https://www.lmdeventosesportivos.com.br/inscricao-select/mattric-run-2026",
+      "tag": "2026-mattric-run-2026",
+      "data_inicial": "2026-11-21",
+      "url_regulamento": "https://www.lmdeventosesportivos.com.br/painel/upload/doc/inscricao/doc-062-01102026085824-619b59647202cbdf6d2f263301bf7286.pdf"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "Corrida Dos Romeiros - Nossa Senhora Da Penha 2026",
+      "routes": [
+        {
+          "date": "2026-11-15",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68241
+        },
+        {
+          "date": "2026-11-15",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 68242
+        }
+      ],
+      "id_evento": 44114,
+      "url_hotsite": "https://www.race83.com.br/new/evento/6946/corrida-dos-romeiros-nossa-senhora-da-penha-2026",
+      "url_inscricao": "https://www.race83.com.br/inscricao-select/6946/corrida-dos-romeiros-nossa-senhora-da-penha-2026",
+      "tag": "2026-corrida-dos-romeiros-nossa-senhora-da-penha-2026",
+      "data_inicial": "2026-11-22",
+      "url_regulamento": "https://www.race83.com.br/painel/upload/doc/inscricao/doc-007-06092026093839-1507c3821047678b7bc0f0e281031633.pdf"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "1ª CORRIDA GRUPO PACE DE OURO",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 6,
+          "unit": "km",
+          "locked": false,
+          "id": 65152
+        }
+      ],
+      "id_evento": 44481,
+      "url_hotsite": "https://app.sprinta.com.br/event/310813698a0149e8597",
+      "url_inscricao": "https://app.sprinta.com.br/event/310813698a0149e8597",
+      "tag": "2026-1-corrida-grupo-pace-de-ouro",
+      "data_inicial": "2026-11-22",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "CORRIDA DO MEL",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 68561
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68562
+        }
+      ],
+      "id_evento": 47016,
+      "url_hotsite": "https://smcrono.com.br/evento/2026/corrida-de-rua/corrida-do-mel",
+      "url_inscricao": "https://www.smcrono.com.br/inscricao-select/2026/corrida-de-rua/corrida-do-mel",
+      "tag": "2026-corrida-do-mel",
+      "data_inicial": "2026-11-22",
+      "url_regulamento": "https://www.smcrono.com.br/painel/upload/doc/inscricao/doc-069-20082026120704-8a29a411e91931b2c009daf000f9ed7d.pdf"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "APAE Santo André",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68857
+        }
+      ],
+      "id_evento": 47272,
+      "url_hotsite": "https://inscrevafacil.com/#/evento/apae-santo-andre",
+      "url_inscricao": "https://inscrevafacil.com/#/inscricao/apae-santo-andre",
+      "tag": "2026-apae-santo-andre",
+      "data_inicial": "2026-11-22",
+      "url_regulamento": "https://midia.recebedigital.com.br/inscrevafacil/eventos/086c2c2d7600d7ca6f09672775b4e5ae845a2ef7.pdf"
+    },
+    {
+      "data_final": "2026-11-24",
+      "nome_evento": "1ª CORRIDA PEDESTRE OAB TEODORO SAMPAIO",
+      "routes": [
+        {
+          "date": "2025-11-23",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 50153
+        }
+      ],
+      "id_evento": 32639,
+      "url_hotsite": "https://tvcomrunning.com.br/1-corrida-pedestre-oab-teodoro-sampaio",
+      "url_inscricao": "https://tvcomrunning.com.br/1-corrida-pedestre-oab-teodoro-sampaio",
+      "tag": "2025-1-corrida-pedestre-oab-teodoro-sampaio",
+      "data_inicial": "2026-11-24",
+      "url_regulamento": null
+    },
+    {
+      "data_final": "2026-11-28",
+      "nome_evento": "Santander Night Run - São Paulo Etapa 2 - 2026",
+      "routes": [
+        {
+          "date": "2026-10-24",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61780
+        },
+        {
+          "date": "2026-10-24",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61781
+        }
+      ],
+      "id_evento": 41938,
+      "url_hotsite": "https://www.runningland.com.br/night-run-s-o-paulo-etapa-2-2026",
+      "url_inscricao": "https://www.runningland.com.br/night-run-s-o-paulo-etapa-2-2026",
+      "tag": "2026-santander-night-run-sao-paulo-etapa-2-2026",
+      "data_inicial": "2026-11-28",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2026-11-28",
+      "nome_evento": "Anabólica Night Run",
+      "routes": [
+        {
+          "date": "2026-09-12",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62677
+        }
+      ],
+      "id_evento": 43854,
+      "url_hotsite": "https://oxyscrono.com.br/evento/9819/anabolica-night-run",
+      "url_inscricao": "https://oxyscrono.com.br/evento/9819/anabolica-night-run",
+      "tag": "2026-anabolica-night-run",
+      "data_inicial": "2026-11-28",
+      "url_regulamento": "https://www.oxyscrono.com.br/painel/upload/doc/inscricao/doc-17-c62d72f0cb608d1d2c043d053fe03a1b.pdf"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "CORRIDA E CAMINHADA FFSMS 2026",
+      "routes": [
+        {
+          "date": "2026-09-25",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65731
+        },
+        {
+          "date": "2026-09-25",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 65732
+        },
+        {
+          "date": "2026-09-25",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 65733
+        }
+      ],
+      "id_evento": 43166,
+      "url_hotsite": "",
+      "url_inscricao": "https://www.kmaisclube.com.br/eventos/corrida-e-caminhada-ffsms-2026/lEYJXG5UE8QkK97JvYnI",
+      "tag": "2026-corrida-e-caminhada-ffsms-2026",
+      "data_inicial": "2026-11-29",
+      "url_regulamento": "https://firebasestorage.googleapis.com/v0/b/kmais-app.appspot.com/o/pdfs%2F1779408574844_Regulamento_FFSMS_2026_Diagramado.pdf?alt=media&token=48642ea4-ce1d-4649-b20a-e8cee3c50491"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "1a Corrida da UJADI",
+      "routes": [
+        {
+          "date": "2026-08-16",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62514
+        },
+        {
+          "date": "2026-08-16",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62515
+        }
+      ],
+      "id_evento": 44134,
+      "url_hotsite": "https://www.races.com.br/1a-corrida-da-ujadi",
+      "url_inscricao": "https://www.races.com.br/1a-corrida-da-ujadi",
+      "tag": "2026-1a-corrida-da-ujadi",
+      "data_inicial": "2026-11-29",
+      "url_regulamento": "https://www.races.com.br/1a-corrida-da-ujadi#tab2"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "CORRIDA E CAMINHADAS PIRATAS DO ASFALTO",
+      "routes": [
+        {
+          "date": "2026-11-22",
+          "distance": 4,
+          "unit": "km",
+          "locked": false,
+          "id": 63306
+        }
+      ],
+      "id_evento": 44160,
+      "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+E+CAMINHADAS+PIRATAS+DO+ASFALTO-87552",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87552&origem=novo-site&lang=en-US",
+      "tag": "2026-corrida-e-caminhadas-piratas-do-asfalto",
+      "data_inicial": "2026-11-29",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/87552/95313c5407ea44968102dc99299a9383639219762231887903.pdf"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "2ª UNIFECAF RUN",
+      "routes": [
+        {
+          "date": "2026-08-30",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 67410
+        },
+        {
+          "date": "2026-08-30",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 67411
+        }
+      ],
+      "id_evento": 44278,
+      "url_hotsite": "https://www.ticketsports.com.br/e/2%C2%AA+UNIFECAF+RUN-87550",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87550&origem=novo-site&lang=en-US",
+      "tag": "2026-2-unifecaf-run",
+      "data_inicial": "2026-11-29",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/87550/fa7a342f1eed4df79bfff9f6c2d6d725639179188989242170.pdf"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "1ª Corrida Ab Run",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 67751
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 2.6,
+          "unit": "km",
+          "locked": false,
+          "id": 67752
+        }
+      ],
+      "id_evento": 45121,
+      "url_hotsite": "https://www.korremais.com/evento/1-corrida-ab-run",
+      "url_inscricao": "https://www.korremais.com/evento/1-corrida-ab-run",
+      "tag": "2026-1-corrida-ab-run",
+      "data_inicial": "2026-11-29",
+      "url_regulamento": "https://www.korremais.com/painel/upload/doc/inscricao/doc-090-29092026183029-6f5b37376322e7e1b2871c7f40b182f7.pdf"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "CORRIDA E CAMINHADA LAÇOS DA VIDA",
+      "routes": [
+        {
+          "date": "2026-11-08",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 65510
+        },
+        {
+          "date": "2026-11-08",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 65511
+        }
+      ],
+      "id_evento": 45870,
+      "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+E+CAMINHADA+LA%C3%87OS+DA+VIDA-87964",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87964&origem=novo-site&lang=en-US",
+      "tag": "2026-corrida-e-caminhada-lacos-da-vida",
+      "data_inicial": "2026-11-29",
+      "url_regulamento": "https://www.ticketsports.com.br/e/CORRIDA+E+CAMINHADA+LA%C3%87OS+DA+VIDA-87964"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "ALPHA RUNNER 2026",
+      "routes": [
+        {
+          "date": "2026-09-13",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 68196
+        }
+      ],
+      "id_evento": 46733,
+      "url_hotsite": "https://www.ticketsports.com.br/e/ALPHA+RUNNER+2026-88079",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88079&origem=novo-site&lang=en-US",
+      "tag": "2026-alpha-runner-2026",
+      "data_inicial": "2026-11-29",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88079/531090b591b14ad98ba0c5c6b11ba98c639222313478178835.pdf"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "FLUIR RUN",
+      "routes": [
+        {
+          "date": "2026-11-22",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 69068
+        },
+        {
+          "date": "2026-11-22",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 69069
+        }
+      ],
+      "id_evento": 47442,
+      "url_hotsite": "https://www.ticketsports.com.br/e/FLUIR+RUN-88274",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88274&origem=novo-site&lang=en-US",
+      "tag": "2026-fluir-run",
+      "data_inicial": "2026-11-29",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88274/f1af4305e8bc4d3a83004dbd4a2c65c0639244844177553353.pdf"
+    },
+    {
+      "data_final": "2026-12-05",
+      "nome_evento": "CORRIDA CORONEL OLIVERIA JUNIOR - 11º GB",
+      "routes": [
+        {
+          "date": "2026-12-06",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 63963
+        },
+        {
+          "date": "2026-12-06",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 63964
+        }
+      ],
+      "id_evento": 45303,
+      "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+CORONEL+OLIVERIA+JUNIOR+-+11%C2%BA+GB+-87587",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87587&origem=novo-site&lang=en-US",
+      "tag": "2026-corrida-coronel-oliveria-junior-11-gb",
+      "data_inicial": "2026-12-05",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/87587/c54de9d0f270489da89bd612e6a85ee5639211741821332369.pdf"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "TERCEIRA CORRIDA DE RUA COARACI",
+      "routes": [
+        {
+          "date": "2026-07-26",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 60042
+        }
+      ],
+      "id_evento": 41364,
+      "url_hotsite": "https://www.races.com.br/terceira-corrida-de-rua-coaraci",
+      "url_inscricao": "https://www.races.com.br/terceira-corrida-de-rua-coaraci",
+      "tag": "2026-terceira-corrida-de-rua-coaraci",
+      "data_inicial": "2026-12-06",
+      "url_regulamento": "https://www.races.com.br/terceira-corrida-de-rua-coaraci#tab2"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "Black Run",
+      "routes": [
+        {
+          "date": "2026-11-22",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 60872
+        }
+      ],
+      "id_evento": 41908,
+      "url_hotsite": "https://www.centraldasinscricoes.com.br/evento/corrida-de-rua/black-run",
+      "url_inscricao": "https://www.centraldasinscricoes.com.br/inscricao-select/corrida-de-rua/black-run",
+      "tag": "2026-black-run",
+      "data_inicial": "2026-12-06",
+      "url_regulamento": "https://www.centraldasinscricoes.com.br//default/"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "Corrida UNINTER em Movimento",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 60593
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 60594
+        },
+        {
+          "date": "2026-09-20",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 60595
+        }
+      ],
+      "id_evento": 42544,
+      "url_hotsite": "https://www.races.com.br/corrida-uninter-em-movimento",
+      "url_inscricao": "https://www.races.com.br/corrida-uninter-em-movimento",
+      "tag": "2026-corrida-uninter-em-movimento",
+      "data_inicial": "2026-12-06",
+      "url_regulamento": "https://www.races.com.br/corrida-uninter-em-movimento#tab2"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "SUN RUN CORRIDA E CAMINHADA 2026",
+      "routes": [
+        {
+          "date": "2026-12-13",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 60957
+        },
+        {
+          "date": "2026-12-13",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 60958
+        },
+        {
+          "date": "2026-12-13",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 60959
+        },
+        {
+          "date": "2026-12-13",
+          "distance": 15,
+          "unit": "km",
+          "locked": false,
+          "id": 60960
+        }
+      ],
+      "id_evento": 42847,
+      "url_hotsite": "https://www.races.com.br/sunrun-2026",
+      "url_inscricao": "https://www.races.com.br/sunrun-2026",
+      "tag": "2026-sun-run-corrida-e-caminhada-2026",
+      "data_inicial": "2026-12-06",
+      "url_regulamento": "https://www.races.com.br/sunrun-2026#tab2"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "Corrida Rústica Trentina 2026",
+      "routes": [
+        {
+          "date": "2026-10-11",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 66363
+        }
+      ],
+      "id_evento": 46297,
+      "url_hotsite": "https://www.kweventosesportivos.com.br/evento/corrida-rustica-trentina-2026",
+      "url_inscricao": "https://www.kweventosesportivos.com.br/inscricao-select/corrida-rustica-trentina-2026",
+      "tag": "2026-corrida-rustica-trentina-2026",
+      "data_inicial": "2026-12-06",
+      "url_regulamento": "https://www.kweventosesportivos.com.br/painel/upload/doc/inscricao/doc-042-04092026080809-6ef42a6eab211ddd71ac423a80b42d15.pdf"
+    },
+    {
+      "data_final": "2026-12-13",
+      "nome_evento": "CIRCUITO UNINTA RUN - 2026",
+      "routes": [
+        {
+          "date": "2026-05-31",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 61292
+        },
+        {
+          "date": "2026-05-31",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 61293
+        },
+        {
+          "date": "2026-05-31",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 61294
+        },
+        {
+          "date": "2026-05-31",
+          "distance": 21,
+          "unit": "km",
+          "locked": false,
+          "id": 61295
+        }
+      ],
+      "id_evento": 39558,
+      "url_hotsite": "https://esportecorrida.com.br/v3/evento.php?evt=2281",
+      "url_inscricao": "https://esportecorrida.com.br/v3/evento.php?evt=2281",
+      "tag": "2026-circuito-uninta-run-2026",
+      "data_inicial": "2026-12-13",
+      "url_regulamento": "https://esportecorrida.com.br/upload_diversos/08_07_2026_09_09_50.pdf"
+    },
+    {
+      "data_final": "2026-12-13",
+      "nome_evento": "MENTONE RUN - A IDENTIDADE",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 67097
+        },
+        {
+          "date": "2026-09-27",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 67098
+        }
+      ],
+      "id_evento": 40457,
+      "url_hotsite": "https://www.ticketsports.com.br/e/MENTONE+RUN+-+A+IDENTIDADE+-86560",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86560&origem=novo-site&lang=en-US",
+      "tag": "2026-mentone-run-a-identidade",
+      "data_inicial": "2026-12-13",
+      "url_regulamento": "https://www.ticketsports.com.br/e/MENTONE+RUN+-+A+IDENTIDADE+-86560"
+    },
+    {
+      "data_final": "2026-12-13",
+      "nome_evento": "CORRIDA AILOS CIVIA PELA COOPERAÇÃO - EDIÇÃO SÃO BENTO DO SUL",
+      "routes": [
+        {
+          "date": "2026-12-06",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 63961
+        },
+        {
+          "date": "2026-12-06",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 63962
+        }
+      ],
+      "id_evento": 45302,
+      "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+AILOS+CIVIA+PELA+COOPERA%C3%87%C3%83O+-+EDI%C3%87%C3%83O+S%C3%83O+BENTO+DO+SUL-87819",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87819&origem=novo-site&lang=en-US",
+      "tag": "2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul",
+      "data_inicial": "2026-12-13",
+      "url_regulamento": "https://www.ticketsports.com.br/e/CORRIDA+AILOS+CIVIA+PELA+COOPERA%C3%87%C3%83O+-+EDI%C3%87%C3%83O+S%C3%83O+BENTO+DO+SUL-87819"
+    },
+    {
+      "data_final": "2026-12-20",
+      "nome_evento": "1º Meia Maratona Trailrun Rd Fitness",
+      "routes": [
+        {
+          "date": "2026-11-15",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62632
+        },
+        {
+          "date": "2026-11-15",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62633
+        },
+        {
+          "date": "2026-11-15",
+          "distance": 21,
+          "unit": "km",
+          "locked": false,
+          "id": 62634
+        }
+      ],
+      "id_evento": 43860,
+      "url_hotsite": "https://www.pacetimecrono.com.br/evento/8842/1-meia-maratona-motivacional-rd-fitness",
+      "url_inscricao": "https://www.pacetimecrono.com.br/evento/8842/1-meia-maratona-motivacional-rd-fitness",
+      "tag": "2026-1-meia-maratona-trailrun-rd-fitness",
+      "data_inicial": "2026-12-20",
+      "url_regulamento": "https://www.pacetimecrono.com.br/painel/upload/doc/inscricao/doc-84-11f1fd0bbd4eb4d15d1e4b40b632c5fa.docx"
+    },
+    {
+      "data_final": "2026-12-20",
+      "nome_evento": "Corrida TÁtico Extreme Run",
+      "routes": [
+        {
+          "date": "2026-08-30",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 63062
+        }
+      ],
+      "id_evento": 44550,
+      "url_hotsite": "https://www.chipbreubranco.com.br/evento/corrida-ttico-extreme-run-2026",
+      "url_inscricao": "https://www.chipbreubranco.com.br/evento/corrida-ttico-extreme-run-2026",
+      "tag": "2026-corrida-tatico-extreme-run",
+      "data_inicial": "2026-12-20",
+      "url_regulamento": "https://www.chipbreubranco.com.br/painel/upload/doc/inscricao/doc-064-18092026115622-fea76b7ab660fd8591d5b3c6002add88.pdf"
+    },
+    {
+      "data_final": "2026-12-27",
+      "nome_evento": "27 RUN 5K ANO NOVO 5KM",
+      "routes": [
+        {
+          "date": "2026-11-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 69054
+        }
+      ],
+      "id_evento": 47432,
+      "url_hotsite": "https://www.sympla.com.br/evento/27-run-5k-ano-novo-5km/3566434",
+      "url_inscricao": "https://www.sympla.com.br/evento/27-run-5k-ano-novo-5km/3566434",
+      "tag": "2026-27-run-5k-ano-novo-5km",
+      "data_inicial": "2026-12-27",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2027-01-10",
+      "nome_evento": "3ª CORRIDA 7KM GALO CONCHENSE",
+      "routes": [
+        {
+          "date": "2026-09-20",
+          "distance": 7,
+          "unit": "km",
+          "locked": false,
+          "id": 64609
+        }
+      ],
+      "id_evento": 45484,
+      "url_hotsite": "https://www.sympla.com.br/evento/3a-corrida-7km-galo-conchense/3459801",
+      "url_inscricao": "https://www.sympla.com.br/evento/3a-corrida-7km-galo-conchense/3459801",
+      "tag": "2026-3-corrida-7km-galo-conchense",
+      "data_inicial": "2027-01-10",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2027-01-31",
+      "nome_evento": "15k DAS PRAIAS - 2027",
+      "routes": [
+        {
+          "date": "2027-01-24",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62422
+        },
+        {
+          "date": "2027-01-24",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62423
+        },
+        {
+          "date": "2027-01-24",
+          "distance": 15,
+          "unit": "km",
+          "locked": false,
+          "id": 62424
+        }
+      ],
+      "id_evento": 45190,
+      "url_hotsite": "",
+      "url_inscricao": "https://www.realtiming.com.br/evento/15k-daspraias2027",
+      "tag": "2027-15k-das-praias-2027",
+      "data_inicial": "2027-01-31",
+      "url_regulamento": ""
+    },
+    {
+      "data_final": "2027-01-31",
+      "nome_evento": "PIRANGI PRAIANO 2027",
+      "routes": [
+        {
+          "date": "2027-01-17",
+          "distance": 8,
+          "unit": "km",
+          "locked": false,
+          "id": 64327
+        },
+        {
+          "date": "2027-01-17",
+          "distance": 4,
+          "unit": "km",
+          "locked": false,
+          "id": 64328
+        }
+      ],
+      "id_evento": 45377,
+      "url_hotsite": "https://www.ticketsports.com.br/e/PIRANGI+PRAIANO+2027-85428",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=85428&origem=novo-site&lang=en-US",
+      "tag": "2027-pirangi-praiano-2027",
+      "data_inicial": "2027-01-31",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/85428/faaff372fb684e8da932c36ff08b73f3639217022424885636.pdf"
+    },
+    {
+      "data_final": "2027-02-21",
+      "nome_evento": "Meia Maratona Sustentável Tubo Forte",
+      "routes": [
+        {
+          "date": "2027-01-17",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62486
+        },
+        {
+          "date": "2027-01-17",
+          "distance": 10,
+          "unit": "km",
+          "locked": false,
+          "id": 62487
+        },
+        {
+          "date": "2027-01-17",
+          "distance": 21,
+          "unit": "km",
+          "locked": false,
+          "id": 62488
+        },
+        {
+          "date": "2027-01-17",
+          "distance": 3,
+          "unit": "km",
+          "locked": false,
+          "id": 62489
+        }
+      ],
+      "id_evento": 44804,
+      "url_hotsite": "https://www.races.com.br/meia-maratona-sustentavel-2027",
+      "url_inscricao": "https://www.races.com.br/meia-maratona-sustentavel-2027",
+      "tag": "2027-meia-maratona-sustentavel-tubo-forte",
+      "data_inicial": "2027-02-21",
+      "url_regulamento": "https://www.races.com.br/meia-maratona-sustentavel-2027#tab2"
+    },
+    {
+      "data_final": "2027-08-07",
+      "nome_evento": "Nightrun Garibaldi",
+      "routes": [
+        {
+          "date": "2026-09-27",
+          "distance": 5,
+          "unit": "km",
+          "locked": false,
+          "id": 62330
+        }
+      ],
+      "id_evento": 43631,
+      "url_hotsite": "",
+      "url_inscricao": "https://www.sulsportshow.com.br/evento/2026/nightrun-garibaldi",
+      "tag": "2026-nightrun-garibaldi",
+      "data_inicial": "2027-08-07",
+      "url_regulamento": "https://www.sulsportshow.com.br/default/"
+    }
+  ],
+  "checked_at": "2026-10-04T05:47:16.436485-03:00",
+  "database_date": "2026-10-04"
+}

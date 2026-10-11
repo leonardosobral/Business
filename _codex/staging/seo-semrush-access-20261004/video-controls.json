@@ -1,0 +1,97 @@
+[
+  {
+    "url": "https://roadrunners.run/videos/canal/road-runners/",
+    "status": 200,
+    "seconds": 0.746049,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/videos/canal/road-runners/"
+    ],
+    "title": "Vídeos - Road Runners - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [
+      "E-nZhu2zOuw",
+      "papAPLq2ZeQ",
+      "gXvzmOVIPbo"
+    ],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/correria-campinas/",
+    "status": 200,
+    "seconds": 2.263106,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/videos/canal/correria-campinas/"
+    ],
+    "title": "Vídeos - Correria Campinas - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [
+      "2pqfGDD2DyE",
+      "19NC7InKbgg",
+      "zcA5R_A9Sfs",
+      "o1B_kTHuSb0",
+      "cpeYyzUWxSY"
+    ],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/bora-correr-galera/",
+    "status": 200,
+    "seconds": 0.49083,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/videos/canal/bora-correr-galera/"
+    ],
+    "title": "Vídeos - Bora Correr Galera - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [
+      "DcsW1e2fkfQ",
+      "V4_LZQfYljo",
+      "L_QB8nsBnjM",
+      "pEQNALaawpo",
+      "RYXxNAF7rb0",
+      "9kttFeUihTU"
+    ],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/videos/?page=250",
+    "status": 200,
+    "seconds": 0.374065,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/videos/?page=250"
+    ],
+    "title": "Vídeos - Road Runners - Página 250 de 250",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [
+      "727srcy7dUU",
+      "WHLcB08IhTQ",
+      "osu3d9HbcU4",
+      "CFv4LN-t29k",
+      "P_o0NfvmuMc",
+      "9YVLgqv4Jd4",
+      "8jMxnaIPxuU",
+      "IazD40fF7OY",
+      "ulv_o9ocBxU"
+    ],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  }
+]

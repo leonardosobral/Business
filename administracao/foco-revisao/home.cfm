@@ -38,12 +38,12 @@
   </div>
 
   <cfif len(VARIABLES.focoReviewNotice)>
-    <div class="alert alert-success"><cfoutput>#htmlEditFormat(VARIABLES.focoReviewNotice)#</cfoutput></div>
+    <div class="alert alert-success"><cfoutput>#encodeForHTML(VARIABLES.focoReviewNotice)#</cfoutput></div>
   </cfif>
   <cfif len(VARIABLES.focoReviewError)>
     <div class="alert alert-danger">
       <cfoutput>
-        <div class="fw-bold">#htmlEditFormat(VARIABLES.focoReviewError)#</div>
+        <div class="fw-bold">#encodeForHTML(VARIABLES.focoReviewError)#</div>
         <cfif VARIABLES.focoReviewConflictEventId GT 0>
           <cfset VARIABLES.focoReviewConflictRoadRunnersUrl = len(VARIABLES.focoReviewConflictEventTag)
             ? "https://roadrunners.run/evento/#urlEncodedFormat(VARIABLES.focoReviewConflictEventTag)#/"
@@ -62,18 +62,18 @@
           </cfif>
           <div class="mt-2">
             Vinculada atualmente ao evento
-            <strong>###VARIABLES.focoReviewConflictEventId# - #htmlEditFormat(VARIABLES.focoReviewConflictEventName)#</strong>
+            <strong>###VARIABLES.focoReviewConflictEventId# - #encodeForHTML(VARIABLES.focoReviewConflictEventName)#</strong>
             <cfif len(VARIABLES.focoReviewConflictRoadRunnersUrl)>
-              <a class="foco-review-external-link ms-1" href="#htmlEditFormat(VARIABLES.focoReviewConflictRoadRunnersUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento no Road Runners"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a class="foco-review-external-link ms-1" href="#encodeForHTMLAttribute(VARIABLES.focoReviewConflictRoadRunnersUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento no Road Runners"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </cfif>
             <cfif len(VARIABLES.focoReviewConflictFocoUrl)>
-              <a class="foco-review-external-link ms-1" href="#htmlEditFormat(VARIABLES.focoReviewConflictFocoUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento na Foco Radical"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              <a class="foco-review-external-link ms-1" href="#encodeForHTMLAttribute(VARIABLES.focoReviewConflictFocoUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento na Foco Radical"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </cfif>.
           </div>
           <form method="post" class="d-flex flex-wrap gap-2 align-items-center mt-3" onsubmit="return confirm('Desvincular esta competição Foco do evento informado? Esta ação remove o badge Foco e recoloca o evento anterior para reprocessamento.');">
             <input type="hidden" name="acao" value="desvincular_foco" />
             <input type="hidden" name="id_evento_conflito" value="#VARIABLES.focoReviewConflictEventId#" />
-            <input type="hidden" name="competition_id" value="#htmlEditFormat(VARIABLES.focoReviewConflictCompetitionId)#" />
+            <input type="hidden" name="competition_id" value="#encodeForHTMLAttribute(VARIABLES.focoReviewConflictCompetitionId)#" />
             <input class="form-control form-control-sm flex-grow-1" style="min-width:240px" name="observacao" placeholder="Observação sobre a desvinculação" />
             <button class="btn btn-outline-light btn-sm"><i class="fa-solid fa-link-slash me-1"></i> Desvincular</button>
           </form>
@@ -95,7 +95,7 @@
       <div class="card-body business-page-body row g-3 align-items-end">
         <div class="col-12 col-lg-5">
           <label class="form-label">Evento, ID ou competição</label>
-          <input class="form-control" name="busca" value="<cfoutput>#htmlEditFormat(VARIABLES.focoReviewSearch)#</cfoutput>" />
+          <input class="form-control" name="busca" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.focoReviewSearch)#</cfoutput>" />
         </div>
         <div class="col-6 col-lg-2">
           <label class="form-label">Status</label>
@@ -135,14 +135,14 @@
             <div>
               <div class="small text-muted">Evento ###id_evento#</div>
               <h2 class="h5 mb-1">
-                #htmlEditFormat(nome_evento)#
+                #encodeForHTML(nome_evento)#
                 <cfif len(VARIABLES.focoReviewRoadRunnersUrl)>
-                  <a class="foco-review-external-link ms-1" href="#htmlEditFormat(VARIABLES.focoReviewRoadRunnersUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento no Road Runners"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                  <a class="foco-review-external-link ms-1" href="#encodeForHTMLAttribute(VARIABLES.focoReviewRoadRunnersUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento no Road Runners"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </cfif>
               </h2>
-              <div class="small text-muted">#lsDateFormat(data_inicial, "dd/mm/yyyy")#<cfif data_inicial NEQ data_final> a #lsDateFormat(data_final, "dd/mm/yyyy")#</cfif> · #htmlEditFormat(cidade)#/#htmlEditFormat(estado)# · Maior score #numberFormat(max_score, "0.00")#</div>
+              <div class="small text-muted">#lsDateFormat(data_inicial, "dd/mm/yyyy")#<cfif data_inicial NEQ data_final> a #lsDateFormat(data_final, "dd/mm/yyyy")#</cfif> · #encodeForHTML(cidade)#/#encodeForHTML(estado)# · Maior score #numberFormat(max_score, "0.00")#</div>
             </div>
-            <span class="badge badge-warning text-dark align-self-start">#htmlEditFormat(status)#</span>
+            <span class="badge badge-warning text-dark align-self-start">#encodeForHTML(status)#</span>
           </div>
 
           <cfset VARIABLES.focoReviewRenderedLinkedGalleries = 0 />
@@ -165,21 +165,21 @@
               <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 rounded border border-success border-opacity-25 bg-success bg-opacity-10 px-3 py-2 mb-2">
                 <div class="small">
                   <span class="badge badge-success me-2">Galeria vinculada</span>
-                  <strong>#htmlEditFormat(qFocoReviewLinkedGalleries.competition_name)#</strong>
+                  <strong>#encodeForHTML(qFocoReviewLinkedGalleries.competition_name)#</strong>
                   <cfif len(VARIABLES.focoReviewLinkedFocoUrl)>
-                    <a class="foco-review-external-link ms-1" href="#htmlEditFormat(VARIABLES.focoReviewLinkedFocoUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento na Foco Radical"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a class="foco-review-external-link ms-1" href="#encodeForHTMLAttribute(VARIABLES.focoReviewLinkedFocoUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento na Foco Radical"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                   </cfif>
                   <span class="text-muted ms-2">
-                    Foco ###htmlEditFormat(qFocoReviewLinkedGalleries.competition_id)#
+                    Foco ###encodeForHTML(qFocoReviewLinkedGalleries.competition_id)#
                     <cfif isDate(qFocoReviewLinkedGalleries.competition_date)> · #lsDateFormat(qFocoReviewLinkedGalleries.competition_date, "dd/mm/yyyy")#</cfif>
-                    <cfif len(trim(qFocoReviewLinkedGalleries.place & "")) OR len(trim(qFocoReviewLinkedGalleries.uf & ""))> · #htmlEditFormat(qFocoReviewLinkedGalleries.place)#/#htmlEditFormat(qFocoReviewLinkedGalleries.uf)#</cfif>
+                    <cfif len(trim(qFocoReviewLinkedGalleries.place & "")) OR len(trim(qFocoReviewLinkedGalleries.uf & ""))> · #encodeForHTML(qFocoReviewLinkedGalleries.place)#/#encodeForHTML(qFocoReviewLinkedGalleries.uf)#</cfif>
                     <cfif len(trim(qFocoReviewLinkedGalleries.score & ""))> · Score #numberFormat(qFocoReviewLinkedGalleries.score, "0.00")#</cfif>
                   </span>
                 </div>
                 <form method="post" onsubmit="return confirm('Desvincular esta galeria Foco deste evento Road Runners?');">
                   <input type="hidden" name="acao" value="desvincular_foco" />
                   <input type="hidden" name="id_evento_conflito" value="#qFocoReviewLinkedGalleries.id_evento#" />
-                  <input type="hidden" name="competition_id" value="#htmlEditFormat(qFocoReviewLinkedGalleries.competition_id)#" />
+                  <input type="hidden" name="competition_id" value="#encodeForHTMLAttribute(qFocoReviewLinkedGalleries.competition_id)#" />
                   <button class="btn btn-outline-light btn-sm"><i class="fa-solid fa-link-slash me-1"></i> Desvincular</button>
                 </form>
               </div>
@@ -209,9 +209,9 @@
                 <div>
                   <div class="d-flex flex-wrap gap-2 align-items-center mb-1">
                     <strong>
-                      #htmlEditFormat(qFocoReviewCandidates.competition_name)#
+                      #encodeForHTML(qFocoReviewCandidates.competition_name)#
                       <cfif len(VARIABLES.focoReviewCandidateFocoUrl)>
-                        <a class="foco-review-external-link ms-1" href="#htmlEditFormat(VARIABLES.focoReviewCandidateFocoUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento na Foco Radical"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a class="foco-review-external-link ms-1" href="#encodeForHTMLAttribute(VARIABLES.focoReviewCandidateFocoUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento na Foco Radical"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </cfif>
                     </strong>
                     <span class="badge <cfif VARIABLES.focoReviewScoreHighConfidence>foco-review-score-high<cfelseif VARIABLES.focoReviewScoreManualEligible>foco-review-score-mid<cfelse>foco-review-score-low</cfif>">
@@ -222,7 +222,7 @@
                       <span class="badge badge-success">Já vinculada</span>
                     </cfif>
                   </div>
-                  <div class="small text-muted mb-2">Foco ###htmlEditFormat(qFocoReviewCandidates.competition_id)# · <cfif isDate(qFocoReviewCandidates.competition_date)>#lsDateFormat(qFocoReviewCandidates.competition_date, "dd/mm/yyyy")#<cfelse>Data não informada</cfif> · #htmlEditFormat(qFocoReviewCandidates.place)#/#htmlEditFormat(qFocoReviewCandidates.uf)#</div>
+                  <div class="small text-muted mb-2">Foco ###encodeForHTML(qFocoReviewCandidates.competition_id)# · <cfif isDate(qFocoReviewCandidates.competition_date)>#lsDateFormat(qFocoReviewCandidates.competition_date, "dd/mm/yyyy")#<cfelse>Data não informada</cfif> · #encodeForHTML(qFocoReviewCandidates.place)#/#encodeForHTML(qFocoReviewCandidates.uf)#</div>
                   <div class="foco-review-flags">
                     <span class="foco-review-flag <cfif qFocoReviewCandidates.exact_name>is-match</cfif>">Nome</span>
                     <span class="foco-review-flag <cfif qFocoReviewCandidates.exact_date>is-match</cfif>">Data</span>
@@ -237,13 +237,13 @@
                     <form method="post" class="d-flex flex-column gap-2" data-foco-shortcut-action="vincular" onsubmit="return confirm('Vincular esta competição ao evento?');">
                       <input type="hidden" name="acao" value="vincular" />
                       <input type="hidden" name="id_evento" value="#qFocoReviewItems.id_evento#" />
-                      <input type="hidden" name="competition_id" value="#htmlEditFormat(qFocoReviewCandidates.competition_id)#" />
+                      <input type="hidden" name="competition_id" value="#encodeForHTMLAttribute(qFocoReviewCandidates.competition_id)#" />
                       <button class="btn btn-success btn-sm"><i class="fa-solid fa-link me-1"></i> Vincular galeria</button>
                     </form>
                     <form method="post" class="d-flex flex-column gap-2" data-foco-shortcut-action="ignorar" onsubmit="return confirm('Ignorar este candidato Foco para este evento?');">
                       <input type="hidden" name="acao" value="ignorar_candidato" />
                       <input type="hidden" name="id_evento" value="#qFocoReviewItems.id_evento#" />
-                      <input type="hidden" name="competition_id" value="#htmlEditFormat(qFocoReviewCandidates.competition_id)#" />
+                      <input type="hidden" name="competition_id" value="#encodeForHTMLAttribute(qFocoReviewCandidates.competition_id)#" />
                       <button class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-eye-slash me-1"></i> Ignorar</button>
                     </form>
                   </div>
@@ -253,7 +253,7 @@
                     <form method="post" class="d-flex flex-column gap-2" data-foco-shortcut-action="ignorar" onsubmit="return confirm('Ignorar este candidato Foco para este evento?');">
                       <input type="hidden" name="acao" value="ignorar_candidato" />
                       <input type="hidden" name="id_evento" value="#qFocoReviewItems.id_evento#" />
-                      <input type="hidden" name="competition_id" value="#htmlEditFormat(qFocoReviewCandidates.competition_id)#" />
+                      <input type="hidden" name="competition_id" value="#encodeForHTMLAttribute(qFocoReviewCandidates.competition_id)#" />
                       <button class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-eye-slash me-1"></i> Ignorar</button>
                     </form>
                   </div>

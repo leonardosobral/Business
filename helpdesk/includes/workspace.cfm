@@ -1,4 +1,4 @@
-<cfif NOT structKeyExists(VARIABLES,"helpdeskCanManage") OR NOT VARIABLES.helpdeskCanManage><cfheader statuscode="403" statustext="Forbidden"/><cfabort/></cfif>
+<cfif NOT structKeyExists(VARIABLES,"helpdeskCanManage") OR NOT VARIABLES.helpdeskCanManage><cfheader statuscode="403"/><cfabort/></cfif>
 <link rel="stylesheet" href="/helpdesk/assets/workspace.css?v=20260919-1"/>
 <section class="hd-workspace" aria-label="Central de atendimento">
 <cfoutput>

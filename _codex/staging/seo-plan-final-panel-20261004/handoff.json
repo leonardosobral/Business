@@ -1,0 +1,15 @@
+{
+  "status": "published_and_verified",
+  "queue_total": 35,
+  "resolved": 27,
+  "pending": 8,
+  "remaining_events": 18,
+  "remaining_routes": 31,
+  "runtime_files": 2,
+  "compiled_templates": 2,
+  "render_scenarios": 19,
+  "access_checks": 8,
+  "watch_files_preserved": 9,
+  "snapshot_preserved": "6ac29b3456eeefef0a3ff73b",
+  "backup": "/var/backups/seo-plan-final-panel-20261004-v2/baseline"
+}

@@ -1,0 +1,23 @@
+Assunto: ABRACEO | Acesso à prévia Brasil que Corre Provas 2026
+
+Olá, equipe da {{empresa}}!
+
+A ABRACEO convida sua empresa a conhecer a prévia profissional do estudo Brasil que Corre Provas 2026, desenvolvido pelo Road Runners Business, com dados de janeiro a setembro.
+
+O cadastro da {{empresa}} já está preparado, com os dados disponíveis e o logotipo, para facilitar seu primeiro acesso.
+
+Acesse: {{link_de_acesso}}
+E-mail do convite: {{email}}
+Seu voucher: {{voucher}}
+Prazo para resgatar: 10/11/2026, até 23h59 (horário de Brasília).
+
+Entre com o Google usando o e-mail do convite, escolha “Com voucher” e informe o código. Confira os dados da empresa e, na aba “Confirmar representante”, informe sua função e confirme a declaração para liberar a leitura.
+
+Se o e-mail convidado não estiver associado a uma conta Google, você também pode entrar com sua própria conta Google e escolher “Com CNPJ”, informando {{cnpj}}. Depois, confirme sua representação da empresa.
+
+Encontrou algo a corrigir no cadastro? Informe a correção durante o primeiro acesso.
+
+A confirmação libera a leitura pessoal da prévia. As permissões de gestão da conta empresarial seguem o processo de aprovação do Business.
+
+Boa leitura!
+Equipe ABRACEO

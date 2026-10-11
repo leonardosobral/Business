@@ -1,0 +1,265 @@
+{
+  "CHECKS": [
+    {
+      "PASSED": false,
+      "NAME": "/evento/ 2026-\"3-corrida-de-nossa-senhora-aparecida\" exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/evento/ 2026-\"3-corrida-de-nossa-senhora-aparecida\" restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "/evento/ 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/evento/ 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "/evento/ 2026-rock-n-run\n----nashville-2026 exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/evento/ 2026-rock-n-run\n----nashville-2026 restore route params"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/evento/ 2026-normal-fixture exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/evento/ 2026-normal-fixture restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "/evento/ 2023-jurerê-night-run-2023 exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/evento/ 2023-jurerê-night-run-2023 restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "/en/event/ 2026-\"3-corrida-de-nossa-senhora-aparecida\" exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/en/event/ 2026-\"3-corrida-de-nossa-senhora-aparecida\" restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "/en/event/ 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/en/event/ 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "/en/event/ 2026-rock-n-run\n----nashville-2026 exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/en/event/ 2026-rock-n-run\n----nashville-2026 restore route params"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/en/event/ 2026-normal-fixture exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/en/event/ 2026-normal-fixture restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "/en/event/ 2023-jurerê-night-run-2023 exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/en/event/ 2023-jurerê-night-run-2023 restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "/es/evento/ 2026-\"3-corrida-de-nossa-senhora-aparecida\" exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/es/evento/ 2026-\"3-corrida-de-nossa-senhora-aparecida\" restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "/es/evento/ 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/es/evento/ 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "/es/evento/ 2026-rock-n-run\n----nashville-2026 exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/es/evento/ 2026-rock-n-run\n----nashville-2026 restore route params"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/es/evento/ 2026-normal-fixture exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/es/evento/ 2026-normal-fixture restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "/es/evento/ 2023-jurerê-night-run-2023 exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "/es/evento/ 2023-jurerê-night-run-2023 restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "fallback 2026-\"3-corrida-de-nossa-senhora-aparecida\" exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "fallback 2026-\"3-corrida-de-nossa-senhora-aparecida\" restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "fallback 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "fallback 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "fallback 2026-rock-n-run\n----nashville-2026 exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "fallback 2026-rock-n-run\n----nashville-2026 restore route params"
+    },
+    {
+      "PASSED": true,
+      "NAME": "fallback 2026-normal-fixture exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "fallback 2026-normal-fixture restore route params"
+    },
+    {
+      "PASSED": false,
+      "NAME": "fallback 2023-jurerê-night-run-2023 exact encoded path"
+    },
+    {
+      "PASSED": true,
+      "NAME": "fallback 2023-jurerê-night-run-2023 restore route params"
+    }
+  ],
+  "PATHS": [
+    {
+      "PATH": "/evento/2026-\"3-corrida-de-nossa-senhora-aparecida\"/",
+      "TAG": "2026-\"3-corrida-de-nossa-senhora-aparecida\""
+    },
+    {
+      "PATH": "/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha/",
+      "TAG": "2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha"
+    },
+    {
+      "PATH": "/evento/2026-rock-n-run\n----nashville-2026/",
+      "TAG": "2026-rock-n-run\n----nashville-2026"
+    },
+    {
+      "PATH": "/evento/2026-normal-fixture/",
+      "TAG": "2026-normal-fixture"
+    },
+    {
+      "PATH": "/evento/2023-jurerê-night-run-2023/",
+      "TAG": "2023-jurerê-night-run-2023"
+    },
+    {
+      "PATH": "/en/event/2026-\"3-corrida-de-nossa-senhora-aparecida\"/",
+      "TAG": "2026-\"3-corrida-de-nossa-senhora-aparecida\""
+    },
+    {
+      "PATH": "/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha/",
+      "TAG": "2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha"
+    },
+    {
+      "PATH": "/en/event/2026-rock-n-run\n----nashville-2026/",
+      "TAG": "2026-rock-n-run\n----nashville-2026"
+    },
+    {
+      "PATH": "/en/event/2026-normal-fixture/",
+      "TAG": "2026-normal-fixture"
+    },
+    {
+      "PATH": "/en/event/2023-jurerê-night-run-2023/",
+      "TAG": "2023-jurerê-night-run-2023"
+    },
+    {
+      "PATH": "/es/evento/2026-\"3-corrida-de-nossa-senhora-aparecida\"/",
+      "TAG": "2026-\"3-corrida-de-nossa-senhora-aparecida\""
+    },
+    {
+      "PATH": "/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha/",
+      "TAG": "2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha"
+    },
+    {
+      "PATH": "/es/evento/2026-rock-n-run\n----nashville-2026/",
+      "TAG": "2026-rock-n-run\n----nashville-2026"
+    },
+    {
+      "PATH": "/es/evento/2026-normal-fixture/",
+      "TAG": "2026-normal-fixture"
+    },
+    {
+      "PATH": "/es/evento/2023-jurerê-night-run-2023/",
+      "TAG": "2023-jurerê-night-run-2023"
+    },
+    {
+      "PATH": "/evento/2026-\"3-corrida-de-nossa-senhora-aparecida\"/",
+      "TAG": "2026-\"3-corrida-de-nossa-senhora-aparecida\""
+    },
+    {
+      "PATH": "/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha/",
+      "TAG": "2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha"
+    },
+    {
+      "PATH": "/evento/2026-rock-n-run\n----nashville-2026/",
+      "TAG": "2026-rock-n-run\n----nashville-2026"
+    },
+    {
+      "PATH": "/evento/2026-normal-fixture/",
+      "TAG": "2026-normal-fixture"
+    },
+    {
+      "PATH": "/evento/2023-jurerê-night-run-2023/",
+      "TAG": "2023-jurerê-night-run-2023"
+    }
+  ],
+  "source_hash": "38ceea5aa0e9edb086f388f2bfe99c22379ea88b70468297b09d8005c8c23ac9",
+  "failed": [
+    "/evento/ 2026-\"3-corrida-de-nossa-senhora-aparecida\" exact encoded path",
+    "/evento/ 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha exact encoded path",
+    "/evento/ 2026-rock-n-run\n----nashville-2026 exact encoded path",
+    "/evento/ 2023-jurerê-night-run-2023 exact encoded path",
+    "/en/event/ 2026-\"3-corrida-de-nossa-senhora-aparecida\" exact encoded path",
+    "/en/event/ 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha exact encoded path",
+    "/en/event/ 2026-rock-n-run\n----nashville-2026 exact encoded path",
+    "/en/event/ 2023-jurerê-night-run-2023 exact encoded path",
+    "/es/evento/ 2026-\"3-corrida-de-nossa-senhora-aparecida\" exact encoded path",
+    "/es/evento/ 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha exact encoded path",
+    "/es/evento/ 2026-rock-n-run\n----nashville-2026 exact encoded path",
+    "/es/evento/ 2023-jurerê-night-run-2023 exact encoded path",
+    "fallback 2026-\"3-corrida-de-nossa-senhora-aparecida\" exact encoded path",
+    "fallback 2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha exact encoded path",
+    "fallback 2026-rock-n-run\n----nashville-2026 exact encoded path",
+    "fallback 2023-jurerê-night-run-2023 exact encoded path"
+  ]
+}

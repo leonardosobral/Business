@@ -1,0 +1,9 @@
+{
+  "hashes": {
+    "portal/includes/seo_queue_data.cfm": "75fa00f3bb0e4fe864cda39d0d4d83c278463db50653a5c7741509cddb207184",
+    "portal/conteudo/seo_semrush.cfm": "e9f6f3adbc3b771776f3ab53e545e5a919d0c96abb4e11a103378539dcee5c2c",
+    "portal/includes/seo_semrush_data.cfm": "94de557949ed100a8bd464193a161746e53c850803dddaba1df52b138ebf8c46"
+  },
+  "scenarios": 19,
+  "mode": "published"
+}

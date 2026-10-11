@@ -1,6 +1,6 @@
 <cfscript>
 if(!structKeyExists(REQUEST,'businessDelegationIdentity') || !isStruct(REQUEST.businessDelegationIdentity) || !structKeyExists(REQUEST.businessDelegationIdentity,'emailVerified') || !REQUEST.businessDelegationIdentity.emailVerified){
-    cfheader(statuscode=403,statustext='Forbidden');abort;
+    cfheader(statuscode=403);abort;
 }
 VARIABLES.wsIdentity=REQUEST.businessDelegationIdentity;
 VARIABLES.wsService=structKeyExists(REQUEST,'businessDelegationService')?REQUEST.businessDelegationService:createObject('component','services.BusinessAccountDelegation').init('runnerhub',structKeyExists(APPLICATION,'businessAccountDelegationEnabled') && APPLICATION.businessAccountDelegationEnabled);
@@ -9,20 +9,20 @@ VARIABLES.wsError='';VARIABLES.wsNotice='';VARIABLES.wsIssuedLink='';
 if(!structKeyExists(SESSION,'businessWorkspaceCsrf'))SESSION.businessWorkspaceCsrf=lCase(hash(createUUID() & now() & getTickCount(),'SHA-256'));
 VARIABLES.wsCsrf=SESSION.businessWorkspaceCsrf;
 VARIABLES.wsManagers=queryExecute("SELECT c.id_conta,c.nome_conta,g.classificacao,m.papel FROM tb_conta_usuarios m JOIN tb_contas c ON c.id_conta=m.id_conta JOIN tb_conta_gestoras g ON g.id_conta=c.id_conta WHERE m.id_usuario=:actor AND m.status='ATIVO' AND m.papel IN('OWNER','ADMIN','OPERADOR','VISUALIZADOR') AND c.status='ATIVA' AND g.habilitada=true ORDER BY c.nome_conta,c.id_conta",{actor={value=VARIABLES.wsIdentity.id,cfsqltype='cf_sql_integer'}},{datasource='runnerhub'});
-if(!VARIABLES.wsManagers.recordCount){cfheader(statuscode=403,statustext='Forbidden');abort;}
+if(!VARIABLES.wsManagers.recordCount){cfheader(statuscode=403);abort;}
 VARIABLES.wsManagerId=VARIABLES.wsManagers.id_conta[1];
 if(structKeyExists(URL,'gestora')){
-    if(!isSimpleValue(URL.gestora) || !reFind('^[1-9][0-9]*$',URL.gestora & '')){cfheader(statuscode=400,statustext='Bad Request');abort;}
+    if(!isSimpleValue(URL.gestora) || !reFind('^[1-9][0-9]*$',URL.gestora & '')){cfheader(statuscode=400);abort;}
     VARIABLES.wsManagerId=val(URL.gestora);
 }
 if(CGI.request_method=='POST' && structKeyExists(FORM,'business_delegation_action')){
-    if(!structKeyExists(FORM,'workspace_manager') || !isSimpleValue(FORM.workspace_manager) || !reFind('^[1-9][0-9]*$',FORM.workspace_manager & '') || (structKeyExists(URL,'gestora') && val(URL.gestora)!=val(FORM.workspace_manager))){cfheader(statuscode=400,statustext='Bad Request');abort;}
+    if(!structKeyExists(FORM,'workspace_manager') || !isSimpleValue(FORM.workspace_manager) || !reFind('^[1-9][0-9]*$',FORM.workspace_manager & '') || (structKeyExists(URL,'gestora') && val(URL.gestora)!=val(FORM.workspace_manager))){cfheader(statuscode=400);abort;}
     VARIABLES.wsManagerId=val(FORM.workspace_manager);
 }
 VARIABLES.wsCanManage=false;
 VARIABLES.wsManagerAllowed=false;
 for(VARIABLES.wsManagerRow in VARIABLES.wsManagers){if(VARIABLES.wsManagerRow.id_conta==VARIABLES.wsManagerId){VARIABLES.wsManagerAllowed=true;VARIABLES.wsCanManage=listFind('OWNER,ADMIN',VARIABLES.wsManagerRow.papel)>0;}}
-if(!VARIABLES.wsManagerAllowed){cfheader(statuscode=403,statustext='Forbidden');abort;}
+if(!VARIABLES.wsManagerAllowed){cfheader(statuscode=403);abort;}
 VARIABLES.wsTab=structKeyExists(URL,'tab') && isSimpleValue(URL.tab)?lCase(trim(URL.tab)):'clientes';
 if(!listFind('clientes,equipe,convites,historico',VARIABLES.wsTab))VARIABLES.wsTab='clientes';
 VARIABLES.wsFilters={search=structKeyExists(URL,'busca') && isSimpleValue(URL.busca)?trim(URL.busca):'',state=structKeyExists(URL,'estado') && isSimpleValue(URL.estado)?trim(URL.estado):'',page=structKeyExists(URL,'pagina') && isSimpleValue(URL.pagina)?URL.pagina:1};

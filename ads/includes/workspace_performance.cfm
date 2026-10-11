@@ -82,10 +82,10 @@
         <div class="d-flex flex-column flex-xl-row justify-content-between align-items-xl-start gap-3 mb-4">
             <div>
                 <div class="ads-v1-eyebrow">Resultados</div>
-                <h2 class="h4 mb-1"><cfoutput>#htmlEditFormat(VARIABLES.adsV1PerformanceTitle)#</cfoutput></h2>
-                <p class="text-muted mb-0"><cfoutput>#htmlEditFormat(VARIABLES.adsV1PerformanceSubtitle)#</cfoutput></p>
+                <h2 class="h4 mb-1"><cfoutput>#encodeForHTML(VARIABLES.adsV1PerformanceTitle)#</cfoutput></h2>
+                <p class="text-muted mb-0"><cfoutput>#encodeForHTML(VARIABLES.adsV1PerformanceSubtitle)#</cfoutput></p>
                 <cfif NOT VARIABLES.adsV1PerformanceIsAdmin AND NOT VARIABLES.adsV1PerformanceIsCampaign AND len(VARIABLES.adsV1PerformanceCampaignName)>
-                    <div class="ads-performance-selection mt-2"><i class="fas fa-filter me-1" aria-hidden="true"></i>Campanha selecionada: <strong><cfoutput>#htmlEditFormat(VARIABLES.adsV1PerformanceCampaignName)#</cfoutput></strong></div>
+                    <div class="ads-performance-selection mt-2"><i class="fas fa-filter me-1" aria-hidden="true"></i>Campanha selecionada: <strong><cfoutput>#encodeForHTML(VARIABLES.adsV1PerformanceCampaignName)#</cfoutput></strong></div>
                 </cfif>
             </div>
             <div class="ads-performance-controls">
@@ -97,7 +97,7 @@
                         <div class="input-group input-group-sm">
                             <select class="form-select" id="ads-performance-campaign" name="ads_campaign">
                                 <option value="">Todas as campanhas</option>
-                                <cfoutput query="qAdsV1Campaigns"><option value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"<cfif compareNoCase(qAdsV1Campaigns.campaign_id & "", VARIABLES.adsV1PerformanceCampaignId) EQ 0> selected</cfif>>#htmlEditFormat(qAdsV1Campaigns.name)#</option></cfoutput>
+                                <cfoutput query="qAdsV1Campaigns"><option value="#encodeForHTMLAttribute(qAdsV1Campaigns.campaign_id)#"<cfif compareNoCase(qAdsV1Campaigns.campaign_id & "", VARIABLES.adsV1PerformanceCampaignId) EQ 0> selected</cfif>>#encodeForHTML(qAdsV1Campaigns.name)#</option></cfoutput>
                             </select>
                             <button class="btn btn-outline-info" type="submit">Filtrar</button>
                         </div>

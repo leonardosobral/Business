@@ -1,0 +1,51 @@
+[
+  {
+    "id": "RR-20",
+    "title": "Resolver os nove erros restantes da reauditoria Semrush",
+    "summary": "A coleta de 500 páginas ainda aponta dois títulos iguais de eventos, um ranking não rastreado, uma busca lenta e cinco ocorrências ligadas à proteção de e-mail.",
+    "acceptance": "Confirmar o rastreamento do ranking otimizado em RR-21 numa nova auditoria; investigar a busca lenta; conferir as fontes e a identidade das duas URLs ABAVSE antes de corrigir título, data ou redirecionamento; validar os links protegidos em navegador. Depois tratar os maiores grupos de avisos. Manter a cobertura explícita e não usar redução de erros como confirmação de indexação.",
+    "stateLabel": "Reauditoria recebida — 9 erros em análise; 6.356 avisos e 126 observações"
+  },
+  {
+    "id": "RR-16",
+    "title": "Revalidar as URLs sinalizadas como soft 404",
+    "summary": "Corrigido o redirect genérico de eventos inexistentes para a busca. Os demais exemplos históricos exigem revisão própria; eventos válidos não foram retirados.",
+    "acceptance": "Correção do redirect de evento inexistente entregue. Ainda conferir as demais páginas válidas, buscas e exemplos do relatório, identificar equivalentes reais quando houver e acompanhar nova coleta do Google. Não devolver 404 a um evento existente por ser antigo e não abrir páginas pessoais por motivo de SEO.",
+    "stateLabel": "Parcial — redirect genérico corrigido; demais casos em revisão"
+  },
+  {
+    "id": "OR-05",
+    "title": "Confirmar recuperação da indexação dos eventos",
+    "summary": "A leitura do sitemap foi recuperada, mas o relatório de páginas ainda antecede as mudanças de acesso de 03/10.",
+    "acceptance": "Registrar nova posição do relatório de páginas após as mudanças, conferir exemplos de /evento e evolução das páginas indexadas. Não inferir indexação de HTTP 200 ou sitemap processado. Manter noindex em /resultados e bloqueio de /perfil.",
+    "stateLabel": "Pendente — nova evidência de indexação no Google"
+  },
+  {
+    "id": "RR-14",
+    "title": "Conferir recordes históricos de São Paulo com a fonte oficial",
+    "summary": "Os recordes exibidos derivam de classificações históricas divergentes da fonte oficial. Conferência focada identificou os casos de 2008 masculino e 1998 feminino.",
+    "acceptance": "Reconciliar as duas edições com fontes completas, identificar e corrigir a regra de importação ou cadastro responsável, testar a reexecução sem perda de vínculos e verificar campeões, recordes e gráficos nos três idiomas. Preservar resultados pessoais e registrar fonte, data e backup; não substituir tempos por inferência nem anunciar novo recorde sem comprovação.",
+    "stateLabel": "Divergência confirmada; correção dos dados pendente"
+  },
+  {
+    "id": "SH-02",
+    "title": "Completar e conferir fatos dos eventos",
+    "summary": "Organizador e regulamento estão visíveis quando cadastrados. Oito eventos mostram fontes e histórico de correções revisadas. Novas alterações de campos acompanhados são registradas privadamente; revisão dos demais campos e eventos continua pendente.",
+    "acceptance": "Conferir os dados com fontes dos organizadores; completar somente informação comprovada e exibi-la de forma coerente em cada idioma. Manter indicação de resultado em processamento/indisponível e acesso existente. Registrar fonte e data da revisão.",
+    "stateLabel": "Datas e fontes conferidas na amostra; demais lacunas pendentes"
+  },
+  {
+    "id": "RR-08",
+    "title": "Conferir canonical externo nas notícias traduzidas",
+    "summary": "Links de idioma ajustados à regra editorial de canonical na fonte. O cadastro do canal ainda tem campos editoriais divergentes.",
+    "acceptance": "A coerência técnica dos alternates foi corrigida. Conferir com o responsável editorial o modo de publicação, a autorização cadastrada e a política de canonical/idiomas; só depois alterar a atribuição à fonte. A API não comprova licença de reprodução.",
+    "stateLabel": "Alternates corrigidos; cadastro editorial pendente"
+  },
+  {
+    "id": "RR-11",
+    "title": "Concluir a fila de descrições e traduções",
+    "summary": "A entrega de descrições já é medida em amostra. O cron está pausado e suas últimas falhas indicaram créditos da API esgotados.",
+    "acceptance": "Esclarecer a pausa e conferir saldo atual antes de retomar o cron. Preservar a revisão de rejeitados e as proteções de fatos; validar uma execução controlada e o texto entregue contra a fonte. Ampliar a cobertura com amostra explícita, sem inferir fidelidade por tamanho ou idioma anotado.",
+    "stateLabel": "Cron pausado; últimas falhas por créditos da API"
+  }
+]

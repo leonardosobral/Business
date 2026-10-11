@@ -1,0 +1,9 @@
+{
+  "published": [
+    "evento/parts/fact_review_data.cfm",
+    "evento/parts/fact_history_data.cfm",
+    "evento/parts/fact_history.cfm",
+    "evento/parts/fact_review.cfm"
+  ],
+  "backup": "/var/backups/seo-event-history-20261004/baseline"
+}

@@ -1,0 +1,10 @@
+{
+  "status": "published_and_verified",
+  "changed_routes": 29,
+  "events": 15,
+  "preserved_route_ids": 31,
+  "dependencies": 13,
+  "public_urls": 45,
+  "remaining_events": 48,
+  "remaining_routes": 86
+}

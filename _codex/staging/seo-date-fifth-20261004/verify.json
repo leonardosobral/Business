@@ -1,0 +1,105 @@
+{
+  "events": [
+    {
+      "id_evento": 37728,
+      "row_hash": "6e8f181c742ee38acae0e3fac209c36d"
+    },
+    {
+      "id_evento": 45211,
+      "row_hash": "37b6d2581c9b7f31e089d93994f68d89"
+    },
+    {
+      "id_evento": 46069,
+      "row_hash": "a004ff4c7d791462ed8ef88e717cc1f1"
+    },
+    {
+      "id_evento": 46080,
+      "row_hash": "825ca85a43e29f8334b33bc9a6072189"
+    }
+  ],
+  "routes": [
+    {
+      "row_hash": "7d6b01e061c9a90819e88a9ad1b22b40",
+      "id_evento_percurso": 62952
+    },
+    {
+      "row_hash": "52c790095aa4cc5196aed6e445798f2b",
+      "id_evento_percurso": 64763
+    },
+    {
+      "row_hash": "69f3be1227f134158f29742e026b2f24",
+      "id_evento_percurso": 64764
+    },
+    {
+      "row_hash": "aecae739cd40cc025376510977dc48fc",
+      "id_evento_percurso": 65892
+    },
+    {
+      "row_hash": "e53b2d6b305053fd0ba1245d5caef87c",
+      "id_evento_percurso": 65893
+    },
+    {
+      "row_hash": "0363a9cdb89db9fcaff638cb9927468d",
+      "id_evento_percurso": 65919
+    },
+    {
+      "row_hash": "0868de020acd7783ad72f8cafe1574cf",
+      "id_evento_percurso": 65920
+    }
+  ],
+  "dependencies": {
+    "tb_evento_percursos_gpx": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_badges": {
+      "count": 1,
+      "hash": "4f12e7222b5546a6d8655825aa002a35"
+    },
+    "tb_evento_corridas_relaciona": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist_importacao": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_permit_atualiza": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_temp": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_evento_saude_config": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_percurso_migracoes_strava": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_percurso": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_resumo": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_inscricoes": {
+      "count": 0,
+      "hash": null
+    }
+  },
+  "verified": true
+}

@@ -1,0 +1,111 @@
+{
+  "events": {
+    "events": [
+      {
+        "provider_event": 401,
+        "duplicate_info": null,
+        "id_evento": 43049,
+        "state": "SE",
+        "hash": "936475cab949901d19c8748d3053bdbe",
+        "name": "4ª CORRIDA DO TURISMO - ABAVSE 2026",
+        "status": null,
+        "city": "Aracaju",
+        "ativo": true,
+        "redirect_tag": null,
+        "source": "https://www.ticketsports.com.br/e/4%C2%AA+CORRIDA+DO+TURISMO+-+ABAVSE+2026+-87181",
+        "provider": null,
+        "end": "2026-08-09",
+        "start": "2026-08-09",
+        "tag": "2026-4-corrida-do-turismo-abavse-2026",
+        "registration": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87181&origem=novo-site&lang=en-US"
+      },
+      {
+        "provider_event": 401,
+        "duplicate_info": null,
+        "id_evento": 44821,
+        "state": "SE",
+        "hash": "1f1bad6d8f938bf64bf3b8f297332d2d",
+        "name": "4ª CORRIDA DO TURISMO - ABAVSE 2026",
+        "status": null,
+        "city": "Aracaju",
+        "ativo": true,
+        "redirect_tag": null,
+        "source": "https://www.ticketsports.com.br/e/4%C2%AA+CORRIDA+DO+TURISMO+-+ABAVSE+2026+-87181",
+        "provider": null,
+        "end": "2027-05-02",
+        "start": "2027-05-02",
+        "tag": "2027-4-corrida-do-turismo-abavse-2026",
+        "registration": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87181&origem=novo-site&lang=en-US"
+      }
+    ],
+    "routes": [
+      {
+        "date": "2026-08-09",
+        "distance": 2.5,
+        "unit": "km",
+        "id": 60169,
+        "event": 43049,
+        "hash": "0e3847895258088f85fe5e8aa04239ff"
+      },
+      {
+        "date": "2026-08-09",
+        "distance": 5,
+        "unit": "km",
+        "id": 60170,
+        "event": 43049,
+        "hash": "6b01cd257e745090c174c6b7ec48aa4e"
+      },
+      {
+        "date": "2026-08-09",
+        "distance": 10,
+        "unit": "km",
+        "id": 60171,
+        "event": 43049,
+        "hash": "23af525ac1d573c8e81f57c6a8f9430e"
+      },
+      {
+        "date": "2027-05-02",
+        "distance": 2.5,
+        "unit": "km",
+        "id": 63229,
+        "event": 44821,
+        "hash": "a84be688e3b82d179b392eea80ac11ae"
+      },
+      {
+        "date": "2027-05-02",
+        "distance": 5,
+        "unit": "km",
+        "id": 63230,
+        "event": 44821,
+        "hash": "196b0ea93c103f1f6c79c989b6e5f086"
+      },
+      {
+        "date": "2027-05-02",
+        "distance": 10,
+        "unit": "km",
+        "id": 63231,
+        "event": 44821,
+        "hash": "98b28b5b785a11466ce9b68beaa0a32a"
+      }
+    ],
+    "dependencies": {
+      "tb_evento_percursos_gpx": 0,
+      "tb_badges": 0,
+      "tb_evento_corridas_relaciona": 0,
+      "tb_leaderboard_startlist_importacao": 0,
+      "tb_permit_atualiza": 0,
+      "tb_leaderboard_startlist": 0,
+      "tb_resultados_temp": 0,
+      "tb_resultados": 0,
+      "tb_evento_saude_config": 0,
+      "tb_percurso_migracoes_strava": 0,
+      "tb_leaderboard_percurso": 0,
+      "tb_resultados_resumo": 0,
+      "tb_inscricoes": 0
+    },
+    "redirect_tags": {
+      "nonempty": 0,
+      "duplicate_nonempty": 28
+    }
+  }
+}

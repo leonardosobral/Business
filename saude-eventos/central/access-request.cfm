@@ -6,7 +6,7 @@
     OR NOT isDefined("REQUEST.businessIdentity.id")
     OR NOT isDefined("VARIABLES.saudeRequestedEventId")
     OR VARIABLES.saudeRequestedEventId LTE 0>
-    <cfheader statuscode="404" statustext="Not Found"/>
+    <cfheader statuscode="404"/>
     <cfcontent type="text/plain; charset=utf-8" reset="true"/>
     <cfoutput>Página não encontrada.</cfoutput>
     <cfabort/>
@@ -193,11 +193,11 @@
         <span class="saude-eyebrow">Road Runners Business · Saúde</span>
 
         <cfif qSaudeAccessEventAccounts.recordcount>
-            <h1><cfoutput>#htmlEditFormat(qSaudeAccessEventAccounts.nome_evento[1])#</cfoutput></h1>
+            <h1><cfoutput>#encodeForHTML(qSaudeAccessEventAccounts.nome_evento[1])#</cfoutput></h1>
             <p class="saude-access-event-meta">
                 <cfoutput>#dateFormat(qSaudeAccessEventAccounts.data_inicial[1], "dd/mm/yyyy")#</cfoutput>
                 <cfif len(trim(qSaudeAccessEventAccounts.cidade[1] & ""))>
-                    · <cfoutput>#htmlEditFormat(qSaudeAccessEventAccounts.cidade[1])#<cfif len(trim(qSaudeAccessEventAccounts.estado[1] & ""))>/#htmlEditFormat(qSaudeAccessEventAccounts.estado[1])#</cfif></cfoutput>
+                    · <cfoutput>#encodeForHTML(qSaudeAccessEventAccounts.cidade[1])#<cfif len(trim(qSaudeAccessEventAccounts.estado[1] & ""))>/#encodeForHTML(qSaudeAccessEventAccounts.estado[1])#</cfif></cfoutput>
                 </cfif>
             </p>
 
@@ -206,7 +206,7 @@
                     <i class="fa-regular fa-clock"></i>
                     <div>
                         <strong><cfif VARIABLES.saudeAccessCreated>Solicitação enviada<cfelse>Acesso aguardando aprovação</cfif></strong>
-                        <p>O pedido de perfil <strong>Médico</strong> foi encaminhado ao Dono da conta <cfoutput>#htmlEditFormat(qSaudeAccessPending.nome_conta)#</cfoutput> e aos Admins Globais.</p>
+                        <p>O pedido de perfil <strong>Médico</strong> foi encaminhado ao Dono da conta <cfoutput>#encodeForHTML(qSaudeAccessPending.nome_conta)#</cfoutput> e aos Admins Globais.</p>
                         <small>Solicitação #<cfoutput>#qSaudeAccessPending.id_solicitacao#</cfoutput> · <cfoutput>#dateTimeFormat(qSaudeAccessPending.data_criacao, "dd/mm/yyyy 'às' HH:nn")#</cfoutput></small>
                     </div>
                 </div>
@@ -218,29 +218,29 @@
                 </div>
             <cfelse>
                 <h2>Acesso médico necessário</h2>
-                <p>Você entrou com <strong><cfoutput>#htmlEditFormat(qSaudeAccessRequester.email)#</cfoutput></strong>, mas ainda não possui acesso a esta Central. Envie um pedido para ser incluído como Médico na conta responsável pelo evento.</p>
+                <p>Você entrou com <strong><cfoutput>#encodeForHTML(qSaudeAccessRequester.email)#</cfoutput></strong>, mas ainda não possui acesso a esta Central. Envie um pedido para ser incluído como Médico na conta responsável pelo evento.</p>
 
                 <cfif len(VARIABLES.saudeAccessError)>
-                    <div class="saude-access-alert"><i class="fa-solid fa-circle-exclamation"></i><cfoutput>#htmlEditFormat(VARIABLES.saudeAccessError)#</cfoutput></div>
+                    <div class="saude-access-alert"><i class="fa-solid fa-circle-exclamation"></i><cfoutput>#encodeForHTML(VARIABLES.saudeAccessError)#</cfoutput></div>
                 </cfif>
 
-                <form method="post" action="<cfoutput>#htmlEditFormat(VARIABLES.saudeReturnUrl)#</cfoutput>" class="saude-access-form">
+                <form method="post" action="<cfoutput>#encodeForHTMLAttribute(VARIABLES.saudeReturnUrl)#</cfoutput>" class="saude-access-form">
                     <input type="hidden" name="saude_access_action" value="request"/>
-                    <input type="hidden" name="saude_access_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.saudeCsrfToken)#</cfoutput>"/>
+                    <input type="hidden" name="saude_access_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.saudeCsrfToken)#</cfoutput>"/>
                     <input type="hidden" name="id_evento" value="<cfoutput>#VARIABLES.saudeRequestedEventId#</cfoutput>"/>
 
                     <cfif qSaudeAccessEventAccounts.recordcount EQ 1>
                         <input type="hidden" name="id_conta" value="<cfoutput>#qSaudeAccessEventAccounts.id_conta#</cfoutput>"/>
                         <div class="saude-access-account">
                             <span>Conta responsável</span>
-                            <strong><cfoutput>#htmlEditFormat(qSaudeAccessEventAccounts.nome_conta)#</cfoutput></strong>
+                            <strong><cfoutput>#encodeForHTML(qSaudeAccessEventAccounts.nome_conta)#</cfoutput></strong>
                         </div>
                     <cfelse>
                         <label for="saude-access-account">Conta responsável</label>
                         <select id="saude-access-account" name="id_conta" required>
                             <option value="">Selecione</option>
                             <cfoutput query="qSaudeAccessEventAccounts">
-                                <option value="#id_conta#">#htmlEditFormat(nome_conta)#</option>
+                                <option value="#id_conta#">#encodeForHTML(nome_conta)#</option>
                             </cfoutput>
                         </select>
                     </cfif>

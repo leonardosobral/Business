@@ -1,0 +1,8 @@
+{
+  "passed": 57,
+  "hashes": {
+    "services/EventRedirectService.cfc": "be9e085b471e1532feb6180d9bc20025e40b71d13c63c00deda2fd2954fe2fc4",
+    "evento/index.cfm": "28fde2341ed1f9e146b2bca6ad8b1612ba88e0aa5f9008957c15e8c92de3c200",
+    "includes/estrutura/head.cfm": "912244f20c4ff8816e484a2a1ef2c4180cc1297b2bddfb98292420a324f22def"
+  }
+}

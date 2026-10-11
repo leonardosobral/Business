@@ -1,0 +1,386 @@
+{
+  "checks": [
+    {
+      "name": "GET evento",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD evento",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "GET en/event",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD en/event",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "GET es/evento",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD es/evento",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "already canonical evento",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "already canonical en/event",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "already canonical es/evento",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "query action=delete",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "query id_evento=1",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "query utm_source=google",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "query tag=another",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "query route_geometry=1",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "query i18n_lang=en",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "method POST",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "method PUT",
+      "before": {
+        "status": 405,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 405,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "method DELETE",
+      "before": {
+        "status": 405,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 405,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "out of scope evento/not-registered",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "out of scope evento/2025-corrida-night-run-vitoria-airport",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "out of scope evento/2026-costa-esmeralda-trail-2026/extra",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "out of scope evento/2026-COSTA-ESMERALDA-TRAIL-2026",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "out of scope en/event/other-event",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "out of scope es/evento/other-event",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "out of scope evento",
+      "before": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/_codex/seo-alias-apache-64btwznu/baseline/evento/",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/_codex/seo-alias-apache-64btwznu/candidate/evento/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "out of scope evento/",
+      "before": {
+        "status": 403,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 403,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "existing file preserved",
+      "before": {
+        "status": 200,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 200,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    }
+  ],
+  "source_hash": "c143a6d96973b2021d36482584b623e948e58ef388551f14ace30d10780e61ee",
+  "child_source_hash": "4d741dbbd0fba265226e3ef940297c3436739d8a49fad0a91331b9b2f307eb04",
+  "block_hash": "06621792e1a98e0a19ddda295575af88e80d67158cc9a2e79766e2314468f56e",
+  "failed": []
+}

@@ -14,7 +14,7 @@
 
 <cfset URL.desafio = lcase(trim(replace(URL.desafio, "/", "")))/>
 <cfif NOT listFindNoCase("catarinensecorridaderua,catarinensetrailrun", URL.desafio)>
-    <cfheader statuscode="400" statustext="Bad Request"/>
+    <cfheader statuscode="400"/>
     <cfcontent type="text/plain; charset=utf-8" reset="true"/>
     <cfoutput>Desafio catarinense invalido para exportacao.</cfoutput>
     <cfabort/>

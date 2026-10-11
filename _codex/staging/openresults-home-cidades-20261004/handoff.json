@@ -1,0 +1,26 @@
+{
+  "status": "published_verified",
+  "site": "https://openresults.run/",
+  "runtime": {
+    "includes/backend_home_cidades.cfm": "03218cd2caf1d7836dbe7bdd2b432ea2732c969ac66296f4f226dc47e640f454",
+    "assets/css/openresults-home-cidades.css": "15dc8e3b596291b00d4689b7578eb2d19b0a2cc5a5930b0aaabed2293d24742a",
+    "assets/js/openresults-home-cidades.js": "05ddf61aa2c8f34fd96ce1216ddb8daf00a974ba24c7d0b4fe101fe3094a4aea",
+    "includes/form_busca_principal.cfm": "824111874cc4d1cf4d54c65887e70faebd35f93b66ac4b34d030e7cdc1b33fe9",
+    "index.cfm": "a83dbfbe1c2907e72115fe702184c43d5a9c36084679408f71e638529fc489ec"
+  },
+  "node_tests": 13,
+  "cfml_assertions": 18,
+  "compiled_templates": 3,
+  "searchable_city_uf_pairs": 2708,
+  "browser_live_city_count": 75,
+  "browser_destination_city_count": 75,
+  "state_shortcut_preserved": true,
+  "search_http_status": 200,
+  "mobile_scrollWidth": 390,
+  "mobile_width": 390,
+  "recovery_git_ref": "e769528c34b23beb6fc3a16ea615184849ce5e5c",
+  "baseline_patch": "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-home-cidades-20261004/baseline.patch",
+  "report": "/Users/Shared/Projects/RunnerHub/OpenResults/_codex/docs/2026-10-04_cidades_home.md",
+  "review_important_fixed": "Panel overflow at700px",
+  "no_git_mutations_by_agent": true
+}

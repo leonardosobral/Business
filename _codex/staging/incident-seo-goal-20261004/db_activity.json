@@ -1,0 +1,23 @@
+{
+  "counts": [
+    {
+      "max_query_age_seconds": 1291,
+      "wait_event": "ClientRead",
+      "state": "idle",
+      "wait_event_type": "Client",
+      "connections": 29
+    }
+  ],
+  "active": null,
+  "checked_at": "2026-10-04T17:38:42.378225-03:00",
+  "numeric_apache_settings": [
+    "KeepAliveTimeout 5",
+    "MaxRequestWorkers\t  150",
+    "MaxSpareThreads\t\t 75",
+    "MinSpareThreads\t\t 25",
+    "StartServers\t\t\t 2",
+    "StartServers\t\t\t 5",
+    "ThreadsPerChild\t\t 25",
+    "Timeout 300"
+  ]
+}

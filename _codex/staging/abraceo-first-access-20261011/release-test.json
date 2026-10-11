@@ -1,0 +1,129 @@
+{
+  "CHECKS": [
+    {
+      "PASSED": true,
+      "NAME": "available active test identities"
+    },
+    {
+      "PASSED": true,
+      "NAME": "CNPJ returns existing company and logo"
+    },
+    {
+      "PASSED": true,
+      "NAME": "representative comes from verified identity"
+    },
+    {
+      "PASSED": true,
+      "NAME": "research internals excluded from response"
+    },
+    {
+      "PASSED": true,
+      "NAME": "cannot act as another user"
+    },
+    {
+      "PASSED": true,
+      "NAME": "invalid CNPJ denied"
+    },
+    {
+      "PASSED": true,
+      "NAME": "unlisted CNPJ denied"
+    },
+    {
+      "PASSED": true,
+      "NAME": "declaration required"
+    },
+    {
+      "PASSED": true,
+      "NAME": "representative role required"
+    },
+    {
+      "PASSED": true,
+      "NAME": "CNPJ declaration grants only reading and tolerates retry"
+    },
+    {
+      "PASSED": true,
+      "NAME": "duplicate submit creates one declaration"
+    },
+    {
+      "PASSED": true,
+      "NAME": "no operational memberships created"
+    },
+    {
+      "PASSED": true,
+      "NAME": "company remains pending"
+    },
+    {
+      "PASSED": true,
+      "NAME": "new reader can access protected preview"
+    },
+    {
+      "PASSED": true,
+      "NAME": "annual study remains unavailable"
+    },
+    {
+      "PASSED": true,
+      "NAME": "CNPJ cannot restore revoked access"
+    },
+    {
+      "PASSED": true,
+      "NAME": "voucher rejects another email"
+    },
+    {
+      "PASSED": true,
+      "NAME": "nominal voucher retrieves mapped company"
+    },
+    {
+      "PASSED": true,
+      "NAME": "voucher confirmation replay is idempotent"
+    },
+    {
+      "PASSED": true,
+      "NAME": "CNPJ can redeem an existing nominal invitation for same email"
+    },
+    {
+      "PASSED": true,
+      "NAME": "expired voucher denied"
+    },
+    {
+      "PASSED": true,
+      "NAME": "paused campaign blocks new CNPJ access"
+    },
+    {
+      "PASSED": true,
+      "NAME": "disabled company denied"
+    },
+    {
+      "PASSED": true,
+      "NAME": "ordinary user cannot issue vouchers"
+    },
+    {
+      "PASSED": true,
+      "NAME": "anonymous identity denied"
+    },
+    {
+      "PASSED": true,
+      "NAME": "personal page independent from tenant selection"
+    },
+    {
+      "PASSED": true,
+      "NAME": "first access API parameters allowed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "global application actions rejected"
+    },
+    {
+      "PASSED": true,
+      "NAME": "posted actor override rejected"
+    },
+    {
+      "PASSED": true,
+      "NAME": "duplicate POST parameters rejected"
+    },
+    {
+      "PASSED": true,
+      "NAME": "all test writes rolled back"
+    }
+  ],
+  "TOTAL": 31
+}

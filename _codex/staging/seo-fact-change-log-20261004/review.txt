@@ -1,0 +1,1 @@
+Revisão final por /root/fact_change_log_review: aprovado após gate de rollback forçado. Fechados search_path, hash vinculado aos bytes testados e permissões reais/probe sob runner. Gate passou em release-test_drift.json antes da publicação. Nenhum bloqueio restante. Revisão somente de leitura.

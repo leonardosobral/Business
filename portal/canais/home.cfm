@@ -120,7 +120,7 @@
 
                 <cfoutput><form method="post" action="./?pagina=#VARIABLES.mediaPage#"></cfoutput>
                   <input type="hidden" name="canal_action" value="salvar"/>
-                  <input type="hidden" name="canal_record_id" value="<cfif qChannelEdit.recordcount><cfoutput>#htmlEditFormat(qChannelEdit[VARIABLES.channelPk][1])#</cfoutput></cfif>"/>
+                  <input type="hidden" name="canal_record_id" value="<cfif qChannelEdit.recordcount><cfoutput>#encodeForHTMLAttribute(qChannelEdit[VARIABLES.channelPk][1])#</cfoutput></cfif>"/>
 
                   <div class="row channel-form-grid">
                     <cfloop query="qChannelColumns">
@@ -165,7 +165,7 @@
                         <cfoutput>
                           <div class="#VARIABLES.channelFieldColClass#">
                             <div class="channel-field-card">
-                              <label class="form-label">#htmlEditFormat(VARIABLES.channelFieldLabel)#</label>
+                              <label class="form-label">#encodeForHTML(VARIABLES.channelFieldLabel)#</label>
 
                               <cfif VARIABLES.channelFieldType EQ "boolean">
                                 <input type="hidden" name="#VARIABLES.channelFieldName#" value="false"/>
@@ -174,19 +174,19 @@
                                   <label class="form-check-label" for="#VARIABLES.channelFieldName#">Canal ativo para importação e uso</label>
                                 </div>
                               <cfelseif VARIABLES.channelIsInstagramField>
-                                <input class="form-control" type="url" name="#VARIABLES.channelFieldName#" value="#htmlEditFormat(VARIABLES.channelFieldValue)#" placeholder="https://instagram.com/..."/>
+                                <input class="form-control" type="url" name="#VARIABLES.channelFieldName#" value="#encodeForHTMLAttribute(VARIABLES.channelFieldValue)#" placeholder="https://instagram.com/..."/>
                               <cfelseif VARIABLES.channelIsUrlField>
-                                <input class="form-control" type="url" name="#VARIABLES.channelFieldName#" value="#htmlEditFormat(VARIABLES.channelFieldValue)#" placeholder="https://..."/>
+                                <input class="form-control" type="url" name="#VARIABLES.channelFieldName#" value="#encodeForHTMLAttribute(VARIABLES.channelFieldValue)#" placeholder="https://..."/>
                               <cfelseif VARIABLES.channelIsIntegerField>
-                                <input class="form-control" type="number" name="#VARIABLES.channelFieldName#" value="#htmlEditFormat(VARIABLES.channelFieldValue)#" step="1" inputmode="numeric"/>
+                                <input class="form-control" type="number" name="#VARIABLES.channelFieldName#" value="#encodeForHTMLAttribute(VARIABLES.channelFieldValue)#" step="1" inputmode="numeric"/>
                               <cfelseif VARIABLES.channelIsDescriptionField OR VARIABLES.channelFieldType EQ "text" OR (isNumeric(qChannelColumns.character_maximum_length) AND qChannelColumns.character_maximum_length GT 160)>
-                                <textarea class="form-control" name="#VARIABLES.channelFieldName#" rows="<cfif VARIABLES.channelIsDescriptionField>5<cfelse>4</cfif>" placeholder="<cfif VARIABLES.channelIsDescriptionField>Descreva rapidamente o canal, sua linha editorial ou observações relevantes.</cfif>">#htmlEditFormat(VARIABLES.channelFieldValue)#</textarea>
+                                <textarea class="form-control" name="#VARIABLES.channelFieldName#" rows="<cfif VARIABLES.channelIsDescriptionField>5<cfelse>4</cfif>" placeholder="<cfif VARIABLES.channelIsDescriptionField>Descreva rapidamente o canal, sua linha editorial ou observações relevantes.</cfif>">#encodeForHTML(VARIABLES.channelFieldValue)#</textarea>
                               <cfelse>
-                                <input class="form-control" type="text" name="#VARIABLES.channelFieldName#" value="#htmlEditFormat(VARIABLES.channelFieldValue)#"/>
+                                <input class="form-control" type="text" name="#VARIABLES.channelFieldName#" value="#encodeForHTMLAttribute(VARIABLES.channelFieldValue)#"/>
                               </cfif>
 
                               <cfif len(trim(VARIABLES.channelFieldHelp))>
-                                <div class="channel-field-help mt-2">#htmlEditFormat(VARIABLES.channelFieldHelp)#</div>
+                                <div class="channel-field-help mt-2">#encodeForHTML(VARIABLES.channelFieldHelp)#</div>
                               </cfif>
                             </div>
                           </div>
@@ -221,7 +221,7 @@
                           <cfcase value="#VARIABLES.channelActiveColumn#"><cfset VARIABLES.channelColumnLabel = "Status"/></cfcase>
                           <cfdefaultcase><cfset VARIABLES.channelColumnLabel = qChannelColumns.column_name/></cfdefaultcase>
                         </cfswitch>
-                        <cfoutput><th>#htmlEditFormat(VARIABLES.channelColumnLabel)#</th></cfoutput>
+                        <cfoutput><th>#encodeForHTML(VARIABLES.channelColumnLabel)#</th></cfoutput>
                       </cfif>
                     </cfloop>
                     <th class="channel-actions-cell">Ações</th>
@@ -244,7 +244,7 @@
                                   <cfif VARIABLES.channelIsActive>Ativo<cfelse>Inativo</cfif>
                                 </span>
                               <cfelse>
-                                #htmlEditFormat(VARIABLES.channelColumnValue)#
+                                #encodeForHTML(VARIABLES.channelColumnValue)#
                               </cfif>
                             </td>
                           </cfif>

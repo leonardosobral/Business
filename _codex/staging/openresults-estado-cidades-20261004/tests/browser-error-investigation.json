@@ -1,0 +1,24 @@
+{
+  "old_log": {
+    "tab": "41",
+    "url": "https://openresults.run/estado/ba/",
+    "at": "2026-10-04T22:46:26.741Z",
+    "error": "Cannot set properties of null (setting innerHTML)",
+    "cause": "Legacy unguarded rangeLegenda assignment, with no matching slider element; present in confirmed Git/production baseline."
+  },
+  "clean_current_checks": {
+    "tab": "42",
+    "url": "https://openresults.run/estado/ba/?cidade=feira-de-santana",
+    "document_ready_state": "complete",
+    "legacy_slider_code_present": false,
+    "city_script": "/assets/js/openresults-estado-cidades.js?v=20261004-1",
+    "cards": 50,
+    "console_errors": [],
+    "after_click_maiores": {
+      "city_preserved": true,
+      "selected_aria": true,
+      "console_errors": []
+    }
+  },
+  "source_check": "Original Git code contains unguarded rangeLegenda.innerHTML but no element id; final candidate removes it. Browser logs of tab41 retain earlier navigations; fresh tab42 has no errors."
+}

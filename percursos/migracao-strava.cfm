@@ -4,7 +4,7 @@
 <cfinclude template="../includes/backend/backend_login.cfm"/>
 <cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount>
     <cfcontent reset="true"/>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>Acesso restrito a usuarios autenticados no Business.</cfoutput>
     <cfabort/>
 </cfif>

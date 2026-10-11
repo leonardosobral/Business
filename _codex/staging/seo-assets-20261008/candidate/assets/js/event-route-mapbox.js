@@ -1,0 +1,1916 @@
+(function () {
+    "use strict";
+
+    var MAP_STYLE = "mapbox://styles/mapbox/standard";
+    var SATELLITE_STYLE = "mapbox://styles/mapbox/standard-satellite";
+    var SOURCE_ROUTE = "event-route";
+    var SOURCE_ROUTE_PROGRESS = "event-route-progress";
+    var SOURCE_ENDPOINTS = "event-route-endpoints";
+    var SOURCE_KM = "event-route-km";
+    var SOURCE_FOCUS = "event-route-focus";
+    var SOURCE_FLYOVER = "event-route-flyover";
+    var SOURCE_TERRAIN = "event-route-terrain";
+    var MAX_PROFILE_SAMPLES = 2000;
+    var SATELLITE_HIDDEN_FEATURES = [
+        "showRoadsAndTransit",
+        "showPedestrianRoads",
+        "showRoadLabels",
+        "showPlaceLabels",
+        "showPointOfInterestLabels"
+    ];
+
+    function replaceTokens(template, values) {
+        var result = String(template || "");
+        Object.keys(values || {}).forEach(function (key) {
+            result = result.replace(new RegExp("\\{" + key + "\\}", "g"), String(values[key]));
+        });
+        return result;
+    }
+
+    function isFiniteNumber(value) {
+        return value !== "" && value !== null && value !== undefined && Number.isFinite(Number(value));
+    }
+
+    function emptyFeatureCollection() {
+        return { type: "FeatureCollection", features: [] };
+    }
+
+    function pointFeature(coordinate) {
+        return {
+            type: "Feature",
+            properties: {},
+            geometry: {
+                type: "Point",
+                coordinates: coordinate
+            }
+        };
+    }
+
+    function haversineMeters(a, b) {
+        var earthRadius = 6371008.8;
+        var lat1 = Number(a[1]) * Math.PI / 180;
+        var lat2 = Number(b[1]) * Math.PI / 180;
+        var deltaLat = lat2 - lat1;
+        var deltaLng = (Number(b[0]) - Number(a[0])) * Math.PI / 180;
+        var sinLat = Math.sin(deltaLat / 2);
+        var sinLng = Math.sin(deltaLng / 2);
+        var value = sinLat * sinLat + Math.cos(lat1) * Math.cos(lat2) * sinLng * sinLng;
+        return earthRadius * 2 * Math.atan2(Math.sqrt(value), Math.sqrt(1 - value));
+    }
+
+    function interpolateCoordinate(a, b, ratio) {
+        var coordinate = [
+            Number(a[0]) + (Number(b[0]) - Number(a[0])) * ratio,
+            Number(a[1]) + (Number(b[1]) - Number(a[1])) * ratio
+        ];
+
+        if (isFiniteNumber(a[2]) && isFiniteNumber(b[2])) {
+            coordinate.push(Number(a[2]) + (Number(b[2]) - Number(a[2])) * ratio);
+        }
+
+        return coordinate;
+    }
+
+    function coordinateAtDistance(series, targetDistance) {
+        var low = 0;
+        var high = series.length - 1;
+        var middle;
+        var previous;
+        var next;
+        var segmentDistance;
+        var ratio;
+
+        if (!series.length) {
+            return null;
+        }
+        if (targetDistance <= series[0].distance) {
+            return series[0].coordinate.slice();
+        }
+        if (targetDistance >= series[high].distance) {
+            return series[high].coordinate.slice();
+        }
+
+        while (low < high) {
+            middle = Math.floor((low + high) / 2);
+            if (series[middle].distance < targetDistance) {
+                low = middle + 1;
+            } else {
+                high = middle;
+            }
+        }
+
+        next = series[low];
+        previous = series[Math.max(0, low - 1)];
+        segmentDistance = next.distance - previous.distance;
+        if (segmentDistance <= 0) {
+            return next.coordinate.slice();
+        }
+
+        ratio = (targetDistance - previous.distance) / segmentDistance;
+        return interpolateCoordinate(previous.coordinate, next.coordinate, ratio);
+    }
+
+    function bearingDegrees(from, to) {
+        var fromLatitude;
+        var toLatitude;
+        var longitudeDelta;
+        var y;
+        var x;
+
+        if (!from || !to) {
+            return null;
+        }
+
+        fromLatitude = Number(from[1]) * Math.PI / 180;
+        toLatitude = Number(to[1]) * Math.PI / 180;
+        longitudeDelta = (Number(to[0]) - Number(from[0])) * Math.PI / 180;
+        y = Math.sin(longitudeDelta) * Math.cos(toLatitude);
+        x = Math.cos(fromLatitude) * Math.sin(toLatitude)
+            - Math.sin(fromLatitude) * Math.cos(toLatitude) * Math.cos(longitudeDelta);
+
+        if (Math.abs(x) < 0.0000001 && Math.abs(y) < 0.0000001) {
+            return null;
+        }
+        return Math.atan2(y, x) * 180 / Math.PI;
+    }
+
+    function smoothBearing(current, target, amount) {
+        var delta;
+
+        if (!Number.isFinite(target)) {
+            return Number.isFinite(current) ? current : 0;
+        }
+        if (!Number.isFinite(current)) {
+            return target;
+        }
+
+        delta = ((target - current + 540) % 360) - 180;
+        return current + delta * (Number.isFinite(amount) ? amount : 0.14);
+    }
+
+    function flyoverZoomForDistance(distanceM) {
+        var distanceKm = Math.max(1, Number(distanceM) / 1000);
+
+        return Math.max(14.2, Math.min(15.5, 16 - Math.log10(distanceKm)));
+    }
+
+    function routeProgressFeature(pathLines, targetDistance) {
+        var completedLines = [];
+
+        (pathLines || []).forEach(function (line) {
+            var coordinates;
+            var index;
+            var previous;
+            var next;
+            var segmentDistance;
+            var ratio;
+
+            if (!Array.isArray(line) || line.length < 2 || targetDistance <= line[0].distance) {
+                return;
+            }
+
+            coordinates = [line[0].coordinate];
+            for (index = 1; index < line.length; index += 1) {
+                previous = line[index - 1];
+                next = line[index];
+                if (targetDistance >= next.distance) {
+                    coordinates.push(next.coordinate);
+                    continue;
+                }
+
+                segmentDistance = next.distance - previous.distance;
+                if (segmentDistance > 0 && targetDistance > previous.distance) {
+                    ratio = (targetDistance - previous.distance) / segmentDistance;
+                    coordinates.push(
+                        interpolateCoordinate(previous.coordinate, next.coordinate, ratio)
+                    );
+                }
+                break;
+            }
+
+            if (coordinates.length >= 2) {
+                completedLines.push(coordinates);
+            }
+        });
+
+        if (!completedLines.length) {
+            return emptyFeatureCollection();
+        }
+        return {
+            type: "Feature",
+            properties: {},
+            geometry: completedLines.length === 1
+                ? { type: "LineString", coordinates: completedLines[0] }
+                : { type: "MultiLineString", coordinates: completedLines }
+        };
+    }
+
+    function sampleSeries(series, maximum) {
+        var sampled = [];
+        var index;
+        var sourceIndex;
+
+        if (series.length <= maximum) {
+            return series.slice();
+        }
+
+        for (index = 0; index < maximum; index += 1) {
+            sourceIndex = Math.round(index * (series.length - 1) / (maximum - 1));
+            sampled.push(series[sourceIndex]);
+        }
+
+        return sampled;
+    }
+
+    function niceGridStep(value) {
+        var magnitude;
+        var fraction;
+        var normalized;
+
+        if (!Number.isFinite(value) || value <= 0) {
+            return 1;
+        }
+
+        magnitude = Math.pow(10, Math.floor(Math.log10(value)));
+        fraction = value / magnitude;
+
+        if (fraction <= 1.5) {
+            normalized = 1;
+        } else if (fraction <= 2.25) {
+            normalized = 2;
+        } else if (fraction <= 3.5) {
+            normalized = 2.5;
+        } else if (fraction <= 7.5) {
+            normalized = 5;
+        } else {
+            normalized = 10;
+        }
+
+        return normalized * magnitude;
+    }
+
+    function profileDistanceGridStep(maxDistance, plotWidth) {
+        var maximumLabels = Math.max(2, Math.floor(plotWidth / 58));
+        var roughStepKm = maxDistance / 1000 / maximumLabels;
+
+        return Math.max(1000, niceGridStep(roughStepKm) * 1000);
+    }
+
+    function analyzeGeometry(feature) {
+        var lines = feature.geometry.type === "LineString"
+            ? [feature.geometry.coordinates]
+            : feature.geometry.coordinates;
+        var totalDistance = 0;
+        var nextKilometer = 1000;
+        var kilometerFeatures = [];
+        var elevationSeries = [];
+        var pathSeries = [];
+        var pathLines = [];
+        var elevations = [];
+        var elevationGain = 0;
+        var bounds = [Infinity, Infinity, -Infinity, -Infinity];
+        var start = null;
+        var finish = null;
+
+        lines.forEach(function (line) {
+            var previousElevation = null;
+            var pathLine = [];
+
+            if (!Array.isArray(line) || line.length < 2) {
+                return;
+            }
+
+            if (!start) {
+                start = line[0];
+            }
+            finish = line[line.length - 1];
+
+            line.forEach(function (coordinate, coordinateIndex) {
+                var elevation = isFiniteNumber(coordinate[2]) ? Number(coordinate[2]) : null;
+                var previous;
+                var segmentDistance;
+                var ratio;
+                var kilometerCoordinate;
+
+                bounds[0] = Math.min(bounds[0], Number(coordinate[0]));
+                bounds[1] = Math.min(bounds[1], Number(coordinate[1]));
+                bounds[2] = Math.max(bounds[2], Number(coordinate[0]));
+                bounds[3] = Math.max(bounds[3], Number(coordinate[1]));
+
+                if (coordinateIndex > 0) {
+                    previous = line[coordinateIndex - 1];
+                    segmentDistance = haversineMeters(previous, coordinate);
+
+                    while (segmentDistance > 0 && nextKilometer <= totalDistance + segmentDistance) {
+                        ratio = (nextKilometer - totalDistance) / segmentDistance;
+                        kilometerCoordinate = interpolateCoordinate(previous, coordinate, ratio);
+                        kilometerFeatures.push({
+                            type: "Feature",
+                            properties: {
+                                kilometer: nextKilometer / 1000,
+                                label: String(nextKilometer / 1000)
+                            },
+                            geometry: {
+                                type: "Point",
+                                coordinates: kilometerCoordinate
+                            }
+                        });
+                        nextKilometer += 1000;
+                    }
+
+                    totalDistance += segmentDistance;
+                }
+
+                pathSeries.push({
+                    distance: totalDistance,
+                    coordinate: coordinate
+                });
+                pathLine.push({
+                    distance: totalDistance,
+                    coordinate: coordinate
+                });
+
+                if (elevation !== null) {
+                    elevations.push(elevation);
+                    elevationSeries.push({
+                        distance: totalDistance,
+                        elevation: elevation,
+                        coordinate: coordinate
+                    });
+
+                    if (previousElevation !== null && elevation > previousElevation) {
+                        elevationGain += elevation - previousElevation;
+                    }
+                    previousElevation = elevation;
+                } else {
+                    previousElevation = null;
+                }
+            });
+            pathLines.push(pathLine);
+        });
+
+        return {
+            bounds: bounds,
+            distanceM: totalDistance,
+            elevationMinM: elevations.length ? Math.min.apply(Math, elevations) : null,
+            elevationMaxM: elevations.length ? Math.max.apply(Math, elevations) : null,
+            elevationGainM: elevationGain,
+            elevationSeries: sampleSeries(elevationSeries, MAX_PROFILE_SAMPLES),
+            pathSeries: pathSeries,
+            pathLines: pathLines,
+            endpoints: {
+                type: "FeatureCollection",
+                features: [
+                    start ? {
+                        type: "Feature",
+                        properties: { kind: "start", label: "L" },
+                        geometry: { type: "Point", coordinates: start }
+                    } : null,
+                    finish ? {
+                        type: "Feature",
+                        properties: { kind: "finish", label: "C" },
+                        geometry: { type: "Point", coordinates: finish }
+                    } : null
+                ].filter(Boolean)
+            },
+            kilometers: {
+                type: "FeatureCollection",
+                features: kilometerFeatures
+            }
+        };
+    }
+
+    function validFeature(feature) {
+        return feature
+            && feature.type === "Feature"
+            && feature.geometry
+            && (feature.geometry.type === "LineString" || feature.geometry.type === "MultiLineString")
+            && Array.isArray(feature.geometry.coordinates);
+    }
+
+    function normalizeFeature(feature) {
+        var geometry;
+        var normalized;
+
+        if (!feature || typeof feature !== "object") {
+            return null;
+        }
+
+        geometry = feature.geometry || feature.GEOMETRY;
+        if (!geometry || typeof geometry !== "object") {
+            return null;
+        }
+
+        normalized = {
+            type: feature.type || feature.TYPE,
+            properties: feature.properties || feature.PROPERTIES || {},
+            geometry: {
+                type: geometry.type || geometry.TYPE,
+                coordinates: geometry.coordinates || geometry.COORDINATES
+            }
+        };
+
+        return validFeature(normalized) ? normalized : null;
+    }
+
+    function EventRouteMap(root) {
+        var configNode = root.querySelector("[data-event-route-config]");
+
+        this.root = root;
+        this.config = JSON.parse(configNode.textContent);
+        this.routes = Array.isArray(this.config.routes) ? this.config.routes : [];
+        this.labels = this.config.labels || {};
+        this.locale = this.config.language || "pt-BR";
+        this.activeIndex = Math.max(0, Math.min(Number(this.config.activeIndex) || 0, this.routes.length - 1));
+        this.tabs = Array.prototype.slice.call(root.querySelectorAll("[data-event-route-index]"));
+        this.viewer = root.querySelector("[data-event-route-viewer]");
+        this.toolbar = root.querySelector("[data-event-route-toolbar]");
+        this.mapShell = root.querySelector("[data-event-route-map-shell]");
+        this.mapNode = root.querySelector("[data-event-route-map]");
+        this.loadingNode = root.querySelector("[data-event-route-loading]");
+        this.unavailableNode = root.querySelector("[data-event-route-unavailable]");
+        this.unavailableDefaultText = this.unavailableNode.textContent;
+        this.detailsNode = root.querySelector("[data-event-route-details]");
+        this.summaryNode = root.querySelector("[data-event-route-summary]");
+        this.profileNode = root.querySelector("[data-event-route-profile]");
+        this.profileSvg = root.querySelector("[data-event-route-profile-svg]");
+        this.profileDescription = root.querySelector("[data-event-route-profile-description]");
+        this.styleToggleButton = root.querySelector("[data-event-route-style-toggle]");
+        this.styleToggleLabel = root.querySelector("[data-event-route-style-label]");
+        this.kilometersButton = root.querySelector("[data-event-route-kilometers]");
+        this.terrainButton = root.querySelector("[data-event-route-terrain]");
+        this.refitButton = root.querySelector("[data-event-route-refit]");
+        this.flyoverButton = root.querySelector("[data-event-route-flyover]");
+        this.flyoverStopButton = root.querySelector("[data-event-route-flyover-stop]");
+        this.fullscreenProfileNode = root.querySelector("[data-event-route-fullscreen-profile]");
+        this.fullscreenProfileSvg = root.querySelector("[data-event-route-fullscreen-profile-svg]");
+        this.map = null;
+        this.mapPromise = null;
+        this.mapReady = false;
+        this.currentFeature = null;
+        this.currentAnalysis = null;
+        this.currentRoute = null;
+        this.currentBounds = null;
+        this.currentStyle = "map";
+        this.kilometersVisible = false;
+        this.terrainEnabled = false;
+        this.requestSequence = 0;
+        this.abortController = null;
+        this.profileFocusIndex = -1;
+        this.profilePlot = null;
+        this.lastMapboxError = "";
+        this.flyoverState = "idle";
+        this.flyoverProgress = 0;
+        this.flyoverFrame = null;
+        this.flyoverStartedAt = 0;
+        this.flyoverDuration = 0;
+        this.flyoverCoordinate = null;
+        this.flyoverBearing = null;
+        this.flyoverLastFrameAt = 0;
+        this.flyoverRouteProgressUpdatedAt = 0;
+        this.reducedMotion = window.matchMedia
+            && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        this.bind();
+        this.activate(this.activeIndex, false);
+    }
+
+    EventRouteMap.prototype.bind = function () {
+        var self = this;
+        var containPageGesture = function (event) {
+            if (event.cancelable) {
+                event.preventDefault();
+            }
+            event.stopPropagation();
+        };
+        var stopGesturePropagation = function (event) {
+            event.stopPropagation();
+        };
+
+        this.tabs.forEach(function (tab) {
+            tab.addEventListener("click", function () {
+                self.activate(Number(tab.getAttribute("data-event-route-index")), true);
+            });
+            tab.addEventListener("keydown", function (event) {
+                self.handleTabKeydown(event, Number(tab.getAttribute("data-event-route-index")));
+            });
+        });
+
+        if (this.styleToggleButton) {
+            this.styleToggleButton.addEventListener("click", function () {
+                self.changeStyle(self.currentStyle === "map" ? "satellite" : "map");
+            });
+        }
+
+        if (this.kilometersButton) {
+            this.kilometersButton.addEventListener("click", function () {
+                self.toggleKilometers();
+            });
+        }
+
+        this.terrainButton.addEventListener("click", function () {
+            self.toggleTerrain();
+        });
+
+        this.refitButton.addEventListener("click", function () {
+            self.pauseFlyover(true);
+            self.fitRoute();
+        });
+
+        if (this.flyoverButton) {
+            this.flyoverButton.addEventListener("click", function () {
+                self.toggleFlyover();
+            });
+        }
+        if (this.flyoverStopButton) {
+            this.flyoverStopButton.addEventListener("click", function () {
+                self.resetFlyover(true);
+                self.fitRoute();
+                self.track("event_route_flyover_stop", {
+                    route_id: self.currentRoute ? self.currentRoute.id : 0
+                });
+            });
+        }
+
+        this.profileNode.addEventListener("pointermove", function (event) {
+            self.focusProfileFromPointer(event);
+        });
+        this.profileNode.addEventListener("pointerleave", function () {
+            self.clearProfileFocus();
+        });
+        this.profileNode.addEventListener("keydown", function (event) {
+            self.handleProfileKeydown(event);
+        });
+        if (this.fullscreenProfileSvg) {
+            this.fullscreenProfileSvg.addEventListener("pointermove", function (event) {
+                self.focusProfileFromPointer(event, self.fullscreenProfileSvg);
+            });
+            this.fullscreenProfileSvg.addEventListener("pointerleave", function () {
+                self.clearProfileFocus();
+            });
+        }
+
+        [this.mapNode, this.profileNode, this.fullscreenProfileNode].forEach(function (node) {
+            if (!node) {
+                return;
+            }
+            node.addEventListener("wheel", containPageGesture, { passive: false });
+            node.addEventListener("touchmove", containPageGesture, { passive: false });
+            node.addEventListener("touchstart", stopGesturePropagation, { passive: true });
+        });
+
+        window.addEventListener("resize", function () {
+            if (self.map && !self.mapShell.hidden) {
+                self.map.resize();
+            }
+            if (!self.profileNode.hidden && self.currentAnalysis) {
+                self.renderProfile(self.currentRoute, self.currentAnalysis);
+            }
+        });
+
+        document.addEventListener("visibilitychange", function () {
+            if (document.hidden) {
+                self.pauseFlyover(true);
+            }
+        });
+    };
+
+    EventRouteMap.prototype.handleTabKeydown = function (event, index) {
+        var nextIndex = index;
+
+        if (event.key === "ArrowRight") {
+            nextIndex = (index + 1) % this.routes.length;
+        } else if (event.key === "ArrowLeft") {
+            nextIndex = (index - 1 + this.routes.length) % this.routes.length;
+        } else if (event.key === "Home") {
+            nextIndex = 0;
+        } else if (event.key === "End") {
+            nextIndex = this.routes.length - 1;
+        } else {
+            return;
+        }
+
+        event.preventDefault();
+        this.tabs[nextIndex].focus();
+        this.activate(nextIndex, true);
+    };
+
+    EventRouteMap.prototype.activate = function (index, userInitiated) {
+        var route = this.routes[index];
+        var self = this;
+        var activationSequence;
+
+        if (!route) {
+            return;
+        }
+
+        this.activeIndex = index;
+        this.currentRoute = route;
+        this.requestSequence += 1;
+        activationSequence = this.requestSequence;
+
+        if (this.abortController) {
+            this.abortController.abort();
+            this.abortController = null;
+        }
+
+        this.tabs.forEach(function (tab, tabIndex) {
+            var active = tabIndex === index;
+            tab.classList.toggle("is-active", active);
+            tab.setAttribute("aria-selected", active ? "true" : "false");
+            tab.setAttribute("tabindex", active ? "0" : "-1");
+        });
+        this.viewer.setAttribute("aria-labelledby", this.tabs[index].id);
+        this.viewer.setAttribute("aria-label", replaceTokens(this.labels.routeFor, {
+            distance: route.label,
+            event: this.config.eventName
+        }));
+
+        this.hideAllStates();
+
+        if (route.hasMapbox && window.mapboxgl && window.mapboxgl.supported()) {
+            this.toolbar.hidden = false;
+            this.mapShell.hidden = false;
+            this.loadingNode.hidden = false;
+            this.mapNode.setAttribute("role", "region");
+            this.mapNode.setAttribute("aria-label", replaceTokens(this.labels.mapFor, {
+                distance: route.label
+            }));
+
+            this.ensureMap()
+                .then(function () {
+                    if (self.currentRoute === route) {
+                        self.loadRoute(route, activationSequence);
+                    }
+                })
+                .catch(function () {
+                    if (self.currentRoute === route) {
+                        self.showFallback(route, "map_initialization_error");
+                    }
+                });
+        } else {
+            this.showFallback(route, route.hasMapbox ? "webgl_unavailable" : "repository_route_unavailable");
+        }
+
+        if (userInitiated) {
+            this.track("event_route_distance_change", { route_id: route.id });
+        }
+    };
+
+    EventRouteMap.prototype.hideAllStates = function () {
+        this.resetFlyover();
+        if (this.flyoverButton) {
+            this.flyoverButton.disabled = true;
+        }
+        if (this.flyoverStopButton) {
+            this.flyoverStopButton.disabled = true;
+        }
+        this.toolbar.hidden = true;
+        this.mapShell.hidden = true;
+        this.unavailableNode.hidden = true;
+        this.detailsNode.hidden = true;
+        this.loadingNode.hidden = true;
+        this.root.removeAttribute("data-event-route-fallback-reason");
+        this.unavailableNode.textContent = this.unavailableDefaultText;
+        this.clearProfileFocus();
+
+    };
+
+    EventRouteMap.prototype.ensureMap = function () {
+        var self = this;
+
+        if (this.mapPromise) {
+            if (this.map) {
+                window.requestAnimationFrame(function () { self.map.resize(); });
+            }
+            return this.mapPromise;
+        }
+
+        window.mapboxgl.accessToken = this.config.mapboxToken;
+        this.mapPromise = new Promise(function (resolve, reject) {
+            var settled = false;
+            var resolveMap = function () {
+                if (settled) {
+                    return;
+                }
+                settled = true;
+                window.clearTimeout(timeoutId);
+                self.mapReady = true;
+                resolve(self.map);
+            };
+            var timeoutId = window.setTimeout(function () {
+                if (!settled) {
+                    settled = true;
+                    reject(new Error(self.lastMapboxError || "Mapbox initialization timeout"));
+                }
+            }, 25000);
+
+            try {
+                self.map = new window.mapboxgl.Map({
+                    container: self.mapNode,
+                    style: MAP_STYLE,
+                    center: [0, 0],
+                    zoom: 1,
+                    attributionControl: true,
+                    cooperativeGestures: false
+                });
+                self.map.addControl(new window.mapboxgl.NavigationControl({
+                    showCompass: false
+                }), "top-right");
+                self.map.addControl(new window.mapboxgl.FullscreenControl({
+                    container: self.mapShell
+                }), "top-right");
+                ["pointerdown", "wheel"].forEach(function (eventName) {
+                    self.map.getCanvas().addEventListener(eventName, function () {
+                        self.pauseFlyover(true);
+                    }, { passive: true });
+                });
+
+                self.map.once("load", resolveMap);
+                self.map.on("style.load", function () {
+                    if (self.currentFeature) {
+                        self.renderMapData();
+                    }
+                });
+                self.map.on("error", function (event) {
+                    var mapboxErrorMessage = event && event.error && event.error.message
+                        ? String(event.error.message)
+                        : "Mapbox resource error";
+
+                    if (mapboxErrorMessage !== self.lastMapboxError) {
+                        self.lastMapboxError = mapboxErrorMessage;
+                        self.track("event_route_mapbox_error", {
+                            route_id: self.currentRoute ? self.currentRoute.id : 0,
+                            reason: "mapbox_resource_error"
+                        });
+                    }
+                });
+            } catch (error) {
+                settled = true;
+                window.clearTimeout(timeoutId);
+                reject(error);
+            }
+        });
+
+        return this.mapPromise;
+    };
+
+    EventRouteMap.prototype.loadRoute = function (route, sequence, attempt) {
+        var self = this;
+        var currentAttempt = Number(attempt) || 0;
+
+        this.loadingNode.hidden = false;
+        this.abortController = "AbortController" in window ? new AbortController() : null;
+
+        fetch(route.geometryUrl, {
+            credentials: "same-origin",
+            headers: { Accept: "application/geo+json, application/json" },
+            signal: this.abortController ? this.abortController.signal : undefined
+        })
+            .then(function (response) {
+                if (!response.ok) {
+                    var requestError = new Error("Geometry request failed");
+                    requestError.routeReason = "geometry_http_" + response.status;
+                    throw requestError;
+                }
+                return response.json();
+            })
+            .then(function (feature) {
+                if (sequence !== self.requestSequence || self.currentRoute !== route) {
+                    return;
+                }
+                feature = normalizeFeature(feature);
+                if (!feature) {
+                    var geometryError = new Error("Invalid geometry");
+                    geometryError.routeReason = "geometry_invalid";
+                    throw geometryError;
+                }
+
+                self.currentFeature = feature;
+                self.currentAnalysis = analyzeGeometry(feature);
+                if (self.currentAnalysis.endpoints.features[0]) {
+                    self.currentAnalysis.endpoints.features[0].properties.label =
+                        String(self.labels.start || "L").charAt(0).toUpperCase();
+                }
+                if (self.currentAnalysis.endpoints.features[1]) {
+                    self.currentAnalysis.endpoints.features[1].properties.label =
+                        String(self.labels.finish || "C").charAt(0).toUpperCase();
+                }
+                self.currentBounds = self.resolveBounds(route, self.currentAnalysis);
+                self.renderMapData();
+                self.renderDetails(route, self.currentAnalysis);
+                if (self.flyoverButton) {
+                    self.flyoverButton.disabled = self.currentAnalysis.pathSeries.length < 2;
+                    self.updateFlyoverButton();
+                }
+                self.fitRoute();
+                self.loadingNode.hidden = true;
+                self.map.resize();
+                self.track("event_route_map_view", { route_id: route.id });
+            })
+            .catch(function (error) {
+                if (error && error.name === "AbortError") {
+                    return;
+                }
+                if (sequence !== self.requestSequence || self.currentRoute !== route) {
+                    return;
+                }
+                if (currentAttempt < 1) {
+                    window.setTimeout(function () {
+                        if (sequence === self.requestSequence && self.currentRoute === route) {
+                            self.loadRoute(route, sequence, currentAttempt + 1);
+                        }
+                    }, 800);
+                    return;
+                }
+                self.showFallback(
+                    route,
+                    error && error.routeReason ? error.routeReason : "geometry_load_error"
+                );
+            });
+    };
+
+    EventRouteMap.prototype.resolveBounds = function (route, analysis) {
+        var rawBbox = Array.isArray(route.bbox) ? route.bbox : [];
+        var bbox = rawBbox.every(isFiniteNumber) ? rawBbox.map(Number) : [];
+
+        if (
+            bbox.length === 4
+            && bbox.every(Number.isFinite)
+            && bbox[0] <= bbox[2]
+            && bbox[1] <= bbox[3]
+        ) {
+            return bbox;
+        }
+
+        return analysis.bounds.every(Number.isFinite) ? analysis.bounds : null;
+    };
+
+    EventRouteMap.prototype.renderMapData = function () {
+        var map = this.map;
+        var analysis = this.currentAnalysis;
+        var flyoverActive = this.flyoverState !== "idle";
+
+        if (!map || !analysis) {
+            return;
+        }
+
+        this.setOrAddGeoJsonSource(SOURCE_ROUTE, this.currentFeature, { lineMetrics: true });
+        this.setOrAddGeoJsonSource(
+            SOURCE_ROUTE_PROGRESS,
+            flyoverActive
+                ? routeProgressFeature(
+                    analysis.pathLines,
+                    this.flyoverProgress * analysis.distanceM
+                )
+                : emptyFeatureCollection()
+        );
+        this.setOrAddGeoJsonSource(SOURCE_ENDPOINTS, analysis.endpoints);
+        this.setOrAddGeoJsonSource(SOURCE_KM, analysis.kilometers);
+        this.setOrAddGeoJsonSource(SOURCE_FOCUS, emptyFeatureCollection());
+        this.setOrAddGeoJsonSource(
+            SOURCE_FLYOVER,
+            this.flyoverCoordinate ? pointFeature(this.flyoverCoordinate) : emptyFeatureCollection()
+        );
+
+        this.addLayerIfMissing({
+            id: "event-route-casing",
+            type: "line",
+            source: SOURCE_ROUTE,
+            slot: "middle",
+            layout: { "line-cap": "round", "line-join": "round" },
+            paint: {
+                "line-color": "#ffffff",
+                "line-width": ["interpolate", ["linear"], ["zoom"], 8, 5, 15, 9],
+                "line-opacity": 0.92
+            }
+        });
+        this.addLayerIfMissing({
+            id: "event-route-line",
+            type: "line",
+            source: SOURCE_ROUTE,
+            slot: "middle",
+            layout: { "line-cap": "round", "line-join": "round" },
+            paint: {
+                "line-color": flyoverActive ? "#fff0c2" : "#fab120",
+                "line-width": ["interpolate", ["linear"], ["zoom"], 8, 3, 15, 6]
+            }
+        });
+        this.addLayerIfMissing({
+            id: "event-route-progress-line",
+            type: "line",
+            source: SOURCE_ROUTE_PROGRESS,
+            slot: "middle",
+            layout: { "line-cap": "round", "line-join": "round" },
+            paint: {
+                "line-color": "#fab120",
+                "line-width": ["interpolate", ["linear"], ["zoom"], 8, 3.4, 15, 6.4]
+            }
+        });
+        this.addLayerIfMissing({
+            id: "event-route-km-circle",
+            type: "circle",
+            source: SOURCE_KM,
+            slot: "top",
+            layout: {
+                visibility: this.kilometersVisible ? "visible" : "none"
+            },
+            paint: {
+                "circle-radius": 8,
+                "circle-color": "#ffffff",
+                "circle-stroke-width": 1.5,
+                "circle-stroke-color": "#333333"
+            }
+        });
+        this.addLayerIfMissing({
+            id: "event-route-km-label",
+            type: "symbol",
+            source: SOURCE_KM,
+            slot: "top",
+            layout: {
+                visibility: this.kilometersVisible ? "visible" : "none",
+                "text-field": ["get", "label"],
+                "text-size": 10,
+                "text-allow-overlap": false
+            },
+            paint: { "text-color": "#222222" }
+        });
+        this.addLayerIfMissing({
+            id: "event-route-endpoint-circle",
+            type: "circle",
+            source: SOURCE_ENDPOINTS,
+            slot: "top",
+            paint: {
+                "circle-radius": 10,
+                "circle-color": [
+                    "match", ["get", "kind"],
+                    "start", "#16884f",
+                    "#c83b32"
+                ],
+                "circle-stroke-width": 2,
+                "circle-stroke-color": "#ffffff"
+            }
+        });
+        this.addLayerIfMissing({
+            id: "event-route-endpoint-label",
+            type: "symbol",
+            source: SOURCE_ENDPOINTS,
+            slot: "top",
+            layout: {
+                "text-field": ["get", "label"],
+                "text-size": 10,
+                "text-font": ["DIN Pro Bold", "Arial Unicode MS Bold"],
+                "text-allow-overlap": true
+            },
+            paint: { "text-color": "#ffffff" }
+        });
+        this.addLayerIfMissing({
+            id: "event-route-focus-point",
+            type: "circle",
+            source: SOURCE_FOCUS,
+            slot: "top",
+            paint: {
+                "circle-radius": 7,
+                "circle-color": "#fab120",
+                "circle-stroke-width": 2,
+                "circle-stroke-color": "#222222"
+            }
+        });
+        this.addLayerIfMissing({
+            id: "event-route-flyover-point",
+            type: "circle",
+            source: SOURCE_FLYOVER,
+            slot: "top",
+            paint: {
+                "circle-radius": 8,
+                "circle-color": "#333333",
+                "circle-stroke-width": 3,
+                "circle-stroke-color": "#fab120"
+            }
+        });
+
+        if (this.terrainEnabled) {
+            this.applyTerrain();
+        }
+    };
+
+    EventRouteMap.prototype.setOrAddGeoJsonSource = function (id, data, extraOptions) {
+        var source = this.map.getSource(id);
+        var options;
+
+        if (source) {
+            source.setData(data);
+            return;
+        }
+
+        options = Object.assign({ type: "geojson", data: data }, extraOptions || {});
+        this.map.addSource(id, options);
+    };
+
+    EventRouteMap.prototype.addLayerIfMissing = function (layer) {
+        if (!this.map.getLayer(layer.id)) {
+            this.map.addLayer(layer);
+        }
+    };
+
+    EventRouteMap.prototype.renderDetails = function (route, analysis) {
+        var distanceM = isFiniteNumber(route.distanceM) && Number(route.distanceM) > 0
+            ? Number(route.distanceM)
+            : analysis.distanceM;
+        var elevationMin = isFiniteNumber(route.elevationMinM)
+            ? Number(route.elevationMinM)
+            : analysis.elevationMinM;
+        var elevationMax = isFiniteNumber(route.elevationMaxM)
+            ? Number(route.elevationMaxM)
+            : analysis.elevationMaxM;
+        var elevationGain = isFiniteNumber(route.elevationGainM)
+            ? Number(route.elevationGainM)
+            : analysis.elevationGainM;
+        var fragments = [];
+
+        if (isFiniteNumber(distanceM)) {
+            fragments.push({
+                icon: "fa-route",
+                text: replaceTokens(this.labels.kilometers, {
+                    value: this.formatNumber(distanceM / 1000, 2)
+                })
+            });
+        }
+        if (isFiniteNumber(elevationGain)) {
+            fragments.push({
+                icon: "fa-arrow-trend-up",
+                text: this.labels.elevationGain + " " + replaceTokens(this.labels.meters, {
+                    value: this.formatNumber(elevationGain, 0)
+                })
+            });
+        }
+        if (isFiniteNumber(elevationMin) && isFiniteNumber(elevationMax)) {
+            fragments.push({
+                icon: "fa-mountain",
+                text: this.labels.elevationRange + " " + replaceTokens(this.labels.meters, {
+                    value: this.formatNumber(elevationMin, 0) + "–" + this.formatNumber(elevationMax, 0)
+                })
+            });
+        }
+
+        this.summaryNode.textContent = "";
+        fragments.forEach(function (fragment) {
+            var span = document.createElement("span");
+            var icon = document.createElement("i");
+
+            span.className = "event-route-metric";
+            icon.className = "fa-solid " + fragment.icon;
+            icon.setAttribute("aria-hidden", "true");
+            span.appendChild(icon);
+            span.appendChild(document.createTextNode(fragment.text));
+            this.summaryNode.appendChild(span);
+        }, this);
+
+        this.summaryNode.hidden = fragments.length === 0;
+        this.detailsNode.hidden = false;
+        this.renderProfile(route, analysis);
+    };
+
+    EventRouteMap.prototype.renderProfile = function (route, analysis) {
+        var series = analysis.elevationSeries;
+        var width = Math.max(280, this.profileNode.clientWidth || 600);
+        var height = 138;
+        var plotLeft = 44;
+        var plotRight = 8;
+        var plotTop = 8;
+        var plotBottom = 24;
+        var plotWidth = width - plotLeft - plotRight;
+        var plotHeight = height - plotTop - plotBottom;
+        var plotBaseline = plotTop + plotHeight;
+        var minElevation;
+        var maxElevation;
+        var maxDistance;
+        var distanceStep;
+        var elevationStep;
+        var distanceValue;
+        var elevationValue;
+        var gridGroup;
+        var gridLine;
+        var gridLabel;
+        var points;
+        var linePath;
+        var areaPath;
+        var area;
+        var line;
+
+        this.profileSvg.textContent = "";
+        if (this.fullscreenProfileSvg) {
+            this.fullscreenProfileSvg.textContent = "";
+        }
+        if (this.fullscreenProfileNode) {
+            this.fullscreenProfileNode.hidden = true;
+        }
+        this.profileNode.hidden = true;
+        this.profilePlot = null;
+
+        if (series.length < 2) {
+            return;
+        }
+
+        minElevation = Math.min.apply(Math, series.map(function (point) { return point.elevation; }));
+        maxElevation = Math.max.apply(Math, series.map(function (point) { return point.elevation; }));
+        maxDistance = Math.max(1, series[series.length - 1].distance);
+
+        if (maxElevation - minElevation < 0.5) {
+            return;
+        }
+
+        distanceStep = profileDistanceGridStep(maxDistance, plotWidth);
+        elevationStep = niceGridStep((maxElevation - minElevation) / 4);
+        gridGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        gridGroup.setAttribute("class", "event-route-profile-grid");
+
+        for (distanceValue = distanceStep; distanceValue < maxDistance; distanceValue += distanceStep) {
+            gridLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            gridLine.setAttribute("class", "event-route-profile-grid-line is-vertical");
+            gridLine.setAttribute("x1", plotLeft + distanceValue / maxDistance * plotWidth);
+            gridLine.setAttribute("x2", plotLeft + distanceValue / maxDistance * plotWidth);
+            gridLine.setAttribute("y1", plotTop);
+            gridLine.setAttribute("y2", plotBaseline);
+            gridGroup.appendChild(gridLine);
+
+            gridLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            gridLabel.setAttribute("class", "event-route-profile-grid-label is-distance");
+            gridLabel.setAttribute("x", plotLeft + distanceValue / maxDistance * plotWidth);
+            gridLabel.setAttribute("y", height - 6);
+            gridLabel.setAttribute("text-anchor", "middle");
+            gridLabel.textContent = this.formatNumber(distanceValue / 1000, 1) + " km";
+            gridGroup.appendChild(gridLabel);
+        }
+
+        elevationValue = Math.ceil(minElevation / elevationStep) * elevationStep;
+        for (
+            ;
+            elevationValue <= maxElevation + elevationStep * 0.001;
+            elevationValue += elevationStep
+        ) {
+            gridLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            gridLine.setAttribute("class", "event-route-profile-grid-line is-horizontal");
+            gridLine.setAttribute("x1", plotLeft);
+            gridLine.setAttribute("x2", plotLeft + plotWidth);
+            gridLine.setAttribute(
+                "y1",
+                plotTop + (1 - (elevationValue - minElevation) / (maxElevation - minElevation)) * plotHeight
+            );
+            gridLine.setAttribute(
+                "y2",
+                plotTop + (1 - (elevationValue - minElevation) / (maxElevation - minElevation)) * plotHeight
+            );
+            gridGroup.appendChild(gridLine);
+
+            gridLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            gridLabel.setAttribute("class", "event-route-profile-grid-label is-elevation");
+            gridLabel.setAttribute("x", plotLeft - 6);
+            gridLabel.setAttribute(
+                "y",
+                plotTop + (1 - (elevationValue - minElevation) / (maxElevation - minElevation)) * plotHeight + 3
+            );
+            gridLabel.setAttribute("text-anchor", "end");
+            gridLabel.textContent = this.formatNumber(elevationValue, 0) + " m";
+            gridGroup.appendChild(gridLabel);
+        }
+
+        points = series.map(function (point) {
+            return {
+                x: plotLeft + point.distance / maxDistance * plotWidth,
+                y: plotTop + (1 - (point.elevation - minElevation) / (maxElevation - minElevation)) * plotHeight
+            };
+        });
+        linePath = points.map(function (point, index) {
+            return (index ? "L" : "M") + point.x.toFixed(2) + " " + point.y.toFixed(2);
+        }).join(" ");
+        areaPath = linePath
+            + " L " + (plotLeft + plotWidth) + " " + plotBaseline
+            + " L " + plotLeft + " " + plotBaseline
+            + " Z";
+
+        this.profileSvg.setAttribute("viewBox", "0 0 " + width + " " + height);
+        this.profileSvg.appendChild(gridGroup);
+        area = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        area.setAttribute("class", "event-route-profile-area");
+        area.setAttribute("d", areaPath);
+        line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        line.setAttribute("class", "event-route-profile-line");
+        line.setAttribute("d", linePath);
+        this.profileSvg.appendChild(area);
+        this.profileSvg.appendChild(line);
+        this.profilePlot = {
+            left: plotLeft,
+            top: plotTop,
+            width: plotWidth,
+            height: plotHeight,
+            maxDistance: maxDistance
+        };
+
+        this.profileNode.hidden = false;
+        if (this.fullscreenProfileNode) {
+            this.fullscreenProfileNode.hidden = false;
+        }
+        this.profileNode.setAttribute("role", "img");
+        this.profileNode.setAttribute("aria-label", replaceTokens(this.labels.profileFor, {
+            distance: route.label
+        }));
+        this.profileDescription.textContent = replaceTokens(this.labels.profileFor, {
+            distance: route.label
+        }) + ": " + this.formatNumber(minElevation, 0) + "–" + this.formatNumber(maxElevation, 0) + " m.";
+        if (this.flyoverCoordinate) {
+            this.updateFlyoverProfile();
+        }
+        this.syncFullscreenProfile();
+    };
+
+    EventRouteMap.prototype.syncFullscreenProfile = function () {
+        if (!this.fullscreenProfileSvg || !this.profilePlot) {
+            return;
+        }
+
+        this.fullscreenProfileSvg.setAttribute(
+            "viewBox",
+            this.profileSvg.getAttribute("viewBox")
+        );
+        this.fullscreenProfileSvg.innerHTML = this.profileSvg.innerHTML;
+    };
+
+    EventRouteMap.prototype.focusProfileFromPointer = function (event, sourceSvg) {
+        var rect;
+        var pointerX;
+        var ratio;
+        var targetDistance;
+        var svg = sourceSvg || this.profileSvg;
+
+        if (
+            !this.currentAnalysis
+            || !this.currentAnalysis.elevationSeries.length
+            || !this.profilePlot
+            || this.flyoverState === "running"
+        ) {
+            return;
+        }
+
+        rect = svg.getBoundingClientRect();
+        pointerX = (event.clientX - rect.left)
+            / Math.max(1, rect.width)
+            * (Number(svg.viewBox.baseVal.width) || rect.width);
+        ratio = Math.max(
+            0,
+            Math.min(1, (pointerX - this.profilePlot.left) / Math.max(1, this.profilePlot.width))
+        );
+        targetDistance = ratio * this.profilePlot.maxDistance;
+        this.setProfileFocus(this.nearestProfileIndex(targetDistance));
+    };
+
+    EventRouteMap.prototype.nearestProfileIndex = function (targetDistance) {
+        var series = this.currentAnalysis.elevationSeries;
+        var low = 0;
+        var high = series.length - 1;
+        var middle;
+
+        while (low < high) {
+            middle = Math.floor((low + high) / 2);
+            if (series[middle].distance < targetDistance) {
+                low = middle + 1;
+            } else {
+                high = middle;
+            }
+        }
+
+        if (
+            low > 0
+            && Math.abs(series[low - 1].distance - targetDistance)
+                < Math.abs(series[low].distance - targetDistance)
+        ) {
+            return low - 1;
+        }
+        return low;
+    };
+
+    EventRouteMap.prototype.setProfileFocus = function (index) {
+        var series = this.currentAnalysis.elevationSeries;
+        var point = series[index];
+        var source;
+        var x;
+
+        if (!point || !this.profilePlot) {
+            return;
+        }
+
+        this.profileFocusIndex = index;
+        x = this.profilePlot.left
+            + point.distance / this.profilePlot.maxDistance * this.profilePlot.width;
+
+        [this.profileSvg, this.fullscreenProfileSvg].forEach(function (svg) {
+            var focusLine;
+
+            if (!svg) {
+                return;
+            }
+            focusLine = svg.querySelector(".event-route-profile-focus");
+            if (!focusLine) {
+                focusLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                focusLine.setAttribute("class", "event-route-profile-focus");
+                svg.appendChild(focusLine);
+            }
+            focusLine.setAttribute("x1", x);
+            focusLine.setAttribute("x2", x);
+            focusLine.setAttribute("y1", this.profilePlot.top);
+            focusLine.setAttribute("y2", this.profilePlot.top + this.profilePlot.height);
+        }, this);
+
+        if (this.map && this.map.getSource(SOURCE_FOCUS)) {
+            source = this.map.getSource(SOURCE_FOCUS);
+            source.setData({
+                type: "Feature",
+                properties: {},
+                geometry: { type: "Point", coordinates: point.coordinate }
+            });
+        }
+    };
+
+    EventRouteMap.prototype.clearProfileFocus = function () {
+        var source = this.map ? this.map.getSource(SOURCE_FOCUS) : null;
+
+        this.profileFocusIndex = -1;
+        [this.profileSvg, this.fullscreenProfileSvg].forEach(function (svg) {
+            var focusLine = svg
+                ? svg.querySelector(".event-route-profile-focus")
+                : null;
+
+            if (focusLine) {
+                focusLine.remove();
+            }
+        });
+        if (source) {
+            source.setData(emptyFeatureCollection());
+        }
+    };
+
+    EventRouteMap.prototype.handleProfileKeydown = function (event) {
+        var series = this.currentAnalysis ? this.currentAnalysis.elevationSeries : [];
+        var nextIndex;
+
+        if (!series.length || (event.key !== "ArrowLeft" && event.key !== "ArrowRight")) {
+            return;
+        }
+
+        event.preventDefault();
+        nextIndex = this.profileFocusIndex < 0 ? 0 : this.profileFocusIndex;
+        nextIndex += event.key === "ArrowRight" ? 1 : -1;
+        nextIndex = Math.max(0, Math.min(series.length - 1, nextIndex));
+        this.setProfileFocus(nextIndex);
+    };
+
+    EventRouteMap.prototype.toggleFlyover = function () {
+        if (this.flyoverState === "running") {
+            this.pauseFlyover(true);
+            return;
+        }
+        this.startFlyover();
+    };
+
+    EventRouteMap.prototype.startFlyover = function () {
+        var previousState = this.flyoverState;
+        var totalDistance;
+
+        if (
+            !this.map
+            || !this.currentAnalysis
+            || this.currentAnalysis.pathSeries.length < 2
+        ) {
+            return;
+        }
+
+        totalDistance = Math.max(1, this.currentAnalysis.distanceM);
+        if (previousState === "completed") {
+            this.flyoverProgress = 0;
+            this.flyoverBearing = null;
+        }
+
+        this.flyoverDuration = Math.max(36000, Math.min(130000, totalDistance * 2.8));
+        this.flyoverStartedAt = window.performance.now()
+            - this.flyoverProgress * this.flyoverDuration;
+        this.flyoverLastFrameAt = window.performance.now();
+        this.clearProfileFocus();
+        this.flyoverState = "running";
+        this.map.stop();
+        this.updateFlyoverRouteProgress(0, true);
+        this.updateFlyoverButton();
+        this.flyoverFrame = window.requestAnimationFrame(this.animateFlyover.bind(this));
+        this.track(
+            previousState === "paused" ? "event_route_flyover_resume" : "event_route_flyover_start",
+            { route_id: this.currentRoute ? this.currentRoute.id : 0 }
+        );
+    };
+
+    EventRouteMap.prototype.animateFlyover = function (timestamp) {
+        var frameDelta;
+
+        if (this.flyoverState !== "running" || !this.currentAnalysis) {
+            return;
+        }
+
+        frameDelta = Math.max(
+            8,
+            Math.min(64, timestamp - (this.flyoverLastFrameAt || timestamp - 16))
+        );
+        this.flyoverLastFrameAt = timestamp;
+        this.flyoverProgress = Math.max(
+            0,
+            Math.min(1, (timestamp - this.flyoverStartedAt) / this.flyoverDuration)
+        );
+        this.updateFlyoverRouteProgress(timestamp, this.flyoverProgress >= 1);
+        this.updateFlyoverPosition(frameDelta);
+
+        if (this.flyoverProgress >= 1) {
+            this.flyoverFrame = null;
+            this.flyoverState = "completed";
+            this.updateFlyoverButton();
+            this.settleFlyoverCamera();
+            this.track("event_route_flyover_complete", {
+                route_id: this.currentRoute ? this.currentRoute.id : 0
+            });
+            return;
+        }
+
+        this.flyoverFrame = window.requestAnimationFrame(this.animateFlyover.bind(this));
+    };
+
+    EventRouteMap.prototype.updateFlyoverPosition = function (frameDelta) {
+        var analysis = this.currentAnalysis;
+        var totalDistance;
+        var distance;
+        var lookAheadDistance;
+        var coordinate;
+        var aheadCoordinate;
+        var targetBearing;
+        var source;
+        var currentCenter;
+        var currentZoom;
+        var currentPitch;
+        var cameraAmount;
+        var bearingAmount;
+        var targetZoom;
+        var cameraCenter;
+
+        if (!analysis || !analysis.pathSeries.length) {
+            return;
+        }
+
+        totalDistance = Math.max(1, analysis.distanceM);
+        distance = this.flyoverProgress * totalDistance;
+        lookAheadDistance = Math.min(
+            totalDistance,
+            distance + Math.max(25, totalDistance / 800)
+        );
+        coordinate = coordinateAtDistance(analysis.pathSeries, distance);
+        aheadCoordinate = coordinateAtDistance(analysis.pathSeries, lookAheadDistance);
+        targetBearing = bearingDegrees(coordinate, aheadCoordinate);
+        this.flyoverCoordinate = coordinate;
+
+        source = this.map ? this.map.getSource(SOURCE_FLYOVER) : null;
+        if (source && coordinate) {
+            source.setData(pointFeature(coordinate));
+        }
+        this.updateFlyoverProfile();
+
+        if (!this.map || !coordinate || this.flyoverState !== "running") {
+            return;
+        }
+
+        cameraAmount = 1 - Math.exp(-Math.max(8, Number(frameDelta) || 16) / 650);
+        bearingAmount = 1 - Math.exp(-Math.max(8, Number(frameDelta) || 16) / 1050);
+        currentCenter = this.map.getCenter();
+        currentZoom = this.map.getZoom();
+        currentPitch = this.map.getPitch();
+        targetZoom = flyoverZoomForDistance(totalDistance);
+        cameraCenter = [
+            currentCenter.lng + (Number(coordinate[0]) - currentCenter.lng) * cameraAmount,
+            currentCenter.lat + (Number(coordinate[1]) - currentCenter.lat) * cameraAmount
+        ];
+        if (!Number.isFinite(this.flyoverBearing)) {
+            this.flyoverBearing = this.map.getBearing();
+        }
+        this.flyoverBearing = smoothBearing(
+            this.flyoverBearing,
+            targetBearing,
+            bearingAmount
+        );
+        this.map.jumpTo({
+            center: cameraCenter,
+            zoom: currentZoom + (targetZoom - currentZoom) * cameraAmount,
+            pitch: currentPitch + (55 - currentPitch) * cameraAmount,
+            bearing: this.flyoverBearing
+        });
+    };
+
+    EventRouteMap.prototype.settleFlyoverCamera = function () {
+        if (!this.map || !this.currentAnalysis || !this.flyoverCoordinate) {
+            return;
+        }
+
+        this.map.easeTo({
+            center: this.flyoverCoordinate,
+            zoom: flyoverZoomForDistance(this.currentAnalysis.distanceM),
+            pitch: 55,
+            bearing: this.flyoverBearing,
+            duration: this.reducedMotion ? 0 : 1200
+        });
+    };
+
+    EventRouteMap.prototype.updateFlyoverProfile = function () {
+        var x;
+
+        if (!this.profilePlot || !this.profileSvg) {
+            return;
+        }
+
+        x = this.profilePlot.left + this.flyoverProgress * this.profilePlot.width;
+        [this.profileSvg, this.fullscreenProfileSvg].forEach(function (svg) {
+            var line;
+
+            if (!svg) {
+                return;
+            }
+            line = svg.querySelector(".event-route-profile-flyover-focus");
+            if (!line) {
+                line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("class", "event-route-profile-flyover-focus");
+                svg.appendChild(line);
+            }
+            line.setAttribute("x1", x);
+            line.setAttribute("x2", x);
+            line.setAttribute("y1", this.profilePlot.top);
+            line.setAttribute("y2", this.profilePlot.top + this.profilePlot.height);
+        }, this);
+    };
+
+    EventRouteMap.prototype.updateFlyoverRouteProgress = function (timestamp, force) {
+        var flyoverActive = this.flyoverState !== "idle";
+        var progressSource;
+
+        if (
+            !force
+            && flyoverActive
+            && timestamp
+            && timestamp - this.flyoverRouteProgressUpdatedAt < 50
+        ) {
+            return;
+        }
+        this.flyoverRouteProgressUpdatedAt = Number(timestamp) || 0;
+
+        if (this.map && this.map.getLayer("event-route-line")) {
+            this.map.setPaintProperty(
+                "event-route-line",
+                "line-color",
+                flyoverActive ? "#fff0c2" : "#fab120"
+            );
+        }
+        progressSource = this.map ? this.map.getSource(SOURCE_ROUTE_PROGRESS) : null;
+        if (progressSource) {
+            progressSource.setData(
+                flyoverActive && this.currentAnalysis
+                    ? routeProgressFeature(
+                        this.currentAnalysis.pathLines,
+                        this.flyoverProgress * this.currentAnalysis.distanceM
+                    )
+                    : emptyFeatureCollection()
+            );
+        }
+    };
+
+    EventRouteMap.prototype.pauseFlyover = function (trackInteraction) {
+        if (this.flyoverState !== "running") {
+            return;
+        }
+
+        if (this.flyoverFrame !== null) {
+            window.cancelAnimationFrame(this.flyoverFrame);
+            this.flyoverFrame = null;
+        }
+        this.flyoverState = "paused";
+        this.flyoverLastFrameAt = 0;
+        this.updateFlyoverButton();
+        if (trackInteraction) {
+            this.track("event_route_flyover_pause", {
+                route_id: this.currentRoute ? this.currentRoute.id : 0
+            });
+        }
+    };
+
+    EventRouteMap.prototype.resetFlyover = function (showStart) {
+        var source;
+        var startCoordinate = null;
+
+        if (this.flyoverFrame !== null) {
+            window.cancelAnimationFrame(this.flyoverFrame);
+            this.flyoverFrame = null;
+        }
+
+        this.flyoverState = "idle";
+        this.flyoverProgress = 0;
+        this.flyoverStartedAt = 0;
+        this.flyoverDuration = 0;
+        this.flyoverCoordinate = null;
+        this.flyoverBearing = null;
+        this.flyoverLastFrameAt = 0;
+        this.flyoverRouteProgressUpdatedAt = 0;
+        this.updateFlyoverRouteProgress(0, true);
+
+        source = this.map ? this.map.getSource(SOURCE_FLYOVER) : null;
+        if (
+            showStart
+            && this.currentAnalysis
+            && this.currentAnalysis.pathSeries.length
+        ) {
+            startCoordinate = coordinateAtDistance(this.currentAnalysis.pathSeries, 0);
+            this.flyoverCoordinate = startCoordinate;
+        }
+        if (source) {
+            source.setData(startCoordinate ? pointFeature(startCoordinate) : emptyFeatureCollection());
+        }
+        [this.profileSvg, this.fullscreenProfileSvg].forEach(function (svg) {
+            var profileLine = svg
+                ? svg.querySelector(".event-route-profile-flyover-focus")
+                : null;
+
+            if (profileLine) {
+                profileLine.remove();
+            }
+        });
+        if (startCoordinate) {
+            this.updateFlyoverProfile();
+        }
+        this.updateFlyoverButton();
+    };
+
+    EventRouteMap.prototype.updateFlyoverButton = function () {
+        var icon;
+        var label;
+
+        if (!this.flyoverButton) {
+            return;
+        }
+
+        icon = this.flyoverButton.querySelector("i");
+        if (this.flyoverState === "running") {
+            label = this.labels.flyoverPause || "Pausar sobrevoo";
+            if (icon) {
+                icon.className = "fa-solid fa-pause";
+            }
+        } else if (this.flyoverState === "paused") {
+            label = this.labels.flyoverResume || "Continuar sobrevoo";
+            if (icon) {
+                icon.className = "fa-solid fa-play";
+            }
+        } else if (this.flyoverState === "completed") {
+            label = this.labels.flyoverReplay || "Repetir sobrevoo";
+            if (icon) {
+                icon.className = "fa-solid fa-rotate-right";
+            }
+        } else {
+            label = this.labels.flyoverStart || "Sobrevoar percurso";
+            if (icon) {
+                icon.className = "fa-solid fa-play";
+            }
+        }
+
+        this.flyoverButton.classList.toggle("is-active", this.flyoverState === "running");
+        this.flyoverButton.setAttribute(
+            "aria-pressed",
+            this.flyoverState === "running" ? "true" : "false"
+        );
+        this.flyoverButton.setAttribute("aria-label", label);
+        this.flyoverButton.title = label;
+        if (this.flyoverStopButton) {
+            this.flyoverStopButton.disabled = this.flyoverState === "idle";
+        }
+    };
+
+    EventRouteMap.prototype.fitRoute = function () {
+        var padding;
+
+        if (!this.map || !this.currentBounds) {
+            return;
+        }
+
+        padding = window.innerWidth < 576
+            ? { top: 38, right: 28, bottom: 56, left: 28 }
+            : { top: 48, right: 48, bottom: 48, left: 48 };
+
+        this.map.fitBounds([
+            [this.currentBounds[0], this.currentBounds[1]],
+            [this.currentBounds[2], this.currentBounds[3]]
+        ], {
+            padding: padding,
+            duration: this.reducedMotion ? 0 : 350,
+            maxZoom: 16
+        });
+    };
+
+    EventRouteMap.prototype.changeStyle = function (style) {
+        var styleUrl;
+        var cameraState;
+
+        if (!this.map || (style !== "map" && style !== "satellite") || style === this.currentStyle) {
+            return;
+        }
+
+        this.pauseFlyover(true);
+        cameraState = {
+            center: this.map.getCenter(),
+            zoom: this.map.getZoom(),
+            bearing: this.map.getBearing(),
+            pitch: this.map.getPitch()
+        };
+        this.currentStyle = style;
+        styleUrl = style === "satellite" ? SATELLITE_STYLE : MAP_STYLE;
+        this.updateStyleToggle();
+        if (this.flyoverButton) {
+            this.flyoverButton.disabled = true;
+        }
+        if (this.flyoverStopButton) {
+            this.flyoverStopButton.disabled = true;
+        }
+        this.loadingNode.hidden = false;
+        this.map.setStyle(styleUrl);
+        this.map.once("style.load", function () {
+            if (style === "satellite") {
+                this.applySatelliteConfiguration();
+            }
+            window.requestAnimationFrame(function () {
+                this.map.jumpTo(cameraState);
+                if (this.flyoverButton && this.currentAnalysis) {
+                    this.flyoverButton.disabled = this.currentAnalysis.pathSeries.length < 2;
+                    this.updateFlyoverButton();
+                }
+                this.loadingNode.hidden = true;
+            }.bind(this));
+        }.bind(this));
+        this.track("event_route_style_change", { style: style });
+    };
+
+    EventRouteMap.prototype.updateStyleToggle = function () {
+        var satelliteActive;
+        var actionLabel;
+        var icon;
+
+        if (!this.styleToggleButton) {
+            return;
+        }
+
+        satelliteActive = this.currentStyle === "satellite";
+        actionLabel = satelliteActive
+            ? (this.labels.styleSwitchToMap || this.labels.map || "Mapa")
+            : (this.labels.styleSwitchToSatellite || this.labels.satellite || "Satélite");
+        icon = this.styleToggleButton.querySelector("i");
+
+        this.styleToggleButton.setAttribute("aria-pressed", satelliteActive ? "true" : "false");
+        this.styleToggleButton.setAttribute("aria-label", actionLabel);
+        this.styleToggleButton.title = actionLabel;
+        if (icon) {
+            icon.className = satelliteActive
+                ? "fa-solid fa-satellite"
+                : "fa-solid fa-map";
+        }
+        if (this.styleToggleLabel) {
+            this.styleToggleLabel.textContent = satelliteActive
+                ? this.labels.satellite
+                : this.labels.map;
+        }
+    };
+
+    EventRouteMap.prototype.applySatelliteConfiguration = function () {
+        if (!this.map || typeof this.map.setConfigProperty !== "function") {
+            return;
+        }
+
+        SATELLITE_HIDDEN_FEATURES.forEach(function (property) {
+            this.map.setConfigProperty("basemap", property, false);
+        }, this);
+    };
+
+    EventRouteMap.prototype.toggleKilometers = function () {
+        var visibility;
+
+        if (!this.kilometersButton) {
+            return;
+        }
+
+        this.kilometersVisible = !this.kilometersVisible;
+        visibility = this.kilometersVisible ? "visible" : "none";
+        this.kilometersButton.classList.toggle("is-active", this.kilometersVisible);
+        this.kilometersButton.setAttribute("aria-pressed", this.kilometersVisible ? "true" : "false");
+        this.kilometersButton.setAttribute(
+            "aria-label",
+            this.kilometersVisible ? this.labels.kilometersHide : this.labels.kilometersShow
+        );
+
+        ["event-route-km-circle", "event-route-km-label"].forEach(function (layerId) {
+            if (this.map && this.map.getLayer(layerId)) {
+                this.map.setLayoutProperty(layerId, "visibility", visibility);
+            }
+        }, this);
+        this.track("event_route_kilometers_toggle", {
+            visible: this.kilometersVisible
+        });
+    };
+
+    EventRouteMap.prototype.toggleTerrain = function () {
+        if (!this.map) {
+            return;
+        }
+
+        this.pauseFlyover(true);
+        this.terrainEnabled = !this.terrainEnabled;
+        this.terrainButton.classList.toggle("is-active", this.terrainEnabled);
+        this.terrainButton.setAttribute("aria-pressed", this.terrainEnabled ? "true" : "false");
+        this.terrainButton.setAttribute(
+            "aria-label",
+            this.terrainEnabled ? this.labels.terrainDisable : this.labels.terrainEnable
+        );
+
+        if (this.terrainEnabled) {
+            this.applyTerrain();
+            this.map.easeTo({
+                pitch: 55,
+                duration: this.reducedMotion ? 0 : 350
+            });
+            this.track("event_route_3d_enable", {});
+        } else {
+            this.map.setTerrain(null);
+            this.map.easeTo({
+                pitch: 0,
+                bearing: 0,
+                duration: this.reducedMotion ? 0 : 350
+            });
+        }
+    };
+
+    EventRouteMap.prototype.applyTerrain = function () {
+        if (!this.map.getSource(SOURCE_TERRAIN)) {
+            this.map.addSource(SOURCE_TERRAIN, {
+                type: "raster-dem",
+                url: "mapbox://mapbox.mapbox-terrain-dem-v1",
+                tileSize: 512,
+                maxzoom: 14
+            });
+        }
+        this.map.setTerrain({ source: SOURCE_TERRAIN, exaggeration: 1.15 });
+    };
+
+    EventRouteMap.prototype.showFallback = function (route, reason) {
+        this.resetFlyover();
+        this.root.setAttribute("data-event-route-fallback-reason", reason);
+        this.toolbar.hidden = true;
+        this.mapShell.hidden = true;
+        this.detailsNode.hidden = true;
+        this.unavailableNode.hidden = false;
+        this.unavailableNode.textContent = route.hasMapbox
+            ? this.labels.loadError
+            : this.unavailableNode.textContent;
+        this.track("event_route_load_error", {
+            route_id: route.id,
+            reason: reason
+        });
+    };
+
+    EventRouteMap.prototype.formatNumber = function (value, maximumFractionDigits) {
+        return new Intl.NumberFormat(this.locale, {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: maximumFractionDigits
+        }).format(Number(value));
+    };
+
+    EventRouteMap.prototype.track = function (eventName, values) {
+        var payload = Object.assign({ event: eventName }, values || {});
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(payload);
+    };
+
+    function initialize() {
+        Array.prototype.forEach.call(
+            document.querySelectorAll("[data-event-route-component]"),
+            function (root) {
+                try {
+                    new EventRouteMap(root);
+                } catch (error) {
+                    var unavailable = root.querySelector("[data-event-route-unavailable]");
+                    if (unavailable) {
+                        unavailable.hidden = false;
+                    }
+                }
+            }
+        );
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initialize);
+    } else {
+        initialize();
+    }
+}());

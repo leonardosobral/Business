@@ -1,0 +1,30 @@
+# Road Runners
+
+> Public running-event calendar and running news from Brazil, with event pages in Portuguese, English and Spanish.
+
+Road Runners is an event information portal. Each event page contains its own dates, location, available distances and links to the organizer, registration provider or regulation when available. Those primary sources may change; the portal is not a guarantee of registration availability. Past editions remain available and must not be presented as upcoming races. A source review covers only the fields and dates explicitly identified on the page.
+
+The links below lead to public HTML pages. Account functions require authentication. This directory does not grant permission to reuse third-party articles or personal information, and does not change robots.txt or any content license.
+
+## Event discovery
+
+- [Portuguese event calendar](https://roadrunners.run/): Upcoming events and recent event information.
+- [English calendar](https://roadrunners.run/en/): English navigation; untranslated descriptions identify their original language.
+- [Spanish calendar](https://roadrunners.run/es/): Spanish navigation; untranslated descriptions identify their original language.
+- [Event search](https://roadrunners.run/busca/): Find events using location, date and distance filters.
+- [Sao Paulo running calendar](https://roadrunners.run/estado/sp/): Events in SP, with links and filters for available cities.
+- [Espirito Santo running calendar](https://roadrunners.run/estado/es/): Events in ES, with links and filters for available cities.
+- [Santa Catarina running calendar](https://roadrunners.run/estado/sc/): Events in SC, with links and filters for available cities.
+
+## Circuito Catarinense
+
+- [Road-running stages and ranking](https://roadrunners.run/circuitocatarinense/corridaderua/): Information for the road-running circuit.
+- [Trail-running stages and ranking](https://roadrunners.run/circuitocatarinense/trailrun/): Information for the trail-running circuit.
+
+## Optional
+
+- [Running news](https://roadrunners.run/noticias/): Articles and summaries with their source and publication context.
+- [About Road Runners](https://roadrunners.run/sobre/): Portal identity and contact context.
+- [Privacy policy](https://roadrunners.run/privacidade/): Privacy and personal-data information.
+- [XML sitemap index](https://roadrunners.run/sitemap.xml): Discovery of current and historical canonical public URLs; inclusion is not proof of Google indexation.
+- [Crawler access policy](https://roadrunners.run/robots.txt): Declared rules for automated access.

@@ -1,0 +1,74 @@
+{
+  "version": "170006",
+  "tables": [
+    {
+      "table": "tb_paginas_usuarios",
+      "all_bytes": 4079616,
+      "estimated_rows": 50879,
+      "table_bytes": 2727936
+    },
+    {
+      "table": "tb_resultados",
+      "all_bytes": 25359974400,
+      "estimated_rows": 17034080,
+      "table_bytes": 6421102592
+    }
+  ],
+  "indexes": [
+    {
+      "table": "tb_paginas_usuarios",
+      "definition": "CREATE UNIQUE INDEX tb_paginas_usuarios_pk ON public.tb_paginas_usuarios USING btree (id_pagina_usuario)",
+      "index": "tb_paginas_usuarios_pk"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_idade_range_gist ON public.tb_resultados USING gist (idade_range)",
+      "index": "tb_resultados_idade_range_gist"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE UNIQUE INDEX tb_resultados_nova_pkey ON public.tb_resultados USING btree (id_resultado)",
+      "index": "tb_resultados_nova_pkey"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_id_evento_num_peito_index ON public.tb_resultados USING btree (id_evento, num_peito)",
+      "index": "tb_resultados_id_evento_num_peito_index"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_id_evento_percurso_modalidade_index ON public.tb_resultados USING btree (id_evento, percurso, modalidade)",
+      "index": "tb_resultados_id_evento_percurso_modalidade_index"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE UNIQUE INDEX tb_resultados_id_evento_percurso_num_peito_sexo_nome_uindex ON public.tb_resultados USING btree (id_evento, percurso, num_peito, sexo, nome)",
+      "index": "tb_resultados_id_evento_percurso_num_peito_sexo_nome_uindex"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE UNIQUE INDEX tb_resultados_id_evento_percurso_num_peito_uindex ON public.tb_resultados USING btree (id_evento, percurso, num_peito)",
+      "index": "tb_resultados_id_evento_percurso_num_peito_uindex"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_id_usuario_index ON public.tb_resultados USING btree (id_usuario)",
+      "index": "tb_resultados_id_usuario_index"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_nome_concluinte_index ON public.tb_resultados USING btree (nome, concluinte)",
+      "index": "tb_resultados_nome_concluinte_index"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX tb_resultados_nome_full_text_idx ON public.tb_resultados USING gin (nome_full_text)",
+      "index": "tb_resultados_nome_full_text_idx"
+    },
+    {
+      "table": "tb_resultados",
+      "definition": "CREATE INDEX idx_result_nome_norm_trgm ON public.tb_resultados USING gin (nome_normalizado gin_trgm_ops)",
+      "index": "idx_result_nome_norm_trgm"
+    }
+  ]
+}

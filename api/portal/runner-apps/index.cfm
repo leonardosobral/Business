@@ -17,6 +17,6 @@
     <cfcontent type="application/json" reset="true"/><cfoutput>{"success":false,"status":"invalid_parameter"}</cfoutput><cfabort/>
 </cfif>
 <cfheader name="Cache-Control" value="public, max-age=300"/>
-<cfheader statuscode="308" statustext="Permanent Redirect"/>
+<cfheader statuscode="308"/>
 <cfheader name="Location" value="https://api.roadrunners.run/v1/discovery/runner-apps.cfm#len(runnerAppsLine) ? '?linha=principal' : ''#"/>
 <cfcontent type="text/plain; charset=utf-8" reset="true"/><cfabort/>

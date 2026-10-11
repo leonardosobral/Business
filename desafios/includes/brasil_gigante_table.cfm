@@ -14,7 +14,7 @@
             <th class="text-center">#</th>
             <th>Atleta</th>
             <cfloop array="#VARIABLES.challengeCircuitEvents#" item="VARIABLES.challengeCircuitEvent">
-              <th class="cbg-stage-result" title="<cfoutput>#htmlEditFormat(VARIABLES.challengeCircuitEvent.nome)#</cfoutput>"><cfoutput>#VARIABLES.challengeCircuitEvent.sigla#</cfoutput></th>
+              <th class="cbg-stage-result" title="<cfoutput>#encodeForHTMLAttribute(VARIABLES.challengeCircuitEvent.nome)#</cfoutput>"><cfoutput>#VARIABLES.challengeCircuitEvent.sigla#</cfoutput></th>
             </cfloop>
             <th class="text-center">Etapas</th>
             <th>Mandala</th>
@@ -43,17 +43,17 @@
               <td class="text-center text-muted">#qBrasilGiganteRanking.currentRow#</td>
               <td class="cbg-dashboard-athlete">
                 <div class="d-flex align-items-center gap-2">
-                  <img class="rounded-circle cbg-dashboard-avatar" src="#htmlEditFormat(qBrasilGiganteRanking.imagem_usuario)#" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/>
+                  <img class="rounded-circle cbg-dashboard-avatar" src="#encodeForHTMLAttribute(qBrasilGiganteRanking.imagem_usuario)#" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/>
                   <div>
                     <div class="fw-semibold">
                       <cfif len(trim(qBrasilGiganteRanking.tag & ""))>
-                        <a class="text-reset" href="https://roadrunners.run/atleta/#urlEncodedFormat(qBrasilGiganteRanking.tag)#/" target="_blank" rel="noopener noreferrer">#htmlEditFormat(qBrasilGiganteRanking.nome)#</a>
+                        <a class="text-reset" href="https://roadrunners.run/atleta/#urlEncodedFormat(qBrasilGiganteRanking.tag)#/" target="_blank" rel="noopener noreferrer">#encodeForHTML(qBrasilGiganteRanking.nome)#</a>
                       <cfelse>
-                        #htmlEditFormat(qBrasilGiganteRanking.nome)#
+                        #encodeForHTML(qBrasilGiganteRanking.nome)#
                       </cfif>
                     </div>
                     <div class="small text-muted">
-                      ID #qBrasilGiganteRanking.id#<cfif len(trim(qBrasilGiganteRanking.cidade & "")) OR len(trim(qBrasilGiganteRanking.estado & ""))> · #htmlEditFormat(qBrasilGiganteRanking.cidade)#<cfif len(trim(qBrasilGiganteRanking.cidade & "")) AND len(trim(qBrasilGiganteRanking.estado & ""))>/</cfif>#htmlEditFormat(qBrasilGiganteRanking.estado)#</cfif>
+                      ID #qBrasilGiganteRanking.id#<cfif len(trim(qBrasilGiganteRanking.cidade & "")) OR len(trim(qBrasilGiganteRanking.estado & ""))> · #encodeForHTML(qBrasilGiganteRanking.cidade)#<cfif len(trim(qBrasilGiganteRanking.cidade & "")) AND len(trim(qBrasilGiganteRanking.estado & ""))>/</cfif>#encodeForHTML(qBrasilGiganteRanking.estado)#</cfif>
                     </div>
                   </div>
                 </div>
@@ -75,14 +75,14 @@
               <td>
                 <span class="badge #VARIABLES.challengeMandalaStatusClass#">#VARIABLES.challengeMandalaStatusLabel#</span>
                 <cfif qBrasilGiganteRanking.mandala_status EQ "entregue" AND len(trim(qBrasilGiganteRanking.mandala_entregue_em & ""))>
-                  <div class="small text-muted mt-1"><cfif isDate(qBrasilGiganteRanking.mandala_entregue_em)>#dateFormat(qBrasilGiganteRanking.mandala_entregue_em, "dd/mm/yyyy")# #timeFormat(qBrasilGiganteRanking.mandala_entregue_em, "HH:mm")#<cfelse>#htmlEditFormat(qBrasilGiganteRanking.mandala_entregue_em)#</cfif></div>
+                  <div class="small text-muted mt-1"><cfif isDate(qBrasilGiganteRanking.mandala_entregue_em)>#dateFormat(qBrasilGiganteRanking.mandala_entregue_em, "dd/mm/yyyy")# #timeFormat(qBrasilGiganteRanking.mandala_entregue_em, "HH:mm")#<cfelse>#encodeForHTML(qBrasilGiganteRanking.mandala_entregue_em)#</cfif></div>
                 </cfif>
               </td>
               <td class="text-end">
                 <cfif listFindNoCase("proxima_etapa,imediata", qBrasilGiganteRanking.mandala_status)>
                   <form method="post" class="d-inline" onsubmit="return confirm('Confirmar a entrega da mandala para este atleta?');">
                     <input type="hidden" name="challenge_action" value="entregar_mandala"/>
-                    <input type="hidden" name="challenge_medal_csrf" value="#htmlEditFormat(VARIABLES.challengeMedalCsrf)#"/>
+                    <input type="hidden" name="challenge_medal_csrf" value="#encodeForHTMLAttribute(VARIABLES.challengeMedalCsrf)#"/>
                     <input type="hidden" name="id_usuario" value="#qBrasilGiganteRanking.id#"/>
                     <button class="btn btn-success btn-sm text-nowrap" type="submit"><i class="fa-solid fa-award me-1"></i> Mandala entregue</button>
                   </form>

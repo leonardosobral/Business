@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-04T21:47:25.835728-03:00",
+  "checks": [
+    {
+      "host": "roadrunners.run",
+      "result": "200 0.171765",
+      "error": "",
+      "exit": 0
+    },
+    {
+      "host": "business.roadrunners.run",
+      "result": "200 0.116745",
+      "error": "",
+      "exit": 0
+    },
+    {
+      "host": "openresults.run",
+      "result": "200 0.903575",
+      "error": "",
+      "exit": 0
+    }
+  ]
+}

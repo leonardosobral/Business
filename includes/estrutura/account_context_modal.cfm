@@ -133,9 +133,9 @@
           <cfif isDefined("VARIABLES.businessRealIsAdmin") AND VARIABLES.businessRealIsAdmin AND NOT VARIABLES.businessAccountModalRequired>
             <form class="business-account-option" method="post" action="/selecionar-conta/">
               <input type="hidden" name="business_account_context_action" value="select"/>
-              <input type="hidden" name="business_account_context_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#</cfoutput>"/>
+              <input type="hidden" name="business_account_context_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.businessAccountContextCsrf)#</cfoutput>"/>
               <input type="hidden" name="business_account_context_id" value="all"/>
-              <input type="hidden" name="business_account_context_redirect" value="<cfoutput>#htmlEditFormat(VARIABLES.businessAccountModalRedirect)#</cfoutput>"/>
+              <input type="hidden" name="business_account_context_redirect" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.businessAccountModalRedirect)#</cfoutput>"/>
               <button class="business-account-option-button <cfif NOT VARIABLES.businessAccountSimulationActive>is-active</cfif>" type="submit">
                 <span class="business-account-option-icon"><i class="fa-solid fa-layer-group"></i></span>
                 <span class="business-account-option-copy">
@@ -152,14 +152,14 @@
               <cfset VARIABLES.businessAccountOptionEnabled = qBusinessAccountContextOptions.status EQ "ATIVA"/>
               <form class="business-account-option" method="post" action="/selecionar-conta/">
                 <input type="hidden" name="business_account_context_action" value="select"/>
-                <input type="hidden" name="business_account_context_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+                <input type="hidden" name="business_account_context_csrf" value="#encodeForHTMLAttribute(VARIABLES.businessAccountContextCsrf)#"/>
                 <input type="hidden" name="business_account_context_id" value="#qBusinessAccountContextOptions.id_conta#"/>
-                <input type="hidden" name="business_account_context_redirect" value="#htmlEditFormat(VARIABLES.businessAccountModalRedirect)#"/>
+                <input type="hidden" name="business_account_context_redirect" value="#encodeForHTMLAttribute(VARIABLES.businessAccountModalRedirect)#"/>
                 <button class="business-account-option-button <cfif VARIABLES.businessAccountOptionActive>is-active</cfif>" type="submit" <cfif NOT VARIABLES.businessAccountOptionEnabled>disabled</cfif>>
                   <span class="business-account-option-icon"><i class="fa-solid fa-building"></i></span>
                   <span class="business-account-option-copy">
-                    <span class="business-account-option-name">#htmlEditFormat(qBusinessAccountContextOptions.nome_conta)#</span>
-                    <span class="business-account-option-meta"><cfif VARIABLES.businessAccountOptionActive>Conta em uso<cfelse>#htmlEditFormat(qBusinessAccountContextOptions.status)#</cfif></span>
+                    <span class="business-account-option-name">#encodeForHTML(qBusinessAccountContextOptions.nome_conta)#</span>
+                    <span class="business-account-option-meta"><cfif VARIABLES.businessAccountOptionActive>Conta em uso<cfelse>#encodeForHTML(qBusinessAccountContextOptions.status)#</cfif></span>
                   </span>
                 </button>
               </form>
@@ -177,14 +177,14 @@
               </cfswitch>
               <form class="business-account-option" method="post" action="/selecionar-conta/">
                 <input type="hidden" name="business_account_context_action" value="select"/>
-                <input type="hidden" name="business_account_context_csrf" value="#htmlEditFormat(VARIABLES.businessAccountContextCsrf)#"/>
+                <input type="hidden" name="business_account_context_csrf" value="#encodeForHTMLAttribute(VARIABLES.businessAccountContextCsrf)#"/>
                 <input type="hidden" name="business_account_context_id" value="#qBusinessAccountContextAccounts.id_conta#"/>
-                <input type="hidden" name="business_account_context_redirect" value="#htmlEditFormat(VARIABLES.businessAccountModalRedirect)#"/>
+                <input type="hidden" name="business_account_context_redirect" value="#encodeForHTMLAttribute(VARIABLES.businessAccountModalRedirect)#"/>
                 <button class="business-account-option-button <cfif VARIABLES.businessAccountOptionActive>is-active</cfif>" type="submit">
                   <span class="business-account-option-icon"><i class="fa-solid fa-building"></i></span>
                   <span class="business-account-option-copy">
-                    <span class="business-account-option-name">#htmlEditFormat(qBusinessAccountContextAccounts.nome_conta)#</span>
-                    <span class="business-account-option-meta"><cfif VARIABLES.businessAccountOptionActive>Conta em uso<cfelse>#htmlEditFormat(VARIABLES.businessAccountOptionRole)#</cfif></span>
+                    <span class="business-account-option-name">#encodeForHTML(qBusinessAccountContextAccounts.nome_conta)#</span>
+                    <span class="business-account-option-meta"><cfif VARIABLES.businessAccountOptionActive>Conta em uso<cfelse>#encodeForHTML(VARIABLES.businessAccountOptionRole)#</cfif></span>
                   </span>
                 </button>
               </form>

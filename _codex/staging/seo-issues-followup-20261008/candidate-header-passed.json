@@ -1,0 +1,286 @@
+{
+  "rows": [
+    {
+      "route": "/maratona/",
+      "themed": false,
+      "compact": false,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/maratona/",
+      "themed": false,
+      "compact": true,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/maratona/",
+      "themed": true,
+      "compact": false,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/maratona/",
+      "themed": true,
+      "compact": true,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/org/",
+      "themed": false,
+      "compact": false,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/org/",
+      "themed": false,
+      "compact": true,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/org/",
+      "themed": true,
+      "compact": false,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/org/",
+      "themed": true,
+      "compact": true,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/timer/",
+      "themed": false,
+      "compact": false,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/timer/",
+      "themed": false,
+      "compact": true,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/timer/",
+      "themed": true,
+      "compact": false,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/timer/",
+      "themed": true,
+      "compact": true,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/circuito/",
+      "themed": false,
+      "compact": false,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/circuito/",
+      "themed": false,
+      "compact": true,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/circuito/",
+      "themed": true,
+      "compact": false,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/circuito/",
+      "themed": true,
+      "compact": true,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/evento/",
+      "themed": false,
+      "compact": false,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/evento/",
+      "themed": false,
+      "compact": true,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/evento/",
+      "themed": true,
+      "compact": false,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "route": "/evento/",
+      "themed": true,
+      "compact": true,
+      "baseline": {
+        "status": 200,
+        "returncode": 0
+      },
+      "candidate": {
+        "status": 200,
+        "returncode": 0
+      },
+      "passed": true
+    }
+  ],
+  "source_hash": "6bafed262d68c0b68df47d77357d17a311207477e42173fbef7b239816156d55",
+  "mode": "candidate"
+}

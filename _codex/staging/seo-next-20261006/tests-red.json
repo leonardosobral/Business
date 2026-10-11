@@ -1,0 +1,533 @@
+{
+  "CHECKS": [
+    {
+      "PASSED": true,
+      "NAME": "pt-BR city 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR date 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR brand 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR city 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR date 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR brand 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR city 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR date 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR brand 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR city 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR date 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR brand 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR city 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR date 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR brand 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR five distinct titles"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en city 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en date 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en brand 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en city 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en date 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en brand 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en city 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en date 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en brand 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en city 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en date 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en brand 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en city 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en date 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en brand 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en five distinct titles"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es city 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es date 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es brand 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es city 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es date 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es brand 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es city 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es date 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es brand 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es city 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es date 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es brand 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es city 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es date 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es brand 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es five distinct titles"
+    },
+    {
+      "PASSED": true,
+      "NAME": "existing date title 37531"
+    },
+    {
+      "PASSED": true,
+      "NAME": "existing date title 37568"
+    },
+    {
+      "PASSED": true,
+      "NAME": "existing date title 40833"
+    },
+    {
+      "PASSED": true,
+      "NAME": "unique title unchanged"
+    },
+    {
+      "PASSED": true,
+      "NAME": "missing date unchanged"
+    },
+    {
+      "PASSED": true,
+      "NAME": "already distinct prefix title preserved 46596"
+    },
+    {
+      "PASSED": true,
+      "NAME": "already distinct prefix title preserved 46597"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR Night date 33178"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR Night localized type 33178"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR Night full name 33178"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR Night length 33178"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR Night date 47673"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR Night localized type 47673"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR Night full name 47673"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR Night length 47673"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR Night editions distinct ignoring case"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en Night date 33178"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en Night localized type 33178"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en Night full name 33178"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en Night length 33178"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en Night date 47673"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en Night localized type 47673"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en Night full name 47673"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en Night length 47673"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en Night editions distinct ignoring case"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es Night date 33178"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es Night localized type 33178"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es Night full name 33178"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es Night length 33178"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es Night date 47673"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es Night localized type 47673"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es Night full name 47673"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es Night length 47673"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es Night editions distinct ignoring case"
+    },
+    {
+      "PASSED": true,
+      "NAME": "same place date preserves full identity Alpha"
+    },
+    {
+      "PASSED": true,
+      "NAME": "city HTML escaped Alpha"
+    },
+    {
+      "PASSED": true,
+      "NAME": "same place date preserves full identity  Beta"
+    },
+    {
+      "PASSED": true,
+      "NAME": "city HTML escaped  Beta"
+    },
+    {
+      "PASSED": true,
+      "NAME": "same place date different names stay distinct"
+    },
+    {
+      "PASSED": true,
+      "NAME": "dated HTML escaped 2026-03-08"
+    },
+    {
+      "PASSED": true,
+      "NAME": "dated HTML escaped 2026-05-17"
+    },
+    {
+      "PASSED": true,
+      "NAME": "repeated name among other colliding prefixes preserves original 2026-03-08"
+    },
+    {
+      "PASSED": true,
+      "NAME": "repeated name among other colliding prefixes preserves original 2026-05-17"
+    }
+  ],
+  "TITLES": [
+    {
+      "TITLE": "Track&amp;Field Run Series 2026 - Motiva Aeroportos | Londrina PR | 18/10/2026 - corrida de rua | Road Runners",
+      "ID": 37730,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "Track&amp;Field Run Series 2026 - Motiva Aeroportos | Curitiba PR | 29/11/2026 - corrida de rua | Road Runners",
+      "ID": 45554,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU | Curitiba PR | 22/11/2026 - corrida de rua | Road Runners",
+      "ID": 45643,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU | Apucarana PR | 17/10/2026 - corrida de rua | Road Runners",
+      "ID": 45646,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU | Santa Terezinha de Itaipu PR | 11/10/2026 - corrida de rua | Road Runners",
+      "ID": 45906,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "Track&amp;Field Run Series 2026 - Motiva Aeroportos | Londrina PR | 18/10/2026 - Road race | Road Runners",
+      "ID": 37730,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "Track&amp;Field Run Series 2026 - Motiva Aeroportos | Curitiba PR | 29/11/2026 - Road race | Road Runners",
+      "ID": 45554,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU | Curitiba PR | 22/11/2026 - Road race | Road Runners",
+      "ID": 45643,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU | Apucarana PR | 17/10/2026 - Road race | Road Runners",
+      "ID": 45646,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU | Santa Terezinha de Itaipu PR | 11/10/2026 - Road race | Road Runners",
+      "ID": 45906,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "Track&amp;Field Run Series 2026 - Motiva Aeroportos | Londrina PR | 18/10/2026 - Carrera de ruta | Road Runners",
+      "ID": 37730,
+      "LANG": "es"
+    },
+    {
+      "TITLE": "Track&amp;Field Run Series 2026 - Motiva Aeroportos | Curitiba PR | 29/11/2026 - Carrera de ruta | Road Runners",
+      "ID": 45554,
+      "LANG": "es"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU | Curitiba PR | 22/11/2026 - Carrera de ruta | Road Runners",
+      "ID": 45643,
+      "LANG": "es"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU | Apucarana PR | 17/10/2026 - Carrera de ruta | Road Runners",
+      "ID": 45646,
+      "LANG": "es"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU | Santa Terezinha de Itaipu PR | 11/10/2026 - Carrera de ruta | Road Runners",
+      "ID": 45906,
+      "LANG": "es"
+    },
+    {
+      "TITLE": "LIVE! RUN XP Rio de Janei - corrida de rua | 05/04/2026 | Road Runners",
+      "ID": 37531,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "LIVE! RUN XP Rio de Janei - corrida de rua | 05/07/2026 | Road Runners",
+      "ID": 37568,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "LIVE! RUN XP Rio de Janei - corrida de rua | 02/11/2026 | Road Runners",
+      "ID": 40833,
+      "LANG": "pt-BR"
+    },
+    {
+      "TRUNCATED": false,
+      "REPEATED": 0,
+      "TITLE": "CIRCUITO BEM ESTAR - CORRIDA E CAMINHADA ADC EMBRA - corrida de rua - Road Runners",
+      "ID": 46596,
+      "LANG": "protected",
+      "EXPECTED": "CIRCUITO BEM ESTAR - CORRIDA E CAMINHADA ADC EMBRA - corrida de rua - Road Runners"
+    },
+    {
+      "TRUNCATED": false,
+      "REPEATED": 1,
+      "TITLE": "CIRCUITO BEM ESTAR - CORR - corrida de rua | 18/10/2026 | Road Runners",
+      "ID": 46597,
+      "LANG": "protected",
+      "EXPECTED": "CIRCUITO BEM ESTAR - CORR - corrida de rua | 18/10/2026 | Road Runners"
+    },
+    {
+      "TITLE": "Corrida Night Run Vitória Airport - corrida de rua - Road Runners",
+      "ID": 33178,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - corrida de rua - Road Runners",
+      "ID": 47673,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "Corrida Night Run Vitória Airport - Road race - Road Runners",
+      "ID": 33178,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - Road race - Road Runners",
+      "ID": 47673,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "Corrida Night Run Vitória Airport - Carrera de ruta - Road Runners",
+      "ID": 33178,
+      "LANG": "es"
+    },
+    {
+      "TITLE": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - Carrera de ruta - Road Runners",
+      "ID": 47673,
+      "LANG": "es"
+    },
+    {
+      "TRUNCATED": false,
+      "REPEATED": 1,
+      "TITLE": "Fixture dated &quot;&lt;race&gt;&quot; - corrida de rua | 08/03/2026 | Road Runners",
+      "ID": "dated-fixture",
+      "LANG": "fixture"
+    },
+    {
+      "TRUNCATED": false,
+      "REPEATED": 1,
+      "TITLE": "Fixture dated &quot;&lt;race&gt;&quot; - corrida de rua | 17/05/2026 | Road Runners",
+      "ID": "dated-fixture",
+      "LANG": "fixture"
+    }
+  ],
+  "failed": [
+    "pt-BR Night date 33178",
+    "pt-BR Night date 47673",
+    "pt-BR Night editions distinct ignoring case",
+    "en Night date 33178",
+    "en Night date 47673",
+    "en Night editions distinct ignoring case",
+    "es Night date 33178",
+    "es Night date 47673",
+    "es Night editions distinct ignoring case"
+  ],
+  "fixture_cache_disabled": true,
+  "source_hash": "ee6a72df8da0d858ecb09d1169425ef23a65f418e40687e0c69e01f473ed29f4"
+}

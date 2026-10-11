@@ -1,0 +1,65 @@
+[
+  {
+    "id": 38508,
+    "url": "https://www.runningland.com.br/blue-run-2026-santos",
+    "http": "200",
+    "sha256": "529234aa9aa55ec3c806da0951422a4040d8310be46e94ad7d453178631bf668",
+    "bytes": 6105
+  },
+  {
+    "id": 39867,
+    "url": "https://www.ticketsports.com.br/e/1o-corrida-q2-eventos-de-revezamento-de-americana-86132",
+    "http": "200",
+    "sha256": "07f5e2a88ad1c67b6b8d6112bb0239c55a06a72a6b3aa36ec43c37ee81f4cbda",
+    "bytes": 88626
+  },
+  {
+    "id": 40176,
+    "url": "https://www.ticketsports.com.br/e/CORRIDA+TOCA+RAUL+BARRA+MANSA-86432",
+    "http": "200",
+    "sha256": "0cc70f5518c957cf5e37eeac4d6115110b6c35ccd87c4fced5c787888dc2cd51",
+    "bytes": 87504
+  },
+  {
+    "id": 40891,
+    "url": "https://www.centraldasinscricoes.com.br/evento/circuito-das-aguas-etapa-inverno",
+    "http": "200",
+    "sha256": "daab763517288fef7523f851aa46bcbfe511bcf43051efac45a14f41d20bec48",
+    "bytes": 7094
+  },
+  {
+    "id": 43392,
+    "url": "https://tiquet.com.br/evento/2026-13-corrida-aguia-2026/",
+    "http": "200",
+    "sha256": "15e45477c33882b8e90429722195abc51e53ebff6bfe7d99e4465ab4bb4d71ad",
+    "bytes": 93380
+  },
+  {
+    "id": 45308,
+    "url": "https://www.ticketsports.com.br/e/LEGADO+RUN-87806",
+    "http": "200",
+    "sha256": "d09164c953826aa40a9cf8210be3824d0786a1840e32c4ecec9d031c041c2ee4",
+    "bytes": 87759
+  },
+  {
+    "id": 47013,
+    "url": "https://braziltiming.com.br/evento/2-aquecimento-corre-potiretama",
+    "http": "200",
+    "sha256": "43f0b14ab4e96f13dd5561e3b533652ad9d42122ec09debdee6e11c0efdca4b6",
+    "bytes": 7022
+  },
+  {
+    "id": 47482,
+    "url": "https://www.centraldasinscricoes.com.br/evento/2026/corrida-de-rua/morro-beach-run",
+    "http": "200",
+    "sha256": "daab763517288fef7523f851aa46bcbfe511bcf43051efac45a14f41d20bec48",
+    "bytes": 7094
+  },
+  {
+    "id": 47496,
+    "url": "https://www.sympla.com.br/evento/corrida-nossa-senhora-aparecida-trindad/3565602",
+    "http": "200",
+    "sha256": "35e74186b24dab33ae0b543ed98b2d80b1f6d073a8492f1ec09f0fdff7f2eb42",
+    "bytes": 198549
+  }
+]

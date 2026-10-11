@@ -1,0 +1,209 @@
+{
+  "source": "Semrush — interface autenticada no Chrome",
+  "domain": "roadrunners.run",
+  "projectId": 26661911,
+  "status": "complete",
+  "crawled": 5000,
+  "limit": 5000,
+  "errors": 39,
+  "warnings": 35227,
+  "notices": 5846,
+  "siteHealth": 75,
+  "aiHealth": 78,
+  "deviceLabel": "Móvel",
+  "javascriptRendered": false,
+  "checkedAt": "2026-10-09T01:29:15.392976+00:00",
+  "lastFinishedAt": "2026-10-08T20:20:00-03:00",
+  "finishedPrecision": "minute",
+  "sourceUrl": "https://pt.semrush.com/siteaudit/campaign/26661911/review/overview?fid=8614846",
+  "comparisonUrl": "https://pt.semrush.com/siteaudit/campaign/26661911/review/compare?fid=8614846",
+  "errorsByType": [
+    {
+      "label": "Páginas com títulos duplicados",
+      "count": 8
+    },
+    {
+      "label": "Links internos quebrados",
+      "count": 17
+    },
+    {
+      "label": "Páginas com HTTP 4xx",
+      "count": 4
+    },
+    {
+      "label": "Páginas com conteúdo duplicado",
+      "count": 0
+    },
+    {
+      "label": "Páginas com descrições duplicadas",
+      "count": 6
+    },
+    {
+      "label": "Página não rastreada",
+      "count": 0
+    },
+    {
+      "label": "Conflito hreflang",
+      "count": 0
+    },
+    {
+      "label": "Página lenta",
+      "count": 4
+    }
+  ],
+  "warningsByType": [
+    {
+      "label": "Redirecionamentos temporários",
+      "count": 27591
+    },
+    {
+      "label": "Recursos sem minificação",
+      "count": 2088
+    },
+    {
+      "label": "Baixa proporção de texto/HTML",
+      "count": 3821
+    },
+    {
+      "label": "Links internos nofollow",
+      "count": 1098
+    },
+    {
+      "label": "Títulos longos",
+      "count": 496
+    },
+    {
+      "label": "Imagens externas quebradas",
+      "count": 51
+    },
+    {
+      "label": "Links externos quebrados",
+      "count": 30
+    },
+    {
+      "label": "Imagens sem alt",
+      "count": 19
+    },
+    {
+      "label": "Páginas sem H1",
+      "count": 14
+    },
+    {
+      "label": "Baixa quantidade de palavras",
+      "count": 10
+    },
+    {
+      "label": "Páginas sem descrição meta",
+      "count": 1
+    },
+    {
+      "label": "Parâmetros em excesso na URL",
+      "count": 3
+    },
+    {
+      "label": "Sublinhado na URL",
+      "count": 3
+    },
+    {
+      "label": "Título curto",
+      "count": 1
+    },
+    {
+      "label": "Tamanho total de JS/CSS muito grande",
+      "count": 1
+    }
+  ],
+  "noticesByType": [
+    {
+      "label": "Páginas a mais de três cliques",
+      "count": 1237
+    },
+    {
+      "label": "Páginas com apenas um link interno",
+      "count": 509
+    },
+    {
+      "label": "Links com âncora não descritiva",
+      "count": 167
+    },
+    {
+      "label": "Links externos com HTTP 403",
+      "count": 45
+    },
+    {
+      "label": "Incompatibilidade de idiomas no hreflang",
+      "count": 21
+    },
+    {
+      "label": "Conteúdo não otimizado",
+      "count": 17
+    },
+    {
+      "label": "Links sem texto âncora",
+      "count": 13
+    },
+    {
+      "label": "Redirecionamentos permanentes",
+      "count": 3821
+    },
+    {
+      "label": "Páginas bloqueadas para Semrush",
+      "count": 4
+    },
+    {
+      "label": "Subdomínios sem HSTS",
+      "count": 4
+    },
+    {
+      "label": "Recursos como link de página",
+      "count": 3
+    },
+    {
+      "label": "Conteúdo desatualizado",
+      "count": 2
+    },
+    {
+      "label": "Múltiplos H1",
+      "count": 1
+    },
+    {
+      "label": "X-Robots-Tag noindex",
+      "count": 1
+    },
+    {
+      "label": "Baixo uso de HTML semântico",
+      "count": 1
+    }
+  ],
+  "observedDetails": {
+    "new_titles": [
+      "2025-jurere-night-run-hard-rock-cafe-florianopolis-2025",
+      "2026-jurere-night-run-hard-rock-cafe-florianopolis-2026",
+      "2025-meia-maratona-internacional-de-florianopolis-oakberry-2025",
+      "2027-meia-maratona-internacional-de-florianopolis-oakberry-2027"
+    ],
+    "broken_event_paths": [
+      "/evento/2026-",
+      "/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-",
+      "/evento/2026-rock-n-run----nashville-2026/"
+    ],
+    "external_store": {
+      "titles": 4,
+      "descriptions": 6
+    },
+    "comparison_totals": {
+      "errors": {
+        "fixed": 10,
+        "new": 22
+      },
+      "warnings": {
+        "fixed": 14714,
+        "new": 4446
+      },
+      "notices": {
+        "fixed": 565,
+        "new": 4083
+      }
+    }
+  }
+}

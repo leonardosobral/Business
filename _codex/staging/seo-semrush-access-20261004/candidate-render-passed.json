@@ -1,0 +1,14 @@
+{
+  "scenarios": 26,
+  "hashes": {
+    "circuitocatarinense/trailrun/index.cfm": "035fe10c3bfa3aa8357ca4db9117212e767bb3339672dbd577fba995d76cdda6",
+    "circuitocatarinense/corridaderua/index.cfm": "fca27b10270cd3616689a89be4c359ff4afdf4c242bd451b564a87db154b05f6"
+  },
+  "watch": {
+    "Application.cfc": "4b946b355d9ef6076bdbb88480b22e86acd660056efab3c4ae14fcca080e7af5",
+    "includes/backend/backend.cfm": "90c77c56a50af2f2bf190d6897cb9ccd16d69cba1e3c823bf5d0b3d55d277898",
+    "includes/backend/backend_login.cfm": "31dc89e12acd154bebcebdae9860ecfa64648426c3fc2517e63c95ab1807d4b1",
+    "includes/estrutura/head.cfm": "6e3066fe33eec76215e8b5849fed2bc9daeee1ca3b5052433d59308054111af9",
+    "includes/estrutura/variaveis.cfm": "b4ab09efe0053cdb6b04ac0bf6b864fa718457824989123c27c90467e7e365aa"
+  }
+}

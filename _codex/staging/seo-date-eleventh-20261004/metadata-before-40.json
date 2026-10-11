@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-corrida-do-mel/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-do-mel/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-do-mel/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-do-mel/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-do-mel/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-corrida-do-mel/",
+      "name": "CORRIDA DO MEL",
+      "description": "CORRIDA DO MEL takes place on 22 november 2026, in Praça De Eventos - São Jose Dos Cordeiros - PB.",
+      "url": "https://roadrunners.run/en/event/2026-corrida-do-mel/",
+      "startDate": "2026-11-22",
+      "endDate": "2026-11-22",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.smcrono.com.br/painel/upload/img/inscricao/thumb/img-069-20082026095905-2d9c21926ca11570fefaf9d4dee3de87.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Praça De Eventos",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "São Jose Dos Cordeiros",
+          "addressRegion": "PB",
+          "addressCountry": "BR",
+          "streetAddress": "Praça De Eventos"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.smcrono.com.br/inscricao-select/2026/corrida-de-rua/corrida-do-mel"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/pb/",
+          "@type": "ListItem",
+          "name": "Races in PB"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-corrida-do-mel/",
+          "@type": "ListItem",
+          "name": "CORRIDA DO MEL"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

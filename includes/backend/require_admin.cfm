@@ -16,7 +16,7 @@
 
 <cfif NOT VARIABLES.requireAdminAllowed>
     <cfcontent reset="true"/>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <!doctype html>
     <html lang="pt-br">
     <head>

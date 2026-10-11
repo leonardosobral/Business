@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-live21k-fortaleza-2026/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-live21k-fortaleza-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-live21k-fortaleza-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-live21k-fortaleza-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-live21k-fortaleza-2026/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-live21k-fortaleza-2026/",
+      "name": "LIVE!21K - FORTALEZA 2026",
+      "description": "LIVE!21K - FORTALEZA 2026 se realiza el 20 noviembre 2026, en Shopping Iguatemi - Av. Washington Soares, 85, Edson Queiroz. - Fortaleza - CE.",
+      "url": "https://roadrunners.run/es/evento/2026-live21k-fortaleza-2026/",
+      "startDate": "2026-11-20",
+      "endDate": "2026-11-20",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://imagens.liveoficial.com.br/app-experience/events/DGBAXWBBrllp9sMsVfgLLE5jKxVREosEgkMzbHC7.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Shopping Iguatemi - Av. Washington Soares, 85, Edson Queiroz.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Fortaleza",
+          "addressRegion": "CE",
+          "addressCountry": "BR",
+          "streetAddress": "Shopping Iguatemi - Av. Washington Soares, 85, Edson Queiroz."
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.appliveexperience.com.br/evento/live21k-fortaleza-2026"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/ce/",
+          "@type": "ListItem",
+          "name": "Carreras en CE"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-live21k-fortaleza-2026/",
+          "@type": "ListItem",
+          "name": "LIVE!21K - FORTALEZA 2026"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

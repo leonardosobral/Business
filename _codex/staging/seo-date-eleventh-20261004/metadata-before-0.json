@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-1-corrida-q2-eventos-de-revezamento-de-americana/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-1-corrida-q2-eventos-de-revezamento-de-americana/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-1-corrida-q2-eventos-de-revezamento-de-americana/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-1-corrida-q2-eventos-de-revezamento-de-americana/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-1-corrida-q2-eventos-de-revezamento-de-americana/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-1-corrida-q2-eventos-de-revezamento-de-americana/",
+      "name": "1º CORRIDA Q2 EVENTOS DE REVEZAMENTO DE AMERICANA",
+      "description": "1º CORRIDA Q2 EVENTOS DE REVEZAMENTO DE AMERICANA acontece em 25 outubro 2026, em na Cidade de Americana - SP., 1475 - Americana - SP.",
+      "url": "https://roadrunners.run/evento/2026-1-corrida-q2-eventos-de-revezamento-de-americana/",
+      "startDate": "2026-10-25",
+      "endDate": "2026-10-25",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/AC7M6ABU9XJJV5DHK2BYKNKA15J8NM29UR95QHGXZOB24DWPLR.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "na Cidade de Americana - SP., 1475",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Americana",
+          "addressRegion": "SP",
+          "addressCountry": "BR",
+          "streetAddress": "na Cidade de Americana - SP., 1475"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86132&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sp/",
+          "@type": "ListItem",
+          "name": "Corridas em SP"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-1-corrida-q2-eventos-de-revezamento-de-americana/",
+          "@type": "ListItem",
+          "name": "1º CORRIDA Q2 EVENTOS DE REVEZAMENTO DE AMERICANA"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

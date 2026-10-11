@@ -1,0 +1,20 @@
+{
+  "SCHEMA": [
+    {
+      "column": "data_inicial",
+      "nullable": "NO"
+    },
+    {
+      "column": "nome_evento",
+      "nullable": "NO"
+    },
+    {
+      "column": "cidade",
+      "nullable": "YES"
+    },
+    {
+      "column": "estado",
+      "nullable": "YES"
+    }
+  ]
+}

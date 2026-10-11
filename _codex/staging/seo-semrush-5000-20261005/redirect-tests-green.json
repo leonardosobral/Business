@@ -1,0 +1,83 @@
+[
+  {
+    "tag": "2025-live-run-xp-brasilia-i-2025",
+    "prefix": "/evento/",
+    "expected": "/evento/2025-live-run-xp-brasilia-I-2025/",
+    "status": "301",
+    "location": "/evento/2025-live-run-xp-brasilia-I-2025/",
+    "returncode": 0,
+    "body": "HTTP/1.1 301 Moved Permanently\nDate: Mon, 05 Oct 2026 14:23:48 GMT\nServer: Apache/2.4.52 (Ubuntu)\nlocation: /evento/2025-live-run-xp-brasilia-I-2025/\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n\n"
+  },
+  {
+    "tag": "2025-live-run-xp-brasilia-i-2025",
+    "prefix": "/en/event/",
+    "expected": "/en/event/2025-live-run-xp-brasilia-I-2025/",
+    "status": "301",
+    "location": "/en/event/2025-live-run-xp-brasilia-I-2025/",
+    "returncode": 0,
+    "body": "HTTP/1.1 301 Moved Permanently\nDate: Mon, 05 Oct 2026 14:23:49 GMT\nServer: Apache/2.4.52 (Ubuntu)\nlocation: /en/event/2025-live-run-xp-brasilia-I-2025/\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n\n"
+  },
+  {
+    "tag": "2025-live-run-xp-brasilia-i-2025",
+    "prefix": "/es/evento/",
+    "expected": "/es/evento/2025-live-run-xp-brasilia-I-2025/",
+    "status": "301",
+    "location": "/es/evento/2025-live-run-xp-brasilia-I-2025/",
+    "returncode": 0,
+    "body": "HTTP/1.1 301 Moved Permanently\nDate: Mon, 05 Oct 2026 14:23:49 GMT\nServer: Apache/2.4.52 (Ubuntu)\nlocation: /es/evento/2025-live-run-xp-brasilia-I-2025/\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n\n"
+  },
+  {
+    "tag": "2025-live-run-xp-brasilia-ii-2025",
+    "prefix": "/evento/",
+    "expected": "/evento/2025-live-run-xp-brasilia-II-2025/",
+    "status": "301",
+    "location": "/evento/2025-live-run-xp-brasilia-II-2025/",
+    "returncode": 0,
+    "body": "HTTP/1.1 301 Moved Permanently\nDate: Mon, 05 Oct 2026 14:23:49 GMT\nServer: Apache/2.4.52 (Ubuntu)\nlocation: /evento/2025-live-run-xp-brasilia-II-2025/\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n\n"
+  },
+  {
+    "tag": "2025-live-run-xp-brasilia-ii-2025",
+    "prefix": "/en/event/",
+    "expected": "/en/event/2025-live-run-xp-brasilia-II-2025/",
+    "status": "301",
+    "location": "/en/event/2025-live-run-xp-brasilia-II-2025/",
+    "returncode": 0,
+    "body": "HTTP/1.1 301 Moved Permanently\nDate: Mon, 05 Oct 2026 14:23:49 GMT\nServer: Apache/2.4.52 (Ubuntu)\nlocation: /en/event/2025-live-run-xp-brasilia-II-2025/\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n\n"
+  },
+  {
+    "tag": "2025-live-run-xp-brasilia-ii-2025",
+    "prefix": "/es/evento/",
+    "expected": "/es/evento/2025-live-run-xp-brasilia-II-2025/",
+    "status": "301",
+    "location": "/es/evento/2025-live-run-xp-brasilia-II-2025/",
+    "returncode": 0,
+    "body": "HTTP/1.1 301 Moved Permanently\nDate: Mon, 05 Oct 2026 14:23:49 GMT\nServer: Apache/2.4.52 (Ubuntu)\nlocation: /es/evento/2025-live-run-xp-brasilia-II-2025/\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n\n"
+  },
+  {
+    "tag": "2026-endorfina-run-santo-andre-ii",
+    "prefix": "/evento/",
+    "expected": "/evento/2026-endorfina-run-santo-andre-II/",
+    "status": "301",
+    "location": "/evento/2026-endorfina-run-santo-andre-II/",
+    "returncode": 0,
+    "body": "HTTP/1.1 301 Moved Permanently\nDate: Mon, 05 Oct 2026 14:23:49 GMT\nServer: Apache/2.4.52 (Ubuntu)\nlocation: /evento/2026-endorfina-run-santo-andre-II/\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n\n"
+  },
+  {
+    "tag": "2026-endorfina-run-santo-andre-ii",
+    "prefix": "/en/event/",
+    "expected": "/en/event/2026-endorfina-run-santo-andre-II/",
+    "status": "301",
+    "location": "/en/event/2026-endorfina-run-santo-andre-II/",
+    "returncode": 0,
+    "body": "HTTP/1.1 301 Moved Permanently\nDate: Mon, 05 Oct 2026 14:23:50 GMT\nServer: Apache/2.4.52 (Ubuntu)\nlocation: /en/event/2026-endorfina-run-santo-andre-II/\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n\n"
+  },
+  {
+    "tag": "2026-endorfina-run-santo-andre-ii",
+    "prefix": "/es/evento/",
+    "expected": "/es/evento/2026-endorfina-run-santo-andre-II/",
+    "status": "301",
+    "location": "/es/evento/2026-endorfina-run-santo-andre-II/",
+    "returncode": 0,
+    "body": "HTTP/1.1 301 Moved Permanently\nDate: Mon, 05 Oct 2026 14:23:50 GMT\nServer: Apache/2.4.52 (Ubuntu)\nlocation: /es/evento/2026-endorfina-run-santo-andre-II/\nCache-Control: no-cache\nPragma: no-cache\nTransfer-Encoding: chunked\nContent-Type: text/html;charset=UTF-8\n\n"
+  }
+]

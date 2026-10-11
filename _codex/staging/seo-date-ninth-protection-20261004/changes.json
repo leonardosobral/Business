@@ -1,0 +1,92 @@
+{
+  "events": {},
+  "routes": {
+    "60042": {
+      "percurso_bloqueado": true
+    },
+    "60593": {
+      "percurso_bloqueado": true
+    },
+    "60594": {
+      "percurso_bloqueado": true
+    },
+    "60595": {
+      "percurso_bloqueado": true
+    },
+    "60957": {
+      "percurso_bloqueado": true
+    },
+    "60958": {
+      "percurso_bloqueado": true
+    },
+    "60959": {
+      "percurso_bloqueado": true
+    },
+    "60960": {
+      "percurso_bloqueado": true
+    },
+    "61292": {
+      "percurso_bloqueado": true
+    },
+    "61293": {
+      "percurso_bloqueado": true
+    },
+    "61294": {
+      "percurso_bloqueado": true
+    },
+    "62486": {
+      "percurso_bloqueado": true
+    },
+    "62487": {
+      "percurso_bloqueado": true
+    },
+    "62488": {
+      "percurso_bloqueado": true
+    },
+    "62489": {
+      "percurso_bloqueado": true
+    },
+    "62514": {
+      "percurso_bloqueado": true
+    },
+    "62515": {
+      "percurso_bloqueado": true
+    },
+    "62896": {
+      "percurso_bloqueado": true
+    },
+    "62897": {
+      "percurso_bloqueado": true
+    },
+    "63062": {
+      "percurso_bloqueado": true
+    },
+    "64327": {
+      "percurso_bloqueado": true
+    },
+    "64328": {
+      "percurso_bloqueado": true
+    },
+    "64609": {
+      "percurso_bloqueado": true
+    },
+    "66363": {
+      "percurso_bloqueado": true
+    },
+    "67751": {
+      "percurso_bloqueado": true
+    },
+    "68241": {
+      "percurso_bloqueado": true
+    },
+    "68242": {
+      "percurso_bloqueado": true
+    },
+    "69054": {
+      "percurso_bloqueado": true
+    },
+    "70637": {
+      "percurso_bloqueado": true
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#242424">
+  <title>O Brasil que Corre Provas · Estudo</title>
+  <meta name="description" content="Uma leitura do Brasil que corre provas: perfil, distâncias, desempenho e geografia.">
+  <script>
+    // Also resolve the edition when this HTML is opened directly or previewed locally.
+    (function () {
+      const partial = new URL(location.href).searchParams.get('ano') === '2026';
+      document.title = 'O Brasil que Corre Provas · ' + (partial ? '2026 · Parcial' : '2025 · Prévia');
+      document.querySelector('meta[name="description"]').content = 'Uma leitura do Brasil que corre provas: perfil, distâncias, desempenho e geografia. ' + (partial ? 'Edição parcial de 2026.' : 'Prévia web do estudo de 2025.');
+    })();
+  </script>
+  <link rel="stylesheet" href="estudo.css">
+  <link rel="preload" href="assets/libre-franklin-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script defer src="assets/chart.umd.min.js"></script>
+  <script defer src="dados.js"></script>
+  <script defer src="graficos.js"></script>
+  <script defer src="parcial.js"></script>
+  <script defer src="estudo.js"></script>
+  <script defer src="navegacao.js"></script>
+</head>
+<body data-endpoint="dados.cfm">
+<a class="skip-link" href="#estudo">Pular para os dados do estudo</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a href="https://roadrunners.run/brasilquecorreprovas/" aria-label="Road Runners — página do estudo"><img src="assets/road-runners.png" width="156" height="30" alt="Road Runners"></a>
+    <div class="header-label">INTELIGÊNCIA SOBRE A CORRIDA</div>
+    <a class="pdf-link" href="https://roadrunners.run/brasilquecorreprovas/BrasilQueCorreProvas2025_v3.10.3.pdf" target="_blank" rel="noopener">PDF original <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="year-tag">2025</span> UM ESTUDO SOBRE O</div>
+      <h1>BRASIL QUE<br>CORRE <em>PROVAS.</em></h1>
+      <p>Quem corre. Onde corre. Até onde vai.<br>Os números que ajudam a entender a corrida no Brasil.</p>
+      <a class="primary-link" href="#estudo">Explorar o estudo <span aria-hidden="true">↓</span></a>
+      <div class="hero-footnote">EDIÇÃO DIGITAL <span>•</span> PRÉVIA EM CONSTRUÇÃO</div>
+    </div>
+    <div class="hero-cover">
+      <div class="cover-caption">DOS RESULTADOS<br>PARA UMA VISÃO DO TODO.</div>
+      <img src="assets/capa-2025.png" width="595" height="840" alt="Capa do estudo O Brasil que Corre Provas 2025" fetchpriority="high">
+      <div class="cover-index"><b>01—16</b><span>PÁGINAS DE INSIGHTS<br>AGORA EM FORMATO WEB</span></div>
+    </div>
+  </div>
+</section>
+<div class="source-bar" id="estudo">
+  <div class="wrap source-row">
+    <label class="edition-picker"><span class="tiny-label">VOCÊ ESTÁ EXPLORANDO</span><select id="edition" aria-label="Edição do estudo"><option value="2025">Edição 2025 · prévia</option><option value="2026">Edição 2026 · parcial</option></select></label>
+    <fieldset class="source-switch"><legend>Fonte dos valores</legend><label><input type="radio" name="fonte" value="publicado" checked><span>Publicado no PDF</span></label><label><input type="radio" name="fonte" value="atual"><span>Recálculo atual</span></label></fieldset>
+    <button class="text-button" id="export-all" type="button" disabled>Exportar dados <span aria-hidden="true">↓</span></button>
+  </div>
+</div>
+<div class="wrap source-context"><p id="source-description" role="status">Carregando a edição selecionada…</p></div>
+<nav class="chapter-nav wrap" aria-label="Capítulos do estudo">
+  <a href="#panorama">Panorama</a><a href="#idades">Idades</a><a href="#geracoes">Gerações</a><a href="#distancias">Distâncias</a><a href="#ritmo">Ritmo</a><a href="#geografia">Geografia</a><a href="#calendario">Calendário</a><a href="#maratonas">Maratonas</a><a href="#perfil">Road Runners</a><a href="#edicao-anual">Edição anual</a><a href="#fontes">Fontes e critérios</a>
+</nav>
+<main id="content" aria-label="Páginas do estudo" aria-busy="true"><div class="wrap loading-state">Preparando os gráficos…</div></main>
+<footer class="site-footer"><div class="wrap"><div class="footer-top"><img src="assets/road-runners.png" width="156" height="30" alt="Road Runners"><a href="#estudo">Voltar ao início ↑</a></div><p>O Brasil que Corre Provas · Edição 2025</p><p>Uma leitura dos resultados publicados no Open Results e do perfil de usuários Road Runners. Fontes e critérios permanecem em revisão nesta prévia.</p></div></footer>
+<noscript><div class="wrap empty-state">Ative o JavaScript para explorar os gráficos. O PDF original continua disponível no topo da página.</div></noscript>
+</body>
+</html>

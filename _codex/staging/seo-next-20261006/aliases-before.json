@@ -1,0 +1,1835 @@
+{
+  "at": "2026-10-06T22:26:07.555206+00:00",
+  "pages": [
+    {
+      "method": "GET",
+      "path": "/evento/2025-corrida-night-run-vitoria-airport/",
+      "kind": "night",
+      "date": "25/10/2025",
+      "stats": "200 0.310948 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Corrida Night Run Vitória Airport - corrida de rua - Road Runners",
+        "h1": "Corrida Night Run Vitória Airport",
+        "canonical": [
+          "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/"
+        ],
+        "description": [
+          "Corrida Night Run Vitória Airport acontece em 25 outubro 2025, em Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N - Vitória - ES."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/",
+            "name": "Corrida Night Run Vitória Airport",
+            "description": "Corrida Night Run Vitória Airport acontece em 25 outubro 2025, em Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N - Vitória - ES.",
+            "url": "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/",
+            "startDate": "2025-10-25",
+            "endDate": "2025-10-25",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/52KZAGJ9MNRQ8HOFIKKT5XE4DRNWXBTS3CS3HA283NQCEGG0B4.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Vitória",
+                "addressRegion": "ES",
+                "addressCountry": "BR",
+                "streetAddress": "Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "-20.2616417",
+                "longitude": "-40.2833237"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=73525&origem=ticketsports&lang=pt-BR"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/es/",
+                "@type": "ListItem",
+                "name": "Corridas em ES"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/",
+                "@type": "ListItem",
+                "name": "Corrida Night Run Vitória Airport"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/evento/2026-corrida-night-run-vitoria-airport/",
+      "kind": "night",
+      "date": "20/11/2026",
+      "stats": "200 0.356286 ",
+      "returncode": 0,
+      "meta": {
+        "title": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - corrida de rua - Road Runners",
+        "h1": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+        ],
+        "description": [
+          "CORRIDA NIGHT RUN VITÓRIA AIRPORT acontece em 20 novembro 2026, em Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+            "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+            "description": "CORRIDA NIGHT RUN VITÓRIA AIRPORT acontece em 20 novembro 2026, em Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES.",
+            "url": "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+            "startDate": "2026-11-20",
+            "endDate": "2026-11-20",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/I4HD32PM4SYSFDHPAND0FC2ATYBWJ5UVR3FJQ927ZH1ZZ728C2.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Aeroporto de Vitória, Vitória, ES, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Vitória",
+                "addressRegion": "ES",
+                "addressCountry": "BR",
+                "streetAddress": "Aeroporto de Vitória, Vitória, ES, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88403&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/es/",
+                "@type": "ListItem",
+                "name": "Corridas em ES"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+                "@type": "ListItem",
+                "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/en/event/2025-corrida-night-run-vitoria-airport/",
+      "kind": "night",
+      "date": "25/10/2025",
+      "stats": "200 0.303274 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Corrida Night Run Vitória Airport - Road race - Road Runners",
+        "h1": "Corrida Night Run Vitória Airport",
+        "canonical": [
+          "https://roadrunners.run/en/event/2025-corrida-night-run-vitoria-airport/"
+        ],
+        "description": [
+          "Corrida Night Run Vitória Airport takes place on 25 october 2025, in Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N - Vitória - ES."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2025-corrida-night-run-vitoria-airport/",
+            "name": "Corrida Night Run Vitória Airport",
+            "description": "Corrida Night Run Vitória Airport takes place on 25 october 2025, in Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N - Vitória - ES.",
+            "url": "https://roadrunners.run/en/event/2025-corrida-night-run-vitoria-airport/",
+            "startDate": "2025-10-25",
+            "endDate": "2025-10-25",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/52KZAGJ9MNRQ8HOFIKKT5XE4DRNWXBTS3CS3HA283NQCEGG0B4.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Vitória",
+                "addressRegion": "ES",
+                "addressCountry": "BR",
+                "streetAddress": "Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "-20.2616417",
+                "longitude": "-40.2833237"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=73525&origem=ticketsports&lang=pt-BR"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/es/",
+                "@type": "ListItem",
+                "name": "Races in ES"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2025-corrida-night-run-vitoria-airport/",
+                "@type": "ListItem",
+                "name": "Corrida Night Run Vitória Airport"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/en/event/2026-corrida-night-run-vitoria-airport/",
+      "kind": "night",
+      "date": "20/11/2026",
+      "stats": "200 0.286342 ",
+      "returncode": 0,
+      "meta": {
+        "title": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - Road race - Road Runners",
+        "h1": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/"
+        ],
+        "description": [
+          "CORRIDA NIGHT RUN VITÓRIA AIRPORT takes place on 20 november 2026, in Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/",
+            "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+            "description": "CORRIDA NIGHT RUN VITÓRIA AIRPORT takes place on 20 november 2026, in Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES.",
+            "url": "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/",
+            "startDate": "2026-11-20",
+            "endDate": "2026-11-20",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/I4HD32PM4SYSFDHPAND0FC2ATYBWJ5UVR3FJQ927ZH1ZZ728C2.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Aeroporto de Vitória, Vitória, ES, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Vitória",
+                "addressRegion": "ES",
+                "addressCountry": "BR",
+                "streetAddress": "Aeroporto de Vitória, Vitória, ES, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88403&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/es/",
+                "@type": "ListItem",
+                "name": "Races in ES"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/",
+                "@type": "ListItem",
+                "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/es/evento/2025-corrida-night-run-vitoria-airport/",
+      "kind": "night",
+      "date": "25/10/2025",
+      "stats": "200 0.313553 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Corrida Night Run Vitória Airport - Carrera de ruta - Road Runners",
+        "h1": "Corrida Night Run Vitória Airport",
+        "canonical": [
+          "https://roadrunners.run/es/evento/2025-corrida-night-run-vitoria-airport/"
+        ],
+        "description": [
+          "Corrida Night Run Vitória Airport se realiza el 25 octubre 2025, en Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N - Vitória - ES."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2025-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2025-corrida-night-run-vitoria-airport/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/es/evento/2025-corrida-night-run-vitoria-airport/",
+            "name": "Corrida Night Run Vitória Airport",
+            "description": "Corrida Night Run Vitória Airport se realiza el 25 octubre 2025, en Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N - Vitória - ES.",
+            "url": "https://roadrunners.run/es/evento/2025-corrida-night-run-vitoria-airport/",
+            "startDate": "2025-10-25",
+            "endDate": "2025-10-25",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/52KZAGJ9MNRQ8HOFIKKT5XE4DRNWXBTS3CS3HA283NQCEGG0B4.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Vitória",
+                "addressRegion": "ES",
+                "addressCountry": "BR",
+                "streetAddress": "Aeroporto de Vitória Eurico de Aguiar Salles: Avenida Roza Helena Schorling Albuquerque, S/N"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "-20.2616417",
+                "longitude": "-40.2833237"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=73525&origem=ticketsports&lang=pt-BR"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/es/",
+                "@type": "ListItem",
+                "name": "Inicio"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/es/",
+                "@type": "ListItem",
+                "name": "Carreras en ES"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/es/evento/2025-corrida-night-run-vitoria-airport/",
+                "@type": "ListItem",
+                "name": "Corrida Night Run Vitória Airport"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/es/evento/2026-corrida-night-run-vitoria-airport/",
+      "kind": "night",
+      "date": "20/11/2026",
+      "stats": "200 0.285725 ",
+      "returncode": 0,
+      "meta": {
+        "title": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - Carrera de ruta - Road Runners",
+        "h1": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/"
+        ],
+        "description": [
+          "CORRIDA NIGHT RUN VITÓRIA AIRPORT se realiza el 20 noviembre 2026, en Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/",
+            "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+            "description": "CORRIDA NIGHT RUN VITÓRIA AIRPORT se realiza el 20 noviembre 2026, en Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES.",
+            "url": "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/",
+            "startDate": "2026-11-20",
+            "endDate": "2026-11-20",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/I4HD32PM4SYSFDHPAND0FC2ATYBWJ5UVR3FJQ927ZH1ZZ728C2.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Aeroporto de Vitória, Vitória, ES, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Vitória",
+                "addressRegion": "ES",
+                "addressCountry": "BR",
+                "streetAddress": "Aeroporto de Vitória, Vitória, ES, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88403&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/es/",
+                "@type": "ListItem",
+                "name": "Inicio"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/es/",
+                "@type": "ListItem",
+                "name": "Carreras en ES"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/",
+                "@type": "ListItem",
+                "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/evento/2026-costa-esmeralda-trail-2026/",
+      "kind": "target",
+      "stats": "200 0.320985 ",
+      "returncode": 0,
+      "meta": {
+        "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners",
+        "h1": "COSTA ESMERALDA TRAIL 2026",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+        ],
+        "description": [
+          "COSTA ESMERALDA TRAIL 2026 acontece em 12 julho 2026, em PORTO BELO - SC."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+            "name": "COSTA ESMERALDA TRAIL 2026",
+            "description": "COSTA ESMERALDA TRAIL 2026 acontece em 12 julho 2026, em PORTO BELO - SC.",
+            "url": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+            "startDate": "2026-07-12",
+            "endDate": "2026-07-12",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "PORTO BELO, SC",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "PORTO BELO",
+                "addressRegion": "SC",
+                "addressCountry": "BR"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://vemcorrer.com/evento/344-costa-esmeralda-trail-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/sc/",
+                "@type": "ListItem",
+                "name": "Corridas em SC"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+                "@type": "ListItem",
+                "name": "COSTA ESMERALDA TRAIL 2026"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/en/event/2026-costa-esmeralda-trail-2026/",
+      "kind": "target",
+      "stats": "200 0.333554 ",
+      "returncode": 0,
+      "meta": {
+        "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners",
+        "h1": "COSTA ESMERALDA TRAIL 2026",
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+        ],
+        "description": [
+          "COSTA ESMERALDA TRAIL 2026 takes place on 12 july 2026, in PORTO BELO - SC."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+            "name": "COSTA ESMERALDA TRAIL 2026",
+            "description": "COSTA ESMERALDA TRAIL 2026 takes place on 12 july 2026, in PORTO BELO - SC.",
+            "url": "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+            "startDate": "2026-07-12",
+            "endDate": "2026-07-12",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "PORTO BELO, SC",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "PORTO BELO",
+                "addressRegion": "SC",
+                "addressCountry": "BR"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://vemcorrer.com/evento/344-costa-esmeralda-trail-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/sc/",
+                "@type": "ListItem",
+                "name": "Races in SC"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+                "@type": "ListItem",
+                "name": "COSTA ESMERALDA TRAIL 2026"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/es/evento/2026-costa-esmeralda-trail-2026/",
+      "kind": "target",
+      "stats": "200 0.763422 ",
+      "returncode": 0,
+      "meta": {
+        "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners",
+        "h1": "COSTA ESMERALDA TRAIL 2026",
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+        ],
+        "description": [
+          "COSTA ESMERALDA TRAIL 2026 se realiza el 12 julio 2026, en PORTO BELO - SC."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+            "name": "COSTA ESMERALDA TRAIL 2026",
+            "description": "COSTA ESMERALDA TRAIL 2026 se realiza el 12 julio 2026, en PORTO BELO - SC.",
+            "url": "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+            "startDate": "2026-07-12",
+            "endDate": "2026-07-12",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "PORTO BELO, SC",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "PORTO BELO",
+                "addressRegion": "SC",
+                "addressCountry": "BR"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://vemcorrer.com/evento/344-costa-esmeralda-trail-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/es/",
+                "@type": "ListItem",
+                "name": "Inicio"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/sc/",
+                "@type": "ListItem",
+                "name": "Carreras en SC"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+                "@type": "ListItem",
+                "name": "COSTA ESMERALDA TRAIL 2026"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/evento/2026-costa-esmeralda-trail-2026",
+      "kind": "alias",
+      "stats": "200 0.751147 ",
+      "returncode": 0,
+      "meta": {
+        "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners",
+        "h1": "COSTA ESMERALDA TRAIL 2026",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+        ],
+        "description": [
+          "COSTA ESMERALDA TRAIL 2026 acontece em 12 julho 2026, em PORTO BELO - SC."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+            "name": "COSTA ESMERALDA TRAIL 2026",
+            "description": "COSTA ESMERALDA TRAIL 2026 acontece em 12 julho 2026, em PORTO BELO - SC.",
+            "url": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+            "startDate": "2026-07-12",
+            "endDate": "2026-07-12",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "PORTO BELO, SC",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "PORTO BELO",
+                "addressRegion": "SC",
+                "addressCountry": "BR"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://vemcorrer.com/evento/344-costa-esmeralda-trail-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/sc/",
+                "@type": "ListItem",
+                "name": "Corridas em SC"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+                "@type": "ListItem",
+                "name": "COSTA ESMERALDA TRAIL 2026"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/evento/2026-costa-esmeralda-trail-2026",
+      "kind": "alias",
+      "stats": "200 0.332197 ",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": [],
+        "jsonld": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/en/event/2026-costa-esmeralda-trail-2026",
+      "kind": "alias",
+      "stats": "200 0.330266 ",
+      "returncode": 0,
+      "meta": {
+        "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners",
+        "h1": "COSTA ESMERALDA TRAIL 2026",
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+        ],
+        "description": [
+          "COSTA ESMERALDA TRAIL 2026 takes place on 12 july 2026, in PORTO BELO - SC."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+            "name": "COSTA ESMERALDA TRAIL 2026",
+            "description": "COSTA ESMERALDA TRAIL 2026 takes place on 12 july 2026, in PORTO BELO - SC.",
+            "url": "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+            "startDate": "2026-07-12",
+            "endDate": "2026-07-12",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "PORTO BELO, SC",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "PORTO BELO",
+                "addressRegion": "SC",
+                "addressCountry": "BR"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://vemcorrer.com/evento/344-costa-esmeralda-trail-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/sc/",
+                "@type": "ListItem",
+                "name": "Races in SC"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+                "@type": "ListItem",
+                "name": "COSTA ESMERALDA TRAIL 2026"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/en/event/2026-costa-esmeralda-trail-2026",
+      "kind": "alias",
+      "stats": "200 0.305389 ",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": [],
+        "jsonld": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/es/evento/2026-costa-esmeralda-trail-2026",
+      "kind": "alias",
+      "stats": "200 0.365969 ",
+      "returncode": 0,
+      "meta": {
+        "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners",
+        "h1": "COSTA ESMERALDA TRAIL 2026",
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+        ],
+        "description": [
+          "COSTA ESMERALDA TRAIL 2026 se realiza el 12 julio 2026, en PORTO BELO - SC."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+            "name": "COSTA ESMERALDA TRAIL 2026",
+            "description": "COSTA ESMERALDA TRAIL 2026 se realiza el 12 julio 2026, en PORTO BELO - SC.",
+            "url": "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+            "startDate": "2026-07-12",
+            "endDate": "2026-07-12",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "PORTO BELO, SC",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "PORTO BELO",
+                "addressRegion": "SC",
+                "addressCountry": "BR"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://vemcorrer.com/evento/344-costa-esmeralda-trail-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/es/",
+                "@type": "ListItem",
+                "name": "Inicio"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/sc/",
+                "@type": "ListItem",
+                "name": "Carreras en SC"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+                "@type": "ListItem",
+                "name": "COSTA ESMERALDA TRAIL 2026"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "HEAD",
+      "path": "/es/evento/2026-costa-esmeralda-trail-2026",
+      "kind": "alias",
+      "stats": "200 0.321315 ",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "canonical": [],
+        "description": [],
+        "alternates": [],
+        "robots": [],
+        "jsonld": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/evento/2026-costa-esmeralda-trail-2026?utm_source=seo-verification",
+      "kind": "control",
+      "stats": "200 0.313104 ",
+      "returncode": 0,
+      "meta": {
+        "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners",
+        "h1": "COSTA ESMERALDA TRAIL 2026",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+        ],
+        "description": [
+          "COSTA ESMERALDA TRAIL 2026 acontece em 12 julho 2026, em PORTO BELO - SC."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+            "name": "COSTA ESMERALDA TRAIL 2026",
+            "description": "COSTA ESMERALDA TRAIL 2026 acontece em 12 julho 2026, em PORTO BELO - SC.",
+            "url": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+            "startDate": "2026-07-12",
+            "endDate": "2026-07-12",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "PORTO BELO, SC",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "PORTO BELO",
+                "addressRegion": "SC",
+                "addressCountry": "BR"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://vemcorrer.com/evento/344-costa-esmeralda-trail-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/sc/",
+                "@type": "ListItem",
+                "name": "Corridas em SC"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+                "@type": "ListItem",
+                "name": "COSTA ESMERALDA TRAIL 2026"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/en/event/2026-costa-esmeralda-trail-2026?utm_source=seo-verification",
+      "kind": "control",
+      "stats": "200 0.318850 ",
+      "returncode": 0,
+      "meta": {
+        "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners",
+        "h1": "COSTA ESMERALDA TRAIL 2026",
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+        ],
+        "description": [
+          "COSTA ESMERALDA TRAIL 2026 takes place on 12 july 2026, in PORTO BELO - SC."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+            "name": "COSTA ESMERALDA TRAIL 2026",
+            "description": "COSTA ESMERALDA TRAIL 2026 takes place on 12 july 2026, in PORTO BELO - SC.",
+            "url": "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+            "startDate": "2026-07-12",
+            "endDate": "2026-07-12",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "PORTO BELO, SC",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "PORTO BELO",
+                "addressRegion": "SC",
+                "addressCountry": "BR"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://vemcorrer.com/evento/344-costa-esmeralda-trail-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/sc/",
+                "@type": "ListItem",
+                "name": "Races in SC"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+                "@type": "ListItem",
+                "name": "COSTA ESMERALDA TRAIL 2026"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/es/evento/2026-costa-esmeralda-trail-2026?utm_source=seo-verification",
+      "kind": "control",
+      "stats": "200 0.331976 ",
+      "returncode": 0,
+      "meta": {
+        "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners",
+        "h1": "COSTA ESMERALDA TRAIL 2026",
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+        ],
+        "description": [
+          "COSTA ESMERALDA TRAIL 2026 se realiza el 12 julio 2026, en PORTO BELO - SC."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+            "name": "COSTA ESMERALDA TRAIL 2026",
+            "description": "COSTA ESMERALDA TRAIL 2026 se realiza el 12 julio 2026, en PORTO BELO - SC.",
+            "url": "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+            "startDate": "2026-07-12",
+            "endDate": "2026-07-12",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "PORTO BELO, SC",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "PORTO BELO",
+                "addressRegion": "SC",
+                "addressCountry": "BR"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://vemcorrer.com/evento/344-costa-esmeralda-trail-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/es/",
+                "@type": "ListItem",
+                "name": "Inicio"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/sc/",
+                "@type": "ListItem",
+                "name": "Carreras en SC"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+                "@type": "ListItem",
+                "name": "COSTA ESMERALDA TRAIL 2026"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "kind": "control",
+      "stats": "200 0.198356 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Road Runners - O ponto de encontro da corrida.",
+        "h1": "\n                    Sua próxima corrida começa aqui.\n                ",
+        "canonical": [
+          "https://roadrunners.run/"
+        ],
+        "description": [
+          "Descubra provas, acompanhe resultados, explore conteúdo editorial e viva a corrida com mais contexto no Road Runners."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "publisher": {
+                  "@id": "https://roadrunners.run/#publisher"
+                },
+                "@type": "WebSite",
+                "@id": "https://roadrunners.run/#website",
+                "url": "https://roadrunners.run/",
+                "name": "Road Runners"
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://roadrunners.run/#publisher",
+                "url": "https://runnerhub.run/",
+                "name": "RunnerHub Inteligência Esportiva"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/en/",
+      "kind": "control",
+      "stats": "200 0.166943 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Road Runners - O ponto de encontro da corrida.",
+        "h1": "\n                    Your next run starts here.\n                ",
+        "canonical": [
+          "https://roadrunners.run/en/"
+        ],
+        "description": [
+          "Discover races, follow results, explore editorial content and experience running with more context on Road Runners."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "publisher": {
+                  "@id": "https://roadrunners.run/#publisher"
+                },
+                "@type": "WebSite",
+                "@id": "https://roadrunners.run/#website",
+                "url": "https://roadrunners.run/",
+                "name": "Road Runners"
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://roadrunners.run/#publisher",
+                "url": "https://runnerhub.run/",
+                "name": "RunnerHub Inteligência Esportiva"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/es/",
+      "kind": "control",
+      "stats": "200 0.174791 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Road Runners - O ponto de encontro da corrida.",
+        "h1": "\n                    Tu próxima carrera empieza aquí.\n                ",
+        "canonical": [
+          "https://roadrunners.run/es/"
+        ],
+        "description": [
+          "Descubre carreras, sigue resultados, explora contenido editorial y vive el running con más contexto en Road Runners."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "publisher": {
+                  "@id": "https://roadrunners.run/#publisher"
+                },
+                "@type": "WebSite",
+                "@id": "https://roadrunners.run/#website",
+                "url": "https://roadrunners.run/",
+                "name": "Road Runners"
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://roadrunners.run/#publisher",
+                "url": "https://runnerhub.run/",
+                "name": "RunnerHub Inteligência Esportiva"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+      "kind": "control",
+      "stats": "200 0.373163 ",
+      "returncode": 0,
+      "meta": {
+        "title": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU | Apucarana PR | 17/10/2026 - corrida de rua | Road Runners",
+        "h1": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+        ],
+        "description": [
+          "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA acontece em 17 outubro 2026, em Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+            "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+            "description": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA acontece em 17 outubro 2026, em Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR.",
+            "url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+            "startDate": "2026-10-17",
+            "endDate": "2026-10-17",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/AHK7B3QRPWMSXS6SXSAKLNE92J4ADYNV7Z0JJVPWSUA8DFWT6W.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Apucarana",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87900&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Corridas em PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+                "@type": "ListItem",
+                "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+      "kind": "control",
+      "stats": "200 0.343156 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Track&Field Run Series 2026 - Motiva Aeroportos | Londrina PR | 18/10/2026 - corrida de rua | Road Runners",
+        "h1": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+        ],
+        "description": [
+          "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina acontece em 18 outubro 2026, em 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+            "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina",
+            "description": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina acontece em 18 outubro 2026, em 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR.",
+            "url": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+            "startDate": "2026-10-18",
+            "endDate": "2026-10-18",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://d1au5iau2exwyo.cloudfront.net/RUN_SERIES_8c536e066d.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Londrina",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.tfsports.com.br/run-series/motiva-aeroportos-londrina-2026/"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "TFSPORT",
+              "url": "https://www.tfsports.com.br/"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Corridas em PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+                "@type": "ListItem",
+                "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/privacidade/",
+      "kind": "control",
+      "stats": "200 0.120091 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Política de Privacidade - Road Runners",
+        "h1": "Política de Privacidade",
+        "canonical": [
+          "https://roadrunners.run/privacidade/"
+        ],
+        "description": [
+          "Política de Privacidade da RunnerHub aplicável ao produto Road Runners, com informações sobre dados pessoais, cookies e direitos do titular."
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/privacidade/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/privacy/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/privacidad/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/privacidade/"
+          ]
+        ],
+        "robots": [],
+        "jsonld": []
+      }
+    }
+  ],
+  "follow": [
+    {
+      "path": "/evento/2026-costa-esmeralda-trail-2026",
+      "stats": "200 0 https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026",
+      "returncode": 0
+    },
+    {
+      "path": "/en/event/2026-costa-esmeralda-trail-2026",
+      "stats": "200 0 https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026",
+      "returncode": 0
+    },
+    {
+      "path": "/es/evento/2026-costa-esmeralda-trail-2026",
+      "stats": "200 0 https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026",
+      "returncode": 0
+    }
+  ]
+}

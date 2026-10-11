@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2027-15k-das-praias-2027/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2027-15k-das-praias-2027/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2027-15k-das-praias-2027/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2027-15k-das-praias-2027/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2027-15k-das-praias-2027/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2027-15k-das-praias-2027/",
+      "name": "15k DAS PRAIAS - 2027",
+      "description": "15k DAS PRAIAS - 2027 takes place on 31 january 2027, in Praia da Avenida - Maceió - AL - Maceió - AL.",
+      "url": "https://roadrunners.run/en/event/2027-15k-das-praias-2027/",
+      "startDate": "2027-01-31",
+      "endDate": "2027-01-31",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.realtiming.com.br/js/timthumb.php?src=imagens/eventos/15k-daspraias2027.png&w=800&h=800"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Praia da Avenida - Maceió - AL",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Maceió",
+          "addressRegion": "AL",
+          "addressCountry": "BR",
+          "streetAddress": "Praia da Avenida - Maceió - AL"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.realtiming.com.br/evento/15k-daspraias2027"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/al/",
+          "@type": "ListItem",
+          "name": "Races in AL"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2027-15k-das-praias-2027/",
+          "@type": "ListItem",
+          "name": "15k DAS PRAIAS - 2027"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

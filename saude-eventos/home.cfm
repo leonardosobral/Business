@@ -18,7 +18,7 @@
     <cfif len(VARIABLES.saudeConfigAlert.message)>
         <div class="alert alert-<cfoutput>#VARIABLES.saudeConfigAlert.type#</cfoutput> d-flex align-items-center gap-2" role="alert">
             <i class="fa-solid <cfif VARIABLES.saudeConfigAlert.type EQ 'success'>fa-circle-check<cfelse>fa-triangle-exclamation</cfif>"></i>
-            <cfoutput>#htmlEditFormat(VARIABLES.saudeConfigAlert.message)#</cfoutput>
+            <cfoutput>#encodeForHTML(VARIABLES.saudeConfigAlert.message)#</cfoutput>
         </div>
     </cfif>
 
@@ -35,7 +35,7 @@
                     <label for="saude-busca" class="form-label">Buscar evento</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input id="saude-busca" class="form-control" type="search" name="busca" value="<cfoutput>#htmlEditFormat(URL.busca)#</cfoutput>" placeholder="Nome, cidade ou código"/>
+                        <input id="saude-busca" class="form-control" type="search" name="busca" value="<cfoutput>#encodeForHTMLAttribute(URL.busca)#</cfoutput>" placeholder="Nome, cidade ou código"/>
                     </div>
                 </div>
                 <div class="col-12 col-md-8 col-lg-3">
@@ -67,18 +67,18 @@
                 <div class="saude-config-card__head">
                     <div>
                         <span class="saude-eventos-eyebrow">Evento selecionado · #<cfoutput>#qSaudeConfigSelected.id_evento#</cfoutput></span>
-                        <h2><cfoutput>#htmlEditFormat(qSaudeConfigSelected.nome_evento)#</cfoutput></h2>
+                        <h2><cfoutput>#encodeForHTML(qSaudeConfigSelected.nome_evento)#</cfoutput></h2>
                         <p>
                             <i class="fa-regular fa-calendar me-1"></i>
                             <cfoutput>#dateFormat(qSaudeConfigSelected.data_inicial, "dd/mm/yyyy")#</cfoutput>
                             <cfif len(trim(qSaudeConfigSelected.cidade & ""))>
-                                <span class="mx-2">·</span><cfoutput>#htmlEditFormat(qSaudeConfigSelected.cidade)#<cfif len(trim(qSaudeConfigSelected.estado & ""))>/#htmlEditFormat(qSaudeConfigSelected.estado)#</cfif></cfoutput>
+                                <span class="mx-2">·</span><cfoutput>#encodeForHTML(qSaudeConfigSelected.cidade)#<cfif len(trim(qSaudeConfigSelected.estado & ""))>/#encodeForHTML(qSaudeConfigSelected.estado)#</cfif></cfoutput>
                             </cfif>
                         </p>
                     </div>
                     <div class="d-flex flex-wrap gap-2">
                         <cfif qSaudeConfigSelected.ativo_painel AND VARIABLES.saudeConfigCanEditSelected>
-                            <cfoutput><a class="btn btn-outline-success" href="#htmlEditFormat(VARIABLES.saudeConfigWhatsappInviteUrl)#" target="_blank" rel="noopener" aria-label="Convidar um médico pelo WhatsApp para a Central de Saúde"><i class="fa-brands fa-whatsapp me-2"></i>Convidar médico</a></cfoutput>
+                            <cfoutput><a class="btn btn-outline-success" href="#encodeForHTMLAttribute(VARIABLES.saudeConfigWhatsappInviteUrl)#" target="_blank" rel="noopener" aria-label="Convidar um médico pelo WhatsApp para a Central de Saúde"><i class="fa-brands fa-whatsapp me-2"></i>Convidar médico</a></cfoutput>
                         </cfif>
                         <cfif qSaudeConfigSelected.ativo_painel AND len(trim(qSaudeConfigSelected.percurso_padrao & ""))>
                             <cfoutput><a class="btn btn-outline-warning" href="/saude-eventos/central/?id_evento=#qSaudeConfigSelected.id_evento#&percurso=#urlEncodedFormat(qSaudeConfigSelected.percurso_padrao)#" target="_blank" rel="noopener"><i class="fa-solid fa-kit-medical me-2"></i>Abrir central</a></cfoutput>
@@ -110,14 +110,14 @@
                     <div class="row g-3">
                         <div class="col-12 col-lg-6">
                             <label class="form-label" for="saude-nome">Nome da operação</label>
-                            <input id="saude-nome" class="form-control" type="text" name="nome_operacao" maxlength="120" value="<cfoutput>#htmlEditFormat(qSaudeConfigSelected.nome_operacao)#</cfoutput>" placeholder="Central de Saúde" <cfif NOT VARIABLES.saudeConfigCanEditSelected>disabled</cfif>/>
+                            <input id="saude-nome" class="form-control" type="text" name="nome_operacao" maxlength="120" value="<cfoutput>#encodeForHTMLAttribute(qSaudeConfigSelected.nome_operacao)#</cfoutput>" placeholder="Central de Saúde" <cfif NOT VARIABLES.saudeConfigCanEditSelected>disabled</cfif>/>
                         </div>
                         <div class="col-12 col-sm-7 col-lg-4">
                             <label class="form-label" for="saude-percurso">Percurso padrão</label>
                             <select id="saude-percurso" class="form-select" name="percurso_padrao" <cfif NOT VARIABLES.saudeConfigCanEditSelected>disabled</cfif>>
                                 <option value="">Selecione</option>
                                 <cfoutput query="qSaudeConfigCourses">
-                                    <option value="#qSaudeConfigCourses.percurso_evento#" <cfif qSaudeConfigSelected.percurso_padrao EQ qSaudeConfigCourses.percurso_evento>selected</cfif>>#qSaudeConfigCourses.percurso_evento##lCase(qSaudeConfigCourses.unidade_de_medida)#<cfif len(trim(qSaudeConfigCourses.tipo_corrida & ''))> · #htmlEditFormat(qSaudeConfigCourses.tipo_corrida)#</cfif></option>
+                                    <option value="#qSaudeConfigCourses.percurso_evento#" <cfif qSaudeConfigSelected.percurso_padrao EQ qSaudeConfigCourses.percurso_evento>selected</cfif>>#qSaudeConfigCourses.percurso_evento##lCase(qSaudeConfigCourses.unidade_de_medida)#<cfif len(trim(qSaudeConfigCourses.tipo_corrida & ''))> · #encodeForHTML(qSaudeConfigCourses.tipo_corrida)#</cfif></option>
                                 </cfoutput>
                             </select>
                         </div>
@@ -139,26 +139,26 @@
                         </div>
                         <div class="col-12 col-lg-6">
                             <label class="form-label" for="saude-local">Local da base médica</label>
-                            <input id="saude-local" class="form-control" type="text" name="local_atendimento" maxlength="180" value="<cfoutput>#htmlEditFormat(qSaudeConfigSelected.local_atendimento)#</cfoutput>" placeholder="Ex.: tenda médica ao lado do pórtico de chegada" <cfif NOT VARIABLES.saudeConfigCanEditSelected>disabled</cfif>/>
+                            <input id="saude-local" class="form-control" type="text" name="local_atendimento" maxlength="180" value="<cfoutput>#encodeForHTMLAttribute(qSaudeConfigSelected.local_atendimento)#</cfoutput>" placeholder="Ex.: tenda médica ao lado do pórtico de chegada" <cfif NOT VARIABLES.saudeConfigCanEditSelected>disabled</cfif>/>
                         </div>
                         <div class="col-12 col-lg-6">
                             <label class="form-label" for="saude-diretor-medico">Diretor médico</label>
                             <select id="saude-diretor-medico" class="form-select" name="id_diretor_medico" <cfif NOT VARIABLES.saudeConfigCanEditSelected>disabled</cfif>>
-                                <option value=""><cfif len(trim(qSaudeConfigSelected.diretor_medico & "")) AND NOT len(trim(qSaudeConfigSelected.id_diretor_medico & ""))>Cadastro anterior: <cfoutput>#htmlEditFormat(qSaudeConfigSelected.diretor_medico)#</cfoutput> — selecione novamente<cfelse>Selecione um médico</cfif></option>
+                                <option value=""><cfif len(trim(qSaudeConfigSelected.diretor_medico & "")) AND NOT len(trim(qSaudeConfigSelected.id_diretor_medico & ""))>Cadastro anterior: <cfoutput>#encodeForHTML(qSaudeConfigSelected.diretor_medico)#</cfoutput> — selecione novamente<cfelse>Selecione um médico</cfif></option>
                                 <cfoutput query="qSaudeConfigDoctors">
-                                    <option value="#qSaudeConfigDoctors.id_usuario#" <cfif qSaudeConfigSelected.id_diretor_medico EQ qSaudeConfigDoctors.id_usuario>selected</cfif>>#htmlEditFormat(qSaudeConfigDoctors.nome)#<cfif len(trim(qSaudeConfigDoctors.email & ''))> · #htmlEditFormat(qSaudeConfigDoctors.email)#</cfif><cfif VARIABLES.saudeConfigIsGlobalAdmin AND len(trim(qSaudeConfigDoctors.nome_conta & ''))> · #htmlEditFormat(qSaudeConfigDoctors.nome_conta)#</cfif></option>
+                                    <option value="#qSaudeConfigDoctors.id_usuario#" <cfif qSaudeConfigSelected.id_diretor_medico EQ qSaudeConfigDoctors.id_usuario>selected</cfif>>#encodeForHTML(qSaudeConfigDoctors.nome)#<cfif len(trim(qSaudeConfigDoctors.email & ''))> · #encodeForHTML(qSaudeConfigDoctors.email)#</cfif><cfif VARIABLES.saudeConfigIsGlobalAdmin AND len(trim(qSaudeConfigDoctors.nome_conta & ''))> · #encodeForHTML(qSaudeConfigDoctors.nome_conta)#</cfif></option>
                                 </cfoutput>
                             </select>
                             <div class="form-text"><cfif qSaudeConfigDoctors.recordcount>Somente usuários ativos com perfil Médico na conta responsável pelo evento.<cfelse>Nenhum usuário com perfil Médico está ativo na conta responsável pelo evento.</cfif></div>
                         </div>
                         <div class="col-12 col-lg-6">
                             <label class="form-label" for="saude-whatsapp-equipe">WhatsApp da equipe médica</label>
-                            <input id="saude-whatsapp-equipe" class="form-control" type="tel" name="whatsapp_equipe" maxlength="24" inputmode="tel" value="<cfoutput>#htmlEditFormat(qSaudeConfigSelected.whatsapp_equipe)#</cfoutput>" placeholder="Ex.: (48) 99999-9999" aria-describedby="saude-whatsapp-ajuda" <cfif NOT VARIABLES.saudeConfigCanEditSelected>disabled</cfif>/>
+                            <input id="saude-whatsapp-equipe" class="form-control" type="tel" name="whatsapp_equipe" maxlength="24" inputmode="tel" value="<cfoutput>#encodeForHTMLAttribute(qSaudeConfigSelected.whatsapp_equipe)#</cfoutput>" placeholder="Ex.: (48) 99999-9999" aria-describedby="saude-whatsapp-ajuda" <cfif NOT VARIABLES.saudeConfigCanEditSelected>disabled</cfif>/>
                             <div id="saude-whatsapp-ajuda" class="form-text">O DDI 55 será incluído automaticamente quando necessário.</div>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="saude-instrucoes">Instruções para a equipe</label>
-                            <textarea id="saude-instrucoes" class="form-control" name="instrucoes" rows="3" maxlength="4000" placeholder="Procedimentos, contatos e orientações específicas da prova" <cfif NOT VARIABLES.saudeConfigCanEditSelected>disabled</cfif>><cfoutput>#htmlEditFormat(qSaudeConfigSelected.instrucoes)#</cfoutput></textarea>
+                            <textarea id="saude-instrucoes" class="form-control" name="instrucoes" rows="3" maxlength="4000" placeholder="Procedimentos, contatos e orientações específicas da prova" <cfif NOT VARIABLES.saudeConfigCanEditSelected>disabled</cfif>><cfoutput>#encodeForHTML(qSaudeConfigSelected.instrucoes)#</cfoutput></textarea>
                         </div>
                     </div>
                     <cfif VARIABLES.saudeConfigCanEditSelected>
@@ -187,11 +187,11 @@
                             </span>
                             <span class="saude-event-id">###qSaudeConfigEvents.id_evento#</span>
                         </div>
-                        <h2>#htmlEditFormat(qSaudeConfigEvents.nome_evento)#</h2>
+                        <h2>#encodeForHTML(qSaudeConfigEvents.nome_evento)#</h2>
                         <div class="saude-event-meta">
                             <span><i class="fa-regular fa-calendar"></i>#dateFormat(qSaudeConfigEvents.data_inicial, 'dd/mm/yyyy')#</span>
-                            <cfif len(trim(qSaudeConfigEvents.cidade & ''))><span><i class="fa-solid fa-location-dot"></i>#htmlEditFormat(qSaudeConfigEvents.cidade)#<cfif len(trim(qSaudeConfigEvents.estado & ''))>/#htmlEditFormat(qSaudeConfigEvents.estado)#</cfif></span></cfif>
-                            <span><i class="fa-solid fa-route"></i>#htmlEditFormat(qSaudeConfigEvents.percursos)#</span>
+                            <cfif len(trim(qSaudeConfigEvents.cidade & ''))><span><i class="fa-solid fa-location-dot"></i>#encodeForHTML(qSaudeConfigEvents.cidade)#<cfif len(trim(qSaudeConfigEvents.estado & ''))>/#encodeForHTML(qSaudeConfigEvents.estado)#</cfif></span></cfif>
+                            <span><i class="fa-solid fa-route"></i>#encodeForHTML(qSaudeConfigEvents.percursos)#</span>
                         </div>
 
                         <cfif len(trim(qSaudeConfigEvents.data_atualizacao & ''))>

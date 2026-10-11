@@ -1,0 +1,33 @@
+{
+  "hashes": {
+    "portal/conteudo/seo.cfm": "8ecd4a478379f470fe33cd8f7353a5f3e997ec7c05cbc68e2b952e2950db2870",
+    "administracao/agenda/api.cfm": "1df4705224706b88e75e17ed271c6b3dbde4df51054438f40c999f85f32e9e9e",
+    "administracao/agenda/oauth/callback.cfm": "b3dc1fb61d0b0672544e06b2e62156cb8da73b73b592ca9128d4c1cecf72f44c",
+    "administracao/ai-mails/includes/service.cfm": "868a58f8cd6bb6225cb0cb2a63b7dbc24bfbdefba41b826b943c3ab333dcd54c",
+    "portal/conteudo/seo_ga4.cfm": "da246fcc39f6c5d904357e97d90f19a5b7bf5053a9e0d8a2e1f03aee3f44b160",
+    "portal/seo/ga4_api.cfm": "4acceeda72ba16da379d3a3dd622d1b05297496c8b6110795190b74285f487ad",
+    "portal/seo/ga4_service.cfm": "ee375b67bc74c38156b17fb36191e71bb3795ceedaca9c196dce03105b3c9c48",
+    "portal/seo/assets/ga4.js": "9c9e052d2a071d55c679132ba68e60bf1c5a91bf95931cb8dccf58388fe9ba8d",
+    "portal/seo/assets/ga4.css": "c88966c348a97ab6d5a7c6079ef3478ac43030c3964dee9b3923cf6a411bc7b0"
+  },
+  "watch": {
+    "administracao/agenda/includes/service.cfm": "d4ab5342390b39429fd1c2c5f7ee9b9ae20cd5d6ca8d0011d79e64630c11fef8",
+    "portal/includes/seo_search_evidence.cfm": "c2ac33cc47100775b3832ed95dc40897c777e22c80e47a53d42d011c4fade4d7",
+    "portal/includes/seo_score_data.cfm": "e0732af23980716f3e3df0a22653a643083961c6cfc00cc757906cbc2bca2ab0",
+    "portal/conteudo/seo_report.cfm": "9e44cda396bb75db4a4905bbae453bc0fe5cae999d1d7e95c63156c8f73b0726",
+    "portal/includes/seo_queue_data.cfm": "57feae15de3e60fcfe7bdcf31955c5e242a46774e81579ee51c0e5ce171a2d10",
+    "portal/includes/seo_queue_backend.cfm": "df2fd3936ec16198486c521102e1a45bd37b43a3fa90a7071b661c751373ac91",
+    "portal/includes/seo_score_backend.cfm": "5664b3a4535da70839e61d9ae72d0dfada03c28773575cdbfcb5d91d160a9175",
+    "portal/conteudo/seo_ai.cfm": "83e3b7b933d2d2919ec6dba20e545827cc5e89176f7376af472d53fb8c6e9e2b",
+    "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0"
+  },
+  "service_checks": 26,
+  "http_checks": 8,
+  "node_tests": 3,
+  "visual": [
+    "desktop",
+    "390px",
+    "connected fixture",
+    "consent pending fixture"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "road_runners_assets": {
+    "verified_hashes": 9,
+    "preserved_dependencies": 18
+  },
+  "road_runners_titles_links": {
+    "verified_hashes": 2,
+    "preserved_dependencies": 7
+  },
+  "business": {
+    "verified_hashes": 3,
+    "preserved_dependencies": 10
+  },
+  "public_assets": {
+    "at": "2026-10-09T01:11:55.783626+00:00",
+    "passed": true,
+    "public_pages": 18,
+    "asset_hashes": 5,
+    "page_asset_references": 38,
+    "metadata_preserved": true
+  },
+  "public_events": {
+    "passed": true,
+    "public_pages": 28,
+    "title_pages": 12,
+    "encoded_event_pages": 9,
+    "source_pages": 7,
+    "metadata_preserved": true
+  },
+  "panel_cases": 19,
+  "semrush_latest": {
+    "finishedAt": "2026-10-08T20:20:00-03:00",
+    "health": 75,
+    "aiHealth": 78,
+    "errors": 39,
+    "warnings": 35227,
+    "notices": 5846
+  },
+  "next_audit_started": false,
+  "next_audit_blocker": "Authenticated Chrome inaccessible while Mac is locked"
+}

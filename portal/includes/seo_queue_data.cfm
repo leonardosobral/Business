@@ -1,11 +1,11 @@
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
 <cfprocessingdirective pageencoding="utf-8"/>
 <cfif compareNoCase(getBaseTemplatePath(), getCurrentTemplatePath()) EQ 0>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfabort/>
 </cfif>
 <cfif structKeyExists(CGI, "request_method") AND compareNoCase(CGI.request_method, "GET") NEQ 0>
-    <cfheader statuscode="405" statustext="Method Not Allowed"/>
+    <cfheader statuscode="405"/>
     <cfheader name="Allow" value="GET"/>
     <cfabort/>
 </cfif>

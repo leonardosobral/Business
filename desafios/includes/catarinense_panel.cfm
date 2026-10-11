@@ -97,7 +97,7 @@
         <h1 class="h3 mb-1"><cfoutput>#VARIABLES.challengeCircuitTitle#</cfoutput></h1>
         <p class="text-muted mb-0">Ranking por resultados reconhecidos, pontuação oficial por etapa e controle de entrega de medalhas. O total considera as quatro melhores pontuações entre as seis etapas.</p>
       </div>
-      <a class="btn btn-outline-success btn-sm" href="<cfoutput>#htmlEditFormat(VARIABLES.challengeCircuitExportUrl)#</cfoutput>">
+      <a class="btn btn-outline-success btn-sm" href="<cfoutput>#encodeForHTMLAttribute(VARIABLES.challengeCircuitExportUrl)#</cfoutput>">
         <i class="fa-solid fa-file-excel me-1"></i> Exportar lista filtrada
       </a>
     </div>
@@ -147,7 +147,7 @@
       <form method="get" class="row g-2 align-items-end">
         <div class="col-12 col-lg-3">
           <label class="form-label">Atleta</label>
-          <input class="form-control" type="search" name="busca" value="<cfoutput>#htmlEditFormat(URL.busca)#</cfoutput>" placeholder="Nome do atleta"/>
+          <input class="form-control" type="search" name="busca" value="<cfoutput>#encodeForHTMLAttribute(URL.busca)#</cfoutput>" placeholder="Nome do atleta"/>
         </div>
         <div class="col-6 col-lg-2">
           <label class="form-label">Gênero</label>
@@ -173,7 +173,7 @@
           <select class="form-select" name="estado">
             <option value="">Todas</option>
             <cfoutput query="qStatsEstado">
-              <option value="#htmlEditFormat(qStatsEstado.estado)#" <cfif URL.estado EQ qStatsEstado.estado>selected</cfif>>#htmlEditFormat(qStatsEstado.estado)#</option>
+              <option value="#encodeForHTMLAttribute(qStatsEstado.estado)#" <cfif URL.estado EQ qStatsEstado.estado>selected</cfif>>#encodeForHTML(qStatsEstado.estado)#</option>
             </cfoutput>
           </select>
         </div>
@@ -182,7 +182,7 @@
           <select class="form-select" name="cidade">
             <option value="">Todas</option>
             <cfoutput query="qStatsCidade">
-              <option value="#htmlEditFormat(qStatsCidade.cidade)#" <cfif URL.cidade EQ qStatsCidade.cidade>selected</cfif>>#htmlEditFormat(qStatsCidade.cidade)#/#htmlEditFormat(qStatsCidade.estado)#</option>
+              <option value="#encodeForHTMLAttribute(qStatsCidade.cidade)#" <cfif URL.cidade EQ qStatsCidade.cidade>selected</cfif>>#encodeForHTML(qStatsCidade.cidade)#/#encodeForHTML(qStatsCidade.estado)#</option>
             </cfoutput>
           </select>
         </div>
@@ -196,9 +196,9 @@
 
   <div class="catarinense-stage-legend mb-3">
     <cfoutput query="qCatarinenseEvents">
-      <a class="catarinense-stage-item" href="https://roadrunners.run/evento/#urlEncodedFormat(qCatarinenseEvents.event_tag)#/" target="_blank" rel="noopener noreferrer" title="#htmlEditFormat(qCatarinenseEvents.nome_evento)#">
+      <a class="catarinense-stage-item" href="https://roadrunners.run/evento/#urlEncodedFormat(qCatarinenseEvents.event_tag)#/" target="_blank" rel="noopener noreferrer" title="#encodeForHTMLAttribute(qCatarinenseEvents.nome_evento)#">
         <span class="small text-muted">E#qCatarinenseEvents.event_order# · #numberFormat(qCatarinenseEvents.percurso, "9")# km</span>
-        <strong class="catarinense-stage-name">#htmlEditFormat(qCatarinenseEvents.nome_evento)#</strong>
+        <strong class="catarinense-stage-name">#encodeForHTML(qCatarinenseEvents.nome_evento)#</strong>
         <span class="small text-muted"><cfif isDate(qCatarinenseEvents.data_inicial)>#dateFormat(qCatarinenseEvents.data_inicial, "dd/mm/yyyy")#<cfelse>Data a confirmar</cfif></span>
       </a>
     </cfoutput>

@@ -1,0 +1,537 @@
+{
+  "profiles": [
+    {
+      "NODES": [
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 2149.766,
+          "Actual Rows": 19,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.029,
+          "Actual Rows": 1,
+          "Subplan Name": "InitPlan 2",
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_evento_corridas",
+          "Actual Total Time": 0.028,
+          "Actual Rows": 1,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.018,
+          "Actual Rows": 2,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 2149.722,
+          "Actual Rows": 19,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 1267.397,
+          "Actual Rows": 19,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_evento_corridas",
+          "Actual Total Time": 0.577,
+          "Actual Rows": 19,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 0.019,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 3",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 19,
+          "Relation Name": "tb_resultados_resumo",
+          "Actual Total Time": 0.014,
+          "Actual Rows": 6,
+          "Node Type": "Index Only Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.012,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 4",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_resultados",
+          "Actual Total Time": 0.011,
+          "Actual Rows": 0,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.009,
+          "Actual Rows": 0,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 66.672,
+          "Actual Rows": 1,
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 66.671,
+          "Actual Rows": 1,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 66.605,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 62.508,
+          "Actual Rows": 16598,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 62.581,
+          "Actual Rows": 17520,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 56.174,
+          "Actual Rows": 17520,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 49.657,
+          "Actual Rows": 17520,
+          "Node Type": "Hash Join"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas_usuarios",
+          "Actual Total Time": 3.591,
+          "Actual Rows": 56658,
+          "Node Type": "Seq Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 38.855,
+          "Actual Rows": 17520,
+          "Node Type": "Hash"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_resultados",
+          "Actual Total Time": 35.834,
+          "Actual Rows": 17520,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 1.849,
+          "Actual Rows": 24804,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 315356,
+          "Relation Name": "tb_paginas",
+          "Actual Total Time": 0.0,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 315356,
+          "Relation Name": "tb_usuarios",
+          "Actual Total Time": 0.0,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 46.377,
+          "Actual Rows": 1,
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 46.376,
+          "Actual Rows": 1,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 46.372,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 44.648,
+          "Actual Rows": 6898,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 45.738,
+          "Actual Rows": 7281,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 43.15,
+          "Actual Rows": 7281,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 40.513,
+          "Actual Rows": 7281,
+          "Node Type": "Hash Join"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas_usuarios",
+          "Actual Total Time": 3.814,
+          "Actual Rows": 56658,
+          "Node Type": "Seq Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 31.081,
+          "Actual Rows": 7281,
+          "Node Type": "Hash"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_resultados",
+          "Actual Total Time": 29.827,
+          "Actual Rows": 7281,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 1.881,
+          "Actual Rows": 24804,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 131055,
+          "Relation Name": "tb_paginas",
+          "Actual Total Time": 0.0,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 131055,
+          "Relation Name": "tb_usuarios",
+          "Actual Total Time": 0.0,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 0.014,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 1",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 19,
+          "Relation Name": "tb_resultados_resumo",
+          "Actual Total Time": 0.01,
+          "Actual Rows": 6,
+          "Node Type": "Index Scan"
+        }
+      ],
+      "EXECUTION_MS": 2150.132,
+      "ROWS": 19
+    },
+    {
+      "NODES": [
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 2094.761,
+          "Actual Rows": 19,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.028,
+          "Actual Rows": 1,
+          "Subplan Name": "InitPlan 2",
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_evento_corridas",
+          "Actual Total Time": 0.027,
+          "Actual Rows": 1,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.018,
+          "Actual Rows": 2,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 2094.702,
+          "Actual Rows": 19,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 1233.237,
+          "Actual Rows": 19,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_evento_corridas",
+          "Actual Total Time": 0.541,
+          "Actual Rows": 19,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 0.018,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 3",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 19,
+          "Relation Name": "tb_resultados_resumo",
+          "Actual Total Time": 0.013,
+          "Actual Rows": 6,
+          "Node Type": "Index Only Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.016,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 4",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_resultados",
+          "Actual Total Time": 0.015,
+          "Actual Rows": 0,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.011,
+          "Actual Rows": 0,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 64.874,
+          "Actual Rows": 1,
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 64.873,
+          "Actual Rows": 1,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 64.867,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 60.865,
+          "Actual Rows": 16598,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 60.874,
+          "Actual Rows": 17520,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 54.498,
+          "Actual Rows": 17520,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 48.154,
+          "Actual Rows": 17520,
+          "Node Type": "Hash Join"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas_usuarios",
+          "Actual Total Time": 3.643,
+          "Actual Rows": 56658,
+          "Node Type": "Seq Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 37.598,
+          "Actual Rows": 17520,
+          "Node Type": "Hash"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_resultados",
+          "Actual Total Time": 34.66,
+          "Actual Rows": 17520,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 1.798,
+          "Actual Rows": 24804,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 315356,
+          "Relation Name": "tb_paginas",
+          "Actual Total Time": 0.0,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 315356,
+          "Relation Name": "tb_usuarios",
+          "Actual Total Time": 0.0,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 45.309,
+          "Actual Rows": 1,
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 45.308,
+          "Actual Rows": 1,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 45.303,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 43.61,
+          "Actual Rows": 6898,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 44.655,
+          "Actual Rows": 7281,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 42.097,
+          "Actual Rows": 7281,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 39.514,
+          "Actual Rows": 7281,
+          "Node Type": "Hash Join"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas_usuarios",
+          "Actual Total Time": 3.875,
+          "Actual Rows": 56658,
+          "Node Type": "Seq Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 30.192,
+          "Actual Rows": 7281,
+          "Node Type": "Hash"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_resultados",
+          "Actual Total Time": 28.997,
+          "Actual Rows": 7281,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 1.914,
+          "Actual Rows": 24804,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 131055,
+          "Relation Name": "tb_paginas",
+          "Actual Total Time": 0.0,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 131055,
+          "Relation Name": "tb_usuarios",
+          "Actual Total Time": 0.0,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 0.015,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 1",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 19,
+          "Relation Name": "tb_resultados_resumo",
+          "Actual Total Time": 0.011,
+          "Actual Rows": 6,
+          "Node Type": "Index Scan"
+        }
+      ],
+      "EXECUTION_MS": 2095.047,
+      "ROWS": 19
+    }
+  ],
+  "watch": {
+    "Application.cfc": "4b946b355d9ef6076bdbb88480b22e86acd660056efab3c4ae14fcca080e7af5",
+    "evento/index.cfm": "6f2ebab01a12013af894580bf2995e7d12dbd2124776694dc14c796f1f87fccc",
+    "includes/estrutura/event_title_date.cfm": "bd6c039eaa8331e17106ecf2e926855250e226c3b3a97b50a83352dcb4e73968"
+  },
+  "sha256": "86a49511c41c2a3edc5d7b70742a2c3e80f09c364c5f50b67df60e06fe066f8a",
+  "local_matches": true
+}

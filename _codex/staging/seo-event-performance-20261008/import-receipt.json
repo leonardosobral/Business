@@ -1,0 +1,12 @@
+{
+  "audit_date": "2026-10-08T20:20:00-03:00",
+  "health": 75,
+  "errors": 39,
+  "warnings": 35227,
+  "notices": 5846,
+  "organic_preserved": true,
+  "keywords": 51,
+  "opportunities": 6,
+  "queue_updatedAt": "2026-10-08T22:54:20-03:00",
+  "queue_updatedLabel": "08/10/2026 \u00e0s 22:54 (Bras\u00edlia)"
+}

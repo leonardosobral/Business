@@ -1,0 +1,15 @@
+{
+  "desktop": [
+    1440,
+    1000
+  ],
+  "mobile": [
+    390,
+    844
+  ],
+  "mobileContentWidth": 390,
+  "mobilePageWidth": 390,
+  "comparisonRegionScrollWidth": 472,
+  "comparisonRegionWidth": 260,
+  "checkedVia": "cua_repl, rendered Adobe preview"
+}

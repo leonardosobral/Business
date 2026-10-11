@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-4-alpha-running/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-4-alpha-running/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-4-alpha-running/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-4-alpha-running/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-4-alpha-running/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-4-alpha-running/",
+      "name": "4ª ALPHA RUNNING",
+      "description": "4ª ALPHA RUNNING takes place on 15 november 2026, in Academia Alpha Gym: Rua Capitão Pedro Ivo, 670 B, Centro- Palmares - PE, Palmares, PE, Brasil - Palmares - PE.",
+      "url": "https://roadrunners.run/en/event/2026-4-alpha-running/",
+      "startDate": "2026-11-15",
+      "endDate": "2026-11-15",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/8J674VCP5N4GIQOSAL1MKYP9A5L45UQ0MPV36TMY66X0SGMM2S.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Academia Alpha Gym: Rua Capitão Pedro Ivo, 670 B, Centro- Palmares - PE, Palmares, PE, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Palmares",
+          "addressRegion": "PE",
+          "addressCountry": "BR",
+          "streetAddress": "Academia Alpha Gym: Rua Capitão Pedro Ivo, 670 B, Centro- Palmares - PE, Palmares, PE, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88315&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/pe/",
+          "@type": "ListItem",
+          "name": "Races in PE"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-4-alpha-running/",
+          "@type": "ListItem",
+          "name": "4ª ALPHA RUNNING"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

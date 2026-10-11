@@ -1,0 +1,137 @@
+{
+  "44863": {
+    "date": "2026-11-15",
+    "distances_km": [
+      5
+    ],
+    "excerpt": "Data do evento: 15/11/2026; SUPER ACTION SOROCABA 2026; Sorocaba/SP; RUN 5k, CORRIDA 5km",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "45651": {
+    "date": "2026-11-15",
+    "distances_km": [
+      3,
+      5
+    ],
+    "excerpt": "Data do evento: 15/11/2026; description repeats 15/11/2026 domingo; Barra do Piraí/RJ; corrida5km/caminhada3km",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "45873": {
+    "date": "2026-11-15",
+    "distances_km": [
+      4,
+      5,
+      7,
+      12
+    ],
+    "excerpt": "Header and program: 15 de novembro2026; Florianópolis; corrida12km/5km, caminhada4km, revezamento12km split7km+5km",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "47472": {
+    "date": "2026-11-15",
+    "distances_km": [
+      5
+    ],
+    "excerpt": "Header, description and program: 15/11/2026; Palmares/PE; prova5km",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "43239": {
+    "date": "2026-11-21",
+    "distances_km": [
+      3,
+      5,
+      10
+    ],
+    "excerpt": "Header21/11/2026; current description21de novembro2026; MorumBIS/SP;3K5K10K; no reliance on incorrect weekday in older PDF",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "45870": {
+    "date": "2026-11-29",
+    "distances_km": [
+      5,
+      10
+    ],
+    "excerpt": "Header29/11/2026; description29de novembro2026 domingo; São Bernardo do Campo/SP;5K10K",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "46733": {
+    "date": "2026-11-29",
+    "distances_km": [
+      5
+    ],
+    "excerpt": "Header29/11/2026; Barueri/SP;5km; kit23a27novembro matches current program",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "40457": {
+    "date": "2026-12-13",
+    "distances_km": [
+      3,
+      7
+    ],
+    "excerpt": "Header13/12/2026; inscriçõesaté07/12/2026; Santos/SP; corrida7km/caminhada3km; current body has no conflicting race date",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "45302": {
+    "date": "2026-12-13",
+    "distances_km": [
+      3,
+      5
+    ],
+    "excerpt": "Header13/12/2026; program explicitly13dezembro2026; São Bento do Sul/SC; corrida5km/caminhada3km. Waiver mentions5.5km; distances unchanged.",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "46585": {
+    "date": "2026-11-01",
+    "distances_km": [
+      5
+    ],
+    "excerpt": "Header01/11/2026; description01Novembro2026; Marataízes/ES;5km",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "39867": {
+    "date": "2026-10-25",
+    "distances_km": [
+      5,
+      10
+    ],
+    "excerpt": "Header25/10/2026; Americana/SP; equipe10km,2voltas5km; current visible program has no June race date",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "45303": {
+    "date": "2026-12-05",
+    "distances_km": [
+      5,
+      10
+    ],
+    "excerpt": "Header05/12/2026 and current program05dezembro2026 prova noturna; header/body bothTaubaté/SP;5km10km. Older PDF city conflict not used.",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "47016": {
+    "date": "2026-11-22",
+    "distances_km": [
+      3,
+      5
+    ],
+    "excerpt": "Header22/11/2026 and DATA22/11/2026; São José dos Cordeiros/PB;3KM caminhada5KM",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "45190": {
+    "date": "2027-01-31",
+    "distances_km": [
+      5,
+      10,
+      15
+    ],
+    "excerpt": "Official RealTiming:15kDASPRAIAS2027; Data31.JAN.2027; Praia da AvenidaMaceió/AL;5KM10KM15KM; inscriptions currently disabled",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  },
+  "40879": {
+    "date": "2026-10-18",
+    "distances_km": [
+      3,
+      5
+    ],
+    "excerpt": "Header18/10/2026; program18deOutubro; Paulo Afonso/BA; caminhadaPET3KM corrida5KM",
+    "method": "Official source visible DOM, checked 2026-10-04"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "before": {
+    "includes/estrutura/head.cfm": "0e64c861c024ae8fd2053a63e361d4ee95ee10a6e95a7f7e0ff154608d602bc2",
+    "videos/index.cfm": "0dccd3d1bec9be83cd02fd442209f277f8d949fd4f28034c33af7137b9f3efa8",
+    "noticias/index.cfm": "a7ab656dea0a641844e30893847935a9e49b1350401bd73fad06aa74a7bd7ea3",
+    "sitemaps/index.cfm": "c405b4b60a499cc32d09c04bf40d8e4a882860914a08b086299c49396fd57406"
+  },
+  "candidate": {
+    "includes/estrutura/head.cfm": "6e3066fe33eec76215e8b5849fed2bc9daeee1ca3b5052433d59308054111af9",
+    "videos/index.cfm": "6b21644ed3a8bbd279a68b7deec3e9d55d4f2ce3920425964cfbc9448c0577e0",
+    "noticias/index.cfm": "29dd0e65ddb4f700fdaea17b537149a89924ea75beece4e13fe9c61b8dd904ab",
+    "sitemaps/index.cfm": "47c2be64a6a5f7323ea3adb540ed81b2bffda3b3366ab668df253df1b33cc6e8"
+  },
+  "order": [
+    "includes/estrutura/head.cfm",
+    "videos/index.cfm",
+    "noticias/index.cfm",
+    "sitemaps/index.cfm"
+  ],
+  "compile": {
+    "templates": 4,
+    "output": "successful 4\ntotal 4\nelapsed 3.886 sec\n\n",
+    "returncode": 0
+  }
+}

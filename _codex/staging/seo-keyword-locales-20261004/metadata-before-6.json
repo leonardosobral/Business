@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-maratona-de-aracaju-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-maratona-de-aracaju-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/",
+      "name": "Maratona de Aracaju 2026",
+      "description": "Maratona de Aracaju 2026 acontece de 31 outubro a 01 novembro 2026, em Praça de Eventos: Avenida Santos Dumont - PRAÇA DE EVENTOS DA ORLA, S/N, Aracaju, SE, Brasil - Aracaju - SE.",
+      "url": "https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/",
+      "startDate": "2026-10-31",
+      "endDate": "2026-11-01",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/7YMFGOKILUTZXQWZNMCAYAIBIN5T02ADV9BRUGBYE70O9I3FFQ.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Praça de Eventos: Avenida Santos Dumont - PRAÇA DE EVENTOS DA ORLA, S/N, Aracaju, SE, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Aracaju",
+          "addressRegion": "SE",
+          "addressCountry": "BR",
+          "streetAddress": "Praça de Eventos: Avenida Santos Dumont - PRAÇA DE EVENTOS DA ORLA, S/N, Aracaju, SE, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=74615&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/se/",
+          "@type": "ListItem",
+          "name": "Corridas em SE"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/",
+          "@type": "ListItem",
+          "name": "Maratona de Aracaju 2026"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+TAP version 13
+# Subtest: city selection preserves every supported filter, without pagination
+not ok 1 - city selection preserves every supported filter, without pagination
+  ---
+  duration_ms: 0.625875
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:11:1'
+  failureType: 'testCodeFailure'
+  error: 'city.buildUrl is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:12:27)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: all cities clears only city selection
+not ok 2 - all cities clears only city selection
+  ---
+  duration_ms: 0.308417
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:17:1'
+  failureType: 'testCodeFailure'
+  error: 'city.buildUrl is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:18:27)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: changing state discards the old city
+not ok 3 - changing state discards the old city
+  ---
+  duration_ms: 0.097917
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:21:1'
+  failureType: 'testCodeFailure'
+  error: 'city.buildUrl is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:22:27)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: tabs preserve city and filters and replace their own mode
+not ok 4 - tabs preserve city and filters and replace their own mode
+  ---
+  duration_ms: 0.10875
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:25:1'
+  failureType: 'testCodeFailure'
+  error: 'city.buildTabUrl is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:26:27)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: invalid UF or injected city slug cannot create links
+not ok 5 - invalid UF or injected city slug cannot create links
+  ---
+  duration_ms: 0.304375
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:30:1'
+  failureType: 'testCodeFailure'
+  error: 'city.buildUrl is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:31:109)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: search ignores accents, case, and repeated whitespace
+not ok 6 - search ignores accents, case, and repeated whitespace
+  ---
+  duration_ms: 0.046417
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:33:1'
+  failureType: 'testCodeFailure'
+  error: 'city.matches is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:34:20)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: pagination uses the state endpoint and retains city and modality
+not ok 7 - pagination uses the state endpoint and retains city and modality
+  ---
+  duration_ms: 0.123209
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:38:1'
+  failureType: 'testCodeFailure'
+  error: 'city.buildApiUrl is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/tests/city-navigation.test.cjs:39:27)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 0
+# fail 7
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 70.7025

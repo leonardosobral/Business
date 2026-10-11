@@ -161,7 +161,7 @@
 
                 <div class="col-md-3">
                   <label class="form-label">Termo</label>
-                  <input type="search" class="form-control" name="termo" value="<cfoutput>#htmlEditFormat(VARIABLES.errorLogTerm)#</cfoutput>" placeholder="URL, IP, mensagem ou agente"/>
+                  <input type="search" class="form-control" name="termo" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.errorLogTerm)#</cfoutput>" placeholder="URL, IP, mensagem ou agente"/>
                 </div>
 
                 <div class="col-md-1">
@@ -183,7 +183,7 @@
                       <h5 class="mb-1"><cfoutput>Detalhe do log ###qErrorLogDetail.id_log#</cfoutput></h5>
                       <cfoutput><div class="my-2">#etLogLink(qErrorLogDetail.id_log)#</div></cfoutput>
                       <div class="text-muted small">
-                        <cfoutput>#errorLogFormatDateTime(qErrorLogDetail.log_timestamp)# - #htmlEditFormat(qErrorLogDetail.site)# - #htmlEditFormat(qErrorLogDetail.classificacao)#</cfoutput>
+                        <cfoutput>#errorLogFormatDateTime(qErrorLogDetail.log_timestamp)# - #encodeForHTML(qErrorLogDetail.site)# - #encodeForHTML(qErrorLogDetail.classificacao)#</cfoutput>
                       </div>
                     </div>
                     <cfoutput><a class="btn btn-sm btn-outline-light" href="./?#VARIABLES.errorLogBaseQuery#">Fechar detalhe</a></cfoutput>
@@ -193,19 +193,19 @@
                     <div class="col-lg-4">
                       <div class="small text-muted text-uppercase fw-semibold mb-1">Tipo</div>
                       <cfoutput>
-                        <span class="badge badge-secondary">#htmlEditFormat(errorLogItemLabel(qErrorLogDetail.log_item))#</span>
+                        <span class="badge badge-secondary">#encodeForHTML(errorLogItemLabel(qErrorLogDetail.log_item))#</span>
                         <cfif qErrorLogDetail.parece_bot><span class="badge badge-warning">bot</span></cfif>
                       </cfoutput>
                     </div>
                     <div class="col-lg-4">
                       <div class="small text-muted text-uppercase fw-semibold mb-1">Origem</div>
-                      <div class="error-text-cell"><cfoutput>#htmlEditFormat(qErrorLogDetail.log_user)#</cfoutput></div>
+                      <div class="error-text-cell"><cfoutput>#encodeForHTML(qErrorLogDetail.log_user)#</cfoutput></div>
                     </div>
                     <div class="col-lg-4">
                       <div class="small text-muted text-uppercase fw-semibold mb-1">URL detectada</div>
                       <div class="error-text-cell">
                         <cfif len(trim(qErrorLogDetail.url_detectada))>
-                          <cfoutput>#htmlEditFormat(qErrorLogDetail.url_detectada)#</cfoutput>
+                          <cfoutput>#encodeForHTML(qErrorLogDetail.url_detectada)#</cfoutput>
                         <cfelse>
                           <span class="text-muted">-</span>
                         </cfif>
@@ -216,18 +216,18 @@
                   <div class="row g-3">
                     <div class="col-lg-6">
                       <div class="small text-muted text-uppercase fw-semibold mb-2">Resumo limpo</div>
-                      <pre class="error-pre mb-0"><cfoutput>#htmlEditFormat(errorLogShortText(qErrorLogDetail.log_preview, 4000))#</cfoutput></pre>
+                      <pre class="error-pre mb-0"><cfoutput>#encodeForHTML(errorLogShortText(qErrorLogDetail.log_preview, 4000))#</cfoutput></pre>
                     </div>
                     <div class="col-lg-6">
                       <div class="small text-muted text-uppercase fw-semibold mb-2">Trecho bruto</div>
-                      <pre class="error-pre mb-0"><cfoutput>#htmlEditFormat(left(qErrorLogDetail.log_item_id & "", 12000))#<cfif len(qErrorLogDetail.log_item_id & "") GT 12000>
+                      <pre class="error-pre mb-0"><cfoutput>#encodeForHTML(left(qErrorLogDetail.log_item_id & "", 12000))#<cfif len(qErrorLogDetail.log_item_id & "") GT 12000>
 
 ... trecho truncado na tela ...
 </cfif></cfoutput></pre>
                     </div>
                     <div class="col-12">
                       <div class="small text-muted text-uppercase fw-semibold mb-2">User agent</div>
-                      <div class="error-text-cell"><cfoutput>#htmlEditFormat(qErrorLogDetail.log_user_agent)#</cfoutput></div>
+                      <div class="error-text-cell"><cfoutput>#encodeForHTML(qErrorLogDetail.log_user_agent)#</cfoutput></div>
                     </div>
                   </div>
                 </div>
@@ -266,20 +266,20 @@
                           <td>#qErrorLogRecent.id_log#<div class="small">#etLogLink(qErrorLogRecent.id_log)#</div></td>
                           <td>#errorLogFormatDateTime(qErrorLogRecent.log_timestamp)#</td>
                           <td>
-                            <div>#htmlEditFormat(qErrorLogRecent.classificacao)#</div>
-                            <div class="small text-muted">#htmlEditFormat(errorLogItemLabel(qErrorLogRecent.log_item))#</div>
+                            <div>#encodeForHTML(qErrorLogRecent.classificacao)#</div>
+                            <div class="small text-muted">#encodeForHTML(errorLogItemLabel(qErrorLogRecent.log_item))#</div>
                           </td>
-                          <td><span class="badge badge-secondary">#htmlEditFormat(qErrorLogRecent.site)#</span></td>
+                          <td><span class="badge badge-secondary">#encodeForHTML(qErrorLogRecent.site)#</span></td>
                           <td class="error-text-cell">
                             <cfif len(trim(qErrorLogRecent.url_path))>
-                              <strong>#htmlEditFormat(qErrorLogRecent.url_path)#</strong>
-                              <div class="small text-muted">#htmlEditFormat(errorLogShortText(qErrorLogRecent.log_preview, 180))#</div>
+                              <strong>#encodeForHTML(qErrorLogRecent.url_path)#</strong>
+                              <div class="small text-muted">#encodeForHTML(errorLogShortText(qErrorLogRecent.log_preview, 180))#</div>
                             <cfelse>
-                              #htmlEditFormat(errorLogShortText(qErrorLogRecent.log_preview, 220))#
+                              #encodeForHTML(errorLogShortText(qErrorLogRecent.log_preview, 220))#
                             </cfif>
                           </td>
                           <td class="error-text-cell">
-                            #htmlEditFormat(errorLogShortText(qErrorLogRecent.log_user, 120))#
+                            #encodeForHTML(errorLogShortText(qErrorLogRecent.log_user, 120))#
                           </td>
                           <td>
                             <div class="error-badges">
@@ -355,7 +355,7 @@
                         <tbody>
                           <cfoutput query="qErrorLogByClass">
                             <tr>
-                              <td>#htmlEditFormat(qErrorLogByClass.classificacao)#</td>
+                              <td>#encodeForHTML(qErrorLogByClass.classificacao)#</td>
                               <td>#LSNumberFormat(qErrorLogByClass.total, "9,999,999")#</td>
                               <td>#errorLogFormatDateTime(qErrorLogByClass.ultimo_log)#</td>
                             </tr>
@@ -385,7 +385,7 @@
                         <tbody>
                           <cfoutput query="qErrorLogByItem">
                             <tr>
-                              <td>#htmlEditFormat(errorLogItemLabel(qErrorLogByItem.log_item))#</td>
+                              <td>#encodeForHTML(errorLogItemLabel(qErrorLogByItem.log_item))#</td>
                               <td>#LSNumberFormat(qErrorLogByItem.total, "9,999,999")#</td>
                               <td>#errorLogFormatDateTime(qErrorLogByItem.ultimo_log)#</td>
                             </tr>
@@ -448,8 +448,8 @@
                     <tbody>
                       <cfoutput query="qErrorLogBySignature">
                         <tr>
-                          <td>#htmlEditFormat(qErrorLogBySignature.classificacao)#</td>
-                          <td class="error-text-cell">#htmlEditFormat(qErrorLogBySignature.assinatura)#</td>
+                          <td>#encodeForHTML(qErrorLogBySignature.classificacao)#</td>
+                          <td class="error-text-cell">#encodeForHTML(qErrorLogBySignature.assinatura)#</td>
                           <td>#LSNumberFormat(qErrorLogBySignature.total, "9,999,999")#</td>
                           <td>#errorLogFormatDateTime(qErrorLogBySignature.ultimo_log)#</td>
                         </tr>

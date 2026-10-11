@@ -1,0 +1,80 @@
+{
+  "previous_snapshot": "6ac28c9356eeefef0a15555c",
+  "current_snapshot": "6ac29b3456eeefef0a3ff73b",
+  "errors": [
+    {
+      "issue": 2,
+      "before": 1,
+      "after": 1,
+      "checks_before": 499,
+      "checks_after": 499
+    },
+    {
+      "issue": 6,
+      "before": 27,
+      "after": 2,
+      "checks_before": 192434,
+      "checks_after": 192948
+    },
+    {
+      "issue": 7,
+      "before": 4,
+      "after": 0,
+      "checks_before": 1272,
+      "checks_after": 8
+    },
+    {
+      "issue": 8,
+      "before": 4,
+      "after": 4,
+      "checks_before": 19142,
+      "checks_after": 19204
+    },
+    {
+      "issue": 9,
+      "before": 3,
+      "after": 1,
+      "checks_before": 499,
+      "checks_after": 499
+    },
+    {
+      "issue": 13,
+      "before": 1,
+      "after": 0,
+      "checks_before": 18640,
+      "checks_after": 18786
+    },
+    {
+      "issue": 15,
+      "before": 27,
+      "after": 0,
+      "checks_before": 198134,
+      "checks_after": 198204
+    },
+    {
+      "issue": 18,
+      "before": 4,
+      "after": 0,
+      "checks_before": 343,
+      "checks_after": 341
+    },
+    {
+      "issue": 24,
+      "before": 42,
+      "after": 0,
+      "checks_before": 1232,
+      "checks_after": 1116
+    },
+    {
+      "issue": 111,
+      "before": 1,
+      "after": 1,
+      "checks_before": 414,
+      "checks_after": 417
+    }
+  ],
+  "same_limit": 500,
+  "same_urls_confirmed": false,
+  "organic_evidence_refreshed": false,
+  "api_units_reported": 50200
+}

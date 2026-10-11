@@ -1,0 +1,419 @@
+{
+  "watch": {
+    "Application.cfc": "4b946b355d9ef6076bdbb88480b22e86acd660056efab3c4ae14fcca080e7af5",
+    ".htaccess": "028c7e47e8e77147bebf09318dd1807c95198a63b5f6017d8e44f1ba136324d4",
+    "atleta/.htaccess": "9d94fd709394957dc3ef895c711ac18be00b86dea787568b4aa0b7828aa0282d",
+    "maratona/index.cfm": "ccea315c9172c4e40e10c7a31a1f08e174c7d7e39c2f46dc260dd633222155dd",
+    "circuito/index.cfm": "8744fc21ec683f200406b608c637873a316dcb43873b3e7e28ad461a753a4b9a",
+    "org/index.cfm": "7ccde155c0485ce5ab004a5a0fa4d3c14a8714ae58a7c573c229ab02a2487fb6",
+    "timer/index.cfm": "97c1ff2c685c5b3c398b1547e1032984c366c6e87ef590f888e82f6dd8d6b84b",
+    "evento/index.cfm": "6f2ebab01a12013af894580bf2995e7d12dbd2124776694dc14c796f1f87fccc",
+    "includes/estrutura/home_hero_busca.cfm": "beae33d95f7a0a7e4c7a4211ccf452ec7f9582c02e3ce0c4e45a0226c58ee630",
+    "includes/estrutura/head.cfm": "dabad0d966b76f6c0aa2b1a536bf7f43f191cee68ec792cd7a6ddbc769f666e4",
+    "includes/estrutura/variaveis.cfm": "b4ab09efe0053cdb6b04ac0bf6b864fa718457824989123c27c90467e7e365aa",
+    "includes/backend/backend_login.cfm": "31dc89e12acd154bebcebdae9860ecfa64648426c3fc2517e63c95ab1807d4b1"
+  },
+  "catalog": {
+    "marathons": [
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-cidade-de-florianopolis",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona da Cidade de Florianópolis"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-da-cidade-de-sao-luis",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona da Cidade de São Luís"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-aracaju",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Aracaju"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-brasilia",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Brasília"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-campinas",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Campinas"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-campo-grande",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Campo Grande"
+      },
+      {
+        "theme_logo": "maratona-de-criciuma",
+        "tag": "maratona-de-criciuma",
+        "type": "maratona",
+        "theme_id": 14,
+        "name": "Maratona de Criciúma"
+      },
+      {
+        "theme_logo": "maratona-de-curitiba",
+        "tag": "maratona-de-curitiba",
+        "type": "maratona",
+        "theme_id": 15,
+        "name": "Maratona de Curitiba"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-feira-de-santana",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Feira de Santana"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-goiania",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Goiânia"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-joao-pessoa",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de João Pessoa"
+      },
+      {
+        "theme_logo": "maratona-de-jurere",
+        "tag": "maratona-de-jurere",
+        "type": "maratona",
+        "theme_id": 29,
+        "name": "Maratona de Jurerê"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-londrina",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Londrina"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-marilia",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Marília"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-niteroi",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Niterói"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-piracicaba",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Piracicaba"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-ponta-grossa",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Ponta Grossa"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-porto-velho",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Porto Velho"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-praia-grande",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Praia Grande"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-ribeirao-preto",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Ribeirão Preto"
+      },
+      {
+        "theme_logo": "maratona-de-salvador",
+        "tag": "maratona-de-salvador",
+        "type": "maratona",
+        "theme_id": 51,
+        "name": "Maratona de Salvador"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-teresina",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Teresina"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-torres",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Torres"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-tubarao",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Tubarão"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-de-vitoria",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Vitória"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-do-natal",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona do Natal"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-duque-de-caxias",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Duque de Caxias"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-fila",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Fila"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-goiania-em-movimento",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Goiânia em Movimento"
+      },
+      {
+        "theme_logo": "maratona-internacional-de-blumenau",
+        "tag": "maratona-internacional-de-blumenau",
+        "type": "maratona",
+        "theme_id": 23,
+        "name": "Maratona Internacional de Blumenau"
+      },
+      {
+        "theme_logo": "maratona-internacional-de-floripa",
+        "tag": "maratona-internacional-de-floripa",
+        "type": "maratona",
+        "theme_id": 4,
+        "name": "Maratona Internacional de Floripa"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-internacional-de-foz-do-iguacu",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Internacional de Foz do Iguaçu"
+      },
+      {
+        "theme_logo": "maratona-internacional-de-joao-pessoa",
+        "tag": "maratona-internacional-de-joao-pessoa",
+        "type": "maratona",
+        "theme_id": 27,
+        "name": "Maratona Internacional de João Pessoa"
+      },
+      {
+        "theme_logo": "maratona-internacional-de-manaus",
+        "tag": "maratona-internacional-de-manaus",
+        "type": "maratona",
+        "theme_id": 54,
+        "name": "Maratona Internacional de Manaus"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-internacional-de-olinda",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Internacional de Olinda"
+      },
+      {
+        "theme_logo": "maratona-internacional-de-porto-alegre",
+        "tag": "maratona-internacional-de-porto-alegre",
+        "type": "maratona",
+        "theme_id": 13,
+        "name": "Maratona Internacional de Porto Alegre"
+      },
+      {
+        "theme_logo": "maratona-internacional-de-sao-paulo",
+        "tag": "maratona-internacional-de-sao-paulo",
+        "type": "maratona",
+        "theme_id": 26,
+        "name": "Maratona Internacional de São Paulo"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-internacional-do-parana",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Internacional do Paraná"
+      },
+      {
+        "theme_logo": "maratona-internacional-do-rio-de-janeiro",
+        "tag": "maratona-internacional-do-rio-de-janeiro",
+        "type": "maratona",
+        "theme_id": 20,
+        "name": "Maratona Internacional do Rio de Janeiro"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-internacional-mauricio-de-nassau",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Internacional Mauricio de Nassau"
+      },
+      {
+        "theme_logo": "maratona-monumental-de-brasilia",
+        "tag": "maratona-monumental-de-brasilia",
+        "type": "maratona",
+        "theme_id": 25,
+        "name": "Maratona Monumental de Brasília"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-nilson-lima-uberlandia",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Nilson Lima Uberlândia"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-novembro-azul-sorocaba",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Novembro Azul Sorocaba"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-pedra-azul",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Pedra Azul"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": "maratona-sesc-de-pelotas",
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Sesc de Pelotas"
+      },
+      {
+        "theme_logo": "nb42kpoa",
+        "tag": "new-balance-42k-porto-alegre",
+        "type": "maratona",
+        "theme_id": 50,
+        "name": "New Balance 42K Porto Alegre"
+      },
+      {
+        "theme_logo": "sao-paulo-city-marathon",
+        "tag": "sao-paulo-city-marathon",
+        "type": "maratona",
+        "theme_id": 24,
+        "name": "SP City Marathon"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": null,
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Internacional de Pomerode"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": null,
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de Revezamento - Belo Horizonte"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": null,
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Internacional de Assunção"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": null,
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona de BH"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": null,
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Meia Maratona 21k Alpha Run"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": null,
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona Terra dos Marechais"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": null,
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona AP"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": null,
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Desafio da Ponte"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": null,
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "A Muralha Up And Down Marathon"
+      },
+      {
+        "theme_logo": "padrão",
+        "tag": null,
+        "type": "maratona",
+        "theme_id": 1,
+        "name": "Maratona do Litoral"
+      }
+    ]
+  }
+}

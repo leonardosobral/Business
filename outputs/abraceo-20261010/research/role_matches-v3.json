@@ -1,0 +1,1260 @@
+{
+  "3lr-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "3lr Eventos",
+      "eventos": 5
+    },
+    {
+      "campo": "organizador",
+      "valor": "3LR",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "3LR Eventos",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "3LR Evento",
+      "eventos": 1
+    }
+  ],
+  "aclive-sports": [
+    {
+      "campo": "organizador",
+      "valor": "Aclive Sports",
+      "eventos": 4
+    },
+    {
+      "campo": "organizador",
+      "valor": "ACLIVE",
+      "eventos": 1
+    }
+  ],
+  "agencia-vqv-eventos": [],
+  "amigos-do-horto-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "AMIGOS DO HORTO EVENTOS ESPORTIVOS",
+      "eventos": 3
+    },
+    {
+      "campo": "organizador",
+      "valor": "Amigos do Horto",
+      "eventos": 1
+    }
+  ],
+  "apuana-esportes": [
+    {
+      "campo": "organizador",
+      "valor": "Apuana Esportes",
+      "eventos": 10
+    },
+    {
+      "campo": "organizador",
+      "valor": "Apuana Marketing Esportivo",
+      "eventos": 4
+    },
+    {
+      "campo": "organizador",
+      "valor": "APUANA ESPORTES",
+      "eventos": 3
+    }
+  ],
+  "ar2-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "AR2 EVENTOS",
+      "eventos": 22
+    },
+    {
+      "campo": "organizador",
+      "valor": "AR2 Eventos",
+      "eventos": 7
+    },
+    {
+      "campo": "organizador",
+      "valor": "AR2 EVENTOS CNPJ: 26.266.292/0001-00",
+      "eventos": 4
+    }
+  ],
+  "assessorar-producoes-festivas": [
+    {
+      "campo": "organizador",
+      "valor": "Assessorar Produções",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "Assessorar",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "Assessorar Produções Festivas",
+      "eventos": 1
+    }
+  ],
+  "atra-e-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "ATRA-E Eventos",
+      "eventos": 1
+    }
+  ],
+  "avatar": [
+    {
+      "campo": "organizador",
+      "valor": "Avatar Sports",
+      "eventos": 26
+    }
+  ],
+  "bee-sports": [
+    {
+      "campo": "organizador",
+      "valor": "BEE SPORTS",
+      "eventos": 16
+    },
+    {
+      "campo": "organizador",
+      "valor": "Bee Sports",
+      "eventos": 6
+    }
+  ],
+  "beta-sports": [
+    {
+      "campo": "organizador",
+      "valor": "Beta Sports",
+      "eventos": 26
+    }
+  ],
+  "bolt-producoes": [
+    {
+      "campo": "organizador",
+      "valor": "BOLT PRODUÇÕES",
+      "eventos": 6
+    },
+    {
+      "campo": "organizador",
+      "valor": "Bolt Realizações",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "BOLT PRODUCOES",
+      "eventos": 1
+    }
+  ],
+  "brb-marketing-esportivo": [
+    {
+      "campo": "organizador",
+      "valor": "BRB Marketing Esportivo",
+      "eventos": 8
+    },
+    {
+      "campo": "organizador",
+      "valor": "BRB MARKETING ESPORTIVO",
+      "eventos": 4
+    },
+    {
+      "campo": "organizador",
+      "valor": "BRB Marketing",
+      "eventos": 1
+    }
+  ],
+  "capa-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "Capa Promo | Eventos | MKT Esportivo",
+      "eventos": 48
+    },
+    {
+      "campo": "organizador",
+      "valor": "Capa Promo",
+      "eventos": 19
+    }
+  ],
+  "chelso-sports": [
+    {
+      "campo": "organizador",
+      "valor": "Chelso Sports",
+      "eventos": 119
+    },
+    {
+      "campo": "cronometragem",
+      "valor": "Chelso Sports",
+      "eventos": 1
+    },
+    {
+      "campo": "realizacao",
+      "valor": "Chelso Sports",
+      "eventos": 1
+    }
+  ],
+  "chip-macapa": [
+    {
+      "campo": "organizador",
+      "valor": "Chip Macapá",
+      "eventos": 14
+    },
+    {
+      "campo": "organizador",
+      "valor": "CHIP MACAPÁ",
+      "eventos": 1
+    }
+  ],
+  "chl-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "CHL EVENTOS E ESPORTES",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "CHL Eventos",
+      "eventos": 1
+    }
+  ],
+  "cia-de-eventos": [],
+  "clube-dos-corredores": [
+    {
+      "campo": "organizador",
+      "valor": "Corpa",
+      "eventos": 4
+    },
+    {
+      "campo": "organizador",
+      "valor": "CORPA - Clube dos Corredores de Porto Alegre",
+      "eventos": 2
+    }
+  ],
+  "conceito-solucoes-esportivas": [
+    {
+      "campo": "organizador",
+      "valor": "CONCEITO SOLUÇÕES ESPORTIVAS",
+      "eventos": 12
+    },
+    {
+      "campo": "organizador",
+      "valor": "Conceito Soluções Esportivas",
+      "eventos": 12
+    },
+    {
+      "campo": "organizador",
+      "valor": "CONCEITO SOLUCOES ESPORTIVAS",
+      "eventos": 9
+    },
+    {
+      "campo": "organizador",
+      "valor": "CONCEITO SOLUCOES ESPORTIVAS/MD MKT & EVENTOS",
+      "eventos": 1
+    }
+  ],
+  "corre-brasil": [
+    {
+      "campo": "organizador",
+      "valor": "Corre Brasil Marketing Esportivo",
+      "eventos": 31
+    },
+    {
+      "campo": "organizador",
+      "valor": "Corre Brasil",
+      "eventos": 9
+    },
+    {
+      "campo": "organizador",
+      "valor": "Corre Brasil Marketing Esportivo & Sports Do Marketing e Eventos Ltda.",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "Corre Brasil e Mountain Do",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "02 Corre Brasil",
+      "eventos": 1
+    }
+  ],
+  "corre-paraiba": [
+    {
+      "campo": "organizador",
+      "valor": "CORRE PARAÍBA",
+      "eventos": 3
+    },
+    {
+      "campo": "organizador",
+      "valor": "Portal Corre Paraíba",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "CORRE PARAÍBA - PRODUÇÃO E PROMOÇÃO DE EVENTOS ESPORTIVOS",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "Corre Paraíba  Eventos Esportivos",
+      "eventos": 1
+    }
+  ],
+  "corrente-running": [
+    {
+      "campo": "organizador",
+      "valor": "Corrente Running",
+      "eventos": 3
+    }
+  ],
+  "correr-com-propositos": [
+    {
+      "campo": "organizador",
+      "valor": "CORRER COM PROPÓSITOS",
+      "eventos": 6
+    },
+    {
+      "campo": "organizador",
+      "valor": "Correr com Propósito",
+      "eventos": 1
+    }
+  ],
+  "cpr-eventos-e-producoes": [
+    {
+      "campo": "organizador",
+      "valor": "CPR EVENTOS E PRODUÇÕES",
+      "eventos": 28
+    },
+    {
+      "campo": "organizador",
+      "valor": "CPR Eventos e Produções",
+      "eventos": 14
+    },
+    {
+      "campo": "organizador",
+      "valor": "CPR Eventos",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "CPR EVENTOS E PRODUCOES - CNPJ: 32.286.677/0001-24",
+      "eventos": 1
+    }
+  ],
+  "cronustec": [],
+  "dbueno-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "DBueno Eventos",
+      "eventos": 16
+    },
+    {
+      "campo": "organizador",
+      "valor": "DBUENO MARKETING E EVENTOS",
+      "eventos": 1
+    }
+  ],
+  "dto-sports-eventos-esportivos-e-marketing": [
+    {
+      "campo": "organizador",
+      "valor": "DTO SPORTS",
+      "eventos": 14
+    },
+    {
+      "campo": "organizador",
+      "valor": "DTO Sports",
+      "eventos": 12
+    },
+    {
+      "campo": "organizador",
+      "valor": "Dto sports",
+      "eventos": 5
+    },
+    {
+      "campo": "organizador",
+      "valor": "DTO Sports Marketing e Eventos Esportivos",
+      "eventos": 3
+    },
+    {
+      "campo": "organizador",
+      "valor": "DTO SPORTS MARKETING E EVENTOS ESPORTIVOS",
+      "eventos": 2
+    }
+  ],
+  "fg-eventos": [],
+  "fidalgo-eventos-esportivos": [
+    {
+      "campo": "organizador",
+      "valor": "FIDALGO EVENTOS & TURISMO ESPORTIVO",
+      "eventos": 6
+    },
+    {
+      "campo": "organizador",
+      "valor": "Fidalgo Eventos Esportivos",
+      "eventos": 3
+    }
+  ],
+  "g2p-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "G2P EVENTOS",
+      "eventos": 10
+    },
+    {
+      "campo": "organizador",
+      "valor": "G2P Eventos",
+      "eventos": 10
+    }
+  ],
+  "global-vita": [
+    {
+      "campo": "organizador",
+      "valor": "Global Vita",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "Global Vita Marketing Esportivo",
+      "eventos": 1
+    }
+  ],
+  "grupo-hjr": [],
+  "grupo-stc-eventos-ltda": [
+    {
+      "campo": "organizador",
+      "valor": "Grupo STC",
+      "eventos": 20
+    },
+    {
+      "campo": "organizador",
+      "valor": "Grupo STC Eventos",
+      "eventos": 2
+    },
+    {
+      "campo": "realizacao",
+      "valor": "Grupo STC",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "GRUPO STC",
+      "eventos": 1
+    }
+  ],
+  "hl-eventos-esportivos": [
+    {
+      "campo": "organizador",
+      "valor": "HL EVENTOS ESPORTIVOS",
+      "eventos": 9
+    },
+    {
+      "campo": "organizador",
+      "valor": "HL Eventos",
+      "eventos": 2
+    }
+  ],
+  "ice-sports": [
+    {
+      "campo": "organizador",
+      "valor": "ICESPORTS",
+      "eventos": 2
+    }
+  ],
+  "ideal-5k": [
+    {
+      "campo": "organizador",
+      "valor": "Ideal 5k Sports",
+      "eventos": 23
+    }
+  ],
+  "iguana-sports": [
+    {
+      "campo": "organizador",
+      "valor": "Iguana Sports",
+      "eventos": 30
+    }
+  ],
+  "jardel-moura-assessoria-esportiva": [
+    {
+      "campo": "organizador",
+      "valor": "Jardel Moura",
+      "eventos": 8
+    },
+    {
+      "campo": "organizador",
+      "valor": "Jardel Moura Assessoria Esportiva",
+      "eventos": 7
+    },
+    {
+      "campo": "organizador",
+      "valor": "JARDEL MOURA ASSESSORIA ESPORTIVA",
+      "eventos": 1
+    }
+  ],
+  "letape-brasil": [
+    {
+      "campo": "organizador",
+      "valor": "LETAPE BRASIL BY TOUR DE FRANCE",
+      "eventos": 1
+    }
+  ],
+  "maria-isabel-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "Maria Isabel Eventos",
+      "eventos": 2
+    }
+  ],
+  "metodo-grupo-chokito": [
+    {
+      "campo": "organizador",
+      "valor": "Runners Club",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "Assessoria Esportiva Runners Club",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "Comissão Organizadora / Bonito Runners Club",
+      "eventos": 1
+    }
+  ],
+  "mmb-eventos-esportivos": [
+    {
+      "campo": "organizador",
+      "valor": "MMB Eventos Esportivos",
+      "eventos": 1
+    }
+  ],
+  "morro-mt": [],
+  "mountain-do": [
+    {
+      "campo": "organizador",
+      "valor": "MOUNTAIN DO",
+      "eventos": 11
+    },
+    {
+      "campo": "organizador",
+      "valor": "Corre Brasil e Mountain Do",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "Mountain Do",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "mountaindo",
+      "eventos": 1
+    }
+  ],
+  "mp-sports-brasil": [
+    {
+      "campo": "organizador",
+      "valor": "Mp Sports Brasil",
+      "eventos": 4
+    }
+  ],
+  "mp3-solucoes": [
+    {
+      "campo": "organizador",
+      "valor": "MP3 Marketing Promocional",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "MP3 MARKETING",
+      "eventos": 1
+    }
+  ],
+  "nace-producoes": [
+    {
+      "campo": "organizador",
+      "valor": "NACE Produções",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "NACE PRODUÇÕES - NÚCLEO DE APRENDIZAGEM CURSOS E EVENTOS LTDA",
+      "eventos": 1
+    }
+  ],
+  "nk-sports": [
+    {
+      "campo": "organizador",
+      "valor": "NK SPORTS",
+      "eventos": 2
+    }
+  ],
+  "noblu-sports": [
+    {
+      "campo": "organizador",
+      "valor": "Noblu Sports",
+      "eventos": 19
+    },
+    {
+      "campo": "organizador",
+      "valor": "CB Produções & Noblu Sports",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "Noblu Sports Business",
+      "eventos": 1
+    }
+  ],
+  "on-eventos-esportivos": [
+    {
+      "campo": "organizador",
+      "valor": "ON EVENTOS ESPORTIVOS",
+      "eventos": 10
+    },
+    {
+      "campo": "organizador",
+      "valor": "ON Eventos Esportivos",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "On Eventos Esportivos",
+      "eventos": 1
+    }
+  ],
+  "oxe-eventos": [],
+  "pace-3-eventos-esportivos": [
+    {
+      "campo": "organizador",
+      "valor": "PACE 3 - Eventos Esportivos",
+      "eventos": 32
+    },
+    {
+      "campo": "organizador",
+      "valor": "Pace 3 Eventos Esportivos",
+      "eventos": 4
+    },
+    {
+      "campo": "organizador",
+      "valor": "Pace3",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "Pace3 - Eventos Esportivos",
+      "eventos": 1
+    }
+  ],
+  "pace-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "PACE Eventos",
+      "eventos": 11
+    },
+    {
+      "campo": "organizador",
+      "valor": "Pace Eventos",
+      "eventos": 3
+    },
+    {
+      "campo": "organizador",
+      "valor": "Pace Eventos e Vitória Airport",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "PACE EVENTOS",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "Pace Eventos Esportivos",
+      "eventos": 1
+    }
+  ],
+  "partiu-corrida": [
+    {
+      "campo": "organizador",
+      "valor": "Partiu Corrida",
+      "eventos": 7
+    }
+  ],
+  "pda-esportes": [
+    {
+      "campo": "organizador",
+      "valor": "PDA Esportes",
+      "eventos": 18
+    },
+    {
+      "campo": "organizador",
+      "valor": "PDA ESPORTES",
+      "eventos": 3
+    }
+  ],
+  "pepper-criativa-sport-business-agency": [
+    {
+      "campo": "organizador",
+      "valor": "PEPPER CRIATIVA SPORTS & BUSINESS AGENCY",
+      "eventos": 7
+    }
+  ],
+  "personew": [
+    {
+      "campo": "organizador",
+      "valor": "Personew Sports",
+      "eventos": 3
+    }
+  ],
+  "podium-chip": [
+    {
+      "campo": "organizador",
+      "valor": "PodiumChip",
+      "eventos": 5
+    },
+    {
+      "campo": "organizador",
+      "valor": "Podiumchip",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "PodiumChip e Ótica Pires",
+      "eventos": 1
+    }
+  ],
+  "podium-sport": [
+    {
+      "campo": "organizador",
+      "valor": "PODIUM SPORT EVENTOS",
+      "eventos": 7
+    }
+  ],
+  "ponto-org-org": [
+    {
+      "campo": "organizador",
+      "valor": "Ponto Org Produções",
+      "eventos": 2
+    }
+  ],
+  "premium": [
+    {
+      "campo": "organizador",
+      "valor": "PREMIUM EVENTOS",
+      "eventos": 1
+    }
+  ],
+  "proworld": [
+    {
+      "campo": "organizador",
+      "valor": "Proworld",
+      "eventos": 8
+    },
+    {
+      "campo": "organizador",
+      "valor": "Proworld Promoções",
+      "eventos": 3
+    },
+    {
+      "campo": "organizador",
+      "valor": "Paulo Rosa Produções",
+      "eventos": 1
+    }
+  ],
+  "quanta-esportes-e-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "Quanta Esportes",
+      "eventos": 4
+    },
+    {
+      "campo": "organizador",
+      "valor": "QUANTA ESPORTES E EVENTOS",
+      "eventos": 1
+    }
+  ],
+  "rav-sports": [
+    {
+      "campo": "organizador",
+      "valor": "RAV SPORTS",
+      "eventos": 3
+    },
+    {
+      "campo": "organizador",
+      "valor": "RAV Sports",
+      "eventos": 3
+    },
+    {
+      "campo": "organizador",
+      "valor": "RAV Sports Cronometragem",
+      "eventos": 2
+    }
+  ],
+  "rg": [
+    {
+      "campo": "organizador",
+      "valor": "RG+",
+      "eventos": 17
+    }
+  ],
+  "run-eventos": [],
+  "run-sports": [
+    {
+      "campo": "organizador",
+      "valor": "Run Sports",
+      "eventos": 21
+    }
+  ],
+  "runk-marketing-esportivo-ltda": [
+    {
+      "campo": "organizador",
+      "valor": "Runk Sports",
+      "eventos": 11
+    }
+  ],
+  "sagaz-esportes": [
+    {
+      "campo": "organizador",
+      "valor": "Sagaz Esportes",
+      "eventos": 32
+    },
+    {
+      "campo": "organizador",
+      "valor": "Organização: Sagaz Esportes / Realização: IBCC",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "Shopping União de Osasco | Organização: Sagaz Esportes",
+      "eventos": 1
+    }
+  ],
+  "sbs-sports": [
+    {
+      "campo": "organizador",
+      "valor": "SBS SPORTS",
+      "eventos": 10
+    },
+    {
+      "campo": "organizador",
+      "valor": "SBS Sports",
+      "eventos": 2
+    }
+  ],
+  "seven-eco": [
+    {
+      "campo": "organizador",
+      "valor": "Seven Eco Events",
+      "eventos": 32
+    }
+  ],
+  "soulmais": [
+    {
+      "campo": "organizador",
+      "valor": "Soul Mais Esportes",
+      "eventos": 15
+    },
+    {
+      "campo": "organizador",
+      "valor": "SOUL MAIS ESPORTES",
+      "eventos": 1
+    }
+  ],
+  "speed-producoes-e-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "SPEED Produções e Eventos",
+      "eventos": 27
+    },
+    {
+      "campo": "organizador",
+      "valor": "Speed Produções e Eventos",
+      "eventos": 1
+    }
+  ],
+  "spiridon-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "Dream Spiridon",
+      "eventos": 5
+    },
+    {
+      "campo": "organizador",
+      "valor": "Spiridon",
+      "eventos": 4
+    },
+    {
+      "campo": "organizador",
+      "valor": "CARIOCA ENTRETENIMENTO E SPIRIDON EVENTOS CNPJ: 11.516.741/0001-46",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "SPIRIDON EVENTOS",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "Dream Factory e Spiridon",
+      "eventos": 1
+    }
+  ],
+  "sports360o-eventos-esportivos": [
+    {
+      "campo": "organizador",
+      "valor": "SportS360 Consultoria e Eventos LTDA",
+      "eventos": 31
+    },
+    {
+      "campo": "organizador",
+      "valor": "SportS360 Consultoria e Eventos",
+      "eventos": 2
+    }
+  ],
+  "sportsland": [
+    {
+      "campo": "organizador",
+      "valor": "SPORTSLAND",
+      "eventos": 14
+    },
+    {
+      "campo": "organizador",
+      "valor": "SPORTSLAND & FLORIPA AIRPORT",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "Sportsland",
+      "eventos": 2
+    }
+  ],
+  "superacao-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "SuperAção Eventos",
+      "eventos": 38
+    },
+    {
+      "campo": "organizador",
+      "valor": "Superação Eventos",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "SuperAção  Eventos",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "SuperAção Eventos e HiSports",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "Hisports Eventos e Superação Eventos",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "Hisports Eventos e Superação Eventos",
+      "eventos": 1
+    }
+  ],
+  "taboada-runners": [
+    {
+      "campo": "organizador",
+      "valor": "TABOADA RUNNERS",
+      "eventos": 4
+    }
+  ],
+  "tm4-sports-business": [
+    {
+      "campo": "organizador",
+      "valor": "TM4 Sports & Business",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "TM4 & ACORSJ",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "TM4 Sports & Business e Associação dos Corredores de São José - ACORSJ",
+      "eventos": 1
+    }
+  ],
+  "to-goal-sports": [
+    {
+      "campo": "organizador",
+      "valor": "TO GOAL SPORTS VENTURES",
+      "eventos": 34
+    },
+    {
+      "campo": "organizador",
+      "valor": "To Goal Sports",
+      "eventos": 12
+    },
+    {
+      "campo": "organizador",
+      "valor": "To Goal Sports Ventures",
+      "eventos": 3
+    },
+    {
+      "campo": "organizador",
+      "valor": "To Goal Sports Venture",
+      "eventos": 1
+    }
+  ],
+  "top-chip": [
+    {
+      "campo": "organizador",
+      "valor": "TOP CHIP",
+      "eventos": 36
+    },
+    {
+      "campo": "organizador",
+      "valor": "TopChip",
+      "eventos": 6
+    },
+    {
+      "campo": "organizador",
+      "valor": "Top Chip",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "TOPCHIP",
+      "eventos": 1
+    }
+  ],
+  "tour-da-roca": [],
+  "trcrono": [
+    {
+      "campo": "organizador",
+      "valor": "Trcrono Eventos",
+      "eventos": 4
+    },
+    {
+      "campo": "organizador",
+      "valor": "TRCrono",
+      "eventos": 1
+    }
+  ],
+  "ttk-marketing": [
+    {
+      "campo": "organizador",
+      "valor": "TTK Marketing",
+      "eventos": 4
+    }
+  ],
+  "tvcom-running": [
+    {
+      "campo": "organizador",
+      "valor": "TVCom Running",
+      "eventos": 23
+    },
+    {
+      "campo": "organizador",
+      "valor": "SECRETARIA DE ESPORTES E TVCOM RUNNING",
+      "eventos": 6
+    },
+    {
+      "campo": "organizador",
+      "valor": "TVCOM RUNNING",
+      "eventos": 3
+    },
+    {
+      "campo": "organizador",
+      "valor": "CABONNET E TVCOM RUNNING",
+      "eventos": 3
+    },
+    {
+      "campo": "organizador",
+      "valor": "PARÓQUIA NOSSA SENHORA DO ROSÁRIO DO RÓCIO / TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "IGREJA MATRIZ DE SÃO SEBASTIÃO / TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "APAE DE CAFEARA PR E TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "BILFOR E TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "ACADEMIA MAIS VIDA - PALMITAL SP E TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "COLÉGIO PASSO LIVRE (ASSIS/SP) / TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "COLÉGIO CORAÇÃO DE MARIA / TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "CONNECTA.TELECOM / TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "TRINYS - INDÚSTRIA E COMÉRCIO LTDA ( SÓ DANÇA E TRINYS) E TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "5AM RUNNERS E TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "CORRE DELAS (ASSESSORIA EM AÇÕES FEMININAS) / TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "TEREOS E TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "SECRETARIA DE ESPORTES DE BASTOS E TVCOM RUNNING",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "TVCOM RUNNING (FERNANDO PASQUARELLI)",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "TVCom  Running",
+      "eventos": 1
+    }
+  ],
+  "uhuw-eventos": [
+    {
+      "campo": "organizador",
+      "valor": "UHUW EVENTOS",
+      "eventos": 27
+    },
+    {
+      "campo": "organizador",
+      "valor": "Uhuw Eventos",
+      "eventos": 2
+    },
+    {
+      "campo": "organizador",
+      "valor": "UHUW Eventos",
+      "eventos": 1
+    }
+  ],
+  "unlimited": [
+    {
+      "campo": "organizador",
+      "valor": "UNLIMITED SPORTS",
+      "eventos": 24
+    }
+  ],
+  "vega-sports": [
+    {
+      "campo": "organizador",
+      "valor": "Vega Sports",
+      "eventos": 6
+    }
+  ],
+  "vida-sport": [
+    {
+      "campo": "organizador",
+      "valor": "Vida Sport",
+      "eventos": 5
+    }
+  ],
+  "voa-esportes": [
+    {
+      "campo": "organizador",
+      "valor": "Voa Esportes / Joy Eventos",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "Voa Esportes",
+      "eventos": 1
+    }
+  ],
+  "wine-run-brasil": [
+    {
+      "campo": "organizador",
+      "valor": "Wine Run Brasil",
+      "eventos": 2
+    }
+  ],
+  "wx-esportes-e-negocios": [
+    {
+      "campo": "organizador",
+      "valor": "WX Assessoria Esportiva",
+      "eventos": 4
+    },
+    {
+      "campo": "organizador",
+      "valor": "WX Esportes",
+      "eventos": 4
+    }
+  ],
+  "x3m-entretenimento-ltda": [
+    {
+      "campo": "organizador",
+      "valor": "X3M",
+      "eventos": 63
+    }
+  ],
+  "yescom": [
+    {
+      "campo": "organizador",
+      "valor": "Yescom",
+      "eventos": 51
+    },
+    {
+      "campo": "organizador",
+      "valor": "Fundação Cásper Líbero/Yescom",
+      "eventos": 1
+    },
+    {
+      "campo": "organizador",
+      "valor": "Yescom Organização de Eventos",
+      "eventos": 1
+    }
+  ],
+  "zbr-events": [
+    {
+      "campo": "organizador",
+      "valor": "ZBR Clama",
+      "eventos": 4
+    },
+    {
+      "campo": "organizador",
+      "valor": "ZBR Events",
+      "eventos": 3
+    },
+    {
+      "campo": "organizador",
+      "valor": "ZBR Eventos",
+      "eventos": 1
+    }
+  ]
+}

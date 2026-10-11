@@ -47,13 +47,13 @@
     <cfoutput query="qFMLeaderboard">
         <cfset VARIABLES.saudeStatus = lCase(trim(qFMLeaderboard.observacoes & ""))/>
         <cfset VARIABLES.saudeStatusLabel = VARIABLES.saudeStatus EQ "scan" ? "Scan" : (VARIABLES.saudeStatus EQ "acionado" ? "Acionado" : (VARIABLES.saudeStatus EQ "diligencia" ? "Diligência" : (VARIABLES.saudeStatus EQ "atendimento" ? "Atendimento" : "Atendido")))/>
-        <tr class="saude-athlete-row" data-search="#htmlEditFormat(lCase(qFMLeaderboard.num_peito & ' ' & qFMLeaderboard.nome_exibicao & ' ' & qFMLeaderboard.modalidade))#" onclick="carregarAtleta(#qFMLeaderboard.num_pedido#)">
+        <tr class="saude-athlete-row" data-search="#encodeForHTMLAttribute(lCase(qFMLeaderboard.num_peito & ' ' & qFMLeaderboard.nome_exibicao & ' ' & qFMLeaderboard.modalidade))#" onclick="carregarAtleta(#qFMLeaderboard.num_pedido#)">
             <td><span class="saude-bib<cfif NOT len(trim(qFMLeaderboard.num_peito & ''))> is-pending</cfif>">#(len(trim(qFMLeaderboard.num_peito & '')) ? qFMLeaderboard.num_peito : 'Sem BIB')#</span></td>
             <td>
-                <strong class="saude-athlete-name <cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#htmlEditFormat(qFMLeaderboard.nome_exibicao)#</strong>
-                <span class="saude-athlete-route">#(len(trim(qFMLeaderboard.modalidade & '')) ? htmlEditFormat(qFMLeaderboard.modalidade) : 'Percurso não informado')#</span>
+                <strong class="saude-athlete-name <cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#encodeForHTML(qFMLeaderboard.nome_exibicao)#</strong>
+                <span class="saude-athlete-route">#(len(trim(qFMLeaderboard.modalidade & '')) ? encodeForHTML(qFMLeaderboard.modalidade) : 'Percurso não informado')#</span>
             </td>
-            <td><span class="saude-status-badge is-#htmlEditFormat(VARIABLES.saudeStatus)#">#VARIABLES.saudeStatusLabel#</span></td>
+            <td><span class="saude-status-badge is-#encodeForHTMLAttribute(VARIABLES.saudeStatus)#">#VARIABLES.saudeStatusLabel#</span></td>
             <td class="saude-row-time">#(isDate(qFMLeaderboard.data_scan) ? timeFormat(qFMLeaderboard.data_scan, 'HH:mm') : '—')#</td>
             <td class="saude-medical-flag"><cfif len(trim(qFMLeaderboard.ficha_medica & ''))><i class="fa-regular fa-address-card" title="Ficha médica disponível"></i></cfif></td>
         </tr>

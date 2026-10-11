@@ -1,0 +1,35 @@
+{
+  "suppliers": [
+    {
+      "nome_fornecedor": "Assessoria Esportiva Geração Saúde",
+      "tag_matches": 1,
+      "id_fornecedor": 137,
+      "tag_fornecedor": "geracao-saude"
+    },
+    {
+      "nome_fornecedor": "Zero Meia Um - Saúde e Esporte",
+      "tag_matches": 1,
+      "id_fornecedor": 96,
+      "tag_fornecedor": "zero-meia-um-saude-e-esporte"
+    },
+    {
+      "nome_fornecedor": "Corpo e Saude",
+      "tag_matches": 1,
+      "id_fornecedor": 97,
+      "tag_fornecedor": "corpo-e-saude"
+    },
+    {
+      "nome_fornecedor": "Grupo de Corrida - Espaço Saúde",
+      "tag_matches": 1,
+      "id_fornecedor": 238,
+      "tag_fornecedor": "grupo-de-corrida-espaco-saude"
+    },
+    {
+      "nome_fornecedor": "Branca Esportes Saúde e Lazer",
+      "tag_matches": 1,
+      "id_fornecedor": 315,
+      "tag_fornecedor": "branca-esportes-saude-e-lazer"
+    }
+  ],
+  "new_targets_absent": true
+}

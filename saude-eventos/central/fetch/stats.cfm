@@ -6,7 +6,7 @@
 <cfparam name="URL.id_evento" type="numeric" default="0"/>
 
 <cfif URL.id_evento LTE 0>
-    <cfheader statuscode="400" statustext="Bad Request"/>
+    <cfheader statuscode="400"/>
     <cfoutput>#serializeJSON({success=false,message="Evento inválido."})#</cfoutput>
     <cfabort/>
 </cfif>

@@ -1,0 +1,19 @@
+{
+  "before": {
+    "portal/includes/seo_queue_data.cfm": "55f2be9f7d1cf21da588d157d6d4fa194d75aee7425de3ea4a5e60566f589d06",
+    "portal/conteudo/seo_semrush.cfm": "9501de59d1e74a2bef66f8a25dcd50148908c411bf33b8ca763f1857ec9a8904"
+  },
+  "candidate": {
+    "portal/includes/seo_queue_data.cfm": "878ae3008d0e07805a4c24b5dde2dc065ee132f3cd2f9e9f85bfda5822c856e7",
+    "portal/conteudo/seo_semrush.cfm": "0964272ded923cb9bf94f2949f8d946d6e3948f6355153f43f8882e56ff11a4a"
+  },
+  "order": [
+    "portal/includes/seo_queue_data.cfm",
+    "portal/conteudo/seo_semrush.cfm"
+  ],
+  "compile": {
+    "templates": 2,
+    "output": "successful 2\ntotal 2\nelapsed 2.593 sec\n\n",
+    "returncode": 0
+  }
+}

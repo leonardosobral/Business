@@ -1,0 +1,673 @@
+{
+  "profiles": [
+    {
+      "NODES": [
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 1795.693,
+          "Actual Rows": 19,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.057,
+          "Actual Rows": 1,
+          "Subplan Name": "InitPlan 2",
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_evento_corridas",
+          "Actual Total Time": 0.055,
+          "Actual Rows": 1,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.034,
+          "Actual Rows": 2,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 1795.633,
+          "Actual Rows": 19,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_evento_corridas",
+          "Actual Total Time": 0.679,
+          "Actual Rows": 19,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 0.024,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 3",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 19,
+          "Relation Name": "tb_resultados_resumo",
+          "Actual Total Time": 0.019,
+          "Actual Rows": 6,
+          "Node Type": "Index Only Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.02,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 4",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_resultados",
+          "Actual Total Time": 0.019,
+          "Actual Rows": 0,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.014,
+          "Actual Rows": 0,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 94.439,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 43.082,
+          "Actual Rows": 23495,
+          "Subplan Name": "CTE evento_resultados_elegiveis",
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_resultados",
+          "Actual Total Time": 36.782,
+          "Actual Rows": 24801,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 2.097,
+          "Actual Rows": 24804,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 75.47,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 0.0,
+          "Actual Rows": 1,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 75.467,
+          "Actual Rows": 1,
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 75.466,
+          "Actual Rows": 1,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 75.46,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 75.452,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 75.447,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 75.434,
+          "Actual Rows": 1,
+          "Node Type": "Hash Join"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas_usuarios",
+          "Actual Total Time": 3.819,
+          "Actual Rows": 56659,
+          "Node Type": "Seq Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 67.428,
+          "Actual Rows": 1,
+          "Node Type": "Hash"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 67.425,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 58.043,
+          "Actual Rows": 1,
+          "Subplan Name": "CTE melhor_classificacao",
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 58.042,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 55.022,
+          "Actual Rows": 17520,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 6.013,
+          "Actual Rows": 16598,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 315356,
+          "Actual Total Time": 0.003,
+          "Actual Rows": 1,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_usuarios",
+          "Actual Total Time": 0.002,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas",
+          "Actual Total Time": 0.001,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.966,
+          "Actual Rows": 1,
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.966,
+          "Actual Rows": 1,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.961,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.951,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.947,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.934,
+          "Actual Rows": 1,
+          "Node Type": "Hash Join"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas_usuarios",
+          "Actual Total Time": 3.706,
+          "Actual Rows": 56659,
+          "Node Type": "Seq Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 11.244,
+          "Actual Rows": 1,
+          "Node Type": "Hash"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 11.241,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 5.646,
+          "Actual Rows": 1,
+          "Subplan Name": "CTE melhor_classificacao",
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 5.644,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 4.445,
+          "Actual Rows": 7281,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 3.358,
+          "Actual Rows": 6898,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 131055,
+          "Actual Total Time": 0.001,
+          "Actual Rows": 1,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_usuarios",
+          "Actual Total Time": 0.001,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas",
+          "Actual Total Time": 0.001,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 0.018,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 1",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 19,
+          "Relation Name": "tb_resultados_resumo",
+          "Actual Total Time": 0.014,
+          "Actual Rows": 6,
+          "Node Type": "Index Scan"
+        }
+      ],
+      "EXECUTION_MS": 1796.338,
+      "ROWS": 19
+    },
+    {
+      "NODES": [
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 1720.782,
+          "Actual Rows": 19,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.031,
+          "Actual Rows": 1,
+          "Subplan Name": "InitPlan 2",
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_evento_corridas",
+          "Actual Total Time": 0.029,
+          "Actual Rows": 1,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.019,
+          "Actual Rows": 2,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 1720.731,
+          "Actual Rows": 19,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_evento_corridas",
+          "Actual Total Time": 0.765,
+          "Actual Rows": 19,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 0.03,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 3",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 19,
+          "Relation Name": "tb_resultados_resumo",
+          "Actual Total Time": 0.025,
+          "Actual Rows": 6,
+          "Node Type": "Index Only Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.016,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 4",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 1,
+          "Relation Name": "tb_resultados",
+          "Actual Total Time": 0.014,
+          "Actual Rows": 0,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 1,
+          "Actual Total Time": 0.01,
+          "Actual Rows": 0,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 90.477,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 40.135,
+          "Actual Rows": 23495,
+          "Subplan Name": "CTE evento_resultados_elegiveis",
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_resultados",
+          "Actual Total Time": 34.092,
+          "Actual Rows": 24801,
+          "Node Type": "Bitmap Heap Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 1.836,
+          "Actual Rows": 24804,
+          "Node Type": "Bitmap Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 72.024,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 0.0,
+          "Actual Rows": 1,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 72.021,
+          "Actual Rows": 1,
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 72.021,
+          "Actual Rows": 1,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 71.966,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 71.959,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 71.954,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 71.943,
+          "Actual Rows": 1,
+          "Node Type": "Hash Join"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas_usuarios",
+          "Actual Total Time": 3.711,
+          "Actual Rows": 56659,
+          "Node Type": "Seq Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 64.033,
+          "Actual Rows": 1,
+          "Node Type": "Hash"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 64.029,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 55.02,
+          "Actual Rows": 1,
+          "Subplan Name": "CTE melhor_classificacao",
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 55.018,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 52.125,
+          "Actual Rows": 17520,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 5.698,
+          "Actual Rows": 16598,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 315356,
+          "Actual Total Time": 0.003,
+          "Actual Rows": 1,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_usuarios",
+          "Actual Total Time": 0.003,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas",
+          "Actual Total Time": 0.001,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.45,
+          "Actual Rows": 1,
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.449,
+          "Actual Rows": 1,
+          "Node Type": "Result"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.445,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.434,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.43,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 18.42,
+          "Actual Rows": 1,
+          "Node Type": "Hash Join"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas_usuarios",
+          "Actual Total Time": 3.548,
+          "Actual Rows": 56659,
+          "Node Type": "Seq Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 10.969,
+          "Actual Rows": 1,
+          "Node Type": "Hash"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 10.966,
+          "Actual Rows": 1,
+          "Node Type": "Nested Loop"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 5.598,
+          "Actual Rows": 1,
+          "Subplan Name": "CTE melhor_classificacao",
+          "Node Type": "Limit"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 5.596,
+          "Actual Rows": 1,
+          "Node Type": "Sort"
+        },
+        {
+          "Actual Loops": 18,
+          "Actual Total Time": 4.403,
+          "Actual Rows": 7281,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 3.193,
+          "Actual Rows": 6898,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 131055,
+          "Actual Total Time": 0.001,
+          "Actual Rows": 1,
+          "Node Type": "CTE Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_usuarios",
+          "Actual Total Time": 0.001,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 18,
+          "Relation Name": "tb_paginas",
+          "Actual Total Time": 0.001,
+          "Actual Rows": 0,
+          "Node Type": "Index Scan"
+        },
+        {
+          "Actual Loops": 19,
+          "Actual Total Time": 0.016,
+          "Actual Rows": 1,
+          "Subplan Name": "SubPlan 1",
+          "Node Type": "Aggregate"
+        },
+        {
+          "Actual Loops": 19,
+          "Relation Name": "tb_resultados_resumo",
+          "Actual Total Time": 0.012,
+          "Actual Rows": 6,
+          "Node Type": "Index Scan"
+        }
+      ],
+      "EXECUTION_MS": 1721.902,
+      "ROWS": 19
+    }
+  ],
+  "watch": {
+    "Application.cfc": "4b946b355d9ef6076bdbb88480b22e86acd660056efab3c4ae14fcca080e7af5",
+    "evento/index.cfm": "6f2ebab01a12013af894580bf2995e7d12dbd2124776694dc14c796f1f87fccc",
+    "includes/estrutura/event_title_date.cfm": "bd6c039eaa8331e17106ecf2e926855250e226c3b3a97b50a83352dcb4e73968"
+  },
+  "sha256": "8c0cccaf9205a049a098e442f5f1c9918ba65d28ee22a9c162910fc8491dc10d",
+  "local_matches": false
+}

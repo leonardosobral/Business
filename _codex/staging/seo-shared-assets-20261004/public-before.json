@@ -1,0 +1,195 @@
+[
+  {
+    "route": "/",
+    "status": "200",
+    "cf_error": false,
+    "meta": {
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://roadrunners.run/\" />"
+      ],
+      "alternates": [
+        "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/\" />",
+        "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/\" />",
+        "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/\" />",
+        "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/\" />"
+      ],
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "publisher": {
+                "@id": "https://roadrunners.run/#publisher"
+              },
+              "@type": "WebSite",
+              "@id": "https://roadrunners.run/#website",
+              "url": "https://roadrunners.run/",
+              "name": "Road Runners"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://roadrunners.run/#publisher",
+              "url": "https://runnerhub.run/",
+              "name": "RunnerHub Inteligência Esportiva"
+            }
+          ]
+        }
+      ]
+    },
+    "minified_assets": []
+  },
+  {
+    "route": "/en/",
+    "status": "200",
+    "cf_error": false,
+    "meta": {
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://roadrunners.run/en/\" />"
+      ],
+      "alternates": [
+        "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/\" />",
+        "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/\" />",
+        "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/\" />",
+        "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/\" />"
+      ],
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "publisher": {
+                "@id": "https://roadrunners.run/#publisher"
+              },
+              "@type": "WebSite",
+              "@id": "https://roadrunners.run/#website",
+              "url": "https://roadrunners.run/",
+              "name": "Road Runners"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://roadrunners.run/#publisher",
+              "url": "https://runnerhub.run/",
+              "name": "RunnerHub Inteligência Esportiva"
+            }
+          ]
+        }
+      ]
+    },
+    "minified_assets": []
+  },
+  {
+    "route": "/es/",
+    "status": "200",
+    "cf_error": false,
+    "meta": {
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://roadrunners.run/es/\" />"
+      ],
+      "alternates": [
+        "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/\" />",
+        "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/\" />",
+        "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/\" />",
+        "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/\" />"
+      ],
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "publisher": {
+                "@id": "https://roadrunners.run/#publisher"
+              },
+              "@type": "WebSite",
+              "@id": "https://roadrunners.run/#website",
+              "url": "https://roadrunners.run/",
+              "name": "Road Runners"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://roadrunners.run/#publisher",
+              "url": "https://runnerhub.run/",
+              "name": "RunnerHub Inteligência Esportiva"
+            }
+          ]
+        }
+      ]
+    },
+    "minified_assets": []
+  },
+  {
+    "route": "/estado/sp/",
+    "status": "200",
+    "cf_error": false,
+    "meta": {
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://roadrunners.run/estado/sp/\" />"
+      ],
+      "alternates": [],
+      "jsonld": [
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/sp/",
+              "@type": "ListItem",
+              "name": "São Paulo"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    },
+    "minified_assets": []
+  },
+  {
+    "route": "/videos/canal/road-runners/",
+    "status": "200",
+    "cf_error": false,
+    "meta": {
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://roadrunners.run/videos/canal/road-runners/\" />"
+      ],
+      "alternates": [
+        "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/videos/canal/road-runners/\" />",
+        "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/videos/channel/road-runners/\" />",
+        "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/videos/canal/road-runners/\" />",
+        "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/videos/canal/road-runners/\" />"
+      ],
+      "jsonld": []
+    },
+    "minified_assets": []
+  },
+  {
+    "route": "/circuitocatarinense/corridaderua/",
+    "status": "200",
+    "cf_error": false,
+    "meta": {
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://roadrunners.run/circuitocatarinense/corridaderua/\" />"
+      ],
+      "alternates": [],
+      "jsonld": []
+    },
+    "minified_assets": []
+  },
+  {
+    "route": "/circuitocatarinense/trailrun/",
+    "status": "200",
+    "cf_error": false,
+    "meta": {
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://roadrunners.run/circuitocatarinense/trailrun/\" />"
+      ],
+      "alternates": [],
+      "jsonld": []
+    },
+    "minified_assets": []
+  }
+]

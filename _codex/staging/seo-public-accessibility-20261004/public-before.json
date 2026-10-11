@@ -1,0 +1,184 @@
+[
+  {
+    "url": "https://roadrunners.run/evento/2027-maratona-internacional-do-parana-2027/",
+    "kind": "poster",
+    "http": "200",
+    "h1": 1,
+    "heading": "Maratona Internacional do Paraná 2027",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "poster_present": true,
+      "poster_alt": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/evento/2027-maratona-internacional-de-campinas-2-edicao/",
+    "kind": "poster",
+    "http": "200",
+    "h1": 1,
+    "heading": "MARATONA INTERNACIONAL DE CAMPINAS - 2ª EDIÇÃO",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "poster_present": true,
+      "poster_alt": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/evento/2027-cats-run-mt-2027/",
+    "kind": "poster",
+    "http": "200",
+    "h1": 1,
+    "heading": "CATS RUN MT 2027",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "poster_present": true,
+      "poster_alt": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/",
+    "kind": "poster",
+    "http": "200",
+    "h1": 1,
+    "heading": "4ª CORRIDA DO TURISMO - ABAVSE 2026",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "poster_present": true,
+      "poster_alt": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/evento/2026-sun-day-run-etapa-aracaju/",
+    "kind": "poster",
+    "http": "200",
+    "h1": 1,
+    "heading": "SUN DAY RUN - ETAPA ARACAJU",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "poster_present": true,
+      "poster_alt": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/evento/2026-smurfs-run-shopping-jardins-aracaju/",
+    "kind": "poster",
+    "http": "200",
+    "h1": 1,
+    "heading": "SMURFS RUN SHOPPING JARDINS - ARACAJU",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "poster_present": true,
+      "poster_alt": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/evento/2026-serrinha-runners-2026/",
+    "kind": "poster",
+    "http": "200",
+    "h1": 1,
+    "heading": "Serrinha Runners 2026",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "poster_present": true,
+      "poster_alt": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/evento/2026-segundo-corridao-da-guarda-municipal-de-afonso-bezerra-2026/",
+    "kind": "poster",
+    "http": "200",
+    "h1": 1,
+    "heading": "Segundo corridão da Guarda Municipal de Afonso Bezerra 2026",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "poster_present": true,
+      "poster_alt": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/evento/2026-sao-paulo-run-5km/",
+    "kind": "poster",
+    "http": "200",
+    "h1": 1,
+    "heading": "SÃO PAULO RUN 5KM",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "poster_present": true,
+      "poster_alt": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/evento/2026-santander-night-run-etapa-1-aracaju-2026/",
+    "kind": "poster",
+    "http": "200",
+    "h1": 1,
+    "heading": "Santander Night Run - Etapa 1 - Aracaju 2026",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "poster_present": true,
+      "poster_alt": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/org/sportsland/",
+    "kind": "heading",
+    "http": "200",
+    "h1": 0,
+    "heading": "",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "one_h1": false,
+      "h1_has_name": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/circuito/live-run-xp/",
+    "kind": "heading",
+    "http": "200",
+    "h1": 0,
+    "heading": "",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "one_h1": false,
+      "h1_has_name": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/circuito/fca-corridaderua/",
+    "kind": "heading",
+    "http": "200",
+    "h1": 0,
+    "heading": "",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "one_h1": false,
+      "h1_has_name": false
+    }
+  },
+  {
+    "url": "https://roadrunners.run/login/?redirect=/resultados/index.cfm",
+    "kind": "heading",
+    "http": "200",
+    "h1": 0,
+    "heading": "",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "one_h1": false,
+      "h1_has_name": false
+    }
+  }
+]

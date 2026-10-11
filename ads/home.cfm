@@ -272,13 +272,13 @@ VARIABLES.adsV1IsCampaignDetailFocus = VARIABLES.adsV1WorkspaceView EQ "campaign
 
 <cfif len(VARIABLES.adsV1Notice)>
   <div class="alert alert-success d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
-    <span><cfoutput>#htmlEditFormat(VARIABLES.adsV1Notice)#</cfoutput></span>
+    <span><cfoutput>#encodeForHTML(VARIABLES.adsV1Notice)#</cfoutput></span>
     <cfif VARIABLES.adsAccessIsPendingNewAccount>
       <a class="btn btn-sm btn-outline-success flex-shrink-0" href="/">Voltar aos primeiros passos</a>
     </cfif>
   </div>
 </cfif>
-<cfif len(VARIABLES.adsV1Error)><div class="alert alert-danger"><cfoutput>#htmlEditFormat(VARIABLES.adsV1Error)#</cfoutput></div></cfif>
+<cfif len(VARIABLES.adsV1Error)><div class="alert alert-danger"><cfoutput>#encodeForHTML(VARIABLES.adsV1Error)#</cfoutput></div></cfif>
 <cfif VARIABLES.adsAccessIsPendingNewAccount AND NOT VARIABLES.adsV1IsCampaignCreationFocus><div class="alert alert-info"><strong>Você pode preparar tudo agora.</strong> O voucher só vira saldo após a aprovação da conta, e a campanha só poderá entrar no ar após a aprovação da conta, do evento e da equipe RunnerHub.</div></cfif>
 
 <cfif listFindNoCase("admin,vouchers", VARIABLES.adsV1WorkspaceView)

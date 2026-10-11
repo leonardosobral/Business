@@ -1,0 +1,1207 @@
+<html
+    ng-app="RecebeDigitalSiteApp"
+    dir="ltr"
+    class="windows chrome navbar-vertical-collapsed"
+    ng-cloak
+    ng-controller="MainSiteApp.Controller"
+>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link
+            rel="icon"
+            img-url
+            s3url="aDadosFranquia.franquia_s3_url"
+            object="aDadosFranquia.franquia_fav_icon"
+            ng-model="aDadosFranquia.franquia_fav_icon"
+            ng-if="aDadosFranquia.franquia_fav_icon"
+            href
+            type="image/x-icon"
+        />
+        <link
+            rel="shortcut icon"
+            s3url="aDadosFranquia.franquia_s3_url"
+            object="aDadosFranquia.franquia_fav_icon"
+            ng-model="aDadosFranquia.franquia_fav_icon"
+            ng-if="aDadosFranquia.franquia_fav_icon"
+            href
+            type="image/x-icon"
+        />
+
+        <title>Inscrições ONLINE</title>
+        <meta name="description" content />
+        <meta name="author" content="Codeware SI" />
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="William Barbosa" />
+        <meta
+            name="description"
+            content="cronometragem de corrida de rua 
+                Cronometragem eletrônica
+                Cronometragem com Chip
+                Cronometragem eletrônica com Chip
+                Cronometragem MTB
+                Cronometragem Mountain Bike"
+        />
+        <meta
+            name="keywords"
+            content="cronometragem, corrida de rua, corrida, Cronometragem eletrônica,Cronometragem com Chip,Cronometragem eletrônica com Chip,Cronometragem MTB,Cronometragem Mountain Bike"
+        />
+
+        <meta property="og:type" content="article" />
+        <meta property="og:url" name="ogurl" content />
+        <meta property="og:title" name="ogtitle" content />
+        <meta property="og:author" name="ogauthor" content />
+        <meta property="og:description" name="ogdescr" content />
+        <meta property="og:image" name="ogimg" content />
+
+        <!-- LIBRARIES -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400"
+            SameSite="None"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900"
+            SameSite="None"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap"
+            rel="stylesheet"
+        />
+
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/bootstrap/css/bootstrap-dialog.min.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/bootstrap/css/bootstrap-datepicker3.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/bootstrap/css/bootstrap-switch.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/Css/media-devices.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/font-awesome/css/font-awesome.min.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/Css/angular-growl.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/ng-tags/ng-tags-input.min.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/ng-tags/ng-tags-input.bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/selectize/css/selectize.default.css"
+        />
+        <link rel="stylesheet" type="text/css" href="vendor/Css/animate.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/textAngular/css/textAngular.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/introjs/introjs.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/introjs/introjs-rtl.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/lightbox/src/css/lightbox.css"
+        />
+        <link
+            rel="dx-theme"
+            data-theme="generic.softblue"
+            href="vendor/DevExpress/Lib/css/dx.softblue.css"
+        />
+        <link
+            rel="stylesheet"
+            href="//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css"
+            type="text/css"
+            media="all"
+        />
+
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/Css/ie-theme/css/theme.css?v=1.20.047"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/Css/ie-theme/css/toastify.min.css?v=1.20.047"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/Css/ie-theme/css/leaflet.min.css?v=1.20.047"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/Css/ie-theme/css/quill.min.css?v=1.20.047"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/Css/ie-theme/css/slick.min.css?v=1.20.047"
+        />
+
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/Css/ie-theme/css/bootstrap-theme.css?v=1.20.047"
+            class="theme-stylesheet"
+        />
+
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/Css/app.css?v=1.20.047"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/Css/colors.css?v=1.20.047"
+        />
+
+        <script
+            type="text/javascript"
+            src="vendor/js/jquery-1.11.1.min.js"
+        ></script>
+        <script type="text/javascript" src="vendor/js/jquery.mask.js"></script>
+        <script
+            type="text/javascript"
+            src="vendor/js/jquery.dropotron.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/js/jquery-ui.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/js/jquery-ui.min.js"
+        ></script>
+        <script type="text/javascript" src="vendor/angular/angular.js"></script>
+        <script
+            type="text/javascript"
+            src="vendor/angular/i18n/angular-locale_pt-br.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/angular/angular-messages.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/angular/angular-aria.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/angular/angular-route.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/angular/angular-sanitize.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/angular/angular-animate.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/angular/angular-growl.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/bootstrap/js/bootstrap.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/bootstrap/js/bootstrap-dialog.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/bootstrap/js/bootstrap-datepicker.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/bootstrap/js/bootstrap-switch.js"
+        ></script>
+        <script type="text/javascript" src="vendor/js/scripts.js"></script>
+        <script type="text/javascript" src="vendor/js/wow.min.js"></script>
+        <script type="text/javascript" src="vendor/js/skel.min.js"></script>
+        <script type="text/javascript" src="vendor/js/util.js"></script>
+        <script type="text/javascript" src="vendor/js/moment.js"></script>
+        <script
+            type="text/javascript"
+            src="vendor/js/moment.locale.ptbr.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/ng-tags/ng-tags-input.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/selectize/js/standalone/selectize.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/textAngular/js/textAngular-rangy.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/textAngular/js/textAngular-sanitize.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/textAngular/js/textAngular.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/DevExpress/Lib/js/dx.all.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="vendor/lightbox/src/js/lightbox.js"
+        ></script>
+        <script type="text/javascript" src="vendor/introjs/intro.js"></script>
+
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet/dist/leaflet.css"
+        />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+        <!-- Main Quill library -->
+        <script type="text/javascript" src="vendor/quill/quill.min.js"></script>
+        <script type="text/javascript" src="vendor/quill/ng-quill.js"></script>
+
+        <script
+            type="text/javascript"
+            src="https://www.google.com/jsapi"
+        ></script>
+        <script
+            type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"
+        ></script>
+
+        <!-- Firebase 
+	<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>-->
+        <!-- AngularFire 
+	<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>-->
+
+        <script src="src/Main/appMain.js?v=1.20.047"></script>
+        <script src="src/Main/appInterceptor.js?v=1.20.047"></script>
+
+        <script src="src/Main/Value/configValue.js?v=1.20.047"></script>
+
+        <script src="src/Main/Config/routeConfig.js?v=1.20.047"></script>
+        <script src="src/Main/Config/growlProvider.js?v=1.20.047"></script>
+        <script src="src/Main/functions.js?v=1.20.047"></script>
+
+        <!-- DIRECTIVES -->
+        <script src="src/Main/Directives/uingUtilsDirective.js?v=1.20.047"></script>
+        <script src="src/Main/Directives/ui-bootstrap.js?v=1.20.047"></script>
+        <script src="src/Main/Directives/ui-utils.js?v=1.20.047"></script>
+        <script src="src/Main/Directives/ui-calendar.js?v=1.20.047"></script>
+        <script src="src/Main/Directives/angular-selectize.js?v=1.20.047"></script>
+        <script src="src/Main/Directives/bsSwitch.js?v=1.20.047"></script>
+        <script src="src/Main/Directives/fileModel.js?v=1.20.047"></script>
+        <script src="src/Main/Directives/awsSrc.js?v=1.20.047"></script>
+        <script src="src/Main/Directives/ngClipboard.js?v=1.20.047"></script>
+        <script src="src/Main/Directives/imgUrl.js?v=1.20.047"></script>
+        <script src="src/Main/Directives/datePicker.js?v=1.20.207"></script>
+
+        <!-- CONTROLLERS -->
+        <script src="src/Main/Controller/MainSiteApp.controller.js?v=1.20.047"></script>
+
+        <script src="src/Atleta/Cadastro/Controller/CadastroAtleta.controller.js?v=1.20.047"></script>
+        <script src="src/Atleta/Painel/Controller/AtletaPainel.controller.js?v=1.20.047"></script>
+
+        <script src="src/Atleta/Painel/Controller/AtletaPainel.controller.js?v=1.20.047"></script>
+
+        <script src="src/Calendario/Controller/Calendario.controller.js?v=1.20.047"></script>
+
+        <script src="src/Evento/Controller/Evento.controller.js?v=1.20.047"></script>
+        <script src="src/Politicas/Controller/Politicas.controller.js?v=1.20.047"></script>
+
+        <script src="src/Servico/Controller/Servicos.controller.js?v=1.20.047"></script>
+        <script src="src/Inscricao/Controller/Inscricao.controller.js?v=1.20.049"></script>
+        <script src="src/Inscricao/Externa/Controller/InscricoesExternas.controller.js?v=1.20.047"></script>
+        <script src="src/Resultado/Controller/Resultados.controller.js?v=1.20.047"></script>
+        <script src="src/Organizador/Controller/OrganizadorCadastro.controller.js?v=1.20.047"></script>
+        <script src="src/Ranking/Controller/Rankings.controller.js?v=1.20.047"></script>
+
+        <!-- SERVICES -->
+        <script src="src/Main/Service/Metadata.apiService.js?v=1.20.047"></script>
+        <script src="src/Administradora/Service/Administradora.apiService.js?v=1.20.047"></script>
+        <script src="src/Auth/Service/Authentication.apiService.js?v=1.20.047"></script>
+        <script src="src/Atleta/Service/Atletas.apiService.js?v=1.20.047"></script>
+
+        <script src="src/Cidade/Service/Cidades.apiService.js?v=1.20.047"></script>
+        <script src="src/Modalidade/Service/Modalidades.apiService.js?v=1.20.047"></script>
+        <script src="src/Divulgacao/Service/Divulgacoes.apiService.js?v=1.20.047"></script>
+        <script src="src/File/Service/UploadFile.apiService.js?v=1.20.047"></script>
+
+        <script src="src/Politicas/Service/Politicas.apiService.js?v=1.20.047"></script>
+        <script src="src/Evento/Service/Eventos.apiService.js?v=1.20.047"></script>
+
+        <script src="src/Inscricao/Service/Inscricoes.apiService.js?v=1.20.047"></script>
+        <script src="src/Inscricao/Externa/Service/InscricoesExternas.apiService.js?v=1.20.047"></script>
+        <script src="src/Resultado/Service/Resultados.apiService.js?v=1.20.047"></script>
+        <script src="src/Organizador/Service/Organizadores.apiService.js?v=1.20.047"></script>
+        <script src="src/Organizador/Usuario/Service/OrganizadoresUsuarios.apiService.js?v=1.20.047"></script>
+        <script src="src/Ranking/Service/Rankings.apiService.js?v=1.20.047"></script>
+        <script>
+            $(".iptcurrency").mask("000.000.000,00", { reverse: true });
+            $(".iptper").mask("000.00", { reverse: true });
+            $(".iptcep").mask("00.000-000", { placeholder: "__.___-___" });
+            $(".iptdata").mask("00/00/0000", { placeholder: "DD/MM/AAAA" });
+            $(".iptdate").mask("00/00/0000", { placeholder: "DD/MM/AAAA" });
+            $(".iptcomp").mask("00/0000", { placeholder: "MM/AAAA" });
+            $(".ipthora").mask("H0:M0", {
+                translation: {
+                    H: { pattern: /[0-2]/ },
+                    M: { pattern: /[0-5]/ },
+                },
+                placeholder: "HH:mm",
+            });
+            $(".iptfone").mask("(00)0000-0000", {
+                placeholder: "(__)____-____",
+            });
+            $(".iptcel").mask("(00)00000-0000", {
+                placeholder: "(__)_____-____",
+            });
+            $(".iptphone").mask("(00)00000-0000", {
+                placeholder: "(__)_____-____",
+            });
+            $(".ipttel").mask("(00)0000-0000", {
+                placeholder: "(__)____-____",
+            });
+            $(".iptano").mask("0000");
+            $(".iptdigito").mask("0");
+            $(".iptint").mask("00000000000");
+            $(".iptintunlimited").mask("0#", {
+                translation: {
+                    "#": { pattern: /[0-9]/, recursive: true },
+                },
+            });
+            $(".iptcpf").mask("000.000.000-00", {
+                placeholder: "___.___.___-__",
+            });
+            $(".iptrg").mask("00.000.000-0", { placeholder: "___.___.___-__" });
+            $(".iptinsc").mask("00000000000");
+            $(".iptcnpj").mask("00.000.000/0000-00", {
+                placeholder: "__.___-___/____-__",
+            });
+            $(".iptie").mask("000.000.000.000", {
+                placeholder: "___.___.___.___",
+            });
+
+            $(".iptcard").mask("0000 0000 0000 0000", {
+                placeholder: "___ ___ ___ ___",
+            });
+            $(".iptcodseg").mask("000", { placeholder: "___" });
+            $(".iptcodsegAmex").mask("0000", { placeholder: "____" });
+            $(".iptvldcard").mask("00/0000", { placeholder: "MM/AAAA" });
+
+            $(".iptcur-negative").mask("Z999,99", {
+                reverse: true,
+                translation: {
+                    0: { pattern: /\d/ },
+                    9: { pattern: /\d/, optional: true },
+                    Z: { pattern: /[\-\+]/, optional: true },
+                },
+            });
+        </script>
+    </head>
+    <body>
+        <ng-include
+            src="basePatch + '/Main/View/tema_franquia.html?v=1.20.047'"
+        ></ng-include>
+
+        <main class="main" id="main">
+            <nav
+                class="navbar-standard navbar-theme navbar navbar-expand-lg fixed-top navbar-dark bg-header bg-administradora"
+            >
+                <div class="container">
+                    <button
+                        aria-label="Toggle navigation"
+                        type="button"
+                        class="navbar-toggler ml-n2"
+                        ng-click="ShowHideCollapse('#main-menu', '')"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a
+                        class="text-white navbar-brand navbar-brand-site float-lg-left"
+                        href="#/home"
+                    >
+                        <img
+                            class="img-logo-menu-md ml-n2 ml-md-0"
+                            img-url
+                            s3url="aDadosFranquia.franquia_s3_url"
+                            object="aDadosFranquia.franquia_site_logo"
+                            ng-model="aDadosFranquia.franquia_site_logo"
+                            ng-if="aDadosFranquia.franquia_site_logo"
+                            alt="{{aDadosFranquia.franquia_fantasia}}"
+                            title="{{aDadosFranquia.franquia_fantasia}}"
+                            type="image/png"
+                        />
+                        <h6
+                            class="fs-3 bold my-3 ml-n2 ml-md-0"
+                            style="color: {{aDadosFranquia.franquia_corfonte}} !important;"
+                            ng-if="!aDadosFranquia.franquia_site_logo"
+                        >
+                            {{aDadosFranquia.franquia_fantasia}}
+                        </h6>
+                    </a>
+                    <div class="scrollbar navbar-collapse d-none d-lg-block">
+                        <ul class="navbar-nav w-100 px-2">
+                            <li class="nav-item w-100">
+                                <div class="search-box w-100">
+                                    <form
+                                        ng-submit="loadEventosCalendario(aFiltroEvento)"
+                                    >
+                                        <input
+                                            placeholder="Digite para pesquisar..."
+                                            aria-label="Search"
+                                            type="search"
+                                            class="rounded-soft search-input form-control mt-2"
+                                            ng-model="aFiltroEvento.busca_texto"
+                                        />
+                                        <i
+                                            class="fa fa-search position-absolute text-400 search-box-icon"
+                                        ></i>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul
+                            class="navbar-nav-icons ml-auto flex-row align-items-center navbar-nav"
+                        >
+                            <li class="dropdown nav-item">
+                                <a
+                                    aria-haspopup="true"
+                                    href
+                                    ng-class="{'dropdown-toggle': !atletaLogado}"
+                                    class="nav-link float-right float-md-left nobold {{url.indexOf('painelatleta') != -1 ? 'bg-primary bg-administradora rounded-soft-3 p-1 pr-2' : ''}}"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <span
+                                        class="text-administradora"
+                                        ng-if="!atletaLogado"
+                                    >
+                                        Acesso Rápido
+                                    </span>
+                                    <span
+                                        class="text-administradora"
+                                        ng-if="atletaLogado"
+                                    >
+                                        <div
+                                            class="d-flex align-items-center media"
+                                        >
+                                            <div class="avatar avatar-xl">
+                                                <div
+                                                    class="avatar-name rounded-circle border-2 border-info border-administradora-soft"
+                                                    ng-if="!aDadosAtleta.att_foto"
+                                                >
+                                                    <span
+                                                        class="text-white w-100 text-administradora"
+                                                    >
+                                                        {{aDadosAtleta.att_nome.split('
+                                                        ')[0].substr(0,1)}}
+                                                        {{aDadosAtleta.att_nome.split('
+                                                        ')[aDadosAtleta.att_nome.split('
+                                                        ').length-1].substr(0,1)}}
+                                                    </span>
+                                                </div>
+                                                <img
+                                                    class="rounded-circle border-2 border-info border-administradora-soft"
+                                                    img-url
+                                                    s3url="aDadosFranquia.franquia_s3_url"
+                                                    object="aDadosAtleta.att_foto"
+                                                    ng-model="aDadosAtleta.att_foto"
+                                                    ng-if="aDadosAtleta.att_foto"
+                                                />
+                                            </div>
+                                            <div class="ml-2 media-bod y">
+                                                <h5
+                                                    class="mb-0 fs--2 bold text-300 text-administradora"
+                                                >
+                                                    {{(aDadosAtleta.att_apelido
+                                                    ? aDadosAtleta.att_apelido :
+                                                    aDadosAtleta.att_nome.split('
+                                                    ')[0] + ' ' +
+                                                    aDadosAtleta.att_nome.split('
+                                                    ')[aDadosAtleta.att_nome.split('
+                                                    ').length-1])}}
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </a>
+                                <div
+                                    tabindex="-1"
+                                    role="menu"
+                                    aria-hidden="true"
+                                    class="dropdown-menu-card mt-6 mt-md-0 dropdown-menu dropdown-menu-right shadow z-index999"
+                                >
+                                    <div
+                                        class="shadow-none max-h-dropdown card"
+                                    >
+                                        <div
+                                            class="scrollbar px-0 py-2 p-0 card-body"
+                                        >
+                                            <div class="nav flex-column">
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="!atletaLogado"
+                                                    href="#/login"
+                                                    >Acesso Atleta</a
+                                                >
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="!atletaLogado"
+                                                    href="#/cadastroatleta"
+                                                    >Cadastre-se</a
+                                                >
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="!atletaLogado"
+                                                    href="#/esqueciminhasenha"
+                                                    >Recuperar senha</a
+                                                >
+
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="atletaLogado"
+                                                    href="#/painelatleta"
+                                                    >Painel Atleta</a
+                                                >
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="atletaLogado"
+                                                    href="#/painelatleta/minhasinscricoes"
+                                                    >Minhas Incrições</a
+                                                >
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="atletaLogado"
+                                                    href="#/painelatleta/meusdados"
+                                                    >Meus Dados</a
+                                                >
+
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="atletaLogado"
+                                                    href="#/painelatleta/minhasinscricoes"
+                                                    >2ª via de Boleto</a
+                                                >
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="!atletaLogado"
+                                                    href="#/segundaviaboleto"
+                                                    >2ª via de Boleto</a
+                                                >
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="atletaLogado"
+                                                    href="#/painelatleta/minhasinscricoes"
+                                                    >Termo de Responsabilidae</a
+                                                >
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="!atletaLogado"
+                                                    href="#/inscricao/impressao/termo"
+                                                    >Termo de Responsabilidae</a
+                                                >
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="atletaLogado"
+                                                    href="#/painelatleta/minhasinscricoes"
+                                                    >Comprovante de Inscrição</a
+                                                >
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="!atletaLogado"
+                                                    href="#/inscricao/impressao/comprovante"
+                                                    >Comprovante de Inscrição</a
+                                                >
+
+                                                <!-- <a tabindex="0" role="menuitem" class="dropdown-item" ng-if="!atletaLogado && aDadosFranquia.franquia_whatsapp" target="_Blank" href="https://api.whatsapp.com/send?phone=55{{aDadosFranquia.franquia_whatsapp}}&text=Digite aqui sua dúvida:">
+													<i class="fa fa-whatsapp fa-lg text-success"></i> Suporte ao Atleta
+											</a> -->
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="!atletaLogado"
+                                                    href="{{adminUrl}}"
+                                                    >Acesso Organizador</a
+                                                >
+                                                <a
+                                                    tabindex="0"
+                                                    role="menuitem"
+                                                    class="dropdown-item"
+                                                    ng-if="atletaLogado"
+                                                    ng-click="logOut()"
+                                                    href
+                                                    >Sair</a
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="d-block d-lg-none">
+                        <ul
+                            class="navbar-nav-icons ml-auto flex-row align-items-center navbar-nav"
+                        >
+                            <li class="dropdown nav-item">
+                                <a
+                                    aria-haspopup="true"
+                                    href
+                                    class="nav-link float-right float-md-left"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '')"
+                                >
+                                    <div
+                                        class="d-flex align-items-center media"
+                                        ng-if="!atletaLogado"
+                                    >
+                                        <div class="avatar avatar-xl">
+                                            <span
+                                                class="text-white w-100 text-administradora"
+                                            >
+                                                <img
+                                                    src="{{publicBasePatch}}/Images/user_default.png"
+                                                    alt
+                                                    class="rounded-circle float-right border-2 border-info border-administradora-soft"
+                                                />
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="d-flex align-items-center media"
+                                        ng-if="atletaLogado"
+                                    >
+                                        <div class="avatar avatar-xl">
+                                            <div
+                                                class="avatar-name rounded-circle border-2 border-info border-administradora-soft"
+                                                ng-if="!aDadosAtleta.att_foto"
+                                            >
+                                                <span
+                                                    class="text-white w-100 text-administradora"
+                                                >
+                                                    {{aDadosAtleta.att_nome.split('
+                                                    ')[0].substr(0,1)}} {{(
+                                                    !['de','DE','da','DA'].includes(aDadosAtleta.att_nome.split('
+                                                    ')[1]) ?
+                                                    aDadosAtleta.att_nome.split('
+                                                    ')[1].substr(0,1) :
+                                                    aDadosAtleta.att_nome.split('
+                                                    ')[2].substr(0,1))}}
+                                                </span>
+                                            </div>
+                                            <img
+                                                class="rounded-circle border-2 border-info border-administradora-soft"
+                                                img-url
+                                                s3url="aDadosFranquia.franquia_s3_url"
+                                                object="aDadosAtleta.att_foto"
+                                                ng-model="aDadosAtleta.att_foto"
+                                                ng-if="aDadosAtleta.att_foto"
+                                            />
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div
+                            id="atleta-menu"
+                            tabindex="-1"
+                            role="menu"
+                            aria-hidden="true"
+                            class="dropdown-menu-card dropdown-menu dropdown-menu-right"
+                        >
+                            <div class="bg-white rounded-soft py-2">
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="!atletaLogado"
+                                    href="#/login"
+                                    >Acesso Atleta</a
+                                >
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="!atletaLogado"
+                                    href="#/cadastroatleta"
+                                    >Cadastre-se</a
+                                >
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="!atletaLogado"
+                                    href="#/esqueciminhasenha"
+                                    >Recuperar senha</a
+                                >
+
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="atletaLogado"
+                                    href="#/painelatleta"
+                                    >Painel Atleta</a
+                                >
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="atletaLogado"
+                                    href="#/painelatleta/minhasinscricoes"
+                                    >Minhas Incrições</a
+                                >
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="atletaLogado"
+                                    href="#/painelatleta/meusdados"
+                                    >Meus Dados</a
+                                >
+
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="atletaLogado"
+                                    href="#/painelatleta/segundaviaboleto"
+                                    >2ª via de Boleto</a
+                                >
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="!atletaLogado"
+                                    href="#/segundaviaboleto"
+                                    >2ª via de Boleto</a
+                                >
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="atletaLogado"
+                                    href="#/painelatleta/minhasinscricoes"
+                                    >Termo de Responsabilidae</a
+                                >
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="!atletaLogado"
+                                    href="#/inscricao/impressao/termo"
+                                    >Termo de Responsabilidae</a
+                                >
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="atletaLogado"
+                                    href="#/painelatleta/minhasinscricoes"
+                                    >Comprovante de Inscrição</a
+                                >
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="!atletaLogado"
+                                    href="#/inscricao/impressao/comprovante"
+                                    >Comprovante de Inscrição</a
+                                >
+
+                                <!-- <a tabindex="0" role="menuitem" class="dropdown-item" ng-click="ShowHideCollapse('#atleta-menu', '', true)" ng-if="!atletaLogado && aDadosFranquia.franquia_whatsapp" target="_Blank" href="https://api.whatsapp.com/send?phone=55{{aDadosFranquia.franquia_whatsapp}}&text=Digite aqui sua dúvida:">
+									<i class="fa fa-whatsapp fa-lg text-success"></i> Suporte ao Atleta
+							</a> -->
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true)"
+                                    ng-if="!atletaLogado"
+                                    href="{{adminUrl}}"
+                                    >Acesso Organizador</a
+                                >
+                                <a
+                                    tabindex="0"
+                                    role="menuitem"
+                                    class="dropdown-item"
+                                    ng-if="atletaLogado"
+                                    ng-click="ShowHideCollapse('#atleta-menu', '', true) + logOut()"
+                                    href
+                                    >Sair</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <nav
+                class="navbar-standard navbar-theme navbar navbar-expand-lg navbar-dark fixed-top mt-7 mt-md-7 collapse navbar-collapse d-lg-block z-index999 bg-administradora-soft"
+                id="main-menu"
+                style="background-color: rgba(26, 33, 43, 1)"
+            >
+                <div class="container">
+                    <div class="scrollbar navbar-collapse">
+                        <ul class="navbar-nav nav-justified w-100 px-2">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link nobold text-administradora"
+                                    href="#/servicos"
+                                    ><i class="fa fa-lg fa-grav mr-1"></i>Quem
+                                    Somos</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link nobold text-administradora"
+                                    href="#/calendario"
+                                    ><i
+                                        class="fa fa-lg fa-calendar-check-o mr-1"
+                                    ></i
+                                    >Calendário</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link nobold text-administradora"
+                                    href="#/resultados"
+                                    ><i class="fa fa-lg fa-bookmark-o mr-1"></i
+                                    >Resultados</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link nobold text-administradora"
+                                    href="#/rankings"
+                                    ><i class="fa fa-lg fa-trophy mr-1"></i
+                                    >Ranking</a
+                                >
+                            </li>
+                            <!-- <li class="nav-item"><a class="nav-link nobold text-administradora" href="#/game"><i class="fa fa-lg fa-gamepad mr-1"></i>Gameficação</a></li>
+						<li class="nav-item"><a class="nav-link nobold" href="#/solicitarorcamento"><i class="fa fa-lg fa-dollar mr-1"></i>Orçamento</a></li> -->
+                            <li
+                                class="nav-item"
+                                ng-if="aDadosFranquia.franquia_whatsapp"
+                            >
+                                <a
+                                    class="nav-link nobold text-administradora"
+                                    target="_Blank"
+                                    href="https://api.whatsapp.com/send?phone=55{{aDadosFranquia.franquia_whatsapp}}&text=Digite aqui sua dúvida:"
+                                >
+                                    <i
+                                        class="fa fa-lg fa-whatsapp text-success mr-1"
+                                    ></i>
+                                    Suporte ao Atleta
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link nobold text-administradora"
+                                    href="#/eventos/novo"
+                                    ><i
+                                        class="fa fa-lg fa-plus mr-1 text-warning"
+                                    ></i
+                                    >Evento / Orçamento</a
+                                >
+                            </li>
+                            <!-- <li class="nav-item"><a class="nav-link nobold" href="#/faq"><i class="fa fa-lg fa-question-circle-o mr-1"></i>F.A.Q</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="main-content pt-5 pt-md-7 pt-lg-8-5">
+                <div ng-view></div>
+            </div>
+
+            <section class="bg-dark pt-4 pb-4">
+                <div class="container">
+                    <div
+                        class="position-absolute btn-back-to-top cursor-pointer bg-dark"
+                        ng-click="backToTop()"
+                    >
+                        <i
+                            class="fa fa-chevron-up fa-lg ml-3 mt-2"
+                            style="
+                                transform: translate3d(-50%, -50%, 0)
+                                    rotate(45deg);
+                            "
+                        ></i>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-sm-5">
+                                <h6
+                                    class="text-uppercase text-white opacity-85 fs-0 mb-2"
+                                >
+                                    EMPRESA
+                                </h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <a class="text-600" href="#/servicos"
+                                            >Serviços</a
+                                        >
+                                    </li>
+                                    <li
+                                        class="mb-1"
+                                        ng-repeat="adminSobre in aAdministradoraSobre"
+                                    >
+                                        <a
+                                            class="text-600"
+                                            href="#/servicos/{{sanitizeString(adminSobre.asb_titulo)}}"
+                                            >{{adminSobre.asb_titulo}}</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3">
+                                <h6
+                                    class="text-uppercase text-white opacity-85 fs-0 mb-2"
+                                >
+                                    ATLETAS
+                                </h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <a class="text-600" href="#/login"
+                                            >Login</a
+                                        >
+                                    </li>
+                                    <li class="mb-1">
+                                        <a
+                                            class="text-600"
+                                            href="#/login#cadastro"
+                                            >Cadastre-se</a
+                                        >
+                                    </li>
+                                    <li class="mb-1">
+                                        <a class="text-600" href="#/resultados"
+                                            >Resultados</a
+                                        >
+                                    </li>
+                                    <li class="mb-1">
+                                        <a class="text-600" href="#/rankings"
+                                            >Ranking</a
+                                        >
+                                    </li>
+                                    <!-- <li class="mb-1"><a class="text-600" href="#/game">Gameficação</a></li> -->
+                                    <li class="mb-1">
+                                        <a
+                                            class="text-600"
+                                            href="https://api.whatsapp.com/send?phone=55{{aDadosFranquia.franquia_whatsapp}}&text=Digite aqui sua dúvida:"
+                                            >Fale Conosco</a
+                                        >
+                                    </li>
+                                    <li
+                                        class="mb-1"
+                                        ng-if="aDadosFranquia.franquia_whatsapp"
+                                    >
+                                        <a
+                                            class="text-600"
+                                            target="_Blank"
+                                            href="https://api.whatsapp.com/send?phone=55{{aDadosFranquia.franquia_whatsapp}}&text=Digite aqui sua dúvida:"
+                                            >Suporte ao Atleta</a
+                                        >
+                                    </li>
+                                    <li class="mb-1">
+                                        <a
+                                            class="text-600"
+                                            target="_Blank"
+                                            href="#/termos/uso"
+                                            >Termos de Uso</a
+                                        >
+                                    </li>
+                                    <li class="mb-1">
+                                        <a
+                                            class="text-600"
+                                            target="_Blank"
+                                            href="#/politicas/privacidade"
+                                            >Políticas de Privacidade</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6
+                                    class="text-uppercase text-white opacity-85 fs-0 mb-2"
+                                >
+                                    ORGANIZADORES
+                                </h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-1">
+                                        <a class="text-600" href="{{adminUrl}}"
+                                            >Área Admin</a
+                                        >
+                                    </li>
+                                    <li class="mb-1">
+                                        <a
+                                            class="text-600"
+                                            href="#/organizadores/cadastro"
+                                            >Cadastre-se</a
+                                        >
+                                    </li>
+                                    <!-- <li class="mb-1"><a class="text-600" href="#/solicitarorcamento">Solicitar Orçamento</a></li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div
+                            class="col-md-6 text-center"
+                            ng-show="aDadosFranquia.franquia_facebook"
+                        >
+                            <div
+                                class="fb-page"
+                                id="header-fb"
+                                data-href
+                                data-width="380"
+                                data-hide-cover="false"
+                                data-show-facepile="false"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-dark py-0 text-center fs--1" id="site-footer">
+                <hr class="my-0 border-600 opacity-25" />
+                <div class="container py-3">
+                    <div class="justify-content-between row">
+                        <div class="col-12 col-sm-auto">
+                            <p class="mb-0 text-600">
+                                ©
+                                <a
+                                    href="{{aDadosFranquia.franquia_site}}"
+                                    class="text-primary"
+                                    >{{aDadosFranquia.franquia_fantasia}}</a
+                                >
+                                {{dHoje | date: 'yyyy'}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="Toastify"></div>
+        </main>
+        <div growl></div>
+
+        <form
+            action="/"
+            method="post"
+            target="_blank"
+            id="formExportaDados"
+            class="d-none"
+        >
+            <input type="hidden" id="Authorization" name="Authorization" />
+            <input type="hidden" id="nome_tabela" name="nome_tabela" />
+            <input type="hidden" id="tabela_html" name="tabela_html" />
+            <input type="hidden" id="exporta_tipo" name="exporta_tipo" />
+            <input type="hidden" id="arquivo" name="arquivo" />
+        </form>
+
+        <ng-include
+            src="basePatch + '/Modals/CookieNotice.html?v=1.20.047'"
+        ></ng-include>
+        <ng-include
+            src="basePatch + '/Modals/mdAtualizarPoliticas.html?v=1.20.047'"
+        ></ng-include>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "checked_date": "2026-10-04",
+  "aracaju": {
+    "source": "https://www.ticketsports.com.br/e/MARATONA+DE+ARACAJU+2026-74615",
+    "regulation": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/74615/a0044a5819624b7f806a63b3be624084639263834149282506.pdf",
+    "source_program": {
+      "2026-10-31": [
+        10,
+        21
+      ],
+      "2026-11-01": [
+        5,
+        42.195
+      ]
+    },
+    "venue": "Praça de Eventos da Orla, Avenida Santos Dumont",
+    "method": "current visible official TicketSports DOM and current PDF previously reviewed",
+    "regulation_sha256": "18673aa4df2385cb76f4b297fa7b15dc3c8aa3827c87ce42a5ecbde28cf14279",
+    "not_changed": [
+      "start times with conflicting sources",
+      "availability state",
+      "dates",
+      "course IDs or distances",
+      "original source description",
+      "registration links"
+    ],
+    "text_policy": "own factual summary and manual EN/ES translation; no paid provider call"
+  },
+  "other_opportunities": {
+    "37483": "EN/ES translations already tracked against exact PT hash; current primary source confirms date,city,5/10 and Kids",
+    "33486": "EN/ES translations present; historical2026 edition preserved when official old URL redirects to new2027 edition"
+  }
+}

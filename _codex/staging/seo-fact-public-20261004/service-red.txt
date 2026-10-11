@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "<string>", line 102, in <module>
+  File "<string>", line 81, in bridge
+RuntimeError: {"ERROR": "Element PUBLICDATEREVIEW is undefined in a CFML structure referenced as part of an expression.", "DETAIL": "", "CONTEXT": [{"RAW_TRACE": "\tat cfrun2ecfm927968382.runPage(/var/www/business.roadrunners.run/_codex/error-triage-op-t4bqetgs/run.cfm:1)", "LINE": 1, "COLUMN": 0, "TEMPLATE": "/var/www/business.roadrunners.run/_codex/error-triage-op-t4bqetgs/run.cfm", "ID": "??", "TYPE": "CFML"}]}

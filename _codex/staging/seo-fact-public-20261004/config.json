@@ -1,0 +1,37 @@
+{
+  "roots": {
+    "business": [
+      "/Users/Shared/Projects/RunnerHub/Business",
+      "/var/www/business.roadrunners.run"
+    ],
+    "roadrunners": [
+      "/Users/Shared/Projects/RunnerHub/RoadRunners",
+      "/var/www/roadrunners.com.br"
+    ]
+  },
+  "names": {
+    "business": [
+      "services/EventFactReviewService.cfc",
+      "eventos/includes/backend/fontes_revisoes.cfm",
+      "eventos/form_edicao_fontes.cfm"
+    ],
+    "roadrunners": [
+      "includes/backend/backend_evento.cfm",
+      "evento/parts/fact_review.cfm"
+    ]
+  },
+  "watch": {
+    "business": {
+      "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+      "eventos/includes/backend/event_delegation.cfm": "4784c5125e2995114926bf67efbcab46cb791173a5a3d05c0fa07dcaaa4996ab",
+      "eventos/includes/backend/event_mutations.cfm": "ed91e1d53df3039b9a4593489d2846d9915600f60f90818b56cfaf29e0649f51",
+      "services/EventRegistrationAvailability.cfc": "c3daafdb587ee733bfbd5d7e7206cf8da42974b8a1c91b599f56f37dcd942db2"
+    },
+    "roadrunners": {
+      "evento/index.cfm": "79a49e618d4298ce8f109c3d8b52b4ee43b4d6c20698e7b6aa79b2f2a7791e74",
+      "evento/parts/fact_review_data.cfm": "9e770ace7ef9cc401668d2a574628cb3a7aa65c1da3a51495639586bd83ba22b",
+      "evento/parts/fact_history.cfm": "9cbf08154ec69a95259f195d7b7c1f06f64bfc47dd14b68294490ea9cc00775f",
+      "evento/parts/fact_history_data.cfm": "1974fa32080efd7bb4259e09573675db4476c9c790c0ae8dc80e65e320b0fc93"
+    }
+  }
+}

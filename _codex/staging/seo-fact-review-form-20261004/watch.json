@@ -1,0 +1,8 @@
+{
+  "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+  "eventos/includes/backend/event_delegation.cfm": "4784c5125e2995114926bf67efbcab46cb791173a5a3d05c0fa07dcaaa4996ab",
+  "eventos/includes/backend/event_mutations.cfm": "ed91e1d53df3039b9a4593489d2846d9915600f60f90818b56cfaf29e0649f51",
+  "eventos/home.cfm": "b8ed7f8dcb2db17e0570e1548724aa50ca9b11ce9aa35a50304a0448e1e2bdba",
+  "includes/backend/backend_login.cfm": "1e3bbcc53135f74cd5e8e75735053f3ded0d0f0201243fd8831d3356f1fd40da",
+  "services/EventRegistrationAvailability.cfc": "c3daafdb587ee733bfbd5d7e7206cf8da42974b8a1c91b599f56f37dcd942db2"
+}

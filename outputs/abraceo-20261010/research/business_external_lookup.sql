@@ -1,0 +1,1 @@
+SELECT id_evento,nome_evento,cidade,estado,data_inicial::text,tag,organizador,url_hotsite,url_inscricao,url_regulamento FROM public.tb_evento_corridas WHERE nome_evento ILIKE '%AFTER%' OR nome_evento ILIKE '%tour da ro%' OR nome_evento ILIKE '%pulse%congresso%' OR nome_evento ILIKE '%CORRIDA DO LEÃO%' OR nome_evento ILIKE '%CORRIDA IM%' ORDER BY data_inicial DESC

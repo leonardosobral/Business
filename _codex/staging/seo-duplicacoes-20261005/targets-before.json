@@ -1,0 +1,2305 @@
+{
+  "at": "2026-10-06T02:59:51.223424+00:00",
+  "pages": [
+    {
+      "url": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+      "stats": "200 0.293622",
+      "returncode": 0,
+      "meta": {
+        "title": "Track&Field Run Series 2026 - Motiva Aeroportos -  - corrida de rua - Road Runners",
+        "h1": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina acontece em 18 outubro 2026, em 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR."
+          ],
+          "keywords": [
+            "evento, corrida, competição, pódio, atletas, corredores"
+          ],
+          "twitter:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - corrida de rua - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina acontece em 18 outubro 2026, em 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - corrida de rua - Road Runners"
+          ],
+          "og:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina acontece em 18 outubro 2026, em 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+            "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina",
+            "description": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina acontece em 18 outubro 2026, em 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR.",
+            "url": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+            "startDate": "2026-10-18",
+            "endDate": "2026-10-18",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://d1au5iau2exwyo.cloudfront.net/RUN_SERIES_8c536e066d.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Londrina",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.tfsports.com.br/run-series/motiva-aeroportos-londrina-2026/"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "TFSPORT",
+              "url": "https://www.tfsports.com.br/"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Corridas em PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+                "@type": "ListItem",
+                "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+      "stats": "200 0.303276",
+      "returncode": 0,
+      "meta": {
+        "title": "Track&Field Run Series 2026 - Motiva Aeroportos -  - Road race - Road Runners",
+        "h1": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina",
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina takes place on 18 october 2026, in 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR."
+          ],
+          "keywords": [
+            "event, running, competition, podium, athletes, runners"
+          ],
+          "twitter:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - Road race - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina takes place on 18 october 2026, in 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - Road race - Road Runners"
+          ],
+          "og:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina takes place on 18 october 2026, in 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+            "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina",
+            "description": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina takes place on 18 october 2026, in 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR.",
+            "url": "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+            "startDate": "2026-10-18",
+            "endDate": "2026-10-18",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://d1au5iau2exwyo.cloudfront.net/RUN_SERIES_8c536e066d.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Londrina",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.tfsports.com.br/run-series/motiva-aeroportos-londrina-2026/"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "TFSPORT",
+              "url": "https://www.tfsports.com.br/"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Races in PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+                "@type": "ListItem",
+                "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+      "stats": "200 0.301490",
+      "returncode": 0,
+      "meta": {
+        "title": "Track&Field Run Series 2026 - Motiva Aeroportos -  - Carrera de ruta - Road Runners",
+        "h1": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina",
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina se realiza el 18 octubre 2026, en 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR."
+          ],
+          "keywords": [
+            "evento, running, competición, podio, atletas, corredores"
+          ],
+          "twitter:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - Carrera de ruta - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina se realiza el 18 octubre 2026, en 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - Carrera de ruta - Road Runners"
+          ],
+          "og:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina se realiza el 18 octubre 2026, en 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+            "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina",
+            "description": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina se realiza el 18 octubre 2026, en 📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100 - Londrina - PR.",
+            "url": "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+            "startDate": "2026-10-18",
+            "endDate": "2026-10-18",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://d1au5iau2exwyo.cloudfront.net/RUN_SERIES_8c536e066d.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Londrina",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "📍Rua Tenente João Maurício Medeiros, 300 - Londrina - PR, 86039-100"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.tfsports.com.br/run-series/motiva-aeroportos-londrina-2026/"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "TFSPORT",
+              "url": "https://www.tfsports.com.br/"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/es/",
+                "@type": "ListItem",
+                "name": "Inicio"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Carreras en PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-motiva-aeroportos-londrina/",
+                "@type": "ListItem",
+                "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Londrina"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+      "stats": "200 0.285207",
+      "returncode": 0,
+      "meta": {
+        "title": "Track&Field Run Series 2026 - Motiva Aeroportos -  - corrida de rua - Road Runners",
+        "h1": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba acontece em 29 novembro 2026, em 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR."
+          ],
+          "keywords": [
+            "evento, corrida, competição, pódio, atletas, corredores"
+          ],
+          "twitter:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - corrida de rua - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba acontece em 29 novembro 2026, em 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - corrida de rua - Road Runners"
+          ],
+          "og:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba acontece em 29 novembro 2026, em 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+            "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba",
+            "description": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba acontece em 29 novembro 2026, em 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR.",
+            "url": "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+            "startDate": "2026-11-29",
+            "endDate": "2026-11-29",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://d1au5iau2exwyo.cloudfront.net/CAMISETA_FINISHER_c438b39c1a.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Curitiba",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.tfsports.com.br/run-series/motiva-aeroportos-curitiba-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Corridas em PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+                "@type": "ListItem",
+                "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/en/event/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+      "stats": "200 0.317646",
+      "returncode": 0,
+      "meta": {
+        "title": "Track&Field Run Series 2026 - Motiva Aeroportos -  - Road race - Road Runners",
+        "h1": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba",
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba takes place on 29 november 2026, in 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR."
+          ],
+          "keywords": [
+            "event, running, competition, podium, athletes, runners"
+          ],
+          "twitter:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - Road race - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba takes place on 29 november 2026, in 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/en/event/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - Road race - Road Runners"
+          ],
+          "og:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba takes place on 29 november 2026, in 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/en/event/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+            "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba",
+            "description": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba takes place on 29 november 2026, in 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR.",
+            "url": "https://roadrunners.run/en/event/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+            "startDate": "2026-11-29",
+            "endDate": "2026-11-29",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://d1au5iau2exwyo.cloudfront.net/CAMISETA_FINISHER_c438b39c1a.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Curitiba",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.tfsports.com.br/run-series/motiva-aeroportos-curitiba-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Races in PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+                "@type": "ListItem",
+                "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/es/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+      "stats": "200 0.313715",
+      "returncode": 0,
+      "meta": {
+        "title": "Track&Field Run Series 2026 - Motiva Aeroportos -  - Carrera de ruta - Road Runners",
+        "h1": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba",
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba se realiza el 29 noviembre 2026, en 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR."
+          ],
+          "keywords": [
+            "evento, running, competición, podio, atletas, corredores"
+          ],
+          "twitter:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - Carrera de ruta - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba se realiza el 29 noviembre 2026, en 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/es/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos -  - Carrera de ruta - Road Runners"
+          ],
+          "og:description": [
+            "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba se realiza el 29 noviembre 2026, en 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/es/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/es/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+            "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba",
+            "description": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba se realiza el 29 noviembre 2026, en 📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900 - Curitiba - PR.",
+            "url": "https://roadrunners.run/es/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+            "startDate": "2026-11-29",
+            "endDate": "2026-11-29",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://d1au5iau2exwyo.cloudfront.net/CAMISETA_FINISHER_c438b39c1a.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Curitiba",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "📍Aeroporto Curitiba - Avenida Rocha Pombo - Curitiba - SC, 83010-900"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.tfsports.com.br/run-series/motiva-aeroportos-curitiba-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/es/",
+                "@type": "ListItem",
+                "name": "Inicio"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Carreras en PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/es/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/",
+                "@type": "ListItem",
+                "name": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+      "stats": "200 0.295977",
+      "returncode": 0,
+      "meta": {
+        "title": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners",
+        "h1": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA acontece em 22 novembro 2026, em Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR."
+          ],
+          "keywords": [
+            "evento, corrida, competição, pódio, atletas, corredores"
+          ],
+          "twitter:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA acontece em 22 novembro 2026, em Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners"
+          ],
+          "og:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA acontece em 22 novembro 2026, em Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+            "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA",
+            "description": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA acontece em 22 novembro 2026, em Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR.",
+            "url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+            "startDate": "2026-11-22",
+            "endDate": "2026-11-22",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/LN0KND8ZRD3X78WNS03EM2MSUPRVVL2LJPDUTF0NF9D4LWYY5Y.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Curitiba",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87899&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Corridas em PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+                "@type": "ListItem",
+                "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+      "stats": "200 0.289305",
+      "returncode": 0,
+      "meta": {
+        "title": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners",
+        "h1": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA",
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA takes place on 22 november 2026, in Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR."
+          ],
+          "keywords": [
+            "event, running, competition, podium, athletes, runners"
+          ],
+          "twitter:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA takes place on 22 november 2026, in Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners"
+          ],
+          "og:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA takes place on 22 november 2026, in Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+            "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA",
+            "description": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA takes place on 22 november 2026, in Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR.",
+            "url": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+            "startDate": "2026-11-22",
+            "endDate": "2026-11-22",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/LN0KND8ZRD3X78WNS03EM2MSUPRVVL2LJPDUTF0NF9D4LWYY5Y.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Curitiba",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87899&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Races in PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+                "@type": "ListItem",
+                "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+      "stats": "200 0.296492",
+      "returncode": 0,
+      "meta": {
+        "title": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners",
+        "h1": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA",
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA se realiza el 22 noviembre 2026, en Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR."
+          ],
+          "keywords": [
+            "evento, running, competición, podio, atletas, corredores"
+          ],
+          "twitter:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA se realiza el 22 noviembre 2026, en Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners"
+          ],
+          "og:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA se realiza el 22 noviembre 2026, en Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+            "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA",
+            "description": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA se realiza el 22 noviembre 2026, en Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil - Curitiba - PR.",
+            "url": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+            "startDate": "2026-11-22",
+            "endDate": "2026-11-22",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/LN0KND8ZRD3X78WNS03EM2MSUPRVVL2LJPDUTF0NF9D4LWYY5Y.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Curitiba",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "Praça Afonso Botelho: R. Eng. Rebouças, 3020, Curitiba, PR, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87899&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/es/",
+                "@type": "ListItem",
+                "name": "Inicio"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Carreras en PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/",
+                "@type": "ListItem",
+                "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+      "stats": "200 0.298370",
+      "returncode": 0,
+      "meta": {
+        "title": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners",
+        "h1": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA acontece em 17 outubro 2026, em Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR."
+          ],
+          "keywords": [
+            "evento, corrida, competição, pódio, atletas, corredores"
+          ],
+          "twitter:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA acontece em 17 outubro 2026, em Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners"
+          ],
+          "og:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA acontece em 17 outubro 2026, em Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+            "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+            "description": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA acontece em 17 outubro 2026, em Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR.",
+            "url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+            "startDate": "2026-10-17",
+            "endDate": "2026-10-17",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/AHK7B3QRPWMSXS6SXSAKLNE92J4ADYNV7Z0JJVPWSUA8DFWT6W.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Apucarana",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87900&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Corridas em PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+                "@type": "ListItem",
+                "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+      "stats": "200 0.301546",
+      "returncode": 0,
+      "meta": {
+        "title": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners",
+        "h1": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA takes place on 17 october 2026, in Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR."
+          ],
+          "keywords": [
+            "event, running, competition, podium, athletes, runners"
+          ],
+          "twitter:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA takes place on 17 october 2026, in Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners"
+          ],
+          "og:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA takes place on 17 october 2026, in Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+            "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+            "description": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA takes place on 17 october 2026, in Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR.",
+            "url": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+            "startDate": "2026-10-17",
+            "endDate": "2026-10-17",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/AHK7B3QRPWMSXS6SXSAKLNE92J4ADYNV7Z0JJVPWSUA8DFWT6W.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Apucarana",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87900&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Races in PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+                "@type": "ListItem",
+                "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+      "stats": "200 0.298069",
+      "returncode": 0,
+      "meta": {
+        "title": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners",
+        "h1": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA se realiza el 17 octubre 2026, en Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR."
+          ],
+          "keywords": [
+            "evento, running, competición, podio, atletas, corredores"
+          ],
+          "twitter:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA se realiza el 17 octubre 2026, en Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners"
+          ],
+          "og:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA se realiza el 17 octubre 2026, en Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+            "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+            "description": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA se realiza el 17 octubre 2026, en Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR.",
+            "url": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+            "startDate": "2026-10-17",
+            "endDate": "2026-10-17",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/AHK7B3QRPWMSXS6SXSAKLNE92J4ADYNV7Z0JJVPWSUA8DFWT6W.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Apucarana",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87900&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/es/",
+                "@type": "ListItem",
+                "name": "Inicio"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Carreras en PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+                "@type": "ListItem",
+                "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+      "stats": "200 0.283545",
+      "returncode": 0,
+      "meta": {
+        "title": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners",
+        "h1": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU",
+        "canonical": [
+          "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU acontece em 11 outubro 2026, em Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR."
+          ],
+          "keywords": [
+            "evento, corrida, competição, pódio, atletas, corredores"
+          ],
+          "twitter:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU acontece em 11 outubro 2026, em Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners"
+          ],
+          "og:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU acontece em 11 outubro 2026, em Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+            "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU",
+            "description": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU acontece em 11 outubro 2026, em Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR.",
+            "url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+            "startDate": "2026-10-11",
+            "endDate": "2026-10-11",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/XB0DW4IU72D03FY50BVSA0T44GMKB2IRER1FSXTNTGUQF9DUL2.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Santa Terezinha de Itaipu",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87901&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Corridas em PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+                "@type": "ListItem",
+                "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+      "stats": "200 0.284911",
+      "returncode": 0,
+      "meta": {
+        "title": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners",
+        "h1": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU",
+        "canonical": [
+          "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU takes place on 11 october 2026, in Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR."
+          ],
+          "keywords": [
+            "event, running, competition, podium, athletes, runners"
+          ],
+          "twitter:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU takes place on 11 october 2026, in Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners"
+          ],
+          "og:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU takes place on 11 october 2026, in Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+            "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU",
+            "description": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU takes place on 11 october 2026, in Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR.",
+            "url": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+            "startDate": "2026-10-11",
+            "endDate": "2026-10-11",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/XB0DW4IU72D03FY50BVSA0T44GMKB2IRER1FSXTNTGUQF9DUL2.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Santa Terezinha de Itaipu",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87901&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Races in PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+                "@type": "ListItem",
+                "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+      "stats": "200 0.264325",
+      "returncode": 0,
+      "meta": {
+        "title": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners",
+        "h1": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU",
+        "canonical": [
+          "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+        ],
+        "alternates": [
+          [
+            "pt-BR",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          [
+            "en",
+            "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          [
+            "es",
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          [
+            "x-default",
+            "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ]
+        ],
+        "meta": {
+          "viewport": [
+            "width=device-width, initial-scale=1",
+            "width=device-width, initial-scale=1, maximum-scale=1"
+          ],
+          "theme-color": [
+            "#222222"
+          ],
+          "msapplication-TileColor": [
+            "#222222"
+          ],
+          "application-name": [
+            "Road Runners"
+          ],
+          "apple-mobile-web-app-capable": [
+            "yes"
+          ],
+          "apple-mobile-web-app-status-bar-style": [
+            "default"
+          ],
+          "apple-mobile-web-app-title": [
+            "Road Runners"
+          ],
+          "description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU se realiza el 11 octubre 2026, en Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR."
+          ],
+          "keywords": [
+            "evento, running, competición, podio, atletas, corredores"
+          ],
+          "twitter:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners"
+          ],
+          "twitter:card": [
+            "summary"
+          ],
+          "twitter:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU se realiza el 11 octubre 2026, en Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR."
+          ],
+          "twitter:image": [
+            "https://roadrunners.run/assets/meta_imagem.jpg"
+          ],
+          "twitter:site": [
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          "og:type": [
+            "website"
+          ],
+          "og:title": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners"
+          ],
+          "og:description": [
+            "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU se realiza el 11 octubre 2026, en Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR."
+          ],
+          "og:url": [
+            "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/"
+          ],
+          "og:site_name": [
+            "Road Runners"
+          ],
+          "og:image": [
+            "https://roadrunners.run/assets/meta/roadrunners.jpg"
+          ],
+          "verification": [
+            "38854b6ad1b847b47c8b8f6fa023f0ab"
+          ]
+        },
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+            "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU",
+            "description": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU se realiza el 11 octubre 2026, en Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil - Santa Terezinha de Itaipu - PR.",
+            "url": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+            "startDate": "2026-10-11",
+            "endDate": "2026-10-11",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/XB0DW4IU72D03FY50BVSA0T44GMKB2IRER1FSXTNTGUQF9DUL2.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Santa Terezinha de Itaipu",
+                "addressRegion": "PR",
+                "addressCountry": "BR",
+                "streetAddress": "Praça do Paço: R. João XXIII, 50, Santa Terezinha de Itaipu, PR, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87901&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/es/",
+                "@type": "ListItem",
+                "name": "Inicio"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/pr/",
+                "@type": "ListItem",
+                "name": "Carreras en PR"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-santa-terezinha-de-itaipu/",
+                "@type": "ListItem",
+                "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA SANTA TEREZINHA DE ITAIPU"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      }
+    }
+  ],
+  "direct_include": {
+    "url": "https://roadrunners.run/includes/estrutura/event_title_date.cfm",
+    "stats": "404 0.073498",
+    "returncode": 0
+  }
+}

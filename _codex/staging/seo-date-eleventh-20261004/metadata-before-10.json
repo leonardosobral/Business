@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-tricolor-run-noturna-2026-2-etapa/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-tricolor-run-noturna-2026-2-etapa/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-tricolor-run-noturna-2026-2-etapa/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-tricolor-run-noturna-2026-2-etapa/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-tricolor-run-noturna-2026-2-etapa/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-tricolor-run-noturna-2026-2-etapa/",
+      "name": "TRICOLOR RUN NOTURNA 2026 -  2ª Etapa",
+      "description": "TRICOLOR RUN NOTURNA 2026 -  2ª Etapa takes place on 21 november 2026, in Estádio do Morumbis: Praça Roberto Gomes Pedrosa, S/N, São Paulo, SP, Brasil - São Paulo - SP.",
+      "url": "https://roadrunners.run/en/event/2026-tricolor-run-noturna-2026-2-etapa/",
+      "startDate": "2026-11-21",
+      "endDate": "2026-11-21",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/TDLKLIK236EO5X39HG7S5J7JS3IWRPWMIMO2QVJXQYASFV1WWX.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Estádio do Morumbis: Praça Roberto Gomes Pedrosa, S/N, São Paulo, SP, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "São Paulo",
+          "addressRegion": "SP",
+          "addressCountry": "BR",
+          "streetAddress": "Estádio do Morumbis: Praça Roberto Gomes Pedrosa, S/N, São Paulo, SP, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87210&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sp/",
+          "@type": "ListItem",
+          "name": "Races in SP"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-tricolor-run-noturna-2026-2-etapa/",
+          "@type": "ListItem",
+          "name": "TRICOLOR RUN NOTURNA 2026 -  2ª Etapa"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

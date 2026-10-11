@@ -65,7 +65,7 @@
               </div>
               <div class="business-mini-metric">
                 <span class="business-label">Seu papel</span>
-                <strong><cfoutput>#htmlEditFormat(VARIABLES.subscriptionRoleLabel)#</cfoutput></strong>
+                <strong><cfoutput>#encodeForHTML(VARIABLES.subscriptionRoleLabel)#</cfoutput></strong>
               </div>
               <div class="business-mini-metric">
                 <span class="business-label">Cobrança</span>

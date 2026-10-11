@@ -1,0 +1,19 @@
+{
+  "before": {
+    "circuitocatarinense/corridaderua/index.cfm": "5365d33bfbede37c5d4d0cfcb0491947c7026871e3d72fe559131ab0649278bd",
+    "circuitocatarinense/trailrun/index.cfm": "035fe10c3bfa3aa8357ca4db9117212e767bb3339672dbd577fba995d76cdda6"
+  },
+  "candidate": {
+    "circuitocatarinense/corridaderua/index.cfm": "33d1abe67a6f7ad5d346b62d801acb7c9ed82b0c5aabb62dd0c2b39cc7c15d37",
+    "circuitocatarinense/trailrun/index.cfm": "159b9afdbd7ebcc8f3dd448e87e69483d3f98ac9802d64ead90019f3bdf715b0"
+  },
+  "order": [
+    "circuitocatarinense/corridaderua/index.cfm",
+    "circuitocatarinense/trailrun/index.cfm"
+  ],
+  "compile": {
+    "templates": 2,
+    "output": "successful 2\ntotal 2\nelapsed 2.906 sec\n\n",
+    "returncode": 0
+  }
+}

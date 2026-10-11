@@ -1,0 +1,11 @@
+{
+  "Application.cfc": "4b946b355d9ef6076bdbb88480b22e86acd660056efab3c4ae14fcca080e7af5",
+  "includes/estrutura/head.cfm": "6e3066fe33eec76215e8b5849fed2bc9daeee1ca3b5052433d59308054111af9",
+  "includes/estrutura/footer.cfm": "0fefa125cf85931a01f102454202605cb43c82ee967088ba103b3701c8d2ddad",
+  "includes/analytics/bootstrap.cfm": "ada65b37a3bd349499cbc9ca67e8e2851693bc7f57863f218b5e9df72b56f781",
+  "assets/css/rr-audience-privacy.css": "22361c9a2002f8b562615c3f9d93258fe2dace4595348dc103f4ce84ddccd73a",
+  "assets/css/runnerhub-footer.css": "8f2a65ea8400b28b9bd9cef3bc3d883184bdb91be455e441a8b4d897715d7344",
+  "assets/css/cores.css": "0197750f87cb03bc100f98423162c1cbb3def223f2c22777697b8b9bb87646d7",
+  "assets/js/rr-audience-privacy.js": "712c40343e288cd16b25ab75c56fc02921096aaebdaad2f16cae8271deb5fcca",
+  "assets/js/runnerhub-entry-prompts.js": "5d9e41e5f8f7a9b8a2555d0f53e00ec1e325afce76dd0b7359fde9f3c3931864"
+}

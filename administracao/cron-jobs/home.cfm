@@ -398,10 +398,10 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
       </div>
 
       <cfif len(trim(VARIABLES.cronJobsNotice))>
-        <cfoutput><div class="alert alert-success">#htmlEditFormat(VARIABLES.cronJobsNotice)#</div></cfoutput>
+        <cfoutput><div class="alert alert-success">#encodeForHTML(VARIABLES.cronJobsNotice)#</div></cfoutput>
       </cfif>
       <cfif len(trim(VARIABLES.cronJobsError))>
-        <cfoutput><div class="alert alert-warning">#htmlEditFormat(VARIABLES.cronJobsError)#</div></cfoutput>
+        <cfoutput><div class="alert alert-warning">#encodeForHTML(VARIABLES.cronJobsError)#</div></cfoutput>
       </cfif>
 
       <cfif NOT VARIABLES.cronJobsSchemaReady>
@@ -440,12 +440,12 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
             <h5 class="mb-3"><cfif len(trim(VARIABLES.cronJobFormId))>Editar job<cfelse>Novo job</cfif></h5>
             <form method="post" action="./">
               <input type="hidden" name="acao" value="salvar_job">
-              <input type="hidden" name="id_cron_job" value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormId)#</cfoutput>">
+              <input type="hidden" name="id_cron_job" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cronJobFormId)#</cfoutput>">
 
               <div class="row g-3">
                 <div class="col-lg-5">
                   <label class="form-label">Nome</label>
-                  <input class="form-control" name="nome" required value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormNome)#</cfoutput>">
+                  <input class="form-control" name="nome" required value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cronJobFormNome)#</cfoutput>">
                 </div>
                 <div class="col-lg-2">
                   <label class="form-label">Projeto</label>
@@ -465,12 +465,12 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                 </div>
                 <div class="col-lg-3">
                   <label class="form-label">Próxima execução</label>
-                  <input class="form-control" type="datetime-local" name="next_run_at" value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormNextRun)#</cfoutput>">
+                  <input class="form-control" type="datetime-local" name="next_run_at" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cronJobFormNextRun)#</cfoutput>">
                 </div>
 
                 <div class="col-12">
                   <label class="form-label">URL da API</label>
-                  <input class="form-control" name="endpoint_url" required placeholder="https://business.roadrunners.run/health/" value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormUrl)#</cfoutput>">
+                  <input class="form-control" name="endpoint_url" required placeholder="https://business.roadrunners.run/health/" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cronJobFormUrl)#</cfoutput>">
                 </div>
 
                 <div class="col-md-2">
@@ -483,19 +483,19 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                 </div>
                 <div class="col-md-4">
                   <label class="form-label">Content-Type</label>
-                  <input class="form-control" name="content_type" value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormContentType)#</cfoutput>">
+                  <input class="form-control" name="content_type" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cronJobFormContentType)#</cfoutput>">
                 </div>
                 <div class="col-md-2">
                   <label class="form-label">Intervalo min.</label>
-                  <input class="form-control" type="number" min="1" name="interval_minutes" value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormInterval)#</cfoutput>">
+                  <input class="form-control" type="number" min="1" name="interval_minutes" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cronJobFormInterval)#</cfoutput>">
                 </div>
                 <div class="col-md-2">
                   <label class="form-label">Timeout seg.</label>
-                  <input class="form-control" type="number" min="1" max="120" name="timeout_seconds" value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormTimeout)#</cfoutput>">
+                  <input class="form-control" type="number" min="1" max="120" name="timeout_seconds" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cronJobFormTimeout)#</cfoutput>">
                 </div>
                 <div class="col-md-2">
                   <label class="form-label">Tentativas</label>
-                  <input class="form-control" type="number" min="0" max="3" name="retry_limit" value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormRetry)#</cfoutput>">
+                  <input class="form-control" type="number" min="0" max="3" name="retry_limit" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cronJobFormRetry)#</cfoutput>">
                 </div>
 
                 <div class="col-md-4">
@@ -509,21 +509,21 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                 </div>
                 <div class="col-md-4">
                   <label class="form-label">Secret ref</label>
-                  <input class="form-control" name="secret_ref" placeholder="road_runners_handoff" value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormSecretRef)#</cfoutput>">
+                  <input class="form-control" name="secret_ref" placeholder="road_runners_handoff" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cronJobFormSecretRef)#</cfoutput>">
                   <div class="form-text">Referência em <code>businessLocalConfig.cronSecrets</code>, não o segredo real.</div>
                 </div>
                 <div class="col-md-4">
                   <label class="form-label">Máx. runtime seg.</label>
-                  <input class="form-control" type="number" min="30" name="max_runtime_seconds" value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormMaxRuntime)#</cfoutput>">
+                  <input class="form-control" type="number" min="30" name="max_runtime_seconds" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cronJobFormMaxRuntime)#</cfoutput>">
                 </div>
 
                 <div class="col-lg-6">
                   <label class="form-label">Headers JSON</label>
-                  <textarea class="form-control" name="headers_json"><cfoutput>#htmlEditFormat(VARIABLES.cronJobFormHeaders)#</cfoutput></textarea>
+                  <textarea class="form-control" name="headers_json"><cfoutput>#encodeForHTML(VARIABLES.cronJobFormHeaders)#</cfoutput></textarea>
                 </div>
                 <div class="col-lg-6">
                   <label class="form-label">Body</label>
-                  <textarea class="form-control" name="request_body"><cfoutput>#htmlEditFormat(VARIABLES.cronJobFormBody)#</cfoutput></textarea>
+                  <textarea class="form-control" name="request_body"><cfoutput>#encodeForHTML(VARIABLES.cronJobFormBody)#</cfoutput></textarea>
                 </div>
 
                 <div class="col-12">
@@ -540,7 +540,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                           id="cronJobNewItemsDestination"
                           name="notificacao_novos_itens_destino"
                           placeholder="/administracao/exemplo/"
-                          value="<cfoutput>#htmlEditFormat(VARIABLES.cronJobFormNewItemsDestination)#</cfoutput>">
+                          value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cronJobFormNewItemsDestination)#</cfoutput>">
                       </div>
                       <div class="form-text">
                         Informe somente o caminho interno. Notificações de erro sempre direcionam para
@@ -573,10 +573,10 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                           <cfoutput query="qCronJobAvailableAdmins">
                             <cfset VARIABLES.cronAdminReceivesErrors = arrayFind(VARIABLES.cronJobSelectedErrorAdminIds, val(qCronJobAvailableAdmins.id)) GT 0/>
                             <cfset VARIABLES.cronAdminReceivesNewItems = arrayFind(VARIABLES.cronJobSelectedNewItemsAdminIds, val(qCronJobAvailableAdmins.id)) GT 0/>
-                            <tr data-cron-admin-search="#htmlEditFormat(lCase(qCronJobAvailableAdmins.name & ' ' & qCronJobAvailableAdmins.email))#">
+                            <tr data-cron-admin-search="#encodeForHTMLAttribute(lCase(qCronJobAvailableAdmins.name & ' ' & qCronJobAvailableAdmins.email))#">
                               <td>
-                                <div>#htmlEditFormat(qCronJobAvailableAdmins.name)#</div>
-                                <div class="small text-muted cron-admin-email">#htmlEditFormat(qCronJobAvailableAdmins.email)# · ID #qCronJobAvailableAdmins.id#</div>
+                                <div>#encodeForHTML(qCronJobAvailableAdmins.name)#</div>
+                                <div class="small text-muted cron-admin-email">#encodeForHTML(qCronJobAvailableAdmins.email)# · ID #qCronJobAvailableAdmins.id#</div>
                               </td>
                               <td class="text-center">
                                 <input
@@ -584,7 +584,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                                   type="checkbox"
                                   name="notificar_erro_admin_ids"
                                   value="#qCronJobAvailableAdmins.id#"
-                                  aria-label="Notificar #htmlEditFormat(qCronJobAvailableAdmins.name)# em caso de erro"
+                                  aria-label="Notificar #encodeForHTMLAttribute(qCronJobAvailableAdmins.name)# em caso de erro"
                                   <cfif VARIABLES.cronAdminReceivesErrors>checked</cfif>>
                               </td>
                               <td class="text-center">
@@ -593,7 +593,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                                   type="checkbox"
                                   name="notificar_novos_itens_admin_ids"
                                   value="#qCronJobAvailableAdmins.id#"
-                                  aria-label="Notificar #htmlEditFormat(qCronJobAvailableAdmins.name)# quando houver novos itens"
+                                  aria-label="Notificar #encodeForHTMLAttribute(qCronJobAvailableAdmins.name)# quando houver novos itens"
                                   <cfif VARIABLES.cronAdminReceivesNewItems>checked</cfif>>
                               </td>
                             </tr>
@@ -631,13 +631,13 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
 
         <form class="business-filterbar row g-2 mb-3" method="get" action="./">
           <div class="col-lg-4">
-            <input class="form-control" name="busca" placeholder="Buscar por nome ou URL" value="<cfoutput>#htmlEditFormat(URL.busca)#</cfoutput>">
+            <input class="form-control" name="busca" placeholder="Buscar por nome ou URL" value="<cfoutput>#encodeForHTMLAttribute(URL.busca)#</cfoutput>">
           </div>
           <div class="col-lg-2">
-            <input class="form-control" name="projeto" placeholder="Projeto" value="<cfoutput>#htmlEditFormat(URL.projeto)#</cfoutput>">
+            <input class="form-control" name="projeto" placeholder="Projeto" value="<cfoutput>#encodeForHTMLAttribute(URL.projeto)#</cfoutput>">
           </div>
           <div class="col-lg-2">
-            <input class="form-control" name="ambiente" placeholder="Ambiente" value="<cfoutput>#htmlEditFormat(URL.ambiente)#</cfoutput>">
+            <input class="form-control" name="ambiente" placeholder="Ambiente" value="<cfoutput>#encodeForHTMLAttribute(URL.ambiente)#</cfoutput>">
           </div>
           <div class="col-lg-2">
             <select class="form-select" name="status">
@@ -677,11 +677,11 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                 <tr>
                   <td nowrap>#qCronJobs.id_cron_job#</td>
                   <td>
-                    <div class="fw-semibold">#htmlEditFormat(qCronJobs.nome)#</div>
-                    <div class="cron-meta">#htmlEditFormat(qCronJobs.projeto)# / #htmlEditFormat(qCronJobs.ambiente)# / #htmlEditFormat(qCronJobs.http_method)#</div>
-                    <div class="small cron-url">#htmlEditFormat(qCronJobs.endpoint_url)#</div>
+                    <div class="fw-semibold">#encodeForHTML(qCronJobs.nome)#</div>
+                    <div class="cron-meta">#encodeForHTML(qCronJobs.projeto)# / #encodeForHTML(qCronJobs.ambiente)# / #encodeForHTML(qCronJobs.http_method)#</div>
+                    <div class="small cron-url">#encodeForHTML(qCronJobs.endpoint_url)#</div>
                     <cfif listFindNoCase("error,http_error,failed,timeout", VARIABLES.cronRowLastStatusNormalized) AND len(trim(VARIABLES.cronRowLastError))>
-                      <div class="small text-danger cron-row-error">#htmlEditFormat(left(VARIABLES.cronRowLastError, 180))#<cfif len(VARIABLES.cronRowLastError) GT 180>...</cfif></div>
+                      <div class="small text-danger cron-row-error">#encodeForHTML(left(VARIABLES.cronRowLastError, 180))#<cfif len(VARIABLES.cronRowLastError) GT 180>...</cfif></div>
                     </cfif>
                   </td>
                   <td>
@@ -691,13 +691,13 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                   <td>
                     <span class="badge <cfif qCronJobs.ativo>badge-success<cfelse>badge-secondary</cfif>"><cfif qCronJobs.ativo>Ativo<cfelse>Inativo</cfif></span>
                     <cfif len(trim(VARIABLES.cronRowLastStatus))>
-                      <span class="badge <cfif VARIABLES.cronRowLastStatusNormalized EQ 'success'>badge-success<cfelseif VARIABLES.cronRowLastStatusNormalized EQ 'http_error'>badge-warning text-dark<cfelse>badge-danger</cfif>">#htmlEditFormat(VARIABLES.cronRowLastStatus)#</span>
+                      <span class="badge <cfif VARIABLES.cronRowLastStatusNormalized EQ 'success'>badge-success<cfelseif VARIABLES.cronRowLastStatusNormalized EQ 'http_error'>badge-warning text-dark<cfelse>badge-danger</cfif>">#encodeForHTML(VARIABLES.cronRowLastStatus)#</span>
                     </cfif>
                   </td>
                   <td>
                     <cfif isDate(qCronJobs.last_run_at)>
                       #lsDateFormat(qCronJobs.last_run_at, "dd/mm/yyyy")# #lsTimeFormat(qCronJobs.last_run_at, "HH:mm")#
-                      <small class="cron-meta d-block">#htmlEditFormat(VARIABLES.cronRowLastHttpStatus)# <cfif len(trim(VARIABLES.cronRowLastDuration))>#VARIABLES.cronRowLastDuration#ms</cfif></small>
+                      <small class="cron-meta d-block">#encodeForHTML(VARIABLES.cronRowLastHttpStatus)# <cfif len(trim(VARIABLES.cronRowLastDuration))>#VARIABLES.cronRowLastDuration#ms</cfif></small>
                     <cfelse>
                       <span class="text-muted">-</span>
                     </cfif>
@@ -777,7 +777,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
           <form class="business-filterbar row g-2 align-items-center mb-3" method="get" action="./">
             <input type="hidden" name="aba" value="historico">
             <div class="col-md-3 col-xl-2">
-              <input class="form-control" name="historico_job_id" inputmode="numeric" placeholder="ID do job" value="<cfoutput>#htmlEditFormat(URL.historico_job_id)#</cfoutput>">
+              <input class="form-control" name="historico_job_id" inputmode="numeric" placeholder="ID do job" value="<cfoutput>#encodeForHTMLAttribute(URL.historico_job_id)#</cfoutput>">
             </div>
             <div class="col-md-3 col-xl-2">
               <select class="form-select" name="historico_status">
@@ -829,33 +829,33 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                   </cfif>
                   <tr>
                     <td nowrap>#lsDateFormat(qCronJobRuns.started_at, "dd/mm/yyyy")# #lsTimeFormat(qCronJobRuns.started_at, "HH:mm:ss")#</td>
-                    <td>#htmlEditFormat(qCronJobRuns.nome)#</td>
-                    <td>#htmlEditFormat(qCronJobRuns.trigger_type)#</td>
-                    <td><span class="badge <cfif qCronJobRuns.status EQ 'success'>badge-success<cfelseif qCronJobRuns.status EQ 'http_error'>badge-warning text-dark<cfelse>badge-danger</cfif>">#htmlEditFormat(qCronJobRuns.status)#</span></td>
-                    <td>#htmlEditFormat(VARIABLES.cronRunHttpStatus)#</td>
+                    <td>#encodeForHTML(qCronJobRuns.nome)#</td>
+                    <td>#encodeForHTML(qCronJobRuns.trigger_type)#</td>
+                    <td><span class="badge <cfif qCronJobRuns.status EQ 'success'>badge-success<cfelseif qCronJobRuns.status EQ 'http_error'>badge-warning text-dark<cfelse>badge-danger</cfif>">#encodeForHTML(qCronJobRuns.status)#</span></td>
+                    <td>#encodeForHTML(VARIABLES.cronRunHttpStatus)#</td>
                     <td><cfif len(trim(VARIABLES.cronRunDuration))>#VARIABLES.cronRunDuration#ms<cfelse>-</cfif></td>
                     <td class="small">
                       <div class="cron-run-summary">
-                        <div class="fw-semibold">#htmlEditFormat(VARIABLES.cronRunSummary.message)#</div>
+                        <div class="fw-semibold">#encodeForHTML(VARIABLES.cronRunSummary.message)#</div>
                         <div class="cron-run-metrics">
                           <cfif len(VARIABLES.cronRunSummary.status)>
-                            <span class="cron-run-metric">Status: #htmlEditFormat(VARIABLES.cronRunSummary.status)#</span>
+                            <span class="cron-run-metric">Status: #encodeForHTML(VARIABLES.cronRunSummary.status)#</span>
                           </cfif>
                           <cfloop array="#VARIABLES.cronRunSummary.metrics#" item="cronRunMetric">
-                            <span class="cron-run-metric">#htmlEditFormat(cronRunMetric.label)#: <strong>#htmlEditFormat(cronRunMetric.value)#</strong></span>
+                            <span class="cron-run-metric">#encodeForHTML(cronRunMetric.label)#: <strong>#encodeForHTML(cronRunMetric.value)#</strong></span>
                           </cfloop>
                         </div>
                         <cfif arrayLen(VARIABLES.cronRunSummary.errors)>
                           <ul class="cron-run-errors">
                             <cfloop from="1" to="#min(2, arrayLen(VARIABLES.cronRunSummary.errors))#" index="cronRunErrorIndex">
-                              <li>#htmlEditFormat(VARIABLES.cronRunSummary.errors[cronRunErrorIndex])#</li>
+                              <li>#encodeForHTML(VARIABLES.cronRunSummary.errors[cronRunErrorIndex])#</li>
                             </cfloop>
                           </ul>
                         </cfif>
                         <cfif len(trim(VARIABLES.cronRunSummary.raw)) AND VARIABLES.cronRunSummary.isJson>
                           <details class="cron-run-details">
                             <summary>Ver resposta completa</summary>
-                            <pre>#htmlEditFormat(VARIABLES.cronRunSummary.raw)#</pre>
+                            <pre>#encodeForHTML(VARIABLES.cronRunSummary.raw)#</pre>
                           </details>
                         </cfif>
                       </div>

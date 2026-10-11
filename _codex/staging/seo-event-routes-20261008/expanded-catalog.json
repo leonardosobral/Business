@@ -1,0 +1,472 @@
+{
+  "watch": {},
+  "events": {
+    "EVENTS": [
+      {
+        "date": "2023-03-18",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 1283,
+        "tag": "2023-jurerê-night-run-2023",
+        "name": "Jurerê Night Run 2023"
+      },
+      {
+        "date": "2022-03-19",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 5642,
+        "tag": "2022-jurere-night-run-2022",
+        "name": "Jurerê Night Run 2022"
+      },
+      {
+        "date": "2023-10-22",
+        "city": "Hortolândia",
+        "state": "SP",
+        "id": 8747,
+        "tag": "2023-corrida-de-qualidade-#so-comeca",
+        "name": "Corrida de Qualidade #So Começa"
+      },
+      {
+        "date": "2023-10-22",
+        "city": "Sabino",
+        "state": "SP",
+        "id": 9372,
+        "tag": "2023-1-volta-da-\"parecida-",
+        "name": "1ª Volta da \"Parecida''"
+      },
+      {
+        "date": "2023-11-18",
+        "city": "Santa Cruz do Rio Pardo",
+        "state": "SP",
+        "id": 9465,
+        "tag": "2023-3-corrida-noturna-\"consciencia-negra\"",
+        "name": "3ª Corrida Noturna \"Consciência Negra\""
+      },
+      {
+        "date": "2024-03-16",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 11111,
+        "tag": "2024-jurere-night-run-2024",
+        "name": "Jurerê Night Run 2024"
+      },
+      {
+        "date": "2023-10-22",
+        "city": "Sabino",
+        "state": "SP",
+        "id": 12051,
+        "tag": "2023-1-volta-da-\"parecida\"",
+        "name": "1ª Volta da \"Parecida\""
+      },
+      {
+        "date": "2024-04-07",
+        "city": "Irecê",
+        "state": "BA",
+        "id": 13598,
+        "tag": "2024-blue-run\r",
+        "name": "Blue Run\r"
+      },
+      {
+        "date": "2024-04-07",
+        "city": "Santa Maria da Vitória",
+        "state": "BA",
+        "id": 13599,
+        "tag": "2024-2-corrida-medimagem-run\r",
+        "name": "2ª Corrida Medimagem Run\r"
+      },
+      {
+        "date": "2024-04-14",
+        "city": "Conceição do Coité",
+        "state": "BA",
+        "id": 13601,
+        "tag": "2024-3-corrida-coite-run\r",
+        "name": "3ª Corrida Coite Run\r"
+      },
+      {
+        "date": "2024-05-19",
+        "city": "Barreiras",
+        "state": "BA",
+        "id": 13608,
+        "tag": "2024-arraial-trail-run-2024\r",
+        "name": "Arraial Trail Run 2024\r"
+      },
+      {
+        "date": "2024-05-19",
+        "city": "Vitória da Conquista",
+        "state": "BA",
+        "id": 13610,
+        "tag": "2024-wlf-trail\r",
+        "name": "Wlf Trail\r"
+      },
+      {
+        "date": "2024-05-26",
+        "city": "Irará",
+        "state": "BA",
+        "id": 13611,
+        "tag": "2024-mini-maratona-da-emancipacao\r",
+        "name": "Mini Maratona da Emancipação\r"
+      },
+      {
+        "date": "2024-06-01",
+        "city": "Andaraí",
+        "state": "BA",
+        "id": 13613,
+        "tag": "2024-corridas-de-montanha-chapada-diamantina-2024\r",
+        "name": "Corridas de Montanha Chapada Diamantina 2024\r"
+      },
+      {
+        "date": "2024-07-07",
+        "city": "Tanquinho",
+        "state": "BA",
+        "id": 21893,
+        "tag": "2024-kong-race-#1",
+        "name": "Kong Race #1"
+      },
+      {
+        "date": "2025-05-04",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 23725,
+        "tag": "2025-meia-maratona-internacional-de-florianopolis-oakberry-2025",
+        "name": "Meia Maratona Internacional de Florianópolis Oakberry 2025"
+      },
+      {
+        "date": "2025-03-15",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 25734,
+        "tag": "2025-jurere-night-run-hard-rock-cafe-florianopolis-2025",
+        "name": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025"
+      },
+      {
+        "date": "2024-12-15",
+        "city": "Camaçari",
+        "state": "BA",
+        "id": 25856,
+        "tag": "2024-kong-race-#2",
+        "name": "Kong Race #2"
+      },
+      {
+        "date": "2024-12-21",
+        "city": "Jaguari",
+        "state": "RS",
+        "id": 26270,
+        "tag": "2024-iv-rustica-#porsaude-cauzzo-sicredi",
+        "name": "IV Rústica #Porsaúde Cauzzo Sicredi"
+      },
+      {
+        "date": "2025-02-23",
+        "city": "Palmas",
+        "state": "PR",
+        "id": 26879,
+        "tag": "2025-circuito-sesc-palmas-2025\r",
+        "name": "Circuito Sesc - Palmas 2025\r"
+      },
+      {
+        "date": "2025-03-16",
+        "city": "Ivaiporã",
+        "state": "PR",
+        "id": 26880,
+        "tag": "2025-circuito-sesc-ivaipora-2025\r",
+        "name": "Circuito Sesc - Ivaiporã 2025\r"
+      },
+      {
+        "date": "2025-04-06",
+        "city": "Medianeira",
+        "state": "PR",
+        "id": 26882,
+        "tag": "2025-circuito-sesc-medianeira-2025\r",
+        "name": "Circuito Sesc - Medianeira 2025\r"
+      },
+      {
+        "date": "2025-04-12",
+        "city": "Marechal Cândido Rondon",
+        "state": "PR",
+        "id": 26883,
+        "tag": "2025-circuito-sesc-marechal-candido-rondon-2025\r",
+        "name": "Circuito Sesc - Marechal Cândido Rondon 2025\r"
+      },
+      {
+        "date": "2025-05-04",
+        "city": "Toledo",
+        "state": "PR",
+        "id": 26885,
+        "tag": "2025-circuito-sesc-toledo-2025\r",
+        "name": "Circuito Sesc - Toledo 2025\r"
+      },
+      {
+        "date": "2025-05-18",
+        "city": "União da Vitória",
+        "state": "PR",
+        "id": 26886,
+        "tag": "2025-circuito-sesc-uniao-da-vitoria-2025\r",
+        "name": "Circuito Sesc - União da Vitória 2025\r"
+      },
+      {
+        "date": "2025-08-31",
+        "city": "Umuarama",
+        "state": "PR",
+        "id": 26892,
+        "tag": "2025-circuito-sesc-umuarama-2025\r",
+        "name": "Circuito Sesc - Umuarama 2025\r"
+      },
+      {
+        "date": "2025-10-05",
+        "city": "Paranavaí",
+        "state": "PR",
+        "id": 26894,
+        "tag": "2025-circuito-sesc-paranavai-2025\r",
+        "name": "Circuito Sesc - Paranavaí 2025\r"
+      },
+      {
+        "date": "2025-10-12",
+        "city": "Santo Antônio da Platina",
+        "state": "PR",
+        "id": 26895,
+        "tag": "2025-circuito-sesc-santo-antonio-da-platina-2025\r",
+        "name": "Circuito Sesc - Santo Antônio da Platina 2025\r"
+      },
+      {
+        "date": "2025-10-26",
+        "city": "Rio Negro",
+        "state": "PR",
+        "id": 26897,
+        "tag": "2025-circuito-sesc-rio-negro-2025\r",
+        "name": "Circuito Sesc - Rio Negro 2025\r"
+      },
+      {
+        "date": "2025-10-12",
+        "city": "Ponta Grossa",
+        "state": "PR",
+        "id": 29365,
+        "tag": "2025-2-corrida-de-nossa-senhora-aparecida",
+        "name": "2ª CORRIDA DE NOSSA SENHORA APARECIDA"
+      },
+      {
+        "date": "2025-07-05",
+        "city": "PONTA GROSSA",
+        "state": "PR",
+        "id": 32122,
+        "tag": "2025-track-field-exp-rock-and-roll\r\nexperience\r\nrock-and-run",
+        "name": "TRACK & FIELD EXP ROCK AND ROLL\r\nExperience\r\nROCK AND RUN"
+      },
+      {
+        "date": "2025-12-20",
+        "city": "Salvador",
+        "state": "BA",
+        "id": 33028,
+        "tag": "2025-ix-encontro-dos-amigos-correm-\"por-do-sol\"",
+        "name": "IX ENCONTRO DOS AMIGOS CORREM \"PÔR DO SOL\""
+      },
+      {
+        "date": "2025-09-07",
+        "city": "Mandirituba",
+        "state": "PR",
+        "id": 34714,
+        "tag": "2025-pe-na-lama-“a-grande-conquista\"",
+        "name": "Pé Na Lama “A Grande Conquista\""
+      },
+      {
+        "date": "2025-12-14",
+        "city": "Salvador",
+        "state": "BA",
+        "id": 34867,
+        "tag": "2025-kong-race-bivolt-#4",
+        "name": "KONG RACE BIVOLT #4"
+      },
+      {
+        "date": "2026-03-14",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 37918,
+        "tag": "2026-jurere-night-run-hard-rock-cafe-florianopolis-2026",
+        "name": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026"
+      },
+      {
+        "date": "2026-04-12",
+        "city": "Bertioga",
+        "state": "SP",
+        "id": 38248,
+        "tag": "2026-1-run-fast-challenge-by-beach-desafio-10k5k1k\"\"-e-10k-e-5k",
+        "name": "1° run fast challenge by beach desafio 10k+5k+''1k\"\" e 10K E 5K"
+      },
+      {
+        "date": "2026-03-22",
+        "city": "Carambeí",
+        "state": "PR",
+        "id": 38406,
+        "tag": "2026-\"circuito-de-corrida-de-rua-carambei-running-2526\"",
+        "name": "\"CIRCUITO DE CORRIDA DE RUA CARAMBEÍ RUNNING - 2526\""
+      },
+      {
+        "date": "2026-05-16",
+        "city": "Curitiba",
+        "state": "PR",
+        "id": 40267,
+        "tag": "2026-etapa-dia-das-maes-\t-maratona-kids-boulevard",
+        "name": "ETAPA DIA DAS MÃES  | \t MARATONA KIDS BOULEVARD"
+      },
+      {
+        "date": "2026-12-20",
+        "city": "Campinas",
+        "state": "SP",
+        "id": 41252,
+        "tag": "2026-rock-n-run\n----nashville-2026",
+        "name": "ROCK N' RUN\n                NASHVILLE 2026"
+      },
+      {
+        "date": "2026-06-14",
+        "city": "Campinas",
+        "state": "SP",
+        "id": 41304,
+        "tag": "2026-run-for-life\n---edicao-2026-6k",
+        "name": "RUN FOR LIFE\n            EDIÇÃO 2026 - 6K"
+      },
+      {
+        "date": "2026-05-01",
+        "city": "Ponta Grossa",
+        "state": "PR",
+        "id": 41660,
+        "tag": "2026-operario\r\nnight\r\nrun",
+        "name": "OPERÁRIO\r\nNIGHT\r\nRUN"
+      },
+      {
+        "date": "2026-11-15",
+        "city": "Três Barras",
+        "state": "SC",
+        "id": 42381,
+        "tag": "2026-corrida-do-fogo--cbm",
+        "name": "Corrida do Fogo  CBM"
+      },
+      {
+        "date": "2026-06-21",
+        "city": "Jaboatão dos Guararapes",
+        "state": "PE",
+        "id": 42975,
+        "tag": "2025-xxiii-corrida-da-fogueira-\"boca-loca\"",
+        "name": "XXIII CORRIDA DA FOGUEIRA \"BOCA LOCA\""
+      },
+      {
+        "date": "2026-10-12",
+        "city": "Ponta Grossa",
+        "state": "PR",
+        "id": 43677,
+        "tag": "2026-\"3-corrida-de-nossa-senhora-aparecida\"",
+        "name": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\""
+      },
+      {
+        "date": "2026-09-20",
+        "city": "Rio Negro",
+        "state": "PR",
+        "id": 44850,
+        "tag": "2026-3-meia-maratona-rio-negro-\"entre-pontes\"",
+        "name": "3ª MEIA MARATONA RIO NEGRO \"ENTRE PONTES\""
+      },
+      {
+        "date": "2027-05-01",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 45372,
+        "tag": "2027-meia-maratona-internacional-de-florianopolis-oakberry-2027",
+        "name": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027"
+      },
+      {
+        "date": "2026-08-22",
+        "city": "Coronel Fabriciano",
+        "state": "MG",
+        "id": 45519,
+        "tag": "2026-2-corrida-\"corra-por-elas\"",
+        "name": "2ª Corrida \"Corra Por Elas\""
+      },
+      {
+        "date": "2026-11-15",
+        "city": "Rio de Janeiro",
+        "state": "RJ",
+        "id": 46233,
+        "tag": "2026-1-edicao-da-corrida-e-caminhada-\"-conjunto-de-noticias-tv-\"",
+        "name": "1ª EDIÇÃO DA CORRIDA E CAMINHADA \" CONJUNTO DE NOTÍCIAS TV \""
+      },
+      {
+        "date": "2027-03-13",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 46865,
+        "tag": "2027-jurere-night-run-2027",
+        "name": "JURERÊ NIGHT RUN 2027"
+      },
+      {
+        "date": "2026-09-27",
+        "city": "São Paulo",
+        "state": "SP",
+        "id": 47273,
+        "tag": "2026-atibaia-run-fest-trail-mode-#03-socorro-pico-do-gaviao",
+        "name": "ATIBAIA RUN FEST - TRAIL MODE #03 - SOCORRO | PICO DO GAVIÃO"
+      },
+      {
+        "date": "2026-09-19",
+        "city": "Atibaia",
+        "state": "SP",
+        "id": 47291,
+        "tag": "2026-atibaia-run-fest-x-chopp-germania-corre-pela-breja-#01",
+        "name": "ATIBAIA RUN FEST x CHOPP GERMÂNIA |Corre pela Breja #01"
+      },
+      {
+        "date": "2026-09-05",
+        "city": "BREU BRANCO",
+        "state": "PA",
+        "id": 47341,
+        "tag": "2026-corrida-de-rua-\"correndo-com-flavio\"",
+        "name": "CORRIDA DE RUA \"CORRENDO COM FLÁVIO\""
+      },
+      {
+        "date": "2026-11-29",
+        "city": "Palmeira",
+        "state": "PR",
+        "id": 47423,
+        "tag": "2026-\"corrida-e-caminhada-franco-verao-26\"",
+        "name": "\"Corrida e Caminhada Franco Verão 26\""
+      },
+      {
+        "date": "2026-09-20",
+        "city": "Taboão da Serra",
+        "state": "SP",
+        "id": 47835,
+        "tag": "2026-#09-se-cuida-no-corre-caramelo-parque-das-hortensias",
+        "name": "#09 Se Cuida no Corre Caramelo - Parque das Hortênsias"
+      },
+      {
+        "date": "2026-11-01",
+        "city": "Lastro",
+        "state": "PB",
+        "id": 48153,
+        "tag": "2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha",
+        "name": "1ª Corrida de Aniversário do Grupo Corrida &#038; Resenha"
+      },
+      {
+        "date": "2026-10-25",
+        "city": "Ubatuba",
+        "state": "SP",
+        "id": 48167,
+        "tag": "2026-atibaia-run-fest-trail-mode-#04-7-praias-ubatuba",
+        "name": "ATIBAIA RUN FEST - TRAIL MODE #04 | 7 PRAIAS - UBATUBA"
+      },
+      {
+        "date": "2026-11-15",
+        "city": "Taboão da Serra",
+        "state": "SP",
+        "id": 48994,
+        "tag": "2026-#12-se-cuida-no-corre-coragem",
+        "name": "#12 Se Cuida no Corre Coragem"
+      },
+      {
+        "date": "2026-10-25",
+        "city": "Taboão da Serra",
+        "state": "SP",
+        "id": 49016,
+        "tag": "2026-#11-se-cuida-no-corre-cafune",
+        "name": "#11 Se Cuida no Corre Cafuné"
+      }
+    ]
+  },
+  "local_matches": {}
+}

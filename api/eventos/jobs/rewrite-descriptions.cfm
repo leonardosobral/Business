@@ -2,7 +2,7 @@
 <cfscript>
 function rewriteJsonResponse(required numeric statusCode, required struct payload) {
     var labels = {"200"="OK", "400"="Bad Request", "401"="Unauthorized", "405"="Method Not Allowed", "409"="Conflict", "422"="Unprocessable Entity", "424"="Failed Dependency", "429"="Too Many Requests", "502"="Bad Gateway", "503"="Service Unavailable"};
-    cfheader(statuscode=arguments.statusCode, statustext=structKeyExists(labels, arguments.statusCode) ? labels[arguments.statusCode] : "Internal Server Error");
+    cfheader(statuscode=arguments.statusCode);
     cfcontent(type="application/json; charset=utf-8", reset=true);
     writeOutput(serializeJSON(arguments.payload));
     abort;

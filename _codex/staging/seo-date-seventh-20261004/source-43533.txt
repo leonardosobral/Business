@@ -1,0 +1,4050 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Real Timing - Cronometragem Profissional 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  -->
+ 
+ 
+ 
+  
+
+
+ 
+
+.borda-cor-site-20 {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #5bc0de;
+	
+}
+
+.borda-cor-site-20-sombra {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #fff;
+	    box-shadow:
+        0 -1px 2px 0 rgba(0, 153, 255, 0.01),
+        0 2px 1px -2px rgba(0, 153, 255, 0.02),
+        0 5px 5px -2px rgba(0, 153, 255, 0.02),
+        0 10px 10px -2px rgba(0, 153, 255, 0.03),
+        0 20px 20px -2px rgba(0, 153, 255, 0.04),
+        0 40px 40px -2px rgba(0, 153, 255, 0.05);
+	
+}
+
+.borda-cor-info-20 {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #cbe0eb;
+	background-color:#d9edf7;
+	
+}
+
+.borda-cor-success-20 {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #d0e2c9;
+	background-color:#dff0d8;
+	
+}
+ 
+ 
+ .borda-cor-danger-20 {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #e2c9c9;
+	background-color:#f2dede;
+	
+}
+ 
+ 
+.borda-cor-site-10 {
+	
+	padding: 10px;
+	border-radius: 24px;
+	border: solid 1px #5bc0de;
+	
+}
+
+
+.borda-cor-site-sombra-10 {
+	
+	padding: 10px;
+	border-radius: 24px;
+	border: solid 1px #fff;
+	    box-shadow:
+        0 -1px 2px 0 rgba(0, 153, 255, 0.01),
+        0 2px 1px -2px rgba(0, 153, 255, 0.02),
+        0 5px 5px -2px rgba(0, 153, 255, 0.02),
+        0 10px 10px -2px rgba(0, 153, 255, 0.03),
+        0 20px 20px -2px rgba(0, 153, 255, 0.04),
+        0 40px 40px -2px rgba(0, 153, 255, 0.05);
+	
+}
+ 
+
+
+ 
+
+ 
+
+.botao-off {
+    pointer-events: none; /* impede clique */
+    opacity: 0.5;         /* efeito visual */
+}
+ 
+.background_cor_evento {
+  background: linear-gradient(to right,
+    #333333 0%,
+    #000000 30%,
+    #f4f4f4 30%,
+    #f4f4f4 100%
+  );
+}
+
+
+@media (max-width: 968px) {
+  .background_cor_evento {
+    background: linear-gradient(to bottom,
+      #333333 0%,
+      #000000 20%,
+      #f4f4f4 20%,
+      #f4f4f4 100%
+    );
+  }
+}
+
+
+
+.btn-theme-colored22{
+	
+	background-color: #000000 !important;
+	border:none;
+	
+}
+
+.borda-lateral-evento{
+	
+	border-left:solid 4px #000000	
+}
+
+
+.borda-cor-evento-20 {
+	
+	padding: 20px;
+	border-radius: 24px;
+	border: solid 1px #000000;
+	
+}
+ 
+ 
+.borda-cor-evento-10 {
+	
+	padding: 10px;
+	border-radius: 24px;
+	border: solid 1px #000000;
+	
+}
+ 
+
+ 
+
+
+
+		
+ 
+
+
+
+@layer demo, countdown;
+
+@layer countdown{
+  .countdown {
+    width: fit-content;
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 1rem;
+  }
+  .countdown > .part {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .countdown > .part > .number {
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border: 1px solid #333333;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    position: relative
+  }
+  .countdown > .part.dias { --num: 365 }
+  .countdown > .part.horas { --num: 24 }
+  .countdown > .part:where(.minutos, .segundos) { --num: 60 }
+  .countdown > .part > .number::after{
+    content: "";
+    position: absolute;
+    inset: calc(var(--border-size) * -0.5);
+    border-radius: inherit;
+
+    --degree: calc(360deg / var(--num) * (var(--num) - var(--value,0)));
+    background-image: conic-gradient(var(--accent) var(--degree), transparent calc(var(--degree) + 0.1deg));
+
+    --border-size: 4px;  
+    --mask-image: radial-gradient(100% 100%, transparent calc(50% - var(--border-size)), black calc(50% - var(--border-size) + 1px));
+    -webkit-mask-image: var(--mask-image);
+    mask-image: var(--mask-image);
+  }
+  .countdown > .part > .text {
+    text-align: center;
+    opacity: 0.75
+  }
+}
+
+
+
+
+ 
+
+ 
+
+
+ 
+ 
+ 
+  
+ 
+  
+
+ 
+
+.bg-nao-preenchido{background-color:#eee4e4 !important; border-bottom:solid 1px red; }
+.bg-preenchido{background-color:#e4f4e4 !important; border-bottom:solid 1px green; }
+
+ 
+
+
+ 
+   
+
+
+   
+     
+ 
+       
+         
+           
+              
+			 
+                      
+                      
+                      
+               
+			   
+                
+			  			  
+			  
+             
+           
+           
+           
+             
+			
+			 
+			    Login / Cadastro / Minhas Inscrições 
+			 
+			    Organizador 
+			
+			
+			 
+			 
+			 
+			 
+			
+			 
+				 
+				 
+								 
+             
+           
+         
+       
+     
+	
+	
+	 
+	
+	
+		$("#bot-chamar-login-cadastro-geral").click(function(e){
+			
+			e.preventDefault();
+			
+			$(".campo-cadastro-categoria").val("geral");
+			$(".campo-cadastro-id-evento").val("0");
+			
+			$('#seletor_tipo_documento').val('campo_form_login_cpf').trigger('change');
+			
+			var url_atual = '/sistema/aux_cadastro_v_int_cpf.php';
+			
+			chamar_aux_cadastro(token_atual,url_atual);
+			
+			$("#setor-pre-login").show();
+			$("#setor-cadastro").hide();
+			
+			$("#modal-login-cadastro").modal("show");
+			
+			 
+			
+		});
+	
+	
+	 
+
+	  
+    
+     
+       
+         
+           
+		  
+		   
+		    
+             
+			
+			 
+			
+                 EVENTOS 
+				 
+				  O QUE VEM POR AÍ  
+				  EVENTOS REALIZADOS  
+				 
+				
+
+				 
+				  
+			   
+			  
+			  
+			  
+
+
+			     SOBRE  
+			   
+			     RANKINGS Novo   
+			   
+			   
+			  
+			   
+               RESULTADOS  
+			 
+			   AO VIVO   
+			   
+			  
+			   
+			  
+			  
+			    
+			   
+			     CONTATO   
+			   
+			  
+			   
+               
+             
+           
+         
+       
+     
+	
+  	
+   
+  
+  
+		
+ 
+		   
+                   
+					
+					 
+                    
+					
+					 
+                        ×  
+                          
+					   
+                     
+                     
+						 
+						 
+						 
+
+
+						 Sou Organizador 
+						 
+						   
+                      
+					   
+						   
+							 
+								 
+							   Seu Login/Email 
+							   
+							 
+						   
+						   
+							 
+							   Sua Senha 
+							   
+							  
+							 
+						   
+						   
+							 
+							   
+							    Login 
+							  
+							 
+							 
+							   
+							   
+							       Entrega de Kits 
+							  
+							 
+						   
+						   
+						  
+               
+						 	
+
+
+						 
+						
+						
+
+
+						$("#login-geral-form-organizador").submit(function(e){
+							
+							e.preventDefault();
+							$("#status-login-geral-form-organizador").html("");
+							
+							var dados_geral = $("#login-geral-form-organizador").serialize();
+							
+							//alert(dados_geral);
+							 
+							
+							$.ajax({
+								
+								type: 'POST',
+								url: '/sistema/valida_geral_organizador.php',
+								data: dados_geral,
+								dataType: 'JSON',
+								success: function(data){
+									
+									//alert(data);
+									if(data[0]==true){
+										
+										window.location.href = data[2];
+										
+									}
+									
+									$("#status-login-geral-form-organizador").html(data[1]);
+									
+								},
+								error: function(XMLHttpRequest, textStatus, errorThrown) { 
+									alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+								}   
+								
+							});
+							
+						});
+
+						
+						
+						 
+						
+						
+						 
+						 
+						
+						  
+						
+						 
+						
+						  
+ 
+                     
+                     
+                   
+                 
+
+		 
+
+
+
+ 
+ 
+ 
+ 
+   
+     
+     
+       
+	  
+	   
+			 
+			   
+			 
+			
+			
+			
+			
+			 
+				
+				
+				 
+				 Seu Documento  
+				 
+				 CPF 
+				 PASSAPORTE 
+				 
+				 
+				
+				
+				
+				 
+				
+					var token_atual = "8d00624cf173446419094e498a5a3626";
+					var url_atual = "/sistema/aux_cadastro_v_int_cpf.php";
+				
+					$("#seletor_tipo_documento").change(function(e){
+						
+						e.preventDefault();
+						
+						var acao = $(this).val();
+						//alert(acao);
+						
+						if(acao=='campo_form_login_cpf'){
+							
+							var url_atual = '/sistema/aux_cadastro_v_int_cpf.php';
+							
+						}else{
+							
+							var url_atual = '/sistema/aux_cadastro_v_int_passaporte.php';
+							
+						}
+						
+						//alert(acao);
+						$(".campo_form_login").hide();
+						$("#"+acao).show();
+						
+						$("#campo_cpf_login_inicio").val("");
+						$("#campo_nascimento_login_inicio").val("");
+						
+						$("#campo_cpf_login_inicio_passaporte").val("");
+						$("#campo_nascimento_login_inicio_passaporte").val("");
+						
+						$("#status-form-login-topo-site").html("");
+						$("#status-form-login-passaporte").html("");
+						
+						chamar_aux_cadastro(token_atual,url_atual);
+						
+					});
+					
+					chamar_aux_cadastro(token_atual,url_atual);
+					
+					function chamar_aux_cadastro(token_atual,url_atual){
+						
+						$.ajax({
+							
+							type: 'POST',
+							url: url_atual,
+							data: {token_atual:token_atual},
+							success: function(data_aux_cadastro){
+								
+								//alert(data_aux_cadastro);
+								$("#deposito_aux_cadastro_v_int").html(data_aux_cadastro);
+								
+							}
+							
+						});
+						
+					}
+				
+				 
+				
+				
+				
+				
+				 
+				 
+			
+					  
+					
+					 
+				
+					 
+					 
+					 
+					 
+			
+          
+					
+					
+					 
+					 
+					 Seu CPF  
+					 
+					 
+					 
+					
+					 
+					 
+					 Sua data de nascimento 
+					 
+					      
+					 
+					 
+					
+					 
+					 
+					 
+					 Prosseguir  
+					 
+					 
+					
+					
+					   
+					
+			
+					   
+				
+					 
+					
+					
+
+					$("#form-login-topo-site").submit(function(e){
+						
+						e.preventDefault();
+						
+						var dados_seletor_login_form = $("#form-login-topo-site").serialize();
+						
+						$("#form-cadastro").trigger("reset");
+						$("#campo_equipe_clube_patrocinador_alerta_msg").html(" Digite 'sem', caso não possua ");
+						$("#campo_nome_completo_alerta_msg").html("");
+						$("#campo_email_alerta_msg").html("");
+						
+						$("#status-form-login-topo-site").html("");
+						
+						$.ajax({
+							
+							type: 'POST',
+							url: "/sistema/login-setor-inscricao-v-int.php",
+							dataType: 'json',
+							data: dados_seletor_login_form,
+							 
+							success: function(data){
+								
+								//alert(data["status"]);
+								
+								if(data["status"]=="logado_continuar_inscricao"){
+									
+			
+									$("#status-form-login-topo-site").html(data["msg"]);
+
+									
+									var cpf_cliente_logado = data["cpf_cliente"];
+									
+									chamarCategorias(id_evento,cpf_cliente_logado,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-evento");
+
+									$("#setor-pre-login").hide();
+									$("#setor-categorias").show();
+									
+									
+								
+								}else if(data["status"]=="logado_painel_cliente"){
+									
+									$("#status-form-login-topo-site").html(data["msg"]);
+									window.location.href = data["fluxo"];
+									
+									
+								}else if(data["status"]=="login_erro_senha"){
+									
+									$("#status-form-login-topo-site").html(data["msg"]);
+									
+								}else if(data["status"]=="cpf_invalido"){
+									
+									$("#status-form-login-topo-site").html(data["msg"]);
+									
+									
+									
+								}else if(data["status"]=="novo_cliente_continuar_cadastro"){
+									
+									var campo_cpf_login_inserido = data["cpf"];
+									var campo_nascimento_login_inserido = data["nascimento"];
+									var campo_token_cadastro = data["token_cadastro"];
+									var campo_categoria_cadastro = data["categoria_cadastro"];
+									
+									$("#campo_cpf_atual_cadastro_site").val(campo_cpf_login_inserido);
+									$("#campo_nascimento_atual_cadastro_site").val(campo_nascimento_login_inserido);
+									$("#campo_token_atual").val(campo_token_cadastro);
+									$("#campo_categoria_cadastro_atual").val(campo_categoria_cadastro);
+									
+									
+									$("#setor-pre-login").hide();
+									$("#setor-cadastro").show();
+									
+
+					 
+
+									
+								}
+								
+							} ,
+							 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+								
+								alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+								
+							}
+							
+						});
+						
+					});
+
+
+
+					
+					
+					 
+				
+				
+				   
+				
+				
+				
+				
+				
+				 
+				 
+			
+					  
+					 
+				
+					 
+					 
+					 
+					 
+          
+					
+					
+					 
+					 
+					 Seu Passaporte  
+					 
+					 
+					 
+					
+					 
+					 
+					 Sua data de nascimento 
+					 
+					      
+					 
+					 
+					
+					 
+					 
+					 
+					 Prosseguir  
+					 
+					 
+					
+					
+
+					   
+			
+					   
+					
+					
+					 
+					
+					$("#form-login-passaporte").submit(function(e){
+	
+						e.preventDefault();
+						
+						var dados_seletor_login_form = $("#form-login-passaporte").serialize();
+						
+						$("#form-cadastro").trigger("reset");
+						$("#campo_equipe_clube_patrocinador_alerta_msg").html(" Digite 'sem', caso não possua ");
+						$("#campo_nome_completo_alerta_msg").html("");
+						$("#campo_email_alerta_msg").html("");
+						
+						$("#status-form-login-passaporte").html("");
+						
+						$.ajax({
+							
+							type: 'POST',
+							url: "/sistema/login-setor-inscricao-v-int.php",
+							dataType: 'json',
+							data: dados_seletor_login_form,
+							 
+							success: function(data){
+								
+								//alert(data["cpf_cliente"]);
+								
+								if(data["status"]=="logado_continuar_inscricao"){
+									
+									//window.location.href = data["fluxo"];
+									$("#status-form-login-passaporte").html(data["msg"]);
+
+									
+									var cpf_cliente_logado = data["cpf_cliente"];
+									
+									chamarCategorias(id_evento,cpf_cliente_logado,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-evento");
+
+									$("#setor-pre-login").hide();
+									$("#setor-categorias").show();
+									
+									
+								
+								}else if(data["status"]=="logado_painel_cliente"){
+									
+									$("#status-form-login-passaporte").html(data["msg"]);
+									window.location.href = data["fluxo"];
+									
+									
+								}else if(data["status"]=="login_erro_senha"){
+									
+									$("#status-form-login-passaporte").html(data["msg"]);
+									//$("#seletor-inscricao").hide();
+									
+									
+								}else if(data["status"]=="novo_cliente_continuar_cadastro"){
+									
+									var campo_cpf_login_inserido = data["cpf"];
+									var campo_nascimento_login_inserido = data["nascimento"];
+									var campo_token_cadastro = data["token_cadastro"];
+									var campo_categoria_cadastro = data["categoria_cadastro"];
+									
+									$("#campo_cpf_atual_cadastro_site").val(campo_cpf_login_inserido);
+									$("#campo_nascimento_atual_cadastro_site").val(campo_nascimento_login_inserido);
+									$("#campo_token_atual").val(campo_token_cadastro);
+									$("#campo_categoria_cadastro_atual").val(campo_categoria_cadastro);
+									
+									//$("#modal-login-cadastro").modal("hide");
+									//$("#campo-cadastro-tipo").val("pos");
+									
+									$("#setor-pre-login").hide();
+									$("#setor-cadastro").show();
+									
+
+
+									
+								}
+								
+							} ,
+							 error: function(XMLHttpRequest, textStatus, errorThrown) { 
+								
+								alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+								
+							}
+							
+						});
+						
+					});
+
+					
+					
+					 
+				
+				
+				   
+				
+				
+				 
+				 
+				 Não conseguiu fazer login?  
+				 Clique aqui 
+				 
+				 
+				
+				  
+				
+				 
+				
+				$("#bot-esqueci").click(function(e){
+	
+					e.preventDefault();
+					
+					$("#modal-login-cadastro").modal("hide");
+					
+					$("#modal-esqueci").modal("show");
+					
+				});
+
+					
+				
+				
+				 
+			
+			
+			   
+			
+			
+			
+			 
+				 
+			
+				  Entre em contato com nosso atendimento: 
+				      Fale Conosco Via WhatsApp  
+			
+			
+			   
+			
+			
+			
+			
+			
+			
+			
+			 
+				 
+			
+				  
+			
+				  
+			
+			
+			   
+			
+			
+			
+			 
+				 
+				  
+				  
+				      Aguarde! Carregando categorias
+				  
+				 
+			
+			   
+			
+			
+			
+			  
+		   
+		  
+
+     
+     
+   
+ 
+ 
+ 
+
+
+
+ 
+
+  
+
+  
+  
+
+ 
+
+
+$("#seletor-inscricao-cadastro-geral").hide();
+
+
+document.getElementById("campo_cpf_checar").addEventListener("input", function (e) {
+    this.value = this.value.replace(/\D/g, ""); // Remove tudo que não for número
+  });
+
+  document.getElementById("campo_cpf_checar").addEventListener("paste", function (e) {
+    e.preventDefault(); // Impede a ação padrão do "colar"
+    let text = (e.clipboardData || window.clipboardData).getData("text");
+    this.value = text.replace(/\D/g, ""); // Mantém apenas números
+  });
+
+
+
+
+
+//$("#campo_cpf_checar").mask('999.999.999-99', {placeholder:'_'});
+
+$(".form_numerico").keyup(function(){
+	
+	$(this).val(this.value.replace(/\D/g, ''));
+	
+});
+
+
+
+	 
+
+
+ 
+
+////////////////////////////////////////////////////////
+
+
+   
+
+ 
+
+
+
+
+ 
+ 
+
+ 
+ 
+ 
+   
+     
+     
+		 
+  
+  
+       
+			 
+				 
+				 
+				  
+				
+				 Entre em contato com nosso atendimento:    Fale Conosco Via WhatsApp  
+				
+				
+			
+			 
+			 
+			  
+  
+		 
+		
+   
+ 
+ 
+  
+ 
+   
+  
+  
+		
+		 
+	
+	 
+		
+  
+	 
+	 
+     
+	
+       
+		 
+         
+			
+		  
+           
+			
+			 
+			
+					 
+					
+					   
+					
+										
+					 
+			
+			 
+			 
+			 
+			
+			
+			
+				
+				 
+				
+								
+				
+
+				
+				 
+						
+										
+					
+					 3º CIRCUITO RUN 
+					
+					
+					
+										
+					
+										
+					 
+						
+													
+							 
+							  
+							 
+														 Inscreva-se já 
+														
+							 
+							
+														 
+						
+						 
+											
+						 
+					
+										
+					
+					 	
+						
+						 
+						 
+						
+						    Data:   24.OUT.2026  
+						
+						 
+						 
+						
+						 
+						 
+						
+						    Hora:   16:00 
+						
+						 
+						 
+						
+												 
+						 
+						
+						    Local:   GIRAU DO PONCIANO - AL 
+						
+						 
+						 
+										
+						 
+					 	 
+						 
+					 	
+						 
+						
+												 
+						 
+						
+						    Categorias:   5km 
+						
+						 
+						 
+												
+						 
+						 
+						
+						    Organizador:   ELENILSON SILVA  
+						
+						    WhatsApp 
+						
+						    Abrir Perfil do Organizador 
+						
+						 
+						 
+						
+						 
+						
+						 
+						 
+						
+												
+							 
+							    instagram:   @circuitorun   
+						
+												
+						 
+						 
+						
+												
+						
+					 	
+						
+						
+ 
+						
+					   
+						
+											
+						
+										
+					 
+						
+													
+							 
+							  
+							 
+														 Inscreva-se já 
+														
+							 
+							
+														 
+						
+												
+						 
+						
+ 
+												
+						 
+						
+							    Saiba mais 
+						
+						 
+						
+						 
+							
+							    Confira as Categorias 
+						
+						 
+						
+						
+						
+						 
+						
+							$(".bot-levar-categorias").click(function(e){
+								
+								e.preventDefault();
+								$("#categorias_evento").click();
+								
+								$("html, body").animate({
+									scrollTop: $("#inicio_categoria_valores").offset().top
+								}, 800); // 800ms de duração
+								
+							});
+						
+						
+						 
+						
+						
+						
+												
+						
+												
+						
+												
+						
+												
+						
+						   
+						 
+						 
+							
+							 Instrução para Entrega dos Kits 
+							
+							 Em breve divulgaremos mais informações. O kit costuma ser entregue de 1 a 3 dias antes do evento. Aguarde a comunicação oficial com data, local e horário de entrega ou entre em contato com a organização. 
+
+						
+						 
+						 
+						
+						
+						
+												
+												
+												
+												
+												
+						  
+						
+												
+						 
+							
+							 
+							  
+							
+							
+							 
+							
+							
+
+class Countdown {
+  constructor(el){
+    this.el = el;
+    this.targetDate = new Date(el.getAttribute("date-time"));
+    this.createCountDownParts()
+    this.countdownFunction();
+    this.countdownLoopId = setInterval(this.countdownFunction.bind(this), 1000)
+  }
+  createCountDownParts(){
+    ["dias", "horas", "minutos", "segundos"].forEach(part => {
+      const partEl = document.createElement("div");
+      partEl.classList.add("part", part);
+      const textEl = document.createElement("div");
+      textEl.classList.add("text");
+      textEl.innerText = part;
+      const numberEl = document.createElement("div");
+      numberEl.classList.add("number");
+      numberEl.innerText = 0;
+      partEl.append(numberEl, textEl);
+      this.el.append(partEl);
+      this[part] = numberEl;
+    })
+  }
+
+  countdownFunction(){
+    const currentDate = new Date();    
+    if(currentDate > this.targetDate) return clearInterval(this.countdownLoopId);
+    const remaining = this.getRemaining(this.targetDate, currentDate);
+    Object.entries(remaining).forEach(([part,value]) => {
+      this[part].style.setProperty("--value", value)
+      this[part].innerText = value
+    })  
+  }
+  
+  getRemaining(target, now){
+    let segundos = Math.floor((target - (now))/1000);
+    let minutos = Math.floor(segundos/60);
+    let horas = Math.floor(minutos/60);
+    let dias = Math.floor(horas/24);
+    horas = horas-(dias*24);
+    minutos = minutos-(dias*24*60)-(horas*60);
+    segundos = segundos-(dias*24*60*60)-(horas*60*60)-(minutos*60);
+    return { dias, horas, minutos, segundos }      
+  }
+
+}
+
+const countdownEls= document.querySelectorAll(".countdown") || [];
+countdownEls.forEach(countdownEl => new Countdown(countdownEl))
+
+							
+							 
+						
+						 
+						
+						
+												
+						
+				
+				 
+				
+				
+				
+				
+				
+				 
+				
+				 
+				
+				 
+			
+
+			 
+			 
+			 
+			 
+				
+				  
+				
+			 
+			 
+			 
+			 	
+				
+				
+
+				
+				
+			
+						  
+				
+				
+						
+			 
+			
+			 
+			 
+			   
+				  
+				    Valores 
+
+								    Premiação 
+									
+									
+									
+							   
+			 
+
+ 
+
+ 
+.wrapper-tabs-especial {
+  text-align: center;
+  margin: auto;
+
+}
+
+.tabs-especial {
+  font-size: 18px;
+  padding: 0px;
+  list-style: none;
+  background: #fff;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+  border: solid 1px #000000;
+  display: inline-block;
+  border-radius: 50px;
+  position: relative;
+  z-index: 1;
+  padding:1vmin;
+
+  a {
+    text-decoration: none;
+    color:  #000000;
+    padding: 10px 20px;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    transition-duration: 0.6s;
+    
+    i {
+      display: inline;
+      max-height: 13px;
+      margin-right: 5px;
+	  
+    }
+
+    &.active {
+      color: #fff !important;
+    }
+  }
+}
+
+.tabs-especial .tabs-selector {
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  border-radius: 50px;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  background: #000000;
+  box-shadow: 0px 2px 10px rgba(0, 207, 96, 0.1);
+}
+
+ 
+ 
+
+ 
+
+ 
+
+//script for tabs
+jQuery().ready(function() {
+  initTabs($(".tabs-especial"));
+});
+
+function initTabs(tabs) {
+  shiftSelector(tabs);
+
+  $(window).resize(function() {
+    shiftSelector(tabs);
+  });
+
+  tabs.on("click", "a", function(e) {
+    e.preventDefault();
+    tabs.find("a").removeClass("active");
+    $(this).addClass("active");
+
+    shiftSelector(tabs);
+  });
+}
+
+function shiftSelector(tabs) {
+  let activeItem = tabs.find(".active");
+  let activeWidth = activeItem.innerWidth();
+  let activeHeight = activeItem.innerHeight();
+  let itemPos = activeItem.position();
+  tabs.find(".tabs-selector").css({
+    left: itemPos.left + "px",
+    width: activeWidth + "px",
+    height: activeHeight + "px",
+    top: itemPos.top + "px"
+  });
+
+ 
+}
+
+
+ 
+			
+ 
+
+			
+			
+			 
+			
+			
+			 
+			
+			 
+				
+				 
+				    Valores 
+
+								 	
+				   5km Corrida / Caminhada  
+					
+				  
+					
+								
+				 
+				 
+				
+				 
+				5km Feminino 16-29				  
+				
+								
+				
+								
+								  R$ 60,00  
+				
+								
+				
+				
+				  
+				
+				 
+				 
+				
+				
+								
+				 
+				 
+				
+				 
+				5km Feminino 30-39				  
+				
+								
+				
+								
+								  R$ 60,00  
+				
+								
+				
+				
+				  
+				
+				 
+				 
+				
+				
+								
+				 
+				 
+				
+				 
+				5km Feminino 40-49				  
+				
+								
+				
+								
+								  R$ 60,00  
+				
+								
+				
+				
+				  
+				
+				 
+				 
+				
+				
+								
+				 
+				 
+				
+				 
+				5km Feminino 50-59				  
+				
+								
+				
+								
+								  R$ 60,00  
+				
+								
+				
+				
+				  
+				
+				 
+				 
+				
+				
+								
+				 
+				 
+				
+				 
+				5km Feminino 60+				  
+				
+								
+				
+								
+								  R$ 30,00  
+				
+								
+				
+				
+				  
+				
+				 
+				 
+				
+				
+								
+				 
+				 
+				
+				 
+				5km Masculino 16-29				  
+				
+								
+				
+								
+								  R$ 60,00  
+				
+								
+				
+				
+				  
+				
+				 
+				 
+				
+				
+								
+				 
+				 
+				
+				 
+				5km Masculino 30-39				  
+				
+								
+				
+								
+								  R$ 60,00  
+				
+								
+				
+				
+				  
+				
+				 
+				 
+				
+				
+								
+				 
+				 
+				
+				 
+				5km Masculino 40-49				  
+				
+								
+				
+								
+								  R$ 60,00  
+				
+								
+				
+				
+				  
+				
+				 
+				 
+				
+				
+								
+				 
+				 
+				
+				 
+				5km Masculino 50-59				  
+				
+								
+				
+								
+								  R$ 60,00  
+				
+								
+				
+				
+				  
+				
+				 
+				 
+				
+				
+								
+				 
+				 
+				
+				 
+				5km Masculino 60+				  
+				
+								
+				
+								
+								  R$ 30,00  
+				
+								
+				
+				
+				  
+				
+				 
+				 
+				
+				
+					
+				
+				 
+				   
+				 
+				 
+				  
+				
+								
+				
+				
+
+				
+				
+				
+			
+			 
+			 
+				
+				
+				
+				
+				
+				
+				
+												
+				
+				 
+					
+					    Premiação 
+					 
+					 Troféu para os primeiros colocados no Geral e Faixas Etárias Medalhas para todos os participantes 					 
+				
+				 
+				 
+								
+				
+				
+				
+				 
+				
+				
+									
+ 
+										
+										
+
+
+ 
+			
+									 
+			 
+			
+
+			
+			
+				   No 3º CIRCUITO RUN  Teremos  
+			
+				
+				
+				
+								
+				 
+				
+				    Carro e/ou Motos de Apoio     Mesa de Frutas     Hidratação no Percurso     Medalha     Banda/Música 				
+				 
+				
+				 
+				
+				    Sistema de Som     Locutor     Fotógrafo     Pórtico     Backdrop 				
+				 
+				
+				
+				 
+				
+				    Número de Peito     Troféu     Cronometragem Real Timing     Chip de Cronometragem 				
+				 
+				
+				
+				  
+				 
+				
+				
+				 
+				
+			 
+			 
+			
+			  
+						  
+              
+			   
+			
+ 
+			
+			 
+
+             
+           
+		   
+         
+       
+     
+	
+	
+	 
+
+.info-cards-container {
+  display: flex;
+  flex-wrap: wrap; /* Para quebrar linha se faltar espaço */
+  gap: 2px;        /* Espaçamento entre os cards */
+  justify-content: center; /* Centraliza os cards */
+}
+	
+.info-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: transform  0.3s ease;
+}
+.info-card i {
+  font-size: 38px;
+  margin-bottom: 5px;
+  color: #5bc0de;
+}
+.info-card span {
+  font-size: 16px;
+  font-weight: bold;
+  line-height:18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.info-card:hover {
+	
+	background: #f4f4f4 !important;
+	transform: scale(1.1); 
+	
+}
+	
+	 
+	
+	
+	 
+	
+		$(".painel-area-evento").hide();
+		$("#painel_categorias_evento").show();
+			
+		$(".bot-area-evento").click(function(e){
+					
+			e.preventDefault();
+					
+			var id_area = this.id;
+ 
+					
+		 // painel atual some com animação
+			$(".painel-area-evento:visible").fadeOut(200, function() {
+
+				// quando terminar de sumir, aparece o novo
+				$("#painel_" + id_area).fadeIn(200);
+			});
+			
+			 
+					
+		});
+				
+				
+			
+			 
+	
+		
+		  
+	 
+		 
+		 
+		 
+		
+								
+													
+							 
+							  
+							 
+														 Inscreva-se já 
+														
+							 
+							
+														 
+						
+						 
+								
+		 
+		 
+		 
+		
+		
+	 
+
+	 
+		
+	 
+	
+	 
+	 
+	
+	 
+			 
+	 
+	
+		   Dúvidas  Frequentes  
+		
+							
+			 Inscrições 
+		
+							
+			 Kits 
+		
+							
+			 Evento 
+		
+							
+			 Resultados e Premiação 
+		
+							
+			 Saúde e Segurança 
+		
+							
+			 Sistema 
+		
+					
+	 
+	
+	
+			
+		 
+		 
+			
+			 Como faço minha inscrição? 
+			
+			 Clique em "Inscreva-se Já", escolha sua categoria e preencha seus dados para concluir o pagamento. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Posso me inscrever no dia do evento? 
+			
+			 As inscrições estão sujeitas à disponibilidade de vagas, que geralmente acabam bem antes do dia do evento. Consulte a organização para verificar outras disponibilidades. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Posso transferir minha inscrição para outra pessoa? 
+			
+			 Verifique as regras de transferência descritas no regulamento do evento. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Posso alterar minha categoria após a inscrição? 
+			
+			 Em alguns casos é possível, desde que haja vagas disponíveis e dentro do prazo estabelecido pela organização. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Quais formas de pagamento são aceitas? 
+			
+			 Cartão de crédito, PIX, boleto e demais opções disponibilizadas no sistema. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Quando será a entrega dos kits? 
+			
+			 Normalmente, entre 1 e 3 dias antes do evento. As informações oficiais serão divulgadas pela organização, podendo ter prazos e dias específicos. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Como retirar meu kit? 
+			
+			 Compareça ao local e horário informados pela organização levando o comprovante de inscrição e/ou um documento oficial com foto. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Posso retirar o kit de outra pessoa? 
+			
+			 Sim, mediante apresentação de uma foto do documento de identidade do participante ou do comprovante de inscrição. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 O que acompanha o kit do atleta? 
+			
+			 Consulte a seção "Teremos" para verificar os itens inclusos em cada evento. Verifique também as informações internas do evento, redes sociais e regulamento. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Qual o horário de largada? 
+			
+			 O horário está disponível na página do evento e pode sofrer ajustes comunicados pela organização. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 O percurso será sinalizado? 
+			
+			 Dependendo do tipo de evento, sim. O percurso contará com sinalização e equipe de apoio. Alguns eventos, como trekking e corrida de aventura, podem não possuir sinalização. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Haverá pontos de hidratação? 
+			
+			 Quando houver, essa informação será divulgada previamente pela organização da prova. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 O evento acontecerá mesmo com chuva? 
+			
+			 Salvo condições extremas que coloquem os participantes em risco, o evento será realizado normalmente. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Como consulto meu resultado? 
+			
+			 Os resultados poderão ser publicados no telão, QR Code, site e demais locais disponibilizados pela organização e pela equipe de cronometragem após a conclusão da prova. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Receberei certificado de participação? 
+			
+			 Quando disponibilizado pela organização, o certificado poderá ser acessado pelo sistema de resultados. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Como funciona a premiação? 
+			
+			 A premiação segue as regras descritas no regulamento e na aba "Premiação". 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 É obrigatório apresentar atestado médico? 
+			
+			 Consulte o regulamento específico de cada evento. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Haverá ambulância no local? 
+			
+			 Quando informado na estrutura do evento. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 O participante está segurado durante a prova? 
+			
+			 Os eventos que possuem seguro atleta informam essa cobertura na página do evento. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Esqueci minha senha. Como recuperar? 
+			
+			 Utilize a opção "Esqueci minha senha" na área de login. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Como acompanho minhas inscrições? 
+			
+			 Acesse a área de login, entre em sua conta e clique em "Meus Eventos" para visualizar todas as inscrições. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Não recebi o comprovante de inscrição. O que fazer? 
+			
+			 Verifique sua caixa de spam. Caso não encontre, faça login no site, acesse "Meus Eventos", selecione a inscrição desejada e clique em "Comprovante de Inscrição". Persistindo o problema, entre em contato com o suporte. 
+		
+		 
+		 
+	
+	
+			
+		 
+		 
+			
+			 Como entro em contato com a organização? 
+			
+			 Utilize os contatos informados na página do evento ou o botão de WhatsApp. 
+		
+		 
+		 
+	
+	
+		
+	  
+	
+	 
+	
+	 
+	 
+	
+	 
+	
+		
+	
+	 
+	
+	$(".bot-faq-categ").click(function(e){
+		
+		e.preventDefault();
+		
+		var id = this.id;
+		
+		$(".painel-faqs").hide();
+		$(".painel-faqs-"+id).show();
+		
+		$(".bot-faq-categ").removeClass("btn-dark");
+		$(".bot-faq-categ").addClass("btn-info");
+		
+		$(this).removeClass("btn-info");
+		$(this).addClass("btn-dark");
+		
+		//alert(id);
+		
+	});
+	
+	$(".bot-faq-num-1").click();
+	
+	
+	 
+	
+	
+    
+   
+
+     
+     
+         
+             Faltam 
+             20 
+             dias 
+         
+     
+
+     
+    
+                     
+        
+                  
+                 Inscreva-se 
+             
+
+    
+     
+     
+          
+         WhatsApp 
+     
+
+ 
+
+
+ 
+
+ 
+
+.bottom-bar{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:50px;
+    display:flex;
+    z-index:9999999;
+}
+
+.bottom-item{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:#FFF;
+    font-weight:800;
+    font-size:15px;
+}
+
+.bottom-item i{
+    margin-bottom:0px;
+	font-size:16px;
+}
+
+.countdown_rodape{
+    background:#5bc0de;
+}
+
+.inscricao{
+    background:#37b34a;
+}
+
+.whatsapp{
+    background:#0b7a3c;
+}
+
+.contador-box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    line-height:1;
+}
+
+.contador-box-rodape .small{
+    font-size:15px;
+    font-weight:300;
+}
+
+.contador-box-rodape .numero{
+    font-size:28px;
+    font-weight:900;
+    margin:3px 0;
+}
+
+.bottom-item  {
+    transition: opacity .35s ease-in-out;
+}
+
+.bottom-item:hover {
+    opacity:.8;
+	color:#fff !important;
+}
+
+ 
+
+ 
+   
+   
+  
+   
+
+
+ 
+   
+     
+     
+       
+	  
+	   
+       
+	     Vem aí o 3º Circuito Run 		   
+		  
+		  
+		   
+
+	   
+       
+       
+	  
+         Fechar  
+       
+       
+     
+   
+ 
+
+ 
+
+
+
+
+
+
+ 
+ 
+   
+     
+     
+       
+	  
+	   
+			     
+			
+			
+			
+			
+			 
+				 
+			
+				  
+				
+				 
+				
+				 
+				 
+				 
+			
+          
+				 
+				
+					 
+						 
+						 CPF da pessoa 
+						 
+						 
+					 
+					
+					 
+						 
+						 Data de Nascimento da pessoa 
+						 
+						      
+						 
+					 
+					
+					 
+						 
+						 
+						 Prosseguir  
+						
+						 
+					 
+					
+					
+
+				   
+			
+				   
+			
+			
+			   
+			
+			
+			 
+			
+				
+				 Você está cadastrando o atleta: 
+				  
+				
+				 Confirmar 
+				
+				 
+			
+			
+			
+			 
+			
+			
+			
+			
+			
+			 
+				 
+			
+			 
+
+			 
+			 
+			 
+			 
+
+			 
+			 
+			  
+			 
+
+			 
+			 
+			  
+			 
+
+			 
+			 
+			 
+
+			 
+			 
+			 
+			
+			  
+
+			 
+			 
+			 
+			 Digite 'sem', caso não possua 
+			 
+			 
+
+			 
+			 
+			 Sexo 
+			 Masculino 
+			 Feminino 
+			 
+			 
+
+			 
+			 
+			 
+			
+			  
+
+			 
+			 
+			 Selecione o Estado 
+						 
+						 
+						 
+			Alagoas			 
+						 
+			Amapá			 
+						 
+			Amazonas			 
+						 
+			Bahia			 
+						 
+			Ceará			 
+						 
+			Distrito Federal			 
+						 
+			Espírito Santo			 
+						 
+			Goiás			 
+						 
+			Maranhão			 
+						 
+			Mato Grosso			 
+						 
+			Mato Grosso do Sul			 
+						 
+			Minas Gerais			 
+						 
+			Pará			 
+						 
+			Paraíba			 
+						 
+			Paraná			 
+						 
+			Pernambuco			 
+						 
+			Piauí			 
+						 
+			Rio de Janeiro			 
+						 
+			Rio Grande do Norte			 
+						 
+			Rio Grande do Sul			 
+						 
+			Rondônia			 
+						 
+			Roraima			 
+						 
+			Santa Catarina			 
+						 
+			São Paulo			 
+						 
+			Sergipe			 
+						 
+			Tocantins			 
+						 
+			 
+
+			 
+			 
+			 Selecione a Cidade 
+			 
+			 
+
+			 
+			 
+			 
+
+			 
+			 
+			 
+			
+			 
+			 TERMOS DE PARTICIPAÇÃO E RESPONSABILIDADE:    
+			Ao concordar com este Termo de Responsabilidade e Participação você declara que leu no endereço eletrônico: www.realtiming.com.br/cadastro/..., e expressamente concorda com a Política de Privacidade e os Termos de Uso do Sistema. Na hipótese da não concordância integral, não prossiga com seu cadastro e/ou inscrição. 
+			  
+			 CONSIDERANDO QUE:   
+			- A REAL TIMING atua como INTERMEDIADORA na venda de INSCRIÇÕES para eventos, o USUÁRIO que tem interesse em adquirir uma INSCRIÇÃO para um evento que está sendo comercializado pelo site da REAL TIMING, terá que criar um usuário com uma conta no sistema REAL TIMING e declarar ter conhecimento e aceitar as seguintes cláusulas e condições: 
+			  
+			 TERMO DE USO PARA O USUÁRIO QUE DESEJA SE INSCREVER NO EVENTO   
+			Entendo e concordo que, para a boa realização dos serviços prestados pelo site da Real Timing aos organizadores, bem como aos participantes, a informação e consequente comunicação comigo é fator determinante e fundamental, sendo inequívoco e, desde já, expressamente autorizo e estou ciente que: 
+			  
+			- Todo o conteúdo como textos, fotos e vídeos dos eventos publicados no site da REAL TIMING são de responsabilidade integral do ORGANIZADOR do evento, cujos dados constam na página do evento e que a REAL TIMING. O ORGANIZADOR do evento é o único responsável pelo planejamento, organização e realização do evento, sendo ele quem define as contratações, programação, local de realização, descrição, datas, lotes, valores das inscrições, limite de inscritos disponíveis, idades mínimas e máximas, descontos eventuais que podem ser oferecidos entre outros. 
+			  
+			- Qualquer alteração na programação do evento, seja troca de datas, local ou até o seu cancelamento, bem como quaisquer ocorrências durante o EVENTO, são de responsabilidade única e exclusiva do ORGANIZADOR. 
+			  
+			- Estou ciente que os valores relativos à minha inscrição, em decorrência da titularidade do organizador desse evento, a ele serão transferidos, podendo tal ato ocorrer antes, durante ou depois da realização do evento, sendo certo que na hipótese de cancelamento, adiamento, ou mesmo qualquer divergência relativa à sua execução, será sempre de responsabilidade exclusiva do Organizador o consequente reembolso bem como as demais cominações legais, se houverem, isentando a Real Timing de qualquer responsabilidade;  
+			  
+			- Que todas as informações por você declaradas no cadastro do sistema e na compra da inscrição em eventos através do site da REAL TIMING são verdadeiras e estão de acordo com as leis vigentes. 
+			  
+			- Declaro, expressamente, minha total ciência que, na hipótese das minhas informações cedidas serem utilizadas em qualquer contrato, item de merchandising, propriedade de arena, arquivo de participação, lista de inscritos, certificado ou arquivo de resultado, será de minha exclusiva responsabilidade, a verificação e a correção das mesmas apontadas e utilizadas pelos Organizadores, Sistema de Inscrições e seus parceiros comerciais, não imputando-lhes, em momento algum, qualquer responsabilidade por consequências que possam advir destes erros ou omissões da minha parte, sendo certo que em caso de divergência destas informações, qualquer correção será de minha inteira, ampla e exclusiva responsabilidade e deverá ser solicitada, sempre por escrito, via o canal "Fale Conosco" ou WhatsApp da Real Timing ou do evento; Cabendo a mim, contatar a Real Timing, quando da ocorrência de qualquer dúvida ou mesmo simples correção ou pedido de informação, relacionadas. Caso não ocorra, da minha parte, nenhum tipo de comunicado nos termos supra citados, efetivamente considero que as referidas informações utilizadas são verdadeiras e corretas. 
+			  
+			- Que estou ciente e concordo com os REGULAMENTOS e TERMOS DE RESPONSABILIDADES dos eventos divulgados no site da REAL TIMING dos quais for participar. 
+			  
+			- Que possuo as habilidades técnicas e estou apto fisicamente para participar dos eventos que comprar na REAL TIMING, isentando a REAL TIMING e o ORGANIZADOR de qualquer problema que possa ocorrer pelo fato da participação no mesmo. Para a hipótese de você estar efetuando a inscrição em nome de terceiros, que você possui todos os direitos de representação de terceiros, possuindo autorização do terceiro para fornecimento dos dados de cadastro e, nos casos de realização de compras e inscrições para eles, declarando que o terceiro que participará do evento possui habilidades técnicas e está apto fisicamente a participar dos eventos que comprar na REAL TIMING, isentando a REAL TIMING e o ORGANIZADOR de qualquer problema que possa ocorrer pelo fato da participação no mesmo. Possuo a expressa autorização deste amigo para tais atos incluindo-se ai aquelas ligadas à lei Lei Geral de Proteção de Dados em particular, porem não restritas a esta, e às legislações ligadas ao uso de informações cadastrais de terceiros; Assumo em meu nome e dos amigos por mim incluídos nesta lista, cadastro ou inscrição que os mesmos estão cientes e concordam plenamente com todos os Termos e Políticas do site da REAL TIMING bem como do regulamento do evento;  
+			  
+			- Que autorizo o uso do seu direito de imagem, e dos terceiros por você inscritos e dos quais você possui autorização, para promoção de divulgação do evento, pelo ORGANIZADOR, REAL TIMING e patrocinadores. Como também todo o conteúdo como textos, fotos e vídeos dos eventos publicados na REAL TIMING, Organizadores seus parceiros comerciais, bem como a todos, pessoa física ou jurídica, necessariamente envolvidos na cadeia formada para a realização do evento, a enviar e compartilhar entre si ou com terceiros, sempre nos limites da Lei, os dados por mim fornecidos por qualquer meio eletrônico ou não; Desde já autorizo, a qualquer tempo, a utilização de minha imagem, endereços de correspondência eletrônico ou físico e direitos de arena pelos Organizadores, seus parceiros comerciais e a Real Timing  para realização, divulgação e ou veiculação de campanhas, informações, transmissão de TV, clipes, reapresentações, materiais jornalísticos, mídias sociais (Twitter, Facebook, Instagram, Youtube entre outros) promoções comerciais, licenciamentos e fotos, incluindo-se local, meio e mídias atualmente disponíveis ou que venham a ser implementadas no mercado renunciando ao recebimento de quaisquer rendas que vierem a ser auferidas com materiais de divulgação; 
+			  
+			- Que estou ciente que o simples ato de se inscrever no evento através do site da REAL TIMING não garante a sua participação no evento e não garante o seu direito à retirada de eventuais KITS, sendo os mesmos garantidos apenas mediante a confirmação do pagamento do valor integral cobrado. No caso de opção de pagamento via boleto ou cartão de crédito, apenas após a confirmação de transferência e creditação dos valores para débito do valor integral devido pela inscrição. 
+			  
+			- Que estou ciente de que eventuais pagamentos efetuados em valor divergente ao efetivamente devido (seja inferior ou superior) NÃO gerarão uma inscrição válida e não garantirão a sua inscrição no evento ou lhe darão direito à retirada de eventuais kits relativos ao evento. 
+			  
+			- Que estou ciente de que caso a inscrição dê direito à retirada de kits, os mesmos somente poderão ser retirados nas datas e horários fixados pelo ORGANIZADOR. A eventual não retirada dos kits nas datas estabelecidas resultará na PERDA DO SEU DIREITO DE RETIRAR referidos kits, e suas consequências. 
+			Em caso de arrependimento da compra, independente do motivo, a solicitação de estorno deve obedecer aos termos dos regulamentos das provas. 
+			  
+			- Que eu isento a REAL TIMING de qualquer responsabilidade relacionada ao evento, de modo que quaisquer reclamações, tais como, mas não limitadas a pedido de estorno, desistência de inscrições e pedidos de reembolso ou quaisquer outros assuntos relacionados ao evento deverão ser formulados diretamente ao ORGANIZADOR.     
+			  
+			-Estou ciente que a Real Timing, através de seu site www.realtiming.com.br, local pelo qual efetuarei e concretizarei minha solicitação de participação neste evento é simplesmente um canal de comunicação, não participando da cadeia de obrigações formada entre o organizador e eu, não imputando a Real Timing, por qualquer motivo e em tempo algum, nenhuma responsabilidade em razão de realização ou não do referido evento. 
+			  
+			- Que isento a REAL TIMING de qualquer responsabilidade relacionada a links existentes no "site" da REAL TIMING ou a conteúdo assinado por terceiros, tal qual, colunas, blogs, comentários nos fóruns, vídeos, fotos, comentários nas notícias, mapas de treino, entre outros são de inteira responsabilidade de seus autores. 
+			  
+			- Que estou ciente da impossibilidade de reprodução de qualquer conteúdo divulgado na REAL TIMING, seja integral ou parcial, seja para uso comercial, pessoal ou editorial, salvo prévia autorização por escrito da REAL TIMING ou pelo seu autor quando identificado. 
+			  
+			- Declaro que participarei dos eventos por livre e espontânea vontade, que estou em boa forma física e mental, com saúde perfeita e que possuo todo o material necessário para executar a tarefa a que me proponho e que estou de acordo com a taxa de serviço (quando existir no evento).  
+			  
+			Este termo está registrado em cartório. 
+			 
+			
+			 
+			 
+			 
+
+			 
+			 
+			  Estou concordando com os termos acima citados.
+			 
+			 
+
+			  
+			 
+			  
+			 
+
+			 
+			 
+			 
+			
+			
+			
+
+			 
+			
+			  
+			
+			
+			   
+			
+			
+			
+			 
+				 
+				  
+				 
+				  
+				 
+				       Aguarde! Carregando categorias 
+				  
+			
+			
+			   
+			
+			
+			
+			  
+		   
+		  
+		  
+		   
+
+	   
+       
+     
+     
+   
+ 
+ 
+ 
+
+  
+
+  
+
+ 
+
+ 
+
+
+
+
+ 
+
+.bg-nao-preenchido{background-color:#eee4e4 !important; border-bottom:solid 1px red; }
+.bg-preenchido{background-color:#e4f4e4 !important; border-bottom:solid 1px green; }
+
+ 
+
+
+
+
+
+ 
+ 
+ 
+ 
+     
+	 
+  
+		     
+		
+		 
+		 
+			
+			 As inscrições estão desabilitadas para esse evento 
+				
+		 
+		 
+		  
+  
+	 
+		
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+     
+	 
+  
+		     
+		
+		 
+		 
+				 
+				 				     82 99913-4920  ORGANIZAÇÃO  
+								 
+			
+		 
+		 
+		  
+  
+	 
+		
+ 
+ 
+ 
+
+ 
+ 
+ 
+     
+	 
+  
+		     
+		
+		 
+		 
+					 
+			 Os participantes deste evento são segurados pela    
+					
+							
+		 
+		 
+		  
+  
+	 
+		
+ 
+ 
+ 
+
+  
+
+ 
+ 
+ 
+     
+	 
+
+		   
+		
+	 
+		
+ 
+ 
+ 
+
+ 
+ 
+ 
+     
+	 
+
+		   
+		
+	 
+		
+ 
+ 
+ 
+  
+  
+  
+ 
+ 
+ 
+     
+	 
+		
+		   
+
+		 Digite o código para prosseguir com a sua inscrição 
+		
+		 
+		
+		 
+		
+			 
+			
+			 
+			 
+			 
+			
+			 
+			 
+			 
+			
+			  
+		
+		 
+		
+		  
+		
+		 Prosseguir Inscrição 
+		
+		 
+		
+	 
+		
+ 
+ 
+ 
+
+
+  
+  
+   
+ 
+     
+       
+      
+         
+			  
+			 Pague com:   
+			 
+           
+             
+               
+               
+				
+				 Entre em Contato 
+				   82  99612.5331      contato@realtiming.com.br				
+				
+				 
+                
+                   
+                
+                 
+               
+             
+           
+		  
+		  
+		   
+             
+               
+               
+				
+				 Acesso Rápido 
+				 Sobre RealTiming 
+				 Modalidades  
+				 Entre em Contato 
+				 Solicite um Orçamento 
+				 
+                
+                   
+                
+                 
+               
+             
+           
+           
+           
+             
+			
+		 	
+		
+		 
+             Conecte-se 
+             
+                    
+                      
+                      
+             
+			
+			   
+			
+           
+		  
+		
+		 
+		
+		 
+		
+		 
+		  
+		  
+		  
+          
+          
+         
+         
+       
+     
+	 
+ 
+ 
+
+ 
+
+
+
+
+  
+
+  
+    .notificacao {
+      position: fixed;
+      bottom: 60px;
+      right: 10px;
+      background: #fff;
+      border-left: 6px solid transparent;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      padding: 8px 10px;
+      font-family: sans-serif;
+      font-size: 14px;
+      color: #333;
+      z-index: 9999;
+      display: none;
+      animation: fadeIn 0.5s ease, fadeOut 0.5s ease 4.5s;
+    }
+	
+	.notificacao.approved {
+	  border-left-color: #2ecc71;  
+	}
+
+	.notificacao.pending {
+	  border-left-color: #3498db;  
+	}
+	
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(20px); }
+    }
+   
+  
+
+ 
+  const inscritos = [
+          {
+        nome: "Sidiane",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Lucas",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Adeildo",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Aldenir",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Ednalva",
+        evento: "3º CIRCUITO RUN",
+        status: "pending",
+		foto_var: "nada"
+      },
+          {
+        nome: "Ícaro",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Maria",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "JOSE",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Luan",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Rodolfo",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Mariana",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Manoel",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Paulo",
+        evento: "3º CIRCUITO RUN",
+        status: "pending",
+		foto_var: "nada"
+      },
+          {
+        nome: "Ibene",
+        evento: "3º CIRCUITO RUN",
+        status: "pending",
+		foto_var: "nada"
+      },
+          {
+        nome: "JAILSON",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Karl",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "/imagens/cadastros/da50694eb6383cb061290647532d8042/da50694eb6383cb061290647532d8042.jpeg"
+      },
+          {
+        nome: "José",
+        evento: "3º CIRCUITO RUN",
+        status: "pending",
+		foto_var: "nada"
+      },
+          {
+        nome: "Laís",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "/imagens/cadastros/9399320c27bf94dd47a899f4b612b785/9399320c27bf94dd47a899f4b612b785.jpeg"
+      },
+          {
+        nome: "Gilvaneide",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Manuel",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Luciano",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+          {
+        nome: "Adriana",
+        evento: "3º CIRCUITO RUN",
+        status: "pending",
+		foto_var: "nada"
+      },
+          {
+        nome: "Livia",
+        evento: "3º CIRCUITO RUN",
+        status: "approved",
+		foto_var: "nada"
+      },
+      ];
+
+  let index = 0;
+
+	function exibirNotificacao() {
+	  const toast = document.getElementById("toast");
+	  const inscrito = inscritos[index];
+	
+		if(inscrito.foto_var != 'nada' ) {
+	
+		toast.innerHTML = `     ${inscrito.nome}  se inscreveu no:   ${inscrito.evento}  `;
+
+		
+		}else{
+			
+		toast.innerHTML = `  ${inscrito.nome}  se inscreveu no:   ${inscrito.evento}  `;	
+			
+		}
+
+	  // Remove classes anteriores e aplica a do status atual
+	  toast.className = "notificacao " + inscrito.status;
+
+	  toast.style.display = "block";
+
+	  setTimeout(() => {
+		toast.style.display = "none";
+	  }, 5000);
+
+	  index = (index + 1) % inscritos.length;
+	}
+
+
+  // Exibe a primeira notificação imediatamente
+  //exibirNotificacao();
+
+  // Exibe a próxima notificação a cada 60 segundos (60000 ms)
+  setInterval(exibirNotificacao, 9000);
+ 
+
+
+
+
+
+
+ 
+	
+	 
+	
+	  Usamos cookies para proporcionar melhor desempenho e experiência de navegação. Ao continuar navegando neste site, você declara estar ciente dessas condições. 
+	 
+	  
+	 
+	
+		 Concordo 
+		 
+		
+	
+	 
+	  
+	
+	 
+
+ 
+
+ 
+
+var ip = "179.0.59.112";
+$("#lgpd_barra").hide();
+
+$("#bot_lgpd_concordar").click(function(e){
+	
+	e.preventDefault();
+	$("#lgpd_barra").hide();
+	
+	
+	var tipo = "definir";
+	funcaoCookie(ip,"definir");
+	//$("#lgpd_barra").hide();
+	
+ 
+});
+
+function funcaoCookie(ip,tipo){
+	
+		$.ajax({
+		
+		type: 'POST',
+		url: '/sistema/lgpd.php',
+		data: {ip:ip,tipo:tipo},
+		success:function(data){
+			
+			if(data==true){
+				
+				$("#lgpd_barra").hide();
+				
+			}else{
+				
+				$("#lgpd_barra").show();
+				
+			}
+			
+		},
+		error: function (request, status, error) {
+			
+			alert(request.responseText);
+			
+		}
+		
+	});
+	
+}
+
+funcaoCookie(ip,"consultar");
+
+
+
+///////////////////////////////////////////////////////
+///////// MASCARAS
+///////////////////////////////////////////////////////////////
+
+
+
+document.querySelectorAll(".cpf-mask").forEach(input => {
+
+    input.addEventListener("input", function () {
+
+        // Remove tudo que não for número
+        let value = this.value.replace(/\D/g, '');
+
+        // Limita em 11 números
+        value = value.substring(0, 11);
+
+        // Máscara CPF
+        value = value.replace(/^(\d{3})(\d)/, '$1.$2');
+        value = value.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+        value = value.replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+
+        this.value = value;
+    });
+
+});
+
+document.querySelectorAll(".nascimento-mask").forEach(input => {
+
+    input.addEventListener("input", function () {
+
+        // Remove tudo que não for número
+        let value = this.value.replace(/\D/g, '');
+
+        // Limita em 8 números (DDMMYYYY)
+        value = value.substring(0, 8);
+
+        // Máscara data
+        if (value.length > 2) {
+            value = value.replace(/^(\d{2})(\d)/, '$1-$2');
+        }
+
+        if (value.length > 4) {
+            value = value.replace(/^(\d{2})-(\d{2})(\d)/, '$1-$2-$3');
+        }
+
+        this.value = value;
+    });
+
+});
+
+
+document.querySelectorAll(".telefone-mask").forEach(input => {
+
+    input.addEventListener("input", function () {
+
+        // Remove tudo que não for número
+        let value = this.value.replace(/\D/g, '');
+
+        // Limita em 10 números
+        value = value.substring(0, 11);
+
+        // Máscara telefone
+        value = value.replace(/\D/g, ''); // remove tudo que não for número
+		value = value.replace(/^(\d{2})(\d)/, '($1)$2');
+		value = value.replace(/^(\(\d{2}\))(\d{5})(\d)/, '$1$2-$3');
+
+        this.value = value;
+    });
+
+});
+
+ 
+
+
+
+
+ 
+ 
+
+ 
+  
+  
+ 
+  
+          
+         
+		 
+		  
+		
+		 
+
+		$("#botaoBox").click(function() {
+		event.preventDefault();
+  //alert("oi");
+			$("#solicitar").click();
+});
+
+   
+  
+   
+
+
+
+		
+  
+  // Turn on Bootstrap
+
+var id_evento = "529";
+var cpf_cliente = "";
+var qtd_inscritos = "80";
+var limite_inscritos = "1000";
+var inscricao_ativo = "on";
+				
+
+
+$("#bot-confirma-terceiro").click(function(e){
+								
+	e.preventDefault();
+								
+	var id_atleta_terceiro = $("#campo_id_atleta_terceiro").val();
+	//alert(id_atleta_terceiro)
+								
+	$("#setor-atleta-terceiro").hide();
+	
+	$("#setor-categorias-atleta-terceiro").show();
+	
+	chamarCategorias(id_evento,cpf_cliente,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-atleta-terceiro");
+								
+	//alert(id_amigo);
+								
+});
+
+
+
+$("#form-cadastro-terceiro").submit(function(e){
+	
+	e.preventDefault();
+	
+	var genero_terceiro = $("#genero_terceiro").val();
+	
+	$("#status-form-cadastro-terceiro").html(" Carregando, aguarde! ");
+	//alert(nome_peito);
+	
+	if(genero_terceiro==''){
+		
+		$("#status-form-cadastro-terceiro").html(" Voce precisa selecionar o campo: Genero ");
+
+	}else{	
+		
+		var aTag = $("#inicio-cadastro-terceiro");
+		
+		$("#status-form-cadastro-terceiro").html(" Aguarde! Carregando ");
+		//$("#modal-loading").modal("show");
+
+		
+		var dados = $("#form-cadastro-terceiro").serialize();
+		var formData = new FormData(this);
+		
+		$.ajax({
+			
+			type: 'POST',
+			url: '/sistema/cadastro-vfast.php',
+			data: formData,
+			dataType: 'JSON',
+			success: function(data){
+				
+				//alert(data[""]);
+				
+				if(data["status"]==true){
+					
+					$("#setor-cadastro-terceiro").hide();
+					chamarCategorias(id_evento,cpf_cliente,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-atleta-terceiro");
+
+					$("#setor-categorias-atleta-terceiro").show();
+					
+				}else{
+					
+					$("#status-form-cadastro-terceiro").html(data["msg"]);
+
+				}
+				
+				
+				
+			},
+			cache: false,
+			contentType: false,
+			processData: false,
+			error: function (request, status, error) {
+				alert(request.responseText);
+			}
+			
+		});
+		
+		
+	}
+	
+
+	
+	 
+	
+});
+
+
+
+
+
+
+
+$("#bot-preenchimento-automatico-amigo").click(function(e){
+	
+	e.preventDefault();
+	
+	var cadastro_amigo_equipe_clube_patrocinador = "";
+	var cadastro_amigo_estado = "";
+	var cadastro_amigo_cidade = "";
+	
+	//alert(cadastro_amigo_equipe_clube_patrocinador);
+	$("#campo_cadastro_amigo_equipe_clube_patrocinador").val(cadastro_amigo_equipe_clube_patrocinador);
+	
+	document.getElementById("seletor_estado").value = cadastro_amigo_estado;
+	
+	$.ajax({
+		
+		type: 'POST',
+		url: '/sistema/seletor_cidades.php',
+		data:{uf:cadastro_amigo_estado,selecionado:cadastro_amigo_cidade},
+		dataType:'JSON',
+		success: function(data){
+			
+			//alert(data.length);
+			//$("#deposito_cidades").hmtl("aw");
+			//$("#deposito_cidades").hmtl(data);
+			
+			var seletor = $("#seletor_cidades");
+			seletor.empty();
+			
+			for(var i=0; i Digite 'sem', caso não possua ");
+	
+	$("#campo_nome_completo_alerta_msg_terceiro").html("");
+	$("#campo_email_alerta_msg_terceiro").html("");
+	
+});
+
+
+$(".bot-inscricao").click(function(e){
+	
+	e.preventDefault();
+	
+	var cliente_logado = "";
+	var status_code_liberacao = "";
+	//alert(status_code_liberacao);
+
+		if(status_code_liberacao==true){
+			
+			$("#form-codigo-liberacao").trigger("reset");
+			$("#form-codigo-liberacao").show();
+			
+			$("#bot_codigo_liberacao_prosseguir").hide();
+			$("#status-form-codigo-liberacao").html("");
+			
+			//alert("vai pedir codigo");
+			$("#modal-codigo-liberacao").modal("show");
+			return;
+			
+		}
+	
+	//alert(cliente_logado);
+	
+	if(cliente_logado!=''){
+		
+
+		
+		$("#setor-pre-login").hide();
+		$("#setor-cadastro").hide();
+		$("#setor-esqueci").hide();
+				
+		$("#setor-categorias").show();
+				
+		$("#modal-login-cadastro").modal("show");
+		
+		$("#status-form-login").html("");
+		$("#form-login").html("");
+		
+		chamarCategorias(id_evento,cpf_cliente,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-evento");
+			
+	}else{
+		
+		$("#setor-esqueci-senha").hide();
+		$("#setor-cadastro").hide();
+				
+		$("#setor-pre-login").show();
+		
+		$("#status-form-login").html("");
+		$("#status-form-login-passaporte").html("");
+		
+		$("#campo_cpf_login_inicio").val("");
+		$("#campo_nascimento_login_inicio").val("");
+						
+		$("#campo_cpf_login_inicio_passaporte").val("");
+		$("#campo_nascimento_login_inicio_passaporte").val("");
+		
+		$(".campo-cadastro-categoria").val("evento");
+		$(".campo-cadastro-id-evento").val("529");
+		
+		$('#seletor_tipo_documento').val('campo_form_login_cpf').trigger('change');
+				
+		$("#modal-login-cadastro").modal("show");
+		
+	}
+	
+	 
+	
+
+	
+	
+});
+
+
+
+
+
+$("#bot-contato").click(function(e){
+	
+	e.preventDefault();
+	
+	$("#modal-contato").modal("show");
+	
+});
+
+$("#bot-contato2").click(function(e){
+	
+	e.preventDefault();
+	
+	$("#modal-contato").modal("show");
+	
+});
+ 
+$("#bot-esqueci").click(function(e){
+	
+	e.preventDefault();
+	
+	$("#modal-login-cadastro").modal("hide");
+	$("#modal-esqueci").modal("show");
+	
+});
+
+
+
+  // 15 days from now!
+  function get15dayFromNow() {
+    return new Date(new Date().valueOf() + 20 * 24 * 60 * 60 * 1000);
+  }
+
+  var $clock = $('#clock');
+
+  $clock.countdown(get15dayFromNow(), function(event) {
+    $(this).html(event.strftime('    Faltam   %D  dias   %H  horas    %M  minutos    %S  segundos     '));
+  });
+
+$("#esqueci-botao").click(function(){
+		
+		event.preventDefault();
+		$("#form1").hide();
+		$("#esqueci-botao").hide();
+		$("#form2").show();
+		
+});
+
+
+ 
+
+
+
+
+$("#form-login-terceiro").submit(function(e){
+	
+	e.preventDefault();
+	
+	var dados_seletor_login_form_terceiro = $("#form-login-terceiro").serialize();
+	
+	
+	$("#form-cadastro-terceiro").trigger("reset");
+	$("#campo_equipe_clube_patrocinador_alerta_msg_terceiro").html(" Digite 'sem', caso não possua ");
+	$("#campo_nome_completo_alerta_msg_terceiro").html("");
+	$("#campo_email_alerta_msg_terceiro").html("");
+	
+	$("#status-form-login-terceiro").html("");
+	
+	//alert(dados_seletor_login_form_terceiro);
+	
+	$.ajax({
+								
+		type:'POST',
+		url:'/sistema/busca_cpf_amigo_vfast.php',
+		data: dados_seletor_login_form_terceiro,
+		dataType:'JSON',
+		success: function(data){
+									
+			//alert(data["status"]);
+									
+			if(data["status"]==true){
+										
+				$("#setor-pre-login-terceiro").hide();
+				
+				$("#setor-atleta-terceiro").show();
+				
+				$("#campo_nome_atleta_terceiro").html(data["nome_atleta_terceiro"]);
+				$("#campo_id_atleta_terceiro").val(data["id_atleta_terceiro"]);				
+										
+			}else{
+										
+				if(data["status"]=='cadastro'){
+										
+					//alert(data["status"]);
+					
+					$("#setor-pre-login-terceiro").hide();
+					$("#setor-cadastro-terceiro").show();
+	
+					var cpf_atual_terceiro = $("#campo_cpf_terceiro").val();
+					var nascimento_atual_terceiro = $("#campo_nascimento_terceiro").val();
+											
+					$("#campo_cpf_atual_terceiro").val(cpf_atual_terceiro);
+					$("#campo_nascimento_atual_terceiro").val(nascimento_atual_terceiro);
+											
+					//alert(nascimento_atual);
+					//alert(cpf_atual+" - "+nascimento_atual);
+										
+				}
+										
+				if(data["status"]=='atleta_cadastrado'){
+											
+					//alert(data[1]);
+					$("#status-form-login-terceiro").html(data["msg"]);
+											
+				}
+										
+				if(data["status"]=='cpf_invalido'){
+											
+					//alert(data[1]);
+					$("#status-form-login-terceiro").html(data["msg"]);
+											
+				}
+										
+				if(data["status"]=='erro_nascimento'){
+											
+					//alert(data[1]);
+					$("#status-form-login-terceiro").html(data["msg"]);
+											
+				}						
+										
+			}
+									//
+									
+		},
+			
+			error: function(XMLHttpRequest, textStatus, errorThrown) { 
+			alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+			} 
+								
+	});
+	
+});
+
+
+
+
+
+
+ 
+
+
+function chamarCategorias(id_evento,cpf_cliente,qtd_inscritos,limite_inscritos,inscricao_ativo,deposito){
+	
+	//alert(id_evento);
+	//alert(cpf_cliente);
+	
+	//alert(id_evento+" - "+cpf_cliente+" - "+qtd_inscritos+" - "+limite_inscritos+" - "+inscricao_ativo+" - "+deposito);
+	
+	$.ajax({
+		
+		type: 'POST',
+		url: '/sistema/chamar_categorias_vfast.php',
+		data: {id_evento:id_evento,cpf_cliente:cpf_cliente,qtd_inscritos:qtd_inscritos,limite_inscritos:limite_inscritos,inscricao_ativo:inscricao_ativo},
+		success: function(data){
+			
+			//alert(data);
+			
+			$(deposito).html(data);
+			//$("#modal-inscricao").modal("show");
+			
+			
+			
+		}
+		
+	})
+	
+}
+
+
+
+
+//$("#campo_nascimento_atual_terceiro").mask('99-99-9999', {placeholder:'_'});	
+//$("#campo_nascimento_atual").mask('99-99-9999', {placeholder:'_'});
+	
+//$("#campo_telefone").mask('(99)99999.9999', {placeholder:'_'});
+//$("#campo_telefone_terceiro").mask('(99)99999.9999', {placeholder:'_'});
+
+//$("#campo_cpf_login_inicio").mask('999.999.999-99', {placeholder:'_'});
+
+ 
+
+//$("#campo_cpf_terceiro").mask('999.999.999-99', {placeholder:'_'});
+//$("#campo_nascimento_terceiro").mask('99-99-9999', {placeholder:'_'});
+
+
+
+
+
+$("#seletor_estado_terceiro").change(function(e){
+	
+	e.preventDefault();
+	
+	var uf = this.value;
+	
+	//alert(uf);
+	
+	$.ajax({
+		
+		type:'POST',
+		url:'/sistema/seletor_cidades.php',
+		data:{uf:uf},
+		dataType:'JSON',
+		success: function(data){
+			
+			
+			var seletor = $("#seletor_cidades_terceiro");
+			seletor.empty();
+			
+			for(var i=0; i Aguarde, carregando informações ");
+	
+	if(genero_amigo_pos==''){
+		
+		alert("Voce precisa selecionar o campo: Genero");
+
+	}else{	
+		
+		 var aTag = $("#inicio-cadastro");
+
+		
+		
+		 $("#modal-loading").modal("show");
+		
+		var dados = $("#cadastro-form-amigo-pos").serialize();
+		var formData = new FormData(this);
+		//alert(dados);
+		
+		$.ajax({
+			
+			type: 'POST',
+			url: '/sistema/cadastro-vfast.php',
+			data: formData,
+			dataType: 'JSON',
+			success: function(data){
+				
+				//alert(data);
+				
+				if(data[0]==true){
+					
+					//window.location.href = data[1];
+					$("#modal-inscricao-amigo").modal("hide");
+					$("#modal-inscricao").modal("show");
+					
+					
+					
+				}else{
+					
+					$("#modal-loading").modal("hide");
+					//window.location.href = data[1];
+					$("#status-cadastro-form-amigo-pos").html(data[1]);
+					$("#status-cadastro-form-amigo-pos-2").html(data[1]);
+					$('html,body').animate({scrollTop: aTag.offset().top},'slow');
+					
+				}
+				
+				
+				
+			},
+			cache: false,
+			contentType: false,
+			processData: false,
+			error: function (request, status, error) {
+				alert(request.responseText);
+			}
+			
+		});
+		
+		
+	}
+	
+
+	
+	 
+	
+});
+
+
+
+function chamarMosaico(id_evento,titulo_evento){
+	
+	//alert(id_evento);
+	
+	$.ajax({
+		
+		type: 'POST',
+		url: "/sistema/aux_mosaico_inscritos.php",
+		data: {id_evento:id_evento,titulo_evento:titulo_evento},
+		success: function(data){
+			
+			//alert(data);
+			$("#deposito_mosaico_atletas").html(data);
+			$('[data-toggle="tooltip"]').tooltip();
+			
+		},
+      error: function (xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+      }
+		
+	});
+	
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+	
+		const botoes = document.querySelectorAll('.botao-off');
+
+		botoes.forEach(botao => {
+			// libera clique removendo a classe
+			botao.classList.remove('botao-off');
+		});
+	   
+
+	   var id_evento = "529";
+	   var titulo_evento = "3º CIRCUITO RUN";
+	   
+	   chamarMosaico(id_evento,titulo_evento)
+	   
+});
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+$("#form-codigo-liberacao").submit(function(e){
+	
+	e.preventDefault();
+	
+	var dados_liberacao = $(this).serialize();
+	
+	$("#form-codigo-liberacao").hide();
+	
+	$("#status-form-codigo-liberacao").html(" Aguarde, verificando código ");
+	
+	$.ajax({
+		
+		type: 'POST',
+		url: '/sistema/checar_codigo_liberacao.php',
+		data: dados_liberacao,
+		dataType: 'JSON',
+		success: function(data){
+			
+			if(data["status"]==true){
+				
+				$("#form-codigo-liberacao").hide();
+				$("#bot_codigo_liberacao_prosseguir").show();
+				//status_code_liberacao = false;
+				
+			}else{
+				
+				$("#form-codigo-liberacao").show();
+				
+			}
+			
+			$("#status-form-codigo-liberacao").html(data["msg"]);
+			
+		}
+		
+		
+		
+	});
+	
+	//alert(dados);
+	
+});
+
+
+$("#bot_codigo_liberacao_prosseguir").click(function(e){
+	
+	e.preventDefault();
+	
+	$("#modal-codigo-liberacao").modal("hide");
+	
+	var cliente_logado = "";
+
+	if(cliente_logado!=''){
+		
+
+		
+		$("#setor-pre-login").hide();
+		$("#setor-cadastro").hide();
+		$("#setor-esqueci").hide();
+				
+		$("#setor-categorias").show();
+				
+		$("#modal-login-cadastro").modal("show");
+		
+		$("#status-form-login").html("");
+		$("#form-login").html("");
+		
+		chamarCategorias(id_evento,cpf_cliente,qtd_inscritos,limite_inscritos,inscricao_ativo,"#deposito-categorias-evento");
+			
+	}else{
+		
+		$("#setor-esqueci-senha").hide();
+		$("#setor-cadastro").hide();
+				
+		$("#setor-pre-login").show();
+		$("#form-login").trigger("reset");
+		$("#status-form-login").html("");	
+				
+		$("#modal-login-cadastro").modal("show");
+		
+	}
+	
+});
+
+
+ 
+
+ 
+ 
+ 
+
+ 

@@ -171,12 +171,12 @@
 
           <cfif len(trim(URL.summary_notice))>
             <div class="alert <cfif URL.summary_result EQ 'success'>alert-success<cfelse>alert-warning</cfif>" role="status">
-              <cfoutput>#htmlEditFormat(left(URL.summary_notice, 600))#</cfoutput>
+              <cfoutput>#encodeForHTML(left(URL.summary_notice, 600))#</cfoutput>
             </div>
           </cfif>
           <cfif len(trim(URL.reimport_notice))>
             <div class="alert <cfif URL.reimport_result EQ 'success'>alert-success<cfelse>alert-warning</cfif>" role="status">
-              <cfoutput>#htmlEditFormat(left(URL.reimport_notice, 600))#</cfoutput>
+              <cfoutput>#encodeForHTML(left(URL.reimport_notice, 600))#</cfoutput>
             </div>
           </cfif>
 
@@ -194,7 +194,7 @@
 
               <div>
                 <label class="form-label">Busca</label>
-                <input class="form-control" type="text" name="busca" value="<cfoutput>#htmlEditFormat(URL.busca)#</cfoutput>" placeholder="Titulo, slug ou resumo"/>
+                <input class="form-control" type="text" name="busca" value="<cfoutput>#encodeForHTMLAttribute(URL.busca)#</cfoutput>" placeholder="Titulo, slug ou resumo"/>
               </div>
 
               <div>
@@ -202,7 +202,7 @@
                 <select class="form-select" name="canal">
                   <option value="">Todos os canais</option>
                   <cfoutput query="qContentTypes">
-                    <option value="#htmlEditFormat(qContentTypes.slug)#" <cfif lCase(trim(URL.canal)) EQ lCase(trim(qContentTypes.slug))>selected</cfif>>#htmlEditFormat(qContentTypes.name)#</option>
+                    <option value="#encodeForHTMLAttribute(qContentTypes.slug)#" <cfif lCase(trim(URL.canal)) EQ lCase(trim(qContentTypes.slug))>selected</cfif>>#encodeForHTML(qContentTypes.name)#</option>
                   </cfoutput>
                 </select>
               </div>
@@ -232,7 +232,7 @@
               </div>
 
               <div>
-                <a class="btn btn-outline-secondary" href="<cfoutput>#htmlEditFormat(VARIABLES.contentAdminBaseUrl)#/admin/importers</cfoutput>" target="_blank" rel="noopener">
+                <a class="btn btn-outline-secondary" href="<cfoutput>#encodeForHTMLAttribute(VARIABLES.contentAdminBaseUrl)#/admin/importers</cfoutput>" target="_blank" rel="noopener">
                   <i class="fa-solid fa-arrows-rotate me-1"></i>Central de importadores
                 </a>
               </div>
@@ -261,7 +261,7 @@
                   </div>
                 </div>
                 <form method="post" action="./?pagina=<cfoutput>#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#</cfoutput>" data-summary-batch-form data-failed-count="<cfoutput>#VARIABLES.contentSummaryRecoverableFailed#</cfoutput>">
-                  <input type="hidden" name="content_summary_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.contentSummaryCsrf)#</cfoutput>"/>
+                  <input type="hidden" name="content_summary_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.contentSummaryCsrf)#</cfoutput>"/>
                   <button class="btn btn-warning text-nowrap" type="submit" name="requeue_failed_summaries" value="1" data-summary-batch-action <cfif VARIABLES.contentSummaryRecoverableFailed LTE 0>disabled</cfif>>
                     <i class="fa-solid fa-rotate me-1"></i>Reprocessar falhas recuperáveis
                   </button>
@@ -271,7 +271,7 @@
 
             <form method="post" action="./?pagina=<cfoutput>#VARIABLES.contentPage#&busca=#urlEncodedFormat(URL.busca)#&canal=#urlEncodedFormat(URL.canal)#&status=#urlEncodedFormat(VARIABLES.contentStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.contentFeaturedFilter)#</cfoutput>" id="contentBulkForm">
               <input type="hidden" name="content_bulk_action" value="apply_status"/>
-              <input type="hidden" name="content_summary_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.contentSummaryCsrf)#</cfoutput>"/>
+              <input type="hidden" name="content_summary_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.contentSummaryCsrf)#</cfoutput>"/>
               <div class="d-flex flex-wrap align-items-end gap-2 mb-3">
                 <div>
                   <label class="form-label mb-1" for="contentBulkStatus">Alterar status dos selecionados</label>
@@ -321,16 +321,16 @@
                       </cfif>
                       <tr>
                         <td>
-                          <input class="form-check-input content-bulk-checkbox" type="checkbox" name="content_ids" value="#qContents.id#" aria-label="Selecionar #htmlEditFormat(qContents.title)#"/>
+                          <input class="form-check-input content-bulk-checkbox" type="checkbox" name="content_ids" value="#qContents.id#" aria-label="Selecionar #encodeForHTMLAttribute(qContents.title)#"/>
                         </td>
                         <td class="content-thumb-cell">
                           <button type="button" class="content-preview-trigger"
                             data-preview-url="./preview.cfm?content_id=#urlEncodedFormat(qContents.id)#"
-                            data-preview-title="#htmlEditFormat(qContents.title)#"
-                            aria-label="Visualizar notícia #htmlEditFormat(qContents.title)#">
+                            data-preview-title="#encodeForHTMLAttribute(qContents.title)#"
+                            aria-label="Visualizar notícia #encodeForHTMLAttribute(qContents.title)#">
                             <div class="content-thumb">
                               <cfif len(VARIABLES.contentFeaturedMediaUrl)>
-                                <img src="#htmlEditFormat(VARIABLES.contentFeaturedMediaUrl)#" alt="Capa do conteúdo"/>
+                                <img src="#encodeForHTMLAttribute(VARIABLES.contentFeaturedMediaUrl)#" alt="Capa do conteúdo"/>
                               <cfelse>
                                 <i class="fa-regular fa-newspaper text-muted"></i>
                               </cfif>
@@ -341,11 +341,11 @@
                         <td class="content-cell">
                           <button type="button" class="content-preview-trigger"
                             data-preview-url="./preview.cfm?content_id=#urlEncodedFormat(qContents.id)#"
-                            data-preview-title="#htmlEditFormat(qContents.title)#">
-                            <div class="fw-semibold content-preview-title">#htmlEditFormat(qContents.title)#</div>
+                            data-preview-title="#encodeForHTMLAttribute(qContents.title)#">
+                            <div class="fw-semibold content-preview-title">#encodeForHTML(qContents.title)#</div>
                           </button>
                           <div class="small text-muted">
-                            <cfif len(trim(qContents.autor_nome))>#htmlEditFormat(qContents.autor_nome)#<cfelse>-</cfif> - #htmlEditFormat(qContents.canal_nome)#
+                            <cfif len(trim(qContents.autor_nome))>#encodeForHTML(qContents.autor_nome)#<cfelse>-</cfif> - #encodeForHTML(qContents.canal_nome)#
                           </div>
                         </td>
                         <td class="content-cell">
@@ -372,12 +372,12 @@
                                 <span class="text-info"><i class="fa-solid fa-spinner me-1"></i>Resumo em processamento</span>
                               <cfelseif qContents.summary_status EQ "pending">
                                 <cfif findNoCase("OpenAI",qContents.summary_error) AND findNoCase("HTTP",qContents.summary_error)>
-                                  <span class="text-warning" title="#htmlEditFormat(left(qContents.summary_error, 500))#"><i class="fa-solid fa-pause me-1"></i>IA temporariamente indisponível; tentativa preservada</span>
+                                  <span class="text-warning" title="#encodeForHTMLAttribute(left(qContents.summary_error, 500))#"><i class="fa-solid fa-pause me-1"></i>IA temporariamente indisponível; tentativa preservada</span>
                                 <cfelse>
                                   <span class="text-warning"><i class="fa-regular fa-clock me-1"></i>Resumo aguardando processamento</span>
                                 </cfif>
                               <cfelseif qContents.summary_status EQ "failed">
-                                <span class="text-danger" title="#htmlEditFormat(left(qContents.summary_error, 500))#"><i class="fa-solid fa-triangle-exclamation me-1"></i>Falha no resumo</span>
+                                <span class="text-danger" title="#encodeForHTMLAttribute(left(qContents.summary_error, 500))#"><i class="fa-solid fa-triangle-exclamation me-1"></i>Falha no resumo</span>
                               <cfelse>
                                 <span class="text-muted"><i class="fa-solid fa-wand-magic-sparkles me-1"></i>Resumo ainda não processado</span>
                               </cfif>
@@ -391,7 +391,7 @@
                               formnovalidate
                               data-reimport-action
                               <cfif NOT VARIABLES.contentCanReimport>disabled</cfif>
-                              title="<cfif VARIABLES.contentCanReimport>Buscar novamente este item no importador #htmlEditFormat(qContents.importer_key)# e atualizar os dados importados, preservando o estado editorial.<cfelseif len(trim(qContents.importer_key & ''))>O importador #htmlEditFormat(qContents.importer_key)# não oferece reimportação individual.<cfelse>Este conteúdo não possui vínculo com um importador.</cfif>">
+                              title="<cfif VARIABLES.contentCanReimport>Buscar novamente este item no importador #encodeForHTMLAttribute(qContents.importer_key)# e atualizar os dados importados, preservando o estado editorial.<cfelseif len(trim(qContents.importer_key & ''))>O importador #encodeForHTMLAttribute(qContents.importer_key)# não oferece reimportação individual.<cfelse>Este conteúdo não possui vínculo com um importador.</cfif>">
                               <i class="fa-solid fa-rotate me-1"></i>Reimportar
                             </button>
                             <cfif VARIABLES.contentSummaryReady AND qContents.summary_policy EQ "summary_link">
@@ -424,7 +424,7 @@
                                 </a>
                               </cfif>
                             </cfif>
-                            <a class="btn btn-sm btn-outline-secondary" href="<cfoutput>#htmlEditFormat(VARIABLES.contentAdminBaseUrl)#/admin/content_edit?id=#qContents.id#</cfoutput>" target="_blank" rel="noopener">
+                            <a class="btn btn-sm btn-outline-secondary" href="<cfoutput>#encodeForHTMLAttribute(VARIABLES.contentAdminBaseUrl)#/admin/content_edit?id=#qContents.id#</cfoutput>" target="_blank" rel="noopener">
                               Editar
                             </a>
                           </div>

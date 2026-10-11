@@ -1,5 +1,5 @@
 <cfif getBaseTemplatePath() EQ getCurrentTemplatePath()>
-    <cfheader statuscode="403" statustext="Forbidden"/><cfabort/>
+    <cfheader statuscode="403"/><cfabort/>
 </cfif>
 <cfset VARIABLES.inscricaoError = ""/>
 <cfset VARIABLES.inscricaoSaved = false/>

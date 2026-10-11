@@ -1,0 +1,12 @@
+{
+  "watch": {
+    "Application.cfc": "ce140c0e559dc8346ad9fc930fd0e3cb9dbd01c29220d8b6482f507b89aa79c7",
+    "portal/conteudo/seo.cfm": "8ecd4a478379f470fe33cd8f7353a5f3e997ec7c05cbc68e2b952e2950db2870",
+    "portal/includes/seo_queue_backend.cfm": "df2fd3936ec16198486c521102e1a45bd37b43a3fa90a7071b661c751373ac91",
+    "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0",
+    "portal/includes/seo_semrush_data.cfm": "12d6c2bc2d653f763b5bcf0042e33718c241c4a268e8d28b119c3c05741f4c44",
+    "portal/conteudo/seo_semrush.cfm": "5b28545f9d8b8800bd0dec5c1adfd84526617b1f7571206e89c8caf8925dd45d",
+    "portal/seo/index.cfm": "26d987d49984a957e85696ede50a00402fd15f7989e9702dc6cb99b56f4c03a0"
+  },
+  "sha256": "eb3f6768c03bf8e6e18f3109f7cf0a923a8f446cc97823bb7be1b973535a75b4"
+}

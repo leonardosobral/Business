@@ -31,13 +31,13 @@
     <cfset VARIABLES.cbgSearchRequestedYear = isDefined("URL.ano") ? val(URL.ano) : 0/>
 
     <cfif NOT VARIABLES.cbgValidationCanDecide>
-        <cfheader statuscode="403" statustext="Forbidden"/>
+        <cfheader statuscode="403"/>
         <cfset VARIABLES.cbgSearchPayload.message = "Sem permissao para pesquisar resultados."/>
     <cfelseif VARIABLES.cbgSearchCsrf NEQ VARIABLES.challengeMedalCsrf OR VARIABLES.cbgSearchUserId LTE 0 OR NOT len(VARIABLES.cbgSearchProtocol)>
-        <cfheader statuscode="400" statustext="Bad Request"/>
+        <cfheader statuscode="400"/>
         <cfset VARIABLES.cbgSearchPayload.message = "Solicitacao de busca invalida."/>
     <cfelseif len(VARIABLES.cbgSearchName) LT 2 AND VARIABLES.cbgSearchBib LTE 0>
-        <cfheader statuscode="422" statustext="Unprocessable Entity"/>
+        <cfheader statuscode="422"/>
         <cfset VARIABLES.cbgSearchPayload.message = "Informe ao menos dois caracteres do nome ou um numero de peito."/>
     <cfelse>
         <cfquery name="qCbgSearchChallenge">
@@ -124,25 +124,25 @@
                         </cfloop>
                         <cfset VARIABLES.cbgSearchPayload.success = true/>
                     <cfelse>
-                        <cfheader statuscode="422" statustext="Unprocessable Entity"/>
+                        <cfheader statuscode="422"/>
                         <cfset VARIABLES.cbgSearchPayload.message = "A prova ou o ano da solicitacao nao puderam ser identificados."/>
                     </cfif>
                 <cfelse>
-                    <cfheader statuscode="404" statustext="Not Found"/>
+                    <cfheader statuscode="404"/>
                     <cfset VARIABLES.cbgSearchPayload.message = "O protocolo documental nao foi encontrado para este atleta."/>
                 </cfif>
                 <cfcatch type="CBG.Validation.InvalidSearchYear">
-                    <cfheader statuscode="422" statustext="Unprocessable Entity"/>
+                    <cfheader statuscode="422"/>
                     <cfset VARIABLES.cbgSearchPayload.message = cfcatch.message/>
                 </cfcatch>
                 <cfcatch type="any">
-                    <cfheader statuscode="500" statustext="Internal Server Error"/>
+                    <cfheader statuscode="500"/>
                     <cfset VARIABLES.cbgSearchErrorDetail = structKeyExists(cfcatch, "detail") ? trim(cfcatch.detail & "") : ""/>
                     <cfset VARIABLES.cbgSearchPayload.message = "Nao foi possivel pesquisar os resultados: " & cfcatch.message & (len(VARIABLES.cbgSearchErrorDetail) ? " - " & VARIABLES.cbgSearchErrorDetail : "")/>
                 </cfcatch>
             </cftry>
         <cfelse>
-            <cfheader statuscode="404" statustext="Not Found"/>
+            <cfheader statuscode="404"/>
             <cfset VARIABLES.cbgSearchPayload.message = "O cadastro do atleta no circuito nao foi encontrado."/>
         </cfif>
     </cfif>

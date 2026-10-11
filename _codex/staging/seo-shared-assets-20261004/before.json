@@ -1,0 +1,7 @@
+{
+  "includes/analytics/privacy_controls.cfm": "de3e06815e242e8d103243b6bfc5d73f7cbe7f7622564292f3c12c9996eb2aba",
+  "includes/estrutura/footer_assets.cfm": "d08149d39b755dc644bbe8b1fc360f032f036ae517b8d12cf2c30afd8e6d1a65",
+  "includes/estrutura/seo-web-tools-head.cfm": "73cff56e4e09815eb51d99d0ceb13dbf65abd7a0d788e77afa3ceaf2d9e68d10",
+  "includes/estrutura/seo-web-tools-body-end.cfm": "4fe0430ec37107fbc5e58ca449e8df2bdfac8af232a6460b065d1bb90599a7fd",
+  "assets/css/cores.min.css": "0a8f8d050faf60d97c5fc28b0d14298b52812432c9f9db9d4dc11425ccc15d0d"
+}

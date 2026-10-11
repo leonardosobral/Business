@@ -1,0 +1,42 @@
+--- a/index.cfm
++++ b/index.cfm
+@@ -50,9 +50,28 @@
+ 
+         @media only screen and (max-width: 600px) {
+             #busca {
+-                padding-top: 5rem !important;
+-                padding-bottom: 5rem !important;
++                padding-top: 1rem !important;
++                padding-bottom: 1rem !important;
+             }
++
++            .home-search-logo,
++            .home-search-intro {
++                display: none;
++            }
++
++            #busca .home-search-icon {
++                display: inline-block;
++            }
++        }
++
++        .home-search-heading {
++            font-size: 1rem;
++            font-weight: 400;
++            line-height: 1.6;
++        }
++
++        .home-search-icon {
++            display: none;
+         }
+ 
+         .home-search-logo {
+@@ -79,7 +98,7 @@
+             <div class="row justify-content-center">
+                 <div class="col-lg-9 col-xl-8 text-center">
+                     <img src="/assets/or_logo.svg" alt="Open Results" class="home-search-logo mb-3"/>
+-                    <p class="text-gray-light mb-4"><cfoutput>Pesquise em <strong>#lsNumberFormat(qTotalResultados.total)#</strong> de resultados oficiais.</cfoutput></p>
++                    <h1 class="home-search-heading text-gray-light mb-4"><span class="home-search-intro">Pesquise entre</span><i class="fa-solid fa-magnifying-glass home-search-icon me-1" role="img" aria-label="Pesquise entre"></i> <cfoutput><strong>#lsNumberFormat(qTotalResultados.total)#</strong> resultados oficiais.</cfoutput></h1>
+ 
+                     <cfset VARIABLES.buscaFormTerm = ""/>
+                     <cfinclude template="includes/form_busca_principal.cfm"/>

@@ -1,0 +1,11 @@
+{
+  "status": "published_and_verified",
+  "runtime_files": 2,
+  "compiled_templates": 1,
+  "public_links": 14,
+  "llms_content_type": "text/plain",
+  "metadata_preserved": true,
+  "policies_preserved": 6,
+  "backup": "/var/backups/seo-ai-navigation-20261004/baseline",
+  "experiment": "No citation/indexation/ranking guarantee; no score assigned for the file"
+}

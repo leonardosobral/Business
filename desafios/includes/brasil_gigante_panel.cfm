@@ -224,7 +224,7 @@
           <i class="fa-solid fa-file-shield me-1"></i>Validações documentais
         </a>
         <cfif URL.tela EQ "participantes">
-          <a class="btn btn-outline-success btn-sm" href="<cfoutput>#htmlEditFormat(VARIABLES.challengeCircuitExportUrl)#</cfoutput>">
+          <a class="btn btn-outline-success btn-sm" href="<cfoutput>#encodeForHTMLAttribute(VARIABLES.challengeCircuitExportUrl)#</cfoutput>">
             <i class="fa-solid fa-file-excel me-1"></i>Exportar lista
           </a>
         </cfif>
@@ -282,7 +282,7 @@
       <form method="get" class="row g-2 align-items-end">
         <div class="col-12 col-lg-3">
           <label class="form-label">Atleta</label>
-          <input class="form-control" type="search" name="busca" value="<cfoutput>#htmlEditFormat(URL.busca)#</cfoutput>" placeholder="Nome do atleta"/>
+          <input class="form-control" type="search" name="busca" value="<cfoutput>#encodeForHTMLAttribute(URL.busca)#</cfoutput>" placeholder="Nome do atleta"/>
         </div>
         <div class="col-6 col-lg-2">
           <label class="form-label">Mandala</label>
@@ -299,7 +299,7 @@
           <select class="form-select" name="regiao">
             <option value="">Todas</option>
             <cfoutput query="qStatsRegiao">
-              <option value="#htmlEditFormat(qStatsRegiao.regiao)#" <cfif URL.regiao EQ qStatsRegiao.regiao>selected</cfif>>#htmlEditFormat(qStatsRegiao.regiao)#</option>
+              <option value="#encodeForHTMLAttribute(qStatsRegiao.regiao)#" <cfif URL.regiao EQ qStatsRegiao.regiao>selected</cfif>>#encodeForHTML(qStatsRegiao.regiao)#</option>
             </cfoutput>
           </select>
         </div>
@@ -308,7 +308,7 @@
           <select class="form-select" name="estado">
             <option value="">Todas</option>
             <cfoutput query="qStatsEstado">
-              <option value="#htmlEditFormat(qStatsEstado.estado)#" <cfif URL.estado EQ qStatsEstado.estado>selected</cfif>>#htmlEditFormat(qStatsEstado.estado)#</option>
+              <option value="#encodeForHTMLAttribute(qStatsEstado.estado)#" <cfif URL.estado EQ qStatsEstado.estado>selected</cfif>>#encodeForHTML(qStatsEstado.estado)#</option>
             </cfoutput>
           </select>
         </div>
@@ -317,7 +317,7 @@
           <select class="form-select" name="cidade">
             <option value="">Todas</option>
             <cfoutput query="qStatsCidade">
-              <option value="#htmlEditFormat(qStatsCidade.cidade)#" <cfif URL.cidade EQ qStatsCidade.cidade>selected</cfif>>#htmlEditFormat(qStatsCidade.cidade)#/#htmlEditFormat(qStatsCidade.estado)#</option>
+              <option value="#encodeForHTMLAttribute(qStatsCidade.cidade)#" <cfif URL.cidade EQ qStatsCidade.cidade>selected</cfif>>#encodeForHTML(qStatsCidade.cidade)#/#encodeForHTML(qStatsCidade.estado)#</option>
             </cfoutput>
           </select>
         </div>
@@ -331,9 +331,9 @@
 
   <div class="cbg-dashboard-stages mb-3">
     <cfloop array="#VARIABLES.challengeCircuitEvents#" item="VARIABLES.challengeCircuitEvent">
-      <div class="cbg-dashboard-stage" title="<cfoutput>#htmlEditFormat(VARIABLES.challengeCircuitEvent.nome)#</cfoutput>">
+      <div class="cbg-dashboard-stage" title="<cfoutput>#encodeForHTMLAttribute(VARIABLES.challengeCircuitEvent.nome)#</cfoutput>">
         <span class="small text-muted">E<cfoutput>#VARIABLES.challengeCircuitEvent.ordem# · #VARIABLES.challengeCircuitEvent.sigla#</cfoutput></span>
-        <strong><cfoutput>#htmlEditFormat(VARIABLES.challengeCircuitEvent.nome)#</cfoutput></strong>
+        <strong><cfoutput>#encodeForHTML(VARIABLES.challengeCircuitEvent.nome)#</cfoutput></strong>
       </div>
     </cfloop>
   </div>

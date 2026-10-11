@@ -20,13 +20,13 @@
 <cfset VARIABLES.saudeStatusStage = "validacao"/>
 
 <cfif CGI.REQUEST_METHOD NEQ "POST">
-    <cfheader statuscode="405" statustext="Method Not Allowed"/>
+    <cfheader statuscode="405"/>
     <cfoutput>#serializeJSON({success=false,message="Use o formulário do painel para alterar o atendimento."})#</cfoutput>
     <cfabort/>
 </cfif>
 
 <cfif NOT VARIABLES.saudeCanOperate>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>#serializeJSON({success=false,message="Somente Médicos e Admins Globais podem alterar o status do atendimento."})#</cfoutput>
     <cfabort/>
 </cfif>
@@ -34,7 +34,7 @@
 <cfif NOT structKeyExists(SESSION, "saudeBusinessCsrfToken")
     OR NOT len(trim(SESSION.saudeBusinessCsrfToken & ""))
     OR compare(FORM.csrf_token & "", SESSION.saudeBusinessCsrfToken & "") NEQ 0>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>#serializeJSON({success=false,message="A sessão de segurança expirou. Recarregue o painel."})#</cfoutput>
     <cfabort/>
 </cfif>
@@ -42,7 +42,7 @@
 <cfif NOT isNumeric(FORM.id_evento) OR val(FORM.id_evento) LTE 0
     OR NOT isNumeric(FORM.id_inscricao) OR val(FORM.id_inscricao) LTE 0
     OR (len(VARIABLES.saudeStatusValue) AND NOT listFindNoCase(VARIABLES.saudeStatusAllowed, VARIABLES.saudeStatusValue))>
-    <cfheader statuscode="400" statustext="Bad Request"/>
+    <cfheader statuscode="400"/>
     <cfoutput>#serializeJSON({success=false,message="Dados de atendimento inválidos."})#</cfoutput>
     <cfabort/>
 </cfif>
@@ -116,12 +116,12 @@
     </cftransaction>
     <cfoutput>#serializeJSON({success=true,status=VARIABLES.saudeStatusValue,message="Atendimento atualizado."})#</cfoutput>
     <cfcatch type="Saude">
-        <cfheader statuscode="404" statustext="Not Found"/>
+        <cfheader statuscode="404"/>
         <cfoutput>#serializeJSON({success=false,message=cfcatch.message})#</cfoutput>
     </cfcatch>
     <cfcatch type="any">
         <cflog file="business-saude-eventos" type="error" text="status_update stage=#VARIABLES.saudeStatusStage# event=#int(FORM.id_evento)# registration=#int(FORM.id_inscricao)# actor=#VARIABLES.saudeStatusActorId# message=#left(cfcatch.message & '', 1000)# detail=#left(structKeyExists(cfcatch, 'detail') ? cfcatch.detail & '' : '', 3000)# code=#structKeyExists(cfcatch, 'errorCode') ? cfcatch.errorCode & '' : ''#"/>
-        <cfheader statuscode="500" statustext="Internal Server Error"/>
+        <cfheader statuscode="500"/>
         <cfoutput>#serializeJSON({success=false,message="Não foi possível atualizar o atendimento."})#</cfoutput>
     </cfcatch>
 </cftry>

@@ -365,7 +365,7 @@
             <span class="business-navbar-account-icon"><i class="fa-solid fa-building"></i></span>
             <span class="business-navbar-account-copy">
                 <span class="business-navbar-account-label"><cfif isDefined("VARIABLES.businessPendingWorkspace") AND VARIABLES.businessPendingWorkspace>Conta em análise<cfelse>Conta ativa</cfif></span>
-                <cfoutput><span class="business-navbar-account-name" title="#htmlEditFormat(VARIABLES.businessNavbarAccountName)#">#htmlEditFormat(VARIABLES.businessNavbarAccountName)#</span></cfoutput>
+                <cfoutput><span class="business-navbar-account-name" title="#encodeForHTMLAttribute(VARIABLES.businessNavbarAccountName)#">#encodeForHTML(VARIABLES.businessNavbarAccountName)#</span></cfoutput>
             </span>
             <cfif structKeyExists(REQUEST,"businessDelegationEnabled") AND REQUEST.businessDelegationEnabled>
                 <a class="btn btn-outline-light business-navbar-account-switch" href="/selecionar-conta/" aria-label="Trocar conta">Trocar conta</a>
@@ -427,10 +427,10 @@
                             <cfset VARIABLES.businessNotificationReturnUrl &= "?" & CGI.QUERY_STRING/>
                         </cfif>
                         <li class="business-topbar-notification-actions border-top border-1 border-light-subtle p-2">
-                            <form method="post" action="<cfoutput>#htmlEditFormat(CGI.SCRIPT_NAME)#</cfoutput>" class="m-0">
+                            <form method="post" action="<cfoutput>#encodeForHTMLAttribute(CGI.SCRIPT_NAME)#</cfoutput>" class="m-0">
                                 <input type="hidden" name="action" value="marcar_todas_notificacoes_lidas"/>
-                                <input type="hidden" name="business_notification_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.businessNotificationCsrf)#</cfoutput>"/>
-                                <input type="hidden" name="business_notification_return" value="<cfoutput>#htmlEditFormat(VARIABLES.businessNotificationReturnUrl)#</cfoutput>"/>
+                                <input type="hidden" name="business_notification_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.businessNotificationCsrf)#</cfoutput>"/>
+                                <input type="hidden" name="business_notification_return" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.businessNotificationReturnUrl)#</cfoutput>"/>
                                 <button type="submit" class="btn btn-sm btn-outline-secondary w-100">
                                     <i class="fa-solid fa-check-double me-2"></i>Marcar todas como lidas
                                 </button>

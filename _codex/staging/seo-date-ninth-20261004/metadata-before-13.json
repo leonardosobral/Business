@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-corrida-dos-romeiros-nossa-senhora-da-penha-2026/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-dos-romeiros-nossa-senhora-da-penha-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-dos-romeiros-nossa-senhora-da-penha-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-dos-romeiros-nossa-senhora-da-penha-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-dos-romeiros-nossa-senhora-da-penha-2026/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-corrida-dos-romeiros-nossa-senhora-da-penha-2026/",
+      "name": "Corrida Dos Romeiros - Nossa Senhora Da Penha 2026",
+      "description": "Corrida Dos Romeiros - Nossa Senhora Da Penha 2026 takes place on 22 november 2026, in PENHA - JOÃO PESSOA - PB.",
+      "url": "https://roadrunners.run/en/event/2026-corrida-dos-romeiros-nossa-senhora-da-penha-2026/",
+      "startDate": "2026-11-22",
+      "endDate": "2026-11-22",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.race83.com.br/painel/upload/img/inscricao/thumb/img-007-06092026094602-30f3361bd6e97b8109893d55a8432556.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "PENHA",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "JOÃO PESSOA",
+          "addressRegion": "PB",
+          "addressCountry": "BR",
+          "streetAddress": "PENHA"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.race83.com.br/inscricao-select/6946/corrida-dos-romeiros-nossa-senhora-da-penha-2026"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/pb/",
+          "@type": "ListItem",
+          "name": "Races in PB"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-corrida-dos-romeiros-nossa-senhora-da-penha-2026/",
+          "@type": "ListItem",
+          "name": "Corrida Dos Romeiros - Nossa Senhora Da Penha 2026"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

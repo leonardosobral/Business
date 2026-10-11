@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-legado-run/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-legado-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-legado-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-legado-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-legado-run/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-legado-run/",
+      "name": "LEGADO RUN",
+      "description": "LEGADO RUN takes place on 01 november 2026, in Praça Perrela, Avenida dos Andradas/ Santa Tereza, Belo Horizonte - MG, Belo Horizonte, MG, Brasil - Belo Horizonte - MG.",
+      "url": "https://roadrunners.run/en/event/2026-legado-run/",
+      "startDate": "2026-11-01",
+      "endDate": "2026-11-01",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/9XA2D6L9NX7JBTU7861XW3G5AU96HGL4RODHIMZVEORC5BSBKJ.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Praça Perrela, Avenida dos Andradas/ Santa Tereza, Belo Horizonte - MG, Belo Horizonte, MG, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Belo Horizonte",
+          "addressRegion": "MG",
+          "addressCountry": "BR",
+          "streetAddress": "Praça Perrela, Avenida dos Andradas/ Santa Tereza, Belo Horizonte - MG, Belo Horizonte, MG, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87806&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/mg/",
+          "@type": "ListItem",
+          "name": "Races in MG"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-legado-run/",
+          "@type": "ListItem",
+          "name": "LEGADO RUN"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

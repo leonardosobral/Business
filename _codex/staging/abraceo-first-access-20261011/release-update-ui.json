@@ -1,0 +1,9 @@
+{
+  "published": [
+    "estudos/primeiro-acesso/index.cfm",
+    "estudos/primeiro-acesso/primeiro-acesso.js",
+    "estudos/primeiro-acesso/primeiro-acesso.css"
+  ],
+  "backup": "/var/backups/business-abraceo-first-access-20261011/ui-update/baseline",
+  "compiled": true
+}

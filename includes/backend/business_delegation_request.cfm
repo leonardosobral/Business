@@ -60,7 +60,7 @@
             <cfset REQUEST.businessDelegationIdentity.accessMode=REQUEST.businessAccessContext.accessMode/>
         </cfif>
         <cfif REQUEST.businessBoundaryResult.status NEQ 200>
-            <cfheader statuscode="#REQUEST.businessBoundaryResult.status#" statustext="Access denied"/>
+            <cfheader statuscode="#REQUEST.businessBoundaryResult.status#"/>
             <cfheader name="Cache-Control" value="no-store, private"/>
             <cfcontent type="text/html; charset=utf-8" reset="true"/>
             <cfoutput><p>Este acesso não está disponível. <a href="/selecionar-conta/">Escolher conta</a></p></cfoutput>

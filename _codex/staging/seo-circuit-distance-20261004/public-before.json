@@ -1,0 +1,90 @@
+[
+  {
+    "url": "https://roadrunners.run/circuitocatarinense/corridaderua/",
+    "route": "corridaderua",
+    "status": 200,
+    "seconds": 1.90214,
+    "canonical": [
+      "https://roadrunners.run/circuitocatarinense/corridaderua/"
+    ],
+    "title": "Circuito Catarinense 2026: Corrida de Rua | Road Runners",
+    "description": [
+      "Consulte as etapas, a pontuação e a classificação de atletas e equipes no Circuito Catarinense de Corrida de Rua 2026."
+    ],
+    "robots": [],
+    "h1": [
+      "Circuito Catarinense de Corrida de Rua"
+    ],
+    "tables": [
+      {
+        "rows": 1,
+        "sha256": "ff6030fd2b3ab974907f6b48e2abaea9e24947859475de69727ca66c65be1fa4"
+      },
+      {
+        "rows": 135,
+        "sha256": "0e85058dcb3779cac008c37af00092edf8b750508a762a969809a7da55856c86"
+      },
+      {
+        "rows": 1,
+        "sha256": "ff6030fd2b3ab974907f6b48e2abaea9e24947859475de69727ca66c65be1fa4"
+      },
+      {
+        "rows": 266,
+        "sha256": "2ee9067ccd111270884f4ec94cfbafc76acddca2762722a8ba00722f366f7f6c"
+      },
+      {
+        "rows": 1,
+        "sha256": "d0ec8ff7a63531eb1cf8bb789f20697ecbd18009a509932d75703c4018bed51e"
+      },
+      {
+        "rows": 7,
+        "sha256": "49b8caded2bfd384b4f0ac5e5752c01539b00b10f2a6649c50020878af24a2fb"
+      }
+    ],
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/circuitocatarinense/trailrun/",
+    "route": "trailrun",
+    "status": 200,
+    "seconds": 0.749445,
+    "canonical": [
+      "https://roadrunners.run/circuitocatarinense/trailrun/"
+    ],
+    "title": "Circuito Catarinense 2026: Trail Run | Road Runners",
+    "description": [
+      "Consulte as etapas, a pontuação e a classificação de atletas no Circuito Catarinense de Trail Run 2026."
+    ],
+    "robots": [],
+    "h1": [
+      "Circuito Catarinense de Trail Run"
+    ],
+    "tables": [
+      {
+        "rows": 1,
+        "sha256": "ff6030fd2b3ab974907f6b48e2abaea9e24947859475de69727ca66c65be1fa4"
+      },
+      {
+        "rows": 130,
+        "sha256": "e93e7412f317914239777b9bfd8f341aa272bfff1fdd2bd7b9bc8cef7b89f870"
+      },
+      {
+        "rows": 1,
+        "sha256": "ff6030fd2b3ab974907f6b48e2abaea9e24947859475de69727ca66c65be1fa4"
+      },
+      {
+        "rows": 172,
+        "sha256": "656482537cfb62f60cbfd60bba84669f4285fa0d9c65db8f13e9b1714c364894"
+      },
+      {
+        "rows": 1,
+        "sha256": "d0ec8ff7a63531eb1cf8bb789f20697ecbd18009a509932d75703c4018bed51e"
+      },
+      {
+        "rows": 7,
+        "sha256": "2c10782edd7fa864881adb52c8b1c83411f129632e1e3b926f24f814cb4230af"
+      }
+    ],
+    "cf_error": false
+  }
+]

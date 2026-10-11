@@ -1,0 +1,16 @@
+{
+  "before": {
+    "services/EventRedirectService.cfc": "3df9e11aedf7f327268d18c47d8d4c3b6ff9add7b6ba5a72ce50102edc7f72da"
+  },
+  "candidate": {
+    "services/EventRedirectService.cfc": "dc13e9fbde7924f0173977b5f89ee717de44fc60aa516e952199908f485a6cfd"
+  },
+  "order": [
+    "services/EventRedirectService.cfc"
+  ],
+  "compile": {
+    "templates": 1,
+    "output": "successful 1\ntotal 1\nelapsed 2.628 sec\n\n",
+    "returncode": 0
+  }
+}

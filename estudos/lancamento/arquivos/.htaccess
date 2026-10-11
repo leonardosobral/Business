@@ -1,0 +1,2 @@
+# PDFs are served only through the administrator-checked arquivo.cfm endpoint.
+Require all denied

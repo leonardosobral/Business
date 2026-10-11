@@ -8,12 +8,13 @@ function specialGroupsBusinessApi(required struct payload) {
     var timestamp=dateTimeFormat(now(),"yyyy-mm-dd HH:nn:ss");
     var signature=lCase(hmac(timestamp & "." & body,dispatch.secret,"HmacSHA256"));
     try {
-        var request=new http(method="post",url=endpoint,timeout=structKeyExists(dispatch,"timeoutSeconds") ? max(5,val(dispatch.timeoutSeconds)) : 20,throwOnError=false);
-        request.addParam(type="header",name="Content-Type",value="application/json; charset=utf-8");
-        request.addParam(type="header",name="X-RR-Handoff-Timestamp",value=timestamp);
-        request.addParam(type="header",name="X-RR-Handoff-Signature",value=signature);
-        request.addParam(type="body",value=body);
-        var response=request.send().getPrefix();
+        var response = {};
+        cfhttp(method="post",url=endpoint,timeout=(structKeyExists(dispatch,"timeoutSeconds") ? max(5,val(dispatch.timeoutSeconds)) : 20),throwOnError=false, result="local.response") {
+            cfhttpparam(type="header",name="Content-Type",value="application/json; charset=utf-8");
+            cfhttpparam(type="header",name="X-RR-Handoff-Timestamp",value=timestamp);
+            cfhttpparam(type="header",name="X-RR-Handoff-Signature",value=signature);
+            cfhttpparam(type="body",value=body);
+        }
         var responseBody=structKeyExists(response,"fileContent") ? trim(toString(response.fileContent)) : "";
         var responseStatus=structKeyExists(response,"statusCode") ? trim(response.statusCode & "") : "";
         if (len(responseBody) && isJSON(responseBody)) result=deserializeJSON(responseBody);

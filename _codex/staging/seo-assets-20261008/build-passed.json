@@ -1,0 +1,55 @@
+{
+  "esbuild": "0.28.2",
+  "checks": [
+    {
+      "source": "assets/js/runner-apps-menu-lazy.js",
+      "normalized_program_equal": true,
+      "bytes_reduced": 2924
+    },
+    {
+      "source": "assets/js/runnerhub-event-filters.js",
+      "normalized_program_equal": true,
+      "bytes_reduced": 9484
+    },
+    {
+      "source": "assets/js/runnerhub-busca-page.js",
+      "normalized_program_equal": true,
+      "bytes_reduced": 19896
+    },
+    {
+      "source": "assets/js/event-location-mapbox.js",
+      "normalized_program_equal": true,
+      "bytes_reduced": 5239
+    },
+    {
+      "source": "assets/js/event-route-mapbox.js",
+      "normalized_program_equal": true,
+      "bytes_reduced": 24056
+    },
+    {
+      "source": "assets/css/runnerhub-institutional.css",
+      "normalized_program_equal": true,
+      "bytes_reduced": 402
+    },
+    {
+      "source": "assets/css/event-location-mapbox.css",
+      "normalized_program_equal": true,
+      "bytes_reduced": 1500
+    },
+    {
+      "source": "assets/css/event-route-mapbox.css",
+      "normalized_program_equal": true,
+      "bytes_reduced": 1922
+    }
+  ],
+  "hashes": {
+    "assets/js/runner-apps-menu-lazy.min.js": "2def2c2e721eb39d551602bff6db6fda1be2dabaa23bd0408ad1d63f9f6ff085",
+    "assets/js/runnerhub-event-filters.min.js": "c45fceca86447e2dad931494ee43ac690e4f7897762beacc5da5036255adb6cf",
+    "assets/js/runnerhub-busca-page.min.js": "eb5847a44ec8bc3966d5abb8bfc05ea95aedb11b279000e125a839404b12e49d",
+    "assets/js/event-location-mapbox.min.js": "7b51b25b226e92dee9f804cec008a6b7a7ca827008498ccca2e027d037abf854",
+    "assets/js/event-route-mapbox.min.js": "1584c40ebb6b268437edb017ac46552207e02039db71a6050828e11122077ef8",
+    "assets/css/runnerhub-institutional.min.css": "d19cd34017e0fa8ed2cc54a34dca8e0e2335a98bca69d9262aa796539e7be6d8",
+    "assets/css/event-location-mapbox.min.css": "07721b496ac2f01d982e99f0f06972da34cda3d9cda96aa7518d2c71495623dc",
+    "assets/css/event-route-mapbox.min.css": "dd6cf842844a855c26ffe8ce99be369ecf33526fb0aa2f990f680bc311c188fa"
+  }
+}

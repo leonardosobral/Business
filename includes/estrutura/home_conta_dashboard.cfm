@@ -386,8 +386,8 @@
             <div>
                 <cfoutput>
                     <div class="text-warning fw-bold text-uppercase small">Dashboard da conta</div>
-                    <h3 class="mb-1">#htmlEditFormat(VARIABLES.businessHomeAccountTitle)#</h3>
-                    <p class="text-muted mb-0">#htmlEditFormat(VARIABLES.businessHomeAccountSubtitle)#</p>
+                    <h3 class="mb-1">#encodeForHTML(VARIABLES.businessHomeAccountTitle)#</h3>
+                    <p class="text-muted mb-0">#encodeForHTML(VARIABLES.businessHomeAccountSubtitle)#</p>
                 </cfoutput>
             </div>
             <div class="dashboard-actions">
@@ -572,15 +572,15 @@
                                     <div class="dashboard-list-item">
                                         <div class="d-flex justify-content-between gap-3">
                                             <div>
-                                                <div class="fw-bold">#htmlEditFormat(qBusinessHomeUpcomingEvents.nome_evento)#</div>
+                                                <div class="fw-bold">#encodeForHTML(qBusinessHomeUpcomingEvents.nome_evento)#</div>
                                                 <div class="small text-muted">
                                                     #dateFormat(qBusinessHomeUpcomingEvents.data_inicial, "dd/mm/yyyy")#
                                                     <cfif len(trim(qBusinessHomeUpcomingEvents.cidade)) OR len(trim(qBusinessHomeUpcomingEvents.estado))>
-                                                        - #htmlEditFormat(qBusinessHomeUpcomingEvents.cidade)#<cfif len(trim(qBusinessHomeUpcomingEvents.estado))>/#htmlEditFormat(qBusinessHomeUpcomingEvents.estado)#</cfif>
+                                                        - #encodeForHTML(qBusinessHomeUpcomingEvents.cidade)#<cfif len(trim(qBusinessHomeUpcomingEvents.estado))>/#encodeForHTML(qBusinessHomeUpcomingEvents.estado)#</cfif>
                                                     </cfif>
                                                 </div>
                                             </div>
-                                            <span class="badge bg-success align-self-start">#htmlEditFormat(qBusinessHomeUpcomingEvents.status_vinculo)#</span>
+                                            <span class="badge bg-success align-self-start">#encodeForHTML(qBusinessHomeUpcomingEvents.status_vinculo)#</span>
                                         </div>
                                         <div class="dashboard-actions mt-2">
                                             <a class="btn btn-sm btn-dark" href="/eventos/?id_evento=#qBusinessHomeUpcomingEvents.id_evento#">Editar</a>
@@ -613,7 +613,7 @@
                             <div class="dashboard-list dashboard-list-limited" id="businessHomeContentList">
                                 <cfoutput query="qBusinessHomeContentAttention">
                                     <div class="dashboard-list-item">
-                                        <div class="fw-bold">#htmlEditFormat(qBusinessHomeContentAttention.nome_evento)#</div>
+                                        <div class="fw-bold">#encodeForHTML(qBusinessHomeContentAttention.nome_evento)#</div>
                                         <div class="small text-muted mb-2">#numberFormat(qBusinessHomeContentAttention.missing_count, "9")# campos pendentes</div>
                                         <div class="dashboard-actions">
                                             <cfif NOT val(qBusinessHomeContentAttention.has_descricao)><span class="badge bg-warning text-dark">Descricao</span></cfif>
@@ -710,9 +710,9 @@
                                                 <cfset VARIABLES.businessHomeAdPeriod = "Ate " & dateFormat(qBusinessHomeAdCampaigns.final_ad, "dd/mm")/>
                                             </cfif>
                                             <tr>
-                                                <td>#htmlEditFormat(qBusinessHomeAdCampaigns.nome_evento)#</td>
-                                                <td><span class="badge #VARIABLES.businessHomeAdStatusClass#">#htmlEditFormat(VARIABLES.businessHomeAdStatusLabel)#</span></td>
-                                                <td>#htmlEditFormat(VARIABLES.businessHomeAdPeriod)#</td>
+                                                <td>#encodeForHTML(qBusinessHomeAdCampaigns.nome_evento)#</td>
+                                                <td><span class="badge #VARIABLES.businessHomeAdStatusClass#">#encodeForHTML(VARIABLES.businessHomeAdStatusLabel)#</span></td>
+                                                <td>#encodeForHTML(VARIABLES.businessHomeAdPeriod)#</td>
                                                 <td class="text-end">#lsCurrencyFormat(val(qBusinessHomeAdCampaigns.cpc_max))#</td>
                                                 <td class="text-end">#lsCurrencyFormat(val(qBusinessHomeAdCampaigns.limite_diario))#</td>
                                                 <td class="text-end">#lsCurrencyFormat(val(qBusinessHomeAdCampaigns.limite_ad))#</td>

@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const vm=require('node:vm');
 const script=fs.readFileSync('helpdesk/assets/workspace.js','utf8');
-test('includes internos rejeitam acesso sem contexto administrativo',()=>{for(const name of ['workspace-init.cfm','workspace-actions.cfm','workspace-sectors.cfm','workspace.cfm']){const source=fs.readFileSync('helpdesk/includes/'+name,'utf8');assert.match(source,/NOT structKeyExists\(VARIABLES,"helpdeskCanManage"\) OR NOT VARIABLES.helpdeskCanManage/);assert.match(source,/<cfheader statuscode="403" statustext="Forbidden"\/><cfabort\/>/);}});
+test('includes internos rejeitam acesso sem contexto administrativo',()=>{for(const name of ['workspace-init.cfm','workspace-actions.cfm','workspace-sectors.cfm','workspace.cfm']){const source=fs.readFileSync('helpdesk/includes/'+name,'utf8');assert.match(source,/NOT structKeyExists\(VARIABLES,"helpdeskCanManage"\) OR NOT VARIABLES.helpdeskCanManage/);assert.match(source,/<cfheader statuscode="403"\/><cfabort\/>/);}});
 function fixture(text='') {
   const listeners={},windowEvents={},nodes={};let confirm=true;
   const form={querySelector:key=>nodes[key],addEventListener:(key,fn)=>listeners[key]=fn,setAttribute(){},removeAttribute(){}};

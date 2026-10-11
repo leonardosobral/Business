@@ -1,0 +1,11 @@
+{
+  "status": "published_and_verified",
+  "runtime_files": 3,
+  "compiled_templates": 3,
+  "header_fixture_renders": 24,
+  "public_urls": 14,
+  "watch_files_preserved": 8,
+  "desktop_mobile_styles_equal": true,
+  "event_local_existing_guard_preserved": true,
+  "backup": "/var/backups/seo-public-accessibility-20261004-v2/baseline"
+}

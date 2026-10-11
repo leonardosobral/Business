@@ -1,0 +1,8 @@
+{
+  "rehearsed": true,
+  "real_trigger_probe": true,
+  "writer_role_probe": true,
+  "real_acl_assertions": true,
+  "inverse": true,
+  "source_rows_unchanged": true
+}

@@ -1,0 +1,11 @@
+{
+  "rr": {
+    ".htaccess": "c143a6d96973b2021d36482584b623e948e58ef388551f14ace30d10780e61ee",
+    "evento/.htaccess": "4d741dbbd0fba265226e3ef940297c3436739d8a49fad0a91331b9b2f307eb04",
+    "includes/estrutura/event_title_date.cfm": "6069e2c4d7d7cdd66324355e3b809ffa59636bc5b82518c6272a571e439ab60b"
+  },
+  "business": {
+    "portal/includes/seo_queue_data.cfm": "6c4ca47976dbf32fbf95f34f6258f1f795406e02fc40c788a5524ca1bc3cb190",
+    "portal/conteudo/seo_semrush.cfm": "d07e40a40de77d173de33479af786bf59588f33197838180b914a66b0d735eb8"
+  }
+}

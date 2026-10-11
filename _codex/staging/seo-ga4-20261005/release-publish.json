@@ -1,0 +1,14 @@
+{
+  "published": [
+    "portal/conteudo/seo.cfm",
+    "administracao/agenda/api.cfm",
+    "administracao/agenda/oauth/callback.cfm",
+    "administracao/ai-mails/includes/service.cfm",
+    "portal/conteudo/seo_ga4.cfm",
+    "portal/seo/ga4_api.cfm",
+    "portal/seo/ga4_service.cfm",
+    "portal/seo/assets/ga4.js",
+    "portal/seo/assets/ga4.css"
+  ],
+  "backup": "/var/backups/seo-ga4-20261005/baseline"
+}

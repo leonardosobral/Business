@@ -1,0 +1,13 @@
+{
+  "path": "assets/css/openresults-home-cidades.css",
+  "before": "15dc8e3b596291b00d4689b7578eb2d19b0a2cc5a5930b0aaabed2293d24742a",
+  "after": "7b71c96bff3d1783eaf341b201d0113c0ac3d635254de11bbc1248f54bd40600",
+  "watch": {
+    "index.cfm": "a83dbfbe1c2907e72115fe702184c43d5a9c36084679408f71e638529fc489ec",
+    "includes/form_busca_principal.cfm": "824111874cc4d1cf4d54c65887e70faebd35f93b66ac4b34d030e7cdc1b33fe9",
+    "assets/css/openresults-estado-cidades.css": "90b8137f398a326d8da27cfbed16c721739d5c46a7cab5ffb8695ea0ae36c35e",
+    "assets/css/cores.css": "052e54c7c92a3716823930056bdd16a452a601f949f7326b7f0594f90cbdc03c"
+  },
+  "recovery_patch": "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-home-cidades-20261004/final.patch",
+  "recovery_source": "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-home-cidades-20261004/candidate/assets/css/openresults-home-cidades.css"
+}

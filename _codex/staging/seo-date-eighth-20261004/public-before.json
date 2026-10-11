@@ -1,0 +1,182 @@
+[
+  {
+    "id": 38508,
+    "url": "https://roadrunners.run/evento/2026-blue-run-2026-santos/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 38508,
+    "url": "https://roadrunners.run/en/event/2026-blue-run-2026-santos/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 38508,
+    "url": "https://roadrunners.run/es/evento/2026-blue-run-2026-santos/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 40176,
+    "url": "https://roadrunners.run/evento/2026-corrida-toca-raul-barra-mansa/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 40176,
+    "url": "https://roadrunners.run/en/event/2026-corrida-toca-raul-barra-mansa/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 40176,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-toca-raul-barra-mansa/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 43392,
+    "url": "https://roadrunners.run/evento/2026-corrida-aguia-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 43392,
+    "url": "https://roadrunners.run/en/event/2026-corrida-aguia-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 43392,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-aguia-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45308,
+    "url": "https://roadrunners.run/evento/2026-legado-run/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45308,
+    "url": "https://roadrunners.run/en/event/2026-legado-run/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45308,
+    "url": "https://roadrunners.run/es/evento/2026-legado-run/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47482,
+    "url": "https://roadrunners.run/evento/2026-morro-beach-run/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47482,
+    "url": "https://roadrunners.run/en/event/2026-morro-beach-run/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47482,
+    "url": "https://roadrunners.run/es/evento/2026-morro-beach-run/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  }
+]

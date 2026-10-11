@@ -115,7 +115,7 @@
                   <select class="form-select" name="estado">
                     <option value="">Todas</option>
                     <cfoutput query="qEventContentKpiStates">
-                      <option value="#htmlEditFormat(qEventContentKpiStates.estado)#"<cfif VARIABLES.eventContentKpiEstado EQ qEventContentKpiStates.estado> selected</cfif>>#htmlEditFormat(qEventContentKpiStates.estado)#</option>
+                      <option value="#encodeForHTMLAttribute(qEventContentKpiStates.estado)#"<cfif VARIABLES.eventContentKpiEstado EQ qEventContentKpiStates.estado> selected</cfif>>#encodeForHTML(qEventContentKpiStates.estado)#</option>
                     </cfoutput>
                   </select>
                 </div>
@@ -149,14 +149,14 @@
                   <select class="form-select" name="site">
                     <option value="">Todos</option>
                     <cfoutput query="qEventContentKpiSites">
-                      <option value="#htmlEditFormat(qEventContentKpiSites.site)#"<cfif VARIABLES.eventContentKpiSite EQ qEventContentKpiSites.site> selected</cfif>>#htmlEditFormat(qEventContentKpiSites.site)#</option>
+                      <option value="#encodeForHTMLAttribute(qEventContentKpiSites.site)#"<cfif VARIABLES.eventContentKpiSite EQ qEventContentKpiSites.site> selected</cfif>>#encodeForHTML(qEventContentKpiSites.site)#</option>
                     </cfoutput>
                   </select>
                 </div>
 
                 <div class="col-md-3">
                   <label class="form-label">Busca</label>
-                  <input type="search" class="form-control" name="busca" value="<cfoutput>#htmlEditFormat(VARIABLES.eventContentKpiSearch)#</cfoutput>" placeholder="Evento, tag, cidade ou organizador"/>
+                  <input type="search" class="form-control" name="busca" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.eventContentKpiSearch)#</cfoutput>" placeholder="Evento, tag, cidade ou organizador"/>
                 </div>
 
                 <div class="col-md-1">
@@ -214,7 +214,7 @@
                     <cfoutput query="qEventContentKpiFieldsSorted">
                       <div class="mb-3">
                         <div class="d-flex justify-content-between gap-3 mb-1">
-                          <div>#htmlEditFormat(qEventContentKpiFieldsSorted.campo)#</div>
+                          <div>#encodeForHTML(qEventContentKpiFieldsSorted.campo)#</div>
                           <div class="text-end">
                             <strong>#numberFormat(qEventContentKpiFieldsSorted.percentual, "9.9")#%</strong>
                             <span class="text-muted small">#LSNumberFormat(qEventContentKpiFieldsSorted.total_ok, "9,999")#/#LSNumberFormat(VARIABLES.eventContentKpiStats.total, "9,999")#</span>
@@ -249,7 +249,7 @@
                         <tbody>
                           <cfoutput query="qEventContentKpiByStateSorted">
                             <tr>
-                              <td>#htmlEditFormat(qEventContentKpiByStateSorted.estado)#</td>
+                              <td>#encodeForHTML(qEventContentKpiByStateSorted.estado)#</td>
                               <td>#LSNumberFormat(qEventContentKpiByStateSorted.total, "9,999")#</td>
                               <td>#LSNumberFormat(qEventContentKpiByStateSorted.incompletos, "9,999")#</td>
                               <td>#numberFormat(qEventContentKpiByStateSorted.completude_media, "9.9")#%</td>
@@ -281,7 +281,7 @@
                         <tbody>
                           <cfoutput query="qEventContentKpiByMonthSorted">
                             <tr>
-                              <td>#htmlEditFormat(qEventContentKpiByMonthSorted.mes)#</td>
+                              <td>#encodeForHTML(qEventContentKpiByMonthSorted.mes)#</td>
                               <td>#LSNumberFormat(qEventContentKpiByMonthSorted.total, "9,999")#</td>
                               <td>#LSNumberFormat(qEventContentKpiByMonthSorted.incompletos, "9,999")#</td>
                               <td>#numberFormat(qEventContentKpiByMonthSorted.completude_media, "9.9")#%</td>
@@ -333,10 +333,10 @@
                             </div>
                           </td>
                           <td class="content-text-cell">
-                            <strong>#htmlEditFormat(qEventContentKpiAttack.nome_evento)#</strong>
-                            <div class="small text-muted">ID #qEventContentKpiAttack.id_evento# <cfif len(trim(qEventContentKpiAttack.status_evento))>- #htmlEditFormat(qEventContentKpiAttack.status_evento)#</cfif></div>
+                            <strong>#encodeForHTML(qEventContentKpiAttack.nome_evento)#</strong>
+                            <div class="small text-muted">ID #qEventContentKpiAttack.id_evento# <cfif len(trim(qEventContentKpiAttack.status_evento))>- #encodeForHTML(qEventContentKpiAttack.status_evento)#</cfif></div>
                           </td>
-                          <td>#htmlEditFormat(qEventContentKpiAttack.cidade)#<cfif len(trim(qEventContentKpiAttack.estado))>/#htmlEditFormat(qEventContentKpiAttack.estado)#</cfif></td>
+                          <td>#encodeForHTML(qEventContentKpiAttack.cidade)#<cfif len(trim(qEventContentKpiAttack.estado))>/#encodeForHTML(qEventContentKpiAttack.estado)#</cfif></td>
                           <td nowrap>
                             <strong>#numberFormat(qEventContentKpiAttack.completude, "9.9")#%</strong>
                             <div class="small text-muted">#qEventContentKpiAttack.required_count#/#VARIABLES.eventContentKpiRequiredFields# campos</div>
@@ -345,14 +345,14 @@
                             <cfif len(trim(qEventContentKpiAttack.faltando))>
                               <div class="content-badges">
                                 <cfloop list="#qEventContentKpiAttack.faltando#" index="missingLabel" delimiters=",">
-                                  <span class="badge badge-warning">#htmlEditFormat(trim(missingLabel))#</span>
+                                  <span class="badge badge-warning">#encodeForHTML(trim(missingLabel))#</span>
                                 </cfloop>
                               </div>
                             <cfelse>
                               <span class="badge badge-success">Completo</span>
                             </cfif>
                           </td>
-                          <td class="content-text-cell">#htmlEditFormat(eventContentKpiShortText(qEventContentKpiAttack.organizador_label, 120))#</td>
+                          <td class="content-text-cell">#encodeForHTML(eventContentKpiShortText(qEventContentKpiAttack.organizador_label, 120))#</td>
                           <td nowrap>
                             <a class="btn btn-sm btn-outline-light" href="/admin/?periodo=#VARIABLES.eventContentKpiYear#&id_evento=#qEventContentKpiAttack.id_evento#">Editar</a>
                             <cfif len(trim(qEventContentKpiAttack.tag))>

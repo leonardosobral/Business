@@ -44,14 +44,14 @@
           <cfset VARIABLES.cbgStatusIcon = VARIABLES.cbgRequest.status EQ "aprovado" ? "fa-circle-check" : (VARIABLES.cbgRequest.status EQ "desaprovado" ? "fa-circle-xmark" : "fa-clock")/>
           <cfset VARIABLES.cbgRequestNeedsResult = VARIABLES.cbgRequest.status EQ "pendente" OR (VARIABLES.cbgRequest.status EQ "aprovado" AND NOT len(VARIABLES.cbgRequest.resultId & ""))/>
           <cfset VARIABLES.cbgRequestCanLinkOfficial = NOT len(VARIABLES.cbgRequest.resultId & "") AND listFindNoCase("pendente,desaprovado,aprovado", VARIABLES.cbgRequest.status)/>
-          <div class="col-12 cbg-validation-list-item" data-validation-status="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.status)#</cfoutput>">
-            <article class="cbg-validation-card cbg-validation-card--<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.status)#</cfoutput> p-3 p-lg-4">
+          <div class="col-12 cbg-validation-list-item" data-validation-status="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.status)#</cfoutput>">
+            <article class="cbg-validation-card cbg-validation-card--<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.status)#</cfoutput> p-3 p-lg-4">
               <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
                 <div class="d-flex gap-3 align-items-center min-w-0">
                   <div class="rounded-circle d-flex align-items-center justify-content-center bg-body-tertiary flex-shrink-0" style="width:46px;height:46px"><i class="fa-solid fa-user-shield"></i></div>
                   <div class="min-w-0">
-                  <div class="fw-bold fs-5 text-truncate"><cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.athleteName)#</cfoutput></div>
-                  <div class="small text-muted"><cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.email)# · ID #VARIABLES.cbgRequest.userId#</cfoutput></div>
+                  <div class="fw-bold fs-5 text-truncate"><cfoutput>#encodeForHTML(VARIABLES.cbgRequest.athleteName)#</cfoutput></div>
+                  <div class="small text-muted"><cfoutput>#encodeForHTML(VARIABLES.cbgRequest.email)# · ID #VARIABLES.cbgRequest.userId#</cfoutput></div>
                   <cfif len(VARIABLES.cbgRequest.athleteTag)>
                     <a class="small" href="https://roadrunners.run/atleta/<cfoutput>#urlEncodedFormat(VARIABLES.cbgRequest.athleteTag)#</cfoutput>/" target="_blank" rel="noopener noreferrer">
                       <i class="fa-solid fa-user me-1"></i>Ver perfil no Road Runners
@@ -59,39 +59,39 @@
                   </cfif>
                   </div>
                 </div>
-                <span class="cbg-validation-status cbg-validation-status--<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.status)#</cfoutput>"><i class="fa-solid <cfoutput>#VARIABLES.cbgStatusIcon#</cfoutput>"></i><cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.status)#</cfoutput></span>
+                <span class="cbg-validation-status cbg-validation-status--<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.status)#</cfoutput>"><i class="fa-solid <cfoutput>#VARIABLES.cbgStatusIcon#</cfoutput>"></i><cfoutput>#encodeForHTML(VARIABLES.cbgRequest.status)#</cfoutput></span>
               </div>
 
               <div class="cbg-validation-summary">
-                <div class="cbg-validation-summary-item"><span class="cbg-validation-summary-label">Prova</span><strong><cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.race)#</cfoutput></strong></div>
-                <div class="cbg-validation-summary-item"><span class="cbg-validation-summary-label">Ano</span><strong><cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.year)#</cfoutput></strong></div>
-                <div class="cbg-validation-summary-item"><span class="cbg-validation-summary-label">Número de peito</span><strong><cfoutput>#len(trim(VARIABLES.cbgRequest.bib & "")) ? htmlEditFormat(VARIABLES.cbgRequest.bib) : "—"#</cfoutput></strong></div>
-                <div class="cbg-validation-summary-item"><span class="cbg-validation-summary-label">Enviada em</span><strong class="small"><cfoutput>#len(trim(VARIABLES.cbgRequest.sentAt & "")) ? htmlEditFormat(VARIABLES.cbgRequest.sentAt) : "—"#</cfoutput></strong></div>
+                <div class="cbg-validation-summary-item"><span class="cbg-validation-summary-label">Prova</span><strong><cfoutput>#encodeForHTML(VARIABLES.cbgRequest.race)#</cfoutput></strong></div>
+                <div class="cbg-validation-summary-item"><span class="cbg-validation-summary-label">Ano</span><strong><cfoutput>#encodeForHTML(VARIABLES.cbgRequest.year)#</cfoutput></strong></div>
+                <div class="cbg-validation-summary-item"><span class="cbg-validation-summary-label">Número de peito</span><strong><cfoutput>#len(trim(VARIABLES.cbgRequest.bib & "")) ? encodeForHTML(VARIABLES.cbgRequest.bib) : "—"#</cfoutput></strong></div>
+                <div class="cbg-validation-summary-item"><span class="cbg-validation-summary-label">Enviada em</span><strong class="small"><cfoutput>#len(trim(VARIABLES.cbgRequest.sentAt & "")) ? encodeForHTML(VARIABLES.cbgRequest.sentAt) : "—"#</cfoutput></strong></div>
               </div>
 
               <div class="cbg-validation-detail-grid">
                 <div>
                   <span class="cbg-validation-summary-label">Justificativa do atleta</span>
-                  <p class="small mb-0"><cfoutput>#len(trim(VARIABLES.cbgRequest.explanation & "")) ? htmlEditFormat(VARIABLES.cbgRequest.explanation) : "Nenhuma justificativa informada."#</cfoutput></p>
-                  <cfif len(trim(VARIABLES.cbgRequest.officialUrl & ""))><a class="small d-inline-block mt-2" href="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.officialUrl)#</cfoutput>" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Abrir resultado informado pelo atleta</a></cfif>
+                  <p class="small mb-0"><cfoutput>#len(trim(VARIABLES.cbgRequest.explanation & "")) ? encodeForHTML(VARIABLES.cbgRequest.explanation) : "Nenhuma justificativa informada."#</cfoutput></p>
+                  <cfif len(trim(VARIABLES.cbgRequest.officialUrl & ""))><a class="small d-inline-block mt-2" href="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.officialUrl)#</cfoutput>" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Abrir resultado informado pelo atleta</a></cfif>
                 </div>
                 <div>
                   <span class="cbg-validation-summary-label">Documentos enviados</span>
                   <div class="cbg-validation-files">
                     <cfloop array="#VARIABLES.cbgRequest.files#" item="VARIABLES.cbgRequestFile">
-                      <cfif len(VARIABLES.cbgRequestFile.url)><a class="btn btn-outline-secondary btn-sm" href="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequestFile.url)#</cfoutput>" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-paperclip me-1"></i><cfoutput>#htmlEditFormat(VARIABLES.cbgRequestFile.name)#</cfoutput></a></cfif>
+                      <cfif len(VARIABLES.cbgRequestFile.url)><a class="btn btn-outline-secondary btn-sm" href="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequestFile.url)#</cfoutput>" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-paperclip me-1"></i><cfoutput>#encodeForHTML(VARIABLES.cbgRequestFile.name)#</cfoutput></a></cfif>
                     </cfloop>
                     <cfif NOT arrayLen(VARIABLES.cbgRequest.files)><span class="small text-muted">Nenhum arquivo disponível.</span></cfif>
                   </div>
                 </div>
               </div>
-              <div class="small text-muted mt-3"><i class="fa-solid fa-fingerprint me-1"></i>Protocolo <cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.protocol)#</cfoutput><cfif len(VARIABLES.cbgRequest.resultId & "")> · Resultado ID <cfoutput>#VARIABLES.cbgRequest.resultId#</cfoutput></cfif><cfif VARIABLES.cbgRequest.approvalType EQ "resultado_oficial_vinculado"> · Resultado oficial vinculado<cfelseif VARIABLES.cbgRequest.approvalType EQ "resultado_manual_documental"> · Resultado manual documental</cfif></div>
+              <div class="small text-muted mt-3"><i class="fa-solid fa-fingerprint me-1"></i>Protocolo <cfoutput>#encodeForHTML(VARIABLES.cbgRequest.protocol)#</cfoutput><cfif len(VARIABLES.cbgRequest.resultId & "")> · Resultado ID <cfoutput>#VARIABLES.cbgRequest.resultId#</cfoutput></cfif><cfif VARIABLES.cbgRequest.approvalType EQ "resultado_oficial_vinculado"> · Resultado oficial vinculado<cfelseif VARIABLES.cbgRequest.approvalType EQ "resultado_manual_documental"> · Resultado manual documental</cfif></div>
 
               <cfif VARIABLES.cbgRequest.status EQ "aprovado" AND VARIABLES.cbgRequestNeedsResult>
                 <div class="alert alert-warning py-2 small">Aprovação migrada sem resultado vinculado. Confira os dados para concluir a criação.</div>
               </cfif>
               <cfif VARIABLES.cbgRequest.status EQ "desaprovado" AND len(trim(VARIABLES.cbgRequest.rejectionReason & ""))>
-                <div class="alert alert-danger py-2 small mt-3 mb-0"><strong><i class="fa-solid fa-message me-1"></i>Motivo da desaprovação:</strong> <cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.rejectionReason)#</cfoutput></div>
+                <div class="alert alert-danger py-2 small mt-3 mb-0"><strong><i class="fa-solid fa-message me-1"></i>Motivo da desaprovação:</strong> <cfoutput>#encodeForHTML(VARIABLES.cbgRequest.rejectionReason)#</cfoutput></div>
               </cfif>
 
               <cfif VARIABLES.cbgRequestNeedsResult OR VARIABLES.cbgRequestCanLinkOfficial>
@@ -132,23 +132,23 @@
                       <div class="row g-3">
                         <div class="col-12">
                           <label class="form-label">Atleta/usuário</label>
-                          <input class="form-control" value="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.athleteName)# · ID #VARIABLES.cbgRequest.userId# · #htmlEditFormat(VARIABLES.cbgRequest.email)#</cfoutput>" readonly/>
+                          <input class="form-control" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.athleteName)# · ID #VARIABLES.cbgRequest.userId# · #encodeForHTMLAttribute(VARIABLES.cbgRequest.email)#</cfoutput>" readonly/>
                         </div>
                         <div class="col-12">
                           <label class="form-label">Nome no resultado</label>
-                          <input class="form-control" name="nome" maxlength="255" value="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.athleteName)#</cfoutput>" required/>
+                          <input class="form-control" name="nome" maxlength="255" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.athleteName)#</cfoutput>" required/>
                         </div>
                         <div class="col-md-5">
                           <label class="form-label">Evento</label>
                           <select class="form-select" name="id_evento" required>
                             <cfloop array="#VARIABLES.cbgRequest.events#" item="VARIABLES.cbgRequestEvent">
-                              <option value="<cfoutput>#VARIABLES.cbgRequestEvent.id#</cfoutput>"><cfoutput>#htmlEditFormat(VARIABLES.cbgRequestEvent.name)# · ID #VARIABLES.cbgRequestEvent.id#</cfoutput></option>
+                              <option value="<cfoutput>#VARIABLES.cbgRequestEvent.id#</cfoutput>"><cfoutput>#encodeForHTML(VARIABLES.cbgRequestEvent.name)# · ID #VARIABLES.cbgRequestEvent.id#</cfoutput></option>
                             </cfloop>
                           </select>
                         </div>
                         <div class="col-md-5">
                           <label class="form-label">Número de peito</label>
-                          <input class="form-control" type="number" min="1" step="1" name="num_peito" value="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.bib)#</cfoutput>" required/>
+                          <input class="form-control" type="number" min="1" step="1" name="num_peito" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.bib)#</cfoutput>" required/>
                         </div>
                         <div class="col-md-6">
                           <label class="form-label">Sexo</label>
@@ -161,7 +161,7 @@
                         </div>
                         <div class="col-md-6">
                           <label class="form-label">Data de nascimento</label>
-                          <input class="form-control" type="date" name="data_nascimento" value="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.birthDate)#</cfoutput>"/>
+                          <input class="form-control" type="date" name="data_nascimento" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.birthDate)#</cfoutput>"/>
                         </div>
                         <div class="col-md-4"><label class="form-label">Percurso</label><input class="form-control" value="42 km" readonly/></div>
                         <div class="col-md-4"><label class="form-label">Homologado</label><input class="form-control" value="Não" readonly/></div>
@@ -170,9 +170,9 @@
                     </div>
                     <div class="modal-footer">
                       <input type="hidden" name="challenge_action" value="aprovar_validacao_documental"/>
-                      <input type="hidden" name="challenge_medal_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.challengeMedalCsrf)#</cfoutput>"/>
+                      <input type="hidden" name="challenge_medal_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.challengeMedalCsrf)#</cfoutput>"/>
                       <input type="hidden" name="id_usuario" value="<cfoutput>#VARIABLES.cbgRequest.userId#</cfoutput>"/>
-                      <input type="hidden" name="protocolo" value="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.protocol)#</cfoutput>"/>
+                      <input type="hidden" name="protocolo" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.protocol)#</cfoutput>"/>
                       <button type="button" class="btn btn-outline-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Cancelar</button>
                       <button type="submit" class="btn btn-success"><i class="fa-solid fa-check me-1"></i>Confirmar aprovação</button>
                     </div>
@@ -192,16 +192,16 @@
                       <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Fechar"></button>
                     </div>
                     <div class="modal-body">
-                      <p class="small text-muted">Informe por que os documentos de <strong><cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.athleteName)#</cfoutput></strong> não foram aceitos.</p>
+                      <p class="small text-muted">Informe por que os documentos de <strong><cfoutput>#encodeForHTML(VARIABLES.cbgRequest.athleteName)#</cfoutput></strong> não foram aceitos.</p>
                       <label class="form-label" for="cbgRejectionReason<cfoutput>#VARIABLES.cbgRequestIndex#</cfoutput>">Motivo da desaprovação</label>
                       <textarea class="form-control" id="cbgRejectionReason<cfoutput>#VARIABLES.cbgRequestIndex#</cfoutput>" name="motivo_desaprovacao" rows="4" minlength="5" maxlength="2000" required></textarea>
                       <div class="form-text">Esta observação ficará registrada no histórico da solicitação.</div>
                     </div>
                     <div class="modal-footer">
                       <input type="hidden" name="challenge_action" value="desaprovar_validacao_documental"/>
-                      <input type="hidden" name="challenge_medal_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.challengeMedalCsrf)#</cfoutput>"/>
+                      <input type="hidden" name="challenge_medal_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.challengeMedalCsrf)#</cfoutput>"/>
                       <input type="hidden" name="id_usuario" value="<cfoutput>#VARIABLES.cbgRequest.userId#</cfoutput>"/>
-                      <input type="hidden" name="protocolo" value="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.protocol)#</cfoutput>"/>
+                      <input type="hidden" name="protocolo" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.protocol)#</cfoutput>"/>
                       <button type="button" class="btn btn-outline-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Cancelar</button>
                       <button type="submit" class="btn btn-danger"><i class="fa-solid fa-circle-xmark me-1"></i>Confirmar desaprovação</button>
                     </div>
@@ -223,25 +223,25 @@
                     <div class="modal-body">
                       <div class="alert alert-info small">O registro oficial será preservado integralmente. Apenas o vínculo com o atleta será realizado; tempos, classificações, homologação e visibilidade no Open Results não serão alterados.</div>
                       <dl class="row small mb-3">
-                        <dt class="col-sm-3">Atleta</dt><dd class="col-sm-9"><cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.athleteName)# · ID #VARIABLES.cbgRequest.userId#</cfoutput></dd>
-                        <dt class="col-sm-3">Solicitação</dt><dd class="col-sm-9"><cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.race)# · #htmlEditFormat(VARIABLES.cbgRequest.year)# · Peito #htmlEditFormat(VARIABLES.cbgRequest.bib)#</cfoutput></dd>
+                        <dt class="col-sm-3">Atleta</dt><dd class="col-sm-9"><cfoutput>#encodeForHTML(VARIABLES.cbgRequest.athleteName)# · ID #VARIABLES.cbgRequest.userId#</cfoutput></dd>
+                        <dt class="col-sm-3">Solicitação</dt><dd class="col-sm-9"><cfoutput>#encodeForHTML(VARIABLES.cbgRequest.race)# · #encodeForHTML(VARIABLES.cbgRequest.year)# · Peito #encodeForHTML(VARIABLES.cbgRequest.bib)#</cfoutput></dd>
                       </dl>
                       <div class="row g-2 align-items-end cbg-official-search"
                            data-search-url="/desafios/buscar_resultados_brasil_gigante.cfm"
                            data-user-id="<cfoutput>#VARIABLES.cbgRequest.userId#</cfoutput>"
-                           data-protocol="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.protocol)#</cfoutput>"
-                           data-csrf="<cfoutput>#htmlEditFormat(VARIABLES.challengeMedalCsrf)#</cfoutput>">
+                           data-protocol="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.protocol)#</cfoutput>"
+                           data-csrf="<cfoutput>#encodeForHTMLAttribute(VARIABLES.challengeMedalCsrf)#</cfoutput>">
                         <div class="col-md-7">
                           <label class="form-label">Nome no resultado</label>
-                          <input class="form-control cbg-official-search-name" value="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.athleteName)#</cfoutput>"/>
+                          <input class="form-control cbg-official-search-name" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.athleteName)#</cfoutput>"/>
                         </div>
                         <div class="col-md-3">
                           <label class="form-label">Número de peito</label>
-                          <input class="form-control cbg-official-search-bib" type="number" min="1" step="1" value="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.bib)#</cfoutput>"/>
+                          <input class="form-control cbg-official-search-bib" type="number" min="1" step="1" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.bib)#</cfoutput>"/>
                         </div>
                         <div class="col-md-2">
                           <label class="form-label">Ano</label>
-                          <input class="form-control cbg-official-search-year" name="ano_resultado" type="number" min="1900" max="<cfoutput>#year(now())#</cfoutput>" step="1" value="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.year)#</cfoutput>" required/>
+                          <input class="form-control cbg-official-search-year" name="ano_resultado" type="number" min="1900" max="<cfoutput>#year(now())#</cfoutput>" step="1" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.year)#</cfoutput>" required/>
                         </div>
                         <div class="col-md-2 d-grid">
                           <button class="btn btn-outline-primary cbg-official-search-button" type="button"><i class="fa-solid fa-magnifying-glass me-1"></i>Buscar</button>
@@ -252,7 +252,7 @@
                             <cfloop array="#VARIABLES.cbgRequest.officialCandidates#" item="VARIABLES.cbgOfficialCandidate" index="VARIABLES.cbgOfficialCandidateIndex">
                               <label class="list-group-item list-group-item-action d-flex gap-2 align-items-start">
                                 <input class="form-check-input mt-1" type="radio" name="id_resultado" value="<cfoutput>#VARIABLES.cbgOfficialCandidate.id#</cfoutput>" <cfif VARIABLES.cbgOfficialCandidateIndex EQ 1>checked</cfif> required/>
-                                <span class="small"><strong><cfoutput>#htmlEditFormat(VARIABLES.cbgOfficialCandidate.name)#</cfoutput></strong> · Peito <cfoutput>#htmlEditFormat(VARIABLES.cbgOfficialCandidate.bib)#</cfoutput> · Tempo <cfoutput>#htmlEditFormat(VARIABLES.cbgOfficialCandidate.time)#</cfoutput><br><span class="text-muted"><cfoutput>#htmlEditFormat(VARIABLES.cbgOfficialCandidate.eventName)# · Resultado ID #VARIABLES.cbgOfficialCandidate.id#</cfoutput></span></span>
+                                <span class="small"><strong><cfoutput>#encodeForHTML(VARIABLES.cbgOfficialCandidate.name)#</cfoutput></strong> · Peito <cfoutput>#encodeForHTML(VARIABLES.cbgOfficialCandidate.bib)#</cfoutput> · Tempo <cfoutput>#encodeForHTML(VARIABLES.cbgOfficialCandidate.time)#</cfoutput><br><span class="text-muted"><cfoutput>#encodeForHTML(VARIABLES.cbgOfficialCandidate.eventName)# · Resultado ID #VARIABLES.cbgOfficialCandidate.id#</cfoutput></span></span>
                               </label>
                             </cfloop>
                           </div>
@@ -261,9 +261,9 @@
                     </div>
                     <div class="modal-footer">
                       <input type="hidden" name="challenge_action" value="vincular_resultado_oficial"/>
-                      <input type="hidden" name="challenge_medal_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.challengeMedalCsrf)#</cfoutput>"/>
+                      <input type="hidden" name="challenge_medal_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.challengeMedalCsrf)#</cfoutput>"/>
                       <input type="hidden" name="id_usuario" value="<cfoutput>#VARIABLES.cbgRequest.userId#</cfoutput>"/>
-                      <input type="hidden" name="protocolo" value="<cfoutput>#htmlEditFormat(VARIABLES.cbgRequest.protocol)#</cfoutput>"/>
+                      <input type="hidden" name="protocolo" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.cbgRequest.protocol)#</cfoutput>"/>
                       <button type="button" class="btn btn-outline-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Cancelar</button>
                       <button type="submit" class="btn btn-primary cbg-official-link-submit" <cfif NOT arrayLen(VARIABLES.cbgRequest.officialCandidates)>disabled</cfif>><i class="fa-solid fa-link me-1"></i>Confirmar vínculo oficial</button>
                     </div>

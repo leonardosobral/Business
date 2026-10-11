@@ -1,0 +1,28 @@
+ABRACEO — BASE PARA PRÉ-CADASTRO BUSINESS
+Versão 2 — revisão de 11/10/2026; coleta inicial em 10/10/2026.
+
+COBERTURA
+96 filiados publicados no site, com CNPJ e razão social pesquisados (inclui candidatos ainda não confirmados), 89 endereços e 96 logotipos. A referência de 98 membros veio da reunião: falta a lista nominal da associação para conciliar os universos. A diferença numérica não identifica quais membros faltam nem confirma que todos sejam organizadores.
+
+ARQUIVOS
+abraceo_pre_cadastro.xlsx: sete abas com resumo, base completa, pessoas jurídicas e alternativas, logotipos, mapeamento do formulário Business, 20 revisões prioritárias e 40 rascunhos selecionados.
+abraceo_filiados.csv: base completa de 96 filiados, fontes, situação, pendências e observações.
+abraceo_pessoas_juridicas.csv: 117 registros jurídicos relacionados à pesquisa. Inclui CNPJs anteriores, matriz/filial, outras empresas do grupo e candidatos; não é uma lista para importação automática.
+abraceo_revisao_cnpjs.csv: decisão, evidência e pendência dos 20 casos prioritários.
+abraceo_pre_cadastro_rascunhos.csv e .json: os mesmos 40 registros selecionados para pré-preenchimento.
+logotipos/: 96 imagens, referenciadas pelo caminho relativo logo_arquivo.
+
+FORMATO
+CSV em UTF-8 com BOM e separador ponto e vírgula. Importar CNPJ (documento), CEP e telefone como texto para preservar zeros iniciais. O Excel apresenta CNPJ com máscara; o CSV/JSON conserva os dígitos. Campos vazios significam informação não localizada ou ainda não confirmada, nunca autorização para inventar valores.
+
+CRITÉRIO DO LOTE
+Os 40 rascunhos têm CNPJ com dígitos válidos, situação consultada ATIVA, razão social, vínculo sustentado por fonte primária e tipo Business sugerido. Os 56 restantes ficam fora desse lote e podem ser filtrados por status_pre_cadastro na base completa. Dos 20 casos prioritários, 13 entraram no lote; AR2, Atra-e, CHL, Cia de Eventos, Corrente Running, HJR e NK precisam de confirmação adicional. Cia de Eventos e Corrente Running mantêm CNPJ principal pesquisado não ativo; alternativas não foram adotadas sem evidência suficiente.
+
+USO NO BUSINESS
+O lote prepara dados de organizações; não cria nem ativa contas e não concede acesso ao estudo. Antes de criar qualquer registro, consultar contas existentes por CNPJ completo e raiz, considerando matriz/filial. Representante deve autenticar-se e confirmar os dados e sua relação com a empresa no primeiro acesso.
+nome_empresa, tipo_titular, documento, tipo_prestador, site, cidade e estado correspondem aos campos de organização do formulário consultado. O tipo é uma sugestão a confirmar.
+contato_publico, email_publico e telefone_publico são referências comerciais de pesquisa. E-mails podem conter mais de um contato. Não os converter automaticamente em nome_responsavel ou email_responsavel de login: esses dados devem vir da sessão autenticada. Não usar CNPJ público como senha.
+Razão social, nome fantasia, endereço completo e logotipo são dados de enriquecimento; o formulário externo atual não tem todos esses campos separados. A integração deverá decidir onde armazená-los.
+
+RASTREABILIDADE
+As fontes e datas estão nas linhas da planilha/CSVs. Situação cadastral é a retornada pela consulta pública na data indicada; reconferir no momento da ativação. Registros alternativos preservam o histórico e o motivo da decisão, sem pressupor sucessão empresarial. Contatos da ABRACEO podem divergir do cadastro jurídico; divergências relevantes estão anotadas. Nenhum contato foi acionado nesta pesquisa.

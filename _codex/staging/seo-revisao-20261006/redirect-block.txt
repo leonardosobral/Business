@@ -1,0 +1,4 @@
+    # Retire the exact supplier paths used by old calendar links; keep actions and forms unchanged.
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+    RewriteCond %{QUERY_STRING} ^$
+    RewriteRule ^assessoria/(branca-esportes-saude-e-lazer|corpo-e-saude|geracao-saude|grupo-de-corrida-espaco-saude|zero-meia-um-saude-e-esporte)/?$ /timer/$1/ [R=301,L]

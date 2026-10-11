@@ -1,0 +1,328 @@
+{
+  "verified": 40,
+  "state_preserved": true,
+  "all_ready": true,
+  "redemption_deadline": "2026-11-10 23:59:59 America/Sao_Paulo",
+  "codes": [
+    {
+      "voucher_id": "67",
+      "id_conta": 28,
+      "cnpj": "28674754000146",
+      "voucher": "BQ26-00482133632EB2B7EB0D92922AA6C478",
+      "email": "3lrcontato@gmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "68",
+      "id_conta": 29,
+      "cnpj": "62503087000177",
+      "voucher": "BQ26-1CF26633820699DE5C09650B48C11391",
+      "email": "aclivesports@gmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "69",
+      "id_conta": 30,
+      "cnpj": "36943394000169",
+      "voucher": "BQ26-6A584138BB9F4C56A518AD1154E0A0CD",
+      "email": "beesportss@gmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "70",
+      "id_conta": 31,
+      "cnpj": "36480637000170",
+      "voucher": "BQ26-F818B6C93E70D94CE394551B428B2870",
+      "email": "contato@betasports.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "71",
+      "id_conta": 32,
+      "cnpj": "30245713000186",
+      "voucher": "BQ26-6F6BC2887EF7A3C60782A33CF464EE00",
+      "email": "cporto001@gmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "72",
+      "id_conta": 33,
+      "cnpj": "54070504000107",
+      "voucher": "BQ26-8B78958F7BC42051E4C9EF63BA0352FA",
+      "email": "ricardo@rrsolucoesemeventos.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "73",
+      "id_conta": 34,
+      "cnpj": "13026748000296",
+      "voucher": "BQ26-6ADBC93565ACF83005C8F10A43BCE5B4",
+      "email": "comercial@chelso.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "74",
+      "id_conta": 6,
+      "cnpj": "88792965000105",
+      "voucher": "BQ26-980720B7BF3EA0EBB35BD964A44E3691",
+      "email": "corpa@corpa.esp.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "75",
+      "id_conta": 35,
+      "cnpj": "30704295000148",
+      "voucher": "BQ26-9C58CA066526C659A007ACC1C9AE03E8",
+      "email": "ricardo@correbrasil.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "76",
+      "id_conta": 36,
+      "cnpj": "55268579000160",
+      "voucher": "BQ26-94A1400B8F5A8F838415DB2AAFFCEBF7",
+      "email": "emailcorreparaiba@gmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "77",
+      "id_conta": 37,
+      "cnpj": "40224688000108",
+      "voucher": "BQ26-A07A8B9BD4E3177A06EC20DE98DBFFBE",
+      "email": "alesandro@corrercompropositos.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "78",
+      "id_conta": 38,
+      "cnpj": "18606775000170",
+      "voucher": "BQ26-35E89F4C5A37F0E4FC9DBE01BE95C338",
+      "email": "contato@globalvita.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "79",
+      "id_conta": 1,
+      "cnpj": "32692507000140",
+      "voucher": "BQ26-F10504BD8B580D7C4C852AC6878E3689",
+      "email": "anderson@grupostc.net",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "80",
+      "id_conta": 39,
+      "cnpj": "15135804000175",
+      "voucher": "BQ26-1467037B7D532A5F58569BDDB9B20871",
+      "email": "luiz@hleventos.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "81",
+      "id_conta": 40,
+      "cnpj": "38445093000130",
+      "voucher": "BQ26-739399C1BB7381E36CD40BFFE95B495E",
+      "email": "eduardaassis@hotmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "82",
+      "id_conta": 41,
+      "cnpj": "44459412000160",
+      "voucher": "BQ26-A78B918B3427D97A15D81A9B12569C8E",
+      "email": "paulo@iguanasports.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "83",
+      "id_conta": 42,
+      "cnpj": "12234644000123",
+      "voucher": "BQ26-F3FA052D36668D9D5BE15709215775BB",
+      "email": "contato@jardelmoura.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "84",
+      "id_conta": 43,
+      "cnpj": "27127718000108",
+      "voucher": "BQ26-07524AE0C4DDF5E19BC5AE5DA2DED718",
+      "email": "fabio.bodra@letapebrasil.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "85",
+      "id_conta": 44,
+      "cnpj": "14216548000188",
+      "voucher": "BQ26-CF723FE989CF01CCD3A00432B97DF7AD",
+      "email": "carlos.albuquerque@hotmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "86",
+      "id_conta": 46,
+      "cnpj": "28416109000123",
+      "voucher": "BQ26-B58F63141AC94680A2638A786EEA7BD5",
+      "email": "mauriciofop@hotmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "87",
+      "id_conta": 47,
+      "cnpj": "07787987000185",
+      "voucher": "BQ26-86E969A4160B7DEEAEDF468239141A14",
+      "email": "jeffjelly@noblu.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "88",
+      "id_conta": 48,
+      "cnpj": "07120464000180",
+      "voucher": "BQ26-730F7B914646EF38BAFF74C4EA182BB8",
+      "email": "contato@oxetriatlo.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "89",
+      "id_conta": 49,
+      "cnpj": "35507828000115",
+      "voucher": "BQ26-4FC5F17C496C7F37175AB303E5A455A2",
+      "email": "philippe@pdaesportes.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "90",
+      "id_conta": 50,
+      "cnpj": "46478807000135",
+      "voucher": "BQ26-C8903596201C783BD4E0D79BFF64F52E",
+      "email": "podiumchip@hotmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "91",
+      "id_conta": 51,
+      "cnpj": "50456213000109",
+      "voucher": "BQ26-4FAB7ED4BAEB464D8EC0ABB9772D6354",
+      "email": "contato@proeesp.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "92",
+      "id_conta": 52,
+      "cnpj": "29086536000153",
+      "voucher": "BQ26-5475020B838C5DED175424366476ABA6",
+      "email": "sevenecoevents@gmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "93",
+      "id_conta": 53,
+      "cnpj": "49589078000182",
+      "voucher": "BQ26-3114D4FD2A4E34CD73B225456F8200E0",
+      "email": "financeiro02@sportsland.esp.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "94",
+      "id_conta": 54,
+      "cnpj": "47234721000120",
+      "voucher": "BQ26-AFE6B7D1FB27EC9C8519A2B897183A95",
+      "email": "contato@corridaderuasuperacao.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "95",
+      "id_conta": 55,
+      "cnpj": "13774425000108",
+      "voucher": "BQ26-C2FF892C62D7D9A38679BA71514E77A1",
+      "email": "topchipcrono@gmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "96",
+      "id_conta": 56,
+      "cnpj": "27208401000198",
+      "voucher": "BQ26-B9AC4443AC3066169D437CF00112342B",
+      "email": "rafael@tourdaroca.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "97",
+      "id_conta": 9,
+      "cnpj": "32910273000160",
+      "voucher": "BQ26-481ACFFDAF6777C5C869A86BDEE7FE9E",
+      "email": "contato@trcrono.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "98",
+      "id_conta": 57,
+      "cnpj": "72818198000126",
+      "voucher": "BQ26-C3252490C270D828F636BB1A0F2D9437",
+      "email": "tvcom40digital@gmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "99",
+      "id_conta": 58,
+      "cnpj": "17332526000171",
+      "voucher": "BQ26-E6C786F891AA095AFE484E3F4DC10BA3",
+      "email": "contato.uhuweventos@gmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "100",
+      "id_conta": 59,
+      "cnpj": "34622939000100",
+      "voucher": "BQ26-A78FF899135BBBC1054506DD2AAAEA83",
+      "email": "contato@unlimitedsports.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "101",
+      "id_conta": 60,
+      "cnpj": "33591994000117",
+      "voucher": "BQ26-9C516A01A25160CE1A9944D31FB5892B",
+      "email": "contato@vegasports.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "102",
+      "id_conta": 61,
+      "cnpj": "23909601000117",
+      "voucher": "BQ26-D33FE1DA21F536B72A75C23604F14561",
+      "email": "sacvidasport@gmail.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "103",
+      "id_conta": 27,
+      "cnpj": "68245814000120",
+      "voucher": "BQ26-3B5592CB8209BF880D4E4AAFA9675302",
+      "email": "marcos@voaesportes.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "104",
+      "id_conta": 62,
+      "cnpj": "13568552000142",
+      "voucher": "BQ26-B95225E885B00D639FB3EF10EB9524C9",
+      "email": "sergio.oprea@terra.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "105",
+      "id_conta": 63,
+      "cnpj": "07265942000140",
+      "voucher": "BQ26-07B81552AD4448ADEC2E5DD9EC04B4F8",
+      "email": "bernardo@x3mbrasil.com",
+      "expira_em": "2026-11-11 00:00:00-03"
+    },
+    {
+      "voucher_id": "106",
+      "id_conta": 7,
+      "cnpj": "03574107000131",
+      "voucher": "BQ26-B54E4AAE488438ACE9AD9F53B9A9C314",
+      "email": "tgk@yescom.com.br",
+      "expira_em": "2026-11-11 00:00:00-03"
+    }
+  ]
+}

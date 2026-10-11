@@ -1,0 +1,146 @@
+ 
+    var str_nome_cliente = 'braziltiming';
+    var url_arquivo_config = 'clientes/'+str_nome_cliente+'/json/config.json';
+    var url_arquivo_events = 'https://www.braziltiming.com.br/session/20261004_braziltiming_events.json';
+    var url_arquivo_news = 'https://www.braziltiming.com.br/session/20261004_braziltiming_news.json';
+    var url_arquivo_molduras = 'https://www.braziltiming.com.br/session/20261004_braziltiming_molduras.json';
+    var url_base_site = 'https://www.braziltiming.com.br';
+ 
+
+
+ 
+ 
+
+ 
+     
+     
+      
+
+     
+
+     
+     
+     
+      
+     
+     
+     
+ 
+
+ 
+     
+         
+              
+
+             
+                  
+                  
+                 
+                     
+                         Carregando evento... 
+                          
+                         
+                              00  dias  
+                              00  horas  
+                              00  minutos  
+                              00  segundos  
+                         
+                     
+                     
+                         
+                     
+                 
+             
+         
+
+         
+             
+                 
+                      
+                      
+                 
+             
+         
+
+         
+             
+                 
+                     
+                          
+                         
+                             
+                                 
+                                     Carregando... 
+                                 
+                             
+                         
+                     
+                 
+             
+         
+
+         
+             
+                 
+                     
+                         Contato   
+                     
+                      
+                 
+             
+         
+         
+             
+                 
+                     
+                         
+                              
+                         
+                         Inscrição indisponível 
+                          
+                         Entendi 
+                     
+                 
+             
+         
+         
+             
+                 
+                     
+                          
+                     
+
+                     
+                         
+                             
+                             
+
+                             
+                                  
+                             
+                             
+                                  
+                             
+                         
+                     
+                 
+             
+         
+
+         
+              
+         
+     
+    
+          
+      
+      
+
+      
+      
+      
+ 
+
+ 
+
+ 

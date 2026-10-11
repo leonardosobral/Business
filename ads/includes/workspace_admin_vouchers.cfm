@@ -24,7 +24,7 @@
 
             <form method="post" action="./?view=admin#admin-vouchers" id="ads-admin-voucher-form">
               <input type="hidden" name="ads_v1_action" value="create_admin_voucher"/>
-              <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1Csrf)#</cfoutput>"/>
+              <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1Csrf)#</cfoutput>"/>
               <input type="hidden" name="voucher_redemption_role" value="OWNER"/>
 
               <fieldset class="mb-3">
@@ -44,7 +44,7 @@
                 <select class="form-select" id="voucher-account-id" name="voucher_account_id" disabled>
                   <option value="">Selecione a conta</option>
                   <cfoutput query="qAdsV1AdminVoucherAccounts">
-                    <option value="#id_conta#">#htmlEditFormat(nome_conta)# · #htmlEditFormat(status)#</option>
+                    <option value="#id_conta#">#encodeForHTML(nome_conta)# · #encodeForHTML(status)#</option>
                   </cfoutput>
                 </select>
               </div>
@@ -89,16 +89,16 @@
                     <cfoutput query="qAdsV1AdminVouchers">
                       <tr>
                         <td>
-                          <strong>#htmlEditFormat(codigo)#</strong>
-                          <cfif len(trim(observacao & ""))><div class="small text-muted">#htmlEditFormat(observacao)#</div></cfif>
+                          <strong>#encodeForHTML(codigo)#</strong>
+                          <cfif len(trim(observacao & ""))><div class="small text-muted">#encodeForHTML(observacao)#</div></cfif>
                         </td>
                         <td>
                           <cfif voucher_scope EQ "PROMOTIONAL">
                             <span class="badge badge-info">Promocional</span>
-                            <div class="small mt-1"><cfif len(trim(account_name & ""))>#htmlEditFormat(account_name)#<cfelse>Disponível para a primeira conta</cfif></div>
+                            <div class="small mt-1"><cfif len(trim(account_name & ""))>#encodeForHTML(account_name)#<cfelse>Disponível para a primeira conta</cfif></div>
                           <cfelse>
                             <span class="badge badge-secondary">Conta</span>
-                            <div class="small mt-1">#htmlEditFormat(account_name)#</div>
+                            <div class="small mt-1">#encodeForHTML(account_name)#</div>
                           </cfif>
                         </td>
                         <td>
@@ -108,10 +108,10 @@
                         <td>
                           <cfif reservation_status EQ "RESERVED">
                             <span class="badge badge-warning">Reservado</span>
-                            <div class="small mt-1">#htmlEditFormat(reserved_account_name)#</div>
+                            <div class="small mt-1">#encodeForHTML(reserved_account_name)#</div>
                           <cfelseif status EQ 2>
                             <span class="badge badge-success">Resgatado</span>
-                            <cfif len(trim(redeemed_by_name & ""))><div class="small mt-1">#htmlEditFormat(redeemed_by_name)#</div></cfif>
+                            <cfif len(trim(redeemed_by_name & ""))><div class="small mt-1">#encodeForHTML(redeemed_by_name)#</div></cfif>
                           <cfelseif status EQ 1>
                             <span class="badge badge-info">Disponível</span>
                           <cfelse>

@@ -1,0 +1,15 @@
+{
+  "sequential_public_home_requests": [
+    {
+      "status": 200,
+      "first_byte_seconds": 7.184856,
+      "total_seconds": 7.188158
+    },
+    {
+      "status": 200,
+      "first_byte_seconds": 1.131386,
+      "total_seconds": 1.40265
+    }
+  ],
+  "production_runtime_changed": false
+}

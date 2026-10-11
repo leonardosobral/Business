@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul/",
+      "name": "CORRIDA AILOS CIVIA PELA COOPERAÇÃO - EDIÇÃO SÃO BENTO DO SUL",
+      "description": "CORRIDA AILOS CIVIA PELA COOPERAÇÃO - EDIÇÃO SÃO BENTO DO SUL se realiza el 13 diciembre 2026, en Igreja Matriz São José: Rua Otto Eduardo Lepper, 336 , São Bento do Sul, SC, Brasil - São Bento do Sul - SC.",
+      "url": "https://roadrunners.run/es/evento/2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul/",
+      "startDate": "2026-12-13",
+      "endDate": "2026-12-13",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/6VLR5AXCMY6MTRE6XN7YBOT8677AO8NNH3N7XZANASQ63NI97I.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Igreja Matriz São José: Rua Otto Eduardo Lepper, 336 , São Bento do Sul, SC, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "São Bento do Sul",
+          "addressRegion": "SC",
+          "addressCountry": "BR",
+          "streetAddress": "Igreja Matriz São José: Rua Otto Eduardo Lepper, 336 , São Bento do Sul, SC, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87819&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sc/",
+          "@type": "ListItem",
+          "name": "Carreras en SC"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-corrida-ailos-civia-pela-cooperacao-edicao-sao-bento-do-sul/",
+          "@type": "ListItem",
+          "name": "CORRIDA AILOS CIVIA PELA COOPERAÇÃO - EDIÇÃO SÃO BENTO DO SUL"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

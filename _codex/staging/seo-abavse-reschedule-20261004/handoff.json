@@ -1,0 +1,17 @@
+{
+  "status": "published_and_verified",
+  "runtime_files": 4,
+  "route_normalization_followup_files": 1,
+  "private_checks": 37,
+  "event_rows_preserved": 2,
+  "routes_preserved": 6,
+  "dependency_tables_preserved": 13,
+  "public_urls": 6,
+  "sitemaps": 4,
+  "schema": "EventRescheduled/previousStartDate",
+  "mapping_field": "tag_301 on 43049 only",
+  "runtime_backup": "/var/backups/seo-abavse-reschedule-20261004/baseline",
+  "mapping_backup": "/var/backups/seo-abavse-mapping-20261004",
+  "normalization_backup": "/var/backups/seo-abavse-route-tag-20261004/baseline",
+  "local_production_drift_preserved": "pre-existing qAgrega guard and whitespace in local evento/index.cfm"
+}

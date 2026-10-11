@@ -157,7 +157,7 @@
 
               <div>
                 <label class="form-label">Busca</label>
-                <input class="form-control" type="text" name="busca" value="<cfoutput>#htmlEditFormat(URL.busca)#</cfoutput>" placeholder="Titulo, canal ou URL"/>
+                <input class="form-control" type="text" name="busca" value="<cfoutput>#encodeForHTMLAttribute(URL.busca)#</cfoutput>" placeholder="Titulo, canal ou URL"/>
               </div>
 
               <div>
@@ -198,7 +198,7 @@
               <cfelseif URL.sucesso EQ "evento_desvinculado">
                 <div class="alert alert-success mb-3">Vinculo do evento removido do video em destaque.</div>
               <cfelseif len(VARIABLES.mediaFeaturedEventAlert.message)>
-                <cfoutput><div class="alert alert-#htmlEditFormat(VARIABLES.mediaFeaturedEventAlert.type)# mb-3">#htmlEditFormat(VARIABLES.mediaFeaturedEventAlert.message)#</div></cfoutput>
+                <cfoutput><div class="alert alert-#encodeForHTMLAttribute(VARIABLES.mediaFeaturedEventAlert.type)# mb-3">#encodeForHTML(VARIABLES.mediaFeaturedEventAlert.message)#</div></cfoutput>
               </cfif>
 
               <div class="media-featured-card p-3 mb-4" id="video-destaque">
@@ -208,10 +208,10 @@
                       <div class="small text-warning fw-semibold text-uppercase">Video em destaque na home</div>
                       <cfif qMediaFeaturedCurrent.recordcount>
                         <div class="fw-semibold">
-                          <cfif len(trim(qMediaFeaturedCurrent.media_titulo))>#htmlEditFormat(qMediaFeaturedCurrent.media_titulo)#<cfelse>Midia ###htmlEditFormat(qMediaFeaturedCurrent.media_pk)#</cfif>
+                          <cfif len(trim(qMediaFeaturedCurrent.media_titulo))>#encodeForHTML(qMediaFeaturedCurrent.media_titulo)#<cfelse>Midia ###encodeForHTML(qMediaFeaturedCurrent.media_pk)#</cfif>
                         </div>
                         <div class="small text-muted">
-                          ID #htmlEditFormat(qMediaFeaturedCurrent.media_pk)# ·
+                          ID #encodeForHTML(qMediaFeaturedCurrent.media_pk)# ·
                           <cfif VARIABLES.mediaFeaturedCurrentPublished>Publicado<cfelse>Oculto</cfif>
                         </div>
                       <cfelse>
@@ -221,7 +221,7 @@
                     </div>
                     <div class="d-flex flex-wrap gap-2 align-items-start">
                       <cfif qMediaFeaturedCurrent.recordcount AND len(trim(qMediaFeaturedCurrent.media_url))>
-                        <button type="button" class="btn btn-sm btn-outline-secondary js-media-video" data-media-url="#htmlEditFormat(qMediaFeaturedCurrent.media_url)#" data-media-title="#htmlEditFormat(qMediaFeaturedCurrent.media_titulo)#">
+                        <button type="button" class="btn btn-sm btn-outline-secondary js-media-video" data-media-url="#encodeForHTMLAttribute(qMediaFeaturedCurrent.media_url)#" data-media-title="#encodeForHTMLAttribute(qMediaFeaturedCurrent.media_titulo)#">
                           Ver video
                         </button>
                       </cfif>
@@ -240,15 +240,15 @@
                         <cfif VARIABLES.mediaHasEventId>
                           <cfoutput>
                             <cfif VARIABLES.mediaFeaturedCurrentEventId GT 0>
-                              <div class="fw-semibold">#htmlEditFormat(qMediaFeaturedCurrent.evento_nome)#</div>
+                              <div class="fw-semibold">#encodeForHTML(qMediaFeaturedCurrent.evento_nome)#</div>
                               <div class="small text-muted">
                                 ID #VARIABLES.mediaFeaturedCurrentEventId#
                                 <cfif isDate(qMediaFeaturedCurrent.evento_data_inicial)> · #lsDateFormat(qMediaFeaturedCurrent.evento_data_inicial, "dd/mm/yyyy")#</cfif>
-                                <cfif len(trim(qMediaFeaturedCurrent.evento_cidade & ""))> · #htmlEditFormat(qMediaFeaturedCurrent.evento_cidade)#<cfif len(trim(qMediaFeaturedCurrent.evento_estado & ""))>/#htmlEditFormat(qMediaFeaturedCurrent.evento_estado)#</cfif></cfif>
+                                <cfif len(trim(qMediaFeaturedCurrent.evento_cidade & ""))> · #encodeForHTML(qMediaFeaturedCurrent.evento_cidade)#<cfif len(trim(qMediaFeaturedCurrent.evento_estado & ""))>/#encodeForHTML(qMediaFeaturedCurrent.evento_estado)#</cfif></cfif>
                               </div>
                               <form method="post" action="./?pagina=#VARIABLES.mediaPage#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)###video-destaque" class="mt-2" onsubmit="return confirm('Remover o vinculo deste video com o evento?');">
                                 <input type="hidden" name="media_featured_event_action" value="salvar"/>
-                                <input type="hidden" name="media_id" value="#htmlEditFormat(qMediaFeaturedCurrent.media_pk)#"/>
+                                <input type="hidden" name="media_id" value="#encodeForHTMLAttribute(qMediaFeaturedCurrent.media_pk)#"/>
                                 <input type="hidden" name="id_evento" value=""/>
                                 <button class="btn btn-sm btn-outline-danger" type="submit">Remover vinculo</button>
                               </form>
@@ -269,12 +269,12 @@
                           <cfoutput>
                             <form method="get" action="./##video-destaque" class="row g-2 align-items-end">
                               <input type="hidden" name="pagina" value="#VARIABLES.mediaPage#"/>
-                              <input type="hidden" name="busca" value="#htmlEditFormat(URL.busca)#"/>
-                              <input type="hidden" name="status" value="#htmlEditFormat(VARIABLES.mediaStatusFilter)#"/>
-                              <input type="hidden" name="destaque" value="#htmlEditFormat(VARIABLES.mediaFeaturedFilter)#"/>
+                              <input type="hidden" name="busca" value="#encodeForHTMLAttribute(URL.busca)#"/>
+                              <input type="hidden" name="status" value="#encodeForHTMLAttribute(VARIABLES.mediaStatusFilter)#"/>
+                              <input type="hidden" name="destaque" value="#encodeForHTMLAttribute(VARIABLES.mediaFeaturedFilter)#"/>
                               <div class="col-12 col-md-9">
                                 <label class="form-label">Buscar evento</label>
-                                <input class="form-control" type="text" name="evento_busca" value="#htmlEditFormat(URL.evento_busca)#" placeholder="Nome, ID, tag ou cidade" required/>
+                                <input class="form-control" type="text" name="evento_busca" value="#encodeForHTMLAttribute(URL.evento_busca)#" placeholder="Nome, ID, tag ou cidade" required/>
                               </div>
                               <div class="col-12 col-md-3">
                                 <button class="btn btn-outline-warning w-100" type="submit">Buscar</button>
@@ -287,18 +287,18 @@
                               <cfoutput>
                                 <form method="post" action="./?pagina=#VARIABLES.mediaPage#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)###video-destaque" class="mt-3">
                                   <input type="hidden" name="media_featured_event_action" value="salvar"/>
-                                  <input type="hidden" name="media_id" value="#htmlEditFormat(qMediaFeaturedCurrent.media_pk)#"/>
+                                  <input type="hidden" name="media_id" value="#encodeForHTMLAttribute(qMediaFeaturedCurrent.media_pk)#"/>
                                   <div class="media-event-search-results mb-3">
                                     <cfloop query="qMediaFeaturedEventSearch">
                                       <cfset VARIABLES.mediaEventSearchActive = NOT isNull(qMediaFeaturedEventSearch.ativo) AND (IsBoolean(qMediaFeaturedEventSearch.ativo) ? qMediaFeaturedEventSearch.ativo : ListFindNoCase("true,1,yes,sim", trim(qMediaFeaturedEventSearch.ativo & "")) GT 0)/>
                                       <label class="media-event-search-option">
                                         <input class="form-check-input mt-1" type="radio" name="id_evento" value="#qMediaFeaturedEventSearch.id_evento#" <cfif qMediaFeaturedEventSearch.id_evento EQ VARIABLES.mediaFeaturedCurrentEventId>checked</cfif> required/>
                                         <span>
-                                          <span class="fw-semibold d-block">#htmlEditFormat(qMediaFeaturedEventSearch.nome_evento)#</span>
+                                          <span class="fw-semibold d-block">#encodeForHTML(qMediaFeaturedEventSearch.nome_evento)#</span>
                                           <span class="small text-muted d-block">
                                             ID #qMediaFeaturedEventSearch.id_evento#
                                             <cfif isDate(qMediaFeaturedEventSearch.data_inicial)> · #lsDateFormat(qMediaFeaturedEventSearch.data_inicial, "dd/mm/yyyy")#</cfif>
-                                            <cfif len(trim(qMediaFeaturedEventSearch.cidade & ""))> · #htmlEditFormat(qMediaFeaturedEventSearch.cidade)#<cfif len(trim(qMediaFeaturedEventSearch.estado & ""))>/#htmlEditFormat(qMediaFeaturedEventSearch.estado)#</cfif></cfif>
+                                            <cfif len(trim(qMediaFeaturedEventSearch.cidade & ""))> · #encodeForHTML(qMediaFeaturedEventSearch.cidade)#<cfif len(trim(qMediaFeaturedEventSearch.estado & ""))>/#encodeForHTML(qMediaFeaturedEventSearch.estado)#</cfif></cfif>
                                           </span>
                                           <span class="small <cfif VARIABLES.mediaEventSearchActive>text-success<cfelse>text-muted</cfif>"><cfif VARIABLES.mediaEventSearchActive>Ativo<cfelse>Inativo</cfif></span>
                                         </span>
@@ -392,19 +392,19 @@
                       <tr>
                         <td class="media-thumbnail-cell">
                           <cfif VARIABLES.mediaHasUrl AND len(trim(qMedia["media_url"][qMedia.currentRow]))>
-                            <button type="button" class="media-thumbnail-button js-media-video js-media-thumbnail" data-media-url="#htmlEditFormat(qMedia["media_url"][qMedia.currentRow])#" data-media-title="Midia ###htmlEditFormat(VARIABLES.mediaPkValue)#" aria-label="Abrir video">
+                            <button type="button" class="media-thumbnail-button js-media-video js-media-thumbnail" data-media-url="#encodeForHTMLAttribute(qMedia["media_url"][qMedia.currentRow])#" data-media-title="Midia ###encodeForHTMLAttribute(VARIABLES.mediaPkValue)#" aria-label="Abrir video">
                               <img alt="Miniatura do video" loading="lazy"/>
                             </button>
                           <cfelse>
                             <span class="text-muted small">-</span>
                           </cfif>
                         </td>
-                        <td class="media-cell">#htmlEditFormat(VARIABLES.mediaPkValue)#</td>
+                        <td class="media-cell">#encodeForHTML(VARIABLES.mediaPkValue)#</td>
                         <td class="media-cell">
-                          <div class="fw-semibold"><cfif len(VARIABLES.mediaTitle)>#htmlEditFormat(VARIABLES.mediaTitle)#<cfelse>Midia ###htmlEditFormat(VARIABLES.mediaPkValue)#</cfif></div>
+                          <div class="fw-semibold"><cfif len(VARIABLES.mediaTitle)>#encodeForHTML(VARIABLES.mediaTitle)#<cfelse>Midia ###encodeForHTML(VARIABLES.mediaPkValue)#</cfif></div>
                         </td>
                         <td class="media-cell">
-                          <cfif len(VARIABLES.mediaChannelName)>#htmlEditFormat(VARIABLES.mediaChannelName)#<cfelse><span class="text-muted">-</span></cfif>
+                          <cfif len(VARIABLES.mediaChannelName)>#encodeForHTML(VARIABLES.mediaChannelName)#<cfelse><span class="text-muted">-</span></cfif>
                         </td>
                         <td class="media-cell">
                           <cfif isDate(VARIABLES.mediaPublishedAt)>
@@ -415,7 +415,7 @@
                           </cfif>
                         </td>
                         <td class="media-cell">
-                          <span class="<cfif VARIABLES.mediaDurationSeconds GT 0 AND VARIABLES.mediaDurationSeconds LT VARIABLES.mediaMinimumPublishDurationSeconds>text-danger fw-bold</cfif>">#htmlEditFormat(VARIABLES.mediaDurationFormatted)#</span>
+                          <span class="<cfif VARIABLES.mediaDurationSeconds GT 0 AND VARIABLES.mediaDurationSeconds LT VARIABLES.mediaMinimumPublishDurationSeconds>text-danger fw-bold</cfif>">#encodeForHTML(VARIABLES.mediaDurationFormatted)#</span>
                         </td>
                         <td class="media-cell">
                           <div class="mb-1">

@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-09T02:00:15.042015+00:00",
+  "previous_goal_turn": "progress: RR-39 runtime and panel published, verified, and local files synced",
+  "consecutive_goal_turns_with_same_blocker": 3,
+  "blocker": "Mac remains locked; the authenticated Chrome Semrush session is inaccessible",
+  "audit_live_now": false,
+  "last_confirmed_audit": {
+    "project": 26661911,
+    "finishedAt": "2026-10-08T20:20:00-03:00",
+    "pages": 5000,
+    "siteHealth": 75
+  },
+  "completion_unproven": "A comparable audit confirming Site Health above 75 has not been started or observed",
+  "known_next_actions": {
+    "reaudit": "requires manually unlocked Mac",
+    "store_metadata": "requires external store platform access",
+    "remaining_gsc_examples": "requires authenticated Search Console session"
+  },
+  "no_security_or_privacy_bypass": true,
+  "user_action": "Unlock the Mac and notify this chat to resume the goal"
+}

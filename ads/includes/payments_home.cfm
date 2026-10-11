@@ -9,14 +9,14 @@
         <cfif qAdsV1VoucherReservation.recordcount>
           <div class="border border-success rounded p-3" id="ads-voucher-form">
             <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
-              <div><span class="badge badge-success mb-2">Voucher reservado</span><div class="h5 mb-1"><cfoutput>#lsCurrencyFormat(qAdsV1VoucherReservation.credito)#</cfoutput></div><div class="small text-muted">Código <cfoutput>#htmlEditFormat(left(qAdsV1VoucherReservation.codigo, 4))#••••#htmlEditFormat(right(qAdsV1VoucherReservation.codigo, 4))#</cfoutput></div></div>
+              <div><span class="badge badge-success mb-2">Voucher reservado</span><div class="h5 mb-1"><cfoutput>#lsCurrencyFormat(qAdsV1VoucherReservation.credito)#</cfoutput></div><div class="small text-muted">Código <cfoutput>#encodeForHTML(left(qAdsV1VoucherReservation.codigo, 4))#••••#encodeForHTML(right(qAdsV1VoucherReservation.codigo, 4))#</cfoutput></div></div>
               <div class="small text-muted align-self-md-center"><cfif isDate(qAdsV1VoucherReservation.expires_at)>Válido até <cfoutput>#lsDateFormat(qAdsV1VoucherReservation.expires_at, "dd/mm/yyyy")#</cfoutput><cfelse>Sem data de expiração</cfif></div>
             </div>
           </div>
         <cfelseif VARIABLES.adsAccessCanReserveVoucher>
           <form method="post" action="./?view=payments#ads-voucher-form" id="ads-voucher-form" class="border rounded p-3"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
             <input type="hidden" name="ads_v1_action" value="reserve_voucher"/>
-            <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1Csrf)#</cfoutput>"/>
+            <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1Csrf)#</cfoutput>"/>
             <label class="form-label" for="ads-voucher-code">Código do voucher</label>
             <div class="input-group">
               <input class="form-control text-uppercase" id="ads-voucher-code" name="voucher_code" type="text" minlength="3" maxlength="160" autocomplete="off" placeholder="RUNPRO-..." required/>
@@ -48,7 +48,7 @@
             <div class="col-lg-7">
               <form method="post" action="./?view=payments#payment-credit" id="ads-voucher-form"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
                 <input type="hidden" name="ads_v1_action" value="redeem_voucher"/>
-                <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsV1Csrf)#</cfoutput>"/>
+                <input type="hidden" name="ads_v1_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsV1Csrf)#</cfoutput>"/>
                 <label class="visually-hidden" for="ads-voucher-code">Código do voucher</label>
                 <div class="input-group">
                   <input class="form-control text-uppercase" id="ads-voucher-code" name="voucher_code" type="text" minlength="3" maxlength="160" autocomplete="off" placeholder="RUNPRO-..." required/>
@@ -61,7 +61,7 @@
       </cfif>
 
       <cfif len(VARIABLES.adsPaymentError)>
-        <div class="alert alert-danger"><cfoutput>#htmlEditFormat(VARIABLES.adsPaymentError)#</cfoutput></div>
+        <div class="alert alert-danger"><cfoutput>#encodeForHTML(VARIABLES.adsPaymentError)#</cfoutput></div>
       </cfif>
 
       <cfif NOT VARIABLES.adsPaymentApiReady>
@@ -70,16 +70,16 @@
         <cfif structKeyExists(VARIABLES.adsPaymentCurrent, "paymentIntentId")>
           <cfset VARIABLES.adsPaymentBoxId = listFind("CREATED,CHECKOUT_READY,PENDING", VARIABLES.adsPaymentCurrent.status)
             ? "ads-payment-pending" : "ads-payment-result"/>
-          <div class="border rounded p-3 mb-4" id="<cfoutput>#VARIABLES.adsPaymentBoxId#</cfoutput>" data-payment-intent="<cfoutput>#htmlEditFormat(VARIABLES.adsPaymentCurrent.paymentIntentId)#</cfoutput>">
+          <div class="border rounded p-3 mb-4" id="<cfoutput>#VARIABLES.adsPaymentBoxId#</cfoutput>" data-payment-intent="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsPaymentCurrent.paymentIntentId)#</cfoutput>">
             <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
               <div>
-                <div class="small text-muted">Pagamento <cfoutput>#htmlEditFormat(VARIABLES.adsPaymentCurrent.reference)#</cfoutput></div>
+                <div class="small text-muted">Pagamento <cfoutput>#encodeForHTML(VARIABLES.adsPaymentCurrent.reference)#</cfoutput></div>
                 <div class="h5 mb-1"><cfoutput>#lsCurrencyFormat(VARIABLES.adsPaymentCurrent.amountCents / 100)#</cfoutput></div>
                 <div>
                   <cfif VARIABLES.adsPaymentCurrent.status EQ "PAID">
-                    <span class="badge badge-success"><cfoutput>#htmlEditFormat(adsV1PaymentStatusLabel(VARIABLES.adsPaymentCurrent.status))#</cfoutput></span>
+                    <span class="badge badge-success"><cfoutput>#encodeForHTML(adsV1PaymentStatusLabel(VARIABLES.adsPaymentCurrent.status))#</cfoutput></span>
                   <cfelseif listFind("FAILED,CANCELED,EXPIRED,REFUNDED,CHARGEBACK,REVIEW", VARIABLES.adsPaymentCurrent.status)>
-                    <span class="badge badge-warning"><cfoutput>#htmlEditFormat(adsV1PaymentStatusLabel(VARIABLES.adsPaymentCurrent.status))#</cfoutput></span>
+                    <span class="badge badge-warning"><cfoutput>#encodeForHTML(adsV1PaymentStatusLabel(VARIABLES.adsPaymentCurrent.status))#</cfoutput></span>
                   <cfelse>
                     <span class="badge badge-info">Aguardando / Confirmando</span>
                   </cfif>
@@ -90,7 +90,7 @@
               </div>
               <div class="d-flex flex-wrap align-items-start gap-2">
                 <cfif len(VARIABLES.adsPaymentValidatedCheckoutUrl) AND listFind("CREATED,CHECKOUT_READY,PENDING", VARIABLES.adsPaymentCurrent.status)>
-                  <a class="btn btn-info" target="_blank" rel="noopener noreferrer" href="<cfoutput>#htmlEditFormat(VARIABLES.adsPaymentValidatedCheckoutUrl)#</cfoutput>">Ir para o pagamento</a>
+                  <a class="btn btn-info" target="_blank" rel="noopener noreferrer" href="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsPaymentValidatedCheckoutUrl)#</cfoutput>">Ir para o pagamento</a>
                 </cfif>
                 <a class="btn btn-outline-light" href="<cfoutput>./?view=payments&amp;payment=#urlEncodedFormat(VARIABLES.adsPaymentCurrent.paymentIntentId)###payment-credit</cfoutput>">Atualizar status</a>
               </div>
@@ -103,12 +103,12 @@
         <cfelseif VARIABLES.adsAccessCanPurchaseCredit>
           <form method="post" action="./?view=payments#payment-credit" id="ads-payment-form" class="js-payment-checkout-form" data-submitting="false"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
             <input type="hidden" name="ads_v1_action" value="create_payment_checkout"/>
-            <input type="hidden" name="ads_payment_csrf" value="<cfoutput>#htmlEditFormat(VARIABLES.adsPaymentCsrf)#</cfoutput>"/>
-            <input type="hidden" name="ads_payment_idempotency_key" value="<cfoutput>#htmlEditFormat(VARIABLES.adsPaymentIdempotencyKey)#</cfoutput>"/>
+            <input type="hidden" name="ads_payment_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsPaymentCsrf)#</cfoutput>"/>
+            <input type="hidden" name="ads_payment_idempotency_key" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsPaymentIdempotencyKey)#</cfoutput>"/>
             <div class="row g-3 align-items-end">
               <div class="col-lg-6">
                 <label class="form-label" for="ads-payment-amount">Valor do crédito</label>
-                <div class="input-group"><span class="input-group-text">R$</span><input class="form-control" id="ads-payment-amount" name="ads_payment_amount" type="number" min="50" max="21474836.47" step="0.01" required value="<cfoutput>#htmlEditFormat(VARIABLES.adsPaymentAmountRaw)#</cfoutput>"/></div>
+                <div class="input-group"><span class="input-group-text">R$</span><input class="form-control" id="ads-payment-amount" name="ads_payment_amount" type="number" min="50" max="21474836.47" step="0.01" required value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.adsPaymentAmountRaw)#</cfoutput>"/></div>
               </div>
               <div class="col-lg-6">
                 <div class="d-flex flex-wrap gap-2" aria-label="Valores sugeridos">
@@ -145,9 +145,9 @@
                 <cfoutput query="qAdsPayments">
                   <tr>
                     <td><cfif isDate(created_at)>#lsDateFormat(created_at, "dd/mm/yyyy")# #lsTimeFormat(created_at, "HH:nn")#<cfelse>-</cfif></td>
-                    <td><a href="./?view=payments&amp;payment=#urlEncodedFormat(payment_intent_id)###payment-credit">#htmlEditFormat(support_reference)#</a></td>
+                    <td><a href="./?view=payments&amp;payment=#urlEncodedFormat(payment_intent_id)###payment-credit">#encodeForHTML(support_reference)#</a></td>
                     <td><cfif payment_method EQ "pix">PIX<cfelseif payment_method EQ "credit_card">Cartao 1x<cfelse>-</cfif></td>
-                    <td><span class="badge <cfif status EQ 'PAID'>badge-success<cfelseif listFind('FAILED,CANCELED,EXPIRED,REFUNDED,CHARGEBACK,REVIEW', status)>badge-warning<cfelse>badge-info</cfif>">#htmlEditFormat(adsV1PaymentStatusLabel(status))#</span></td>
+                    <td><span class="badge <cfif status EQ 'PAID'>badge-success<cfelseif listFind('FAILED,CANCELED,EXPIRED,REFUNDED,CHARGEBACK,REVIEW', status)>badge-warning<cfelse>badge-info</cfif>">#encodeForHTML(adsV1PaymentStatusLabel(status))#</span></td>
                     <td class="text-end">#lsCurrencyFormat(amount_cents / 100)#</td>
                     <td><cfif len(trim(ledger_entry_id & ""))><span class="text-success">Creditado</span><cfelse><span class="text-muted">Aguardando</span></cfif></td>
                   </tr>

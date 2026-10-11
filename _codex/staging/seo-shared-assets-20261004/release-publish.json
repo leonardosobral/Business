@@ -1,0 +1,14 @@
+{
+  "published": [
+    "assets/css/cores.min.css",
+    "assets/css/rr-audience-privacy.min.css",
+    "assets/css/runnerhub-footer.min.css",
+    "assets/js/rr-audience-privacy.min.js",
+    "assets/js/runnerhub-entry-prompts.min.js",
+    "includes/analytics/privacy_controls.cfm",
+    "includes/estrutura/footer_assets.cfm",
+    "includes/estrutura/seo-web-tools-body-end.cfm",
+    "includes/estrutura/seo-web-tools-head.cfm"
+  ],
+  "backup": "/var/backups/seo-shared-assets-20261004/baseline"
+}

@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2027-pirangi-praiano-2027/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2027-pirangi-praiano-2027/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2027-pirangi-praiano-2027/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2027-pirangi-praiano-2027/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2027-pirangi-praiano-2027/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2027-pirangi-praiano-2027/",
+      "name": "PIRANGI PRAIANO 2027",
+      "description": "PIRANGI PRAIANO 2027 acontece em 31 janeiro 2027, em Praia de pirangi do norte: Pirangi do Norte, RN, 100% beira mar, Parnamirim, RN, Brasil - Parnamirim - RN.",
+      "url": "https://roadrunners.run/evento/2027-pirangi-praiano-2027/",
+      "startDate": "2027-01-31",
+      "endDate": "2027-01-31",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/PZYHB71APNTLIYLTBXIX3W3KYMUO1TB2M678IHA2I0TP8994WD.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Praia de pirangi do norte: Pirangi do Norte, RN, 100% beira mar, Parnamirim, RN, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Parnamirim",
+          "addressRegion": "RN",
+          "addressCountry": "BR",
+          "streetAddress": "Praia de pirangi do norte: Pirangi do Norte, RN, 100% beira mar, Parnamirim, RN, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=85428&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/rn/",
+          "@type": "ListItem",
+          "name": "Corridas em RN"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2027-pirangi-praiano-2027/",
+          "@type": "ListItem",
+          "name": "PIRANGI PRAIANO 2027"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

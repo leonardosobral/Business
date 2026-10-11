@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-super-action-sorocaba-2026/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-super-action-sorocaba-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-super-action-sorocaba-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-super-action-sorocaba-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-super-action-sorocaba-2026/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-super-action-sorocaba-2026/",
+      "name": "SUPER ACTION SOROCABA 2026",
+      "description": "SUPER ACTION SOROCABA 2026 acontece em 15 novembro 2026, em Parque Natural - Porto das Águas, Sorocaba, SP, Brasil - Sorocaba - SP.",
+      "url": "https://roadrunners.run/evento/2026-super-action-sorocaba-2026/",
+      "startDate": "2026-11-15",
+      "endDate": "2026-11-15",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/NQZZR0YRLZDQ1QVCW18F14F2G1UNVC2QHTZMLF3DZSMBC0IPEC.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Parque Natural - Porto das Águas, Sorocaba, SP, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Sorocaba",
+          "addressRegion": "SP",
+          "addressCountry": "BR",
+          "streetAddress": "Parque Natural - Porto das Águas, Sorocaba, SP, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87547&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sp/",
+          "@type": "ListItem",
+          "name": "Corridas em SP"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-super-action-sorocaba-2026/",
+          "@type": "ListItem",
+          "name": "SUPER ACTION SOROCABA 2026"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

@@ -88,7 +88,7 @@
             <cfthrow type="AdsPayment.Validation" message="A compra de credito ainda nao esta disponivel."/>
         </cfif>
         <cfif NOT VARIABLES.adsAccessCanPurchaseCredit>
-            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfheader statuscode="403"/>
             <cfthrow type="AdsPayment.Forbidden" message="Seu papel nesta conta nao permite comprar credito."/>
         </cfif>
         <cfif compare(trim(FORM.ads_payment_csrf & ""), VARIABLES.adsPaymentCsrf) NEQ 0>

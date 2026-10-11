@@ -1,0 +1,5 @@
+[
+  {
+    "payload": "{\"products\": [{\"id\": 1, \"codigo\": \"previa-2026-q3\", \"status\": \"ACTIVE\", \"publicacao\": 41}, {\"id\": 2, \"codigo\": \"anual-2026\", \"status\": \"DRAFT\", \"publicacao\": null}], \"profiles\": 41, \"campaigns\": [{\"id\": 1, \"codigo\": \"piloto\", \"status\": \"DRAFT\", \"version\": 1, \"beneficio\": 50, \"produto_id\": 1}, {\"id\": 2, \"codigo\": \"abraceo\", \"status\": \"DRAFT\", \"version\": 1, \"beneficio\": 50, \"produto_id\": 1}, {\"id\": 3, \"codigo\": \"editorial\", \"status\": \"DRAFT\", \"version\": 1, \"beneficio\": 50, \"produto_id\": 1}], \"voucher_counts\": 0, \"first_access_exists\": null}"
+  }
+]

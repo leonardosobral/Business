@@ -180,9 +180,9 @@
               <cfif VARIABLES.crmTablesReady AND VARIABLES.crmEffectiveIsAdmin AND NOT VARIABLES.crmInImportPreview>
                 <form method="post" action="./" class="d-flex flex-column flex-sm-row gap-2 justify-content-lg-end">
                   <input type="hidden" name="acao" value="sync_ticketsports"/>
-                  <input type="hidden" name="cod_evento" value="<cfoutput>#htmlEditFormat(VARIABLES.crmCodEvento)#</cfoutput>"/>
+                  <input type="hidden" name="cod_evento" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.crmCodEvento)#</cfoutput>"/>
                   <button class="btn btn-sm btn-outline-warning" type="submit">
-                    Sincronizar TicketSports<cfoutput><cfif len(VARIABLES.crmCodEvento)> #htmlEditFormat(VARIABLES.crmCodEvento)#</cfif></cfoutput>
+                    Sincronizar TicketSports<cfoutput><cfif len(VARIABLES.crmCodEvento)> #encodeForHTML(VARIABLES.crmCodEvento)#</cfif></cfoutput>
                   </button>
                 </form>
               <cfelse>
@@ -209,17 +209,17 @@
           </cfif>
 
           <cfif len(trim(VARIABLES.crmNotice))>
-            <div class="alert alert-success mb-4"><cfoutput>#htmlEditFormat(VARIABLES.crmNotice)#</cfoutput></div>
+            <div class="alert alert-success mb-4"><cfoutput>#encodeForHTML(VARIABLES.crmNotice)#</cfoutput></div>
           </cfif>
 
           <cfif len(trim(VARIABLES.crmError))>
-            <div class="alert alert-danger mb-4"><cfoutput>#htmlEditFormat(VARIABLES.crmError)#</cfoutput></div>
+            <div class="alert alert-danger mb-4"><cfoutput>#encodeForHTML(VARIABLES.crmError)#</cfoutput></div>
           </cfif>
 
           <cfif qCrmLinkTicketsports.recordcount>
             <cfoutput query="qCrmLinkTicketsports">
               <div class="alert alert-success mb-4">
-                Evento #htmlEditFormat(qCrmLinkTicketsports.evento_codigo_externo)# vinculado à conta #htmlEditFormat(qCrmLinkTicketsports.conta_nome)#.
+                Evento #encodeForHTML(qCrmLinkTicketsports.evento_codigo_externo)# vinculado à conta #encodeForHTML(qCrmLinkTicketsports.conta_nome)#.
               </div>
             </cfoutput>
           </cfif>
@@ -227,8 +227,8 @@
           <cfif qCrmLinkFonteEvento.recordcount>
             <cfoutput query="qCrmLinkFonteEvento">
               <div class="alert alert-success mb-4">
-                Fonte #htmlEditFormat(qCrmLinkFonteEvento.fonte)#<cfif len(trim(qCrmLinkFonteEvento.evento_codigo_externo))> / #htmlEditFormat(qCrmLinkFonteEvento.evento_codigo_externo)#</cfif>
-                vinculada ao evento RR #qCrmLinkFonteEvento.evento_rr_id# - #htmlEditFormat(qCrmLinkFonteEvento.evento_rr_nome)#.
+                Fonte #encodeForHTML(qCrmLinkFonteEvento.fonte)#<cfif len(trim(qCrmLinkFonteEvento.evento_codigo_externo))> / #encodeForHTML(qCrmLinkFonteEvento.evento_codigo_externo)#</cfif>
+                vinculada ao evento RR #qCrmLinkFonteEvento.evento_rr_id# - #encodeForHTML(qCrmLinkFonteEvento.evento_rr_nome)#.
                 #LSNumberFormat(qCrmLinkFonteEvento.total_resultados_vinculados, "9,999,999")# resultados e
                 #LSNumberFormat(qCrmLinkFonteEvento.total_usuarios_vinculados, "9,999,999")# usuários RR vinculados.
               </div>
@@ -286,11 +286,11 @@
                     <tbody>
                       <cfoutput query="qCrmFontesPendentes">
                         <tr>
-                          <td><span class="badge badge-primary">#htmlEditFormat(qCrmFontesPendentes.fonte)#</span></td>
-                          <td>#htmlEditFormat(qCrmFontesPendentes.cod_evento_externo)#</td>
+                          <td><span class="badge badge-primary">#encodeForHTML(qCrmFontesPendentes.fonte)#</span></td>
+                          <td>#encodeForHTML(qCrmFontesPendentes.cod_evento_externo)#</td>
                           <td>
-                            #htmlEditFormat(qCrmFontesPendentes.ano_evento)#<br/>
-                            <small class="text-muted">#htmlEditFormat(crmShortText(qCrmFontesPendentes.nome_evento, 58))#</small>
+                            #encodeForHTML(qCrmFontesPendentes.ano_evento)#<br/>
+                            <small class="text-muted">#encodeForHTML(crmShortText(qCrmFontesPendentes.nome_evento, 58))#</small>
                           </td>
                           <td class="text-end">#LSNumberFormat(qCrmFontesPendentes.total, "9,999,999")#</td>
 	                          <td>
@@ -299,15 +299,15 @@
 	                                <input type="hidden" name="acao" value="link_ticketsports_evento"/>
                               <cfelse>
                                 <input type="hidden" name="acao" value="link_fonte_evento"/>
-                                <input type="hidden" name="fonte" value="#htmlEditFormat(qCrmFontesPendentes.fonte)#"/>
+                                <input type="hidden" name="fonte" value="#encodeForHTMLAttribute(qCrmFontesPendentes.fonte)#"/>
 	                              </cfif>
-	                              <input type="hidden" name="cod_evento" value="#htmlEditFormat(qCrmFontesPendentes.cod_evento_externo)#"/>
+	                              <input type="hidden" name="cod_evento" value="#encodeForHTMLAttribute(qCrmFontesPendentes.cod_evento_externo)#"/>
 	                              <cfif qCrmEventosConta.recordcount>
 	                                <select class="form-select form-select-sm" name="id_evento" required>
 	                                  <option value="">Evento da conta</option>
 	                                  <cfloop query="qCrmEventosConta">
 	                                    <option value="#qCrmEventosConta.id_evento#">
-	                                      #qCrmEventosConta.ano_evento# · #htmlEditFormat(crmShortText(qCrmEventosConta.nome_evento, 42))#
+	                                      #qCrmEventosConta.ano_evento# · #encodeForHTML(crmShortText(qCrmEventosConta.nome_evento, 42))#
 	                                    </option>
 	                                  </cfloop>
 	                                </select>
@@ -340,7 +340,7 @@
                     <a class="btn btn-outline-secondary" href="./">Enviar outro arquivo</a>
                     <form method="post" action="./" class="mb-0">
                       <input type="hidden" name="acao" value="confirmar_importacao_arquivo"/>
-                      <input type="hidden" name="id_crm_importacao" value="<cfoutput>#htmlEditFormat(VARIABLES.crmPreviewImportacao)#</cfoutput>"/>
+                      <input type="hidden" name="id_crm_importacao" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.crmPreviewImportacao)#</cfoutput>"/>
                       <button class="btn btn-success" type="submit">Confirmar e processar</button>
                     </form>
                   </div>
@@ -348,7 +348,7 @@
 
                 <form method="post" action="./" class="mb-4">
                   <input type="hidden" name="acao" value="remap_importacao_arquivo"/>
-                  <input type="hidden" name="id_crm_importacao" value="<cfoutput>#htmlEditFormat(VARIABLES.crmPreviewImportacao)#</cfoutput>"/>
+                  <input type="hidden" name="id_crm_importacao" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.crmPreviewImportacao)#</cfoutput>"/>
                   <div class="crm-map-editor">
                     <cfloop list="#VARIABLES.crmUploadManualFields#" index="crmMapField">
                       <cfset VARIABLES.crmMapSelected = ""/>
@@ -363,13 +363,13 @@
                       </cfif>
                       <div>
                         <cfoutput>
-                          <label class="form-label" for="crmPreviewMap_#crmMapField#">#htmlEditFormat(VARIABLES.crmMapFieldLabel)#</label>
+                          <label class="form-label" for="crmPreviewMap_#crmMapField#">#encodeForHTML(VARIABLES.crmMapFieldLabel)#</label>
                           <select id="crmPreviewMap_#crmMapField#" class="form-select form-select-sm" name="map_#crmMapField#">
                             <option value="">Não importar</option>
                         </cfoutput>
                           <cfoutput query="qCrmUploadColunas">
-                            <option value="#htmlEditFormat(qCrmUploadColunas.cabecalho)#" <cfif VARIABLES.crmMapSelected EQ qCrmUploadColunas.cabecalho>selected</cfif>>
-                              #qCrmUploadColunas.ordem# · #htmlEditFormat(crmShortText(qCrmUploadColunas.cabecalho, 34))#
+                            <option value="#encodeForHTMLAttribute(qCrmUploadColunas.cabecalho)#" <cfif VARIABLES.crmMapSelected EQ qCrmUploadColunas.cabecalho>selected</cfif>>
+                              #qCrmUploadColunas.ordem# · #encodeForHTML(crmShortText(qCrmUploadColunas.cabecalho, 34))#
                             </option>
                           </cfoutput>
                         </select>
@@ -403,23 +403,23 @@
                       <cfoutput query="qCrmUploadPreview">
                         <tr>
                           <td>#qCrmUploadPreview.numero_linha#</td>
-                          <td>#htmlEditFormat(qCrmUploadPreview.nome_atleta)#</td>
-                          <td>#htmlEditFormat(qCrmUploadPreview.email)#</td>
-                          <td>#htmlEditFormat(qCrmUploadPreview.documento)#</td>
-                          <td>#htmlEditFormat(qCrmUploadPreview.sexo)#</td>
-                          <td>#htmlEditFormat(trim(qCrmUploadPreview.cidade & " / " & qCrmUploadPreview.estado))#</td>
-                          <td>#htmlEditFormat(qCrmUploadPreview.numero_inscricao)#</td>
-                          <td>#htmlEditFormat(qCrmUploadPreview.numero_pedido)#</td>
+                          <td>#encodeForHTML(qCrmUploadPreview.nome_atleta)#</td>
+                          <td>#encodeForHTML(qCrmUploadPreview.email)#</td>
+                          <td>#encodeForHTML(qCrmUploadPreview.documento)#</td>
+                          <td>#encodeForHTML(qCrmUploadPreview.sexo)#</td>
+                          <td>#encodeForHTML(trim(qCrmUploadPreview.cidade & " / " & qCrmUploadPreview.estado))#</td>
+                          <td>#encodeForHTML(qCrmUploadPreview.numero_inscricao)#</td>
+                          <td>#encodeForHTML(qCrmUploadPreview.numero_pedido)#</td>
                           <td><cfif len(qCrmUploadPreview.percurso)>#numberFormat(qCrmUploadPreview.percurso, "0.##")#K<cfelse>-</cfif></td>
-                          <td>#htmlEditFormat(qCrmUploadPreview.status_inscricao)#</td>
+                          <td>#encodeForHTML(qCrmUploadPreview.status_inscricao)#</td>
                           <td>
                             <span class="badge <cfif qCrmUploadPreview.status_validacao EQ 'valido'>badge-success<cfelse>badge-warning</cfif>">
-                              #htmlEditFormat(qCrmUploadPreview.status_validacao)#
+                              #encodeForHTML(qCrmUploadPreview.status_validacao)#
                             </span>
                           </td>
                           <td>
                             <cfif len(trim(qCrmUploadPreview.avisos))>
-                              <span class="badge badge-warning">#htmlEditFormat(qCrmUploadPreview.avisos)#</span>
+                              <span class="badge badge-warning">#encodeForHTML(qCrmUploadPreview.avisos)#</span>
                             <cfelse>
                               <span class="text-muted">-</span>
                             </cfif>
@@ -448,14 +448,14 @@
                       <option value="">Selecione</option>
                       <cfoutput query="qCrmEventosConta">
                         <option value="#qCrmEventosConta.id_evento#" <cfif VARIABLES.crmIdEventoFiltro EQ qCrmEventosConta.id_evento>selected</cfif>>
-                          #qCrmEventosConta.ano_evento# · #htmlEditFormat(crmShortText(qCrmEventosConta.nome_evento, 48))#
-                          <cfif len(trim(qCrmEventosConta.cidade))> · #htmlEditFormat(qCrmEventosConta.cidade)#<cfif len(trim(qCrmEventosConta.estado))>/#htmlEditFormat(qCrmEventosConta.estado)#</cfif></cfif>
-                          <cfif VARIABLES.crmEffectiveIsAdmin AND len(trim(qCrmEventosConta.contas))> · #htmlEditFormat(crmShortText(qCrmEventosConta.contas, 32))#</cfif>
+                          #qCrmEventosConta.ano_evento# · #encodeForHTML(crmShortText(qCrmEventosConta.nome_evento, 48))#
+                          <cfif len(trim(qCrmEventosConta.cidade))> · #encodeForHTML(qCrmEventosConta.cidade)#<cfif len(trim(qCrmEventosConta.estado))>/#encodeForHTML(qCrmEventosConta.estado)#</cfif></cfif>
+                          <cfif VARIABLES.crmEffectiveIsAdmin AND len(trim(qCrmEventosConta.contas))> · #encodeForHTML(crmShortText(qCrmEventosConta.contas, 32))#</cfif>
                         </option>
                       </cfoutput>
                     </select>
                   <cfelseif VARIABLES.crmEffectiveIsAdmin>
-                    <input id="crmUploadIdEvento" class="form-control" type="text" name="id_evento" value="<cfoutput>#htmlEditFormat(VARIABLES.crmIdEventoFiltro)#</cfoutput>" placeholder="Ex.: 40782" required/>
+                    <input id="crmUploadIdEvento" class="form-control" type="text" name="id_evento" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.crmIdEventoFiltro)#</cfoutput>" placeholder="Ex.: 40782" required/>
                   <cfelse>
                     <select id="crmUploadIdEvento" class="form-select" name="id_evento" disabled>
                       <option value="">Nenhum evento vinculado à conta</option>
@@ -583,7 +583,7 @@
               <div class="row g-3 align-items-end">
                 <div class="col-12 col-md-4 col-lg-3">
                   <label class="form-label" for="crmLinkTicketSportsCodEvento">Código TicketSports</label>
-                  <input id="crmLinkTicketSportsCodEvento" class="form-control" type="text" name="cod_evento" value="<cfoutput>#htmlEditFormat(VARIABLES.crmCodEvento)#</cfoutput>" placeholder="Ex.: 72611" required/>
+                  <input id="crmLinkTicketSportsCodEvento" class="form-control" type="text" name="cod_evento" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.crmCodEvento)#</cfoutput>" placeholder="Ex.: 72611" required/>
                 </div>
                 <div class="col-12 col-md-4 col-lg-3">
                   <label class="form-label" for="crmLinkTicketSportsIdEvento">Evento RR</label>
@@ -592,12 +592,12 @@
                       <option value="">Selecione</option>
                       <cfoutput query="qCrmEventosConta">
                         <option value="#qCrmEventosConta.id_evento#" <cfif VARIABLES.crmIdEventoFiltro EQ qCrmEventosConta.id_evento>selected</cfif>>
-                          #qCrmEventosConta.ano_evento# · #htmlEditFormat(crmShortText(qCrmEventosConta.nome_evento, 52))#
+                          #qCrmEventosConta.ano_evento# · #encodeForHTML(crmShortText(qCrmEventosConta.nome_evento, 52))#
                         </option>
                       </cfoutput>
                     </select>
                   <cfelseif VARIABLES.crmEffectiveIsAdmin>
-                    <input id="crmLinkTicketSportsIdEvento" class="form-control" type="text" name="id_evento" value="<cfoutput>#htmlEditFormat(VARIABLES.crmIdEventoFiltro)#</cfoutput>" placeholder="Ex.: 40782" required/>
+                    <input id="crmLinkTicketSportsIdEvento" class="form-control" type="text" name="id_evento" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.crmIdEventoFiltro)#</cfoutput>" placeholder="Ex.: 40782" required/>
                   <cfelse>
                     <select id="crmLinkTicketSportsIdEvento" class="form-select" name="id_evento" disabled>
                       <option value="">Nenhum evento vinculado à conta</option>
@@ -640,12 +640,12 @@
                       <option value="">Selecione</option>
                       <cfoutput query="qCrmEventosConta">
                         <option value="#qCrmEventosConta.id_evento#" <cfif VARIABLES.crmIdEventoFiltro EQ qCrmEventosConta.id_evento>selected</cfif>>
-                          #qCrmEventosConta.ano_evento# · #htmlEditFormat(crmShortText(qCrmEventosConta.nome_evento, 42))#
+                          #qCrmEventosConta.ano_evento# · #encodeForHTML(crmShortText(qCrmEventosConta.nome_evento, 42))#
                         </option>
                       </cfoutput>
                     </select>
                   <cfelseif VARIABLES.crmEffectiveIsAdmin>
-                    <input id="crmLinkEventoIdEvento" class="form-control" type="text" name="id_evento" value="<cfoutput>#htmlEditFormat(VARIABLES.crmIdEventoFiltro)#</cfoutput>" placeholder="Ex.: 40782" required/>
+                    <input id="crmLinkEventoIdEvento" class="form-control" type="text" name="id_evento" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.crmIdEventoFiltro)#</cfoutput>" placeholder="Ex.: 40782" required/>
                   <cfelse>
                     <select id="crmLinkEventoIdEvento" class="form-select" name="id_evento" disabled>
                       <option value="">Nenhum evento vinculado à conta</option>
@@ -680,14 +680,14 @@
                       <select id="crmLinkConta" class="form-select" name="id_conta" required>
                         <cfoutput query="qCrmContas">
                           <option value="#qCrmContas.id_conta#" <cfif VARIABLES.crmIdConta EQ qCrmContas.id_conta>selected</cfif>>
-                            #htmlEditFormat(qCrmContas.nome_conta)#
+                            #encodeForHTML(qCrmContas.nome_conta)#
                           </option>
                         </cfoutput>
                       </select>
                     </div>
                     <div class="col-12 col-md-5 col-lg-3">
                       <label class="form-label" for="crmLinkCodEvento">Código TicketSports</label>
-                      <input id="crmLinkCodEvento" class="form-control" type="text" name="cod_evento" value="<cfoutput>#htmlEditFormat(VARIABLES.crmCodEvento)#</cfoutput>" placeholder="Ex.: 72611" required/>
+                      <input id="crmLinkCodEvento" class="form-control" type="text" name="cod_evento" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.crmCodEvento)#</cfoutput>" placeholder="Ex.: 72611" required/>
                     </div>
                     <div class="col-12 col-md-7 col-lg-3 text-lg-end">
                       <button class="btn btn-outline-warning w-100" type="submit">Vincular à conta</button>
@@ -701,7 +701,7 @@
           <cfif VARIABLES.crmTablesReady AND VARIABLES.crmCanOperate>
             <form method="post" action="./" class="mb-4 text-end">
               <input type="hidden" name="acao" value="match_usuarios"/>
-              <input type="hidden" name="id_conta" value="<cfoutput>#htmlEditFormat(VARIABLES.crmIdConta)#</cfoutput>"/>
+              <input type="hidden" name="id_conta" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.crmIdConta)#</cfoutput>"/>
               <button class="btn btn-sm btn-outline-primary" type="submit">Processar vínculo RR</button>
             </form>
           </cfif>
@@ -725,9 +725,9 @@
                       <cfoutput query="qCrmEventos">
                         <tr>
                           <td>#qCrmEventos.id_evento#</td>
-                          <td>#htmlEditFormat(crmShortText(qCrmEventos.nome_evento, 54))#</td>
-                          <td>#htmlEditFormat(qCrmEventos.fontes)#</td>
-                          <td><cfif len(trim(qCrmEventos.codigos))>#htmlEditFormat(qCrmEventos.codigos)#<cfelse><span class="text-muted">-</span></cfif></td>
+                          <td>#encodeForHTML(crmShortText(qCrmEventos.nome_evento, 54))#</td>
+                          <td>#encodeForHTML(qCrmEventos.fontes)#</td>
+                          <td><cfif len(trim(qCrmEventos.codigos))>#encodeForHTML(qCrmEventos.codigos)#<cfelse><span class="text-muted">-</span></cfif></td>
                           <td class="text-end">#LSNumberFormat(qCrmEventos.total, "9,999,999")#</td>
                         </tr>
                       </cfoutput>
@@ -755,12 +755,12 @@
                       <cfoutput query="qCrmImportacoes">
                         <tr>
                           <td>
-                            #htmlEditFormat(crmShortText(qCrmImportacoes.nome_importacao, 32))#<br/>
+                            #encodeForHTML(crmShortText(qCrmImportacoes.nome_importacao, 32))#<br/>
                             <small class="text-muted">#crmDateTimeLabel(qCrmImportacoes.data_criacao)#</small>
                           </td>
                           <td>
-                            <span class="badge badge-secondary">#htmlEditFormat(qCrmImportacoes.origem_tipo)#</span>
-                            <span class="badge badge-primary">#htmlEditFormat(qCrmImportacoes.fonte)#</span>
+                            <span class="badge badge-secondary">#encodeForHTML(qCrmImportacoes.origem_tipo)#</span>
+                            <span class="badge badge-primary">#encodeForHTML(qCrmImportacoes.fonte)#</span>
                           </td>
                           <td class="text-end">#LSNumberFormat(qCrmImportacoes.total_linhas, "9,999,999")#</td>
                         </tr>
@@ -778,7 +778,7 @@
             <div class="row g-3 align-items-end">
               <div class="col-12 col-xl-3">
                 <label class="form-label" for="crmBusca">Busca</label>
-                <input id="crmBusca" class="form-control" type="text" name="busca" placeholder="Nome, email, documento, pedido" value="<cfoutput>#htmlEditFormat(VARIABLES.crmBusca)#</cfoutput>"/>
+                <input id="crmBusca" class="form-control" type="text" name="busca" placeholder="Nome, email, documento, pedido" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.crmBusca)#</cfoutput>"/>
               </div>
 
               <div class="col-12 col-md-6 col-xl-2">
@@ -787,7 +787,7 @@
                   <option value="">Todas</option>
                   <cfoutput query="qCrmContas">
                     <option value="#qCrmContas.id_conta#" <cfif VARIABLES.crmIdConta EQ qCrmContas.id_conta>selected</cfif>>
-                      #htmlEditFormat(qCrmContas.nome_conta)#
+                      #encodeForHTML(qCrmContas.nome_conta)#
                     </option>
                   </cfoutput>
                 </select>
@@ -799,7 +799,7 @@
                   <option value="">Todos</option>
                   <cfoutput query="qCrmEventos">
                     <option value="#qCrmEventos.id_evento#" <cfif VARIABLES.crmIdEventoFiltro EQ qCrmEventos.id_evento>selected</cfif>>
-                      #htmlEditFormat(qCrmEventos.ano_evento)# · ## #qCrmEventos.id_evento# · #htmlEditFormat(crmShortText(qCrmEventos.nome_evento, 42))#
+                      #encodeForHTML(qCrmEventos.ano_evento)# · ## #qCrmEventos.id_evento# · #encodeForHTML(crmShortText(qCrmEventos.nome_evento, 42))#
                     </option>
                   </cfoutput>
                 </select>
@@ -830,8 +830,8 @@
                 <select id="crmStatus" class="form-select" name="status">
                   <option value="">Todos</option>
                   <cfoutput query="qCrmStatus">
-                    <option value="#htmlEditFormat(qCrmStatus.status_pedido)#" <cfif VARIABLES.crmStatus EQ qCrmStatus.status_pedido>selected</cfif>>
-                      #htmlEditFormat(qCrmStatus.status_pedido)#
+                    <option value="#encodeForHTMLAttribute(qCrmStatus.status_pedido)#" <cfif VARIABLES.crmStatus EQ qCrmStatus.status_pedido>selected</cfif>>
+                      #encodeForHTML(qCrmStatus.status_pedido)#
                     </option>
                   </cfoutput>
                 </select>
@@ -842,7 +842,7 @@
                 <select id="crmUf" class="form-select" name="uf">
                   <option value="">Todas</option>
                   <cfoutput query="qCrmEstados">
-                    <option value="#htmlEditFormat(qCrmEstados.estado)#" <cfif VARIABLES.crmUf EQ qCrmEstados.estado>selected</cfif>>#htmlEditFormat(qCrmEstados.estado)#</option>
+                    <option value="#encodeForHTMLAttribute(qCrmEstados.estado)#" <cfif VARIABLES.crmUf EQ qCrmEstados.estado>selected</cfif>>#encodeForHTML(qCrmEstados.estado)#</option>
                   </cfoutput>
                 </select>
               </div>
@@ -901,38 +901,38 @@
                   <cfoutput query="qCrmParticipacoes">
                     <tr>
                       <td>
-                        <strong>#htmlEditFormat(crmShortText(qCrmParticipacoes.nome, 34))#</strong><br/>
-                        <small class="text-muted">#htmlEditFormat(crmShortText(qCrmParticipacoes.email, 38))#</small>
+                        <strong>#encodeForHTML(crmShortText(qCrmParticipacoes.nome, 34))#</strong><br/>
+                        <small class="text-muted">#encodeForHTML(crmShortText(qCrmParticipacoes.email, 38))#</small>
                       </td>
                       <td>
                         <span>
-                          #htmlEditFormat(qCrmParticipacoes.ano_evento)# ·
+                          #encodeForHTML(qCrmParticipacoes.ano_evento)# ·
                           <cfif len(trim(qCrmParticipacoes.id_evento))>
                             RR ## #qCrmParticipacoes.id_evento#
                           <cfelse>
                             <span class="text-warning">sem evento RR</span>
                           </cfif>
-                          <cfif len(trim(qCrmParticipacoes.cod_evento_externo))> · #htmlEditFormat(qCrmParticipacoes.cod_evento_externo)#</cfif>
+                          <cfif len(trim(qCrmParticipacoes.cod_evento_externo))> · #encodeForHTML(qCrmParticipacoes.cod_evento_externo)#</cfif>
                         </span><br/>
-                        <small class="text-muted">#htmlEditFormat(crmShortText(qCrmParticipacoes.modalidade, 48))#</small>
+                        <small class="text-muted">#encodeForHTML(crmShortText(qCrmParticipacoes.modalidade, 48))#</small>
                       </td>
                       <td><cfif len(trim(qCrmParticipacoes.percurso))>#qCrmParticipacoes.percurso#K</cfif></td>
                       <td>
                         <cfif qCrmParticipacoes.status_pedido EQ "Pago">
                           <span class="badge badge-success">Pago</span>
                         <cfelseif len(trim(qCrmParticipacoes.status_pedido))>
-                          <span class="badge badge-warning">#htmlEditFormat(qCrmParticipacoes.status_pedido)#</span>
+                          <span class="badge badge-warning">#encodeForHTML(qCrmParticipacoes.status_pedido)#</span>
                         <cfelse>
                           <span class="badge badge-secondary">Sem status</span>
                         </cfif>
                       </td>
                       <td>
-                        <span>#htmlEditFormat(qCrmParticipacoes.numero_pedido)#</span><br/>
+                        <span>#encodeForHTML(qCrmParticipacoes.numero_pedido)#</span><br/>
                         <small class="text-muted">#crmDateTimeLabel(qCrmParticipacoes.data_pedido)#</small>
                       </td>
                       <td>
-                        #htmlEditFormat(crmShortText(qCrmParticipacoes.cidade, 24))#
-                        <cfif len(trim(qCrmParticipacoes.estado))> / #htmlEditFormat(qCrmParticipacoes.estado)#</cfif>
+                        #encodeForHTML(crmShortText(qCrmParticipacoes.cidade, 24))#
+                        <cfif len(trim(qCrmParticipacoes.estado))> / #encodeForHTML(qCrmParticipacoes.estado)#</cfif>
                       </td>
                       <td class="text-end">
                         <cfif len(trim(qCrmParticipacoes.lead_score))>#LSNumberFormat(qCrmParticipacoes.lead_score, "999.9")#</cfif>

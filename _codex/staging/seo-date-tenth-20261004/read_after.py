@@ -1,0 +1,9 @@
+from pathlib import Path
+import json,shlex,subprocess
+root=Path('/Users/Shared/Projects/RunnerHub/Business');p=Path(__file__).resolve().parent
+helpers=(root/'_codex/scripts/deploy_estudo.py').read_text().split('def remote(')[0].replace('ROOT=Path(__file__).resolve().parents[2]',"ROOT=Path('/var/www/business.roadrunners.run')")
+sql="SELECT jsonb_build_object('checked_at',clock_timestamp(),'database_date',CURRENT_DATE,'events',(SELECT jsonb_agg(to_jsonb(x) ORDER BY x.data_inicial,x.id_evento) FROM (SELECT e.id_evento,e.nome_evento,e.tag,e.data_inicial,e.data_final,e.url_hotsite,e.url_inscricao,e.url_regulamento,jsonb_agg(jsonb_build_object('id',p.id_evento_percurso,'distance',p.percurso_evento,'unit',p.unidade_de_medida,'date',p.data_percurso,'locked',p.percurso_bloqueado) ORDER BY p.id_evento_percurso) routes FROM public.tb_evento_corridas e JOIN public.tb_evento_corridas_percursos p USING(id_evento) WHERE e.ativo AND e.data_final>=CURRENT_DATE AND (p.data_percurso<e.data_inicial OR p.data_percurso>e.data_final) GROUP BY e.id_evento,e.nome_evento,e.tag,e.data_inicial,e.data_final,e.url_hotsite,e.url_inscricao,e.url_regulamento) x))::text payload"
+remote=helpers+"\np=json.load(sys.stdin)\nr=bridge(ROOT,\"transaction {\"+raw_query(\"SET TRANSACTION READ ONLY\")+raw_query(p[\"sql\"])+\"report=deserializeJSON(q.payload[1]);}\")\nprint(json.dumps(r))"
+cp=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=10','-o','StrictHostKeyChecking=yes','-i','/Users/leonardosobral/.ssh/webs','root@ssh.runnerhub.run','python3 -c '+shlex.quote(remote)],input=json.dumps({'sql':sql}),capture_output=True,text=True,timeout=100)
+if cp.returncode:raise RuntimeError(cp.stderr[-2000:])
+r=json.loads(cp.stdout);(p/'date-divergences-after.json').write_text(json.dumps(r,indent=2,ensure_ascii=False));print(json.dumps({'events':len(r['events']),'routes':sum(len(x['routes']) for x in r['events'])}))

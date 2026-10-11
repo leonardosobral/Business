@@ -1,0 +1,8 @@
+{
+  "published": [
+    ".htaccess",
+    "atleta/.htaccess"
+  ],
+  "backup": "/var/backups/seo-athlete-route-20261008/baseline",
+  "apache_syntax": "passed"
+}

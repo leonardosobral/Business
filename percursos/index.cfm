@@ -6,7 +6,7 @@
 <cfset VARIABLES.template = "/percursos/"/>
 <cfinclude template="../includes/backend/backend_login.cfm"/>
 <cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount>
-    <cfcontent reset="true"/><cfheader statuscode="403" statustext="Forbidden"/><cfoutput>Acesso restrito a usuarios autenticados no Business.</cfoutput><cfabort/>
+    <cfcontent reset="true"/><cfheader statuscode="403"/><cfoutput>Acesso restrito a usuarios autenticados no Business.</cfoutput><cfabort/>
 </cfif>
 <cfinclude template="../includes/estrutura/head.cfm"/>
 <body data-mdb-theme="dark" class="bg-dark-subtle">

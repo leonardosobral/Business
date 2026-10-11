@@ -1,0 +1,276 @@
+{
+  "CHECKS": [
+    {
+      "PASSED": true,
+      "NAME": "Three explicit review groups"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Exact date version"
+    },
+    {
+      "PASSED": 1,
+      "NAME": "Private schema ready"
+    },
+    {
+      "PASSED": true,
+      "NAME": "No read for nonadmin"
+    },
+    {
+      "PASSED": true,
+      "NAME": "No read for delegated admin"
+    },
+    {
+      "PASSED": true,
+      "NAME": "No write for nonadmin"
+    },
+    {
+      "PASSED": true,
+      "NAME": "No write for delegated admin"
+    },
+    {
+      "PASSED": true,
+      "NAME": "No GET write"
+    },
+    {
+      "PASSED": true,
+      "NAME": "No CSRF write"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid ID 0"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid ID -1"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid ID 1.5"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid ID 1e3"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid ID 37570 OR 1=1"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid ID 2147483648"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid ID "
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid source javascript:alert(1)"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid source data:text/html,abc"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid source //example.com"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid source https://user:password@example.com"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid source https://example.com\nx"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid source https://example.com/a b"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid source https:\\example.com"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid source https://"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Missing grupo"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Missing source_url"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Missing version"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Missing request_id"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Missing confirmed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid field grupoinscricoes"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid field grupoDATAS"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid field confirmed0"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Invalid field request_idinvalid"
+    },
+    {
+      "PASSED": true,
+      "NAME": "One review inserted"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Source saved exactly"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Server review date"
+    },
+    {
+      "PASSED": 1,
+      "NAME": "Approved exact snapshot"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Duplicate post is idempotent"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Changed current date is stale"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Change log includes changed field"
+    },
+    {
+      "PASSED": 1,
+      "NAME": "Rolled back source matches again"
+    },
+    {
+      "PASSED": true,
+      "NAME": "All groups save separately"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Revoke nonadmin denied"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Revoke delegated denied"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Revoke GET denied"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Revoke CSRF denied"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Other event cannot revoke this review"
+    },
+    {
+      "PASSED": 1,
+      "NAME": "Revoke marks original row"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Revoke preserves snapshots and source"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Null displayed explicitly"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Output left for view escaping"
+    },
+    {
+      "PASSED": 1,
+      "NAME": "Private real table and sequence"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Three explicit review groups"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Exact date version"
+    },
+    {
+      "PASSED": 1,
+      "NAME": "Private schema ready"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Request cannot change event"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Three explicit review groups"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Exact date version"
+    },
+    {
+      "PASSED": 1,
+      "NAME": "Private schema ready"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Request cannot replace source"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Three explicit review groups"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Exact date version"
+    },
+    {
+      "PASSED": 1,
+      "NAME": "Private schema ready"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Revoked request cannot be reused"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Three explicit review groups"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Exact date version"
+    },
+    {
+      "PASSED": 1,
+      "NAME": "Private schema ready"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Stale form cannot approve new date"
+    }
+  ]
+}

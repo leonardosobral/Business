@@ -1,0 +1,1 @@
+{"mode": "before", "passed": true, "checks": [{"tag": null, "status": 500}, {"tag": "", "status": 500}, {"tag": "   ", "status": 500}, {"tag": "missing-timer", "status": 500}, {"tag": "valid-timer", "status": 200}]}

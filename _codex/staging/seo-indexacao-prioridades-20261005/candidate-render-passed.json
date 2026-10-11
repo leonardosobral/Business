@@ -1,0 +1,9 @@
+{
+  "hashes": {
+    "portal/includes/seo_queue_data.cfm": "87352f9d0e1d96974f224cc94f7d6b42515bb153395d228ba110c1d41ff9cf4f",
+    "portal/conteudo/seo_semrush.cfm": "1591d5b5f8e60c3105471afbbffa54d5ad215efc119f3732abe81fe085695fa2",
+    "portal/includes/seo_semrush_data.cfm": "3294181a825f921c884b7149b5573652588529e0e5e74c4a2442f0bc8aea4e5a"
+  },
+  "scenarios": 19,
+  "mode": "candidate"
+}

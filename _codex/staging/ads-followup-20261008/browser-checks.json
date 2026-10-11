@@ -1,0 +1,20 @@
+{
+  "public_home_loaded": true,
+  "tracker_version": "6db9c5e7be65",
+  "ga4_id": "G-7MYGVTEDZV",
+  "environment": "prod",
+  "isInternal": false,
+  "google_ads_action_verified": "RR | Saída para inscrição LIVE!",
+  "source": "GA4",
+  "secondary": true,
+  "one_conversion": true,
+  "account_goal": false,
+  "recent_conversions": false,
+  "responsive_preview": {
+    "source": "published CFML render, local stylesheet wrapper",
+    "desktop": 1366,
+    "mobile": 390,
+    "mobile_page_width": 390,
+    "table_scroll_width": 575
+  }
+}

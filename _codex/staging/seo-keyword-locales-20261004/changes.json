@@ -1,0 +1,20 @@
+{
+  "events": {
+    "39399": {
+      "descricao": "A edição de 2026 da Maratona de Aracaju reúne provas em 31 de outubro e 1º de novembro, em Aracaju, Sergipe. A programação de 31 de outubro inclui 10 km e 21 km. Em 1º de novembro, estão previstas as provas de 5 km e maratona de 42,195 km.\n\nO local informado pela organização é a Praça de Eventos da Orla, na Avenida Santos Dumont. Consulte a página oficial e o regulamento para horários, retirada de kits e condições de participação.",
+      "descricao_en": "The 2026 edition of the Aracaju Marathon has races on October 31 and November 1 in Aracaju, Sergipe, Brazil. The October 31 program includes the 10 km and 21 km races. The 5 km race and the 42.195 km marathon are scheduled for November 1.\n\nThe organizer lists Praça de Eventos da Orla on Avenida Santos Dumont as the venue. Check the official event page and regulations for start times, race kit collection and participation requirements.",
+      "descricao_es": "La edición de 2026 de la Maratón de Aracaju tiene pruebas el 31 de octubre y el 1 de noviembre en Aracaju, Sergipe, Brasil. El programa del 31 de octubre incluye las carreras de 10 km y 21 km. Para el 1 de noviembre están previstas la carrera de 5 km y la maratón de 42,195 km.\n\nLa organización indica la Praça de Eventos da Orla, en la Avenida Santos Dumont, como lugar del evento. Consulta la página oficial y el reglamento para conocer los horarios, la recogida de kits y las condiciones de participación.",
+      "descricao_traducoes_meta": {
+        "es": {
+          "source_hash": "f23fdbb3e10b93195abf003abfee69c2",
+          "description_hash": "73a36e43ddfd836ce8ac6237134e3353"
+        },
+        "en": {
+          "source_hash": "f23fdbb3e10b93195abf003abfee69c2",
+          "description_hash": "fd36a7e064b71e82fbbc8614c66c2695"
+        }
+      }
+    }
+  },
+  "routes": {}
+}

@@ -239,7 +239,7 @@
             statusText = "Internal Server Error";
         }
 
-        cfheader(statuscode=arguments.statusCode, statustext=statusText);
+        cfheader(statuscode=arguments.statusCode);
         cfcontent(type="application/json; charset=utf-8", reset="true");
         writeOutput(serializeJSON(arguments.payload));
         abort;
@@ -340,7 +340,7 @@
             }
         ) />
     </cfif>
-    <cfheader statuscode="500" statustext="Internal Server Error" />
+    <cfheader statuscode="500" />
     <cfoutput><p>RUNNERHUB_YOUTUBE_API_KEY nao configurada.</p></cfoutput>
     <cfabort />
 </cfif>
@@ -1106,7 +1106,7 @@
             }
         ) />
     </cfif>
-    <cfheader statuscode="404" statustext="Not Found" />
+    <cfheader statuscode="404" />
     <cfoutput><p>Canal invalido ou desabilitado.</p></cfoutput>
     <cfabort />
 </cfif>

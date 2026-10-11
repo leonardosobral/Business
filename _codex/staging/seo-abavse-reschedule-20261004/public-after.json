@@ -1,0 +1,287 @@
+[
+  {
+    "url": "https://roadrunners.run/evento/2026-4-corrida-do-turismo-abavse-2026/",
+    "status": 301,
+    "location": "/evento/2027-4-corrida-do-turismo-abavse-2026/",
+    "seconds": 6.02679
+  },
+  {
+    "url": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/",
+    "status": 200,
+    "seconds": 6.49987,
+    "canonical": [
+      "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/"
+    ],
+    "alternates": [
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2027-4-corrida-do-turismo-abavse-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2027-4-corrida-do-turismo-abavse-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/"
+      }
+    ],
+    "robots": [],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/",
+        "name": "4ª CORRIDA DO TURISMO - ABAVSE 2026",
+        "description": "4ª CORRIDA DO TURISMO - ABAVSE 2026 acontece em 02 maio 2027, em Coroa do Meio : Praça dos Bancos - em frente ao Farol, s/n, Aracaju, SE, Brasil - Aracaju - SE.",
+        "url": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/",
+        "startDate": "2027-05-02",
+        "endDate": "2027-05-02",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventRescheduled",
+        "previousStartDate": "2026-08-09",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/S4RC30S0D35JQM8AB9XKHJL4EXEJ5IF5KLYY5AGZVYLC0N5A4A.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Coroa do Meio : Praça dos Bancos - em frente ao Farol, s/n, Aracaju, SE, Brasil",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Aracaju",
+            "addressRegion": "SE",
+            "addressCountry": "BR",
+            "streetAddress": "Coroa do Meio : Praça dos Bancos - em frente ao Farol, s/n, Aracaju, SE, Brasil"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87181&origem=novo-site&lang=en-US"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/se/",
+            "@type": "ListItem",
+            "name": "Corridas em SE"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/",
+            "@type": "ListItem",
+            "name": "4ª CORRIDA DO TURISMO - ABAVSE 2026"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "has_reschedule_notice": true
+  },
+  {
+    "url": "https://roadrunners.run/en/event/2026-4-corrida-do-turismo-abavse-2026/",
+    "status": 301,
+    "location": "/en/event/2027-4-corrida-do-turismo-abavse-2026/",
+    "seconds": 3.393615
+  },
+  {
+    "url": "https://roadrunners.run/en/event/2027-4-corrida-do-turismo-abavse-2026/",
+    "status": 200,
+    "seconds": 3.018095,
+    "canonical": [
+      "https://roadrunners.run/en/event/2027-4-corrida-do-turismo-abavse-2026/"
+    ],
+    "alternates": [
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2027-4-corrida-do-turismo-abavse-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2027-4-corrida-do-turismo-abavse-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/"
+      }
+    ],
+    "robots": [],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/en/event/2027-4-corrida-do-turismo-abavse-2026/",
+        "name": "4ª CORRIDA DO TURISMO - ABAVSE 2026",
+        "description": "4ª CORRIDA DO TURISMO - ABAVSE 2026 takes place on 02 may 2027, in Coroa do Meio : Praça dos Bancos - em frente ao Farol, s/n, Aracaju, SE, Brasil - Aracaju - SE.",
+        "url": "https://roadrunners.run/en/event/2027-4-corrida-do-turismo-abavse-2026/",
+        "startDate": "2027-05-02",
+        "endDate": "2027-05-02",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventRescheduled",
+        "previousStartDate": "2026-08-09",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/S4RC30S0D35JQM8AB9XKHJL4EXEJ5IF5KLYY5AGZVYLC0N5A4A.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Coroa do Meio : Praça dos Bancos - em frente ao Farol, s/n, Aracaju, SE, Brasil",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Aracaju",
+            "addressRegion": "SE",
+            "addressCountry": "BR",
+            "streetAddress": "Coroa do Meio : Praça dos Bancos - em frente ao Farol, s/n, Aracaju, SE, Brasil"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87181&origem=novo-site&lang=en-US"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/en/",
+            "@type": "ListItem",
+            "name": "Home"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/se/",
+            "@type": "ListItem",
+            "name": "Races in SE"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/en/event/2027-4-corrida-do-turismo-abavse-2026/",
+            "@type": "ListItem",
+            "name": "4ª CORRIDA DO TURISMO - ABAVSE 2026"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "has_reschedule_notice": true
+  },
+  {
+    "url": "https://roadrunners.run/es/evento/2026-4-corrida-do-turismo-abavse-2026/",
+    "status": 301,
+    "location": "/es/evento/2027-4-corrida-do-turismo-abavse-2026/",
+    "seconds": 0.568762
+  },
+  {
+    "url": "https://roadrunners.run/es/evento/2027-4-corrida-do-turismo-abavse-2026/",
+    "status": 200,
+    "seconds": 0.639633,
+    "canonical": [
+      "https://roadrunners.run/es/evento/2027-4-corrida-do-turismo-abavse-2026/"
+    ],
+    "alternates": [
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2027-4-corrida-do-turismo-abavse-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2027-4-corrida-do-turismo-abavse-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2027-4-corrida-do-turismo-abavse-2026/"
+      }
+    ],
+    "robots": [],
+    "schemas": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/es/evento/2027-4-corrida-do-turismo-abavse-2026/",
+        "name": "4ª CORRIDA DO TURISMO - ABAVSE 2026",
+        "description": "4ª CORRIDA DO TURISMO - ABAVSE 2026 se realiza el 02 mayo 2027, en Coroa do Meio : Praça dos Bancos - em frente ao Farol, s/n, Aracaju, SE, Brasil - Aracaju - SE.",
+        "url": "https://roadrunners.run/es/evento/2027-4-corrida-do-turismo-abavse-2026/",
+        "startDate": "2027-05-02",
+        "endDate": "2027-05-02",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventRescheduled",
+        "previousStartDate": "2026-08-09",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/S4RC30S0D35JQM8AB9XKHJL4EXEJ5IF5KLYY5AGZVYLC0N5A4A.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Coroa do Meio : Praça dos Bancos - em frente ao Farol, s/n, Aracaju, SE, Brasil",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Aracaju",
+            "addressRegion": "SE",
+            "addressCountry": "BR",
+            "streetAddress": "Coroa do Meio : Praça dos Bancos - em frente ao Farol, s/n, Aracaju, SE, Brasil"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87181&origem=novo-site&lang=en-US"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/es/",
+            "@type": "ListItem",
+            "name": "Inicio"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/se/",
+            "@type": "ListItem",
+            "name": "Carreras en SE"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/es/evento/2027-4-corrida-do-turismo-abavse-2026/",
+            "@type": "ListItem",
+            "name": "4ª CORRIDA DO TURISMO - ABAVSE 2026"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "has_reschedule_notice": true
+  }
+]

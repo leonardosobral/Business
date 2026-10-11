@@ -36,7 +36,7 @@
 
     <cfoutput>#serializeJSON({success=true, results=VARIABLES.results})#</cfoutput>
     <cfcatch type="any">
-        <cfheader statuscode="500" statustext="Internal Server Error"/>
+        <cfheader statuscode="500"/>
         <cfoutput>#serializeJSON({success=false, message=cfcatch.message})#</cfoutput>
     </cfcatch>
 </cftry>

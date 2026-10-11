@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/administracao/pesquisas/assets/pesquisas.css?v=20260824-8"/>
 </head>
 <body class="research-public-body">
-    <main class="research-public-page" id="researchPublicApp" data-research-slug="<cfoutput>#htmlEditFormat(URL.slug)#</cfoutput>" data-research-api="/pesquisa/api.cfm">
+    <main class="research-public-page" id="researchPublicApp" data-research-slug="<cfoutput>#encodeForHTMLAttribute(URL.slug)#</cfoutput>" data-research-api="/pesquisa/api.cfm">
         <div class="research-public-shell">
             <div class="research-survey-frame">
                 <header class="research-survey-header">

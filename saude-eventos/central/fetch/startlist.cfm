@@ -57,11 +57,11 @@
     <tr><td colspan="4" class="saude-empty-row"><i class="fa-solid fa-person-running"></i><span>Nenhum atleta encontrado neste percurso.</span></td></tr>
 <cfelse>
     <cfoutput query="qFMStartList">
-        <tr class="saude-athlete-row" data-search="#htmlEditFormat(lCase(qFMStartList.num_peito & ' ' & qFMStartList.nome_exibicao & ' ' & qFMStartList.modalidade))#" onclick="carregarAtleta(#qFMStartList.num_pedido#)">
+        <tr class="saude-athlete-row" data-search="#encodeForHTMLAttribute(lCase(qFMStartList.num_peito & ' ' & qFMStartList.nome_exibicao & ' ' & qFMStartList.modalidade))#" onclick="carregarAtleta(#qFMStartList.num_pedido#)">
             <td><span class="saude-bib<cfif NOT len(trim(qFMStartList.num_peito & ''))> is-pending</cfif>">#(len(trim(qFMStartList.num_peito & '')) ? qFMStartList.num_peito : 'Sem BIB')#</span></td>
             <td>
-                <strong class="saude-athlete-name <cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#htmlEditFormat(qFMStartList.nome_exibicao)#</strong>
-                <span class="saude-athlete-route">#(len(trim(qFMStartList.modalidade & '')) ? htmlEditFormat(qFMStartList.modalidade) : 'Percurso não informado')#</span>
+                <strong class="saude-athlete-name <cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#encodeForHTML(qFMStartList.nome_exibicao)#</strong>
+                <span class="saude-athlete-route">#(len(trim(qFMStartList.modalidade & '')) ? encodeForHTML(qFMStartList.modalidade) : 'Percurso não informado')#</span>
             </td>
             <td class="saude-medical-flag"><cfif len(trim(qFMStartList.ficha_medica & ''))><i class="fa-regular fa-address-card" title="Ficha médica disponível"></i></cfif></td>
         </tr>

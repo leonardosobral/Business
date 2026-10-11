@@ -1,0 +1,12 @@
+{
+  "status": "published_and_verified",
+  "files": 2,
+  "compile": 2,
+  "render_scenarios": 19,
+  "access_checks": 8,
+  "watch": 9,
+  "items": 32,
+  "resolved": 24,
+  "pending": 8,
+  "backup": "/var/backups/seo-autonomous-panel-20261004/baseline"
+}

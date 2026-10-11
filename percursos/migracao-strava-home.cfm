@@ -18,7 +18,7 @@
 </div>
 
 <cfif len(VARIABLES.stravaMigrationAlert.message)>
-  <div class="alert alert-<cfoutput>#VARIABLES.stravaMigrationAlert.type#</cfoutput>"><cfoutput>#htmlEditFormat(VARIABLES.stravaMigrationAlert.message)#</cfoutput></div>
+  <div class="alert alert-<cfoutput>#VARIABLES.stravaMigrationAlert.type#</cfoutput>"><cfoutput>#encodeForHTML(VARIABLES.stravaMigrationAlert.message)#</cfoutput></div>
 </cfif>
 
 <cfif NOT VARIABLES.stravaMigrationSchemaReady>
@@ -31,7 +31,7 @@
   </div>
 <cfelse>
   <cfif NOT VARIABLES.stravaMigrationStorageReady>
-    <div class="alert alert-danger"><strong>Repositório indisponível.</strong> <cfoutput>#htmlEditFormat(VARIABLES.stravaMigrationStorageError)#</cfoutput></div>
+    <div class="alert alert-danger"><strong>Repositório indisponível.</strong> <cfoutput>#encodeForHTML(VARIABLES.stravaMigrationStorageError)#</cfoutput></div>
   </cfif>
 
   <div class="row g-2 mb-4">
@@ -48,7 +48,7 @@
       <form class="row g-2 align-items-end" method="get" action="./migracao-strava.cfm">
         <div class="col-lg-7">
           <label class="form-label" for="strava-migration-search">Buscar</label>
-          <input class="form-control" id="strava-migration-search" name="busca" value="<cfoutput>#htmlEditFormat(URL.busca)#</cfoutput>" placeholder="Evento, ID do evento, modalidade ou rota Strava"/>
+          <input class="form-control" id="strava-migration-search" name="busca" value="<cfoutput>#encodeForHTMLAttribute(URL.busca)#</cfoutput>" placeholder="Evento, ID do evento, modalidade ou rota Strava"/>
         </div>
         <div class="col-lg-3">
           <label class="form-label" for="strava-migration-status">Status</label>
@@ -103,12 +103,12 @@
               <cfelseif listFindNoCase("validado,processando",status)><cfset VARIABLES.stravaMigrationBadge="badge-info"/></cfif>
               <tr>
                 <td class="ps-3"><input class="form-check-input migration-item" type="checkbox" name="modalidade_ids" value="#id_evento_percurso#" aria-label="Selecionar modalidade #id_evento_percurso#" <cfif listFindNoCase('migrado,reutilizado,processando',status)>disabled</cfif>/></td>
-                <td><span class="badge #VARIABLES.stravaMigrationBadge#">#htmlEditFormat(status)#</span><cfif len(ultimo_http_status & '')><div class="small text-muted mt-1">HTTP #ultimo_http_status#</div></cfif></td>
-                <td class="strava-migration-event"><strong>#htmlEditFormat(nome_evento)#</strong><div class="small text-muted"><span class="strava-migration-id">Evento ###id_evento#</span> · <span class="strava-migration-id">Modalidade ###id_evento_percurso#</span></div><div class="small">#htmlEditFormat(percurso_evento)# #htmlEditFormat(unidade_de_medida)# · #htmlEditFormat(tipo_corrida)#<cfif len(trim(cidade & ''))> · #htmlEditFormat(cidade)#<cfif len(trim(estado & ''))>/#htmlEditFormat(estado)#</cfif></cfif></div></td>
-                <td><a href="#htmlEditFormat(strava_url)#" target="_blank" rel="noopener noreferrer">#htmlEditFormat(strava_route_id)# <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i></a><cfif len(sha256 & '')><div class="small text-muted font-monospace" title="#sha256#">#left(sha256,12)#...</div></cfif></td>
+                <td><span class="badge #VARIABLES.stravaMigrationBadge#">#encodeForHTML(status)#</span><cfif len(ultimo_http_status & '')><div class="small text-muted mt-1">HTTP #ultimo_http_status#</div></cfif></td>
+                <td class="strava-migration-event"><strong>#encodeForHTML(nome_evento)#</strong><div class="small text-muted"><span class="strava-migration-id">Evento ###id_evento#</span> · <span class="strava-migration-id">Modalidade ###id_evento_percurso#</span></div><div class="small">#encodeForHTML(percurso_evento)# #encodeForHTML(unidade_de_medida)# · #encodeForHTML(tipo_corrida)#<cfif len(trim(cidade & ''))> · #encodeForHTML(cidade)#<cfif len(trim(estado & ''))>/#encodeForHTML(estado)#</cfif></cfif></div></td>
+                <td><a href="#encodeForHTMLAttribute(strava_url)#" target="_blank" rel="noopener noreferrer">#encodeForHTML(strava_route_id)# <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i></a><cfif len(sha256 & '')><div class="small text-muted font-monospace" title="#sha256#">#left(sha256,12)#...</div></cfif></td>
                 <td><cfif len(id_percurso & '')><a class="btn btn-sm btn-outline-warning" href="./?id=#id_percurso#">Percurso ###id_percurso#</a><cfelse><span class="text-muted">-</span></cfif><cfif len(distancia_gpx_m & '')><div class="small text-muted mt-1">#numberFormat(distancia_gpx_m/1000,'0.000')# km no GPX</div></cfif></td>
                 <td>#numberFormat(tentativas)#<cfif isDate(data_atualizacao)><div class="small text-muted">#dateTimeFormat(data_atualizacao,'dd/mm HH:nn')#</div></cfif></td>
-                <td><div class="small strava-migration-message">#htmlEditFormat(mensagem)#</div></td>
+                <td><div class="small strava-migration-message">#encodeForHTML(mensagem)#</div></td>
               </tr>
             </cfoutput>
             <cfif NOT qStravaMigrationItems.recordcount><tr><td colspan="7" class="text-center text-muted py-5">Nenhuma rota encontrada para os filtros selecionados.</td></tr></cfif>

@@ -3,7 +3,7 @@ VARIABLES.descriptionCanAdmin = isDefined("qPerfil") AND qPerfil.recordCount
     AND !isNull(qPerfil.is_admin) AND (isBoolean(qPerfil.is_admin)
         ? qPerfil.is_admin : listFindNoCase("true,t,1,yes,sim",trim(qPerfil.is_admin & "")) GT 0);
 if (!VARIABLES.descriptionCanAdmin) {
-    cfheader(statuscode=403,statustext="Forbidden");
+    cfheader(statuscode=403);
     writeOutput("Acesso restrito a administradores.");
     abort;
 }

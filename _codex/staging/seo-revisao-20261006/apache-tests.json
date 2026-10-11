@@ -1,0 +1,497 @@
+{
+  "checks": [
+    {
+      "name": "GET branca-esportes-saude-e-lazer slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/branca-esportes-saude-e-lazer/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "GET branca-esportes-saude-e-lazer no slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/branca-esportes-saude-e-lazer/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD branca-esportes-saude-e-lazer slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/branca-esportes-saude-e-lazer/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD branca-esportes-saude-e-lazer no slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/branca-esportes-saude-e-lazer/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "GET corpo-e-saude slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/corpo-e-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "GET corpo-e-saude no slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/corpo-e-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD corpo-e-saude slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/corpo-e-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD corpo-e-saude no slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/corpo-e-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "GET geracao-saude slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/geracao-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "GET geracao-saude no slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/geracao-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD geracao-saude slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/geracao-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD geracao-saude no slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/geracao-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "GET grupo-de-corrida-espaco-saude slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/grupo-de-corrida-espaco-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "GET grupo-de-corrida-espaco-saude no slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/grupo-de-corrida-espaco-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD grupo-de-corrida-espaco-saude slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/grupo-de-corrida-espaco-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD grupo-de-corrida-espaco-saude no slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/grupo-de-corrida-espaco-saude/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "GET zero-meia-um-saude-e-esporte slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/zero-meia-um-saude-e-esporte/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "GET zero-meia-um-saude-e-esporte no slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/zero-meia-um-saude-e-esporte/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD zero-meia-um-saude-e-esporte slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/zero-meia-um-saude-e-esporte/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "HEAD zero-meia-um-saude-e-esporte no slash",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 301,
+        "location": "https://business.roadrunners.run/timer/zero-meia-um-saude-e-esporte/",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "query action=delete",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "query id_evento=1",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "query utm_source=google",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "query tag=corpo-e-saude",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "query i18n_lang=en",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "method POST",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "method PUT",
+      "before": {
+        "status": 405,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 405,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "method DELETE",
+      "before": {
+        "status": 405,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 405,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "unmapped assessoria/not-registered/",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "unmapped assessoria/",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "unmapped assessoria",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "unmapped assessoria/branca-esportes-saude-e-lazer/extra/",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "unmapped assessoria/BRANCA-ESPORTES-SAUDE-E-LAZER/",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "unmapped timer/branca-esportes-saude-e-lazer/",
+      "before": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 404,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "existing file preserved",
+      "before": {
+        "status": 200,
+        "location": "",
+        "returncode": 0
+      },
+      "after": {
+        "status": 200,
+        "location": "",
+        "returncode": 0
+      },
+      "passed": true
+    }
+  ],
+  "source_hash": "e240b5ce00aea55ccd42e482daf6d498416a820c7b70813a92cbc5403ba2a601",
+  "block_hash": "3833ea9eac59add0ae00d0260b6e2d33d991e8bc2925818566dda74a71830b58",
+  "failed": []
+}

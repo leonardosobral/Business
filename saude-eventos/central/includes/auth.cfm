@@ -107,15 +107,15 @@
         </cfif>
     <cfelseif VARIABLES.saudeAuthMode EQ "json">
         <cfcontent type="application/json; charset=utf-8" reset="true"/>
-        <cfheader statuscode="#VARIABLES.saudeDeniedStatus#" statustext="#VARIABLES.saudeDeniedStatusText#"/>
+        <cfheader statuscode="#VARIABLES.saudeDeniedStatus#"/>
         <cfoutput>#serializeJSON({success=false,message=VARIABLES.saudeDeniedMessage})#</cfoutput>
     <cfelseif VARIABLES.saudeAuthMode EQ "table">
         <cfcontent type="text/html; charset=utf-8" reset="true"/>
-        <cfheader statuscode="#VARIABLES.saudeDeniedStatus#" statustext="#VARIABLES.saudeDeniedStatusText#"/>
+        <cfheader statuscode="#VARIABLES.saudeDeniedStatus#"/>
         <cfoutput><tr><td colspan="6" class="saude-empty-row">#encodeForHTML(VARIABLES.saudeDeniedMessage)#</td></tr></cfoutput>
     <cfelse>
         <cfcontent type="text/html; charset=utf-8" reset="true"/>
-        <cfheader statuscode="#VARIABLES.saudeDeniedStatus#" statustext="#VARIABLES.saudeDeniedStatusText#"/>
+        <cfheader statuscode="#VARIABLES.saudeDeniedStatus#"/>
         <cfoutput><div class="saude-drawer-empty"><i class="fa-solid fa-lock"></i><h2>Acesso restrito</h2><p>#encodeForHTML(VARIABLES.saudeDeniedMessage)#</p></div></cfoutput>
     </cfif>
     <cfabort/>

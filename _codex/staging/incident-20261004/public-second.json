@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-04T19:02:03.986440+00:00",
+  "results": [
+    {
+      "url": "https://business.roadrunners.run/portal/seo/",
+      "result": "302 0.110163 0.110274",
+      "error": "",
+      "exit": 0
+    },
+    {
+      "url": "https://business.roadrunners.run/assets/css/business-ui.css",
+      "result": "200 0.067263 0.067416",
+      "error": "",
+      "exit": 0
+    },
+    {
+      "url": "https://roadrunners.run/",
+      "result": "200 0.222985 0.294605",
+      "error": "",
+      "exit": 0
+    },
+    {
+      "url": "https://openresults.run/",
+      "result": "200 0.284725 0.308808",
+      "error": "",
+      "exit": 0
+    }
+  ]
+}

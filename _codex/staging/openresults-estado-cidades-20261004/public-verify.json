@@ -1,0 +1,52 @@
+{
+  "checks": [
+    {
+      "name": "estado_ba",
+      "url": "https://openresults.run/estado/ba/",
+      "status": 200,
+      "event_cards": 50
+    },
+    {
+      "name": "feira",
+      "url": "https://openresults.run/estado/ba/?cidade=feira-de-santana",
+      "status": 200,
+      "event_cards": 50
+    },
+    {
+      "name": "salvador_maratonas",
+      "url": "https://openresults.run/estado/ba/?cidade=salvador&filtro=maratonas",
+      "status": 200,
+      "event_cards": 7
+    },
+    {
+      "name": "feira_pagina2",
+      "url": "https://openresults.run/api/eventos_por_estado.cfm?tag=BA&cidade=feira-de-santana&page=1",
+      "status": 200,
+      "event_cards": 23
+    },
+    {
+      "name": "estado_invalido",
+      "url": "https://openresults.run/api/eventos_por_estado.cfm?tag=XX",
+      "status": 404,
+      "event_cards": 0
+    },
+    {
+      "name": "js",
+      "url": "https://openresults.run/assets/js/openresults-estado-cidades.js",
+      "status": 200,
+      "event_cards": 0
+    },
+    {
+      "name": "css",
+      "url": "https://openresults.run/assets/css/openresults-estado-cidades.css",
+      "status": 200,
+      "event_cards": 0
+    },
+    {
+      "name": "home",
+      "url": "https://openresults.run/",
+      "status": 200,
+      "event_cards": 36
+    }
+  ]
+}

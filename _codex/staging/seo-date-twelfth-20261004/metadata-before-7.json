@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-corrida-e-caminhada-ffsms-2026/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-e-caminhada-ffsms-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-e-caminhada-ffsms-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-e-caminhada-ffsms-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-e-caminhada-ffsms-2026/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-corrida-e-caminhada-ffsms-2026/",
+      "name": "CORRIDA E CAMINHADA FFSMS 2026",
+      "description": "CORRIDA E CAMINHADA FFSMS 2026 takes place on 29 november 2026, in Em frente à Cidade do Natal / Vila Morena, na Avenida Afonso Pena - Campo Grande - MS.",
+      "url": "https://roadrunners.run/en/event/2026-corrida-e-caminhada-ffsms-2026/",
+      "startDate": "2026-11-29",
+      "endDate": "2026-11-29",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://firebasestorage.googleapis.com/v0/b/kmais-app.appspot.com/o/images%2F1779408574842_WhatsApp%20Image%202026-05-21%20at%2019.01.42.jpeg?alt=media&token=35c2fe99-fe49-46c8-a5c7-d2b965ccf1ed"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Em frente à Cidade do Natal / Vila Morena, na Avenida Afonso Pena",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Campo Grande",
+          "addressRegion": "MS",
+          "addressCountry": "BR",
+          "streetAddress": "Em frente à Cidade do Natal / Vila Morena, na Avenida Afonso Pena"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.kmaisclube.com.br/eventos/corrida-e-caminhada-ffsms-2026/lEYJXG5UE8QkK97JvYnI"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/ms/",
+          "@type": "ListItem",
+          "name": "Races in MS"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-corrida-e-caminhada-ffsms-2026/",
+          "@type": "ListItem",
+          "name": "CORRIDA E CAMINHADA FFSMS 2026"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

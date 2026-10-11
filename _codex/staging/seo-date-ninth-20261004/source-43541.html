@@ -1,0 +1,146 @@
+<script>
+    var str_nome_cliente = 'trichip';
+    var url_arquivo_config = 'clientes/'+str_nome_cliente+'/json/config.json';
+    var url_arquivo_events = 'https://www.trichip.com.br/session/20261004_trichip_events.json';
+    var url_arquivo_news = 'https://www.trichip.com.br/session/20261004_trichip_news.json';
+    var url_arquivo_molduras = 'https://www.trichip.com.br/session/20261004_trichip_molduras.json';
+    var url_base_site = 'https://www.trichip.com.br';
+</script>
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <base href="https://www.trichip.com.br/">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="new/style/bundle.css ">
+    <link rel="stylesheet" href="new/style/pages/evento.css">
+    <link id="cliente-style" rel="stylesheet" href="">
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <div id="header-and-banner">
+            <div id="menu"></div>
+
+            <section class="banner-evento" id="banner-principal">
+                <div class="banner-fundo"></div>
+                <div class="banner-overlay"></div>
+                <div class="container-fluid banner-conteudo-container">
+                    <div class="coluna-conteudo">
+                        <h1 id="evento-titulo">Carregando evento...</h1>
+                        <div id="evento-data-local"></div>
+                        <div class="cronometro" id="cronometro-evento">
+                            <div><span class="unidade-tempo" id="cron-dias">00</span><span class="label-tempo">dias</span></div>
+                            <div><span class="unidade-tempo" id="cron-horas">00</span><span class="label-tempo">horas</span></div>
+                            <div><span class="unidade-tempo" id="cron-minutos">00</span><span class="label-tempo">minutos</span></div>
+                            <div><span class="unidade-tempo" id="cron-segundos">00</span><span class="label-tempo">segundos</span></div>
+                        </div>
+                    </div>
+                    <div class="coluna-imagem">
+                        <img id="evento-imagem-capa" src="" alt="">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="event-header-sticky">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-9" id="event-nav-tabs"></div>
+                    <div class="col-12 col-lg-3" id="event-sidebar-info"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <section class="event-body-content">
+                <div class="row">
+                    <div class="col-12 col-lg-9">
+                        <div id="alertaInscricao" class="mb-4"></div>
+                        <div class="event-main-content">
+                            <div class="text-center py-5">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Carregando...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="modal fade" id="organizerModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content contact-modal">
+                    <div class="modal-header contact-header">
+                        <h5 class="modal-title">Contato</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body" id="organizerInfo"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalAvisoInscricao" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center border-0 shadow">
+                    <div class="modal-body p-4 p-md-5">
+                        <div class="mb-3">
+                            <i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3.5rem;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Inscrição indisponível</h5>
+                        <p class="text-muted mb-4" id="modalAvisoInscricaoMensagem"></p>
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal">Entendi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalGaleria" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content border-0">
+                    <button type="button" class="btn-fechar-imersivo" data-bs-dismiss="modal">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+
+                    <div class="modal-body p-0">
+                        <div id="carrosselFotos" class="carousel slide h-100" data-bs-interval="false">
+                            <div class="carousel-inner h-100">
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carrosselFotos" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carrosselFotos" data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <div id="footer-container" class="container-fluid"></div>
+        </div>
+    </div>
+    
+    <!-- JQuery -->     
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="new/js/loaders/page-config.js?v=1791090635"></script>
+    <script src="new/js/config-loader.js?v=1791090635"></script>
+</body>
+
+</html>
+
+</html>

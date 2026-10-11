@@ -1,0 +1,9 @@
+{
+  "published": [
+    "includes/estrutura/head.cfm",
+    "videos/index.cfm",
+    "noticias/index.cfm",
+    "sitemaps/index.cfm"
+  ],
+  "backup": "/var/backups/seo-semrush-editorial-20261004/baseline"
+}

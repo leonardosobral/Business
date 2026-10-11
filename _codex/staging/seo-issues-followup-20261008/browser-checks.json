@@ -1,0 +1,52 @@
+{
+  "desktop": {
+    "before_h1": 0,
+    "after_h1": 1,
+    "width": 1280,
+    "scrollWidth": 1280,
+    "before_rect": {
+      "x": 379,
+      "y": 72,
+      "width": 435,
+      "height": 96
+    },
+    "after_rect": {
+      "x": 379,
+      "y": 72,
+      "width": 435,
+      "height": 96
+    }
+  },
+  "mobile": {
+    "before_h1": 0,
+    "after_h1": 1,
+    "width": 390,
+    "scrollWidth": 390,
+    "before_rect": {
+      "x": 16,
+      "y": 72,
+      "width": 298.328125,
+      "height": 66.84375
+    },
+    "after_rect": {
+      "x": 16,
+      "y": 72,
+      "width": 298.328125,
+      "height": 66.84375
+    }
+  },
+  "viewport_reset": true,
+  "contact_sample": {
+    "path": "/privacidade/",
+    "mailto_present": true,
+    "residual_email_protection_links": 0
+  },
+  "semrush": {
+    "latest_finished": "2026-10-06",
+    "new_crawl_started": "2026-10-08",
+    "observed_progress": 423,
+    "limit": 5000,
+    "device": "mobile",
+    "render_js": false
+  }
+}

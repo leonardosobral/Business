@@ -1,0 +1,26 @@
+[
+  {
+    "teams": 7,
+    "label": "baseline",
+    "team_hash": "657584E70C0702FD321EF86FEC18F0F937023A169F12E6885C0B053F05902378",
+    "male": 266,
+    "rows": 401,
+    "female": 135
+  },
+  {
+    "teams": 7,
+    "label": "candidate",
+    "team_hash": "657584E70C0702FD321EF86FEC18F0F937023A169F12E6885C0B053F05902378",
+    "male": 266,
+    "rows": 401,
+    "female": 135
+  },
+  {
+    "teams": 0,
+    "label": "empty",
+    "team_hash": "C65E9F85C85F6D14DA70788B2B3833659340BD9C92CCDDE897183B21A2D79C2A",
+    "male": 0,
+    "rows": 0,
+    "female": 0
+  }
+]

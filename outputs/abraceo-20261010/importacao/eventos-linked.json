@@ -1,0 +1,95 @@
+{
+  "EMAIL_NORMALIZADO": 1,
+  "EVENTOS": [
+    {
+      "status": "ATIVO",
+      "nome_evento": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027",
+      "id_conta": 53,
+      "id_evento": 45372,
+      "id_conta_evento": 337,
+      "data_inicial": "2027-05-01"
+    },
+    {
+      "status": "ATIVO",
+      "nome_evento": "JURERÊ NIGHT RUN 2027",
+      "id_conta": 53,
+      "id_evento": 46865,
+      "id_conta_evento": 338,
+      "data_inicial": "2027-03-13"
+    },
+    {
+      "status": "ATIVO",
+      "nome_evento": "NIGHT RUN NATAL LUZ - KOERICH",
+      "id_conta": 53,
+      "id_evento": 45442,
+      "id_conta_evento": 339,
+      "data_inicial": "2026-12-19"
+    },
+    {
+      "status": "ATIVO",
+      "nome_evento": "UPHILL CRISTO REDENTOR 2026",
+      "id_conta": 63,
+      "id_evento": 47969,
+      "id_conta_evento": 340,
+      "data_inicial": "2026-11-21"
+    },
+    {
+      "status": "ATIVO",
+      "nome_evento": "XTERRA TRAIL RUN SERIES - ILHABELA",
+      "id_conta": 63,
+      "id_evento": 43912,
+      "id_conta_evento": 341,
+      "data_inicial": "2026-11-20"
+    },
+    {
+      "status": "ATIVO",
+      "nome_evento": "CIRCUITO DESBRAVA - BELÉM 2026",
+      "id_conta": 63,
+      "id_evento": 40609,
+      "id_conta_evento": 342,
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "status": "ATIVO",
+      "nome_evento": "CIRCUITO DESBRAVA - MANAUS 2026",
+      "id_conta": 63,
+      "id_evento": 42066,
+      "id_conta_evento": 343,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "status": "ATIVO",
+      "nome_evento": "Meia Maratona SC21k",
+      "id_conta": 35,
+      "id_evento": 42360,
+      "id_conta_evento": 344,
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "status": "ATIVO",
+      "nome_evento": "MARATONA INTERNACIONAL DE POMERODE 2026",
+      "id_conta": 35,
+      "id_evento": 37144,
+      "id_conta_evento": 345,
+      "data_inicial": "2026-10-17"
+    },
+    {
+      "status": "ATIVO",
+      "nome_evento": "2026 Itaú BBA IRONMAN 70.3 Florianópolis",
+      "id_conta": 59,
+      "id_evento": 36659,
+      "id_conta_evento": 346,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "status": "ATIVO",
+      "nome_evento": "2026  Nubank Ultravioleta TRIDAY Series - Bertioga II",
+      "id_conta": 59,
+      "id_evento": 39384,
+      "id_conta_evento": 347,
+      "data_inicial": "2026-11-08"
+    }
+  ],
+  "ANTERIOR_VIA_INTERFACE": 1,
+  "NOVOS_VINCULOS": 10
+}

@@ -1,0 +1,66 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-night-run-etapa-1-fortaleza-2026/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-night-run-etapa-1-fortaleza-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-night-run-etapa-1-fortaleza-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-night-run-etapa-1-fortaleza-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-night-run-etapa-1-fortaleza-2026/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-night-run-etapa-1-fortaleza-2026/",
+      "name": "Night Run - Etapa 1 - Fortaleza 2026",
+      "description": "Night Run - Etapa 1 - Fortaleza 2026 takes place on 07 november 2026, in Fortaleza - CE.",
+      "url": "https://roadrunners.run/en/event/2026-night-run-etapa-1-fortaleza-2026/",
+      "startDate": "2026-11-07",
+      "endDate": "2026-11-07",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://magento.runningland.com.br/media/catalog/product/cache/4ec0339e0e27010557b958cd357e7b98/b/a/banner-evento_night-run_e1_9.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Fortaleza, CE",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Fortaleza",
+          "addressRegion": "CE",
+          "addressCountry": "BR"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.runningland.com.br/night-run-etapa-1-fortaleza-2026"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/ce/",
+          "@type": "ListItem",
+          "name": "Races in CE"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-night-run-etapa-1-fortaleza-2026/",
+          "@type": "ListItem",
+          "name": "Night Run - Etapa 1 - Fortaleza 2026"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

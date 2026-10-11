@@ -1,0 +1,652 @@
+[
+  {
+    "url": "https://roadrunners.run/en/news/?page=3",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/news/?page=3"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/",
+      "en": "https://roadrunners.run/en/news/",
+      "es": "https://roadrunners.run/es/noticias/",
+      "x-default": "https://roadrunners.run/noticias/"
+    },
+    "title": "News - Road Runners",
+    "description": [
+      "Latest news and editorial content published across the Road Runners ecosystem."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/en/videos/?page=3",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/en/videos/?page=3"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/",
+      "en": "https://roadrunners.run/en/videos/",
+      "es": "https://roadrunners.run/es/videos/",
+      "x-default": "https://roadrunners.run/videos/"
+    },
+    "title": "Videos - Road Runners",
+    "description": [
+      "Latest videos from partner channels across the Road Runners ecosystem."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/es/noticias/?page=3",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/noticias/?page=3"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/",
+      "en": "https://roadrunners.run/en/news/",
+      "es": "https://roadrunners.run/es/noticias/",
+      "x-default": "https://roadrunners.run/noticias/"
+    },
+    "title": "Noticias - Road Runners",
+    "description": [
+      "Últimas noticias y contenidos editoriales publicados en el ecosistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/es/videos/?page=3",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/es/videos/?page=3"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/",
+      "en": "https://roadrunners.run/en/videos/",
+      "es": "https://roadrunners.run/es/videos/",
+      "x-default": "https://roadrunners.run/videos/"
+    },
+    "title": "Videos - Road Runners",
+    "description": [
+      "Videos más recientes de los canales asociados del ecosistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/",
+      "en": "https://roadrunners.run/en/news/",
+      "es": "https://roadrunners.run/es/noticias/",
+      "x-default": "https://roadrunners.run/noticias/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/?page=2",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/?page=2"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/",
+      "en": "https://roadrunners.run/en/news/",
+      "es": "https://roadrunners.run/es/noticias/",
+      "x-default": "https://roadrunners.run/noticias/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/?page=209",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/?page=209"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/",
+      "en": "https://roadrunners.run/en/news/",
+      "es": "https://roadrunners.run/es/noticias/",
+      "x-default": "https://roadrunners.run/noticias/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/?page=3",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/?page=3"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/",
+      "en": "https://roadrunners.run/en/news/",
+      "es": "https://roadrunners.run/es/noticias/",
+      "x-default": "https://roadrunners.run/noticias/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/?page=4",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/?page=4"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/",
+      "en": "https://roadrunners.run/en/news/",
+      "es": "https://roadrunners.run/es/noticias/",
+      "x-default": "https://roadrunners.run/noticias/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/?page=5",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/?page=5"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/",
+      "en": "https://roadrunners.run/en/news/",
+      "es": "https://roadrunners.run/es/noticias/",
+      "x-default": "https://roadrunners.run/noticias/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/canal/brasil-gigante/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/canal/brasil-gigante/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/canal/brasil-gigante/",
+      "en": "https://roadrunners.run/en/news/channel/brasil-gigante/",
+      "es": "https://roadrunners.run/es/noticias/canal/brasil-gigante/",
+      "x-default": "https://roadrunners.run/noticias/canal/brasil-gigante/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/canal/cbat/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/canal/cbat/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/canal/cbat/",
+      "en": "https://roadrunners.run/en/news/channel/cbat/",
+      "es": "https://roadrunners.run/es/noticias/canal/cbat/",
+      "x-default": "https://roadrunners.run/noticias/canal/cbat/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/canal/chelso/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/canal/chelso/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/canal/chelso/",
+      "en": "https://roadrunners.run/en/news/channel/chelso/",
+      "es": "https://roadrunners.run/es/noticias/canal/chelso/",
+      "x-default": "https://roadrunners.run/noticias/canal/chelso/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/canal/contra-relogio/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/canal/contra-relogio/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/canal/contra-relogio/",
+      "en": "https://roadrunners.run/en/news/channel/contra-relogio/",
+      "es": "https://roadrunners.run/es/noticias/canal/contra-relogio/",
+      "x-default": "https://roadrunners.run/noticias/canal/contra-relogio/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/canal/corrida-no-ar/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/canal/corrida-no-ar/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/canal/corrida-no-ar/",
+      "en": "https://roadrunners.run/en/news/channel/corrida-no-ar/",
+      "es": "https://roadrunners.run/es/noticias/canal/corrida-no-ar/",
+      "x-default": "https://roadrunners.run/noticias/canal/corrida-no-ar/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/canal/jornal-da-corrida/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/canal/jornal-da-corrida/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/canal/jornal-da-corrida/",
+      "en": "https://roadrunners.run/en/news/channel/jornal-da-corrida/",
+      "es": "https://roadrunners.run/es/noticias/canal/jornal-da-corrida/",
+      "x-default": "https://roadrunners.run/noticias/canal/jornal-da-corrida/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/canal/run-news/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/canal/run-news/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/canal/run-news/",
+      "en": "https://roadrunners.run/en/news/channel/run-news/",
+      "es": "https://roadrunners.run/es/noticias/canal/run-news/",
+      "x-default": "https://roadrunners.run/noticias/canal/run-news/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/canal/sixcomm/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/noticias/canal/sixcomm/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/noticias/canal/sixcomm/",
+      "en": "https://roadrunners.run/en/news/channel/sixcomm/",
+      "es": "https://roadrunners.run/es/noticias/canal/sixcomm/",
+      "x-default": "https://roadrunners.run/noticias/canal/sixcomm/"
+    },
+    "title": "Notícias - Road Runners",
+    "description": [
+      "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/como-tirar-as-criancas-das-telas-com-o-esporte/",
+    "status": 200,
+    "canonical": [
+      "https://corridanoar.com/como-tirar-as-criancas-das-telas-com-o-esporte/"
+    ],
+    "alternates": {},
+    "title": "COMO tirar as CRIANÇAS das TELAS com o ESPORTE - Road Runners",
+    "description": [
+      "Em uma conversa com a pediatra Dra. Flávia de Oliveira, discutimos a importância do esporte para o desenvolvimento infantil e os perigos do excesso de telas. Conheça também o tênis Bibi Play Run, feito para a criançada…"
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/conheca-o-zyla-treino-de-corrida-com-inteligencia-artificial/",
+    "status": 200,
+    "canonical": [
+      "https://corridanoar.com/conheca-o-zyla-treino-de-corrida-com-inteligencia-artificial/"
+    ],
+    "alternates": {},
+    "title": "CONHEÇA o ZYLA: Treino de CORRIDA com INTELIGÊNCIA ARTIFICIAL - Road Runners",
+    "description": [
+      "Conheça a Zyla em uma entrevista com o cofundador Guilherme Monteiro. Saiba como o app brasileiro usa IA e a metodologia de Jack Daniels para criar treinos personalizados, sua integração com relógios GPS, planos de…"
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/copa-interior-paulinia-acontece-neste-domingo-dia-4-10-organizacao-divulga-alteracao-nas-vias-para-o-dia-da-prova/",
+    "status": 200,
+    "canonical": [
+      "https://chelso.com.br/site/copa-interior-paulinia-acontece-neste-domingo-dia-4-10-organizacao-divulga-alteracao-nas-vias-para-o-dia-da-prova/"
+    ],
+    "alternates": {},
+    "title": "Copa Interior Paulínia acontece neste domingo, dia 4/10; organização divulga alteração nas vias para o dia da prova - Road Runners",
+    "description": [
+      "A 5ª etapa da 18ª Copa Interior de Triathlon chega com tudo na cidade de Paulínia neste domingo, dia 4 de outubro. A prova que conta com a organização da Chelso Sports e o apoio da Prefeitura Municipal de Paulínia tem…"
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/noticias/maratona-de-paris-tem-alta-procura-mesmo-com-mudanca-na-agua/",
+    "status": 200,
+    "canonical": [
+      "https://corridanoar.com/maratona-de-paris-tem-alta-procura-mesmo-com-mudanca-na-agua/"
+    ],
+    "alternates": {},
+    "title": "MARATONA DE PARIS tem ALTA PROCURA mesmo com MUDANÇA na água - Road Runners",
+    "description": [
+      "A Maratona de Paris tem alta procura apesar da polêmica hidratação sem copos, enquanto Berlim ganha nova patrocinadora. A ASICS lança documentário com Sigourney Weaver e o novo tênis de máximo amortecimento,…"
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/sitemaps/news-recent.xml",
+    "status": 200,
+    "canonical": [],
+    "alternates": {},
+    "title": "",
+    "description": [],
+    "robots": [],
+    "locs": [
+      "https://roadrunners.run/noticias/conheca-o-zyla-treino-de-corrida-com-inteligencia-artificial/",
+      "https://roadrunners.run/noticias/como-tirar-as-criancas-das-telas-com-o-esporte/",
+      "https://roadrunners.run/noticias/copa-interior-paulinia-acontece-neste-domingo-dia-4-10-organizacao-divulga-alteracao-nas-vias-para-o-dia-da-prova/",
+      "https://roadrunners.run/noticias/maratona-de-berlim-quando-o-plano-muda-no-meio-da-prova/",
+      "https://roadrunners.run/noticias/wtr-anuncia-cinco-destinos-para-a-temporada-2027/",
+      "https://roadrunners.run/noticias/caio-bonfim-vira-a-chave-e-ja-mira-a-temporada-2027/",
+      "https://roadrunners.run/noticias/wine-run-reune-corrida-e-cultura-do-vinho-neste-sabado-no-vale-dos-vinhedos/",
+      "https://roadrunners.run/noticias/nunca-e-so-corrida-aos-50-anos-celebro-a-vida-a-amizade-e-a-liberdade-na-minha-primeira-trilha/",
+      "https://roadrunners.run/noticias/maratona-de-paris-tem-alta-procura-mesmo-com-mudanca-na-agua/",
+      "https://roadrunners.run/noticias/xterra-costa-verde-reune-quase-1-000-mulheres-e-250-criancas-em-mangaratiba/",
+      "https://roadrunners.run/noticias/circuito-caixa-chega-a-natal-em-1-de-novembro-com-provas-de-5-e-10-km/",
+      "https://roadrunners.run/noticias/nike-apresenta-tres-tenis-para-diferentes-objetivos/",
+      "https://roadrunners.run/noticias/maratona-de-berlim-tera-novo-nome-em-2027-generali-assume-naming-rights/",
+      "https://roadrunners.run/noticias/rafael-cabral-participa-do-111-episodio-do-falatimecast/",
+      "https://roadrunners.run/noticias/maratona-de-londres-2027-define-programacao-para-os-dois-dias/",
+      "https://roadrunners.run/noticias/nubia-de-oliveira-conquista-bicampeonato-nas-dez-milhas-garoto/",
+      "https://roadrunners.run/noticias/uma-experiencia-extraordinaria-no-bota-pra-correr-chapada-dos-guimaraes/",
+      "https://roadrunners.run/noticias/paulo-paula-e-o-melhor-brasileiro-na-maratona-de-berlim-aos-47-anos/",
+      "https://roadrunners.run/noticias/corrida-integracao-anuncia-maratona-para-2027/",
+      "https://roadrunners.run/noticias/os-resultados-e-algumas-das-melhores-fotos-da-2-delta-running/",
+      "https://roadrunners.run/noticias/inscricoes-abertas-para-a-etapa-de-mogi-guacu-do-circuito-de-corridas-de-rua-dos-supermercados-pague-menos/",
+      "https://roadrunners.run/noticias/2-delta-running-organizacao-divulga-alteracoes-no-transito-para-a-realizacao-das-provas-de-10-km-de-5-km-e-de-caminhada-de-3-km/",
+      "https://roadrunners.run/noticias/eduardo-epj-e-o-entrevistado-do-falatimecast-desta-quinta-dia-24-9/",
+      "https://roadrunners.run/noticias/confira-algumas-fotos-e-os-resultados-da-2-etapa-do-trirex-endurance-em-brotas/",
+      "https://roadrunners.run/noticias/com-mais-de-2-600-inscritos-trirex-endurance-movimenta-o-esporte-e-a-economia-de-brotas/",
+      "https://roadrunners.run/noticias/falatimecast-com-beto-garja/",
+      "https://roadrunners.run/noticias/corrida-e-caminhada-geracao-em-movimento-reune-milhares-de-participantes-e-marca-abertura-momentanea-do-campus-drogal-em-piracicaba/",
+      "https://roadrunners.run/noticias/cs-summit-2026-lideres-que-movimentam-o-esporte/",
+      "https://roadrunners.run/noticias/falatimecast-desta-quinta-dia-10-conta-com-a-presenca-de-cacau/"
+    ]
+  },
+  {
+    "url": "https://roadrunners.run/videos/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/",
+      "en": "https://roadrunners.run/en/videos/",
+      "es": "https://roadrunners.run/es/videos/",
+      "x-default": "https://roadrunners.run/videos/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/?page=2",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/?page=2"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/",
+      "en": "https://roadrunners.run/en/videos/",
+      "es": "https://roadrunners.run/es/videos/",
+      "x-default": "https://roadrunners.run/videos/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/?page=250",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/?page=250"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/",
+      "en": "https://roadrunners.run/en/videos/",
+      "es": "https://roadrunners.run/es/videos/",
+      "x-default": "https://roadrunners.run/videos/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/?page=3",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/?page=3"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/",
+      "en": "https://roadrunners.run/en/videos/",
+      "es": "https://roadrunners.run/es/videos/",
+      "x-default": "https://roadrunners.run/videos/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/?page=4",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/?page=4"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/",
+      "en": "https://roadrunners.run/en/videos/",
+      "es": "https://roadrunners.run/es/videos/",
+      "x-default": "https://roadrunners.run/videos/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/?page=5",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/?page=5"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/",
+      "en": "https://roadrunners.run/en/videos/",
+      "es": "https://roadrunners.run/es/videos/",
+      "x-default": "https://roadrunners.run/videos/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/bora-correr-galera/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/canal/bora-correr-galera/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/canal/bora-correr-galera/",
+      "en": "https://roadrunners.run/en/videos/channel/bora-correr-galera/",
+      "es": "https://roadrunners.run/es/videos/canal/bora-correr-galera/",
+      "x-default": "https://roadrunners.run/videos/canal/bora-correr-galera/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/canal-corredores/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/canal/canal-corredores/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/canal/canal-corredores/",
+      "en": "https://roadrunners.run/en/videos/channel/canal-corredores/",
+      "es": "https://roadrunners.run/es/videos/canal/canal-corredores/",
+      "x-default": "https://roadrunners.run/videos/canal/canal-corredores/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/corre-pezao/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/canal/corre-pezao/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/canal/corre-pezao/",
+      "en": "https://roadrunners.run/en/videos/channel/corre-pezao/",
+      "es": "https://roadrunners.run/es/videos/canal/corre-pezao/",
+      "x-default": "https://roadrunners.run/videos/canal/corre-pezao/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/correria-campinas/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/canal/correria-campinas/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/canal/correria-campinas/",
+      "en": "https://roadrunners.run/en/videos/channel/correria-campinas/",
+      "es": "https://roadrunners.run/es/videos/canal/correria-campinas/",
+      "x-default": "https://roadrunners.run/videos/canal/correria-campinas/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/corrida-no-ar/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/canal/corrida-no-ar/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/canal/corrida-no-ar/",
+      "en": "https://roadrunners.run/en/videos/channel/corrida-no-ar/",
+      "es": "https://roadrunners.run/es/videos/canal/corrida-no-ar/",
+      "x-default": "https://roadrunners.run/videos/canal/corrida-no-ar/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/mania-de-corrida/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/canal/mania-de-corrida/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/canal/mania-de-corrida/",
+      "en": "https://roadrunners.run/en/videos/channel/mania-de-corrida/",
+      "es": "https://roadrunners.run/es/videos/canal/mania-de-corrida/",
+      "x-default": "https://roadrunners.run/videos/canal/mania-de-corrida/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/road-runners/",
+    "status": 200,
+    "canonical": [
+      "https://roadrunners.run/videos/canal/road-runners/"
+    ],
+    "alternates": {
+      "pt-BR": "https://roadrunners.run/videos/canal/road-runners/",
+      "en": "https://roadrunners.run/en/videos/channel/road-runners/",
+      "es": "https://roadrunners.run/es/videos/canal/road-runners/",
+      "x-default": "https://roadrunners.run/videos/canal/road-runners/"
+    },
+    "title": "Vídeos - Road Runners",
+    "description": [
+      "Vídeos mais recentes dos canais parceiros do ecossistema Road Runners."
+    ],
+    "robots": []
+  }
+]

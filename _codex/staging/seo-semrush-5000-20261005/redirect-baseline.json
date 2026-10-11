@@ -1,0 +1,6 @@
+{
+  "includes/estrutura/event_redirect.cfm": {
+    "source": "<cfif reFindNoCase(\"[/\\\\]event_redirect\\.cfm$\", CGI.SCRIPT_NAME)>\n    <cfheader statuscode=\"404\" statustext=\"Not Found\"/><cfabort/>\n</cfif>\n<cfscript>\nVARIABLES.eventRedirectService = new services.EventRedirectService();\nif (structKeyExists(URL, \"tag\") && structKeyExists(REQUEST, \"i18nBuildPath\")\n    && VARIABLES.eventRedirectService.isReadRequest(CGI.REQUEST_METHOD, URL)) {\n    VARIABLES.eventRedirectTarget = VARIABLES.eventRedirectService.resolveTarget(URL.tag & \"\");\n    if (len(VARIABLES.eventRedirectTarget)) {\n        REQUEST.currentRouteParams = {tag=replace(encodeForURL(VARIABLES.eventRedirectTarget), \"+\", \"%20\", \"all\")};\n        VARIABLES.eventRedirectPath = REQUEST.i18nBuildPath(\"event\");\n        location(url=VARIABLES.eventRedirectPath, addtoken=false, statuscode=301);\n    }\n}\n</cfscript>\n",
+    "sha256": "f956daf44200d7f08c50fb2eb6947c36751764b41f0b77591ed73656aefae68c"
+  }
+}

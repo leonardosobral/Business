@@ -1,0 +1,115 @@
+{
+  "watch": {
+    "Application.cfc": "4b946b355d9ef6076bdbb88480b22e86acd660056efab3c4ae14fcca080e7af5",
+    ".htaccess": "028c7e47e8e77147bebf09318dd1807c95198a63b5f6017d8e44f1ba136324d4",
+    "evento/index.cfm": "6f2ebab01a12013af894580bf2995e7d12dbd2124776694dc14c796f1f87fccc",
+    "includes/estrutura/head.cfm": "dabad0d966b76f6c0aa2b1a536bf7f43f191cee68ec792cd7a6ddbc769f666e4",
+    "includes/lista_de_eventos_simple.cfm": "2919cce945c46f68d093d0b0b163d2d56de9e1fc5a88598a7fdbe98240937b48",
+    "services/EventRedirectService.cfc": "be9e085b471e1532feb6180d9bc20025e40b71d13c63c00deda2fd2954fe2fc4",
+    "includes/backend/backend_login.cfm": "31dc89e12acd154bebcebdae9860ecfa64648426c3fc2517e63c95ab1807d4b1"
+  },
+  "events": {
+    "EVENTS": [
+      {
+        "date": "2023-03-18",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 1283,
+        "tag": "2023-jurerê-night-run-2023",
+        "name": "Jurerê Night Run 2023"
+      },
+      {
+        "date": "2022-03-19",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 5642,
+        "tag": "2022-jurere-night-run-2022",
+        "name": "Jurerê Night Run 2022"
+      },
+      {
+        "date": "2024-03-16",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 11111,
+        "tag": "2024-jurere-night-run-2024",
+        "name": "Jurerê Night Run 2024"
+      },
+      {
+        "date": "2025-05-04",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 23725,
+        "tag": "2025-meia-maratona-internacional-de-florianopolis-oakberry-2025",
+        "name": "Meia Maratona Internacional de Florianópolis Oakberry 2025"
+      },
+      {
+        "date": "2025-03-15",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 25734,
+        "tag": "2025-jurere-night-run-hard-rock-cafe-florianopolis-2025",
+        "name": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025"
+      },
+      {
+        "date": "2025-10-12",
+        "city": "Ponta Grossa",
+        "state": "PR",
+        "id": 29365,
+        "tag": "2025-2-corrida-de-nossa-senhora-aparecida",
+        "name": "2ª CORRIDA DE NOSSA SENHORA APARECIDA"
+      },
+      {
+        "date": "2026-03-14",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 37918,
+        "tag": "2026-jurere-night-run-hard-rock-cafe-florianopolis-2026",
+        "name": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026"
+      },
+      {
+        "date": "2026-12-20",
+        "city": "Campinas",
+        "state": "SP",
+        "id": 41252,
+        "tag": "2026-rock-n-run\n----nashville-2026",
+        "name": "ROCK N' RUN\n                NASHVILLE 2026"
+      },
+      {
+        "date": "2026-10-12",
+        "city": "Ponta Grossa",
+        "state": "PR",
+        "id": 43677,
+        "tag": "2026-\"3-corrida-de-nossa-senhora-aparecida\"",
+        "name": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\""
+      },
+      {
+        "date": "2027-05-01",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 45372,
+        "tag": "2027-meia-maratona-internacional-de-florianopolis-oakberry-2027",
+        "name": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027"
+      },
+      {
+        "date": "2027-03-13",
+        "city": "Florianópolis",
+        "state": "SC",
+        "id": 46865,
+        "tag": "2027-jurere-night-run-2027",
+        "name": "JURERÊ NIGHT RUN 2027"
+      },
+      {
+        "date": "2026-11-01",
+        "city": "Lastro",
+        "state": "PB",
+        "id": 48153,
+        "tag": "2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha",
+        "name": "1ª Corrida de Aniversário do Grupo Corrida &#038; Resenha"
+      }
+    ]
+  },
+  "local_matches": {
+    "includes/card_evento_individual.cfm": false,
+    "includes/estrutura/event_title_date.cfm": true
+  }
+}

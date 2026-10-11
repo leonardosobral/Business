@@ -1,0 +1,79 @@
+{
+  "circuit": {
+    "url": "https://roadrunners.run/circuitocatarinense/",
+    "status": 200,
+    "metadata": {
+      "canonical": [
+        "https://roadrunners.run/circuitocatarinense/"
+      ],
+      "title": "Circuito Catarinense de Corridas - Road Runners",
+      "description": [
+        "Ranking de Atletas do Circuito de Corridas da Federação Catarinense de Atletismo"
+      ],
+      "h1": 1
+    }
+  },
+  "directory": {
+    "status": 200,
+    "sha256": "c69ea8c386dda1c427710441982338dbebf80b28e1891d365de6257afa707fc0",
+    "links_verified": 14,
+    "urls": [
+      {
+        "url": "https://roadrunners.run/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/en/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/es/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/busca/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/estado/sp/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/estado/es/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/estado/sc/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/circuitocatarinense/corridaderua/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/circuitocatarinense/trailrun/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/noticias/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/sobre/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/privacidade/",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/sitemap.xml",
+        "status": 200
+      },
+      {
+        "url": "https://roadrunners.run/robots.txt",
+        "status": 200
+      }
+    ]
+  }
+}

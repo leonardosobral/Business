@@ -74,7 +74,7 @@
             </div>
           <cfelse>
             <cfif len(trim(VARIABLES.runnerAppsAlert.type)) AND len(trim(VARIABLES.runnerAppsAlert.message))>
-              <cfoutput><div class="alert alert-#VARIABLES.runnerAppsAlert.type#">#htmlEditFormat(VARIABLES.runnerAppsAlert.message)#</div></cfoutput>
+              <cfoutput><div class="alert alert-#VARIABLES.runnerAppsAlert.type#">#encodeForHTML(VARIABLES.runnerAppsAlert.message)#</div></cfoutput>
             </cfif>
 
             <div class="row gx-xl-3 mb-4">
@@ -131,19 +131,19 @@
                   <hr/>
                   <form method="post" action="./">
                     <input type="hidden" name="acao" value="salvar_grupo"/>
-                    <input type="hidden" name="id_group" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsGroupFormId)#</cfoutput>"/>
+                    <input type="hidden" name="id_group" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsGroupFormId)#</cfoutput>"/>
                     <div class="row g-3 align-items-end">
                       <div class="col-md-3">
                         <label class="form-label">Nome da linha</label>
-                        <input class="form-control" type="text" name="grupo_nome" required value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsGroupFormName)#</cfoutput>"/>
+                        <input class="form-control" type="text" name="grupo_nome" required value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsGroupFormName)#</cfoutput>"/>
                       </div>
                       <div class="col-md-5">
                         <label class="form-label">Descricao</label>
-                        <input class="form-control" type="text" name="grupo_descricao" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsGroupFormDescription)#</cfoutput>"/>
+                        <input class="form-control" type="text" name="grupo_descricao" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsGroupFormDescription)#</cfoutput>"/>
                       </div>
                       <div class="col-md-1">
                         <label class="form-label">Ordem</label>
-                        <input class="form-control" type="number" min="1" name="grupo_ordem" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsGroupFormOrder)#</cfoutput>"/>
+                        <input class="form-control" type="number" min="1" name="grupo_ordem" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsGroupFormOrder)#</cfoutput>"/>
                       </div>
                       <div class="col-md-1">
                         <label class="form-label">Ícones</label>
@@ -192,31 +192,31 @@
                   <hr/>
                   <form method="post" action="./" enctype="multipart/form-data">
                     <input type="hidden" name="acao" value="salvar_app"/>
-                    <input type="hidden" name="id_app" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsAppFormId)#</cfoutput>"/>
-                    <input type="hidden" name="app_imagem_atual" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsAppFormImage)#</cfoutput>"/>
-                    <input type="hidden" name="app_imagem_original_atual" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsAppFormOriginal)#</cfoutput>"/>
+                    <input type="hidden" name="id_app" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsAppFormId)#</cfoutput>"/>
+                    <input type="hidden" name="app_imagem_atual" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsAppFormImage)#</cfoutput>"/>
+                    <input type="hidden" name="app_imagem_original_atual" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsAppFormOriginal)#</cfoutput>"/>
 
                     <div class="row g-3">
                       <div class="col-md-3">
                         <label class="form-label">Linha</label>
                         <select class="form-select" name="id_group" required>
                           <cfoutput query="qRunnerAppGroups">
-                            <option value="#qRunnerAppGroups.id_group#" <cfif qRunnerAppGroups.id_group EQ val(VARIABLES.runnerAppsAppFormGroup)>selected</cfif>>#htmlEditFormat(qRunnerAppGroups.nome)#</option>
+                            <option value="#qRunnerAppGroups.id_group#" <cfif qRunnerAppGroups.id_group EQ val(VARIABLES.runnerAppsAppFormGroup)>selected</cfif>>#encodeForHTML(qRunnerAppGroups.nome)#</option>
                           </cfoutput>
                         </select>
                       </div>
                       <div class="col-md-4">
                         <label class="form-label">Nome</label>
-                        <input class="form-control" type="text" name="app_nome" required value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsAppFormName)#</cfoutput>"/>
+                        <input class="form-control" type="text" name="app_nome" required value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsAppFormName)#</cfoutput>"/>
                       </div>
                       <div class="col-md-5">
                         <label class="form-label">URL</label>
-                        <input class="form-control" type="text" name="app_url" required value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsAppFormUrl)#</cfoutput>"/>
+                        <input class="form-control" type="text" name="app_url" required value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsAppFormUrl)#</cfoutput>"/>
                       </div>
 
                       <div class="col-md-5">
                         <label class="form-label">URL do icone</label>
-                        <input class="form-control" type="text" name="app_imagem_url" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsAppFormImage)#</cfoutput>"/>
+                        <input class="form-control" type="text" name="app_imagem_url" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsAppFormImage)#</cfoutput>"/>
                       </div>
                       <div class="col-md-4">
                         <label class="form-label">Upload do icone</label>
@@ -224,12 +224,12 @@
                       </div>
                       <div class="col-md-3">
                         <label class="form-label">Alt text</label>
-                        <input class="form-control" type="text" name="app_alt_text" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsAppFormAlt)#</cfoutput>"/>
+                        <input class="form-control" type="text" name="app_alt_text" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsAppFormAlt)#</cfoutput>"/>
                       </div>
 
                       <div class="col-md-2">
                         <label class="form-label">Ordem</label>
-                        <input class="form-control" type="number" min="1" name="app_ordem" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsAppFormOrder)#</cfoutput>"/>
+                        <input class="form-control" type="number" min="1" name="app_ordem" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsAppFormOrder)#</cfoutput>"/>
                       </div>
                       <div class="col-md-3">
                         <label class="form-label">Abrir</label>
@@ -240,7 +240,7 @@
                       </div>
                       <div class="col-md-3">
                         <label class="form-label">Rel</label>
-                        <input class="form-control" type="text" name="app_rel" placeholder="noopener" value="<cfoutput>#htmlEditFormat(VARIABLES.runnerAppsAppFormRel)#</cfoutput>"/>
+                        <input class="form-control" type="text" name="app_rel" placeholder="noopener" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.runnerAppsAppFormRel)#</cfoutput>"/>
                       </div>
                       <div class="col-md-2 d-flex align-items-end">
                         <div class="form-check mb-2">
@@ -271,7 +271,7 @@
                     <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
                       <div>
                         <cfoutput>
-                          <h5 class="mb-1">#htmlEditFormat(qRunnerAppGroups.nome)#</h5>
+                          <h5 class="mb-1">#encodeForHTML(qRunnerAppGroups.nome)#</h5>
                           <div class="small text-muted">Ordem #qRunnerAppGroups.ordem# · #qRunnerAppGroups.itens_por_linha# ícones por linha · #qRunnerAppGroups.total_apps# app(s) · #qRunnerAppGroups.active_apps# ativo(s)</div>
                         </cfoutput>
                       </div>
@@ -304,15 +304,15 @@
                               <cfset VARIABLES.runnerAppActive = runnerAppsNormalizeBoolean(qRunnerAppsInGroup.ativo)/>
                               <tr>
                                 <td>
-                                  <img class="runner-app-icon" src="#htmlEditFormat(runnerAppsAssetUrl(qRunnerAppsInGroup.imagem_url))#" alt="#htmlEditFormat(qRunnerAppsInGroup.alt_text)#"/>
+                                  <img class="runner-app-icon" src="#encodeForHTMLAttribute(runnerAppsAssetUrl(qRunnerAppsInGroup.imagem_url))#" alt="#encodeForHTMLAttribute(qRunnerAppsInGroup.alt_text)#"/>
                                 </td>
                                 <td>
-                                  <div class="fw-semibold">#htmlEditFormat(qRunnerAppsInGroup.nome)#</div>
-                                  <div class="small text-muted">#htmlEditFormat(qRunnerAppsInGroup.alt_text)#</div>
+                                  <div class="fw-semibold">#encodeForHTML(qRunnerAppsInGroup.nome)#</div>
+                                  <div class="small text-muted">#encodeForHTML(qRunnerAppsInGroup.alt_text)#</div>
                                 </td>
                                 <td class="runner-app-url">
-                                  <a href="#htmlEditFormat(qRunnerAppsInGroup.url)#" target="_blank" rel="noopener">#htmlEditFormat(qRunnerAppsInGroup.url)#</a>
-                                  <div class="small text-muted"><cfif runnerAppsNormalizeBoolean(qRunnerAppsInGroup.abrir_nova_aba)>Nova aba<cfelse>Mesma janela</cfif><cfif len(trim(qRunnerAppsInGroup.rel))> · rel: #htmlEditFormat(qRunnerAppsInGroup.rel)#</cfif></div>
+                                  <a href="#encodeForHTMLAttribute(qRunnerAppsInGroup.url)#" target="_blank" rel="noopener">#encodeForHTML(qRunnerAppsInGroup.url)#</a>
+                                  <div class="small text-muted"><cfif runnerAppsNormalizeBoolean(qRunnerAppsInGroup.abrir_nova_aba)>Nova aba<cfelse>Mesma janela</cfif><cfif len(trim(qRunnerAppsInGroup.rel))> · rel: #encodeForHTML(qRunnerAppsInGroup.rel)#</cfif></div>
                                 </td>
                                 <td>#qRunnerAppsInGroup.ordem#</td>
                                 <td>

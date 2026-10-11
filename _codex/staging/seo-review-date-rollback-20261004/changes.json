@@ -1,0 +1,34 @@
+{
+  "events": {
+    "39867": {
+      "descricao": "A 1ª Corrida Q²Eventos de Revezamento de Americana está programada para 25 de outubro de 2026, em Americana, São Paulo. A prova é disputada em duplas: cada equipe completa 10 km, divididos em duas voltas de 5 km, com uma volta por atleta.\n\nO local informado no regulamento é a Avenida Gioconda Cibin, nº 1475, em frente ao restaurante BIKEHOTEL. Consulte a página oficial e o regulamento atual para horários, retirada de kits e condições de participação.",
+      "descricao_en": "The first Q²Eventos Relay Race in Americana is scheduled for October 25, 2026, in Americana, São Paulo, Brazil. The race is for pairs: each team completes 10 km in two 5 km laps, with one lap per runner.\n\nThe regulations list Avenida Gioconda Cibin, number 1475, in front of the BIKEHOTEL restaurant, as the venue. Check the official event page and current regulations for start times, race kit collection and participation requirements.",
+      "descricao_es": "La primera Carrera de Relevos Q²Eventos de Americana está prevista para el 25 de octubre de 2026, en Americana, São Paulo, Brasil. La prueba se disputa en parejas: cada equipo completa 10 km en dos vueltas de 5 km, con una vuelta por atleta.\n\nEl reglamento indica la Avenida Gioconda Cibin, número 1475, frente al restaurante BIKEHOTEL, como lugar del evento. Consulta la página oficial y el reglamento actual para conocer los horarios, la recogida de kits y las condiciones de participación.",
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/86132/67fcf68ea1cb47d78b5b965b108ca5b4639168571610602317.pdf",
+      "descricao_traducoes_meta": {
+        "es": {
+          "source_hash": "b5c03f3fe550eda5a20b3b80d31344ba",
+          "description_hash": "ff181cc5fbae95ee3dd01e01a3a8235e"
+        },
+        "en": {
+          "source_hash": "b5c03f3fe550eda5a20b3b80d31344ba",
+          "description_hash": "a83c0d6a887934626cff3a8667ae9546"
+        }
+      }
+    }
+  },
+  "routes": {
+    "65367": {
+      "data_percurso": "2026-10-11",
+      "percurso_bloqueado": false
+    },
+    "65368": {
+      "data_percurso": "2026-10-11",
+      "percurso_bloqueado": false
+    },
+    "67993": {
+      "data_percurso": "2026-10-25",
+      "percurso_bloqueado": false
+    }
+  }
+}

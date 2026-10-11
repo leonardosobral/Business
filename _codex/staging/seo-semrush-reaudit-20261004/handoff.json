@@ -1,0 +1,12 @@
+{
+  "status": "published_and_verified",
+  "reason": "Apache recovered after user-authorized restart; 19 scenarios passed before and after publication",
+  "compiled_templates": 3,
+  "generator_tests_passed": 6,
+  "review": "numeric and guard review passed; stale sentences removed before final compilation",
+  "runtime_files_locally_unchanged": false,
+  "backup": "/var/backups/seo-semrush-reaudit-20261004/baseline",
+  "next_steps": [
+    "Investigate persistent cause of worker saturation; continue RR-20 items"
+  ]
+}

@@ -1,0 +1,4 @@
+    # Consolidate the slashless alias observed in the SEO audit; preserve forms and queries.
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+    RewriteCond %{QUERY_STRING} ^$
+    RewriteRule ^2026-costa-esmeralda-trail-2026$ /evento/2026-costa-esmeralda-trail-2026/ [R=301,L]

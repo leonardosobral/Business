@@ -1,0 +1,19 @@
+{
+  "hashes": {
+    "portal/includes/seo_queue_data.cfm": "a2fae314704aa2586b700d3a9c3e9b75f518783a87c3eb7fba8f95a886f50eff",
+    "portal/conteudo/seo_semrush.cfm": "25195ea6f8f8cf2794094161f642a8ee25b6458bedd76fb26d57a310f90fa98e",
+    "portal/includes/seo_semrush_data.cfm": "12998ad3cfe8475ac8d09a861b2253c6449bb8b51134c6989ad3a5729823c3d7"
+  },
+  "watch": {
+    "portal/conteudo/seo.cfm": "878651a0da5581def3528ba0173bed499d81805d3de88bf6d450c966dddd78b2",
+    "portal/includes/seo_search_evidence.cfm": "c2ac33cc47100775b3832ed95dc40897c777e22c80e47a53d42d011c4fade4d7",
+    "portal/includes/seo_score_data.cfm": "e0732af23980716f3e3df0a22653a643083961c6cfc00cc757906cbc2bca2ab0",
+    "portal/conteudo/seo_report.cfm": "9e44cda396bb75db4a4905bbae453bc0fe5cae999d1d7e95c63156c8f73b0726",
+    "portal/includes/seo_queue_backend.cfm": "df2fd3936ec16198486c521102e1a45bd37b43a3fa90a7071b661c751373ac91",
+    "portal/includes/seo_score_backend.cfm": "5664b3a4535da70839e61d9ae72d0dfada03c28773575cdbfcb5d91d160a9175",
+    "portal/conteudo/seo_ai.cfm": "83e3b7b933d2d2919ec6dba20e545827cc5e89176f7376af472d53fb8c6e9e2b",
+    "includes/backend/require_admin.cfm": "d7212311a34ad583b6b7311984f53b9dfe6c065f8bf7a2060cbbae5dfed655e0"
+  },
+  "scenarios": 19,
+  "mode": "published"
+}

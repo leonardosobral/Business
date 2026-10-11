@@ -1,0 +1,12 @@
+{
+  "status": "published_and_verified",
+  "files": 9,
+  "templates_compiled": 4,
+  "behavior_tests_original": 22,
+  "behavior_tests_minified": 22,
+  "adobe_checks": 9,
+  "public_pages": 7,
+  "public_asset_hashes": 5,
+  "desktop_mobile_styles_equal": true,
+  "backup": "/var/backups/seo-shared-assets-20261004/baseline"
+}

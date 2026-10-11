@@ -1,0 +1,39 @@
+{
+  "pages": [
+    {
+      "url": "https://roadrunners.run/circuitocatarinense/trailrun/",
+      "status": 200,
+      "seconds": 0.975301,
+      "content_type": "text/html;charset=UTF-8",
+      "canonical": [
+        "https://roadrunners.run/circuitocatarinense/trailrun/"
+      ],
+      "title": "Circuito Catarinense - Road Runners",
+      "robots": [],
+      "bad_avatar_srcs": [],
+      "bad_avatar_count": 0,
+      "video_ids": [],
+      "email_protection_links": 0,
+      "email_decode_script": false,
+      "cf_error": false
+    },
+    {
+      "url": "https://roadrunners.run/circuitocatarinense/corridaderua/",
+      "status": 200,
+      "seconds": 7.361661,
+      "content_type": "text/html;charset=UTF-8",
+      "canonical": [
+        "https://roadrunners.run/circuitocatarinense/corridaderua/"
+      ],
+      "title": "Circuito Catarinense - Road Runners",
+      "robots": [],
+      "bad_avatar_srcs": [],
+      "bad_avatar_count": 0,
+      "video_ids": [],
+      "email_protection_links": 0,
+      "email_decode_script": false,
+      "cf_error": false
+    }
+  ],
+  "fallback": "200 image/png"
+}

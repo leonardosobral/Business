@@ -2,7 +2,7 @@
 <cfcontent type="application/json; charset=utf-8"/>
 <cfinclude template="../includes/backend/backend_login.cfm"/>
 <cfparam name="URL.id" default=""/>
-<cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT isNumeric(URL.id)><cfheader statuscode="403" statustext="Forbidden"/><cfoutput>{"error":"forbidden"}</cfoutput><cfabort></cfif>
+<cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT isNumeric(URL.id)><cfheader statuscode="403"/><cfoutput>{"error":"forbidden"}</cfoutput><cfabort></cfif>
 <cfset VARIABLES.geometryCanViewAll = listFindNoCase("1,true,t,yes,sim,on", trim(qPerfil.is_admin & ""))
   OR listFindNoCase("1,true,t,yes,sim,on", trim(qPerfil.is_dev & ""))/>
 <cfset VARIABLES.geometryAccountIds=isDefined("VARIABLES.businessEffectiveAccountIds") ? VARIABLES.businessEffectiveAccountIds : "0"/>
@@ -37,7 +37,7 @@
     )
   </cfif>
 </cfquery>
-<cfif NOT qGeometry.recordcount><cfheader statuscode="404" statustext="Not Found"/><cfoutput>{"error":"not_found","message":"A versao do percurso nao foi encontrada ou nao esta disponivel para esta conta."}</cfoutput><cfabort></cfif>
+<cfif NOT qGeometry.recordcount><cfheader statuscode="404"/><cfoutput>{"error":"not_found","message":"A versao do percurso nao foi encontrada ou nao esta disponivel para esta conta."}</cfoutput><cfabort></cfif>
 <cfset VARIABLES.geometryRoot=""/>
 <cftry><cfset VARIABLES.geometryRoot=trim(createObject("java","java.lang.System").getenv("BUSINESS_PERCURSOS_STORAGE_PATH") & "")/><cfcatch type="any"></cfcatch></cftry>
 <cfif NOT len(VARIABLES.geometryRoot)>
@@ -49,7 +49,7 @@
 </cfif>
 <cfif NOT len(VARIABLES.geometryRoot)><cfset VARIABLES.geometryRoot=getTempDirectory() & "business-percursos-storage"/></cfif>
 <cfset VARIABLES.geometryPath=VARIABLES.geometryRoot & "/" & qGeometry.geojson_storage_key/>
-<cfif NOT fileExists(VARIABLES.geometryPath)><cfheader statuscode="404" statustext="Not Found"/><cfoutput>#serializeJSON({error="file_not_found",message="O GeoJSON nao existe no storage configurado. Configure um storage gravavel e envie uma nova versao do percurso."})#</cfoutput><cfabort></cfif>
+<cfif NOT fileExists(VARIABLES.geometryPath)><cfheader statuscode="404"/><cfoutput>#serializeJSON({error="file_not_found",message="O GeoJSON nao existe no storage configurado. Configure um storage gravavel e envie uma nova versao do percurso."})#</cfoutput><cfabort></cfif>
 <cfheader name="Cache-Control" value="private, no-store"/>
 <cffile action="read" file="#VARIABLES.geometryPath#" variable="geometryJson" charset="utf-8"/>
 <cftry>
@@ -61,5 +61,5 @@
   <cfset VARIABLES.geometryProperties=structKeyExists(VARIABLES.geometryData,"properties") AND isStruct(VARIABLES.geometryData.properties) ? VARIABLES.geometryData.properties : {}/>
   <cfset VARIABLES.normalizedGeometryJson='{"type":"Feature","properties":' & serializeJSON(VARIABLES.geometryProperties) & ',"geometry":{"type":"' & VARIABLES.geometryType & '","coordinates":' & serializeJSON(VARIABLES.geometryData.geometry.coordinates) & '}}'/>
   <cfoutput>#VARIABLES.normalizedGeometryJson#</cfoutput>
-  <cfcatch type="any"><cfheader statuscode="422" statustext="Unprocessable Entity"/><cfoutput>#serializeJSON({error="invalid_geojson",message="O arquivo GeoJSON armazenado e invalido. Envie uma nova versao do percurso."})#</cfoutput></cfcatch>
+  <cfcatch type="any"><cfheader statuscode="422"/><cfoutput>#serializeJSON({error="invalid_geojson",message="O arquivo GeoJSON armazenado e invalido. Envie uma nova versao do percurso."})#</cfoutput></cfcatch>
 </cftry>

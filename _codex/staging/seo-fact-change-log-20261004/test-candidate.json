@@ -1,0 +1,110 @@
+[
+  {
+    "passed": true,
+    "name": "bulk source unchanged beyond date"
+  },
+  {
+    "passed": true,
+    "name": "bulk updates captured"
+  },
+  {
+    "passed": true,
+    "name": "date before and after"
+  },
+  {
+    "passed": true,
+    "name": "event delete records old public values"
+  },
+  {
+    "passed": true,
+    "name": "event id changes retain old id"
+  },
+  {
+    "passed": true,
+    "name": "event insert captured"
+  },
+  {
+    "passed": true,
+    "name": "history survives deletion"
+  },
+  {
+    "passed": true,
+    "name": "insert before null"
+  },
+  {
+    "passed": true,
+    "name": "irrelevant update ignored"
+  },
+  {
+    "passed": true,
+    "name": "location and status"
+  },
+  {
+    "passed": true,
+    "name": "no source verified claim"
+  },
+  {
+    "passed": true,
+    "name": "nullable after is json null"
+  },
+  {
+    "passed": true,
+    "name": "null transitions captured"
+  },
+  {
+    "passed": true,
+    "name": "private fields absent"
+  },
+  {
+    "passed": true,
+    "name": "public execute revoked"
+  },
+  {
+    "passed": true,
+    "name": "reject unexpected source table"
+  },
+  {
+    "passed": true,
+    "name": "rollback removes audit row"
+  },
+  {
+    "passed": true,
+    "name": "rollback restores source"
+  },
+  {
+    "passed": true,
+    "name": "route date and time"
+  },
+  {
+    "passed": true,
+    "name": "route id changes captured"
+  },
+  {
+    "passed": true,
+    "name": "route insert captured"
+  },
+  {
+    "passed": true,
+    "name": "route reassignment preserves both events"
+  },
+  {
+    "passed": true,
+    "name": "route replacement distinct IDs"
+  },
+  {
+    "passed": true,
+    "name": "runner has no direct history access"
+  },
+  {
+    "passed": true,
+    "name": "single update row and exact fields"
+  },
+  {
+    "passed": true,
+    "name": "technical route change ignored"
+  },
+  {
+    "passed": true,
+    "name": "timestamps populated"
+  }
+]

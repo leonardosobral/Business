@@ -1,0 +1,21 @@
+{
+  "url": "https://roadrunners.run/evento/2026-tgs-run-2026/",
+  "desktop": {
+    "width": 1280,
+    "height": 800,
+    "overflow": false,
+    "opened_with_Enter": true,
+    "closed_with_Enter": true,
+    "records": 2
+  },
+  "mobile": {
+    "width": 390,
+    "height": 844,
+    "overflow": false,
+    "opened_with_click": true,
+    "legible": true
+  },
+  "source_dates": "15/11/2026 to22/11/2026;recorded04/10/2026",
+  "viewport_reset": true,
+  "tab_closed": true
+}

@@ -76,7 +76,7 @@
 
 <cfif len(trim(VARIABLES.eventoSolicitacaoNoticeMessage))>
   <div class="alert alert-success mb-3 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2" role="alert">
-    <span><cfoutput>#htmlEditFormat(VARIABLES.eventoSolicitacaoNoticeMessage)#</cfoutput></span>
+    <span><cfoutput>#encodeForHTML(VARIABLES.eventoSolicitacaoNoticeMessage)#</cfoutput></span>
     <cfif isDefined("VARIABLES.businessPendingWorkspace") AND VARIABLES.businessPendingWorkspace>
       <a class="btn btn-sm btn-outline-success flex-shrink-0" href="/">Voltar aos primeiros passos</a>
     </cfif>
@@ -87,7 +87,7 @@
 
 <cfif len(trim(VARIABLES.eventoSolicitacaoErrorMessage))>
   <div class="alert alert-danger mb-3" role="alert">
-    <cfoutput>#htmlEditFormat(VARIABLES.eventoSolicitacaoErrorMessage)#</cfoutput>
+    <cfoutput>#encodeForHTML(VARIABLES.eventoSolicitacaoErrorMessage)#</cfoutput>
   </div>
 </cfif>
 
@@ -136,17 +136,17 @@
                     <label class="form-label">Conta</label>
                     <select class="form-select" name="id_conta_solicitacao">
                       <cfloop query="qEventoSolicitacaoContas">
-                        <option value="#qEventoSolicitacaoContas.id_conta#" <cfif VARIABLES.eventoSolicitacaoSelectedAccountId EQ qEventoSolicitacaoContas.id_conta>selected</cfif>>#htmlEditFormat(qEventoSolicitacaoContas.nome_conta)#</option>
+                        <option value="#qEventoSolicitacaoContas.id_conta#" <cfif VARIABLES.eventoSolicitacaoSelectedAccountId EQ qEventoSolicitacaoContas.id_conta>selected</cfif>>#encodeForHTML(qEventoSolicitacaoContas.nome_conta)#</option>
                       </cfloop>
                     </select>
                   </div>
                 <cfelse>
-                  <input type="hidden" name="id_conta_solicitacao" value="#htmlEditFormat(VARIABLES.eventoSolicitacaoSelectedAccountId)#"/>
+                  <input type="hidden" name="id_conta_solicitacao" value="#encodeForHTMLAttribute(VARIABLES.eventoSolicitacaoSelectedAccountId)#"/>
                 </cfif>
 
                 <div class="col-12 <cfif qEventoSolicitacaoContas.recordcount GT 1>col-lg-6<cfelse>col-lg-10</cfif>">
                   <label class="form-label">Evento</label>
-                  <input class="form-control" type="text" name="evento_referencia" value="#htmlEditFormat(VARIABLES.eventoSolicitacaoReferencia)#" placeholder="https://roadrunners.run/evento/nome-da-prova/"/>
+                  <input class="form-control" type="text" name="evento_referencia" value="#encodeForHTMLAttribute(VARIABLES.eventoSolicitacaoReferencia)#" placeholder="https://roadrunners.run/evento/nome-da-prova/"/>
                 </div>
                 <div class="col-12 col-lg-2">
                   <button class="btn btn-outline-warning w-100" type="submit">Buscar</button>
@@ -194,8 +194,8 @@
                     </cfif>
                     <tr>
                       <td>
-                        <div class="fw-semibold">#htmlEditFormat(qEventoSolicitacaoBusca.nome_evento)#</div>
-                        <div class="event-request-meta">#htmlEditFormat(qEventoSolicitacaoBusca.cidade)#/#htmlEditFormat(qEventoSolicitacaoBusca.estado)# - #htmlEditFormat(qEventoSolicitacaoBusca.tag)#</div>
+                        <div class="fw-semibold">#encodeForHTML(qEventoSolicitacaoBusca.nome_evento)#</div>
+                        <div class="event-request-meta">#encodeForHTML(qEventoSolicitacaoBusca.cidade)#/#encodeForHTML(qEventoSolicitacaoBusca.estado)# - #encodeForHTML(qEventoSolicitacaoBusca.tag)#</div>
                       </td>
                       <td>
                         <cfif isDate(qEventoSolicitacaoBusca.data_inicial)>#dateFormat(qEventoSolicitacaoBusca.data_inicial, "dd/mm/yyyy")#</cfif>
@@ -203,14 +203,14 @@
                           <span class="event-request-meta">até #dateFormat(qEventoSolicitacaoBusca.data_final, "dd/mm/yyyy")#</span>
                         </cfif>
                       </td>
-                      <td><span class="badge badge-#VARIABLES.eventoSolicitacaoResultBadge#">#htmlEditFormat(VARIABLES.eventoSolicitacaoResultStatus)#</span></td>
+                      <td><span class="badge badge-#VARIABLES.eventoSolicitacaoResultBadge#">#encodeForHTML(VARIABLES.eventoSolicitacaoResultStatus)#</span></td>
                       <td class="text-end">
                         <form method="post" action="/eventos/" class="d-inline-block">
         <cfinclude template="../includes/parts/business_delegation_form.cfm"/>
                           <input type="hidden" name="evento_solicitacao_action" value="solicitar"/>
-                          <input type="hidden" name="id_conta_solicitacao" value="#htmlEditFormat(VARIABLES.eventoSolicitacaoSelectedAccountId)#"/>
+                          <input type="hidden" name="id_conta_solicitacao" value="#encodeForHTMLAttribute(VARIABLES.eventoSolicitacaoSelectedAccountId)#"/>
                           <input type="hidden" name="id_evento" value="#qEventoSolicitacaoBusca.id_evento#"/>
-                          <input type="hidden" name="evento_referencia" value="#htmlEditFormat(VARIABLES.eventoSolicitacaoReferencia)#"/>
+                          <input type="hidden" name="evento_referencia" value="#encodeForHTMLAttribute(VARIABLES.eventoSolicitacaoReferencia)#"/>
                           <button class="btn btn-sm btn-warning" type="submit" <cfif VARIABLES.eventoSolicitacaoResultBlocked>disabled</cfif>>Solicitar</button>
                         </form>
                       </td>
@@ -239,11 +239,11 @@
                       <cfif compareNoCase(qEventoMinhasSolicitacoes.status, "PENDENTE") EQ 0>
                         <tr>
                           <td>
-                            <div class="fw-semibold">#htmlEditFormat(qEventoMinhasSolicitacoes.nome_evento)#</div>
-                            <div class="event-request-meta">#htmlEditFormat(qEventoMinhasSolicitacoes.cidade)#/#htmlEditFormat(qEventoMinhasSolicitacoes.estado)# - #htmlEditFormat(qEventoMinhasSolicitacoes.tag)#</div>
+                            <div class="fw-semibold">#encodeForHTML(qEventoMinhasSolicitacoes.nome_evento)#</div>
+                            <div class="event-request-meta">#encodeForHTML(qEventoMinhasSolicitacoes.cidade)#/#encodeForHTML(qEventoMinhasSolicitacoes.estado)# - #encodeForHTML(qEventoMinhasSolicitacoes.tag)#</div>
                           </td>
-                          <td>#htmlEditFormat(qEventoMinhasSolicitacoes.nome_conta)#</td>
-                          <td><span class="badge badge-warning">#htmlEditFormat(qEventoMinhasSolicitacoes.status)#</span></td>
+                          <td>#encodeForHTML(qEventoMinhasSolicitacoes.nome_conta)#</td>
+                          <td><span class="badge badge-warning">#encodeForHTML(qEventoMinhasSolicitacoes.status)#</span></td>
                           <td><cfif isDate(qEventoMinhasSolicitacoes.data_criacao)>#dateFormat(qEventoMinhasSolicitacoes.data_criacao, "dd/mm/yyyy")#</cfif></td>
                         </tr>
                       </cfif>
@@ -273,11 +273,11 @@
                         <cfif compareNoCase(qEventoMinhasSolicitacoes.status, "PENDENTE") NEQ 0>
                           <tr>
                             <td>
-                              <div class="fw-semibold">#htmlEditFormat(qEventoMinhasSolicitacoes.nome_evento)#</div>
-                              <div class="event-request-meta">#htmlEditFormat(qEventoMinhasSolicitacoes.cidade)#/#htmlEditFormat(qEventoMinhasSolicitacoes.estado)# - #htmlEditFormat(qEventoMinhasSolicitacoes.tag)#</div>
+                              <div class="fw-semibold">#encodeForHTML(qEventoMinhasSolicitacoes.nome_evento)#</div>
+                              <div class="event-request-meta">#encodeForHTML(qEventoMinhasSolicitacoes.cidade)#/#encodeForHTML(qEventoMinhasSolicitacoes.estado)# - #encodeForHTML(qEventoMinhasSolicitacoes.tag)#</div>
                             </td>
-                            <td>#htmlEditFormat(qEventoMinhasSolicitacoes.nome_conta)#</td>
-                            <td><span class="badge badge-secondary">#htmlEditFormat(qEventoMinhasSolicitacoes.status)#</span></td>
+                            <td>#encodeForHTML(qEventoMinhasSolicitacoes.nome_conta)#</td>
+                            <td><span class="badge badge-secondary">#encodeForHTML(qEventoMinhasSolicitacoes.status)#</span></td>
                             <td><cfif isDate(qEventoMinhasSolicitacoes.data_criacao)>#dateFormat(qEventoMinhasSolicitacoes.data_criacao, "dd/mm/yyyy")#</cfif></td>
                           </tr>
                         </cfif>
@@ -309,17 +309,17 @@
             <div class="d-flex flex-column gap-3">
               <cfoutput query="qEventoSolicitacoesPendentes">
                 <div class="border rounded p-3">
-                  <div class="fw-semibold mb-1">#htmlEditFormat(qEventoSolicitacoesPendentes.nome_evento)#</div>
+                  <div class="fw-semibold mb-1">#encodeForHTML(qEventoSolicitacoesPendentes.nome_evento)#</div>
                   <div class="event-request-meta mb-2">
-                    #htmlEditFormat(qEventoSolicitacoesPendentes.nome_conta)# -
-                    #htmlEditFormat(qEventoSolicitacoesPendentes.cidade)#/#htmlEditFormat(qEventoSolicitacoesPendentes.estado)# -
-                    #htmlEditFormat(qEventoSolicitacoesPendentes.tag)#
+                    #encodeForHTML(qEventoSolicitacoesPendentes.nome_conta)# -
+                    #encodeForHTML(qEventoSolicitacoesPendentes.cidade)#/#encodeForHTML(qEventoSolicitacoesPendentes.estado)# -
+                    #encodeForHTML(qEventoSolicitacoesPendentes.tag)#
                   </div>
                   <cfif len(trim(qEventoSolicitacoesPendentes.usuario_solicitante)) OR len(trim(qEventoSolicitacoesPendentes.email_solicitante))>
-                    <div class="event-request-meta mb-2">Solicitado por #htmlEditFormat(qEventoSolicitacoesPendentes.usuario_solicitante)# <cfif len(trim(qEventoSolicitacoesPendentes.email_solicitante))>(#htmlEditFormat(qEventoSolicitacoesPendentes.email_solicitante)#)</cfif></div>
+                    <div class="event-request-meta mb-2">Solicitado por #encodeForHTML(qEventoSolicitacoesPendentes.usuario_solicitante)# <cfif len(trim(qEventoSolicitacoesPendentes.email_solicitante))>(#encodeForHTML(qEventoSolicitacoesPendentes.email_solicitante)#)</cfif></div>
                   </cfif>
                   <cfif len(trim(qEventoSolicitacoesPendentes.url_informada))>
-                    <div class="event-request-meta mb-2">Origem: #htmlEditFormat(qEventoSolicitacoesPendentes.url_informada)#</div>
+                    <div class="event-request-meta mb-2">Origem: #encodeForHTML(qEventoSolicitacoesPendentes.url_informada)#</div>
                   </cfif>
                   <form method="post" action="/eventos/">
         <cfinclude template="../includes/parts/business_delegation_form.cfm"/>

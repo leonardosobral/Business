@@ -1,0 +1,66 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-4-prime-night-run/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-4-prime-night-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-4-prime-night-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-4-prime-night-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-4-prime-night-run/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-4-prime-night-run/",
+      "name": "4ª PRIME NIGHT RUN",
+      "description": "4ª PRIME NIGHT RUN acontece em 10 outubro 2026, em SÃO PEDRO DA ALDEIA - RJ.",
+      "url": "https://roadrunners.run/evento/2026-4-prime-night-run/",
+      "startDate": "2026-10-10",
+      "endDate": "2026-10-10",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://inscricaodecorrida.com.br/storage/eventos/fPO6vbNxJ63kTjztyTCEYM5JTJVKIS9V4DMu3V1i.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "SÃO PEDRO DA ALDEIA, RJ",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "SÃO PEDRO DA ALDEIA",
+          "addressRegion": "RJ",
+          "addressCountry": "BR"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://inscricaodecorrida.com.br/evento/4a-prime-night-run"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/rj/",
+          "@type": "ListItem",
+          "name": "Corridas em RJ"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-4-prime-night-run/",
+          "@type": "ListItem",
+          "name": "4ª PRIME NIGHT RUN"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

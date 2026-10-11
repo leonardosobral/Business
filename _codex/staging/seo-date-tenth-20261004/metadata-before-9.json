@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-corrida-e-caminhadas-piratas-do-asfalto/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-e-caminhadas-piratas-do-asfalto/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-e-caminhadas-piratas-do-asfalto/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-e-caminhadas-piratas-do-asfalto/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-e-caminhadas-piratas-do-asfalto/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-corrida-e-caminhadas-piratas-do-asfalto/",
+      "name": "CORRIDA E CAMINHADAS PIRATAS DO ASFALTO",
+      "description": "CORRIDA E CAMINHADAS PIRATAS DO ASFALTO acontece em 29 novembro 2026, em PARQUE MADUREIRA , Rio de Janeiro, RJ, Brasil - Rio de Janeiro - RJ.",
+      "url": "https://roadrunners.run/evento/2026-corrida-e-caminhadas-piratas-do-asfalto/",
+      "startDate": "2026-11-29",
+      "endDate": "2026-11-29",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/JW0ROUYPD81D5HSC7OJNVJP37XGC3QHDJSVMFA5SE0JSLKZJ5T.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "PARQUE MADUREIRA , Rio de Janeiro, RJ, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Rio de Janeiro",
+          "addressRegion": "RJ",
+          "addressCountry": "BR",
+          "streetAddress": "PARQUE MADUREIRA , Rio de Janeiro, RJ, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87552&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/rj/",
+          "@type": "ListItem",
+          "name": "Corridas em RJ"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-corrida-e-caminhadas-piratas-do-asfalto/",
+          "@type": "ListItem",
+          "name": "CORRIDA E CAMINHADAS PIRATAS DO ASFALTO"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

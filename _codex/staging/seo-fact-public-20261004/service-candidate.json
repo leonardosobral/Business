@@ -1,0 +1,92 @@
+{
+  "checks": [
+    {
+      "PASSED": true,
+      "NAME": "private before explicit publication"
+    },
+    {
+      "PASSED": true,
+      "NAME": "published"
+    },
+    {
+      "PASSED": true,
+      "NAME": "source bound"
+    },
+    {
+      "PASSED": true,
+      "NAME": "snapshot bound"
+    },
+    {
+      "PASSED": true,
+      "NAME": "review bound"
+    },
+    {
+      "PASSED": true,
+      "NAME": "server review date"
+    },
+    {
+      "PASSED": true,
+      "NAME": "idempotent"
+    },
+    {
+      "PASSED": true,
+      "NAME": "withdrawn marker"
+    },
+    {
+      "PASSED": true,
+      "NAME": "internal retained"
+    },
+    {
+      "PASSED": true,
+      "NAME": "revoke withdraws"
+    },
+    {
+      "PASSED": true,
+      "NAME": "new review withdraws prior"
+    },
+    {
+      "PASSED": true,
+      "NAME": "latest dates survives history limit"
+    },
+    {
+      "PASSED": true,
+      "NAME": "reject stale withdrawal"
+    },
+    {
+      "PASSED": true,
+      "NAME": "reject stale"
+    },
+    {
+      "PASSED": true,
+      "NAME": "reject old"
+    },
+    {
+      "PASSED": true,
+      "NAME": "reject revoked"
+    },
+    {
+      "PASSED": true,
+      "NAME": "reject mismatched event"
+    },
+    {
+      "PASSED": true,
+      "NAME": "reject nonadmin"
+    },
+    {
+      "PASSED": true,
+      "NAME": "reject delegated"
+    },
+    {
+      "PASSED": true,
+      "NAME": "reject GET"
+    },
+    {
+      "PASSED": true,
+      "NAME": "reject CSRF"
+    },
+    {
+      "PASSED": true,
+      "NAME": "reject other group"
+    }
+  ]
+}

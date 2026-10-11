@@ -67,8 +67,8 @@ chatPeriodLabel = VARIABLES.chatAllTime ? "Todo o período" : "Últimos " & VARI
 
   <cfif NOT VARIABLES.chatReady>
     <div class="alert alert-warning">
-      <strong>Painel indisponível.</strong> Falha na etapa <cfoutput><strong>#htmlEditFormat(VARIABLES.chatErrorStep)#</strong>.</cfoutput>
-      <span class="d-block small mt-2"><cfoutput>#htmlEditFormat(VARIABLES.chatError)#<cfif len(VARIABLES.chatErrorDetail)> — #htmlEditFormat(VARIABLES.chatErrorDetail)#</cfif></cfoutput></span>
+      <strong>Painel indisponível.</strong> Falha na etapa <cfoutput><strong>#encodeForHTML(VARIABLES.chatErrorStep)#</strong>.</cfoutput>
+      <span class="d-block small mt-2"><cfoutput>#encodeForHTML(VARIABLES.chatError)#<cfif len(VARIABLES.chatErrorDetail)> — #encodeForHTML(VARIABLES.chatErrorDetail)#</cfif></cfoutput></span>
     </div>
   <cfelse>
     <div class="ca-privacy bg-success bg-opacity-10 rounded p-3 mb-4 d-flex gap-3">
@@ -121,11 +121,11 @@ chatPeriodLabel = VARIABLES.chatAllTime ? "Todo o período" : "Últimos " & VARI
 
     <div class="row g-4">
       <div class="col-12 col-lg-6"><div class="ca-card"><h2 class="h5 mb-1">Ícones mais enviados</h2><p class="small ca-subtle mb-3">Participação dos atalhos visuais no chat</p><div class="ca-bars">
-        <cfoutput query="qChatIcons"><div class="ca-bar-row"><span>#htmlEditFormat(reReplace(icon_key,"-"," ","all"))#</span><div class="ca-track"><div class="ca-fill" style="width:#(val(total)/chatMaxIcon)*100#%"></div></div><strong class="text-end">#numberFormat(total,'_,___')#</strong></div></cfoutput>
+        <cfoutput query="qChatIcons"><div class="ca-bar-row"><span>#encodeForHTML(reReplace(icon_key,"-"," ","all"))#</span><div class="ca-track"><div class="ca-fill" style="width:#(val(total)/chatMaxIcon)*100#%"></div></div><strong class="text-end">#numberFormat(total,'_,___')#</strong></div></cfoutput>
         <cfif NOT qChatIcons.recordCount><div class="ca-subtle">Nenhum ícone enviado no período.</div></cfif>
       </div></div></div>
       <div class="col-12 col-lg-6"><div class="ca-card"><h2 class="h5 mb-1">Profundidade de uso</h2><p class="small ca-subtle mb-3">Distribuição dos remetentes por volume</p><div class="ca-bars">
-        <cfoutput query="qChatDepth"><div class="ca-bar-row"><span>#htmlEditFormat(depth)#</span><div class="ca-track"><div class="ca-fill ca-fill-secondary" style="width:#(val(total)/chatMaxDepth)*100#%"></div></div><strong class="text-end">#numberFormat(total,'_,___')#</strong></div></cfoutput>
+        <cfoutput query="qChatDepth"><div class="ca-bar-row"><span>#encodeForHTML(depth)#</span><div class="ca-track"><div class="ca-fill ca-fill-secondary" style="width:#(val(total)/chatMaxDepth)*100#%"></div></div><strong class="text-end">#numberFormat(total,'_,___')#</strong></div></cfoutput>
         <cfif NOT qChatDepth.recordCount><div class="ca-subtle">Nenhum remetente ativo no período.</div></cfif>
       </div></div></div>
     </div>
@@ -142,8 +142,8 @@ chatPeriodLabel = VARIABLES.chatAllTime ? "Todo o período" : "Últimos " & VARI
             <cfoutput query="qChatUsers">
               <tr>
                 <td class="ca-subtle">#numberFormat(id_usuario,'0')#</td>
-                <td><cfif len(trim(tag & ''))><a href="https://roadrunners.run/atleta/#urlEncodedFormat(lCase(trim(tag)))#/" target="_blank" rel="noopener" class="fw-semibold">#htmlEditFormat(nome)# <i class="fa-solid fa-arrow-up-right-from-square ms-1 small"></i></a><cfelse><span class="fw-semibold">#htmlEditFormat(nome)#</span><div class="small ca-subtle">Perfil público não localizado</div></cfif></td>
-                <td><cfif len(trim(cidade & ''))>#htmlEditFormat(cidade)#<cfif len(trim(uf & ''))>/#htmlEditFormat(uf)#</cfif><cfelseif len(trim(uf & ''))>#htmlEditFormat(uf)#<cfelse><span class="ca-subtle">—</span></cfif></td>
+                <td><cfif len(trim(tag & ''))><a href="https://roadrunners.run/atleta/#urlEncodedFormat(lCase(trim(tag)))#/" target="_blank" rel="noopener" class="fw-semibold">#encodeForHTML(nome)# <i class="fa-solid fa-arrow-up-right-from-square ms-1 small"></i></a><cfelse><span class="fw-semibold">#encodeForHTML(nome)#</span><div class="small ca-subtle">Perfil público não localizado</div></cfif></td>
+                <td><cfif len(trim(cidade & ''))>#encodeForHTML(cidade)#<cfif len(trim(uf & ''))>/#encodeForHTML(uf)#</cfif><cfelseif len(trim(uf & ''))>#encodeForHTML(uf)#<cfelse><span class="ca-subtle">—</span></cfif></td>
                 <td class="text-end">#numberFormat(chats,'_,___')#</td>
                 <td class="text-end fw-semibold">#numberFormat(messages,'_,___')#</td>
                 <td class="text-end">#numberFormat(icons,'_,___')#</td>

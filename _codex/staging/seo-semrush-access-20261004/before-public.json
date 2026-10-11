@@ -1,0 +1,261 @@
+[
+  {
+    "url": "https://roadrunners.run/cdn-cgi/l/email-protection",
+    "status": 404,
+    "seconds": 0.16245,
+    "content_type": "text/html",
+    "canonical": [],
+    "title": "Email Protection | Cloudflare",
+    "robots": [
+      "noindex, nofollow"
+    ],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/circuitocatarinense/corridaderua/",
+    "status": 200,
+    "seconds": 12.430566,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/circuitocatarinense/corridaderua/"
+    ],
+    "title": "Circuito Catarinense - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [
+      "avatar/athlete/large.png"
+    ],
+    "bad_avatar_count": 1,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/circuitocatarinense/trailrun/",
+    "status": 200,
+    "seconds": 0.740133,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/circuitocatarinense/trailrun/"
+    ],
+    "title": "Circuito Catarinense - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [
+      "avatar/athlete/large.png"
+    ],
+    "bad_avatar_count": 1,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/circuitocatarinense/trailrun/avatar/athlete/large.png",
+    "status": 404,
+    "seconds": 0.174232,
+    "content_type": "text/html;charset=utf-8",
+    "canonical": [],
+    "title": "Esse caminho não foi encontrado · Road Runners",
+    "robots": [
+      "noindex,follow"
+    ],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/en/privacy/",
+    "status": 200,
+    "seconds": 0.315798,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/en/privacy/"
+    ],
+    "title": "Privacy Policy - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 4,
+    "email_decode_script": true,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/es/privacidad/",
+    "status": 200,
+    "seconds": 3.675989,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/es/privacidad/"
+    ],
+    "title": "Política de Privacidad - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 4,
+    "email_decode_script": true,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/estado/to/sitio-novo-do-tocantins/",
+    "status": 200,
+    "seconds": 0.450697,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/estado/to/sitio-novo-do-tocantins/"
+    ],
+    "title": "Corridas em Sítio Novo do Tocantins (TO): calendário de provas | Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/evento/2026-corridas-de-montanha-deserto-do-jalapao-2026/",
+    "status": 200,
+    "seconds": 0.428438,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/evento/2026-corridas-de-montanha-deserto-do-jalapao-2026/"
+    ],
+    "title": "CORRIDAS DE MONTANHA - DESERTO DO JALAPAO 2026 - corrida de rua - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/evento/2026-lupo-sport-corre-araguaina/",
+    "status": 200,
+    "seconds": 0.447677,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/evento/2026-lupo-sport-corre-araguaina/"
+    ],
+    "title": "LUPO SPORT CORRE ARAGUAÍNA - corrida de rua - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/",
+    "status": 200,
+    "seconds": 0.520582,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/"
+    ],
+    "title": "Maratona Internacional do Paraná 2026 - corrida de rua - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 1,
+    "email_decode_script": true,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/privacidade/",
+    "status": 200,
+    "seconds": 0.202105,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/privacidade/"
+    ],
+    "title": "Política de Privacidade - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 4,
+    "email_decode_script": true,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/videos/?page=250",
+    "status": 200,
+    "seconds": 0.346615,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/videos/?page=250"
+    ],
+    "title": "Vídeos - Road Runners - Página 250 de 250",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/bora-correr-galera/",
+    "status": 200,
+    "seconds": 0.414395,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/videos/canal/bora-correr-galera/"
+    ],
+    "title": "Vídeos - Bora Correr Galera - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/correria-campinas/",
+    "status": 200,
+    "seconds": 0.313062,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/videos/canal/correria-campinas/"
+    ],
+    "title": "Vídeos - Correria Campinas - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  },
+  {
+    "url": "https://roadrunners.run/videos/canal/road-runners/",
+    "status": 200,
+    "seconds": 8.011526,
+    "content_type": "text/html;charset=UTF-8",
+    "canonical": [
+      "https://roadrunners.run/videos/canal/road-runners/"
+    ],
+    "title": "Vídeos - Road Runners - Road Runners",
+    "robots": [],
+    "bad_avatar_srcs": [],
+    "bad_avatar_count": 0,
+    "video_ids": [],
+    "email_protection_links": 0,
+    "email_decode_script": false,
+    "cf_error": false
+  }
+]

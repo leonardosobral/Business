@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-corrida-do-comerciario-etapa-manacapuru-2026/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-do-comerciario-etapa-manacapuru-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-do-comerciario-etapa-manacapuru-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-do-comerciario-etapa-manacapuru-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-do-comerciario-etapa-manacapuru-2026/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-corrida-do-comerciario-etapa-manacapuru-2026/",
+      "name": "CORRIDA DO COMERCIÁRIO - ETAPA MANACAPURU 2026",
+      "description": "CORRIDA DO COMERCIÁRIO - ETAPA MANACAPURU 2026 takes place on 11 october 2026, in arque Miriti, Estr. Manoel Urbano, km 77, Manacapuru-AM: : Loteamento Parque Miriti, Estr. Manoel Urbano, km 77, Manacapuru-AM, km 77, Manacapuru, AM, Brasil - Manacapuru - AM.",
+      "url": "https://roadrunners.run/en/event/2026-corrida-do-comerciario-etapa-manacapuru-2026/",
+      "startDate": "2026-10-11",
+      "endDate": "2026-10-11",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/0RAHSZMSK2OHSD0EOCQXIAWLGPVOTPFNOCLCNB81GY8YWEFDEM.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "arque Miriti, Estr. Manoel Urbano, km 77, Manacapuru-AM: : Loteamento Parque Miriti, Estr. Manoel Urbano, km 77, Manacapuru-AM, km 77, Manacapuru, AM, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Manacapuru",
+          "addressRegion": "AM",
+          "addressCountry": "BR",
+          "streetAddress": "arque Miriti, Estr. Manoel Urbano, km 77, Manacapuru-AM: : Loteamento Parque Miriti, Estr. Manoel Urbano, km 77, Manacapuru-AM, km 77, Manacapuru, AM, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87872&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/am/",
+          "@type": "ListItem",
+          "name": "Races in AM"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-corrida-do-comerciario-etapa-manacapuru-2026/",
+          "@type": "ListItem",
+          "name": "CORRIDA DO COMERCIÁRIO - ETAPA MANACAPURU 2026"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 37728,
+    "url": "https://www.tfsports.com.br/run-series/park-shopping-barigui-2026/",
+    "http": "200",
+    "sha256": "d30266af1feb82d696f52c252be0a18eed6c652f5885ffee14af3e15d9787147",
+    "bytes": 20720
+  },
+  {
+    "id": 45211,
+    "url": "https://inscricaodecorrida.com.br/evento/4a-prime-night-run",
+    "http": "200",
+    "sha256": "5ec50e6eb9e24c4994d7a8e66f517ed8b673e34bfd6dae7b7021e463273ddea2",
+    "bytes": 29201
+  },
+  {
+    "id": 46069,
+    "url": "https://www.sympla.com.br/evento/central-gym-run-2026/3527972",
+    "http": "200",
+    "sha256": "d8e322234a0d1537c46b275cded80b3d52cb6301d26a3758c5e144523299ddd4",
+    "bytes": 201534
+  },
+  {
+    "id": 46080,
+    "url": "https://www.sympla.com.br/evento/corrida-por-patas-2026-corrida-beneficente/3527067",
+    "http": "200",
+    "sha256": "18701a440bddf30e317ebc4c0603dd46333a04c2b82b21361cfa457f2243558f",
+    "bytes": 368985
+  }
+]

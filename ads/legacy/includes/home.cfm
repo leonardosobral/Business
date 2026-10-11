@@ -27,7 +27,7 @@
 
 <cfif NOT VARIABLES.adsLegacyReady>
     <div class="alert alert-warning">
-        <cfoutput>#htmlEditFormat(VARIABLES.adsLegacyError)#</cfoutput>
+        <cfoutput>#encodeForHTML(VARIABLES.adsLegacyError)#</cfoutput>
     </div>
 <cfelse>
     <cfif qAdsLegacySummary.recordcount>
@@ -47,7 +47,7 @@
                     <p class="text-muted mb-0">A consulta mostra no maximo as 100 campanhas mais recentes e nao oferece controles de alteracao.</p>
                 </div>
                 <cfif len(VARIABLES.adsLegacyRealUserName)>
-                    <span class="small text-muted"><cfoutput>#htmlEditFormat(VARIABLES.adsLegacyRealUserName)#</cfoutput></span>
+                    <span class="small text-muted"><cfoutput>#encodeForHTML(VARIABLES.adsLegacyRealUserName)#</cfoutput></span>
                 </cfif>
             </div>
 
@@ -64,9 +64,9 @@
                                 <cfif qAdsLegacyCampaigns.status EQ 3><cfset VARIABLES.adsLegacyStatusLabel = "Pausada"/></cfif>
                                 <cfif qAdsLegacyCampaigns.status EQ 4><cfset VARIABLES.adsLegacyStatusLabel = "Arquivada"/></cfif>
                                 <tr>
-                                    <td><strong>#htmlEditFormat(qAdsLegacyCampaigns.nome_evento)#</strong><div class="small text-muted">#htmlEditFormat(qAdsLegacyCampaigns.cidade)#<cfif len(trim(qAdsLegacyCampaigns.estado))>/#htmlEditFormat(qAdsLegacyCampaigns.estado)#</cfif></div></td>
-                                    <td>#htmlEditFormat(qAdsLegacyCampaigns.contas)#</td>
-                                    <td>#htmlEditFormat(VARIABLES.adsLegacyStatusLabel)#</td>
+                                    <td><strong>#encodeForHTML(qAdsLegacyCampaigns.nome_evento)#</strong><div class="small text-muted">#encodeForHTML(qAdsLegacyCampaigns.cidade)#<cfif len(trim(qAdsLegacyCampaigns.estado))>/#encodeForHTML(qAdsLegacyCampaigns.estado)#</cfif></div></td>
+                                    <td>#encodeForHTML(qAdsLegacyCampaigns.contas)#</td>
+                                    <td>#encodeForHTML(VARIABLES.adsLegacyStatusLabel)#</td>
                                     <td><cfif isDate(qAdsLegacyCampaigns.inicio_ad)>#lsDateFormat(qAdsLegacyCampaigns.inicio_ad, "dd/mm/yyyy")#<cfelse>-</cfif> a <cfif isDate(qAdsLegacyCampaigns.final_ad)>#lsDateFormat(qAdsLegacyCampaigns.final_ad, "dd/mm/yyyy")#<cfelse>-</cfif></td>
                                     <td class="text-end">#lsCurrencyFormat(qAdsLegacyCampaigns.cpc_max)#</td>
                                     <td class="text-end">#numberFormat(qAdsLegacyCampaigns.views, "9,999,999")#</td>

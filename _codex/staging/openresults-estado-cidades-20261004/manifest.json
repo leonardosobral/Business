@@ -1,0 +1,32 @@
+{
+  "git_ref": "e769528c34b23beb6fc3a16ea615184849ce5e5c",
+  "before": {
+    "includes/backend.cfm": "936b73a2eee79807ee9fad021bc57d95b74d0f7bf6843f8f4657d221535bf0cd",
+    "api/eventos_por_estado.cfm": "edd13623b8721d0399c09aedf767ae73cbd337c6f7b761e254653cc5dac8b7ec",
+    "estado/index.cfm": "142e39c23e45d1872f522fbc7d434040609cbc5df697c76ce159b874afba959f"
+  },
+  "after": {
+    "includes/backend.cfm": "7b9902a88586097e0b784d4477082ad6aa21a28655967b93c1232a5fb45d176f",
+    "includes/backend_estado_cidades.cfm": "6587810f6b8a84ca2f80201a7ac8d8863cc7a2a658fca5f6a93add3a244e971b",
+    "assets/js/openresults-estado-cidades.js": "5a49806e7b60d408517ca2d0a194eda4850bbe0beb1280d00c7118a45d4719e7",
+    "assets/css/openresults-estado-cidades.css": "90b8137f398a326d8da27cfbed16c721739d5c46a7cab5ffb8695ea0ae36c35e",
+    "api/eventos_por_estado.cfm": "8ee34c0a54c49fd7515100089957540a9433e77523b6888e0fb6897e90c710b4",
+    "estado/index.cfm": "da2209fc96f7bb3f67b81c58cd6a98a262aea978aa6f593ef94df89b81b2e88b"
+  },
+  "order": [
+    "includes/backend.cfm",
+    "includes/backend_estado_cidades.cfm",
+    "assets/js/openresults-estado-cidades.js",
+    "assets/css/openresults-estado-cidades.css",
+    "api/eventos_por_estado.cfm",
+    "estado/index.cfm"
+  ],
+  "runtime_before": {
+    "includes/backend.cfm": "7b9902a88586097e0b784d4477082ad6aa21a28655967b93c1232a5fb45d176f",
+    "includes/backend_estado_cidades.cfm": "847122856d0ca773d61d4fd719b27612182f194b58d6a9cdac20cece0fe31d95",
+    "assets/js/openresults-estado-cidades.js": "5a49806e7b60d408517ca2d0a194eda4850bbe0beb1280d00c7118a45d4719e7",
+    "assets/css/openresults-estado-cidades.css": "90b8137f398a326d8da27cfbed16c721739d5c46a7cab5ffb8695ea0ae36c35e",
+    "api/eventos_por_estado.cfm": "8ee34c0a54c49fd7515100089957540a9433e77523b6888e0fb6897e90c710b4",
+    "estado/index.cfm": "da2209fc96f7bb3f67b81c58cd6a98a262aea978aa6f593ef94df89b81b2e88b"
+  }
+}

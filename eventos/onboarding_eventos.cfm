@@ -96,11 +96,11 @@
           <cfif isDefined("qEventoSolicitacaoContas") AND qEventoSolicitacaoContas.recordcount GT 1>
             <select class="form-select mb-2" name="id_conta_solicitacao" aria-label="Conta">
               <cfoutput query="qEventoSolicitacaoContas">
-                <option value="#qEventoSolicitacaoContas.id_conta#" <cfif VARIABLES.eventoSolicitacaoSelectedAccountId EQ qEventoSolicitacaoContas.id_conta>selected</cfif>>#htmlEditFormat(qEventoSolicitacaoContas.nome_conta)#</option>
+                <option value="#qEventoSolicitacaoContas.id_conta#" <cfif VARIABLES.eventoSolicitacaoSelectedAccountId EQ qEventoSolicitacaoContas.id_conta>selected</cfif>>#encodeForHTML(qEventoSolicitacaoContas.nome_conta)#</option>
               </cfoutput>
             </select>
           <cfelseif len(trim(VARIABLES.eventoSolicitacaoSelectedAccountId))>
-            <cfoutput><input type="hidden" name="id_conta_solicitacao" value="#htmlEditFormat(VARIABLES.eventoSolicitacaoSelectedAccountId)#"/></cfoutput>
+            <cfoutput><input type="hidden" name="id_conta_solicitacao" value="#encodeForHTMLAttribute(VARIABLES.eventoSolicitacaoSelectedAccountId)#"/></cfoutput>
           </cfif>
           <div class="input-group">
             <input class="form-control" type="text" name="evento_referencia" placeholder="https://roadrunners.run/evento/..."/>

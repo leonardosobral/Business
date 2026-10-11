@@ -1,0 +1,92 @@
+{
+  "events": [
+    {
+      "id_evento": 39867,
+      "row_hash": "43087d8d4765f0aea126e7cd5b29c40e"
+    },
+    {
+      "id_evento": 40879,
+      "row_hash": "71e8b1fbdd741950b2c8f6fc86425766"
+    },
+    {
+      "id_evento": 46585,
+      "row_hash": "01ed1889086717fcac31f63ef4ff1f9a"
+    }
+  ],
+  "routes": [
+    {
+      "row_hash": "52130671cbe9c1399598c2fa44727ebf",
+      "id_evento_percurso": 54925
+    },
+    {
+      "row_hash": "ff6ff748d0a3b4f160a82c85023d6f8c",
+      "id_evento_percurso": 54926
+    },
+    {
+      "row_hash": "23de648019f3dbe80b897f2ffa1cb3b9",
+      "id_evento_percurso": 65367
+    },
+    {
+      "row_hash": "5fe3ad2090dd12c78fa2eae3bd130a25",
+      "id_evento_percurso": 65368
+    },
+    {
+      "row_hash": "d66a082bbfbaf645b90165df8d333b8e",
+      "id_evento_percurso": 67993
+    }
+  ],
+  "dependencies": {
+    "tb_evento_percursos_gpx": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_badges": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_evento_corridas_relaciona": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist_importacao": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_permit_atualiza": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_temp": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_evento_saude_config": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_percurso_migracoes_strava": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_percurso": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_resumo": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_inscricoes": {
+      "count": 0,
+      "hash": null
+    }
+  }
+}

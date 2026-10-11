@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-corrida-toca-raul-barra-mansa/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-toca-raul-barra-mansa/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-toca-raul-barra-mansa/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-toca-raul-barra-mansa/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-toca-raul-barra-mansa/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-corrida-toca-raul-barra-mansa/",
+      "name": "CORRIDA TOCA RAUL BARRA MANSA",
+      "description": "CORRIDA TOCA RAUL BARRA MANSA se realiza el 24 octubre 2026, en Barra Mansa: Parque da Cidade, s/n, Barra Mansa, RJ, Brasil - Barra Mansa - RJ.",
+      "url": "https://roadrunners.run/es/evento/2026-corrida-toca-raul-barra-mansa/",
+      "startDate": "2026-10-24",
+      "endDate": "2026-10-24",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/D2C36RR9LJ97GV8UQ2TE55MWX6VDPC1M75M6TEZZNW7QZ99Z4W.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Barra Mansa: Parque da Cidade, s/n, Barra Mansa, RJ, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Barra Mansa",
+          "addressRegion": "RJ",
+          "addressCountry": "BR",
+          "streetAddress": "Barra Mansa: Parque da Cidade, s/n, Barra Mansa, RJ, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86432&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/rj/",
+          "@type": "ListItem",
+          "name": "Carreras en RJ"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-corrida-toca-raul-barra-mansa/",
+          "@type": "ListItem",
+          "name": "CORRIDA TOCA RAUL BARRA MANSA"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

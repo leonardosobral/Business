@@ -1,0 +1,7 @@
+{
+  "published": [
+    "includes/backend/backend_evento.cfm",
+    "evento/parts/fact_review.cfm"
+  ],
+  "backup": "/var/backups/seo-fact-public-20261004-roadrunners/baseline"
+}

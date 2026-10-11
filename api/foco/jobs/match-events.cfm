@@ -9,7 +9,7 @@ function focoJsonAbort(required numeric statusCode, required struct payload) {
     else if (arguments.statusCode EQ 405) statusText = "Method Not Allowed";
     else if (arguments.statusCode GTE 500) statusText = "Internal Server Error";
 
-    cfheader(statuscode=arguments.statusCode, statustext=statusText);
+    cfheader(statuscode=arguments.statusCode);
     cfcontent(type="application/json; charset=utf-8", reset="true");
     writeOutput(serializeJSON(arguments.payload));
     abort;

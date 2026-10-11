@@ -190,7 +190,7 @@
 
                 <cfoutput><form method="post" action="./?pagina=#VARIABLES.notificationTemplatePage#"></cfoutput>
                   <input type="hidden" name="template_action" value="salvar"/>
-                  <input type="hidden" name="template_record_id" value="<cfif qNotificationTemplateEdit.recordcount><cfoutput>#htmlEditFormat(qNotificationTemplateEdit[VARIABLES.notificationTemplatePk][1])#</cfoutput></cfif>"/>
+                  <input type="hidden" name="template_record_id" value="<cfif qNotificationTemplateEdit.recordcount><cfoutput>#encodeForHTMLAttribute(qNotificationTemplateEdit[VARIABLES.notificationTemplatePk][1])#</cfoutput></cfif>"/>
 
                   <div class="row notification-template-form-grid">
                     <cfloop query="qNotificationTemplateColumns">
@@ -237,7 +237,7 @@
                         <cfoutput>
                           <div class="#VARIABLES.notificationTemplateFieldColClass#">
                             <div class="notification-template-field-card">
-                              <label class="form-label">#htmlEditFormat(VARIABLES.notificationTemplateFieldLabel)#</label>
+                              <label class="form-label">#encodeForHTML(VARIABLES.notificationTemplateFieldLabel)#</label>
 
                               <cfif VARIABLES.notificationTemplateFieldType EQ "boolean">
                                 <input type="hidden" name="#VARIABLES.notificationTemplateFieldName#" value="false"/>
@@ -275,40 +275,40 @@
                                 <div class="row g-3">
                                   <div class="col-12 col-md-5">
                                     <label class="form-label" for="template_content_title">Título da notificação</label>
-                                    <input class="form-control" type="text" id="template_content_title" name="template_content_title" value="#htmlEditFormat(VARIABLES.notificationTemplateContentTitleValue)#" required/>
+                                    <input class="form-control" type="text" id="template_content_title" name="template_content_title" value="#encodeForHTMLAttribute(VARIABLES.notificationTemplateContentTitleValue)#" required/>
                                   </div>
                                   <div class="col-12 col-md-7">
                                     <label class="form-label" for="template_content_text">Conteúdo da notificação</label>
-                                    <input class="form-control" type="text" id="template_content_text" name="template_content_text" value="#htmlEditFormat(VARIABLES.notificationTemplateContentTextValue)#" required/>
+                                    <input class="form-control" type="text" id="template_content_text" name="template_content_text" value="#encodeForHTMLAttribute(VARIABLES.notificationTemplateContentTextValue)#" required/>
                                   </div>
                                 </div>
                                 <div class="form-text">Será salvo como: &lt;strong&gt;título&lt;/strong&gt;&lt;br&gt;&lt;small&gt;conteúdo&lt;/small&gt;</div>
                               <cfelseif VARIABLES.notificationTemplateIsContentField>
-                                <textarea class="form-control" name="#VARIABLES.notificationTemplateFieldName#" rows="5">#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#</textarea>
+                                <textarea class="form-control" name="#VARIABLES.notificationTemplateFieldName#" rows="5">#encodeForHTML(VARIABLES.notificationTemplateFieldValueFormatted)#</textarea>
                               <cfelseif VARIABLES.notificationTemplateIsDateTimeField>
-                                <input class="form-control" type="datetime-local" name="#VARIABLES.notificationTemplateFieldName#" value="#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#" step="60"/>
+                                <input class="form-control" type="datetime-local" name="#VARIABLES.notificationTemplateFieldName#" value="#encodeForHTMLAttribute(VARIABLES.notificationTemplateFieldValueFormatted)#" step="60"/>
                               <cfelseif VARIABLES.notificationTemplateIsDateField>
-                                <input class="form-control" type="date" name="#VARIABLES.notificationTemplateFieldName#" value="#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#"/>
+                                <input class="form-control" type="date" name="#VARIABLES.notificationTemplateFieldName#" value="#encodeForHTMLAttribute(VARIABLES.notificationTemplateFieldValueFormatted)#"/>
                               <cfelseif VARIABLES.notificationTemplateIsIntegerField>
-                                <input class="form-control" type="number" name="#VARIABLES.notificationTemplateFieldName#" value="#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#" step="1" inputmode="numeric"/>
+                                <input class="form-control" type="number" name="#VARIABLES.notificationTemplateFieldName#" value="#encodeForHTMLAttribute(VARIABLES.notificationTemplateFieldValueFormatted)#" step="1" inputmode="numeric"/>
                               <cfelseif VARIABLES.notificationTemplateIsIconField>
                                 <div class="notification-template-icon-picker">
                                   <select class="form-select notification-template-icon-select js-notification-template-icon-select" data-target-input="#VARIABLES.notificationTemplateFieldName#" data-target-preview="preview_#VARIABLES.notificationTemplateFieldName#">
                                     <option value="">Selecione um ícone da biblioteca</option>
                                     <cfloop array="#VARIABLES.notificationTemplateIconOptions#" index="notificationTemplateIconOption">
-                                      <option value="#htmlEditFormat(notificationTemplateIconOption.value)#" <cfif trim(VARIABLES.notificationTemplateFieldValueFormatted) EQ notificationTemplateIconOption.value>selected</cfif>>#htmlEditFormat(notificationTemplateIconOption.label)#</option>
+                                      <option value="#encodeForHTMLAttribute(notificationTemplateIconOption.value)#" <cfif trim(VARIABLES.notificationTemplateFieldValueFormatted) EQ notificationTemplateIconOption.value>selected</cfif>>#encodeForHTML(notificationTemplateIconOption.label)#</option>
                                     </cfloop>
                                   </select>
-                                  <input class="form-control js-notification-template-icon-input" type="text" id="#VARIABLES.notificationTemplateFieldName#" name="#VARIABLES.notificationTemplateFieldName#" value="#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#" placeholder="Ex.: fa-solid fa-bell" data-preview-target="preview_#VARIABLES.notificationTemplateFieldName#"/>
+                                  <input class="form-control js-notification-template-icon-input" type="text" id="#VARIABLES.notificationTemplateFieldName#" name="#VARIABLES.notificationTemplateFieldName#" value="#encodeForHTMLAttribute(VARIABLES.notificationTemplateFieldValueFormatted)#" placeholder="Ex.: fa-solid fa-bell" data-preview-target="preview_#VARIABLES.notificationTemplateFieldName#"/>
                                   <div class="notification-template-icon-preview" id="preview_#VARIABLES.notificationTemplateFieldName#">
-                                    <i class="<cfif len(trim(VARIABLES.notificationTemplateFieldValueFormatted))>#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#<cfelse>fa-solid fa-icons</cfif>"></i>
-                                    <div class="notification-template-icon-preview-code"><cfif len(trim(VARIABLES.notificationTemplateFieldValueFormatted))>#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#<cfelse>Selecione ou informe uma classe Font Awesome usada no projeto.</cfif></div>
+                                    <i class="<cfif len(trim(VARIABLES.notificationTemplateFieldValueFormatted))>#encodeForHTMLAttribute(VARIABLES.notificationTemplateFieldValueFormatted)#<cfelse>fa-solid fa-icons</cfif>"></i>
+                                    <div class="notification-template-icon-preview-code"><cfif len(trim(VARIABLES.notificationTemplateFieldValueFormatted))>#encodeForHTML(VARIABLES.notificationTemplateFieldValueFormatted)#<cfelse>Selecione ou informe uma classe Font Awesome usada no projeto.</cfif></div>
                                   </div>
                                 </div>
                               <cfelseif VARIABLES.notificationTemplateFieldType EQ "text" OR (isNumeric(qNotificationTemplateColumns.character_maximum_length) AND qNotificationTemplateColumns.character_maximum_length GT 180)>
-                                <textarea class="form-control" name="#VARIABLES.notificationTemplateFieldName#" rows="5">#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#</textarea>
+                                <textarea class="form-control" name="#VARIABLES.notificationTemplateFieldName#" rows="5">#encodeForHTML(VARIABLES.notificationTemplateFieldValueFormatted)#</textarea>
                               <cfelse>
-                                <input class="form-control" type="text" name="#VARIABLES.notificationTemplateFieldName#" value="#htmlEditFormat(VARIABLES.notificationTemplateFieldValueFormatted)#"/>
+                                <input class="form-control" type="text" name="#VARIABLES.notificationTemplateFieldName#" value="#encodeForHTMLAttribute(VARIABLES.notificationTemplateFieldValueFormatted)#"/>
                               </cfif>
                             </div>
                           </div>
@@ -363,18 +363,18 @@
                         </cfif>
                       </cfif>
                       <tr>
-                        <td class="notification-template-cell">#htmlEditFormat(VARIABLES.notificationTemplatePkValue)#</td>
+                        <td class="notification-template-cell">#encodeForHTML(VARIABLES.notificationTemplatePkValue)#</td>
                         <td class="notification-template-cell">
                           <cfif len(trim(VARIABLES.notificationTemplateCampaignValue))>
-                            #htmlEditFormat(VARIABLES.notificationTemplateCampaignValue)#
+                            #encodeForHTML(VARIABLES.notificationTemplateCampaignValue)#
                           <cfelse>
                             <span class="text-muted">-</span>
                           </cfif>
                         </td>
                         <td class="notification-template-cell">
                           <cfif len(trim(VARIABLES.notificationTemplateIconValue))>
-                            <span class="notification-template-list-icon" title="#htmlEditFormat(VARIABLES.notificationTemplateIconValue)#">
-                              <i class="#htmlEditFormat(VARIABLES.notificationTemplateIconValue)#"></i>
+                            <span class="notification-template-list-icon" title="#encodeForHTMLAttribute(VARIABLES.notificationTemplateIconValue)#">
+                              <i class="#encodeForHTMLAttribute(VARIABLES.notificationTemplateIconValue)#"></i>
                             </span>
                           <cfelse>
                             <span class="text-muted">-</span>
@@ -391,7 +391,7 @@
                           <div class="d-flex flex-wrap gap-2">
                             <a class="btn btn-sm btn-outline-warning" href="./?pagina=#VARIABLES.notificationTemplatePage#&template_editar=#urlEncodedFormat(VARIABLES.notificationTemplatePkValue)#">Editar</a>
                             <cfif len(trim(VARIABLES.notificationTemplatePublicLink))>
-                              <a class="btn btn-sm btn-outline-info" href="#htmlEditFormat(VARIABLES.notificationTemplatePublicLink)#" target="_blank" rel="noopener noreferrer">Link</a>
+                              <a class="btn btn-sm btn-outline-info" href="#encodeForHTMLAttribute(VARIABLES.notificationTemplatePublicLink)#" target="_blank" rel="noopener noreferrer">Link</a>
                             </cfif>
                             <a class="btn btn-sm btn-outline-danger" href="./?acao=excluir&template_id=#urlEncodedFormat(VARIABLES.notificationTemplatePkValue)#&pagina=#VARIABLES.notificationTemplatePage#" onclick="return confirm('Tem certeza que deseja excluir este template de notificação?');">Excluir</a>
                           </div>

@@ -51,14 +51,14 @@
 <cfheader name="Referrer-Policy" value="no-referrer"/>
 <cfheader name="Vary" value="Referer, Origin"/>
 <cfheader name="Cache-Control" value="private, max-age=120"/>
-<cfif VARIABLES.agendaRenderStatus NEQ 200><cfheader statuscode="#VARIABLES.agendaRenderStatus#" statustext="Agenda unavailable"/></cfif>
+<cfif VARIABLES.agendaRenderStatus NEQ 200><cfheader statuscode="#VARIABLES.agendaRenderStatus#"/></cfif>
 <cfcontent type="text/html; charset=utf-8" reset="true"/>
 <!doctype html>
-<html lang="pt-BR" data-theme="<cfoutput>#htmlEditFormat(VARIABLES.agendaRenderTheme)#</cfoutput>" data-card-font="<cfoutput>#htmlEditFormat(VARIABLES.agendaRenderCardFont)#</cfoutput>" data-card-radius="<cfoutput>#htmlEditFormat(VARIABLES.agendaRenderCardRadius)#</cfoutput>">
+<html lang="pt-BR" data-theme="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaRenderTheme)#</cfoutput>" data-card-font="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaRenderCardFont)#</cfoutput>" data-card-radius="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaRenderCardRadius)#</cfoutput>">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title><cfif qAgendaRenderAgenda.recordcount><cfoutput>#htmlEditFormat(qAgendaRenderAgenda.nome)#</cfoutput><cfelse>Agenda Road Runners</cfif></title>
+  <title><cfif qAgendaRenderAgenda.recordcount><cfoutput>#encodeForHTML(qAgendaRenderAgenda.nome)#</cfoutput><cfelse>Agenda Road Runners</cfif></title>
   <style nonce="<cfoutput>#VARIABLES.agendaRenderCspNonce#</cfoutput>">
     :root {
       color-scheme: dark;
@@ -70,8 +70,8 @@
       --rr-border: rgba(255, 255, 255, .1);
       --rr-chip: rgba(255, 255, 255, .075);
       --rr-chip-border: rgba(255, 255, 255, .06);
-      --rr-date: <cfoutput>#htmlEditFormat(VARIABLES.agendaRenderDateColor)#</cfoutput>;
-      --rr-date-text: <cfoutput>#htmlEditFormat(VARIABLES.agendaRenderDateTextColor)#</cfoutput>;
+      --rr-date: <cfoutput>#encodeForHTML(VARIABLES.agendaRenderDateColor)#</cfoutput>;
+      --rr-date-text: <cfoutput>#encodeForHTML(VARIABLES.agendaRenderDateTextColor)#</cfoutput>;
       --rr-card-font: "Trebuchet MS", "Avenir Next", sans-serif;
       --rr-card-radius: 16px;
       --rr-date-radius: 12px;
@@ -146,10 +146,10 @@
 <body>
   <main class="rr-agenda">
     <cfif VARIABLES.agendaRenderStatus NEQ 200>
-      <div class="rr-error"><cfoutput>#htmlEditFormat(VARIABLES.agendaRenderMessage)#</cfoutput></div>
+      <div class="rr-error"><cfoutput>#encodeForHTML(VARIABLES.agendaRenderMessage)#</cfoutput></div>
     <cfelse>
       <header class="rr-agenda-header">
-        <h1 class="rr-agenda-title"><cfoutput>#htmlEditFormat(qAgendaRenderAgenda.nome)#</cfoutput></h1>
+        <h1 class="rr-agenda-title"><cfoutput>#encodeForHTML(qAgendaRenderAgenda.nome)#</cfoutput></h1>
         <div class="rr-agenda-view"><cfif VARIABLES.agendaRenderView EQ "resultados">Resultados publicados<cfelse>Proximos eventos</cfif></div>
       </header>
 
@@ -162,12 +162,12 @@
           <a class="rr-card" href="https://roadrunners.run/evento/#urlEncodedFormat(tag)#/" target="_blank" rel="noopener">
             <div class="rr-date"><span class="rr-date-day">#dateFormat(data_final, "dd")#</span><span class="rr-date-month">#agendaServiceMonthAbbreviationPtBr(data_final)#</span><span class="rr-date-year">#dateFormat(data_final, "yyyy")#</span></div>
             <div class="rr-card-main">
-              <div class="rr-card-title">#htmlEditFormat(nome_evento)#</div>
+              <div class="rr-card-title">#encodeForHTML(nome_evento)#</div>
               <div class="rr-card-location">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>#htmlEditFormat(VARIABLES.agendaRenderCity)#<cfif len(VARIABLES.agendaRenderState)> - #htmlEditFormat(VARIABLES.agendaRenderState)#</cfif><cfif len(VARIABLES.agendaRenderCountry) AND VARIABLES.agendaRenderCountry NEQ "BR"> - #htmlEditFormat(VARIABLES.agendaRenderCountry)#</cfif>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>#encodeForHTML(VARIABLES.agendaRenderCity)#<cfif len(VARIABLES.agendaRenderState)> - #encodeForHTML(VARIABLES.agendaRenderState)#</cfif><cfif len(VARIABLES.agendaRenderCountry) AND VARIABLES.agendaRenderCountry NEQ "BR"> - #encodeForHTML(VARIABLES.agendaRenderCountry)#</cfif>
               </div>
               <cfif arrayLen(VARIABLES.agendaRenderDistances)><div class="rr-tags">
-                <cfloop array="#VARIABLES.agendaRenderDistances#" index="agendaRenderDistance"><span class="rr-tag">#int(agendaRenderDistance.distancia)# #htmlEditFormat(agendaRenderDistance.unidade)#</span></cfloop>
+                <cfloop array="#VARIABLES.agendaRenderDistances#" index="agendaRenderDistance"><span class="rr-tag">#int(agendaRenderDistance.distancia)# #encodeForHTML(agendaRenderDistance.unidade)#</span></cfloop>
               </div></cfif>
             </div>
           </a>

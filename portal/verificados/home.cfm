@@ -90,7 +90,7 @@
                       <cfset VARIABLES.verifiedLastChallengeOption = "__none__"/>
                       <cfloop query="qVerifiedChallengeProducts">
                         <cfif qVerifiedChallengeProducts.desafio NEQ VARIABLES.verifiedLastChallengeOption>
-                          <option value="#htmlEditFormat(qVerifiedChallengeProducts.desafio)#" <cfif VARIABLES.verifiedFilterDesafio EQ qVerifiedChallengeProducts.desafio>selected</cfif>>#htmlEditFormat(qVerifiedChallengeProducts.desafio)#</option>
+                          <option value="#encodeForHTMLAttribute(qVerifiedChallengeProducts.desafio)#" <cfif VARIABLES.verifiedFilterDesafio EQ qVerifiedChallengeProducts.desafio>selected</cfif>>#encodeForHTML(qVerifiedChallengeProducts.desafio)#</option>
                           <cfset VARIABLES.verifiedLastChallengeOption = qVerifiedChallengeProducts.desafio/>
                         </cfif>
                       </cfloop>
@@ -102,8 +102,8 @@
                     <select class="form-select" name="filter_produto">
                       <option value="">Qualquer produto</option>
                       <cfloop query="qVerifiedChallengeProducts">
-                        <option value="#htmlEditFormat(qVerifiedChallengeProducts.produto)#" <cfif VARIABLES.verifiedFilterProduto EQ qVerifiedChallengeProducts.produto>selected</cfif>>
-                          #htmlEditFormat(qVerifiedChallengeProducts.desafio)# / #htmlEditFormat(qVerifiedChallengeProducts.nome_produto)# (#htmlEditFormat(qVerifiedChallengeProducts.produto)#)
+                        <option value="#encodeForHTMLAttribute(qVerifiedChallengeProducts.produto)#" <cfif VARIABLES.verifiedFilterProduto EQ qVerifiedChallengeProducts.produto>selected</cfif>>
+                          #encodeForHTML(qVerifiedChallengeProducts.desafio)# / #encodeForHTML(qVerifiedChallengeProducts.nome_produto)# (#encodeForHTML(qVerifiedChallengeProducts.produto)#)
                         </option>
                       </cfloop>
                     </select>
@@ -160,17 +160,17 @@
                   <form method="get" action="./" class="mb-4">
                     <input type="hidden" name="pagina" value="#VARIABLES.verifiedPage#"/>
                     <input type="hidden" name="page_novo" value="1"/>
-                    <input type="hidden" name="filter_status" value="#htmlEditFormat(VARIABLES.verifiedFilterStatus)#"/>
-                    <input type="hidden" name="filter_logic" value="#htmlEditFormat(VARIABLES.verifiedFilterLogic)#"/>
-                    <input type="hidden" name="filter_desafio" value="#htmlEditFormat(VARIABLES.verifiedFilterDesafio)#"/>
-                    <input type="hidden" name="filter_produto" value="#htmlEditFormat(VARIABLES.verifiedFilterProduto)#"/>
+                    <input type="hidden" name="filter_status" value="#encodeForHTMLAttribute(VARIABLES.verifiedFilterStatus)#"/>
+                    <input type="hidden" name="filter_logic" value="#encodeForHTMLAttribute(VARIABLES.verifiedFilterLogic)#"/>
+                    <input type="hidden" name="filter_desafio" value="#encodeForHTMLAttribute(VARIABLES.verifiedFilterDesafio)#"/>
+                    <input type="hidden" name="filter_produto" value="#encodeForHTMLAttribute(VARIABLES.verifiedFilterProduto)#"/>
                     <cfif VARIABLES.verifiedFilterAdmin><input type="hidden" name="filter_admin" value="true"/></cfif>
                     <cfif VARIABLES.verifiedFilterDev><input type="hidden" name="filter_dev" value="true"/></cfif>
                     <cfif VARIABLES.verifiedFilterPartner><input type="hidden" name="filter_partner" value="true"/></cfif>
                     <div class="row g-3 align-items-end">
                       <div class="col-12 col-lg-8">
                         <label class="form-label">Buscar usuário ou página</label>
-                        <input class="form-control" type="text" name="user_busca" value="#htmlEditFormat(URL.user_busca)#" placeholder="Digite nome, e-mail, ID do usuário, ID da página, nome ou tag da página"/>
+                        <input class="form-control" type="text" name="user_busca" value="#encodeForHTMLAttribute(URL.user_busca)#" placeholder="Digite nome, e-mail, ID do usuário, ID da página, nome ou tag da página"/>
                       </div>
                       <div class="col-12 col-lg-4">
                         <button type="submit" class="btn btn-outline-warning w-100">Buscar</button>
@@ -190,12 +190,12 @@
                       <input type="hidden" name="verified_page_id" value="<cfoutput>#qVerifiedPageEdit.id_pagina#</cfoutput>"/>
                       <div class="form-control bg-body-tertiary" style="min-height: 38px;">
                         <cfoutput>
-                          Página ## #qVerifiedPageEdit.id_pagina# - #htmlEditFormat(qVerifiedPageEdit.pagina_nome)#
+                          Página ## #qVerifiedPageEdit.id_pagina# - #encodeForHTML(qVerifiedPageEdit.pagina_nome)#
                           <cfif len(trim(qVerifiedPageEdit.tag))>
-                            (#htmlEditFormat(qVerifiedPageEdit.tag)#)
+                            (#encodeForHTML(qVerifiedPageEdit.tag)#)
                           </cfif>
                           <br/>
-                          <span class="small text-muted">Usuário ## #qVerifiedPageEdit.id_usuario# - #htmlEditFormat(qVerifiedPageEdit.name)# - #htmlEditFormat(qVerifiedPageEdit.email)#</span>
+                          <span class="small text-muted">Usuário ## #qVerifiedPageEdit.id_usuario# - #encodeForHTML(qVerifiedPageEdit.name)# - #encodeForHTML(qVerifiedPageEdit.email)#</span>
                         </cfoutput>
                       </div>
                     <cfelse>
@@ -203,11 +203,11 @@
                         <option value="">Selecione uma página encontrada</option>
                         <cfoutput query="qVerifiedPagesSearch">
                           <option value="#qVerifiedPagesSearch.id_pagina#">
-                            Página ## #qVerifiedPagesSearch.id_pagina# - #htmlEditFormat(qVerifiedPagesSearch.pagina_nome)#
+                            Página ## #qVerifiedPagesSearch.id_pagina# - #encodeForHTML(qVerifiedPagesSearch.pagina_nome)#
                             <cfif len(trim(qVerifiedPagesSearch.tag))>
-                              (#htmlEditFormat(qVerifiedPagesSearch.tag)#)
+                              (#encodeForHTML(qVerifiedPagesSearch.tag)#)
                             </cfif>
-                            - Usuário ## #qVerifiedPagesSearch.id_usuario# - #htmlEditFormat(qVerifiedPagesSearch.name)# - #htmlEditFormat(qVerifiedPagesSearch.email)#
+                            - Usuário ## #qVerifiedPagesSearch.id_usuario# - #encodeForHTML(qVerifiedPagesSearch.name)# - #encodeForHTML(qVerifiedPagesSearch.email)#
                           </option>
                         </cfoutput>
                       </select>
@@ -282,9 +282,9 @@
                       </td>
                       <td class="verified-cell">#qVerifiedPages.id_usuario#</td>
                       <td class="verified-cell">
-                        #htmlEditFormat(qVerifiedPages.name)#
+                        #encodeForHTML(qVerifiedPages.name)#
                         <cfif len(trim(qVerifiedPages.email))>
-                          <div class="small text-muted">#htmlEditFormat(qVerifiedPages.email)#</div>
+                          <div class="small text-muted">#encodeForHTML(qVerifiedPages.email)#</div>
                         </cfif>
                         <div class="d-flex flex-wrap gap-1 mt-1">
                           <cfif qVerifiedPages.is_admin><span class="badge badge-warning">ADMIN</span></cfif>
@@ -292,18 +292,18 @@
                           <cfif qVerifiedPages.is_partner><span class="badge badge-success">PARTNER</span></cfif>
                         </div>
                         <cfif len(trim(qVerifiedPages.desafios_usuario))>
-                          <div class="small text-muted mt-1">#htmlEditFormat(qVerifiedPages.desafios_usuario)#</div>
+                          <div class="small text-muted mt-1">#encodeForHTML(qVerifiedPages.desafios_usuario)#</div>
                         </cfif>
                       </td>
                       <td class="verified-cell">
                         <cfif len(trim(qVerifiedPages.tag))>
-                          <a href="https://roadrunners.run/atleta/#urlEncodedFormat(qVerifiedPages.tag)#" target="_blank" rel="noopener noreferrer">#htmlEditFormat(qVerifiedPages.pagina_nome)#</a>
+                          <a href="https://roadrunners.run/atleta/#urlEncodedFormat(qVerifiedPages.tag)#" target="_blank" rel="noopener noreferrer">#encodeForHTML(qVerifiedPages.pagina_nome)#</a>
                         <cfelse>
-                          #htmlEditFormat(qVerifiedPages.pagina_nome)#
+                          #encodeForHTML(qVerifiedPages.pagina_nome)#
                         </cfif>
                         <div class="small text-muted">ID #qVerifiedPages.id_pagina#</div>
                         <cfif len(trim(qVerifiedPages.tag))>
-                          <div class="small text-muted">#htmlEditFormat(qVerifiedPages.tag)#</div>
+                          <div class="small text-muted">#encodeForHTML(qVerifiedPages.tag)#</div>
                         </cfif>
                       </td>
                       <td class="verified-cell">

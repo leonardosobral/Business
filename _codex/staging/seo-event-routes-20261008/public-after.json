@@ -1,0 +1,2523 @@
+[
+  {
+    "path": "/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+    "kind": "title",
+    "lang": "pt-BR",
+    "status": 200,
+    "title": "Meia Maratona Internacional de Florianópolis | Florianópolis SC | 04/05/2025 - corrida de rua | Road Runners",
+    "h1": "Meia Maratona Internacional de Florianópolis Oakberry 2025",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Meia Maratona Internacional de Florianópolis Oakberry 2025 acontece em 04 maio 2025, em Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+        "name": "Meia Maratona Internacional de Florianópolis Oakberry 2025",
+        "description": "Meia Maratona Internacional de Florianópolis Oakberry 2025 acontece em 04 maio 2025, em Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal - Florianópolis - SC.",
+        "url": "https://roadrunners.run/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+        "startDate": "2025-05-04",
+        "endDate": "2025-05-04",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/50P9M411XXGTO3T3RPRW66BNDAMD4WSX262HANPPGUP0A7BIJ9.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-27.5830689",
+            "longitude": "-48.5449853"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=49187&origem=ticketsports&lang=pt-BR"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+            "@type": "ListItem",
+            "name": "Meia Maratona Internacional de Florianópolis Oakberry 2025"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/en/event/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+    "kind": "title",
+    "lang": "en",
+    "status": 200,
+    "title": "Meia Maratona Internacional de Florianópolis | Florianópolis SC | 04/05/2025 - Road race | Road Runners",
+    "h1": "Meia Maratona Internacional de Florianópolis Oakberry 2025",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Meia Maratona Internacional de Florianópolis Oakberry 2025 takes place on 04 may 2025, in Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/en/event/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/en/event/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+        "name": "Meia Maratona Internacional de Florianópolis Oakberry 2025",
+        "description": "Meia Maratona Internacional de Florianópolis Oakberry 2025 takes place on 04 may 2025, in Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal - Florianópolis - SC.",
+        "url": "https://roadrunners.run/en/event/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+        "startDate": "2025-05-04",
+        "endDate": "2025-05-04",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/50P9M411XXGTO3T3RPRW66BNDAMD4WSX262HANPPGUP0A7BIJ9.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-27.5830689",
+            "longitude": "-48.5449853"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=49187&origem=ticketsports&lang=pt-BR"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/en/",
+            "@type": "ListItem",
+            "name": "Home"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/en/event/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+            "@type": "ListItem",
+            "name": "Meia Maratona Internacional de Florianópolis Oakberry 2025"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/es/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+    "kind": "title",
+    "lang": "es",
+    "status": 200,
+    "title": "Meia Maratona Internacional de Florianópolis | Florianópolis SC | 04/05/2025 - Carrera de ruta | Road Runners",
+    "h1": "Meia Maratona Internacional de Florianópolis Oakberry 2025",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Meia Maratona Internacional de Florianópolis Oakberry 2025 se realiza el 04 mayo 2025, en Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/es/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/es/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+        "name": "Meia Maratona Internacional de Florianópolis Oakberry 2025",
+        "description": "Meia Maratona Internacional de Florianópolis Oakberry 2025 se realiza el 04 mayo 2025, en Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal - Florianópolis - SC.",
+        "url": "https://roadrunners.run/es/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+        "startDate": "2025-05-04",
+        "endDate": "2025-05-04",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/50P9M411XXGTO3T3RPRW66BNDAMD4WSX262HANPPGUP0A7BIJ9.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Av. Beira Mar Norte, Praça Portugal (Trapiche da Beira Mar): Praça de Portugal"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-27.5830689",
+            "longitude": "-48.5449853"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=49187&origem=ticketsports&lang=pt-BR"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/es/",
+            "@type": "ListItem",
+            "name": "Inicio"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/es/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+            "@type": "ListItem",
+            "name": "Meia Maratona Internacional de Florianópolis Oakberry 2025"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+    "kind": "title",
+    "lang": "pt-BR",
+    "status": 200,
+    "title": "Jurerê Night Run - Hard Rock Cafe Florianópolis | Florianópolis SC | 15/03/2025 - corrida de rua | Road Runners",
+    "h1": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025 acontece em 15 março 2025, em Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+        "name": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025",
+        "description": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025 acontece em 15 março 2025, em Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC.",
+        "url": "https://roadrunners.run/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+        "startDate": "2025-03-15",
+        "endDate": "2025-03-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/XYO1VVR3QORHC1BSHM3JM10RRP7TYYLPSPJ2156R5WY9Z3WDPT.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Jurerê Internacional: Av. dos Merlins, 00",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Jurerê Internacional: Av. dos Merlins, 00"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-27.4385919",
+            "longitude": "-48.4998186"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=70512&origem=ticketsports&lang=pt-BR"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+            "@type": "ListItem",
+            "name": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/en/event/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+    "kind": "title",
+    "lang": "en",
+    "status": 200,
+    "title": "Jurerê Night Run - Hard Rock Cafe Florianópolis | Florianópolis SC | 15/03/2025 - Road race | Road Runners",
+    "h1": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025 takes place on 15 march 2025, in Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/en/event/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/en/event/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+        "name": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025",
+        "description": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025 takes place on 15 march 2025, in Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC.",
+        "url": "https://roadrunners.run/en/event/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+        "startDate": "2025-03-15",
+        "endDate": "2025-03-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/XYO1VVR3QORHC1BSHM3JM10RRP7TYYLPSPJ2156R5WY9Z3WDPT.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Jurerê Internacional: Av. dos Merlins, 00",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Jurerê Internacional: Av. dos Merlins, 00"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-27.4385919",
+            "longitude": "-48.4998186"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=70512&origem=ticketsports&lang=pt-BR"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/en/",
+            "@type": "ListItem",
+            "name": "Home"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/en/event/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+            "@type": "ListItem",
+            "name": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/es/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+    "kind": "title",
+    "lang": "es",
+    "status": 200,
+    "title": "Jurerê Night Run - Hard Rock Cafe Florianópolis | Florianópolis SC | 15/03/2025 - Carrera de ruta | Road Runners",
+    "h1": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025 se realiza el 15 marzo 2025, en Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/es/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/es/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+        "name": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025",
+        "description": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025 se realiza el 15 marzo 2025, en Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC.",
+        "url": "https://roadrunners.run/es/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+        "startDate": "2025-03-15",
+        "endDate": "2025-03-15",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/XYO1VVR3QORHC1BSHM3JM10RRP7TYYLPSPJ2156R5WY9Z3WDPT.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Jurerê Internacional: Av. dos Merlins, 00",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Jurerê Internacional: Av. dos Merlins, 00"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-27.4385919",
+            "longitude": "-48.4998186"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=70512&origem=ticketsports&lang=pt-BR"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/es/",
+            "@type": "ListItem",
+            "name": "Inicio"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/es/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+            "@type": "ListItem",
+            "name": "Jurerê Night Run - Hard Rock Cafe Florianópolis 2025"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+    "kind": "title",
+    "lang": "pt-BR",
+    "status": 200,
+    "title": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS | Florianópolis SC | 14/03/2026 - corrida de rua | Road Runners",
+    "h1": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026",
+    "meta": [
+      {
+        "name": "description",
+        "content": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026 acontece em 14 março 2026, em Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+        "name": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026",
+        "description": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026 acontece em 14 março 2026, em Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC.",
+        "url": "https://roadrunners.run/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+        "startDate": "2026-03-14",
+        "endDate": "2026-03-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/55LL6FDQ6VG8K421PJZWMQAJD0HSAGG13DR7W6B41ZQKE8UB8Q.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Jurerê Internacional: Av. dos Merlins, 00",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Jurerê Internacional: Av. dos Merlins, 00"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=84930&origem=novo-site&lang=pt-BR"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+            "@type": "ListItem",
+            "name": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/en/event/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+    "kind": "title",
+    "lang": "en",
+    "status": 200,
+    "title": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS | Florianópolis SC | 14/03/2026 - Road race | Road Runners",
+    "h1": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026",
+    "meta": [
+      {
+        "name": "description",
+        "content": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026 takes place on 14 march 2026, in Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/en/event/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/en/event/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+        "name": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026",
+        "description": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026 takes place on 14 march 2026, in Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC.",
+        "url": "https://roadrunners.run/en/event/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+        "startDate": "2026-03-14",
+        "endDate": "2026-03-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/55LL6FDQ6VG8K421PJZWMQAJD0HSAGG13DR7W6B41ZQKE8UB8Q.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Jurerê Internacional: Av. dos Merlins, 00",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Jurerê Internacional: Av. dos Merlins, 00"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=84930&origem=novo-site&lang=pt-BR"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/en/",
+            "@type": "ListItem",
+            "name": "Home"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/en/event/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+            "@type": "ListItem",
+            "name": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/es/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+    "kind": "title",
+    "lang": "es",
+    "status": 200,
+    "title": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS | Florianópolis SC | 14/03/2026 - Carrera de ruta | Road Runners",
+    "h1": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026",
+    "meta": [
+      {
+        "name": "description",
+        "content": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026 se realiza el 14 marzo 2026, en Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/es/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/es/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+        "name": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026",
+        "description": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026 se realiza el 14 marzo 2026, en Jurerê Internacional: Av. dos Merlins, 00 - Florianópolis - SC.",
+        "url": "https://roadrunners.run/es/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+        "startDate": "2026-03-14",
+        "endDate": "2026-03-14",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/55LL6FDQ6VG8K421PJZWMQAJD0HSAGG13DR7W6B41ZQKE8UB8Q.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Jurerê Internacional: Av. dos Merlins, 00",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Jurerê Internacional: Av. dos Merlins, 00"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=84930&origem=novo-site&lang=pt-BR"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/es/",
+            "@type": "ListItem",
+            "name": "Inicio"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/es/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+            "@type": "ListItem",
+            "name": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 2026"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+    "kind": "title",
+    "lang": "pt-BR",
+    "status": 200,
+    "title": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS | Florianópolis SC | 01/05/2027 - corrida de rua | Road Runners",
+    "h1": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027",
+    "meta": [
+      {
+        "name": "description",
+        "content": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027 acontece de 01 maio a 02 maio 2027, em Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+        "name": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027",
+        "description": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027 acontece de 01 maio a 02 maio 2027, em Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil - Florianópolis - SC.",
+        "url": "https://roadrunners.run/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+        "startDate": "2027-05-01",
+        "endDate": "2027-05-02",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/1XDOZZA51E1LH7AO5FEEYKT5YXG5BHUQG05O3GRSUM2Z3JF3JE.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87178&origem=novo-site&lang=en-US"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+            "@type": "ListItem",
+            "name": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/en/event/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+    "kind": "title",
+    "lang": "en",
+    "status": 200,
+    "title": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS | Florianópolis SC | 01/05/2027 - Road race | Road Runners",
+    "h1": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027",
+    "meta": [
+      {
+        "name": "description",
+        "content": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027 takes place from 01 may to 02 may 2027, in Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/en/event/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/en/event/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+        "name": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027",
+        "description": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027 takes place from 01 may to 02 may 2027, in Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil - Florianópolis - SC.",
+        "url": "https://roadrunners.run/en/event/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+        "startDate": "2027-05-01",
+        "endDate": "2027-05-02",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/1XDOZZA51E1LH7AO5FEEYKT5YXG5BHUQG05O3GRSUM2Z3JF3JE.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87178&origem=novo-site&lang=en-US"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/en/",
+            "@type": "ListItem",
+            "name": "Home"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/en/event/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+            "@type": "ListItem",
+            "name": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/es/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+    "kind": "title",
+    "lang": "es",
+    "status": 200,
+    "title": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS | Florianópolis SC | 01/05/2027 - Carrera de ruta | Road Runners",
+    "h1": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027",
+    "meta": [
+      {
+        "name": "description",
+        "content": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027 se realiza de 01 mayo a 02 mayo 2027, en Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil - Florianópolis - SC."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/es/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/es/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+        "name": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027",
+        "description": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027 se realiza de 01 mayo a 02 mayo 2027, en Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil - Florianópolis - SC.",
+        "url": "https://roadrunners.run/es/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+        "startDate": "2027-05-01",
+        "endDate": "2027-05-02",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/1XDOZZA51E1LH7AO5FEEYKT5YXG5BHUQG05O3GRSUM2Z3JF3JE.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Florianópolis",
+            "addressRegion": "SC",
+            "addressCountry": "BR",
+            "streetAddress": "Praça Portugal (Trapiche da Beira Mar Norte) : Avenida Jornalista Rubens de Arruda Ramos (Avenida Beira Mar Norte)/ SN, Florianópolis, SC, Brasil"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87178&origem=novo-site&lang=en-US"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Sportsland",
+          "url": "https://www.instagram.com/sportslandbr/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/es/",
+            "@type": "ListItem",
+            "name": "Inicio"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sc/",
+            "@type": "ListItem",
+            "name": "Santa Catarina"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/es/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+            "@type": "ListItem",
+            "name": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  },
+  {
+    "path": "/evento/2026-rock-n-run%0A----nashville-2026/",
+    "kind": "special",
+    "lang": "pt-BR",
+    "status": 200,
+    "title": "ROCK N' RUN\n                NASHVILLE 2026 - corrida de rua - Road Runners",
+    "h1": "ROCK N' RUN\n                NASHVILLE 2026",
+    "meta": [
+      {
+        "name": "description",
+        "content": "ROCK N' RUN\n                NASHVILLE 2026 acontece em 20 dezembro 2026, em Campinas - SP."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/",
+        "name": "ROCK N' RUN\n                NASHVILLE 2026",
+        "description": "ROCK N' RUN\n                NASHVILLE 2026 acontece em 20 dezembro 2026, em Campinas - SP.",
+        "url": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/",
+        "startDate": "2026-12-20",
+        "endDate": "2026-12-20",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://www.minhasinscricoes.com.br/sites/siteimages/2493/118887/-7EUPP1.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Campinas, SP",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Campinas",
+            "addressRegion": "SP",
+            "addressCountry": "BR"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://minhasinscricoes.com.br/Evento/NashvilleRockNRun2026#inscricao"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sp/",
+            "@type": "ListItem",
+            "name": "São Paulo"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/",
+            "@type": "ListItem",
+            "name": "ROCK N' RUN\n                NASHVILLE 2026"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "https://api.whatsapp.com/send?text=ROCK N' RUN\n                NASHVILLE 2026 - corrida de rua - Road Runners%20https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/",
+      "https://www.facebook.com/sharer/sharer.php?u=https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/",
+      "https://twitter.com/intent/tweet?text=ROCK N' RUN\n                NASHVILLE 2026 - corrida de rua - Road Runners&url=https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/",
+      "https://www.linkedin.com/shareArticle?mini=true&url=https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/&title=ROCK N' RUN\n                NASHVILLE 2026 - corrida de rua - Road Runners",
+      "https://t.me/share/url?url=https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/&text=ROCK N' RUN\n                NASHVILLE 2026 - corrida de rua - Road Runners"
+    ]
+  },
+  {
+    "path": "/en/event/2026-rock-n-run%0A----nashville-2026/",
+    "kind": "special",
+    "lang": "en",
+    "status": 200,
+    "title": "ROCK N' RUN\n                NASHVILLE 2026 - Road race - Road Runners",
+    "h1": "ROCK N' RUN\n                NASHVILLE 2026",
+    "meta": [
+      {
+        "name": "description",
+        "content": "ROCK N' RUN\n                NASHVILLE 2026 takes place on 20 december 2026, in Campinas - SP."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/",
+        "name": "ROCK N' RUN\n                NASHVILLE 2026",
+        "description": "ROCK N' RUN\n                NASHVILLE 2026 takes place on 20 december 2026, in Campinas - SP.",
+        "url": "https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/",
+        "startDate": "2026-12-20",
+        "endDate": "2026-12-20",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://www.minhasinscricoes.com.br/sites/siteimages/2493/118887/-7EUPP1.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Campinas, SP",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Campinas",
+            "addressRegion": "SP",
+            "addressCountry": "BR"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://minhasinscricoes.com.br/Evento/NashvilleRockNRun2026#inscricao"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/en/",
+            "@type": "ListItem",
+            "name": "Home"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sp/",
+            "@type": "ListItem",
+            "name": "São Paulo"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/",
+            "@type": "ListItem",
+            "name": "ROCK N' RUN\n                NASHVILLE 2026"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "https://api.whatsapp.com/send?text=ROCK N' RUN\n                NASHVILLE 2026 - Road race - Road Runners%20https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/",
+      "https://www.facebook.com/sharer/sharer.php?u=https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/",
+      "https://twitter.com/intent/tweet?text=ROCK N' RUN\n                NASHVILLE 2026 - Road race - Road Runners&url=https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/",
+      "https://www.linkedin.com/shareArticle?mini=true&url=https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/&title=ROCK N' RUN\n                NASHVILLE 2026 - Road race - Road Runners",
+      "https://t.me/share/url?url=https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/&text=ROCK N' RUN\n                NASHVILLE 2026 - Road race - Road Runners"
+    ]
+  },
+  {
+    "path": "/es/evento/2026-rock-n-run%0A----nashville-2026/",
+    "kind": "special",
+    "lang": "es",
+    "status": 200,
+    "title": "ROCK N' RUN\n                NASHVILLE 2026 - Carrera de ruta - Road Runners",
+    "h1": "ROCK N' RUN\n                NASHVILLE 2026",
+    "meta": [
+      {
+        "name": "description",
+        "content": "ROCK N' RUN\n                NASHVILLE 2026 se realiza el 20 diciembre 2026, en Campinas - SP."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-rock-n-run%0A----nashville-2026/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/",
+        "name": "ROCK N' RUN\n                NASHVILLE 2026",
+        "description": "ROCK N' RUN\n                NASHVILLE 2026 se realiza el 20 diciembre 2026, en Campinas - SP.",
+        "url": "https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/",
+        "startDate": "2026-12-20",
+        "endDate": "2026-12-20",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://www.minhasinscricoes.com.br/sites/siteimages/2493/118887/-7EUPP1.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Campinas, SP",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Campinas",
+            "addressRegion": "SP",
+            "addressCountry": "BR"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://minhasinscricoes.com.br/Evento/NashvilleRockNRun2026#inscricao"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/es/",
+            "@type": "ListItem",
+            "name": "Inicio"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sp/",
+            "@type": "ListItem",
+            "name": "São Paulo"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/",
+            "@type": "ListItem",
+            "name": "ROCK N' RUN\n                NASHVILLE 2026"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "https://api.whatsapp.com/send?text=ROCK N' RUN\n                NASHVILLE 2026 - Carrera de ruta - Road Runners%20https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/",
+      "https://www.facebook.com/sharer/sharer.php?u=https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/",
+      "https://twitter.com/intent/tweet?text=ROCK N' RUN\n                NASHVILLE 2026 - Carrera de ruta - Road Runners&url=https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/",
+      "https://www.linkedin.com/shareArticle?mini=true&url=https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/&title=ROCK N' RUN\n                NASHVILLE 2026 - Carrera de ruta - Road Runners",
+      "https://t.me/share/url?url=https://roadrunners.run/es/evento/2026-rock-n-run%0A----nashville-2026/&text=ROCK N' RUN\n                NASHVILLE 2026 - Carrera de ruta - Road Runners"
+    ]
+  },
+  {
+    "path": "/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+    "kind": "special",
+    "lang": "pt-BR",
+    "status": 200,
+    "title": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\" - corrida de rua - Road Runners",
+    "h1": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\"",
+    "meta": [
+      {
+        "name": "description",
+        "content": "",
+        "3ª": null,
+        "corrida": null,
+        "de": null,
+        "nossa": null,
+        "senhora": null,
+        "aparecida\"": null,
+        "acontece": null,
+        "em": null,
+        "12": null,
+        "outubro": null,
+        "2026,": null,
+        "igreja": null,
+        "são": null,
+        "sebastião:": null,
+        "rua": null,
+        "coronel": null,
+        "generoso": null,
+        "martins": null,
+        "araújo,": null,
+        "1750": null,
+        "-": null,
+        "ponta": null,
+        "grossa": null,
+        "pr.\"": null
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+        "name": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\"",
+        "description": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\" acontece em 12 outubro 2026, em Igreja São Sebastião: Rua Coronel Generoso Martins de Araújo, 1750 - Ponta Grossa - PR.",
+        "url": "https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+        "startDate": "2026-10-12",
+        "endDate": "2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/A1VXEDGWE267TQFCRWYMVNR1ZSZ39FDIE9GAOLOWGE28MZ8WVF.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Igreja São Sebastião: Rua Coronel Generoso Martins de Araújo, 1750",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ponta Grossa",
+            "addressRegion": "PR",
+            "addressCountry": "BR",
+            "streetAddress": "Igreja São Sebastião: Rua Coronel Generoso Martins de Araújo, 1750"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87327&origem=novo-site&lang=en-US"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/pr/",
+            "@type": "ListItem",
+            "name": "Paraná"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+            "@type": "ListItem",
+            "name": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\""
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "https://www.facebook.com/sharer/sharer.php?u=https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+      "https://www.linkedin.com/shareArticle?mini=true&url=https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/&title=",
+      "https://t.me/share/url?url=https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/&text="
+    ]
+  },
+  {
+    "path": "/en/event/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+    "kind": "special",
+    "lang": "en",
+    "status": 200,
+    "title": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\" - Road race - Road Runners",
+    "h1": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\"",
+    "meta": [
+      {
+        "name": "description",
+        "content": "",
+        "3ª": null,
+        "corrida": null,
+        "de": null,
+        "nossa": null,
+        "senhora": null,
+        "aparecida\"": null,
+        "takes": null,
+        "place": null,
+        "on": null,
+        "12": null,
+        "october": null,
+        "2026,": null,
+        "in": null,
+        "igreja": null,
+        "são": null,
+        "sebastião:": null,
+        "rua": null,
+        "coronel": null,
+        "generoso": null,
+        "martins": null,
+        "araújo,": null,
+        "1750": null,
+        "-": null,
+        "ponta": null,
+        "grossa": null,
+        "pr.\"": null
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/en/event/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/en/event/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+        "name": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\"",
+        "description": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\" takes place on 12 october 2026, in Igreja São Sebastião: Rua Coronel Generoso Martins de Araújo, 1750 - Ponta Grossa - PR.",
+        "url": "https://roadrunners.run/en/event/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+        "startDate": "2026-10-12",
+        "endDate": "2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/A1VXEDGWE267TQFCRWYMVNR1ZSZ39FDIE9GAOLOWGE28MZ8WVF.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Igreja São Sebastião: Rua Coronel Generoso Martins de Araújo, 1750",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ponta Grossa",
+            "addressRegion": "PR",
+            "addressCountry": "BR",
+            "streetAddress": "Igreja São Sebastião: Rua Coronel Generoso Martins de Araújo, 1750"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87327&origem=novo-site&lang=en-US"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/en/",
+            "@type": "ListItem",
+            "name": "Home"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/pr/",
+            "@type": "ListItem",
+            "name": "Paraná"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/en/event/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+            "@type": "ListItem",
+            "name": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\""
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "https://www.facebook.com/sharer/sharer.php?u=https://roadrunners.run/en/event/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+      "https://www.linkedin.com/shareArticle?mini=true&url=https://roadrunners.run/en/event/2026-%223-corrida-de-nossa-senhora-aparecida%22/&title=",
+      "https://t.me/share/url?url=https://roadrunners.run/en/event/2026-%223-corrida-de-nossa-senhora-aparecida%22/&text="
+    ]
+  },
+  {
+    "path": "/es/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+    "kind": "special",
+    "lang": "es",
+    "status": 200,
+    "title": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\" - Carrera de ruta - Road Runners",
+    "h1": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\"",
+    "meta": [
+      {
+        "name": "description",
+        "content": "",
+        "3ª": null,
+        "corrida": null,
+        "de": null,
+        "nossa": null,
+        "senhora": null,
+        "aparecida\"": null,
+        "se": null,
+        "realiza": null,
+        "el": null,
+        "12": null,
+        "octubre": null,
+        "2026,": null,
+        "en": null,
+        "igreja": null,
+        "são": null,
+        "sebastião:": null,
+        "rua": null,
+        "coronel": null,
+        "generoso": null,
+        "martins": null,
+        "araújo,": null,
+        "1750": null,
+        "-": null,
+        "ponta": null,
+        "grossa": null,
+        "pr.\"": null
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/es/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/es/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+        "name": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\"",
+        "description": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\" se realiza el 12 octubre 2026, en Igreja São Sebastião: Rua Coronel Generoso Martins de Araújo, 1750 - Ponta Grossa - PR.",
+        "url": "https://roadrunners.run/es/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+        "startDate": "2026-10-12",
+        "endDate": "2026-10-12",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://cdn.ticketsports.com.br/ticketagora/images/A1VXEDGWE267TQFCRWYMVNR1ZSZ39FDIE9GAOLOWGE28MZ8WVF.png"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Igreja São Sebastião: Rua Coronel Generoso Martins de Araújo, 1750",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ponta Grossa",
+            "addressRegion": "PR",
+            "addressCountry": "BR",
+            "streetAddress": "Igreja São Sebastião: Rua Coronel Generoso Martins de Araújo, 1750"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87327&origem=novo-site&lang=en-US"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/es/",
+            "@type": "ListItem",
+            "name": "Inicio"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/pr/",
+            "@type": "ListItem",
+            "name": "Paraná"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/es/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+            "@type": "ListItem",
+            "name": "\"3ª CORRIDA DE NOSSA SENHORA APARECIDA\""
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "https://www.facebook.com/sharer/sharer.php?u=https://roadrunners.run/es/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/",
+      "https://www.linkedin.com/shareArticle?mini=true&url=https://roadrunners.run/es/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/&title=",
+      "https://t.me/share/url?url=https://roadrunners.run/es/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/&text="
+    ]
+  },
+  {
+    "path": "/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+    "kind": "special",
+    "lang": "pt-BR",
+    "status": 200,
+    "title": "1ª Corrida de Aniversário do Grupo Corrida &  - corrida de rua - Road Runners",
+    "h1": "1ª Corrida de Aniversário do Grupo Corrida & Resenha",
+    "meta": [
+      {
+        "name": "description",
+        "content": "1ª Corrida de Aniversário do Grupo Corrida & Resenha acontece em 01 novembro 2026, em Praça de Eventos - Lastro - PB."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+        "name": "1ª Corrida de Aniversário do Grupo Corrida &#038; Resenha",
+        "description": "1ª Corrida de Aniversário do Grupo Corrida &#038; Resenha acontece em 01 novembro 2026, em Praça de Eventos - Lastro - PB.",
+        "url": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+        "startDate": "2026-11-01",
+        "endDate": "2026-11-01",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://apcrono.com.br/wp-content/uploads/2026/09/corrida_e_resenha_apcrono.jpg"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Praça de Eventos",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lastro",
+            "addressRegion": "PB",
+            "addressCountry": "BR",
+            "streetAddress": "Praça de Eventos"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://apcrono.com.br/evento/1a-corrida-de-aniversario-do-grupo-corrida-resenha/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/pb/",
+            "@type": "ListItem",
+            "name": "Paraíba"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+            "@type": "ListItem",
+            "name": "1ª Corrida de Aniversário do Grupo Corrida &#038; Resenha"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "https://api.whatsapp.com/send?text=1ª Corrida de Aniversário do Grupo Corrida &  - corrida de rua - Road Runners%20https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+      "https://www.facebook.com/sharer/sharer.php?u=https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+      "https://twitter.com/intent/tweet?text=1ª Corrida de Aniversário do Grupo Corrida &  - corrida de rua - Road Runners&url=https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+      "https://www.linkedin.com/shareArticle?mini=true&url=https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/&title=1ª Corrida de Aniversário do Grupo Corrida &  - corrida de rua - Road Runners",
+      "https://t.me/share/url?url=https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/&text=1ª Corrida de Aniversário do Grupo Corrida &  - corrida de rua - Road Runners"
+    ]
+  },
+  {
+    "path": "/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+    "kind": "special",
+    "lang": "en",
+    "status": 200,
+    "title": "1ª Corrida de Aniversário do Grupo Corrida &  - Road race - Road Runners",
+    "h1": "1ª Corrida de Aniversário do Grupo Corrida & Resenha",
+    "meta": [
+      {
+        "name": "description",
+        "content": "1ª Corrida de Aniversário do Grupo Corrida & Resenha takes place on 01 november 2026, in Praça de Eventos - Lastro - PB."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+        "name": "1ª Corrida de Aniversário do Grupo Corrida &#038; Resenha",
+        "description": "1ª Corrida de Aniversário do Grupo Corrida &#038; Resenha takes place on 01 november 2026, in Praça de Eventos - Lastro - PB.",
+        "url": "https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+        "startDate": "2026-11-01",
+        "endDate": "2026-11-01",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://apcrono.com.br/wp-content/uploads/2026/09/corrida_e_resenha_apcrono.jpg"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Praça de Eventos",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lastro",
+            "addressRegion": "PB",
+            "addressCountry": "BR",
+            "streetAddress": "Praça de Eventos"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://apcrono.com.br/evento/1a-corrida-de-aniversario-do-grupo-corrida-resenha/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/en/",
+            "@type": "ListItem",
+            "name": "Home"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/pb/",
+            "@type": "ListItem",
+            "name": "Paraíba"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+            "@type": "ListItem",
+            "name": "1ª Corrida de Aniversário do Grupo Corrida &#038; Resenha"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "https://api.whatsapp.com/send?text=1ª Corrida de Aniversário do Grupo Corrida &  - Road race - Road Runners%20https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+      "https://www.facebook.com/sharer/sharer.php?u=https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+      "https://twitter.com/intent/tweet?text=1ª Corrida de Aniversário do Grupo Corrida &  - Road race - Road Runners&url=https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+      "https://www.linkedin.com/shareArticle?mini=true&url=https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/&title=1ª Corrida de Aniversário do Grupo Corrida &  - Road race - Road Runners",
+      "https://t.me/share/url?url=https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/&text=1ª Corrida de Aniversário do Grupo Corrida &  - Road race - Road Runners"
+    ]
+  },
+  {
+    "path": "/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+    "kind": "special",
+    "lang": "es",
+    "status": 200,
+    "title": "1ª Corrida de Aniversário do Grupo Corrida &  - Carrera de ruta - Road Runners",
+    "h1": "1ª Corrida de Aniversário do Grupo Corrida & Resenha",
+    "meta": [
+      {
+        "name": "description",
+        "content": "1ª Corrida de Aniversário do Grupo Corrida & Resenha se realiza el 01 noviembre 2026, en Praça de Eventos - Lastro - PB."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "pt-BR",
+        "href": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://roadrunners.run/en/event/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://roadrunners.run/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "@id": "https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+        "name": "1ª Corrida de Aniversário do Grupo Corrida &#038; Resenha",
+        "description": "1ª Corrida de Aniversário do Grupo Corrida &#038; Resenha se realiza el 01 noviembre 2026, en Praça de Eventos - Lastro - PB.",
+        "url": "https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+        "startDate": "2026-11-01",
+        "endDate": "2026-11-01",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": [
+          "https://apcrono.com.br/wp-content/uploads/2026/09/corrida_e_resenha_apcrono.jpg"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Praça de Eventos",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lastro",
+            "addressRegion": "PB",
+            "addressCountry": "BR",
+            "streetAddress": "Praça de Eventos"
+          }
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://apcrono.com.br/evento/1a-corrida-de-aniversario-do-grupo-corrida-resenha/"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/es/",
+            "@type": "ListItem",
+            "name": "Inicio"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/pb/",
+            "@type": "ListItem",
+            "name": "Paraíba"
+          },
+          {
+            "position": 3.0,
+            "item": "https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+            "@type": "ListItem",
+            "name": "1ª Corrida de Aniversário do Grupo Corrida &#038; Resenha"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "https://api.whatsapp.com/send?text=1ª Corrida de Aniversário do Grupo Corrida &  - Carrera de ruta - Road Runners%20https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+      "https://www.facebook.com/sharer/sharer.php?u=https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+      "https://twitter.com/intent/tweet?text=1ª Corrida de Aniversário do Grupo Corrida &  - Carrera de ruta - Road Runners&url=https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/",
+      "https://www.linkedin.com/shareArticle?mini=true&url=https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/&title=1ª Corrida de Aniversário do Grupo Corrida &  - Carrera de ruta - Road Runners",
+      "https://t.me/share/url?url=https://roadrunners.run/es/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3B-resenha/&text=1ª Corrida de Aniversário do Grupo Corrida &  - Carrera de ruta - Road Runners"
+    ]
+  },
+  {
+    "path": "/estado/pr/",
+    "kind": "state",
+    "lang": null,
+    "status": 200,
+    "title": "Corridas no Paraná: calendário de provas | Road Runners",
+    "h1": "\n                    \n                    Corridas no Paraná\n                ",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Calendário de corridas de rua e trail no Paraná. Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/estado/pr/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/pr/",
+            "@type": "ListItem",
+            "name": "Paraná"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+    ]
+  },
+  {
+    "path": "/estado/pr/palmeira/",
+    "kind": "state",
+    "lang": null,
+    "status": 200,
+    "title": "Corridas em Palmeira (PR): calendário de provas | Road Runners",
+    "h1": "\n                    \n                    Corridas em Palmeira (PR)\n                ",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Calendário de corridas de rua e trail em Palmeira (PR). Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/estado/pr/palmeira/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/pr/",
+            "@type": "ListItem",
+            "name": "Paraná"
+          },
+          {
+            "position": 3,
+            "item": "https://roadrunners.run/estado/pr/palmeira/",
+            "@type": "ListItem",
+            "name": "Palmeira"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+    ]
+  },
+  {
+    "path": "/estado/pr/ponta-grossa/",
+    "kind": "state",
+    "lang": null,
+    "status": 200,
+    "title": "Corridas em Ponta Grossa (PR): calendário de provas | Road Runners",
+    "h1": "\n                    \n                    Corridas em Ponta Grossa (PR)\n                ",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Calendário de corridas de rua e trail em Ponta Grossa (PR). Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/estado/pr/ponta-grossa/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/pr/",
+            "@type": "ListItem",
+            "name": "Paraná"
+          },
+          {
+            "position": 3,
+            "item": "https://roadrunners.run/estado/pr/ponta-grossa/",
+            "@type": "ListItem",
+            "name": "Ponta Grossa"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "/evento/2026-%223-corrida-de-nossa-senhora-aparecida%22/"
+    ]
+  },
+  {
+    "path": "/estado/pb/",
+    "kind": "state",
+    "lang": null,
+    "status": 200,
+    "title": "Corridas na Paraíba: calendário de provas | Road Runners",
+    "h1": "\n                    \n                    Corridas na Paraíba\n                ",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Calendário de corridas de rua e trail na Paraíba. Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/estado/pb/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/pb/",
+            "@type": "ListItem",
+            "name": "Paraíba"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3b-resenha/"
+    ]
+  },
+  {
+    "path": "/estado/pb/lastro/",
+    "kind": "state",
+    "lang": null,
+    "status": 200,
+    "title": "Corridas em Lastro (PB): calendário de provas | Road Runners",
+    "h1": "\n                    \n                    Corridas em Lastro (PB)\n                ",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Calendário de corridas de rua e trail em Lastro (PB). Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/estado/pb/lastro/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/pb/",
+            "@type": "ListItem",
+            "name": "Paraíba"
+          },
+          {
+            "position": 3,
+            "item": "https://roadrunners.run/estado/pb/lastro/",
+            "@type": "ListItem",
+            "name": "Lastro"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-%23038%3b-resenha/"
+    ]
+  },
+  {
+    "path": "/estado/sp/campinas/",
+    "kind": "state",
+    "lang": null,
+    "status": 200,
+    "title": "Corridas em Campinas (SP): calendário de provas | Road Runners",
+    "h1": "\n                    \n                    Corridas em Campinas (SP)\n                ",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Calendário de corridas de rua e trail em Campinas (SP). Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/estado/sp/campinas/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sp/",
+            "@type": "ListItem",
+            "name": "São Paulo"
+          },
+          {
+            "position": 3,
+            "item": "https://roadrunners.run/estado/sp/campinas/",
+            "@type": "ListItem",
+            "name": "Campinas"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": [
+      "/evento/2026-rock-n-run%0a----nashville-2026/"
+    ]
+  },
+  {
+    "path": "/estado/sp/taboao-da-serra/",
+    "kind": "state",
+    "lang": null,
+    "status": 200,
+    "title": "Corridas em Taboao da Serra (SP): calendário de provas | Road Runners",
+    "h1": "\n                    \n                    Corridas em Taboao da Serra (SP)\n                ",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Calendário de corridas de rua e trail em Taboao da Serra (SP). Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://roadrunners.run/estado/sp/taboao-da-serra/"
+      }
+    ],
+    "jsonld": [
+      {
+        "@context": "https://schema.org",
+        "itemListElement": [
+          {
+            "position": 1,
+            "item": "https://roadrunners.run/",
+            "@type": "ListItem",
+            "name": "Início"
+          },
+          {
+            "position": 2,
+            "item": "https://roadrunners.run/estado/sp/",
+            "@type": "ListItem",
+            "name": "São Paulo"
+          },
+          {
+            "position": 3,
+            "item": "https://roadrunners.run/estado/sp/taboao-da-serra/",
+            "@type": "ListItem",
+            "name": "Taboao da Serra"
+          }
+        ],
+        "@type": "BreadcrumbList"
+      }
+    ],
+    "special_links": []
+  }
+]

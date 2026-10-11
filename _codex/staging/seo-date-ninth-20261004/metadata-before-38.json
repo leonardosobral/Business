@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-corrida-rustica-trentina-2026/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-rustica-trentina-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-rustica-trentina-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-rustica-trentina-2026/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-rustica-trentina-2026/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-corrida-rustica-trentina-2026/",
+      "name": "Corrida Rústica Trentina 2026",
+      "description": "Corrida Rústica Trentina 2026 se realiza el 06 diciembre 2026, en Pavilhão Da Festa Trentina, Na Rua Trento - Rio Dos Cedros - SC.",
+      "url": "https://roadrunners.run/es/evento/2026-corrida-rustica-trentina-2026/",
+      "startDate": "2026-12-06",
+      "endDate": "2026-12-06",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.kweventosesportivos.com.br/painel/upload/img/inscricao/thumb/img-042-04092026080732-391ba6ea097e9c4a830f5a9737d17b5b.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Pavilhão Da Festa Trentina, Na Rua Trento",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Rio Dos Cedros",
+          "addressRegion": "SC",
+          "addressCountry": "BR",
+          "streetAddress": "Pavilhão Da Festa Trentina, Na Rua Trento"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.kweventosesportivos.com.br/inscricao-select/corrida-rustica-trentina-2026"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sc/",
+          "@type": "ListItem",
+          "name": "Carreras en SC"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-corrida-rustica-trentina-2026/",
+          "@type": "ListItem",
+          "name": "Corrida Rústica Trentina 2026"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

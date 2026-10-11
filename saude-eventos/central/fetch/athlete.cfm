@@ -134,11 +134,11 @@ function saudeStatusName(any value = "") {
 </cfif>
 
 <div class="saude-athlete-profile">
-    <img src="#htmlEditFormat(VARIABLES.saudeAvatar)#" alt="Foto do atleta" onerror="this.src='https://roadrunners.run/assets/user.png'" class="<cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>"/>
+    <img src="#encodeForHTMLAttribute(VARIABLES.saudeAvatar)#" alt="Foto do atleta" onerror="this.src='https://roadrunners.run/assets/user.png'" class="<cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>"/>
     <div>
-        <span class="saude-athlete-kicker">#htmlEditFormat(len(trim(qPagina.modalidade & '')) ? qPagina.modalidade : 'Percurso não informado')#</span>
-        <h2 class="<cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#htmlEditFormat(qPagina.nome_exibicao)#</h2>
-        <p><cfif len(trim(qPagina.cidade & ''))>#htmlEditFormat(qPagina.cidade)#<cfif len(trim(qPagina.uf & ''))>/#htmlEditFormat(qPagina.uf)#</cfif><cfelse>Localidade não informada</cfif><cfif isDate(VARIABLES.saudeBirthDate)><span> · #dateDiff('yyyy', VARIABLES.saudeBirthDate, now())# anos</span></cfif></p>
+        <span class="saude-athlete-kicker">#encodeForHTML(len(trim(qPagina.modalidade & '')) ? qPagina.modalidade : 'Percurso não informado')#</span>
+        <h2 class="<cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#encodeForHTML(qPagina.nome_exibicao)#</h2>
+        <p><cfif len(trim(qPagina.cidade & ''))>#encodeForHTML(qPagina.cidade)#<cfif len(trim(qPagina.uf & ''))>/#encodeForHTML(qPagina.uf)#</cfif><cfelse>Localidade não informada</cfif><cfif isDate(VARIABLES.saudeBirthDate)><span> · #dateDiff('yyyy', VARIABLES.saudeBirthDate, now())# anos</span></cfif></p>
     </div>
 </div>
 
@@ -163,13 +163,13 @@ function saudeStatusName(any value = "") {
         <section class="saude-medical-card">
             <h3>Identificação</h3>
             <dl>
-                <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'nome'))><div><dt>Nome completo</dt><dd class="<cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'nome'))#</dd></div></cfif>
-                <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'documento'))><div><dt>CPF</dt><dd class="<cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'documento'))#</dd></div></cfif>
+                <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'nome'))><div><dt>Nome completo</dt><dd class="<cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'nome'))#</dd></div></cfif>
+                <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'documento'))><div><dt>CPF</dt><dd class="<cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'documento'))#</dd></div></cfif>
                 <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'celular'))>
                     <div class="saude-medical-contact">
                         <dt>Celular / WhatsApp</dt>
                         <dd class="saude-medical-contact-value <cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">
-                            <span>#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'celular'))#</span>
+                            <span>#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'celular'))#</span>
                             <cfif VARIABLES.saudeCanOperate>
                                 <span class="saude-contact-actions" aria-label="Contatar atleta">
                                     <button type="button" class="is-whatsapp" onclick="acionarContato(#qPagina.num_pedido#,'atleta','whatsapp',this)" title="Chamar atleta pelo WhatsApp" aria-label="Chamar atleta pelo WhatsApp"><i class="fa-brands fa-whatsapp"></i></button>
@@ -179,7 +179,7 @@ function saudeStatusName(any value = "") {
                         </dd>
                     </div>
                 </cfif>
-                <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'tipo_sanguineo'))><div><dt>Tipo sanguíneo</dt><dd><strong>#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'tipo_sanguineo'))#</strong></dd></div></cfif>
+                <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'tipo_sanguineo'))><div><dt>Tipo sanguíneo</dt><dd><strong>#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'tipo_sanguineo'))#</strong></dd></div></cfif>
                 <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'sexo'))><div><dt>Sexo</dt><dd>#(uCase(saudeMedicalValue(VARIABLES.saudeMedicalData,'sexo')) EQ 'M' ? 'Masculino' : 'Feminino')#</dd></div></cfif>
             </dl>
         </section>
@@ -188,11 +188,11 @@ function saudeStatusName(any value = "") {
             <section class="saude-medical-card is-alert">
                 <h3>Informações médicas</h3>
                 <dl>
-                    <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'doencas'))><div><dt>Doenças crônicas</dt><dd>#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'doencas'))#</dd></div></cfif>
-                    <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'alergias'))><div><dt>Alergias e restrições</dt><dd>#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'alergias'))#</dd></div></cfif>
-                    <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'medicamentos'))><div><dt>Medicamentos contínuos</dt><dd>#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'medicamentos'))#</dd></div></cfif>
-                    <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'cirurgias'))><div><dt>Cirurgias / dispositivos</dt><dd>#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'cirurgias'))#</dd></div></cfif>
-                    <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'altura'))><div><dt>Altura</dt><dd>#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'altura'))# m</dd></div></cfif>
+                    <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'doencas'))><div><dt>Doenças crônicas</dt><dd>#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'doencas'))#</dd></div></cfif>
+                    <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'alergias'))><div><dt>Alergias e restrições</dt><dd>#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'alergias'))#</dd></div></cfif>
+                    <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'medicamentos'))><div><dt>Medicamentos contínuos</dt><dd>#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'medicamentos'))#</dd></div></cfif>
+                    <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'cirurgias'))><div><dt>Cirurgias / dispositivos</dt><dd>#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'cirurgias'))#</dd></div></cfif>
+                    <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'altura'))><div><dt>Altura</dt><dd>#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'altura'))# m</dd></div></cfif>
                 </dl>
             </section>
         <cfelse>
@@ -205,13 +205,13 @@ function saudeStatusName(any value = "") {
         <section class="saude-medical-card">
             <h3>Contato de emergência</h3>
             <dl>
-                <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'nomecontato'))><div><dt>Nome</dt><dd class="<cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'nomecontato'))#</dd></div></cfif>
-                <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'grau'))><div><dt>Relação</dt><dd>#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'grau'))#</dd></div></cfif>
+                <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'nomecontato'))><div><dt>Nome</dt><dd class="<cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'nomecontato'))#</dd></div></cfif>
+                <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'grau'))><div><dt>Relação</dt><dd>#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'grau'))#</dd></div></cfif>
                 <cfif len(saudeMedicalValue(VARIABLES.saudeMedicalData,'celularcontato'))>
                     <div class="saude-medical-contact">
                         <dt>Celular / WhatsApp</dt>
                         <dd class="saude-medical-contact-value <cfif VARIABLES.saudeMaskPrivateData>is-private</cfif>">
-                            <span>#htmlEditFormat(saudeMedicalValue(VARIABLES.saudeMedicalData,'celularcontato'))#</span>
+                            <span>#encodeForHTML(saudeMedicalValue(VARIABLES.saudeMedicalData,'celularcontato'))#</span>
                             <cfif VARIABLES.saudeCanOperate>
                                 <span class="saude-contact-actions" aria-label="Contatar contato de emergência">
                                     <button type="button" class="is-whatsapp" onclick="acionarContato(#qPagina.num_pedido#,'emergencia','whatsapp',this)" title="Chamar contato de emergência pelo WhatsApp" aria-label="Chamar contato de emergência pelo WhatsApp"><i class="fa-brands fa-whatsapp"></i></button>
@@ -308,22 +308,22 @@ function saudeStatusName(any value = "") {
                     <span class="saude-history-icon"><i class="#VARIABLES.saudeHistoryIcon#"></i></span>
                     <div class="saude-history-content">
                         <div class="saude-history-row">
-                            <strong>#htmlEditFormat(VARIABLES.saudeHistoryTitle)#</strong>
-                            <time datetime="#dateFormat(qSaudeHistory.data_alteracao, 'yyyy-mm-dd')#T#timeFormat(qSaudeHistory.data_alteracao, 'HH:mm:ss')#">#htmlEditFormat(saudeFriendlyTimestamp(qSaudeHistory.data_alteracao))#</time>
+                            <strong>#encodeForHTML(VARIABLES.saudeHistoryTitle)#</strong>
+                            <time datetime="#dateFormat(qSaudeHistory.data_alteracao, 'yyyy-mm-dd')#T#timeFormat(qSaudeHistory.data_alteracao, 'HH:mm:ss')#">#encodeForHTML(saudeFriendlyTimestamp(qSaudeHistory.data_alteracao))#</time>
                         </div>
                         <cfif lCase(trim(qSaudeHistory.tipo_acao & '')) EQ "anotacao" AND NOT VARIABLES.saudeCanViewMedicalData>
                             <p><i class="fa-solid fa-lock"></i> Conteúdo protegido por sigilo médico.</p>
-                        <cfelseif len(trim(qSaudeHistory.descricao & ''))><p>#htmlEditFormat(qSaudeHistory.descricao)#</p></cfif>
+                        <cfelseif len(trim(qSaudeHistory.descricao & ''))><p>#encodeForHTML(qSaudeHistory.descricao)#</p></cfif>
                         <cfif lCase(trim(qSaudeHistory.tipo_acao & '')) EQ "status">
                             <div class="saude-history-transition">
-                                <span>#htmlEditFormat(saudeStatusName(qSaudeHistory.status_anterior))#</span>
+                                <span>#encodeForHTML(saudeStatusName(qSaudeHistory.status_anterior))#</span>
                                 <i class="fa-solid fa-arrow-right"></i>
-                                <span>#htmlEditFormat(saudeStatusName(qSaudeHistory.status_novo))#</span>
+                                <span>#encodeForHTML(saudeStatusName(qSaudeHistory.status_novo))#</span>
                             </div>
                         </cfif>
                         <div class="saude-history-meta">
-                            <span><i class="fa-solid fa-user"></i> #htmlEditFormat(qSaudeHistory.autor_exibicao)#</span>
-                            <span><i class="fa-solid fa-flag-checkered"></i> #htmlEditFormat(qSaudeHistory.evento_exibicao)# · <cfif len(trim(qSaudeHistory.num_peito & ''))>BIB #qSaudeHistory.num_peito#<cfelse>Sem BIB</cfif></span>
+                            <span><i class="fa-solid fa-user"></i> #encodeForHTML(qSaudeHistory.autor_exibicao)#</span>
+                            <span><i class="fa-solid fa-flag-checkered"></i> #encodeForHTML(qSaudeHistory.evento_exibicao)# · <cfif len(trim(qSaudeHistory.num_peito & ''))>BIB #qSaudeHistory.num_peito#<cfelse>Sem BIB</cfif></span>
                         </div>
                     </div>
                 </article>

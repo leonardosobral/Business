@@ -45,9 +45,9 @@
                     <cfset VARIABLES.adsV1RowAverageCpc = val(qAdsV1Campaigns.billable_click_count) GT 0 ? val(qAdsV1Campaigns.cost) / val(qAdsV1Campaigns.billable_click_count) : 0/>
                     <cfoutput>
                       <tr>
-                        <td><div class="d-flex align-items-start gap-2"><div class="ads-campaign-mark"><i class="fas fa-bullhorn" aria-hidden="true"></i></div><div class="min-w-0"><a class="text-body text-decoration-none ads-campaign-title" href="./?view=campaign-detail&amp;campaign=#urlEncodedFormat(qAdsV1Campaigns.campaign_id)#"><strong>#htmlEditFormat(qAdsV1Campaigns.name)#</strong></a><div class="small text-muted ads-campaign-event">#htmlEditFormat(qAdsV1Campaigns.nome_evento)#</div><div class="small text-muted">#htmlEditFormat(adsV1PlacementCountSummary(qAdsV1Campaigns.placement_keys))#</div><cfif VARIABLES.adsV1WorkspaceView EQ "overview"><a class="ads-campaign-performance-link" href="./?view=campaign-detail&amp;campaign=#urlEncodedFormat(qAdsV1Campaigns.campaign_id)#">Ver desempenho <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i></a></cfif></div></div></td>
+                        <td><div class="d-flex align-items-start gap-2"><div class="ads-campaign-mark"><i class="fas fa-bullhorn" aria-hidden="true"></i></div><div class="min-w-0"><a class="text-body text-decoration-none ads-campaign-title" href="./?view=campaign-detail&amp;campaign=#urlEncodedFormat(qAdsV1Campaigns.campaign_id)#"><strong>#encodeForHTML(qAdsV1Campaigns.name)#</strong></a><div class="small text-muted ads-campaign-event">#encodeForHTML(qAdsV1Campaigns.nome_evento)#</div><div class="small text-muted">#encodeForHTML(adsV1PlacementCountSummary(qAdsV1Campaigns.placement_keys))#</div><cfif VARIABLES.adsV1WorkspaceView EQ "overview"><a class="ads-campaign-performance-link" href="./?view=campaign-detail&amp;campaign=#urlEncodedFormat(qAdsV1Campaigns.campaign_id)#">Ver desempenho <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i></a></cfif></div></div></td>
                         <td>
-                          <span class="badge <cfif VARIABLES.adsV1RowStatus EQ 'ACTIVE'>badge-success<cfelseif VARIABLES.adsV1RowStatus EQ 'PAUSED'>badge-warning<cfelseif VARIABLES.adsV1RowStatus EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>">#htmlEditFormat(adsV1CampaignStatusLabel(VARIABLES.adsV1RowStatus))#</span>
+                          <span class="badge <cfif VARIABLES.adsV1RowStatus EQ 'ACTIVE'>badge-success<cfelseif VARIABLES.adsV1RowStatus EQ 'PAUSED'>badge-warning<cfelseif VARIABLES.adsV1RowStatus EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>">#encodeForHTML(adsV1CampaignStatusLabel(VARIABLES.adsV1RowStatus))#</span>
                           <cfif VARIABLES.adsV1RowReviewStatus EQ "WAITING_PREREQUISITES">
                             <div class="mt-2"><span class="badge badge-warning">Aguardando pré-requisitos</span></div>
                             <div class="small text-muted mt-1">A campanha está preparada e será enviada à RunnerHub quando a conta e o evento forem aprovados.</div>
@@ -56,7 +56,7 @@
                             <div class="small text-muted mt-1">Nenhum anúncio entra no ar antes da aprovação.</div>
                           <cfelseif VARIABLES.adsV1RowReviewStatus EQ "CHANGES_REQUESTED">
                             <div class="mt-2"><span class="badge badge-danger">Ajustes solicitados</span></div>
-                            <cfif len(trim(qAdsV1Campaigns.review_reason & ""))><div class="small text-danger mt-1">#htmlEditFormat(qAdsV1Campaigns.review_reason)#</div></cfif>
+                            <cfif len(trim(qAdsV1Campaigns.review_reason & ""))><div class="small text-danger mt-1">#encodeForHTML(qAdsV1Campaigns.review_reason)#</div></cfif>
                           <cfelseif VARIABLES.adsV1RowReviewStatus EQ "APPROVED">
                             <div class="mt-2"><span class="badge badge-success">Aprovada pela RunnerHub</span></div>
                           <cfelseif VARIABLES.adsV1RowReviewStatus EQ "CANCELED">
@@ -79,8 +79,8 @@
                               AND (NOT len(VARIABLES.adsV1RowReviewStatus) OR listFind("CHANGES_REQUESTED,CANCELED", VARIABLES.adsV1RowReviewStatus))>
                               <form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
                                 <input type="hidden" name="ads_v1_action" value="submit_campaign_review"/>
-                                <input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/>
-                                <input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/>
+                                <input type="hidden" name="ads_v1_csrf" value="#encodeForHTMLAttribute(VARIABLES.adsV1Csrf)#"/>
+                                <input type="hidden" name="campaign_id" value="#encodeForHTMLAttribute(qAdsV1Campaigns.campaign_id)#"/>
                                 <button class="btn btn-sm btn-info w-100" type="submit"><cfif VARIABLES.adsV1RowReviewStatus EQ "CHANGES_REQUESTED">Reenviar<cfelse>Enviar</cfif> para análise</button>
                               </form>
                             </cfif>
@@ -89,8 +89,8 @@
                                 AND listFind("PENDING_REVIEW,WAITING_PREREQUISITES", VARIABLES.adsV1RowReviewStatus)>
                                 <form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
                                   <input type="hidden" name="ads_v1_action" value="prepare_campaign_edit"/>
-                                  <input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/>
-                                  <input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/>
+                                  <input type="hidden" name="ads_v1_csrf" value="#encodeForHTMLAttribute(VARIABLES.adsV1Csrf)#"/>
+                                  <input type="hidden" name="campaign_id" value="#encodeForHTMLAttribute(qAdsV1Campaigns.campaign_id)#"/>
                                   <p class="small text-warning mb-2">Ao editar, a campanha sai da fila de análise. Depois, você pode reenviar ou salvar como rascunho.</p>
                                   <button class="btn btn-sm btn-outline-light w-100" type="submit">Editar</button>
                                 </form>
@@ -99,8 +99,8 @@
                                 AND listFind("ACTIVE,PAUSED", VARIABLES.adsV1RowStatus)>
                                 <form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
                                   <input type="hidden" name="ads_v1_action" value="prepare_campaign_edit"/>
-                                  <input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/>
-                                  <input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/>
+                                  <input type="hidden" name="ads_v1_csrf" value="#encodeForHTMLAttribute(VARIABLES.adsV1Csrf)#"/>
+                                  <input type="hidden" name="campaign_id" value="#encodeForHTMLAttribute(qAdsV1Campaigns.campaign_id)#"/>
                                   <p class="small text-warning mb-2">Ao editar, a campanha ficará fora do ar até uma nova aprovação.</p>
                                   <button class="btn btn-sm btn-outline-warning w-100" type="submit" onclick="return confirm('A campanha ficará fora do ar até a RunnerHub aprovar novamente. Deseja continuar?')"><cfif VARIABLES.adsV1RowStatus EQ "ACTIVE">Pausar e editar<cfelse>Editar e reenviar</cfif></button>
                                 </form>
@@ -109,8 +109,8 @@
                                 AND NOT listFind("WAITING_PREREQUISITES,PENDING_REVIEW,APPROVED", VARIABLES.adsV1RowReviewStatus)>
                                 <a class="btn btn-sm btn-outline-light" href="./?view=campaigns&amp;campaign=#urlEncodedFormat(qAdsV1Campaigns.campaign_id)###campaign-form">Editar</a>
                               </cfif>
-                              <cfif VARIABLES.adsV1RowStatus EQ "ACTIVE"><form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="PAUSED"/><input type="hidden" name="reason" value="Pausa manual pelo Business"/><button class="btn btn-sm btn-warning w-100" type="submit">Pausar</button></form></cfif>
-                              <cfif listFind("DRAFT,ACTIVE,PAUSED", VARIABLES.adsV1RowStatus)><form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#htmlEditFormat(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#htmlEditFormat(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="ENDED"/><input class="form-control form-control-sm" type="text" name="reason" minlength="5" maxlength="500" required placeholder="Motivo para finalizar"/><button class="btn btn-sm btn-outline-danger w-100" type="submit">Finalizar campanha</button></form></cfif>
+                              <cfif VARIABLES.adsV1RowStatus EQ "ACTIVE"><form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#encodeForHTMLAttribute(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#encodeForHTMLAttribute(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="PAUSED"/><input type="hidden" name="reason" value="Pausa manual pelo Business"/><button class="btn btn-sm btn-warning w-100" type="submit">Pausar</button></form></cfif>
+                              <cfif listFind("DRAFT,ACTIVE,PAUSED", VARIABLES.adsV1RowStatus)><form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/><input type="hidden" name="ads_v1_action" value="change_campaign_status"/><input type="hidden" name="ads_v1_csrf" value="#encodeForHTMLAttribute(VARIABLES.adsV1Csrf)#"/><input type="hidden" name="campaign_id" value="#encodeForHTMLAttribute(qAdsV1Campaigns.campaign_id)#"/><input type="hidden" name="target_status" value="ENDED"/><input class="form-control form-control-sm" type="text" name="reason" minlength="5" maxlength="500" required placeholder="Motivo para finalizar"/><button class="btn btn-sm btn-outline-danger w-100" type="submit">Finalizar campanha</button></form></cfif>
                             </div></details>
                           </cfif>
                           </div></td>
@@ -135,7 +135,7 @@
     <cfset VARIABLES.adsV1ActivityCount = 0/>
     <cfif structKeyExists(VARIABLES.adsV1LatestPaidPayment, "amountCents")><cfset VARIABLES.adsV1ActivityCount++/><div class="ads-activity-row"><div><strong>Saldo adicionado por <cfoutput>#uCase(VARIABLES.adsV1LatestPaidPayment.method)#</cfoutput></strong><div class="small text-muted"><cfoutput>#lsCurrencyFormat(VARIABLES.adsV1LatestPaidPayment.amountCents / 100)# confirmados</cfoutput></div></div><div class="small text-muted"><cfif isDate(VARIABLES.adsV1LatestPaidPayment.paidAt)><cfoutput>#lsDateFormat(VARIABLES.adsV1LatestPaidPayment.paidAt, "dd/mm/yyyy")# #lsTimeFormat(VARIABLES.adsV1LatestPaidPayment.paidAt, "HH:nn")#</cfoutput></cfif></div></div></cfif>
     <cfset VARIABLES.adsV1StatusRowsToShow = max(0, 4 - VARIABLES.adsV1ActivityCount)/>
-    <cfif VARIABLES.adsV1StatusRowsToShow GT 0><cfloop query="qAdsV1StatusHistory" endrow="#VARIABLES.adsV1StatusRowsToShow#"><div class="ads-activity-row"><div><strong><cfoutput>Campanha "#htmlEditFormat(qAdsV1StatusHistory.campaign_name)#" #lCase(adsV1CampaignStatusLabel(qAdsV1StatusHistory.to_status))#</cfoutput></strong><div class="small text-muted"><cfoutput>#htmlEditFormat(qAdsV1StatusHistory.reason)#</cfoutput></div></div><div class="small text-muted"><cfif isDate(qAdsV1StatusHistory.changed_at)><cfoutput>#lsDateFormat(qAdsV1StatusHistory.changed_at, "dd/mm/yyyy")# #lsTimeFormat(qAdsV1StatusHistory.changed_at, "HH:nn")#</cfoutput></cfif></div></div></cfloop></cfif>
+    <cfif VARIABLES.adsV1StatusRowsToShow GT 0><cfloop query="qAdsV1StatusHistory" endrow="#VARIABLES.adsV1StatusRowsToShow#"><div class="ads-activity-row"><div><strong><cfoutput>Campanha "#encodeForHTML(qAdsV1StatusHistory.campaign_name)#" #lCase(adsV1CampaignStatusLabel(qAdsV1StatusHistory.to_status))#</cfoutput></strong><div class="small text-muted"><cfoutput>#encodeForHTML(qAdsV1StatusHistory.reason)#</cfoutput></div></div><div class="small text-muted"><cfif isDate(qAdsV1StatusHistory.changed_at)><cfoutput>#lsDateFormat(qAdsV1StatusHistory.changed_at, "dd/mm/yyyy")# #lsTimeFormat(qAdsV1StatusHistory.changed_at, "HH:nn")#</cfoutput></cfif></div></div></cfloop></cfif>
     <cfif NOT VARIABLES.adsV1ActivityCount AND NOT qAdsV1StatusHistory.recordcount><div class="text-muted py-4 text-center">Nenhuma atividade recente.</div></cfif>
   </div></section>
 </cfif>

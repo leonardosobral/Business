@@ -1,0 +1,154 @@
+<script>
+    var str_nome_cliente = 'race83';
+    var url_arquivo_config = 'clientes/'+str_nome_cliente+'/json/config.json';
+    var url_arquivo_events = 'https://www.race83.com.br/session/20261004_race83_events.json';
+    var url_arquivo_news = 'https://www.race83.com.br/session/20261004_race83_news.json';
+    var url_arquivo_molduras = 'https://www.race83.com.br/session/20261004_race83_molduras.json';
+    var url_base_site = 'https://www.race83.com.br';
+</script>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Estilos globais -->
+    <link rel="stylesheet" href="new/style/bundle.css ">
+    <link rel="stylesheet" href="new/style/pages/index.css">
+    <link id="cliente-style" rel="stylesheet" href="">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+
+<body>
+    <div class="site-wrapper">
+        <!-- BANNER -->
+        <div id="banner">
+            <div id="menu">
+            </div>
+            <div id="carousel"></div>
+        </div>
+
+        <!-- CARD EVENTOS -->
+        <div class="container-fluid container-eventos">
+            <div class="row flex-grow-1">
+                <div class="eventos col-12 col-md-12 m-0">
+                    <div class="header d-flex justify-content-between align-items-center">
+                        <h2>EVENTOS</h2>
+                        <button id="abrirDrawer" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#filtrosOffcanvas" aria-controls="filtrosOffcanvas">
+                            <i class="bi bi-filter"></i> FILTRO
+                        </button>
+                    </div>
+                    <div class="content">
+                        <div id="principal" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 custom-4-cols">
+                        </div>
+                    </div>
+                </div>
+                <div id="barra-lateral-extra" class="col-12 col-md-4 m-0 ps-5" style="display: none;">
+                    <h2>DOCUMENTOS</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- FILTROS -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="filtrosOffcanvas" aria-labelledby="filtrosOffcanvasLabel"></div>
+
+        <!-- CTA INSCREVA-SE -->
+        <div id="cta-ou-banners">
+        </div>
+        <!-- <section class="cta bg-dark text-white text-center">
+            <div class="cta__particles" aria-hidden="true"></div>
+
+            <div class="container h-100 d-flex align-items-center">
+                <div class="row justify-content-center w-100">
+                    <div class="col-12 col-md-10 col-lg-8" style="z-index: 1000;margin: 0;">
+                        <h2 class="cta-title fw-bold mb-3">SUA PRÓXIMA CORRIDA COMEÇA AQUI</h2>
+                        <p class="cta-description mb-4">
+                            Crie sua conta, escolha seu desafio e inscreva-se nos melhores eventos de corrida de rua.
+                            A linha de chegada espera por você!
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                            <a href="https://www.race83.com.br/new/login" class="btn btn-primary">MINHA CONTA</a>
+                            <a href="https://www.race83.com.br/new/cadastro" class="btn btn-outline-claro">CRIAR CONTA</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- CARD RESULTADOS -->
+        <div class="container-fluid resultados">
+            <div class="row flex-grow-1">
+                <div class="content">
+                    <div id="ultimos-resultados" class="grow g-custom"></div>
+                    <!-- os cards results vão aqui -->
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTICIAS -->
+        <div class="container-fluid noticias">
+            <div class="noticias-conteudo"></div>
+        </div>
+
+        <!-- PATROCINADORES -->
+        <div id="container-patrocinadores"></div>
+
+        <!-- FOOTER -->
+        <div id="footer">
+            <div id="footer-container" class="container-fluid"></div>
+        </div>
+
+        <!-- TOAST DE ALERTA -->
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1051; width: 100%">
+            <div id="toastEventos" class="toast custom-toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-body d-flex align-items-center gap-2"></div>
+
+                <div class="toast-content">
+                    <div class="header">
+                        <span class="toast-icon"><i class="bi bi-info-circle"></i></span>
+                        <strong class="toast-title">AVISO!</strong>
+                        <!-- Botão fechar -->
+                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <p class="toast-description">Nenhum evento foi encontrado com os filtros aplicados!
+                        Estou mostrando todos os eventos ativos para você!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    <script>
+        const usuarioLogado = null;
+    </script>
+    <script src="new/js/utils/helpers.js"></script>
+
+    <script>
+        if (typeof showSkeleton === 'function') {
+            showSkeleton('principal', 8, 'evento-lista');
+        }
+    </script>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <!-- Identificar cliente -->
+    <script src="new/js/loaders/page-config.js?v=1791086443"></script>
+    <script src="new/js/config-loader.js?v=1791086443"></script>
+
+    <!-- Bootstrap dropdowns -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+
+</html>

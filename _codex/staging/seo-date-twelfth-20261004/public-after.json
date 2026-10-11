@@ -1,0 +1,245 @@
+[
+  {
+    "id": 41908,
+    "url": "https://roadrunners.run/evento/2026-black-run/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 41908,
+    "url": "https://roadrunners.run/en/event/2026-black-run/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 41908,
+    "url": "https://roadrunners.run/es/evento/2026-black-run/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 43140,
+    "url": "https://roadrunners.run/evento/2026-princesa-dos-montes-running/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 43140,
+    "url": "https://roadrunners.run/en/event/2026-princesa-dos-montes-running/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 43140,
+    "url": "https://roadrunners.run/es/evento/2026-princesa-dos-montes-running/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 43166,
+    "url": "https://roadrunners.run/evento/2026-corrida-e-caminhada-ffsms-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 43166,
+    "url": "https://roadrunners.run/en/event/2026-corrida-e-caminhada-ffsms-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 43166,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-ffsms-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 43541,
+    "url": "https://roadrunners.run/evento/2026-1-apaexonados-por-corrida/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 43541,
+    "url": "https://roadrunners.run/en/event/2026-1-apaexonados-por-corrida/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 43541,
+    "url": "https://roadrunners.run/es/evento/2026-1-apaexonados-por-corrida/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 43854,
+    "url": "https://roadrunners.run/evento/2026-anabolica-night-run/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 43854,
+    "url": "https://roadrunners.run/en/event/2026-anabolica-night-run/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 43854,
+    "url": "https://roadrunners.run/es/evento/2026-anabolica-night-run/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "regulation_visible": true
+    }
+  },
+  {
+    "id": 45366,
+    "url": "https://roadrunners.run/evento/2026-live21k-fortaleza-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 45366,
+    "url": "https://roadrunners.run/en/event/2026-live21k-fortaleza-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 45366,
+    "url": "https://roadrunners.run/es/evento/2026-live21k-fortaleza-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  }
+]

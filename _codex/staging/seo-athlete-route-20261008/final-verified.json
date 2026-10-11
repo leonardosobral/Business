@@ -1,0 +1,13 @@
+{
+  "published": true,
+  "apache_scenarios": 24,
+  "public_responses": 22,
+  "http_403_to_login": 7,
+  "preserved_public_controls": 15,
+  "panel_scenarios_per_run": 19,
+  "compiled_business_templates": 2,
+  "preserved_rr_dependencies": 10,
+  "preserved_business_dependencies": 10,
+  "audit_counts": "unchanged; latest 06/10/2026",
+  "browser": "anonymous login confirmed; authenticated Chrome unavailable because Mac locked"
+}

@@ -1,0 +1,77 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-sp-city-marathon/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-sp-city-marathon/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-sp-city-marathon/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-sp-city-marathon/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-sp-city-marathon/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-sp-city-marathon/",
+      "name": "SP City Marathon 2026",
+      "description": "SP City Marathon 2026 se realiza el 26 julio 2026, en Praça Charles Miller - São Paulo - SP.",
+      "url": "https://roadrunners.run/es/evento/2026-sp-city-marathon/",
+      "startDate": "2026-07-26",
+      "endDate": "2026-07-26",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://iguanasports.com.br/cdn/shop/files/capa_so_city_2026_37c388dd-92d2-4b08-9d8b-1be7f12cd1b2.png?v=1765222026&width=860"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Praça Charles Miller",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "São Paulo",
+          "addressRegion": "SP",
+          "addressCountry": "BR",
+          "streetAddress": "Praça Charles Miller"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-23.5448203",
+          "longitude": "-46.6653505"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://iguanasports.com.br/blogs/calendario-corridas-de-rua/sp-city-marathon-2026"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Iguana Sports",
+        "url": "https://www.iguanasports.com.br/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sp/",
+          "@type": "ListItem",
+          "name": "Carreras en SP"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-sp-city-marathon/",
+          "@type": "ListItem",
+          "name": "SP City Marathon 2026"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

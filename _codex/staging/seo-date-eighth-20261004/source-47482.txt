@@ -1,0 +1,146 @@
+ 
+    var str_nome_cliente = 'centraldasinscricoes';
+    var url_arquivo_config = 'clientes/'+str_nome_cliente+'/json/config.json';
+    var url_arquivo_events = 'https://www.centraldasinscricoes.com.br/session/20261004_centraldasinscricoes_events.json';
+    var url_arquivo_news = 'https://www.centraldasinscricoes.com.br/session/20261004_centraldasinscricoes_news.json';
+    var url_arquivo_molduras = 'https://www.centraldasinscricoes.com.br/session/20261004_centraldasinscricoes_molduras.json';
+    var url_base_site = 'https://www.centraldasinscricoes.com.br';
+ 
+
+
+ 
+ 
+
+ 
+     
+     
+      
+
+     
+
+     
+     
+     
+      
+     
+     
+     
+ 
+
+ 
+     
+         
+              
+
+             
+                  
+                  
+                 
+                     
+                         Carregando evento... 
+                          
+                         
+                              00  dias  
+                              00  horas  
+                              00  minutos  
+                              00  segundos  
+                         
+                     
+                     
+                         
+                     
+                 
+             
+         
+
+         
+             
+                 
+                      
+                      
+                 
+             
+         
+
+         
+             
+                 
+                     
+                          
+                         
+                             
+                                 
+                                     Carregando... 
+                                 
+                             
+                         
+                     
+                 
+             
+         
+
+         
+             
+                 
+                     
+                         Contato   
+                     
+                      
+                 
+             
+         
+         
+             
+                 
+                     
+                         
+                              
+                         
+                         Inscrição indisponível 
+                          
+                         Entendi 
+                     
+                 
+             
+         
+         
+             
+                 
+                     
+                          
+                     
+
+                     
+                         
+                             
+                             
+
+                             
+                                  
+                             
+                             
+                                  
+                             
+                         
+                     
+                 
+             
+         
+
+         
+              
+         
+     
+    
+          
+      
+      
+
+      
+      
+      
+ 
+
+ 
+
+ 

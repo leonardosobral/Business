@@ -13,16 +13,16 @@
             </div>
 
             <cfif len(VARIABLES.raceTagNotice)>
-                <div class="alert alert-info"><cfoutput>#htmlEditFormat(VARIABLES.raceTagNotice)#</cfoutput></div>
+                <div class="alert alert-info"><cfoutput>#encodeForHTML(VARIABLES.raceTagNotice)#</cfoutput></div>
             </cfif>
 
             <cfif VARIABLES.raceTagSubmissionReady>
                 <div class="alert alert-info py-2">
                     <div class="small text-uppercase fw-bold">Submissão da fila</div>
                     <cfoutput>
-                        <code>#htmlEditFormat(qRaceTagSubmission.submission_id)#</code>
-                        · #htmlEditFormat(qRaceTagSubmission.status_processamento)#
-                        · #htmlEditFormat(qRaceTagSubmission.status_publicacao)#
+                        <code>#encodeForHTML(qRaceTagSubmission.submission_id)#</code>
+                        · #encodeForHTML(qRaceTagSubmission.status_processamento)#
+                        · #encodeForHTML(qRaceTagSubmission.status_publicacao)#
                     </cfoutput>
                 </div>
             </cfif>

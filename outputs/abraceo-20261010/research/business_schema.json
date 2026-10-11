@@ -1,0 +1,806 @@
+[
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "id_solicitacao"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "nome_empresa"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "USER-DEFINED",
+    "column_name": "tipo_titular"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "documento"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "nome_responsavel"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "email_responsavel"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "telefone_responsavel"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "site"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "cidade"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "estado"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "tipo_prestador"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "text",
+    "column_name": "mensagem"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "id_usuario"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "id_conta"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "USER-DEFINED",
+    "column_name": "status"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "id_usuario_revisor"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "text",
+    "column_name": "observacao_revisor"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "timestamp with time zone",
+    "column_name": "data_criacao"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "timestamp with time zone",
+    "column_name": "data_revisao"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_ad_voucher"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "voucher_codigo"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "origem_gestora_id"
+  },
+  {
+    "table_name": "tb_conta_cadastro_solicitacoes",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "gestao_vinculo_id"
+  },
+  {
+    "table_name": "tb_conta_eventos",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "id_conta_evento"
+  },
+  {
+    "table_name": "tb_conta_eventos",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "id_conta"
+  },
+  {
+    "table_name": "tb_conta_eventos",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_evento"
+  },
+  {
+    "table_name": "tb_conta_eventos",
+    "table_schema": "public",
+    "data_type": "USER-DEFINED",
+    "column_name": "status"
+  },
+  {
+    "table_name": "tb_conta_eventos",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "usuario_cadastro"
+  },
+  {
+    "table_name": "tb_conta_eventos",
+    "table_schema": "public",
+    "data_type": "timestamp with time zone",
+    "column_name": "data_criacao"
+  },
+  {
+    "table_name": "tb_conta_eventos",
+    "table_schema": "public",
+    "data_type": "timestamp with time zone",
+    "column_name": "data_atualizacao"
+  },
+  {
+    "table_name": "tb_conta_usuarios",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "id_conta_usuario"
+  },
+  {
+    "table_name": "tb_conta_usuarios",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "id_conta"
+  },
+  {
+    "table_name": "tb_conta_usuarios",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "id_usuario"
+  },
+  {
+    "table_name": "tb_conta_usuarios",
+    "table_schema": "public",
+    "data_type": "USER-DEFINED",
+    "column_name": "papel"
+  },
+  {
+    "table_name": "tb_conta_usuarios",
+    "table_schema": "public",
+    "data_type": "USER-DEFINED",
+    "column_name": "status"
+  },
+  {
+    "table_name": "tb_conta_usuarios",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "usuario_convite"
+  },
+  {
+    "table_name": "tb_conta_usuarios",
+    "table_schema": "public",
+    "data_type": "timestamp with time zone",
+    "column_name": "data_convite"
+  },
+  {
+    "table_name": "tb_conta_usuarios",
+    "table_schema": "public",
+    "data_type": "timestamp with time zone",
+    "column_name": "data_aceite"
+  },
+  {
+    "table_name": "tb_conta_usuarios",
+    "table_schema": "public",
+    "data_type": "timestamp with time zone",
+    "column_name": "data_criacao"
+  },
+  {
+    "table_name": "tb_conta_usuarios",
+    "table_schema": "public",
+    "data_type": "timestamp with time zone",
+    "column_name": "data_atualizacao"
+  },
+  {
+    "table_name": "tb_contas",
+    "table_schema": "public",
+    "data_type": "bigint",
+    "column_name": "id_conta"
+  },
+  {
+    "table_name": "tb_contas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "nome_conta"
+  },
+  {
+    "table_name": "tb_contas",
+    "table_schema": "public",
+    "data_type": "USER-DEFINED",
+    "column_name": "tipo_titular"
+  },
+  {
+    "table_name": "tb_contas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "documento"
+  },
+  {
+    "table_name": "tb_contas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "nome_titular"
+  },
+  {
+    "table_name": "tb_contas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "email_principal"
+  },
+  {
+    "table_name": "tb_contas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "telefone_principal"
+  },
+  {
+    "table_name": "tb_contas",
+    "table_schema": "public",
+    "data_type": "USER-DEFINED",
+    "column_name": "status"
+  },
+  {
+    "table_name": "tb_contas",
+    "table_schema": "public",
+    "data_type": "timestamp with time zone",
+    "column_name": "data_criacao"
+  },
+  {
+    "table_name": "tb_contas",
+    "table_schema": "public",
+    "data_type": "timestamp with time zone",
+    "column_name": "data_atualizacao"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_evento"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "nome_evento"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "cidade"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "estado"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "tag"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "boolean",
+    "column_name": "homologado"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "url_resultado"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "url_wiclax"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "cod_cidade"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_agrega_evento"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "pais"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "date",
+    "column_name": "data_inicial"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "date",
+    "column_name": "data_final"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "text",
+    "column_name": "descricao"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "endereco"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "coordenadas"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "imagem"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "destaque"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "categorias"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "url_inscricao"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "info_duplicado"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "nome_simplificado"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "organizador"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "obs"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "tipo_corrida"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "ranking"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_tema"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "timestamp without time zone",
+    "column_name": "data_processamento"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "resumo"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "tag_301"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "boolean",
+    "column_name": "ativo"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "timestamp without time zone",
+    "column_name": "data_inclusao"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "tsvector",
+    "column_name": "nome_evento_full_text"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "obs_resultado"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "status_evento"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "boolean",
+    "column_name": "resultado_completo"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "url_hotsite"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "url_imagem"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_fornecedor"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "url_imagem_listagem"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "text",
+    "column_name": "descricao_original"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "obs_homologacao"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "cronometragem"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "realizacao"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "cobertura"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "url_regulamento"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "numeric",
+    "column_name": "valor_inscricao"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "jsonb",
+    "column_name": "precos"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "text",
+    "column_name": "descricao_en"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "text",
+    "column_name": "descricao_es"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "jsonb",
+    "column_name": "descricao_traducoes_meta"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_localidade"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "jsonb",
+    "column_name": "inscricao_disponibilidade"
+  },
+  {
+    "table_name": "tb_evento_corridas",
+    "table_schema": "public",
+    "data_type": "jsonb",
+    "column_name": "conferencia_datas_publica"
+  },
+  {
+    "table_name": "tb_evento_corridas_fornecedores",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_evento"
+  },
+  {
+    "table_name": "tb_evento_corridas_fornecedores",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_fornecedor_tipo"
+  },
+  {
+    "table_name": "tb_evento_corridas_fornecedores",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_fornecedor"
+  },
+  {
+    "table_name": "tb_evento_corridas_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "link_website"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_fornecedor"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "nome_fornecedor"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character",
+    "column_name": "tipo_pessoa"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "cnpj_cpf"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "boolean",
+    "column_name": "ativo"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "timestamp without time zone",
+    "column_name": "data_cadastro"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "usuario_cadastro"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "timestamp without time zone",
+    "column_name": "data_alteracao"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "usuario_alteracao"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "tag_fornecedor"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "imagem_fornecedor"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "site_fornecedor"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "resumo_fornecedor"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_tema"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "cidade"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "estado"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "tag_tipo"
+  },
+  {
+    "table_name": "tb_fornecedores",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "status"
+  },
+  {
+    "table_name": "tb_fornecedores_tipos",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_fornecedor_tipo"
+  },
+  {
+    "table_name": "tb_fornecedores_tipos",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "descricao_tipo"
+  },
+  {
+    "table_name": "tb_fornecedores_tipos",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "tag_tipo"
+  },
+  {
+    "table_name": "tb_usuarios_fornecedores",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_usuarios_fornecedores"
+  },
+  {
+    "table_name": "tb_usuarios_fornecedores",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_usuario"
+  },
+  {
+    "table_name": "tb_usuarios_fornecedores",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_fornecedor"
+  },
+  {
+    "table_name": "tb_usuarios_fornecedores",
+    "table_schema": "public",
+    "data_type": "integer",
+    "column_name": "id_tipo_fornecedor"
+  },
+  {
+    "table_name": "tb_usuarios_fornecedores",
+    "table_schema": "public",
+    "data_type": "character varying",
+    "column_name": "tipo_relacionamento"
+  }
+]

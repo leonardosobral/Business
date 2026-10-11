@@ -1,0 +1,70 @@
+{
+  "data": {
+    "limit": 10,
+    "page": 0,
+    "total": 2809,
+    "issue_id": 135,
+    "data": [
+      {
+        "target_url": "https://roadrunners.run/assets/css/rr-audience-privacy.css?v=20260913a",
+        "page_id": "6ac29d94decc302b2663d28f",
+        "source_url": "https://roadrunners.run/videos/canal/road-runners/"
+      },
+      {
+        "target_url": "https://roadrunners.run/assets/css/runnerhub-footer.css?v=20260913a",
+        "page_id": "6ac29d94decc302b2663d28f",
+        "source_url": "https://roadrunners.run/videos/canal/road-runners/"
+      },
+      {
+        "target_url": "https://roadrunners.run/assets/css/cores.css?version=20260724a",
+        "page_id": "6ac29d94decc302b2663d28f",
+        "source_url": "https://roadrunners.run/videos/canal/road-runners/"
+      },
+      {
+        "target_url": "https://roadrunners.run/assets/js/runnerhub-entry-prompts.js?v=20260915a",
+        "page_id": "6ac29d94decc302b2663d28f",
+        "source_url": "https://roadrunners.run/videos/canal/road-runners/"
+      },
+      {
+        "target_url": "https://roadrunners.run/assets/js/rr-audience-privacy.js?v=20260913a",
+        "page_id": "6ac29d94decc302b2663d28f",
+        "source_url": "https://roadrunners.run/videos/canal/road-runners/"
+      },
+      {
+        "target_url": "https://roadrunners.run/assets/css/runnerhub-footer.css?v=20260913a",
+        "page_id": "6ac29d94decc302b2663d2af",
+        "source_url": "https://roadrunners.run/videos/canal/mania-de-corrida/"
+      },
+      {
+        "target_url": "https://roadrunners.run/assets/js/runnerhub-entry-prompts.js?v=20260915a",
+        "page_id": "6ac29d94decc302b2663d2af",
+        "source_url": "https://roadrunners.run/videos/canal/mania-de-corrida/"
+      },
+      {
+        "target_url": "https://roadrunners.run/assets/js/rr-audience-privacy.js?v=20260913a",
+        "page_id": "6ac29d94decc302b2663d2af",
+        "source_url": "https://roadrunners.run/videos/canal/mania-de-corrida/"
+      },
+      {
+        "target_url": "https://roadrunners.run/assets/css/rr-audience-privacy.css?v=20260913a",
+        "page_id": "6ac29d94decc302b2663d2af",
+        "source_url": "https://roadrunners.run/videos/canal/mania-de-corrida/"
+      },
+      {
+        "target_url": "https://roadrunners.run/assets/css/cores.css?version=20260724a",
+        "page_id": "6ac29d94decc302b2663d2af",
+        "source_url": "https://roadrunners.run/videos/canal/mania-de-corrida/"
+      }
+    ]
+  },
+  "metadata": {
+    "format": "json",
+    "pagination": {
+      "limit": 10
+    },
+    "url": "https://www.semrush.com/siteaudit/?id=26661911&issueid=135&limit=10&page=1&snapshot_id=6ac29b3456eeefef0a3ff73b",
+    "usage": {
+      "api_units": 0
+    }
+  }
+}

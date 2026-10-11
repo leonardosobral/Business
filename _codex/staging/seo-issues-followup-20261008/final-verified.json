@@ -1,0 +1,16 @@
+{
+  "completed_at": "2026-10-08T22:38:57.648663+00:00",
+  "rr_published_templates": 1,
+  "business_published_templates": 2,
+  "adobe_header_scenarios": 20,
+  "business_render_access_scenarios": 19,
+  "public_urls_verified": 55,
+  "marathons_h1_corrected": 47,
+  "rr_dependencies_preserved": 12,
+  "business_dependencies_preserved": 10,
+  "original_runtime_verified": true,
+  "semrush_measured_data_unchanged": true,
+  "authenticated_visual_check": "incomplete: browser navigation interrupted",
+  "semrush_new_crawl": "started 2026-10-08, 5000-page limit; completion not confirmed",
+  "doc_sha256": "8c6202c47fd3678ecc43058a6196a1fc55816c2157c3f8a0670368febde343ba"
+}

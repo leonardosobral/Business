@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-terceira-corrida-de-rua-coaraci/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-terceira-corrida-de-rua-coaraci/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-terceira-corrida-de-rua-coaraci/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-terceira-corrida-de-rua-coaraci/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-terceira-corrida-de-rua-coaraci/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-terceira-corrida-de-rua-coaraci/",
+      "name": "TERCEIRA CORRIDA DE RUA COARACI",
+      "description": "TERCEIRA CORRIDA DE RUA COARACI acontece em 06 dezembro 2026, em Praça de Eventos - Coaraci - BA.",
+      "url": "https://roadrunners.run/evento/2026-terceira-corrida-de-rua-coaraci/",
+      "startDate": "2026-12-06",
+      "endDate": "2026-12-06",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.races.com.br/upload/bannerr/fundo-bannerr.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Praça de Eventos",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Coaraci",
+          "addressRegion": "BA",
+          "addressCountry": "BR",
+          "streetAddress": "Praça de Eventos"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.races.com.br/terceira-corrida-de-rua-coaraci"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/ba/",
+          "@type": "ListItem",
+          "name": "Corridas em BA"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-terceira-corrida-de-rua-coaraci/",
+          "@type": "ListItem",
+          "name": "TERCEIRA CORRIDA DE RUA COARACI"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "passed_tests": 98,
+  "against_generated_assets": true,
+  "test_files": [
+    "audience-tracker.test.js",
+    "audience-editorial.test.js",
+    "audience-static-promos.test.js",
+    "audience-live-registration.test.js",
+    "estado-city-navigation.test.cjs"
+  ]
+}

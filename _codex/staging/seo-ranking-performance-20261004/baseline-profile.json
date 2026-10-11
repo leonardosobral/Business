@@ -1,0 +1,1053 @@
+{
+  "NODES": [
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 7134.519,
+      "Actual Rows": 401,
+      "Node Type": "Sort"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 7131.335,
+      "Actual Rows": 401,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 2747.196,
+      "Actual Rows": 400,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 1,
+      "Relation Name": "desafios",
+      "Actual Total Time": 2744.258,
+      "Actual Rows": 400,
+      "Node Type": "Seq Scan"
+    },
+    {
+      "Actual Loops": 400,
+      "Relation Name": "tb_usuarios",
+      "Actual Total Time": 0.006,
+      "Actual Rows": 1,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Actual Loops": 400,
+      "Relation Name": "tb_paginas",
+      "Actual Total Time": 0.007,
+      "Actual Rows": 1,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.078,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 1",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.077,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.067,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.066,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.054,
+      "Actual Rows": 1021,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.007,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 71,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.041,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.126,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 2",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.125,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.11,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.109,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.102,
+      "Actual Rows": 1629,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.003,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 69,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.07,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.378,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 3",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.378,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.341,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.337,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.306,
+      "Actual Rows": 4404,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.003,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 81,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.167,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.042,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 4",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.04,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.037,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.036,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.031,
+      "Actual Rows": 292,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.003,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 24,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.015,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.442,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 5",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.441,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.402,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.4,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.002,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 266,
+      "Actual Total Time": 0.598,
+      "Actual Rows": 7582,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 52,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.287,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 1.668,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 6",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 1.665,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.164,
+      "Actual Rows": 566,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 226966,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.002,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.08,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 7",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.079,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.066,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.065,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.057,
+      "Actual Rows": 1021,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.004,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 71,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.042,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.125,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 8",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.124,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.11,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.109,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.101,
+      "Actual Rows": 1629,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.002,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 69,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.068,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.375,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 9",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.375,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.34,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.336,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.305,
+      "Actual Rows": 4404,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.004,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 81,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.153,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.033,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 10",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.032,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.027,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.026,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.023,
+      "Actual Rows": 292,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.002,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 24,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.013,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.442,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 11",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.441,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.404,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.402,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.002,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 266,
+      "Actual Total Time": 0.601,
+      "Actual Rows": 7582,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 52,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.276,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 1.681,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 12",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 1.679,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.158,
+      "Actual Rows": 566,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 226966,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.003,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.075,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 13",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.074,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.063,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.062,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.054,
+      "Actual Rows": 1021,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.004,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 71,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.037,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.121,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 14",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.12,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.106,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.105,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.099,
+      "Actual Rows": 1629,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.002,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 69,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.062,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.383,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 15",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.382,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.346,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.342,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.302,
+      "Actual Rows": 4404,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.014,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 81,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.167,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.031,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 16",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.029,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.024,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.023,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.019,
+      "Actual Rows": 292,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.002,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 24,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.021,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.432,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 17",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.431,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.396,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.395,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.002,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 266,
+      "Actual Total Time": 0.591,
+      "Actual Rows": 7582,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 52,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.252,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 1.668,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 18",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 1.666,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.163,
+      "Actual Rows": 566,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 226966,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.002,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.082,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 19",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.08,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.068,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.066,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.057,
+      "Actual Rows": 1021,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.004,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 71,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.046,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.119,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 20",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.119,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.106,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.105,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.098,
+      "Actual Rows": 1629,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.003,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 69,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.057,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.375,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 21",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.374,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.337,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.333,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.302,
+      "Actual Rows": 4404,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.004,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 81,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.163,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.03,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 22",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.029,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.025,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.024,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.02,
+      "Actual Rows": 292,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.002,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 24,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.015,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.43,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 23",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.428,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.392,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.391,
+      "Actual Rows": 0,
+      "Node Type": "BitmapAnd"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.002,
+      "Actual Rows": 14,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 266,
+      "Actual Total Time": 0.585,
+      "Actual Rows": 7582,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 52,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.271,
+      "Actual Rows": 1,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 1.671,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 24",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 1.669,
+      "Actual Rows": 0,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 401,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 0.163,
+      "Actual Rows": 566,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Actual Loops": 226966,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 0.002,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    }
+  ],
+  "EXECUTION_MS": 7149.512,
+  "ROWS": 401
+}

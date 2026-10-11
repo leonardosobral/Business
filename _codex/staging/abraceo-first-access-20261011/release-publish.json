@@ -1,0 +1,13 @@
+{
+  "published": [
+    "includes/backend/business_google_callback.cfm",
+    "services/accountDelegation/RequestBoundary.cfc",
+    "estudos/index.cfm",
+    "estudos/includes/FirstAccess.cfc",
+    "estudos/primeiro-acesso/index.cfm",
+    "estudos/primeiro-acesso/api.cfm",
+    "estudos/primeiro-acesso/primeiro-acesso.css",
+    "estudos/primeiro-acesso/primeiro-acesso.js"
+  ],
+  "backup": "/var/backups/business-abraceo-first-access-20261011/baseline"
+}

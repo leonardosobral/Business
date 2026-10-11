@@ -1,0 +1,67 @@
+{
+  "events": {
+    "40176": {
+      "descricao": "A entrega dos kits ocorrerá no Parque da Cidade, na Arena do Evento. Na sexta-feira, dia 23 de outubro, será das 14h às 18h. No sábado, dia 24 de outubro, será das 9h às 16h30.<br><br>Para retirar o kit, é necessário doar 1 kg de alimento não perecível. Terceiros podem retirá-lo com documento do inscrito.<br><br>Durante a entrega, a Lojinha do Raul oferecerá itens da Corrida Toca Raul.<br><br>As inscrições para a Corrida de 7 km estão no site www.ticketagora.com.br com valores variando por lotes. O Kit Premium inclui camiseta, sacochila e outros, com preços a partir de R$ 85.<br><br>Também há Kit Econômico e Simples. Para a Caminhada de 2 km, os kits variam de R$ 65 a R$ 90.<br><br>A Corrida ocorrerá no dia 24 de outubro de 2026, em Barra Mansa, no Parque da Cidade, às 17h.<br><br>A premiação terá troféus para os cinco primeiros masculinos e femininos, além das faixas etárias e equipes.<br><br>O evento contará com suporte de ambulância, segurança e postos de hidratação.",
+      "descricao_es": "La entrega de los kits se realizar&aacute; en el Parque de la Ciudad, en la Arena del Evento. El viernes, 23 de octubre, ser&aacute; de 14h a 18h. El s&aacute;bado, 24 de octubre, ser&aacute; de 9h a 16h30.<br><br>Para retirar el kit, es necesario donar 1 kg de alimento no perecedero. Terceros pueden retirarlo con documento del inscrito.<br><br>Durante la entrega, la Tiendita de Raul ofrecer&aacute; art&iacute;culos de la Carrera Toca Raul.<br><br>Las inscripciones para la Carrera de 7 km est&aacute;n en el sitio www.ticketagora.com.br con valores que var&iacute;an por lotes. El Kit Premium incluye camiseta, mochila y otros, con precios a partir de R&#x24; 85.<br><br>Tambi&eacute;n hay Kit Econ&oacute;mico y Simple. Para la Caminata de 2 km, los kits var&iacute;an de R&#x24; 65 a R&#x24; 90.<br><br>La Carrera se realizar&aacute; el d&iacute;a 24 de octubre de 2026, en Barra Mansa, en el Parque de la Ciudad, a las 17h.<br><br>La premiaci&oacute;n tendr&aacute; trofeos para los cinco primeros masculinos y femeninos, adem&aacute;s de las categor&iacute;as por edades y equipos.<br><br>El evento contar&aacute; con soporte de ambulancia, seguridad y puestos de hidrataci&oacute;n.",
+      "descricao_traducoes_meta": {
+        "es": {
+          "description_hash": "b5c356daae052dd91ad84f0283ddc7c6",
+          "source_hash": "b2ae812b4b50cc7ab6532dd4142979c6"
+        }
+      }
+    },
+    "45308": {
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/87806/8d17551b81fa4e19ad40521f1e79149c639203965308463912.pdf"
+    }
+  },
+  "routes": {
+    "60746": {
+      "data_percurso": "2026-11-01",
+      "percurso_bloqueado": true
+    },
+    "60747": {
+      "data_percurso": "2026-11-01",
+      "percurso_bloqueado": true
+    },
+    "63977": {
+      "data_percurso": "2026-11-01",
+      "percurso_bloqueado": true
+    },
+    "63978": {
+      "data_percurso": "2026-11-01",
+      "percurso_bloqueado": true
+    },
+    "63979": {
+      "data_percurso": "2026-11-01",
+      "percurso_bloqueado": true
+    },
+    "64868": {
+      "data_percurso": "2026-11-01",
+      "percurso_bloqueado": true
+    },
+    "64870": {
+      "data_percurso": "2026-11-01",
+      "percurso_bloqueado": true
+    },
+    "64871": {
+      "data_percurso": "2026-11-01",
+      "percurso_bloqueado": true
+    },
+    "66939": {
+      "data_percurso": "2026-10-24",
+      "percurso_bloqueado": true
+    },
+    "66940": {
+      "data_percurso": "2026-10-24",
+      "percurso_bloqueado": true
+    },
+    "69133": {
+      "data_percurso": "2026-11-01",
+      "percurso_bloqueado": true
+    },
+    "69134": {
+      "data_percurso": "2026-11-01",
+      "percurso_bloqueado": true
+    }
+  }
+}

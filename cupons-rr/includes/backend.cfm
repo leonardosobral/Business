@@ -44,13 +44,13 @@ cpError='';cpConflict=false;cpSelected=cpService.id(URL.cupom_id ?: (URL.campanh
 cpNew=(URL.novo ?: '') EQ '1';cpSaved=0;
 if (structKeyExists(FORM,'coupon_action')) {
   if (CGI.request_method NEQ 'POST' OR compare(FORM.csrf ?: '',SESSION.couponManagerCsrf) NEQ 0) {
-    cfheader(statuscode=403,statustext='Forbidden');writeOutput('Sessão expirada. Recarregue a página e tente novamente.');abort;
+    cfheader(statuscode=403);writeOutput('Sessão expirada. Recarregue a página e tente novamente.');abort;
   }
   try {
     cpSaved=cpService.save(FORM.coupon_action,FORM,cpAccess);
   } catch (Coupon.Conflict ex) {cpError=ex.message;cpConflict=true;}
     catch (Coupon.Validation ex) {cpError=ex.message;}
-    catch (Coupon.Forbidden ex) {cpError=ex.message;cfheader(statuscode=403,statustext='Forbidden');}
+    catch (Coupon.Forbidden ex) {cpError=ex.message;cfheader(statuscode=403);}
     catch (any ex) {cpError='Não foi possível salvar o cupom. Revise os dados e tente novamente.';writeLog(file='application',type='error',text='Coupon manager: ' & ex.type & ' ' & ex.message);}
   cpSelected=cpService.id(FORM.id_cupom ?: '');cpNew=FORM.coupon_action EQ 'criar';
 }

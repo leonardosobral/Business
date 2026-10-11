@@ -1,10 +1,10 @@
 <cfprocessingdirective pageencoding="utf-8"/>
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
 <cfif compareNoCase(getBaseTemplatePath(), getCurrentTemplatePath()) EQ 0>
-  <cfheader statuscode="403" statustext="Forbidden"/><cfabort/>
+  <cfheader statuscode="403"/><cfabort/>
 </cfif>
 <cfif structKeyExists(CGI,"request_method") AND compareNoCase(CGI.request_method,"GET") NEQ 0>
-  <cfheader statuscode="405" statustext="Method Not Allowed"/><cfabort/>
+  <cfheader statuscode="405"/><cfabort/>
 </cfif>
 <h2 class="h5 mb-2">SEO para IA</h2>
 <p class="seo-subtitle">Condições para que assistentes encontrem e leiam as páginas públicas. A auditoria está indicada em cada site; conferências complementares de traduções, logs e audiência informam suas próprias datas e escopos nos detalhes. A avaliação não comprova indexação, compreensão ou citação nas respostas.</p>

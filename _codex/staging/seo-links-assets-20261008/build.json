@@ -1,0 +1,168 @@
+{
+  "esbuild": "0.28.2",
+  "options": "whitespace only; identifiers and syntax preserved",
+  "files": [
+    {
+      "source": "assets/css/cores.css",
+      "target": "assets/css/cores.min.css",
+      "source_sha256": "0197750f87cb03bc100f98423162c1cbb3def223f2c22777697b8b9bb87646d7",
+      "output_sha256": "39b897a55d5d7137dfaa958b1c11df5f264a52a27bf077b7d384fbeab615f642",
+      "before_bytes": 25412,
+      "after_bytes": 20347,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/css/rr-audience-privacy.css",
+      "target": "assets/css/rr-audience-privacy.min.css",
+      "source_sha256": "22361c9a2002f8b562615c3f9d93258fe2dace4595348dc103f4ce84ddccd73a",
+      "output_sha256": "b14f80dc621390f5a11a26e5daebae6ef3b7ab348ff581e9202d837e112fa3e1",
+      "before_bytes": 2602,
+      "after_bytes": 2026,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/css/runnerhub-footer.css",
+      "target": "assets/css/runnerhub-footer.min.css",
+      "source_sha256": "8f2a65ea8400b28b9bd9cef3bc3d883184bdb91be455e441a8b4d897715d7344",
+      "output_sha256": "a245fbf83bf34e76b8911423068294b2b989b32f5e717c433b15a78a580e1869",
+      "before_bytes": 6322,
+      "after_bytes": 5456,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/js/rr-audience-privacy.js",
+      "target": "assets/js/rr-audience-privacy.min.js",
+      "source_sha256": "712c40343e288cd16b25ab75c56fc02921096aaebdaad2f16cae8271deb5fcca",
+      "output_sha256": "61d84ee8c6dd8e21112f133c00b820521f63dd43f85b84ca9c9056a744c5a09d",
+      "before_bytes": 5677,
+      "after_bytes": 4406,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/js/runnerhub-entry-prompts.js",
+      "target": "assets/js/runnerhub-entry-prompts.min.js",
+      "source_sha256": "5d9e41e5f8f7a9b8a2555d0f53e00ec1e325afce76dd0b7359fde9f3c3931864",
+      "output_sha256": "65aca1c489093895c03eb478203d87d6b57f1d81cea7098fb34c7f7f95f3f701",
+      "before_bytes": 2195,
+      "after_bytes": 1697,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/js/runner-apps-menu-lazy.js",
+      "target": "assets/js/runner-apps-menu-lazy.min.js",
+      "source_sha256": "3bbed1a0b63cb6c9a458da5412ea059ea2724f6330466d21231ff4ec1c5628a8",
+      "output_sha256": "2def2c2e721eb39d551602bff6db6fda1be2dabaa23bd0408ad1d63f9f6ff085",
+      "before_bytes": 8449,
+      "after_bytes": 5525,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/js/runnerhub-event-filters.js",
+      "target": "assets/js/runnerhub-event-filters.min.js",
+      "source_sha256": "a75dd389f526ccd5af0852ba67bc3d805314217ed97696b8cc568a9e01f8bced",
+      "output_sha256": "c45fceca86447e2dad931494ee43ac690e4f7897762beacc5da5036255adb6cf",
+      "before_bytes": 26725,
+      "after_bytes": 17241,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/js/runnerhub-busca-page.js",
+      "target": "assets/js/runnerhub-busca-page.min.js",
+      "source_sha256": "56ce15e3a56e07cd85813df8417575f9a37047f0625c0f2ef0d7b19ba68123dd",
+      "output_sha256": "eb5847a44ec8bc3966d5abb8bfc05ea95aedb11b279000e125a839404b12e49d",
+      "before_bytes": 53715,
+      "after_bytes": 33819,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/js/event-location-mapbox.js",
+      "target": "assets/js/event-location-mapbox.min.js",
+      "source_sha256": "9566ccc01ed603db0d140edae73b50822b87983a9b20c34ecce84da95f90296e",
+      "output_sha256": "7b51b25b226e92dee9f804cec008a6b7a7ca827008498ccca2e027d037abf854",
+      "before_bytes": 15735,
+      "after_bytes": 10496,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/js/event-route-mapbox.js",
+      "target": "assets/js/event-route-mapbox.min.js",
+      "source_sha256": "3eabfcfde849373e216868ec493da8820e06beaafa4c7def58612ebe451a7c85",
+      "output_sha256": "1584c40ebb6b268437edb017ac46552207e02039db71a6050828e11122077ef8",
+      "before_bytes": 69960,
+      "after_bytes": 45904,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/css/runnerhub-institutional.css",
+      "target": "assets/css/runnerhub-institutional.min.css",
+      "source_sha256": "91b54c80ddcb0b269f9978b8e49d04cbb98f118babc2faf95d23f19f9a1f9d9e",
+      "output_sha256": "d19cd34017e0fa8ed2cc54a34dca8e0e2335a98bca69d9262aa796539e7be6d8",
+      "before_bytes": 1444,
+      "after_bytes": 1042,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/css/event-location-mapbox.css",
+      "target": "assets/css/event-location-mapbox.min.css",
+      "source_sha256": "9622c0d7e269ae845ac59d40c14b49940c7ff3086d11c133a6581b0ded2edd6c",
+      "output_sha256": "07721b496ac2f01d982e99f0f06972da34cda3d9cda96aa7518d2c71495623dc",
+      "before_bytes": 6799,
+      "after_bytes": 5299,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/css/event-route-mapbox.css",
+      "target": "assets/css/event-route-mapbox.min.css",
+      "source_sha256": "c555c8217a74122c15b92e60fc0a1043053bf8bbef2a52d0c5fc574cb2ec584a",
+      "output_sha256": "dd6cf842844a855c26ffe8ce99be369ecf33526fb0aa2f990f680bc311c188fa",
+      "before_bytes": 9201,
+      "after_bytes": 7279,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/js/rr-audience.js",
+      "target": "assets/js/rr-audience.min.js",
+      "source_sha256": "6db9c5e7be65271262f6837cc3bbc7905194eae03ac56fad3a24f29461aaf50d",
+      "output_sha256": "6fe7ce98e5a4a77fe1b6ab5ed21d76ab9cef19714c76a3943948cea189a17fe7",
+      "before_bytes": 32736,
+      "after_bytes": 23772,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/css/runnerhub-home.css",
+      "target": "assets/css/runnerhub-home.min.css",
+      "source_sha256": "0b03e4f3f177c29a6f5cc5c9fde2a68ab340c768235e51b097eabe4e4fe2bfe0",
+      "output_sha256": "2ed27adafb18f7af53a663310a7c4508ff1f348485cff60a8ff881d3f490b157",
+      "before_bytes": 6231,
+      "after_bytes": 6029,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/css/runnerhub-estado-cidades.css",
+      "target": "assets/css/runnerhub-estado-cidades.min.css",
+      "source_sha256": "1898c5d42e23cf76c7a4435b60f703198e4fe8699abf68f726c42696ea58664a",
+      "output_sha256": "203d8a5fe85c3190e4428cbad1f18fe2e71ea8b82b7dfef3ab2eba37e0fa3e07",
+      "before_bytes": 5506,
+      "after_bytes": 4260,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/js/runnerhub-state-filter.js",
+      "target": "assets/js/runnerhub-state-filter.min.js",
+      "source_sha256": "1b4f9b50d68e5451a2178426bc014c2300612115f0036212d89dfb18a803d3b1",
+      "output_sha256": "520a82ca1c20bba3108b3ecb49bc9a8bf3a5867a2315dfb922ff99f22847ddff",
+      "before_bytes": 484,
+      "after_bytes": 373,
+      "compiler_roundtrip_stable": true
+    },
+    {
+      "source": "assets/js/runnerhub-estado-cidades.js",
+      "target": "assets/js/runnerhub-estado-cidades.min.js",
+      "source_sha256": "d017a1047030a278eda60a9083f8a712c09a580af025125c95ef67b3f2e3f53f",
+      "output_sha256": "9e986ae1c2ae48a80d2b8b5e01ada62ce8f59387ffa6bd8f81ed31339d80fba7",
+      "before_bytes": 7822,
+      "after_bytes": 5670,
+      "compiler_roundtrip_stable": true
+    }
+  ]
+}

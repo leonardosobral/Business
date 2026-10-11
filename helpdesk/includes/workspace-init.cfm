@@ -1,4 +1,4 @@
-<cfif NOT structKeyExists(VARIABLES,"helpdeskCanManage") OR NOT VARIABLES.helpdeskCanManage><cfheader statuscode="403" statustext="Forbidden"/><cfabort/></cfif>
+<cfif NOT structKeyExists(VARIABLES,"helpdeskCanManage") OR NOT VARIABLES.helpdeskCanManage><cfheader statuscode="403"/><cfabort/></cfif>
 <cfscript>
 hdService=createObject("component","helpdesk.includes.HelpdeskWorkspace");
 hdFilters=hdService.filters(URL);

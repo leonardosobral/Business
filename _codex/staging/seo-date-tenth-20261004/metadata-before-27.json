@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-fluir-run/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-fluir-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-fluir-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-fluir-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-fluir-run/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-fluir-run/",
+      "name": "FLUIR RUN",
+      "description": "FLUIR RUN acontece em 29 novembro 2026, em Praça do Novo Portinho - Cabo Frio/RJ:  R. Jaboticaba, 28 - Portinho, Cabo Frio - RJ, 28915-640, 28 , Cabo Frio, RJ, Brasil - Cabo Frio - RJ.",
+      "url": "https://roadrunners.run/evento/2026-fluir-run/",
+      "startDate": "2026-11-29",
+      "endDate": "2026-11-29",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/9GOM4R2K64W1C5Y7G4YYF3ZAWZA3F754S5ZOGJUS8HCMZFJI5D.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Praça do Novo Portinho - Cabo Frio/RJ:  R. Jaboticaba, 28 - Portinho, Cabo Frio - RJ, 28915-640, 28 , Cabo Frio, RJ, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cabo Frio",
+          "addressRegion": "RJ",
+          "addressCountry": "BR",
+          "streetAddress": "Praça do Novo Portinho - Cabo Frio/RJ:  R. Jaboticaba, 28 - Portinho, Cabo Frio - RJ, 28915-640, 28 , Cabo Frio, RJ, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88274&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/rj/",
+          "@type": "ListItem",
+          "name": "Corridas em RJ"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-fluir-run/",
+          "@type": "ListItem",
+          "name": "FLUIR RUN"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

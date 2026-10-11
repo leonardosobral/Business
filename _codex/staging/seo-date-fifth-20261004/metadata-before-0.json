@@ -1,0 +1,72 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-trackfield-run-series-2026-parkshoppingbarigui/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-trackfield-run-series-2026-parkshoppingbarigui/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-trackfield-run-series-2026-parkshoppingbarigui/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-trackfield-run-series-2026-parkshoppingbarigui/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-trackfield-run-series-2026-parkshoppingbarigui/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-parkshoppingbarigui/",
+      "name": "Track&Field Run Series 2026 - ParkShoppingBarigüi",
+      "description": "Track&Field Run Series 2026 - ParkShoppingBarigüi acontece em 11 outubro 2026, em 📍ParkShoppingBarigüi - Rua Professor Pedro Viriato Parigot de Souza, 600 - Curitiba - PR, 81200100 - Curitiba - PR.",
+      "url": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-parkshoppingbarigui/",
+      "startDate": "2026-10-11",
+      "endDate": "2026-10-11",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://d1au5iau2exwyo.cloudfront.net/RUN_SERIES_8c536e066d.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "📍ParkShoppingBarigüi - Rua Professor Pedro Viriato Parigot de Souza, 600 - Curitiba - PR, 81200100",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Curitiba",
+          "addressRegion": "PR",
+          "addressCountry": "BR",
+          "streetAddress": "📍ParkShoppingBarigüi - Rua Professor Pedro Viriato Parigot de Souza, 600 - Curitiba - PR, 81200100"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.tfsports.com.br/run-series/park-shopping-barigui-2026/"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "TFSPORT",
+        "url": "https://www.tfsports.com.br/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/pr/",
+          "@type": "ListItem",
+          "name": "Corridas em PR"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-trackfield-run-series-2026-parkshoppingbarigui/",
+          "@type": "ListItem",
+          "name": "Track&Field Run Series 2026 - ParkShoppingBarigüi"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

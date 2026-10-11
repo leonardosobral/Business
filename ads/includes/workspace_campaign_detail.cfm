@@ -27,16 +27,16 @@
       <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-start gap-3">
         <div>
           <div class="ads-v1-eyebrow mb-2">Campanha de evento</div>
-          <h1 class="h3 mb-2"><cfoutput>#htmlEditFormat(qAdsV1SelectedCampaign.name)#</cfoutput></h1>
+          <h1 class="h3 mb-2"><cfoutput>#encodeForHTML(qAdsV1SelectedCampaign.name)#</cfoutput></h1>
           <p class="text-muted mb-0">
-            <strong class="text-body"><cfoutput>#htmlEditFormat(qAdsV1SelectedCampaign.event_name)#</cfoutput></strong>
+            <strong class="text-body"><cfoutput>#encodeForHTML(qAdsV1SelectedCampaign.event_name)#</cfoutput></strong>
             <cfif len(trim(qAdsV1SelectedCampaign.event_city & "")) OR len(trim(qAdsV1SelectedCampaign.event_state & ""))>
-              · <cfoutput>#htmlEditFormat(trim(qAdsV1SelectedCampaign.event_city & ""))#<cfif len(trim(qAdsV1SelectedCampaign.event_state & ""))>/#htmlEditFormat(qAdsV1SelectedCampaign.event_state)#</cfif></cfoutput>
+              · <cfoutput>#encodeForHTML(trim(qAdsV1SelectedCampaign.event_city & ""))#<cfif len(trim(qAdsV1SelectedCampaign.event_state & ""))>/#encodeForHTML(qAdsV1SelectedCampaign.event_state)#</cfif></cfoutput>
             </cfif>
           </p>
         </div>
         <div class="d-flex flex-wrap gap-2">
-          <span class="badge <cfif VARIABLES.adsV1DetailStatus EQ 'ACTIVE'>badge-success<cfelseif VARIABLES.adsV1DetailStatus EQ 'PAUSED'>badge-warning<cfelseif VARIABLES.adsV1DetailStatus EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>"><cfoutput>#htmlEditFormat(adsV1CampaignStatusLabel(VARIABLES.adsV1DetailStatus))#</cfoutput></span>
+          <span class="badge <cfif VARIABLES.adsV1DetailStatus EQ 'ACTIVE'>badge-success<cfelseif VARIABLES.adsV1DetailStatus EQ 'PAUSED'>badge-warning<cfelseif VARIABLES.adsV1DetailStatus EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>"><cfoutput>#encodeForHTML(adsV1CampaignStatusLabel(VARIABLES.adsV1DetailStatus))#</cfoutput></span>
           <cfif VARIABLES.adsV1DetailReviewStatus EQ "APPROVED"><span class="badge badge-success">Aprovada pela RunnerHub</span>
           <cfelseif VARIABLES.adsV1DetailReviewStatus EQ "PENDING_REVIEW"><span class="badge badge-info">Em análise</span>
           <cfelseif VARIABLES.adsV1DetailReviewStatus EQ "WAITING_PREREQUISITES"><span class="badge badge-warning">Aguardando pré-requisitos</span>
@@ -77,14 +77,14 @@
           <div class="ads-v1-eyebrow mb-2">Configuração</div>
           <h2 class="h5 mb-4">Segmentação e exibição</h2>
           <div class="row g-4 mb-4">
-            <div class="col-sm-4"><div class="text-muted small">País</div><strong><cfoutput>#htmlEditFormat(qAdsV1SelectedCampaign.target_country_code)#</cfoutput></strong></div>
-            <div class="col-sm-4"><div class="text-muted small">Estado ou região</div><strong><cfoutput>#len(trim(qAdsV1SelectedCampaign.target_region_code & "")) ? htmlEditFormat(qAdsV1SelectedCampaign.target_region_code) : "Todo o Brasil"#</cfoutput></strong></div>
-            <div class="col-sm-4"><div class="text-muted small">Dispositivos</div><strong><cfoutput>#htmlEditFormat(VARIABLES.adsV1DetailDeviceLabel)#</cfoutput></strong></div>
+            <div class="col-sm-4"><div class="text-muted small">País</div><strong><cfoutput>#encodeForHTML(qAdsV1SelectedCampaign.target_country_code)#</cfoutput></strong></div>
+            <div class="col-sm-4"><div class="text-muted small">Estado ou região</div><strong><cfoutput>#len(trim(qAdsV1SelectedCampaign.target_region_code & "")) ? encodeForHTML(qAdsV1SelectedCampaign.target_region_code) : "Todo o Brasil"#</cfoutput></strong></div>
+            <div class="col-sm-4"><div class="text-muted small">Dispositivos</div><strong><cfoutput>#encodeForHTML(VARIABLES.adsV1DetailDeviceLabel)#</cfoutput></strong></div>
           </div>
           <div class="text-muted small mb-2">Locais de exibição</div>
-          <div class="p-3 rounded bg-body-tertiary"><strong><cfoutput>#htmlEditFormat(adsV1PlacementSummary(qAdsV1SelectedCampaign.placement_keys))#</cfoutput></strong></div>
+          <div class="p-3 rounded bg-body-tertiary"><strong><cfoutput>#encodeForHTML(adsV1PlacementSummary(qAdsV1SelectedCampaign.placement_keys))#</cfoutput></strong></div>
           <cfif len(trim(qAdsV1SelectedCampaign.destination_url & ""))>
-            <a class="btn btn-sm btn-outline-info mt-4" href="<cfoutput>#htmlEditFormat(qAdsV1SelectedCampaign.destination_url)#</cfoutput>" target="_blank" rel="noopener">Ver página anunciada <i class="fas fa-external-link-alt ms-1" aria-hidden="true"></i></a>
+            <a class="btn btn-sm btn-outline-info mt-4" href="<cfoutput>#encodeForHTMLAttribute(qAdsV1SelectedCampaign.destination_url)#</cfoutput>" target="_blank" rel="noopener">Ver página anunciada <i class="fas fa-external-link-alt ms-1" aria-hidden="true"></i></a>
           </cfif>
         </div>
       </section>
@@ -100,9 +100,9 @@
           <cfloop query="qAdsV1CampaignStatusHistory">
             <div class="ads-activity-row">
               <div>
-                <strong><cfoutput>#htmlEditFormat(adsV1CampaignStatusLabel(qAdsV1CampaignStatusHistory.to_status))#</cfoutput></strong>
-                <div class="small text-muted"><cfoutput>#htmlEditFormat(qAdsV1CampaignStatusHistory.reason)#</cfoutput></div>
-                <cfif len(trim(qAdsV1CampaignStatusHistory.changed_by_name & ""))><div class="small text-muted">Por <cfoutput>#htmlEditFormat(qAdsV1CampaignStatusHistory.changed_by_name)#</cfoutput></div></cfif>
+                <strong><cfoutput>#encodeForHTML(adsV1CampaignStatusLabel(qAdsV1CampaignStatusHistory.to_status))#</cfoutput></strong>
+                <div class="small text-muted"><cfoutput>#encodeForHTML(qAdsV1CampaignStatusHistory.reason)#</cfoutput></div>
+                <cfif len(trim(qAdsV1CampaignStatusHistory.changed_by_name & ""))><div class="small text-muted">Por <cfoutput>#encodeForHTML(qAdsV1CampaignStatusHistory.changed_by_name)#</cfoutput></div></cfif>
               </div>
               <div class="small text-muted text-end"><cfif isDate(qAdsV1CampaignStatusHistory.changed_at)><cfoutput>#lsDateFormat(qAdsV1CampaignStatusHistory.changed_at, "dd/mm/yyyy")#<br/>#lsTimeFormat(qAdsV1CampaignStatusHistory.changed_at, "HH:nn")#</cfoutput></cfif></div>
             </div>

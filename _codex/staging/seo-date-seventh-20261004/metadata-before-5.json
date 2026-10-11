@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-1-corrida-emporio-prime/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-1-corrida-emporio-prime/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-1-corrida-emporio-prime/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-1-corrida-emporio-prime/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-1-corrida-emporio-prime/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-1-corrida-emporio-prime/",
+      "name": "1ª CORRIDA EMPORIO PRIME",
+      "description": "1ª CORRIDA EMPORIO PRIME se realiza el 18 octubre 2026, en AVENIDA DOIS DE JULHO - ILHÉUS - BA.",
+      "url": "https://roadrunners.run/es/evento/2026-1-corrida-emporio-prime/",
+      "startDate": "2026-10-18",
+      "endDate": "2026-10-18",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.races.com.br/upload/bannerr/797_b41bcda2e0bc85bae642f1f96e5774da.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "AVENIDA DOIS DE JULHO",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "ILHÉUS",
+          "addressRegion": "BA",
+          "addressCountry": "BR",
+          "streetAddress": "AVENIDA DOIS DE JULHO"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.races.com.br/1-corrida-emporio-prime"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/ba/",
+          "@type": "ListItem",
+          "name": "Carreras en BA"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-1-corrida-emporio-prime/",
+          "@type": "ListItem",
+          "name": "1ª CORRIDA EMPORIO PRIME"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

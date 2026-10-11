@@ -29,7 +29,7 @@
   
           <form>
               <label>Conteúdo (HTML)
-                <textarea class="form-control" name="body_html" rows="12"><cfoutput>#htmlEditFormat(isDefined('templateHTML.filecontent') ? templateHTML.filecontent : '')#</cfoutput></textarea>
+                <textarea class="form-control" name="body_html" rows="12"><cfoutput>#encodeForHTML(isDefined('templateHTML.filecontent') ? templateHTML.filecontent : '')#</cfoutput></textarea>
               </label>
           </form>
 

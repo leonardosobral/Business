@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: city selection preserves every supported filter, without pagination
+ok 1 - city selection preserves every supported filter, without pagination
+  ---
+  duration_ms: 0.730083
+  type: 'test'
+  ...
+# Subtest: all cities clears only city selection
+ok 2 - all cities clears only city selection
+  ---
+  duration_ms: 0.150292
+  type: 'test'
+  ...
+# Subtest: changing state discards the old city
+ok 3 - changing state discards the old city
+  ---
+  duration_ms: 0.219584
+  type: 'test'
+  ...
+# Subtest: tabs preserve city and filters and replace their own mode
+ok 4 - tabs preserve city and filters and replace their own mode
+  ---
+  duration_ms: 0.214208
+  type: 'test'
+  ...
+# Subtest: invalid UF or injected city slug cannot create links
+ok 5 - invalid UF or injected city slug cannot create links
+  ---
+  duration_ms: 0.146292
+  type: 'test'
+  ...
+# Subtest: search ignores accents, case, and repeated whitespace
+ok 6 - search ignores accents, case, and repeated whitespace
+  ---
+  duration_ms: 0.158333
+  type: 'test'
+  ...
+# Subtest: pagination uses the state endpoint and retains city and modality
+ok 7 - pagination uses the state endpoint and retains city and modality
+  ---
+  duration_ms: 0.217167
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 46.273083

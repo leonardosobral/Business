@@ -1,0 +1,5915 @@
+{
+  "00773882000128": {
+    "cnpj": "00773882000128",
+    "razao_social": "ACME - MARKETING E EVENTOS LTDA",
+    "nome_fantasia": "DBUENO EVENTOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2026-05-18",
+    "data_inicio_atividade": "1995-07-28",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "DOUTOR BERNARDINO DE CAMPOS",
+    "numero": "626",
+    "complemento": "APT 101",
+    "bairro": "CAMPO GRANDE",
+    "cep": "11065002",
+    "municipio": "SANTOS",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "EMPRESA DE PEQUENO PORTE",
+    "ddd_telefone_1": "1333264608",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/00773882000128"
+  },
+  "01555104000125": {
+    "cnpj": "01555104000125",
+    "razao_social": "PROWORLD PROMOCOES LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2005-11-03",
+    "data_inicio_atividade": "1996-11-21",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "DA ABOLICAO",
+    "numero": "346",
+    "complemento": "",
+    "bairro": "PONTE PRETA",
+    "cep": "13041445",
+    "municipio": "CAMPINAS",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1999847255",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/01555104000125"
+  },
+  "03574107000131": {
+    "cnpj": "03574107000131",
+    "razao_social": "YESCOM SERVICOS LTDA",
+    "nome_fantasia": "YESCOM ENTRETENIMENTO, ESPORTES E MARKETING.",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2003-10-18",
+    "data_inicio_atividade": "1999-12-28",
+    "descricao_tipo_de_logradouro": "ALAMEDA",
+    "logradouro": "ARAGUAIA",
+    "numero": "3876",
+    "complemento": "ARMZ 1",
+    "bairro": "ALPHAVILLE INDUSTRIAL",
+    "cep": "06455000",
+    "municipio": "BARUERI",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 1813001,
+        "descricao": "Impressão de material para uso publicitário"
+      },
+      {
+        "codigo": 1813099,
+        "descricao": "Impressão de material para outros usos"
+      },
+      {
+        "codigo": 5811500,
+        "descricao": "Edição de livros"
+      },
+      {
+        "codigo": 6201501,
+        "descricao": "Desenvolvimento de programas de computador sob encomenda"
+      },
+      {
+        "codigo": 6201502,
+        "descricao": "Web design"
+      },
+      {
+        "codigo": 6202300,
+        "descricao": "Desenvolvimento e licenciamento de programas de computador customizáveis"
+      },
+      {
+        "codigo": 6203100,
+        "descricao": "Desenvolvimento e licenciamento de programas de computador não-customizáveis"
+      },
+      {
+        "codigo": 6204000,
+        "descricao": "Consultoria em tecnologia da informação"
+      },
+      {
+        "codigo": 6209100,
+        "descricao": "Suporte técnico, manutenção e outros serviços em tecnologia da informação"
+      },
+      {
+        "codigo": 6311900,
+        "descricao": "Tratamento de dados, provedores de serviços de aplicação e serviços de hospedagem na internet"
+      },
+      {
+        "codigo": 6319400,
+        "descricao": "Portais, provedores de conteúdo e outros serviços de informação na internet"
+      },
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 7490101,
+        "descricao": "Serviços de tradução, interpretação e similares"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7733100,
+        "descricao": "Aluguel de máquinas e equipamentos para escritórios"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 7740300,
+        "descricao": "Gestão de ativos intangíveis não-financeiros"
+      },
+      {
+        "codigo": 7911200,
+        "descricao": "Agências de viagens"
+      },
+      {
+        "codigo": 7990200,
+        "descricao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1142087633",
+    "ddd_telefone_2": "1142087286",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/03574107000131"
+  },
+  "05841174000109": {
+    "cnpj": "05841174000109",
+    "razao_social": "PREMIUM COMUNICACAO E MARKETING LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2003-08-01",
+    "data_inicio_atividade": "2003-08-01",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "JUIZ ALEXANDRE MARTINS DE CASTRO FILHO",
+    "numero": "130",
+    "complemento": "SALA 801 A 803",
+    "bairro": "SANTA LUIZA",
+    "cep": "29045250",
+    "municipio": "VITORIA",
+    "uf": "ES",
+    "cnae_fiscal": 7311400,
+    "cnae_fiscal_descricao": "Agências de publicidade",
+    "cnaes_secundarios": [
+      {
+        "codigo": 5911199,
+        "descricao": "Atividades de produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      },
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7319001,
+        "descricao": "Criação de estandes para feiras e exposições"
+      },
+      {
+        "codigo": 7319002,
+        "descricao": "Promoção de vendas"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7320300,
+        "descricao": "Pesquisas de mercado e de opinião pública"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7911200,
+        "descricao": "Agências de viagens"
+      },
+      {
+        "codigo": 7912100,
+        "descricao": "Operadores turísticos"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9001901,
+        "descricao": "Produção teatral"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001903,
+        "descricao": "Produção de espetáculos de dança"
+      },
+      {
+        "codigo": 9003500,
+        "descricao": "Gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas"
+      },
+      {
+        "codigo": 9311500,
+        "descricao": "Gestão de instalações de esportes"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "2732127900",
+    "ddd_telefone_2": "2733218357",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/05841174000109"
+  },
+  "06103531000196": {
+    "cnpj": "06103531000196",
+    "razao_social": "TATICA MARKETING ESPORTIVO LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2004-10-23",
+    "data_inicio_atividade": "2004-01-21",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "STA MARINA",
+    "numero": "2148",
+    "complemento": "ANEXO 2164",
+    "bairro": "VILA ALBERTINA",
+    "cep": "02732040",
+    "municipio": "SAO PAULO",
+    "uf": "SP",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4329101,
+        "descricao": "Instalação de painéis publicitários"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7319001,
+        "descricao": "Criação de estandes para feiras e exposições"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 7410299,
+        "descricao": "atividades de design não especificadas anteriormente"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7729202,
+        "descricao": "Aluguel de móveis, utensílios e aparelhos de uso doméstico e pessoal; instrumentos musicais"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 7740300,
+        "descricao": "Gestão de ativos intangíveis não-financeiros"
+      },
+      {
+        "codigo": 7911200,
+        "descricao": "Agências de viagens"
+      },
+      {
+        "codigo": 8211300,
+        "descricao": "Serviços combinados de escritório e apoio administrativo"
+      },
+      {
+        "codigo": 8219999,
+        "descricao": "Preparação de documentos e serviços especializados de apoio administrativo não especificados anteriormente"
+      },
+      {
+        "codigo": 8299705,
+        "descricao": "Serviços de levantamento de fundos sob contrato"
+      },
+      {
+        "codigo": 8592999,
+        "descricao": "Ensino de arte e cultura não especificado anteriormente"
+      },
+      {
+        "codigo": 9001901,
+        "descricao": "Produção teatral"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001903,
+        "descricao": "Produção de espetáculos de dança"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9002701,
+        "descricao": "Atividades de artistas plásticos, jornalistas independentes e escritores"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      },
+      {
+        "codigo": 9493600,
+        "descricao": "Atividades de organizações associativas ligadas à cultura e à arte"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1176513903",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/06103531000196"
+  },
+  "06174644000182": {
+    "cnpj": "06174644000182",
+    "razao_social": "PONTO ORG ORGANIZACAO DE EVENTOS LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2005-11-03",
+    "data_inicio_atividade": "2004-03-17",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "ARRUDAS",
+    "numero": "245",
+    "complemento": "SALA 05",
+    "bairro": "SANTA LUCIA",
+    "cep": "30360400",
+    "municipio": "BELO HORIZONTE",
+    "uf": "MG",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "3132746685",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/06174644000182"
+  },
+  "07120464000180": {
+    "cnpj": "07120464000180",
+    "razao_social": "OXE EVENTOS LTDA",
+    "nome_fantasia": "OXE EMPREENDIMENTOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2004-12-07",
+    "data_inicio_atividade": "2004-12-07",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "JUCA SAMPAIO",
+    "numero": "217",
+    "complemento": "",
+    "bairro": "CRUZ DAS ALMAS",
+    "cep": "57038005",
+    "municipio": "MACEIO",
+    "uf": "AL",
+    "cnae_fiscal": 7420004,
+    "cnae_fiscal_descricao": "Filmagem de festas e eventos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4292801,
+        "descricao": "Montagem de estruturas metálicas"
+      },
+      {
+        "codigo": 4930201,
+        "descricao": "Transporte rodoviário de carga, exceto produtos perigosos e mudanças, municipal."
+      },
+      {
+        "codigo": 4930202,
+        "descricao": "Transporte rodoviário de carga, exceto produtos perigosos e mudanças, intermunicipal, interestadual e internacional"
+      },
+      {
+        "codigo": 5911102,
+        "descricao": "Produção de filmes para publicidade"
+      },
+      {
+        "codigo": 5911199,
+        "descricao": "Atividades de produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      },
+      {
+        "codigo": 5912002,
+        "descricao": "Serviços de mixagem sonora em produção audiovisual"
+      },
+      {
+        "codigo": 5913800,
+        "descricao": "Distribuição cinematográfica, de vídeo e de programas de televisão"
+      },
+      {
+        "codigo": 5914600,
+        "descricao": "Atividades de exibição cinematográfica"
+      },
+      {
+        "codigo": 7420002,
+        "descricao": "Atividades de produção de fotografias aéreas e submarinas"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "8299361515",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/07120464000180"
+  },
+  "07265942000140": {
+    "cnpj": "07265942000140",
+    "razao_social": "X3M ENTRETENIMENTO LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2005-02-23",
+    "data_inicio_atividade": "2005-02-23",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "ALVARO RAMOS",
+    "numero": "260",
+    "complemento": "APT 201",
+    "bairro": "BOTAFOGO",
+    "cep": "22280110",
+    "municipio": "RIO DE JANEIRO",
+    "uf": "RJ",
+    "cnae_fiscal": 9001999,
+    "cnae_fiscal_descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4618499,
+        "descricao": "Outros representantes comerciais e agentes do comércio especializado em produtos não especificados anteriormente"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 5811500,
+        "descricao": "Edição de livros"
+      },
+      {
+        "codigo": 5911199,
+        "descricao": "Atividades de produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      },
+      {
+        "codigo": 6462000,
+        "descricao": "Holdings de instituições não-financeiras"
+      },
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7420001,
+        "descricao": "Atividades de produção de fotografias, exceto aérea e submarina"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7740300,
+        "descricao": "Gestão de ativos intangíveis não-financeiros"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "2122479676",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/07265942000140"
+  },
+  "07265942000302": {
+    "cnpj": "07265942000302",
+    "razao_social": "X3M ENTRETENIMENTO LTDA",
+    "nome_fantasia": "CDX SOLUCOES LOGISTICAS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2017-09-28",
+    "data_inicio_atividade": "2017-09-28",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "FREI JABOATAO",
+    "numero": "00125",
+    "complemento": "",
+    "bairro": "BONSUCESSO",
+    "cep": "21041115",
+    "municipio": "RIO DE JANEIRO",
+    "uf": "RJ",
+    "cnae_fiscal": 4399102,
+    "cnae_fiscal_descricao": "Montagem e desmontagem de andaimes e outras estruturas temporárias",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7711000,
+        "descricao": "Locação de automóveis sem condutor"
+      },
+      {
+        "codigo": 7733100,
+        "descricao": "Aluguel de máquinas e equipamentos para escritórios"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "2122479676",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/07265942000302"
+  },
+  "07787987000185": {
+    "cnpj": "07787987000185",
+    "razao_social": "NOBLU SPORT BUSINESS COMERCIO E SERVICOS DE MATERIAIS ESPORTIVOS S.A.",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2005-11-23",
+    "data_inicio_atividade": "2005-11-23",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "DOUTOR LINO DE MORAIS LEME",
+    "numero": "135",
+    "complemento": "",
+    "bairro": "NOVA CAMPINAS",
+    "cep": "13092102",
+    "municipio": "CAMPINAS",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Anônima Fechada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1997029701",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/07787987000185"
+  },
+  "08241186000182": {
+    "cnpj": "08241186000182",
+    "razao_social": "REDE GERAL SERVICOS LTDA",
+    "nome_fantasia": "REDE GERAL",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2006-08-14",
+    "data_inicio_atividade": "2006-08-14",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "GOVERNADOR JOAO DURVAL CARNEIRO",
+    "numero": "3665",
+    "complemento": "SALA 1611 MULTIPLACE BOULEVARD",
+    "bairro": "SAO JOAO",
+    "cep": "44051605",
+    "municipio": "FEIRA DE SANTANA",
+    "uf": "BA",
+    "cnae_fiscal": 7311400,
+    "cnae_fiscal_descricao": "Agências de publicidade",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4313400,
+        "descricao": "Obras de terraplenagem"
+      },
+      {
+        "codigo": 4923002,
+        "descricao": "Serviço de transporte de passageiros - locação de automóveis com motorista"
+      },
+      {
+        "codigo": 5812301,
+        "descricao": "Edição de jornais diários"
+      },
+      {
+        "codigo": 5911199,
+        "descricao": "Atividades de produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      },
+      {
+        "codigo": 5912002,
+        "descricao": "Serviços de mixagem sonora em produção audiovisual"
+      },
+      {
+        "codigo": 5912099,
+        "descricao": "Atividades de pós-produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      },
+      {
+        "codigo": 5920100,
+        "descricao": "Atividades de gravação de som e de edição de música"
+      },
+      {
+        "codigo": 6202300,
+        "descricao": "Desenvolvimento e licenciamento de programas de computador customizáveis"
+      },
+      {
+        "codigo": 6319400,
+        "descricao": "Portais, provedores de conteúdo e outros serviços de informação na internet"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7420002,
+        "descricao": "Atividades de produção de fotografias aéreas e submarinas"
+      },
+      {
+        "codigo": 7420004,
+        "descricao": "Filmagem de festas e eventos"
+      },
+      {
+        "codigo": 7711000,
+        "descricao": "Locação de automóveis sem condutor"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 7820500,
+        "descricao": "Locação de mão-de-obra temporária"
+      },
+      {
+        "codigo": 8211300,
+        "descricao": "Serviços combinados de escritório e apoio administrativo"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9003500,
+        "descricao": "Gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "EMPRESA DE PEQUENO PORTE",
+    "ddd_telefone_1": "7521012999",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/08241186000182"
+  },
+  "09110564000151": {
+    "cnpj": "09110564000151",
+    "razao_social": "R.SANDOVAL DE FARIA LTDA",
+    "nome_fantasia": "GRUPO HJR LOCACAO",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2007-09-27",
+    "data_inicio_atividade": "2007-09-27",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "JOSE MONFARDINI",
+    "numero": "3850",
+    "complemento": "SALA 01",
+    "bairro": "DISTRITO INDUSTRIAL WALDEMAR PEREIRA",
+    "cep": "13994816",
+    "municipio": "ESPIRITO SANTO DO PINHAL",
+    "uf": "SP",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4120400,
+        "descricao": "Construção de edifícios"
+      },
+      {
+        "codigo": 4211102,
+        "descricao": "Pintura para sinalização em pistas rodoviárias e aeroportos"
+      },
+      {
+        "codigo": 4213800,
+        "descricao": "Obras de urbanização - ruas, praças e calçadas"
+      },
+      {
+        "codigo": 4222701,
+        "descricao": "Construção de redes de abastecimento de água, coleta de esgoto e construções correlatas, exceto obras de irrigação"
+      },
+      {
+        "codigo": 4292801,
+        "descricao": "Montagem de estruturas metálicas"
+      },
+      {
+        "codigo": 4292802,
+        "descricao": "Obras de montagem industrial"
+      },
+      {
+        "codigo": 4299599,
+        "descricao": "Outras obras de engenharia civil não especificadas anteriormente"
+      },
+      {
+        "codigo": 4311802,
+        "descricao": "Preparação de canteiro e limpeza de terreno"
+      },
+      {
+        "codigo": 4319300,
+        "descricao": "Serviços de preparação do terreno não especificados anteriormente"
+      },
+      {
+        "codigo": 4321500,
+        "descricao": "Instalação e manutenção elétrica"
+      },
+      {
+        "codigo": 4322301,
+        "descricao": "Instalações hidráulicas, sanitárias e de gás"
+      },
+      {
+        "codigo": 4322302,
+        "descricao": "Instalação e manutenção de sistemas centrais de ar condicionado, de ventilação e refrigeração"
+      },
+      {
+        "codigo": 4322303,
+        "descricao": "Instalações de sistema de prevenção contra incêndio"
+      },
+      {
+        "codigo": 4329104,
+        "descricao": "Montagem e instalação de sistemas e equipamentos de iluminação e sinalização em vias públicas, portos e aeroportos"
+      },
+      {
+        "codigo": 4330402,
+        "descricao": "Instalação de portas, janelas, tetos, divisórias e armários embutidos de qualquer material"
+      },
+      {
+        "codigo": 4330404,
+        "descricao": "Serviços de pintura de edifícios em geral"
+      },
+      {
+        "codigo": 4399102,
+        "descricao": "Montagem e desmontagem de andaimes e outras estruturas temporárias"
+      },
+      {
+        "codigo": 4645101,
+        "descricao": "Comércio atacadista de instrumentos e materiais para uso médico, cirúrgico, hospitalar e de laboratórios"
+      },
+      {
+        "codigo": 4646001,
+        "descricao": "Comércio atacadista de cosméticos e produtos de perfumaria"
+      },
+      {
+        "codigo": 4646002,
+        "descricao": "Comércio atacadista de produtos de higiene pessoal"
+      },
+      {
+        "codigo": 4693100,
+        "descricao": "Comércio atacadista de mercadorias em geral, sem predominância de alimentos ou de insumos agropecuários"
+      },
+      {
+        "codigo": 5223100,
+        "descricao": "Estacionamento de veículos"
+      },
+      {
+        "codigo": 5620102,
+        "descricao": "Serviços de alimentação para eventos e recepções - bufê"
+      },
+      {
+        "codigo": 6204000,
+        "descricao": "Consultoria em tecnologia da informação"
+      },
+      {
+        "codigo": 6209100,
+        "descricao": "Suporte técnico, manutenção e outros serviços em tecnologia da informação"
+      },
+      {
+        "codigo": 7119703,
+        "descricao": "Serviços de desenho técnico relacionados à arquitetura e engenharia"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7420004,
+        "descricao": "Filmagem de festas e eventos"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7729202,
+        "descricao": "Aluguel de móveis, utensílios e aparelhos de uso doméstico e pessoal; instrumentos musicais"
+      },
+      {
+        "codigo": 7729299,
+        "descricao": "Aluguel de outros objetos pessoais e domésticos não especificados anteriormente"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7810800,
+        "descricao": "Seleção e agenciamento de mão-de-obra"
+      },
+      {
+        "codigo": 7820500,
+        "descricao": "Locação de mão-de-obra temporária"
+      },
+      {
+        "codigo": 7830200,
+        "descricao": "Fornecimento e gestão de recursos humanos para terceiros"
+      },
+      {
+        "codigo": 8121400,
+        "descricao": "Limpeza em prédios e em domicílios"
+      },
+      {
+        "codigo": 8129000,
+        "descricao": "Atividades de limpeza não especificadas anteriormente"
+      },
+      {
+        "codigo": 9001901,
+        "descricao": "Produção teatral"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001905,
+        "descricao": "Produção de espetáculos de rodeios, vaquejadas e similares"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1997964390",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/09110564000151"
+  },
+  "09639559000130": {
+    "cnpj": "09639559000130",
+    "razao_social": "PODIUM SPORT SERVICOS DE EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2008-06-23",
+    "data_inicio_atividade": "2008-06-23",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "JULIO DE CASTILHO",
+    "numero": "843",
+    "complemento": "SALA A",
+    "bairro": "OLARIA",
+    "cep": "76801238",
+    "municipio": "PORTO VELHO",
+    "uf": "RO",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "6981116380",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/09639559000130"
+  },
+  "10543235000183": {
+    "cnpj": "10543235000183",
+    "razao_social": "RUN EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "RUN SPORTS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2026-08-27",
+    "data_inicio_atividade": "2008-12-17",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "VICENTE DA FONTOURA",
+    "numero": "2352",
+    "complemento": "CONJ 701",
+    "bairro": "SANTA CECILIA",
+    "cep": "90640003",
+    "municipio": "PORTO ALEGRE",
+    "uf": "RS",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "5193882483",
+    "ddd_telefone_2": "5193882483",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/10543235000183"
+  },
+  "10698955000118": {
+    "cnpj": "10698955000118",
+    "razao_social": "PARTIU COMERCIO DE PRODUTOS E MARKETING LTDA",
+    "nome_fantasia": "PARTIU CORRIDA",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2009-03-13",
+    "data_inicio_atividade": "2009-03-13",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "DOUTOR LINO DE MORAIS LEME",
+    "numero": "135",
+    "complemento": "",
+    "bairro": "NOVA CAMPINAS",
+    "cep": "13092102",
+    "municipio": "CAMPINAS",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 1412601,
+        "descricao": "Confecção de peças de vestuário, exceto roupas íntimas e as confeccionadas sob medida"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      },
+      {
+        "codigo": 8599699,
+        "descricao": "Outras atividades de ensino não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1988411000",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/10698955000118"
+  },
+  "10899157000154": {
+    "cnpj": "10899157000154",
+    "razao_social": "IGUANA MIDIA - COMUNICACAO E EVENTOS LTDA.",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2009-06-04",
+    "data_inicio_atividade": "2009-06-04",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "PAULISTA",
+    "numero": "1079",
+    "complemento": "SALA 7 E 8 ANDAR PARTE",
+    "bairro": "BELA VISTA",
+    "cep": "01311200",
+    "municipio": "SAO PAULO",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 7990200,
+        "descricao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 6201501,
+        "descricao": "Desenvolvimento de programas de computador sob encomenda"
+      },
+      {
+        "codigo": 6202300,
+        "descricao": "Desenvolvimento e licenciamento de programas de computador customizáveis"
+      },
+      {
+        "codigo": 6911703,
+        "descricao": "Agente de propriedade industrial"
+      },
+      {
+        "codigo": 7220700,
+        "descricao": "Pesquisa e desenvolvimento experimental em ciências sociais e humanas"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1130973215",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/10899157000154"
+  },
+  "11194903000177": {
+    "cnpj": "11194903000177",
+    "razao_social": "MP3 SOLUCOES LTDA",
+    "nome_fantasia": "MP3 SOLUCOES",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2009-10-02",
+    "data_inicio_atividade": "2009-10-02",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "RAMALHO ORTIGAO",
+    "numero": "000030",
+    "complemento": "EDIF EMPRESARIAL PAULO VISALA 503",
+    "bairro": "PITUBA",
+    "cep": "41810220",
+    "municipio": "SALVADOR",
+    "uf": "BA",
+    "cnae_fiscal": 7319003,
+    "cnae_fiscal_descricao": "Marketing direto",
+    "cnaes_secundarios": [
+      {
+        "codigo": 8111700,
+        "descricao": "Serviços combinados para apoio a edifícios, exceto condomínios prediais"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9003500,
+        "descricao": "Gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "7188321291",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/11194903000177"
+  },
+  "11196129000133": {
+    "cnpj": "11196129000133",
+    "razao_social": "ASSOCIACAO ESPORTIVA, CULTURAL, EDUCACIONAL E SUSTENTAVEL CORRENTE RUNNING",
+    "nome_fantasia": "BLOCO MATINTA",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2025-03-25",
+    "data_inicio_atividade": "2009-06-09",
+    "descricao_tipo_de_logradouro": "VILA",
+    "logradouro": "SAO JUDAS TADEU",
+    "numero": "03",
+    "complemento": "",
+    "bairro": "PEDREIRA",
+    "cep": "66080500",
+    "municipio": "BELEM",
+    "uf": "PA",
+    "cnae_fiscal": 9493600,
+    "cnae_fiscal_descricao": "Atividades de organizações associativas ligadas à cultura e à arte",
+    "cnaes_secundarios": [],
+    "natureza_juridica": "Associação Privada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "9199445555",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/11196129000133"
+  },
+  "11771181000176": {
+    "cnpj": "11771181000176",
+    "razao_social": "SPORTS DO MARKETING E EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2010-04-05",
+    "data_inicio_atividade": "2010-04-05",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "DORALICE RAMOS PINHO",
+    "numero": "1280",
+    "complemento": "SALA 02",
+    "bairro": "JARDIM CIDADE DE FLORIANOPOLIS",
+    "cep": "88111310",
+    "municipio": "SAO JOSE",
+    "uf": "SC",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "EMPRESA DE PEQUENO PORTE",
+    "ddd_telefone_1": "4830345800",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/11771181000176"
+  },
+  "12234644000123": {
+    "cnpj": "12234644000123",
+    "razao_social": "JARDEL MOURA ASSESSORIA ESPORTIVA LTDA",
+    "nome_fantasia": "JARDEL MOURA ASSESSORIA ESPORTIVA",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2010-07-14",
+    "data_inicio_atividade": "2010-07-14",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "PROFESSOR ROMULO ALMEIDA",
+    "numero": "38",
+    "complemento": "SALA 103 E 104",
+    "bairro": "ACUPE DE BROTAS",
+    "cep": "40290030",
+    "municipio": "SALVADOR",
+    "uf": "BA",
+    "cnae_fiscal": 9313100,
+    "cnae_fiscal_descricao": "Atividades de condicionamento físico",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "7199203442",
+    "ddd_telefone_2": "7187984858",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/12234644000123"
+  },
+  "13026748000105": {
+    "cnpj": "13026748000105",
+    "razao_social": "CS SPORTS LTDA",
+    "nome_fantasia": "RUN FOR",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2010-11-01",
+    "data_inicio_atividade": "2010-11-01",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "DONA JANE CONCEICAO",
+    "numero": "816",
+    "complemento": "SALA 1",
+    "bairro": "PAULISTA",
+    "cep": "13401110",
+    "municipio": "PIRACICABA",
+    "uf": "SP",
+    "cnae_fiscal": 4781400,
+    "cnae_fiscal_descricao": "Comércio varejista de artigos do vestuário e acessórios",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4763603,
+        "descricao": "Comércio varejista de bicicletas e triciclos; peças e acessórios"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9529104,
+        "descricao": "Reparação de bicicletas, triciclos e outros veículos não-motorizados"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1930425316",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/13026748000105"
+  },
+  "13026748000296": {
+    "cnpj": "13026748000296",
+    "razao_social": "CS SPORTS LTDA",
+    "nome_fantasia": "CHELSO",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2022-10-10",
+    "data_inicio_atividade": "2022-10-10",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "DONA JANE CONCEICAO",
+    "numero": "814",
+    "complemento": "",
+    "bairro": "PAULISTA",
+    "cep": "13401110",
+    "municipio": "PIRACICABA",
+    "uf": "SP",
+    "cnae_fiscal": 4781400,
+    "cnae_fiscal_descricao": "Comércio varejista de artigos do vestuário e acessórios",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4763603,
+        "descricao": "Comércio varejista de bicicletas e triciclos; peças e acessórios"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9529104,
+        "descricao": "Reparação de bicicletas, triciclos e outros veículos não-motorizados"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1930425316",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/13026748000296"
+  },
+  "13544583000163": {
+    "cnpj": "13544583000163",
+    "razao_social": "ITAMAR DE AZEVEDO JUNIOR & CIA LTDA",
+    "nome_fantasia": "PERSONEW ASSESSORIA ESPORTIVA",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2011-04-25",
+    "data_inicio_atividade": "2011-04-25",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "PAULO VI",
+    "numero": "345",
+    "complemento": "",
+    "bairro": "JARDIM ALVORADA",
+    "cep": "14403138",
+    "municipio": "FRANCA",
+    "uf": "SP",
+    "cnae_fiscal": 9313100,
+    "cnae_fiscal_descricao": "Atividades de condicionamento físico",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8599699,
+        "descricao": "Outras atividades de ensino não especificadas anteriormente"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1691550514",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/13544583000163"
+  },
+  "13568552000142": {
+    "cnpj": "13568552000142",
+    "razao_social": "SNOC APOIO ADMINISTRATIVO E DIVULGACAO DE EVENTOS LTDA.",
+    "nome_fantasia": "SNOC EVENTOS E APOIO ADMINISTRATIVOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2011-04-27",
+    "data_inicio_atividade": "2011-04-27",
+    "descricao_tipo_de_logradouro": "SETOR",
+    "logradouro": "SMDB CJ 22 LT",
+    "numero": "04",
+    "complemento": "UNIDADE C",
+    "bairro": "LAGO SUL",
+    "cep": "71680220",
+    "municipio": "BRASILIA",
+    "uf": "DF",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 8219999,
+        "descricao": "Preparação de documentos e serviços especializados de apoio administrativo não especificados anteriormente"
+      },
+      {
+        "codigo": 8299799,
+        "descricao": "Outras atividades de serviços prestados principalmente às empresas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "6181189876",
+    "ddd_telefone_2": "6135698512",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/13568552000142"
+  },
+  "13634285000164": {
+    "cnpj": "13634285000164",
+    "razao_social": "ZBR EVENTS LTDA",
+    "nome_fantasia": "ZBR EVENTS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2024-12-13",
+    "data_inicio_atividade": "2011-04-27",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "JOAO FRANCISCO DE MOURA",
+    "numero": "142",
+    "complemento": "CASA 19",
+    "bairro": "VILA CAMPO GRANDE",
+    "cep": "04455170",
+    "municipio": "SAO PAULO",
+    "uf": "SP",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "EMPRESA DE PEQUENO PORTE",
+    "ddd_telefone_1": "1143066080",
+    "ddd_telefone_2": "1143063665",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/13634285000164"
+  },
+  "13774425000108": {
+    "cnpj": "13774425000108",
+    "razao_social": "IMPERSPORTS COMERCIO LTDA",
+    "nome_fantasia": "TOPCHIP CRONOMETRAGEM ELETRONICA E EVENTOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2011-06-08",
+    "data_inicio_atividade": "2011-06-08",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "CEARA",
+    "numero": "576",
+    "complemento": "EDIF TIMBIRA SHOPPING LOJA 43",
+    "bairro": "CENTRO",
+    "cep": "65901610",
+    "municipio": "IMPERATRIZ",
+    "uf": "MA",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4782201,
+        "descricao": "Comércio varejista de calçados"
+      },
+      {
+        "codigo": 7319002,
+        "descricao": "Promoção de vendas"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "EMPRESA DE PEQUENO PORTE",
+    "ddd_telefone_1": "9935247605",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/13774425000108"
+  },
+  "14216548000188": {
+    "cnpj": "14216548000188",
+    "razao_social": "METODO CHOKITO LTDA",
+    "nome_fantasia": "RUNNERS ASSESSORIA ESPORTIVA",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2011-08-31",
+    "data_inicio_atividade": "2011-08-31",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "ARTHUR DE AZEVEDO MACHADO",
+    "numero": "000400",
+    "complemento": "EDIF COSTA AZUL BOULEVARDLOJA 01",
+    "bairro": "COSTA AZUL",
+    "cep": "41760000",
+    "municipio": "SALVADOR",
+    "uf": "BA",
+    "cnae_fiscal": 9313100,
+    "cnae_fiscal_descricao": "Atividades de condicionamento físico",
+    "cnaes_secundarios": [
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8599699,
+        "descricao": "Outras atividades de ensino não especificadas anteriormente"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "7194106177",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/14216548000188"
+  },
+  "15135804000175": {
+    "cnpj": "15135804000175",
+    "razao_social": "L LOBO EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2012-02-29",
+    "data_inicio_atividade": "2012-02-29",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "LAURENT MARTINS",
+    "numero": "309",
+    "complemento": "APT 183 BLOCO B",
+    "bairro": "JARDIM ESPLANADA",
+    "cep": "12242431",
+    "municipio": "SAO JOSE DOS CAMPOS",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 4782201,
+        "descricao": "Comércio varejista de calçados"
+      },
+      {
+        "codigo": 5212500,
+        "descricao": "Carga e descarga"
+      },
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7220700,
+        "descricao": "Pesquisa e desenvolvimento experimental em ciências sociais e humanas"
+      },
+      {
+        "codigo": 7312200,
+        "descricao": "Agenciamento de espaços para publicidade, exceto em veículos de comunicação"
+      },
+      {
+        "codigo": 7420001,
+        "descricao": "Atividades de produção de fotografias, exceto aérea e submarina"
+      },
+      {
+        "codigo": 7420004,
+        "descricao": "Filmagem de festas e eventos"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1297031910",
+    "ddd_telefone_2": "1199673544",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/15135804000175"
+  },
+  "15471494000160": {
+    "cnpj": "15471494000160",
+    "razao_social": "TO GOAL SPORTS VENTURES GESTAO ESPORTIVA LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2012-05-04",
+    "data_inicio_atividade": "2012-05-04",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "TEOFILO SAID",
+    "numero": "3",
+    "complemento": "QD C CONJUNTO PARQU",
+    "bairro": "PARQUE 10 DE NOVEMBRO",
+    "cep": "69054693",
+    "municipio": "MANAUS",
+    "uf": "AM",
+    "cnae_fiscal": 7020400,
+    "cnae_fiscal_descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4649499,
+        "descricao": "Comércio atacadista de outros equipamentos e artigos de uso pessoal e doméstico não especificados anteriormente"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 8211300,
+        "descricao": "Serviços combinados de escritório e apoio administrativo"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8550302,
+        "descricao": "Atividades de apoio à educação, exceto caixas escolares"
+      },
+      {
+        "codigo": 9311500,
+        "descricao": "Gestão de instalações de esportes"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "9288046725",
+    "ddd_telefone_2": "9298804672",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/15471494000160"
+  },
+  "15831793000168": {
+    "cnpj": "15831793000168",
+    "razao_social": "AGENCIA VQV DE PUBLICIDADE E PROPAGANDA LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2012-06-26",
+    "data_inicio_atividade": "2012-06-26",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "PASTOR ANISIO FRANCISCO DA SILVA",
+    "numero": "731",
+    "complemento": "FUNDOS;",
+    "bairro": "JARDIM ALVORADA",
+    "cep": "87033100",
+    "municipio": "MARINGA",
+    "uf": "PR",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 1813001,
+        "descricao": "Impressão de material para uso publicitário"
+      },
+      {
+        "codigo": 1813099,
+        "descricao": "Impressão de material para outros usos"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7729202,
+        "descricao": "Aluguel de móveis, utensílios e aparelhos de uso doméstico e pessoal; instrumentos musicais"
+      },
+      {
+        "codigo": 7733100,
+        "descricao": "Aluguel de máquinas e equipamentos para escritórios"
+      },
+      {
+        "codigo": 7912100,
+        "descricao": "Operadores turísticos"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "4430251918",
+    "ddd_telefone_2": "4432264472",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/15831793000168"
+  },
+  "16722474000187": {
+    "cnpj": "16722474000187",
+    "razao_social": "RR ESPORTES, ESTRUTURAS E SOLUCOES PARA EVENTOS LTDA",
+    "nome_fantasia": "BRB MARKETING ESPORTIVO",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2012-07-26",
+    "data_inicio_atividade": "2012-07-26",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "NUNES VALENTE",
+    "numero": "2184",
+    "complemento": "PISO 01",
+    "bairro": "DIONISIO TORRES",
+    "cep": "60125071",
+    "municipio": "FORTALEZA",
+    "uf": "CE",
+    "cnae_fiscal": 9319199,
+    "cnae_fiscal_descricao": "Outras atividades esportivas não especificadas anteriormente",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4399102,
+        "descricao": "Montagem e desmontagem de andaimes e outras estruturas temporárias"
+      },
+      {
+        "codigo": 6201502,
+        "descricao": "Web design"
+      },
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7319002,
+        "descricao": "Promoção de vendas"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7410299,
+        "descricao": "atividades de design não especificadas anteriormente"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 8130300,
+        "descricao": "Atividades paisagísticas"
+      },
+      {
+        "codigo": 8211300,
+        "descricao": "Serviços combinados de escritório e apoio administrativo"
+      },
+      {
+        "codigo": 8219901,
+        "descricao": "Fotocópias"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9003500,
+        "descricao": "Gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "8532661323",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/16722474000187"
+  },
+  "17332526000171": {
+    "cnpj": "17332526000171",
+    "razao_social": "INSIGHT DESENVOLVIMENTO ORGANIZACIONAL LTDA",
+    "nome_fantasia": "UHUW EVENTOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2012-12-18",
+    "data_inicio_atividade": "2012-12-18",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "RUI BARBOSA",
+    "numero": "451",
+    "complemento": "APT 197",
+    "bairro": "BOA VISTA",
+    "cep": "09190370",
+    "municipio": "SANTO ANDRE",
+    "uf": "SP",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9313100,
+        "descricao": "Atividades de condicionamento físico"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 5620102,
+        "descricao": "Serviços de alimentação para eventos e recepções - bufê"
+      },
+      {
+        "codigo": 1813001,
+        "descricao": "Impressão de material para uso publicitário"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 4785799,
+        "descricao": "Comércio varejista de outros artigos usados"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1134217845",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/17332526000171"
+  },
+  "17860554000161": {
+    "cnpj": "17860554000161",
+    "razao_social": "PIAZZALUNGA EVENTOS ESPORTIVOS E ENTRETENIMENTO LTDA",
+    "nome_fantasia": "CAPA EVENTOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2013-04-01",
+    "data_inicio_atividade": "2013-04-01",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "MONTESE",
+    "numero": "163",
+    "complemento": "",
+    "bairro": "JARDIM HIGIENOPOLIS",
+    "cep": "86015020",
+    "municipio": "LONDRINA",
+    "uf": "PR",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "EMPRESA DE PEQUENO PORTE",
+    "ddd_telefone_1": "4388262217",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/17860554000161"
+  },
+  "18305726000106": {
+    "cnpj": "18305726000106",
+    "razao_social": "JUNIOR DE ASSIS SOARES",
+    "nome_fantasia": "MORRO",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2013-06-15",
+    "data_inicio_atividade": "2013-06-15",
+    "descricao_tipo_de_logradouro": "",
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "bairro": "GOIABEIRAS",
+    "cep": "78032160",
+    "municipio": "CUIABA",
+    "uf": "MT",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4399102,
+        "descricao": "Montagem e desmontagem de andaimes e outras estruturas temporárias"
+      },
+      {
+        "codigo": 5212500,
+        "descricao": "Carga e descarga"
+      },
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7410299,
+        "descricao": "atividades de design não especificadas anteriormente"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 8011101,
+        "descricao": "Atividades de vigilância e segurança privada"
+      },
+      {
+        "codigo": 8129000,
+        "descricao": "Atividades de limpeza não especificadas anteriormente"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Empresário (Individual)",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/18305726000106"
+  },
+  "18606775000170": {
+    "cnpj": "18606775000170",
+    "razao_social": "GLOBAL VITA COMUNICACAO LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2013-07-17",
+    "data_inicio_atividade": "2013-07-17",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "PRESIDENTE GETULIO VARGAS",
+    "numero": "3620",
+    "complemento": "SALA 404 ANDAR 3",
+    "bairro": "AGUA VERDE",
+    "cep": "80240041",
+    "municipio": "CURITIBA",
+    "uf": "PR",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 1813001,
+        "descricao": "Impressão de material para uso publicitário"
+      },
+      {
+        "codigo": 1813099,
+        "descricao": "Impressão de material para outros usos"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 5829800,
+        "descricao": "Edição integrada à impressão de cadastros, listas e de outros produtos gráficos"
+      },
+      {
+        "codigo": 6201502,
+        "descricao": "Web design"
+      },
+      {
+        "codigo": 6391700,
+        "descricao": "Agências de notícias"
+      },
+      {
+        "codigo": 6399200,
+        "descricao": "Outras atividades de prestação de serviços de informação não especificadas anteriormente"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7319002,
+        "descricao": "Promoção de vendas"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7911200,
+        "descricao": "Agências de viagens"
+      },
+      {
+        "codigo": 7912100,
+        "descricao": "Operadores turísticos"
+      },
+      {
+        "codigo": 8219999,
+        "descricao": "Preparação de documentos e serviços especializados de apoio administrativo não especificados anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "4196503888",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/18606775000170"
+  },
+  "18819767000102": {
+    "cnpj": "18819767000102",
+    "razao_social": "APUANA MARKETING ESPORTIVO LTDA",
+    "nome_fantasia": "APUANA ESPORTES",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2013-09-05",
+    "data_inicio_atividade": "2013-09-05",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "ANISIO ALVES",
+    "numero": "105",
+    "complemento": "",
+    "bairro": "MORADA DA COLINA II (LOTEAMENTO)",
+    "cep": "38411148",
+    "municipio": "UBERLANDIA",
+    "uf": "MG",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7490199,
+        "descricao": "Outras atividades profissionais, científicas e técnicas não especificadas anteriormente"
+      },
+      {
+        "codigo": 8211300,
+        "descricao": "Serviços combinados de escritório e apoio administrativo"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9311500,
+        "descricao": "Gestão de instalações de esportes"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "3491720522",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/18819767000102"
+  },
+  "21347742000168": {
+    "cnpj": "21347742000168",
+    "razao_social": "JOAO ACASSIO BATISTA LTDA",
+    "nome_fantasia": "GRUPO HJR PRODUCOES ARTISTICAS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2014-11-05",
+    "data_inicio_atividade": "2014-11-05",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "JOSE MONFARDINI",
+    "numero": "3850",
+    "complemento": "",
+    "bairro": "DISTRITO INDUSTRIAL WALDEMAR PEREIRA",
+    "cep": "13994816",
+    "municipio": "ESPIRITO SANTO DO PINHAL",
+    "uf": "SP",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 3314717,
+        "descricao": "Manutenção e reparação de máquinas e equipamentos de terraplenagem, pavimentação e construção, exceto tratores"
+      },
+      {
+        "codigo": 4120400,
+        "descricao": "Construção de edifícios"
+      },
+      {
+        "codigo": 4211102,
+        "descricao": "Pintura para sinalização em pistas rodoviárias e aeroportos"
+      },
+      {
+        "codigo": 4213800,
+        "descricao": "Obras de urbanização - ruas, praças e calçadas"
+      },
+      {
+        "codigo": 4222701,
+        "descricao": "Construção de redes de abastecimento de água, coleta de esgoto e construções correlatas, exceto obras de irrigação"
+      },
+      {
+        "codigo": 4292801,
+        "descricao": "Montagem de estruturas metálicas"
+      },
+      {
+        "codigo": 4292802,
+        "descricao": "Obras de montagem industrial"
+      },
+      {
+        "codigo": 4299599,
+        "descricao": "Outras obras de engenharia civil não especificadas anteriormente"
+      },
+      {
+        "codigo": 4311802,
+        "descricao": "Preparação de canteiro e limpeza de terreno"
+      },
+      {
+        "codigo": 4319300,
+        "descricao": "Serviços de preparação do terreno não especificados anteriormente"
+      },
+      {
+        "codigo": 4321500,
+        "descricao": "Instalação e manutenção elétrica"
+      },
+      {
+        "codigo": 4322301,
+        "descricao": "Instalações hidráulicas, sanitárias e de gás"
+      },
+      {
+        "codigo": 4322302,
+        "descricao": "Instalação e manutenção de sistemas centrais de ar condicionado, de ventilação e refrigeração"
+      },
+      {
+        "codigo": 4322303,
+        "descricao": "Instalações de sistema de prevenção contra incêndio"
+      },
+      {
+        "codigo": 4329104,
+        "descricao": "Montagem e instalação de sistemas e equipamentos de iluminação e sinalização em vias públicas, portos e aeroportos"
+      },
+      {
+        "codigo": 4330402,
+        "descricao": "Instalação de portas, janelas, tetos, divisórias e armários embutidos de qualquer material"
+      },
+      {
+        "codigo": 4330404,
+        "descricao": "Serviços de pintura de edifícios em geral"
+      },
+      {
+        "codigo": 4399102,
+        "descricao": "Montagem e desmontagem de andaimes e outras estruturas temporárias"
+      },
+      {
+        "codigo": 4641902,
+        "descricao": "Comércio atacadista de artigos de cama, mesa e banho"
+      },
+      {
+        "codigo": 4645101,
+        "descricao": "Comércio atacadista de instrumentos e materiais para uso médico, cirúrgico, hospitalar e de laboratórios"
+      },
+      {
+        "codigo": 4646001,
+        "descricao": "Comércio atacadista de cosméticos e produtos de perfumaria"
+      },
+      {
+        "codigo": 4646002,
+        "descricao": "Comércio atacadista de produtos de higiene pessoal"
+      },
+      {
+        "codigo": 4649404,
+        "descricao": "Comércio atacadista de móveis e artigos de colchoaria"
+      },
+      {
+        "codigo": 4691500,
+        "descricao": "Comércio atacadista de mercadorias em geral, com predominância de produtos alimentícios"
+      },
+      {
+        "codigo": 4693100,
+        "descricao": "Comércio atacadista de mercadorias em geral, sem predominância de alimentos ou de insumos agropecuários"
+      },
+      {
+        "codigo": 4744099,
+        "descricao": "Comércio varejista de materiais de construção em geral"
+      },
+      {
+        "codigo": 4753900,
+        "descricao": "Comércio varejista especializado de eletrodomésticos e equipamentos de áudio e vídeo"
+      },
+      {
+        "codigo": 5223100,
+        "descricao": "Estacionamento de veículos"
+      },
+      {
+        "codigo": 5620102,
+        "descricao": "Serviços de alimentação para eventos e recepções - bufê"
+      },
+      {
+        "codigo": 6204000,
+        "descricao": "Consultoria em tecnologia da informação"
+      },
+      {
+        "codigo": 6209100,
+        "descricao": "Suporte técnico, manutenção e outros serviços em tecnologia da informação"
+      },
+      {
+        "codigo": 7119703,
+        "descricao": "Serviços de desenho técnico relacionados à arquitetura e engenharia"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7420004,
+        "descricao": "Filmagem de festas e eventos"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7729202,
+        "descricao": "Aluguel de móveis, utensílios e aparelhos de uso doméstico e pessoal; instrumentos musicais"
+      },
+      {
+        "codigo": 7729299,
+        "descricao": "Aluguel de outros objetos pessoais e domésticos não especificados anteriormente"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7810800,
+        "descricao": "Seleção e agenciamento de mão-de-obra"
+      },
+      {
+        "codigo": 8121400,
+        "descricao": "Limpeza em prédios e em domicílios"
+      },
+      {
+        "codigo": 8129000,
+        "descricao": "Atividades de limpeza não especificadas anteriormente"
+      },
+      {
+        "codigo": 8130300,
+        "descricao": "Atividades paisagísticas"
+      },
+      {
+        "codigo": 8291100,
+        "descricao": "Atividades de cobranças e informações cadastrais"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      },
+      {
+        "codigo": 9001901,
+        "descricao": "Produção teatral"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001905,
+        "descricao": "Produção de espetáculos de rodeios, vaquejadas e similares"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1981976700",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/21347742000168"
+  },
+  "22450000000126": {
+    "cnpj": "22450000000126",
+    "razao_social": "DTO SPORTS EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "DTO SPORTS MARKETING E EVENTOS ESPORTIVOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2021-08-02",
+    "data_inicio_atividade": "2015-05-14",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "MAURINO MAFRA",
+    "numero": "331",
+    "complemento": "LOTE 05 02",
+    "bairro": "RIO DO MEIO",
+    "cep": "88316155",
+    "municipio": "ITAJAI",
+    "uf": "SC",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4930202,
+        "descricao": "Transporte rodoviário de carga, exceto produtos perigosos e mudanças, intermunicipal, interestadual e internacional"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 9313100,
+        "descricao": "Atividades de condicionamento físico"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "4799643737",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/22450000000126"
+  },
+  "23005798000160": {
+    "cnpj": "23005798000160",
+    "razao_social": "NUCLEO DE APRENDIZAGEM, CURSOS E EVENTOS LTDA",
+    "nome_fantasia": "NACE PRODUCOES",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2015-07-14",
+    "data_inicio_atividade": "2015-07-14",
+    "descricao_tipo_de_logradouro": "SETOR",
+    "logradouro": "SMAS CONJUNTO E LOTE",
+    "numero": "05",
+    "complemento": "",
+    "bairro": "ZONA INDUSTRIAL (GUARA)",
+    "cep": "71215370",
+    "municipio": "BRASILIA",
+    "uf": "DF",
+    "cnae_fiscal": 8599604,
+    "cnae_fiscal_descricao": "Treinamento em desenvolvimento profissional e gerencial",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4761001,
+        "descricao": "Comércio varejista de livros"
+      },
+      {
+        "codigo": 5811500,
+        "descricao": "Edição de livros"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7319002,
+        "descricao": "Promoção de vendas"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8550302,
+        "descricao": "Atividades de apoio à educação, exceto caixas escolares"
+      },
+      {
+        "codigo": 8599699,
+        "descricao": "Outras atividades de ensino não especificadas anteriormente"
+      },
+      {
+        "codigo": 9003500,
+        "descricao": "Gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "6133210130",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/23005798000160"
+  },
+  "23909601000117": {
+    "cnpj": "23909601000117",
+    "razao_social": "VIDA SPORT LTDA",
+    "nome_fantasia": "VIDA SPORT",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2016-01-05",
+    "data_inicio_atividade": "2016-01-05",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "22 DE ABRIL",
+    "numero": "245",
+    "complemento": "SALA 2",
+    "bairro": "CENTRO",
+    "cep": "45810000",
+    "municipio": "PORTO SEGURO",
+    "uf": "BA",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 1813001,
+        "descricao": "Impressão de material para uso publicitário"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 6201502,
+        "descricao": "Web design"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7410299,
+        "descricao": "atividades de design não especificadas anteriormente"
+      },
+      {
+        "codigo": 7911200,
+        "descricao": "Agências de viagens"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "7332884578",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/23909601000117"
+  },
+  "24539051000154": {
+    "cnpj": "24539051000154",
+    "razao_social": "ASSOCIACAO PROFISSIONAIS DE EVENTOS ESPORTIVOS",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2016-01-13",
+    "data_inicio_atividade": "2016-01-13",
+    "descricao_tipo_de_logradouro": "ALAMEDA",
+    "logradouro": "DOS ANTURIOS",
+    "numero": "555",
+    "complemento": "",
+    "bairro": "JARDIM SIMUS",
+    "cep": "18055155",
+    "municipio": "SOROCABA",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [],
+    "natureza_juridica": "Associação Privada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1591717717",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/24539051000154"
+  },
+  "26266292000100": {
+    "cnpj": "26266292000100",
+    "razao_social": "GLORIA GONCALVES 92063136734",
+    "nome_fantasia": "ORGANIZACOES MARINES",
+    "descricao_situacao_cadastral": "BAIXADA",
+    "data_situacao_cadastral": "2021-06-28",
+    "data_inicio_atividade": "2016-09-30",
+    "descricao_tipo_de_logradouro": "",
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "bairro": "BARROS FILHO",
+    "cep": "21515160",
+    "municipio": "RIO DE JANEIRO",
+    "uf": "RJ",
+    "cnae_fiscal": 9313100,
+    "cnae_fiscal_descricao": "Atividades de condicionamento físico",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 4772500,
+        "descricao": "Comércio varejista de cosméticos, produtos de perfumaria e de higiene pessoal"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      }
+    ],
+    "natureza_juridica": "Empresário (Individual)",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/26266292000100"
+  },
+  "26744388000129": {
+    "cnpj": "26744388000129",
+    "razao_social": "ASSESSORAR PRODUCOES E SERVICOS LTDA",
+    "nome_fantasia": "ASSESSORAR PRODUCOES FESTIVAS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2016-12-20",
+    "data_inicio_atividade": "2016-12-20",
+    "descricao_tipo_de_logradouro": "TRAVESSA",
+    "logradouro": "ADALBERTO MACEDO",
+    "numero": "01",
+    "complemento": "",
+    "bairro": "PARQUE VERDE",
+    "cep": "48005060",
+    "municipio": "ALAGOINHAS",
+    "uf": "BA",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4923002,
+        "descricao": "Serviço de transporte de passageiros - locação de automóveis com motorista"
+      },
+      {
+        "codigo": 5620102,
+        "descricao": "Serviços de alimentação para eventos e recepções - bufê"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7410299,
+        "descricao": "atividades de design não especificadas anteriormente"
+      },
+      {
+        "codigo": 7711000,
+        "descricao": "Locação de automóveis sem condutor"
+      },
+      {
+        "codigo": 7729202,
+        "descricao": "Aluguel de móveis, utensílios e aparelhos de uso doméstico e pessoal; instrumentos musicais"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 8211300,
+        "descricao": "Serviços combinados de escritório e apoio administrativo"
+      },
+      {
+        "codigo": 8219999,
+        "descricao": "Preparação de documentos e serviços especializados de apoio administrativo não especificados anteriormente"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      },
+      {
+        "codigo": 9001901,
+        "descricao": "Produção teatral"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9311500,
+        "descricao": "Gestão de instalações de esportes"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "EMPRESA DE PEQUENO PORTE",
+    "ddd_telefone_1": "7188034339",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/26744388000129"
+  },
+  "27127718000108": {
+    "cnpj": "27127718000108",
+    "razao_social": "LTP BRASIL EVENTOS LTDA.",
+    "nome_fantasia": "LETAPE BRASIL BY LE TOUR DE FRANCE",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2017-02-16",
+    "data_inicio_atividade": "2017-02-16",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "CACAPAVA",
+    "numero": "49",
+    "complemento": "CONJ 135",
+    "bairro": "JARDIM PAULISTA",
+    "cep": "01408010",
+    "municipio": "SAO PAULO",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1130318878",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/27127718000108"
+  },
+  "27194126000109": {
+    "cnpj": "27194126000109",
+    "razao_social": "CARLA MARIA DE LIMA POVOA 27762088806",
+    "nome_fantasia": "SUPERACAO EVENTOS",
+    "descricao_situacao_cadastral": "BAIXADA",
+    "data_situacao_cadastral": "2021-02-04",
+    "data_inicio_atividade": "2017-02-24",
+    "descricao_tipo_de_logradouro": "",
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "bairro": "CENTRO",
+    "cep": "13880000",
+    "municipio": "VARGEM GRANDE DO SUL",
+    "uf": "SP",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [],
+    "natureza_juridica": "Empresário (Individual)",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/27194126000109"
+  },
+  "27208401000198": {
+    "cnpj": "27208401000198",
+    "razao_social": "RAIZES EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2017-03-02",
+    "data_inicio_atividade": "2017-03-02",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "FRANCISCO ANTONIO DE MORAES",
+    "numero": "50",
+    "complemento": "",
+    "bairro": "POUSO ALEGRE",
+    "cep": "12970000",
+    "municipio": "PIRACAIA",
+    "uf": "SP",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 5612100,
+        "descricao": "Serviços ambulantes de alimentação"
+      },
+      {
+        "codigo": 7990200,
+        "descricao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1144129812",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/27208401000198"
+  },
+  "28119350000190": {
+    "cnpj": "28119350000190",
+    "razao_social": "SPEED PRODUCOES E EVENTOS LTDA",
+    "nome_fantasia": "SPEED PRODUCOES E EVENTOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2017-07-06",
+    "data_inicio_atividade": "2017-07-06",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "MANGABINHA",
+    "numero": "100",
+    "complemento": "",
+    "bairro": "MARIVAN",
+    "cep": "49039044",
+    "municipio": "ARACAJU",
+    "uf": "SE",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 1340501,
+        "descricao": "Estamparia e texturização em fios, tecidos, artefatos têxteis e peças do vestuário"
+      },
+      {
+        "codigo": 1412601,
+        "descricao": "Confecção de peças de vestuário, exceto roupas íntimas e as confeccionadas sob medida"
+      },
+      {
+        "codigo": 1412603,
+        "descricao": "Facção de peças do vestuário, exceto roupas íntimas"
+      },
+      {
+        "codigo": 1811302,
+        "descricao": "Impressão de livros, revistas e outras publicações periódicas"
+      },
+      {
+        "codigo": 1813001,
+        "descricao": "Impressão de material para uso publicitário"
+      },
+      {
+        "codigo": 1813099,
+        "descricao": "Impressão de material para outros usos"
+      },
+      {
+        "codigo": 4329101,
+        "descricao": "Instalação de painéis publicitários"
+      },
+      {
+        "codigo": 4399102,
+        "descricao": "Montagem e desmontagem de andaimes e outras estruturas temporárias"
+      },
+      {
+        "codigo": 4642702,
+        "descricao": "Comércio atacadista de roupas e acessórios para uso profissional e de segurança do trabalho"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 5320202,
+        "descricao": "Serviços de entrega rápida"
+      },
+      {
+        "codigo": 5829800,
+        "descricao": "Edição integrada à impressão de cadastros, listas e de outros produtos gráficos"
+      },
+      {
+        "codigo": 5911102,
+        "descricao": "Produção de filmes para publicidade"
+      },
+      {
+        "codigo": 5911199,
+        "descricao": "Atividades de produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      },
+      {
+        "codigo": 5912002,
+        "descricao": "Serviços de mixagem sonora em produção audiovisual"
+      },
+      {
+        "codigo": 5913800,
+        "descricao": "Distribuição cinematográfica, de vídeo e de programas de televisão"
+      },
+      {
+        "codigo": 5920100,
+        "descricao": "Atividades de gravação de som e de edição de música"
+      },
+      {
+        "codigo": 6391700,
+        "descricao": "Agências de notícias"
+      },
+      {
+        "codigo": 6399200,
+        "descricao": "Outras atividades de prestação de serviços de informação não especificadas anteriormente"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7312200,
+        "descricao": "Agenciamento de espaços para publicidade, exceto em veículos de comunicação"
+      },
+      {
+        "codigo": 7319001,
+        "descricao": "Criação de estandes para feiras e exposições"
+      },
+      {
+        "codigo": 7319002,
+        "descricao": "Promoção de vendas"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7420001,
+        "descricao": "Atividades de produção de fotografias, exceto aérea e submarina"
+      },
+      {
+        "codigo": 7420002,
+        "descricao": "Atividades de produção de fotografias aéreas e submarinas"
+      },
+      {
+        "codigo": 7420004,
+        "descricao": "Filmagem de festas e eventos"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7711000,
+        "descricao": "Locação de automóveis sem condutor"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 7911200,
+        "descricao": "Agências de viagens"
+      },
+      {
+        "codigo": 7912100,
+        "descricao": "Operadores turísticos"
+      },
+      {
+        "codigo": 7990200,
+        "descricao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+      },
+      {
+        "codigo": 8111700,
+        "descricao": "Serviços combinados para apoio a edifícios, exceto condomínios prediais"
+      },
+      {
+        "codigo": 8129000,
+        "descricao": "Atividades de limpeza não especificadas anteriormente"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001903,
+        "descricao": "Produção de espetáculos de dança"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9003500,
+        "descricao": "Gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas"
+      },
+      {
+        "codigo": 9311500,
+        "descricao": "Gestão de instalações de esportes"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "7998881759",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/28119350000190"
+  },
+  "28406712000124": {
+    "cnpj": "28406712000124",
+    "razao_social": "TM4 SPORTS & BUSINESS LTDA",
+    "nome_fantasia": "TM4 SPORTS E BUSINESS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2017-08-13",
+    "data_inicio_atividade": "2017-08-13",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "CONSELHEIRO MAFRA",
+    "numero": "810",
+    "complemento": "SALA 204",
+    "bairro": "CENTRO",
+    "cep": "88010102",
+    "municipio": "FLORIANOPOLIS",
+    "uf": "SC",
+    "cnae_fiscal": 7490104,
+    "cnae_fiscal_descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 7990200,
+        "descricao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "4896519460",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/28406712000124"
+  },
+  "28416109000123": {
+    "cnpj": "28416109000123",
+    "razao_social": "28.416.109 MAURICIO FRANCISCO DE OLIVEIRA PACHECO",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2017-08-14",
+    "data_inicio_atividade": "2017-08-14",
+    "descricao_tipo_de_logradouro": "",
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "bairro": "GURUPI",
+    "cep": "64090085",
+    "municipio": "TERESINA",
+    "uf": "PI",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 8599699,
+        "descricao": "Outras atividades de ensino não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Empresário (Individual)",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/28416109000123"
+  },
+  "28596025000119": {
+    "cnpj": "28596025000119",
+    "razao_social": "SAGAZ ESPORTES LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2017-09-06",
+    "data_inicio_atividade": "2017-09-06",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "PEDROSO DE MORAIS",
+    "numero": "347",
+    "complemento": "CASA 4",
+    "bairro": "PINHEIROS",
+    "cep": "05419000",
+    "municipio": "SAO PAULO",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7490199,
+        "descricao": "Outras atividades profissionais, científicas e técnicas não especificadas anteriormente"
+      },
+      {
+        "codigo": 7729202,
+        "descricao": "Aluguel de móveis, utensílios e aparelhos de uso doméstico e pessoal; instrumentos musicais"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "EMPRESA DE PEQUENO PORTE",
+    "ddd_telefone_1": "1198191055",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/28596025000119"
+  },
+  "28674754000146": {
+    "cnpj": "28674754000146",
+    "razao_social": "3LR EVENTOS LTDA",
+    "nome_fantasia": "3LR EVENTOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2017-09-18",
+    "data_inicio_atividade": "2017-09-18",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "GONCALVES LEDO",
+    "numero": "206",
+    "complemento": "APT 602",
+    "bairro": "CENTRO",
+    "cep": "88802120",
+    "municipio": "CRICIUMA",
+    "uf": "SC",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 6201502,
+        "descricao": "Web design"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 8211300,
+        "descricao": "Serviços combinados de escritório e apoio administrativo"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8592999,
+        "descricao": "Ensino de arte e cultura não especificado anteriormente"
+      },
+      {
+        "codigo": 9313100,
+        "descricao": "Atividades de condicionamento físico"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "4899651332",
+    "ddd_telefone_2": "4830456556",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/28674754000146"
+  },
+  "28963910000199": {
+    "cnpj": "28963910000199",
+    "razao_social": "WX ESPORTES E NEGOCIOS LTDA",
+    "nome_fantasia": "WX ESPORTES",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2017-10-30",
+    "data_inicio_atividade": "2017-10-30",
+    "descricao_tipo_de_logradouro": "ALAMEDA",
+    "logradouro": "RIO NEGRO",
+    "numero": "1030",
+    "complemento": "COND STADIUM - ESCRIT 206",
+    "bairro": "ALPHAVILLE CENTRO INDUSTRIAL E EMPRESARIAL/ALPHAV",
+    "cep": "06454000",
+    "municipio": "BARUERI",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 6201501,
+        "descricao": "Desenvolvimento de programas de computador sob encomenda"
+      },
+      {
+        "codigo": 6202300,
+        "descricao": "Desenvolvimento e licenciamento de programas de computador customizáveis"
+      },
+      {
+        "codigo": 6204000,
+        "descricao": "Consultoria em tecnologia da informação"
+      },
+      {
+        "codigo": 6319400,
+        "descricao": "Portais, provedores de conteúdo e outros serviços de informação na internet"
+      },
+      {
+        "codigo": 6911703,
+        "descricao": "Agente de propriedade industrial"
+      },
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7220700,
+        "descricao": "Pesquisa e desenvolvimento experimental em ciências sociais e humanas"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7312200,
+        "descricao": "Agenciamento de espaços para publicidade, exceto em veículos de comunicação"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 7420001,
+        "descricao": "Atividades de produção de fotografias, exceto aérea e submarina"
+      },
+      {
+        "codigo": 7490101,
+        "descricao": "Serviços de tradução, interpretação e similares"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 7740300,
+        "descricao": "Gestão de ativos intangíveis não-financeiros"
+      },
+      {
+        "codigo": 7911200,
+        "descricao": "Agências de viagens"
+      },
+      {
+        "codigo": 7990200,
+        "descricao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8591100,
+        "descricao": "Ensino de esportes"
+      },
+      {
+        "codigo": 8690901,
+        "descricao": "Atividades de práticas integrativas e complementares em saúde humana"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9311500,
+        "descricao": "Gestão de instalações de esportes"
+      },
+      {
+        "codigo": 9313100,
+        "descricao": "Atividades de condicionamento físico"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1121845373",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/28963910000199"
+  },
+  "29086536000153": {
+    "cnpj": "29086536000153",
+    "razao_social": "H H L PEREIRA EVENTOS",
+    "nome_fantasia": "SEVEN EVENTS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2017-11-16",
+    "data_inicio_atividade": "2017-11-16",
+    "descricao_tipo_de_logradouro": "",
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "bairro": "SAO CRISTOVAO",
+    "cep": "28909270",
+    "municipio": "CABO FRIO",
+    "uf": "RJ",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 1813099,
+        "descricao": "Impressão de material para outros usos"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 7420001,
+        "descricao": "Atividades de produção de fotografias, exceto aérea e submarina"
+      },
+      {
+        "codigo": 7420002,
+        "descricao": "Atividades de produção de fotografias aéreas e submarinas"
+      },
+      {
+        "codigo": 7420004,
+        "descricao": "Filmagem de festas e eventos"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      },
+      {
+        "codigo": 9313100,
+        "descricao": "Atividades de condicionamento físico"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Empresário (Individual)",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/29086536000153"
+  },
+  "29452525000140": {
+    "cnpj": "29452525000140",
+    "razao_social": "PACE 3 EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2018-01-16",
+    "data_inicio_atividade": "2018-01-16",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "LEOPOLDO MIGUEZ",
+    "numero": "138",
+    "complemento": "",
+    "bairro": "IDEAL",
+    "cep": "35162194",
+    "municipio": "IPATINGA",
+    "uf": "MG",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7312200,
+        "descricao": "Agenciamento de espaços para publicidade, exceto em veículos de comunicação"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Simples Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "3188080955",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/29452525000140"
+  },
+  "30245713000186": {
+    "cnpj": "30245713000186",
+    "razao_social": "BOLT - ORGANIZADORA E PRODUTORA DE EVENTOS CULTURAIS LTDA",
+    "nome_fantasia": "BOLT PRODUCOES",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2018-04-19",
+    "data_inicio_atividade": "2018-04-19",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "PRINCESA IZABEL",
+    "numero": "390",
+    "complemento": "COWORKING - DT 31",
+    "bairro": "JARDIM DOS ESTADOS",
+    "cep": "79002510",
+    "municipio": "CAMPO GRANDE",
+    "uf": "MS",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 3811400,
+        "descricao": "Coleta de resíduos não-perigosos"
+      },
+      {
+        "codigo": 4649499,
+        "descricao": "Comércio atacadista de outros equipamentos e artigos de uso pessoal e doméstico não especificados anteriormente"
+      },
+      {
+        "codigo": 4686902,
+        "descricao": "Comércio atacadista de embalagens"
+      },
+      {
+        "codigo": 4723700,
+        "descricao": "Comércio varejista de bebidas"
+      },
+      {
+        "codigo": 4751201,
+        "descricao": "Comércio varejista especializado de equipamentos e suprimentos de informática"
+      },
+      {
+        "codigo": 4752100,
+        "descricao": "Comércio varejista especializado de equipamentos de telefonia e comunicação"
+      },
+      {
+        "codigo": 4753900,
+        "descricao": "Comércio varejista especializado de eletrodomésticos e equipamentos de áudio e vídeo"
+      },
+      {
+        "codigo": 4755501,
+        "descricao": "Comércio varejista de tecidos"
+      },
+      {
+        "codigo": 4761001,
+        "descricao": "Comércio varejista de livros"
+      },
+      {
+        "codigo": 4761003,
+        "descricao": "Comércio varejista de artigos de papelaria"
+      },
+      {
+        "codigo": 4763601,
+        "descricao": "Comércio varejista de brinquedos e artigos recreativos"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4763603,
+        "descricao": "Comércio varejista de bicicletas e triciclos; peças e acessórios"
+      },
+      {
+        "codigo": 4763604,
+        "descricao": "Comércio varejista de artigos de caça, pesca e camping"
+      },
+      {
+        "codigo": 4763605,
+        "descricao": "Comércio varejista de embarcações e outros veículos recreativos; peças e acessórios"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 4782201,
+        "descricao": "Comércio varejista de calçados"
+      },
+      {
+        "codigo": 4782202,
+        "descricao": "Comércio varejista de artigos de viagem"
+      },
+      {
+        "codigo": 4789006,
+        "descricao": "Comércio varejista de fogos de artifício e artigos pirotécnicos"
+      },
+      {
+        "codigo": 4789008,
+        "descricao": "Comércio varejista de artigos fotográficos e para filmagem"
+      },
+      {
+        "codigo": 4923002,
+        "descricao": "Serviço de transporte de passageiros - locação de automóveis com motorista"
+      },
+      {
+        "codigo": 5212500,
+        "descricao": "Carga e descarga"
+      },
+      {
+        "codigo": 5620101,
+        "descricao": "Fornecimento de alimentos preparados preponderantemente para empresas"
+      },
+      {
+        "codigo": 5821200,
+        "descricao": "Edição integrada à impressão de livros"
+      },
+      {
+        "codigo": 5911199,
+        "descricao": "Atividades de produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      },
+      {
+        "codigo": 6190699,
+        "descricao": "Outras atividades de telecomunicações não especificadas anteriormente"
+      },
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 7320300,
+        "descricao": "Pesquisas de mercado e de opinião pública"
+      },
+      {
+        "codigo": 7420001,
+        "descricao": "Atividades de produção de fotografias, exceto aérea e submarina"
+      },
+      {
+        "codigo": 7420004,
+        "descricao": "Filmagem de festas e eventos"
+      },
+      {
+        "codigo": 7490101,
+        "descricao": "Serviços de tradução, interpretação e similares"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7490199,
+        "descricao": "Outras atividades profissionais, científicas e técnicas não especificadas anteriormente"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 8121400,
+        "descricao": "Limpeza em prédios e em domicílios"
+      },
+      {
+        "codigo": 8129000,
+        "descricao": "Atividades de limpeza não especificadas anteriormente"
+      },
+      {
+        "codigo": 8299799,
+        "descricao": "Outras atividades de serviços prestados principalmente às empresas não especificadas anteriormente"
+      },
+      {
+        "codigo": 8711503,
+        "descricao": "Atividades de assistência a deficientes físicos, imunodeprimidos e convalescentes"
+      },
+      {
+        "codigo": 9001901,
+        "descricao": "Produção teatral"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001903,
+        "descricao": "Produção de espetáculos de dança"
+      },
+      {
+        "codigo": 9001905,
+        "descricao": "Produção de espetáculos de rodeios, vaquejadas e similares"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9002702,
+        "descricao": "Restauração de obras-de-arte"
+      },
+      {
+        "codigo": 9003500,
+        "descricao": "Gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas"
+      },
+      {
+        "codigo": 9311500,
+        "descricao": "Gestão de instalações de esportes"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "6792420022",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/30245713000186"
+  },
+  "30412564000100": {
+    "cnpj": "30412564000100",
+    "razao_social": "PACE EVENTOS LTDA",
+    "nome_fantasia": "PACE EVENTOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2018-05-09",
+    "data_inicio_atividade": "2018-05-09",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "ALBERTO BELLA ROSA",
+    "numero": "122",
+    "complemento": "",
+    "bairro": "PONTAL DE CAMBURI",
+    "cep": "29062110",
+    "municipio": "VITORIA",
+    "uf": "ES",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 7312200,
+        "descricao": "Agenciamento de espaços para publicidade, exceto em veículos de comunicação"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7820500,
+        "descricao": "Locação de mão-de-obra temporária"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "2798277382",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/30412564000100"
+  },
+  "30704295000148": {
+    "cnpj": "30704295000148",
+    "razao_social": "AGENCIA DE EVENTOS CB SPORTS LTDA",
+    "nome_fantasia": "CORRE BRASIL",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2018-06-14",
+    "data_inicio_atividade": "2018-06-14",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "RIO AMAZONAS",
+    "numero": "2025",
+    "complemento": "",
+    "bairro": "RIO PEQUENO",
+    "cep": "88343400",
+    "municipio": "CAMBORIU",
+    "uf": "SC",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 5911102,
+        "descricao": "Produção de filmes para publicidade"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7420004,
+        "descricao": "Filmagem de festas e eventos"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "EMPRESA DE PEQUENO PORTE",
+    "ddd_telefone_1": "4732286818",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/30704295000148"
+  },
+  "31540345000161": {
+    "cnpj": "31540345000161",
+    "razao_social": "ON EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "ON EVENTOS ESPORTIVOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2018-09-18",
+    "data_inicio_atividade": "2018-09-18",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "ANTONIO LYDIO ZABOT",
+    "numero": "972",
+    "complemento": "",
+    "bairro": "OFICINAS",
+    "cep": "88705649",
+    "municipio": "TUBARAO",
+    "uf": "SC",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 3321000,
+        "descricao": "Instalação de máquinas e equipamentos industriais"
+      },
+      {
+        "codigo": 4321500,
+        "descricao": "Instalação e manutenção elétrica"
+      },
+      {
+        "codigo": 4329104,
+        "descricao": "Montagem e instalação de sistemas e equipamentos de iluminação e sinalização em vias públicas, portos e aeroportos"
+      },
+      {
+        "codigo": 4399102,
+        "descricao": "Montagem e desmontagem de andaimes e outras estruturas temporárias"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7729202,
+        "descricao": "Aluguel de móveis, utensílios e aparelhos de uso doméstico e pessoal; instrumentos musicais"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9311500,
+        "descricao": "Gestão de instalações de esportes"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9529199,
+        "descricao": "Reparação e manutenção de outros objetos e equipamentos pessoais e domésticos não especificados anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "EMPRESA DE PEQUENO PORTE",
+    "ddd_telefone_1": "4892075199",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/31540345000161"
+  },
+  "32286677000124": {
+    "cnpj": "32286677000124",
+    "razao_social": "CPR EVENTOS E PRODUCOES LTDA",
+    "nome_fantasia": "CPR EVENTOS E PRODUCOES",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2018-12-19",
+    "data_inicio_atividade": "2018-12-19",
+    "descricao_tipo_de_logradouro": "PRAIA",
+    "logradouro": "BOTAFOGO",
+    "numero": "00501",
+    "complemento": "BLC I SAL 101",
+    "bairro": "BOTAFOGO",
+    "cep": "22250911",
+    "municipio": "RIO DE JANEIRO",
+    "uf": "RJ",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7312200,
+        "descricao": "Agenciamento de espaços para publicidade, exceto em veículos de comunicação"
+      },
+      {
+        "codigo": 7319002,
+        "descricao": "Promoção de vendas"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7912100,
+        "descricao": "Operadores turísticos"
+      },
+      {
+        "codigo": 7990200,
+        "descricao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+      },
+      {
+        "codigo": 9001901,
+        "descricao": "Produção teatral"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001903,
+        "descricao": "Produção de espetáculos de dança"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9311500,
+        "descricao": "Gestão de instalações de esportes"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "2165839851",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/32286677000124"
+  },
+  "32576417000193": {
+    "cnpj": "32576417000193",
+    "razao_social": "G2P EVENTOS LTDA",
+    "nome_fantasia": "PIZZIRANI ESPORTES",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2019-01-28",
+    "data_inicio_atividade": "2019-01-28",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "5 JB",
+    "numero": "14",
+    "complemento": "",
+    "bairro": "JARDIM BANDEIRANTE (COHAB)",
+    "cep": "13506504",
+    "municipio": "RIO CLARO",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      },
+      {
+        "codigo": 9003500,
+        "descricao": "Gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1992118440",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/32576417000193"
+  },
+  "32692507000140": {
+    "cnpj": "32692507000140",
+    "razao_social": "STC EVENTOS LTDA",
+    "nome_fantasia": "GRUPO STC",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2019-02-07",
+    "data_inicio_atividade": "2019-02-07",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "DORVALINA MACHADO COELHO",
+    "numero": "409",
+    "complemento": "",
+    "bairro": "JOAO PAULO",
+    "cep": "88030530",
+    "municipio": "FLORIANOPOLIS",
+    "uf": "SC",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "4833075619",
+    "ddd_telefone_2": "4888325790",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/32692507000140"
+  },
+  "32910273000160": {
+    "cnpj": "32910273000160",
+    "razao_social": "T R CRONO COMERCIO E SERVICOS LTDA",
+    "nome_fantasia": "T R CRONO",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2019-02-27",
+    "data_inicio_atividade": "2019-02-27",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "PRESIDENTE AFONSO PENA",
+    "numero": "1090",
+    "complemento": "SALA 102",
+    "bairro": "BESSA",
+    "cep": "58035030",
+    "municipio": "JOAO PESSOA",
+    "uf": "PB",
+    "cnae_fiscal": 7319002,
+    "cnae_fiscal_descricao": "Promoção de vendas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4755501,
+        "descricao": "Comércio varejista de tecidos"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "8393226409",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/32910273000160"
+  },
+  "33015610000118": {
+    "cnpj": "33015610000118",
+    "razao_social": "LUCIANA CRISTINA SILVA",
+    "nome_fantasia": "PEPPER CRIATIVA SPORTS & BUSINESS AGENCY",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2019-03-13",
+    "data_inicio_atividade": "2019-03-13",
+    "descricao_tipo_de_logradouro": "",
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "bairro": "JARDIM EMILIA",
+    "cep": "18031005",
+    "municipio": "SOROCABA",
+    "uf": "SP",
+    "cnae_fiscal": 7319099,
+    "cnae_fiscal_descricao": "Outras atividades de publicidade não especificadas anteriormente",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 7312200,
+        "descricao": "Agenciamento de espaços para publicidade, exceto em veículos de comunicação"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 6319400,
+        "descricao": "Portais, provedores de conteúdo e outros serviços de informação na internet"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      }
+    ],
+    "natureza_juridica": "Empresário (Individual)",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/33015610000118"
+  },
+  "33045470000120": {
+    "cnpj": "33045470000120",
+    "razao_social": "QUANTA ESPORTES E EVENTOS LTDA",
+    "nome_fantasia": "QUANTA ESPORTES E EVENTOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2019-03-15",
+    "data_inicio_atividade": "2019-03-15",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "CUBATAO",
+    "numero": "297",
+    "complemento": "",
+    "bairro": "MONTE CASTELO",
+    "cep": "32285170",
+    "municipio": "CONTAGEM",
+    "uf": "MG",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 8219999,
+        "descricao": "Preparação de documentos e serviços especializados de apoio administrativo não especificados anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "3134521466",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/33045470000120"
+  },
+  "33591994000117": {
+    "cnpj": "33591994000117",
+    "razao_social": "VEGA ASSESSORIA, CONSULTORIA E GESTAO NO ESPORTE LTDA.",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2019-05-10",
+    "data_inicio_atividade": "2019-05-10",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "NATINGUI",
+    "numero": "442",
+    "complemento": "CONJ 10",
+    "bairro": "VILA MADALENA",
+    "cep": "05443000",
+    "municipio": "SAO PAULO",
+    "uf": "SP",
+    "cnae_fiscal": 7020400,
+    "cnae_fiscal_descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4329101,
+        "descricao": "Instalação de painéis publicitários"
+      },
+      {
+        "codigo": 5911199,
+        "descricao": "Atividades de produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      },
+      {
+        "codigo": 5912099,
+        "descricao": "Atividades de pós-produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      },
+      {
+        "codigo": 5914600,
+        "descricao": "Atividades de exibição cinematográfica"
+      },
+      {
+        "codigo": 5920100,
+        "descricao": "Atividades de gravação de som e de edição de música"
+      },
+      {
+        "codigo": 6201502,
+        "descricao": "Web design"
+      },
+      {
+        "codigo": 6319400,
+        "descricao": "Portais, provedores de conteúdo e outros serviços de informação na internet"
+      },
+      {
+        "codigo": 6462000,
+        "descricao": "Holdings de instituições não-financeiras"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 7319001,
+        "descricao": "Criação de estandes para feiras e exposições"
+      },
+      {
+        "codigo": 7319004,
+        "descricao": "Consultoria em publicidade"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7410299,
+        "descricao": "atividades de design não especificadas anteriormente"
+      },
+      {
+        "codigo": 7420001,
+        "descricao": "Atividades de produção de fotografias, exceto aérea e submarina"
+      },
+      {
+        "codigo": 7420004,
+        "descricao": "Filmagem de festas e eventos"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7729202,
+        "descricao": "Aluguel de móveis, utensílios e aparelhos de uso doméstico e pessoal; instrumentos musicais"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 8211300,
+        "descricao": "Serviços combinados de escritório e apoio administrativo"
+      },
+      {
+        "codigo": 8219999,
+        "descricao": "Preparação de documentos e serviços especializados de apoio administrativo não especificados anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9001901,
+        "descricao": "Produção teatral"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001903,
+        "descricao": "Produção de espetáculos de dança"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9003500,
+        "descricao": "Gestão de espaços para artes cênicas, espetáculos e outras atividades artísticas"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1198256787",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/33591994000117"
+  },
+  "34622939000100": {
+    "cnpj": "34622939000100",
+    "razao_social": "UNLIMITED SPORTS EVENTOS S.A.",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2019-08-22",
+    "data_inicio_atividade": "2019-08-22",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "PROFESSOR EDUARDO MONTEIRO",
+    "numero": "200",
+    "complemento": "SALA 2",
+    "bairro": "JARDIM LEONOR",
+    "cep": "05614120",
+    "municipio": "SAO PAULO",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 7311400,
+        "descricao": "Agências de publicidade"
+      },
+      {
+        "codigo": 5911199,
+        "descricao": "Atividades de produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      },
+      {
+        "codigo": 5912099,
+        "descricao": "Atividades de pós-produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Anônima Fechada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1137432711",
+    "ddd_telefone_2": "1155393535",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/34622939000100"
+  },
+  "34784333000170": {
+    "cnpj": "34784333000170",
+    "razao_social": "IDEAL 5K PRODUCAO DE EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "IDEAL 5K SPORTS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2019-09-06",
+    "data_inicio_atividade": "2019-09-06",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "RESERVA DO JAPY",
+    "numero": "227",
+    "complemento": "BLOCO 4 APT 204",
+    "bairro": "RECANTO QUARTO CENTENARIO",
+    "cep": "13211772",
+    "municipio": "JUNDIAI",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1189280891",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/34784333000170"
+  },
+  "34842351000161": {
+    "cnpj": "34842351000161",
+    "razao_social": "J DA F MATOS CRONOMETRAGEM E EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "CORRENTERUNNING",
+    "descricao_situacao_cadastral": "INAPTA",
+    "data_situacao_cadastral": "2026-08-27",
+    "data_inicio_atividade": "1990-05-04",
+    "descricao_tipo_de_logradouro": "VILA",
+    "logradouro": "SAO JUDAS TADEU",
+    "numero": "03",
+    "complemento": "AV PEDRO MIRANDA",
+    "bairro": "PEDREIRA",
+    "cep": "66080500",
+    "municipio": "BELEM",
+    "uf": "PA",
+    "cnae_fiscal": 4763602,
+    "cnae_fiscal_descricao": "Comércio varejista de artigos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4729699,
+        "descricao": "Comércio varejista de produtos alimentícios em geral ou especializado em produtos alimentícios não especificados anteriormente"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "9199445555",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/34842351000161"
+  },
+  "35507828000115": {
+    "cnpj": "35507828000115",
+    "razao_social": "PDA ESPORTES LTDA",
+    "nome_fantasia": "PDA ESPORTES",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2019-11-13",
+    "data_inicio_atividade": "2019-11-13",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "SEBASTIAO LENTZ",
+    "numero": "126",
+    "complemento": "",
+    "bairro": "PRAIA COMPRIDA",
+    "cep": "88103750",
+    "municipio": "SAO JOSE",
+    "uf": "SC",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 1412601,
+        "descricao": "Confecção de peças de vestuário, exceto roupas íntimas e as confeccionadas sob medida"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 4789001,
+        "descricao": "Comércio varejista de suvenires, bijuterias e artesanatos"
+      },
+      {
+        "codigo": 7319002,
+        "descricao": "Promoção de vendas"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7912100,
+        "descricao": "Operadores turísticos"
+      },
+      {
+        "codigo": 7990200,
+        "descricao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "4891302163",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/35507828000115"
+  },
+  "36050996000197": {
+    "cnpj": "36050996000197",
+    "razao_social": "SPORTS360 CONSULTORIA E EVENTOS LTDA",
+    "nome_fantasia": "SPORTS360 CONSULTORIA E EVENTOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2020-01-18",
+    "data_inicio_atividade": "2020-01-18",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "ELVIS PRESLEY",
+    "numero": "195",
+    "complemento": "CASA B COND IPE RES",
+    "bairro": "SANTA FELICIDADE",
+    "cep": "82410580",
+    "municipio": "CURITIBA",
+    "uf": "PR",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7490199,
+        "descricao": "Outras atividades profissionais, científicas e técnicas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "4199125035",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/36050996000197"
+  },
+  "36480637000170": {
+    "cnpj": "36480637000170",
+    "razao_social": "BETA SPORTS COMUNICACAO LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2020-02-27",
+    "data_inicio_atividade": "2020-02-27",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "ALVORADA",
+    "numero": "1289",
+    "complemento": "CONJ 702",
+    "bairro": "VILA OLIMPIA",
+    "cep": "04550004",
+    "municipio": "SAO PAULO",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 7420001,
+        "descricao": "Atividades de produção de fotografias, exceto aérea e submarina"
+      },
+      {
+        "codigo": 8219999,
+        "descricao": "Preparação de documentos e serviços especializados de apoio administrativo não especificados anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1155393535",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/36480637000170"
+  },
+  "36585012000172": {
+    "cnpj": "36585012000172",
+    "razao_social": "RAFAEL DE OLIVEIRA FIDALGO EVENTOS E TREINAMENTOS",
+    "nome_fantasia": "FIDALGO EVENTOS & TURISMO ESPORTIVO",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2020-03-06",
+    "data_inicio_atividade": "2020-03-06",
+    "descricao_tipo_de_logradouro": "",
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "bairro": "PARQUE DAS ACACIAS",
+    "cep": "19705008",
+    "municipio": "PARAGUACU PAULISTA",
+    "uf": "SP",
+    "cnae_fiscal": 7912100,
+    "cnae_fiscal_descricao": "Operadores turísticos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7911200,
+        "descricao": "Agências de viagens"
+      },
+      {
+        "codigo": 7990200,
+        "descricao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Empresário (Individual)",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/36585012000172"
+  },
+  "36943394000169": {
+    "cnpj": "36943394000169",
+    "razao_social": "BEE SPORTS - AGENCIA E PRODUTORA DE EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "BEE SPORTS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2020-04-15",
+    "data_inicio_atividade": "2020-04-15",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "254",
+    "numero": "135",
+    "complemento": "QUADRA29 LOTE 19",
+    "bairro": "SET COIMBRA",
+    "cep": "74535440",
+    "municipio": "GOIANIA",
+    "uf": "GO",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7719599,
+        "descricao": "Locação de outros meios de transporte não especificados anteriormente, sem condutor"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7722500,
+        "descricao": "Aluguel de fitas de vídeo, DVDs e similares"
+      },
+      {
+        "codigo": 7723300,
+        "descricao": "Aluguel de objetos do vestuário, jóias e acessórios"
+      },
+      {
+        "codigo": 7729202,
+        "descricao": "Aluguel de móveis, utensílios e aparelhos de uso doméstico e pessoal; instrumentos musicais"
+      },
+      {
+        "codigo": 7732201,
+        "descricao": "Aluguel de máquinas e equipamentos para construção sem operador, exceto andaimes"
+      },
+      {
+        "codigo": 7732202,
+        "descricao": "Aluguel de andaimes"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7739099,
+        "descricao": "Aluguel de outras máquinas e equipamentos comerciais e industriais não especificados anteriormente, sem operador"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8550302,
+        "descricao": "Atividades de apoio à educação, exceto caixas escolares"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      },
+      {
+        "codigo": 8599699,
+        "descricao": "Outras atividades de ensino não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "6281702180",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/36943394000169"
+  },
+  "37768638000187": {
+    "cnpj": "37768638000187",
+    "razao_social": "AVATAR SPORTS LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2020-07-17",
+    "data_inicio_atividade": "2020-07-17",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "TEOPOMPO DE VASCONCELOS",
+    "numero": "335",
+    "complemento": "APT 163",
+    "bairro": "VILA ADYANA",
+    "cep": "12243830",
+    "municipio": "SAO JOSE DOS CAMPOS",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4649499,
+        "descricao": "Comércio atacadista de outros equipamentos e artigos de uso pessoal e doméstico não especificados anteriormente"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1296024556",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/37768638000187"
+  },
+  "39309085000120": {
+    "cnpj": "39309085000120",
+    "razao_social": "CORRE BRASIL MARKETPLACE LTDA",
+    "nome_fantasia": "CORRE BRASIL",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2020-10-05",
+    "data_inicio_atividade": "2020-10-05",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "RIO AMAZONAS",
+    "numero": "2025",
+    "complemento": "",
+    "bairro": "RIO PEQUENO",
+    "cep": "88343400",
+    "municipio": "CAMBORIU",
+    "uf": "SC",
+    "cnae_fiscal": 7490104,
+    "cnae_fiscal_descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários",
+    "cnaes_secundarios": [],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "EMPRESA DE PEQUENO PORTE",
+    "ddd_telefone_1": "4732286818",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/39309085000120"
+  },
+  "40224688000108": {
+    "cnpj": "40224688000108",
+    "razao_social": "CORRER COM PROPOSITOS VIAGENS E TURISMO LTDA",
+    "nome_fantasia": "CORRER COM PROPOSITOS VIAGENS E TURISMO",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2020-12-30",
+    "data_inicio_atividade": "2020-12-30",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "DIANA",
+    "numero": "89",
+    "complemento": "CONJ 64",
+    "bairro": "PERDIZES",
+    "cep": "05019000",
+    "municipio": "SAO PAULO",
+    "uf": "SP",
+    "cnae_fiscal": 7912100,
+    "cnae_fiscal_descricao": "Operadores turísticos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4689399,
+        "descricao": "Comércio atacadista especializado em outros produtos intermediários não especificados anteriormente"
+      },
+      {
+        "codigo": 4713004,
+        "descricao": "Lojas de departamentos ou magazines, exceto lojas francas (Duty free)"
+      },
+      {
+        "codigo": 4759899,
+        "descricao": "Comércio varejista de outros artigos de uso pessoal e doméstico não especificados anteriormente"
+      },
+      {
+        "codigo": 4761001,
+        "descricao": "Comércio varejista de livros"
+      },
+      {
+        "codigo": 4761002,
+        "descricao": "Comércio varejista de jornais e revistas"
+      },
+      {
+        "codigo": 4761003,
+        "descricao": "Comércio varejista de artigos de papelaria"
+      },
+      {
+        "codigo": 4762800,
+        "descricao": "Comércio varejista de discos, CDs, DVDs e fitas"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 4782201,
+        "descricao": "Comércio varejista de calçados"
+      },
+      {
+        "codigo": 4782202,
+        "descricao": "Comércio varejista de artigos de viagem"
+      },
+      {
+        "codigo": 4789099,
+        "descricao": "Comércio varejista de outros produtos não especificados anteriormente"
+      },
+      {
+        "codigo": 5811500,
+        "descricao": "Edição de livros"
+      },
+      {
+        "codigo": 5812301,
+        "descricao": "Edição de jornais diários"
+      },
+      {
+        "codigo": 5812302,
+        "descricao": "Edição de jornais não diários"
+      },
+      {
+        "codigo": 5813100,
+        "descricao": "Edição de revistas"
+      },
+      {
+        "codigo": 5819100,
+        "descricao": "Edição de cadastros, listas e de outros produtos gráficos"
+      },
+      {
+        "codigo": 6319400,
+        "descricao": "Portais, provedores de conteúdo e outros serviços de informação na internet"
+      },
+      {
+        "codigo": 7020400,
+        "descricao": "Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica"
+      },
+      {
+        "codigo": 7312200,
+        "descricao": "Agenciamento de espaços para publicidade, exceto em veículos de comunicação"
+      },
+      {
+        "codigo": 7319002,
+        "descricao": "Promoção de vendas"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7410203,
+        "descricao": "Design de produto"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7490199,
+        "descricao": "Outras atividades profissionais, científicas e técnicas não especificadas anteriormente"
+      },
+      {
+        "codigo": 7911200,
+        "descricao": "Agências de viagens"
+      },
+      {
+        "codigo": 7990200,
+        "descricao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+      },
+      {
+        "codigo": 8211300,
+        "descricao": "Serviços combinados de escritório e apoio administrativo"
+      },
+      {
+        "codigo": 8219999,
+        "descricao": "Preparação de documentos e serviços especializados de apoio administrativo não especificados anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8541400,
+        "descricao": "Educação profissional de nível técnico"
+      },
+      {
+        "codigo": 8591100,
+        "descricao": "Ensino de esportes"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      },
+      {
+        "codigo": 9311500,
+        "descricao": "Gestão de instalações de esportes"
+      },
+      {
+        "codigo": 9313100,
+        "descricao": "Atividades de condicionamento físico"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1111838383",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/40224688000108"
+  },
+  "40299847000133": {
+    "cnpj": "40299847000133",
+    "razao_social": "HELP PROJETOS E EQUIPAMENTOS LTDA",
+    "nome_fantasia": "GRUPO HJR LOGISTICA",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2021-01-07",
+    "data_inicio_atividade": "2021-01-07",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "PRESIDENTE KENNEDY",
+    "numero": "11404",
+    "complemento": "SALA 04",
+    "bairro": "CAICARA",
+    "cep": "11706000",
+    "municipio": "PRAIA GRANDE",
+    "uf": "SP",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4120400,
+        "descricao": "Construção de edifícios"
+      },
+      {
+        "codigo": 4211102,
+        "descricao": "Pintura para sinalização em pistas rodoviárias e aeroportos"
+      },
+      {
+        "codigo": 4213800,
+        "descricao": "Obras de urbanização - ruas, praças e calçadas"
+      },
+      {
+        "codigo": 4222701,
+        "descricao": "Construção de redes de abastecimento de água, coleta de esgoto e construções correlatas, exceto obras de irrigação"
+      },
+      {
+        "codigo": 4292801,
+        "descricao": "Montagem de estruturas metálicas"
+      },
+      {
+        "codigo": 4311802,
+        "descricao": "Preparação de canteiro e limpeza de terreno"
+      },
+      {
+        "codigo": 4319300,
+        "descricao": "Serviços de preparação do terreno não especificados anteriormente"
+      },
+      {
+        "codigo": 4321500,
+        "descricao": "Instalação e manutenção elétrica"
+      },
+      {
+        "codigo": 4322301,
+        "descricao": "Instalações hidráulicas, sanitárias e de gás"
+      },
+      {
+        "codigo": 4322302,
+        "descricao": "Instalação e manutenção de sistemas centrais de ar condicionado, de ventilação e refrigeração"
+      },
+      {
+        "codigo": 4322303,
+        "descricao": "Instalações de sistema de prevenção contra incêndio"
+      },
+      {
+        "codigo": 4329104,
+        "descricao": "Montagem e instalação de sistemas e equipamentos de iluminação e sinalização em vias públicas, portos e aeroportos"
+      },
+      {
+        "codigo": 4330402,
+        "descricao": "Instalação de portas, janelas, tetos, divisórias e armários embutidos de qualquer material"
+      },
+      {
+        "codigo": 4330404,
+        "descricao": "Serviços de pintura de edifícios em geral"
+      },
+      {
+        "codigo": 4399102,
+        "descricao": "Montagem e desmontagem de andaimes e outras estruturas temporárias"
+      },
+      {
+        "codigo": 4642701,
+        "descricao": "Comércio atacadista de artigos do vestuário e acessórios, exceto profissionais e de segurança"
+      },
+      {
+        "codigo": 4642702,
+        "descricao": "Comércio atacadista de roupas e acessórios para uso profissional e de segurança do trabalho"
+      },
+      {
+        "codigo": 4649404,
+        "descricao": "Comércio atacadista de móveis e artigos de colchoaria"
+      },
+      {
+        "codigo": 4693100,
+        "descricao": "Comércio atacadista de mercadorias em geral, sem predominância de alimentos ou de insumos agropecuários"
+      },
+      {
+        "codigo": 4741500,
+        "descricao": "Comércio varejista de tintas e materiais para pintura"
+      },
+      {
+        "codigo": 4744001,
+        "descricao": "Comércio varejista de ferragens e ferramentas"
+      },
+      {
+        "codigo": 4751201,
+        "descricao": "Comércio varejista especializado de equipamentos e suprimentos de informática"
+      },
+      {
+        "codigo": 4753900,
+        "descricao": "Comércio varejista especializado de eletrodomésticos e equipamentos de áudio e vídeo"
+      },
+      {
+        "codigo": 4754701,
+        "descricao": "Comércio varejista de móveis"
+      },
+      {
+        "codigo": 4757100,
+        "descricao": "Comércio varejista especializado de peças e acessórios para aparelhos eletroeletrônicos para uso doméstico, exceto informática e comunicação"
+      },
+      {
+        "codigo": 4761003,
+        "descricao": "Comércio varejista de artigos de papelaria"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 4789005,
+        "descricao": "Comércio varejista de produtos saneantes domissanitários"
+      },
+      {
+        "codigo": 4789099,
+        "descricao": "Comércio varejista de outros produtos não especificados anteriormente"
+      },
+      {
+        "codigo": 5223100,
+        "descricao": "Estacionamento de veículos"
+      },
+      {
+        "codigo": 6204000,
+        "descricao": "Consultoria em tecnologia da informação"
+      },
+      {
+        "codigo": 7112000,
+        "descricao": "Serviços de engenharia"
+      },
+      {
+        "codigo": 7119703,
+        "descricao": "Serviços de desenho técnico relacionados à arquitetura e engenharia"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7729202,
+        "descricao": "Aluguel de móveis, utensílios e aparelhos de uso doméstico e pessoal; instrumentos musicais"
+      },
+      {
+        "codigo": 7729299,
+        "descricao": "Aluguel de outros objetos pessoais e domésticos não especificados anteriormente"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 7810800,
+        "descricao": "Seleção e agenciamento de mão-de-obra"
+      },
+      {
+        "codigo": 7830200,
+        "descricao": "Fornecimento e gestão de recursos humanos para terceiros"
+      },
+      {
+        "codigo": 8121400,
+        "descricao": "Limpeza em prédios e em domicílios"
+      },
+      {
+        "codigo": 8122200,
+        "descricao": "Imunização e controle de pragas urbanas"
+      },
+      {
+        "codigo": 8129000,
+        "descricao": "Atividades de limpeza não especificadas anteriormente"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001905,
+        "descricao": "Produção de espetáculos de rodeios, vaquejadas e similares"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1981976700",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/40299847000133"
+  },
+  "40440750000107": {
+    "cnpj": "40440750000107",
+    "razao_social": "VEGA SPORTS BM CORRIDAS E EVENTOS ESPORTIVOS LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2021-01-18",
+    "data_inicio_atividade": "2021-01-18",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "QUINTANA",
+    "numero": "887",
+    "complemento": "CONJ 113",
+    "bairro": "CIDADE MONCOES",
+    "cep": "04569011",
+    "municipio": "SAO PAULO",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1198256787",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/40440750000107"
+  },
+  "44184762000160": {
+    "cnpj": "44184762000160",
+    "razao_social": "AR2 EVENTOS ESPORTIVOS E AFINS LTDA",
+    "nome_fantasia": "AR2 EVENTOS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2021-11-09",
+    "data_inicio_atividade": "2021-11-09",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "JULIO FRAGOSO",
+    "numero": "20",
+    "complemento": "APT 204",
+    "bairro": "MADUREIRA",
+    "cep": "21351100",
+    "municipio": "RIO DE JANEIRO",
+    "uf": "RJ",
+    "cnae_fiscal": 7311400,
+    "cnae_fiscal_descricao": "Agências de publicidade",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 5911199,
+        "descricao": "Atividades de produção cinematográfica, de vídeos e de programas de televisão não especificadas anteriormente"
+      },
+      {
+        "codigo": 7319002,
+        "descricao": "Promoção de vendas"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7420001,
+        "descricao": "Atividades de produção de fotografias, exceto aérea e submarina"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9311500,
+        "descricao": "Gestão de instalações de esportes"
+      },
+      {
+        "codigo": 9319101,
+        "descricao": "Produção e promoção de eventos esportivos"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      },
+      {
+        "codigo": 9329899,
+        "descricao": "Outras atividades de recreação e lazer não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "2183917405",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/44184762000160"
+  },
+  "44459412000160": {
+    "cnpj": "44459412000160",
+    "razao_social": "IGN ESPORTES E EVENTOS LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2021-12-02",
+    "data_inicio_atividade": "2021-12-02",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "PURPURINA",
+    "numero": "396",
+    "complemento": "CONJ 24",
+    "bairro": "SUMAREZINHO",
+    "cep": "05435030",
+    "municipio": "SAO PAULO",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 7319003,
+        "descricao": "Marketing direto"
+      },
+      {
+        "codigo": 7490105,
+        "descricao": "Agenciamento de profissionais para atividades esportivas, culturais e artísticas"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "DEMAIS",
+    "ddd_telefone_1": "1141001310",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/44459412000160"
+  },
+  "44707491000180": {
+    "cnpj": "44707491000180",
+    "razao_social": "H C D DA SILVA LTDA",
+    "nome_fantasia": "CHIP MACAPA",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2021-12-31",
+    "data_inicio_atividade": "2021-12-31",
+    "descricao_tipo_de_logradouro": "AVENIDA",
+    "logradouro": "PRESIDENTE GETULIO VARGAS",
+    "numero": "2478",
+    "complemento": "ANDAR 01 - ALTOS",
+    "bairro": "SANTA RITA",
+    "cep": "68901262",
+    "municipio": "MACAPA",
+    "uf": "AP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 1813001,
+        "descricao": "Impressão de material para uso publicitário"
+      },
+      {
+        "codigo": 4292801,
+        "descricao": "Montagem de estruturas metálicas"
+      },
+      {
+        "codigo": 4399102,
+        "descricao": "Montagem e desmontagem de andaimes e outras estruturas temporárias"
+      },
+      {
+        "codigo": 4751201,
+        "descricao": "Comércio varejista especializado de equipamentos e suprimentos de informática"
+      },
+      {
+        "codigo": 4761003,
+        "descricao": "Comércio varejista de artigos de papelaria"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 9001902,
+        "descricao": "Produção musical"
+      },
+      {
+        "codigo": 9001906,
+        "descricao": "Atividades de sonorização e de iluminação"
+      },
+      {
+        "codigo": 9001999,
+        "descricao": "Artes cênicas, espetáculos e atividades complementares não especificadas anteriormente"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "9691460660",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/44707491000180"
+  },
+  "44783360000182": {
+    "cnpj": "44783360000182",
+    "razao_social": "RENE KENNERLY NASCIMENTO 32620718899",
+    "nome_fantasia": "KENNER",
+    "descricao_situacao_cadastral": "BAIXADA",
+    "data_situacao_cadastral": "2022-07-29",
+    "data_inicio_atividade": "2022-01-07",
+    "descricao_tipo_de_logradouro": "",
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "bairro": "JARDIM DONA EMILIA",
+    "cep": "17215034",
+    "municipio": "JAU",
+    "uf": "SP",
+    "cnae_fiscal": 8599699,
+    "cnae_fiscal_descricao": "Outras atividades de ensino não especificadas anteriormente",
+    "cnaes_secundarios": [],
+    "natureza_juridica": "Empresário (Individual)",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/44783360000182"
+  },
+  "44927297000100": {
+    "cnpj": "44927297000100",
+    "razao_social": "ACLIVE ORGANIZACAO DE EVENTOS LTDA",
+    "nome_fantasia": "ACLIVE SPORTS",
+    "descricao_situacao_cadastral": "BAIXADA",
+    "data_situacao_cadastral": "2025-08-15",
+    "data_inicio_atividade": "2022-01-19",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "JOAQUIM PIRES FERREIRA",
+    "numero": "210",
+    "complemento": "SALA 103 CXPST 47",
+    "bairro": "ESTADOS",
+    "cep": "58030224",
+    "municipio": "JOAO PESSOA",
+    "uf": "PB",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7490199,
+        "descricao": "Outras atividades profissionais, científicas e técnicas não especificadas anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "8391348664",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/44927297000100"
+  },
+  "46478807000135": {
+    "cnpj": "46478807000135",
+    "razao_social": "46.478.807 SIMONE DA SILVA CARDOZO",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2022-05-20",
+    "data_inicio_atividade": "2022-05-20",
+    "descricao_tipo_de_logradouro": "",
+    "logradouro": "",
+    "numero": "",
+    "complemento": "",
+    "bairro": "JARDIM TERRAMERICA I",
+    "cep": "13468827",
+    "municipio": "AMERICANA",
+    "uf": "SP",
+    "cnae_fiscal": 8230001,
+    "cnae_fiscal_descricao": "Serviços de organização de feiras, congressos, exposições e festas",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      }
+    ],
+    "natureza_juridica": "Empresário (Individual)",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/46478807000135"
+  },
+  "47823167000116": {
+    "cnpj": "47823167000116",
+    "razao_social": "RENE KENNERLY NASCIMENTO ASSESSORIA LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2022-09-02",
+    "data_inicio_atividade": "2022-09-02",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "FELIX CAPINZAIKI",
+    "numero": "10",
+    "complemento": "SALA 1",
+    "bairro": "JARDIM DONA EMILIA",
+    "cep": "17215028",
+    "municipio": "JAU",
+    "uf": "SP",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4781400,
+        "descricao": "Comércio varejista de artigos do vestuário e acessórios"
+      },
+      {
+        "codigo": 7319002,
+        "descricao": "Promoção de vendas"
+      },
+      {
+        "codigo": 7319099,
+        "descricao": "Outras atividades de publicidade não especificadas anteriormente"
+      },
+      {
+        "codigo": 7490104,
+        "descricao": "Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8599699,
+        "descricao": "Outras atividades de ensino não especificadas anteriormente"
+      },
+      {
+        "codigo": 9319199,
+        "descricao": "Outras atividades esportivas não especificadas anteriormente"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "1481306959",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/47823167000116"
+  },
+  "48575309000136": {
+    "cnpj": "48575309000136",
+    "razao_social": "CONCEITO SOLUCOES ESPORTIVAS LTDA",
+    "nome_fantasia": "CONCEITO SOLUCOES ESPORTIVAS",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2022-11-10",
+    "data_inicio_atividade": "2022-11-10",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "SEN ROLEMBERG",
+    "numero": "814",
+    "complemento": "",
+    "bairro": "SAO JOSE",
+    "cep": "49015120",
+    "municipio": "ARACAJU",
+    "uf": "SE",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 7739003,
+        "descricao": "Aluguel de palcos, coberturas e outras estruturas de uso temporário, exceto andaimes"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "7981264948",
+    "ddd_telefone_2": "7934315423",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/48575309000136"
+  },
+  "48777542000100": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/48777542000100"
+  },
+  "48835413000112": {
+    "cnpj": "48835413000112",
+    "razao_social": "MARIA ISABEL EVENTOS LTDA",
+    "nome_fantasia": "",
+    "descricao_situacao_cadastral": "ATIVA",
+    "data_situacao_cadastral": "2022-12-07",
+    "data_inicio_atividade": "2022-12-07",
+    "descricao_tipo_de_logradouro": "RUA",
+    "logradouro": "IVAI",
+    "numero": "1107",
+    "complemento": "APT 604 BLOCO 2",
+    "bairro": "GLEBA RIBEIRAO PINGUIM",
+    "cep": "87005270",
+    "municipio": "MARINGA",
+    "uf": "PR",
+    "cnae_fiscal": 9319101,
+    "cnae_fiscal_descricao": "Produção e promoção de eventos esportivos",
+    "cnaes_secundarios": [
+      {
+        "codigo": 4763601,
+        "descricao": "Comércio varejista de brinquedos e artigos recreativos"
+      },
+      {
+        "codigo": 4763602,
+        "descricao": "Comércio varejista de artigos esportivos"
+      },
+      {
+        "codigo": 4782202,
+        "descricao": "Comércio varejista de artigos de viagem"
+      },
+      {
+        "codigo": 7721700,
+        "descricao": "Aluguel de equipamentos recreativos e esportivos"
+      },
+      {
+        "codigo": 7911200,
+        "descricao": "Agências de viagens"
+      },
+      {
+        "codigo": 7990200,
+        "descricao": "Serviços de reservas e outros serviços de turismo não especificados anteriormente"
+      },
+      {
+        "codigo": 8230001,
+        "descricao": "Serviços de organização de feiras, congressos, exposições e festas"
+      },
+      {
+        "codigo": 8592902,
+        "descricao": "Ensino de artes cênicas, exceto dança"
+      },
+      {
+        "codigo": 8592903,
+        "descricao": "Ensino de música"
+      },
+      {
+        "codigo": 8592999,
+        "descricao": "Ensino de arte e cultura não especificado anteriormente"
+      },
+      {
+        "codigo": 8599604,
+        "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+      },
+      {
+        "codigo": 8599605,
+        "descricao": "Cursos preparatórios para concursos"
+      }
+    ],
+    "natureza_juridica": "Sociedade Empresária Limitada",
+    "porte": "MICRO EMPRESA",
+    "ddd_telefone_1": "4499639668",
+    "ddd_telefone_2": "",
+    "email": null,
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/48835413000112"
+  },
+  "49309402000161": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/49309402000161"
+  },
+  "49382956000194": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/49382956000194"
+  },
+  "49589078000182": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/49589078000182"
+  },
+  "50292608000105": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/50292608000105"
+  },
+  "50456213000109": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/50456213000109"
+  },
+  "53079070000143": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/53079070000143"
+  },
+  "54070504000107": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/54070504000107"
+  },
+  "54265106000146": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/54265106000146"
+  },
+  "55268579000160": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/55268579000160"
+  },
+  "55330099000181": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/55330099000181"
+  },
+  "55417996000127": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/55417996000127"
+  },
+  "58975457000100": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/58975457000100"
+  },
+  "60933014000190": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/60933014000190"
+  },
+  "63168040000167": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/63168040000167"
+  },
+  "65894494000140": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/65894494000140"
+  },
+  "67558764000178": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/67558764000178"
+  },
+  "68245814000120": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/68245814000120"
+  },
+  "68596931000138": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/68596931000138"
+  },
+  "72818198000126": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/72818198000126"
+  },
+  "88792965000105": {
+    "erro": "Expecting value: line 1 column 1 (char 0)",
+    "fonte": "https://brasilapi.com.br/api/cnpj/v1/88792965000105"
+  }
+}

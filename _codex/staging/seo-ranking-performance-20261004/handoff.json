@@ -1,0 +1,11 @@
+{
+  "status": "published_and_verified",
+  "runtime_files": [
+    "circuitocatarinense/corridaderua/index.cfm"
+  ],
+  "next": "Supplier re-audit needed to confirm crawl; investigate other RR-20 cases with evidence",
+  "vendor_score_unchanged": 76,
+  "vendor_errors_unchanged": 9,
+  "no_database_writes": true,
+  "no_git_mutations": true
+}

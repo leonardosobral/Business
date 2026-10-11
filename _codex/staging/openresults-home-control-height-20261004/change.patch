@@ -1,0 +1,12 @@
+--- a/assets/css/openresults-home-cidades.css
++++ b/assets/css/openresults-home-cidades.css
+@@ -1,7 +1,8 @@
+ .or-home-city-row { display:flex; justify-content:center; align-items:center; gap:.5rem; flex-wrap:nowrap; }
+ .or-home-city-row .or-search-chip-select-wrap { min-width:0; }
+ .or-home-city-row .estado-city-picker { width:210px; text-align:left; }
+-.or-home-city-row .estado-city-picker summary { min-height:38px; }
++.or-home-city-row .or-search-chip-select,
++.or-home-city-row .estado-city-picker summary { box-sizing:border-box; height:44px; min-height:44px; padding-top:0; padding-bottom:0; }
+ .or-home-city-row .estado-city-picker-panel { left:auto; right:0; width:390px; max-width:calc(100vw - 24px); }
+ .or-home-city-row .estado-city-picker-item { align-items:flex-start; }
+ .or-home-city-row .estado-city-picker-item [data-city-count] { max-width:45%; text-align:right; }

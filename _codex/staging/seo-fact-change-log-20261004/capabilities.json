@@ -1,0 +1,31 @@
+{
+  "role": {
+    "superuser": true,
+    "name": "runner_dba"
+  },
+  "default_namespaces": [
+    {
+      "namespace": "gorunners",
+      "acl": [
+        "gorunners_dba=UC/gorunners_dba",
+        "gorunners_usu=U/gorunners_dba"
+      ]
+    },
+    {
+      "namespace": "liverunners",
+      "acl": [
+        "liverunners_dba=UC/liverunners_dba"
+      ]
+    },
+    {
+      "namespace": "public",
+      "acl": [
+        "pg_database_owner=UC/pg_database_owner",
+        "=U/pg_database_owner",
+        "ads_owner=U/pg_database_owner",
+        "estudo_reader=U/pg_database_owner"
+      ]
+    }
+  ],
+  "can_set_runner": true
+}

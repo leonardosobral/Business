@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-10-04",
+  "method": "real-browser DOM after page scripts",
+  "checks": [
+    {
+      "url": "https://roadrunners.run/privacidade/",
+      "protected_links_after_scripts": 0,
+      "mailto_count": 1,
+      "dpo_href": "mailto:privacidade@runnerhub.run"
+    },
+    {
+      "url": "https://roadrunners.run/en/privacy/",
+      "protected_links_after_scripts": 0,
+      "mailto_count": 1
+    },
+    {
+      "url": "https://roadrunners.run/es/privacidad/",
+      "protected_links_after_scripts": 0,
+      "mailto_count": 1
+    },
+    {
+      "url": "https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/",
+      "protected_links_after_scripts": 0,
+      "mailto_count": 0
+    }
+  ],
+  "limitations": "No email sent; validates link delivery, not inbox deliverability. No WAF/email obfuscation changes."
+}

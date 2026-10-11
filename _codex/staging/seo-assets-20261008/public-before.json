@@ -1,0 +1,1226 @@
+{
+  "at": "2026-10-08T21:51:10.761754+00:00",
+  "rows": [
+    {
+      "path": "/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Road Runners - O ponto de encontro da corrida.",
+        "h1": "\n                    Sua próxima corrida começa aqui.\n                ",
+        "meta": [
+          [
+            "description",
+            "Descubra provas, acompanhe resultados, explore conteúdo editorial e viva a corrida com mais contexto no Road Runners."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/",
+            "x-default"
+          ]
+        ],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "publisher": {
+                  "@id": "https://roadrunners.run/#publisher"
+                },
+                "@type": "WebSite",
+                "@id": "https://roadrunners.run/#website",
+                "url": "https://roadrunners.run/",
+                "name": "Road Runners"
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://roadrunners.run/#publisher",
+                "url": "https://runnerhub.run/",
+                "name": "RunnerHub Inteligência Esportiva"
+              }
+            ]
+          }
+        ]
+      },
+      "assets": [
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/en/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Road Runners - O ponto de encontro da corrida.",
+        "h1": "\n                    Your next run starts here.\n                ",
+        "meta": [
+          [
+            "description",
+            "Discover races, follow results, explore editorial content and experience running with more context on Road Runners."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/en/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/",
+            "x-default"
+          ]
+        ],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "publisher": {
+                  "@id": "https://roadrunners.run/#publisher"
+                },
+                "@type": "WebSite",
+                "@id": "https://roadrunners.run/#website",
+                "url": "https://roadrunners.run/",
+                "name": "Road Runners"
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://roadrunners.run/#publisher",
+                "url": "https://runnerhub.run/",
+                "name": "RunnerHub Inteligência Esportiva"
+              }
+            ]
+          }
+        ]
+      },
+      "assets": [
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/es/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Road Runners - O ponto de encontro da corrida.",
+        "h1": "\n                    Tu próxima carrera empieza aquí.\n                ",
+        "meta": [
+          [
+            "description",
+            "Descubre carreras, sigue resultados, explora contenido editorial y vive el running con más contexto en Road Runners."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/es/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/",
+            "x-default"
+          ]
+        ],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "publisher": {
+                  "@id": "https://roadrunners.run/#publisher"
+                },
+                "@type": "WebSite",
+                "@id": "https://roadrunners.run/#website",
+                "url": "https://roadrunners.run/",
+                "name": "Road Runners"
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://roadrunners.run/#publisher",
+                "url": "https://runnerhub.run/",
+                "name": "RunnerHub Inteligência Esportiva"
+              }
+            ]
+          }
+        ]
+      },
+      "assets": [
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/estado/sp/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Corridas em São Paulo: calendário de provas | Road Runners",
+        "h1": "\n                    \n                    Corridas em São Paulo\n                ",
+        "meta": [
+          [
+            "description",
+            "Calendário de corridas de rua e trail em São Paulo. Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/estado/sp/",
+            null
+          ]
+        ],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/sp/",
+                "@type": "ListItem",
+                "name": "São Paulo"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "src": "/assets/js/runnerhub-event-filters.js?version=2026-05-07"
+          },
+          "url": "/assets/js/runnerhub-event-filters.js?version=2026-05-07",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/estado/ba/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Corridas na Bahia: calendário de provas | Road Runners",
+        "h1": "\n                    \n                    Corridas na Bahia\n                ",
+        "meta": [
+          [
+            "description",
+            "Calendário de corridas de rua e trail na Bahia. Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/estado/ba/",
+            null
+          ]
+        ],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/ba/",
+                "@type": "ListItem",
+                "name": "Bahia"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "src": "/assets/js/runnerhub-event-filters.js?version=2026-05-07"
+          },
+          "url": "/assets/js/runnerhub-event-filters.js?version=2026-05-07",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/busca/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Busca - Road Runners",
+        "h1": "Resultado da busca",
+        "meta": [
+          [
+            "description",
+            "Explore eventos, resultados, atletas, notícias e vídeos no Road Runners."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/busca/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/busca/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/search/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/busqueda/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/busca/",
+            "x-default"
+          ]
+        ],
+        "jsonld": []
+      },
+      "assets": [
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "src": "/assets/js/runnerhub-event-filters.js?version=2026-09-11-1"
+          },
+          "url": "/assets/js/runnerhub-event-filters.js?version=2026-09-11-1",
+          "key": "src"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "src": "/assets/js/runnerhub-busca-page.js?version=2026-09-12-1"
+          },
+          "url": "/assets/js/runnerhub-busca-page.js?version=2026-09-12-1",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/ajuda/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Ajuda - Road Runners",
+        "h1": "Tudo o que você precisa para navegar melhor no Road Runners.",
+        "meta": [
+          [
+            "description",
+            "Central de ajuda do produto Road Runners, desenvolvido e mantido pela RunnerHub, com respostas sobre os principais recursos da plataforma."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/ajuda/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/ajuda/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/help/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/ayuda/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/ajuda/",
+            "x-default"
+          ]
+        ],
+        "jsonld": []
+      },
+      "assets": [
+        {
+          "tag": "link",
+          "attrs": {
+            "rel": "stylesheet",
+            "href": "/assets/css/runnerhub-institutional.css?v=20260913a"
+          },
+          "url": "/assets/css/runnerhub-institutional.css?v=20260913a",
+          "key": "href"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/sobre/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Sobre - Road Runners",
+        "h1": "O Road Runners foi criado para organizar melhor a jornada do corredor.",
+        "meta": [
+          [
+            "description",
+            "Conheça o Road Runners, produto da RunnerHub que reúne provas, resultados, perfis, conteúdo e comunidade para corredores."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/sobre/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/sobre/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/about/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/sobre/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/sobre/",
+            "x-default"
+          ]
+        ],
+        "jsonld": []
+      },
+      "assets": [
+        {
+          "tag": "link",
+          "attrs": {
+            "rel": "stylesheet",
+            "href": "/assets/css/runnerhub-institutional.css?v=20260913a"
+          },
+          "url": "/assets/css/runnerhub-institutional.css?v=20260913a",
+          "key": "href"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/privacidade/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "Política de Privacidade - Road Runners",
+        "h1": "Política de Privacidade",
+        "meta": [
+          [
+            "description",
+            "Política de Privacidade da RunnerHub aplicável ao produto Road Runners, com informações sobre dados pessoais, cookies e direitos do titular."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/privacidade/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/privacidade/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/privacy/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/privacidad/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/privacidade/",
+            "x-default"
+          ]
+        ],
+        "jsonld": []
+      },
+      "assets": [
+        {
+          "tag": "link",
+          "attrs": {
+            "rel": "stylesheet",
+            "href": "/assets/css/runnerhub-institutional.css?v=20260913a"
+          },
+          "url": "/assets/css/runnerhub-institutional.css?v=20260913a",
+          "key": "href"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/atendimento/",
+      "stats": "302 text/html;charset=UTF-8 https://roadrunners.run/login/?redirect=%2Fatendimento%2F",
+      "returncode": 0,
+      "meta": {
+        "title": "",
+        "h1": "",
+        "meta": [],
+        "jsonld": []
+      },
+      "assets": []
+    },
+    {
+      "path": "/evento/2026-corrida-night-run-vitoria-airport/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - corrida 20/11/2026 | Road Runners",
+        "h1": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+        "meta": [
+          [
+            "description",
+            "CORRIDA NIGHT RUN VITÓRIA AIRPORT acontece em 20 novembro 2026, em Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+            "x-default"
+          ]
+        ],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+            "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+            "description": "CORRIDA NIGHT RUN VITÓRIA AIRPORT acontece em 20 novembro 2026, em Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES.",
+            "url": "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+            "startDate": "2026-11-20",
+            "endDate": "2026-11-20",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/I4HD32PM4SYSFDHPAND0FC2ATYBWJ5UVR3FJQ927ZH1ZZ728C2.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Aeroporto de Vitória, Vitória, ES, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Vitória",
+                "addressRegion": "ES",
+                "addressCountry": "BR",
+                "streetAddress": "Aeroporto de Vitória, Vitória, ES, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88403&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/es/",
+                "@type": "ListItem",
+                "name": "Espírito Santo"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+                "@type": "ListItem",
+                "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "tag": "link",
+          "attrs": {
+            "rel": "stylesheet",
+            "href": "/assets/css/event-location-mapbox.css?v=20260727-2"
+          },
+          "url": "/assets/css/event-location-mapbox.css?v=20260727-2",
+          "key": "href"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "src": "/assets/js/event-location-mapbox.js?v=20260727-2",
+            "defer": null
+          },
+          "url": "/assets/js/event-location-mapbox.js?v=20260727-2",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/en/event/2026-corrida-night-run-vitoria-airport/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - Race 20/11/2026 | Road Runners",
+        "h1": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+        "meta": [
+          [
+            "description",
+            "CORRIDA NIGHT RUN VITÓRIA AIRPORT takes place on 20 november 2026, in Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+            "x-default"
+          ]
+        ],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/",
+            "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+            "description": "CORRIDA NIGHT RUN VITÓRIA AIRPORT takes place on 20 november 2026, in Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES.",
+            "url": "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/",
+            "startDate": "2026-11-20",
+            "endDate": "2026-11-20",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/I4HD32PM4SYSFDHPAND0FC2ATYBWJ5UVR3FJQ927ZH1ZZ728C2.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Aeroporto de Vitória, Vitória, ES, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Vitória",
+                "addressRegion": "ES",
+                "addressCountry": "BR",
+                "streetAddress": "Aeroporto de Vitória, Vitória, ES, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88403&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/es/",
+                "@type": "ListItem",
+                "name": "Espírito Santo"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/",
+                "@type": "ListItem",
+                "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "tag": "link",
+          "attrs": {
+            "rel": "stylesheet",
+            "href": "/assets/css/event-location-mapbox.css?v=20260727-2"
+          },
+          "url": "/assets/css/event-location-mapbox.css?v=20260727-2",
+          "key": "href"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "src": "/assets/js/event-location-mapbox.js?v=20260727-2",
+            "defer": null
+          },
+          "url": "/assets/js/event-location-mapbox.js?v=20260727-2",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/es/evento/2026-corrida-night-run-vitoria-airport/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - Carrera 20/11/2026 | Road Runners",
+        "h1": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+        "meta": [
+          [
+            "description",
+            "CORRIDA NIGHT RUN VITÓRIA AIRPORT se realiza el 20 noviembre 2026, en Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/event/2026-corrida-night-run-vitoria-airport/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/evento/2026-corrida-night-run-vitoria-airport/",
+            "x-default"
+          ]
+        ],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/",
+            "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+            "description": "CORRIDA NIGHT RUN VITÓRIA AIRPORT se realiza el 20 noviembre 2026, en Aeroporto de Vitória, Vitória, ES, Brasil - Vitória - ES.",
+            "url": "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/",
+            "startDate": "2026-11-20",
+            "endDate": "2026-11-20",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/I4HD32PM4SYSFDHPAND0FC2ATYBWJ5UVR3FJQ927ZH1ZZ728C2.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Aeroporto de Vitória, Vitória, ES, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Vitória",
+                "addressRegion": "ES",
+                "addressCountry": "BR",
+                "streetAddress": "Aeroporto de Vitória, Vitória, ES, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88403&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/es/",
+                "@type": "ListItem",
+                "name": "Inicio"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/es/",
+                "@type": "ListItem",
+                "name": "Espírito Santo"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/es/evento/2026-corrida-night-run-vitoria-airport/",
+                "@type": "ListItem",
+                "name": "CORRIDA NIGHT RUN VITÓRIA AIRPORT"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "tag": "link",
+          "attrs": {
+            "rel": "stylesheet",
+            "href": "/assets/css/event-location-mapbox.css?v=20260727-2"
+          },
+          "url": "/assets/css/event-location-mapbox.css?v=20260727-2",
+          "key": "href"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "src": "/assets/js/event-location-mapbox.js?v=20260727-2",
+            "defer": null
+          },
+          "url": "/assets/js/event-location-mapbox.js?v=20260727-2",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/evento/2026-costa-esmeralda-trail-2026/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners",
+        "h1": "COSTA ESMERALDA TRAIL 2026",
+        "meta": [
+          [
+            "description",
+            "COSTA ESMERALDA TRAIL 2026 acontece em 12 julho 2026, em PORTO BELO - SC."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/event/2026-costa-esmeralda-trail-2026/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/evento/2026-costa-esmeralda-trail-2026/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+            "x-default"
+          ]
+        ],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+            "name": "COSTA ESMERALDA TRAIL 2026",
+            "description": "COSTA ESMERALDA TRAIL 2026 acontece em 12 julho 2026, em PORTO BELO - SC.",
+            "url": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+            "startDate": "2026-07-12",
+            "endDate": "2026-07-12",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "PORTO BELO, SC",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "PORTO BELO",
+                "addressRegion": "SC",
+                "addressCountry": "BR"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://vemcorrer.com/evento/344-costa-esmeralda-trail-2026"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/",
+                "@type": "ListItem",
+                "name": "Início"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/sc/",
+                "@type": "ListItem",
+                "name": "Santa Catarina"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/evento/2026-costa-esmeralda-trail-2026/",
+                "@type": "ListItem",
+                "name": "COSTA ESMERALDA TRAIL 2026"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "tag": "link",
+          "attrs": {
+            "rel": "stylesheet",
+            "href": "/assets/css/event-location-mapbox.css?v=20260727-2"
+          },
+          "url": "/assets/css/event-location-mapbox.css?v=20260727-2",
+          "key": "href"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "src": "/assets/js/event-location-mapbox.js?v=20260727-2",
+            "defer": null
+          },
+          "url": "/assets/js/event-location-mapbox.js?v=20260727-2",
+          "key": "src"
+        }
+      ]
+    },
+    {
+      "path": "/en/event/2026-circuito-mares-2026-etapa-vitoria/",
+      "stats": "200 text/html;charset=UTF-8 ",
+      "returncode": 0,
+      "meta": {
+        "title": "CIRCUITO MARES 2026 - ETAPA VITÓRIA - Road race - Road Runners",
+        "h1": "CIRCUITO MARES 2026 - ETAPA VITÓRIA",
+        "meta": [
+          [
+            "description",
+            "CIRCUITO MARES 2026 - ETAPA VITÓRIA takes place on 18 october 2026, in Praia de Camburi: Praia de Camburi, Vitória, ES, Brasil - Vitória - ES."
+          ],
+          [
+            "canonical",
+            "https://roadrunners.run/en/event/2026-circuito-mares-2026-etapa-vitoria/",
+            null
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/evento/2026-circuito-mares-2026-etapa-vitoria/",
+            "pt-BR"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/en/event/2026-circuito-mares-2026-etapa-vitoria/",
+            "en"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/es/evento/2026-circuito-mares-2026-etapa-vitoria/",
+            "es"
+          ],
+          [
+            "alternate",
+            "https://roadrunners.run/evento/2026-circuito-mares-2026-etapa-vitoria/",
+            "x-default"
+          ]
+        ],
+        "jsonld": [
+          {
+            "@context": "https://schema.org",
+            "@type": "SportsEvent",
+            "@id": "https://roadrunners.run/en/event/2026-circuito-mares-2026-etapa-vitoria/",
+            "name": "CIRCUITO MARES 2026 - ETAPA VITÓRIA",
+            "description": "CIRCUITO MARES 2026 - ETAPA VITÓRIA takes place on 18 october 2026, in Praia de Camburi: Praia de Camburi, Vitória, ES, Brasil - Vitória - ES.",
+            "url": "https://roadrunners.run/en/event/2026-circuito-mares-2026-etapa-vitoria/",
+            "startDate": "2026-10-18",
+            "endDate": "2026-10-18",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "image": [
+              "https://cdn.ticketsports.com.br/ticketagora/images/YUIV3R3DBQWZ1ZJ6TO5DY013HFTU4VR1ASLBQDJRU31ZQ6T5M2.png"
+            ],
+            "location": {
+              "@type": "Place",
+              "name": "Praia de Camburi: Praia de Camburi, Vitória, ES, Brasil",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Vitória",
+                "addressRegion": "ES",
+                "addressCountry": "BR",
+                "streetAddress": "Praia de Camburi: Praia de Camburi, Vitória, ES, Brasil"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87464&origem=novo-site&lang=en-US"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "itemListElement": [
+              {
+                "position": 1,
+                "item": "https://roadrunners.run/en/",
+                "@type": "ListItem",
+                "name": "Home"
+              },
+              {
+                "position": 2,
+                "item": "https://roadrunners.run/estado/es/",
+                "@type": "ListItem",
+                "name": "Espírito Santo"
+              },
+              {
+                "position": 3.0,
+                "item": "https://roadrunners.run/en/event/2026-circuito-mares-2026-etapa-vitoria/",
+                "@type": "ListItem",
+                "name": "CIRCUITO MARES 2026 - ETAPA VITÓRIA"
+              }
+            ],
+            "@type": "BreadcrumbList"
+          }
+        ]
+      },
+      "assets": [
+        {
+          "tag": "link",
+          "attrs": {
+            "rel": "stylesheet",
+            "href": "/assets/css/event-location-mapbox.css?v=20260727-2"
+          },
+          "url": "/assets/css/event-location-mapbox.css?v=20260727-2",
+          "key": "href"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "defer": null,
+            "src": "/assets/js/runner-apps-menu-lazy.js?v=20261005"
+          },
+          "url": "/assets/js/runner-apps-menu-lazy.js?v=20261005",
+          "key": "src"
+        },
+        {
+          "tag": "script",
+          "attrs": {
+            "src": "/assets/js/event-location-mapbox.js?v=20260727-2",
+            "defer": null
+          },
+          "url": "/assets/js/event-location-mapbox.js?v=20260727-2",
+          "key": "src"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+public_fact_review: quinto lote revisto sem bloqueadores; escopo SQL, hashes de descrições/fontes, ensaio inverso, locks e13dependências conferidos. TF validado por navegador e web, curl shell não usado como prova textual.

@@ -1,0 +1,4019 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Road Runners API",
+    "version": "1.2.0",
+    "summary": "Versioned API contracts for Road Runners integrations, game clients and MCP.",
+    "description": "Road Runners API v1 exposes public and authorized current-user read models plus a restricted asynchronous result-submission contract for timing companies. Every data endpoint requires Authorization Bearer; portal cookies are never accepted. Authenticated responses expose RateLimit-Limit, RateLimit-Remaining and RateLimit-Reset."
+  },
+  "servers": [
+    {
+      "url": "https://api.roadrunners.run/v1",
+      "description": "Production API v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Athletes",
+      "description": "Public athlete profile, social graph, results and game snapshot."
+    },
+    {
+      "name": "Events",
+      "description": "Race calendar, result events and event detail."
+    },
+    {
+      "name": "Results",
+      "description": "Official public result lists, summaries and detail."
+    },
+    {
+      "name": "Result Imports",
+      "description": "Restricted result-source submissions from authorized timing companies."
+    },
+    {
+      "name": "Discovery",
+      "description": "Plain public search across Road Runners data."
+    },
+    {
+      "name": "Editorial",
+      "description": "News, videos and channels."
+    },
+    {
+      "name": "Feed",
+      "description": "Public and current-user feed."
+    },
+    {
+      "name": "Challenges",
+      "description": "Challenge catalog, athlete challenges and badges."
+    },
+    {
+      "name": "Training",
+      "description": "Public training events and current-user training registration data."
+    },
+    {
+      "name": "Coupons",
+      "description": "Public coupon metadata and authenticated activation details."
+    },
+    {
+      "name": "Session",
+      "description": "Current-user context associated with a valid user Bearer token."
+    },
+    {
+      "name": "Me",
+      "description": "Read-only current-user endpoints associated with a valid user Bearer token."
+    }
+  ],
+  "paths": {
+    "/athletes/profile.cfm": {
+      "get": {
+        "tags": [
+          "Athletes"
+        ],
+        "summary": "Get a public athlete profile",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AthleteTag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AthleteProfile"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/athletes/followers.cfm": {
+      "get": {
+        "tags": [
+          "Athletes"
+        ],
+        "summary": "List public followers for an athlete",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AthleteTag"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/SocialStatus"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/athletes/following.cfm": {
+      "get": {
+        "tags": [
+          "Athletes"
+        ],
+        "summary": "List public pages followed by an athlete",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AthleteTag"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/SocialStatus"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/athletes/relationship.cfm": {
+      "get": {
+        "tags": [
+          "Athletes"
+        ],
+        "summary": "Get relationship metadata for an athlete and current viewer when available",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AthleteTag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/athletes/results.cfm": {
+      "get": {
+        "tags": [
+          "Athletes"
+        ],
+        "summary": "List public athlete results",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AthleteTag"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Year"
+          },
+          {
+            "$ref": "#/components/parameters/Distance"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/athletes/suggested-results.cfm": {
+      "get": {
+        "tags": [
+          "Athletes"
+        ],
+        "summary": "List suggested result matches for the owner or privileged viewer",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AthleteTag"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/athletes/agenda.cfm": {
+      "get": {
+        "tags": [
+          "Athletes"
+        ],
+        "summary": "List public athlete agenda events",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AthleteTag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/athletes/game-snapshot.cfm": {
+      "get": {
+        "tags": [
+          "Athletes"
+        ],
+        "summary": "Get an aggregate public athlete snapshot for game clients",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AthleteTag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GameSnapshot"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/events/calendar.cfm": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Search public race calendar events",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FocoCompetitionId"
+          },
+          {
+            "$ref": "#/components/parameters/Q"
+          },
+          {
+            "$ref": "#/components/parameters/State"
+          },
+          {
+            "$ref": "#/components/parameters/States"
+          },
+          {
+            "$ref": "#/components/parameters/City"
+          },
+          {
+            "$ref": "#/components/parameters/DistanceMin"
+          },
+          {
+            "$ref": "#/components/parameters/DistanceMax"
+          },
+          {
+            "$ref": "#/components/parameters/PeriodStart"
+          },
+          {
+            "$ref": "#/components/parameters/PeriodEnd"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/EventsList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "description": "Search current and future events. competition_id is an optional exact Foco Radical identifier, resolved through an active link to an active event. Existing date and search filters still apply. No match returns an empty list; the competition_id is not echoed in the response."
+      }
+    },
+    "/events/results.cfm": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Search events with public results",
+        "description": "Search by a partial event name (q), full city name (city, case/accent insensitive) and state code (state), or filter by the exact Foco Radical competition_id. Existing date and result-availability filters still apply; no match returns an empty list. Each event includes stats.finishers and resultDistances for an event header when per-distance summaries exist. Participants can be requested using the same competition_id, without knowing a Road Runners identifier. The competition_id is not echoed in the response.",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FocoCompetitionId"
+          },
+          {
+            "$ref": "#/components/parameters/EventNameQuery"
+          },
+          {
+            "$ref": "#/components/parameters/State"
+          },
+          {
+            "$ref": "#/components/parameters/States"
+          },
+          {
+            "$ref": "#/components/parameters/City"
+          },
+          {
+            "$ref": "#/components/parameters/DistanceMin"
+          },
+          {
+            "$ref": "#/components/parameters/DistanceMax"
+          },
+          {
+            "$ref": "#/components/parameters/PeriodStart"
+          },
+          {
+            "$ref": "#/components/parameters/PeriodEnd"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/EventsList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/events/detail.cfm": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Get public event detail by tag or id",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FocoCompetitionId"
+          },
+          {
+            "$ref": "#/components/parameters/EventTagOptional"
+          },
+          {
+            "$ref": "#/components/parameters/EventIdOptional"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/EventDetail"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "description": "Provide competition_id (Foco Radical), tag or id. An active Foco Radical link resolves the event without a Road Runners identifier or event name. No active link to an active event returns 404; there is no name or legacy-link fallback. competition_id cannot be combined with a Road Runners identifier and is not echoed in the response."
+      }
+    },
+    "/events/routes.cfm": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Search events with published repository routes",
+        "description": "Returns only active events that have at least one published route linked to an exact event modality and an eligible active geometry file.",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Q"
+          },
+          {
+            "$ref": "#/components/parameters/State"
+          },
+          {
+            "$ref": "#/components/parameters/RouteStartDate"
+          },
+          {
+            "$ref": "#/components/parameters/RouteEndDate"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/EventRoutesCatalog"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/events/event-routes.cfm": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "List published repository routes for an event",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/EventTagOptional"
+          },
+          {
+            "$ref": "#/components/parameters/EventIdOptional"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/EventRoutesDetail"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/events/route-geometry.cfm": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Get the current GeoJSON for a selected event route",
+        "description": "Use the geometryUrl returned by event-routes.cfm. The URL identifies the exact modality, current active file and checksum revision; storage paths are never accepted.",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/EventRouteId"
+          },
+          {
+            "$ref": "#/components/parameters/RouteFileId"
+          },
+          {
+            "$ref": "#/components/parameters/RouteRevision"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/RouteGeometry"
+          },
+          "304": {
+            "description": "Geometry not modified for the supplied If-None-Match value"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
+        }
+      }
+    },
+    "/results/event.cfm": {
+      "get": {
+        "tags": [
+          "Results"
+        ],
+        "summary": "List public official results for an event",
+        "description": "Paginated finishers for one event. Provide competition_id (Foco Radical), tag or eventId. The same competition_id can be used for every page without knowing a Road Runners identifier. No active link to an active event returns 404. The result contains athlete, race and positions; pagination.total reflects the active filters. q matches part of the athlete name or an exact bib number. limit is capped at 100 and offset advances pages. Requires results:read_public. competition_id cannot be combined with a Road Runners identifier and is not echoed in the response.",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FocoCompetitionId"
+          },
+          {
+            "$ref": "#/components/parameters/EventTagOptional"
+          },
+          {
+            "$ref": "#/components/parameters/EventIdOptional"
+          },
+          {
+            "$ref": "#/components/parameters/ResultsEventIdOptional"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Distance"
+          },
+          {
+            "$ref": "#/components/parameters/Modality"
+          },
+          {
+            "$ref": "#/components/parameters/Gender"
+          },
+          {
+            "$ref": "#/components/parameters/Category"
+          },
+          {
+            "$ref": "#/components/parameters/ResultParticipantQuery"
+          },
+          {
+            "$ref": "#/components/parameters/ResultParticipantSort"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ResultsList"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/results/summary.cfm": {
+      "get": {
+        "tags": [
+          "Results"
+        ],
+        "summary": "Get public event result summary",
+        "description": "Aggregated finishers and paces by distance, modality and gender. Provide competition_id (Foco Radical), tag or eventId. An active Foco Radical link resolves the event without a Road Runners identifier. No active link to an active event returns 404. Requires results:read_public. competition_id cannot be combined with a Road Runners identifier and is not echoed in the response.",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FocoCompetitionId"
+          },
+          {
+            "$ref": "#/components/parameters/EventTagOptional"
+          },
+          {
+            "$ref": "#/components/parameters/EventIdOptional"
+          },
+          {
+            "$ref": "#/components/parameters/ResultsEventIdOptional"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ResultsSummary"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/results/detail.cfm": {
+      "get": {
+        "tags": [
+          "Results"
+        ],
+        "summary": "Get public result detail",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ResultId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/result-imports/submissions.cfm": {
+      "post": {
+        "tags": [
+          "Result Imports"
+        ],
+        "operationId": "submitResultImport",
+        "summary": "Submit a result source for asynchronous processing",
+        "description": "Requires an operational token with results:submit. Both result URLs may use any valid HTTPS host; optional credential allowlists can be enabled later without changing the contract. The public URL is stored as a link, while the technical URL is fetched only by the asynchronous worker with SSRF protections. event_id and event_tag are optional hints.",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResultImportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Previously accepted idempotent submission",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultImportResponse"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Submission accepted for asynchronous processing",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultImportResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "409": {
+            "description": "Idempotency key reused with different content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "JSON body larger than 16 KB"
+          },
+          "415": {
+            "description": "Content-Type must be application/json"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/result-imports/status.cfm": {
+      "get": {
+        "tags": [
+          "Result Imports"
+        ],
+        "operationId": "getResultImportStatus",
+        "summary": "Get the processing status of a submitted result source",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SubmissionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Submission status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultImportResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/discovery/search.cfm": {
+      "get": {
+        "tags": [
+          "Discovery"
+        ],
+        "summary": "Search public Road Runners data",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/QRequired"
+          },
+          {
+            "$ref": "#/components/parameters/Sections"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/State"
+          },
+          {
+            "$ref": "#/components/parameters/City"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Discovery"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/editorial/news.cfm": {
+      "get": {
+        "tags": [
+          "Editorial"
+        ],
+        "summary": "List or search public news",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Q"
+          },
+          {
+            "$ref": "#/components/parameters/Channel"
+          },
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "$ref": "#/components/parameters/PerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/editorial/news-detail.cfm": {
+      "get": {
+        "tags": [
+          "Editorial"
+        ],
+        "summary": "Get public news detail",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Slug"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/editorial/news-channels.cfm": {
+      "get": {
+        "tags": [
+          "Editorial"
+        ],
+        "summary": "List public news channels",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/editorial/videos.cfm": {
+      "get": {
+        "tags": [
+          "Editorial"
+        ],
+        "summary": "List or search public videos",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Q"
+          },
+          {
+            "$ref": "#/components/parameters/Channel"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/editorial/video-detail.cfm": {
+      "get": {
+        "tags": [
+          "Editorial"
+        ],
+        "summary": "Get public video detail by id or YouTube id",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/MediaIdOptional"
+          },
+          {
+            "$ref": "#/components/parameters/YoutubeIdOptional"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/editorial/video-channels.cfm": {
+      "get": {
+        "tags": [
+          "Editorial"
+        ],
+        "summary": "List public video channels",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/feed/athlete.cfm": {
+      "get": {
+        "tags": [
+          "Feed"
+        ],
+        "summary": "List public feed items for an athlete",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AthleteTag"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/feed/me.cfm": {
+      "get": {
+        "tags": [
+          "Feed",
+          "Me"
+        ],
+        "summary": "List current-user feed",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/challenges/catalog.cfm": {
+      "get": {
+        "tags": [
+          "Challenges"
+        ],
+        "summary": "List public challenge catalog",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ChallengeStatus"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/challenges/detail.cfm": {
+      "get": {
+        "tags": [
+          "Challenges"
+        ],
+        "summary": "Get public challenge detail",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ChallengeTag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/challenges/athlete.cfm": {
+      "get": {
+        "tags": [
+          "Challenges",
+          "Athletes"
+        ],
+        "summary": "List public challenges for an athlete",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AthleteTag"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/challenges/badges.cfm": {
+      "get": {
+        "tags": [
+          "Challenges",
+          "Athletes"
+        ],
+        "summary": "List public badges for an athlete",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AthleteTag"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/training/events.cfm": {
+      "get": {
+        "tags": [
+          "Training"
+        ],
+        "summary": "List public training events",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/TrainingStatus"
+          },
+          {
+            "$ref": "#/components/parameters/State"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/training/detail.cfm": {
+      "get": {
+        "tags": [
+          "Training"
+        ],
+        "summary": "Get public training event detail",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/EventIdOptional"
+          },
+          {
+            "$ref": "#/components/parameters/EventTagOptional"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/coupons/catalog.cfm": {
+      "get": {
+        "tags": [
+          "Coupons"
+        ],
+        "summary": "List public coupon metadata without activation codes",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CouponType"
+          },
+          {
+            "$ref": "#/components/parameters/Q"
+          },
+          {
+            "$ref": "#/components/parameters/AthleteTagOptional"
+          },
+          {
+            "$ref": "#/components/parameters/EventTagOptional"
+          },
+          {
+            "$ref": "#/components/parameters/Partner"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/coupons/detail.cfm": {
+      "get": {
+        "tags": [
+          "Coupons"
+        ],
+        "summary": "Get public coupon metadata without activation code",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CouponId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/session/me.cfm": {
+      "get": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "Get current browser session user context",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/session/permissions.cfm": {
+      "get": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "Get current browser session permissions",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/profile.cfm": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "Get current-user profile",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/results.cfm": {
+      "get": {
+        "tags": [
+          "Me",
+          "Results"
+        ],
+        "summary": "List current-user results",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/suggested-results.cfm": {
+      "get": {
+        "tags": [
+          "Me",
+          "Results"
+        ],
+        "summary": "List current-user private suggested results",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/agenda.cfm": {
+      "get": {
+        "tags": [
+          "Me",
+          "Athletes"
+        ],
+        "summary": "List current-user agenda including private check-ins",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/notifications.cfm": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "List current-user notifications",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/push-status.cfm": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "Get current-user push status with masked subscription metadata",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/push-preferences.cfm": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "Get current-user push preferences",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/push-pending.cfm": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "Preview current-user next pending push notification",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/summary.cfm": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "Get current-user aggregate summary",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/support-sectors.cfm": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "List active support sectors",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/support-tickets.cfm": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "List current-user support tickets",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "all"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/support-ticket.cfm": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "Get current-user support ticket detail",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/TicketId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/strava-status.cfm": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "Get current-user Strava connection status without tokens",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/strava-activities.cfm": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "summary": "List current-user already-imported Strava activities",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/challenges.cfm": {
+      "get": {
+        "tags": [
+          "Me",
+          "Challenges"
+        ],
+        "summary": "List current-user challenges",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/badges.cfm": {
+      "get": {
+        "tags": [
+          "Me",
+          "Challenges"
+        ],
+        "summary": "List current-user badges",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/training.cfm": {
+      "get": {
+        "tags": [
+          "Me",
+          "Training"
+        ],
+        "summary": "List current-user training registrations and check-ins",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPayload"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    },
+    "/me/coupon-activation.cfm": {
+      "get": {
+        "tags": [
+          "Me",
+          "Coupons"
+        ],
+        "summary": "Get authenticated coupon activation code or URL",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CouponId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ObjectPayload"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Integration or user Bearer token. Required for every data endpoint; never send tokens in query strings or cookies."
+      }
+    },
+    "parameters": {
+      "IdempotencyKey": {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "description": "Client-generated identifier for one logical submission version. Persist it before the first attempt and reuse the same key with the exact same JSON after timeouts or lost responses. A retry returns the existing submission without duplication; reusing the key with different content returns 409. Use a new key for final publication or a later update. The key is scoped to clientId and is not a secret.",
+        "schema": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[A-Za-z0-9._:-]+$",
+          "example": "racezone-event-123-final-v1"
+        }
+      },
+      "SubmissionId": {
+        "name": "submission_id",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "AthleteTag": {
+        "name": "tag",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "leonardo-sobral"
+        }
+      },
+      "AthleteTagOptional": {
+        "name": "athleteTag",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "example": "leonardo-sobral"
+        }
+      },
+      "EventTagOptional": {
+        "name": "tag",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "example": "2025-maratona-internacional-de-floripa"
+        }
+      },
+      "FocoCompetitionId": {
+        "name": "competition_id",
+        "in": "query",
+        "required": false,
+        "description": "Exact Foco Radical competition identifier. Optional alternative to Road Runners event identifiers; do not combine with id, eventId, event_id, id_evento, tag, eventTag or event_tag. Only active links to active events are used. Treat as a string and preserve leading zeros. Empty values, control characters or more than 255 characters return 400 invalid_competition_id; conflicting identifiers return 400 conflicting_event_identifiers. This input is not echoed in JSON responses.",
+        "schema": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "example": "00123456"
+        }
+      },
+      "EventIdOptional": {
+        "name": "id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "example": 22792
+        }
+      },
+      "ResultsEventIdOptional": {
+        "name": "eventId",
+        "in": "query",
+        "required": false,
+        "description": "Road Runners event id; alternative to tag and id.",
+        "schema": {
+          "type": "integer",
+          "example": 43520
+        }
+      },
+      "EventRouteId": {
+        "name": "id_evento_percurso",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "RouteFileId": {
+        "name": "arquivo",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "RouteRevision": {
+        "name": "rev",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8,64}$"
+        }
+      },
+      "RouteStartDate": {
+        "name": "start_date",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "RouteEndDate": {
+        "name": "end_date",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "ResultId": {
+        "name": "id",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "CouponId": {
+        "name": "id",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "TicketId": {
+        "name": "id",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "MediaIdOptional": {
+        "name": "id",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "YoutubeIdOptional": {
+        "name": "youtubeId",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "ChallengeTag": {
+        "name": "tag",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Slug": {
+        "name": "slug",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Limit": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 25
+        }
+      },
+      "PerPage": {
+        "name": "per_page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        }
+      },
+      "Offset": {
+        "name": "offset",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0
+        }
+      },
+      "Page": {
+        "name": "page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        }
+      },
+      "Q": {
+        "name": "q",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "EventNameQuery": {
+        "name": "q",
+        "in": "query",
+        "required": false,
+        "description": "Partial event name; the search also checks event tags and related text.",
+        "schema": {
+          "type": "string",
+          "example": "Circuito das Estacoes 2026 - Primavera"
+        }
+      },
+      "ResultParticipantQuery": {
+        "name": "q",
+        "in": "query",
+        "required": false,
+        "description": "Part of the participant's name or an exact bib number.",
+        "schema": {
+          "type": "string",
+          "example": "7474"
+        }
+      },
+      "ResultParticipantSort": {
+        "name": "sort",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "overall",
+            "gender",
+            "category",
+            "time",
+            "name"
+          ],
+          "default": "overall"
+        }
+      },
+      "QRequired": {
+        "name": "q",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "maratona"
+        }
+      },
+      "State": {
+        "name": "state",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "example": "SC"
+        }
+      },
+      "States": {
+        "name": "states",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "example": "SC,SP,RJ"
+        }
+      },
+      "City": {
+        "name": "city",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "example": "Florianopolis"
+        }
+      },
+      "Distance": {
+        "name": "distance",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "example": 42
+        }
+      },
+      "DistanceMin": {
+        "name": "distance_min",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "example": 5
+        }
+      },
+      "DistanceMax": {
+        "name": "distance_max",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "number",
+          "example": 42
+        }
+      },
+      "PeriodStart": {
+        "name": "period_start",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "PeriodEnd": {
+        "name": "period_end",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "Year": {
+        "name": "year",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "example": 2026
+        }
+      },
+      "Sort": {
+        "name": "sort",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Modality": {
+        "name": "modality",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Gender": {
+        "name": "gender",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "example": "M"
+        }
+      },
+      "Category": {
+        "name": "category",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Sections": {
+        "name": "sections",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "default": "all",
+          "example": "athletes,events,results,news,videos"
+        }
+      },
+      "Channel": {
+        "name": "channel",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "SocialStatus": {
+        "name": "status",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "validated",
+            "pending",
+            "all"
+          ],
+          "default": "validated"
+        }
+      },
+      "ChallengeStatus": {
+        "name": "status",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "active",
+            "upcoming",
+            "past",
+            "all"
+          ],
+          "default": "active"
+        }
+      },
+      "TrainingStatus": {
+        "name": "status",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "upcoming",
+            "past",
+            "all"
+          ],
+          "default": "upcoming"
+        }
+      },
+      "CouponType": {
+        "name": "type",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "all",
+            "page",
+            "event",
+            "circuit"
+          ],
+          "default": "all"
+        }
+      },
+      "Partner": {
+        "name": "partner",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "headers": {
+      "RateLimitLimit": {
+        "description": "Maximum requests allowed in the current 60-second token window.",
+        "schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "RateLimitRemaining": {
+        "description": "Requests remaining in the current token window.",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "RateLimitReset": {
+        "description": "Seconds until the current rate-limit window resets.",
+        "schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "RetryAfter": {
+        "description": "Seconds to wait before retrying after a 429 response.",
+        "schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "ApiErrorCode": {
+        "description": "Stable machine-readable error code, equivalent to the status field in the JSON body.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "AthleteProfile": {
+        "description": "Public athlete profile response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AthleteProfileResponse"
+            }
+          }
+        }
+      },
+      "GameSnapshot": {
+        "description": "Public athlete game snapshot response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GameSnapshotResponse"
+            }
+          }
+        }
+      },
+      "EventsList": {
+        "description": "Event list response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EventsListResponse"
+            }
+          }
+        }
+      },
+      "EventDetail": {
+        "description": "Event detail response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EventDetailResponse"
+            }
+          }
+        }
+      },
+      "EventRoutesCatalog": {
+        "description": "Paginated event repository route catalog",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EventRoutesCatalogResponse"
+            }
+          }
+        }
+      },
+      "EventRoutesDetail": {
+        "description": "Published routes linked to the selected event",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EventRoutesDetailResponse"
+            }
+          }
+        }
+      },
+      "RouteGeometry": {
+        "description": "Validated GeoJSON geometry for the current published route file",
+        "headers": {
+          "ETag": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "content": {
+          "application/geo+json": {
+            "schema": {
+              "$ref": "#/components/schemas/RouteGeoJsonFeature"
+            }
+          }
+        }
+      },
+      "ResultsList": {
+        "description": "Event result list response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultsListResponse"
+            }
+          }
+        }
+      },
+      "ResultsSummary": {
+        "description": "Event result summary response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ResultsSummaryResponse"
+            }
+          }
+        }
+      },
+      "Discovery": {
+        "description": "Discovery search response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DiscoveryResponse"
+            }
+          }
+        }
+      },
+      "ListPayload": {
+        "description": "Generic list response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ListResponse"
+            }
+          }
+        }
+      },
+      "ObjectPayload": {
+        "description": "Generic object response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ObjectResponse"
+            }
+          }
+        }
+      },
+      "BadRequest": {
+        "description": "Invalid or missing parameter",
+        "headers": {
+          "X-Api-Error-Code": {
+            "$ref": "#/components/headers/ApiErrorCode"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Missing session or invalid Bearer credential",
+        "headers": {
+          "X-Api-Error-Code": {
+            "$ref": "#/components/headers/ApiErrorCode"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Insufficient scope or denied beta/private access",
+        "headers": {
+          "X-Api-Error-Code": {
+            "$ref": "#/components/headers/ApiErrorCode"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Requested resource was not found",
+        "headers": {
+          "X-Api-Error-Code": {
+            "$ref": "#/components/headers/ApiErrorCode"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unavailable": {
+        "description": "Dependency unavailable",
+        "headers": {
+          "X-Api-Error-Code": {
+            "$ref": "#/components/headers/ApiErrorCode"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "TooManyRequests": {
+        "description": "Rate limit exceeded",
+        "headers": {
+          "RateLimit-Limit": {
+            "$ref": "#/components/headers/RateLimitLimit"
+          },
+          "RateLimit-Remaining": {
+            "$ref": "#/components/headers/RateLimitRemaining"
+          },
+          "RateLimit-Reset": {
+            "$ref": "#/components/headers/RateLimitReset"
+          },
+          "Retry-After": {
+            "$ref": "#/components/headers/RetryAfter"
+          },
+          "X-Api-Error-Code": {
+            "$ref": "#/components/headers/ApiErrorCode"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "UnprocessableEntity": {
+        "description": "Stored geometry failed validation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "ServiceUnavailable": {
+        "description": "Route storage is unavailable",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "status",
+          "message"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": false
+          },
+          "status": {
+            "type": "string",
+            "examples": [
+              "not_authenticated",
+              "invalid_token",
+              "insufficient_scope",
+              "not_found"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "requestId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "perPage": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true
+      },
+      "Athlete": {
+        "type": "object",
+        "properties": {
+          "id_usuario": {
+            "type": [
+              "integer",
+              "number"
+            ]
+          },
+          "id_pagina": {
+            "type": [
+              "integer",
+              "number"
+            ]
+          },
+          "tag": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "verified": {
+            "type": [
+              "boolean",
+              "integer",
+              "number"
+            ]
+          },
+          "publicProfile": {
+            "type": [
+              "boolean",
+              "integer",
+              "number"
+            ]
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          }
+        },
+        "additionalProperties": true
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "EventSummary": {
+        "type": "object",
+        "properties": {
+          "id_evento": {
+            "type": [
+              "integer",
+              "number"
+            ]
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "eventTag": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "eventType": {
+            "type": "string"
+          },
+          "period": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "urls": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "resultDistances": {
+            "type": "array",
+            "description": "Published finishers by distance and modality; empty when no per-distance summary is available.",
+            "items": {
+              "$ref": "#/components/schemas/ResultDistance"
+            }
+          },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "finishers": {
+                "type": "number",
+                "description": "Total finishers across the event."
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      },
+      "ResultDistance": {
+        "type": "object",
+        "required": [
+          "distanceKm",
+          "modality",
+          "finishers"
+        ],
+        "properties": {
+          "distanceKm": {
+            "type": "number"
+          },
+          "modality": {
+            "type": "string"
+          },
+          "finishers": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RouteCatalogEvent": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "routeCount",
+          "routesUrl"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "period": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "location": {
+            "$ref": "#/components/schemas/Location"
+          },
+          "routeCount": {
+            "type": "integer"
+          },
+          "routesUrl": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "additionalProperties": true
+      },
+      "EventRoute": {
+        "type": "object",
+        "required": [
+          "eventRouteId",
+          "distance",
+          "unit",
+          "route"
+        ],
+        "properties": {
+          "eventRouteId": {
+            "type": "integer"
+          },
+          "distance": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "unit": {
+            "type": "string"
+          },
+          "modality": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "startTime": {
+            "type": "string"
+          },
+          "cutoffTime": {
+            "type": "string"
+          },
+          "route": {
+            "$ref": "#/components/schemas/RepositoryRoute"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RepositoryRoute": {
+        "type": "object",
+        "required": [
+          "id",
+          "publicCode",
+          "name",
+          "file"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "publicCode": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "nominalDistanceMeters": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "file": {
+            "$ref": "#/components/schemas/RepositoryRouteFile"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RepositoryRouteFile": {
+        "type": "object",
+        "required": [
+          "id",
+          "version",
+          "geometryUrl"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "version": {
+            "type": "integer"
+          },
+          "pointCount": {
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "distanceMeters": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "minimumElevationMeters": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "maximumElevationMeters": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "elevationGainMeters": {
+            "type": [
+              "number",
+              "string"
+            ]
+          },
+          "bbox": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": [
+                "number",
+                "string"
+              ]
+            }
+          },
+          "geometryUrl": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventRoutesCatalogResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "pagination",
+          "events"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "filters": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RouteCatalogEvent"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventRoutesDetailResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "event"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "event": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RouteCatalogEvent"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "routes"
+                ],
+                "properties": {
+                  "routes": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EventRoute"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "RouteGeoJsonFeature": {
+        "type": "object",
+        "required": [
+          "type",
+          "properties",
+          "geometry"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "Feature"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "geometry": {
+            "type": "object",
+            "required": [
+              "type",
+              "coordinates"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "LineString",
+                  "MultiLineString"
+                ]
+              },
+              "coordinates": {
+                "type": "array"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "Result": {
+        "type": "object",
+        "properties": {
+          "id_resultado": {
+            "type": [
+              "integer",
+              "number"
+            ]
+          },
+          "athlete": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "race": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "positions": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      },
+      "AthleteProfileResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "athlete"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "athlete": {
+            "$ref": "#/components/schemas/Athlete"
+          },
+          "permissions": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      },
+      "GameSnapshotResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "athlete"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "athlete": {
+            "$ref": "#/components/schemas/Athlete"
+          },
+          "social": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "results": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "agenda": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "game": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      },
+      "EventsListResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "events"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventSummary"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          },
+          "filters": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "scope": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "EventDetailResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "event"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "event": {
+            "$ref": "#/components/schemas/EventSummary"
+          }
+        },
+        "additionalProperties": true
+      },
+      "ResultsListResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "event",
+          "results"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "event": {
+            "$ref": "#/components/schemas/EventSummary"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Result"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          },
+          "availableFilters": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      },
+      "ResultsSummaryResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "event",
+          "summary"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "event": {
+            "$ref": "#/components/schemas/EventSummary"
+          },
+          "summary": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "genderSummary": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "availableFilters": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      },
+      "ResultImportRequest": {
+        "type": "object",
+        "required": [
+          "cod_timer",
+          "url_resultado",
+          "url_resultado_publica",
+          "status_publicacao"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Optional Road Runners event ID hint. An unknown ID does not reject the submission."
+          },
+          "event_tag": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256,
+            "description": "Optional Road Runners event tag hint. An unknown tag does not reject the submission."
+          },
+          "external_event_id": {
+            "type": "string",
+            "maxLength": 128,
+            "description": "Optional event identifier in the timing system."
+          },
+          "external_account_id": {
+            "type": "string",
+            "maxLength": 128,
+            "description": "Optional customer/account identifier inside the timing provider. Recommended when external event IDs are not globally unique."
+          },
+          "cod_timer": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "example": "racezone"
+          },
+          "url_resultado": {
+            "type": "string",
+            "format": "uri",
+            "minLength": 1,
+            "maxLength": 2048,
+            "description": "HTTPS result source or provider route. URL fragments such as #/... are preserved for provider-specific adapters. It is queued without being fetched during the POST request."
+          },
+          "url_resultado_publica": {
+            "type": "string",
+            "format": "uri",
+            "minLength": 1,
+            "maxLength": 2048,
+            "description": "HTTPS official page where runners can view the result. It is stored as a link and is not fetched by the API."
+          },
+          "status_publicacao": {
+            "type": "string",
+            "enum": [
+              "extraoficial",
+              "final",
+              "atualizacao"
+            ]
+          },
+          "open_results_enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "Intent received from the timing provider. When omitted, it defaults to true. The processor still revalidates the current event.json before importing."
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResultImportSubmission": {
+        "type": "object",
+        "required": [
+          "submission_id",
+          "event",
+          "cod_timer",
+          "url_resultado",
+          "url_resultado_publica",
+          "status_publicacao",
+          "open_results_enabled",
+          "status_processamento",
+          "tentativas",
+          "received_at",
+          "updated_at"
+        ],
+        "properties": {
+          "submission_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "event": {
+            "type": "object",
+            "required": [
+              "matched"
+            ],
+            "properties": {
+              "matched": {
+                "type": "boolean",
+                "description": "Whether the submission is already linked to a Road Runners event."
+              },
+              "event_id": {
+                "type": "integer"
+              },
+              "event_tag": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "event_id_hint": {
+                "type": "integer"
+              },
+              "event_tag_hint": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "external_event_id": {
+            "type": "string"
+          },
+          "external_account_id": {
+            "type": "string"
+          },
+          "cod_timer": {
+            "type": "string"
+          },
+          "url_resultado": {
+            "type": "string",
+            "format": "uri"
+          },
+          "url_resultado_publica": {
+            "type": "string",
+            "format": "uri"
+          },
+          "status_publicacao": {
+            "type": "string",
+            "enum": [
+              "extraoficial",
+              "final",
+              "atualizacao"
+            ]
+          },
+          "open_results_enabled": {
+            "type": "boolean",
+            "description": "Effective import intent persisted when the submission was received."
+          },
+          "status_processamento": {
+            "type": "string",
+            "enum": [
+              "pendente",
+              "processando",
+              "processado",
+              "falhou",
+              "cancelado"
+            ]
+          },
+          "tentativas": {
+            "type": "integer"
+          },
+          "total_resultados": {
+            "type": "integer"
+          },
+          "received_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "processed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResultImportResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "submission"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "duplicate": {
+            "type": "boolean"
+          },
+          "submission": {
+            "$ref": "#/components/schemas/ResultImportSubmission"
+          },
+          "requestId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DiscoveryResponse": {
+        "type": "object",
+        "required": [
+          "success",
+          "query",
+          "sections"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "const": true
+          },
+          "query": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "counts": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "sections": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      },
+      "ListResponse": {
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          },
+          "count": {
+            "type": [
+              "integer",
+              "number"
+            ]
+          },
+          "type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "ObjectResponse": {
+        "type": "object",
+        "required": [
+          "success"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

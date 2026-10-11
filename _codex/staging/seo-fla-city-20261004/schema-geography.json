@@ -1,0 +1,238 @@
+{
+  "fields": [
+    {
+      "type": "integer",
+      "name": "id_evento"
+    },
+    {
+      "type": "character varying",
+      "name": "nome_evento"
+    },
+    {
+      "type": "character varying",
+      "name": "cidade"
+    },
+    {
+      "type": "character varying",
+      "name": "estado"
+    },
+    {
+      "type": "character varying",
+      "name": "tag"
+    },
+    {
+      "type": "boolean",
+      "name": "homologado"
+    },
+    {
+      "type": "character varying",
+      "name": "url_resultado"
+    },
+    {
+      "type": "character varying",
+      "name": "url_wiclax"
+    },
+    {
+      "type": "integer",
+      "name": "cod_cidade"
+    },
+    {
+      "type": "integer",
+      "name": "id_agrega_evento"
+    },
+    {
+      "type": "character varying",
+      "name": "pais"
+    },
+    {
+      "type": "date",
+      "name": "data_inicial"
+    },
+    {
+      "type": "date",
+      "name": "data_final"
+    },
+    {
+      "type": "text",
+      "name": "descricao"
+    },
+    {
+      "type": "character varying",
+      "name": "endereco"
+    },
+    {
+      "type": "character varying",
+      "name": "coordenadas"
+    },
+    {
+      "type": "character varying",
+      "name": "imagem"
+    },
+    {
+      "type": "character varying",
+      "name": "destaque"
+    },
+    {
+      "type": "character varying",
+      "name": "categorias"
+    },
+    {
+      "type": "character varying",
+      "name": "url_inscricao"
+    },
+    {
+      "type": "character varying",
+      "name": "info_duplicado"
+    },
+    {
+      "type": "character varying",
+      "name": "nome_simplificado"
+    },
+    {
+      "type": "character varying",
+      "name": "organizador"
+    },
+    {
+      "type": "character varying",
+      "name": "obs"
+    },
+    {
+      "type": "character varying",
+      "name": "tipo_corrida"
+    },
+    {
+      "type": "character varying",
+      "name": "ranking"
+    },
+    {
+      "type": "integer",
+      "name": "id_tema"
+    },
+    {
+      "type": "timestamp without time zone",
+      "name": "data_processamento"
+    },
+    {
+      "type": "character varying",
+      "name": "resumo"
+    },
+    {
+      "type": "character varying",
+      "name": "tag_301"
+    },
+    {
+      "type": "boolean",
+      "name": "ativo"
+    },
+    {
+      "type": "timestamp without time zone",
+      "name": "data_inclusao"
+    },
+    {
+      "type": "tsvector",
+      "name": "nome_evento_full_text"
+    },
+    {
+      "type": "character varying",
+      "name": "obs_resultado"
+    },
+    {
+      "type": "character varying",
+      "name": "status_evento"
+    },
+    {
+      "type": "boolean",
+      "name": "resultado_completo"
+    },
+    {
+      "type": "character varying",
+      "name": "url_hotsite"
+    },
+    {
+      "type": "character varying",
+      "name": "url_imagem"
+    },
+    {
+      "type": "integer",
+      "name": "id_fornecedor"
+    },
+    {
+      "type": "character varying",
+      "name": "url_imagem_listagem"
+    },
+    {
+      "type": "text",
+      "name": "descricao_original"
+    },
+    {
+      "type": "character varying",
+      "name": "obs_homologacao"
+    },
+    {
+      "type": "character varying",
+      "name": "cronometragem"
+    },
+    {
+      "type": "character varying",
+      "name": "realizacao"
+    },
+    {
+      "type": "character varying",
+      "name": "cobertura"
+    },
+    {
+      "type": "character varying",
+      "name": "url_regulamento"
+    },
+    {
+      "type": "numeric",
+      "name": "valor_inscricao"
+    },
+    {
+      "type": "jsonb",
+      "name": "precos"
+    },
+    {
+      "type": "text",
+      "name": "descricao_en"
+    },
+    {
+      "type": "text",
+      "name": "descricao_es"
+    },
+    {
+      "type": "jsonb",
+      "name": "descricao_traducoes_meta"
+    },
+    {
+      "type": "integer",
+      "name": "id_localidade"
+    },
+    {
+      "type": "jsonb",
+      "name": "inscricao_disponibilidade"
+    },
+    {
+      "type": "jsonb",
+      "name": "conferencia_datas_publica"
+    }
+  ],
+  "triggers": [
+    "CREATE TRIGGER trg_grava_percursos AFTER INSERT OR UPDATE ON public.tb_evento_corridas FOR EACH ROW EXECUTE FUNCTION grava_evento_corridas_percursos()",
+    "CREATE TRIGGER trg_tb_evento_corridas_full_text BEFORE INSERT OR UPDATE ON public.tb_evento_corridas FOR EACH ROW EXECUTE FUNCTION trg_atualiza_nome_evento_full_text()",
+    "CREATE TRIGGER circuito_fora_do_vinculo_edicao BEFORE INSERT OR UPDATE OF id_agrega_evento ON public.tb_evento_corridas FOR EACH ROW EXECUTE FUNCTION impedir_circuito_como_edicao()",
+    "CREATE TRIGGER trg_preencher_id_localidade_evento BEFORE INSERT OR UPDATE OF cidade, estado ON public.tb_evento_corridas FOR EACH ROW EXECUTE FUNCTION preencher_id_localidade_evento()",
+    "CREATE TRIGGER trg_evento_fatos_historico AFTER INSERT OR DELETE OR UPDATE ON public.tb_evento_corridas FOR EACH ROW EXECUTE FUNCTION registra_evento_fatos_historico()"
+  ],
+  "geography": {
+    "estado": "RJ",
+    "data_final": "2026-11-15",
+    "url_imagem_listagem": "https://cdn.ticketsports.com.br/ticketagora/images/OTL6YF5J3ZXL90G50PLIPWSSL1T1XS6ZEVGY8L8ZPKSPS6C568.png",
+    "tag_301": null,
+    "id_evento": 45651,
+    "tag": "2026-fla-resenha-run",
+    "cod_cidade": null,
+    "cidade": "Piraí",
+    "data_inicial": "2026-11-15"
+  }
+}

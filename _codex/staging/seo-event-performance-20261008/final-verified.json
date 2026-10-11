@@ -1,0 +1,39 @@
+{
+  "stage": "RR-39",
+  "runtime_files_published": 2,
+  "templates_compiled": 2,
+  "checks": {
+    "synthetic": 34,
+    "production_series": 5,
+    "real_editions_identical": 32,
+    "panel_scenarios": 19,
+    "public_responses": 16
+  },
+  "public": {
+    "samples": 16,
+    "metadata_preserved": true,
+    "public_median_s": 1.8060399999999999,
+    "origin_median_s": 1.6879295,
+    "max_public_s": 1.928806,
+    "max_origin_s": 1.7554,
+    "previous_origin_median_s": 2.082799,
+    "previous_public_median_s": 2.112185
+  },
+  "site_health": 75,
+  "audit_started_after_release": false,
+  "goal_achieved": false,
+  "blocker": "Mac locked; authenticated Chrome Semrush audit cannot be initiated",
+  "consecutive_goal_turn_with_lock": 2,
+  "original_runtime": {
+    "RR39": true,
+    "RR37": true,
+    "RR38": true,
+    "UPDATED": true,
+    "CORRECT_METRICS": true,
+    "AUDIT_NOTE": true
+  },
+  "published_hashes": {
+    "rr": "8c0cccaf9205a049a098e442f5f1c9918ba65d28ee22a9c162910fc8491dc10d",
+    "business": "7a0831d33a88e62bda29b9bd5a00acc4bef2310cb270617bac48b50fdae3f33a"
+  }
+}

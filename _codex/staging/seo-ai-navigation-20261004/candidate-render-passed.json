@@ -1,0 +1,16 @@
+{
+  "hashes": {
+    "llms.txt": "c69ea8c386dda1c427710441982338dbebf80b28e1891d365de6257afa707fc0",
+    "circuitocatarinense/index.cfm": "d48dc7d242c58626516d5b484a3b4b79d00c5e728bd6b2aebc371f72be365e4c"
+  },
+  "watch": {
+    "Application.cfc": "4b946b355d9ef6076bdbb88480b22e86acd660056efab3c4ae14fcca080e7af5",
+    "robots.txt": "0cc7b3e6e7a3d59971d0af80e52c9977569ee0890aa8e9b4fe10f2212a3cb63e",
+    ".htaccess": "c914b4294c8dc423c6e01691fe69891383bcbd705e0b0e84f84d7a26e8160437",
+    "includes/estrutura/head.cfm": "6e3066fe33eec76215e8b5849fed2bc9daeee1ca3b5052433d59308054111af9",
+    "circuitocatarinense/corridaderua/index.cfm": "1daa77d7f6a6b19249404c3cca7c3686df1cf401df0694aabe30071986bdcb86",
+    "circuitocatarinense/trailrun/index.cfm": "159b9afdbd7ebcc8f3dd448e87e69483d3f98ac9802d64ead90019f3bdf715b0"
+  },
+  "scope": "Two canonical href changes only; one experimental static directory with public links. No bot/license/privacy policy or metadata changes.",
+  "format_source": "https://llmstxt.org/"
+}

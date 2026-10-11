@@ -45,10 +45,10 @@
   </div>
 
   <cfif len(VARIABLES.agregaReviewNotice) AND NOT listFind("sugestao_aceita,sugestao_vinculada,sugestao_ja_aplicada", URL.sucesso)>
-    <div class="alert alert-success"><cfoutput>#htmlEditFormat(VARIABLES.agregaReviewNotice)#</cfoutput></div>
+    <div class="alert alert-success"><cfoutput>#encodeForHTML(VARIABLES.agregaReviewNotice)#</cfoutput></div>
   </cfif>
   <cfif len(VARIABLES.agregaReviewError)>
-    <div class="alert alert-danger"><cfoutput>#htmlEditFormat(VARIABLES.agregaReviewError)#</cfoutput></div>
+    <div class="alert alert-danger"><cfoutput>#encodeForHTML(VARIABLES.agregaReviewError)#</cfoutput></div>
   </cfif>
 
   <cfif !VARIABLES.agregaReviewSchemaReady>
@@ -101,7 +101,7 @@
               class="form-control"
               id="agrega-review-manual-name"
               name="manual_nome"
-              value="<cfoutput>#htmlEditFormat(VARIABLES.agregaReviewManualName)#</cfoutput>"
+              value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agregaReviewManualName)#</cfoutput>"
               minlength="2"
               placeholder="Ex.: Maratona de Floripa"
               required
@@ -113,7 +113,7 @@
               class="form-control"
               id="agrega-review-manual-city"
               name="manual_cidade"
-              value="<cfoutput>#htmlEditFormat(VARIABLES.agregaReviewManualCity)#</cfoutput>"
+              value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agregaReviewManualCity)#</cfoutput>"
               placeholder="Ex.: Florianópolis"
             />
           </div>
@@ -123,7 +123,7 @@
         </form>
 
         <cfif len(VARIABLES.agregaReviewManualSearchError)>
-          <div class="alert alert-warning mt-3 mb-0"><cfoutput>#htmlEditFormat(VARIABLES.agregaReviewManualSearchError)#</cfoutput></div>
+          <div class="alert alert-warning mt-3 mb-0"><cfoutput>#encodeForHTML(VARIABLES.agregaReviewManualSearchError)#</cfoutput></div>
         <cfelseif len(VARIABLES.agregaReviewManualName) GTE 2 AND NOT qAgregaReviewManualEvents.recordcount>
           <div class="alert alert-secondary mt-3 mb-0">Nenhum evento ativo foi encontrado com esses critérios.</div>
         </cfif>
@@ -133,8 +133,8 @@
     <cfif qAgregaReviewManualEvents.recordcount>
       <form class="card shadow-0 mb-4 business-page-card" method="post" id="agrega-review-manual-form">
         <input type="hidden" name="acao" value="criar_grupo_manual" />
-        <input type="hidden" name="manual_nome" value="<cfoutput>#htmlEditFormat(VARIABLES.agregaReviewManualName)#</cfoutput>" />
-        <input type="hidden" name="manual_cidade" value="<cfoutput>#htmlEditFormat(VARIABLES.agregaReviewManualCity)#</cfoutput>" />
+        <input type="hidden" name="manual_nome" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agregaReviewManualName)#</cfoutput>" />
+        <input type="hidden" name="manual_cidade" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agregaReviewManualCity)#</cfoutput>" />
 
         <div class="card-body business-page-body">
           <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
@@ -179,30 +179,30 @@
                     </td>
                     <td class="agrega-review-manual-event">
                       <div class="fw-semibold">
-                        ###qAgregaReviewManualEvents.id_evento# - #htmlEditFormat(qAgregaReviewManualEvents.nome_evento)#
+                        ###qAgregaReviewManualEvents.id_evento# - #encodeForHTML(qAgregaReviewManualEvents.nome_evento)#
                         <cfif len(VARIABLES.agregaReviewManualPublicUrl)>
-                          <a class="agrega-review-external-link ms-1" href="#htmlEditFormat(VARIABLES.agregaReviewManualPublicUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento no Road Runners"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                          <a class="agrega-review-external-link ms-1" href="#encodeForHTMLAttribute(VARIABLES.agregaReviewManualPublicUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento no Road Runners"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </cfif>
                       </div>
                       <div class="small text-muted"><cfif isDate(qAgregaReviewManualEvents.data_inicial)>#lsDateFormat(qAgregaReviewManualEvents.data_inicial, "dd/mm/yyyy")#<cfelse>Sem data informada</cfif></div>
                     </td>
                     <td>
                       <cfif len(trim(qAgregaReviewManualEvents.cidade & ""))>
-                        #htmlEditFormat(qAgregaReviewManualEvents.cidade)#<cfif len(trim(qAgregaReviewManualEvents.estado & ""))>/#htmlEditFormat(qAgregaReviewManualEvents.estado)#</cfif>
+                        #encodeForHTML(qAgregaReviewManualEvents.cidade)#<cfif len(trim(qAgregaReviewManualEvents.estado & ""))>/#encodeForHTML(qAgregaReviewManualEvents.estado)#</cfif>
                       <cfelse>
                         -
                       </cfif>
                     </td>
                     <td>
                       <cfif val(qAgregaReviewManualEvents.id_agrega_evento) GT 0>
-                        <span class="small">###qAgregaReviewManualEvents.id_agrega_evento# - #htmlEditFormat(qAgregaReviewManualEvents.atual_nome_evento_agregado)#</span>
+                        <span class="small">###qAgregaReviewManualEvents.id_agrega_evento# - #encodeForHTML(qAgregaReviewManualEvents.atual_nome_evento_agregado)#</span>
                       <cfelse>
                         <span class="text-muted">Sem agregador</span>
                       </cfif>
                     </td>
                     <td>
                       <cfif VARIABLES.agregaReviewManualPending>
-                        <a class="btn btn-outline-secondary btn-sm" href="/administracao/agrega-revisao/?grupo=#qAgregaReviewManualEvents.pending_group_id#" title="#htmlEditFormat(qAgregaReviewManualEvents.pending_group_name)#">Grupo ###qAgregaReviewManualEvents.pending_group_id#</a>
+                        <a class="btn btn-outline-secondary btn-sm" href="/administracao/agrega-revisao/?grupo=#qAgregaReviewManualEvents.pending_group_id#" title="#encodeForHTMLAttribute(qAgregaReviewManualEvents.pending_group_name)#">Grupo ###qAgregaReviewManualEvents.pending_group_id#</a>
                       <cfelse>
                         <span class="badge badge-success">Disponível</span>
                       </cfif>
@@ -225,7 +225,7 @@
       <div class="card-body business-page-body row g-3 align-items-end">
         <div class="col-12 col-lg-5">
           <label class="form-label">Evento, ID ou cidade</label>
-          <input class="form-control" name="busca" value="<cfoutput>#htmlEditFormat(VARIABLES.agregaReviewSearch)#</cfoutput>" />
+          <input class="form-control" name="busca" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agregaReviewSearch)#</cfoutput>" />
         </div>
         <div class="col-6 col-lg-2">
           <label class="form-label">Status</label>
@@ -258,7 +258,7 @@
 
     <div id="agrega-review-list"></div>
     <cfif len(VARIABLES.agregaReviewNotice) AND listFind("sugestao_aceita,sugestao_vinculada,sugestao_ja_aplicada", URL.sucesso)>
-      <div class="alert alert-success" role="status"><cfoutput>#htmlEditFormat(VARIABLES.agregaReviewNotice)#</cfoutput></div>
+      <div class="alert alert-success" role="status"><cfoutput>#encodeForHTML(VARIABLES.agregaReviewNotice)#</cfoutput></div>
     </cfif>
     <cfif !qAgregaReviewGroups.recordcount OR VARIABLES.agregaReviewRenderableTotal EQ 0>
       <div class="alert alert-secondary">Nenhum grupo encontrado com os filtros atuais.</div>
@@ -300,16 +300,16 @@
           <article class="agrega-review-case">
             <div class="d-flex flex-wrap justify-content-between gap-3 mb-3">
               <div>
-                <div class="small text-muted">Grupo ###id_evento_agrega_review_group# · #htmlEditFormat(cidade)#/#htmlEditFormat(estado)#</div>
-                <h2 class="h5 mb-1">#htmlEditFormat(group_display_name)#</h2>
+                <div class="small text-muted">Grupo ###id_evento_agrega_review_group# · #encodeForHTML(cidade)#/#encodeForHTML(estado)#</div>
+                <h2 class="h5 mb-1">#encodeForHTML(group_display_name)#</h2>
                 <div class="small text-muted">
                   #candidate_count# eventos · <cfif left(group_key, 11) EQ "edicoes-v1:">Correspondência exata após normalização<cfelse>Score máximo #numberFormat(max_score, "0.00")#</cfif>
                   <cfif len(suggested_nome_evento_agregado & "")>
-                    · Sugerido: #htmlEditFormat(suggested_tipo_agregacao)# - #htmlEditFormat(suggested_nome_evento_agregado)#
+                    · Sugerido: #encodeForHTML(suggested_tipo_agregacao)# - #encodeForHTML(suggested_nome_evento_agregado)#
                   </cfif>
                 </div>
               </div>
-              <span class="badge badge-warning text-dark align-self-start">#htmlEditFormat(status)#</span>
+              <span class="badge badge-warning text-dark align-self-start">#encodeForHTML(status)#</span>
             </div>
 
             <cfif left(group_key, 11) EQ "edicoes-v1:">
@@ -318,7 +318,7 @@
             <cfif NOT VARIABLES.agregaReviewIsFocusedGroup>
               <cfloop query="qAgregaReviewCandidates">
                 <cfif qAgregaReviewCandidates.id_evento_agrega_review_group EQ qAgregaReviewGroups.id_evento_agrega_review_group>
-                  <div class="small mb-1">#htmlEditFormat(qAgregaReviewCandidates.nome_evento)# · <cfif isDate(qAgregaReviewCandidates.data_inicial)>#dateFormat(qAgregaReviewCandidates.data_inicial, "dd/mm/yyyy")#<cfelse>Data não informada</cfif> · <cfif val(qAgregaReviewCandidates.id_agrega_evento_atual) GT 0>Agregador ###qAgregaReviewCandidates.id_agrega_evento_atual#<cfelse>Sem agregador</cfif></div>
+                  <div class="small mb-1">#encodeForHTML(qAgregaReviewCandidates.nome_evento)# · <cfif isDate(qAgregaReviewCandidates.data_inicial)>#dateFormat(qAgregaReviewCandidates.data_inicial, "dd/mm/yyyy")#<cfelse>Data não informada</cfif> · <cfif val(qAgregaReviewCandidates.id_agrega_evento_atual) GT 0>Agregador ###qAgregaReviewCandidates.id_agrega_evento_atual#<cfelse>Sem agregador</cfif></div>
                 </cfif>
               </cfloop>
               <cfif structKeyExists(VARIABLES.agregaReviewQuickGroups, VARIABLES.agregaReviewCurrentGroupKey)>
@@ -330,11 +330,11 @@
                 <form method="post" class="agrega-review-quick-form row g-2 align-items-end mt-3">
                   <input type="hidden" name="acao" value="aceitar_sugestao" />
                   <input type="hidden" name="id_grupo" value="#id_evento_agrega_review_group#" />
-                  <input type="hidden" name="eventos_esperados" value="#htmlEditFormat(VARIABLES.agregaReviewQuickGroups[VARIABLES.agregaReviewCurrentGroupKey])#" />
-                  <input type="hidden" name="quick_token" value="#htmlEditFormat(VARIABLES.agregaReviewQuickToken)#" />
+                  <input type="hidden" name="eventos_esperados" value="#encodeForHTMLAttribute(VARIABLES.agregaReviewQuickGroups[VARIABLES.agregaReviewCurrentGroupKey])#" />
+                  <input type="hidden" name="quick_token" value="#encodeForHTMLAttribute(VARIABLES.agregaReviewQuickToken)#" />
                   <div class="col-12 col-xl">
                     <label class="form-label" for="agrega-quick-name-#id_evento_agrega_review_group#">Nome do agregador</label>
-                    <input class="form-control" id="agrega-quick-name-#id_evento_agrega_review_group#" name="nome_evento_agregado" value="#htmlEditFormat(VARIABLES.agregaReviewQuickName)#" maxlength="256" required />
+                    <input class="form-control" id="agrega-quick-name-#id_evento_agrega_review_group#" name="nome_evento_agregado" value="#encodeForHTMLAttribute(VARIABLES.agregaReviewQuickName)#" maxlength="256" required />
                   </div>
                   <div class="col-12 col-sm-auto d-flex flex-wrap gap-2">
                     <button class="btn btn-warning btn-sm" type="submit">Aceitar sugestão</button>
@@ -348,11 +348,11 @@
                   <input type="hidden" name="acao" value="aceitar_sugestao" />
                   <input type="hidden" name="id_grupo" value="#id_evento_agrega_review_group#" />
                   <input type="hidden" name="agregador_esperado" value="#VARIABLES.agregaReviewQuickExisting.id#" />
-                  <input type="hidden" name="eventos_esperados" value="#htmlEditFormat(VARIABLES.agregaReviewQuickExisting.eventIds)#" />
-                  <input type="hidden" name="quick_token" value="#htmlEditFormat(VARIABLES.agregaReviewQuickToken)#" />
+                  <input type="hidden" name="eventos_esperados" value="#encodeForHTMLAttribute(VARIABLES.agregaReviewQuickExisting.eventIds)#" />
+                  <input type="hidden" name="quick_token" value="#encodeForHTMLAttribute(VARIABLES.agregaReviewQuickToken)#" />
                   <div class="col-12 col-xl">
                     <div class="small text-muted mb-1">Agregador existente</div>
-                    <div class="fw-semibold">#htmlEditFormat(VARIABLES.agregaReviewQuickExisting.nome)# · ###VARIABLES.agregaReviewQuickExisting.id#</div>
+                    <div class="fw-semibold">#encodeForHTML(VARIABLES.agregaReviewQuickExisting.nome)# · ###VARIABLES.agregaReviewQuickExisting.id#</div>
                   </div>
                   <div class="col-12 col-sm-auto d-flex flex-wrap gap-2">
                     <button class="btn btn-warning btn-sm" type="submit">Vincular ao agregador existente</button>
@@ -380,14 +380,14 @@
 
                     <div class="col-12 col-xl-4">
                       <label class="form-label">Nome do agregador</label>
-                      <input class="form-control" name="nome_evento_agregado" value="#htmlEditFormat(group_display_name)#" required />
+                      <input class="form-control" name="nome_evento_agregado" value="#encodeForHTMLAttribute(group_display_name)#" required />
                     </div>
                     <div class="col-6 col-xl-2">
                       <label class="form-label">Tipo</label>
                       <select class="form-select" name="tipo_agregacao" required>
                         <option value="">Selecione...</option>
                         <cfloop query="qAgregaReviewAggregatorTypes">
-                          <option value="#htmlEditFormat(qAgregaReviewAggregatorTypes.tipo_agregacao)#" <cfif qAgregaReviewAggregatorTypes.tipo_agregacao EQ "corrida">selected</cfif>>#htmlEditFormat(qAgregaReviewAggregatorTypes.tipo_agregacao)#</option>
+                          <option value="#encodeForHTMLAttribute(qAgregaReviewAggregatorTypes.tipo_agregacao)#" <cfif qAgregaReviewAggregatorTypes.tipo_agregacao EQ "corrida">selected</cfif>>#encodeForHTML(qAgregaReviewAggregatorTypes.tipo_agregacao)#</option>
                         </cfloop>
                       </select>
                     </div>
@@ -399,7 +399,7 @@
                       <label class="form-label">Tema</label>
                       <select class="form-select" name="id_tema">
                         <cfloop query="qAgregaReviewThemes">
-                          <option value="#qAgregaReviewThemes.id_tema#" <cfif qAgregaReviewThemes.id_tema EQ 1>selected</cfif>>###qAgregaReviewThemes.id_tema# - #htmlEditFormat(qAgregaReviewThemes.nome_tema)#</option>
+                          <option value="#qAgregaReviewThemes.id_tema#" <cfif qAgregaReviewThemes.id_tema EQ 1>selected</cfif>>###qAgregaReviewThemes.id_tema# - #encodeForHTML(qAgregaReviewThemes.nome_tema)#</option>
                         </cfloop>
                       </select>
                     </div>
@@ -407,7 +407,7 @@
                       <label class="form-label">Divisão</label>
                       <select class="form-select" name="divisao">
                         <cfloop query="qAgregaReviewDivisions">
-                          <option value="#htmlEditFormat(qAgregaReviewDivisions.divisao)#" <cfif qAgregaReviewDivisions.divisao EQ "distancia">selected</cfif>>#htmlEditFormat(qAgregaReviewDivisions.divisao)#</option>
+                          <option value="#encodeForHTMLAttribute(qAgregaReviewDivisions.divisao)#" <cfif qAgregaReviewDivisions.divisao EQ "distancia">selected</cfif>>#encodeForHTML(qAgregaReviewDivisions.divisao)#</option>
                         </cfloop>
                       </select>
                     </div>
@@ -443,7 +443,7 @@
                         type="search"
                         name="evento_busca"
                         minlength="2"
-                        value="#htmlEditFormat(VARIABLES.agregaReviewEventSearchInput)#"
+                        value="#encodeForHTMLAttribute(VARIABLES.agregaReviewEventSearchInput)#"
                         placeholder="Nome do agregador ou parte do nome do evento"
                         required
                       />
@@ -503,9 +503,9 @@
                                 <td class="agrega-review-manual-event">
                                   <div class="d-flex flex-wrap align-items-center gap-2">
                                     <strong>
-                                      ###qAgregaReviewEventSearch.id_evento# - #htmlEditFormat(qAgregaReviewEventSearch.nome_evento)#
+                                      ###qAgregaReviewEventSearch.id_evento# - #encodeForHTML(qAgregaReviewEventSearch.nome_evento)#
                                       <cfif len(VARIABLES.agregaReviewAdditionalPublicUrl)>
-                                        <a class="agrega-review-external-link ms-1" href="#htmlEditFormat(VARIABLES.agregaReviewAdditionalPublicUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento no Road Runners"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                        <a class="agrega-review-external-link ms-1" href="#encodeForHTMLAttribute(VARIABLES.agregaReviewAdditionalPublicUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento no Road Runners"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                                       </cfif>
                                     </strong>
                                     <span class="agrega-review-score">Score #numberFormat(VARIABLES.agregaReviewAdditionalScorePreview, "0.00")#</span>
@@ -514,14 +514,14 @@
                                 </td>
                                 <td>
                                   <cfif len(trim(qAgregaReviewEventSearch.cidade & ""))>
-                                    #htmlEditFormat(qAgregaReviewEventSearch.cidade)#<cfif len(trim(qAgregaReviewEventSearch.estado & ""))>/#htmlEditFormat(qAgregaReviewEventSearch.estado)#</cfif>
+                                    #encodeForHTML(qAgregaReviewEventSearch.cidade)#<cfif len(trim(qAgregaReviewEventSearch.estado & ""))>/#encodeForHTML(qAgregaReviewEventSearch.estado)#</cfif>
                                   <cfelse>
                                     -
                                   </cfif>
                                 </td>
                                 <td>
                                   <cfif val(qAgregaReviewEventSearch.id_agrega_evento) GT 0>
-                                    <span class="small">###qAgregaReviewEventSearch.id_agrega_evento# - #htmlEditFormat(qAgregaReviewEventSearch.atual_nome_evento_agregado)#</span>
+                                    <span class="small">###qAgregaReviewEventSearch.id_agrega_evento# - #encodeForHTML(qAgregaReviewEventSearch.atual_nome_evento_agregado)#</span>
                                   <cfelse>
                                     <span class="text-muted">Sem agregador</span>
                                   </cfif>
@@ -530,7 +530,7 @@
                                   <cfif VARIABLES.agregaReviewAdditionalAlreadyLinked>
                                     <span class="badge badge-success">Já vinculado</span>
                                   <cfelseif VARIABLES.agregaReviewAdditionalPending>
-                                    <a class="btn btn-outline-secondary btn-sm" href="/administracao/agrega-revisao/?grupo=#qAgregaReviewEventSearch.pending_group_id#" title="#htmlEditFormat(qAgregaReviewEventSearch.pending_group_name)#">Revisão ###qAgregaReviewEventSearch.pending_group_id#</a>
+                                    <a class="btn btn-outline-secondary btn-sm" href="/administracao/agrega-revisao/?grupo=#qAgregaReviewEventSearch.pending_group_id#" title="#encodeForHTMLAttribute(qAgregaReviewEventSearch.pending_group_name)#">Revisão ###qAgregaReviewEventSearch.pending_group_id#</a>
                                   <cfelse>
                                     <span class="badge badge-warning text-dark">Disponível</span>
                                   </cfif>
@@ -563,7 +563,7 @@
                       class="form-control agrega-review-aggregator-search"
                       type="search"
                       name="agregador_busca"
-                      value="#htmlEditFormat(VARIABLES.agregaReviewSuggestedAggregatorSearch)#"
+                      value="#encodeForHTMLAttribute(VARIABLES.agregaReviewSuggestedAggregatorSearch)#"
                       placeholder="Buscar por nome, tag ou ID"
                       data-target="agrega-review-aggregator-#id_evento_agrega_review_group#"
                       data-group-id="#id_evento_agrega_review_group#"
@@ -581,19 +581,19 @@
                     id="agrega-review-aggregator-#id_evento_agrega_review_group#"
                     name="id_agrega_evento"
                     data-current-id="<cfif len(suggested_id_agrega_evento)>#suggested_id_agrega_evento#</cfif>"
-                    data-current-label="#htmlEditFormat(VARIABLES.agregaReviewSuggestedAggregatorLabel)#"
+                    data-current-label="#encodeForHTMLAttribute(VARIABLES.agregaReviewSuggestedAggregatorLabel)#"
                     <cfif status NEQ "review">disabled</cfif>
                   >
                     <option value="" data-aggregator-name="" data-aggregator-type="">Busque e selecione um agregador...</option>
                     <cfif len(VARIABLES.agregaReviewSuggestedAggregatorLabel)>
-                      <option value="#suggested_id_agrega_evento#" data-aggregator-name="#htmlEditFormat(VARIABLES.agregaReviewSuggestedAggregator.nome)#" data-aggregator-type="#htmlEditFormat(VARIABLES.agregaReviewSuggestedAggregator.tipo)#" selected>#htmlEditFormat(VARIABLES.agregaReviewSuggestedAggregatorLabel)#</option>
+                      <option value="#suggested_id_agrega_evento#" data-aggregator-name="#encodeForHTMLAttribute(VARIABLES.agregaReviewSuggestedAggregator.nome)#" data-aggregator-type="#encodeForHTMLAttribute(VARIABLES.agregaReviewSuggestedAggregator.tipo)#" selected>#encodeForHTML(VARIABLES.agregaReviewSuggestedAggregatorLabel)#</option>
                     </cfif>
                     <cfif structCount(VARIABLES.agregaReviewCurrentAggregatorOptions)>
                       <cfloop collection="#VARIABLES.agregaReviewCurrentAggregatorOptions#" item="VARIABLES.agregaReviewCurrentAggregatorId">
                         <cfif val(VARIABLES.agregaReviewCurrentAggregatorId) NEQ val(qAgregaReviewGroups.suggested_id_agrega_evento)>
                           <cfset VARIABLES.agregaReviewCurrentAggregator = VARIABLES.agregaReviewCurrentAggregatorOptions[VARIABLES.agregaReviewCurrentAggregatorId] />
                           <cfset VARIABLES.agregaReviewCurrentAggregatorLabel = "###VARIABLES.agregaReviewCurrentAggregator.id# - #VARIABLES.agregaReviewCurrentAggregator.tipo# - #VARIABLES.agregaReviewCurrentAggregator.nome#" />
-                          <option value="#VARIABLES.agregaReviewCurrentAggregator.id#" data-aggregator-name="#htmlEditFormat(VARIABLES.agregaReviewCurrentAggregator.nome)#" data-aggregator-type="#htmlEditFormat(VARIABLES.agregaReviewCurrentAggregator.tipo)#" <cfif VARIABLES.agregaReviewAutoSelectedAggregatorId EQ val(VARIABLES.agregaReviewCurrentAggregator.id)>selected</cfif>>#htmlEditFormat(VARIABLES.agregaReviewCurrentAggregatorLabel)#</option>
+                          <option value="#VARIABLES.agregaReviewCurrentAggregator.id#" data-aggregator-name="#encodeForHTMLAttribute(VARIABLES.agregaReviewCurrentAggregator.nome)#" data-aggregator-type="#encodeForHTMLAttribute(VARIABLES.agregaReviewCurrentAggregator.tipo)#" <cfif VARIABLES.agregaReviewAutoSelectedAggregatorId EQ val(VARIABLES.agregaReviewCurrentAggregator.id)>selected</cfif>>#encodeForHTML(VARIABLES.agregaReviewCurrentAggregatorLabel)#</option>
                         </cfif>
                       </cfloop>
                     </cfif>
@@ -606,16 +606,16 @@
                           <cfif len(trim(VARIABLES.agregaReviewSearchAggregator.tag & ""))>
                             <cfset VARIABLES.agregaReviewSearchAggregatorLabel = VARIABLES.agregaReviewSearchAggregatorLabel & " - tag: " & VARIABLES.agregaReviewSearchAggregator.tag />
                           </cfif>
-                          <option value="#VARIABLES.agregaReviewSearchAggregator.id#" data-aggregator-name="#htmlEditFormat(VARIABLES.agregaReviewSearchAggregator.nome)#" data-aggregator-type="#htmlEditFormat(VARIABLES.agregaReviewSearchAggregator.tipo)#">#htmlEditFormat(VARIABLES.agregaReviewSearchAggregatorLabel)#</option>
+                          <option value="#VARIABLES.agregaReviewSearchAggregator.id#" data-aggregator-name="#encodeForHTMLAttribute(VARIABLES.agregaReviewSearchAggregator.nome)#" data-aggregator-type="#encodeForHTMLAttribute(VARIABLES.agregaReviewSearchAggregator.tipo)#">#encodeForHTML(VARIABLES.agregaReviewSearchAggregatorLabel)#</option>
                         </cfif>
                       </cfloop>
                     </cfif>
                   </select>
                   <div class="form-text text-muted">
                     <cfif VARIABLES.agregaReviewIsFocusedGroup AND len(VARIABLES.agregaReviewAggregatorSearchTerm) AND NOT structCount(VARIABLES.agregaReviewSearchAggregators)>
-                      Nenhum agregador encontrado para "#htmlEditFormat(VARIABLES.agregaReviewAggregatorSearchTerm)#".
+                      Nenhum agregador encontrado para "#encodeForHTML(VARIABLES.agregaReviewAggregatorSearchTerm)#".
                     <cfelseif len(VARIABLES.agregaReviewSuggestedAggregatorLabel)>
-                      Sugerido: #htmlEditFormat(VARIABLES.agregaReviewSuggestedAggregatorLabel)#
+                      Sugerido: #encodeForHTML(VARIABLES.agregaReviewSuggestedAggregatorLabel)#
                     <cfelse>
                       Crie um agregador neste grupo ou busque um agregador existente por nome, tag ou ID.
                     </cfif>
@@ -634,7 +634,7 @@
                     class="form-control agrega-review-aggregator-final-name"
                     id="agrega-review-final-name-#id_evento_agrega_review_group#"
                     name="nome_agregador_aplicacao"
-                    value="#htmlEditFormat(VARIABLES.agregaReviewAutoSelectedAggregatorName)#"
+                    value="#encodeForHTMLAttribute(VARIABLES.agregaReviewAutoSelectedAggregatorName)#"
                     placeholder="Ex.: Circuito das Estações - Florianópolis"
                     <cfif status NEQ "review">disabled</cfif>
                   />
@@ -650,7 +650,7 @@
                   >
                     <option value="">Selecione...</option>
                     <cfloop query="qAgregaReviewAggregatorTypes">
-                      <option value="#htmlEditFormat(qAgregaReviewAggregatorTypes.tipo_agregacao)#" <cfif qAgregaReviewAggregatorTypes.tipo_agregacao EQ VARIABLES.agregaReviewAutoSelectedAggregatorType>selected</cfif>>#htmlEditFormat(qAgregaReviewAggregatorTypes.tipo_agregacao)#</option>
+                      <option value="#encodeForHTMLAttribute(qAgregaReviewAggregatorTypes.tipo_agregacao)#" <cfif qAgregaReviewAggregatorTypes.tipo_agregacao EQ VARIABLES.agregaReviewAutoSelectedAggregatorType>selected</cfif>>#encodeForHTML(qAgregaReviewAggregatorTypes.tipo_agregacao)#</option>
                     </cfloop>
                   </select>
                   <div class="form-text text-muted">A alteração atualizará o tipo do agregador selecionado.</div>
@@ -672,21 +672,21 @@
                     <div>
                       <div class="d-flex flex-wrap gap-2 align-items-center">
                         <strong>
-                          ###qAgregaReviewCandidates.id_evento# - #htmlEditFormat(qAgregaReviewCandidates.nome_evento)#
+                          ###qAgregaReviewCandidates.id_evento# - #encodeForHTML(qAgregaReviewCandidates.nome_evento)#
                           <cfif len(VARIABLES.agregaReviewRoadRunnersUrl)>
-                            <a class="agrega-review-external-link ms-1" href="#htmlEditFormat(VARIABLES.agregaReviewRoadRunnersUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento no Road Runners"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a class="agrega-review-external-link ms-1" href="#encodeForHTMLAttribute(VARIABLES.agregaReviewRoadRunnersUrl)#" target="_blank" rel="noopener noreferrer" title="Abrir evento no Road Runners"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                           </cfif>
                         </strong>
                         <span class="agrega-review-score">Score #numberFormat(qAgregaReviewCandidates.score, "0.00")#</span>
                         <cfif qAgregaReviewCandidates.status NEQ "active">
-                          <span class="badge badge-secondary">#htmlEditFormat(qAgregaReviewCandidates.status)#</span>
+                          <span class="badge badge-secondary">#encodeForHTML(qAgregaReviewCandidates.status)#</span>
                         </cfif>
                       </div>
                       <div class="small text-muted">
                         <cfif isDate(qAgregaReviewCandidates.data_inicial)>#lsDateFormat(qAgregaReviewCandidates.data_inicial, "dd/mm/yyyy")# · </cfif>
-                        #htmlEditFormat(qAgregaReviewCandidates.cidade)#/#htmlEditFormat(qAgregaReviewCandidates.estado)#
+                        #encodeForHTML(qAgregaReviewCandidates.cidade)#/#encodeForHTML(qAgregaReviewCandidates.estado)#
                         <cfif len(qAgregaReviewCandidates.atual_nome_evento_agregado & "")>
-                          · Atual: #htmlEditFormat(qAgregaReviewCandidates.atual_tipo_agregacao)# - #htmlEditFormat(qAgregaReviewCandidates.atual_nome_evento_agregado)#
+                          · Atual: #encodeForHTML(qAgregaReviewCandidates.atual_tipo_agregacao)# - #encodeForHTML(qAgregaReviewCandidates.atual_nome_evento_agregado)#
                         <cfelse>
                           · Sem agregador
                         </cfif>

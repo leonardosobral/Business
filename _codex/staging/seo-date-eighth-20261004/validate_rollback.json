@@ -1,0 +1,128 @@
+{
+  "events": [
+    {
+      "id_evento": 38508,
+      "row_hash": "9ed186ac6a6c8c2346ed09b2ef2c8f25"
+    },
+    {
+      "id_evento": 40176,
+      "row_hash": "c13fa77dd1ada7a74115cf9bb1a18da0"
+    },
+    {
+      "id_evento": 43392,
+      "row_hash": "a9725869c118a7b001fd02df351e39ac"
+    },
+    {
+      "id_evento": 45308,
+      "row_hash": "8d58fc7defa7f7fa030a137f21252437"
+    },
+    {
+      "id_evento": 47482,
+      "row_hash": "9616500e2e67e6ed375cdf3967c4ab84"
+    }
+  ],
+  "routes": [
+    {
+      "row_hash": "6cf08439bb72330ee21277f62d87062c",
+      "id_evento_percurso": 60746
+    },
+    {
+      "row_hash": "c35788f832e037e3178ce99f2f98c2cf",
+      "id_evento_percurso": 60747
+    },
+    {
+      "row_hash": "8acd8baec3e77f1556fe81da6b4c07fd",
+      "id_evento_percurso": 63977
+    },
+    {
+      "row_hash": "83a076a891f2619dc7621230d5c95ad6",
+      "id_evento_percurso": 63978
+    },
+    {
+      "row_hash": "750782fe08faa271445bb4f457cf6db8",
+      "id_evento_percurso": 63979
+    },
+    {
+      "row_hash": "6f3d03fcb5ee594b1640323d8ac371c4",
+      "id_evento_percurso": 64868
+    },
+    {
+      "row_hash": "7f3b65a55c47fe27948f11baab91c7d2",
+      "id_evento_percurso": 64870
+    },
+    {
+      "row_hash": "13f0370fb53dbb9fc19427d92c040de5",
+      "id_evento_percurso": 64871
+    },
+    {
+      "row_hash": "49f47caf919414f2dc67c87ffe561aa4",
+      "id_evento_percurso": 66939
+    },
+    {
+      "row_hash": "0ca95d8c3a60f8b7c7ce7871359d63c8",
+      "id_evento_percurso": 66940
+    },
+    {
+      "row_hash": "3527b29a0d651c964795e032911c8ccb",
+      "id_evento_percurso": 69133
+    },
+    {
+      "row_hash": "df300addac92395dcabc5cac7d469dd9",
+      "id_evento_percurso": 69134
+    }
+  ],
+  "dependencies": {
+    "tb_evento_percursos_gpx": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_badges": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_evento_corridas_relaciona": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist_importacao": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_permit_atualiza": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_temp": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_evento_saude_config": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_percurso_migracoes_strava": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_percurso": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_resumo": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_inscricoes": {
+      "count": 0,
+      "hash": null
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "events": {},
+  "routes": {
+    "54925": {
+      "data_percurso": "2026-10-25",
+      "percurso_bloqueado": true
+    },
+    "54926": {
+      "data_percurso": "2026-10-25",
+      "percurso_bloqueado": true
+    },
+    "67097": {
+      "data_percurso": "2026-12-13",
+      "percurso_bloqueado": true
+    },
+    "67098": {
+      "data_percurso": "2026-12-13",
+      "percurso_bloqueado": true
+    },
+    "65367": {
+      "data_percurso": "2026-10-18",
+      "percurso_bloqueado": true
+    },
+    "65368": {
+      "data_percurso": "2026-10-18",
+      "percurso_bloqueado": true
+    },
+    "63263": {
+      "data_percurso": "2026-11-21",
+      "percurso_bloqueado": true
+    },
+    "63264": {
+      "data_percurso": "2026-11-21",
+      "percurso_bloqueado": true
+    },
+    "63265": {
+      "data_percurso": "2026-11-21",
+      "percurso_bloqueado": true
+    },
+    "63647": {
+      "data_percurso": "2026-11-15",
+      "percurso_bloqueado": true
+    },
+    "62422": {
+      "data_percurso": "2027-01-31",
+      "percurso_bloqueado": true
+    },
+    "62423": {
+      "data_percurso": "2027-01-31",
+      "percurso_bloqueado": true
+    },
+    "62424": {
+      "data_percurso": "2027-01-31",
+      "percurso_bloqueado": true
+    },
+    "63961": {
+      "data_percurso": "2026-12-13",
+      "percurso_bloqueado": true
+    },
+    "63962": {
+      "data_percurso": "2026-12-13",
+      "percurso_bloqueado": true
+    },
+    "63963": {
+      "data_percurso": "2026-12-05",
+      "percurso_bloqueado": true
+    },
+    "63964": {
+      "data_percurso": "2026-12-05",
+      "percurso_bloqueado": true
+    },
+    "65055": {
+      "data_percurso": "2026-11-15",
+      "percurso_bloqueado": true
+    },
+    "65056": {
+      "data_percurso": "2026-11-15",
+      "percurso_bloqueado": true
+    },
+    "65510": {
+      "data_percurso": "2026-11-29",
+      "percurso_bloqueado": true
+    },
+    "65511": {
+      "data_percurso": "2026-11-29",
+      "percurso_bloqueado": true
+    },
+    "65512": {
+      "data_percurso": "2026-11-15",
+      "percurso_bloqueado": true
+    },
+    "65513": {
+      "data_percurso": "2026-11-15",
+      "percurso_bloqueado": true
+    },
+    "65514": {
+      "data_percurso": "2026-11-15",
+      "percurso_bloqueado": true
+    },
+    "65515": {
+      "data_percurso": "2026-11-15",
+      "percurso_bloqueado": true
+    },
+    "67993": {
+      "data_percurso": "2026-11-01",
+      "percurso_bloqueado": true
+    },
+    "68196": {
+      "data_percurso": "2026-11-29",
+      "percurso_bloqueado": true
+    },
+    "68561": {
+      "data_percurso": "2026-11-22",
+      "percurso_bloqueado": true
+    },
+    "68562": {
+      "data_percurso": "2026-11-22",
+      "percurso_bloqueado": true
+    },
+    "69118": {
+      "data_percurso": "2026-11-15",
+      "percurso_bloqueado": true
+    }
+  }
+}

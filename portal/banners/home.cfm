@@ -20,7 +20,7 @@
         <div class="alert alert-warning">Não foi possível carregar os banners. Verifique a disponibilidade da estrutura de banners no datasource runnerhub.</div>
     <cfelse>
         <cfif len(trim(VARIABLES.bannerManagementAlert.type)) AND len(trim(VARIABLES.bannerManagementAlert.message))>
-            <cfoutput><div class="alert alert-#htmlEditFormat(VARIABLES.bannerManagementAlert.type)#">#htmlEditFormat(VARIABLES.bannerManagementAlert.message)#</div></cfoutput>
+            <cfoutput><div class="alert alert-#encodeForHTMLAttribute(VARIABLES.bannerManagementAlert.type)#">#encodeForHTML(VARIABLES.bannerManagementAlert.message)#</div></cfoutput>
         </cfif>
         <cfif VARIABLES.bannerShowForm><cfinclude template="../includes/banner_form.cfm"/></cfif>
         <div class="banner-eyebrow mb-2">Resumo geral · todo o histórico</div>
@@ -38,10 +38,10 @@
                 <div><div class="banner-eyebrow">Resultados</div><h2 class="h5 mb-1" id="banner-performance-title">Performance dos banners</h2><p class="text-muted small mb-0">Impressões visíveis e cliques válidos por dia, no período selecionado.</p></div>
                 <form action="./#banner-performance" method="get" class="banner-chart-filters">
                     <input type="hidden" name="view" value="house"/>
-                    <input type="hidden" name="filtro_status" value="<cfoutput>#htmlEditFormat(URL.filtro_status)#</cfoutput>"/>
+                    <input type="hidden" name="filtro_status" value="<cfoutput>#encodeForHTMLAttribute(URL.filtro_status)#</cfoutput>"/>
                     <div><label for="banner-performance-select">Banner</label><select class="form-select form-select-sm" id="banner-performance-select" name="banner">
                         <option value="">Todos os banners</option>
-                        <cfoutput query="qBannerDashboardChoices"><option value="#htmlEditFormat(qBannerDashboardChoices.id_banner)#"<cfif VARIABLES.bannerDashboardFilter.banner EQ qBannerDashboardChoices.id_banner> selected</cfif>>#htmlEditFormat(qBannerDashboardChoices.nome)#</option></cfoutput>
+                        <cfoutput query="qBannerDashboardChoices"><option value="#encodeForHTMLAttribute(qBannerDashboardChoices.id_banner)#"<cfif VARIABLES.bannerDashboardFilter.banner EQ qBannerDashboardChoices.id_banner> selected</cfif>>#encodeForHTML(qBannerDashboardChoices.nome)#</option></cfoutput>
                     </select></div>
                     <div><label for="banner-period">Período</label><select class="form-select form-select-sm" id="banner-period" name="periodo"><option value="7"<cfif VARIABLES.bannerDashboardFilter.days EQ 7> selected</cfif>>Últimos 7 dias</option><option value="30"<cfif VARIABLES.bannerDashboardFilter.days EQ 30> selected</cfif>>Últimos 30 dias</option></select></div>
                     <button class="btn btn-sm btn-outline-info" type="submit">Aplicar</button>
@@ -69,7 +69,7 @@
                 <div><div class="banner-eyebrow">Acompanhamento</div><h2 class="h5 mb-1" id="banner-list-title">Seus banners</h2><p class="text-muted small mb-0">Resultados acumulados em todo o histórico. Expanda uma linha para ver as peças, o escopo e as ações.</p></div>
                 <form action="./#banner-list-title" method="get" class="banner-chart-filters">
                     <input type="hidden" name="view" value="house"/>
-                    <cfoutput><input type="hidden" name="banner" value="#htmlEditFormat(VARIABLES.bannerDashboardFilter.banner)#"/><input type="hidden" name="periodo" value="#VARIABLES.bannerDashboardFilter.days#"/></cfoutput>
+                    <cfoutput><input type="hidden" name="banner" value="#encodeForHTMLAttribute(VARIABLES.bannerDashboardFilter.banner)#"/><input type="hidden" name="periodo" value="#VARIABLES.bannerDashboardFilter.days#"/></cfoutput>
                     <div><label for="banner-list-status">Status</label><select class="form-select form-select-sm" id="banner-list-status" name="filtro_status"><option value="">Todos</option><option value="DRAFT"<cfif URL.filtro_status EQ 'DRAFT'> selected</cfif>>Rascunho</option><option value="ACTIVE"<cfif URL.filtro_status EQ 'ACTIVE'> selected</cfif>>Ativo</option><option value="PAUSED"<cfif URL.filtro_status EQ 'PAUSED'> selected</cfif>>Pausado</option><option value="ENDED"<cfif URL.filtro_status EQ 'ENDED'> selected</cfif>>Encerrado</option></select></div>
                     <button class="btn btn-sm btn-outline-info" type="submit">Filtrar</button>
                 </form>

@@ -9,7 +9,7 @@
 
 <cfscript>
 function agendaXmlError(required string message, numeric statusCode = 400, string statusText = "Bad Request") output="true" {
-    cfheader(statuscode=arguments.statusCode, statustext=arguments.statusText);
+    cfheader(statuscode=arguments.statusCode);
     cfcontent(type="application/xml; charset=utf-8", reset="true");
     writeOutput('<?xml version="1.0" encoding="UTF-8"?><error><message>' & xmlFormat(arguments.message) & '</message></error>');
     abort;
@@ -76,7 +76,7 @@ function agendaXmlError(required string message, numeric statusCode = 400, strin
 <cfheader name="ETag" value="#VARIABLES.agendaXmlEtag#"/>
 <cfif agendaServiceRequestHeader("If-None-Match") EQ VARIABLES.agendaXmlEtag>
     <cfset agendaServiceLogAccess(qAgendaXmlAgenda.id_agenda, "xml", VARIABLES.agendaXmlView, 304, arrayLen(VARIABLES.agendaXmlItems), getTickCount() - VARIABLES.agendaXmlStartedAt)/>
-    <cfheader statuscode="304" statustext="Not Modified"/>
+    <cfheader statuscode="304"/>
     <cfcontent reset="true"/>
     <cfabort/>
 </cfif>

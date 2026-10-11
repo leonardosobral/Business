@@ -1,0 +1,2439 @@
+
+
+<!doctype html>
+<html lang="pt-br">
+
+
+<head>
+
+    
+
+    
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#222222" />
+    <meta name="msapplication-TileColor" content="#222222" />
+    <meta name="application-name" content="Open Results" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Open Results" />
+
+    
+    
+
+    
+    <title>Resultados de corridas em Salvador &#x28;BA&#x29; - Open Results</title>
+    <meta name="description" content="Resultados de eventos de corrida por estado" />
+    <meta name="keywords" content="resultados, corrida, competição, pódio, atletas, corredores" />
+    <link rel="canonical" href="https://openresults.run/estado/BA/" />
+
+    
+
+    
+    <meta name="twitter:title" content="Resultados de corridas em Salvador &#x28;BA&#x29; - Open Results" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="Resultados de eventos de corrida por estado" />
+    <meta name="twitter:image" content="https://openresults.run/assets/meta_imagem.jpg" />
+    <meta name="twitter:site" content="https://openresults.run/estado/BA/" />
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Resultados de corridas em Salvador &#x28;BA&#x29; - Open Results" />
+    <meta property="og:description" content="Resultados de eventos de corrida por estado" />
+    <meta property="og:url" content="https://openresults.run/estado/BA/" />
+    <meta property="og:image" content="https://openresults.run/assets/meta_imagem.jpg" />
+
+    
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+
+
+<link href="/assets/js/datatables/datatables.min.css?v=20260913-13" rel="stylesheet"/>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" />
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+
+
+<link rel="stylesheet" href="/assets/css/mdb.min.css?v=20260913-13" />
+
+
+<link rel="stylesheet" href="/assets/plugins/css/all.min.css?v=20260913-13" />
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<link rel="stylesheet" href="/assets/css/cores.css?v=20260913-13"/>
+
+
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+<meta name="verification" content="38854b6ad1b847b47c8b8f6fa023f0ab" />
+
+
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '308580355012403');
+    fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+               src="https://www.facebook.com/tr?id=308580355012403&ev=PageView&noscript=1"
+/></noscript>
+
+
+<script src="//widget.manychat.com/1025666_f7eaa.js" defer="defer"></script>
+<script src="https://mccdn.me/assets/js/widget.js" defer="defer"></script>
+
+
+</head>
+
+
+<body>
+
+    <link rel="stylesheet" href="/assets/css/openresults-estado-cidades.css?v=20261004-1"/>
+
+    
+
+    
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P892QN37"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+
+
+<script src="https://accounts.google.com/gsi/client" async></script>
+
+<div id="orPageLoader" class="or-page-loader" aria-hidden="true">
+    <div class="or-page-loader-panel" role="status" aria-live="polite">
+        <img src="/assets/or_logo.svg" alt="Open Results" class="or-page-loader-logo"/>
+        <div class="or-page-loader-spinner"></div>
+        <small>Carregando resultados</small>
+    </div>
+</div>
+
+
+
+    
+
+    <div class="container">
+
+
+        
+
+        <style>
+    .or-topbar-offset {
+        top: 30px;
+    }
+
+    .or-topbar.navbar {
+        background-color: #DDDDDD !important;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    .or-topbar .nav-item.border-start {
+        border-color: rgba(51, 51, 51, 0.12) !important;
+    }
+
+    .or-topbar .nav-link,
+    .or-topbar .navbar-brand,
+    .or-topbar .link-light,
+    .or-topbar .link-dark,
+    .or-topbar #legend {
+        color: #333333 !important;
+    }
+
+    .or-topbar .nav-link:hover,
+    .or-topbar .navbar-brand:hover,
+    .or-topbar .link-dark:hover {
+        color: #111111 !important;
+    }
+
+</style>
+
+
+
+<style>
+    .rr-minimal-header-shell,
+    .rr-minimal-header-shell .dropdown-menu {
+        z-index: 2147483647 !important;
+    }
+
+    .rr-minimal-header-shell .navbar {
+        min-height: 30px;
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+    }
+
+    .rr-minimal-header-shell .navbar-brand svg {
+        display: block;
+        width: 74px;
+        height: auto;
+        opacity: 0.5;
+        transition: opacity 0.18s ease;
+    }
+
+    .rr-minimal-header-shell .navbar-brand svg path[fill="#f4b120"],
+    .rr-minimal-header-shell .navbar-brand svg g[fill="#f4b120"] {
+        fill: #ffffff !important;
+        transition: fill 0.18s ease;
+    }
+
+    .rr-minimal-header-shell .navbar-brand:hover svg {
+        opacity: 1;
+    }
+
+    .rr-minimal-header-shell .navbar-brand:hover svg path[fill="#f4b120"],
+    .rr-minimal-header-shell .navbar-brand:hover svg g[fill="#f4b120"] {
+        fill: #f4b120 !important;
+    }
+
+    .rr-minimal-header-shell .btn-group > a {
+        line-height: 1;
+    }
+
+    .rr-minimal-header-spacer {
+        height: 30px;
+    }
+</style>
+
+<header class="fixed-top rr-minimal-header-shell">
+
+    
+
+    <nav class="navbar navbar-expand-lg" style="background-color:#444444;box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.2) inset; cursor: default">
+
+        <div class="container">
+            
+            <a class="navbar-brand m-0 p-0" href="https://roadrunners.run/" title="Road Runners">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" zoomAndPan="magnify" viewBox="0 0 824.88 239.999995" height="26" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><g/><clipPath id="bab4ad45e0"><path d="M 9 0.015625 L 815 0.015625 L 815 239.980469 L 9 239.980469 Z M 9 0.015625 " clip-rule="nonzero"/></clipPath><clipPath id="df0878b42f"><path d="M 0.839844 107 L 664 107 L 664 239.980469 L 0.839844 239.980469 Z M 0.839844 107 " clip-rule="nonzero"/></clipPath><clipPath id="58960c6a62"><rect x="0" width="664" y="0" height="133"/></clipPath><clipPath id="aab0ee5e67"><path d="M 279 0.015625 L 682 0.015625 L 682 136 L 279 136 Z M 279 0.015625 " clip-rule="nonzero"/></clipPath><clipPath id="3b97b1fa0c"><rect x="0" width="403" y="0" height="136"/></clipPath><clipPath id="8174243e21"><path d="M 683 0.015625 L 805.679688 0.015625 L 805.679688 239.980469 L 683 239.980469 Z M 683 0.015625 " clip-rule="nonzero"/></clipPath><clipPath id="d491d5ed37"><rect x="0" width="123" y="0" height="240"/></clipPath><clipPath id="25b00bbd09"><rect x="0" width="806" y="0" height="240"/></clipPath></defs><g clip-path="url(#bab4ad45e0)"><g transform="matrix(1, 0, 0, 1, 9, 0.000000000000043396)"><g clip-path="url(#25b00bbd09)"><g clip-path="url(#df0878b42f)"><g transform="matrix(1, 0, 0, 1, 0, 107)"><g clip-path="url(#58960c6a62)"><g fill="#ffffff" fill-opacity="1"><g transform="translate(1.457115, 125.794645)"><g><path d="M 86.46875 -3.5 C 86.644531 -3.070312 86.734375 -2.550781 86.734375 -1.9375 C 86.734375 -0.644531 85.910156 0 84.265625 0 L 59.109375 0 C 58.160156 0 57.425781 -0.234375 56.90625 -0.703125 C 56.394531 -1.179688 56.007812 -2.070312 55.75 -3.375 L 48.21875 -36.8125 C 48.050781 -37.332031 47.859375 -37.703125 47.640625 -37.921875 C 47.421875 -38.140625 46.96875 -38.25 46.28125 -38.25 L 38.5 -38.25 C 37.8125 -38.25 37.335938 -38.117188 37.078125 -37.859375 C 36.816406 -37.597656 36.644531 -37.207031 36.5625 -36.6875 L 31.765625 -2.984375 C 31.585938 -1.679688 31.175781 -0.859375 30.53125 -0.515625 C 29.882812 -0.171875 28.738281 0 27.09375 0 L 5.3125 0 C 3.0625 0 2.113281 -1.335938 2.46875 -4.015625 L 15.171875 -93.984375 C 15.253906 -94.941406 15.445312 -95.546875 15.75 -95.796875 C 16.050781 -96.054688 16.59375 -96.1875 17.375 -96.1875 L 60.671875 -96.1875 C 72.160156 -96.1875 81.082031 -94.003906 87.4375 -89.640625 C 93.789062 -85.273438 96.96875 -79.207031 96.96875 -71.4375 C 96.96875 -65.125 95.128906 -59.285156 91.453125 -53.921875 C 87.785156 -48.566406 83.015625 -44.722656 77.140625 -42.390625 C 76.015625 -41.960938 75.34375 -41.570312 75.125 -41.21875 C 74.90625 -40.875 74.882812 -40.398438 75.0625 -39.796875 Z M 54.0625 -57.5625 C 57.601562 -57.5625 60.5625 -58.769531 62.9375 -61.1875 C 65.3125 -63.601562 66.5 -66.410156 66.5 -69.609375 C 66.5 -72.035156 65.613281 -73.875 63.84375 -75.125 C 62.070312 -76.375 59.804688 -77 57.046875 -77 L 43.8125 -77 C 43.207031 -77 42.773438 -76.828125 42.515625 -76.484375 C 42.265625 -76.140625 42.050781 -75.445312 41.875 -74.40625 L 39.671875 -59.5 L 39.671875 -58.859375 C 39.671875 -58.335938 39.773438 -57.988281 39.984375 -57.8125 C 40.203125 -57.644531 40.570312 -57.5625 41.09375 -57.5625 Z M 54.0625 -57.5625 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(97.264608, 125.794645)"><g><path d="M 89.0625 -37.203125 C 87.070312 -23.035156 82.207031 -13.078125 74.46875 -7.328125 C 66.738281 -1.578125 56.304688 1.296875 43.171875 1.296875 C 30.035156 1.296875 20.523438 -1.359375 14.640625 -6.671875 C 8.765625 -11.992188 5.828125 -19.878906 5.828125 -30.328125 C 5.828125 -33.179688 6.128906 -36.859375 6.734375 -41.359375 L 14.125 -93.984375 C 14.21875 -94.941406 14.414062 -95.546875 14.71875 -95.796875 C 15.019531 -96.054688 15.554688 -96.1875 16.328125 -96.1875 L 40.96875 -96.1875 C 41.75 -96.1875 42.375 -95.816406 42.84375 -95.078125 C 43.320312 -94.347656 43.472656 -93.550781 43.296875 -92.6875 L 35.515625 -36.6875 C 35.171875 -33.925781 35 -32.066406 35 -31.109375 C 35 -26.878906 35.945312 -23.851562 37.84375 -22.03125 C 39.75 -20.21875 42.5625 -19.3125 46.28125 -19.3125 C 51.03125 -19.3125 55.113281 -20.84375 58.53125 -23.90625 C 61.945312 -26.976562 64.128906 -31.890625 65.078125 -38.640625 L 72.859375 -93.984375 C 72.941406 -94.941406 73.132812 -95.546875 73.4375 -95.796875 C 73.738281 -96.054688 74.28125 -96.1875 75.0625 -96.1875 L 94.515625 -96.1875 C 95.285156 -96.1875 95.90625 -95.816406 96.375 -95.078125 C 96.851562 -94.347656 97.007812 -93.550781 96.84375 -92.6875 Z M 89.0625 -37.203125 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(191.646002, 125.794645)"><g><path d="M 98.78125 -96.1875 C 99.988281 -96.1875 100.507812 -95.5 100.34375 -94.125 L 87.25 -1.5625 C 87.164062 -0.945312 86.925781 -0.53125 86.53125 -0.3125 C 86.144531 -0.101562 85.519531 0 84.65625 0 L 66.890625 0 C 66.285156 0 65.765625 -0.191406 65.328125 -0.578125 C 64.898438 -0.972656 64.382812 -1.644531 63.78125 -2.59375 L 34.609375 -50.953125 C 34.347656 -51.378906 34.09375 -51.59375 33.84375 -51.59375 C 33.320312 -51.59375 33.015625 -51.03125 32.921875 -49.90625 L 26.1875 -2.46875 C 26.101562 -1.425781 25.863281 -0.753906 25.46875 -0.453125 C 25.082031 -0.148438 24.285156 0 23.078125 0 L 4.40625 0 C 2.757812 0 2.066406 -1.125 2.328125 -3.375 L 15.171875 -93.984375 C 15.253906 -94.941406 15.46875 -95.546875 15.8125 -95.796875 C 16.15625 -96.054688 16.804688 -96.1875 17.765625 -96.1875 L 38.890625 -96.1875 C 39.835938 -96.1875 40.59375 -95.945312 41.15625 -95.46875 C 41.71875 -95 42.300781 -94.25 42.90625 -93.21875 L 68.1875 -50.171875 C 68.625 -49.484375 69.054688 -49.140625 69.484375 -49.140625 C 69.742188 -49.140625 69.984375 -49.289062 70.203125 -49.59375 C 70.421875 -49.894531 70.570312 -50.300781 70.65625 -50.8125 L 76.75 -94.25 C 76.832031 -95.113281 77.046875 -95.648438 77.390625 -95.859375 C 77.734375 -96.078125 78.382812 -96.1875 79.34375 -96.1875 Z M 98.78125 -96.1875 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(290.305695, 125.794645)"><g><path d="M 98.78125 -96.1875 C 99.988281 -96.1875 100.507812 -95.5 100.34375 -94.125 L 87.25 -1.5625 C 87.164062 -0.945312 86.925781 -0.53125 86.53125 -0.3125 C 86.144531 -0.101562 85.519531 0 84.65625 0 L 66.890625 0 C 66.285156 0 65.765625 -0.191406 65.328125 -0.578125 C 64.898438 -0.972656 64.382812 -1.644531 63.78125 -2.59375 L 34.609375 -50.953125 C 34.347656 -51.378906 34.09375 -51.59375 33.84375 -51.59375 C 33.320312 -51.59375 33.015625 -51.03125 32.921875 -49.90625 L 26.1875 -2.46875 C 26.101562 -1.425781 25.863281 -0.753906 25.46875 -0.453125 C 25.082031 -0.148438 24.285156 0 23.078125 0 L 4.40625 0 C 2.757812 0 2.066406 -1.125 2.328125 -3.375 L 15.171875 -93.984375 C 15.253906 -94.941406 15.46875 -95.546875 15.8125 -95.796875 C 16.15625 -96.054688 16.804688 -96.1875 17.765625 -96.1875 L 38.890625 -96.1875 C 39.835938 -96.1875 40.59375 -95.945312 41.15625 -95.46875 C 41.71875 -95 42.300781 -94.25 42.90625 -93.21875 L 68.1875 -50.171875 C 68.625 -49.484375 69.054688 -49.140625 69.484375 -49.140625 C 69.742188 -49.140625 69.984375 -49.289062 70.203125 -49.59375 C 70.421875 -49.894531 70.570312 -50.300781 70.65625 -50.8125 L 76.75 -94.25 C 76.832031 -95.113281 77.046875 -95.648438 77.390625 -95.859375 C 77.734375 -96.078125 78.382812 -96.1875 79.34375 -96.1875 Z M 98.78125 -96.1875 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(388.965345, 125.794645)"><g><path d="M 15.171875 -93.984375 C 15.253906 -94.941406 15.445312 -95.546875 15.75 -95.796875 C 16.050781 -96.054688 16.59375 -96.1875 17.375 -96.1875 L 87.890625 -96.1875 C 89.191406 -96.1875 89.84375 -95.410156 89.84375 -93.859375 C 89.84375 -93.335938 89.800781 -92.945312 89.71875 -92.6875 L 87.5 -77.65625 C 87.332031 -76.613281 87.03125 -75.898438 86.59375 -75.515625 C 86.164062 -75.128906 85.390625 -74.9375 84.265625 -74.9375 L 44.078125 -74.9375 C 43.296875 -74.9375 42.710938 -74.785156 42.328125 -74.484375 C 41.941406 -74.179688 41.703125 -73.550781 41.609375 -72.59375 L 39.921875 -60.671875 L 39.796875 -59.765625 C 39.796875 -59.328125 39.90625 -59.046875 40.125 -58.921875 C 40.34375 -58.796875 40.753906 -58.734375 41.359375 -58.734375 L 65.859375 -58.734375 C 66.722656 -58.734375 67.285156 -58.554688 67.546875 -58.203125 C 67.804688 -57.859375 67.847656 -57.296875 67.671875 -56.515625 L 65.34375 -39.546875 C 65.25 -38.847656 65.070312 -38.390625 64.8125 -38.171875 C 64.5625 -37.960938 64.046875 -37.859375 63.265625 -37.859375 L 38.25 -37.859375 C 37.644531 -37.859375 37.210938 -37.707031 36.953125 -37.40625 C 36.691406 -37.101562 36.472656 -36.5625 36.296875 -35.78125 L 34.484375 -22.953125 L 34.484375 -22.296875 C 34.484375 -21.609375 34.785156 -21.265625 35.390625 -21.265625 L 78.5625 -21.265625 C 79.425781 -21.265625 79.988281 -21.085938 80.25 -20.734375 C 80.507812 -20.390625 80.550781 -19.742188 80.375 -18.796875 L 78.171875 -2.078125 C 77.992188 -1.296875 77.734375 -0.753906 77.390625 -0.453125 C 77.046875 -0.148438 76.359375 0 75.328125 0 L 5.578125 0 C 4.453125 0 3.628906 -0.234375 3.109375 -0.703125 C 2.585938 -1.179688 2.328125 -1.898438 2.328125 -2.859375 L 2.46875 -4.015625 Z M 15.171875 -93.984375 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(475.957008, 125.794645)"><g><path d="M 86.46875 -3.5 C 86.644531 -3.070312 86.734375 -2.550781 86.734375 -1.9375 C 86.734375 -0.644531 85.910156 0 84.265625 0 L 59.109375 0 C 58.160156 0 57.425781 -0.234375 56.90625 -0.703125 C 56.394531 -1.179688 56.007812 -2.070312 55.75 -3.375 L 48.21875 -36.8125 C 48.050781 -37.332031 47.859375 -37.703125 47.640625 -37.921875 C 47.421875 -38.140625 46.96875 -38.25 46.28125 -38.25 L 38.5 -38.25 C 37.8125 -38.25 37.335938 -38.117188 37.078125 -37.859375 C 36.816406 -37.597656 36.644531 -37.207031 36.5625 -36.6875 L 31.765625 -2.984375 C 31.585938 -1.679688 31.175781 -0.859375 30.53125 -0.515625 C 29.882812 -0.171875 28.738281 0 27.09375 0 L 5.3125 0 C 3.0625 0 2.113281 -1.335938 2.46875 -4.015625 L 15.171875 -93.984375 C 15.253906 -94.941406 15.445312 -95.546875 15.75 -95.796875 C 16.050781 -96.054688 16.59375 -96.1875 17.375 -96.1875 L 60.671875 -96.1875 C 72.160156 -96.1875 81.082031 -94.003906 87.4375 -89.640625 C 93.789062 -85.273438 96.96875 -79.207031 96.96875 -71.4375 C 96.96875 -65.125 95.128906 -59.285156 91.453125 -53.921875 C 87.785156 -48.566406 83.015625 -44.722656 77.140625 -42.390625 C 76.015625 -41.960938 75.34375 -41.570312 75.125 -41.21875 C 74.90625 -40.875 74.882812 -40.398438 75.0625 -39.796875 Z M 54.0625 -57.5625 C 57.601562 -57.5625 60.5625 -58.769531 62.9375 -61.1875 C 65.3125 -63.601562 66.5 -66.410156 66.5 -69.609375 C 66.5 -72.035156 65.613281 -73.875 63.84375 -75.125 C 62.070312 -76.375 59.804688 -77 57.046875 -77 L 43.8125 -77 C 43.207031 -77 42.773438 -76.828125 42.515625 -76.484375 C 42.265625 -76.140625 42.050781 -75.445312 41.875 -74.40625 L 39.671875 -59.5 L 39.671875 -58.859375 C 39.671875 -58.335938 39.773438 -57.988281 39.984375 -57.8125 C 40.203125 -57.644531 40.570312 -57.5625 41.09375 -57.5625 Z M 54.0625 -57.5625 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(571.764487, 125.794645)"><g><path d="M 69.875 -71.5625 C 65.289062 -75.539062 59.367188 -77.53125 52.109375 -77.53125 C 47.796875 -77.53125 44.363281 -76.835938 41.8125 -75.453125 C 39.257812 -74.066406 37.984375 -72.078125 37.984375 -69.484375 C 37.984375 -66.460938 40.578125 -64.171875 45.765625 -62.609375 L 66.5 -55.875 C 73.414062 -53.625 78.554688 -50.707031 81.921875 -47.125 C 85.296875 -43.539062 86.984375 -39.023438 86.984375 -33.578125 C 86.984375 -26.316406 84.992188 -20.050781 81.015625 -14.78125 C 77.046875 -9.507812 71.625 -5.507812 64.75 -2.78125 C 57.882812 -0.0625 50.171875 1.296875 41.609375 1.296875 C 31.753906 1.296875 23.390625 -0.320312 16.515625 -3.5625 C 9.648438 -6.800781 4.664062 -11.273438 1.5625 -16.984375 C 1.039062 -18.191406 0.78125 -18.882812 0.78125 -19.0625 C 0.78125 -19.570312 1.164062 -20.085938 1.9375 -20.609375 L 15.6875 -29.046875 C 16.375 -29.472656 17.109375 -29.6875 17.890625 -29.6875 C 19.097656 -29.6875 20.222656 -29.039062 21.265625 -27.75 C 23.597656 -25.15625 25.628906 -23.207031 27.359375 -21.90625 C 29.085938 -20.613281 31.242188 -19.597656 33.828125 -18.859375 C 36.421875 -18.128906 39.878906 -17.765625 44.203125 -17.765625 C 48.265625 -17.765625 51.613281 -18.429688 54.25 -19.765625 C 56.882812 -21.109375 58.203125 -23.335938 58.203125 -26.453125 C 58.203125 -29.554688 55.566406 -31.890625 50.296875 -33.453125 L 31.25 -39.28125 C 24.675781 -41.269531 19.570312 -44.378906 15.9375 -48.609375 C 12.3125 -52.847656 10.5 -57.820312 10.5 -63.53125 C 10.5 -70.175781 12.441406 -76.09375 16.328125 -81.28125 C 20.222656 -86.46875 25.429688 -90.460938 31.953125 -93.265625 C 38.484375 -96.078125 45.550781 -97.484375 53.15625 -97.484375 C 61.1875 -97.484375 68.332031 -96.078125 74.59375 -93.265625 C 80.863281 -90.460938 85.554688 -86.988281 88.671875 -82.84375 C 89.367188 -81.894531 89.71875 -81.113281 89.71875 -80.5 C 89.71875 -79.894531 89.410156 -79.421875 88.796875 -79.078125 L 73.890625 -69.484375 C 73.460938 -69.140625 72.988281 -69.117188 72.46875 -69.421875 C 71.945312 -69.722656 71.425781 -70.109375 70.90625 -70.578125 C 70.394531 -71.054688 70.050781 -71.382812 69.875 -71.5625 Z M 69.875 -71.5625 "/></g></g></g></g></g></g><g clip-path="url(#aab0ee5e67)"><g transform="matrix(1, 0, 0, 1, 279, 0.000000000000043396)"><g clip-path="url(#3b97b1fa0c)"><g fill="#ffffff" fill-opacity="1"><g transform="translate(1.701228, 103.465657)"><g><path d="M 86.46875 -3.5 C 86.644531 -3.070312 86.734375 -2.550781 86.734375 -1.9375 C 86.734375 -0.644531 85.910156 0 84.265625 0 L 59.109375 0 C 58.160156 0 57.425781 -0.234375 56.90625 -0.703125 C 56.394531 -1.179688 56.007812 -2.070312 55.75 -3.375 L 48.21875 -36.8125 C 48.050781 -37.332031 47.859375 -37.703125 47.640625 -37.921875 C 47.421875 -38.140625 46.96875 -38.25 46.28125 -38.25 L 38.5 -38.25 C 37.8125 -38.25 37.335938 -38.117188 37.078125 -37.859375 C 36.816406 -37.597656 36.644531 -37.207031 36.5625 -36.6875 L 31.765625 -2.984375 C 31.585938 -1.679688 31.175781 -0.859375 30.53125 -0.515625 C 29.882812 -0.171875 28.738281 0 27.09375 0 L 5.3125 0 C 3.0625 0 2.113281 -1.335938 2.46875 -4.015625 L 15.171875 -93.984375 C 15.253906 -94.941406 15.445312 -95.546875 15.75 -95.796875 C 16.050781 -96.054688 16.59375 -96.1875 17.375 -96.1875 L 60.671875 -96.1875 C 72.160156 -96.1875 81.082031 -94.003906 87.4375 -89.640625 C 93.789062 -85.273438 96.96875 -79.207031 96.96875 -71.4375 C 96.96875 -65.125 95.128906 -59.285156 91.453125 -53.921875 C 87.785156 -48.566406 83.015625 -44.722656 77.140625 -42.390625 C 76.015625 -41.960938 75.34375 -41.570312 75.125 -41.21875 C 74.90625 -40.875 74.882812 -40.398438 75.0625 -39.796875 Z M 54.0625 -57.5625 C 57.601562 -57.5625 60.5625 -58.769531 62.9375 -61.1875 C 65.3125 -63.601562 66.5 -66.410156 66.5 -69.609375 C 66.5 -72.035156 65.613281 -73.875 63.84375 -75.125 C 62.070312 -76.375 59.804688 -77 57.046875 -77 L 43.8125 -77 C 43.207031 -77 42.773438 -76.828125 42.515625 -76.484375 C 42.265625 -76.140625 42.050781 -75.445312 41.875 -74.40625 L 39.671875 -59.5 L 39.671875 -58.859375 C 39.671875 -58.335938 39.773438 -57.988281 39.984375 -57.8125 C 40.203125 -57.644531 40.570312 -57.5625 41.09375 -57.5625 Z M 54.0625 -57.5625 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(97.508721, 103.465657)"><g><path d="M 46.671875 1.296875 C 38.117188 1.296875 30.75 -0.363281 24.5625 -3.6875 C 18.382812 -7.019531 13.648438 -11.753906 10.359375 -17.890625 C 7.078125 -24.023438 5.4375 -31.285156 5.4375 -39.671875 C 5.4375 -43.296875 5.65625 -46.492188 6.09375 -49.265625 C 7.476562 -58.941406 10.546875 -67.429688 15.296875 -74.734375 C 20.046875 -82.035156 26.132812 -87.648438 33.5625 -91.578125 C 41 -95.515625 49.300781 -97.484375 58.46875 -97.484375 C 66.851562 -97.484375 74.132812 -95.773438 80.3125 -92.359375 C 86.488281 -88.953125 91.21875 -84.113281 94.5 -77.84375 C 97.789062 -71.582031 99.4375 -64.257812 99.4375 -55.875 C 99.4375 -52.25 99.21875 -49.09375 98.78125 -46.40625 C 97.40625 -36.726562 94.359375 -28.300781 89.640625 -21.125 C 84.929688 -13.957031 78.878906 -8.425781 71.484375 -4.53125 C 64.097656 -0.644531 55.828125 1.296875 46.671875 1.296875 Z M 47.453125 -18.921875 C 53.328125 -18.921875 57.90625 -21.253906 61.1875 -25.921875 C 64.46875 -30.585938 66.847656 -38.238281 68.328125 -48.875 C 69.015625 -54.144531 69.359375 -58.421875 69.359375 -61.703125 C 69.359375 -67.328125 68.445312 -71.367188 66.625 -73.828125 C 64.8125 -76.296875 61.875 -77.53125 57.8125 -77.53125 C 51.9375 -77.53125 47.3125 -75.039062 43.9375 -70.0625 C 40.570312 -65.09375 38.113281 -57.078125 36.5625 -46.015625 C 35.863281 -40.921875 35.515625 -36.816406 35.515625 -33.703125 C 35.515625 -28.347656 36.441406 -24.546875 38.296875 -22.296875 C 40.160156 -20.046875 43.210938 -18.921875 47.453125 -18.921875 Z M 47.453125 -18.921875 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(198.631643, 103.465657)"><g><path d="M -0.515625 0 C -1.554688 0 -2.078125 -0.429688 -2.078125 -1.296875 C -2.078125 -1.984375 -1.597656 -3.363281 -0.640625 -5.4375 L 43.296875 -93.859375 C 43.816406 -94.804688 44.441406 -95.429688 45.171875 -95.734375 C 45.910156 -96.035156 46.925781 -96.1875 48.21875 -96.1875 L 73.765625 -96.1875 C 74.804688 -96.1875 75.539062 -95.816406 75.96875 -95.078125 C 76.40625 -94.347656 76.75 -93.335938 77 -92.046875 L 95.796875 -3.765625 C 95.890625 -3.503906 95.9375 -3.113281 95.9375 -2.59375 C 95.9375 -0.863281 95.242188 0 93.859375 0 L 68.453125 0 C 67.242188 0 66.421875 -0.953125 65.984375 -2.859375 L 63 -17.5 C 62.914062 -17.9375 62.765625 -18.238281 62.546875 -18.40625 C 62.335938 -18.582031 61.925781 -18.671875 61.3125 -18.671875 L 34.09375 -18.671875 C 33.488281 -18.671875 33.015625 -18.539062 32.671875 -18.28125 C 32.328125 -18.019531 31.976562 -17.585938 31.625 -16.984375 L 23.859375 -1.296875 C 23.597656 -0.773438 23.269531 -0.425781 22.875 -0.25 C 22.488281 -0.0820312 21.863281 0 21 0 Z M 57.8125 -40.703125 C 59.289062 -40.703125 59.8125 -41.566406 59.375 -43.296875 L 54.703125 -64.953125 C 54.617188 -65.816406 54.316406 -66.25 53.796875 -66.25 C 53.453125 -66.25 53.066406 -65.859375 52.640625 -65.078125 L 41.875 -42.78125 C 41.613281 -42.257812 41.484375 -41.828125 41.484375 -41.484375 C 41.484375 -40.960938 42.003906 -40.703125 43.046875 -40.703125 Z M 57.8125 -40.703125 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(302.217823, 103.465657)"><g><path d="M 6.21875 0 C 4.925781 0 3.953125 -0.429688 3.296875 -1.296875 C 2.648438 -2.160156 2.414062 -3.285156 2.59375 -4.671875 L 15.03125 -93.734375 C 15.125 -94.765625 15.382812 -95.429688 15.8125 -95.734375 C 16.25 -96.035156 17.070312 -96.1875 18.28125 -96.1875 L 50.6875 -96.1875 C 60.800781 -96.1875 69.441406 -94.457031 76.609375 -91 C 83.785156 -87.550781 89.207031 -82.753906 92.875 -76.609375 C 96.550781 -70.472656 98.390625 -63.472656 98.390625 -55.609375 C 98.390625 -44.640625 95.96875 -34.941406 91.125 -26.515625 C 86.289062 -18.085938 79.488281 -11.5625 70.71875 -6.9375 C 61.945312 -2.3125 51.8125 0 40.3125 0 Z M 43.8125 -20.359375 C 51.675781 -20.359375 57.640625 -23.8125 61.703125 -30.71875 C 65.765625 -37.632812 67.796875 -46.492188 67.796875 -57.296875 C 67.796875 -63.265625 66.390625 -67.847656 63.578125 -71.046875 C 60.773438 -74.242188 56.910156 -75.84375 51.984375 -75.84375 L 44.34375 -75.84375 C 42.78125 -75.84375 41.867188 -74.976562 41.609375 -73.25 L 34.75 -22.8125 L 34.75 -22.03125 C 34.75 -20.914062 35.304688 -20.359375 36.421875 -20.359375 Z M 43.8125 -20.359375 "/></g></g></g></g></g></g><g clip-path="url(#8174243e21)"><g transform="matrix(1, 0, 0, 1, 683, 0.000000000000043396)"><g clip-path="url(#d491d5ed37)"><g fill="#f4b120" fill-opacity="1"><g transform="translate(2.928563, 192.338952)"><g><path d="M 5.375 37 C 3.132812 37 1.488281 36.175781 0.4375 34.53125 C -0.601562 32.882812 -0.972656 30.789062 -0.671875 28.25 L 29.375 -185.421875 C 29.664062 -187.515625 30.109375 -188.785156 30.703125 -189.234375 C 31.304688 -189.679688 32.65625 -189.90625 34.75 -189.90625 L 55.609375 -189.90625 C 57.242188 -189.90625 58.582031 -189.304688 59.625 -188.109375 C 60.675781 -186.910156 61.054688 -185.640625 60.765625 -184.296875 L 30.046875 34.296875 C 29.890625 35.492188 29.585938 36.242188 29.140625 36.546875 C 28.691406 36.847656 27.722656 37 26.234375 37 Z M 5.375 37 "/></g></g></g><g fill="#f4b120" fill-opacity="1"><g transform="translate(57.847316, 192.338952)"><g><path d="M 5.375 37 C 3.132812 37 1.488281 36.175781 0.4375 34.53125 C -0.601562 32.882812 -0.972656 30.789062 -0.671875 28.25 L 29.375 -185.421875 C 29.664062 -187.515625 30.109375 -188.785156 30.703125 -189.234375 C 31.304688 -189.679688 32.65625 -189.90625 34.75 -189.90625 L 55.609375 -189.90625 C 57.242188 -189.90625 58.582031 -189.304688 59.625 -188.109375 C 60.675781 -186.910156 61.054688 -185.640625 60.765625 -184.296875 L 30.046875 34.296875 C 29.890625 35.492188 29.585938 36.242188 29.140625 36.546875 C 28.691406 36.847656 27.722656 37 26.234375 37 Z M 5.375 37 "/></g></g></g></g></g></g></g></g></g></svg>
+            </a>
+
+            <div class="d-flex align-items-center">
+
+                
+
+                
+
+
+
+<div class="btn-group ms-3 shadow-0">
+
+    <a href="#"
+       class="link-light link-opacity-50 link-opacity-100-hover"
+       data-mdb-dropdown-init
+       aria-expanded="false"
+       aria-label="Runner Apps"
+       title="Runner Apps"
+       id="dropdownMenuApps">
+        <i class="fas fa-grip"></i>
+    </a>
+
+    <ul class="dropdown-menu dropdown-menu-lg-end bg-white p-0" style="z-index: 99999; width: 256px; min-width: 256px" aria-labelledby="dropdownMenuApps">
+
+        <li class="bg-dark bg-opacity-10">
+            <span class="dropdown-header text-center">Runner Apps</span>
+        </li>
+
+        
+            <div class="px-3 py-2 small gap-2" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));">
+                
+                    <div class="p-0 text-center lh-1 align-content-center" style="font-size: 0.7rem">
+                        <a href="https://roadrunners.run/" target="_blank" class="w-100 mx-auto d-flex flex-column align-items-center text-center link-dark link-underline-opacity-0">
+                            <img class="rounded-3 bg-black w-50px mb-1" src="https://business.roadrunners.run/portal/runner-apps/assets/11.jpg" alt="Road Runners"/>
+                            <span class="d-block w-100 text-center">Road<br>Runners</span>
+                        </a>
+                    </div>
+                
+                    <div class="p-0 text-center lh-1 align-content-center" style="font-size: 0.7rem">
+                        <a href="https://openresults.run/" target="_blank" class="w-100 mx-auto d-flex flex-column align-items-center text-center link-dark link-underline-opacity-0">
+                            <img class="rounded-3 bg-black w-50px mb-1" src="https://business.roadrunners.run/portal/runner-apps/assets/12.jpg" alt="Open Results"/>
+                            <span class="d-block w-100 text-center">Open<br>Results</span>
+                        </a>
+                    </div>
+                
+                    <div class="p-0 text-center lh-1 align-content-center" style="font-size: 0.7rem">
+                        <a href="https://business.roadrunners.run/" target="_blank" class="w-100 mx-auto d-flex flex-column align-items-center text-center link-dark link-underline-opacity-0">
+                            <img class="rounded-3 bg-black w-50px mb-1" src="https://business.roadrunners.run/portal/runner-apps/assets/13.jpg" alt="Run Pro"/>
+                            <span class="d-block w-100 text-center">Run<br>Pro</span>
+                        </a>
+                    </div>
+                
+                    <div class="p-0 text-center lh-1 align-content-center" style="font-size: 0.7rem">
+                        <a href="https://gorunners.roadrunners.run/" target="_blank" class="w-100 mx-auto d-flex flex-column align-items-center text-center link-dark link-underline-opacity-0">
+                            <img class="rounded-3 bg-black w-50px mb-1" src="https://business.roadrunners.run/portal/runner-apps/assets/gr_logo.svg" alt="Go Runners"/>
+                            <span class="d-block w-100 text-center">Go<br>Runners</span>
+                        </a>
+                    </div>
+                
+                    <div class="p-0 text-center lh-1 align-content-center" style="font-size: 0.7rem">
+                        <a href="https://circuitobrasilgigante.com.br" target="_blank" rel="noopener" class="w-100 mx-auto d-flex flex-column align-items-center text-center link-dark link-underline-opacity-0">
+                            <img class="rounded-3 bg-black w-50px mb-1" src="https://roadrunners.run/assets/cbg_icon.png" alt="Brasil Gigante"/>
+                            <span class="d-block w-100 text-center">Brasil Gigante</span>
+                        </a>
+                    </div>
+                
+                    <div class="p-0 text-center lh-1 align-content-center" style="font-size: 0.7rem">
+                        <a href="https://roadrunners.run/desafio/todosantodia/" target="_blank" class="w-100 mx-auto d-flex flex-column align-items-center text-center link-dark link-underline-opacity-0">
+                            <img class="rounded-3 bg-black w-50px mb-1" src="https://roadrunners.run/assets/ico_tsd.jpg" alt="Todo Santo Dia"/>
+                            <span class="d-block w-100 text-center">Todo Santo Dia</span>
+                        </a>
+                    </div>
+                
+                    <div class="p-0 text-center lh-1 align-content-center" style="font-size: 0.7rem">
+                        <a href="https://roadrunners.run/circuitocatarinense/" target="_blank" class="w-100 mx-auto d-flex flex-column align-items-center text-center link-dark link-underline-opacity-0">
+                            <img class="rounded-3 bg-black w-50px mb-1" src="https://roadrunners.run/assets/ico_fca.jpg" alt="Circuito Catarinense"/>
+                            <span class="d-block w-100 text-center">Circuito Catarinense</span>
+                        </a>
+                    </div>
+                
+                    <div class="p-0 text-center lh-1 align-content-center" style="font-size: 0.7rem">
+                        <a href="https://roadrunners.run/desafiosupra/" target="_blank" class="w-100 mx-auto d-flex flex-column align-items-center text-center link-dark link-underline-opacity-0">
+                            <img class="rounded-3 bg-black w-50px mb-1" src="https://business.roadrunners.run/portal/runner-apps/assets/icon_supra.png" alt="Desafio Supra"/>
+                            <span class="d-block w-100 text-center">Desafio Supra</span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+        
+        
+        
+        
+        
+        
+
+        <li>
+            <hr class="hr dropdown-divider m-0">
+        </li>
+
+        <li class="small text-center p-1">
+            <small class="opacity-35">
+                Powered by
+                <a href="https://runnerhub.run/" class="link-dark link-underline-opacity-0" target="_blank">
+                    RunnerHub
+                </a>
+            </small>
+        </li>
+
+    </ul>
+
+</div>
+
+
+                
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<div class="rr-minimal-header-spacer"></div>
+
+
+<header class="fixed-top or-topbar-offset">
+    <nav class="navbar navbar-expand-lg navbar-light or-topbar" style="cursor: default">
+        <div class="container">
+            <a class="navbar-brand m-0 p-0 me-2" href="/">
+                <img src="/assets/or_logo.svg" height="32" alt="Open Results" loading="lazy"/>
+            </a>
+
+            <ul class="navbar-nav ms-2 me-auto d-none d-md-flex flex-row">
+                <li class="nav-item border-start border-dark border-opacity-10 px-2 px-lg-0"
+                    onmouseover="showLegent(this)" onmouseout="hideLegent()" title="Busca"
+                    data-mdb-animation-init
+                    data-mdb-animation-target="#legend">
+                    <a class="nav-link py-0 fs-5 " href="/"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <li class="nav-item border-start border-dark border-opacity-10 px-2 px-lg-0"
+                    onmouseover="showLegent(this)" onmouseout="hideLegent()" title="Ranking"
+                    data-mdb-animation-init
+                    data-mdb-animation-target="#legend">
+                    <a class="nav-link py-0 fs-5 " href="/ranking/"><i class="fa-solid fa-ranking-star"></i></a>
+                </li>
+                <li class="nav-item border-start border-dark border-opacity-10 px-2 px-lg-0"
+                    onmouseover="showLegent(this)" onmouseout="hideLegent()" title="Estatísticas"
+                    data-mdb-animation-init
+                    data-mdb-animation-target="#legend">
+                    <a class="nav-link py-0 fs-5 " href="/estatisticas/"><i class="fa-solid fa-chart-simple"></i></a>
+                </li>
+                <li class="nav-item border-start border-dark border-opacity-10 ps-2 align-content-center overflow-hidden">
+                    <div id="legend" class="z-n1"
+                         data-mdb-animation="fade-in-left"
+                         data-mdb-animation-start="onHover"
+                         data-mdb-animation-reset="true"></div>
+                    <script>
+                        function showLegent(item) {
+                            document.getElementById("legend").innerHTML = item.title;
+                        }
+                        function hideLegent() {
+                            document.getElementById("legend").innerHTML = "";
+                        }
+                    </script>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center gap-3">
+                <div class="btn-group shadow-0">
+                    <a href="#" class="link-dark " data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false" id="dropdownMenuSite">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuSite">
+                        <li>
+                            <a class="dropdown-item " href="/sobre/">
+                                <i class="fa-solid fa-circle-info me-2"></i>Sobre
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item " href="/privacidade/">
+                                <i class="fa-solid fa-shield-halved me-2"></i>Privacidade
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="https://roadrunners.run/ajuda/?utm_source=openresults&amp;utm_medium=referral&amp;utm_campaign=openresults_to_roadrunners&amp;utm_content=ajuda_menu" data-rr-placement="ajuda_menu">
+                                <i class="fa-solid fa-circle-question me-2"></i>Ajuda
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<nav class="or-mobile-nav" id="orMobileNav" aria-label="Navegação principal mobile">
+    <ul class="or-mobile-nav-items">
+        <li>
+            <a class="or-mobile-nav-link" href="/" >
+                <span class="or-mobile-nav-symbol"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
+                <span class="or-mobile-nav-label">Buscar</span>
+            </a>
+        </li>
+        <li>
+            <a class="or-mobile-nav-link" href="/ranking/" >
+                <span class="or-mobile-nav-symbol"><i class="fa-solid fa-ranking-star" aria-hidden="true"></i></span>
+                <span class="or-mobile-nav-label">Ranking</span>
+            </a>
+        </li>
+        <li>
+            <a class="or-mobile-nav-link" href="/estatisticas/" >
+                <span class="or-mobile-nav-symbol"><i class="fa-solid fa-chart-simple" aria-hidden="true"></i></span>
+                <span class="or-mobile-nav-label">Estatísticas</span>
+            </a>
+        </li>
+        <li class="or-mobile-nav-partner">
+            <a class="or-mobile-nav-link" href="https://roadrunners.run/?utm_source=openresults&amp;utm_medium=referral&amp;utm_campaign=openresults_to_roadrunners&amp;utm_content=menu_mobile_roadrunners" target="_blank" rel="noopener" data-rr-placement="menu_mobile_roadrunners" aria-label="Road Runners, abre em nova aba" aria-haspopup="dialog" aria-controls="orRoadRunnersModal">
+                <span class="or-mobile-nav-symbol"><img src="/assets/rr_icon.svg" alt="" class="or-mobile-nav-icon"/></span>
+                <span class="or-mobile-nav-label">Road Runners</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<script src="/assets/js/mobile-nav.js?v=20260913-13" defer></script>
+
+<div class="my-3 py-3"></div>
+
+
+        
+
+        
+        <div class="d-block d-md-none col-12 mb-3">
+        <div class="card bg-transparent">
+        <div class="card-header pt-1 pb-0 fw-bold text-center"><span class="h5">2024 - Dados consolidados - BA</span></div>
+        <table class="table table-sm table-striped mb-0 bg-transparent">
+            <tr>
+                <td class="px-2 pt-1 pb-0"></td>
+                <td class="px-2 pt-1 pb-0 text-center"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                <td class="px-2 pt-1 pb-0 text-center"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                <td class="px-2 pt-1 pb-0 text-end"><img src="/assets/eventos.png" width="14" style="margin-top: -4px"/></td>
+                <td class="px-2 pt-1 pb-0 text-center"><img src="/assets/runners.png" width="14" style="margin-top: -4px"/></td>
+            </tr>
+        
+                    <tr class="kms k5" data-color="5" style="font-size: small !important;">
+                        <td class="px-1 pt-1 pb-0 bg-transparent text-end">5K</td>
+                    <td class="mono pt-1 pb-0 bg-transparent text-end">248,017</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end">190,135</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end">720</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end pe-3">438,152</td>
+                </tr>
+            
+                    <tr class="kms k10" data-color="10" style="font-size: small !important;">
+                        <td class="px-1 pt-1 pb-0 bg-transparent text-end">10K</td>
+                    <td class="mono pt-1 pb-0 bg-transparent text-end">44,891</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end">79,160</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end">522</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end pe-3">124,051</td>
+                </tr>
+            
+                    <tr class="kms k21" data-color="21" style="font-size: small !important;">
+                        <td class="px-1 pt-1 pb-0 bg-transparent text-end">21K</td>
+                    <td class="mono pt-1 pb-0 bg-transparent text-end">13,495</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end">28,801</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end">95</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end pe-3">42,296</td>
+                </tr>
+            
+                    <tr class="kms k42" data-color="42" style="font-size: small !important;">
+                        <td class="px-1 pt-1 pb-0 bg-transparent text-end">42K</td>
+                    <td class="mono pt-1 pb-0 bg-transparent text-end">884</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end">4,641</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end">13</td>
+                <td class="mono pt-1 pb-0 bg-transparent text-end pe-3">5,525</td>
+                </tr>
+            
+        </table>
+        </div>
+        </div>
+
+        
+
+        <div class="row g-3 pt-4">
+
+            
+
+            <div class="col-lg-9">
+
+                
+
+                
+                    <div class="or-ranking-year-row or-state-city-row mb-3">
+                        <h1 class="or-ranking-year-title mb-0">Eventos em</h1>
+                        <div class="or-search-chip-select-wrap">
+                            <i class="fa-solid fa-location-dot or-search-chip-select-icon"></i>
+                            <select class="or-search-chip or-search-chip-select or-ranking-year-select"
+                                    aria-label="Selecionar estado"
+                                    data-estado-state-select>
+                                <option value="ac" >Acre</option>
+                                <option value="al" >Alagoas</option>
+                                <option value="am" >Amazonas</option>
+                                <option value="ap" >Amapá</option>
+                                <option value="ba" selected>Bahia</option>
+                                <option value="ce" >Ceará</option>
+                                <option value="df" >Distrito Federal</option>
+                                <option value="es" >Espírito Santo</option>
+                                <option value="go" >Goiás</option>
+                                <option value="ma" >Maranhão</option>
+                                <option value="mg" >Minas Gerais</option>
+                                <option value="ms" >Mato Grosso do Sul</option>
+                                <option value="mt" >Mato Grosso</option>
+                                <option value="pa" >Pará</option>
+                                <option value="pb" >Paraíba</option>
+                                <option value="pe" >Pernambuco</option>
+                                <option value="pi" >Piauí</option>
+                                <option value="pr" >Paraná</option>
+                                <option value="rj" >Rio de Janeiro</option>
+                                <option value="rn" >Rio Grande do Norte</option>
+                                <option value="ro" >Rondônia</option>
+                                <option value="rr" >Roraima</option>
+                                <option value="rs" >Rio Grande do Sul</option>
+                                <option value="sc" >Santa Catarina</option>
+                                <option value="se" >Sergipe</option>
+                                <option value="sp" >São Paulo</option>
+                                <option value="to" >Tocantins</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down or-search-chip-select-caret"></i>
+                        </div>
+                        <details class="estado-city-picker" data-estado-city-picker>
+                            <summary><i class="fa-solid fa-city" aria-hidden="true"></i><span>Cidade: Salvador</span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+                            <div class="estado-city-picker-panel">
+                                <label class="estado-city-picker-label" for="estado-city-search">Buscar cidade</label>
+                                <input type="search" id="estado-city-search" placeholder="Digite o nome da cidade" autocomplete="off"/>
+                                <p class="estado-city-picker-hint">Contagens conforme os filtros da lista. Em Maiores, até 20 eventos por seleção.</p>
+                                <div class="estado-city-picker-list">
+                                    <a class="estado-city-picker-item" data-estado-city-slug="" data-estado-city-name="Todas as cidades" href="&#x2f;estado&#x2f;ba&#x2f;&#x3f;filtro&#x3d;maratonas&amp;distancia&#x3d;1&#x25;2C42&amp;tempo&#x3d;0&#x25;2C12&amp;rua&#x3d;true&amp;trail&#x3d;false&amp;nacional&#x3d;true&amp;internacional&#x3d;false&amp;cupom&#x3d;false&amp;ano&#x3d;2025"><span>Todas as cidades</span><span data-city-count>10 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="abaira" data-estado-city-name="Aba&iacute;ra" aria-disabled="true" tabindex="-1"><span>Aba&iacute;ra</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="abare" data-estado-city-name="Abar&eacute;" aria-disabled="true" tabindex="-1"><span>Abar&eacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="alagoinhas" data-estado-city-name="Alagoinhas" aria-disabled="true" tabindex="-1"><span>Alagoinhas</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="amargosa" data-estado-city-name="Amargosa" aria-disabled="true" tabindex="-1"><span>Amargosa</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="andarai" data-estado-city-name="Andara&iacute;" aria-disabled="true" tabindex="-1"><span>Andara&iacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="andorinha" data-estado-city-name="Andorinha" aria-disabled="true" tabindex="-1"><span>Andorinha</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="antonio-goncalves" data-estado-city-name="Ant&ocirc;nio&#x20;Gon&ccedil;alves" aria-disabled="true" tabindex="-1"><span>Ant&ocirc;nio Gon&ccedil;alves</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="arataca" data-estado-city-name="Arataca" aria-disabled="true" tabindex="-1"><span>Arataca</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="baianopolis" data-estado-city-name="Baianopolis" aria-disabled="true" tabindex="-1"><span>Baianopolis</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="barra" data-estado-city-name="Barra" aria-disabled="true" tabindex="-1"><span>Barra</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="barra-da-estiva" data-estado-city-name="Barra&#x20;da&#x20;Estiva" aria-disabled="true" tabindex="-1"><span>Barra da Estiva</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="barra-do-choca" data-estado-city-name="Barra&#x20;do&#x20;Cho&ccedil;a" aria-disabled="true" tabindex="-1"><span>Barra do Cho&ccedil;a</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="barreiras" data-estado-city-name="Barreiras" aria-disabled="true" tabindex="-1"><span>Barreiras</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="belmonte" data-estado-city-name="Belmonte" aria-disabled="true" tabindex="-1"><span>Belmonte</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="belo-campo" data-estado-city-name="Belo&#x20;Campo" aria-disabled="true" tabindex="-1"><span>Belo Campo</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="bom-jesus-da-lapa" data-estado-city-name="Bom&#x20;Jesus&#x20;da&#x20;Lapa" aria-disabled="true" tabindex="-1"><span>Bom Jesus da Lapa</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="bonito" data-estado-city-name="Bonito" aria-disabled="true" tabindex="-1"><span>Bonito</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="brotas-de-macaubas" data-estado-city-name="Brotas&#x20;de&#x20;Maca&uacute;bas" aria-disabled="true" tabindex="-1"><span>Brotas de Maca&uacute;bas</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="brumado" data-estado-city-name="Brumado" aria-disabled="true" tabindex="-1"><span>Brumado</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="buerarema" data-estado-city-name="Buerarema" aria-disabled="true" tabindex="-1"><span>Buerarema</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="cachoeira" data-estado-city-name="Cachoeira" aria-disabled="true" tabindex="-1"><span>Cachoeira</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="cacule" data-estado-city-name="Cacul&eacute;" aria-disabled="true" tabindex="-1"><span>Cacul&eacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="caem" data-estado-city-name="Ca&eacute;m" aria-disabled="true" tabindex="-1"><span>Ca&eacute;m</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="caetite" data-estado-city-name="Caetit&eacute;" aria-disabled="true" tabindex="-1"><span>Caetit&eacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="cairu" data-estado-city-name="Cairu" aria-disabled="true" tabindex="-1"><span>Cairu</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="caldeirao-grande" data-estado-city-name="Caldeir&atilde;o&#x20;Grande" aria-disabled="true" tabindex="-1"><span>Caldeir&atilde;o Grande</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="camacan" data-estado-city-name="Camacan" aria-disabled="true" tabindex="-1"><span>Camacan</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="camacari" data-estado-city-name="Camacari" aria-disabled="true" tabindex="-1"><span>Camacari</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="campo-alegre-de-lourdes" data-estado-city-name="Campo&#x20;Alegre&#x20;de&#x20;Lourdes" aria-disabled="true" tabindex="-1"><span>Campo Alegre de Lourdes</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="campo-formoso" data-estado-city-name="Campo&#x20;Formoso" aria-disabled="true" tabindex="-1"><span>Campo Formoso</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="canarana" data-estado-city-name="Canarana" aria-disabled="true" tabindex="-1"><span>Canarana</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="candeal" data-estado-city-name="Candeal" aria-disabled="true" tabindex="-1"><span>Candeal</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="candido-sales" data-estado-city-name="C&acirc;ndido&#x20;Sales" aria-disabled="true" tabindex="-1"><span>C&acirc;ndido Sales</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="capim-grosso" data-estado-city-name="Capim&#x20;Grosso" aria-disabled="true" tabindex="-1"><span>Capim Grosso</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="cardeal-da-silva" data-estado-city-name="Cardeal&#x20;da&#x20;Silva" aria-disabled="true" tabindex="-1"><span>Cardeal da Silva</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="carinhanha" data-estado-city-name="Carinhanha" aria-disabled="true" tabindex="-1"><span>Carinhanha</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="casa-nova" data-estado-city-name="Casa&#x20;Nova" aria-disabled="true" tabindex="-1"><span>Casa Nova</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="castro-alves" data-estado-city-name="Castro&#x20;Alves" aria-disabled="true" tabindex="-1"><span>Castro Alves</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="catu" data-estado-city-name="Catu" aria-disabled="true" tabindex="-1"><span>Catu</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="central" data-estado-city-name="Central" aria-disabled="true" tabindex="-1"><span>Central</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="conceicao-da-feira" data-estado-city-name="Concei&ccedil;&atilde;o&#x20;da&#x20;Feira" aria-disabled="true" tabindex="-1"><span>Concei&ccedil;&atilde;o da Feira</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="conceicao-do-jacuipe" data-estado-city-name="Concei&ccedil;&atilde;o&#x20;do&#x20;Jacuipe" aria-disabled="true" tabindex="-1"><span>Concei&ccedil;&atilde;o do Jacuipe</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="conde" data-estado-city-name="Conde" aria-disabled="true" tabindex="-1"><span>Conde</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="coronel-joao-sa" data-estado-city-name="Coronel&#x20;Jo&atilde;o&#x20;S&aacute;" aria-disabled="true" tabindex="-1"><span>Coronel Jo&atilde;o S&aacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="correntina" data-estado-city-name="Correntina" aria-disabled="true" tabindex="-1"><span>Correntina</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="cotegipe" data-estado-city-name="Cotegipe" aria-disabled="true" tabindex="-1"><span>Cotegipe</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="cristopolis" data-estado-city-name="Cristop&oacute;lis" aria-disabled="true" tabindex="-1"><span>Cristop&oacute;lis</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="cruz-das-almas" data-estado-city-name="Cruz&#x20;das&#x20;Almas" aria-disabled="true" tabindex="-1"><span>Cruz das Almas</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="curaca" data-estado-city-name="Cura&ccedil;a" aria-disabled="true" tabindex="-1"><span>Cura&ccedil;a</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="dias-d-avila" data-estado-city-name="Dias&#x20;D&#x27;&aacute;vila" aria-disabled="true" tabindex="-1"><span>Dias D&#x27;&aacute;vila</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="entre-rios" data-estado-city-name="Entre&#x20;Rios" aria-disabled="true" tabindex="-1"><span>Entre Rios</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="esplanada" data-estado-city-name="Esplanada" aria-disabled="true" tabindex="-1"><span>Esplanada</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="eunapolis" data-estado-city-name="Eunapolis" aria-disabled="true" tabindex="-1"><span>Eunapolis</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="feira-de-santana" data-estado-city-name="Feira&#x20;de&#x20;Santana" href="&#x2f;estado&#x2f;ba&#x2f;&#x3f;cidade&#x3d;feira&#x25;2Dde&#x25;2Dsantana&amp;filtro&#x3d;maratonas&amp;distancia&#x3d;1&#x25;2C42&amp;tempo&#x3d;0&#x25;2C12&amp;rua&#x3d;true&amp;trail&#x3d;false&amp;nacional&#x3d;true&amp;internacional&#x3d;false&amp;cupom&#x3d;false&amp;ano&#x3d;2025" aria-disabled="false"><span>Feira de Santana</span><span data-city-count>3 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="filadelfia" data-estado-city-name="Filad&eacute;lfia" aria-disabled="true" tabindex="-1"><span>Filad&eacute;lfia</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="formosa-do-rio-preto" data-estado-city-name="Formosa&#x20;do&#x20;Rio&#x20;Preto" aria-disabled="true" tabindex="-1"><span>Formosa do Rio Preto</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="gaviao" data-estado-city-name="Gavi&atilde;o" aria-disabled="true" tabindex="-1"><span>Gavi&atilde;o</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="guanambi" data-estado-city-name="Guanambi" aria-disabled="true" tabindex="-1"><span>Guanambi</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ibicarai" data-estado-city-name="Ibicarai" aria-disabled="true" tabindex="-1"><span>Ibicarai</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ibicui" data-estado-city-name="Ibicu&iacute;" aria-disabled="true" tabindex="-1"><span>Ibicu&iacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ibirapua" data-estado-city-name="Ibirapu&atilde;" aria-disabled="true" tabindex="-1"><span>Ibirapu&atilde;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ibirataia" data-estado-city-name="Ibirataia" aria-disabled="true" tabindex="-1"><span>Ibirataia</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ibitita" data-estado-city-name="Ibitita" aria-disabled="true" tabindex="-1"><span>Ibitita</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ibotirama" data-estado-city-name="Ibotirama" aria-disabled="true" tabindex="-1"><span>Ibotirama</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ilheus" data-estado-city-name="Ilheus" aria-disabled="true" tabindex="-1"><span>Ilheus</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="inhambupe" data-estado-city-name="Inhambupe" aria-disabled="true" tabindex="-1"><span>Inhambupe</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ipecaeta" data-estado-city-name="Ipecaet&aacute;" aria-disabled="true" tabindex="-1"><span>Ipecaet&aacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ipiau" data-estado-city-name="Ipiau" aria-disabled="true" tabindex="-1"><span>Ipiau</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ipira" data-estado-city-name="Ipir&aacute;" aria-disabled="true" tabindex="-1"><span>Ipir&aacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="iraquara" data-estado-city-name="Iraquara" aria-disabled="true" tabindex="-1"><span>Iraquara</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="irara" data-estado-city-name="Irar&aacute;" aria-disabled="true" tabindex="-1"><span>Irar&aacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="irece" data-estado-city-name="Irec&ecirc;" aria-disabled="true" tabindex="-1"><span>Irec&ecirc;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="itaberaba" data-estado-city-name="Itaberaba" aria-disabled="true" tabindex="-1"><span>Itaberaba</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="itabuna" data-estado-city-name="Itabuna" aria-disabled="true" tabindex="-1"><span>Itabuna</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="itacare" data-estado-city-name="Itacar&eacute;" aria-disabled="true" tabindex="-1"><span>Itacar&eacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="itajuipe" data-estado-city-name="Itajuipe" aria-disabled="true" tabindex="-1"><span>Itajuipe</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="itamaraju" data-estado-city-name="Itamaraju" aria-disabled="true" tabindex="-1"><span>Itamaraju</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="itambe" data-estado-city-name="Itamb&eacute;" aria-disabled="true" tabindex="-1"><span>Itamb&eacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="itaparica" data-estado-city-name="Itaparica" aria-disabled="true" tabindex="-1"><span>Itaparica</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="itapetinga" data-estado-city-name="Itapetinga" aria-disabled="true" tabindex="-1"><span>Itapetinga</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="itaquara" data-estado-city-name="Itaquara" aria-disabled="true" tabindex="-1"><span>Itaquara</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="itatim" data-estado-city-name="Itatim" aria-disabled="true" tabindex="-1"><span>Itatim</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="itiuba" data-estado-city-name="Iti&uacute;ba" aria-disabled="true" tabindex="-1"><span>Iti&uacute;ba</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ituacu" data-estado-city-name="Itua&ccedil;u" aria-disabled="true" tabindex="-1"><span>Itua&ccedil;u</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="iuiu" data-estado-city-name="Iui&uacute;" aria-disabled="true" tabindex="-1"><span>Iui&uacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="jacobina" data-estado-city-name="Jacobina" aria-disabled="true" tabindex="-1"><span>Jacobina</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="jaguaquara" data-estado-city-name="Jaguaquara" aria-disabled="true" tabindex="-1"><span>Jaguaquara</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="jaguarari" data-estado-city-name="Jaguarari" aria-disabled="true" tabindex="-1"><span>Jaguarari</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="jequie" data-estado-city-name="Jequie" aria-disabled="true" tabindex="-1"><span>Jequie</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="jeremoabo" data-estado-city-name="Jeremoabo" aria-disabled="true" tabindex="-1"><span>Jeremoabo</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="juazeiro" data-estado-city-name="Juazeiro" aria-disabled="true" tabindex="-1"><span>Juazeiro</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="jussari" data-estado-city-name="Jussari" aria-disabled="true" tabindex="-1"><span>Jussari</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="lafaiete-coutinho" data-estado-city-name="Lafaiete&#x20;Coutinho" aria-disabled="true" tabindex="-1"><span>Lafaiete Coutinho</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="lapao" data-estado-city-name="Lap&atilde;o" aria-disabled="true" tabindex="-1"><span>Lap&atilde;o</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="lauro-de-freitas" data-estado-city-name="Lauro&#x20;de&#x20;Freitas" aria-disabled="true" tabindex="-1"><span>Lauro de Freitas</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="livramento-de-nossa-senhora" data-estado-city-name="Livramento&#x20;de&#x20;Nossa&#x20;Senhora" aria-disabled="true" tabindex="-1"><span>Livramento de Nossa Senhora</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="luis-eduardo-magalhaes" data-estado-city-name="Luis&#x20;Eduardo&#x20;Magalh&atilde;es" aria-disabled="true" tabindex="-1"><span>Luis Eduardo Magalh&atilde;es</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="macarani" data-estado-city-name="Macarani" aria-disabled="true" tabindex="-1"><span>Macarani</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="macurure" data-estado-city-name="Macurur&eacute;" aria-disabled="true" tabindex="-1"><span>Macurur&eacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="madre-de-deus" data-estado-city-name="Madre&#x20;de&#x20;Deus" aria-disabled="true" tabindex="-1"><span>Madre de Deus</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="mairi" data-estado-city-name="Mairi" aria-disabled="true" tabindex="-1"><span>Mairi</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="maragogipe" data-estado-city-name="Maragogipe" aria-disabled="true" tabindex="-1"><span>Maragogipe</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="mata-de-sao-joao" data-estado-city-name="Mata&#x20;de&#x20;S&atilde;o&#x20;Jo&atilde;o" aria-disabled="true" tabindex="-1"><span>Mata de S&atilde;o Jo&atilde;o</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="miguel-calmon" data-estado-city-name="Miguel&#x20;Calmon" aria-disabled="true" tabindex="-1"><span>Miguel Calmon</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="monte-santo" data-estado-city-name="Monte&#x20;Santo" aria-disabled="true" tabindex="-1"><span>Monte Santo</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="morro-do-chapeu" data-estado-city-name="Morro&#x20;do&#x20;Chap&eacute;u" aria-disabled="true" tabindex="-1"><span>Morro do Chap&eacute;u</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="mucuge" data-estado-city-name="Mucug&ecirc;" aria-disabled="true" tabindex="-1"><span>Mucug&ecirc;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="mucuri" data-estado-city-name="Mucuri" aria-disabled="true" tabindex="-1"><span>Mucuri</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="mundo-novo" data-estado-city-name="Mundo&#x20;Novo" aria-disabled="true" tabindex="-1"><span>Mundo Novo</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="muquem-do-sao-francisco" data-estado-city-name="Muqu&eacute;m&#x20;do&#x20;S&atilde;o&#x20;Francisco" aria-disabled="true" tabindex="-1"><span>Muqu&eacute;m do S&atilde;o Francisco</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="muritiba" data-estado-city-name="Muritiba" aria-disabled="true" tabindex="-1"><span>Muritiba</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="mutuipe" data-estado-city-name="Mutuipe" aria-disabled="true" tabindex="-1"><span>Mutuipe</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="nova-vicosa" data-estado-city-name="Nova&#x20;Vi&ccedil;osa" aria-disabled="true" tabindex="-1"><span>Nova Vi&ccedil;osa</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="olindina" data-estado-city-name="Olindina" aria-disabled="true" tabindex="-1"><span>Olindina</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="oliveira-dos-brejinhos" data-estado-city-name="Oliveira&#x20;dos&#x20;Brejinhos" aria-disabled="true" tabindex="-1"><span>Oliveira dos Brejinhos</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="palmeiras" data-estado-city-name="Palmeiras" aria-disabled="true" tabindex="-1"><span>Palmeiras</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="paramirim" data-estado-city-name="Paramirim" aria-disabled="true" tabindex="-1"><span>Paramirim</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="paratinga" data-estado-city-name="Paratinga" aria-disabled="true" tabindex="-1"><span>Paratinga</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="paripiranga" data-estado-city-name="Paripiranga" aria-disabled="true" tabindex="-1"><span>Paripiranga</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="paulo-afonso" data-estado-city-name="Paulo&#x20;Afonso" aria-disabled="true" tabindex="-1"><span>Paulo Afonso</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="pe-de-serra" data-estado-city-name="P&eacute;&#x20;de&#x20;Serra" aria-disabled="true" tabindex="-1"><span>P&eacute; de Serra</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="piata" data-estado-city-name="Piat&atilde;" aria-disabled="true" tabindex="-1"><span>Piat&atilde;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="pindai" data-estado-city-name="Pinda&iacute;" aria-disabled="true" tabindex="-1"><span>Pinda&iacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="pindobacu" data-estado-city-name="Pindoba&ccedil;u" aria-disabled="true" tabindex="-1"><span>Pindoba&ccedil;u</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="piritiba" data-estado-city-name="Piritiba" aria-disabled="true" tabindex="-1"><span>Piritiba</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="pocoes" data-estado-city-name="Po&ccedil;&otilde;es" aria-disabled="true" tabindex="-1"><span>Po&ccedil;&otilde;es</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ponto-novo" data-estado-city-name="Ponto&#x20;Novo" aria-disabled="true" tabindex="-1"><span>Ponto Novo</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="porto-seguro" data-estado-city-name="Porto&#x20;Seguro" aria-disabled="true" tabindex="-1"><span>Porto Seguro</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="presidente-tancredo-neves" data-estado-city-name="Presidente&#x20;Tancredo&#x20;Neves" aria-disabled="true" tabindex="-1"><span>Presidente Tancredo Neves</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="quixabeira" data-estado-city-name="Quixabeira" aria-disabled="true" tabindex="-1"><span>Quixabeira</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="rafael-jambeiro" data-estado-city-name="Rafael&#x20;Jambeiro" aria-disabled="true" tabindex="-1"><span>Rafael Jambeiro</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="riachao-das-neves" data-estado-city-name="Riach&atilde;o&#x20;das&#x20;Neves" aria-disabled="true" tabindex="-1"><span>Riach&atilde;o das Neves</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ribeira-do-pombal" data-estado-city-name="Ribeira&#x20;do&#x20;Pombal" aria-disabled="true" tabindex="-1"><span>Ribeira do Pombal</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="rio-de-contas" data-estado-city-name="Rio&#x20;de&#x20;Contas" aria-disabled="true" tabindex="-1"><span>Rio de Contas</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="rio-real" data-estado-city-name="Rio&#x20;Real" aria-disabled="true" tabindex="-1"><span>Rio Real</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="salinas-da-margarida" data-estado-city-name="Salinas&#x20;da&#x20;Margarida" aria-disabled="true" tabindex="-1"><span>Salinas da Margarida</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="salvador" data-estado-city-name="Salvador" href="&#x2f;estado&#x2f;ba&#x2f;&#x3f;cidade&#x3d;salvador&amp;filtro&#x3d;maratonas&amp;distancia&#x3d;1&#x25;2C42&amp;tempo&#x3d;0&#x25;2C12&amp;rua&#x3d;true&amp;trail&#x3d;false&amp;nacional&#x3d;true&amp;internacional&#x3d;false&amp;cupom&#x3d;false&amp;ano&#x3d;2025" aria-disabled="false" aria-current="page"><span>Salvador</span><span data-city-count>7 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="santa-barbara" data-estado-city-name="Santa&#x20;Barbara" aria-disabled="true" tabindex="-1"><span>Santa Barbara</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="santa-cruz-cabralia" data-estado-city-name="Santa&#x20;Cruz&#x20;Cabr&aacute;lia" aria-disabled="true" tabindex="-1"><span>Santa Cruz Cabr&aacute;lia</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="santa-maria-da-vitoria" data-estado-city-name="Santa&#x20;Maria&#x20;da&#x20;Vit&oacute;ria" aria-disabled="true" tabindex="-1"><span>Santa Maria da Vit&oacute;ria</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="santana" data-estado-city-name="Santana" aria-disabled="true" tabindex="-1"><span>Santana</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="santanopolis" data-estado-city-name="Santanopolis" aria-disabled="true" tabindex="-1"><span>Santanopolis</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="santa-rita-de-cassia" data-estado-city-name="Santa&#x20;Rita&#x20;de&#x20;C&aacute;ssia" aria-disabled="true" tabindex="-1"><span>Santa Rita de C&aacute;ssia</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="santa-terezinha" data-estado-city-name="Santa&#x20;Terezinha" aria-disabled="true" tabindex="-1"><span>Santa Terezinha</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="santo-amaro" data-estado-city-name="Santo&#x20;Amaro" aria-disabled="true" tabindex="-1"><span>Santo Amaro</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="santo-antonio-de-jesus" data-estado-city-name="Santo&#x20;Antonio&#x20;de&#x20;Jesus" aria-disabled="true" tabindex="-1"><span>Santo Antonio de Jesus</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="santo-estevao" data-estado-city-name="Santo&#x20;Estev&atilde;o" aria-disabled="true" tabindex="-1"><span>Santo Estev&atilde;o</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="sao-desiderio" data-estado-city-name="S&atilde;o&#x20;Desid&eacute;rio" aria-disabled="true" tabindex="-1"><span>S&atilde;o Desid&eacute;rio</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="sao-felix" data-estado-city-name="Sao&#x20;Felix" aria-disabled="true" tabindex="-1"><span>Sao Felix</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="sao-goncalo-dos-campos" data-estado-city-name="S&atilde;o&#x20;Gon&ccedil;alo&#x20;dos&#x20;Campos" aria-disabled="true" tabindex="-1"><span>S&atilde;o Gon&ccedil;alo dos Campos</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="sao-jose-do-jacuipe" data-estado-city-name="S&atilde;o&#x20;Jos&eacute;&#x20;do&#x20;Jacu&iacute;pe" aria-disabled="true" tabindex="-1"><span>S&atilde;o Jos&eacute; do Jacu&iacute;pe</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="sao-miguel-das-matas" data-estado-city-name="Sao&#x20;Miguel&#x20;das&#x20;Matas" aria-disabled="true" tabindex="-1"><span>Sao Miguel das Matas</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="sao-sebastiao-do-passe" data-estado-city-name="S&atilde;o&#x20;Sebasti&atilde;o&#x20;do&#x20;Pass&eacute;" aria-disabled="true" tabindex="-1"><span>S&atilde;o Sebasti&atilde;o do Pass&eacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="seabra" data-estado-city-name="Seabra" aria-disabled="true" tabindex="-1"><span>Seabra</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="senhor-do-bonfim" data-estado-city-name="Senhor&#x20;do&#x20;Bonfim" aria-disabled="true" tabindex="-1"><span>Senhor do Bonfim</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="sento-se" data-estado-city-name="Sento&#x20;S&eacute;" aria-disabled="true" tabindex="-1"><span>Sento S&eacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="serra-dourada" data-estado-city-name="Serra&#x20;Dourada" aria-disabled="true" tabindex="-1"><span>Serra Dourada</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="serra-preta" data-estado-city-name="Serra&#x20;Preta" aria-disabled="true" tabindex="-1"><span>Serra Preta</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="serrinha" data-estado-city-name="Serrinha" aria-disabled="true" tabindex="-1"><span>Serrinha</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="serrolandia" data-estado-city-name="Serrol&acirc;ndia" aria-disabled="true" tabindex="-1"><span>Serrol&acirc;ndia</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="simoes-filho" data-estado-city-name="Sim&otilde;es&#x20;Filho" aria-disabled="true" tabindex="-1"><span>Sim&otilde;es Filho</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="tabocas-do-brejo-velho" data-estado-city-name="Tabocas&#x20;do&#x20;Brejo&#x20;Velho" aria-disabled="true" tabindex="-1"><span>Tabocas do Brejo Velho</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="teixeira-de-freitas" data-estado-city-name="Teixeira&#x20;de&#x20;Freitas" aria-disabled="true" tabindex="-1"><span>Teixeira de Freitas</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="tremedal" data-estado-city-name="Tremedal" aria-disabled="true" tabindex="-1"><span>Tremedal</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="tucano" data-estado-city-name="Tucano" aria-disabled="true" tabindex="-1"><span>Tucano</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="uaua" data-estado-city-name="Uau&aacute;" aria-disabled="true" tabindex="-1"><span>Uau&aacute;</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="ubaitaba" data-estado-city-name="Ubaitaba" aria-disabled="true" tabindex="-1"><span>Ubaitaba</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="valenca" data-estado-city-name="Valenca" aria-disabled="true" tabindex="-1"><span>Valenca</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="varzea-da-roca" data-estado-city-name="V&aacute;rzea&#x20;da&#x20;Ro&ccedil;a" aria-disabled="true" tabindex="-1"><span>V&aacute;rzea da Ro&ccedil;a</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="varzea-do-poco" data-estado-city-name="V&aacute;rzea&#x20;do&#x20;Po&ccedil;o" aria-disabled="true" tabindex="-1"><span>V&aacute;rzea do Po&ccedil;o</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="varzea-nova" data-estado-city-name="V&aacute;rzea&#x20;Nova" aria-disabled="true" tabindex="-1"><span>V&aacute;rzea Nova</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="vera-cruz" data-estado-city-name="Vera&#x20;Cruz" aria-disabled="true" tabindex="-1"><span>Vera Cruz</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="vitoria-da-conquista" data-estado-city-name="Vitoria&#x20;da&#x20;Conquista" aria-disabled="true" tabindex="-1"><span>Vitoria da Conquista</span><span data-city-count>0 eventos</span></a>
+                                    
+                                        <a class="estado-city-picker-item" data-estado-city-slug="wanderley" data-estado-city-name="Wanderley" aria-disabled="true" tabindex="-1"><span>Wanderley</span><span data-city-count>0 eventos</span></a>
+                                    
+                                </div>
+                                <p class="estado-city-picker-status" data-estado-city-status role="status" aria-live="polite"></p>
+                            </div>
+                        </details>
+                    </div>
+                
+
+                
+
+                <nav class="mt-0">
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-link  px-4" data-estado-tab="" id="nav-tab-UL" href="&#x2f;estado&#x2f;ba&#x2f;&#x3f;cidade&#x3d;salvador&amp;distancia&#x3d;1&#x25;2C42&amp;tempo&#x3d;0&#x25;2C12&amp;rua&#x3d;true&amp;trail&#x3d;false&amp;nacional&#x3d;true&amp;internacional&#x3d;false&amp;cupom&#x3d;false&amp;ano&#x3d;2025" role="tab" aria-selected="false">Últimos</a>
+                        <a class="nav-link  px-4" data-estado-tab="maiores" id="nav-tab-MA" href="&#x2f;estado&#x2f;ba&#x2f;&#x3f;cidade&#x3d;salvador&amp;filtro&#x3d;maiores&amp;distancia&#x3d;1&#x25;2C42&amp;tempo&#x3d;0&#x25;2C12&amp;rua&#x3d;true&amp;trail&#x3d;false&amp;nacional&#x3d;true&amp;internacional&#x3d;false&amp;cupom&#x3d;false&amp;ano&#x3d;2025" role="tab" aria-selected="false">Maiores</a>
+                        <a class="nav-link active px-4" data-estado-tab="maratonas" id="nav-tab-MR" href="&#x2f;estado&#x2f;ba&#x2f;&#x3f;cidade&#x3d;salvador&amp;filtro&#x3d;maratonas&amp;distancia&#x3d;1&#x25;2C42&amp;tempo&#x3d;0&#x25;2C12&amp;rua&#x3d;true&amp;trail&#x3d;false&amp;nacional&#x3d;true&amp;internacional&#x3d;false&amp;cupom&#x3d;false&amp;ano&#x3d;2025" role="tab" aria-selected="true">Maratonas</a>
+                    </div>
+                </nav>
+
+
+                
+
+                <div id="container-proximas" class="col-lg-12">
+
+                    <div id="scroll-container-proximas">
+                        
+    <div class="row g-2" id="listaEvento">
+
+            <div class="col-12">
+                <div class="text-divider fw-bold mt-2">September 2026</div>
+            </div>
+        
+
+<div class="col-12 mb-1">
+
+    
+
+        <a href="/evento/2026-maratona-salvador-2026/" class="or-event-card-link">
+            <article class="or-event-card">
+                <div class="or-event-card-body">
+                    <div class="or-event-card-top">
+
+                        <div class="or-event-card-date">
+                            <span class="day">27</span>
+                            <span class="month">Sep</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div>
+                            
+                                <h2 class="or-event-card-title">Maratona de Salvador 2026</h2>
+                            
+
+                            <div class="or-event-card-meta">
+                                <span><i class="fa-solid fa-location-dot me-1"></i>Salvador&nbsp;-&nbsp;BA</span>
+                                
+                                    <span class="d-inline-block ms-sm-2"><i class="fa-solid fa-person-running me-1"></i>7,910 concluintes</span>
+                                
+                            </div>
+
+                            <div class="or-event-card-distances">
+                                
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                5k <span class="fw-normal">| 2,153</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                10k <span class="fw-normal">| 1,504</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                21k <span class="fw-normal">| 3,128</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                42k <span class="fw-normal">| 1,125</span>
+                                            </span>
+                                        
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </a>
+
+    
+
+</div>
+
+            <div class="col-12">
+                <div class="text-divider fw-bold mt-2">May 2026</div>
+            </div>
+        
+
+<div class="col-12 mb-1">
+
+    
+
+        <a href="/evento/2026-maratona-farol-a-farol-2026/" class="or-event-card-link">
+            <article class="or-event-card">
+                <div class="or-event-card-body">
+                    <div class="or-event-card-top">
+
+                        <div class="or-event-card-date">
+                            <span class="day">24</span>
+                            <span class="month">May</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div>
+                            
+                                <h2 class="or-event-card-title">Maratona Farol A Farol - 2026</h2>
+                            
+
+                            <div class="or-event-card-meta">
+                                <span><i class="fa-solid fa-location-dot me-1"></i>Salvador&nbsp;-&nbsp;BA</span>
+                                
+                                    <span class="d-inline-block ms-sm-2"><i class="fa-solid fa-person-running me-1"></i>2,883 concluintes</span>
+                                
+                            </div>
+
+                            <div class="or-event-card-distances">
+                                
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                5k <span class="fw-normal">| 453</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                10k <span class="fw-normal">| 528</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                21k <span class="fw-normal">| 1,516</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                32k <span class="fw-normal">| 239</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                42k <span class="fw-normal">| 147</span>
+                                            </span>
+                                        
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </a>
+
+    
+
+</div>
+
+            <div class="col-12">
+                <div class="text-divider fw-bold mt-2">September 2025</div>
+            </div>
+        
+
+<div class="col-12 mb-1">
+
+    
+
+        <a href="/evento/2025-maratona-salvador-2025/" class="or-event-card-link">
+            <article class="or-event-card">
+                <div class="or-event-card-body">
+                    <div class="or-event-card-top">
+
+                        <div class="or-event-card-date">
+                            <span class="day">21</span>
+                            <span class="month">Sep</span>
+                            <span class="year">2025</span>
+                        </div>
+
+                        <div>
+                            
+                                <h2 class="or-event-card-title">Maratona de Salvador 2025</h2>
+                            
+
+                            <div class="or-event-card-meta">
+                                <span><i class="fa-solid fa-location-dot me-1"></i>Salvador&nbsp;-&nbsp;BA</span>
+                                
+                                    <span class="d-inline-block ms-sm-2"><i class="fa-solid fa-person-running me-1"></i>7,740 concluintes</span>
+                                
+                            </div>
+
+                            <div class="or-event-card-distances">
+                                
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                5k <span class="fw-normal">| 2,237</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                10k <span class="fw-normal">| 1,649</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                21k <span class="fw-normal">| 2,725</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                42k <span class="fw-normal">| 1,129</span>
+                                            </span>
+                                        
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </a>
+
+    
+
+</div>
+
+            <div class="col-12">
+                <div class="text-divider fw-bold mt-2">May 2025</div>
+            </div>
+        
+
+<div class="col-12 mb-1">
+
+    
+
+        <a href="/evento/2025-meia-maratona-farol-a-farol/" class="or-event-card-link">
+            <article class="or-event-card">
+                <div class="or-event-card-body">
+                    <div class="or-event-card-top">
+
+                        <div class="or-event-card-date">
+                            <span class="day">25</span>
+                            <span class="month">May</span>
+                            <span class="year">2025</span>
+                        </div>
+
+                        <div>
+                            
+                                <h2 class="or-event-card-title">Meia Maratona Farol a Farol</h2>
+                            
+
+                            <div class="or-event-card-meta">
+                                <span><i class="fa-solid fa-location-dot me-1"></i>Salvador&nbsp;-&nbsp;BA</span>
+                                
+                                    <span class="d-inline-block ms-sm-2"><i class="fa-solid fa-person-running me-1"></i>3,367 concluintes</span>
+                                
+                            </div>
+
+                            <div class="or-event-card-distances">
+                                
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                5k <span class="fw-normal">| 714</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                10k <span class="fw-normal">| 637</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                21k <span class="fw-normal">| 1,563</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                32k <span class="fw-normal">| 294</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                42k <span class="fw-normal">| 159</span>
+                                            </span>
+                                        
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </a>
+
+    
+
+</div>
+
+            <div class="col-12">
+                <div class="text-divider fw-bold mt-2">September 2024</div>
+            </div>
+        
+
+<div class="col-12 mb-1">
+
+    
+
+        <a href="/evento/2024-maratona-de-salvador-2024/" class="or-event-card-link">
+            <article class="or-event-card">
+                <div class="or-event-card-body">
+                    <div class="or-event-card-top">
+
+                        <div class="or-event-card-date">
+                            <span class="day">22</span>
+                            <span class="month">Sep</span>
+                            <span class="year">2024</span>
+                        </div>
+
+                        <div>
+                            
+                                <h2 class="or-event-card-title">Maratona de Salvador 2024</h2>
+                            
+
+                            <div class="or-event-card-meta">
+                                <span><i class="fa-solid fa-location-dot me-1"></i>Salvador&nbsp;-&nbsp;BA</span>
+                                
+                                    <span class="d-inline-block ms-sm-2"><i class="fa-solid fa-person-running me-1"></i>6,832 concluintes</span>
+                                
+                            </div>
+
+                            <div class="or-event-card-distances">
+                                
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                5k <span class="fw-normal">| 1,626</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                10k <span class="fw-normal">| 1,725</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                21k <span class="fw-normal">| 2,288</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                42k <span class="fw-normal">| 1,193</span>
+                                            </span>
+                                        
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </a>
+
+    
+
+</div>
+
+            <div class="col-12">
+                <div class="text-divider fw-bold mt-2">September 2023</div>
+            </div>
+        
+
+<div class="col-12 mb-1">
+
+    
+
+        <a href="/evento/2023-maratona-de-salvador-2023/" class="or-event-card-link">
+            <article class="or-event-card">
+                <div class="or-event-card-body">
+                    <div class="or-event-card-top">
+
+                        <div class="or-event-card-date">
+                            <span class="day">24</span>
+                            <span class="month">Sep</span>
+                            <span class="year">2023</span>
+                        </div>
+
+                        <div>
+                            
+                                <h2 class="or-event-card-title">Maratona de Salvador 2023</h2>
+                            
+
+                            <div class="or-event-card-meta">
+                                <span><i class="fa-solid fa-location-dot me-1"></i>Salvador&nbsp;-&nbsp;BA</span>
+                                
+                                    <span class="d-inline-block ms-sm-2"><i class="fa-solid fa-person-running me-1"></i>5,052 concluintes</span>
+                                
+                            </div>
+
+                            <div class="or-event-card-distances">
+                                
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                5k <span class="fw-normal">| 1,354</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                10k <span class="fw-normal">| 1,200</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                21k <span class="fw-normal">| 1,647</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                42k <span class="fw-normal">| 851</span>
+                                            </span>
+                                        
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </a>
+
+    
+
+</div>
+
+            <div class="col-12">
+                <div class="text-divider fw-bold mt-2">September 2022</div>
+            </div>
+        
+
+<div class="col-12 mb-1">
+
+    
+
+        <a href="/evento/2022-maratona-de-salvador-2022/" class="or-event-card-link">
+            <article class="or-event-card">
+                <div class="or-event-card-body">
+                    <div class="or-event-card-top">
+
+                        <div class="or-event-card-date">
+                            <span class="day">25</span>
+                            <span class="month">Sep</span>
+                            <span class="year">2022</span>
+                        </div>
+
+                        <div>
+                            
+                                <h2 class="or-event-card-title">Maratona de Salvador 2022</h2>
+                            
+
+                            <div class="or-event-card-meta">
+                                <span><i class="fa-solid fa-location-dot me-1"></i>Salvador&nbsp;-&nbsp;BA</span>
+                                
+                                    <span class="d-inline-block ms-sm-2"><i class="fa-solid fa-person-running me-1"></i>4,045 concluintes</span>
+                                
+                            </div>
+
+                            <div class="or-event-card-distances">
+                                
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                5k <span class="fw-normal">| 1,289</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                10k <span class="fw-normal">| 1,110</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                21k <span class="fw-normal">| 1,069</span>
+                                            </span>
+                                        
+                                            <span class="or-event-distance">
+                                                <i class="fa-solid fa-person-running"></i>
+                                                42k <span class="fw-normal">| 577</span>
+                                            </span>
+                                        
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </a>
+
+    
+
+</div>
+
+    </div>
+
+
+<script>
+    totalEventos = 7;
+    lastMonth = 9;
+    lastMonthKey = '2022-09';
+</script>
+
+
+
+                    </div>
+
+                    <div id="spinner-proximas" class="spinner-border mx-auto" style="display: none"></div>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="col-lg-3">
+
+                
+
+<div class="row row-cols-1 g-3">
+    
+        <div class="col">
+            <div class="card or-stats-card">
+                <div class="card p-0 fw-bold text-center rounded-bottom-0 kms" data-color="5">
+                    <span class="fs-6">
+                        BA - 5K
+                    </span>
+                </div>
+                <table class="table table-sm table-striped mb-0" style="font-size: small;">
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Melhor:</td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=5"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=5">00:17:05</a></td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=5"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=5">00:14:50</a></td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Média:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">00:39:21</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">00:33:27</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Totais:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">248,017</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">190,135</td>
+                    </tr>
+                    <tr class="rounded-bottom-5">
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"></td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/eventos.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">720</td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/runners.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">438,152</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    
+        <div class="col">
+            <div class="card or-stats-card">
+                <div class="card p-0 fw-bold text-center rounded-bottom-0 kms" data-color="10">
+                    <span class="fs-6">
+                        BA - 10K
+                    </span>
+                </div>
+                <table class="table table-sm table-striped mb-0" style="font-size: small;">
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Melhor:</td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=10"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=10">00:36:09</a></td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=10"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=10">00:30:13</a></td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Média:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">01:08:21</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">00:59:45</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Totais:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">44,891</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">79,160</td>
+                    </tr>
+                    <tr class="rounded-bottom-5">
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"></td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/eventos.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">522</td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/runners.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">124,051</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    
+        <div class="col">
+            <div class="card or-stats-card">
+                <div class="card p-0 fw-bold text-center rounded-bottom-0 kms" data-color="15">
+                    <span class="fs-6">
+                        BA - 15K
+                    </span>
+                </div>
+                <table class="table table-sm table-striped mb-0" style="font-size: small;">
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Melhor:</td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=15"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=15"></a></td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=15"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=15"></a></td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Média:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0"></td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0"></td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Totais:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">3,374</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">7,320</td>
+                    </tr>
+                    <tr class="rounded-bottom-5">
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"></td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/eventos.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">40</td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/runners.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">10,694</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    
+        <div class="col">
+            <div class="card or-stats-card">
+                <div class="card p-0 fw-bold text-center rounded-bottom-0 kms" data-color="21">
+                    <span class="fs-6">
+                        BA - 21K
+                    </span>
+                </div>
+                <table class="table table-sm table-striped mb-0" style="font-size: small;">
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Melhor:</td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=21"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=21">01:18:20</a></td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=21"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=21">01:07:08</a></td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Média:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">02:19:22</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">02:07:35</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Totais:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">13,495</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">28,801</td>
+                    </tr>
+                    <tr class="rounded-bottom-5">
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"></td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/eventos.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">96</td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/runners.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">42,296</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    
+        <div class="col">
+            <div class="card or-stats-card">
+                <div class="card p-0 fw-bold text-center rounded-bottom-0 kms" data-color="30">
+                    <span class="fs-6">
+                        BA - 30K
+                    </span>
+                </div>
+                <table class="table table-sm table-striped mb-0" style="font-size: small;">
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Melhor:</td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=30"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=30"></a></td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=30"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=30"></a></td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Média:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0"></td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0"></td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Totais:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">116</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">498</td>
+                    </tr>
+                    <tr class="rounded-bottom-5">
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"></td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/eventos.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">5</td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/runners.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">614</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    
+        <div class="col">
+            <div class="card or-stats-card">
+                <div class="card p-0 fw-bold text-center rounded-bottom-0 kms" data-color="42">
+                    <span class="fs-6">
+                        BA - 42K
+                    </span>
+                </div>
+                <table class="table table-sm table-striped mb-0" style="font-size: small;">
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Melhor:</td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=42"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=F&percurso=42">02:51:55</a></td>
+                        <td class="px-2 pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=42"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></a></td>
+                        <td class="mono pt-1 pb-0"><a href="/ranking/2025/?genero=M&percurso=42">02:22:05</a></td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Média:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">04:37:08</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">04:15:37</td>
+                    </tr>
+                    <tr>
+                        <td class="px-2 pt-1 pb-0">Totais:</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_fem.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">884</td>
+                        <td class="px-2 pt-1 pb-0"><img src="/assets/rh_icon_masc.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0">4,641</td>
+                    </tr>
+                    <tr class="rounded-bottom-5">
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"></td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/eventos.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">13</td>
+                        <td class="px-2 pt-1 pb-0 bg-transparent border-bottom-0"><img src="/assets/runners.png" width="14" style="margin-top: -4px"/></td>
+                        <td class="mono pt-1 pb-0 bg-transparent border-bottom-0">5,525</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+        class="sticky"
+        data-mdb-sticky-init
+        data-mdb-sticky-animation-sticky="slide-in-down"
+        data-mdb-sticky-animation-unsticky="slide-up"
+        data-mdb-sticky-boundary="#sticky-stop"
+        data-mdb-sticky-direction="both"
+>
+
+        <div class="col-lg-12 text-center text-lg-center mt-5 pt-5">
+    
+</div>
+
+<hr>
+
+
+<div class="row mt-3">
+    <div class="col text-center px-0 small">
+        <a href="/sobre/">Sobre</a> | <a href="/privacidade/">Privacidade</a> | <a href="https://roadrunners.run/ajuda/?utm_source=openresults&amp;utm_medium=referral&amp;utm_campaign=openresults_to_roadrunners&amp;utm_content=ajuda_rodape" data-rr-placement="ajuda_rodape" data-outbound-placement="ajuda_rodape">Ajuda</a>
+        
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col text-center p-2 fs-4 ls-widest">
+        <a href="https://www.instagram.com/roadrunners.run/" target="_blank" data-outbound-placement="rodape_instagram"><i class="fa-brands fa-instagram" title="Link para o Instagram"></i></a>
+        <a href="https://www.strava.com/clubs/weareroadrunners/" target="_blank" data-outbound-placement="rodape_strava"><i class="fa-brands fa-strava" title="Link para o Strava"></i></a>
+        <a href="https://whatsapp.com/channel/0029VaAE7vc2975GuUCHIK0K" target="_blank" data-outbound-placement="rodape_whatsapp"><i class="fa-brands fa-whatsapp" title="Link para o Whatsapp"></i></a>
+    </div>
+</div>
+
+</div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    
+
+    
+<footer class="container text-center text-lg-start">
+    <div id="sticky-stop" class="row px-0" style="border-style: dotted; border-width: 1px 0 0 0; border-color: #9b9b9b; padding: 10px 10px 20px 10px; margin-top: 20px">
+        <div class="col-lg-6 text-center text-lg-start px-0">
+            <a href="https://runnerhub.run/" target="_blank" data-outbound-placement="rodape_logo_runnerhub">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" viewBox="0 0 269.25 56.999997" height="24" preserveAspectRatio="xMidYMid meet" version="1.2">
+                    <defs/>
+                    <g id="e75d27301e">
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(7.431296, 40.790583)">
+                                <path style="stroke:none" d="M 23.359375 -0.953125 C 23.410156 -0.828125 23.4375 -0.6875 23.4375 -0.53125 C 23.4375 -0.175781 23.210938 0 22.765625 0 L 15.96875 0 C 15.71875 0 15.519531 -0.0625 15.375 -0.1875 C 15.238281 -0.320312 15.132812 -0.5625 15.0625 -0.90625 L 13.03125 -9.953125 C 12.988281 -10.085938 12.9375 -10.179688 12.875 -10.234375 C 12.8125 -10.296875 12.6875 -10.328125 12.5 -10.328125 L 10.40625 -10.328125 C 10.21875 -10.328125 10.085938 -10.289062 10.015625 -10.21875 C 9.941406 -10.15625 9.894531 -10.050781 9.875 -9.90625 L 8.578125 -0.8125 C 8.535156 -0.457031 8.425781 -0.234375 8.25 -0.140625 C 8.070312 -0.046875 7.765625 0 7.328125 0 L 1.4375 0 C 0.832031 0 0.578125 -0.363281 0.671875 -1.09375 L 4.09375 -25.390625 C 4.125 -25.648438 4.175781 -25.816406 4.25 -25.890625 C 4.332031 -25.960938 4.476562 -26 4.6875 -26 L 16.390625 -26 C 19.492188 -26 21.90625 -25.40625 23.625 -24.21875 C 25.34375 -23.039062 26.203125 -21.398438 26.203125 -19.296875 C 26.203125 -17.597656 25.703125 -16.023438 24.703125 -14.578125 C 23.710938 -13.128906 22.425781 -12.085938 20.84375 -11.453125 C 20.539062 -11.335938 20.359375 -11.234375 20.296875 -11.140625 C 20.242188 -11.046875 20.238281 -10.914062 20.28125 -10.75 Z M 14.609375 -15.546875 C 15.566406 -15.546875 16.363281 -15.875 17 -16.53125 C 17.644531 -17.1875 17.96875 -17.945312 17.96875 -18.8125 C 17.96875 -19.46875 17.726562 -19.960938 17.25 -20.296875 C 16.769531 -20.640625 16.15625 -20.8125 15.40625 -20.8125 L 11.84375 -20.8125 C 11.675781 -20.8125 11.554688 -20.765625 11.484375 -20.671875 C 11.421875 -20.578125 11.363281 -20.390625 11.3125 -20.109375 L 10.71875 -16.078125 L 10.71875 -15.90625 C 10.71875 -15.757812 10.742188 -15.660156 10.796875 -15.609375 C 10.859375 -15.566406 10.960938 -15.546875 11.109375 -15.546875 Z M 14.609375 -15.546875 "/>
+                            </g>
+                        </g>
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(33.317082, 40.790583)">
+                                <path style="stroke:none" d="M 24.0625 -10.046875 C 23.53125 -6.222656 22.21875 -3.535156 20.125 -1.984375 C 18.03125 -0.429688 15.210938 0.34375 11.671875 0.34375 C 8.117188 0.34375 5.546875 -0.367188 3.953125 -1.796875 C 2.367188 -3.234375 1.578125 -5.367188 1.578125 -8.203125 C 1.578125 -8.972656 1.660156 -9.960938 1.828125 -11.171875 L 3.8125 -25.390625 C 3.84375 -25.648438 3.894531 -25.816406 3.96875 -25.890625 C 4.050781 -25.960938 4.195312 -26 4.40625 -26 L 11.0625 -26 C 11.28125 -26 11.453125 -25.894531 11.578125 -25.6875 C 11.703125 -25.488281 11.742188 -25.273438 11.703125 -25.046875 L 9.59375 -9.90625 C 9.5 -9.164062 9.453125 -8.664062 9.453125 -8.40625 C 9.453125 -7.257812 9.707031 -6.441406 10.21875 -5.953125 C 10.738281 -5.460938 11.5 -5.21875 12.5 -5.21875 C 13.789062 -5.21875 14.894531 -5.628906 15.8125 -6.453125 C 16.738281 -7.285156 17.328125 -8.613281 17.578125 -10.4375 L 19.6875 -25.390625 C 19.707031 -25.648438 19.757812 -25.816406 19.84375 -25.890625 C 19.925781 -25.960938 20.070312 -26 20.28125 -26 L 25.53125 -26 C 25.75 -26 25.921875 -25.894531 26.046875 -25.6875 C 26.171875 -25.488281 26.210938 -25.273438 26.171875 -25.046875 Z M 24.0625 -10.046875 "/>
+                            </g>
+                        </g>
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(58.817557, 40.790583)">
+                                <path style="stroke:none" d="M 26.6875 -26 C 27.019531 -26 27.160156 -25.8125 27.109375 -25.4375 L 23.578125 -0.421875 C 23.554688 -0.253906 23.488281 -0.140625 23.375 -0.078125 C 23.269531 -0.0234375 23.101562 0 22.875 0 L 18.078125 0 C 17.910156 0 17.769531 -0.0507812 17.65625 -0.15625 C 17.539062 -0.257812 17.398438 -0.441406 17.234375 -0.703125 L 9.359375 -13.765625 C 9.285156 -13.878906 9.210938 -13.9375 9.140625 -13.9375 C 9.003906 -13.9375 8.921875 -13.785156 8.890625 -13.484375 L 7.078125 -0.671875 C 7.054688 -0.390625 6.988281 -0.207031 6.875 -0.125 C 6.769531 -0.0390625 6.554688 0 6.234375 0 L 1.1875 0 C 0.75 0 0.5625 -0.300781 0.625 -0.90625 L 4.09375 -25.390625 C 4.125 -25.648438 4.179688 -25.816406 4.265625 -25.890625 C 4.359375 -25.960938 4.535156 -26 4.796875 -26 L 10.515625 -26 C 10.765625 -26 10.960938 -25.929688 11.109375 -25.796875 C 11.265625 -25.671875 11.425781 -25.46875 11.59375 -25.1875 L 18.421875 -13.5625 C 18.546875 -13.375 18.664062 -13.28125 18.78125 -13.28125 C 18.84375 -13.28125 18.90625 -13.316406 18.96875 -13.390625 C 19.03125 -13.472656 19.070312 -13.585938 19.09375 -13.734375 L 20.734375 -25.46875 C 20.765625 -25.695312 20.820312 -25.84375 20.90625 -25.90625 C 21 -25.96875 21.175781 -26 21.4375 -26 Z M 26.6875 -26 "/>
+                            </g>
+                        </g>
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(85.473962, 40.790583)">
+                                <path style="stroke:none" d="M 26.6875 -26 C 27.019531 -26 27.160156 -25.8125 27.109375 -25.4375 L 23.578125 -0.421875 C 23.554688 -0.253906 23.488281 -0.140625 23.375 -0.078125 C 23.269531 -0.0234375 23.101562 0 22.875 0 L 18.078125 0 C 17.910156 0 17.769531 -0.0507812 17.65625 -0.15625 C 17.539062 -0.257812 17.398438 -0.441406 17.234375 -0.703125 L 9.359375 -13.765625 C 9.285156 -13.878906 9.210938 -13.9375 9.140625 -13.9375 C 9.003906 -13.9375 8.921875 -13.785156 8.890625 -13.484375 L 7.078125 -0.671875 C 7.054688 -0.390625 6.988281 -0.207031 6.875 -0.125 C 6.769531 -0.0390625 6.554688 0 6.234375 0 L 1.1875 0 C 0.75 0 0.5625 -0.300781 0.625 -0.90625 L 4.09375 -25.390625 C 4.125 -25.648438 4.179688 -25.816406 4.265625 -25.890625 C 4.359375 -25.960938 4.535156 -26 4.796875 -26 L 10.515625 -26 C 10.765625 -26 10.960938 -25.929688 11.109375 -25.796875 C 11.265625 -25.671875 11.425781 -25.46875 11.59375 -25.1875 L 18.421875 -13.5625 C 18.546875 -13.375 18.664062 -13.28125 18.78125 -13.28125 C 18.84375 -13.28125 18.90625 -13.316406 18.96875 -13.390625 C 19.03125 -13.472656 19.070312 -13.585938 19.09375 -13.734375 L 20.734375 -25.46875 C 20.765625 -25.695312 20.820312 -25.84375 20.90625 -25.90625 C 21 -25.96875 21.175781 -26 21.4375 -26 Z M 26.6875 -26 "/>
+                            </g>
+                        </g>
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(112.130367, 40.790583)">
+                                <path style="stroke:none" d="M 4.09375 -25.390625 C 4.125 -25.648438 4.175781 -25.816406 4.25 -25.890625 C 4.332031 -25.960938 4.476562 -26 4.6875 -26 L 23.75 -26 C 24.101562 -26 24.28125 -25.785156 24.28125 -25.359375 C 24.28125 -25.222656 24.265625 -25.117188 24.234375 -25.046875 L 23.640625 -20.984375 C 23.597656 -20.703125 23.515625 -20.507812 23.390625 -20.40625 C 23.273438 -20.300781 23.066406 -20.25 22.765625 -20.25 L 11.90625 -20.25 C 11.695312 -20.25 11.539062 -20.207031 11.4375 -20.125 C 11.332031 -20.039062 11.269531 -19.875 11.25 -19.625 L 10.796875 -16.390625 L 10.75 -16.15625 C 10.75 -16.03125 10.78125 -15.953125 10.84375 -15.921875 C 10.90625 -15.890625 11.015625 -15.875 11.171875 -15.875 L 17.796875 -15.875 C 18.023438 -15.875 18.175781 -15.828125 18.25 -15.734375 C 18.320312 -15.640625 18.332031 -15.488281 18.28125 -15.28125 L 17.65625 -10.6875 C 17.632812 -10.5 17.585938 -10.375 17.515625 -10.3125 C 17.441406 -10.257812 17.300781 -10.234375 17.09375 -10.234375 L 10.328125 -10.234375 C 10.171875 -10.234375 10.054688 -10.191406 9.984375 -10.109375 C 9.910156 -10.023438 9.851562 -9.878906 9.8125 -9.671875 L 9.3125 -6.203125 L 9.3125 -6.03125 C 9.3125 -5.84375 9.394531 -5.75 9.5625 -5.75 L 21.234375 -5.75 C 21.460938 -5.75 21.613281 -5.703125 21.6875 -5.609375 C 21.757812 -5.515625 21.769531 -5.335938 21.71875 -5.078125 L 21.125 -0.5625 C 21.070312 -0.351562 21 -0.207031 20.90625 -0.125 C 20.820312 -0.0390625 20.640625 0 20.359375 0 L 1.5 0 C 1.195312 0 0.972656 -0.0625 0.828125 -0.1875 C 0.691406 -0.320312 0.625 -0.515625 0.625 -0.765625 L 0.671875 -1.09375 Z M 4.09375 -25.390625 "/>
+                            </g>
+                        </g>
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(135.634244, 40.790583)">
+                                <path style="stroke:none" d="M 23.359375 -0.953125 C 23.410156 -0.828125 23.4375 -0.6875 23.4375 -0.53125 C 23.4375 -0.175781 23.210938 0 22.765625 0 L 15.96875 0 C 15.71875 0 15.519531 -0.0625 15.375 -0.1875 C 15.238281 -0.320312 15.132812 -0.5625 15.0625 -0.90625 L 13.03125 -9.953125 C 12.988281 -10.085938 12.9375 -10.179688 12.875 -10.234375 C 12.8125 -10.296875 12.6875 -10.328125 12.5 -10.328125 L 10.40625 -10.328125 C 10.21875 -10.328125 10.085938 -10.289062 10.015625 -10.21875 C 9.941406 -10.15625 9.894531 -10.050781 9.875 -9.90625 L 8.578125 -0.8125 C 8.535156 -0.457031 8.425781 -0.234375 8.25 -0.140625 C 8.070312 -0.046875 7.765625 0 7.328125 0 L 1.4375 0 C 0.832031 0 0.578125 -0.363281 0.671875 -1.09375 L 4.09375 -25.390625 C 4.125 -25.648438 4.175781 -25.816406 4.25 -25.890625 C 4.332031 -25.960938 4.476562 -26 4.6875 -26 L 16.390625 -26 C 19.492188 -26 21.90625 -25.40625 23.625 -24.21875 C 25.34375 -23.039062 26.203125 -21.398438 26.203125 -19.296875 C 26.203125 -17.597656 25.703125 -16.023438 24.703125 -14.578125 C 23.710938 -13.128906 22.425781 -12.085938 20.84375 -11.453125 C 20.539062 -11.335938 20.359375 -11.234375 20.296875 -11.140625 C 20.242188 -11.046875 20.238281 -10.914062 20.28125 -10.75 Z M 14.609375 -15.546875 C 15.566406 -15.546875 16.363281 -15.875 17 -16.53125 C 17.644531 -17.1875 17.96875 -17.945312 17.96875 -18.8125 C 17.96875 -19.46875 17.726562 -19.960938 17.25 -20.296875 C 16.769531 -20.640625 16.15625 -20.8125 15.40625 -20.8125 L 11.84375 -20.8125 C 11.675781 -20.8125 11.554688 -20.765625 11.484375 -20.671875 C 11.421875 -20.578125 11.363281 -20.390625 11.3125 -20.109375 L 10.71875 -16.078125 L 10.71875 -15.90625 C 10.71875 -15.757812 10.742188 -15.660156 10.796875 -15.609375 C 10.859375 -15.566406 10.960938 -15.546875 11.109375 -15.546875 Z M 14.609375 -15.546875 "/>
+                            </g>
+                        </g>
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(161.520763, 40.790583)">
+                                <path style="stroke:none" d=""/>
+                            </g>
+                        </g>
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(168.526388, 40.790583)">
+                                <path style="stroke:none" d=""/>
+                            </g>
+                        </g>
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(175.532012, 40.790583)">
+                                <path style="stroke:none" d=""/>
+                            </g>
+                        </g>
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(182.541047, 40.790583)">
+                                <path style="stroke:none" d="M 10.46875 -10.40625 C 10.28125 -10.40625 10.132812 -10.351562 10.03125 -10.25 C 9.925781 -10.144531 9.863281 -9.953125 9.84375 -9.671875 L 8.578125 -0.8125 C 8.535156 -0.457031 8.441406 -0.234375 8.296875 -0.140625 C 8.160156 -0.046875 7.882812 0 7.46875 0 L 1.328125 0 C 1.023438 0 0.828125 -0.0234375 0.734375 -0.078125 C 0.640625 -0.140625 0.59375 -0.265625 0.59375 -0.453125 L 0.625 -0.765625 L 4.09375 -25.390625 C 4.125 -25.648438 4.175781 -25.816406 4.25 -25.890625 C 4.332031 -25.960938 4.476562 -26 4.6875 -26 L 11.671875 -26 C 11.804688 -26 11.898438 -25.972656 11.953125 -25.921875 C 12.015625 -25.878906 12.046875 -25.796875 12.046875 -25.671875 C 12.046875 -25.554688 12.035156 -25.460938 12.015625 -25.390625 L 10.859375 -17.03125 L 10.828125 -16.8125 C 10.828125 -16.5625 10.976562 -16.4375 11.28125 -16.4375 L 17.453125 -16.4375 C 17.753906 -16.4375 17.953125 -16.738281 18.046875 -17.34375 L 19.203125 -25.46875 C 19.222656 -25.675781 19.28125 -25.816406 19.375 -25.890625 C 19.46875 -25.960938 19.617188 -26 19.828125 -26 L 26.734375 -26 C 26.867188 -26 26.960938 -25.960938 27.015625 -25.890625 C 27.078125 -25.816406 27.109375 -25.675781 27.109375 -25.46875 C 27.109375 -25.28125 27.097656 -25.117188 27.078125 -24.984375 L 23.640625 -0.671875 C 23.597656 -0.359375 23.535156 -0.164062 23.453125 -0.09375 C 23.367188 -0.03125 23.140625 0 22.765625 0 L 16.640625 0 C 16.316406 0 16.082031 -0.046875 15.9375 -0.140625 C 15.800781 -0.234375 15.734375 -0.394531 15.734375 -0.625 C 15.734375 -0.769531 15.742188 -0.890625 15.765625 -0.984375 L 17.03125 -10.09375 L 17.03125 -10.15625 C 17.03125 -10.320312 16.851562 -10.40625 16.5 -10.40625 Z M 10.46875 -10.40625 "/>
+                            </g>
+                        </g>
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(209.232478, 40.790583)">
+                                <path style="stroke:none" d="M 24.0625 -10.046875 C 23.53125 -6.222656 22.21875 -3.535156 20.125 -1.984375 C 18.03125 -0.429688 15.210938 0.34375 11.671875 0.34375 C 8.117188 0.34375 5.546875 -0.367188 3.953125 -1.796875 C 2.367188 -3.234375 1.578125 -5.367188 1.578125 -8.203125 C 1.578125 -8.972656 1.660156 -9.960938 1.828125 -11.171875 L 3.8125 -25.390625 C 3.84375 -25.648438 3.894531 -25.816406 3.96875 -25.890625 C 4.050781 -25.960938 4.195312 -26 4.40625 -26 L 11.0625 -26 C 11.28125 -26 11.453125 -25.894531 11.578125 -25.6875 C 11.703125 -25.488281 11.742188 -25.273438 11.703125 -25.046875 L 9.59375 -9.90625 C 9.5 -9.164062 9.453125 -8.664062 9.453125 -8.40625 C 9.453125 -7.257812 9.707031 -6.441406 10.21875 -5.953125 C 10.738281 -5.460938 11.5 -5.21875 12.5 -5.21875 C 13.789062 -5.21875 14.894531 -5.628906 15.8125 -6.453125 C 16.738281 -7.285156 17.328125 -8.613281 17.578125 -10.4375 L 19.6875 -25.390625 C 19.707031 -25.648438 19.757812 -25.816406 19.84375 -25.890625 C 19.925781 -25.960938 20.070312 -26 20.28125 -26 L 25.53125 -26 C 25.75 -26 25.921875 -25.894531 26.046875 -25.6875 C 26.171875 -25.488281 26.210938 -25.273438 26.171875 -25.046875 Z M 24.0625 -10.046875 "/>
+                            </g>
+                        </g>
+                        <g style="fill:#222222;fill-opacity:1;">
+                            <g transform="translate(234.732953, 40.790583)">
+                                <path style="stroke:none" d="M 1.125 0 C 0.9375 0 0.804688 -0.0390625 0.734375 -0.125 C 0.660156 -0.207031 0.625 -0.34375 0.625 -0.53125 C 0.625 -0.71875 0.640625 -0.867188 0.671875 -0.984375 L 4.0625 -25.296875 C 4.082031 -25.546875 4.160156 -25.722656 4.296875 -25.828125 C 4.441406 -25.941406 4.644531 -26 4.90625 -26 L 15.34375 -26 C 18.6875 -26 21.238281 -25.46875 23 -24.40625 C 24.757812 -23.34375 25.640625 -21.804688 25.640625 -19.796875 C 25.640625 -16.753906 23.832031 -14.628906 20.21875 -13.421875 C 20.050781 -13.367188 19.953125 -13.300781 19.921875 -13.21875 C 19.898438 -13.144531 19.960938 -13.082031 20.109375 -13.03125 C 21.671875 -12.488281 22.804688 -11.796875 23.515625 -10.953125 C 24.234375 -10.117188 24.59375 -9.070312 24.59375 -7.8125 C 24.59375 -4.863281 23.484375 -2.820312 21.265625 -1.6875 C 19.046875 -0.5625 16.171875 0 12.640625 0 Z M 14.46875 -15.828125 C 15.28125 -15.828125 16.023438 -16.128906 16.703125 -16.734375 C 17.378906 -17.347656 17.71875 -18.085938 17.71875 -18.953125 C 17.71875 -19.515625 17.488281 -19.953125 17.03125 -20.265625 C 16.582031 -20.578125 15.972656 -20.734375 15.203125 -20.734375 L 12.15625 -20.734375 C 11.851562 -20.734375 11.632812 -20.679688 11.5 -20.578125 C 11.375 -20.472656 11.289062 -20.28125 11.25 -20 L 10.796875 -16.390625 L 10.75 -16.109375 C 10.75 -15.992188 10.78125 -15.914062 10.84375 -15.875 C 10.90625 -15.84375 11.003906 -15.828125 11.140625 -15.828125 Z M 12.828125 -5.25 C 13.429688 -5.25 14.007812 -5.398438 14.5625 -5.703125 C 15.125 -6.015625 15.585938 -6.425781 15.953125 -6.9375 C 16.316406 -7.445312 16.5 -8.019531 16.5 -8.65625 C 16.5 -9.21875 16.28125 -9.65625 15.84375 -9.96875 C 15.414062 -10.28125 14.804688 -10.4375 14.015625 -10.4375 L 10.546875 -10.4375 C 10.304688 -10.4375 10.140625 -10.382812 10.046875 -10.28125 C 9.953125 -10.175781 9.882812 -9.992188 9.84375 -9.734375 L 9.28125 -5.8125 L 9.25 -5.5625 C 9.25 -5.425781 9.273438 -5.335938 9.328125 -5.296875 C 9.390625 -5.265625 9.503906 -5.25 9.671875 -5.25 Z M 12.828125 -5.25 "/>
+                            </g>
+                        </g>
+                        <g style="fill:#f4b120;fill-opacity:1;">
+                            <g transform="translate(162.891715, 40.354679)">
+                                <path style="stroke:none" d="M 0.84375 5.765625 C 0.488281 5.765625 0.226562 5.632812 0.0625 5.375 C -0.09375 5.125 -0.148438 4.800781 -0.109375 4.40625 L 4.578125 -28.875 C 4.617188 -29.207031 4.6875 -29.40625 4.78125 -29.46875 C 4.875 -29.539062 5.082031 -29.578125 5.40625 -29.578125 L 8.65625 -29.578125 C 8.914062 -29.578125 9.125 -29.484375 9.28125 -29.296875 C 9.445312 -29.109375 9.507812 -28.910156 9.46875 -28.703125 L 4.671875 5.34375 C 4.648438 5.53125 4.601562 5.644531 4.53125 5.6875 C 4.46875 5.738281 4.316406 5.765625 4.078125 5.765625 Z M 0.84375 5.765625 "/>
+                            </g>
+                        </g>
+                        <g style="fill:#f4b120;fill-opacity:1;">
+                            <g transform="translate(171.44819, 40.354679)">
+                                <path style="stroke:none" d="M 0.84375 5.765625 C 0.488281 5.765625 0.226562 5.632812 0.0625 5.375 C -0.09375 5.125 -0.148438 4.800781 -0.109375 4.40625 L 4.578125 -28.875 C 4.617188 -29.207031 4.6875 -29.40625 4.78125 -29.46875 C 4.875 -29.539062 5.082031 -29.578125 5.40625 -29.578125 L 8.65625 -29.578125 C 8.914062 -29.578125 9.125 -29.484375 9.28125 -29.296875 C 9.445312 -29.109375 9.507812 -28.910156 9.46875 -28.703125 L 4.671875 5.34375 C 4.648438 5.53125 4.601562 5.644531 4.53125 5.6875 C 4.46875 5.738281 4.316406 5.765625 4.078125 5.765625 Z M 0.84375 5.765625 "/>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </a>
+        </div>
+        <div class="col-lg-6 small text-center text-lg-end px-0">
+    
+        <small><img src="/assets/flags/w20/br.png" style="height: 10px; vertical-align: baseline;" alt="Feito no Brasil"> 2026 <a href="https://runnerhub.run/" target="_blank" data-outbound-placement="rodape_texto_runnerhub">RunnerHub Inteligência Esportiva</a></small>
+    </div>
+    </div>
+</footer>
+
+<button onclick="topFunction()" id="scrollTop" title="Topo"><i class="fa-solid fa-chevron-up"></i></button>
+
+
+
+
+
+<script src="/assets/js/code.jquery.com_jquery-3.7.1.min.js"></script>
+
+
+
+
+<script>
+
+    function colorirDistancias() {
+        var mc = {
+            "0-5": "k5",
+            "6-10": "k10",
+            "11-21": "k21",
+            "22-42": "k42",
+            "43-99999": "ultra"
+        };
+
+        function between(x, min, max) {
+            return x >= min && x <= max;
+        }
+
+        var dc;
+        var first;
+        var second;
+        var th;
+
+        $("div").each(function (index) {
+            th = $(this);
+
+            dc = parseInt($(this).attr("data-color"), 10);
+
+            $.each(mc, function (name, value) {
+                first = parseInt(name.split("-")[0], 10);
+                second = parseInt(name.split("-")[1], 10);
+
+                if (between(dc, first, second)) {
+                    th.addClass(value);
+                }
+            });
+        });
+    }
+
+    colorirDistancias();
+
+</script>
+
+
+
+<script src="/assets/js/outbound-links.js?v=20260913-13"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<div class="modal fade" id="orRoadRunnersModal" tabindex="-1"
+     aria-labelledby="orRoadRunnersTitle" aria-describedby="orRoadRunnersDescription" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content or-rr-modal">
+            <div class="modal-header">
+                <div class="or-rr-brand">
+                    <img src="/assets/rr_icon.svg" width="36" height="36" alt=""/>
+                    <span>Open Results <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> <strong>Road Runners</strong></span>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="or-rr-save-symbol" id="orRoadRunnersSaveSymbol" hidden><i class="fa-solid fa-medal" aria-hidden="true"></i></div>
+                <h2 class="or-rr-title" id="orRoadRunnersTitle">Continue no Road Runners</h2>
+                <p id="orRoadRunnersDescription"></p>
+                <div class="or-rr-context mb-3" id="orRoadRunnersContext" hidden>
+                    <span class="or-rr-context-label" id="orRoadRunnersContextLabel">Buscar resultados de</span>
+                    <strong class="d-block" id="orRoadRunnersName"></strong>
+                    <div id="orRoadRunnersEventContext" hidden>
+                        <span class="or-rr-event"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i> <span id="orRoadRunnersEvent"></span></span>
+                    </div>
+                </div>
+                <ol class="or-rr-steps" id="orRoadRunnersSteps" aria-label="Como salvar no Road Runners" hidden>
+                    <li><span class="or-rr-step-number" aria-hidden="true">1</span><div><strong>Entre no Road Runners</strong><p>Use sua conta ou crie uma para continuar.</p></div></li>
+                    <li><span class="or-rr-step-number" aria-hidden="true">2</span><div><strong>Confirme e salve</strong><p>Confira quais resultados são seus e adicione ao histórico.</p></div></li>
+                </ol>
+                <p class="small mb-3" id="orRoadRunnersNext"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn or-rr-continue shadow-0" id="orRoadRunnersContinue">
+                    Continuar no Road Runners <i class="fa-solid fa-arrow-up-right-from-square ms-1" aria-hidden="true"></i>
+                </button>
+                <p class="or-rr-tab-note" id="orRoadRunnersContinueNote">Abre em nova aba. Sua consulta continua aqui.</p>
+                <button type="button" class="or-rr-back" data-bs-dismiss="modal">Continuar consultando no Open Results</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/roadrunners-exit.js?v=20260913-13"></script>
+
+
+
+
+
+<script src="/assets/js/datatables/datatables.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/assets/js/mdb.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/assets/plugins/js/all.min.js"></script>
+
+
+
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
+
+
+
+
+<script src="https://strava-embeds.com/embed.js"></script>
+
+
+
+
+<script>
+
+    $(document).ready( function () {
+
+        if ($('#tableResultados').length) {
+            const resultadosRemoteUrl = $('#tableResultados').data('remote-url');
+            const resultadosBaseOptions = {
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json',
+                },
+                info: false,
+                scrollY: '50vh',
+                scrollCollapse: true,
+                autoWidth: false,
+                initComplete: function( settings, json ) {
+                    $('#divResultados').show();
+                    $('#loading').hide();
+                }
+            };
+
+            let tableResultados;
+
+            if (resultadosRemoteUrl) {
+                const resultadosTable = $('#tableResultados');
+                const resultadosBody = resultadosTable.find('tbody');
+                const resultadosStatus = $('#resultadosInfiniteStatus');
+                let resultadosOffset = 0;
+                let resultadosLoading = false;
+                let resultadosHasMore = true;
+                let resultadosBusca = '';
+                let resultadosAbortController = null;
+
+                $('#loading').hide();
+                $('#divResultados').show();
+
+                $('#tableResultados_filter').remove();
+                const resultadosScroll = resultadosTable.closest('.or-results-scroll');
+                (resultadosScroll.length ? resultadosScroll : resultadosTable).before(
+                    '<div class="d-flex justify-content-end mb-2">' +
+                    '<div class="input-group input-group-sm" style="max-width: 320px;">' +
+                    '<span class="input-group-text bg-white"><i class="fa-solid fa-magnifying-glass"></i></span>' +
+                    '<input id="resultadosInfiniteSearch" type="search" class="form-control" placeholder="Pesquisar na listagem">' +
+                    '</div>' +
+                    '</div>'
+                );
+
+                function updateResultadosStatus(text) {
+                    resultadosStatus.text(text || '');
+                }
+
+                function buildResultadosUrl(reset) {
+                    const url = new URL(resultadosRemoteUrl, window.location.origin);
+                    url.searchParams.set('offset', reset ? 0 : resultadosOffset);
+                    url.searchParams.set('limit', 100);
+                    url.searchParams.set('busca', resultadosBusca);
+                    return url.toString();
+                }
+
+                function loadResultados(reset) {
+                    if (resultadosLoading) {
+                        return;
+                    }
+
+                    if (!reset && !resultadosHasMore) {
+                        return;
+                    }
+
+                    resultadosLoading = true;
+                    updateResultadosStatus('Carregando resultados...');
+
+                    if (reset && resultadosAbortController) {
+                        resultadosAbortController.abort();
+                    }
+
+                    resultadosAbortController = new AbortController();
+
+                    fetch(buildResultadosUrl(reset), {
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        signal: resultadosAbortController.signal
+                    })
+                        .then(function(response) {
+                            if (!response.ok) {
+                                throw new Error('HTTP ' + response.status);
+                            }
+                            return response.json();
+                        })
+                        .then(function(payload) {
+                            const payloadOk = payload.ok !== undefined ? payload.ok : payload.OK;
+                            const payloadError = payload.error || payload.ERROR || 'Erro ao carregar resultados.';
+                            const payloadHtml = payload.html !== undefined ? payload.html : payload.HTML;
+                            const payloadNextOffset = payload.nextOffset !== undefined ? payload.nextOffset : payload.NEXTOFFSET;
+                            const payloadHasMore = payload.hasMore !== undefined ? payload.hasMore : payload.HASMORE;
+                            const payloadRecordsFiltered = payload.recordsFiltered !== undefined ? payload.recordsFiltered : payload.RECORDSFILTERED;
+
+                            if (!payloadOk) {
+                                throw new Error(payloadError);
+                            }
+
+                            if (reset) {
+                                resultadosBody.empty();
+                                resultadosOffset = 0;
+                            }
+
+                            resultadosBody.append(payloadHtml || '');
+                            resultadosOffset = payloadNextOffset || resultadosBody.find('tr').length;
+                            resultadosHasMore = !!payloadHasMore;
+
+                            if (payloadRecordsFiltered === 0) {
+                                updateResultadosStatus('Nenhum resultado encontrado.');
+                            } else if (resultadosHasMore) {
+                                updateResultadosStatus('Exibindo ' + resultadosOffset.toLocaleString('pt-BR') + ' de ' + payloadRecordsFiltered.toLocaleString('pt-BR') + ' resultados.');
+                            } else {
+                                updateResultadosStatus('Todos os ' + payloadRecordsFiltered.toLocaleString('pt-BR') + ' resultados foram carregados.');
+                            }
+                        })
+                        .catch(function(error) {
+                            if (error.name === 'AbortError') {
+                                return;
+                            }
+
+                            updateResultadosStatus('');
+                            if (!$('#resultadosAjaxError').length) {
+                                const errorDetail = window.location.hostname.indexOf('dev.') === 0 ? '<br><small>' + error.message + '</small>' : '';
+                                $('#divResultados').prepend('<div id="resultadosAjaxError" class="alert alert-warning p-2 mt-2">Não foi possível carregar os resultados agora. Tente novamente em instantes.' + errorDetail + '</div>');
+                            }
+                            console.error(error);
+                        })
+                        .finally(function() {
+                            resultadosLoading = false;
+                        });
+                }
+
+                let resultadosSearchTimer;
+                $(document).on('input', '#resultadosInfiniteSearch', function() {
+                    clearTimeout(resultadosSearchTimer);
+                    resultadosBusca = this.value.trim();
+                    resultadosSearchTimer = setTimeout(function() {
+                        resultadosOffset = 0;
+                        resultadosHasMore = true;
+                        $('#resultadosAjaxError').remove();
+                        loadResultados(true);
+                    }, 350);
+                });
+
+                $(window).on('scroll.resultadosInfinite', function() {
+                    if ($(window).scrollTop() + $(window).height() > $(document).height() - 700) {
+                        loadResultados(false);
+                    }
+                });
+
+                loadResultados(true);
+            } else {
+                tableResultados = new DataTable('#tableResultados', {
+                    ...resultadosBaseOptions,
+                    ordering: true,
+                    paging: false,
+                    columnDefs: [
+                        { width: '40px', targets: 0 },
+                        { width: '80px', targets: 1 },
+                        { width: '50px', targets: 2 },
+                        { width: 'auto', targets: 3 },
+                        { width: 'auto', targets: 4 },
+                        { width: '40px', targets: 5 },
+                        { width: '60px', targets: 6 },
+                        { width: '60px', targets: 7 },
+                        //{ width: '26px', targets: 8 }
+                    ],
+                    initComplete: function( settings, json ) {
+                        $('#divResultados').show();
+                        tableResultados.columns.adjust().draw();
+                        $('#loading').hide();
+                    }
+                });
+            }
+        }
+
+        let tableTopAtletas = new DataTable('#tableTopAtletas', {
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json',
+            },
+            info: true,
+            ordering: true,
+            paging: false,
+            scrollCollapse: true,
+            scrollY: '50vh',
+            autoWidth: true
+        })
+
+    } );
+</script>
+
+
+
+
+<script>
+
+    // Get the button:
+    let mybutton = document.getElementById("scrollTop");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+</script>
+
+
+
+
+<script>
+    function updateURLParameter(url, param, paramVal){
+        var newAdditionalURL = "";
+        var tempArray = url.split("?");
+        var baseURL = tempArray[0];
+        var additionalURL = tempArray[1];
+        var temp = "";
+        if (additionalURL) {
+            tempArray = additionalURL.split("&");
+            for (var i=0; i<tempArray.length; i++){
+                if(tempArray[i].split('=')[0] != param){
+                    newAdditionalURL += temp + tempArray[i];
+                    temp = "&";
+                }
+            }
+        }
+
+        var rows_txt = temp + "" + param + "=" + paramVal;
+        return baseURL + "?" + newAdditionalURL + rows_txt;
+    }
+</script>
+
+
+
+
+<script>
+    (function () {
+        function initFeaturedCarousel(section) {
+            const viewport = section.querySelector('.or-featured-events-viewport');
+            const track = section.querySelector('.or-featured-events-track');
+            const controls = section.querySelectorAll('[data-featured-scroll]');
+
+            if (!viewport || !track || !controls.length) {
+                return;
+            }
+
+            function getStep() {
+                const firstCard = track.querySelector('.or-featured-event-card');
+
+                if (!firstCard) {
+                    return track.clientWidth;
+                }
+
+                const styles = window.getComputedStyle(track);
+                const gap = parseFloat(styles.columnGap || styles.gap || 0) || 0;
+
+                return firstCard.getBoundingClientRect().width + gap;
+            }
+
+            function updateState() {
+                const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth - 2);
+                const canScrollLeft = track.scrollLeft > 2;
+                const canScrollRight = track.scrollLeft < maxScroll;
+
+                viewport.classList.toggle('can-scroll-left', canScrollLeft);
+                viewport.classList.toggle('can-scroll-right', canScrollRight);
+
+                controls.forEach(function (control) {
+                    const direction = control.dataset.featuredScroll;
+                    const canScroll = direction === 'prev' ? canScrollLeft : canScrollRight;
+
+                    if (control.classList.contains('or-featured-events-nav')) {
+                        control.setAttribute('aria-disabled', canScroll ? 'false' : 'true');
+                    } else {
+                        control.disabled = !canScroll;
+                    }
+                });
+            }
+
+            function scrollFeaturedTrack(direction) {
+                const amount = getStep() * direction;
+
+                try {
+                    track.scrollBy({
+                        left: amount,
+                        behavior: 'smooth'
+                    });
+                } catch (error) {
+                    track.scrollLeft += amount;
+                }
+
+                window.setTimeout(updateState, 220);
+            }
+
+            controls.forEach(function (control) {
+                control.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    scrollFeaturedTrack(control.dataset.featuredScroll === 'prev' ? -1 : 1);
+                });
+            });
+
+            track.addEventListener('keydown', function (event) {
+                if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
+                    return;
+                }
+
+                event.preventDefault();
+                scrollFeaturedTrack(event.key === 'ArrowLeft' ? -1 : 1);
+            });
+
+            track.addEventListener('scroll', updateState, { passive: true });
+            window.addEventListener('resize', updateState);
+            window.requestAnimationFrame(updateState);
+            window.setTimeout(updateState, 350);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.or-featured-events').forEach(initFeaturedCarousel);
+        });
+    })();
+</script>
+
+
+
+
+<script>
+    (function () {
+        const loader = document.getElementById('orPageLoader');
+        let showTimer;
+
+        if (!loader) {
+            return;
+        }
+
+        function showPageLoader() {
+            clearTimeout(showTimer);
+            showTimer = setTimeout(function () {
+                loader.classList.add('is-active');
+                loader.setAttribute('aria-hidden', 'false');
+            }, 120);
+        }
+
+        function hidePageLoader() {
+            clearTimeout(showTimer);
+            loader.classList.remove('is-active');
+            loader.setAttribute('aria-hidden', 'true');
+        }
+
+        function shouldIgnoreLink(link, event) {
+            if (!link || link.dataset.noPageLoader !== undefined) {
+                return true;
+            }
+
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
+                return true;
+            }
+
+            if (link.target && link.target !== '_self') {
+                return true;
+            }
+
+            if (link.hasAttribute('download')) {
+                return true;
+            }
+
+            const href = link.getAttribute('href');
+
+            if (!href || href.charAt(0) === '#' || href.indexOf('javascript:') === 0 || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) {
+                return true;
+            }
+
+            const url = new URL(link.href, window.location.href);
+
+            return url.origin !== window.location.origin || (url.pathname === window.location.pathname && url.search === window.location.search && url.hash);
+        }
+
+        document.addEventListener('click', function (event) {
+            const link = event.target.closest ? event.target.closest('a') : null;
+
+            if (shouldIgnoreLink(link, event)) {
+                return;
+            }
+
+            setTimeout(function () {
+                if (!event.defaultPrevented) {
+                    showPageLoader();
+                }
+            }, 0);
+        });
+
+        document.addEventListener('submit', function (event) {
+            const form = event.target;
+
+            setTimeout(function () {
+                if (!event.defaultPrevented && form.target !== '_blank' && form.dataset.noPageLoader === undefined) {
+                    showPageLoader();
+                }
+            }, 0);
+        });
+
+        window.addEventListener('beforeunload', showPageLoader);
+        window.addEventListener('pageshow', hidePageLoader);
+        document.addEventListener('DOMContentLoaded', hidePageLoader);
+    })();
+</script>
+
+
+
+
+
+
+    <script src="/assets/js/openresults-estado-cidades.js?v=20261004-1"></script>
+    <script>
+        const estadoUf = "BA";
+        const estadoCidade = "salvador";
+        OpenResultsEstadoCities.init(document, estadoUf, estadoCidade);
+        let totalEventos = 7;
+        let lastMonth = 0;
+        let lastMonthKey = '2022-09';
+        let page = 0;
+        let loading = false;
+        const pageSize = 50;
+        const spinner = document.getElementById('spinner-proximas');
+        const eventListContainer = document.getElementById('listaEvento');
+        async function loadImages() {
+            if (loading || totalEventos <= (page + 1) * pageSize) return;
+            loading = true;
+            spinner.style.display = 'block';
+            try {
+                const response = await fetch(OpenResultsEstadoCities.buildApiUrl(window.location.href, estadoUf, page + 1, lastMonthKey, estadoCidade));
+                if (!response.ok) throw new Error('Falha ao carregar eventos: ' + response.status);
+                const html = await response.text();
+                eventListContainer.insertAdjacentHTML('beforeend',html);
+                const fragment = document.createElement('div');
+                fragment.innerHTML = html;
+                fragment.querySelectorAll('script').forEach(function (script) { eval(script.textContent); });
+                page++;
+                colorirDistancias();
+            } catch (error) {
+                console.warn(error.message);
+            } finally {
+                loading = false;
+                spinner.style.display = 'none';
+            }
+        }
+        window.addEventListener('completed.mdb.infiniteScroll', loadImages);
+        new mdb.InfiniteScroll(window);
+    </script>
+</body>
+</html>

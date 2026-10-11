@@ -1,0 +1,17 @@
+{
+  "id": 45651,
+  "source": "https://www.ticketsports.com.br/e/FLA+RESENHA+RUN+-87863",
+  "checked_date": "2026-10-04",
+  "city_from_visible_source": "Barra do Piraí/RJ",
+  "stored_address_already_in": "Barra do Piraí",
+  "coordinates": "empty, preserved",
+  "old_locality": 3056,
+  "new_locality": 3006,
+  "locality_origin": "existing tbbi_dim_localidade, same current trigger matching city/state",
+  "fields_changed": [
+    "cidade",
+    "id_localidade"
+  ],
+  "event_dates": "unchanged",
+  "route_rows": "unchanged"
+}

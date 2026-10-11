@@ -1,0 +1,88 @@
+ABRACEO — PRÉ-CADASTROS NO BUSINESS — 11/10/2026
+
+36 contas novas PENDENTE, sem usuários ou liberação de acesso.
+5 contas existentes reaproveitadas, com cadastro e titulares preservados.
+41 logos publicados e complementos de dados na aba Pré-cadastro.
+11 novos vínculos de eventos futuros; 5 vínculos futuros preexistentes preservados.
+HL Eventos: luiz@hleventos.com como principal, conforme autorização; ambos os contatos preservados no complemento.
+
+CONTAS
+28 | 3LR Eventos | CNPJ 28674754000146 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=28&tab=precadastro
+29 | Aclive Sports | CNPJ 62503087000177 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=29&tab=precadastro
+30 | BEE SPORTS | CNPJ 36943394000169 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=30&tab=precadastro
+31 | Beta Sports | CNPJ 36480637000170 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=31&tab=precadastro
+32 | BOLT PRODUCÕES | CNPJ 30245713000186 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=32&tab=precadastro
+33 | BRB Marketing Esportivo | CNPJ 54070504000107 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=33&tab=precadastro
+34 | Chelso Sports | CNPJ 13026748000296 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=34&tab=precadastro
+6 | CORPA | CNPJ 88792965000105 | ATIVA | https://business.roadrunners.run/administracao/contas/?conta_id=6&tab=precadastro
+35 | Corre Brasil | CNPJ 30704295000148 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=35&tab=precadastro
+36 | Corre Paraíba | CNPJ 55268579000160 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=36&tab=precadastro
+37 | Correr com Propósitos | CNPJ 40224688000108 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=37&tab=precadastro
+38 | GLOBAL VITA | CNPJ 18606775000170 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=38&tab=precadastro
+1 | Grupo STC | CNPJ 32692507000140 | ATIVA | https://business.roadrunners.run/administracao/contas/?conta_id=1&tab=precadastro
+39 | HL EVENTOS ESPORTIVOS | CNPJ 15135804000175 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=39&tab=precadastro
+40 | ICE SPORTS | CNPJ 38445093000130 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=40&tab=precadastro
+41 | Iguana Sports | CNPJ 44459412000160 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=41&tab=precadastro
+42 | Jardel Moura Assessoria Esportiva | CNPJ 12234644000123 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=42&tab=precadastro
+43 | L’ETAPE BRASIL | CNPJ 27127718000108 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=43&tab=precadastro
+44 | Método Grupo Chokito | CNPJ 14216548000188 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=44&tab=precadastro
+45 | Morro MT | CNPJ 18305726000106 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=45&tab=precadastro
+46 | Mp Sports Brasil | CNPJ 28416109000123 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=46&tab=precadastro
+47 | Noblu Sports | CNPJ 07787987000185 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=47&tab=precadastro
+48 | Oxe Eventos | CNPJ 07120464000180 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=48&tab=precadastro
+49 | PDA Esportes | CNPJ 35507828000115 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=49&tab=precadastro
+50 | Podium Chip | CNPJ 46478807000135 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=50&tab=precadastro
+51 | SBS Sports | CNPJ 50456213000109 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=51&tab=precadastro
+52 | Seven Eco | CNPJ 29086536000153 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=52&tab=precadastro
+53 | Sportsland | CNPJ 49589078000182 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=53&tab=precadastro
+54 | SuperAção Eventos | CNPJ 47234721000120 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=54&tab=precadastro
+55 | Top Chip | CNPJ 13774425000108 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=55&tab=precadastro
+56 | Tour da Roça | CNPJ 27208401000198 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=56&tab=precadastro
+9 | TR Crono | CNPJ 32910273000160 | ATIVA | https://business.roadrunners.run/administracao/contas/?conta_id=9&tab=precadastro
+57 | TVCOM Running | CNPJ 72818198000126 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=57&tab=precadastro
+58 | Uhuw Eventos | CNPJ 17332526000171 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=58&tab=precadastro
+59 | UNLIMITED | CNPJ 34622939000100 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=59&tab=precadastro
+60 | Vega Sports | CNPJ 33591994000117 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=60&tab=precadastro
+61 | Vida Sport | CNPJ 23909601000117 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=61&tab=precadastro
+27 | Voa Esportes | CNPJ 68245814000120 | ATIVA | https://business.roadrunners.run/administracao/contas/?conta_id=27&tab=precadastro
+62 | Wine Run Brasil | CNPJ 13568552000142 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=62&tab=precadastro
+63 | X3M ENTRETENIMENTO LTDA | CNPJ 07265942000140 | PENDENTE | https://business.roadrunners.run/administracao/contas/?conta_id=63&tab=precadastro
+7 | Yescom | CNPJ 03574107000131 | ATIVA | https://business.roadrunners.run/administracao/contas/?conta_id=7&tab=precadastro
+
+EVENTOS FUTUROS ASSOCIADOS
+45372 | MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBERRY 2027 | 2027-05-01 | conta 53
+46865 | JURERÊ NIGHT RUN 2027 | 2027-03-13 | conta 53
+45442 | NIGHT RUN NATAL LUZ - KOERICH | 2026-12-19 | conta 53
+47969 | UPHILL CRISTO REDENTOR 2026 | 2026-11-21 | conta 63
+43912 | XTERRA TRAIL RUN SERIES - ILHABELA | 2026-11-20 | conta 63
+40609 | CIRCUITO DESBRAVA - BELÉM 2026 | 2026-11-01 | conta 63
+42066 | CIRCUITO DESBRAVA - MANAUS 2026 | 2026-10-18 | conta 63
+42360 | Meia Maratona SC21k | 2026-11-29 | conta 35
+37144 | MARATONA INTERNACIONAL DE POMERODE 2026 | 2026-10-17 | conta 35
+36659 | 2026 Itaú BBA IRONMAN 70.3 Florianópolis | 2026-10-18 | conta 59
+39384 | 2026  Nubank Ultravioleta TRIDAY Series - Bertioga II | 2026-11-08 | conta 59
+
+PENDÊNCIAS
+280 relações candidatas de eventos futuros/em curso permanecem sem nova associação. Incluem empresas ainda sem CNPJ apto, menções por nome/site e divergências de responsabilidade.
+MP3: pessoas jurídicas distintas; sem fusão de contas.
+Iguana: fornecedor com CNPJ divergente; sem transferência de eventos.
+Corre Brasil: eventos de Pernambuco não associados.
+Maratona de São Paulo 2027: já vinculada a outra conta; coexistência a confirmar.
+
+VALIDAÇÃO
+Compilação ColdFusion dos dois arquivos: passou. Simulação da importação com reversão: passou.
+Contagens e integridade verificadas diretamente no banco de produção.
+Exibição real de logo/dados e eventos verificada na interface; largura desktop e 390px, navegação por teclado.
+Logos validados por HTTPS e comparação de hash (ver logos-http-verificados.json).
+
+RECUPERAÇÃO
+Backup de produção: /var/backups/business-abraceo-precadastro-20261011
+Contas novas e vínculos identificados em release-commit.json/eventos-linked.json; arquivos anteriores em baseline/.
+Antes de reverter dados, bloquear operação se contas tiverem adquirido usuários, novos vínculos ou alterações posteriores. Não excluir contas que já tenham sido utilizadas.
+A tabela complementar é aditiva. Reversão de runtime pode preservar todos os dados.
+
+ESCOPO
+Runtime: administracao/contas/home.cfm, administracao/contas/includes/perfil_publico.cfm e 41 imagens em assets/contas/abraceo/.
+Dados: tb_contas, nova tb_conta_perfis_publicos e 11 inserções em tb_conta_eventos.
+Não foram criados vouchers nem alterado o fluxo público de primeiro acesso. Os pré-cadastros ficam disponíveis para revisão administrativa.
+Os arquivos de pesquisa anteriores são fotografias pré-importação; resultado_business.json registra o estado posterior.

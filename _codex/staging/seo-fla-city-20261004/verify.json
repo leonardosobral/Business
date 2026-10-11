@@ -1,0 +1,73 @@
+{
+  "events": [
+    {
+      "id_evento": 45651,
+      "row_hash": "bc86819c3cdc65bc11f7b4431c214b6b"
+    }
+  ],
+  "routes": [
+    {
+      "row_hash": "c79d241dbd4c797065b16ef102bda9c1",
+      "id_evento_percurso": 65055
+    },
+    {
+      "row_hash": "4601895384f333a2af6546737a50339c",
+      "id_evento_percurso": 65056
+    }
+  ],
+  "dependencies": {
+    "tb_evento_percursos_gpx": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_badges": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_evento_corridas_relaciona": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist_importacao": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_permit_atualiza": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_temp": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_evento_saude_config": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_percurso_migracoes_strava": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_percurso": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_resumo": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_inscricoes": {
+      "count": 0,
+      "hash": null
+    }
+  },
+  "verified": true
+}

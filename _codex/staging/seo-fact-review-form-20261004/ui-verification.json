@@ -1,0 +1,17 @@
+{
+  "desktop": [
+    1280,
+    900
+  ],
+  "mobile": [
+    390,
+    844
+  ],
+  "no_overflow": true,
+  "keyboard_details": true,
+  "authenticated_production_url": "https://business.roadrunners.run/eventos/?id_evento=37570&sessao=fontes",
+  "direct_tab_selected": true,
+  "switch_data_and_back": true,
+  "real_browser_mutations_submitted": false,
+  "test_receipts_rolled_back": true
+}

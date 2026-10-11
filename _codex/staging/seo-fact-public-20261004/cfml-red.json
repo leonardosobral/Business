@@ -1,0 +1,1136 @@
+{
+  "CHECKS": [
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/valid/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/valid/date"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/valid/scope"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/valid/source"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/valid/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/unknown/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/changed-start/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/changed-end/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/future-review/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/invalid-url/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/userinfo/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/backslash/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/escape/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/escape/date"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/escape/scope"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/escape/source"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/escape/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/missing-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/valid/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/valid/date"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/valid/scope"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/valid/source"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/valid/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/unknown/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/changed-start/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/changed-end/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/future-review/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/invalid-url/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/userinfo/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/backslash/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/escape/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/escape/date"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/escape/scope"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/escape/source"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/escape/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/missing-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/valid/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/valid/date"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/valid/scope"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/valid/source"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/valid/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/unknown/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/changed-start/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/changed-end/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/future-review/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/invalid-url/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/userinfo/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/backslash/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/escape/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/escape/date"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/escape/scope"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/escape/source"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/escape/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/missing-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/valid/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/valid/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/valid/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/valid/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/valid/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/unknown/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/changed-current/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/changed-current/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/changed-current/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/changed-current/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/changed-current/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/changed-current/no-stale-verification"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/invalid-url/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/userinfo/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/backslash/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/future/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/invalid-date/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/unknown-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/missing-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/complex-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/scalar-row/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/scalar-list/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/equal-values/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/empty-detail/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/escape/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/escape/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/escape/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/escape/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/escape/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/fragment/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/fragment/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/fragment/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/fragment/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/history/fragment/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/curated/42288"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/curated/45413"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/curated/37570"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/curated/38981"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/curated/38982"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/curated/37526"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/curated/40833"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR/curated/40745"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/valid/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/valid/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/valid/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/valid/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/valid/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/unknown/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/changed-current/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/changed-current/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/changed-current/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/changed-current/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/changed-current/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/changed-current/no-stale-verification"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/invalid-url/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/userinfo/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/backslash/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/future/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/invalid-date/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/unknown-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/missing-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/complex-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/scalar-row/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/scalar-list/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/equal-values/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/empty-detail/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/escape/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/escape/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/escape/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/escape/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/escape/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/fragment/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/fragment/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/fragment/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/fragment/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/history/fragment/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/curated/42288"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/curated/45413"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/curated/37570"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/curated/38981"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/curated/38982"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/curated/37526"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/curated/40833"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en/curated/40745"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/valid/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/valid/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/valid/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/valid/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/valid/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/unknown/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/changed-current/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/changed-current/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/changed-current/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/changed-current/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/changed-current/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/changed-current/no-stale-verification"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/invalid-url/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/userinfo/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/backslash/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/future/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/invalid-date/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/unknown-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/missing-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/complex-field/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/scalar-row/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/scalar-list/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/equal-values/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/empty-detail/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/escape/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/escape/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/escape/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/escape/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/escape/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/fragment/visibility"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/fragment/collapsed"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/fragment/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/fragment/dates"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/history/fragment/link"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/curated/42288"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/curated/45413"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/curated/37570"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/curated/38981"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/curated/38982"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/curated/37526"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/curated/40833"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es/curated/40745"
+    },
+    {
+      "PASSED": true,
+      "NAME": "conflicts-excluded"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/pt-BR/published"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/published"
+    },
+    {
+      "PASSED": false,
+      "NAME": "new source/pt-BR/published"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/pt-BR/withdrawn"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/withdrawn"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/pt-BR/changed-start"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/changed-start"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/pt-BR/changed-end"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/changed-end"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/pt-BR/future"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/future"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/pt-BR/invalid-json"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/invalid-json"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/pt-BR/array"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/array"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/pt-BR/scalar"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/scalar"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/pt-BR/version"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/version"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/pt-BR/missing"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/missing"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/pt-BR/complex"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/complex"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/pt-BR/url"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/url"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/pt-BR/credentials"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/credentials"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/pt-BR/newline"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/newline"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/pt-BR/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/escape"
+    },
+    {
+      "PASSED": false,
+      "NAME": "new source/pt-BR/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/pt-BR/legacy-empty"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/pt-BR/legacy-empty"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/en/published"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/published"
+    },
+    {
+      "PASSED": false,
+      "NAME": "new source/en/published"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/en/withdrawn"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/withdrawn"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/en/changed-start"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/changed-start"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/en/changed-end"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/changed-end"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/en/future"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/future"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/en/invalid-json"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/invalid-json"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/en/array"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/array"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/en/scalar"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/scalar"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/en/version"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/version"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/en/missing"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/missing"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/en/complex"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/complex"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/en/url"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/url"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/en/credentials"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/credentials"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/en/newline"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/newline"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/en/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/escape"
+    },
+    {
+      "PASSED": false,
+      "NAME": "new source/en/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/en/legacy-empty"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/en/legacy-empty"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/es/published"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/published"
+    },
+    {
+      "PASSED": false,
+      "NAME": "new source/es/published"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/es/withdrawn"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/withdrawn"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/es/changed-start"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/changed-start"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/es/changed-end"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/changed-end"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/es/future"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/future"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/es/invalid-json"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/invalid-json"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/es/array"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/array"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/es/scalar"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/scalar"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/es/version"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/version"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/es/missing"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/missing"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/es/complex"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/complex"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/es/url"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/url"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/es/credentials"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/credentials"
+    },
+    {
+      "PASSED": false,
+      "NAME": "public/es/newline"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/newline"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/es/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/escape"
+    },
+    {
+      "PASSED": false,
+      "NAME": "new source/es/escape"
+    },
+    {
+      "PASSED": true,
+      "NAME": "public/es/legacy-empty"
+    },
+    {
+      "PASSED": true,
+      "NAME": "history preserved/es/legacy-empty"
+    }
+  ]
+}

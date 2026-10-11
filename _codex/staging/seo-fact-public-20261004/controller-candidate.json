@@ -1,0 +1,66 @@
+[
+  {
+    "REVOKED": false,
+    "MESSAGE": "",
+    "PROJECTION": "{\"state\": \"published\", \"endDate\": \"2026-11-20\", \"version\": 1, \"reviewId\": \"1\", \"checkedAt\": \"2026-10-04\", \"sourceUrl\": \"https://official.example.org/source\", \"startDate\": \"2026-11-20\"}",
+    "PUBLICATION": "Fonte das datas publicada no RoadRunners.",
+    "SAVED": false,
+    "CASE": "publish"
+  },
+  {
+    "REVOKED": false,
+    "MESSAGE": "",
+    "PROJECTION": "{\"state\": \"withdrawn\", \"version\": 1}",
+    "PUBLICATION": "Publicação retirada do RoadRunners. A conferência interna foi preservada.",
+    "SAVED": false,
+    "CASE": "unpublish"
+  },
+  {
+    "REVOKED": false,
+    "MESSAGE": "Confirme a publicação da fonte e da data de conferência no RoadRunners.",
+    "PROJECTION": "",
+    "PUBLICATION": "",
+    "SAVED": false,
+    "CASE": "missing-confirmation"
+  },
+  {
+    "REVOKED": false,
+    "MESSAGE": "Reabra a aba Fontes e revisões e tente novamente.",
+    "PROJECTION": "",
+    "PUBLICATION": "",
+    "SAVED": false,
+    "CASE": "csrf"
+  },
+  {
+    "REVOKED": false,
+    "MESSAGE": "Reabra o evento para conferir suas fontes.",
+    "PROJECTION": "",
+    "PUBLICATION": "",
+    "SAVED": false,
+    "CASE": "event-mismatch"
+  },
+  {
+    "REVOKED": false,
+    "MESSAGE": "A revisão de fontes é restrita à administração interna.",
+    "PROJECTION": "",
+    "PUBLICATION": "",
+    "SAVED": false,
+    "CASE": "delegated"
+  },
+  {
+    "REVOKED": false,
+    "MESSAGE": "",
+    "PROJECTION": "",
+    "PUBLICATION": "",
+    "SAVED": true,
+    "CASE": "save"
+  },
+  {
+    "REVOKED": true,
+    "MESSAGE": "",
+    "PROJECTION": "{\"state\": \"withdrawn\", \"version\": 1}",
+    "PUBLICATION": "",
+    "SAVED": false,
+    "CASE": "revoke"
+  }
+]

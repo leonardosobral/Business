@@ -1,0 +1,156 @@
+{
+  "mode": "green",
+  "scenarios": 15,
+  "checks": [
+    {
+      "name": "alias status",
+      "passed": true
+    },
+    {
+      "name": "alias exact destination",
+      "passed": true
+    },
+    {
+      "name": "canonical status",
+      "passed": true
+    },
+    {
+      "name": "canonical one canonical",
+      "passed": true
+    },
+    {
+      "name": "live status",
+      "passed": true
+    },
+    {
+      "name": "other circuit unchanged",
+      "passed": true
+    },
+    {
+      "name": "head-alias status",
+      "passed": true
+    },
+    {
+      "name": "head-alias exact destination",
+      "passed": true
+    },
+    {
+      "name": "post status",
+      "passed": true
+    },
+    {
+      "name": "post one canonical",
+      "passed": true
+    },
+    {
+      "name": "filter status",
+      "passed": true
+    },
+    {
+      "name": "filter one canonical",
+      "passed": true
+    },
+    {
+      "name": "tracking status",
+      "passed": true
+    },
+    {
+      "name": "tracking one canonical",
+      "passed": true
+    },
+    {
+      "name": "action status",
+      "passed": true
+    },
+    {
+      "name": "action one canonical",
+      "passed": true
+    },
+    {
+      "name": "year-2024 status",
+      "passed": true
+    },
+    {
+      "name": "year-2024 canonical unchanged",
+      "passed": true
+    },
+    {
+      "name": "year-2024 year in title",
+      "passed": true
+    },
+    {
+      "name": "year-2024 year in description",
+      "passed": true
+    },
+    {
+      "name": "year-2025 status",
+      "passed": true
+    },
+    {
+      "name": "year-2025 canonical unchanged",
+      "passed": true
+    },
+    {
+      "name": "year-2025 year in title",
+      "passed": true
+    },
+    {
+      "name": "year-2025 year in description",
+      "passed": true
+    },
+    {
+      "name": "ambiguous status",
+      "passed": true
+    },
+    {
+      "name": "ambiguous does not guess canonical",
+      "passed": true
+    },
+    {
+      "name": "unsafe status",
+      "passed": true
+    },
+    {
+      "name": "unsafe does not guess canonical",
+      "passed": true
+    },
+    {
+      "name": "form status",
+      "passed": true
+    },
+    {
+      "name": "form one canonical",
+      "passed": true
+    },
+    {
+      "name": "explicit-default-filter status",
+      "passed": true
+    },
+    {
+      "name": "explicit-default-filter one canonical",
+      "passed": true
+    },
+    {
+      "name": "explicit-default-page status",
+      "passed": true
+    },
+    {
+      "name": "explicit-default-page one canonical",
+      "passed": true
+    },
+    {
+      "name": "different annual titles",
+      "passed": true
+    },
+    {
+      "name": "different annual descriptions",
+      "passed": true
+    }
+  ],
+  "failed": [],
+  "source_hashes": {
+    "circuito/index.cfm": "8744fc21ec683f200406b608c637873a316dcb43873b3e7e28ad461a753a4b9a",
+    "desafiosupra/2024/index.cfm": "3536f50faa4d22032d1b91054cc61b1bf5b85867e08f4e3c5daa35ed9a732532",
+    "desafiosupra/2025/index.cfm": "f7d92c0b093b9299c0c4eefc0854446338a8a49fa9e96e457c4c76dc7fede6ba"
+  }
+}

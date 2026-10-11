@@ -1,0 +1,29 @@
+{
+  "origin": {
+    "samples_seconds": [
+      0.066111,
+      0.652767,
+      0.087009,
+      0.081104,
+      0.072628,
+      0.083673
+    ],
+    "median_ms": 82.4,
+    "min_ms": 66.1,
+    "max_ms": 652.8
+  },
+  "public": {
+    "samples_seconds": [
+      0.094627,
+      0.066829,
+      0.084418,
+      0.083266,
+      0.090088,
+      0.096272
+    ],
+    "median_ms": 87.3,
+    "min_ms": 66.8,
+    "max_ms": 96.3
+  },
+  "cache": "Unique URL and no-cache/no-store request headers. Public Cloudflare DYNAMIC in all 6; origin bypasses Cloudflare. No menu cache used."
+}

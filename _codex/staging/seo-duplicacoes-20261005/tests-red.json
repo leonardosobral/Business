@@ -1,0 +1,392 @@
+{
+  "CHECKS": [
+    {
+      "PASSED": false,
+      "NAME": "pt-BR city 37730"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR date 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR brand 37730"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR city 45554"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR date 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR brand 45554"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR city 45643"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR date 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR brand 45643"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR city 45646"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR date 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR brand 45646"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR city 45906"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR date 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "pt-BR brand 45906"
+    },
+    {
+      "PASSED": false,
+      "NAME": "pt-BR five distinct titles"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en city 37730"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en date 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en brand 37730"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en city 45554"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en date 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en brand 45554"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en city 45643"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en date 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en brand 45643"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en city 45646"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en date 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en brand 45646"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en city 45906"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en date 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "en brand 45906"
+    },
+    {
+      "PASSED": false,
+      "NAME": "en five distinct titles"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es city 37730"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es date 37730"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es brand 37730"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es city 45554"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es date 45554"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es brand 45554"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es city 45643"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es date 45643"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es brand 45643"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es city 45646"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es date 45646"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es brand 45646"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es city 45906"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es date 45906"
+    },
+    {
+      "PASSED": true,
+      "NAME": "es brand 45906"
+    },
+    {
+      "PASSED": false,
+      "NAME": "es five distinct titles"
+    },
+    {
+      "PASSED": true,
+      "NAME": "existing date title 37531"
+    },
+    {
+      "PASSED": true,
+      "NAME": "existing date title 37568"
+    },
+    {
+      "PASSED": true,
+      "NAME": "existing date title 40833"
+    },
+    {
+      "PASSED": true,
+      "NAME": "unique title unchanged"
+    },
+    {
+      "PASSED": true,
+      "NAME": "missing date unchanged"
+    },
+    {
+      "PASSED": false,
+      "NAME": "same place date preserves full identity Alpha"
+    },
+    {
+      "PASSED": false,
+      "NAME": "city HTML escaped Alpha"
+    },
+    {
+      "PASSED": false,
+      "NAME": "same place date preserves full identity  Beta"
+    },
+    {
+      "PASSED": false,
+      "NAME": "city HTML escaped  Beta"
+    },
+    {
+      "PASSED": false,
+      "NAME": "same place date different names stay distinct"
+    },
+    {
+      "PASSED": true,
+      "NAME": "dated HTML escaped 2026-03-08"
+    },
+    {
+      "PASSED": true,
+      "NAME": "dated HTML escaped 2026-05-17"
+    }
+  ],
+  "TITLES": [
+    {
+      "TITLE": "Track&Field Run Series 2026 - Motiva Aeroportos -  - corrida de rua - Road Runners",
+      "ID": 37730,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "Track&Field Run Series 2026 - Motiva Aeroportos -  - corrida de rua - Road Runners",
+      "ID": 45554,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners",
+      "ID": 45643,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners",
+      "ID": 45646,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - corrida de rua - Road Runners",
+      "ID": 45906,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "Track&Field Run Series 2026 - Motiva Aeroportos -  - Road race - Road Runners",
+      "ID": 37730,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "Track&Field Run Series 2026 - Motiva Aeroportos -  - Road race - Road Runners",
+      "ID": 45554,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners",
+      "ID": 45643,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners",
+      "ID": 45646,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Road race - Road Runners",
+      "ID": 45906,
+      "LANG": "en"
+    },
+    {
+      "TITLE": "Track&Field Run Series 2026 - Motiva Aeroportos -  - Carrera de ruta - Road Runners",
+      "ID": 37730,
+      "LANG": "es"
+    },
+    {
+      "TITLE": "Track&Field Run Series 2026 - Motiva Aeroportos -  - Carrera de ruta - Road Runners",
+      "ID": 45554,
+      "LANG": "es"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners",
+      "ID": 45643,
+      "LANG": "es"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners",
+      "ID": 45646,
+      "LANG": "es"
+    },
+    {
+      "TITLE": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTE - Carrera de ruta - Road Runners",
+      "ID": 45906,
+      "LANG": "es"
+    },
+    {
+      "TITLE": "LIVE! RUN XP Rio de Janei - corrida de rua | 05/04/2026 | Road Runners",
+      "ID": 37531,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "LIVE! RUN XP Rio de Janei - corrida de rua | 05/07/2026 | Road Runners",
+      "ID": 37568,
+      "LANG": "pt-BR"
+    },
+    {
+      "TITLE": "LIVE! RUN XP Rio de Janei - corrida de rua | 02/11/2026 | Road Runners",
+      "ID": 40833,
+      "LANG": "pt-BR"
+    },
+    {
+      "TRUNCATED": false,
+      "REPEATED": 1,
+      "TITLE": "Fixture dated &quot;&lt;race&gt;&quot; - corrida de rua | 08/03/2026 | Road Runners",
+      "ID": "dated-fixture",
+      "LANG": "fixture"
+    },
+    {
+      "TRUNCATED": false,
+      "REPEATED": 1,
+      "TITLE": "Fixture dated &quot;&lt;race&gt;&quot; - corrida de rua | 17/05/2026 | Road Runners",
+      "ID": "dated-fixture",
+      "LANG": "fixture"
+    }
+  ],
+  "failed": [
+    "pt-BR city 37730",
+    "pt-BR date 37730",
+    "pt-BR city 45554",
+    "pt-BR date 45554",
+    "pt-BR city 45643",
+    "pt-BR date 45643",
+    "pt-BR city 45646",
+    "pt-BR date 45646",
+    "pt-BR city 45906",
+    "pt-BR date 45906",
+    "pt-BR five distinct titles",
+    "en city 37730",
+    "en date 37730",
+    "en city 45554",
+    "en date 45554",
+    "en city 45643",
+    "en date 45643",
+    "en city 45646",
+    "en date 45646",
+    "en city 45906",
+    "en date 45906",
+    "en five distinct titles",
+    "es city 37730",
+    "es date 37730",
+    "es city 45554",
+    "es date 45554",
+    "es city 45643",
+    "es date 45643",
+    "es city 45646",
+    "es date 45646",
+    "es city 45906",
+    "es date 45906",
+    "es five distinct titles",
+    "same place date preserves full identity Alpha",
+    "city HTML escaped Alpha",
+    "same place date preserves full identity  Beta",
+    "city HTML escaped  Beta",
+    "same place date different names stay distinct"
+  ],
+  "fixture_cache_disabled": true,
+  "source_hash": "51ad8b37b37b1fea3f31e93be152eaf951601b7b163ae49fc43415b3072dd464"
+}

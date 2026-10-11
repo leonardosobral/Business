@@ -1,0 +1,128 @@
+[
+  {
+    "id": 33486,
+    "url": "https://roadrunners.run/evento/2026-sp-city-marathon/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 33486,
+    "url": "https://roadrunners.run/en/event/2026-sp-city-marathon/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 33486,
+    "url": "https://roadrunners.run/es/evento/2026-sp-city-marathon/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 37483,
+    "url": "https://roadrunners.run/evento/2026-live-run-xp-porto-alegre-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 37483,
+    "url": "https://roadrunners.run/en/event/2026-live-run-xp-porto-alegre-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 37483,
+    "url": "https://roadrunners.run/es/evento/2026-live-run-xp-porto-alegre-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true
+    }
+  },
+  {
+    "id": 39399,
+    "url": "https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "localized_paragraph_0": true,
+      "localized_paragraph_1": true,
+      "no_old_empty_heading": true
+    }
+  },
+  {
+    "id": 39399,
+    "url": "https://roadrunners.run/en/event/2026-maratona-de-aracaju-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "localized_paragraph_0": true,
+      "localized_paragraph_1": true,
+      "no_old_empty_heading": true
+    }
+  },
+  {
+    "id": 39399,
+    "url": "https://roadrunners.run/es/evento/2026-maratona-de-aracaju-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true,
+      "metadata_expected": true,
+      "localized_paragraph_0": true,
+      "localized_paragraph_1": true,
+      "no_old_empty_heading": true
+    }
+  }
+]

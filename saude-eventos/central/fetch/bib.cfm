@@ -17,13 +17,13 @@
 <cfset VARIABLES.saudeBibStage = "validacao"/>
 
 <cfif CGI.REQUEST_METHOD NEQ "POST">
-    <cfheader statuscode="405" statustext="Method Not Allowed"/>
+    <cfheader statuscode="405"/>
     <cfoutput>#serializeJSON({success=false,message="Use a ficha do atleta para desvincular o BIB."})#</cfoutput>
     <cfabort/>
 </cfif>
 
 <cfif NOT VARIABLES.saudeCanUnlinkBib>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>#serializeJSON({success=false,message="Somente Admins Globais podem desvincular um BIB."})#</cfoutput>
     <cfabort/>
 </cfif>
@@ -31,14 +31,14 @@
 <cfif NOT structKeyExists(SESSION, "saudeBusinessCsrfToken")
     OR NOT len(trim(SESSION.saudeBusinessCsrfToken & ""))
     OR compare(FORM.csrf_token & "", SESSION.saudeBusinessCsrfToken & "") NEQ 0>
-    <cfheader statuscode="403" statustext="Forbidden"/>
+    <cfheader statuscode="403"/>
     <cfoutput>#serializeJSON({success=false,message="A sessão de segurança expirou. Recarregue o painel."})#</cfoutput>
     <cfabort/>
 </cfif>
 
 <cfif NOT isNumeric(FORM.id_evento) OR val(FORM.id_evento) LTE 0
     OR NOT isNumeric(FORM.id_inscricao) OR val(FORM.id_inscricao) LTE 0>
-    <cfheader statuscode="400" statustext="Bad Request"/>
+    <cfheader statuscode="400"/>
     <cfoutput>#serializeJSON({success=false,message="Evento ou número de peito inválido."})#</cfoutput>
     <cfabort/>
 </cfif>
@@ -110,12 +110,12 @@
 
     <cfoutput>#serializeJSON({success=true,message="BIB #qSaudeBibAthlete.num_peito# desvinculado. O número já está livre para outro atleta."})#</cfoutput>
     <cfcatch type="Saude">
-        <cfheader statuscode="404" statustext="Not Found"/>
+        <cfheader statuscode="404"/>
         <cfoutput>#serializeJSON({success=false,message=cfcatch.message})#</cfoutput>
     </cfcatch>
     <cfcatch type="any">
         <cflog file="business-saude-eventos" type="error" text="bib_unlink stage=#VARIABLES.saudeBibStage# event=#int(FORM.id_evento)# registration=#int(FORM.id_inscricao)# actor=#VARIABLES.saudeBibActorId# message=#left(cfcatch.message & '', 1000)# detail=#left(structKeyExists(cfcatch, 'detail') ? cfcatch.detail & '' : '', 3000)# code=#structKeyExists(cfcatch, 'errorCode') ? cfcatch.errorCode & '' : ''#"/>
-        <cfheader statuscode="500" statustext="Internal Server Error"/>
+        <cfheader statuscode="500"/>
         <cfoutput>#serializeJSON({success=false,message="Não foi possível desvincular o BIB."})#</cfoutput>
     </cfcatch>
 </cftry>

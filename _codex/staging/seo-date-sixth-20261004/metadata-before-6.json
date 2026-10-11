@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+      "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+      "description": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA acontece em 17 outubro 2026, em Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil - Apucarana - PR.",
+      "url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+      "startDate": "2026-10-17",
+      "endDate": "2026-10-17",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/AHK7B3QRPWMSXS6SXSAKLNE92J4ADYNV7Z0JJVPWSUA8DFWT6W.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Apucarana",
+          "addressRegion": "PR",
+          "addressCountry": "BR",
+          "streetAddress": "Praça Rui Barbosa: Av. Curitiba , s/n, Apucarana, PR, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87900&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/pr/",
+          "@type": "ListItem",
+          "name": "Corridas em PR"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+          "@type": "ListItem",
+          "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

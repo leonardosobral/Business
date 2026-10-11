@@ -1,0 +1,584 @@
+--- a/includes/backend.cfm
++++ b/includes/backend.cfm
+@@ -84,7 +84,7 @@
+             and <cfqueryparam cfsqltype="cf_sql_date" value="#lsdateformat(now()+ListLast(URL.tempo)*30, 'yyyy-mm-dd')#"/>
+         )
+     </cfif--->
+-    <cfif isDefined("URL.cidade")>
++    <cfif isDefined("URL.cidade") AND VARIABLES.template NEQ "/estado/">
+         AND upper(cidade) = <cfqueryparam cfsqltype="cf_sql_varchar" value="#uCase(URL.cidade)#"/>
+     </cfif>
+     <cfif URL.rua AND NOT URL.trail>
+--- a/includes/backend_estado_cidades.cfm
++++ b/includes/backend_estado_cidades.cfm
+@@ -0,0 +1,79 @@
++<cfparam name="URL.cidade" default=""/>
++<cfscript>
++// Resultados históricos usam as mesmas facetas da lista, sem restringir a cidade.
++if (!listFindNoCase("maiores,maratonas", URL.filtro)) URL.filtro = "";
++VARIABLES.estadoCidadeSlug = lCase(trim(URL.cidade));
++VARIABLES.estadoCidadeNome = "Cidade não encontrada";
++VARIABLES.estadoCityCounts = {};
++REQUEST.estadoCityUrl = function(required string slug, string mode=URL.filtro) {
++    var parts = [];
++    if (len(arguments.slug)) arrayAppend(parts, "cidade=" & urlEncodedFormat(arguments.slug));
++    if (len(arguments.mode)) arrayAppend(parts, "filtro=" & urlEncodedFormat(arguments.mode));
++    for (var key in listToArray("distancia,tempo,rua,trail,nacional,internacional,cupom,badges,ano")) {
++        if (structKeyExists(URL, key) && len(trim(toString(URL[key])))) arrayAppend(parts, key & "=" & urlEncodedFormat(URL[key]));
++    }
++    return "/estado/" & lCase(URL.tag) & "/" & (arrayLen(parts) ? "?" & arrayToList(parts,"&") : "");
++};
++</cfscript>
++<cfquery name="qEstadoCidadesNomes" dbtype="query">
++    SELECT tag_cidade, min(cidade) AS cidade
++    FROM qEventosBase
++    WHERE estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#uCase(URL.tag)#"/>
++        AND tag_cidade IS NOT NULL
++    GROUP BY tag_cidade
++    ORDER BY cidade ASC
++</cfquery>
++<cfscript>
++for (VARIABLES.cityRow in qEstadoCidadesNomes) {
++    if (VARIABLES.estadoCidadeSlug == VARIABLES.cityRow.tag_cidade || compareNoCase(trim(URL.cidade),trim(VARIABLES.cityRow.cidade)) == 0) {
++        VARIABLES.estadoCidadeSlug = VARIABLES.cityRow.tag_cidade;
++        break;
++    }
++}
++</cfscript>
++<cfquery name="qEstadoEventosSemCidade" dbtype="query">
++    SELECT * FROM qEventos WHERE 1=1
++    <cfif URL.filtro EQ "maratonas">
++        AND is_maratona = 42 AND tipo_corrida = 'rua'
++        AND upper(nome_evento) NOT LIKE '%REVEZAMENTO%'
++    </cfif>
++    ORDER BY data_final DESC, concluintes DESC
++</cfquery>
++<cfquery name="qEstadoCidadeContagens" dbtype="query">
++    SELECT tag_cidade, count(*) AS total_eventos
++    FROM qEstadoEventosSemCidade
++    WHERE tag_cidade IS NOT NULL
++    GROUP BY tag_cidade
++</cfquery>
++<cfscript>
++VARIABLES.estadoCitiesTotal = URL.filtro == "maiores" ? min(20,qEstadoEventosSemCidade.recordCount) : qEstadoEventosSemCidade.recordCount;
++for (VARIABLES.cityRow in qEstadoCidadeContagens) {
++    VARIABLES.estadoCityCounts[VARIABLES.cityRow.tag_cidade] = URL.filtro == "maiores" ? min(20,VARIABLES.cityRow.total_eventos) : VARIABLES.cityRow.total_eventos;
++}
++qEstadoCidades = queryNew("cidade,tag_cidade,total_eventos", "varchar,varchar,integer");
++for (VARIABLES.cityRow in qEstadoCidadesNomes) {
++    if (!len(trim(VARIABLES.cityRow.tag_cidade)) || reFind("[^a-z0-9-]",VARIABLES.cityRow.tag_cidade)) continue;
++    VARIABLES.cityWords = listToArray(lCase(trim(VARIABLES.cityRow.cidade)), " ");
++    for (VARIABLES.wordIndex=1;VARIABLES.wordIndex<=arrayLen(VARIABLES.cityWords);VARIABLES.wordIndex++) {
++        if (VARIABLES.wordIndex==1 || !listFindNoCase("a,ao,aos,as,com,da,das,de,del,do,dos,e,em,na,nas,no,nos,para,por,sem,sob",VARIABLES.cityWords[VARIABLES.wordIndex])) {
++            VARIABLES.cityWords[VARIABLES.wordIndex] = uCase(left(VARIABLES.cityWords[VARIABLES.wordIndex],1)) & mid(VARIABLES.cityWords[VARIABLES.wordIndex],2,len(VARIABLES.cityWords[VARIABLES.wordIndex]));
++        }
++    }
++    VARIABLES.cityName = arrayToList(VARIABLES.cityWords," ");
++    VARIABLES.cityCount = structKeyExists(VARIABLES.estadoCityCounts,VARIABLES.cityRow.tag_cidade) ? VARIABLES.estadoCityCounts[VARIABLES.cityRow.tag_cidade] : 0;
++    queryAddRow(qEstadoCidades, {cidade=VARIABLES.cityName,tag_cidade=VARIABLES.cityRow.tag_cidade,total_eventos=VARIABLES.cityCount});
++    if (VARIABLES.estadoCidadeSlug == VARIABLES.cityRow.tag_cidade) VARIABLES.estadoCidadeNome = VARIABLES.cityName;
++}
++</cfscript>
++<cfquery name="qEstadoEventosCidade" dbtype="query">
++    SELECT * FROM qEstadoEventosSemCidade WHERE 1=1
++    <cfif len(VARIABLES.estadoCidadeSlug)>
++        AND tag_cidade = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.estadoCidadeSlug#"/>
++    </cfif>
++    <cfif URL.filtro EQ "maiores">ORDER BY concluintes DESC<cfelse>ORDER BY data_final DESC, concluintes DESC</cfif>
++</cfquery>
++<cfif URL.filtro EQ "maiores">
++    <cfquery name="qEventos" dbtype="query" maxrows="20">SELECT * FROM qEstadoEventosCidade ORDER BY concluintes DESC</cfquery>
++<cfelse>
++    <cfset qEventos = qEstadoEventosCidade/>
++</cfif>
+--- a/assets/js/openresults-estado-cidades.js
++++ b/assets/js/openresults-estado-cidades.js
+@@ -0,0 +1,99 @@
++(function (window) {
++    'use strict';
++    var validStates = 'AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO'.split(' ');
++    var filterKeys = ['filtro', 'ano', 'distancia', 'tempo', 'rua', 'trail', 'nacional', 'internacional', 'cupom', 'badges'];
++
++    function buildUrl(href, uf, slug) {
++        uf = String(uf || '').toUpperCase();
++        slug = String(slug || '').toLowerCase();
++        if (validStates.indexOf(uf) < 0 || (slug && !/^[a-z0-9-]+$/.test(slug))) return '';
++        var source = new URL(href);
++        var target = new URL('/estado/' + uf.toLowerCase() + '/', source.origin);
++        filterKeys.forEach(function (key) {
++            var value = source.searchParams.get(key);
++            if (value !== null && value !== '') target.searchParams.set(key, value);
++        });
++        if (slug) target.searchParams.set('cidade', slug);
++        return target.pathname + target.search;
++    }
++    function buildTabUrl(href, mode, selected) {
++        var source = new URL(href);
++        var state = source.pathname.split('/')[2];
++        var slug = selected === undefined ? source.searchParams.get('cidade') : selected;
++        var targetPath = buildUrl(href,state,slug);
++        if (!targetPath || ['','maiores','maratonas'].indexOf(mode) < 0) return '';
++        var target = new URL(targetPath,source.origin);
++        if (mode) target.searchParams.set('filtro',mode);
++        else target.searchParams.delete('filtro');
++        return target.pathname + target.search;
++    }
++    function buildApiUrl(href, uf, page, monthKey, selected) {
++        var source = new URL(href);
++        var slug = selected === undefined ? source.searchParams.get('cidade') : selected;
++        var targetPath = buildUrl(href,uf,slug);
++        if (!targetPath) return '';
++        var target = new URL(targetPath,source.origin);
++        target.pathname = '/api/eventos_por_estado.cfm';
++        target.searchParams.set('tag',String(uf).toUpperCase());
++        target.searchParams.set('page',String(page));
++        target.searchParams.set('lastMonthKey',String(monthKey || ''));
++        return target.pathname + target.search;
++    }
++
++    function normalize(value) {
++        return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, ' ');
++    }
++
++    function matches(name, term) { return normalize(name).indexOf(normalize(term)) >= 0; }
++
++    function init(document, uf, selected) {
++        var picker = document.querySelector('[data-estado-city-picker]');
++        if (!picker) return;
++        var input = picker.querySelector('input');
++        var summary = picker.querySelector('summary');
++        var items = picker.querySelectorAll('[data-estado-city-slug]');
++        var status = picker.querySelector('[data-estado-city-status]');
++
++        function search() {
++            var visible = 0;
++            items.forEach(function (item) {
++                var found = matches(item.dataset.estadoCityName, input.value);
++                item.hidden = !found;
++                if (found) visible++;
++            });
++            status.textContent = visible ? '' : 'Nenhuma cidade encontrada.';
++        }
++
++        function syncLinks() {
++            document.querySelectorAll('[data-estado-city-slug]').forEach(function (item) {
++                if (item.getAttribute('aria-disabled') !== 'true') item.href = buildUrl(window.location.href, uf, item.dataset.estadoCitySlug);
++            });
++        }
++
++        picker.addEventListener('toggle', function () {
++            if (picker.open) { syncLinks(); input.focus(); }
++            else { input.value = ''; search(); }
++        });
++        input.addEventListener('input', search);
++        picker.addEventListener('keydown', function (event) {
++            if (event.key === 'Escape') { picker.open = false; summary.focus(); }
++        });
++        document.addEventListener('click', function (event) {
++            if (!picker.contains(event.target)) picker.open = false;
++            var link = event.target.closest('[data-estado-city-slug]');
++            if (link && link.getAttribute('aria-disabled') !== 'true') link.href = buildUrl(window.location.href, uf, link.dataset.estadoCitySlug);
++        });
++        var stateSelect = document.querySelector('[data-estado-state-select]');
++        if (stateSelect) stateSelect.addEventListener('change', function () {
++            var target = buildUrl(window.location.href, stateSelect.value, '');
++            if (target) window.location.assign(target);
++        });
++
++        document.querySelectorAll('[data-estado-tab]').forEach(function (link) {
++            var target = buildTabUrl(window.location.href,link.dataset.estadoTab,selected);
++            if (target) link.href = target;
++        });
++        syncLinks();
++    }
++    window.OpenResultsEstadoCities = {buildUrl:buildUrl, buildTabUrl:buildTabUrl, buildApiUrl:buildApiUrl, matches:matches, init:init};
++})(window);
+--- a/assets/css/openresults-estado-cidades.css
++++ b/assets/css/openresults-estado-cidades.css
+@@ -0,0 +1,40 @@
++.estado-city-picker,.estado-city-picker * { box-sizing:border-box; }
++.estado-page-hero-location { display:flex; align-items:center; gap:.65rem; flex-wrap:wrap; }
++.estado-city-picker { position:relative; width:260px; max-width:100%; color:#333; }
++.estado-city-picker summary { display:flex; align-items:center; gap:.6rem; min-height:42px; padding:.6rem .8rem; border:1px solid #d5d5d5; border-radius:22px; background:#fff; cursor:pointer; font-size:.85rem; font-weight:600; list-style:none; }
++.estado-city-picker summary::-webkit-details-marker { display:none; }
++.estado-city-picker summary span { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1; }
++.estado-city-picker summary:focus-visible,.estado-city-picker a:focus-visible { outline:2px solid #d79b0c; outline-offset:2px; }
++.estado-city-picker[open] summary { border-color:#fab120; }
++.estado-city-picker-panel { position:absolute; right:0; top:calc(100% + .4rem); z-index:1040; width:340px; max-width:calc(100vw - 32px); padding:.85rem; border:1px solid #ddd; border-radius:14px; background:#fff; box-shadow:0 8px 24px #0002; }
++.estado-city-picker-label { display:block; font-size:.8rem; font-weight:600; margin-bottom:.35rem; }
++.estado-city-picker input { width:100%; padding:.55rem .65rem; border:1px solid #ccc; border-radius:8px; font-size:16px; }
++.estado-city-picker-hint { margin:.4rem 0 .3rem; color:#666; font-size:.72rem; }
++.estado-city-picker-list { max-height:280px; overflow-y:auto; overscroll-behavior:contain; }
++.estado-city-picker-item { display:flex; align-items:center; justify-content:space-between; gap:.6rem; padding:.65rem .4rem; border-radius:7px; color:#333; text-decoration:none; font-size:.82rem; }
++.estado-city-picker-item[hidden] { display:none; }
++.estado-city-picker-item:hover { background:#fff5db; color:#333; }
++.estado-city-picker-item[aria-current="page"] { background:#fff0c7; font-weight:700; }
++.estado-city-picker-item[aria-disabled="true"] { color:#888; cursor:default; }
++.estado-city-picker-item [data-city-count] { flex:0 0 auto; font-size:.72rem; }
++.estado-city-picker-status { font-size:.8rem; margin:.5rem 0 0; }
++.estado-city-picker-status:empty { display:none; }
++@media (max-width:1199.98px) { .estado-page-hero-header { flex-wrap:wrap; } }
++@media (max-width:767.98px) {
++ .estado-page-hero-location { width:100%; align-items:stretch; }
++ .estado-page-hero-state-select,.estado-city-picker { width:100%; }
++ .estado-page-hero-state-select .home-hero-chip-select { width:100%; }
++ .estado-city-picker-panel { left:0; right:auto; width:100%; max-width:100%; }
++}
++
++
++.or-state-city-row { flex-wrap:wrap; }
++.or-state-city-row .estado-city-picker { width:260px; }
++.or-state-city-row .estado-city-picker summary { min-height:44px; }
++@media (max-width:767.98px) {
++ .or-state-city-row .or-ranking-year-title { flex-basis:100%; }
++ .or-state-city-row .or-search-chip-select-wrap { flex:0 1 40%; min-width:0; }
++ .or-state-city-row .or-search-chip-select { width:100%; min-width:0; max-width:100%; }
++ .or-state-city-row .estado-city-picker { flex:1 1 0; width:auto; min-width:0; }
++ .or-state-city-row .estado-city-picker-panel { left:auto; right:0; width:calc(100vw - 32px); max-width:calc(100vw - 32px); }
++}
+--- a/api/eventos_por_estado.cfm
++++ b/api/eventos_por_estado.cfm
+@@ -10,6 +10,7 @@
+ <!--- BACKEND --->
+ <cfinclude template="../includes/variaveis.cfm"/>
+ <cfinclude template="../includes/backend.cfm"/>
++<cfinclude template="../includes/backend_estado_cidades.cfm"/>
+ 
+ <cfset qEventosAba = qEventos/>
+ <cfset VARIABLES.qEventosAba = qEventosAba/>
+--- a/estado/index.cfm
++++ b/estado/index.cfm
+@@ -13,17 +13,23 @@
+ <!--- BACKEND --->
+ <cfinclude template="../includes/variaveis.cfm"/>
+ <cfinclude template="../includes/backend.cfm"/>
++<cfinclude template="../includes/backend_estado_cidades.cfm"/>
+ 
+ <!--- META INFO --->
+ <cfset VARIABLES.canonical = "#APPLICATION.baseCanonica##VARIABLES.template##URL.tag##Len(trim(URL.tag)) ? '/' : ''##VARIABLES.queryString#"/>
+ <cfset VARIABLES.title = "Eventos por estado: #ucase(tag)# - #APPLICATION.nomeSite#"/>
+ <cfset VARIABLES.description = "Resultados de eventos de corrida por estado"/>
++<cfif len(VARIABLES.estadoCidadeSlug)>
++    <cfset VARIABLES.title = encodeForHTML("Resultados de corridas em " & VARIABLES.estadoCidadeNome & " (" & URL.tag & ") - " & APPLICATION.nomeSite)/>
++</cfif>
+ <cfset VARIABLES.keywords = "resultados, corrida, competição, pódio, atletas, corredores"/>
+ 
+ <!--- HEAD --->
+ <cfinclude template="../includes/head.cfm"/>
+ 
+ <body>
++
++    <link rel="stylesheet" href="/assets/css/openresults-estado-cidades.css?v=20261004-1"/>
+ 
+     <!--- SEO WEB TOOLS --->
+ 
+@@ -107,13 +113,13 @@
+ 
+                 <cfif isDefined("URL.tag")>
+                     <cfset VARIABLES.estadoFiltroQueryString = len(trim(URL.filtro)) ? "?filtro=#urlEncodedFormat(URL.filtro)#" : ""/>
+-                    <div class="or-ranking-year-row mb-3">
++                    <div class="or-ranking-year-row or-state-city-row mb-3">
+                         <h1 class="or-ranking-year-title mb-0">Eventos em</h1>
+                         <div class="or-search-chip-select-wrap">
+                             <i class="fa-solid fa-location-dot or-search-chip-select-icon"></i>
+                             <select class="or-search-chip or-search-chip-select or-ranking-year-select"
+                                     aria-label="Selecionar estado"
+-                                    onchange="if (this.value) window.location.href = '/estado/' + this.value + '/<cfoutput>#VARIABLES.estadoFiltroQueryString#</cfoutput>';">
++                                    data-estado-state-select>
+                                 <option value="ac" <cfif URL.tag EQ "AC">selected</cfif>>Acre</option>
+                                 <option value="al" <cfif URL.tag EQ "AL">selected</cfif>>Alagoas</option>
+                                 <option value="am" <cfif URL.tag EQ "AM">selected</cfif>>Amazonas</option>
+@@ -144,24 +150,31 @@
+                             </select>
+                             <i class="fa-solid fa-chevron-down or-search-chip-select-caret"></i>
+                         </div>
++                        <details class="estado-city-picker" data-estado-city-picker>
++                            <summary><i class="fa-solid fa-city" aria-hidden="true"></i><span><cfoutput>Cidade: <cfif len(VARIABLES.estadoCidadeSlug)>#encodeForHTML(VARIABLES.estadoCidadeNome)#<cfelse>Todas as cidades</cfif></cfoutput></span><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
++                            <div class="estado-city-picker-panel">
++                                <label class="estado-city-picker-label" for="estado-city-search">Buscar cidade</label>
++                                <input type="search" id="estado-city-search" placeholder="Digite o nome da cidade" autocomplete="off"/>
++                                <p class="estado-city-picker-hint">Contagens conforme os filtros da lista. Em Maiores, até 20 eventos por seleção.</p>
++                                <div class="estado-city-picker-list">
++                                    <a class="estado-city-picker-item" data-estado-city-slug="" data-estado-city-name="Todas as cidades" href="<cfoutput>#encodeForHTMLAttribute(REQUEST.estadoCityUrl(""))#</cfoutput>"<cfif NOT len(VARIABLES.estadoCidadeSlug)> aria-current="page"</cfif>><span>Todas as cidades</span><span data-city-count><cfoutput>#VARIABLES.estadoCitiesTotal#</cfoutput> eventos</span></a>
++                                    <cfoutput query="qEstadoCidades">
++                                        <a class="estado-city-picker-item" data-estado-city-slug="#encodeForHTMLAttribute(tag_cidade)#" data-estado-city-name="#encodeForHTMLAttribute(cidade)#"<cfif total_eventos GT 0 OR VARIABLES.estadoCidadeSlug EQ tag_cidade> href="#encodeForHTMLAttribute(REQUEST.estadoCityUrl(tag_cidade))#" aria-disabled="false"<cfelse> aria-disabled="true" tabindex="-1"</cfif><cfif VARIABLES.estadoCidadeSlug EQ tag_cidade> aria-current="page"</cfif>><span>#encodeForHTML(cidade)#</span><span data-city-count>#total_eventos# <cfif total_eventos EQ 1>evento<cfelse>eventos</cfif></span></a>
++                                    </cfoutput>
++                                </div>
++                                <p class="estado-city-picker-status" data-estado-city-status role="status" aria-live="polite"></p>
++                            </div>
++                        </details>
+                     </div>
+                 </cfif>
+ 
+-                <!--- CIDADE SELECIONADA --->
+-
+-                <cfif isDefined("URL.cidade")>
+-
+-                    <h1 class="h3"><icon class="fa fa-person-running"></icon>&nbsp;<img src="/assets/separador.png" alt="separador de breadcrumb" style="max-height: 20px; margin-top: -4px">&nbsp;<cfoutput>#URL.cidade#</cfoutput></h1>
+-
+-                </cfif>
+-
+                 <!--- ABAS --->
+ 
+                 <nav class="mt-0">
+                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
+-                        <a class="nav-link <cfif URL.filtro EQ "">active</cfif> px-4" id="nav-tab-UL" href="<cfoutput>/estado/#lCase(tag)#/</cfoutput>" role="tab" aria-selected="false">Últimos</a>
+-                        <a class="nav-link <cfif URL.filtro EQ "maiores">active</cfif> px-4" id="nav-tab-MA" href="<cfoutput>/estado/#lCase(tag)#/?filtro=maiores</cfoutput>" role="tab" aria-selected="false">Maiores</a>
+-                        <a class="nav-link <cfif URL.filtro EQ "maratonas">active</cfif> px-4" id="nav-tab-MR" href="<cfoutput>/estado/#lCase(tag)#/?filtro=maratonas</cfoutput>" role="tab" aria-selected="false">Maratonas</a>
++                        <a class="nav-link <cfif URL.filtro EQ "">active</cfif> px-4" data-estado-tab="" id="nav-tab-UL" href="<cfoutput>#encodeForHTMLAttribute(REQUEST.estadoCityUrl(VARIABLES.estadoCidadeSlug,""))#</cfoutput>" role="tab" aria-selected="false">Últimos</a>
++                        <a class="nav-link <cfif URL.filtro EQ "maiores">active</cfif> px-4" data-estado-tab="maiores" id="nav-tab-MA" href="<cfoutput>#encodeForHTMLAttribute(REQUEST.estadoCityUrl(VARIABLES.estadoCidadeSlug,"maiores"))#</cfoutput>" role="tab" aria-selected="false">Maiores</a>
++                        <a class="nav-link <cfif URL.filtro EQ "maratonas">active</cfif> px-4" data-estado-tab="maratonas" id="nav-tab-MR" href="<cfoutput>#encodeForHTMLAttribute(REQUEST.estadoCityUrl(VARIABLES.estadoCidadeSlug,"maratonas"))#</cfoutput>" role="tab" aria-selected="false">Maratonas</a>
+                     </div>
+                 </nav>
+ 
+@@ -171,29 +184,9 @@
+                 <div id="container-proximas" class="col-lg-12">
+ 
+                     <div id="scroll-container-proximas">
+-
+-                        <cfif URL.filtro EQ "">
+-
+-                            <cfset qEventosAba = qEventos/>
+-
+-                        <cfelseif URL.filtro EQ "maiores">
+-
+-                            <cfquery name="qEventosAba" dbtype="query" maxrows="20">
+-                                SELECT * from qEventos
+-                                ORDER BY concluintes desc
+-                            </cfquery>
+-
+-                        <cfelseif URL.filtro EQ "maratonas">
+-
+-                            <cfquery name="qEventosAba" dbtype="query">
+-                                SELECT * from qEventos
+-                                WHERE is_maratona = 42
+-                                AND tipo_corrida = 'rua'
+-                                AND upper(nome_evento) NOT like '%REVEZAMENTO%'
+-                                ORDER BY data_final desc
+-                            </cfquery>
+-
+-                        </cfif>
++                        <cfif NOT qEventos.recordCount><p class="text-muted py-3" role="status">Nenhum evento encontrado para esta seleção. Experimente outra cidade ou aba.</p></cfif>
++
++                        <cfset qEventosAba = qEventos/>
+ 
+                         <cfset VARIABLES.originalEventCardColumnClass = isDefined("VARIABLES.eventCardColumnClass") ? VARIABLES.eventCardColumnClass : ""/>
+                         <cfset VARIABLES.originalEventMonthDividerFormat = isDefined("VARIABLES.eventMonthDividerFormat") ? VARIABLES.eventMonthDividerFormat : ""/>
+@@ -243,191 +236,42 @@
+     <cfinclude template="../includes/seo-web-tools-body-end.cfm"/>
+ 
+ 
+-    <!--- INFINITE SCROLL --->
+-
++    <script src="/assets/js/openresults-estado-cidades.js?v=20261004-1"></script>
+     <script>
+-        let pagesize = <cfoutput>#VARIABLES.pageSize#</cfoutput>;
++        const estadoUf = <cfoutput>#replace(serializeJSON(URL.tag), "<", "\u003c", "all")#</cfoutput>;
++        const estadoCidade = <cfoutput>#replace(serializeJSON(VARIABLES.estadoCidadeSlug), "<", "\u003c", "all")#</cfoutput>;
++        OpenResultsEstadoCities.init(document, estadoUf, estadoCidade);
++        let totalEventos = <cfoutput>#qEventos.recordCount#</cfoutput>;
++        let lastMonth = 0;
++        let lastMonthKey = '<cfoutput>#JSStringFormat(URL.lastMonthKey)#</cfoutput>';
+         let page = 0;
+-        <cfif qEventos.recordcount LT VARIABLES.pageSize>
+-            let lastWeek = <cfoutput>#qEventos.week[qEventos.recordcount]#</cfoutput>;
+-            let lastMonth = <cfoutput>#qEventos.month[qEventos.recordcount]#</cfoutput>;
+-        <cfelse>
+-            let lastWeek = <cfoutput>#qEventos.week[VARIABLES.pageSize]#</cfoutput>;
+-            let lastMonth = <cfoutput>#qEventos.month[VARIABLES.pageSize]#</cfoutput>;
+-        </cfif>
+         let loading = false;
+-        let totalEventos = <cfoutput>#qEventos.recordcount#</cfoutput>;
+-
+-        // Get a spinner, container with images and scrollable container using an id attribute
++        const pageSize = <cfoutput>#VARIABLES.pageSize#</cfoutput>;
+         const spinner = document.getElementById('spinner-proximas');
+-        const scrollContainer = document.getElementById('scroll-container-proximas');
+         const eventListContainer = document.getElementById('listaEvento');
+-        const infiniteContainer = document.getElementById('container-proximas');
+-
+-        // Function that loads next image
+-        const loadImages = () => {
+-
+-            if (totalEventos < page*pagesize) {
+-                return;
+-            }
+-
+-            // Make spinner visible
++        async function loadImages() {
++            if (loading || totalEventos <= (page + 1) * pageSize) return;
++            loading = true;
+             spinner.style.display = 'block';
+-
+-            if (!loading) {
+-
+-              page++;
+-
+-              loading = true;
+-
+-              // Fetch your API
+-              fetch('/api/eventos_por_estado.cfm?filtro=<cfoutput>#URL.filtro#</cfoutput>&tag=<cfoutput>#URL.tag#</cfoutput>&page=' + page + '&lastWeek=' + lastWeek + '&lastMonth=' + lastMonth + '&lastMonthKey=' + encodeURIComponent(lastMonthKey) + '&distancia=' + distanciaSelecionada + '&tempo=' + tempoSelecionado)
+-                .then(function (response) {
+-                    // The API call was successful!
+-                    return response.text();
+-                }).then(function (html) {
+-
+-                    loading = false;
+-
+-                    // Hide spinner after data loads
+-                    spinner.style.display = 'none';
+-
+-                    // Append an image element generated by createImg function to the container with images
+-                    eventListContainer.insertAdjacentHTML("beforeend",html);
+-
+-                    // Processa os scripts
+-                    var arr = eventListContainer.getElementsByTagName('script')
+-                    for (var n = 0; n < arr.length; n++) {
+-                        eval(arr[n].innerHTML); //run script inside div
+-                    }
+-
+-                    // colorir as distancias
+-                    colorirDistancias();
+-
+-                }).catch(function (err) {
+-
+-                    loading = false;
+-
+-                    // There was an error
+-                    console.warn('Something went wrong.', err);
+-                });
+-
++            try {
++                const response = await fetch(OpenResultsEstadoCities.buildApiUrl(window.location.href, estadoUf, page + 1, lastMonthKey, estadoCidade));
++                if (!response.ok) throw new Error('Falha ao carregar eventos: ' + response.status);
++                const html = await response.text();
++                eventListContainer.insertAdjacentHTML('beforeend',html);
++                const fragment = document.createElement('div');
++                fragment.innerHTML = html;
++                fragment.querySelectorAll('script').forEach(function (script) { eval(script.textContent); });
++                page++;
++                colorirDistancias();
++            } catch (error) {
++                console.warn(error.message);
++            } finally {
++                loading = false;
++                spinner.style.display = 'none';
+             }
+         }
+-
+-        // Add an event listener to the scrollable container. The event below is triggered when a user scrolls to the end of the container
+         window.addEventListener('completed.mdb.infiniteScroll', loadImages);
+-
+-        // init infinite scroll
+         new mdb.InfiniteScroll(window);
+-
+     </script>
+-
+-
+-    <!--- SLIDERS DE DISTANCIA --->
+-
+-    <script>
+-
+-        // VARIAVES DOS RANGES
+-
+-        const rangeDistancia = document.querySelector('#multi-ranges-distancia');
+-        const rangeTempo = document.querySelector('#multi-ranges-tempo');
+-        const rangeLegenda = document.querySelector('#multi-ranges-legenda');
+-
+-        let distanciaSelecionada = [<cfoutput>#URL.distancia#</cfoutput>];
+-        let tempoSelecionado = [<cfoutput>#URL.tempo#</cfoutput>];
+-        let updateDataTimer;
+-
+-        const [firstKm, secondKm] = distanciaSelecionada;
+-        const [firstTempo, secondTempo] = tempoSelecionado;
+-        rangeLegenda.innerHTML = `Exibindo ` + totalEventos + ` eventos com distâncias de ${firstKm} a ${secondKm}km no período de ${firstTempo} a ${secondTempo} meses.`;
+-
+-        // RANGE DE DISTANCIA
+-
+-        const rangeDistanciaInit = new mdb.MultiRangeSlider(rangeDistancia, {
+-          startValues: [<cfoutput>#URL.distancia#</cfoutput>],
+-        });
+-
+-        rangeDistancia.addEventListener('valueChanged.mdb.multiRangeSlider', (e) => {
+-            clearTimeout(updateDataTimer);
+-            updateDataTimer = setTimeout(() => {
+-                // atauliza o range de distancias
+-                distanciaSelecionada = e.values.rounded;
+-                const [firstKm, secondKm] = distanciaSelecionada;
+-                const [firstTempo, secondTempo] = tempoSelecionado;
+-                rangeLegenda.innerHTML = `Exibindo ` + totalEventos + ` eventos com distâncias de ${firstKm} a ${secondKm}km no período de ${firstTempo} a ${secondTempo} meses.`;
+-                // atualiza a URL
+-                window.history.replaceState('', '', updateURLParameter(window.location.href, "distancia", distanciaSelecionada));
+-                window.history.replaceState('', '', updateURLParameter(window.location.href, "tempo", tempoSelecionado));
+-                // Fetch your API
+-                fetch('/api/eventos.cfm?filtro=<cfoutput>#URL.filtro#</cfoutput>&page=0&distancia=' + e.values.rounded + '&tempo=' + tempoSelecionado)
+-                .then(function (response) {
+-                    // The API call was successful!
+-                    return response.text();
+-                }).then(function (html) {
+-                    // zera a pagina
+-                    page = 0;
+-                    // Append an image element generated by createImg function to the container with images
+-                    scrollContainer.innerHTML = html;
+-                    var arr = scrollContainer.getElementsByTagName('script')
+-                    for (var n = 0; n < arr.length; n++) {
+-                        eval(arr[n].innerHTML); //run script inside div
+-                    }
+-                    // colorir as distancias
+-                    colorirDistancias();
+-                    const [first, second] = e.values.rounded;
+-                    rangeLegenda.innerHTML = `Exibindo ` + totalEventos + ` eventos com distâncias de ${firstKm} a ${secondKm}km no período de ${firstTempo} a ${secondTempo} meses.`;
+-                }).catch(function (err) {
+-                    // There was an error
+-                    console.warn('Something went wrong.', err);
+-                });
+-            },300);
+-        });
+-
+-        // RANGE DE TEMPO
+-
+-        const rangeTempoInit = new mdb.MultiRangeSlider(rangeTempo, {
+-          startValues: [<cfoutput>#URL.tempo#</cfoutput>],
+-        });
+-
+-        rangeTempo.addEventListener('valueChanged.mdb.multiRangeSlider', (e) => {
+-            clearTimeout(updateDataTimer);
+-            updateDataTimer = setTimeout(() => {
+-                // atualiza o range de distancias
+-                tempoSelecionado = e.values.rounded;
+-                const [firstKm, secondKm] = distanciaSelecionada;
+-                const [firstTempo, secondTempo] = tempoSelecionado;
+-                rangeLegenda.innerHTML = `Exibindo ` + totalEventos + ` eventos com distâncias de ${firstKm} a ${secondKm}km no período de ${firstTempo} a ${secondTempo} meses.`;
+-                // atualiza a URL
+-                window.history.replaceState('', '', updateURLParameter(window.location.href, "distancia", distanciaSelecionada));
+-                window.history.replaceState('', '', updateURLParameter(window.location.href, "tempo", tempoSelecionado));
+-                // Fetch your API
+-                fetch('/api/eventos.cfm?filtro=<cfoutput>#URL.filtro#</cfoutput>&page=0&distancia=' + distanciaSelecionada + '&tempo=' + e.values.rounded)
+-                .then(function (response) {
+-                    // The API call was successful!
+-                    return response.text();
+-                }).then(function (html) {
+-                    // zera a pagina
+-                    page = 0;
+-                    // Append an image element generated by createImg function to the container with images
+-                    scrollContainer.innerHTML = html;
+-                    var arr = scrollContainer.getElementsByTagName('script')
+-                    for (var n = 0; n < arr.length; n++) {
+-                        eval(arr[n].innerHTML); //run script inside div
+-                    }
+-                    // colorir as distancias
+-                    colorirDistancias();
+-                    const [first, second] = e.values.rounded;
+-                    rangeLegenda.innerHTML = `Exibindo ` + totalEventos + ` eventos com distâncias de ${firstKm} a ${secondKm}km no período de ${firstTempo} a ${secondTempo} meses.`;
+-                }).catch(function (err) {
+-                    // There was an error
+-                    console.warn('Something went wrong.', err);
+-                });
+-            },300);
+-        });
+-
+-    </script>
+-
+ </body>
+-
+ </html>

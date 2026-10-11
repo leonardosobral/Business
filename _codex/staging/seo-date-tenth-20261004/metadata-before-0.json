@@ -1,0 +1,66 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-circuito-das-estacoes-2026-verao-palmas/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-circuito-das-estacoes-2026-verao-palmas/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-circuito-das-estacoes-2026-verao-palmas/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-circuito-das-estacoes-2026-verao-palmas/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-circuito-das-estacoes-2026-verao-palmas/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-circuito-das-estacoes-2026-verao-palmas/",
+      "name": "Circuito das Estações 2026 - Verão - Palmas",
+      "description": "Circuito das Estações 2026 - Verão - Palmas acontece em 21 novembro 2026, em Palmas - TO.",
+      "url": "https://roadrunners.run/evento/2026-circuito-das-estacoes-2026-verao-palmas/",
+      "startDate": "2026-11-21",
+      "endDate": "2026-11-21",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://magento.runningland.com.br/media/catalog/product/cache/4ec0339e0e27010557b958cd357e7b98/b/a/bannerrl_estacoes_verao_1_17.jpg?auto=webp&format=pjpg&width=320"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Palmas, TO",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Palmas",
+          "addressRegion": "TO",
+          "addressCountry": "BR"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-palmas"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/to/",
+          "@type": "ListItem",
+          "name": "Corridas em TO"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-circuito-das-estacoes-2026-verao-palmas/",
+          "@type": "ListItem",
+          "name": "Circuito das Estações 2026 - Verão - Palmas"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

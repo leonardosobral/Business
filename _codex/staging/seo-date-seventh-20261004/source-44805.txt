@@ -1,0 +1,765 @@
+ 
+ 
+ 
+
+
+ 
+ 
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','629099126749182');
+fbq('track','PageView');
+ 
+   
+ 
+
+
+
+   
+ (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TXCHH3P'); 
+   
+
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+             
+         
+         
+         
+         
+         
+                                    
+         
+         
+         
+         
+         
+
+ 
+ RACES.COM.BR - 1ª CORRIDA EMPORIO PRIME 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+
+  
+
+ 
+  
+  
+  
+ 
+  
+  
+  
+
+  
+  
+
+  -->
+
+  
+ var BASE_URL = 'https://www.races.com.br/'; 
+ var INSCRICAO = 'Inscrição'; 
+ var INSCRICOES = 'Inscrições'; 
+ var EVENTO_ID = '0'; 
+ var CSRF_TOKEN = '50a7588a940ac8f01b86e06119cd6b966de9bdc6c016b27545dc70ae9cce9b7a'; 
+ 
+$.ajaxSetup({ headers: { 'X-CSRF-Token': CSRF_TOKEN } });
+$(document).ready(function() {
+    $('form').each(function() {
+        if (!$(this).find('input[name="csrf_token"]').length) {
+            $(this).prepend(' ');
+        }
+    });
+});
+ 
+
+    
+  
+
+
+
+
+ 
+ 
+
+
+
+   
+    
+ 
+  
+   
+   
+     
+       
+         
+           
+             
+                   
+                 
+                    Início 
+                   
+                    Eventos 
+                     
+                    Área do Usuário 
+                    
+                   
+                    Área do Organizador   
+
+                  
+                    
+                   
+                    Blog 
+                    
+                   
+                    
+                    Entrar  
+                                   
+               
+             
+           
+         
+       
+     
+   
+    
+         {"@context":"https://schema.org","@type":"Event","url":"https://www.races.com.br/1-corrida-emporio-prime","name":"RACES.COM.BR - 1ª CORRIDA EMPORIO PRIME","startDate":"2026-10-18T06:30:00-03:00","endDate":"2026-10-18T12:30:00-03:00","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","eventStatus":"https://schema.org/EventScheduled","location":{"@type":"Place","name":"ILHÉUS - BA","address":{"@type":"PostalAddress","streetAddress":"AVENIDA DOIS DE JULHO","addressLocality":"ILHÉUS","addressRegion":"BA","addressCountry":"BR"}},"image":["https://www.races.com.br/upload/bannerr/797_b41bcda2e0bc85bae642f1f96e5774da.jpg","https://www.races.com.br/upload/bannerq/797_4240151c9260a9bfbef716982ebef2d0.jpg"],"description":"PRIMEIRA EDIÇÃO EMPORIO PRIMEDIA 18 DE OUTUBRO DE 2026NA AVENIDA DOIS DE JULHO3KM CAMINHADA E CORRIDA 5KM E 10KMMAIS INFORMAÇÕES 73991120059","offers":{"@type":"Offer","url":"https://www.races.com.br/1-corrida-emporio-prime","price":"60.00","priceCurrency":"BRL","availability":"https://schema.org/InStock","validFrom":"2026-07-01T10:09:07-03:00"},"organizer":{"@type":"Organization","name":"Empório Prime","url":"https://www.races.com.br/"}} 
+
+ 
+if (typeof fbq !== 'undefined') {
+    fbq('track', 'ViewContent', {
+        content_ids: ['797'],
+        content_type: 'product',
+        content_name: '1ª CORRIDA EMPORIO PRIME',
+        value: 60,
+        currency: 'BRL'
+    });
+}
+ 
+
+
+ 
+
+
+       
+     
+       
+         
+           
+
+ 
+
+    
+                                           
+                       
+
+                       
+
+                     
+
+ 
+ 
+                        
+  Fazer sua Inscrição  
+
+ 
+
+             
+               
+               1ª CORRIDA EMPORIO PRIME 
+              
+                  18/10/2026 às 06:30 horas 
+                 AVENIDA DOIS DE JULHO ILHÉUS BA 
+               
+
+               
+               
+                     
+                        Compartilhar  
+                     
+                     
+                         
+                     
+                     
+                          
+                      
+                 
+
+              
+               
+
+                   
+                      Descrição do Evento  
+                      Regulamento  
+                      Entrega de Kit  
+
+
+                   
+                   
+                     
+                       
+                         
+                                   
+                                       
+                                PRIMEIRA EDIÇÃO EMPORIO PRIME  DIA 18 DE OUTUBRO DE 2026  NA AVENIDA DOIS DE JULHO  3KM CAMINHADA E CORRIDA 5KM E 10KM  MAIS INFORMAÇÕES  73991120059   
+                                                                
+                                  
+                           
+                         
+                           
+                         
+                     
+                       
+                         
+                                   
+                                       
+                                REGULAMENTO  1° CORRIDA EMPORIO PRIME  - ILHÉUS/BA 2026  AVENIDA DOIS DE JULHO - ILHÉUS/BA  18 DE OUTUBRO DE 2026 (DOMINGO)  CONCENTRAÇÃO ÁS 06h  LARGADA ÀS 06:30H na AVENIDA DOIS DE JULHO   01 – A PROVA   1.1 A 1° CORRIDA EMPORIO PRIME: Uma Iniciativa Inspiradora em Ilhéus!  Unindo Conscientização e Motivação:  A 1° CORRIDA EMPORIO PRIME é um evento que vai muito além de uma simples corrida. É um movimento que visa:  Conscientizar a população sobre O CUIDADO COM A SAUDE.  Motivar as pessoas a adotarem um estilo de vida ativo, como forma de prevenir diversas doenças.   A Corrida:   A corrida terá diversas categorias, permitindo que pessoas de todos os níveis de condicionamento físico participem.  Mais do que uma Corrida:  A 1° CORRIDA EMPORIO PRIME será um dia de:  Celebração da vida e da superação.  Confraternização entre pessoas que se unem por uma causa importante.  O evento tem o objetivo de contribuir para a prática da corrida e caminhada como uma alternativa de atividade física livre, de fácil acesso às pessoas e que possa auxiliar a compreensão da prática esportiva regular, como importante componente na qualidade de vida do cidadão.  1.2 A Corrida será realizada às 06:30 horas do dia 18 de Outubro 2026 (domingo), com largada e chegada, na Avenida Dois de Julho Ilhéus /BA . Contando com as modalidades Caminhada de 3 km, Corrida de 5 km E 10KM, com as seguintes categorias:  Caminhada de 3 km: Ambos os sexos  Corrida 5km e 10km: Ambos os sexos   1.3 Sendo a premiação dividida em:  OBS: A premiação por faixa etária de idade será exclusivamente na modalidade da distância de 5km.  Caminhada 3 km: Ambos os sexos. Medalha para todos os concluintes.  Masculino e Feminino – Geral – 5km e 10km:  1° Troféu + brinde;  2° Troféu + brinde;  3° Troféu + brinde;  4° Troféu + brinde;  5º Troféu + brinde;  Masculino e Feminino – Por faixa etária de idade – 5km – Do 1° ao 3 º Troféu:  (obs.: faixa etária valida nos 5km De 14 a 17 anos;)  de 18 a 29 anos;   de 30 a 39 anos;   de 40 a 49 anos;  de 50 a 59 anos;  de 60 a 69 anos;  70 acima.  Masculino e Feminino – PCD – 5km - 1° Troféu , 2° Troféu , 3° Troféu  + Medalha para todos os concluintes.  Não haverá premiação por faixa etária para PCD.  OBS: Todo PCD ao realizar inscrição deverá informar o CID para organização.  1.4 A concentração e largada dar-se-á, na Avenida Dois de Julho– Ilhéus/BA em conformidade com o especificado abaixo, salvaguardada a ocorrência de qualquer fato de força maior que justifique eventual alteração por parte da organização do evento:  06h – Concentração/aquecimento dos atletas inscritos.  06:30h – Largada PCD (pontualmente).  06:35h - Largada Geral  02 – INSCRIÇÕES E REGRAS DE PARTICIPAÇÃO  2.1. As inscrições custarão:  lote promocional R$ 90,00 (NOVENTA REAIS) , sendo R$ 45,00 (Quarenta e cinco reais para PCD e IDOSOS usar o cupom MAIS60) do dia 01 de JULHO ao dia 01 de AGOSTO de 2026.  Primeiro lote R$ 120,00 (cem  e vinte reais) , sendo R$ 60,00 (sessenta reais para PCD e IDOSOS usar o cupom MAIS60) do dia 02 de agosto ao dia 10 de outubro de 2026, ou até encerrar o número de vagas.  2.2 Todo e qualquer inscrito na 1° CORRIDA EMPORIO PRIME - Ilhéus/BA assume exclusiva responsabilidade pelo seu estado de aptidão física para participar do evento, pela veracidade dos dados fornecidos, pelas despesas provenientes da sua participação e acata totalmente as disposições desse regulamento.  2.3 Ao inscrever-se na 1° CORRIDA EMPORIO PRIME - Ilhéus-BA o atleta cede todos os direitos de utilização de sua imagem, renunciando ao recebimento de qualquer renda a ser auferida.   Contato Para informações  73991120059   Insta @borae.cia                                
+                                                                
+                              
+                           
+                         
+                           
+                     
+                     
+                       
+                         
+                                   
+                             
+                                
+                                      
+                              
+                           
+                         
+                             
+                       
+                    
+
+               
+                         
+                      
+
+                          
+
+              
+
+               
+                                                                    
+                   CAMINHADA 3KM   R$ 120,00    
+                                 
+                   
+                       CAMINHADA DE 3KM 
+                      
+                     
+                  
+                                          
+                   
+                          
+                             FAÇA SUA Inscrição   
+                         
+                                       
+                 
+                               
+            
+
+               
+                                                                    
+                   CORRIDA 5KM   R$ 120,00    
+                                 
+                   
+                       CORRIDA DE 5KM 
+                      
+                     
+                  
+                                          
+                   
+                          
+                             FAÇA SUA Inscrição   
+                         
+                                       
+                 
+                               
+            
+
+               
+                                                                    
+                   CORRIDA 10KM   R$ 120,00    
+                                 
+                   
+                       CORRIDA DE 10KM 
+                      
+                     
+                  
+                                          
+                   
+                          
+                             FAÇA SUA Inscrição   
+                         
+                                       
+                 
+                               
+            
+
+               
+                                                                    
+                   PCD   R$ 60,00    
+                                 
+                   
+                       CORRIDA 5KM 
+                      
+                     
+                  
+                                          
+                   
+                          
+                             FAÇA SUA Inscrição   
+                         
+                                       
+                 
+                               
+            
+
+               
+                                   JÁ ESTÁ INSCRITO? 
+                                 
+                   
+                    
+                    
+                  Se você se inscreveu nesse evento, você pode verificar a situação de sua inscrição, informar seu tempo, verificar seu número de peito, pegar seu certificado (depende de cada evento) 
+                                            
+                                           Verificar Inscrição 
+                     
+
+                    
+
+                                       
+                 
+                
+
+               
+                 Formas de Pagamento 
+                 
+                   
+                     
+                       
+                     
+                     
+                       Cartões de Crédito 
+                     
+                   
+                   
+                     
+                       
+                     
+                     
+                       Boleto Bancário 
+                     
+                                     
+                 
+               
+
+              
+               
+               Fale Conosco 
+              
+                 
+                   Evento: 1ª CORRIDA EMPORIO PRIME 
+                 
+                 
+                   
+                 
+                 
+                   
+                                 
+                 
+                    
+                 
+                 
+                   
+                 
+                 
+                   Enviar Mensagem 
+                 
+
+                 
+
+                  function usarcupom(modalidade) {
+                    let cupom = $("#desconto"+modalidade).val();
+                    window.location.href = 'https://www.races.com.br/eventos/inscrever/797&m='+modalidade+'&c='+cupom;
+                  }
+
+                  $("#email").change(function(){
+                    email = $("#email").val();
+                    if (validateEmail(email)) {
+                      $("#email").closest('.form-group').attr("class","form-group");
+                    } else {
+                      $("#email").closest('.form-group').attr("class","form-group has-error");
+                      $("#email").focus();
+                    }
+
+                  });
+                  $("#enviar").click(function(){
+
+                    var nome = $("#nome").val();
+                    var email = $("#email").val();
+                    var mensagem = $("#mensagem").val();
+
+                    if (nome === "" || email === "" || mensagem === "") {
+                        alert("Existem informações faltando, não posso enviar seu pedido");
+                    } else {
+                      if (validateEmail(email)) {
+
+                          var post = { id : 797,
+                                       nome : nome,
+                                       email : email,
+                                       mensagem : mensagem,
+                                       website : $("#website_fc").val()
+                                     };
+                          $.ajax({
+                            url:BASE_URL+'ajax/evento_falecom',
+                            type:'POST',
+                            data: post,
+                            dataType:'json',
+                            success:function(json) {
+                            }
+                          });
+                          toastr.success('Sua mensagem foi enviada', 'Obrigado', {timeOut: 4000, positionClass: 'toast-top-center'})
+                          $("#email").val('');
+                          $("#nome").val('');
+                          $("#mensagem").val('');
+
+                      } else {
+                        $("#email").closest('.form-group').attr("class","form-group has-error");
+                        $("#email").focus();
+                        alert("Email informado incorretamente, verifique por favor");                    
+                      }
+
+                    
+                    }
+
+                  });
+
+
+                                            
+             
+             
+           
+         
+       
+     
+
+           
+     
+         
+       
+         
+           
+             
+               Próximos  EVENTOS  
+               Organizados por Empório Prime 
+             
+           
+         
+         
+           
+             
+                             
+                 
+                   
+                     
+                                                   
+                                           
+                   
+                   Corrida Kids Empório Prime 
+                     
+                          18/10/2026 às 07:30 horas    Alameda Norte, 202, Ilhéus, BA 
+                     
+                  
+               
+            
+              
+             
+           
+         
+       
+     
+     
+   
+
+ 
+   
+     
+       
+        
+         Confira o percurso no Strava         
+        
+         
+         
+            
+             
+                   
+           Fechar 
+               
+     
+   
+ 
+
+
+ 
+   
+     
+       
+        
+         Já fez a sua inscrição?         
+         Se você já fez a inscrição nesse evento, informe os dados abaixo e verifique a situção 
+         
+          
+             Tipo de Documento* 
+             
+               CPF Próprio 
+               CPF do Responsável 
+               RG Próprio 
+               RNE(Estrangeiro) 
+               Passaporte(Estrangeiro) 
+             
+            
+           
+             Informe Seu CPF (somente números)             
+                         
+           
+           
+             Data de Nascimento             
+             
+                             
+
+           Verificar 
+           Cancelar 
+           
+           Aguarde... Pesquisando...   
+         
+            
+
+                       
+       
+     
+   
+ 
+
+ 
+  function verificarinscricao() {
+
+
+  var documento = $("#verificar_documento").val();
+  var tipodoc = $('#verificar_tipodoc').find('option:selected').val()
+  var nascimento = $("#verificar_nascimento").val();
+  var post = { tipodoc:tipodoc,
+               documento:documento,
+               nascimento:nascimento,
+               id_evento:797             }
+
+  $("#erroemail").html('');
+
+  if (!empty(documento) && !empty(nascimento)) {
+    $("#modal-verifica").modal('hide');
+            $.ajax({
+              url:BASE_URL+'ajax/ultimas_inscricoes',
+              type:'POST',
+              data: post,
+              dataType:'json',
+              success:function(json) {  
+                $("#verificar_nascimento").val('')
+                $("#verificar_documento").val('')
+
+                inscricoes = '';
+                $.each(json, function (key, item) {
+                  //console.log(item);
+                  inscricoes += ' '+ item.pedido+': '+item.situacao+'  ';
+                });
+
+                if (!empty(inscricoes)) {                  
+                      Swal.fire({
+                        title: 'ATENÇÃO',
+                        html: 'Inscrição(ões) encontrada(s) com este documento '+inscricoes+' Clique em no código da Inscrição para ver mais detalhes',
+                        showDenyButton: true,
+                        
+                        denyButtonText: 'CANCELAR',
+                      }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                           return true;
+                        } else if (result.isDenied) {
+                          return true;
+                        }
+                      })
+
+              } else {
+
+                    Swal.fire({
+                        title: 'ATENÇÃO',
+                        html: 'Inscrição não encontrada com este documento, clique em CANCELAR, verifique as informações e tente novamente',                        
+                        confirmButtonText: 'CANCELAR',
+                      }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                          return true;
+                        
+                      })
+              }
+            }
+          });
+  } else {
+    $("#modal-verifica").modal('show');
+  }
+}
+
+
+
+function testStrava(id) {
+    let embedId = $('#strava' + id).val().trim();
+    
+    if (embedId) {
+        let embedHtml;
+        
+        if (embedId.length > 16) {
+            $('#viewStrava'+id).html(`  `);
+        } else {
+            $('#viewStrava'+id).html(`  `);
+            $.getScript("https://strava-embeds.com/embed.js");
+        }
+        
+        $.getScript("https://strava-embeds.com/embed.js");
+    } else {
+        alert("Por favor, insira um código de incorporação válido.");
+    }
+}
+
+
+
+function modalstrava(input) {
+  if (!input) return;
+
+  input = input.trim();
+
+  let id = '';
+  let token = '';
+
+  // aceita somente formato novo: id,token
+  let match = input.match(/^(\d+),([A-Za-z0-9_-]+)$/);
+
+  if (!match) {
+    alert("Código Strava inválido ou antigo. Informe o organizador.");
+    return;
+  }
+
+  id = match[1];
+  token = match[2];
+
+  $('#iframestrava').html(`
+      
+  `);
+
+  $.getScript("https://strava-embeds.com/embed.js");
+
+  $("#modal-strava").modal('show');
+}
+
+ 
+  
+   
+   
+     
+
+       
+         
+           
+                  
+             
+                Política de Privacidade  
+             
+           
+         
+         
+           
+                  
+
+             Criado por 
+               
+            
+
+           
+         
+         
+           
+                  
+             
+
+                Termos de Uso  
+             
+           
+         
+             
+     
+     
+       
+         
+           Copyright © - 1.300631.1638 -  Races Ltda  - Todos os Direitos Reservados 
+         
+       
+     
+   
+
+   
+        
+  
+
+   
+   
+
+ 
+  
+      
+
+ (function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a45496149d465b62',t:'MTc5MTEyMTA5OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();  
+
+
+ 
+

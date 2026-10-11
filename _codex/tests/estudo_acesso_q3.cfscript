@@ -1,0 +1,154 @@
+// Operator-only CFScript body; never install as a public route.
+// Every scenario owns its transaction and always rolls back. A negative service
+// transaction may already roll back its caller; no later work depends on it.
+function saAssert(required boolean passed,required string name) {
+    if(!passed) throw(type="StudyAccessTest.Failed",message=name);
+    arrayAppend(saReport,{"name":name,"passed":true});
+}
+function saIdentity(required struct user) {
+    REQUEST.businessIdentity={"id":user.id,"email":user.email,"name":user.name,"version":1,"sub":"rollback-service-test"};
+}
+function saDenied(required any operation,required string suffix,required string name) {
+    var caught=false;
+    try {operation();} catch(any failure) {if(failure.type=="StudyAccess." & suffix) caught=true;else rethrow;}
+    saAssert(caught,name);
+}
+function saQ(required string sql,struct params={}) {return queryExecute(sql,params,{datasource="runner_dba",timeout=15});}
+function saP(required any value,string type="cf_sql_varchar") {return {value=value,cfsqltype=type};}
+function saScenario(required any operation) {
+    transaction {
+        try {operation();}
+        finally {transaction action="rollback";}
+    }
+}
+function saSeedCampaign(string status="ACTIVE") {
+    return saQ("INSERT INTO estudo.campanhas(codigo,titulo,produto_id,status,beneficio_percentual,beneficio_produto_id) VALUES(:code,'Rollback service test',:p,:s,50,:annual) RETURNING id",
+        {code=saP("test-q3-" & lCase(replace(createUUID(),"-","","all"))),p=saP(saProduct,"cf_sql_bigint"),s=saP(status),annual=saP(saAnnual,"cf_sql_bigint")}).id[1];
+}
+function saIssue(required any campaignId) {
+    saIdentity(saAdmin);
+    return saService.adminCreateVoucher(saAdmin.id,campaignId,saA.email,dateFormat(dateAdd("d",2,now()),"yyyy-mm-dd"),"Rollback test");
+}
+function saNewGrant() {
+    var invitation=saIssue(saSeedCampaign());
+    saIdentity(saA);
+    var redemption=saService.redeem(saA.id,invitation.code_once);
+    return {"invitation":invitation,"redemption":redemption};
+}
+saReport=[];
+saOldIdentity=structKeyExists(REQUEST,"businessIdentity")?duplicate(REQUEST.businessIdentity):{};
+saService=new estudos.includes.StudyAccess().init("runner_dba");
+try {
+    saStatus=saQ("SELECT to_regclass('public.tb_usuarios_gestao') IS NOT NULL AS present").present[1];
+    saJoin=saStatus?" LEFT JOIN public.tb_usuarios_gestao g ON g.id_usuario=u.id ":" ";
+    saWhere=saStatus?" AND coalesce(g.ativo,true) AND NOT coalesce(g.excluido,false) ":" ";
+    saUsers=saQ("WITH candidates AS (SELECT u.id,u.email,u.name,coalesce(u.is_admin,false) AS is_admin,row_number() OVER(PARTITION BY coalesce(u.is_admin,false) ORDER BY u.id) AS n FROM public.tb_usuarios u" & saJoin &
+        "WHERE u.email IS NOT NULL AND lower(btrim(u.email)) ~ '^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$' " & saWhere &
+        "AND (coalesce(u.is_admin,false) OR (NOT EXISTS(SELECT 1 FROM estudo.solicitacoes s WHERE s.usuario_id=u.id) AND NOT EXISTS(SELECT 1 FROM estudo.acessos a WHERE a.usuario_id=u.id)))) SELECT id,email,name,is_admin FROM candidates WHERE (is_admin AND n=1) OR (NOT is_admin AND n<=2) ORDER BY is_admin DESC,id");
+    saAdmin={};saReaders=[];
+    for(saUser in saUsers) {
+        if(saUser.is_admin && structIsEmpty(saAdmin)) saAdmin={"id":saUser.id,"email":saUser.email,"name":saUser.name};
+        else if(!saUser.is_admin && arrayLen(saReaders)<2 && isValid("email",saUser.email)) arrayAppend(saReaders,{"id":saUser.id,"email":saUser.email,"name":saUser.name});
+    }
+    saAssert(!structIsEmpty(saAdmin) && arrayLen(saReaders)==2,"active test identities available");
+    saA=saReaders[1];saB=saReaders[2];
+    saProduct=saQ("SELECT id FROM estudo.produtos WHERE codigo='previa-2026-q3'").id[1];
+    saAnnual=saQ("SELECT id FROM estudo.produtos WHERE codigo='anual-2026'").id[1];
+    saBefore=saQ("SELECT count(*) AS n FROM estudo.campanhas WHERE codigo LIKE 'test-q3-%'").n[1];
+
+    saScenario(function(){
+        saIdentity(saA);
+        saDenied(function(){saService.dashboard(saB.id);},"Access","identity A cannot act as B");
+    });
+    saScenario(function(){
+        saIdentity(saA);
+        saDenied(function(){saService.adminOverview(saA.id);},"Access","ordinary reader cannot administer");
+    });
+    saScenario(function(){
+        saIdentity(saA);
+        saDenied(function(){saService.read(saA.id);},"Access","reader without grant cannot read");
+    });
+    saScenario(function(){
+        var campaign=saSeedCampaign("DRAFT");saIdentity(saAdmin);
+        saDenied(function(){saService.adminCreateVoucher(saAdmin.id,campaign,saA.email,dateFormat(dateAdd("d",2,now()),"yyyy-mm-dd"),"Draft test");},"Conflict","draft campaign cannot issue voucher");
+    });
+    saScenario(function(){
+        var campaign=saSeedCampaign("DRAFT");saIdentity(saAdmin);
+        saService.adminCampaign(saAdmin.id,campaign,"ACTIVE",1,"Test activation");
+        saDenied(function(){saService.adminCampaign(saAdmin.id,campaign,"PAUSED",1,"Stale version");},"Conflict","campaign compare-and-swap prevents stale mutation");
+    });
+    saScenario(function(){
+        saIdentity(saA);
+        var requested=saService.requestAccess(saA.id,"Teste sem efeito","Revisão","Teste transacional","PROFISSIONAL");
+        var repeated=saService.requestAccess(saA.id,"Texto diferente","Revisão","Não sobrescrever","EDITORIAL");
+        saAssert(requested.request.id==repeated.request.id && repeated.request.kind=="PROFISSIONAL","request retry preserves original request");
+        saService.interest(saA.id,"ANUAL",true);
+        var optedOut=saService.interest(saA.id,"ANUAL",false);
+        saAssert(optedOut.interest.status=="WITHDRAWN","annual interest opt-out is persisted");
+        var campaign=saSeedCampaign();saIdentity(saAdmin);
+        saService.adminCreateVoucher(saAdmin.id,campaign,saA.email,dateFormat(dateAdd("d",2,now()),"yyyy-mm-dd"),"Linked request",requested.request.id);
+        saAssert(saQ("SELECT status FROM estudo.solicitacoes WHERE id=:id",{id=saP(requested.request.id,"cf_sql_bigint")}).status[1]=="INVITED","voucher creation marks linked request invited");
+    });
+    saScenario(function(){
+        var issued=saIssue(saSeedCampaign());
+        saAssert(reFind("^BQ26-[A-F0-9]{32}$",issued.code_once)>0,"one-time voucher has crypto code format");
+        var stored=saQ("SELECT codigo_hash FROM estudo.vouchers WHERE id=:id",{id=saP(issued.voucher.id,"cf_sql_bigint")});
+        saAssert(stored.codigo_hash[1]==lCase(hash(issued.code_once,"SHA-256","UTF-8")),"voucher stores only expected SHA-256 digest");
+        saIdentity(saA);
+        var redeemed=saService.redeem(saA.id,issued.code_once);
+        var again=saService.redeem(saA.id,issued.code_once);
+        saAssert(redeemed.access.id==again.access.id && redeemed.benefit.id==again.benefit.id,"redeem retry is idempotent for grant and benefit");
+        saAssert(redeemed.benefit.percentual==50 && redeemed.benefit.status=="ELIGIBLE","valid redemption grants annual purchase eligibility");
+        var reading=saService.read(saA.id);
+        saAssert(reading.publication_id=="41" && isJSON(reading.payload_json),"private reader returns pinned publication 41");
+        var delivery=deserializeJSON(reading.payload_json);
+        var removedFound=false;
+        for(var series in delivery.series) if(reFind("^(inscricoes_|cna_|maratonas_revisao_|performance_42k_)",series.id) || listFind("maratonas_cadastro,variacoes_a_z",series.id)) removedFound=true;
+        saAssert(!removedFound && arrayLen(delivery.series)==113,"deferred data excluded server-side from payload and exports");
+        saAssert(arrayLen(delivery.comparacoes)==702 && delivery.meta.escopo_editorial.versao=="q3-20261010-v1","editorial scope version and delivered values recorded");
+        saAssert(!structKeyExists(delivery.meta,"inscricoes") && !structKeyExists(delivery.meta,"maratonas_revisao"),"internal price and registry audit metadata excluded");
+        var original=saQ("SELECT jsonb_array_length(payload->'series') AS n FROM estudo.web_publicacoes WHERE id=41");
+        saAssert(original.n[1]==137,"immutable source still contains every original series");
+        saIdentity(saAdmin);saService.adminRevokeVoucher(saAdmin.id,issued.voucher.id,"Audit test revoke");
+        saAssert(saQ("SELECT count(*) AS n FROM estudo.auditoria_comercial WHERE entidade_id=:v AND entidade='voucher'",{v=saP(issued.voucher.id,"cf_sql_bigint")}).n[1]>=3,"create redeem and revoke are audited");
+    });
+    saScenario(function(){
+        var campaign=saSeedCampaign();saIssue(campaign);saIdentity(saAdmin);
+        saDenied(function(){saService.adminCreateVoucher(saAdmin.id,campaign,saA.email,dateFormat(dateAdd("d",2,now()),"yyyy-mm-dd"),"Duplicate");},"Conflict","duplicate voucher for same recipient and campaign rejected");
+    });
+    saScenario(function(){
+        var issued=saIssue(saSeedCampaign());saIdentity(saB);
+        saDenied(function(){saService.redeem(saB.id,issued.code_once);},"Access","nominal voucher rejects another email");
+    });
+    saScenario(function(){
+        saNewGrant();
+        saDenied(function(){saService.read(saA.id,"anual-2026");},"Access","preview grant never grants annual edition");
+    });
+    saScenario(function(){
+        saNewGrant();
+        saDenied(function(){saService.read(saA.id,"previa-2025-q3");},"Access","changing product year does not bypass guard");
+    });
+    saScenario(function(){
+        var first=saNewGrant();var second=saNewGrant();
+        saIdentity(saAdmin);saService.adminRevokeVoucher(saAdmin.id,first.invitation.voucher.id,"Test revoke first origin");
+        saIdentity(saA);
+        saAssert(saService.read(saA.id).publication_id=="41","revoking one origin preserves independent reading right");
+        saAssert(saQ("SELECT count(*) AS n FROM estudo.beneficios WHERE usuario_id=:u AND status='ELIGIBLE'",{u=saP(saA.id,"cf_sql_bigint")}).n[1]==1,"revoking one origin preserves independent purchase eligibility");
+        saIdentity(saAdmin);saService.adminRevokeAccess(saAdmin.id,second.redemption.access.id,"Revoke remaining origin");
+        saIdentity(saA);
+        saDenied(function(){saService.read(saA.id);},"Access","revoking final grant removes reading right");
+    });
+    saScenario(function(){
+        var grant=saNewGrant();saIdentity(saAdmin);
+        saService.adminRevokeAccess(saAdmin.id,grant.redemption.access.id,"Test revoked code");saIdentity(saA);
+        saDenied(function(){saService.redeem(saA.id,grant.invitation.code_once);},"Access","redeeming old code cannot restore revoked access");
+    });
+    saScenario(function(){
+        saIdentity(saAdmin);
+        saAssert(saService.read(saAdmin.id).publication_id=="41","real administrator may inspect publication without grant");
+    });
+    saAssert(saQ("SELECT count(*) AS n FROM estudo.campanhas WHERE codigo LIKE 'test-q3-%'").n[1]==saBefore,"scenario campaign fixtures were rolled back");
+} finally {
+    REQUEST.businessIdentity=saOldIdentity;
+}
+report={"ok":true,"rolled_back":true,"tests":saReport};

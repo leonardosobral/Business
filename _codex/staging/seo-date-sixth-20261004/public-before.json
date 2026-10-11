@@ -1,0 +1,146 @@
+[
+  {
+    "id": 42850,
+    "url": "https://roadrunners.run/evento/2026-bota-pra-correr-rio-de-janeiro-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 42850,
+    "url": "https://roadrunners.run/en/event/2026-bota-pra-correr-rio-de-janeiro-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 42850,
+    "url": "https://roadrunners.run/es/evento/2026-bota-pra-correr-rio-de-janeiro-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44229,
+    "url": "https://roadrunners.run/evento/2026-serrinha-runners-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44229,
+    "url": "https://roadrunners.run/en/event/2026-serrinha-runners-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44229,
+    "url": "https://roadrunners.run/es/evento/2026-serrinha-runners-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45646,
+    "url": "https://roadrunners.run/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45646,
+    "url": "https://roadrunners.run/en/event/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45646,
+    "url": "https://roadrunners.run/es/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-apucarana/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 48246,
+    "url": "https://roadrunners.run/evento/2026-corrida-do-comerciario-etapa-manacapuru-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 48246,
+    "url": "https://roadrunners.run/en/event/2026-corrida-do-comerciario-etapa-manacapuru-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 48246,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-do-comerciario-etapa-manacapuru-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  }
+]

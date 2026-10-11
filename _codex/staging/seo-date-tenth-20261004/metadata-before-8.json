@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-itamaraca-night-run/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-itamaraca-night-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-itamaraca-night-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-itamaraca-night-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-itamaraca-night-run/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-itamaraca-night-run/",
+      "name": "Itamaracá Night Run",
+      "description": "Itamaracá Night Run se realiza el 17 octubre 2026, en Forte Orange (beira Mar No Extremo Sul Da Ilha). - Ilha de Itamaracá - PE.",
+      "url": "https://roadrunners.run/es/evento/2026-itamaraca-night-run/",
+      "startDate": "2026-10-17",
+      "endDate": "2026-10-17",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.timecrono.com.br/thumb.php?q=100&h=500&arquivo=img-74-4bbcf8b95a966771f7c30acd21515bdb.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Forte Orange (beira Mar No Extremo Sul Da Ilha).",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ilha de Itamaracá",
+          "addressRegion": "PE",
+          "addressCountry": "BR",
+          "streetAddress": "Forte Orange (beira Mar No Extremo Sul Da Ilha)."
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.timecrono.com.br/inscricao-select/itamaraca-night-run"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/pe/",
+          "@type": "ListItem",
+          "name": "Carreras en PE"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-itamaraca-night-run/",
+          "@type": "ListItem",
+          "name": "Itamaracá Night Run"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

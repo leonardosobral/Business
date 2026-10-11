@@ -68,7 +68,7 @@
             <div class="alert alert-warning mb-0">Voce nao tem permissao para gerenciar temas.</div>
           <cfelse>
             <cfif len(trim(VARIABLES.themesAlert.type)) AND len(trim(VARIABLES.themesAlert.message))>
-              <cfoutput><div class="alert alert-#VARIABLES.themesAlert.type#">#htmlEditFormat(VARIABLES.themesAlert.message)#</div></cfoutput>
+              <cfoutput><div class="alert alert-#VARIABLES.themesAlert.type#">#encodeForHTML(VARIABLES.themesAlert.message)#</div></cfoutput>
             </cfif>
 
             <div class="row gx-xl-3 mb-4">
@@ -129,18 +129,18 @@
 
                   <form method="post" action="./" enctype="multipart/form-data">
                     <input type="hidden" name="acao" value="salvar_tema"/>
-                    <input type="hidden" name="id_tema" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormId)#</cfoutput>"/>
+                    <input type="hidden" name="id_tema" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormId)#</cfoutput>"/>
 
                     <div class="row g-3">
                       <div class="col-lg-8">
                         <div class="row g-3">
                           <div class="col-md-3">
                             <label class="form-label">ID</label>
-                            <input class="form-control" type="text" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormId)#</cfoutput>" disabled/>
+                            <input class="form-control" type="text" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormId)#</cfoutput>" disabled/>
                           </div>
                           <div class="col-md-5">
                             <label class="form-label">Logo</label>
-                            <input class="form-control" type="text" name="logo" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormLogo)#</cfoutput>" placeholder="runnerhub"/>
+                            <input class="form-control" type="text" name="logo" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormLogo)#</cfoutput>" placeholder="runnerhub"/>
                           </div>
                           <div class="col-md-4">
                             <label class="form-label">Upload logo PNG</label>
@@ -149,43 +149,43 @@
 
                           <div class="col-md-4">
                             <label class="form-label">Tag</label>
-                            <input class="form-control" type="text" name="tag" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormTag)#</cfoutput>"/>
+                            <input class="form-control" type="text" name="tag" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormTag)#</cfoutput>"/>
                           </div>
                           <div class="col-md-4">
                             <label class="form-label">Cor de fundo</label>
-                            <input class="form-control" type="text" name="cor_fundo" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormCorFundo)#</cfoutput>" placeholder="##111111"/>
+                            <input class="form-control" type="text" name="cor_fundo" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormCorFundo)#</cfoutput>" placeholder="##111111"/>
                           </div>
                           <div class="col-md-4">
                             <label class="form-label">Cor da fonte</label>
-                            <input class="form-control" type="text" name="cor_fonte" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormCorFonte)#</cfoutput>" placeholder="##ffffff"/>
+                            <input class="form-control" type="text" name="cor_fonte" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormCorFonte)#</cfoutput>" placeholder="##ffffff"/>
                           </div>
                           <div class="col-md-4">
                             <label class="form-label">Cor dos botoes</label>
-                            <input class="form-control" type="text" name="cor_botoes" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormCorBotoes)#</cfoutput>" placeholder="##f4b120"/>
+                            <input class="form-control" type="text" name="cor_botoes" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormCorBotoes)#</cfoutput>" placeholder="##f4b120"/>
                           </div>
                           <div class="col-md-4">
                             <label class="form-label">Website</label>
-                            <input class="form-control" type="text" name="website" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormWebsite)#</cfoutput>"/>
+                            <input class="form-control" type="text" name="website" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormWebsite)#</cfoutput>"/>
                           </div>
                           <div class="col-md-4">
                             <label class="form-label">Instagram</label>
-                            <input class="form-control" type="text" name="instagram" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormInstagram)#</cfoutput>"/>
+                            <input class="form-control" type="text" name="instagram" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormInstagram)#</cfoutput>"/>
                           </div>
                           <div class="col-md-4">
                             <label class="form-label">YouTube</label>
-                            <input class="form-control" type="text" name="youtube" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormYoutube)#</cfoutput>"/>
+                            <input class="form-control" type="text" name="youtube" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormYoutube)#</cfoutput>"/>
                           </div>
                           <div class="col-md-4">
                             <label class="form-label">App iOS</label>
-                            <input class="form-control" type="text" name="app_ios" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormAppIos)#</cfoutput>"/>
+                            <input class="form-control" type="text" name="app_ios" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormAppIos)#</cfoutput>"/>
                           </div>
                           <div class="col-md-4">
                             <label class="form-label">App Android</label>
-                            <input class="form-control" type="text" name="app_android" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormAppAndroid)#</cfoutput>"/>
+                            <input class="form-control" type="text" name="app_android" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormAppAndroid)#</cfoutput>"/>
                           </div>
                           <div class="col-md-8">
                             <label class="form-label">Banner</label>
-                            <input class="form-control" type="text" name="banner" value="<cfoutput>#htmlEditFormat(VARIABLES.themeFormBanner)#</cfoutput>"/>
+                            <input class="form-control" type="text" name="banner" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.themeFormBanner)#</cfoutput>"/>
                           </div>
                           <div class="col-md-4">
                             <label class="form-label">Upload banner</label>
@@ -195,14 +195,14 @@
                       </div>
 
                       <div class="col-lg-4">
-                        <div class="theme-preview-card rounded p-3 h-100" style="<cfoutput>background:#htmlEditFormat(VARIABLES.themePreviewBg)#;color:#htmlEditFormat(VARIABLES.themePreviewColor)#;</cfoutput>">
+                        <div class="theme-preview-card rounded p-3 h-100" style="<cfoutput>background:#encodeForHTMLAttribute(VARIABLES.themePreviewBg)#;color:#encodeForHTMLAttribute(VARIABLES.themePreviewColor)#;</cfoutput>">
                           <div class="small text-uppercase mb-3">Previa</div>
                           <cfif len(trim(VARIABLES.themeFormLogo))>
-                            <cfoutput><img class="theme-logo-preview mb-3" src="/assets/logos/#htmlEditFormat(VARIABLES.themeFormLogo)#.png" onerror="this.style.display='none';"/></cfoutput>
+                            <cfoutput><img class="theme-logo-preview mb-3" src="/assets/logos/#encodeForHTMLAttribute(VARIABLES.themeFormLogo)#.png" onerror="this.style.display='none';"/></cfoutput>
                           </cfif>
-                          <div class="h5 mb-2"><cfoutput>#htmlEditFormat(len(trim(VARIABLES.themeFormTag)) ? VARIABLES.themeFormTag : "Tema visual")#</cfoutput></div>
+                          <div class="h5 mb-2"><cfoutput>#encodeForHTML(len(trim(VARIABLES.themeFormTag)) ? VARIABLES.themeFormTag : "Tema visual")#</cfoutput></div>
                           <p class="small mb-3">Cores e informacoes usadas nas paginas de agregadores.</p>
-                          <button type="button" class="btn btn-sm" style="<cfoutput>background:#htmlEditFormat(VARIABLES.themePreviewButton)#;color:#htmlEditFormat(VARIABLES.themePreviewColor)#;</cfoutput>">Botao do tema</button>
+                          <button type="button" class="btn btn-sm" style="<cfoutput>background:#encodeForHTMLAttribute(VARIABLES.themePreviewButton)#;color:#encodeForHTMLAttribute(VARIABLES.themePreviewColor)#;</cfoutput>">Botao do tema</button>
                         </div>
                       </div>
 
@@ -234,28 +234,28 @@
                       <td>
                         <div class="d-flex align-items-center gap-3">
                           <cfif len(trim(qThemesList.logo))>
-                            <img class="theme-logo-preview" src="/assets/logos/#htmlEditFormat(qThemesList.logo)#.png" onerror="this.src='/assets/logos/runnerhub.png';"/>
+                            <img class="theme-logo-preview" src="/assets/logos/#encodeForHTMLAttribute(qThemesList.logo)#.png" onerror="this.src='/assets/logos/runnerhub.png';"/>
                           <cfelse>
                             <div class="badge bg-secondary">sem logo</div>
                           </cfif>
                           <div>
-                            <div class="fw-semibold">#htmlEditFormat(len(trim(qThemesList.tag)) ? qThemesList.tag : qThemesList.logo)#</div>
-                            <div class="small text-muted">logo: #htmlEditFormat(qThemesList.logo)#</div>
-                            <cfif len(trim(qThemesList.banner))><div class="small text-muted">banner: #htmlEditFormat(qThemesList.banner)#</div></cfif>
+                            <div class="fw-semibold">#encodeForHTML(len(trim(qThemesList.tag)) ? qThemesList.tag : qThemesList.logo)#</div>
+                            <div class="small text-muted">logo: #encodeForHTML(qThemesList.logo)#</div>
+                            <cfif len(trim(qThemesList.banner))><div class="small text-muted">banner: #encodeForHTML(qThemesList.banner)#</div></cfif>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <div class="small mb-1"><span class="theme-color-chip" style="background:#htmlEditFormat(qThemesList.cor_fundo)#"></span> Fundo: #htmlEditFormat(qThemesList.cor_fundo)#</div>
-                        <div class="small mb-1"><span class="theme-color-chip" style="background:#htmlEditFormat(qThemesList.cor_fonte)#"></span> Fonte: #htmlEditFormat(qThemesList.cor_fonte)#</div>
-                        <div class="small"><span class="theme-color-chip" style="background:#htmlEditFormat(qThemesList.cor_botoes)#"></span> Botoes: #htmlEditFormat(qThemesList.cor_botoes)#</div>
+                        <div class="small mb-1"><span class="theme-color-chip" style="background:#encodeForHTMLAttribute(qThemesList.cor_fundo)#"></span> Fundo: #encodeForHTML(qThemesList.cor_fundo)#</div>
+                        <div class="small mb-1"><span class="theme-color-chip" style="background:#encodeForHTMLAttribute(qThemesList.cor_fonte)#"></span> Fonte: #encodeForHTML(qThemesList.cor_fonte)#</div>
+                        <div class="small"><span class="theme-color-chip" style="background:#encodeForHTMLAttribute(qThemesList.cor_botoes)#"></span> Botoes: #encodeForHTML(qThemesList.cor_botoes)#</div>
                       </td>
                       <td class="small">
-                        <cfif len(trim(qThemesList.website))><div><a href="#htmlEditFormat(qThemesList.website)#" target="_blank" rel="noopener">Website</a></div></cfif>
-                        <cfif len(trim(qThemesList.instagram))><div><a href="#htmlEditFormat(qThemesList.instagram)#" target="_blank" rel="noopener">Instagram</a></div></cfif>
-                        <cfif len(trim(qThemesList.youtube))><div><a href="#htmlEditFormat(qThemesList.youtube)#" target="_blank" rel="noopener">YouTube</a></div></cfif>
-                        <cfif len(trim(qThemesList.app_ios))><div><a href="#htmlEditFormat(qThemesList.app_ios)#" target="_blank" rel="noopener">iOS</a></div></cfif>
-                        <cfif len(trim(qThemesList.app_android))><div><a href="#htmlEditFormat(qThemesList.app_android)#" target="_blank" rel="noopener">Android</a></div></cfif>
+                        <cfif len(trim(qThemesList.website))><div><a href="#encodeForHTMLAttribute(qThemesList.website)#" target="_blank" rel="noopener">Website</a></div></cfif>
+                        <cfif len(trim(qThemesList.instagram))><div><a href="#encodeForHTMLAttribute(qThemesList.instagram)#" target="_blank" rel="noopener">Instagram</a></div></cfif>
+                        <cfif len(trim(qThemesList.youtube))><div><a href="#encodeForHTMLAttribute(qThemesList.youtube)#" target="_blank" rel="noopener">YouTube</a></div></cfif>
+                        <cfif len(trim(qThemesList.app_ios))><div><a href="#encodeForHTMLAttribute(qThemesList.app_ios)#" target="_blank" rel="noopener">iOS</a></div></cfif>
+                        <cfif len(trim(qThemesList.app_android))><div><a href="#encodeForHTMLAttribute(qThemesList.app_android)#" target="_blank" rel="noopener">Android</a></div></cfif>
                       </td>
                       <td class="text-end small">
                         <div>#qThemesList.total_eventos# eventos</div>

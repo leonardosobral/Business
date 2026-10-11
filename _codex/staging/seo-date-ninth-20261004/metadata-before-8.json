@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-corrida-uninter-em-movimento/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-uninter-em-movimento/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-uninter-em-movimento/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-uninter-em-movimento/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-uninter-em-movimento/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-corrida-uninter-em-movimento/",
+      "name": "Corrida UNINTER em Movimento",
+      "description": "Corrida UNINTER em Movimento se realiza el 06 diciembre 2026, en Avenida 2 de Julho - Ilhéus - BA.",
+      "url": "https://roadrunners.run/es/evento/2026-corrida-uninter-em-movimento/",
+      "startDate": "2026-12-06",
+      "endDate": "2026-12-06",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.races.com.br/upload/bannerr/697_061e689096a6bce3eef8384f908ec40a.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Avenida 2 de Julho",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ilhéus",
+          "addressRegion": "BA",
+          "addressCountry": "BR",
+          "streetAddress": "Avenida 2 de Julho"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.races.com.br/corrida-uninter-em-movimento"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/ba/",
+          "@type": "ListItem",
+          "name": "Carreras en BA"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-corrida-uninter-em-movimento/",
+          "@type": "ListItem",
+          "name": "Corrida UNINTER em Movimento"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "status": "recovered_verified",
+  "observations": {
+    "chrome": "Business SEO displays Cloudflare 522",
+    "public_probes": "Business dynamic and static, RoadRunners, OpenResults timed out",
+    "ssh": "responsive",
+    "memory_available_mb": 11158,
+    "root_disk_percent": 91,
+    "https_accept_queue": 508,
+    "https_accept_queue_limit": 511,
+    "apache_busy_workers": 149,
+    "apache_idle_workers": 1,
+    "apache_max_workers": 150,
+    "coldfusion_port_8500_robots_response": "404 in 0.000772s; not a full application health check"
+  },
+  "proposed_action": "Restart Apache only, then check origin and public responses and recurrence",
+  "authorization_question_sent": true,
+  "restart_executed": true,
+  "seo_panel_update_published": true,
+  "restart_authorization": "User said prossiga in response to Apache restart request",
+  "configtest": "Syntax OK; pre-existing warning for missing dev.espacocomunicar.com.br DocumentRoot",
+  "post_restart": {
+    "public": "RoadRunners/OpenResults 200; Business 302 without session; static CSS 200",
+    "apache_busy_workers": 23,
+    "apache_idle_workers": 27,
+    "uptime_seconds": 22
+  },
+  "root_cause": "Apache worker saturation confirmed; cause of requests accumulating not yet established",
+  "second_check": {
+    "apache_uptime_seconds": 91,
+    "busy_workers": 3,
+    "idle_workers": 72,
+    "public_results": "RoadRunners/OpenResults 200; Business 302 to authentication; CSS 200"
+  },
+  "permanent_cause_fixed": false
+}

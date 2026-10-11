@@ -1,0 +1,122 @@
+{
+  "report": {
+    "events": [
+      {
+        "estado": "ES",
+        "data_final": "2025-10-25",
+        "nome_evento": "Corrida Night Run Vitória Airport",
+        "tipo_corrida": "rua",
+        "nome_simplificado": "CORRIDA NIGHT RUN VITORIA AIRPORT",
+        "ativo": true,
+        "tag_301": null,
+        "id_evento": 33178,
+        "tag": "2025-corrida-night-run-vitoria-airport",
+        "cidade": "Vitória",
+        "data_inicial": "2025-10-25"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-07-12",
+        "nome_evento": "COSTA ESMERALDA TRAIL 2026",
+        "tipo_corrida": "trail",
+        "nome_simplificado": "COSTA ESMERALDA TRAIL",
+        "ativo": true,
+        "tag_301": null,
+        "id_evento": 36621,
+        "tag": "2026-costa-esmeralda-trail-2026",
+        "cidade": "PORTO BELO",
+        "data_inicial": "2026-07-12"
+      },
+      {
+        "estado": "ES",
+        "data_final": "2026-11-20",
+        "nome_evento": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+        "tipo_corrida": "rua",
+        "nome_simplificado": "CORRIDA NIGHT RUN VITORIA AIRPORT",
+        "ativo": true,
+        "tag_301": null,
+        "id_evento": 47673,
+        "tag": "2026-corrida-night-run-vitoria-airport",
+        "cidade": "Vitória",
+        "data_inicial": "2026-11-20"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "path": "/evento/2025-corrida-night-run-vitoria-airport/",
+      "stats": "200 0.335017 ",
+      "returncode": 0,
+      "title": "Corrida Night Run Vitória Airport - corrida de rua - Road Runners"
+    },
+    {
+      "path": "/evento/2026-corrida-night-run-vitoria-airport/",
+      "stats": "200 0.347529 ",
+      "returncode": 0,
+      "title": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - corrida de rua - Road Runners"
+    },
+    {
+      "path": "/evento/2026-costa-esmeralda-trail-2026/",
+      "stats": "200 0.330334 ",
+      "returncode": 0,
+      "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners"
+    },
+    {
+      "path": "/evento/2026-costa-esmeralda-trail-2026",
+      "stats": "200 0.347503 ",
+      "returncode": 0,
+      "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners"
+    },
+    {
+      "path": "/en/event/2025-corrida-night-run-vitoria-airport/",
+      "stats": "200 0.325695 ",
+      "returncode": 0,
+      "title": "Corrida Night Run Vitória Airport - Road race - Road Runners"
+    },
+    {
+      "path": "/en/event/2026-corrida-night-run-vitoria-airport/",
+      "stats": "200 0.338531 ",
+      "returncode": 0,
+      "title": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - Road race - Road Runners"
+    },
+    {
+      "path": "/en/event/2026-costa-esmeralda-trail-2026/",
+      "stats": "200 0.318772 ",
+      "returncode": 0,
+      "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners"
+    },
+    {
+      "path": "/en/event/2026-costa-esmeralda-trail-2026",
+      "stats": "200 0.361731 ",
+      "returncode": 0,
+      "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners"
+    },
+    {
+      "path": "/es/evento/2025-corrida-night-run-vitoria-airport/",
+      "stats": "200 0.330741 ",
+      "returncode": 0,
+      "title": "Corrida Night Run Vitória Airport - Carrera de ruta - Road Runners"
+    },
+    {
+      "path": "/es/evento/2026-corrida-night-run-vitoria-airport/",
+      "stats": "200 0.316728 ",
+      "returncode": 0,
+      "title": "CORRIDA NIGHT RUN VITÓRIA AIRPORT - Carrera de ruta - Road Runners"
+    },
+    {
+      "path": "/es/evento/2026-costa-esmeralda-trail-2026/",
+      "stats": "200 0.367234 ",
+      "returncode": 0,
+      "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners"
+    },
+    {
+      "path": "/es/evento/2026-costa-esmeralda-trail-2026",
+      "stats": "200 0.302884 ",
+      "returncode": 0,
+      "title": "COSTA ESMERALDA TRAIL 2026 - PORTO BELO SC - Trailrun - Road Runners"
+    }
+  ],
+  "local_drift": [
+    "rr:evento/index.cfm"
+  ]
+}

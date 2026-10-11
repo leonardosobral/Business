@@ -1,0 +1,424 @@
+{
+  "history_exists": false,
+  "current_user": "runner_dba",
+  "triggers": [
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CREATE TRIGGER circuito_fora_do_vinculo_edicao BEFORE INSERT OR UPDATE OF id_agrega_evento ON public.tb_evento_corridas FOR EACH ROW EXECUTE FUNCTION impedir_circuito_como_edicao()",
+      "enabled": "O",
+      "body": "CREATE OR REPLACE FUNCTION public.impedir_circuito_como_edicao()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nBEGIN\n IF NEW.id_agrega_evento IS NOT NULL AND EXISTS(SELECT 1 FROM tb_agrega_eventos a WHERE a.id_agrega_evento=NEW.id_agrega_evento AND lower(trim(a.tipo_agregacao))='circuito') THEN\n RAISE EXCEPTION 'Circuitos devem ser vinculados em Agregadores e circuitos; este campo é reservado às edições da prova.';\n END IF; RETURN NEW;\nEND $function$\n",
+      "function": "impedir_circuito_como_edicao()",
+      "name": "circuito_fora_do_vinculo_edicao"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CREATE TRIGGER trg_grava_percursos AFTER INSERT OR UPDATE ON public.tb_evento_corridas FOR EACH ROW EXECUTE FUNCTION grava_evento_corridas_percursos()",
+      "enabled": "O",
+      "body": "CREATE OR REPLACE FUNCTION public.grava_evento_corridas_percursos()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\r\nDECLARE\r\n\r\nvar_data_percurso   date;\r\nvar_num_dias        integer;\r\nvar_arr_percursos   numeric[];\r\nvar_unidade         varchar;\r\nprc                 numeric;\r\n\r\n\r\nBEGIN\r\n\r\n    if NEW.categorias is distinct from  OLD.categorias then\r\n        delete from  tb_evento_corridas_percursos where id_evento = NEW.id_evento and percurso_bloqueado = false;\r\n\r\n        if NEW.categorias is null then\r\n            return NEW;\r\n        end if;\r\n\r\n        if position('km' in lower(NEW.categorias)) > 0 then\r\n            var_unidade := 'km';\r\n        else\r\n            if position('milha' in lower(NEW.categorias)) > 0 or position('milha' in lower(NEW.nome_evento)) > 0  then\r\n                var_unidade := 'mi';\r\n            else\r\n                var_unidade := '--';\r\n            end if;\r\n        end if;\r\n\r\n        var_arr_percursos := array_remove(string_to_array(regexp_replace(NEW.categorias, '[^0-9.,]','','g'),','),'');\r\n        var_num_dias := (NEW.data_final - NEW.data_inicial) + 1;\r\n\r\n        foreach prc in array var_arr_percursos loop\r\n            if prc < 21 then\r\n            var_data_percurso := NEW.data_inicial;\r\n            else\r\n                if prc < 42 then\r\n                    if var_num_dias = 1 then\r\n                    var_data_percurso := NEW.data_inicial;\r\n                    else\r\n                    var_data_percurso := NEW.data_inicial + 1;\r\n                    end if;\r\n                else\r\n                    if var_num_dias = 1 then\r\n                    var_data_percurso := NEW.data_inicial;\r\n                    else\r\n                    var_data_percurso := NEW.data_final;\r\n                    end if;\r\n                end if;\r\n            end if;\r\n\r\n            insert into tb_evento_corridas_percursos\r\n            ( percurso_evento, unidade_de_medida, id_evento, data_percurso, tipo_corrida )\r\n            values\r\n            ( prc, var_unidade, NEW.id_evento, var_data_percurso, NEW.tipo_corrida )\r\n            on CONFLICT (percurso_evento, id_evento) DO UPDATE\r\n            SET\r\n                percurso_evento   = excluded.percurso_evento,\r\n                unidade_de_medida = excluded.unidade_de_medida,\r\n                id_evento         = excluded.id_evento,\r\n                data_percurso     = excluded.data_percurso\r\n            -- A edição manual bloqueada prevalece sobre a geração automática.\r\n            WHERE NOT tb_evento_corridas_percursos.percurso_bloqueado;\r\n        end loop;\r\n    end if;\r\n\r\n    if NEW.organizador is distinct from OLD.organizador then\r\n        insert into tb_evento_corridas_fornecedores\r\n            ( id_evento, id_fornecedor_tipo, id_fornecedor )\r\n        select\r\n            NEW.id_evento,\r\n            1,\r\n            fo.id_fornecedor\r\n        from  tb_fornecedores fo\r\n            where to_tsvector(unaccent(fo.nome_fornecedor)) @@ plainto_tsquery('portuguese',unaccent(trim(NEW.organizador)))\r\n        on CONFLICT (id_evento, id_fornecedor_tipo, id_fornecedor) DO UPDATE\r\n        SET\r\n            id_fornecedor   = excluded.id_fornecedor;\r\n    end if;\r\n\r\nRETURN NEW;\r\nEND\r\n$function$\n",
+      "function": "grava_evento_corridas_percursos()",
+      "name": "trg_grava_percursos"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CREATE TRIGGER trg_preencher_id_localidade_evento BEFORE INSERT OR UPDATE OF cidade, estado ON public.tb_evento_corridas FOR EACH ROW EXECUTE FUNCTION preencher_id_localidade_evento()",
+      "enabled": "O",
+      "body": "CREATE OR REPLACE FUNCTION public.preencher_id_localidade_evento()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\r\nBEGIN\r\n    IF TG_OP = 'UPDATE'\r\n       AND NEW.cidade IS NOT DISTINCT FROM OLD.cidade\r\n       AND NEW.estado IS NOT DISTINCT FROM OLD.estado THEN\r\n        RETURN NEW;\r\n    END IF;\r\n\r\n    -- Limpa um ID anterior caso cidade ou estado tenham sido alterados.\r\n    NEW.id_localidade := NULL;\r\n\r\n    IF nullif(btrim(NEW.cidade), '') IS NULL\r\n       OR nullif(btrim(NEW.estado), '') IS NULL THEN\r\n        RETURN NEW;\r\n    END IF;\r\n\r\n    SELECT CASE\r\n             WHEN count(DISTINCT l.id_localidade) = 1\r\n             THEN min(l.id_localidade)\r\n             ELSE NULL\r\n           END\r\n      INTO NEW.id_localidade\r\n      FROM tbbi_dim_localidade AS l\r\n     WHERE get_tag(l.nome_cidade) = get_tag(NEW.cidade)\r\n       AND upper(btrim(l.estado)) = upper(btrim(NEW.estado));\r\n\r\n    RETURN NEW;\r\nEND;\r\n$function$\n",
+      "function": "preencher_id_localidade_evento()",
+      "name": "trg_preencher_id_localidade_evento"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "definition": "CREATE TRIGGER trg_tb_evento_corridas_full_text BEFORE INSERT OR UPDATE ON public.tb_evento_corridas FOR EACH ROW EXECUTE FUNCTION trg_atualiza_nome_evento_full_text()",
+      "enabled": "O",
+      "body": "CREATE OR REPLACE FUNCTION public.trg_atualiza_nome_evento_full_text()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\r\nDECLARE\r\n\r\nBEGIN\r\n\r\n    if NEW.nome_evento is distinct from  OLD.nome_evento then\r\n        NEW.nome_evento_full_text := to_tsvector('portuguese',NEW.nome_evento);\r\n    end if;\r\n\r\nRETURN NEW;\r\nEND\r\n$function$\n",
+      "function": "trg_atualiza_nome_evento_full_text()",
+      "name": "trg_tb_evento_corridas_full_text"
+    }
+  ],
+  "version": "PostgreSQL 17.6 (Ubuntu 17.6-2.pgdg24.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, 64-bit",
+  "function_exists": false,
+  "columns": [
+    {
+      "table": "tb_evento_corridas",
+      "column": "id_evento",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "nome_evento",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "cidade",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "estado",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "tag",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "homologado",
+      "type": "boolean"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "url_resultado",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "url_wiclax",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "cod_cidade",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "id_agrega_evento",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "pais",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "data_inicial",
+      "type": "date"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "data_final",
+      "type": "date"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "descricao",
+      "type": "text"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "endereco",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "coordenadas",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "imagem",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "destaque",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "categorias",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "url_inscricao",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "info_duplicado",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "nome_simplificado",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "organizador",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "obs",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "tipo_corrida",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "ranking",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "id_tema",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "data_processamento",
+      "type": "timestamp without time zone"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "resumo",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "tag_301",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "ativo",
+      "type": "boolean"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "data_inclusao",
+      "type": "timestamp without time zone"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "nome_evento_full_text",
+      "type": "tsvector"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "obs_resultado",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "status_evento",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "resultado_completo",
+      "type": "boolean"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "url_hotsite",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "url_imagem",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "id_fornecedor",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "url_imagem_listagem",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "descricao_original",
+      "type": "text"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "obs_homologacao",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "cronometragem",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "realizacao",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "cobertura",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "url_regulamento",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "valor_inscricao",
+      "type": "numeric"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "precos",
+      "type": "jsonb"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "descricao_en",
+      "type": "text"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "descricao_es",
+      "type": "text"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "descricao_traducoes_meta",
+      "type": "jsonb"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "id_localidade",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_corridas",
+      "column": "inscricao_disponibilidade",
+      "type": "jsonb"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "id_evento_percurso",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "percurso_evento",
+      "type": "numeric"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "unidade_de_medida",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "id_evento",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "data_percurso",
+      "type": "date"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "hora_largada",
+      "type": "time without time zone"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "mapa",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "tipo_corrida",
+      "type": "character varying"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "percurso_bloqueado",
+      "type": "boolean"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "id_permit",
+      "type": "integer"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "rp_m",
+      "type": "time without time zone"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "rp_f",
+      "type": "time without time zone"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "hora_corte",
+      "type": "time without time zone"
+    }
+  ],
+  "defaults": [
+    {
+      "role": "runner_dba",
+      "namespace": "6948641",
+      "acl": [
+        "gorunners_dba=arwd/runner_dba"
+      ],
+      "type": "r"
+    },
+    {
+      "role": "runner_dba",
+      "namespace": "7044987",
+      "acl": [
+        "liverunners_dba=arwdDxtm/runner_dba"
+      ],
+      "type": "r"
+    },
+    {
+      "role": "runner_dba",
+      "namespace": "7044987",
+      "acl": [
+        "liverunners_dba=rwU/runner_dba"
+      ],
+      "type": "S"
+    }
+  ],
+  "tables": [
+    {
+      "owner": "runner_dba",
+      "rows_estimate": 34308,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "liverunners_dba=r/runner_dba",
+        "auditoria=r/runner_dba",
+        "ads_owner=r/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "name": "tb_evento_corridas"
+    },
+    {
+      "owner": "runner_dba",
+      "rows_estimate": 32750,
+      "acl": [
+        "runner_dba=arwdDxtm/runner_dba",
+        "runner=arw/runner_dba",
+        "liverunners_dba=r/runner_dba",
+        "estudo_reader=r/runner_dba"
+      ],
+      "name": "tb_evento_corridas_percursos"
+    }
+  ]
+}

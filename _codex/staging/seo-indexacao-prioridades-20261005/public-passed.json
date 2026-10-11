@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "at": "2026-10-05T17:32:12.734217+00:00",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "seconds": 0.168992
+    },
+    {
+      "path": "/estado/sp/",
+      "status": 200,
+      "seconds": 1.429142
+    },
+    {
+      "path": "/circuito/fca-corridaderua/",
+      "status": 301,
+      "seconds": 0.108114
+    },
+    {
+      "path": "/circuito/circuito-catarinense-corrida-de-rua/",
+      "status": 200,
+      "seconds": 0.291493
+    },
+    {
+      "path": "/circuito/live-run-xp/",
+      "status": 200,
+      "seconds": 0.364065
+    },
+    {
+      "path": "/desafiosupra/2024/",
+      "status": 200,
+      "seconds": 0.165979
+    },
+    {
+      "path": "/desafiosupra/2025/",
+      "status": 200,
+      "seconds": 0.175648
+    },
+    {
+      "path": "/evento/2026-1-edicao-corrida-farmelhor/",
+      "status": 200,
+      "seconds": 0.337757
+    },
+    {
+      "path": "/evento/2026-1-edicao-corrida-farmelhor-rn/",
+      "status": 200,
+      "seconds": 0.360105
+    },
+    {
+      "path": "/evento/2026-costa-esmeralda-trail-2026",
+      "status": 200,
+      "seconds": 0.360781
+    },
+    {
+      "path": "/evento/2026-costa-esmeralda-trail-2026/",
+      "status": 200,
+      "seconds": 0.303954
+    },
+    {
+      "path": "/evento/2026-trail-in-motion-19-chacara-da-bolinha-2026/",
+      "status": 200,
+      "seconds": 0.324498
+    },
+    {
+      "path": "/sitemaps/events-history-3.xml",
+      "status": 200,
+      "seconds": 0.300875
+    },
+    {
+      "path": "/circuito/fca-corridaderua/?utm_source=seo-verification",
+      "status": 200,
+      "seconds": 0.297758
+    },
+    {
+      "path": "/circuito/fca-corridaderua/?ano=2025",
+      "status": 200,
+      "seconds": 0.298014
+    },
+    {
+      "path": "/circuito/fca-corridaderua/?distancia=1,42",
+      "status": 200,
+      "seconds": 0.280215
+    },
+    {
+      "path": "/circuito/fca-corridaderua/?page=0",
+      "status": 200,
+      "seconds": 0.287192
+    }
+  ],
+  "one_hop_chain": true,
+  "head_redirect": true,
+  "apache": [
+    "CurrentTime: Monday, 05-Oct-2026 17:32:19 UTC",
+    "ServerUptime: 16 hours 46 minutes 24 seconds",
+    "Load1: 0.13",
+    "BusyWorkers: 6",
+    "IdleWorkers: 69",
+    "BusyWorkers: 6",
+    "IdleWorkers: 69"
+  ]
+}

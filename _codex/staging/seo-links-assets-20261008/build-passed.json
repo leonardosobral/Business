@@ -1,0 +1,37 @@
+{
+  "esbuild": "0.28.2",
+  "checks": [
+    {
+      "source": "assets/js/rr-audience.js",
+      "normalized_program_equal": true,
+      "bytes_reduced": 8964
+    },
+    {
+      "source": "assets/css/runnerhub-home.css",
+      "normalized_program_equal": true,
+      "bytes_reduced": 202
+    },
+    {
+      "source": "assets/css/runnerhub-estado-cidades.css",
+      "normalized_program_equal": true,
+      "bytes_reduced": 1246
+    },
+    {
+      "source": "assets/js/runnerhub-state-filter.js",
+      "normalized_program_equal": true,
+      "bytes_reduced": 111
+    },
+    {
+      "source": "assets/js/runnerhub-estado-cidades.js",
+      "normalized_program_equal": true,
+      "bytes_reduced": 2152
+    }
+  ],
+  "hashes": {
+    "assets/js/rr-audience.min.js": "6fe7ce98e5a4a77fe1b6ab5ed21d76ab9cef19714c76a3943948cea189a17fe7",
+    "assets/css/runnerhub-home.min.css": "2ed27adafb18f7af53a663310a7c4508ff1f348485cff60a8ff881d3f490b157",
+    "assets/css/runnerhub-estado-cidades.min.css": "203d8a5fe85c3190e4428cbad1f18fe2e71ea8b82b7dfef3ab2eba37e0fa3e07",
+    "assets/js/runnerhub-state-filter.min.js": "520a82ca1c20bba3108b3ecb49bc9a8bf3a5867a2315dfb922ff99f22847ddff",
+    "assets/js/runnerhub-estado-cidades.min.js": "9e986ae1c2ae48a80d2b8b5e01ada62ce8f59387ffa6bd8f81ed31339d80fba7"
+  }
+}

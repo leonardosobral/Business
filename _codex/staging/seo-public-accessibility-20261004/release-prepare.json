@@ -1,0 +1,22 @@
+{
+  "before": {
+    "includes/estrutura/header_tema.cfm": "18a0dca76a8eafb671c76ac93b43201b1582d0859964430b5c3aaf018d30a813",
+    "evento/index.cfm": "f2f32244db93a85114fdbb9cc865fd15939a8cb9b1550929079f46bb9dbd1140",
+    "login/index.cfm": "c0f5feb45d6c74c209ca4a168fff8a040026994a3695ba700f55f06e44f28dd3"
+  },
+  "candidate": {
+    "includes/estrutura/header_tema.cfm": "14cf0f8f4156bd5d516740e5e212aa9be98d50fdac08818f89209c2e3940276c",
+    "evento/index.cfm": "cc12568c40eb7f48a2ee4bcad17515c4e85da36535e630bd80b8e36d80a8ccd8",
+    "login/index.cfm": "b0bbc7e88024bf83372f3043fa87d69e04794f91485bcbc970e2de5767c7993b"
+  },
+  "order": [
+    "includes/estrutura/header_tema.cfm",
+    "evento/index.cfm",
+    "login/index.cfm"
+  ],
+  "compile": {
+    "templates": 3,
+    "output": "successful 3\ntotal 3\nelapsed 2.779 sec\n\n",
+    "returncode": 0
+  }
+}

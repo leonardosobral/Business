@@ -130,7 +130,7 @@
 
               <cfif len(trim(VARIABLES.permissionsSaveErrorMessage))>
                 <div class="alert alert-danger" role="alert">
-                  <cfoutput>#htmlEditFormat(VARIABLES.permissionsSaveErrorMessage)#</cfoutput>
+                  <cfoutput>#encodeForHTML(VARIABLES.permissionsSaveErrorMessage)#</cfoutput>
                 </div>
               </cfif>
 
@@ -142,7 +142,7 @@
                     <div class="row g-3 align-items-end">
                       <div class="col-12 col-lg-8">
                         <label class="form-label">Buscar usuário</label>
-                        <input class="form-control" type="text" name="user_busca" value="#htmlEditFormat(URL.user_busca)#" placeholder="Digite nome, e-mail ou ID do usuário"/>
+                        <input class="form-control" type="text" name="user_busca" value="#encodeForHTMLAttribute(URL.user_busca)#" placeholder="Digite nome, e-mail ou ID do usuário"/>
                       </div>
                       <div class="col-12 col-lg-4">
                         <button type="submit" class="btn btn-outline-warning w-100">Buscar</button>
@@ -162,10 +162,10 @@
                       <input type="hidden" name="permissions_user_id" value="<cfoutput>#qPermissionUserEdit.id#</cfoutput>"/>
                       <input type="hidden" name="permissions_page_id" value="<cfoutput>#qPermissionUserEdit.id_pagina#</cfoutput>"/>
                       <div class="form-control bg-body-tertiary d-flex align-items-center" style="min-height: 38px;">
-                        <cfoutput>#htmlEditFormat(qPermissionUserEdit.name)# - #htmlEditFormat(qPermissionUserEdit.email)#</cfoutput>
+                        <cfoutput>#encodeForHTML(qPermissionUserEdit.name)# - #encodeForHTML(qPermissionUserEdit.email)#</cfoutput>
                       </div>
                       <cfif len(trim(qPermissionUserEdit.pagina_tag))>
-                        <div class="small text-muted mt-2"><cfoutput>Página vinculada: #htmlEditFormat(qPermissionUserEdit.pagina_tag)#</cfoutput></div>
+                        <div class="small text-muted mt-2"><cfoutput>Página vinculada: #encodeForHTML(qPermissionUserEdit.pagina_tag)#</cfoutput></div>
                       <cfelseif len(trim(qPermissionUserEdit.id_pagina))>
                         <div class="small text-muted mt-2"><cfoutput>Página vinculada: ID #qPermissionUserEdit.id_pagina#</cfoutput></div>
                       <cfelse>
@@ -173,12 +173,12 @@
                       </cfif>
                       <cfif len(trim(qPermissionUserEdit.permission_tags))>
                         <div class="small text-muted mt-2">
-                          <cfoutput>Permissões correlacionadas: #htmlEditFormat(qPermissionUserEdit.permission_types)# · #htmlEditFormat(qPermissionUserEdit.permission_tags)#</cfoutput>
+                          <cfoutput>Permissões correlacionadas: #encodeForHTML(qPermissionUserEdit.permission_types)# · #encodeForHTML(qPermissionUserEdit.permission_tags)#</cfoutput>
                         </div>
                       </cfif>
                       <cfif len(trim(qPermissionUserEdit.company_names))>
                         <div class="small text-muted mt-2">
-                          <cfoutput>Empresas vinculadas: #htmlEditFormat(qPermissionUserEdit.company_names)#</cfoutput>
+                          <cfoutput>Empresas vinculadas: #encodeForHTML(qPermissionUserEdit.company_names)#</cfoutput>
                         </div>
                       </cfif>
                     <cfelse>
@@ -186,7 +186,7 @@
                       <select class="form-select" name="permissions_user_id" required>
                         <option value="">Selecione um usuário encontrado</option>
                         <cfoutput query="qPermissionUsersSearch">
-                          <option value="#qPermissionUsersSearch.id#" data-page-id="#qPermissionUsersSearch.id_pagina#">## #qPermissionUsersSearch.id# - #htmlEditFormat(qPermissionUsersSearch.name)# - #htmlEditFormat(qPermissionUsersSearch.email)#</option>
+                          <option value="#qPermissionUsersSearch.id#" data-page-id="#qPermissionUsersSearch.id_pagina#">## #qPermissionUsersSearch.id# - #encodeForHTML(qPermissionUsersSearch.name)# - #encodeForHTML(qPermissionUsersSearch.email)#</option>
                         </cfoutput>
                       </select>
                       <cfif isDefined("URL.user_busca") AND len(trim(URL.user_busca)) AND NOT qPermissionUsersSearch.recordcount>
@@ -248,7 +248,7 @@
                             <option value="">Selecione uma empresa para adicionar</option>
                             <cfoutput query="qPermissionCompaniesList">
                               <option value="#qPermissionCompaniesList.id_fornecedor#">
-                                #htmlEditFormat(qPermissionCompaniesList.nome_fornecedor)#<cfif len(trim(qPermissionCompaniesList.tag_tipo))> - #htmlEditFormat(qPermissionCompaniesList.tag_tipo)#</cfif><cfif len(trim(qPermissionCompaniesList.tag_fornecedor))> (#htmlEditFormat(qPermissionCompaniesList.tag_fornecedor)#)</cfif>
+                                #encodeForHTML(qPermissionCompaniesList.nome_fornecedor)#<cfif len(trim(qPermissionCompaniesList.tag_tipo))> - #encodeForHTML(qPermissionCompaniesList.tag_tipo)#</cfif><cfif len(trim(qPermissionCompaniesList.tag_fornecedor))> (#encodeForHTML(qPermissionCompaniesList.tag_fornecedor)#)</cfif>
                               </option>
                             </cfoutput>
                           </select>
@@ -262,7 +262,7 @@
                         <cfoutput query="qPermissionCompaniesList">
                           <cfset VARIABLES.permissionCompanySelected = arrayFind(VARIABLES.permissionSelectedCompanies, qPermissionCompaniesList.id_fornecedor) GT 0/>
                           <option value="#qPermissionCompaniesList.id_fornecedor#"<cfif VARIABLES.permissionCompanySelected> selected</cfif>>
-                            #htmlEditFormat(qPermissionCompaniesList.nome_fornecedor)#<cfif len(trim(qPermissionCompaniesList.tag_tipo))> - #htmlEditFormat(qPermissionCompaniesList.tag_tipo)#</cfif><cfif len(trim(qPermissionCompaniesList.tag_fornecedor))> (#htmlEditFormat(qPermissionCompaniesList.tag_fornecedor)#)</cfif>
+                            #encodeForHTML(qPermissionCompaniesList.nome_fornecedor)#<cfif len(trim(qPermissionCompaniesList.tag_tipo))> - #encodeForHTML(qPermissionCompaniesList.tag_tipo)#</cfif><cfif len(trim(qPermissionCompaniesList.tag_fornecedor))> (#encodeForHTML(qPermissionCompaniesList.tag_fornecedor)#)</cfif>
                           </option>
                         </cfoutput>
                       </select>
@@ -305,8 +305,8 @@
                     <tr>
                       <td class="permissions-cell permissions-id-cell">#qPermissionUsers.id#</td>
                       <td class="permissions-cell">
-                        <div>#htmlEditFormat(qPermissionUsers.name)#</div>
-                        <div class="small text-muted">#htmlEditFormat(qPermissionUsers.email)#</div>
+                        <div>#encodeForHTML(qPermissionUsers.name)#</div>
+                        <div class="small text-muted">#encodeForHTML(qPermissionUsers.email)#</div>
                       </td>
                       <td class="permissions-cell">
                         <span class="badge <cfif qPermissionUsers.is_admin>badge-success<cfelse>badge-secondary</cfif>"><cfif qPermissionUsers.is_admin>Ativo<cfelse>Inativo</cfif></span>
@@ -322,10 +322,10 @@
                       </td>
                       <td class="permissions-scope-cell">
                         <cfif len(trim(qPermissionUsers.company_names))>
-                          <div class="small fw-semibold">#htmlEditFormat(qPermissionUsers.company_names)#</div>
+                          <div class="small fw-semibold">#encodeForHTML(qPermissionUsers.company_names)#</div>
                           <cfif len(trim(qPermissionUsers.company_types)) OR len(trim(qPermissionUsers.company_tags))>
                             <div class="small text-muted">
-                              <cfif len(trim(qPermissionUsers.company_types))>#htmlEditFormat(qPermissionUsers.company_types)#</cfif><cfif len(trim(qPermissionUsers.company_types)) AND len(trim(qPermissionUsers.company_tags))> · </cfif><cfif len(trim(qPermissionUsers.company_tags))>#htmlEditFormat(qPermissionUsers.company_tags)#</cfif>
+                              <cfif len(trim(qPermissionUsers.company_types))>#encodeForHTML(qPermissionUsers.company_types)#</cfif><cfif len(trim(qPermissionUsers.company_types)) AND len(trim(qPermissionUsers.company_tags))> · </cfif><cfif len(trim(qPermissionUsers.company_tags))>#encodeForHTML(qPermissionUsers.company_tags)#</cfif>
                             </div>
                           </cfif>
                         <cfelse>
@@ -334,8 +334,8 @@
                       </td>
                       <td class="permissions-scope-cell">
                         <cfif len(trim(qPermissionUsers.permission_tags))>
-                          <div class="small fw-semibold"><cfif len(trim(qPermissionUsers.permission_types))>#htmlEditFormat(qPermissionUsers.permission_types)#<cfelse>Tag</cfif></div>
-                          <div class="small text-muted">#htmlEditFormat(qPermissionUsers.permission_tags)#</div>
+                          <div class="small fw-semibold"><cfif len(trim(qPermissionUsers.permission_types))>#encodeForHTML(qPermissionUsers.permission_types)#<cfelse>Tag</cfif></div>
+                          <div class="small text-muted">#encodeForHTML(qPermissionUsers.permission_tags)#</div>
                         <cfelse>
                           <span class="text-muted small">Sem permissões correlacionadas</span>
                         </cfif>
@@ -382,8 +382,8 @@
                     <tr>
                       <td class="permissions-cell permissions-id-cell">#qPartnerUsers.id#</td>
                       <td class="permissions-cell">
-                        <div>#htmlEditFormat(qPartnerUsers.name)#</div>
-                        <div class="small text-muted">#htmlEditFormat(qPartnerUsers.email)#</div>
+                        <div>#encodeForHTML(qPartnerUsers.name)#</div>
+                        <div class="small text-muted">#encodeForHTML(qPartnerUsers.email)#</div>
                       </td>
                       <td class="permissions-cell">
                         <span class="badge <cfif qPartnerUsers.is_partner>badge-primary<cfelse>badge-secondary</cfif>"><cfif qPartnerUsers.is_partner>Ativo<cfelse>Inativo</cfif></span>
@@ -393,10 +393,10 @@
                       </td>
                       <td class="permissions-scope-cell">
                         <cfif len(trim(qPartnerUsers.company_names))>
-                          <div class="small fw-semibold">#htmlEditFormat(qPartnerUsers.company_names)#</div>
+                          <div class="small fw-semibold">#encodeForHTML(qPartnerUsers.company_names)#</div>
                           <cfif len(trim(qPartnerUsers.company_types)) OR len(trim(qPartnerUsers.company_tags))>
                             <div class="small text-muted">
-                              <cfif len(trim(qPartnerUsers.company_types))>#htmlEditFormat(qPartnerUsers.company_types)#</cfif><cfif len(trim(qPartnerUsers.company_types)) AND len(trim(qPartnerUsers.company_tags))> · </cfif><cfif len(trim(qPartnerUsers.company_tags))>#htmlEditFormat(qPartnerUsers.company_tags)#</cfif>
+                              <cfif len(trim(qPartnerUsers.company_types))>#encodeForHTML(qPartnerUsers.company_types)#</cfif><cfif len(trim(qPartnerUsers.company_types)) AND len(trim(qPartnerUsers.company_tags))> · </cfif><cfif len(trim(qPartnerUsers.company_tags))>#encodeForHTML(qPartnerUsers.company_tags)#</cfif>
                             </div>
                           </cfif>
                         <cfelse>
@@ -405,8 +405,8 @@
                       </td>
                       <td class="permissions-scope-cell">
                         <cfif len(trim(qPartnerUsers.permission_tags))>
-                          <div class="small fw-semibold"><cfif len(trim(qPartnerUsers.permission_types))>#htmlEditFormat(qPartnerUsers.permission_types)#<cfelse>Tag</cfif></div>
-                          <div class="small text-muted">#htmlEditFormat(qPartnerUsers.permission_tags)#</div>
+                          <div class="small fw-semibold"><cfif len(trim(qPartnerUsers.permission_types))>#encodeForHTML(qPartnerUsers.permission_types)#<cfelse>Tag</cfif></div>
+                          <div class="small text-muted">#encodeForHTML(qPartnerUsers.permission_tags)#</div>
                         <cfelse>
                           <span class="text-muted small">Sem permissões correlacionadas</span>
                         </cfif>

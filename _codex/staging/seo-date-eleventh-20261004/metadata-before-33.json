@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-corrida-iz1-telecom/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-corrida-iz1-telecom/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-corrida-iz1-telecom/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-corrida-iz1-telecom/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-corrida-iz1-telecom/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-corrida-iz1-telecom/",
+      "name": "CORRIDA IZ1 TELECOM",
+      "description": "CORRIDA IZ1 TELECOM acontece em 01 novembro 2026, em Av. Gov. Francisco L. de Águiar, 210 - Alto Lagoa Funda, Marataízes - ES, 29345-000, 210, Marataizes, ES, Brasil - Marataízes - ES.",
+      "url": "https://roadrunners.run/evento/2026-corrida-iz1-telecom/",
+      "startDate": "2026-11-01",
+      "endDate": "2026-11-01",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/0WR5REACB9VUG4M2AHZQRUS1GBYYSJ1L7MBFT9UBQ1XMXTECYU.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Av. Gov. Francisco L. de Águiar, 210 - Alto Lagoa Funda, Marataízes - ES, 29345-000, 210, Marataizes, ES, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Marataízes",
+          "addressRegion": "ES",
+          "addressCountry": "BR",
+          "streetAddress": "Av. Gov. Francisco L. de Águiar, 210 - Alto Lagoa Funda, Marataízes - ES, 29345-000, 210, Marataizes, ES, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88108&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/es/",
+          "@type": "ListItem",
+          "name": "Corridas em ES"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-corrida-iz1-telecom/",
+          "@type": "ListItem",
+          "name": "CORRIDA IZ1 TELECOM"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

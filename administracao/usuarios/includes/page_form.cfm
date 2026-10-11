@@ -9,14 +9,14 @@
   <input type="hidden" name="return_tab" value="paginas"/>
 
   <div class="row g-3">
-    <div class="col-12 col-lg-6"><label class="form-label">Nome *</label><input class="form-control" name="nome" required maxlength="128" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(VARIABLES.userManagerPageRow.nome)#</cfoutput></cfif>"/></div>
-    <div class="col-12 col-lg-6"><label class="form-label">Apelido</label><input class="form-control" name="apelido" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(userManagerDisplayValue(VARIABLES.userManagerPageRow.apelido, ''))#</cfoutput></cfif>"/></div>
-    <div class="col-8 col-lg-6"><label class="form-label">Slug *</label><input class="form-control" name="tag" required value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(VARIABLES.userManagerPageRow.tag)#</cfoutput></cfif>" placeholder="nome-do-atleta"/></div>
-    <div class="col-4 col-lg-2"><label class="form-label">Prefixo</label><input class="form-control" name="tag_prefix" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(VARIABLES.userManagerPageRow.tag_prefix)#</cfoutput><cfelse>atleta</cfif>"/></div>
-    <div class="col-6 col-lg-2"><label class="form-label">Cidade</label><input class="form-control" name="pagina_cidade" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(userManagerDisplayValue(VARIABLES.userManagerPageRow.cidade, ''))#</cfoutput></cfif>"/></div>
-    <div class="col-3 col-lg-1"><label class="form-label">UF</label><input class="form-control" name="pagina_uf" maxlength="2" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(userManagerDisplayValue(VARIABLES.userManagerPageRow.uf, ''))#</cfoutput></cfif>"/></div>
+    <div class="col-12 col-lg-6"><label class="form-label">Nome *</label><input class="form-control" name="nome" required maxlength="128" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#encodeForHTMLAttribute(VARIABLES.userManagerPageRow.nome)#</cfoutput></cfif>"/></div>
+    <div class="col-12 col-lg-6"><label class="form-label">Apelido</label><input class="form-control" name="apelido" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(VARIABLES.userManagerPageRow.apelido, ''))#</cfoutput></cfif>"/></div>
+    <div class="col-8 col-lg-6"><label class="form-label">Slug *</label><input class="form-control" name="tag" required value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#encodeForHTMLAttribute(VARIABLES.userManagerPageRow.tag)#</cfoutput></cfif>" placeholder="nome-do-atleta"/></div>
+    <div class="col-4 col-lg-2"><label class="form-label">Prefixo</label><input class="form-control" name="tag_prefix" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#encodeForHTMLAttribute(VARIABLES.userManagerPageRow.tag_prefix)#</cfoutput><cfelse>atleta</cfif>"/></div>
+    <div class="col-6 col-lg-2"><label class="form-label">Cidade</label><input class="form-control" name="pagina_cidade" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(VARIABLES.userManagerPageRow.cidade, ''))#</cfoutput></cfif>"/></div>
+    <div class="col-3 col-lg-1"><label class="form-label">UF</label><input class="form-control" name="pagina_uf" maxlength="2" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(VARIABLES.userManagerPageRow.uf, ''))#</cfoutput></cfif>"/></div>
     <div class="col-3 col-lg-1"><label class="form-label">ID cidade</label><input class="form-control" type="number" name="id_cidade" value="<cfif VARIABLES.userManagerPageFormIsEdit AND val(VARIABLES.userManagerPageRow.id_cidade) GT 0><cfoutput>#VARIABLES.userManagerPageRow.id_cidade#</cfoutput></cfif>"/></div>
-    <div class="col-12"><label class="form-label">Descrição</label><textarea class="form-control" name="descricao" rows="3"><cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(userManagerDisplayValue(VARIABLES.userManagerPageRow.descricao, ''))#</cfoutput></cfif></textarea></div>
+    <div class="col-12"><label class="form-label">Descrição</label><textarea class="form-control" name="descricao" rows="3"><cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#encodeForHTML(userManagerDisplayValue(VARIABLES.userManagerPageRow.descricao, ''))#</cfoutput></cfif></textarea></div>
     <div class="col-12 col-lg-7">
       <label class="form-label">Imagem do perfil</label>
       <input class="form-control" type="file" name="pagina_imagem" accept="image/jpeg,image/png,image/webp"/>
@@ -24,7 +24,7 @@
     </div>
     <div class="col-12 col-lg-5">
       <label class="form-label">Arquivo atual</label>
-      <input class="form-control" name="path_imagem" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(userManagerDisplayValue(VARIABLES.userManagerPageRow.path_imagem, ''))#</cfoutput></cfif>" placeholder="Nenhuma imagem" readonly/>
+      <input class="form-control" name="path_imagem" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(VARIABLES.userManagerPageRow.path_imagem, ''))#</cfoutput></cfif>" placeholder="Nenhuma imagem" readonly/>
       <cfif VARIABLES.userManagerPageFormIsEdit AND len(trim(userManagerDisplayValue(VARIABLES.userManagerPageRow.path_imagem, '')))>
         <div class="mt-2"><img src="https://roadrunners.run/assets/paginas/<cfoutput>#urlEncodedFormat(VARIABLES.userManagerPageRow.path_imagem)#</cfoutput>" alt="Imagem atual" class="rounded-circle object-fit-cover" width="72" height="72"/></div>
       </cfif>
@@ -42,7 +42,7 @@
       <div class="col-12 col-lg-6">
         <label class="form-label"><cfoutput>#VARIABLES.userManagerSocialLabels[VARIABLES.userManagerSocialField]#</cfoutput></label>
         <div class="input-group">
-          <input class="form-control" name="<cfoutput>#VARIABLES.userManagerSocialField#</cfoutput>" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#htmlEditFormat(userManagerDisplayValue(VARIABLES.userManagerPageRow[VARIABLES.userManagerSocialField], ''))#</cfoutput></cfif>"/>
+          <input class="form-control" name="<cfoutput>#VARIABLES.userManagerSocialField#</cfoutput>" value="<cfif VARIABLES.userManagerPageFormIsEdit><cfoutput>#encodeForHTMLAttribute(userManagerDisplayValue(VARIABLES.userManagerPageRow[VARIABLES.userManagerSocialField], ''))#</cfoutput></cfif>"/>
           <span class="input-group-text"><input class="form-check-input mt-0" type="checkbox" name="<cfoutput>#VARIABLES.userManagerSocialField#_publico</cfoutput>" value="true" title="Exibir publicamente"<cfif (VARIABLES.userManagerPageFormIsEdit AND userManagerBoolean(VARIABLES.userManagerPageRow[VARIABLES.userManagerSocialField & "_publico"])) OR (!VARIABLES.userManagerPageFormIsEdit AND VARIABLES.userManagerSocialDefaultPublic)> checked</cfif>/></span>
         </div>
       </div>

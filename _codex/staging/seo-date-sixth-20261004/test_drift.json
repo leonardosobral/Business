@@ -1,0 +1,100 @@
+{
+  "events": [
+    {
+      "id_evento": 42850,
+      "row_hash": "606066b50980bd2098f4b2503d74ffb0"
+    },
+    {
+      "id_evento": 44229,
+      "row_hash": "76682a8daece23e1b8d0bda17ccd9783"
+    },
+    {
+      "id_evento": 45646,
+      "row_hash": "05ea180a785608033e115c727d12eb28"
+    },
+    {
+      "id_evento": 48246,
+      "row_hash": "fa035298eb2c9eac1373139b2c997df4"
+    }
+  ],
+  "routes": [
+    {
+      "row_hash": "5cde4783082955cf18005bd7add7c8b5",
+      "id_evento_percurso": 61654
+    },
+    {
+      "row_hash": "e73a404315d257d8a033f5bf972bd7ee",
+      "id_evento_percurso": 61655
+    },
+    {
+      "row_hash": "0c798910ede5026f6ca6c31a986b4142",
+      "id_evento_percurso": 64896
+    },
+    {
+      "row_hash": "3a0b3ab6a5341f8f11bb7a421d92229a",
+      "id_evento_percurso": 65042
+    },
+    {
+      "row_hash": "6389ff6867a0b4274a389255625eeb38",
+      "id_evento_percurso": 65043
+    },
+    {
+      "row_hash": "deed9dce3d1022a9887c0e654318bf8c",
+      "id_evento_percurso": 70765
+    }
+  ],
+  "dependencies": {
+    "tb_evento_percursos_gpx": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_badges": {
+      "count": 1,
+      "hash": "7f64ba859d77aab5d554bf9bd051a068"
+    },
+    "tb_evento_corridas_relaciona": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist_importacao": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_permit_atualiza": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_startlist": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_temp": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_evento_saude_config": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_percurso_migracoes_strava": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_leaderboard_percurso": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_resultados_resumo": {
+      "count": 0,
+      "hash": null
+    },
+    "tb_inscricoes": {
+      "count": 0,
+      "hash": null
+    }
+  }
+}

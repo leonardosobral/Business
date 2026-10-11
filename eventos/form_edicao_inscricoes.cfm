@@ -1,5 +1,5 @@
 <cfif getBaseTemplatePath() EQ getCurrentTemplatePath()>
-    <cfheader statuscode="403" statustext="Forbidden"/><cfabort/>
+    <cfheader statuscode="403"/><cfabort/>
 </cfif>
 <cfinclude template="../includes/backend/require_admin.cfm"/>
 <cfscript>

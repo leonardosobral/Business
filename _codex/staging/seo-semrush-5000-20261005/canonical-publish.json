@@ -1,0 +1,8 @@
+{
+  "published": [
+    "services/EventRedirectService.cfc",
+    "evento/index.cfm",
+    "includes/estrutura/head.cfm"
+  ],
+  "backup": "/var/backups/seo-semrush-5000-canonical-20261005/baseline"
+}

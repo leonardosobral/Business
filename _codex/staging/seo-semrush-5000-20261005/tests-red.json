@@ -1,0 +1,190 @@
+{
+  "CHECKS": [
+    {
+      "PASSED": true,
+      "NAME": "Encoded card route: \"normal-tag\""
+    },
+    {
+      "PASSED": true,
+      "NAME": "Route params restored"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Encoded card route: \"2026-\\\"corrida\\\"\""
+    },
+    {
+      "PASSED": true,
+      "NAME": "Route params restored"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Encoded card route: \"2026-corrida-#04\""
+    },
+    {
+      "PASSED": true,
+      "NAME": "Route params restored"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Encoded card route: \"2026-rock\\n-run\""
+    },
+    {
+      "PASSED": true,
+      "NAME": "Route params restored"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Encoded card route: \"tag & with space\""
+    },
+    {
+      "PASSED": true,
+      "NAME": "Route params restored"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Canonical event has no redirect"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Existing valid redirect preserved"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Unique case variation redirects to registered tag"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Exact mixed-case tag has no redirect"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Unknown event has no redirect"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Case collision never redirects"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Loop never redirects"
+    },
+    {
+      "PASSED": true,
+      "NAME": "POST never redirects"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Action request never redirects"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Trailing slash resolves consistently"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Repeated event includes its registered date"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Repeated event includes its registered date"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Repeated event includes its registered date"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Repeated event includes its registered date"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Repeated event includes its registered date"
+    },
+    {
+      "PASSED": false,
+      "NAME": "Repeated event includes its registered date"
+    },
+    {
+      "PASSED": true,
+      "NAME": "Unique event title preserved"
+    },
+    {
+      "NAME": "Timer header uses existing route, theme 1",
+      "PASSED": false
+    },
+    {
+      "NAME": "Timer header uses existing route, theme 2",
+      "PASSED": false
+    },
+    {
+      "NAME": "Bounded and escaped repeated title",
+      "PASSED": true
+    },
+    {
+      "NAME": "Bounded and escaped repeated title",
+      "PASSED": true
+    },
+    {
+      "NAME": "Bounded and escaped repeated title",
+      "PASSED": false
+    },
+    {
+      "NAME": "Bounded and escaped repeated title",
+      "PASSED": false
+    },
+    {
+      "NAME": "Bounded and escaped repeated title",
+      "PASSED": false
+    },
+    {
+      "NAME": "Bounded and escaped repeated title",
+      "PASSED": false
+    },
+    {
+      "NAME": "Dates distinguish two editions of each repeated event",
+      "PASSED": false
+    }
+  ],
+  "HEADERS": [
+    {
+      "THEME": 1,
+      "HTML": "\n\n        <div class=\"m-1 py-1 mb-3 border-bottom border-secondary\">\n            <h1 class=\"m-0\" style=\"font-size: inherit; line-height: inherit; font-weight: inherit;\"> \n\n                <a href=\"/assessoria/branca-esportes-saude-e-lazer/\">\n                    <span class=\"display-6 text-dark fw-semibold\" style=\"display: block;\" id=\"tema\">Branca Esportes</span>\n                    <span class=\"small opacity-50\" style=\"display: block;\" id=\"titulo\">\n                        <i class=\"fa-solid fa-\"></i>\n                        Branca Esportes\n                    </span>\n                </a>\n\n            </h1>\n\n        </div>\n\n    "
+    },
+    {
+      "THEME": 2,
+      "HTML": "\n\n        <div class=\"row m-1 py-1 mb-3 border-bottom border-secondary\">\n\n            \n\n            <div class=\"col-10 px-0\">\n                <h1 class=\"m-0\" style=\"font-size: inherit; line-height: inherit; font-weight: inherit;\"> \n\n                    <a href=\"/assessoria/branca-esportes-saude-e-lazer/\">\n                        \n                        <span style=\"display: block;\" class=\"display-6 text-dark fw-semibold\" id=\"tema\">Branca Esportes</span>\n                        <span style=\"display: none;\" class=\"mt-2 small opacity-50\" id=\"titulo\">\n                            <i class=\"fa-solid fa-\"></i>\n                            Branca Esportes\n                        </span>\n                    </a>\n\n                </h1>\n            </div>\n\n            \n\n            <div class=\"col-2 px-0\" style=\"text-align: right; word-spacing: 2px; font-size: 24px\">\n                \n                        <a href=\"https://example.com\" target=\"_blank\"><i class=\"fa-solid fa-link\" title=\"Site\" style=\"color:black;\"></i></a>\n                \n                \n\n                \n\n            </div>\n\n        </div>\n\n    "
+    }
+  ],
+  "TITLES": [
+    {
+      "DATE": "2026-03-08",
+      "VALUE": "LIVE! RUN XP São Paulo 2026 - corrida de rua - Road Runners",
+      "NAME": "LIVE! RUN XP São Paulo 2026"
+    },
+    {
+      "DATE": "2026-05-17",
+      "VALUE": "LIVE! RUN XP São Paulo 2026 - corrida de rua - Road Runners",
+      "NAME": "LIVE! RUN XP São Paulo 2026"
+    },
+    {
+      "DATE": "2026-03-08",
+      "VALUE": "Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa  - corrida de rua - Road Runners",
+      "NAME": "Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa "
+    },
+    {
+      "DATE": "2026-05-17",
+      "VALUE": "Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa  - corrida de rua - Road Runners",
+      "NAME": "Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa Etapa longa "
+    },
+    {
+      "DATE": "2026-03-08",
+      "VALUE": "Corrida \"<race>\" - corrida de rua - Road Runners",
+      "NAME": "Corrida \"<race>\""
+    },
+    {
+      "DATE": "2026-05-17",
+      "VALUE": "Corrida \"<race>\" - corrida de rua - Road Runners",
+      "NAME": "Corrida \"<race>\""
+    }
+  ]
+}

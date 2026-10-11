@@ -1,0 +1,141 @@
+{
+  "NODES": [
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 35.973,
+      "Actual Rows": 401,
+      "Node Type": "Sort"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 2.626,
+      "Actual Rows": 400,
+      "Subplan Name": "CTE inscritos",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 1,
+      "Relation Name": "desafios",
+      "Actual Total Time": 2.525,
+      "Actual Rows": 400,
+      "Node Type": "Seq Scan"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 17.507,
+      "Actual Rows": 328,
+      "Subplan Name": "CTE resultados",
+      "Node Type": "Hash Join"
+    },
+    {
+      "Actual Loops": 1,
+      "Relation Name": "tb_resultados",
+      "Actual Total Time": 13.983,
+      "Actual Rows": 15494,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 3.105,
+      "Actual Rows": 15494,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 2.714,
+      "Actual Rows": 400,
+      "Node Type": "Hash"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 2.68,
+      "Actual Rows": 400,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 21.383,
+      "Actual Rows": 111,
+      "Subplan Name": "CTE pontuacoes",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 21.049,
+      "Actual Rows": 328,
+      "Node Type": "Sort"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 20.967,
+      "Actual Rows": 328,
+      "Node Type": "Hash Join"
+    },
+    {
+      "Actual Loops": 1,
+      "Relation Name": "tb_resultados_obs",
+      "Actual Total Time": 1.508,
+      "Actual Rows": 16770,
+      "Node Type": "Seq Scan"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 17.631,
+      "Actual Rows": 328,
+      "Node Type": "Hash"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 17.585,
+      "Actual Rows": 328,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 35.519,
+      "Actual Rows": 401,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 6.143,
+      "Actual Rows": 401,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 1,
+      "Actual Total Time": 4.213,
+      "Actual Rows": 400,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Actual Loops": 1,
+      "Relation Name": "desafios",
+      "Actual Total Time": 2.429,
+      "Actual Rows": 400,
+      "Node Type": "Seq Scan"
+    },
+    {
+      "Actual Loops": 400,
+      "Relation Name": "tb_usuarios",
+      "Actual Total Time": 0.004,
+      "Actual Rows": 1,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Actual Loops": 400,
+      "Relation Name": "tb_paginas",
+      "Actual Total Time": 0.004,
+      "Actual Rows": 1,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Actual Loops": 401,
+      "Actual Total Time": 0.06,
+      "Actual Rows": 111,
+      "Node Type": "CTE Scan"
+    }
+  ],
+  "EXECUTION_MS": 36.095,
+  "ROWS": 401
+}

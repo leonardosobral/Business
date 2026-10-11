@@ -1,0 +1,138 @@
+{
+  "circuits": [
+    {
+      "events": 6,
+      "agregador_tipo": "circuito",
+      "id_agrega_evento_legado": 82,
+      "legacy_tag": "circuito-catarinense-corrida-de-rua",
+      "agregador_tag": "fca-corridaderua",
+      "agregador_nome": "FCA Corrida de Rua"
+    }
+  ],
+  "events": [
+    {
+      "estado": "SC",
+      "data_final": "2026-07-12",
+      "nome_evento": "COSTA ESMERALDA TRAIL 2026",
+      "ativo": true,
+      "tag_301": null,
+      "id_evento": 36621,
+      "status_evento": null,
+      "tag": "2026-costa-esmeralda-trail-2026",
+      "cidade": "PORTO BELO",
+      "data_inicial": "2026-07-12"
+    },
+    {
+      "estado": "RN",
+      "data_final": "2026-11-28",
+      "nome_evento": "1ª EDIÇÃO CORRIDA FARMELHOR",
+      "ativo": true,
+      "tag_301": null,
+      "id_evento": 46526,
+      "status_evento": null,
+      "tag": "2026-1-edicao-corrida-farmelhor",
+      "cidade": "Nova Cruz",
+      "data_inicial": "2026-11-28"
+    },
+    {
+      "estado": "RN",
+      "data_final": "2026-10-18",
+      "nome_evento": "1ª EDIÇÃO CORRIDA FARMELHOR",
+      "ativo": true,
+      "tag_301": null,
+      "id_evento": 46737,
+      "status_evento": null,
+      "tag": "2026-1-edicao-corrida-farmelhor-rn",
+      "cidade": "CANGUARETAMA",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2026-12-13",
+      "nome_evento": "TRAIL IN MOTION 19 - CHÁCARA DA BOLINHA 2026",
+      "ativo": true,
+      "tag_301": null,
+      "id_evento": 47654,
+      "status_evento": null,
+      "tag": "2026-trail-in-motion-19-chacara-da-bolinha-2026",
+      "cidade": "Campina Grande do Sul",
+      "data_inicial": "2026-12-13"
+    }
+  ],
+  "public": [
+    {
+      "path": "/",
+      "stats": "200 0.468904 ",
+      "returncode": 0
+    },
+    {
+      "path": "/estado/sp/",
+      "stats": "200 0.389871 ",
+      "returncode": 0
+    },
+    {
+      "path": "/circuito/fca-corridaderua/",
+      "stats": "200 0.313873 ",
+      "returncode": 0
+    },
+    {
+      "path": "/circuito/circuito-catarinense-corrida-de-rua/",
+      "stats": "200 0.283392 ",
+      "returncode": 0
+    },
+    {
+      "path": "/circuito/live-run-xp/",
+      "stats": "200 0.317867 ",
+      "returncode": 0
+    },
+    {
+      "path": "/desafiosupra/2024/",
+      "stats": "200 0.168024 ",
+      "returncode": 0
+    },
+    {
+      "path": "/desafiosupra/2025/",
+      "stats": "200 0.211514 ",
+      "returncode": 0
+    },
+    {
+      "path": "/evento/2026-1-edicao-corrida-farmelhor/",
+      "stats": "200 0.307447 ",
+      "returncode": 0
+    },
+    {
+      "path": "/evento/2026-1-edicao-corrida-farmelhor-rn/",
+      "stats": "200 0.324472 ",
+      "returncode": 0
+    },
+    {
+      "path": "/evento/2026-costa-esmeralda-trail-2026",
+      "stats": "200 0.348712 ",
+      "returncode": 0
+    },
+    {
+      "path": "/evento/2026-costa-esmeralda-trail-2026/",
+      "stats": "200 0.305939 ",
+      "returncode": 0
+    },
+    {
+      "path": "/evento/2026-trail-in-motion-19-chacara-da-bolinha-2026/",
+      "stats": "200 0.285070 ",
+      "returncode": 0
+    },
+    {
+      "path": "/sitemaps/events-history-3.xml",
+      "stats": "200 0.149253 ",
+      "returncode": 0
+    }
+  ],
+  "apache": [
+    "CurrentTime: Monday, 05-Oct-2026 17:08:28 UTC",
+    "ServerUptime: 16 hours 22 minutes 33 seconds",
+    "Load1: 0.22",
+    "BusyWorkers: 2",
+    "IdleWorkers: 73",
+    "BusyWorkers: 2",
+    "IdleWorkers: 73"
+  ]
+}

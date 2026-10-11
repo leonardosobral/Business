@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-1-apaexonados-por-corrida/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-1-apaexonados-por-corrida/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-1-apaexonados-por-corrida/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-1-apaexonados-por-corrida/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-1-apaexonados-por-corrida/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-1-apaexonados-por-corrida/",
+      "name": "1ª Apaexonados Por Corrida",
+      "description": "1ª Apaexonados Por Corrida takes place on 08 november 2026, in Academia Flex – Av. João Pereira De Vargas, 2620 - Sapucaia do Sul - RS.",
+      "url": "https://roadrunners.run/en/event/2026-1-apaexonados-por-corrida/",
+      "startDate": "2026-11-08",
+      "endDate": "2026-11-08",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.trichip.com.br/thumb.php?q=100&h=500&arquivo=img-23-d33c5bc9c52f258aa1c413b788c99ffc.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Academia Flex – Av. João Pereira De Vargas, 2620",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Sapucaia do Sul",
+          "addressRegion": "RS",
+          "addressCountry": "BR",
+          "streetAddress": "Academia Flex – Av. João Pereira De Vargas, 2620"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.trichip.com.br/evento/1-apaexonados-por-corrida-2026"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/rs/",
+          "@type": "ListItem",
+          "name": "Races in RS"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-1-apaexonados-por-corrida/",
+          "@type": "ListItem",
+          "name": "1ª Apaexonados Por Corrida"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

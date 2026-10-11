@@ -10,7 +10,7 @@
 <cfset VARIABLES.mifChannelDatasetPath = "channels/" & VARIABLES.mifChannelSlug & ".json"/>
 <cfif NOT reFind("^[a-z0-9-]+$", VARIABLES.mifChannelSlug)
     OR NOT structKeyExists(VARIABLES.mifReportManifest.artifacts, VARIABLES.mifChannelDatasetPath)>
-    <cfheader statuscode="404" statustext="Not Found"/>
+    <cfheader statuscode="404"/>
     <cfcontent type="text/html; charset=utf-8"/>
     <!doctype html>
     <html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Canal não encontrado</title><link rel="stylesheet" href="../assets/report.css?v=20260903-9"/></head>

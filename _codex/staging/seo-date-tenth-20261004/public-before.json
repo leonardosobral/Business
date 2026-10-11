@@ -1,0 +1,398 @@
+[
+  {
+    "id": 37769,
+    "url": "https://roadrunners.run/evento/2026-circuito-das-estacoes-2026-verao-palmas/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 37769,
+    "url": "https://roadrunners.run/en/event/2026-circuito-das-estacoes-2026-verao-palmas/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 37769,
+    "url": "https://roadrunners.run/es/evento/2026-circuito-das-estacoes-2026-verao-palmas/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 37784,
+    "url": "https://roadrunners.run/evento/2026-night-run-etapa-1-fortaleza-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 37784,
+    "url": "https://roadrunners.run/en/event/2026-night-run-etapa-1-fortaleza-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 37784,
+    "url": "https://roadrunners.run/es/evento/2026-night-run-etapa-1-fortaleza-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 43093,
+    "url": "https://roadrunners.run/evento/2026-itamaraca-night-run/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 43093,
+    "url": "https://roadrunners.run/en/event/2026-itamaraca-night-run/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 43093,
+    "url": "https://roadrunners.run/es/evento/2026-itamaraca-night-run/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44160,
+    "url": "https://roadrunners.run/evento/2026-corrida-e-caminhadas-piratas-do-asfalto/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44160,
+    "url": "https://roadrunners.run/en/event/2026-corrida-e-caminhadas-piratas-do-asfalto/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44160,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-e-caminhadas-piratas-do-asfalto/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44234,
+    "url": "https://roadrunners.run/evento/2026-girl-power-brasilia-2026/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44234,
+    "url": "https://roadrunners.run/en/event/2026-girl-power-brasilia-2026/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 44234,
+    "url": "https://roadrunners.run/es/evento/2026-girl-power-brasilia-2026/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45435,
+    "url": "https://roadrunners.run/evento/2026-acig-em-movimento-–-caminhada-pela-saude-3-km/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45435,
+    "url": "https://roadrunners.run/en/event/2026-acig-em-movimento-–-caminhada-pela-saude-3-km/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 45435,
+    "url": "https://roadrunners.run/es/evento/2026-acig-em-movimento-–-caminhada-pela-saude-3-km/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46485,
+    "url": "https://roadrunners.run/evento/2026-seven-running/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46485,
+    "url": "https://roadrunners.run/en/event/2026-seven-running/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46485,
+    "url": "https://roadrunners.run/es/evento/2026-seven-running/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46944,
+    "url": "https://roadrunners.run/evento/2026-4-edicao-ivia-em-acao/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46944,
+    "url": "https://roadrunners.run/en/event/2026-4-edicao-ivia-em-acao/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 46944,
+    "url": "https://roadrunners.run/es/evento/2026-4-edicao-ivia-em-acao/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47013,
+    "url": "https://roadrunners.run/evento/2026-corre-potiretama-solidario/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47013,
+    "url": "https://roadrunners.run/en/event/2026-corre-potiretama-solidario/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47013,
+    "url": "https://roadrunners.run/es/evento/2026-corre-potiretama-solidario/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47442,
+    "url": "https://roadrunners.run/evento/2026-fluir-run/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47442,
+    "url": "https://roadrunners.run/en/event/2026-fluir-run/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47442,
+    "url": "https://roadrunners.run/es/evento/2026-fluir-run/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47496,
+    "url": "https://roadrunners.run/evento/2026-corrida-nossa-senhora-aparecida-trindad/",
+    "lang": "pt-br",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47496,
+    "url": "https://roadrunners.run/en/event/2026-corrida-nossa-senhora-aparecida-trindad/",
+    "lang": "en",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  },
+  {
+    "id": 47496,
+    "url": "https://roadrunners.run/es/evento/2026-corrida-nossa-senhora-aparecida-trindad/",
+    "lang": "es",
+    "http": "200",
+    "checks": {
+      "http200": true,
+      "no_cf_error": true,
+      "canonical_present": true,
+      "jsonld_present": true
+    }
+  }
+]

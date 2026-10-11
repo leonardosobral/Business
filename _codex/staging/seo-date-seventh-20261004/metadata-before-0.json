@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-3-circuito-run/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-3-circuito-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-3-circuito-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-3-circuito-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-3-circuito-run/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-3-circuito-run/",
+      "name": "3º CIRCUITO RUN",
+      "description": "3º CIRCUITO RUN acontece em 24 outubro 2026, em GIRAU DO PONCIANO - AL - GIRAU DO PONCIANO - AL.",
+      "url": "https://roadrunners.run/evento/2026-3-circuito-run/",
+      "startDate": "2026-10-24",
+      "endDate": "2026-10-24",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.realtiming.com.br/js/timthumb.php?src=imagens/eventos/3-circuito-run.png&w=800&h=800"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "GIRAU DO PONCIANO - AL",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "GIRAU DO PONCIANO",
+          "addressRegion": "AL",
+          "addressCountry": "BR",
+          "streetAddress": "GIRAU DO PONCIANO - AL"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.realtiming.com.br/evento/3-circuito-run"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/al/",
+          "@type": "ListItem",
+          "name": "Corridas em AL"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-3-circuito-run/",
+          "@type": "ListItem",
+          "name": "3º CIRCUITO RUN"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

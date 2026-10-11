@@ -10,7 +10,7 @@
                         <option value="">Selecione um evento</option>
                         <cfoutput query="qAdsEventosPermitidos">
                             <option value="#qAdsEventosPermitidos.id_evento#">
-                                <cfif isDate(qAdsEventosPermitidos.data_final)>#dateFormat(qAdsEventosPermitidos.data_final, "dd/mm/yyyy")# - </cfif>#htmlEditFormat(qAdsEventosPermitidos.nome_evento)# (#htmlEditFormat(qAdsEventosPermitidos.cidade)#/#htmlEditFormat(qAdsEventosPermitidos.estado)#)
+                                <cfif isDate(qAdsEventosPermitidos.data_final)>#dateFormat(qAdsEventosPermitidos.data_final, "dd/mm/yyyy")# - </cfif>#encodeForHTML(qAdsEventosPermitidos.nome_evento)# (#encodeForHTML(qAdsEventosPermitidos.cidade)#/#encodeForHTML(qAdsEventosPermitidos.estado)#)
                             </option>
                         </cfoutput>
                     </select>

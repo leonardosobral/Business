@@ -1,0 +1,72 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-16-volta-a-lagoa-da-conceicao/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-16-volta-a-lagoa-da-conceicao/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-16-volta-a-lagoa-da-conceicao/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-16-volta-a-lagoa-da-conceicao/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-16-volta-a-lagoa-da-conceicao/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-16-volta-a-lagoa-da-conceicao/",
+      "name": "16ª VOLTA A LAGOA DA CONCEIÇÃO",
+      "description": "16ª VOLTA A LAGOA DA CONCEIÇÃO se realiza el 15 noviembre 2026, en Lic. R. Hyppólito do Valle Pereira, 620 : R. Hyppólito do Valle Pereira, 620, 620, Florianópolis, SC, Brasil - Florianópolis - SC.",
+      "url": "https://roadrunners.run/es/evento/2026-16-volta-a-lagoa-da-conceicao/",
+      "startDate": "2026-11-15",
+      "endDate": "2026-11-15",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/UVIZ7IL4WK5E89DX4LL1W5PJI86TVFYR44VV3BDWCW7F8VWH82.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Lic. R. Hyppólito do Valle Pereira, 620 : R. Hyppólito do Valle Pereira, 620, 620, Florianópolis, SC, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Florianópolis",
+          "addressRegion": "SC",
+          "addressCountry": "BR",
+          "streetAddress": "Lic. R. Hyppólito do Valle Pereira, 620 : R. Hyppólito do Valle Pereira, 620, 620, Florianópolis, SC, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87753&origem=novo-site&lang=en-US"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "ACORSJ",
+        "url": "https://www.acorsj.com.br/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sc/",
+          "@type": "ListItem",
+          "name": "Carreras en SC"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-16-volta-a-lagoa-da-conceicao/",
+          "@type": "ListItem",
+          "name": "16ª VOLTA A LAGOA DA CONCEIÇÃO"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

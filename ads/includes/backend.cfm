@@ -166,7 +166,7 @@ function adsV1FormList(required any value) {
         <cfset VARIABLES.adsAccessCanReserveVoucher = false/>
         <cfset VARIABLES.adsAccessCanPrepareCampaign = false/>
         <cfif len(trim(FORM.ads_v1_action & ""))>
-            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfheader statuscode="403"/>
             <cfthrow type="Ads.PendingAccess.Forbidden" message="O workspace provisório não pertence ao usuário autenticado."/>
         </cfif>
     </cfif>
@@ -1294,32 +1294,32 @@ function adsV1FormList(required any value) {
         </cfif>
         <cfif listFindNoCase(VARIABLES.adsV1CampaignActions, VARIABLES.adsV1Action)
             AND NOT VARIABLES.adsAccessCanManageCampaign>
-            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfheader statuscode="403"/>
             <cfthrow type="AdsV1.Forbidden" message="Seu papel nesta conta nao permite administrar campanhas."/>
         </cfif>
         <cfif listFindNoCase(VARIABLES.adsV1FinanceActions, VARIABLES.adsV1Action)
             AND NOT VARIABLES.adsAccessCanAdminFinance>
-            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfheader statuscode="403"/>
             <cfthrow type="AdsV1.Forbidden" message="Esta operacao financeira exige um administrador interno real e uma conta selecionada."/>
         </cfif>
         <cfif listFindNoCase(VARIABLES.adsV1ReviewActions, VARIABLES.adsV1Action)
             AND NOT VARIABLES.adsAccessCanReviewCampaign>
-            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfheader statuscode="403"/>
             <cfthrow type="AdsV1.Forbidden" message="Somente um administrador RunnerHub pode revisar campanhas."/>
         </cfif>
         <cfif listFindNoCase(VARIABLES.adsV1VoucherAdminActions, VARIABLES.adsV1Action)
             AND NOT VARIABLES.adsAccessCanAdminVouchers>
-            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfheader statuscode="403"/>
             <cfthrow type="AdsV1.Forbidden" message="Somente um administrador RunnerHub pode criar vouchers."/>
         </cfif>
         <cfif VARIABLES.adsV1Action EQ "redeem_voucher"
             AND NOT VARIABLES.adsAccessCanPurchaseCredit>
-            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfheader statuscode="403"/>
             <cfthrow type="AdsV1.Forbidden" message="Somente OWNER ou ADMIN da conta pode resgatar vouchers."/>
         </cfif>
         <cfif VARIABLES.adsV1Action EQ "reserve_voucher"
             AND NOT VARIABLES.adsAccessCanReserveVoucher>
-            <cfheader statuscode="403" statustext="Forbidden"/>
+            <cfheader statuscode="403"/>
             <cfthrow type="AdsV1.Forbidden" message="Somente o OWNER da conta provisória pode reservar vouchers."/>
         </cfif>
         <cfif compare(trim(FORM.ads_v1_csrf & ""), VARIABLES.adsV1Csrf) NEQ 0>

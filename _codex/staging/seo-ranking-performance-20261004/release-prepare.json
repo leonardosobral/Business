@@ -1,0 +1,16 @@
+{
+  "before": {
+    "circuitocatarinense/corridaderua/index.cfm": "fca27b10270cd3616689a89be4c359ff4afdf4c242bd451b564a87db154b05f6"
+  },
+  "candidate": {
+    "circuitocatarinense/corridaderua/index.cfm": "5365d33bfbede37c5d4d0cfcb0491947c7026871e3d72fe559131ab0649278bd"
+  },
+  "order": [
+    "circuitocatarinense/corridaderua/index.cfm"
+  ],
+  "compile": {
+    "templates": 1,
+    "output": "successful 1\ntotal 1\nelapsed 1.756 sec\n\n",
+    "returncode": 0
+  }
+}

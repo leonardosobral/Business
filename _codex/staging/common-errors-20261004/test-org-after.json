@@ -1,0 +1,1 @@
+{"mode": "after", "passed": true, "checks": [{"tag": null, "status": 404}, {"tag": "", "status": 404}, {"tag": "   ", "status": 404}, {"tag": "missing-timer", "status": 404}, {"tag": "valid-timer", "status": 200}]}

@@ -86,7 +86,7 @@
               <p class="text-muted mb-0">
                 <cfoutput>
                   Evento <strong>## #qTreinoEventoInfo.id_evento#</strong>:
-                  <strong>#htmlEditFormat(qTreinoEventoInfo.nome_evento)#</strong>
+                  <strong>#encodeForHTML(qTreinoEventoInfo.nome_evento)#</strong>
                 </cfoutput>
               </p>
             </div>
@@ -105,7 +105,7 @@
               <form method="get" action="./" class="w-100" style="max-width: 520px;">
                 <input type="hidden" name="id_evento" value="#qTreinoEventoInfo.id_evento#"/>
                 <div class="input-group">
-                  <input class="form-control" type="text" name="busca" value="#htmlEditFormat(URL.busca)#" placeholder="Buscar por nome, e-mail, documento, celular ou pedido"/>
+                  <input class="form-control" type="text" name="busca" value="#encodeForHTMLAttribute(URL.busca)#" placeholder="Buscar por nome, e-mail, documento, celular ou pedido"/>
                   <button class="btn btn-outline-warning" type="submit">Buscar</button>
                   <a class="btn btn-outline-secondary" href="./?id_evento=#qTreinoEventoInfo.id_evento#">Limpar</a>
                 </div>
@@ -133,20 +133,20 @@
                     <tr>
                       <td class="treino-athletes-cell" data-label="Atleta">
                         <cfif len(trim(qTreinoInscritos.slug_pagina))>
-                          <a href="https://roadrunners.run/atleta/#urlEncodedFormat(qTreinoInscritos.slug_pagina)#" target="_blank" rel="noopener noreferrer">#htmlEditFormat(qTreinoInscritos.nome_atleta)#</a>
+                          <a href="https://roadrunners.run/atleta/#urlEncodedFormat(qTreinoInscritos.slug_pagina)#" target="_blank" rel="noopener noreferrer">#encodeForHTML(qTreinoInscritos.nome_atleta)#</a>
                         <cfelse>
-                          #htmlEditFormat(qTreinoInscritos.nome_atleta)#
+                          #encodeForHTML(qTreinoInscritos.nome_atleta)#
                         </cfif>
                         <div class="small text-muted">Usuário ## #qTreinoInscritos.id_usuario#</div>
                         <cfif len(trim(qTreinoInscritos.email))>
-                          <div class="small text-muted">#htmlEditFormat(qTreinoInscritos.email)#</div>
+                          <div class="small text-muted">#encodeForHTML(qTreinoInscritos.email)#</div>
                         </cfif>
                       </td>
                       <td class="treino-athletes-cell" data-label="Cidade">
                         <cfif len(trim(qTreinoInscritos.cidade)) OR len(trim(qTreinoInscritos.estado))>
-                          #htmlEditFormat(qTreinoInscritos.cidade)#
+                          #encodeForHTML(qTreinoInscritos.cidade)#
                           <cfif len(trim(qTreinoInscritos.estado))>
-                            <div class="small text-muted">#htmlEditFormat(qTreinoInscritos.estado)#</div>
+                            <div class="small text-muted">#encodeForHTML(qTreinoInscritos.estado)#</div>
                           </cfif>
                         <cfelse>
                           <span class="text-muted">-</span>
@@ -154,47 +154,47 @@
                       </td>
                       <td class="treino-athletes-cell" data-label="Celular">
                         <cfif len(trim(qTreinoInscritos.celular))>
-                          #htmlEditFormat(qTreinoInscritos.celular)#
+                          #encodeForHTML(qTreinoInscritos.celular)#
                         <cfelse>
                           <span class="text-muted">-</span>
                         </cfif>
                       </td>
                       <td class="treino-athletes-cell" data-label="Assessoria">
                         <cfif len(trim(qTreinoInscritos.assessoria))>
-                          #htmlEditFormat(qTreinoInscritos.assessoria)#
+                          #encodeForHTML(qTreinoInscritos.assessoria)#
                         <cfelse>
                           <span class="text-muted">-</span>
                         </cfif>
                       </td>
                       <td class="treino-athletes-cell" data-label="Pace">
                         <cfif len(trim(qTreinoInscritos.pace))>
-                          #htmlEditFormat(qTreinoInscritos.pace)#
+                          #encodeForHTML(qTreinoInscritos.pace)#
                         <cfelse>
                           <span class="text-muted">-</span>
                         </cfif>
                       </td>
                       <td class="treino-athletes-cell" data-label="Pedido">
                         <cfif len(trim(qTreinoInscritos.num_pedido))>
-                          #htmlEditFormat(qTreinoInscritos.num_pedido)#
+                          #encodeForHTML(qTreinoInscritos.num_pedido)#
                         <cfelse>
                           <span class="text-muted">-</span>
                         </cfif>
                         <cfif len(trim(qTreinoInscritos.documento))>
-                          <div class="small text-muted">Doc: #htmlEditFormat(qTreinoInscritos.documento)#</div>
+                          <div class="small text-muted">Doc: #encodeForHTML(qTreinoInscritos.documento)#</div>
                         </cfif>
                       </td>
                       <td class="treino-athletes-cell" data-label="Inscrição">
                         <cfif isDate(qTreinoInscritos.data_pedido)>
-                          #htmlEditFormat(lsDateFormat(qTreinoInscritos.data_pedido, "dd/mm/yyyy"))#
-                          <div class="small text-muted">#htmlEditFormat(timeFormat(qTreinoInscritos.data_pedido, "HH:mm"))#</div>
+                          #encodeForHTML(lsDateFormat(qTreinoInscritos.data_pedido, "dd/mm/yyyy"))#
+                          <div class="small text-muted">#encodeForHTML(timeFormat(qTreinoInscritos.data_pedido, "HH:mm"))#</div>
                         <cfelse>
                           <span class="text-muted">-</span>
                         </cfif>
                       </td>
                       <td class="treino-athletes-cell" data-label="Check-in">
                         <cfif isDate(qTreinoInscritos.data_checkin)>
-                          #htmlEditFormat(lsDateFormat(qTreinoInscritos.data_checkin, "dd/mm/yyyy"))#
-                          <div class="small text-muted">#htmlEditFormat(timeFormat(qTreinoInscritos.data_checkin, "HH:mm"))#</div>
+                          #encodeForHTML(lsDateFormat(qTreinoInscritos.data_checkin, "dd/mm/yyyy"))#
+                          <div class="small text-muted">#encodeForHTML(timeFormat(qTreinoInscritos.data_checkin, "HH:mm"))#</div>
                         <cfelse>
                           <span class="text-muted">Pendente</span>
                         </cfif>

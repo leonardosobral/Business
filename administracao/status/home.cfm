@@ -87,11 +87,11 @@ statusOverallLabel = VARIABLES.uptimeStatus.down GT 0 ? "Atenção necessária" 
         <hr>
         <div class="small font-monospace">
           <cfoutput>
-            configSource=#htmlEditFormat(VARIABLES.uptimeStatus.configSource)#<br>
-            configPath=#htmlEditFormat(VARIABLES.uptimeStatus.configPath)#<br>
+            configSource=#encodeForHTML(VARIABLES.uptimeStatus.configSource)#<br>
+            configPath=#encodeForHTML(VARIABLES.uptimeStatus.configPath)#<br>
             configFileExists=#yesNoFormat(VARIABLES.uptimeStatus.configFileExists)#<br>
             applicationHasKey=#yesNoFormat(structKeyExists(APPLICATION, "uptimeRobot") AND structKeyExists(APPLICATION.uptimeRobot, "apiKey") AND len(trim(APPLICATION.uptimeRobot.apiKey)) GT 0)#<br>
-            error=#htmlEditFormat(VARIABLES.uptimeStatus.error)#
+            error=#encodeForHTML(VARIABLES.uptimeStatus.error)#
           </cfoutput>
         </div>
       </cfif>
@@ -99,7 +99,7 @@ statusOverallLabel = VARIABLES.uptimeStatus.down GT 0 ? "Atenção necessária" 
   <cfelse>
     <cfif len(trim(VARIABLES.uptimeStatus.error))>
       <div class="alert alert-warning">
-        <strong>Status indisponível.</strong> <cfoutput>#htmlEditFormat(VARIABLES.uptimeStatus.error)#</cfoutput>
+        <strong>Status indisponível.</strong> <cfoutput>#encodeForHTML(VARIABLES.uptimeStatus.error)#</cfoutput>
       </div>
     </cfif>
 
@@ -108,7 +108,7 @@ statusOverallLabel = VARIABLES.uptimeStatus.down GT 0 ? "Atenção necessária" 
         <div class="status-card status-kpi p-3">
           <small class="text-muted d-block">Monitores</small>
           <strong class="fs-2"><cfoutput>#LSNumberFormat(VARIABLES.uptimeStatus.total, "9,999")#</cfoutput></strong>
-          <div class="small text-muted">HTTP <cfoutput>#htmlEditFormat(VARIABLES.uptimeStatus.apiHttpStatus)#</cfoutput></div>
+          <div class="small text-muted">HTTP <cfoutput>#encodeForHTML(VARIABLES.uptimeStatus.apiHttpStatus)#</cfoutput></div>
         </div>
       </div>
       <div class="col-6 col-xl-2">
@@ -162,7 +162,7 @@ statusOverallLabel = VARIABLES.uptimeStatus.down GT 0 ? "Atenção necessária" 
               <h2 class="h5 mb-1">Monitores</h2>
               <div class="text-muted small">Tabela com campos operacionais normalizados e detalhes brutos de cada monitor.</div>
             </div>
-            <cfoutput><span class="badge badge-#statusOverallClass#">#htmlEditFormat(statusOverallLabel)#</span></cfoutput>
+            <cfoutput><span class="badge badge-#statusOverallClass#">#encodeForHTML(statusOverallLabel)#</span></cfoutput>
           </div>
 
           <cfif arrayLen(VARIABLES.uptimeStatus.monitors)>
@@ -183,9 +183,9 @@ statusOverallLabel = VARIABLES.uptimeStatus.down GT 0 ? "Atenção necessária" 
                     <cfoutput>
                       <tr>
                         <td>
-                          <strong>#htmlEditFormat(statusMonitor.name)#</strong>
+                          <strong>#encodeForHTML(statusMonitor.name)#</strong>
                           <cfif len(trim(statusMonitor.url))>
-                            <small class="text-muted d-block text-truncate status-monitor-url">#htmlEditFormat(statusMonitor.url)#</small>
+                            <small class="text-muted d-block text-truncate status-monitor-url">#encodeForHTML(statusMonitor.url)#</small>
                           </cfif>
                         </td>
                         <td><span class="badge badge-#statusMonitor.statusClass#">#statusMonitor.statusLabel#</span></td>
@@ -193,7 +193,7 @@ statusOverallLabel = VARIABLES.uptimeStatus.down GT 0 ? "Atenção necessária" 
                         <td class="text-end">#statusMonitor.responseTime GT 0 ? numberFormat(statusMonitor.responseTime, "9") & "ms" : "-"#</td>
                         <td>
                           <cfif len(trim(statusMonitor.incident))>
-                            #htmlEditFormat(statusMonitor.incident)#
+                            #encodeForHTML(statusMonitor.incident)#
                             <cfif isDate(statusMonitor.incidentAt)>
                               <small class="text-muted d-block">#lsDateFormat(statusMonitor.incidentAt, "dd/mm/yyyy")# #lsTimeFormat(statusMonitor.incidentAt, "HH:mm")#</small>
                             </cfif>
@@ -205,7 +205,7 @@ statusOverallLabel = VARIABLES.uptimeStatus.down GT 0 ? "Atenção necessária" 
                           <cfif structKeyExists(statusMonitor, "raw") AND isStruct(statusMonitor.raw)>
                             <details>
                               <summary class="text-warning" role="button">Ver payload</summary>
-                              <pre class="status-json mt-2 mb-0">#htmlEditFormat(statusJson(statusMonitor.raw))#</pre>
+                              <pre class="status-json mt-2 mb-0">#encodeForHTML(statusJson(statusMonitor.raw))#</pre>
                             </details>
                           <cfelse>
                             <span class="text-muted">-</span>
@@ -231,11 +231,11 @@ statusOverallLabel = VARIABLES.uptimeStatus.down GT 0 ? "Atenção necessária" 
               <tbody>
                 <tr>
                   <th>Fonte de configuração</th>
-                  <td><cfoutput>#htmlEditFormat(VARIABLES.uptimeStatus.configSource)#</cfoutput></td>
+                  <td><cfoutput>#encodeForHTML(VARIABLES.uptimeStatus.configSource)#</cfoutput></td>
                 </tr>
                 <tr>
                   <th>API URL</th>
-                  <td><cfoutput>#structKeyExists(APPLICATION, "uptimeRobot") ? htmlEditFormat(APPLICATION.uptimeRobot.apiUrl) : "-"#</cfoutput></td>
+                  <td><cfoutput>#structKeyExists(APPLICATION, "uptimeRobot") ? encodeForHTML(APPLICATION.uptimeRobot.apiUrl) : "-"#</cfoutput></td>
                 </tr>
                 <tr>
                   <th>Cache</th>
@@ -259,8 +259,8 @@ statusOverallLabel = VARIABLES.uptimeStatus.down GT 0 ? "Atenção necessária" 
                   <cfloop collection="#VARIABLES.uptimeStatus.rawPayload#" item="payloadKey">
                     <cfif payloadKey NEQ "monitors">
                       <tr>
-                        <th><cfoutput>#htmlEditFormat(payloadKey)#</cfoutput></th>
-                        <td><cfoutput>#htmlEditFormat(statusSimpleValue(VARIABLES.uptimeStatus.rawPayload[payloadKey]))#</cfoutput></td>
+                        <th><cfoutput>#encodeForHTML(payloadKey)#</cfoutput></th>
+                        <td><cfoutput>#encodeForHTML(statusSimpleValue(VARIABLES.uptimeStatus.rawPayload[payloadKey]))#</cfoutput></td>
                       </tr>
                     </cfif>
                   </cfloop>
@@ -275,7 +275,7 @@ statusOverallLabel = VARIABLES.uptimeStatus.down GT 0 ? "Atenção necessária" 
         <div class="status-card p-3 p-lg-4 h-100">
           <h2 class="h5 mb-3">Payload Completo da API</h2>
           <cfif structKeyExists(VARIABLES.uptimeStatus, "rawPayload") AND isStruct(VARIABLES.uptimeStatus.rawPayload) AND structCount(VARIABLES.uptimeStatus.rawPayload)>
-            <pre class="status-json mb-0"><cfoutput>#htmlEditFormat(statusJson(VARIABLES.uptimeStatus.rawPayload))#</cfoutput></pre>
+            <pre class="status-json mb-0"><cfoutput>#encodeForHTML(statusJson(VARIABLES.uptimeStatus.rawPayload))#</cfoutput></pre>
           <cfelse>
             <p class="text-muted mb-0">O payload bruto ainda não está disponível no cache atual. Use “Atualizar status”.</p>
           </cfif>

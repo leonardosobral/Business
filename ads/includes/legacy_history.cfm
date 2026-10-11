@@ -102,7 +102,7 @@
 
             <cfif NOT VARIABLES.adsLegacyHistoryReady>
                 <div class="alert alert-warning mb-0">
-                    <cfoutput>#htmlEditFormat(VARIABLES.adsLegacyHistoryError)#</cfoutput>
+                    <cfoutput>#encodeForHTML(VARIABLES.adsLegacyHistoryError)#</cfoutput>
                 </div>
             <cfelse>
                 <h3 class="h6 mb-3">Campanhas anteriores</h3>
@@ -119,8 +119,8 @@
                                     <cfif qAdsLegacyHistoryCampaigns.status EQ 3><cfset VARIABLES.adsLegacyHistoryStatus = "Pausada"/></cfif>
                                     <cfif qAdsLegacyHistoryCampaigns.status EQ 4><cfset VARIABLES.adsLegacyHistoryStatus = "Finalizada"/></cfif>
                                     <tr>
-                                        <td><strong>Destaque ###numberFormat(id_ad_evento, "0")#</strong><div>#htmlEditFormat(nome_evento)#</div><div class="small text-muted">#htmlEditFormat(cidade)#<cfif len(trim(estado & ""))>/#htmlEditFormat(estado)#</cfif></div></td>
-                                        <td><span class="badge badge-secondary">#htmlEditFormat(VARIABLES.adsLegacyHistoryStatus)#</span></td>
+                                        <td><strong>Destaque ###numberFormat(id_ad_evento, "0")#</strong><div>#encodeForHTML(nome_evento)#</div><div class="small text-muted">#encodeForHTML(cidade)#<cfif len(trim(estado & ""))>/#encodeForHTML(estado)#</cfif></div></td>
+                                        <td><span class="badge badge-secondary">#encodeForHTML(VARIABLES.adsLegacyHistoryStatus)#</span></td>
                                         <td><cfif isDate(inicio_ad)>#lsDateFormat(inicio_ad, "dd/mm/yyyy")#<cfelse>-</cfif> a <cfif isDate(final_ad)>#lsDateFormat(final_ad, "dd/mm/yyyy")#<cfelse>-</cfif></td>
                                         <td class="text-end">#lsCurrencyFormat(cpc_max)#</td>
                                         <td class="text-end">#numberFormat(views, "9,999,999")#</td>
@@ -149,8 +149,8 @@
                                     <cfif qAdsLegacyHistoryVouchers.status EQ 2><cfset VARIABLES.adsLegacyVoucherStatus = "Resgatado"/></cfif>
                                     <cfif qAdsLegacyHistoryVouchers.status EQ 3><cfset VARIABLES.adsLegacyVoucherStatus = "Encerrado"/></cfif>
                                     <tr>
-                                        <td><strong>#htmlEditFormat(codigo)#</strong></td>
-                                        <td><span class="badge badge-secondary">#htmlEditFormat(VARIABLES.adsLegacyVoucherStatus)#</span></td>
+                                        <td><strong>#encodeForHTML(codigo)#</strong></td>
+                                        <td><span class="badge badge-secondary">#encodeForHTML(VARIABLES.adsLegacyVoucherStatus)#</span></td>
                                         <td class="text-end">#lsCurrencyFormat(credito)#</td>
                                         <td class="text-end">#lsCurrencyFormat(credito_disponivel)#</td>
                                         <td><cfif isDate(data_resgate)>#lsDateFormat(data_resgate, "dd/mm/yyyy")#<cfelse>-</cfif></td>

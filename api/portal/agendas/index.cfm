@@ -8,7 +8,7 @@
 
 <cfscript>
 function agendaApiWrite(required struct payload, numeric statusCode = 200, string statusText = "OK") output="true" {
-    cfheader(statuscode=arguments.statusCode, statustext=arguments.statusText);
+    cfheader(statuscode=arguments.statusCode);
     cfcontent(type="application/json; charset=utf-8", reset="true");
     writeOutput(serializeJSON(arguments.payload));
     abort;
@@ -84,7 +84,7 @@ function agendaApiWrite(required struct payload, numeric statusCode = 200, strin
 
 <cfif agendaServiceRequestHeader("If-None-Match") EQ VARIABLES.agendaApiEtag>
     <cfset agendaServiceLogAccess(qAgendaApiAgenda.id_agenda, "json", VARIABLES.agendaApiView, 304, arrayLen(VARIABLES.agendaApiItems), getTickCount() - VARIABLES.agendaApiStartedAt)/>
-    <cfheader statuscode="304" statustext="Not Modified"/>
+    <cfheader statuscode="304"/>
     <cfcontent reset="true"/>
     <cfabort/>
 </cfif>

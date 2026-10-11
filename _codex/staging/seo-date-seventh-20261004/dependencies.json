@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "tb_evento_percursos_gpx": null,
+    "tb_badges": null,
+    "tb_evento_corridas_relaciona": null,
+    "tb_leaderboard_startlist_importacao": null,
+    "tb_permit_atualiza": null,
+    "tb_leaderboard_startlist": null,
+    "tb_resultados_temp": null,
+    "tb_resultados": null,
+    "tb_evento_saude_config": null,
+    "tb_percurso_migracoes_strava": null,
+    "tb_leaderboard_percurso": null,
+    "tb_resultados_resumo": null,
+    "tb_inscricoes": null
+  },
+  "note": "Table-name inventory only. Actual counts and full-row hashes for this batch are captured in rehearse.json and server baseline; no prior counts used."
+}

@@ -1,0 +1,11 @@
+{
+  "published": [
+    "services/EventFactReviewService.cfc",
+    "eventos/includes/backend/fontes_revisoes.cfm",
+    "eventos/form_edicao_fontes.cfm",
+    "eventos/includes/backend/backend_evento_edicao.cfm",
+    "eventos/includes/variaveis.cfm",
+    "eventos/form_edicao.cfm"
+  ],
+  "backup": "/var/backups/seo-fact-review-form-20261004/baseline"
+}

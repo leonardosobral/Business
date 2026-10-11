@@ -1,0 +1,16 @@
+{
+  "emitidos": 40,
+  "prontos_para_resgate": true,
+  "vencimento": "2026-11-10 23:59:59 America/Sao_Paulo",
+  "estado_empresarial_preservado": true,
+  "mensagens_enviadas": 0,
+  "pendentes": [
+    "Morro MT: confirmar grafia do e-mail publicado"
+  ],
+  "backup": "/var/backups/business-abraceo-vouchers-20261011",
+  "metodo_contato": "E-mails públicos reconferidos nos perfis ABRACEO; entrega não testada",
+  "arquivos_entrega": [
+    "vouchers_abraceo.xlsx",
+    "convite_abraceo.txt"
+  ]
+}

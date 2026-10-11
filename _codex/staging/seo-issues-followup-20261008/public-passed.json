@@ -1,0 +1,282 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "path": "/maratona/maratona-cidade-de-florianopolis/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-da-cidade-de-sao-luis/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-aracaju/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-brasilia/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-campinas/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-campo-grande/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-criciuma/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-curitiba/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-feira-de-santana/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-goiania/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-joao-pessoa/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-jurere/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-londrina/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-marilia/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-niteroi/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-piracicaba/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-ponta-grossa/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-porto-velho/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-praia-grande/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-ribeirao-preto/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-salvador/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-teresina/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-torres/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-tubarao/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-de-vitoria/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-do-natal/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-duque-de-caxias/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-fila/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-goiania-em-movimento/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-blumenau/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-floripa/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-foz-do-iguacu/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-joao-pessoa/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-manaus/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-olinda/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-porto-alegre/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-internacional-de-sao-paulo/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-internacional-do-parana/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-internacional-do-rio-de-janeiro/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-internacional-mauricio-de-nassau/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-monumental-de-brasilia/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-nilson-lima-uberlandia/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-novembro-azul-sorocaba/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-pedra-azul/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/maratona-sesc-de-pelotas/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/new-balance-42k-porto-alegre/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/maratona/sao-paulo-city-marathon/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/org/sportsland/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/timer/branca-esportes-saude-e-lazer/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/circuito/live-run-xp/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/circuito/fca-corridaderua/",
+      "passed": true,
+      "h1_count": 0
+    },
+    {
+      "path": "/evento/2026-corrida-night-run-vitoria-airport/",
+      "passed": true,
+      "h1_count": 1
+    },
+    {
+      "path": "/sitemap.xml",
+      "passed": true,
+      "h1_count": 0
+    },
+    {
+      "path": "/configuracoes/perfil/",
+      "passed": true,
+      "h1_count": 0
+    }
+  ],
+  "marathons": 47,
+  "controls": 8
+}

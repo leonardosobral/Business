@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "at": "2026-10-06T22:39:29.578117+00:00",
+  "alias_checks": 6,
+  "night_pages_distinct": 6,
+  "unchanged_metadata_pages": 12,
+  "redirect_hops": 1,
+  "total_requests": 27
+}

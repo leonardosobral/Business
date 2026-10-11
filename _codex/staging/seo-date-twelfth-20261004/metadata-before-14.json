@@ -1,0 +1,72 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-anabolica-night-run/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-anabolica-night-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-anabolica-night-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-anabolica-night-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-anabolica-night-run/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-anabolica-night-run/",
+      "name": "Anabólica Night Run",
+      "description": "Anabólica Night Run se realiza el 28 noviembre 2026, en Rua Da Praça Cívica - Ceres - GO.",
+      "url": "https://roadrunners.run/es/evento/2026-anabolica-night-run/",
+      "startDate": "2026-11-28",
+      "endDate": "2026-11-28",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.oxyscrono.com.br/painel/upload/img/inscricao/img-17-6ad7e2667db05d7be074973772ec95d1.jpeg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Rua Da Praça Cívica",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ceres",
+          "addressRegion": "GO",
+          "addressCountry": "BR",
+          "streetAddress": "Rua Da Praça Cívica"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-15.3098842",
+          "longitude": "-49.6062067"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://oxyscrono.com.br/evento/9819/anabolica-night-run"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/go/",
+          "@type": "ListItem",
+          "name": "Carreras en GO"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-anabolica-night-run/",
+          "@type": "ListItem",
+          "name": "Anabólica Night Run"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

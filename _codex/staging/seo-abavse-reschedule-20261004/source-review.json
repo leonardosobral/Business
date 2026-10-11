@@ -1,0 +1,15 @@
+{
+  "event_ids": [
+    43049,
+    44821
+  ],
+  "source": "https://www.ticketsports.com.br/e/4-corrida-do-turismo-abavse-2026-87181",
+  "title": "4ª CORRIDA DO TURISMO - ABAVSE 2026",
+  "checked_date": "2026-10-04",
+  "method": "visible live DOM",
+  "previous_date": "2026-08-09",
+  "new_date": "2027-05-02",
+  "notice": "The official notice supersedes the older regulation/original description. Existing registrations remain valid. Both records refer to the same provider event 87181.",
+  "data_scope": "Only tag_301 on old event 43049; no event/route dates, distances, identities, registrations or results changed.",
+  "schema_docs": "https://developers.google.com/search/docs/appearance/structured-data/event"
+}

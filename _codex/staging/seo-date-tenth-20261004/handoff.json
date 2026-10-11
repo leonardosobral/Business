@@ -1,0 +1,13 @@
+{
+  "status": "published_and_verified",
+  "events": 11,
+  "changed_route_dates": 16,
+  "event_date_fields": 2,
+  "protected_routes": 16,
+  "route_ids_preserved": 16,
+  "dependent_tables": 13,
+  "public_urls": 33,
+  "remaining_events": 37,
+  "remaining_routes": 70,
+  "backup": "/var/backups/seo-date-tenth-20261004"
+}

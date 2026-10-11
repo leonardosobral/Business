@@ -1,0 +1,29 @@
+{
+  "events": {},
+  "routes": {
+    "61654": {
+      "data_percurso": "2026-10-18",
+      "percurso_bloqueado": true
+    },
+    "61655": {
+      "data_percurso": "2026-10-18",
+      "percurso_bloqueado": true
+    },
+    "64896": {
+      "data_percurso": "2026-10-17",
+      "percurso_bloqueado": true
+    },
+    "65042": {
+      "data_percurso": "2026-10-17",
+      "percurso_bloqueado": true
+    },
+    "65043": {
+      "data_percurso": "2026-10-17",
+      "percurso_bloqueado": true
+    },
+    "70765": {
+      "data_percurso": "2026-10-11",
+      "percurso_bloqueado": true
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "before": {
+    "circuitocatarinense/index.cfm": "4827250c286cbb92a24da0a051bfc5c72f6d1926906e4b1c78289b9491517a11"
+  },
+  "candidate": {
+    "llms.txt": "c69ea8c386dda1c427710441982338dbebf80b28e1891d365de6257afa707fc0",
+    "circuitocatarinense/index.cfm": "d48dc7d242c58626516d5b484a3b4b79d00c5e728bd6b2aebc371f72be365e4c"
+  },
+  "order": [
+    "llms.txt",
+    "circuitocatarinense/index.cfm"
+  ],
+  "compile": {
+    "templates": 1,
+    "output": "successful 1\ntotal 1\nelapsed 2.411 sec\n\n",
+    "returncode": 0
+  }
+}

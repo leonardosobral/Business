@@ -1,0 +1,84 @@
+{
+  "PLAN": [
+    {
+      "Triggers": [],
+      "Planning Time": 0.416,
+      "Plan": {
+        "Actual Startup Time": 35.872,
+        "Plans": [
+          {
+            "Actual Startup Time": 2.447,
+            "Actual Loops": 1,
+            "Filter": "(ativo AND ((nome_evento)::text <> 'CIRCUITO DE CORRIDAS - CORRER \u00c9 MASSA APOSTOU LOTERIAS - ETAPA APUCARANA'::text) AND (\"left\"((nome_evento)::text, 50) = 'CIRCUITO DE CORRIDAS - CORRER \u00c9 MASSA APOSTOU LOTE'::text))",
+            "Plan Rows": 171,
+            "Alias": "tb_evento_corridas",
+            "Async Capable": false,
+            "Actual Total Time": 2.448,
+            "Parent Relationship": "InitPlan",
+            "Parallel Aware": false,
+            "Subplan Name": "InitPlan 1",
+            "Total Cost": 90475.39,
+            "Rows Removed by Filter": 2173,
+            "Plan Width": 0,
+            "Relation Name": "tb_evento_corridas",
+            "Actual Rows": 1,
+            "Node Type": "Seq Scan",
+            "Startup Cost": 0.0
+          },
+          {
+            "Actual Startup Time": 33.42,
+            "Plans": [
+              {
+                "Actual Startup Time": 3.243,
+                "Actual Loops": 1,
+                "Index Name": "tb_evento_corridas_agenda_lookup_idx",
+                "Plan Rows": 34248,
+                "Index Cond": "(ativo = true)",
+                "Async Capable": false,
+                "Actual Total Time": 3.243,
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 1373.28,
+                "Plan Width": 0,
+                "Actual Rows": 34851,
+                "Node Type": "Bitmap Index Scan",
+                "Startup Cost": 0.0
+              }
+            ],
+            "Actual Loops": 1,
+            "Exact Heap Blocks": 16581,
+            "Filter": "(((nome_evento)::text <> 'CIRCUITO DE CORRIDAS - CORRER \u00c9 MASSA APOSTOU LOTERIAS - ETAPA APUCARANA'::text) AND (data_inicial = '2026-10-17'::date) AND ((COALESCE(cidade, ''::character varying))::text = 'Apucarana'::text) AND ((COALESCE(estado, ''::character varying))::text = 'PR'::text) AND (\"left\"((nome_evento)::text, 50) = 'CIRCUITO DE CORRIDAS - CORRER \u00c9 MASSA APOSTOU LOTE'::text))",
+            "Plan Rows": 1,
+            "Lossy Heap Blocks": 0,
+            "Alias": "tb_evento_corridas_1",
+            "Async Capable": false,
+            "Actual Total Time": 33.42,
+            "Parent Relationship": "InitPlan",
+            "Parallel Aware": false,
+            "Subplan Name": "InitPlan 2",
+            "Total Cost": 68472.32,
+            "Rows Removed by Filter": 34419,
+            "Rows Removed by Index Recheck": 0,
+            "Plan Width": 0,
+            "Relation Name": "tb_evento_corridas",
+            "Actual Rows": 0,
+            "Recheck Cond": "ativo",
+            "Node Type": "Bitmap Heap Scan",
+            "Startup Cost": 1373.28
+          }
+        ],
+        "Actual Loops": 1,
+        "Plan Rows": 1,
+        "Async Capable": false,
+        "Actual Total Time": 35.875,
+        "Parallel Aware": false,
+        "Total Cost": 69001.42,
+        "Plan Width": 2,
+        "Actual Rows": 1,
+        "Node Type": "Result",
+        "Startup Cost": 69001.41
+      },
+      "Execution Time": 35.907
+    }
+  ]
+}

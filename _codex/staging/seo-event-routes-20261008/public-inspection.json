@@ -1,0 +1,59 @@
+[
+  {
+    "path": "/evento/2025-jurere-night-run-hard-rock-cafe-florianopolis-2025/",
+    "status": 200,
+    "title": "Jurerê Night Run - Hard Rock Cafe Florianópolis 20 - corrida de rua - Road Runners",
+    "suspect_links": []
+  },
+  {
+    "path": "/evento/2026-jurere-night-run-hard-rock-cafe-florianopolis-2026/",
+    "status": 200,
+    "title": "JURERÊ NIGHT RUN - HARD ROCK CAFE FLORIANÓPOLIS 20 - corrida de rua - Road Runners",
+    "suspect_links": []
+  },
+  {
+    "path": "/evento/2025-meia-maratona-internacional-de-florianopolis-oakberry-2025/",
+    "status": 200,
+    "title": "Meia Maratona Internacional de Florianópolis Oakbe - corrida de rua - Road Runners",
+    "suspect_links": []
+  },
+  {
+    "path": "/evento/2027-meia-maratona-internacional-de-florianopolis-oakberry-2027/",
+    "status": 200,
+    "title": "MEIA MARATONA INTERNACIONAL DE FLORIANÓPOLIS OAKBE - corrida de rua - Road Runners",
+    "suspect_links": []
+  },
+  {
+    "path": "/estado/pr/",
+    "status": 200,
+    "title": "Corridas no Paraná: calendário de provas | Road Runners",
+    "suspect_links": [
+      {
+        "href": "/evento/2026-",
+        "text": "\n                \n                    \n                        \n                            \n                                12\n                                out\n                                2026\n                            \n                            \n                                \n                                    \"3ª CORRIDA DE NOSSA SENHORA APARECIDA\"\n                                \n                                \n                                    Ponta Grossa - PR\n                                \n\n                                \n                                    \n                                        Corrida de rua\n                                    \n                                \n                                \n                                    \n                                        \n                                                \n                                                    \n                                                    5km\n                                                \n                                            \n                                                \n                                                    \n                                                    10km\n                                                \n                                            \n                                    \n                                \n                            \n                        \n                    \n                \n            "
+      }
+    ]
+  },
+  {
+    "path": "/estado/pb/lastro/",
+    "status": 200,
+    "title": "Corridas em Lastro (PB): calendário de provas | Road Runners",
+    "suspect_links": [
+      {
+        "href": "/evento/2026-1-corrida-de-aniversario-do-grupo-corrida-#038;-resenha/",
+        "text": "\n                \n                    \n                        \n                            \n                                01\n                                nov\n                                2026\n                            \n                            \n                                \n                                    1ª Corrida de Aniversário do Grupo Corrida & Resenha\n                                \n                                \n                                    Lastro - PB\n                                \n\n                                \n                                    \n                                        Corrida de rua\n                                    \n                                \n                                \n                                    \n                                        \n                                                \n                                                    \n                                                    5km\n                                                \n                                            \n                                    \n                                \n                            \n                        \n                    \n                \n            "
+      }
+    ]
+  },
+  {
+    "path": "/estado/sp/campinas/",
+    "status": 200,
+    "title": "Corridas em Campinas (SP): calendário de provas | Road Runners",
+    "suspect_links": [
+      {
+        "href": "/evento/2026-rock-n-run\n----nashville-2026/",
+        "text": "\n                \n                    \n                        \n                            \n                                20\n                                dez\n                                2026\n                            \n                            \n                                \n                                    ROCK N' RUN\n                NASHVILLE 2026\n                                \n                                \n                                    Campinas - SP\n                                \n\n                                \n                                    \n                                        Corrida de rua\n                                    \n                                \n                                \n                                    \n                                        \n                                    \n                                \n                            \n                        \n                    \n                \n            "
+      }
+    ]
+  }
+]

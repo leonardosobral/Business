@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/Users/Shared/Projects/RunnerHub/Business/_codex/staging/openresults-estado-cidades-20261004/operate.py", line 84, in <module>
+    if cp.returncode:raise RuntimeError(cp.stderr[-4500:])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Traceback (most recent call last):
+  File "<string>", line 124, in <module>
+  File "<string>", line 119, in test
+RuntimeError: {"ERROR": "All historical state events remain available", "DETAIL": ""}
+

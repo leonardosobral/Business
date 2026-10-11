@@ -1,0 +1,1 @@
+Revisão independente public_fact_review: dois P2 corrigidos (histórico retém última por grupo; retirada obsoleta rejeitada). Delta aprovado sem bloqueadores. 04/10/2026.

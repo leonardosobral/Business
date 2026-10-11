@@ -46,13 +46,13 @@
   </div>
 </div>
 
-<cfif len(VARIABLES.percursoAlert.message)><div class="alert alert-<cfoutput>#VARIABLES.percursoAlert.type#</cfoutput>"><cfoutput>#htmlEditFormat(VARIABLES.percursoAlert.message)#</cfoutput></div></cfif>
+<cfif len(VARIABLES.percursoAlert.message)><div class="alert alert-<cfoutput>#VARIABLES.percursoAlert.type#</cfoutput>"><cfoutput>#encodeForHTML(VARIABLES.percursoAlert.message)#</cfoutput></div></cfif>
 
 <cfif NOT VARIABLES.percursoSchemaReady>
   <div class="alert alert-warning"><strong>Banco ainda não preparado.</strong> Aplique o script <code>/percursos/percursos_schema.sql</code>. Nenhuma tabela é criada automaticamente pela aplicação.</div>
 <cfelse>
   <cfif NOT VARIABLES.percursoStorageConfigured><div class="alert alert-warning"><strong>Storage temporário.</strong> Configure <code>config/percursos.local.cfm</code> antes de usar este módulo em produção. Arquivos no diretório temporário do servidor não são persistentes.</div></cfif>
-  <cfif NOT VARIABLES.percursoStorageReady><div class="alert alert-danger"><strong>Storage indisponível.</strong> <cfoutput>#htmlEditFormat(VARIABLES.percursoStorageError)#</cfoutput><div class="small mt-1"><code><cfoutput>#htmlEditFormat(VARIABLES.percursoStoragePath)#</cfoutput></code></div></div></cfif>
+  <cfif NOT VARIABLES.percursoStorageReady><div class="alert alert-danger"><strong>Storage indisponível.</strong> <cfoutput>#encodeForHTML(VARIABLES.percursoStorageError)#</cfoutput><div class="small mt-1"><code><cfoutput>#encodeForHTML(VARIABLES.percursoStoragePath)#</cfoutput></code></div></div></cfif>
   <cfif VARIABLES.percursoIsSystemAdmin AND NOT VARIABLES.percursoPlatformOwnershipReady><div class="alert alert-warning"><strong>Gestão da plataforma ainda não habilitada no banco.</strong> Aplique <code>/_codex/sql/2026-09-07_percursos_gestao_plataforma.sql</code>. Até lá, o admin pode cadastrar selecionando uma conta ativa.</div></cfif>
   <cfif NOT VARIABLES.percursoMapboxPreviewConfigured><div class="alert alert-warning"><strong>Preview Mapbox indisponível.</strong> Configure <code>BUSINESS_MAPBOX_PUBLIC_TOKEN</code> ou <code>mapboxPublicAccessToken</code> em <code>config/percursos.local.cfm</code>.</div></cfif>
   <cfif NOT VARIABLES.percursoElevationConfigured><div class="alert alert-warning"><strong>Altimetria Mapbox indisponível.</strong> Configure um token secreto <code>sk.*</code> com escopo <code>map:read</code> em <code>BUSINESS_MAPBOX_SERVER_TOKEN</code> ou <code>mapboxServerAccessToken</code>. Arquivos sem elevação não poderão ser cadastrados.</div></cfif>
@@ -63,7 +63,7 @@
       <div class="card bg-dark border-secondary mb-4"><div class="card-body">
       <div class="d-flex justify-content-between align-items-center mb-3"><h5 class="mb-0">Cadastrar percurso</h5><a href="./" class="btn btn-sm btn-outline-secondary">Cancelar</a></div>
       <p class="text-muted">1. Cadastre o arquivo. 2. Busque a prova e vincule à distância/modalidade já cadastrada no evento.</p>
-      <cfif NOT VARIABLES.percursoIsSystemAdmin><div class="alert alert-secondary py-2"><i class="fa-solid fa-building me-2"></i>Conta proprietária: <strong><cfoutput>#htmlEditFormat(VARIABLES.businessActiveAccountName)#</cfoutput></strong></div></cfif>
+      <cfif NOT VARIABLES.percursoIsSystemAdmin><div class="alert alert-secondary py-2"><i class="fa-solid fa-building me-2"></i>Conta proprietária: <strong><cfoutput>#encodeForHTML(VARIABLES.businessActiveAccountName)#</cfoutput></strong></div></cfif>
       <form method="post" enctype="multipart/form-data" action="./?novo=1">
         <input type="hidden" name="acao" value="criar"/><input type="hidden" name="csrf_token" value="<cfoutput>#VARIABLES.percursoCsrfToken#</cfoutput>"/>
         <div class="row g-3">
@@ -73,12 +73,12 @@
               <select class="form-select" id="route-create-owner" name="id_conta_responsavel" required>
                 <option value="">Selecione a propriedade</option>
                 <cfif VARIABLES.percursoPlatformOwnershipReady><option value="plataforma" <cfif VARIABLES.percursoOwnerSelection EQ "plataforma">selected</cfif>>Gestão da plataforma — sem conta organizadora</option></cfif>
-                <cfoutput query="qPercursoContasTransferencia"><option value="#id_conta#" <cfif VARIABLES.percursoOwnerSelection EQ id_conta>selected</cfif>>#htmlEditFormat(nome_conta)# (###id_conta#)</option></cfoutput>
+                <cfoutput query="qPercursoContasTransferencia"><option value="#id_conta#" <cfif VARIABLES.percursoOwnerSelection EQ id_conta>selected</cfif>>#encodeForHTML(nome_conta)# (###id_conta#)</option></cfoutput>
               </select>
               <div class="form-text">Como admin global, você pode manter a gestão na plataforma ou atribuir a uma conta ativa, sem trocar de contexto. O vínculo à prova é independente: ela pode ter organizador ou não. Vincular não transfere a propriedade nem torna o arquivo público.</div>
             </div>
           </cfif>
-          <div class="col-lg-6"><label class="form-label">Nome</label><input class="form-control" name="nome" maxlength="180" required value="<cfoutput>#htmlEditFormat(isDefined('FORM.nome') ? FORM.nome : '')#</cfoutput>"/></div>
+          <div class="col-lg-6"><label class="form-label">Nome</label><input class="form-control" name="nome" maxlength="180" required value="<cfoutput>#encodeForHTMLAttribute(isDefined('FORM.nome') ? FORM.nome : '')#</cfoutput>"/></div>
           <div class="col-lg-2"><label class="form-label">Distância nominal (km)</label><input class="form-control" name="distancia_km" inputmode="decimal" placeholder="42,195" required/></div>
           <div class="col-lg-2"><label class="form-label">Tipo</label><select class="form-select" name="tipo_percurso"><option value="rua">Rua</option><option value="trail">Trail</option><option value="misto">Misto</option></select></div>
           <div class="col-lg-2"><label class="form-label">País</label><input class="form-control text-uppercase" name="pais" maxlength="2" value="BR" required/></div>
@@ -104,12 +104,12 @@
       <div class="card bg-dark border-secondary mb-4"><div class="card-body">
         <div class="d-flex flex-wrap justify-content-between gap-2 mb-3">
           <div>
-            <h4 class="mb-1"><cfoutput>#htmlEditFormat(qPercurso.nome)#</cfoutput></h4>
+            <h4 class="mb-1"><cfoutput>#encodeForHTML(qPercurso.nome)#</cfoutput></h4>
             <div class="text-muted small"><cfoutput>## #qPercurso.id_percurso# · #qPercurso.codigo_publico#</cfoutput></div>
             <div class="text-muted small mt-1"><i class="fa-solid fa-building me-1"></i>Propriedade:
-              <cfif qPercursoConta.recordcount><cfoutput><strong class="text-light">#htmlEditFormat(qPercursoConta.nome_conta)#</strong> <span>###qPercursoConta.id_conta#</span></cfoutput><cfelseif VARIABLES.percursoIsPlatformOwned><span class="text-info">Gestão da plataforma — sem conta organizadora</span><cfelse><span class="text-warning">Pendente de atribuição</span></cfif>
+              <cfif qPercursoConta.recordcount><cfoutput><strong class="text-light">#encodeForHTML(qPercursoConta.nome_conta)#</strong> <span>###qPercursoConta.id_conta#</span></cfoutput><cfelseif VARIABLES.percursoIsPlatformOwned><span class="text-info">Gestão da plataforma — sem conta organizadora</span><cfelse><span class="text-warning">Pendente de atribuição</span></cfif>
             </div>
-            <div class="text-muted small mt-1"><i class="fa-regular fa-user me-1"></i>Criado por: <cfif qPercursoOwner.recordcount><cfoutput>#htmlEditFormat(qPercursoOwner.name)#</cfoutput><cfelse><cfoutput>Usuário ###qPercurso.id_usuario_criador#</cfoutput></cfif></div>
+            <div class="text-muted small mt-1"><i class="fa-regular fa-user me-1"></i>Criado por: <cfif qPercursoOwner.recordcount><cfoutput>#encodeForHTML(qPercursoOwner.name)#</cfoutput><cfelse><cfoutput>Usuário ###qPercurso.id_usuario_criador#</cfoutput></cfif></div>
           </div>
           <a href="./" class="btn btn-sm btn-outline-secondary align-self-start">Voltar à lista</a>
         </div>
@@ -239,15 +239,15 @@
         <form method="post" action="./?id=<cfoutput>#qPercurso.id_percurso#</cfoutput>">
           <input type="hidden" name="acao" value="salvar"/><input type="hidden" name="id_percurso" value="<cfoutput>#qPercurso.id_percurso#</cfoutput>"/><input type="hidden" name="csrf_token" value="<cfoutput>#VARIABLES.percursoCsrfToken#</cfoutput>"/>
           <div class="row g-3">
-            <div class="col-lg-6"><label class="form-label">Nome</label><input class="form-control" name="nome" maxlength="180" required value="<cfoutput>#htmlEditFormat(qPercurso.nome)#</cfoutput>" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>/></div>
+            <div class="col-lg-6"><label class="form-label">Nome</label><input class="form-control" name="nome" maxlength="180" required value="<cfoutput>#encodeForHTMLAttribute(qPercurso.nome)#</cfoutput>" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>/></div>
             <div class="col-lg-2"><label class="form-label">Distância (km)</label><input class="form-control" name="distancia_km" value="<cfoutput>#numberFormat(qPercurso.distancia_nominal_m/1000,'0.000')#</cfoutput>" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>/></div>
             <div class="col-lg-2"><label class="form-label">Tipo</label><select class="form-select" name="tipo_percurso" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>><cfloop list="rua,trail,misto" item="routeType"><option value="<cfoutput>#routeType#</cfoutput>" <cfif qPercurso.tipo_percurso EQ routeType>selected</cfif>><cfoutput>#uCase(left(routeType,1))##mid(routeType,2,len(routeType))#</cfoutput></option></cfloop></select></div>
             <div class="col-lg-2"><label class="form-label">País</label><input class="form-control" name="pais" maxlength="2" value="<cfoutput>#qPercurso.pais#</cfoutput>" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>/></div>
-            <div class="col-lg-5"><label class="form-label">Cidade</label><input class="form-control" name="cidade" value="<cfoutput>#htmlEditFormat(qPercurso.cidade)#</cfoutput>" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>/></div>
+            <div class="col-lg-5"><label class="form-label">Cidade</label><input class="form-control" name="cidade" value="<cfoutput>#encodeForHTMLAttribute(qPercurso.cidade)#</cfoutput>" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>/></div>
             <div class="col-lg-2"><label class="form-label">Estado</label><input class="form-control" name="estado" maxlength="2" value="<cfoutput>#qPercurso.estado#</cfoutput>" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>/></div>
             <div class="col-lg-2"><label class="form-label">Visibilidade</label><select class="form-select" name="visibilidade" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>><cfloop list="privado,compartilhado,publico" item="visibility"><option value="<cfoutput>#visibility#</cfoutput>" <cfif qPercurso.visibilidade EQ visibility>selected</cfif>><cfoutput>#visibility#</cfoutput></option></cfloop></select></div>
             <div class="col-lg-3"><label class="form-label">Status</label><select class="form-select" name="status" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>><cfloop list="rascunho,publicado,arquivado" item="routeStatus"><option value="<cfoutput>#routeStatus#</cfoutput>" <cfif qPercurso.status EQ routeStatus>selected</cfif>><cfoutput>#routeStatus#</cfoutput></option></cfloop></select></div>
-            <div class="col-12"><label class="form-label">Descrição</label><textarea class="form-control" name="descricao" rows="3" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>><cfoutput>#htmlEditFormat(qPercurso.descricao)#</cfoutput></textarea></div>
+            <div class="col-12"><label class="form-label">Descrição</label><textarea class="form-control" name="descricao" rows="3" <cfif NOT VARIABLES.routeCanEdit>disabled</cfif>><cfoutput>#encodeForHTML(qPercurso.descricao)#</cfoutput></textarea></div>
             <cfif VARIABLES.routeCanEdit><div class="col-12"><button class="btn btn-warning" type="submit">Salvar metadados</button></div></cfif>
           </div>
         </form>
@@ -265,8 +265,8 @@
               <div class="small text-muted mb-1">Propriedade atual</div>
               <cfif qPercursoConta.recordcount>
                 <cfoutput>
-                  <div class="fw-bold">#htmlEditFormat(qPercursoConta.nome_conta)# <span class="text-muted fw-normal">###qPercursoConta.id_conta#</span></div>
-                  <div class="small text-muted">Status: #htmlEditFormat(qPercursoConta.status)#</div>
+                  <div class="fw-bold">#encodeForHTML(qPercursoConta.nome_conta)# <span class="text-muted fw-normal">###qPercursoConta.id_conta#</span></div>
+                  <div class="small text-muted">Status: #encodeForHTML(qPercursoConta.status)#</div>
                 </cfoutput>
               <cfelseif VARIABLES.percursoIsPlatformOwned>
                 <div class="fw-bold text-info">Gestão da plataforma</div>
@@ -287,7 +287,7 @@
                   <option value="">Selecione a propriedade</option>
                   <cfif VARIABLES.percursoPlatformOwnershipReady><option value="plataforma" <cfif VARIABLES.percursoIsPlatformOwned>selected</cfif>>Gestão da plataforma — sem conta organizadora</option></cfif>
                   <cfoutput query="qPercursoContasTransferencia">
-                    <option value="#id_conta#" <cfif len(qPercurso.id_conta_responsavel & '') AND id_conta EQ qPercurso.id_conta_responsavel>selected</cfif>>#htmlEditFormat(nome_conta)# (###id_conta#)</option>
+                    <option value="#id_conta#" <cfif len(qPercurso.id_conta_responsavel & '') AND id_conta EQ qPercurso.id_conta_responsavel>selected</cfif>>#encodeForHTML(nome_conta)# (###id_conta#)</option>
                   </cfoutput>
                 </select>
               </div>
@@ -320,20 +320,20 @@
               <cfoutput query="qPercursoEventos" group="id_evento">
                 <section class="route-event-group">
                   <header class="route-event-group-header">
-                    <div class="fw-bold"><a class="link-light text-decoration-none" href="/eventos/?id_evento=#qPercursoEventos.id_evento#" target="_blank" rel="noopener">#htmlEditFormat(qPercursoEventos.nome_evento)# <i class="fa-solid fa-arrow-up-right-from-square small text-warning ms-1"></i></a></div>
+                    <div class="fw-bold"><a class="link-light text-decoration-none" href="/eventos/?id_evento=#qPercursoEventos.id_evento#" target="_blank" rel="noopener">#encodeForHTML(qPercursoEventos.nome_evento)# <i class="fa-solid fa-arrow-up-right-from-square small text-warning ms-1"></i></a></div>
                     <div class="route-event-meta small text-muted mt-1">
                       <span>Evento ###qPercursoEventos.id_evento#</span>
                       <cfif isDate(qPercursoEventos.data_inicial)><span><i class="fa-regular fa-calendar me-1"></i>#dateFormat(qPercursoEventos.data_inicial, 'dd/mm/yyyy')#</span></cfif>
-                      <cfif len(trim(qPercursoEventos.cidade & ''))><span><i class="fa-solid fa-location-dot me-1"></i>#htmlEditFormat(qPercursoEventos.cidade)#<cfif len(trim(qPercursoEventos.estado & ''))>/#htmlEditFormat(qPercursoEventos.estado)#</cfif></span></cfif>
+                      <cfif len(trim(qPercursoEventos.cidade & ''))><span><i class="fa-solid fa-location-dot me-1"></i>#encodeForHTML(qPercursoEventos.cidade)#<cfif len(trim(qPercursoEventos.estado & ''))>/#encodeForHTML(qPercursoEventos.estado)#</cfif></span></cfif>
                     </div>
-                    <div class="small mt-2"><span class="text-muted">Acesso herdado por:</span> <cfif len(trim(qPercursoEventos.contas & ''))>#htmlEditFormat(qPercursoEventos.contas)#<cfelse><span class="text-muted">nenhuma conta ativa</span></cfif></div>
+                    <div class="small mt-2"><span class="text-muted">Acesso herdado por:</span> <cfif len(trim(qPercursoEventos.contas & ''))>#encodeForHTML(qPercursoEventos.contas)#<cfelse><span class="text-muted">nenhuma conta ativa</span></cfif></div>
                   </header>
                   <div class="route-event-group-routes">
                     <cfoutput>
                       <div class="route-event-item">
                         <div class="route-event-identity">
                           <cfif len(qPercursoEventos.id_evento_percurso & '')>
-                            <div class="fw-bold">#htmlEditFormat(qPercursoEventos.percurso_evento)# #htmlEditFormat(qPercursoEventos.unidade_de_medida)#</div>
+                            <div class="fw-bold">#encodeForHTML(qPercursoEventos.percurso_evento)# #encodeForHTML(qPercursoEventos.unidade_de_medida)#</div>
                             <div class="small text-muted mt-1">Percurso do evento ###qPercursoEventos.id_evento_percurso#</div>
                           <cfelse>
                             <div class="fw-bold">Vínculo legado</div>
@@ -369,7 +369,7 @@
                 <input type="hidden" name="id" value="<cfoutput>#qPercurso.id_percurso#</cfoutput>"/>
                 <div class="col-lg-9">
                   <label class="form-label" for="route-event-search">Vincular a um percurso de evento</label>
-                  <input class="form-control" id="route-event-search" name="evento_busca" value="<cfoutput>#htmlEditFormat(URL.evento_busca)#</cfoutput>" placeholder="Evento, cidade, distância, tipo ou ID" autocomplete="off"/>
+                  <input class="form-control" id="route-event-search" name="evento_busca" value="<cfoutput>#encodeForHTMLAttribute(URL.evento_busca)#</cfoutput>" placeholder="Evento, cidade, distância, tipo ou ID" autocomplete="off"/>
                 </div>
                 <div class="col-lg-3 d-flex gap-2">
                   <button class="btn btn-outline-warning flex-grow-1" type="submit"><i class="fa-solid fa-magnifying-glass me-2"></i>Buscar</button>
@@ -382,19 +382,19 @@
                   <cfoutput query="qPercursoEventSearch" group="id_evento">
                     <section class="route-event-group">
                       <header class="route-event-group-header">
-                        <div class="fw-bold"><a class="link-light text-decoration-none" href="/eventos/?id_evento=#qPercursoEventSearch.id_evento#" target="_blank" rel="noopener">#htmlEditFormat(qPercursoEventSearch.nome_evento)# <i class="fa-solid fa-arrow-up-right-from-square small text-warning ms-1"></i></a></div>
+                        <div class="fw-bold"><a class="link-light text-decoration-none" href="/eventos/?id_evento=#qPercursoEventSearch.id_evento#" target="_blank" rel="noopener">#encodeForHTML(qPercursoEventSearch.nome_evento)# <i class="fa-solid fa-arrow-up-right-from-square small text-warning ms-1"></i></a></div>
                         <div class="route-event-meta small text-muted mt-1">
                           <span>Evento ###qPercursoEventSearch.id_evento#</span>
                           <cfif isDate(qPercursoEventSearch.data_inicial)><span><i class="fa-regular fa-calendar me-1"></i>#dateFormat(qPercursoEventSearch.data_inicial, 'dd/mm/yyyy')#</span></cfif>
-                          <cfif len(trim(qPercursoEventSearch.cidade & ''))><span><i class="fa-solid fa-location-dot me-1"></i>#htmlEditFormat(qPercursoEventSearch.cidade)#<cfif len(trim(qPercursoEventSearch.estado & ''))>/#htmlEditFormat(qPercursoEventSearch.estado)#</cfif></span></cfif>
+                          <cfif len(trim(qPercursoEventSearch.cidade & ''))><span><i class="fa-solid fa-location-dot me-1"></i>#encodeForHTML(qPercursoEventSearch.cidade)#<cfif len(trim(qPercursoEventSearch.estado & ''))>/#encodeForHTML(qPercursoEventSearch.estado)#</cfif></span></cfif>
                         </div>
-                        <div class="small mt-2"><span class="text-muted">Contas ativas:</span> <cfif len(trim(qPercursoEventSearch.contas & ''))>#htmlEditFormat(qPercursoEventSearch.contas)#<cfelse><span class="text-muted">nenhuma</span></cfif></div>
+                        <div class="small mt-2"><span class="text-muted">Contas ativas:</span> <cfif len(trim(qPercursoEventSearch.contas & ''))>#encodeForHTML(qPercursoEventSearch.contas)#<cfelse><span class="text-muted">nenhuma</span></cfif></div>
                       </header>
                       <div class="route-event-group-routes">
                         <cfoutput>
                           <div class="route-event-item">
                             <div class="route-event-identity">
-                              <div class="fw-bold">#htmlEditFormat(qPercursoEventSearch.percurso_evento)# #htmlEditFormat(qPercursoEventSearch.unidade_de_medida)# <span class="badge badge-secondary ms-1">#htmlEditFormat(qPercursoEventSearch.tipo_corrida)#</span></div>
+                              <div class="fw-bold">#encodeForHTML(qPercursoEventSearch.percurso_evento)# #encodeForHTML(qPercursoEventSearch.unidade_de_medida)# <span class="badge badge-secondary ms-1">#encodeForHTML(qPercursoEventSearch.tipo_corrida)#</span></div>
                               <div class="small text-muted mt-1">Percurso do evento ###qPercursoEventSearch.id_evento_percurso#</div>
                               <cfif len(qPercursoEventSearch.id_percurso_vinculado & '')>
                                 <div class="small mt-2 <cfif val(qPercursoEventSearch.id_percurso_vinculado) EQ VARIABLES.routeEventRouteId>text-success<cfelse>text-warning</cfif>">
@@ -402,7 +402,7 @@
                                   <cfif val(qPercursoEventSearch.id_percurso_vinculado) EQ VARIABLES.routeEventRouteId>
                                     Já vinculado a este arquivo.
                                   <cfelse>
-                                    Vinculado a: <strong>###qPercursoEventSearch.id_percurso_vinculado# — #htmlEditFormat(qPercursoEventSearch.nome_percurso_vinculado)#</strong>
+                                    Vinculado a: <strong>###qPercursoEventSearch.id_percurso_vinculado# — #encodeForHTML(qPercursoEventSearch.nome_percurso_vinculado)#</strong>
                                   </cfif>
                                 </div>
                               </cfif>
@@ -453,7 +453,7 @@
         <cfoutput query="qPercursoArquivos">
           <tr>
             <td>v#versao# <cfif currentRow EQ 1><span class="badge bg-warning text-dark ms-1">Atual</span></cfif></td>
-            <td>#htmlEditFormat(nome_original)#</td>
+            <td>#encodeForHTML(nome_original)#</td>
             <td>#numberFormat(distancia_gpx_m/1000,'0.000')# km</td>
             <td>#numberFormat(quantidade_pontos)#</td>
             <td><cfif len(ganho_elevacao_m & "")>#numberFormat(ganho_elevacao_m,'0')# m<cfelse>—</cfif></td>
@@ -485,28 +485,28 @@
         </cfoutput>
       </tbody></table></div></div></div>
 
-      <cfif VARIABLES.percursoCanViewAudit><div class="card bg-dark border-secondary mb-4"><div class="card-body"><h5>Auditoria</h5><div class="table-responsive"><table class="table table-dark table-sm"><thead><tr><th>Data</th><th>Ação</th><th>Usuário</th><th>IP</th></tr></thead><tbody><cfoutput query="qPercursoHistorico"><tr><td>#dateTimeFormat(criado_em,'dd/mm/yyyy HH:nn')#</td><td>#htmlEditFormat(acao)#</td><td>#htmlEditFormat(usuario_nome)#</td><td>#htmlEditFormat(endereco_ip)#</td></tr></cfoutput></tbody></table></div></div></div></cfif>
+      <cfif VARIABLES.percursoCanViewAudit><div class="card bg-dark border-secondary mb-4"><div class="card-body"><h5>Auditoria</h5><div class="table-responsive"><table class="table table-dark table-sm"><thead><tr><th>Data</th><th>Ação</th><th>Usuário</th><th>IP</th></tr></thead><tbody><cfoutput query="qPercursoHistorico"><tr><td>#dateTimeFormat(criado_em,'dd/mm/yyyy HH:nn')#</td><td>#encodeForHTML(acao)#</td><td>#encodeForHTML(usuario_nome)#</td><td>#encodeForHTML(endereco_ip)#</td></tr></cfoutput></tbody></table></div></div></div></cfif>
     </cfif>
   </cfif>
 
   <cfif VARIABLES.percursoSelectedId LTE 0>
   <div class="card bg-dark border-secondary"><div class="card-body">
-    <form method="get" action="./" class="row g-2 mb-4"><div class="col-lg-6"><input class="form-control" name="q" placeholder="Nome ou cidade" value="<cfoutput>#htmlEditFormat(URL.q)#</cfoutput>"/></div><div class="col-lg-2"><input class="form-control" name="estado" maxlength="2" placeholder="UF" value="<cfoutput>#htmlEditFormat(URL.estado)#</cfoutput>"/></div><div class="col-lg-2"><select class="form-select" name="status"><option value="">Todos os status</option><cfloop list="rascunho,publicado,arquivado" item="filterStatus"><option value="<cfoutput>#filterStatus#</cfoutput>" <cfif URL.status EQ filterStatus>selected</cfif>><cfoutput>#filterStatus#</cfoutput></option></cfloop></select></div><div class="col-lg-2"><button class="btn btn-outline-warning w-100" type="submit">Buscar</button></div></form>
+    <form method="get" action="./" class="row g-2 mb-4"><div class="col-lg-6"><input class="form-control" name="q" placeholder="Nome ou cidade" value="<cfoutput>#encodeForHTMLAttribute(URL.q)#</cfoutput>"/></div><div class="col-lg-2"><input class="form-control" name="estado" maxlength="2" placeholder="UF" value="<cfoutput>#encodeForHTMLAttribute(URL.estado)#</cfoutput>"/></div><div class="col-lg-2"><select class="form-select" name="status"><option value="">Todos os status</option><cfloop list="rascunho,publicado,arquivado" item="filterStatus"><option value="<cfoutput>#filterStatus#</cfoutput>" <cfif URL.status EQ filterStatus>selected</cfif>><cfoutput>#filterStatus#</cfoutput></option></cfloop></select></div><div class="col-lg-2"><button class="btn btn-outline-warning w-100" type="submit">Buscar</button></div></form>
     <div class="table-responsive"><table class="table table-dark table-hover align-middle"><thead><tr><th>ID</th><th>Nome</th><th>Conta proprietária</th><th>Vinculado a</th><th>Local</th><th>Nominal</th><th>Calculada</th><th>Versão</th><th>Status</th><th></th></tr></thead><tbody>
       <cfoutput query="qPercursos">
         <cfset VARIABLES.routeListKey = id_percurso & ""/>
         <tr>
           <td>#id_percurso#</td>
-          <td><strong>#htmlEditFormat(nome)#</strong><div class="small text-muted">#htmlEditFormat(tipo_percurso)# · #htmlEditFormat(visibilidade)#</div></td>
-          <td><cfif len(conta_proprietaria & '')><strong>#htmlEditFormat(conta_proprietaria)#</strong><div class="small text-muted">###id_conta_responsavel#</div><cfelseif percursoBoolean(gestao_plataforma)><span class="badge badge-info">Gestão da plataforma</span><cfelse><span class="badge badge-warning">Pendente</span></cfif></td>
+          <td><strong>#encodeForHTML(nome)#</strong><div class="small text-muted">#encodeForHTML(tipo_percurso)# · #encodeForHTML(visibilidade)#</div></td>
+          <td><cfif len(conta_proprietaria & '')><strong>#encodeForHTML(conta_proprietaria)#</strong><div class="small text-muted">###id_conta_responsavel#</div><cfelseif percursoBoolean(gestao_plataforma)><span class="badge badge-info">Gestão da plataforma</span><cfelse><span class="badge badge-warning">Pendente</span></cfif></td>
           <td>
             <cfif structKeyExists(VARIABLES.percursoListEventLinks, VARIABLES.routeListKey)>
               <cfloop array="#VARIABLES.percursoListEventLinks[VARIABLES.routeListKey]#" index="routeEventLink">
                 <div class="route-list-link">
-                  <a class="link-light text-decoration-none fw-bold" href="/eventos/?id_evento=#routeEventLink.id_evento#" target="_blank" rel="noopener">#htmlEditFormat(routeEventLink.nome_evento)#</a>
+                  <a class="link-light text-decoration-none fw-bold" href="/eventos/?id_evento=#routeEventLink.id_evento#" target="_blank" rel="noopener">#encodeForHTML(routeEventLink.nome_evento)#</a>
                   <div class="small text-muted">
                     <cfif routeEventLink.id_evento_percurso GT 0>
-                      #htmlEditFormat(routeEventLink.percurso_evento)# #htmlEditFormat(routeEventLink.unidade_de_medida)# · percurso ###routeEventLink.id_evento_percurso#
+                      #encodeForHTML(routeEventLink.percurso_evento)# #encodeForHTML(routeEventLink.unidade_de_medida)# · percurso ###routeEventLink.id_evento_percurso#
                     <cfelse>
                       Vínculo legado · evento ###routeEventLink.id_evento#
                     </cfif>
@@ -517,7 +517,7 @@
               <span class="text-muted small">Não vinculado</span>
             </cfif>
           </td>
-          <td>#htmlEditFormat(cidade)#<cfif len(estado)>/#htmlEditFormat(estado)#</cfif></td>
+          <td>#encodeForHTML(cidade)#<cfif len(estado)>/#encodeForHTML(estado)#</cfif></td>
           <td>#numberFormat(distancia_nominal_m/1000,'0.000')# km</td>
           <td><cfif len(distancia_gpx_m & '')>#numberFormat(distancia_gpx_m/1000,'0.000')# km</cfif></td>
           <td><cfif len(versao & '')>v#versao#</cfif></td>

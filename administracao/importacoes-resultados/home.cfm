@@ -237,7 +237,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
 
 <section class="business-page result-import-page py-5"
          data-result-import-queue
-         data-selected-status="<cfoutput>#htmlEditFormat(VARIABLES.resultImportStatus)#</cfoutput>"
+         data-selected-status="<cfoutput>#encodeForHTMLAttribute(VARIABLES.resultImportStatus)#</cfoutput>"
          data-history="<cfoutput>#len(VARIABLES.resultImportGroup) GT 0 ? 'true' : 'false'#</cfoutput>">
   <div class="card shadow-0 business-page-card">
     <div class="card-body business-page-body">
@@ -274,7 +274,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
             <i class="fa-solid fa-shield-halved me-1"></i>
             <cfoutput>
               Exibindo somente submissões das integrações ativas da conta
-              <strong>#htmlEditFormat(VARIABLES.businessActiveAccountName)#</strong>.
+              <strong>#encodeForHTML(VARIABLES.businessActiveAccountName)#</strong>.
             </cfoutput>
           </div>
         <cfelse>
@@ -288,7 +288,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
       <cfif len(VARIABLES.resultImportError)>
         <div class="alert alert-warning mb-0">
           <strong>Fila indisponível.</strong>
-          <cfoutput>#htmlEditFormat(VARIABLES.resultImportError)#</cfoutput>
+          <cfoutput>#encodeForHTML(VARIABLES.resultImportError)#</cfoutput>
         </div>
       <cfelse>
         <nav class="business-kpi-grid result-import-summary mb-3" aria-label="Resumo da fila">
@@ -298,7 +298,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                 <strong class="business-kpi-value">#LSNumberFormat(qResultImportSummary.total, "9,999")#</strong>
                 <span>Eventos</span>
               </span>
-              <span class="business-meta">#htmlEditFormat(resultImportPeriodLabel)#</span>
+              <span class="business-meta">#encodeForHTML(resultImportPeriodLabel)#</span>
             </a>
             <a class="business-kpi" href="#resultImportQueueUrl({ status = 'pendente', pagina = 1, id = '' })#">
               <span class="result-import-kpi-heading">
@@ -332,7 +332,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
         </nav>
 
         <form class="business-filterbar mb-3" method="get" action="./">
-          <cfif len(VARIABLES.resultImportGroup)><input type="hidden" name="grupo" value="<cfoutput>#htmlEditFormat(VARIABLES.resultImportGroup)#</cfoutput>"/></cfif>
+          <cfif len(VARIABLES.resultImportGroup)><input type="hidden" name="grupo" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.resultImportGroup)#</cfoutput>"/></cfif>
           <div class="result-import-filter-grid">
             <div class="result-import-filter-search">
               <label class="form-label small mb-1" for="result-import-search">Busca</label>
@@ -341,7 +341,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                      name="busca"
                      type="search"
                      maxlength="160"
-                     value="<cfoutput>#htmlEditFormat(VARIABLES.resultImportSearch)#</cfoutput>"
+                     value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.resultImportSearch)#</cfoutput>"
                      placeholder="Evento, ID, URL ou referência externa"/>
             </div>
             <div class="result-import-filter-field">
@@ -369,7 +369,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
               <select class="form-select form-select-sm" id="result-import-timer" name="timer">
                 <option value="">Todos</option>
                 <cfoutput query="qResultImportTimers">
-                  <option value="#htmlEditFormat(cod_timer)#" <cfif VARIABLES.resultImportTimer EQ lCase(cod_timer)>selected</cfif>>#htmlEditFormat(cod_timer)#</option>
+                  <option value="#encodeForHTMLAttribute(cod_timer)#" <cfif VARIABLES.resultImportTimer EQ lCase(cod_timer)>selected</cfif>>#encodeForHTML(cod_timer)#</option>
                 </cfoutput>
               </select>
             </div>
@@ -378,7 +378,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
               <select class="form-select form-select-sm" id="result-import-client" name="cliente">
                 <option value="">Todos</option>
                 <cfoutput query="qResultImportClients">
-                  <option value="#htmlEditFormat(client_id)#" <cfif VARIABLES.resultImportClient EQ lCase(client_id)>selected</cfif>>#htmlEditFormat(client_id)#</option>
+                  <option value="#encodeForHTMLAttribute(client_id)#" <cfif VARIABLES.resultImportClient EQ lCase(client_id)>selected</cfif>>#encodeForHTML(client_id)#</option>
                 </cfoutput>
               </select>
             </div>
@@ -405,7 +405,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
 
         <cfif len(VARIABLES.resultImportDetailError)>
           <div class="alert alert-warning">
-            <cfoutput>#htmlEditFormat(VARIABLES.resultImportDetailError)#</cfoutput>
+            <cfoutput>#encodeForHTML(VARIABLES.resultImportDetailError)#</cfoutput>
           </div>
         </cfif>
 
@@ -424,7 +424,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                     <span class="badge badge-#resultImportDetailIntent.className#">#resultImportDetailIntent.label#</span>
                   </cfoutput>
                 </div>
-                <code class="result-import-id"><cfoutput>#htmlEditFormat(qResultImportDetail.submission_id)#</cfoutput></code>
+                <code class="result-import-id"><cfoutput>#encodeForHTML(qResultImportDetail.submission_id)#</cfoutput></code>
               </div>
               <cfoutput>
                 <a class="btn btn-outline-light btn-sm align-self-start" href="#resultImportQueueUrl({ id = '' })#" title="Fechar detalhes">
@@ -452,11 +452,11 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
               </div>
               <div class="result-import-detail-item">
                 <span class="result-import-detail-label">Cronometrador</span>
-                <code><cfoutput>#htmlEditFormat(qResultImportDetail.cod_timer)#</cfoutput></code>
+                <code><cfoutput>#encodeForHTML(qResultImportDetail.cod_timer)#</cfoutput></code>
               </div>
               <div class="result-import-detail-item">
                 <span class="result-import-detail-label">Cliente da API</span>
-                <code><cfoutput>#htmlEditFormat(qResultImportDetail.client_id)#</cfoutput></code>
+                <code><cfoutput>#encodeForHTML(qResultImportDetail.client_id)#</cfoutput></code>
               </div>
               <div class="result-import-detail-item">
                 <span class="result-import-detail-label">Tentativas</span>
@@ -483,14 +483,14 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
               <div class="col-12 col-xl-6">
                 <span class="result-import-detail-label">Evento associado</span>
                 <cfif val(qResultImportDetail.suggested_event_id) GT 0>
-                  <strong class="d-block"><cfoutput>#htmlEditFormat(qResultImportDetail.nome_evento)#</cfoutput></strong>
+                  <strong class="d-block"><cfoutput>#encodeForHTML(qResultImportDetail.nome_evento)#</cfoutput></strong>
                   <span class="text-muted small">
                     <cfoutput>
                       ID #qResultImportDetail.suggested_event_id#
                       <cfif NOT val(qResultImportDetail.id_evento)> · Pré-selecionado; confirme no importador</cfif>
-                      <cfif len(trim(qResultImportDetail.event_tag & ""))> · #htmlEditFormat(qResultImportDetail.event_tag)#</cfif>
+                      <cfif len(trim(qResultImportDetail.event_tag & ""))> · #encodeForHTML(qResultImportDetail.event_tag)#</cfif>
                       <cfif isDate(qResultImportDetail.event_date)> · #lsDateFormat(qResultImportDetail.event_date, "dd/mm/yyyy")#</cfif>
-                      <cfif len(trim(qResultImportDetail.event_city & ""))> · #htmlEditFormat(qResultImportDetail.event_city)#/#htmlEditFormat(qResultImportDetail.event_state)#</cfif>
+                      <cfif len(trim(qResultImportDetail.event_city & ""))> · #encodeForHTML(qResultImportDetail.event_city)#/#encodeForHTML(qResultImportDetail.event_state)#</cfif>
                     </cfoutput>
                   </span>
                 <cfelse>
@@ -498,7 +498,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                   <span class="text-muted small">
                     <cfoutput>
                       <cfif len(trim(qResultImportDetail.id_evento_informado & ""))>ID informado: #qResultImportDetail.id_evento_informado#</cfif>
-                      <cfif len(trim(qResultImportDetail.tag_evento_informada & ""))> Tag informada: #htmlEditFormat(qResultImportDetail.tag_evento_informada)#</cfif>
+                      <cfif len(trim(qResultImportDetail.tag_evento_informada & ""))> Tag informada: #encodeForHTML(qResultImportDetail.tag_evento_informada)#</cfif>
                       <cfif NOT len(trim(qResultImportDetail.id_evento_informado & "")) AND NOT len(trim(qResultImportDetail.tag_evento_informada & ""))>Nenhuma referência interna foi enviada.</cfif>
                     </cfoutput>
                   </span>
@@ -506,37 +506,37 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
               </div>
               <div class="col-12 col-xl-3">
                 <span class="result-import-detail-label">Conta externa</span>
-                <cfoutput>#len(trim(qResultImportDetail.external_account_id & "")) ? htmlEditFormat(qResultImportDetail.external_account_id) : "-"#</cfoutput>
+                <cfoutput>#len(trim(qResultImportDetail.external_account_id & "")) ? encodeForHTML(qResultImportDetail.external_account_id) : "-"#</cfoutput>
               </div>
               <div class="col-12 col-xl-3">
                 <span class="result-import-detail-label">Evento externo</span>
-                <cfoutput>#len(trim(qResultImportDetail.external_event_id & "")) ? htmlEditFormat(qResultImportDetail.external_event_id) : "-"#</cfoutput>
+                <cfoutput>#len(trim(qResultImportDetail.external_event_id & "")) ? encodeForHTML(qResultImportDetail.external_event_id) : "-"#</cfoutput>
               </div>
             </div>
 
             <div class="mb-3">
               <span class="result-import-detail-label">URL dos dados</span>
-              <a class="result-import-url d-block" href="<cfoutput>#htmlEditFormat(qResultImportDetail.url_resultado)#</cfoutput>" target="_blank" rel="noopener noreferrer">
-                <cfoutput>#htmlEditFormat(qResultImportDetail.url_resultado)#</cfoutput>
+              <a class="result-import-url d-block" href="<cfoutput>#encodeForHTMLAttribute(qResultImportDetail.url_resultado)#</cfoutput>" target="_blank" rel="noopener noreferrer">
+                <cfoutput>#encodeForHTML(qResultImportDetail.url_resultado)#</cfoutput>
               </a>
             </div>
             <div class="mb-3">
               <span class="result-import-detail-label">URL pública do resultado</span>
-              <a class="result-import-url d-block" href="<cfoutput>#htmlEditFormat(qResultImportDetail.url_resultado_publica)#</cfoutput>" target="_blank" rel="noopener noreferrer">
-                <cfoutput>#htmlEditFormat(qResultImportDetail.url_resultado_publica)#</cfoutput>
+              <a class="result-import-url d-block" href="<cfoutput>#encodeForHTMLAttribute(qResultImportDetail.url_resultado_publica)#</cfoutput>" target="_blank" rel="noopener noreferrer">
+                <cfoutput>#encodeForHTML(qResultImportDetail.url_resultado_publica)#</cfoutput>
               </a>
             </div>
 
             <div class="result-import-detail-grid">
               <div class="result-import-detail-item">
                 <span class="result-import-detail-label">Idempotency-Key</span>
-                <code class="result-import-id"><cfoutput>#htmlEditFormat(qResultImportDetail.idempotency_key)#</cfoutput></code>
+                <code class="result-import-id"><cfoutput>#encodeForHTML(qResultImportDetail.idempotency_key)#</cfoutput></code>
               </div>
               <cfif len(trim(qResultImportDetail.erro_codigo & "")) OR len(trim(qResultImportDetail.erro_detalhe & ""))>
                 <div class="result-import-detail-item result-import-error">
                   <span class="result-import-detail-label">Erro do processamento</span>
-                  <strong class="d-block"><cfoutput>#htmlEditFormat(qResultImportDetail.erro_codigo)#</cfoutput></strong>
-                  <span><cfoutput>#htmlEditFormat(qResultImportDetail.erro_detalhe)#</cfoutput></span>
+                  <strong class="d-block"><cfoutput>#encodeForHTML(qResultImportDetail.erro_codigo)#</cfoutput></strong>
+                  <span><cfoutput>#encodeForHTML(qResultImportDetail.erro_detalhe)#</cfoutput></span>
                 </div>
               </cfif>
             </div>
@@ -580,7 +580,7 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                   <cfset resultImportRowProcessing = resultImportProcessingMeta(queue_status)/>
                   <cfset resultImportRowPublication = resultImportPublicationMeta(status_publicacao)/>
                   <cfset resultImportRowIntent = resultImportOpenResultsMeta(open_results_enabled)/>
-                  <tr data-result-import-row data-status="#htmlEditFormat(queue_status)#">
+                  <tr data-result-import-row data-status="#encodeForHTMLAttribute(queue_status)#">
                     <td class="result-import-date-cell">
                       #resultImportDateTime(data_recebimento)#
                       <small class="text-muted d-block">###id_resultado_importacao#</small>
@@ -601,8 +601,8 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                     <td><span class="badge badge-#resultImportRowPublication.className#">#resultImportRowPublication.label#</span></td>
                     <td class="result-import-event-cell">
                       <cfif val(suggested_event_id) GT 0>
-                        <strong class="d-block">#htmlEditFormat(nome_evento)#</strong>
-                        <small class="text-muted">ID #suggested_event_id#<cfif len(trim(event_tag & ""))> · #htmlEditFormat(event_tag)#</cfif></small>
+                        <strong class="d-block">#encodeForHTML(nome_evento)#</strong>
+                        <small class="text-muted">ID #suggested_event_id#<cfif len(trim(event_tag & ""))> · #encodeForHTML(event_tag)#</cfif></small>
                       <cfelse>
                         <strong class="d-block text-warning"><cfif link_source EQ "ambiguous">Vínculo ambíguo<cfelse>Sem vínculo</cfif></strong>
                         <cfif len(trim(id_evento_informado & ""))>
@@ -610,14 +610,14 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                         </cfif>
                         <small class="text-muted d-block"
                                data-result-import-event-hint
-                               data-submitted-tag="#htmlEditFormat(tag_evento_informada & '')#"
-                               data-external-event-id="#htmlEditFormat(external_event_id & '')#"
-                               data-public-url="#htmlEditFormat(url_resultado_publica & '')#"
-                               data-data-url="#htmlEditFormat(url_resultado & '')#">
+                               data-submitted-tag="#encodeForHTMLAttribute(tag_evento_informada & '')#"
+                               data-external-event-id="#encodeForHTMLAttribute(external_event_id & '')#"
+                               data-public-url="#encodeForHTMLAttribute(url_resultado_publica & '')#"
+                               data-data-url="#encodeForHTMLAttribute(url_resultado & '')#">
                           <cfif len(trim(tag_evento_informada & ""))>
-                            Evento externo: #htmlEditFormat(tag_evento_informada)#
+                            Evento externo: #encodeForHTML(tag_evento_informada)#
                           <cfelseif len(trim(external_event_id & ""))>
-                            Evento externo: #htmlEditFormat(external_event_id)#
+                            Evento externo: #encodeForHTML(external_event_id)#
                           <cfelse>
                             aguardando identificação
                           </cfif>
@@ -629,9 +629,9 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                       <a class="small d-block mt-1" href="#resultImportQueueUrl({grupo=event_group,status='',publicacao='',busca='',periodo=0,pagina=1,id=''})#">Histórico: #group_total# chamada(s)</a>
                     </td>
                     <td class="result-import-client-cell">
-                      <code class="d-block">#htmlEditFormat(cod_timer)#</code>
-                      <small class="text-muted">#htmlEditFormat(client_id)#</small>
-                      <cfif len(trim(external_account_id & ''))><small class="text-muted d-block">Conta externa: #htmlEditFormat(external_account_id)#</small></cfif>
+                      <code class="d-block">#encodeForHTML(cod_timer)#</code>
+                      <small class="text-muted">#encodeForHTML(client_id)#</small>
+                      <cfif len(trim(external_account_id & ''))><small class="text-muted d-block">Conta externa: #encodeForHTML(external_account_id)#</small></cfif>
                     </td>
                     <td>
                       <span class="badge badge-#resultImportRowIntent.className#">#resultImportRowIntent.label#</span>
@@ -647,11 +647,11 @@ resultImportPeriodLabel = VARIABLES.resultImportPeriodDays GT 0
                               action="#resultImportQueueUrl({ id = '' })#"
                               data-result-import-discard
                               data-can-process="true"
-                              data-status="#htmlEditFormat(queue_status)#"
+                              data-status="#encodeForHTMLAttribute(queue_status)#"
                               onsubmit="return confirm('Descartar esta submissão da fila? O histórico será preservado com status cancelado.');">
                           <input type="hidden" name="result_import_queue_action" value="descartar"/>
-                          <input type="hidden" name="submission_id" value="#htmlEditFormat(submission_id)#"/>
-                          <input type="hidden" name="result_import_queue_csrf" value="#htmlEditFormat(VARIABLES.resultImportQueueCsrf)#"/>
+                          <input type="hidden" name="submission_id" value="#encodeForHTMLAttribute(submission_id)#"/>
+                          <input type="hidden" name="result_import_queue_csrf" value="#encodeForHTMLAttribute(VARIABLES.resultImportQueueCsrf)#"/>
                           <button class="btn btn-outline-danger btn-sm"
                                   type="submit"
                                   title="Descartar da fila"

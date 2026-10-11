@@ -1,0 +1,23 @@
+{
+  "before": {
+    "evento/index.cfm": "79a49e618d4298ce8f109c3d8b52b4ee43b4d6c20698e7b6aa79b2f2a7791e74",
+    "sitemaps/index.cfm": "47c2be64a6a5f7323ea3adb540ed81b2bffda3b3366ab668df253df1b33cc6e8"
+  },
+  "candidate": {
+    "services/EventRedirectService.cfc": "3df9e11aedf7f327268d18c47d8d4c3b6ff9add7b6ba5a72ce50102edc7f72da",
+    "includes/estrutura/event_redirect.cfm": "f956daf44200d7f08c50fb2eb6947c36751764b41f0b77591ed73656aefae68c",
+    "evento/index.cfm": "f2f32244db93a85114fdbb9cc865fd15939a8cb9b1550929079f46bb9dbd1140",
+    "sitemaps/index.cfm": "25e6a0d17653be13c67f28f395d0b8b9ce22d327c41185093bc18ef06bc9cdea"
+  },
+  "order": [
+    "services/EventRedirectService.cfc",
+    "includes/estrutura/event_redirect.cfm",
+    "evento/index.cfm",
+    "sitemaps/index.cfm"
+  ],
+  "compile": {
+    "templates": 4,
+    "output": "successful 4\ntotal 4\nelapsed 4.252 sec\n\n",
+    "returncode": 0
+  }
+}

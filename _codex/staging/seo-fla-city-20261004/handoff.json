@@ -1,0 +1,10 @@
+{
+  "status": "published_and_verified",
+  "events": 1,
+  "routes_preserved": 2,
+  "dependent_tables": 13,
+  "public_urls": 3,
+  "backup": "/var/backups/seo-fla-city-20261004",
+  "city": "Barra do Piraí",
+  "locality": 3006
+}

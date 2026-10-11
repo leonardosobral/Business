@@ -1,0 +1,10 @@
+{
+  "published": [
+    "includes/estrutura/event_title_date.cfm",
+    "services/EventRedirectService.cfc",
+    "includes/card_evento_individual.cfm",
+    "includes/estrutura/header_tema.cfm",
+    "includes/estrutura/head.cfm"
+  ],
+  "backup": "/var/backups/seo-semrush-5000-20261005-rr/baseline"
+}

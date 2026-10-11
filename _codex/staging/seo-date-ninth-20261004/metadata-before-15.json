@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/evento/2026-1a-corrida-da-ujadi/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-1a-corrida-da-ujadi/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-1a-corrida-da-ujadi/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-1a-corrida-da-ujadi/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-1a-corrida-da-ujadi/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/evento/2026-1a-corrida-da-ujadi/",
+      "name": "1a Corrida da UJADI",
+      "description": "1a Corrida da UJADI acontece em 29 novembro 2026, em Avenida Soares Lopes - Ilhéus - BA.",
+      "url": "https://roadrunners.run/evento/2026-1a-corrida-da-ujadi/",
+      "startDate": "2026-11-29",
+      "endDate": "2026-11-29",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.races.com.br/upload/bannerr/792_ccc5967be56259f3c98939e647b673d8.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Avenida Soares Lopes",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ilhéus",
+          "addressRegion": "BA",
+          "addressCountry": "BR",
+          "streetAddress": "Avenida Soares Lopes"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.races.com.br/1a-corrida-da-ujadi"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/",
+          "@type": "ListItem",
+          "name": "Início"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/ba/",
+          "@type": "ListItem",
+          "name": "Corridas em BA"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/evento/2026-1a-corrida-da-ujadi/",
+          "@type": "ListItem",
+          "name": "1a Corrida da UJADI"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

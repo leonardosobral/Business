@@ -60,7 +60,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <base href="https://conteudo.roadrunners.run/"/>
-    <title><cfoutput><cfif qPreviewContent.recordcount>#htmlEditFormat(qPreviewContent.title)#<cfelse>Conteúdo não encontrado</cfif></cfoutput></title>
+    <title><cfoutput><cfif qPreviewContent.recordcount>#encodeForHTML(qPreviewContent.title)#<cfelse>Conteúdo não encontrado</cfif></cfoutput></title>
     <style>
         :root { color-scheme: light; }
         * { box-sizing: border-box; }
@@ -84,13 +84,13 @@
         <article class="preview-shell">
             <span class="preview-status<cfif published> is-published</cfif>"><cfif published>Publicado<cfelseif lCase(trim(editorial_status & "")) EQ "review">Pendente de curadoria — prévia administrativa<cfelseif lCase(trim(editorial_status & "")) EQ "rejected">Rejeitado — prévia administrativa<cfelse>Oculto — prévia administrativa</cfif></span>
             <div class="preview-meta">
-                <cfif len(trim(channel_name & ""))>#htmlEditFormat(channel_name)#</cfif>
-                <cfif len(trim(category_name & ""))> · #htmlEditFormat(category_name)#</cfif>
+                <cfif len(trim(channel_name & ""))>#encodeForHTML(channel_name)#</cfif>
+                <cfif len(trim(category_name & ""))> · #encodeForHTML(category_name)#</cfif>
                 <cfif isDate(published_at)> · #dateTimeFormat(published_at, "dd/mm/yyyy HH:nn")#</cfif>
             </div>
-            <h1>#htmlEditFormat(title)#</h1>
-            <cfif len(trim(excerpt & ""))><p class="preview-excerpt">#htmlEditFormat(excerpt)#</p></cfif>
-            <cfif len(trim(featured_media_url & ""))><img class="preview-cover" src="#htmlEditFormat(featured_media_url)#" alt=""/></cfif>
+            <h1>#encodeForHTML(title)#</h1>
+            <cfif len(trim(excerpt & ""))><p class="preview-excerpt">#encodeForHTML(excerpt)#</p></cfif>
+            <cfif len(trim(featured_media_url & ""))><img class="preview-cover" src="#encodeForHTMLAttribute(featured_media_url)#" alt=""/></cfif>
             <div class="preview-body">#article_body#</div>
         </article>
     </cfoutput>

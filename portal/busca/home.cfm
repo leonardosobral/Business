@@ -125,7 +125,7 @@
 
                 <div class="col-md-5">
                   <label class="form-label">Termo</label>
-                  <input type="search" class="form-control" name="termo" value="<cfoutput>#htmlEditFormat(VARIABLES.searchLogTerm)#</cfoutput>" placeholder="Buscar por termo digitado"/>
+                  <input type="search" class="form-control" name="termo" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.searchLogTerm)#</cfoutput>" placeholder="Buscar por termo digitado"/>
                 </div>
 
                 <div class="col-md-3">
@@ -185,8 +185,8 @@
                       <div class="text-muted small">
                         <cfoutput>
                           #searchLogFormatDateTime(qSearchLogDetailParent.log_timestamp)# -
-                          #htmlEditFormat(qSearchLogDetailParent.ambiente)# -
-                          #htmlEditFormat(qSearchLogDetailParent.modelo)#
+                          #encodeForHTML(qSearchLogDetailParent.ambiente)# -
+                          #encodeForHTML(qSearchLogDetailParent.modelo)#
                         </cfoutput>
                       </div>
                     </div>
@@ -196,21 +196,21 @@
                   <div class="row g-3 mb-3">
                     <div class="col-lg-4">
                       <div class="small text-muted text-uppercase fw-semibold mb-1">Termo original</div>
-                      <div class="search-term-cell"><cfoutput>#htmlEditFormat(qSearchLogDetailParent.termo_original)#</cfoutput></div>
+                      <div class="search-term-cell"><cfoutput>#encodeForHTML(qSearchLogDetailParent.termo_original)#</cfoutput></div>
                     </div>
                     <div class="col-lg-4">
                       <div class="small text-muted text-uppercase fw-semibold mb-1">Usuario</div>
                       <cfoutput>
-                        <div>#htmlEditFormat(len(trim(qSearchLogDetailParent.usuario_nome)) ? qSearchLogDetailParent.usuario_nome : "Usuario " & qSearchLogDetailParent.id_usuario)#</div>
-                        <div class="small text-muted">#htmlEditFormat(qSearchLogDetailParent.usuario_email)#</div>
+                        <div>#encodeForHTML(len(trim(qSearchLogDetailParent.usuario_nome)) ? qSearchLogDetailParent.usuario_nome : "Usuario " & qSearchLogDetailParent.id_usuario)#</div>
+                        <div class="small text-muted">#encodeForHTML(qSearchLogDetailParent.usuario_email)#</div>
                       </cfoutput>
                     </div>
                     <div class="col-lg-4">
                       <div class="small text-muted text-uppercase fw-semibold mb-1">Flags</div>
                       <div class="search-badge-list">
                         <cfoutput>
-                          <span class="badge badge-secondary">#htmlEditFormat(qSearchLogDetailParent.busca_modo)#</span>
-                          <span class="badge badge-secondary">#htmlEditFormat(qSearchLogDetailParent.tipo_termo)#</span>
+                          <span class="badge badge-secondary">#encodeForHTML(qSearchLogDetailParent.busca_modo)#</span>
+                          <span class="badge badge-secondary">#encodeForHTML(qSearchLogDetailParent.tipo_termo)#</span>
                           <cfif qSearchLogDetailParent.usou_ia><span class="badge badge-info">usou IA</span></cfif>
                           <cfif qSearchLogDetailParent.fallback_usado><span class="badge badge-warning">fallback</span></cfif>
                           <cfif len(trim(qSearchLogDetailParent.erro))><span class="badge badge-danger">erro</span></cfif>
@@ -222,15 +222,15 @@
                   <div class="row g-3">
                     <div class="col-lg-4">
                       <div class="small text-muted text-uppercase fw-semibold mb-2">Filtros</div>
-                      <pre class="search-json mb-0"><cfoutput>#htmlEditFormat(searchLogShortText(qSearchLogDetailParent.filtros_json, 1400))#</cfoutput></pre>
+                      <pre class="search-json mb-0"><cfoutput>#encodeForHTML(searchLogShortText(qSearchLogDetailParent.filtros_json, 1400))#</cfoutput></pre>
                     </div>
                     <div class="col-lg-4">
                       <div class="small text-muted text-uppercase fw-semibold mb-2">IA</div>
-                      <pre class="search-json mb-0"><cfoutput>#htmlEditFormat(searchLogShortText(qSearchLogDetailParent.ia_json, 1400))#</cfoutput></pre>
+                      <pre class="search-json mb-0"><cfoutput>#encodeForHTML(searchLogShortText(qSearchLogDetailParent.ia_json, 1400))#</cfoutput></pre>
                     </div>
                     <div class="col-lg-4">
                       <div class="small text-muted text-uppercase fw-semibold mb-2">Payload</div>
-                      <pre class="search-json mb-0"><cfoutput>#htmlEditFormat(searchLogShortText(qSearchLogDetailParent.payload_json, 1400))#</cfoutput></pre>
+                      <pre class="search-json mb-0"><cfoutput>#encodeForHTML(searchLogShortText(qSearchLogDetailParent.payload_json, 1400))#</cfoutput></pre>
                     </div>
                   </div>
 
@@ -253,11 +253,11 @@
                           <cfoutput query="qSearchLogDetailChildren">
                             <tr>
                               <td>#qSearchLogDetailChildren.id_busca_log#</td>
-                              <td>#htmlEditFormat(searchLogScopeLabel(qSearchLogDetailChildren.busca_scope))#</td>
-                              <td>#htmlEditFormat(qSearchLogDetailChildren.busca_modo)#</td>
-                              <td class="search-term-cell"><code>#htmlEditFormat(searchLogShortText(qSearchLogDetailChildren.contagens_json, 220))#</code></td>
-                              <td class="search-term-cell"><code>#htmlEditFormat(searchLogShortText(qSearchLogDetailChildren.ia_json, 220))#</code></td>
-                              <td class="search-term-cell"><code>#htmlEditFormat(searchLogShortText(qSearchLogDetailChildren.payload_json, 260))#</code></td>
+                              <td>#encodeForHTML(searchLogScopeLabel(qSearchLogDetailChildren.busca_scope))#</td>
+                              <td>#encodeForHTML(qSearchLogDetailChildren.busca_modo)#</td>
+                              <td class="search-term-cell"><code>#encodeForHTML(searchLogShortText(qSearchLogDetailChildren.contagens_json, 220))#</code></td>
+                              <td class="search-term-cell"><code>#encodeForHTML(searchLogShortText(qSearchLogDetailChildren.ia_json, 220))#</code></td>
+                              <td class="search-term-cell"><code>#encodeForHTML(searchLogShortText(qSearchLogDetailChildren.payload_json, 260))#</code></td>
                             </tr>
                           </cfoutput>
                         </tbody>
@@ -326,7 +326,7 @@
                         <tbody>
                           <cfoutput query="qSearchLogScopes">
                             <tr>
-                              <td>#htmlEditFormat(searchLogScopeLabel(qSearchLogScopes.busca_scope))#</td>
+                              <td>#encodeForHTML(searchLogScopeLabel(qSearchLogScopes.busca_scope))#</td>
                               <td>#LSNumberFormat(qSearchLogScopes.execucoes, "9,999,999")#</td>
                               <td>#LSNumberFormat(qSearchLogScopes.total_resultados, "9,999,999")#</td>
                               <td>#LSNumberFormat(qSearchLogScopes.eventos, "9,999,999")#</td>
@@ -365,7 +365,7 @@
                         <tbody>
                           <cfoutput query="qSearchLogTopTerms">
                             <tr>
-                              <td class="search-term-cell">#htmlEditFormat(qSearchLogTopTerms.termo)#</td>
+                              <td class="search-term-cell">#encodeForHTML(qSearchLogTopTerms.termo)#</td>
                               <td>#LSNumberFormat(qSearchLogTopTerms.buscas, "9,999,999")#</td>
                               <td>#LSNumberFormat(qSearchLogTopTerms.buscas_ia, "9,999,999")#</td>
                               <td>#LSNumberFormat(qSearchLogTopTerms.fallbacks, "9,999,999")#</td>
@@ -398,8 +398,8 @@
                         <tbody>
                           <cfoutput query="qSearchLogTopFilters">
                             <tr>
-                              <td>#htmlEditFormat(qSearchLogTopFilters.tipo)#</td>
-                              <td class="search-term-cell">#htmlEditFormat(qSearchLogTopFilters.valor)#</td>
+                              <td>#encodeForHTML(qSearchLogTopFilters.tipo)#</td>
+                              <td class="search-term-cell">#encodeForHTML(qSearchLogTopFilters.valor)#</td>
                               <td>#LSNumberFormat(qSearchLogTopFilters.buscas, "9,999,999")#</td>
                               <td>#searchLogFormatDateTime(qSearchLogTopFilters.ultima_busca)#</td>
                             </tr>
@@ -433,7 +433,7 @@
                           <cfoutput query="qSearchLogZeroResults">
                             <tr>
                               <td>#searchLogFormatDateTime(qSearchLogZeroResults.log_timestamp)#</td>
-                              <td class="search-term-cell">#htmlEditFormat(qSearchLogZeroResults.termo_original)#</td>
+                              <td class="search-term-cell">#encodeForHTML(qSearchLogZeroResults.termo_original)#</td>
                               <td>#LSNumberFormat(qSearchLogZeroResults.total_resultados, "9,999,999")#</td>
                               <td><a class="btn btn-sm btn-outline-light" href="./?#VARIABLES.searchLogBaseQuery#&busca_id=#qSearchLogZeroResults.id_busca_log#">Ver</a></td>
                             </tr>
@@ -465,14 +465,14 @@
                           <cfoutput query="qSearchLogFailures">
                             <tr>
                               <td>#searchLogFormatDateTime(qSearchLogFailures.log_timestamp)#</td>
-                              <td class="search-term-cell">#htmlEditFormat(qSearchLogFailures.termo_original)#</td>
+                              <td class="search-term-cell">#encodeForHTML(qSearchLogFailures.termo_original)#</td>
                               <td class="search-term-cell">
                                 <cfif len(trim(qSearchLogFailures.fallback_motivo))>
-                                  #htmlEditFormat(qSearchLogFailures.fallback_motivo)#
+                                  #encodeForHTML(qSearchLogFailures.fallback_motivo)#
                                 <cfelseif len(trim(qSearchLogFailures.erro))>
-                                  #htmlEditFormat(searchLogShortText(qSearchLogFailures.erro, 120))#
+                                  #encodeForHTML(searchLogShortText(qSearchLogFailures.erro, 120))#
                                 <cfelse>
-                                  #htmlEditFormat(qSearchLogFailures.http_status)#
+                                  #encodeForHTML(qSearchLogFailures.http_status)#
                                 </cfif>
                               </td>
                               <td><a class="btn btn-sm btn-outline-light" href="./?#VARIABLES.searchLogBaseQuery#&busca_id=#qSearchLogFailures.id_busca_log#">Ver</a></td>
@@ -519,19 +519,19 @@
                         <tr>
                           <td>#searchLogFormatDateTime(qSearchLogRecent.log_timestamp)#</td>
                           <td class="search-term-cell">
-                            <strong>#htmlEditFormat(qSearchLogRecent.termo_original)#</strong>
+                            <strong>#encodeForHTML(qSearchLogRecent.termo_original)#</strong>
                             <cfif len(trim(qSearchLogRecent.termo_livre))>
-                              <div class="small text-muted">Livre: #htmlEditFormat(qSearchLogRecent.termo_livre)#</div>
+                              <div class="small text-muted">Livre: #encodeForHTML(qSearchLogRecent.termo_livre)#</div>
                             </cfif>
                           </td>
                           <td>
-                            <div>#htmlEditFormat(qSearchLogRecent.busca_tipo)#</div>
-                            <div class="small text-muted">#htmlEditFormat(qSearchLogRecent.tipo_termo)#</div>
+                            <div>#encodeForHTML(qSearchLogRecent.busca_tipo)#</div>
+                            <div class="small text-muted">#encodeForHTML(qSearchLogRecent.tipo_termo)#</div>
                           </td>
                           <td class="search-term-cell">
                             <cfif len(trim(qSearchLogRecent.usuario_nome))>
-                              #htmlEditFormat(qSearchLogRecent.usuario_nome)#
-                              <div class="small text-muted">#htmlEditFormat(qSearchLogRecent.usuario_email)#</div>
+                              #encodeForHTML(qSearchLogRecent.usuario_nome)#
+                              <div class="small text-muted">#encodeForHTML(qSearchLogRecent.usuario_email)#</div>
                             <cfelseif len(trim(qSearchLogRecent.id_usuario))>
                               Usuario #qSearchLogRecent.id_usuario#
                             <cfelse>
@@ -539,8 +539,8 @@
                             </cfif>
                           </td>
                           <td>
-                            <span class="badge badge-secondary">#htmlEditFormat(qSearchLogRecent.ambiente)#</span>
-                            <div class="small text-muted">#htmlEditFormat(qSearchLogRecent.site)#</div>
+                            <span class="badge badge-secondary">#encodeForHTML(qSearchLogRecent.ambiente)#</span>
+                            <div class="small text-muted">#encodeForHTML(qSearchLogRecent.site)#</div>
                           </td>
                           <td>
                             <div class="search-badge-list">
@@ -554,7 +554,7 @@
                           </td>
                           <td>
                             <div class="search-badge-list">
-                              <span class="badge badge-secondary">#htmlEditFormat(qSearchLogRecent.busca_modo)#</span>
+                              <span class="badge badge-secondary">#encodeForHTML(qSearchLogRecent.busca_modo)#</span>
                               <cfif qSearchLogRecent.usou_ia><span class="badge badge-info">IA</span></cfif>
                               <cfif qSearchLogRecent.fallback_usado><span class="badge badge-warning">fallback</span></cfif>
                               <cfif len(trim(qSearchLogRecent.erro))><span class="badge badge-danger">erro</span></cfif>
@@ -615,8 +615,8 @@
                         <tr>
                           <td class="search-term-cell">
                             <cfif len(trim(qSearchLogUsers.usuario_nome))>
-                              #htmlEditFormat(qSearchLogUsers.usuario_nome)#
-                              <div class="small text-muted">#htmlEditFormat(qSearchLogUsers.usuario_email)#</div>
+                              #encodeForHTML(qSearchLogUsers.usuario_nome)#
+                              <div class="small text-muted">#encodeForHTML(qSearchLogUsers.usuario_email)#</div>
                             <cfelse>
                               Usuario #qSearchLogUsers.id_usuario#
                             </cfif>

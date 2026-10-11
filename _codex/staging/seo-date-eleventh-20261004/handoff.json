@@ -1,0 +1,22 @@
+{
+  "status": "published_and_verified",
+  "events": 15,
+  "route_dates_corrected": 30,
+  "manual_protections": 30,
+  "event_rows_unchanged": true,
+  "dependency_tables_preserved": 13,
+  "public_urls": 45,
+  "remaining_events": 22,
+  "remaining_routes": 40,
+  "backup": "/var/backups/seo-date-eleventh-20261004",
+  "new_observation": {
+    "event": 45651,
+    "stored_city": "Pira\u00ed/RJ",
+    "official_city": "Barra do Pira\u00ed/RJ",
+    "changed": false
+  },
+  "superseded_in_part_by": "seo-review-date-rollback-20261004",
+  "historical_receipt": true,
+  "net_retained_route_dates": 27,
+  "net_retained_events": 13
+}

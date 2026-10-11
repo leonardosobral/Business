@@ -1,0 +1,174 @@
+{
+  "PLAN": [
+    {
+      "Triggers": [],
+      "Planning Time": 1.234,
+      "Plan": {
+        "Actual Startup Time": 69.951,
+        "Plans": [
+          {
+            "Actual Startup Time": 69.816,
+            "Sort Space Type": "Memory",
+            "Plans": [
+              {
+                "Join Type": "Inner",
+                "Actual Startup Time": 53.226,
+                "Plans": [
+                  {
+                    "Actual Startup Time": 53.215,
+                    "Plans": [
+                      {
+                        "Actual Startup Time": 53.2,
+                        "Sort Space Type": "Memory",
+                        "Plans": [
+                          {
+                            "Actual Startup Time": 6.657,
+                            "Plans": [
+                              {
+                                "Actual Startup Time": 4.054,
+                                "Actual Loops": 1,
+                                "Index Name": "tb_evento_corridas_agenda_lookup_idx",
+                                "Plan Rows": 34248,
+                                "Index Cond": "(ativo = true)",
+                                "Async Capable": false,
+                                "Actual Total Time": 4.054,
+                                "Parent Relationship": "Outer",
+                                "Parallel Aware": false,
+                                "Total Cost": 1373.28,
+                                "Plan Width": 0,
+                                "Actual Rows": 34851,
+                                "Node Type": "Bitmap Index Scan",
+                                "Startup Cost": 0.0
+                              }
+                            ],
+                            "Actual Loops": 1,
+                            "Exact Heap Blocks": 16581,
+                            "Filter": "(length((nome_evento)::text) >= 50)",
+                            "Plan Rows": 11416,
+                            "Lossy Heap Blocks": 0,
+                            "Alias": "tb_evento_corridas",
+                            "Async Capable": false,
+                            "Actual Total Time": 43.438,
+                            "Parent Relationship": "Outer",
+                            "Parallel Aware": false,
+                            "Total Cost": 68132.69,
+                            "Rows Removed by Filter": 31419,
+                            "Rows Removed by Index Recheck": 0,
+                            "Plan Width": 50,
+                            "Relation Name": "tb_evento_corridas",
+                            "Actual Rows": 3000,
+                            "Recheck Cond": "ativo",
+                            "Node Type": "Bitmap Heap Scan",
+                            "Startup Cost": 1376.13
+                          }
+                        ],
+                        "Actual Loops": 1,
+                        "Plan Rows": 11416,
+                        "Async Capable": false,
+                        "Actual Total Time": 53.389,
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Total Cost": 68930.6,
+                        "Sort Space Used": 803,
+                        "Plan Width": 50,
+                        "Sort Key": [
+                          "tb_evento_corridas.nome_evento",
+                          "(jsonb_build_object('name', tb_evento_corridas.nome_evento, 'city', COALESCE(tb_evento_corridas.cidade, ''::character varying), 'state', COALESCE(tb_evento_corridas.estado, ''::character varying), 'date', (tb_evento_corridas.data_inicial)::text))"
+                        ],
+                        "Actual Rows": 3000,
+                        "Sort Method": "quicksort",
+                        "Node Type": "Sort",
+                        "Startup Cost": 68902.06
+                      }
+                    ],
+                    "Actual Loops": 1,
+                    "Filter": "(count(DISTINCT tb_evento_corridas.data_inicial) = 1)",
+                    "Plan Rows": 56,
+                    "Strategy": "Sorted",
+                    "Async Capable": false,
+                    "Actual Total Time": 59.686,
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Total Cost": 69270.86,
+                    "Rows Removed by Filter": 48,
+                    "Partial Mode": "Simple",
+                    "Plan Width": 65,
+                    "Group Key": [
+                      "tb_evento_corridas.nome_evento"
+                    ],
+                    "Actual Rows": 2902,
+                    "Node Type": "Aggregate",
+                    "Startup Cost": 68902.06
+                  },
+                  {
+                    "Actual Startup Time": 0.001,
+                    "Actual Loops": 2902,
+                    "Plan Rows": 100,
+                    "Alias": "variant",
+                    "Async Capable": false,
+                    "Actual Total Time": 0.001,
+                    "Parent Relationship": "Inner",
+                    "Parallel Aware": false,
+                    "Total Cost": 1.0,
+                    "Plan Width": 32,
+                    "Actual Rows": 1,
+                    "Function Name": "jsonb_array_elements",
+                    "Node Type": "Function Scan",
+                    "Startup Cost": 0.0
+                  }
+                ],
+                "Actual Loops": 1,
+                "Plan Rows": 5600,
+                "Async Capable": false,
+                "Actual Total Time": 63.053,
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 69396.86,
+                "Plan Width": 97,
+                "Inner Unique": false,
+                "Actual Rows": 2902,
+                "Node Type": "Nested Loop",
+                "Startup Cost": 68902.06
+              }
+            ],
+            "Actual Loops": 1,
+            "Plan Rows": 5600,
+            "Async Capable": false,
+            "Actual Total Time": 69.943,
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Total Cost": 69759.49,
+            "Sort Space Used": 868,
+            "Plan Width": 97,
+            "Sort Key": [
+              "(\"left\"((tb_evento_corridas.nome_evento)::text, 50))",
+              "tb_evento_corridas.nome_evento"
+            ],
+            "Actual Rows": 2902,
+            "Sort Method": "quicksort",
+            "Node Type": "Sort",
+            "Startup Cost": 69745.49
+          }
+        ],
+        "Actual Loops": 1,
+        "Filter": "(count(DISTINCT tb_evento_corridas.nome_evento) > 1)",
+        "Plan Rows": 19,
+        "Strategy": "Sorted",
+        "Async Capable": false,
+        "Actual Total Time": 74.122,
+        "Parallel Aware": false,
+        "Total Cost": 69802.48,
+        "Rows Removed by Filter": 2650,
+        "Partial Mode": "Simple",
+        "Plan Width": 64,
+        "Group Key": [
+          "(\"left\"((tb_evento_corridas.nome_evento)::text, 50))"
+        ],
+        "Actual Rows": 95,
+        "Node Type": "Aggregate",
+        "Startup Cost": 69745.49
+      },
+      "Execution Time": 74.164
+    }
+  ]
+}

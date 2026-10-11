@@ -375,7 +375,7 @@
     </div>
   <cfelse>
     <cfif len(VARIABLES.agendaManagementAlert.message)>
-      <cfoutput><div class="alert alert-#VARIABLES.agendaManagementAlert.type#">#htmlEditFormat(VARIABLES.agendaManagementAlert.message)#</div></cfoutput>
+      <cfoutput><div class="alert alert-#VARIABLES.agendaManagementAlert.type#">#encodeForHTML(VARIABLES.agendaManagementAlert.message)#</div></cfoutput>
     </cfif>
 
     <cfif NOT VARIABLES.agendaShowEditor>
@@ -425,11 +425,11 @@
           <div class="agenda-editor-title">
             <div class="d-flex align-items-center gap-2 mb-2">
               <a class="btn btn-sm btn-outline-light" href="./" title="Voltar para agendas"><i class="fa-solid fa-arrow-left"></i></a>
-              <span class="agenda-status <cfoutput>#VARIABLES.agendaEditorStatusClass#</cfoutput>"><cfoutput>#htmlEditFormat(VARIABLES.agendaFormStatus)#</cfoutput></span>
+              <span class="agenda-status <cfoutput>#VARIABLES.agendaEditorStatusClass#</cfoutput>"><cfoutput>#encodeForHTML(VARIABLES.agendaFormStatus)#</cfoutput></span>
               <cfif VARIABLES.agendaFormId GT 0><span class="small text-muted"><cfoutput>Agenda ## #VARIABLES.agendaFormId#</cfoutput></span></cfif>
             </div>
             <div class="agenda-kicker"><cfif VARIABLES.agendaFormId GT 0>Editor de agenda<cfelse>Nova agenda</cfif></div>
-            <h3 class="mb-1"><cfif len(VARIABLES.agendaFormName)><cfoutput>#htmlEditFormat(VARIABLES.agendaFormName)#</cfoutput><cfelse>Configure sua nova agenda</cfif></h3>
+            <h3 class="mb-1"><cfif len(VARIABLES.agendaFormName)><cfoutput>#encodeForHTML(VARIABLES.agendaFormName)#</cfoutput><cfelse>Configure sua nova agenda</cfif></h3>
             <p class="text-muted mb-0">Defina o conteudo, confira a previa e publique nos sites autorizados.</p>
           </div>
           <cfif VARIABLES.agendaFormId GT 0>
@@ -456,14 +456,14 @@
             <cfif VARIABLES.agendaFormId GT 0><input type="hidden" name="agenda_id" value="#VARIABLES.agendaFormId#"/><cfelse><input type="hidden" name="nova" value="1"/></cfif>
             <div class="col-12 col-lg-9">
               <label class="form-label" for="agendaOwnerSearch">Buscar usuario</label>
-              <div class="input-group"><span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span><input class="form-control" id="agendaOwnerSearch" type="search" name="owner_search" value="#htmlEditFormat(URL.owner_search)#" placeholder="Ex.: Maria, maria@email.com ou 142"/></div>
+              <div class="input-group"><span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span><input class="form-control" id="agendaOwnerSearch" type="search" name="owner_search" value="#encodeForHTMLAttribute(URL.owner_search)#" placeholder="Ex.: Maria, maria@email.com ou 142"/></div>
             </div>
             <div class="col-12 col-lg-3"><button class="btn btn-outline-warning w-100" type="submit">Buscar</button></div>
           </form>
         </cfoutput>
         </cfif>
 
-        <form method="post" action="<cfoutput>#htmlEditFormat(VARIABLES.agendaFormAction)#</cfoutput>">
+        <form method="post" action="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaFormAction)#</cfoutput>">
           <input type="hidden" name="acao" value="salvar_agenda"/>
           <input type="hidden" name="csrf_token" value="<cfoutput>#VARIABLES.agendaManagementCsrfToken#</cfoutput>"/>
           <input type="hidden" name="agenda_id" value="<cfoutput>#VARIABLES.agendaFormId#</cfoutput>"/>
@@ -474,11 +474,11 @@
             <select class="form-select" id="agendaOwner" name="id_usuario" required>
               <option value="">Busque e selecione um usuario</option>
               <cfif qAgendaManagementEdit.recordcount>
-                <cfoutput><option value="#qAgendaManagementEdit.id_usuario#" selected>## #qAgendaManagementEdit.id_usuario# - #htmlEditFormat(qAgendaManagementEdit.usuario_nome)# - #htmlEditFormat(qAgendaManagementEdit.usuario_email)#</option></cfoutput>
+                <cfoutput><option value="#qAgendaManagementEdit.id_usuario#" selected>## #qAgendaManagementEdit.id_usuario# - #encodeForHTML(qAgendaManagementEdit.usuario_nome)# - #encodeForHTML(qAgendaManagementEdit.usuario_email)#</option></cfoutput>
               </cfif>
               <cfoutput query="qAgendaManagementOwnerSearch">
                 <cfif NOT qAgendaManagementEdit.recordcount OR qAgendaManagementOwnerSearch.id NEQ qAgendaManagementEdit.id_usuario>
-                  <option value="#qAgendaManagementOwnerSearch.id#" <cfif qAgendaManagementOwnerSearch.id EQ VARIABLES.agendaFormOwnerId>selected</cfif>>## #qAgendaManagementOwnerSearch.id# - #htmlEditFormat(qAgendaManagementOwnerSearch.name)# - #htmlEditFormat(qAgendaManagementOwnerSearch.email)#</option>
+                  <option value="#qAgendaManagementOwnerSearch.id#" <cfif qAgendaManagementOwnerSearch.id EQ VARIABLES.agendaFormOwnerId>selected</cfif>>## #qAgendaManagementOwnerSearch.id# - #encodeForHTML(qAgendaManagementOwnerSearch.name)# - #encodeForHTML(qAgendaManagementOwnerSearch.email)#</option>
                 </cfif>
               </cfoutput>
             </select>
@@ -496,7 +496,7 @@
             <div class="row g-3">
               <div class="col-12 col-lg-8">
                 <label class="form-label" for="agendaName">Nome da agenda</label>
-                <input class="form-control form-control-lg" id="agendaName" type="text" name="nome" maxlength="160" required placeholder="Ex.: Corridas de rua em Santa Catarina" value="<cfoutput>#htmlEditFormat(VARIABLES.agendaFormName)#</cfoutput>"/>
+                <input class="form-control form-control-lg" id="agendaName" type="text" name="nome" maxlength="160" required placeholder="Ex.: Corridas de rua em Santa Catarina" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaFormName)#</cfoutput>"/>
               </div>
               <div class="col-12 col-lg-4">
                 <label class="form-label" for="agendaStatus">Status</label>
@@ -509,7 +509,7 @@
               </div>
               <div class="col-12">
                 <label class="form-label" for="agendaDescription">Descricao <span class="text-muted">(opcional)</span></label>
-                <textarea class="form-control" id="agendaDescription" name="descricao" rows="2" placeholder="Explique rapidamente o objetivo desta agenda"><cfoutput>#htmlEditFormat(VARIABLES.agendaFormDescription)#</cfoutput></textarea>
+                <textarea class="form-control" id="agendaDescription" name="descricao" rows="2" placeholder="Explique rapidamente o objetivo desta agenda"><cfoutput>#encodeForHTML(VARIABLES.agendaFormDescription)#</cfoutput></textarea>
               </div>
             </div>
           </div>
@@ -537,7 +537,7 @@
             <div class="row g-3 align-items-start">
               <div class="col-12 col-lg-8">
                 <label class="form-label" for="agendaDomain">Dominio permitido</label>
-                <div class="input-group input-group-lg"><span class="input-group-text"><i class="fa-solid fa-globe"></i></span><input class="form-control" id="agendaDomain" type="text" name="dominio_permitido" required placeholder="exemplo.com.br" value="<cfoutput>#htmlEditFormat(VARIABLES.agendaFormHost)#</cfoutput>"/></div>
+                <div class="input-group input-group-lg"><span class="input-group-text"><i class="fa-solid fa-globe"></i></span><input class="form-control" id="agendaDomain" type="text" name="dominio_permitido" required placeholder="exemplo.com.br" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaFormHost)#</cfoutput>"/></div>
                 <div class="form-text">Informe somente o dominio, sem https:// ou caminhos.</div>
               </div>
               <div class="col-12 col-lg-4">
@@ -565,8 +565,8 @@
                 <div class="col-12 col-xl-5">
                   <label class="form-label" for="agendaDateColor">Cor do card da data</label>
                   <div class="agenda-color-control">
-                    <input type="color" id="agendaDateColor" name="cor_card_data" value="<cfoutput>#htmlEditFormat(VARIABLES.agendaFormDateColor)#</cfoutput>" data-agenda-date-color/>
-                    <div><strong data-agenda-date-color-value><cfoutput>#htmlEditFormat(uCase(VARIABLES.agendaFormDateColor))#</cfoutput></strong><div class="small text-muted">O texto ganha contraste automaticamente.</div></div>
+                    <input type="color" id="agendaDateColor" name="cor_card_data" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaFormDateColor)#</cfoutput>" data-agenda-date-color/>
+                    <div><strong data-agenda-date-color-value><cfoutput>#encodeForHTML(uCase(VARIABLES.agendaFormDateColor))#</cfoutput></strong><div class="small text-muted">O texto ganha contraste automaticamente.</div></div>
                   </div>
                 </div>
                 <div class="col-12 col-md-6">
@@ -631,24 +631,24 @@
                 <input type="hidden" name="agenda_id" value="#qAgendaManagementEdit.id_agenda#"/>
                 <input type="hidden" name="buscar_eventos" value="1"/>
                 <div class="row g-2 align-items-end">
-                  <div class="col-12 col-lg-7"><label class="form-label" for="agendaEventSearch">Nome ou ID do evento</label><div class="input-group"><span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span><input class="form-control" id="agendaEventSearch" name="evento_busca" value="#htmlEditFormat(URL.evento_busca)#" placeholder="Digite parte do nome ou o ID"/></div></div>
+                  <div class="col-12 col-lg-7"><label class="form-label" for="agendaEventSearch">Nome ou ID do evento</label><div class="input-group"><span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span><input class="form-control" id="agendaEventSearch" name="evento_busca" value="#encodeForHTMLAttribute(URL.evento_busca)#" placeholder="Digite parte do nome ou o ID"/></div></div>
                   <div class="col-12 col-sm-7 col-lg-3"><label class="form-label">Periodo</label><select class="form-select" name="evento_visao"><option value="todos" <cfif URL.evento_visao EQ "todos">selected</cfif>>Todos</option><option value="futuros" <cfif URL.evento_visao EQ "futuros">selected</cfif>>Proximos eventos</option><option value="resultados" <cfif URL.evento_visao EQ "resultados">selected</cfif>>Com resultados</option></select></div>
                   <div class="col-12 col-sm-5 col-lg-2"><button class="btn btn-warning w-100" type="submit">Buscar</button></div>
                 </div>
                 <details class="agenda-disclosure mt-3" <cfif len(URL.evento_agregador & URL.evento_distancia & URL.evento_estado & URL.evento_cidade & URL.evento_tipo)>open</cfif>>
                   <summary><span><i class="fa-solid fa-filter me-2 text-warning"></i>Mais filtros</span><span class="small text-muted fw-normal">Agregador, local, distancia e tipo</span></summary>
                   <div class="agenda-disclosure-body"><div class="row g-3">
-                    <div class="col-12 col-lg-5"><label class="form-label">Agregador de edicoes</label><input class="form-control" name="evento_agregador" value="#htmlEditFormat(URL.evento_agregador)#" placeholder="Nome ou ID do agregador"/></div>
-                    <div class="col-6 col-lg-3"><label class="form-label">Distancia (km)</label><input class="form-control" type="number" step="0.001" min="0" name="evento_distancia" value="#htmlEditFormat(URL.evento_distancia)#"/></div>
+                    <div class="col-12 col-lg-5"><label class="form-label">Agregador de edicoes</label><input class="form-control" name="evento_agregador" value="#encodeForHTMLAttribute(URL.evento_agregador)#" placeholder="Nome ou ID do agregador"/></div>
+                    <div class="col-6 col-lg-3"><label class="form-label">Distancia (km)</label><input class="form-control" type="number" step="0.001" min="0" name="evento_distancia" value="#encodeForHTMLAttribute(URL.evento_distancia)#"/></div>
                     <div class="col-6 col-lg-2"><label class="form-label">Estado</label><select class="form-select" name="evento_estado"><option value="">Todos</option>
             </cfoutput>
                   <cfoutput query="qAgendaManagementStates"><option value="#estado#" <cfif estado EQ URL.evento_estado>selected</cfif>>#estado#</option></cfoutput>
             <cfoutput>
                     </select></div>
-                    <div class="col-12 col-lg-4"><label class="form-label">Cidade</label><input class="form-control" name="evento_cidade" value="#htmlEditFormat(URL.evento_cidade)#" placeholder="Nome da cidade"/></div>
+                    <div class="col-12 col-lg-4"><label class="form-label">Cidade</label><input class="form-control" name="evento_cidade" value="#encodeForHTMLAttribute(URL.evento_cidade)#" placeholder="Nome da cidade"/></div>
                     <div class="col-12 col-lg-4"><label class="form-label">Tipo</label><select class="form-select" name="evento_tipo"><option value="">Todos</option>
             </cfoutput>
-                  <cfoutput query="qAgendaManagementTypes"><option value="#tipo_corrida#" <cfif tipo_corrida EQ URL.evento_tipo>selected</cfif>>#htmlEditFormat(tipo_corrida)#</option></cfoutput>
+                  <cfoutput query="qAgendaManagementTypes"><option value="#tipo_corrida#" <cfif tipo_corrida EQ URL.evento_tipo>selected</cfif>>#encodeForHTML(tipo_corrida)#</option></cfoutput>
             <cfoutput>
                     </select></div>
                   </div></div>
@@ -672,10 +672,10 @@
                           <cfset VARIABLES.agendaSearchAggregator = agendaServiceQueryValue(qAgendaManagementEventSearch, "agregador_nome", currentRow) & ""/>
                           <tr>
                             <td><input class="form-check-input" type="checkbox" name="evento_ids" value="#id_evento#" data-agenda-event-checkbox <cfif agendaServiceNormalizeBoolean(ja_adicionado)>disabled</cfif>/></td>
-                            <td class="agenda-event-name"><div class="fw-semibold">#htmlEditFormat(nome_evento)#</div><div class="small text-muted">## #id_evento# - #htmlEditFormat(VARIABLES.agendaSearchCity)#<cfif len(VARIABLES.agendaSearchState)>/#htmlEditFormat(VARIABLES.agendaSearchState)#</cfif><cfif agendaServiceNormalizeBoolean(ja_adicionado)> - ja adicionado</cfif></div></td>
+                            <td class="agenda-event-name"><div class="fw-semibold">#encodeForHTML(nome_evento)#</div><div class="small text-muted">## #id_evento# - #encodeForHTML(VARIABLES.agendaSearchCity)#<cfif len(VARIABLES.agendaSearchState)>/#encodeForHTML(VARIABLES.agendaSearchState)#</cfif><cfif agendaServiceNormalizeBoolean(ja_adicionado)> - ja adicionado</cfif></div></td>
                             <td class="text-nowrap">#dateFormat(data_inicial, "dd/mm/yyyy")#</td>
-                            <td>#htmlEditFormat(distancias)#</td>
-                            <td>#htmlEditFormat(VARIABLES.agendaSearchAggregator)#</td>
+                            <td>#encodeForHTML(distancias)#</td>
+                            <td>#encodeForHTML(VARIABLES.agendaSearchAggregator)#</td>
                           </tr>
                         </cfoutput>
                       </tbody>
@@ -700,9 +700,9 @@
                       <cfset VARIABLES.agendaSelectedState = agendaServiceQueryValue(qAgendaManagementSelectedEvents, "estado", currentRow) & ""/>
                       <tr>
                         <td>#ordem#</td>
-                        <td class="agenda-event-name"><a href="https://roadrunners.run/evento/#urlEncodedFormat(tag)#/" target="_blank" rel="noopener" class="fw-semibold">#htmlEditFormat(nome_evento)# <i class="fa-solid fa-arrow-up-right-from-square ms-1 small"></i></a><div class="small text-muted">## #id_evento# - #htmlEditFormat(VARIABLES.agendaSelectedCity)#<cfif len(VARIABLES.agendaSelectedState)>/#htmlEditFormat(VARIABLES.agendaSelectedState)#</cfif></div></td>
+                        <td class="agenda-event-name"><a href="https://roadrunners.run/evento/#urlEncodedFormat(tag)#/" target="_blank" rel="noopener" class="fw-semibold">#encodeForHTML(nome_evento)# <i class="fa-solid fa-arrow-up-right-from-square ms-1 small"></i></a><div class="small text-muted">## #id_evento# - #encodeForHTML(VARIABLES.agendaSelectedCity)#<cfif len(VARIABLES.agendaSelectedState)>/#encodeForHTML(VARIABLES.agendaSelectedState)#</cfif></div></td>
                         <td>#dateFormat(data_inicial, "dd/mm/yyyy")#</td>
-                        <td>#htmlEditFormat(tipo_corrida)#</td>
+                        <td>#encodeForHTML(tipo_corrida)#</td>
                         <td class="text-end text-nowrap">
                           <form method="post" action="./?agenda_id=#qAgendaManagementEdit.id_agenda#" class="d-inline"><input type="hidden" name="acao" value="mover_evento"/><input type="hidden" name="csrf_token" value="#VARIABLES.agendaManagementCsrfToken#"/><input type="hidden" name="agenda_id" value="#qAgendaManagementEdit.id_agenda#"/><input type="hidden" name="id_evento" value="#id_evento#"/><input type="hidden" name="direcao" value="cima"/><button class="btn btn-sm btn-link text-light px-1" title="Mover para cima"><i class="fa-solid fa-arrow-up"></i></button></form>
                           <form method="post" action="./?agenda_id=#qAgendaManagementEdit.id_agenda#" class="d-inline"><input type="hidden" name="acao" value="mover_evento"/><input type="hidden" name="csrf_token" value="#VARIABLES.agendaManagementCsrfToken#"/><input type="hidden" name="agenda_id" value="#qAgendaManagementEdit.id_agenda#"/><input type="hidden" name="id_evento" value="#id_evento#"/><input type="hidden" name="direcao" value="baixo"/><button class="btn btn-sm btn-link text-light px-1" title="Mover para baixo"><i class="fa-solid fa-arrow-down"></i></button></form>
@@ -726,7 +726,7 @@
               <div class="small text-muted text-uppercase fw-bold mb-2">Regras em uso</div>
               <div class="d-flex flex-wrap gap-2">
                 <cfoutput query="qAgendaManagementFilters">
-                  <span class="agenda-rule"><strong>#uCase(htmlEditFormat(campo))#:</strong> #htmlEditFormat(valor_exibicao)#
+                  <span class="agenda-rule"><strong>#uCase(encodeForHTML(campo))#:</strong> #encodeForHTML(valor_exibicao)#
                     <form method="post" action="./?agenda_id=#qAgendaManagementEdit.id_agenda#"><input type="hidden" name="acao" value="remover_filtro"/><input type="hidden" name="csrf_token" value="#VARIABLES.agendaManagementCsrfToken#"/><input type="hidden" name="agenda_id" value="#qAgendaManagementEdit.id_agenda#"/><input type="hidden" name="id_agenda_filtro" value="#id_agenda_filtro#"/><button type="submit" class="btn btn-sm btn-link text-danger p-0" title="Remover regra"><i class="fa-solid fa-circle-xmark"></i></button></form>
                   </span>
                 </cfoutput>
@@ -775,17 +775,17 @@
             <div class="agenda-subpanel" data-agenda-rule-panel="tipo" hidden>
               <form method="post" action="./?agenda_id=<cfoutput>#qAgendaManagementEdit.id_agenda#</cfoutput>" class="row g-2 align-items-end">
                 <input type="hidden" name="acao" value="adicionar_filtro"/><input type="hidden" name="csrf_token" value="<cfoutput>#VARIABLES.agendaManagementCsrfToken#</cfoutput>"/><input type="hidden" name="agenda_id" value="<cfoutput>#qAgendaManagementEdit.id_agenda#</cfoutput>"/><input type="hidden" name="campo" value="tipo"/>
-                <div class="col-12 col-lg-9"><label class="form-label">Tipo de evento</label><select class="form-select" name="valor_texto" required><option value="">Selecione um tipo</option><cfoutput query="qAgendaManagementTypes"><option value="#tipo_corrida#">#htmlEditFormat(tipo_corrida)#</option></cfoutput></select></div>
+                <div class="col-12 col-lg-9"><label class="form-label">Tipo de evento</label><select class="form-select" name="valor_texto" required><option value="">Selecione um tipo</option><cfoutput query="qAgendaManagementTypes"><option value="#tipo_corrida#">#encodeForHTML(tipo_corrida)#</option></cfoutput></select></div>
                 <div class="col-12 col-lg-3"><button class="btn btn-warning w-100" type="submit"><i class="fa-solid fa-plus me-2"></i>Adicionar regra</button></div>
               </form>
             </div>
 
             <div class="agenda-subpanel" data-agenda-rule-panel="agregador" <cfif NOT len(trim(URL.agregador_filtro_busca))>hidden</cfif>>
-              <cfoutput><form method="get" action="./" class="row g-2 align-items-end mb-3"><input type="hidden" name="agenda_id" value="#qAgendaManagementEdit.id_agenda#"/><div class="col-12 col-lg-9"><label class="form-label">Buscar agregador</label><input class="form-control" name="agregador_filtro_busca" value="#htmlEditFormat(URL.agregador_filtro_busca)#" placeholder="Nome ou ID do agregador"/></div><div class="col-12 col-lg-3"><button class="btn btn-outline-light w-100" type="submit"><i class="fa-solid fa-magnifying-glass me-2"></i>Buscar</button></div></form></cfoutput>
+              <cfoutput><form method="get" action="./" class="row g-2 align-items-end mb-3"><input type="hidden" name="agenda_id" value="#qAgendaManagementEdit.id_agenda#"/><div class="col-12 col-lg-9"><label class="form-label">Buscar agregador</label><input class="form-control" name="agregador_filtro_busca" value="#encodeForHTMLAttribute(URL.agregador_filtro_busca)#" placeholder="Nome ou ID do agregador"/></div><div class="col-12 col-lg-3"><button class="btn btn-outline-light w-100" type="submit"><i class="fa-solid fa-magnifying-glass me-2"></i>Buscar</button></div></form></cfoutput>
               <cfif qAgendaManagementAggregatorSearch.recordcount>
                 <form method="post" action="./?agenda_id=<cfoutput>#qAgendaManagementEdit.id_agenda#</cfoutput>" class="row g-2 align-items-end">
                   <input type="hidden" name="acao" value="adicionar_filtro"/><input type="hidden" name="csrf_token" value="<cfoutput>#VARIABLES.agendaManagementCsrfToken#</cfoutput>"/><input type="hidden" name="agenda_id" value="<cfoutput>#qAgendaManagementEdit.id_agenda#</cfoutput>"/><input type="hidden" name="campo" value="agregador"/>
-                  <div class="col-12 col-lg-9"><label class="form-label">Agregador encontrado</label><select class="form-select" name="valor_id" required><cfoutput query="qAgendaManagementAggregatorSearch"><option value="#id_agrega_evento#">## #id_agrega_evento# - #htmlEditFormat(nome_evento_agregado)# (#htmlEditFormat(tipo_agregacao)#)</option></cfoutput></select></div>
+                  <div class="col-12 col-lg-9"><label class="form-label">Agregador encontrado</label><select class="form-select" name="valor_id" required><cfoutput query="qAgendaManagementAggregatorSearch"><option value="#id_agrega_evento#">## #id_agrega_evento# - #encodeForHTML(nome_evento_agregado)# (#encodeForHTML(tipo_agregacao)#)</option></cfoutput></select></div>
                   <div class="col-12 col-lg-3"><button class="btn btn-warning w-100" type="submit"><i class="fa-solid fa-plus me-2"></i>Adicionar regra</button></div>
                 </form>
               <cfelseif len(trim(URL.agregador_filtro_busca))>
@@ -802,14 +802,14 @@
                 <div><div class="agenda-kicker">Previa</div><h4 class="mb-1">Cards do embed</h4><div class="small text-muted"><cfoutput>#qAgendaManagementPreview.recordcount#</cfoutput> evento(s) nesta visualizacao</div></div>
                 <div class="btn-group align-self-start"><cfoutput><a class="btn btn-sm <cfif VARIABLES.agendaManagementPreviewView EQ 'futuros'>btn-warning<cfelse>btn-outline-light</cfif>" href="./?agenda_id=#qAgendaManagementEdit.id_agenda#&preview_visao=futuros">Futuros</a><a class="btn btn-sm <cfif VARIABLES.agendaManagementPreviewView EQ 'resultados'>btn-warning<cfelse>btn-outline-light</cfif>" href="./?agenda_id=#qAgendaManagementEdit.id_agenda#&preview_visao=resultados">Resultados</a></cfoutput></div>
               </div>
-              <div class="agenda-preview <cfif VARIABLES.agendaFormTheme EQ 'claro'>is-light</cfif>" data-agenda-preview data-card-font="<cfoutput>#htmlEditFormat(VARIABLES.agendaFormCardFont)#</cfoutput>" data-card-radius="<cfoutput>#htmlEditFormat(VARIABLES.agendaFormCardRadius)#</cfoutput>" style="--agenda-preview-date: <cfoutput>#htmlEditFormat(VARIABLES.agendaFormDateColor)#</cfoutput>; --agenda-preview-date-text: <cfoutput>#htmlEditFormat(VARIABLES.agendaFormDateTextColor)#</cfoutput>;">
+              <div class="agenda-preview <cfif VARIABLES.agendaFormTheme EQ 'claro'>is-light</cfif>" data-agenda-preview data-card-font="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaFormCardFont)#</cfoutput>" data-card-radius="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaFormCardRadius)#</cfoutput>" style="--agenda-preview-date: <cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaFormDateColor)#</cfoutput>; --agenda-preview-date-text: <cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaFormDateTextColor)#</cfoutput>;">
                 <cfoutput query="qAgendaManagementPreview">
                   <cfset VARIABLES.previewDistances = agendaServiceDisplayDistances(isJSON(distancias_json & "") ? deserializeJSON(distancias_json & "") : [])/>
                   <cfset VARIABLES.agendaPreviewCity = agendaServiceQueryValue(qAgendaManagementPreview, "cidade", currentRow) & ""/>
                   <cfset VARIABLES.agendaPreviewState = agendaServiceQueryValue(qAgendaManagementPreview, "estado", currentRow) & ""/>
                   <a class="agenda-preview-card" href="https://roadrunners.run/evento/#urlEncodedFormat(tag)#/" target="_blank" rel="noopener">
                     <div class="agenda-preview-date"><strong>#dateFormat(data_final, "dd")#</strong><span>#agendaServiceMonthAbbreviationPtBr(data_final)# #dateFormat(data_final, "yyyy")#</span></div>
-                    <div class="min-w-0"><div class="fw-bold text-truncate">#htmlEditFormat(nome_evento)#</div><div class="small text-muted"><i class="fa-solid fa-location-dot me-1"></i>#htmlEditFormat(VARIABLES.agendaPreviewCity)#<cfif len(VARIABLES.agendaPreviewState)> - #htmlEditFormat(VARIABLES.agendaPreviewState)#</cfif></div><cfif arrayLen(VARIABLES.previewDistances)><div class="mt-2"><cfloop array="#VARIABLES.previewDistances#" index="previewDistance"><span class="agenda-distance">#int(previewDistance.distancia)# #htmlEditFormat(previewDistance.unidade)#</span></cfloop></div></cfif></div>
+                    <div class="min-w-0"><div class="fw-bold text-truncate">#encodeForHTML(nome_evento)#</div><div class="small text-muted"><i class="fa-solid fa-location-dot me-1"></i>#encodeForHTML(VARIABLES.agendaPreviewCity)#<cfif len(VARIABLES.agendaPreviewState)> - #encodeForHTML(VARIABLES.agendaPreviewState)#</cfif></div><cfif arrayLen(VARIABLES.previewDistances)><div class="mt-2"><cfloop array="#VARIABLES.previewDistances#" index="previewDistance"><span class="agenda-distance">#int(previewDistance.distancia)# #encodeForHTML(previewDistance.unidade)#</span></cfloop></div></cfif></div>
                   </a>
                 </cfoutput>
                 <cfif NOT qAgendaManagementPreview.recordcount><div class="text-center text-muted py-5">Nenhum evento corresponde a esta visualizacao.</div></cfif>
@@ -840,7 +840,7 @@
                   <summary><span><i class="fa-solid fa-code me-2 text-warning"></i>Embed para sites</span><span class="small text-muted fw-normal">HTML + JavaScript</span></summary>
                   <div class="agenda-disclosure-body">
                     <p class="small text-muted">Use para exibir os cards responsivos diretamente em uma pagina.</p>
-                    <textarea class="form-control agenda-code mb-2" id="agendaEmbedCode" readonly><cfoutput>#htmlEditFormat(VARIABLES.agendaEmbedSnippet)#</cfoutput></textarea>
+                    <textarea class="form-control agenda-code mb-2" id="agendaEmbedCode" readonly><cfoutput>#encodeForHTML(VARIABLES.agendaEmbedSnippet)#</cfoutput></textarea>
                     <button class="btn btn-sm btn-warning" type="button" data-copy-target="agendaEmbedCode"><i class="fa-regular fa-copy me-2"></i>Copiar embed</button>
                   </div>
                 </details>
@@ -848,7 +848,7 @@
                 <details class="agenda-disclosure" <cfif len(VARIABLES.agendaManagementNewFeedToken)>open</cfif>>
                   <summary><span><i class="fa-solid fa-rss me-2 text-warning"></i>Feed XML</span><span class="small text-muted fw-normal">Integracoes e agregadores</span></summary>
                   <div class="agenda-disclosure-body">
-                    <textarea class="form-control agenda-code mb-2" id="agendaXmlCode" readonly><cfoutput>#htmlEditFormat(VARIABLES.agendaXmlUrl)#</cfoutput></textarea>
+                    <textarea class="form-control agenda-code mb-2" id="agendaXmlCode" readonly><cfoutput>#encodeForHTML(VARIABLES.agendaXmlUrl)#</cfoutput></textarea>
                     <div class="d-flex flex-wrap gap-2 mb-2">
                       <button class="btn btn-sm btn-outline-warning" type="button" data-copy-target="agendaXmlCode"><i class="fa-regular fa-copy me-2"></i>Copiar XML</button>
                       <form method="post" action="./?agenda_id=<cfoutput>#qAgendaManagementEdit.id_agenda#</cfoutput>" onsubmit="return confirm('A credencial anterior deixara de funcionar. Continuar?');"><input type="hidden" name="acao" value="rotacionar_credencial"/><input type="hidden" name="csrf_token" value="<cfoutput>#VARIABLES.agendaManagementCsrfToken#</cfoutput>"/><input type="hidden" name="agenda_id" value="<cfoutput>#qAgendaManagementEdit.id_agenda#</cfoutput>"/><button class="btn btn-sm btn-outline-danger" type="submit"><i class="fa-solid fa-rotate me-2"></i>Gerar nova credencial</button></form>
@@ -860,7 +860,7 @@
                 <details class="agenda-disclosure">
                   <summary><span><i class="fa-solid fa-file-code me-2 text-warning"></i>Endpoint JSON</span><span class="small text-muted fw-normal">Uso por desenvolvedores</span></summary>
                   <div class="agenda-disclosure-body">
-                    <input class="form-control agenda-code min-h-0" id="agendaJsonCode" readonly value="<cfoutput>#htmlEditFormat(VARIABLES.agendaJsonUrl)#</cfoutput>"/>
+                    <input class="form-control agenda-code min-h-0" id="agendaJsonCode" readonly value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.agendaJsonUrl)#</cfoutput>"/>
                     <button class="btn btn-sm btn-outline-warning mt-2" type="button" data-copy-target="agendaJsonCode"><i class="fa-regular fa-copy me-2"></i>Copiar JSON</button>
                   </div>
                 </details>
@@ -890,10 +890,10 @@
                     <cfset VARIABLES.agendaAccessDuration = agendaServiceQueryValue(qAgendaManagementRecentAccess, "duracao_ms", currentRow) & ""/>
                     <tr>
                       <td class="text-nowrap">#dateFormat(data_acesso, "dd/mm/yyyy")# #timeFormat(data_acesso, "HH:nn:ss")#</td>
-                      <td>#uCase(htmlEditFormat(formato))#</td>
-                      <td>#htmlEditFormat(VARIABLES.agendaAccessView)#</td>
-                      <td>#htmlEditFormat(VARIABLES.agendaAccessHost)#</td>
-                      <td>#htmlEditFormat(VARIABLES.agendaAccessIp)#</td>
+                      <td>#uCase(encodeForHTML(formato))#</td>
+                      <td>#encodeForHTML(VARIABLES.agendaAccessView)#</td>
+                      <td>#encodeForHTML(VARIABLES.agendaAccessHost)#</td>
+                      <td>#encodeForHTML(VARIABLES.agendaAccessIp)#</td>
                       <td><span class="badge <cfif status_http GTE 200 AND status_http LT 400>bg-success<cfelse>bg-danger</cfif>">#status_http#</span></td>
                       <td>#eventos_retornados#</td>
                       <td><cfif len(VARIABLES.agendaAccessDuration)>#VARIABLES.agendaAccessDuration# ms<cfelse>-</cfif></td>
@@ -919,10 +919,10 @@
                 <cfset VARIABLES.agendaStatusClass = status EQ "ativa" ? "is-active" : (status EQ "rascunho" ? "is-draft" : (status EQ "pausada" ? "is-paused" : "is-archived"))/>
                 <tr>
                   <td class="text-nowrap">## #id_agenda#</td>
-                  <td class="agenda-event-name"><a href="./?agenda_id=#id_agenda#" class="fw-semibold">#htmlEditFormat(nome)#</a><div class="small text-muted">v#versao#</div></td>
-                  <td><div>#htmlEditFormat(usuario_nome)#</div><div class="small text-muted">## #id_usuario# - #htmlEditFormat(usuario_email)#</div></td>
+                  <td class="agenda-event-name"><a href="./?agenda_id=#id_agenda#" class="fw-semibold">#encodeForHTML(nome)#</a><div class="small text-muted">v#versao#</div></td>
+                  <td><div>#encodeForHTML(usuario_nome)#</div><div class="small text-muted">## #id_usuario# - #encodeForHTML(usuario_email)#</div></td>
                   <td><span class="badge <cfif modo EQ 'dinamica'>bg-info text-dark<cfelse>bg-secondary</cfif>">#modo#</span></td>
-                  <td><div>#htmlEditFormat(dominio_permitido)#</div><cfif agendaServiceNormalizeBoolean(permitir_subdominios)><div class="small text-muted">inclui subdominios</div></cfif></td>
+                  <td><div>#encodeForHTML(dominio_permitido)#</div><cfif agendaServiceNormalizeBoolean(permitir_subdominios)><div class="small text-muted">inclui subdominios</div></cfif></td>
                   <td><cfif modo EQ "manual">#total_eventos# evento(s)<cfelse>#total_filtros# regra(s)</cfif></td>
                   <td>#LSNumberFormat(total_acessos, "9,999,999")#</td>
                   <td><span class="agenda-status #VARIABLES.agendaStatusClass#">#status#</span></td>

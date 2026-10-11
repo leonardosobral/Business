@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/en/event/2026-ardap-run-corrida-beneficente/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-ardap-run-corrida-beneficente/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-ardap-run-corrida-beneficente/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-ardap-run-corrida-beneficente/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-ardap-run-corrida-beneficente/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/en/event/2026-ardap-run-corrida-beneficente/",
+      "name": "Ardap Run - Corrida Beneficente",
+      "description": "Ardap Run - Corrida Beneficente takes place on 18 october 2026, in Parque Belvedere - Paulo Afonso - BA.",
+      "url": "https://roadrunners.run/en/event/2026-ardap-run-corrida-beneficente/",
+      "startDate": "2026-10-18",
+      "endDate": "2026-10-18",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://www.chipower.com.br/painel/upload/img/inscricao/img-22-496fcdb50bd0778f9722cf3e9954f297.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Parque Belvedere",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Paulo Afonso",
+          "addressRegion": "BA",
+          "addressCountry": "BR",
+          "streetAddress": "Parque Belvedere"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.chipower.com.br/evento/2026/corrida-de-rua/arpad-run"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/en/",
+          "@type": "ListItem",
+          "name": "Home"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/ba/",
+          "@type": "ListItem",
+          "name": "Races in BA"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/en/event/2026-ardap-run-corrida-beneficente/",
+          "@type": "ListItem",
+          "name": "Ardap Run - Corrida Beneficente"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

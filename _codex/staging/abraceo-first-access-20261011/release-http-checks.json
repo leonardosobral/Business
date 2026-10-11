@@ -1,0 +1,20 @@
+{
+  "origin_http": [
+    {
+      "check": "anonymous_page",
+      "status": 200
+    },
+    {
+      "check": "anonymous_lookup",
+      "status": 401
+    },
+    {
+      "check": "forged_actor",
+      "status": 403
+    },
+    {
+      "check": "duplicate_operation",
+      "status": 403
+    }
+  ]
+}

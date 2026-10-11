@@ -1,0 +1,41 @@
+{
+  "selected": [
+    {
+      "id": 42850,
+      "name": "Bota Pra Correr - Rio de Janeiro - 2026",
+      "date": "2026-10-18",
+      "page": "https://www.runningland.com.br/bota-pra-correr-rio-de-janeiro-2026",
+      "evidence": "Página atual mostra 18 Out, edição 2026, 5K/10K. Regulamento HTML remete a data da página oficial."
+    },
+    {
+      "id": 44229,
+      "name": "Serrinha Runners 2026",
+      "date": "2026-10-17",
+      "page": "https://tiquet.com.br/evento/2026-13-serrinha-runners-2026/",
+      "evidence": "Página 17/10/2026; aviso explícito 22/08 para 17/10; regulamento v2 primeira página 17 outubro2026/5km."
+    },
+    {
+      "id": 45646,
+      "name": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+      "date": "2026-10-17",
+      "page": "https://www.ticketsports.com.br/e/CIRCUITO+DE+CORRIDAS+-+CORRER+%C3%89+MASSA+APOSTOU+LOTERIAS+-+ETAPA+APUCARANA-87900",
+      "evidence": "TicketSports data17/10/2026 e texto 17 outubro; PDF Sports360 primeira página quarta etapa17/10/2026 Apucarana."
+    },
+    {
+      "id": 48246,
+      "name": "CORRIDA DO COMERCIÁRIO - ETAPA MANACAPURU 2026",
+      "date": "2026-10-11",
+      "page": "https://www.ticketsports.com.br/e/CORRIDA+DO+COMERCI%C3%81RIO+-+ETAPA+MANACAPURU+2026-87872",
+      "evidence": "TicketSports11/10/2026 e5km; regulamento vinculado mesma data11outubro2026."
+    }
+  ],
+  "excluded": {
+    "46589": "PáginaPScronos11/10/2026 vs PDF25/10/2026 vs percurso18/10: conflito, não alterar.",
+    "47023": "PDF26/09 vs cadastro11/10, página insuficiente: não alterar.",
+    "40879": "Página11/10 vs cadastro18/10 vs PDF26/04, conflito: não alterar.",
+    "43093": "Página inscrição indisponível sem confirmação atual: não alterar."
+  },
+  "extra_regulation_45646": "https://sports360.com.br/wp-content/uploads/Regulamento-CIRCUITO-CORRER-E-MASSA-2.pdf",
+  "reviewed_at": "2026-10-04",
+  "method": "CUA página renderizada e leitura visual primeira página PDFs; nenhum contato externo nem formulário enviado."
+}

@@ -1,0 +1,1 @@
+Revisão independente public_fact_review: sem bloqueadores. Fontes e hashes conferidos; categorias e textos coerentes, três pares de hashes traduções conferem. Prelock precede categorias nos dois sentidos; inversão restaura4eventos9percursos13dependências. Revisor não editou nem publicou.

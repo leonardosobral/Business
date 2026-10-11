@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-2-patinhas-run/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-2-patinhas-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-2-patinhas-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-2-patinhas-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-2-patinhas-run/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-2-patinhas-run/",
+      "name": "2º PATINHAS RUN",
+      "description": "2º PATINHAS RUN se realiza el 18 octubre 2026, en Concentração na Newon - Corrida no Parque Ibirapuera - São Paulo - SP.",
+      "url": "https://roadrunners.run/es/evento/2026-2-patinhas-run/",
+      "startDate": "2026-10-18",
+      "endDate": "2026-10-18",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://images.sympla.com.br/6a7e15f6a926b-lg.jpg"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Concentração na Newon - Corrida no Parque Ibirapuera",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "São Paulo",
+          "addressRegion": "SP",
+          "addressCountry": "BR",
+          "streetAddress": "Concentração na Newon - Corrida no Parque Ibirapuera"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.sympla.com.br/evento/2o-patinhas-run/3540094"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/sp/",
+          "@type": "ListItem",
+          "name": "Carreras en SP"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-2-patinhas-run/",
+          "@type": "ListItem",
+          "name": "2º PATINHAS RUN"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

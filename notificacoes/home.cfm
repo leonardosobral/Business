@@ -7,7 +7,7 @@
 <nav class="nav nav-pills flex-wrap gap-2 mb-3" aria-label="Público das notificações">
   <cfoutput><cfloop list="usuarios,admins,todos" item="notificaAudienceTab">
     <a class="nav-link <cfif VARIABLES.notificaPublico EQ notificaAudienceTab>active</cfif>"
-       href="#htmlEditFormat(VARIABLES.notificaAudienceBaseUrl & notificaAudienceTab)#"
+       href="#encodeForHTMLAttribute(VARIABLES.notificaAudienceBaseUrl & notificaAudienceTab)#"
        <cfif VARIABLES.notificaPublico EQ notificaAudienceTab>aria-current="page"</cfif>>#VARIABLES.notificaAudienceLabels[notificaAudienceTab]#</a>
   </cfloop></cfoutput>
 </nav>
@@ -123,12 +123,12 @@
             <div class="row g-3">
               <div class="col-12 col-xl-4">
                 <label class="form-label small text-uppercase text-muted fw-bold">Busca</label>
-                <input class="form-control" type="text" name="busca" value="<cfoutput>#htmlEditFormat(VARIABLES.notificaBusca)#</cfoutput>" placeholder="ID do usuário, ID da notificação, nome, e-mail, link ou conteúdo"/>
+                <input class="form-control" type="text" name="busca" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificaBusca)#</cfoutput>" placeholder="ID do usuário, ID da notificação, nome, e-mail, link ou conteúdo"/>
               </div>
 
               <div class="col-12 col-md-6 col-xl-2">
                 <label class="form-label small text-uppercase text-muted fw-bold">Template</label>
-                <input class="form-control" type="number" name="template_id" value="<cfoutput>#htmlEditFormat(VARIABLES.notificaTemplateId)#</cfoutput>" step="1" inputmode="numeric"/>
+                <input class="form-control" type="number" name="template_id" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificaTemplateId)#</cfoutput>" step="1" inputmode="numeric"/>
               </div>
 
               <div class="col-12 col-md-6 col-xl-2">
@@ -136,7 +136,7 @@
                 <select class="form-select" name="campanha">
                   <option value="" <cfif VARIABLES.notificaCampanha EQ "">selected</cfif>>Todas</option>
                   <cfoutput query="qNotificaCampanhas">
-                    <option value="#htmlEditFormat(qNotificaCampanhas.campaign_name)#" <cfif VARIABLES.notificaCampanha EQ qNotificaCampanhas.campaign_name>selected</cfif>>#htmlEditFormat(qNotificaCampanhas.campaign_name)#</option>
+                    <option value="#encodeForHTMLAttribute(qNotificaCampanhas.campaign_name)#" <cfif VARIABLES.notificaCampanha EQ qNotificaCampanhas.campaign_name>selected</cfif>>#encodeForHTML(qNotificaCampanhas.campaign_name)#</option>
                   </cfoutput>
                 </select>
               </div>
@@ -154,12 +154,12 @@
 
               <div class="col-12 col-md-6 col-xl-2">
                 <label class="form-label small text-uppercase text-muted fw-bold">Publicadas a partir de</label>
-                <input class="form-control" type="date" name="data_publicacao_inicial" value="<cfoutput>#htmlEditFormat(VARIABLES.notificaDataPublicacaoInicial)#</cfoutput>"/>
+                <input class="form-control" type="date" name="data_publicacao_inicial" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificaDataPublicacaoInicial)#</cfoutput>"/>
               </div>
 
               <div class="col-12 col-md-6 col-xl-2">
                 <label class="form-label small text-uppercase text-muted fw-bold">Publicadas até</label>
-                <input class="form-control" type="date" name="data_publicacao_final" value="<cfoutput>#htmlEditFormat(VARIABLES.notificaDataPublicacaoFinal)#</cfoutput>"/>
+                <input class="form-control" type="date" name="data_publicacao_final" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.notificaDataPublicacaoFinal)#</cfoutput>"/>
               </div>
             </div>
 
@@ -252,14 +252,14 @@
                         <div class="small text-muted">Template <cfif len(trim(id_notifica_template))>#id_notifica_template#<cfelse>sem template</cfif></div>
                       </td>
                       <td style="max-width: 220px;">
-                        <div class="fw-semibold">#htmlEditFormat(name)#</div>
-                        <div class="small text-muted">#htmlEditFormat(email)#</div>
+                        <div class="fw-semibold">#encodeForHTML(name)#</div>
+                        <div class="small text-muted">#encodeForHTML(email)#</div>
                         <div class="small text-muted">Usuário #id_usuario#</div>
                         <cfif len(trim(destinatario_admin)) AND destinatario_admin><span class="badge badge-secondary">Admin</span></cfif>
                       </td>
                       <td style="max-width: 180px;">
                         <cfif len(trim(campanha_template))>
-                          #htmlEditFormat(campanha_template)#
+                          #encodeForHTML(campanha_template)#
                         <cfelse>
                           <span class="text-muted">Sem campanha</span>
                         </cfif>
@@ -273,7 +273,7 @@
                       </td>
                       <td style="max-width: 220px;">
                         <cfif len(trim(link))>
-                          <a href="#htmlEditFormat(link)#" target="_blank" rel="noopener noreferrer">#htmlEditFormat(link)#</a>
+                          <a href="#encodeForHTMLAttribute(link)#" target="_blank" rel="noopener noreferrer">#encodeForHTML(link)#</a>
                         <cfelse>
                           <span class="text-muted">Sem link</span>
                         </cfif>

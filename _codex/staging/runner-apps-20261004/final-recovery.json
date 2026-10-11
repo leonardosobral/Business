@@ -1,0 +1,101 @@
+{
+  "at": "2026-10-05T02:34:18.178935+00:00",
+  "files": [
+    "/var/www/business.roadrunners.run/api/portal/runner-apps/Catalog.cfc",
+    "/var/www/business.roadrunners.run/api/portal/runner-apps/index.cfm",
+    "/var/www/business.roadrunners.run/api/portal/runner-apps/Application.cfc",
+    "/var/www/roadrunners.com.br/services/RunnerAppsMenuCache.cfc",
+    "/var/www/roadrunners.com.br/services/RunnerAppsHttpSource.cfc",
+    "/var/www/roadrunners.com.br/public-api/v1/discovery/runner-apps.cfm",
+    "/var/www/roadrunners.com.br/public-api/openapi.json",
+    "/var/www/roadrunners.com.br/public-api/Application.cfc",
+    "/var/www/roadrunners.com.br/includes/estrutura/menu_apps_data.cfm",
+    "/var/www/roadrunners.com.br/services/runner_apps_menu_factory.cfm",
+    "/var/www/openresults.run/404/index.html",
+    "/var/www/openresults.run/.htaccess",
+    "/var/www/openresults.run/includes/backend.cfm"
+  ],
+  "http": [
+    {
+      "url": "https://roadrunners.run/",
+      "status": "200",
+      "seconds": "0.106090",
+      "redirect": "",
+      "passed": true
+    },
+    {
+      "url": "https://business.roadrunners.run/",
+      "status": "200",
+      "seconds": "0.073071",
+      "redirect": "",
+      "passed": true
+    },
+    {
+      "url": "https://openresults.run/busca/?termo=maratona",
+      "status": "200",
+      "seconds": "0.419441",
+      "redirect": "",
+      "passed": true
+    },
+    {
+      "url": "https://openresults.run/404/",
+      "status": "404",
+      "seconds": "0.117072",
+      "redirect": "",
+      "passed": true
+    },
+    {
+      "url": "https://openresults.run/404/index.cfm",
+      "status": "404",
+      "seconds": "0.094855",
+      "redirect": "",
+      "passed": true
+    },
+    {
+      "url": "https://api.roadrunners.run/v1/discovery/runner-apps.cfm",
+      "status": "200",
+      "seconds": "0.134732",
+      "redirect": "",
+      "passed": true
+    },
+    {
+      "url": "https://api.roadrunners.run/v1/discovery/runner-apps.cfm?incluir_ocultos=1",
+      "status": "400",
+      "seconds": "0.080486",
+      "redirect": "",
+      "passed": true
+    },
+    {
+      "url": "https://business.roadrunners.run/api/portal/runner-apps/",
+      "status": "308",
+      "seconds": "0.069608",
+      "redirect": "https://api.roadrunners.run/v1/discovery/runner-apps.cfm",
+      "passed": true
+    }
+  ],
+  "apache": [
+    "Load1: 0.43",
+    "Load5: 2.02",
+    "Load15: 5.99",
+    "BusyWorkers: 2",
+    "IdleWorkers: 73",
+    "BusyWorkers: 2",
+    "IdleWorkers: 73"
+  ],
+  "containment_present": false,
+  "tls_config": "# Bound incomplete TLS negotiation; retain existing header/body limits.\n<IfModule reqtimeout_module>\n    RequestReadTimeout handshake=10\n</IfModule>\n",
+  "processes_verified": {
+    "coldfusion": {
+      "pid": 1756,
+      "started": "2026-09-14 02:09:06"
+    },
+    "apache_parent": {
+      "pid": 3808619,
+      "started": "2026-10-05 00:45:53"
+    }
+  },
+  "extra_http_checks": {
+    "/v1/me/profile-settings.cfm": 401,
+    "/v1/discovery/runner-apps.cfm?linha=principal": 200
+  }
+}

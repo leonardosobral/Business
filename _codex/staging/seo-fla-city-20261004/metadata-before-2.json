@@ -1,0 +1,67 @@
+{
+  "canonical": [
+    "<link rel=\"canonical\" href=\"https://roadrunners.run/es/evento/2026-fla-resenha-run/\" />"
+  ],
+  "alternates": [
+    "<link rel=\"alternate\" hreflang=\"pt-BR\" href=\"https://roadrunners.run/evento/2026-fla-resenha-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"en\" href=\"https://roadrunners.run/en/event/2026-fla-resenha-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"es\" href=\"https://roadrunners.run/es/evento/2026-fla-resenha-run/\" />",
+    "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://roadrunners.run/evento/2026-fla-resenha-run/\" />"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "@id": "https://roadrunners.run/es/evento/2026-fla-resenha-run/",
+      "name": "FLA RESENHA RUN",
+      "description": "FLA RESENHA RUN se realiza el 15 noviembre 2026, en Centro , S/N, Barra do Piraí, RJ, Brasil - Piraí - RJ.",
+      "url": "https://roadrunners.run/es/evento/2026-fla-resenha-run/",
+      "startDate": "2026-11-15",
+      "endDate": "2026-11-15",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "image": [
+        "https://cdn.ticketsports.com.br/ticketagora/images/OTL6YF5J3ZXL90G50PLIPWSSL1T1XS6ZEVGY8L8ZPKSPS6C568.png"
+      ],
+      "location": {
+        "@type": "Place",
+        "name": "Centro , S/N, Barra do Piraí, RJ, Brasil",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Piraí",
+          "addressRegion": "RJ",
+          "addressCountry": "BR",
+          "streetAddress": "Centro , S/N, Barra do Piraí, RJ, Brasil"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87863&origem=novo-site&lang=en-US"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {
+          "position": 1,
+          "item": "https://roadrunners.run/es/",
+          "@type": "ListItem",
+          "name": "Inicio"
+        },
+        {
+          "position": 2,
+          "item": "https://roadrunners.run/estado/rj/",
+          "@type": "ListItem",
+          "name": "Carreras en RJ"
+        },
+        {
+          "position": 3.0,
+          "item": "https://roadrunners.run/es/evento/2026-fla-resenha-run/",
+          "@type": "ListItem",
+          "name": "FLA RESENHA RUN"
+        }
+      ],
+      "@type": "BreadcrumbList"
+    }
+  ]
+}

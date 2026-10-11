@@ -1,0 +1,106 @@
+{
+  "PLAN": [
+    {
+      "Triggers": [],
+      "Planning Time": 0.676,
+      "Plan": {
+        "Actual Startup Time": 38.185,
+        "Plans": [
+          {
+            "Actual Startup Time": 6.97,
+            "Plans": [
+              {
+                "Actual Startup Time": 3.585,
+                "Actual Loops": 1,
+                "Index Name": "tb_evento_corridas_agenda_lookup_idx",
+                "Plan Rows": 34248,
+                "Index Cond": "(ativo = true)",
+                "Async Capable": false,
+                "Actual Total Time": 3.585,
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 1373.28,
+                "Plan Width": 0,
+                "Actual Rows": 34851,
+                "Node Type": "Bitmap Index Scan",
+                "Startup Cost": 0.0
+              }
+            ],
+            "Actual Loops": 1,
+            "Exact Heap Blocks": 398,
+            "Filter": "(((nome_evento)::text ~~ 'CIRCUITO DE CORRIDAS - CORRER \u00c9 MASSA APOSTOU LOTE%'::text) AND ((nome_evento)::text <> 'CIRCUITO DE CORRIDAS - CORRER \u00c9 MASSA APOSTOU LOTERIAS - ETAPA APUCARANA'::text))",
+            "Plan Rows": 3,
+            "Lossy Heap Blocks": 0,
+            "Alias": "tb_evento_corridas",
+            "Async Capable": false,
+            "Actual Total Time": 6.971,
+            "Parent Relationship": "InitPlan",
+            "Parallel Aware": false,
+            "Subplan Name": "InitPlan 1",
+            "Total Cost": 68129.84,
+            "Rows Removed by Filter": 2163,
+            "Rows Removed by Index Recheck": 0,
+            "Plan Width": 0,
+            "Relation Name": "tb_evento_corridas",
+            "Actual Rows": 1,
+            "Recheck Cond": "ativo",
+            "Node Type": "Bitmap Heap Scan",
+            "Startup Cost": 1373.28
+          },
+          {
+            "Actual Startup Time": 31.211,
+            "Plans": [
+              {
+                "Actual Startup Time": 2.86,
+                "Actual Loops": 1,
+                "Index Name": "tb_evento_corridas_agenda_lookup_idx",
+                "Plan Rows": 34248,
+                "Index Cond": "(ativo = true)",
+                "Async Capable": false,
+                "Actual Total Time": 2.86,
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 1373.28,
+                "Plan Width": 0,
+                "Actual Rows": 34851,
+                "Node Type": "Bitmap Index Scan",
+                "Startup Cost": 0.0
+              }
+            ],
+            "Actual Loops": 1,
+            "Exact Heap Blocks": 16581,
+            "Filter": "(((nome_evento)::text ~~ 'CIRCUITO DE CORRIDAS - CORRER \u00c9 MASSA APOSTOU LOTE%'::text) AND ((nome_evento)::text <> 'CIRCUITO DE CORRIDAS - CORRER \u00c9 MASSA APOSTOU LOTERIAS - ETAPA APUCARANA'::text) AND (data_inicial = '2026-10-17'::date) AND ((COALESCE(cidade, ''::character varying))::text = 'Apucarana'::text) AND ((COALESCE(estado, ''::character varying))::text = 'PR'::text))",
+            "Plan Rows": 1,
+            "Lossy Heap Blocks": 0,
+            "Alias": "tb_evento_corridas_1",
+            "Async Capable": false,
+            "Actual Total Time": 31.211,
+            "Parent Relationship": "InitPlan",
+            "Parallel Aware": false,
+            "Subplan Name": "InitPlan 2",
+            "Total Cost": 68386.7,
+            "Rows Removed by Filter": 34419,
+            "Rows Removed by Index Recheck": 0,
+            "Plan Width": 0,
+            "Relation Name": "tb_evento_corridas",
+            "Actual Rows": 0,
+            "Recheck Cond": "ativo",
+            "Node Type": "Bitmap Heap Scan",
+            "Startup Cost": 1373.28
+          }
+        ],
+        "Actual Loops": 1,
+        "Plan Rows": 1,
+        "Async Capable": false,
+        "Actual Total Time": 38.187,
+        "Parallel Aware": false,
+        "Total Cost": 92012.17,
+        "Plan Width": 2,
+        "Actual Rows": 1,
+        "Node Type": "Result",
+        "Startup Cost": 92012.16
+      },
+      "Execution Time": 38.213
+    }
+  ]
+}

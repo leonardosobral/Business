@@ -8,29 +8,29 @@ VARIABLES.bannerPageLabels={home='Página inicial',search='Busca',state='Eventos
 <div class="card shadow-0 border border-white border-opacity-10 mb-4"><div class="card-body">
   <h5><cfif len(VARIABLES.bannerForm.banner_id)>Editar banner<cfelse>Novo banner</cfif></h5>
   <p class="text-muted">O banner novo será salvo como rascunho. Ative-o quando estiver pronto.</p>
-  <cfif len(VARIABLES.bannerForm.scope_error)><div class="alert alert-warning">#htmlEditFormat(VARIABLES.bannerForm.scope_error)#</div></cfif>
+  <cfif len(VARIABLES.bannerForm.scope_error)><div class="alert alert-warning">#encodeForHTML(VARIABLES.bannerForm.scope_error)#</div></cfif>
   <form action="./?view=house" method="post" enctype="multipart/form-data" data-banner-form>
     <input type="hidden" name="acao" value="salvar_banner"/>
-    <input type="hidden" name="banner_csrf" value="#htmlEditFormat(VARIABLES.bannerManagementCsrf)#"/>
-    <input type="hidden" name="banner_id" value="#htmlEditFormat(VARIABLES.bannerForm.banner_id)#"/>
+    <input type="hidden" name="banner_csrf" value="#encodeForHTMLAttribute(VARIABLES.bannerManagementCsrf)#"/>
+    <input type="hidden" name="banner_id" value="#encodeForHTMLAttribute(VARIABLES.bannerForm.banner_id)#"/>
     <fieldset class="mb-4"><legend class="h6">Conteúdo</legend><div class="row g-3">
       <div class="col-12"><label for="banner_nome" class="form-label">Nome interno</label>
-        <input id="banner_nome" type="text" class="form-control" name="banner_nome" required minlength="3" maxlength="160" value="#htmlEditFormat(VARIABLES.bannerForm.banner_nome)#"/>
+        <input id="banner_nome" type="text" class="form-control" name="banner_nome" required minlength="3" maxlength="160" value="#encodeForHTMLAttribute(VARIABLES.bannerForm.banner_nome)#"/>
       </div>
       <cfloop list="desktop,mobile" index="bannerKind">
         <div class="col-md-6"><label for="banner_arquivo_#bannerKind#" class="form-label">Imagem #bannerKind#</label>
           <input id="banner_arquivo_#bannerKind#" type="file" class="form-control" name="banner_arquivo_#bannerKind#" accept="image/jpeg,image/png,image/gif" data-banner-upload="#bannerKind#" aria-describedby="banner_file_help_#bannerKind# banner_file_info_#bannerKind#"<cfif !len(VARIABLES.bannerForm[bannerKind & '_path'])> required</cfif>/>
           <div id="banner_file_help_#bannerKind#" class="form-text">JPG, PNG ou GIF, até 10 MiB e 40 megapixels. As dimensões são identificadas automaticamente. Na edição, deixe vazio para manter a imagem.</div>
-          <div id="banner_file_info_#bannerKind#" class="form-text" data-banner-info="#bannerKind#" aria-live="polite"><cfif structKeyExists(VARIABLES,'bannerFieldErrors') AND structKeyExists(VARIABLES.bannerFieldErrors,bannerKind)>#htmlEditFormat(VARIABLES.bannerFieldErrors[bannerKind])#</cfif></div>
-          <img data-banner-preview="#bannerKind#" alt="Prévia da imagem #bannerKind#" style="max-width:100%;max-height:220px;width:auto;height:auto;margin-top:0.75rem"<cfif len(VARIABLES.bannerForm[bannerKind & '_path'])> src="#htmlEditFormat(bannerManagementBuildAssetUrl(VARIABLES.bannerForm[bannerKind & '_path']))#"<cfelse> hidden</cfif>/>
+          <div id="banner_file_info_#bannerKind#" class="form-text" data-banner-info="#bannerKind#" aria-live="polite"><cfif structKeyExists(VARIABLES,'bannerFieldErrors') AND structKeyExists(VARIABLES.bannerFieldErrors,bannerKind)>#encodeForHTML(VARIABLES.bannerFieldErrors[bannerKind])#</cfif></div>
+          <img data-banner-preview="#bannerKind#" alt="Prévia da imagem #bannerKind#" style="max-width:100%;max-height:220px;width:auto;height:auto;margin-top:0.75rem"<cfif len(VARIABLES.bannerForm[bannerKind & '_path'])> src="#encodeForHTMLAttribute(bannerManagementBuildAssetUrl(VARIABLES.bannerForm[bannerKind & '_path']))#"<cfelse> hidden</cfif>/>
         </div>
       </cfloop>
       <div class="col-12"><label for="banner_alt_text" class="form-label">Descrição da imagem para acessibilidade</label>
-        <input id="banner_alt_text" type="text" class="form-control" name="banner_alt_text" required minlength="3" maxlength="300" aria-describedby="banner_alt_help" value="#htmlEditFormat(VARIABLES.bannerForm.banner_alt_text)#"/>
+        <input id="banner_alt_text" type="text" class="form-control" name="banner_alt_text" required minlength="3" maxlength="300" aria-describedby="banner_alt_help" value="#encodeForHTMLAttribute(VARIABLES.bannerForm.banner_alt_text)#"/>
         <div id="banner_alt_help" class="form-text">Exemplo: Inscrições abertas para a corrida de Florianópolis, em 20 de outubro.</div>
       </div>
       <div class="col-12"><label for="banner_link_destino" class="form-label">Link de destino</label>
-        <input id="banner_link_destino" type="text" class="form-control" name="banner_link_destino" required placeholder="/evento/nome/ ou https://exemplo.com" value="#htmlEditFormat(VARIABLES.bannerForm.banner_link_destino)#"/>
+        <input id="banner_link_destino" type="text" class="form-control" name="banner_link_destino" required placeholder="/evento/nome/ ou https://exemplo.com" value="#encodeForHTMLAttribute(VARIABLES.bannerForm.banner_link_destino)#"/>
       </div>
     </div></fieldset>
     <fieldset class="mb-4"><legend class="h6">Onde exibir</legend>
@@ -54,18 +54,18 @@ VARIABLES.bannerPageLabels={home='Página inicial',search='Busca',state='Eventos
     </fieldset>
     <fieldset class="mb-4"><legend class="h6">Período</legend><div class="row g-3">
       <div class="col-md-6"><label for="banner_inicio_exibicao" class="form-label">Início</label>
-        <input id="banner_inicio_exibicao" type="datetime-local" class="form-control" name="banner_inicio_exibicao" required value="#htmlEditFormat(VARIABLES.bannerForm.banner_inicio_exibicao)#"/>
+        <input id="banner_inicio_exibicao" type="datetime-local" class="form-control" name="banner_inicio_exibicao" required value="#encodeForHTMLAttribute(VARIABLES.bannerForm.banner_inicio_exibicao)#"/>
       </div>
       <div class="col-md-6"><label for="banner_fim_exibicao" class="form-label">Fim</label>
-        <input id="banner_fim_exibicao" type="datetime-local" class="form-control" name="banner_fim_exibicao" required value="#htmlEditFormat(VARIABLES.bannerForm.banner_fim_exibicao)#"/>
+        <input id="banner_fim_exibicao" type="datetime-local" class="form-control" name="banner_fim_exibicao" required value="#encodeForHTMLAttribute(VARIABLES.bannerForm.banner_fim_exibicao)#"/>
       </div>
     </div></fieldset>
     <details class="mb-4"><summary>Opções avançadas</summary><div class="row g-3 mt-1">
       <div class="col-md-4"><label for="banner_peso_exibicao" class="form-label">Peso de exibição</label>
-        <input id="banner_peso_exibicao" type="number" min="1" step="1" class="form-control" name="banner_peso_exibicao" required value="#htmlEditFormat(VARIABLES.bannerForm.banner_peso_exibicao)#"/>
+        <input id="banner_peso_exibicao" type="number" min="1" step="1" class="form-control" name="banner_peso_exibicao" required value="#encodeForHTMLAttribute(VARIABLES.bannerForm.banner_peso_exibicao)#"/>
       </div>
       <div class="col-md-4"><label for="banner_prioridade" class="form-label">Prioridade</label>
-        <input id="banner_prioridade" type="number" min="1" step="1" class="form-control" name="banner_prioridade" required value="#htmlEditFormat(VARIABLES.bannerForm.banner_prioridade)#"/>
+        <input id="banner_prioridade" type="number" min="1" step="1" class="form-control" name="banner_prioridade" required value="#encodeForHTMLAttribute(VARIABLES.bannerForm.banner_prioridade)#"/>
       </div>
       <div class="col-md-4"><label for="banner_abrir_nova_aba" class="form-label">Abrir destino</label>
         <select id="banner_abrir_nova_aba" class="form-select" name="banner_abrir_nova_aba">
