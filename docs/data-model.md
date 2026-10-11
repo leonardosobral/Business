@@ -169,3 +169,22 @@ Como nao ha dicionario de dados consolidado no repositorio, futuras integracoes 
 ## Circuitos e edições — 28/09/2026
 
 Circuitos usam `tb_agregadores.agregador_tipo='circuito'` e os eventos em `tb_agregadores_eventos`. `tb_evento_corridas.id_agrega_evento` identifica o grupo de edições; um trigger rejeita circuito legado nesse campo. A coluna `tb_agregadores.id_agrega_evento_legado` preserva referências de URLs/cupons e não é um vínculo de edição. Detalhes na [migração](../_codex/docs/2026-09-28_circuitos_migracao.md).
+# Complemento público de pré-cadastro de contas
+
+Em 11/10/2026 foi adicionada `public.tb_conta_perfis_publicos` pela migração
+`_codex/sql/2026-10-11_tb_conta_perfis_publicos.sql`. A chave é `id_conta`, com
+origem/id de origem únicos, caminho local do logo, data da pesquisa e `dados`
+JSONB contendo dados cadastrais públicos e suas fontes. O complemento não
+substitui o titular confirmado, não concede acesso e não cria usuários.
+
+A administração de contas exibe esse complemento na aba **Pré-cadastro**,
+somente para administradores internos. A ausência da tabela ou do perfil é
+tratada sem impedir a administração normal. Os logos ABRACEO ficam em
+`assets/contas/abraceo/`.
+
+O lote ABRACEO criou 36 contas `PENDENTE`, preservou cinco contas existentes e
+associou 11 eventos com início posterior a 11/10/2026. O registro operacional,
+IDs, pendências e evidências estão em
+`outputs/abraceo-20261010/importacao/RESULTADO.txt` e `resultado_business.json`.
+Backup recuperável de produção:
+`/var/backups/business-abraceo-precadastro-20261011`.

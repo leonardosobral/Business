@@ -130,6 +130,18 @@ async function loadRuns(){
  const records=await api('runs',{notebookId:state.section.id});if(!records.length){box.append(el('div','study-card','Ainda não há execuções nesta seção.'));return;}
  records.forEach(r=>{const card=el('div','study-run-row'),text=el('div');text.append(el('strong','',r.frozen?'❄ '+r.title:'Execução #'+r.id+' · célula '+r.cell_id),el('p','study-meta',date(r.started_at)+' · '+(r.status==='ok'?r.row_count+' linhas'+(r.truncated?' · incompleto':''):r.status==='running'?'em andamento':'erro')+' · revisão '+r.cell_version));card.append(text,button('Abrir resultado',async()=>{const run=await api('getRun',{id:r.id});renderResult(run,$('study-run-detail'));$('study-run-detail').scrollIntoView({behavior:'smooth',block:'start'});}));box.append(card);});
 }
+
+async function loadEditions(){
+ const c=await api('editionCatalog'),box=$('edition-cards');box.replaceChildren();
+ const items=[
+  ['PÚBLICA · JAN–SET','Seis destaques percentuais.','https://roadrunners.run/brasilquecorreprovas/2026/','Abrir prévia pública','Publicação #'+c.publicacao_q3+' · congelamento #'+c.run_q3],
+  ['PROFISSIONAL · JAN–SET','37 páginas por convite, com os recortes revisados.','/estudos/leitor/?ano=2026','Abrir prévia profissional','Mesma publicação #'+c.publicacao_q3+'; sem temas adiados'],
+  ['ANUAL · EM PREPARAÇÃO','Rascunho interno com a base integral e as pendências de cada tema.','/estudo/anual/?ano=2026','Abrir rascunho anual','Congelamento #'+(c.anual_run||'—')+' · o corte real continua explícito']
+ ];
+ for(const [title,desc,href,cta,meta] of items){const card=el('article','study-card');card.append(el('h3','h6',title),el('p','',desc),el('p','study-meta',meta));const a=el('a','btn btn-warning btn-sm',cta);a.href=href;card.append(a);box.append(card);}
+ const links=el('p','study-edition-links');for(const [name,section] of [['Mapa das três edições',c.mapa],['Saída anual e pendências',c.anual_secao]]){const a=el('a','btn btn-outline-light btn-sm',name);a.href='/estudo/?caderno=6&secao='+section;links.append(a);}box.append(links);
+}
+
 let webCatalog=[],webChecked=null;
 function webChoice(){return webCatalog.find(d=>String(d.ano)===$('web-year').value);}
 function clearWebPreview(){webChecked=null;$('web-preview-content').replaceChildren();$('web-publish-area').hidden=true;}
@@ -139,10 +151,11 @@ function chooseWebYear(){
  if(d.runs.some(r=>String(r.id)===String(d.run_atual)))$('web-run').value=d.run_atual;
  $('web-current').textContent=d.publicacao_id?'No ar: versão '+d.versao+' · congelamento #'+d.run_atual+' · '+date(d.publicado_em):'Edição ainda não conectada à web.';
  $('web-notebook').href='/estudo/?caderno='+d.caderno_id+'&secao='+d.notebook_id;
- $('web-live').href='https://roadrunners.run/brasilquecorreprovas/web/?ano='+d.ano;
+ $('web-live').href=Number(d.ano)===2026?'/estudo/anual/?ano=2026':'https://roadrunners.run/brasilquecorreprovas/web/?ano=2025';
+ $('web-live').textContent=Number(d.ano)===2026?'Abrir rascunho anual':'Abrir histórico dinâmico';
  $('web-preview').disabled=!d.runs.length;$('web-note').value='';
 }
-async function loadWeb(){const prior=$('web-year').value;webCatalog=await api('webCatalog');selectOptions($('web-year'),webCatalog.map(d=>({id:d.ano,label:String(d.ano)})),'label');if(webCatalog.some(d=>String(d.ano)===prior))$('web-year').value=prior;chooseWebYear();}
+async function loadWeb(){await loadEditions();const prior=$('web-year').value||'2026';webCatalog=await api('webCatalog');selectOptions($('web-year'),webCatalog.map(d=>({id:d.ano,label:String(d.ano)})),'label');if(webCatalog.some(d=>String(d.ano)===prior))$('web-year').value=prior;chooseWebYear();}
 $('web-year').addEventListener('change',chooseWebYear);$('web-run').addEventListener('change',clearWebPreview);
 $('web-refresh').addEventListener('click',()=>loadWeb().catch(e=>notice(e.message,true)));
 $('web-preview').addEventListener('click',async()=>{
@@ -160,7 +173,7 @@ $('web-preview').addEventListener('click',async()=>{
 });
 $('web-publish').addEventListener('click',async()=>{
  if(state.pending||!webChecked)return;const checked={...webChecked},note=$('web-note').value.trim();if(!note){notice('Informe a nota pública desta versão.',true);return;}
- busy(1);try{await api('webPublish',{...checked,note});await loadWeb();notice('Versão web atualizada. O pacote anterior permanece no histórico.');}catch(e){notice(e.message,true);}finally{busy(-1);}
+ busy(1);try{await api('webPublish',{...checked,note});await loadWeb();notice('Base técnica atualizada. As edições Q3 continuam fixadas; o anual usa sua própria saída congelada.');}catch(e){notice(e.message,true);}finally{busy(-1);}
 });
 
 document.querySelectorAll('[data-tab]').forEach(tab=>tab.addEventListener('click',async()=>{

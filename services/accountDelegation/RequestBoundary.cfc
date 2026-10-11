@@ -36,6 +36,24 @@ component output=false {
     }
     public struct function handle(required struct identity,required struct state,required string targetPath,required string method,required struct query,required struct form,string pathInfo='',string rawQuery='',string rawBody='',boolean multipartValid=true) {
         var result={status=200,context={},invalid=false,route={allowed=true,capability='',action=''},selectionChanged=false,selectionRequired=false};
+        // Personal library: never resolve or inherit the selected organization's permissions.
+        // Exact endpoints and parameter allowlists also exclude global Application actions.
+        var studyPage=listFind('/estudos/,/estudos/index.cfm',targetPath)>0;
+        var studyApi=targetPath=='/estudos/api.cfm';
+        var studyReader=listFind('/estudos/leitor/,/estudos/leitor/index.cfm,/estudos/leitor/dados.cfm',targetPath)>0;
+        var studyLaunch=listFind('/estudos/lancamento/,/estudos/lancamento/index.cfm,/estudos/lancamento/arquivo.cfm',targetPath)>0;
+        var firstAccessPage=listFind('/estudos/primeiro-acesso/,/estudos/primeiro-acesso/index.cfm',targetPath)>0;
+        var firstAccessApi=targetPath=='/estudos/primeiro-acesso/api.cfm';
+        if(studyPage || studyApi || studyReader || studyLaunch || firstAccessPage || firstAccessApi) {
+            var allowedQuery=studyPage?'produto,interesse':(studyReader?'ano':(studyLaunch && targetPath=='/estudos/lancamento/arquivo.cfm'?'doc':''));
+            var allowedForm=firstAccessApi?'operation,csrf,mode,value,role,declared,corrections,cnpj,email,expiresOn':studyApi?'action,csrf,code,company,role,message,kind,enabled,campaignId,status,expectedVersion,note,email,expiresOn,requestId,voucherId,accessId':'';
+            var valid=!(len(pathInfo)) && multipartValid && variables.policy.uniqueParameters(rawQuery) && variables.policy.uniqueParameters(rawBody);
+            valid=valid && ((studyApi || firstAccessApi)?uCase(method)=='POST':uCase(method)=='GET');
+            for(var key in arguments.query) if(!listFindNoCase(allowedQuery,key) || !isSimpleValue(arguments.query[key])) valid=false;
+            for(var key in arguments.form) if(key!='FIELDNAMES' && (!listFindNoCase(allowedForm,key) || !isSimpleValue(arguments.form[key]))) valid=false;
+            if(!valid) result.status=403;
+            return result;
+        }
         var recovery=listFind('/selecionar-conta/,/selecionar-conta/index.cfm,/logout.cfm,/convites/,/convites/index.cfm',targetPath)>0;
         var selector=listFind('/selecionar-conta/,/selecionar-conta/index.cfm',targetPath)>0;
         var hasSelection=structKeyExists(state,'businessAccessSelection');

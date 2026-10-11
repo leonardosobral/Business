@@ -113,7 +113,7 @@ try {
     if (VARIABLES.audienceReady) {
         VARIABLES.audienceQueryDirectory = getDirectoryFromPath(getCurrentTemplatePath()) & "../audiencia/queries/";
         VARIABLES.audienceFilterSql = fileRead(VARIABLES.audienceQueryDirectory & "filter.sql", "UTF-8");
-        for (VARIABLES.audienceQueryName in ["summary","inventory","regions","content","acquisition","daily","coverage"]) {
+        for (VARIABLES.audienceQueryName in ["summary","inventory","regions","content","origins","acquisition","daily","coverage"]) {
             VARIABLES.audienceSql = replace(fileRead(VARIABLES.audienceQueryDirectory & VARIABLES.audienceQueryName & ".sql", "UTF-8"), "/* AUDIENCE_FILTER */", VARIABLES.audienceFilterSql);
             VARIABLES.audienceQueries[VARIABLES.audienceQueryName] = queryExecute(VARIABLES.audienceSql, VARIABLES.audienceParams, {datasource="runnerhub", timeout=15, cachedwithin=createTimeSpan(0,0,1,0)});
         }
@@ -174,6 +174,15 @@ try {
         } catch(any audienceLiveReadError) {
             VARIABLES.audienceLiveUnavailable = true;
             writeLog(file="audience_measurement",type="error",text="Business LIVE journey report unavailable: " & left(audienceLiveReadError.type & "",100));
+        }
+        // Read-only linkage by delivery UUID; never writes Ads/billing or estimates missing attribution.
+        VARIABLES.audienceAdvertiserUnavailable = false;
+        try {
+            VARIABLES.audienceAdvertiserSql = replace(fileRead(VARIABLES.audienceQueryDirectory & "advertiser_acquisition.sql","UTF-8"),"/* AUDIENCE_FILTER */",VARIABLES.audienceFilterSql);
+            VARIABLES.audienceAdvertiserQuery = queryExecute(VARIABLES.audienceAdvertiserSql,VARIABLES.audienceParams,{datasource="runnerhub",timeout=15,cachedwithin=createTimeSpan(0,0,1,0)});
+        } catch(any advertiserReadError) {
+            VARIABLES.audienceAdvertiserUnavailable = true;
+            writeLog(file="audience_measurement",type="error",text="Business advertiser acquisition report unavailable: " & left(advertiserReadError.type & "",100));
         }
         // Optional operational state must never make the audience report unavailable.
         if (VARIABLES.audienceSchema.retention_ready[1]) {

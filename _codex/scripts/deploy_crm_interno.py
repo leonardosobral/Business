@@ -5,8 +5,8 @@ ROOT=Path(__file__).resolve().parents[2]
 HELPER_SOURCE=(Path(__file__).with_name('crm_deploy_state.py')).read_text()
 LEDGER=ROOT/'.superpowers/sdd/2026-09-24-crm-interno'
 scope=sys.argv[2] if len(sys.argv)>2 else 'all'
-assert scope in ('all','business','business-history','r6','program-panel','program-finance-road','program-finance-business','program-history-road','program-history-business','program-history-ui','program-analysis-road','program-analysis-business','program-purchases-road','program-purchases-business','campaign-modal','program-modal','planning-gantt','planning-compact')
-receipt_prefix={'all':'release','business':'release-business','business-history':'release-business-history','r6':'release-r6','program-panel':'release-program-panel','program-finance-road':'release-program-finance-road','program-finance-business':'release-program-finance-business','program-history-road':'release-program-history-road','program-history-business':'release-program-history-business','program-history-ui':'release-program-history-ui','program-analysis-road':'release-program-analysis-road','program-analysis-business':'release-program-analysis-business','program-purchases-road':'release-program-purchases-road','program-purchases-business':'release-program-purchases-business','campaign-modal':'release-campaign-modal','program-modal':'release-program-modal','planning-gantt':'release-planning-gantt','planning-compact':'release-planning-compact'}[scope]
+assert scope in ('all','business','business-history','r6','program-panel','program-finance-road','program-finance-business','program-history-road','program-history-business','program-history-ui','program-analysis-road','program-analysis-business','program-purchases-road','program-purchases-business','campaign-modal','program-modal','planning-gantt','planning-compact','funnel-challenges','funnel-coupons')
+receipt_prefix={'all':'release','business':'release-business','business-history':'release-business-history','r6':'release-r6','program-panel':'release-program-panel','program-finance-road':'release-program-finance-road','program-finance-business':'release-program-finance-business','program-history-road':'release-program-history-road','program-history-business':'release-program-history-business','program-history-ui':'release-program-history-ui','program-analysis-road':'release-program-analysis-road','program-analysis-business':'release-program-analysis-business','program-purchases-road':'release-program-purchases-road','program-purchases-business':'release-program-purchases-business','campaign-modal':'release-campaign-modal','program-modal':'release-program-modal','planning-gantt':'release-planning-gantt','planning-compact':'release-planning-compact','funnel-challenges':'release-funnel-challenges','funnel-coupons':'release-funnel-coupons'}[scope]
 RECEIPT=LEDGER/(receipt_prefix+'.json')
 SSH=['ssh','-o','BatchMode=yes','-o','ConnectTimeout=10','-o','StrictHostKeyChecking=yes','-i','/Users/leonardosobral/.ssh/webs','root@ssh.runnerhub.run']
 SITES={'Business':'/var/www/business.roadrunners.run','RoadRunners':'/var/www/roadrunners.com.br'}
@@ -83,6 +83,16 @@ if scope=='planning-compact':
  FILES={'Business':['crm-interno/index.cfm','crm-interno/crm.js','crm-interno/crm.css','crm-interno/crm-calendar.js','crm-interno/crm-gantt.js']}
  GUARDS={'Business':GUARDS['Business']}
  SITES={'Business':SITES['Business']}
+if scope=='funnel-challenges':
+ FILES={'Business':['portal/funil/index.cfm','portal/funil/home.cfm','portal/funil/report.cfm','portal/funil/includes/report_backend.cfm','portal/funil/includes/legacy_payments.cfm','portal/funil/includes/webhook_365_payments.cfm','portal/funil/assets/funil.js']}
+ SHARED={'Business':[name for name in FILES['Business'] if name!='portal/funil/includes/webhook_365_payments.cfm']}
+ GUARDS={'Business':GUARDS['Business']}
+ SITES={'Business':SITES['Business']}
+if scope=='funnel-coupons':
+ FILES={'Business':['portal/funil/index.cfm','portal/funil/home.cfm','portal/funil/includes/report_backend.cfm','portal/funil/includes/ticketsports_coupons.cfm','portal/funil/assets/funil.js','portal/funil/assets/funil.css']}
+ SHARED={'Business':[name for name in FILES['Business'] if name!='portal/funil/includes/ticketsports_coupons.cfm']}
+ GUARDS={'Business':GUARDS['Business']}
+ SITES={'Business':SITES['Business']}
 sha=lambda b:hashlib.sha256(b).hexdigest()
 mode=sys.argv[1];assert mode in ['prepare','publish','verify','rollback']
 if scope=='r6' and mode=='publish':
@@ -105,8 +115,8 @@ if mode=='prepare':
   published=json.loads(report_path.read_text())
   prior_dir=published['directory'];assert re.fullmatch(r'/var/backups/crm-interno\.[a-f0-9]+',prior_dir)
   prior=json.loads(subprocess.check_output(SSH+['cat '+shlex.quote(prior_dir+'/state.json')]))
-  assert prior['phase']=='published'
-  previous_files.update({(row['site'],row['path']):row['after'] for row in prior['files']})
+  assert prior['phase'] in ('published','rolled_back')
+  previous_files.update({(row['site'],row['path']):row['before'] if prior['phase']=='rolled_back' else row['after'] for row in prior['files']})
   (LEDGER/('previous-'+Path(prior_dir).name+'.json')).write_text(json.dumps(prior,indent=2)+'\n')
 if mode=='prepare':
  for site,names in FILES.items():
@@ -168,7 +178,7 @@ if mode=='prepare':
  state['compile_expected']=expected
  state['compiled']=run.returncode==0 and bool(re.search(r'successful\\s+'+str(expected)+r'\\b',log)) and bool(re.search(r'total\\s+'+str(expected)+r'\\b',log))
  statepath.write_text(json.dumps(state,indent=2))
- print(json.dumps({{'directory':str(release),'phase':state['phase'],'compiled':state['compiled'],'count':expected,'compile_log':str(release/'compile.log'),'errors':log[-8000:] if not state['compiled'] else ''}}))
+ print(json.dumps({{'directory':str(release),'phase':state['phase'],'compiled':state['compiled'],'count':expected,'file_count':len(manifest),'compile_count':expected,'compile_log':str(release/'compile.log'),'errors':log[-8000:] if not state['compiled'] else ''}}))
 else:
  state=json.loads(statepath.read_text());assert state['compiled'],'Native compilation failed'
  for row in state['guards']:assert sha(roots[row['site']]/row['path'])==row['hash'],'DEPENDENCY CHANGED: '+row['path']

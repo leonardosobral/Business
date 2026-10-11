@@ -15,7 +15,7 @@
 </main>
 <cfinclude template="../includes/estrutura/footer.cfm"/>
 <link rel="stylesheet" href="/estudo/assets/vendor/codemirror.css"/>
-<link rel="stylesheet" href="/estudo/assets/notebook.css?v=20260928-3"/>
+<link rel="stylesheet" href="/estudo/assets/notebook.css?v=edicoes-20261010-1"/>
 <script src="/estudo/assets/vendor/codemirror.js"></script>
 <script src="/estudo/assets/vendor/sql.js"></script>
 <script src="/estudo/assets/vendor/markdown.js"></script>
@@ -23,5 +23,5 @@
 <script src="/estudo/assets/vendor/purify.js"></script>
 <script src="/estudo/assets/vendor/marked.js"></script>
 <script src="/estudo/assets/notebook-data.js?v=20260928-2"></script>
-<script src="/estudo/assets/notebook.js?v=20260930-unico-1"></script>
+<script src="/estudo/assets/notebook.js?v=edicoes-20261010-1"></script>
 </body></html>

@@ -36,7 +36,7 @@
 </cfif>
 
 <cfset VARIABLES.accountManagementTab = lCase(trim(URL.tab))/>
-<cfif NOT listFindNoCase("usuarios,vouchers,eventos,dados,acessos,gestoras", VARIABLES.accountManagementTab)>
+<cfif NOT listFindNoCase("usuarios,vouchers,eventos,dados,acessos,gestoras,precadastro", VARIABLES.accountManagementTab)>
     <cfif VARIABLES.businessAccountsCanAdminAll
         AND qBusinessAccountEdit.recordcount
         AND ((isDefined("URL.editar_conta") AND URL.editar_conta)
@@ -56,7 +56,7 @@
 <cfif VARIABLES.accountManagementTab EQ "eventos" AND NOT VARIABLES.businessAccountsCanAdminAll>
     <cfset VARIABLES.accountManagementTab = "usuarios"/>
 </cfif>
-<cfif VARIABLES.accountManagementTab EQ "dados" AND NOT VARIABLES.businessAccountsCanAdminAll>
+<cfif listFindNoCase("dados,precadastro", VARIABLES.accountManagementTab) AND NOT VARIABLES.businessAccountsCanAdminAll>
     <cfset VARIABLES.accountManagementTab = "usuarios"/>
 </cfif>
 <cfif VARIABLES.accountManagementTab EQ "acessos" AND NOT VARIABLES.businessAccountsCanAdminAll>
@@ -1447,6 +1447,9 @@
                             Dados
                           </a>
                         </li>
+                        <li class="nav-item">
+                          <a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'precadastro'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=precadastro&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento" data-account-tab="precadastro">Pré-cadastro</a>
+                        </li>
                       </cfif>
                       <li class="nav-item">
                         <a class="nav-link <cfif VARIABLES.accountManagementTab EQ 'usuarios'>active</cfif>" href="./?conta_id=#qBusinessAccountEdit.id_conta#&tab=usuarios&busca=#urlEncodedFormat(URL.busca)#&pagina=#VARIABLES.accountsPage###conta-gerenciamento" data-account-tab="usuarios">
@@ -1481,6 +1484,12 @@
                   </cfoutput>
 
                   <cfif VARIABLES.businessDelegationAdminReady AND (VARIABLES.businessAccountsCanAdminAll OR VARIABLES.businessDelegationCanSeeClientManagers)><cfinclude template="delegation_home.cfm"/></cfif>
+                  <cfif VARIABLES.businessAccountsCanAdminAll>
+                    <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'precadastro'>d-none</cfif>" data-account-tab-panel="precadastro">
+                      <cfinclude template="includes/perfil_publico.cfm"/>
+                    </div>
+                  </cfif>
+
 
                   <cfif VARIABLES.businessAccountsCanAdminAll>
                     <div class="accounts-tab-panel <cfif VARIABLES.accountManagementTab NEQ 'dados'>d-none</cfif>" data-account-tab-panel="dados">

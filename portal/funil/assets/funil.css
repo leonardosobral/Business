@@ -21,6 +21,10 @@
 #business-funnel .funnel-step-text{margin-left:calc(var(--left) * .86 + 20px);display:flex;flex-direction:column;gap:.25rem;min-width:0;max-width:calc(100% - var(--left) * 1.4 - 25px)}
 #business-funnel .funnel-step-text strong{font-size:1.65rem;line-height:1.15;font-weight:500;font-variant-numeric:tabular-nums}
 #business-funnel .funnel-step-text span{font-size:.82rem;line-height:1.25}
+#business-funnel .funnel-step-text small{font-size:.7rem;color:var(--funnel-muted)}
+#business-funnel .funnel-step-coupon{margin-top:.5rem;border-top:1px dashed rgba(255,255,255,.25);padding-top:.5rem}
+#business-funnel .funnel-step-coupon .funnel-band{top:.5rem;border-radius:.4rem;background:rgba(250,177,32,.18)}
+#business-funnel .funnel-coupon-cell{min-width:220px;max-width:300px;white-space:normal}
 #business-funnel .funnel-step-rate{font-size:.8rem;color:var(--funnel-muted);border-left:1px solid rgba(255,255,255,.12);padding-left:1rem;display:flex;flex-direction:column;gap:.35rem}
 #business-funnel .funnel-step-rate strong{font-size:1rem;color:var(--funnel-gold);font-weight:500}
 #business-funnel .funnel-step-rate small{font-size:.68rem}

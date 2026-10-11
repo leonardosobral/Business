@@ -24,7 +24,8 @@
   };
   const stages = [
     ['base', 'Usuários cadastrados'], ['related', 'Com vínculo ao produto'],
-    ['paid', 'Já pagaram'], ['active', 'Pagantes vigentes'], ['renewed', 'Renovaram e estão vigentes']
+    ['paid', 'Já pagaram'], ['active', 'Pagantes Todo Santo Dia'], ['renewed', 'Pagaram 365 e Todo Santo Dia'],
+    ['coupon', 'Inscritos com nosso cupom']
   ];
   let report = null;
   let page = 1;
@@ -88,21 +89,24 @@
     stages.forEach(([key, label], index) => {
       const value = Number(data.metrics[key]);
       const base = Number(data.metrics.base);
-      const button = element('button', undefined, 'funnel-step');
+      const independent = key === 'coupon';
+      const button = element('button', undefined, `funnel-step${independent ? ' funnel-step-coupon' : ''}`);
       button.type = 'button';
-      button.style.setProperty('--left', `${index * 7}%`);
-      button.style.setProperty('--right', `${(index + 1) * 7}%`);
+      button.style.setProperty('--left', independent ? '0%' : `${index * 7}%`);
+      button.style.setProperty('--right', independent ? '0%' : `${(index + 1) * 7}%`);
       button.style.setProperty('--alpha', String(0.36 + index * 0.12));
       button.setAttribute('aria-label', `${label}: ${count(value)}. Ver pessoas desta etapa.`);
       const band = element('span', undefined, 'funnel-band');
       band.setAttribute('aria-hidden', 'true');
       const text = element('span', undefined, 'funnel-step-text');
       text.append(element('strong', count(value)), element('span', label));
+      if (independent) text.append(element('small', 'ROADRUNNERS · TicketSports'));
       const rate = element('span', undefined, 'funnel-step-rate');
       const percentage = value >= 0 && base > 0 ? `${(100 * value / base).toLocaleString('pt-BR', {maximumFractionDigits: 1})}%` : '—';
       rate.append(element('strong', percentage), element('span', 'da base'));
       const previous = index ? Number(data.metrics[stages[index - 1][0]]) : base;
-      if (index && value >= 0 && previous > 0) rate.append(element('small', `${(100 * value / previous).toLocaleString('pt-BR', {maximumFractionDigits: 1})}% da anterior`));
+      if (index && !independent && value >= 0 && previous > 0) rate.append(element('small', `${(100 * value / previous).toLocaleString('pt-BR', {maximumFractionDigits: 1})}% da anterior`));
+      if (independent && value >= 0) rate.append(element('small', 'Etapa independente'));
       if (value < 0) rate.append(element('small', 'Não mapeado'));
       button.append(band, text, rate);
       button.disabled = value < 0;
@@ -118,7 +122,7 @@
   function renderGroups(data) {
     const host = $('#funnel-groups');
     host.replaceChildren();
-    [['registered_only', 'Cadastro sem vínculo conhecido'], ['related_without_term', 'Com vínculo, sem vigência confirmada'], ['active', 'Com vigência confirmada']].forEach(([key, label]) => {
+    [['registered_only', 'Cadastro sem vínculo conhecido'], ['related_without_term', 'Com vínculo, sem vigência comprovada'], ['term_active', 'Vigência comprovada']].forEach(([key, label]) => {
       const value = Number(data.metrics[key]);
       const group = element('div', undefined, 'funnel-group');
       group.append(element('span', label), element('strong', count(value)));
@@ -129,7 +133,8 @@
       group.append(track);
       host.append(group);
     });
-    host.append(element('p', 'Sem vigência confirmada também inclui ex-clientes e pagamentos ainda não identificados.', 'funnel-muted small mb-0'));
+    host.append(element('p', 'Sem vigência comprovada também inclui pagamentos sem data utilizável, ex-clientes e pagamentos ainda não identificados.', 'funnel-muted small mb-0'));
+    if (truth(data.coverage.coupons_mapped)) host.append(element('p', `${count(Number(data.metrics.coupon_registrations))} inscrições com ROADRUNNERS ligadas a ${count(Number(data.metrics.coupon))} pessoas desta base. Cobertura das provas importadas.`, 'funnel-muted small mb-0'));
   }
   function renderPeople(data) {
     const host = $('#funnel-people');
@@ -139,18 +144,23 @@
       const identity = element('td');
       identity.append(element('span', person.name || 'Sem nome'), element('span', `ID ${person.id}`, 'funnel-person-id'));
       if (person.accounts) identity.append(element('span', person.accounts, 'funnel-person-id'));
-      const payment = !truth(data.coverage.payments_mapped) ? 'Não mapeado' : truth(person.active) ? 'Pagante vigente' : truth(person.paid) ? 'Pagamento confirmado' : 'Sem confirmação';
-      const recurrence = !truth(data.coverage.payments_mapped) ? 'Não mapeada' : person.annual_orders >= 2 ? 'Renovação observada' : person.annual_orders === 1 ? 'Uma compra anual' : truth(person.paid) ? 'Upgrade / sem compra anual identificada' : '—';
+      const payment = !truth(data.coverage.payments_mapped) ? 'Não mapeado' : truth(person.renewed) ? '365 + Todo Santo Dia' : truth(person.active) ? 'Todo Santo Dia' : truth(person.paid_365) ? 'Desafio 365' : 'Sem compra anual confirmada';
+      const recurrence = !truth(data.coverage.payments_mapped) ? 'Não mapeada' : truth(person.renewed) ? 'Comprou os dois desafios' : truth(person.active) ? 'Comprou Todo Santo Dia' : truth(person.paid_365) ? 'Comprou Desafio 365' : '—';
       const origin = !truth(data.coverage.signup_mapped) || person.origin === 'unknown' ? 'Sem histórico' : person.origin === 'last_recorded_click_7d' ? `Campanha ${person.campaign_id} · clique em até 7 dias` : 'Sem clique registrado';
       const paymentCell = element('td', payment);
-      if (truth(person.paid)) paymentCell.append(element('span', person.payment_sources === 'crm' ? 'CRM / auditoria' : person.payment_sources === 'legacy' ? 'Transação do fluxo antigo' : 'CRM e transações antigas', 'funnel-person-id'));
-      row.append(identity, element('td', !truth(data.coverage.related_mapped) ? 'Não mapeado' : truth(person.related) ? 'Desafio' : 'Sem vínculo conhecido'), paymentCell, element('td', person.term_end || '—'), element('td', recurrence), element('td', origin));
+      if (truth(person.paid)) paymentCell.append(element('span', person.payment_sources === 'crm' ? 'CRM / auditoria' : person.payment_sources === 'legacy' ? 'Transação do fluxo antigo' : person.payment_sources === 'webhook' ? 'Pedido histórico Pagar.me' : 'Fontes financeiras confirmadas', 'funnel-person-id'));
+      const couponCell = element('td', !truth(data.coverage.coupons_mapped) ? 'Não mapeado' : truth(person.coupon) ? `${count(Number(person.coupon_registrations))} inscrição(ões) · ${count(Number(person.coupon_events))} prova(s)` : '—', 'funnel-coupon-cell');
+      if (truth(person.coupon)) {
+        couponCell.append(element('span', `Última: ${person.coupon_last_event}${person.coupon_last_modality ? ` · ${person.coupon_last_modality}` : ''}`, 'funnel-person-id'));
+        couponCell.append(element('span', `${person.coupon_last_day} · ROADRUNNERS · e-mail do participante`, 'funnel-person-id'));
+      }
+      row.append(identity, element('td', !truth(data.coverage.related_mapped) ? 'Não mapeado' : truth(person.related) ? 'Desafio' : 'Sem vínculo conhecido'), paymentCell, element('td', person.term_end || '—'), element('td', recurrence), couponCell, element('td', origin));
       host.append(row);
     });
     if (!data.people.length) {
       const row = element('tr');
       const cell = element('td', 'Nenhuma pessoa nesta seleção. Etapas não mapeadas não permitem classificar clientes.', 'funnel-muted py-4');
-      cell.colSpan = 6;
+      cell.colSpan = 7;
       row.append(cell);
       host.append(row);
     }
@@ -162,8 +172,9 @@
     const host = $('#funnel-retention');
     host.replaceChildren();
     [
+      ['term_active', 'Vigência comprovada na data final', 'Compra anual do Todo Santo Dia com data que permite comprovar 12 meses de vigência.'],
       ['continuous', 'Vigentes durante todo o período', 'Vigências anuais confirmadas cobrem o intervalo completo, sem lacunas.'],
-      ['renewed_period', 'Renovaram no período', 'Pessoas com outra compra anual confirmada no intervalo selecionado.'],
+      ['renewed_period', 'Compradores dos dois com TSD no período', 'Compraram 365 e Todo Santo Dia, com pagamento datado do Todo Santo Dia no intervalo selecionado.'],
       ['expired_period', 'Encerraram a vigência no período', 'Sem nova vigência confirmada até a data final. Indício de churn na base conhecida.']
     ].forEach(([key, title, note]) => {
       const card = element('div', undefined, 'business-panel funnel-retention-card');
@@ -173,6 +184,10 @@
     const coverage = $('#funnel-coverage');
     coverage.className = 'funnel-coverage funnel-muted';
     coverage.replaceChildren();
+    if (truth(data.coverage.coupons_mapped)) {
+      const stats = data.coverage.coupon_stats;
+      coverage.append(element('p', `TicketSports / ROADRUNNERS até a data final: ${count(Number(stats.registrations))} inscrições com pedido Pago; ${count(Number(stats.matched))} ligadas à base selecionada; ${count(Number(stats.unmatched))} sem usuário correspondente; ${count(Number(stats.outside_base))} com usuário fora deste recorte; ${count(Number(stats.ambiguous))} com e-mail compartilhado por contas; ${count(Number(stats.conflicting))} com e-mails divergentes; ${count(Number(stats.invalid))} sem e-mail válido.`));
+    }
     if (truth(data.coverage.signup_mapped)) coverage.append(element('p', `Origem do vínculo ao Desafio: ${count(Number(data.metrics.campaign_origin))} por clique de campanha; ${count(Number(data.metrics.no_click_origin))} sem clique registrado; ${count(Number(data.metrics.unknown_origin))} sem histórico de origem.`));
     data.coverage.notes.forEach(note => coverage.append(element('p', note)));
   }
@@ -212,7 +227,7 @@
       renderRetention(data);
       const audience = filters.publico === 'organizers' ? 'Donos de contas, sem funcionários' : 'Usuários cadastrados';
       $('#funnel-base-label').textContent = audience;
-      $('#funnel-context').textContent = `${audience} · ${filters.leitura === 'cohort' ? 'Cadastros entre' : 'Base acumulada; retenção entre'} ${filters.de.split('-').reverse().join('/')} e ${filters.ate.split('-').reverse().join('/')} · Vigência na data final.`;
+      $('#funnel-context').textContent = `${audience} · ${filters.leitura === 'cohort' ? 'Cadastros entre' : 'Base acumulada; retenção entre'} ${filters.de.split('-').reverse().join('/')} e ${filters.ate.split('-').reverse().join('/')} · Compras até a data final; vigência comprovada à parte.`;
       message(`${truth(data.coverage.payments_mapped) ? 'Pagamentos confirmados na base conhecida. Cobertura histórica parcial.' : 'Pagamentos deste público/produto ainda não estão mapeados.'} Consulta: ${data.generated_at}. Veja as regras em Retenção e origem.`);
     } catch (error) {
       if (error.name !== 'AbortError' && requestController === controller) { clearResults(); message(error.message || 'Falha ao consultar o funil.', true); }

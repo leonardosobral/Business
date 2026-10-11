@@ -77,7 +77,7 @@
         <div class="audience-health"><cfoutput><span class="audience-pill">#encodeForHtml(VARIABLES.audienceEnvironment)# · #VARIABLES.audienceDays# dias<cfif len(VARIABLES.audienceUf)> · #encodeForHtml(VARIABLES.audienceUf)#</cfif></span><span class="audience-meta">Última recepção: #audienceDate(audStats.last_received)# · Brasília · cache de até 1 minuto</span></cfoutput></div>
         <p class="audience-reading-guide audience-meta"><strong>Cenários futuros:</strong> estimativas na aba Capacidade, condicionadas ao histórico; não são garantia de entrega.</p>
         <nav class="audience-nav" data-audience-tabs aria-label="Seções do relatório">
-            <a href="#audience-overview">Visão geral</a><a href="#audience-regions">Regiões</a><a href="#audience-capacity">Capacidade</a><a href="#audience-positions">Posições</a><a href="#audience-content">Conteúdo</a><a href="#audience-acquisition">Origem</a><a href="#audience-coverage">Cobertura</a>
+            <a href="#audience-overview">Visão geral</a><a href="#audience-regions">Regiões</a><a href="#audience-capacity">Capacidade</a><a href="#audience-positions">Posições</a><a href="#audience-content">Conteúdo</a><a href="#audience-acquisition">Origem</a><a href="#audience-campaigns">Campanha</a><a href="#audience-advertisers">Retorno aos anunciantes</a><a href="#audience-coverage">Cobertura</a>
         </nav>
 
         <div class="audience-tab-panel" data-audience-panel id="audience-overview">
@@ -149,10 +149,26 @@
         </div>
 
         <div class="audience-tab-panel" data-audience-panel id="audience-acquisition">
-        <section class="audience-panel" id="aquisicao"><h2 class="h5">Aquisição e testes de mensagem</h2><p class="audience-meta">Compare “Ache sua corrida” e “Monte seu histórico” por campanha e variante UTM. Sessão qualificada: 30 segundos ativos ou duas páginas distintas neste recorte. Sem gasto importado, não há custo de aquisição calculado.</p><div class="table-responsive audience-table-scroll" tabindex="0" role="region" aria-label="Aquisição por origem e campanha"><table class="table table-sm"><thead><tr><th scope="col">Origem / meio</th><th scope="col">Campanha / variante</th><th scope="col">Público</th><th scope="col">Sessões / qualificadas</th><th scope="col">Uso ativo</th></tr></thead><tbody>
+        <section class="audience-panel" id="aquisicao"><h2 class="h5">De onde vem o público?</h2>
+            <p class="audience-meta">Uma linha por origem, reunindo todos os meios, campanhas e links. Visitantes e sessões são contados uma vez por origem no recorte. Sessão qualificada: 30 segundos ativos ou duas páginas distintas. Um visitante pode aparecer em origens diferentes.</p>
+            <div class="table-responsive audience-table-scroll" tabindex="0" role="region" aria-label="Audiência consolidada por origem"><table class="table table-sm"><thead><tr><th scope="col">Origem</th><th scope="col">Público</th><th scope="col">Sessões / qualificadas</th><th scope="col">Uso ativo</th></tr></thead><tbody>
+            <cfset audOrigins = VARIABLES.audienceQueries.origins/>
+            <cfoutput query="audOrigins" maxrows="100"><tr><td class="audience-text">#encodeForHtml(source)#</td><td>#audienceCount(visitors)# visitantes<div class="audience-meta">#audienceCount(active_pages)# páginas com atividade</div></td><td>#audienceCount(sessions)# sessões<div class="audience-meta">#audienceCount(engaged_sessions)# qualificadas · #audienceRate(engaged_sessions,sessions)#</div></td><td>#audienceCount(int(val(active_ms)/60000))# min</td></tr></cfoutput>
+            <cfif NOT audOrigins.recordcount><tr><td colspan="4" class="text-muted">Ainda sem origens identificadas neste recorte.</td></tr></cfif>
+            </tbody></table></div>
+            <cfif audOrigins.recordcount GT 100><p class="audience-meta">Exibindo as 100 origens com mais páginas.</p></cfif>
+        </section>
+        </div>
+
+        <div class="audience-tab-panel" data-audience-panel id="audience-campaigns">
+        <section class="audience-panel" id="campanhas"><h2 class="h5">Campanhas e links</h2><p class="audience-meta">Compare “Ache sua corrida” e “Monte seu histórico” por campanha e variante UTM. Sessão qualificada: 30 segundos ativos ou duas páginas distintas neste recorte. Sem gasto importado, não há custo de aquisição calculado.</p><div class="table-responsive audience-table-scroll" tabindex="0" role="region" aria-label="Aquisição por origem e campanha"><table class="table table-sm"><thead><tr><th scope="col">Origem / meio</th><th scope="col">Campanha / variante</th><th scope="col">Público</th><th scope="col">Sessões / qualificadas</th><th scope="col">Uso ativo</th></tr></thead><tbody>
             <cfset audAcquisition = VARIABLES.audienceQueries.acquisition/><cfoutput query="audAcquisition" maxrows="100"><tr><td class="audience-text">#encodeForHtml(source)#<div class="audience-meta">#encodeForHtml(medium)#</div></td><td class="audience-text"><cfif len(trim(campaign))>#encodeForHtml(campaign)#<cfelse>Sem campanha</cfif><div class="audience-meta">Criativo / variante: <cfif len(trim(creative))>#encodeForHtml(creative)#<cfelse>—</cfif></div></td><td>#audienceCount(visitors)# visitantes<div class="audience-meta">#audienceCount(active_pages)# páginas com atividade</div></td><td>#audienceCount(sessions)# sessões<div class="audience-meta">#audienceCount(engaged_sessions)# qualificadas · #audienceRate(engaged_sessions,sessions)#</div></td><td>#audienceCount(int(val(active_ms)/60000))# min</td></tr></cfoutput><cfif NOT audAcquisition.recordcount><tr><td colspan="5" class="text-muted">Ainda sem sessões identificadas neste recorte.</td></tr></cfif></tbody></table></div><cfif audAcquisition.recordcount GT 100><p class="audience-meta">Exibindo as 100 combinações com mais páginas.</p></cfif></section>
 
         <cfif structKeyExists(VARIABLES,"audienceLiveUnavailable")><cfinclude template="live_journey.cfm"/></cfif>
+        </div>
+
+        <div class="audience-tab-panel" data-audience-panel id="audience-advertisers">
+            <cfinclude template="advertiser_acquisition.cfm"/>
         </div>
 
         <div class="audience-tab-panel" data-audience-panel id="audience-coverage">

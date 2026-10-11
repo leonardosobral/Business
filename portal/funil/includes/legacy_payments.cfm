@@ -29,7 +29,7 @@ legacy_raw AS (
            CASE WHEN paid_text ~ '^[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T[0-2][0-9]:[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|[+-][0-2][0-9]:[0-5][0-9])$'
                 THEN paid_text::timestamptz ELSE NULL END AS paid_at
     FROM legacy_raw
-    WHERE product_code IN ('todosantodia','todosantodiavip','todosantodiaupg') AND order_key IS NOT NULL
+    WHERE product_code IN ('desafio365','desafio365vip','inscricao365','inscricao365vip','todosantodia','todosantodiavip','todosantodiaupg') AND order_key IS NOT NULL
 ), legacy_paid AS (
     SELECT DISTINCT ON (order_key) user_id,order_key,product_code,paid_at,'legacy'::text AS payment_source
     FROM legacy_dated l CROSS JOIN bounds b

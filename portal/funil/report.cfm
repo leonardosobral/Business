@@ -15,7 +15,7 @@
         <cfoutput>#serializeJSON({error="Confira as datas e os filtros. A data final deve ser igual ou posterior à inicial e não pode estar no futuro."})#</cfoutput>
     </cfcatch>
     <cfcatch type="any">
-        <cflog file="application" type="error" text="Business funnel report unavailable: #cfcatch.type#"/>
+        <cflog file="application" type="error" text="Business funnel report unavailable: #cfcatch.type# / #left(listFirst(cfcatch.message, ':'), 120)#"/>
         <cfheader statuscode="503" statustext="Service Unavailable"/>
         <cfcontent type="application/json; charset=utf-8" reset="true"/>
         <cfoutput>#serializeJSON({error="Não foi possível consultar o funil. Os dados não foram substituídos por números de demonstração."})#</cfoutput>

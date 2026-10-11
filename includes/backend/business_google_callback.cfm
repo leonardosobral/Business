@@ -119,6 +119,9 @@
         AND NOT findNoCase("logout=1", VARIABLES.googleSignInRequestedRedirect)/>
     <cfif VARIABLES.googleInviteReturn EQ "/convites/">
         <cfset VARIABLES.googleSignInRedirect = "/convites/"/>
+    <cfelseif VARIABLES.googleSignInValidRedirect AND listFind("/estudos/,/estudos/?interesse=anual,/estudos/?interesse=editorial,/estudos/primeiro-acesso/",VARIABLES.googleSignInRequestedRedirect)>
+        <!--- The study library uses the verified personal identity; organization approval is independent. --->
+        <cfset VARIABLES.googleSignInRedirect = VARIABLES.googleSignInRequestedRedirect/>
     <cfelseif VARIABLES.googleSignInValidRedirect
         AND left(VARIABLES.googleSignInRequestedRedirect, len("/saude-eventos/central/")) EQ "/saude-eventos/central/">
         <!--- A própria Central decide entre acesso imediato e solicitação do perfil Médico. --->

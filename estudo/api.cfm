@@ -16,6 +16,7 @@ try {
     action=FORM.action ?: "";
     data={};
     switch(action){
+        case "editionCatalog": data=new estudo.includes.StudyEditions().catalog();break;
         case "webCatalog": data=new estudo.includes.StudyPublication().catalog();break;
         case "webPreview": data=new estudo.includes.StudyPublication().preview(FORM.year,FORM.runId);break;
         case "webPublish": data=new estudo.includes.StudyPublication().publish(FORM.year,FORM.runId,FORM.expected,FORM.note,actor);break;

@@ -1075,3 +1075,31 @@ _codex/analyses/mif_2026_channels/product_mapping.draft.csv
 
 # Baselines read from production for SEO title review.
 /_codex/staging/seo-duplicacoes-20261005/baseline/
+
+# Production baselines for the next SEO review.
+/_codex/staging/seo-revisao-20261006/baseline/
+
+# Production baseline and reviewed source for the 6 October Semrush import.
+/_codex/staging/seo-semrush-5000-20261006/baseline/
+/_codex/staging/seo-next-20261006/baseline/
+/_codex/staging/seo-next-20261006/baseline-title-followup/
+
+_codex/staging/seo-assets-20261008/baseline/
+_codex/staging/seo-assets-20261008/preview/
+_codex/staging/seo-athlete-route-20261008/baseline/
+_codex/staging/seo-athlete-route-20261008/preview/
+_codex/staging/seo-issues-followup-20261008/baseline/
+_codex/staging/seo-issues-followup-20261008/preview/
+
+/_codex/staging/seo-links-assets-20261008/baseline/
+/_codex/staging/seo-links-assets-20261008/candidate/
+/_codex/staging/seo-links-assets-20261008/test-root/
+/_codex/staging/seo-links-assets-20261008/preview/
+/_codex/staging/seo-event-routes-20261008/baseline/
+/_codex/staging/seo-event-routes-20261008/candidate/
+/_codex/staging/seo-event-routes-20261008/local-before/
+/_codex/staging/seo-event-routes-20261008/preview/
+/_codex/staging/seo-event-performance-20261008/baseline/
+/_codex/staging/seo-event-performance-20261008/candidate/
+/_codex/staging/seo-event-performance-20261008/local-before/
+/_codex/staging/seo-event-performance-20261008/preview/

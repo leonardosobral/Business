@@ -20,3 +20,5 @@
 .study-page .CodeMirror .CodeMirror-nonmatchingbracket{color:#ffb4b4}
 .study-page pre,.study-dialog pre{background:#151b23;color:#e6edf3;border:1px solid #40505d;border-radius:5px;padding:14px;color-scheme:dark}
 .study-page pre code,.study-dialog pre code{color:inherit;background:transparent}
+
+.study-edition-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:22px 0}.study-edition-grid .study-card{margin:0}.study-edition-links{grid-column:1/-1;display:flex;gap:12px;flex-wrap:wrap}@media(max-width:900px){.study-edition-grid{grid-template-columns:1fr}}
