@@ -49,6 +49,7 @@
         {ordem = 8, idAgregador = 77, nome = "Maratona de Aracaju", sigla = "AJU"}
     ]/>
 <cfelseif VARIABLES.challengeIsCatarinenseCircuit>
+    <cfinclude template="catarinense_ranking_helpers.cfm"/>
     <cfset VARIABLES.challengeCircuitTotalEvents = 6/>
     <cfset VARIABLES.challengeCircuitCompletionTarget = 5/>
 
@@ -205,10 +206,13 @@
             ON res.id_evento = evt.id_evento
            AND res.percurso = cfg.percurso
            AND res.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.challengeMedalUserId#"/>
+           AND res.concluinte IS TRUE
+           AND res.homologado IS TRUE
+           AND res.status_final = 0
     </cfquery>
 
-    <cfif NOT qChallengeMedalEligibility.recordcount OR val(qChallengeMedalEligibility.etapas) LT 4>
-        <cfthrow type="Challenge.Validation" message="O atleta ainda nao possui quatro etapas reconhecidas neste circuito."/>
+    <cfif NOT qChallengeMedalEligibility.recordcount OR val(qChallengeMedalEligibility.etapas) LT 5>
+        <cfthrow type="Challenge.Validation" message="O atleta ainda nao possui cinco etapas concluidas e reconhecidas neste circuito."/>
     </cfif>
 
     <cfquery name="qChallengeMedalDelivery">
@@ -244,7 +248,8 @@
         <cfthrow type="Challenge.Validation" message="A inscricao do atleta nao foi encontrada neste circuito."/>
     </cfif>
 
-    <cflocation addtoken="false" url="/desafios/#VARIABLES.challengeTag#/?sucesso=medalha_entregue&challenge_refresh=#getTickCount()#&busca=#urlEncodedFormat(URL.busca)#&genero=#urlEncodedFormat(URL.genero)#&medalha=#urlEncodedFormat(URL.medalha)#&regiao=#urlEncodedFormat(URL.regiao)#&estado=#urlEncodedFormat(URL.estado)#&cidade=#urlEncodedFormat(URL.cidade)#"/>
+    <cfset VARIABLES.challengeMedalRedirect=catarinensePanelUrl(VARIABLES.challengeTag,URL,{aba='medalhas',sucesso='medalha_entregue',challenge_refresh=getTickCount()})/>
+    <cflocation addtoken="false" url="#VARIABLES.challengeMedalRedirect#"/>
 </cfif>
 
 <!--- ALTERAR STATUS DA CAMPANHA --->
@@ -465,27 +470,70 @@
             LEFT JOIN tb_evento_corridas evt
                 ON lower(evt.tag) = lower(cfg.event_tag)
         ),
+        circuit_category_winners AS (
+            SELECT cfg.event_order,
+                   upper(trim(res.sexo)) AS sexo,
+                   CASE WHEN res.id_categoria > 0 THEN 'id:' || res.id_categoria::text
+                        ELSE nullif(lower(trim(res.nome_categoria)), '') END AS categoria,
+                   min(extract(epoch FROM res.tempo_total)) AS segundos
+            FROM circuit_events cfg
+            INNER JOIN tb_resultados res ON res.id_evento = cfg.id_evento AND res.percurso = cfg.percurso
+            WHERE res.concluinte IS TRUE AND res.homologado IS TRUE AND res.status_final = 0
+              AND res.classificacao_categoria = 1 AND res.tempo_total > '00:00:00'::time
+            GROUP BY cfg.event_order, upper(trim(res.sexo)),
+                     CASE WHEN res.id_categoria > 0 THEN 'id:' || res.id_categoria::text
+                          ELSE nullif(lower(trim(res.nome_categoria)), '') END
+        ),
+        circuit_rank_results AS (
+            SELECT DISTINCT ON (res.id_usuario, cfg.event_order)
+                   res.id_usuario, res.id_evento, res.num_peito, cfg.event_order,
+                   cfg.data_inicial, cfg.data_final,
+                   CASE WHEN res.classificacao_sexo > 0 AND res.classificacao_sexo = trunc(res.classificacao_sexo)
+                        THEN res.classificacao_sexo END AS colocacao,
+                   CASE WHEN res.tempo_total > '00:00:00'::time
+                         AND (res.id_categoria > 0 OR nullif(trim(res.nome_categoria), '') IS NOT NULL)
+                         AND extract(epoch FROM res.tempo_total) >= coalesce(winner.segundos, nullif(extract(epoch FROM res.tempo_f1_categoria), 0))
+                        THEN 100 * extract(epoch FROM res.tempo_total)
+                             / nullif(coalesce(winner.segundos, nullif(extract(epoch FROM res.tempo_f1_categoria), 0)), 0)
+                   END AS percentual
+            FROM circuit_events cfg
+            INNER JOIN tb_resultados res ON res.id_evento = cfg.id_evento AND res.percurso = cfg.percurso
+            LEFT JOIN circuit_category_winners winner ON winner.event_order = cfg.event_order
+               AND winner.sexo = upper(trim(res.sexo))
+               AND winner.categoria = CASE WHEN res.id_categoria > 0 THEN 'id:' || res.id_categoria::text
+                                          ELSE nullif(lower(trim(res.nome_categoria)), '') END
+            WHERE res.id_usuario > 0 AND res.concluinte IS TRUE AND res.homologado IS TRUE AND res.status_final = 0
+            ORDER BY res.id_usuario, cfg.event_order,
+                     CASE WHEN res.classificacao_sexo > 0 THEN res.classificacao_sexo END ASC NULLS LAST,
+                     res.tempo_total ASC NULLS LAST, res.id_resultado
+        ),
+        circuit_tiebreaks AS (
+            SELECT id_usuario,
+                   coalesce(array_to_json(array_agg(colocacao ORDER BY colocacao) FILTER (WHERE colocacao IS NOT NULL))::text, '[]') AS colocacoes_json,
+                   CASE WHEN count(colocacao) = count(*) THEN 1 ELSE 0 END AS colocacoes_completas,
+                   coalesce(max(colocacao) FILTER (WHERE event_order = 6), 0) AS ultima_colocacao,
+                   CASE WHEN count(*) FILTER (WHERE event_order = 6 AND colocacao IS NULL) > 0 THEN 0 ELSE 1 END AS ultima_completa,
+                   CASE WHEN count(percentual) = count(*) THEN avg(percentual)::text END AS media_percentual,
+                   CASE WHEN count(percentual) = count(*) THEN 1 ELSE 0 END AS desempenho_completo
+            FROM circuit_rank_results GROUP BY id_usuario
+        ),
         circuit_participation AS (
             SELECT
                 res.id_usuario,
-                cfg.event_order,
+                res.event_order,
                 coalesce(sum(
                     CASE
                         WHEN trim(obs.obs) ~ '^-?[0-9]+$' THEN trim(obs.obs)::integer
                         ELSE 0
                     END
                 ), 0) AS pontos,
-                max(cfg.data_final::date) AS data_final,
-                min(cfg.data_inicial::date) AS data_inicial
-            FROM circuit_events cfg
-            INNER JOIN tb_resultados res
-                ON res.id_evento = cfg.id_evento
-               AND res.percurso = cfg.percurso
-               AND res.id_usuario > 0
+                max(res.data_final::date) AS data_final,
+                min(res.data_inicial::date) AS data_inicial
+            FROM circuit_rank_results res
             LEFT JOIN tb_resultados_obs obs
                 ON obs.id_evento = res.id_evento
                AND obs.num_peito = res.num_peito
-            GROUP BY res.id_usuario, cfg.event_order
+            GROUP BY res.id_usuario, res.event_order
         ),
         circuit_results_base AS (
             SELECT id_usuario,
@@ -552,33 +600,7 @@
             ELSE 'NAO INFORMADO'
         END as genero,
         upper(NULLIF(trim(des.body ->> 'equipe'), '')) as equipe,
-        CASE
-            WHEN coalesce(des.body ->> 'data_nascimento', '') ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' THEN
-                CASE
-                    WHEN substring(des.body ->> 'data_nascimento', 1, 4)::integer BETWEEN 1900 AND extract(year FROM current_date)::integer
-                     AND substring(des.body ->> 'data_nascimento', 6, 2)::integer BETWEEN 1 AND 12
-                     AND substring(des.body ->> 'data_nascimento', 9, 2)::integer BETWEEN 1 AND 31 THEN
-                        CASE
-                            WHEN to_char(to_date(des.body ->> 'data_nascimento', 'YYYY-MM-DD'), 'YYYY-MM-DD') = (des.body ->> 'data_nascimento')
-                                THEN to_date(des.body ->> 'data_nascimento', 'YYYY-MM-DD')
-                            ELSE NULL
-                        END
-                    ELSE NULL
-                END
-            WHEN coalesce(des.body ->> 'nascimento', '') ~ '^[0-9]{2}/[0-9]{2}/[0-9]{4}$' THEN
-                CASE
-                    WHEN substring(des.body ->> 'nascimento', 7, 4)::integer BETWEEN 1900 AND extract(year FROM current_date)::integer
-                     AND substring(des.body ->> 'nascimento', 4, 2)::integer BETWEEN 1 AND 12
-                     AND substring(des.body ->> 'nascimento', 1, 2)::integer BETWEEN 1 AND 31 THEN
-                        CASE
-                            WHEN to_char(to_date(des.body ->> 'nascimento', 'DD/MM/YYYY'), 'DD/MM/YYYY') = (des.body ->> 'nascimento')
-                                THEN to_date(des.body ->> 'nascimento', 'DD/MM/YYYY')
-                            ELSE NULL
-                        END
-                    ELSE NULL
-                END
-            ELSE NULL
-        END as data_nascimento,
+        coalesce(nullif(trim(des.body ->> 'data_nascimento'), ''), nullif(trim(des.body ->> 'nascimento'), ''), usr.data_nascimento::text) as data_nascimento,
         usr.tag_usuario,
         usr.pais,
         usr.data_statisticas,
@@ -604,6 +626,12 @@
         coalesce(cr.pontos_5, 0) as pontos_5,
         coalesce(cr.pontos_6, 0) as pontos_6,
         coalesce(cr.pontos_brutos, 0) as pontos_brutos,
+        coalesce(tie.colocacoes_json, '[]') as colocacoes_json,
+        coalesce(tie.colocacoes_completas, 1) as colocacoes_completas,
+        coalesce(tie.ultima_colocacao, 0) as ultima_colocacao,
+        coalesce(tie.ultima_completa, 1) as ultima_completa,
+        tie.media_percentual,
+        coalesce(tie.desempenho_completo, 0) as desempenho_completo,
         coalesce(cr.participou_1, 0) as participou_1,
         coalesce(cr.participou_2, 0) as participou_2,
         coalesce(cr.participou_3, 0) as participou_3,
@@ -649,6 +677,7 @@
               AND history.obs = <cfqueryparam cfsqltype="cf_sql_varchar" value="medalha_entregue"/>
         ) medalha ON true
         LEFT JOIN circuit_results cr ON cr.id_usuario = usr.id
+        LEFT JOIN circuit_tiebreaks tie ON tie.id_usuario = usr.id
         LEFT JOIN tb_uf uf ON usr.estado = uf.uf
         where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
           AND length(<cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.challenge_refresh#"/>) >= 0
@@ -807,6 +836,10 @@
     </cfif>
 </cfquery>
 <cfset desafiosAddQueryTiming("qBase", VARIABLES.desafiosQueryStart, qBase.recordcount, "db")/>
+
+<cfif VARIABLES.challengeIsCatarinenseCircuit>
+    <cfset qBase = catarinenseRank(qBase)/>
+</cfif>
 
 <cfif VARIABLES.challengeIsCatarinenseCircuit>
     <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
@@ -1027,6 +1060,7 @@
     <cfif VARIABLES.challengeIsBrasilGigante AND len(URL.mandala)>
         and mandala_status = <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.mandala#"/>
     </cfif>
+    <cfif VARIABLES.challengeIsCatarinenseCircuit>ORDER BY genero, ranking_ordem</cfif>
 </cfquery>
 <cfset desafiosAddQueryTiming("qStatsBase", VARIABLES.desafiosQueryStart, qStatsBase.recordcount, "qoq")/>
 
@@ -1036,11 +1070,15 @@
         comResultado = 0,
         proximaEtapa = 0,
         imediata = 0,
-        entregue = 0
+        entregue = 0,
+        desempatesPendentes = 0
     }/>
     <cfloop query="qBase">
         <cfif val(qBase.nodesafio) GT 0>
             <cfset VARIABLES.challengeCircuitMetrics.comResultado++/>
+        </cfif>
+        <cfif listFind("dados_pendentes,sorteio",qBase.ranking_criterio)>
+            <cfset VARIABLES.challengeCircuitMetrics.desempatesPendentes++/>
         </cfif>
         <cfswitch expression="#qBase.medalha_status#">
             <cfcase value="proxima_etapa"><cfset VARIABLES.challengeCircuitMetrics.proximaEtapa++/></cfcase>
@@ -1053,19 +1091,19 @@
         SELECT *
         FROM qStatsBase
         WHERE genero = 'FEMININO'
-        ORDER BY distancia_percorrida DESC, data_nascimento ASC, nome
+        ORDER BY ranking_ordem
     </cfquery>
     <cfquery name="qCatarinenseMale" dbtype="query">
         SELECT *
         FROM qStatsBase
         WHERE genero = 'MASCULINO'
-        ORDER BY distancia_percorrida DESC, data_nascimento ASC, nome
+        ORDER BY ranking_ordem
     </cfquery>
     <cfquery name="qCatarinenseUninformed" dbtype="query">
         SELECT *
         FROM qStatsBase
         WHERE genero = 'NAO INFORMADO'
-        ORDER BY distancia_percorrida DESC, data_nascimento ASC, nome
+        ORDER BY ranking_ordem
     </cfquery>
 </cfif>
 

@@ -1,0 +1,39 @@
+{
+  "task": "Ranking regulamentar e navegação dos circuitos Catarinense Rua e Trail",
+  "date": "2026-10-09",
+  "status": "published-and-verified",
+  "backup": "/var/backups/business-catarinense-20261009-obsvtokq",
+  "runtime_sha256": {
+    "desafios/includes/backend.cfm": "8d57603693c58e8133b74f439255b1f8d5cb1ac61ff7c414a520f2f453961fef",
+    "desafios/includes/catarinense_panel.cfm": "0f19cf8eba4fa468878d8b6407b641e1a5b08dc427cbcf3c0464496f7d8145ed",
+    "desafios/includes/catarinense_table.cfm": "e65465bf050101f37794398301e19c05a654ce916ec0d76c1856d4852df66eb2",
+    "desafios/includes/exportar_catarinense.cfm": "b003a0ce3629fbd6927535e90d404c2ae261db03e77e0d439df776f24da7a88b",
+    "desafios/includes/catarinense_ranking_helpers.cfm": "4b0a6aba24868beb7e01f2941861e15cdbdfb33dbfc71af885d6f7dbc2df2ab4"
+  },
+  "rules": {
+    "points": "Quatro melhores pontuações cadastradas entre seis etapas; nenhum valor de origem foi regravado.",
+    "tiebreak_order": ["Nascimento mais antigo", "Mais primeiros, segundos e demais lugares em todas as etapas concluídas", "Melhor colocação na sexta etapa", "Menor média percentual de tempo por vencedor da categoria", "Sorteio oficial pendente"],
+    "missing_required_data": "O grupo recebe faixa provisória de posições. Critérios incompletos não são pulados.",
+    "canonical_results": "Um resultado por atleta/etapa, concluinte, homologado e status_final=0; duplicatas, DNF e não homologados não somam participações/pontos.",
+    "category_reference": "Vencedor real da mesma etapa, gênero, categoria e percurso tem precedência; tempo_f1_categoria é fallback quando o vencedor não está disponível. Referência inconsistente ou incompleta bloqueia a média.",
+    "precision": "Comparação decimal exata; Excel exporta a média como texto para preservar precisão.",
+    "medal_delivery": "Cinco conclusões reconhecidas; com quatro aparece Próxima etapa, sem botão de entrega.",
+    "timbo_km": 6,
+    "unchanged": ["Permissões de acesso", "Resultados e pontuação persistidos", "Outros desafios", "Datas e vínculo dos eventos"]
+  },
+  "interface": ["Abas Ranking, Medalhas, Etapas e Regras", "50 atletas por página", "Posição geral por gênero preservada nos filtros", "Detalhes do desempate por atleta", "Filtros preservados em navegação, exportação e após entrega", "Cabeçalho fixo e rolagem da tabela", "Cidade vazia não substitui Todas", "Exportação de toda a lista filtrada"],
+  "verification": {
+    "adobe_compiled": {"success": 5, "total": 5},
+    "native_assertions": {"ranking": 30, "sql_and_real_post_rollback": 21, "ranking_ui_page_two": 7, "medal_ui": 5, "stages_ui": 4, "rules_ui": 4, "xlsx": 9, "total": 80, "failures": 0},
+    "node_suite": {"tests": 382, "pass": 376, "fail": 6, "baseline_identical": true, "command": "node --test _codex/tests/*.test.js _codex/tests/*.test.cjs _codex/tests/*.test.mjs", "preexisting_failures": ["google-agenda-browser: jsdom ausente", "google-agenda-schema: PGlite ausente", "google-drive-schema: PGlite ausente", "mif-report-deployment-contract: Python de outra máquina ausente", "mif-report-deployment-contract: alteração histórica em inscrições", "seo_marathons_heading: import absoluto de outra máquina"]},
+    "menu_contract": {"tests": 1, "pass": 1, "method": "Invocação direta da função test_account_menu_exposes_both_catarinense_challenges_only_with_access; pytest indisponível"},
+    "live_readonly": {"trail": {"enrolled": 302, "with_result": 70, "pending_tiebreak_athletes": 0}, "road": {"enrolled": 400, "with_result": 111, "pending_tiebreak_athletes": 36}},
+    "browser_global_admin": ["Ambos painéis renderizados", "Quatro abas funcionais", "Timbó exibido com 6 km", "Segunda página 51–100", "Filtros gênero/UF/nome mantêm posição", "Detalhes de desempate abrem", "Download XLSX real concluído", "390px sem overflow da página, com abas/tabela roláveis; viewport restaurado"],
+    "external_probe_http": 404,
+    "persistent_test_writes": false,
+    "review": "Revisão independente: nenhum achado crítico, importante ou menor",
+    "git_diff_check": "passed"
+  },
+  "rollback": "Baseline dos quatro arquivos preexistentes em backup/baseline; helper novo ausente no baseline. Conferir drift antes de restaurar. Retirar helper novo de forma recuperável somente após restaurar os consumidores. Manifesto final e scripts de publicação/sondas arquivados no mesmo backup.",
+  "git": {"commit": false, "push": false}
+}

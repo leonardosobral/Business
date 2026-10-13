@@ -28,7 +28,9 @@
 <cfset VARIABLES.challengeExportHeaders = [
     "ID", "Nome", "Email", "Telefone", "Genero", "Cidade", "UF", "Equipe",
     "Etapa 1", "Etapa 2", "Etapa 3", "Etapa 4", "Etapa 5", "Etapa 6",
-    "Pontos", "Etapas reconhecidas", "Status medalha", "Data da entrega"
+    "Pontos", "Etapas reconhecidas", "Status medalha", "Data da entrega",
+    "Posição geral", "Critério de desempate", "Pendência do desempate", "Nascimento",
+    "Colocações nas etapas", "Colocação E6", "Média de tempo (%)"
 ]/>
 
 <cfloop array="#VARIABLES.challengeExportHeaders#" item="VARIABLES.challengeExportHeader" index="VARIABLES.challengeExportColumn">
@@ -73,6 +75,16 @@
     <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, val(qStatsBase.nodesafio), VARIABLES.challengeExportRow, 16)/>
     <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, VARIABLES.challengeExportMedalLabel, VARIABLES.challengeExportRow, 17)/>
     <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, isNull(qStatsBase.medalha_entregue_em) ? "" : qStatsBase.medalha_entregue_em, VARIABLES.challengeExportRow, 18)/>
+    <cfset VARIABLES.challengeExportPosition = val(qStatsBase.ranking_posicao) GT 0 ? qStatsBase.ranking_posicao & "" : ""/>
+    <cfif qStatsBase.ranking_fim GT qStatsBase.ranking_posicao><cfset VARIABLES.challengeExportPosition &= "–" & qStatsBase.ranking_fim/></cfif>
+    <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, VARIABLES.challengeExportPosition, VARIABLES.challengeExportRow, 19)/>
+    <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, catarinenseCriterionLabel(qStatsBase.ranking_criterio), VARIABLES.challengeExportRow, 20)/>
+    <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, qStatsBase.ranking_motivo, VARIABLES.challengeExportRow, 21)/>
+    <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, qStatsBase.ranking_nascimento, VARIABLES.challengeExportRow, 22)/>
+    <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, qStatsBase.colocacoes_json, VARIABLES.challengeExportRow, 23)/>
+    <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, val(qStatsBase.ultima_completa) ? (val(qStatsBase.ultima_colocacao) GT 0 ? qStatsBase.ultima_colocacao & "" : "Sem conclusão") : "Dado pendente", VARIABLES.challengeExportRow, 24)/>
+    <!--- Excel numbers have less precision than the official decimal comparator. --->
+    <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, val(qStatsBase.desempenho_completo) ? qStatsBase.media_percentual & "" : "", VARIABLES.challengeExportRow, 25, "String")/>
     <cfset VARIABLES.challengeExportRow++/>
 </cfloop>
 
@@ -83,6 +95,10 @@
 <cfset spreadsheetSetColumnWidth(VARIABLES.challengeExportSheet, 8, 24)/>
 <cfset spreadsheetSetColumnWidth(VARIABLES.challengeExportSheet, 17, 26)/>
 <cfset spreadsheetSetColumnWidth(VARIABLES.challengeExportSheet, 18, 20)/>
+<cfset spreadsheetSetColumnWidth(VARIABLES.challengeExportSheet, 20, 28)/>
+<cfset spreadsheetSetColumnWidth(VARIABLES.challengeExportSheet, 21, 60)/>
+<cfset spreadsheetSetColumnWidth(VARIABLES.challengeExportSheet, 23, 26)/>
+<cfset spreadsheetSetColumnWidth(VARIABLES.challengeExportSheet, 25, 28)/>
 
 <cfset VARIABLES.challengeExportFilename = "#URL.desafio#_#dateFormat(now(), 'yyyy-mm-dd')#_#timeFormat(now(), 'HH-mm')#.xlsx"/>
 <cfset VARIABLES.challengeExportBinary = spreadsheetReadBinary(VARIABLES.challengeExportSheet)/>

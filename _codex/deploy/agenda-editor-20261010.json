@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-10",
+  "url": "https://business.roadrunners.run/administracao/agenda/",
+  "status": "published_and_verified",
+  "backup": "/var/backups/business-agenda-ui-20261010-8G7T0V",
+  "productionBaselineMatched": true,
+  "backupMode": "700",
+  "runtime": {
+    "administracao/agenda/index.cfm": "fc2b838aa1557790a131c18759c5f015590c14bf33ac779e8532b631ba116c61",
+    "administracao/agenda/api.cfm": "a47dea5fbbe88ab09678d7ca05b556913db4ddc8ca0300e512d7693d86bd11f1",
+    "administracao/agenda/assets/agenda.js": "176fadc9587381835009648ec69b79e32b18a638b51f8977cc7aa0fa6fc6140e",
+    "administracao/agenda/assets/agenda.css": "c4366574c4b240914cfd2c920f272f0660ac4419d9dffe1c4031c054bfe8300e",
+    "administracao/agenda/assets/calendar-model.js": "f3714205b9d9bd9a0a3c5b842693e1f7d9091de6f22df0687b52328574a20b3f"
+  },
+  "verification": {
+    "focusedNodeTests": {"total": 24, "passed": 24, "failed": 0},
+    "fullNodeSuite": {"total": 403, "passed": 400, "failed": 3},
+    "preexistingUnrelatedFailures": [
+      "mif-report-deployment-contract: modular manifest portable privacy/hash verification depends on an unavailable absolute Python path",
+      "mif-report-deployment-contract: existing registration-screen baseline diff outside Agenda",
+      "seo_marathons_heading.test.mjs: absolute import path from another machine"
+    ],
+    "actualDispatchTestedOn": ["Lucee 5.4", "Adobe ColdFusion production engine"],
+    "nativeDispatch": {"ok": true, "externalWrites": 0},
+    "candidateColdFusionCompile": {"total": 3, "successful": 3},
+    "readOnlyReview": "No Critical or Important findings. Minor input/focus/map issues corrected with RED-to-GREEN regressions.",
+    "diffCheck": "passed",
+    "privateProbeAfterArchive": 404,
+    "runtimeMatchesLocalCandidate": true,
+    "agendaServiceUnchanged": true,
+    "browser": {
+      "monthEvents": 41,
+      "listMonthEvents": 35,
+      "realGuestRows": 6,
+      "realResponses": {"accepted": 2, "declined": 3, "needsAction": 1},
+      "verified": ["details", "participants", "options", "meeting link", "sticky tabs and footer", "list cards", "organizer and reminders"],
+      "mobileViewport": {"width": 390, "height": 844, "dialogWidth": 366.59375, "pageOverflow": false, "footerVisible": true},
+      "viewportRestored": true,
+      "eventsSaved": 0,
+      "invitationsSent": 0
+    }
+  },
+  "unchanged": ["credentials", "Google permissions", "database schema", "Application.cfc", "other dirty fronts"],
+  "gitOperations": [],
+  "sources": [
+    "https://developers.google.com/workspace/calendar/api/v3/reference/events",
+    "https://developers.google.com/workspace/calendar/api/v3/reference/events/update"
+  ],
+  "screenshot": "agenda-editor-published-20261010.png",
+  "log": "agenda-editor-full-suite-20261010.log"
+}

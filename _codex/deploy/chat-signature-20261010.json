@@ -1,0 +1,35 @@
+{
+  "task": "Corrigir invalid_signature no gerenciador de grupos e canais",
+  "date": "2026-10-10",
+  "published": true,
+  "runtime_files": ["Application.cfc"],
+  "server_only_configuration_change": "specialGroupsUrl: dev.roadrunners.run -> roadrunners.run; nenhuma chave ou permissão alterada",
+  "baseline_sha256": "ce140c0e559dc8346ad9fc930fd0e3cb9dbd01c29220d8b6482f507b89aa79c7",
+  "published_sha256": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+  "backup": "/var/backups/business-chat-signature-20261010-ojkjeU",
+  "root_cause": "O include definiu configurações em LOCAL e um override de delegação em VARIABLES. A cópia de VARIABLES substituía LOCAL, descartando a chave específica e usando o fallback de handoff. A URL específica salva também apontava para dev.",
+  "fix": "Limpar o estado antigo de VARIABLES e mesclar os overrides explícitos sem descartar LOCAL; corrigir somente a URL específica no servidor; atualizar apenas APPLICATION.specialGroups, sem reiniciar a aplicação inteira.",
+  "verification": {
+    "native_loader_regression": "RED 4 falhas em 7; GREEN 7/7",
+    "native_signature_and_permissions": "RED 2 falhas em 5; GREEN 5/5; catálogo autorizado, corpo adulterado, chave incorreta, expiração e admin global",
+    "community_browser_unit_tests": "11/11",
+    "candidate_native_compilation": "3/3",
+    "native_refresh": "success=true; groups=6; onlyIntegrationCacheRefreshed=true",
+    "internal_browser": "Gerenciador sem alerta invalid_signature; 3 grupos e 3 canais carregados; formulário habilitado",
+    "screenshot": "_codex/deploy/chat-signature-fixed-20261010.png",
+    "temporary_runners": "Arquivados no backup/tests; URLs de diagnóstico Business/RR, stage e refresh retornaram 404",
+    "git_diff_check": "pass",
+    "general_node_suite": {"tests": 386, "passed": 380, "failed": 6},
+    "preexisting_failures": [
+      "google-agenda-browser.test.js: jsdom ausente",
+      "PostgreSQL migration is repeatable and enforces one account and one event per card: @electric-sql/pglite ausente",
+      "Drive migration is repeatable and enforces one valid root: @electric-sql/pglite ausente",
+      "modular manifest passes portable privacy and hash verification: caminho Python de outra máquina",
+      "the modular feature never changes the existing registrations screen: diff preexistente fora do escopo",
+      "seo_marathons_heading.test.mjs: import absoluto de outra máquina"
+    ],
+    "supplemental_cli_limitation": "A compilação CLI do runner temporário de refresh encontrou zip4j ausente no classpath standalone; o parser nativo HTTP compilou o runner e a execução real foi bem-sucedida. Application.cfc candidato compilou normalmente. Nenhuma dependência do servidor foi alterada."
+  },
+  "git_mutations": "none",
+  "membership_mutations": "none"
+}

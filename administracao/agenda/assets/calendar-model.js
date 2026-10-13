@@ -32,5 +32,41 @@
     if (view==='week') return add(value,7*direction);
     const d=new Date(value+'T12:00:00Z'); return day(new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+direction,1,12)));
   }
-  return {zone,add,local,range,onDay,move};
+  function https(value) {
+    try {const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password?u.href:'';} catch {return '';}
+  }
+  function meeting(event) {
+    for(const entry of event.conferenceData?.entryPoints||[]) {
+      if(entry.entryPointType==='video'&&https(entry.uri))return https(entry.uri);
+    }
+    if(https(event.hangoutLink))return https(event.hangoutLink);
+    const place=https(event.location);
+    return place&&new URL(place).hostname==='meet.google.com'?place:'';
+  }
+  function parseGuests(value) {
+    const emails=[];
+    for(const raw of value.split(/[,;\n\r]+/).map(s=>s.trim()).filter(Boolean)) {
+      const email=(raw.match(/^[^<>]*<([^<>]+)>$/)?.[1]||raw).trim().toLowerCase();
+      if(email.length>254||!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email))throw new Error('E-mail inválido: '+raw);
+      if(!emails.includes(email))emails.push(email);
+    }
+    if(emails.length>100)throw new Error('Informe até 100 participantes.');
+    return emails;
+  }
+  function responses(guests=[]) {
+    const result={total:0,accepted:0,tentative:0,declined:0,needsAction:0};
+    guests.filter(g=>!g.organizer).forEach(g=>{result.total++;result[['accepted','tentative','declined'].includes(g.responseStatus)?g.responseStatus:'needsAction']++;});
+    return result;
+  }
+  function duration(event) {
+    if(!event.start||!event.end)return '';
+    if(event.start.date){const days=Math.round((new Date(event.end.date)-new Date(event.start.date))/86400000);return days>1?days+' dias':'Dia inteiro';}
+    const minutes=Math.round((new Date(event.end.dateTime)-new Date(event.start.dateTime))/60000);
+    if(!Number.isFinite(minutes)||minutes<0)return '';
+    return [minutes>=60?Math.floor(minutes/60)+'h':'',minutes%60||!minutes?(minutes%60)+'min':''].filter(Boolean).join(' ');
+  }
+  function matches(event,search) {
+    return [event.summary,event.description,event.location,event.organizer?.email,event.organizer?.displayName,...(event.attendees||[]).flatMap(g=>[g.email,g.displayName])].join(' ').toLocaleLowerCase('pt-BR').includes(search.toLocaleLowerCase('pt-BR'));
+  }
+  return {zone,add,local,range,onDay,move,https,meeting,parseGuests,responses,duration,matches};
 }));

@@ -1,0 +1,77 @@
+{
+  "task": "Alternância entre rankings Feminino e Masculino dos circuitos Catarinense Rua e Trail",
+  "date": "2026-10-09",
+  "status": "published_and_verified",
+  "runtime_scope": [
+    "desafios/includes/catarinense_panel.cfm",
+    "desafios/includes/catarinense_table.cfm"
+  ],
+  "backup": "/var/backups/business-catarinense-gender-20261009-or0cq0l_",
+  "baseline_sha256": {
+    "desafios/includes/catarinense_panel.cfm": "0f19cf8eba4fa468878d8b6407b641e1a5b08dc427cbcf3c0464496f7d8145ed",
+    "desafios/includes/catarinense_table.cfm": "e65465bf050101f37794398301e19c05a654ce916ec0d76c1856d4852df66eb2"
+  },
+  "published_sha256": {
+    "desafios/includes/catarinense_panel.cfm": "8065731aef58cb50e6ae172ba53555d39cd97330610788d5fde9add22dc174b9",
+    "desafios/includes/catarinense_table.cfm": "569a82d0ceeb8873f267ff0ff36a0d8865212d3aaa92ece5d5b90bc5bd2422cf"
+  },
+  "verification": {
+    "baseline_matches_before_prepare_and_publish": true,
+    "candidate_and_final_production_hashes_match": true,
+    "coldfusion_compile": {"successful": 2, "total": 2},
+    "tdd": {"baseline_behavior_assertions": 46, "expected_baseline_failures": 40},
+    "native_assertions_candidate": {"passed": 156, "failed": 0},
+    "native_assertions_production": {"passed": 156, "failed": 0},
+    "native_cases": [
+      {"case": "female", "checks": 15},
+      {"case": "male", "checks": 14},
+      {"case": "male-page-2", "checks": 14},
+      {"case": "unspecified", "checks": 11},
+      {"case": "medals", "checks": 3},
+      {"case": "invalid-gender", "checks": 15},
+      {"case": "empty", "checks": 4},
+      {"case": "ranking-regression", "checks": 30},
+      {"case": "data-regression", "checks": 21},
+      {"case": "legacy-ranking", "checks": 7},
+      {"case": "legacy-medals", "checks": 5},
+      {"case": "legacy-stages", "checks": 4},
+      {"case": "legacy-rules", "checks": 4},
+      {"case": "legacy-export", "checks": 9}
+    ],
+    "native_data_test_isolation": "Synthetic transaction and temporary fixtures; guaranteed rollback; no persistent athlete or medal mutations.",
+    "browser_authenticated": [
+      "Rua defaults to Feminino; counts female 134 and male 266; fifty rows on page one.",
+      "Rua Masculino selected via control; displayed positions nondecreasing; export link carries masculino.",
+      "Rua Masculino page two begins at position 51; changing to Feminino resets pagina=1.",
+      "Trail preserves gender when entered from Rua; counts female 130 and male 172.",
+      "Trail Masculino positions nondecreasing; fifty rows on page one.",
+      "Trail Medalhas retains gender dropdown and does not display ranking-only segmented controls.",
+      "Trail filter submission retains Masculino; changing to Feminino preserves estado=SC and resets pagina=1.",
+      "Visual screenshot verified without the navigation overlay; mobile viewport 390 px has no page overflow and both controls remain usable.",
+      "Viewport override reset; deliverable tab left on Rua ranking."
+    ],
+    "node_suite": {
+      "total": 382,
+      "passed": 376,
+      "failed": 6,
+      "unchanged_from_prior_baseline": true,
+      "log": "/tmp/catarinense-gender-20261009-node.log",
+      "preexisting_failures": [
+        {"test": "_codex/tests/google-agenda-browser.test.js", "reason": "Missing jsdom dependency"},
+        {"test": "PostgreSQL migration is repeatable and enforces one account and one event per card", "reason": "Missing PGlite dependency"},
+        {"test": "Drive migration is repeatable and enforces one valid root", "reason": "Missing PGlite dependency"},
+        {"test": "modular manifest passes portable privacy and hash verification", "reason": "Python executable points to another machine"},
+        {"test": "the modular feature never changes the existing registrations screen", "reason": "Existing unrelated registrations diff"},
+        {"test": "_codex/tests/seo_marathons_heading.test.mjs", "reason": "Absolute import path points to another machine"}
+      ]
+    },
+    "git_diff_check": "passed",
+    "code_review": {"critical": 0, "important": 0, "minor": "Count and selected-gender pending-warning assertions added and passed."},
+    "anonymous_routes": {"Rua": 302, "Trail": 302},
+    "temporary_runner_external_access_before_archive": 404,
+    "temporary_probes_archived": 5,
+    "temporary_probe_http_after_archive": [404, 404, 404, 404, 404]
+  },
+  "unchanged": ["Ranking criteria algorithm", "Points", "Permissions", "Medal delivery workflow", "Database schema", "Other runtime files"],
+  "git_mutations": {"commit": false, "push": false, "branch": false, "pull_request": false}
+}

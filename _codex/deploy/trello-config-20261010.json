@@ -1,0 +1,18 @@
+{
+  "task": "Restore existing Trello configuration in application memory",
+  "date": "2026-10-10",
+  "rootCause": "Old application state from the previously corrected LOCAL/VARIABLES configuration overlay had an empty Trello API key and token, leaving the integration disabled.",
+  "persistentLoaderFixAlreadyPublished": true,
+  "productFilesChangedThisTask": [],
+  "savedCredentialsChanged": false,
+  "trelloPermissionsChanged": false,
+  "boardsOrCardsChanged": false,
+  "cacheFieldsRestored": ["trello.apiKey", "trello.apiToken", "trello.enabled"],
+  "backup": "/var/backups/business-trello-config-20261010-2K0MKY",
+  "before": {"savedCredentialsValid": true, "savedApiStatus": 200, "cachedConfigured": false, "runtimeApiStatus": 0},
+  "after": {"savedCredentialsValid": true, "savedApiStatus": 200, "cachedMatchesSaved": true, "runtimeConfigured": true, "runtimeApiStatus": 200},
+  "browserVerification": {"url": "https://business.roadrunners.run/administracao/kanban/", "selectedBoard": "Comercial · RunnerHub", "mappedDepartments": 2, "visibleCards": 20, "listsLoaded": true, "credentialAlertAbsent": true},
+  "scopedTests": {"trello-kanban.test.js": "10 passed; 0 failures", "diffCheck": "passed"},
+  "temporaryProbes": "Archived outside webroot; both URLs return HTTP 404",
+  "runtimeServiceHash": "01503f324ed7cb18dbafa7caa78db7cf17bb6f581466e803386c4d12f61d33e9"
+}

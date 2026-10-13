@@ -1,0 +1,18 @@
+{
+  "task": "Restore already saved Google Agenda configuration in application memory",
+  "date": "2026-10-10",
+  "rootCause": "Old application state from the previously corrected LOCAL/VARIABLES configuration overlay discarded the Google Calendar client ID, client secret and token encryption key.",
+  "persistentLoaderFixAlreadyPublished": true,
+  "productFilesChangedThisTask": [],
+  "savedCredentialsChanged": false,
+  "encryptionKeyRotated": false,
+  "googlePermissionsChanged": false,
+  "calendarEventsChanged": false,
+  "cacheFieldsRestored": ["googleCalendar.CLIENT_ID", "googleCalendar.CLIENT_SECRET", "googleCalendar.TOKEN_KEY"],
+  "backup": "/var/backups/business-agenda-config-20261010-K1knDJ",
+  "before": {"savedKeyValid": true, "savedTokenValid": true, "cachedConfigured": false, "runtimeConfigValid": false, "runtimeTokenValid": false},
+  "after": {"savedKeyValid": true, "savedTokenValid": true, "cachedMatchesSaved": true, "runtimeConfigValid": true, "runtimeTokenValid": true},
+  "browserVerification": {"url": "https://business.roadrunners.run/administracao/agenda/", "calendar": "RunnerHub", "eventsInPeriod": 41, "configurationAlertAbsent": true, "controlsEnabled": true},
+  "localTests": {"calendarModel": "5 passed", "migration": "Blocked: PostgreSQL migration is repeatable and enforces one account and one event per card; missing @electric-sql/pglite", "diffCheck": "passed"},
+  "temporaryProbes": "Archived outside webroot; both URLs return HTTP 404"
+}

@@ -1,0 +1,33 @@
+{
+  "task": "Corrigir credencial interna não configurada no processador de resumos",
+  "date": "2026-10-10",
+  "applied_in_production": true,
+  "runtime_files_changed": [],
+  "configuration_files_changed": [],
+  "credentials_rotated": false,
+  "root_cause": "APPLICATION.cronJobs.secrets.conteudo_internal ainda estava ausente na memória do Business. O valor já estava salvo e correspondia ao worker News. O carregamento persistente do Application.cfc havia sido corrigido e publicado na tarefa anterior, mas somente o cache de grupos foi atualizado naquela tarefa.",
+  "fix": "Recarregar apenas a credencial conteudo_internal em APPLICATION.cronJobs.secrets a partir da configuração existente, após verificar sua correspondência com o processador News. Sem reiniciar a aplicação nem alterar outros caches.",
+  "backup": "/var/backups/business-summary-config-20261010-CuJNUM",
+  "verification": {
+    "before": {"cachedConfigured": false, "savedConfigured": true, "savedMatchesNews": true, "ok": false},
+    "after": {"cachedConfigured": true, "savedConfigured": true, "savedMatchesNews": true, "cachedMatchesSaved": true, "ok": true},
+    "real_browser_processing": {
+      "content_id": 1534,
+      "result": "Resumo por IA concluído e enviado para o fluxo editorial.",
+      "editorial_status": "Pendente de curadoria",
+      "published_automatically": false,
+      "failed_summaries_before": 8,
+      "failed_summaries_after": 7
+    },
+    "specific_local_checks": "4/4 passed (content-summary-individual and content-curation)",
+    "git_diff_check": "pass",
+    "temporary_runners": "Arquivados fora do webroot; Business check, News check e refresh retornaram 404",
+    "screenshot": "_codex/deploy/summary-config-fixed-20261010.png"
+  },
+  "unchanged_runtime_sha256": {
+    "Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+    "portal/includes/content_backend.cfm": "abbe53455194adc5ec77b129323b5eb758e96bc36c962adafbbe8b686b4c2cca",
+    "News/api/admin/jobs/article_summary.cfm": "fc6d3434f8cafbb892092a9c454eeebf9a13b0d8e85c73164b56037d8fd82388"
+  },
+  "git_mutations": "none"
+}

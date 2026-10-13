@@ -205,6 +205,9 @@
     GROUP BY tool_name
     ORDER BY calls DESC
   </cfquery>
+  <cfif VARIABLES.vickySection EQ "auditoria">
+    <cfinclude template="audit_backend.cfm"/>
+  <cfelse>
   <cfset VARIABLES.vickyErrorStep="listagem de execuções"/>
   <cfquery name="qVickyRuns" datasource="runner_dba">
     SELECT e.id_vicky_execucao,
@@ -236,6 +239,7 @@
     <cfquery datasource="runner_dba">INSERT INTO tb_vicky_audit_access (id_vicky_execucao,id_operador,reason) SELECT id_vicky_execucao,<cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,'business_admin_review' FROM tb_vicky_execucao WHERE id_vicky_execucao=<cfqueryparam cfsqltype="cf_sql_bigint" value="#val(URL.execucao)#"/></cfquery>
     <cfquery name="qVickyAudit" datasource="runner_dba">SELECT t.tool_name,t.status,t.arguments_summary,t.result_summary,t.latency_ms,t.error_code,t.created_at FROM tb_vicky_tool_call t JOIN tb_vicky_execucao e ON e.id_vicky_execucao=t.id_vicky_execucao WHERE t.id_vicky_execucao=<cfqueryparam cfsqltype="cf_sql_bigint" value="#val(URL.execucao)#"/> ORDER BY t.id_vicky_tool_call</cfquery>
     <cfquery name="qVickyInteraction" datasource="runner_dba">SELECT um.content user_content,am.content assistant_content,um.created_at user_created_at,am.created_at assistant_created_at FROM tb_vicky_execucao e LEFT JOIN tb_vicky_mensagem um ON um.id_vicky_mensagem=e.id_mensagem_usuario LEFT JOIN tb_vicky_mensagem am ON am.id_vicky_mensagem=e.id_mensagem_assistente WHERE e.id_vicky_execucao=<cfqueryparam cfsqltype="cf_sql_bigint" value="#val(URL.execucao)#"/> LIMIT 1</cfquery>
+  </cfif>
   </cfif>
   </cfif>
   <cfset VARIABLES.vickyReady=true/>

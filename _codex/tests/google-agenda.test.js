@@ -29,3 +29,25 @@ test('historical timezone offsets are resolved by the IANA timezone', () => {
   assert.equal(M.local('2018-12-01T12:00:00Z'),'2018-12-01T10:00');
   assert.equal(M.local('2026-12-01T12:00:00Z'),'2026-12-01T09:00');
 });
+test('guest input accepts a pasted list, normalizes and deduplicates without silently losing invalid addresses', () => {
+  assert.deepEqual(M.parseGuests('Ana <ANA@example.com>; bob@example.com\nana@example.com'), ['ana@example.com','bob@example.com']);
+  assert.throws(()=>M.parseGuests('ana@example.com, inválido'), /inválido/i);
+  assert.throws(()=>M.parseGuests('a@@example.com'), /inválido/i);
+  assert.throws(()=>M.parseGuests(Array.from({length:101},(_,i)=>`p${i}@example.com`).join(',')), /100/);
+});
+test('meeting links are HTTPS only and prefer video entry points over legacy hangoutLink', () => {
+  assert.equal(M.meeting({conferenceData:{entryPoints:[{entryPointType:'phone',uri:'tel:123'},{entryPointType:'video',uri:'https://meet.google.com/abc-defg-hij'}]},hangoutLink:'https://meet.google.com/other'}),'https://meet.google.com/abc-defg-hij');
+  assert.equal(M.meeting({hangoutLink:'javascript:alert(1)'}),'');
+  assert.equal(M.meeting({location:'https://meet.google.com/abc-defg-hij'}),'https://meet.google.com/abc-defg-hij');
+  assert.equal(M.meeting({location:'https://example.com/venue'}),'');
+  assert.equal(M.https('https://user:password@example.com/'), '');
+});
+test('RSVP counts exclude organizers and label unknown responses as pending', () => {
+  assert.deepEqual(M.responses([{email:'host@example.com',organizer:true,responseStatus:'accepted'},{email:'a@example.com',responseStatus:'accepted'},{email:'b@example.com',responseStatus:'tentative'},{email:'c@example.com',responseStatus:'declined'},{email:'d@example.com',responseStatus:'new'}]), {total:4,accepted:1,tentative:1,declined:1,needsAction:1});
+});
+test('duration respects exclusive all-day ends and search includes guests and organizer', () => {
+  assert.equal(M.duration({start:{date:'2026-10-10'},end:{date:'2026-10-12'}}),'2 dias');
+  assert.equal(M.duration({start:{dateTime:'2026-10-10T09:00:00-03:00'},end:{dateTime:'2026-10-10T10:30:00-03:00'}}),'1h 30min');
+  assert.equal(M.matches({summary:'Reunião',attendees:[{email:'ana@example.com',displayName:'Ana'}]},'ana@example'),true);
+  assert.equal(M.matches({organizer:{email:'host@example.com'}},'host@'),true);
+});

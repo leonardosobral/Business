@@ -1,0 +1,23 @@
+{
+  "task": "Restore existing Google Picker configuration in application memory",
+  "date": "2026-10-10",
+  "rootCause": "Old application state from the previously corrected LOCAL/VARIABLES configuration overlay had an empty Picker API key and App ID.",
+  "persistentLoaderFixAlreadyPublished": true,
+  "productFilesChangedThisTask": [],
+  "savedCredentialsChanged": false,
+  "googlePermissionsChanged": false,
+  "filesSelectedOrAuthorizedDuringTest": 0,
+  "driveFilesChanged": false,
+  "cacheFieldsRestored": ["googleDrive.pickerApiKey", "googleDrive.appId", "googleDrive.pickerConfigured"],
+  "backup": "/var/backups/business-picker-config-20261010-tj7nBo",
+  "before": {"savedConfigured": true, "cachedConfigured": false, "runtimePickerConfigured": false, "savedAppIdMatchesOAuthProject": true, "existingDriveFileScope": true},
+  "after": {"cachedMatchesSaved": true, "runtimePickerConfigured": true, "existingDriveFileScope": true},
+  "browserVerification": {"url": "https://business.roadrunners.run/administracao/drive/", "configurationAlertAbsent": true, "pickerLibrariesLoaded": true, "addFromDriveButtonEnabled": true, "pickerDialogOpened": true, "rootFoldersListed": 3, "noFileSelected": true, "leftOpenForUserSelection": true},
+  "scopedTests": {"google-drive.test.js": "4 passed; 0 failures", "diffCheck": "passed"},
+  "temporaryProbes": "Archived outside webroot; both URLs return HTTP 404",
+  "runtimeHashes": {
+    "index.cfm": "bd23003b533e715cac749944aa5b3c26ebfac7a7db34757c02d51c4b83a8d9c8",
+    "includes/service.cfm": "8d0bba5bbc24452baec4bb206bf52ba57ce1760c2df31043f0fd81c12c8227af",
+    "assets/drive.js": "6203ab96c1b978fcf39ea5fafa73231198ed9432a30796f88e3b6208c8e83d8b"
+  }
+}

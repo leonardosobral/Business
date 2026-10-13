@@ -1,0 +1,61 @@
+{
+  "task": "Corrigir HTMLEDITFORMAT indefinida nos painéis Catarinense Rua e Trail",
+  "date": "2026-10-13",
+  "status": "published_and_verified",
+  "cause": "HTMLEditFormat was removed in Adobe ColdFusion 2025. Legacy calls remained in the shared panel and athlete table.",
+  "server_runtime": "Adobe ColdFusion 2025,0,13,331960",
+  "runtime_scope": [
+    "desafios/includes/catarinense_panel.cfm",
+    "desafios/includes/catarinense_table.cfm"
+  ],
+  "change": "Use encodeForHTMLAttribute for attributes and navigation URLs; encodeForHTML for rendered text. No ranking, access-control, data or layout changes.",
+  "backup": "/var/backups/business-catarinense-encoding-20261013-WFVmUm",
+  "baseline_sha256": {
+    "desafios/includes/catarinense_panel.cfm": "a2d55afc9540af1b80945aba8d27e98780541b4f03ccaf0f45a7c153087e159b",
+    "desafios/includes/catarinense_table.cfm": "132ee8e7547c6015361ae6a8fb41ec2a71ece343b873ad9651dbed7936380ec4"
+  },
+  "published_sha256": {
+    "desafios/includes/catarinense_panel.cfm": "c05f5dbe9114f6b3f0b77b53f20b16a7f36e809ffd370c30e1936e8ac341b94b",
+    "desafios/includes/catarinense_table.cfm": "5818434b83067f43a467c4eb011757c046266fca8aab85f666927dcf64062e50"
+  },
+  "verification": {
+    "trusted_ssh_host_verification": "StrictHostKeyChecking=yes; no host key changes by this task",
+    "production_baseline_matched_local_before_fix": true,
+    "baseline_rechecked_before_backup_and_before_replacement": true,
+    "isolated_native_red": {"cases": 14, "failures": 14, "failure": "Variable HTMLEDITFORMAT is undefined."},
+    "isolated_native_candidate": {"checks": 233, "failures": 0},
+    "native_published_templates": {"checks": 233, "failures": 0},
+    "native_scope": "Synthetic athletes only; actual CF2025 renders. Both circuits: ranking male/female/unspecified, page 2, medals, stages and rules; escaping, search filters, navigation, tie-break ordering and missing birth rule.",
+    "ranking_helper_unchanged_sha256": "0a0da25d9b30f8a944c6cae3d5fb09bd04660d564749dcc2c8e67ab14edc3f31",
+    "task_only_diff_verified": "Normalizing output-encoder names makes each published file identical to the production baseline.",
+    "git_diff_check": "passed",
+    "account_menu_contract": "passed",
+    "browser": {
+      "authenticated_global_admin": true,
+      "rua_male": {"rows": 50, "first_position": 1, "reported_error_present": false},
+      "trail_male": {"rows": 50, "reported_error_present": false},
+      "trail_female_switch": {"rows": 50, "selected_gender": "feminino", "reported_error_present": false}
+    },
+    "temporary_runner_external_access": 404,
+    "temporary_runner_archived_to": "/var/backups/business-catarinense-encoding-20261013-WFVmUm/test-runner",
+    "node_suite": {
+      "total": 390,
+      "passed": 382,
+      "failed": 8,
+      "log": "/private/tmp/business-catarinense-encode-20261013-L19C0d/node-suite.log",
+      "unrelated_failures": [
+        {"test": "joining a group refreshes the group list, not channels", "file": "_codex/tests/chat-community-entry.test.cjs", "reason": "event.target.matches is not a function in the existing mock; reads sibling RoadRunners runtime, not Catarinense files"},
+        {"test": "subscribing to a channel refreshes channels", "file": "_codex/tests/chat-community-entry.test.cjs", "reason": "event.target.matches is not a function in the existing mock; reads sibling RoadRunners runtime, not Catarinense files"},
+        {"test": "_codex/tests/google-agenda-browser.test.js", "reason": "Missing jsdom dependency"},
+        {"test": "PostgreSQL migration is repeatable and enforces one account and one event per card", "reason": "Missing @electric-sql/pglite dependency"},
+        {"test": "Drive migration is repeatable and enforces one valid root", "reason": "Missing @electric-sql/pglite dependency"},
+        {"test": "modular manifest passes portable privacy and hash verification", "reason": "Python executable points to another machine"},
+        {"test": "the modular feature never changes the existing registrations screen", "reason": "Existing unrelated inscricoes/home.cfm and inscricoes/includes/backend.cfm revision differences"},
+        {"test": "_codex/tests/seo_marathons_heading.test.mjs", "reason": "Absolute import points to another machine"}
+      ]
+    }
+  },
+  "persistent_data_writes": false,
+  "application_restart": false,
+  "git_mutations": {"commit": false, "push": false, "branch": false, "pull_request": false}
+}

@@ -1,8 +1,8 @@
 function check(required boolean condition,required string message) { if(!arguments.condition) throw(message=arguments.message); }
-function rejects(required any callback, required string contains) {
+function rejects(required any callback, required string expectedText) {
     var rejected=false;
-    try { arguments.callback(); } catch(any e) { rejected=findNoCase(arguments.contains,e.message)>0; }
-    check(rejected,"Expected rejection: " & arguments.contains);
+    try { arguments.callback(); } catch(any e) { rejected=findNoCase(arguments.expectedText,e.message)>0; }
+    check(rejected,"Expected rejection: " & arguments.expectedText);
 }
 // These are disposable test credentials. No Google or production database calls are made.
 variables.testConfig={CLIENT_ID="test",CLIENT_SECRET="test",TOKEN_KEY=generateSecretKey("AES",256),email="contato@runnerhub.run"};
@@ -57,3 +57,22 @@ variables.input.send_updates="all";variables.draft.end="2026-09-05T08:00";variab
 rejects(function(){agendaDispatch();},"posterior");
 variables.draft.end="2026-09-05T10:00";variables.draft.attendees=["not-an-email"];variables.input.event=serializeJSON(variables.draft);
 rejects(function(){agendaDispatch();},"participante inválido");
+variables.remoteEvent.attendees=[{"email"="ana@example.com","displayName"="Ana","responseStatus"="accepted","comment"="Confirmo"},{"email"="host@example.com","organizer"=true,"responseStatus"="accepted"}];
+variables.remoteEvent.conferenceData={"entryPoints"=[{"entryPointType"="video","uri"="https://meet.google.com/abc-defg-hij"}],"signature"="existing-signature"};
+variables.draft.attendees=["ana@example.com","new@example.com"];
+variables.draft.reminders={"useDefault"=false,"overrides"=[{"method"="email","minutes"=45}]};
+variables.input.event=serializeJSON(variables.draft);variables.calls=[];agendaDispatch();
+check(variables.calls[2].body.attendees[1].responseStatus=="accepted","Actual RSVP preserved");
+check(variables.calls[2].body.attendees[1].comment=="Confirmo","Guest metadata preserved");
+check(!structKeyExists(variables.calls[2].body.attendees[2],"responseStatus"),"New guest cannot be confirmed by operator");
+check(arrayLen(variables.calls[2].body.attendees)==3 && variables.calls[2].body.attendees[3].organizer,"Organizer cannot be removed");
+check(variables.calls[2].body.reminders.overrides[1].minutes==45,"Explicit reminder edit applied");
+check(variables.calls[2].body.conferenceData.signature=="existing-signature","Meeting data preserved");
+variables.draft.reminders.overrides[1].minutes=40321;variables.input.event=serializeJSON(variables.draft);
+rejects(function(){agendaDispatch();},"lembrete");
+variables.draft.reminders.overrides[1].minutes=1.5;variables.input.event=serializeJSON(variables.draft);
+rejects(function(){agendaDispatch();},"lembrete");
+variables.draft.reminders.overrides[1].minutes=10;variables.draft.reminders.overrides[1].method="sms";variables.input.event=serializeJSON(variables.draft);
+rejects(function(){agendaDispatch();},"lembrete");
+variables.draft.reminders={"useDefault"=true};variables.input.event=serializeJSON(variables.draft);variables.calls=[];agendaDispatch();
+check(variables.calls[2].body.reminders.useDefault && !structKeyExists(variables.calls[2].body.reminders,"overrides"),"Default reminders replace custom ones");

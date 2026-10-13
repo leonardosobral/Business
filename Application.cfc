@@ -36,9 +36,11 @@
         <cfset var businessLocalConfig = {}/>
         <cfset var businessLocalConfigPath = getDirectoryFromPath(getCurrentTemplatePath()) & "config/business.local.cfm"/>
         <cfif fileExists(businessLocalConfigPath)>
+            <!--- Keep local settings when the include also supplies explicit component-scope overrides. --->
+            <cfset VARIABLES.businessLocalConfig = {}/>
             <cfinclude template="config/business.local.cfm"/>
             <cfif structKeyExists(VARIABLES, "businessLocalConfig") AND isStruct(VARIABLES.businessLocalConfig)>
-                <cfset businessLocalConfig = duplicate(VARIABLES.businessLocalConfig)/>
+                <cfset structAppend(businessLocalConfig, VARIABLES.businessLocalConfig, true)/>
             </cfif>
         </cfif>
         <cfset var accountDelegationSetting = structKeyExists(environment, "BUSINESS_ACCOUNT_DELEGATION_ENABLED") ? trim(environment["BUSINESS_ACCOUNT_DELEGATION_ENABLED"] & "") : (structKeyExists(businessLocalConfig, "accountDelegationEnabled") ? trim(businessLocalConfig.accountDelegationEnabled & "") : "false")/>

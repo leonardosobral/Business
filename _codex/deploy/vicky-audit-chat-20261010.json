@@ -1,0 +1,89 @@
+{
+  "task": "Redesenho da auditoria da Vicky por usuário em formato de chat",
+  "date": "2026-10-10",
+  "status": "published_and_verified",
+  "url": "https://business.roadrunners.run/administracao/vicky/?secao=auditoria",
+  "backup": "/var/backups/business-vicky-audit-20261010-A03Yym",
+  "scope": [
+    "administracao/vicky/home.cfm",
+    "administracao/vicky/includes/backend.cfm",
+    "administracao/vicky/includes/audit_helpers.cfm",
+    "administracao/vicky/includes/audit_backend.cfm",
+    "administracao/vicky/includes/audit_view.cfm",
+    "administracao/vicky/assets/audit.css",
+    "administracao/vicky/assets/audit.js"
+  ],
+  "baseline_sha256": {
+    "administracao/vicky/home.cfm": "16acf532d18e4f12032433a39948af2a7b411186a9dba6f6cd448d5ccc720947",
+    "administracao/vicky/includes/backend.cfm": "ff2069d33f0e849438f90e4e7fd5580b8d6d68b04214f192bf8c040233620b1d",
+    "administracao/vicky/includes/audit_helpers.cfm": "ABSENT",
+    "administracao/vicky/includes/audit_backend.cfm": "ABSENT",
+    "administracao/vicky/includes/audit_view.cfm": "ABSENT",
+    "administracao/vicky/assets/audit.css": "ABSENT",
+    "administracao/vicky/assets/audit.js": "ABSENT"
+  },
+  "published_sha256": {
+    "administracao/vicky/home.cfm": "865f66977f272c8baa664f5963e418df8760fa76bf36015371902b2c1d7fcc20",
+    "administracao/vicky/includes/backend.cfm": "c2ee87dff2bd1edfd384336f3c16be6f120aa7ad7f452b306699eda8c1de10ec",
+    "administracao/vicky/includes/audit_helpers.cfm": "645e0305bbea2788ab158cade0fe38bba0cf2964db67aff3bb29babfcdd2e590",
+    "administracao/vicky/includes/audit_backend.cfm": "f43742e8fd48ed0a3452966f5bddae7c1d2f21f4e29caebb7da33d59516bdb76",
+    "administracao/vicky/includes/audit_view.cfm": "b532a96d420de4d11dbd628c4b8d99b334687986c90aa189d6e5c7299b6dca4b",
+    "administracao/vicky/assets/audit.css": "84c7438ce6b75792da8777e1d87e1168f6155d1db78833cfa08b1a41c5c98252",
+    "administracao/vicky/assets/audit.js": "adfb0aa1bf65ce012c6f8ddb0f8a0873fdd6b69283e3ef676671af571015db27"
+  },
+  "behavior": {
+    "users": "Unique user, latest interaction descending; 25 users/page; avatars, public name, last time, channels and counts; no message previews.",
+    "history": "Selected user, all matching channels; newest batch of 20 interactions displayed in chronological order; cursor-based progressive older loading and ID snapshot.",
+    "filters": "Name or exact user ID; 7/30/90 days; channel; all versus non-completed interactions. Processing is labeled correctly, not called failure.",
+    "execution_links": "Legacy execucao links locate the user and batch; compatible filters preserved; target outside period can still open.",
+    "privacy": "Existing require_admin guard unchanged. Each opened execution is recorded transactionally before fetching message content; failed audit write prevents access. Message content is HTML escaped. private/no-store response headers.",
+    "retention": "Missing retained content is identified rather than reconstructed.",
+    "details": "Readable status badges; collapsed model, tokens, latency, errors, sanitized tool arguments/results and permalink.",
+    "accessibility": "Keyboard focus retained on replacement older control or final status; modified clicks preserve normal new-tab navigation; live loading/error status; responsive mobile stacking.",
+    "unchanged": "Agent response generation, RAG, channel delivery and proactive interactions. Existing unrelated desafios changes preserved."
+  },
+  "verification": {
+    "baseline_and_candidate_hashes": "matched before backup and publish; live files equal candidate",
+    "coldfusion_compile": {"successful": 5, "total": 5},
+    "native_tdd": {"baseline_expected_failed": 26, "initial_checks": 28, "final_checks": 35, "final_failed": 0},
+    "native_isolation": "Temporary PostgreSQL tables cloned WITH NO DATA from production column types; all fixture and audit writes rolled back. Matching result types avoids prepared-plan invalidation caused by minimal-schema fixtures during early validation.",
+    "browser_handler_tests": {"passed": 4, "failed": 0, "boundary": "Actual audit.js runs in VM; unavailable DOMParser and fetch boundaries doubled. Real browser progressive loading verified separately."},
+    "vicky_knowledge_regressions": {"passed": 4, "failed": 0},
+    "full_node_suite": {
+      "command": "node --test _codex/tests/*.test.js _codex/tests/*.test.mjs _codex/tests/*.test.cjs",
+      "total": 386, "passed": 380, "failed": 6,
+      "log": "/tmp/vicky-audit-node-full-final-20261010.log",
+      "preexisting_failures": [
+        {"test": "google-agenda-browser.test.js", "reason": "Missing jsdom"},
+        {"test": "PostgreSQL migration is repeatable and enforces one account and one event per card", "reason": "Missing PGlite"},
+        {"test": "Drive migration is repeatable and enforces one valid root", "reason": "Missing PGlite"},
+        {"test": "modular manifest passes portable privacy and hash verification", "reason": "Absolute Python path points to another machine"},
+        {"test": "the modular feature never changes the existing registrations screen", "reason": "Existing unrelated registrations diff"},
+        {"test": "seo_marathons_heading.test.mjs", "reason": "Absolute import points to another machine"}
+      ]
+    },
+    "live_native_render": {
+      "audit": {"success": true, "users_30_days": 18, "own_interactions": 4, "registered_and_rolled_back": 4, "milliseconds": 132},
+      "configuration": true, "knowledge": true, "channels": true, "proactive_interactions": true,
+      "privacy_headers": {"Cache-Control": "private, no-store, max-age=0", "Pragma": "no-cache"}
+    },
+    "browser": {
+      "authenticated_global_admin": true,
+      "initial_private_turns": 0,
+      "selected_latest_user": {"user_id": 141770, "turn_ids": [253,254,255], "bubbles": 6, "technical_details_initially_closed": true},
+      "period_filter": {"days": 90, "users": 34},
+      "own_history": {"user_id": 142, "total": 151, "initial_loaded": 20, "after_progressive_load": 40, "unique_loaded": 40, "keyboard_focus_preserved": true},
+      "mobile": {"width": 390, "horizontal_overflow": false, "layout_columns": 1, "user_list_height": 255, "viewport_reset": true},
+      "deliverable_tab": "https://business.roadrunners.run/administracao/vicky/?secao=auditoria&periodo=90",
+      "preview": "_codex/deploy/vicky-audit-20261010.png"
+    },
+    "independent_review": {"critical": 0, "important_found_and_fixed": 2, "minor_found_and_fixed": 2},
+    "review_regressions": ["Concurrent started-to-completed transition does not skip unseen history", "Keyboard focus after next/final batch", "Modified click opens normally", "Execution link preserves compatible filters"],
+    "git_diff_check": true,
+    "temporary_runtime": {"archived": "backup/tests", "urls_after_archive": [404,404,404]}
+  },
+  "database_migration": false,
+  "persistent_writes": "Normal audit access records only when inspecting actual chats through the authenticated browser; fixtures and native rendering audits reverted.",
+  "git_mutations": {"commit": false, "push": false, "branch": false, "pull_request": false},
+  "rollback": "Before rollback, check live SHA256 against published_sha256. Restore the two original files from backup/before first, then move the five new runtime files into backup/rolled-back; do not remove preexisting or unrelated files."
+}

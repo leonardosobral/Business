@@ -180,7 +180,27 @@ function agendaDispatch() {
         if (structKeyExists(current,"attendees")) for(var previous in current.attendees) if (compareNoCase(previous.email,email)==0) attendee=previous;
         arrayAppend(attendees,attendee);
     }
+    // An organizer is not an editable guest; retain its entry if a client omits it.
+    if (structKeyExists(current,"attendees")) for(var previous in current.attendees) {
+        if (structKeyExists(previous,"organizer") && previous.organizer && !structKeyExists(seen,lCase(previous.email))) arrayAppend(attendees,previous);
+    }
+    if (arrayLen(attendees)>100) agendaFail("Informe até 100 participantes, incluindo o organizador.");
     body["attendees"]=attendees;
+    // Optional for legacy clients. Omitting reminders preserves the Google value on updates.
+    if (structKeyExists(data,"reminders")) {
+        var reminderData=data.reminders;
+        if (!isStruct(reminderData) || !structKeyExists(reminderData,"useDefault") || !isBoolean(reminderData.useDefault)) agendaFail("Configuração de lembrete inválida.");
+        body["reminders"]={"useDefault"=reminderData.useDefault ? true : false};
+        if (!reminderData.useDefault) {
+            var overrides=structKeyExists(reminderData,"overrides") ? reminderData.overrides : [];
+            if (!isArray(overrides) || arrayLen(overrides)>5) agendaFail("Informe até 5 lembretes.");
+            body.reminders["overrides"]=[];
+            for (var reminder in overrides) {
+                if (!isStruct(reminder) || !structKeyExists(reminder,"method") || !isSimpleValue(reminder.method) || !listFind("popup,email",reminder.method) || !structKeyExists(reminder,"minutes") || !isValid("integer",reminder.minutes) || reminder.minutes<0 || reminder.minutes>40320) agendaFail("Cada lembrete deve usar notificação ou e-mail e ter de 0 a 40.320 minutos.");
+                arrayAppend(body.reminders.overrides,{"method"=reminder.method,"minutes"=int(reminder.minutes)});
+            }
+        }
+    }
     if (!len(eventId)) {
         if (!listFind("none,DAILY,WEEKLY,MONTHLY",data.repeat)) agendaFail("Repetição inválida.");
         if (data.repeat!="none") {

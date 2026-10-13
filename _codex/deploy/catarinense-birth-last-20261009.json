@@ -1,0 +1,96 @@
+{
+  "task": "Classificar nascimento ausente por último no critério de idade dos rankings Catarinense Rua e Trail",
+  "date": "2026-10-09",
+  "status": "published_and_verified",
+  "runtime_scope": [
+    "desafios/includes/catarinense_ranking_helpers.cfm",
+    "desafios/includes/catarinense_panel.cfm"
+  ],
+  "backup": "/var/backups/business-catarinense-birth-last-20261009-mysjc5b_",
+  "baseline_sha256": {
+    "desafios/includes/catarinense_ranking_helpers.cfm": "8b3c232716ca497514ab1a1646049da6c24c4dda4e2c664dbea6466744b9e432",
+    "desafios/includes/catarinense_panel.cfm": "8065731aef58cb50e6ae172ba53555d39cd97330610788d5fde9add22dc174b9"
+  },
+  "published_sha256": {
+    "desafios/includes/catarinense_ranking_helpers.cfm": "0a0da25d9b30f8a944c6cae3d5fb09bd04660d564749dcc2c8e67ab14edc3f31",
+    "desafios/includes/catarinense_panel.cfm": "daf91f52d35e83d63f33813309711e81396ebc865654fc00d3b8ed9b7b46bb1b"
+  },
+  "policy": [
+    "Within the same gender and points, a valid birth date precedes an absent or invalid birth date.",
+    "Known birth dates remain ordered oldest-first and receive definitive positions when resolved.",
+    "Multiple missing birth dates tie at the age criterion and proceed to placement counts, E6, percentage mean and official draw.",
+    "Other necessary missing criteria continue to produce provisional positions for their affected subgroup.",
+    "Birth dates and points are not modified; both circuits, UI and XLSX share the same ranking helper.",
+    "The Regras tab explicitly documents the missing-birth exception."
+  ],
+  "verification": {
+    "baseline_conflict_checks_before_backup_and_publish": "passed",
+    "published_hash_check": "passed",
+    "coldfusion_compile": {"successful": 3, "total": 3, "note": "Two changed files plus unchanged supporting table."},
+    "tdd_initial": {"checks": 78, "expected_baseline_failures": 17},
+    "native_candidate": {"passed": 191, "failed": 0},
+    "native_production": {"passed": 191, "failed": 0},
+    "native_cases": [
+      {"case": "ranking-birth-last-regressions", "checks": 56},
+      {"case": "data-regression", "checks": 21},
+      {"case": "female-ui", "checks": 17},
+      {"case": "male-ui", "checks": 14},
+      {"case": "male-page-2-ui", "checks": 14},
+      {"case": "unspecified-ui", "checks": 11},
+      {"case": "medals-ui", "checks": 3},
+      {"case": "invalid-gender-ui", "checks": 17},
+      {"case": "empty-ui", "checks": 4},
+      {"case": "legacy-ranking-ui", "checks": 7},
+      {"case": "legacy-medals-ui", "checks": 5},
+      {"case": "legacy-stages-ui", "checks": 4},
+      {"case": "legacy-rules-ui", "checks": 4},
+      {"case": "legacy-export-xlsx", "checks": 9},
+      {"case": "birth-last-export-xlsx", "checks": 5}
+    ],
+    "native_test_isolation": "Synthetic fixtures; PostgreSQL temporary tables and transaction rollback; no persistent athlete or medal edits.",
+    "browser": {
+      "authenticated_global_admin": true,
+      "rua_male_page_1": {
+        "rows": 50,
+        "positions_ordered": true,
+        "reported_athlete_id": 48436,
+        "reported_athlete_position": 22,
+        "reported_athlete_birth_present": true,
+        "reported_athlete_false_birth_warning": false,
+        "missing_birth_athlete_id": 114616,
+        "missing_birth_athlete_position": 38,
+        "missing_birth_policy_note": true,
+        "next_page_preserves_gender": true
+      },
+      "trail_male_page_1": {"rows": 50, "ranked_rows": 43, "unranked_rows": 7, "ranked_positions_ordered": true},
+      "rules_policy_visible_on_both_circuits": true,
+      "final_tab": "https://business.roadrunners.run/desafios/catarinensecorridaderua/?aba=ranking&genero=masculino"
+    },
+    "unaffected_production_sha256": {
+      "desafios/includes/backend.cfm": "8d57603693c58e8133b74f439255b1f8d5cb1ac61ff7c414a520f2f453961fef",
+      "desafios/includes/catarinense_table.cfm": "569a82d0ceeb8873f267ff0ff36a0d8865212d3aaa92ece5d5b90bc5bd2422cf"
+    },
+    "node_suite": {
+      "total": 382,
+      "passed": 376,
+      "failed": 6,
+      "same_failures_as_previous_baseline": true,
+      "log": "/tmp/catarinense-birth-last-20261009-node.log",
+      "preexisting_failures": [
+        {"test": "_codex/tests/google-agenda-browser.test.js", "reason": "Missing jsdom dependency"},
+        {"test": "PostgreSQL migration is repeatable and enforces one account and one event per card", "reason": "Missing PGlite dependency"},
+        {"test": "Drive migration is repeatable and enforces one valid root", "reason": "Missing PGlite dependency"},
+        {"test": "modular manifest passes portable privacy and hash verification", "reason": "Python executable points to another machine"},
+        {"test": "the modular feature never changes the existing registrations screen", "reason": "Existing unrelated registrations diff"},
+        {"test": "_codex/tests/seo_marathons_heading.test.mjs", "reason": "Absolute import points to another machine"}
+      ]
+    },
+    "review": {"critical": 0, "important": 0, "minor": 0},
+    "git_diff_check": "passed",
+    "temporary_runner_external_access_before_archive": 404,
+    "temporary_probes_archived_recoverably": 5,
+    "temporary_probe_http_after_archive": [404, 404, 404, 404, 404]
+  },
+  "persistent_data_writes": false,
+  "git_mutations": {"commit": false, "push": false, "branch": false, "pull_request": false}
+}
