@@ -1,0 +1,2218 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/favicon.ico">
+  
+  <title>ORG Eventos | Formaturas, Eventos Esportivos e Empresariais</title>
+
+  <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v21.6 - https://yoast.com/wordpress/plugins/seo/ -->
+	<link rel="canonical" href="https://pontoorgeventos.com.br/" />
+	<meta property="og:locale" content="pt_BR" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="ORG Eventos | Formaturas, Eventos Esportivos e Empresariais" />
+	<meta property="og:url" content="https://pontoorgeventos.com.br/" />
+	<meta property="og:site_name" content="ORG Eventos" />
+	<meta property="article:publisher" content="https://www.facebook.com/pontoorgbh" />
+	<meta property="article:modified_time" content="2026-10-05T19:38:22+00:00" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://pontoorgeventos.com.br/","url":"https://pontoorgeventos.com.br/","name":"ORG Eventos | Formaturas, Eventos Esportivos e Empresariais","isPartOf":{"@id":"https://pontoorgeventos.com.br/#website"},"about":{"@id":"https://pontoorgeventos.com.br/#organization"},"datePublished":"2019-10-21T17:29:47+00:00","dateModified":"2026-10-05T19:38:22+00:00","breadcrumb":{"@id":"https://pontoorgeventos.com.br/#breadcrumb"},"inLanguage":"pt-BR","potentialAction":[{"@type":"ReadAction","target":["https://pontoorgeventos.com.br/"]}]},{"@type":"BreadcrumbList","@id":"https://pontoorgeventos.com.br/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Início"}]},{"@type":"WebSite","@id":"https://pontoorgeventos.com.br/#website","url":"https://pontoorgeventos.com.br/","name":"ORG Eventos","description":"Formaturas, Eventos Esportivos e Empresariais","publisher":{"@id":"https://pontoorgeventos.com.br/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://pontoorgeventos.com.br/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"pt-BR"},{"@type":"Organization","@id":"https://pontoorgeventos.com.br/#organization","name":"ORG Eventos","url":"https://pontoorgeventos.com.br/","logo":{"@type":"ImageObject","inLanguage":"pt-BR","@id":"https://pontoorgeventos.com.br/#/schema/logo/image/","url":"https://pontoorgeventos.com.br/wp-content/uploads/2019/11/ORG-logo.png","contentUrl":"https://pontoorgeventos.com.br/wp-content/uploads/2019/11/ORG-logo.png","width":300,"height":128,"caption":"ORG Eventos"},"image":{"@id":"https://pontoorgeventos.com.br/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/pontoorgbh","https://www.instagram.com/orgformaturas/","https://www.youtube.com/user/ORGFORMATURASBH"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para ORG Eventos &raquo; Home" href="https://pontoorgeventos.com.br/home/feed/" />
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/pontoorgeventos.com.br\/wp-includes\/js\/wp-emoji-release.min.js"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff","\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://pontoorgeventos.com.br/wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='contact-form-7-css' href='https://pontoorgeventos.com.br/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.8.4' type='text/css' media='all' />
+<link rel='stylesheet' id='fonts-css' href='//fonts.googleapis.com/css?family=Montserrat%3A400%2C600%2C700%7CPlayfair+Display%3A700%2C700i&#038;display=swap' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css' href='https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/css/bootstrap.css' type='text/css' media='all' />
+<link rel='stylesheet' id='lity-css' href='https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/css/lity.css' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-css' href='https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/css/jquery.fancybox.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-css' href='https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/js/owl-carousel/owl.carousel.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css' href='https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/css/style.css?v=1782801066' type='text/css' media='all' />
+<script type="text/javascript" src="https://pontoorgeventos.com.br/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://pontoorgeventos.com.br/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<link rel="https://api.w.org/" href="https://pontoorgeventos.com.br/wp-json/" /><link rel="alternate" type="application/json" href="https://pontoorgeventos.com.br/wp-json/wp/v2/pages/2" /><link rel='shortlink' href='https://pontoorgeventos.com.br/' />
+<link rel="alternate" type="application/json+oembed" href="https://pontoorgeventos.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpontoorgeventos.com.br%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://pontoorgeventos.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpontoorgeventos.com.br%2F&#038;format=xml" />
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N3CDCKR');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3CDCKR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header>
+
+
+
+  <!--================ Header =================-->
+  <header class="header_area">
+    <div class="main_menu">
+
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+              
+              <!-- logo -->
+              <h1 class="titulo-logo">
+                <a class="navbar-brand logo_h" href="https://pontoorgeventos.com.br">
+                  <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/logo-org-eventos.png" class="img-fluid">
+                </a>
+                <span>ORG Eventos</span>
+              </h1>
+              <!-- / logo -->
+            
+              <!-- botao sanduiche -->
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon-bar"></span> 
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- / botao sanduiche -->
+              
+              <!-- Menu -->
+              <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                <ul class="nav navbar-nav menu_nav ml-auto">
+                  
+                                      <li class="nav-item">
+                      <a class="nav-link" href="#area-destaques">Eventos Esportivos</a>
+                    </li>
+                  
+                                      <li class="nav-item">
+                      <a class="nav-link" href="#area-video">Formaturas</a>
+                    </li>
+                  
+                                      <li class="nav-item">
+                      <a class="nav-link" href="#area-destaques-shopping">Eventos de Shopping</a>
+                    </li>
+                  
+                                      <li class="nav-item">
+                      <a class="nav-link" href="#area-empresariais">Eventos Empresariais</a>
+                    </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="#area-contato">Contato</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- / Menu -->
+
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!--================ End Header =================-->
+
+</header>
+
+
+<section id="megabanner" class="d-flex align-items-center justify-content-center" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/10/DVD_2377.png');">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12 ">
+          <h2>A sua próxima grande experiência começa aqui!</h2>
+          <p></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="area-introducao">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <p>Criamos eventos que conectam marcas, pessoas e momentos para transformar cada experiência em uma história inesquecível!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="area-servicos">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h2>Serviços</h2>  
+      </div>
+      
+      
+      <div class="col-lg-3 col-md-6 col-sm-12 text-center">
+        <img src="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-08-at-14.54.51-3-e1768850772615.jpeg" class="img-fluid">
+        <h3>Esportivos</h3>
+        <p>Corridas divertidas, com os melhores personagens, para todo tipo de público e com a melhor infraestrutura.</p>
+      </div>
+
+      
+      <div class="col-lg-3 col-md-6 col-sm-12 text-center">
+        <img src="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/20251204_152918000_iOS-2-e1768851193127.jpg" class="img-fluid">
+        <h3>Formaturas</h3>
+        <p>Fazemos festas e cerimônias de qualquer porte, cuidamos de todos os detalhes, inovando e surpreendendo o público.</p>
+      </div>
+
+      
+      <div class="col-lg-3 col-md-6 col-sm-12 text-center">
+        <img src="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/people-taking-part-high-protocol-event-e1768850720186.jpg" class="img-fluid">
+        <h3>Empresariais</h3>
+        <p>Elaboramos formatos para atender a demanda da sua empresa, com os melhores fornecedores e uma equipe eficiente.</p>
+      </div>
+
+      
+      <div class="col-lg-3 col-md-6 col-sm-12 text-center">
+        <img src="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/DJI_0050-scaled-e1768849916507.jpg" class="img-fluid">
+        <h3>Shoppings</h3>
+        <p>Atividades de entretenimento e diversão para o público, no seu centro de compras!</p>
+      </div>
+
+      
+    </div>
+  </div>
+</section>
+
+
+<section id="area-destaques">
+  <div class="container">
+    
+      
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Eventos Esportivos</h3>
+          <h2>NFL RIO RUN 2026 - 26/09</h2>
+          <p>A NFL RIO RUN chega para transformar um dos cartões-postais mais famosos do Brasil em um verdadeiro campo de jogo, reunindo esporte, entretenimento e a paixão pelo futebol americano em uma experiência única.
+Porque quando o cenário é carioca...
+A emoção só pode ser NFL!</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/IMG_4813.JPG-scaled.jpeg" class="galeria-link" data-fancybox="galeria-esportiva-1">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/09/IMG_4813.JPG-632x426.jpeg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-1" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/IMG_4776.JPG-scaled.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-1" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/IMG_4779.JPG-scaled.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-1" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/IMG_4799.JPG-scaled.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-1" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/IMG_4778.JPG-scaled.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-1" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/IMG_4765.JPG-scaled.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-1" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/IMG_4812.JPG-scaled.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-1" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/IMG_4806.JPG-scaled.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-1" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/IMG_4810.JPG-scaled.jpeg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/Run-Run-Power-Rangers-Seliz-220.jpg" class="galeria-link" data-fancybox="galeria-esportiva-2">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/09/Run-Run-Power-Rangers-Seliz-220-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-2" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/Run-Run-Power-Rangers-D90-Seliz-649.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Eventos Esportivos</h3>
+          <h2>Run Run Power Rangers SP - 08/11</h2>
+          <p>Prepare-se para viver uma experiência cheia de energia, diversão e muita nostalgia na Corrida Oficial Power Rangers!
+Um evento para toda a família, criado para fãs, corredores e para quem nunca perde a oportunidade de viver momentos inesquecíveis. Vista seu espírito de herói, supere seus desafios e celebre cada quilômetro com a força de um verdadeiro Power Ranger!</p>
+                      <a href="https://www.ticketsports.com.br/e/RUN-RUN-POWER-RANGERS-S%C3%83O-PAULO-87451" class="s-mais" target="_blank">Saiba mais</a>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Eventos Esportivos</h3>
+          <h2>CORRIDA DO NARUTO SP - 20/12</h2>
+          <p>Prepare-se para viver uma experiência ninja inesquecível!
+Escolha seu personagem favorito (NARUTO, SASUKE, KAKASHI e SAKURA), vista sua camisa e venha fazer parte dessa aventura!</p>
+                      <a href="https://www.ticketsports.com.br/e/CORRIDA-DO-NARUTO-S%C3%83O-PAULO-88258" class="s-mais" target="_blank">Saiba mais</a>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/POST-11-e1789150655976.png" class="galeria-link" data-fancybox="galeria-esportiva-3">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/09/POST-11-e1789150655976-632x426.png');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/IMG_2628.jpeg" class="galeria-link" data-fancybox="galeria-esportiva-4">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2024/10/IMG_2628-632x426.jpeg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/08/28072024-DSC_5627-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/08/28072024-DSC_5658-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/08/28072024-DSC_5592-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/08/28072024-DSC_5854-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/08/28072024-DSC_5983-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/IMG_2627.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/IMG_2625.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/IMG_2623.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/IMG_2624.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/IMG_2503-scaled.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/47a51e62-a682-448e-b18e-adbc2f193382.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/87096aa7-3e59-4d4d-9513-ced349d2bf8b.jpeg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Eventos Esportivos</h3>
+          <h2>Corrida do Bob Esponja</h2>
+          <p>A corrida do Bob Esponja é um evento para toda a família, inspirado em um dos personagens mais icônicos do planeta . A programação inclui corridas de 5 km ou 10 km, além de uma caminhada de 2 km. O importante é ativar o seu modo Bob e se divertir!
+
+</p>
+                      <a href="https://www.ticketsports.com.br/e/CORRIDA-DO-BOB-ESPONJA-S%C3%83O-LU%C3%8DS-87903" class="s-mais" target="_blank">Saiba mais</a>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Eventos Esportivos</h3>
+          <h2>Corrida da Panini 2026</h2>
+          <p>Prepare seu tênis, vista o clima de Copa e venha viver uma experiência inesquecível na orla mais famosa do Brasil!
+
+A Corrida Panini chega a São Paulo unindo esporte, diversão e a paixão que atravessa gerações: colecionar figurinhas. Um evento pensado para corredores, fãs de futebol e colecionadores que querem viver o espírito do Mundial dentro e fora da pista. Corra, colecione e viva esse momento único!</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/CorridaDaPanini_EtapaSao-Paulo_236133_FotoDocumentacao-823-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-5">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/05/CorridaDaPanini_EtapaSao-Paulo_236133_FotoDocumentacao-823-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-5" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/CorridaDaPanini_EtapaSao-Paulo_236133_FotoDocumentacao-746-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-5" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/CorridaDaPanini_EtapaSao-Paulo_236133_FotoDocumentacao-526-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-5" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/CorridaDaPanini_EtapaSao-Paulo_236133_FotoDocumentacao-201-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-5" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/CorridaDaPanini_EtapaSao-Paulo_236133_FotoDocumentacao-950-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-5" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/CorridaDaPanini_EtapaSao-Paulo_236133_FotoDocumentacao-1002-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-5" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/CorridaDaPanini_EtapaSao-Paulo_236133_FotoDocumentacao-268-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/236126_CorridadoHe-Man_FotoDocumentac╠oao-442-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-6">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/06/236126_CorridadoHe-Man_FotoDocumentac╠oao-442-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-6" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/236126_CorridadoHe-Man_FotoDocumentac╠oao-515-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-6" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/236126_CorridadoHe-Man_FotoDocumentac╠oao-330-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-6" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/236126_CorridadoHe-Man_FotoDocumentac╠oao-154-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-6" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/236126_CorridadoHe-Man_FotoDocumentac╠oao-239-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-6" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/236126_CorridadoHe-Man_FotoDocumentac╠oao-171-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Eventos Esportivos</h3>
+          <h2>Corrida do He-Man Masters of the Universe</h2>
+          <p>Prepare sua espada, vista sua melhor armadura e venha viver uma aventura épica digna dos verdadeiros Mestres do Universo. A Corrida do He-Man chega para reunir força, coragem e diversão em um evento inesquecível para fãs e corredores de todas as idades. Prepare-se para correr, caminhar e proteger Eternia com muita energia!</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Eventos Esportivos</h3>
+          <h2>Minions Run SP 2026</h2>
+          <p>Prepare sua fantasia amarela, coloque o tênis e venha viver uma experiência inesquecível!
+
+A Minions Run chega mais uma vez a São Paulo e de cara nova promete muita diversão, movimento e energia para corredores e fãs dos personagens mais travessos do cinema!</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/MinionsRun2026EtapaSaoPaulo_236127_FotoDocumentacao-215-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-7">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/06/MinionsRun2026EtapaSaoPaulo_236127_FotoDocumentacao-215-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/MinionsRun2026EtapaSaoPaulo_236127_FotoDocumentacao-232-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/MinionsRun2026EtapaSaoPaulo_236127_FotoDocumentacao-567-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/MinionsRun2026EtapaSaoPaulo_236127_FotoDocumentacao-441-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/MinionsRun2026EtapaSaoPaulo_236127_FotoDocumentacao-29-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/MinionsRun2026EtapaSaoPaulo_236127_FotoDocumentacao-94-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/MinionsRun2026EtapaSaoPaulo_236127_FotoDocumentacao-720-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/06/MinionsRun2026EtapaSaoPaulo_236127_FotoDocumentacao-627-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-1486.jpg" class="galeria-link" data-fancybox="galeria-esportiva-8">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-1486-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-1342.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-938.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-404.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-512.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-1164.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-1236.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-1324.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-1330.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-1412.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-1444.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-1455.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/corrida_minions_tavares_junior-1462.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Eventos Esportivos</h3>
+          <h2>Minions Run 2025</h2>
+          <p>Prepare-se para colecionar momentos inesquecíveis ao lado de quem você mais gosta! Seja correndo 5km, caminhando 2km ou dançando pelo trajeto, a Minions Run é uma missão de alegria, feita para amigos, famílias e todos que acreditam que a diversão fica ainda melhor quando é compartilhada!
+</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Eventos Esportivos</h3>
+          <h2>Run Forrest Run</h2>
+          <p>Run Forrest, Run!!!
+Dizem que a vida é cheia de caminhos. E, às vezes, a melhor coisa que você pode fazer é simplesmente… começar a correr.
+Sem pressa, sem complicação. Um passo de cada vez.
+Foi assim que Forrest saiu pelo mundo e é assim que essa corrida começa.
+
+É um convite para sair do lugar, respirar fundo e deixar as pernas levarem você, o importante é continuar em movimento.
+Chame a família, os amigos e venha viver essa experiência leve, divertida e inesquecível.
+Porque, no fim das contas, quando a gente começa a correr… coisas incríveis acontecem.</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-423-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-9">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-423-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-847-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-255-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-907-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-492-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-362-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-75-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-387-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-779-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-770-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/deboradelgadophoto-720-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/BANNER-TICKET-SPORTS-512x512-1.png" class="galeria-link" data-fancybox="galeria-esportiva-10">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/01/BANNER-TICKET-SPORTS-512x512-1-512x426.png');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Eventos Esportivos</h3>
+          <h2>Super Bowl Run SP 2026</h2>
+          <p>Prontos para fazer parte do Super Bowl no Brasil?
+Chegou a hora de sentir a emoção do futebol americano de perto com a Corrida Oficial no Brasil!
+
+Escolha entre caminhada de 2km ou corrida de 5km, e sinta-se parte do universo do Super Bowl. Um evento incrível que celebra a paixão pelo esporte mais popular dos Estados Unidos bem aqui no coração da nossa terra. Você terá a chance de se juntar a outros fãs para uma corrida inesquecível!</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Eventos Esportivos</h3>
+          <h2>CORRIDA BOB ESPONJA EM BUSCA DA CALÇA QUADRADA - SP</h2>
+          <p>Atenção, marujos!
+A aventura pirata do Bob Esponja está prestes a invadir as ruas!
+Garanta seu kit, escolha seu personagem favorito e participe da Corrida do Bob Esponja: Em Busca da Calça Quadrada antes do filme estrear nos cinemas!
+
+Vem correr, se divertir e embarcar nessa aventura inspirada no novo filme do Bob Esponja!</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-08-at-14.54.51-3-e1768850772615.jpeg" class="galeria-link" data-fancybox="galeria-esportiva-11">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-08-at-14.54.51-3-e1768850772615-632x426.jpeg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/GlauPiantonio_-BobEsponja25-02219-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-08-at-14.54.51-2.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-08-at-14.54.51.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/GlauPiantonio_-BobEsponja25-03220-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/GlauPiantonio_-BobEsponja25-04252-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/GlauPiantonio_-BobEsponja25-00079-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/GlauPiantonio_-BobEsponja25-04271-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/GlauPiantonio_-BobEsponja25-00703-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/GlauPiantonio_-BobEsponja25-00450-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/glaupiantonio_doc_NFL-125-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-12">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/01/glaupiantonio_doc_NFL-125-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/NFL24@Arduino_Photo-9-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/glaupiantonio_doc_NFL-116-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/glaupiantonio_doc_NFL-204-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/glaupiantonio_doc_NFL-343-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/glaupiantonio_doc_NFL-333-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/glaupiantonio_doc_NFL-193-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/NFL24@Arduino_Photo-12499-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/glaupiantonio_doc_NFL-278-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/glaupiantonio_doc_NFL-159-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/NFL24@Arduino_Photo-369-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/@guiguedesport_NFL24-939-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Eventos Esportivos</h3>
+          <h2>NFL RUN SP 2025</h2>
+          <p>Um evento incrível que celebra a paixão pelo esporte mais popular dos Estados Unidos bem aqui no coração da nossa terra. Dois dias após o histórico jogo da NFL no Brasil, teremos a NFL Run em São Paulo! A programação inclui uma caminhada de 2km ou uma corrida de 5km, e sinta-se parte do universo da NFL. Vista a camisa do seu time e prepare-se para correr como um verdadeiro campeão!
+</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Eventos Esportivos</h3>
+          <h2>Corrida Insana do Enaldinho</h2>
+          <p>Preparados para a Corrida Insana do Enaldinho? Entre no mundo dos desafios mais épicos da internet!
+A Corrida Insana do Enaldinho vai transformar a diversão da tela em realidade, com desafios, obstáculos infláveis e muita energia para todas as idades! </p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/@sheilaelizabethfotografia-Corrida-Insana-Enaldinho-2019.jpg" class="galeria-link" data-fancybox="galeria-esportiva-13">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/01/@sheilaelizabethfotografia-Corrida-Insana-Enaldinho-2019-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-13" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/@sheilaelizabethfotografia-Corrida-Insana-Enaldinho-0902.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-13" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/@sheilaelizabethfotografia-Corrida-Insana-Enaldinho-0692.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-13" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/@sheilaelizabethfotografia-Corrida-Insana-Enaldinho-9738.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-13" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/@sheilaelizabethfotografia-Corrida-Insana-Enaldinho-1178.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-13" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/@sheilaelizabethfotografia-Corrida-Insana-Enaldinho-0810.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-13" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/@sheilaelizabethfotografia-Corrida-Insana-Enaldinho-1321.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-13" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/@sheilaelizabethfotografia-Corrida-Insana-Enaldinho-0913.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/Onde-Está-Wally-BH-6.jpg" class="galeria-link" data-fancybox="galeria-esportiva-14">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2019/11/Onde-Está-Wally-BH-6.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-14" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/Onde-Está-Wally-BH-2.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-14" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/Onde-Está-Wally-BH-5.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-14" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/Onde-Está-Wally-BH-41.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Eventos Esportivos</h3>
+          <h2>Onde está Wally Walk and Run </h2>
+          <p>Um dos personagens mais queridos do mundo desembarcou no Brasil para uma corrida inesquecível! O Wally e toda a  turma se misturam a milhares de pessoas, numa corrida de 5km e caminhada de 2km para toda a família. O percurso conta com diversas atrações, incluindo painéis inéditos para você procurar e encontrar o Wally e  seus itens. Ao final, uma pequena festa para celebrar esse encontro de milhares de Wallys!</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Trolls Run</h3>
+          <h2></h2>
+          <p>Uma evento temático com os personagens da DreamWorks e que conta com corrida de 5 km e uma caminhada de 2 km para toda a sua família se divertirem – com uma chuva de cores em todo o percurso. Na linha de chegada, a comemoração é ao melhor estilo Trolls: Muita música, diversão e muuuitos abraços.</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/Trolls-Run-SP-61-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-15">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2024/10/Trolls-Run-SP-61-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-15" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/Trolls-Run-SP-37-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-15" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/Trolls-Run-SP-54-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-15" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/Trolls-Run-SP-40-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-15" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/Trolls-Run-SP-46-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-15" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/Trolls-Run-SP-34-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-15" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/Trolls-Run-SP-15-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/12/IMG_9360-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-16">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/12/IMG_9360-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/12/CorridaChaves_Guiguedes-58-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/12/CorridaChaves_Guiguedes-111-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/12/CorridaChaves_Guiguedes-175-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/12/CorridaChaves_Guiguedes-226-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/12/CorridaChaves_Guiguedes-240-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/12/IMG_9626-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Corrida do Chaves</h3>
+          <h2></h2>
+          <p>A Corrida do Chaves é um evento dedicado ao personagem do seriado mexicano mais querido do mundo. Uma prova de corrida 5km e caminhada 2km inédita, realizada no Rio de Janeiro e São Paulo.
+</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Ghostbusters Mais Além Run</h3>
+          <h2></h2>
+          <p>A Ghostbusters: Mais Além Run é evento esportivo alusivo ao universo original de Ghostbusters. Os kits e toda arena de corrida foram inspirados no filme. </p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Ghostbusters-Run_Foto_TiagoLasak-349-Copia-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-17">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Ghostbusters-Run_Foto_TiagoLasak-349-Copia-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-17" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Ghostbusters-Run_Foto_TiagoLasak-30-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-17" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Ghostbusters-Run_Foto_TiagoLasak-39-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-17" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Ghostbusters-Run_Foto_TiagoLasak-296-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-17" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Ghostbusters-Run_Foto_TiagoLasak-331-Copia-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_7421-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-18">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_7421-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-18" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/WhatsApp-Image-2022-09-20-at-16.04.32.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-18" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_5020-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-18" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_5049-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-18" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_5052-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-18" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_5087-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-18" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_5541-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Top Gun: Maverick Race </h3>
+          <h2></h2>
+          <p>Um evento que celebra o lançamento de Top Gun: Maverick, sequência do clássico de 1986. A prova perfeita para quem quer testar limite de velocidade, ou apenas relembrar bons momentos com seus amigos preferidos.
+</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Eventos Esportivos</h3>
+          <h2>Corrida Insana</h2>
+          <p>A Insane Inflatable 5K – A Corrida Insana é divertida e desafiadora! São cinco quilômetros de pura diversão com vários obstáculos infláveis incríveis. E não são apenas alguns escorregadores e pula-pulas. Nós juntamos toda a nossa imaginação e criatividade, levamos até os melhores fabricantes de infláveis personalizados e pedimos a eles que quebrassem todas as regras! Correr nunca foi tão divertido!</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2019/10/capa-corrida-insana.jpg" class="galeria-link" data-fancybox="galeria-esportiva-19">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2019/10/capa-corrida-insana-555x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-19" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/C.-Insana-2019_BH-18.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-19" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/C.-Insana-2019_Curitiba-1.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-19" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/C.-Insana-2019_Curitiba-3.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-19" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/C.-Insana-2019_Curitiba-5.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-19" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/C.-Insana-2019_Curitiba-22.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2019/12/capa-nightnationrun.jpg" class="galeria-link" data-fancybox="galeria-esportiva-20">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2019/12/capa-nightnationrun.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-20" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/12/NNR_BH-56-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-20" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/12/NNR_BH-69.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-20" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/12/NNR_BH-79.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-20" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/12/NNR_BH-139.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-20" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/ZoomVip-Night-Nation-Run-821.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-20" href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/ZoomVip-Night-Nation-Run-986.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Eventos Esportivos</h3>
+          <h2>Night Nation Run</h2>
+          <p>O primeiro festival de música com corrida do mundo. Uma viagem de 5K com música ao vivo, luzes, lasers e festas para os amantes da Música Eletrônica. Você vai percorrer um trajeto iluminado com várias pistas de dança e DJs ao vivo, cada um com um set único e emocionante. Ao final, um palco principal explosivo, com performances especiais de celebridades convidadas. Até o momento, mais de um milhão de pessoas nos Estados Unidos, Canadá, México, Japão, África do Sul, Dubai e Austrália se tornaram membros da Night Nation!</p>
+                  </div>
+
+              </div>
+
+      
+    
+  </div> 
+</section>
+
+
+<section id="area-video" class="d-flex align-items-center justify-content-center" style="background-image: url('19');">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-8 offset-lg-2 col-md-9 offset-md-1 col-sm-12">
+        <h4>Formaturas</h4>
+        <h2>Se o assunto é formatura, nós fazemos a diferença</h2>
+        <p>Somos uma das maiores empresas de formaturas do mercado. Entendemos a dinâmica de cada comissão de formatura, de cada turma, de cada evento, de qualquer porte. E proporcionamos algumas das melhores lembranças que você vai guardar para toda a vida.</p>
+                <a href="http://orgformaturas.com.br/" class="link-saiba" target="_blank">Saiba mais</a>
+                <div class="p-video">
+          <a class="player-video" data-lity href="https://www.youtube.com/watch?v=qt00EPaFUX8">Assista ao vídeo</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section id="area-destaques-shopping">
+  <div class="container">
+    
+      
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Eventos de Shopping</h3>
+          <h2>JUMP LAB</h2>
+          <p>Espaço de diversão e movimento criado para quem gosta de pular, explorar e viver novas experiências. Em um ambiente coberto e preparado para receber crianças e famílias. Muita energia, risadas e vontade de voltar para mais um experimento!
+
+Piso L3 · Pátio Savassi · Belo Horizonte | MG</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/POST-05-e1790774931269.png" class="galeria-link" data-fancybox="galeria-esportiva-1">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/09/POST-05-e1790774931269-632x426.png');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-1" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-30-at-10.26.12.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-1" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-30-at-10.26.12-1.jpeg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/20260424_175530238_iOS-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-2">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/09/20260424_175530238_iOS-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-2" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/20260424_175141403_iOS-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-2" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/02/JUMP-Around_23-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-2" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/02/JUMP-Around_21-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-2" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/02/JUMP-Around_1-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Eventos de Shopping</h3>
+          <h2>Jump Around</h2>
+          <p>O Jump Around é o maior pula-pula da América Latina. São 2.500m² de pura diversão, num castelo gigante com escorregadores, pista de obstáculos e muito mais. A brincadeira é para adultos e crianças, sem limite de idade, com sessões de duração de 30 minutos.</p>
+                      <a href="https://jumparound.com.br/" class="s-mais" target="_blank">Saiba mais</a>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Eventos de Shopping</h3>
+          <h2>MÔNICA + NFL</h2>
+          <p>NFL + Turma da Mônica, o time já está escalado, uma experiência cheia de desafios, brincadeiras e muita diversão para toda a família! 
+Prepare-se para testar suas habilidades, encarar os desafios e viver essa aventura com a Turminha!
+Chame a família e venha entrar em campo!</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/NFLTurmaDaMonica_BLD_ThaisMonteiro-63-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-3">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/09/NFLTurmaDaMonica_BLD_ThaisMonteiro-63-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-3" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/NFLTurmaDaMonica_BLD_ThaisMonteiro-58-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-3" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/NFLTurmaDaMonica_BLD_ThaisMonteiro-16-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-3" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/NFLTurmaDaMonica_BLD_ThaisMonteiro-62-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-3" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/09/NFLTurmaDaMonica_BLD_ThaisMonteiro-57-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-12-at-06.26.42-1.jpeg" class="galeria-link" data-fancybox="galeria-esportiva-4">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-12-at-06.26.42-1-632x426.jpeg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-12-at-06.26.41.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-06-at-08.56.46.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-06-at-08.56.49.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-06-at-08.56.48-1.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-06-at-08.56.51.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-13-at-06.01.50.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-4" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-06-at-08.56.47.jpeg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Eventos de Shopping</h3>
+          <h2>Arena Panini</h2>
+          <p>Arena Panini: Divirta-se com jogos e brincadeiras de futebol
+Os Shopping entram no clima da Copa com a Arena Panini! Entre em campo e divirta-se com um espaço gratuito cheio de jogos, desafios e atividades para todas as idades e com muita diversão! Tem pebolim humano, chute a gol, sinucabol, máquina de brindes, espaço para troca de figurinhas e muito mais!</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Eventos de Shopping</h3>
+          <h2>MONI KART</h2>
+          <p>O Moni Kart é um evento temático oficial inspirado no universo da Turma da Mônica, criado para proporcionar às crianças uma experiência divertida, leve e acolhedora durante as férias. Com ambientação especial, atividades lúdicas e espaços pensados para toda a família, o evento acontece do dia 07/01 a 22/02 no Shopping Vitória, Vitória - ES.</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/Aquivos-site-de-vendas_banner-home-mobile-380x480-1-2.png" class="galeria-link" data-fancybox="galeria-esportiva-5">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/01/Aquivos-site-de-vendas_banner-home-mobile-380x480-1-2-632x426.png');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-5" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-07-at-16.03.39.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-5" href="https://pontoorgeventos.com.br/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-06-at-12.08.28.jpeg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2024/06/REN_9455-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-6">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2024/06/REN_9455-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-6" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/06/REN_9576-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-6" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/06/REN_9636-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-6" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/06/REN_9688-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-6" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/06/REN_9709-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-6" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/06/REN_9789-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Kung Fu Panda - O Templo da Diversão</h3>
+          <h2></h2>
+          <p>Inspirado na mais nova animação, Kung Fu Panda 4, da Dreamworks Animation. O Templo da Diversão é uma emocionante atração para as crianças que amam uma aventura e desafio. O evento reúne uma série de brincadeiras: piscina de bolinhas, brinquedão, cama elástica, labirinto de espelhos, labirinto de bolinhos, treinamento de pulo e atividades.</p>
+                      <a href="https://youtu.be/Q7rm61ATq9M" class="s-mais" target="_blank">Saiba mais</a>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Onde está Wally?</h3>
+          <h2></h2>
+          <p>O icônico personagem Wally, conhecido por desafiar crianças e adultos a encontrá-lo em meio à multidão, agora inspira uma série de atividades lúdicas e interativas. Crianças de até 12 anos poderão se divertir em brincadeiras temáticas de "Onde está Wally?". Com diversas atrações, o evento conta com um labirinto desafiador, um brinquedão com piscina de bolinhas, um boliche gigante, um quebra-cabeça giratório e uma versão ampliada do clássico jogo de pescaria.
+
+</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/1-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-7">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2024/10/1-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/10-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/2-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/3-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/4-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/6-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/7-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/8-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-7" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/10/9-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/YP___240824Naruto-4-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-8">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2024/09/YP___240824Naruto-4-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/YP___240824Naruto-36-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/YP___240824Naruto-83-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/YP___240824Naruto-70-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/YP___240824Naruto-99-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-8" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/YP___240824Naruto-129-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Naruto</h3>
+          <h2></h2>
+          <p>“Naruto: Aldeia da Diversão”,  é um circuito com brinquedão com obstáculos, cama de gato, piscina de bolinhas, tirolesa, labirinto de espelhos e oficinas de tatuagens. A atração é inspirada na série de Mangá que conta a história de Naruto Uzumaki, um jovem ninja que constantemente procura por reconhecimento e sonha em se tornar Hokage, o ninja líder de sua vila.</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Hot Wheels Prova Aceita</h3>
+          <h2></h2>
+          <p>Esta é uma atração inédita no Brasil inspirada nos famosos carrinhos da Hot Wheels. Um evento que conta com diversas atividades para entreter os pequenos. Entre as atrações estão Games, Pista Hot Wheels, Escorregador Inflável, Pula Pula, Caixa de Areia, Cama de Gato, Piscina de Bolinhas, Pista de Competição e um cenário instagramável. </p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2023/05/VITO0785-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-9">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2023/05/VITO0785-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/05/VITO0924-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/05/VITO0907-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/05/VITO0883-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/05/VITO0859-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-9" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/05/VITO0839-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2023/02/DSC01595.jpg" class="galeria-link" data-fancybox="galeria-esportiva-10">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2023/02/DSC01595-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-10" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/02/DSC01656.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-10" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/02/DSC01638.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-10" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/02/DSC01624.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-10" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/02/DSC01618.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-10" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/02/DSC01612.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Arte Embaixo D'água</h3>
+          <h2></h2>
+          <p>O Arte Embaixo D'água é uma oficina lúdica, feita para que crianças de todas as idades explorem a sua imaginação. Com giz de cera e lápis de cor, os participantes colorem desenhos de animais marinhos, que ganham vida ao serem digitalizados e projetados em um painel de Led, com cerca de 10m², que exibe os animais no fundo do mar. Tem ainda, pula-pula, oficinas e muita diversão. </p>
+                      <a href="https://www.youtube.com/shorts/tjsMdhxP9yo" class="s-mais" target="_blank">Saiba mais</a>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Turma da Mônica Toy</h3>
+          <h2></h2>
+          <p>As aventuras humorísticas da versão toy art do mais amada turminha do Brasil são reunidas em um espaço divertido e totalmente interativo. O evento tem atrações em formatos infláveis ​​e jogos que incentivam o lúdico e jogos educativos ao lado de Mônica, Magali, Cascão, Cebolinha e toda a turma, como: rebolar casa, quebra-cabeça, jogo da memória, jogo, entre outros atividades temáticas</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Turma-da-Monica-Plaza-19-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-11">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Turma-da-Monica-Plaza-19-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Turma-da-Monica-Plaza-18-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Turma-da-Monica-Plaza-16-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Turma-da-Monica-Plaza-13-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-11" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Turma-da-Monica-Plaza-7-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2023/10/f04244a3-0394-4bc1-8be8-acb32b6bcc8e.jpg" class="galeria-link" data-fancybox="galeria-esportiva-12">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2023/10/f04244a3-0394-4bc1-8be8-acb32b6bcc8e-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/10/f85b0102-3dcd-460d-85b5-93d241deab5a.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/10/4c04e742-12de-4a56-bc31-3dfba74c5daa.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/10/4b7cae90-1f9d-4793-905d-f4eec45bfa09.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-12" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/10/design_sem_nome.png"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Mônica 60 anos</h3>
+          <h2></h2>
+          <p>Este evento celebra os 60 anos da Turma da Mônica. O espaço temático ‘Mônica 60: sempre fui forte’ conta com um circuito com atividades de lazer para meninos e meninas de 1 a 12 anos. Tem arremesso de Sansão, escorregador com piscina de bolinhas, tombo legal, mesa para colorir, cama de gato e muito mais. É pra celebrar e se divertir ao mesmo tempo com essa personagem icônica.
+</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Turma da Mônica Pets</h3>
+          <h2></h2>
+          <p>O evento reúne uma série de atividades para crianças de até 12 anos e para os pets. Os pequenos poderão se divertir no escorregador do Bidu, brincar na cama de gato do Mingau, além de aproveitarem a pista de boliche, o gira-gira, o jogo da memória e um espaço para colorir. Além das atrações, o espaço é altamente instagramável, contando com cenários coloridos para fazer fotos incríveis. É claro que os pets não irão ficar de fora dessa brincadeira. Pensando neles, também foi criado um espaço exclusivo com brinquedos como: piscina de bolinhas e rampa de escalada.</p>
+                      <a href="https://www.youtube.com/shorts/kogGqhD142A" class="s-mais" target="_blank">Saiba mais</a>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2023/01/WhatsApp-Image-2023-01-13-at-10.39.27.jpeg" class="galeria-link" data-fancybox="galeria-esportiva-13">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2023/01/WhatsApp-Image-2023-01-13-at-10.39.27-632x426.jpeg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-13" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/01/WhatsApp-Image-2023-01-13-at-12.13.34.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-13" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/01/WhatsApp-Image-2023-01-13-at-12.13.34-1.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-13" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/01/WhatsApp-Image-2023-01-13-at-12.13.32.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-13" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/01/WhatsApp-Image-2023-01-13-at-10.39.29.jpeg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/1K1A6343.jpg" class="galeria-link" data-fancybox="galeria-esportiva-14">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/10/1K1A6343-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-14" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/1K1A6109.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-14" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/1K1A6155.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-14" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/1K1A6738.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-14" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/1K1A6562.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-14" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/1K1A6382.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Turma da Mônica Bate-bola</h3>
+          <h2></h2>
+          <p>O circuito temático da Turma da Mônica conta com nove atividades como o Gol de Ouro, Pula Bola, Vestirário, etc. São atividades inspiradas no universo do futebol, na Copa do Mundo de Futebol 2022 e nos personagens da Turma da Mônica. </p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>SeleSansão</h3>
+          <h2></h2>
+          <p>O evento, da Turma da Mônica, celebra as Olimpíadas Paralimpíadas. Na atração, atividades que representam esportes que estão na disputa. Dentre eles, miniquadra de futebol, miniquadra de basquete, pingue–pongue, área de Boxe, acerte o alvo e  pódium para fotos.</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-30-at-15.57.22-1.jpeg" class="galeria-link" data-fancybox="galeria-esportiva-15">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-30-at-15.57.22-1-632x426.jpeg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-15" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-30-at-15.57.21-2.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-15" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-30-at-15.57.21.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-15" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-30-at-15.57.21-1.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-15" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-30-at-15.57.22.jpeg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/IMG_7403-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-16">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2024/07/IMG_7403-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/IMG_7419-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/IMG_7417-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/IMG_7398-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/File-147-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/File-140-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-16" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/07/File-27-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Parque Inflável da Hello Kitty & Amigos </h3>
+          <h2></h2>
+          <p>O evento ocupa uma área de 1400m², com um design exclusivo, com mini labirinto, escorregador, túnel, pula-pula, donuts de almofadas, obstáculos e escalada, garantindo diversão para todas as idades. A atração inédita, que desembarca pela primeira vez ao Brasil, celebra os 50 anos da Hello Kitty. </p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Hello Kitty Parade</h3>
+          <h2></h2>
+          <p>Ícone atemporal da cultura pop e querida por diversas gerações, a personagem Hello Kitty completa 50 anos em novembro. Para celebrar a data, a personagem recebe a exposição Hello Kitty Parade, conta com 50 estátuas personalizadas, pintadas por artistas de diferentes técnicas e estilos. Todos foram selecionados por meio de concurso, no fim de 2023, promovido pela Sanrio®, detentora dos direitos autorais sobre a boneca. </p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/DSC_8410-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-17">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2024/09/DSC_8410-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-17" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/DSC_8449-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-17" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/DSC_8446-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-17" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/DSC_8432-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-17" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/DSC_8421-1-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-17" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/09/DSC_8415-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2024/01/Hello_Kitty_GrandPlaza-0127-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-18">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2024/01/Hello_Kitty_GrandPlaza-0127-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-18" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/01/Hello_Kitty_GrandPlaza-0150-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-18" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/01/Hello_Kitty_GrandPlaza-0117-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-18" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/01/Hello_Kitty_GrandPlaza-0111-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-18" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/01/Hello_Kitty_GrandPlaza-0021-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-18" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/01/Hello_Kitty_GrandPlaza-0019-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Aniversário Hello Kitty & Amigos</h3>
+          <h2></h2>
+          <p>O espaço temático da personagem japonesa mais famosa do mundo conta com minimercado e estação de confeitaria, para as crianças confeccionarem o seu biscoito personalizado. Aqui a criançada se diverte na área de mercado com itens disponíveis, como coberturas e confeitos, além de carrinho para compras, avental temático e uma touca toque blanche. Para uma experiência única e encantadora, os cenários são do tamanho real, o que proporciona estímulos sensoriais e cria uma atmosfera divertida.</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Fun City da Hello Kitty & amigos </h3>
+          <h2></h2>
+          <p>Diversão garantida para a crianças de até 12 anos, que reúne os personagens da Sanrio. Os visitantes se divertem em uma pula-pula de 80 metros quadrados, um dos maiores indoors do Brasil, com obstáculos e circuitos. E usufruírem de um espaço de oficinas lúdicas, no qual as crianças poderão colorir os personagens mais famosos do Japão. Os totens espalhados pelo local têm ainda o "Almanaque de Atividades da Hello Kitty", um app com diferentes atividades que ao mesmo tempo distraem, divertem e desenvolvem as habilidades das crianças</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMGW2334-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-19">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMGW2334-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-19" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMGW2548-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-19" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/FOTO-HELLO-KITTY.jpeg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2024/06/TXF_2049-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-20">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2024/06/TXF_2049-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-20" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/06/TXF_2196-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-20" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/06/TXF_2105-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-20" href="https://pontoorgeventos.com.br/wp-content/uploads/2024/06/TXF_1937-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Hello Kitty Halloween</h3>
+          <h2></h2>
+          <p>A atração convida a criançada a mergulhar no universo da Hello Kitty. Em um mix de sustos e gargalhadas, a aventura é garantida do início ao fim. As brincadeiras programadas trazem um amplo leque de atrações, como jogos, quebra-cabeças, boliche e cama de gato. </p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Popeye</h3>
+          <h2></h2>
+          <p>O evento inspirado no marinheiro mais amado dos quadrinhos é voltado para crianças de 1 a 12 anos. Elas podem se divertir muito no inflável que reúne pula-pula, labirintos, escorregador e escalada. A cenografia inspirada nos personagens Popeye, Brutus, Olivia Palito, Dudu e Gugu, faz a garotada se sentir parte do desenho e garante ótimas fotos. Tem ainda, oficina de colorir, na qual os pequenos podem soltar a criatividade e pintar os personagens do desenho e jogo da velha.
+
+</p>
+                      <a href="https://www.youtube.com/shorts/_3vcGfYPrWs" class="s-mais" target="_blank">Saiba mais</a>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2023/04/IMG_6651-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-21">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2023/04/IMG_6651-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-21" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/04/IMG_7109-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-21" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/04/IMG_6321-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-21" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/04/IMG_6305-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-21" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/04/IMG_6220-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-21" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/04/IMG_6214-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_0711-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-22">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_0711-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-22" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_0689-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-22" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_0702-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-22" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_0704-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-22" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/IMG_0710-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Atari</h3>
+          <h2></h2>
+          <p>Em comemoração aos 50 anos da Atari e com o objetivo de proporcionando uma experiência única e charmosa para os clientes e especialmente para os fãs da marca, a Ponto Org Eventos criou um projeto com jogos e exposição, capaz de atender o público de todas as idades.
+</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Ghostbusters: Mais Além</h3>
+          <h2></h2>
+          <p>O espaço temático homenageia o filme GHOSTBUSTERS: MAIS ALÉM. A atração conta com atividades para o público se divertir e sentir parte de um dos filmes mais famosos do cinema mundial. Tem Oficina de Colorir, Quebra-Cabeça, Jogo da Velha e espaço interativo.</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/kh.jpg" class="galeria-link" data-fancybox="galeria-esportiva-23">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/10/kh-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-23" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/oi.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-23" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/ih.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-23" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/kbskh.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/WhatsApp-Image-2021-12-22-at-11.33.34.jpeg" class="galeria-link" data-fancybox="galeria-esportiva-24">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/10/WhatsApp-Image-2021-12-22-at-11.33.34-632x426.jpeg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-24" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/belo-horizonte.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-24" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/WhatsApp-Image-2021-12-22-at-11.33.30.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-24" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/WhatsApp-Image-2021-12-22-at-11.33.33-1.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-24" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/WhatsApp-Image-2021-12-22-at-11.33.31-1.jpeg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Homem-Aranha</h3>
+          <h2></h2>
+          <p>O espaço temático homenageia o filme Homem-Aranha: de volta para casa. A atração conta com atividades para o público se divertir e sentir parte do filme que teve a melhor estréia de cinema do ano. Tem Oficina de Colorir, Quebra-Cabeça, Jogo da Velha e espaço interativo.</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Homem-Aranha: Através do Aranhaverso</h3>
+          <h2></h2>
+          <p>O espaço temático homenageia o filme Homem-Aranha: Através do Aranhaverso. A atração conta com atividades para o público se divertir e sentir parte do filme. Dentre as atrações estão: escorregador com escalada e piscina de bolinhas, cama de gato, oficina de colorir, quebra-cabeça, games, cenário instagramável e jogo da memória.
+</p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-05-at-12.53.25.jpeg" class="galeria-link" data-fancybox="galeria-esportiva-25">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-05-at-12.53.25-632x426.jpeg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-25" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-05-at-12.53.24.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-25" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-05-at-12.53.25-1.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-25" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-05-at-12.53.26.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-25" href="https://pontoorgeventos.com.br/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-05-at-12.53.26-1.jpeg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2021/09/WhatsApp-Image-2021-08-12-at-09.59.01.jpeg" class="galeria-link" data-fancybox="galeria-esportiva-26">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2021/09/WhatsApp-Image-2021-08-12-at-09.59.01-632x426.jpeg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-26" href="https://pontoorgeventos.com.br/wp-content/uploads/2021/09/WhatsApp-Image-2021-08-12-at-09.59.11.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-26" href="https://pontoorgeventos.com.br/wp-content/uploads/2021/09/WhatsApp-Image-2021-08-12-at-09.59.10.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-26" href="https://pontoorgeventos.com.br/wp-content/uploads/2021/09/WhatsApp-Image-2021-08-12-at-09.58.57.jpeg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Hotel Transilvânia</h3>
+          <h2></h2>
+          <p>No evento, fãs do filme podem passear e tirar diversas fotos na cenografia inteiramente relacionada ao filme. Além disso, são seis atividades para o público, onde os visitantes terão a chance de passar por uma experiência imersiva. Tem pista de dança, oficina de colorir, espelhos mágicos e muito mais!</p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>Vila do Chaves</h3>
+          <h2></h2>
+          <p>O evento é uma réplica em grande escala do cenário do desenho animado e atração ideal para crianças e adultos fãs de Chaves e de toda a sua turma. Além de cenário interativo, que rende espaços para fotos e prometem imersão total no desenho, os visitantes podem brincar com jogos e participar de oficinas. </p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/WhatsApp-Image-2022-08-25-at-15.32.13-1.jpeg" class="galeria-link" data-fancybox="galeria-esportiva-27">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/10/WhatsApp-Image-2022-08-25-at-15.32.13-1-632x426.jpeg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-27" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/WhatsApp-Image-2022-08-25-at-15.32.12-7.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-27" href="https://pontoorgeventos.com.br/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-10-at-14.24.23.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-27" href="https://pontoorgeventos.com.br/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-10-at-14.24.24-1.jpeg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-27" href="https://pontoorgeventos.com.br/wp-content/uploads/2021/09/WhatsApp-Image-2021-09-10-at-14.24.24.jpeg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/7U1A0136_mh1639523522793.jpg" class="galeria-link" data-fancybox="galeria-esportiva-28">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/10/7U1A0136_mh1639523522793-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-28" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/7U1A0129_mh1639522078225.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-28" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/7U1A0124_mh1639524055538.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-28" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/7U1A0067_mh1639523448057.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-28" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/7U1A0022_mh1639523687352.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>Neon World</h3>
+          <h2></h2>
+          <p>A experiência instagramável conta com diversos ambientes em neon, ótimo para quem quer garantir novos
+fotos e vídeos para redes sociais. O evento é lúdico e interativo. Ao todo foram construídas 10 salas, cada um com um tema diferente e cores e iluminação. </p>
+                  </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador order-3"></div>
+              </div>
+
+            
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h3>L.O.L. Surprise! Born 2 Travel</h3>
+          <h2></h2>
+          <p>L.O.L. Surprise! Born 2 Travel traz um cenário inspirado diferentes países e os melhores jogos, jogos e workshops para os fãs da boneca. A diversão é destinada a crianças de 1 a 12 anos antigo e o circuito terá toboágua, cama de gato, oficina, pista de skate, basquete e muito mais. </p>
+                  </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Lol-Surprise-Plaza-Shopping-53-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-29">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Lol-Surprise-Plaza-Shopping-53-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-29" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Lol-Surprise-Plaza-Shopping-51-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-29" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Lol-Surprise-Plaza-Shopping-25-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-29" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Lol-Surprise-Plaza-Shopping-23-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-29" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Lol-Surprise-Plaza-Shopping-18-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-29" href="https://pontoorgeventos.com.br/wp-content/uploads/2022/10/Lol-Surprise-Plaza-Shopping-11-scaled.jpg"></a>
+          </div>
+                  </div>      
+
+                <div class="col-lg-12 col-md-12 col-sm-12 separador"></div>
+              </div>
+
+      
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-foto order-lg-1 order-2">
+                    <a href="https://pontoorgeventos.com.br/wp-content/uploads/2021/06/CSP8857-scaled.jpg" class="galeria-link" data-fancybox="galeria-esportiva-30">
+            <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2021/06/CSP8857-632x426.jpg');">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">
+            </div>
+          </a>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-30" href="https://pontoorgeventos.com.br/wp-content/uploads/2021/06/CSP8866-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-30" href="https://pontoorgeventos.com.br/wp-content/uploads/2021/06/CSP8852-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-30" href="https://pontoorgeventos.com.br/wp-content/uploads/2021/06/CSP8827-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-30" href="https://pontoorgeventos.com.br/wp-content/uploads/2021/06/CSP8548-scaled.jpg"></a>
+          </div>
+                    <div class="area-galeria">
+            <a class="galeria-link-item" data-fancybox="galeria-esportiva-30" href="https://pontoorgeventos.com.br/wp-content/uploads/2021/06/CSP8330-scaled.jpg"></a>
+          </div>
+                  </div>    
+
+        <div class="col-lg-6 col-md-6 col-sm-12 coluna-texto order-lg-2 order-1">
+          <h3>L.O.L. Surprise! World</h3>
+          <h2></h2>
+          <p>Inspirado nas bonecas mais famosas do mundo, o evento traz o melhor do mundo fashion e da música voltada para os fãs do brinquedo. A diversão é voltada para crianças de 1 a 12 anos e o circuito conta com cabines de DJ, pista de dança, karaokê, oficina de tatuagem,brinquedos entre outras atrações.
+</p>
+                      <a href="https://www.youtube.com/watch?v=pb3hROa_bTc" class="s-mais" target="_blank">Saiba mais</a>
+                  </div>
+
+              </div>
+
+          
+  </div> 
+</section>
+
+
+<section id="area-empresariais">
+  <div class="container">
+    <div class="row">
+      
+      
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <h3></h3>
+        <h2>Eventos empresariais</h2>
+        <p>Confraternizações, palestras, workshops, feiras ou reuniões. Não importa o tamanho do evento que você precisa organizar, trabalhamos com fornecedores que prezam pela qualidade e cuidamos de todos os processos para que você consiga o resultado que precisa.</p>
+              </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-12">
+                <a href="https://pontoorgeventos.com.br/wp-content/uploads/2019/11/silhouette-photo-of-people-beside-monitor-2952834.jpg" class="galeria-link" data-fancybox="galeria-1">
+          <div class="gal-fotos img-lupa" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2019/11/silhouette-photo-of-people-beside-monitor-2952834.jpg');">
+              <!--<img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/lupa.png" class="img-fluid">-->
+          </div>
+        </a>
+              </div>
+
+      
+    </div>
+  </div>
+</section>
+
+
+<section id="area-clientes">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+
+            <!--================ Slider Empresas =================-->
+            <div class="empresas-slider">
+
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-12">
+
+                      <h2 class="text-center">Principais Clientes</h2>
+
+                      <div id="owl-empresas" class="emp1 owl-carousel owl-theme">
+
+                                                    <a href="" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/10/LOGOS-.ORG_-1.png');"></div>
+                          </a>
+
+                                                    <a href="" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/10/LOGOS-.ORG-8.png');"></div>
+                          </a>
+
+                                                    <a href="" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/10/LOGOS-.ORG-5.png');"></div>
+                          </a>
+
+                                                    <a href="" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/10/LOGOS-.ORG-10.png');"></div>
+                          </a>
+
+                                                    <a href="" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/10/LOGOS-.ORG-9.png');"></div>
+                          </a>
+
+                                                    <a href="" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/10/LOGOS-.ORG-7.png');"></div>
+                          </a>
+
+                                                    <a href="" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/10/LOGOS-.ORG-11.png');"></div>
+                          </a>
+
+                                                    <a href="https://jumparound.com.br/" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2026/10/LOGOS-.ORG-12.png');"></div>
+                          </a>
+
+                                                    <a href="" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2019/10/cliente_corrida_insana.jpg');"></div>
+                          </a>
+
+                                                    <a href="" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2019/10/cliente_nigthnationrun.jpg');"></div>
+                          </a>
+
+                                                    <a href="https://ondeestawally.com.br/" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2019/10/cliente_corrida_ondeestawally.jpg');"></div>
+                          </a>
+
+                                                    <a href="" target="_blank">
+                            <div class="item" style="background-image: url('https://pontoorgeventos.com.br/wp-content/uploads/2019/11/TM-Logo-jpg-1.png');"></div>
+                          </a>
+
+                                                </div>
+
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <!--================ Slider Empresas =================-->  
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<a name="contato"></a>
+<section id="area-contato">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h2>Contato</h2>
+        <p>
+          Quer saber mais sobre o nosso trabalho? Ligue para (37) 98410-1719        </p>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="mapa">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.039324818713!2d-43.95005838508487!3d-19.96484838658425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa697f4a5289fff%3A0x64efac0c850711!2sR.%20Arrudas%2C%20245%20-%20Santa%20L%C3%BAcia%2C%20Belo%20Horizonte%20-%20MG%2C%2030360-400!5e0!3m2!1spt-BR!2sbr!4v1570475565726!5m2!1spt-BR!2sbr" width="100%" height="402" frameborder="0" style="border:0;" allowfullscreen=""></iframe>        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="formulario">
+          <p>
+            Ou envie sua mensagem pelo formulário:          </p>
+          
+<div class="wpcf7 no-js" id="wpcf7-f97-p2-o1" lang="pt-BR" dir="ltr">
+<div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
+<form action="/#wpcf7-f97-p2-o1" method="post" class="wpcf7-form init" aria-label="Formulários de contato" novalidate="novalidate" data-status="init">
+<div style="display: none;">
+<input type="hidden" name="_wpcf7" value="97" />
+<input type="hidden" name="_wpcf7_version" value="5.8.4" />
+<input type="hidden" name="_wpcf7_locale" value="pt_BR" />
+<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f97-p2-o1" />
+<input type="hidden" name="_wpcf7_container_post" value="2" />
+<input type="hidden" name="_wpcf7_posted_data_hash" value="" />
+</div>
+<span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Nome" value="" type="text" name="your-name" /></span>
+<span class="wpcf7-form-control-wrap" data-name="your-email"><input size="40" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail" value="" type="email" name="your-email" /></span>
+<span class="wpcf7-form-control-wrap" data-name="your-subject"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Assunto" value="" type="text" name="your-subject" /></span>
+<span class="wpcf7-form-control-wrap" data-name="your-message"><textarea cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Mensagem" name="your-message"></textarea></span>
+<input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit" value="Enviar" /><div class="wpcf7-response-output" aria-hidden="true"></div>
+</form>
+</div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+          <ul class="redes">
+            <li>
+              <a href="https://www.facebook.com/pontoorgbh" target="_blank">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/icone-facebook.png">
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/user/ORGFORMATURASBH" target="_blank">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/icone_youtube.png">
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/pontoorgeventos/" target="_blank">
+                <img src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/images/icone-isntragram.png">
+              </a>
+            </li>
+          </ul>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+<section id="area-instagram">
+  
+</section>
+
+
+<script type="text/javascript" src="https://pontoorgeventos.com.br/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=5.8.4" id="swv-js"></script>
+<script type="text/javascript" id="contact-form-7-js-extra">
+/* <![CDATA[ */
+var wpcf7 = {"api":{"root":"https:\/\/pontoorgeventos.com.br\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://pontoorgeventos.com.br/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.8.4" id="contact-form-7-js"></script>
+<script type="text/javascript" src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/js/bootstrap.min.js" id="boostrap-js"></script>
+<script type="text/javascript" src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/js/jquery.parallax-1.1.3.js" id="parallax-js"></script>
+<script type="text/javascript" src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/js/lity.js" id="lity-js"></script>
+<script type="text/javascript" src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/js/jquery.fancybox.min.js" id="fancybox-js"></script>
+<script type="text/javascript" src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/js/owl-carousel/owl.carousel.min.js" id="owl-js"></script>
+<script type="text/javascript" src="https://pontoorgeventos.com.br/wp-content/themes/tema-org-2019/assets/js/scripts.js" id="script-js"></script>
+
+</body>
+</html>
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/
+
+
+Served from: pontoorgeventos.com.br @ 2026-10-11 19:27:00 by W3 Total Cache
+-->

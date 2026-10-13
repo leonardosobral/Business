@@ -1,0 +1,349 @@
+    var litespeed_docref=sessionStorage.getItem("litespeed_docref");litespeed_docref&&(Object.defineProperty(document,"referrer",{get:function(){return litespeed_docref}}),sessionStorage.removeItem("litespeed_docref"));       TM4 SPORTS & BUSINESS - ABRACEO                  {"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/abraceo.com.br\/filiado\/tm4-sports-business\/","url":"https:\/\/abraceo.com.br\/filiado\/tm4-sports-business\/","name":"TM4 SPORTS & BUSINESS - ABRACEO","isPartOf":{"@id":"https:\/\/abraceo.com.br\/#website"},"primaryImageOfPage":{"@id":"https:\/\/abraceo.com.br\/filiado\/tm4-sports-business\/#primaryimage"},"image":{"@id":"https:\/\/abraceo.com.br\/filiado\/tm4-sports-business\/#primaryimage"},"thumbnailUrl":"https:\/\/abraceo.com.br\/wp-content\/uploads\/2024\/02\/14.jpg","datePublished":"2021-08-24T13:46:34+00:00","dateModified":"2025-01-10T14:03:53+00:00","breadcrumb":{"@id":"https:\/\/abraceo.com.br\/filiado\/tm4-sports-business\/#breadcrumb"},"inLanguage":"pt-BR","potentialAction":[{"@type":"ReadAction","target":["https:\/\/abraceo.com.br\/filiado\/tm4-sports-business\/"]}]},{"@type":"ImageObject","inLanguage":"pt-BR","@id":"https:\/\/abraceo.com.br\/filiado\/tm4-sports-business\/#primaryimage","url":"https:\/\/abraceo.com.br\/wp-content\/uploads\/2024\/02\/14.jpg","contentUrl":"https:\/\/abraceo.com.br\/wp-content\/uploads\/2024\/02\/14.jpg","width":500,"height":500},{"@type":"BreadcrumbList","@id":"https:\/\/abraceo.com.br\/filiado\/tm4-sports-business\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https:\/\/abraceo.com.br\/"},{"@type":"ListItem","position":2,"name":"Filiados","item":"https:\/\/abraceo.com.br\/filiado\/"},{"@type":"ListItem","position":3,"name":"TM4 SPORTS & BUSINESS"}]},{"@type":"WebSite","@id":"https:\/\/abraceo.com.br\/#website","url":"https:\/\/abraceo.com.br\/","name":"ABRACEO","description":"Associação Brasileira dos Organizadores de Corrida de Rua e Esportes Outdoor","publisher":{"@id":"https:\/\/abraceo.com.br\/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/abraceo.com.br\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"pt-BR"},{"@type":"Organization","@id":"https:\/\/abraceo.com.br\/#organization","name":"Associação Brasileira de Organizadores de Corrida de Rua e Esportes Outdoor - ABRACEO","url":"https:\/\/abraceo.com.br\/","logo":{"@type":"ImageObject","inLanguage":"pt-BR","@id":"https:\/\/abraceo.com.br\/#\/schema\/logo\/image\/","url":"https:\/\/abraceo.com.br\/wp-content\/uploads\/2020\/12\/cropped-abraceo.png","contentUrl":"https:\/\/abraceo.com.br\/wp-content\/uploads\/2020\/12\/cropped-abraceo.png","width":700,"height":200,"caption":"Associação Brasileira de Organizadores de Corrida de Rua e Esportes Outdoor - ABRACEO"},"image":{"@id":"https:\/\/abraceo.com.br\/#\/schema\/logo\/image\/"},"sameAs":["https:\/\/www.facebook.com\/abraceo\/","https:\/\/www.instagram.com\/abraceo\/","https:\/\/www.linkedin.com\/company\/abraceo2020\/"]}]}     img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */   :root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */  :root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the block styles printed at wp_footer." }
+/*# sourceURL=wp-block-styles-placeholder-inline-css */  :root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the global-styles printed at wp_footer." }
+/*# sourceURL=wp-global-styles-placeholder-inline-css */           
+     window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+gtag('js',new Date());gtag('config','G-WJLQZQPMQQ')   .e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}      .dataTables_length label, .dataTables_filter label, .dataTables_info{
+	color:#fff;
+}
+.row-1 th{
+	background:#01aced !important;
+	color:#fff !important;
+}    Ir para o conteúdo         
+ 
+ 								    
+ 
+ 
+ Whatsapp 
+    					 
+            Home    Quem Somos    Notícias    Estatuto    Filiação    Fale Conosco     
+             Home    Quem Somos    Notícias    Estatuto    Filiação    Fale Conosco           
+ 
+ 
+ Facebook 
+    					 
+ 
+ 
+ 
+ Instagram 
+    					 
+ 
+ 
+ 
+ Linkedin 
+    					 
+                   TM4 SPORTS & BUSINESS   
+Responsável: THIAGO DE OLIVEIRA    
+ 
+    						 
+ (48) 99822-5595   
+ 
+    						 
+ thiago@tm4.business   
+ 
+    						 
+ @tm4sports   
+ 
+    						 
+ Cidade: Florianópolis / SC   
+ 
+    						 
+ Regional: Sul     
+ 
+ 
+ Acessar site 
+ 
+       
+            Associados ABRACEO        
+ 
+3LR Eventos			       
+ 
+Aclive Sports			       
+ 
+Agência VQV eventos			       
+ 
+Amigos do Horto Eventos			       
+ 
+APUANA ESPORTES			       
+ 
+AR2 Eventos			       
+ 
+Assessorar Produções Festivas			       
+ 
+Atra-e Eventos			       
+ 
+Avatar			       
+ 
+BEE SPORTS			       
+ 
+Beta Sports			       
+ 
+BOLT PRODUCÕES			       
+ 
+BRB Marketing Esportivo			       
+ 
+CAPA EVENTOS			       
+ 
+Chelso Sports			       
+ 
+Chip Macapá			       
+ 
+CHL Eventos			       
+ 
+Cia de Eventos			       
+ 
+Clube dos Corredores			       
+ 
+Conceito Soluções Esportivas			       
+ 
+Corre Brasil			       
+ 
+Corre Paraíba			       
+ 
+Corrente Running			       
+ 
+Correr com Propósitos			       
+ 
+CPR Eventos e Produções			       
+ 
+CronusTec			       
+ 
+DBueno Eventos			       
+ 
+DTO SPORTS EVENTOS ESPORTIVOS E MARKETING			       
+ 
+FG Eventos			       
+ 
+Fidalgo Eventos Esportivos			       
+ 
+G2P Eventos			       
+ 
+GLOBAL VITA			       
+ 
+Grupo HJR			       
+ 
+GRUPO STC EVENTOS LTDA			       
+ 
+HL EVENTOS ESPORTIVOS			       
+ 
+ICE SPORTS			       
+ 
+Ideal 5k			       
+ 
+Iguana Sports			       
+ 
+Jardel Moura Assessoria Esportiva			       
+ 
+L’ETAPE BRASIL			       
+ 
+Maria Isabel Eventos			       
+ 
+Método Grupo Chokito			       
+ 
+MMB Eventos Esportivos			       
+ 
+Morro MT			       
+ 
+Mountain Do			       
+ 
+Mp Sports Brasil			       
+ 
+MP3 SOLUÇÕES			       
+ 
+NACE Produções			       
+ 
+Nk Sports			       
+ 
+Noblu Sports			       
+ 
+ON EVENTOS ESPORTIVOS			       
+ 
+Oxe Eventos			       
+ 
+Pace 3 Eventos Esportivos			       
+ 
+Pace Eventos			       
+ 
+Partiu Corrida			       
+ 
+PDA Esportes			       
+ 
+Pepper Criativa Sport & Business Agency			       
+ 
+Personew			       
+ 
+Podium Chip			       
+ 
+PODIUM SPORT			       
+ 
+Ponto ORG (.ORG)			       
+ 
+Premium			       
+ 
+Proworld			       
+ 
+Quanta Esportes e Eventos			       
+ 
+RAV Sports			       
+ 
+RG+			       
+ 
+Run Eventos			       
+ 
+RUN SPORTS			       
+ 
+Runk Marketing Esportivo LTDA			       
+ 
+Sagaz Esportes			       
+ 
+SBS Sports			       
+ 
+Seven Eco			       
+ 
+Soul + esportes			       
+ 
+Speed Produções e Eventos			       
+ 
+SPIRIDON EVENTOS			       
+ 
+Sports360º Eventos Esportivos			       
+ 
+Sportsland			       
+ 
+SuperAção Eventos			       
+ 
+Taboada Runners			       
+ 
+TM4 SPORTS & BUSINESS			       
+ 
+To Goal Sports			       
+ 
+Top Chip			       
+ 
+Tour da Roça			       
+ 
+TRCRONO			       
+ 
+TTK Marketing			       
+ 
+TVCOM Running			       
+ 
+Uhuw Eventos			       
+ 
+UNLIMITED			       
+ 
+Vega Sports			       
+ 
+Vida Sport			       
+ 
+VOA Esportes			       
+ 
+Wine Run Brasil			       
+ 
+WX ESPORTES E NEGÓCIOS			       
+ 
+X3M ENTRETENIMENTO LTDA			       
+ 
+Yescom			       
+ 
+ZBR EVENTS			                     Receba nossas atualizações    
+ 
+ 
+          
+ 
+Nome							 
+   
+ 
+Email							 
+   
+ 
+ 
+ 
+  																	 
+ Enviar 
+ 
+                    
+ 
+ 								    Associação Brasileira dos Organizadores de Corrida de Rua e Esportes Outdoor     
+  
+    						 
+ contato.abraceo@gmail.com 
+      
+ 
+ 
+ Facebook-f 
+    					 
+ 
+ 
+ 
+ Linkedin 
+    					 
+ 
+ 
+ 
+ Instagram 
+    					 
+         Institucional     
+  
+    						 
+ Quem Somos 
+   
+  
+    						 
+ Filiação 
+   
+  
+    						 
+ Estatuto 
+   
+  
+    						 
+ Protocolo 
+   
+  
+    						 
+ Fale Conosco 
+          Últimas Notícias        
+ 
+São Paulo registra aumento de provas de corrida de rua			   
+ 
+17/03/2026		       
+ 
+4º Summit ABRACEO/CBAt: Corridas de rua cresceram 85% em 2025 no Brasil			   
+ 
+27/02/2026		       
+ 
+Corrida Segura é tema de destaque no 4º Summit ABRACEO CBAt			   
+ 
+27/02/2026		                 Copyright © 2024 ABRACEO – Todos os direitos reservados.       
+ 
+ 								             {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/hello-elementor/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}   :root {
+				-webkit-user-select: none;
+				-webkit-touch-callout: none;
+				-ms-user-select: none;
+				-moz-user-select: none;
+				user-select: none;
+			}   document.oncontextmenu=function(event){if(event.target.tagName!='INPUT'&&event.target.tagName!='TEXTAREA'){event.preventDefault()}};document.ondragstart=function(){if(event.target.tagName!='INPUT'&&event.target.tagName!='TEXTAREA'){event.preventDefault()}}   (()=>{const lazyloadRunObserver=()=>{const lazyloadBackgrounds=document.querySelectorAll(`.e-con.e-parent:not(.e-lazyloaded)`);const lazyloadBackgroundObserver=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){let lazyloadBackground=entry.target;if(lazyloadBackground){lazyloadBackground.classList.add('e-lazyloaded')}
+lazyloadBackgroundObserver.unobserve(entry.target)}})},{rootMargin:'200px 0px 200px 0px'});lazyloadBackgrounds.forEach((lazyloadBackground)=>{lazyloadBackgroundObserver.observe(lazyloadBackground)})};const events=['DOMContentLiteSpeedLoaded','elementor/lazyload/observe',];events.forEach((event)=>{document.addEventListener(event,lazyloadRunObserver)})})()   :root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:root { --wp--style--global--content-size: 800px;--wp--style--global--wide-size: 1200px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */   jQuery.uiBackCompat=!0   var elementorFrontendConfig={"environmentMode":{"edit":!1,"wpPreview":!1,"isScriptDebug":!1},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnX":"Compartilhar no X","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":!1,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":!0},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":!1},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":!0},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":!1},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":!1},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":!1}},"hasCustomBreakpoints":!1},"version":"4.2.4","is_static":!1,"experimentalFeatures":{"e_font_icon_svg":!0,"additional_custom_breakpoints":!0,"container":!0,"e_optimized_markup":!0,"e_panel_promotions":!0,"theme_builder_v2":!0,"hello-theme-header-footer":!0,"nested-elements":!0,"global_classes_should_enforce_capabilities":!0,"e_variables":!0,"e_opt_in_v4_page":!0,"e_components":!0,"e_interactions":!0,"e_widget_creation":!0,"import-export-customization":!0,"e_pro_atomic_form":!0,"mega-menu":!0,"e_pro_variables":!0,"e_pro_interactions":!0},"urls":{"assets":"https:\/\/abraceo.com.br\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/abraceo.com.br\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/abraceo.com.br\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"25bf8476a5","atomicFormsSendForm":"b49fb2c104"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"logo","hello_header_menu_layout":"horizontal","hello_footer_logo_type":"logo"},"post":{"id":1044,"title":"TM4%20SPORTS%20%26%20BUSINESS%20-%20ABRACEO","excerpt":"","featuredImage":"https:\/\/abraceo.com.br\/wp-content\/uploads\/2024\/02\/14.jpg"}}      wp.i18n.setLocaleData({'text direction\u0004ltr':['ltr']})   var ElementorProFrontendConfig={"ajaxurl":"https:\/\/abraceo.com.br\/wp-admin\/admin-ajax.php","nonce":"908c737ef9","urls":{"assets":"https:\/\/abraceo.com.br\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"https:\/\/abraceo.com.br\/wp-json\/"},"settings":{"lazy_load_background_images":!0},"popup":{"hasPopUps":!0},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":!0},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":!0},"pinterest":{"title":"Pinterest","has_counter":!0},"reddit":{"title":"Reddit","has_counter":!0},"vk":{"title":"VK","has_counter":!0},"odnoklassniki":{"title":"OK","has_counter":!0},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":!0},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":!0},"xing":{"title":"XING","has_counter":!0},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"pt_BR","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/abraceo.com.br\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}}   window.lazyLoadOptions=Object.assign({},{threshold:300},window.lazyLoadOptions||{});!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).LazyLoad=e()}(this,function(){"use strict";function e(){return(e=Object.assign||function(t){for(var e=1;e  window.litespeed_ui_events=window.litespeed_ui_events||["mouseover","click","keydown","wheel","touchmove","touchstart","pointerup","pointerdown"];var urlCreator=window.URL||window.webkitURL;function litespeed_load_delayed_js_force(){console.log("[LiteSpeed] Start Load JS Delayed"),litespeed_ui_events.forEach(e=>{window.removeEventListener(e,litespeed_load_delayed_js_force,{passive:!0})}),document.querySelectorAll("iframe[data-litespeed-src]").forEach(e=>{e.setAttribute("src",e.getAttribute("data-litespeed-src"))}),"loading"==document.readyState?window.addEventListener("DOMContentLoaded",litespeed_load_delayed_js):litespeed_load_delayed_js()}litespeed_ui_events.forEach(e=>{window.addEventListener(e,litespeed_load_delayed_js_force,{passive:!0})});async function litespeed_load_delayed_js(){let t=[];for(var d in document.querySelectorAll('script[type="litespeed/javascript"]').forEach(e=>{t.push(e)}),t)await new Promise(e=>litespeed_load_one(t[d],e));document.dispatchEvent(new Event("DOMContentLiteSpeedLoaded")),window.dispatchEvent(new Event("DOMContentLiteSpeedLoaded"))}function litespeed_load_one(t,e){console.log("[LiteSpeed] Load ",t);function d(){o.src.startsWith("blob:")&&URL.revokeObjectURL(o.src),e()}var o=document.createElement("script");o.addEventListener("load",d),o.addEventListener("error",d),t.getAttributeNames().forEach(e=>{"type"!=e&&o.setAttribute("data-src"==e?"src":e,t.getAttribute(e))}),o.type="text/javascript",!o.src&&t.textContent&&(o.src=litespeed_inline2src(t.textContent)),t.after(o),t.remove()}function litespeed_inline2src(t){try{var d=urlCreator.createObjectURL(new Blob([t.replace(/^(?: )?$/gm,"$1")],{type:"text/javascript"}))}catch(e){d="data:text/javascript;base64,"+btoa(t.replace(/^(?: )?$/gm,"$1"))}return d}  var litespeed_vary=document.cookie.replace(/(?:(?:^|.*;\s*)_lscache_vary\s*\=\s*([^;]*).*$)|^.*$/,"");litespeed_vary||(sessionStorage.getItem("litespeed_reloaded")?console.log("LiteSpeed: skipping guest vary reload (already reloaded this session)"):fetch("/wp-content/plugins/litespeed-cache/guest.vary.php",{method:"POST",cache:"no-cache",redirect:"follow"}).then(e=>e.json()).then(e=>{console.log(e),e.hasOwnProperty("reload")&&"yes"==e.reload&&(sessionStorage.setItem("litespeed_docref",document.referrer),sessionStorage.setItem("litespeed_reloaded","1"),window.location.reload(!0))}));     
+ 
+
+ 
+ 
+ 

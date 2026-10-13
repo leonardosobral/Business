@@ -1,0 +1,29 @@
+[
+  {
+    "nome_evento": "CORRIDA KIDS TRIMAIS PLACES 6º EDIÇÃO",
+    "organizador": "AMIGOS DO HORTO EVENTOS ESPORTIVOS",
+    "id_evento": 47688,
+    "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88357&origem=novo-site&lang=en-US",
+    "realizacao": null,
+    "data_inicial": "2026-10-12",
+    "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88357/6b98b02bbe274e6ebc5758cf7e788fd3639245634275113111.pdf"
+  },
+  {
+    "nome_evento": "CORRIDA ASSAÍ - TERESINA",
+    "organizador": "Instituto Novos Talentos",
+    "id_evento": 48766,
+    "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88118&origem=novo-site&lang=en-US",
+    "realizacao": null,
+    "data_inicial": "2026-11-22",
+    "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88118/bcbeec1049b84b6da8588720d963c4e3639263470646879556.pdf"
+  },
+  {
+    "nome_evento": "CORRIDA ASSAÍ - VITÓRIA",
+    "organizador": "Instituto Novos Talentos",
+    "id_evento": 48783,
+    "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88119&origem=novo-site&lang=en-US",
+    "realizacao": null,
+    "data_inicial": "2026-11-08",
+    "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88119/04eaf22feeda40e292e43b1ac881ea89639263469096967453.pdf"
+  }
+]

@@ -39,7 +39,7 @@ component output=false {
         if (!structKeyExists(data,"nonce") || !isSimpleValue(data.nonce)
             || compare(data.nonce,arguments.expectedNonce) != 0
             || !structKeyExists(data,"email_verified") || !isBoolean(data.email_verified) || !data.email_verified
-            || !structKeyExists(data,"email") || !isValid("email",data.email)
+            || !structKeyExists(data,"email") || !new services.EmailAddress().isValidAddress(data.email)
             || !structKeyExists(data,"sub") || !len(trim(data.sub)))
             throw(type="BusinessAuth.InvalidClaims",message="Identidade Google não confirmada.");
         return {sub=data.sub,email=lCase(trim(data.email)),

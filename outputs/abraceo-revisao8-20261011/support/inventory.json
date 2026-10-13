@@ -1,0 +1,932 @@
+{
+  "accounts": [
+    {
+      "status": "ATIVA",
+      "titular": "Anderson Tonon",
+      "telefone": null,
+      "cnpj": "32692507000140",
+      "id": 1,
+      "email": "contato@grupostc.net",
+      "nome": "Grupo STC"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Live Roupas Esportivas Ltda",
+      "telefone": null,
+      "cnpj": "05108435000178",
+      "id": 2,
+      "email": null,
+      "nome": "Live!"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Artur",
+      "telefone": "4199362633",
+      "cnpj": "97146831000108",
+      "id": 4,
+      "email": "arturcwgrochocki@gmail.com",
+      "nome": "ArturRunner's"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Paulo Stone",
+      "telefone": "51998751610",
+      "cnpj": "88792965000105",
+      "id": 6,
+      "email": "paulinhostone16@gmail.com",
+      "nome": "CORPA"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Douglas Vieira de Mello Cerqueira",
+      "telefone": "(71) 98231-8649",
+      "cnpj": "28434613000156",
+      "id": 5,
+      "email": "douglas@mp3promocoes.com.br",
+      "nome": "MP3 Marketing"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Thadeus Kassabian",
+      "telefone": "11 942419316",
+      "cnpj": "03574107000131",
+      "id": 7,
+      "email": "tgk@yescom.com.br",
+      "nome": "Yescom"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Marcos Pinheiro",
+      "telefone": "4199168382",
+      "cnpj": "65671241000108",
+      "id": 8,
+      "email": "marcos@gosh.ag",
+      "nome": "Gosh Sports"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Rafael Coelho",
+      "telefone": "83 993226409",
+      "cnpj": "32910273000160",
+      "id": 9,
+      "email": "rafael@trcrono.com.br",
+      "nome": "TR Crono"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Fernanda Paradizo",
+      "telefone": null,
+      "cnpj": "53388793000124",
+      "id": 10,
+      "email": "feparadizo@gmail.com",
+      "nome": "Contra Relógio"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Kassilene Cardadeiro",
+      "telefone": "67 992179551",
+      "cnpj": "44282568000118",
+      "id": 11,
+      "email": "contato@maratonadecampogrande.com.br",
+      "nome": "C&C EVENTOS"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Daiana Priscila Voigt Gambôa",
+      "telefone": "(48) 3248-0927 / 99949-7140",
+      "cnpj": "75886689000100",
+      "id": 12,
+      "email": "sc@cbat.org.br",
+      "nome": "Federação Catarinense de Atletismo"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Geraldo Protta Pereira",
+      "telefone": "48999153030",
+      "cnpj": "0",
+      "id": 13,
+      "email": "gigantes@circuitobrasilgigante.com.br",
+      "nome": "Circuito Brasil Gigante"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Fernanda",
+      "telefone": "11961638887",
+      "cnpj": "12821439806",
+      "id": 14,
+      "email": "feparadizo@gmail.com",
+      "nome": "Fernanda Paradizo Serra"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Fabio Frena",
+      "telefone": null,
+      "cnpj": "54804151000121",
+      "id": 15,
+      "email": "contato@racezone.com.br",
+      "nome": "Racezone"
+    },
+    {
+      "status": "SUSPENSA",
+      "titular": "ENI SOUZA - BONITO 21K",
+      "telefone": "67992179551",
+      "cnpj": "13425603000187",
+      "id": 23,
+      "email": "organizacao@bonito21k.com.br",
+      "nome": "Bonito 21k"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "JORNAL CORRIDA",
+      "telefone": null,
+      "cnpj": "54170799000193",
+      "id": 26,
+      "email": "jornalcorrida1@gmail.com",
+      "nome": "B Sports"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "Inscrições Movnow",
+      "telefone": "48 9986-0625",
+      "cnpj": "57110544000123",
+      "id": 25,
+      "email": "inscricoes@movnow.com.br",
+      "nome": "Movnow"
+    },
+    {
+      "status": "ATIVA",
+      "titular": "JESSICA SCHUTZ",
+      "telefone": "41999570210",
+      "cnpj": "68245814000120",
+      "id": 27,
+      "email": "jessica@voaesportes.com",
+      "nome": "Voa Esportes"
+    },
+    {
+      "status": "SUSPENSA",
+      "titular": "Geraldo Protta",
+      "telefone": "48999153030",
+      "cnpj": "02151019950",
+      "id": 3,
+      "email": "protta@gmail.com",
+      "nome": "Floripa Road Runners"
+    },
+    {
+      "status": "SUSPENSA",
+      "titular": "Victoria Coelho",
+      "telefone": null,
+      "cnpj": "123456789000",
+      "id": 24,
+      "email": "protta@gmail.com",
+      "nome": "Protta Corp"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Pace Eventos",
+      "telefone": "27-99299-4157",
+      "cnpj": null,
+      "id": 89,
+      "email": "contato@paceeventos.com.br",
+      "nome": "Pace Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "3LR EVENTOS LTDA",
+      "telefone": "48999407534",
+      "cnpj": "28674754000146",
+      "id": 28,
+      "email": "3lrcontato@gmail.com",
+      "nome": "3LR Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "ACLIVE ORGANIZACAO DE EVENTOS LTDA",
+      "telefone": "83988438445",
+      "cnpj": "62503087000177",
+      "id": 29,
+      "email": "aclivesports@gmail.com",
+      "nome": "Aclive Sports"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "BEE SPORTS - AGENCIA E PRODUTORA DE EVENTOS ESPORTIVOS LTDA",
+      "telefone": "62998605130",
+      "cnpj": "36943394000169",
+      "id": 30,
+      "email": "beesportss@gmail.com",
+      "nome": "BEE SPORTS"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "BETA SPORTS COMUNICACAO LTDA",
+      "telefone": null,
+      "cnpj": "36480637000170",
+      "id": 31,
+      "email": "contato@betasports.com.br",
+      "nome": "Beta Sports"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "BOLT - ORGANIZADORA E PRODUTORA DE EVENTOS CULTURAIS LTDA",
+      "telefone": "67999476813",
+      "cnpj": "30245713000186",
+      "id": 32,
+      "email": "cporto001@gmail.com",
+      "nome": "BOLT PRODUCÕES"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "BRB CRONOMETRAGEM, ESTRUTURAS E EVENTOS LTDA",
+      "telefone": "85988281542",
+      "cnpj": "54070504000107",
+      "id": 33,
+      "email": "ricardo@rrsolucoesemeventos.com.br",
+      "nome": "BRB Marketing Esportivo"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "CS SPORTS LTDA",
+      "telefone": "19993748756",
+      "cnpj": "13026748000296",
+      "id": 34,
+      "email": "comercial@chelso.com.br",
+      "nome": "Chelso Sports"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "AGENCIA DE EVENTOS CB SPORTS LTDA",
+      "telefone": "4732286818",
+      "cnpj": "30704295000148",
+      "id": 35,
+      "email": "ricardo@correbrasil.com.br",
+      "nome": "Corre Brasil"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "VITAL MARINHO COMERCIO E SERVICOS LTDA",
+      "telefone": "83996025965",
+      "cnpj": "55268579000160",
+      "id": 36,
+      "email": "emailcorreparaiba@gmail.com",
+      "nome": "Corre Paraíba"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "CORRER COM PROPOSITOS VIAGENS E TURISMO LTDA",
+      "telefone": "11983838307",
+      "cnpj": "40224688000108",
+      "id": 37,
+      "email": "alesandro@corrercompropositos.com.br",
+      "nome": "Correr com Propósitos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "ON EVENTOS ESPORTIVOS",
+      "telefone": "(48) 3052-3043",
+      "cnpj": null,
+      "id": 87,
+      "email": "oneventosesportivos@gmail.com",
+      "nome": "ON EVENTOS ESPORTIVOS"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Pace 3 Eventos Esportivos",
+      "telefone": "31 7229-0754",
+      "cnpj": null,
+      "id": 88,
+      "email": "contato@pace3.com.br",
+      "nome": "Pace 3 Eventos Esportivos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Partiu Corrida",
+      "telefone": "(11) 99589-2122",
+      "cnpj": null,
+      "id": 90,
+      "email": "rodrigo@partiucorrida.com",
+      "nome": "Partiu Corrida"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Pepper Criativa Sport & Business Agency",
+      "telefone": "(15) 9 9740-8974",
+      "cnpj": null,
+      "id": 91,
+      "email": "luciana@peppersports.com.br",
+      "nome": "Pepper Criativa Sport & Business Agency"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Personew",
+      "telefone": "16 99155-0514",
+      "cnpj": null,
+      "id": 92,
+      "email": "itamar.ajunior@hotmail.com",
+      "nome": "Personew"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "PODIUM SPORT",
+      "telefone": "(69) 32231983 (69) 981116380",
+      "cnpj": null,
+      "id": 93,
+      "email": "podiumsports@gmail.com",
+      "nome": "PODIUM SPORT"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Ponto ORG (.ORG)",
+      "telefone": "(31) 2515-1500",
+      "cnpj": null,
+      "id": 94,
+      "email": "henrique@pontoorgeventos.com.br",
+      "nome": "Ponto ORG (.ORG)"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Proworld",
+      "telefone": null,
+      "cnpj": null,
+      "id": 95,
+      "email": "paulorosa2@gmail.com",
+      "nome": "Proworld"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Quanta Esportes e Eventos",
+      "telefone": "31 9 9776 4091",
+      "cnpj": null,
+      "id": 96,
+      "email": "simone@quantasports.com.br",
+      "nome": "Quanta Esportes e Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "RAV Sports",
+      "telefone": "(69)99266-0655",
+      "cnpj": null,
+      "id": 97,
+      "email": "ravsportsbr@gmail.com",
+      "nome": "RAV Sports"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "RG+",
+      "telefone": null,
+      "cnpj": null,
+      "id": 98,
+      "email": "humberto@redegeral.com.br",
+      "nome": "RG+"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Run Eventos",
+      "telefone": "83.99924-9000",
+      "cnpj": null,
+      "id": 99,
+      "email": "oliemartins@gmai.com",
+      "nome": "Run Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "RUN SPORTS",
+      "telefone": "(51) 9 9388-2483",
+      "cnpj": null,
+      "id": 100,
+      "email": "claudio@runsports.com.br",
+      "nome": "RUN SPORTS"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Runk Marketing Esportivo LTDA",
+      "telefone": "19 99333-0444",
+      "cnpj": null,
+      "id": 101,
+      "email": "sac@runk.com.br",
+      "nome": "Runk Marketing Esportivo LTDA"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Sagaz Esportes",
+      "telefone": "+55 11 99819-1055",
+      "cnpj": null,
+      "id": 102,
+      "email": "felipe@sagazesportes.com.br",
+      "nome": "Sagaz Esportes"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Speed Produções e Eventos",
+      "telefone": "7999143-0442",
+      "cnpj": null,
+      "id": 103,
+      "email": "financeiro@speedproducoes.com.br",
+      "nome": "Speed Produções e Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "SPIRIDON EVENTOS",
+      "telefone": null,
+      "cnpj": null,
+      "id": 104,
+      "email": "traven@spiridon.com.br",
+      "nome": "SPIRIDON EVENTOS"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Sports360º Eventos Esportivos",
+      "telefone": "(41) 9 9997-6155",
+      "cnpj": null,
+      "id": 105,
+      "email": "contatosports360@gmail.com",
+      "nome": "Sports360º Eventos Esportivos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Taboada Runners",
+      "telefone": "94 9160-7656",
+      "cnpj": null,
+      "id": 106,
+      "email": "thaystaboada@gmail.com",
+      "nome": "Taboada Runners"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "To Goal Sports",
+      "telefone": "(92) 9 8804-6725",
+      "cnpj": null,
+      "id": 107,
+      "email": "james@togoal.com.br",
+      "nome": "To Goal Sports"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "TTK Marketing",
+      "telefone": "(31) 993041144",
+      "cnpj": null,
+      "id": 108,
+      "email": "fabio.avelar@ttkmarketing.com.br",
+      "nome": "TTK Marketing"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "WX ESPORTES E NEGÓCIOS",
+      "telefone": "(11) 92184-5373",
+      "cnpj": null,
+      "id": 109,
+      "email": "renatosalvador@wxesportes.com.br",
+      "nome": "WX ESPORTES E NEGÓCIOS"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "ZBR EVENTS",
+      "telefone": "11 99548-4720",
+      "cnpj": null,
+      "id": 110,
+      "email": "zbrevents@gmail.com",
+      "nome": "ZBR EVENTS"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "GLOBAL VITA COMUNICACAO LTDA",
+      "telefone": "4130574846",
+      "cnpj": "18606775000170",
+      "id": 38,
+      "email": "contato@globalvita.com.br",
+      "nome": "GLOBAL VITA"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "ICESPORTS-EVENTOS LTDA",
+      "telefone": "6232042456",
+      "cnpj": "38445093000130",
+      "id": 40,
+      "email": "eduardaassis@hotmail.com",
+      "nome": "ICE SPORTS"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "IGN ESPORTES E EVENTOS LTDA",
+      "telefone": "1130973215",
+      "cnpj": "44459412000160",
+      "id": 41,
+      "email": "paulo@iguanasports.com.br",
+      "nome": "Iguana Sports"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "JARDEL MOURA ASSESSORIA ESPORTIVA LTDA",
+      "telefone": "71999203442",
+      "cnpj": "12234644000123",
+      "id": 42,
+      "email": "contato@jardelmoura.com.br",
+      "nome": "Jardel Moura Assessoria Esportiva"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "LTP BRASIL EVENTOS LTDA.",
+      "telefone": "1137982468",
+      "cnpj": "27127718000108",
+      "id": 43,
+      "email": "fabio.bodra@letapebrasil.com.br",
+      "nome": "L’ETAPE BRASIL"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "METODO CHOKITO LTDA",
+      "telefone": "71994106177",
+      "cnpj": "14216548000188",
+      "id": 44,
+      "email": "carlos.albuquerque@hotmail.com",
+      "nome": "Método Grupo Chokito"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "28.416.109 MAURICIO FRANCISCO DE OLIVEIRA PACHECO",
+      "telefone": "86999937483",
+      "cnpj": "28416109000123",
+      "id": 46,
+      "email": "mauriciofop@hotmail.com",
+      "nome": "Mp Sports Brasil"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "NOBLU SPORT BUSINESS COMERCIO E SERVICOS DE MATERIAIS ESPORTIVOS S.A.",
+      "telefone": "21997225182",
+      "cnpj": "07787987000185",
+      "id": 47,
+      "email": "jeffjelly@noblu.com.br",
+      "nome": "Noblu Sports"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "OXE EVENTOS LTDA",
+      "telefone": "82999361515",
+      "cnpj": "07120464000180",
+      "id": 48,
+      "email": "contato@oxetriatlo.com.br",
+      "nome": "Oxe Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "PDA ESPORTES LTDA",
+      "telefone": "48991302163",
+      "cnpj": "35507828000115",
+      "id": 49,
+      "email": "philippe@pdaesportes.com.br",
+      "nome": "PDA Esportes"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "46.478.807 SIMONE DA SILVA CARDOZO",
+      "telefone": "19991429339",
+      "cnpj": "46478807000135",
+      "id": 50,
+      "email": "podiumchip@hotmail.com",
+      "nome": "Podium Chip"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "SBS SPORTS LTDA",
+      "telefone": "15991717717",
+      "cnpj": "50456213000109",
+      "id": 51,
+      "email": "contato@proeesp.com.br",
+      "nome": "SBS Sports"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "H H L PEREIRA EVENTOS",
+      "telefone": "22999514141",
+      "cnpj": "29086536000153",
+      "id": 52,
+      "email": "sevenecoevents@gmail.com",
+      "nome": "Seven Eco"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "SPORTSLAND NEGOCIOS ESPORTIVOS LTDA",
+      "telefone": "48998225595",
+      "cnpj": "49589078000182",
+      "id": 53,
+      "email": "financeiro02@sportsland.esp.br",
+      "nome": "Sportsland"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "CARLA MARIA DE LIMA POVOA CARRIL",
+      "telefone": "19971355715",
+      "cnpj": "47234721000120",
+      "id": 54,
+      "email": "contato@corridaderuasuperacao.com.br",
+      "nome": "SuperAção Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "IMPERSPORTS COMERCIO LTDA",
+      "telefone": "99999544960",
+      "cnpj": "13774425000108",
+      "id": 55,
+      "email": "topchipcrono@gmail.com",
+      "nome": "Top Chip"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "RAIZES EVENTOS ESPORTIVOS LTDA",
+      "telefone": "11963397866",
+      "cnpj": "27208401000198",
+      "id": 56,
+      "email": "rafael@tourdaroca.com.br",
+      "nome": "Tour da Roça"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "LUIS FERNANDO NUCCI PASQUARELLI",
+      "telefone": "18997153552",
+      "cnpj": "72818198000126",
+      "id": 57,
+      "email": "tvcom40digital@gmail.com",
+      "nome": "TVCOM Running"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "INSIGHT DESENVOLVIMENTO ORGANIZACIONAL LTDA",
+      "telefone": "11994490608",
+      "cnpj": "17332526000171",
+      "id": 58,
+      "email": "contato.uhuweventos@gmail.com",
+      "nome": "Uhuw Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "UNLIMITED SPORTS EVENTOS S.A.",
+      "telefone": "1137432411",
+      "cnpj": "34622939000100",
+      "id": 59,
+      "email": "contato@unlimitedsports.com.br",
+      "nome": "UNLIMITED"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "VEGA ASSESSORIA, CONSULTORIA E GESTAO NO ESPORTE LTDA.",
+      "telefone": "11913459749",
+      "cnpj": "33591994000117",
+      "id": 60,
+      "email": "contato@vegasports.com.br",
+      "nome": "Vega Sports"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "VIDA SPORT LTDA",
+      "telefone": "73982420208",
+      "cnpj": "23909601000117",
+      "id": 61,
+      "email": "sacvidasport@gmail.com",
+      "nome": "Vida Sport"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "SNOC APOIO ADMINISTRATIVO E DIVULGACAO DE EVENTOS LTDA.",
+      "telefone": "6181189876",
+      "cnpj": "13568552000142",
+      "id": 62,
+      "email": "sergio.oprea@terra.com.br",
+      "nome": "Wine Run Brasil"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "X3M ENTRETENIMENTO LTDA",
+      "telefone": "2122479676",
+      "cnpj": "07265942000140",
+      "id": 63,
+      "email": "bernardo@x3mbrasil.com",
+      "nome": "X3M ENTRETENIMENTO LTDA"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "L LOBO EVENTOS ESPORTIVOS LTDA",
+      "telefone": "11999673544",
+      "cnpj": "15135804000175",
+      "id": 39,
+      "email": "luiz@hleventos.com",
+      "nome": "HL EVENTOS ESPORTIVOS"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Agência VQV eventos",
+      "telefone": "44 9132-1600",
+      "cnpj": null,
+      "id": 64,
+      "email": "gerencia@agenciavqv.com.br",
+      "nome": "Agência VQV eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "APUANA ESPORTES",
+      "telefone": "(34) 9 9172-0522",
+      "cnpj": null,
+      "id": 65,
+      "email": "ricardo@apuanaesportes.com.br",
+      "nome": "APUANA ESPORTES"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "AR2 Eventos",
+      "telefone": "21 983917405",
+      "cnpj": null,
+      "id": 66,
+      "email": "ar2eventoscontato@gmail.com",
+      "nome": "AR2 Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Assessorar Produções Festivas",
+      "telefone": "75-998883030",
+      "cnpj": null,
+      "id": 67,
+      "email": "assessorarproducoesfestivas@gmail.com",
+      "nome": "Assessorar Produções Festivas"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Atra-e Eventos",
+      "telefone": "021-996086785",
+      "cnpj": null,
+      "id": 68,
+      "email": "claudiatavares@atraeeventos.com.br",
+      "nome": "Atra-e Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Avatar",
+      "telefone": null,
+      "cnpj": null,
+      "id": 69,
+      "email": "avatar@avatarsports.com.br",
+      "nome": "Avatar"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "CAPA EVENTOS",
+      "telefone": "(43) 99113-3838",
+      "cnpj": null,
+      "id": 70,
+      "email": "contato@capapromo.com.br",
+      "nome": "CAPA EVENTOS"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Chip Macapá",
+      "telefone": "96 98811-1696",
+      "cnpj": null,
+      "id": 71,
+      "email": "contato@chipmacapa.com.br",
+      "nome": "Chip Macapá"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "CHL Eventos",
+      "telefone": null,
+      "cnpj": null,
+      "id": 72,
+      "email": "contato@chlesportes.com.br",
+      "nome": "CHL Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Cia de Eventos",
+      "telefone": "(11) 941003040",
+      "cnpj": null,
+      "id": 73,
+      "email": "celio@ciadeeventos.com.br",
+      "nome": "Cia de Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Conceito Soluções Esportivas",
+      "telefone": null,
+      "cnpj": null,
+      "id": 74,
+      "email": "conceito-se@hotmail.com",
+      "nome": "Conceito Soluções Esportivas"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Corrente Running",
+      "telefone": "(91) 9 99445555",
+      "cnpj": null,
+      "id": 75,
+      "email": "ricardo_corrente@hotmail.com",
+      "nome": "Corrente Running"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "CPR Eventos e Produções",
+      "telefone": "(21) 96583-9851",
+      "cnpj": null,
+      "id": 76,
+      "email": "contato@correndopelorio.com.br",
+      "nome": "CPR Eventos e Produções"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "DBueno Eventos",
+      "telefone": "13-974073154",
+      "cnpj": null,
+      "id": 77,
+      "email": "denis@dbueno.com.br",
+      "nome": "DBueno Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "DTO SPORTS EVENTOS ESPORTIVOS E MARKETING",
+      "telefone": "(47) 9 9960-2862",
+      "cnpj": null,
+      "id": 78,
+      "email": "contato@dtosports.com.br",
+      "nome": "DTO SPORTS EVENTOS ESPORTIVOS E MARKETING"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "FG Eventos",
+      "telefone": "(65)99266-4143",
+      "cnpj": null,
+      "id": 79,
+      "email": "paixaoporesporte@gmail.com",
+      "nome": "FG Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Fidalgo Eventos Esportivos",
+      "telefone": "18- 996577615",
+      "cnpj": null,
+      "id": 80,
+      "email": "rafael.fidalgo@outlook.com",
+      "nome": "Fidalgo Eventos Esportivos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "G2P Eventos",
+      "telefone": "19- 99211 8440",
+      "cnpj": null,
+      "id": 81,
+      "email": "contato@eventosg2p.com",
+      "nome": "G2P Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Grupo HJR",
+      "telefone": "19 9 9123 4109",
+      "cnpj": null,
+      "id": 82,
+      "email": "licitacao@grupohjr.com.br",
+      "nome": "Grupo HJR"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Ideal 5k",
+      "telefone": "11 981718886",
+      "cnpj": null,
+      "id": 83,
+      "email": "emerson.azevedo@ideal5k.com.br",
+      "nome": "Ideal 5k"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Maria Isabel Eventos",
+      "telefone": "(44) 99963-9668",
+      "cnpj": null,
+      "id": 84,
+      "email": "mariaisabeleventosmga@gmail.com",
+      "nome": "Maria Isabel Eventos"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "Mountain Do",
+      "telefone": "48 9100-9255 / 48 3047-1170",
+      "cnpj": null,
+      "id": 85,
+      "email": "contato@sportsdo.com.br",
+      "nome": "Mountain Do"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "NACE Produções",
+      "telefone": "61.996617812",
+      "cnpj": null,
+      "id": 86,
+      "email": "lanarezendeoficial@gmail.com",
+      "nome": "NACE Produções"
+    },
+    {
+      "status": "PENDENTE",
+      "titular": "JUNIOR DE ASSIS SOARES",
+      "telefone": "65992770972",
+      "cnpj": "18305726000106",
+      "id": 45,
+      "email": "morro@morro-mt.com.br",
+      "nome": "Morro MT"
+    }
+  ],
+  "mp3_users": null
+}

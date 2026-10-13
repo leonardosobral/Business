@@ -1,0 +1,4 @@
+{"kind":"table","sheet":"Pendências","address":"A7:C8","rows":2,"cols":3,"values":[["Morro MT","morro@morro-mt.com.br","Site oficial publica o endereço sem underscores; a grafia __morro na ABRACEO não foi utilizada."],["Pace Eventos","contato@paceeventos.com.br","E-mail geral de contato no site oficial da Pace Eventos; site identifica @paceeventos e provas em Vitória/ES."]]}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Inspect result written to file: /Users/Shared/Projects/RunnerHub/Business/outputs/abraceo-convites-completos-20261011/vouchers_abraceo.xlsx.inspect.ndjson
+{"vouchers":88,"new_vouchers":2,"pending_contacts":0,"old_rows_preserved":true}

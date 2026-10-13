@@ -26,13 +26,14 @@
   }
   function showCompany(data) {
     const c=data.company;
-    $('company-name').textContent=c.nome_empresa;$('company-document').textContent=`CNPJ ${c.cnpj}`;
+    $('company-name').textContent=c.nome_empresa;$('company-document').textContent=c.cnpj?`CNPJ ${c.cnpj}`:'CNPJ pendente de confirmação';
+    $('company-pending').hidden=!c.documento_pendente;
     $('company-logo').hidden=!c.logo;
     if(c.logo){$('company-logo').src=c.logo;$('company-logo').alt=`Logotipo de ${c.nome_empresa}`;}
     $('company-data').replaceChildren();
     for(const [key,label] of Object.entries({razao_social:'Razão social',nome_fantasia:'Nome fantasia',email_publico:'E-mail da empresa',telefone_publico:'Telefone da empresa',site:'Site',endereco:'Endereço',bairro:'Bairro',cidade:'Cidade',uf:'UF',cep:'CEP'})) {
       if(!c[key])continue;
-      const term=document.createElement('dt'),detail=document.createElement('dd');term.textContent=label;detail.textContent=c[key];$('company-data').append(term,detail);
+      const term=document.createElement('dt'),detail=document.createElement('dd');term.textContent=c.documento_pendente && ['razao_social','endereco','bairro','cidade','uf','cep'].includes(key)?`${label} (pesquisado)`:label;detail.textContent=c[key];$('company-data').append(term,detail);
     }
     $('representative-identity').textContent=`${data.representative.name} · ${data.representative.email}`;
     $('company-panel').hidden=false;$('lookup-panel').hidden=true;$('success-panel').hidden=true;
@@ -61,7 +62,7 @@
   window.addEventListener('hashchange',()=>{showTab();if(selection && location.hash==='#representante')$('representative-title').focus();});
   api('overview').then(data=>{
     admin=Boolean(data.user.is_admin);$('identity').textContent=`${data.user.name} · ${data.user.email}`;$('admin-tab').hidden=!admin;
-    for(const c of data.companies){const o=document.createElement('option');o.value=c.cnpj;o.textContent=`${c.name} · ${c.cnpj}`;$('company-options').append(o);}
+    for(const c of data.companies){const o=document.createElement('option');o.value=c.id_conta;o.textContent=`${c.name} · ${c.cnpj || 'CNPJ pendente'}`;$('company-options').append(o);}
     if(!data.representatives.length)$('representatives').textContent='Nenhum representante declarado por este fluxo ainda.';
     for(const r of data.representatives){const row=document.createElement('article');row.className='rep-row';for(const text of [`${r.company} · ${r.name}`,`${r.email} · ${r.role} · ${r.method} · ${r.status}`,r.corrections?`Correções informadas: ${r.corrections}`:'']){if(!text)continue;const p=document.createElement('p');p.textContent=text;row.append(p);}$('representatives').append(row);}
     showTab();

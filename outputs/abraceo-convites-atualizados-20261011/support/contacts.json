@@ -1,0 +1,1175 @@
+[
+  {
+    "id_conta": 64,
+    "empresa": "Agência VQV eventos",
+    "cnpj": null,
+    "contato": "Tatsuro shikamori",
+    "fonte": "https://abraceo.com.br/filiado/agencia-vqv-eventos/",
+    "email_business": "gerencia@agenciavqv.com.br",
+    "status_conta": "PENDENTE",
+    "email": "gerencia@agenciavqv.com.br",
+    "emails_fonte": [
+      "gerencia@agenciavqv.com.br"
+    ],
+    "campos_fonte": [
+      "44 9132-1600",
+      "gerencia@agenciavqv.com.br",
+      "@agenciavqv",
+      "Cidade: Maringa - PR",
+      "Regional: Sul"
+    ],
+    "fonte_sha256": "83ca66527a05fb886cead3820d7cec503eef20becf13f21a66ab812c8290246c",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 65,
+    "empresa": "APUANA ESPORTES",
+    "cnpj": null,
+    "contato": "RICARDO MENDES",
+    "fonte": "https://abraceo.com.br/filiado/apuana-esportes/",
+    "email_business": "ricardo@apuanaesportes.com.br",
+    "status_conta": "PENDENTE",
+    "email": "ricardo@apuanaesportes.com.br",
+    "emails_fonte": [
+      "ricardo@apuanaesportes.com.br"
+    ],
+    "campos_fonte": [
+      "(34) 9 9172-0522",
+      "ricardo@apuanaesportes.com.br",
+      "@apuana_uberlandiacorre",
+      "Cidade: Uberlândia / MG",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "68b52adf00999c4f2d6127ea3999e110869b2d8df4ba29ba1737902025c061d0",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 66,
+    "empresa": "AR2 Eventos",
+    "cnpj": null,
+    "contato": "Aghatta Rosa Alves Alencar Meira/ Robson Alencar Meira",
+    "fonte": "https://abraceo.com.br/filiado/ar2-eventos/",
+    "email_business": "ar2eventoscontato@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "ar2eventoscontato@gmail.com",
+    "emails_fonte": [
+      "ar2eventoscontato@gmail.com"
+    ],
+    "campos_fonte": [
+      "21 983917405",
+      "ar2eventoscontato@gmail.com",
+      "@ar2eventos",
+      "Cidade: Rio de janeiro - RJ",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "b1c7c4e878439dc1c2d1ee797762ac541a464220d27127167836e83758b14220",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 67,
+    "empresa": "Assessorar Produções Festivas",
+    "cnpj": null,
+    "contato": "Edson de Jesus",
+    "fonte": "https://abraceo.com.br/filiado/assessorar-producoes-festivas/",
+    "email_business": "assessorarproducoesfestivas@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "assessorarproducoesfestivas@gmail.com",
+    "emails_fonte": [
+      "assessorarproducoesfestivas@gmail.com"
+    ],
+    "campos_fonte": [
+      "75-998883030",
+      "assessorarproducoesfestivas@gmail.com",
+      "@assessorarproducoes",
+      "Cidade: Alagoinhas - BA",
+      "Regional: Nordeste"
+    ],
+    "fonte_sha256": "b600fcb19a2861dcacd2d23737b888e1499c99f233013e32ccc8596e605488fb",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 68,
+    "empresa": "Atra-e Eventos",
+    "cnpj": null,
+    "contato": "Claudia Tavares",
+    "fonte": "https://abraceo.com.br/filiado/atra-e-eventos/",
+    "email_business": "claudiatavares@atraeeventos.com.br",
+    "status_conta": "PENDENTE",
+    "email": "claudiatavares@atraeeventos.com.br",
+    "emails_fonte": [
+      "claudiatavares@atraeeventos.com.br"
+    ],
+    "campos_fonte": [
+      "021-996086785",
+      "claudiatavares@atraeeventos.com.br",
+      "@atrae.br",
+      "Cidade: Natal/RN",
+      "Regional: Nordeste"
+    ],
+    "fonte_sha256": "f7ff4819cc868b336a9ad027595851b0404993c42cd8bd3c74c293d61c8f5e10",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 69,
+    "empresa": "Avatar",
+    "cnpj": null,
+    "contato": "SYLVIO BITENCOURT",
+    "fonte": "https://abraceo.com.br/filiado/avatar/",
+    "email_business": "avatar@avatarsports.com.br",
+    "status_conta": "PENDENTE",
+    "email": "avatar@avatarsports.com.br",
+    "emails_fonte": [
+      "avatar@avatarsports.com.br"
+    ],
+    "campos_fonte": [
+      "(12) 3224-4800  (12) 9 9602-4556",
+      "avatar@avatarsports.com.br",
+      "avatarsports",
+      "Cidade: São José dos Campos / SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "d07f3f90e3d664d167b91b22421f2cc9132c5677c0a12cca4df9f82a3a9b3b37",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 70,
+    "empresa": "CAPA EVENTOS",
+    "cnpj": null,
+    "contato": "GUILHERME PAOLIELO",
+    "fonte": "https://abraceo.com.br/filiado/capa-eventos/",
+    "email_business": "contato@capapromo.com.br",
+    "status_conta": "PENDENTE",
+    "email": "contato@capapromo.com.br",
+    "emails_fonte": [
+      "contato@capapromo.com.br"
+    ],
+    "campos_fonte": [
+      "(43) 99113-3838",
+      "contato@capapromo.com.br",
+      "@capaeventos",
+      "Cidade: Londrina / PR",
+      "Regional: Sul"
+    ],
+    "fonte_sha256": "70bcc88ab5e1f439682f1a011ff94d4190eaf0b6d0779e70ca880df9fc7186fe",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 71,
+    "empresa": "Chip Macapá",
+    "cnpj": null,
+    "contato": "Harrison Carlos Duarte da Silva",
+    "fonte": "https://abraceo.com.br/filiado/chip-macapa/",
+    "email_business": "contato@chipmacapa.com.br",
+    "status_conta": "PENDENTE",
+    "email": "contato@chipmacapa.com.br",
+    "emails_fonte": [
+      "contato@chipmacapa.com.br"
+    ],
+    "campos_fonte": [
+      "96 98811-1696",
+      "contato@chipmacapa.com.br",
+      "@chipmacapa",
+      "Cidade: Macapá-Amapá",
+      "Regional: Norte"
+    ],
+    "fonte_sha256": "e166fc796b9fa08eba955665bc9b580afa53b83c1a58b776e885f660fd7a00ef",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 72,
+    "empresa": "CHL Eventos",
+    "cnpj": null,
+    "contato": "Leonardo Marinho / Anderson Cavalcante",
+    "fonte": "https://abraceo.com.br/filiado/chl-eventos/",
+    "email_business": "contato@chlesportes.com.br",
+    "status_conta": "PENDENTE",
+    "email": "contato@chlesportes.com.br",
+    "emails_fonte": [
+      "contato@chlesportes.com.br"
+    ],
+    "campos_fonte": [
+      "31 98213-0552 (Leonardo) / 31 99808-6576 (Anderson)",
+      "contato@chlesportes.com.br",
+      "@chlesportes",
+      "Cidade: Belo Horizonte / MG",
+      "Regional: Norte"
+    ],
+    "fonte_sha256": "61c4e1db182fd77a7f98305e26cb33fc304d19d61b86c1e69ea811cf0594b11b",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 73,
+    "empresa": "Cia de Eventos",
+    "cnpj": null,
+    "contato": "Celio Balieiro",
+    "fonte": "https://abraceo.com.br/filiado/cia-de-eventos/",
+    "email_business": "celio@ciadeeventos.com.br",
+    "status_conta": "PENDENTE",
+    "email": "celio@ciadeeventos.com.br",
+    "emails_fonte": [
+      "celio@ciadeeventos.com.br"
+    ],
+    "campos_fonte": [
+      "(11) 941003040",
+      "celio@ciadeeventos.com.br",
+      "",
+      "Cidade: São Paulo- SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "d728ccfe54730fde9c2b0a3f0c7bfb69d4c1fbe0f792c46f48ee96254cfeb219",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 74,
+    "empresa": "Conceito Soluções Esportivas",
+    "cnpj": null,
+    "contato": "FLÁVIA LUANA ANDRADE SOUZA",
+    "fonte": "https://abraceo.com.br/filiado/conceito-solucoes-esportivas/",
+    "email_business": "conceito-se@hotmail.com",
+    "status_conta": "PENDENTE",
+    "email": "conceito-se@hotmail.com",
+    "emails_fonte": [
+      "conceito-se@hotmail.com"
+    ],
+    "campos_fonte": [
+      "(79) 9 8126-4948  (79) 9 9981-5955",
+      "conceito-se@hotmail.com",
+      "conceito_se",
+      "Cidade: Aracaju / SE",
+      "Regional: Nordeste"
+    ],
+    "fonte_sha256": "ce9bda962cb5199c2039e1524054e9051d87f12ba85445ab331b5aad94661393",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 75,
+    "empresa": "Corrente Running",
+    "cnpj": null,
+    "contato": "Ricardo Costa Nascimento",
+    "fonte": "https://abraceo.com.br/filiado/corrente-running/",
+    "email_business": "ricardo_corrente@hotmail.com",
+    "status_conta": "PENDENTE",
+    "email": "ricardo_corrente@hotmail.com",
+    "emails_fonte": [
+      "ricardo_corrente@hotmail.com"
+    ],
+    "campos_fonte": [
+      "(91) 9 99445555",
+      "ricardo_corrente@hotmail.com",
+      "@correnterunning",
+      "Cidade: Belém - PA",
+      "Regional: Norte"
+    ],
+    "fonte_sha256": "331246332743ee13bedcbbfab13222437120beebdf16455f350b8673aba016e4",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 76,
+    "empresa": "CPR Eventos e Produções",
+    "cnpj": null,
+    "contato": "PAULO SANTOS",
+    "fonte": "https://abraceo.com.br/filiado/cpr-eventos-e-producoes/",
+    "email_business": "contato@correndopelorio.com.br",
+    "status_conta": "PENDENTE",
+    "email": "contato@correndopelorio.com.br",
+    "emails_fonte": [
+      "contato@correndopelorio.com.br"
+    ],
+    "campos_fonte": [
+      "(21) 96583-9851",
+      "contato@correndopelorio.com.br",
+      "@cpreventos",
+      "Cidade: Rio de Janeiro / RJ",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "b2db8d4a0d163629824f287423795fd8c4ee7d39c79bd87c228b3f3baf252eb7",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 77,
+    "empresa": "DBueno Eventos",
+    "cnpj": null,
+    "contato": "DENIS",
+    "fonte": "https://abraceo.com.br/filiado/dbueno-eventos/",
+    "email_business": "denis@dbueno.com.br",
+    "status_conta": "PENDENTE",
+    "email": "denis@dbueno.com.br",
+    "emails_fonte": [
+      "denis@dbueno.com.br"
+    ],
+    "campos_fonte": [
+      "13-974073154",
+      "denis@dbueno.com.br",
+      "@dbueno_eventos",
+      "Cidade: Santos - SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "c82296d6ac642202c3596136de7eafe740363fe31cfbf6fa127f142fc38077e2",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 78,
+    "empresa": "DTO SPORTS EVENTOS ESPORTIVOS E MARKETING",
+    "cnpj": null,
+    "contato": "DIEGO DE SOUZA",
+    "fonte": "https://abraceo.com.br/filiado/dto-sports-eventos-esportivos-e-marketing/",
+    "email_business": "contato@dtosports.com.br",
+    "status_conta": "PENDENTE",
+    "email": "contato@dtosports.com.br",
+    "emails_fonte": [
+      "contato@dtosports.com.br"
+    ],
+    "campos_fonte": [
+      "(47) 9 9960-2862",
+      "contato@dtosports.com.br",
+      "@dto.sportsrun",
+      "Cidade: Balneário Camboriú / SC",
+      "Regional: Sul"
+    ],
+    "fonte_sha256": "7f2f0dd5287dff01b61ee8e62518492eaf8cf7461044daf339d932fadd40da60",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 79,
+    "empresa": "FG Eventos",
+    "cnpj": null,
+    "contato": "Veridiana Ferraz",
+    "fonte": "https://abraceo.com.br/filiado/fg-eventos/",
+    "email_business": "paixaoporesporte@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "paixaoporesporte@gmail.com",
+    "emails_fonte": [
+      "paixaoporesporte@gmail.com"
+    ],
+    "campos_fonte": [
+      "(65)99266-4143",
+      "paixaoporesporte@gmail.com",
+      "@fge.eventos",
+      "Cidade: Cuiabá - Mato Grosso",
+      "Regional: Centro-Oeste"
+    ],
+    "fonte_sha256": "8aa791905002d90814271c285dd0cb4fcb561a184ea4730a4535fde357be20c1",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 80,
+    "empresa": "Fidalgo Eventos Esportivos",
+    "cnpj": null,
+    "contato": "Rafael Fidalgo",
+    "fonte": "https://abraceo.com.br/filiado/fidalgo-eventos-esportivos/",
+    "email_business": "rafael.fidalgo@outlook.com",
+    "status_conta": "PENDENTE",
+    "email": "rafael.fidalgo@outlook.com",
+    "emails_fonte": [
+      "rafael.fidalgo@outlook.com"
+    ],
+    "campos_fonte": [
+      "18- 996577615",
+      "rafael.fidalgo@outlook.com",
+      "@fidalgo_eventos_esportivos",
+      "Cidade: Paraguaçu Paulista / SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "fef92a90ba897db0bded3e1074414d29084fa96df5273acab6ef9432d1cb57e6",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 81,
+    "empresa": "G2P Eventos",
+    "cnpj": null,
+    "contato": "Guilherme Pizzirani",
+    "fonte": "https://abraceo.com.br/filiado/g2p-eventos/",
+    "email_business": "contato@eventosg2p.com",
+    "status_conta": "PENDENTE",
+    "email": "contato@eventosg2p.com",
+    "emails_fonte": [
+      "contato@eventosg2p.com"
+    ],
+    "campos_fonte": [
+      "19- 99211 8440",
+      "contato@eventosg2p.com",
+      "@g2peventos",
+      "Cidade: Rio Claro - SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "56da8bac3806f17c7958c7ab08ddfbed36903cedfc7e515a357f07bcfc549ad2",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 82,
+    "empresa": "Grupo HJR",
+    "cnpj": null,
+    "contato": "RODRIGO SANDOVAL DE FARIA",
+    "fonte": "https://abraceo.com.br/filiado/grupo-hjr/",
+    "email_business": "licitacao@grupohjr.com.br",
+    "status_conta": "PENDENTE",
+    "email": "licitacao@grupohjr.com.br",
+    "emails_fonte": [
+      "licitacao@grupohjr.com.br"
+    ],
+    "campos_fonte": [
+      "19 9 9123 4109",
+      "licitacao@grupohjr.com.br",
+      "@grupohjr",
+      "Cidade: E S PINHAL - SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "63aaea13048c133171be9fd47ec25e181d31fc2c5bd28f4f7fffc7e584c81fc9",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 83,
+    "empresa": "Ideal 5k",
+    "cnpj": null,
+    "contato": "Emerson Azevedo Oliveira",
+    "fonte": "https://abraceo.com.br/filiado/ideal-5k/",
+    "email_business": "emerson.azevedo@ideal5k.com.br",
+    "status_conta": "PENDENTE",
+    "email": "emerson.azevedo@ideal5k.com.br",
+    "emails_fonte": [
+      "emerson.azevedo@ideal5k.com.br"
+    ],
+    "campos_fonte": [
+      "11 981718886",
+      "emerson.azevedo@ideal5k.com.br",
+      "@ideal5k",
+      "Cidade: Jundiaí-SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "7e74cdb1c27f2431a441a00156992a364d152a81fe8bdb6c85d132e0431af6fd",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 84,
+    "empresa": "Maria Isabel Eventos",
+    "cnpj": null,
+    "contato": "Maria Isabel Nogueira",
+    "fonte": "https://abraceo.com.br/filiado/maria-isabel-eventos/",
+    "email_business": "mariaisabeleventosmga@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "mariaisabeleventosmga@gmail.com",
+    "emails_fonte": [
+      "mariaisabeleventosmga@gmail.com"
+    ],
+    "campos_fonte": [
+      "(44) 99963-9668",
+      "mariaisabeleventosmga@gmail.com",
+      "https://www.instagram.com/maria.isabeleventos",
+      "Cidade: Maringá - PR",
+      "Regional: Sul"
+    ],
+    "fonte_sha256": "f2b91440e6d8973d9befde0109c87e004cd1ac6e0aee390d59f791d32a18d24e",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 85,
+    "empresa": "Mountain Do",
+    "cnpj": null,
+    "contato": "",
+    "fonte": "https://abraceo.com.br/filiado/mountain-do/",
+    "email_business": "contato@sportsdo.com.br",
+    "status_conta": "PENDENTE",
+    "email": "contato@sportsdo.com.br",
+    "emails_fonte": [
+      "contato@sportsdo.com.br"
+    ],
+    "campos_fonte": [
+      "48 9100-9255 / 48 3047-1170",
+      "contato@sportsdo.com.br",
+      "mountaindo.sports/",
+      "Cidade: São José - SC",
+      "Regional: Sul"
+    ],
+    "fonte_sha256": "175912e4f17503fe1dfb25906ad6b874a3a062a0a899514b1dd78c1d8ce10cb9",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 86,
+    "empresa": "NACE Produções",
+    "cnpj": null,
+    "contato": "Lana Rezende",
+    "fonte": "https://abraceo.com.br/filiado/nace-producoes/",
+    "email_business": "lanarezendeoficial@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "lanarezendeoficial@gmail.com",
+    "emails_fonte": [
+      "lanarezendeoficial@gmail.com"
+    ],
+    "campos_fonte": [
+      "61.996617812",
+      "lanarezendeoficial@gmail.com",
+      "https://www.instagram.com/formulacorridalucrativa",
+      "Cidade: Brasilia/DF",
+      "Regional: Centro-Oeste"
+    ],
+    "fonte_sha256": "ce9245eeaea533d4ab4de8d5133556411a7fcc9bf581cd54c89370d74630e628",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 87,
+    "empresa": "ON EVENTOS ESPORTIVOS",
+    "cnpj": null,
+    "contato": "LUÍS ANTÔNIO DOS ANJOS",
+    "fonte": "https://abraceo.com.br/filiado/on-eventos-esportivos/",
+    "email_business": "oneventosesportivos@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "oneventosesportivos@gmail.com",
+    "emails_fonte": [
+      "oneventosesportivos@gmail.com"
+    ],
+    "campos_fonte": [
+      "(48) 3052-3043",
+      "oneventosesportivos@gmail.com",
+      "oneventosesportivos",
+      "Cidade: Tubarão / SC",
+      "Regional: Sul"
+    ],
+    "fonte_sha256": "99716f53f0b454f5d281110ba8db69ab6ede9f2be5568a3714c187077461c71e",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 88,
+    "empresa": "Pace 3 Eventos Esportivos",
+    "cnpj": null,
+    "contato": "LUCAS ASSIS / JOVANI PIRES / BERNARDO",
+    "fonte": "https://abraceo.com.br/filiado/pace-3-eventos-esportivos/",
+    "email_business": "contato@pace3.com.br",
+    "status_conta": "PENDENTE",
+    "email": "contato@pace3.com.br",
+    "emails_fonte": [
+      "contato@pace3.com.br"
+    ],
+    "campos_fonte": [
+      "31 7229-0754",
+      "contato@pace3.com.br",
+      "pace3eventosesportivos",
+      "Cidade: Ipatinga / MG",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "3152776e0882129ad63fd5c8c0ccd5cb7e86c2dffb68c9e3a6cb9e13d40486ef",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 89,
+    "empresa": "Pace Eventos",
+    "cnpj": null,
+    "contato": "NEWTON JOSÉ GOMES",
+    "fonte": "https://abraceo.com.br/filiado/pace-eventos/",
+    "email_business": "",
+    "status_conta": "PENDENTE",
+    "email": "",
+    "emails_fonte": [],
+    "campos_fonte": [
+      "27-99299-4157",
+      "",
+      "@maratonadevitoria e @paceeventos",
+      "Cidade: Vitória-ES",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "aa6006d57e53ce865093a14a052bd85836b3bdc0757abd50a526ba9e643358c5",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "PENDENTE",
+    "motivo": "E-mail da base não confirmado na fonte atual"
+  },
+  {
+    "id_conta": 90,
+    "empresa": "Partiu Corrida",
+    "cnpj": null,
+    "contato": "Rodrigo Pochmann",
+    "fonte": "https://abraceo.com.br/filiado/partiu-corrida/",
+    "email_business": "rodrigo@partiucorrida.com",
+    "status_conta": "PENDENTE",
+    "email": "rodrigo@partiucorrida.com",
+    "emails_fonte": [
+      "rodrigo@partiucorrida.com"
+    ],
+    "campos_fonte": [
+      "(11) 99589-2122",
+      "rodrigo@partiucorrida.com",
+      "@partiucorridaoficial",
+      "Cidade: Artur Nogueira SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "f691c17057a6bd83d2f5ed95b42862be473b4c62e3a125f919c6d6a870644bd8",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 91,
+    "empresa": "Pepper Criativa Sport & Business Agency",
+    "cnpj": null,
+    "contato": "LUCIANA CRISTINA",
+    "fonte": "https://abraceo.com.br/filiado/pepper-criativa-sport-business-agency/",
+    "email_business": "luciana@peppersports.com.br",
+    "status_conta": "PENDENTE",
+    "email": "luciana@peppersports.com.br",
+    "emails_fonte": [
+      "luciana@peppersports.com.br"
+    ],
+    "campos_fonte": [
+      "(15) 9 9740-8974",
+      "luciana@peppersports.com.br",
+      "@peppersportsbrasil",
+      "Cidade: Sorocaba / SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "3029cbc7030c8c5931b8adb9f886c179335e565d7cbf9e34a292724399ba66a6",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 92,
+    "empresa": "Personew",
+    "cnpj": null,
+    "contato": "Itamar",
+    "fonte": "https://abraceo.com.br/filiado/personew/",
+    "email_business": "itamar.ajunior@hotmail.com",
+    "status_conta": "PENDENTE",
+    "email": "itamar.ajunior@hotmail.com",
+    "emails_fonte": [
+      "itamar.ajunior@hotmail.com"
+    ],
+    "campos_fonte": [
+      "16 99155-0514",
+      "itamar.ajunior@hotmail.com",
+      "",
+      "Cidade: Franca - São Paulo",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "248a9470b9fc589c1301b3d12a21494600c7c8b78be2264d27d69fb565e9b9d1",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 93,
+    "empresa": "PODIUM SPORT",
+    "cnpj": null,
+    "contato": "TELMARIO QUEIROZ",
+    "fonte": "https://abraceo.com.br/filiado/podium-sport/",
+    "email_business": "podiumsports@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "podiumsports@gmail.com",
+    "emails_fonte": [
+      "podiumsports@gmail.com"
+    ],
+    "campos_fonte": [
+      "(69) 32231983  (69) 981116380",
+      "podiumsports@gmail.com",
+      "podiumsportpvh",
+      "Cidade: Porto Velho / RO",
+      "Regional: Norte"
+    ],
+    "fonte_sha256": "0866ca28b17012426ec1a92b60312042856e72c5aeba658be802362578ae27b7",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 94,
+    "empresa": "Ponto ORG (.ORG)",
+    "cnpj": null,
+    "contato": "Henrique Costa Gomes",
+    "fonte": "https://abraceo.com.br/filiado/ponto-org-org/",
+    "email_business": "henrique@pontoorgeventos.com.br",
+    "status_conta": "PENDENTE",
+    "email": "henrique@pontoorgeventos.com.br",
+    "emails_fonte": [
+      "henrique@pontoorgeventos.com.br"
+    ],
+    "campos_fonte": [
+      "(31) 2515-1500",
+      "henrique@pontoorgeventos.com.br",
+      "@pontoorgeventos",
+      "Cidade: Belo Horizonte / MG",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "03325adf82d06b3e56a6ed68b52f3435776d80176b3c8b7e7cbc6e7653982459",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 95,
+    "empresa": "Proworld",
+    "cnpj": null,
+    "contato": "PAULO ROSA",
+    "fonte": "https://abraceo.com.br/filiado/proworld/",
+    "email_business": "paulorosa2@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "paulorosa2@gmail.com",
+    "emails_fonte": [
+      "paulorosa2@gmail.com"
+    ],
+    "campos_fonte": [
+      "(19) 3231-4836  (19) 9 9984-7255",
+      "paulorosa2@gmail.com",
+      "paulorosaproducoes",
+      "Cidade: Campinas / SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "d5600f3991e28923aa810a4337c5a971dbafc27fec13acd8264eaa878bbe9681",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 96,
+    "empresa": "Quanta Esportes e Eventos",
+    "cnpj": null,
+    "contato": "Simone Leila dos Santos",
+    "fonte": "https://abraceo.com.br/filiado/quanta-esportes-e-eventos/",
+    "email_business": "simone@quantasports.com.br",
+    "status_conta": "PENDENTE",
+    "email": "simone@quantasports.com.br",
+    "emails_fonte": [
+      "simone@quantasports.com.br"
+    ],
+    "campos_fonte": [
+      "31 9 9776 4091",
+      "simone@quantasports.com.br",
+      "@quantasports",
+      "Cidade: Belo Horizonte MG",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "10e6e1c2bdb4a3ba3de1cdca3993df78a6c14f0c3a503ea105085b9d4e0c0f87",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 97,
+    "empresa": "RAV Sports",
+    "cnpj": null,
+    "contato": "Rodrigo Ferreira Urman",
+    "fonte": "https://abraceo.com.br/filiado/rav-sports/",
+    "email_business": "ravsportsbr@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "ravsportsbr@gmail.com",
+    "emails_fonte": [
+      "ravsportsbr@gmail.com"
+    ],
+    "campos_fonte": [
+      "(69)99266-0655",
+      "ravsportsbr@gmail.com",
+      "@ravsports.oficial",
+      "Cidade: Ji-Paraná",
+      "Regional: Norte"
+    ],
+    "fonte_sha256": "88dc2e5b1fb2dc006e4d4afd76d5dc5e128f9afea581f714f46f7372d22579c8",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 98,
+    "empresa": "RG+",
+    "cnpj": null,
+    "contato": "Humberto",
+    "fonte": "https://abraceo.com.br/filiado/rg/",
+    "email_business": "humberto@redegeral.com.br",
+    "status_conta": "PENDENTE",
+    "email": "humberto@redegeral.com.br",
+    "emails_fonte": [
+      "humberto@redegeral.com.br"
+    ],
+    "campos_fonte": [
+      "(75) 3622-0970 | (75) 9 8101-2114",
+      "humberto@redegeral.com.br",
+      "@rgmais",
+      "Cidade:  Feira de Santana / BA",
+      "Regional: Nordeste"
+    ],
+    "fonte_sha256": "c18a02e38ef35f2a33d1d161122faff4cf81a4f88a432e240243210bd8e300d2",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 99,
+    "empresa": "Run Eventos",
+    "cnpj": null,
+    "contato": "Francisco Olié Martins Neto",
+    "fonte": "https://abraceo.com.br/filiado/run-eventos/",
+    "email_business": "oliemartins@gmai.com",
+    "status_conta": "PENDENTE",
+    "email": "oliemartins@gmai.com",
+    "emails_fonte": [
+      "oliemartins@gmai.com"
+    ],
+    "campos_fonte": [
+      "83.99924-9000",
+      "oliemartins@gmai.com",
+      "@oliemartins @run.eventos",
+      "Cidade: João Pessoa-PB",
+      "Regional: Nordeste"
+    ],
+    "fonte_sha256": "ceb521a3f9f75048ffc0343b3984d0984477d772716ac2d4e252a556afc2b021",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 101,
+    "empresa": "Runk Marketing Esportivo LTDA",
+    "cnpj": null,
+    "contato": "RENAN BUSSULO",
+    "fonte": "https://abraceo.com.br/filiado/runk-marketing-esportivo-ltda/",
+    "email_business": "sac@runk.com.br",
+    "status_conta": "PENDENTE",
+    "email": "sac@runk.com.br",
+    "emails_fonte": [
+      "sac@runk.com.br"
+    ],
+    "campos_fonte": [
+      "19 99333-0444",
+      "sac@runk.com.br",
+      "@runksport",
+      "Cidade: Artur Nogueira - SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "3d02ccf7650af825a4e0cb43275a5b00304850e736bbb5bf9ec58f39d37ce62f",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 100,
+    "empresa": "RUN SPORTS",
+    "cnpj": null,
+    "contato": "CLÁUDIO SOIREFMANN",
+    "fonte": "https://abraceo.com.br/filiado/run-sports/",
+    "email_business": "claudio@runsports.com.br",
+    "status_conta": "PENDENTE",
+    "email": "claudio@runsports.com.br",
+    "emails_fonte": [
+      "claudio@runsports.com.br"
+    ],
+    "campos_fonte": [
+      "(51) 9 9388-2483",
+      "claudio@runsports.com.br",
+      "@run_sports",
+      "Cidade: Porto Alegre / RS",
+      "Regional: Sul"
+    ],
+    "fonte_sha256": "0bf73428c564b047599a59df43a93f7f31238033d5b44099361f491dfa6d6eff",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 102,
+    "empresa": "Sagaz Esportes",
+    "cnpj": null,
+    "contato": "Felipe Romero",
+    "fonte": "https://abraceo.com.br/filiado/sagaz-esportes/",
+    "email_business": "felipe@sagazesportes.com.br",
+    "status_conta": "PENDENTE",
+    "email": "felipe@sagazesportes.com.br",
+    "emails_fonte": [
+      "felipe@sagazesportes.com.br"
+    ],
+    "campos_fonte": [
+      "+55 11 99819-1055",
+      "felipe@sagazesportes.com.br",
+      "@sagazesportes",
+      "Cidade: São Paulo / SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "356d75b226f0a7e09b2e62a8403a282981ad8dbd45048f8c51f44f930a9fc8a0",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 103,
+    "empresa": "Speed Produções e Eventos",
+    "cnpj": null,
+    "contato": "Rodrigo Santos Silva",
+    "fonte": "https://abraceo.com.br/filiado/speed-producoes-e-eventos/",
+    "email_business": "financeiro@speedproducoes.com.br",
+    "status_conta": "PENDENTE",
+    "email": "financeiro@speedproducoes.com.br",
+    "emails_fonte": [
+      "financeiro@speedproducoes.com.br"
+    ],
+    "campos_fonte": [
+      "7999143-0442",
+      "financeiro@speedproducoes.com.br",
+      "@speedproducoesoficial",
+      "Cidade: Aracaju/Sergipe",
+      "Regional: Nordeste"
+    ],
+    "fonte_sha256": "8b001faec8c8cdd740ede76ee20c4042a4cce2b2dec920fad88042b5c28d8181",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 104,
+    "empresa": "SPIRIDON EVENTOS",
+    "cnpj": null,
+    "contato": "JOÃO CARLOS TRAVEN",
+    "fonte": "https://abraceo.com.br/filiado/spiridon-eventos/",
+    "email_business": "traven@spiridon.com.br",
+    "status_conta": "PENDENTE",
+    "email": "traven@spiridon.com.br",
+    "emails_fonte": [
+      "traven@spiridon.com.br"
+    ],
+    "campos_fonte": [
+      "(21) 2223-3073   (21) 9 9989-7298",
+      "traven@spiridon.com.br",
+      "@spiridoneventos",
+      "Cidade: Rio de Janeiro / RJ",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "0a88dced8f6e45030a4b8e470d8460dab3f98412d97d19cd699da99e5056fa3b",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 105,
+    "empresa": "Sports360º Eventos Esportivos",
+    "cnpj": null,
+    "contato": "DANIEL",
+    "fonte": "https://abraceo.com.br/filiado/sports360o-eventos-esportivos/",
+    "email_business": "contatosports360@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "contatosports360@gmail.com",
+    "emails_fonte": [
+      "contatosports360@gmail.com"
+    ],
+    "campos_fonte": [
+      "(41) 9 9997-6155",
+      "contatosports360@gmail.com",
+      "@sports360_eventosesportivos",
+      "Cidade: Curitiba / PR",
+      "Regional: Sul"
+    ],
+    "fonte_sha256": "edea898ea8d6866136c3c5f23bd571c4bbdfc9d40e8ff7b3e143403f4b7dd288",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 106,
+    "empresa": "Taboada Runners",
+    "cnpj": null,
+    "contato": "Thays Taboada",
+    "fonte": "https://abraceo.com.br/filiado/taboada-runners/",
+    "email_business": "thaystaboada@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "thaystaboada@gmail.com",
+    "emails_fonte": [
+      "thaystaboada@gmail.com"
+    ],
+    "campos_fonte": [
+      "94 9160-7656",
+      "thaystaboada@gmail.com",
+      "@taboadarunners",
+      "Cidade: Parauapebas - Pará",
+      "Regional: Norte"
+    ],
+    "fonte_sha256": "5990d14f427efee3b9069f9644904389b807ae214257445a6985a7e4a8a24780",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 107,
+    "empresa": "To Goal Sports",
+    "cnpj": null,
+    "contato": "JAMES JUNIOR",
+    "fonte": "https://abraceo.com.br/filiado/to-goal-sports/",
+    "email_business": "james@togoal.com.br",
+    "status_conta": "PENDENTE",
+    "email": "james@togoal.com.br",
+    "emails_fonte": [
+      "james@togoal.com.br"
+    ],
+    "campos_fonte": [
+      "(92) 9 8804-6725",
+      "james@togoal.com.br",
+      "@togoalsports",
+      "Cidade: Manaus / AM",
+      "Regional: Norte"
+    ],
+    "fonte_sha256": "624d0f2112d5ff12b169ce1b63be12400563ed1f03a583c7b6d4b13f004ea9fb",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 108,
+    "empresa": "TTK Marketing",
+    "cnpj": null,
+    "contato": "Fabio Avelar",
+    "fonte": "https://abraceo.com.br/filiado/ttk-marketing/",
+    "email_business": "fabio.avelar@ttkmarketing.com.br",
+    "status_conta": "PENDENTE",
+    "email": "fabio.avelar@ttkmarketing.com.br",
+    "emails_fonte": [
+      "fabio.avelar@ttkmarketing.com.br"
+    ],
+    "campos_fonte": [
+      "(31) 993041144",
+      "fabio.avelar@ttkmarketing.com.br",
+      "",
+      "Cidade: São Paulo - SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "a2178163e403adbbdca1f7f4430530136b7549371aaa379cf693263ab8772381",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 109,
+    "empresa": "WX ESPORTES E NEGÓCIOS",
+    "cnpj": null,
+    "contato": "",
+    "fonte": "https://abraceo.com.br/filiado/wx-esportes-e-negocios/",
+    "email_business": "renatosalvador@wxesportes.com.br",
+    "status_conta": "PENDENTE",
+    "email": "renatosalvador@wxesportes.com.br",
+    "emails_fonte": [
+      "renatosalvador@wxesportes.com.br"
+    ],
+    "campos_fonte": [
+      "(11) 92184-5373",
+      "renatosalvador@wxesportes.com.br",
+      "@wxesportesbr",
+      "Cidade: Barueri - SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "2eb28dcf5b91588b5890e0dd38bdafcf757cd8dff0b99726f5ed77fd7884d268",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  },
+  {
+    "id_conta": 110,
+    "empresa": "ZBR EVENTS",
+    "cnpj": null,
+    "contato": "Rafael Zobaran",
+    "fonte": "https://abraceo.com.br/filiado/zbr-events/",
+    "email_business": "zbrevents@gmail.com",
+    "status_conta": "PENDENTE",
+    "email": "zbrevents@gmail.com",
+    "emails_fonte": [
+      "zbrevents@gmail.com"
+    ],
+    "campos_fonte": [
+      "11 99548-4720",
+      "zbrevents@gmail.com",
+      "zbreventsbrasil",
+      "Cidade: SÃO PAULO - SP",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "5e29a7fe2161d3c05eb238d96b91a841509177c8b26f59acec856e19166d1984",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail publicado no perfil da ABRACEO e reconferido na base"
+  }
+]

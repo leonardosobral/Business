@@ -1,0 +1,3 @@
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Inspect result written to file: /Users/Shared/Projects/RunnerHub/Business/outputs/abraceo-convites-atualizados-20261011/vouchers_abraceo.xlsx.inspect.ndjson
+{"vouchers":86,"new_vouchers":46,"pending":2,"old_rows_preserved":true}

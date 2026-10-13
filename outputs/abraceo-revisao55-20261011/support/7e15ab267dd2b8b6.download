@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous">
+  <link rel="preload" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap">
+  <link rel="preload" as="font" type="font/eot" href="/assets/materialdesignicons-webfont-CSr8KVlo.eot" crossorigin="anonymous">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/materialdesignicons-webfont-Dp5v-WZN.woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" type="font/woff" href="/assets/materialdesignicons-webfont-PXm3-2wK.woff" crossorigin="anonymous">
+  <link rel="preload" as="font" type="font/ttf" href="/assets/materialdesignicons-webfont-B7mPwVP_.ttf" crossorigin="anonymous">
+
+  <meta charset="UTF-8" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WX Esportes</title>
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1654051742212611'); 
+    fbq('track', 'PageView');
+  </script>
+  <!-- End Facebook Pixel Code -->
+  <script type="module" crossorigin src="/assets/index-C3xDKQhP.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Bwu_4lVk.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- Facebook Pixel Code -->
+  <noscript>
+    <img height="1" width="1" src="https://www.facebook.com/tr?id=1654051742212611&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Facebook Pixel Code -->
+</body>
+</html>

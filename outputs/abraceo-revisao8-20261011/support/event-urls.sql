@@ -1,0 +1,1 @@
+SELECT jsonb_agg(jsonb_build_object('id_evento',id_evento,'nome_evento',nome_evento,'data_inicial',data_inicial::date,'url_inscricao',url_inscricao,'url_regulamento',url_regulamento,'organizador',organizador,'realizacao',realizacao))::text payload FROM tb_evento_corridas WHERE id_evento IN (48783,48766,47688)

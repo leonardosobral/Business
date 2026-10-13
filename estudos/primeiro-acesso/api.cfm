@@ -18,12 +18,13 @@ try {
     param name='FORM.operation' default='overview';
     param name='FORM.mode' default=''; param name='FORM.value' default='';
     param name='FORM.role' default=''; param name='FORM.declared' default='false'; param name='FORM.corrections' default='';
+    param name='FORM.companyId' default='';
     param name='FORM.cnpj' default=''; param name='FORM.email' default=''; param name='FORM.expiresOn' default='';
     switch(FORM.operation) {
         case 'overview': result=service.overview(studyActor);break;
         case 'lookup': result=service.lookup(studyActor,FORM.mode,FORM.value);break;
         case 'confirm': result=service.confirm(studyActor,FORM.mode,FORM.value,FORM.role,FORM.declared=='true',FORM.corrections);break;
-        case 'issue': result=service.adminIssue(studyActor,FORM.cnpj,FORM.email,FORM.expiresOn);break;
+        case 'issue': result=service.adminIssue(studyActor,FORM.cnpj,FORM.email,FORM.expiresOn,FORM.companyId);break;
         default: throw(type='StudyAccess.Validation',message='Ação inválida.');
     }
     writeOutput(serializeJSON({'ok':true,'data':result}));

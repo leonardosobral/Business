@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title>ZBR Events</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/assets/css/main.css" />
+	
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RYKESGSVZ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RYKESGSVZ2');
+</script>
+	
+	
+	
+	<meta name="facebook-domain-verification" content="0ipcmber8ot0vwha9jckoov5otwty0" />
+	
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<header id="header">
+		<a href="#intro">
+			<img class="logo-principal" src="https://zbrevents.com.br/wp-content/uploads/2022/10/ZBR-events-Q-transp-560-min.png">
+		</a>
+		<nav>
+			<ul>
+				<!--<li><a href="#intro">Início</a></li>Home-->
+				<li><a href="#cara">Nossa CARA</a></li><!--Nosso DNA / Quem Somos-->
+				<li><a href="#jeito">Nosso JEITO</a></li><!--O que fazemos-->
+				<li><a href="#eventos">Nossos EVENTOS</a></li><!--Eventos-->
+				<li><a href="#contato">Sua MENSAGEM</a></li><!--Contato-->
+				<li><a href="https://zbrevents.com.br/blog" target="_blank">Nosso BLOG</a></li><!--Nosso Blog-->
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Intro -->
+	<section id="intro" class="main style1 dark fullscreen">
+		<div class="content">
+			<header>
+				<h2>TRANSFORMANDO IDEIAS SIMPLES EM EXPERIÊNCIAS VALIOSAS</h2>
+<!--<h2>O MUNDO MUDOU E NÓS ESTAMOS PREPARADOS PARA ELE</h2>-->
+			</header>
+			<footer>
+				<a href="#eventos" class="button style2 down ">Mais</a>
+			</footer>
+		</div>
+	</section>
+
+	<!-- Covid 
+	<section id="covid" class="main style2 right dark fullscreen">
+		<div class="content box style2">
+			<header>
+				<h2>Atleta Protegido</h2>
+			</header>
+			<p>Chegou a hora de voltarmos! Os nossos eventos serão realizados com uso de todos os protocolos de biosegurança contra a Covid-19 para manter os atletas bem protegidos.</p>
+		</div>
+		<a href="#eventos" class="button style2 down anchored">Next</a>
+	</section>-->
+	
+	
+	
+	
+	<!-- EM DESTAQUE -->
+	<section id="eventos" class="main style3 primary">
+		<div class="content">
+			<header>
+				<h2>PRÓXIMOS EVENTOS</h2>
+				<!--<p>Percursos lindos e desafiadores, trilhas indígenas, represas, florestas e até um grande desafio vertical, você vai se surpreender com a beleza e o encanto das corridas da ZBR Events. Quer uma dica? Experimente todas!</p>-->
+			</header>
+
+			<!-- Gallery  -->
+			<div class="gallery">
+				
+											
+					
+				
+				<a href="https://zbrevents.com.br/guaranirace/pita/" target="_blank">
+					<article class="from-left">
+						<img class="img-events" src="https://zbrevents.com.br/wp-content/uploads/2025/11/pita-1024-events-2026.jpg" title="" alt="guarani race pita" />
+					</article>
+				</a>
+				
+				<a href="https://zbrevents.com.br/correburrao/" target="_blank">
+					<article class="from-left">
+						<img class="img-events" src="https://zbrevents.com.br/wp-content/uploads/2026/07/CorreBurrao-1024-events-2026-v1.jpg" title="" alt="corre burrao ec taubate" />
+					</article>
+				</a>				
+								
+				<a href="https://zbrevents.com.br/igt23k/" target="_blank">
+					<article class="from-left">
+						<img class="img-events" src="https://zbrevents.com.br/wp-content/uploads/2026/10/igt23k-1024-events-2027-v2.jpg" title="" alt="igt23k go" />
+					</article>
+				</a>
+				
+				<a href="https://zbrevents.com.br/igt23k/double/" target="_blank">
+					<article class="from-left">
+						<img class="img-events" src="https://zbrevents.com.br/wp-content/uploads/2026/03/igt46kdouble-1024-events-2027.jpg" title="" alt="igt23k double go" />
+					</article>
+				</a>
+				<a href="https://zbrevents.com.br/guaranirace/pita/" target="_blank">
+					<article class="from-left">
+						<img class="img-events" src="https://zbrevents.com.br/wp-content/uploads/2025/11/ydju-1024-events-2026.jpg" title="" alt="guarani race ydju" />
+					</article>
+				</a>
+				
+				
+				<a href="https://zbrevents.com.br/tau42k/" target="_blank">
+					<article class="from-left">
+						<img class="img-events" src="https://zbrevents.com.br/wp-content/uploads/2026/04/tau42k-1024-events-2026-v2.jpg" title="" alt="tau42k maratona de taubaté" />
+					</article>
+				</a>
+				
+				
+				
+			</div>
+		</div>
+	</section>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- One -->
+	<section id="cara" class="main style2 right dark fullscreen">
+		<div class="content box style2">
+			<header>
+				<h2>Nossa CARA</h2>
+			</header>
+			<p>Nada convencionais, adoramos ideias malucas! Depois é aquela correria para transformá-las em algo real. É pensando com ousadia e sempre ‘fora da caixa’ que criamos eventos inéditos de corrida de um jeito só nosso, com marca própria e diferente de tudo que já existiu, feitos especialmente para você.</p>
+		</div>
+		<a href="#jeito" class="button style2 down anchored">Next</a>
+	</section>
+
+	<!-- Two -->
+	<section id="jeito" class="main style2 left dark fullscreen">
+		<div class="content box style2">
+			<header>
+				<h2>Nosso JEITO</h2>
+			</header>
+			<p>Uma corrida não pode ser só uma corrida, tem que ser muito mais! Transformar ideias simples em experiências valiosas é nossa especialidade. Nosso principal objetivo é levar você para uma viagem sensorial inesquecível com elementos suficientes para mexer com seus mais absolutos instintos.</p>
+		</div>
+		<a href="#contato" class="button style2 down anchored">Next</a>
+	</section>
+
+
+	<!-- Contact 
+	<section id="contato" class="main style3 secondary">
+		<div class="content">
+			<header>
+				<h2>Sua MENSAGEM</h2>
+				<p>Envie sua mensagem que retornaremos o mais rápido possível.</p>
+			</header>
+			<div class="box">				
+				
+<div class="wpcf7 no-js" id="wpcf7-f22-o1" lang="pt-BR" dir="ltr" data-wpcf7-id="22">
+<div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
+<form action="/#wpcf7-f22-o1" method="post" class="wpcf7-form init" aria-label="Formulários de contato" novalidate="novalidate" data-status="init">
+<fieldset class="hidden-fields-container"><input type="hidden" name="_wpcf7" value="22" /><input type="hidden" name="_wpcf7_version" value="6.1.7" /><input type="hidden" name="_wpcf7_locale" value="pt_BR" /><input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f22-o1" /><input type="hidden" name="_wpcf7_container_post" value="0" /><input type="hidden" name="_wpcf7_posted_data_hash" value="" /><input type="hidden" name="_wpcf7_recaptcha_response" value="" />
+</fieldset>
+<p><label> Nome (obrigatório)<br />
+<span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="your-name" /></span> </label>
+</p>
+<p><label> E-mail (obrigatório)<br />
+<span class="wpcf7-form-control-wrap" data-name="your-email"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" aria-required="true" aria-invalid="false" value="" type="email" name="your-email" /></span> </label>
+</p>
+<p><label> Cidade (obrigatório)<br />
+<span class="wpcf7-form-control-wrap" data-name="Cidade"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="Cidade" /></span></label>
+</p>
+<p><label> Estado (obrigatório)<br />
+<span class="wpcf7-form-control-wrap" data-name="Estado"><select class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required" aria-required="true" aria-invalid="false" name="Estado"><option value="SP">SP</option><option value="MG">MG</option><option value="PR">PR</option><option value="RJ">RJ</option><option value="RS">RS</option><option value="SC">SC</option><option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option><option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option><option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option><option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option><option value="PA">PA</option><option value="PB">PB</option><option value="PE">PE</option><option value="PI">PI</option><option value="RN">RN</option><option value="RO">RO</option><option value="RR">RR</option><option value="SE">SE</option><option value="TO">TO</option></select></span></label>
+</p>
+<p><label> Assunto<br />
+<span class="wpcf7-form-control-wrap" data-name="menu-12"><select class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required" aria-required="true" aria-invalid="false" name="menu-12"><option value="">&#8212;Escolha uma opção&#8212;</option><option value="IGT23K">IGT23K</option><option value="Double">Double</option><option value="Guarani Race">Guarani Race</option><option value="Leshy">Leshy</option><option value="5Attacks">5Attacks</option><option value="Outro">Outro</option></select></span></label>
+</p>
+<p><label> Mensagem<br />
+<span class="wpcf7-form-control-wrap" data-name="your-message"><textarea cols="40" rows="10" maxlength="2000" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" name="your-message"></textarea></span> </label>
+</p>
+<p><label><strong>Warning:</strong> The <a href="https://wordpress.org/plugins/really-simple-captcha/">Really Simple CAPTCHA</a> plugin is not active.<br />
+<span class="wpcf7-form-control-wrap" data-name="captcha-118"><input size="4" maxlength="4" class="wpcf7-form-control wpcf7-captchar" autocomplete="off" aria-invalid="false" value="" type="text" name="captcha-118" /></span></label>
+</p>
+<p><input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit" value="Enviar" />
+</p><p style="display: none !important;" class="akismet-fields-container" data-prefix="_wpcf7_ak_"><label>&#916;<textarea name="_wpcf7_ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="_wpcf7_ak_js" value="152"/><script>
+document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );
+</script>
+</p><div class="wpcf7-response-output" aria-hidden="true"></div>
+</form>
+</div>
+				
+			</div>
+		</div>
+	</section>-->
+	
+	
+	
+	
+	<!-- 2023 -->
+	<section id="eventos" class="main style3 primary">
+		<div class="content">
+			<img class="footer-zbr" style="max-width: 100%;" src="https://zbrevents.com.br/wp-content/uploads/2024/03/provas-zbrevents-2024-v3-500-min.png" title="" alt="zbrevents" />
+		</div>
+	</section>
+	
+	
+	
+	<!-- Blog 
+	<section id="blog" class="main style3 secondary" style="border-top: 2px solid #000000">
+		<div class="content">
+			<header>
+				<h2>Nosso BLOG</h2>				
+			</header>
+			<div class="box">				
+				[feedzy-rss feeds="https://zbrclama.com.br/blog/feed" max="10" feed_title="no" sort="date_desc" http="default" summarylength="180" thumb="yes" size="150" meta="no" template"style2" target="_blank" ]	
+								
+			</div>
+			
+		</div>
+	</section>-->
+	
+	
+	
+	<!-- Footer -->
+	<footer id="footer">
+
+		<!-- Icons -->
+<ul class="icons">    
+    <li><a href="https://www.facebook.com/zbreventsbrasil/" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+    <li><a href="https://www.instagram.com/zbreventsbrasil/" class="icon fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>  
+	<li><a href="https://www.youtube.com/@zbrevents" class="icon fa-youtube" target="_blank"><span class="label">Youtube</span></a></li>  	
+</ul>
+
+		<!-- Menu -->
+		<ul class="menu">
+			<li>&copy; 2014-2026</li>
+    		<li>Direitos Reservados ZBR Events</li>
+			<li><span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=GQf5EHVNLAVcqAEd7VtAyfqag3RNdR75IBiUziKgGV3mzzfaM0oc1aRIyCuh"></script></span></li>
+		</ul>
+
+	</footer>
+	
+	
+	<!-- code icon whatsapp 
+<link rel="stylesheet" href="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/style-icon-whats.css">
+<a href="https://wa.me/5511995484720?text=Oi ZBR Events" style="position:fixed;width:60px;height:60px;bottom:20px;right:20px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+  z-index:1000;" target="_blank">
+<i style="margin-top:16px" class="fa fa-whatsapp"></i>
+</a>-->
+
+<!-- mensagem COOKIES -->
+<style>.cookieConsentContainer{z-index:999;width:350px;min-height:20px;box-sizing:border-box;padding:30px 30px 30px 30px;background:#232323;overflow:hidden;position:fixed;bottom:30px;left:30px;display:none}.cookieConsentContainer .cookieTitle a{font-family:OpenSans,arial,sans-serif;color:#fff;font-size:22px;line-height:20px;display:block}.cookieConsentContainer .cookieDesc p{margin:0;padding:0;font-family:OpenSans,arial,sans-serif;color:#fff;font-size:13px;line-height:20px;display:block;margin-top:10px}.cookieConsentContainer .cookieDesc a{font-family:OpenSans,arial,sans-serif;color:#fff;text-decoration:underline}.cookieConsentContainer .cookieButton a{display:inline-block;font-family:OpenSans,arial,sans-serif;color:#fff;font-size:14px;font-weight:700;margin-top:14px;background:#000;box-sizing:border-box;padding:15px 24px;text-align:center;transition:background .3s}.cookieConsentContainer .cookieButton a:hover{cursor:pointer;background:#3e9b67}@media (max-width:980px){.cookieConsentContainer{bottom:0!important;left:0!important;width:100%!important}}</style>
+
+<script>var purecookieTitle="Cookies.",purecookieDesc="Utilizamos cookies para oferecer melhor experiência, melhorar o desempenho, analisar como você interage em nosso site e personalizar conteúdo. Ao utilizar este site, você concorda com o uso de cookies.",purecookieLink='',purecookieButton="Aceito";function pureFadeIn(e,o){var i=document.getElementById(e);i.style.opacity=0,i.style.display=o||"block",function e(){var o=parseFloat(i.style.opacity);(o+=.02)>1||(i.style.opacity=o,requestAnimationFrame(e))}()}function pureFadeOut(e){var o=document.getElementById(e);o.style.opacity=1,function e(){(o.style.opacity-=.02)<0?o.style.display="none":requestAnimationFrame(e)}()}function setCookie(e,o,i){var t="";if(i){var n=new Date;n.setTime(n.getTime()+24*i*60*60*1e3),t="; expires="+n.toUTCString()}document.cookie=e+"="+(o||"")+t+"; path=/"}function getCookie(e){for(var o=e+"=",i=document.cookie.split(";"),t=0;t<i.length;t++){for(var n=i[t];" "==n.charAt(0);)n=n.substring(1,n.length);if(0==n.indexOf(o))return n.substring(o.length,n.length)}return null}function eraseCookie(e){document.cookie=e+"=; Max-Age=-99999999;"}function cookieConsent(){getCookie("purecookieDismiss")||(document.body.innerHTML+='<div class="cookieConsentContainer" id="cookieConsentContainer"><div class="cookieTitle"><a>'+purecookieTitle+'</a></div><div class="cookieDesc"><p>'+purecookieDesc+" "+purecookieLink+'</p></div><div class="cookieButton"><a onClick="purecookieDismiss();">'+purecookieButton+"</a></div></div>",pureFadeIn("cookieConsentContainer"))}function purecookieDismiss(){setCookie("purecookieDismiss","1",365),pureFadeOut("cookieConsentContainer")}window.onload=function(){cookieConsent()};</script>
+	
+
+	<!-- Scripts -->
+	<script src="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/assets/js/jquery.min.js"></script>
+	<script src="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/assets/js/jquery.poptrox.min.js"></script>
+	<script src="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/assets/js/jquery.scrolly.min.js"></script>
+	<script src="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/assets/js/jquery.scrollex.min.js"></script>
+	<script src="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/assets/js/browser.min.js"></script>
+	<script src="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/assets/js/breakpoints.min.js"></script>
+	<script src="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/assets/js/util.js"></script>
+	<script src="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/assets/js/main.js"></script>
+
+	<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/e554fc06-3179-4213-9efa-e2e3a7c9a48f-loader.js" ></script>
+	
+</body>
+
+</html>

@@ -251,7 +251,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
     <cfset VARIABLES.cronJobFormRetry = qCronJobEdit.retry_limit/>
     <cfset VARIABLES.cronJobFormMaxRuntime = qCronJobEdit.max_runtime_seconds/>
     <cfset VARIABLES.cronJobFormNewItemsDestination = isNull(qCronJobEdit.notificacao_novos_itens_destino) ? "" : qCronJobEdit.notificacao_novos_itens_destino/>
-    <cfset VARIABLES.cronJobFormNextRun = isNull(qCronJobEdit.next_run_at) ? "" : dateTimeFormat(qCronJobEdit.next_run_at, "yyyy-mm-dd'T'HH:nn")/>
+    <cfset VARIABLES.cronJobFormNextRun = isNull(qCronJobEdit.next_run_at) ? "" : dateTimeFormat(cronJobsLocalTimestamp(qCronJobEdit.next_run_at), "yyyy-mm-dd'T'HH:nn")/>
     <cfset VARIABLES.cronJobFormActive = qCronJobEdit.ativo/>
     <cfset VARIABLES.cronJobFormLate = qCronJobEdit.executar_em_atraso/>
     <cfset VARIABLES.cronJobFormErrorAdminIds = ""/>
@@ -686,7 +686,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                   </td>
                   <td>
                     <div>A cada #qCronJobs.interval_minutes# min</div>
-                    <small class="cron-meta">Próxima: <cfif isDate(qCronJobs.next_run_at)>#lsDateFormat(qCronJobs.next_run_at, "dd/mm/yyyy")# #lsTimeFormat(qCronJobs.next_run_at, "HH:mm")#<cfelse>-</cfif></small>
+                    <small class="cron-meta">Próxima: <cfif isDate(qCronJobs.next_run_at)>#lsDateFormat(cronJobsLocalTimestamp(qCronJobs.next_run_at), "dd/mm/yyyy")# #lsTimeFormat(cronJobsLocalTimestamp(qCronJobs.next_run_at), "HH:mm")#<cfelse>-</cfif></small>
                   </td>
                   <td>
                     <span class="badge <cfif qCronJobs.ativo>badge-success<cfelse>badge-secondary</cfif>"><cfif qCronJobs.ativo>Ativo<cfelse>Inativo</cfif></span>
@@ -696,7 +696,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                   </td>
                   <td>
                     <cfif isDate(qCronJobs.last_run_at)>
-                      #lsDateFormat(qCronJobs.last_run_at, "dd/mm/yyyy")# #lsTimeFormat(qCronJobs.last_run_at, "HH:mm")#
+                      #lsDateFormat(cronJobsLocalTimestamp(qCronJobs.last_run_at), "dd/mm/yyyy")# #lsTimeFormat(cronJobsLocalTimestamp(qCronJobs.last_run_at), "HH:mm")#
                       <small class="cron-meta d-block">#encodeForHTML(VARIABLES.cronRowLastHttpStatus)# <cfif len(trim(VARIABLES.cronRowLastDuration))>#VARIABLES.cronRowLastDuration#ms</cfif></small>
                     <cfelse>
                       <span class="text-muted">-</span>
@@ -828,7 +828,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
                     <cfset VARIABLES.cronRunSummary = cronJobsBuildFriendlySummary(VARIABLES.cronRunResponse, VARIABLES.cronRunError)/>
                   </cfif>
                   <tr>
-                    <td nowrap>#lsDateFormat(qCronJobRuns.started_at, "dd/mm/yyyy")# #lsTimeFormat(qCronJobRuns.started_at, "HH:mm:ss")#</td>
+                    <td nowrap>#lsDateFormat(cronJobsLocalTimestamp(qCronJobRuns.started_at), "dd/mm/yyyy")# #lsTimeFormat(cronJobsLocalTimestamp(qCronJobRuns.started_at), "HH:mm:ss")#</td>
                     <td>#encodeForHTML(qCronJobRuns.nome)#</td>
                     <td>#encodeForHTML(qCronJobRuns.trigger_type)#</td>
                     <td><span class="badge <cfif qCronJobRuns.status EQ 'success'>badge-success<cfelseif qCronJobRuns.status EQ 'http_error'>badge-warning text-dark<cfelse>badge-danger</cfif>">#encodeForHTML(qCronJobRuns.status)#</span></td>

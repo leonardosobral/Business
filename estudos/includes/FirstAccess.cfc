@@ -27,16 +27,18 @@ component output=false {
         }
         return d;
     }
-    private struct function company(required string cnpj) {
-        var q=db("SELECT c.id_conta,c.nome_conta,c.documento,p.logo_path,p.dados::text AS dados
+    private struct function company(string cnpj='',string companyId='') {
+        if(len(companyId) && !reFind('^[1-9][0-9]{0,17}$',companyId)) throw(type='StudyAccess.Validation',message='Confira a empresa selecionada.');
+        var byId=len(companyId)>0;
+        var q=db("SELECT c.id_conta,c.nome_conta,coalesce(c.documento,'') AS documento,c.documento_pendente,p.logo_path,p.dados::text AS dados
             FROM estudo.primeiro_acesso_empresas e JOIN public.tb_contas c USING(id_conta)
             JOIN public.tb_conta_perfis_publicos p USING(id_conta)
             WHERE e.ativo AND p.origem='ABRACEO' AND c.tipo_titular='PJ'
-              AND c.status IN ('PENDENTE','ATIVA') AND c.documento=:doc",
-            {doc=p(cnpj)});
-        if(!q.recordCount) throw(type='StudyAccess.Missing',message='Não encontramos um pré-cadastro disponível para este CNPJ. Confira os números ou solicite acesso pela biblioteca.');
+              AND c.status IN ('PENDENTE','ATIVA') AND " & (byId?'c.id_conta=:id':'c.documento=:doc'),
+            byId?{id=p(companyId,'cf_sql_bigint')}:{doc=p(cnpj)});
+        if(!q.recordCount) throw(type='StudyAccess.Missing',message='Não encontramos um pré-cadastro disponível. Confira o CNPJ ou solicite a revisão do convite pela biblioteca.');
         var source=deserializeJSON(q.dados[1]);
-        var result={'id_conta':toString(q.id_conta[1]),'nome_empresa':q.nome_conta[1],'cnpj':q.documento[1],'logo':''};
+        var result={'id_conta':toString(q.id_conta[1]),'nome_empresa':q.nome_conta[1],'cnpj':q.documento[1],'documento_pendente':q.documento_pendente[1],'logo':''};
         if(reFind('^/assets/contas/abraceo/[a-z0-9-]+\.(jpg|png)$',q.logo_path[1])) result.logo=q.logo_path[1];
         var fields={'razao_social':'razao_social_pesquisada','nome_fantasia':'nome_fantasia_cadastral','email_publico':'email_publico','telefone_publico':'telefone_publico','site':'site_revisado','endereco':'endereco_cadastral','bairro':'bairro_cadastral','cidade':'municipio_cadastral','uf':'uf_cadastral','cep':'cep_cadastral'};
         for(var key in fields) result[key]=structKeyExists(source,fields[key])?source[fields[key]]:'';
@@ -52,21 +54,21 @@ component output=false {
     }
     public struct function lookup(required any actorId,required string mode,required string value) {
         var u=user(actorId);available();
-        var modeName=uCase(mode);var target='';
+        var modeName=uCase(mode);var target='';var targetId='';
         if(modeName=='CNPJ') target=document(value);
         else if(modeName=='VOUCHER') {
             var code=uCase(trim(value));
             if(!reFind('^BQ26-[A-F0-9]{32}$',code)) throw(type='StudyAccess.Validation',message='Informe o código completo do voucher.');
-            var q=db("SELECT c.documento FROM estudo.vouchers v JOIN estudo.primeiro_acesso_convites x ON x.voucher_id=v.id
+            var q=db("SELECT c.id_conta FROM estudo.vouchers v JOIN estudo.primeiro_acesso_convites x ON x.voucher_id=v.id
                 JOIN public.tb_contas c ON c.id_conta=x.id_conta JOIN estudo.campanhas camp ON camp.id=v.campanha_id
                 WHERE v.codigo_hash=:h AND v.email_destinatario=:email AND camp.codigo='abraceo-primeiro-acesso'
                   AND ((v.status='READY' AND v.expira_em>clock_timestamp())
                     OR (v.status='REDEEMED' AND v.resgatado_por=:u AND EXISTS(SELECT 1 FROM estudo.acessos a WHERE a.voucher_id=v.id AND a.status='ACTIVE')))",
                 {h=p(lCase(hash(code,'SHA-256','UTF-8'))),email=p(u.email),u=p(u.id,'cf_sql_bigint')});
             if(!q.recordCount) throw(type='StudyAccess.Access',message='Voucher indisponível para este e-mail. Entre com o e-mail do convite ou use o CNPJ.');
-            target=q.documento[1];
+            targetId=toString(q.id_conta[1]);
         } else throw(type='StudyAccess.Validation',message='Escolha CNPJ ou voucher.');
-        return {'company':company(target),'representative':{'name':u.name,'email':u.email},'mode':modeName};
+        return {'company':company(target,targetId),'representative':{'name':u.name,'email':u.email},'mode':modeName};
     }
     private void function audit(required any actorId,required string action,required string entity,required any entityId,struct details={}) {
         db('INSERT INTO estudo.auditoria_comercial(ator_id,acao,entidade,entidade_id,detalhes) VALUES(:u,:a,:e,:i,CAST(:d AS jsonb))',
@@ -131,8 +133,10 @@ component output=false {
         }
         return result;
     }
-    public struct function adminIssue(required any actorId,required string cnpj,required string email,required string expiresOn) {
-        user(actorId,true);var c=company(document(cnpj));available();var result={};
+    public struct function adminIssue(required any actorId,required string cnpj,required string email,required string expiresOn,string companyId='') {
+        user(actorId,true);
+        if(len(trim(companyId)) && len(trim(cnpj))) throw(type='StudyAccess.Validation',message='Selecione a empresa uma única vez.');
+        var c=len(trim(companyId))?company('',trim(companyId)):company(document(cnpj));available();var result={};
         transaction {
             var campaign=db("SELECT id FROM estudo.campanhas WHERE codigo='abraceo-primeiro-acesso'");
             result=variables.study.adminCreateVoucher(actorId,campaign.id[1],email,expiresOn,'Primeiro acesso ABRACEO · conta ' & c.id_conta);
@@ -144,8 +148,8 @@ component output=false {
     public struct function overview(required any actorId) {
         var u=user(actorId);var result={'user':u,'companies':[],'representatives':[]};
         if(u.is_admin) {
-            var companies=db("SELECT c.documento,c.nome_conta FROM estudo.primeiro_acesso_empresas e JOIN public.tb_contas c USING(id_conta) WHERE e.ativo AND c.status IN ('PENDENTE','ATIVA') ORDER BY c.nome_conta");
-            for(var c in companies) arrayAppend(result.companies,{'cnpj':c.documento,'name':c.nome_conta});
+            var companies=db("SELECT c.id_conta,coalesce(c.documento,'') AS documento,c.nome_conta FROM estudo.primeiro_acesso_empresas e JOIN public.tb_contas c USING(id_conta) WHERE e.ativo AND c.status IN ('PENDENTE','ATIVA') ORDER BY c.nome_conta");
+            for(var c in companies) arrayAppend(result.companies,{'id_conta':toString(c.id_conta),'cnpj':c.documento,'name':c.nome_conta});
             var claims=db('SELECT r.id,r.nome,r.email,r.funcao,r.metodo,r.observacoes,c.nome_conta,a.status FROM estudo.primeiro_acesso_representantes r JOIN public.tb_contas c USING(id_conta) JOIN estudo.acessos a ON a.id=r.acesso_id ORDER BY r.id DESC LIMIT 200');
             for(var r in claims) arrayAppend(result.representatives,{'id':toString(r.id),'name':r.nome,'email':r.email,'role':r.funcao,'method':r.metodo,'corrections':r.observacoes,'company':r.nome_conta,'status':r.status});
         }

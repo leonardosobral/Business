@@ -1,0 +1,456 @@
+ 
+ 
+ 
+     CronusTecCorridas 
+    
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+        .modal {
+            text-align: center;
+            padding: 0!important;
+        }
+        .modal:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -4px;
+        }
+        .modal-dialog {
+            display: inline-block;
+            text-align: left;
+            vertical-align: middle;
+        }
+        .navbar-nav .nav-item .nav-link{
+            padding: 1.1em 1em!important;
+            letter-spacing: 1px;
+            color: var(--color_menu_link_top);
+            /*font-weight: lighter;*/
+        }
+        .nav-link:hover{
+            color:red;
+        }
+        .navbar-expand-md .navbar-nav .dropdown-menu{
+            border-top:3px solid red;
+        }
+        .dropdown-item{
+            font-size:90%;
+        }
+        .dropdown-item:hover{
+            background-color:#EEE;
+            color:red;
+            font-size:90%;
+        }
+        nav{
+            -webkit-transition: padding-top .3s,padding-bottom .3s;
+            -moz-transition: padding-top .3s,padding-bottom .3s;
+            transition: padding-top .3s,padding-bottom .3s;
+            border: none;
+        }
+        /* mobile view */
+        @media (max-width:500px)
+        {
+            .navbar-nav{
+                background-color:var(--background_button_eventos);
+                border-top:3px solid #fed136;
+                color:red;
+                z-index:1;
+                margin-top:5px;
+            }
+            .navbar-nav .nav-item .nav-link{
+                padding: 0.7em 1em!important;
+                font-size: 100%;
+                font-weight: 500;
+            }
+        }
+        @media (max-width:768px){
+            .banner-text{
+                padding:150px 0 150px 0;
+            }
+        }
+        @media all and (min-width: 992px) {
+            .navbar .nav-item .dropdown-menu{ display: none; }
+            .navbar .nav-item:hover .nav-link{ color: #fff;  }
+            .navbar .nav-item:hover .dropdown-menu{ display: block; }
+            .navbar .nav-item .dropdown-menu{ margin-top:0; }
+        }
+        .navbar-nav .nav-item .nav-link {
+            letter-spacing:0.5px;
+            color:var(--color_menu_link_top,yellow);
+            font-weight: lighter;
+            font-size:95%;
+            background-color:var(--background_header_top,#EEE);
+        }
+        .navbar-toggler{
+            background-color:var(--color-base-cliente,#FFF);
+            color:var(--color_menu_link_top,#FFF);
+        }
+         
+
+    
+    
+    
+    
+    
+     
+
+ 
+
+ 
+     
+         X 
+     
+     
+         
+                
+         
+     
+ 
+
+  
+ 
+     
+         
+             
+                  ×  Close  
+                 
+                     
+                         
+                             
+                                  
+                             
+                         
+                         
+                             
+                                  
+                             
+                         
+                     
+                 
+             
+         
+     
+ 
+
+ 
+     
+         
+             
+                  ×  Close  
+                 
+             
+         
+     
+  
+          
+         
+             .menu_item{height:40px;border-bottom:1px #EEE dotted}
+.menu {position: fixed;width: 100vw;height: 100vh;background:var(--background_button_cadastro_novidades,tomato);z-index: 101;opacity: 0;visibility: hidden;}
+ 
+ 
+        
+     
+     
+     
+
+      -->
+         
+            
+         
+              Resultados    Nossos Serviços                 
+         
+      -->
+ 
+             
+     
+              
+              
+              
+              
+              
+              
+     
+ 
+-->
+         
+         
+         
+             
+             
+ 
+     
+         
+               
+             
+                  
+             
+             
+                 
+                      Resultados    Nossos Serviços                   
+             
+         
+     
+ 
+ 
+              
+             
+                 
+                     
+                                                     
+                                A  CronusTecCorridas , é uma empresa especializada em cronometragem esportiva, organização, realização e Assessoria em eventos de corrida de rua.
+                             
+                             
+                                  A Cronometragem na corrida de rua é o coração de todo evento. Por isso a  CronusTecCorridas  tem a MELHOR CRONOMETRAGEM ESPORTIVA para lhe oferecer. Serviço reconhecido pela credibilidade e rapidez no resultados com alguns diferenciais:
+                             
+                        
+                         
+                             
+                                                         
+                                    Cronometragem Esportiva      Resultado on-line      Controle de percurso      Emissão de certificado pós prova      Envio de SMS      Resultado em tempo real e on-line após a passagem dos atletas na linha de chegada      Resultado em tempo real em telão e no smartphone ou tablet e pela internet      Chip de Cronometragem descartável ou retornável      Número de peito personalizado      Sistema informatizado para entrega dos kit com total agilidade e segurança      Controle de Percurso Com transmissão ao Vivo para a Chegada      Site Plataforma de inscrições com a menor taxa comodidade do mercado                               
+                                                     
+
+                         
+                             Promova o esporte e a competição com a  CronusTecCorridas !
+                         
+                         
+      INSTAGRAM   |      FACEBOOK   |      WHATSAPP  
+
+                               Contatos | Dúvidas | Orçamento    -->
+                         
+                                      
+                     
+                 
+             
+         
+         
+    .textarea-cadastro{
+        width: 100%;
+        border: 1px solid #C0C0C0;
+        background-color: #FFF;
+        border-radius: 5px;
+        padding:5px;
+        height:80px;
+    }
+    .input-cadastro {
+        width: 100%;
+        height: 45px;
+        border: 1px solid #C0C0C0;
+        background-color: #FFF;
+        border-radius: 5px;
+        padding:5px;
+    }
+    #button-cadastro-novidades {
+        color: #FFF;
+        width: 100%;
+        height: 45px;
+        border: 1px solid var(--background_button_cadastro_novidades,tomato);
+        background-color: var(--background_button_cadastro_novidades,tomato);
+        border-radius: 5px
+    }
+    #button-cadastro-novidades:hover {
+        color: #FFF;
+        border: 1px solid #333;
+        background-color:#333;
+        cursor:pointer;
+    }
+ 
+
+  -->
+ 
+            
+         
+         
+             
+                    
+                 
+                     CronusTecCorridas 
+                                           
+                    A CronusTecCorridas é uma empresa especializada em cronometragem esportiva de alta qualidade com tecnologia 4.0 e organização de eventos esportivos. Disponibiliza um sistema de inscrições completo, rápido e seguro. Sistema de Cronometragem de última geração. Ferramentas exclusivas para seus eventos. Pensou em evento esportivo. A cronusteccorridas tem a solução!                 
+
+                 
+
+                 
+                     CONTATO 
+                     
+                              @cronusteccorridas       cronustectecnologia@gmail.com       75-991994884                        
+                                     
+
+                 
+                     MENU 
+                       Resultados    Nossos Serviços                    
+                 
+                     ENVIE SUA MENSAGEM 
+                     
+                     
+                      
+                     
+                             Enviar 
+                          
+                     
+                 
+                -->
+             
+         
+
+         
+         
+                     
+                 
+                                                       
+                 
+                          
+                              
+                                 Quero receber as novidades por e-mail:
+                              
+                              
+                                  
+                                      
+                                       
+                                  
+                              
+                              
+                                      Enviar 
+                              
+                          
+                  
+                       -->
+             
+             
+        
+         
+         
+            CronusTecCorridas Eventos Esportivos             
+                         
+            © 2026 Copyright:  www.cronusteccorridas.com.br 
+         
+         
+ 
+
+ 
+    var url_site_oficial = 'https://cronusteccorridas.com.br/';
+    function newsletterClear(){
+        $("#email-new").val('');
+        return setTimeout(function(){ $("#div-msg-input-email-new").html('').hide()},4000);
+    }
+    function newsletter(){
+        if ($("#email-new").val().toString().trim() == '') {
+            $("#div-msg-input-email-new").html('   Informe o email para continuar').show();
+            newsletterClear();
+            return false;
+        }
+        $("#div-msg-input-email-new").html('   Aguarde...').show();
+        var formDataFields = new FormData();
+        formDataFields.append('newsletter',true);
+        formDataFields.append('email',$("#email-new").val().toString().trim());
+        $.ajax({
+            type: 'POST',
+            url: url_site_oficial+'register-newsletter',
+            data: formDataFields,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data.erro === false) {
+                    $("#div-msg-input-email-new").html('   Sucesso').show();
+                }
+                else {
+                    $("#div-msg-input-email-new").html('   '+data.msg).show();
+                }
+                newsletterClear();
+
+                return false;
+            },
+            error: function (data) {
+                $erro = 'Não foi possível enviar. Tente mais tarde (newsletter)';
+                if ((typeof data.responseText != 'undefined') && (data.responseText != null)) {
+                    $erro = $erro + ': ' + data.responseText;
+                }
+                $("#div-msg-input-email-new").html('   ' + $erro).show();
+                newsletterClear();
+                return false;
+            }
+        });
+    }
+    function newContatoClear(limpar){
+        if (limpar){
+            $("#nome-contato-new").val('');
+            $("#email-contato-new").val('');
+            $("#texto-contato-new").val('');
+        }
+        return setTimeout(function(){ $("#div-msg-button-cadastro-novidades").html('').hide()},3000);
+    }
+    function newContato(){
+        var nome_contato_new = $("#nome-contato-new").val().toString().trim();
+        var email_contato_new = $("#email-contato-new").val().toString().trim();
+        var texto_contato_new = $("#texto-contato-new").val().toString().trim();
+        if ((nome_contato_new == '')||(email_contato_new == '')||(texto_contato_new == '')) {
+            setTimeout(function(){ $("#div-msg-button-cadastro-novidades").html('').hide()},2000);
+            return $("#div-msg-button-cadastro-novidades").html('   Preencha todos os campos').show();
+        }
+        $("#div-msg-button-cadastro-novidades").html('   Aguarde...').show();
+        var formDataFields = new FormData();
+        formDataFields.append('new-contatos-angola',true);
+        formDataFields.append('nome',nome_contato_new);
+        formDataFields.append('email',email_contato_new);
+        formDataFields.append('mensagem',texto_contato_new);
+        $.ajax({
+            type: 'POST',
+            url: url_site_oficial+'register-contatos',
+            data: formDataFields,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                $("#div-msg-button-cadastro-novidades").html('   '+data.msg).show();
+                newContatoClear(((data.erro)?false:true));
+            },
+            error: function (data) {
+                $erro = 'Não foi possível enviar. Tente mais tarde (newContato)';
+                if ((typeof data.responseText != 'undefined') && (data.responseText != null)) {
+                    $erro = $erro + ': ' + data.responseText;
+                }
+                $("#div-msg-button-cadastro-novidades").html('   ' + $erro).show();
+                newContatoClear(false);
+            }
+        });
+    }
+    function loadListCategoriasLoja(list) {
+        if ((typeof $("#select-tipo-evento") != 'undefined') && ($("#select-tipo-evento") != null)) {
+            var total = list.length;
+            if (total > 0) {
+                for (var i = 0; i  ' + list[i].tipo_eve_nome + ' '
+                    $("#select-tipo-evento").append(option);
+                }
+            }
+        }
+    }
+    function openNewMultiplosRegulamentos(){
+        let html = '';
+        for(let i in listRegulamento) {
+            html += '  '+listRegulamento[i].mid_nome+'  ';
+        }
+        if (html == '') {
+            $('#divListResultados').html(" Nenhum registro encontrado! ");
+            return false;
+        }
+        $('#divListResultados').html(" "+html+" ");
+        $('#ModalListResultados').modal('show');
+    }
+  
+
+  
+  
+  
+  
+  
+ 
+   // $(document).on("scroll", function(){if($(document).scrollTop() > 86){$("#banner").addClass("shrink");}else{$("#banner").removeClass("shrink");}});
+ 
+  

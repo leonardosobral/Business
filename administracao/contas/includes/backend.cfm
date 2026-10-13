@@ -901,8 +901,8 @@
         <cfset arrayAppend(VARIABLES.accountSaveErrors, "Informe se o titular e PF ou PJ.")/>
     </cfif>
 
-    <cfif NOT len(VARIABLES.accountDocumento)>
-        <cfset arrayAppend(VARIABLES.accountSaveErrors, "Informe o documento da conta.")/>
+    <cfif NOT len(VARIABLES.accountDocumento) AND NOT (VARIABLES.accountTipoTitular EQ "PJ" AND VARIABLES.accountStatus EQ "PENDENTE")>
+        <cfset arrayAppend(VARIABLES.accountSaveErrors, "Documento obrigatório, exceto para pré-cadastro PJ com status PENDENTE.")/>
     </cfif>
 
     <cfif NOT len(VARIABLES.accountNomeTitular)>
@@ -940,7 +940,8 @@
                     UPDATE tb_contas
                     SET nome_conta = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountNome#" maxlength="160"/>,
                         tipo_titular = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountTipoTitular#"/> AS tipo_titular_conta),
-                        documento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountDocumento#" maxlength="20"/>,
+                        documento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountDocumento#" maxlength="20" null="#NOT len(VARIABLES.accountDocumento)#"/>,
+                        documento_pendente = <cfqueryparam cfsqltype="cf_sql_boolean" value="#NOT len(VARIABLES.accountDocumento)#"/>,
                         nome_titular = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountNomeTitular#" maxlength="200"/>,
                         email_principal = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountEmail#" maxlength="255" null="#NOT len(VARIABLES.accountEmail)#"/>,
                         telefone_principal = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountTelefone#" maxlength="30" null="#NOT len(VARIABLES.accountTelefone)#"/>,
@@ -956,6 +957,7 @@
                         nome_conta,
                         tipo_titular,
                         documento,
+                        documento_pendente,
                         nome_titular,
                         email_principal,
                         telefone_principal,
@@ -965,7 +967,8 @@
                     (
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountNome#" maxlength="160"/>,
                         CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountTipoTitular#"/> AS tipo_titular_conta),
-                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountDocumento#" maxlength="20"/>,
+                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountDocumento#" maxlength="20" null="#NOT len(VARIABLES.accountDocumento)#"/>,
+                        <cfqueryparam cfsqltype="cf_sql_boolean" value="#NOT len(VARIABLES.accountDocumento)#"/>,
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountNomeTitular#" maxlength="200"/>,
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountEmail#" maxlength="255" null="#NOT len(VARIABLES.accountEmail)#"/>,
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.accountTelefone#" maxlength="30" null="#NOT len(VARIABLES.accountTelefone)#"/>,

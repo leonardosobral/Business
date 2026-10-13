@@ -12,7 +12,11 @@
         <cfif qAccountPublicProfile.recordcount>
             <cfset VARIABLES.accountPublicProfile = deserializeJSON(qAccountPublicProfile.dados)/>
             <cfset VARIABLES.accountPublicProfileFields = [
-                {key="razao_social_pesquisada", label="Razão social"},
+                {key="status_organizacao", label="Atuação revisada"},
+                {key="evidencia_organizacao", label="Evidência de organização"},
+                {key="fonte_organizacao", label="Fonte de organização"},
+                {key="status_documento", label="Documento do titular"},
+                {key="razao_social_pesquisada", label="Razão social pesquisada"},
                 {key="nome_fantasia_cadastral", label="Nome fantasia"},
                 {key="cnpj_pesquisado", label="CNPJ pesquisado"},
                 {key="situacao_cadastral_consultada", label="Situação cadastral consultada"},
@@ -36,6 +40,9 @@
                     <p class="small text-muted">Pesquisa de #dateFormat(qAccountPublicProfile.data_pesquisa, "dd/mm/yyyy")#. Contatos públicos não confirmam representação da empresa. A liberação de acesso continua sujeita ao fluxo de aprovação do Business.</p>
                     <cfif reFind("^/assets/contas/abraceo/[a-z0-9-]+\.(png|jpg)$", qAccountPublicProfile.logo_path)>
                         <img src="#encodeForHTMLAttribute(qAccountPublicProfile.logo_path)#" alt="Logotipo de #encodeForHTMLAttribute(qBusinessAccountEdit.nome_conta)#" width="120" height="120" style="object-fit:contain;background:white;border-radius:8px" class="mb-3"/>
+                    </cfif>
+                    <cfif NOT len(trim(qBusinessAccountEdit.documento))>
+                        <div class="alert alert-warning">Organizador pré-cadastrado com CNPJ pendente. A razão social, o CNPJ e o endereço pesquisados abaixo são referências ainda não confirmadas para o titular atual. Confirme a empresa e seu representante antes da ativação.</div>
                     </cfif>
                     <dl class="row small" style="overflow-wrap:anywhere">
                         <cfloop array="#VARIABLES.accountPublicProfileFields#" item="profileField">

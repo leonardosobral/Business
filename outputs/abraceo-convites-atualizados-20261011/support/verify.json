@@ -1,0 +1,818 @@
+{
+  "verified": 46,
+  "state_preserved": true,
+  "all_ready": true,
+  "redemption_deadline": "2026-11-10 23:59:59 America/Sao_Paulo",
+  "codes": [
+    {
+      "voucher_id": "115",
+      "id_conta": 64,
+      "cnpj": "",
+      "voucher": "BQ26-FE3BF86193A894020FC0A9BBFC0BB657",
+      "email": "gerencia@agenciavqv.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "116",
+      "id_conta": 65,
+      "cnpj": "",
+      "voucher": "BQ26-857E5DA4A53B9CB2C12AB851A0CC8D8B",
+      "email": "ricardo@apuanaesportes.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "117",
+      "id_conta": 66,
+      "cnpj": "",
+      "voucher": "BQ26-5CECF22AB855C31AA553A3362579B118",
+      "email": "ar2eventoscontato@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "118",
+      "id_conta": 67,
+      "cnpj": "",
+      "voucher": "BQ26-951E4344E0684F3145008D1D99BFD543",
+      "email": "assessorarproducoesfestivas@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "119",
+      "id_conta": 68,
+      "cnpj": "",
+      "voucher": "BQ26-9D08633E99393E91621F8208E070B5BB",
+      "email": "claudiatavares@atraeeventos.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "120",
+      "id_conta": 69,
+      "cnpj": "",
+      "voucher": "BQ26-6274BFEC108FAE8DEF6D487D094754A0",
+      "email": "avatar@avatarsports.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "121",
+      "id_conta": 70,
+      "cnpj": "",
+      "voucher": "BQ26-C6584A2ED48294688251D3147B1ACC3F",
+      "email": "contato@capapromo.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "122",
+      "id_conta": 71,
+      "cnpj": "",
+      "voucher": "BQ26-628B883437146AD66317159DE898645D",
+      "email": "contato@chipmacapa.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "123",
+      "id_conta": 72,
+      "cnpj": "",
+      "voucher": "BQ26-E06638FB2D17F8DD701712F5DF795477",
+      "email": "contato@chlesportes.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "124",
+      "id_conta": 73,
+      "cnpj": "",
+      "voucher": "BQ26-52D74E85743ADFCAE9778A3B373D5A72",
+      "email": "celio@ciadeeventos.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "125",
+      "id_conta": 74,
+      "cnpj": "",
+      "voucher": "BQ26-20D05D3DE16A0AA0275C01169AD8A5E3",
+      "email": "conceito-se@hotmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "126",
+      "id_conta": 75,
+      "cnpj": "",
+      "voucher": "BQ26-1B3E143E36C76AB06D38A2C65DDAE6D6",
+      "email": "ricardo_corrente@hotmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "127",
+      "id_conta": 76,
+      "cnpj": "",
+      "voucher": "BQ26-8A601605A4CF8D6CCAF3BDEC9F85EBF1",
+      "email": "contato@correndopelorio.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "128",
+      "id_conta": 77,
+      "cnpj": "",
+      "voucher": "BQ26-6F7922A58A68C260323384AA51E525F8",
+      "email": "denis@dbueno.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "129",
+      "id_conta": 78,
+      "cnpj": "",
+      "voucher": "BQ26-B4857A7FC8E1D41892433D3BC9D68624",
+      "email": "contato@dtosports.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "130",
+      "id_conta": 79,
+      "cnpj": "",
+      "voucher": "BQ26-45A662DDF92A0116BDD01277B118322B",
+      "email": "paixaoporesporte@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "131",
+      "id_conta": 80,
+      "cnpj": "",
+      "voucher": "BQ26-6CB97EEC42AF2E86A59A6864D4071F9D",
+      "email": "rafael.fidalgo@outlook.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "132",
+      "id_conta": 81,
+      "cnpj": "",
+      "voucher": "BQ26-ADF3F8A319C2911CD9F08F2EDFFE1C5B",
+      "email": "contato@eventosg2p.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "133",
+      "id_conta": 82,
+      "cnpj": "",
+      "voucher": "BQ26-1BE8AF478F13E95C4C1DFDAB273B1E70",
+      "email": "licitacao@grupohjr.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "134",
+      "id_conta": 83,
+      "cnpj": "",
+      "voucher": "BQ26-C69A7AA046E799767B0AAA947133E485",
+      "email": "emerson.azevedo@ideal5k.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "135",
+      "id_conta": 84,
+      "cnpj": "",
+      "voucher": "BQ26-5EDFD22A3531B459C592D2D83FD449CA",
+      "email": "mariaisabeleventosmga@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "136",
+      "id_conta": 85,
+      "cnpj": "",
+      "voucher": "BQ26-A376CEA29FADD3BEFD7FA4BEF960DA41",
+      "email": "contato@sportsdo.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "137",
+      "id_conta": 86,
+      "cnpj": "",
+      "voucher": "BQ26-9C7C710632E74EB601C398DE9AC05219",
+      "email": "lanarezendeoficial@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "138",
+      "id_conta": 87,
+      "cnpj": "",
+      "voucher": "BQ26-782794C9D405A53FF7DA1785E7130A60",
+      "email": "oneventosesportivos@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "139",
+      "id_conta": 88,
+      "cnpj": "",
+      "voucher": "BQ26-C1A6F74D733CDC4D0EAF274B7284C773",
+      "email": "contato@pace3.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "140",
+      "id_conta": 90,
+      "cnpj": "",
+      "voucher": "BQ26-CA5FFF0522BEB38381D595655DD30831",
+      "email": "rodrigo@partiucorrida.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "141",
+      "id_conta": 91,
+      "cnpj": "",
+      "voucher": "BQ26-0C11A7EEC6CDB66A349F7E6C68D25165",
+      "email": "luciana@peppersports.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "142",
+      "id_conta": 92,
+      "cnpj": "",
+      "voucher": "BQ26-0283AF1964ECF880D0BED839D810AE42",
+      "email": "itamar.ajunior@hotmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "143",
+      "id_conta": 93,
+      "cnpj": "",
+      "voucher": "BQ26-8E82C1B215D5F91B7D11DBE08B0C51C4",
+      "email": "podiumsports@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "144",
+      "id_conta": 94,
+      "cnpj": "",
+      "voucher": "BQ26-786276C813D160D248FFABFAADA3D34E",
+      "email": "henrique@pontoorgeventos.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "145",
+      "id_conta": 95,
+      "cnpj": "",
+      "voucher": "BQ26-1EC740E0B982A16E294931DA7E50F334",
+      "email": "paulorosa2@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "146",
+      "id_conta": 96,
+      "cnpj": "",
+      "voucher": "BQ26-1B892290FBCE8DAAAF346042CF9A8D2B",
+      "email": "simone@quantasports.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "147",
+      "id_conta": 97,
+      "cnpj": "",
+      "voucher": "BQ26-FE35F8004AD00BA56E2692F6D14C61B5",
+      "email": "ravsportsbr@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "148",
+      "id_conta": 98,
+      "cnpj": "",
+      "voucher": "BQ26-E5D1BFDA496B72BEC07272431A8EC8C2",
+      "email": "humberto@redegeral.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "149",
+      "id_conta": 99,
+      "cnpj": "",
+      "voucher": "BQ26-04993BFF8FE8199EC2E45D1F52CC2FD2",
+      "email": "oliemartins@gmai.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "150",
+      "id_conta": 101,
+      "cnpj": "",
+      "voucher": "BQ26-2AE8CB4318D086E6559339AF9D2B45B6",
+      "email": "sac@runk.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "151",
+      "id_conta": 100,
+      "cnpj": "",
+      "voucher": "BQ26-9BC730D4180E238DA26B8FC1E066EEAC",
+      "email": "claudio@runsports.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "152",
+      "id_conta": 102,
+      "cnpj": "",
+      "voucher": "BQ26-3CBC03DEF73BB5E63792A18796CE6EA1",
+      "email": "felipe@sagazesportes.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "153",
+      "id_conta": 103,
+      "cnpj": "",
+      "voucher": "BQ26-E80696486464B849DA03FF507C12ECE3",
+      "email": "financeiro@speedproducoes.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "154",
+      "id_conta": 104,
+      "cnpj": "",
+      "voucher": "BQ26-1D47468DA964D2B3D5ABC0F38F3B3D6A",
+      "email": "traven@spiridon.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "155",
+      "id_conta": 105,
+      "cnpj": "",
+      "voucher": "BQ26-D60DB8655A64A1C08D7BB2104CE4E4A7",
+      "email": "contatosports360@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "156",
+      "id_conta": 106,
+      "cnpj": "",
+      "voucher": "BQ26-3A76212399D9C481F783A938C889F988",
+      "email": "thaystaboada@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "157",
+      "id_conta": 107,
+      "cnpj": "",
+      "voucher": "BQ26-3AB00FD685F0A94FFCCE0BCD78D622A5",
+      "email": "james@togoal.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "158",
+      "id_conta": 108,
+      "cnpj": "",
+      "voucher": "BQ26-405FD889C9D1FCC5BF41A1F987C70722",
+      "email": "fabio.avelar@ttkmarketing.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "159",
+      "id_conta": 109,
+      "cnpj": "",
+      "voucher": "BQ26-BB71B21886EE29BB50C985DAFE92C9AD",
+      "email": "renatosalvador@wxesportes.com.br",
+      "expira_em": "2026-11-11 03:00:00+00"
+    },
+    {
+      "voucher_id": "160",
+      "id_conta": 110,
+      "cnpj": "",
+      "voucher": "BQ26-C790B9C3F14BE75162E684C216D67166",
+      "email": "zbrevents@gmail.com",
+      "expira_em": "2026-11-11 03:00:00+00"
+    }
+  ],
+  "previous_vouchers": [
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 67,
+      "email": "3lrcontato@gmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "cd0fd594aa687241842e9c367377724f0f59f591a551c8096f5d6e820e267560",
+      "company": 28
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 68,
+      "email": "aclivesports@gmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "0eebda8986cb4ed1f4212f3504b09b8c57d83f1b601840aeebac7ee46818f79d",
+      "company": 29
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 69,
+      "email": "beesportss@gmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "4df76afbe400eb88f81cf52ed13152a90e185ea6384d6a60ca81635be6b8bc15",
+      "company": 30
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 70,
+      "email": "contato@betasports.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "140e33e40bdf4b8e523ccd7f7b1a40e247bf872a353a6bb6ad51fcc3e325aa8a",
+      "company": 31
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 71,
+      "email": "cporto001@gmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "05b1f6cd365cc7f2f6f45533f7808703a76aa0c8af2a9c2bf051e572e5c7e626",
+      "company": 32
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 72,
+      "email": "ricardo@rrsolucoesemeventos.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "003b35bbc4bdf6ce624207cd51a1d7bf52e7ab71ad85ab727e16f68ba853f2e2",
+      "company": 33
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 73,
+      "email": "comercial@chelso.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "0bfcb64702f61a96d1f0c4216fffb2f39be4393a43c0403572bb429b9a0d5f38",
+      "company": 34
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 74,
+      "email": "corpa@corpa.esp.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "aed7b239dd882af4697039c90fa95c7d1a2968eae97faf802b903f896ad4174d",
+      "company": 6
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 75,
+      "email": "ricardo@correbrasil.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "2f79f3b7ac3d30c66bbd338b62e2437d08bddba66bbf5076251ae617af34c4d2",
+      "company": 35
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 76,
+      "email": "emailcorreparaiba@gmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "7678217ee947747113d4edbd634641be5dc546566df799ccccfb5f2d061aa3d8",
+      "company": 36
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 77,
+      "email": "alesandro@corrercompropositos.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "df3c023445c44044867db6254fc7f96b072a7af6eba0a94f23773f5046830f3c",
+      "company": 37
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 78,
+      "email": "contato@globalvita.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "3b79831cf6c56e9f7b280240fedf095b9ef06cbc3e4b7ab8cf1c09df400db77a",
+      "company": 38
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 79,
+      "email": "anderson@grupostc.net",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "20c63493dd8e25e1365dfb3df5b947cc6540d2e05a49e584015a106a46f11c64",
+      "company": 1
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 80,
+      "email": "luiz@hleventos.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "3086bbff8eed23275433ecc4e6dfba7a2133bdab20a90c36798141b558f435e2",
+      "company": 39
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 81,
+      "email": "eduardaassis@hotmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "d0c1b2f264cdce4c2e0addff5051bbbc86a0b16f370a99a3c7fe2fab0ff51a65",
+      "company": 40
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 82,
+      "email": "paulo@iguanasports.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "d3444e8a738ab9201f46fe4c03be883ab799d11fa17a4019641f07e456734cb2",
+      "company": 41
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 83,
+      "email": "contato@jardelmoura.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "5283e6b52231011cb3e6091a486fdac54a87bbf58bb4da85736fd9421895fc0b",
+      "company": 42
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 84,
+      "email": "fabio.bodra@letapebrasil.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "28ed11b816d5fddb2b46de4344ccdd32f8b6dc10d265e3c55097c8aede3ca76b",
+      "company": 43
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 85,
+      "email": "carlos.albuquerque@hotmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "c7b27f52dfa05cd666b9d669c868bb9e8ee242cdbdc82c809f87bd312f25434b",
+      "company": 44
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 86,
+      "email": "mauriciofop@hotmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "81c8102794e9ad9d5c59278d7607532e8318c5433bae0ce15c2fb9f633138c7e",
+      "company": 46
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 87,
+      "email": "jeffjelly@noblu.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "9f28738802267df252e20097def94df5bb54669881a2617bc84432f1cda310f1",
+      "company": 47
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 88,
+      "email": "contato@oxetriatlo.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "d446af0396d1b45a3dee947a291f480fa32687c0bfeeba3691b94bc6c256e792",
+      "company": 48
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 89,
+      "email": "philippe@pdaesportes.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "6fd2ef55886b0a3792807e821456050127a859a46a5e80bd7448d5665843fcdb",
+      "company": 49
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 90,
+      "email": "podiumchip@hotmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "d3e2425867ff24361ae0f4523f705c450c7a6cd31bf51ceaa367452558f0f597",
+      "company": 50
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 91,
+      "email": "contato@proeesp.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "6d9156352c60d650a54602ff8a669cbfd7ea1dfcc7f4d3b3f8b3a7b84e13a61f",
+      "company": 51
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 92,
+      "email": "sevenecoevents@gmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "6c210ac40087ba07e0d9f7910ef4664b4e17cd7975591fc730bf69ed9b3ad86a",
+      "company": 52
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 93,
+      "email": "financeiro02@sportsland.esp.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "bef406c98f18b08bd72dd806d1cb84279b7a9ec5a49758f4bf385b5b1ee8642f",
+      "company": 53
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 94,
+      "email": "contato@corridaderuasuperacao.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "34b91f82192bfb0bbac5953ab094079ad34cc7aa89b3dfe41b50eb21726c50cd",
+      "company": 54
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 95,
+      "email": "topchipcrono@gmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "53b998699cb0e00201127f1e99e25a67faa00b152112982848a10ed749721c1a",
+      "company": 55
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 96,
+      "email": "rafael@tourdaroca.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "429b19d970c5b84cbe5d20073784c174e50916d9de0a1fd13b30922097abfb6c",
+      "company": 56
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 97,
+      "email": "contato@trcrono.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "9fe150f1d93270f9aeb665277b238ad6693b4d8499b622285bebc01932b50f87",
+      "company": 9
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 98,
+      "email": "tvcom40digital@gmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "2e7ca4be4ea97f6bfe178d0b9d112f8ee6f4e6c61b70fe2a007e7abe0e262c67",
+      "company": 57
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 99,
+      "email": "contato.uhuweventos@gmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "b40287cb3da348c6f5782913d64c74d55268913bb8cf93c7f7cbf1b43a6769c8",
+      "company": 58
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 100,
+      "email": "contato@unlimitedsports.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "1895d5c5f3136396bcf5b9df34605a93c289623a333ac2aa32a595a6bb1ba64f",
+      "company": 59
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 101,
+      "email": "contato@vegasports.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "fc4d7ec5e80d6880664c3b51ebf3f9a3024fabdaec424336f20d48e6bc2fb432",
+      "company": 60
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 102,
+      "email": "sacvidasport@gmail.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "2275f99bb74370f47c6ec5d59620ad01118e14f39bd4cf1c504fb3c08d57e0b0",
+      "company": 61
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 103,
+      "email": "marcos@voaesportes.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "48cf207ced3add0057172e8d28ae859c2e806e999cf241e2abf1cfe0cdb0b094",
+      "company": 27
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 104,
+      "email": "sergio.oprea@terra.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "af2ed49b2b6cb70f28d3fb3ef753d29536c9e26ead58642d494acf8532f8e88e",
+      "company": 62
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 105,
+      "email": "bernardo@x3mbrasil.com",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "4b283299e7ab6829c51f3e3556134d41a78bac1e97034c334c1593db450a772f",
+      "company": 63
+    },
+    {
+      "status": "READY",
+      "benefit": 0,
+      "expires": "2026-11-11 00:00:00",
+      "product": "previa-2026-q3",
+      "id": 106,
+      "email": "tgk@yescom.com.br",
+      "campaign": "abraceo-primeiro-acesso",
+      "hash": "092a187002b88226cc2e5ee23f946eb298c38eb26904593610536d80f3c1b056",
+      "company": 7
+    }
+  ]
+}

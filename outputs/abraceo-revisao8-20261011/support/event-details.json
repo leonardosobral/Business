@@ -1,0 +1,110 @@
+{
+  "events": [
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "MEIA MARATONA DOS REIS MAGOS 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45413,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2027-03-13",
+      "nome_evento": "JURERÊ NIGHT RUN 2027",
+      "ativo": true,
+      "contas": [
+        {
+          "status": "ATIVO",
+          "data_atualizacao": "2026-10-11T07:55:00.728646+00:00",
+          "id_conta": 53,
+          "id_evento": 46865,
+          "data_criacao": "2026-10-11T07:55:00.728646+00:00",
+          "usuario_cadastro": null,
+          "id_conta_evento": 338
+        }
+      ],
+      "id_evento": 46865,
+      "data_inicial": "2027-03-13"
+    },
+    {
+      "data_final": "2026-10-12",
+      "nome_evento": "CORRIDA KIDS TRIMAIS PLACES 6º EDIÇÃO",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47688,
+      "data_inicial": "2026-10-12"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "CORRIDA ASSAÍ - TERESINA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48766,
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "CORRIDA ASSAÍ - VITÓRIA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48783,
+      "data_inicial": "2026-11-08"
+    }
+  ],
+  "columns": [
+    "id_evento",
+    "nome_evento",
+    "cidade",
+    "estado",
+    "tag",
+    "homologado",
+    "url_resultado",
+    "url_wiclax",
+    "cod_cidade",
+    "id_agrega_evento",
+    "pais",
+    "data_inicial",
+    "data_final",
+    "descricao",
+    "endereco",
+    "coordenadas",
+    "imagem",
+    "destaque",
+    "categorias",
+    "url_inscricao",
+    "info_duplicado",
+    "nome_simplificado",
+    "organizador",
+    "obs",
+    "tipo_corrida",
+    "ranking",
+    "id_tema",
+    "data_processamento",
+    "resumo",
+    "tag_301",
+    "ativo",
+    "data_inclusao",
+    "nome_evento_full_text",
+    "obs_resultado",
+    "status_evento",
+    "resultado_completo",
+    "url_hotsite",
+    "url_imagem",
+    "id_fornecedor",
+    "url_imagem_listagem",
+    "descricao_original",
+    "obs_homologacao",
+    "cronometragem",
+    "realizacao",
+    "cobertura",
+    "url_regulamento",
+    "valor_inscricao",
+    "precos",
+    "descricao_en",
+    "descricao_es",
+    "descricao_traducoes_meta",
+    "id_localidade",
+    "inscricao_disponibilidade",
+    "conferencia_datas_publica"
+  ]
+}

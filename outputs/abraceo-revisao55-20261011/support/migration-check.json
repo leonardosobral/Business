@@ -1,0 +1,34 @@
+{
+  "constraints": [
+    {
+      "definition": "CHECK (((documento_pendente AND (documento IS NULL) AND (tipo_titular = 'PJ'::tipo_titular_conta) AND (status = 'PENDENTE'::status_conta)) OR ((NOT documento_pendente) AND (documento IS NOT NULL) AND (length(TRIM(BOTH FROM documento)) > 0))))",
+      "validated": true,
+      "name": "tb_contas_documento_pendente_check"
+    },
+    {
+      "definition": "PRIMARY KEY (id_conta)",
+      "validated": true,
+      "name": "tb_contas_pkey"
+    },
+    {
+      "definition": "UNIQUE (documento)",
+      "validated": true,
+      "name": "unq_tb_contas_documento"
+    }
+  ],
+  "columns": [
+    {
+      "nullable": "NO",
+      "type": "boolean",
+      "default": "false",
+      "name": "documento_pendente"
+    },
+    {
+      "nullable": "YES",
+      "type": "character varying",
+      "default": null,
+      "name": "documento"
+    }
+  ],
+  "pending": 0
+}

@@ -1,0 +1,245 @@
+
+ 
+ 
+
+ 
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+    <html>
+    <head><meta a="290" b="3" c="SPIRIDON.COM.BR">    <title>SPIRIDON.COM.BR</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+    <SCRIPT LANGUAGE="JavaScript" src="funcoes.js"></SCRIPT>
+    <script language="JavaScript" type="text/javascript">
+
+   </script> 
+   
+  
+   
+    <meta name="resource-type" content="document">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta name="revisit-after" content="15 day">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="robots" content="ALL">
+	<meta name="distribution" content="Global">
+	<meta name="rating" content="General">
+    </head>
+	<body>		
+	
+	<div style="visibility:hidden;display:none;" id="divSponAds"> 
+	
+	</div>    <div id="wrapper">
+    <!--Top Heading -->
+    <table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td colspan="2" style="padding:10px 0px 3px 10px;"><h1><a href="http://spiridon.com.br">SPIRIDON.COM.BR</a></h1></td>
+      </tr>
+
+      <tr>
+        <td valign="top" width="312"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td style="padding-left:10px;"><h5>está indisponível.</h5></td>
+          </tr>
+          <tr>
+            <td class="top-date-text" align="right" style=" padding-right:20px;"><script type="text/javascript">getDate_pt();</script></td>
+          </tr>
+
+        </table></td>
+        <td width="450" valign="bottom"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="right" style="background: url(images/top-left-cover.gif) #e9eae8 no-repeat left top;" height="40" class="top-date-text">
+             				<div style="font:11px/12px tahoma;color:#444;background:#FEFEEB;padding:3px 10px;">
+                 <center>Este site está temporariamente indisponível.<br>
+Sugerimos entrar em contato com o administrador do domínio<br>para
+informações sobre previsão do retorno deste site ao ar.<br><br>
+				 
+				 </center>
+				</div>
+           	
+            </td>
+
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+    <!--Content Box -->
+    <table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="37" height="40" valign="top" style="background:#5a93a2;"><img src="images/result-top-cover.gif"></td>
+          <td width="723" style="background:#5a93a2;">
+
+           
+          </td>
+        </tr>
+    </table>
+    <table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td valign="top" style="background:#5a93a2; padding-left:3px;"> </td>
+
+        <td width="76%" valign="top">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            
+			 <tr>
+
+				<td style="padding:3px 0px 0px 6px; background: url(images/in-page-cover.gif) no-repeat right top;" height="28" valign="top">
+				<div style="color:#aeaeae; padding:0px 15px 0px 0px; font-size: 10px; text-align:right;"></div>
+								</td>
+            </tr>
+          </table>
+		  
+          <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="text-black" style="border: none">          
+		
+
+								
+								<tr onMouseOver="bgColor='#ffffff'" onMouseOut="bgColor='#ffffff'" bgcolor="#ffffff">
+								
+								        <td valign="middle" align="center" width="50%">	
+										<font face="Arial" size="2" color="#808080">Domínio:</font>			
+	<br>
+	
+											<a href="http://spiridon.com.br"><font face="Arial" size="2" color="black"><strong>SPIRIDON.COM.BR</strong></font></a>										</td>
+
+										<td valign="top" align="left" style="padding-left:20px">
+										<font face="verdana" size="1" color="#000000">Registrado através da</font>	<br>
+			
+											<a href="http://braslink.com">
+											
+											<img src="images/logo4.gif"  alt="BRASLINK.COM" border="0"></a>										</td>
+
+										</tr>
+										
+									
+										<tr>
+										<td colspan="2" style="padding:20">
+<iframe src="indisponivel.cfm" width="100%" height="420" name="admin" id="admin" style="border: none" frameborder="0">
+	</iframe>
+
+										
+										</td></tr>
+										
+										
+										<tr><td colspan="2" align="center">
+											<a href="http://www.braslink.com"><img src="http://braslink.com/representantes/bx13.gif" alt="" border="0"></a>
+										</td></tr>
+										
+										
+		  </table>        </td>
+        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td bgcolor="#73ae8f" height="54" style="border-top: 0px solid #fff; padding: 55px 0px 10px 8px; color: #fff; font-weight:bold;">Dúvidas Frequentes</td>
+          </tr>
+          <tr>
+            <td valign="top" align="center" bgcolor="#9d9e97">
+
+			
+            <img src='images/341.jpg' id='image2' alt='image2' title='image2'  width="216px" height="94px"  />	
+			<br><br>
+			
+                    
+					
+<ul>
+             <table cellspacing="2" cellpadding="2" border="0" width="87%" align="center" bgcolor="9d9e97">
+<tr>
+    <td height="20">
+	
+	<li><a  href="registro.cfm" onclick="obj=document.getElementById('admin');"  target="admin"><font color="white">Registro de domínio</font></a></li>
+	</td>
+	</tr>
+	<tr>
+	<td height="20">
+	<li><a  href="host.cfm" onclick="obj=document.getElementById('admin');"  target="admin"><font color="white">Hospedar seu Domínio</a></li>
+	</td>
+	</tr>
+	<tr>
+	<td height="20">
+	<li><a  href="redir.cfm" onclick="obj=document.getElementById('admin');"  target="admin"><font color="white">Redirecionar Site</a></li>
+	</td>
+	</tr>
+	<tr>
+	<td height="20">
+	<li><a  href="dedicado.cfm" onclick="obj=document.getElementById('admin');"  target="admin"><font color="white">Servidor Dedicado</a></li>
+	</td>
+	</tr>
+	<tr>
+	<td height="20">
+	<li><a  href="ssl.cfm" onclick="obj=document.getElementById('admin');"  target="admin"><font color="white">Certificados SSL</a></li>
+	</td>
+	</tr>
+	<tr>
+	<td height="20">
+	<li><a  href="megaloja.cfm" onclick="obj=document.getElementById('admin');"  target="admin"><font color="white">Comércio Eletrônico</a></li>
+	</td>
+	</tr>
+	<tr>
+	<td height="20">
+	<li><a  href="emails.cfm" onclick="obj=document.getElementById('admin');"  target="admin"><font color="white">Pacotes de Email</a></li>
+	</td>
+	</tr>
+	
+	<tr>
+	<td height="20">
+	<li><a  href="http://braslink.com/contatos_dados.cfm?lang=pt"onclick="obj=document.getElementById('admin');"  target="admin"><font color="white">Fale Com a Braslink</a></li>
+	</td>
+	</tr>
+	
+</tr>
+<tr>
+	<td height="10">
+	
+	</td>
+	</tr>
+</tr>
+</table>
+</ul>
+			  
+			  
+			  
+			  
+			<div style="background:#80b392">
+			
+				<br>
+								
+				
+																						
+
+													
+				
+			  </div>
+              <div><img src="images/sidebar-cover.gif"></div>
+			  
+			  </td>
+          </tr>
+
+        </table></td>
+        <td valign="top" style="background:#5a93a2; padding-right:3px;"> </td>
+
+      </tr>
+       </td>
+       </tr>
+      <tr>
+         <td  valign="top" style="background:#5a93a2; padding-left:3px;"> </td>
+        <td colspan="2" valign="top" style="background: url(images/footer-bg.gif) repeat-x left 1px;"></td>
+        <td valign="top" style="background:#5a93a2; padding-right:3px;"> </td>
+      </tr>
+      <tr>
+        <td colspan="2" valign="top" style="background: url(images/footer-bg.gif) repeat-x left 1px;"> <img src="images/result-content-footer.gif">
+
+		</td>
+        <td colspan="2" align="right" valign="top"  style="background: url(images/footer-bg.gif) repeat-x 
+		left 1px;" ><img src="images/footer02.gif"></td>
+        </tr>
+    </table>
+    <table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+      
+      <tr>
+        <td class="footer-link" align="center">
+		 <a href="#" onClick="return addbookmark('SPIRIDON.COM.BR');">Incluir este site nos Favoritos</a> | 
+		 <a href="#" onClick="javascript: setAsHomePage(this, 'SPIRIDON.COM.BR');">Tornar este site sua Pagina Inicial</a>
+		</td>
+      </tr>
+    </table>
+
+    </div>
+ </body>
+</html>

@@ -1,0 +1,791 @@
+<!DOCTYPE HTML>
+<html>
+
+<!-- Header -->
+<head>
+	<title>IGT23K GO</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/style.css" />
+	<link rel="apple-touch-icon" sizes="57x57" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/favicon-16x16.png">
+	<link rel="manifest" href="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">	
+	<meta property="og:title" content="IGT23K">
+	<meta property="og:description" content="Inscrições abertas. Escolha sua distância: 10K, 23K ou 46K Double.">
+	<meta property="og:image" content="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/05/og-whatsapp-igt23k-2027.jpg">
+	<meta property="og:image:secure_url" content="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/10/og-whatsapp-igt23k-2027-v2.jpg">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:url" content="https://zbrevents.com.br/igt23k/">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="IGT23K">
+	<meta property="og:locale" content="pt_BR">
+	
+	<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '833966253445120');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=833966253445120&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+	
+	
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ01LMXD4X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PQ01LMXD4X');
+</script>
+	
+</head>
+<!-- Header -->
+<header id="header">
+	<a href="https://zbrevents.com.br/igt23k" class="desktop-block">
+		<img class="logo-principal" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2023/07/igt23kgo-white-top-v2-min.png">
+	</a>
+	<nav class="desktop-block">
+		<ul>
+			<!--<li><a class="bt-green-outline" href="https://zbrevents.com.br/igt23k/retirada-do-kit" style="padding: 0px 35px!important;text-align:center;">Retirada de Kit</a></li>-->
+			<!--<li><a class="bt-green-outline" href="https://zbrevents.com.br/igt23k/resultados" style="padding: 0px 50px!important;text-align:center; text-shadow:none; filter:none;">Fotos e Resultados</a></li>-->
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/igt23k/percurso" style="padding: 0px 15px!important;text-align:center;">Percurso</a></li>
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/igt23k/recordistas" style="padding: 0px 15px!important;text-align:center;">Recordistas</a></li>
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/igt23k/como-ir" style="padding: 0px 15px!important;text-align:center;">Como Ir</a></li>
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/igt23k/hospedagem" style="padding: 0px 15px!important;text-align:center;">Hospedagem</a></li>
+			<li><a class="bt-white-outline" href="https://docs.google.com/document/d/e/2PACX-1vTS0tvg3YLTAlLQWSirgPLV0ET3fTwZaoqrJA8MHyWvlgNru9FtAhxExFvDIXLqT3wQhaKUkldxWy7Z/pub" target="_blank" style="padding: 0px 15px!important;text-align:center;">Regulamento</a></li>
+			<li><a class="bt-orange-header" href="https://zbrevents.com.br/igt23k/inscricao/" style="padding: 0px 50px!important;text-align:center;">INSCREVA-SE</a></li>
+			<li><a class="bt-orange-outline" href="https://zbrevents.com.br/igt23k/central-de-ajuda/" style="padding: 0px 50px!important;text-align:center;">Central de Ajuda</a></li>
+		</ul>
+		</nav>
+		
+	<!-- Simulate a smartphone / tablet -->
+<div class="mobile-container mobile-block">
+
+<!-- Top Navigation Menu -->
+<div class="topnav">  
+  <div id="myLinks">      
+	  <a href="https://zbrevents.com.br/igt23k/percurso">Percurso</a>
+	  <a class="bt-green-header" href="https://zbrevents.com.br/igt23k/recordistas">Recordistas</a>
+      <a class="bt-yellow-header" href="https://zbrevents.com.br/igt23k/como-ir">Como Ir</a>
+	  <a href="https://zbrevents.com.br/igt23k/hospedagem">Hospedagem</a>
+	  <a href="https://zbrevents.com.br/igt23k/contato">Contato</a>
+	  <a href="https://docs.google.com/document/d/e/2PACX-1vTS0tvg3YLTAlLQWSirgPLV0ET3fTwZaoqrJA8MHyWvlgNru9FtAhxExFvDIXLqT3wQhaKUkldxWy7Z/pub" target="_blank">Regulamento</a>
+	  <!--<a class="bt-green-header" href="https://zbrevents.com.br/igt23k/resultados" style="text-align:center;border-radius: 0px;">Fotos e Resultados</a>-->
+	  <!--<a class="bt-blue-header" href="https://zbrevents.com.br/igt23k/retirada-do-kit" style="text-align:center;border-radius: 0px;">Retirada de Kit</a>-->
+	  <a class="bt-orange-header" href="https://zbrevents.com.br/igt23k/inscricao" style="text-align:center;border-radius: 0px;">Inscrições abertas</a>
+	  <a href="https://zbrevents.com.br/igt23k/menu-completo">+ Menu Completo</a>
+  </div>
+  <a href="javascript:void(0);" class="icon menu-trigger" onclick="myFunction()">
+  <i class="fa fa-bars"></i>
+  <span>MENU</span>
+</a>
+</div>
+
+<!-- End smartphone / tablet look -->
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+	
+</header>
+
+<style>
+
+.mobile-container {
+  max-width: 100%;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.15) !important;
+  height: 12vh;
+  color: white;
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top:0;
+}
+
+.topnav a:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+	
+.topnav a.menu-trigger {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 38px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.88);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.topnav a.menu-trigger i {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.topnav a.menu-trigger span {
+  line-height: 1;
+}	
+	
+.topnav {
+  background: rgba(0, 0, 0, 0.82) !important;
+  
+}	
+	
+</style>
+<body class="is-preload">
+
+	<!-- Intro -->
+	<section id="intro" class="main style1 dark fullscreen">
+		<div class="content">
+			<header></header>
+		
+		<div class="countdown-wrap">
+      <p class="countdown-text">FALTAM</p>
+
+      <div class="countdown" id="countdown">
+        <div class="time-box">
+          <span id="days">00</span>
+          <small>Dias</small>
+        </div>
+        <div class="time-box">
+          <span id="hours">00</span>
+          <small>Horas</small>
+        </div>
+        <div class="time-box">
+          <span id="minutes">00</span>
+          <small>Min</small>
+        </div>
+        <div class="time-box">
+          <span id="seconds">00</span>
+          <small>Seg</small>
+        </div>
+      </div>
+    </div>
+		
+		</div>
+	</section>
+
+		
+	
+	&nbsp;
+	<div class="dadosinscr">
+		<img class="img-started" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/03/start-red-2027-650-min.png">
+	</div>
+	
+	
+	&nbsp;
+	<div class="titulo-nova-corrida">
+		<h2>A IGT23K É UMA RELIGIÃO<br><span style="font-weight: normal">Uma vez por ano centenas de corredores se reúnem numa jornada épica de autoconhecimento e superação nas exuberantes paisagens montanhosas da IGT23K.
+</span></h2>
+	</div>
+		
+	
+	<section id="infos" class="main style2 dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/03/info-left-2027-min.png"></div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/03/info-center-index-2027-min.png"></div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2025/06/info-right-3dist-2026-v1-min.png"></div>
+		</div>
+	</section>
+
+		<!-- INCLUDE VENDAS -->
+		<div class="inscricao-progresso" style="display:block;"><!--none - ou - block-->
+		<div class="inscricao-progresso-bloco">
+			<!--<p>SOMENTE 200 VAGAS NO LOTE PROMOCIONAL / INSCRIÇÕES VENDIDAS</p>-->
+			<span class="barra-progresso-texto-grad">
+				<h4>APROVEITE LOTE PROMOCIONAL</h4><!--<h4>SUPER PROMOÇÃO 24 HORAS</h4><h4>ÚLTIMAS VAGAS</h4><h4>APROVEITE LOTE PROMOCIONAL</h4><h4>INSCREVA-SE JÁ</h4><h4>INSCRIÇÕES ABERTAS</h4><h4>EM BREVE</h4><h4>INSCRIÇÕES REABERTAS - SOMENTE 30 VAGAS</h4><h4>INSCRIÇÕES ENCERRADAS</h4><h4>ENCERRA AMANHÃ</h4><h4>INSCRIÇÕES QUASE ENCERRADAS</h4><h4>ÚLTIMAS VAGAS</h4><h4>APROVEITE LOTE COM 30% DESCONTO</h4><h4>ATÉ 05/02 (23h59) LOTE PROMOCIONAL</h4><h4>ÚLTIMOS DIAS - LOTE PROMOCIONAL</h4><h4>LOTE PROMOCIONAL</h4><h4>APROVEITE LOTE PROMOCIONAL</h4><h4>VAGAS SUPER LIMITADAS</h4><h4>APROVEITE LOTE PROMOCIONAL</h4><h4>ÚLTIMAS HORAS DE INSCRIÇÃO</h4><h4>INSCRIÇÕES ABERTAS - RESTAM POUCAS VAGAS</h4><h4>INSCRIÇÕES ENCERRADAS</h4><h4>INSCRIÇÕES QUASE ENCERRADAS</h4>-->
+			</span>
+			<div class="barra-progresso-pai">	
+			<div class="barra-progresso-valor" style="width:69%;">
+				<span class="barra-progresso-texto">69% <span style="letter-spacing: -1px;">lote vendido</span></span>
+			</div>
+			</div>
+			<span class="barra-progresso-texto-grad">
+			<h5>INSCREVA-SE JÁ</h5><!-- <h5>Aproveite condições especiais de lançamento</h5><h5>INSCREVA-SE JÁ</h5><h5>OBRIGADO A TODOS</h5><h5>INSCREVA-SE JÁ</h5><h5>SOMENTE AS PRIMEIRAS 300 VAGAS COM 40% DESCONTO</h5><h5>INSCREVA-SE JÁ</h5><h5>APROVEITE DESCONTO</h5><h5>APROVEITE VALOR SUPER PROMOCIONAL</h5><h5>PAGAMENTO VIA PIX</h5><h5>OBRIGADO À TODOS</h5><h5>ÚLTIMAS VAGAS</h5><h5>LOTE COM 30% DESCONTO</h5><h5>PARCELAMENTO EM ATÉ 3x SEM JUROS</h5><h5>DESCONTO COM 5x SEM JUROS PARA 500 INSCRIÇÕES</h5><h5>5x SEM JUROS PARA +500 INSCRIÇÕES</h5><h5>APROVEITE O DESCONTO</h5><h5>O SONHO JÁ VAI COMEÇAR</h5><h5>ÚLTIMOS DIAS</h5><h5>VAGAS SUPER LIMITADAS</h5><h5>INSCREVA-SE JÁ</h5> -->
+			</span>
+			&nbsp;
+		</div>
+		</div>	
+	
+	
+		
+		
+		
+		<section id="inscricao-main" class="main style1 dark fullscreen">		
+		<div class="pai-medidas">
+			
+			<div class="medidas-corridas">
+				<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/03/insc-kit-basico-548-2027-v1-min.png" title="" alt="Kit Basico" class="tabinscr-img">
+					<h4>PROMO <span>40%</span> DESC</h4><br>
+					<span class="taxa-tabela">+ tax MI</span>
+					<h3>KIT BÁSICO</h3>
+						<ul class="pai-tabela">
+						<li>NÚMERO DE PEITO personalizado</li>
+						<li>CHIP descartável</li>
+						<li class="list-kit">MEDALHA FINISHER</li>
+						<li class="pricerabisc">De R$ 237</li>
+						<li class="pai-bt-tabela"><a class="bt-inscricao-tabela" target="_blank" href="https://rotinas.minhasinscricoes.com.br/inscricaomobile/default.aspx?keycode=9fc02cfc-8a49-49b3-80fd-d2ea6a15a25a&chave=accb047f-35db-4460-a49e-391aa91bb5f5">INSCREVA-SE</a></li><!-- <a class="bt-inscricao-esgotado" target="" href="#">ENCERRADA</a>   <a class="bt-inscricao-esgotado" target="" href="#">EM BREVE</a> <a class="bt-inscricao-esgotado" target="" href="#">ESGOTADO</a>-->
+							<li class="desccalculo">Por R$ <span class="desccalculo-price">142</span></li>
+						<li class="formpgto">Em até 3x (sem juros)</li>
+						</ul>
+				<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2025/11/insc-kit-basico2026-bottom-248-min.png" title="" alt="Kit Basico" class="tabinscr-img-bottom">
+			</div>
+			
+			<div class="medidas-corridas">
+				<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/03/insc-kit-completo-548-2027-v1-min.png" title="" alt="Kit Completo" class="tabinscr-img">
+				<h4>PROMO <span>40%</span> DESC</h4><br>
+					<span class="taxa-tabela">+ tax MI</span>
+					<h3>KIT COMPLETO</h3>
+					<ul class="pai-tabela">						
+						<li class="list-kit">CAMISETA de poliamida</li>
+						<li class="list-kit">Sacola BAG</li>
+						<li class="list-kit">SQUEEZE</li>
+						<li class="list-kit">TATUAGEM removível</li>
+						<li>NÚMERO DE PEITO personalizado</li>
+						<li>CHIP descartável</li>
+						<li class="list-kit">MEDALHA FINISHER</li>
+						<li class="pricerabisc">De R$ 287</li>
+						<li class="pai-bt-tabela"><a class="bt-inscricao-tabela" target="_blank" href="https://rotinas.minhasinscricoes.com.br/inscricaomobile/default.aspx?keycode=9fc02cfc-8a49-49b3-80fd-d2ea6a15a25a&chave=29154bdb-e3c3-40fd-b534-0fc6a992a8d0">INSCREVA-SE</a></li><!-- <a class="bt-inscricao-esgotado" target="" href="#">ENCERRADA</a>   <a class="bt-inscricao-esgotado" target="" href="#">EM BREVE</a> <a class="bt-inscricao-esgotado" target="" href="#">ESGOTADO</a>-->
+						<li class="desccalculo">Por R$ <span class="desccalculo-price">172</span></li>
+						<li class="formpgto">Em até 3x (sem juros)</li>
+						</ul>
+				<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2025/11/insc-kit-completo2026-bottom-248-min.png" title="" alt="Kit Completo" class="tabinscr-img-bottom">
+			</div>
+			
+			<div class="medidas-corridas">
+				<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/03/insc-kit-premium-548-igt23k-2027-v1-min.png" title="" alt="Kit Premium" class="tabinscr-img">
+				<h4>PROMO <span>40%</span> DESC</h4><br>
+					<span class="taxa-tabela">+ tax MI</span>
+					<h3>KIT PREMIUM</h3>
+					<ul class="pai-tabela">						
+						<li class="list-kit">CAMISETA de poliamida</li>
+						<li class="list-kit-premium">CAMISETA FINISHER</li>
+						<li class="list-kit-premium">MEIA de corrida</li>
+						<li class="list-kit-premium">VISEIRA</li>
+						<li class="list-kit">Sacola BAG</li>
+						<li class="list-kit">SQUEEZE</li>
+						<li class="list-kit">TATUAGEM removível</li>
+						<li>NÚMERO DE PEITO personalizado</li>
+						<li>CHIP descartável</li>
+						<li class="list-kit">MEDALHA FINISHER</li>
+						<li class="pricerabisc">De R$ 487</li>
+						<li class="pai-bt-tabela"><a class="bt-inscricao-tabela" target="_blank" href="https://rotinas.minhasinscricoes.com.br/inscricaomobile/default.aspx?keycode=9fc02cfc-8a49-49b3-80fd-d2ea6a15a25a&chave=271cf6f8-60a2-4e95-90f3-2da05f663bf4">INSCREVA-SE</a></li><!-- <a class="bt-inscricao-esgotado" target="" href="#">ENCERRADA</a>   <a class="bt-inscricao-esgotado" target="" href="#">EM BREVE</a> <a class="bt-inscricao-esgotado" target="" href="#">ESGOTADO</a>-->
+						<li class="desccalculo">Por R$ <span class="desccalculo-price">292</span></li>
+						<li class="formpgto">Em até 3x (sem juros)</li>
+						</ul>
+				<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2025/11/insc-kit-premium2026-bottom-248-min.png" title="" alt="Kit Premium" class="tabinscr-img-bottom">
+			</div>
+						
+		</div>
+	</section>
+	
+	
+	
+	
+	
+	
+	<div class="dadosinscr">
+		<a target="_blank" href="https://zbrevents.com.br/igt23k/double/"><img class="img-otherevent" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2025/12/bt-double46k.jpg"></a>
+	</div>
+	
+	<div class="pai-promo">
+		<!--<img class="img-alerta-promo" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2019/09/valor-promocional-300-min.png">-->
+		<!--<p>Formas de pagamento:<br/>
+		<img class="img-pagseguro" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2023/10/cartoes-pagseguro-560.jpg"><br/>
+				<strong>3x sem juros</strong>
+		</p>-->
+	</div>
+	
+	<div class="dadosinscr">
+		<a href="https://zbrevents.com.br/igt23k/retirada-do-kit"><img class="img-3optionskit" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/03/entrega-KIT-v2-igt23k-2027.jpg"></a>
+	</div>
+	
+	<div class="dadosinscr">
+		<img class="img-3largadas" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2024/02/largadas-v1.jpg">
+	</div>
+	
+	
+	&nbsp;
+	<div class="dadosinscr">
+		<a href="https://zbrevents.com.br/igt23k/percurso"><img class="img-hidrat" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2022/11/copo-alert2-min.png"></a>
+	</div>
+	&nbsp;
+	
+		
+	<section id="infos" class="main style2 dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/03/kit-igt23k-2027-1024-part1-v3.jpg"></div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/03/kit-igt23k-2027-1024-part2-v2.jpg"></div>
+		</div>
+	</section>
+	
+	<section>
+		<div class="pai-img-motivacional">
+			<img class="img-banner-finisher" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2026/10/img-emotion-1920-960-2027-v2.jpg">
+		</div>
+		
+		&nbsp;
+	<h3 class="titulo-nova-corrida">VOCÊ SABIA?<br><span style="font-weight: normal">A IGT23K é a maior corrida de montanha do Brasil.<br>Desde 2014 mais de 30 mil corredores já viveram essa incrível experiência.</span></h3>
+	<h3 class="titulo-nova-corrida">E VOCÊ SABE POR QUÊ?<br><span style="font-weight: normal">A IGT23K é uma corrida de montanha num lugar paradisíaco, com paisagens deslumbrantes, num percurso acessível e uma infraestrutura completa para receber você com toda segurança e conforto.</span></h3>
+		&nbsp;
+	</section>
+	
+		
+
+	<div class="services-footer">
+			<div class="pai-kits-slim">
+			<div class="img-kits"><a href="https://zbrevents.com.br/igt23k/percurso"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2024/10/icon-percurso-min.png"></a></div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/igt23k/hospedagem"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2024/10/icon-hospedagem-min.png"></a></div>
+			<div class="img-kits"><a href="#"><img class="img-kits" style="max-width: 147px;"  src="https://zbrevents.com.br/igt23k/wp-content/uploads/2024/10/icon-turismo-min.png"></a></div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/igt23k/retirada-do-kit"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2024/10/icon-retirada-kit-min.png"></a></div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/igt23k/regulamento"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2024/10/icon-regulamento-min.png"></a></div>
+			</div>
+	</div>
+
+
+<section id="etapas" class="main style2 dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits-only"><iframe width="100%" height="400" src="https://www.youtube.com/embed/fDMcRKMyR0k?si=eGm3uyYZ72291Riy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				<h3>IGT23K - Running is my religion</h3>
+				<p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/fDMcRKMyR0k" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>
+		</div>
+</section>
+
+<p></p>
+
+
+
+<!-- Two 
+	<section id="two" class="main style2 left dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2023/09/c-espaco-equipes-1024-gray-min.jpg">
+				<h2>Espaço para Equipes</h2>
+			</div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2023/09/c-arena-completa-1024-gray-min.jpg">
+				<h2>Arena completa</h2>
+			</div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2023/09/c-food-trucks-1024-gray-min.jpg">
+				<h2>Food Trucks</h2>
+			</div>
+		</div>
+	</section>-->
+
+
+<!--<section id="etapas" class="main style2 dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits"><iframe width="100%" height="270" src="https://www.youtube.com/embed/a9_aJYvyTSI?si=X82aWsbrsXawJj4S" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<h3>Uma única edição por ano</h3>
+				<p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/a9_aJYvyTSI" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>
+			<div class="img-kits"><iframe width="100%" height="270" src="https://www.youtube.com/embed/605Et7GCRvs?si=1SI-nIwANd5PooKA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<h3>Você não pode ficar de fora da IGT23K</h3>
+				 <p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/605Et7GCRvs" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>
+			<div class="img-kits"><iframe width="100%" height="270" src="https://www.youtube.com/embed/HajesRB45cA?si=j9osJzYQZ2D7KT6x" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<h3>A IGT23K É UMA RELIGIÃO</h3>
+				 <p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/HajesRB45cA" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>
+			<div class="img-kits"><iframe width="100%" height="270" src="https://www.youtube.com/embed/M8Sv71COAtI?si=oFykXCET7E6Sh-TC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<h3>AS EQUIPES AMAM CORRER A IGT23K</h3>
+				 <p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/M8Sv71COAtI" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>
+		</div>
+</section>-->
+
+
+<!-- Contact -->
+<section id="contact">
+    <div class="inscricao-footer">
+        INSCREVA-SE <a href="https://zbrevents.com.br/igt23k/inscricao" class="bt-red-footer">CLIQUE AQUI</a>
+    </div>
+</section>
+
+<section id="localizacao-main" class="main style1 dark fullscreen">
+		<div class="content">
+			<p style="font-size: .8em; line-height: 90%; text-align: center; font-weight: normal;">CLIQUE NO SEU APP PREFERIDO PARA HOSPEDAGEM EM IGARATÁ</p>
+			<div class="pai-kits">
+			<div class="pai-apps-hosped"><a href="https://www.airbnb.com.br/s/Igarat%C3%A1-~-SP/homes?refinement_paths%5B%5D=%2Fhomes&flexible_trip_lengths%5B%5D=one_week&monthly_start_date=2026-02-01&monthly_length=3&monthly_end_date=2026-05-01&price_filter_input_type=2&channel=EXPLORE&query=Igarat%C3%A1%20-%20SP&place_id=ChIJs-3x25AozJQRZExFbZ9oqP8&date_picker_type=calendar&source=structured_search_input_header&search_type=user_map_move&search_mode=regular_search&price_filter_num_nights=5&ne_lat=-22.989490498717394&ne_lng=-46.17300140435509&sw_lat=-23.230369639179003&sw_lng=-46.58811482326587&zoom=11.946389861662015&zoom_level=11.946389861662015&search_by_map=true" target="_blank"><img class="img-apps-hosped" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2024/05/airbnb544-min.png"></a>
+				<p>Utilize o AIRBNB se você prefere se hospedar em casas ou chácaras.</p>
+			</div>
+			<div class="pai-apps-hosped"><a href="https://www.booking.com/searchresults.pt-br.html?ss=Igarat%c3%a1&ssne=Igarat%c3%a1&ssne_untouched=Igarat%c3%a1&efdco=1&label=pt-br-booking-desktop-9_uvqir24qvA6x6xGiDvCQS652796015463:pl:ta:p1:p2:ac:ap:neg:fi:tikwd-65526620:lp9100193:li:dec:dm&aid=2311236&lang=pt-br&sb=1&src_elem=sb&src=searchresults&dest_id=-646470&dest_type=city&group_adults=2&no_rooms=1&group_children=0" target="_blank"><img class="img-apps-hosped" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2024/05/booking544-min.png"></a>
+				<p>Utilize o BOOKING se você prefere se hospedar em hotéis ou pousadas.</p>
+			</div>
+		</div>
+		</div>
+	</section>
+
+
+<!-- outros eventos 
+	<section id="etapas" class="main style2 dark fullscreen" >
+		<div class="pai-kits">
+			<div class="img-kits"><a href="https://zbrevents.com.br/igt23k/go/double/" target="_blank"><img class="img-kits" src="https://zbrevents.com.br/igt23k/go/wp-content/uploads/2022/11/trio2-1024x512-doubleGO-2023.jpg" alt="igt23k double"></a>
+				<h2>Ir para IGT23K DOUBLE</h2>
+			</div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/5attacks/" target="_blank"><img class="img-kits" src="https://zbrevents.com.br/igt23k/go/wp-content/uploads/2022/11/trio4-1024x512-5attacks-1.jpg" alt="5attacks"></a>
+				<h2>Ir para 5ATTACKS</h2>
+			</div>
+		</div>
+	</section> -->
+
+<!-- Etapas 
+	<section id="etapas" class="main style2 dark fullscreen" style="padding-top:0;">
+		<div class="pai-kits" style="padding-top:0;">
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/ydju" target="_blank"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/wp-content/uploads/2023/06/trio2-1024-ydju-2023dez-others.jpg"></a>
+				<h2>Ir para YDJU</h2>
+			</div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/pita" target="_blank"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/wp-content/uploads/2023/06/trio2-1024-pita-2024-others.jpg"></a>
+				<h2>Ir para PITÃ</h2>
+			</div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/howy" target="_blank"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/wp-content/uploads/2023/09/trio2-1024-howy-2024-others.jpg"></a>
+				<h2>Ir para HOWY</h2>
+			</div>
+		</div>
+	</section> -->
+
+
+
+
+
+<!--<section class="main style1" >
+	<div class="pai-depoimentos content">
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2019/09/daiani.oliveir-100.jpg">
+			<b>uma das mais lindas que já fiz 💖💗</b>
+			<i>@daiani.oliveir</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2019/09/nilcea.j.costa-100.jpg">
+			<b>já vou para o terceiro ano</b>
+			<i>@nilcea.j.costa</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2019/09/andressa.ianuchauskas-100.jpg">
+			<b>essa foi minha 1 corrida, bora?</b>
+			<i>@andressa.ianuchauskas</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2019/09/marta.cizauskas-100.jpg">
+			<b>Nossaaaa, amo fazer essa prova!!</b>
+			<i>@marta.cizauskas</i>
+		</div>
+	</div>
+	<div class="pai-depoimentos content">
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2019/09/fflobo2017-100.jpg">
+			<b>Essa eu adoro, é ESPECIAL</b>
+			<i>@fflobo2017</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2019/09/gilcorredorderua-100.jpg">
+			<b>Essa prova é muito top</b>
+			<i>@gilcorredorderua</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2019/09/riccacorre-100.jpg">
+			<b>prova top… Uma das melhores que fiz</b>
+			<i>@riccacorre</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2019/09/anapagiossi-100.jpg">
+			<b>uauuu que linda essa camiseta</b>
+			<i>@anapagiossi</i>
+		</div>
+	</div>
+</section>-->
+
+
+<section class="creditos-footer">
+	<!--<div class="patrocinadores">
+		<h3 class="titulo-footer text-center">PATROCÍNIO</h3>
+		<div class="pai-img-patrocinadores">
+			<div>
+				<a href="https://kinakangen.com/" target="_blank"><img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2023/11/kangen-300-min.png"></a>
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2019/09/guaramega.png">
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2019/09/tatuagem-mania.png">
+			</div>
+		</div>
+	</div>
+	<div class="apoiadores">
+		<div class="pai-img-apoiadores">
+			<div>
+				<img src="https://zbrevents.com.br/igt23k/wp-content/uploads/2024/06/creditos-tbt21k-v2-min.png">
+			</div>	
+		</div>
+	</div>-->
+	
+	<div>
+		<div class="pai-img-zbrevents">
+			<div>
+				<img style="max-width: 100%" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2025/03/creditos-igt23k-2025-v6-min.png">
+			</div>			
+		</div>
+	</div>
+	
+	<div>
+		
+		<div class="pai-img-zbrevents">
+			<div>
+				<img style="max-width: 100%" src="https://zbrevents.com.br/wp-content/uploads/2024/06/provas-zbrevents-2024-v3-white-500-min.png" alt="zbrevents">
+			</div>			
+		</div>
+	</div>
+</section>
+
+
+<!-- Footer -->
+<footer id="footer">
+
+<!-- Icons -->
+<ul class="icons">    
+    <li><a href="https://www.facebook.com/zbrevents/" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+    <li><a href="https://www.instagram.com/zbreventsbrasil/" class="icon fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>  
+	<li><a href="https://www.youtube.com/@zbrevents" class="icon fa-youtube" target="_blank"><span class="label">Youtube</span></a></li>  	
+</ul>
+
+<!-- Menu -->
+<ul class="menu">
+    <li>&copy; 2014-2026</li>
+    <li>IGT23K é uma marca registrada da ZBR Events</li>
+</ul>
+
+</footer>
+
+
+
+<!-- code icon whatsapp 
+<link rel="stylesheet" href="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/style-icon-whats.css">
+<a href="https://wa.me/5511995484720?text=Oi ZBR Events preciso de informações sobre (... escreva aqui a sua mensagem)" style="position:fixed;width:60px;height:60px;bottom:20px;right:20px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+  z-index:1000;" target="_blank">
+<i style="margin-top:16px" class="fa fa-whatsapp"></i>
+</a>-->
+
+<!-- mensagem COOKIES -->
+<style>.cookieConsentContainer{z-index:999;width:350px;min-height:20px;box-sizing:border-box;padding:30px 30px 30px 30px;background:#232323;overflow:hidden;position:fixed;bottom:30px;left:30px;display:none}.cookieConsentContainer .cookieTitle a{font-family:OpenSans,arial,sans-serif;color:#fff;font-size:22px;line-height:20px;display:block}.cookieConsentContainer .cookieDesc p{margin:0;padding:0;font-family:OpenSans,arial,sans-serif;color:#fff;font-size:13px;line-height:20px;display:block;margin-top:10px}.cookieConsentContainer .cookieDesc a{font-family:OpenSans,arial,sans-serif;color:#fff;text-decoration:underline}.cookieConsentContainer .cookieButton a{display:inline-block;font-family:OpenSans,arial,sans-serif;color:#fff;font-size:14px;font-weight:700;margin-top:14px;background:#000;box-sizing:border-box;padding:15px 24px;text-align:center;transition:background .3s}.cookieConsentContainer .cookieButton a:hover{cursor:pointer;background:#3e9b67}@media (max-width:980px){.cookieConsentContainer{bottom:0!important;left:0!important;width:100%!important}}</style>
+
+<script>var purecookieTitle="Cookies.",purecookieDesc="Utilizamos cookies para oferecer melhor experiência, melhorar o desempenho, analisar como você interage em nosso site e personalizar conteúdo. Ao utilizar este site, você concorda com o uso de cookies.",purecookieLink='',purecookieButton="Aceito";function pureFadeIn(e,o){var i=document.getElementById(e);i.style.opacity=0,i.style.display=o||"block",function e(){var o=parseFloat(i.style.opacity);(o+=.02)>1||(i.style.opacity=o,requestAnimationFrame(e))}()}function pureFadeOut(e){var o=document.getElementById(e);o.style.opacity=1,function e(){(o.style.opacity-=.02)<0?o.style.display="none":requestAnimationFrame(e)}()}function setCookie(e,o,i){var t="";if(i){var n=new Date;n.setTime(n.getTime()+24*i*60*60*1e3),t="; expires="+n.toUTCString()}document.cookie=e+"="+(o||"")+t+"; path=/"}function getCookie(e){for(var o=e+"=",i=document.cookie.split(";"),t=0;t<i.length;t++){for(var n=i[t];" "==n.charAt(0);)n=n.substring(1,n.length);if(0==n.indexOf(o))return n.substring(o.length,n.length)}return null}function eraseCookie(e){document.cookie=e+"=; Max-Age=-99999999;"}function cookieConsent(){getCookie("purecookieDismiss")||(document.body.innerHTML+='<div class="cookieConsentContainer" id="cookieConsentContainer"><div class="cookieTitle"><a>'+purecookieTitle+'</a></div><div class="cookieDesc"><p>'+purecookieDesc+" "+purecookieLink+'</p></div><div class="cookieButton"><a onClick="purecookieDismiss();">'+purecookieButton+"</a></div></div>",pureFadeIn("cookieConsentContainer"))}function purecookieDismiss(){setCookie("purecookieDismiss","1",365),pureFadeOut("cookieConsentContainer")}window.onload=function(){cookieConsent()};</script>
+
+
+
+
+<!-- modal da retirada de kit basta apenas trocar pra display block para que ele exiba em todas as paginas menos na 
+da retirada de kit -->
+<div class="flex align-center align-vert modal modal--align modal--show" style="display:none;" ><!--none - ou - block-->
+    <div class="modal__container">
+      <a class="modal__close modal__close--x" aria-hidden="true">&#x2715;</a>
+      <!--<p>Acesse os RESULTADOS 2019.</p> Acesse as informações para RETIRADA DO KIT.-->
+      <!--<a style="padding: 10px 60px!important;text-align:center;border-radius: 10px;background: #D96D00;text-decoration: none;color: #fff;" href="/resultados-2019" class="modal__close">Clique aqui</a>-->
+		 <a href="https://zbrevents.com.br/igt23k/resultados/" target="" ><img style="width:100%;" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2024/03/fotop-venda-01-600.jpg"></a>
+		<!--<a href="https://fotop.com.br/fotos/eventos?evento=26210" target="_blank" ><img style="width:100%;" src="https://zbrevents.com.br/igt23k/wp-content/uploads/2021/11/Fotos-No-Ar-Feed-clique-700.jpg"></a>-->
+		<!--<iframe width="90%" height="450" src="https://www.youtube.com/embed/Kou_mV9y5vs?si=CczoTCmeXnNDP7wC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+    </div>
+  </div>
+  <!-- / modal -->
+
+
+<style>
+	  
+	    /* demo only */
+.flex { display: flex; }
+.align-center { justify-content: center; }
+.align-vert,.align-vert.align-center { align-items: center; }
+/* end demo */
+
+.modal { display: none; }
+.modal--show,
+.modal--hide { display: flex; } /* classes fired by js for animation control */
+
+/* This is on the wrapper for the whole modal */
+.modal--align {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.modal__container {
+	position: relative;
+    width: 100%;
+    max-width: 600px;
+    max-height: 800px;
+    padding: 20px;
+    margin: 0 auto;
+	top:20%;
+	background: #fff; 
+	text-align: center;   
+}
+
+/* The .modal__close class is used in js but is modified '--x' here */
+.modal__close--x {
+  font-size: 30px; /* this is only because we use unicode for the X in this case */
+  position: absolute;
+  top: 3px;
+  right: 10px;
+}
+
+/* As there is no href to avoid the hash being added to the URL when clicked we add a pointer */
+/* This 'x' is hidden from screen readers as there is an accessible close button in the modal */
+.modal__close--x:hover {
+  cursor: pointer;
+}
+
+/* Animations */
+/* Open */
+.modal.modal--show {
+  animation: modal-open 0.3s;
+}
+
+@keyframes modal-open {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+
+/* Close */
+.modal.modal--hide {
+  animation: modal-close 0.3s;
+}
+
+@keyframes modal-close {
+  0%    { opacity: 1; }
+  100%  { opacity: 0; }
+}
+
+	  
+</style>
+
+<!-- Scripts -->
+<script src="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/assets/js/jquery.min.js"></script>
+<script src="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/assets/js/jquery.poptrox.min.js"></script>
+<script src="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/assets/js/jquery.scrolly.min.js"></script>
+<script src="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/assets/js/jquery.scrollex.min.js"></script>
+<script src="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/assets/js/browser.min.js"></script>
+<script src="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/assets/js/breakpoints.min.js"></script>
+<script src="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/assets/js/util.js"></script>
+<script src="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/assets/js/main.js"></script>
+<script src="https://zbrevents.com.br/igt23k/wp-content/themes/EVENTS-theme/bower_components/tether/dist/js/tether.min.js"></script>
+
+<!-- script central de ajuda -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.getElementById('header');
+  const toggle = document.querySelector('.menu-toggle');
+
+  if (toggle && header) {
+    toggle.addEventListener('click', function () {
+      const isOpen = header.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      header.classList.toggle('sticky-menu', isOpen);
+    });
+  }
+});
+</script>
+
+<!-- script coutdown -->
+<script>
+  const launchDate = new Date("2027-03-21T06:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    if (distance <= 0) {
+      document.getElementById("countdown").innerHTML = "<p class='released'>Já estamos no ar.</p>";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+	
+
+</body>
+
+</html>

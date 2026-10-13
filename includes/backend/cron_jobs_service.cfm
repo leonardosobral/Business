@@ -36,6 +36,11 @@
 </cffunction>
 
 <cfscript>
+// Cron timestamps are stored as UTC without a timezone; convert only at the UI boundary.
+function cronJobsLocalTimestamp(required date utcTimestamp) {
+    return dateConvert("utc2local", arguments.utcTimestamp);
+}
+
 function cronJobsTablesReady() {
     var qCronTables = "";
     var qCronColumns = "";
@@ -381,15 +386,15 @@ function cronJobsReconcileStaleRuns() {
 
     staleRuns = queryExecute(
         "UPDATE tb_cron_job_runs run
-         SET finished_at = now(),
-             duration_ms = LEAST(2147483647, GREATEST(0, (extract(epoch FROM (now() - run.started_at)) * 1000)::bigint))::integer,
+         SET finished_at = (now() AT TIME ZONE 'UTC'),
+             duration_ms = LEAST(2147483647, GREATEST(0, (extract(epoch FROM ((now() AT TIME ZONE 'UTC') - run.started_at)) * 1000)::bigint))::integer,
              status = 'timeout',
              error_message = coalesce(run.error_message, 'Execucao encerrada por exceder o tempo maximo configurado.')
          FROM tb_cron_jobs job
          WHERE job.id_cron_job = run.id_cron_job
            AND run.status = 'running'
            AND run.finished_at IS NULL
-           AND run.started_at < now() - (interval '1 second' * GREATEST(30, job.max_runtime_seconds))
+           AND run.started_at < (now() AT TIME ZONE 'UTC') - (interval '1 second' * GREATEST(30, job.max_runtime_seconds))
          RETURNING run.id_cron_job_run",
         {},
         { datasource = "runner_dba" }
@@ -594,7 +599,7 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
             cfqueryparam(cfsqltype = "cf_sql_bigint", value = arguments.jobId);
             writeOutput(", ");
             cfqueryparam(cfsqltype = "cf_sql_varchar", value = arguments.triggerType);
-            writeOutput(", now(), 'running', ");
+            writeOutput(", (now() AT TIME ZONE 'UTC'), 'running', ");
             cfqueryparam(cfsqltype = "cf_sql_longvarchar", value = endpointUrl);
             writeOutput(", ");
             cfqueryparam(cfsqltype = "cf_sql_longvarchar", value = cronJobsResponsePreview(requestBody), null = !len(trim(requestBody)));
@@ -706,7 +711,7 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
             cfquery(name = "qCronRunUpdate") {
                 writeOutput("
                     UPDATE tb_cron_job_runs
-                    SET finished_at = now(),
+                    SET finished_at = (now() AT TIME ZONE 'UTC'),
                         attempt = ");
                 cfqueryparam(cfsqltype = "cf_sql_integer", value = result.attempt);
                 writeOutput(",
@@ -734,8 +739,8 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
             cfquery(name = "qCronJobUpdate") {
                 writeOutput("
                     UPDATE tb_cron_jobs
-                    SET last_run_at = now(),
-                        next_run_at = now() + (interval '1 minute' * interval_minutes),
+                    SET last_run_at = (now() AT TIME ZONE 'UTC'),
+                        next_run_at = (now() AT TIME ZONE 'UTC') + (interval '1 minute' * interval_minutes),
                         last_status = ");
                 cfqueryparam(cfsqltype = "cf_sql_varchar", value = runStatus);
                 writeOutput(",
@@ -748,7 +753,7 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
                         last_error = ");
                 cfqueryparam(cfsqltype = "cf_sql_longvarchar", value = len(errorMessage) ? errorMessage : responsePreview, null = !(len(errorMessage) OR len(responsePreview)));
                 writeOutput(",
-                        data_atualizacao = now()
+                        data_atualizacao = (now() AT TIME ZONE 'UTC')
                     WHERE id_cron_job = ");
                 cfqueryparam(cfsqltype = "cf_sql_bigint", value = arguments.jobId);
             }

@@ -1,0 +1,110 @@
+[
+  {
+    "source": "https://abraceo.com.br/filiado/amigos-do-horto-eventos/",
+    "file": "amigos-do-horto-eventos-abraceo.html",
+    "sha256": "dd7f73d4dc686e0504923ff130553585154b998553a03825a38f3010784254cb",
+    "emails": [
+      "amigosdohorto@hotmail.com",
+      "contato.abraceo@gmail.com"
+    ]
+  },
+  {
+    "source": "https://abraceo.com.br/filiado/cronustec/",
+    "file": "cronustec-abraceo.html",
+    "sha256": "cb0b9577869715d4e910cbea7dacbda9af375b248a009e5abbc5d8a01f7c6693",
+    "emails": [
+      "contato.abraceo@gmail.com",
+      "cronustectecnologia@gmail.com"
+    ]
+  },
+  {
+    "source": "https://abraceo.com.br/filiado/mmb-eventos-esportivos/",
+    "file": "mmb-eventos-esportivos-abraceo.html",
+    "sha256": "85dfdda5901f105df638f3c7fff551aa08967d4bf69a5e9c9cb0e6fc96730c73",
+    "emails": [
+      "contato.abraceo@gmail.com",
+      "elias.sousa@gmail.com"
+    ]
+  },
+  {
+    "source": "https://abraceo.com.br/filiado/mp3-solucoes/",
+    "file": "mp3-solucoes-abraceo.html",
+    "sha256": "091ce385eca3f97385e6a65eb36dd170dba369631b76944af31fd994a12e804c",
+    "emails": [
+      "contato.abraceo@gmail.com",
+      "douglas@mp3promocoes.com.br"
+    ]
+  },
+  {
+    "source": "https://abraceo.com.br/filiado/nk-sports/",
+    "file": "nk-sports-abraceo.html",
+    "sha256": "71416454082537bfe0e0bf6f9d38ad927a80f52099bca39a7d9b6ec4e6d8b286",
+    "emails": [
+      "contato.abraceo@gmail.com",
+      "renekennerly@gmail.com"
+    ]
+  },
+  {
+    "source": "https://abraceo.com.br/filiado/premium/",
+    "file": "premium-abraceo.html",
+    "sha256": "a817303bc5eea46363c6e4c6803fcd89499f94c665b2045a6947f5c5193b20c6",
+    "emails": [
+      "bruno@premium.srv.br",
+      "contato.abraceo@gmail.com",
+      "prancheta-1@2x-1024x724.png",
+      "prancheta-1@2x.png",
+      "roberta@premium.srv.br"
+    ]
+  },
+  {
+    "source": "https://abraceo.com.br/filiado/soulmais/",
+    "file": "soulmais-abraceo.html",
+    "sha256": "ad283d9b57262def715b6a97c61073addc5846dc16c71d53cc811c08800c3dff",
+    "emails": [
+      "contato.abraceo@gmail.com",
+      "fabio@soulmaisesportes.com.br"
+    ]
+  },
+  {
+    "source": "https://abraceo.com.br/filiado/tm4-sports-business/",
+    "file": "tm4-sports-business-abraceo.html",
+    "sha256": "b47e98bb56f22ad49773d8a90c6c3abf51fda23d389adac547efc3107d05ab3e",
+    "emails": [
+      "contato.abraceo@gmail.com",
+      "thiago@tm4.business"
+    ]
+  },
+  {
+    "source": "https://www.ticketsports.com.br/e/corrida-kids-trimais-places-6-edicao-88357",
+    "file": "horto-ticket.html",
+    "sha256": "5d0fc308b73d446cc09ab04e15db2c51c5ec8ae1ee457d685b03b21c9b9116f8",
+    "emails": [
+      "amigosdohorto@outlook.com",
+      "dpo@ticketsports.com.br"
+    ]
+  },
+  {
+    "source": "https://meiamaratonadosreismagos.com.br/regulamento/",
+    "file": "premium-future.html",
+    "sha256": "5097dc12846f2350fb36e2e88b80ebb7f0f341804fc52b1dfe3a57001e476b08",
+    "emails": [
+      "atendimento@premium.srv.br"
+    ]
+  },
+  {
+    "source": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88118/bcbeec1049b84b6da8588720d963c4e3639263470646879556.pdf",
+    "file": "assai-48766.pdf",
+    "sha256": "90967b0b1f134e69d0fddad17cf39931d60975891448e2bd140991f1ed5874cf",
+    "emails": [
+      "producao@soulmaisesportes.com.br"
+    ]
+  },
+  {
+    "source": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88119/04eaf22feeda40e292e43b1ac881ea89639263469096967453.pdf",
+    "file": "assai-48783.pdf",
+    "sha256": "fee07fd4bf6bc53cfb914970c8e3917ac001f0aea259dc5db026012ffcc276da",
+    "emails": [
+      "producao@soulmaisesportes.com.br"
+    ]
+  }
+]

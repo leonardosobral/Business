@@ -1,0 +1,764 @@
+<!DOCTYPE HTML>
+<html>
+
+<!-- Header -->
+<head>
+	<title>GUARANI RACE - ETAPA PITÃ</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/style.css" />
+	<link rel="apple-touch-icon" sizes="57x57" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/favicon-16x16.png">
+	<link rel="manifest" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">	
+	<meta property="og:title" content="Guarani Race PITÃ">
+	<meta property="og:description" content="Uma corrida nas trilhas centenárias dos indígenas guarani.">
+	<meta property="og:image" content="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2026/05/og-whatsapp-pita-2026.jpg">
+	<meta property="og:image:secure_url" content="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2026/05/og-whatsapp-pita-2026.jpg">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:url" content="https://zbrevents.com.br/guaranirace/pita/">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Guarani Race PITÃ">
+	<meta property="og:locale" content="pt_BR">
+	
+	
+	<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '833966253445120');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=833966253445120&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ01LMXD4X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PQ01LMXD4X');
+</script>
+	
+	
+</head>
+<!-- Header -->
+<header id="header">
+	<a href="https://zbrevents.com.br/guaranirace/pita" class="desktop-block">
+		<img class="logo-principal" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/logo-pita-500-effect-min.png">
+	</a>
+	<nav class="desktop-block">
+		<ul>
+			<!--<li><a class="bt-green-header" href="https://zbrevents.com.br/guaranirace/pita/retirada-do-kit" style="padding: 0px 50px!important;text-align:center; text-shadow:none; filter:none;">Retirada do Kit</a></li>-->
+			<!--<li><a class="bt-green-header" href="https://zbrevents.com.br/guaranirace/pita/resultados" style="padding: 0px 50px!important;text-align:center; text-shadow:none; filter:none;">Fotos e Resultados</a></li>-->
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/guaranirace/pita/percurso" style="padding: 0px 15px!important;text-align:center;">Percurso</a></li>
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/guaranirace/pita/regulamento" style="padding: 0px 15px!important;text-align:center;">Regulamento</a></li>
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/guaranirace/pita/localizacao" style="padding: 0px 15px!important;text-align:center;">Localização</a></li>
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/guaranirace/pita/hospedagem" style="padding: 0px 15px!important;text-align:center;">Hospedagem</a></li>
+			<!--<li><a class="bt-white-outline" href="https://zbrevents.com.br/guaranirace/pita/contato" style="padding: 0px 15px!important;text-align:center;">Contato</a></li>-->
+			<li><a class="bt-orange-header" href="https://zbrevents.com.br/guaranirace/pita/inscricao" style="padding: 0px 50px!important;text-align:center; text-shadow:none; filter:none;">Inscrições abertas</a></li>
+			<li><a class="bt-orange-outline" href="https://zbrevents.com.br/guaranirace/pita/central-de-ajuda/" style="padding: 0px 50px!important;text-align:center;">Central de Ajuda</a></li>
+		</ul>
+	</nav>
+	<!-- Simulate a smartphone / tablet -->
+<div class="mobile-container mobile-block">
+
+<!-- Top Navigation Menu -->
+<div class="topnav">
+  
+  <div id="myLinks">
+    <a href="https://zbrevents.com.br/guaranirace/pita/percurso">Percurso</a>
+    <a href="https://zbrevents.com.br/guaranirace/pita/regulamento">Regulamento</a>
+    <a href="https://zbrevents.com.br/guaranirace/pita/localizacao">Localização</a>
+	<a href="https://zbrevents.com.br/guaranirace/pita/hospedagem">Hospedagem</a>
+	<a href="https://zbrevents.com.br/guaranirace/pita/contato">Contato</a>
+	<!--<a class="bt-green-header" href="https://zbrevents.com.br/guaranirace/pita/resultados" style="text-align:center;border-radius: 0px;">Fotos e Resultados</a>-->
+	<!--<a class="bt-green-header" href="https://zbrevents.com.br/guaranirace/pita/retirada-do-kit" style="text-align:center;border-radius: 0px;">Retirada do Kit</a>-->
+	<a class="bt-orange-header" href="https://zbrevents.com.br/guaranirace/pita/inscricao" style="text-align:center;border-radius: 0px;">Inscrições abertas</a>
+	<a href="https://zbrevents.com.br/guaranirace/pita/central-de-ajuda/">Central de Ajuda</a>
+  </div>
+  <a href="javascript:void(0);" class="icon menu-trigger" onclick="myFunction()">
+  <i class="fa fa-bars"></i>
+  <span>MENU</span>
+</a>
+</div>
+
+<!-- End smartphone / tablet look -->
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+	
+</header>
+
+<style>
+
+.mobile-container {
+  max-width: 100%;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.15) !important;
+  height: 12vh;
+  color: white;
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+	
+.topnav a.menu-trigger {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 38px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.88);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.topnav a.menu-trigger i {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.topnav a.menu-trigger span {
+  line-height: 1;
+}	
+	
+.topnav {
+  background: rgba(0, 0, 0, 0.82) !important;
+  
+}	
+	
+</style>
+<body class="is-preload">
+
+	<!-- Intro -->
+	<section id="intro" class="main style1 dark fullscreen">
+		<div class="content">
+			<header></header>
+		
+		<div class="countdown-wrap">
+      <p class="countdown-text">FALTAM</p>
+
+      <div class="countdown" id="countdown">
+        <div class="time-box">
+          <span id="days">00</span>
+          <small>Dias</small>
+        </div>
+        <div class="time-box">
+          <span id="hours">00</span>
+          <small>Horas</small>
+        </div>
+        <div class="time-box">
+          <span id="minutes">00</span>
+          <small>Min</small>
+        </div>
+        <div class="time-box">
+          <span id="seconds">00</span>
+          <small>Seg</small>
+        </div>
+      </div>
+    </div>
+		
+		</div>
+	</section>
+	
+	
+
+			&nbsp;
+	<div class="titulo-nova-corrida">
+		<h2>Muito além de uma simples corrida.<br>A GUARANI RACE É UMA EXPERIÊNCIA ÚNICA!<br><span style="font-weight: normal">Uma viagem no tempo nas trilhas centenárias dos indígenas guarani.</span></h2>
+	</div>
+	
+	
+	<section id="infos" class="main style2 dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/11/info-left-pita2026-24out-min.png"></div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/11/info-center-pita2026-min.png"></div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2023/09/info-right-pita2024-min.png"></div>
+		</div>
+</section>
+	&nbsp;
+	
+		<!-- INCLUDE VENDAS -->
+		<div class="inscricao-progresso" style="display:block;"><!--none - ou - block-->
+		<div class="inscricao-progresso-bloco">
+			<!--<p>SOMENTE 200 VAGAS NO LOTE PROMOCIONAL / INSCRIÇÕES VENDIDAS</p>-->
+			<span class="barra-progresso-texto-grad">
+				<h4>ÚLTIMAS VAGAS</h4><!--<h4>SUPER PROMOÇÃO 24 HORAS</h4><h4>ÚLTIMAS VAGAS</h4><h4>APROVEITE LOTE PROMOCIONAL</h4><h4>INSCREVA-SE JÁ</h4><h4>INSCRIÇÕES ABERTAS</h4><h4>EM BREVE</h4><h4>INSCRIÇÕES REABERTAS - SOMENTE 30 VAGAS</h4><h4>INSCRIÇÕES ENCERRADAS</h4><h4>ENCERRA AMANHÃ</h4><h4>INSCRIÇÕES QUASE ENCERRADAS</h4><h4>ÚLTIMAS VAGAS</h4><h4>APROVEITE LOTE COM 30% DESCONTO</h4><h4>ATÉ 05/02 (23h59) LOTE PROMOCIONAL</h4><h4>ÚLTIMOS DIAS - LOTE PROMOCIONAL</h4><h4>LOTE PROMOCIONAL</h4><h4>APROVEITE LOTE PROMOCIONAL</h4><h4>VAGAS SUPER LIMITADAS</h4><h4>APROVEITE LOTE PROMOCIONAL</h4><h4>ÚLTIMAS HORAS DE INSCRIÇÃO</h4><h4>INSCRIÇÕES ABERTAS - RESTAM POUCAS VAGAS</h4><h4>INSCRIÇÕES ENCERRADAS</h4><h4>INSCRIÇÕES QUASE ENCERRADAS</h4>-->
+			</span>
+			<div class="barra-progresso-pai">	
+			<div class="barra-progresso-valor" style="width:99%;">
+				<span class="barra-progresso-texto">99% <span style="letter-spacing: -1px;">lote vendido</span></span>
+			</div>
+			</div>
+			<span class="barra-progresso-texto-grad">
+			<h5>INSCREVA-SE JÁ</h5><!-- <h5>Aproveite condições especiais de lançamento</h5><h5>INSCREVA-SE JÁ</h5><h5>OBRIGADO A TODOS</h5><h5>INSCREVA-SE JÁ</h5><h5>SOMENTE AS PRIMEIRAS 300 VAGAS COM 40% DESCONTO</h5><h5>INSCREVA-SE JÁ</h5><h5>APROVEITE DESCONTO</h5><h5>APROVEITE VALOR SUPER PROMOCIONAL</h5><h5>PAGAMENTO VIA PIX</h5><h5>OBRIGADO À TODOS</h5><h5>ÚLTIMAS VAGAS</h5><h5>LOTE COM 30% DESCONTO</h5><h5>PARCELAMENTO EM ATÉ 3x SEM JUROS</h5><h5>DESCONTO COM 5x SEM JUROS PARA 500 INSCRIÇÕES</h5><h5>5x SEM JUROS PARA +500 INSCRIÇÕES</h5><h5>APROVEITE O DESCONTO</h5><h5>O SONHO JÁ VAI COMEÇAR</h5><h5>ÚLTIMOS DIAS</h5><h5>VAGAS SUPER LIMITADAS</h5><h5>INSCREVA-SE JÁ</h5> -->
+			</span>
+			&nbsp;
+		</div>
+		</div>			
+	
+	<section id="inscricao-main" class="main style1 dark fullscreen">		
+		<div class="pai-medidas">
+			<div class="medidas-corridas">
+				<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/05/modal-kids-min2.png" title="" alt="corrida kids">
+				<div>
+					<h4><span>35%</span> DESC</h4><br>
+					<span class="taxa-tabela">+ tax MI</span>
+					<ul class="pai-tabela">						
+						<li class="list-kit">CAMISETA de poliamida</li>
+						<li class="list-kit">Sacola BAG</li>
+						<li class="list-kit">SQUEEZE</li>
+						<li class="list-kit">Vale PINTURA FACIAL</li>
+						<li class="list-kit">TATUAGEM removível</li>
+						<li>NÚMERO DE PEITO personalizado</li>
+						<li>CHIP descartável</li>
+						<li class="list-kit">MEDALHA FINISHER</li>
+						<li style="color: #008000; font-weight: 500;">IDADE MÍNIMA: 4 anos</li>
+						<li class="pricerabisc">De R$ 118</li>
+						<li class="pai-bt-tabela"><a class="bt-inscricao-tabela" target="_blank" href="https://rotinas.minhasinscricoes.com.br/inscricaomobile/default.aspx?keycode=bd65dc00-8d0c-4943-b4d5-813799471dc7&chave=c534be65-3654-46a6-b680-e11ee5ae4d11">INSCREVA-SE</a></li><!--  <a class="bt-inscricao-tabela" target="" href="#">EM BREVE</a> <a class="bt-inscricao-tabela" target="" href="#">ENCERRADA</a> --> 
+						<li class="desccalculo">Por R$ <span class="desccalculo-price">128</span></li>
+						<li class="formpgto">Em até 3x (sem juros)</li>
+						<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/11/icon-price-pita-min.png" style="margin-top: 10px;">
+					</ul>
+				</div>
+			</div>
+			<div class="medidas-corridas">
+				<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/05/modal-caminhada6k-min2.png" title="" alt="caminhada 6k">
+				<div>
+					<h4><span>35%</span> DESC</h4><br>
+					<span class="taxa-tabela">+ tax MI</span>
+					<ul class="pai-tabela">						
+						<li class="list-kit">CAMISETA de poliamida</li>
+						<li class="list-kit">Sacola BAG</li>
+						<li class="list-kit">SQUEEZE</li>
+						<li class="list-kit">Vale PINTURA FACIAL</li>
+						<li class="list-kit">TATUAGEM removível</li>
+						<li>NÚMERO DE PEITO personalizado</li>
+						<li>CHIP descartável</li>
+						<li class="list-kit">MEDALHA FINISHER</li>
+						<li style="color: #008000; font-weight: 500;">IDADE MÍNIMA: 12 anos</li>
+						<li class="pricerabisc">De R$ 297</li>
+						<li class="pai-bt-tabela"><a class="bt-inscricao-tabela" target="_blank" href="https://rotinas.minhasinscricoes.com.br/inscricaomobile/default.aspx?keycode=bd65dc00-8d0c-4943-b4d5-813799471dc7&chave=c534be65-3654-46a6-b680-e11ee5ae4d11">INSCREVA-SE</a></li><!--  <a class="bt-inscricao-tabela" target="" href="#">EM BREVE</a> <a class="bt-inscricao-tabela" target="" href="#">ENCERRADA</a> -->
+						<li class="desccalculo">Por R$ <span class="desccalculo-price">193</span></li>
+						<li class="formpgto">Em até 3x (sem juros)</li>
+						<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/11/icon-price-pita-min.png" style="margin-top: 10px;">
+					</ul>					
+				</div>
+			</div>
+			<div class="medidas-corridas">
+				<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/05/modal-corrida6k-min2.png" title="" alt="corrida 6k">
+				<div>
+					<h4><span>35%</span> DESC</h4><br>
+					<span class="taxa-tabela">+ tax MI</span>				
+					<ul class="pai-tabela">						
+						<li class="list-kit">CAMISETA de poliamida</li>
+						<li class="list-kit">Sacola BAG</li>
+						<li class="list-kit">SQUEEZE</li>
+						<li class="list-kit">Vale PINTURA FACIAL</li>
+						<li class="list-kit">TATUAGEM removível</li>
+						<li>NÚMERO DE PEITO personalizado</li>
+						<li>CHIP descartável</li>
+						<li class="list-kit">MEDALHA FINISHER</li>
+						<li style="color: #008000; font-weight: 500;">IDADE MÍNIMA: 16 anos</li>
+						<li class="pricerabisc">De R$ 297</li>
+						<li class="pai-bt-tabela"><a class="bt-inscricao-tabela" target="_blank" href="https://rotinas.minhasinscricoes.com.br/inscricaomobile/default.aspx?keycode=bd65dc00-8d0c-4943-b4d5-813799471dc7&chave=c534be65-3654-46a6-b680-e11ee5ae4d11">INSCREVA-SE</a></li><!--  <a class="bt-inscricao-tabela" target="" href="#">EM BREVE</a> <a class="bt-inscricao-tabela" target="" href="#">ENCERRADA</a> -->
+						<li class="desccalculo">Por R$ <span class="desccalculo-price">193</span></li>
+						<li class="formpgto">Em até 3x (sem juros)</li>
+						<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/11/icon-price-pita-min.png" style="margin-top: 10px;">
+					</ul>
+				</div>
+			</div>
+			<div class="medidas-corridas">
+				<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/05/modal-corrida12k-min2.png" title="" alt="corrida 12k">
+				<div>
+					<h4><span>35%</span> DESC</h4><br>
+					<span class="taxa-tabela">+ tax MI</span>			
+					<ul class="pai-tabela">						
+						<li class="list-kit">CAMISETA de poliamida</li>
+						<li class="list-kit">Sacola BAG</li>
+						<li class="list-kit">SQUEEZE</li>
+						<li class="list-kit">Vale PINTURA FACIAL</li>
+						<li class="list-kit">TATUAGEM removível</li>
+						<li>NÚMERO DE PEITO personalizado</li>
+						<li>CHIP descartável</li>
+						<li class="list-kit">MEDALHA FINISHER</li>
+						<li style="color: #008000; font-weight: 500;">IDADE MÍNIMA: 18 anos</li>
+						<li class="pricerabisc">De R$ 297</li>
+						<li class="pai-bt-tabela"><a class="bt-inscricao-tabela" target="_blank" href="https://rotinas.minhasinscricoes.com.br/inscricaomobile/default.aspx?keycode=bd65dc00-8d0c-4943-b4d5-813799471dc7&chave=c534be65-3654-46a6-b680-e11ee5ae4d11">INSCREVA-SE</a></li><!--  <a class="bt-inscricao-tabela" target="" href="#">EM BREVE</a> <a class="bt-inscricao-tabela" target="" href="#">ENCERRADA</a> -->
+						<li class="desccalculo">Por R$ <span class="desccalculo-price">193</span></li>
+						<li class="formpgto">Em até 3x (sem juros)</li>
+						<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/11/icon-price-pita-min.png" style="margin-top: 10px;">
+					</ul>	
+				</div>
+			</div>
+		</div>
+	</section>
+	
+		
+	<div class="pai-promo">
+		<p>Formas de pagamento:<br/>
+		<img class="img-pagseguro" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/05/formas-pgto-690.jpg">		
+		</p>
+	</div>
+	
+		<div class="dadosinscr">
+			<a href="https://zbrevents.com.br/guaranirace/pita/retirada-do-kit/"><img class="img-3optionskit" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/12/entrega-KIT-pita2026.jpg"></a>
+		</div>	
+	
+		<div class="dadosinscr">
+		<img class="img-3largadas" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/12/largadas-v2.jpg">
+		</div>
+	
+		<div class="pai-bt-inscricao-pag">
+			<div class="content">
+			<img class="img-kit-inscricao" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/10/blog-06.jpg">
+			</div>
+		</div>
+		
+		<section id="infos" class="main style2 dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/01/kit-PITA2025-part1.jpg"></div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2026/10/kit-PITA2026-part2.jpg"></div>
+		</div>
+		</section>
+	
+	<section>
+		<div class="pai-img-motivacional">
+			<img class="img-banner-finisher" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/11/img-emotion-pita-2026.jpg">
+		</div>		
+	&nbsp;
+	<h3 class="titulo-nova-corrida">VOCÊ SABIA?<br><span style="font-weight: normal">A GUARANI RACE é reconhecida como uma das experiências mais profundas do mundo da corrida.<br>Desde 2014 mais de 15 mil pessoas estiveram em contato com a sua própria origem.</span></h3>
+		&nbsp;
+	</section>
+	
+	
+	
+
+	<div class="services-footer">
+			<div class="pai-kits-slim">
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/pita/percurso"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/icon-percurso-min.png"></a></div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/pita/hospedagem"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/icon-hospedagem-min.png"></a></div>
+			<div class="img-kits"><a href="#"><img class="img-kits" style="max-width: 147px;"  src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/icon-turismo-min.png"></a></div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/pita/retirada-do-kit"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/icon-retirada-kit-min.png"></a></div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/pita/regulamento"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/icon-regulamento-min.png"></a></div>
+			</div>
+	</div>
+
+
+<!-- Two -->
+	<section id="two" class="main style2 left dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2026/07/trio01-1024-min.jpg">
+				<h2>História</h2>
+			</div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2026/07/trio03-1024-min.jpg">
+				<h2>Cultura</h2>
+			</div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2026/07/trio02-1024-min.jpg">
+				<h2>Esporte</h2>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="main style1" >
+	<div class="pai-depoimentos content"><!--display:none para ocultar-->
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/juu.thomaz-225.png" style="width:100px">
+			<b>Foi sensacional!!!</b>
+			<i>@juu.thomaz</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/m.aguyrre13-225.png" style="width:100px">
+			<b>Prova muito bem organizada e um lindo percurso.</b>
+			<i>@m.aguyrre13</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/valdeireshelenaviana.png" style="width:100px">
+			<b>Com certeza uma das melhores provas da minha vida.</b>
+			<i>@valdeireshelenaviana</i>
+		</div>
+		</div>
+		
+		<div class="pai-depoimentos content"><!--display:none para ocultar-->
+			<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/erikarocha_runner-225.png" style="width:100px">
+			<b>Uma prova marcada na minha vida! Ha'evete (obrigado).</b>
+			<i>@erikarocha_runner</i>
+			</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/camilakraschowetz-225.png" style="width:100px">
+			<b>Esse evento foi mágico!</b>
+			<i>@camilakraschowetz</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/marirosa14-225.png" style="width:100px">
+			<b>Surreal esse dia! Pra ficar na memória.</b>
+			<i>@marirosa14</i>
+		</div>
+			</div>
+	
+		<div class="pai-depoimentos content"><!--display:none para ocultar-->
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/flora.bezerrasp.png" style="width:100px">
+			<b>Incrível, muito além do que eu imaginava!</b>
+			<i>@florabezerrasp</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/pedro_vrl-225.png" style="width:100px">
+			<b>Um baita desafio, uma experiência incrível e que energia.</b>
+			<i>@pedro_vrl</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/gilmarados553-225.png" style="width:100px">
+			<b>Corrida mágica. Sensacional!!! Amei gratidão.</b>
+			<i>@gilmarados553</i>
+		</div>
+	</div>
+</section>
+
+
+
+<!-- Etapas -->
+	<section id="etapas" class="main style2 dark fullscreen">
+		<div class="pai-kits">
+			<!--<div class="img-kits"><iframe width="100%" height="350" src="https://www.youtube.com/embed/2h6I-JD81Kw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<h3>Veja o recado da jovem PARA POTY</h3>
+				 <p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/2h6I-JD81Kw" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>-->
+			<div class="img-kits"><iframe width="100%" height="350" src="https://www.youtube.com/embed/yFSpdOQZlaM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<h3>A GUARANI RACE está mais colorida</h3>
+				 <p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/yFSpdOQZlaM" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>
+			<div class="img-kits"><iframe width="100%" height="350" src="https://www.youtube.com/embed/7Jf2T-3sUuA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<h3>A Guarani Race na visão de um norte-americano</h3>
+				 <p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/7Jf2T-3sUuA" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>
+		</div>
+	</section>
+
+
+<!-- Contact -->
+<section id="contact">
+    <div class="inscricao-footer">
+        INSCREVA-SE <a href="https://zbrevents.com.br/guaranirace/pita/inscricao" class="inscricao-bt">CLIQUE AQUI</a>
+    </div>
+</section>
+
+<!-- Etapas -->
+	<section id="localizacao-main" class="main style1 dark fullscreen">
+		<div class="content">
+		<div class="pai-kits">
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/ydju"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/11/trio-1024-ydju-2026.jpg"></a>
+				<h2>Ir para YDJU</h2>
+			</div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/pita"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/11/trio-1024-pita-2026-pb.jpg"></a>
+				<h2 style="color:#ED3237">Você está aqui</h2>
+			</div>
+		</div>
+		</div>
+	</section>
+
+
+<!-- outros eventos 
+	<section id="etapas" class="main style2 dark fullscreen" >
+		<div class="pai-kits">			
+			<div class="img-kits"><a href="https://zbrevents.com.br/igt23k/back/double/" target="_blank"><img class="img-kits" src="https://zbrevents.com.br/wp-content/uploads/2023/06/trio5-1024x512-doubleBACK-2023.jpg" alt="igt23k double"></a>
+				<h2>Ir para IGT23K DOUBLE</h2>
+			</div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/igt23k/back/" target="_blank"><img class="img-kits" src="https://zbrevents.com.br/wp-content/uploads/2023/06/trio2-1024x512-back2023.jpg" alt="igt23k back"></a>
+				<h2>Ir para IGT23K BACK</h2>
+			</div>
+		</div>
+	</section> -->
+
+
+
+<section class="creditos-footer">
+	<!--<div class="patrocinadores">
+		<h3 class="titulo-footer text-center">PATROCÍNIO</h3>
+		<div class="pai-img-patrocinadores">
+			<div>
+				<a href="https://kinakangen.com/" target="_blank"><img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2023/11/kangen-300-min.png"></a>
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2019/09/guaramega.png">
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2019/09/tatuagem-mania.png">
+			</div>
+		</div>
+	</div>
+	<div class="apoiadores">
+		<div class="pai-img-apoiadores">
+			<div>
+				<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/06/creditos-tbt21k-v2-min.png">
+			</div>	
+		</div>
+	</div>-->
+	
+	<div>
+		<div class="pai-img-zbrevents">
+			<div>
+				<img style="max-width: 100%" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/09/creditos-guaranirace-2025-COLOR-pita-v7-min.png">
+			</div>			
+		</div>
+	</div>
+	
+	<div>
+		
+		<div class="pai-img-zbrevents">
+			<div>
+				<img style="max-width: 50%; width: 350px;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/04/bottom-org-guaranirace-500-black-min.png" alt="zbrevents">
+			</div>			
+		</div>
+	</div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+
+<!-- Icons -->
+<ul class="icons">    
+    <li><a href="https://www.facebook.com/zbreventsbrasil/" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+    <li><a href="https://www.instagram.com/zbreventsbrasil/" class="icon fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>  
+	<li><a href="https://www.youtube.com/@zbrevents" class="icon fa-youtube" target="_blank"><span class="label">Youtube</span></a></li>  	
+</ul>
+
+<!-- Menu -->
+<ul class="menu">
+    <li>&copy; 2014-2026</li>
+    <li>GUARANI RACE é uma marca registrada da ZBR EVENTS</li>
+</ul>
+
+</footer>
+
+<!-- code icon whatsapp 
+<link rel="stylesheet" href="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/style-icon-whats.css">
+<a href="https://wa.me/5511995484720?text=Oi ZBR Events" style="position:fixed;width:60px;height:60px;bottom:20px;right:20px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+  z-index:1000;" target="_blank">
+<i style="margin-top:16px" class="fa fa-whatsapp"></i>
+</a>-->
+
+<!-- mensagem COOKIES -->
+<style>.cookieConsentContainer{z-index:999;width:350px;min-height:20px;box-sizing:border-box;padding:30px 30px 30px 30px;background:#232323;overflow:hidden;position:fixed;bottom:30px;left:30px;display:none}.cookieConsentContainer .cookieTitle a{font-family:OpenSans,arial,sans-serif;color:#fff;font-size:22px;line-height:20px;display:block}.cookieConsentContainer .cookieDesc p{margin:0;padding:0;font-family:OpenSans,arial,sans-serif;color:#fff;font-size:13px;line-height:20px;display:block;margin-top:10px}.cookieConsentContainer .cookieDesc a{font-family:OpenSans,arial,sans-serif;color:#fff;text-decoration:underline}.cookieConsentContainer .cookieButton a{display:inline-block;font-family:OpenSans,arial,sans-serif;color:#fff;font-size:14px;font-weight:700;margin-top:14px;background:#000;box-sizing:border-box;padding:15px 24px;text-align:center;transition:background .3s}.cookieConsentContainer .cookieButton a:hover{cursor:pointer;background:#3e9b67}@media (max-width:980px){.cookieConsentContainer{bottom:0!important;left:0!important;width:100%!important}}</style>
+
+<script>var purecookieTitle="Cookies.",purecookieDesc="Utilizamos cookies para oferecer melhor experiência, melhorar o desempenho, analisar como você interage em nosso site e personalizar conteúdo. Ao utilizar este site, você concorda com o uso de cookies.",purecookieLink='',purecookieButton="Aceito";function pureFadeIn(e,o){var i=document.getElementById(e);i.style.opacity=0,i.style.display=o||"block",function e(){var o=parseFloat(i.style.opacity);(o+=.02)>1||(i.style.opacity=o,requestAnimationFrame(e))}()}function pureFadeOut(e){var o=document.getElementById(e);o.style.opacity=1,function e(){(o.style.opacity-=.02)<0?o.style.display="none":requestAnimationFrame(e)}()}function setCookie(e,o,i){var t="";if(i){var n=new Date;n.setTime(n.getTime()+24*i*60*60*1e3),t="; expires="+n.toUTCString()}document.cookie=e+"="+(o||"")+t+"; path=/"}function getCookie(e){for(var o=e+"=",i=document.cookie.split(";"),t=0;t<i.length;t++){for(var n=i[t];" "==n.charAt(0);)n=n.substring(1,n.length);if(0==n.indexOf(o))return n.substring(o.length,n.length)}return null}function eraseCookie(e){document.cookie=e+"=; Max-Age=-99999999;"}function cookieConsent(){getCookie("purecookieDismiss")||(document.body.innerHTML+='<div class="cookieConsentContainer" id="cookieConsentContainer"><div class="cookieTitle"><a>'+purecookieTitle+'</a></div><div class="cookieDesc"><p>'+purecookieDesc+" "+purecookieLink+'</p></div><div class="cookieButton"><a onClick="purecookieDismiss();">'+purecookieButton+"</a></div></div>",pureFadeIn("cookieConsentContainer"))}function purecookieDismiss(){setCookie("purecookieDismiss","1",365),pureFadeOut("cookieConsentContainer")}window.onload=function(){cookieConsent()};</script>
+
+
+
+<!-- modal da retirada de kit basta apenas trocar pra display block para que ele exiba em todas as paginas menos na 
+da retirada de kit -->
+<div class="flex align-center align-vert modal modal--align modal--show" style="display:none;" ><!--none - ou - block-->
+    <div class="modal__container">
+      <a class="modal__close modal__close--x" aria-hidden="true">&#x2715;</a>
+      <!--<p>Acesse os RESULTADOS 2019.</p> Acesse as informações para RETIRADA DO KIT.-->
+      <!--<a style="padding: 10px 60px!important;text-align:center;border-radius: 10px;background: #D96D00;text-decoration: none;color: #fff;" href="/resultados-2019" class="modal__close">Clique aqui</a>-->
+		<a href="https://zbrevents.com.br/guaranirace/pita/resultados/" target=""><img style="width:100%;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/794-site-v3-600.jpg"></a>
+    </div>
+  </div>
+  <!-- / modal -->
+
+  <style>
+  /* demo only */
+.flex { display: flex; }
+.align-center { justify-content: center; }
+.align-vert,.align-vert.align-center { align-items: center; }
+/* end demo */
+
+.modal { display: none; }
+.modal--show,
+.modal--hide { display: flex; } /* classes fired by js for animation control */
+
+/* This is on the wrapper for the whole modal */
+.modal--align {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.modal__container {
+	position: relative;
+    width: 100%;
+    max-width: 600px;
+    max-height: 800px;
+    padding: 20px;
+    margin: 0 auto;
+	top:20%;
+	background: #fff; 
+	text-align: center;   
+}
+
+/* The .modal__close class is used in js but is modified '--x' here */
+.modal__close--x {
+  font-size: 30px; /* this is only because we use unicode for the X in this case */
+  position: absolute;
+  top: 3px;
+  right: 10px;
+}
+
+/* As there is no href to avoid the hash being added to the URL when clicked we add a pointer */
+/* This 'x' is hidden from screen readers as there is an accessible close button in the modal */
+.modal__close--x:hover {
+  cursor: pointer;
+}
+
+/* Animations */
+/* Open */
+.modal.modal--show {
+  animation: modal-open 0.3s;
+}
+
+@keyframes modal-open {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+
+/* Close */
+.modal.modal--hide {
+  animation: modal-close 0.3s;
+}
+
+@keyframes modal-close {
+  0%    { opacity: 1; }
+  100%  { opacity: 0; }
+}</style>
+
+
+<!-- Scripts -->
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/jquery.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/jquery.poptrox.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/jquery.scrolly.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/jquery.scrollex.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/browser.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/breakpoints.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/util.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/main.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/bower_components/tether/dist/js/tether.min.js"></script>
+
+
+<!-- script central de ajuda -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.getElementById('header');
+  const toggle = document.querySelector('.menu-toggle');
+
+  if (toggle && header) {
+    toggle.addEventListener('click', function () {
+      const isOpen = header.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      header.classList.toggle('sticky-menu', isOpen);
+    });
+  }
+});
+</script>
+
+<!-- script coutdown -->
+<script>
+  const launchDate = new Date("2026-10-24T06:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    if (distance <= 0) {
+      document.getElementById("countdown").innerHTML = "<p class='released'>Já estamos no ar.</p>";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+	
+	<script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/e554fc06-3179-4213-9efa-e2e3a7c9a48f-loader.js" ></script>
+
+</body>
+</html>

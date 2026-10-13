@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Grupo HJR</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/icons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+    <link rel="icon" href="images/icons/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" href="images/icons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="images/icons/android-chrome-192x192.png" sizes="192x192" />
+    <link rel="icon" href="images/icons/android-chrome-512x512.png" sizes="512x512" />
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Produção de eventos, locação de estruturas e casting de artistas para eventos inesquecíveis." />
+    <meta name="keywords" content="eventos, produção de eventos, locação de estruturas, casting de artistas" />
+    <meta name="author" content="Grupo HJR" />
+
+    <meta property="og:title" content="Grupo HJR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="images/logo.png" />
+    <meta property="og:url" content="" />
+    <meta property="og:description" content="Produção de eventos, locação de estruturas e casting de artistas para eventos inesquecíveis." />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".nav-menu">
+    <!-- pre loader :: starts -->
+    <div class="preloader">
+        <div class="preloader_wrap">
+            <img src="./images/logo.png" alt="Grupo HJR" />
+            <span class="preloader_inner">0%</span>
+        </div>
+        <div class="progress-bar"></div>
+    </div>
+    <!-- pre loader :: ends -->
+
+    <div class="wrapper">
+        <header>
+            <div class="container">
+    <div class="nav">
+        <div class="logo">
+            <a href="#home"><img src="images/logo.png" alt="logo" /></a>
+        </div>
+        <div class="nav-menu-button">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+        </div>
+        <div class="nav-menu-wrapper">
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">Sobre</a></li>
+                    <li><a href="#collection" class="nav-link">Próximos Eventos</a></li>
+                    <li><a href="#roadmap" class="nav-link">Locação</a></li>
+                    <li><a href="#team" class="nav-link">Casting</a></li>
+                    <li><a href="#faqs" class="nav-link">FAQs</a></li>
+                </ul>
+                <div class="nav-social">
+                    <a href="https://twitter.com/grupohjr" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://facebook.com/grupohjr" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/grupohjr" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <div class="nav-img infiniteBounce">
+                    <img src="images/nav-wrapper-img.png" alt="nav-img">
+                </div>
+                <div class="nav-shapes">
+                    <img class="particle-black infiniteZoomInOut" src="images/particle-black.png" alt="nav-shapes">
+                    <img class="particle-white infiniteZoomInOut" src="./images/particle-white.png" alt="nav-shapes" />
+                    <img class="particle-orange infiniteZoomInOut" src="./images/particle-orange.png" alt="nav-shapes" />
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+        </header>
+
+        <div class="main-content">
+            <section class="banner" id="home">
+                <div class="banner-wrapper">
+                    <div class="banner-content">
+                        <h5 class="wow animate__fadeInDown"><font color="#46fff0">Excelência em Eventos</font></h5>
+                        <h2 class="section-title">
+                            <span class="wow animate__fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">PRODUÇÃO</span><br />
+                            <span class="lined wow animate__fadeIn" data-wow-duration="1s" data-wow-delay="1.2s">CASTING</span><br />
+                            <span class="wow animate__fadeIn" data-wow-duration="1s" data-wow-delay="2s">LOCAÇÃO</span>
+                        </h2>
+                    </div>
+                    <img class="banner-3 infiniteBounce" src="images/banner-img-3.png" alt="banner-img" />
+                    <img class="wavy-partical wow animate__flipInX" data-wow-delay="0.4s" src="images/banner-wave.png" alt="banner-vector-shapes">
+
+                    <div class="banner-floating-images">
+                        <div class="banner-img-wrapper">
+                            <span></span>
+                            <span></span>
+                            <img class="particle-black infiniteZoomInOut" src="images/particle-black.png" alt="floating-img" />
+                            <img class="particle-white infiniteZoomInOut" src="./images/particle-white.png" alt="floating-img" />
+                            <img class="particle-orange infiniteZoomInOut" src="./images/particle-orange.png" alt="floating-img" />
+                            <img class="banner-1 infiniteBounce" src="images/banner-img-1.png" alt="banner-img">
+                            <img class="banner-2 infiniteBounce" src="images/banner-img-2.png" alt="banner-img">
+                            <img class="banner-4 infiniteBounce" src="images/banner-img-4.png" alt="banner-img">
+                            <img class="banner-5 infiniteBounce" src="images/banner-img-5.png" alt="banner-img">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about" id="about">
+                <div class="container">
+                    <div class="about-wrapper">
+                        <h5 class="section-subtitle wow animate__fadeInUp" data-wow-delay="0.4s">
+                            Nossa Empresa
+                        </h5>
+                        <h2 class="section-title wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                            UM UNIVERSO<br />PENSADO PARA<br />EVENTOS.
+                        </h2>
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-12">
+                                <div class="graphic-imgs">
+                                    <img class="spiral-arrow wow animate__fadeInUp" data-wow-delay="0.4s" src="images/spiral-arrow.png" alt="floating-img">
+                                    <img class="particle-black infiniteBounce" src="images/particle-black.png" alt="floating-img">
+                                    <img class="particle-white infiniteBounce" src="./images/particle-white.png" alt="floating-img" />
+                                    <img class="particle-orange infiniteBounce" src="./images/particle-orange.png" alt="floating-img" />
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-sm-12">
+                                <p class="wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
+                                    <font color="#D8D8D8">Com mais de 16 anos de experiência no mercado de eventos, nosso grupo empresarial tem sido referência em produção e realização de eventos, assim como na locação de estruturas para todas as categorias. Nosso raio de ação vai desde grandes festivais até eventos corporativos, esportivos, religiosos, congressos e exposições.</font>
+                                </p>
+                                <p class="wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+                                    <font color="#D8D8D8">Nossa equipe altamente qualificada trabalha incansavelmente para entender as necessidades e visões de nossos clientes, transformando projetos e ideias em realidade. Junte-se a nós para criar momentos inesquecíveis juntos.</font>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="collection-nft" id="collection">
+                <div class="container">
+                    <div class="collection-wrapper">
+                        <h5 class="section-subtitle wow animate__fadeInUp" data-wow-delay="0.4s">
+                            PRÓXIMOS EVENTOS
+                        </h5>
+                        <h2 class="section-title wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                            QUE VÃO <br />ROLAR NA HJR.
+                        </h2>
+                    </div>
+                </div>
+                <ul class="collection-list">
+                    <li class="card"><img src="images/proximos_eventos/img_01.png" class="nft" alt="Próximo Evento 1"></li>
+                    <li class="card"><img src="images/proximos_eventos/img_02.png" class="nft" alt="Próximo Evento 2"></li>
+                    <li class="card"><img src="images/proximos_eventos/img_03.png" class="nft" alt="Próximo Evento 3"></li>
+                    <li class="card"><img src="images/proximos_eventos/img_04.png" class="nft" alt="Próximo Evento 4"></li>
+                    <li class="card"><img src="images/proximos_eventos/img_05.png" class="nft" alt="Próximo Evento 5"></li>
+                    <li class="card"><img src="images/proximos_eventos/img_01.png" class="nft" alt="Próximo Evento 6"></li>
+                </ul>
+            </section>
+
+            <section class="collection-nft" id="collection">
+                <div class="container">
+                    <div class="collection-wrapper">
+                        <h5 class="section-subtitle wow animate__fadeInUp" data-wow-delay="0.4s">
+                            ÚLTIMOS EVENTOS
+                        </h5>
+                        <h2 class="section-title wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                            QUE ROLOU <br /> NA HJR.
+                        </h2>
+                    </div>
+                </div>
+                <ul class="collection-list reverse">
+                    <li class="card"><img src="images/eventos_realizados/collection-2-img-1.png" class="nft" alt="Último Evento 1"></li>
+                    <li class="card"><img src="images/eventos_realizados/collection-2-img-2.png" class="nft" alt="Último Evento 2"></li>
+                    <li class="card"><img src="images/eventos_realizados/collection-2-img-3.png" class="nft" alt="Último Evento 3"></li>
+                    <li class="card"><img src="images/eventos_realizados/collection-2-img-4.png" class="nft" alt="Último Evento 4"></li>
+                    <li class="card"><img src="images/eventos_realizados/collection-2-img-5.png" class="nft" alt="Último Evento 5"></li>
+                    <li class="card"><img src="images/eventos_realizados/collection-2-img-1.png" class="nft" alt="Último Evento 6"></li>
+                </ul>
+                <ul class="collection-list">
+                    <li class="card"><img src="images/eventos_realizados/collection-3-img-1.png" class="nft" alt="Último Evento 7"></li>
+                    <li class="card"><img src="images/eventos_realizados/collection-3-img-2.png" class="nft" alt="Último Evento 8"></li>
+                    <li class="card"><img src="images/eventos_realizados/collection-3-img-3.png" class="nft" alt="Último Evento 9"></li>
+                    <li class="card"><img src="images/eventos_realizados/collection-3-img-4.png" class="nft" alt="Último Evento 10"></li>
+                    <li class="card"><img src="images/eventos_realizados/collection-3-img-5.png" class="nft" alt="Último Evento 11"></li>
+                    <li class="card"><img src="images/eventos_realizados/collection-3-img-1.png" class="nft" alt="Último Evento 12"></li>
+                </ul>
+            </section>
+
+            <section class="roadmap" id="roadmap">
+                <div class="container">
+                    <div class="roadmap-wrapper">
+                        <h5 class="section-subtitle wow animate__fadeInUp" data-wow-delay="0.4s">
+                            TEM PRA ALUGAR TAMBÉM ;)
+                        </h5>
+                        <h2 class="section-title wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">SEU
+                            EVENTO <br /> MERECE O <br />MELHOR.
+                            <img class="spiral-arrow wow animate__fadeInUp" data-wow-delay="0.4s" src="images/spiral-arrow.png" alt="vector-shape">
+                        </h2>
+                        <div class="vector-shapes">
+                            <img class="particle-black" src="images/particle-black.png" alt="vector-shape">
+                            <img class="wavy-particle" src="./images/wavy-partical.jpg" alt="vector-shape">
+                        </div>
+                        <ul class="phase-list">
+                            <li class="phase">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="phase-content wow animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+                                            <h6>Locação</h6>
+                                            <h3>Tendas</h3>
+                                            <p>Tendas de tamanhos variados: 3x3, 4x4, 5x5, 8x8 e 10x10. Lonas disponíveis nas cores branca ou cristal, perfeitas para qualquer ocasião.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="phase-img-box wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+                                            <img class="phase-art-img infiniteBounce" src="images/phase-1.png" alt="Galpão">
+                                            <div class="particle-wrap">
+                                                <img src="images/particle-black.png" class="infiniteZoomInOut" alt="particle">
+                                                <img src="images/particle-white.png" class="infiniteZoomInOut" alt="particle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="phase phase-reverse">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="phase-content wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.4s">
+                <h6>Locação</h6>
+                <h3>Galpões</h3>
+                <p>Estruturas modulares que se adaptam a qualquer necessidade do seu evento. Estruturas seguras e de alta qualidade.</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="phase-img-box wow animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.4s">
+                <a href="https://www.youtube.com/watch?v=VtAhRRB1_74" target="_blank">
+                    <img class="phase-art-img infiniteBounce" src="images/phase-23.png" alt="Tendas">
+                </a>
+                <div class="particle-wrap">
+                    <img src="images/particle-orange.png" class="infiniteZoomInOut" alt="particle">
+                    <img src="images/particle-white.png" class="infiniteZoomInOut" alt="particle">
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+                            <li class="phase">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="phase-content wow animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                                            <h6>Locação</h6>
+                                            <h3>Palcos e Estruturas</h3>
+                                            <p>Oferecemos palcos, praticáveis e estruturas como treliças de alumínio, arquibancadas e stands em Octanorm, ideais para atender eventos de todos os portes.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="phase-img-box wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                                            <img class="phase-art-img infiniteBounce" src="images/phase-3.png" alt="Palcos e Estruturas">
+                                            <div class="particle-wrap">
+                                                <img class="img-small" src="images/particle-white.png" class="infiniteZoomInOut" alt="particle">
+                                                <img src="images/particle-white.png" class="infiniteZoomInOut" alt="particle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="phase phase-reverse">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="phase-content wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.6s">
+                                            <h6>Locação</h6>
+                                            <h3>Equipamentos de Som e Luz</h3>
+                                            <p>Locação de caixas de som, painéis de LED e iluminação cenográfica para garantir uma experiência imersiva e de alta qualidade ao seu público.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="phase-img-box wow animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.6s">
+                                            <img class="phase-art-img infiniteBounce" src="images/phase-6.png" alt="Equipamentos de Som e Luz">
+                                            <div class="particle-wrap">
+                                                <img src="images/particle-orange.png" class="infiniteZoomInOut" alt="particle">
+                                                <img src="images/particle-white.png" class="infiniteZoomInOut" alt="particle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="phase">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="phase-content wow animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
+                                            <h6>Locação</h6>
+                                            <h3>Contêineres e Estruturas Auxiliares</h3>
+                                            <p>Contêineres para bilheteria, camarins, escritórios, guarda-volumes e galões para água, oferecendo praticidade e organização ao seu evento.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="phase-img-box wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.7s">
+                                            <img class="phase-art-img infiniteBounce" src="images/phase-12.png" alt="Contêineres e Estruturas Auxiliares">
+                                            <div class="particle-wrap">
+                                                <img src="images/particle-black.png" class="infiniteZoomInOut" alt="particle">
+                                                <img src="images/particle-white.png" class="infiniteZoomInOut" alt="particle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="phase phase-reverse">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="phase-content wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.8s">
+                                            <h6>Locação</h6>
+                                            <h3>Segurança e Controle</h3>
+                                            <p>Locação de gradis, barricadas e outros equipamentos para controle de acesso e segurança, garantindo um ambiente seguro e organizado para todos.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="phase-img-box wow animate__fadeInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
+                                            <img class="phase-art-img infiniteBounce" src="images/phase-15.png" alt="Segurança e Controle">
+                                            <div class="particle-wrap">
+                                                <img src="images/particle-black.png" class="infiniteZoomInOut" alt="particle">
+                                                <img src="images/particle-white.png" class="infiniteZoomInOut" alt="particle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+           <section class="team" id="team">
+    <div class="container">
+        <div class="team-wrapper">
+            <h5 class="section-subtitle wow animate__fadeInUp" data-wow-delay="0.4s">
+                NOSSOS ARTISTAS
+            </h5>
+            <h2 class="section-title wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                CONHEÇA<br />
+                NOSSO <br />
+                CASTING.</h2>
+            <img class="team-spiral-arrow wow animate__fadeInUp" data-wow-delay="0.4s" src="images/spiral-arrow.png" alt="graphic-imgs">
+            <ul class="row g-4 team-content">
+                <li class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="team-member card-1 wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                        <div class="team-member-img">
+                            <img src="images/team-member-1.png" alt="Alok">
+                        </div>
+                        <img src="images/team-particle-orange.png" alt="graphic-imgs" />
+                        <div class="team-member-info">
+                            <span class="member-designation">DJ e Produtor Musical</span>
+                            <h6>Alok</h6>
+                            <p class="member-info">Considerado um dos melhores DJs do mundo, Alok traz toda sua energia e experiência para garantir um evento inesquecível.</p>
+                            <div class="member-social-icon">
+                                <a href="https://twitter.com/alokoficial" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/livealok" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="team-member card-2 wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                        <div class="team-member-img">
+                            <img src="images/team-member-2.png" alt="Jorge e Mateus">
+                        </div>
+                        <img src="images/team-particle-orange.png" alt="graphic-imgs" />
+                        <div class="team-member-info">
+                            <span class="member-designation">Dupla Sertaneja</span>
+                            <h6>Jorge e Mateus</h6>
+                            <p class="member-info">Com hits que emocionam e contagiam, Jorge e Mateus são referência na música sertaneja e garantem a trilha sonora perfeita para qualquer evento.</p>
+                            <div class="member-social-icon"> <a href="https://twitter.com/jorgeemateus" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/jorgeemateus" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="team-member card-3 wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <div class="team-member-img">
+                            <img src="images/team-member-3.png" alt="Luan Santana">
+                        </div>
+                        <img src="images/team-particle-orange.png" alt="graphic-imgs" />
+                        <div class="team-member-info">
+                            <span class="member-designation">Cantor e Compositor</span>
+                            <h6>Luan Santana</h6>
+                            <p class="member-info">Luan Santana é sinônimo de sucesso e carisma. Com sua voz inconfundível, ele faz de cada apresentação um momento único e inesquecível.</p>
+                            <div class="member-social-icon"> <a href="https://twitter.com/luansantana" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/luansantana" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="team-member card-4 wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                        <div class="team-member-img">
+                            <img src="images/team-member-4.png" alt="Ana Castela">
+                        </div>
+                        <img src="images/team-particle-orange.png" alt="graphic-imgs" />
+                        <div class="team-member-info">
+                            <span class="member-designation">Cantora Sertaneja</span>
+                            <h6>Ana Castela</h6>
+                            <p class="member-info">Ana Castela é uma jovem promessa da música sertaneja, trazendo autenticidade e uma energia contagiante para seus shows.</p>
+                            <div class="member-social-icon"> <a href="https://twitter.com/anacastelacanta" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/anacastelacantora" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="team-member card-5 wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <div class="team-member-img">
+                            <img src="images/team-member-5.png" alt="Vintage Culture">
+                        </div>
+                        <img src="images/team-particle-orange.png" alt="graphic-imgs" />
+                        <div class="team-member-info">
+                            <span class="member-designation">DJ e Produtor Musical</span>
+                            <h6>Vintage Culture</h6>
+                            <p class="member-info">Vintage Culture é conhecido por transformar qualquer pista em uma verdadeira festa, com remixes e batidas eletrônicas inconfundíveis.</p>
+                            <div class="member-social-icon"> <a href="https://twitter.com/vintageculture" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/vintageculturemusic" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="team-member card-6 wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+                        <div class="team-member-img">
+                            <img src="images/team-member-6.png" alt="Gusttavo Lima">
+                        </div>
+                        <img src="images/team-particle-orange.png" alt="graphic-imgs" />
+                        <div class="team-member-info">
+                            <span class="member-designation">Cantor e Compositor</span>
+                            <h6>Gusttavo Lima</h6>
+                            <p class="member-info">Com um repertório recheado de grandes sucessos, Gusttavo Lima é um dos maiores nomes da música sertaneja, conquistando multidões em cada apresentação.</p>
+                            <div class="member-social-icon"> <a href="https://twitter.com/gusttavolima" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/GusttavoLimaOficial" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+            
+
+            
+            <section class="faq-section" id="faqs">
+    <div class="container">
+        <div class="faq-wrapper">
+            <h5 class="section-subtitle wow animate__fadeInUp" data-wow-delay="0.4s">
+                PERGUNTAS FREQUENTES
+            </h5>
+            <h2 class="section-title wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                TEM ALGUMA <br /> DÚVIDA?
+            </h2>
+            <div class="row">
+                <div class="col-lg-4 col-sm-12">
+                    <img class="particle-orange" src="./images/particle-orange.png" alt="particle" />
+                    <img class="particle-black" src="./images/particle-black.png" alt="particle" />
+                    <img class="wavy-particle" src="./images/wavy-partical.jpg" alt="particle">
+                </div>
+                <div class="col-lg-7 col-sm-12">
+                    <ul class="faq-accordian">
+                        <li class="faq-accordian-item wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+                            <div class="accordian-title open">
+                                Quais tipos de eventos o Grupo HJR atende?
+                            </div>
+                            <div class="accordian-content" style="display: block;">
+                                O Grupo HJR é especializado na produção de diversos tipos de eventos, incluindo festivais, eventos corporativos, esportivos, religiosos, congressos, exposições e muito mais. Nossa missão é transformar cada ocasião em uma experiência única.
+                            </div>
+                        </li>
+                        <li class="faq-accordian-item wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.4s">
+                            <div class="accordian-title">
+                                Vocês oferecem locação de estruturas para eventos?
+                            </div>
+                            <div class="accordian-content">
+                                Sim, oferecemos uma vasta gama de estruturas para locação, como galpões, tendas, palcos, arquibancadas, geradores, gradis, painéis de LED, treliças de alumínio, praticáveis, entre outros. Temos a estrutura perfeita para atender às necessidades do seu evento.
+                            </div>
+                        </li>
+                        <li class="faq-accordian-item wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                            <div class="accordian-title">
+                                Qual é a área de atuação do Grupo HJR?
+                            </div>
+                            <div class="accordian-content">
+                                Atuamos em diversas regiões do Brasil, com foco especial no Sul de Minas Gerais, Leste Paulista, Litoral e Grande São Paulo. Estamos prontos para levar nossos serviços até onde você precisar.
+                            </div>
+                        </li>
+                        <li class="faq-accordian-item wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.6s">
+                            <div class="accordian-title">
+                                Como posso contratar os serviços de locação do Grupo HJR?
+                            </div>
+                            <div class="accordian-content">
+                                Você pode entrar em contato conosco através do nosso site ou pelas nossas redes sociais. Nossa equipe está pronta para entender suas necessidades e fornecer uma solução personalizada para o seu evento.
+                            </div>
+                        </li>
+                        <li class="faq-accordian-item wow animate__fadeInRight" data-wow-duration="1s" data-wow-delay="0.6s">
+                            <div class="accordian-title">
+                                O Grupo HJR oferece suporte durante os eventos?
+                            </div>
+                            <div class="accordian-content">
+                                Sim, nossa equipe oferece suporte completo durante os eventos, garantindo que tudo ocorra conforme planejado, desde a montagem das estruturas até a conclusão do evento. Estamos sempre prontos para atender a qualquer necessidade que possa surgir.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        </div>
+
+       <footer>
+    <div class="container">
+        <div class="footer-cont">
+            <h2 class="section-title wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">SIGA-NOS <br /> NAS REDES SOCIAIS</h2>
+            <p>Fique por dentro dos nossos eventos e novidades, siga o Grupo HJR nas redes sociais.</p>
+            <div class="row g-5 g-md-4 justify-content-between">
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <a href="https://twitter.com/grupohjr" class="social-icon twitter wow animate__fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s"><img src="images/twitter-logo.png" alt="Twitter Grupo HJR"></a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <a href="https://facebook.com/grupohjr" class="social-icon facebook wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                        <img src="images/facebook-logo.png" alt="Facebook Grupo HJR" /></a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <a href="https://www.instagram.com/grupohjr" class="social-icon insta wow animate__fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s"><img src="images/insta.png" alt="Instagram Grupo HJR" /></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-para wow animate__fadeInUp" data-wow-duration="1.6s">
+            &copy; Copyright 2023 Grupo HJR | Design por Grupo HJR. Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+</div>
+
+
+    <div class="modal modal-sm fade" id="joinNow" tabindex="-1" aria-labelledby="joinNowLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Join Now</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-container">
+                        <div class="input-container">
+                            <label>Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Name" />
+                        </div>
+                        <div class="input-container">
+                            <label>Username</label>
+                            <input type="text" class="form-control" placeholder="Enter Username" />
+                        </div>
+                        <div class="input-container">
+                            <label>Email</label>
+                            <input type="text" class="form-control" placeholder="Enter Email" />
+                        </div>
+                        <div class="input-container">
+                            <label>Password</label>
+                            <input type="text" class="form-control" placeholder="Enter Password" />
+                        </div>
+                        <button class="btn btn-primary">Join Now</button>
+                        <div class="another-way">
+                            <span>Another way to Join Now</span>
+                            <div>
+                                <a href="#"><i class="fa-brands fa-google"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        <p>Already have an Account? <a href="" data-bs-toggle="modal"
+                                data-bs-target="#existingUser">Sign In.</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-sm fade" id="existingUser" tabindex="-1" aria-labelledby="existingUserLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Existing User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-container">
+                        <div class="input-container">
+                            <label>Username</label>
+                            <input type="text" class="form-control" placeholder="Enter Name" />
+                        </div>
+                        <div class="input-container">
+                            <label>Password <a href="#">Forgot Password</a></label>
+                            <input type="text" class="form-control" placeholder="Enter Password" />
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-primary">Sign In Now</button>
+                        <div class="another-way">
+                            <span>Another way to Sign in</span>
+                            <div>
+                                <a href="#"><i class="fa-brands fa-google"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        <p>Don't have an Account? <a href="" data-bs-toggle="modal" data-bs-target="#joinNow">Register
+                                Now.</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,383 @@
+{
+  "ACCOUNTS": [
+    {
+      "documento": null,
+      "nome_conta": "Agência VQV eventos",
+      "status": "PENDENTE",
+      "id_conta": 64,
+      "id_filiado": "agencia-vqv-eventos",
+      "logo_path": "/assets/contas/abraceo/agencia-vqv-eventos.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "APUANA ESPORTES",
+      "status": "PENDENTE",
+      "id_conta": 65,
+      "id_filiado": "apuana-esportes",
+      "logo_path": "/assets/contas/abraceo/apuana-esportes.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "AR2 Eventos",
+      "status": "PENDENTE",
+      "id_conta": 66,
+      "id_filiado": "ar2-eventos",
+      "logo_path": "/assets/contas/abraceo/ar2-eventos.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Assessorar Produções Festivas",
+      "status": "PENDENTE",
+      "id_conta": 67,
+      "id_filiado": "assessorar-producoes-festivas",
+      "logo_path": "/assets/contas/abraceo/assessorar-producoes-festivas.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Atra-e Eventos",
+      "status": "PENDENTE",
+      "id_conta": 68,
+      "id_filiado": "atra-e-eventos",
+      "logo_path": "/assets/contas/abraceo/atra-e-eventos.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Avatar",
+      "status": "PENDENTE",
+      "id_conta": 69,
+      "id_filiado": "avatar",
+      "logo_path": "/assets/contas/abraceo/avatar.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "CAPA EVENTOS",
+      "status": "PENDENTE",
+      "id_conta": 70,
+      "id_filiado": "capa-eventos",
+      "logo_path": "/assets/contas/abraceo/capa-eventos.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Chip Macapá",
+      "status": "PENDENTE",
+      "id_conta": 71,
+      "id_filiado": "chip-macapa",
+      "logo_path": "/assets/contas/abraceo/chip-macapa.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "CHL Eventos",
+      "status": "PENDENTE",
+      "id_conta": 72,
+      "id_filiado": "chl-eventos",
+      "logo_path": "/assets/contas/abraceo/chl-eventos.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Cia de Eventos",
+      "status": "PENDENTE",
+      "id_conta": 73,
+      "id_filiado": "cia-de-eventos",
+      "logo_path": "/assets/contas/abraceo/cia-de-eventos.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Conceito Soluções Esportivas",
+      "status": "PENDENTE",
+      "id_conta": 74,
+      "id_filiado": "conceito-solucoes-esportivas",
+      "logo_path": "/assets/contas/abraceo/conceito-solucoes-esportivas.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Corrente Running",
+      "status": "PENDENTE",
+      "id_conta": 75,
+      "id_filiado": "corrente-running",
+      "logo_path": "/assets/contas/abraceo/corrente-running.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "CPR Eventos e Produções",
+      "status": "PENDENTE",
+      "id_conta": 76,
+      "id_filiado": "cpr-eventos-e-producoes",
+      "logo_path": "/assets/contas/abraceo/cpr-eventos-e-producoes.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "DBueno Eventos",
+      "status": "PENDENTE",
+      "id_conta": 77,
+      "id_filiado": "dbueno-eventos",
+      "logo_path": "/assets/contas/abraceo/dbueno-eventos.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "DTO SPORTS EVENTOS ESPORTIVOS E MARKETING",
+      "status": "PENDENTE",
+      "id_conta": 78,
+      "id_filiado": "dto-sports-eventos-esportivos-e-marketing",
+      "logo_path": "/assets/contas/abraceo/dto-sports-eventos-esportivos-e-marketing.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "FG Eventos",
+      "status": "PENDENTE",
+      "id_conta": 79,
+      "id_filiado": "fg-eventos",
+      "logo_path": "/assets/contas/abraceo/fg-eventos.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Fidalgo Eventos Esportivos",
+      "status": "PENDENTE",
+      "id_conta": 80,
+      "id_filiado": "fidalgo-eventos-esportivos",
+      "logo_path": "/assets/contas/abraceo/fidalgo-eventos-esportivos.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "G2P Eventos",
+      "status": "PENDENTE",
+      "id_conta": 81,
+      "id_filiado": "g2p-eventos",
+      "logo_path": "/assets/contas/abraceo/g2p-eventos.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Grupo HJR",
+      "status": "PENDENTE",
+      "id_conta": 82,
+      "id_filiado": "grupo-hjr",
+      "logo_path": "/assets/contas/abraceo/grupo-hjr.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Ideal 5k",
+      "status": "PENDENTE",
+      "id_conta": 83,
+      "id_filiado": "ideal-5k",
+      "logo_path": "/assets/contas/abraceo/ideal-5k.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Maria Isabel Eventos",
+      "status": "PENDENTE",
+      "id_conta": 84,
+      "id_filiado": "maria-isabel-eventos",
+      "logo_path": "/assets/contas/abraceo/maria-isabel-eventos.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Mountain Do",
+      "status": "PENDENTE",
+      "id_conta": 85,
+      "id_filiado": "mountain-do",
+      "logo_path": "/assets/contas/abraceo/mountain-do.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "NACE Produções",
+      "status": "PENDENTE",
+      "id_conta": 86,
+      "id_filiado": "nace-producoes",
+      "logo_path": "/assets/contas/abraceo/nace-producoes.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "ON EVENTOS ESPORTIVOS",
+      "status": "PENDENTE",
+      "id_conta": 87,
+      "id_filiado": "on-eventos-esportivos",
+      "logo_path": "/assets/contas/abraceo/on-eventos-esportivos.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Pace 3 Eventos Esportivos",
+      "status": "PENDENTE",
+      "id_conta": 88,
+      "id_filiado": "pace-3-eventos-esportivos",
+      "logo_path": "/assets/contas/abraceo/pace-3-eventos-esportivos.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Pace Eventos",
+      "status": "PENDENTE",
+      "id_conta": 89,
+      "id_filiado": "pace-eventos",
+      "logo_path": "/assets/contas/abraceo/pace-eventos.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Partiu Corrida",
+      "status": "PENDENTE",
+      "id_conta": 90,
+      "id_filiado": "partiu-corrida",
+      "logo_path": "/assets/contas/abraceo/partiu-corrida.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Pepper Criativa Sport & Business Agency",
+      "status": "PENDENTE",
+      "id_conta": 91,
+      "id_filiado": "pepper-criativa-sport-business-agency",
+      "logo_path": "/assets/contas/abraceo/pepper-criativa-sport-business-agency.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Personew",
+      "status": "PENDENTE",
+      "id_conta": 92,
+      "id_filiado": "personew",
+      "logo_path": "/assets/contas/abraceo/personew.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "PODIUM SPORT",
+      "status": "PENDENTE",
+      "id_conta": 93,
+      "id_filiado": "podium-sport",
+      "logo_path": "/assets/contas/abraceo/podium-sport.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Ponto ORG (.ORG)",
+      "status": "PENDENTE",
+      "id_conta": 94,
+      "id_filiado": "ponto-org-org",
+      "logo_path": "/assets/contas/abraceo/ponto-org-org.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Proworld",
+      "status": "PENDENTE",
+      "id_conta": 95,
+      "id_filiado": "proworld",
+      "logo_path": "/assets/contas/abraceo/proworld.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Quanta Esportes e Eventos",
+      "status": "PENDENTE",
+      "id_conta": 96,
+      "id_filiado": "quanta-esportes-e-eventos",
+      "logo_path": "/assets/contas/abraceo/quanta-esportes-e-eventos.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "RAV Sports",
+      "status": "PENDENTE",
+      "id_conta": 97,
+      "id_filiado": "rav-sports",
+      "logo_path": "/assets/contas/abraceo/rav-sports.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "RG+",
+      "status": "PENDENTE",
+      "id_conta": 98,
+      "id_filiado": "rg",
+      "logo_path": "/assets/contas/abraceo/rg.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Run Eventos",
+      "status": "PENDENTE",
+      "id_conta": 99,
+      "id_filiado": "run-eventos",
+      "logo_path": "/assets/contas/abraceo/run-eventos.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Runk Marketing Esportivo LTDA",
+      "status": "PENDENTE",
+      "id_conta": 101,
+      "id_filiado": "runk-marketing-esportivo-ltda",
+      "logo_path": "/assets/contas/abraceo/runk-marketing-esportivo-ltda.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "RUN SPORTS",
+      "status": "PENDENTE",
+      "id_conta": 100,
+      "id_filiado": "run-sports",
+      "logo_path": "/assets/contas/abraceo/run-sports.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Sagaz Esportes",
+      "status": "PENDENTE",
+      "id_conta": 102,
+      "id_filiado": "sagaz-esportes",
+      "logo_path": "/assets/contas/abraceo/sagaz-esportes.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Speed Produções e Eventos",
+      "status": "PENDENTE",
+      "id_conta": 103,
+      "id_filiado": "speed-producoes-e-eventos",
+      "logo_path": "/assets/contas/abraceo/speed-producoes-e-eventos.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "SPIRIDON EVENTOS",
+      "status": "PENDENTE",
+      "id_conta": 104,
+      "id_filiado": "spiridon-eventos",
+      "logo_path": "/assets/contas/abraceo/spiridon-eventos.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Sports360º Eventos Esportivos",
+      "status": "PENDENTE",
+      "id_conta": 105,
+      "id_filiado": "sports360o-eventos-esportivos",
+      "logo_path": "/assets/contas/abraceo/sports360o-eventos-esportivos.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "Taboada Runners",
+      "status": "PENDENTE",
+      "id_conta": 106,
+      "id_filiado": "taboada-runners",
+      "logo_path": "/assets/contas/abraceo/taboada-runners.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "To Goal Sports",
+      "status": "PENDENTE",
+      "id_conta": 107,
+      "id_filiado": "to-goal-sports",
+      "logo_path": "/assets/contas/abraceo/to-goal-sports.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "TTK Marketing",
+      "status": "PENDENTE",
+      "id_conta": 108,
+      "id_filiado": "ttk-marketing",
+      "logo_path": "/assets/contas/abraceo/ttk-marketing.jpg"
+    },
+    {
+      "documento": null,
+      "nome_conta": "WX ESPORTES E NEGÓCIOS",
+      "status": "PENDENTE",
+      "id_conta": 109,
+      "id_filiado": "wx-esportes-e-negocios",
+      "logo_path": "/assets/contas/abraceo/wx-esportes-e-negocios.png"
+    },
+    {
+      "documento": null,
+      "nome_conta": "ZBR EVENTS",
+      "status": "PENDENTE",
+      "id_conta": 110,
+      "id_filiado": "zbr-events",
+      "logo_path": "/assets/contas/abraceo/zbr-events.jpg"
+    }
+  ],
+  "CONSTRAINT_CHECKS": 8,
+  "NEW_ACCOUNTS": 47,
+  "NEW_EVENTS": 47
+}

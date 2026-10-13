@@ -1,0 +1,677 @@
+    <!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="icon" type="image/png" sizes="32x32" href="https://runeventos.com.br/wp-content/themes/runeventos/img/run-favicon-32.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="https://runeventos.com.br/wp-content/themes/runeventos/img/run-favicon-192.png">
+        <link rel="apple-touch-icon" href="https://runeventos.com.br/wp-content/themes/runeventos/img/run-favicon-192.png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v28.6 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<title>RUN ® - Criação, planejamento e produção de eventos esportivos</title>
+	<meta name="description" content="Especialista em criação, planejamento e realização de maratonas, corridas de rua e eventos esportivos desde 2017." />
+	<link rel="canonical" href="https://runeventos.com.br/" />
+	<meta property="og:locale" content="pt_BR" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="RUN ® - Criação, planejamento e produção de eventos esportivos" />
+	<meta property="og:description" content="Especialista em criação, planejamento e realização de maratonas, corridas de rua e eventos esportivos desde 2017." />
+	<meta property="og:url" content="https://runeventos.com.br/" />
+	<meta property="og:site_name" content="RUN" />
+	<meta property="article:modified_time" content="2026-10-02T18:30:45+00:00" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/runeventos.com.br\/","url":"https:\/\/runeventos.com.br\/","name":"RUN ® - Criação, planejamento e produção de eventos esportivos","isPartOf":{"@id":"https:\/\/runeventos.com.br\/#website"},"datePublished":"2025-03-25T17:45:36+00:00","dateModified":"2026-10-02T18:30:45+00:00","description":"Especialista em criação, planejamento e realização de maratonas, corridas de rua e eventos esportivos desde 2017.","breadcrumb":{"@id":"https:\/\/runeventos.com.br\/#breadcrumb"},"inLanguage":"pt-BR","potentialAction":[{"@type":"ReadAction","target":["https:\/\/runeventos.com.br\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/runeventos.com.br\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Início"}]},{"@type":"WebSite","@id":"https:\/\/runeventos.com.br\/#website","url":"https:\/\/runeventos.com.br\/","name":"RUN","description":"Criação, planejamento e produção de eventos esportivos","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/runeventos.com.br\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"pt-BR"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://runeventos.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fruneventos.com.br%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://runeventos.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fruneventos.com.br%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+/*wp_block_styles_on_demand_placeholder:6acc0d3aa9ea9*/
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id="wp-block-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the block styles printed at wp_footer." }
+/*# sourceURL=wp-block-styles-placeholder-inline-css */
+</style>
+<style id="wp-global-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the global-styles printed at wp_footer." }
+/*# sourceURL=wp-global-styles-placeholder-inline-css */
+</style>
+<link rel='stylesheet' id='bootstrap-css' href='https://runeventos.com.br/wp-content/themes/runeventos/css/bootstrap.min.css?ver=7.1.3' media='all' />
+<link rel='stylesheet' id='stylecss-css' href='https://runeventos.com.br/wp-content/themes/runeventos/css/style.css?ver=1790962384' media='all' />
+<link rel='stylesheet' id='style-css' href='https://runeventos.com.br/wp-content/themes/runeventos/style.css?ver=7.1.3' media='all' />
+<script id="jquery-core-js" src="https://runeventos.com.br/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="https://runeventos.com.br/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<link rel="https://api.w.org/" href="https://runeventos.com.br/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://runeventos.com.br/wp-json/wp/v2/pages/2" /><link rel='shortlink' href='https://runeventos.com.br/' />
+<link rel="icon" href="https://runeventos.com.br/wp-content/uploads/2026/09/run-favicon-universal-150x150.png" sizes="32x32" />
+<link rel="icon" href="https://runeventos.com.br/wp-content/uploads/2026/09/run-favicon-universal-275x275.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://runeventos.com.br/wp-content/uploads/2026/09/run-favicon-universal-275x275.png" />
+<meta name="msapplication-TileImage" content="https://runeventos.com.br/wp-content/uploads/2026/09/run-favicon-universal-275x275.png" />
+<style id="wp-custom-css">
+.form-control:focus{
+	color: var(--bs-body-color);
+	background-color: var(--bs-body-bg);
+	border: 2px solid #000000;
+	outline: 0;
+	box-shadow: none;
+}
+
+.btn-primary {
+    background-color: #4B4BCA;
+    border-color: #4B4BCA;
+    border-radius: 10px;
+    font-size: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    text-transform: uppercase;
+}
+
+.btn-success{
+	border-radius: 10px;
+}
+</style>
+		                <style>
+            .bg-primary{
+                background-color: #0b0c10 !important;
+            }
+            .bg-secondary {
+                background-color: #16181d !important;
+            }
+            .bg-home{
+                background: linear-gradient(to bottom, #0b0c10 50%, #f8f9fa 50%);
+            }
+            .border-bottom-custom{
+                border-bottom: 2px #ffffff1f solid !important;
+            }
+            .btn-primary{
+                background-color: #0b0c10 !important;
+                border-color: #0b0c10 !important;
+            }
+            .color-primary {
+                color: #0b0c10 !important;
+            }
+			.bg-dark{
+				background-color: #14161a !important;
+			}
+            .navbar-brand img {
+                transition: transform 0.2s ease-in-out;
+            }
+            .navbar-brand:hover img {
+                transform: scale(1.03);
+            }
+            .link-clean {
+                color: inherit;
+                text-decoration: none;
+                font-weight: 600;
+                transition: color 0.3s ease;
+            }
+            .link-clean:hover {
+                color: #198754;
+                text-decoration: underline;
+            }
+        </style>
+        		    </head>
+    
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+    <main class="flex-fill">
+
+    <a target="_blank" class="whatsapp_float" href="https://api.whatsapp.com/send?phone=558394035995" title="Fale com a RUN no WhatsApp">
+        <img src="https://runeventos.com.br/wp-content/themes/runeventos/img/whatsapp.svg" alt="ícone whatsapp">
+    </a>
+	    <section class="bg-secondary pt-2 pb-2">
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-between">
+                <div class="col-md-6 col-12 text-start d-none d-md-block">
+                    <span class="text-white-50 font-13"><i class="bi bi-geo-alt me-1"></i> João Pessoa - Paraíba - Brasil</span>
+                </div>
+                <div class="col-md-6 text-end d-none d-md-block">
+                    <a href="/cdn-cgi/l/email-protection#136066637c6167765361667d7665767d677c603d707c7e3d7161" class="text-decoration-none align-middle text-white font-13 me-3" target="_blank">
+                        <i class="bi bi-envelope"></i> <span class="__cf_email__" data-cfemail="6c1f191c031e18092c1e1902091a090218031f420f0301420e1e">[email&#160;protected]</span>                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=558394035995" class="text-decoration-none align-middle text-white font-13" target="_blank">
+                        <i class="bi bi-whatsapp text-success"></i> (83) 9403-5995                    </a>
+                </div>
+                <div class="col-12 text-end d-block d-md-none">
+                    <a href="https://api.whatsapp.com/send?phone=558394035995" class="btn btn-sm btn-success text-white font-12" target="_blank">
+                        <i class="bi bi-whatsapp"></i> (83) 9403-5995                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+        <nav class="navbar navbar-expand-lg bg-primary py-3 ">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand py-0" href="https://runeventos.com.br">
+                <img src="https://runeventos.com.br/wp-content/themes/runeventos/img/run-logo-white.png" alt="RUN Eventos" class="img-fluid" style="height: 46px; width: auto; max-width: 170px; object-fit: contain;">
+            </a>
+            <div class="navbar d-none d-md-block" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto gap-2">
+                                        <li class="nav-item">
+                        <a class="nav-link font-15 text-uppercase fw-semibold text-decoration-none text-white-50" href="https://runeventos.com.br/eventos/">Eventos</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link font-15 text-uppercase fw-semibold text-decoration-none text-white-50" href="https://runeventos.com.br/resultados-eventos/">Resultados</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link font-15 text-uppercase fw-semibold text-decoration-none text-white-50" href="https://runeventos.com.br/servicos/">Sobre</a>
+                    </li>
+                                        <li class="nav-item">
+                        <a class="nav-link font-15 text-uppercase fw-semibold text-decoration-none text-white-50" href="https://runeventos.com.br/contato/">Contato</a>
+                    </li>
+                                    </ul>
+            </div>
+            <div class="d-block d-md-none">
+                <!-- Botão para abrir o menu -->
+                <button class="btn text-white border border-secondary rounded-3" data-bs-toggle="modal" data-bs-target="#menuModal">
+                    <i class="bi bi-list"></i> MENU
+                </button>
+    
+                <!-- Modal do menu -->
+                <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content rounded-3 bg-dark text-white border-0">
+                            <div class="modal-header d-flex justify-content-between border-0 pb-0 mb-0">
+                                <img src="https://runeventos.com.br/wp-content/themes/runeventos/img/run-logo-white.png" alt="RUN Eventos" style="height: 36px;">
+                                <button type="button" class="btn text-white fw-bold" data-bs-dismiss="modal">
+                                    ✖ FECHAR
+                                </button>
+                            </div>
+                            <div class="modal-body p-3">
+                                <ul class="list-unstyled text-start mb-0">
+                                                                                                            <li>
+                                        <a href="https://runeventos.com.br/eventos/" class="d-block text-decoration-none text-uppercase py-2 text-white border-bottom border-secondary">Eventos</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="https://runeventos.com.br/resultados-eventos/" class="d-block text-decoration-none text-uppercase py-2 text-white border-bottom border-secondary">Resultados</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="https://runeventos.com.br/servicos/" class="d-block text-decoration-none text-uppercase py-2 text-white border-bottom border-secondary">Sobre</a>
+                                    </li>
+                                                                        <li>
+                                        <a href="https://runeventos.com.br/contato/" class="d-block text-decoration-none text-uppercase py-2 text-white">Contato</a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+    <!--Capa-->
+    <section class="bg-home py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="CarrosselDestaque" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+                        <div class="carousel-indicators">
+                                                                                    <button type="button" data-bs-target="#CarrosselDestaque" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 0"></button>
+                                                        <button type="button" data-bs-target="#CarrosselDestaque" data-bs-slide-to="1" class=""
+                                aria-current="true" aria-label="Slide 1"></button>
+                                                        <button type="button" data-bs-target="#CarrosselDestaque" data-bs-slide-to="2" class=""
+                                aria-current="true" aria-label="Slide 2"></button>
+                                                        <button type="button" data-bs-target="#CarrosselDestaque" data-bs-slide-to="3" class=""
+                                aria-current="true" aria-label="Slide 3"></button>
+                                                        <button type="button" data-bs-target="#CarrosselDestaque" data-bs-slide-to="4" class=""
+                                aria-current="true" aria-label="Slide 4"></button>
+                                                        <button type="button" data-bs-target="#CarrosselDestaque" data-bs-slide-to="5" class=""
+                                aria-current="true" aria-label="Slide 5"></button>
+                                                                                </div>
+                        <div class="carousel-inner">
+                                                                                                                <div class="carousel-item 1 active">
+                                <a href="https://runeventos.com.br/eventos/">
+                                                                        <img src="https://runeventos.com.br/wp-content/uploads/2026/09/TICKET-SPORTS-2026.png" alt="RUN Eventos" class="rounded-4 d-none d-md-block img-fluid w-100">
+                                                                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/09/ICONE-INSTAGRAM.png" alt="RUN Eventos" class="img-fluid rounded-4 d-block d-md-none w-100">
+                                                                    </a>
+                            </div>
+                                                                                    <div class="carousel-item 2 ">
+                                <a href="">
+                                                                        <img src="https://runeventos.com.br/wp-content/uploads/2026/09/4-2027-TICKET-SPORTS.png" alt="RUN Eventos" class="rounded-4 d-none d-md-block img-fluid w-100">
+                                                                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/ICONE.png" alt="RUN Eventos" class="img-fluid rounded-4 d-block d-md-none w-100">
+                                                                    </a>
+                            </div>
+                                                                                    <div class="carousel-item 3 ">
+                                <a href="">
+                                                                        <img src="https://runeventos.com.br/wp-content/uploads/2026/10/4-2027-TICKEY-SPORTS.png" alt="RUN Eventos" class="rounded-4 d-none d-md-block img-fluid w-100">
+                                                                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/ICONE-1.png" alt="RUN Eventos" class="img-fluid rounded-4 d-block d-md-none w-100">
+                                                                    </a>
+                            </div>
+                                                                                    <div class="carousel-item 4 ">
+                                <a href="">
+                                                                        <img src="https://runeventos.com.br/wp-content/uploads/2026/10/08-07-Banner.png" alt="RUN Eventos" class="rounded-4 d-none d-md-block img-fluid w-100">
+                                                                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/08-07-Banner-512x512-1.png" alt="RUN Eventos" class="img-fluid rounded-4 d-block d-md-none w-100">
+                                                                    </a>
+                            </div>
+                                                                                    <div class="carousel-item 5 ">
+                                <a href="">
+                                                                        <img src="https://runeventos.com.br/wp-content/uploads/2026/09/Sem-Titulo-1.png" alt="RUN Eventos" class="rounded-4 d-none d-md-block img-fluid w-100">
+                                                                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/07-31-Banner-Geral-FEED.png" alt="RUN Eventos" class="img-fluid rounded-4 d-block d-md-none w-100">
+                                                                    </a>
+                            </div>
+                                                                                    <div class="carousel-item 6 ">
+                                <a href="">
+                                                                                                        </a>
+                            </div>
+                                                                                </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#CarrosselDestaque"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#CarrosselDestaque"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Busca-->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="get" action="/eventos/" class="card border-0 rounded-3 shadow-sm d-none d-md-block">
+                        <div class="card-body px-2 py-0">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-7 border-end col-12">
+                                    <div>
+                                        <input 
+                                            type="text" 
+                                            name="titulo_evento" 
+                                            class="form-control border-0" 
+                                            placeholder="Encontre um evento"
+                                            value="">
+                                    </div>
+                                </div>
+                                <!-- Categoria está ignorada, mas deixamos o select por estilo -->
+                                <div class="col-md-3 col-12 my-3">
+                                    <label class="visually-hidden" for="categorias">Todas as Categorias</label>
+                                    <select class="form-select border-0 fw-bold" id="categorias">
+                                        <option selected class="font-18">Todas as Categorias</option>
+                                        <option value="1">Corrida 3km</option>
+                                        <option value="2">Corrida 5km</option>
+                                        <option value="3">Corrida 15km</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2 col-12 text-end">
+                                    <button type="submit" class="btn btn-dark w-100">
+                                        BUSCAR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="col-12 d-block d-md-none card border-0 rounded-3 shadow-sm p-2 my-3">
+                        <div>
+                            <input type="text" class="form-control border-0" placeholder="Encontre um evento" aria-label="First name">
+                        </div>
+                    </div>
+                    <div class="col-12 d-block d-md-none card border-0 rounded-3 shadow-sm p-2 my-3">
+                        <label class="visually-hidden" for="specificSizeSelect">Todas as Categorias</label>
+                        <select class="form-select border-0 fw-bold" id="specificSizeSelect">
+                            <option selected class="font-18 text-body-tertiary">Todas as Categorias</option>
+                            <option value="1">Corrida 3km</option>
+                            <option value="2">Corrida 5km</option>
+                            <option value="3">Corrida 15km</option>
+                        </select>
+                    </div>
+                    <div class="col-12 d-block d-md-none text-center my-2">
+                        <a href="#" class="btn btn-dark w-100">
+                            BUSCAR
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Corridas-->
+    <section>
+        <div class="container">
+            <div class="row">
+
+                <!--Desktop-->
+                                                                                <div class="col-md-3 d-none d-md-block my-3">
+                    <div class="card border-0 rounded-4 shadow-sm h-100 d-flex flex-column">
+                        <a class="m-3 d-block" href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-JO%C3%83O-PESSOA-2026-85102">
+                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/09/ICONE-INSTAGRAM-275x275.png" class="img-fluid rounded-3 w-100" style="height: 190px; object-fit: cover;" alt="Meia Maratona de João Pessoa">
+                                                    </a>
+                        <div class="card-body pt-0 text-center d-flex flex-column flex-grow-1">
+                            <h5 class="card-title font-18 fw-semibold">Meia Maratona de João Pessoa</h5>
+                            <div class="card-text">
+                                <strong>João Pessoa - PB</strong> <br>
+                                Distâncias: 5 km, 10 km e 21 km                            </div>
+                            <p class="card-text font-14">Data do evento: 15/11/2026</p>
+                            <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-JO%C3%83O-PESSOA-2026-85102" class="btn btn-primary mt-auto">Inscreva-se</a>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="col-md-3 d-none d-md-block my-3">
+                    <div class="card border-0 rounded-4 shadow-sm h-100 d-flex flex-column">
+                        <a class="m-3 d-block" href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DO-RECIFE-2027-87289">
+                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/ICONE-275x275.png" class="img-fluid rounded-3 w-100" style="height: 190px; object-fit: cover;" alt="Meia Maratona do Recife">
+                                                    </a>
+                        <div class="card-body pt-0 text-center d-flex flex-column flex-grow-1">
+                            <h5 class="card-title font-18 fw-semibold">Meia Maratona do Recife</h5>
+                            <div class="card-text">
+                                <strong>Recife - PE</strong> <br>
+                                Distâncias: 5 km, 10 km e 21 km                            </div>
+                            <p class="card-text font-14">Data do evento: 07/03/2027</p>
+                            <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DO-RECIFE-2027-87289" class="btn btn-primary mt-auto">Inscreva-se</a>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="col-md-3 d-none d-md-block my-3">
+                    <div class="card border-0 rounded-4 shadow-sm h-100 d-flex flex-column">
+                        <a class="m-3 d-block" href="https://www.ticketsports.com.br/e/MARATONA-DE-JO%C3%83O-PESSOA-2027-86808">
+                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/ICONE-1-275x275.png" class="img-fluid rounded-3 w-100" style="height: 190px; object-fit: cover;" alt="Maratona de João Pessoa">
+                                                    </a>
+                        <div class="card-body pt-0 text-center d-flex flex-column flex-grow-1">
+                            <h5 class="card-title font-18 fw-semibold">Maratona de João Pessoa</h5>
+                            <div class="card-text">
+                                <strong>João Pessoa - PB</strong> <br>
+                                Distâncias: 5 km, 10 km, 21 km e 42 km                            </div>
+                            <p class="card-text font-14">Data do evento: 18/04/2027</p>
+                            <a href="https://www.ticketsports.com.br/e/MARATONA-DE-JO%C3%83O-PESSOA-2027-86808" class="btn btn-primary mt-auto">Inscreva-se</a>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="col-md-3 d-none d-md-block my-3">
+                    <div class="card border-0 rounded-4 shadow-sm h-100 d-flex flex-column">
+                        <a class="m-3 d-block" href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-MACEI%C3%93-2027-88057">
+                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/08-07-Banner-512x512-1-275x275.png" class="img-fluid rounded-3 w-100" style="height: 190px; object-fit: cover;" alt="Meia Maratona de Maceió">
+                                                    </a>
+                        <div class="card-body pt-0 text-center d-flex flex-column flex-grow-1">
+                            <h5 class="card-title font-18 fw-semibold">Meia Maratona de Maceió</h5>
+                            <div class="card-text">
+                                <strong>Maceió - AL</strong> <br>
+                                Distâncias: 5 km, 10 km e 21 km                            </div>
+                            <p class="card-text font-14">Data do evento: 16/05/2027</p>
+                            <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-MACEI%C3%93-2027-88057" class="btn btn-primary mt-auto">Inscreva-se</a>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="col-md-3 d-none d-md-block my-3">
+                    <div class="card border-0 rounded-4 shadow-sm h-100 d-flex flex-column">
+                        <a class="m-3 d-block" href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-BRAS%C3%8DLIA-2027-88312">
+                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/07-31-Banner-Geral-FEED-275x275.png" class="img-fluid rounded-3 w-100" style="height: 190px; object-fit: cover;" alt="Meia Maratona de Brasília">
+                                                    </a>
+                        <div class="card-body pt-0 text-center d-flex flex-column flex-grow-1">
+                            <h5 class="card-title font-18 fw-semibold">Meia Maratona de Brasília</h5>
+                            <div class="card-text">
+                                <strong>Brasília - DF</strong> <br>
+                                Distâncias: 5 km, 10 km e 21 km                            </div>
+                            <p class="card-text font-14">Data do evento: 18/07/2026</p>
+                            <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-BRAS%C3%8DLIA-2027-88312" class="btn btn-primary mt-auto">Inscreva-se</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--Mobile-->
+                                                                <div class="col-12 d-block d-md-none my-1">
+                    <div class="card border-0 rounded shadow-sm p-1">
+                        <div class="row align-items-center">
+                            <div class="col-5">
+                                <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-JO%C3%83O-PESSOA-2026-85102">
+                                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/09/ICONE-INSTAGRAM-275x275.png" class="img-fluid rounded-2" alt="Meia Maratona de João Pessoa">
+                                                                    </a>
+                            </div>
+                            <div class="col-7">
+                                <div class="card-body p-0">
+                                    <h5 class="card-title font-16 fw-semibold mb-1">Meia Maratona de João Pessoa</h5>
+                                    <p class="card-text fw-semibold font-14 mb-1">João Pessoa - PB</p>
+                                    <p class="card-text font-14 mb-1">Data do evento: 15/11/2026</p>
+                                    <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-JO%C3%83O-PESSOA-2026-85102" class="btn btn-primary">Inscreva-se</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="col-12 d-block d-md-none my-1">
+                    <div class="card border-0 rounded shadow-sm p-1">
+                        <div class="row align-items-center">
+                            <div class="col-5">
+                                <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DO-RECIFE-2027-87289">
+                                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/ICONE-275x275.png" class="img-fluid rounded-2" alt="Meia Maratona do Recife">
+                                                                    </a>
+                            </div>
+                            <div class="col-7">
+                                <div class="card-body p-0">
+                                    <h5 class="card-title font-16 fw-semibold mb-1">Meia Maratona do Recife</h5>
+                                    <p class="card-text fw-semibold font-14 mb-1">Recife - PE</p>
+                                    <p class="card-text font-14 mb-1">Data do evento: 07/03/2027</p>
+                                    <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DO-RECIFE-2027-87289" class="btn btn-primary">Inscreva-se</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="col-12 d-block d-md-none my-1">
+                    <div class="card border-0 rounded shadow-sm p-1">
+                        <div class="row align-items-center">
+                            <div class="col-5">
+                                <a href="https://www.ticketsports.com.br/e/MARATONA-DE-JO%C3%83O-PESSOA-2027-86808">
+                                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/ICONE-1-275x275.png" class="img-fluid rounded-2" alt="Maratona de João Pessoa">
+                                                                    </a>
+                            </div>
+                            <div class="col-7">
+                                <div class="card-body p-0">
+                                    <h5 class="card-title font-16 fw-semibold mb-1">Maratona de João Pessoa</h5>
+                                    <p class="card-text fw-semibold font-14 mb-1">João Pessoa - PB</p>
+                                    <p class="card-text font-14 mb-1">Data do evento: 18/04/2027</p>
+                                    <a href="https://www.ticketsports.com.br/e/MARATONA-DE-JO%C3%83O-PESSOA-2027-86808" class="btn btn-primary">Inscreva-se</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="col-12 d-block d-md-none my-1">
+                    <div class="card border-0 rounded shadow-sm p-1">
+                        <div class="row align-items-center">
+                            <div class="col-5">
+                                <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-MACEI%C3%93-2027-88057">
+                                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/08-07-Banner-512x512-1-275x275.png" class="img-fluid rounded-2" alt="Meia Maratona de Maceió">
+                                                                    </a>
+                            </div>
+                            <div class="col-7">
+                                <div class="card-body p-0">
+                                    <h5 class="card-title font-16 fw-semibold mb-1">Meia Maratona de Maceió</h5>
+                                    <p class="card-text fw-semibold font-14 mb-1">Maceió - AL</p>
+                                    <p class="card-text font-14 mb-1">Data do evento: 16/05/2027</p>
+                                    <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-MACEI%C3%93-2027-88057" class="btn btn-primary">Inscreva-se</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                <div class="col-12 d-block d-md-none my-1">
+                    <div class="card border-0 rounded shadow-sm p-1">
+                        <div class="row align-items-center">
+                            <div class="col-5">
+                                <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-BRAS%C3%8DLIA-2027-88312">
+                                                                            <img src="https://runeventos.com.br/wp-content/uploads/2026/10/07-31-Banner-Geral-FEED-275x275.png" class="img-fluid rounded-2" alt="Meia Maratona de Brasília">
+                                                                    </a>
+                            </div>
+                            <div class="col-7">
+                                <div class="card-body p-0">
+                                    <h5 class="card-title font-16 fw-semibold mb-1">Meia Maratona de Brasília</h5>
+                                    <p class="card-text fw-semibold font-14 mb-1">Brasília - DF</p>
+                                    <p class="card-text font-14 mb-1">Data do evento: 18/07/2026</p>
+                                    <a href="https://www.ticketsports.com.br/e/MEIA-MARATONA-DE-BRAS%C3%8DLIA-2027-88312" class="btn btn-primary">Inscreva-se</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--Ver Todos-->
+                <div class="col-md-12 text-end d-block d-md-none py-1">
+                    <a href="https://runeventos.com.br/eventos" class="fw-semibold font-15 color-primary">
+                        VER TODOS
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--Sobre a Empresa-->
+    <section class="p-3">
+        <div class="container bg-primary p-4 rounded-4 border border-secondary">
+            <div class="row d-flex align-items-center justify-content-start">
+                <div class="col-md-12 text-white pt-3">
+                    <h3 class="font-24 fw-bold text-uppercase tracking-wider">Sobre a RUN</h3>
+                    						<div class="font-16 py-2 text-white-50" style="white-space: pre-line; line-height: 1.75;">
+							A RUN é uma empresa especializada na criação, planejamento, produção e realização de eventos esportivos, culturais e de entretenimento. Desde 2017, atua no mercado desenvolvendo projetos que conectam esporte, cultura, turismo, lazer e desenvolvimento regional.
+
+Ao longo de sua trajetória, a RUN consolidou experiência na realização de corridas de rua, maratonas, meias maratonas, eventos ciclísticos, festivais e projetos culturais, atuando em diferentes etapas da produção, desde o planejamento estratégico e produção executiva até a operação, logística, comunicação e relacionamento com patrocinadores e parceiros.
+
+A RUN acredita no poder dos eventos para transformar experiências, movimentar cidades e aproximar pessoas. Por isso, desenvolve projetos que valorizam os destinos, estimulam a prática esportiva, promovem a cultura, fortalecem o turismo e geram impacto positivo para participantes, comunidades, marcas e parceiros.
+
+Mais do que produzir eventos, a RUN cria experiências capazes de conectar pessoas, marcas e territórios.						</div>
+					
+                </div>
+                <div class="col-md-4 text-start mt-2">
+                    <a href="https://runeventos.com.br/servicos" class="btn btn-dark text-white fw-bold px-4 py-2 border border-secondary rounded-pill">Saiba Mais Sobre a RUN</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        </main>
+    
+    <!--Footer-->
+    <footer class="mt-auto text-white" style="background-color: #0b0c10; border-top: 1px solid #242933;">
+        <section class="py-5">
+            <div class="container">
+                <div class="row gy-4">
+                    <!-- Coluna 1: Sobre a Empresa & Logo -->
+                    <div class="col-lg-4 col-md-6 text-center text-md-start">
+                        <a href="https://runeventos.com.br" class="d-inline-block mb-3">
+                            <img src="https://runeventos.com.br/wp-content/themes/runeventos/img/run-logo-white.png" alt="RUN Eventos" class="img-fluid" style="height: 48px; width: auto;">
+                        </a>
+                        <p class="font-14 text-white-50 lh-base mb-3">
+                            Especializada na criação, planejamento, produção e realização de eventos esportivos, culturais e de entretenimento desde 2017. Conectando pessoas, marcas e territórios.
+                        </p>
+                        <span class="badge bg-secondary font-12 py-2 px-3">Desde 2017 movimentando o Brasil</span>
+                    </div>
+
+                    <!-- Coluna 2: Navegacao Rapida -->
+                    <div class="col-lg-2 col-md-6 col-6 text-start">
+                        <h6 class="text-uppercase fw-bold text-white mb-3 font-14 border-bottom border-secondary pb-2">Navegação</h6>
+                                                <ul class="list-unstyled font-14">
+                                                        <li class="mb-2"><a href="https://runeventos.com.br/eventos/" class="text-white-50 text-decoration-none hover-white">Calendário</a></li>
+                                                        <li class="mb-2"><a href="https://runeventos.com.br/resultados-eventos/" class="text-white-50 text-decoration-none hover-white">Resultados</a></li>
+                                                        <li class="mb-2"><a href="https://runeventos.com.br/servicos/" class="text-white-50 text-decoration-none hover-white">Sobre</a></li>
+                                                        <li class="mb-2"><a href="https://runeventos.com.br/contato/" class="text-white-50 text-decoration-none hover-white">Fale Conosco</a></li>
+                                                    </ul>
+                    </div>
+
+                    <!-- Coluna 3: Atendimento e Suporte -->
+                    <div class="col-lg-3 col-md-6 col-6 text-start">
+                        <h6 class="text-uppercase fw-bold text-white mb-3 font-14 border-bottom border-secondary pb-2">Atendimento</h6>
+                        <p class="font-14 text-white-50 mb-2">
+                            <i class="bi bi-whatsapp text-success me-2 font-16"></i>
+                            <a href="https://api.whatsapp.com/send?phone=558394035995" class="text-white text-decoration-none fw-semibold" target="_blank">(83) 9403-5995</a>
+                        </p>
+                        <p class="font-14 text-white-50 mb-2">
+                            <i class="bi bi-envelope me-2 font-16"></i>
+                            <a href="/cdn-cgi/l/email-protection#89fafcf9e6fbfdecc9fbfce7ecffece7fde6faa7eae6e4a7ebfb" class="text-white-50 text-decoration-none"><span class="__cf_email__" data-cfemail="532026233c2127361321263d3625363d273c207d303c3e7d3121">[email&#160;protected]</span></a>
+                        </p>
+                        <p class="font-13 text-white-50 mb-0">
+                            <i class="bi bi-clock me-2"></i> Seg a Sex: 08h às 18h
+                        </p>
+                    </div>
+
+                    <!-- Coluna 4: Redes Sociais Oficiais dos Eventos -->
+                    <div class="col-lg-3 col-md-6 text-center text-md-start">
+                        <h6 class="text-uppercase fw-bold text-white mb-3 font-14 border-bottom border-secondary pb-2">Redes Oficiais</h6>
+                                                <div class="d-flex flex-column gap-2 font-13">
+                                                        <a href="https://www.instagram.com/run.eventos" target="_blank" rel="noopener" class="text-white-50 text-decoration-none d-flex align-items-center">
+                                <i class="bi bi-instagram me-2 text-danger"></i> @run.eventos                            </a>
+                                                        <a href="https://www.facebook.com/eventos.run/" target="_blank" rel="noopener" class="text-white-50 text-decoration-none d-flex align-items-center">
+                                <i class="bi bi-facebook me-2 text-primary"></i> Facebook                            </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faixa inferior -->
+        <section class="py-3" style="background-color: #060709; border-top: 1px solid rgba(255,255,255,0.05);">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-12 text-center">
+                        <p class="font-12 text-white-50 mb-0">
+                            © 2026 <strong>RUN</strong>. Todos os direitos reservados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <style>
+        .hover-white:hover {
+            color: #ffffff !important;
+            padding-left: 3px;
+            transition: all 0.2s ease;
+        }
+    </style>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/runeventos/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="popper-js" src="https://runeventos.com.br/wp-content/themes/runeventos/js/bootstrap.min.js?ver=7.1.3"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://runeventos.com.br/wp-includes/js/wp-emoji-release.min.js?ver=7.1.3"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://runeventos.com.br/wp-includes/js/wp-emoji-loader.min.js
+</script>
+
+    <script src="https://runeventos.com.br/wp-content/themes/runeventos/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+[
+  {
+    "source": "https://cdn.ticketsports.com.br/ticketagora/arquivos/evento/72515/3cdfdafd8400487e875e6981692863ca638872333840376248.pdf",
+    "file": "horto-reg.pdf",
+    "sha256": "ce2b2d7981c62e8fd9a36d85771676ef2dbfb055cc577a5d02cfc05b00f107d6",
+    "emails": [
+      "amigosdohortoeventos@gmail.com"
+    ]
+  },
+  {
+    "source": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88357/6b98b02bbe274e6ebc5758cf7e788fd3639245634275113111.pdf",
+    "file": "horto-futuro.pdf",
+    "sha256": "28abd8c6547673601304a0c2c00d83c38272f16ef8f3b6071146e35ce74d8848",
+    "emails": [
+      "amigosdohortoeventos@gmail.com",
+      "sac@ticketsports.com.br"
+    ]
+  },
+  {
+    "source": "https://www.cronusteccorridas.com.br/nossos-servicos",
+    "file": "cronustec.html",
+    "sha256": "1d71b07f8f6155b213bb1f19181d4fa6027a674f4ca18b91a5f56e09a9d1d20f",
+    "emails": [
+      "cronustectecnologia@gmail.com"
+    ]
+  },
+  {
+    "source": "https://cdn.ticketsports.com.br/ticketagora/arquivos/evento/74528/2e71b03b701c4ccba37e9916ad4061e5639003551430006270.pdf",
+    "file": "premium-reg.pdf",
+    "sha256": "3cd26a750b5234e69c06f3c2c973a7b7eb4b430dfe7e06029d876ce526fbf803",
+    "emails": [
+      "atendimento@premium.srv.br"
+    ]
+  },
+  {
+    "source": "https://circuitounimed.com.br/regulamento/",
+    "file": "premium-unimed.html",
+    "sha256": "bb03b5c9da9fe6921e9b24aacf02297391baa34e4597d8364bac16416a82d213",
+    "emails": [
+      "atendimento@premium.srv.br"
+    ]
+  },
+  {
+    "source": "https://www.tm4.business/",
+    "file": "tm4.html",
+    "sha256": "d323c300274ff3d87190baac1e37dfe74f6fcd8545809845910be3f8ff112a8e",
+    "emails": [
+      "2062d0a4929b45348643784b5cb39c36@sentry.wixpress.com"
+    ]
+  },
+  {
+    "source": "https://www.assai.com.br/imprensa/corrida-assai-em-fortaleza-dobra-de-tamanho-e-abre-novo-lote-de-inscricoes",
+    "error": "curl: (56) The requested URL returned error: 403\n"
+  },
+  {
+    "source": "https://www.corridaassai.com.br/",
+    "file": "assai-site.html",
+    "sha256": "5d2ff7034462f0de01ea910de84a0ef4fb152bb649c6fcdb92b8901d418ad9e8",
+    "emails": []
+  },
+  {
+    "source": "https://www.ticketsports.com.br/e/maratona-monumental-de-brasilia-2026-74828",
+    "file": "mmb-ticket.html",
+    "sha256": "9986b7af7c395b361a6fb6cad91a419e76ea72197b61358a12eb4befac9dd4a8",
+    "emails": [
+      "dpo@ticketsports.com.br",
+      "zenerafael@gmail.com"
+    ]
+  },
+  {
+    "source": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/74828/4e91b6e5359b4b4389243a2939d996ff639199082801291559.pdf",
+    "file": "mmb-reg.pdf",
+    "sha256": "5ddfb2c1b07a6e6ac1992aa9f82e3a66455c8c48e92e2cd8a93d5bc4043da7a6",
+    "emails": [
+      "maratonamonumental@gmail.com",
+      "suporte.monumental2026@gmail.com"
+    ]
+  },
+  {
+    "source": "https://www.ticketsports.com.br/e/2-corrida-santa-casa-araraquara-2026-85837",
+    "file": "nk-ticket.html",
+    "sha256": "7d9151269ceb6b484fd419598a400a86a9345bc88beff31454f4535c4ceb54a9",
+    "emails": [
+      "dpo@ticketsports.com.br",
+      "ribeirao@chiptiming.com.br"
+    ]
+  },
+  {
+    "source": "https://mp3promocoes.com.br/",
+    "error": "curl: (60) SSL: no alternative certificate subject name matches target host name 'mp3promocoes.com.br'\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situa"
+  }
+]

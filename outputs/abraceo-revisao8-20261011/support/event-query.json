@@ -1,0 +1,95 @@
+{
+  "events": [
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "CORRIDA ASSAÍ - VITÓRIA",
+      "ativo": true,
+      "id_evento": 48783,
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "CORRIDA ASSAÍ - TERESINA",
+      "ativo": true,
+      "id_evento": 48766,
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "4ª CORRIDA ROTA DO PEIXE- PASSAGEM DA CONCEIÇÃO VG",
+      "ativo": true,
+      "id_evento": 44153,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "MARATONA MONUMENTAL DE BRASÍLIA 2026",
+      "ativo": true,
+      "id_evento": 39395,
+      "data_inicial": "2026-11-21"
+    },
+    {
+      "data_final": "2027-02-20",
+      "nome_evento": "UD ULTRA DESAFIO – 2027 - PASSA QUATRO/MG",
+      "ativo": true,
+      "id_evento": 45349,
+      "data_inicial": "2027-02-20"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "5 CORRIDA SOLIDARIA DE MASSARANDUBA",
+      "ativo": true,
+      "id_evento": 48108,
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "data_final": "2026-12-13",
+      "nome_evento": "Massangano Trail Run",
+      "ativo": true,
+      "id_evento": 48558,
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "MEIA MARATONA DOS REIS MAGOS 2026",
+      "ativo": true,
+      "id_evento": 45413,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-12",
+      "nome_evento": "CORRIDA KIDS TRIMAIS PLACES 6º EDIÇÃO",
+      "ativo": true,
+      "id_evento": 47688,
+      "data_inicial": "2026-10-12"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "Nahassa Street Run 2 º EdiÇÃo",
+      "ativo": true,
+      "id_evento": 43410,
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2026-10-17",
+      "nome_evento": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA APUCARANA",
+      "ativo": true,
+      "id_evento": 45646,
+      "data_inicial": "2026-10-17"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA",
+      "ativo": true,
+      "id_evento": 45643,
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "data_final": "2027-03-13",
+      "nome_evento": "JURERÊ NIGHT RUN 2027",
+      "ativo": true,
+      "id_evento": 46865,
+      "data_inicial": "2027-03-13"
+    }
+  ]
+}

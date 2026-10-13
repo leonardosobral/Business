@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html>
+<head id="Head1"><title>
+	
+</title>
+
+    <!-- Meta -->    
+    <meta property="og:description" content="Ticket Sports | Eventos para você!" /><meta property="og:image" content="https://storagefileta.blob.core.windows.net/ticketagora/TicketSports/Logo_TicketSports.png" /><meta property="og:type" content="website" />
+
+    <!-- Twitter -->    
+    <meta name="twitter:description" content="Ticket Sports | Eventos para você!" /><meta name="twitter:image" content="https://storagefileta.blob.core.windows.net/ticketagora/TicketSports/Logo_TicketSports.png" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../img/favicon.ico" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="author" content="Ticket Sports - Mude sua vida!" /><meta name="viewport" content="width=device-width" />
+    <noscript>
+        <meta http-equiv="Refresh" content="0;url=https://www.ticketsports.com.br" />
+    </noscript>
+    <meta name="Robots" content="NOINDEX, NOFOLLOW" /><meta http-equiv="cache-control" content="no-cache" /><meta http-equiv="expires" content="0" /><meta http-equiv="pragma" content="no-cache" /><link href="https://cdn.ticketsports.com.br/ticketagora/arquivos/inscricao/bootstrap2.css" rel="stylesheet" type="text/css" /><link href="bootstrap-theme.css" rel="stylesheet" type="text/css" />
+    <style media="screen" type="text/css">
+        .back_content {
+            background: #fff;
+        }
+
+        #siteseal img {
+            width: 150px;
+        }
+
+        #box-rascunho {
+            position: fixed !important;
+            bottom: 50% !important;
+            width: 250px !important;
+            margin: 0px !important;
+            left: 0px !important;
+            z-index: 100 !important;
+            -webkit-border-radius: 0px !important;
+            -moz-border-radius: 0px !important;
+            font-size: 1em !important;
+            color: #fff;
+            background-color: red;
+            display: none;
+            padding: 15px;
+        }
+
+            #box-rascunho b {
+                font-size: 1.1em !important;
+            }
+
+        .ts-bolt-spinner {
+            align-items: center;
+            justify-content: center
+        }
+
+        @keyframes spinner-anim {
+            0% {
+                transform: rotate(0deg)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        .bolt-spinner-circle {
+            border: 1.5px solid;
+            border-color: rgba(200,200,200,1);
+            border-color: rgba(var(--palette-neutral-20,200, 200, 200),1);
+            border-top-color: rgba(0,90,158,1);
+            border-top-color: var(--communication-foreground,rgba(0, 90, 158, 1));
+            border-radius: 50%;
+            animation-name: spinner-anim;
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(.53,.21,.29,.67)
+        }
+
+            .bolt-spinner-circle.xsmall {
+                width: .75rem;
+                height: .75rem
+            }
+
+            .bolt-spinner-circle.small {
+                width: 1rem;
+                height: 1rem
+            }
+
+            .bolt-spinner-circle.medium {
+                width: 1.25rem;
+                height: 1.25rem
+            }
+
+            .bolt-spinner-circle.large {
+                width: 1.75rem;
+                height: 1.75rem
+            }
+
+        .bolt-spinner-label {
+            color: rgba(0,90,158,1);
+            color: var(--communication-foreground,rgba(0, 90, 158, 1))
+        }
+
+        .ts-bolt-spinner {
+            align-items: center;
+            justify-content: center
+        }
+
+        @keyframes spinner-anim {
+            0% {
+                transform: rotate(0deg)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        .bolt-spinner-circle {
+            border: 1.5px solid;
+            border-color: rgba(200,200,200,1);
+            border-color: rgba(var(--palette-neutral-20,200, 200, 200),1);
+            border-top-color: rgba(0,90,158,1);
+            border-top-color: var(--communication-foreground,rgba(0, 90, 158, 1));
+            border-radius: 50%;
+            animation-name: spinner-anim;
+            animation-duration: 1.3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(.53,.21,.29,.67)
+        }
+
+            .bolt-spinner-circle.xsmall {
+                width: .75rem;
+                height: .75rem
+            }
+
+            .bolt-spinner-circle.small {
+                width: 1rem;
+                height: 1rem
+            }
+
+            .bolt-spinner-circle.medium {
+                width: 1.25rem;
+                height: 1.25rem
+            }
+
+            .bolt-spinner-circle.large {
+                width: 1.75rem;
+                height: 1.75rem
+            }
+
+        .bolt-spinner-label {
+            color: rgba(0,90,158,1);
+            color: var(--communication-foreground,rgba(0, 90, 158, 1))
+        }
+    </style>
+    <script type="text/javascript">
+        (function () {
+            const eventId = "74787";
+
+            const eventType = "";
+            const fbEventId = "";
+            const orderToken = "";
+
+            const key = `fb_async_sent_${fbEventId}`;
+            if (!eventId || !eventType || !fbEventId || sessionStorage.getItem(key)) {
+                console.log(`ℹ️ FB Conversion já enviada ou sem evento: ${eventType} (${fbEventId})`);
+                return;
+            }
+
+            const url = `/inscricao/fbasync.aspx?id=${encodeURIComponent(eventId)}&type=${encodeURIComponent(eventType)}`
+                + `&eid=${encodeURIComponent(fbEventId)}`
+                + (orderToken ? `&tk=${orderToken}` : "");
+
+            fetch(url, {
+                method: "GET",
+                credentials: "include", 
+                cache: "no-store"       
+            })
+                .then(async (res) => {
+                    const contentType = res.headers.get("content-type") || "";
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    if (!contentType.includes("application/json")) {
+                        const text = await res.text();
+                        throw new Error(`Resposta inesperada (não JSON): ${text.slice(0, 100)}...`);
+                    }
+                    return res.json();
+                })
+                .then((data) => {
+                    if (data.status === "ok") {
+                        console.log(`✅ FB Conversion enviada com sucesso: ${eventType} (${eventId})`);
+                        sessionStorage.setItem(key, "1");
+                    } else {
+                        console.warn(`⚠️ Retorno FB Conversion inesperado:`, data);
+                    }
+                })
+                .catch((err) => {
+                    console.error(`❌ Erro FB Conversion (${eventType}):`, err.message || err);
+                })
+                .finally(() => {
+                    console.log("➡️ Conversion API finalizada");
+                });
+        })();
+    </script>
+
+
+    <!-- Google Tag Manager -->
+    
+    <script type="text/javascript">
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TPGK4CC');
+        
+
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
+    <script type="text/javascript">
+        let pagePath = window.location.pathname;
+        let pageTitle = document.title;
+        let pageLocation = window.location.href;
+
+        class GoogleAnalytics {
+            constructor(measurementId) {
+                this.measurementId = measurementId;
+                this.init();
+            }
+
+            init() {
+                window.dataLayer = window.dataLayer || [];
+                window.gtag = window.gtag || function () { (window.dataLayer.push(arguments)) };
+                gtag('js', new Date());
+                gtag('config', this.measurementId);
+                console.log(gtag);
+            }
+
+            pageView() {
+                gtag('event', 'page_view', {
+                    'send_to': this.measurementId,
+                    'page_path': pagePath,
+                    'page_title': pageTitle,
+                    'page_location': pageLocation
+                });
+            }
+
+            viewItem(item_name, item_id, event_id, event_name) {
+                gtag('event', 'view_item', {
+                    'send_to': this.measurementId,
+                    'event_id': event_id,
+                    'event_name': event_name,
+                    'items': [
+                        {
+                            'item_name': item_name,
+                            'item_id': item_id,
+                            'quantity': 1
+                        }
+                    ]
+                });
+            }
+
+            generateLead(lead_id, event_id, event_name) {
+                gtag('event', 'generate_lead', {
+                    'send_to': this.measurementId,
+                    'transaction_id': lead_id,
+                    'event_id': event_id,
+                    'event_name': event_name
+                });
+            }
+
+            completeRegistration(user_id, event_id, event_name) {
+                gtag('event', 'complete_registration', {
+                    'send_to': this.measurementId,
+                    'user_id': user_id,
+                    'event_id': event_id,
+                    'event_name': event_name
+                });
+            }
+
+            beginCheckout(event_id, event_name) {
+                gtag('event', 'begin_checkout', {
+                    'send_to': this.measurementId,
+                    'event_id': event_id,
+                    'event_name': event_name
+                });
+            }
+        }
+
+        // Ticket Sports - G4
+        let analytics = new GoogleAnalytics('G-SLL66C2YZ7');
+        analytics.pageView();
+
+            
+
+
+
+
+
+    </script>
+    <!-- End Google Analytics -->
+
+
+    <!-- Facebook Pixel Code -->
+    <script type="text/javascript">
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            }; if (!f._fbq) f._fbq = n;
+            n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+        }(window,
+            document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+        
+    </script>
+    <noscript></noscript>
+
+    
+
+    <!-- End Facebook Pixel Code -->
+    <script type="text/javascript">
+        
+    </script>
+    
+
+    <title>Evento com inscrições encerradas.</title>
+    <script src="jquery-1.8.0.min.js" type="text/javascript"></script>
+    <script src="dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $("iframe").height($("#body").height() - 30);
+        });
+    </script>
+
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPGK4CC" height="0" width="0" style="display: none; visibility: hidden"></iframe>
+        
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div id="msg_save"></div>
+    <div id="box-rascunho">
+        <b>Preview para aprovação.</b><br />
+        As inscrições realizadas nesta página são exclusivamente para testes, sem validade, e serão canceladas automaticamente.
+    </div>
+    
+<div class="navbar navbar-fixed-top navbar-default container" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <img src="https://cdn.ticketsports.com.br/ticketagora/painel-atleta/logo-ts.svg" alt="Ticket Agora" class="img_ta pull-center" />
+
+                    <div class="pull-left">
+                        <button id="btnMenu" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" id="chevron-right"></span>
+                        </button>
+                    </div>
+                   
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                       
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Suporte <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://accounts.ticketsports.com.br/?redirectTo=https%3A%2F%2Fwww.ticketsports.com.br%2F" target="_blank">Meus Pedidos</a></li>                                
+                                <li><a href="https://www.ticketsports.com.br/termos_de_compra.aspx" target="_blank">Termo de compra</a></li>
+                                <li><a href="https://www.ticketsports.com.br/politica_privacidade.aspx" target="_blank">Política de privacidade</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.container -->
+            </div>
+        </div>
+        <!-- /.nav-collapse -->
+    </div>
+
+    <div id="header-text" class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="textoTituloM">
+                        SOROCABA SPEED SERIES FULL LIFE 2026 (26/04/2026)
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="body" class="container">
+
+        <div class="container mb">
+            
+            <div class="row">
+                <div class="menu-superior col-lg-12 col-md-12 form-group">
+                    <ul>
+                        <li class="active"></li>
+                        
+
+                    </ul>
+                   
+                </div>
+               
+            </div>
+            
+        </div>
+
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="tabModalidade" style="padding: 0px">
+                <div class="container">
+                    <div class="box-content-info padding-box-content">
+                        <div class="card">
+                          
+                                <strong>Evento com inscrições encerradas.</strong><br /> <p> As inscrições para este evento estão encerradas.</p>
+                                <p>
+              
+                                Para acompanhar seus pedidos <a href="https://www.ticketsports.com.br/Painel/Index" target="_blank">clique aqui</a>.
+                               </p>
+                            <br /><br />
+                            <p style="text-align:left">
+                            Atenciosamente<br />
+                            Equipe Ticket Sports
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+
+    
+
+<div id="footer">
+    <div style="background-color: #FFBE00; width: 100%; height: 2px; border-width: 2px; border: none"></div>
+    <div class="container" style="padding:0px;">
+        <table width="98%" cellpadding="0" cellspacing="0" style="margin-top:5px">
+            <tbody><tr>
+                <td class="alt-img" valign="middle">
+                    <a href="https://www.ticketsports.com.br" target="_blank" title="Ticket Agora">
+                    <img src="https://cdn.ticketsports.com.br/ticketagora/Template/Logo_Amarela.png" style="border: none;width:95px!important;height:37px!important" alt="Ticket Agora - Mude sua vida" />
+                    </a>
+                </td>
+                
+                <td class="alt-td" valign="middle" align="left" style="font-size: 8pt; color: #fff;">
+                   
+                </td>
+                <td class="alt-td" valign="middle" align="right" style="font-size: 0.8rem; color: #fff;">Faça as inscrições de seu evento aqui! <a href="https://www.ticketsports.com.br/funcionalidades.aspx" style="color: #FFBE00" target="_blank">Saiba mais</a></td>
+            </tr>
+        </tbody></table>
+        
+    </div>
+</div>
+
+    <div id="divUnder" style="display: none; position: relative"></div>
+
+    <div id="loadPage" style="display: none">
+        <table cellpadding="0" cellspacing="0" width="100%" style="height: 100%">
+            <tr>
+                <td align="center" valign="middle">
+                    <div class="about-loading-spinner ts-bolt-spinner text-center" style="display: flex">
+                        <div class="bolt-spinner-circle large"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4914a3a8fedb3a6',t:'MTc5MTc1NzYyMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

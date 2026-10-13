@@ -1,0 +1,35 @@
+[
+  {
+    "source": "https://morro-mt.com.br/contato",
+    "file": "morro-contato.html",
+    "sha256": "691f60c075c9d307ccd991a5c4122eac8e32b03fd4bebeea5200362289d82057",
+    "emails": [
+      "morro@morro-mt.com.br"
+    ]
+  },
+  {
+    "source": "https://abraceo.com.br/filiado/morro-mt/",
+    "file": "morro-abraceo.html",
+    "sha256": "732f34b10694fa5e5d879a4a306850696c14c4e43ddc1ee2e0cf3ad74440e9c9",
+    "emails": [
+      "__morro@morro-mt.com.br",
+      "contato.abraceo@gmail.com"
+    ]
+  },
+  {
+    "source": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88251/c9797e464fed4d4a830c43d23a714fde639236039846466297.pdf",
+    "file": "pace-regulamento.pdf",
+    "sha256": "a3df8efad376dc2a1032fff5f00d1fda9e9719ea53069cd206ba23b1a5793315",
+    "emails": [
+      "maratona@paceeventos.com.br"
+    ]
+  },
+  {
+    "source": "https://www.paceeventos.com.br/",
+    "file": "pace-site.html",
+    "sha256": "9fa7425b6c79dbea5bb5f4e95cf19b8d0a7a20fec4e99c35c31864c4a85bb0b2",
+    "emails": [
+      "contato@paceeventos.com.br"
+    ]
+  }
+]

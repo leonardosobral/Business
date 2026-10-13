@@ -1,0 +1,720 @@
+{
+  "events": [
+    {
+      "data_final": "2026-11-30",
+      "nome_evento": "SOROCABA SPEED RUN FULL LIFE 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 36652,
+      "data_inicial": "2026-11-30"
+    },
+    {
+      "data_final": "2026-11-07",
+      "nome_evento": "FEIRA NIGHT RUN ANÁLISE 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 36657,
+      "data_inicial": "2026-11-07"
+    },
+    {
+      "data_final": "2026-10-31",
+      "nome_evento": "CORRIDA MARATONINHA KIDS 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 36658,
+      "data_inicial": "2026-10-31"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "MEIA MARATONA BLUE RUN SALVADOR 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 38203,
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "8ª CORRIDA OUTLET PREMIUM SÃO PAULO",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 38361,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "URBAN TRAIL RUN - ETAPA 3 PARQUE HORTO FLORESTAL",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 38571,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "MARATONA MONUMENTAL DE BRASÍLIA 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 39395,
+      "data_inicial": "2026-11-21"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "Maratona de Aracaju 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 39399,
+      "data_inicial": "2026-10-31"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "2ª PACE RUN",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 39849,
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "data_final": "2027-03-07",
+      "nome_evento": "BUNKA OFF ROAD 2027",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 40716,
+      "data_inicial": "2027-03-07"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "CORRIDA MEIA DA CONCEIÇÃO 2026 - ANO 12",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 41123,
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "data_final": "2026-11-14",
+      "nome_evento": "Farol Fast Marathon 2026 - Revezamento",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 42366,
+      "data_inicial": "2026-11-14"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "CIRCUITO OSCAR 2026-2027 - 2ª ETAPA - SÃO JOSÉ DOS CAMPOS",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 42869,
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-10-31",
+      "nome_evento": "MOUNTAIN DO CHAPADA DOS VEADEIROS 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 43036,
+      "data_inicial": "2026-10-31"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "MEIA MARATONA THE BEST RUN 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 43242,
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2026-11-14",
+      "nome_evento": "AERO NIGHT RUN - ETAPA SOROCABA 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 43664,
+      "data_inicial": "2026-11-14"
+    },
+    {
+      "data_final": "2026-10-24",
+      "nome_evento": "AERO NIGHT RUN - GWM DAHRUJ - ETAPA CAMPINAS 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 43669,
+      "data_inicial": "2026-10-24"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "MARICÁ 21K",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 43923,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "EAÍ RUN 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 44158,
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "10ª GO PINK - CORRIDA E CAMINHADA DO OUTUBRO ROSA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 44270,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-31",
+      "nome_evento": "Ultra Trail Amazônica 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 44524,
+      "data_inicial": "2026-10-31"
+    },
+    {
+      "data_final": "2027-05-02",
+      "nome_evento": "4ª CORRIDA DO TURISMO - ABAVSE 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 44821,
+      "data_inicial": "2027-05-02"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "CORRIDA DAS PODEROSAS 2026 - 3ª ETAPA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 44832,
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "data_final": "2026-10-31",
+      "nome_evento": "ASSOMBRA RUN",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 44834,
+      "data_inicial": "2026-10-31"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "CORRIDA DO GRÊMIO 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 44998,
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "CORRIDA BARÃO DE JUNDIAHY - EXÉRCITO BRASILEIRO 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45000,
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2027-07-04",
+      "nome_evento": "MARATONA DE LONDRINA 2027",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45279,
+      "data_inicial": "2027-07-04"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "IGUAÇU RUN 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45305,
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "data_final": "2027-08-22",
+      "nome_evento": "New Balance 42k Porto Alegre 2027",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45365,
+      "data_inicial": "2027-08-21"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "CORRIDA KIDS BOULEVARD SHOPPING 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45587,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-17",
+      "nome_evento": "1ª CORRIDA DO MÉDICO",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45663,
+      "data_inicial": "2026-10-17"
+    },
+    {
+      "data_final": "2027-04-03",
+      "nome_evento": "MOUNTAIN DO PRAIA DO ROSA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45670,
+      "data_inicial": "2027-04-03"
+    },
+    {
+      "data_final": "2026-12-20",
+      "nome_evento": "CIRCUITO RJ 2026 - 3ª ETAPA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45831,
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "CIRCUITO SESI DE CORRIDAS DAS INDÚSTRIAS - ETAPA TOLEDO",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45842,
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "CIRCUITO SESI DE CORRIDAS DAS INDÚSTRIAS - ETAPA FOZ DO IGUAÇU",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45869,
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "RIO MARAVILHA 2026 - ETAPA PRIMAVERA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45894,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-17",
+      "nome_evento": "RUN PINK RIO CLARO  2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 45899,
+      "data_inicial": "2026-10-17"
+    },
+    {
+      "data_final": "2026-12-20",
+      "nome_evento": "YUP STAR RUN",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46047,
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "data_final": "2026-11-21",
+      "nome_evento": "CORRIDA DO EMPREENDEDOR",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46059,
+      "data_inicial": "2026-11-21"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "4ª MARATONA YOPRO DE PORTO VELHO",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46060,
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "data_final": "2026-10-31",
+      "nome_evento": "1º CORRIDA ALIANÇA PELA VIDA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46064,
+      "data_inicial": "2026-10-31"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "RC 21K",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46210,
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "VASCORRIDA NITERÓI 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46218,
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-11-07",
+      "nome_evento": "CIRCUITO GRUPO CENTRAL - ETAPA NIGHT RUN IPATINGA 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46253,
+      "data_inicial": "2026-11-07"
+    },
+    {
+      "data_final": "2026-12-05",
+      "nome_evento": "CORRIDA DO MELO PARAGUAÇU PAULISTA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46516,
+      "data_inicial": "2026-12-05"
+    },
+    {
+      "data_final": "2026-11-01",
+      "nome_evento": "CIRCUITO UNIMED OFF ROAD - ETAPA PEDREIRA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46568,
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "data_final": "2026-10-17",
+      "nome_evento": "1ª CORRIDA DO COMÉRCIO DE SANTANA 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46607,
+      "data_inicial": "2026-10-17"
+    },
+    {
+      "data_final": "2026-12-27",
+      "nome_evento": "RIO MARAVILHA SEASONS - 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46873,
+      "data_inicial": "2026-12-27"
+    },
+    {
+      "data_final": "2026-12-13",
+      "nome_evento": "VALE VERDE RUN 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46883,
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "ULTRA NAVARRO 50K",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46928,
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2026-10-25",
+      "nome_evento": "UBERLÂNDIA 10 MILHAS 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46947,
+      "data_inicial": "2026-10-25"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "6ª Corrida dos Médicos",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 46959,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2027-08-29",
+      "nome_evento": "MARATONA DE VITÓRIA 2027",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47146,
+      "data_inicial": "2027-08-29"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "9ª CORRIDA CONTRA O CÂNCER - 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47202,
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "22ª PROVA PEDESTRE CIDADE DE LONDRINA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47406,
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "data_final": "2026-11-28",
+      "nome_evento": "NEON MUSIC NIGHT RUN – BRUSQUE 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47431,
+      "data_inicial": "2026-11-28"
+    },
+    {
+      "data_final": "2026-11-22",
+      "nome_evento": "LEC RUN 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47443,
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "CIRCUITO DOS ELEMENTOS - ETAPA AR 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47453,
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "3ª CORRIDA DE MARCHI  - AÇAÍ SPORT",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47657,
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "data_final": "2026-11-21",
+      "nome_evento": "FINAL DO CIRCUITO PROCORRER 2026 - MIZUNO",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47669,
+      "data_inicial": "2026-11-21"
+    },
+    {
+      "data_final": "2026-11-20",
+      "nome_evento": "CORRIDA CASA DAS CORREIAS - RUN CDC 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47672,
+      "data_inicial": "2026-11-20"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "POA LADIES RUN 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47686,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2026-10-12",
+      "nome_evento": "2ª CORRIDA DA SOEA 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47687,
+      "data_inicial": "2026-10-12"
+    },
+    {
+      "data_final": "2026-10-12",
+      "nome_evento": "CORRIDA KIDS TRIMAIS PLACES 6º EDIÇÃO",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47688,
+      "data_inicial": "2026-10-12"
+    },
+    {
+      "data_final": "2027-03-14",
+      "nome_evento": "2ª INVICTAS RUN",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47704,
+      "data_inicial": "2027-03-14"
+    },
+    {
+      "data_final": "2026-11-07",
+      "nome_evento": "CORRIDA E CAMINHADA RIO NIGHT RUN",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47780,
+      "data_inicial": "2026-11-07"
+    },
+    {
+      "data_final": "2026-12-05",
+      "nome_evento": "SUMMER 48K 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47877,
+      "data_inicial": "2026-12-05"
+    },
+    {
+      "data_final": "2027-03-21",
+      "nome_evento": "IGT23K 2027",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47888,
+      "data_inicial": "2027-03-21"
+    },
+    {
+      "data_final": "2026-11-08",
+      "nome_evento": "CORRE BURRAO 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47911,
+      "data_inicial": "2026-11-08"
+    },
+    {
+      "data_final": "2027-06-20",
+      "nome_evento": "RC 21K - 200 ANOS",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47957,
+      "data_inicial": "2027-06-20"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "15ª VOLTA DA UNICAMP",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 47971,
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "data_final": "2026-10-24",
+      "nome_evento": "1ª CORRIDA DO PROFISSIONAL DE EDUCAÇÃO FÍSICA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48085,
+      "data_inicial": "2026-10-24"
+    },
+    {
+      "data_final": "2026-10-18",
+      "nome_evento": "1ª CORRIDA E CAMINHADA DA ODONTOLOGIA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48240,
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "data_final": "2027-01-31",
+      "nome_evento": "Corrida Cinderela - Paulínia",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48419,
+      "data_inicial": "2027-01-31"
+    },
+    {
+      "data_final": "2026-10-24",
+      "nome_evento": "CORRIDA BG SAI NA FRENTE 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48425,
+      "data_inicial": "2026-10-24"
+    },
+    {
+      "data_final": "2026-12-06",
+      "nome_evento": "3° CORRIDA DO PELZNICKEL – GUABIRUBA 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48458,
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "data_final": "2026-10-24",
+      "nome_evento": "GUARANI RACE 2026 PITA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48511,
+      "data_inicial": "2026-10-24"
+    },
+    {
+      "data_final": "2027-03-27",
+      "nome_evento": "Maratona Internacional de Manaus",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48714,
+      "data_inicial": "2027-03-27"
+    },
+    {
+      "data_final": "2027-02-21",
+      "nome_evento": "2ª MEIA MARATONA DE OSASCO 2027",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48717,
+      "data_inicial": "2027-02-21"
+    },
+    {
+      "data_final": "2026-12-30",
+      "nome_evento": "BC CELEBRATION 2026 - BALNEÁRIO CAMBORIÚ",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48730,
+      "data_inicial": "2026-12-30"
+    },
+    {
+      "data_final": "2026-11-15",
+      "nome_evento": "SANTOS RUN 8K 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48949,
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "data_final": "2026-12-13",
+      "nome_evento": "MEIA MARATONA DO FOGO - 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48978,
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "data_final": "2026-11-29",
+      "nome_evento": "POA DAY RUN 2026 - 3ª ETAPA",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 48990,
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "data_final": "2026-11-14",
+      "nome_evento": "SUPERE RUN – Porto Belo 2026",
+      "ativo": true,
+      "contas": [],
+      "id_evento": 49002,
+      "data_inicial": "2026-11-14"
+    }
+  ],
+  "event_columns": [
+    {
+      "nullable": "NO",
+      "type": "bigint",
+      "default": "nextval('tb_conta_eventos_id_conta_evento_seq'::regclass)",
+      "name": "id_conta_evento"
+    },
+    {
+      "nullable": "NO",
+      "type": "bigint",
+      "default": null,
+      "name": "id_conta"
+    },
+    {
+      "nullable": "NO",
+      "type": "integer",
+      "default": null,
+      "name": "id_evento"
+    },
+    {
+      "nullable": "NO",
+      "type": "USER-DEFINED",
+      "default": "'ATIVO'::status_conta_evento",
+      "name": "status"
+    },
+    {
+      "nullable": "YES",
+      "type": "bigint",
+      "default": null,
+      "name": "usuario_cadastro"
+    },
+    {
+      "nullable": "NO",
+      "type": "timestamp with time zone",
+      "default": "now()",
+      "name": "data_criacao"
+    },
+    {
+      "nullable": "NO",
+      "type": "timestamp with time zone",
+      "default": "now()",
+      "name": "data_atualizacao"
+    }
+  ]
+}

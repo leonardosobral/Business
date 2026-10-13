@@ -1,0 +1,55 @@
+{
+  "created": 7,
+  "events": 2,
+  "accounts": [
+    {
+      "nome_conta": "Amigos do Horto Eventos",
+      "status": "PENDENTE",
+      "id_conta": -12001,
+      "id_filiado": "amigos-do-horto-eventos",
+      "logo_path": "/assets/contas/abraceo/amigos-do-horto-eventos.jpg"
+    },
+    {
+      "nome_conta": "CronusTec",
+      "status": "PENDENTE",
+      "id_conta": -12002,
+      "id_filiado": "cronustec",
+      "logo_path": "/assets/contas/abraceo/cronustec.jpg"
+    },
+    {
+      "nome_conta": "MMB Eventos Esportivos",
+      "status": "PENDENTE",
+      "id_conta": -12003,
+      "id_filiado": "mmb-eventos-esportivos",
+      "logo_path": "/assets/contas/abraceo/mmb-eventos-esportivos.jpg"
+    },
+    {
+      "nome_conta": "Nk Sports",
+      "status": "PENDENTE",
+      "id_conta": -12004,
+      "id_filiado": "nk-sports",
+      "logo_path": "/assets/contas/abraceo/nk-sports.jpg"
+    },
+    {
+      "nome_conta": "Premium",
+      "status": "PENDENTE",
+      "id_conta": -12005,
+      "id_filiado": "premium",
+      "logo_path": "/assets/contas/abraceo/premium.png"
+    },
+    {
+      "nome_conta": "Soul + esportes",
+      "status": "PENDENTE",
+      "id_conta": -12006,
+      "id_filiado": "soulmais",
+      "logo_path": "/assets/contas/abraceo/soulmais.png"
+    },
+    {
+      "nome_conta": "TM4 SPORTS & BUSINESS",
+      "status": "PENDENTE",
+      "id_conta": -12007,
+      "id_filiado": "tm4-sports-business",
+      "logo_path": "/assets/contas/abraceo/tm4-sports-business.jpg"
+    }
+  ]
+}

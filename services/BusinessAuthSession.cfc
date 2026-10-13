@@ -8,7 +8,7 @@ component output=false {
         if (!structKeyExists(principal,"version") || principal.version != 1
             || !structKeyExists(principal,"id") || !isValid("integer",principal.id) || principal.id LTE 0
             || !structKeyExists(principal,"sub") || !len(principal.sub)
-            || !structKeyExists(principal,"email") || !isValid("email",principal.email)
+            || !structKeyExists(principal,"email") || !new services.EmailAddress().isValidAddress(principal.email)
             || !structKeyExists(principal,"name")) return {};
         return duplicate(principal);
     }

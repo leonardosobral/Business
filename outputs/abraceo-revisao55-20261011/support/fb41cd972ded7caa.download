@@ -1,0 +1,750 @@
+
+<!DOCTYPE html>
+
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrições - Assessorar Produções</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/inscricao/assets/css/style.min.css" type="text/css">
+    <script src="assets/js/jquery.js"></script>
+    <script src="https://getbootstrap.com/docs/4.2/dist/js/bootstrap.bundle.min.js"></script>
+    <meta name="description" content="Assessorar Produções - Inscrições para eventos. Inscreva-se agora e participe dos melhores eventos.">
+    <meta name="keywords" content="assessorar produções, inscrições, eventos esportivos, competições, inscrição">
+</head>
+
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="instagram" viewBox="0 0 16 16">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+        </symbol>
+    </svg>
+
+    <header class="site-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="base-header">
+                        <a href="/" class="logo">
+                            <img src="/inscricao/assets/images/logo.png">
+                        </a>
+                        <div class="menu">
+                            <a class="link-menu" href="/inscricao/">Inscrição</a>
+                            <a class="link-menu" href="page-2a-via.php">Pagamento</a>
+                            <a class="link-menu" href="page-comprovante.php">Comprovante</a>
+                            <a class="link-menu" href="page-solicita-troca.php">Trocas</a>
+                        </div>
+                        <a href="/" class="btn-voltar"><i class="bi bi-chevron-left"></i> Voltar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="content-page">
+<section class="site-content" id="main">
+    <div class="box-site">
+        <div id="content" class="site-content" role="main">
+            <div class="entry-content" id="page-resultados">
+                                                        <div class="titulo-line">
+                                            Outubro/2026                                        </div>
+
+                        <table id="tabelainscritos">                        <tr class="">
+                            <td>
+                                <a class="label-nome" href="page-inscricao.php?evento=64">
+                                    TREINÃO SUPERMERCADO TODA HORA                                </a>
+                            </td>
+                            <td>
+                                                                    <a class="label-dados" href="page-inscricao.php?evento=64">
+                                        11/10 - <span>ALAGOINHAS - BA</span>
+                                    </a>
+                                                            </td>
+                            <td>
+                                <div class="row">
+                                                                            <div class="col-lg-12">
+                                            <button type="button" class="btn btn-danger">
+                                                Inscrições Encerradas
+                                            </button>
+                                        </div>
+                                                                        <div class="col-lg-6">
+                                        <button type="button" class="btn btn-info" data-toggle="collapse" href="#info0">
+                                            Mais Informações
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="info0" class="collapse">
+                            <td>
+                                <div class="card card-body">
+                                    <p>&nbsp;</p>
+<p><img src="/eficiente/repositorio/229.jpeg" width="300" height="400" vspace="0" hspace="0" border="0" alt="" /></p>
+<p style="text-align: justify;">&nbsp;</p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;">O <span class="zlAe0W_TextBase zlAe0W_Text" data-w-component="text" data-w-weight="semibold" data-w-inline="" data-w-whitespace="linebreaks">Trein&atilde;o Supermercado Toda Hora</span> chega para celebrar os <span class="zlAe0W_TextBase zlAe0W_Text" data-w-component="text" data-w-weight="semibold" data-w-inline="" data-w-whitespace="linebreaks">10 anos</span> de hist&oacute;ria da marca com um momento especial de sa&uacute;de, movimento e confraterniza&ccedil;&atilde;o. Prepare-se para correr, caminhar e comemorar junto com a gente em um evento feito para toda a comunidade.</span></span></p>
+<p style="text-align: justify;">&nbsp;</p>
+<p style="text-align: justify;"><strong style="font-family: Tahoma; color: rgb(255, 255, 255); background-color: rgb(0, 0, 255); font-size: large;">&nbsp;O QUE ESPERAR</strong></p>
+<div class="ac5DTa_Box v9V1QG_Content" data-w-direction="col" data-w-auto-spacing="" data-w-list-content="">
+<ul>
+    <li>
+    <p><span style="font-size: medium;">Trein&atilde;o comemorativo para corredores e caminhantes.<br type="_moz" />
+    </span></p>
+    </li>
+    <li>
+    <p><span style="font-size: medium;">Ambiente leve, animado e acolhedor para toda a comunidade.</span></p>
+    </li>
+</ul>
+</div>
+<ul>
+    <li>
+    <p><span style="font-size: medium;">V&aacute;rias ativa&ccedil;&otilde;es de parceiros e muitos sorteios.</span></p>
+    </li>
+    <li>
+    <p><span style="font-size: medium;">Uma manh&atilde; especial para celebrar sa&uacute;de, integra&ccedil;&atilde;o e os 10 anos do Supermercado Toda Hora.</span></p>
+    </li>
+</ul>
+<p>&nbsp;&nbsp;</p>
+<p><span style="font-size: medium;"><span style="font-family: Tahoma;"><span style="background-color: rgb(255, 0, 0);"><strong style="color: rgb(255, 255, 255); background-color: rgb(0, 0, 255); font-size: large; text-align: justify;">&nbsp;DADOS DO EVENTO</strong></span></span></span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><span style="font-size: medium;"><span style="font-family: Tahoma;">&nbsp;<u><strong>Data:</strong></u> 11 de Outubro de 2026</span></span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><span style="font-size: medium;"><span style="font-family: Tahoma;"><u><strong><span style="line-height: 24px;">Local:</span></strong></u><span style="line-height: 24px;">&nbsp;Centro de Cultura de Alagoinhas-BA</span></span></span><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><span style="font-size: medium;"><span style="font-family: Tahoma;"><u><strong><span style="line-height: 24px;">Hor&aacute;rio:</span></strong></u><span style="line-height: 24px;"> Largada &agrave;s 6h30</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;"><u><strong><span style="line-height: 24px;">Modalidades:</span></strong></u><span style="line-height: 24px;"> Corrida - 5K e Caminhada - 3K</span></span></span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;">&nbsp;<span style="font-size: medium;">&nbsp;</span>&nbsp;</p>
+<p style="text-align: justify;"><strong style="color: rgb(255, 255, 255); background-color: rgb(0, 0, 255); font-size: large;">&nbsp;INSCRI&Ccedil;&Atilde;O</strong></p>
+<p style="text-align: justify;"><em style="font-size: medium;"><strong>- LAN&Ccedil;AMENTO (lote promocional) - </strong></em><span style="font-size: medium;"><strong>06.06.26 &agrave;s 7h</strong></span><strong style="font-size: medium;">&nbsp;</strong><span style="font-size: medium;">- (vagas limitadas)&nbsp;</span></p>
+<p><span style="font-size: medium;"><span style="font-family: Tahoma;"><b><i>- <span style="background-color: rgb(255, 255, 0);">Valor: R$49,00</span>&nbsp;- (sem taxa de site)&nbsp; </i></b></span><span style="font-size: large;"><span style="font-family: Tahoma;"><span style="background-color: rgb(255, 0, 0);"><b>ENCERRADO!</b></span></span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;"><strong>- Use o Cupom: <span style="background-color: rgb(255, 255, 0);">TODAHORA49</span></strong></span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;">&nbsp;</span></span></p>
+<p style="text-align: justify;"><em style="font-size: medium;"><strong>- 1&ordm; LOTE -&nbsp;</strong></em><span style="font-size: medium;"><span style="font-family: Tahoma;"><b><i><span style="background-color: rgb(255, 255, 0);">Valor: R$69,90</span> - (sem taxa de site)&nbsp;&nbsp;</i></b></span></span></p>
+<p style="text-align: justify;">&nbsp;<font face="Tahoma" size="3">PIX ou at&eacute; 2x no cart&atilde;o</font></p>
+<p style="text-align: justify;">&nbsp;</p>
+<p data-start="486" data-end="661" style="text-align: justify;"><strong style="font-family: Tahoma; color: rgb(255, 255, 255); background-color: rgb(0, 0, 255); font-size: large;">&nbsp;INCLUSO NA INSCRI&Ccedil;&Atilde;O</strong><span style="font-size: medium;"><span style="font-family: Tahoma;"><br data-start="510" data-end="513" />
+<strong data-start="142" data-end="163">🎽 Camisa oficial do evento</strong></span></span></p>
+<p data-start="486" data-end="661" style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;"><strong data-start="166" data-end="190">🏅 Medalha exclusiva</strong></span></span></p>
+<p data-start="486" data-end="661" style="text-align: justify;">🎁&nbsp;&nbsp;<strong data-start="193" data-end="213" style="font-family: Tahoma; font-size: medium;">&nbsp;Sorteios de brindes</strong></p>
+<p data-start="486" data-end="661" style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;"><strong data-start="193" data-end="213">☕ Caf&eacute; p&oacute;s-prova</strong></span></span></p>
+<p data-start="486" data-end="661" style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;"><strong data-start="216" data-end="252">💧 Hidrata&ccedil;&atilde;o durante o percurso</strong></span></span></p>
+<p data-start="486" data-end="661" style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;"><strong data-start="255" data-end="290">🎉 After animado com atra&ccedil;&atilde;o musical</strong></span></span></p>
+<p data-start="486" data-end="661" style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;">&nbsp;</span></span></p>
+<p data-start="486" data-end="661" style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;">&nbsp;</span></span><span style="font-size: x-large;"><span style="font-family: Tahoma;">Garanta sua inscri&ccedil;&atilde;o e venha comemorar com a gente!</span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;">&nbsp;</span></span></p>
+<p data-start="486" data-end="661" style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;"><em style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: bolder;">D&uacute;vidas ou informa&ccedil;&otilde;es t&eacute;cnicas</span>,</em>&nbsp;esclarecer com a produtora pelos canais:</span></span></p>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px; text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;"><br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">E-mail:</span>&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="365f584555445f5559534576574545534545594457444644595243555953451855595b185444">[email&#160;protected]</a>&nbsp;(meio de comunica&ccedil;&atilde;o oficial do evento).<br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">WhatsApp:</span>&nbsp;(75) 9.9888-3030</span></span></div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px; text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;">&nbsp;</span></span></div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px; text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;">Sua solicita&ccedil;&atilde;o ser&aacute; atendida dentro do prazo m&aacute;ximo de 72h &uacute;teis.</span></span></div>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;">&nbsp;&nbsp;</span></span><span style="font-size: medium;"><span style="font-family: Tahoma;">&nbsp;<span style="text-align: start; box-sizing: border-box; font-weight: 700; border-bottom: 5px solid rgb(0, 153, 255); margin-top: 21px; display: inline-block; margin-bottom: 15px;">Produ&ccedil;&atilde;o Executiva:&nbsp;</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Tahoma;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<img src="/eficiente/repositorio/100.png" width="150" height="150" vspace="0" hspace="0" border="0" alt="" /></span></span></p>                                </div>
+                            </td>
+                        </tr>
+
+                                        <tr class="">
+                            <td>
+                                <a class="label-nome" href="page-inscricao.php?evento=60">
+                                    IDOMED TRAILL - 2ª Edição                                </a>
+                            </td>
+                            <td>
+                                                                    <a class="label-dados" href="page-inscricao.php?evento=60">
+                                        17/10 - <span>ALAGOINHAS - BA</span>
+                                    </a>
+                                                            </td>
+                            <td>
+                                <div class="row">
+                                                                            <div class="col-lg-12">
+                                            <button type="button" class="btn btn-danger">
+                                                Inscrições Encerradas
+                                            </button>
+                                        </div>
+                                                                        <div class="col-lg-6">
+                                        <button type="button" class="btn btn-info" data-toggle="collapse" href="#info1">
+                                            Mais Informações
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="info1" class="collapse">
+                            <td>
+                                <div class="card card-body">
+                                    <p>&nbsp;</p>
+<p><span style="font-size: x-large;"><span style="background-color: rgb(0, 255, 0);"><strong>IDOMED TRAILL - 2&ordf; edi&ccedil;&atilde;o</strong></span></span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: medium;">Vem a&iacute; o 2&ordm; Traill da Idomed. Prepare o t&ecirc;nis, chame os amigos e vem viver essa experi&ecirc;ncia com a gente!</span></p>
+<p><span style="font-size: medium;">Vai ter caminhada e corrida, divers&atilde;o, sa&uacute;de e solidariedade.&nbsp;</span></p>
+<p><strong><span style="font-size: medium;">Data:</span></strong><span style="font-size: medium;"> </span><span style="background-color: rgb(0, 255, 0);"><span style="font-size: medium;">17 de outubro de 2026</span></span></p>
+<p><strong><span style="font-size: medium;">Largada:</span></strong><span style="font-size: medium;"> </span><span style="background-color: rgb(0, 255, 0);"><span style="font-size: medium;">6h</span></span></p>
+<p><strong><span style="font-size: medium;">Local:</span></strong><span style="font-size: medium;"> <span style="background-color: rgb(0, 255, 0);">Idomed Est&aacute;cio</span> (Faculdade de Medicina) - Alagoinhas</span></p>
+<p><strong><span style="font-size: medium;">Valor:</span></strong><span style="font-size: medium;">&nbsp;</span><strong><span style="background-color: rgb(0, 255, 0);"><span style="font-size: medium;">R$39,90 + 2kg de alimentos</span></span></strong><span style="background-color: rgb(0, 255, 0);"><span style="font-size: medium;"> (1kg de ARROZ + 1kg de FEIJ&Atilde;O)&nbsp;</span></span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: medium;"><strong>Incluso na inscri&ccedil;&atilde;o:</strong> <span style="background-color: rgb(0, 255, 0);">Camisa + Medalha + Lanche + HIdrata&ccedil;&atilde;o</span>&nbsp;<span style="font-family: Ubuntu, sans-serif; font-weight: 700; text-align: start;">&nbsp; &nbsp;</span></span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Ubuntu, sans-serif; font-weight: 700; text-align: start;">&nbsp;</span></span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: x-large;"><span style="background-color: rgb(255, 255, 0);"><strong>ATEN&Ccedil;&Atilde;O!</strong></span></span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: medium;">Alunos e colaboradores da IDOMED devem solicitar junto a institui&ccedil;&atilde;o, CUPOM para realizar a inscri&ccedil;&atilde;o.&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: x-large;"><strong><span style="background-color: rgb(0, 255, 0);">VAGAS LIMITAD&Iacute;SSIMAS!</span></strong></span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: large;"><br type="_moz" />
+</span><span style="font-size: large;">Porque correr juntos &eacute; sempre mais legal!</span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: medium;"><em style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: bolder;">D&uacute;vidas ou informa&ccedil;&otilde;es t&eacute;cnicas</span>,</em>&nbsp;esclarecer com a produtora pelos canais:</span></p>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;"><br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">E-mail:</span>&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e0898e93839289838f8593a08193938593938f92819290928f8495838f8593ce838f8dce8292">[email&#160;protected]</a>&nbsp;(meio de comunica&ccedil;&atilde;o oficial do evento).<br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">WhatsApp:</span>&nbsp;(75) 9.9888-3030</div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;">&nbsp;</div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;">Sua solicita&ccedil;&atilde;o ser&aacute; atendida dentro do prazo m&aacute;ximo de 72h &uacute;teis.</div>
+<p>&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;<span style="font-family: Ubuntu, sans-serif; font-size: 16px; text-align: start; box-sizing: border-box; font-weight: 700; border-bottom: 5px solid rgb(0, 153, 255); margin-top: 21px; display: inline-block; margin-bottom: 15px;">Produ&ccedil;&atilde;o Executiva:&nbsp;</span></p>
+<p>&nbsp; &nbsp; &nbsp;&nbsp;<img src="/eficiente/repositorio/100.png" width="120" height="120" vspace="0" hspace="0" border="0" alt="" /></p>                                </div>
+                            </td>
+                        </tr>
+
+                                        <tr class="">
+                            <td>
+                                <a class="label-nome" href="page-inscricao.php?evento=61">
+                                    CIRCUITO DE CORRIDAS SEST/SENAT - 21K                                </a>
+                            </td>
+                            <td>
+                                                                    <a class="label-dados" href="page-inscricao.php?evento=61">
+                                        18/10 - <span>21K - ALAGOINHAS</span>
+                                    </a>
+                                                            </td>
+                            <td>
+                                <div class="row">
+                                                                            <div class="col-lg-6">
+                                            <a href="page-inscricao.php?evento=61" target="_blank">
+                                                <button type="button" class="btn btn-warning">
+                                                    Inscrições
+                                                </button>
+                                            </a>
+                                        </div>
+                                                                        <div class="col-lg-6">
+                                        <button type="button" class="btn btn-info" data-toggle="collapse" href="#info2">
+                                            Mais Informações
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="info2" class="collapse">
+                            <td>
+                                <div class="card card-body">
+                                    <p>&nbsp;</p>
+<p><img src="/eficiente/repositorio/228.jpeg" width="400" height="533" vspace="0" hspace="0" border="0" alt="" /></p>
+<p>&nbsp;</p>
+<p class="isSelectedEnd"><span style="font-size: medium;">Ap&oacute;s o sucesso da primeira edi&ccedil;&atilde;o do evento esportivo do <strong>SEST SENAT em Alagoinhas</strong>, o projeto ganha uma nova identidade, novos desafios e ainda mais protagonismo no cen&aacute;rio esportivo da cidade.</span></p>
+<p class="isSelectedEnd"><span style="font-size: medium;">Esse ano o&nbsp;<strong>Circuito de Corridas SEST SENAT - 21K Alagoinhas</strong>, reunir&aacute;&nbsp;<strong>caminhada de 3 km, corridas de 7 km e 21 km</strong>, com um grande marco para o esporte local: a realiza&ccedil;&atilde;o da <strong>1&ordf; Meia Maratona de Alagoinhas</strong>.</span></p>
+<p class="isSelectedEnd"><span style="font-size: medium;">Realizado pelo <strong>SEST SENAT &ndash; Unidade Alagoinhas</strong>, o circuito amplia a proposta iniciada na edi&ccedil;&atilde;o anterior, incentivando a pr&aacute;tica esportiva, a sa&uacute;de e a qualidade de vida, al&eacute;m de valorizar os trabalhadores do transporte e integrar toda a comunidade.</span></p>
+<p><span style="font-size: medium;">Uma nova etapa come&ccedil;a. <strong>Mais desafios, mais quil&ocirc;metros e uma nova hist&oacute;ria para a corrida de rua em Alagoinhas.</strong></span></p>
+<p>&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: large;"><span style="background-color: rgb(255, 204, 0);"><b><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">DADOS DO EVENTO</span></b></span></span><b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></b></p>
+<p class="MsoNormal" style="text-align: justify;"><b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">Local:</span></b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"> Estacionamento do Est&aacute;dio Carneir&atilde;o &ndash; Alagoinhas/BA<o:p></o:p></span></p>
+<p class="MsoNormal" style="text-align: justify;"><b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">Data:</span></b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"> 18 de outubro de 2026<o:p></o:p></span></p>
+<p class="MsoNormal" style="text-align: justify;"><font face="Arial, sans-serif"><span style="font-size: 16px;"><b>Modalidades: </b></span></font></p>
+<p class="MsoNormal" style="text-align: justify;"><font face="Arial, sans-serif"><span style="font-size: 16px;">Corrida Oficial - 7km e 21km</span></font></p>
+<p class="MsoNormal" style="text-align: justify;"><font face="Arial, sans-serif"><span style="font-size: 16px;">Caminhada - 3km</span></font></p>
+<p class="MsoNormal" style="text-align: justify;"><b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">Hor&aacute;rio de Largada: </span></b></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">Corrida (21km) - </span><strong><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">&agrave;s 5h</span></strong></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">Corrida 7km - </span><strong><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">&agrave;s 6h</span></strong></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">Caminhada 3km - </span><strong><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">&agrave;s 6h</span></strong></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;<span style="font-size: large;"><span style="background-color: rgb(0, 255, 0);"><strong style="font-size: medium;"><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">IMPORTANTE:</span></strong></span></span><span style="font-family: Arial, &quot;sans-serif&quot;; font-size: 12pt;">&nbsp;A corrida ter&aacute; dura&ccedil;&atilde;o m&aacute;xima de tr&ecirc;s horas (5h &agrave;s 8h) para a dist&acirc;ncia de 21k e duas horas (6h &agrave;s 8h) para as dist&acirc;ncias de 7k e 3k.</span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="background-color: rgb(255, 255, 0);"><strong><span style="font-size: 12pt; font-family: Arial, &quot;sans-serif&quot;;">Para a prova de 21k</span></strong><span style="font-size: 12pt; font-family: Arial, &quot;sans-serif&quot;;"> haver&aacute; um <b>Ponto de Corte no km 14</b> </span></span><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">(Rua 24 de Maio esquina com Conselheiro Saraiva) &ndash; Tempo: 1h45 &ndash; Pace 7:30min/km &ndash; m&iacute;nimo para n&atilde;o ser desclassificado.&nbsp;</span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><img src="/eficiente/repositorio/224.jpeg" width="300" height="400" vspace="0" hspace="0" border="0" alt="" /></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="font-size:12.0pt;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p></o:p></span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: large;"><span style="background-color: rgb(255, 204, 0);"><b><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">INSCRI&Ccedil;&Otilde;ES</span></b></span></span><b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></b></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="background-color: rgb(204, 153, 255);"><strong><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">Associados SEST/SENAT</span></strong></span><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"> - Trabalhador do transporte com cadastro ativo na institui&ccedil;&atilde;o.&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"><b>&nbsp; &nbsp;- INSCRI&Ccedil;&Atilde;O GRATUITA + 4kg de alimentos </b>(2kg de arroz + 2kg de feij&atilde;o)</span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="background-color: rgb(255, 255, 0);"><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"><b>Solicitar cupom para inscri&ccedil;&atilde;o no SEST/SENAT - Unidade Alagoinhas</b></span></span><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><span style="background-color: rgb(204, 153, 255);"><strong><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">P&uacute;blico Geral:&nbsp;</span></strong></span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: large;"><b><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">Lote de lan&ccedil;amento:&nbsp;</span>R$ 60,00</b></span><font size="3"><b> <span style="font-size: large;">+ 2kg de alimentos</span> </b>(1kg de arroz + 1kg de feij&atilde;o)</font></p>
+<p class="MsoNormal" style="text-align: justify;"><b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">Use o Cupom: <span style="font-size: large;"><span style="background-color: rgb(255, 255, 0);">SEST/SENAT</span></span> </span></b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">(e garanta 20% de desconto)</span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: medium;"><span style="background-color: rgb(0, 255, 0);"><strong><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">IMPORTANTE:</span></strong></span></span><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"> </span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">- Todos os participantes de P&uacute;blico Geral: doa&ccedil;&atilde;o obrigat&oacute;ria de 2kg de alimentos (1kg de arroz + 1kg de feij&atilde;o) no ato da retirada do kit.<o:p></o:p></span></p>
+<p class="MsoNormal" style="text-align: justify;">-&nbsp;<span style="font-family: Arial, &quot;sans-serif&quot;; font-size: 16px;">Todos os participantes Trabalhadores do Transporte: doa&ccedil;&atilde;o obrigat&oacute;ria de 4kg de alimentos (2kg de arroz + 2kg de feij&atilde;o) no ato da retirada do kit.</span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: large;"><span style="background-color: rgb(255, 204, 0);"><b><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">PREMIA&Ccedil;&Atilde;O</span></b></span></span><b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">&nbsp;</span></b></p>
+<p class="MsoNormal" style="text-align: justify;"><b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></b></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: medium;"><strong><span style="background-color: rgb(204, 153, 255);"><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">&nbsp;Corrida 21km&nbsp;</span></span></strong></span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">1&ordm; ao 5&ordm; lugar GERAL (feminino e masculino)&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><strong style="font-size: medium;"><span style="background-color: rgb(204, 153, 255);"><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">&nbsp;Corrida 7km</span></span></strong></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-family: Arial, &quot;sans-serif&quot;; font-size: 16px;">1&ordm; ao 5&ordm; lugar GERAL (feminino e masculino)</span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">1&ordm; ao 5&ordm; lugar PCD (feminino e masculino)</span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">1&ordm; ao 5&ordm; lugar 60+ (feminino e masculino)</span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><strong style="font-size: medium;"><span style="background-color: rgb(204, 153, 255);"><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">&nbsp;Caminhada 3km</span></span></strong></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-family: Arial, &quot;sans-serif&quot;; font-size: 16px;">Paticipa&ccedil;&atilde;o recreativa sem competi&ccedil;&atilde;o, sem p&oacute;dio e sem premi&ccedil;&atilde;o. </span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><span style="background-color: rgb(0, 255, 0);"><span style="font-size: medium;"><strong><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">IMPORTANTE</span></strong></span><strong><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">:</span></strong></span><span style="font-family: Arial, &quot;sans-serif&quot;; font-size: 16px;">&nbsp;Todos os participantes da corrida e caminhada receber&atilde;o medalha de partcipa&ccedil;&atilde;o.&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p><span style="font-size: medium;"><span style="background-color: rgb(255, 204, 0);"><b style="font-size: large;"><span style="font-family: Arial, &quot;sans-serif&quot;;">IDOSOS E PCD:</span></b></span></span><b style="font-size: large;"><span style="font-family: Arial, &quot;sans-serif&quot;;">&nbsp;</span></b></p>
+<p><span style="font-size: medium;">As inscri&ccedil;&otilde;es para IDOSOS e PCD tem 50% de desconto.&nbsp;</span></p>
+<p><span style="font-size: medium;">- IDOSOS - desconto aplicado automaticamente no ato da inscri&ccedil;&atilde;o.</span></p>
+<p><span style="font-size: medium;">- PCD - necess&aacute;rio enviar email para: <span style="background-color: rgb(255, 255, 153);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d8b1b6abbbaab1bbb7bdab98b9ababbdababb7aab9aaa8aab7bcadbbb7bdabf6bbb7b5f6baaa">[email&#160;protected]</a></span> anexando documento oficial com foto e documento que comprove a condi&ccedil;&atilde;o, para receber o cupom para inscri&ccedil;&atilde;o.</span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p><span style="font-size: medium;">Regulamento oficial da prova <span style="background-color: rgb(0, 255, 0);"><strong><u><a href="http://assessorarproducoes.com.br/eficiente/repositorio/225.pdf" target="_blank">CLIQUE AQUI</a></u></strong></span></span></p>
+<p><span style="font-size: medium;">Autoriza&ccedil;&atilde;o para participa&ccedil;&atilde;o de menor de idade </span><span style="color: rgb(51, 153, 102);"><span style="background-color: rgb(255, 255, 153);"><strong><span style="font-size: large;"><a href="http://assessorarproducoes.com.br/eficiente/repositorio/212.pdf" target="_blank"><span style="background-color: rgb(0, 255, 0);"><u><span style="color: rgb(0, 0, 0);"><span style="font-size: medium;">CLIQUE AQUI!</span></span></u></span></a></span></strong></span></span></p>
+<p><br />
+&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><em style="font-size: medium; box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: bolder;">D&uacute;vidas ou informa&ccedil;&otilde;es t&eacute;cnicas</span>,</em><span style="font-size: medium;"> esclarecer com a produtora pelos canais:</span></p>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;"><br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">E-mail:</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e47405d4d5c474d414b5d6e4f5d5d4b5d5d415c4f5c5e5c414a5b4d414b5d004d4143004c5c">[email&#160;protected]</a> (meio de comunica&ccedil;&atilde;o oficial do evento).<br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">WhatsApp:</span> (75) 9.9888-3030</div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;">&nbsp;</div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;">Sua solicita&ccedil;&atilde;o ser&aacute; atendida dentro do prazo m&aacute;ximo de 72h &uacute;teis.</div>
+<p>&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"><a href="http://assessorarproducoes.com.br/eficiente/repositorio/23.pdf" target="_blank"><span style="background-color: rgb(255, 255, 0);">SAIBA MAIS</span></a></span></b><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"> sobre nossa pol&iacute;tica de vendas e cancelamentos.</span>&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: 12pt; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: Ubuntu, sans-serif; font-size: 16px; text-align: start; box-sizing: border-box; font-weight: 700; border-bottom: 5px solid rgb(0, 153, 255); margin-top: 21px; display: inline-block; margin-bottom: 15px;">Produ&ccedil;&atilde;o Executiva:&nbsp;</span></p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;<img src="/eficiente/repositorio/100.png" width="100" height="100" vspace="0" hspace="0" border="0" alt="" /></p>                                </div>
+                            </td>
+                        </tr>
+
+                </table>                                        <div class="titulo-line">
+                                            Novembro/2026                                        </div>
+
+                        <table id="tabelainscritos">                        <tr class="">
+                            <td>
+                                <a class="label-nome" href="page-inscricao.php?evento=62">
+                                    CORRIDA SILVA ROCHA 45 ANOS                                </a>
+                            </td>
+                            <td>
+                                                                    <a class="label-dados" href="page-inscricao.php?evento=62">
+                                        01/11 - <span>ALAGOINHAS - BA</span>
+                                    </a>
+                                                            </td>
+                            <td>
+                                <div class="row">
+                                                                            <div class="col-lg-6">
+                                            <a href="page-inscricao.php?evento=62" target="_blank">
+                                                <button type="button" class="btn btn-warning">
+                                                    Inscrições
+                                                </button>
+                                            </a>
+                                        </div>
+                                                                        <div class="col-lg-6">
+                                        <button type="button" class="btn btn-info" data-toggle="collapse" href="#info3">
+                                            Mais Informações
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="info3" class="collapse">
+                            <td>
+                                <div class="card card-body">
+                                    <p>&nbsp;</p>
+<p style="text-align: center;"><img src="/eficiente/repositorio/193.jpeg" width="500" height="153" vspace="0" hspace="0" border="0" alt="" /></p>
+<h3 style="text-align: center;">&nbsp;<span style="font-size: large;"><b><span style="font-family: Arial, &quot;sans-serif&quot;;">CORRIDA SILVA ROCHA 45 ANOS</span></b></span><b><span style="font-size: 13.5pt; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></b></h3>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; line-height: normal; text-align: center;"><span style="font-size: medium;"><span style="font-family: Arial, &quot;sans-serif&quot;;">01 de Novembro de 2026 - Alagoinhas/BA</span></span></p>
+<p class="MsoNormal"><o:p>&nbsp;</o:p>&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: medium;"><span style="font-family: Arial;"><span style="line-height: 150%;">A&nbsp;Corrida Silva Rocha 45 Anos&nbsp;nasce como um marco especial na celebra&ccedil;&atilde;o dos 45 anos da Rede Silva Rocha, traduzindo sua hist&oacute;ria, prop&oacute;sito e conex&atilde;o com a comunidade em uma experi&ecirc;ncia &uacute;nica.&nbsp;Mais do que um evento esportivo, a corrida &eacute; uma iniciativa que une sa&uacute;de, bem-estar e relacionamento, promovendo qualidade de vida e incentivando h&aacute;bitos saud&aacute;veis.</span></span></span><span style="font-size:12.0pt;line-height:150%;&#10;font-family:&quot;Times New Roman&quot;,&quot;serif&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;&#10;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p>&nbsp;</p>
+<p style="text-align: justify;"><span style="font-size: medium;"><span style="line-height: 150%; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">Trata-se de uma prova oficial, cronometrada e autorizada pela Federa&ccedil;&atilde;o Bahiana de Atletismo - FBA, garantindo credibilidade, organiza&ccedil;&atilde;o e padr&atilde;o t&eacute;cnico ao evento. Os participantes contar&atilde;o com n&uacute;mero de peito, chip de cronometragem e estrutura completa de prova, al&eacute;m de premia&ccedil;&atilde;o para os destaques.&nbsp;</span></span></p>
+<p style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><span style="font-size: medium;"><span style="font-family: Arial;"><span style="line-height: 150%;">Pensada para ir al&eacute;m da comemora&ccedil;&atilde;o, a Corrida Silva Rocha 45 Anos representa um movimento: aproximar pessoas e fortalecer la&ccedil;os com a comunidade.</span></span></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><b style="font-size: large; text-align: start;"><span style="font-family: Arial, &quot;sans-serif&quot;;">O EVENTO:</span></b></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><strong><span style="font-family: Arial; font-size: medium;">DATA:</span></strong><span style="font-family: Arial; font-size: medium;"> 01 de Novembro de 2026</span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><strong><span style="font-family: Arial; font-size: medium;">LOCAL:</span></strong><span style="font-family: Arial; font-size: medium;"> Estacionamento do Carneir&atilde;o - Alagoinhas/BA</span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><strong><span style="font-family: Arial; font-size: medium;">LARGADA:</span></strong><span style="font-family: Arial; font-size: medium;"> 6h30</span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><strong><span style="font-family: Arial; font-size: medium;">DIST&Acirc;NCIAS:&nbsp;</span></strong></p>
+<ul>
+    <li><span style="font-family: Arial; font-size: medium;">Caminhada - 3km (recreativa)</span></li>
+    <li><span style="font-family: Arial; font-size: medium;">Corrida - 6km (competitiva)</span></li>
+</ul>
+<p>&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;">&nbsp;<b style="font-size: large; text-align: start;"><span style="font-family: Arial, &quot;sans-serif&quot;;">INSCRI&Ccedil;&Otilde;ES:</span></b></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><font face="Arial" size="3"><b>Lote Promocional:&nbsp;</b></font><span style="font-family: Arial; font-size: medium;">(vagas limitadas)&nbsp;</span><span style="font-size: medium;"><span style="background-color: rgb(255, 0, 0);"><u style="font-size: large;"><strong><font face="Arial">ENCERRADO!</font></strong></u></span></span></p>
+<p><strong><span style="font-family: Arial; font-size: medium; text-align: justify;">Abertura:</span></strong><span style="font-family: Arial; font-size: medium; text-align: justify;"> 26.04.2026</span></p>
+<p><b style="font-family: Arial; font-size: medium; text-align: justify;">Valor:&nbsp;</b><span style="font-family: Arial; font-size: medium; text-align: justify;">R$45,00&nbsp;</span></p>
+<p>&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><font face="Arial" size="3"><b>1&ordm; Lote: 45% de desconto </b>(use o cupom abaixo) </font><span style="font-size: large;"><span style="background-color: rgb(255, 0, 0);"><u><strong><font face="Arial">ENCERRADO!</font></strong></u></span></span></p>
+<p><b style="font-family: Arial; font-size: medium; text-align: justify;">Valor:&nbsp;</b><span style="font-family: Arial; font-size: medium; text-align: justify;">R$138,00&nbsp;</span></p>
+<p><b style="font-family: Arial; font-size: medium; text-align: justify;">Cupom: </b><span style="font-size: medium;"><span style="background-color: rgb(0, 255, 0);"><b style="font-family: Arial; font-size: medium; text-align: justify;">SILVAROCHA45</b></span></span></p>
+<p>&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><font face="Arial" size="3"><b>2&ordm; Lote: 35% de desconto </b>(use o cupom abaixo)&nbsp;</font></p>
+<p><b style="font-family: Arial; font-size: medium; text-align: justify;">Valor: </b><span style="font-family: Arial; font-size: medium; text-align: justify;">R$138,00&nbsp;</span></p>
+<p><b style="font-family: Arial; font-size: medium; text-align: justify;">Cupom: </b><span style="font-size: medium;"><span style="background-color: rgb(0, 255, 0);"><b style="font-family: Arial; text-align: justify;">SILVAROCHA35</b></span></span></p>
+<p>&nbsp;</p>
+<p><b style="font-size: large;"><span style="font-family: Arial, &quot;sans-serif&quot;;">IDOSOS E PCD:&nbsp;</span></b></p>
+<p><span style="font-size: medium;">As inscri&ccedil;&otilde;es para IDOSOS e PCD tem 50% de desconto. Estar&atilde;o dispon&iacute;veis a partir do 1&ordm; Lote.&nbsp;</span></p>
+<p><span style="font-size: medium;">- IDOSOS - desconto aplicado automaticamente no ato da inscri&ccedil;&atilde;o.</span></p>
+<p><span style="font-size: medium;">- PCD - necess&aacute;rio enviar email para:&nbsp;<span style="background-color: rgb(255, 255, 153);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="40292e33233229232f2533002133332533332f32213230322f2435232f25336e232f2d6e2232">[email&#160;protected]</a></span>&nbsp;anexando documento oficial com foto e documento que comprove a condi&ccedil;&atilde;o, para recedber o cupom para inscri&ccedil;&atilde;o.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: large;"><strong>PREMIA&Ccedil;&Atilde;O: Geral e TOP45 </strong></span><em><span style="font-size: medium;"><strong>(Feminino e Masculino)</strong></span></em></p>
+<p><span style="font-size: medium;">A premia&ccedil;&atilde;o ser&aacute; distrib&uacute;ida da seguinte forma:</span></p>
+<p><strong><span style="font-size: medium;">Colaborador Silva Rocha</span></strong><span style="font-size: medium;"> (Fem. e Masc.)</span></p>
+<p><span style="font-size: medium;">1&ordm; ao 3&ordm; lugar - Trof&eacute;u</span></p>
+<p><strong><span style="font-size: medium;">P&uacute;blico Geral</span></strong><span style="font-size: medium;">&nbsp;(Fem. e Masc.)</span></p>
+<p><span style="font-size: medium;">1&ordm; ao 3&ordm; lugar - Trof&eacute;u</span></p>
+<p><strong><span style="font-size: medium;">Geral 60+</span></strong><span style="font-size: medium;"> (Fem. e Masc.)</span></p>
+<p><span style="font-size: medium;">1&ordm; ao 3&ordm; lugar - Trof&eacute;u</span></p>
+<p><strong><span style="font-size: medium;">Geral PCD</span></strong><span style="font-size: medium;"> (Fem. e Masc.)</span></p>
+<p><span style="font-size: medium;">1&ordm; ao 3&ordm; lugar - Trof&eacute;u</span></p>
+<p><strong><span style="font-size: medium;">TOP45 </span></strong><span style="font-size: medium;">(Fem. e Masc.) - Geral</span></p>
+<p><span style="font-size: medium;">Medalha Especial</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: medium;">Regulamento oficial da prova <span style="background-color: rgb(0, 255, 0);"><strong><u><a href="http://assessorarproducoes.com.br/eficiente/repositorio/214.pdf" target="_blank">CLIQUE AQUI</a></u></strong></span></span></p>
+<p><span style="font-size: medium;">Autoriza&ccedil;&atilde;o para participa&ccedil;&atilde;o de menor de idade </span><span style="color: rgb(51, 153, 102);"><span style="background-color: rgb(255, 255, 153);"><strong><span style="font-size: large;"><a href="http://assessorarproducoes.com.br/eficiente/repositorio/212.pdf" target="_blank"><span style="background-color: rgb(0, 255, 0);"><u><span style="color: rgb(0, 0, 0);"><span style="font-size: medium;">CLIQUE AQUI!</span></span></u></span></a></span></strong></span></span></p>
+<p><span style="font-size: medium;">Autoriza&ccedil;&atilde;o para retirada de kit de Grupos </span><span style="background-color: rgb(255, 255, 153);"><span style="color: rgb(51, 153, 102);"><u><strong><span style="font-size: large;"><a href="http://assessorarproducoes.com.br/eficiente/repositorio/213.pdf" target="_blank"><span style="background-color: rgb(0, 255, 0);"><span style="color: rgb(0, 0, 0);"><span style="font-size: medium;">CLIQUE AQUI!</span></span></span></a></span></strong></u></span></span></p>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: medium;">Corrida Silva Rocha 45 anos - Venha correr com a gente!</span></strong></p>
+<p>&nbsp;</p>
+<p><span style="font-size: medium; text-align: justify;"><a href="http://assessorarproducoes.com.br/eficiente/repositorio/157.pdf" target="_blank"><b><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">SAIBA MAIS</span></b><span style="line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">&nbsp;</span></a></span><span style="font-size: medium; text-align: justify; line-height: 17.12px; font-family: Arial, &quot;sans-serif&quot;;">sobre nossa pol&iacute;tica de vendas e cancelamentos.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: medium;"><em style="color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px; box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: bolder;">D&uacute;vidas ou informa&ccedil;&otilde;es t&eacute;cnicas</span>,</em><span style="font-family: Ubuntu, sans-serif;">&nbsp;esclarecer com a Produtora Executiva pelos canais:</span></span></p>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;"><span style="font-size: medium;"><br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">E-mail:</span>&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abc2c5d8c8d9c2c8c4ced8ebcad8d8ced8d8c4d9cad9dbd9c4cfdec8c4ced885c8c4c685c9d9">[email&#160;protected]</a>&nbsp;(meio de comunica&ccedil;&atilde;o oficial do evento).<br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">WhatsApp:</span>&nbsp;(75) 9.9888-3030</span></div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;"><span style="font-size: medium;">&nbsp;</span></div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;"><span style="font-size: medium;">Sua solicita&ccedil;&atilde;o ser&aacute; atendida dentro do prazo m&aacute;ximo de 72h &uacute;teis.</span></div>
+<p><span style="font-size: medium;">&nbsp;&nbsp;</span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-family: Ubuntu, sans-serif; font-size: large; font-weight: 700;">Realiza&ccedil;&atilde;o:</span></p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: medium;"><strong>&nbsp; Farm&aacute;cia Silva Rocha</strong></span></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp; &nbsp;<img src="/eficiente/repositorio/191.jpeg" width="130" height="130" vspace="0" hspace="0" border="0" alt="" /></p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;"><span style="font-size: large;"><span style="font-family: Ubuntu, sans-serif; font-weight: 700;">Produ&ccedil;&atilde;o e Executiva:</span></span></p>
+<p>&nbsp; &nbsp; &nbsp;&nbsp;<img src="/eficiente/repositorio/100.png" width="130" height="130" vspace="0" hspace="0" border="0" alt="" /></p>
+<p>&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><span style="font-size:12.0pt;line-height:150%;&#10;font-family:&quot;Times New Roman&quot;,&quot;serif&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;&#10;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p style="text-align: justify;">&nbsp;</p>                                </div>
+                            </td>
+                        </tr>
+
+                                        <tr class="">
+                            <td>
+                                <a class="label-nome" href="page-inscricao.php?evento=54">
+                                    CORRIDA BORA BRUUU 2026                                </a>
+                            </td>
+                            <td>
+                                                                    <a class="label-dados" href="page-inscricao.php?evento=54">
+                                        20/11 - <span>ALAGOINHAS - BA</span>
+                                    </a>
+                                                            </td>
+                            <td>
+                                <div class="row">
+                                                                            <div class="col-lg-6">
+                                            <a href="page-inscricao.php?evento=54" target="_blank">
+                                                <button type="button" class="btn btn-warning">
+                                                    Inscrições
+                                                </button>
+                                            </a>
+                                        </div>
+                                                                        <div class="col-lg-6">
+                                        <button type="button" class="btn btn-info" data-toggle="collapse" href="#info4">
+                                            Mais Informações
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="info4" class="collapse">
+                            <td>
+                                <div class="card card-body">
+                                    <p>&nbsp;</p>
+<p>&nbsp;<img src="/eficiente/repositorio/215.jpeg" width="400" height="533" vspace="0" hspace="0" border="0" alt="" />&nbsp; &nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-align:justify">&nbsp;</p>
+<p class="MsoNormal" style="text-align:justify"><span style="font-size:12.0pt;&#10;line-height:107%;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">A Corrida Oficial BoraBruuu &ndash; Alagoinhas 2026 &eacute; a consolida&ccedil;&atilde;o de um projeto que nasceu dentro da assessoria esportiva BruCareca, criada para incentivar pessoas comuns a se tornarem atletas, promovendo sa&uacute;de, autoestima, disciplina e pertencimento.</span></p>
+<p class="MsoNormal" style="text-align:justify"><span style="font-size:12.0pt;&#10;line-height:107%;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p></o:p></span></p>
+<p class="MsoNormal" style="text-align:justify"><span style="font-size:12.0pt;&#10;line-height:107%;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Ap&oacute;s a realiza&ccedil;&atilde;o de 2 trein&otilde;es de grande sucesso, com excelente participa&ccedil;&atilde;o e engajamento, a BruCareca d&aacute; agora um passo maior: a realiza&ccedil;&atilde;o de um evento oficial de corrida de rua em Alagoinhas, aberto &agrave; comunidade e a atletas de toda a regi&atilde;o.<o:p></o:p></span></p>
+<p class="MsoNormal" style="text-align:justify"><span style="font-size:12.0pt;&#10;line-height:107%;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">O evento ser&aacute; uma celebra&ccedil;&atilde;o do esporte, da supera&ccedil;&atilde;o e da energia contagiante que j&aacute; &eacute; marca registrada da BruCareca e BoraBruuu.<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><span style="font-family: Arial, &quot;sans-serif&quot;; font-size: 12pt;">&nbsp;</span>&nbsp;<span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></p>
+<p><span style="font-size: large;"><span style="background-color: rgb(255, 102, 0);"><span style="color: rgb(255, 255, 255);"><strong>&nbsp;INFORMA&Ccedil;&Otilde;ES DA CORRIDA&nbsp;</strong></span></span></span></p>
+<p><span style="font-size: medium;">📅&nbsp;<strong>DATA:</strong>&nbsp;20 de Novembro de 2026 (sexta-feira)</span></p>
+<p><span style="font-size: medium;">⏰&nbsp;<b>HORA:&nbsp;</b>6h30</span></p>
+<p><span style="font-size: medium;">📍&nbsp;&nbsp;<strong>LOCAL:</strong>&nbsp;Alagoinhas-BA</span></p>
+<p><span style="font-size: medium;">📌&nbsp;<strong>DIST&Acirc;NCIAS:&nbsp;</strong></span></p>
+<p><span style="font-size: medium;">&nbsp;✔️&nbsp;3Km - Caminhada</span></p>
+<p><span style="font-size: medium;">✔️ 6Km - Corrida</span></p>
+<p><span style="font-size: medium;">&nbsp;</span></p>
+<p><span style="font-size: large;"><span style="background-color: rgb(255, 102, 0);"><span style="color: rgb(255, 255, 255);"><strong>&nbsp;INSCRI&Ccedil;&Atilde;O&nbsp;</strong></span></span></span></p>
+<p><span style="font-size: large;"><strong>1&ordm; Lote:&nbsp;</strong></span><strong><span style="font-size: large;">R$99,90</span></strong><span style="font-size: large;">&nbsp;(valor com desconto de 1&ordm; lote)&nbsp;</span><span style="font-size: large;"><span style="background-color: rgb(255, 0, 0);"><strong style="font-size: large;">ENCERRADO!</strong></span></span></p>
+<p>&nbsp;<span style="font-size: medium;">Corrida Bora Bruuu - 3km ou 6km</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: large;"><strong>2&ordm; Lote:&nbsp;</strong></span><strong><span style="font-size: large;">R$109,90</span></strong><span style="font-size: large;">&nbsp;</span></p>
+<p><span style="font-size: medium;">Corrida Bora Bruuu - 3km ou 6km</span></p>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: large;">Combo:&nbsp;</span></strong><strong style="font-size: large;">R$ 125,00&nbsp;</strong><span style="font-size: medium;"><span style="background-color: rgb(255, 0, 0);"><strong style="font-size: large;">ENCERRADO!</strong></span></span></p>
+<p><span style="font-size: medium;">Corrida Bora Bruuu (6km) + N&ordm; Peito Corrida do Tonho (5km)</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: large;"><strong>Apenas N&ordm; de Peito: </strong></span><strong><span style="font-size: large;">R$59,90</span></strong><span style="font-size: large;">&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: medium;">Corrida Bora Bruuu - 3km ou 6km</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;<span style="font-size: large;"><span style="background-color: rgb(255, 153, 0);"><u><b>IDOSOS:</b></u></span></span><span style="font-size: large;">&nbsp;Tem desconto de 50% aplicado automaticamente no sistema, no ato da inscri&ccedil;&atilde;o.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: large;"><span style="background-color: rgb(255, 153, 0);"><u><b>PCD:</b></u>&nbsp;</span></span><span style="font-size: large;">Tem desconto de 50% mediante uso de CUPOM, que deve ser solicitado via e-mail:</span></p>
+<p><u><em><strong><span style="font-size: large;">E-mail:</span></strong></em></u><span style="font-size: large;"> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="543d3a2737263d373b3127143527273127273b26352624263b3021373b31277a373b397a3626">[email&#160;protected]</a></span></p>
+<p><u><em><strong><span style="font-size: large;">Necess&aacute;rio enviar em anexo:</span></strong></em></u><span style="font-size: large;"> </span></p>
+<p><span style="font-size: large;">- documento pessoal oficial do atleta;</span></p>
+<p><span style="font-size: large;">- document que comprove a defici&ecirc;ncia</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: large;"><span style="background-color: rgb(255, 102, 0);"><span style="color: rgb(255, 255, 255);"><strong>&nbsp;INSCRI&Ccedil;&Atilde;O INCLUI:&nbsp;</strong></span></span></span></p>
+<p><span style="font-size: medium;">- Camisa oficial do evento</span></p>
+<p><span style="font-size: medium;">- N&ordm; de Peito com chip de cronometragem</span></p>
+<p><span style="font-size: medium;">- Hidrata&ccedil;&atilde;o durante o evento</span></p>
+<p><span style="font-size: medium;">- Medalha p&oacute;s-prova</span></p>
+<p><span style="font-size: medium;">- Kit lanche p&oacute;s-prova</span></p>
+<p><span style="font-size: medium;">- Ativa&ccedil;&otilde;es de parceiros</span></p>
+<p><span style="font-size: medium;">- After com atra&ccedil;&atilde;o musical</span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: large;"><span style="background-color: rgb(255, 102, 0);"><span style="color: rgb(255, 255, 255);"><b><span style="line-height: 36px; font-family: Arial, &quot;sans-serif&quot;;">&nbsp;PREMIA&Ccedil;&Atilde;O CORRIDA:&nbsp;</span></b></span></span></span><b><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></b></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><span style="font-size: medium;">✔️&nbsp;</span><strong><span style="font-size: medium;">Premmia&ccedil;&atilde;o Geral</span></strong><span style="font-size: medium;">&nbsp;(Masculino e Feminino) - 1&ordm; ao 3&ordm; lugar</span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><span style="font-size: medium;">✔️&nbsp;</span><strong><span style="font-size: medium;">Premia&ccedil;&atilde;o Geral PCD e PCD Cadeirante</span></strong><span style="font-size: medium;">&nbsp;(Masmculino e Feminino) -&nbsp;</span><span style="font-size: medium;">1&ordm; ao 3&ordm; lugar</span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><span style="font-size: medium;">✔️&nbsp;</span><strong><span style="font-size: medium;">Premia&ccedil;&atilde;o Geral 60+</span></strong><span style="font-size: medium;">&nbsp;(Masculino e Feminino) -&nbsp;</span><span style="font-size: medium;">1&ordm; ao 3&ordm; lugar</span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><span style="font-size: medium;">✔️&nbsp;</span><strong><span style="font-size: medium;">Premia&ccedil;&atilde;o TOP10</span></strong><span style="font-size: medium;">&nbsp;(Masculino e Feminino)</span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><span style="font-size: medium;">✔️&nbsp;</span><strong><span style="font-size: medium;">Medalhas</span></strong><span style="font-size: medium;">&nbsp;para todos os concluintes da corrida e caminhada.</span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;">&nbsp;<span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;"><o:p></o:p></span></p>
+<p><strong><span style="font-size: x-large;"><span style="line-height: 107%; font-family: Arial, &quot;sans-serif&quot;;">BoraBruuu&hellip; agora &eacute; corrida oficial!</span></span></strong><span style="font-size:12.0pt;&#10;line-height:107%;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;">&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><span style="font-size: large;">Para acessar o <strong>REGULMENTO </strong></span><span style="color: rgb(255, 255, 255);"><span style="font-size: large;"><span style="background-color: rgb(255, 102, 0);"><u><strong><a href="http://assessorarproducoes.com.br/eficiente/repositorio/146.pdf" target="_blank">CLIQUE AQUI!</a></strong></u></span></span></span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;">&nbsp;</p>
+<p><u><span style="font-size: medium;"><em style="color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px; box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: bolder;">D&uacute;vidas ou informa&ccedil;&otilde;es t&eacute;cnicas</span></em></span></u><span style="font-size: medium;"><em style="color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px; box-sizing: border-box;">,</em><span style="font-family: Ubuntu, sans-serif;">&nbsp;esclarecer com a Organiza&ccedil;&atilde;o pelos canais:</span></span></p>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;"><span style="font-size: medium;"><br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">E-mail:</span>&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3851564b5b4a515b575d4b78594b4b5d4b4b574a594a484a575c4d5b575d4b165b5755165a4a">[email&#160;protected]</a>&nbsp;(meio de comunica&ccedil;&atilde;o oficial do evento).<br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">WhatsApp:</span>&nbsp;(75) 9.9888-3030</span></div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;">&nbsp;</div>
+<p>&nbsp;</p>                                </div>
+                            </td>
+                        </tr>
+
+                                        <tr class="">
+                            <td>
+                                <a class="label-nome" href="page-inscricao.php?evento=67">
+                                    VICTOR'S EM MOVIMENTO                                </a>
+                            </td>
+                            <td>
+                                                                    <a class="label-dados" href="page-inscricao.php?evento=67">
+                                        29/11 - <span>ALAGOINHAS - BA</span>
+                                    </a>
+                                                            </td>
+                            <td>
+                                <div class="row">
+                                                                            <div class="col-lg-6">
+                                            <a href="page-inscricao.php?evento=67" target="_blank">
+                                                <button type="button" class="btn btn-warning">
+                                                    Inscrições
+                                                </button>
+                                            </a>
+                                        </div>
+                                                                        <div class="col-lg-6">
+                                        <button type="button" class="btn btn-info" data-toggle="collapse" href="#info5">
+                                            Mais Informações
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="info5" class="collapse">
+                            <td>
+                                <div class="card card-body">
+                                    <p>&nbsp;</p>
+<p>&nbsp;<img src="/eficiente/repositorio/217.jpeg" width="400" height="533" vspace="0" hspace="0" border="0" alt="" />&nbsp;</p>
+<p data-start="22" data-end="338" style="text-align: justify;">&nbsp;</p>
+<p data-start="22" data-end="338" style="text-align: justify;"><span style="font-size: medium;">O <strong data-start="24" data-end="49">Victor's em Movimento</strong> &eacute; um trein&atilde;o recreativo promovido pela <strong data-start="89" data-end="112">Victor's Cosm&eacute;ticos</strong> que une sa&uacute;de, bem-estar, autoestima e beleza em uma experi&ecirc;ncia leve e inspiradora. Mais do que correr ou caminhar, o evento incentiva o autocuidado e a qualidade de vida, mostrando que a verdadeira beleza est&aacute; em movimento.</span></p>
+<p data-start="59" data-end="225" style="text-align: justify;">&nbsp;<span style="font-size: medium;"><strong data-start="340" data-end="457" data-is-last-node="">N&atilde;o &eacute; sobre competi&ccedil;&atilde;o. &Eacute; sobre cuidar de si, viver momentos especiais e celebrar a melhor vers&atilde;o de cada pessoa.</strong></span></p>
+<p data-start="2169" data-end="2256" data-is-last-node="" data-is-only-node="" style="text-align: justify;"><span style="font-size: medium;"><br type="_moz" />
+</span></p>
+<p data-start="2169" data-end="2256" data-is-last-node="" data-is-only-node="" style="text-align: justify;"><strong data-start="2196" data-end="2256" data-is-last-node="" style="color: rgb(255, 255, 255); font-size: x-large; background-color: rgb(255, 0, 255);">Dados do Evento:</strong></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><u><strong><span style="font-family: Arial, &quot;sans-serif&quot;; font-size: 16px;">Data:</span></strong></u><span style="font-family: Arial, &quot;sans-serif&quot;; font-size: 16px;"> 29 de Novembro de 2026</span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><u><strong><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;">Local:</span></strong></u><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;"> Alagoinhas-BA<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><u><strong><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;">Hor&aacute;rio:</span></strong></u><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;"> Largada &agrave;s 6h30<o:p></o:p></span></p>
+<p style="text-align: justify;"><u><strong><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;">Modalidades:</span></strong></u><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;"> Corrida - 5K e Caminhada - 3K</span></p>
+<p data-start="2169" data-end="2256" data-is-last-node="" data-is-only-node="" style="text-align: justify;">&nbsp;</p>
+<p data-start="486" data-end="661">&nbsp;<font color="#ffffff" size="5"><span style="background-color: rgb(255, 0, 255);"><b>Inscri&ccedil;&atilde;o Inclui:</b></span></font></p>
+<p><span style="font-size: medium;"><strong data-start="142" data-end="163">🎽 </strong><strong data-start="142" data-end="163">Camisa oficial do evento</strong></span></p>
+<p><span style="font-size: medium;"><strong data-start="166" data-end="190">🏅 Medalha exclusiva</strong><br data-start="190" data-end="193" />
+<strong data-start="193" data-end="213">☕ Caf&eacute; p&oacute;s-prova</strong><br data-start="213" data-end="216" />
+<strong data-start="216" data-end="252">💧 Hidrata&ccedil;&atilde;o durante o percurso</strong></span></p>
+<p data-start="486" data-end="661"><strong>🎉&nbsp;<span style="font-size: medium;">Sorteios de brindes</span></strong><span style="font-size: medium;"><br data-start="252" data-end="255" data-is-only-node="" />
+<strong data-start="255" data-end="290">🎉 After animado</strong><br data-start="290" data-end="293" />
+<br />
+</span></p>
+<p data-start="486" data-end="661"><span style="font-size: x-large;"><span style="background-color: rgb(255, 0, 255);"><b style="color: rgb(255, 255, 255); font-size: x-large; text-align: justify;">Inscri&ccedil;&atilde;o:</b></span></span><span style="font-size: medium;"><br data-start="678" data-end="681" />
+✔️ Lote de Lan&ccedil;amento: </span><strong><span style="font-size: medium;"><span style="font-size: large;"><span style="background-color: rgb(255, 255, 0);">R$ 49,00 + 1kg de alimento</span></span>&nbsp;</span></strong><span style="font-size: medium;">&nbsp;- PIX ou Cart&atilde;o at&eacute; 2x <span style="background-color: rgb(255, 0, 0);"><u><strong>ENCERRADO</strong></u></span><span style="color: rgb(255, 255, 255);"><br data-start="719" data-end="722" />
+</span></span></p>
+<p data-start="486" data-end="661">&nbsp;</p>
+<p data-start="486" data-end="661"><span style="font-size: medium;">✔️ 1&ordm; Lote: </span><strong><span style="font-size: medium;"><span style="font-size: large;"><span style="background-color: rgb(255, 255, 0);">R$ 59,90 + 1kg de alimento</span></span>&nbsp;</span></strong><span style="font-size: medium;">&nbsp;- PIX ou Cart&atilde;o at&eacute; 2x&nbsp;</span></p>
+<p data-start="486" data-end="661">&nbsp;</p>
+<p data-start="486" data-end="661"><span style="font-size: medium;"><u><strong>OBS:</strong></u> O alimento deve ser entregue no ato da retirada da camisa.&nbsp;</span></p>
+<p data-start="486" data-end="661">&nbsp;</p>
+<p data-start="816" data-end="853"><strong><span style="font-size: medium;">N&atilde;o fique de fora dessa experi&ecirc;ncia!</span></strong></p>
+<p data-start="816" data-end="853"><span style="font-size: large;"><span style="background-color: rgb(255, 0, 255);"><span style="color: rgb(255, 255, 255);"><strong data-start="2196" data-end="2256" data-is-last-node="">Movimente seu corpo. Realce sua beleza. Viva seu melhor.</strong>&nbsp;</span></span></span></p>
+<p data-start="2169" data-end="2256" data-is-last-node="" data-is-only-node="">&nbsp;</p>
+<p data-start="486" data-end="661"><span style="font-size: medium;"><em style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: bolder;">D&uacute;vidas ou informa&ccedil;&otilde;es t&eacute;cnicas</span>,</em>&nbsp;esclarecer com a produtora pelos canais:</span></p>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;"><br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">E-mail:</span>&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="076e697464756e6468627447667474627474687566757775686372646862742964686a296575">[email&#160;protected]</a>&nbsp;(meio de comunica&ccedil;&atilde;o oficial do evento).<br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">WhatsApp:</span>&nbsp;(75) 9.9888-3030</div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;">&nbsp;</div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;">Sua solicita&ccedil;&atilde;o ser&aacute; atendida dentro do prazo m&aacute;ximo de 72h &uacute;teis.</div>
+<p>&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify;">&nbsp;<span style="font-family: Ubuntu, sans-serif; font-size: 16px; text-align: start; box-sizing: border-box; font-weight: 700; border-bottom: 5px solid rgb(0, 153, 255); margin-top: 21px; display: inline-block; margin-bottom: 15px;">Produ&ccedil;&atilde;o Executiva:&nbsp;</span></p>
+<p>&nbsp;<img src="/eficiente/repositorio/100.png" width="150" height="150" vspace="0" hspace="0" border="0" alt="" /></p>                                </div>
+                            </td>
+                        </tr>
+
+                </table>                                        <div class="titulo-line">
+                                            Dezembro/2026                                        </div>
+
+                        <table id="tabelainscritos">                        <tr class="">
+                            <td>
+                                <a class="label-nome" href="page-inscricao.php?evento=66">
+                                    CORRIDA DA PASTORAL DO MENOR DE ALAGOINHAS                                </a>
+                            </td>
+                            <td>
+                                                                    <a class="label-dados" href="page-inscricao.php?evento=66">
+                                        13/12 - <span>ALAGOINHAS - BA</span>
+                                    </a>
+                                                            </td>
+                            <td>
+                                <div class="row">
+                                                                            <div class="col-lg-6">
+                                            <a href="page-inscricao.php?evento=66" target="_blank">
+                                                <button type="button" class="btn btn-warning">
+                                                    Inscrições
+                                                </button>
+                                            </a>
+                                        </div>
+                                                                        <div class="col-lg-6">
+                                        <button type="button" class="btn btn-info" data-toggle="collapse" href="#info6">
+                                            Mais Informações
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="info6" class="collapse">
+                            <td>
+                                <div class="card card-body">
+                                    <p>&nbsp;</p>
+<p>&nbsp;<img src="/eficiente/repositorio/216.jpeg" width="400" height="193" vspace="0" hspace="0" border="0" alt="" /></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><strong><span style="font-size: large;"><span style="line-height: 150%; font-family: Arial, &quot;sans-serif&quot;;">Corra por uma causa. Caminhe pela esperan&ccedil;a.&nbsp;</span></span></strong><span style="font-size:12.0pt;line-height:150%;&#10;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p></o:p></span><strong style="font-family: Arial, &quot;sans-serif&quot;; font-size: 16px;"><span style="font-size: large;">Abrace essa causa!</span></strong></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><span style="font-size:12.0pt;line-height:150%;&#10;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">A <strong>1&ordf; Corrida da Pastoral do Menor de Alagoinhas</strong>, &eacute; um evento beneficente que une esporte, sa&uacute;de e solidariedade em prol das crian&ccedil;as, adolescentes, jovens e suas fam&iacute;lias atendidos pela institui&ccedil;&atilde;o.<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><span style="font-size:12.0pt;line-height:150%;&#10;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">O evento &eacute; aberto para atletas, iniciantes, fam&iacute;lias e todos que desejam fazer parte de uma grande corrente do bem.&nbsp;</span><span style="font-family: Arial, &quot;sans-serif&quot;; font-size: 12pt;">Esta &eacute; uma corrida recreativa e solid&aacute;ria. O objetivo &eacute; incentivar a pr&aacute;tica da atividade f&iacute;sica e apoiar uma importante causa social. N&atilde;o haver&aacute; competi&ccedil;&atilde;o nem disputa por p&oacute;dio, permitindo que cada participante viva a experi&ecirc;ncia no seu pr&oacute;prio ritmo, celebrando a sa&uacute;de, a inclus&atilde;o e a solidariedade.</span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><span style="font-size:12.0pt;line-height:150%;&#10;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Ao participar, voc&ecirc; contribui diretamente para a manuten&ccedil;&atilde;o e o fortalecimento das a&ccedil;&otilde;es desenvolvidas pela Pastoral do Menor, ajudando a transformar a vida de crian&ccedil;as, adolescentes e suas fam&iacute;lias.<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><span style="font-size:12.0pt;line-height:150%;&#10;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Mais do que completar um percurso, voc&ecirc; estar&aacute; dando um passo em dire&ccedil;&atilde;o &agrave; transforma&ccedil;&atilde;o social.<o:p></o:p></span></p>
+<p>&nbsp;<span style="font-size:12.0pt;line-height:150%;&#10;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><strong><span style="font-size: large;">Abrace essa causa!</span></strong></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><span style="font-size: x-large;"><span style="background-color: rgb(255, 0, 0);"><font color="#ffffff"><b>Dados do Evento:</b></font></span></span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><u><strong><span style="font-family: Arial, &quot;sans-serif&quot;; font-size: 16px;">Data:</span></strong></u><span style="font-family: Arial, &quot;sans-serif&quot;; font-size: 16px;"> 13 de dezembro de 2026</span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><u><strong><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;">Local:</span></strong></u><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;"> Pastoral do Menor - Teres&oacute;polis - Alagoinhas-BA<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom: 0.0001pt; text-align: justify; line-height: 18px;"><u><strong><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;">Hor&aacute;rio:</span></strong></u><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;"> Largada &agrave;s 6h30<o:p></o:p></span></p>
+<p style="text-align: justify;"><u><strong><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;">Modalidades:</span></strong></u><span style="font-size: 12pt; line-height: 24px; font-family: Arial, &quot;sans-serif&quot;;"> Corrida - 5K e Caminhada - 3K</span></p>
+<p data-start="2169" data-end="2256" data-is-last-node="" data-is-only-node="" style="text-align: justify;">&nbsp;</p>
+<p data-start="2169" data-end="2256" data-is-last-node="" data-is-only-node="" style="text-align: justify;"><b style="color: rgb(255, 255, 255); font-size: x-large; background-color: rgb(255, 0, 0);">Inscri&ccedil;&atilde;o:</b><span style="text-align: start; font-size: medium;"><br data-start="678" data-end="681" />
+✔️ Lote de Lan&ccedil;amento: </span><strong style="text-align: start;"><span style="font-size: medium;"><span style="font-size: large;"><span style="background-color: rgb(255, 255, 0);">R$ 69,90&nbsp;</span></span>&nbsp;</span></strong><span style="text-align: start; font-size: medium;">&nbsp;- PIX ou Cart&atilde;o at&eacute; 2x&nbsp;</span></p>
+<p data-start="2169" data-end="2256" data-is-last-node="" data-is-only-node="" style="text-align: justify;">&nbsp;</p>
+<p data-start="2169" data-end="2256" data-is-last-node="" data-is-only-node="" style="text-align: justify;"><b style="color: rgb(255, 255, 255); font-size: x-large; background-color: rgb(255, 0, 0);">Inscri&ccedil;&atilde;o Inclui:</b></p>
+<p><span style="font-size: medium;"><strong data-start="142" data-end="163">🎽 </strong><strong data-start="142" data-end="163">Camisa oficial do evento</strong></span></p>
+<p><span style="font-size: medium;"><strong data-start="166" data-end="190">🏅 Medalha exclusiva</strong><br data-start="190" data-end="193" />
+<strong data-start="193" data-end="213">☕ Caf&eacute; p&oacute;s-prova</strong><br data-start="213" data-end="216" />
+<strong data-start="216" data-end="252">💧 Hidrata&ccedil;&atilde;o durante o percurso</strong></span></p>
+<p data-start="486" data-end="661"><span style="font-size: medium;"><strong data-start="255" data-end="290">🎉 After animado</strong><br data-start="290" data-end="293" />
+<br />
+</span></p>
+<p data-start="486" data-end="661"><span style="font-size: medium;"><em style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: bolder;">D&uacute;vidas ou informa&ccedil;&otilde;es t&eacute;cnicas</span>,</em> esclarecer com a produtora pelos canais:</span></p>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;"><br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">E-mail:</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9cf5f2efffeef5fff3f9efdcfdefeff9efeff3eefdeeeceef3f8e9fff3f9efb2fff3f1b2feee">[email&#160;protected]</a> (meio de comunica&ccedil;&atilde;o oficial do evento).<br style="box-sizing: border-box;" />
+<span style="box-sizing: border-box; font-weight: bolder;">WhatsApp:</span> (75) 9.9888-3030</div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;">&nbsp;</div>
+<div style="box-sizing: border-box; color: rgb(33, 37, 41); font-family: Ubuntu, sans-serif; font-size: 16px;">Sua solicita&ccedil;&atilde;o ser&aacute; atendida dentro do prazo m&aacute;ximo de 72h &uacute;teis.</div>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:150%"><span style="font-size:12.0pt;line-height:150%;&#10;font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><o:p></o:p></span></p>
+<p>&nbsp;</p>
+<p data-start="486" data-end="661">&nbsp;<span style="font-family: Ubuntu, sans-serif; font-size: 16px; text-align: start; box-sizing: border-box; font-weight: 700; border-bottom: 5px solid rgb(0, 153, 255); margin-top: 21px; display: inline-block; margin-bottom: 15px;">Produ&ccedil;&atilde;o Executiva:&nbsp;</span></p>
+<p>&nbsp;<img src="/eficiente/repositorio/100.png" width="150" height="150" vspace="0" hspace="0" border="0" alt="" /></p>                                </div>
+                            </td>
+                        </tr>
+
+                </table>            </div>
+
+        </div>
+    </div>
+</section>
+
+</div>
+</div>
+</div>
+</div>
+
+<footer class="site-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="content">
+                    <span>&copy; 2026 Assessorar Produções.
+                    <br/>
+                    <a href="/cdn-cgi/l/email-protection#6e07001d0d1c070d010b1d2e0f1d1d0b1d1d011c0f1c1e1c010a1b0d010b1d400d0103400c1c" target="_blank"><span class="__cf_email__" data-cfemail="1871766b7b6a717b777d6b58796b6b7d6b6b776a796a686a777c6d7b777d6b367b7775367a6a">[email&#160;protected]</span></a>
+                </span>
+                    
+                    <div class="midias-social">
+                        <a href="https://www.linkedin.com/in/assessorarproducoesfestivas/" target="_blank">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/assessorarproducoes/" target="_blank">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://api.whatsapp.com/send?phone=5575998883030&text=Ol%C3%A1%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20eventos%20do%20site." target="_blank">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="base-footer">
+    </div>
+</footer>
+
+
+<div id="popUpModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Atenção</h4>
+                <button type="button" class="close" data-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popUpLoader" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Aguarde</h4>
+            </div>
+            <div class="modal-body">
+                <span class="loader"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+
+</html>

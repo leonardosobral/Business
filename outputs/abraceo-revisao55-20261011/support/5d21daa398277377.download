@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-BR" >
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="profile" href="//gmpg.org/xfn/11">
+    <link rel="pingback" href="https://visitmaringa.com.br/xmlrpc.php">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Agência VQV &#8211; Visite Maringá</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="Feed para Visite Maringá &raquo;" href="https://visitmaringa.com.br/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Visite Maringá &raquo;" href="https://visitmaringa.com.br/comments/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://visitmaringa.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fvisitmaringa.com.br%2Fova_sev%2Fagencia-vqv%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://visitmaringa.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fvisitmaringa.com.br%2Fova_sev%2Fagencia-vqv%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='pmb_common-css' href='https://visitmaringa.com.br/wp-content/plugins/print-my-blog/assets/styles/pmb-common.css?ver=1790274354' media='all' />
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id="wp-block-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the block styles printed at wp_footer." }
+/*# sourceURL=wp-block-styles-placeholder-inline-css */
+</style>
+<style id="wp-global-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the global-styles printed at wp_footer." }
+/*# sourceURL=wp-global-styles-placeholder-inline-css */
+</style>
+<link rel='stylesheet' id='contact-form-7-css' href='https://visitmaringa.com.br/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.1.6' media='all' />
+<link rel='stylesheet' id='event-frontend-css' href='https://visitmaringa.com.br/wp-content/plugins/ova-events/assets/css/frontend/event.css' media='all' />
+<link rel='stylesheet' id='ovasev_style-css' href='https://visitmaringa.com.br/wp-content/plugins/ova-sev/assets/css/frontend/ovasev-style.css?ver=7.1.1' media='all' />
+<link rel='stylesheet' id='sr7css-css' href='//visitmaringa.com.br/wp-content/plugins/revslider/public/css/sr7.css?ver=6.7.15' media='all' />
+<link rel='stylesheet' id='woocommerce-layout-css' href='https://visitmaringa.com.br/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=9.9.5' media='all' />
+<link rel='stylesheet' id='woocommerce-smallscreen-css' href='https://visitmaringa.com.br/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=9.9.5' media='only screen and (max-width: 768px)' />
+<link rel='stylesheet' id='woocommerce-general-css' href='https://visitmaringa.com.br/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=9.9.5' media='all' />
+<style id="woocommerce-inline-inline-css">
+.woocommerce form .form-row .required { visibility: visible; }
+/*# sourceURL=woocommerce-inline-inline-css */
+</style>
+<link rel='stylesheet' id='brands-styles-css' href='https://visitmaringa.com.br/wp-content/plugins/woocommerce/assets/css/brands.css?ver=9.9.5' media='all' />
+<link rel='stylesheet' id='gimont-style-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/style.css?ver=1.1.2' media='all' />
+<style id="gimont-style-inline-css">
+:root{--primary: #015025;--heading: #686868;--text: #1b1b1b;--light: #efefef;--primary-font: Poppins;--font-size: 18px;--line-height: 2.5em, 18px;--letter-spacing: 0px;--width-sidebar: 360px;--main-content:  calc( 100% - 360px );--container-width: 1190px;--boxed-offset: 20px;--woo-layout: woo_layout_2l;--woo-width-sidebar: 280px;--woo-main-content:  calc( 100% - 280px );}@media (min-width: 1024px) and ( max-width: 1250px ){
+		        body .row_site,
+		        body .elementor-section.elementor-section-boxed>.elementor-container{
+		            max-width: 100%;
+		            padding-left: 30px;
+		            padding-right: 30px;
+		        }
+		    }
+/*# sourceURL=gimont-style-inline-css */
+</style>
+<link rel='stylesheet' id='child-style-css' href='https://visitmaringa.com.br/wp-content/themes/gimont-child/style.css?ver=1.0.0' media='all' />
+<link rel='stylesheet' id='ova-google-fonts-css' href='//fonts.googleapis.com/css?family=Poppins%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900' media='all' />
+<link rel='stylesheet' id='carousel-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/libs/carousel/assets/owl.carousel.min.css' media='all' />
+<link rel='stylesheet' id='fancybox-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/libs/fancybox/fancybox.css' media='all' />
+<link rel='stylesheet' id='ovaicon-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/libs/ovaicon/font/ovaicon.css' media='all' />
+<link rel='stylesheet' id='gimonticon-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/libs/gimonticon/font/flaticon_gimont.css' media='all' />
+<link rel='stylesheet' id='flaticon-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/libs/flaticon/font/flaticon_giamont.css' media='all' />
+<link rel='stylesheet' id='flaticon_new-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/libs/flaticon_new/font/flaticon_new.css' media='all' />
+<link rel='stylesheet' id='flaticon_new2-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/libs/flaticon_new2/font/flaticon_new2.css' media='all' />
+<link rel='stylesheet' id='gimont-elementor-logo-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/scss/elementor/logo/logo.css' media='all' />
+<link rel='stylesheet' id='gimont-elementor-menu-canvas-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/scss/elementor/menus/menu-canvas.css' media='all' />
+<link rel='stylesheet' id='gimont-elementor-menu-cart-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/scss/elementor/menus/menu-cart.css' media='all' />
+<link rel='stylesheet' id='gimont-elementor-menu-nav-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/scss/elementor/menus/menu-nav.css' media='all' />
+<link rel='stylesheet' id='gimont-elementor-toggle-content-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/scss/elementor/toggle/toggle-content.css?ver=7.1.1' media='all' />
+<link rel='stylesheet' id='gimont-elementor-search-popup-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/scss/elementor/searchs/search-popup.css' media='all' />
+<link rel='stylesheet' id='gimont-elementor-contact-info-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/scss/elementor/contact/contact-info.css?ver=7.1.1' media='all' />
+<link rel='stylesheet' id='gimont-elementor-contact-info-2-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/scss/elementor/contact/contact-info-2.css?ver=7.1.1' media='all' />
+<link rel='stylesheet' id='gimont-elementor-switch-language-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/scss/elementor/switch-language/switch-language.css?ver=7.1.1' media='all' />
+<link rel='stylesheet' id='elementor-icons-css' href='https://visitmaringa.com.br/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.30.0' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href='https://visitmaringa.com.br/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.23.4' media='all' />
+<style id="elementor-frontend-inline-css">
+.elementor-kit-19416{--e-global-color-primary:#6EC1E4;--e-global-color-secondary:#54595F;--e-global-color-text:#7A7A7A;--e-global-color-accent:#61CE70;--e-global-typography-primary-font-family:"Roboto";--e-global-typography-primary-font-weight:600;--e-global-typography-secondary-font-family:"Roboto Slab";--e-global-typography-secondary-font-weight:400;--e-global-typography-text-font-family:"Roboto";--e-global-typography-text-font-weight:400;--e-global-typography-accent-font-family:"Roboto";--e-global-typography-accent-font-weight:500;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:1140px;}.e-con{--container-max-width:1140px;}.elementor-widget:not(:last-child){margin-block-end:20px;}.elementor-element{--widgets-spacing:20px 20px;}{}h1.entry-title{display:var(--page-title-display);}@media(max-width:1024px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:1024px;}.e-con{--container-max-width:1024px;}}@media(max-width:767px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:767px;}.e-con{--container-max-width:767px;}}
+.elementor-23192 .elementor-element.elementor-element-1acdcfc{padding:0% 21% 0% 21%;}.elementor-23192 .elementor-element.elementor-element-1413fad > .elementor-widget-wrap > .elementor-widget:not(.elementor-widget__width-auto):not(.elementor-widget__width-initial):not(:last-child):not(.elementor-absolute){margin-bottom:0px;}.elementor-23192 .elementor-element.elementor-element-1413fad > .elementor-element-populated{padding:0px 0px 0px 0px;}.elementor-23192 .elementor-element.elementor-element-6213ba2 > .elementor-widget-container{margin:0px 0px 12px 0px;}.elementor-23192 .elementor-element.elementor-element-6213ba2 .elementor-heading-title{line-height:1.2em;}.elementor-23192 .elementor-element.elementor-element-b6fac8c > .elementor-widget-container{margin:0px 0px 32px 0px;}.elementor-23192 .elementor-element.elementor-element-b6fac8c .elementor-heading-title{font-weight:300;line-height:1.2em;}.elementor-23192 .elementor-element.elementor-element-f8e266f > .elementor-widget-container{margin:0px 0px 8px 0px;}.elementor-23192 .elementor-element.elementor-element-f8e266f .elementor-heading-title{line-height:1.2em;}.elementor-23192 .elementor-element.elementor-element-96ff117 > .elementor-widget-container{margin:0px 0px 32px 0px;}.elementor-23192 .elementor-element.elementor-element-96ff117 .elementor-heading-title{font-weight:300;line-height:1.2em;}.elementor-23192 .elementor-element.elementor-element-f510c31 > .elementor-widget-container{margin:0px 0px 8px 0px;}.elementor-23192 .elementor-element.elementor-element-f510c31 .elementor-heading-title{line-height:1.2em;}.elementor-23192 .elementor-element.elementor-element-6c734be > .elementor-widget-container{margin:0px 0px 32px 0px;}.elementor-23192 .elementor-element.elementor-element-6c734be .elementor-heading-title{color:#015025;line-height:1.2em;}.elementor-23192 .elementor-element.elementor-element-584e600 > .elementor-widget-container{margin:0px 0px 8px 0px;}.elementor-23192 .elementor-element.elementor-element-584e600 .elementor-heading-title{line-height:1.2em;}.elementor-23192 .elementor-element.elementor-element-cf18b5b > .elementor-widget-container{margin:0px 0px 32px 0px;}.elementor-23192 .elementor-element.elementor-element-cf18b5b .elementor-heading-title{font-weight:300;line-height:1.2em;}.elementor-23192 .elementor-element.elementor-element-3e0775c > .elementor-widget-container{margin:0px 0px 8px 0px;}.elementor-23192 .elementor-element.elementor-element-3e0775c .elementor-heading-title{line-height:1.2em;}.elementor-23192 .elementor-element.elementor-element-605d2d5 > .elementor-widget-container{margin:0px 0px 32px 0px;}.elementor-23192 .elementor-element.elementor-element-605d2d5 .elementor-heading-title{font-weight:300;line-height:1.2em;}.elementor-23192 .elementor-element.elementor-element-f807d47 > .elementor-widget-container{margin:0px 0px 8px 0px;}.elementor-23192 .elementor-element.elementor-element-f807d47 .elementor-heading-title{line-height:1.2em;}.elementor-23192 .elementor-element.elementor-element-1c7e9b6 .elementor-heading-title{color:#015025;line-height:1.2em;}@media(max-width:1024px){.elementor-23192 .elementor-element.elementor-element-1acdcfc{padding:0% 6% 0% 6%;}}@media(max-width:767px){.elementor-23192 .elementor-element.elementor-element-1acdcfc{padding:0% 8% 0% 8%;}.elementor-23192 .elementor-element.elementor-element-b6fac8c .elementor-heading-title{font-size:16px;}.elementor-23192 .elementor-element.elementor-element-f8e266f .elementor-heading-title{font-size:16px;}.elementor-23192 .elementor-element.elementor-element-96ff117 .elementor-heading-title{font-size:16px;}.elementor-23192 .elementor-element.elementor-element-f510c31 .elementor-heading-title{font-size:16px;}.elementor-23192 .elementor-element.elementor-element-6c734be .elementor-heading-title{font-size:16px;}.elementor-23192 .elementor-element.elementor-element-584e600 .elementor-heading-title{font-size:16px;}.elementor-23192 .elementor-element.elementor-element-cf18b5b .elementor-heading-title{font-size:16px;}.elementor-23192 .elementor-element.elementor-element-3e0775c .elementor-heading-title{font-size:16px;}.elementor-23192 .elementor-element.elementor-element-605d2d5 .elementor-heading-title{font-size:16px;}.elementor-23192 .elementor-element.elementor-element-f807d47 .elementor-heading-title{font-size:16px;}.elementor-23192 .elementor-element.elementor-element-1c7e9b6 .elementor-heading-title{font-size:16px;}}
+/*# sourceURL=elementor-frontend-inline-css */
+</style>
+<link rel='stylesheet' id='swiper-css' href='https://visitmaringa.com.br/wp-content/plugins/elementor/assets/lib/swiper/css/swiper.min.css?ver=5.3.6' media='all' />
+<link rel='stylesheet' id='font-awesome-5-all-css' href='https://visitmaringa.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=3.23.4' media='all' />
+<link rel='stylesheet' id='font-awesome-4-shim-css' href='https://visitmaringa.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css?ver=3.23.4' media='all' />
+<link rel='stylesheet' id='ova_megamenu_css-css' href='https://visitmaringa.com.br/wp-content/plugins/ova-megamenu/assets/css/frontend/style.css' media='all' />
+<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Roboto:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic%7CRoboto+Slab:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&#038;display=swap&#038;ver=7.1.1' media='all' />
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><script id="jquery-core-js" src="https://visitmaringa.com.br/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="https://visitmaringa.com.br/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<script async data-wp-strategy="async" id="_tpt-js" src="//visitmaringa.com.br/wp-content/plugins/revslider/public/js/libs/tptools.js?ver=6.7.15"></script>
+<script async data-wp-strategy="async" id="sr7-js" src="//visitmaringa.com.br/wp-content/plugins/revslider/public/js/sr7.js?ver=6.7.15"></script>
+<script data-wp-strategy="defer" defer id="jquery-blockui-js" src="https://visitmaringa.com.br/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.9.9.5"></script>
+<script id="wc-add-to-cart-js-extra">
+var wc_add_to_cart_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/?wc-ajax=%%endpoint%%","i18n_view_cart":"Ver carrinho","cart_url":"https://visitmaringa.com.br","is_cart":"","cart_redirect_after_add":"no"};
+//# sourceURL=wc-add-to-cart-js-extra
+</script>
+<script data-wp-strategy="defer" defer id="wc-add-to-cart-js" src="https://visitmaringa.com.br/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=9.9.5"></script>
+<script data-wp-strategy="defer" defer id="js-cookie-js" src="https://visitmaringa.com.br/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.9.9.5"></script>
+<script id="woocommerce-js-extra">
+var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/?wc-ajax=%%endpoint%%","i18n_password_show":"Mostrar senha","i18n_password_hide":"Ocultar senha"};
+//# sourceURL=woocommerce-js-extra
+</script>
+<script data-wp-strategy="defer" defer id="woocommerce-js" src="https://visitmaringa.com.br/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=9.9.5"></script>
+<script id="font-awesome-4-shim-js" src="https://visitmaringa.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=3.23.4"></script>
+<link rel="https://api.w.org/" href="https://visitmaringa.com.br/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://visitmaringa.com.br/wp-json/wp/v2/ova_sev/23192" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://visitmaringa.com.br/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.1.1" />
+<meta name="generator" content="WooCommerce 9.9.5" />
+<link rel="canonical" href="https://visitmaringa.com.br/ova_sev/agencia-vqv/" />
+<link rel='shortlink' href='https://visitmaringa.com.br/?p=23192' />
+<meta name="cdp-version" content="1.5.4" />	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<meta name="generator" content="Elementor 3.23.4; features: e_optimized_control_loading, e_lazyload, e_element_cache; settings: css_print_method-internal, google_font-enabled, font_display-swap">
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<meta name="generator" content="Powered by Slider Revolution 6.7.15 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+<link rel="icon" href="https://visitmaringa.com.br/wp-content/uploads/2024/08/cropped-favicon-Photoroom-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://visitmaringa.com.br/wp-content/uploads/2024/08/cropped-favicon-Photoroom-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://visitmaringa.com.br/wp-content/uploads/2024/08/cropped-favicon-Photoroom-180x180.png" />
+<meta name="msapplication-TileImage" content="https://visitmaringa.com.br/wp-content/uploads/2024/08/cropped-favicon-Photoroom-270x270.png" />
+<script>
+	window._tpt			??= {};
+	window.SR7			??= {};
+	_tpt.R				??= {};
+	_tpt.R.fonts		??= {};
+	_tpt.R.fonts.customFonts??= {};
+	SR7.devMode			=  false;
+	SR7.F 				??= {};
+	SR7.G				??= {};
+	SR7.LIB				??= {};
+	SR7.E				??= {};
+	SR7.E.gAddons		??= {};
+	SR7.E.php 			??= {};
+	SR7.E.nonce			= 'b6e1fa294d';
+	SR7.E.ajaxurl		= 'https://visitmaringa.com.br/wp-admin/admin-ajax.php';
+	SR7.E.resturl		= 'https://visitmaringa.com.br/wp-json/';
+	SR7.E.slug_path		= 'revslider/revslider.php';
+	SR7.E.slug			= 'revslider';
+	SR7.E.plugin_url	= 'https://visitmaringa.com.br/wp-content/plugins/revslider/';
+	SR7.E.wp_plugin_url = 'https://visitmaringa.com.br/wp-content/plugins/';
+	SR7.E.revision		= '6.7.15';
+	SR7.E.fontBaseUrl	= '//fonts.googleapis.com/css2?family=';
+	SR7.G.breakPoints 	= [1240,1024,778,480];
+	SR7.E.modules 		= ['module','page','slide','layer','draw','animate','srtools','canvas','defaults','carousel','navigation','media','modifiers','migration'];
+	SR7.E.libs 			= ['WEBGL'];
+	SR7.E.css 			= ['csslp','cssbtns','cssfilters','cssnav','cssmedia'];
+	SR7.E.resources		= {};
+	SR7.JSON			??= {};
+/*! Slider Revolution 7.0 - Page Processor */
+!function(){"use strict";window.SR7??={},window._tpt??={},SR7.version="Slider Revolution 6.7.15",_tpt.getWinDim=function(t){_tpt.screenHeightWithUrlBar??=window.innerHeight;let e=SR7.F?.modal?.visible&&SR7.M[SR7.F.module.getIdByAlias(SR7.F.modal.requested)];_tpt.scrollBar=window.innerWidth!==document.documentElement.clientWidth||e&&window.innerWidth!==e.c.module.clientWidth,_tpt.winW=window.innerWidth-(_tpt.scrollBar||"prepare"==t?_tpt.scrollBarW??_tpt.mesureScrollBar():0),_tpt.winH=window.innerHeight,_tpt.winWAll=document.documentElement.clientWidth},_tpt.getResponsiveLevel=function(t,e){SR7.M[e];return _tpt.closestGE(t,_tpt.winWAll)},_tpt.mesureScrollBar=function(){let t=document.createElement("div");return t.className="RSscrollbar-measure",t.style.width="100px",t.style.height="100px",t.style.overflow="scroll",t.style.position="absolute",t.style.top="-9999px",document.body.appendChild(t),_tpt.scrollBarW=t.offsetWidth-t.clientWidth,document.body.removeChild(t),_tpt.scrollBarW},_tpt.loadCSS=async function(t,e,s){return s?_tpt.R.fonts.required[e].status=1:(_tpt.R[e]??={},_tpt.R[e].status=1),new Promise(((n,i)=>{if(_tpt.isStylesheetLoaded(t))s?_tpt.R.fonts.required[e].status=2:_tpt.R[e].status=2,n();else{const l=document.createElement("link");l.rel="stylesheet";let o="text",r="css";l["type"]=o+"/"+r,l.href=t,l.onload=()=>{s?_tpt.R.fonts.required[e].status=2:_tpt.R[e].status=2,n()},l.onerror=()=>{s?_tpt.R.fonts.required[e].status=3:_tpt.R[e].status=3,i(new Error(`Failed to load CSS: ${t}`))},document.head.appendChild(l)}}))},_tpt.addContainer=function(t){const{tag:e="div",id:s,class:n,datas:i,textContent:l,iHTML:o}=t,r=document.createElement(e);if(s&&""!==s&&(r.id=s),n&&""!==n&&(r.className=n),i)for(const[t,e]of Object.entries(i))"style"==t?r.style.cssText=e:r.setAttribute(`data-${t}`,e);return l&&(r.textContent=l),o&&(r.innerHTML=o),r},_tpt.collector=function(){return{fragment:new DocumentFragment,add(t){var e=_tpt.addContainer(t);return this.fragment.appendChild(e),e},append(t){t.appendChild(this.fragment)}}},_tpt.isStylesheetLoaded=function(t){let e=t.split("?")[0];return Array.from(document.querySelectorAll('link[rel="stylesheet"], link[rel="preload"]')).some((t=>t.href.split("?")[0]===e))},_tpt.preloader={requests:new Map,preloaderTemplates:new Map,show:function(t,e){if(!e||!t)return;const{type:s,color:n}=e;if(s<0||"off"==s)return;const i=`preloader_${s}`;let l=this.preloaderTemplates.get(i);l||(l=this.build(s,n),this.preloaderTemplates.set(i,l)),this.requests.has(t)||this.requests.set(t,{count:0});const o=this.requests.get(t);clearTimeout(o.timer),o.count++,1===o.count&&(o.timer=setTimeout((()=>{o.preloaderClone=l.cloneNode(!0),o.anim&&o.anim.kill(),void 0!==_tpt.gsap?o.anim=_tpt.gsap.fromTo(o.preloaderClone,1,{opacity:0},{opacity:1}):o.preloaderClone.classList.add("sr7-fade-in"),t.appendChild(o.preloaderClone)}),150))},hide:function(t){if(!this.requests.has(t))return;const e=this.requests.get(t);e.count--,e.count<0&&(e.count=0),e.anim&&e.anim.kill(),0===e.count&&(clearTimeout(e.timer),e.preloaderClone&&(e.preloaderClone.classList.remove("sr7-fade-in"),e.anim=_tpt.gsap.to(e.preloaderClone,.3,{opacity:0,onComplete:function(){e.preloaderClone.remove()}})))},state:function(t){if(!this.requests.has(t))return!1;return this.requests.get(t).count>0},build:(t,e="#ffffff",s="")=>{if(t<0||"off"===t)return null;const n=parseInt(t);if(t="prlt"+n,isNaN(n))return null;if(_tpt.loadCSS(SR7.E.plugin_url+"public/css/preloaders/t"+n+".css","preloader_"+t),isNaN(n)||n<6){const i=`background-color:${e}`,l=1===n||2==n?i:"",o=3===n||4==n?i:"",r=_tpt.collector();["dot1","dot2","bounce1","bounce2","bounce3"].forEach((t=>r.add({tag:"div",class:t,datas:{style:o}})));const d=_tpt.addContainer({tag:"sr7-prl",class:`${t} ${s}`,datas:{style:l}});return r.append(d),d}{let i={};if(7===n){let t;e.startsWith("#")?(t=e.replace("#",""),t=`rgba(${parseInt(t.substring(0,2),16)}, ${parseInt(t.substring(2,4),16)}, ${parseInt(t.substring(4,6),16)}, `):e.startsWith("rgb")&&(t=e.slice(e.indexOf("(")+1,e.lastIndexOf(")")).split(",").map((t=>t.trim())),t=`rgba(${t[0]}, ${t[1]}, ${t[2]}, `),t&&(i.style=`border-top-color: ${t}0.65); border-bottom-color: ${t}0.15); border-left-color: ${t}0.65); border-right-color: ${t}0.15)`)}else 12===n&&(i.style=`background:${e}`);const l=[10,0,4,2,5,9,0,4,4,2][n-6],o=_tpt.collector(),r=o.add({tag:"div",class:"sr7-prl-inner",datas:i});Array.from({length:l}).forEach((()=>r.appendChild(o.add({tag:"span",datas:{style:`background:${e}`}}))));const d=_tpt.addContainer({tag:"sr7-prl",class:`${t} ${s}`});return o.append(d),d}}},SR7.preLoader={show:(t,e)=>{"off"!==(SR7.M[t]?.settings?.pLoader?.type??"off")&&_tpt.preloader.show(e||SR7.M[t].c.module,SR7.M[t]?.settings?.pLoader??{color:"#fff",type:10})},hide:(t,e)=>{"off"!==(SR7.M[t]?.settings?.pLoader?.type??"off")&&_tpt.preloader.hide(e||SR7.M[t].c.module)},state:(t,e)=>_tpt.preloader.state(e||SR7.M[t].c.module)},_tpt.prepareModuleHeight=function(t){window.SR7.M??={},window.SR7.M[t.id]??={},"ignore"==t.googleFont&&(SR7.E.ignoreGoogleFont=!0);let e=window.SR7.M[t.id];if(null==_tpt.scrollBarW&&_tpt.mesureScrollBar(),e.c??={},e.states??={},e.settings??={},e.settings.size??={},t.fixed&&(e.settings.fixed=!0),e.c.module=document.getElementById(t.id),e.c.adjuster=e.c.module.getElementsByTagName("sr7-adjuster")[0],e.c.content=e.c.module.getElementsByTagName("sr7-content")[0],"carousel"==t.type&&(e.c.carousel=e.c.content.getElementsByTagName("sr7-carousel")[0]),null==e.c.module||null==e.c.module)return;t.plType&&t.plColor&&(e.settings.pLoader={type:t.plType,color:t.plColor}),void 0!==t.plType&&"off"!==t.plType&&SR7.preLoader.show(t.id,e.c.module),_tpt.winW||_tpt.getWinDim("prepare"),_tpt.getWinDim();let s=""+e.c.module.dataset?.modal;"modal"==s||"true"==s||"undefined"!==s&&"false"!==s||(e.settings.size.fullWidth=t.size.fullWidth,e.LEV??=_tpt.getResponsiveLevel(window.SR7.G.breakPoints,t.id),t.vpt=_tpt.fillArray(t.vpt,5),e.settings.vPort=t.vpt[e.LEV],void 0!==t.el&&"720"==t.el[4]&&t.gh[4]!==t.el[4]&&"960"==t.el[3]&&t.gh[3]!==t.el[3]&&"768"==t.el[2]&&t.gh[2]!==t.el[2]&&delete t.el,e.settings.size.height=null==t.el||null==t.el[e.LEV]||0==t.el[e.LEV]||"auto"==t.el[e.LEV]?_tpt.fillArray(t.gh,5,-1):_tpt.fillArray(t.el,5,-1),e.settings.size.width=_tpt.fillArray(t.gw,5,-1),e.settings.size.minHeight=_tpt.fillArray(t.mh??[0],5,-1),e.cacheSize={fullWidth:e.settings.size?.fullWidth,fullHeight:e.settings.size?.fullHeight},void 0!==t.off&&(t.off?.t&&(e.settings.size.m??={})&&(e.settings.size.m.t=t.off.t),t.off?.b&&(e.settings.size.m??={})&&(e.settings.size.m.b=t.off.b),t.off?.l&&(e.settings.size.p??={})&&(e.settings.size.p.l=t.off.l),t.off?.r&&(e.settings.size.p??={})&&(e.settings.size.p.r=t.off.r)),_tpt.updatePMHeight(t.id,t,!0))},_tpt.updatePMHeight=(t,e,s)=>{let n=SR7.M[t];var i=n.settings.size.fullWidth?_tpt.winW:n.c.module.parentNode.offsetWidth;i=0===i||isNaN(i)?_tpt.winW:i;let l=n.settings.size.width[n.LEV]||n.settings.size.width[n.LEV++]||n.settings.size.width[n.LEV--]||i,o=n.settings.size.height[n.LEV]||n.settings.size.height[n.LEV++]||n.settings.size.height[n.LEV--]||0,r=n.settings.size.minHeight[n.LEV]||n.settings.size.minHeight[n.LEV++]||n.settings.size.minHeight[n.LEV--]||0;if(o="auto"==o?0:o,o=parseInt(o),"carousel"!==e.type&&(i-=parseInt(e.onw??0)||0),n.MP=!n.settings.size.fullWidth&&i<l||_tpt.winW<l?Math.min(1,i/l):1,e.size.fullScreen||e.size.fullHeight){let t=parseInt(e.fho)||0,s=(""+e.fho).indexOf("%")>-1;e.newh=_tpt.winH-(s?_tpt.winH*t/100:t)}else e.newh=n.MP*Math.max(o,r);if(e.newh+=(parseInt(e.onh??0)||0)+(parseInt(e.carousel?.pt)||0)+(parseInt(e.carousel?.pb)||0),void 0!==e.slideduration&&(e.newh=Math.max(e.newh,parseInt(e.slideduration)/3)),e.shdw&&_tpt.buildShadow(e.id,e),n.c.adjuster.style.height=e.newh+"px",n.c.module.style.height=e.newh+"px",n.c.content.style.height=e.newh+"px",n.states.heightPrepared=!0,n.dims??={},n.dims.moduleRect=n.c.module.getBoundingClientRect(),n.c.content.style.left="-"+n.dims.moduleRect.left+"px",!n.settings.size.fullWidth)return s&&requestAnimationFrame((()=>{i!==n.c.module.parentNode.offsetWidth&&_tpt.updatePMHeight(e.id,e)})),void _tpt.bgStyle(e.id,e,window.innerWidth==_tpt.winW,!0);_tpt.bgStyle(e.id,e,window.innerWidth==_tpt.winW,!0),requestAnimationFrame((function(){s&&requestAnimationFrame((()=>{i!==n.c.module.parentNode.offsetWidth&&_tpt.updatePMHeight(e.id,e)}))})),n.earlyResizerFunction||(n.earlyResizerFunction=function(){requestAnimationFrame((function(){_tpt.getWinDim(),_tpt.moduleDefaults(e.id,e),_tpt.updateSlideBg(t,!0)}))},window.addEventListener("resize",n.earlyResizerFunction))},_tpt.buildShadow=function(t,e){let s=SR7.M[t];null==s.c.shadow&&(s.c.shadow=document.createElement("sr7-module-shadow"),s.c.shadow.classList.add("sr7-shdw-"+e.shdw),s.c.content.appendChild(s.c.shadow))},_tpt.bgStyle=async(t,e,s,n,i)=>{const l=SR7.M[t];if((e=e??l.settings).fixed&&!l.c.module.classList.contains("sr7-top-fixed")&&(l.c.module.classList.add("sr7-top-fixed"),l.c.module.style.position="fixed",l.c.module.style.width="100%",l.c.module.style.top="0px",l.c.module.style.left="0px",l.c.module.style.pointerEvents="none",l.c.module.style.zIndex=5e3,l.c.content.style.pointerEvents="none"),null==l.c.bgcanvas){let t=document.createElement("sr7-module-bg"),o=!1;if("string"==typeof e?.bg?.color&&e?.bg?.color.includes("{"))if(_tpt.gradient&&_tpt.gsap)e.bg.color=_tpt.gradient.convert(e.bg.color);else try{let t=JSON.parse(e.bg.color);(t?.orig||t?.string)&&(e.bg.color=JSON.parse(e.bg.color))}catch(t){return}let r="string"==typeof e?.bg?.color?e?.bg?.color||"transparent":e?.bg?.color?.string??e?.bg?.color?.orig??e?.bg?.color?.color??"transparent";if(t.style["background"+(String(r).includes("grad")?"":"Color")]=r,("transparent"!==r||i)&&(o=!0),e?.bg?.image?.src&&(t.style.backgroundImage=`url(${e?.bg?.image.src})`,t.style.backgroundSize=""==(e.bg.image?.size??"")?"cover":e.bg.image.size,t.style.backgroundPosition=e.bg.image.position,t.style.backgroundRepeat=""==e.bg.image.repeat||null==e.bg.image.repeat?"no-repeat":e.bg.image.repeat,o=!0),!o)return;l.c.bgcanvas=t,e.size.fullWidth?t.style.width=_tpt.winW-(s&&_tpt.winH<document.body.offsetHeight?_tpt.scrollBarW:0)+"px":n&&(t.style.width=l.c.module.offsetWidth+"px"),e.sbt?.use?l.c.content.appendChild(l.c.bgcanvas):l.c.module.appendChild(l.c.bgcanvas)}l.c.bgcanvas.style.height=void 0!==e.newh?e.newh+"px":("carousel"==e.type?l.dims.module.h:l.dims.content.h)+"px",l.c.bgcanvas.style.left=!s&&e.sbt?.use||l.c.bgcanvas.closest("SR7-CONTENT")?"0px":"-"+(l?.dims?.moduleRect?.left??0)+"px"},_tpt.updateSlideBg=function(t,e){const s=SR7.M[t];let n=s.settings;s?.c?.bgcanvas&&(n.size.fullWidth?s.c.bgcanvas.style.width=_tpt.winW-(e&&_tpt.winH<document.body.offsetHeight?_tpt.scrollBarW:0)+"px":preparing&&(s.c.bgcanvas.style.width=s.c.module.offsetWidth+"px"))},_tpt.moduleDefaults=(t,e)=>{let s=SR7.M[t];null!=s&&null!=s.c&&null!=s.c.module&&(s.dims??={},s.dims.moduleRect=s.c.module.getBoundingClientRect(),s.c.content.style.left="-"+s.dims.moduleRect.left+"px",s.c.content.style.width=_tpt.winW-_tpt.scrollBarW+"px","carousel"==e.type&&(s.c.module.style.overflow="visible"),_tpt.bgStyle(t,e,window.innerWidth==_tpt.winW))},_tpt.getOffset=t=>{var e=t.getBoundingClientRect(),s=window.pageXOffset||document.documentElement.scrollLeft,n=window.pageYOffset||document.documentElement.scrollTop;return{top:e.top+n,left:e.left+s}},_tpt.fillArray=function(t,e){let s,n;t=Array.isArray(t)?t:[t];let i=Array(e),l=t.length;for(n=0;n<t.length;n++)i[n+(e-l)]=t[n],null==s&&"#"!==t[n]&&(s=t[n]);for(let t=0;t<e;t++)void 0!==i[t]&&"#"!=i[t]||(i[t]=s),s=i[t];return i},_tpt.closestGE=function(t,e){let s=Number.MAX_VALUE,n=-1;for(let i=0;i<t.length;i++)t[i]-1>=e&&t[i]-1-e<s&&(s=t[i]-1-e,n=i);return++n}}();</script>
+</head>
+
+<body class="wp-singular ova_sev-template-default single single-ova_sev postid-23192 wp-embed-responsive wp-theme-gimont wp-child-theme-gimont-child theme-gimont woocommerce-no-js has-post-thumbnail layout_1c woo_layout_2l elementor-default elementor-kit-19416 elementor-page elementor-page-23192" >
+	
+    <div class="ovamegamenu_container_default"></div>
+	<div class="wrap-fullwidth"><div class="inside-content">
+
+	
+<style id="elementor-post-4078">.elementor-4078 .elementor-element.elementor-element-b449570:not(.elementor-motion-effects-element-type-background), .elementor-4078 .elementor-element.elementor-element-b449570 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-4078 .elementor-element.elementor-element-b449570{border-style:solid;border-width:0px 0px 1px 0px;border-color:#ECECEC;box-shadow:0px 0px 7px 0px rgba(0, 0, 0, 0);transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;padding:24px 0px 24px 40px;}.elementor-4078 .elementor-element.elementor-element-b449570 > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-bc-flex-widget .elementor-4078 .elementor-element.elementor-element-b526f8e.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-4078 .elementor-element.elementor-element-b526f8e.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-4078 .elementor-element.elementor-element-b526f8e.elementor-column > .elementor-widget-wrap{justify-content:flex-start;}.elementor-4078 .elementor-element.elementor-element-c3738d2{width:auto;max-width:auto;}.elementor-4078 .elementor-element.elementor-element-c7d0872 .menu-canvas{text-align:right;}.elementor-4078 .elementor-element.elementor-element-c7d0872 .menu-toggle:before{background-color:#015025;}.elementor-4078 .elementor-element.elementor-element-c7d0872 .menu-toggle span:before{background-color:#015025;}.elementor-4078 .elementor-element.elementor-element-c7d0872 .menu-toggle:after{background-color:#015025;}.elementor-4078 .elementor-element.elementor-element-c7d0872 .container-menu{background-color:#FFFFFF;}.elementor-4078 .elementor-element.elementor-element-c7d0872 ul li a{color:#1B1B1B;}.elementor-4078 .elementor-element.elementor-element-c7d0872 .menu-canvas .dropdown-toggle{color:#1B1B1B;}.elementor-bc-flex-widget .elementor-4078 .elementor-element.elementor-element-c964edd.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-4078 .elementor-element.elementor-element-c964edd.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-4078 .elementor-element.elementor-element-c964edd.elementor-column > .elementor-widget-wrap{justify-content:center;}.elementor-4078 .elementor-element.elementor-element-c964edd > .elementor-element-populated{margin:0px 0px 0px 15px;--e-column-margin-right:0px;--e-column-margin-left:15px;padding:0px 0px 0px 0px;}.elementor-4078 .elementor-element.elementor-element-90005a5{width:var( --container-widget-width, 100% );max-width:100%;--container-widget-width:100%;--container-widget-flex-grow:0;}.elementor-4078 .elementor-element.elementor-element-90005a5 > .elementor-widget-container{margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;}.elementor-4078 .elementor-element.elementor-element-90005a5 ul li a{font-size:14px;}.elementor-bc-flex-widget .elementor-4078 .elementor-element.elementor-element-b3c9a3c.elementor-column .elementor-widget-wrap{align-items:center;}.elementor-4078 .elementor-element.elementor-element-b3c9a3c.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:center;align-items:center;}.elementor-4078 .elementor-element.elementor-element-b3c9a3c.elementor-column > .elementor-widget-wrap{justify-content:flex-end;}.elementor-4078 .elementor-element.elementor-element-a02dfd1{width:var( --container-widget-width, 98.823% );max-width:98.823%;--container-widget-width:98.823%;--container-widget-flex-grow:0;}.elementor-4078 .elementor-element.elementor-element-a02dfd1 .ova_wrap_search_popup i{color:#616161;}:root{--page-title-display:none;}@media(max-width:1024px){.elementor-4078 .elementor-element.elementor-element-b449570{padding:15px 20px 15px 20px;}.elementor-4078 .elementor-element.elementor-element-c3738d2{width:var( --container-widget-width, 94px );max-width:94px;--container-widget-width:94px;--container-widget-flex-grow:0;}.elementor-4078 .elementor-element.elementor-element-c7d0872 > .elementor-widget-container{margin:20px 20px 20px 20px;}.elementor-4078 .elementor-element.elementor-element-c964edd.elementor-column > .elementor-widget-wrap{justify-content:flex-end;}.elementor-4078 .elementor-element.elementor-element-c964edd > .elementor-element-populated{margin:0px 0px 0px 0px;--e-column-margin-right:0px;--e-column-margin-left:0px;}}@media(max-width:767px){.elementor-4078 .elementor-element.elementor-element-b449570{padding:10px 20px 10px 20px;}.elementor-4078 .elementor-element.elementor-element-b526f8e{width:50%;}.elementor-4078 .elementor-element.elementor-element-63de3fc{width:50%;}.elementor-4078 .elementor-element.elementor-element-63de3fc > .elementor-element-populated{padding:0px 0px 0px 0px;}.elementor-4078 .elementor-element.elementor-element-c7d0872 > .elementor-widget-container{margin:20px 0px 20px 20px;}.elementor-4078 .elementor-element.elementor-element-c964edd{width:50%;}.elementor-4078 .elementor-element.elementor-element-b3c9a3c{width:50%;}}@media(min-width:768px){.elementor-4078 .elementor-element.elementor-element-b526f8e{width:10.878%;}.elementor-4078 .elementor-element.elementor-element-63de3fc{width:5.848%;}.elementor-4078 .elementor-element.elementor-element-c964edd{width:80.622%;}.elementor-4078 .elementor-element.elementor-element-b3c9a3c{width:2.625%;}}@media(max-width:1024px) and (min-width:768px){.elementor-4078 .elementor-element.elementor-element-b526f8e{width:50%;}.elementor-4078 .elementor-element.elementor-element-63de3fc{width:50%;}.elementor-4078 .elementor-element.elementor-element-c964edd{width:100%;}.elementor-4078 .elementor-element.elementor-element-b3c9a3c{width:100%;}}</style>		<div data-elementor-type="wp-post" data-elementor-id="4078" class="elementor elementor-4078">
+						<section class="elementor-section elementor-top-section elementor-element elementor-element-b449570 elementor-section-full_width header_sticky mobile_sticky elementor-section-height-default elementor-section-height-default" data-id="b449570" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-b526f8e" data-id="b526f8e" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-c3738d2 elementor-widget__width-auto elementor-widget-tablet__width-initial elementor-widget elementor-widget-ova_logo" data-id="c3738d2" data-element_type="widget" data-widget_type="ova_logo.default">
+				<div class="elementor-widget-container">
+			
+		<div class="brand_el">
+
+											<a href="https://visitmaringa.com.br/ "   >
+			
+				<img src="https://visitmaringa.com.br/wp-content/uploads/2024/08/logo-Photoroom.png" 
+					alt="Visite Maringá" 
+					class="logo_desktop" 
+					style="width:90px ; height:auto" 
+				/>
+
+				<img src="https://visitmaringa.com.br/wp-content/uploads/2024/08/logo-Photoroom.png" 
+					alt="Visite Maringá" 
+					class="logo_mobile" 
+					style="width:180px ;  height:auto" 
+				/>
+
+				<img src="https://visitmaringa.com.br/wp-content/uploads/2024/08/logo-Photoroom.png" 
+					alt="Visite Maringá" 
+					class="logo_sticky" 
+					style="width:100px ; height:auto" 
+				/>
+
+							</a>
+			
+		</div>
+
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-63de3fc elementor-hidden-desktop" data-id="63de3fc" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-c7d0872 elementor-widget elementor-widget-gimont_elementor_menu_canvas" data-id="c7d0872" data-element_type="widget" data-widget_type="gimont_elementor_menu_canvas.default">
+				<div class="elementor-widget-container">
+			
+		<nav class="menu-canvas">
+            <button class="menu-toggle" aria-label="menu toggle">
+            	<span></span>
+            </button>
+            <nav class="container-menu dir_left" >
+	            <div class="close-menu">
+	            	<i class="ovaicon-cancel"></i>
+	            </div>
+				<div class="primary-navigation"><ul id="menu-menu-visit-maringa" class="menu"><li id="menu-item-19417" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-19417"><a href="https://visitmaringa.com.br/">Home</a></li>
+<li id="menu-item-22771" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-22771"><a href="#">Sobre o Instituto</a>
+<ul class="sub-menu">
+	<li id="menu-item-19632" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19632"><a href="https://visitmaringa.com.br/quem-somos/">Quem Somos</a></li>
+	<li id="menu-item-22770" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-22770"><a href="#">Conselho Diretor</a>
+	<ul class="sub-menu">
+		<li id="menu-item-26918" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26918"><a href="https://visitmaringa.com.br/gestao-atual-2025-2027/">Gestão Atual (2025-2027)</a></li>
+		<li id="menu-item-23067" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23067"><a href="https://visitmaringa.com.br/gestao-2023-2025/">Gestão 2023-2025</a></li>
+		<li id="menu-item-22781" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22781"><a href="https://visitmaringa.com.br/gestao-2021-2023/">Gestão 2021-2023</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-19790" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-19790"><a href="#">Eventos</a>
+<ul class="sub-menu">
+	<li id="menu-item-26084" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26084"><a href="https://visitmaringa.com.br/nova-agenda/">Agenda</a></li>
+	<li id="menu-item-19792" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19792"><a href="https://visitmaringa.com.br/seu-evento-aqui/">Seu evento aqui</a></li>
+</ul>
+</li>
+<li id="menu-item-20154" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-20154"><a href="#">Serviços</a>
+<ul class="sub-menu">
+	<li id="menu-item-20158" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20158"><a href="https://visitmaringa.com.br/o-que-fazer/">O que fazer</a></li>
+	<li id="menu-item-20221" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20221"><a href="https://visitmaringa.com.br/onde-comer/">Onde comer</a></li>
+	<li id="menu-item-26311" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26311"><a href="https://visitmaringa.com.br/compras/">Compras</a></li>
+	<li id="menu-item-20265" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20265"><a href="https://visitmaringa.com.br/onde-se-hospedar/">Onde se hospedar</a></li>
+	<li id="menu-item-26195" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26195"><a href="https://visitmaringa.com.br/espaco-para-eventos/">Espaço para eventos</a></li>
+	<li id="menu-item-26274" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26274"><a href="https://visitmaringa.com.br/servicos-para-eventos/">Serviços para eventos</a></li>
+	<li id="menu-item-25090" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25090"><a href="https://visitmaringa.com.br/midia-e-comunicacao/">Mídia e Comunicação</a></li>
+	<li id="menu-item-25120" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25120"><a href="https://visitmaringa.com.br/servicos-locais/">Serviços Locais</a></li>
+</ul>
+</li>
+<li id="menu-item-19438" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19438"><a href="https://visitmaringa.com.br/associados/">Associados</a></li>
+<li id="menu-item-19962" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19962"><a href="https://visitmaringa.com.br/observatorio-do-turismo/">Observatório do Turismo</a></li>
+<li id="menu-item-20094" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-20094"><a href="https://visitmaringa.com.br/noticias/">Notícias</a></li>
+</ul></div>							</nav>
+			<div class="site-overlay"></div>
+        </nav>
+			</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-c964edd" data-id="c964edd" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-90005a5 elementor-hidden-tablet elementor-widget__width-initial elementor-hidden-mobile elementor-widget elementor-widget-gimont_elementor_menu_nav" data-id="90005a5" data-element_type="widget" data-widget_type="gimont_elementor_menu_nav.default">
+				<div class="elementor-widget-container">
+			
+		<nav class="main-navigation">
+            <button class="menu-toggle" aria-label="menu toggle">
+            	<span>
+            		Menu            	</span>
+            </button>
+			<div class="primary-navigation"><ul id="menu-menu-visit-maringa-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-19417 dropdown"><a title="Home" href="https://visitmaringa.com.br/" >Home</a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-22771 dropdown"><a title="Sobre o Instituto" href="#" >Sobre o Instituto</a>
+<ul class="sub-menu" role="menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19632 dropdown"><a title="Quem Somos" href="https://visitmaringa.com.br/quem-somos/" >Quem Somos</a></li>	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-22770 dropdown"><a title="Conselho Diretor" href="#" >Conselho Diretor</a>
+	<ul class="sub-menu" role="menu">
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26918 dropdown"><a title="Gestão Atual (2025-2027)" href="https://visitmaringa.com.br/gestao-atual-2025-2027/" >Gestão Atual (2025-2027)</a></li>		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23067 dropdown"><a title="Gestão 2023-2025" href="https://visitmaringa.com.br/gestao-2023-2025/" >Gestão 2023-2025</a></li>		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22781 dropdown"><a title="Gestão 2021-2023" href="https://visitmaringa.com.br/gestao-2021-2023/" >Gestão 2021-2023</a></li></ul></li></ul></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-19790 dropdown"><a title="Eventos" href="#" >Eventos</a>
+<ul class="sub-menu" role="menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26084 dropdown"><a title="Agenda" href="https://visitmaringa.com.br/nova-agenda/" >Agenda</a></li>	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19792 dropdown"><a title="Seu evento aqui" href="https://visitmaringa.com.br/seu-evento-aqui/" >Seu evento aqui</a></li></ul></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-20154 dropdown"><a title="Serviços" href="#" >Serviços</a>
+<ul class="sub-menu" role="menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20158 dropdown"><a title="O que fazer" href="https://visitmaringa.com.br/o-que-fazer/" >O que fazer</a></li>	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20221 dropdown"><a title="Onde comer" href="https://visitmaringa.com.br/onde-comer/" >Onde comer</a></li>	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26311 dropdown"><a title="Compras" href="https://visitmaringa.com.br/compras/" >Compras</a></li>	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20265 dropdown"><a title="Onde se hospedar" href="https://visitmaringa.com.br/onde-se-hospedar/" >Onde se hospedar</a></li>	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26195 dropdown"><a title="Espaço para eventos" href="https://visitmaringa.com.br/espaco-para-eventos/" >Espaço para eventos</a></li>	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26274 dropdown"><a title="Serviços para eventos" href="https://visitmaringa.com.br/servicos-para-eventos/" >Serviços para eventos</a></li>	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25090 dropdown"><a title="Mídia e Comunicação" href="https://visitmaringa.com.br/midia-e-comunicacao/" >Mídia e Comunicação</a></li>	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25120 dropdown"><a title="Serviços Locais" href="https://visitmaringa.com.br/servicos-locais/" >Serviços Locais</a></li></ul></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19438 dropdown"><a title="Associados" href="https://visitmaringa.com.br/associados/" >Associados</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19962 dropdown"><a title="Observatório do Turismo" href="https://visitmaringa.com.br/observatorio-do-turismo/" >Observatório do Turismo</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-20094 dropdown"><a title="Notícias" href="https://visitmaringa.com.br/noticias/" >Notícias</a></li></ul></div>        </nav>
+
+			</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-b3c9a3c elementor-hidden-tablet elementor-hidden-mobile" data-id="b3c9a3c" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-a02dfd1 elementor-widget__width-initial elementor-widget elementor-widget-gimont_elementor_ova_search_popup" data-id="a02dfd1" data-element_type="widget" data-widget_type="gimont_elementor_ova_search_popup.default">
+				<div class="elementor-widget-container">
+			
+			<div class="ova_wrap_search_popup">
+				<i class="front_search gimonticon gimonticon-search-interface-symbol"></i>
+				<div class="ova_search_popup">
+					<div class="search-popup__overlay"></div>
+					<div class="container">
+						<form role="search" method="get" class="search-form" action="https://visitmaringa.com.br/">
+						        <input type="search" class="search-field" placeholder="Pesquisar ..." value="" name="s" title="Search for:" />
+				   			 	<button type="submit" class="search-submit" aria-label="Pesquisar">
+				   			 		<i class="gimonticon gimonticon-search-interface-symbol"></i>
+				   			 	</button>
+						</form>									
+					</div>
+				</div>
+			</div>
+
+				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				</div>
+		
+<div class="ova-sev-single-2">
+
+	<div class="hero-banner-wrapper">
+					<div class="hero-banner" style="background-image:url(https://visitmaringa.com.br/wp-content/uploads/2024/10/agencia-vqv-banner.jpg);">
+							</div>
+		
+			</div>
+
+	<div class="row_site">
+		<div class="container_site">
+
+			<div class="ova-sev-wrapper no_sidebar">
+
+				
+				<div class="ova-sev-content">
+																		<div class="content">
+										<div data-elementor-type="wp-post" data-elementor-id="23192" class="elementor elementor-23192">
+						<section class="elementor-section elementor-top-section elementor-element elementor-element-1acdcfc elementor-section-full_width elementor-section-stretched elementor-section-height-default elementor-section-height-default" data-id="1acdcfc" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1413fad" data-id="1413fad" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-6213ba2 elementor-widget elementor-widget-heading" data-id="6213ba2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Agência VQV</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-b6fac8c elementor-widget elementor-widget-heading" data-id="b6fac8c" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><i>Associado<br>Categoria: Organizadora de eventos</i></p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-f8e266f elementor-widget elementor-widget-heading" data-id="f8e266f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><b>Telefone</b></p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-96ff117 elementor-widget elementor-widget-heading" data-id="96ff117" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">(44) 3226-4472</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-f510c31 elementor-widget elementor-widget-heading" data-id="f510c31" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><b>Instagram</b></p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-6c734be elementor-widget elementor-widget-heading" data-id="6c734be" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><a href="https://www.instagram.com/agenciavqv/" target="_blank"><u>instagram.com/agenciavqv/</u></a></p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-584e600 elementor-widget elementor-widget-heading" data-id="584e600" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><b>Funcionamento</b></p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-cf18b5b elementor-widget elementor-widget-heading" data-id="cf18b5b" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><b>Segunda:</b> 8:00 - 12:00, 13:30 - 18:00<br><b>Terça:</b> 8:00 - 12:00, 13:30 - 18:00<br><b>Quarta:</b> 8:00 - 12:00, 13:30 - 18:00<br><b>Quinta:</b> 8:00 - 12:00, 13:30 - 18:00<br><b>Sexta:</b> 8:00 - 12:00, 13:30 - 18:00<br><b>Sábado:</b> fechado<br><b>Domingo:</b> fechado</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-3e0775c elementor-widget elementor-widget-heading" data-id="3e0775c" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><b>Endereço</b></p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-605d2d5 elementor-widget elementor-widget-heading" data-id="605d2d5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">Rua Vaz Caminha, 1220 - Zona 02, Maringá - PR, CEP: 87010-420</p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-f807d47 elementor-widget elementor-widget-heading" data-id="f807d47" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><b>Facebook</b></p>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1c7e9b6 elementor-widget elementor-widget-heading" data-id="1c7e9b6" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><a href="https://www.facebook.com/agenciaVQV/" target="_blank"><u>facebook.com/agenciaVQV/</u></a></p>		</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				</div>
+									</div>
+											
+			        				</div>
+
+				
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+			</div> <!-- /Inside Content -->
+			<div class="wrap_footer" role="contentinfo">
+				<style id="elementor-post-19380">.elementor-19380 .elementor-element.elementor-element-ca06b63{padding:3% 10% 3% 10%;}.elementor-19380 .elementor-element.elementor-element-4759abb > .elementor-widget-wrap > .elementor-widget:not(.elementor-widget__width-auto):not(.elementor-widget__width-initial):not(:last-child):not(.elementor-absolute){margin-bottom:24px;}.elementor-19380 .elementor-element.elementor-element-4759abb > .elementor-element-populated{padding:0px 0px 0px 0px;}.elementor-19380 .elementor-element.elementor-element-3501e4f{--divider-border-style:solid;--divider-color:#015025;--divider-border-width:2px;}.elementor-19380 .elementor-element.elementor-element-3501e4f .elementor-divider-separator{width:12%;margin:0 auto;margin-center:0;}.elementor-19380 .elementor-element.elementor-element-3501e4f .elementor-divider{text-align:center;padding-block-start:2px;padding-block-end:2px;}.elementor-19380 .elementor-element.elementor-element-187aef0{text-align:center;}.elementor-19380 .elementor-element.elementor-element-187aef0 .elementor-heading-title{color:#F5B82E;font-size:36px;line-height:1.2em;}.elementor-19380 .elementor-element.elementor-element-efefcd0:not(.elementor-motion-effects-element-type-background), .elementor-19380 .elementor-element.elementor-element-efefcd0 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#1B1B1B;}.elementor-19380 .elementor-element.elementor-element-efefcd0 > .elementor-background-overlay{opacity:0.1;transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-19380 .elementor-element.elementor-element-efefcd0{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;padding:2% 10% 2% 10%;}.elementor-19380 .elementor-element.elementor-element-948a26c > .elementor-container > .elementor-column > .elementor-widget-wrap{align-content:center;align-items:center;}.elementor-19380 .elementor-element.elementor-element-948a26c{padding:30px 0px 30px 0px;}.elementor-bc-flex-widget .elementor-19380 .elementor-element.elementor-element-0086342.elementor-column .elementor-widget-wrap{align-items:flex-start;}.elementor-19380 .elementor-element.elementor-element-0086342.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:flex-start;align-items:flex-start;}.elementor-19380 .elementor-element.elementor-element-0086342 > .elementor-widget-wrap > .elementor-widget:not(.elementor-widget__width-auto):not(.elementor-widget__width-initial):not(:last-child):not(.elementor-absolute){margin-bottom:10px;}.elementor-19380 .elementor-element.elementor-element-0086342 > .elementor-element-populated{padding:0px 0px 0px 0px;}.elementor-19380 .elementor-element.elementor-element-4821dd2{--grid-template-columns:repeat(0, auto);--icon-size:11px;--grid-column-gap:10px;--grid-row-gap:0px;}.elementor-19380 .elementor-element.elementor-element-4821dd2 .elementor-widget-container{text-align:left;}.elementor-19380 .elementor-element.elementor-element-4821dd2 .elementor-social-icon{background-color:#FFFFFF;--icon-padding:1em;}.elementor-19380 .elementor-element.elementor-element-4821dd2 .elementor-social-icon i{color:#1B1B1B;}.elementor-19380 .elementor-element.elementor-element-4821dd2 .elementor-social-icon svg{fill:#1B1B1B;}.elementor-19380 .elementor-element.elementor-element-4821dd2 .elementor-social-icon:hover{background-color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-4821dd2 .elementor-social-icon:hover i{color:#1B1B1B;}.elementor-19380 .elementor-element.elementor-element-4821dd2 .elementor-social-icon:hover svg{fill:#1B1B1B;}.elementor-19380 .elementor-element.elementor-element-4821dd2 .elementor-icon.elementor-social-icon{display:inline-flex;}.elementor-bc-flex-widget .elementor-19380 .elementor-element.elementor-element-1d2a554.elementor-column .elementor-widget-wrap{align-items:flex-start;}.elementor-19380 .elementor-element.elementor-element-1d2a554.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:flex-start;align-items:flex-start;}.elementor-19380 .elementor-element.elementor-element-1d2a554 > .elementor-widget-wrap > .elementor-widget:not(.elementor-widget__width-auto):not(.elementor-widget__width-initial):not(:last-child):not(.elementor-absolute){margin-bottom:10px;}.elementor-19380 .elementor-element.elementor-element-1d2a554 > .elementor-element-populated{padding:0px 0px 0px 0px;}.elementor-19380 .elementor-element.elementor-element-9571343 > .elementor-widget-container{margin:7px 0px 17px 0px;}.elementor-19380 .elementor-element.elementor-element-9571343 .elementor-heading-title{color:#FFFFFF;font-size:20px;font-weight:700;line-height:1.3em;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .icon i{color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .icon svg path{fill:#FFFFFF;stroke:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .label{color:#FFFFFF;font-size:14px;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .info .item{color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .info .item a{color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .info .item a:hover{color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .info .item a:before{background-color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .info .item a:hover:before{background-color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .info .item, .elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .info .item a{font-size:14px;font-weight:300;}.elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .icon i{color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .icon svg path{fill:#FFFFFF;stroke:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .label{color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .info .item{color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .info .item a{color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .info .item a:hover{color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .info .item a:before{background-color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .info .item a:hover:before{background-color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .info .item, .elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .info .item a{font-size:14px;font-weight:300;}.elementor-bc-flex-widget .elementor-19380 .elementor-element.elementor-element-d418e32.elementor-column .elementor-widget-wrap{align-items:flex-start;}.elementor-19380 .elementor-element.elementor-element-d418e32.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:flex-start;align-items:flex-start;}.elementor-19380 .elementor-element.elementor-element-d418e32 > .elementor-element-populated{padding:0px 0px 0px 0px;}.elementor-19380 .elementor-element.elementor-element-9c68bba > .elementor-widget-container{margin:7px 0px 7px 0px;}.elementor-19380 .elementor-element.elementor-element-9c68bba .elementor-heading-title{color:#FFFFFF;font-size:20px;font-weight:700;line-height:1.3em;}.elementor-19380 .elementor-element.elementor-element-3421afd .elementor-heading-title{color:#FFFFFF;font-size:14px;font-weight:300;line-height:1.2em;}.elementor-19380 .elementor-element.elementor-element-7eb10dd:not(.elementor-motion-effects-element-type-background), .elementor-19380 .elementor-element.elementor-element-7eb10dd > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#015025;}.elementor-19380 .elementor-element.elementor-element-7eb10dd{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;padding:10px 0px 10px 0px;}.elementor-19380 .elementor-element.elementor-element-7eb10dd > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-19380 .elementor-element.elementor-element-0ba8669{text-align:center;color:#EDF1FA;font-size:13px;}.elementor-19380 .elementor-element.elementor-element-0ba8669 a{color:#EDF1FA;}.elementor-19380 .elementor-element.elementor-element-0ba8669 a:hover{color:#FFFFFF;}.elementor-19380 .elementor-element.elementor-element-0ba8669  p{margin:0px 0px 0px 0px;}@media(max-width:1024px) and (min-width:768px){.elementor-19380 .elementor-element.elementor-element-0086342{width:25%;}.elementor-19380 .elementor-element.elementor-element-1d2a554{width:40%;}.elementor-19380 .elementor-element.elementor-element-d418e32{width:33.3%;}}@media(max-width:1024px){.elementor-19380 .elementor-element.elementor-element-efefcd0{padding:2% 4% 2% 4%;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .label{font-size:12px;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .info .item, .elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .info .item a{font-size:12px;}.elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .info .item, .elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .info .item a{font-size:12px;}.elementor-19380 .elementor-element.elementor-element-d418e32 > .elementor-element-populated{margin:0px 0px 25px 0px;--e-column-margin-right:0px;--e-column-margin-left:0px;}.elementor-19380 .elementor-element.elementor-element-9c68bba{width:var( --container-widget-width, 295.391px );max-width:295.391px;--container-widget-width:295.391px;--container-widget-flex-grow:0;}.elementor-19380 .elementor-element.elementor-element-3421afd{width:var( --container-widget-width, 291.406px );max-width:291.406px;--container-widget-width:291.406px;--container-widget-flex-grow:0;}.elementor-19380 .elementor-element.elementor-element-3421afd .elementor-heading-title{font-size:12px;}}@media(max-width:767px){.elementor-19380 .elementor-element.elementor-element-ca06b63{padding:6% 4% 6% 4%;}.elementor-19380 .elementor-element.elementor-element-3501e4f .elementor-divider-separator{width:24%;}.elementor-19380 .elementor-element.elementor-element-948a26c{padding:45px 0px 45px 0px;}.elementor-19380 .elementor-element.elementor-element-15304d6 .elementor-widget-container{justify-content:flex-start;}.elementor-19380 .elementor-element.elementor-element-4821dd2 .elementor-widget-container{text-align:left;}.elementor-19380 .elementor-element.elementor-element-1d2a554 > .elementor-element-populated{padding:36px 0px 36px 0px;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .label{font-size:14px;}.elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .info .item, .elementor-19380 .elementor-element.elementor-element-7cf9f54 .ova-contact-info-2 .contact .info .item a{font-size:14px;}.elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .info .item, .elementor-19380 .elementor-element.elementor-element-79a9c63 .ova-contact-info-2 .contact .info .item a{font-size:14px;}.elementor-19380 .elementor-element.elementor-element-3421afd .elementor-heading-title{font-size:14px;}.elementor-19380 .elementor-element.elementor-element-0ba8669{font-size:13px;}}</style>		<div data-elementor-type="wp-post" data-elementor-id="19380" class="elementor elementor-19380">
+						<section class="elementor-section elementor-top-section elementor-element elementor-element-ca06b63 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ca06b63" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4759abb" data-id="4759abb" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-3501e4f elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="3501e4f" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-187aef0 elementor-widget elementor-widget-heading" data-id="187aef0" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Apoio e Patrocínio</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-4a40126 elementor-arrows-position-inside elementor-widget elementor-widget-image-carousel" data-id="4a40126" data-element_type="widget" data-settings="{&quot;navigation&quot;:&quot;arrows&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500}" data-widget_type="image-carousel.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
+			<div class="elementor-image-carousel swiper-wrapper" aria-live="off">
+								<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="1 de 5"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://visitmaringa.com.br/wp-content/uploads/elementor/thumbs/Apoiadores-Visite-Maringa-qtdz7tpgiw9bmcupf4fko7wyxi0z29un7mvy42dl42.png" alt="Apoiadores - Visite Maringá" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="2 de 5"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://visitmaringa.com.br/wp-content/uploads/elementor/thumbs/Apoiadores-CODEM-qtikp0gge976m9pemnennfzwilt3ckh0kz59knlgki.png" alt="Apoiadores - CODEM" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="3 de 5"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://visitmaringa.com.br/wp-content/uploads/elementor/thumbs/Apoiadores-SEBRAE-qtnvfnxsuv4mzpid7aqr562hkyyb81ltnqzd7ccboi.png" alt="Apoiadores - SEBRAE" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="4 de 5"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://visitmaringa.com.br/wp-content/uploads/elementor/thumbs/Apoiadores-ACIM2-qy9qft74ppvyk5pqa9wmsqf32zgwooltdw2m1qpzj6.png" alt="Apoiadores - ACIM(2)" /></figure></div><div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="5 de 5"><figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://visitmaringa.com.br/wp-content/uploads/elementor/thumbs/Apoiadores-Digimax-qy9qp02bjegw2wd4m8xb6exc6m63y53bzdpiz53eoy.png" alt="Apoiadores - Digimax" /></figure></div>			</div>
+												<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0">
+						<i aria-hidden="true" class="eicon-chevron-left"></i>					</div>
+					<div class="elementor-swiper-button elementor-swiper-button-next" role="button" tabindex="0">
+						<i aria-hidden="true" class="eicon-chevron-right"></i>					</div>
+				
+									</div>
+				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-efefcd0 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="efefcd0" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+							<div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-175b778" data-id="175b778" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-948a26c elementor-section-full_width elementor-section-content-middle elementor-section-height-default elementor-section-height-default" data-id="948a26c" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-0086342" data-id="0086342" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-15304d6 elementor-widget elementor-widget-ova_logo" data-id="15304d6" data-element_type="widget" data-widget_type="ova_logo.default">
+				<div class="elementor-widget-container">
+			
+		<div class="brand_el">
+
+											<a href="https://visitmaringa.com.br/ "   >
+			
+				<img src="https://visitmaringa.com.br/wp-content/uploads/2023/06/logo-transparente-branco.png" 
+					alt="Visite Maringá" 
+					class="logo_desktop" 
+					style="width:auto ; height:60px" 
+				/>
+
+				<img src="https://visitmaringa.com.br/wp-content/uploads/2023/06/logo-transparente-branco.png" 
+					alt="Visite Maringá" 
+					class="logo_mobile" 
+					style="width:auto ;  height:60px" 
+				/>
+
+				<img src="https://visitmaringa.com.br/wp-content/uploads/2023/06/logo-transparente-branco.png" 
+					alt="Visite Maringá" 
+					class="logo_sticky" 
+					style="width:auto ; height:36px" 
+				/>
+
+							</a>
+			
+		</div>
+
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-4821dd2 elementor-shape-circle e-grid-align-left e-grid-align-mobile-left elementor-grid-0 elementor-widget elementor-widget-social-icons" data-id="4821dd2" data-element_type="widget" data-widget_type="social-icons.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-social-icons-wrapper elementor-grid">
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-repeater-item-f19c7bc" href="https://www.instagram.com/visite.maringa/" target="_blank">
+						<span class="elementor-screen-only">Instagram</span>
+						<i class="fab fa-instagram"></i>					</a>
+				</span>
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-facebook-f elementor-repeater-item-a94f909" href="https://www.facebook.com/maringacvb/?locale=pt_BR" target="_blank">
+						<span class="elementor-screen-only">Facebook-f</span>
+						<i class="fab fa-facebook-f"></i>					</a>
+				</span>
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-repeater-item-6e2878c" href="https://www.linkedin.com/in/maring%C3%A1-e-regi%C3%A3o-convention-visitors-bureau-92ba27159/" target="_blank">
+						<span class="elementor-screen-only">Linkedin-in</span>
+						<i class="fab fa-linkedin-in"></i>					</a>
+				</span>
+					</div>
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-1d2a554" data-id="1d2a554" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-9571343 elementor-widget elementor-widget-heading" data-id="9571343" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Contato</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-7cf9f54 elementor-widget elementor-widget-gimont_elementor_contact_info_2" data-id="7cf9f54" data-element_type="widget" data-widget_type="gimont_elementor_contact_info_2.default">
+				<div class="elementor-widget-container">
+						<div class="ova-contact-info-2">
+				
+							    	<div class="icon">
+						<i aria-hidden="true" class="gimonticon gimonticon-email"></i>					</div>
+			    				
+				<div class="contact">
+					
+					
+					<ul class="info">
+						
+								<li class="item">
+																					<a href="mailto:contato@visitmaringa.com.br " title="email">
+													contato@visitmaringa.com.br												</a>
+																			</li>
+							
+											</ul>
+
+				</div>
+
+			</div>
+
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-79a9c63 elementor-widget elementor-widget-gimont_elementor_contact_info_2" data-id="79a9c63" data-element_type="widget" data-widget_type="gimont_elementor_contact_info_2.default">
+				<div class="elementor-widget-container">
+						<div class="ova-contact-info-2">
+				
+							    	<div class="icon">
+						<i aria-hidden="true" class="fas fa-phone-square"></i>					</div>
+			    				
+				<div class="contact">
+					
+					
+					<ul class="info">
+						
+								<li class="item">
+																					<a href="tel:5544999184738 " title="phone">
+													(44) 99918-4738												</a>
+																			</li>
+							
+											</ul>
+
+				</div>
+
+			</div>
+
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-inner-column elementor-element elementor-element-d418e32" data-id="d418e32" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-9c68bba elementor-widget-tablet__width-initial elementor-widget elementor-widget-heading" data-id="9c68bba" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Sobre nós</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-3421afd elementor-widget-tablet__width-initial elementor-widget elementor-widget-heading" data-id="3421afd" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default">O Visite Maringá e Região é uma organização sem fins lucrativos que visa estimular o turismo e contribuir com o desenvolvimento econômico local.</p>		</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-7eb10dd elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7eb10dd" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-c014095" data-id="c014095" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-0ba8669 elementor-widget elementor-widget-text-editor" data-id="0ba8669" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>© Copyright 2026 &#8211; Visite Maringá &#8211; Desenvolvido pela <span style="text-decoration: underline;"><a style="background-color: #015025;" href="https://www.digimaxbrasil.com.br/" target="_blank" rel="noopener">Digimax®</a></span></p>						</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				</div>
+					</div>
+			
+		</div> <!-- /Ova Wrapper -->	
+		<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/gimont-child/*","/wp-content/themes/gimont/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+			<script type='text/javascript'>
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+				<script type='text/javascript'>
+		(function () {
+			var c = document.body.className;
+			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+			document.body.className = c;
+		})();
+	</script>
+	<link rel='stylesheet' id='wc-blocks-style-css' href='https://visitmaringa.com.br/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-9.9.5' media='all' />
+<link rel='stylesheet' id='gimont-elementor-header-banner-css' href='https://visitmaringa.com.br/wp-content/themes/gimont/assets/scss/elementor/headers/header-banner.css' media='all' />
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<link rel='stylesheet' id='elementor-icons-shared-0-css' href='https://visitmaringa.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css?ver=5.15.3' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-brands-css' href='https://visitmaringa.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css?ver=5.15.3' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-solid-css' href='https://visitmaringa.com.br/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css?ver=5.15.3' media='all' />
+<script id="wp-hooks-js" src="https://visitmaringa.com.br/wp-includes/js/dist/hooks.min.js?ver=f0f188028580e8dc1255"></script>
+<script id="wp-i18n-js" src="https://visitmaringa.com.br/wp-includes/js/dist/i18n.min.js?ver=1dfe7db3940c23ea9216"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script id="swv-js" src="https://visitmaringa.com.br/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.1.6"></script>
+<script id="contact-form-7-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "contact-form-7", {"translation-revision-date":"2025-05-19 13:41:20+0000","generator":"GlotPress\/4.0.1","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n > 1;","lang":"pt_BR"},"Error:":["Erro:"]}},"comment":{"reference":"includes\/js\/index.js"}} );
+//# sourceURL=contact-form-7-js-translations
+</script>
+<script id="contact-form-7-js-before">
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/visitmaringa.com.br\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    },
+    "cached": 1
+};
+//# sourceURL=contact-form-7-js-before
+</script>
+<script id="contact-form-7-js" src="https://visitmaringa.com.br/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.1.6"></script>
+<script id="event-frontend-js-js-extra">
+var ajax_object = {"ajax_url":"https://visitmaringa.com.br/wp-admin/admin-ajax.php"};
+//# sourceURL=event-frontend-js-js-extra
+</script>
+<script id="event-frontend-js-js" src="https://visitmaringa.com.br/wp-content/plugins/ova-events/assets/js/frontend/event.js?ver=7.1.1"></script>
+<script id="carousel-js" src="https://visitmaringa.com.br/wp-content/themes/gimont/assets/libs/carousel/owl.carousel.min.js"></script>
+<script id="fancybox-js" src="https://visitmaringa.com.br/wp-content/themes/gimont/assets/libs/fancybox/fancybox.umd.js"></script>
+<script id="appear-js" src="https://visitmaringa.com.br/wp-content/themes/gimont/assets/libs/appear/appear.js"></script>
+<script id="imagesloaded-js" src="https://visitmaringa.com.br/wp-includes/js/imagesloaded.min.js?ver=5.0.0"></script>
+<script id="masonry-js" src="https://visitmaringa.com.br/wp-includes/js/masonry.min.js?ver=4.2.2"></script>
+<script id="gimont-script-js-extra">
+var ScrollUpText = {"value":"Go to top"};
+var Select2Text = {"input_short":"Please enter 1 or more characters","no_results":"No results found"};
+var ajax_object = {"ajax_url":"https://visitmaringa.com.br/wp-admin/admin-ajax.php","ajax_nonce":"d7031eb019"};
+//# sourceURL=gimont-script-js-extra
+</script>
+<script id="gimont-script-js" src="https://visitmaringa.com.br/wp-content/themes/gimont/assets/js/script.js"></script>
+<script id="gimont-woo-js" src="https://visitmaringa.com.br/wp-content/themes/gimont/assets/js/woo.js"></script>
+<script id="sourcebuster-js-js" src="https://visitmaringa.com.br/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=9.9.5"></script>
+<script id="wc-order-attribution-js-extra">
+var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":false,"ajaxurl":"https://visitmaringa.com.br/wp-admin/admin-ajax.php","prefix":"wc_order_attribution_","allowTracking":true},"fields":{"source_type":"current.typ","referrer":"current_add.rf","utm_campaign":"current.cmp","utm_source":"current.src","utm_medium":"current.mdm","utm_content":"current.cnt","utm_id":"current.id","utm_term":"current.trm","utm_source_platform":"current.plt","utm_creative_format":"current.fmt","utm_marketing_tactic":"current.tct","session_entry":"current_add.ep","session_start_time":"current_add.fd","session_pages":"session.pgs","session_count":"udata.vst","user_agent":"udata.uag"}};
+//# sourceURL=wc-order-attribution-js-extra
+</script>
+<script id="wc-order-attribution-js" src="https://visitmaringa.com.br/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=9.9.5"></script>
+<script id="ova_megamenu_script-js" src="https://visitmaringa.com.br/wp-content/plugins/ova-megamenu/assets/js/script.js"></script>
+<script id="gimont-elementor-menu-canvas-js" src="https://visitmaringa.com.br/wp-content/themes/gimont/assets/js/elementor/menu-canvas.js?ver=7.1.1"></script>
+<script id="gimont-elementor-search-popup-js" src="https://visitmaringa.com.br/wp-content/themes/gimont/assets/js/elementor/search-popup.js?ver=7.1.1"></script>
+<script id="elementor-webpack-runtime-js" src="https://visitmaringa.com.br/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.23.4"></script>
+<script id="elementor-frontend-modules-js" src="https://visitmaringa.com.br/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.23.4"></script>
+<script id="elementor-waypoints-js" src="https://visitmaringa.com.br/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2"></script>
+<script id="jquery-ui-core-js-before">
+jQuery.uiBackCompat = true;
+//# sourceURL=jquery-ui-core-js-before
+</script>
+<script id="jquery-ui-core-js" src="https://visitmaringa.com.br/wp-includes/js/jquery/ui/core.min.js?ver=1.14.2"></script>
+<script id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnTwitter":"Compartilhar no Twitter","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselWrapperAriaLabel":"Carrossel | Rolagem horizontal: Setas para esquerda e direita","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},
+"version":"3.23.4","is_static":false,"experimentalFeatures":{"e_nested_atomic_repeaters":true,"e_optimized_control_loading":true,"e_onboarding":true,"home_screen":true,"editor_v2":true,"e_lazyload":true,"e_element_cache":true,"link-in-bio":true},"urls":{"assets":"https:\/\/visitmaringa.com.br\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/visitmaringa.com.br\/wp-admin\/admin-ajax.php"},"nonces":{"floatingButtonsClickTracking":"45c7968074"},"swiperClass":"swiper-container","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":23192,"title":"Ag%C3%AAncia%20VQV%20%E2%80%93%20Visite%20Maring%C3%A1","excerpt":"ORGANIZADORA DE EVENTOS","featuredImage":"https:\/\/visitmaringa.com.br\/wp-content\/uploads\/2024\/10\/agencia-vqv-banner-1024x576.jpg"}};
+//# sourceURL=elementor-frontend-js-before
+</script>
+<script id="elementor-frontend-js" src="https://visitmaringa.com.br/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.23.4"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://visitmaringa.com.br/wp-includes/js/wp-emoji-release.min.js?ver=7.1.1"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://visitmaringa.com.br/wp-includes/js/wp-emoji-loader.min.js
+</script>
+	</body><!-- /body -->
+</html>

@@ -46,7 +46,7 @@ component output=false {
         var firstAccessApi=targetPath=='/estudos/primeiro-acesso/api.cfm';
         if(studyPage || studyApi || studyReader || studyLaunch || firstAccessPage || firstAccessApi) {
             var allowedQuery=studyPage?'produto,interesse':(studyReader?'ano':(studyLaunch && targetPath=='/estudos/lancamento/arquivo.cfm'?'doc':''));
-            var allowedForm=firstAccessApi?'operation,csrf,mode,value,role,declared,corrections,cnpj,email,expiresOn':studyApi?'action,csrf,code,company,role,message,kind,enabled,campaignId,status,expectedVersion,note,email,expiresOn,requestId,voucherId,accessId':'';
+            var allowedForm=firstAccessApi?'operation,csrf,mode,value,role,declared,corrections,cnpj,companyId,email,expiresOn':studyApi?'action,csrf,code,company,role,message,kind,enabled,campaignId,status,expectedVersion,note,email,expiresOn,requestId,voucherId,accessId':'';
             var valid=!(len(pathInfo)) && multipartValid && variables.policy.uniqueParameters(rawQuery) && variables.policy.uniqueParameters(rawBody);
             valid=valid && ((studyApi || firstAccessApi)?uCase(method)=='POST':uCase(method)=='GET');
             for(var key in arguments.query) if(!listFindNoCase(allowedQuery,key) || !isSimpleValue(arguments.query[key])) valid=false;

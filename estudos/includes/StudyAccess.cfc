@@ -120,9 +120,23 @@ component output=false {
                     'temas_anuais_previstos',jsonb_build_array('Preços de inscrição, categorias, kits e lotes','Ritmo nacional dos 42 km e faixas de desempenho','Calendário completo de janeiro a dezembro'),
                     'ressalva','Temas previstos para a edição anual, sujeitos à revisão das fontes. Não integram os números nem as exportações desta prévia.'))
             ) AS text) AS payload_json FROM delivery";
+        // Read bounded pieces: the datasource may cap a text column at 64,000
+        // characters. Keep authorization and all pieces in the same DB snapshot.
+        readSQL="WITH document AS MATERIALIZED (" & readSQL & ")
+            SELECT d.id,d.codigo,d.titulo,d.tipo,d.ano,d.publicacao_id,
+                char_length(d.payload_json) AS payload_length,
+                substring(d.payload_json FROM piece.offset_char FOR 16000) AS payload_json
+            FROM document d CROSS JOIN LATERAL
+                generate_series(1,char_length(d.payload_json),16000) AS piece(offset_char)
+            ORDER BY piece.offset_char";
         var q=db(readSQL,{code=p(productCode),u=idp(actorId),admin=p(user.is_admin,"cf_sql_bit")});
         if(!q.recordCount) throw(type="StudyAccess.Access",message="Você ainda não tem acesso a este estudo.");
-        var product=one(q);var payload=product.payload_json;structDelete(product,"payload_json");
+        var pieces=[];
+        for(var row=1;row<=q.recordCount;row++) arrayAppend(pieces,q.payload_json[row]);
+        var payload=arrayToList(pieces,"");
+        if(len(payload)!=q.payload_length[1] || !isJSON(payload))
+            throw(type="StudyAccess.Payload",message="Não foi possível carregar o estudo completo. Tente novamente.");
+        var product=one(q);structDelete(product,"payload_json");structDelete(product,"payload_length");
         return {"product":product,"publication_id":product.publicacao_id,"payload_json":payload};
     }
     public struct function redeem(required any actorId,required string code) {
@@ -211,7 +225,7 @@ component output=false {
     public struct function adminCreateVoucher(required any actorId,required any campaignId,required string email,required string expiresOn,string note="",any requestId=0) {
         actor(actorId,true);idp(campaignId);limitText(note,1000);
         var recipient=lCase(trim(email));
-        if(len(recipient)>254 || !isValid("email",recipient)) throw(type="StudyAccess.Validation",message="Informe um e-mail válido para o convite.");
+        if(len(recipient)>254 || !new services.EmailAddress().isValidAddress(recipient)) throw(type="StudyAccess.Validation",message="Informe um e-mail válido para o convite.");
         if(!reFind("^20[0-9]{2}-[0-9]{2}-[0-9]{2}$",expiresOn) || !isDate(expiresOn)) throw(type="StudyAccess.Validation",message="Informe uma data de expiração válida.");
         if(toString(requestId)!="0") idp(requestId);
         var code="BQ26-" & uCase(left(binaryEncode(binaryDecode(generateSecretKey("AES",256),"base64"),"hex"),32));

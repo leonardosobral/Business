@@ -1,0 +1,959 @@
+{
+  "profiles": [
+    {
+      "id_conta": 28,
+      "id_origem": "3lr-eventos",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 29,
+      "id_origem": "aclive-sports",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 30,
+      "id_origem": "bee-sports",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 31,
+      "id_origem": "beta-sports",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 32,
+      "id_origem": "bolt-producoes",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 33,
+      "id_origem": "brb-marketing-esportivo",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 34,
+      "id_origem": "chelso-sports",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 6,
+      "id_origem": "clube-dos-corredores",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 35,
+      "id_origem": "corre-brasil",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 36,
+      "id_origem": "corre-paraiba",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 37,
+      "id_origem": "correr-com-propositos",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 38,
+      "id_origem": "global-vita",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 1,
+      "id_origem": "grupo-stc-eventos-ltda",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 39,
+      "id_origem": "hl-eventos-esportivos",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 40,
+      "id_origem": "ice-sports",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 41,
+      "id_origem": "iguana-sports",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 42,
+      "id_origem": "jardel-moura-assessoria-esportiva",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 43,
+      "id_origem": "letape-brasil",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 44,
+      "id_origem": "metodo-grupo-chokito",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 45,
+      "id_origem": "morro-mt",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 46,
+      "id_origem": "mp-sports-brasil",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 47,
+      "id_origem": "noblu-sports",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 9,
+      "id_origem": "trcrono",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 48,
+      "id_origem": "oxe-eventos",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 49,
+      "id_origem": "pda-esportes",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 50,
+      "id_origem": "podium-chip",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 51,
+      "id_origem": "sbs-sports",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 52,
+      "id_origem": "seven-eco",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 53,
+      "id_origem": "sportsland",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 54,
+      "id_origem": "superacao-eventos",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 55,
+      "id_origem": "top-chip",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 56,
+      "id_origem": "tour-da-roca",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 57,
+      "id_origem": "tvcom-running",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 58,
+      "id_origem": "uhuw-eventos",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 59,
+      "id_origem": "unlimited",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 60,
+      "id_origem": "vega-sports",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 61,
+      "id_origem": "vida-sport",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 27,
+      "id_origem": "voa-esportes",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 62,
+      "id_origem": "wine-run-brasil",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 63,
+      "id_origem": "x3m-entretenimento-ltda",
+      "origem": "ABRACEO"
+    },
+    {
+      "id_conta": 7,
+      "id_origem": "yescom",
+      "origem": "ABRACEO"
+    }
+  ],
+  "accounts": [
+    {
+      "documento": "32692507000140",
+      "nome_conta": "Grupo STC",
+      "nome_titular": "Anderson Tonon",
+      "telefone_principal": null,
+      "status": "ATIVA",
+      "data_atualizacao": "2026-06-08T19:36:05.342711+00:00",
+      "id_conta": 1,
+      "data_criacao": "2026-06-08T19:34:55.995442+00:00",
+      "email_principal": "contato@grupostc.net",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "05108435000178",
+      "nome_conta": "Live!",
+      "nome_titular": "Live Roupas Esportivas Ltda",
+      "telefone_principal": null,
+      "status": "ATIVA",
+      "data_atualizacao": "2026-06-08T19:54:35.026547+00:00",
+      "id_conta": 2,
+      "data_criacao": "2026-06-08T19:54:35.026547+00:00",
+      "email_principal": null,
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "02151019950",
+      "nome_conta": "Floripa Road Runners",
+      "nome_titular": "Geraldo Protta",
+      "telefone_principal": "48999153030",
+      "status": "SUSPENSA",
+      "data_atualizacao": "2026-10-04T14:33:39.433249+00:00",
+      "id_conta": 3,
+      "data_criacao": "2026-06-09T18:23:18.798988+00:00",
+      "email_principal": "protta@gmail.com",
+      "tipo_titular": "PF"
+    },
+    {
+      "documento": "97146831000108",
+      "nome_conta": "ArturRunner's",
+      "nome_titular": "Artur",
+      "telefone_principal": "4199362633",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-06-19T15:20:23.011216+00:00",
+      "id_conta": 4,
+      "data_criacao": "2026-06-19T15:20:23.011216+00:00",
+      "email_principal": "arturcwgrochocki@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "28434613000156",
+      "nome_conta": "MP3 Marketing",
+      "nome_titular": "Douglas Vieira de Mello Cerqueira",
+      "telefone_principal": "(71) 98231-8649",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-07-15T21:13:03.176982+00:00",
+      "id_conta": 5,
+      "data_criacao": "2026-06-30T01:02:45.643836+00:00",
+      "email_principal": "douglas@mp3promocoes.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "88792965000105",
+      "nome_conta": "CORPA",
+      "nome_titular": "Paulo Stone",
+      "telefone_principal": "51998751610",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-07-15T21:09:59.247795+00:00",
+      "id_conta": 6,
+      "data_criacao": "2026-07-15T21:09:59.247795+00:00",
+      "email_principal": "paulinhostone16@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "03574107000131",
+      "nome_conta": "Yescom",
+      "nome_titular": "Thadeus Kassabian",
+      "telefone_principal": "11 942419316",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-07-15T21:20:36.612191+00:00",
+      "id_conta": 7,
+      "data_criacao": "2026-07-15T21:20:36.612191+00:00",
+      "email_principal": "tgk@yescom.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "65671241000108",
+      "nome_conta": "Gosh Sports",
+      "nome_titular": "Marcos Pinheiro",
+      "telefone_principal": "4199168382",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-07-15T21:35:27.949745+00:00",
+      "id_conta": 8,
+      "data_criacao": "2026-07-15T21:35:27.949745+00:00",
+      "email_principal": "marcos@gosh.ag",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "32910273000160",
+      "nome_conta": "TR Crono",
+      "nome_titular": "Rafael Coelho",
+      "telefone_principal": "83 993226409",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-07-15T21:39:04.457421+00:00",
+      "id_conta": 9,
+      "data_criacao": "2026-07-15T21:39:04.457421+00:00",
+      "email_principal": "rafael@trcrono.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "53388793000124",
+      "nome_conta": "Contra Relógio",
+      "nome_titular": "Fernanda Paradizo",
+      "telefone_principal": null,
+      "status": "ATIVA",
+      "data_atualizacao": "2026-07-16T00:15:50.298984+00:00",
+      "id_conta": 10,
+      "data_criacao": "2026-07-16T00:06:16.076236+00:00",
+      "email_principal": "feparadizo@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "44282568000118",
+      "nome_conta": "C&C EVENTOS",
+      "nome_titular": "Kassilene Cardadeiro",
+      "telefone_principal": "67 992179551",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-07-16T16:38:04.00835+00:00",
+      "id_conta": 11,
+      "data_criacao": "2026-07-16T16:38:04.00835+00:00",
+      "email_principal": "contato@maratonadecampogrande.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "75886689000100",
+      "nome_conta": "Federação Catarinense de Atletismo",
+      "nome_titular": "Daiana Priscila Voigt Gambôa",
+      "telefone_principal": "(48) 3248-0927 / 99949-7140",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-07-21T16:29:21.168555+00:00",
+      "id_conta": 12,
+      "data_criacao": "2026-07-21T16:29:21.168555+00:00",
+      "email_principal": "sc@cbat.org.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "0",
+      "nome_conta": "Circuito Brasil Gigante",
+      "nome_titular": "Geraldo Protta Pereira",
+      "telefone_principal": "48999153030",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-07-21T19:29:37.529398+00:00",
+      "id_conta": 13,
+      "data_criacao": "2026-07-21T19:28:08.972218+00:00",
+      "email_principal": "gigantes@circuitobrasilgigante.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "12821439806",
+      "nome_conta": "Fernanda Paradizo Serra",
+      "nome_titular": "Fernanda",
+      "telefone_principal": "11961638887",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-07-23T15:54:09.155895+00:00",
+      "id_conta": 14,
+      "data_criacao": "2026-07-23T15:54:09.155895+00:00",
+      "email_principal": "feparadizo@gmail.com",
+      "tipo_titular": "PF"
+    },
+    {
+      "documento": "54804151000121",
+      "nome_conta": "Racezone",
+      "nome_titular": "Fabio Frena",
+      "telefone_principal": null,
+      "status": "ATIVA",
+      "data_atualizacao": "2026-08-06T23:54:06.41421+00:00",
+      "id_conta": 15,
+      "data_criacao": "2026-08-06T23:54:06.41421+00:00",
+      "email_principal": "contato@racezone.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "13425603000187",
+      "nome_conta": "Bonito 21k",
+      "nome_titular": "ENI SOUZA - BONITO 21K",
+      "telefone_principal": "67992179551",
+      "status": "SUSPENSA",
+      "data_atualizacao": "2026-08-25T22:31:38.445475+00:00",
+      "id_conta": 23,
+      "data_criacao": "2026-08-25T16:59:41.072711+00:00",
+      "email_principal": "organizacao@bonito21k.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "123456789000",
+      "nome_conta": "Protta Corp",
+      "nome_titular": "Victoria Coelho",
+      "telefone_principal": null,
+      "status": "SUSPENSA",
+      "data_atualizacao": "2026-10-04T14:33:50.853533+00:00",
+      "id_conta": 24,
+      "data_criacao": "2026-08-25T18:44:14.136356+00:00",
+      "email_principal": "protta@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "57110544000123",
+      "nome_conta": "Movnow",
+      "nome_titular": "Inscrições Movnow",
+      "telefone_principal": "48 9986-0625",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-09-04T13:05:01.960488+00:00",
+      "id_conta": 25,
+      "data_criacao": "2026-08-27T15:18:03.889748+00:00",
+      "email_principal": "inscricoes@movnow.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "54170799000193",
+      "nome_conta": "B Sports",
+      "nome_titular": "JORNAL CORRIDA",
+      "telefone_principal": null,
+      "status": "ATIVA",
+      "data_atualizacao": "2026-09-04T13:03:38.310597+00:00",
+      "id_conta": 26,
+      "data_criacao": "2026-09-01T11:48:30.297544+00:00",
+      "email_principal": "jornalcorrida1@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "68245814000120",
+      "nome_conta": "Voa Esportes",
+      "nome_titular": "JESSICA SCHUTZ",
+      "telefone_principal": "41999570210",
+      "status": "ATIVA",
+      "data_atualizacao": "2026-09-16T14:15:26.200896+00:00",
+      "id_conta": 27,
+      "data_criacao": "2026-09-16T14:06:42.67746+00:00",
+      "email_principal": "jessica@voaesportes.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "28674754000146",
+      "nome_conta": "3LR Eventos",
+      "nome_titular": "3LR EVENTOS LTDA",
+      "telefone_principal": "48999407534",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 28,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "3lrcontato@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "62503087000177",
+      "nome_conta": "Aclive Sports",
+      "nome_titular": "ACLIVE ORGANIZACAO DE EVENTOS LTDA",
+      "telefone_principal": "83988438445",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 29,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "aclivesports@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "36943394000169",
+      "nome_conta": "BEE SPORTS",
+      "nome_titular": "BEE SPORTS - AGENCIA E PRODUTORA DE EVENTOS ESPORTIVOS LTDA",
+      "telefone_principal": "62998605130",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 30,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "beesportss@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "36480637000170",
+      "nome_conta": "Beta Sports",
+      "nome_titular": "BETA SPORTS COMUNICACAO LTDA",
+      "telefone_principal": null,
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 31,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "contato@betasports.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "30245713000186",
+      "nome_conta": "BOLT PRODUCÕES",
+      "nome_titular": "BOLT - ORGANIZADORA E PRODUTORA DE EVENTOS CULTURAIS LTDA",
+      "telefone_principal": "67999476813",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 32,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "cporto001@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "54070504000107",
+      "nome_conta": "BRB Marketing Esportivo",
+      "nome_titular": "BRB CRONOMETRAGEM, ESTRUTURAS E EVENTOS LTDA",
+      "telefone_principal": "85988281542",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 33,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "ricardo@rrsolucoesemeventos.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "13026748000296",
+      "nome_conta": "Chelso Sports",
+      "nome_titular": "CS SPORTS LTDA",
+      "telefone_principal": "19993748756",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 34,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "comercial@chelso.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "30704295000148",
+      "nome_conta": "Corre Brasil",
+      "nome_titular": "AGENCIA DE EVENTOS CB SPORTS LTDA",
+      "telefone_principal": "4732286818",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 35,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "ricardo@correbrasil.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "55268579000160",
+      "nome_conta": "Corre Paraíba",
+      "nome_titular": "VITAL MARINHO COMERCIO E SERVICOS LTDA",
+      "telefone_principal": "83996025965",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 36,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "emailcorreparaiba@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "40224688000108",
+      "nome_conta": "Correr com Propósitos",
+      "nome_titular": "CORRER COM PROPOSITOS VIAGENS E TURISMO LTDA",
+      "telefone_principal": "11983838307",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 37,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "alesandro@corrercompropositos.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "18606775000170",
+      "nome_conta": "GLOBAL VITA",
+      "nome_titular": "GLOBAL VITA COMUNICACAO LTDA",
+      "telefone_principal": "4130574846",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 38,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "contato@globalvita.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "15135804000175",
+      "nome_conta": "HL EVENTOS ESPORTIVOS",
+      "nome_titular": "L LOBO EVENTOS ESPORTIVOS LTDA",
+      "telefone_principal": "11999673544",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:55:00.728646+00:00",
+      "id_conta": 39,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "luiz@hleventos.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "38445093000130",
+      "nome_conta": "ICE SPORTS",
+      "nome_titular": "ICESPORTS-EVENTOS LTDA",
+      "telefone_principal": "6232042456",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 40,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "eduardaassis@hotmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "44459412000160",
+      "nome_conta": "Iguana Sports",
+      "nome_titular": "IGN ESPORTES E EVENTOS LTDA",
+      "telefone_principal": "1130973215",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 41,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "paulo@iguanasports.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "12234644000123",
+      "nome_conta": "Jardel Moura Assessoria Esportiva",
+      "nome_titular": "JARDEL MOURA ASSESSORIA ESPORTIVA LTDA",
+      "telefone_principal": "71999203442",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 42,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "contato@jardelmoura.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "27127718000108",
+      "nome_conta": "L’ETAPE BRASIL",
+      "nome_titular": "LTP BRASIL EVENTOS LTDA.",
+      "telefone_principal": "1137982468",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 43,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "fabio.bodra@letapebrasil.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "14216548000188",
+      "nome_conta": "Método Grupo Chokito",
+      "nome_titular": "METODO CHOKITO LTDA",
+      "telefone_principal": "71994106177",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 44,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "carlos.albuquerque@hotmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "18305726000106",
+      "nome_conta": "Morro MT",
+      "nome_titular": "JUNIOR DE ASSIS SOARES",
+      "telefone_principal": "65992770972",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 45,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "__morro@morro-mt.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "28416109000123",
+      "nome_conta": "Mp Sports Brasil",
+      "nome_titular": "28.416.109 MAURICIO FRANCISCO DE OLIVEIRA PACHECO",
+      "telefone_principal": "86999937483",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 46,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "mauriciofop@hotmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "07787987000185",
+      "nome_conta": "Noblu Sports",
+      "nome_titular": "NOBLU SPORT BUSINESS COMERCIO E SERVICOS DE MATERIAIS ESPORTIVOS S.A.",
+      "telefone_principal": "21997225182",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 47,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "jeffjelly@noblu.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "07120464000180",
+      "nome_conta": "Oxe Eventos",
+      "nome_titular": "OXE EVENTOS LTDA",
+      "telefone_principal": "82999361515",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 48,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "contato@oxetriatlo.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "35507828000115",
+      "nome_conta": "PDA Esportes",
+      "nome_titular": "PDA ESPORTES LTDA",
+      "telefone_principal": "48991302163",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 49,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "philippe@pdaesportes.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "46478807000135",
+      "nome_conta": "Podium Chip",
+      "nome_titular": "46.478.807 SIMONE DA SILVA CARDOZO",
+      "telefone_principal": "19991429339",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 50,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "podiumchip@hotmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "50456213000109",
+      "nome_conta": "SBS Sports",
+      "nome_titular": "SBS SPORTS LTDA",
+      "telefone_principal": "15991717717",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 51,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "contato@proeesp.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "29086536000153",
+      "nome_conta": "Seven Eco",
+      "nome_titular": "H H L PEREIRA EVENTOS",
+      "telefone_principal": "22999514141",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 52,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "sevenecoevents@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "49589078000182",
+      "nome_conta": "Sportsland",
+      "nome_titular": "SPORTSLAND NEGOCIOS ESPORTIVOS LTDA",
+      "telefone_principal": "48998225595",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 53,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "financeiro02@sportsland.esp.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "47234721000120",
+      "nome_conta": "SuperAção Eventos",
+      "nome_titular": "CARLA MARIA DE LIMA POVOA CARRIL",
+      "telefone_principal": "19971355715",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 54,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "contato@corridaderuasuperacao.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "13774425000108",
+      "nome_conta": "Top Chip",
+      "nome_titular": "IMPERSPORTS COMERCIO LTDA",
+      "telefone_principal": "99999544960",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 55,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "topchipcrono@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "27208401000198",
+      "nome_conta": "Tour da Roça",
+      "nome_titular": "RAIZES EVENTOS ESPORTIVOS LTDA",
+      "telefone_principal": "11963397866",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 56,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "rafael@tourdaroca.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "72818198000126",
+      "nome_conta": "TVCOM Running",
+      "nome_titular": "LUIS FERNANDO NUCCI PASQUARELLI",
+      "telefone_principal": "18997153552",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 57,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "tvcom40digital@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "17332526000171",
+      "nome_conta": "Uhuw Eventos",
+      "nome_titular": "INSIGHT DESENVOLVIMENTO ORGANIZACIONAL LTDA",
+      "telefone_principal": "11994490608",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 58,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "contato.uhuweventos@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "34622939000100",
+      "nome_conta": "UNLIMITED",
+      "nome_titular": "UNLIMITED SPORTS EVENTOS S.A.",
+      "telefone_principal": "1137432411",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 59,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "contato@unlimitedsports.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "33591994000117",
+      "nome_conta": "Vega Sports",
+      "nome_titular": "VEGA ASSESSORIA, CONSULTORIA E GESTAO NO ESPORTE LTDA.",
+      "telefone_principal": "11913459749",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 60,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "contato@vegasports.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "23909601000117",
+      "nome_conta": "Vida Sport",
+      "nome_titular": "VIDA SPORT LTDA",
+      "telefone_principal": "73982420208",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 61,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "sacvidasport@gmail.com",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "13568552000142",
+      "nome_conta": "Wine Run Brasil",
+      "nome_titular": "SNOC APOIO ADMINISTRATIVO E DIVULGACAO DE EVENTOS LTDA.",
+      "telefone_principal": "6181189876",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 62,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "sergio.oprea@terra.com.br",
+      "tipo_titular": "PJ"
+    },
+    {
+      "documento": "07265942000140",
+      "nome_conta": "X3M ENTRETENIMENTO LTDA",
+      "nome_titular": "X3M ENTRETENIMENTO LTDA",
+      "telefone_principal": "2122479676",
+      "status": "PENDENTE",
+      "data_atualizacao": "2026-10-11T07:52:12.520702+00:00",
+      "id_conta": 63,
+      "data_criacao": "2026-10-11T07:52:12.520702+00:00",
+      "email_principal": "bernardo@x3mbrasil.com",
+      "tipo_titular": "PJ"
+    }
+  ],
+  "constraints": [
+    {
+      "def": "PRIMARY KEY (id_conta)",
+      "name": "tb_contas_pkey"
+    },
+    {
+      "def": "UNIQUE (documento)",
+      "name": "unq_tb_contas_documento"
+    }
+  ],
+  "columns": [
+    {
+      "is_nullable": "NO",
+      "column_name": "id_conta",
+      "data_type": "bigint",
+      "column_default": "nextval('tb_contas_id_conta_seq'::regclass)"
+    },
+    {
+      "is_nullable": "NO",
+      "column_name": "nome_conta",
+      "data_type": "character varying",
+      "column_default": null
+    },
+    {
+      "is_nullable": "NO",
+      "column_name": "tipo_titular",
+      "data_type": "USER-DEFINED",
+      "column_default": null
+    },
+    {
+      "is_nullable": "NO",
+      "column_name": "documento",
+      "data_type": "character varying",
+      "column_default": null
+    },
+    {
+      "is_nullable": "NO",
+      "column_name": "nome_titular",
+      "data_type": "character varying",
+      "column_default": null
+    },
+    {
+      "is_nullable": "YES",
+      "column_name": "email_principal",
+      "data_type": "character varying",
+      "column_default": null
+    },
+    {
+      "is_nullable": "YES",
+      "column_name": "telefone_principal",
+      "data_type": "character varying",
+      "column_default": null
+    },
+    {
+      "is_nullable": "NO",
+      "column_name": "status",
+      "data_type": "USER-DEFINED",
+      "column_default": "'PENDENTE'::status_conta"
+    },
+    {
+      "is_nullable": "NO",
+      "column_name": "data_criacao",
+      "data_type": "timestamp with time zone",
+      "column_default": "now()"
+    },
+    {
+      "is_nullable": "NO",
+      "column_name": "data_atualizacao",
+      "data_type": "timestamp with time zone",
+      "column_default": "now()"
+    }
+  ],
+  "indexes": [
+    "CREATE UNIQUE INDEX tb_contas_pkey ON public.tb_contas USING btree (id_conta)",
+    "CREATE UNIQUE INDEX unq_tb_contas_documento ON public.tb_contas USING btree (documento)"
+  ]
+}

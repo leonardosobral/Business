@@ -1,0 +1,1 @@
+SELECT jsonb_build_object('accounts',(SELECT jsonb_agg(jsonb_build_object('id',id_conta,'nome',nome_conta,'titular',nome_titular,'cnpj',documento,'email',email_principal,'telefone',telefone_principal,'status',status)) FROM tb_contas),'mp3_users',(SELECT jsonb_agg(to_jsonb(u)) FROM tb_conta_usuarios u WHERE id_conta=5))::text payload

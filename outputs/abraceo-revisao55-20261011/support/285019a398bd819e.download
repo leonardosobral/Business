@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuito das Cidades Etapa Lagoa Santa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script charset="UTF-8" src="//web.webpushs.com/js/push/e5b1306e9aaf5a80f6575126cea9b9fd_1.js" id="sp-push-111468" async></script>
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', "1369698582032543");
+    fbq('track','PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1369698582032543&ev=PageView&noscript=1"/></noscript>
+    <style>
+        .site-logo-img { height: 40px; width: auto; }
+        @media (min-width: 992px) { .site-logo-img { height: 90px; width: auto; } }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-dark" href="/">
+                            <img src="/uploads/logo_1772147202.jpg" alt="Pop Tickets" class="site-logo-img">
+                    </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link text-secondary fw-semibold" href="/">
+                        <i class="bi bi-calendar-event"></i> Eventos
+                    </a>
+                </li>
+                                                <li class="nav-item">
+                    <a class="nav-link text-secondary fw-semibold" href="/resultados">
+                        <i class="bi bi-trophy"></i> Resultados
+                    </a>
+                </li>
+                                <li class="nav-item">
+                    <a class="nav-link text-secondary fw-semibold position-relative" href="/carrinho">
+                        <i class="bi bi-cart3"></i> Carrinho
+                                            </a>
+                </li>
+                                    <li class="nav-item">
+                        <a class="nav-link text-secondary fw-semibold" href="/cliente/login">
+                            <i class="bi bi-box-arrow-in-right"></i> Entrar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-secondary btn-sm ms-2" href="/cliente/registro">
+                            Criar Conta
+                        </a>
+                    </li>
+                                <li class="nav-item ms-2">
+                    <a class="nav-link text-secondary" href="/login" title="&Aacute;rea Administrativa">
+                        <i class="bi bi-shield-lock"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main class="container py-4">
+    
+<div class="evento-slider-full mb-4" style="margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); width: 100vw; margin-top: -1.5rem; padding: 20px 0; background: linear-gradient(180deg, #000000, #508cfb);">
+    <div id="eventoCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#eventoCarousel" data-bs-slide-to="0"
+                        class="active"></button>
+                            <button type="button" data-bs-target="#eventoCarousel" data-bs-slide-to="1"
+                        ></button>
+                            <button type="button" data-bs-target="#eventoCarousel" data-bs-slide-to="2"
+                        ></button>
+                    </div>
+        <div class="carousel-inner" style="max-width: 1200px; margin: 0 auto;">
+                        <div class="carousel-item active">
+                <img src="/uploads/evento_1781795837_c181e88d.png" class="d-block mx-auto" alt="Imagem do evento"
+                     style="max-height: 450px; width: auto; max-width: 100%; object-fit: contain;">
+            </div>
+                        <div class="carousel-item ">
+                <img src="/uploads/evento_1784158670_b83f19ee.png" class="d-block mx-auto" alt="Imagem do evento"
+                     style="max-height: 450px; width: auto; max-width: 100%; object-fit: contain;">
+            </div>
+                        <div class="carousel-item ">
+                <img src="/uploads/evento_1784158670_f8d51c32.png" class="d-block mx-auto" alt="Imagem do evento"
+                     style="max-height: 450px; width: auto; max-width: 100%; object-fit: contain;">
+            </div>
+                    </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#eventoCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#eventoCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+            </div>
+</div>
+
+<div class="mb-4">
+    <h1 class="fw-bold mb-2">Circuito das Cidades Etapa Lagoa Santa</h1>
+    <div class="d-flex flex-wrap gap-3 text-muted fs-5">
+                    <span><i class="bi bi-calendar3 text-primary"></i> 09/08/2026 &agrave;s 07:00</span>
+                            <span><i class="bi bi-geo-alt text-danger"></i> Praça Dr Lund</span>
+            </div>
+
+        <div class="mt-3">
+        <span class="badge bg-secondary fs-6"><i class="bi bi-calendar-check"></i> Evento j&aacute; realizado</span>
+    </div>
+    </div>
+
+<div class="row">
+    <div class="col-md-8 order-1">
+        <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="text-muted me-1 align-self-center"><i class="bi bi-share"></i> Compartilhar:</span>
+            <a href="https://api.whatsapp.com/send?text=Circuito+das+Cidades+Etapa+Lagoa+Santa+-+09%2F08%2F2026+07%3A00+%7C+Pra%C3%A7a+Dr+Lund%0Ahttps%3A%2F%2Fapp.poptickets.com.br%2Fevento%2F9"
+               target="_blank" class="btn btn-sm btn-success" title="WhatsApp">
+                <i class="bi bi-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fapp.poptickets.com.br%2Fevento%2F9"
+               target="_blank" class="btn btn-sm btn-primary" title="Facebook">
+                <i class="bi bi-facebook"></i> Facebook
+            </a>
+            <a href="https://twitter.com/intent/tweet?text=Circuito+das+Cidades+Etapa+Lagoa+Santa+-+09%2F08%2F2026+07%3A00+%7C+Pra%C3%A7a+Dr+Lund&url=https%3A%2F%2Fapp.poptickets.com.br%2Fevento%2F9"
+               target="_blank" class="btn btn-sm btn-dark" title="X / Twitter">
+                <i class="bi bi-twitter-x"></i> X
+            </a>
+            <a href="https://telegram.me/share/url?url=https%3A%2F%2Fapp.poptickets.com.br%2Fevento%2F9&text=Circuito+das+Cidades+Etapa+Lagoa+Santa+-+09%2F08%2F2026+07%3A00+%7C+Pra%C3%A7a+Dr+Lund"
+               target="_blank" class="btn btn-sm btn-info text-white" title="Telegram">
+                <i class="bi bi-telegram"></i> Telegram
+            </a>
+            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="copiarLinkEvento()" title="Copiar link" id="btnCopiarLink">
+                <i class="bi bi-link-45deg"></i> Copiar Link
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-primary d-none" id="btnNativeShare" title="Mais opções">
+                <i class="bi bi-share"></i> Mais
+            </button>
+        </div>
+
+        <div class="mb-4">
+            <p>07h00 – Abertura da Arena</p><p><br></p><p>07h30 – Alongamento</p><p><br></p><p>08h00 – Largada 7 km</p><p><br></p><p>09h00 – Corrida kids</p><p><br></p><p>10h00 – Início da premiação e sorteios</p><p><br></p><p>11h00 – Apresentações e ativações de patrocinadores</p><p><br></p><p>12h00 – Encerramento</p><p><br></p><p>𝐌𝐎𝐃𝐀𝐋𝐈𝐃𝐀𝐃𝐄 :</p><p><br></p><p>Corrida/caminhada 7 km</p><p><br></p><p>Corrida kids</p><p><br></p><p>𝐕𝐀𝐋𝐎𝐑𝐄𝐒 :</p><p><br></p><p>1º lote – R$ 90,00</p><p><br></p><p>2º lote – R$ 100,00</p><p><br></p><p>KIDS – R$ 75,00</p><p><br></p><p>PREMIAÇÃO:</p><p><br></p><p>Todos os atletas receberão ao final do evento uma medalha de participação e os 3 primeiros colocados no geral masculino e no geral feminino irá receber um troféu e brindes especiais</p><p><br></p><p>Por categoria :</p><p><br></p><p>Os 3 primeiros colocados feminino/masculino de 10 anos em 10 anos irão receber troféus e brindes especiais.</p><p><br></p><p>Categorias:</p><p>14 a 19</p><p>20 a 29</p><p>30 a 39</p><p>40 a 49</p><p>50 a 59</p><p>60 a 69</p><p>70 acima</p>        </div>
+
+                <div class="card mb-4 border-warning">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0"><i class="bi bi-box-seam"></i> Entrega de KIT</h5>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-7">
+                                                <p class="mb-2 fs-5">
+                            <i class="bi bi-calendar-event text-primary"></i>
+                            <strong>Data:</strong> 08/08/2026 - 11:00 às 16:00                        </p>
+                                                                        <p class="mb-2 fs-5">
+                            <i class="bi bi-geo-alt text-danger"></i>
+                            <strong>Local:</strong> Hotel Lagoon - Av. Acdo. Nilo Figueiredo, 2425 - Lj 5 - Joana Darc                        </p>
+                                                                        <div class="mt-2">
+                            <i class="bi bi-info-circle text-secondary"></i>
+                            <strong>Obs:</strong>
+                            <p>🚨 OBSERVAÇÃO: Não haverá entrega de kits de participação após essas datas.</p><p><br></p><p>📝 Lembre-se de trazer seu documento e o comprovante de inscrição!</p><p><br></p><p>Solicitamos a doação de 1 óleo ou farinha de trigo para o Santuário Arquidiocesano Nossa Senhora da Saúde</p>                        </div>
+                                            </div>
+                                        <div class="col-md-5 mt-3 mt-md-0 text-center">
+                        <img src="/uploads/evento_1782950941_a12a5965.png" alt="KIT do Evento" class="img-fluid rounded shadow-sm" style="max-height: 250px;">
+                    </div>
+                                    </div>
+            </div>
+        </div>
+        
+                <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h5 class="mb-0"><i class="bi bi-file-text"></i> Regulamento</h5>
+            </div>
+            <div class="card-body" style="max-height: 400px; overflow-y: auto;">
+                <p>1. DISPOSIÇÕES GERAIS</p><p><br></p><p>1.1. Este evento é promovido e organizado pela QUANTA ESPORTES E EVENTOS.</p><p><br></p><p>1.2. O evento “ circuito da cidade etapa Lagoa Santa ” será realizado na Praça</p><p>Dr. Lund no dia 09 de Agosto de 2026. Poderão participar pessoas de ambos os sexos, devidamente inscritas, doravante denominadas ATLETAS.</p><p><br></p><p>1.3. O evento é composto pela seguinte modalidade :</p><p>Corrida e caminhada 7 km</p><p>Corrida kids</p><p><br></p><p><br></p><p>1.4. A largada do evento está programada para : 08h00 – Largada oficial</p><p>09h00 - Corrida kids</p><p>podendo sofrer alterações com aviso prévio.</p><p><br></p><p>2. ENTREGA DO KIT</p><p><br></p><p>2.1. O atleta deverá escolher o tamanho da camiseta no ato da inscrição.</p><p><br></p><p>2.2. Não será possível trocar o tamanho da camisa após a inscrição.</p><p><br></p><p>2.3. Kits não serão entregues no dia da prova nem após a data do evento.</p><p><br></p><p>2.4. Para retirar o kit do ATLETA, é necessário apresentar: - Documento de identidade. - Comprovante de pagamento ou boleto bancário original da inscrição (não serão aceitas cópias).</p><p><br></p><p>2.5. Para retirada do kit por terceiros, o atleta deve fornecer uma autorização escrita, juntamente com cópia do RG e do comprovante de pagamento. Atletas acima de 60 anos deverão retirar seu kit pessoalmente; caso contrário, não terão direito ao desconto de 50% no valor da inscrição.</p><p><br></p><p>3. CATEGORIAS E REGRAS DE PARTICIPAÇÃO</p><p><br></p><p>3.1. Todos as atletas receberão, ao final do evento, uma medalha de participação. E os 3 primeiros Colocadas no geral feminino/masculino receberão um troféu e brindes especiais.</p><p><br></p><p>3.2 Premiação categoria : Os 3 primeiros colocados feminino/masculino de 10 anos em 10 anos irão receber troféus e brindes especiais</p><p><br></p><p>Categorias:</p><p>14 a 19</p><p>20 a 29</p><p>30 a 39</p><p>40 a 49</p><p>50 a 59</p><p>60 a 69</p><p>70 acima</p><p><br></p><p><br></p><p>3.3. A entrega dos troféus será feita no final do evento. Portanto, é imprescindível que o atleta permaneça até o final do evento para recebê-lo. Não haverá entrega de troféu em outra data.</p><p><br></p><p>4. REGRAS GERAIS DO EVENTO</p><p><br></p><p>4.1. Ao participar deste evento, o ATLETA aceita todas as regras estabelecidas e assume total responsabilidade pelos dados fornecidos.</p><p><br></p><p>4.2. O ATLETA também assume todas as despesas referentes a transporte, hospedagem, alimentação, seguros e quaisquer outras despesas relacionadas à sua participação antes, durante e após o evento.</p><p><br></p><p>4.3. O ATLETA cede todos os direitos de utilização de sua imagem à ORGANIZAÇÃO, renunciando ao recebimento de qualquer renda proveniente de direitos de transmissão e divulgação.</p><p><br></p><p>4.4. A ORGANIZAÇÃO não se responsabiliza pelo atendimento médico, mas haverá serviço de ambulâncias para remoção e atendimento emergencial. O atendimento médico será realizado na rede pública, sob responsabilidade do atleta.</p><p><br></p><p>4.5. O ATLETA ou acompanhante responsável pode optar por outro sistema de atendimento médico, isentando a ORGANIZAÇÃO de qualquer responsabilidade.</p><p><br></p><p>4.6. O evento é oficial pela FMA - Federação Mineira de Atletismo e contará com o apoio de órgãos competentes da prefeitura local. Haverá monitores e fiscais de percurso.</p><p><br></p><p>4.7. Serão disponibilizados banheiros químicos e guarda-volumes na região da largada e chegada.</p><p><br></p><p>4.8. A ORGANIZAÇÃO não recomenda deixar objetos de valor no guarda-volumes e não se responsabiliza por quaisquer pertences deixados.</p><p><br></p><p>4.9. Não haverá reembolso por parte da ORGANIZAÇÃO, patrocinadores, apoiadores ou realizadores, de qualquer valor relacionado a equipamentos ou acessórios utilizados pelos ATLETAS.</p><p>4.10. Recomenda-se avaliação médica e realização de teste ergométrico prévio para todos os ATLETAS.</p><p><br></p><p>4.11. O acesso às áreas de concentração e largada será sinalizado, sendo proibido pular as grades delimitadoras sob pena de desclassificação.</p><p><br></p><p>4.12. A ORGANIZAÇÃO não se responsabiliza por danos causados por ATLETAS a terceiros. Reclamações sobre resultados extra-oficiais devem ser feitas por escrito em até 30 dias após a publicação dos resultados no site do evento.</p><p><br></p><p>4.13. A ORGANIZAÇÃO pode suspender o evento por questões de segurança pública ou força maior.</p><p><br></p><p>4.14. O ATLETA que não seguir as regras poderá ser desclassificado.</p><p><br></p><p>4.15. O ATLETA deve preencher corretamente sua Ficha de Inscrição online e, ao confirmar o pagamento, assume estar ciente do regulamento e do Termo de Responsabilidade.</p><p><br></p><p>4.16. O ATLETA participa do evento por livre e espontânea vontade, isentando os organizadores de qualquer responsabilidade.</p><p><br></p><p>4.17. A inscrição é pessoal e intransferível, não sendo possível transferir a inscrição para outro ATLETA ou solicitar reembolso.</p><p><br></p><p>4.18. O ATLETA autoriza a ORGANIZAÇÃO a enviar comunicados para o endereço eletrônico ou físico fornecido.</p><p><br></p><p>4.19. O número de peito deve ser fixado na frente da camiseta e seu uso é obrigatório durante a competição.</p><p><br></p><p>4.20. A ORGANIZAÇÃO se reserva o direito de alterar o regulamento sem aviso prévio, informando as alterações na retirada do Kit.</p><p><br></p><p>5. KIT DE PARTICIPAÇÃO</p><p><br></p><p>5.1. Ao se inscrever e pagar a taxa, o ATLETA tem direito ao Kit de participação, que inclui: número de peito, chip de cronometragem, camiseta promocional, medalha de participação e troféus.</p><p><br></p><p>5.2. A ORGANIZAÇÃO pode oferecer itens como cortesia, sem obrigatoriedade de padrão comparativo de mercado.</p><p><br></p><p>6. CRONOMETRAGEM DO EVENTO</p><p><br></p><p>6.1. A ORGANIZAÇÃO pode fornecer chip de cronometragem, mas não se responsabiliza por interferências que possam ocorrer.</p><p><br></p><p>6.2. A ORGANIZAÇÃO pode solicitar informações para corrigir eventuais problemas nos resultados.</p><p><br></p><p>6.3. O site do evento é a única fonte oficial de resultados.</p><p><br></p><p>7. DURAÇÃO DA PROVA E PENALIDADES</p><p><br></p><p>7.1. A corrida terá duração máxima de 2h30min. Após este período, a linha de chegada será desativada.</p><p><br></p><p>7.2. O ATLETA que não estiver dentro do tempo poderá ser convidado a retirar-se da competição.</p><p><br></p><p>7.3. O ATLETA deve observar o percurso balizado, sendo proibido qualquer meio auxiliar para vantagem.</p><p><br></p><p>7.4. É proibido o auxílio de terceiros durante a prova.</p><p><br></p><p>7.5. A participação é individual, e o ATLETA assume conhecimento do seu estado de saúde.</p><p><br></p><p>8. INSCRIÇÕES: VALORES E PRAZOS</p><p><br></p><p>8.1. As inscrições serão feitas pela internet.</p><p><br></p><p>8.2. As inscrições terão os seguintes valores:</p><p><br></p><p>1º lote –R$85,00 ( Vagas Limitadas )</p><p><br></p><p>2º lote –R$95,00 ( Vagas limitadas )</p><p><br></p><p>8.3. A ORGANIZAÇÃO pode suspender ou prorrogar prazos sem aviso prévio.</p><p><br></p><p>9. FORMA DE INSCRIÇÃO</p><p><br></p><p>9.1. As inscrições podem ser feitas pelo site [www.quantaesportes.com.br](https://www.quantaesportes.com.br).</p><p>9.2. O pagamento deve ser feito conforme indicado no boleto.</p><p><br></p><p>9.3. Não serão aceitos pagamentos por caixa expresso ou depósitos sem autorização.</p><p><br></p><p>10. TERMO DE RESPONSABILIDADE</p><p><br></p><p>O ATLETA declara estar ciente do regulamento e assume todas as responsabilidades relacionadas à sua participação.</p><p><br></p><p>11. RETIRADA DO CHIP</p><p><br></p><p>11.1. O chip será entregue junto com o kit.</p><p><br></p><p>11.2. O ATLETA deve conferir seus dados ao retirar o chip.</p><p><br></p><p>11.3. O chip deve ser fixado corretamente.</p><p><br></p><p>12. CONSIDERAÇÕES FINAIS</p><p><br></p><p>12.1. A ORGANIZAÇÃO pode alterar este regulamento conforme necessário.</p><p><br></p><p>12.2. Dúvidas serão dirimidas pela Comissão Organizadora.</p>            </div>
+        </div>
+        
+        
+                <div class="card mb-4 d-none d-md-block">
+                        <div class="card-header bg-light">
+                <h5 class="mb-0"><i class="bi bi-geo-alt-fill"></i> Localização</h5>
+            </div>
+            <div class="card-body p-0">
+                <iframe
+                    width="100%"
+                    height="350"
+                    frameborder="0"
+                    scrolling="no"
+                    style="border:0; border-radius: 0 0 0.375rem 0.375rem;"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-43.8967792%2C-19.6303854%2C-43.8867792%2C-19.6243854&layer=mapnik&marker=-19.6273854%2C-43.8917792"
+                    allowfullscreen>
+                </iframe>
+                <div class="p-2 text-center">
+                    <a href="https://www.google.com/maps?q=-19.6273854,-43.8917792" target="_blank" class="btn btn-sm btn-outline-primary">
+                        <i class="bi bi-box-arrow-up-right"></i> Abrir no Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+            </div>
+    <div class="col-md-4 order-2">
+        <div class="card shadow sticky-top" style="top: 20px;">
+            <div class="card-header bg-primary text-white">
+                <strong><i class="bi bi-ticket-perforated"></i> Ingressos</strong>
+            </div>
+            <div class="card-body">
+                                    <p class="text-muted">Ingressos esgotados ou indispon&iacute;veis.</p>
+                
+                <div class="text-center mt-4 pt-3 border-top">
+                    <p class="small text-muted mb-2"><i class="bi bi-bell"></i> Fique por dentro de novas corridas</p>
+                    <a href="https://whatsapp.com/channel/0029Vb81Fq34IBhK2LPTjB2M"
+                       target="_blank" rel="noopener"
+                       class="btn btn-success w-100">
+                        <i class="bi bi-whatsapp me-1"></i> Entrar no Canal do WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="col-12 order-3 d-md-none mt-4">
+                <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h5 class="mb-0"><i class="bi bi-geo-alt-fill"></i> Localização</h5>
+            </div>
+            <div class="card-body p-0">
+                <iframe
+                    width="100%"
+                    height="300"
+                    frameborder="0"
+                    scrolling="no"
+                    style="border:0; border-radius: 0 0 0.375rem 0.375rem;"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-43.8967792%2C-19.6303854%2C-43.8867792%2C-19.6243854&layer=mapnik&marker=-19.6273854%2C-43.8917792"
+                    allowfullscreen>
+                </iframe>
+                <div class="p-2 text-center">
+                    <a href="https://www.google.com/maps?q=-19.6273854,-43.8917792" target="_blank" class="btn btn-sm btn-outline-primary">
+                        <i class="bi bi-box-arrow-up-right"></i> Abrir no Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<script>
+function copiarLinkEvento() {
+    var url = "https:\/\/app.poptickets.com.br\/evento\/9";
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function() {
+            var btn = document.getElementById('btnCopiarLink');
+            var original = btn.innerHTML;
+            btn.innerHTML = '<i class="bi bi-check-lg"></i> Copiado!';
+            btn.classList.add('btn-success');
+            btn.classList.remove('btn-outline-secondary');
+            setTimeout(function() {
+                btn.innerHTML = original;
+                btn.classList.remove('btn-success');
+                btn.classList.add('btn-outline-secondary');
+            }, 2000);
+        });
+    } else {
+        var input = document.createElement('input');
+        input.value = url;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        alert('Link copiado!');
+    }
+}
+
+if (navigator.share) {
+    var btnNative = document.getElementById('btnNativeShare');
+    btnNative.classList.remove('d-none');
+    btnNative.addEventListener('click', function() {
+        navigator.share({
+            title: "Circuito das Cidades Etapa Lagoa Santa",
+            text: "Circuito das Cidades Etapa Lagoa Santa - 09\/08\/2026 07:00 | Pra\u00e7a Dr Lund",
+            url: "https:\/\/app.poptickets.com.br\/evento\/9"        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var qtyBtns = document.querySelectorAll('.qty-btn');
+    var btnAdd = document.getElementById('btnAdicionarCarrinho');
+
+    function updateTotal() {
+        var total = 0;
+        var labelsAtivos = {};
+        document.querySelectorAll('.qty-input').forEach(function(input) {
+            var qty = parseInt(input.value) || 0;
+            total += qty;
+            if (qty > 0) {
+                var lbl = (input.dataset.label || '').trim();
+                if (lbl) labelsAtivos[lbl] = (labelsAtivos[lbl] || 0) + qty;
+            }
+        });
+        // Quando limite_por_cpf ativo não há qty-input: conta os hidden fixos
+        if (total === 0) {
+            document.querySelectorAll('input[type="hidden"][name^="lotes["]').forEach(function(h) {
+                total += parseInt(h.value) || 0;
+            });
+        }
+        if (btnAdd) {
+            btnAdd.disabled = total === 0;
+            if (total > 0) {
+                var keys = Object.keys(labelsAtivos);
+                var labelText;
+                if (keys.length === 1) {
+                    labelText = total + ' ' + keys[0] + (total > 1 ? 's' : '');
+                } else {
+                    labelText = total + ' ingresso' + (total > 1 ? 's' : '');
+                }
+                btnAdd.innerHTML = '<i class="bi bi-cart-plus"></i> Adicionar ' + labelText + ' ao Carrinho';
+            } else {
+                btnAdd.innerHTML = '<i class="bi bi-cart-plus"></i> Adicionar ao Carrinho';
+            }
+        }
+    }
+
+    qtyBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var loteId = this.dataset.lote;
+            var input = document.querySelector('.qty-input[data-lote="' + loteId + '"]');
+            var val = parseInt(input.value) || 0;
+            var action = this.dataset.action;
+
+            if (action === 'plus') {
+                var max = parseInt(this.dataset.max) || 10;
+                if (val < max) input.value = val + 1;
+            } else {
+                if (val > 0) input.value = val - 1;
+            }
+            updateTotal();
+        });
+    });
+
+    // Habilita botão imediatamente se houver hidden com valor fixo (limite_por_cpf)
+    updateTotal();
+
+    var form = document.getElementById('formLotes');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            var total = 0;
+            document.querySelectorAll('.qty-input').forEach(function(input) {
+                total += parseInt(input.value) || 0;
+            });
+            document.querySelectorAll('input[type="hidden"][name^="lotes["]').forEach(function(h) {
+                total += parseInt(h.value) || 0;
+            });
+            if (total === 0) {
+                e.preventDefault();
+                alert('Selecione pelo menos 1 ingresso.');
+            }
+        });
+    }
+});
+
+var assentosSelecionados = [];
+var mapaSetorAtual = null;
+var assentoIcone = 'cadeira';
+var assentoLabelMap = {cadeira:'Cadeira', poltrona:'Poltrona', mesa:'Mesa', cama:'Cama', individual:'Ingresso', camarote:'Camarote'};
+var assentoLabelSingular = assentoLabelMap[assentoIcone] || 'Assento';
+var seatIcons = {
+    cadeira: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17 2H7v7H5v2h1v2H5v2h2v5h2v-5h6v5h2v-5h2v-2h-1v-2h1V9h-2V2zm-2 2v5H9V4h6zm-6 7h6v2H9v-2z"/></svg>',
+    poltrona: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M5 11V7c0-1.66 1.34-3 3-3h8c1.66 0 3 1.34 3 3v4h1c1.1 0 2 .9 2 2v4h-2v2h-2v-2H6v2H4v-2H2v-4c0-1.1.9-2 2-2h1zm2 0h10V7c0-.55-.45-1-1-1H8c-.55 0-1 .45-1 1v4zm-2 2h14v2H5v-2z"/></svg>',
+    mesa: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="8" y="8" width="8" height="8" rx="1"/><rect x="10" y="2" width="4" height="5" rx="1"/><rect x="10" y="17" width="4" height="5" rx="1"/><rect x="2" y="10" width="5" height="4" rx="1"/><rect x="17" y="10" width="5" height="4" rx="1"/></svg>',
+    cama: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M2 16v2h20v-2H2zm0-2h20v-4c0-1.1-.9-2-2-2h-7v3H5V8H4c-1.1 0-2 .9-2 2v4zm5-6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>',
+    individual: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z"/></svg>',
+    camarote: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>'
+};
+
+function carregarMapaAssentos() {
+    var selectSetor = document.getElementById('selectSetor');
+    var setorId = selectSetor.value;
+    var container = document.getElementById('mapaAssentosContainer');
+    var mapaDiv = document.getElementById('mapaAssentos');
+
+    if (!setorId) {
+        container.style.display = 'none';
+        return;
+    }
+
+    mapaSetorAtual = {
+        id: setorId,
+        nome: selectSetor.options[selectSetor.selectedIndex].text.split(' - ')[0],
+        preco: parseFloat(selectSetor.options[selectSetor.selectedIndex].dataset.preco) || 0
+    };
+
+    mapaDiv.innerHTML = '<div class="text-center py-3"><div class="spinner-border spinner-border-sm text-primary"></div></div>';
+    container.style.display = '';
+
+    fetch('/api/mapa-assentos/' + setorId)
+        .then(function(r) { return r.json(); })
+        .then(function(mapa) {
+            mapaDiv.innerHTML = '';
+            var fileiras = Object.keys(mapa).sort();
+            var numeracaoSequencial = fileiras.length === 1 && fileiras[0] === '';
+            fileiras.forEach(function(fileira) {
+                var row = document.createElement('div');
+                row.className = 'seat-row';
+                if (!numeracaoSequencial && fileira !== '') {
+                    var label = document.createElement('span');
+                    label.className = 'seat-row-label';
+                    label.textContent = fileira;
+                    row.appendChild(label);
+                }
+                var seats = document.createElement('div');
+                seats.className = 'seat-row-seats';
+                mapa[fileira].forEach(function(a) {
+                    var seatBtn = document.createElement('button');
+                    seatBtn.type = 'button';
+                    seatBtn.className = 'seat-btn';
+                    seatBtn.dataset.id = a.id;
+                    seatBtn.dataset.numero = a.numero;
+                    seatBtn.dataset.fileira = fileira;
+                    seatBtn.title = numeracaoSequencial ? 'Ingresso ' + a.numero : 'Fileira ' + fileira + ' - Assento ' + a.numero;
+                    var isSelecionado = assentosSelecionados.some(function(s) { return s.id == a.id; });
+                    if (a.status !== 'disponivel' && !isSelecionado) {
+                        seatBtn.className += ' seat-vendido';
+                        seatBtn.disabled = true;
+                        seatBtn.innerHTML = '<i class="bi bi-person-fill"></i>';
+                    } else if (isSelecionado) {
+                        seatBtn.className += ' seat-selecionado';
+                        seatBtn.innerHTML = '<i class="bi bi-check-lg"></i>';
+                    } else {
+                        seatBtn.className += ' seat-disponivel';
+                        seatBtn.innerHTML = seatIcons[assentoIcone] || seatIcons['cadeira'];
+                    }
+                    var numLabel = document.createElement('span');
+                    numLabel.className = 'seat-num';
+                    numLabel.textContent = a.numero;
+                    seatBtn.appendChild(numLabel);
+                    seatBtn.addEventListener('click', function() {
+                        toggleAssento(this, a, fileira);
+                    });
+                    seats.appendChild(seatBtn);
+                });
+                row.appendChild(seats);
+                mapaDiv.appendChild(row);
+            });
+        });
+}
+
+function toggleAssento(btn, assento, fileira) {
+    var idx = -1;
+    for (var i = 0; i < assentosSelecionados.length; i++) {
+        if (assentosSelecionados[i].id == assento.id) { idx = i; break; }
+    }
+
+    if (idx >= 0) {
+        assentosSelecionados.splice(idx, 1);
+        btn.className = 'seat-btn seat-disponivel';
+        btn.innerHTML = seatIcons[assentoIcone] || seatIcons['cadeira'];
+        var numLabel = document.createElement('span');
+        numLabel.className = 'seat-num';
+        numLabel.textContent = assento.numero;
+        btn.appendChild(numLabel);
+    } else {
+        if (assentosSelecionados.length >= 10) {
+            alert('Máximo de 10 assentos por compra.');
+            return;
+        }
+        assentosSelecionados.push({
+            id: assento.id,
+            setor_id: mapaSetorAtual.id,
+            setor_nome: mapaSetorAtual.nome,
+            fileira: fileira,
+            numero: 'Assento ' + assento.numero,
+            preco: mapaSetorAtual.preco
+        });
+        btn.className = 'seat-btn seat-selecionado';
+        btn.innerHTML = '<i class="bi bi-check-lg"></i>';
+        var numLabel = document.createElement('span');
+        numLabel.className = 'seat-num';
+        numLabel.textContent = assento.numero;
+        btn.appendChild(numLabel);
+    }
+    atualizarListaAssentos();
+}
+
+function removerAssento(idx) {
+    var removido = assentosSelecionados[idx];
+    assentosSelecionados.splice(idx, 1);
+    var seatBtn = document.querySelector('.seat-btn[data-id="' + removido.id + '"]');
+    if (seatBtn) {
+        seatBtn.className = 'seat-btn seat-disponivel';
+        seatBtn.innerHTML = seatIcons[assentoIcone] || seatIcons['cadeira'];
+        var numLabel = document.createElement('span');
+        numLabel.className = 'seat-num';
+        numLabel.textContent = removido.numero.replace('Assento ', '');
+        seatBtn.appendChild(numLabel);
+    }
+    atualizarListaAssentos();
+}
+
+function atualizarListaAssentos() {
+    var lista = document.getElementById('listaAssentosSelecionados');
+    var hiddenContainer = document.getElementById('assentos-selecionados');
+    var btn = document.getElementById('btnAdicionarCarrinhoAssentos');
+
+    hiddenContainer.innerHTML = '';
+    lista.innerHTML = '';
+
+    assentosSelecionados.forEach(function(a, idx) {
+        hiddenContainer.innerHTML += '<input type="hidden" name="assento_ids[]" value="' + a.id + '">';
+        var localInfo = a.fileira ? 'Fil. ' + a.fileira + ' - ' + a.numero : a.numero;
+        lista.innerHTML += '<div class="d-flex justify-content-between align-items-center border-bottom py-2">' +
+            '<div><small class="fw-bold">' + a.setor_nome + '</small> - ' + localInfo +
+            '<br><small class="text-primary fw-bold">R$ ' + a.preco.toFixed(2).replace('.', ',') + '</small></div>' +
+            '<button type="button" class="btn btn-sm btn-outline-danger" onclick="removerAssento(' + idx + ')">' +
+            '<i class="bi bi-x"></i></button></div>';
+    });
+
+    btn.disabled = assentosSelecionados.length === 0;
+    if (assentosSelecionados.length > 0) {
+        var total = 0;
+        assentosSelecionados.forEach(function(a) { total += a.preco; });
+        var lbl = assentoLabelSingular;
+        btn.innerHTML = '<i class="bi bi-cart-plus"></i> Adicionar ' + assentosSelecionados.length + ' ' + lbl + (assentosSelecionados.length > 1 ? 's' : '') + ' (R$ ' + total.toFixed(2).replace('.', ',') + ')';
+    } else {
+        btn.innerHTML = '<i class="bi bi-cart-plus"></i> Adicionar ao Carrinho';
+    }
+}
+</script>
+<script>
+if (typeof fbq !== 'undefined') {
+    fbq('track', 'ViewContent', {
+        content_name: "Circuito das Cidades Etapa Lagoa Santa",
+        content_ids: ['9'],
+        content_type: 'product',
+        value: 0.00,
+        currency: 'BRL'
+    });
+}
+</script>
+</main>
+<footer class="bg-light text-center py-3 mt-5">
+    <div class="mb-2">
+        <a href="/politica-de-privacidade" class="text-muted text-decoration-none small me-3">
+            <i class="bi bi-shield-check"></i> Pol&iacute;tica de Privacidade
+        </a>
+        <a href="/termos-de-uso" class="text-muted text-decoration-none small">
+            <i class="bi bi-file-earmark-text"></i> Termo de Responsabilidade
+        </a>
+    </div>
+    <small class="text-muted">&copy; 2026 Pop Tickets - Sistema de Ingressos</small>
+</footer>
+
+<div id="lgpd-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#1a1a2e;color:#fff;padding:16px 0;box-shadow:0 -4px 20px rgba(0,0,0,0.3);">
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+            <div class="d-flex align-items-start gap-3">
+                <i class="bi bi-cookie fs-3 text-warning flex-shrink-0 mt-1"></i>
+                <div>
+                    <strong>Aviso de Cookies e Privacidade</strong>
+                    <p class="mb-0 small opacity-75">
+                        Utilizamos cookies essenciais para o funcionamento do site (sess&atilde;o, carrinho de compras e seguran&ccedil;a).
+                        Ao continuar navegando, voc&ecirc; concorda com o uso desses cookies e com nossa
+                        <a href="/politica-de-privacidade" class="text-warning text-decoration-underline">Pol&iacute;tica de Privacidade</a>.
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex gap-2 flex-shrink-0">
+                <a href="/politica-de-privacidade" class="btn btn-sm btn-outline-light">Saiba mais</a>
+                <button onclick="aceitarCookies()" class="btn btn-sm btn-warning fw-bold px-4">Aceitar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function aceitarCookies() {
+    localStorage.setItem('lgpd_aceito', '1');
+    document.getElementById('lgpd-banner').style.display = 'none';
+}
+if (!localStorage.getItem('lgpd_aceito')) {
+    document.getElementById('lgpd-banner').style.display = 'block';
+}
+</script>
+
+<div id="wpp-float" style="position:fixed;bottom:24px;right:24px;z-index:9999;">
+            <div id="wpp-list" style="display:none;margin-bottom:12px;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.2);overflow:hidden;min-width:220px;">
+            <div style="background:#25D366;color:#fff;padding:12px 16px;font-weight:bold;font-size:14px;">
+                <i class="bi bi-whatsapp"></i> Fale Conosco
+            </div>
+                        <a href="https://wa.me/5551991581373" target="_blank" rel="noopener"
+               style="display:flex;align-items:center;gap:10px;padding:10px 16px;text-decoration:none;color:#333;border-bottom:1px solid #eee;transition:background .15s;"
+               onmouseover="this.style.background='#f0faf0'" onmouseout="this.style.background='transparent'">
+                <span style="width:36px;height:36px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">
+                    <i class="bi bi-whatsapp"></i>
+                </span>
+                <span style="font-size:14px;font-weight:500;">Dante - TI</span>
+            </a>
+                        <a href="https://wa.me/553197764091" target="_blank" rel="noopener"
+               style="display:flex;align-items:center;gap:10px;padding:10px 16px;text-decoration:none;color:#333;border-bottom:1px solid #eee;transition:background .15s;"
+               onmouseover="this.style.background='#f0faf0'" onmouseout="this.style.background='transparent'">
+                <span style="width:36px;height:36px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">
+                    <i class="bi bi-whatsapp"></i>
+                </span>
+                <span style="font-size:14px;font-weight:500;">Simone - Produtora</span>
+            </a>
+                    </div>
+        <button onclick="document.getElementById('wpp-list').style.display = document.getElementById('wpp-list').style.display === 'none' ? 'block' : 'none'"
+                style="display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;font-size:32px;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.25);transition:transform .2s;margin-left:auto;"
+                onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <i class="bi bi-whatsapp"></i>
+        </button>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

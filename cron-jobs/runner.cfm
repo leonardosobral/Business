@@ -60,7 +60,7 @@ runnerResults = [];
         SELECT id_cron_job
         FROM tb_cron_jobs
         WHERE ativo = true
-          AND next_run_at <= now()
+          AND next_run_at <= (now() AT TIME ZONE 'UTC')
         ORDER BY next_run_at ASC, id_cron_job ASC
         LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#runnerLimit#"/>
     </cfquery>

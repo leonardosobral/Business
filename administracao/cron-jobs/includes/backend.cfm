@@ -89,7 +89,7 @@
         <cfquery>
             UPDATE tb_cron_jobs
             SET ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#URL.ativo#"/>,
-                data_atualizacao = now(),
+                data_atualizacao = (now() AT TIME ZONE 'UTC'),
                 id_usuario_atualizacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
             WHERE id_cron_job = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.job_id#"/>
         </cfquery>
@@ -130,7 +130,7 @@
         <cfset VARIABLES.cronJobActive = isDefined("FORM.ativo")/>
         <cfset VARIABLES.cronJobExecuteLate = isDefined("FORM.executar_em_atraso")/>
         <cfset VARIABLES.cronJobNextRun = isDefined("FORM.next_run_at") ? trim(FORM.next_run_at) : ""/>
-        <cfset VARIABLES.cronJobNextRunValue = now()/>
+        <cfset VARIABLES.cronJobNextRunValue = dateConvert("local2utc", now())/>
         <cfset VARIABLES.cronJobHeadersParsed = {}/>
         <cfset VARIABLES.cronJobErrors = []/>
         <cfset VARIABLES.cronJobErrorAdminIds = cronJobsParseAdminIds(isDefined("FORM.notificar_erro_admin_ids") ? FORM.notificar_erro_admin_ids : "")/>
@@ -176,7 +176,7 @@
             <cfset arrayAppend(VARIABLES.cronJobErrors, "Proxima execucao invalida.")/>
         </cfif>
         <cfif len(VARIABLES.cronJobNextRun) AND isDate(replace(VARIABLES.cronJobNextRun, "T", " ", "one"))>
-            <cfset VARIABLES.cronJobNextRunValue = parseDateTime(replace(VARIABLES.cronJobNextRun, "T", " ", "one"))/>
+            <cfset VARIABLES.cronJobNextRunValue = dateConvert("local2utc", parseDateTime(replace(VARIABLES.cronJobNextRun, "T", " ", "one")))/>
         </cfif>
         <cfif len(VARIABLES.cronJobNewItemsDestination)>
             <cfset VARIABLES.cronJobNewItemsDestination = "/" & reReplace(VARIABLES.cronJobNewItemsDestination, "^/+", "", "all")/>
@@ -230,7 +230,7 @@
                     max_runtime_seconds = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cronJobMaxRuntime#"/>,
                     notificacao_novos_itens_destino = <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.cronJobNewItemsDestination#" null="#NOT len(VARIABLES.cronJobNewItemsDestination)#"/>,
                     next_run_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.cronJobNextRunValue#"/>,
-                    data_atualizacao = now(),
+                    data_atualizacao = (now() AT TIME ZONE 'UTC'),
                     id_usuario_atualizacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
                 WHERE id_cron_job = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.cronJobId#"/>
             </cfquery>
@@ -300,7 +300,7 @@
         SELECT count(*) AS total_jobs,
                count(*) FILTER (WHERE ativo) AS ativos,
                count(*) FILTER (WHERE NOT ativo) AS inativos,
-               count(*) FILTER (WHERE ativo AND next_run_at <= now()) AS vencidos,
+               count(*) FILTER (WHERE ativo AND next_run_at <= (now() AT TIME ZONE 'UTC')) AS vencidos,
                count(*) FILTER (WHERE last_status = 'success') AS sucesso,
                count(*) FILTER (WHERE lower(trim(coalesce(last_status, ''))) IN ('error', 'http_error', 'failed', 'timeout')) AS erro
         FROM tb_cron_jobs
@@ -328,7 +328,7 @@
             AND last_status = 'success'
         <cfelseif listFindNoCase("vencidos,atrasados", VARIABLES.cronJobsStatusFilter)>
             AND ativo = true
-            AND next_run_at <= now()
+            AND next_run_at <= (now() AT TIME ZONE 'UTC')
         </cfif>
     </cfquery>
     <cfset VARIABLES.cronJobsTotal = qCronJobsCount.total/>
@@ -358,7 +358,7 @@
             AND last_status = 'success'
         <cfelseif listFindNoCase("vencidos,atrasados", VARIABLES.cronJobsStatusFilter)>
             AND ativo = true
-            AND next_run_at <= now()
+            AND next_run_at <= (now() AT TIME ZONE 'UTC')
         </cfif>
         ORDER BY ativo DESC, next_run_at ASC, id_cron_job DESC
         LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cronJobsPerPage#"/>
@@ -370,7 +370,7 @@
                count(*) FILTER (WHERE lower(trim(coalesce(status, ''))) = 'success') AS sucesso,
                count(*) FILTER (WHERE lower(trim(coalesce(status, ''))) IN ('error', 'http_error', 'failed', 'timeout')) AS erro,
                count(*) FILTER (WHERE lower(trim(coalesce(status, ''))) = 'running') AS running,
-               count(*) FILTER (WHERE started_at >= now() - interval '24 hours') AS ultimas_24h
+               count(*) FILTER (WHERE started_at >= (now() AT TIME ZONE 'UTC') - interval '24 hours') AS ultimas_24h
         FROM tb_cron_job_runs
     </cfquery>
 

@@ -1,0 +1,34 @@
+{
+  "logos": [
+    {
+      "path": "assets/contas/abraceo/amigos-do-horto-eventos.jpg",
+      "hash_matches": true
+    },
+    {
+      "path": "assets/contas/abraceo/cronustec.jpg",
+      "hash_matches": true
+    },
+    {
+      "path": "assets/contas/abraceo/mmb-eventos-esportivos.jpg",
+      "hash_matches": true
+    },
+    {
+      "path": "assets/contas/abraceo/nk-sports.jpg",
+      "hash_matches": true
+    },
+    {
+      "path": "assets/contas/abraceo/premium.png",
+      "hash_matches": true
+    },
+    {
+      "path": "assets/contas/abraceo/soulmais.png",
+      "hash_matches": true
+    },
+    {
+      "path": "assets/contas/abraceo/tm4-sports-business.jpg",
+      "hash_matches": true
+    }
+  ],
+  "first_access_page": "200 / login required",
+  "anonymous_lookup": "401"
+}

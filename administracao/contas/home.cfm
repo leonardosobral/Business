@@ -1276,7 +1276,8 @@
 
                     <div class="col-12 col-lg-4">
                       <label class="form-label">Documento</label>
-                      <input class="form-control" type="text" name="documento" value="#encodeForHTMLAttribute(VARIABLES.accountFormDocumento)#" maxlength="20" required/>
+                      <input class="form-control" type="text" name="documento" value="#encodeForHTMLAttribute(VARIABLES.accountFormDocumento)#" maxlength="20"/>
+                      <div class="form-text">Pode ficar vazio somente em pré-cadastro PJ pendente. Confirme o CNPJ e a razão social antes de ativar.</div>
                     </div>
 
                     <div class="col-12 col-lg-8">
@@ -1362,7 +1363,7 @@
                                 </cfif>
                               </td>
                               <td>
-                                <div>#encodeForHTML(qBusinessAccountList.documento)#</div>
+                                <div>#len(trim(qBusinessAccountList.documento)) ? encodeForHTML(qBusinessAccountList.documento) : "CNPJ pendente"#</div>
                                 <div class="small text-muted">#encodeForHTML(qBusinessAccountList.tipo_titular)#</div>
                               </td>
                               <td><span class="accounts-status">#encodeForHTML(qBusinessAccountList.status)#</span></td>
@@ -1419,7 +1420,7 @@
                       <div class="accounts-management-meta small text-muted">
                         <cfoutput>
                           <cfif VARIABLES.businessAccountsCanAdminAll>
-                            <span>Documento: #encodeForHTML(qBusinessAccountEdit.documento)#</span>
+                            <span>Documento: #len(trim(qBusinessAccountEdit.documento)) ? encodeForHTML(qBusinessAccountEdit.documento) : "CNPJ pendente"#</span>
                             <span>Titular: #encodeForHTML(qBusinessAccountEdit.nome_titular)#</span>
                             <span>Status: #encodeForHTML(qBusinessAccountEdit.status)#</span>
                           <cfelse>
@@ -1533,7 +1534,8 @@
 
                             <div class="col-12 col-lg-4">
                               <label class="form-label">Documento</label>
-                              <input class="form-control" type="text" name="documento" value="#encodeForHTMLAttribute(VARIABLES.accountFormDocumento)#" maxlength="20" required/>
+                              <input class="form-control" type="text" name="documento" value="#encodeForHTMLAttribute(VARIABLES.accountFormDocumento)#" maxlength="20"/>
+                      <div class="form-text">Pode ficar vazio somente em pré-cadastro PJ pendente. Confirme o CNPJ e a razão social antes de ativar.</div>
                             </div>
 
                             <div class="col-12 col-lg-8">

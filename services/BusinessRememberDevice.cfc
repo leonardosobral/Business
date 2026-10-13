@@ -32,7 +32,7 @@ component output=false {
         if (!structKeyExists(arguments.identity,"version") || arguments.identity.version != 1
             || !structKeyExists(arguments.identity,"id") || !isValid("integer",arguments.identity.id) || arguments.identity.id LTE 0
             || !structKeyExists(arguments.identity,"sub") || !len(arguments.identity.sub) || len(arguments.identity.sub)>255
-            || !structKeyExists(arguments.identity,"email") || !isValid("email",arguments.identity.email)) {
+            || !structKeyExists(arguments.identity,"email") || !new services.EmailAddress().isValidAddress(arguments.identity.email)) {
             throw(type="BusinessRememberIdentity",message="A verified identity is required");
         }
         var selector=left(randomSecret(),32);

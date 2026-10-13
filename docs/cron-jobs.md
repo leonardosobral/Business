@@ -1,6 +1,6 @@
 # Gerenciador de Cron Jobs
 
-Atualizado em: 2026-07-25
+Atualizado em: 2026-10-12
 
 ## Objetivo
 
@@ -59,6 +59,243 @@ Exemplo de cron do servidor:
 ```
 
 Depois de configurar o token, acesse `/?resetApp` para recarregar `APPLICATION.cronJobs`.
+
+### Migração de servidor — 12/10/2026
+
+O disparador do runner passou a operar somente no crontab de `root` em
+`172.233.2.76` (ColdFusion 2025). A entrada correspondente foi desativada em
+`172.233.26.63` (ColdFusion 2023), preservando o serviço cron e os demais
+agendamentos. Os três agendamentos legados do ColdFusion antigo não foram
+alterados nem copiados.
+
+O token estava correto no crontab e no arquivo privado, mas ausente de
+`APPLICATION.cronJobs` em memória. A recarga pelo mecanismo `/?resetApp`,
+aplicada no origin novo, resolveu o HTTP 503 `not_configured` do runner.
+Nessa primeira etapa, não houve alteração dos arquivos de runtime nem troca
+de credenciais.
+
+Na verificação às 09:35 de Brasília, seis chamadas automáticas consecutivas
+do runner retornaram HTTP 200. Todos os 19 jobs ativos tiveram execução
+`scheduled`: dez concluíram com sucesso e nove falharam nas integrações.
+Os cinco importadores de notícias retornaram `misconfigured` (HTTP 500);
+os quatro jobs de CRM retornaram `invalid_signature` ou `service_unavailable`
+(HTTP 503). Os três jobs inativos permaneceram inativos. O HTTP 200 do runner
+não implica sucesso de cada job do lote.
+
+Backups privados e verificados foram mantidos em cada servidor. Os caminhos,
+hashes e resultados individuais estão no
+[recibo da migração](../_codex/staging/cron-migration-20261012/cutover-receipt.json).
+Para desfazer a troca de disparador, desative primeiro a entrada no novo e
+restaure o `root.crontab.before` do backup no antigo com `crontab`; nunca
+mantenha os dois disparadores ativos durante a recuperação.
+
+### Recuperação dos importadores e CRM — 12/10/2026
+
+O Business orquestra as chamadas; o projeto Conteúdo executa os importadores;
+o Road Runners executa os workers de CRM. Após autorização para corrigir os
+nove jobs, foram aplicados os seguintes ajustes no servidor novo:
+
+- **Business / CRM:** o campo privado `notificationDispatchSecret` estava
+  divergente da chave aceita pelo Road Runners. Foi alinhado à referência
+  existente `cronSecrets.road_runners_handoff`, previamente validada com uma
+  ação inexistente que não executa trabalho. A recarga de `APPLICATION`
+  aplicou a configuração. Nenhuma credencial nova foi gerada e nenhum arquivo
+  do Road Runners precisou ser alterado.
+- **Conteúdo / autenticação:** a recarga por `/reset.cfm` recuperou o segredo
+  existente `importerHandoffSecret`. Os cinco endpoints voltaram a rejeitar
+  pedidos sem assinatura ou com assinatura inválida, aceitando a assinatura
+  do Business.
+- **Conteúdo / banco:** inicializações incondicionais com `CREATE TABLE IF
+  NOT EXISTS` e `CREATE INDEX IF NOT EXISTS` eram bloqueadas pelo datasource
+  do CF2025, mesmo com as estruturas já criadas. A consulta parametrizada
+  `inc.db.relationExists()` passou a verificar tabelas e índices antes dessas
+  instruções. Foram ajustados os importadores Corrida No Ar, Contra Relógio
+  (também usado pelo Jornal da Corrida), CBAt e SixComm, além dos componentes
+  de configuração e persistência SixComm. As restrições do servidor foram
+  preservadas; não houve migração de schema.
+
+A correção do carregamento de configuração também recuperou o refresh token
+Gmail cifrado do SixComm que já estava no banco, sem nova autorização Google.
+As próximas execuções dos jobs que ainda falhavam foram antecipadas com backup
+e comparação do estado anterior; seus intervalos e parâmetros foram mantidos.
+
+O código do Conteúdo foi preparado a partir de um snapshot dos sete arquivos
+de produção, pois não havia checkout local desse projeto. O
+[diff da publicação](../_codex/staging/cron-migration-20261012/news-source/patch.diff)
+e o [recibo com hashes e backup](../_codex/staging/cron-migration-20261012/news-published.json)
+registram o escopo exato. O backup privado do Business está identificado no
+[recibo da correção CRM](../_codex/staging/cron-migration-20261012/crm-repair.json).
+Para rollback, compare os hashes atuais com os publicados antes de restaurar
+os arquivos correspondentes do backup. Após restaurar configuração privada,
+recarregue a aplicação pelo mecanismo do projeto.
+
+Durante a validação, a JVM atingiu seu limite de heap de 1 GB e a thread
+`AJP Acceptor` encerrou com `OutOfMemoryError: Java heap space`. O Apache
+ficou com suas filas HTTPS e AJP saturadas, embora o host de 24 GB ainda
+tivesse memória livre. O heap em
+`/opt/coldfusion2025/cfusion/bin/jvm.config` foi ajustado de
+`-Xms256m -Xmx1024m` para `-Xms2048m -Xmx8192m`, preservando os demais
+argumentos. Foi aplicado um reinício controlado pelo serviço existente
+`cf2025`, que passou de inativo (JVM iniciada fora do serviço) para ativo.
+O limite de 150 workers do Apache não foi alterado.
+
+A JVM confirmou 8 GB de heap máximo após a partida. Às 10:08 de Brasília,
+Road Runners, RunnerHub, Conteúdo e Business responderam HTTP 200 tanto no
+origin quanto no domínio público. As filas de entrada zeraram e o Apache
+apresentou 73 workers livres e dois ocupados. O backup da configuração e o
+[recibo do reinício](../_codex/staging/cron-migration-20261012/heap-recovery.jsonl)
+permitem auditar a alteração. Restaurar o limite antigo de 1 GB também
+restauraria o risco de esgotamento observado; qualquer rollback de heap
+exige nova reinicialização do ColdFusion.
+
+#### Dimensionamento definitivo solicitado — 19.200 MiB
+
+Às 11:08 de Brasília, após comparar os dois servidores, o máximo do novo
+foi elevado novamente, de `-Xmx8192m` para **`-Xmx19200m`** (18,75 GiB),
+igual ao valor confirmado na configuração e no processo do servidor antigo.
+O heap inicial permaneceu em `-Xms2048m`. A configuração de 8 GiB acima
+registra a primeira recuperação do incidente; o máximo vigente é 19.200 MiB.
+
+Ambos os hosts têm cerca de 23,47 GiB de RAM visível ao Linux. Esse teto
+deixa aproximadamente 4,72 GiB fora do heap para memória nativa da JVM,
+Apache e sistema. Antes da alteração, o Apache consumia cerca de 137 MiB
+de PSS, havia 18,77 GiB disponíveis no host novo e a swap estava sem uso.
+Não foram encontrados limites de memória nos cgroups da JVM. O teto não
+representa consumo imediato nem comprova capacidade sob carga de pico;
+a avaliação seguiu o consumo observado e o dimensionamento já existente.
+
+Foi alterado somente o `-Xmx` em
+`/opt/coldfusion2025/cfusion/bin/jvm.config`, após conferir o hash de baseline.
+Backup recuperável:
+`/var/backups/cf2025-heap-19200-20261012T140824Z-ubrfd4df/jvm.config.before`.
+O reinício por `systemctl stop/start cf2025` terminou com ambos os comandos
+em código zero. O processo novo confirmou `MaxHeapSize=20132659200` bytes
+e `InitialHeapSize=2147483648` bytes; os demais argumentos, inclusive o
+coletor de lixo, e a configuração do Apache foram preservados.
+
+Após a partida, os quatro sites responderam HTTP 200 no origin e nos
+domínios públicos. O Apache apresentou 9 workers ocupados e 66 livres.
+Evidências: [comparação de memória do novo](../_codex/staging/cron-migration-20261012/memory-capacity-new.json),
+[comparação do antigo](../_codex/staging/cron-migration-20261012/memory-capacity-old.json),
+[recibo do reinício](../_codex/staging/cron-migration-20261012/heap-19200-restart.jsonl),
+[flags efetivas da JVM](../_codex/staging/cron-migration-20261012/vm-flags-after-19200.json),
+[verificação dos sites](../_codex/staging/cron-migration-20261012/sites-after-19200.json)
+e [memória após a alteração](../_codex/staging/cron-migration-20261012/memory-capacity-after-19200.json).
+Para rollback deste segundo ajuste, conferir o hash vigente
+`100138aafc4ece911e468478c6f2e8e952e7e14d31f34a00fac4dede03c2aa3b`,
+restaurar o backup de 8 GiB acima preservando dono e permissões, reiniciar
+o ColdFusion e repetir as verificações de disponibilidade.
+
+#### Fuso America/Sao_Paulo e preservação da agenda — 12/10/2026
+
+Após autorização do usuário, foi acrescentado somente
+`-Duser.timezone=America/Sao_Paulo` à linha `java.args` do servidor novo.
+O heap de `-Xms2048m -Xmx19200m`, classpath e todos os demais argumentos
+foram preservados. O reinício pelo serviço `cf2025` terminou às 11:28:06
+de Brasília, com parada e partida em código zero. A JVM em execução
+confirmou o novo fuso; o sistema operacional permaneceu em UTC.
+
+A validação detectou que o driver PostgreSQL também adota o fuso da JVM.
+A conexão passou de UTC para `America/Sao_Paulo`, enquanto `next_run_at`,
+`last_run_at` e `started_at` são `timestamp without time zone` e os horários
+operacionais anteriores estavam gravados em UTC. Sem correção, o runner
+considerava esses agendamentos três horas adiantados e não os executava.
+
+Para preservar os instantes existentes sem migrar dados, foram publicados
+quatro arquivos do Business às 11:35:05 de Brasília:
+
+- `cron-jobs/runner.cfm`: seleção dos jobs devidos com `now() AT TIME ZONE 'UTC'`.
+- `includes/backend/cron_jobs_service.cfm`: início, fim, última/próxima execução
+  e reconciliação de execuções interrompidas usam o mesmo relógio UTC.
+- `administracao/cron-jobs/includes/backend.cfm`: filtros de vencimento e
+  estatísticas usam UTC; horários informados no formulário são convertidos
+  do fuso local para UTC antes da gravação.
+- `administracao/cron-jobs/home.cfm`: horários de agenda e histórico são
+  convertidos de UTC para o fuso local na apresentação e edição.
+
+Os quatro arquivos locais correspondiam ao baseline de produção antes da
+alteração. A publicação conferiu hashes, preservou dono/permissões e criou
+backup recuperável. Não houve atualização em massa do histórico, alteração
+de schema, de intervalos ou de ativações. Os 19 jobs ativos e os três
+inativos foram preservados, assim como o crontab do novo. O antigo continua
+sem entrada ativa do runner Business.
+
+Uma validação em transação somente de leitura confirmou a mesma seleção de
+jobs devidos em UTC e São Paulo, preservação dos intervalos e durações,
+detecção de execução expirada, conversão de datas na virada do dia e ida e
+volta do horário de edição via parâmetro JDBC. Todos os testes passaram.
+O painel autenticado abriu normalmente e apresentou os horários convertidos.
+Os quatro sites responderam HTTP 200 no origin e nos domínios públicos.
+Às 11:36, as filas HTTPS e AJP estavam zeradas, a swap sem uso e havia
+71 workers livres no Apache. Novos lotes `scheduled` foram observados após
+a publicação, sem disparos manuais de validação.
+
+Às 11:40:04, havia 20 execuções automáticas de 14 jobs após a publicação e
+nenhum job vencido naquele instante. Os intervalos e ativações conferiram
+com o snapshot anterior. O agendador registrou 19 execuções `success` e
+uma `http_error`: o job 19, de resumos de notícias, já apresentava falha do
+provedor antes da alteração (créditos OpenAI esgotados). O job 23 retornou
+HTTP 200, mas seu resultado interno continuou `deferred` com três falhas;
+isso não resolve a pendência Pagar.me diagnosticada anteriormente. Os cinco
+importadores de notícias tinham sucesso nas últimas execuções, anteriores
+à troca do fuso; seu próximo intervalo horário não foi antecipado.
+
+Backups:
+
+- JVM: `/var/backups/cf2025-timezone-sao-paulo-20261012T142754Z-a9hhvd3x`.
+- Runtime dos crons: `/var/backups/business-cron-timezone-20261012T143505Z-vv02txti`.
+
+Evidências: [reinício](../_codex/staging/cron-migration-20261012/timezone-restart.jsonl),
+[fuso efetivo](../_codex/staging/cron-migration-20261012/jvm-after-timezone.json),
+[testes de horários](../_codex/staging/cron-migration-20261012/cron-timezone-validation.json),
+[publicação](../_codex/staging/cron-migration-20261012/cron-timezone-published.json),
+[verificação de runtime](../_codex/staging/cron-migration-20261012/timezone-runtime-verification.json),
+[sites](../_codex/staging/cron-migration-20261012/sites-after-timezone-final.json)
+e [execuções automáticas](../_codex/staging/cron-migration-20261012/jobs-after-timezone-final.json).
+
+Para rollback do fuso, conferir o hash vigente de `jvm.config`
+`8682709d037f67dd5398dba3cdaee776c083c3e3a1f182d9c293702f9e428617`,
+restaurar o backup correspondente e reiniciar ColdFusion. O código dos crons
+é compatível com ambos os fusos. Não restaurar o código anterior mantendo a
+JVM em São Paulo: isso reintroduziria o atraso de três horas.
+
+#### Resultado dos jobs após a primeira recuperação
+
+Na verificação das 10:15 de Brasília, Corrida No Ar, CBAt, Jornal da Corrida
+e SixComm tinham execuções `scheduled` com `success=true` e zero erros.
+Notificações, e-mail e histórico do CRM também concluíram com sucesso.
+Permaneceram duas dependências externas sem recuperação integral:
+
+- **Contra Relógio:** o importador registrou timeout HTTP 408 ao ler o feed;
+  uma consulta direta ao feed público retornou HTTP 429 tanto do servidor
+  novo quanto do antigo. Não foram contornadas as limitações da origem.
+- **Compras Todo Santo Dia:** a autenticação entre Business e Road Runners
+  foi recuperada, mas os logs HTTP das consultas ao Pagar.me registraram 403.
+  O worker retorna HTTP 200 mesmo com falhas internas ou histórico em `retry`;
+  esse retorno não confirma conciliação de compras. Os arquivos privados de
+  configuração Pagar.me nos dois servidores têm o mesmo hash. Já havia
+  histórico em `retry` antes da intervenção. Após autorização específica do
+  usuário, uma única consulta autenticada de leitura, limitada a um pedido
+  (`GET /core/v5/orders?page=1&size=1`), confirmou **403 Forbidden** com a
+  mensagem `Authorization has been denied for this request.` Foram registrados
+  somente status e mensagem; nenhum pedido ou cobrança foi alterado.
+  A [documentação de erros do Pagar.me](https://docs.pagar.me/reference/erros-1)
+  associa 403 a bloqueio de IP/domínio. A hipótese principal é uma restrição na
+  [IP Allowlist](https://docs.pagar.me/docs/ip-allowlist), que precisa ser
+  conferida nas configurações de conta/merchant do provedor. A lista atual
+  não foi inspecionada nem alterada. As rotas do novo servidor para o provedor
+  usam IPv4 `172.233.2.76` e IPv6 `2600:3c0d::2000:faff:fef5:7c01`; a inspeção
+  das rotas não determina qual família foi usada pela chamada ColdFusion.
+  O [resultado da consulta autorizada](../_codex/staging/cron-migration-20261012/pagarme-authorized-diagnostic.json)
+  preserva o status e a mensagem recebidos, sem dados de pedidos.
+
+Os status e contadores, sem payloads de pedidos, estão no
+[registro de validação](../_codex/staging/cron-migration-20261012/latest-integrations-5.json).
+A [verificação de runtime](../_codex/staging/cron-migration-20261012/integrations-runtime-verification.json)
+confirma os hashes dos sete arquivos publicados, o heap persistido, o serviço
+`cf2025` ativo e habilitado e um único disparador Business no servidor novo.
+O disparador antigo continuou desativado. Os jobs inativos e as alterações
+locais de outras frentes foram preservados.
 
 ## Autenticacao dos jobs
 

@@ -1,0 +1,771 @@
+<!DOCTYPE HTML>
+<html>
+
+<!-- Header -->
+<head>
+	<title>GUARANI RACE - ETAPA PITÃ</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/style.css" />
+	<link rel="apple-touch-icon" sizes="57x57" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/favicon-16x16.png">
+	<link rel="manifest" href="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">	
+	<meta property="og:title" content="Guarani Race PITÃ">
+	<meta property="og:description" content="Uma corrida nas trilhas centenárias dos indígenas guarani.">
+	<meta property="og:image" content="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2026/05/og-whatsapp-pita-2026.jpg">
+	<meta property="og:image:secure_url" content="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2026/05/og-whatsapp-pita-2026.jpg">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:url" content="https://zbrevents.com.br/guaranirace/pita/">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Guarani Race PITÃ">
+	<meta property="og:locale" content="pt_BR">
+	
+	
+	<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '833966253445120');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=833966253445120&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ01LMXD4X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PQ01LMXD4X');
+</script>
+	
+	
+</head>
+<!-- Header -->
+<header id="header">
+	<a href="https://zbrevents.com.br/guaranirace/pita" class="desktop-block">
+		<img class="logo-principal" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/logo-pita-500-effect-min.png">
+	</a>
+	<nav class="desktop-block">
+		<ul>
+			<!--<li><a class="bt-green-header" href="https://zbrevents.com.br/guaranirace/pita/retirada-do-kit" style="padding: 0px 50px!important;text-align:center; text-shadow:none; filter:none;">Retirada do Kit</a></li>-->
+			<!--<li><a class="bt-green-header" href="https://zbrevents.com.br/guaranirace/pita/resultados" style="padding: 0px 50px!important;text-align:center; text-shadow:none; filter:none;">Fotos e Resultados</a></li>-->
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/guaranirace/pita/percurso" style="padding: 0px 15px!important;text-align:center;">Percurso</a></li>
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/guaranirace/pita/regulamento" style="padding: 0px 15px!important;text-align:center;">Regulamento</a></li>
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/guaranirace/pita/localizacao" style="padding: 0px 15px!important;text-align:center;">Localização</a></li>
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/guaranirace/pita/hospedagem" style="padding: 0px 15px!important;text-align:center;">Hospedagem</a></li>
+			<!--<li><a class="bt-white-outline" href="https://zbrevents.com.br/guaranirace/pita/contato" style="padding: 0px 15px!important;text-align:center;">Contato</a></li>-->
+			<li><a class="bt-orange-header" href="https://zbrevents.com.br/guaranirace/pita/inscricao" style="padding: 0px 50px!important;text-align:center; text-shadow:none; filter:none;">Inscrições abertas</a></li>
+			<li><a class="bt-orange-outline" href="https://zbrevents.com.br/guaranirace/pita/central-de-ajuda/" style="padding: 0px 50px!important;text-align:center;">Central de Ajuda</a></li>
+		</ul>
+	</nav>
+	<!-- Simulate a smartphone / tablet -->
+<div class="mobile-container mobile-block">
+
+<!-- Top Navigation Menu -->
+<div class="topnav">
+  
+  <div id="myLinks">
+    <a href="https://zbrevents.com.br/guaranirace/pita/percurso">Percurso</a>
+    <a href="https://zbrevents.com.br/guaranirace/pita/regulamento">Regulamento</a>
+    <a href="https://zbrevents.com.br/guaranirace/pita/localizacao">Localização</a>
+	<a href="https://zbrevents.com.br/guaranirace/pita/hospedagem">Hospedagem</a>
+	<a href="https://zbrevents.com.br/guaranirace/pita/contato">Contato</a>
+	<!--<a class="bt-green-header" href="https://zbrevents.com.br/guaranirace/pita/resultados" style="text-align:center;border-radius: 0px;">Fotos e Resultados</a>-->
+	<!--<a class="bt-green-header" href="https://zbrevents.com.br/guaranirace/pita/retirada-do-kit" style="text-align:center;border-radius: 0px;">Retirada do Kit</a>-->
+	<a class="bt-orange-header" href="https://zbrevents.com.br/guaranirace/pita/inscricao" style="text-align:center;border-radius: 0px;">Inscrições abertas</a>
+	<a href="https://zbrevents.com.br/guaranirace/pita/central-de-ajuda/">Central de Ajuda</a>
+  </div>
+  <a href="javascript:void(0);" class="icon menu-trigger" onclick="myFunction()">
+  <i class="fa fa-bars"></i>
+  <span>MENU</span>
+</a>
+</div>
+
+<!-- End smartphone / tablet look -->
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+	
+</header>
+
+<style>
+
+.mobile-container {
+  max-width: 100%;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.15) !important;
+  height: 12vh;
+  color: white;
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+	
+.topnav a.menu-trigger {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 38px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.88);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.topnav a.menu-trigger i {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.topnav a.menu-trigger span {
+  line-height: 1;
+}	
+	
+.topnav {
+  background: rgba(0, 0, 0, 0.82) !important;
+  
+}	
+	
+</style>
+<body class="is-preload">
+	<section id="regulamento-img">	
+	<div class="pai-titulo-pagina">
+		<h2 class="text-center titulo-pagina">REGULAMENTO</h2>	
+	</div>
+	</section>
+	
+	<section id="regulamento-main" class="main style2 dark fullscreen">
+		
+		<div class="content">
+			<h2>REGULAMENTO DO EVENTO</h2>
+			<p>NOME DO EVENTO: <strong>Guarani Race - Etapa PITÃ</strong><br />
+			DATA: <strong>SÁBADO 24 OUTUBRO 2026</strong><br>
+			LOCAL: <strong>Aldeia Indígena Rio Silveiras - Praia de Boracéia - São Sebastião/SP</strong> (saiba <a href="https://zbrevents.com.br/guaranirace/pita/localizacao/">mais detalhes</a>)<br />
+			CORRIDA: <strong>6k</strong> e <strong>12k</strong> (saiba <a href="https://zbrevents.com.br/guaranirace/pita/percurso">mais detalhes</a>)<br />
+			CAMINHADA: <strong>6k</strong> (saiba <a href="https://zbrevents.com.br/guaranirace/pita/percurso">mais detalhes</a>)<br />
+			CORRIDA KIDS: <strong>A partir de 200m até 500m com 2 voltas de acordo com a idade</strong> (saiba <a href="https://zbrevents.com.br/guaranirace/pita/percurso">mais detalhes</a>)</p>
+			<p><strong>ADULTOS (valor único para todas as distâncias):</strong><br />
+			→ R$ 297 (verificar % desconto promocional na <a href="https://zbrevents.com.br/guaranirace/pita/inscricao">página de inscrição</a>)<!--(50% idoso R$ 148,50 / 35% R$ 193,05 / 30% R$ 207,90 / 25% R$ 222,75 / 20% R$ 237,60 / 15% R$ 252,45 / 10% R$ 267,30)--></p>
+			<p><strong>KIDS:</strong><br />
+			→ R$ 197 (verificar % desconto promocional na <a href="https://zbrevents.com.br/guaranirace/pita/inscricao">página de inscrição</a>)<!--(35% R$ 128,05 / 30% R$ 137,90 / 25% R$ 147,75 / 20% R$ 157,60 / 15% R$ 167,45 / 10% R$ 177,30)--></p>
+			<p><em>+ Taxa de Serviços MI (Sistema Minhas Inscrições)</em></p>
+			<p><strong>DISTÂNCIAS DA CORRIDA KIDS:</strong><br />
+			&#8211; De 4 à 5 anos: 200 metros<br />
+			&#8211; De 6 à 7 anos: 300 metros<br />
+			&#8211; De 8 à 9 anos: 400 metros<br />
+			&#8211; De 9 à 11 anos: 500 metros</p>
+			<p>IDADE MÍNIMA: <strong>4 anos (Corrida Kids), 12 anos (Caminhada 6k), 16 Anos (Corrida 6k) e 18 anos (Corrida 12k)</strong><br />
+			HORÁRIO DE LARGADA: <strong>08:00 para CORRIDA KIDS | 08:40 para CORRIDA 12K | 08:50 para CORRIDA 6K + CAMINHADA 6K</strong><br />
+			SISTEMA DE HIDRATAÇÃO: <strong>Auto-suficiente com fontes de água natural no percurso.</strong><br />
+			KIT DO ATLETA: <strong>Camiseta de poliamida alusiva ao evento, sacola running, vale pintura, squeeze, número de peito personalizado e chip eletrônico (Kids e Caminhada não incluem chip eletrônico).</strong><br />
+			ENTREGA DO KIT: <strong>Antecipado e no local</strong> (saiba <a href="#retiradadokit">mais detalhes</a>)<br />
+			ESTACIONAMENTO: <strong>Gratuito</strong><br />
+			GUARDA-VOLUME: <strong>Neste evento não disponibilizamos guarda-volume</strong><br />
+			PREMIAÇÃO CORRIDA KIDS: <strong>Medalha finisher</strong> para todos os concluintes (saiba <a href="#premiacao">mais detalhes</a>)<br />
+			PREMIAÇÃO CAMINHADA 6K: <strong>Medalha finisher</strong> para todos os concluintes (saiba <a href="#premiacao">mais detalhes</a>)<br />
+			PREMIAÇÃO CORRIDA 6K: <strong>Troféus para os 5 primeiros na categoria geral e faixa etárias</strong> masculino e feminino e medalha finisher para todos os concluintes (saiba <a href="#premiacao">mais detalhes</a>)<br />
+			PREMIAÇÃO CORRIDA 12K: <strong>Troféus para os 5 primeiros na categoria geral e faixa etárias</strong> masculino e feminino e medalha finisher para todos os concluintes (saiba <a href="#premiacao">mais detalhes</a>)</p>
+			<hr />
+			
+			
+			<div style="border: 7px solid #000000; padding: 20px;">
+			<p><strong id="retiradadokit"><span style="color: #225f5f; font-size: 21px;">RETIRADA DO KIT</span></strong></p>
+			
+			<p style="color:#FF8C00; font-size: 1.0em"><strong>EVITE FILAS NA RETIRADA DE KIT</strong><br/>
+		ATENÇÃO: faça a retirada preferencialmente na sexta-feira no local e horário indicado.</p>
+				
+			<hr>
+								
+				<p><strong style="color: #CA4545; font-size: 18px;">Opção ANTECIPADA na Praia de Boracéia<span style="color: #000000;"> → NO DIA 23 DE OUTUBRO (SEX)</span></strong><br/>
+				→ <span style="background-color: #FFEC00">Retirada das 15:00 às 20:00</span>, na <strong>Pousada HB Point</strong> na SP-055, 4268 – Praia da Boracéia - São Sebastião/SP &#8211; VEJA LOCALIZAÇÃO <a href="http://bit.ly/3g5TLvN" target="_blank" rel="noopener noreferrer">AQUI</a></p>
+			<hr>
+				<p><strong style="color: #225f5f; font-size: 18px;">Opção na MANHÃ DO EVENTO<span style="color: #000000;"> → NO DIA 24 DE OUTUBRO (SÁB)</span></strong><br/>
+				→ <span style="background-color: #FFEC00">Retirada das das 6:30 às 08:00</span>, na <strong>Arena do Evento</strong> na Aldeia Indígena Rio Silveiras - Praia da Boracéia - São Sebastião/SP &#8211; VEJA LOCALIZAÇÃO <a href="https://maps.app.goo.gl/9xA1M7fSXuohwUEN9" target="_blank" rel="noopener noreferrer">AQUI</a></p>				
+				
+			<hr>
+			<p><strong>PARA A RETIRADA DO KIT é necessária somente a apresentação de documento com foto.</strong></p>
+			
+			<p>No caso de retirada de KIT por terceiros, o mesmo deverá apresentar a imagem do documento do atleta (pode ser no seu whatsapp) para a retirada. </p>
+			<p>Não será permitida alteração do tamanho da camiseta no momento da retirada de kits. A organização se baseará nas informações cedidas no ato da inscrição.</p>
+			<p><span style="color: #225f5f;">→ Dúvida sobre a retirada do kit? <a href="https://zbrevents.com.br/guaranirace/pita/contato">Clique aqui</a></span></p>
+			</div>
+			
+			
+			
+			<hr style="border-bottom: 40px solid #333333;" />
+			<p><strong><span style="font-size: 24px;">REGULAMENTO COMPLETO</span></strong></p>
+			<hr style="border-bottom: 4px solid #333333;" />
+			<p><strong style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 1 &#8211; A CORRIDA</strong></p>
+			<p><strong>Artigo 1º.</strong> A <strong>GUARANI RACE - Etapa PITÃ</strong> será realizada no dia 24 de Outubro de 2026.</p>
+			<p><strong>Artigo 2º.</strong> O horário de largada da corrida será às 8h00 para a Corrida Kids, às 8h40 para a Corrida 12k e 8h50 para a Corrida 6k e Caminhada 6k, na Aldeia Rio Silveiras, localizada na Praia de Boracéia/SP, somente em boas condições climáticas.</p>
+			<p><em class="size-italic">Parágrafo único &#8211; O horário de largada da corrida ficará sujeita às alterações em razão de eventuais problemas de ordem externa, tais como, tráfego intenso, falhas de comunicação ou suspensão no fornecimento de energia.</em></p>
+			<p><strong>Artigo 3º.</strong> A corrida será disputada nas categorias individual masculino e individual feminino, nas distância de 6k e 12k &#8211; e caminhada na distância de 6k, conforme divulgado no site www.guaranirace.com.br.</p>
+			<p><strong>Artigo 4º.</strong> A corrida terá o tempo limite de 2h00 (duas horas e meia) para todas as modalidades.</p>
+			<p><strong>Artigo 5º.</strong> Não será distribuída água aos atletas no percurso da prova. Os atletas poderão se hidratar utilizando diversos pontos de água potável existentes ao longo percurso, em córregos e rios.</p>
+			<p><strong>Artigo 6º.</strong> Serão colocados à disposição dos atletas, banheiros químicos femininos e masculinos no local da largada e chegada da corrida.</p>
+			<p><em class="size-italic">Parágrafo único &#8211; A empresa organizadora não disponibiliza o serviço de guarda-volumes para este evento em específico.</em></p>
+			<p><strong>Artigo 7º.</strong> Poderão participar da corrida somente atletas regularmente inscritos de acordo com o Regulamento Oficial da prova;</p>
+			<p><em class="size-italic">§1º Qualquer pessoa não autorizada será retirada imediatamente do percurso pelos fiscais de prova.</em></p>
+			<p><strong>Artigo 8º.</strong> A empresa organizadora, primando pela segurança dos atletas, poderá determinar a suspensão da corrida, iniciada ou não, visando a proteção e manutenção da integridade física e a segurança dos atletas diante de fenômenos naturais, desastres naturais, calamidade pública e/ou motivos de força maior. Sendo suspensa a corrida, por qualquer um destes motivos, esta poderá ser considerada realizada e não haverá obrigatoriamente designação de nova data para realização da corrida.</p>
+			<p><em class="size-italic">§1º Os(as) atletas ficam cientes que deverão assumir, no ato da inscrição, todos os riscos e danos da eventual suspensão da corrida (iniciada ou não) por questões de segurança pública, vandalismo e/ou motivos de força maior, não gerando qualquer responsabilidade para a empresa organizadora.</em></p>
+			<p><em class="size-italic">§2º Na hipótese de suspensão do evento esportivo não haverá devolução do valor de inscrição.</em></p>
+			<p><strong style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 2 &#8211; INSCRIÇÃO</strong></p>
+			<p><strong>Artigo 1º.</strong> As inscrições são limitadas e devem ser feitas exclusivamente através do site www.guaranirace.com.br</p>
+			<p><em class="size-italic">§1º As inscrições poderão ser encerradas à qualquer hora.</em></p>
+			<p><em class="size-italic">§2º Se as vagas forem preenchidas antes do prazo final, as inscrições poderão ser encerradas imediatamente.</em></p>
+			<p><em class="size-italic">§3º Caso ainda haja vagas disponíveis, a organização poderá estender o prazo de inscrições até o preenchimento das vagas restantes.</em></p>
+			<p><em class="size-italic">§4º Em respeito ao “Estatuto do Idoso”, os atletas com mais de 60 anos completos terão desconto de 50% no valor da inscrição. Para validar o desconto, basta escolher a opção 60+ no painel de inscrição (o desconto já está calculado). Atenção: O desconto para 60+ é calculado sobre o valor bruto da inscrição (não acumulativo e não associado com outras promoções).</em></p>
+			<p><strong>Artigo 2º.</strong> A quantia paga pela inscrição não será devolvida caso o atleta comunique a desistência da corrida fora do prazo de 7 (sete) dias após a data da compra, previsto no art. 49 do Código de Defesa do Consumidor.</p>
+			<p><strong>Artigo 3º.</strong> A inscrição na corrida é de caráter pessoal. A transferência de titularidade da vaga poderá ser solicitada exclusivamente pelo nosso canal de atendimento no Whatsapp (botão verde no site) <strong>até o prazo de 30 dias antes do evento</strong>, com a permissão de alterar ou não a modalidade de distância, sem alteração da cor e tamanho da camiseta.</p>
+			<p><em class="size-italic">§1º Caso haja fraude comprovada de um atleta participar da corrida com o número de outro, o mesmo será desclassificado da corrida, poderá responder por crime de falsidade ideológica e/ou documental perante as autoridades competentes e ficará impedido de participar de outras corridas organizadas pela empresa.</em></p>
+			<p><em class="size-italic">§2º O atleta que ceder seu número de peito para outra pessoa será responsável por qualquer acidente ou dano que esta venha a sofrer, isentando o atendimento e qualquer responsabilidade da empresa organizadora, seus patrocinadores, apoiadores e órgãos públicos.</em></p>
+			<p><strong>Artigo 4º.</strong> A troca de modalidade de distância pode ser solicitada exclusivamente pelo nosso canal de atendimento no Whatsapp (botão verde no site) <strong>até o prazo de 30 dias antes do evento</strong>.</p>
+			<p><strong>Artigo 5º.</strong> A inscrição não poderá ser transferida para outro evento ou para outra data, em hipótese alguma.</p>
+			<p><strong>Artigo 6º.</strong> Não divulgamos lista de inscritos antes da prova por respeito à LGPD (Lei Geral de Proteção de Dados). Ao final do evento, todos terão seus nomes e resultados divulgados pela empresa de cronometragem na lista de classificação.</p>
+			<p><strong style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 3 &#8211; KIT DO ATLETA</strong></p>
+			<p><strong>Artigo 1º.</strong> A entrega dos kits acontecerá nos dias que antecedem a corrida, em local, data e horário a ser informado pela organização, no site www.guaranirace.com.br</p>
+			<p><strong>Artigo 2º.</strong> O Kit somente poderá ser retirado pelo atleta inscrito mediante apresentação do documento com foto.</p>
+			<p><strong>Artigo 3º.</strong> A retirada de kits só poderá ser efetivada por terceiros mediante apresentação da imagem do documento com foto do inscrito.</p>
+			<p><strong>Artigo 4º.</strong> O kit do atleta será composto por CAMISETA DE POLIAMIDA, SACOLA BAG, Squeeze, Tatuagem do evento, Brindes dos patrocinadores (se houver), Número de peito personalizado e Chip descartável. <!-- &#8211; na opção KIT BÁSICO será composto somente por Número de peito personalizado e Chip descartável.--></p>
+			<p><strong>Artigo 5º.</strong> No momento da retirada do kit o responsável deverá conferir os seus dados e o número de peito.</p>
+			<p><strong>Artigo 6º.</strong> Não serão aceitas reclamações cadastrais como também dos itens que compõe o kit após sua retirada.</p>
+			<p><strong>Artigo 7º.</strong> O tamanho das camisetas está sujeito à alteração, de acordo com a disponibilidade.</p>
+			<p><em class="size-italic">Parágrafo único. O atleta não poderá alegar impossibilidade de participar da corrida, caso não tenha camiseta em tamanho que lhe sirva.</em></p>
+			<p><strong>Artigo 8º.</strong> O atleta está autorizado a correr com sua própria camiseta.</p>
+			<p><strong>Artigo 9º.</strong> O atleta que não retirar o seu kit na data e horário estipulados pela organização ficará impedido de participar da corrida e perderá o direito ao kit.</p>
+			<p><strong>Artigo 10º.</strong> Não serão entregues kits após o período da retirada de kits, determinado previamente pela organização. Os kits não retirados não serão enviados aos corredores, sob nenhum motivo ou circunstância.</p>
+			<p><strong style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 4 &#8211; PERCURSO</strong></p>
+			<p><strong>Artigo 1º.</strong> É obrigação dos atletas ter conhecimento prévio do percurso da corrida, disponível no site do evento.</p>
+			<p><strong>Artigo 2º.</strong> Todos os atletas participantes deverão obedecer ao percurso estabelecido pela organização da prova, com a penalidade de desclassificação do atleta que não o fizer.</p>
+			<p><strong>Artigo 3º.</strong> O percurso estará todo sinalizado. É responsabilidade do atleta prestar atenção na sinalização para não errar o percurso.</p>
+			<p><strong>Artigo 4º.</strong> A marcação de quilometragem não é obrigatória, em algumas situações ela poderá informada e em outras não.</p>
+			<p><strong>Artigo 5º.</strong> A organização da prova se dá o direito de alterar as distâncias do percurso, para mais ou para menos, de acordo com a condição do local.</p>
+			<p><strong>Artigo 6º.</strong> Os atletas deverão tomar cuidado com eventuais desníveis, obstáculos, aclives ou declives que possam existir no caminho. A empresa organizadora não se responsabiliza pelas adversidades do percurso.</p>
+			<p><strong>Artigo 7º.</strong> Os atletas deverão observar o trajeto, não será permitido o acesso às áreas distintas do percurso demarcado, utilizando-se de caminhos sem serem os sinalizados para tal situação, sendo proibido cortar caminho, pular grades ou cavaletes que delimitam estas áreas para obter vantagem. O descumprimento destas regras causará a desclassificação do atleta.</p>
+			<p><strong>Artigo 8º.</strong> É totalmente proibido o descarte de qualquer tipo de objeto ou lixo em todo o percurso, por menor que seja, acarretando a desclassificação sumária do atleta &#8211; com exceção se houver pontos pré-estabelecidos com lixeiras disponibilizadas pela organização.</p>
+			<p><strong>Artigo 9º. DISTÂNCIAS DA CORRIDA KIDS:</strong><br />
+			&#8211; De 4 à 5 anos: 2 voltas de 200 metros<br />
+			&#8211; De 6 à 7 anos: 2 voltas de 300 metros<br />
+			&#8211; De 8 à 9 anos: 2 voltas de 400 metros<br />
+			&#8211; De 9 à 11 anos: 2 voltas de 500 metros</p>
+			<p><strong style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 5 &#8211; CHIP DE CRONOMETRAGEM</strong></p>
+			<p><strong>Artigo 1º.</strong> O sistema de cronometragem a ser utilizado será de chip eletrônico.</p>
+			<p><strong>Artigo 2º.</strong> O tempo de todos os corredores que participarem da corrida será cronometrado e informado posteriormente, desde que observadas às normas previstas neste regulamento.</p>
+			<p><strong>Artigo 3º.</strong> O atleta que não retirar o seu chip na data e horário estipulados fica ciente da impossibilidade de ter cronometrado seu tempo.</p>
+			<p><strong>Artigo 4º.</strong> O uso do chip é obrigatório, para fins de classificação e cronometragem do tempo, durante todo o percurso da corrida.</p>
+			<p><strong>Artigo 5º.</strong> O chip está localizado no verso do número do peito. IMPORTANTE: para esta prova NÃO DEVERÁ SER REMOVIDO e o numeral deverá obrigatoriamente ser fixado na parte frontal da camiseta, sem nada obstruindo a sua visualização. Cuidado para não amassar, não passar cintas, mochilas, entre outros.</p>
+			<p><em class="size-italic">§1º A utilização do chip de cronometragem é de responsabilidade única do atleta, assim como as consequências de sua não utilização.</em></p>
+			<p><em class="size-italic">§2º A utilização inadequada do chip de cronometragem pelo atleta acarreta a não marcação do tempo, isentando a empresa organizadora e a empresa de cronometragem na divulgação dos resultados.</em></p>
+			<p><strong>Artigo 6º.</strong> A utilização do chip por atleta não inscrito implicará em desclassificação.</p>
+			<p><strong>Artigo 7º.</strong> Ainda no local da prova será informado somente o resultado dos atletas classificados para a premiação no pódio. Estes e todos os outros resultados estarão disponíveis posteriormente no site da organização no prazo de até 24 horas. Caso haja discordância do resultado, deverá ser enviado recurso por escrito exclusivamente pelo nosso canal de atendimento no Whatsapp (botão verde no site) com a alegação do erro ao diretor de prova, que julgará a procedência ou não do erro.</p>
+			<p><em class="size-italic">§1º A empresa organizadora não se responsabiliza pela não divulgação do resultado oficial do atleta que não utilizou o chip da forma recomendada neste regulamento.</em></p>
+			<p><em class="size-italic">§2º A empresa organizadora não se responsabiliza pelo atraso na divulgação dos resultados oficiais em razão de falhas na rede mundial de computadores, caso em que os resultados serão devidamente informados após a resolução do problema técnico.</em></p>
+			<p><strong>Artigo 8º.</strong> Qualquer reclamação pública a respeito de resultados ou cronometragem, como por exemplo através de posts ou comentários em nossas redes sociais, será completamente ignorada.</p>
+			<p><strong id="premiacao" style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 6 &#8211; PREMIAÇÃO</strong></p>
+			<p><strong>Artigo 1º.</strong> Todos os atletas que cruzarem a linha de chegada de forma legal, que estiverem regularmente inscritos e sem o descumprimento deste regulamento, receberão medalhas de participação (finisher).</p>
+			<p><em class="size-italic">§1º Não serão entregues medalhas e brindes pós-prova (quando houver) para as pessoas que, mesmo inscritas, não participaram da corrida.</em></p>
+			<p><em class="size-italic">§2º Para receber a medalha é obrigatório que o atleta esteja portando o número de peito.</em></p>
+			<p><em class="size-italic">§3º Só será entregue 1 (uma) medalha por atleta.</em></p>
+			<p><strong>Artigo 2º.</strong> A premiação para os principais vencedores de cada categoria é com troféus.</p>
+			<p><em class="size-italic">§1º Não há premiação em dinheiro, em hipótese alguma.</em></p>
+			<p><strong>Artigo 3º.</strong> Na hipótese de desclassificação de algum atleta, será premiado em seu lugar o próximo classificado na sequência.</p>
+			<p><strong>Artigo 4º.</strong> O atleta que por qualquer razão não puder comparecer ao pódio durante a cerimônia de premiação não perde o direito a sua classificação, podendo entrar em contato com a empresa organizadora para requerer o seu troféu de premiação, que será enviado para o endereço combinado após o atleta fazer o pagamento da postagem.</p>
+			<p><strong style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 6.1. PREMIAÇÃO CORRIDA 6K E 12K</strong></p>
+			<p><strong>Artigo 1º.</strong> A classificação das categorias GERAL MASCULINA e GERAL FEMININA para premiação será obtida pela ordem de chegada dos primeiros 5 atletas de cada categoria, de acordo com o <strong>TEMPO BRUTO</strong> de cada um.</p>
+			<p><strong>Artigo 2º.</strong> Os vencedores das categorias GERAL MASCULINA e GERAL FEMININA não participam da premiação por FAIXA ETÁRIA.</p>
+			<p><strong>Artigo 3º.</strong> A classificação das categorias por FAIXA ETÁRIA para premiação será obtida de acordo com o <strong>TEMPO LÍQUIDO</strong> dos primeiros 5 atletas de cada categoria.</p>
+			<p><strong>Artigo 4º.</strong> A premiação por FAIXA ETÁRIA têm as suas categorias divididas da seguinte maneira:</p>
+			<p><em class="size-italic">§1º Na distância de 6k</em><br />
+			→ 16 a 29 anos<br />
+			→ 30 a 39 anos<br />
+			→ 40 a 49 anos<br />
+			→ 50 a 59 anos<br />
+			→ Acima de 60 anos<!--<br />
+			<em style="font-size: 14px; font-weight: bold;">*atletas de 14 e 15 anos poderão participar na distância de 6k mas não qualificam para premiação.</em>--></p>
+			<p><em class="size-italic">§2º Na distância de 12k.</em><br />
+			→ 18 a 29 anos<br />
+			→ 30 a 39 anos<br />
+			→ 40 a 49 anos<br />
+			→ 50 a 59 anos<br />
+			→ Acima de 60 anos</p>
+			<p><em class="size-italic">§1º A data referência para composição das categorias por faixa etária será sua idade em 31 de dezembro do ano vigente.</em></p>
+			<p><strong style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 6.2. PREMIAÇÃO CAMINHADA 6K</strong></p>
+			<p><em class="size-italic">Parágrafo único. A CAMINHADA 6K é uma modalidade sem classificação. Não haverá premiação com troféus. Os participantes receberão somente a medalha de participação (finisher).</em></p>
+			<p><strong style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 6.3. PREMIAÇÃO CORRIDA KIDS</strong></p>
+			<p><em class="size-italic">Parágrafo único. A CORRIDA KIDS é uma prova de caráter lúdico para crianças. É uma modalidade sem classificação. Não haverá premiação com troféus. Os participantes receberão somente a medalha de participação (finisher).</em></p>
+			<p><strong style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 7 &#8211; ATENDIMENTO MÉDICO</strong></p>
+			<p><strong>Artigo 1º.</strong> Todos os atletas deverão estar em dia com rigorosa avaliação médica para realização da corrida, sendo conhecedores de seu estado de saúde e de sua aptidão física para participar da corrida. A empresa organizadora não se responsabilizará pela saúde física dos atletas.</p>
+			<p><strong>Artigo 2º.</strong> O atleta é responsável pela decisão de participar da corrida, avaliando sua condição física, desempenho e julgando por si só se deve ou não continuar ao longo da competição.</p>
+			<p><em class="size-italic">Parágrafo único. A empresa organizadora poderá, seguindo recomendação do médico responsável pela corrida, determinar que o atleta interrompa ou não participe da corrida.</em></p>
+			<p><strong>Artigo 3º.</strong> A empresa organizadora não tem responsabilidade sobre o atendimento médico dos atletas, despesas médicas em casos de internação ou lesões geradas pela participação na corrida. Porém, será disponibilizado um serviço de ambulância UTI para atendimento emergencial aos atletas e para a remoção destes aos hospitais da rede pública de saúde.</p>
+			<p><strong>Artigo 4º.</strong> O atleta ou seu acompanhante poderá decidir pela remoção ou transferência para hospitais da rede privada de saúde, eximindo a empresa organizadora de qualquer responsabilidade ou reembolso pelas despesas decorrentes deste atendimento médico.</p>
+			<p><strong style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 8 &#8211; DIREITO DE IMAGEM</strong></p>
+<p><strong>Artigo 1º.</strong> O atleta que se inscreve e consequentemente participa da corrida está incondicionalmente aceitando e concordando em ter sua imagem e voz divulgada através de fotos, filmes, rádio, jornais, revistas, internet, vídeos e televisão, ou qualquer outro meio de comunicação, para usos informativos, promocionais ou publicitários relativos à corrida, sem acarretar nenhum ônus a ZBR EVENTS e aos patrocinadores, renunciando o recebimento de qualquer renda que vier a ser auferida com tais direitos em qualquer tempo/data.</p>
+<p><strong>Artigo 2º.</strong> Todos os atletas, staffs, organizadores cedem no ato de inscrição todos os direitos de utilização de sua imagem e voz para a empresa organizadora ZBR EVENTS e para os patrocinadores desta corrida.</p>
+<p><strong>Artigo 3º.</strong> A filmagem, transmissão pela televisão, fotografias ou vídeo relativos à corrida têm os direitos reservados aos organizadores.</p>
+<p><em class="size-italic">Parágrafo único. Qualquer forma de divulgação de imagens da corrida ou interesse em destinar um profissional para a cobertura da corrida estará sujeita à autorização e aprovação pela empresa organizadora ZBR EVENTS.</em></p>
+<p><strong style="background: #333333; color: #ffffff; padding: 4px 8px;">CAPÍTULO 9 &#8211; REGRAS COMPLEMENTARES</strong></p>
+<p><strong>Artigo 1º.</strong> No ato da inscrição, ao concordar com o regulamento, assinalando a opção apresentada no sistema online, o atleta aceita todos os termos do regulamento e assume total responsabilidade por sua participação no evento de acordo com o <a href="#termo">TERMO DE RESPONSABILIDADE</a> que é parte integrante deste regulamento.</p>
+<p><strong>Artigo 2º.</strong> A empresa organizadora do evento, bem como seus apoiadores e realizadores não se responsabilizarão por prejuízos ou danos causados pelo atleta inscrito na corrida, a terceiros ou outros participantes, sendo esses de única e exclusiva responsabilidade do mesmo.</p>
+<p><strong>Artigo 3º.</strong> A empresa organizadora se coloca no direito de adiar, alterar e/ou cancelar o evento nos casos que a empresa ache necessário para sua melhor administração, INCLUSIVE no caso de não atingir o número mínimo de inscritos desejado.</p>
+<p><strong>Artigo 4º.</strong> A organização possui todas as autorizações necessárias para a realização do evento.</p>
+<p><strong>Artigo 5º.</strong> A segurança da corrida receberá apoio dos órgãos competentes e haverá sinalização para a orientação dos atletas.</p>
+<p><strong>Artigo 6º.</strong> Não é admitida a inscrição de atletas cadeirantes sem a autorização expressa do organizador.</p>
+<p><strong>Artigo 7º.</strong> Os atletas deverão dirigir-se ao local de largada com pelo menos meia hora de antecedência, quando serão dadas as instruções finais.</p>
+<p><strong>Artigo 8º.</strong> A cada atleta será fornecido um número que deve ser usado visivelmente no peito, sem rasura ou alterações, durante toda a realização da corrida, sendo passíveis de desclassificação os atletas que não cumprirem esta obrigação.</p>
+<p><strong>Artigo 9º.</strong> É proibido correr sem camiseta, o descumprimento desta regra pode levar a desclassificação.</p>
+<p><strong>Artigo 10º.</strong> A participação do atleta na corrida é estritamente individual sendo proibido o auxílio de terceiros, bem como, o uso de qualquer recurso tecnológico sem prévia autorização por escrito da empresa organizadora.</p>
+<p><strong>Artigo 11º.</strong> Não é permitido o acompanhamento dos atletas por treinadores/assessoria, amigos com bicicleta e outros meios (pacing), que resultarão na desclassificação do atleta.</p>
+<p><strong>Artigo 12º.</strong> O atleta não poderá ultrapassar a linha de largada antes do início da corrida.</p>
+<p><strong>Artigo 13º.</strong> O atleta que empurrar o outro atleta de modo a impedir sua progressão estará passível de desclassificação da corrida.</p>
+<p><strong>Artigo 14º.</strong> Não será permitido ao atleta continuar a corrida após deixar voluntariamente o percurso.</p>
+<p><strong>Artigo 15º.</strong> A organização não se responsabiliza por objetos de valor, equipamentos ou dinheiro deixados nos carros estacionados dos atletas.</p>
+<p><strong>Artigo 16º.</strong> Não haverá reembolso, por parte da empresa organizadora, bem como de seus patrocinadores e apoiadores, de nenhum valor correspondente ou dano aos equipamentos e/ou acessórios utilizados pelos atletas no evento, independente de qual for o motivo, tampouco, por qualquer extravio de materiais ou prejuízo que porventura os atletas ou terceiros venham a sofrer durante a participação na corrida. Os custos de transporte, hospedagem, alimentação, seguros ou quaisquer outras despesas necessárias ou provenientes da sua participação na prova, antes, durante e depois da mesma serão de responsabilidade exclusiva do atleta.</p>
+<p><strong>Artigo 17º.</strong> As dúvidas ou informações técnicas deverão ser enviadas por email para contato@zbrevents.com.br para que seja registrada e respondida a contento.</p>
+<p><strong>Artigo 18º.</strong> Todos os assuntos técnicos e omissos deste Regulamento serão resolvidos pela organização da prova, soberana em suas decisões.</p>
+<div id="termo" style="border: 7px solid #333333; padding: 20px;">
+<p><strong>TERMO DE RESPONSABILIDADE</strong></p>
+<p>Eu, &#8220;identificado no cadastramento da inscrição&#8221;, no perfeito uso de minhas faculdades, DECLARO para os devidos fins de direito que:</p>
+<p>1. Estou ciente de que se trata de uma corrida com distância de 6k e 12k.</p>
+<p>2. Estou em plenas condições físicas e psicológicas de participar desta CORRIDA e estou ciente que não existe nenhuma recomendação médica que me impeça de praticar atividades físicas.</p>
+<p>3. Assumo, por minha livre e espontânea vontade, todos os riscos envolvidos e suas consequências pela participação nesta PROVA (que incluem possibilidade de invalidez e morte), isentando a ZBREVENTS, seus organizadores, colaboradores e patrocinadores DE TODA E QUALQUER RESPONSABILIDADE por quaisquer danos materiais, morais ou físicos, que porventura venha a sofrer, advindos da participação nesta PROVA.</p>
+<p>4. Li, conheço, aceito e me submeto integralmente a todos os termos do regulamento da CORRIDA.</p>
+<p>5. Declaro que não portarei, nem utilizarei, nas áreas do evento, percurso e entrega de kits, ou outra área de visibilidade no evento, ou meios de divulgação e promoção, nenhum material publicitário, promocional ou político, sem a devida autorização por escrito dos organizadores; e, também, de qualquer material ou objeto que ponha em risco a segurança do evento, dos atletas e/ou das pessoas presentes, aceitando ser retirado pela organização ou autoridades, das áreas acima descritas.</p>
+<p>6. Em caso de participação neste evento, representando equipes de atletas ou prestadores de serviços e/ ou qualquer mídia ou veículo, declaro ter pleno conhecimento, e que aceito o regulamento da corrida, bem como, a respeitar as áreas da organização destinadas as mesmas, e que está vedada minha participação nas estruturas de apoio a equipes montadas em locais inadequados, ou que interfiram no andamento do evento, e também locais sem autorização por escrito da organização, podendo ser retirado da CORRIDA e do local do evento em qualquer tempo.</p>
+<p>7. Estou ciente das penalidades e possível desclassificação que posso sofrer caso descumpra o regulamento ou cometa falta grave. Excluo meu direito de reclamação sobre tais aspectos da corrida.</p>
+<p>8. Autorizo o uso de minha imagem, assim como familiares e amigos, para fins de divulgação do evento, por fotos, vídeos e entrevistas em qualquer meio de comunicação, sem geração de ônus para a ZBREVENTS, organizadores, mídia e patrocinadores.</p>
+<p>9. Estou ciente que na hipótese de suspensão da prova por questões de segurança pública ou força maior, todos os eventuais custos referentes à locomoção, preparação, estadia, inscrição, entre outros gastos despendidos pelo atleta será suportados única e exclusivamente por mim, isentando a Comissão Organizadora e a empresa responsável pelo ressarcimento de qualquer destes custos.</p>
+<p>10. Assumo com todas as despesas de hospedagem, traslados, seguros, assistência médica e quaisquer outras despesas necessárias, ou provenientes da minha participação nesta corrida; antes, durante ou depois da mesma.</p>
+<p>11. Compreendi e estou de acordo com todos os itens deste TERMO DE RESPONSABILIDADE, isentando assim quem quer que seja, de toda e qualquer responsabilidade legal de tudo o que vier a ocorrer comigo por consequência da minha participação nesta corrida.</p>
+			</div>
+		</div>
+	</section>
+		<div class="services-footer">
+			<div class="pai-kits-slim">
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/pita/percurso"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/icon-percurso-min.png"></a></div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/pita/hospedagem"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/icon-hospedagem-min.png"></a></div>
+			<div class="img-kits"><a href="#"><img class="img-kits" style="max-width: 147px;"  src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/icon-turismo-min.png"></a></div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/pita/retirada-do-kit"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/icon-retirada-kit-min.png"></a></div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/pita/regulamento"><img class="img-kits" style="max-width: 147px;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/icon-regulamento-min.png"></a></div>
+			</div>
+	</div>
+
+
+<!-- Two -->
+	<section id="two" class="main style2 left dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2026/07/trio01-1024-min.jpg">
+				<h2>História</h2>
+			</div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2026/07/trio03-1024-min.jpg">
+				<h2>Cultura</h2>
+			</div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2026/07/trio02-1024-min.jpg">
+				<h2>Esporte</h2>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="main style1" >
+	<div class="pai-depoimentos content"><!--display:none para ocultar-->
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/juu.thomaz-225.png" style="width:100px">
+			<b>Foi sensacional!!!</b>
+			<i>@juu.thomaz</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/m.aguyrre13-225.png" style="width:100px">
+			<b>Prova muito bem organizada e um lindo percurso.</b>
+			<i>@m.aguyrre13</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/valdeireshelenaviana.png" style="width:100px">
+			<b>Com certeza uma das melhores provas da minha vida.</b>
+			<i>@valdeireshelenaviana</i>
+		</div>
+		</div>
+		
+		<div class="pai-depoimentos content"><!--display:none para ocultar-->
+			<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/erikarocha_runner-225.png" style="width:100px">
+			<b>Uma prova marcada na minha vida! Ha'evete (obrigado).</b>
+			<i>@erikarocha_runner</i>
+			</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/camilakraschowetz-225.png" style="width:100px">
+			<b>Esse evento foi mágico!</b>
+			<i>@camilakraschowetz</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/marirosa14-225.png" style="width:100px">
+			<b>Surreal esse dia! Pra ficar na memória.</b>
+			<i>@marirosa14</i>
+		</div>
+			</div>
+	
+		<div class="pai-depoimentos content"><!--display:none para ocultar-->
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/flora.bezerrasp.png" style="width:100px">
+			<b>Incrível, muito além do que eu imaginava!</b>
+			<i>@florabezerrasp</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/pedro_vrl-225.png" style="width:100px">
+			<b>Um baita desafio, uma experiência incrível e que energia.</b>
+			<i>@pedro_vrl</i>
+		</div>
+		<div class="depoimentos">
+			<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2022/08/gilmarados553-225.png" style="width:100px">
+			<b>Corrida mágica. Sensacional!!! Amei gratidão.</b>
+			<i>@gilmarados553</i>
+		</div>
+	</div>
+</section>
+
+
+
+<!-- Etapas -->
+	<section id="etapas" class="main style2 dark fullscreen">
+		<div class="pai-kits">
+			<!--<div class="img-kits"><iframe width="100%" height="350" src="https://www.youtube.com/embed/2h6I-JD81Kw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<h3>Veja o recado da jovem PARA POTY</h3>
+				 <p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/2h6I-JD81Kw" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>-->
+			<div class="img-kits"><iframe width="100%" height="350" src="https://www.youtube.com/embed/yFSpdOQZlaM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<h3>A GUARANI RACE está mais colorida</h3>
+				 <p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/yFSpdOQZlaM" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>
+			<div class="img-kits"><iframe width="100%" height="350" src="https://www.youtube.com/embed/7Jf2T-3sUuA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<h3>A Guarani Race na visão de um norte-americano</h3>
+				 <p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/7Jf2T-3sUuA" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>
+		</div>
+	</section>
+
+
+<!-- Contact -->
+<section id="contact">
+    <div class="inscricao-footer">
+        INSCREVA-SE <a href="https://zbrevents.com.br/guaranirace/pita/inscricao" class="inscricao-bt">CLIQUE AQUI</a>
+    </div>
+</section>
+
+<!-- Etapas -->
+	<section id="localizacao-main" class="main style1 dark fullscreen">
+		<div class="content">
+		<div class="pai-kits">
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/ydju"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/11/trio-1024-ydju-2026.jpg"></a>
+				<h2>Ir para YDJU</h2>
+			</div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/guaranirace/pita"><img class="img-kits" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/11/trio-1024-pita-2026-pb.jpg"></a>
+				<h2 style="color:#ED3237">Você está aqui</h2>
+			</div>
+		</div>
+		</div>
+	</section>
+
+
+<!-- outros eventos 
+	<section id="etapas" class="main style2 dark fullscreen" >
+		<div class="pai-kits">			
+			<div class="img-kits"><a href="https://zbrevents.com.br/igt23k/back/double/" target="_blank"><img class="img-kits" src="https://zbrevents.com.br/wp-content/uploads/2023/06/trio5-1024x512-doubleBACK-2023.jpg" alt="igt23k double"></a>
+				<h2>Ir para IGT23K DOUBLE</h2>
+			</div>
+			<div class="img-kits"><a href="https://zbrevents.com.br/igt23k/back/" target="_blank"><img class="img-kits" src="https://zbrevents.com.br/wp-content/uploads/2023/06/trio2-1024x512-back2023.jpg" alt="igt23k back"></a>
+				<h2>Ir para IGT23K BACK</h2>
+			</div>
+		</div>
+	</section> -->
+
+
+
+<section class="creditos-footer">
+	<!--<div class="patrocinadores">
+		<h3 class="titulo-footer text-center">PATROCÍNIO</h3>
+		<div class="pai-img-patrocinadores">
+			<div>
+				<a href="https://kinakangen.com/" target="_blank"><img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2023/11/kangen-300-min.png"></a>
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2019/09/guaramega.png">
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2019/09/tatuagem-mania.png">
+			</div>
+		</div>
+	</div>
+	<div class="apoiadores">
+		<div class="pai-img-apoiadores">
+			<div>
+				<img src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/06/creditos-tbt21k-v2-min.png">
+			</div>	
+		</div>
+	</div>-->
+	
+	<div>
+		<div class="pai-img-zbrevents">
+			<div>
+				<img style="max-width: 100%" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/09/creditos-guaranirace-2025-COLOR-pita-v7-min.png">
+			</div>			
+		</div>
+	</div>
+	
+	<div>
+		
+		<div class="pai-img-zbrevents">
+			<div>
+				<img style="max-width: 50%; width: 350px;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2025/04/bottom-org-guaranirace-500-black-min.png" alt="zbrevents">
+			</div>			
+		</div>
+	</div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+
+<!-- Icons -->
+<ul class="icons">    
+    <li><a href="https://www.facebook.com/zbreventsbrasil/" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+    <li><a href="https://www.instagram.com/zbreventsbrasil/" class="icon fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>  
+	<li><a href="https://www.youtube.com/@zbrevents" class="icon fa-youtube" target="_blank"><span class="label">Youtube</span></a></li>  	
+</ul>
+
+<!-- Menu -->
+<ul class="menu">
+    <li>&copy; 2014-2026</li>
+    <li>GUARANI RACE é uma marca registrada da ZBR EVENTS</li>
+</ul>
+
+</footer>
+
+<!-- code icon whatsapp 
+<link rel="stylesheet" href="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/style-icon-whats.css">
+<a href="https://wa.me/5511995484720?text=Oi ZBR Events" style="position:fixed;width:60px;height:60px;bottom:20px;right:20px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+  z-index:1000;" target="_blank">
+<i style="margin-top:16px" class="fa fa-whatsapp"></i>
+</a>-->
+
+<!-- mensagem COOKIES -->
+<style>.cookieConsentContainer{z-index:999;width:350px;min-height:20px;box-sizing:border-box;padding:30px 30px 30px 30px;background:#232323;overflow:hidden;position:fixed;bottom:30px;left:30px;display:none}.cookieConsentContainer .cookieTitle a{font-family:OpenSans,arial,sans-serif;color:#fff;font-size:22px;line-height:20px;display:block}.cookieConsentContainer .cookieDesc p{margin:0;padding:0;font-family:OpenSans,arial,sans-serif;color:#fff;font-size:13px;line-height:20px;display:block;margin-top:10px}.cookieConsentContainer .cookieDesc a{font-family:OpenSans,arial,sans-serif;color:#fff;text-decoration:underline}.cookieConsentContainer .cookieButton a{display:inline-block;font-family:OpenSans,arial,sans-serif;color:#fff;font-size:14px;font-weight:700;margin-top:14px;background:#000;box-sizing:border-box;padding:15px 24px;text-align:center;transition:background .3s}.cookieConsentContainer .cookieButton a:hover{cursor:pointer;background:#3e9b67}@media (max-width:980px){.cookieConsentContainer{bottom:0!important;left:0!important;width:100%!important}}</style>
+
+<script>var purecookieTitle="Cookies.",purecookieDesc="Utilizamos cookies para oferecer melhor experiência, melhorar o desempenho, analisar como você interage em nosso site e personalizar conteúdo. Ao utilizar este site, você concorda com o uso de cookies.",purecookieLink='',purecookieButton="Aceito";function pureFadeIn(e,o){var i=document.getElementById(e);i.style.opacity=0,i.style.display=o||"block",function e(){var o=parseFloat(i.style.opacity);(o+=.02)>1||(i.style.opacity=o,requestAnimationFrame(e))}()}function pureFadeOut(e){var o=document.getElementById(e);o.style.opacity=1,function e(){(o.style.opacity-=.02)<0?o.style.display="none":requestAnimationFrame(e)}()}function setCookie(e,o,i){var t="";if(i){var n=new Date;n.setTime(n.getTime()+24*i*60*60*1e3),t="; expires="+n.toUTCString()}document.cookie=e+"="+(o||"")+t+"; path=/"}function getCookie(e){for(var o=e+"=",i=document.cookie.split(";"),t=0;t<i.length;t++){for(var n=i[t];" "==n.charAt(0);)n=n.substring(1,n.length);if(0==n.indexOf(o))return n.substring(o.length,n.length)}return null}function eraseCookie(e){document.cookie=e+"=; Max-Age=-99999999;"}function cookieConsent(){getCookie("purecookieDismiss")||(document.body.innerHTML+='<div class="cookieConsentContainer" id="cookieConsentContainer"><div class="cookieTitle"><a>'+purecookieTitle+'</a></div><div class="cookieDesc"><p>'+purecookieDesc+" "+purecookieLink+'</p></div><div class="cookieButton"><a onClick="purecookieDismiss();">'+purecookieButton+"</a></div></div>",pureFadeIn("cookieConsentContainer"))}function purecookieDismiss(){setCookie("purecookieDismiss","1",365),pureFadeOut("cookieConsentContainer")}window.onload=function(){cookieConsent()};</script>
+
+
+
+<!-- modal da retirada de kit basta apenas trocar pra display block para que ele exiba em todas as paginas menos na 
+da retirada de kit -->
+<div class="flex align-center align-vert modal modal--align modal--show" style="display:none;" ><!--none - ou - block-->
+    <div class="modal__container">
+      <a class="modal__close modal__close--x" aria-hidden="true">&#x2715;</a>
+      <!--<p>Acesse os RESULTADOS 2019.</p> Acesse as informações para RETIRADA DO KIT.-->
+      <!--<a style="padding: 10px 60px!important;text-align:center;border-radius: 10px;background: #D96D00;text-decoration: none;color: #fff;" href="/resultados-2019" class="modal__close">Clique aqui</a>-->
+		<a href="https://zbrevents.com.br/guaranirace/pita/resultados/" target=""><img style="width:100%;" src="https://zbrevents.com.br/guaranirace/pita/wp-content/uploads/2024/10/794-site-v3-600.jpg"></a>
+    </div>
+  </div>
+  <!-- / modal -->
+
+  <style>
+  /* demo only */
+.flex { display: flex; }
+.align-center { justify-content: center; }
+.align-vert,.align-vert.align-center { align-items: center; }
+/* end demo */
+
+.modal { display: none; }
+.modal--show,
+.modal--hide { display: flex; } /* classes fired by js for animation control */
+
+/* This is on the wrapper for the whole modal */
+.modal--align {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.modal__container {
+	position: relative;
+    width: 100%;
+    max-width: 600px;
+    max-height: 800px;
+    padding: 20px;
+    margin: 0 auto;
+	top:20%;
+	background: #fff; 
+	text-align: center;   
+}
+
+/* The .modal__close class is used in js but is modified '--x' here */
+.modal__close--x {
+  font-size: 30px; /* this is only because we use unicode for the X in this case */
+  position: absolute;
+  top: 3px;
+  right: 10px;
+}
+
+/* As there is no href to avoid the hash being added to the URL when clicked we add a pointer */
+/* This 'x' is hidden from screen readers as there is an accessible close button in the modal */
+.modal__close--x:hover {
+  cursor: pointer;
+}
+
+/* Animations */
+/* Open */
+.modal.modal--show {
+  animation: modal-open 0.3s;
+}
+
+@keyframes modal-open {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+
+/* Close */
+.modal.modal--hide {
+  animation: modal-close 0.3s;
+}
+
+@keyframes modal-close {
+  0%    { opacity: 1; }
+  100%  { opacity: 0; }
+}</style>
+
+
+<!-- Scripts -->
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/jquery.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/jquery.poptrox.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/jquery.scrolly.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/jquery.scrollex.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/browser.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/breakpoints.min.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/util.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/assets/js/main.js"></script>
+<script src="https://zbrevents.com.br/guaranirace/pita/wp-content/themes/EVENTS-theme/bower_components/tether/dist/js/tether.min.js"></script>
+
+
+<!-- script central de ajuda -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.getElementById('header');
+  const toggle = document.querySelector('.menu-toggle');
+
+  if (toggle && header) {
+    toggle.addEventListener('click', function () {
+      const isOpen = header.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      header.classList.toggle('sticky-menu', isOpen);
+    });
+  }
+});
+</script>
+
+<!-- script coutdown -->
+<script>
+  const launchDate = new Date("2026-10-24T06:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    if (distance <= 0) {
+      document.getElementById("countdown").innerHTML = "<p class='released'>Já estamos no ar.</p>";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+
+</body>
+
+</html>

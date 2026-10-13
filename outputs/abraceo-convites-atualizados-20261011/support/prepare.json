@@ -1,0 +1,29 @@
+{
+  "eligible": 46,
+  "pending": [
+    {
+      "id_conta": 89,
+      "empresa": "Pace Eventos",
+      "cnpj": null,
+      "contato": "NEWTON JOSÉ GOMES",
+      "fonte": "https://abraceo.com.br/filiado/pace-eventos/",
+      "email_business": "",
+      "status_conta": "PENDENTE",
+      "email": "",
+      "emails_fonte": [],
+      "campos_fonte": [
+        "27-99299-4157",
+        "",
+        "@maratonadevitoria e @paceeventos",
+        "Cidade: Vitória-ES",
+        "Regional: Sudeste"
+      ],
+      "fonte_sha256": "aa6006d57e53ce865093a14a052bd85836b3bdc0757abd50a526ba9e643358c5",
+      "verificado_em": "2026-10-11",
+      "vence_em": "2026-11-10",
+      "status": "PENDENTE",
+      "motivo": "E-mail da base não confirmado na fonte atual"
+    }
+  ],
+  "baseline_saved": true
+}

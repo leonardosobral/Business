@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR" translate="no">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K45KHKWF');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0NDY0DPEBH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0NDY0DPEBH');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
+    <title>ATRA-E Eventos</title>
+    <meta name="description" content="Plataforma oficial de inscrições para corridas e eventos esportivos." />
+    <meta name="author" content="ATRA-E" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <meta property="og:title" content="ATRA-E Eventos" />
+    <meta property="og:description" content="Inscreva-se nas corridas e eventos esportivos disponíveis na plataforma ATRA-E." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ATRA-E" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ATRAE" />
+    <script type="module" crossorigin src="/assets/index-vhyKZcGy.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DNEFBUVf.css">
+  <script defer src="/~flock.js" data-proxy-url="/~api/analytics"></script><script defer src="/__l5e/events.33a4189afb1076e3.js" data-artifact-kind="dwl_content_hash" data-artifact-id="43d1fda96b67c98cdbb1b4ccfaa0e8f01e28a20839354ba8ced27659b120207c" data-commit-sha="7cf99e42b10c2ff02b95f79356995d5546d4f408" data-context-token="v1.eyJwcm9qZWN0X2lkIjoibG92cF80MDRxZ2dta3hiOWF6YTI4a3k4a2FheXA5cSIsImFydGlmYWN0X2tpbmQiOiJkd2xfY29udGVudF9oYXNoIiwiYXJ0aWZhY3RfaWQiOiI0M2QxZmRhOTZiNjdjOThjZGJiMWI0Y2NmYWEwZThmMDFlMjhhMjA4MzkzNTRiYThjZWQyNzY1OWIxMjAyMDdjIiwiY29tbWl0X3NoYSI6IjdjZjk5ZTQyYjEwYzJmZjAyYjk1Zjc5MzU2OTk1ZDU1NDZkNGY0MDgiLCJleHAiOjE3OTQzNDk2MTN9.f4HrLVm69zfEWeaE942q4OaaLocxiLmjORKgP_PQ-Vw"></script><meta name="twitter:title" content="ATRA-E Eventos"><meta name="twitter:description" content="Inscreva-se nas corridas e eventos esportivos disponíveis na plataforma ATRA-E."><meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_404qggmkxb9aza28ky8kaayp9q/6018e5328eb57eb1ba16a071e96289b3_1791561476020.png"><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/lovp_404qggmkxb9aza28ky8kaayp9q/6018e5328eb57eb1ba16a071e96289b3_1791561476020.png"></head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K45KHKWF"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="root"></div>
+  </body>
+</html>

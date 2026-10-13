@@ -1,0 +1,725 @@
+<!DOCTYPE HTML>
+<html>
+
+<!-- Header -->
+<head>
+	<title>CORRE BURRÃO - 5k 10k Kids</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/style.css" />
+	<link rel="apple-touch-icon" sizes="57x57" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/favicon-16x16.png">
+	<link rel="manifest" href="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">	
+	<meta property="og:title" content="Corre Burrão">
+	<meta property="og:description" content="Inscrições abertas. Escolha sua distância: 5K, 10K, KIDS.">
+	<meta property="og:image" content="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/08/og-whatsapp-correburrao-2026.jpg">
+	<meta property="og:image:secure_url" content="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/08/og-whatsapp-correburrao-2026.jpg">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:url" content="https://zbrevents.com.br/correburrao/">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Corre Burrão">
+	<meta property="og:locale" content="pt_BR">
+
+	<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '833966253445120');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=833966253445120&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+	
+	
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PQ01LMXD4X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PQ01LMXD4X');
+</script>
+	
+</head>
+<!-- Header -->
+<header id="header">
+	<a href="https://zbrevents.com.br/correburrao" class="desktop-block">
+		<img class="logo-principal" src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/06/burrao-logo-768-min.png">
+	</a>
+	<nav class="desktop-block">
+		<ul>
+			<!--<li><a class="bt-green-outline" href="https://zbrevents.com.br/correburrao/retirada-do-kit/" style="padding: 0px 10px!important;text-align:center; text-shadow:none; filter:none;">Retirada de Kit</a></li>-->
+			<!--<li><a class="bt-green-outline" href="https://zbrevents.com.br/correburrao/resultados/" style="padding: 0px 50px!important;text-align:center; text-shadow:none; filter:none;">Fotos e Resultados</a></li>-->
+			<li><a class="bt-blue1-header" href="https://zbrevents.com.br/correburrao/inscricao/" style="padding: 0px 50px!important;text-align:center;">KIDS</a></li>
+			<li><a class="bt-blue2-outline" href="https://zbrevents.com.br/correburrao/percurso/" style="padding: 0px 50px!important;text-align:center;">Percurso</a></li>
+			<!--<li><a class="bt-white-outline" href="https://zbrevents.com.br/correburrao/recordistas/" style="padding: 0px 15px!important;text-align:center;">Recordistas</a></li>-->
+			<!--<li><a class="bt-white-outline" href="https://zbrevents.com.br/correburrao/como-ir/" style="padding: 0px 15px!important;text-align:center;">Como Ir</a></li>-->
+			<!--<li><a class="bt-white-outline" href="https://zbrevents.com.br/correburrao/hospedagem/" style="padding: 0px 15px!important;text-align:center;">Hospedagem</a></li>-->
+			<li><a class="bt-blue2-outline" href="https://docs.google.com/document/d/e/2PACX-1vQuAiwAop-BQCJWjOS2-vuzQopRYwONjY8XKEHluYV4epK3W2w5nI9SJGTyziTCXZlCPpi69EGW0ATF/pub" target="_blank" style="padding: 0px 50px!important;text-align:center;">Regulamento</a></li>
+			<!--<li><a class="bt-white-outline" href="https://zbrevents.com.br/correburrao/contato/" style="padding: 0px 25px!important;text-align:center;">Contato</a></li>-->
+			<!--<li><a href="https://zbrevents.com.br/correburrao/menu-completo/"><img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2021/08/mais-min.png" title="Menu Completo" /></a></li>-->
+			<li><a class="bt-blue1-header" href="https://zbrevents.com.br/correburrao/inscricao/" style="padding: 0px 50px!important;text-align:center;">INSCREVA-SE</a></li>
+			<li><a class="bt-white-outline" href="https://zbrevents.com.br/correburrao/central-de-ajuda/" style="padding: 0px 50px!important;text-align:center;">Central de Ajuda</a></li>
+		</ul>
+		</nav>
+	
+	<!-- Simulate a smartphone / tablet -->
+<div class="mobile-container mobile-block">
+
+<!-- Top Navigation Menu -->
+<div class="topnav">  
+  <div id="myLinks">      
+	  <a class="bt-blue2-outline" href="https://zbrevents.com.br/correburrao/percurso">Percurso</a>
+	  <!--<a class="bt-green-header" href="https://zbrevents.com.br/correburrao/recordistas">Recordistas</a>-->
+      <!--<a class="bt-yellow-header" href="https://zbrevents.com.br/correburrao/como-ir">Como Ir</a>-->
+	  <!--<a href="https://zbrevents.com.br/correburrao/hospedagem">Hospedagem</a>-->
+	  <!--<a href="https://zbrevents.com.br/correburrao/contato">Contato</a>-->
+	  <a class="bt-blue1-header" href="https://zbrevents.com.br/correburrao/inscricao" style="text-align:center;border-radius: 0px;">KIDS</a>
+	  <a class="bt-blue2-outline" href="https://docs.google.com/document/d/e/2PACX-1vQuAiwAop-BQCJWjOS2-vuzQopRYwONjY8XKEHluYV4epK3W2w5nI9SJGTyziTCXZlCPpi69EGW0ATF/pub" target="_blank">Regulamento</a>
+	  <!--<a class="bt-green-header" href="https://zbrevents.com.br/correburrao/resultados" style="text-align:center;border-radius: 0px;">Fotos e Resultados</a>-->
+	  <!--<a class="bt-blue-header" href="https://zbrevents.com.br/correburrao/retirada-do-kit" style="text-align:center;border-radius: 0px;">Retirada de Kit</a>-->
+	  <a class="bt-blue1-header" href="https://zbrevents.com.br/correburrao/inscricao" style="text-align:center;border-radius: 0px;">INSCREVA-SE</a>
+	  <!--<a href="https://zbrevents.com.br/correburrao/contato">Contato</a>-->
+	 <a href="https://zbrevents.com.br/correburrao/central-de-ajuda/">Central de Ajuda</a>
+  </div>
+  <a href="javascript:void(0);" class="icon menu-trigger" onclick="myFunction()">
+  <i class="fa fa-bars"></i>
+  <span>MENU</span>
+</a>
+</div>
+
+<!-- End smartphone / tablet look -->
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
+	
+</header>
+
+<style>
+
+.mobile-container {
+  max-width: 100%;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.15) !important;
+  height: 12vh;
+  color: white;
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top:0;
+}
+
+.topnav a:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+	
+.topnav a.menu-trigger {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 38px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.88);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.topnav a.menu-trigger i {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.topnav a.menu-trigger span {
+  line-height: 1;
+}	
+	
+.topnav {
+  background: rgba(0, 0, 0, 0.82) !important;
+  
+}	
+	
+
+
+</style>
+<body class="is-preload">
+
+	<!-- Intro -->
+	<section id="intro" class="main style1 dark fullscreen">
+		<div class="content">
+			<header></header>
+		
+		<div class="countdown-wrap">
+      <p class="countdown-text">FALTAM</p>
+
+      <div class="countdown" id="countdown">
+        <div class="time-box">
+          <span id="days">00</span>
+          <small>Dias</small>
+        </div>
+        <div class="time-box">
+          <span id="hours">00</span>
+          <small>Horas</small>
+        </div>
+        <div class="time-box">
+          <span id="minutes">00</span>
+          <small>Min</small>
+        </div>
+        <div class="time-box">
+          <span id="seconds">00</span>
+          <small>Seg</small>
+        </div>
+      </div>
+    </div>
+		
+		</div>
+	</section>
+
+		
+	
+	&nbsp;
+	<div class="titulo-nova-corrida">
+		<h2>1ª EDIÇÃO DO CORRE BURRÃO<br><span style="font-weight: normal">Uma nova história alviazul será escrita com suor, ritmo e paixão.<br><br>
+Com largada e chegada dentro do Estádio Joaquinzão, o percurso atravessa as ruas de Taubaté carregando a tradição, a paixão e a força do Esporte Clube Taubaté. Cada quilômetro será embalado pelo orgulho de uma torcida que nunca deixa de acreditar.<br><br>
+E, ao cruzar a linha de chegada, você não será mais apenas um corredor — passará a fazer parte da apaixonada torcida do Burro da Central.</span></h2>
+	</div>
+	&nbsp;
+	<hr/>
+	&nbsp;
+		
+	<!-- INCLUDE VENDAS -->
+		<div class="inscricao-progresso" style="display:block;"><!--none - ou - block-->
+		<div class="inscricao-progresso-bloco">
+			<!--<p>SOMENTE 200 VAGAS NO LOTE PROMOCIONAL / INSCRIÇÕES VENDIDAS</p>-->
+			<span class="barra-progresso-texto-grad">
+				<h4>APROVEITE 35% DESCONTO</h4><!--<h4>SUPER PROMOÇÃO 300 PRIMEIRAS INSCRIÇÕES</h4><h4>APROVEITE LOTE PROMOCIONAL</h4><h4>SUPER PROMOÇÃO 24 HORAS</h4><h4>ÚLTIMAS VAGAS</h4><h4>APROVEITE LOTE PROMOCIONAL</h4><h4>INSCREVA-SE JÁ</h4><h4>INSCRIÇÕES ABERTAS</h4><h4>EM BREVE</h4><h4>INSCRIÇÕES REABERTAS - SOMENTE 30 VAGAS</h4><h4>INSCRIÇÕES ENCERRADAS</h4><h4>ENCERRA AMANHÃ</h4><h4>INSCRIÇÕES QUASE ENCERRADAS</h4><h4>ÚLTIMAS VAGAS</h4><h4>APROVEITE LOTE COM 30% DESCONTO</h4><h4>ATÉ 05/02 (23h59) LOTE PROMOCIONAL</h4><h4>ÚLTIMOS DIAS - LOTE PROMOCIONAL</h4><h4>LOTE PROMOCIONAL</h4><h4>APROVEITE LOTE PROMOCIONAL</h4><h4>VAGAS SUPER LIMITADAS</h4><h4>APROVEITE LOTE PROMOCIONAL</h4><h4>ÚLTIMAS HORAS DE INSCRIÇÃO</h4><h4>INSCRIÇÕES ABERTAS - RESTAM POUCAS VAGAS</h4><h4>INSCRIÇÕES ENCERRADAS</h4><h4>INSCRIÇÕES QUASE ENCERRADAS</h4>-->
+			</span>
+			<div class="barra-progresso-pai">	
+			<div class="barra-progresso-valor" style="width:89%;">
+				<span class="barra-progresso-texto">89% <span style="letter-spacing: -1px;">lote vendido</span></span>
+			</div>
+			</div>
+			<span class="barra-progresso-texto-grad">
+			<h5>INSCREVA-SE JÁ</h5><!-- <h5>Aproveite condições especiais de lançamento</h5><h5>INSCREVA-SE JÁ</h5><h5>Aproveite condições especiais de lançamento</h5><h5>INSCREVA-SE JÁ</h5><h5>OBRIGADO A TODOS</h5><h5>INSCREVA-SE JÁ</h5><h5>SOMENTE AS PRIMEIRAS 300 VAGAS COM 40% DESCONTO</h5><h5>INSCREVA-SE JÁ</h5><h5>APROVEITE DESCONTO</h5><h5>APROVEITE VALOR SUPER PROMOCIONAL</h5><h5>PAGAMENTO VIA PIX</h5><h5>OBRIGADO À TODOS</h5><h5>ÚLTIMAS VAGAS</h5><h5>LOTE COM 30% DESCONTO</h5><h5>PARCELAMENTO EM ATÉ 3x SEM JUROS</h5><h5>DESCONTO COM 5x SEM JUROS PARA 500 INSCRIÇÕES</h5><h5>5x SEM JUROS PARA +500 INSCRIÇÕES</h5><h5>APROVEITE O DESCONTO</h5><h5>O SONHO JÁ VAI COMEÇAR</h5><h5>ÚLTIMOS DIAS</h5><h5>VAGAS SUPER LIMITADAS</h5><h5>INSCREVA-SE JÁ</h5> -->
+			</span>
+			&nbsp;
+		</div>
+		</div>		
+	
+	<!-- OPTIONS DISTANCE -->	
+	<section id="inscricao-main" class="main style1 dark fullscreen">		
+		<div class="pai-medidas">
+			
+			<div class="medidas-corridas">
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/08/inscKids-kitCompleto-CorreBurrao-548-v2-min.png" title="" alt="Kit Completo" class="tabinscr-img">
+					<h4>PROMO <span>35%</span> DESC</h4><br>
+					<span class="taxa-tabela">+ tax MI</span>
+					<h3>KIDS - KIT COMPLETO</h3>
+						<ul class="pai-tabela">
+						<li>NÚMERO DE PEITO personalizado</li>
+						<li>CHIP descartável</li>
+						<li class="list-kit">MEDALHA FINISHER</li>
+						<li class="pricerabisc">De R$ 147</li>
+						<li class="pai-bt-tabela"><a class="bt-inscricao-tabela" target="_blank" href="https://rotinas.minhasinscricoes.com.br/inscricaomobile/default.aspx?keycode=5f08fe3e-d0fd-4ef7-838d-91954efc5132&chave=3a4f0fcd-9bc5-461e-85c0-701186fc4693">INSCREVA-SE</a></li><!-- <a class="bt-inscricao-esgotado" target="" href="#">ENCERRADA</a>   <a class="bt-inscricao-esgotado" target="" href="#">EM BREVE</a> <a class="bt-inscricao-esgotado" target="" href="#">ESGOTADO</a>-->
+						<li class="desccalculo">Por R$ <span class="desccalculo-price">95</span></li>
+						<li class="formpgto">Em até 3x (sem juros)</li>
+						<li class="list-kit">Idade mínima 4 anos</li>
+						</ul>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/06/inscKids-kitCompleto-CorreBurrao-bottom-248-min.png" title="" alt="Kit Basico" class="tabinscr-img-bottom">
+			</div>
+			
+			<div class="medidas-corridas">
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/08/insc5k10k-kitBasico-CorreBurrao-548-v2-min.png" title="" alt="Kit Basico" class="tabinscr-img">
+					<h4>PROMO <span>35%</span> DESC</h4><br>
+					<span class="taxa-tabela">+ tax MI</span>
+					<h3>KIT BÁSICO</h3>
+						<ul class="pai-tabela">
+						<li>NÚMERO DE PEITO personalizado</li>
+						<li>CHIP descartável</li>
+						<li class="list-kit">MEDALHA FINISHER</li>
+						<li class="pricerabisc">De R$ 207</li>
+						<li class="pai-bt-tabela"><a class="bt-inscricao-tabela" target="_blank" href="https://rotinas.minhasinscricoes.com.br/inscricaomobile/default.aspx?keycode=5f08fe3e-d0fd-4ef7-838d-91954efc5132&chave=574870e1-42ba-4dd5-be8f-e34dd05ca006">INSCREVA-SE</a></li><!-- <a class="bt-inscricao-esgotado" target="" href="#">ENCERRADA</a>   <a class="bt-inscricao-esgotado" target="" href="#">EM BREVE</a> <a class="bt-inscricao-esgotado" target="" href="#">ESGOTADO</a>-->
+						<li class="desccalculo">Por R$ <span class="desccalculo-price">134</span></li>
+						<li class="formpgto">Em até 3x (sem juros)</li>
+						</ul>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/06/insc5k10k-kitBasico-CorreBurrao-bottom-248-min.png" title="" alt="Kit Basico" class="tabinscr-img-bottom">
+			</div>
+			
+			<div class="medidas-corridas">
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/08/insc5k10k-kitCompleto-CorreBurrao-548-v2-min.png" title="" alt="Kit Completo" class="tabinscr-img">
+				<h4>PROMO <span>35%</span> DESC</h4><br>
+					<span class="taxa-tabela">+ tax MI</span>
+					<h3>KIT COMPLETO</h3>
+					<ul class="pai-tabela">						
+						<li class="list-kit">CAMISETA de poliamida</li>
+						<li class="list-kit">Sacola BAG</li>
+						<li class="list-kit">SQUEEZE</li>
+						<li class="list-kit">TATUAGEM removível</li>
+						<li>NÚMERO DE PEITO personalizado</li>
+						<li>CHIP descartável</li>
+						<li class="list-kit">MEDALHA FINISHER</li>
+						<li class="pricerabisc">De R$ 247</li>
+						<li class="pai-bt-tabela"><a class="bt-inscricao-tabela" target="_blank" href="https://rotinas.minhasinscricoes.com.br/inscricaomobile/default.aspx?keycode=5f08fe3e-d0fd-4ef7-838d-91954efc5132&chave=3a4f0fcd-9bc5-461e-85c0-701186fc4693">INSCREVA-SE</a></li><!-- <a class="bt-inscricao-esgotado" target="" href="#">ENCERRADA</a>   <a class="bt-inscricao-esgotado" target="" href="#">EM BREVE</a> <a class="bt-inscricao-esgotado" target="" href="#">ESGOTADO</a>-->
+						<li class="desccalculo">Por R$ <span class="desccalculo-price">160</span></li>
+						<li class="formpgto">Em até 3x (sem juros)</li>
+						</ul>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/06/insc5k10k-kitCompleto-CorreBurrao-bottom-248-min.png" title="" alt="Kit Completo" class="tabinscr-img-bottom">
+			</div>
+			
+			<div class="medidas-corridas">
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/08/insc5k10k-kitPremium-CorreBurrao-548-v2-min.png" title="" alt="Kit Premium" class="tabinscr-img">
+				<h4>PROMO <span>35%</span> DESC</h4><br>
+					<span class="taxa-tabela">+ tax MI</span>
+					<h3>KIT PREMIUM</h3>
+					<ul class="pai-tabela">						
+						<li class="list-kit">CAMISETA de poliamida</li>
+						<li class="list-kit-premium">CAMISETA FINISHER</li>
+						<li class="list-kit-premium">MEIA de corrida</li>
+						<li class="list-kit-premium">VISEIRA</li>
+						<li class="list-kit">Sacola BAG</li>
+						<li class="list-kit">SQUEEZE</li>
+						<li class="list-kit">TATUAGEM removível</li>
+						<li>NÚMERO DE PEITO personalizado</li>
+						<li>CHIP descartável</li>
+						<li class="list-kit">MEDALHA FINISHER</li>
+						<li class="pricerabisc">De R$ 427</li>
+						<li class="pai-bt-tabela"><a class="bt-inscricao-tabela" target="_blank" href="https://rotinas.minhasinscricoes.com.br/inscricaomobile/default.aspx?keycode=5f08fe3e-d0fd-4ef7-838d-91954efc5132&chave=ca2eba2d-78fb-4660-a68e-180f53ba5963">INSCREVA-SE</a></li><!-- <a class="bt-inscricao-esgotado" target="" href="#">ENCERRADA</a>   <a class="bt-inscricao-esgotado" target="" href="#">EM BREVE</a> <a class="bt-inscricao-esgotado" target="" href="#">ESGOTADO</a>-->
+						<li class="desccalculo">Por R$ <span class="desccalculo-price">277</span></li>
+						<li class="formpgto">Em até 3x (sem juros)</li>
+						</ul>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/06/insc5k10k-kitPremium-CorreBurrao-bottom-248-min.png" title="" alt="Kit Premium" class="tabinscr-img-bottom">
+			</div>
+						
+		</div>
+	</section>	
+	
+	<!--<div class="pai-kit-pcd"><a href="https://forms.gle/4m3zKkEpXGUAJLsX8" target="_blank"><img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/05/insc-PCD-v1-min.png"></a></div>-->
+		
+	<!-- OPTIONS KITS 
+	<section id="infos" class="main style2 dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/kit-tau42k-2026-1024-part1-v1.jpg"></div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/kit-tau42k-2026-1024-part2-v1.jpg"></div>
+		</div>
+	</section>-->	
+	
+	<!--<div class="pai-kit-pcd"><a href="https://forms.gle/4m3zKkEpXGUAJLsX8" target="_blank"><img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/05/insc-PCD-v1-min.png"></a></div>-->
+	
+	<!-- OPTIONS KITS 	
+	<section id="infos" class="main style2 dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/kit-tau42k-2026-1024-part1-v1.jpg"></div>
+			<div class="img-kits"><img class="img-kits" src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/kit-tau42k-2026-1024-part2-v1.jpg"></div>
+		</div>
+	</section>-->
+			
+	&nbsp;
+	<!-- EMOTION IMAGE -->
+	<section>
+		<div class="pai-img-motivacional">
+			<img class="img-banner-finisher" src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/08/percurso-CORRE-BURRAO-5k-10k1920x1080-v3.jpg">
+		</div>
+		
+		<!--&nbsp;
+	<h3 class="titulo-nova-corrida">VOCÊ SABIA?<br><span style="font-weight: normal">Taubaté é a segunda cidade com o melhor IDH (Índice de Desenvolvimento Humano) da região do Vale do Paraíba, em posição privilegiada entre os lugares com a melhor qualidade de vida do Brasil.</span></h3>
+	<h3 class="titulo-nova-corrida">MUITA HISTÓRIA<br><span style="font-weight: normal">Taubaté é a cidade natal de personagens ilustres de nossa história, como o ator e comediante Mazzaropi, o escritor Monteiro Lobato, a apresentadora Hebe Camargo e o apresentador e jornalista Cid Moreira.</span></h3>
+		&nbsp;-->
+	</section>
+	
+	<!--<div class="dadosinscr">
+		<img class="img-3optionskit" src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/06/entrega-KIT-2026-tau42k-v2-Oscar.jpg">
+	</div>-->
+	
+	<!--<div class="dadosinscr">
+		<img class="img-3largadas" src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/largadas-836.jpg">
+	</div>-->
+	
+	<!--<div class="dadosinscr">
+		<img class="img-sunshine" src="https://zbrevents.com.br/correburrao/wp-content/uploads/2024/11/nascer-do-sol-240825.png">
+	</div>-->
+	
+	
+		
+
+	
+
+
+<!--<section id="etapas" class="main style2 dark fullscreen">
+		<div class="pai-kits">
+			<div class="img-kits-only"><iframe width="100%" height="400" src="https://www.youtube.com/embed/IlmxX9zlVpc?si=gS8EIdZNvFH16zWw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				<h3>Vem aí a 1ª edição da Taubaté Marathon.</h3>
+				<p><a class="video-whatsapp" href="https://api.whatsapp.com/send?text=https://youtu.be/IlmxX9zlVpc" target="_blank">Clique Aqui</a> para compartilhar esse vídeo no Whatsapp</p>
+			</div>
+		</div>
+</section>-->
+
+
+<!-- INSCREVA-SE -->
+<section id="contact">
+    <div class="inscricao-footer">
+        INSCREVA-SE <a href="https://zbrevents.com.br/correburrao/inscricao" class="bt-red-footer">CLIQUE AQUI</a>
+    </div>
+</section>
+
+
+<section class="creditos-footer">
+	<div class="master">
+	<h3 class="titulo-footer text-center">PRODUTO OFICIAL</h3>
+	<div class="pai-img-master">
+		<div>
+		<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/09/escudo-250-min.png">
+		</div>
+	</div>
+	</div>
+</section>
+
+<section class="creditos-footer">
+	<div class="master">
+	<h3 class="titulo-footer text-center">MÍDIA OFICIAL</h3>
+	<div class="pai-img-master">
+		<div>
+		<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/09/band-vale-250-min.png">
+		</div>
+	</div>
+	</div>
+</section>
+
+
+<!--<section class="creditos-3column">
+  <div class="coluna-creditos">
+    <h3 class="titulo-footer text-center">MÍDIA OFICIAL</h3>
+    <div class="pai-img-midia">
+      <div>
+        <img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/band-vale-250-min.png">
+      </div>
+      </div>
+  </div>
+
+  <div class="coluna-creditos">
+    <h3 class="titulo-footer text-center">LOJA OFICIAL</h3>
+    <div class="pai-img-loja">
+      <div>
+        <img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/05/oscar-250-min.png">
+      </div>
+    </div>
+  </div>
+
+  <div class="coluna-creditos">
+    <h3 class="titulo-footer text-center">PARCEIRO OFICIAL</h3>
+    <div class="pai-img-parceiro">
+     <div>
+        <img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/logo-taubate-shopping-250-min.png">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="creditos-footer">
+	<div class="patrocinadores">
+		<h3 class="titulo-footer text-center">PATROCÍNIO</h3>
+		<div class="pai-img-patrocinadores">
+			<div>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/avant-250-min.png">
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/unitau-250-min.png">
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/Comevap-250-min.png">
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/soufflet-malt-250-min.png">
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/vinac-259-min.png">
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="creditos-footer">
+	<div class="apoiadores">
+		<h3 class="titulo-footer text-center">APOIO</h3>
+		<div class="pai-img-apoiadores">
+			<div>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/05/yog-250-min.png">
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/baltazar-250-min.png">
+			</div>
+			<div>
+				<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/only-250-min.png">
+			</div>
+		</div>
+	</div>
+</section>-->
+
+<section class="creditos-footer">
+	<div class="organizador">
+	<h3 class="titulo-footer text-center">ORGANIZAÇÃO  | REALIZAÇÃO</h3>
+	<div class="pai-img-organizador">
+		<div>
+		<img src="https://zbrevents.com.br/correburrao/wp-content/uploads/2026/04/ZBR-events-250-min.png">
+		</div>
+	</div>
+	</div>
+</section>
+
+
+
+<!-- CENTRAL DE AJUDA -->
+<section id="contact">
+    <div class="inscricao-footer">
+        <a class="bt-central-footer" href="https://zbrevents.com.br/correburrao/central-de-ajuda/" style="padding: 30px 50px!important;text-align:center;">CENTRAL DE AJUDA</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+
+<!-- Icons -->
+<ul class="icons">    
+    <li><a href="https://www.facebook.com/zbrevents/" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+    <li><a href="https://www.instagram.com/correburrao/" class="icon fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>  
+	<li><a href="https://www.youtube.com/@zbrevents" class="icon fa-youtube" target="_blank"><span class="label">Youtube</span></a></li>  	
+</ul>
+
+<!-- Menu -->
+<ul class="menu">
+    <li>&copy; 2014-2026</li>
+    <li>CORRE BURRÃO é um evento licenciado pelo EC TAUBATÉ</li>
+</ul>
+
+</footer>
+
+
+
+<!-- code icon whatsapp 
+<link rel="stylesheet" href="https://zbrevents.com.br/wp-content/themes/theme-zbrclama/style-icon-whats.css">
+<a href="https://wa.me/5511995484720?text=Oi ZBR Events" style="position:fixed;width:60px;height:60px;bottom:20px;right:20px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+  z-index:1000;" target="_blank">
+<i style="margin-top:16px" class="fa fa-whatsapp"></i>
+</a>-->
+
+<!-- mensagem COOKIES -->
+<style>.cookieConsentContainer{z-index:999;width:350px;min-height:20px;box-sizing:border-box;padding:30px 30px 30px 30px;background:#232323;overflow:hidden;position:fixed;bottom:30px;left:30px;display:none}.cookieConsentContainer .cookieTitle a{font-family:OpenSans,arial,sans-serif;color:#fff;font-size:22px;line-height:20px;display:block}.cookieConsentContainer .cookieDesc p{margin:0;padding:0;font-family:OpenSans,arial,sans-serif;color:#fff;font-size:13px;line-height:20px;display:block;margin-top:10px}.cookieConsentContainer .cookieDesc a{font-family:OpenSans,arial,sans-serif;color:#fff;text-decoration:underline}.cookieConsentContainer .cookieButton a{display:inline-block;font-family:OpenSans,arial,sans-serif;color:#fff;font-size:14px;font-weight:700;margin-top:14px;background:#000;box-sizing:border-box;padding:15px 24px;text-align:center;transition:background .3s}.cookieConsentContainer .cookieButton a:hover{cursor:pointer;background:#3e9b67}@media (max-width:980px){.cookieConsentContainer{bottom:0!important;left:0!important;width:100%!important}}</style>
+
+<script>var purecookieTitle="Cookies.",purecookieDesc="Utilizamos cookies para oferecer melhor experiência, melhorar o desempenho, analisar como você interage em nosso site e personalizar conteúdo. Ao utilizar este site, você concorda com o uso de cookies.",purecookieLink='',purecookieButton="Aceito";function pureFadeIn(e,o){var i=document.getElementById(e);i.style.opacity=0,i.style.display=o||"block",function e(){var o=parseFloat(i.style.opacity);(o+=.02)>1||(i.style.opacity=o,requestAnimationFrame(e))}()}function pureFadeOut(e){var o=document.getElementById(e);o.style.opacity=1,function e(){(o.style.opacity-=.02)<0?o.style.display="none":requestAnimationFrame(e)}()}function setCookie(e,o,i){var t="";if(i){var n=new Date;n.setTime(n.getTime()+24*i*60*60*1e3),t="; expires="+n.toUTCString()}document.cookie=e+"="+(o||"")+t+"; path=/"}function getCookie(e){for(var o=e+"=",i=document.cookie.split(";"),t=0;t<i.length;t++){for(var n=i[t];" "==n.charAt(0);)n=n.substring(1,n.length);if(0==n.indexOf(o))return n.substring(o.length,n.length)}return null}function eraseCookie(e){document.cookie=e+"=; Max-Age=-99999999;"}function cookieConsent(){getCookie("purecookieDismiss")||(document.body.innerHTML+='<div class="cookieConsentContainer" id="cookieConsentContainer"><div class="cookieTitle"><a>'+purecookieTitle+'</a></div><div class="cookieDesc"><p>'+purecookieDesc+" "+purecookieLink+'</p></div><div class="cookieButton"><a onClick="purecookieDismiss();">'+purecookieButton+"</a></div></div>",pureFadeIn("cookieConsentContainer"))}function purecookieDismiss(){setCookie("purecookieDismiss","1",365),pureFadeOut("cookieConsentContainer")}window.onload=function(){cookieConsent()};</script>
+
+
+
+
+<!-- modal da retirada de kit basta apenas trocar pra display block para que ele exiba em todas as paginas menos na 
+da retirada de kit -->
+<div class="flex align-center align-vert modal modal--align modal--show" style="display:none;" ><!--none - ou - block-->
+    <div class="modal__container">
+      <a class="modal__close modal__close--x" aria-hidden="true">&#x2715;</a>
+      <!--<p>Acesse os RESULTADOS 2019.</p> Acesse as informações para RETIRADA DO KIT.-->
+      <!--<a style="padding: 10px 60px!important;text-align:center;border-radius: 10px;background: #D96D00;text-decoration: none;color: #fff;" href="/resultados-2019" class="modal__close">Clique aqui</a>-->
+		 <a href="https://zbrevents.com.br/correburrao/resultados/" target="" ><img style="width:100%;" src="https://zbrevents.com.br/correburrao/wp-content/uploads/2024/03/fotop-venda-01-600.jpg"></a>
+		<!--<a href="https://fotop.com.br/fotos/eventos?evento=26210" target="_blank" ><img style="width:100%;" src="https://zbrevents.com.br/correburrao/wp-content/uploads/2021/11/Fotos-No-Ar-Feed-clique-700.jpg"></a>-->
+		<!--<iframe width="90%" height="450" src="https://www.youtube.com/embed/Kou_mV9y5vs?si=CczoTCmeXnNDP7wC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+    </div>
+  </div>
+  <!-- / modal -->
+
+
+<style>
+	  
+	    /* demo only */
+.flex { display: flex; }
+.align-center { justify-content: center; }
+.align-vert,.align-vert.align-center { align-items: center; }
+/* end demo */
+
+.modal { display: none; }
+.modal--show,
+.modal--hide { display: flex; } /* classes fired by js for animation control */
+
+/* This is on the wrapper for the whole modal */
+.modal--align {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.modal__container {
+	position: relative;
+    width: 100%;
+    max-width: 600px;
+    max-height: 800px;
+    padding: 20px;
+    margin: 0 auto;
+	top:20%;
+	background: #fff; 
+	text-align: center;   
+}
+
+/* The .modal__close class is used in js but is modified '--x' here */
+.modal__close--x {
+  font-size: 30px; /* this is only because we use unicode for the X in this case */
+  position: absolute;
+  top: 3px;
+  right: 10px;
+}
+
+/* As there is no href to avoid the hash being added to the URL when clicked we add a pointer */
+/* This 'x' is hidden from screen readers as there is an accessible close button in the modal */
+.modal__close--x:hover {
+  cursor: pointer;
+}
+
+/* Animations */
+/* Open */
+.modal.modal--show {
+  animation: modal-open 0.3s;
+}
+
+@keyframes modal-open {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+
+/* Close */
+.modal.modal--hide {
+  animation: modal-close 0.3s;
+}
+
+@keyframes modal-close {
+  0%    { opacity: 1; }
+  100%  { opacity: 0; }
+}
+
+	  
+</style>
+
+<!-- Scripts -->
+<script src="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/assets/js/jquery.min.js"></script>
+<script src="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/assets/js/jquery.poptrox.min.js"></script>
+<script src="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/assets/js/jquery.scrolly.min.js"></script>
+<script src="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/assets/js/jquery.scrollex.min.js"></script>
+<script src="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/assets/js/browser.min.js"></script>
+<script src="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/assets/js/breakpoints.min.js"></script>
+<script src="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/assets/js/util.js"></script>
+<script src="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/assets/js/main.js"></script>
+<script src="https://zbrevents.com.br/correburrao/wp-content/themes/EVENTS-theme/bower_components/tether/dist/js/tether.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.getElementById('header');
+  const toggle = document.querySelector('.menu-toggle');
+
+  if (toggle && header) {
+    toggle.addEventListener('click', function () {
+      const isOpen = header.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      header.classList.toggle('sticky-menu', isOpen);
+    });
+  }
+});
+</script>
+
+<!-- script coutdown -->
+<script>
+  const launchDate = new Date("2026-11-08T06:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    if (distance <= 0) {
+      document.getElementById("countdown").innerHTML = "<p class='released'>Já estamos no ar.</p>";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+	
+
+
+</body>
+</html>

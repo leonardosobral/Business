@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://runsports.com.br/wp-content/themes/runsports/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://runsports.com.br/wp-content/themes/runsports/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://runsports.com.br/wp-content/themes/runsports/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.0/dist/fancybox/fancybox.css" />
+    <link rel="stylesheet" href="https://runsports.com.br/wp-content/themes/runsports/css/style.css">
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v28.1 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<title>RUN SPORTS | HÁ 17 ANOS TRANSFORMANDO VIDAS ATRAVÉS DO ESPORTE</title>
+	<link rel="canonical" href="https://runsports.com.br/" />
+	<meta property="og:locale" content="pt_BR" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="RUN SPORTS | HÁ 17 ANOS TRANSFORMANDO VIDAS ATRAVÉS DO ESPORTE" />
+	<meta property="og:url" content="https://runsports.com.br/" />
+	<meta property="og:site_name" content="Run Sports" />
+	<meta property="article:modified_time" content="2026-02-20T21:06:03+00:00" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/runsports.com.br\/","url":"https:\/\/runsports.com.br\/","name":"RUN SPORTS | HÁ 17 ANOS TRANSFORMANDO VIDAS ATRAVÉS DO ESPORTE","isPartOf":{"@id":"https:\/\/runsports.com.br\/#website"},"datePublished":"2025-12-09T21:38:32+00:00","dateModified":"2026-02-20T21:06:03+00:00","breadcrumb":{"@id":"https:\/\/runsports.com.br\/#breadcrumb"},"inLanguage":"pt-BR","potentialAction":[{"@type":"ReadAction","target":["https:\/\/runsports.com.br\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/runsports.com.br\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Início"}]},{"@type":"WebSite","@id":"https:\/\/runsports.com.br\/#website","url":"https:\/\/runsports.com.br\/","name":"Run Sports","description":"HÁ 17 ANOS TRANSFORMANDO VIDAS ATRAVÉS DO ESPORTE","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/runsports.com.br\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"pt-BR"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://runsports.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Frunsports.com.br%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://runsports.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Frunsports.com.br%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+/*wp_block_styles_on_demand_placeholder:6acc0d3c306bc*/
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id="wp-block-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the block styles printed at wp_footer." }
+/*# sourceURL=wp-block-styles-placeholder-inline-css */
+</style>
+<style id="wp-global-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the global-styles printed at wp_footer." }
+/*# sourceURL=wp-global-styles-placeholder-inline-css */
+</style>
+<link rel="https://api.w.org/" href="https://runsports.com.br/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://runsports.com.br/wp-json/wp/v2/pages/2" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://runsports.com.br/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.1.3" />
+<link rel='shortlink' href='https://runsports.com.br/' />
+<link rel="icon" href="https://runsports.com.br/wp-content/uploads/2026/02/cropped-1-scaled-1-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://runsports.com.br/wp-content/uploads/2026/02/cropped-1-scaled-1-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://runsports.com.br/wp-content/uploads/2026/02/cropped-1-scaled-1-180x180.png" />
+<meta name="msapplication-TileImage" content="https://runsports.com.br/wp-content/uploads/2026/02/cropped-1-scaled-1-270x270.png" />
+</head>
+
+<body>
+
+    <!--Botão "Whatsapp"-->
+<!--     <a target="_blank" class="whatsapp_float" href="https://wa.me/5567999999999">
+        <img src="https://runsports.com.br/wp-content/themes/runsports/img/whatsapp.svg" alt="ícone whatsapp">
+    </a> -->
+    
+                <section style="background-image: url('https://runsports.com.br/wp-content/uploads/2025/12/testeira-nova-scaled.jpeg');" id="capa" class="inicio">
+        <div class="filtro-inicio"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="title-runSports">
+                                                                            <img src="https://runsports.com.br/wp-content/uploads/2025/12/logo-run-sports-white-1.png" alt="" class="img-fluid mb-3">
+                                                <h3>HÁ 17 ANOS TRANSFORMANDO VIDAS ATRAVÉS DO ESPORTE</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wave-bottom">
+            <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="efeito rasgado">
+        </div>
+    </section>
+
+    
+
+    <section id="calendario" class="calendario py-5">
+        <div class="container">
+            <div class="row d-flex align-item-center justify-content-center">
+                <div class="col-md-8 text-center">
+                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/Acompanhe-nosso.svg" alt="" class="img-fluid" width="426">
+                    <h3 class="text-uppercase font-64 my-4">calendário de eventos</h3>
+                    <p class="font-20 mb-4 fw-bold">Eventos incríveis esperando você, faça parte, mude sua vida.</p>
+                </div>
+            </div>
+
+            <div class="row d-flex align-item-center justify-content-center container-events py-3">
+
+                                                            <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-orange">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2025/12/Logo-summer-night-run.png" alt="SUMMER NIGHT RUN logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>SUMMER NIGHT RUN</h2>
+                                    <p class="city">Capão da Canoa - RS</p>
+
+                                                                            <h3>3 Km, 5 Km e 10 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>21/02/2026</p>
+                                </div>
+
+                                                                    <a href="https://resultados.runking.com.br/run-sports/summer-night-run-2026" target="_blank" class="text-decoration-none btn btn-resultados mx-auto">RESULTADOS</a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-blue2">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2025/12/POA-NIGHT-RUN-ac.png" alt="POA NIGHT RUN logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>POA NIGHT RUN</h2>
+                                    <p class="city">Porto Alegre - RS</p>
+
+                                                                            <h3>3 Km, 5 Km e 10 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>21/03/2026</p>
+                                </div>
+
+                                                                    <a href="https://resultados.runking.com.br/run-sports/poa-night-run-etapa-1-2026" target="_blank" class="text-decoration-none btn btn-resultados mx-auto">RESULTADOS</a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-red">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2026/01/RS-RUNSPORTS-2026-15k-NB-SAO-PAULO-LOGO.png" alt="NEW BALANCE 15K SÃO PAULO &#8211; 2026 logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>NEW BALANCE 15K SÃO PAULO &#8211; 2026</h2>
+                                    <p class="city">São Paulo - SP</p>
+
+                                                                            <h3>7,5 Km e 15 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>29/03/2026</p>
+                                </div>
+
+                                                                    <a href="https://resultados.runking.com.br/run-sports/new-balance-15k-sao-paulo-2026" target="_blank" class="text-decoration-none btn btn-resultados mx-auto">RESULTADOS</a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-blue">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2025/12/IMG_1721.png" alt="CORRIDA RASPINHA SOLIDÁRIA logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>CORRIDA RASPINHA SOLIDÁRIA</h2>
+                                    <p class="city">Santo Antônio da Patrulha - RS</p>
+
+                                                                            <h3>3 Km, 5 Km e 16 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>26/04/2026</p>
+                                </div>
+
+                                                                    <a href="https://resultados.runking.com.br/run-sports/corrida-da-raspinha-2026" target="_blank" class="text-decoration-none btn btn-resultados mx-auto">RESULTADOS</a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-blue">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2025/12/POA-DAY.png" alt="POA DAY RUN logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>POA DAY RUN</h2>
+                                    <p class="city">Porto Alegre - RS</p>
+
+                                                                            <h3>3 Km, 5 Km e 10 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>03/05/2026</p>
+                                </div>
+
+                                                                    <a href="https://resultados.runking.com.br/run-sports/poa-day-run-etapa-1-2026" target="_blank" class="text-decoration-none btn btn-resultados mx-auto">RESULTADOS</a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-gray">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2025/12/RS-RUNSPORTS-2026-NB-42K-PORTO-ALEGRE-LOGO-1.png" alt="NEW BALANCE 42K logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>NEW BALANCE 42K</h2>
+                                    <p class="city">Porto Alegre - RS</p>
+
+                                                                            <h3>42 Km, 21 Km, 10 Km e 5 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>12/07/2026</p>
+                                </div>
+
+                                                                    <a href="https://nb42kportoalegre.runking.com.br/results" target="_blank" class="text-decoration-none btn btn-resultados mx-auto">RESULTADOS</a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-blue">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2025/12/POA-DAY.png" alt="POA DAY RUN logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>POA DAY RUN</h2>
+                                    <p class="city">Porto Alegre - RS</p>
+
+                                                                            <h3>3 Km, 5 Km, 8 Km e 16 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>16/08/2026</p>
+                                </div>
+
+                                                                    <a href="https://resultados.runking.com.br/run-sports/poa-day-run-etapa-2-2026" target="_blank" class="text-decoration-none btn btn-resultados mx-auto">RESULTADOS</a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-red">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2025/12/logo_corrida_inter.png" alt="CORRIDA DO INTER logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>CORRIDA DO INTER</h2>
+                                    <p class="city">Porto Alegre - RS</p>
+
+                                                                            <h3>3 Km, 5 Km e 10 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>30/08/2026</p>
+                                </div>
+
+                                                                    <a href="https://resultados.runking.com.br/run-sports/corrida-do-inter-2026" target="_blank" class="text-decoration-none btn btn-resultados mx-auto">RESULTADOS</a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-blue2">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2026/01/POA-NIGHT-RUN-ac-150x150-1.png" alt="POA NIGHT RUN logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>POA NIGHT RUN</h2>
+                                    <p class="city">Porto Alegre - RS</p>
+
+                                                                            <h3>3 Km, 5 Km e 10 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>26/09/2026</p>
+                                </div>
+
+                                                                    <a href="https://resultados.runking.com.br/run-sports/poa-night-run-etapa-2-2026" target="_blank" class="text-decoration-none btn btn-resultados mx-auto">RESULTADOS</a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-green">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2026/01/RS-RUNSPORTS-2026-NB-15K-RIO-DE-JANEIRO-logo.png" alt="NEW BALANCE 15K RIO DE JANEIRO – 2026 logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>NEW BALANCE 15K RIO DE JANEIRO – 2026</h2>
+                                    <p class="city">Rio de Janeiro - RJ</p>
+
+                                                                            <h3>7,5 Km e 15 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>11/10/2026</p>
+                                </div>
+
+                                                                    <a href="https://www.newbalance.com.br/corrida-new-balance-15k-rio-de-janeiro" target="_blank" class="text-decoration-none">
+                                        <button class="btn-black mx-auto">INSCREVA-SE </button>
+                                    </a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-pink">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2025/12/poa-ladies.png" alt="POA LADIES RUN logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>POA LADIES RUN</h2>
+                                    <p class="city">Porto Alegre - RS</p>
+
+                                                                            <h3>3 Km, 5 Km e 10 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>18/10/2026</p>
+                                </div>
+
+                                                                    <a href="https://www.poaladiesrun.com.br/" target="_blank" class="text-decoration-none">
+                                        <button class="btn-black mx-auto">INSCREVA-SE </button>
+                                    </a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-gremio">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2025/12/LOGO-GREMIO.png" alt="Corrida do Grêmio logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>Corrida do Grêmio</h2>
+                                    <p class="city">Porto Alegre - RS</p>
+
+                                                                            <h3>3 Km, 5 Km e 10 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>15/11/2026</p>
+                                </div>
+
+                                                                    <a href="https://corridadogremio.vercel.app" target="_blank" class="text-decoration-none">
+                                        <button class="btn-black mx-auto">INSCREVA-SE </button>
+                                    </a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-blue">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2025/12/POA-DAY.png" alt="POA DAY RUN logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>POA DAY RUN</h2>
+                                    <p class="city">Porto Alegre - RS</p>
+
+                                                                            <h3>3 Km, 5 Km, 10 Km e 21 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>29/11/2026</p>
+                                </div>
+
+                                                                    <a href="#" target="_blank" class="text-decoration-none">
+                                        <button class="btn-black mx-auto">EM BREVE</button>
+                                    </a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-green">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2025/12/logo_color.png" alt="SUMMER 48K logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>SUMMER 48K</h2>
+                                    <p class="city">Capão da Canoa - RS</p>
+
+                                                                            <h3>25 Km e 48 Km</h3>
+										<h3>SOLO, DUPLA OU QUINTETO</h3>
+                                    
+                                    <p>05/12/2026</p>
+                                </div>
+
+                                                                    <a href="https://www.ticketsports.com.br/e/SUMMER-48K-2026-88395" target="_blank" class="text-decoration-none">
+                                        <button class="btn-black mx-auto">INSCREVA-SE </button>
+                                    </a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                                                                <div class="col-lg-3 col-12 mb-3">
+                            <div class="cards position-relative rounded-4 rounded-bottom-0 card-gray">
+                                <div class="logo-event">
+                                    <div class="image-logo">
+                                                                                    <img src="https://runsports.com.br/wp-content/uploads/2026/10/ZNDPBW8J0Q7BOKV9BZH444TR49F95936B54WI6Q7D0KGP2RVAT-e1790969778844.png" alt="NEW BALANCE 42K 2027 logo">
+                                                                            </div>
+                                </div>
+
+                                <div class="info-event">
+                                    <h2>NEW BALANCE 42K 2027</h2>
+                                    <p class="city">Porto Alegre - RS</p>
+
+                                                                            <h3>5 Km, 10 Km, 21 Km e 42 Km</h3>
+										<h3></h3>
+                                    
+                                    <p>21/08/2027</p>
+                                </div>
+
+                                                                    <a href="https://www.newbalance.com.br/corrida-nb-42k-poa" target="_blank" class="text-decoration-none">
+                                        <button class="btn-black mx-auto">INSCREVA-SE </button>
+                                    </a>
+                                
+                                <div class="wave-card">
+                                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+        <img src="https://runsports.com.br/wp-content/themes/runsports/img/white_wave.png" alt="" class="wave-sobre">
+
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+
+                <div class="col-md-9 text-center py-2">
+                    <img src="https://runsports.com.br/wp-content/themes/runsports/img/Fale-Conosco.svg" alt="" width="300" class="img-fluid mb-5">
+                    <p class="font-20 fw-bold">Organizadora de eventos esportivos com foco em corridas de rua e figura-se
+                        entre os principais nomes na região sul do país, organizando eventos e provas de nível nacional e
+                        internacional.</p>                
+                </div>  
+                <div class="wrapper-form col-md-8 col-lg-6 mt-4">
+                    <form id="form-fale-conosco">            
+                        <div class="w-100 text-start">
+                            <label for="name">NOME*</label>
+                            <input type="text" id="name" name="nome">
+                        </div>            
+                        <div class="w-100 text-start">
+                            <label for="email">E-MAIL*</label>
+                            <input type="email" id="email" name="email">
+                        </div>            
+                        <div class="w-100 text-start">
+                            <label for="phone">TELEFONE*</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>            
+                        <div class="w-100 text-start">
+                            <label for="message">MENSAGEM*</label>
+                            <input type="text" id="message" class="message" name="message">
+                        </div>            
+                        <div class="btn-conheca">
+                            <button id="submit-fale-conosco">
+                                <span class="bg-effect"></span>
+                                <span class="text-btn">ENVIAR MENSAGEM</span>
+                                <img src="https://runsports.com.br/wp-content/themes/runsports/img/arrow-black.svg" alt=""
+                                    class="ms-2">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/runsports/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://runsports.com.br/wp-includes/js/wp-emoji-release.min.js?ver=7.1.3"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=https://runsports.com.br/wp-includes/js/wp-emoji-loader.min.js
+</script>
+    
+    <footer>
+        <p class="text-start text-lg-center ms-2 mx-lg-auto">© 2026 - TICKET AGORA SERVICOS DE RESERVAS, INTERMEDIAÇÃO E AGENCIAMENTO LTDA. 
+            <a
+                href="https://www.ticketsports.com.br/" target="_blank">VISITE NOSSO SITE
+            </a>
+        </p>
+        
+    </footer>
+    
+    <script src="https://runsports.com.br/wp-content/themes/runsports/js/jquery-3.7.1.min.js"></script>
+    <script src="https://runsports.com.br/wp-content/themes/runsports/js/bootstrap.bundle.min.js"></script>
+    <script src="https://runsports.com.br/wp-content/themes/runsports/js/owl.carousel.js"></script>
+    <script src="https://runsports.com.br/wp-content/themes/runsports/js/jquery.fancybox.min.js"></script>
+    <script src="https://runsports.com.br/wp-content/themes/runsports/js/script.js"></script>
+
+    <script defer=""
+        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;4b2939f857e54d068ac3df4220635c5b&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

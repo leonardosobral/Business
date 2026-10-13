@@ -1,0 +1,106 @@
+ 
+ 
+
+ 
+     
+     
+
+     
+      
+     
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-FQEGRHB5VT');
+     
+
+     
+     
+     
+     
+     
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+
+     
+     
+     
+     
+     
+     
+
+     
+     
+
+     
+     
+     Corrida Assaí | Etapas e inscrições 
+ 
+
+ 
+     
+         
+             
+                 
+                     
+                 
+                 
+                     
+                         
+                     
+
+                     
+                         
+                             Escolha sua cidade: 
+                         
+
+                          igual
+                             aos de baixo e tire a linha da cidade do .htaccess. -->
+                         
+                             
+                                 
+                                     
+                                         08/11/26 
+                                         Vitória (ES) 
+                                     
+                                 
+                             
+                             
+                                 
+                                     
+                                         22/11/26 
+                                         Teresina (PI) 
+                                     
+                                 
+                             
+                         
+
+                     
+                 
+                 
+                     
+                         
+                     
+                 
+             
+         
+     
+
+      
+      
+ 
+
+ 'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh-oh'},{'server':'p3plzcpnl508839'},{'dcenter':'p3'},{'cp_id':'10244396'},{'cp_cl':'8'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.    

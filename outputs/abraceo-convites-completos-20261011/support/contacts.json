@@ -1,0 +1,50 @@
+[
+  {
+    "id_conta": 89,
+    "empresa": "Pace Eventos",
+    "cnpj": null,
+    "contato": "NEWTON JOSÉ GOMES",
+    "fonte": "https://paceeventos.com.br/",
+    "email_business": "",
+    "status_conta": "PENDENTE",
+    "email": "contato@paceeventos.com.br",
+    "emails_fonte": [],
+    "campos_fonte": [
+      "27-99299-4157",
+      "",
+      "@maratonadevitoria e @paceeventos",
+      "Cidade: Vitória-ES",
+      "Regional: Sudeste"
+    ],
+    "fonte_sha256": "aa6006d57e53ce865093a14a052bd85836b3bdc0757abd50a526ba9e643358c5",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "E-mail geral de contato no site oficial da Pace Eventos; site identifica @paceeventos e provas em Vitória/ES."
+  },
+  {
+    "id_conta": 45,
+    "empresa": "Morro MT",
+    "cnpj": "18305726000106",
+    "contato": "JÚNIOR DE ASSIS SOARES",
+    "fonte": "https://morro-mt.com.br/contato",
+    "email_business": "__morro@morro-mt.com.br",
+    "status_conta": "PENDENTE",
+    "email": "morro@morro-mt.com.br",
+    "emails_fonte": [
+      "__morro@morro-mt.com.br"
+    ],
+    "campos_fonte": [
+      "(65) 99277-0972",
+      "__morro@morro-mt.com.br",
+      "@morro_mt",
+      "Cidade: Cuiabá - MT",
+      "Regional: Norte"
+    ],
+    "fonte_sha256": "732f34b10694fa5e5d879a4a306850696c14c4e43ddc1ee2e0cf3ad74440e9c9",
+    "verificado_em": "2026-10-11",
+    "vence_em": "2026-11-10",
+    "status": "APTO",
+    "motivo": "Site oficial publica o endereço sem underscores; a grafia __morro na ABRACEO não foi utilizada."
+  }
+]

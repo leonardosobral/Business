@@ -1,0 +1,10 @@
+{
+  "vouchers": 86,
+  "old_preserved": 40,
+  "new_verified": 46,
+  "pending": 2,
+  "unique_codes": true,
+  "unique_emails": true,
+  "new_sent": 0,
+  "old_send_status_preserved": true
+}
