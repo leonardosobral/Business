@@ -1,6 +1,10 @@
 component output=false {
     variables.textPolicy=new services.geocoding.Policy();
     public any function init(string apiKey="",string model="gpt-6-astra") {variables.key=apiKey;variables.model=model;return this;}
+    public string function cacheKey(required struct context,required array documents,required string model){
+        // Cache exactly the extraction input and prompt, not mutable HTML digests or unrelated event descriptions.
+        return "ai-extraction-v2|" & lCase(hash(serializeJSON(requestBody(context,documents,model)),"SHA-256"));
+    }
     // Ordered, case-sensitive JSON keys: CF literal structs otherwise uppercase the wire format.
     private any function wire(required any value) {
         if(isArray(value)){var a=[];for(var x in value)arrayAppend(a,wire(x));return a;}

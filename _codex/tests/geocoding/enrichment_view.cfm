@@ -8,6 +8,6 @@ check(!find("<script>",fixtureHtml) AND find("&lt;script&gt;",fixtureHtml),"All 
 check(find('value="approve_field"',fixtureHtml) AND find('value="reject_field"',fixtureHtml) AND find('name="revision" value="7"',fixtureHtml),"Field review has explicit approval, preservation and revision control");
 check(find("Equivalente",fixtureHtml) AND !find('name="attribute" value="2"',fixtureHtml),"Equivalent facts are informational, not another review task");
 fixtureIndex=fileRead(getDirectoryFromPath(getCurrentTemplatePath()) & "../administracao/geolocalizacao/index.cfm");
-check(find('geocoding.js?v=20261019-enrichment',fixtureIndex),"New tab behavior has a new asset version instead of reusing the old cached script");
+check(find('geocoding.js?v=',fixtureIndex) AND !find('geocoding.js?v=20261019-enrichment',fixtureIndex),"Updated review behavior has a fresh asset version instead of reusing the old cached script");
 writeOutput("GEO_ENRICHMENT_VIEW_PASSED");
 </cfscript>

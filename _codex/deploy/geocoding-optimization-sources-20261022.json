@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "locais-preservados",
+      "title": "O contador reconhece os locais já gravados",
+      "queries": [{
+        "id": "contador-publicado",
+        "source": {
+          "label": "Business · validação da geolocalização",
+          "files": [{"label": "geocoding-optimization-validation-20261022.json"}, {"label": "LocationStore.cfc"}],
+          "links": [{"label": "Geolocalização", "href": "https://business.roadrunners.run/administracao/geolocalizacao/"}],
+          "metricDefinitions": [{"label": "Preenchidos", "definition": "Preenchidos conta eventos com coordenada da prova ainda gravada e correspondente a uma aplicação auditada, ou com local confirmado do kit gravado, independentemente do status da análise mais recente."}],
+          "caveats": ["A mudança de contagem corrige a definição; não representa criação de novas coordenadas.", "Revisão necessária representa propostas atuais e pode diminuir quando forem resolvidas ou substituídas."],
+          "evidenceFlow": [{"kind": "validation", "title": "Consulta e tela real", "detail": "A consulta de produção e a página autenticada exibiram 95 eventos preenchidos após a publicação. Os testes transacionais confirmaram que uma análise incompleta posterior não exclui um local persistido e que aprovação apenas de campos não conta como localização."}]
+        },
+        "capturedAt": "2026-10-22T12:56:17.257266+00:00",
+        "columns": [{"field": "preenchidos", "label": "Eventos preenchidos"}],
+        "rows": [{"preenchidos": 95}]
+      }]
+    },
+    {
+      "id": "avanco-automatico",
+      "title": "A fila voltou a avançar durante a espera da IA",
+      "queries": [{
+        "id": "cron-apos-publicacao",
+        "source": {
+          "label": "Business · histórico do job 25",
+          "tables": [{"name": "public.tb_cron_job_runs"}],
+          "files": [{"label": "optimization_diagnostic.cfm"}, {"label": "geocoding-optimization-validation-20261022.json"}],
+          "sql": "SELECT started_at,status,http_status,duration_ms,response_preview FROM public.tb_cron_job_runs WHERE id_cron_job IN(SELECT id_cron_job FROM public.tb_cron_jobs WHERE endpoint_url='https://business.roadrunners.run/api/eventos/geolocalizar.cfm') ORDER BY id_cron_job_run DESC LIMIT 60",
+          "filters": ["Execuções iniciadas após a publicação em 22/10/2026 às 12:52:41 UTC", "Somente respostas concluídas com o campo processed"],
+          "metricDefinitions": [{"label": "Eventos processados", "definition": "Eventos processados soma o campo processed das respostas do job nas quatro execuções concluídas após a publicação."}],
+          "caveats": ["A amostra de quatro execuções não estabelece a velocidade sustentada para todo o acervo.", "O avanço observado inclui sugestões municipais privadas; não significa confirmação de local exato nem disponibilidade renovada do Astra.", "O controle da OpenAI ainda registrava espera por ai_quota_exhausted; a validação não fez uma nova chamada paga à IA."],
+          "evidenceFlow": [{"kind": "validation", "title": "Limites e publicação", "detail": "Os hashes dos seis arquivos publicados e de oito arquivos preservados corresponderam à entrega. O controle Geoapify manteve 3.000 consultas/dia; os testes nativos de reserva, intervalo e exclusão mútua passaram."}]
+        },
+        "reportingPeriod": "22/10/2026, 12:53–12:56 UTC",
+        "capturedAt": "2026-10-22T12:56:17.257266+00:00",
+        "columns": [{"field":"inicio_utc","label":"Início (UTC)"},{"field":"processados","label":"Eventos processados"},{"field":"cache","label":"Consultas em cache"},{"field":"geoapify","label":"Chamadas Geoapify"},{"field":"openai","label":"Chamadas OpenAI"},{"field":"duracao_ms","label":"Duração (ms)"}],
+        "rows": [
+          {"inicio_utc":"2026-10-22 12:53:01","processados":5,"cache":4,"geoapify":1,"openai":0,"duracao_ms":1625},
+          {"inicio_utc":"2026-10-22 12:54:01","processados":5,"cache":4,"geoapify":1,"openai":0,"duracao_ms":1900},
+          {"inicio_utc":"2026-10-22 12:55:01","processados":5,"cache":3,"geoapify":1,"openai":0,"duracao_ms":3106},
+          {"inicio_utc":"2026-10-22 12:56:01","processados":5,"cache":5,"geoapify":0,"openai":0,"duracao_ms":746}
+        ],
+        "methods": [{"language":"calculation","code":"Eventos processados = 5 + 5 + 5 + 5 = 20\nCache = 4 + 4 + 3 + 5 = 16\nGeoapify = 1 + 1 + 1 + 0 = 3\nOpenAI = 0 + 0 + 0 + 0 = 0"}]
+      }]
+    }
+  ]
+}

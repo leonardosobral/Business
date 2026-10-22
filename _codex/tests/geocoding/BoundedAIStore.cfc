@@ -11,6 +11,7 @@ component extends="services.geocoding.LocationStore" output=false {
     public struct function cacheGet(required struct lookup){return {found=false};}
     public void function cachePut(required struct lookup,required array results){}
     public struct function reserveAI(numeric limit=1000){return {allowed=true,reason="fixture",retryAfter=300};}
+    public struct function aiAvailability(numeric limit=1000){return {allowed=true,reason="ok",retryAfter=0};}
     public struct function reserveCall(required numeric limit){if(variables.pause){variables.pause=false;return {allowed=false,reason="provider_cooldown",retryAfter=1};}return {allowed=true,token="fixture"};}
     public boolean function completeCall(required string token,required string code,numeric seconds=0,string fingerprint=""){return true;}
 }

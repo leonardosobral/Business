@@ -15,9 +15,9 @@ transaction {
 transaction {
  queryExecute("INSERT INTO public.tb_evento_corridas(id_evento,nome_evento,cidade,estado,pais,data_inicial,data_final,ativo) VALUES(:id,'Teste isolado Parque Flores','São Paulo','SP','BR',CURRENT_DATE,CURRENT_DATE,true)",{id={value=fixtureId,cfsqltype="cf_sql_integer"}},fixtureOptions);
  fixtureIds=fixtureStore.enqueue([fixtureId],"fixture");fixtureWorker=new FixtureAIWorker(fixtureIds[1]);fixtureWorker.setTemporarySource(true);fixtureFirst=fixtureWorker.run(1);
- check(fixtureFirst.status EQ "provider_unavailable" AND fixtureWorker.aiCallCount() EQ 0 AND fixtureStore.detail(fixtureIds[1]).status EQ "error","A partial source failure preserves a retry, not a terminal incomplete analysis");
+ check(fixtureFirst.status EQ "provider_cooldown" AND fixtureWorker.aiCallCount() EQ 1,"Useful partial sources complete interpretation and retain a geocoder checkpoint");
  fixtureWorker.setTemporarySource(false);queryExecute("UPDATE public.tb_evento_geocoding SET next_retry_at=clock_timestamp()-interval '1 second' WHERE id=:id",{id={value=fixtureIds[1],cfsqltype="cf_sql_bigint"}},fixtureOptions);fixtureSecond=fixtureWorker.run(1);
- check(fixtureWorker.aiCallCount() EQ 1 AND fixtureSecond.status EQ "provider_cooldown","Recovered source completes analysis once and retains the normal geocoder checkpoint");
+ check(fixtureWorker.aiCallCount() EQ 1 AND fixtureSecond.processed EQ 1,"Recovered source reuses the same extraction rather than paying for identical input again");
  transaction action="rollback";
 }
 transaction {

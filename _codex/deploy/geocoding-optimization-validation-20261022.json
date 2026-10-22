@@ -1,0 +1,842 @@
+{
+  "ok": true,
+  "checked_at": "2026-10-22T12:56:17.257266+00:00",
+  "publication_receipt": "geocoding-optimization-20261022.json",
+  "production_comparison": {
+    "ok": true,
+    "files": {
+      "services/geocoding/AIClient.cfc": true,
+      "services/geocoding/DocumentReader.cfc": true,
+      "services/geocoding/LocationStore.cfc": true,
+      "services/geocoding/LocationWorker.cfc": true,
+      "services/geocoding/Store.cfc": true,
+      "administracao/geolocalizacao/includes/view.cfm": true,
+      "includes/estrutura/sidenav.cfm": true,
+      "services/geocoding/config.cfm": true,
+      "services/geocoding/LocationPolicy.cfc": true,
+      "services/geocoding/EnrichmentPolicy.cfc": true,
+      "services/geocoding/EnrichmentStore.cfc": true,
+      "administracao/geolocalizacao/includes/backend.cfm": true,
+      "administracao/geolocalizacao/includes/radar_view.cfm": true,
+      "api/eventos/geolocalizar.cfm": true
+    }
+  },
+  "diagnostic_archive": "/var/backups/geocoding-tests-h7r96q1w",
+  "source_queries": "_codex/tests/geocoding/optimization_diagnostic.cfm",
+  "diagnostic": {
+    "cron_totals": [
+      {
+        "p95_ms": 33025,
+        "status": "success",
+        "runs": 1356,
+        "http_status": "202 Accepted",
+        "mean_ms": 8297
+      },
+      {
+        "p95_ms": 89,
+        "status": "success",
+        "runs": 264,
+        "http_status": "200 OK",
+        "mean_ms": 246
+      }
+    ],
+    "recent": [
+      {
+        "ai_calls": 0,
+        "started_at": "October, 22 2026 12:56:01",
+        "duration_ms": 746,
+        "http_status": "202 Accepted",
+        "processed": 5.0,
+        "pipeline_status": "ai_cooldown",
+        "calls": 0,
+        "cache_hits": 5.0
+      },
+      {
+        "ai_calls": 0,
+        "started_at": "October, 22 2026 12:55:01",
+        "duration_ms": 3106,
+        "http_status": "202 Accepted",
+        "processed": 5.0,
+        "pipeline_status": "ai_cooldown",
+        "calls": 1.0,
+        "cache_hits": 3.0
+      },
+      {
+        "ai_calls": 0,
+        "started_at": "October, 22 2026 12:54:01",
+        "duration_ms": 1900,
+        "http_status": "202 Accepted",
+        "processed": 5.0,
+        "pipeline_status": "ai_cooldown",
+        "calls": 1.0,
+        "cache_hits": 4.0
+      },
+      {
+        "ai_calls": 0,
+        "started_at": "October, 22 2026 12:53:01",
+        "duration_ms": 1625,
+        "http_status": "202 Accepted",
+        "processed": 5.0,
+        "pipeline_status": "ai_cooldown",
+        "calls": 1.0,
+        "cache_hits": 4.0
+      },
+      {
+        "ai_calls": 0,
+        "started_at": "October, 22 2026 12:52:01",
+        "duration_ms": 58,
+        "http_status": "200 OK",
+        "processed": 0,
+        "pipeline_status": "completed",
+        "calls": 0,
+        "cache_hits": 0
+      },
+      {
+        "ai_calls": 0,
+        "started_at": "October, 22 2026 12:51:01",
+        "duration_ms": 56,
+        "http_status": "200 OK",
+        "processed": 0,
+        "pipeline_status": "completed",
+        "calls": 0,
+        "cache_hits": 0
+      },
+      {
+        "ai_calls": 0,
+        "started_at": "October, 22 2026 12:50:01",
+        "duration_ms": 91,
+        "http_status": "200 OK",
+        "processed": 0,
+        "pipeline_status": "completed",
+        "calls": 0,
+        "cache_hits": 0
+      },
+      {
+        "ai_calls": 0,
+        "started_at": "October, 22 2026 12:49:01",
+        "duration_ms": 65,
+        "http_status": "200 OK",
+        "processed": 0,
+        "pipeline_status": "completed",
+        "calls": 0,
+        "cache_hits": 0
+      }
+    ],
+    "canonical": [
+      {
+        "total": 34995,
+        "coordinates_present": 5218,
+        "confirmed_race": 1,
+        "confirmed_kit": 1,
+        "enrichment_checked": 632
+      }
+    ],
+    "errors": [
+      {
+        "code": "none",
+        "status": "city_suggestion",
+        "n": 339
+      },
+      {
+        "code": "source_unavailable",
+        "status": "errors_exhausted",
+        "n": 175
+      },
+      {
+        "code": "none",
+        "status": "needs_review",
+        "n": 77
+      },
+      {
+        "code": "none",
+        "status": "insufficient_data",
+        "n": 59
+      },
+      {
+        "code": "ai_unavailable",
+        "status": "errors_exhausted",
+        "n": 44
+      },
+      {
+        "code": "none",
+        "status": "pending",
+        "n": 38
+      },
+      {
+        "code": "ai_cooldown",
+        "status": "city_suggestion",
+        "n": 17
+      },
+      {
+        "code": "ai_unavailable",
+        "status": "pending",
+        "n": 3
+      },
+      {
+        "code": "ai_cooldown",
+        "status": "insufficient_data",
+        "n": 2
+      },
+      {
+        "code": "none",
+        "status": "auto_applied",
+        "n": 1
+      },
+      {
+        "code": "none",
+        "status": "conflict",
+        "n": 1
+      },
+      {
+        "code": "source_unavailable",
+        "status": "error",
+        "n": 1
+      }
+    ],
+    "city_columns": [],
+    "overview": {
+      "queued": 42,
+      "suggestions": 2158,
+      "review": 753,
+      "calls": 27,
+      "missing": 29777,
+      "deferred": 19,
+      "applied": 95,
+      "analyzed": 3460
+    },
+    "cache": [
+      {
+        "updated_24h": 1080,
+        "n": 4508,
+        "kind": "source_or_ai",
+        "live": 2448
+      },
+      {
+        "updated_24h": 85,
+        "n": 4166,
+        "kind": "control",
+        "live": 4163
+      }
+    ],
+    "next_ids": [
+      49309,
+      49218,
+      49217,
+      49216,
+      49058
+    ],
+    "controls": [
+      {
+        "ai_code": "",
+        "blocked_reason": "",
+        "in_flight": 0,
+        "enabled": "true",
+        "cache_key": "__control__",
+        "daily_limit": "3000.0",
+        "cooldown_seconds": 0
+      },
+      {
+        "ai_code": "ai_quota_exhausted",
+        "blocked_reason": "",
+        "in_flight": 0,
+        "enabled": "",
+        "cache_key": "__ai_control__",
+        "daily_limit": "",
+        "cooldown_seconds": 14687
+      },
+      {
+        "ai_code": "",
+        "blocked_reason": "",
+        "in_flight": 0,
+        "enabled": "",
+        "cache_key": "__worker__",
+        "daily_limit": "",
+        "cooldown_seconds": 0
+      }
+    ],
+    "target_states": [
+      {
+        "role": "evento",
+        "status": "city_suggestion",
+        "n": 580
+      },
+      {
+        "role": "kit",
+        "status": "insufficient_data",
+        "n": 104
+      },
+      {
+        "role": "evento",
+        "status": "preserved",
+        "n": 78
+      },
+      {
+        "role": "evento",
+        "status": "needs_review",
+        "n": 7
+      },
+      {
+        "role": "kit",
+        "status": "city_suggestion",
+        "n": 5
+      },
+      {
+        "role": "evento",
+        "status": "insufficient_data",
+        "n": 4
+      },
+      {
+        "role": "kit",
+        "status": "needs_review",
+        "n": 1
+      },
+      {
+        "role": "kit",
+        "status": "auto_applied",
+        "n": 1
+      },
+      {
+        "role": "evento",
+        "status": "auto_applied",
+        "n": 1
+      }
+    ],
+    "recent_totals": {
+      "ai_calls": 0.0,
+      "source_documents": 29.0,
+      "errors": 9.0,
+      "suggestions": 17.0,
+      "json_runs": 60.0,
+      "runs": 60,
+      "enriched_fields": 0.0,
+      "field_reviews": 0.0,
+      "processed": 20.0,
+      "review": 0.0,
+      "ai_cache_hits": 0.0,
+      "calls": 3.0,
+      "applied": 0.0,
+      "cache_hits": 16.0,
+      "statuses": {
+        "ai_cooldown": 13.0,
+        "completed": 38.0,
+        "provider_unavailable": 9.0
+      }
+    },
+    "captured": [
+      {
+        "utc_now": "2026-10-22 12:56:15"
+      }
+    ],
+    "applied_churn": [
+      {
+        "status": "auto_applied",
+        "events": 59,
+        "still_has_coordinates": 59
+      },
+      {
+        "status": "insufficient_data",
+        "events": 25,
+        "still_has_coordinates": 25
+      },
+      {
+        "status": "errors_exhausted",
+        "events": 7,
+        "still_has_coordinates": 7
+      },
+      {
+        "status": "approved",
+        "events": 2,
+        "still_has_coordinates": 0
+      },
+      {
+        "status": "needs_review",
+        "events": 2,
+        "still_has_coordinates": 2
+      },
+      {
+        "status": "pending",
+        "events": 1,
+        "still_has_coordinates": 1
+      }
+    ],
+    "jobs": [
+      {
+        "next_run_at": "October, 22 2026 12:56:58",
+        "id_cron_job": 25,
+        "ativo": 1,
+        "last_duration_ms": 746,
+        "last_status": "success",
+        "last_http_status": "202 Accepted",
+        "interval_minutes": 1,
+        "nome": "Business - Geolocalização de eventos",
+        "last_run_at": "October, 22 2026 12:56:01"
+      }
+    ],
+    "usage": [
+      {
+        "provider": "geoapify",
+        "calls": 27,
+        "usage_date": "October, 22 2026 00:00:00"
+      },
+      {
+        "provider": "openai-geolocation",
+        "calls": 299,
+        "usage_date": "October, 22 2026 00:00:00"
+      },
+      {
+        "provider": "geoapify",
+        "calls": 55,
+        "usage_date": "October, 21 2026 00:00:00"
+      },
+      {
+        "provider": "openai-geolocation",
+        "calls": 310,
+        "usage_date": "October, 21 2026 00:00:00"
+      },
+      {
+        "provider": "geoapify",
+        "calls": 32,
+        "usage_date": "October, 20 2026 00:00:00"
+      },
+      {
+        "provider": "openai-geolocation",
+        "calls": 253,
+        "usage_date": "October, 20 2026 00:00:00"
+      },
+      {
+        "provider": "geoapify",
+        "calls": 2000,
+        "usage_date": "October, 19 2026 00:00:00"
+      },
+      {
+        "provider": "openai-geolocation",
+        "calls": 137,
+        "usage_date": "October, 19 2026 00:00:00"
+      },
+      {
+        "provider": "geoapify",
+        "calls": 1905,
+        "usage_date": "October, 18 2026 00:00:00"
+      },
+      {
+        "provider": "geoapify",
+        "calls": 228,
+        "usage_date": "October, 17 2026 00:00:00"
+      }
+    ],
+    "overlap": [
+      {
+        "created_24h": 715,
+        "work_items": 4612,
+        "distinct_events": 3526,
+        "created_6h": 130
+      }
+    ],
+    "work": [
+      {
+        "exhausted": 111,
+        "status": "city_suggestion",
+        "events": 2213,
+        "version": "2",
+        "waiting": 0,
+        "n": 2218
+      },
+      {
+        "exhausted": 2,
+        "status": "needs_review",
+        "events": 957,
+        "version": "2",
+        "waiting": 0,
+        "n": 958
+      },
+      {
+        "exhausted": 8,
+        "status": "city_suggestion",
+        "events": 481,
+        "version": "3",
+        "waiting": 17,
+        "n": 488
+      },
+      {
+        "exhausted": 302,
+        "status": "errors_exhausted",
+        "events": 302,
+        "version": "3",
+        "waiting": 0,
+        "n": 302
+      },
+      {
+        "exhausted": 4,
+        "status": "insufficient_data",
+        "events": 116,
+        "version": "2",
+        "waiting": 0,
+        "n": 116
+      },
+      {
+        "exhausted": 0,
+        "status": "city_suggestion",
+        "events": 102,
+        "version": "1",
+        "waiting": 0,
+        "n": 102
+      },
+      {
+        "exhausted": 5,
+        "status": "needs_review",
+        "events": 88,
+        "version": "3",
+        "waiting": 0,
+        "n": 90
+      },
+      {
+        "exhausted": 0,
+        "status": "auto_applied",
+        "events": 81,
+        "version": "2",
+        "waiting": 0,
+        "n": 81
+      },
+      {
+        "exhausted": 0,
+        "status": "insufficient_data",
+        "events": 80,
+        "version": "3",
+        "waiting": 2,
+        "n": 80
+      },
+      {
+        "exhausted": 1,
+        "status": "conflict",
+        "events": 44,
+        "version": "1",
+        "waiting": 0,
+        "n": 44
+      },
+      {
+        "exhausted": 0,
+        "status": "needs_review",
+        "events": 42,
+        "version": "1",
+        "waiting": 0,
+        "n": 42
+      },
+      {
+        "exhausted": 0,
+        "status": "pending",
+        "events": 41,
+        "version": "3",
+        "waiting": 21,
+        "n": 41
+      },
+      {
+        "exhausted": 0,
+        "status": "pending",
+        "events": 23,
+        "version": "2",
+        "waiting": 0,
+        "n": 23
+      },
+      {
+        "exhausted": 0,
+        "status": "approved",
+        "events": 7,
+        "version": "2",
+        "waiting": 0,
+        "n": 7
+      },
+      {
+        "exhausted": 0,
+        "status": "auto_applied",
+        "events": 5,
+        "version": "1",
+        "waiting": 0,
+        "n": 5
+      },
+      {
+        "exhausted": 0,
+        "status": "insufficient_data",
+        "events": 4,
+        "version": "1",
+        "waiting": 0,
+        "n": 4
+      },
+      {
+        "exhausted": 3,
+        "status": "errors_exhausted",
+        "events": 3,
+        "version": "1",
+        "waiting": 0,
+        "n": 3
+      },
+      {
+        "exhausted": 2,
+        "status": "errors_exhausted",
+        "events": 2,
+        "version": "2",
+        "waiting": 0,
+        "n": 2
+      },
+      {
+        "exhausted": 0,
+        "status": "approved",
+        "events": 2,
+        "version": "3",
+        "waiting": 0,
+        "n": 2
+      },
+      {
+        "exhausted": 0,
+        "status": "conflict",
+        "events": 1,
+        "version": "2",
+        "waiting": 0,
+        "n": 1
+      },
+      {
+        "exhausted": 0,
+        "status": "auto_applied",
+        "events": 1,
+        "version": "3",
+        "waiting": 0,
+        "n": 1
+      },
+      {
+        "exhausted": 0,
+        "status": "error",
+        "events": 1,
+        "version": "3",
+        "waiting": 0,
+        "n": 1
+      },
+      {
+        "exhausted": 0,
+        "status": "conflict",
+        "events": 1,
+        "version": "3",
+        "waiting": 0,
+        "n": 1
+      }
+    ],
+    "transitions": [
+      {
+        "events": 715,
+        "action": "enqueued",
+        "n": 715,
+        "last_6h": 130
+      },
+      {
+        "events": 476,
+        "action": "event_enriched",
+        "n": 476,
+        "last_6h": 56
+      },
+      {
+        "events": 247,
+        "action": "error",
+        "n": 470,
+        "last_6h": 102
+      },
+      {
+        "events": 356,
+        "action": "city_suggestion",
+        "n": 356,
+        "last_6h": 57
+      },
+      {
+        "events": 219,
+        "action": "errors_exhausted",
+        "n": 219,
+        "last_6h": 53
+      },
+      {
+        "events": 77,
+        "action": "needs_review",
+        "n": 77,
+        "last_6h": 8
+      },
+      {
+        "events": 61,
+        "action": "insufficient_data",
+        "n": 61,
+        "last_6h": 10
+      },
+      {
+        "events": 1,
+        "action": "conflict",
+        "n": 1,
+        "last_6h": 1
+      },
+      {
+        "events": 1,
+        "action": "auto_applied",
+        "n": 1,
+        "last_6h": 0
+      }
+    ],
+    "diagnostics": [
+      {
+        "code": "edition_not_confirmed",
+        "n": 222
+      },
+      {
+        "code": "source_unavailable",
+        "n": 176
+      },
+      {
+        "code": "robots_disallowed",
+        "n": 25
+      },
+      {
+        "code": "ai_cooldown",
+        "n": 19
+      },
+      {
+        "code": "source_http_404",
+        "n": 9
+      },
+      {
+        "code": "document_too_large",
+        "n": 5
+      },
+      {
+        "code": "source_http_401",
+        "n": 2
+      },
+      {
+        "code": "source_http_415",
+        "n": 1
+      },
+      {
+        "code": "too_many_redirects",
+        "n": 1
+      }
+    ],
+    "review_fields": [
+      {
+        "field": "organizador",
+        "n": 27
+      },
+      {
+        "field": "regras_participacao",
+        "n": 26
+      },
+      {
+        "field": "data_inicial",
+        "n": 22
+      },
+      {
+        "field": "endereco",
+        "n": 22
+      },
+      {
+        "field": "inscricoes_periodo",
+        "n": 19
+      },
+      {
+        "field": "modalidades_distancias",
+        "n": 19
+      },
+      {
+        "field": "horarios_largada",
+        "n": 18
+      },
+      {
+        "field": "kit_programacao",
+        "n": 18
+      },
+      {
+        "field": "precos_lotes",
+        "n": 13
+      },
+      {
+        "field": "tipo_corrida",
+        "n": 6
+      },
+      {
+        "field": "cidade",
+        "n": 3
+      },
+      {
+        "field": "estrutura",
+        "n": 2
+      },
+      {
+        "field": "contatos_publicos",
+        "n": 2
+      },
+      {
+        "field": "estado",
+        "n": 2
+      },
+      {
+        "field": "url_hotsite",
+        "n": 1
+      }
+    ],
+    "selection_ms": 229.0
+  },
+  "real_runs_after_publication": [
+    {
+      "ai_calls": 0,
+      "started_at": "October, 22 2026 12:56:01",
+      "duration_ms": 746,
+      "http_status": "202 Accepted",
+      "processed": 5.0,
+      "pipeline_status": "ai_cooldown",
+      "calls": 0,
+      "cache_hits": 5.0
+    },
+    {
+      "ai_calls": 0,
+      "started_at": "October, 22 2026 12:55:01",
+      "duration_ms": 3106,
+      "http_status": "202 Accepted",
+      "processed": 5.0,
+      "pipeline_status": "ai_cooldown",
+      "calls": 1.0,
+      "cache_hits": 3.0
+    },
+    {
+      "ai_calls": 0,
+      "started_at": "October, 22 2026 12:54:01",
+      "duration_ms": 1900,
+      "http_status": "202 Accepted",
+      "processed": 5.0,
+      "pipeline_status": "ai_cooldown",
+      "calls": 1.0,
+      "cache_hits": 4.0
+    },
+    {
+      "ai_calls": 0,
+      "started_at": "October, 22 2026 12:53:01",
+      "duration_ms": 1625,
+      "http_status": "202 Accepted",
+      "processed": 5.0,
+      "pipeline_status": "ai_cooldown",
+      "calls": 1.0,
+      "cache_hits": 4.0
+    }
+  ],
+  "browser": {
+    "authenticated": true,
+    "counter_value_seen": 95,
+    "model_seen": "gpt-6-astra",
+    "ai_cooldown_warning_seen": true,
+    "municipal_independence_seen": true,
+    "screenshot": "geocoding-optimization-20261022.jpg",
+    "screenshot_sha256": "e062492357cc8cdb8804e7b7405da6206bb55303ba90a2ad7a87eaefd66f8827"
+  },
+  "native_suites_passed": 39,
+  "python_reader_tests_passed": 11,
+  "baseline_diagnostic_archive": "/var/backups/geocoding-tests-ds628bev",
+  "baseline_recent_60": {
+    "processed": 0,
+    "ai_calls": 0,
+    "geo_calls": 0
+  },
+  "caveat": "Recorded ai_quota_exhausted cooldown remains active; no new paid AI call was made for validation. Municipal suggestions are private, not canonical event locations.",
+  "credentials_changed": false,
+  "schema_changed": false,
+  "git_mutations": false
+}

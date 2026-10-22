@@ -16,5 +16,9 @@ savecontent variable="rendered" {include "view-runtime.cfm";}
 check(find("Aprovar e próxima",rendered) GT 0 AND !reFind('(?s)name="reason"[^>]*required',rendered) AND !find('name="confirmed" value="1" required',rendered),"Quick review can submit without typed reason or a second checkbox");
 VARIABLES.geoTab="cidades";VARIABLES.geoSelected={};savecontent variable="rendered" {include "view-runtime.cfm";}
 check(find("sem revisão obrigatória",rendered) GT 0,"Municipal suggestions are explicitly separate from required review");
+check(find("novas análises não retiram",rendered) GT 0 AND find("não é um total acumulado",rendered) GT 0,"Counter definitions distinguish durable outcomes from the current review queue");
+VARIABLES.geoAIReady=true;VARIABLES.geoConfig={aiModel="gpt-6-astra",aiDailyLimit=1000};VARIABLES.geoAIStats={calls=0,cooldown=3600,code="ai_quota_exhausted"};VARIABLES.geoStats.deferred=3;
+savecontent variable="rendered" {include "view-runtime.cfm";}
+check(find("sugestões municipais continuam",rendered) GT 0 AND find("3 pesquisa(s)",rendered) GT 0,"Deferred AI research is visible separately from human review");
 writeOutput("GEO_VIEW_PASSED");
 </cfscript>

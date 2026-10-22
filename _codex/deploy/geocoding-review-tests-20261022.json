@@ -1,0 +1,369 @@
+{
+  "checked_at": "2026-10-22T13:33:05.026035+00:00",
+  "candidate_hashes": {
+    "services/geocoding/ReviewGuide.cfc": "b4d6d6c359a8a8f41c404fdb0989ea3b0055b99a34bcb0d78c780b2ebc2c17e3",
+    "administracao/geolocalizacao/includes/review_guide_view.cfm": "1b43d39d1c09a7c6b6c2300c5f38781921f2d9fd1072eaf29550f28672090d07",
+    "administracao/geolocalizacao/assets/review-guide.css": "be687211a3d602f7598dcc1d1d52dae298541072612ccd544e61fa38f8ca6c2b",
+    "administracao/geolocalizacao/includes/backend.cfm": "a06840d1edc933353b381e8af7d6dd097b6710f09a20d64fe2a856e0e63ff162",
+    "administracao/geolocalizacao/includes/view.cfm": "193ba9980b96f19d874b75a941d9e4435bbb7c121a9a039ffc2807f81856b626",
+    "administracao/geolocalizacao/assets/geocoding.js": "c4b1e2501882c61810cd936bfbf0d5d5f23564b75db4456133ec48ed2f97639a",
+    "administracao/geolocalizacao/index.cfm": "1f35d33914943eb07f347e34e81f650c28b69ee8bf769c8db849a36f9eb54c99"
+  },
+  "tests": [
+    {
+      "ok": true,
+      "output": "PASS Approving a partial result does not disable its automatic research retry\nPASS Recovered conflicting sources cannot regain stale trust or publish a prior proposal\nPASS Recovered conflicting fields cannot regain stale approval eligibility\nPASS An exception preserves the operator rejection and consumes a normal retry\nPASS Overdue research is not starved by newer pending arrivals of the same priority\nGEO_OPTIMIZATION_RETRY_PASSED ",
+      "archive": "/var/backups/geocoding-tests-cswt88im",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Only actionable divergences become review steps; cities and equivalent facts do not\nPASS The comparison uses the current event value, not a stale snapshot\nPASS Conflicting evidence cannot be accepted but the current registration can be kept\nPASS Direct links select a pending step and stale step links safely select the next remaining step\nPASS A currently processing work item offers no competing review action\nPASS Legacy municipal proposals cannot gain an approval button\nPASS A real event is not replaced\nPASS The filtered guide opens the actual latest reviewable event\nPASS Skipping an event changes navigation only, not its proposal or registration\nPASS Accepting one field opens the next actual pending decision in the same event\nPASS Resolving the final pending decision finishes the filtered review sequence\nPASS A city-only stale parent review status does not create a fake human decision\nPASS An unchanged source and destinations remain reviewable\nPASS A coordinates-only edit requires fresh analysis rather than an impossible review\nPASS A JSONB destination-only edit requires fresh analysis\nPASS A skipped event remains skipped when the worker creates a newer proposal\nGEO_REVIEW_GUIDE_PASSED ",
+      "archive": "/var/backups/geocoding-tests-14oahmmv",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Missing setup remains explicit instead of a broken page\nPASS Configuration help does not render a secret\nPASS Provider and event HTML cannot execute in review\nPASS City detail has no approval action\nPASS Quick review can submit without typed reason or a second checkbox\nPASS Municipal suggestions are explicitly separate from required review\nPASS Counter definitions distinguish durable outcomes from the current review queue\nPASS Deferred AI research is visible separately from human review\nGEO_VIEW_PASSED PASS A focused comparison explains the specific review decision\nPASS Accept, keep and skip are available together in the guided flow\nPASS Guided submissions preserve the proposal revision and sequential continuation\nPASS The new decision screen cannot execute event or source content\nPASS Review requires no typed justification or hidden decision tab\nPASS Unconfirmed evidence has no accept button but still permits keeping the registration\nPASS An empty sequence offers a clear way to resume skipped events\nGEO_REVIEW_GUIDE_VIEW_PASSED ",
+      "archive": "/var/backups/geocoding-tests-sc03toev",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "cases": [
+        {
+          "case": "first",
+          "status": "303",
+          "location": "?aba=revisao&periodo=todos&busca=PRIVATE-REVIEW-HTTP-NO-REAL-EVENT&uf=&id=2147001701&etapa=field-2#geo-review-workspace",
+          "ok": true
+        },
+        {
+          "case": "last",
+          "status": "303",
+          "location": "?aba=revisao&periodo=todos&busca=PRIVATE-REVIEW-HTTP-NO-REAL-EVENT&uf=#geo-review-workspace",
+          "ok": true
+        },
+        {
+          "case": "skip",
+          "status": "303",
+          "location": "?aba=revisao&periodo=todos&busca=PRIVATE-REVIEW-HTTP-NO-REAL-EVENT&uf=#geo-review-workspace",
+          "ok": true
+        },
+        {
+          "case": "resume",
+          "status": "303",
+          "location": "?aba=revisao&periodo=todos&busca=PRIVATE-REVIEW-HTTP-NO-REAL-EVENT&uf=#geo-review-workspace",
+          "ok": true
+        },
+        {
+          "case": "stale",
+          "status": "200",
+          "location": "",
+          "ok": true
+        },
+        {
+          "case": "csrf",
+          "status": "403",
+          "location": "",
+          "ok": true
+        },
+        {
+          "case": "delegated",
+          "status": "403",
+          "location": "",
+          "ok": true
+        }
+      ],
+      "archive": "/var/backups/geocoding-tests-bkte5jve",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Specific matching address is eligible for atomic application\nPASS Unsafe result cannot auto-publish: {\"RESULT_TYPE\":\"street\"}\nPASS Unsafe result cannot auto-publish: {\"RESULT_TYPE\":\"city\"}\nPASS Unsafe result cannot auto-publish: {\"CITY\":\"Campinas\"}\nPASS Unsafe result cannot auto-publish: {\"STATE_CODE\":\"RJ\"}\nPASS Unsafe result cannot auto-publish: {\"COUNTRY_CODE\":\"pt\"}\nPASS Unsafe result cannot auto-publish: {\"HOUSENUMBER\":\"1579\"}\nPASS Unsafe result cannot auto-publish: {\"STREET\":\"Rua Augusta\"}\nPASS Unsafe result cannot auto-publish: {\"LAT\":91}\nPASS Unsafe result cannot auto-publish: {\"LON\":181}\nPASS Unsafe result cannot auto-publish: {\"LON\":0,\"LAT\":0}\nPASS Unsafe result cannot auto-publish: {\"RANK\":{\"CONFIDENCE\":1}}\nPASS Unsafe result cannot auto-publish: {\"RANK\":{\"CONFIDENCE_BUILDING_LEVEL\":1,\"CONFIDENCE_CITY_LEVEL\":1,\"CONFIDENCE\":.94}}\nPASS A close score at another location requires review\nPASS City-only coordinate stays a private suggestion\nPASS Named venue is usable when exact and geographically confirmed\nPASS Another venue name cannot auto-publish\nPASS Undefined location is not overridden using possibly stale description\nPASS Kit collection is not a start location\nPASS Explicit start location can be extracted from description\nPASS Conflicting starts require human review\nPASS An undefined start in a description blocks a registered address\nPASS Uncertain start statements remain negative evidence\nPASS A foreign homonym without administrative context cannot auto-publish\nPASS Coordinate validation rejects zero and non-finite/out-of-range pairs\nPASS Coordinate parser recognizes valid and absent pairs\nPASS Account user cannot mutate global tool\nPASS Delegated context cannot mutate global tool\nPASS GET cannot mutate global tool\nPASS CSRF failure denies mutation\nPASS Source changes invalidate proposals\nPASS An old review form cannot approve a replacement proposal\nPASS The displayed proposal revision can be reviewed\nPASS Changing official source URL invalidates every previous proposal\nPASS Changing event date invalidates evidence from an old edition\nPASS Official evidence is geocoded before the municipal fallback\nPASS Conflicting official locations cannot become automatic just because one geocode is perfect\nPASS The same venue name at different streets cannot erase a conflict\nPASS A named venue can be validated by its independently confirmed street and number\nGEO_POLICY_PASSED\n",
+      "archive": "/var/backups/geocoding-tests-fkkd6baf",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Provider decoding retains usable coordinates\nPASS Provider decoding allowlist drops unknown and secret fields\nPASS Provider error is safe for status 401\nPASS Authentication failure stops provider calls\nPASS Provider error is safe for status 403\nPASS Authentication failure stops provider calls\nPASS Provider error is safe for status 429\nPASS Rate-limit cooldown respects retry header\nPASS Provider error is safe for status 500\nPASS Malformed provider body cannot become success\nPASS Empty valid result is distinct from provider failure\nPASS A transport timeout has a short explicit retry, not a generic five-minute outage\nGEO_PROVIDER_PASSED ",
+      "archive": "/var/backups/geocoding-tests-yqj9g8w8",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Matching event JSON-LD yields a dated specific venue/address with provenance\nPASS A previous edition cannot provide the event location\nPASS Another race on the same day is not a location source\nPASS A kit collection location is not a start venue\nPASS A dated textual regulation can identify the explicit start venue\nPASS External city mismatch cannot be auto-applied\nPASS A source-confirmed venue with full address is evaluated as the named venue\nPASS Native PDF extraction reads a regulation in memory without external binaries\nPASS A dated official location block yields venue, street and number without including neighborhood as house number\nGEO_SOURCES_PASSED ",
+      "archive": "/var/backups/geocoding-tests-3ug607f8",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Visible start venue contradicting JSON-LD prevents automatic coordinates\nPASS Current official uncertainty overrides a concrete registered address\nGEO_SOURCE_CONFLICTS_PASSED ",
+      "archive": "/var/backups/geocoding-tests-h5vqiwlr",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Missing credential cannot process events or consume provider budget\nPASS Worker supplies a safe configuration diagnostic\nPASS A preserved retry returns accepted JSON rather than a misleading gateway failure\nPASS An internal failure is not disguised as a successful batch\nPASS Exhausted attempts remain a visible terminal failure\nPASS An unexpected work failure consumes a retry instead of deferring forever\nGEO_WORKER_PASSED ",
+      "archive": "/var/backups/geocoding-tests-fxmfo0by",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS GET cannot run a geocoding job\nPASS Unsigned POST cannot process events\nPASS Valid HMAC permits bounded job dispatch\nPASS Modified signed body is rejected\nPASS Missing configured secret fails closed\nGEO_ENDPOINT_PASSED ",
+      "archive": "/var/backups/geocoding-tests-90y_0dxc",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Missing setup remains explicit instead of a broken page\nPASS Configuration help does not render a secret\nPASS Provider and event HTML cannot execute in review\nPASS City detail has no approval action\nPASS Quick review can submit without typed reason or a second checkbox\nPASS Municipal suggestions are explicitly separate from required review\nPASS Counter definitions distinguish durable outcomes from the current review queue\nPASS Deferred AI research is visible separately from human review\nGEO_VIEW_PASSED ",
+      "archive": "/var/backups/geocoding-tests-tzmdsrqy",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "cases": [
+        {
+          "case": "denied",
+          "status": "403",
+          "ok": true
+        },
+        {
+          "case": "delegated",
+          "status": "403",
+          "ok": true
+        },
+        {
+          "case": "filters",
+          "status": "400",
+          "ok": true
+        },
+        {
+          "case": "csrf",
+          "status": "403",
+          "ok": true
+        },
+        {
+          "case": "default",
+          "status": "200",
+          "ok": true
+        }
+      ],
+      "archive": "/var/backups/geocoding-tests-v45jgzp5",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Geocoding migration is installed without runtime DDL\nPASS Fixture refuses to replace a real event\nPASS Explicit enqueue captures one current source version\nPASS Lease claim is explicit and tokenized\nPASS Snapshot preserves database NULL independently of CF null support\nPASS City suggestion never fills public event coordinates\nPASS Requeue invalidates an old review form even with unchanged source\nPASS Fixture refuses to replace a real event\nPASS An expired third lease is finalized instead of stuck running\nPASS Edited source invalidates application atomically\nPASS Specific result applies coordinates in lat/lng order\nPASS Coordinate publication has an atomic permanent audit\nPASS Fixture refuses to replace a real event\nPASS A stale worker cannot finalize another lease\nPASS Fixture refuses to replace a real event\nPASS City suggestion cannot be promoted by manual approval\nPASS Fixture refuses to replace a real event\nPASS Current specific proposal can be approved with the displayed revision\nPASS Review without typed reason still records author, default action and timestamp\nPASS Fixture refuses to replace a real event\nPASS A transient source failure can retry automatically while retaining a municipal suggestion\nPASS Fixture refuses to replace a real event\nPASS Current pipeline specific candidates are available in quick review\nPASS Legacy proposals awaiting automatic research are not presented as mandatory human reviews\nPASS First provider call reserves quota before HTTP\nPASS Another call cannot run while the first HTTP lease is in flight\nPASS A late response cannot clear a current provider cooldown\nPASS Exhausted daily quota prevents another call\nPASS Cache reuses a municipal lookup without provider consumption\nPASS Rollback leaves no fixture event\nGEO_INTEGRATION_PASSED ",
+      "archive": "/var/backups/geocoding-tests-ybbcgfn9",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Workflow refuses to reuse a real event\nPASS Worker carries official-source evidence through geocoding and atomic application: {\"RESULTS\":[{\"STATUS\":\"auto_applied\",\"ID_EVENTO\":2147000001,\"ID\":5770}],\"SOURCE_DOCUMENTS\":1.0,\"SUCCESS\":true,\"ERRORS\":0,\"PIPELINE_VERSION\":2,\"SUGGESTIONS\":0,\"STATUS\":\"completed\",\"PROCESSED\":1.0,\"REVIEW\":0,\"CALLS\":1.0,\"APPLIED\":1.0,\"CACHE_HITS\":0}\nPASS Applied event retains source URL, hash and edition evidence\nPASS Autonomous workflow publishes only the specific confirmed coordinates\nPASS A provider cooldown does not block safe cached results\nPASS A specific review candidate does not spend another call on an unusable municipal fallback: {\"RESULTS\":[{\"STATUS\":\"needs_review\",\"ID_EVENTO\":2147000001,\"ID\":5772}],\"SOURCE_DOCUMENTS\":1.0,\"SUCCESS\":true,\"ERRORS\":0,\"PIPELINE_VERSION\":2,\"SUGGESTIONS\":0,\"STATUS\":\"completed\",\"PROCESSED\":1.0,\"REVIEW\":1.0,\"CALLS\":1.0,\"APPLIED\":0,\"CACHE_HITS\":0}\nPASS Workflow rolls back fixture, cache, quota and coordinates\nGEO_WORKFLOW_PASSED ",
+      "archive": "/var/backups/geocoding-tests-_s445hzu",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Cache never merges different address punctuation\nPASS A worker acquires a durable database lease\nPASS A second worker cannot start while a batch is running\nPASS A stale worker cannot release a newer batch\nPASS A completed batch releases its lease immediately\nPASS An abandoned batch recovers without validating an old token\nPASS Unverifiable legacy cache cannot supply even an apparently exact query\nPASS Ambiguous legacy key cannot supply a different query\nPASS Verified v2 lookups are reused without provider consumption\nPASS The 2,000th shared daily consultation can be reserved\nPASS A completed HTTP call still cannot bypass one-second pacing\nPASS No caller can reserve consultation 2,001 even with a larger requested limit\nGEO_ACCELERATION_PASSED ",
+      "archive": "/var/backups/geocoding-tests-laq1h4qu",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS The existing settings path can persist a 3,000-call daily budget\nPASS The expanded shared budget permits consultation 2,001\nPASS The expanded budget never permits simultaneous provider calls\nPASS One-second pacing still applies after an HTTP call completes\nPASS The 3,000th shared consultation can be reserved\nPASS Consultation 3,001 is blocked even when the caller requests a higher ceiling\nPASS A denied reservation never increments the shared daily usage\nPASS Configuration cannot authorize a budget above 3,000\nGEO_QUOTA_3000_PASSED ",
+      "archive": "/var/backups/geocoding-tests-kccu5msq",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Geolocation is due at the next runner tick despite subsecond web/database clock drift\nPASS A very late finish never schedules into the past\nPASS Other jobs retain their existing finish-relative cadence\nPASS An explicitly different cadence is not silently overridden\nPASS The minute worker cannot wait behind a slow overdue job; remaining jobs preserve oldest-first order\nGEO_SCHEDULE_PASSED ",
+      "archive": "/var/backups/geocoding-tests-d4qzkwf3",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "GEO_AI_SCHEMA_PASSED ",
+      "archive": "/var/backups/geocoding-tests-ti395kis",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Responses request retains strict JSON schema casing\nPASS Extraction is bounded, not stored by API and has no tools\nPASS Required property casing matches schema property attributes\nPASS Required property casing matches schema property event_date\nPASS Required property casing matches schema property locations\nPASS Required property casing matches schema property event_name\nPASS Required property casing matches schema property identity_document\nPASS Required property casing matches schema property identity_quote\nPASS Provider failure is explicit and does not expose response content 401\nPASS Provider failure is explicit and does not expose response content 403\nPASS Provider failure is explicit and does not expose response content 429\nPASS Provider failure is explicit and does not expose response content 500\nPASS Incomplete generation cannot become a successful empty extraction\nPASS A refusal cannot become evidence of no venue\nPASS Provider text cannot carry NUL characters into JSONB cache or evidence\nPASS Sanitized provider reply is persisted and read as real JSONB\nGEO_AI_CONTRACT_PASSED ",
+      "archive": "/var/backups/geocoding-tests-wlr05k8t",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Default location extraction requests the approved Astra model\nPASS Astra uses supported bounded low reasoning\nPASS Astra request excludes incompatible sampling and external tools\nPASS Astra preserves strict extraction, privacy and output budget\nPASS Explicit non-reasoning fixtures remain compatible\nPASS Module configuration selects Astra without raising daily usage\nPASS Module keeps the existing integration credential\nGEO_AI_ASTRA_PASSED ",
+      "archive": "/var/backups/geocoding-tests-wjsi42uu",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Unicode combining accents are removed, not converted to word boundaries\nPASS Race and kit are extracted as independent evidence-backed locations\nPASS Kit uses its own city, not the race municipality\nPASS Race catalog mismatch blocks automatic publication without inheriting that mismatch into a separately evidenced kit city\nPASS A kit quote cannot authorize race coordinates\nPASS A mixed quote cannot attach the kit address to the race purpose\nPASS A generated address absent from the literal evidence is rejected\nPASS A previous edition cannot fill either location\nPASS Current identity cannot authenticate a literal venue quote from last year's section: edicao 2025 largada no parque das flores avenida das flores 123 sao paulo sp\nPASS Omitting the old edition heading from the quote does not authenticate its address\nPASS Invented identity citation cannot authenticate a document\nPASS The same venue is usable for both purposes only with explicit dual-use evidence\nPASS An undefined location never becomes confirmed by model confidence\nPASS Explicit Brazilian UF can establish country when extraction leaves it empty\nGEO_AI_LOCATIONS_PASSED ",
+      "archive": "/var/backups/geocoding-tests-8wkxbyks",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Additive location migration is ready\nPASS No real event is replaced\nPASS Regulation NULL is retained in the input fingerprint used by automatic seeding\nPASS Race and kit persist separately with their own geography\nPASS Applying output locations does not change input fingerprint or create a loop\nPASS Both locations have one atomic permanent audit\nPASS No real event is replaced\nPASS Already geolocated events are researched for kits\nPASS Existing race coordinates are never overwritten by AI or kit\nPASS No real event is replaced\nPASS Concurrent destination edits invalidate the entire publication atomically\nPASS No real event is replaced\nPASS A city remains a suggestion, never a canonical point\nPASS No real event is replaced\nPASS Version 2 proposals still use the version 2 finalizer after activating the AI store\nPASS All fixture writes rolled back\nGEO_AI_INTEGRATION_PASSED ",
+      "archive": "/var/backups/geocoding-tests-kjqhtx3y",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS No evidence produces only a municipal suggestion target\nPASS Unconfirmed extracted race venue still preserves the registered city as a suggestion\nPASS OpenAI daily ceiling is reserved atomically before HTTP\nPASS Quota exhaustion activates durable AI cooldown without losing the queue\nPASS AI cooldown is accepted deferred work, not a misleading gateway error\nGEO_AI_WORKFLOW_PASSED ",
+      "archive": "/var/backups/geocoding-tests-kr6zn93p",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS No real event is replaced\nPASS A provider pause defers after one completed AI analysis\nPASS Analysis and independent targets have a durable checkpoint\nPASS Resuming does not repeat AI or lose a completed stage\nPASS Location publication completes (summary {\"AI_CALLS\":0,\"RESULTS\":[{\"STATUS\":\"auto_applied\",\"ID_EVENTO\":2147000001,\"ID\":5778}],\"SOURCE_DOCUMENTS\":0,\"SUCCESS\":true,\"ERRORS\":0,\"PIPELINE_VERSION\":3,\"SUGGESTIONS\":0,\"MODEL\":\"gpt-4.1-mini\",\"ENRICHED_FIELDS\":0,\"FIELD_REVIEWS\":0,\"STATUS\":\"completed\",\"PROCESSED\":1.0,\"REVIEW\":0,\"AI_CACHE_HITS\":0,\"CALLS\":2.0,\"DEFERRED\":0,\"APPLIED\":1.0,\"CACHE_HITS\":0})\nPASS End-to-end worker applies each point to the right purpose\nPASS Useful partial sources complete interpretation and retain a geocoder checkpoint\nPASS Recovered source reuses the same extraction rather than paying for identical input again\nPASS Unmatched specific addresses fall back to separate private city suggestions\nPASS Municipal fallback cannot publish a coordinate\nGEO_AI_RESUME_PASSED ",
+      "archive": "/var/backups/geocoding-tests-jnxiyihz",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Race and kit have distinct review panels\nPASS Location evidence is always escaped\nPASS Only the specific, evidence-backed kit target can be approved\nPASS Independent target revision is protected without a mandatory justification\nPASS Unprocessed work is not presented as a negative finding\nGEO_AI_VIEW_PASSED ",
+      "archive": "/var/backups/geocoding-tests-n0015x3x",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Missing setup remains explicit instead of a broken page\nPASS Configuration help does not render a secret\nPASS Provider and event HTML cannot execute in review\nPASS City detail has no approval action\nPASS Quick review can submit without typed reason or a second checkbox\nPASS Municipal suggestions are explicitly separate from required review\nPASS Counter definitions distinguish durable outcomes from the current review queue\nPASS Deferred AI research is visible separately from human review\nGEO_VIEW_PASSED PASS Full page renders the new decision and AI status without nested output errors\nGEO_AI_FULL_VIEW_PASSED ",
+      "archive": "/var/backups/geocoding-tests-tm9nmp41",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "GEO_AI_SEED_PASSED ",
+      "archive": "/var/backups/geocoding-tests-top2903j",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "GEO_AI_PROVIDER_FAILURE_PASSED ",
+      "archive": "/var/backups/geocoding-tests-e15mph4h",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Spelled-out UF and country become canonical equivalents, not a review\nPASS Country languages and Brazilian UF prefixes have authoritative aliases\nPASS Different countries and neighboring UFs are never merged\nPASS Literal facts with purpose and correct edition can fill native and complementary blanks\nPASS A real divergence preserves the existing value for review\nPASS An already matching value needs neither a write nor review\nPASS Invented values are not accepted by model confidence\nPASS A kit address cannot fill the race address\nPASS Native country names and codes do not create false divergences\nPASS Literal text with the wrong semantic purpose is not trusted\nPASS A different edition cannot enrich the event\nPASS ISO dates must be justified by a real equivalent date in the source\nPASS Impossible dates cannot reach a native date column\nPASS Markup cannot be promoted into native event text fields\nPASS URL path case cannot be invented by punctuation-insensitive matching\nPASS Ordinary words and shorter state names cannot authenticate another region\nPASS A sponsor cannot borrow the organizer marker from a different clause\nPASS An explicit historical event date invalidates its attribute citation\nGEO_ENRICHMENT_POLICY_PASSED ",
+      "archive": "/var/backups/geocoding-tests-oh9r9mir",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS One Astra request has independent locations and enrichment attributes\nPASS Expanded response has explicit bounded fact and token budgets\nPASS Strict field allowlist covers native data and kit agenda\nPASS Attribute text is sanitized before JSONB checkpointing\nGEO_ENRICHMENT_CONTRACT_PASSED ",
+      "archive": "/var/backups/geocoding-tests-0dcd7fc3",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS No real event replaced\nPASS Trusted native blanks are filled without a geocoding call\nPASS Complementary values and field-level evidence persist in event JSONB\nPASS A populated JDBC JSONB value remains in the destination snapshot (simple=NO)\nPASS Own native fills settle the snapshot without mutating the unique original work key\nPASS Resume does not repeat enrichment writes or permanent audit entries\nPASS No real event replaced\nPASS Real native divergence is preserved for explicit review\nPASS Field divergences appear in the review queue even without a precise location (actual needs_review)\nPASS A current explicit human approval can resolve the real divergence\nPASS Obsolete review is rejected (nested CF rollback also removes this isolated fixture)\nPASS No real event replaced\nPASS Concurrent native changes reject the stale analysis before publication\nPASS All enrichment fixture writes rolled back\nGEO_ENRICHMENT_INTEGRATION_PASSED ",
+      "archive": "/var/backups/geocoding-tests-8c008v3i",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Review presents the current value alongside the extracted proposal\nPASS All extracted values and evidence are escaped\nPASS Field review has explicit approval, preservation and revision control\nPASS Equivalent facts are informational, not another review task\nPASS Updated review behavior has a fresh asset version instead of reusing the old cached script\nGEO_ENRICHMENT_VIEW_PASSED ",
+      "archive": "/var/backups/geocoding-tests-tdpo9r4g",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS No real event replaced\nPASS One real worker analysis reaches the deferred geocoder stage\nPASS Native enrichment is already persisted while Geoapify is unavailable\nPASS Complementary enrichment is visible in the event before geocoding resumes\nPASS Resuming completes locations without buying another analysis\nPASS Resuming does not duplicate enrichment audit\nGEO_ENRICHMENT_WORKFLOW_PASSED ",
+      "archive": "/var/backups/geocoding-tests-m10aazf9",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Country codes cannot be ordinary prepositions\nPASS Longest full state name prevents MT versus MS collision\nPASS Organizer cannot borrow a sponsor from another clause\nPASS An old identity in the citation cannot borrow the current page identity\nGEO_ENRICHMENT_REVIEW_REGRESSIONS_PASSED ",
+      "archive": "/var/backups/geocoding-tests-92oxbrgl",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS No real event replaced\nPASS Trusted native blanks are filled without a geocoding call\nPASS Complementary values and field-level evidence persist in event JSONB\nPASS A populated JDBC JSONB value remains in the destination snapshot (simple=NO)\nPASS Own native fills settle the snapshot without mutating the unique original work key\nPASS Resume does not repeat enrichment writes or permanent audit entries\nPASS No real event replaced\nPASS Real native divergence is preserved for explicit review\nPASS Field divergences appear in the review queue even without a precise location (actual needs_review)\nPASS A current explicit human approval can resolve the real divergence\nPASS Obsolete review is rejected (nested CF rollback also removes this isolated fixture)\nPASS No real event replaced\nPASS Concurrent native changes reject the stale analysis before publication\nPASS All enrichment fixture writes rolled back\nGEO_ENRICHMENT_INTEGRATION_PASSED PASS No real event replaced\nPASS Returning to an earlier native input state does not collide with the unique work key\nPASS The previous work and its history are retained\nGEO_ENRICHMENT_REPEATED_STATE_PASSED ",
+      "archive": "/var/backups/geocoding-tests-o5nx8gu_",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Dynamic HTML digest does not invalidate identical extraction input\nPASS Changed evidence invalidates extraction cache\nPASS Changed edition invalidates extraction cache\nPASS Changed model invalidates extraction cache\nPASS Transient source cache expires in minutes, not a full day\nGEO_OPTIMIZATION_CACHE_PASSED ",
+      "archive": "/var/backups/geocoding-tests-_t6wxvyh",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Synthetic event does not replace a real one\nPASS A newer incomplete analysis cannot remove a persisted filled coordinate\nPASS Field-only approvals and deleted coordinates are not filled locations\nPASS A municipal result cannot be reclaimed before its scheduled research retry\nPASS Scheduled incomplete research resumes without deleting its checkpoint\nPASS Provider availability inspection is read-only\nPASS Twenty future retries do not block seeding a new ready event\nGEO_OPTIMIZATION_STORE_PASSED ",
+      "archive": "/var/backups/geocoding-tests-3dpuqx15",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS AI cooldown still produces a private municipal suggestion\nPASS Known AI cooldown consumes neither AI credits nor official-source downloads\nPASS Incomplete research is scheduled automatically with durable progress\nPASS Municipal fallback is never a canonical race point\nPASS One unavailable source does not block the next event in the batch\nPASS Only the second event with verified evidence receives canonical coordinates\nPASS Readable official evidence is used even if a different source is temporarily unavailable\nPASS Partial research is retained and automatically retried with bounded backoff\nGEO_OPTIMIZATION_WORKER_PASSED ",
+      "archive": "/var/backups/geocoding-tests-16hl319g",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Coverage view names all quality classes\nPASS Event names are escaped\nPASS Coverage percentage is visible\nPASS Coverage measurement time is visible\nPASS Quality and horizon filters preserve selection\nPASS Bounded rows expose next-page navigation\nPASS Coverage view has no provider detail or mutation form\nPASS Coverage view has a useful empty state\nPASS Missing shared schema is reported without breaking the module\nGEO_RADAR_VIEW_PASSED ",
+      "archive": "/var/backups/geocoding-tests-r9di_5wr",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Queue selection method is present in the staged production source\nPASS Future queue distinguishes 30-day, 90-day and later horizons\nPASS In-progress events precede remaining active work\nPASS Future priority explicitly favors a missing event location\nPASS Queue keeps the five-event cap\nPASS Queue ordering remains deterministic\nGEO_RADAR_PRIORITY_PASSED ",
+      "archive": "/var/backups/geocoding-tests-zqpt2mp6",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Radar coverage detects the shared coordinate schema\nPASS Shared event schema exposes normalized coordinates and provenance\nPASS Coverage counts only the nine eligible fixtures\nPASS Coverage counts eight published coordinate pairs\nPASS Matching structured provenance is confirmed\nPASS Legacy includes a valid pair and two legitimate same-city venue rows\nPASS Null island, provenance mismatch and two cross-city duplicates are suspicious\nPASS Missing coordinates remain absent\nPASS Coverage separates 30-day, 90-day and later horizons\nPASS State coverage groups eligible events by UF\nPASS Coverage page is search-scoped and bounded to 21 rows\nPASS Quality filter returns only suspicious fixtures\nPASS Same-city shared coordinates remain legacy instead of suspicious\nPASS Coverage fixtures are rolled back\nGEO_RADAR_COVERAGE_PASSED ",
+      "archive": "/var/backups/geocoding-tests-wud0w8_0",
+      "stage_archived": true
+    },
+    {
+      "ok": true,
+      "output": "PASS Future public event without published coordinates is absent from Radar coverage\nPASS Private city suggestion does not become a public coordinate\nPASS Shared trigger normalizes a confirmed Business coordinate\nPASS Canonical Business location becomes confirmed Radar coverage\nPASS Cross-system fixtures are rolled back\nPASS Cross-system verification makes no provider call\nGEO_RADAR_CONTRACT_PASSED ",
+      "archive": "/var/backups/geocoding-tests-r00b5n9o",
+      "stage_archived": true
+    }
+  ],
+  "preflight": {
+    "ok": true,
+    "mode": "preflight",
+    "manifest": {
+      "services/geocoding/ReviewGuide.cfc": {
+        "before": null,
+        "after": "b4d6d6c359a8a8f41c404fdb0989ea3b0055b99a34bcb0d78c780b2ebc2c17e3"
+      },
+      "administracao/geolocalizacao/includes/review_guide_view.cfm": {
+        "before": null,
+        "after": "1b43d39d1c09a7c6b6c2300c5f38781921f2d9fd1072eaf29550f28672090d07"
+      },
+      "administracao/geolocalizacao/assets/review-guide.css": {
+        "before": null,
+        "after": "be687211a3d602f7598dcc1d1d52dae298541072612ccd544e61fa38f8ca6c2b"
+      },
+      "administracao/geolocalizacao/includes/backend.cfm": {
+        "before": "8714f6a0ec91fd99960dcddcfbb1fbb81e1db47b6b03192f1e4a9ed354a8ce5d",
+        "after": "a06840d1edc933353b381e8af7d6dd097b6710f09a20d64fe2a856e0e63ff162"
+      },
+      "administracao/geolocalizacao/includes/view.cfm": {
+        "before": "af189113e8b52aba341fbf80f25fb1a78a0793deb0d59a7157532bf5cd6e7d19",
+        "after": "193ba9980b96f19d874b75a941d9e4435bbb7c121a9a039ffc2807f81856b626"
+      },
+      "administracao/geolocalizacao/assets/geocoding.js": {
+        "before": "4e45e11252211a1da0be4009015014f744df2f7e6a3ae4dfdcd71847a9b4fd5f",
+        "after": "c4b1e2501882c61810cd936bfbf0d5d5f23564b75db4456133ec48ed2f97639a"
+      },
+      "administracao/geolocalizacao/index.cfm": {
+        "before": "22fda0db0f52cab7eb25d33078b8d65604a86e4696d141ae5d9c9e227914e6ee",
+        "after": "1f35d33914943eb07f347e34e81f650c28b69ee8bf769c8db849a36f9eb54c99"
+      }
+    }
+  }
+}

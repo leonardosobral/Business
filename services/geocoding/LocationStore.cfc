@@ -13,6 +13,7 @@ component extends="services.geocoding.Store" output=false {
     public struct function snapshot(required struct e){var s=variables.lp.snapshot(e);s.version=3;s.url_regulamento=variables.lp.text(e,"url_regulamento");if(arrayFindNoCase(e._sourceNulls,"url_regulamento"))arrayAppend(s.nulls,"url_regulamento");s.localizacoes=structKeyExists(e,"localizacoes") AND !isNull(e.localizacoes) AND isJSON(e.localizacoes & "") ? deserializeJSON(e.localizacoes & "") : {};s.enrichment_version=1;s.enrichment_native=new services.geocoding.EnrichmentPolicy().nativeSnapshot(e);for(var field in s.enrichment_native)if(!structKeyExists(s,field))s[field]=s.enrichment_native[field];return s;}
     public struct function publishEnrichment(required struct work,required struct progress,required string actor){return new services.geocoding.EnrichmentStore().publish(this,work,progress,actor);}
     public struct function reviewField(required numeric id,required numeric index,required string action,required string actor,required string revision){return new services.geocoding.EnrichmentStore().review(this,id,index,action,actor,revision);}
+    public struct function correctField(required numeric id,required numeric index,required any value,required string actor,required string revision){return new services.geocoding.EnrichmentStore().correct(this,id,index,value,actor,revision);}
     private string function fieldReviewSql(string alias="g"){return "EXISTS(SELECT 1 FROM jsonb_array_elements(CASE WHEN jsonb_typeof(" & alias & ".decision->'enrichment'->'fields')='array' THEN " & alias & ".decision->'enrichment'->'fields' ELSE '[]'::jsonb END) AS fact WHERE fact->>'status'='needs_review')";}
     public array function sourceValues(required struct s){var a=[];for(var k in listToArray("id_evento,cidade,estado,pais,cod_cidade,endereco,descricao_original,descricao,nome_evento,url_hotsite,url_inscricao,url_regulamento"))arrayAppend(a,[arrayFindNoCase(s.nulls,k) GT 0,s[k]]);arrayAppend(a,[s.catalog_city,s.catalog_state]);arrayAppend(a,[s.start_date,3]);return a;}
     public string function sourceHash(required struct s){return lCase(hash(serializeJSON(sourceValues(s)),"SHA-256"));}
@@ -28,7 +29,8 @@ component extends="services.geocoding.Store" output=false {
         }return out;
     }
     public numeric function seed(numeric limit=5){
-        var count=queryExecute("SELECT count(*) AS n FROM public.tb_evento_geocoding WHERE source_snapshot->>'version'='3' AND status IN('pending','running','error') AND attempts<3",[],variables.db);if(count.n[1] GTE 20)return 0;
+        // Future retries do not occupy ready capacity and cannot starve fresh events.
+        var count=queryExecute("SELECT count(*) AS n FROM public.tb_evento_geocoding WHERE source_snapshot->>'version'='3' AND ((status IN('pending','error') AND attempts<3 AND (next_retry_at IS NULL OR next_retry_at<=clock_timestamp())) OR (status='running' AND lease_until>clock_timestamp()))",[],variables.db);if(count.n[1] GTE 20)return 0;
         return arrayLen(enqueue(selectEvents(limit),"job"));
     }
     public array function selectEvents(numeric limit=5){
@@ -51,7 +53,7 @@ component extends="services.geocoding.Store" output=false {
     }
     public struct function claim(numeric id=0){
         transaction {var expired=queryExecute("UPDATE public.tb_evento_geocoding SET status='errors_exhausted',error_code='lease_expired',lease_token=NULL,lease_until=NULL,updated_at=clock_timestamp() WHERE id IN(SELECT id FROM public.tb_evento_geocoding WHERE source_snapshot->>'version'='3' AND status='running' AND lease_until<clock_timestamp() AND attempts>=3 FOR UPDATE SKIP LOCKED LIMIT 20) RETURNING *",[],variables.db);for(var w in expired)logAction(w,"errors_exhausted","job",{reason="lease_expired"});}
-        var token=lCase(replace(createUUID(),"-","","all"));return row(queryExecute("UPDATE public.tb_evento_geocoding SET status='running',lease_token=:token,lease_until=clock_timestamp()+interval '10 minutes',attempts=attempts+1,updated_at=clock_timestamp() WHERE id=(SELECT id FROM public.tb_evento_geocoding WHERE source_snapshot->>'version'='3' AND (:id=0 OR id=:id) AND attempts<3 AND ((status IN('pending','error') AND (next_retry_at IS NULL OR next_retry_at<=clock_timestamp())) OR (status='running' AND lease_until<clock_timestamp())) ORDER BY priority,id FOR UPDATE SKIP LOCKED LIMIT 1) RETURNING *",{id=bind(id,"cf_sql_bigint"),token=bind(token)},variables.db));
+        var token=lCase(replace(createUUID(),"-","","all"));return row(queryExecute("UPDATE public.tb_evento_geocoding SET status='running',lease_token=:token,lease_until=clock_timestamp()+interval '10 minutes',attempts=CASE WHEN status='errors_exhausted' THEN 1 ELSE attempts+1 END,updated_at=clock_timestamp() WHERE id=(SELECT id FROM public.tb_evento_geocoding WHERE source_snapshot->>'version'='3' AND (:id=0 OR id=:id) AND ((attempts<3 AND ((status IN('pending','error') AND (next_retry_at IS NULL OR next_retry_at<=clock_timestamp())) OR (status='running' AND lease_until<clock_timestamp()))) OR (status IN('city_suggestion','insufficient_data','auto_applied','approved','needs_review') AND decision->>'analysis_complete'='false' AND next_retry_at<=clock_timestamp()) OR (status='errors_exhausted' AND error_code IN('source_unavailable','ai_unavailable') AND updated_at<clock_timestamp()-interval '1 day')) ORDER BY priority,COALESCE(next_retry_at,updated_at),id FOR UPDATE SKIP LOCKED LIMIT 1) RETURNING *",{id=bind(id,"cf_sql_bigint"),token=bind(token)},variables.db));
     }
     public void function checkpoint(required struct work,required struct progress){var q=queryExecute("UPDATE public.tb_evento_geocoding SET decision=CAST(:body AS jsonb),updated_at=clock_timestamp() WHERE id=:id AND status='running' AND lease_token=:token AND lease_until>clock_timestamp() RETURNING id",{body=bind(json(progress),"cf_sql_longvarchar"),id=bind(work.id,"cf_sql_bigint"),token=bind(work.lease_token)},variables.db);if(!q.recordCount)throw(type="Geocoding.Validation",message="O processamento expirou.");}
     private boolean function sameDestinations(required struct work,required struct source){return queryExecute("SELECT 1 FROM public.tb_evento_corridas WHERE id_evento=:id AND COALESCE(coordenadas,'')=:coords AND localizacoes=CAST(:locations AS jsonb)",{id=bind(work.id_evento,"cf_sql_integer"),coords=bind(source.coordenadas),locations=bind(json(source.localizacoes),"cf_sql_longvarchar")},variables.db).recordCount EQ 1;}
@@ -83,7 +85,8 @@ component extends="services.geocoding.Store" output=false {
             }
             if(structKeyExists(decision,"enrichment") AND listFind("auto_applied,approved,city_suggestion,insufficient_data,needs_review",status))for(var field in decision.enrichment.fields)if(field.status EQ "needs_review")status="needs_review";
             if(status EQ "error" AND current.attempts GTE 3)status="errors_exhausted";decision.status=status;
-            queryExecute("UPDATE public.tb_evento_geocoding SET status=:status,source_snapshot=CAST(:snapshot AS jsonb),decision=CAST(:body AS jsonb),error_code=:code,lease_token=NULL,lease_until=NULL,proposal_revision=proposal_revision+1,next_retry_at=CASE WHEN :status='error' THEN clock_timestamp()+interval '30 minutes' ELSE NULL END,updated_at=clock_timestamp() WHERE id=:id",{status=bind(status),snapshot=bind(json(s),"cf_sql_longvarchar"),body=bind(json(decision),"cf_sql_longvarchar"),code=bind(variables.lp.text(decision,"code")),id=bind(current.id,"cf_sql_bigint")},variables.db);
+            var retry=!listFind("conflict,error,errors_exhausted",status) AND structKeyExists(decision,"analysis_complete") AND !decision.analysis_complete ? max(60,min(604800,val(decision.retry_after_seconds ?: 21600))) : 0;
+            queryExecute("UPDATE public.tb_evento_geocoding SET status=:status,source_snapshot=CAST(:snapshot AS jsonb),decision=CAST(:body AS jsonb),error_code=:code,lease_token=NULL,lease_until=NULL,attempts=CASE WHEN :retry>0 THEN 0 ELSE attempts END,proposal_revision=proposal_revision+1,next_retry_at=CASE WHEN :retry>0 THEN clock_timestamp()+:retry*interval '1 second' WHEN :status='error' THEN clock_timestamp()+interval '30 minutes' ELSE NULL END,updated_at=clock_timestamp() WHERE id=:id",{status=bind(status),snapshot=bind(json(s),"cf_sql_longvarchar"),body=bind(json(decision),"cf_sql_longvarchar"),code=bind(variables.lp.text(decision,"code")),retry=bind(retry,"cf_sql_integer"),id=bind(current.id,"cf_sql_bigint")},variables.db);
             logAction(current,status,actor,decision,after);
         }return {id=work.id,id_evento=work.id_evento,status=status};
     }
@@ -109,6 +112,12 @@ component extends="services.geocoding.Store" output=false {
         // Do not dispatch a v2 decision through this subclass's v3 finish/hash.
         return new services.geocoding.Store().review(id,action,actor,reason,revision);
     }
+    public struct function aiAvailability(numeric limit=1000){
+        var q=queryExecute("SELECT COALESCE((SELECT greatest(0,ceil(extract(epoch FROM(cooldown_until-clock_timestamp())))) FROM public.tb_geocoding_cache WHERE cache_key='__ai_control__'),0) AS cooldown,COALESCE((SELECT calls FROM public.tb_geocoding_usage_daily WHERE usage_date=(clock_timestamp() AT TIME ZONE 'UTC')::date AND provider='openai-geolocation'),0) AS calls",[],variables.db);
+        if(q.cooldown[1] GT 0)return {allowed=false,reason="ai_cooldown",retryAfter=q.cooldown[1]};
+        if(q.calls[1] GTE max(1,min(2000,int(limit))))return {allowed=false,reason="ai_daily_limit",retryAfter=3600};
+        return {allowed=true,reason="ok",retryAfter=0};
+    }
     public struct function reserveAI(numeric limit=1000){
         queryExecute("INSERT INTO public.tb_geocoding_cache(cache_key,query_text,response) VALUES('__ai_control__','openai-geolocation','{}'::jsonb) ON CONFLICT DO NOTHING",[],variables.db);
         transaction {
@@ -117,7 +126,7 @@ component extends="services.geocoding.Store" output=false {
         }
     }
     public void function completeAI(required struct reply){if(!reply.ok)queryExecute("UPDATE public.tb_geocoding_cache SET cooldown_until=clock_timestamp()+:seconds*interval '1 second',response=CAST(:body AS jsonb),updated_at=clock_timestamp() WHERE cache_key='__ai_control__'",{seconds=bind(max(60,min(21600,reply.retryAfter)),"cf_sql_integer"),body=bind(json({code=reply.code}),"cf_sql_longvarchar")},variables.db);}
-    public struct function aiStats(){var q=queryExecute("SELECT COALESCE((SELECT calls FROM public.tb_geocoding_usage_daily WHERE usage_date=(clock_timestamp() AT TIME ZONE 'UTC')::date AND provider='openai-geolocation'),0) AS calls,(SELECT response->>'code' FROM public.tb_geocoding_cache WHERE cache_key='__ai_control__') AS code",[],variables.db);return row(q);}
+    public struct function aiStats(){var q=queryExecute("SELECT COALESCE((SELECT calls FROM public.tb_geocoding_usage_daily WHERE usage_date=(clock_timestamp() AT TIME ZONE 'UTC')::date AND provider='openai-geolocation'),0) AS calls,(SELECT response->>'code' FROM public.tb_geocoding_cache WHERE cache_key='__ai_control__') AS code,COALESCE((SELECT greatest(0,ceil(extract(epoch FROM(cooldown_until-clock_timestamp())))) FROM public.tb_geocoding_cache WHERE cache_key='__ai_control__'),0) AS cooldown",[],variables.db);return row(q);}
     private string function radarQualitySql(){return "WITH eligible_events AS (
         SELECT e.id_evento,e.nome_evento,e.data_inicial,e.data_final,e.cidade,e.estado,e.latitude,e.longitude,
             public.rr_parse_event_coordinates(e.coordenadas) AS legacy_pair,
@@ -171,7 +180,17 @@ component extends="services.geocoding.Store" output=false {
         if(safeHorizon EQ "later")filter&=" AND data_inicial>CURRENT_DATE+interval '90 days'";
         return queryExecute(radarQualitySql() & "SELECT id_evento,nome_evento,to_char(data_inicial,'DD/MM/YYYY') AS starts,to_char(data_final,'DD/MM/YYYY') AS ends,cidade,estado,quality,review_reason,geocoding_status,to_char(geocoding_updated_at AT TIME ZONE 'America/Sao_Paulo','DD/MM/YYYY HH24:MI:SS') AS changed_at FROM classified " & filter & " ORDER BY data_inicial,lower(nome_evento),id_evento LIMIT 21 OFFSET :offset",params,variables.db);
     }
-    public struct function overview(){return row(queryExecute("WITH latest AS(SELECT DISTINCT ON(id_evento) id_evento,status,source_snapshot,decision FROM public.tb_evento_geocoding ORDER BY id_evento,id DESC) SELECT (SELECT count(*) FROM public.tb_evento_corridas WHERE btrim(COALESCE(coordenadas,''))='') AS missing,(SELECT count(*) FROM latest WHERE status IN('pending','running','error')) AS queued,(SELECT count(*) FROM latest WHERE (status='needs_review' OR " & fieldReviewSql("latest") & ") AND COALESCE(source_snapshot->>'version',source_snapshot->>'VERSION') IN('2','3')) AS review,(SELECT count(*) FROM latest WHERE status='city_suggestion') AS suggestions,(SELECT count(*) FROM latest WHERE status IN('auto_applied','approved')) AS applied,(SELECT count(*) FROM latest WHERE status NOT IN('pending','running','error','conflict')) AS analyzed,COALESCE((SELECT calls FROM public.tb_geocoding_usage_daily WHERE usage_date=(clock_timestamp() AT TIME ZONE 'UTC')::date AND provider='geoapify'),0) AS calls",[],variables.db));}
+    public struct function overview(){return row(queryExecute("WITH latest AS(SELECT DISTINCT ON(id_evento) id_evento,status,source_snapshot,decision,next_retry_at FROM public.tb_evento_geocoding ORDER BY id_evento,id DESC) SELECT
+        (SELECT count(*) FROM public.tb_evento_corridas WHERE btrim(COALESCE(coordenadas,''))='') AS missing,
+        (SELECT count(*) FROM latest WHERE source_snapshot->>'version'='3' AND status IN('pending','running','error')) AS queued,
+        (SELECT count(*) FROM latest WHERE (status='needs_review' OR " & fieldReviewSql("latest") & ") AND COALESCE(source_snapshot->>'version',source_snapshot->>'VERSION') IN('2','3')) AS review,
+        (SELECT count(*) FROM latest WHERE status='city_suggestion') AS suggestions,
+        (SELECT count(*) FROM public.tb_evento_corridas e WHERE
+            (btrim(COALESCE(e.coordenadas,''))<>'' AND EXISTS(SELECT 1 FROM public.tb_evento_geocoding_audit a WHERE a.id_evento=e.id_evento AND a.coordinates_after=e.coordenadas AND btrim(COALESCE(a.coordinates_after,''))<>'' AND a.action IN('auto_applied','approved')))
+            OR (jsonb_typeof(e.localizacoes->'kit')='array' AND EXISTS(SELECT 1 FROM jsonb_array_elements(CASE WHEN jsonb_typeof(e.localizacoes->'kit')='array' THEN e.localizacoes->'kit' ELSE '[]'::jsonb END) k WHERE k->>'precisao'='local_confirmado' AND btrim(COALESCE(k->>'coordenadas',''))<>''))) AS applied,
+        (SELECT count(*) FROM latest WHERE decision->>'analysis_complete'='false' AND next_retry_at>clock_timestamp()) AS deferred,
+        (SELECT count(*) FROM latest WHERE status NOT IN('pending','running','error','conflict')) AS analyzed,
+        COALESCE((SELECT calls FROM public.tb_geocoding_usage_daily WHERE usage_date=(clock_timestamp() AT TIME ZONE 'UTC')::date AND provider='geoapify'),0) AS calls",[],variables.db));}
     public query function page(required string tab,required numeric page,required string search,required string status,required string period,required string uf){
         if(tab EQ "historico" OR status EQ "invalid")return super.page(tab,page,search,status,period,uf);
         var params={offset=bind((max(1,min(9999,int(page)))-1)*20,"cf_sql_integer"),search=bind("%" & left(search,100) & "%"),empty=bind(!len(search) ? 1 : 0,"cf_sql_integer"),uf=bind(uf)};

@@ -6,20 +6,28 @@ component output=false {
     private void function writeField(required struct e,required struct destinations,required struct entry,required string actor,required any store,boolean replaceExisting=false){
         var defs=variables.p.definitions();if(!structKeyExists(defs,entry.field) OR !entry.trusted OR !len(entry.value) OR len(entry.value) GT defs[entry.field].max)throw(type="Geocoding.Validation",message="O fato não tem confirmação suficiente.");
         var before=variables.p.current(e,entry.field);if(!replaceExisting AND len(before))throw(type="Geocoding.Validation",message="O campo já foi preenchido; reabra a proposta.");
+        writeValue(e,destinations,entry.field,entry.value,entry.evidence,actor,replaceExisting ? "human_approved" : "astra_verified");
+        entry.previous=before;entry.status=replaceExisting ? "approved" : "auto_applied";
+    }
+    private void function writeValue(required struct e,required struct destinations,required string field,required string text,required struct evidence,required string actor,required string origin){
+        var defs=variables.p.definitions();
+        if(!structKeyExists(destinations,"enriquecimento"))destinations.enriquecimento={version=1,fields={}};
+        if(!structKeyExists(destinations.enriquecimento,"fields"))destinations.enriquecimento.fields={};
+        var entry={field=field,value=text};
         if(len(defs[entry.field].column)){
             var value=entry.value;var type="cf_sql_varchar";
             if(listFind("data_inicial,data_final",entry.field)){value=createDate(left(value,4),mid(value,6,2),right(value,2));type="cf_sql_date";}
             // Column is selected exclusively from the server-owned allowlist, never from request text.
             queryExecute("UPDATE public.tb_evento_corridas SET " & defs[entry.field].column & "=:value WHERE id_evento=:id",{value=bind(value,type),id=bind(e.id_evento,"cf_sql_integer")},variables.db);e[entry.field]=value;
         }
-        destinations.enriquecimento.fields[entry.field]={value=entry.value,evidence=entry.evidence,confirmed_at=dateTimeFormat(now(),"yyyy-mm-dd'T'HH:nn:ssXXX"),actor=actor,origin=replaceExisting ? "human_approved" : "astra_verified"};
-        entry.previous=before;entry.status=replaceExisting ? "approved" : "auto_applied";
+        destinations.enriquecimento.fields[field]={value=text,evidence=evidence,confirmed_at=dateTimeFormat(now(),"yyyy-mm-dd'T'HH:nn:ssXXX"),actor=actor,origin=origin};
     }
     private struct function lockWork(required any store,required struct work,boolean requireLease=true){
         var current=row(queryExecute("SELECT *,lease_until>clock_timestamp() AS valid FROM public.tb_evento_geocoding WHERE id=:id FOR UPDATE",{id=bind(work.id,"cf_sql_bigint")},variables.db));
         if(structIsEmpty(current) OR (requireLease AND (current.status NEQ "running" OR !current.valid OR variables.textPolicy.text(current,"lease_token") NEQ work.lease_token)))throw(type="Geocoding.Validation",message="O processamento expirou.");
         var e=store.event(current.id_evento,true);var s=deserializeJSON(current.source_snapshot & "");
-        if(!e.exists OR store.sourceHash(store.snapshot(e)) NEQ store.expectedHash(current,s) OR serializeJSON(store.lowerKeys(s.localizacoes)) NEQ serializeJSON(store.lowerKeys(deserializeJSON(e.localizacoes & ""))))throw(type="Geocoding.Validation",message="O cadastro mudou; reabra a proposta.");
+        var same=queryExecute("SELECT 1 FROM public.tb_evento_corridas WHERE id_evento=:id AND COALESCE(coordenadas,'')=:coords AND localizacoes=CAST(:locations AS jsonb)",{id=bind(current.id_evento,"cf_sql_integer"),coords=bind(s.coordenadas),locations=bind(json(s.localizacoes,store),"cf_sql_longvarchar")},variables.db);
+        if(!e.exists OR store.sourceHash(store.snapshot(e)) NEQ store.expectedHash(current,s) OR same.recordCount NEQ 1)throw(type="Geocoding.Validation",message="O cadastro mudou; reabra a proposta.");
         if(structKeyExists(s,"enrichment_native"))for(var field in s.enrichment_native)if(compare(s.enrichment_native[field],variables.p.current(e,field)) NEQ 0)throw(type="Geocoding.Validation",message="Um campo foi alterado durante a análise; reabra a proposta.");
         return {work=current,event=e,source=s};
     }
@@ -63,6 +71,31 @@ component output=false {
             progress.enrichment.fields[index]=entry;var result=settle(store,locked,progress,destinations,actor,action EQ "approve" ? "field_approved" : "field_rejected");
             var pending=false;for(var field in progress.enrichment.fields)if(field.status EQ "needs_review")pending=true;
             for(var target in progress.targets)if(target.status EQ "needs_review")pending=true;
+            var nextStatus=listFind("pending,error",current.status) ? current.status : (pending ? "needs_review" : "approved");
+            if(structKeyExists(progress,"analysis_complete") AND !progress.analysis_complete)nextStatus="pending";
+            queryExecute("UPDATE public.tb_evento_geocoding SET status=:status,attempts=CASE WHEN :status='pending' THEN 0 ELSE attempts END,next_retry_at=CASE WHEN :status='pending' THEN clock_timestamp() ELSE next_retry_at END WHERE id=:id",{status=bind(nextStatus),id=bind(id,"cf_sql_bigint")},variables.db);
+            return {id=id,status=nextStatus};
+        }
+    }
+    public struct function correct(required any store,required numeric id,required numeric index,required any value,required string actor,required string revision){
+        if(int(index) NEQ index)throw(type="Geocoding.Validation",message="Campo inválido.");
+        transaction {
+            var locked=lockWork(store,{id=id},false);var current=locked.work;variables.textPolicy.requireRevision(current,revision);
+            if(!listFind("needs_review,city_suggestion,insufficient_data,auto_applied,approved,pending,error",current.status))throw(type="Geocoding.Validation",message="A proposta não está disponível para revisão.");
+            var progress=deserializeJSON(current.decision & "");
+            if((locked.source.version ?: 0) NEQ 3 OR !structKeyExists(progress,"enrichment") OR index LT 1 OR index GT arrayLen(progress.enrichment.fields))throw(type="Geocoding.Validation",message="Campo inválido.");
+            var entry=progress.enrichment.fields[index];if(entry.status NEQ "needs_review")throw(type="Geocoding.Validation",message="Este campo já foi revisado.");
+            var clean=new services.geocoding.ReviewInput().validate(entry.field,value,locked.event);var destinations=duplicate(locked.source.localizacoes);
+            // Human confirmation is a separate provenance. Never alter the source
+            // proposal's value, evidence or trusted flag to bypass AI validation.
+            entry.manual={value=clean,previous=variables.p.current(locked.event,entry.field),actor=actor,at=dateTimeFormat(now(),"yyyy-mm-dd'T'HH:nn:ssXXX"),source_date=entry.field EQ "data_inicial" ? clean : variables.textPolicy.text(locked.source,"start_date")};entry.status="corrected";
+            writeValue(locked.event,destinations,entry.field,clean,{method="human_correction"},actor,"human_corrected");
+            progress.enrichment.fields[index]=entry;
+            for(var i=1;i LTE arrayLen(progress.enrichment.fields);i++)if(i NEQ index AND progress.enrichment.fields[i].field EQ entry.field AND progress.enrichment.fields[i].status EQ "needs_review"){progress.enrichment.fields[i].status="superseded";progress.enrichment.fields[i].superseded_by=index;progress.enrichment.fields[i].manual=duplicate(entry.manual);}
+            if(listFind("cidade,estado,pais,endereco,data_inicial,data_final,url_inscricao,url_hotsite,url_regulamento",entry.field)){progress.analysis_complete=false;progress.targets=[];}
+            settle(store,locked,progress,destinations,actor,"field_corrected");
+            var pending=false;for(var field in progress.enrichment.fields)if(field.status EQ "needs_review")pending=true;
+            for(var target in progress.targets ?: [])if(target.status EQ "needs_review")pending=true;
             var nextStatus=listFind("pending,error",current.status) ? current.status : (pending ? "needs_review" : "approved");
             if(structKeyExists(progress,"analysis_complete") AND !progress.analysis_complete)nextStatus="pending";
             queryExecute("UPDATE public.tb_evento_geocoding SET status=:status,attempts=CASE WHEN :status='pending' THEN 0 ELSE attempts END,next_retry_at=CASE WHEN :status='pending' THEN clock_timestamp() ELSE next_retry_at END WHERE id=:id",{status=bind(nextStatus),id=bind(id,"cf_sql_bigint")},variables.db);

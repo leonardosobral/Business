@@ -151,8 +151,9 @@ component output=false {
         var q=queryExecute("SELECT response::text AS body FROM public.tb_geocoding_cache WHERE cache_key=:key AND expires_at>clock_timestamp()",{key=p(lCase(hash("source-v3|" & key,"SHA-256")))},variables.options);
         return q.recordCount ? {found=true,value=deserializeJSON(q.body[1])} : {found=false,value={}};
     }
-    public void function resourcePut(required string key,required struct value,numeric days=1) {
-        queryExecute("INSERT INTO public.tb_geocoding_cache(cache_key,query_text,response,expires_at) VALUES(:key,'public-source-evidence',CAST(:body AS jsonb),clock_timestamp()+:days*interval '1 day') ON CONFLICT(cache_key) DO UPDATE SET response=excluded.response,expires_at=excluded.expires_at,updated_at=clock_timestamp()",{key=p(lCase(hash("source-v3|" & key,"SHA-256"))),body=p(serializeJSON(value),"cf_sql_longvarchar"),days=p(max(1,min(7,days)),"cf_sql_integer")},variables.options);
+    public void function resourcePut(required string key,required struct value,numeric days=1,numeric seconds=0) {
+        var ttl=seconds GT 0 ? max(60,min(604800,int(seconds))) : max(1,min(7,days))*86400;
+        queryExecute("INSERT INTO public.tb_geocoding_cache(cache_key,query_text,response,expires_at) VALUES(:key,'public-source-evidence',CAST(:body AS jsonb),clock_timestamp()+:ttl*interval '1 second') ON CONFLICT(cache_key) DO UPDATE SET response=excluded.response,expires_at=excluded.expires_at,updated_at=clock_timestamp()",{key=p(lCase(hash("source-v3|" & key,"SHA-256"))),body=p(serializeJSON(value),"cf_sql_longvarchar"),ttl=p(ttl,"cf_sql_integer")},variables.options);
     }
     public struct function cacheGet(required struct lookup) {
         var q=queryExecute("SELECT response::text AS body FROM public.tb_geocoding_cache WHERE cache_key=:key AND expires_at>clock_timestamp()",{key=p(cacheKey(lookup))},variables.options);

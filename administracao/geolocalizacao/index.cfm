@@ -8,5 +8,5 @@
 <cfinclude template="../../includes/estrutura/header.cfm">
 <main style="margin-top:-55px"><div class="container-fluid px-4 py-4"><cfinclude template="includes/view.cfm"></div></main>
 <cfinclude template="../../includes/estrutura/footer.cfm">
-<script src="./assets/geocoding.js?v=20261019-enrichment"></script>
+<script src="./assets/geocoding.js?v=20261022-review-edit"></script>
 </body></html>

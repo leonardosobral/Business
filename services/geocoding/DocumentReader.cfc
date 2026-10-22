@@ -31,7 +31,8 @@ component output=false {
             }
         }catch(any unavailable){arrayAppend(out.diagnostics,"source_unavailable");}
         for(var code in out.diagnostics)if(reFind("^(source_unavailable|source_time_budget|source_http_5[0-9][0-9])$",code))out.temporary=true;
-        if(!out.temporary)variables.store.resourcePut(cacheKey,out,1);
+        // Retain useful partial research and negative results briefly; never hammer an unavailable origin.
+        variables.store.resourcePut(cacheKey,out,1,out.temporary ? (arrayLen(out.documents) ? 900 : 300) : 86400);
         return out;
     }
 }

@@ -1,0 +1,67 @@
+{
+  "ok": true,
+  "checked_at": "2026-10-22T13:37:55.856808+00:00",
+  "publication_receipt": "geocoding-review-20261022.json",
+  "production_comparison": {
+    "ok": true,
+    "checks": {
+      "services/geocoding/ReviewGuide.cfc": true,
+      "administracao/geolocalizacao/includes/review_guide_view.cfm": true,
+      "administracao/geolocalizacao/assets/review-guide.css": true,
+      "administracao/geolocalizacao/includes/backend.cfm": true,
+      "administracao/geolocalizacao/includes/view.cfm": true,
+      "administracao/geolocalizacao/assets/geocoding.js": true,
+      "administracao/geolocalizacao/index.cfm": true,
+      "includes/estrutura/sidenav.cfm": true,
+      "services/geocoding/config.cfm": true,
+      "services/geocoding/LocationPolicy.cfc": true,
+      "services/geocoding/EnrichmentPolicy.cfc": true,
+      "services/geocoding/EnrichmentStore.cfc": true,
+      "administracao/geolocalizacao/includes/radar_view.cfm": true,
+      "api/eventos/geolocalizar.cfm": true,
+      "services/geocoding/AIClient.cfc": true,
+      "services/geocoding/DocumentReader.cfc": true,
+      "services/geocoding/LocationStore.cfc": true,
+      "services/geocoding/LocationWorker.cfc": true,
+      "services/geocoding/Store.cfc": true
+    }
+  },
+  "native_suites_passed": 42,
+  "python_reader_tests_passed": 11,
+  "independent_review": {
+    "important_findings_resolved": [
+      "destination-only stale comparison",
+      "skip uses event identity",
+      "state hydration after stale POST"
+    ],
+    "remaining_important_or_critical": 0
+  },
+  "browser": {
+    "authenticated_global_admin": true,
+    "guided_review_visible": true,
+    "current_vs_source_visible": true,
+    "trusted_field_both_choices_visible": true,
+    "untrusted_field_acceptance_absent": true,
+    "skip_observed": {
+      "from_work": 4063,
+      "to_work": 3980,
+      "skipped_count": 1,
+      "saved_decisions": 0
+    },
+    "resume_observed": {
+      "restored_work": 4063,
+      "skipped_count": 0,
+      "saved_decisions": 0
+    },
+    "real_event_approvals_or_rejections_performed": false,
+    "screenshot": "geocoding-review-20261022.jpg",
+    "screenshot_sha256": "e52b61d5a5f18146ce735578e01d86ec863d035005ea55e4ae2e341a915d3156"
+  },
+  "runtime_files_published": 7,
+  "backup": "/var/backups/business-geocoding-sources-0rstg15z",
+  "schema_changed": false,
+  "credentials_changed": false,
+  "provider_calls_by_ui": 0,
+  "git_mutations": false,
+  "scope": "Guided review only; prior provider/worker optimizations and shared production menu preserved."
+}

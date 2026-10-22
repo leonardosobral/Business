@@ -1,0 +1,63 @@
+{
+  "ok": true,
+  "checked_at": "2026-10-22T14:17:22.430665+00:00",
+  "publication_receipt": "geocoding-review-edit-20261022.json",
+  "production_comparison": {
+    "ok": true,
+    "checks": {
+      "services/geocoding/ReviewInput.cfc": true,
+      "services/geocoding/EnrichmentStore.cfc": true,
+      "services/geocoding/LocationStore.cfc": true,
+      "services/geocoding/LocationWorker.cfc": true,
+      "services/geocoding/ReviewGuide.cfc": true,
+      "administracao/geolocalizacao/includes/review_guide_view.cfm": true,
+      "administracao/geolocalizacao/assets/review-guide.css": true,
+      "administracao/geolocalizacao/includes/backend.cfm": true,
+      "administracao/geolocalizacao/includes/view.cfm": true,
+      "administracao/geolocalizacao/assets/geocoding.js": true,
+      "administracao/geolocalizacao/index.cfm": true,
+      "includes/estrutura/sidenav.cfm": true,
+      "services/geocoding/config.cfm": true,
+      "services/geocoding/LocationPolicy.cfc": true,
+      "services/geocoding/EnrichmentPolicy.cfc": true,
+      "administracao/geolocalizacao/includes/radar_view.cfm": true,
+      "api/eventos/geolocalizar.cfm": true,
+      "services/geocoding/AIClient.cfc": true,
+      "services/geocoding/DocumentReader.cfc": true,
+      "services/geocoding/Store.cfc": true
+    }
+  },
+  "native_suites_passed": 44,
+  "python_reader_tests_passed": 11,
+  "independent_review": {
+    "important_findings_resolved": [
+      "resume with incomplete source evidence",
+      "draft preservation after concurrent changes",
+      "draft isolation after revision/field reordering"
+    ],
+    "remaining_important_or_critical": 0
+  },
+  "browser": {
+    "authenticated_global_admin": true,
+    "work_id": 4063,
+    "step": "field-14",
+    "inline_editor_visible": true,
+    "save_and_continue_visible": true,
+    "empty_value_blocked_by_required_validation": true,
+    "validation_text": "Preencha este campo.",
+    "temporary_local_text_edit_observed": true,
+    "copy_suggestion_restored_original_value": true,
+    "saved_decisions_before": 0,
+    "saved_decisions_after": 0,
+    "real_event_approvals_corrections_or_rejections_performed": false,
+    "screenshot": "geocoding-review-edit-20261022.jpg",
+    "screenshot_sha256": "98f642adead7d1af56fcca4d07ad92a93e918cfebf0c1da401f930f8ea1850e4"
+  },
+  "runtime_files_published": 11,
+  "backup": "/var/backups/business-geocoding-sources-ywungc3a",
+  "schema_changed": false,
+  "credentials_changed": false,
+  "paid_provider_calls_by_tests_or_ui": 0,
+  "git_mutations": false,
+  "scope": "Inline editing of pending enrichment fields; location precision rules, provider quotas, earlier optimizations and shared production menu preserved."
+}
