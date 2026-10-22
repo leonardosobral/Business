@@ -91,6 +91,9 @@ fixture=createObject("component","services.ProviderFixture").init([responseFor({
 result=fixture.rewrite("Corrida & caminhada." & chr(10) & "Encontro no parque.","SENSITIVE_FIXTURE");
 check(find("&amp;",result.html) GT 0 AND find("<br>",result.html) GT 0,"Stored HTML encodes plain text and retains line breaks");
 expectError(function(){service.rewrite("Corrida no parque.","");},"EventDescriptionRewrite.Provider","Missing API key cannot start provider request");
+include "regressions.cfm";
 include "translation.cfm";
+include "format-equivalences.cfm";
+include "audit-evidence.cfm";
 writeOutput("EVENT_REWRITE_TESTS_PASSED:" & assertions & chr(10));
 </cfscript>

@@ -198,12 +198,13 @@
                                 <div class="col-md-5 mb-3">
                                     <div data-mdb-input-init class="form-outline">
                                         <input type="text" class="form-control pt-3" id="txtCoordenadas" name="coordenadas" value="<cfoutput>#qEvento.coordenadas#</cfoutput>" />
-                                        <label for="txtCoordenadas" class="form-label">Coordenadas</label>
+                                        <label for="txtCoordenadas" class="form-label">Coordenadas da prova</label>
                                     </div>
                                 </div>
 
                             </div>
 
+                            <cfinclude template="includes/localizacoes_confirmadas.cfm">
                             <hr class="mt-0"/>
 
                             <div class="input-group mb-3">

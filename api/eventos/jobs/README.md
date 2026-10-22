@@ -31,7 +31,10 @@ Autenticação: `X-RR-Handoff-Timestamp` e `X-RR-Handoff-Signature`, com
 HMAC-SHA256 de `timestamp + "." + corpo` e janela de cinco minutos. O segredo é
 `cronSecrets.business_internal` em `config/business.local.cfm`.
 
-A chave vem de `OPENAI_API_KEY` ou `businessLocalConfig.openAiApiKey`. O modelo
+A chave específica `businessLocalConfig.eventDescriptionApiKey` tem prioridade,
+permitindo isolar a cobrança deste job sem alterar a credencial das demais funções.
+Quando vazia ou ausente, mantém o fallback para `OPENAI_API_KEY` e depois
+`businessLocalConfig.openAiApiKey`. O modelo
 padrão é `gpt-4.1-mini`, configurável por `businessLocalConfig.eventDescriptionModel`.
 Esses valores são lidos a cada chamada; não é necessário reiniciar a aplicação.
 Credenciais e URL do provedor não são aceitas no corpo da requisição.
@@ -51,6 +54,13 @@ Credenciais e URL do provedor não são aceitas no corpo da requisição.
   Uma segunda chamada compara os fatos e suas relações. Divergências impedem
   a gravação. Essas verificações reduzem o risco; não são uma prova matemática
   de equivalência factual. Casos ambíguos devem ser revisados.
+- A normalização remove também o prefixo de CSS órfão reconhecido em alguns
+  importadores e suas instruções de template. O original no banco fica intacto.
+  Fontes contendo apenas “Em breve Inscrições. Aguardem...” ou “Regulamento:
+  Clique Aqui!” sem destino são rejeitadas como `source_placeholder`, antes da IA.
+- Durações inteiras equivalentes (`Duração: 4h00` / `Duração: 4 horas`) são
+  comparadas separadamente dos horários. Valores diferentes, minutos perdidos,
+  conversões de unidade e alterações na largada continuam bloqueados.
 - A saída é texto escapado para HTML, com `<br>` para quebras. Não é permitido
   HTML ativo gerado pela IA.
 - O `UPDATE` altera somente `descricao` e exige que ela continue vazia e que
@@ -82,6 +92,35 @@ etapas anteriores. O lote não repete um par evento/idioma na mesma execução.
 tentativa, com os mesmos dados, contador de tentativas, próximo retry e vínculo
 com a validação anterior quando uma saída é reaproveitada. `metadata_before`
 preserva o bloco anterior do idioma para permitir restauração conjunta.
+
+Nas novas rejeições, `results[].validationReasons` traz códigos específicos e
+`results[].message` explica o motivo em português no histórico do cron. A auditoria
+persiste o primeiro código em `error_code`, sem mudança de schema. Não são expostos
+texto bruto da revisão, credenciais ou detalhes internos das exceções. Registros
+antigos permanecem como foram gravados; uma rejeição histórica não é reaberta
+automaticamente por esta correção.
+
+### Auditoria privada das respostas rejeitadas
+
+`/administracao/cron-jobs/descricoes-auditoria.cfm` permite aos administradores
+globais filtrar rejeições por evento e idioma. As abas mostram os valores
+ausentes/introduzidos e os textos completos lado a lado, com o parecer do revisor
+quando disponível. A tela não gera conteúdo nem reabre tentativas.
+
+Sem alteração de schema, novas rejeições com candidato disponível guardam em
+`description_after` um envelope JSON privado com `version=1`, `source` (texto
+normalizado realmente utilizado), `candidate`, `reasons` e `reviewReason`.
+Nos status de saída validada, esse campo continua sendo o HTML validado. O JSON
+de rejeição nunca é publicado nem aceito pelo cache de traduções: seu status é
+sempre `rejected`. O cron retorna somente motivos seguros e `auditUrl`, não o
+candidato nem o parecer bruto. A página exige login e privilégio global e envia
+`Cache-Control: private, no-store`.
+
+Rejeições históricas e falhas sem candidato permanecem sem texto comparável;
+a interface informa essa limitação sem consumir novas chamadas à IA. A extração
+mostra diferenças de conjuntos, não um pareamento presumido entre substituições.
+Distâncias traduzidas usam unidades canônicas multilíngues, evitando marcar
+`5 quilômetros` e `5 kilometers` como divergentes.
 
 A fila `auto` prioriza eventos ainda não encerrados, depois o ID do evento e a
 ordem português, inglês, espanhol. Assim, termina os idiomas de um evento antes
@@ -159,14 +198,18 @@ nesta entrega.
 node _codex/scripts/test_event_description_rewrite_cfml_local.mjs
 node _codex/scripts/test_event_description_endpoint_local.mjs
 node _codex/scripts/test_event_description_sql.mjs
+python3 _codex/scripts/test_event_description_native.py
 ```
 
-O primeiro executa o serviço em CFML isolado. Os outros usam PostgreSQL
-descartável, cobrindo o fluxo do endpoint e suas consultas reais, sem conexão ao
-banco de produção.
+O primeiro executa o serviço em CFML isolado. Os dois testes Node seguintes usam
+PostgreSQL descartável. O teste Python nativo usa o ColdFusion do servidor com
+provedor simulado (sem API de IA), testa permissões e executa as consultas de
+auditoria com IDs explícitos de teste dentro de uma transação obrigatoriamente
+revertida. Não escreve eventos, não avança sequências e não altera schema ou
+permissões. A configuração atual dessa fixture usa o evento 48091.
 
 Para suspender, desativar apenas este job. Para reverter uma descrição específica,
-usar `description_before` da auditoria somente se a descrição atual ainda for
+usar apenas auditoria com status `updated` e `description_before` somente se a descrição atual ainda for
 exatamente `description_after` e o original continuar igual a `source_text`.
 Para traduções, comparar `descricao` com `source_text` e restaurar somente o
 campo de idioma da auditoria, incluindo o `NULL` anterior quando aplicável, e o

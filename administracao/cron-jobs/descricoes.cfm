@@ -17,7 +17,7 @@
         <h1 class="h3 mb-2">Descrições dos eventos</h1>
         <p class="text-body-secondary mb-0">Reescrita em português e traduções para inglês e espanhol.</p>
       </div>
-      <a class="btn btn-sm btn-outline-secondary" href="./">Cron Jobs</a>
+      <div class="d-flex gap-2 flex-wrap"><a class="btn btn-sm btn-outline-primary" href="descricoes-auditoria.cfm">Auditoria privada</a><a class="btn btn-sm btn-outline-secondary" href="./">Cron Jobs</a></div>
     </div>
     <cfif NOT VARIABLES.descriptionStatusReady>
       <div class="alert alert-warning" role="alert"><cfoutput>#encodeForHTML(len(VARIABLES.descriptionStatusError) ? VARIABLES.descriptionStatusError : "O processamento de traduções ainda não está instalado.")#</cfoutput></div>

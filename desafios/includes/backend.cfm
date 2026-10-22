@@ -391,6 +391,8 @@
         #VARIABLES.challengeCircuitTotalEvents# AS dias_do_ano,
         pag.tag,
         pag.verificado,
+        pag.instagram,
+        pag.whatsapp,
         coalesce(
             'https://roadrunners.run/assets/paginas/' || nullif(trim(pag.path_imagem), ''),
             nullif(trim(usr.strava_profile), ''),
@@ -429,7 +431,9 @@
                    pagina.uf,
                    pagina.tag,
                    pagina.verificado,
-                   pagina.path_imagem
+                   pagina.path_imagem,
+                   pagina.instagram,
+                   pagina.whatsapp
             FROM tb_paginas pagina
             WHERE pagina.id_usuario_cadastro = usr.id
               AND pagina.tag_prefix = 'atleta'
@@ -582,6 +586,8 @@
         usr.ddd_usuario,
         usr.telefone_usuario,
         usr.email,
+        pag.instagram,
+        pag.whatsapp,
         usr.strava_id,
         usr.strava_code,
         usr.ddi_usuario,
@@ -662,7 +668,9 @@
                    pagina.uf,
                    pagina.tag,
                    pagina.verificado,
-                   pagina.path_imagem
+                   pagina.path_imagem,
+                   pagina.instagram,
+                   pagina.whatsapp
             FROM tb_paginas pagina
             WHERE pagina.id_usuario_cadastro = usr.id
               AND pagina.tag_prefix = 'atleta'

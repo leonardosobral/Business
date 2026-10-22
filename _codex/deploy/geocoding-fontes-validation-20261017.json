@@ -1,0 +1,62 @@
+{
+  "status": "published_and_verified",
+  "runtime_receipt": "geocoding-fontes-20261017.json",
+  "python_tests": {"passed": 10, "failed": 0, "network": false},
+  "native_suites": ["policy", "provider", "sources", "source_conflicts", "worker", "endpoint", "view", "access", "integration", "workflow"],
+  "native_suites_passed": 10,
+  "native_failed": 0,
+  "review": {
+    "independent": true,
+    "reported_important": 3,
+    "reported_minor": 1,
+    "all_four_fixed_red_green": true,
+    "additional_browser_regression_fixed_red_green": "Legacy source versions excluded from current human-review queue"
+  },
+  "live_acceptance": {
+    "event_id": 49279,
+    "work_id": 293,
+    "pipeline_version": 2,
+    "status": "auto_applied",
+    "processed": 1,
+    "applied": 1,
+    "geoapify_calls": 1,
+    "source_documents": 1,
+    "source_url": "https://www.sympla.com.br/evento/corre-cidade-movimente-se-edicao-especial-outubro-rosa/3614111",
+    "source_edition": "2026-10-17",
+    "venue": "Shopping Cidade",
+    "street": "Rua dos Tupis",
+    "house_number": "337",
+    "coordinates": "-19.9220057,-43.9400589",
+    "manual_coordinate_entry": false,
+    "audit_actor": "job",
+    "native_archive": "/var/backups/geocoding-tests-3ppwwx5k"
+  },
+  "cron": {
+    "id": 25,
+    "active": true,
+    "interval_minutes": 5,
+    "last_verified_run_id": 212037,
+    "http": "200 OK",
+    "pipeline_version": 2,
+    "processed": 5,
+    "legacy_sources_invalidated_safely": 5,
+    "errors": 0,
+    "native_archive": "/var/backups/geocoding-tests-4o0dyii8"
+  },
+  "browser": {
+    "authenticated_global": true,
+    "separate_city_tab": true,
+    "legacy_review_queue_excluded": true,
+    "source_and_edition_displayed": true,
+    "map_link_displayed": true,
+    "embedded_map_loaded": true,
+    "screenshot": "geocoding-fontes-validacao-20261017.jpg",
+    "real_review_action_mutated": false,
+    "no_reason_review_verified_by_native_transaction": true
+  },
+  "guards": {"unsigned_post": 401, "get_job": 405, "source_code_public_access": 403, "anonymous_panel": 302},
+  "sql_applied": false,
+  "credentials_changed": false,
+  "git_operations": false,
+  "remaining_constraints": ["No OCR or paid generic search", "Unlinked/inaccessible sources remain approximate or insufficient", "Native CFPDF worst-case resource usage not proven by fetch timeout", "Backlog completion time depends on quotas, source availability and cache"]
+}

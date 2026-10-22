@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "native_evidence": "dev-login-tests-20261021.json",
+  "native_checks": 52,
+  "render_cases": 4,
+  "confirmation_checks": 4,
+  "real_http": {
+    "archive": "/var/backups/dev-login-probe-559dso_o",
+    "exchange_status": 302,
+    "profile_status": 200,
+    "target_profile_visible": true,
+    "return_button": true,
+    "return_status": 302,
+    "administrator_restored": true,
+    "conflicting_legacy_cookies_tested": true,
+    "credentials_printed": false,
+    "account_data_mutations": false
+  },
+  "browser": {
+    "published_button_visible": true,
+    "audit_visible": true,
+    "screenshot": "dev-login-20261021.png",
+    "native_dialog_automation": "unavailable; acceptance and cancellation verified by JavaScript interaction tests"
+  },
+  "git_mutations": false,
+  "production_rr_files_changed": false
+}

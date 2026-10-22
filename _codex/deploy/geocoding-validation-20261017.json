@@ -1,0 +1,30 @@
+{
+  "schema_detected": true,
+  "schema_ddl_executed_by_agent": false,
+  "datasource_protections_changed": false,
+  "private_key_configured": true,
+  "allowed_geoapify_ip": "172.233.2.76",
+  "browser_connection_test": "validated",
+  "real_smoke": {
+    "specific_place": "Parque Ibirapuera",
+    "specific_decision": "auto_applied eligibility only; no event written",
+    "city_decision": "city_suggestion",
+    "provider_calls": 2,
+    "events_changed": 0,
+    "archive": "/var/backups/geocoding-tests-p8se8nar"
+  },
+  "cron": {
+    "id": 25,
+    "active": true,
+    "interval_minutes": 5,
+    "daily_limit": 1000,
+    "first_manual_run_http": 200,
+    "first_manual_run_duration_ms": 7490,
+    "first_batch_review_items": 5,
+    "first_batch_coordinates_applied": 0
+  },
+  "integration_archive": "/var/backups/geocoding-tests-d2yzz8b1",
+  "negative_controls_expected_red": ["foreign-region", "stale-review", "provider-lease", "expired-lease"],
+  "runtime_backup": "/var/backups/business-geocoding-20261017-vj33x9_c",
+  "git_commit_or_push": false
+}

@@ -1,0 +1,43 @@
+{
+  "task": "Corrigir falha do job 14 causada por ícone de rodapé de antivírus no importador SixComm",
+  "date": "2026-10-15",
+  "status": "published_and_verified_in_production",
+  "root_cause": "O extrator considerava o ícone 46x29 de s-install.avcdn.net/ipm/preview/icons/ uma foto editorial, provocando rejeição pela allowlist e rollback da mensagem.",
+  "runtime_file": "/var/www/conteudo.roadrunners.run/inc/sixcomm_email_importer.cfc",
+  "local_source": "/Users/geraldoprotta/IdeaProjects/News/inc/sixcomm_email_importer.cfc",
+  "local_test": "/Users/geraldoprotta/IdeaProjects/News/tests/sixcomm_editorial_images_spec.cfm",
+  "scope": "Dois acréscimos no predicado isDecorativeImage: comentário e filtro do host/caminho exatos do ícone. A allowlist de downloads não foi ampliada.",
+  "backup": "/var/backups/sixcomm-footer-20261015-s181c1zt",
+  "before_sha256": "f359f28027d00f94c9aab072a6e2da758487a2d06c630ee8c734475488de54ef",
+  "after_sha256": "9ac8f4a1f321b7e24a33c60abc142167ace750425c2aa1269ca55438109c1ea6",
+  "production_baseline_preserved": "O candidato foi criado sobre produção, mantendo guards de DDL preexistentes que não estão no checkout local. Mudanças locais de reimportação e demais frentes foram preservadas.",
+  "verification": {
+    "before_fix": {"native_adobe_cf_cases": 8, "expected_failures": 3},
+    "staged_candidate": {"native_adobe_cf_cases": 8, "failures": 0},
+    "production_component": {"native_adobe_cf_cases": 8, "failures": 0},
+    "permanent_regression_file": "PASS SixComm editorial images: 8 assertions",
+    "real_messages_checked_before_publication": 2,
+    "editorial_photos_retained": [2, 3],
+    "review": "Revisão independente sem achados no diff pontual e nos testes.",
+    "git_diff_check": "passed",
+    "scoped_job_retry": {
+      "job_id": 14,
+      "run_id": 201833,
+      "time_brasilia": "2026-10-15 08:55:26",
+      "status": "success",
+      "http_status": "200 OK",
+      "result_status": "completed",
+      "created": 2,
+      "errors": 0,
+      "content_ids": [3025, 3026],
+      "existing_job_configuration_used": true
+    },
+    "editorial_followup": "Os registros foram importados às 08:55:29 e 08:55:31. A consulta posterior mostrou status published com updated_at 08:56:01.481 e 08:56:08.915. O importador e o trigger continuam definindo entrada em review/published=false; não foram alterados regras, triggers nem status editoriais diretamente nesta tarefa. A autoria das atualizações posteriores não foi determinada; não atribuir publicação automática sem evidência.",
+    "credential_config_unchanged_sha256": "e2337e693484edd190f91e42d17924289e1ae38f13e43fac186c7d24eccbb396",
+    "temporary_diagnostics": "Protegidos por loopback e token aleatório, com no-store; todos retirados do webroot e arquivados em backups privados. URLs News e Business verificadas com HTTP 404."
+  },
+  "credentials_changed": false,
+  "database_schema_changed": false,
+  "publication_rules_changed": false,
+  "git_mutations": {"commit": false, "push": false, "branch": false}
+}

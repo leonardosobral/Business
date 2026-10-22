@@ -1,0 +1,116 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-geocoding-sources-t_76o9gd",
+  "manifest": {
+    "services/geocoding/source_fetcher.py": {
+      "before": null,
+      "after": "ae5fbc8682de76e811829fe260ebe7111dc2efb853f9823c2e5743a815163d57"
+    },
+    "services/geocoding/Sources.cfc": {
+      "before": null,
+      "after": "46a93406a36f552baf7cb982abc7ae5a95742ae81cab4bbd54860691db88b9fb"
+    },
+    "services/geocoding/Policy.cfc": {
+      "before": "29d99cb7ab39c9cc8a35497f624a7545fc4689193e64b94be4f8d3cd13bcf41f",
+      "after": "b8c2706a28f4b575794e560c2816b05873155f72bf9d63a78e75b16390960c9f"
+    },
+    "services/geocoding/Store.cfc": {
+      "before": "1524da80a506a9cdd7025d8e7ec3fe68b0171c8c742d6acaf9861dbe510e9fd2",
+      "after": "5caf131893f0f8f67854b7f2e1d421fcb40e19a9d5fa6e1f7b86ad3509a6c544"
+    },
+    "services/geocoding/Worker.cfc": {
+      "before": "33cc99f89c61bc038214bc85b81fabe8cbc78216fed7a0ca6a4c911f125a1e99",
+      "after": "5276bf42280beee70ed80b9460e0789482be4a84a20dec0469172d38fc1cf7d5"
+    },
+    "administracao/geolocalizacao/includes/backend.cfm": {
+      "before": "12413ebb2b729439ca63c300aceac0a70ced9677f88eef9c9a3b26d4265f6c6a",
+      "after": "b3dbf5e35ec433051cb472526cafacb6796cacf2d9bd17706cc1da0454fda24e"
+    },
+    "administracao/geolocalizacao/includes/view.cfm": {
+      "before": "aeba7b18ee6a52adf99bddc41ed960f4d07592261acbe8739afad3f1e12280d4",
+      "after": "9912014ec758dde16def41cfea6b9862c493562ec372d06c13ed9e4829cd4c26"
+    }
+  },
+  "probes": [
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "GET",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "POST",
+      "status": "401",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/Sources.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/source_fetcher.py",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/administracao/geolocalizacao/",
+      "method": "GET",
+      "status": "302",
+      "ok": true
+    }
+  ],
+  "checks": [
+    {
+      "path": "services/geocoding/Store.cfc",
+      "ok": true
+    }
+  ],
+  "sql_applied": false,
+  "credentials_changed": false,
+  "delta": {
+    "services/geocoding/Store.cfc": {
+      "before": "1524da80a506a9cdd7025d8e7ec3fe68b0171c8c742d6acaf9861dbe510e9fd2",
+      "after": "5caf131893f0f8f67854b7f2e1d421fcb40e19a9d5fa6e1f7b86ad3509a6c544"
+    }
+  },
+  "previous_publications": [
+    {
+      "backup": "/var/backups/business-geocoding-sources-l8yb550m",
+      "manifest": {
+        "services/geocoding/source_fetcher.py": {
+          "before": null,
+          "after": "ae5fbc8682de76e811829fe260ebe7111dc2efb853f9823c2e5743a815163d57"
+        },
+        "services/geocoding/Sources.cfc": {
+          "before": null,
+          "after": "46a93406a36f552baf7cb982abc7ae5a95742ae81cab4bbd54860691db88b9fb"
+        },
+        "services/geocoding/Policy.cfc": {
+          "before": "29d99cb7ab39c9cc8a35497f624a7545fc4689193e64b94be4f8d3cd13bcf41f",
+          "after": "b8c2706a28f4b575794e560c2816b05873155f72bf9d63a78e75b16390960c9f"
+        },
+        "services/geocoding/Store.cfc": {
+          "before": "d8b1a47d44013f828c8d447276981ad1225e8ce01c18f77c482a141438eb9229",
+          "after": "1524da80a506a9cdd7025d8e7ec3fe68b0171c8c742d6acaf9861dbe510e9fd2"
+        },
+        "services/geocoding/Worker.cfc": {
+          "before": "33cc99f89c61bc038214bc85b81fabe8cbc78216fed7a0ca6a4c911f125a1e99",
+          "after": "5276bf42280beee70ed80b9460e0789482be4a84a20dec0469172d38fc1cf7d5"
+        },
+        "administracao/geolocalizacao/includes/backend.cfm": {
+          "before": "12413ebb2b729439ca63c300aceac0a70ced9677f88eef9c9a3b26d4265f6c6a",
+          "after": "b3dbf5e35ec433051cb472526cafacb6796cacf2d9bd17706cc1da0454fda24e"
+        },
+        "administracao/geolocalizacao/includes/view.cfm": {
+          "before": "aeba7b18ee6a52adf99bddc41ed960f4d07592261acbe8739afad3f1e12280d4",
+          "after": "9912014ec758dde16def41cfea6b9862c493562ec372d06c13ed9e4829cd4c26"
+        }
+      }
+    }
+  ]
+}

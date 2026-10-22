@@ -28,6 +28,13 @@
         </thead>
         <tbody>
           <cfoutput query="qCatarinenseRanking" startrow="#VARIABLES.catarinenseStartRow#" maxrows="#VARIABLES.catarinensePageSize#">
+            <cfset VARIABLES.catarinenseContact = {}/>
+            <cfloop list="id,nome,imagem_usuario,email,ddi_usuario,ddd_usuario,telefone_usuario,instagram,whatsapp,tag,cidade,estado,equipe" index="VARIABLES.catarinenseContactField">
+              <cfset VARIABLES.catarinenseContact[VARIABLES.catarinenseContactField] = ""/>
+              <cfif listFindNoCase(VARIABLES.qCatarinenseRanking.columnList,VARIABLES.catarinenseContactField) AND NOT isNull(VARIABLES.qCatarinenseRanking[VARIABLES.catarinenseContactField][VARIABLES.qCatarinenseRanking.currentRow])>
+                <cfset VARIABLES.catarinenseContact[VARIABLES.catarinenseContactField] = VARIABLES.qCatarinenseRanking[VARIABLES.catarinenseContactField][VARIABLES.qCatarinenseRanking.currentRow] & ""/>
+              </cfif>
+            </cfloop>
             <cfset VARIABLES.challengeMedalStatusLabel = "Em progresso"/>
             <cfset VARIABLES.challengeMedalStatusClass = "badge-secondary"/>
             <cfswitch expression="#VARIABLES.qCatarinenseRanking.medalha_status#">
@@ -54,12 +61,13 @@
                 <div class="d-flex align-items-center gap-2">
                   <img class="rounded-circle catarinense-avatar" src="#encodeForHTMLAttribute(VARIABLES.qCatarinenseRanking.imagem_usuario)#" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/>
                   <div>
-                    <div class="fw-semibold">
+                    <div class="fw-semibold d-flex align-items-center justify-content-between gap-2">
                       <cfif len(trim(VARIABLES.qCatarinenseRanking.tag & ""))>
                         <a class="text-reset" href="https://roadrunners.run/atleta/#urlEncodedFormat(VARIABLES.qCatarinenseRanking.tag)#/" target="_blank" rel="noopener noreferrer">#encodeForHTML(VARIABLES.qCatarinenseRanking.nome)#</a>
                       <cfelse>
                         #encodeForHTML(VARIABLES.qCatarinenseRanking.nome)#
                       </cfif>
+                      <button type="button" class="btn btn-sm catarinense-contact-button shadow-0" data-catarinense-contact="#encodeForHTMLAttribute(serializeJSON(VARIABLES.catarinenseContact))#" aria-haspopup="dialog" aria-controls="catarinenseContactDialog" aria-label="Contato de #encodeForHTMLAttribute(VARIABLES.qCatarinenseRanking.nome)#" title="Contato do atleta"><i class="fa-regular fa-address-card" aria-hidden="true"></i></button>
                     </div>
                     <div class="small text-muted">ID #VARIABLES.qCatarinenseRanking.id# · #encodeForHTML(VARIABLES.qCatarinenseRanking.cidade)#/#encodeForHTML(VARIABLES.qCatarinenseRanking.estado)#</div>
                     <cfif URL.aba EQ "ranking">
@@ -131,3 +139,4 @@
     </div>
   </cfif>
 </section>
+<cfif VARIABLES.qCatarinenseRanking.recordcount><cfinclude template="catarinense_contact_modal.cfm"/></cfif>

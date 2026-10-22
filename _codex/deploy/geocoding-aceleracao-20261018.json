@@ -1,0 +1,129 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-geocoding-sources-gd2j4u09",
+  "manifest": {
+    "services/geocoding/Store.cfc": {
+      "before": "5caf131893f0f8f67854b7f2e1d421fcb40e19a9d5fa6e1f7b86ad3509a6c544",
+      "after": "6b280aa911dee25b5ec09dcc0914d93912c7be888004a36e67ef11d891ea7deb"
+    },
+    "services/geocoding/Worker.cfc": {
+      "before": "5276bf42280beee70ed80b9460e0789482be4a84a20dec0469172d38fc1cf7d5",
+      "after": "2787fa63354c3450de60e47f26b8eebe21ba871c88dc4b32f130c75e06e42d15"
+    },
+    "services/geocoding/GeoapifyClient.cfc": {
+      "before": "3c8664c20abd8fbacbd497669399f11c2f442b71054eb18dec44f598fbc74973",
+      "after": "651ed4a427c07b51fb7519e56684499182648b4a9fcb96c767ec679cfe2f5474"
+    },
+    "api/eventos/geolocalizar.cfm": {
+      "before": "83c0c51525f395f5264256fc32137396a6474af37cd6a02406fc0a1cecc368c6",
+      "after": "127ae2422cdae13c465a4b62b07f081e1859f8bfca0426aa2134111132774203"
+    },
+    "includes/backend/cron_jobs_service.cfm": {
+      "before": "f22b6aa4a280ad68007c17c56770548435581b639f84d3848bade960b4ddf1fc",
+      "after": "068f57f87e214ca9d34ec186c9af227649462068158b039861229cdf86fd203a"
+    },
+    "administracao/geolocalizacao/includes/view.cfm": {
+      "before": "9912014ec758dde16def41cfea6b9862c493562ec372d06c13ed9e4829cd4c26",
+      "after": "f68daf84b1f3eb58829dd4e9f57c7c329b2e20f04f0688c28ae985cf79793ba4"
+    },
+    "cron-jobs/runner.cfm": {
+      "before": "3fb19ec63c4aec38500dea20f58c5dab81c7a81a979651d58450eaac23464f1b",
+      "after": "02b02ecd33113a4f31c0068c537c6e822f71ae452626f5bc5e8f9a3dbada0ddb"
+    }
+  },
+  "probes": [
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "GET",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "POST",
+      "status": "401",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/Sources.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/source_fetcher.py",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/administracao/geolocalizacao/",
+      "method": "GET",
+      "status": "302",
+      "ok": true
+    }
+  ],
+  "checks": [
+    {
+      "path": "includes/backend/cron_jobs_service.cfm",
+      "ok": true
+    },
+    {
+      "path": "cron-jobs/runner.cfm",
+      "ok": true
+    }
+  ],
+  "sql_applied": false,
+  "credentials_changed": false,
+  "delta": {
+    "includes/backend/cron_jobs_service.cfm": {
+      "before": "f22b6aa4a280ad68007c17c56770548435581b639f84d3848bade960b4ddf1fc",
+      "after": "068f57f87e214ca9d34ec186c9af227649462068158b039861229cdf86fd203a"
+    },
+    "cron-jobs/runner.cfm": {
+      "before": "3fb19ec63c4aec38500dea20f58c5dab81c7a81a979651d58450eaac23464f1b",
+      "after": "02b02ecd33113a4f31c0068c537c6e822f71ae452626f5bc5e8f9a3dbada0ddb"
+    }
+  },
+  "previous_publications": [
+    {
+      "backup": "/var/backups/business-geocoding-sources-h1mduxgj",
+      "manifest": {
+        "services/geocoding/Store.cfc": {
+          "before": "5caf131893f0f8f67854b7f2e1d421fcb40e19a9d5fa6e1f7b86ad3509a6c544",
+          "after": "6b280aa911dee25b5ec09dcc0914d93912c7be888004a36e67ef11d891ea7deb"
+        },
+        "services/geocoding/Worker.cfc": {
+          "before": "5276bf42280beee70ed80b9460e0789482be4a84a20dec0469172d38fc1cf7d5",
+          "after": "2787fa63354c3450de60e47f26b8eebe21ba871c88dc4b32f130c75e06e42d15"
+        },
+        "services/geocoding/GeoapifyClient.cfc": {
+          "before": "3c8664c20abd8fbacbd497669399f11c2f442b71054eb18dec44f598fbc74973",
+          "after": "651ed4a427c07b51fb7519e56684499182648b4a9fcb96c767ec679cfe2f5474"
+        },
+        "api/eventos/geolocalizar.cfm": {
+          "before": "83c0c51525f395f5264256fc32137396a6474af37cd6a02406fc0a1cecc368c6",
+          "after": "127ae2422cdae13c465a4b62b07f081e1859f8bfca0426aa2134111132774203"
+        },
+        "includes/backend/cron_jobs_service.cfm": {
+          "before": "2cdbbdcb5304ab274dfd0f8ac08656685bfe2516e708a9f0deedfcbd97b37270",
+          "after": "2afe3ae30a92e26e45e4bc152ddce4ffa4188d08b9d3b2e2114a24f2466a326b"
+        },
+        "administracao/geolocalizacao/includes/view.cfm": {
+          "before": "9912014ec758dde16def41cfea6b9862c493562ec372d06c13ed9e4829cd4c26",
+          "after": "f68daf84b1f3eb58829dd4e9f57c7c329b2e20f04f0688c28ae985cf79793ba4"
+        }
+      }
+    },
+    {
+      "backup": "/var/backups/business-geocoding-sources-8h1wzug7",
+      "manifest": {
+        "includes/backend/cron_jobs_service.cfm": {
+          "before": "2afe3ae30a92e26e45e4bc152ddce4ffa4188d08b9d3b2e2114a24f2466a326b",
+          "after": "f22b6aa4a280ad68007c17c56770548435581b639f84d3848bade960b4ddf1fc"
+        }
+      }
+    }
+  ]
+}

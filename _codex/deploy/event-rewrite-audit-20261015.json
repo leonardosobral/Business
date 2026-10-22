@@ -1,0 +1,62 @@
+{
+  "ok": true,
+  "backup": "/var/backups/business-rewrite-audit-20261015-87kqw8cy",
+  "files": {
+    "services/EventDescriptionRewriteService.cfc": {
+      "before": "a9a9b7ff3ba92f953e36e1d12f1aa19e023ffcca5d502cbb6d74e5ca380df91c",
+      "after": "f4432dcc124ae2cf13ab7b00f462665495fe6056b608683104d5bdc50413dc34",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "administracao/cron-jobs/includes/description_audit_backend.cfm": {
+      "before": null,
+      "after": "bbc197b891c3bf21a591b4a7074a289daf3fb0200156028d446159b5fefed85f",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "administracao/cron-jobs/includes/description_audit_view.cfm": {
+      "before": null,
+      "after": "1ecd36dfb953abe3fb152fb8960ac2d50fb45aa585bfbb654fc92bdd1a9ff35f",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "administracao/cron-jobs/descricoes-auditoria.cfm": {
+      "before": null,
+      "after": "23f7c29045462edb08c9a1d569a614b602bbfae07f246ff6edf9a23bec44ffb2",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "api/eventos/jobs/rewrite-descriptions.cfm": {
+      "before": "b6a25113863ee6d857e14476f485933a4fb19ce981ac36d6fec1e6605e4d05e0",
+      "after": "af4bb4a5ba7918bae0901d9eb1bfceae832ec7989e54c198a19329045c10c1c4",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "administracao/cron-jobs/descricoes.cfm": {
+      "before": "0c0719d054e1003e704601a8447587f9de42651f82c5990bc98be4db95cf6fd6",
+      "after": "03bbdd18ba56bc66344d7f94cdab7bc80ffdc6b6e0edb35949aa3e58b82d4302",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "runtime_get_status": 405,
+  "anonymous_audit_status": 302,
+  "credentials_changed": false,
+  "schedule_changed": false,
+  "events_changed": false,
+  "schema_changed": false,
+  "tests": {
+    "native_checks": 242,
+    "endpoint_guards": 29,
+    "rollback_database_checks": 9,
+    "privacy_checks": 4,
+    "archive": "/var/backups/rewrite-tests-w7ianmg2",
+    "live_ai_calls": 0
+  }
+}

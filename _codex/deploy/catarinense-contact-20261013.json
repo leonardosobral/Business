@@ -1,0 +1,88 @@
+{
+  "task": "Botão discreto e modal de contato do atleta nos circuitos Catarinense Rua e Trail",
+  "date": "2026-10-13",
+  "status": "published_and_verified",
+  "server_runtime": "Adobe ColdFusion 2025,0,13,331960",
+  "runtime_scope": [
+    "desafios/includes/backend.cfm",
+    "desafios/includes/catarinense_table.cfm",
+    "desafios/includes/catarinense_contact_modal.cfm",
+    "desafios/assets/catarinense-contact.js",
+    "desafios/assets/catarinense-contact.css"
+  ],
+  "change": "Botão acessível ao lado do nome em cada linha; um modal compartilhado com avatar maior, nome, ID, cidade, assessoria, e-mail, telefone, WhatsApp, Instagram, perfil e chat do Road Runners. Dados ausentes não geram links. Campos de contato existentes são carregados na consulta atual, sem consultas por atleta. Permissões, filtros e classificação permanecem inalterados.",
+  "backup": "/var/backups/business-catarinense-contact-20261013-YI0MTM",
+  "baseline_sha256": {
+    "desafios/includes/backend.cfm": "8d57603693c58e8133b74f439255b1f8d5cb1ac61ff7c414a520f2f453961fef",
+    "desafios/includes/catarinense_table.cfm": "5818434b83067f43a467c4eb011757c046266fca8aab85f666927dcf64062e50",
+    "desafios/includes/catarinense_contact_modal.cfm": null,
+    "desafios/assets/catarinense-contact.js": null,
+    "desafios/assets/catarinense-contact.css": null
+  },
+  "published_sha256": {
+    "desafios/includes/backend.cfm": "3a4eb39f9ccba28c6f9681d8b9e068a9ee19b4e60e6d873d56b0f514c88fd47a",
+    "desafios/includes/catarinense_table.cfm": "68f4e408ae6b261e2ed0f1580db92a5d6e07b76bb9128b04bc67284a5ce6bc95",
+    "desafios/includes/catarinense_contact_modal.cfm": "230e42876bb969ce8cd2373a5883db9c440dd6504df042a0d357a385794be97d",
+    "desafios/assets/catarinense-contact.js": "f6b2b026299c0bcd864a4a0de11a2eff8cd2ac59e476977dd79f0bd32a67cffa",
+    "desafios/assets/catarinense-contact.css": "f91b8550b8462a085583ff3c75eec2d6923e92b5f0e3b541ba1ead210e113b70"
+  },
+  "verification": {
+    "trusted_ssh_host_verification": "BatchMode=yes; StrictHostKeyChecking=yes; nenhuma alteração de chave do host",
+    "baseline_matched_before_publication": true,
+    "recoverable_backup_before_replacement": true,
+    "runtime_hashes_rechecked_after_browser_validation": true,
+    "native_candidate": {"checks": 175, "failures": 0},
+    "native_published": {"checks": 175, "failures": 0},
+    "native_scope": "Dados sintéticos em CF2025: modal/escapagem nos dois circuitos, ranking masculino/feminino, paginação, medalhas, etapas e regras. Verificação sem registros de atletas persistidos.",
+    "node_contact_model": {"tests": 12, "failures": 0},
+    "node_dialog_interactions": {"tests": 6, "failures": 0},
+    "review": "Revisão independente aprovada após corrigir duplicação de DDI em WhatsApp internacional; regressão reproduzida antes da correção e coberta por teste.",
+    "browser": {
+      "authenticated_global_admin": true,
+      "rua": {
+        "buttons_on_page": 50,
+        "shared_modal_count": 1,
+        "correct_identity_and_chat_target": true,
+        "telephone_and_instagram_actions_verified": true,
+        "whatsapp_telephone_fallback_verified": true,
+        "whatsapp_profile_precedence_verified": true,
+        "absent_fields_show_not_informed": true,
+        "native_escape_close_and_focus_return": true,
+        "close_button_verified": true,
+        "body_scroll_restored": true,
+        "visual_layout_verified": true
+      },
+      "trail": {
+        "buttons_on_page": 50,
+        "shared_modal_count": 1,
+        "correct_identity_and_chat_target": true,
+        "avatar_loaded": true,
+        "profile_link_available": true,
+        "native_escape_close_and_focus_return": true,
+        "visual_layout_verified": true
+      },
+      "contact_actions_sent": false,
+      "chat_link_followed": false
+    },
+    "temporary_runner_archived_to": "/var/backups/business-catarinense-contact-20261013-YI0MTM/test-runner",
+    "archived_runner_url_status": 404,
+    "git_diff_check": "passed",
+    "full_node_suite": {
+      "tests": 421,
+      "passed": 416,
+      "failed": 5,
+      "log": "/private/tmp/business-contact-suite-final-20261013.log",
+      "preexisting_unrelated_failures": [
+        {"test": "joining a group refreshes the group list, not channels", "file": "_codex/tests/chat-community-entry.test.cjs", "reason": "Mock existente não implementa event.target.matches; usa runtime do projeto irmão RoadRunners."},
+        {"test": "subscribing to a channel refreshes channels", "file": "_codex/tests/chat-community-entry.test.cjs", "reason": "Mock existente não implementa event.target.matches; usa runtime do projeto irmão RoadRunners."},
+        {"test": "modular manifest passes portable privacy and hash verification", "file": "_codex/tests/mif-report-deployment-contract.test.js", "reason": "Caminho absoluto de Python de outra máquina."},
+        {"test": "the modular feature never changes the existing registrations screen", "file": "_codex/tests/mif-report-deployment-contract.test.js", "reason": "Diferenças anteriores de revisão em inscricoes/home.cfm e inscricoes/includes/backend.cfm, fora deste escopo."},
+        {"test": "_codex/tests/seo_marathons_heading.test.mjs", "reason": "Import absoluto de HTML helper em caminho de outra máquina."}
+      ]
+    }
+  },
+  "persistent_data_writes": false,
+  "access_control_changes": false,
+  "application_restart": false,
+  "git_mutations": {"commit": false, "push": false, "branch": false, "pull_request": false}
+}

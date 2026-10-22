@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "guards_ok": true,
+  "database_ok": true,
+  "privacy_checks": [
+    {
+      "case": "defaults",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "case": "denied",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "case": "invalid",
+      "status": "400",
+      "ok": true
+    },
+    {
+      "case": "method",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "case": "view",
+      "status": "403",
+      "ok": true
+    }
+  ],
+  "archive": "/var/backups/rewrite-tests-haglvzik",
+  "stage_removed": true,
+  "service_sha256": "c0f2226025573b8380971e773eb715965bca32b331a562c2af14a95fd5cffa45",
+  "checked_at": "2026-10-21T12:08:33.923368+00:00",
+  "native_checks": 368,
+  "observed_formats": true,
+  "historical_regressions": true,
+  "live_ai_calls": 0
+}

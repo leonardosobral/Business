@@ -341,14 +341,16 @@ function userManagerDateInput(any value = "") {
 
             <div class="d-flex flex-wrap align-items-center gap-2">
               <a class="btn btn-sm btn-outline-secondary" href="./"><i class="fa-solid fa-arrow-left me-2"></i>Voltar</a>
-              <cfif VARIABLES.userManagerShowingDetail AND !VARIABLES.userManagerFormIsDeleted AND VARIABLES.userManagerFormIsActive>
+              <cfif VARIABLES.userManagerActorIsAdmin AND VARIABLES.userManagerShowingDetail AND !VARIABLES.userManagerFormIsDeleted AND VARIABLES.userManagerFormIsActive>
                 <cfoutput>
-                  <form method="post" action="./" target="_blank" class="m-0">
+                  <form method="post" action="./" target="_blank" rel="noopener noreferrer" class="m-0" data-dev-login
+                    data-confirm="#encodeForHTMLAttribute('Abrir o DEV como ' & qUserManagerUser.name & '? A sessão do Business será preservada e esta operação será registrada na auditoria. Use apenas para suporte técnico.')#">
                     <input type="hidden" name="user_manager_action" value="logar_como_dev"/>
                     <input type="hidden" name="user_manager_csrf" value="#encodeForHTMLAttribute(VARIABLES.userManagerCsrf)#"/>
+                    <input type="hidden" name="dev_login_confirmed" value="0"/>
                     <input type="hidden" name="user_id" value="#qUserManagerUser.id#"/>
                     <input type="hidden" name="return_tab" value="#encodeForHTMLAttribute(VARIABLES.userManagerTab)#"/>
-                    <button class="btn btn-sm btn-warning" type="submit" title="Abrir o ambiente DEV autenticado como este usuário">
+                    <button class="btn btn-sm btn-warning" type="submit" title="Abrir sessão de suporte em nova aba, somente no DEV">
                       <i class="fa-solid fa-user-secret me-2"></i>Logar como no DEV
                     </button>
                   </form>
@@ -756,7 +758,22 @@ function userManagerDateInput(any value = "") {
                   <td data-label="Perfis"><div class="fw-semibold">#LSNumberFormat(qUserManagerUsers.total_paginas)#</div><cfif len(trim(qUserManagerUsers.pagina_principal & ""))><div class="small text-muted">#encodeForHTML(qUserManagerUsers.pagina_principal)#</div></cfif></td>
                   <td data-label="Resultados">#LSNumberFormat(qUserManagerUsers.total_resultados)#</td>
                   <td data-label="Cadastro"><span class="small">#dateFormat(qUserManagerUsers.data_criacao,"dd/mm/yyyy")#</span></td>
-                  <td class="user-manager-actions" data-label="Ações"><div class="d-flex gap-1"><a class="btn btn-sm btn-outline-warning" href="./?user_id=#qUserManagerUsers.id#" title="Abrir ficha"><i class="fa-solid fa-pen-to-square"></i></a><cfif userManagerBoolean(qUserManagerUsers.gestao_ativo) AND !userManagerBoolean(qUserManagerUsers.gestao_excluido)><form method="post" action="./" target="_blank" class="m-0"><input type="hidden" name="user_manager_action" value="logar_como_dev"/><input type="hidden" name="user_manager_csrf" value="#encodeForHTMLAttribute(VARIABLES.userManagerCsrf)#"/><input type="hidden" name="user_id" value="#qUserManagerUsers.id#"/><input type="hidden" name="return_tab" value="conta"/><button class="btn btn-sm btn-outline-secondary" type="submit" title="Logar como no DEV"><i class="fa-solid fa-user-secret"></i></button></form></cfif></div></td>
+                  <td class="user-manager-actions" data-label="Ações">
+                    <div class="d-flex gap-1">
+                      <a class="btn btn-sm btn-outline-warning" href="./?user_id=#qUserManagerUsers.id#" title="Abrir ficha"><i class="fa-solid fa-pen-to-square"></i></a>
+                      <cfif VARIABLES.userManagerActorIsAdmin AND userManagerBoolean(qUserManagerUsers.gestao_ativo) AND !userManagerBoolean(qUserManagerUsers.gestao_excluido)>
+                        <form method="post" action="./" target="_blank" rel="noopener noreferrer" class="m-0" data-dev-login
+                          data-confirm="#encodeForHTMLAttribute('Abrir o DEV como ' & qUserManagerUsers.name & '? A sessão do Business será preservada e esta operação será registrada na auditoria. Use apenas para suporte técnico.')#">
+                          <input type="hidden" name="user_manager_action" value="logar_como_dev"/>
+                          <input type="hidden" name="user_manager_csrf" value="#encodeForHTMLAttribute(VARIABLES.userManagerCsrf)#"/>
+                          <input type="hidden" name="dev_login_confirmed" value="0"/>
+                          <input type="hidden" name="user_id" value="#qUserManagerUsers.id#"/>
+                          <input type="hidden" name="return_tab" value="conta"/>
+                          <button class="btn btn-sm btn-outline-secondary" type="submit" title="Logar como no DEV" aria-label="Logar como #encodeForHTMLAttribute(qUserManagerUsers.name)# no DEV"><i class="fa-solid fa-user-secret" aria-hidden="true"></i></button>
+                        </form>
+                      </cfif>
+                    </div>
+                  </td>
                 </tr>
               </cfoutput>
             <cfelse><tr><td colspan="7"><div class="user-manager-empty"><i class="fa-solid fa-user-slash fa-2x text-muted mb-3"></i><h6>Nenhum usuário encontrado</h6><p class="small text-muted mb-0">Ajuste os filtros ou crie uma nova conta.</p></div></td></tr></cfif>
@@ -783,6 +800,10 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (event) {
       if (!window.confirm(form.getAttribute("data-confirm"))) {
         event.preventDefault();
+        return;
+      }
+      if (form.hasAttribute("data-dev-login")) {
+        form.elements.namedItem("dev_login_confirmed").value = "1";
       }
     });
   });

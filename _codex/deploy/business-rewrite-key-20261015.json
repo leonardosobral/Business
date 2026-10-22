@@ -1,0 +1,93 @@
+{
+  "task": "Configurar a chave exclusiva fornecida pelo usuário para a reescrita de descrições e reativar o job 15 após validação autorizada",
+  "date": "2026-10-15",
+  "status": "published_credential_verified_job_reactivated",
+  "credential_source": "/Users/geraldoprotta/Downloads/BusinessReescritadescricoes.txt",
+  "key_created_by_user": true,
+  "key_created_by_agent": false,
+  "runtime_files": [
+    "/var/www/business.roadrunners.run/config/business.local.cfm",
+    "/var/www/business.roadrunners.run/api/eventos/jobs/rewrite-descriptions.cfm"
+  ],
+  "setting": "businessLocalConfig.eventDescriptionApiKey",
+  "credential_scope": "Somente reescrita/tradução das descrições de eventos; precedência sobre as credenciais compartilhadas apenas neste endpoint.",
+  "model_unchanged": "gpt-4.1-mini",
+  "backup": "/var/backups/business-rewrite-key-20261015-9cgpucle",
+  "config_before_sha256": "454881a96a9a60ea25d7c80551f1f2c0b080aa87e33fbbb4261625e6cd187778",
+  "config_after_sha256": "851c352216dd9c3587b4552bd16f18fc780fd8ce33e9a19e9395782f9b51a1b9",
+  "endpoint_before_sha256": "f6307949f1beb1da15211e2428e707339d782d3100de407440db8984747b8ece",
+  "endpoint_after_sha256": "3da019d6c1da9ef8a8f1d84e51106f3971d4ec63d91acd3bf6586c0d42723412",
+  "verification": {
+    "source_contains_exactly_one_key": true,
+    "secret_output_suppressed": true,
+    "only_dedicated_config_field_added": true,
+    "general_business_key_preserved": true,
+    "news_key_and_configuration_preserved": true,
+    "dedicated_key_differs_from_shared_business_and_news": true,
+    "application_general_key_not_modified": true,
+    "application_cache_note": "Já antes da tarefa a chave geral em APPLICATION diferia da configuração atual. Esta tarefa não a alterou; o job relê sua credencial exclusiva a cada chamada.",
+    "native_selection_tests": {
+      "cases": 6,
+      "red_expected_failures": 2,
+      "green_failures": 0,
+      "path": "_codex/tests/event-description-key-selection.cfm"
+    },
+    "local_test_limitations": [
+      {"command": "node _codex/scripts/test_event_description_endpoint_local.mjs", "status": "environment_unavailable", "error": "initdb indisponível: /opt/homebrew/opt/postgresql@16/bin/initdb ausente"},
+      {"command": "node _codex/scripts/test_event_description_rewrite_cfml_local.mjs", "status": "environment_unavailable", "error": "Runtime CommandBox/Lucee histórico ausente em /Users/Shared/Projects/ColdFusion Certification/box e /private/tmp/runnerhub-audience-cfml.j0MZzV/commandbox"}
+    ],
+    "live_minimal_api_check": {
+      "http_status": 200,
+      "status": "completed",
+      "request_id": "req_b3a5fc6dfbe54d85aa708dfaaf087c40",
+      "response_id": "resp_0d06da2037396f4b016ad0c5a69d2887d1a18906f1909838f1"
+    },
+    "live_authenticated_endpoint_preview": {
+      "http_status": 200,
+      "status": "completed",
+      "result_status": "preview",
+      "event_id": 49232,
+      "language": "pt-BR",
+      "dry_run": true,
+      "processed": 1,
+      "updated": 0,
+      "errors": 0,
+      "event_descriptions_digest_unchanged": true
+    },
+    "independent_code_review": "Sem achados acionáveis no resolver, documentação, exemplo e seis testes de isolamento.",
+    "git_diff_check": "passed",
+    "temporary_diagnostic": "Loopback + token aleatório, no-store; arquivado fora do webroot com modo 0600 em backup 0700. URL final HTTP 404."
+  },
+  "job": {
+    "id": 15,
+    "before_active": false,
+    "before_last_run": "2026-09-25 21:14:33.165072 UTC",
+    "reactivation_explicitly_authorized": true,
+    "active": true,
+    "interval_minutes": 10,
+    "before_activation_snapshot": "job15.before-activation.json",
+    "first_normal_run": {
+      "run_id": 201911,
+      "started_at_utc": "2026-10-15 12:25:43.290316",
+      "http_status": "422 Unprocessable Entity",
+      "processed": 3,
+      "updated": 1,
+      "errors": 2,
+      "provider_quota_error": false,
+      "results": [
+        {"event_id": 39338, "language": "pt-BR", "status": "rejected", "error_code": "validation_rejected"},
+        {"event_id": 40176, "language": "en", "status": "rejected", "error_code": "validation_rejected"},
+        {"event_id": 41253, "language": "en", "status": "updated"}
+      ]
+    },
+    "next_run_at_utc": "2026-10-15 12:35:59.333906",
+    "validation_guards_changed": false,
+    "failed_or_rejected_items_reset": false,
+    "request_body_and_other_job_settings_changed": false
+  },
+  "application_restart": false,
+  "old_keys_revoked": false,
+  "secret_written_to_git": false,
+  "source_file_removed": false,
+  "git_mutations": {"commit": false, "push": false, "branch": false}
+}

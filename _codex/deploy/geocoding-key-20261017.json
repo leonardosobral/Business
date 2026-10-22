@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "backup": "/var/backups/business-geo-key-20261017-sqf02j16",
+  "before": "851c352216dd9c3587b4552bd16f18fc780fd8ce33e9a19e9395782f9b51a1b9",
+  "after": "584c2e78df69c4c231b0d8b4846eb586a73c7abd792c71cfcc09bb0c7c861d51",
+  "fingerprint": "8597f9a0d36534ed07b4ad928741fce8fa2bd0012c6637c87602fc8df2be61d0",
+  "key_printed": false,
+  "other_integrations_changed": false,
+  "restart_required": false
+}

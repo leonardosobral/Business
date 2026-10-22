@@ -1,0 +1,438 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-geocoding-sources-45plgc13",
+  "manifest": {
+    "services/geocoding/AIClient.cfc": {
+      "before": "932642104aea3f90c6511bc323b662bafb657b29a4efa156263a6b1cda791a58",
+      "after": "d0619baf085e101dd6842e2002785d8536378b632eac47695ee75e31db9b9673"
+    },
+    "services/geocoding/LocationPolicy.cfc": {
+      "before": "34225967a0f3c6444591d78a1a292311b6bc508b2a5a70b2c161cb70914e7730",
+      "after": "97f43eb0afc5e7ccd08009ff56ad5672e59b98cac4a894c608eacdb2a0402448"
+    },
+    "services/geocoding/DocumentReader.cfc": {
+      "before": "20473c8515de809309792656add94c0ca1c475a62d3291e2654ae332e913ff53",
+      "after": "b26bf447b4c90247f59a6f599b25f98198d7f54274a51bb21339f95d8a21741c"
+    },
+    "services/geocoding/LocationStore.cfc": {
+      "before": "6e17656f5ab31fd8f2878abb51843cbe4cf54791dd11812580f7677009ff03c7",
+      "after": "de9d7e747ba30b2ff4ccded4badf2e8e780a8aac3786bb26ecfa48ae8b06489f"
+    },
+    "services/geocoding/LocationWorker.cfc": {
+      "before": "505bfd612602b29bed15ce144adf104c78f4a7ddb06416e6f469baa5187655a9",
+      "after": "6e8fa104298941db6c28252fe11767f30bbecc5b02435a4ff12794bee8fd265c"
+    },
+    "administracao/geolocalizacao/includes/ai_locations_view.cfm": {
+      "before": "edfe6eae8a93a97da0c237056ae6fbee1de934875f42d7c6e96bacaf04f89f66",
+      "after": "fcf931a30b1e04e59ea8d2c6413c0486cc9f3b389abcf4ebb7776850d2d61d60"
+    },
+    "eventos/includes/localizacoes_confirmadas.cfm": {
+      "before": null,
+      "after": "5c294a664955774d2312502aa20770018aa868a2c4140ace530cda3bc414baf1"
+    },
+    "services/geocoding/source_fetcher.py": {
+      "before": "ae5fbc8682de76e811829fe260ebe7111dc2efb853f9823c2e5743a815163d57",
+      "after": "4ec6e20690544eb6c96035b1f1d04448322d7302f4c71d66021c53965c25d1cd"
+    },
+    "services/geocoding/Policy.cfc": {
+      "before": "773a0bf37275c928a708744ae8911ce30cd34d784bc73ab7151c4953ce3e28b0",
+      "after": "d31957a539c45285926a2d872ce3e986408acf2e9e994bd993d520534ee037b4"
+    },
+    "services/geocoding/Store.cfc": {
+      "before": "6b280aa911dee25b5ec09dcc0914d93912c7be888004a36e67ef11d891ea7deb",
+      "after": "7884072f4f0a3f2d43c8db49d07069bedfad359e9835405d36b584b71147cf0d"
+    },
+    "services/geocoding/config.cfm": {
+      "before": "4ee6966a207784b569f82032b59183370d82fb33aed0f0138891537d4d98883c",
+      "after": "336c3ca8acfebed2202dbcaa2076d3738303980bbb9df7677d64e5b1fb7ae5f3"
+    },
+    "administracao/geolocalizacao/includes/backend.cfm": {
+      "before": "e0ac389186c8dda5d0ed16bdaf95e6d8bf5a5325abb2b5af3dc84cb44094df3d",
+      "after": "bd8cc357741a54901e48b5f1534e176fb03a60adb9d26d9de30002af6fa2abea"
+    },
+    "administracao/geolocalizacao/includes/view.cfm": {
+      "before": "f68daf84b1f3eb58829dd4e9f57c7c329b2e20f04f0688c28ae985cf79793ba4",
+      "after": "7d27974a7babfc1d994f55799bea1d50be6d504ff46712f58f62a63ea6522026"
+    },
+    "eventos/form_edicao.cfm": {
+      "before": "68e78aef62e4204820e53eedffdc7247c811239b194a4b2a399e8bfaca575923",
+      "after": "a1d373ef7ca1c7575964e81bd5d4bba8f35ad26df3c4e87a5567e987ecaadeb3"
+    },
+    "api/eventos/geolocalizar.cfm": {
+      "before": "127ae2422cdae13c465a4b62b07f081e1859f8bfca0426aa2134111132774203",
+      "after": "8251b99a054a0e65add2971a4baca30b234dce01f8a745588fd9936eea315457"
+    }
+  },
+  "probes": [
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "GET",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "POST",
+      "status": "401",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/Sources.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/source_fetcher.py",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/administracao/geolocalizacao/",
+      "method": "GET",
+      "status": "302",
+      "ok": true
+    }
+  ],
+  "checks": [
+    {
+      "path": "administracao/geolocalizacao/includes/ai_locations_view.cfm",
+      "ok": true
+    },
+    {
+      "path": "administracao/geolocalizacao/includes/backend.cfm",
+      "ok": true
+    }
+  ],
+  "sql_applied": false,
+  "credentials_changed": false,
+  "previous_publications": [
+    {
+      "backup": "/var/backups/business-geocoding-sources-6ox_lh8z",
+      "manifest": {
+        "services/geocoding/AIClient.cfc": {
+          "before": null,
+          "after": "932642104aea3f90c6511bc323b662bafb657b29a4efa156263a6b1cda791a58"
+        },
+        "services/geocoding/LocationPolicy.cfc": {
+          "before": null,
+          "after": "34225967a0f3c6444591d78a1a292311b6bc508b2a5a70b2c161cb70914e7730"
+        },
+        "services/geocoding/DocumentReader.cfc": {
+          "before": null,
+          "after": "20473c8515de809309792656add94c0ca1c475a62d3291e2654ae332e913ff53"
+        },
+        "services/geocoding/LocationStore.cfc": {
+          "before": null,
+          "after": "6e17656f5ab31fd8f2878abb51843cbe4cf54791dd11812580f7677009ff03c7"
+        },
+        "services/geocoding/LocationWorker.cfc": {
+          "before": null,
+          "after": "505bfd612602b29bed15ce144adf104c78f4a7ddb06416e6f469baa5187655a9"
+        },
+        "administracao/geolocalizacao/includes/ai_locations_view.cfm": {
+          "before": null,
+          "after": "edfe6eae8a93a97da0c237056ae6fbee1de934875f42d7c6e96bacaf04f89f66"
+        },
+        "eventos/includes/localizacoes_confirmadas.cfm": {
+          "before": null,
+          "after": "5c294a664955774d2312502aa20770018aa868a2c4140ace530cda3bc414baf1"
+        },
+        "services/geocoding/source_fetcher.py": {
+          "before": "ae5fbc8682de76e811829fe260ebe7111dc2efb853f9823c2e5743a815163d57",
+          "after": "4ec6e20690544eb6c96035b1f1d04448322d7302f4c71d66021c53965c25d1cd"
+        },
+        "services/geocoding/Policy.cfc": {
+          "before": "b8c2706a28f4b575794e560c2816b05873155f72bf9d63a78e75b16390960c9f",
+          "after": "773a0bf37275c928a708744ae8911ce30cd34d784bc73ab7151c4953ce3e28b0"
+        },
+        "services/geocoding/Store.cfc": {
+          "before": "6b280aa911dee25b5ec09dcc0914d93912c7be888004a36e67ef11d891ea7deb",
+          "after": "7884072f4f0a3f2d43c8db49d07069bedfad359e9835405d36b584b71147cf0d"
+        },
+        "services/geocoding/config.cfm": {
+          "before": "4ee6966a207784b569f82032b59183370d82fb33aed0f0138891537d4d98883c",
+          "after": "336c3ca8acfebed2202dbcaa2076d3738303980bbb9df7677d64e5b1fb7ae5f3"
+        },
+        "administracao/geolocalizacao/includes/backend.cfm": {
+          "before": "b3dbf5e35ec433051cb472526cafacb6796cacf2d9bd17706cc1da0454fda24e",
+          "after": "e0ac389186c8dda5d0ed16bdaf95e6d8bf5a5325abb2b5af3dc84cb44094df3d"
+        },
+        "administracao/geolocalizacao/includes/view.cfm": {
+          "before": "f68daf84b1f3eb58829dd4e9f57c7c329b2e20f04f0688c28ae985cf79793ba4",
+          "after": "7d27974a7babfc1d994f55799bea1d50be6d504ff46712f58f62a63ea6522026"
+        },
+        "eventos/form_edicao.cfm": {
+          "before": "68e78aef62e4204820e53eedffdc7247c811239b194a4b2a399e8bfaca575923",
+          "after": "a1d373ef7ca1c7575964e81bd5d4bba8f35ad26df3c4e87a5567e987ecaadeb3"
+        },
+        "api/eventos/geolocalizar.cfm": {
+          "before": "127ae2422cdae13c465a4b62b07f081e1859f8bfca0426aa2134111132774203",
+          "after": "8251b99a054a0e65add2971a4baca30b234dce01f8a745588fd9936eea315457"
+        }
+      }
+    },
+    {
+      "backup": "/var/backups/business-geocoding-sources-s00dr48a",
+      "manifest": {
+        "services/geocoding/AIClient.cfc": {
+          "before": null,
+          "after": "932642104aea3f90c6511bc323b662bafb657b29a4efa156263a6b1cda791a58"
+        },
+        "services/geocoding/LocationPolicy.cfc": {
+          "before": null,
+          "after": "34225967a0f3c6444591d78a1a292311b6bc508b2a5a70b2c161cb70914e7730"
+        },
+        "services/geocoding/DocumentReader.cfc": {
+          "before": null,
+          "after": "20473c8515de809309792656add94c0ca1c475a62d3291e2654ae332e913ff53"
+        },
+        "services/geocoding/LocationStore.cfc": {
+          "before": "6e17656f5ab31fd8f2878abb51843cbe4cf54791dd11812580f7677009ff03c7",
+          "after": "de9d7e747ba30b2ff4ccded4badf2e8e780a8aac3786bb26ecfa48ae8b06489f"
+        },
+        "services/geocoding/LocationWorker.cfc": {
+          "before": null,
+          "after": "505bfd612602b29bed15ce144adf104c78f4a7ddb06416e6f469baa5187655a9"
+        },
+        "administracao/geolocalizacao/includes/ai_locations_view.cfm": {
+          "before": null,
+          "after": "edfe6eae8a93a97da0c237056ae6fbee1de934875f42d7c6e96bacaf04f89f66"
+        },
+        "eventos/includes/localizacoes_confirmadas.cfm": {
+          "before": null,
+          "after": "5c294a664955774d2312502aa20770018aa868a2c4140ace530cda3bc414baf1"
+        },
+        "services/geocoding/source_fetcher.py": {
+          "before": "ae5fbc8682de76e811829fe260ebe7111dc2efb853f9823c2e5743a815163d57",
+          "after": "4ec6e20690544eb6c96035b1f1d04448322d7302f4c71d66021c53965c25d1cd"
+        },
+        "services/geocoding/Policy.cfc": {
+          "before": "b8c2706a28f4b575794e560c2816b05873155f72bf9d63a78e75b16390960c9f",
+          "after": "773a0bf37275c928a708744ae8911ce30cd34d784bc73ab7151c4953ce3e28b0"
+        },
+        "services/geocoding/Store.cfc": {
+          "before": "6b280aa911dee25b5ec09dcc0914d93912c7be888004a36e67ef11d891ea7deb",
+          "after": "7884072f4f0a3f2d43c8db49d07069bedfad359e9835405d36b584b71147cf0d"
+        },
+        "services/geocoding/config.cfm": {
+          "before": "4ee6966a207784b569f82032b59183370d82fb33aed0f0138891537d4d98883c",
+          "after": "336c3ca8acfebed2202dbcaa2076d3738303980bbb9df7677d64e5b1fb7ae5f3"
+        },
+        "administracao/geolocalizacao/includes/backend.cfm": {
+          "before": "b3dbf5e35ec433051cb472526cafacb6796cacf2d9bd17706cc1da0454fda24e",
+          "after": "e0ac389186c8dda5d0ed16bdaf95e6d8bf5a5325abb2b5af3dc84cb44094df3d"
+        },
+        "administracao/geolocalizacao/includes/view.cfm": {
+          "before": "f68daf84b1f3eb58829dd4e9f57c7c329b2e20f04f0688c28ae985cf79793ba4",
+          "after": "7d27974a7babfc1d994f55799bea1d50be6d504ff46712f58f62a63ea6522026"
+        },
+        "eventos/form_edicao.cfm": {
+          "before": "68e78aef62e4204820e53eedffdc7247c811239b194a4b2a399e8bfaca575923",
+          "after": "a1d373ef7ca1c7575964e81bd5d4bba8f35ad26df3c4e87a5567e987ecaadeb3"
+        },
+        "api/eventos/geolocalizar.cfm": {
+          "before": "127ae2422cdae13c465a4b62b07f081e1859f8bfca0426aa2134111132774203",
+          "after": "8251b99a054a0e65add2971a4baca30b234dce01f8a745588fd9936eea315457"
+        }
+      }
+    },
+    {
+      "backup": "/var/backups/business-geocoding-sources-2w5v25k1",
+      "manifest": {
+        "services/geocoding/AIClient.cfc": {
+          "before": null,
+          "after": "932642104aea3f90c6511bc323b662bafb657b29a4efa156263a6b1cda791a58"
+        },
+        "services/geocoding/LocationPolicy.cfc": {
+          "before": null,
+          "after": "34225967a0f3c6444591d78a1a292311b6bc508b2a5a70b2c161cb70914e7730"
+        },
+        "services/geocoding/DocumentReader.cfc": {
+          "before": null,
+          "after": "20473c8515de809309792656add94c0ca1c475a62d3291e2654ae332e913ff53"
+        },
+        "services/geocoding/LocationStore.cfc": {
+          "before": "6e17656f5ab31fd8f2878abb51843cbe4cf54791dd11812580f7677009ff03c7",
+          "after": "de9d7e747ba30b2ff4ccded4badf2e8e780a8aac3786bb26ecfa48ae8b06489f"
+        },
+        "services/geocoding/LocationWorker.cfc": {
+          "before": "505bfd612602b29bed15ce144adf104c78f4a7ddb06416e6f469baa5187655a9",
+          "after": "6e8fa104298941db6c28252fe11767f30bbecc5b02435a4ff12794bee8fd265c"
+        },
+        "administracao/geolocalizacao/includes/ai_locations_view.cfm": {
+          "before": null,
+          "after": "edfe6eae8a93a97da0c237056ae6fbee1de934875f42d7c6e96bacaf04f89f66"
+        },
+        "eventos/includes/localizacoes_confirmadas.cfm": {
+          "before": null,
+          "after": "5c294a664955774d2312502aa20770018aa868a2c4140ace530cda3bc414baf1"
+        },
+        "services/geocoding/source_fetcher.py": {
+          "before": "ae5fbc8682de76e811829fe260ebe7111dc2efb853f9823c2e5743a815163d57",
+          "after": "4ec6e20690544eb6c96035b1f1d04448322d7302f4c71d66021c53965c25d1cd"
+        },
+        "services/geocoding/Policy.cfc": {
+          "before": "b8c2706a28f4b575794e560c2816b05873155f72bf9d63a78e75b16390960c9f",
+          "after": "773a0bf37275c928a708744ae8911ce30cd34d784bc73ab7151c4953ce3e28b0"
+        },
+        "services/geocoding/Store.cfc": {
+          "before": "6b280aa911dee25b5ec09dcc0914d93912c7be888004a36e67ef11d891ea7deb",
+          "after": "7884072f4f0a3f2d43c8db49d07069bedfad359e9835405d36b584b71147cf0d"
+        },
+        "services/geocoding/config.cfm": {
+          "before": "4ee6966a207784b569f82032b59183370d82fb33aed0f0138891537d4d98883c",
+          "after": "336c3ca8acfebed2202dbcaa2076d3738303980bbb9df7677d64e5b1fb7ae5f3"
+        },
+        "administracao/geolocalizacao/includes/backend.cfm": {
+          "before": "b3dbf5e35ec433051cb472526cafacb6796cacf2d9bd17706cc1da0454fda24e",
+          "after": "e0ac389186c8dda5d0ed16bdaf95e6d8bf5a5325abb2b5af3dc84cb44094df3d"
+        },
+        "administracao/geolocalizacao/includes/view.cfm": {
+          "before": "f68daf84b1f3eb58829dd4e9f57c7c329b2e20f04f0688c28ae985cf79793ba4",
+          "after": "7d27974a7babfc1d994f55799bea1d50be6d504ff46712f58f62a63ea6522026"
+        },
+        "eventos/form_edicao.cfm": {
+          "before": "68e78aef62e4204820e53eedffdc7247c811239b194a4b2a399e8bfaca575923",
+          "after": "a1d373ef7ca1c7575964e81bd5d4bba8f35ad26df3c4e87a5567e987ecaadeb3"
+        },
+        "api/eventos/geolocalizar.cfm": {
+          "before": "127ae2422cdae13c465a4b62b07f081e1859f8bfca0426aa2134111132774203",
+          "after": "8251b99a054a0e65add2971a4baca30b234dce01f8a745588fd9936eea315457"
+        }
+      }
+    },
+    {
+      "backup": "/var/backups/business-geocoding-sources-q6vnwv8n",
+      "manifest": {
+        "services/geocoding/AIClient.cfc": {
+          "before": "932642104aea3f90c6511bc323b662bafb657b29a4efa156263a6b1cda791a58",
+          "after": "d0619baf085e101dd6842e2002785d8536378b632eac47695ee75e31db9b9673"
+        },
+        "services/geocoding/LocationPolicy.cfc": {
+          "before": null,
+          "after": "34225967a0f3c6444591d78a1a292311b6bc508b2a5a70b2c161cb70914e7730"
+        },
+        "services/geocoding/DocumentReader.cfc": {
+          "before": "20473c8515de809309792656add94c0ca1c475a62d3291e2654ae332e913ff53",
+          "after": "b26bf447b4c90247f59a6f599b25f98198d7f54274a51bb21339f95d8a21741c"
+        },
+        "services/geocoding/LocationStore.cfc": {
+          "before": "6e17656f5ab31fd8f2878abb51843cbe4cf54791dd11812580f7677009ff03c7",
+          "after": "de9d7e747ba30b2ff4ccded4badf2e8e780a8aac3786bb26ecfa48ae8b06489f"
+        },
+        "services/geocoding/LocationWorker.cfc": {
+          "before": "505bfd612602b29bed15ce144adf104c78f4a7ddb06416e6f469baa5187655a9",
+          "after": "6e8fa104298941db6c28252fe11767f30bbecc5b02435a4ff12794bee8fd265c"
+        },
+        "administracao/geolocalizacao/includes/ai_locations_view.cfm": {
+          "before": null,
+          "after": "edfe6eae8a93a97da0c237056ae6fbee1de934875f42d7c6e96bacaf04f89f66"
+        },
+        "eventos/includes/localizacoes_confirmadas.cfm": {
+          "before": null,
+          "after": "5c294a664955774d2312502aa20770018aa868a2c4140ace530cda3bc414baf1"
+        },
+        "services/geocoding/source_fetcher.py": {
+          "before": "ae5fbc8682de76e811829fe260ebe7111dc2efb853f9823c2e5743a815163d57",
+          "after": "4ec6e20690544eb6c96035b1f1d04448322d7302f4c71d66021c53965c25d1cd"
+        },
+        "services/geocoding/Policy.cfc": {
+          "before": "773a0bf37275c928a708744ae8911ce30cd34d784bc73ab7151c4953ce3e28b0",
+          "after": "d31957a539c45285926a2d872ce3e986408acf2e9e994bd993d520534ee037b4"
+        },
+        "services/geocoding/Store.cfc": {
+          "before": "6b280aa911dee25b5ec09dcc0914d93912c7be888004a36e67ef11d891ea7deb",
+          "after": "7884072f4f0a3f2d43c8db49d07069bedfad359e9835405d36b584b71147cf0d"
+        },
+        "services/geocoding/config.cfm": {
+          "before": "4ee6966a207784b569f82032b59183370d82fb33aed0f0138891537d4d98883c",
+          "after": "336c3ca8acfebed2202dbcaa2076d3738303980bbb9df7677d64e5b1fb7ae5f3"
+        },
+        "administracao/geolocalizacao/includes/backend.cfm": {
+          "before": "b3dbf5e35ec433051cb472526cafacb6796cacf2d9bd17706cc1da0454fda24e",
+          "after": "e0ac389186c8dda5d0ed16bdaf95e6d8bf5a5325abb2b5af3dc84cb44094df3d"
+        },
+        "administracao/geolocalizacao/includes/view.cfm": {
+          "before": "f68daf84b1f3eb58829dd4e9f57c7c329b2e20f04f0688c28ae985cf79793ba4",
+          "after": "7d27974a7babfc1d994f55799bea1d50be6d504ff46712f58f62a63ea6522026"
+        },
+        "eventos/form_edicao.cfm": {
+          "before": "68e78aef62e4204820e53eedffdc7247c811239b194a4b2a399e8bfaca575923",
+          "after": "a1d373ef7ca1c7575964e81bd5d4bba8f35ad26df3c4e87a5567e987ecaadeb3"
+        },
+        "api/eventos/geolocalizar.cfm": {
+          "before": "127ae2422cdae13c465a4b62b07f081e1859f8bfca0426aa2134111132774203",
+          "after": "8251b99a054a0e65add2971a4baca30b234dce01f8a745588fd9936eea315457"
+        }
+      }
+    },
+    {
+      "backup": "/var/backups/business-geocoding-sources-6t3n9v3v",
+      "manifest": {
+        "services/geocoding/AIClient.cfc": {
+          "before": "932642104aea3f90c6511bc323b662bafb657b29a4efa156263a6b1cda791a58",
+          "after": "d0619baf085e101dd6842e2002785d8536378b632eac47695ee75e31db9b9673"
+        },
+        "services/geocoding/LocationPolicy.cfc": {
+          "before": "34225967a0f3c6444591d78a1a292311b6bc508b2a5a70b2c161cb70914e7730",
+          "after": "97f43eb0afc5e7ccd08009ff56ad5672e59b98cac4a894c608eacdb2a0402448"
+        },
+        "services/geocoding/DocumentReader.cfc": {
+          "before": "20473c8515de809309792656add94c0ca1c475a62d3291e2654ae332e913ff53",
+          "after": "b26bf447b4c90247f59a6f599b25f98198d7f54274a51bb21339f95d8a21741c"
+        },
+        "services/geocoding/LocationStore.cfc": {
+          "before": "6e17656f5ab31fd8f2878abb51843cbe4cf54791dd11812580f7677009ff03c7",
+          "after": "de9d7e747ba30b2ff4ccded4badf2e8e780a8aac3786bb26ecfa48ae8b06489f"
+        },
+        "services/geocoding/LocationWorker.cfc": {
+          "before": "505bfd612602b29bed15ce144adf104c78f4a7ddb06416e6f469baa5187655a9",
+          "after": "6e8fa104298941db6c28252fe11767f30bbecc5b02435a4ff12794bee8fd265c"
+        },
+        "administracao/geolocalizacao/includes/ai_locations_view.cfm": {
+          "before": null,
+          "after": "edfe6eae8a93a97da0c237056ae6fbee1de934875f42d7c6e96bacaf04f89f66"
+        },
+        "eventos/includes/localizacoes_confirmadas.cfm": {
+          "before": null,
+          "after": "5c294a664955774d2312502aa20770018aa868a2c4140ace530cda3bc414baf1"
+        },
+        "services/geocoding/source_fetcher.py": {
+          "before": "ae5fbc8682de76e811829fe260ebe7111dc2efb853f9823c2e5743a815163d57",
+          "after": "4ec6e20690544eb6c96035b1f1d04448322d7302f4c71d66021c53965c25d1cd"
+        },
+        "services/geocoding/Policy.cfc": {
+          "before": "773a0bf37275c928a708744ae8911ce30cd34d784bc73ab7151c4953ce3e28b0",
+          "after": "d31957a539c45285926a2d872ce3e986408acf2e9e994bd993d520534ee037b4"
+        },
+        "services/geocoding/Store.cfc": {
+          "before": "6b280aa911dee25b5ec09dcc0914d93912c7be888004a36e67ef11d891ea7deb",
+          "after": "7884072f4f0a3f2d43c8db49d07069bedfad359e9835405d36b584b71147cf0d"
+        },
+        "services/geocoding/config.cfm": {
+          "before": "4ee6966a207784b569f82032b59183370d82fb33aed0f0138891537d4d98883c",
+          "after": "336c3ca8acfebed2202dbcaa2076d3738303980bbb9df7677d64e5b1fb7ae5f3"
+        },
+        "administracao/geolocalizacao/includes/backend.cfm": {
+          "before": "b3dbf5e35ec433051cb472526cafacb6796cacf2d9bd17706cc1da0454fda24e",
+          "after": "e0ac389186c8dda5d0ed16bdaf95e6d8bf5a5325abb2b5af3dc84cb44094df3d"
+        },
+        "administracao/geolocalizacao/includes/view.cfm": {
+          "before": "f68daf84b1f3eb58829dd4e9f57c7c329b2e20f04f0688c28ae985cf79793ba4",
+          "after": "7d27974a7babfc1d994f55799bea1d50be6d504ff46712f58f62a63ea6522026"
+        },
+        "eventos/form_edicao.cfm": {
+          "before": "68e78aef62e4204820e53eedffdc7247c811239b194a4b2a399e8bfaca575923",
+          "after": "a1d373ef7ca1c7575964e81bd5d4bba8f35ad26df3c4e87a5567e987ecaadeb3"
+        },
+        "api/eventos/geolocalizar.cfm": {
+          "before": "127ae2422cdae13c465a4b62b07f081e1859f8bfca0426aa2134111132774203",
+          "after": "8251b99a054a0e65add2971a4baca30b234dce01f8a745588fd9936eea315457"
+        }
+      }
+    }
+  ]
+}

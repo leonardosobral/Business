@@ -1,0 +1,68 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-geocoding-sources-zm0pp69t",
+  "manifest": {
+    "services/geocoding/AIClient.cfc": {
+      "before": "d0619baf085e101dd6842e2002785d8536378b632eac47695ee75e31db9b9673",
+      "after": "7f116b8fea3e80837acc68c99766aee45c89e32480f4d760ec5182630c090d73"
+    },
+    "services/geocoding/LocationWorker.cfc": {
+      "before": "6e8fa104298941db6c28252fe11767f30bbecc5b02435a4ff12794bee8fd265c",
+      "after": "dd40c222fb24ed4b0ba2c5b50a54587e433733f80a55545fb41260a75b6b0483"
+    },
+    "services/geocoding/config.cfm": {
+      "before": "336c3ca8acfebed2202dbcaa2076d3738303980bbb9df7677d64e5b1fb7ae5f3",
+      "after": "599e84f0d7ee0021b4b8a855f8c4c832fe082d0cc899b24cba5bc943c1e168dc"
+    }
+  },
+  "probes": [
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "GET",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "POST",
+      "status": "401",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/Sources.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/source_fetcher.py",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/administracao/geolocalizacao/",
+      "method": "GET",
+      "status": "302",
+      "ok": true
+    }
+  ],
+  "checks": [
+    {
+      "path": "services/geocoding/AIClient.cfc",
+      "ok": true
+    },
+    {
+      "path": "services/geocoding/LocationWorker.cfc",
+      "ok": true
+    },
+    {
+      "path": "services/geocoding/config.cfm",
+      "ok": true
+    }
+  ],
+  "sql_applied": false,
+  "credentials_changed": false,
+  "previous_publications": []
+}

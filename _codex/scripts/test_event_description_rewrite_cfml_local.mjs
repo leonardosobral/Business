@@ -19,6 +19,9 @@ try {
     ['services/EventDescriptionRewriteService.cfc','services/EventDescriptionRewriteService.cfc'],
     ['_codex/tests/event-description-rewrite/ProviderFixture.cfc','services/ProviderFixture.cfc'],
     ['_codex/tests/event-description-rewrite/translation.cfm','translation.cfm'],
+    ['_codex/tests/event-description-rewrite/format-equivalences.cfm','format-equivalences.cfm'],
+    ['_codex/tests/event-description-rewrite/regressions.cfm','regressions.cfm'],
+    ['_codex/tests/event-description-rewrite/audit-evidence.cfm','audit-evidence.cfm'],
     ['_codex/tests/event-description-rewrite/service.cfm','run.cfm']
   ]) if(existsSync(resolve(root,from))) copyFileSync(resolve(root,from),resolve(scratch,to));
   const result=spawnSync(java,['-Dfile.encoding=UTF-8','-Dsun.stdout.encoding=UTF-8','-cp',box,'cliloader.LoaderCLIMain',`-CommandBox_home=${runtimeHome}`,'execute','run.cfm'],{

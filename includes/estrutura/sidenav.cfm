@@ -532,6 +532,12 @@
             <li class="sidenav-item business-sidenav-subgroup-label"><span>Gestão do evento</span></li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ '/administracao/geolocalizacao/'>link-warning</cfif>" href="/administracao/geolocalizacao/" data-menu-aliases="geolocalização geolocalizacao latitude longitude coordenadas locais endereço">
+                    <i class="fa-solid fa-location-dot fa-fw me-3"></i><span>Geolocalização</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/eventos/">link-warning</cfif>" href="/eventos/" data-menu-aliases="provas corridas calendário">
                     <i class="fa-solid fa-person-running fa-fw me-3"></i><span>Eventos</span>
                 </a>

@@ -1,0 +1,84 @@
+"""Run isolated native fixtures. Provider calls: explicit 'smoke'/'research_geocode' only."""
+import json, pathlib, shlex, subprocess, sys
+
+ROOT = pathlib.Path(__file__).resolve().parents[2]
+MODE = sys.argv[1] if len(sys.argv) > 1 else 'policy'
+if MODE == 'all':
+    for suite in ['policy','provider','sources','source_conflicts','worker','endpoint','view','access','integration','workflow','acceleration','quota_3000','schedule','ai_schema','ai_contract','ai_astra','ai_locations','ai_integration','ai_workflow','ai_resume','ai_view','ai_full_view','ai_seed','ai_provider_failure','enrichment_policy','enrichment_contract','enrichment_integration','enrichment_view','enrichment_workflow','enrichment_review_regressions','enrichment_repeated_state']:
+        subprocess.run([sys.executable,__file__,suite],check=True)
+    raise SystemExit(0)
+REMOTE = r'''
+import json,os,pathlib,secrets,subprocess,sys,tempfile
+p=json.load(sys.stdin);nonce=secrets.token_hex(24);mode=p.pop('_mode')
+name='geocoding_test_'+secrets.token_hex(8)
+stage=pathlib.Path('/var/www/business.roadrunners.run/_codex')/name
+archive=pathlib.Path(tempfile.mkdtemp(prefix='geocoding-tests-',dir='/var/backups'));os.chmod(archive,0o700)
+result={'ok':False}
+try:
+ stage.mkdir(mode=0o755);(stage/'.htaccess').write_text('Require local\n');os.chmod(stage/'.htaccess',0o644)
+ for path,content in p.items():
+  content=content.replace('services.geocoding.','_codex.'+name+'.services.geocoding.')
+  dest=stage/path;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(content,encoding='utf-8-sig');os.chmod(dest,0o644)
+ wrapper='<cfsetting showdebugoutput="false" requesttimeout="50"><cfscript>if(!listFind("127.0.0.1,::1",CGI.remote_addr) OR !structKeyExists(CGI,"http_x_geo_test") OR CGI.http_x_geo_test NEQ "'+nonce+'") {cfheader(statuscode=404);abort;} cfheader(name="Cache-Control",value="no-store");cfcontent(type="text/plain; charset=utf-8",reset=true); try {include "tests/'+mode+'.cfm";} catch(any failure) {writeOutput("GEO_TEST_FAILED " & encodeForHTML(failure.type & ": " & failure.message & " " & left(failure.detail ?: "",1000)));if(structKeyExists(failure,"tagContext"))for(frame in failure.tagContext)writeOutput(chr(10) & encodeForHTML(frame.template & ":" & frame.line));}</cfscript>'
+ (stage/'run.cfm').write_text(wrapper,encoding='utf-8-sig');os.chmod(stage/'run.cfm',0o644)
+ r=subprocess.run(['curl','--silent','--show-error','--max-time','55','--resolve','business.roadrunners.run:443:127.0.0.1','--header','X-Geo-Test: '+nonce,'https://business.roadrunners.run/_codex/'+name+'/run.cfm'],capture_output=True,timeout=60)
+ output=r.stdout.decode(errors='replace');(archive/'output.txt').write_text(output);os.chmod(archive/'output.txt',0o600)
+ result={'ok':r.returncode==0 and ('GEO_'+mode.upper()+'_PASSED') in output and 'GEO_TEST_FAILED' not in output,'output':output[-6500:] if '<!doctype' not in output.lower() else 'Unexpected HTML; inspect private archive'}
+ if mode=='access':
+  result={'ok':True,'cases':[]}
+  for case,expected,method in [('denied',403,'GET'),('delegated',403,'GET'),('filters',400,'GET'),('csrf',403,'POST'),('default',200,'GET')]:
+   r=subprocess.run(['curl','--silent','--show-error','--max-time','30','--request',method,'--resolve','business.roadrunners.run:443:127.0.0.1','--header','X-Geo-Test: '+nonce,'--write-out','\n%{http_code}','https://business.roadrunners.run/_codex/'+name+'/run.cfm?testcase='+case],capture_output=True,timeout=35)
+   body,_,status=r.stdout.rpartition(b'\n');passed=r.returncode==0 and status==str(expected).encode()
+   if case=='default':passed=passed and b'GEO_ACCESS_PASSED' in body and b'GEO_TEST_FAILED' not in body
+   result['cases'].append({'case':case,'status':status.decode(),'ok':passed})
+   result['ok']=result['ok'] and passed
+   (archive/(case+'.txt')).write_bytes(body)
+finally:
+ if stage.exists():stage.rename(archive/'tests')
+ result['archive']=str(archive);result['stage_archived']=not stage.exists()
+print(json.dumps(result))
+'''
+payload = {'_mode': MODE}
+payload['includes/backend/cron_jobs_service.cfm'] = (ROOT / 'includes/backend/cron_jobs_service.cfm').read_text()
+payload['tests/geocoding_job.sql'] = (ROOT / 'administracao/geolocalizacao/geocoding_job.sql').read_text()
+view = ROOT / 'administracao/geolocalizacao/includes/view.cfm'
+payload['tests/view-runtime.cfm'] = view.read_text() if view.exists() else '<cfthrow type="Test.Failed" message="A interface de geolocalização ainda não existe">'
+for directory in ['services/geocoding', '_codex/tests/geocoding','administracao/geolocalizacao']:
+    base = ROOT / directory
+    if base.exists():
+        for source in base.rglob('*'):
+            if source.is_file() and source.suffix in ['.cfc', '.cfm', '.py']:
+                name = 'tests/' + str(source.relative_to(base)) if directory.startswith('_codex') else str(source.relative_to(ROOT))
+                payload[name] = source.read_text()
+negative = next((arg.split('=',1)[1] for arg in sys.argv[2:] if arg.startswith('--negative-control=')), '')
+if '--trace-fixture' in sys.argv and MODE == 'workflow':
+    # Only the synthetic workflow: no real keys, provider calls or event data.
+    payload['services/geocoding/Worker.cfc']=payload['services/geocoding/Worker.cfc'].replace(
+        '// Avoid exception text, provider content, or connection strings in cron history.',
+        'throw(object=workFailure);')
+if '--trace-ai-replay' in sys.argv and MODE == 'ai_replay':
+    payload['services/geocoding/LocationWorker.cfc']=payload['services/geocoding/LocationWorker.cfc'].replace(
+        '}catch(any failed){var diagnostic', '}catch(any failed){throw(object=failed);var diagnostic')
+if '--trace-ai-failure' in sys.argv and MODE == 'ai_provider_failure':
+    payload['services/geocoding/LocationWorker.cfc']=payload['services/geocoding/LocationWorker.cfc'].replace(
+        '}catch(any failed){try{variables.store.finish', '}catch(any failed){throw(object=failed);try{variables.store.finish')
+if negative:
+    # Negative controls mutate only the isolated fixture copy, never product files.
+    controls = {
+        'no-enrichment-publish': ('services/geocoding/LocationStore.cfc','    public struct function publishEnrichment(required struct work,required struct progress,required string actor){return new services.geocoding.EnrichmentStore().publish(this,work,progress,actor);}','    public struct function publishEnrichment(required struct work,required struct progress,required string actor){return {work=work,progress=progress};}'),
+        'null-text': ('services/geocoding/Policy.cfc',next(line for line in payload['services/geocoding/Policy.cfc'].splitlines() if 'function readableText(' in line),'    public string function readableText(required string value){return value;}'),
+        'stale-review': ('services/geocoding/Store.cfc','            variables.policy.requireRevision(work,revision);',''),
+        'provider-lease': ('services/geocoding/Store.cfc','            if(row.in_flight)return {allowed=false,reason="provider_busy",retryAfter=30};',''),
+        'expired-lease': ('services/geocoding/Store.cfc','FOR UPDATE SKIP LOCKED LIMIT 20) RETURNING *','FOR UPDATE SKIP LOCKED LIMIT 0) RETURNING *'),
+        'foreign-region': ('services/geocoding/Policy.cfc','return len(trim(source.estado)) AND (normalize(text(candidate,"state_code")) EQ normalize(source.estado) OR normalize(text(candidate,"state")) EQ normalize(source.estado));','return !len(trim(source.estado)) OR normalize(text(candidate,"state_code")) EQ normalize(source.estado);')}
+    path,before,after=controls[negative]
+    if payload[path].count(before)!=1:raise SystemExit('Negative-control anchor mismatch')
+    payload[path]=payload[path].replace(before,after,1)
+proc = subprocess.run(['ssh', '-o', 'BatchMode=yes', '-o', 'StrictHostKeyChecking=yes', '-o', 'ConnectTimeout=12', 'rr-prod', 'python3 -c ' + shlex.quote(REMOTE)], input=json.dumps(payload).encode(), capture_output=True, timeout=75)
+try:
+    result = json.loads(proc.stdout)
+except Exception:
+    result = {'ok': False, 'error': 'Native test transport failed; output suppressed'}
+print(json.dumps(result, ensure_ascii=False))
+if proc.returncode or not result.get('ok'):
+    sys.exit(1)

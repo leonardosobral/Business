@@ -23,6 +23,13 @@
         </thead>
         <tbody>
           <cfoutput query="qBrasilGiganteRanking">
+            <cfset VARIABLES.brasilGiganteContact = {}/>
+            <cfloop list="id,nome,imagem_usuario,email,ddi_usuario,ddd_usuario,telefone_usuario,instagram,whatsapp,tag,cidade,estado,equipe" index="VARIABLES.brasilGiganteContactField">
+              <cfset VARIABLES.brasilGiganteContact[VARIABLES.brasilGiganteContactField] = ""/>
+              <cfif listFindNoCase(qBrasilGiganteRanking.columnList,VARIABLES.brasilGiganteContactField) AND NOT isNull(qBrasilGiganteRanking[VARIABLES.brasilGiganteContactField][qBrasilGiganteRanking.currentRow])>
+                <cfset VARIABLES.brasilGiganteContact[VARIABLES.brasilGiganteContactField] = qBrasilGiganteRanking[VARIABLES.brasilGiganteContactField][qBrasilGiganteRanking.currentRow] & ""/>
+              </cfif>
+            </cfloop>
             <cfset VARIABLES.challengeMandalaStatusLabel = "Em progresso"/>
             <cfset VARIABLES.challengeMandalaStatusClass = "badge-secondary"/>
             <cfswitch expression="#qBrasilGiganteRanking.mandala_status#">
@@ -45,12 +52,13 @@
                 <div class="d-flex align-items-center gap-2">
                   <img class="rounded-circle cbg-dashboard-avatar" src="#encodeForHTMLAttribute(qBrasilGiganteRanking.imagem_usuario)#" alt="" onerror="this.onerror=null;this.src='/assets/user.png';"/>
                   <div>
-                    <div class="fw-semibold">
+                    <div class="fw-semibold d-flex align-items-center justify-content-between gap-2">
                       <cfif len(trim(qBrasilGiganteRanking.tag & ""))>
                         <a class="text-reset" href="https://roadrunners.run/atleta/#urlEncodedFormat(qBrasilGiganteRanking.tag)#/" target="_blank" rel="noopener noreferrer">#encodeForHTML(qBrasilGiganteRanking.nome)#</a>
                       <cfelse>
                         #encodeForHTML(qBrasilGiganteRanking.nome)#
                       </cfif>
+                      <button type="button" class="btn btn-sm catarinense-contact-button shadow-0" data-catarinense-contact="#encodeForHTMLAttribute(serializeJSON(VARIABLES.brasilGiganteContact))#" aria-haspopup="dialog" aria-controls="catarinenseContactDialog" aria-label="Contato de #encodeForHTMLAttribute(qBrasilGiganteRanking.nome)#" title="Contato do atleta"><i class="fa-regular fa-address-card" aria-hidden="true"></i></button>
                     </div>
                     <div class="small text-muted">
                       ID #qBrasilGiganteRanking.id#<cfif len(trim(qBrasilGiganteRanking.cidade & "")) OR len(trim(qBrasilGiganteRanking.estado & ""))> · #encodeForHTML(qBrasilGiganteRanking.cidade)#<cfif len(trim(qBrasilGiganteRanking.cidade & "")) AND len(trim(qBrasilGiganteRanking.estado & ""))>/</cfif>#encodeForHTML(qBrasilGiganteRanking.estado)#</cfif>
@@ -97,3 +105,4 @@
     </div>
   </cfif>
 </section>
+<cfif qBrasilGiganteRanking.recordcount><cfinclude template="catarinense_contact_modal.cfm"/></cfif>

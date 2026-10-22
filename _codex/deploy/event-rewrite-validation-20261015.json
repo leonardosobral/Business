@@ -1,0 +1,41 @@
+{
+  "scope": "Job 15 — source normalization, whole-hour duration validation, safe rejection diagnostics",
+  "published": true,
+  "backup": "/var/backups/business-rewrite-validation-20261015-_12lr2gx",
+  "files": {
+    "services/EventDescriptionRewriteService.cfc": {
+      "before": "0f1be9c63014d85083cf0bb99e42431fd72706cc49d5b25dccc26f0435b54449",
+      "after": "a9a9b7ff3ba92f953e36e1d12f1aa19e023ffcca5d502cbb6d74e5ca380df91c"
+    },
+    "api/eventos/jobs/rewrite-descriptions.cfm": {
+      "before": "3da019d6c1da9ef8a8f1d84e51106f3971d4ec63d91acd3bf6586c0d42723412",
+      "after": "b6a25113863ee6d857e14476f485933a4fb19ce981ac36d6fec1e6605e4d05e0"
+    }
+  },
+  "verification": {
+    "native_service_assertions": 198,
+    "native_endpoint_guards": 29,
+    "dummy_key_selection_cases": 6,
+    "native_evidence": "/var/backups/rewrite-tests-t00iudzl",
+    "runtime_get_http": 405,
+    "runtime_get_status": "method_not_allowed",
+    "subsequent_scheduled_run_verified_in_business": {
+      "local_started_at": "2026-10-15 14:49:02 America/Sao_Paulo",
+      "processed": 3,
+      "updated": 1,
+      "rejected": 2,
+      "updated_pt_event": 48091,
+      "rejection_reason_arrays_visible": true
+    },
+    "local_disposable_database_suite": "Unavailable: configured PostgreSQL and Lucee runtimes are not installed",
+    "live_preview": "Blocked before execution pending explicit external-transmission approval",
+    "post_publish_read_only_ssh": "Timed out; authenticated browser used to inspect history and source descriptions"
+  },
+  "review": "Approved after RED-to-GREEN coverage for fractional durations, translated duration contexts, and editorial text preceding CSS",
+  "credentials_changed": false,
+  "schedule_changed": false,
+  "historical_audits_changed": false,
+  "manual_source_edits": false,
+  "historical_rejections_requeued": false,
+  "commit_or_push": false
+}

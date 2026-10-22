@@ -1,0 +1,6 @@
+{
+  "path": "/var/www/dev.roadrunners.run/includes/backend/backend.cfm",
+  "baseline": "281a0f69f64856b6627360fbd225f54b9ddb4b17a3aa91d9a91ae5e773ac8486",
+  "before": "    <cfset SESSION.devAuth = {\n        originalUsuarioId = qDevAuthBackPerfil.id,\n        originalEmail = qDevAuthBackPerfil.email,\n        isImpersonating = false\n    }/>",
+  "after": "    <cfset VARIABLES.devAuthBusinessOrigin = structKeyExists(REQUEST, \"currentEnvironment\") AND REQUEST.currentEnvironment EQ \"dev\"\n        AND structKeyExists(SESSION, \"devAuth\") AND isStruct(SESSION.devAuth)\n        AND structKeyExists(SESSION.devAuth, \"origin\") AND SESSION.devAuth.origin EQ \"business\"/>\n    <cfset SESSION.devAuth = {\n        originalUsuarioId = qDevAuthBackPerfil.id,\n        originalEmail = qDevAuthBackPerfil.email,\n        isImpersonating = false\n    }/>\n    <cfif VARIABLES.devAuthBusinessOrigin>\n        <cfset SESSION.devAuth.origin = \"business\"/>\n    </cfif>"
+}

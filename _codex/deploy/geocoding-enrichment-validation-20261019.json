@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "native_suites": 30,
+  "reader_tests": 11,
+  "runtime_model": "gpt-6-astra",
+  "runtime_live_test": {
+    "archive": "/var/backups/geocoding-tests-7s7yoabi",
+    "input_tokens": 1080,
+    "output_tokens": 824,
+    "duration_ms": 13851,
+    "confirmed_location_purposes": 2,
+    "event_writes": 0,
+    "geo_calls": 0
+  },
+  "runtime_hash_checks": 22,
+  "task_files_published": 16,
+  "backups": [
+    "/var/backups/business-geocoding-sources-1xv6xxxj",
+    "/var/backups/business-geocoding-sources-u1aj3w93"
+  ],
+  "browser": {
+    "authenticated_global_admin": true,
+    "tabs_click": true,
+    "tabs_keyboard": true,
+    "asset_cache_version": "20261019-enrichment",
+    "screenshot": "geocoding-enrichment-20261019.png"
+  },
+  "cron": {
+    "job_id": 25,
+    "active": true,
+    "interval_minutes": 1,
+    "observed_http": [200, 202],
+    "observed_errors": 0,
+    "geo_daily_limit_preserved": true
+  },
+  "credentials_changed": false,
+  "sql_applied": false,
+  "git_writes": false,
+  "catalog_processing_complete": false
+}

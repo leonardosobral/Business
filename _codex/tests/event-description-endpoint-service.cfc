@@ -1,4 +1,9 @@
 component output=false {
+    public struct function getRejectionEvidence() {return {};}
+    // Untyped legacy fixture errors use the service's safe fallback contract.
+    public struct function validationDetails(required any exception) {
+        return {code='validation_rejected',reasons=['validation_rejected'],message='A descrição não passou pelas verificações de integridade.'};
+    }
     public struct function translate(required string source, required string language, required string apiKey, string model='gpt-4.1-mini', numeric deadlineTick=0) {
         REQUEST.fixtureProviderCalls++;
         if (structKeyExists(arguments, 'language') AND arguments.language EQ 'en') {

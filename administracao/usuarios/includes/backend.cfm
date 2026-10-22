@@ -201,6 +201,9 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
             </cfcase>
 
             <cfcase value="logar_como_dev">
+                <cfif NOT reFind("^[1-9][0-9]{0,9}$", userManagerFormValue("user_id")) OR val(userManagerFormValue("user_id")) GT 2147483647>
+                    <cfthrow message="Selecione um usuário válido para abrir no DEV."/>
+                </cfif>
                 <cfset VARIABLES.userManagerAccess = userManagerMutationAccess(VARIABLES.userManagerActionUserId)/>
                 <cfif !VARIABLES.userManagerAccess.allowed>
                     <cfthrow message="#VARIABLES.userManagerAccess.message#"/>
@@ -239,22 +242,8 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
                     WHERE id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.userManagerActionUserId#"/>
                 </cfquery>
 
-                <cfif !qUserManagerHandoffActor.recordcount
-                    OR !(userManagerBoolean(qUserManagerHandoffActor.is_admin) OR userManagerBoolean(qUserManagerHandoffActor.is_dev))>
-                    <cfthrow message="Sua conta não possui autorização para iniciar a sessão no DEV."/>
-                </cfif>
-                <cfif !userManagerBoolean(qUserManagerHandoffActor.gestao_ativo)
-                    OR userManagerBoolean(qUserManagerHandoffActor.gestao_excluido)
-                    OR !userManagerBoolean(qUserManagerHandoffActor.has_active_page)>
-                    <cfthrow message="Sua conta precisa estar ativa e vinculada a uma página ativa no Road Runners para iniciar o handoff."/>
-                </cfif>
-                <cfif !qUserManagerHandoffTarget.recordcount
-                    OR !userManagerBoolean(qUserManagerHandoffTarget.gestao_ativo)
-                    OR userManagerBoolean(qUserManagerHandoffTarget.gestao_excluido)>
-                    <cfthrow message="A conta escolhida está inativa ou excluída."/>
-                </cfif>
-                <cfif !userManagerBoolean(qUserManagerHandoffTarget.has_active_page)>
-                    <cfthrow message="A conta escolhida precisa ter pelo menos uma página ativa para ser carregada no DEV."/>
+                <cfif !qUserManagerHandoffActor.recordcount OR !qUserManagerHandoffTarget.recordcount>
+                    <cfthrow message="Não foi possível validar o administrador e a conta escolhida."/>
                 </cfif>
                 <cfif !structKeyExists(APPLICATION, "notificationDispatch")
                     OR !isStruct(APPLICATION.notificationDispatch)
@@ -263,31 +252,25 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
                     <cfthrow message="O segredo compartilhado de handoff não está configurado no Business."/>
                 </cfif>
 
-                <cfset VARIABLES.userManagerHandoffPayload = {
-                    issuedAt = dateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss"),
-                    expiresAt = dateTimeFormat(dateAdd("s", 180, now()), "yyyy-mm-dd HH:nn:ss"),
-                    origin = "business",
-                    target = "dev",
-                    originalUsuarioId = VARIABLES.userManagerActorId,
-                    impersonateEmail = trim(qUserManagerHandoffTarget.email & ""),
-                    redirectPath = "/atleta/",
-                    nonce = createUUID()
-                }/>
-                <cfset VARIABLES.userManagerHandoffPayloadEncoded = toBase64(serializeJSON(VARIABLES.userManagerHandoffPayload))/>
-                <cfset VARIABLES.userManagerHandoffSignature = lCase(hmac(
-                    VARIABLES.userManagerHandoffPayloadEncoded,
-                    APPLICATION.notificationDispatch.secret,
-                    "HmacSHA256"
-                ))/>
-                <cfset VARIABLES.userManagerHandoffToken = VARIABLES.userManagerHandoffPayloadEncoded & "." & VARIABLES.userManagerHandoffSignature/>
-                <cfset VARIABLES.userManagerHandoffUrl = "https://dev.roadrunners.run/?action=handoff_consume&token=" & urlEncodedFormat(VARIABLES.userManagerHandoffToken)/>
+                <cfset VARIABLES.userManagerDevHandoff = new services.BusinessDevLogin().createHandoff(
+                    actor=queryGetRow(qUserManagerHandoffActor,1),
+                    target=queryGetRow(qUserManagerHandoffTarget,1),
+                    secret=APPLICATION.notificationDispatch.secret,
+                    method=CGI.request_method,
+                    expectedCsrf=VARIABLES.userManagerCsrf,
+                    postedCsrf=userManagerFormValue("user_manager_csrf"),
+                    confirmed=userManagerFormValue("dev_login_confirmed"),
+                    simulationActive=isDefined("VARIABLES.businessAccountSimulationActive") AND userManagerBoolean(VARIABLES.businessAccountSimulationActive)
+                )/>
+                <cfset VARIABLES.userManagerHandoffUrl = VARIABLES.userManagerDevHandoff.url/>
 
                 <cfset userManagerAudit(
                     "usuario_impersonado_dev",
                     VARIABLES.userManagerActionUserId,
                     0,
                     {},
-                    { ambiente = "dev", operador = VARIABLES.userManagerActorId }
+                    { ambiente = "dev", operador = VARIABLES.userManagerActorId, usuario = VARIABLES.userManagerActionUserId,
+                        finalidade = "suporte_tecnico", expira_em = VARIABLES.userManagerDevHandoff.expiresAt }
                 )/>
                 <cflocation addtoken="false" url="#VARIABLES.userManagerHandoffUrl#"/>
             </cfcase>

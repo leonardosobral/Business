@@ -1,0 +1,44 @@
+{
+  "checks": 52.0,
+  "live_account_writes": 0,
+  "ok": true,
+  "dev_receiver_sha256": "17b4bc0ac4bf2b438d977e35b0ac33b7865c8e54ef24717b80fdfe2d467b6130",
+  "dev_receiver_baseline": "17b4bc0ac4bf2b438d977e35b0ac33b7865c8e54ef24717b80fdfe2d467b6130",
+  "dev_header_sha256": "891ed37114714c2d2bfcdbd54e349e1b973bf8175dc9699be6300ebff275c0b6",
+  "dev_return_sha256": "c3fa913eb0d6222eb5c845ce63ab5728427e0518b46f720e59a945df83c3246d",
+  "dev_return_baseline": "c3fa913eb0d6222eb5c845ce63ab5728427e0518b46f720e59a945df83c3246d",
+  "render_checks": [
+    {
+      "case": "list",
+      "ok": true,
+      "expected": 30,
+      "buttons": 30
+    },
+    {
+      "case": "detail",
+      "ok": true,
+      "expected": 1,
+      "buttons": 1
+    },
+    {
+      "case": "dev-list",
+      "ok": true,
+      "expected": 0,
+      "buttons": 0
+    },
+    {
+      "case": "dev-detail",
+      "ok": true,
+      "expected": 0,
+      "buttons": 0
+    }
+  ],
+  "archive": "/var/backups/business-dev-login-tests-7pl0eh_a",
+  "stage_removed": true,
+  "checked_at": "2026-10-21T14:58:28.005164+00:00",
+  "files": {
+    "administracao/usuarios/includes/backend.cfm": "540a87a977b080b87ef6030e6474267a14af60de50b306dd64e86e999f383018",
+    "administracao/usuarios/home.cfm": "884c5c7041e0c893425bbad0409518d31400a0762af06f77c34ca3c25f233bf2",
+    "services/BusinessDevLogin.cfc": "06d60f6f5ae9e91c64d5ada4edbd4209280362430b83ff782bda9e3de701d986"
+  }
+}

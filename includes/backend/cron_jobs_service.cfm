@@ -41,6 +41,35 @@ function cronJobsLocalTimestamp(required date utcTimestamp) {
     return dateConvert("utc2local", arguments.utcTimestamp);
 }
 
+function cronJobsNextRunAt(required string endpointUrl, required numeric intervalMinutes, required date finishedUtc) {
+    // Only the minute-based geolocation worker uses aligned ticks. Other jobs
+    // retain their current cadence; a completed tick never schedules into the past.
+    if (arguments.endpointUrl EQ "https://business.roadrunners.run/api/eventos/geolocalizar.cfm" AND arguments.intervalMinutes EQ 1) {
+        var minuteStart = createDateTime(year(finishedUtc), month(finishedUtc), day(finishedUtc), hour(finishedUtc), minute(finishedUtc), 0);
+        // The web cron can tick a fraction of a second before the database
+        // minute. A 2s tolerance keeps that tick eligible, without clock changes.
+        var aligned = dateAdd("s", 58, minuteStart);
+        return dateCompare(aligned, finishedUtc) GT 0 ? aligned : dateAdd("s", 1, finishedUtc);
+    }
+    return dateAdd("n", arguments.intervalMinutes, arguments.finishedUtc);
+}
+
+function cronJobsPrioritizeDueJobs(required query dueJobs, required numeric limit) {
+    var selected = queryNew("id_cron_job", "bigint");
+    var boundedLimit = max(1, min(20, int(arguments.limit)));
+    // Only already-due jobs enter here. One fast, bounded minute worker goes
+    // first; all other jobs keep the database's original oldest-first order.
+    for (var priorityPass in [true, false]) {
+        for (var job in arguments.dueJobs) {
+            var isMinuteGeo = job.endpoint_url EQ "https://business.roadrunners.run/api/eventos/geolocalizar.cfm" AND job.interval_minutes EQ 1;
+            if (isMinuteGeo NEQ priorityPass) continue;
+            queryAddRow(selected, {id_cron_job=job.id_cron_job});
+            if (selected.recordCount GTE boundedLimit) return selected;
+        }
+    }
+    return selected;
+}
+
 function cronJobsTablesReady() {
     var qCronTables = "";
     var qCronColumns = "";
@@ -740,7 +769,13 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
                 writeOutput("
                     UPDATE tb_cron_jobs
                     SET last_run_at = (now() AT TIME ZONE 'UTC'),
-                        next_run_at = (now() AT TIME ZONE 'UTC') + (interval '1 minute' * interval_minutes),
+                        next_run_at = ");
+                if (qCronJob.endpoint_url EQ "https://business.roadrunners.run/api/eventos/geolocalizar.cfm" AND qCronJob.interval_minutes EQ 1) {
+                    cfqueryparam(cfsqltype = "cf_sql_timestamp", value = cronJobsNextRunAt(qCronJob.endpoint_url, qCronJob.interval_minutes, dateConvert("local2utc", now())));
+                } else {
+                    writeOutput("(now() AT TIME ZONE 'UTC') + (interval '1 minute' * interval_minutes)");
+                }
+                writeOutput(",
                         last_status = ");
                 cfqueryparam(cfsqltype = "cf_sql_varchar", value = runStatus);
                 writeOutput(",

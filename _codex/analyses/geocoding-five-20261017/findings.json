@@ -1,0 +1,88 @@
+{
+  "reviewed_on": "2026-10-17",
+  "scope": "Cinco sugestões do primeiro lote, eventos da edição de 17/10/2026",
+  "grain": "Um evento por ID, 49278 a 49282",
+  "events_changed": 0,
+  "proposals_changed": 0,
+  "additional_geoapify_calls": 5,
+  "recommended_specific_locations": 1,
+  "recommended_city_suggestions": 4,
+  "method": "Cadastro e URLs originais confrontados com fontes primárias da edição; cinco consultas de locais públicos ao Geoapify pelo orçamento compartilhado. Não aceitar centroide municipal, bairro, rua ou endereço de kit como ponto exato de largada.",
+  "findings": [
+    {
+      "id_evento": 49279,
+      "event": "Corre Cidade + Movimente-se: Edição Especial Outubro Rosa",
+      "local": "Shopping Cidade, Rua dos Tupis, 337, Centro, Belo Horizonte/MG",
+      "source": "https://www.sympla.com.br/evento/corre-cidade-movimente-se-edicao-especial-outubro-rosa/3614111",
+      "source_same_edition": true,
+      "confidence": 1,
+      "result_type": "amenity",
+      "returned_name": "Shopping Cidade",
+      "returned_housenumber": "337",
+      "latitude": -19.9220057,
+      "longitude": -43.9400589,
+      "recommendation": "Apto para revisão/aprovação do local específico",
+      "caveat": "A coordenada representa o estabelecimento, não uma medição da porta ou linha de largada. A aprovação não foi realizada."
+    },
+    {
+      "id_evento": 49278,
+      "event": "3ª Corrida e Caminhada do Tribunal de Justiça do Estado do Ceará",
+      "local": "Centro Administrativo Governador Virgílio Távora, Cambeba, Fortaleza/CE",
+      "source": "https://www.tjce.jus.br/atos_normativos/edital-no-343-2026/",
+      "corroborating_source": "https://www.tjce.jus.br/noticias/3a-caminhada-corrida-do-tjce-reune-membros-do-judiciario-em-comemoracao-ao-mes-do-servidor/",
+      "source_same_edition": true,
+      "confidence": 0.625,
+      "result_type": "amenity",
+      "recommendation": "Manter Fortaleza como sugestão de coordenadas",
+      "reason": "Complexo amplo; referência cartográfica com nome divergente e confiança inferior a 0,95. Não há pino inequívoco de largada. Os endereços do capítulo de entrega de kits não foram usados como largada."
+    },
+    {
+      "id_evento": 49280,
+      "event": "Corre Menina Corre Garota",
+      "local": "Parque Madureira, acesso pelo Portão 3, em frente à administração, Rio de Janeiro/RJ",
+      "source": "https://tickets.siuni.com.br/eventos/corremenina-corregarota",
+      "source_same_edition": true,
+      "confidence": 0.5,
+      "result_type": "amenity",
+      "recommendation": "Manter Rio de Janeiro como sugestão de coordenadas",
+      "reason": "O retorno é do parque inteiro, não da administração ou Portão 3. O mapa incorporado pelo organizador faz busca genérica pelo parque, sem ponto exato."
+    },
+    {
+      "id_evento": 49281,
+      "event": "Flash Back Run Edealina Goiás",
+      "local": "Buscapé Eventos, Edealina/GO",
+      "source": "https://sporttimer.com.br/organizador/public/eventos/cartaz/cartaz_6a92c51da14f8_IMG-20260829-WA0044.jpg",
+      "source_page": "https://sporttimer.com.br/site/eventosel.php?ev=2641",
+      "source_same_edition": true,
+      "confidence": 0.25,
+      "result_type": "city",
+      "recommendation": "Manter Edealina como sugestão de coordenadas",
+      "reason": "Cartaz oficial informa Buscapé Eventos; Geoapify não localizou o estabelecimento. A referência de endereço em documento municipal de 2025 não confirma um ponto cartográfico atual."
+    },
+    {
+      "id_evento": 49282,
+      "event": "Metamorfose Experience — Jataí Goiás",
+      "local": "Rua Prof Dom Albina, Vila Luiza, Jataí/GO",
+      "source": "https://www.sporttimer.com.br/organizador/public/eventos/regulamento/reg_6a70c859f2560_Regulamento_Metamorfose_Experience.pdf",
+      "source_page": 1,
+      "source_same_edition": true,
+      "confidence": 0.5,
+      "result_type": "suburb",
+      "recommendation": "Manter Jataí como sugestão de coordenadas",
+      "reason": "Regulamento confirma rua e bairro, sem número/cruzamento. Menciona mapa interativo não vinculado no documento. Geocodificador retornou o bairro e locais não relacionados."
+    }
+  ],
+  "provider_caveat": "Confiança é índice de correspondência de 0 a 1, não probabilidade. Tipo, número/nome, município/UF e precisão da fonte são avaliados em conjunto.",
+  "evidence": {
+    "cadaster_query": "_codex/tests/geocoding/research_five.cfm",
+    "geocoding_query": "_codex/tests/geocoding/research_geocode.cfm",
+    "cadaster_archive": "/var/backups/geocoding-tests-kv79tpl3",
+    "geocoding_archive": "/var/backups/geocoding-tests-157cvlvl"
+  },
+  "report_delivery": {
+    "selected_mode": "html",
+    "status": "blocked",
+    "attempts": 2,
+    "reason": "O empacotador canônico rejeita o gráfico sem SQL de origem. A evidência quantitativa veio de HTTP/Geoapify, não de SQL; não foi inventada uma consulta SQL para atribuir falsa proveniência. Entrega permanece nos achados e fontes, não em um relatório HTML."
+  }
+}

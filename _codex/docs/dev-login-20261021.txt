@@ -1,0 +1,55 @@
+Business: login de suporte no DEV
+
+Escopo: administracao/usuarios/includes/backend.cfm, home.cfm e
+services/BusinessDevLogin.cfc. O receptor do DEV recebe somente o patch
+versionado em _codex/patches/dev-login-receiver-identity.json; nenhum arquivo
+do portal RR de produção e nenhuma credencial são alterados.
+
+Uso: admin global no contexto real da plataforma escolhe uma conta ativa,
+usa "Logar como no DEV" e confirma a finalidade de suporte. A nova aba abre
+dev.roadrunners.run/atleta/ como o atleta, mantendo a sessão do Business.
+O retorno ao administrador continua no comando existente do cabeçalho DEV.
+
+Proteções: POST, CSRF exato, confirmação explícita, releitura de privilégios
+e estado no banco, exclusão de dev-only e de simulação de conta; exigência
+de perfil ativo para ambos, assinatura HMAC SHA-256 e validade de 180 s.
+O identificador numérico selecionado e o e-mail estão assinados. Para
+origem Business, DEV resolve o ID, valida o e-mail e exige admin global.
+As permissões do atleta não são elevadas. Cookies permanecem no host DEV.
+Tokens expirados/adulterados e consumo em produção não autenticam.
+
+Auditoria: usuario_impersonado_dev na tabela de auditoria já existente,
+com administrador, alvo, timestamp, IP e finalidade. Registra a emissão
+do acesso; não constitui confirmação de consumo no DEV. Tokens e segredos
+nunca são gravados na auditoria.
+
+Testes sobre o runtime publicado: python3 _codex/scripts/test_dev_login_native.py --published --save-evidence
+e node _codex/scripts/test_dev_login_confirmation.mjs. Fixtures têm nome
+de aplicação próprio, acesso somente loopback + nonce, consultas somente
+leitura e nenhuma gravação de conta. O alvo por e-mail devolve outro ID
+intencionalmente para detectar regressões na vinculação por ID.
+
+Publicação: deploy_dev_login.py exige hashes da linha de base, testes
+recentes e candidato DEV idêntico ao testado. Faz backup privado e troca
+atômica dos quatro arquivos, com reversão se os checks falharem.
+O checkout local do projeto RoadRunners não foi sobrescrito: reconciliar
+o patch versionado acima antes de um futuro deploy integral do DEV.
+
+Verificação real adicional: a troca de token emitia o cookie correto, mas
+a leitura legada podia continuar usando a identidade anterior do navegador.
+dev-login-session-identity.json faz a sessão server-side validada de suporte
+prevalecer sobre esse cookie somente no DEV e somente para origem Business.
+Nenhuma permissão é adicionada ao atleta e os checks de conta ativa seguem
+executados. dev-login-return-header.json disponibiliza o retorno fora do
+menu administrativo, pois esse menu não aparece para atletas comuns.
+dev-login-return-state.json preserva essa origem ao voltar ao administrador.
+Os quatro patches DEV devem ser reconciliados em um futuro deploy integral.
+
+Validação final: 52 checks nativos, quatro cenários de renderização e quatro
+checks da confirmação aprovados. A troca HTTP real abriu o perfil do alvo
+com o botão de retorno, mesmo enviando intencionalmente o cookie de outro
+usuário; o retorno restaurou o administrador. As sondas foram retiradas do
+webroot, ficando somente em arquivo privado para diagnóstico. A interface
+publicada e a auditoria foram conferidas no navegador interno. A automação
+do diálogo nativo de confirmação nesse navegador ficou indisponível;
+o aceite/cancelamento foi validado pelos testes de interação JavaScript.

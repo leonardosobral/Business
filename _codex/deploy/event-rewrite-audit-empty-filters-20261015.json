@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "backup": "/var/backups/business-rewrite-audit-20261015-c9s04gnl",
+  "files": {
+    "administracao/cron-jobs/includes/description_audit_backend.cfm": {
+      "before": "bbc197b891c3bf21a591b4a7074a289daf3fb0200156028d446159b5fefed85f",
+      "after": "da740985a0a8cf4b8c23821b3f5d3bbb20ff2326f867b4c2522c50503f142336",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "runtime_get_status": 405,
+  "anonymous_audit_status": 302,
+  "credentials_changed": false,
+  "schedule_changed": false,
+  "events_changed": false,
+  "schema_changed": false,
+  "browser_verification": {
+    "authenticated_global_admin": true,
+    "default_page_rendered": true,
+    "historical_translation_detail_rendered": true,
+    "historical_audit_id": 11898,
+    "missing_historical_candidate_explained": true,
+    "no_reanalysis_triggered": true
+  },
+  "tests": {
+    "native_checks": 242,
+    "endpoint_guards": 29,
+    "rollback_database_checks": 9,
+    "privacy_checks": 5,
+    "archive": "/var/backups/rewrite-tests-quwoxwbk",
+    "live_ai_calls": 0
+  }
+}

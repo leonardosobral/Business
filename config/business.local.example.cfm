@@ -1,5 +1,6 @@
 <cfscript>
     businessLocalConfig = {
+        "eventDescriptionApiKey" = "",
         "eventoApiToken" = "COLOQUE_AQUI_O_TOKEN_DA_API_DE_EVENTOS",
         "mandrillUsername" = "COLOQUE_AQUI_O_USUARIO_MANDRILL",
         "mandrillPassword" = "COLOQUE_AQUI_A_SENHA_MANDRILL",

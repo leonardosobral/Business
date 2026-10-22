@@ -53,6 +53,8 @@ function rewriteTranslation(required struct row, required boolean dryRun, requir
     var audit = queryNew("");
     var output = {};
     var errorCode = "";
+    var validationDetails = {};
+    var rejectedEvidence = "";
     var updated = queryNew("");
     var service = new services.EventDescriptionRewriteService();
     if (!arguments.dryRun) {
@@ -108,7 +110,11 @@ function rewriteTranslation(required struct row, required boolean dryRun, requir
         }
     } catch (EventDescriptionRewrite.Validation rejectedTranslation) {
         outcome.result.status = "rejected";
-        errorCode = "validation_rejected";
+        validationDetails = service.validationDetails(rejectedTranslation);
+        errorCode = validationDetails.code;
+        outcome.result.validationReasons = validationDetails.reasons;
+        outcome.result.message = validationDetails.message;
+        if (!structIsEmpty(service.getRejectionEvidence())) rejectedEvidence = serializeJSON(service.getRejectionEvidence());
         outcome.httpStatus = 422;
         outcome.errors = 1;
     } catch (EventDescriptionRewrite.ProviderQuota providerQuota) {
@@ -132,12 +138,16 @@ function rewriteTranslation(required struct row, required boolean dryRun, requir
                     ELSE NULL END
             WHERE id = :audit_id", {
             status={value=outcome.result.status, cfsqltype="cf_sql_varchar"},
-            description_after={value=structKeyExists(output, "html") ? output.html : "", null=!structKeyExists(output, "html"), cfsqltype="cf_sql_longvarchar"},
+            description_after={value=structKeyExists(output, "html") ? output.html : rejectedEvidence,
+                null=!structKeyExists(output, "html") AND !len(rejectedEvidence), cfsqltype="cf_sql_longvarchar"},
             error_code={value=errorCode, null=!len(errorCode), cfsqltype="cf_sql_varchar"},
             audit_id={value=auditId, cfsqltype="cf_sql_bigint"}
         }, dbOptions);
     }
     if (len(errorCode)) outcome.result.errorCode = errorCode;
+    if (!arguments.dryRun AND outcome.result.status EQ "rejected" AND auditId GT 0) {
+        outcome.result.auditUrl = "/administracao/cron-jobs/descricoes-auditoria.cfm?language=" & language & "&audit_id=" & auditId;
+    }
     return outcome;
 }
 
@@ -212,7 +222,11 @@ if (structKeyExists(VARIABLES.rewritePayload, "eventId")) {
     VARIABLES.rewriteEventId = val(VARIABLES.rewritePayload.eventId);
 }
 VARIABLES.rewriteEnvironment = createObject("java", "java.lang.System").getenv();
-VARIABLES.rewriteApiKey = VARIABLES.rewriteEnvironment.containsKey("OPENAI_API_KEY") ? trim(VARIABLES.rewriteEnvironment.get("OPENAI_API_KEY") & "") : "";
+VARIABLES.rewriteApiKey = structKeyExists(VARIABLES.businessLocalConfig, "eventDescriptionApiKey")
+    ? trim(VARIABLES.businessLocalConfig.eventDescriptionApiKey & "") : "";
+if (!len(VARIABLES.rewriteApiKey)) {
+    VARIABLES.rewriteApiKey = VARIABLES.rewriteEnvironment.containsKey("OPENAI_API_KEY") ? trim(VARIABLES.rewriteEnvironment.get("OPENAI_API_KEY") & "") : "";
+}
 if (!len(VARIABLES.rewriteApiKey) AND structKeyExists(VARIABLES.businessLocalConfig, "openAiApiKey")) {
     VARIABLES.rewriteApiKey = trim(VARIABLES.businessLocalConfig.openAiApiKey & "");
 }
@@ -308,9 +322,11 @@ for (VARIABLES.rewriteStep = 1; VARIABLES.rewriteStep LTE VARIABLES.rewriteLimit
                 }
                 VARIABLES.rewriteErrorCode = "";
                 VARIABLES.rewriteOutput = {};
+                VARIABLES.rewriteRejectedEvidence = "";
+                VARIABLES.rewriteService = new services.EventDescriptionRewriteService();
                 try {
                     VARIABLES.rewriteResponse.processed++;
-                    VARIABLES.rewriteOutput = new services.EventDescriptionRewriteService().rewrite(VARIABLES.rewriteSource, VARIABLES.rewriteApiKey, VARIABLES.rewriteModel, VARIABLES.rewriteDeadline);
+                    VARIABLES.rewriteOutput = VARIABLES.rewriteService.rewrite(VARIABLES.rewriteSource, VARIABLES.rewriteApiKey, VARIABLES.rewriteModel, VARIABLES.rewriteDeadline);
                     if (VARIABLES.rewriteDryRun) {
                         VARIABLES.rewriteResult.status = "preview";
                         VARIABLES.rewriteResult.text = VARIABLES.rewriteOutput.text;
@@ -335,7 +351,13 @@ for (VARIABLES.rewriteStep = 1; VARIABLES.rewriteStep LTE VARIABLES.rewriteLimit
                     }
                 } catch (EventDescriptionRewrite.Validation rejectedDescription) {
                     VARIABLES.rewriteResult.status = "rejected";
-                    VARIABLES.rewriteErrorCode = "validation_rejected";
+                    VARIABLES.rewriteValidation = VARIABLES.rewriteService.validationDetails(rejectedDescription);
+                    VARIABLES.rewriteErrorCode = VARIABLES.rewriteValidation.code;
+                    VARIABLES.rewriteResult.validationReasons = VARIABLES.rewriteValidation.reasons;
+                    VARIABLES.rewriteResult.message = VARIABLES.rewriteValidation.message;
+                    if (!structIsEmpty(VARIABLES.rewriteService.getRejectionEvidence())) {
+                        VARIABLES.rewriteRejectedEvidence = serializeJSON(VARIABLES.rewriteService.getRejectionEvidence());
+                    }
                     VARIABLES.rewriteHttpStatus = max(VARIABLES.rewriteHttpStatus, 422);
                     VARIABLES.rewriteResponse.errors++;
                 } catch (EventDescriptionRewrite.ProviderQuota providerQuota) {
@@ -355,10 +377,14 @@ for (VARIABLES.rewriteStep = 1; VARIABLES.rewriteStep LTE VARIABLES.rewriteLimit
                         SET status = :status, description_after = :description_after, error_code = :error_code, finished_at = now()
                         WHERE id = :audit_id", {
                         status={value=VARIABLES.rewriteResult.status, cfsqltype="cf_sql_varchar"},
-                        description_after={value=structKeyExists(VARIABLES.rewriteOutput, "html") ? VARIABLES.rewriteOutput.html : "", null=!structKeyExists(VARIABLES.rewriteOutput, "html"), cfsqltype="cf_sql_longvarchar"},
+                        description_after={value=structKeyExists(VARIABLES.rewriteOutput, "html") ? VARIABLES.rewriteOutput.html : VARIABLES.rewriteRejectedEvidence,
+                            null=!structKeyExists(VARIABLES.rewriteOutput, "html") AND !len(VARIABLES.rewriteRejectedEvidence), cfsqltype="cf_sql_longvarchar"},
                         error_code={value=VARIABLES.rewriteErrorCode, null=!len(VARIABLES.rewriteErrorCode), cfsqltype="cf_sql_varchar"},
                         audit_id={value=VARIABLES.rewriteAuditId, cfsqltype="cf_sql_bigint"}
                     }, VARIABLES.rewriteDbOptions);
+                    if (VARIABLES.rewriteResult.status EQ "rejected") {
+                        VARIABLES.rewriteResult.auditUrl = "/administracao/cron-jobs/descricoes-auditoria.cfm?language=pt-BR&audit_id=" & VARIABLES.rewriteAuditId;
+                    }
                 }
                 if (len(VARIABLES.rewriteErrorCode)) VARIABLES.rewriteResult.errorCode = VARIABLES.rewriteErrorCode;
                 arrayAppend(VARIABLES.rewriteResponse.results, VARIABLES.rewriteResult);

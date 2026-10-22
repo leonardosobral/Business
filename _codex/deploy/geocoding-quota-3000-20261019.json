@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-geocoding-sources-b9mxs8fc",
+  "manifest": {
+    "services/geocoding/Store.cfc": {
+      "before": "7884072f4f0a3f2d43c8db49d07069bedfad359e9835405d36b584b71147cf0d",
+      "after": "8ef9fc6bda7fca6c4224d4b7ba15ea5e959609d368dc93e8cb0c2bebb073dc3e"
+    },
+    "administracao/geolocalizacao/includes/view.cfm": {
+      "before": "c38e4fffe4410228c9cdd86326a10471ec2d2aea8dc29678028143c6eb676ef0",
+      "after": "d608fccb566a599b6b46a17dd0724fd47b15700154ad3d4beb36c883698e8af7"
+    }
+  },
+  "probes": [
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "GET",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "POST",
+      "status": "401",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/Sources.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/source_fetcher.py",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/administracao/geolocalizacao/",
+      "method": "GET",
+      "status": "302",
+      "ok": true
+    }
+  ],
+  "checks": [
+    {
+      "path": "services/geocoding/Store.cfc",
+      "ok": true
+    },
+    {
+      "path": "administracao/geolocalizacao/includes/view.cfm",
+      "ok": true
+    }
+  ],
+  "sql_applied": false,
+  "credentials_changed": false,
+  "previous_publications": []
+}

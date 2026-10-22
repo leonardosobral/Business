@@ -1,0 +1,82 @@
+{
+  "ok": true,
+  "backup": "/var/backups/business-dev-login-session-20261021-ahutg6x0",
+  "files": {
+    "dev/Application.cfc": {
+      "path": "/var/www/dev.roadrunners.run/Application.cfc",
+      "before": "b010180a67aa5698fad0809e3f7b07167a56352e19b94702b9229080860cf39c",
+      "after": "17b4bc0ac4bf2b438d977e35b0ac33b7865c8e54ef24717b80fdfe2d467b6130",
+      "mode": 420,
+      "uid": 501,
+      "gid": 0
+    },
+    "dev/includes/estrutura/header.cfm": {
+      "path": "/var/www/dev.roadrunners.run/includes/estrutura/header.cfm",
+      "before": "5d6814586755b02a436ab980d40567024b2ccc3744ab4eb7d49a1f4c127b7c8a",
+      "after": "891ed37114714c2d2bfcdbd54e349e1b973bf8175dc9699be6300ebff275c0b6",
+      "mode": 420,
+      "uid": 501,
+      "gid": 0
+    },
+    "dev/includes/backend/backend.cfm": {
+      "path": "/var/www/dev.roadrunners.run/includes/backend/backend.cfm",
+      "before": "281a0f69f64856b6627360fbd225f54b9ddb4b17a3aa91d9a91ae5e773ac8486",
+      "after": "c3fa913eb0d6222eb5c845ce63ab5728427e0518b46f720e59a945df83c3246d",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "http": {
+    "business_anonymous": 302,
+    "dev_invalid_token": 302,
+    "prod_invalid_token": 302
+  },
+  "credentials_changed": false,
+  "schema_changed": false,
+  "production_rr_files_changed": false,
+  "tests": {
+    "checks": 52.0,
+    "live_account_writes": 0,
+    "ok": true,
+    "dev_receiver_sha256": "17b4bc0ac4bf2b438d977e35b0ac33b7865c8e54ef24717b80fdfe2d467b6130",
+    "dev_receiver_baseline": "b010180a67aa5698fad0809e3f7b07167a56352e19b94702b9229080860cf39c",
+    "dev_header_sha256": "891ed37114714c2d2bfcdbd54e349e1b973bf8175dc9699be6300ebff275c0b6",
+    "dev_return_sha256": "c3fa913eb0d6222eb5c845ce63ab5728427e0518b46f720e59a945df83c3246d",
+    "dev_return_baseline": "281a0f69f64856b6627360fbd225f54b9ddb4b17a3aa91d9a91ae5e773ac8486",
+    "render_checks": [
+      {
+        "case": "list",
+        "ok": true,
+        "expected": 30,
+        "buttons": 30
+      },
+      {
+        "case": "detail",
+        "ok": true,
+        "expected": 1,
+        "buttons": 1
+      },
+      {
+        "case": "dev-list",
+        "ok": true,
+        "expected": 0,
+        "buttons": 0
+      },
+      {
+        "case": "dev-detail",
+        "ok": true,
+        "expected": 0,
+        "buttons": 0
+      }
+    ],
+    "archive": "/var/backups/business-dev-login-tests-25wlv_y1",
+    "stage_removed": true,
+    "checked_at": "2026-10-21T14:46:22.716015+00:00",
+    "files": {
+      "administracao/usuarios/includes/backend.cfm": "540a87a977b080b87ef6030e6474267a14af60de50b306dd64e86e999f383018",
+      "administracao/usuarios/home.cfm": "884c5c7041e0c893425bbad0409518d31400a0762af06f77c34ca3c25f233bf2",
+      "services/BusinessDevLogin.cfc": "06d60f6f5ae9e91c64d5ada4edbd4209280362430b83ff782bda9e3de701d986"
+    }
+  }
+}

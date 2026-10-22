@@ -1,0 +1,15 @@
+<cfscript>
+// One paid interpretation; no event writes and no Geoapify calls.
+if(!isDefined("fixtureUseRuntime"))fixtureUseRuntime=false;
+if(fixtureUseRuntime){include "/services/geocoding/config.cfm";fixtureAI=createObject("component","services" & ".geocoding.AIClient").init(VARIABLES.geoConfig.aiKey,VARIABLES.geoConfig.aiModel);}
+else {include "../services/geocoding/config.cfm";fixtureAI=new services.geocoding.AIClient(VARIABLES.geoConfig.aiKey,VARIABLES.geoConfig.aiModel);}
+fixtureStore=new services.geocoding.LocationStore();fixtureReservation=fixtureStore.reserveAI(VARIABLES.geoConfig.aiDailyLimit);if(!fixtureReservation.allowed)throw(type="Test.Failed",message=fixtureReservation.reason);
+fixtureSource={nome_evento="Corrida Parque das Flores",start_date="2026-11-15",cidade="Florianópolis",estado="SC",pais="BR",organizador="",tipo_corrida="",localizacoes={}};
+fixtureDocs=[{url="https://example.com/regulamento",sha256=repeatString("c",64),kind="html",text="Corrida Parque das Flores — 15/11/2026. Organização: Associação Flores. Modalidade: corrida de rua, distâncias 5 km e 10 km. Largada no Parque das Flores, Rua das Flores, 123, Florianópolis, Santa Catarina, Brasil. Horários de largada: 5 km às 07:00 e 10 km às 07:30. Retirada de kits na Loja Flores, Rua das Palmeiras, 45, São José, Santa Catarina, Brasil. Retirada de kits em 14/11/2026, das 10:00 às 18:00, mediante documento com foto. Inscrições até 10/11/2026. Estrutura: hidratação e guarda-volumes."}];
+fixtureStart=getTickCount();fixtureReply=fixtureAI.extract(fixtureSource,fixtureDocs);fixtureStore.completeAI(fixtureReply);if(!fixtureReply.ok)throw(type="Test.Failed",message="OpenAI: " & fixtureReply.code);
+fixtureEnrichment=new services.geocoding.EnrichmentPolicy().validate(fixtureSource,fixtureDocs,fixtureReply.facts);fixtureLocations=new services.geocoding.LocationPolicy().validate(fixtureSource,fixtureDocs,fixtureReply.facts);
+fixtureOrganizer=false;fixtureAgenda=false;fixtureKitAgenda=false;fixtureFields=[];
+for(fixtureField in fixtureEnrichment.fields){arrayAppend(fixtureFields,{field=fixtureField.field,trusted=fixtureField.trusted,status=fixtureField.status});if(fixtureField.field EQ "organizador" AND fixtureField.trusted)fixtureOrganizer=true;if(fixtureField.field EQ "horarios_largada" AND fixtureField.trusted)fixtureAgenda=true;if(fixtureField.field EQ "kit_programacao" AND fixtureField.trusted)fixtureKitAgenda=true;}
+if(fixtureReply.model NEQ "gpt-6-astra" OR !fixtureOrganizer OR !fixtureAgenda OR !fixtureKitAgenda OR arrayLen(fixtureLocations.targets) NEQ 2 OR !fixtureLocations.targets[1].trusted OR !fixtureLocations.targets[2].trusted)throw(type="Test.Failed",message="Live enrichment or separated locations failed validation",detail=serializeJSON({fields=fixtureFields,locations=fixtureLocations}));
+writeOutput(serializeJSON({runtime=fixtureUseRuntime,model=fixtureReply.model,usage=fixtureReply.usage,duration_ms=getTickCount()-fixtureStart,fields=fixtureFields,location_count=arrayLen(fixtureLocations.targets),event_writes=0,geo_calls=0}));writeOutput("GEO_ENRICHMENT_LIVE_PASSED");
+</cfscript>

@@ -1,0 +1,72 @@
+{
+  "task": "Mesmo botão discreto e modal de contato dos atletas no Circuito Brasil Gigante",
+  "date": "2026-10-13",
+  "status": "published_and_verified",
+  "runtime_scope": ["desafios/includes/backend.cfm", "desafios/includes/brasil_gigante_table.cfm"],
+  "change": "Adicionar Instagram e WhatsApp do perfil na lateral existente do Brasil Gigante e renderizar um botão de contato ao lado do nome em cada linha. Reutilizar exatamente o modal, CSS e JavaScript já publicados nos circuitos Catarinenses, com whitelist de 13 campos. Preservar permissões, filtros, ordem de classificação, ações de mandala e validações documentais.",
+  "backup": "/var/backups/business-bg-contact-20261013-luFgNC",
+  "baseline_sha256": {
+    "desafios/includes/backend.cfm": "3a4eb39f9ccba28c6f9681d8b9e068a9ee19b4e60e6d873d56b0f514c88fd47a",
+    "desafios/includes/brasil_gigante_table.cfm": "23163a532674b5f97a555a9a041ad76f0a9c41478d296389be89c78815bf90c6"
+  },
+  "published_sha256": {
+    "desafios/includes/backend.cfm": "bef6b5c908b8780f64d6b71c655485193cb8cbb2e177f47bd75dd134fe375246",
+    "desafios/includes/brasil_gigante_table.cfm": "2d744e82479b3d8ae5e315e836597d36dd0ce04ac71559b7e2be8a7ace256a76"
+  },
+  "unchanged_dependencies_sha256": {
+    "desafios/includes/catarinense_contact_modal.cfm": "230e42876bb969ce8cd2373a5883db9c440dd6504df042a0d357a385794be97d",
+    "desafios/assets/catarinense-contact.js": "f6b2b026299c0bcd864a4a0de11a2eff8cd2ac59e476977dd79f0bd32a67cffa",
+    "desafios/assets/catarinense-contact.css": "f91b8550b8462a085583ff3c75eec2d6923e92b5f0e3b541ba1ead210e113b70"
+  },
+  "verification": {
+    "trusted_ssh": "BatchMode=yes; StrictHostKeyChecking=yes; nenhuma alteração nas credenciais/chave do host",
+    "baseline_matched_and_rechecked_before_replacement": true,
+    "backup_precedes_publication": true,
+    "native_red_before_implementation": {"checks": 13, "failures": 4, "cause": "Botões de contato e modal ausentes"},
+    "native_query_red": {"checks": 2, "ok": false, "cause": "Instagram e WhatsApp ausentes na consulta do Brasil Gigante"},
+    "native_candidate_table": {"checks": 21, "failures": 0},
+    "native_query_candidate": {"checks": 2, "failures": 0, "zero_rows": true, "method": "Consulta qBase Brasil Gigante extraída da candidata, com AND false para não retornar dados de atletas"},
+    "native_published_table": {"checks": 21, "failures": 0},
+    "native_published_catarinense_regression": {"checks": 30, "failures": 0},
+    "native_scope": "Renderização real CF2025 com atletas sintéticos: contatos completos, campos opcionais ausentes, troca de atleta, lista vazia, escape de HTML/JSON, whitelist, etapas e operação de entrega de mandala.",
+    "independent_review": "Aprovada; nenhum achado Critical, Important ou Minor no delta. Revisor reexecutou 18 testes do modelo e interação do modal compartilhado, sem falhas.",
+    "browser": {
+      "authenticated_global_admin": true,
+      "existing_search_filter_preserved": true,
+      "before_publication_contact_buttons": 0,
+      "after_publication_contact_buttons_on_filtered_page": 1,
+      "shared_modal_count": 1,
+      "correct_identity": true,
+      "avatar_loaded": true,
+      "email_phone_whatsapp_links_valid": true,
+      "profile_available": true,
+      "chat_target_matches_athlete_id": true,
+      "absent_instagram_shown_not_informed": true,
+      "native_escape_closes_and_restores_focus": true,
+      "visual_layout_verified": true,
+      "no_messages_calls_or_chat_creation_performed": true,
+      "baseline_observation": "A listagem sem filtro já continha 5827 atletas e sua árvore de acessibilidade excedia o limite do navegador antes da publicação. Conferência visual realizada usando o filtro de nome existente; não foi introduzida paginação nesta tarefa."
+    },
+    "temporary_runner_archived_to": "/var/backups/business-bg-contact-20261013-luFgNC/test-runner",
+    "archived_runner_url_status": 404,
+    "git_diff_check": "passed",
+    "node_syntax_check": "passed",
+    "full_node_suite": {
+      "tests": 421,
+      "passed": 416,
+      "failed": 5,
+      "log": "/private/tmp/business-bg-contact-20261013-9Ds1aD/node-suite.log",
+      "preexisting_unrelated_failures": [
+        {"test": "joining a group refreshes the group list, not channels", "file": "_codex/tests/chat-community-entry.test.cjs", "reason": "Mock existente sem event.target.matches; runtime do projeto irmão RoadRunners."},
+        {"test": "subscribing to a channel refreshes channels", "file": "_codex/tests/chat-community-entry.test.cjs", "reason": "Mock existente sem event.target.matches; runtime do projeto irmão RoadRunners."},
+        {"test": "modular manifest passes portable privacy and hash verification", "file": "_codex/tests/mif-report-deployment-contract.test.js", "reason": "Caminho absoluto de Python de outra máquina."},
+        {"test": "the modular feature never changes the existing registrations screen", "file": "_codex/tests/mif-report-deployment-contract.test.js", "reason": "Diferenças de revisão preexistentes em arquivos de inscrições, fora desta tarefa."},
+        {"test": "_codex/tests/seo_marathons_heading.test.mjs", "reason": "Import absoluto aponta para helper em outra máquina."}
+      ]
+    }
+  },
+  "persistent_data_writes": false,
+  "access_control_changes": false,
+  "application_restart": false,
+  "git_mutations": {"commit": false, "push": false, "branch": false, "pull_request": false}
+}

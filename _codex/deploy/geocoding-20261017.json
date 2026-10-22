@@ -1,0 +1,87 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-geocoding-20261017-vj33x9_c",
+  "manifest": {
+    "administracao/geolocalizacao/assets/geocoding.js": {
+      "before": null,
+      "after": "1366e02f0123bc71db376ebe3e1c4b72248c85f6aa87f33f17fcbddb631bb47b"
+    },
+    "administracao/geolocalizacao/includes/backend.cfm": {
+      "before": null,
+      "after": "12413ebb2b729439ca63c300aceac0a70ced9677f88eef9c9a3b26d4265f6c6a"
+    },
+    "administracao/geolocalizacao/includes/view.cfm": {
+      "before": null,
+      "after": "aeba7b18ee6a52adf99bddc41ed960f4d07592261acbe8739afad3f1e12280d4"
+    },
+    "administracao/geolocalizacao/index.cfm": {
+      "before": null,
+      "after": "d463bf33a1bb8f3bb47199d0f995dcf0d6168465a19c6d23b0a3d1c960255c83"
+    },
+    "api/eventos/geolocalizar.cfm": {
+      "before": null,
+      "after": "83c0c51525f395f5264256fc32137396a6474af37cd6a02406fc0a1cecc368c6"
+    },
+    "services/geocoding/.htaccess": {
+      "before": null,
+      "after": "fa28d421a28ed9b6f4b997d5119c2b8adbacff6e2dd119a179b71230f9664934"
+    },
+    "services/geocoding/GeoapifyClient.cfc": {
+      "before": null,
+      "after": "3c8664c20abd8fbacbd497669399f11c2f442b71054eb18dec44f598fbc74973"
+    },
+    "services/geocoding/JobSecurity.cfc": {
+      "before": null,
+      "after": "fa5fe458d1d9254a924ff5040529b7a3c6882614314ce6105b1392b638ee8d10"
+    },
+    "services/geocoding/Policy.cfc": {
+      "before": null,
+      "after": "29d99cb7ab39c9cc8a35497f624a7545fc4689193e64b94be4f8d3cd13bcf41f"
+    },
+    "services/geocoding/Store.cfc": {
+      "before": null,
+      "after": "d8b1a47d44013f828c8d447276981ad1225e8ce01c18f77c482a141438eb9229"
+    },
+    "services/geocoding/Worker.cfc": {
+      "before": null,
+      "after": "33cc99f89c61bc038214bc85b81fabe8cbc78216fed7a0ca6a4c911f125a1e99"
+    },
+    "services/geocoding/config.cfm": {
+      "before": null,
+      "after": "4ee6966a207784b569f82032b59183370d82fb33aed0f0138891537d4d98883c"
+    },
+    "includes/estrutura/sidenav.cfm": {
+      "before": "4a7e039fc787199570e1f6322d133a21b5d9b389354ea697b59c2fbde04743ac",
+      "after": "54a9b05e7ca901c785825c5f5f420415da89b7154acf930631022f4dc55d1e0d"
+    }
+  },
+  "probes": [
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "GET",
+      "status": 405,
+      "ok": true
+    },
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "POST",
+      "status": 401,
+      "ok": true
+    },
+    {
+      "path": "/administracao/geolocalizacao/",
+      "method": "GET",
+      "status": 302,
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/config.cfm",
+      "method": "GET",
+      "status": 403,
+      "ok": true
+    }
+  ],
+  "sql_applied": false,
+  "cron_activated": false
+}

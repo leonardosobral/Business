@@ -1,0 +1,14 @@
+{
+  "path": "/var/www/dev.roadrunners.run/Application.cfc",
+  "baseline": "b010180a67aa5698fad0809e3f7b07167a56352e19b94702b9229080860cf39c",
+  "steps": [
+    {
+      "before": "                    <cfset seedDevAuthSession(originalUsuarioRow=originalUsuarioRow, impersonatedUsuarioRow=targetUsuarioRow, isImpersonating=(targetUsuarioRow.id NEQ originalUsuarioRow.id)) />",
+      "after": "                    <cfset seedDevAuthSession(originalUsuarioRow=originalUsuarioRow, impersonatedUsuarioRow=targetUsuarioRow, isImpersonating=(targetUsuarioRow.id NEQ originalUsuarioRow.id)) />\n                    <cfif structKeyExists(validation.payload, \"origin\") AND validation.payload.origin EQ \"business\">\n                        <cfset SESSION.devAuth.origin = \"business\" />\n                    </cfif>"
+    },
+    {
+      "before": "        <cfif NOT structKeyExists(COOKIE, \"id\") OR NOT len(trim(COOKIE.id))>\n            <cfreturn usuario />\n        </cfif>\n\n        <cfset cookieId = trim(COOKIE.id) />",
+      "after": "        <!--- A verified Business support session takes precedence over legacy cookies.\n              This is DEV-only; production identity and all normal login flows are unchanged. --->\n        <cfif getCurrentEnvironment() EQ \"dev\"\n            AND structKeyExists(SESSION, \"devAuth\") AND isStruct(SESSION.devAuth)\n            AND structKeyExists(SESSION.devAuth, \"origin\") AND SESSION.devAuth.origin EQ \"business\">\n            <cfif structKeyExists(SESSION.devAuth, \"isImpersonating\") AND SESSION.devAuth.isImpersonating\n                AND structKeyExists(SESSION.devAuth, \"impersonatedUsuarioId\")>\n                <cfset cookieId = SESSION.devAuth.impersonatedUsuarioId & \"\" />\n            <cfelseif structKeyExists(SESSION.devAuth, \"isImpersonating\") AND NOT SESSION.devAuth.isImpersonating\n                AND structKeyExists(SESSION.devAuth, \"originalUsuarioId\")>\n                <cfset cookieId = SESSION.devAuth.originalUsuarioId & \"\" />\n            <cfelse>\n                <cfreturn usuario />\n            </cfif>\n        <cfelse>\n            <cfif NOT structKeyExists(COOKIE, \"id\") OR NOT len(trim(COOKIE.id))>\n                <cfreturn usuario />\n            </cfif>\n            <cfset cookieId = trim(COOKIE.id) />\n        </cfif>"
+    }
+  ]
+}

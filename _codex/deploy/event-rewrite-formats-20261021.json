@@ -1,0 +1,59 @@
+{
+  "ok": true,
+  "backup": "/var/backups/business-rewrite-formats-20261021-d7u5nan4",
+  "files": {
+    "services/EventDescriptionRewriteService.cfc": {
+      "before": "f4432dcc124ae2cf13ab7b00f462665495fe6056b608683104d5bdc50413dc34",
+      "after": "c0f2226025573b8380971e773eb715965bca32b331a562c2af14a95fd5cffa45",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "runtime_get_status": 405,
+  "anonymous_audit_status": 302,
+  "credentials_changed": false,
+  "schedule_changed": false,
+  "events_changed": false,
+  "schema_changed": false,
+  "tests": {
+    "ok": true,
+    "guards_ok": true,
+    "database_ok": true,
+    "privacy_checks": [
+      {
+        "case": "defaults",
+        "status": "200",
+        "ok": true
+      },
+      {
+        "case": "denied",
+        "status": "403",
+        "ok": true
+      },
+      {
+        "case": "invalid",
+        "status": "400",
+        "ok": true
+      },
+      {
+        "case": "method",
+        "status": "405",
+        "ok": true
+      },
+      {
+        "case": "view",
+        "status": "403",
+        "ok": true
+      }
+    ],
+    "archive": "/var/backups/rewrite-tests-haglvzik",
+    "stage_removed": true,
+    "service_sha256": "c0f2226025573b8380971e773eb715965bca32b331a562c2af14a95fd5cffa45",
+    "checked_at": "2026-10-21T12:08:33.923368+00:00",
+    "native_checks": 368,
+    "observed_formats": true,
+    "historical_regressions": true,
+    "live_ai_calls": 0
+  }
+}

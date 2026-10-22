@@ -1,0 +1,179 @@
+{
+  "date": "2026-10-18",
+  "runtime_receipt": "geocoding-aceleracao-20261018.json",
+  "runtime_files": 7,
+  "backups": [
+    "/var/backups/business-geocoding-sources-h1mduxgj",
+    "/var/backups/business-geocoding-sources-8h1wzug7",
+    "/var/backups/business-geocoding-sources-gd2j4u09"
+  ],
+  "native_suite": {
+    "modes": 12,
+    "passed": true,
+    "workflow_archive": "/var/backups/geocoding-tests-eswcg94h",
+    "acceleration_archive": "/var/backups/geocoding-tests-umuz1x3f",
+    "schedule_archive": "/var/backups/geocoding-tests-nuslpspg",
+    "python_tests": 10,
+    "prior_validation_issue": "Synthetic workflow initially competed with the live production batch lease; BoundedStore fixture isolated, then all 12 modes passed."
+  },
+  "guards": {
+    "runner_unsigned": 401,
+    "endpoint_get": 405,
+    "endpoint_unsigned_post": 401,
+    "services_public": 403,
+    "panel_anonymous": 302,
+    "final_hashes_verified": true
+  },
+  "cron": {
+    "job": 25,
+    "active": true,
+    "interval_minutes": 1,
+    "daily_limit": 2000,
+    "provider_rps": 1,
+    "changed_other_job_settings": false,
+    "runner_limit": 5,
+    "priority": "Only due geolocation interval1 first; others retain oldest-first order",
+    "configuration_before_archive": "/var/backups/geocoding-tests-71yhc2_c",
+    "configuration_after_archive": "/var/backups/geocoding-tests-cqmk3cmd"
+  },
+  "concurrency": {
+    "http_archive": "/var/backups/geocoding-tests-_0_sx5gy",
+    "second_request": {
+      "http": 202,
+      "status": "worker_busy",
+      "processed": 0,
+      "calls": 0
+    }
+  },
+  "production_acceptance": {
+    "archive": "/var/backups/geocoding-tests-cc9r57zk",
+    "completed_runs": [
+      {
+        "STATUS": "success",
+        "DURATION_MS": 34260,
+        "TRIGGER": "scheduled",
+        "START": "October, 18 2026 21:29:59",
+        "HTTP": "202 Accepted",
+        "ID": 215887,
+        "RESULT": {
+          "RESULTS": [
+            {
+              "STATUS": "city_suggestion",
+              "ID_EVENTO": 45885,
+              "ID": 515
+            },
+            {
+              "STATUS": "needs_review",
+              "ID_EVENTO": 45413,
+              "ID": 526
+            }
+          ],
+          "SOURCE_DOCUMENTS": 6,
+          "SUCCESS": true,
+          "ERRORS": 0,
+          "PIPELINE_VERSION": 2,
+          "SUGGESTIONS": 1,
+          "MESSAGE": "Não foi possível concluir a localização agora.",
+          "STATUS": "time_budget",
+          "PROCESSED": 2,
+          "REVIEW": 1,
+          "CALLS": 4,
+          "APPLIED": 0,
+          "CACHE_HITS": 0
+        },
+        "FINISH": "October, 18 2026 21:30:33"
+      },
+      {
+        "STATUS": "success",
+        "DURATION_MS": 82,
+        "TRIGGER": "scheduled",
+        "START": "October, 18 2026 21:28:59",
+        "HTTP": "202 Accepted",
+        "ID": 215883,
+        "RESULT": {
+          "RESULTS": [],
+          "SOURCE_DOCUMENTS": 9,
+          "SUCCESS": true,
+          "ERRORS": 0,
+          "PIPELINE_VERSION": 2,
+          "SUGGESTIONS": 0,
+          "MESSAGE": "O fornecedor está em período de espera.",
+          "STATUS": "provider_cooldown",
+          "PROCESSED": 0,
+          "REVIEW": 0,
+          "CALLS": 0,
+          "APPLIED": 0,
+          "CACHE_HITS": 0
+        },
+        "FINISH": "October, 18 2026 21:28:59"
+      },
+      {
+        "STATUS": "success",
+        "DURATION_MS": 31417,
+        "TRIGGER": "scheduled",
+        "START": "October, 18 2026 21:27:59",
+        "HTTP": "202 Accepted",
+        "ID": 215881,
+        "RESULT": {
+          "RESULTS": [
+            {
+              "STATUS": "city_suggestion",
+              "ID_EVENTO": 48912,
+              "ID": 324
+            },
+            {
+              "STATUS": "error",
+              "ID_EVENTO": 46966,
+              "ID": 470
+            }
+          ],
+          "SOURCE_DOCUMENTS": 3,
+          "SUCCESS": false,
+          "ERRORS": 1,
+          "PIPELINE_VERSION": 2,
+          "SUGGESTIONS": 1,
+          "MESSAGE": "A consulta ao Geoapify excedeu o prazo. A fila foi preservada para nova tentativa.",
+          "STATUS": "provider_timeout",
+          "PROCESSED": 2,
+          "REVIEW": 0,
+          "CALLS": 3,
+          "APPLIED": 0,
+          "CACHE_HITS": 0
+        },
+        "FINISH": "October, 18 2026 21:28:30"
+      }
+    ],
+    "observed_start_intervals_seconds": [
+      60,
+      60
+    ],
+    "overlap": false,
+    "http_502_in_sequence": 0,
+    "live_cache_example": {
+      "run_id": 215875,
+      "processed": 1,
+      "calls": 0,
+      "cache_hits": 2
+    },
+    "settings": {
+      "DAILYLIMIT": 2000,
+      "ENABLED": true,
+      "BLOCKEDREASON": ""
+    },
+    "calls_today": 933
+  },
+  "recovered_old_failures": {
+    "requeued": 17,
+    "provider_calls": 0,
+    "audit_actor": "maintenance:timeout-fix",
+    "archive": "/var/backups/geocoding-tests-duibvdex"
+  },
+  "ddl": false,
+  "credentials_changed": false,
+  "git_commit_or_push": false,
+  "confidence_policy_changed": false,
+  "remaining_limitations": [
+    "Geoapify timeouts still occur; HTTP202 explicitly reports deferred work and preserves bounded retries. External availability is not guaranteed.",
+    "Legacy v1 geocoding cache is retained but not reused because query/response provenance cannot be verified. Official-source/robots cache is preserved."
+  ]
+}

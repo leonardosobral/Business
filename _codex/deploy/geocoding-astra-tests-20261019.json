@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "model": "gpt-6-astra",
+  "reasoning_effort": "low",
+  "scope": [
+    "services/geocoding/AIClient.cfc",
+    "services/geocoding/LocationWorker.cfc",
+    "services/geocoding/config.cfm"
+  ],
+  "native_regression_suites": 23,
+  "source_reader_tests": 11,
+  "contract_red_archive": "/var/backups/geocoding-tests-7k0dvxm4",
+  "contract_green_archive": "/var/backups/geocoding-tests-2o2jb0wx",
+  "live_staged": {
+    "archive": "/var/backups/geocoding-tests-ivgv3p37",
+    "input_tokens": 528,
+    "output_tokens": 186,
+    "duration_ms": 8487
+  },
+  "live_public_source": {
+    "archive": "/var/backups/geocoding-tests-dv_t75u_",
+    "event_id": 48445,
+    "input_tokens": 3487,
+    "output_tokens": 427,
+    "event_location_writes": 0
+  },
+  "live_deployed": {
+    "archive": "/var/backups/geocoding-tests-1qmj9s34",
+    "input_tokens": 528,
+    "output_tokens": 186,
+    "duration_ms": 4898,
+    "event_location_writes": 0,
+    "geo_calls": 0
+  },
+  "deployed_acceptance_archive": "/var/backups/geocoding-tests-310m3k41",
+  "scheduled_model_confirmed": "gpt-6-astra",
+  "scheduled_http_status": "202 Accepted",
+  "scheduled_status": "daily_limit",
+  "scheduled_errors": 0,
+  "existing_key_kept": true,
+  "ai_daily_limit": 1000,
+  "geo_daily_limit": 2000,
+  "cron_minutes": 1,
+  "backup": "/var/backups/business-geocoding-sources-zm0pp69t",
+  "official_model_doc": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+  "official_migration_doc": "https://developers.openai.com/api/docs/guides/latest-model/gpt-6-astra.md#migration-quickstart"
+}
