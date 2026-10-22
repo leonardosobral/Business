@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "publication_receipt": "pending-radar-20261022.json",
+  "source_commit": "11197dff66e54dc2d9d3940438d9f737c0fc600e",
+  "published_runtime_files": 4,
+  "final_comparison": {
+    "checked_files": 49,
+    "matching_files": 45,
+    "preserved_other_front": {
+      "path": "includes/estrutura/sidenav.cfm",
+      "sha256": "0189d264f87aa8efc949dbb5e8402fb64f998a0152090b1164247891c0682135",
+      "reason": "Production contains newer Comparador navigation; not overwritten"
+    },
+    "intentionally_not_uploaded": [
+      "administracao/geolocalizacao/geocoding_job.sql",
+      "administracao/geolocalizacao/migration_ai_locais.sql",
+      "administracao/geolocalizacao/schema.sql"
+    ]
+  },
+  "native_suites_passed": ["radar_view", "radar_priority", "radar_coverage", "radar_contract", "access"],
+  "authenticated_browser": {
+    "new_tab_visible": true,
+    "real_coverage_loaded": true,
+    "confirmed_quality_filter_applied": true,
+    "confirmed_event_row_visible": true,
+    "screenshot": "pending-radar-20261022.png"
+  },
+  "backup": "/var/backups/business-geocoding-sources-wu8i5e72",
+  "schema_changed": false,
+  "credentials_changed": false,
+  "git_mutations_this_publication": false
+}

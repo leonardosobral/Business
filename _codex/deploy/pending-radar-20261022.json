@@ -1,0 +1,146 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-geocoding-sources-wu8i5e72",
+  "manifest": {
+    "services/geocoding/LocationStore.cfc": {
+      "before": "16983aeed1058074ca16ef9e0d9bc40670f227dd1a9f06dfe547d98fc522bd8f",
+      "after": "8ce6f617a76088b860c9a81584a594df52ec4c23a0d32d305e6d081eb5cf1318"
+    },
+    "administracao/geolocalizacao/includes/radar_view.cfm": {
+      "before": null,
+      "after": "f6b6e699df1b656436c1639327fa49896831bd609d51050d01885e75895b1e98"
+    },
+    "administracao/geolocalizacao/includes/backend.cfm": {
+      "before": "d9753a1f9b11e81b44f7433ebe36f3b2db965688f6bcc014af15beb31efdf70a",
+      "after": "8714f6a0ec91fd99960dcddcfbb1fbb81e1db47b6b03192f1e4a9ed354a8ce5d"
+    },
+    "administracao/geolocalizacao/includes/view.cfm": {
+      "before": "d608fccb566a599b6b46a17dd0724fd47b15700154ad3d4beb36c883698e8af7",
+      "after": "2a058e9ba09677a18820f1f1ff51c26f419fb65d9725ec467d10e5bb6498feba"
+    }
+  },
+  "probes": [
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "GET",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "POST",
+      "status": "401",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/Sources.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/source_fetcher.py",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/administracao/geolocalizacao/",
+      "method": "GET",
+      "status": "302",
+      "ok": true
+    }
+  ],
+  "checks": [
+    {
+      "path": "services/geocoding/LocationStore.cfc",
+      "ok": true
+    },
+    {
+      "path": "administracao/geolocalizacao/includes/radar_view.cfm",
+      "ok": true
+    },
+    {
+      "path": "administracao/geolocalizacao/includes/backend.cfm",
+      "ok": true
+    },
+    {
+      "path": "administracao/geolocalizacao/includes/view.cfm",
+      "ok": true
+    }
+  ],
+  "sql_applied": false,
+  "credentials_changed": false,
+  "checked_at": "2026-10-22T12:05:13.645471+00:00",
+  "source_commit": "11197dff66e54dc2d9d3940438d9f737c0fc600e",
+  "candidate_hashes": {
+    "services/geocoding/LocationStore.cfc": "8ce6f617a76088b860c9a81584a594df52ec4c23a0d32d305e6d081eb5cf1318",
+    "administracao/geolocalizacao/includes/radar_view.cfm": "f6b6e699df1b656436c1639327fa49896831bd609d51050d01885e75895b1e98",
+    "administracao/geolocalizacao/includes/backend.cfm": "8714f6a0ec91fd99960dcddcfbb1fbb81e1db47b6b03192f1e4a9ed354a8ce5d",
+    "administracao/geolocalizacao/includes/view.cfm": "2a058e9ba09677a18820f1f1ff51c26f419fb65d9725ec467d10e5bb6498feba"
+  },
+  "preserved_files": {
+    "includes/estrutura/sidenav.cfm": "0189d264f87aa8efc949dbb5e8402fb64f998a0152090b1164247891c0682135"
+  },
+  "native_tests": {
+    "radar_view": {
+      "ok": true,
+      "output": "PASS Coverage view names all quality classes\nPASS Event names are escaped\nPASS Coverage percentage is visible\nPASS Coverage measurement time is visible\nPASS Quality and horizon filters preserve selection\nPASS Bounded rows expose next-page navigation\nPASS Coverage view has no provider detail or mutation form\nPASS Coverage view has a useful empty state\nPASS Missing shared schema is reported without breaking the module\nGEO_RADAR_VIEW_PASSED ",
+      "archive": "/var/backups/geocoding-tests-_1m45_g1",
+      "stage_archived": true
+    },
+    "radar_priority": {
+      "ok": true,
+      "output": "PASS Queue selection method is present in the staged production source\nPASS Future queue distinguishes 30-day, 90-day and later horizons\nPASS In-progress events precede remaining active work\nPASS Future priority explicitly favors a missing event location\nPASS Queue keeps the five-event cap\nPASS Queue ordering remains deterministic\nGEO_RADAR_PRIORITY_PASSED ",
+      "archive": "/var/backups/geocoding-tests-ye5yw4hv",
+      "stage_archived": true
+    },
+    "radar_coverage": {
+      "ok": true,
+      "output": "PASS Radar coverage detects the shared coordinate schema\nPASS Shared event schema exposes normalized coordinates and provenance\nPASS Coverage counts only the nine eligible fixtures\nPASS Coverage counts eight published coordinate pairs\nPASS Matching structured provenance is confirmed\nPASS Legacy includes a valid pair and two legitimate same-city venue rows\nPASS Null island, provenance mismatch and two cross-city duplicates are suspicious\nPASS Missing coordinates remain absent\nPASS Coverage separates 30-day, 90-day and later horizons\nPASS State coverage groups eligible events by UF\nPASS Coverage page is search-scoped and bounded to 21 rows\nPASS Quality filter returns only suspicious fixtures\nPASS Same-city shared coordinates remain legacy instead of suspicious\nPASS Coverage fixtures are rolled back\nGEO_RADAR_COVERAGE_PASSED ",
+      "archive": "/var/backups/geocoding-tests-ldntp3ga",
+      "stage_archived": true
+    },
+    "radar_contract": {
+      "ok": true,
+      "output": "PASS Future public event without published coordinates is absent from Radar coverage\nPASS Private city suggestion does not become a public coordinate\nPASS Shared trigger normalizes a confirmed Business coordinate\nPASS Canonical Business location becomes confirmed Radar coverage\nPASS Cross-system fixtures are rolled back\nPASS Cross-system verification makes no provider call\nGEO_RADAR_CONTRACT_PASSED ",
+      "archive": "/var/backups/geocoding-tests-ckxt_wdn",
+      "stage_archived": true
+    },
+    "access": {
+      "ok": true,
+      "cases": [
+        {
+          "case": "denied",
+          "status": "403",
+          "ok": true
+        },
+        {
+          "case": "delegated",
+          "status": "403",
+          "ok": true
+        },
+        {
+          "case": "filters",
+          "status": "400",
+          "ok": true
+        },
+        {
+          "case": "csrf",
+          "status": "403",
+          "ok": true
+        },
+        {
+          "case": "default",
+          "status": "200",
+          "ok": true
+        }
+      ],
+      "archive": "/var/backups/geocoding-tests-2_uzw3v_",
+      "stage_archived": true
+    }
+  },
+  "schema_changed": false,
+  "transport_sha256": "3249fd6e29b374f8ff3e69cb5c9d6e391da5da163e87defd96c3ac9280cc5feb"
+}
