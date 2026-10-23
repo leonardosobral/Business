@@ -1,0 +1,266 @@
+{
+  "ok": true,
+  "mode": "published",
+  "installed_acceptance": {
+    "ok": true,
+    "archive": "/var/backups/geocoding-tests-5yyv4o8i",
+    "model": "gpt-6.1-sol",
+    "paused": true,
+    "provider_calls": 0,
+    "known_month_upper_usd": 69.655598,
+    "pending_usd": 0
+  },
+  "browser_validated": true,
+  "backup": "/var/backups/business-geocoding-sources-q60ea52f",
+  "manifest": {
+    "services/geocoding/EconomyPolicy.cfc": {
+      "before": null,
+      "after": "eb7b14a2cdd6ff998e730ddf897b70a38ac58786c69d7f36a03795c0b5679524"
+    },
+    "services/geocoding/EconomyAIClient.cfc": {
+      "before": null,
+      "after": "8c54a20010ef43b1c89bf796bfc48db3201e8d8bf91f4edc7e21a963cfc6e077"
+    },
+    "services/geocoding/AIBudget.cfc": {
+      "before": null,
+      "after": "e7bb333cb1a7dfe751e6d651e37f6786a80c4e2bfbcfdf0db0836edca90ce072"
+    },
+    "services/geocoding/BatchTransport.cfc": {
+      "before": null,
+      "after": "9102fab07b6b8b9ddc8c7667b0ba0989a4def676c1fc12f3f3d60a28a18a26eb"
+    },
+    "services/geocoding/BatchClient.cfc": {
+      "before": null,
+      "after": "5c6e016ba11f2362eef554d05fda51b47cd81b9a0ae2b5da88783ff93cad1428"
+    },
+    "services/geocoding/Economy.cfc": {
+      "before": null,
+      "after": "5b8d1d677ba1ab544ff6b475f0ee9b4bc441a40f19e6f1bf804072c11a2f7491"
+    },
+    "services/geocoding/AIClient.cfc": {
+      "before": "5b8c6617bc3f652e04421c27e05cd89e698d516cf262335d229daa11447fca7c",
+      "after": "fe481a89603918cd3a20698f4541e428e9139a91f517893ccd305e99925e4d44"
+    },
+    "services/geocoding/LocationWorker.cfc": {
+      "before": "b4ffd530acbf2ae276a9fdfe592612dfeb789d39c0d176348a169cb49d3d95b8",
+      "after": "08bf02725f6f4cfa1fd1b286dba6edf1cd9627ccded04141a5cf90e0522f6bd6"
+    },
+    "services/geocoding/config.cfm": {
+      "before": "599e84f0d7ee0021b4b8a855f8c4c832fe082d0cc899b24cba5bc943c1e168dc",
+      "after": "40bd5a44c617e79238dfa3dff977429ce43899f35cbe8e6653b732ba432ed290"
+    },
+    "administracao/geolocalizacao/includes/backend.cfm": {
+      "before": "75da6232ae75ac00446e467f1d858e1fe6f615aa76aa916f4123856b05abac07",
+      "after": "87e4ea80e744d24d52585633371df8c31ecd12c12a4760d197da54ab3b0a1d00"
+    },
+    "administracao/geolocalizacao/includes/view.cfm": {
+      "before": "e215a959e0a1438db143bfae3799ed8c29b03a8a2e8607bded92af08447933d9",
+      "after": "e127778d72ce28d4aa928acd9fd28b2d8b4f5dbca70bb4b8239ff3670a7c23e7"
+    }
+  },
+  "probes": [
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "GET",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "path": "/api/eventos/geolocalizar.cfm",
+      "method": "POST",
+      "status": "401",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/EconomyPolicy.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/EconomyAIClient.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/AIBudget.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/BatchTransport.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/BatchClient.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/Economy.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/Sources.cfc",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/services/geocoding/source_fetcher.py",
+      "method": "GET",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/administracao/geolocalizacao/",
+      "method": "GET",
+      "status": "302",
+      "ok": true
+    }
+  ],
+  "checks": [
+    {
+      "path": "services/geocoding/EconomyPolicy.cfc",
+      "ok": true
+    },
+    {
+      "path": "services/geocoding/EconomyAIClient.cfc",
+      "ok": true
+    },
+    {
+      "path": "services/geocoding/AIBudget.cfc",
+      "ok": true
+    },
+    {
+      "path": "services/geocoding/BatchTransport.cfc",
+      "ok": true
+    },
+    {
+      "path": "services/geocoding/BatchClient.cfc",
+      "ok": true
+    },
+    {
+      "path": "services/geocoding/Economy.cfc",
+      "ok": true
+    },
+    {
+      "path": "services/geocoding/AIClient.cfc",
+      "ok": true
+    },
+    {
+      "path": "services/geocoding/LocationWorker.cfc",
+      "ok": true
+    },
+    {
+      "path": "services/geocoding/config.cfm",
+      "ok": true
+    },
+    {
+      "path": "administracao/geolocalizacao/includes/backend.cfm",
+      "ok": true
+    },
+    {
+      "path": "administracao/geolocalizacao/includes/view.cfm",
+      "ok": true
+    }
+  ],
+  "sql_applied": false,
+  "credentials_changed": false,
+  "checked_at": "2026-10-23T18:24:03.400543+00:00",
+  "candidate_hashes": {
+    "services/geocoding/EconomyPolicy.cfc": "eb7b14a2cdd6ff998e730ddf897b70a38ac58786c69d7f36a03795c0b5679524",
+    "services/geocoding/EconomyAIClient.cfc": "8c54a20010ef43b1c89bf796bfc48db3201e8d8bf91f4edc7e21a963cfc6e077",
+    "services/geocoding/AIBudget.cfc": "e7bb333cb1a7dfe751e6d651e37f6786a80c4e2bfbcfdf0db0836edca90ce072",
+    "services/geocoding/BatchTransport.cfc": "9102fab07b6b8b9ddc8c7667b0ba0989a4def676c1fc12f3f3d60a28a18a26eb",
+    "services/geocoding/BatchClient.cfc": "5c6e016ba11f2362eef554d05fda51b47cd81b9a0ae2b5da88783ff93cad1428",
+    "services/geocoding/Economy.cfc": "5b8d1d677ba1ab544ff6b475f0ee9b4bc441a40f19e6f1bf804072c11a2f7491",
+    "services/geocoding/AIClient.cfc": "fe481a89603918cd3a20698f4541e428e9139a91f517893ccd305e99925e4d44",
+    "services/geocoding/LocationWorker.cfc": "08bf02725f6f4cfa1fd1b286dba6edf1cd9627ccded04141a5cf90e0522f6bd6",
+    "services/geocoding/config.cfm": "40bd5a44c617e79238dfa3dff977429ce43899f35cbe8e6653b732ba432ed290",
+    "administracao/geolocalizacao/includes/backend.cfm": "87e4ea80e744d24d52585633371df8c31ecd12c12a4760d197da54ab3b0a1d00",
+    "administracao/geolocalizacao/includes/view.cfm": "e127778d72ce28d4aa928acd9fd28b2d8b4f5dbca70bb4b8239ff3670a7c23e7"
+  },
+  "preserved_files": {
+    "administracao/geolocalizacao/assets/geocoding.js": "8457e30f9fac88d0534ff3981b7c2b37e0f60a38511e292db3e823b39c00a6c7",
+    "administracao/geolocalizacao/assets/review-guide.css": "fd96006ff6732d4cd619cce05077dd9c7e0ae6639a7d961c700ebcd0d300f777",
+    "administracao/geolocalizacao/includes/ai_locations_view.cfm": "1f96fc104d0b22a0950a83179387ef75f37862ad4885bd809ada2042dcc7b76a",
+    "administracao/geolocalizacao/includes/enrichment_view.cfm": "4546aaaf87e2ee6e6b79d656d14b909361379abe244ff30bdfd9473ea2a7b9bc",
+    "administracao/geolocalizacao/includes/radar_view.cfm": "f6b6e699df1b656436c1639327fa49896831bd609d51050d01885e75895b1e98",
+    "administracao/geolocalizacao/includes/review_guide_view.cfm": "4c78c8d69f3e4024a16f40a2ce7b70765c2b3ce0a6ec4691ecc00b0397a4783e",
+    "administracao/geolocalizacao/index.cfm": "420bf253bc9ca663c16554df6f47196715fe7aa8ac4cd9e7071c4948c6b67ebc",
+    "eventos/assets/event-location.js": "9d761cb3a4dc1f16262f209e087ab50652293c4fda51132aa8960de14bafd603",
+    "eventos/filtro_resultados.cfm": "2d41c63a0e3a00a64de0e29ff9eb968897051f4759e702ef7432534c265bff3d",
+    "eventos/form_edicao.cfm": "9d967cd92d2474e60e977ded28a3840ddc8c95804166c3265b232a2d1b1b319f",
+    "eventos/form_edicao_configuracoes.cfm": "87f84a29999f6643ef72196703b52628ed40601aa0b7ac87bcdb5bdd7f527498",
+    "eventos/form_edicao_conteudo.cfm": "e9562e216ba56532c361ad25859aca5dbd6f2de0669299e17aa8383390e9af70",
+    "eventos/form_edicao_fontes.cfm": "272209223a9083b3c29fae8651dadb1b953299d52107c7940b24fdf65113f183",
+    "eventos/form_edicao_fornecedores.cfm": "4291ce066fbd1b3cf36e6d20efa0cec319c9278399232aad6c21461a3eeb1f9a",
+    "eventos/form_edicao_inscricoes.cfm": "4ac99fe6c3480b8c9f3c6feb2e13cdff0dea185a299e76f44182d7c34b91f65d",
+    "eventos/form_edicao_or.cfm": "c66b28496ba40a1b01b1af2385d32750e80bef708cac72a62532ce655333d7e9",
+    "eventos/form_edicao_percursos.cfm": "d6c3527590b6c28ed668ce28f75f0243749a4c100408e5ef77dc0c5da8e55f0c",
+    "eventos/guia_cliente_eventos.cfm": "f03f0d314e2a3e9b0c85278638a0dddca8c6bd2a6b2487b25068f0fdfe248566",
+    "eventos/home.cfm": "787d58b6b8a765e4c9dad89df8ecc94eb95472f9b6a6de63913a06b127245771",
+    "eventos/includes/backend/backend.cfm": "3fb82a673c0ac634ed1f0dd990ee0a83ae583ca64bbf597311eaa165d8947272",
+    "eventos/includes/backend/backend_evento_edicao.cfm": "320c4b14449d06f70ea5e69871a7d09ce124c363d7374cf16d31a5b81fb3c971",
+    "eventos/includes/backend/backend_evento_solicitacoes.cfm": "b64f95be4c03cdd1b3b620bc02dfdfeb6dbe732cff513082dbf3f1bd4fff0c16",
+    "eventos/includes/backend/backend_login.cfm": "2122996c2ea804eb43ef3027e854554a6e37ffd359aaee2dd25801063ba52ede",
+    "eventos/includes/backend/event_delegation.cfm": "4784c5125e2995114926bf67efbcab46cb791173a5a3d05c0fa07dcaaa4996ab",
+    "eventos/includes/backend/event_mutations.cfm": "d3af3de821c3a9b5a39f33853153e7eb03823cf98a04442dad065d39cbda832c",
+    "eventos/includes/backend/fontes_revisoes.cfm": "062964ae8b2dc1aa5332537fdb572c2352ee3f4b92c976487fddb91e64116a92",
+    "eventos/includes/backend/inscricao_disponibilidade.cfm": "91e89373d9f3aaf9756d36a62eae2ea59a62f267e93d05766988d89d4e875c7d",
+    "eventos/includes/enriquecimento_confirmado.cfm": "735ec3ceb667ad0e77517785dc7c6c2e05901bd0014c305a39204f9a97312f51",
+    "eventos/includes/event_location_error.cfm": "cdb9344724a6ce7787125b79221ec803774278251b8829d4c3379a059b8eb8b5",
+    "eventos/includes/event_location_fields.cfm": "57a2a61ab36dd948294b803cf7830cab14a8f180fdcd9360af53ff4484656aa5",
+    "eventos/includes/localizacoes_confirmadas.cfm": "90dda79d0ef500908be019998d461f1c1cc9003f6212cbfccc46bdac1b5c0a44",
+    "eventos/includes/variaveis.cfm": "1e032f1666a89a31c4f40541b792e50b73c46e04bde96139ddb609596abab5a5",
+    "eventos/index.cfm": "4856207b9d0c7e7dc7d78de009795ac5cd15bb5bf6ada2ef8dff63ffd13406c8",
+    "eventos/listagem_eventos.cfm": "be6ea8d6dac064850d0e28382e1ddab05a2675478f487a1cac1fec96b702dd07",
+    "eventos/onboarding_eventos.cfm": "8f15f8bb69c33c47c6f3f7eb41f5bcf50b7c832a74d465c3f1f38282ea7f6221",
+    "eventos/solicitacoes_eventos.cfm": "e575b1c4e353184bbf78ea611c78c4067b9b0a5a5866d5173738d84df2e7e909",
+    "services/geocoding/.htaccess": "fa28d421a28ed9b6f4b997d5119c2b8adbacff6e2dd119a179b71230f9664934",
+    "services/geocoding/DocumentReader.cfc": "7beaa29b8a8abd3be83491d7cb43e76c98d98105e5f26531960ae709f3dc0d9b",
+    "services/geocoding/EnrichmentPolicy.cfc": "0bf074c7bbec161701c6f62ea6485ed47b71c014d140cea0e78a63e181eb724a",
+    "services/geocoding/EnrichmentStore.cfc": "188ee5f1b7b75f2a0b18d0c3da00ebc1200ef296eefd88c7c4f3eb0f6fca4ea1",
+    "services/geocoding/GeoapifyClient.cfc": "651ed4a427c07b51fb7519e56684499182648b4a9fcb96c767ec679cfe2f5474",
+    "services/geocoding/JobSecurity.cfc": "fa5fe458d1d9254a924ff5040529b7a3c6882614314ce6105b1392b638ee8d10",
+    "services/geocoding/LocationPolicy.cfc": "15cda122b659680cc0a939aeb6a26fa733299c3b9b92a82326932a4d1fd4451a",
+    "services/geocoding/LocationStore.cfc": "007d2d8febcb222bc0c2aaed4af95edfa333fc02c4a15b9c1100e03b7846a886",
+    "services/geocoding/Policy.cfc": "a8a42ccdf4b656504b1fd5d82120c018f2f1a57acdac9a1ee3191ae27e6616e0",
+    "services/geocoding/RegionNames.cfc": "f191d9ab16a3f28d7a9c81a5c30c2fca405bae76bfa019b0340a8b95d22215ac",
+    "services/geocoding/ReviewGuide.cfc": "a927038095c0506cbfb368708df63b429546b95160baa9ba67d69fdc40d87c83",
+    "services/geocoding/ReviewInput.cfc": "f46338c0c60ed526debafe020d279581fed8f2d60b40fed3e8046907da199910",
+    "services/geocoding/Sources.cfc": "46a93406a36f552baf7cb982abc7ae5a95742ae81cab4bbd54860691db88b9fb",
+    "services/geocoding/Store.cfc": "04754874562ec47c2e6b1101213dd5229573f142c934d3e58389a6a0567c2e64",
+    "services/geocoding/Worker.cfc": "2787fa63354c3450de60e47f26b8eebe21ba871c88dc4b32f130c75e06e42d15",
+    "services/geocoding/source_fetcher.py": "4ec6e20690544eb6c96035b1f1d04448322d7302f4c71d66021c53965c25d1cd",
+    "services/openaiUsage/.htaccess": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+    "services/openaiUsage/Access.cfc": "14dc087956c524e0f2df64f70e7164e9cc714b99e7768d3cf1b698d4b53022a4",
+    "services/openaiUsage/Catalog.cfc": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+    "services/openaiUsage/Legacy.cfc": "cca66af67f2146ad8fd3ae222385152dca908ac3f4a682f7cdf4420cd8e361ad",
+    "services/openaiUsage/Observer.cfc": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+    "services/openaiUsage/Pricing.cfc": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+    "services/openaiUsage/Store.cfc": "a2bf510c05a901511822fa53bd8714a747b92e21ed20fbee9c53d7797488e0bc",
+    "Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+    "includes/estrutura/sidenav.cfm": "7fbcdf1b3e5648a823cb4cdd25f4b7f027f220230c2bf813cb288b4ebc5e2641",
+    "services/EventDescriptionRewriteService.cfc": "b657b69d68a816355879580bc732fef5124c055cf3878a0d43a511efff09c288",
+    "helpdesk/includes/HelpdeskAI.cfc": "b22b237b1970ac300b80c157cb5445a29419ad2c7ada4acbd7c18beb2bb6aa81",
+    "administracao/ai-mails/includes/ai.cfm": "76605fa003a5979d0a7f2f4fbeac11e0001c5b841789ce4ceed6e2d3c0460755",
+    "includes/backend/cron_jobs_service.cfm": "068f57f87e214ca9d34ec186c9af227649462068158b039861229cdf86fd203a",
+    "cron-jobs/runner.cfm": "02b02ecd33113a4f31c0068c537c6e822f71ae452626f5bc5e8f9a3dbada0ddb",
+    "api/eventos/geolocalizar.cfm": "8251b99a054a0e65add2971a4baca30b234dce01f8a745588fd9936eea315457"
+  },
+  "native_suites": 51,
+  "reader_ok": true,
+  "paused_before_and_after": true,
+  "new_private_batch_directory": "/var/lib/runnerhub/geocoding-batch",
+  "schema_changed": false,
+  "git_mutations": false
+}

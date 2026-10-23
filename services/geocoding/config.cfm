@@ -2,7 +2,7 @@
 <cfscript>
 VARIABLES.geoConfig={apiKey="",secret=""};VARIABLES.geoLocalConfig={};
 VARIABLES.geoConfig.aiKey=structKeyExists(APPLICATION,"vickyKnowledge") AND structKeyExists(APPLICATION.vickyKnowledge,"apiKey") ? APPLICATION.vickyKnowledge.apiKey : "";
-VARIABLES.geoConfig.aiModel="gpt-6-astra";VARIABLES.geoConfig.aiDailyLimit=1000;
+VARIABLES.geoConfig.aiModel="gpt-6.1-sol";VARIABLES.geoConfig.aiDailyLimit=1000;
 if(fileExists(expandPath("/config/business.local.cfm"))) {
     include "/config/business.local.cfm";
     if(isDefined("businessLocalConfig") AND isStruct(businessLocalConfig)) VARIABLES.geoLocalConfig=businessLocalConfig;

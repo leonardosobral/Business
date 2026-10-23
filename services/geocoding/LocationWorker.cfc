@@ -1,10 +1,13 @@
 component extends="services.geocoding.Worker" output=false {
     public any function init(required struct config){
         super.init(config);variables.config=config;variables.store=new services.geocoding.LocationStore();variables.policy=new services.geocoding.Policy();variables.locationPolicy=new services.geocoding.LocationPolicy();variables.reader=new services.geocoding.DocumentReader();
-        variables.ai=new services.geocoding.AIClient(structKeyExists(config,"aiKey") ? config.aiKey : "",structKeyExists(config,"aiModel") ? config.aiModel : "gpt-6-astra");return this;
+        variables.economy=new services.geocoding.Economy(config);return this;
     }
     public numeric function responseStatus(required struct summary){if(find("ai_",summary.status) EQ 1)return summary.status EQ "ai_not_configured" ? 503 : 202;return super.responseStatus(summary);}
     public string function safeError(required string code){
+        if(code EQ "ai_budget_limit")return "Limite financeiro da geolocalização atingido (US$ 2/dia ou US$ 30/mês, incluindo reservas). A fila foi preservada.";
+        if(code EQ "ai_batch_pending")return "Análise histórica enviada ao Batch ou aguardando seu resultado. A recuperação é automática quando o módulo estiver ativo.";
+        if(listFind("ai_request_uncertain,ai_batch_uncertain,ai_batch_identity",code))return "Tentativa sem confirmação segura. A reserva financeira foi mantida; não haverá reenvio automático deste pedido.";
         if(code EQ "partial_sources")return "As fontes disponíveis foram aproveitadas. As demais serão consultadas novamente, sem perder os dados já confirmados.";
         if(code EQ "provider_unavailable")return "Uma fonte ou fornecedor está temporariamente indisponível. O progresso foi preservado e novas tentativas serão automáticas.";
         if(listFind("ai_quota_exhausted,ai_rate_limited,ai_cooldown,ai_daily_limit,ai_unavailable,ai_invalid_response,ai_credentials_rejected,ai_refusal",code))return "A interpretação por IA foi adiada (" & code & "). A fila e as etapas concluídas foram preservadas.";
@@ -79,16 +82,9 @@ component extends="services.geocoding.Worker" output=false {
         var reply={};
         if(arrayLen(research.documents)){
             var context={nome_evento=source.nome_evento,start_date=source.start_date,cidade=source.cidade,estado=source.estado,pais=source.pais};
-            var key=new services.geocoding.AIClient().cacheKey(context,research.documents,summary.model);var cached=variables.store.resourceGet(key);
-            if(cached.found){reply=cached.value;summary.ai_cache_hits++;}
-            else {
-                if(getTickCount()+22000 GT deadline){summary.status="time_budget";summary.deferred++;return provisional(source,previous,"time_budget",60);}
-                var reservation=variables.store.reserveAI(variables.config.aiDailyLimit ?: 1000);
-                if(!reservation.allowed){summary.status=reservation.reason;summary.deferred++;return provisional(source,previous,reservation.reason,reservation.retryAfter);}
-                summary.ai_calls++;reply=variables.ai.extract(context,research.documents);variables.store.completeAI(reply);
-                if(reply.ok)variables.store.resourcePut(key,reply,7);
-            }
-            if(!reply.ok){summary.status=reply.code;summary.deferred++;if(!listFind("ai_quota_exhausted,ai_rate_limited,ai_credentials_rejected",reply.code))summary.errors++;return provisional(source,previous,reply.code,reply.retryAfter);}
+            reply=variables.economy.extract(context,research.documents,source,deadline);
+            summary.ai_calls+=reply.paid_calls ?: 0;summary.ai_cache_hits+=reply.cache_hits ?: 0;
+            if(!reply.ok){summary.status=reply.code;summary.deferred++;if(!listFind("ai_quota_exhausted,ai_rate_limited,ai_credentials_rejected,ai_batch_pending,ai_budget_limit,time_budget",reply.code))summary.errors++;return provisional(source,previous,reply.code,reply.retryAfter);}
         }
         var progress=retainProgress(previous,initialProgress(source,research,reply),source);
         if(research.temporary ?: false){summary.status="partial_sources";summary.deferred++;progress=scheduleResearch(progress,previous,"partial_sources",21600);}
@@ -105,13 +101,14 @@ component extends="services.geocoding.Worker" output=false {
     }
     private string function outcome(required struct progress){var applied=false;var city=false;var review=false;for(var t in progress.targets){if(listFind("auto_applied,approved",t.status))applied=true;if(t.status EQ "city_suggestion")city=true;if(t.status EQ "needs_review" AND t.trusted AND !structIsEmpty(t.candidate))review=true;}return review ? "needs_review" : (applied ? "auto_applied" : (city ? "city_suggestion" : "insufficient_data"));}
     public struct function run(numeric limit=5){
-        var summary={success=false,status="completed",pipeline_version=3,model=variables.config.aiModel ?: "gpt-6-astra",processed=0,applied=0,suggestions=0,review=0,errors=0,calls=0,cache_hits=0,ai_calls=0,ai_cache_hits=0,source_documents=0,enriched_fields=0,field_reviews=0,deferred=0,results=[]};
+        var summary={success=false,status="completed",pipeline_version=3,model="gpt-6.1-sol",processed=0,applied=0,suggestions=0,review=0,errors=0,calls=0,cache_hits=0,ai_calls=0,ai_cache_hits=0,source_documents=0,enriched_fields=0,field_reviews=0,deferred=0,results=[]};
         if(!variables.store.aiReady()){summary.status="schema_missing";summary.message=safeError(summary.status);return summary;}
         if(!len(fingerprint())){summary.status="not_configured";summary.message=safeError(summary.status);return summary;}
         var settings=variables.store.settings();if(!settings.enabled OR settings.validatedFingerprint NEQ fingerprint()){summary.status=settings.enabled ? "not_validated" : "disabled";summary.message=safeError(summary.status);return summary;}
         var lease=variables.store.acquireWorker();if(!lease.allowed){summary.status="worker_busy";summary.success=true;return summary;}variables.workerToken=lease.token;variables.calls=0;variables.cacheHits=0;
         var deadline=getTickCount()+45000;
         try {
+            summary.batch_checks=variables.economy.pollPending(deadline);
             variables.store.seed(max(1,min(5,int(limit))));
             for(var i=1;i LTE max(1,min(5,int(limit))) AND getTickCount()+3000 LT deadline;i++) {
                 if(!variables.store.workerValid(variables.workerToken)){summary.status="batch_expired";break;}

@@ -9,7 +9,7 @@ check(!fixtureAstraBody.store AND fixtureAstraBody.max_output_tokens LTE 6000 AN
 fixtureOldBody=fixtureAstraClient.requestBody({},[],"gpt-4.1-mini");
 check(!structKeyExists(fixtureOldBody,"reasoning"),"Explicit non-reasoning fixtures remain compatible");
 include "../services/geocoding/config.cfm";
-check(VARIABLES.geoConfig.aiModel EQ "gpt-6-astra" AND VARIABLES.geoConfig.aiDailyLimit EQ 1000,"Module configuration selects Astra without raising daily usage");
+check(VARIABLES.geoConfig.aiModel EQ "gpt-6.1-sol" AND VARIABLES.geoConfig.aiDailyLimit EQ 1000,"Module selects Sol by default, retaining Astra compatibility and independent daily count");
 check(VARIABLES.geoConfig.aiKey EQ APPLICATION.vickyKnowledge.apiKey,"Module keeps the existing integration credential");
 writeOutput("GEO_AI_ASTRA_PASSED");
 </cfscript>

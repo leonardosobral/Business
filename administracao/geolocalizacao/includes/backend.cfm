@@ -32,11 +32,12 @@ structAppend(VARIABLES.geoReasonLabels,{no_official_source="Não há página ofi
 <cfscript>
 VARIABLES.geoConfigured=len(VARIABLES.geoConfig.apiKey) GT 0;VARIABLES.geoStore=new services.geocoding.Store();VARIABLES.geoWorker=new services.geocoding.Worker(VARIABLES.geoConfig);
 VARIABLES.geoAIReady=false;VARIABLES.geoAIStats={calls=0};
+VARIABLES.geoEconomyBudget={};
 VARIABLES.geoGuided=false;VARIABLES.geoReviewTasks=[];VARIABLES.geoReviewTask={};VARIABLES.geoReviewQueue=queryNew("work_id,id_evento,nome_evento,cidade,estado,starts,total");VARIABLES.geoReviewTotal=0;VARIABLES.geoReviewSkipped=0;VARIABLES.geoReviewDone=0;VARIABLES.geoReviewStale=false;
 VARIABLES.geoEditPosted=false;VARIABLES.geoEditValue="";VARIABLES.geoEditTaskKey="";VARIABLES.geoEditRevision="";VARIABLES.geoEditObsolete=false;
 try {
     VARIABLES.geoAIStore=new services.geocoding.LocationStore();VARIABLES.geoAIReady=VARIABLES.geoAIStore.aiReady();VARIABLES.geoRadarReady=VARIABLES.geoAIStore.radarReady();
-    if(VARIABLES.geoAIReady){VARIABLES.geoStore=VARIABLES.geoAIStore;VARIABLES.geoWorker=new services.geocoding.LocationWorker(VARIABLES.geoConfig);VARIABLES.geoAIStats=VARIABLES.geoStore.aiStats();}
+    if(VARIABLES.geoAIReady){VARIABLES.geoStore=VARIABLES.geoAIStore;VARIABLES.geoWorker=new services.geocoding.LocationWorker(VARIABLES.geoConfig);VARIABLES.geoAIStats=VARIABLES.geoStore.aiStats();VARIABLES.geoEconomyBudget=new services.geocoding.AIBudget().status();}
     VARIABLES.geoReady=VARIABLES.geoStore.isReady();
     VARIABLES.geoGuided=VARIABLES.geoAIReady AND VARIABLES.geoTab EQ "revisao";
     if(VARIABLES.geoGuided){

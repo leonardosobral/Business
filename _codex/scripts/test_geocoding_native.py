@@ -4,6 +4,8 @@ import json, pathlib, shlex, subprocess, sys
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 MODE = sys.argv[1] if len(sys.argv) > 1 else 'policy'
 if MODE == 'all':
+    for suite in ['economy_policy','economy_contract','economy_budget','economy_periods','economy_concurrent','economy_batch','economy_batch_pause','economy_flow','economy_pause','economy_legacy','economy_view']:
+        subprocess.run([sys.executable,__file__,suite],check=True)
     for suite in ['optimization_retry','review_edit','review_edit_resume','review_guide','review_guide_view','review_http']:
         subprocess.run([sys.executable,__file__,suite],check=True)
     for suite in ['policy','provider','sources','source_conflicts','worker','endpoint','view','access','integration','workflow','acceleration','quota_3000','schedule','ai_schema','ai_contract','ai_astra','ai_locations','ai_integration','ai_workflow','ai_resume','ai_view','ai_full_view','ai_seed','ai_provider_failure','enrichment_policy','enrichment_contract','enrichment_integration','enrichment_view','enrichment_workflow','enrichment_review_regressions','enrichment_repeated_state','optimization_cache','optimization_store','optimization_worker']:
@@ -67,11 +69,26 @@ for directory in ['services/geocoding', '_codex/tests/geocoding','administracao/
                 name = 'tests/' + str(source.relative_to(base)) if directory.startswith('_codex') else str(source.relative_to(ROOT))
                 payload[name] = source.read_text()
 negative = next((arg.split('=',1)[1] for arg in sys.argv[2:] if arg.startswith('--negative-control=')), '')
+if '--allow-provider' not in sys.argv:
+    # Fail closed at the actual HTTP boundary even if fixture injection regresses.
+    path='services/geocoding/AIClient.cfc'
+    payload[path]=payload[path].replace('            cfhttp(url="https://api.openai.com/v1/responses"',
+        '            throw(type="Test.ProviderBlocked",message="Provider disabled in native fixtures");cfhttp(url="https://api.openai.com/v1/responses"')
+    path='services/geocoding/BatchTransport.cfc'
+    if path in payload:
+        payload[path]=payload[path].replace('        cfhttp(', '        throw(type="Test.ProviderBlocked",message="Batch provider disabled in native fixtures");cfhttp(')
 if MODE=='review_http':
     # Substitute only the mutating store boundary in an isolated copy. Real writes
     # and continuation are covered separately by transaction/rollback fixtures.
     path='administracao/geolocalizacao/includes/backend.cfm'
     payload[path]=payload[path].replace('new services.geocoding.LocationStore()','new __GEO_TEST_PACKAGE__.tests.FixtureGuidedStore()')
+if MODE=='optimization_store':
+    # Production is intentionally paused with 20 real ready rows. Scope only the
+    # fixture's capacity count; never modify or hide real queue rows in the DB.
+    path='services/geocoding/LocationStore.cfc'
+    anchor="SELECT count(*) AS n FROM public.tb_evento_geocoding WHERE source_snapshot->>'version'='3' AND ((status"
+    if payload[path].count(anchor)!=1:raise SystemExit('Fixture capacity anchor changed')
+    payload[path]=payload[path].replace(anchor,"SELECT count(*) AS n FROM public.tb_evento_geocoding WHERE id_evento BETWEEN 2147001301 AND 2147001321 AND source_snapshot->>'version'='3' AND ((status",1)
 if '--trace-fixture' in sys.argv and MODE == 'workflow':
     # Only the synthetic workflow: no real keys, provider calls or event data.
     payload['services/geocoding/Worker.cfc']=payload['services/geocoding/Worker.cfc'].replace(

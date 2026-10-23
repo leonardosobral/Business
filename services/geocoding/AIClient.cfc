@@ -61,7 +61,7 @@ component output=false {
             cfhttp(url="https://api.openai.com/v1/responses",method="POST",result="response",timeout=20,redirect=false,throwonerror=false,charset="utf-8") {
                 cfhttpparam(type="header",name="Authorization",value="Bearer " & variables.key);
                 cfhttpparam(type="header",name="Content-Type",value="application/json");
-                cfhttpparam(type="body",value=serializeJSON(requestBody(context,documents,variables.model)));
+                cfhttpparam(type="body",value=serializeJSON(this.requestBody(context,documents,variables.model)));
             }
             return decode(val(response.statusCode),isSimpleValue(response.fileContent) ? response.fileContent : "");
         }catch(any transport){return {ok=false,code="ai_unavailable",retryAfter=300};}
