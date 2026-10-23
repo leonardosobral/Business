@@ -51,15 +51,14 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
 
     <cfset arguments.state.inscricaoBasicSchemaReady = new services.EventRegistrationAvailabilityService().isSchemaReady()/>
 
-    <cfquery name="qCidade" datasource="#arguments.fresh.datasource#">
-        SELECT cod_cidade, nome_cidade, uf
-        FROM tb_cidades
-        WHERE cod_cidade = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.cidade#"/>
-          AND uf = <cfqueryparam cfsqltype="cf_sql_varchar" value="#uCase(trim(FORM.estado))#"/>
-    </cfquery>
-    <cfif qCidade.recordcount NEQ 1>
-        <cfthrow type="BusinessDelegation.Validation" message="Selecione uma cidade do estado informado."/>
-    </cfif>
+    <cfscript>
+        local.locationCurrent={};
+        if(val(FORM.id_evento) GT 0){
+            local.locationRows=queryExecute("SELECT pais,localizacoes,endereco,coordenadas FROM tb_evento_corridas WHERE id_evento=:id FOR UPDATE",{id={value=FORM.id_evento,cfsqltype="cf_sql_integer"}},{datasource=arguments.fresh.datasource});
+            for(local.locationRow in local.locationRows)local.locationCurrent=local.locationRow;
+        }
+        arguments.state.eventBasicLocation=new services.EventLocationPolicy().resolve(FORM,local.locationCurrent,arguments.fresh.datasource);
+    </cfscript>
 
     <cfset arguments.state.adminEventoRequestedTag = trim(FORM.tag & "")/>
     <cfset arguments.state.adminEventoResolvedTag = adminEventoResolveUniqueTag(
@@ -75,20 +74,22 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
 
         <cfquery name="arguments.state.qInsert" datasource="#arguments.fresh.datasource#">
             INSERT INTO tb_evento_corridas
-            (nome_evento, cidade, cod_cidade, estado, data_inicial, data_final, tag,
+            (nome_evento, cidade, cod_cidade, estado, pais, localizacoes, data_inicial, data_final, tag,
                 tipo_corrida, endereco, coordenadas, url_inscricao, url_hotsite)
             VALUES
             (
              <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.nome_evento#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#qCidade.nome_cidade#"/>,
-             <cfqueryparam cfsqltype="cf_sql_integer" value="#qCidade.cod_cidade#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#qCidade.uf#"/>,
+             <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.cidade#"/>,
+             <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.state.eventBasicLocation.cod_cidade#" null="#arguments.state.eventBasicLocation.cod_cidade_null#"/>,
+             <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.estado#" null="#NOT len(arguments.state.eventBasicLocation.estado)#"/>,
+             <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.pais#"/>,
+             <cfif len(arguments.state.eventBasicLocation.regionName)>jsonb_build_object('administrativo',jsonb_build_object('pais',<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.pais#"/>,'estado_nome',<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.regionName#"/>))<cfelse>'{}'::jsonb</cfif>,
              <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_inicial#"/>,
              <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_final#"/>,
 	             <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.adminEventoResolvedTag#"/>,
              <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tipo_corrida#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.endereco#"/>,
-             <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.coordenadas#"/>,
+             <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.endereco#"/>,
+             <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.coordenadas#"/>,
              <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.url_inscricao#"/>,
              <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.url_hotsite#"/>
             ) RETURNING id_evento
@@ -107,15 +108,17 @@ function adminEventoResolveUniqueTag(required string requestedTag, numeric event
             UPDATE tb_evento_corridas
             SET
             nome_evento = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.nome_evento#"/>,
-            cidade = <cfqueryparam cfsqltype="cf_sql_varchar" value="#qCidade.nome_cidade#"/>,
-            cod_cidade = <cfqueryparam cfsqltype="cf_sql_integer" value="#qCidade.cod_cidade#"/>,
-            estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#qCidade.uf#"/>,
+            cidade = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.cidade#"/>,
+            cod_cidade = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.state.eventBasicLocation.cod_cidade#" null="#arguments.state.eventBasicLocation.cod_cidade_null#"/>,
+            estado = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.estado#" null="#NOT len(arguments.state.eventBasicLocation.estado)#"/>,
+            pais = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.pais#"/>,
+            localizacoes = <cfif len(arguments.state.eventBasicLocation.regionName)>jsonb_set(COALESCE(localizacoes,'{}'::jsonb),'{administrativo}',jsonb_build_object('pais',<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.pais#"/>,'estado_nome',<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.regionName#"/>),true)<cfelse>COALESCE(localizacoes,'{}'::jsonb)-'administrativo'</cfif>,
             data_inicial = <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_inicial#"/>,
             data_final = <cfqueryparam cfsqltype="cf_sql_date" value="#FORM.data_final#"/>,
             tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.adminEventoResolvedTag#"/>,
             tipo_corrida = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.tipo_corrida#"/>,
-            endereco = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.endereco#"/>,
-            coordenadas = <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.coordenadas#"/>,
+            endereco = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.endereco#"/>,
+            coordenadas = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.eventBasicLocation.coordenadas#"/>,
             <cfif arguments.state.inscricaoBasicSchemaReady>
                 inscricao_disponibilidade = CASE WHEN trim(coalesce(url_inscricao, '')) IS DISTINCT FROM <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(FORM.url_inscricao)#"/>
                     THEN NULL ELSE inscricao_disponibilidade END,

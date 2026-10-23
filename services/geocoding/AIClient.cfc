@@ -56,7 +56,7 @@ component output=false {
     }
     public struct function extract(required struct context,required array documents) {
         if(!len(variables.key))return {ok=false,code="ai_not_configured",retryAfter=3600};
-        var response={};
+        var response={};var usageStarted=getTickCount();
         try {
             cfhttp(url="https://api.openai.com/v1/responses",method="POST",result="response",timeout=20,redirect=false,throwonerror=false,charset="utf-8") {
                 cfhttpparam(type="header",name="Authorization",value="Bearer " & variables.key);
@@ -65,5 +65,6 @@ component output=false {
             }
             return decode(val(response.statusCode),isSimpleValue(response.fileContent) ? response.fileContent : "");
         }catch(any transport){return {ok=false,code="ai_unavailable",retryAfter=300};}
+        finally{try{new services.openaiUsage.Observer().observe("geolocation","extract",variables.model,response,getTickCount()-usageStarted);}catch(any telemetryUnavailable){}}
     }
 }

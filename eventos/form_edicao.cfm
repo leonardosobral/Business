@@ -69,6 +69,9 @@
                         </cfquery>
 
                         <cfset VARIABLES.eventBasicDelegated=structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED"/>
+                        <cfset VARIABLES.eventLocationEditor=new services.EventLocationPolicy()/>
+                        <cfset VARIABLES.eventBasicPais=len(trim(qEvento.pais & "")) ? uCase(trim(qEvento.pais & "")) : "BR"/>
+                        <cfif structKeyExists(URL,"pais_edicao") AND isSimpleValue(URL.pais_edicao) AND len(new services.geocoding.RegionNames().country(URL.pais_edicao))><cfset VARIABLES.eventBasicPais=new services.geocoding.RegionNames().country(URL.pais_edicao)/></cfif>
                         <cfset VARIABLES.eventBasicEstado=uCase(trim(qEvento.estado & ""))/>
                         <cfif VARIABLES.eventBasicDelegated AND structKeyExists(URL,"cidade_uf") AND isSimpleValue(URL.cidade_uf)>
                             <cfset VARIABLES.eventBasicRequestedEstado=uCase(trim(URL.cidade_uf))/>
@@ -86,10 +89,11 @@
                         </cfquery>
 
                         <cfif VARIABLES.eventBasicDelegated>
-                            <form method="get" action="/eventos/" id="eventCityLookup" class="mb-3">
+                            <form method="get" action="/eventos/" id="eventCityLookup" class="mb-3" data-event-br-lookup <cfif VARIABLES.eventBasicPais NEQ "BR">hidden</cfif>>
                                 <p class="small mb-2">Para mudar o estado, carregue as cidades antes de preencher os dados abaixo.</p>
                                 <input type="hidden" name="id_evento" value="<cfoutput>#encodeForHTMLAttribute(URL.id_evento)#</cfoutput>"/>
                                 <input type="hidden" name="sessao" value="dados"/>
+                                <input type="hidden" name="pais_edicao" value="BR"/>
                                 <cfoutput><cfloop list="periodo,preset,busca,estado,regiao,cidade,id_agrega_evento,agregador_tag" index="eventCityFilter"><input type="hidden" name="#eventCityFilter#" value="#encodeForHTMLAttribute(URL[eventCityFilter])#"/></cfloop></cfoutput>
                                 <div class="d-flex gap-2 align-items-end">
                                     <div>
@@ -154,50 +158,20 @@
                                 </cfif>
                             </div>
 
-                            <div class="row">
-
-                                <div class="col-md-3 mb-3">
-                                    <div class="form-outline">
-                                        <cfif VARIABLES.eventBasicDelegated>
-                                            <input type="text" class="form-control pt-3" name="estado" id="selectEstado" readonly value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.eventBasicEstado)#</cfoutput>"/>
-                                        <cfelse>
-                                        <select data-mdb-select-init class="form-select pt-3" name="estado" id="selectEstado" onchange="getCidades()">
-                                            <option value="">Estado</option>
-                                            <cfoutput query="qEstados">
-                                                <option value="#qEstados.uf#" <cfif qEvento.estado EQ qEstados.uf>selected</cfif>>#qEstados.uf#</option>
-                                            </cfoutput>
-                                        </select>
-                                        </cfif>
-                                        <label class="form-label select-label">Estado</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-9 mb-3">
-                                    <div class="form-outline">
-                                        <select data-mdb-select-init data-mdb-filter="true" class="form-select pt-3" name="cidade" id="selectCidade" required>
-                                            <option value="">Cidade</option>
-                                            <cfoutput query="qCidades">
-                                                <option value="#qCidades.cod_cidade#" <cfif NOT VARIABLES.eventBasicStateChanged AND qEvento.cod_cidade EQ qCidades.cod_cidade>selected</cfif>>#qCidades.nome_cidade#</option>
-                                            </cfoutput>
-                                        </select>
-                                        <label class="form-label select-label">Cidade</label>
-                                    </div>
-                                </div>
-
-                            </div>
+                            <cfinclude template="includes/event_location_fields.cfm">
 
                             <div class="row">
 
                                 <div class="col-md-7 mb-3">
                                     <div data-mdb-input-init class="form-outline">
-                                        <input type="text" class="form-control pt-3" id="txtEndereco" name="endereco" value="<cfoutput>#qEvento.endereco#</cfoutput>" />
+                                        <input type="text" class="form-control pt-3" maxlength="512" id="txtEndereco" name="endereco" value="<cfoutput>#encodeForHTMLAttribute(qEvento.endereco)#</cfoutput>" />
                                         <label for="txtEndereco" class="form-label">Endereço</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-5 mb-3">
                                     <div data-mdb-input-init class="form-outline">
-                                        <input type="text" class="form-control pt-3" id="txtCoordenadas" name="coordenadas" value="<cfoutput>#qEvento.coordenadas#</cfoutput>" />
+                                        <input type="text" class="form-control pt-3" maxlength="100" placeholder="Latitude, longitude · ex.: 41.1579, -8.6291" id="txtCoordenadas" name="coordenadas" value="<cfoutput>#encodeForHTMLAttribute(qEvento.coordenadas)#</cfoutput>" />
                                         <label for="txtCoordenadas" class="form-label">Coordenadas da prova</label>
                                     </div>
                                 </div>

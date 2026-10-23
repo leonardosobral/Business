@@ -1,4 +1,4 @@
-<cfif NOT isDefined("qEvento") OR NOT qEvento.recordCount><cfabort></cfif>
+<cfif NOT isDefined("qEvento") OR NOT qEvento.recordCount><cfexit method="exittemplate"></cfif>
 <cfif listFindNoCase(qEvento.columnList,"localizacoes") AND isJSON(qEvento.localizacoes & "")>
 <cfset VARIABLES.eventLocations=deserializeJSON(qEvento.localizacoes & "")>
 <cfif isStruct(VARIABLES.eventLocations) AND NOT structIsEmpty(VARIABLES.eventLocations)>

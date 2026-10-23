@@ -371,6 +371,8 @@ component output="false" {
         var statusCode=0;
         var providerCode="";
         var providerType="";
+        var usageStarted=getTickCount();
+        var usageOperation=structKeyExists(payload,"text") AND isStruct(payload.text) AND structKeyExists(payload.text,"format") AND isStruct(payload.text.format) AND structKeyExists(payload.text.format,"name") ? payload.text.format.name & "" : "rewrite";
         if(arguments.deadlineTick GT 0) {
             timeoutSeconds=min(45,int((arguments.deadlineTick-getTickCount())/1000));
             if(timeoutSeconds LT 1) throw(type="EventDescriptionRewrite.Budget",message="O tempo disponível para o lote terminou.");
@@ -386,7 +388,7 @@ component output="false" {
                 throw(type="EventDescriptionRewrite.Budget",message="O tempo disponível para o lote terminou.");
             }
             rejectProviderDependency("ProviderUnavailable","provider_transport_error","Não foi possível conectar ao provedor de IA.");
-        }
+        } finally {try{new services.openaiUsage.Observer().observe("event-descriptions",usageOperation,payload.model ?: "unknown",httpResult,getTickCount()-usageStarted);}catch(any telemetryUnavailable){}}
         statusCode=structKeyExists(httpResult,"statusCode") ? val(httpResult.statusCode) : 0;
         if(structKeyExists(httpResult,"fileContent") AND isJSON(httpResult.fileContent)) {
             response=deserializeJSON(httpResult.fileContent);

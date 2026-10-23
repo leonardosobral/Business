@@ -1,0 +1,77 @@
+{
+  "ok": true,
+  "checked_at": "2026-10-22T16:17:43.643704+00:00",
+  "publication_receipt": "event-location-20261022.json",
+  "production_comparison": {
+    "ok": true,
+    "checks": {
+      "services/EventLocationPolicy.cfc": true,
+      "eventos/includes/event_location_fields.cfm": true,
+      "eventos/assets/event-location.js": true,
+      "eventos/includes/event_location_error.cfm": true,
+      "eventos/form_edicao.cfm": true,
+      "eventos/includes/backend/event_mutations.cfm": true,
+      "eventos/includes/localizacoes_confirmadas.cfm": true,
+      "eventos/home.cfm": true,
+      "includes/estrutura/sidenav.cfm": true,
+      "services/geocoding/config.cfm": true,
+      "services/geocoding/LocationPolicy.cfc": true,
+      "services/geocoding/EnrichmentPolicy.cfc": true,
+      "administracao/geolocalizacao/includes/radar_view.cfm": true,
+      "api/eventos/geolocalizar.cfm": true,
+      "services/geocoding/AIClient.cfc": true,
+      "services/geocoding/DocumentReader.cfc": true,
+      "services/geocoding/Store.cfc": true,
+      "services/geocoding/ReviewInput.cfc": true,
+      "services/geocoding/EnrichmentStore.cfc": true,
+      "services/geocoding/LocationStore.cfc": true,
+      "services/geocoding/LocationWorker.cfc": true,
+      "services/geocoding/ReviewGuide.cfc": true,
+      "administracao/geolocalizacao/includes/review_guide_view.cfm": true,
+      "administracao/geolocalizacao/assets/review-guide.css": true,
+      "administracao/geolocalizacao/includes/backend.cfm": true,
+      "administracao/geolocalizacao/includes/view.cfm": true,
+      "administracao/geolocalizacao/assets/geocoding.js": true,
+      "administracao/geolocalizacao/index.cfm": true,
+      "eventos/includes/backend/event_delegation.cfm": true,
+      "eventos/includes/backend/backend_evento_edicao.cfm": true
+    }
+  },
+  "native_suites_passed": 49,
+  "frontend_test_passed": true,
+  "reader_tests_passed": 11,
+  "independent_review": {
+    "important_findings_resolved": [
+      "unchanged legacy address and coordinates",
+      "specific location validation messages",
+      "complete new-event form"
+    ],
+    "remaining_important_or_critical": 0
+  },
+  "browser": {
+    "event_id": 38202,
+    "country_preserved": "PT",
+    "city_preserved": "Lisbon",
+    "country_selector_visible": true,
+    "foreign_city_and_subdivision_editable": true,
+    "optional_short_region_code_visible": true,
+    "brazil_switch_observed": true,
+    "brazil_state_municipality_controls_visible": true,
+    "portugal_restored": true,
+    "original_city_restored_after_switch": true,
+    "save_button_visible": true,
+    "real_event_form_submissions_performed": false,
+    "screenshot": "event-location-20261022.jpg",
+    "screenshot_sha256": "2a68502a461ff92ed10c945fa797fbdba9477aa7919db369f55e3f5176f78c1d"
+  },
+  "runtime_files_published": 8,
+  "backup": "/var/backups/business-geocoding-sources-kfaehjou",
+  "schema_changed": false,
+  "credentials_changed": false,
+  "paid_provider_calls_by_tests_or_ui": 0,
+  "git_mutations_for_this_feature": false,
+  "verification_limitations": [
+    "Local account-delegation suite unavailable: PostgreSQL initdb runtime missing; native event-scope checks passed."
+  ],
+  "publication_probe_correction": "Root service follows the existing login redirect 302; directory-level geocoding access remains 403. Failed first attempt rolled back all eight files before retry."
+}

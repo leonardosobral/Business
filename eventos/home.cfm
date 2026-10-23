@@ -17,7 +17,10 @@
         <cfif cfcatch.type EQ "BusinessDelegation.Unavailable"><cfset VARIABLES.eventDelegationStatus=503/></cfif>
         <cfheader statuscode="#VARIABLES.eventDelegationStatus#"/>
         <cfheader name="Cache-Control" value="no-store"/>
-        <cfoutput>#encodeForHTML("Não foi possível realizar esta operação. Reabra o evento e confira seu acesso.")#</cfoutput>
+        <cfif cfcatch.type EQ "BusinessDelegation.Validation" AND structKeyExists(cfcatch,"errorCode") AND cfcatch.errorCode EQ "event_location">
+            <cfset VARIABLES.eventLocationErrorMessage=cfcatch.message><cfset VARIABLES.eventLocationErrorEventId=structKeyExists(FORM,"id_evento") AND isSimpleValue(FORM.id_evento) ? FORM.id_evento : "">
+            <cfinclude template="includes/event_location_error.cfm">
+        <cfelse><cfoutput>#encodeForHTML("Não foi possível realizar esta operação. Reabra o evento e confira seu acesso.")#</cfoutput></cfif>
         <cfabort/>
     </cfcatch>
 </cftry>

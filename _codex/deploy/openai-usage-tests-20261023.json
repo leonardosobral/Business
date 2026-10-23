@@ -1,0 +1,86 @@
+{
+  "checked_at": "2026-10-23T16:04:13.492999+00:00",
+  "candidate_hashes": {
+    "business:services/openaiUsage/Observer.cfc": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+    "business:services/openaiUsage/Pricing.cfc": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+    "business:services/openaiUsage/Catalog.cfc": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+    "business:services/openaiUsage/.htaccess": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+    "business:services/openaiUsage/Access.cfc": "14dc087956c524e0f2df64f70e7164e9cc714b99e7768d3cf1b698d4b53022a4",
+    "business:services/openaiUsage/Store.cfc": "a2bf510c05a901511822fa53bd8714a747b92e21ed20fbee9c53d7797488e0bc",
+    "business:services/openaiUsage/Legacy.cfc": "cca66af67f2146ad8fd3ae222385152dca908ac3f4a682f7cdf4420cd8e361ad",
+    "business:services/geocoding/AIClient.cfc": "5b8c6617bc3f652e04421c27e05cd89e698d516cf262335d229daa11447fca7c",
+    "business:services/EventDescriptionRewriteService.cfc": "b657b69d68a816355879580bc732fef5124c055cf3878a0d43a511efff09c288",
+    "business:administracao/ai-mails/includes/ai.cfm": "76605fa003a5979d0a7f2f4fbeac11e0001c5b841789ce4ceed6e2d3c0460755",
+    "business:helpdesk/includes/HelpdeskAI.cfc": "b22b237b1970ac300b80c157cb5445a29419ad2c7ada4acbd7c18beb2bb6aa81",
+    "business:includes/estrutura/sidenav.cfm": "7fbcdf1b3e5648a823cb4cdd25f4b7f027f220230c2bf813cb288b4ebc5e2641",
+    "news:services/openaiUsage/Observer.cfc": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+    "news:services/openaiUsage/Pricing.cfc": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+    "news:services/openaiUsage/Catalog.cfc": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+    "news:services/openaiUsage/.htaccess": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+    "news:inc/article_summary_provider.cfc": "00cbfcfe7876d07715aef753352abe01b51b681f206cfd15754b9ec0e34535fb",
+    "news:inc/openai_client.cfc": "526891baf87944dc0df78cb5dc0c055b1be9c8e49f398d41069b22360919d2a9",
+    "news:inc/news_audio_provider.cfc": "694d4ecf150a5fb68c522cb04f865cd629913587597e5af8981834b2fb415365",
+    "rr:services/openaiUsage/Observer.cfc": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+    "rr:services/openaiUsage/Pricing.cfc": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+    "rr:services/openaiUsage/Catalog.cfc": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+    "rr:services/openaiUsage/.htaccess": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+    "rr:services/VickyAgentService.cfc": "849f6476dd51dc071a767ba6e636903bef6152410569c6766297278b10e3a80d",
+    "business:administracao/consumo-openai/index.cfm": "c7b4f10a645a25d42f27c7413d6001672a159501c7a579054eeb06d89bdac2c2",
+    "business:administracao/consumo-openai/includes/view.cfm": "6c23a07143b624974e831b0b6150c5aca9aaea7757f9911cdcbc32f7840ddf5b",
+    "business:administracao/consumo-openai/includes/backend.cfm": "e4cf6b64211ce3c426b9d5323d011280937ec4617afa45b0c897a4c8291f4c8d",
+    "business:administracao/consumo-openai/assets/usage.js": "f2d1eb1c1ed60b12d45d49db23f9c5264d48c0e880a13cc776761b9f6a01a7e4",
+    "business:administracao/consumo-openai/assets/usage.css": "0538e8fa0a3ab383069b3e246e59dfa3578547cf0b6a0d16676b520e664083a8"
+  },
+  "tests": [
+    {
+      "ok": true,
+      "output": "GEO_PRICING_PASSED ",
+      "archive": "/var/backups/geocoding-tests-5x0ebbws",
+      "stage_archived": true,
+      "suite": "pricing"
+    },
+    {
+      "ok": true,
+      "output": "GEO_OBSERVER_PASSED ",
+      "archive": "/var/backups/geocoding-tests-8rvk47yi",
+      "stage_archived": true,
+      "suite": "observer"
+    },
+    {
+      "ok": true,
+      "output": "GEO_STORE_PASSED ",
+      "archive": "/var/backups/geocoding-tests-tt2wk4h8",
+      "stage_archived": true,
+      "suite": "store"
+    },
+    {
+      "ok": true,
+      "output": "{\"RECORDS\":2690.0,\"TOKENS\":2527243.0,\"UNKNOWN\":1937.0}GEO_LEGACY_PASSED ",
+      "archive": "/var/backups/geocoding-tests-5w6wwmbi",
+      "stage_archived": true,
+      "suite": "legacy"
+    },
+    {
+      "ok": true,
+      "output": "GEO_WRAPPERS_PASSED ",
+      "archive": "/var/backups/geocoding-tests-0q3n_g8l",
+      "stage_archived": true,
+      "suite": "wrappers"
+    },
+    {
+      "ok": true,
+      "output": "GEO_VIEW_PASSED ",
+      "archive": "/var/backups/geocoding-tests-7vpw5pgv",
+      "stage_archived": true,
+      "suite": "view"
+    },
+    {
+      "ok": true,
+      "output": "GEO_LEDGER_PASSED ",
+      "archive": "/var/backups/geocoding-tests-emg65qd0",
+      "stage_archived": true,
+      "suite": "ledger"
+    }
+  ],
+  "js_ok": true
+}

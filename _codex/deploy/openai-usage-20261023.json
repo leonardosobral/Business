@@ -1,0 +1,602 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-openai-usage-rj1dwo3n",
+  "manifest": {
+    "business:services/openaiUsage/Observer.cfc": {
+      "before": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+      "after": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46"
+    },
+    "business:services/openaiUsage/Pricing.cfc": {
+      "before": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+      "after": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a"
+    },
+    "business:services/openaiUsage/Catalog.cfc": {
+      "before": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+      "after": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89"
+    },
+    "business:services/openaiUsage/.htaccess": {
+      "before": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+      "after": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668"
+    },
+    "business:services/openaiUsage/Access.cfc": {
+      "before": "14dc087956c524e0f2df64f70e7164e9cc714b99e7768d3cf1b698d4b53022a4",
+      "after": "14dc087956c524e0f2df64f70e7164e9cc714b99e7768d3cf1b698d4b53022a4"
+    },
+    "business:services/openaiUsage/Store.cfc": {
+      "before": "0081814703db68ac9e10681799cf61632d87f0053e90527f276aae4619196368",
+      "after": "a2bf510c05a901511822fa53bd8714a747b92e21ed20fbee9c53d7797488e0bc"
+    },
+    "business:services/openaiUsage/Legacy.cfc": {
+      "before": "cca66af67f2146ad8fd3ae222385152dca908ac3f4a682f7cdf4420cd8e361ad",
+      "after": "cca66af67f2146ad8fd3ae222385152dca908ac3f4a682f7cdf4420cd8e361ad"
+    },
+    "business:services/geocoding/AIClient.cfc": {
+      "before": "5b8c6617bc3f652e04421c27e05cd89e698d516cf262335d229daa11447fca7c",
+      "after": "5b8c6617bc3f652e04421c27e05cd89e698d516cf262335d229daa11447fca7c"
+    },
+    "business:services/EventDescriptionRewriteService.cfc": {
+      "before": "b657b69d68a816355879580bc732fef5124c055cf3878a0d43a511efff09c288",
+      "after": "b657b69d68a816355879580bc732fef5124c055cf3878a0d43a511efff09c288"
+    },
+    "business:administracao/ai-mails/includes/ai.cfm": {
+      "before": "76605fa003a5979d0a7f2f4fbeac11e0001c5b841789ce4ceed6e2d3c0460755",
+      "after": "76605fa003a5979d0a7f2f4fbeac11e0001c5b841789ce4ceed6e2d3c0460755"
+    },
+    "business:helpdesk/includes/HelpdeskAI.cfc": {
+      "before": "b22b237b1970ac300b80c157cb5445a29419ad2c7ada4acbd7c18beb2bb6aa81",
+      "after": "b22b237b1970ac300b80c157cb5445a29419ad2c7ada4acbd7c18beb2bb6aa81"
+    },
+    "business:includes/estrutura/sidenav.cfm": {
+      "before": "7fbcdf1b3e5648a823cb4cdd25f4b7f027f220230c2bf813cb288b4ebc5e2641",
+      "after": "7fbcdf1b3e5648a823cb4cdd25f4b7f027f220230c2bf813cb288b4ebc5e2641"
+    },
+    "news:services/openaiUsage/Observer.cfc": {
+      "before": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+      "after": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46"
+    },
+    "news:services/openaiUsage/Pricing.cfc": {
+      "before": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+      "after": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a"
+    },
+    "news:services/openaiUsage/Catalog.cfc": {
+      "before": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+      "after": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89"
+    },
+    "news:services/openaiUsage/.htaccess": {
+      "before": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+      "after": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668"
+    },
+    "news:inc/article_summary_provider.cfc": {
+      "before": "00cbfcfe7876d07715aef753352abe01b51b681f206cfd15754b9ec0e34535fb",
+      "after": "00cbfcfe7876d07715aef753352abe01b51b681f206cfd15754b9ec0e34535fb"
+    },
+    "news:inc/openai_client.cfc": {
+      "before": "526891baf87944dc0df78cb5dc0c055b1be9c8e49f398d41069b22360919d2a9",
+      "after": "526891baf87944dc0df78cb5dc0c055b1be9c8e49f398d41069b22360919d2a9"
+    },
+    "news:inc/news_audio_provider.cfc": {
+      "before": "694d4ecf150a5fb68c522cb04f865cd629913587597e5af8981834b2fb415365",
+      "after": "694d4ecf150a5fb68c522cb04f865cd629913587597e5af8981834b2fb415365"
+    },
+    "rr:services/openaiUsage/Observer.cfc": {
+      "before": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+      "after": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46"
+    },
+    "rr:services/openaiUsage/Pricing.cfc": {
+      "before": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+      "after": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a"
+    },
+    "rr:services/openaiUsage/Catalog.cfc": {
+      "before": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+      "after": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89"
+    },
+    "rr:services/openaiUsage/.htaccess": {
+      "before": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+      "after": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668"
+    },
+    "rr:services/VickyAgentService.cfc": {
+      "before": "849f6476dd51dc071a767ba6e636903bef6152410569c6766297278b10e3a80d",
+      "after": "849f6476dd51dc071a767ba6e636903bef6152410569c6766297278b10e3a80d"
+    },
+    "business:administracao/consumo-openai/index.cfm": {
+      "before": "c7b4f10a645a25d42f27c7413d6001672a159501c7a579054eeb06d89bdac2c2",
+      "after": "c7b4f10a645a25d42f27c7413d6001672a159501c7a579054eeb06d89bdac2c2"
+    },
+    "business:administracao/consumo-openai/includes/view.cfm": {
+      "before": "6c23a07143b624974e831b0b6150c5aca9aaea7757f9911cdcbc32f7840ddf5b",
+      "after": "6c23a07143b624974e831b0b6150c5aca9aaea7757f9911cdcbc32f7840ddf5b"
+    },
+    "business:administracao/consumo-openai/includes/backend.cfm": {
+      "before": "e4cf6b64211ce3c426b9d5323d011280937ec4617afa45b0c897a4c8291f4c8d",
+      "after": "e4cf6b64211ce3c426b9d5323d011280937ec4617afa45b0c897a4c8291f4c8d"
+    },
+    "business:administracao/consumo-openai/assets/usage.js": {
+      "before": "f2d1eb1c1ed60b12d45d49db23f9c5264d48c0e880a13cc776761b9f6a01a7e4",
+      "after": "f2d1eb1c1ed60b12d45d49db23f9c5264d48c0e880a13cc776761b9f6a01a7e4"
+    },
+    "business:administracao/consumo-openai/assets/usage.css": {
+      "before": "0538e8fa0a3ab383069b3e246e59dfa3578547cf0b6a0d16676b520e664083a8",
+      "after": "0538e8fa0a3ab383069b3e246e59dfa3578547cf0b6a0d16676b520e664083a8"
+    }
+  },
+  "probes": [
+    {
+      "app": "business",
+      "path": "/administracao/consumo-openai/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "app": "business",
+      "path": "/administracao/consumo-openai/includes/backend.cfm",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "app": "business",
+      "path": "/administracao/consumo-openai/includes/view.cfm",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "app": "business",
+      "path": "/administracao/consumo-openai/assets/usage.css",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "app": "business",
+      "path": "/administracao/consumo-openai/assets/usage.js",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "app": "business",
+      "path": "/services/openaiUsage/Observer.cfc",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "app": "news",
+      "path": "/services/openaiUsage/Observer.cfc",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "app": "rr",
+      "path": "/services/openaiUsage/Observer.cfc",
+      "status": "403",
+      "ok": true
+    }
+  ],
+  "checks": [
+    {
+      "path": "business:services/openaiUsage/Observer.cfc",
+      "ok": true
+    },
+    {
+      "path": "business:services/openaiUsage/Pricing.cfc",
+      "ok": true
+    },
+    {
+      "path": "business:services/openaiUsage/Catalog.cfc",
+      "ok": true
+    },
+    {
+      "path": "business:services/openaiUsage/.htaccess",
+      "ok": true
+    },
+    {
+      "path": "business:services/openaiUsage/Access.cfc",
+      "ok": true
+    },
+    {
+      "path": "business:services/openaiUsage/Store.cfc",
+      "ok": true
+    },
+    {
+      "path": "business:services/openaiUsage/Legacy.cfc",
+      "ok": true
+    },
+    {
+      "path": "business:services/geocoding/AIClient.cfc",
+      "ok": true
+    },
+    {
+      "path": "business:services/EventDescriptionRewriteService.cfc",
+      "ok": true
+    },
+    {
+      "path": "business:administracao/ai-mails/includes/ai.cfm",
+      "ok": true
+    },
+    {
+      "path": "business:helpdesk/includes/HelpdeskAI.cfc",
+      "ok": true
+    },
+    {
+      "path": "business:includes/estrutura/sidenav.cfm",
+      "ok": true
+    },
+    {
+      "path": "news:services/openaiUsage/Observer.cfc",
+      "ok": true
+    },
+    {
+      "path": "news:services/openaiUsage/Pricing.cfc",
+      "ok": true
+    },
+    {
+      "path": "news:services/openaiUsage/Catalog.cfc",
+      "ok": true
+    },
+    {
+      "path": "news:services/openaiUsage/.htaccess",
+      "ok": true
+    },
+    {
+      "path": "news:inc/article_summary_provider.cfc",
+      "ok": true
+    },
+    {
+      "path": "news:inc/openai_client.cfc",
+      "ok": true
+    },
+    {
+      "path": "news:inc/news_audio_provider.cfc",
+      "ok": true
+    },
+    {
+      "path": "rr:services/openaiUsage/Observer.cfc",
+      "ok": true
+    },
+    {
+      "path": "rr:services/openaiUsage/Pricing.cfc",
+      "ok": true
+    },
+    {
+      "path": "rr:services/openaiUsage/Catalog.cfc",
+      "ok": true
+    },
+    {
+      "path": "rr:services/openaiUsage/.htaccess",
+      "ok": true
+    },
+    {
+      "path": "rr:services/VickyAgentService.cfc",
+      "ok": true
+    },
+    {
+      "path": "business:administracao/consumo-openai/index.cfm",
+      "ok": true
+    },
+    {
+      "path": "business:administracao/consumo-openai/includes/view.cfm",
+      "ok": true
+    },
+    {
+      "path": "business:administracao/consumo-openai/includes/backend.cfm",
+      "ok": true
+    },
+    {
+      "path": "business:administracao/consumo-openai/assets/usage.js",
+      "ok": true
+    },
+    {
+      "path": "business:administracao/consumo-openai/assets/usage.css",
+      "ok": true
+    }
+  ],
+  "tracked_since_ms": 1792767397088,
+  "preserved_count": 28,
+  "credentials_changed": false,
+  "sql_applied": false,
+  "git_mutations": false,
+  "checked_at": "2026-10-23T15:07:07.095460+00:00",
+  "candidate_hashes": {
+    "business:services/openaiUsage/Observer.cfc": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+    "business:services/openaiUsage/Pricing.cfc": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+    "business:services/openaiUsage/Catalog.cfc": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+    "business:services/openaiUsage/.htaccess": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+    "business:services/openaiUsage/Access.cfc": "14dc087956c524e0f2df64f70e7164e9cc714b99e7768d3cf1b698d4b53022a4",
+    "business:services/openaiUsage/Store.cfc": "a2bf510c05a901511822fa53bd8714a747b92e21ed20fbee9c53d7797488e0bc",
+    "business:services/openaiUsage/Legacy.cfc": "cca66af67f2146ad8fd3ae222385152dca908ac3f4a682f7cdf4420cd8e361ad",
+    "business:services/geocoding/AIClient.cfc": "5b8c6617bc3f652e04421c27e05cd89e698d516cf262335d229daa11447fca7c",
+    "business:services/EventDescriptionRewriteService.cfc": "b657b69d68a816355879580bc732fef5124c055cf3878a0d43a511efff09c288",
+    "business:administracao/ai-mails/includes/ai.cfm": "76605fa003a5979d0a7f2f4fbeac11e0001c5b841789ce4ceed6e2d3c0460755",
+    "business:helpdesk/includes/HelpdeskAI.cfc": "b22b237b1970ac300b80c157cb5445a29419ad2c7ada4acbd7c18beb2bb6aa81",
+    "business:includes/estrutura/sidenav.cfm": "7fbcdf1b3e5648a823cb4cdd25f4b7f027f220230c2bf813cb288b4ebc5e2641",
+    "news:services/openaiUsage/Observer.cfc": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+    "news:services/openaiUsage/Pricing.cfc": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+    "news:services/openaiUsage/Catalog.cfc": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+    "news:services/openaiUsage/.htaccess": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+    "news:inc/article_summary_provider.cfc": "00cbfcfe7876d07715aef753352abe01b51b681f206cfd15754b9ec0e34535fb",
+    "news:inc/openai_client.cfc": "526891baf87944dc0df78cb5dc0c055b1be9c8e49f398d41069b22360919d2a9",
+    "news:inc/news_audio_provider.cfc": "694d4ecf150a5fb68c522cb04f865cd629913587597e5af8981834b2fb415365",
+    "rr:services/openaiUsage/Observer.cfc": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+    "rr:services/openaiUsage/Pricing.cfc": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+    "rr:services/openaiUsage/Catalog.cfc": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+    "rr:services/openaiUsage/.htaccess": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+    "rr:services/VickyAgentService.cfc": "849f6476dd51dc071a767ba6e636903bef6152410569c6766297278b10e3a80d",
+    "business:administracao/consumo-openai/index.cfm": "c7b4f10a645a25d42f27c7413d6001672a159501c7a579054eeb06d89bdac2c2",
+    "business:administracao/consumo-openai/includes/view.cfm": "6c23a07143b624974e831b0b6150c5aca9aaea7757f9911cdcbc32f7840ddf5b",
+    "business:administracao/consumo-openai/includes/backend.cfm": "e4cf6b64211ce3c426b9d5323d011280937ec4617afa45b0c897a4c8291f4c8d",
+    "business:administracao/consumo-openai/assets/usage.js": "f2d1eb1c1ed60b12d45d49db23f9c5264d48c0e880a13cc776761b9f6a01a7e4",
+    "business:administracao/consumo-openai/assets/usage.css": "0538e8fa0a3ab383069b3e246e59dfa3578547cf0b6a0d16676b520e664083a8"
+  },
+  "preserved_files": {
+    "services/geocoding/config.cfm": "599e84f0d7ee0021b4b8a855f8c4c832fe082d0cc899b24cba5bc943c1e168dc",
+    "services/geocoding/LocationPolicy.cfc": "15cda122b659680cc0a939aeb6a26fa733299c3b9b92a82326932a4d1fd4451a",
+    "services/geocoding/EnrichmentPolicy.cfc": "0bf074c7bbec161701c6f62ea6485ed47b71c014d140cea0e78a63e181eb724a",
+    "administracao/geolocalizacao/includes/radar_view.cfm": "f6b6e699df1b656436c1639327fa49896831bd609d51050d01885e75895b1e98",
+    "api/eventos/geolocalizar.cfm": "8251b99a054a0e65add2971a4baca30b234dce01f8a745588fd9936eea315457",
+    "services/geocoding/DocumentReader.cfc": "7beaa29b8a8abd3be83491d7cb43e76c98d98105e5f26531960ae709f3dc0d9b",
+    "services/geocoding/Store.cfc": "04754874562ec47c2e6b1101213dd5229573f142c934d3e58389a6a0567c2e64",
+    "services/geocoding/ReviewInput.cfc": "f46338c0c60ed526debafe020d279581fed8f2d60b40fed3e8046907da199910",
+    "services/geocoding/EnrichmentStore.cfc": "188ee5f1b7b75f2a0b18d0c3da00ebc1200ef296eefd88c7c4f3eb0f6fca4ea1",
+    "services/geocoding/LocationStore.cfc": "007d2d8febcb222bc0c2aaed4af95edfa333fc02c4a15b9c1100e03b7846a886",
+    "services/geocoding/LocationWorker.cfc": "b4ffd530acbf2ae276a9fdfe592612dfeb789d39c0d176348a169cb49d3d95b8",
+    "services/geocoding/ReviewGuide.cfc": "a927038095c0506cbfb368708df63b429546b95160baa9ba67d69fdc40d87c83",
+    "administracao/geolocalizacao/includes/review_guide_view.cfm": "4c78c8d69f3e4024a16f40a2ce7b70765c2b3ce0a6ec4691ecc00b0397a4783e",
+    "administracao/geolocalizacao/assets/review-guide.css": "fd96006ff6732d4cd619cce05077dd9c7e0ae6639a7d961c700ebcd0d300f777",
+    "administracao/geolocalizacao/includes/backend.cfm": "75da6232ae75ac00446e467f1d858e1fe6f615aa76aa916f4123856b05abac07",
+    "administracao/geolocalizacao/includes/view.cfm": "e215a959e0a1438db143bfae3799ed8c29b03a8a2e8607bded92af08447933d9",
+    "administracao/geolocalizacao/assets/geocoding.js": "8457e30f9fac88d0534ff3981b7c2b37e0f60a38511e292db3e823b39c00a6c7",
+    "administracao/geolocalizacao/index.cfm": "420bf253bc9ca663c16554df6f47196715fe7aa8ac4cd9e7071c4948c6b67ebc",
+    "eventos/includes/backend/event_delegation.cfm": "4784c5125e2995114926bf67efbcab46cb791173a5a3d05c0fa07dcaaa4996ab",
+    "eventos/includes/backend/backend_evento_edicao.cfm": "320c4b14449d06f70ea5e69871a7d09ce124c363d7374cf16d31a5b81fb3c971",
+    "services/EventLocationPolicy.cfc": "c3204de0004a233300954a534b88dfc15c3e882f5147d3424817fa36e2aef951",
+    "eventos/includes/event_location_fields.cfm": "57a2a61ab36dd948294b803cf7830cab14a8f180fdcd9360af53ff4484656aa5",
+    "eventos/assets/event-location.js": "9d761cb3a4dc1f16262f209e087ab50652293c4fda51132aa8960de14bafd603",
+    "eventos/includes/event_location_error.cfm": "cdb9344724a6ce7787125b79221ec803774278251b8829d4c3379a059b8eb8b5",
+    "eventos/form_edicao.cfm": "9d967cd92d2474e60e977ded28a3840ddc8c95804166c3265b232a2d1b1b319f",
+    "eventos/includes/backend/event_mutations.cfm": "d3af3de821c3a9b5a39f33853153e7eb03823cf98a04442dad065d39cbda832c",
+    "eventos/includes/localizacoes_confirmadas.cfm": "90dda79d0ef500908be019998d461f1c1cc9003f6212cbfccc46bdac1b5c0a44",
+    "eventos/home.cfm": "787d58b6b8a765e4c9dad89df8ecc94eb95472f9b6a6de63913a06b127245771"
+  },
+  "previous_publications": [
+    {
+      "backup": "/var/backups/business-openai-usage-i5djyp0_",
+      "manifest": {
+        "business:services/openaiUsage/Observer.cfc": {
+          "before": null,
+          "after": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46"
+        },
+        "business:services/openaiUsage/Pricing.cfc": {
+          "before": null,
+          "after": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a"
+        },
+        "business:services/openaiUsage/Catalog.cfc": {
+          "before": null,
+          "after": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89"
+        },
+        "business:services/openaiUsage/.htaccess": {
+          "before": null,
+          "after": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668"
+        },
+        "business:services/openaiUsage/Access.cfc": {
+          "before": null,
+          "after": "14dc087956c524e0f2df64f70e7164e9cc714b99e7768d3cf1b698d4b53022a4"
+        },
+        "business:services/openaiUsage/Store.cfc": {
+          "before": null,
+          "after": "0081814703db68ac9e10681799cf61632d87f0053e90527f276aae4619196368"
+        },
+        "business:services/openaiUsage/Legacy.cfc": {
+          "before": null,
+          "after": "cca66af67f2146ad8fd3ae222385152dca908ac3f4a682f7cdf4420cd8e361ad"
+        },
+        "business:services/geocoding/AIClient.cfc": {
+          "before": "fb889793d46d135c3ebfdf53bcda4763d20a9be0eadc168896107dff2ff714aa",
+          "after": "5b8c6617bc3f652e04421c27e05cd89e698d516cf262335d229daa11447fca7c"
+        },
+        "business:services/EventDescriptionRewriteService.cfc": {
+          "before": "c0f2226025573b8380971e773eb715965bca32b331a562c2af14a95fd5cffa45",
+          "after": "b657b69d68a816355879580bc732fef5124c055cf3878a0d43a511efff09c288"
+        },
+        "business:administracao/ai-mails/includes/ai.cfm": {
+          "before": "b41b39d4c89b2ecfa14c133b8e46fb4d716c13167e0f32e3aec2fe7861af93d1",
+          "after": "76605fa003a5979d0a7f2f4fbeac11e0001c5b841789ce4ceed6e2d3c0460755"
+        },
+        "business:helpdesk/includes/HelpdeskAI.cfc": {
+          "before": "b813ee0e11948b582a88938dc31b1ebb02158d2b767bc8c55363c7623aca3cee",
+          "after": "b22b237b1970ac300b80c157cb5445a29419ad2c7ada4acbd7c18beb2bb6aa81"
+        },
+        "business:includes/estrutura/sidenav.cfm": {
+          "before": "0189d264f87aa8efc949dbb5e8402fb64f998a0152090b1164247891c0682135",
+          "after": "b271c30dee527575a7d62669bae40505a46fb77c2b14bff83debd29bbfcf40de"
+        },
+        "news:services/openaiUsage/Observer.cfc": {
+          "before": null,
+          "after": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46"
+        },
+        "news:services/openaiUsage/Pricing.cfc": {
+          "before": null,
+          "after": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a"
+        },
+        "news:services/openaiUsage/Catalog.cfc": {
+          "before": null,
+          "after": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89"
+        },
+        "news:services/openaiUsage/.htaccess": {
+          "before": null,
+          "after": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668"
+        },
+        "news:inc/article_summary_provider.cfc": {
+          "before": "7f500d536bd91ed51a11b8e6cb95c2dc46e8537b50f33dba2722093ed6980198",
+          "after": "00cbfcfe7876d07715aef753352abe01b51b681f206cfd15754b9ec0e34535fb"
+        },
+        "news:inc/openai_client.cfc": {
+          "before": "b02df7087290be95561ab0199626d79a8b9807d3dc0ed317d8bf1e7fca5a1797",
+          "after": "526891baf87944dc0df78cb5dc0c055b1be9c8e49f398d41069b22360919d2a9"
+        },
+        "news:inc/news_audio_provider.cfc": {
+          "before": "19cd193cb7ba55c1768c0415d66c75e1d96646e17ee7a4c33ca8e714eded52c6",
+          "after": "694d4ecf150a5fb68c522cb04f865cd629913587597e5af8981834b2fb415365"
+        },
+        "rr:services/openaiUsage/Observer.cfc": {
+          "before": null,
+          "after": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46"
+        },
+        "rr:services/openaiUsage/Pricing.cfc": {
+          "before": null,
+          "after": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a"
+        },
+        "rr:services/openaiUsage/Catalog.cfc": {
+          "before": null,
+          "after": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89"
+        },
+        "rr:services/openaiUsage/.htaccess": {
+          "before": null,
+          "after": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668"
+        },
+        "rr:services/VickyAgentService.cfc": {
+          "before": "214188c412f9cbb1443a4a830801cdc7104024fc5c4d342ec33a90abe3b9dfa3",
+          "after": "849f6476dd51dc071a767ba6e636903bef6152410569c6766297278b10e3a80d"
+        },
+        "business:administracao/consumo-openai/index.cfm": {
+          "before": null,
+          "after": "c7b4f10a645a25d42f27c7413d6001672a159501c7a579054eeb06d89bdac2c2"
+        },
+        "business:administracao/consumo-openai/includes/view.cfm": {
+          "before": null,
+          "after": "6c23a07143b624974e831b0b6150c5aca9aaea7757f9911cdcbc32f7840ddf5b"
+        },
+        "business:administracao/consumo-openai/includes/backend.cfm": {
+          "before": null,
+          "after": "7e7d905a5583c8d6a5143280da4cfba542076c4871c469331e7f3dadf3591b8a"
+        },
+        "business:administracao/consumo-openai/assets/usage.js": {
+          "before": null,
+          "after": "f2d1eb1c1ed60b12d45d49db23f9c5264d48c0e880a13cc776761b9f6a01a7e4"
+        },
+        "business:administracao/consumo-openai/assets/usage.css": {
+          "before": null,
+          "after": "0538e8fa0a3ab383069b3e246e59dfa3578547cf0b6a0d16676b520e664083a8"
+        }
+      }
+    },
+    {
+      "backup": "/var/backups/business-openai-usage-oylx7uml",
+      "manifest": {
+        "business:services/openaiUsage/Observer.cfc": {
+          "before": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+          "after": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46"
+        },
+        "business:services/openaiUsage/Pricing.cfc": {
+          "before": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+          "after": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a"
+        },
+        "business:services/openaiUsage/Catalog.cfc": {
+          "before": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+          "after": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89"
+        },
+        "business:services/openaiUsage/.htaccess": {
+          "before": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+          "after": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668"
+        },
+        "business:services/openaiUsage/Access.cfc": {
+          "before": "14dc087956c524e0f2df64f70e7164e9cc714b99e7768d3cf1b698d4b53022a4",
+          "after": "14dc087956c524e0f2df64f70e7164e9cc714b99e7768d3cf1b698d4b53022a4"
+        },
+        "business:services/openaiUsage/Store.cfc": {
+          "before": "0081814703db68ac9e10681799cf61632d87f0053e90527f276aae4619196368",
+          "after": "0081814703db68ac9e10681799cf61632d87f0053e90527f276aae4619196368"
+        },
+        "business:services/openaiUsage/Legacy.cfc": {
+          "before": "cca66af67f2146ad8fd3ae222385152dca908ac3f4a682f7cdf4420cd8e361ad",
+          "after": "cca66af67f2146ad8fd3ae222385152dca908ac3f4a682f7cdf4420cd8e361ad"
+        },
+        "business:services/geocoding/AIClient.cfc": {
+          "before": "5b8c6617bc3f652e04421c27e05cd89e698d516cf262335d229daa11447fca7c",
+          "after": "5b8c6617bc3f652e04421c27e05cd89e698d516cf262335d229daa11447fca7c"
+        },
+        "business:services/EventDescriptionRewriteService.cfc": {
+          "before": "b657b69d68a816355879580bc732fef5124c055cf3878a0d43a511efff09c288",
+          "after": "b657b69d68a816355879580bc732fef5124c055cf3878a0d43a511efff09c288"
+        },
+        "business:administracao/ai-mails/includes/ai.cfm": {
+          "before": "76605fa003a5979d0a7f2f4fbeac11e0001c5b841789ce4ceed6e2d3c0460755",
+          "after": "76605fa003a5979d0a7f2f4fbeac11e0001c5b841789ce4ceed6e2d3c0460755"
+        },
+        "business:helpdesk/includes/HelpdeskAI.cfc": {
+          "before": "b22b237b1970ac300b80c157cb5445a29419ad2c7ada4acbd7c18beb2bb6aa81",
+          "after": "b22b237b1970ac300b80c157cb5445a29419ad2c7ada4acbd7c18beb2bb6aa81"
+        },
+        "business:includes/estrutura/sidenav.cfm": {
+          "before": "b271c30dee527575a7d62669bae40505a46fb77c2b14bff83debd29bbfcf40de",
+          "after": "7fbcdf1b3e5648a823cb4cdd25f4b7f027f220230c2bf813cb288b4ebc5e2641"
+        },
+        "news:services/openaiUsage/Observer.cfc": {
+          "before": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+          "after": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46"
+        },
+        "news:services/openaiUsage/Pricing.cfc": {
+          "before": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+          "after": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a"
+        },
+        "news:services/openaiUsage/Catalog.cfc": {
+          "before": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+          "after": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89"
+        },
+        "news:services/openaiUsage/.htaccess": {
+          "before": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+          "after": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668"
+        },
+        "news:inc/article_summary_provider.cfc": {
+          "before": "00cbfcfe7876d07715aef753352abe01b51b681f206cfd15754b9ec0e34535fb",
+          "after": "00cbfcfe7876d07715aef753352abe01b51b681f206cfd15754b9ec0e34535fb"
+        },
+        "news:inc/openai_client.cfc": {
+          "before": "526891baf87944dc0df78cb5dc0c055b1be9c8e49f398d41069b22360919d2a9",
+          "after": "526891baf87944dc0df78cb5dc0c055b1be9c8e49f398d41069b22360919d2a9"
+        },
+        "news:inc/news_audio_provider.cfc": {
+          "before": "694d4ecf150a5fb68c522cb04f865cd629913587597e5af8981834b2fb415365",
+          "after": "694d4ecf150a5fb68c522cb04f865cd629913587597e5af8981834b2fb415365"
+        },
+        "rr:services/openaiUsage/Observer.cfc": {
+          "before": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+          "after": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46"
+        },
+        "rr:services/openaiUsage/Pricing.cfc": {
+          "before": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+          "after": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a"
+        },
+        "rr:services/openaiUsage/Catalog.cfc": {
+          "before": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+          "after": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89"
+        },
+        "rr:services/openaiUsage/.htaccess": {
+          "before": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+          "after": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668"
+        },
+        "rr:services/VickyAgentService.cfc": {
+          "before": "849f6476dd51dc071a767ba6e636903bef6152410569c6766297278b10e3a80d",
+          "after": "849f6476dd51dc071a767ba6e636903bef6152410569c6766297278b10e3a80d"
+        },
+        "business:administracao/consumo-openai/index.cfm": {
+          "before": "c7b4f10a645a25d42f27c7413d6001672a159501c7a579054eeb06d89bdac2c2",
+          "after": "c7b4f10a645a25d42f27c7413d6001672a159501c7a579054eeb06d89bdac2c2"
+        },
+        "business:administracao/consumo-openai/includes/view.cfm": {
+          "before": "6c23a07143b624974e831b0b6150c5aca9aaea7757f9911cdcbc32f7840ddf5b",
+          "after": "6c23a07143b624974e831b0b6150c5aca9aaea7757f9911cdcbc32f7840ddf5b"
+        },
+        "business:administracao/consumo-openai/includes/backend.cfm": {
+          "before": "7e7d905a5583c8d6a5143280da4cfba542076c4871c469331e7f3dadf3591b8a",
+          "after": "e4cf6b64211ce3c426b9d5323d011280937ec4617afa45b0c897a4c8291f4c8d"
+        },
+        "business:administracao/consumo-openai/assets/usage.js": {
+          "before": "f2d1eb1c1ed60b12d45d49db23f9c5264d48c0e880a13cc776761b9f6a01a7e4",
+          "after": "f2d1eb1c1ed60b12d45d49db23f9c5264d48c0e880a13cc776761b9f6a01a7e4"
+        },
+        "business:administracao/consumo-openai/assets/usage.css": {
+          "before": "0538e8fa0a3ab383069b3e246e59dfa3578547cf0b6a0d16676b520e664083a8",
+          "after": "0538e8fa0a3ab383069b3e246e59dfa3578547cf0b6a0d16676b520e664083a8"
+        }
+      }
+    }
+  ]
+}

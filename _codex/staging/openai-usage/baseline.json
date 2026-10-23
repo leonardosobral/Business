@@ -1,0 +1,17 @@
+{
+  "business": {
+    "services/geocoding/AIClient.cfc": "fb889793d46d135c3ebfdf53bcda4763d20a9be0eadc168896107dff2ff714aa",
+    "services/EventDescriptionRewriteService.cfc": "c0f2226025573b8380971e773eb715965bca32b331a562c2af14a95fd5cffa45",
+    "administracao/ai-mails/includes/ai.cfm": "b41b39d4c89b2ecfa14c133b8e46fb4d716c13167e0f32e3aec2fe7861af93d1",
+    "helpdesk/includes/HelpdeskAI.cfc": "b813ee0e11948b582a88938dc31b1ebb02158d2b767bc8c55363c7623aca3cee",
+    "includes/estrutura/sidenav.cfm": "0189d264f87aa8efc949dbb5e8402fb64f998a0152090b1164247891c0682135"
+  },
+  "news": {
+    "inc/article_summary_provider.cfc": "7f500d536bd91ed51a11b8e6cb95c2dc46e8537b50f33dba2722093ed6980198",
+    "inc/openai_client.cfc": "b02df7087290be95561ab0199626d79a8b9807d3dc0ed317d8bf1e7fca5a1797",
+    "inc/news_audio_provider.cfc": "19cd193cb7ba55c1768c0415d66c75e1d96646e17ee7a4c33ca8e714eded52c6"
+  },
+  "rr": {
+    "services/VickyAgentService.cfc": "214188c412f9cbb1443a4a830801cdc7104024fc5c4d342ec33a90abe3b9dfa3"
+  }
+}

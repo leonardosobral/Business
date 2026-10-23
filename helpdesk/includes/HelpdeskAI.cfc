@@ -126,13 +126,15 @@ private boolean function applicableDocument(required string question,required st
 }
 
 private struct function requestOpenAI(required string path,required struct body,required numeric timeout) {
-    var response={};
+    var response={};var usageStarted=getTickCount();
+    try{
     cfhttp(method="post",url="https://api.openai.com/v1/"&arguments.path,result="response",timeout=arguments.timeout,throwOnError=false,redirect=false) {
         cfhttpparam(type="header",name="Authorization",value="Bearer "&variables.apiKey);
         cfhttpparam(type="header",name="Content-Type",value="application/json");
         cfhttpparam(type="header",name="Accept",value="application/json");
         cfhttpparam(type="body",value=serializeJSON(arguments.body));
     }
+    }finally{try{new services.openaiUsage.Observer().observe("helpdesk",arguments.path EQ "responses" ? "draft" : "retrieval",arguments.body.model ?: "unknown",response,getTickCount()-usageStarted);}catch(any telemetryUnavailable){}}
     var code=structKeyExists(response,"statusCode")?val(response.statusCode):0;
     if (code<200 || code>=300 || !structKeyExists(response,"fileContent") || !isJSON(toString(response.fileContent))) {
         // Nunca registra texto do chamado, chave, corpo do provedor ou documento.

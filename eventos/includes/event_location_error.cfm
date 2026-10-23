@@ -1,0 +1,3 @@
+<cfif compareNoCase(getBaseTemplatePath(),getCurrentTemplatePath()) EQ 0><cfheader statuscode="403"><cfabort></cfif>
+<cfif NOT structKeyExists(VARIABLES,"eventLocationErrorMessage")><cfexit method="exittemplate"></cfif>
+<cfoutput><section class="alert alert-warning" role="alert"><h2 class="h6">Confira a localização do evento</h2><p>#encodeForHTML(VARIABLES.eventLocationErrorMessage)#</p><p class="small">Nenhuma alteração foi salva. Use Voltar no navegador para corrigir os campos preenchidos.</p><cfif reFind('^[0-9]{1,10}$',VARIABLES.eventLocationErrorEventId ?: '')><a class="btn btn-sm btn-outline-light" href="/eventos/?id_evento=#encodeForHTMLAttribute(VARIABLES.eventLocationErrorEventId)#&amp;sessao=dados">Reabrir cadastro do evento</a></cfif></section></cfoutput>

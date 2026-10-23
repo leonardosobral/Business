@@ -826,6 +826,12 @@
             </li>
 
             <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ '/administracao/consumo-openai/'>link-warning</cfif>" href="/administracao/consumo-openai/" data-menu-aliases="openai consumo tokens custos créditos ia inteligência artificial">
+                    <i class="fa-solid fa-gauge-high fa-fw me-3"></i><span>Consumo OpenAI</span>
+                </a>
+            </li>
+
+            <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/bi/">link-warning</cfif>" href="/bi/" data-menu-aliases="business intelligence indicadores relatórios dados">
                     <i class="fa-solid fa-chart-column fa-fw me-3"></i><span>Business Intelligence</span>
                 </a>

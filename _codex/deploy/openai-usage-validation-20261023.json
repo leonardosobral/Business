@@ -1,0 +1,59 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "app": "business",
+      "case": "observer",
+      "status": "200",
+      "ok": true,
+      "output": "{\"RECORDS\":2690.0,\"DAILY_RECONCILES\":true,\"TOKENS\":2527243.0,\"DETAILED\":1.0,\"UNKNOWN\":1937.0}USAGE_RUNTIME_PASSED "
+    },
+    {
+      "app": "business",
+      "case": "non-admin",
+      "status": "403",
+      "ok": true,
+      "output": "Acesso restrito a administradores globais."
+    },
+    {
+      "app": "business",
+      "case": "account-context",
+      "status": "403",
+      "ok": true,
+      "output": "Acesso restrito a administradores globais."
+    },
+    {
+      "app": "business",
+      "case": "delegated",
+      "status": "403",
+      "ok": true,
+      "output": "Acesso restrito a administradores globais."
+    },
+    {
+      "app": "business",
+      "case": "method",
+      "status": "405",
+      "ok": true,
+      "output": ""
+    },
+    {
+      "app": "news",
+      "case": "observer",
+      "status": "200",
+      "ok": true,
+      "output": "USAGE_RUNTIME_PASSED"
+    },
+    {
+      "app": "rr",
+      "case": "observer",
+      "status": "200",
+      "ok": true,
+      "output": "USAGE_RUNTIME_PASSED "
+    }
+  ],
+  "archive": "/var/backups/openai-usage-validation-x70qw4ld",
+  "stages_archived": true,
+  "paid_calls": 0,
+  "production_journal_modified_by_test": false,
+  "checked_at": "2026-10-23T15:07:57.957492+00:00"
+}

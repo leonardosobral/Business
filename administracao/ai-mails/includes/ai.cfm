@@ -1,12 +1,14 @@
 <cfscript>
 function mailOpenAI(required string path,required struct body,numeric timeout=45) {
     if(!structKeyExists(application,"vickyKnowledge") || !application.vickyKnowledge.configured) mailFail("Configure a integração OpenAI no Business.");
-    var r={};
+    var r={};var usageStarted=getTickCount();
+    try{
     cfhttp(method="POST",url="https://api.openai.com/v1/"&arguments.path,result="r",timeout=arguments.timeout,throwOnError=false,redirect=false) {
         cfhttpparam(type="header",name="Authorization",value="Bearer "&application.vickyKnowledge.apiKey);
         cfhttpparam(type="header",name="Content-Type",value="application/json");
         cfhttpparam(type="body",value=serializeJSON(mailWire(arguments.body)));
     }
+    }finally{try{new services.openaiUsage.Observer().observe("ai-mails",arguments.path EQ "responses" ? (structKeyExists(arguments.body,"text") AND findNoCase("batch",arguments.body.text.format.name ?: "") ? "batch" : "analyze") : "retrieval",arguments.body.model ?: "unknown",r,getTickCount()-usageStarted);}catch(any telemetryUnavailable){}}
     var status=structKeyExists(r,"statusCode")?val(r.statusCode):0;
     var responseText=structKeyExists(r,"fileContent")?toString(r.fileContent):"";
     var responseData=isJSON(responseText)?deserializeJSON(responseText):{};
