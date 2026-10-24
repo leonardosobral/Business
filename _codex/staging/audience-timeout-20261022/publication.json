@@ -1,0 +1,13 @@
+{
+  "backup": "/var/backups/business-audience-timeout-20261022-pqgvqn9_",
+  "files": {
+    "portal/audiencia/queries/filter.sql": {
+      "before": "139bbacf39f268a688dcb399d14af3286c684d5a6877af0784b3e52082c28676",
+      "after": "b9e9ca1e9978c4d0e3517010b73b312688e2b57282a26500e1317ca1000a9e02"
+    },
+    "portal/audiencia/index.cfm": {
+      "before": "953a7ec442c874814031860459bd38d369a00dc484904dd1f9c8750794a7e488",
+      "after": "3109fe5f1b0028366942e2de06f677822dbcb53394af542dcaa5881381e742b7"
+    }
+  }
+}

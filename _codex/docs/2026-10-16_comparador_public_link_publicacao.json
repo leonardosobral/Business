@@ -1,0 +1,78 @@
+{
+  "release": "20261017T015348Z-5ab71eb5",
+  "backup": "/var/backups/business-comparador-admin-link-20261016/20261017T015348Z-5ab71eb5",
+  "status": "published_verified",
+  "runtime_paths": [
+    "administracao/comparador/home.cfm"
+  ],
+  "remote": {
+    "status": "published",
+    "created_at": "2026-10-17T01:53:50.458694+00:00",
+    "root": "/var/www/business.roadrunners.run",
+    "backup": "/var/backups/business-comparador-admin-link-20261016/20261017T015348Z-5ab71eb5",
+    "files": {
+      "administracao/comparador/home.cfm": {
+        "before": "96775d9c70a61405294e3ac598a355f3cf162ff6deca37e3b41a78eafc4de0ff",
+        "after": "c982cd4a39fff6d691c1ba918540e1ad623079ef99c4b57662b63ecf442c5fd8",
+        "attributes": {
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        }
+      }
+    },
+    "changed": [
+      "administracao/comparador/home.cfm"
+    ],
+    "created_directories": [],
+    "published_at": "2026-10-17T01:53:50.463223+00:00"
+  },
+  "hash_verification": {
+    "status": "hashes_verified",
+    "files": {
+      "administracao/comparador/home.cfm": "c982cd4a39fff6d691c1ba918540e1ad623079ef99c4b57662b63ecf442c5fd8"
+    }
+  },
+  "smokes": [
+    {
+      "name": "anonymous_page",
+      "path": "/administracao/comparador/",
+      "status": 302,
+      "location": "/",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "passed": true
+    },
+    {
+      "name": "direct_backend",
+      "path": "/administracao/comparador/includes/backend.cfm",
+      "status": 403,
+      "location": "",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "passed": true
+    },
+    {
+      "name": "direct_view",
+      "path": "/administracao/comparador/home.cfm",
+      "status": 403,
+      "location": "",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "passed": true
+    },
+    {
+      "name": "cfc_nonremote",
+      "path": "/services/ComparadorAdminService.cfc?method=offerUrl&value=https%3A%2F%2Fexample.invalid%2Fcomparador-probe&returnformat=json",
+      "status": 500,
+      "location": "",
+      "body_sha256": "8b68544338a72f4bae22e9cc5f0d2161940e12cbf911320bc6b760da3c0f1672",
+      "passed": true
+    }
+  ],
+  "verified_at": "2026-10-17T01:53:50.280445+00:00",
+  "integrated_runtime_hashes": {
+    "services/ComparadorAdminService.cfc": "21d66a79ea823e7aed1268269115230598690088f081a0205a85d102c3a2f7e7",
+    "administracao/comparador/index.cfm": "43cc251b80d7fe57bf83efe98667074ca4d7dfae646fd5b821786ec0735406c2",
+    "administracao/comparador/home.cfm": "c982cd4a39fff6d691c1ba918540e1ad623079ef99c4b57662b63ecf442c5fd8",
+    "administracao/comparador/includes/backend.cfm": "fb38e9153eb1d5e21e4fe26a70c09920014d19e2aa0d19418135e7cb6654f043",
+    "includes/estrutura/sidenav.cfm": "cdcf011b6251419ddfffbada9ff578f6ec3699853c2d9b94276830621070a70d"
+  }
+}

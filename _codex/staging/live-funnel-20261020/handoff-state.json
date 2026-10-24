@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-20",
+  "runtime_publication": {
+    "targets": 12,
+    "verified": true,
+    "backup": "/var/backups/rr-live-funnel.a466afddb381"
+  },
+  "public_ui": {
+    "coupon": "rendered; copy-success feedback; actual clipboard contents not independently verified",
+    "city_filter": "11 default -> Rio1 -> all11 verified",
+    "niteroi_date": "05/12/2026 verified in public list",
+    "mobile_screenshot": "live-coupon-production-mobile.png"
+  },
+  "measurement_verification": {
+    "production_service_database": true,
+    "fixture_rollback_rows": 0,
+    "public_http_transport_tested": false
+  },
+  "ads": {
+    "replacement_active": true,
+    "old_smart_active": false,
+    "campaign": "RR | LIVE 2026 | Pesquisa | Etapas e cupom",
+    "import_applied": true,
+    "groups": 11,
+    "ads": 11,
+    "keywords": 55,
+    "budget_daily_brl": 20,
+    "bid_strategy": "Maximize clicks",
+    "max_cpc_brl": 0.5,
+    "geo": "11 cities; presence only saved",
+    "network": "Google Search only",
+    "ai_url_expansion": false,
+    "next": null,
+    "blocker": null,
+    "status": "Qualificada (aprendizado)",
+    "ads_status": "11 Ativado / Qualificada; Ad strength Pendente",
+    "keywords_status": "55 palavras-chave ativadas confirmed by UI",
+    "max_cpc_verified": true,
+    "geo_presence_verified": true,
+    "conversion_goal": "Campaign-specific Outbound clicks",
+    "proof": "live-search-active.png"
+  },
+  "excluded_candidates": [
+    "Campinas occurred18/10",
+    "Ribeirao Preto48557 lacks circuit/coupon",
+    "Fortaleza duplicate45366; use37570"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "server": "172.233.2.76",
+  "backup": "/var/backups/business-cron-reload-20261012T122956Z-nbbttja7",
+  "before_sha256": {
+    "Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+    "bi/Application.cfc": "44c59465704a9770e15e857d2a7e347ebc4036d46ace208ac265f020459e4385",
+    "config/business.local.cfm": "a467f589dc0b1af86624c2cf1ab207ab80d0ee5f089d430f0b114c32f8c5965a",
+    "cron-jobs/runner.cfm": "a5bba9d1e900655865811480c5db6c419114c1aed002d67b269467b7e33c782d",
+    "includes/backend/cron_jobs_service.cfm": "cfb9f9eec5fe7272e3dc07217c002dae5748c6e78b00532eec2c26e411b142d4"
+  },
+  "before": {
+    "curl_rc": 0,
+    "http": "503",
+    "json": {
+      "MESSAGE": "Runner token nao configurado no Business.",
+      "STATUS": "not_configured",
+      "SUCCESS": false
+    }
+  },
+  "reset": {
+    "curl_rc": 0,
+    "http": "200",
+    "body_bytes": 0
+  },
+  "after_local": {
+    "curl_rc": 0,
+    "http": "401",
+    "json": {
+      "MESSAGE": "Token invalido.",
+      "STATUS": "unauthorized",
+      "SUCCESS": false
+    }
+  },
+  "after_public": {
+    "curl_rc": 0,
+    "http": "401",
+    "json": {
+      "MESSAGE": "Token invalido.",
+      "STATUS": "unauthorized",
+      "SUCCESS": false
+    }
+  },
+  "runtime_files_unchanged": true,
+  "crontab_unchanged": true,
+  "checked_at_utc": "2026-10-12T12:29:57.235063+00:00"
+}

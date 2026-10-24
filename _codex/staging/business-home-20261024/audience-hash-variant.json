@@ -1,0 +1,201 @@
+{
+  "CASES": [
+    {
+      "ELAPSED_MS": 8.0,
+      "DAYS": 30,
+      "PLAN": [
+        {
+          "JIT": {
+            "Functions": 17,
+            "Options": {
+              "Expressions": true,
+              "Inlining": false,
+              "Deforming": true,
+              "Optimization": false
+            }
+          },
+          "Plan": {
+            "Join Type": "Inner",
+            "Plans": [
+              {
+                "Partial Mode": "Simple",
+                "Plans": [
+                  {
+                    "Planned Partitions": 0,
+                    "Plans": [
+                      {
+                        "Plans": [
+                          {
+                            "Planned Partitions": 0,
+                            "Plans": [
+                              {
+                                "Plan Width": 24,
+                                "Relation Name": "events",
+                                "Filter": "((NOT is_internal) AND (environment = 'prod'::text) AND (occurred_at <= now()) AND (occurred_at >= ((((((now() AT TIME ZONE 'America/Sao_Paulo'::text))::date - 59))::timestamp without time zone AT TIME ZONE 'America/Sao_Paulo'::text) - '1 day'::interval)))",
+                                "Plan Rows": 414139,
+                                "Alias": "e",
+                                "Async Capable": false,
+                                "Parent Relationship": "Outer",
+                                "Parallel Aware": true,
+                                "Total Cost": 63803.38,
+                                "Node Type": "Seq Scan",
+                                "Startup Cost": 0.0
+                              }
+                            ],
+                            "Plan Rows": 12375,
+                            "Strategy": "Hashed",
+                            "Async Capable": false,
+                            "Parent Relationship": "Outer",
+                            "Parallel Aware": false,
+                            "Total Cost": 88775.46,
+                            "Partial Mode": "Partial",
+                            "Plan Width": 18,
+                            "Group Key": [
+                              "e.visitor_id"
+                            ],
+                            "Node Type": "Aggregate",
+                            "Startup Cost": 88651.71
+                          }
+                        ],
+                        "Plan Width": 18,
+                        "Single Copy": false,
+                        "Plan Rows": 24750,
+                        "Async Capable": false,
+                        "Workers Planned": 2,
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Total Cost": 92250.46,
+                        "Node Type": "Gather",
+                        "Startup Cost": 89651.71
+                      }
+                    ],
+                    "Plan Rows": 12375,
+                    "Strategy": "Hashed",
+                    "Async Capable": false,
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Total Cost": 92559.84,
+                    "Partial Mode": "Finalize",
+                    "Plan Width": 18,
+                    "Group Key": [
+                      "e.visitor_id"
+                    ],
+                    "Node Type": "Aggregate",
+                    "Startup Cost": 92436.09
+                  }
+                ],
+                "Plan Width": 16,
+                "Plan Rows": 1,
+                "Strategy": "Plain",
+                "Async Capable": false,
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 92745.47,
+                "Node Type": "Aggregate",
+                "Startup Cost": 92745.46
+              },
+              {
+                "Partial Mode": "Simple",
+                "Plans": [
+                  {
+                    "Plans": [
+                      {
+                        "Plans": [
+                          {
+                            "Plan Width": 37,
+                            "Relation Name": "events",
+                            "Filter": "((NOT is_internal) AND (environment = 'prod'::text) AND (occurred_at <= now()) AND (event_kind = ANY ('{page_view,content_open,video_start,outbound_click}'::text[])) AND (occurred_at >= ((((((now() AT TIME ZONE 'America/Sao_Paulo'::text))::date - 59))::timestamp without time zone AT TIME ZONE 'America/Sao_Paulo'::text) - '1 day'::interval)))",
+                            "Plan Rows": 71425,
+                            "Alias": "e_1",
+                            "Async Capable": false,
+                            "Parent Relationship": "Outer",
+                            "Parallel Aware": true,
+                            "Total Cost": 66016.49,
+                            "Node Type": "Seq Scan",
+                            "Startup Cost": 0.0
+                          }
+                        ],
+                        "Plan Width": 37,
+                        "Plan Rows": 71425,
+                        "Sort Key": [
+                          "e_1.page_view_id"
+                        ],
+                        "Async Capable": false,
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Total Cost": 71953.39,
+                        "Node Type": "Sort",
+                        "Startup Cost": 71774.83
+                      }
+                    ],
+                    "Plan Width": 37,
+                    "Plan Rows": 171420,
+                    "Async Capable": false,
+                    "Workers Planned": 2,
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Total Cost": 92739.53,
+                    "Node Type": "Gather Merge",
+                    "Startup Cost": 72774.85
+                  }
+                ],
+                "Plan Width": 33,
+                "Plan Rows": 1,
+                "Strategy": "Plain",
+                "Async Capable": false,
+                "Parent Relationship": "Inner",
+                "Parallel Aware": false,
+                "Total Cost": 123595.15,
+                "Node Type": "Aggregate",
+                "Startup Cost": 123595.13
+              }
+            ],
+            "Plan Width": 49,
+            "Inner Unique": false,
+            "Plan Rows": 1,
+            "Async Capable": false,
+            "Parallel Aware": false,
+            "Total Cost": 216340.63,
+            "Node Type": "Nested Loop",
+            "Startup Cost": 216340.6
+          }
+        }
+      ],
+      "LOADED": true,
+      "NAME": "hash-plan"
+    },
+    {
+      "ELAPSED_MS": 1095.0,
+      "METRICS": {
+        "COMPARISON_READY": false,
+        "PAGEVIEWS": 26031,
+        "PREVIOUS_PAGEVIEWS": 27276,
+        "INTERACTIONS": 10082,
+        "PREVIOUS_VISITORS": 15208,
+        "PREVIOUS_INTERACTIONS": 9636,
+        "VISITORS": 12838
+      },
+      "DAYS": 7,
+      "LOADED": true,
+      "NAME": "hash"
+    },
+    {
+      "ELAPSED_MS": 1846.0,
+      "METRICS": {
+        "COMPARISON_READY": false,
+        "PAGEVIEWS": 94830,
+        "PREVIOUS_PAGEVIEWS": 25030,
+        "INTERACTIONS": 45896,
+        "PREVIOUS_VISITORS": 5531,
+        "PREVIOUS_INTERACTIONS": 10964,
+        "VISITORS": 38656
+      },
+      "DAYS": 30,
+      "LOADED": true,
+      "NAME": "hash"
+    }
+  ],
+  "read_only": true,
+  "runtime_files_changed": false,
+  "query_sha256": "08758e0c80ea1fa90ab6c6eafe026a62e39e5b04dfe3cb450cf6d9431c64802f"
+}

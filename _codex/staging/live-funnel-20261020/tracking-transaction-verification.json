@@ -1,0 +1,30 @@
+{
+  "same_database_transaction": true,
+  "all_internal": true,
+  "page_view_ids": [
+    "1fd5ba2f-2666-4ab7-9607-662491b0f03f",
+    "d03ae03d-0477-4792-aabf-a2d86918c1c1"
+  ],
+  "event_rows": 6,
+  "production_secret_read": false,
+  "real_persistence": true,
+  "circuit_rows": 2,
+  "deduplicated_rows": 8,
+  "verified": true,
+  "replay_accepted": 8.0,
+  "keys": [
+    "content_open:live_city_select:9999999998:all",
+    "content_open:live_city_select:9999999998:campinas-sp",
+    "content_open:live_coupon_copy_attempt:9999999999",
+    "content_open:live_coupon_copy_error:9999999999",
+    "content_open:live_coupon_copy_success:9999999999",
+    "content_open:live_coupon_viewable:9999999999",
+    "outbound_click:live_information:9999999999",
+    "outbound_click:live_registration:9999999999"
+  ],
+  "malformed_batches_rejected": 5.0,
+  "public_http_collector_tested": false,
+  "service_validation": true,
+  "rows_after_rollback": 0,
+  "deployed_service_sha256": "2ddbf42382d2d9eb54055907db222914db5cbb6ac112218e0d2972c6f003b92c"
+}

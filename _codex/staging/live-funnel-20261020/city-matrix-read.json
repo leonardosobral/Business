@@ -1,0 +1,794 @@
+{
+  "events": [
+    {
+      "routes": [
+        {
+          "date": "2026-11-01",
+          "distance": 5,
+          "unit": "km",
+          "id": 69617
+        }
+      ],
+      "id_evento": 37556,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-experience-jurer-2026",
+      "id_agrega_evento": 1731,
+      "coupons": [
+        {
+          "cupom": "ROADRUNNERS",
+          "tipo_evento": 1,
+          "qtd_limite_cupom": null,
+          "data_cadastro": "2025-01-13",
+          "data_validade_fim": "2026-12-31",
+          "id_cupom": 68,
+          "data_expiracao": "2025-12-31",
+          "id_evento_cupom": 4,
+          "data_validade_inicio": "2025-01-13",
+          "parceiro": "Live! Run XP",
+          "id_evento_agrega": 37556,
+          "valid_today": true,
+          "descricao": "Com este cupom você terá 15% de desconto na inscrição.",
+          "condicoes": "15%",
+          "data_cadastro_cupom_evento": "2025-01-13"
+        }
+      ],
+      "data_inicial": "2026-11-01",
+      "estado": "MS",
+      "data_final": "2026-11-01",
+      "nome_evento": "LIVE! RUN XP Bonito 2026",
+      "ativo": true,
+      "coupon_targets": [
+        {
+          "code": "ROADRUNNERS",
+          "active": true,
+          "id_cupom": 68,
+          "url": "https://www.appliveexperience.com.br/evento/live-experience-jurer-2026"
+        }
+      ],
+      "circuit_links": [
+        {
+          "tipo": "circuito",
+          "canonical_tag": "live-run-xp",
+          "agregador_tag": "live-run-xp"
+        }
+      ],
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live-experience-jurer-2026",
+      "tag": "2026-live-run-xp-bonito-2026",
+      "cidade": "Bonito",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-11-02",
+          "distance": 5,
+          "unit": "km",
+          "id": 61662
+        },
+        {
+          "date": "2026-11-02",
+          "distance": 10,
+          "unit": "km",
+          "id": 61663
+        },
+        {
+          "date": "2026-11-02",
+          "distance": 21,
+          "unit": "km",
+          "id": 61664
+        }
+      ],
+      "id_evento": 40833,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-rio-de-janeiro-2026",
+      "id_agrega_evento": null,
+      "coupons": [
+        {
+          "cupom": "ROADRUNNERS",
+          "tipo_evento": 1,
+          "qtd_limite_cupom": null,
+          "data_cadastro": "2025-01-13",
+          "data_validade_fim": "2026-12-31",
+          "id_cupom": 68,
+          "data_expiracao": "2025-12-31",
+          "id_evento_cupom": 4,
+          "data_validade_inicio": "2025-01-13",
+          "parceiro": "Live! Run XP",
+          "id_evento_agrega": 40833,
+          "valid_today": true,
+          "descricao": "Com este cupom você terá 15% de desconto na inscrição.",
+          "condicoes": "15%",
+          "data_cadastro_cupom_evento": "2025-01-13"
+        }
+      ],
+      "data_inicial": "2026-11-02",
+      "estado": "RJ",
+      "data_final": "2026-11-02",
+      "nome_evento": "LIVE! RUN XP Rio de Janeiro 2026",
+      "ativo": true,
+      "coupon_targets": [
+        {
+          "code": "ROADRUNNERS",
+          "active": true,
+          "id_cupom": 68,
+          "url": "https://www.appliveexperience.com.br/evento/live21k-rio-de-janeiro-2026"
+        }
+      ],
+      "circuit_links": [
+        {
+          "tipo": "circuito",
+          "canonical_tag": "live-run-xp",
+          "agregador_tag": "live-run-xp"
+        }
+      ],
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live21k-rio-de-janeiro-2026",
+      "tag": "2026-live-run-xp-rio-de-janeiro-2026-21k",
+      "cidade": "Rio de Janeiro",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-11-20",
+          "distance": 5,
+          "unit": "km",
+          "id": 54298
+        },
+        {
+          "date": "2026-11-20",
+          "distance": 10,
+          "unit": "km",
+          "id": 54299
+        },
+        {
+          "date": "2026-11-20",
+          "distance": 21,
+          "unit": "km",
+          "id": 54300
+        }
+      ],
+      "id_evento": 37570,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-fortaleza-2026",
+      "id_agrega_evento": null,
+      "coupons": [
+        {
+          "cupom": "ROADRUNNERS",
+          "tipo_evento": 1,
+          "qtd_limite_cupom": null,
+          "data_cadastro": "2025-01-13",
+          "data_validade_fim": "2026-12-31",
+          "id_cupom": 68,
+          "data_expiracao": "2025-12-31",
+          "id_evento_cupom": 4,
+          "data_validade_inicio": "2025-01-13",
+          "parceiro": "Live! Run XP",
+          "id_evento_agrega": 37570,
+          "valid_today": true,
+          "descricao": "Com este cupom você terá 15% de desconto na inscrição.",
+          "condicoes": "15%",
+          "data_cadastro_cupom_evento": "2025-01-13"
+        }
+      ],
+      "data_inicial": "2026-11-20",
+      "estado": "CE",
+      "data_final": "2026-11-20",
+      "nome_evento": "LIVE! RUN XP Fortaleza 2026",
+      "ativo": true,
+      "coupon_targets": [
+        {
+          "code": "ROADRUNNERS",
+          "active": true,
+          "id_cupom": 68,
+          "url": "https://www.liverun.com.br/etapa/live21k-fortaleza-2026"
+        }
+      ],
+      "circuit_links": [
+        {
+          "tipo": "circuito",
+          "canonical_tag": "live-run-xp",
+          "agregador_tag": "live-run-xp"
+        }
+      ],
+      "url_inscricao": "https://www.liverun.com.br/etapa/live21k-fortaleza-2026",
+      "tag": "2026-live-run-xp-fortaleza-2026-ii",
+      "cidade": "Fortaleza",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-11-20",
+          "distance": 21,
+          "unit": "km",
+          "id": 64286
+        },
+        {
+          "date": "2026-11-20",
+          "distance": 5,
+          "unit": "km",
+          "id": 64287
+        },
+        {
+          "date": "2026-11-20",
+          "distance": 10,
+          "unit": "km",
+          "id": 64288
+        }
+      ],
+      "id_evento": 45366,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-fortaleza-2026",
+      "id_agrega_evento": null,
+      "coupons": null,
+      "data_inicial": "2026-11-20",
+      "estado": "CE",
+      "data_final": "2026-11-20",
+      "nome_evento": "LIVE!21K - FORTALEZA 2026",
+      "ativo": true,
+      "coupon_targets": null,
+      "circuit_links": null,
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live21k-fortaleza-2026",
+      "tag": "2026-live21k-fortaleza-2026",
+      "cidade": "Fortaleza",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-11-20",
+          "distance": 5,
+          "unit": "km",
+          "id": 69621
+        },
+        {
+          "date": "2026-11-20",
+          "distance": 10,
+          "unit": "km",
+          "id": 69622
+        },
+        {
+          "date": "2026-11-20",
+          "distance": 21,
+          "unit": "km",
+          "id": 69623
+        }
+      ],
+      "id_evento": 40834,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-recife-2026",
+      "id_agrega_evento": null,
+      "coupons": [
+        {
+          "cupom": "ROADRUNNERS",
+          "tipo_evento": 1,
+          "qtd_limite_cupom": null,
+          "data_cadastro": "2025-01-13",
+          "data_validade_fim": "2026-12-31",
+          "id_cupom": 68,
+          "data_expiracao": "2025-12-31",
+          "id_evento_cupom": 4,
+          "data_validade_inicio": "2025-01-13",
+          "parceiro": "Live! Run XP",
+          "id_evento_agrega": 40834,
+          "valid_today": true,
+          "descricao": "Com este cupom você terá 15% de desconto na inscrição.",
+          "condicoes": "15%",
+          "data_cadastro_cupom_evento": "2025-01-13"
+        }
+      ],
+      "data_inicial": "2026-11-20",
+      "estado": "PE",
+      "data_final": "2026-11-20",
+      "nome_evento": "LIVE! RUN XP Recife 2026",
+      "ativo": true,
+      "coupon_targets": [
+        {
+          "code": "ROADRUNNERS",
+          "active": true,
+          "id_cupom": 68,
+          "url": "https://www.appliveexperience.com.br/evento/live21k-recife-2026"
+        }
+      ],
+      "circuit_links": [
+        {
+          "tipo": "circuito",
+          "canonical_tag": "live-run-xp",
+          "agregador_tag": "live-run-xp"
+        }
+      ],
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live21k-recife-2026",
+      "tag": "2026-live-run-xp-recife-2026",
+      "cidade": "Recife",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-11-22",
+          "distance": 5,
+          "unit": "km",
+          "id": 69625
+        },
+        {
+          "date": "2026-11-22",
+          "distance": 10,
+          "unit": "km",
+          "id": 69626
+        },
+        {
+          "date": "2026-11-22",
+          "distance": 21,
+          "unit": "km",
+          "id": 69627
+        }
+      ],
+      "id_evento": 41834,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-xp-belo-horizonte-iii-2026",
+      "id_agrega_evento": null,
+      "coupons": [
+        {
+          "cupom": "ROADRUNNERS",
+          "tipo_evento": 1,
+          "qtd_limite_cupom": null,
+          "data_cadastro": "2025-01-13",
+          "data_validade_fim": "2026-12-31",
+          "id_cupom": 68,
+          "data_expiracao": "2025-12-31",
+          "id_evento_cupom": 4,
+          "data_validade_inicio": "2025-01-13",
+          "parceiro": "Live! Run XP",
+          "id_evento_agrega": 41834,
+          "valid_today": true,
+          "descricao": "Com este cupom você terá 15% de desconto na inscrição.",
+          "condicoes": "15%",
+          "data_cadastro_cupom_evento": "2025-01-13"
+        }
+      ],
+      "data_inicial": "2026-11-22",
+      "estado": "MG",
+      "data_final": "2026-11-22",
+      "nome_evento": "LIVE! RUN XP belo horizonte iii 2026 2026",
+      "ativo": true,
+      "coupon_targets": [
+        {
+          "code": "ROADRUNNERS",
+          "active": true,
+          "id_cupom": 68,
+          "url": "https://www.appliveexperience.com.br/evento/live-run-xp-belo-horizonte-iii-2026"
+        }
+      ],
+      "circuit_links": [
+        {
+          "tipo": "circuito",
+          "canonical_tag": "live-run-xp",
+          "agregador_tag": "live-run-xp"
+        }
+      ],
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live-run-xp-belo-horizonte-iii-2026",
+      "tag": "2026-live-run-xp-belo-horizonte-iii-2026-2026",
+      "cidade": "Belo Horizonte",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-11-22",
+          "distance": 5,
+          "unit": "km",
+          "id": 61049
+        },
+        {
+          "date": "2026-11-22",
+          "distance": 10,
+          "unit": "km",
+          "id": 61050
+        }
+      ],
+      "id_evento": 37483,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-xp-porto-alegre-2026",
+      "id_agrega_evento": null,
+      "coupons": [
+        {
+          "cupom": "ROADRUNNERS",
+          "tipo_evento": 1,
+          "qtd_limite_cupom": null,
+          "data_cadastro": "2025-01-13",
+          "data_validade_fim": "2026-12-31",
+          "id_cupom": 68,
+          "data_expiracao": "2025-12-31",
+          "id_evento_cupom": 4,
+          "data_validade_inicio": "2025-01-13",
+          "parceiro": "Live! Run XP",
+          "id_evento_agrega": 37483,
+          "valid_today": true,
+          "descricao": "Com este cupom você terá 15% de desconto na inscrição.",
+          "condicoes": "15%",
+          "data_cadastro_cupom_evento": "2025-01-13"
+        }
+      ],
+      "data_inicial": "2026-11-22",
+      "estado": "RS",
+      "data_final": "2026-11-22",
+      "nome_evento": "LIVE! RUN XP Porto Alegre 2026",
+      "ativo": true,
+      "coupon_targets": [
+        {
+          "code": "ROADRUNNERS",
+          "active": true,
+          "id_cupom": 68,
+          "url": "https://www.liverun.com.br/etapa/live-run-xp-porto-alegre-2026"
+        }
+      ],
+      "circuit_links": [
+        {
+          "tipo": "circuito",
+          "canonical_tag": "live-run-xp",
+          "agregador_tag": "live-run-xp"
+        }
+      ],
+      "url_inscricao": "https://www.liverun.com.br/etapa/live-run-xp-porto-alegre-2026",
+      "tag": "2026-live-run-xp-porto-alegre-2026",
+      "cidade": "Porto Alegre",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-11-22",
+          "distance": 5,
+          "unit": "km",
+          "id": 70946
+        },
+        {
+          "date": "2026-11-22",
+          "distance": 10,
+          "unit": "km",
+          "id": 70947
+        }
+      ],
+      "id_evento": 48557,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-rio-de-janeiro-ii-2026",
+      "id_agrega_evento": null,
+      "coupons": null,
+      "data_inicial": "2026-11-22",
+      "estado": "SP",
+      "data_final": "2026-11-22",
+      "nome_evento": "LIVE! RUN XP - RIBEIRÃO PRETO II 2026",
+      "ativo": true,
+      "coupon_targets": null,
+      "circuit_links": null,
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live-run-rio-de-janeiro-ii-2026",
+      "tag": "2026-live-run-xp-ribeirao-preto-ii-2026",
+      "cidade": "Ribeirão Preto",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-12-05",
+          "distance": 5,
+          "unit": "km",
+          "id": 54269
+        },
+        {
+          "date": "2026-12-05",
+          "distance": 10,
+          "unit": "km",
+          "id": 54270
+        }
+      ],
+      "id_evento": 37526,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-niteri-2026",
+      "id_agrega_evento": 1686,
+      "coupons": [
+        {
+          "cupom": "ROADRUNNERS",
+          "tipo_evento": 1,
+          "qtd_limite_cupom": null,
+          "data_cadastro": "2025-01-13",
+          "data_validade_fim": "2026-12-31",
+          "id_cupom": 68,
+          "data_expiracao": "2025-12-31",
+          "id_evento_cupom": 4,
+          "data_validade_inicio": "2025-01-13",
+          "parceiro": "Live! Run XP",
+          "id_evento_agrega": 37526,
+          "valid_today": true,
+          "descricao": "Com este cupom você terá 15% de desconto na inscrição.",
+          "condicoes": "15%",
+          "data_cadastro_cupom_evento": "2025-01-13"
+        }
+      ],
+      "data_inicial": "2026-12-05",
+      "estado": "RJ",
+      "data_final": "2026-12-05",
+      "nome_evento": "LIVE! RUN XP Niterói 2026",
+      "ativo": true,
+      "coupon_targets": [
+        {
+          "code": "ROADRUNNERS",
+          "active": true,
+          "id_cupom": 68,
+          "url": "https://www.liverun.com.br/etapa/live-run-niteri-2026"
+        }
+      ],
+      "circuit_links": [
+        {
+          "tipo": "circuito",
+          "canonical_tag": "live-run-xp",
+          "agregador_tag": "live-run-xp"
+        }
+      ],
+      "url_inscricao": "https://www.liverun.com.br/etapa/live-run-niteri-2026",
+      "tag": "2026-live-run-xp-niteroi-2026",
+      "cidade": "Niterói",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-12-06",
+          "distance": 6,
+          "unit": "km",
+          "id": 54256
+        }
+      ],
+      "id_evento": 37528,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-osasco-2026",
+      "id_agrega_evento": null,
+      "coupons": [
+        {
+          "cupom": "ROADRUNNERS",
+          "tipo_evento": 1,
+          "qtd_limite_cupom": null,
+          "data_cadastro": "2025-01-13",
+          "data_validade_fim": "2026-12-31",
+          "id_cupom": 68,
+          "data_expiracao": "2025-12-31",
+          "id_evento_cupom": 4,
+          "data_validade_inicio": "2025-01-13",
+          "parceiro": "Live! Run XP",
+          "id_evento_agrega": 37528,
+          "valid_today": true,
+          "descricao": "Com este cupom você terá 15% de desconto na inscrição.",
+          "condicoes": "15%",
+          "data_cadastro_cupom_evento": "2025-01-13"
+        }
+      ],
+      "data_inicial": "2026-12-06",
+      "estado": "SP",
+      "data_final": "2026-12-06",
+      "nome_evento": "LIVE! RUN XP Osasco 2026",
+      "ativo": true,
+      "coupon_targets": [
+        {
+          "code": "ROADRUNNERS",
+          "active": true,
+          "id_cupom": 68,
+          "url": "https://www.liverun.com.br/etapa/live-run-osasco-2026"
+        }
+      ],
+      "circuit_links": [
+        {
+          "tipo": "circuito",
+          "canonical_tag": "live-run-xp",
+          "agregador_tag": "live-run-xp"
+        }
+      ],
+      "url_inscricao": "https://www.liverun.com.br/etapa/live-run-osasco-2026",
+      "tag": "2026-live-run-xp-osasco-2026",
+      "cidade": "Osasco",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-12-13",
+          "distance": 5,
+          "unit": "km",
+          "id": 54278
+        },
+        {
+          "date": "2026-12-13",
+          "distance": 10,
+          "unit": "km",
+          "id": 54279
+        },
+        {
+          "date": "2026-12-13",
+          "distance": 15,
+          "unit": "km",
+          "id": 54280
+        }
+      ],
+      "id_evento": 37572,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-braslia-2026",
+      "id_agrega_evento": null,
+      "coupons": [
+        {
+          "cupom": "ROADRUNNERS",
+          "tipo_evento": 1,
+          "qtd_limite_cupom": null,
+          "data_cadastro": "2025-01-13",
+          "data_validade_fim": "2026-12-31",
+          "id_cupom": 68,
+          "data_expiracao": "2025-12-31",
+          "id_evento_cupom": 4,
+          "data_validade_inicio": "2025-01-13",
+          "parceiro": "Live! Run XP",
+          "id_evento_agrega": 37572,
+          "valid_today": true,
+          "descricao": "Com este cupom você terá 15% de desconto na inscrição.",
+          "condicoes": "15%",
+          "data_cadastro_cupom_evento": "2025-01-13"
+        }
+      ],
+      "data_inicial": "2026-12-13",
+      "estado": "DF",
+      "data_final": "2026-12-13",
+      "nome_evento": "LIVE! RUN XP Brasília 2026",
+      "ativo": true,
+      "coupon_targets": [
+        {
+          "code": "ROADRUNNERS",
+          "active": true,
+          "id_cupom": 68,
+          "url": "https://www.liverun.com.br/etapa/live-run-braslia-2026"
+        }
+      ],
+      "circuit_links": [
+        {
+          "tipo": "circuito",
+          "canonical_tag": "live-run-xp",
+          "agregador_tag": "live-run-xp"
+        }
+      ],
+      "url_inscricao": "https://www.liverun.com.br/etapa/live-run-braslia-2026",
+      "tag": "2026-live-run-xp-brasilia-2026-iii",
+      "cidade": "Brasília",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-12-13",
+          "distance": 5,
+          "unit": "km",
+          "id": 69633
+        },
+        {
+          "date": "2026-12-13",
+          "distance": 21,
+          "unit": "km",
+          "id": 69634
+        }
+      ],
+      "id_evento": 40103,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-foz-do-iguau-2026",
+      "id_agrega_evento": null,
+      "coupons": [
+        {
+          "cupom": "ROADRUNNERS",
+          "tipo_evento": 1,
+          "qtd_limite_cupom": null,
+          "data_cadastro": "2025-01-13",
+          "data_validade_fim": "2026-12-31",
+          "id_cupom": 68,
+          "data_expiracao": "2025-12-31",
+          "id_evento_cupom": 4,
+          "data_validade_inicio": "2025-01-13",
+          "parceiro": "Live! Run XP",
+          "id_evento_agrega": 40103,
+          "valid_today": true,
+          "descricao": "Com este cupom você terá 15% de desconto na inscrição.",
+          "condicoes": "15%",
+          "data_cadastro_cupom_evento": "2025-01-13"
+        }
+      ],
+      "data_inicial": "2026-12-13",
+      "estado": "PR",
+      "data_final": "2026-12-13",
+      "nome_evento": "LIVE! RUN XP Itaipu 2026",
+      "ativo": true,
+      "coupon_targets": [
+        {
+          "code": "ROADRUNNERS",
+          "active": true,
+          "id_cupom": 68,
+          "url": "https://www.appliveexperience.com.br/evento/live21k-foz-do-iguau-2026"
+        }
+      ],
+      "circuit_links": [
+        {
+          "tipo": "circuito",
+          "canonical_tag": "live-run-xp",
+          "agregador_tag": "live-run-xp"
+        }
+      ],
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live21k-foz-do-iguau-2026",
+      "tag": "2026-live-run-xp-itaipu-2026",
+      "cidade": "Foz do Iguaçu",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    },
+    {
+      "routes": [
+        {
+          "date": "2026-12-20",
+          "distance": 5,
+          "unit": "km",
+          "id": 69628
+        },
+        {
+          "date": "2026-12-20",
+          "distance": 10,
+          "unit": "km",
+          "id": 69629
+        },
+        {
+          "date": "2026-12-20",
+          "distance": 21,
+          "unit": "km",
+          "id": 69630
+        }
+      ],
+      "id_evento": 37564,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-salvador-2026",
+      "id_agrega_evento": null,
+      "coupons": [
+        {
+          "cupom": "ROADRUNNERS",
+          "tipo_evento": 1,
+          "qtd_limite_cupom": null,
+          "data_cadastro": "2025-01-13",
+          "data_validade_fim": "2026-12-31",
+          "id_cupom": 68,
+          "data_expiracao": "2025-12-31",
+          "id_evento_cupom": 4,
+          "data_validade_inicio": "2025-01-13",
+          "parceiro": "Live! Run XP",
+          "id_evento_agrega": 37564,
+          "valid_today": true,
+          "descricao": "Com este cupom você terá 15% de desconto na inscrição.",
+          "condicoes": "15%",
+          "data_cadastro_cupom_evento": "2025-01-13"
+        }
+      ],
+      "data_inicial": "2026-12-20",
+      "estado": "BA",
+      "data_final": "2026-12-20",
+      "nome_evento": "LIVE! RUN XP Salvador 2026",
+      "ativo": true,
+      "coupon_targets": [
+        {
+          "code": "ROADRUNNERS",
+          "active": true,
+          "id_cupom": 68,
+          "url": "https://www.appliveexperience.com.br/evento/live21k-salvador-2026"
+        }
+      ],
+      "circuit_links": [
+        {
+          "tipo": "circuito",
+          "canonical_tag": "live-run-xp",
+          "agregador_tag": "live-run-xp"
+        }
+      ],
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live21k-salvador-2026",
+      "tag": "2026-live-run-xp-salvador-2026-ii",
+      "cidade": "Salvador",
+      "inscricao_disponibilidade": null,
+      "info_duplicado": null
+    }
+  ],
+  "coupon_target_view_definition": " SELECT 'pagina'::text AS tipo_cupom,\n    pg.id_pagina,\n    pg.id_pagina AS id_tipo_cupom,\n    tp.nome AS nome_tipo_cupom,\n    cp.id_cupom,\n    cp.cupom,\n    cp.descricao,\n    cp.parceiro,\n    cp.condicoes,\n    cp.data_cadastro,\n    cp.data_expiracao,\n    cp.url AS curl,\n    cp.ativo,\n    NULL::integer AS id_evento,\n    NULL::character varying AS url_inscricao\n   FROM tb_cupom cp\n     JOIN tb_paginas_cupom pg ON pg.id_cupom = cp.id_cupom\n     JOIN tb_paginas tp ON tp.id_pagina = pg.id_pagina\n  WHERE NOT (EXISTS ( SELECT ev.id_cupom\n           FROM tb_evento_circuitos_cupom ev\n          WHERE ev.id_cupom = cp.id_cupom)) AND NOT (EXISTS ( SELECT cr.id_cupom\n           FROM tb_evento_corridas_cupom cr\n          WHERE cr.id_cupom = cp.id_cupom))\nUNION ALL\n SELECT 'evento'::text AS tipo_cupom,\n    1 AS id_pagina,\n    pg.id_evento AS id_tipo_cupom,\n    tp.nome_evento AS nome_tipo_cupom,\n    cp.id_cupom,\n    cp.cupom,\n    cp.descricao,\n    cp.parceiro,\n    cp.condicoes,\n    cp.data_cadastro,\n    cp.data_expiracao,\n    COALESCE(tp.url_inscricao, tp.url_hotsite) AS curl,\n    cp.ativo,\n    tp.id_evento,\n    tp.url_inscricao\n   FROM tb_cupom cp\n     JOIN tb_evento_corridas_cupom pg ON pg.id_cupom = cp.id_cupom\n     JOIN tb_evento_corridas tp ON tp.id_evento = pg.id_evento AND tp.data_inicial > CURRENT_DATE\nUNION ALL\n SELECT 'circuito'::text AS tipo_cupom,\n    1 AS id_pagina,\n    pg.id_agrega_evento AS id_tipo_cupom,\n    tp.nome_evento AS nome_tipo_cupom,\n    cp.id_cupom,\n    cp.cupom,\n    cp.descricao,\n    cp.parceiro,\n    cp.condicoes,\n    cp.data_cadastro,\n    cp.data_expiracao,\n    COALESCE(tp.url_inscricao, tp.url_hotsite) AS curl,\n    cp.ativo,\n    tp.id_evento,\n    tp.url_inscricao\n   FROM tb_cupom cp\n     JOIN tb_evento_circuitos_cupom pg ON pg.id_cupom = cp.id_cupom\n     JOIN tb_evento_corridas tp ON (tp.id_agrega_evento = pg.id_agrega_evento AND NOT (EXISTS ( SELECT 1\n           FROM tb_agregadores g\n          WHERE g.id_agrega_evento_legado = pg.id_agrega_evento)) OR (EXISTS ( SELECT 1\n           FROM tb_agregadores g\n             JOIN tb_agregadores_eventos ge USING (agregador_tag)\n          WHERE g.id_agrega_evento_legado = pg.id_agrega_evento AND ge.id_evento = tp.id_evento))) AND tp.data_inicial > CURRENT_DATE;",
+  "observed_at": "2026-10-20T13:33:29.464489-03:00",
+  "coupon_view_definition": " SELECT cc.id_evento_cupom,\n    cc.id_cupom,\n    1 AS tipo_evento,\n    cc.id_evento AS id_evento_agrega,\n    cc.qtd_limite_cupom,\n    cc.data_cadastro AS data_cadastro_cupom_evento,\n    cc.data_validade_inicio,\n    cc.data_validade_fim,\n    cp.cupom,\n    cp.descricao,\n    cp.parceiro,\n    cp.condicoes,\n    cp.data_cadastro,\n    cp.data_expiracao\n   FROM tb_evento_corridas_cupom cc\n     JOIN tb_cupom cp ON cp.id_cupom = cc.id_cupom\nUNION ALL\n SELECT cc.id_evento_cupom,\n    cc.id_cupom,\n    2 AS tipo_evento,\n    cc.id_agrega_evento AS id_evento_agrega,\n    cc.qtd_limite_cupom,\n    cc.data_cadastro AS data_cadastro_cupom_evento,\n    cc.data_validade_inicio,\n    cc.data_validade_fim,\n    cp.cupom,\n    cp.descricao,\n    cp.parceiro,\n    cp.condicoes,\n    cp.data_cadastro,\n    cp.data_expiracao\n   FROM tb_evento_circuitos_cupom cc\n     JOIN tb_cupom cp ON cp.id_cupom = cc.id_cupom\n  WHERE NOT (EXISTS ( SELECT 1\n           FROM tb_agregadores g\n          WHERE g.id_agrega_evento_legado = cc.id_agrega_evento))\nUNION ALL\n SELECT cc.id_evento_cupom,\n    cc.id_cupom,\n    1 AS tipo_evento,\n    ge.id_evento AS id_evento_agrega,\n    cc.qtd_limite_cupom,\n    cc.data_cadastro AS data_cadastro_cupom_evento,\n    cc.data_validade_inicio,\n    cc.data_validade_fim,\n    cp.cupom,\n    cp.descricao,\n    cp.parceiro,\n    cp.condicoes,\n    cp.data_cadastro,\n    cp.data_expiracao\n   FROM tb_evento_circuitos_cupom cc\n     JOIN tb_cupom cp ON cp.id_cupom = cc.id_cupom\n     JOIN tb_agregadores g ON g.id_agrega_evento_legado = cc.id_agrega_evento\n     JOIN ( SELECT DISTINCT tb_agregadores_eventos.agregador_tag,\n            tb_agregadores_eventos.id_evento\n           FROM tb_agregadores_eventos) ge ON ge.agregador_tag::text = g.agregador_tag::text;"
+}

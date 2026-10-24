@@ -1,0 +1,229 @@
+{
+  "events": [
+    {
+      "data_processamento": "2026-02-15T22:19:01.048",
+      "url_imagem_listagem": "https://imagens.liveoficial.com.br/app-experience/events/iFiTB6IHSHzCsj39mRlx0fSBvaWnbep0V0xW6l95.png",
+      "obs_homologacao": null,
+      "data_inclusao": "2025-12-18T17:21:57.773924",
+      "row_hash": "8f1679b27f0c7fb9e27ba3a640b101f2",
+      "ranking": null,
+      "estado": "RJ",
+      "categorias": "5km,10km",
+      "url_wiclax": null,
+      "tipo_corrida": "rua",
+      "ativo": true,
+      "endereco": "PLAZA SHOPPING - Rua Quinze de Novembro, 8 - Centro, Niterói - RJ, 24020-125",
+      "descricao_en": "LIVE&#x21; RUN - NITER&Oacute;I 2026<br>More than a race, a moment of energy and connection&#x21; Choose between the distances of 5 km, 10 km or participate in the Kids Race and enjoy the LIVE&#x21; Arena, which offers music, wellness activities and exclusive activations.<br>Register and come experience the rhythm of LIVE&#x21; RUN XP.",
+      "imagem": null,
+      "precos": null,
+      "organizador": "Live!",
+      "tag_301": null,
+      "homologado": null,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-niteri-2026",
+      "localizacoes": {},
+      "status_evento": null,
+      "descricao_original": "LIVE! RUN - NITERÓI 2026\nMuito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.\nInscreva-se e venha sentir o ritmo da LIVE! RUN XP.",
+      "latitude": null,
+      "realizacao": null,
+      "coordenadas": "",
+      "nome_simplificado": "LIVE RUN XP NITEROI",
+      "descricao_traducoes_meta": {
+        "en": {
+          "description_hash": "42d2965f7974dae7d3a53e74f8e4f388",
+          "source_hash": "45487801bd61bb7c15dbebcaa2ffd9b2"
+        },
+        "es": {
+          "description_hash": "69b6b1fa6923b9a19a6beeed135d09b9",
+          "source_hash": "45487801bd61bb7c15dbebcaa2ffd9b2"
+        }
+      },
+      "longitude": null,
+      "id_agrega_evento": 1686,
+      "id_localidade": 3047,
+      "url_regulamento": "https://www.liverun.com.br/etapa/live-run-niteri-2026",
+      "data_final": "2026-11-01",
+      "nome_evento": "LIVE! RUN XP Niterói 2026",
+      "valor_inscricao": null,
+      "resumo": null,
+      "descricao": "LIVE&#x21; RUN - NITER&Oacute;I 2026<br>Mais do que uma corrida, um momento de energia e conex&atilde;o&#x21; Escolha entre as dist&acirc;ncias de 5 km, 10 km ou participe da Corrida Kids e aproveite a Arena LIVE&#x21;, que oferece m&uacute;sica, atividades de bem-estar e ativa&ccedil;&otilde;es exclusivas.<br>Fa&ccedil;a sua inscri&ccedil;&atilde;o e venha experimentar o ritmo da LIVE&#x21; RUN XP.",
+      "url_inscricao": "https://www.liverun.com.br/etapa/live-run-niteri-2026",
+      "cobertura": null,
+      "destaque": null,
+      "cidade": "Niterói",
+      "inscricao_disponibilidade": null,
+      "cronometragem": null,
+      "resultado_completo": true,
+      "obs": "importado em {ts '2025-12-18 17:19:42'}",
+      "url_imagem": "https://static.wixstatic.com/media/dcc8f7_a53bf3a20d3d4c288d860755bc4b7c9b~mv2.jpg",
+      "descricao_es": "LIVE&#x21; RUN - NITER&Oacute;I 2026<br>M&aacute;s que una carrera, &iexcl;un momento de energ&iacute;a y conexi&oacute;n&#x21; Elija entre las distancias de 5 km, 10 km o participe en la Carrera Kids y disfrute de la Arena LIVE&#x21;, que ofrece m&uacute;sica, actividades de bienestar y activaciones exclusivas.<br>Haga su inscripci&oacute;n y venga a experimentar el ritmo de la LIVE&#x21; RUN XP.",
+      "id_evento": 37526,
+      "url_resultado": "",
+      "data_inicial": "2026-11-01",
+      "conferencia_datas_publica": null,
+      "obs_resultado": null,
+      "id_fornecedor": null,
+      "tag": "2026-live-run-xp-niteroi-2026",
+      "id_tema": 2,
+      "cod_cidade": 3303302,
+      "nome_evento_full_text": "'2026':5 'liv':1 'niteró':4 'run':2 'xp':3",
+      "pais": "BR",
+      "info_duplicado": null
+    }
+  ],
+  "routes": [
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 37526,
+      "percurso_evento": 5,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "f23d513cf20cf3f8188dbec3df498825",
+      "percurso_bloqueado": true,
+      "tipo_corrida": "rua",
+      "data_percurso": "2026-11-01",
+      "id_evento_percurso": 54269
+    },
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 37526,
+      "percurso_evento": 10,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "7e626411ea3ac8cbb4fabf1626b64b8e",
+      "percurso_bloqueado": true,
+      "tipo_corrida": "rua",
+      "data_percurso": "2026-11-01",
+      "id_evento_percurso": 54270
+    }
+  ],
+  "upcoming": [
+    {
+      "estado": "MS",
+      "nome_evento": "LIVE! RUN XP Bonito 2026",
+      "id_evento": 37556,
+      "tag": "2026-live-run-xp-bonito-2026",
+      "cidade": "Bonito",
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "estado": "RJ",
+      "nome_evento": "LIVE! RUN XP Niterói 2026",
+      "id_evento": 37526,
+      "tag": "2026-live-run-xp-niteroi-2026",
+      "cidade": "Niterói",
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "estado": "RJ",
+      "nome_evento": "LIVE! RUN XP Rio de Janeiro 2026",
+      "id_evento": 40833,
+      "tag": "2026-live-run-xp-rio-de-janeiro-2026-21k",
+      "cidade": "Rio de Janeiro",
+      "data_inicial": "2026-11-02"
+    },
+    {
+      "estado": "CE",
+      "nome_evento": "LIVE!21K - FORTALEZA 2026",
+      "id_evento": 45366,
+      "tag": "2026-live21k-fortaleza-2026",
+      "cidade": "Fortaleza",
+      "data_inicial": "2026-11-20"
+    },
+    {
+      "estado": "CE",
+      "nome_evento": "LIVE! RUN XP Fortaleza 2026",
+      "id_evento": 37570,
+      "tag": "2026-live-run-xp-fortaleza-2026-ii",
+      "cidade": "Fortaleza",
+      "data_inicial": "2026-11-20"
+    },
+    {
+      "estado": "PE",
+      "nome_evento": "LIVE! RUN XP Recife 2026",
+      "id_evento": 40834,
+      "tag": "2026-live-run-xp-recife-2026",
+      "cidade": "Recife",
+      "data_inicial": "2026-11-20"
+    },
+    {
+      "estado": "SE",
+      "nome_evento": "Oliver Night Run",
+      "id_evento": 47208,
+      "tag": "2026-oliver-night-run",
+      "cidade": "Itabaiana",
+      "data_inicial": "2026-11-21"
+    },
+    {
+      "estado": "MG",
+      "nome_evento": "LIVE! RUN XP belo horizonte iii 2026 2026",
+      "id_evento": 41834,
+      "tag": "2026-live-run-xp-belo-horizonte-iii-2026-2026",
+      "cidade": "Belo Horizonte",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "estado": "SP",
+      "nome_evento": "LIVE! RUN XP - RIBEIRÃO PRETO II 2026",
+      "id_evento": 48557,
+      "tag": "2026-live-run-xp-ribeirao-preto-ii-2026",
+      "cidade": "Ribeirão Preto",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "estado": "RS",
+      "nome_evento": "LIVE! RUN XP Porto Alegre 2026",
+      "id_evento": 37483,
+      "tag": "2026-live-run-xp-porto-alegre-2026",
+      "cidade": "Porto Alegre",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "estado": "SP",
+      "nome_evento": "LIVE! RUN XP Osasco 2026",
+      "id_evento": 37528,
+      "tag": "2026-live-run-xp-osasco-2026",
+      "cidade": "Osasco",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "estado": "PR",
+      "nome_evento": "LIVE! RUN XP Itaipu 2026",
+      "id_evento": 40103,
+      "tag": "2026-live-run-xp-itaipu-2026",
+      "cidade": "Foz do Iguaçu",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "estado": "DF",
+      "nome_evento": "LIVE! RUN XP Brasília 2026",
+      "id_evento": 37572,
+      "tag": "2026-live-run-xp-brasilia-2026-iii",
+      "cidade": "Brasília",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "estado": "SP",
+      "nome_evento": "5o. JESUS LIVE RUN",
+      "id_evento": 48100,
+      "tag": "2026-5o-jesus-live-run",
+      "cidade": "São Paulo",
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "estado": "BA",
+      "nome_evento": "LIVE! RUN XP Salvador 2026",
+      "id_evento": 37564,
+      "tag": "2026-live-run-xp-salvador-2026-ii",
+      "cidade": "Salvador",
+      "data_inicial": "2026-12-20"
+    }
+  ]
+}

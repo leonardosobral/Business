@@ -1,0 +1,19 @@
+{
+  "watch": {
+    "portal/conteudo/seo.cfm": "8ecd4a478379f470fe33cd8f7353a5f3e997ec7c05cbc68e2b952e2950db2870",
+    "portal/conteudo/seo_ga4.cfm": "da246fcc39f6c5d904357e97d90f19a5b7bf5053a9e0d8a2e1f03aee3f44b160",
+    "portal/seo/ga4_service.cfm": "ee375b67bc74c38156b17fb36191e71bb3795ceedaca9c196dce03105b3c9c48",
+    "portal/seo/ga4_api.cfm": "4acceeda72ba16da379d3a3dd622d1b05297496c8b6110795190b74285f487ad",
+    "portal/seo/assets/ga4.js": "9c9e052d2a071d55c679132ba68e60bf1c5a91bf95931cb8dccf58388fe9ba8d",
+    "portal/includes/seo_queue_backend.cfm": "d8d8d479aced0469dd2574fc1c9bb0897020a42b41ef8bf180159a7a46f12a98",
+    "portal/includes/seo_score_backend.cfm": "faaf8ed3d58077e4002b622a5546491f51bcea0fea82e452690c4e02368960d5",
+    "portal/includes/seo_search_evidence.cfm": "c4d1bf5cb7fc7804c5d9eada39930ada51668202136c51f8ab2769740cd7a8da",
+    "includes/backend/require_admin.cfm": "c2f9659ac3db941cc543a9f86d5b39b573c365a36ca2d3fba5a58675f6e017d6",
+    "portal/includes/seo_score_data.cfm": "8ba63c53d9242abcd9bb283a6e9f76da5ee5450fc70fb9901afe981a7abcd166",
+    "portal/includes/seo_queue_data.cfm": "a03d797c3a53e1ef8f9370a66b05b58525b78d01e7c5e649cc83dd4f7b5e950e"
+  },
+  "before": {
+    "portal/includes/seo_semrush_data.cfm": "baa04f1ee30cebb4ee23d8f65bc4736698bb1aebc387b077a9621989ba59ec07",
+    "portal/conteudo/seo_semrush.cfm": "e913c62a03c0d89a22c09584127e1033ee00573966a4f26c19c8da7260b59973"
+  }
+}

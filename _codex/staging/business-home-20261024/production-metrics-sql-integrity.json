@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-24T16:30:08.006530+00:00",
+  "probe_file": "production-metrics-final.json",
+  "tested_source_sha256": "a2dfd0934a89a559fd36a24110db056b8ae33ee71ac7ee9cf405bd0a7cf73070",
+  "current_source_sha256": "74187da3e0eb8a91f0cdd89ab3f71cb4e49ae1e8b60eeaa894b1c4730984cd86",
+  "all_sql_blocks_exactly_match_tested": true,
+  "sql_sha256": {
+    "audience": "20180a6e3c7329f6f360534c6cc927fd50d6347d3d563022f59937026accfb1e",
+    "ads": "9f5d6cad97ab0dc219985fb77d491b69e1b43c7a9ff538718d0fdde0487be412",
+    "accounts": "55d2015a3080e2bf2a50e69874225f20f0c3dd650ae6fa7f63d874c99ab08018",
+    "users": "8ba6e5c30d3fa81980859aa4aa93909aeceb56239da7cbe672e9441ede8035c5"
+  },
+  "all_eight_cases_loaded": true
+}

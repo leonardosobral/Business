@@ -1,0 +1,24 @@
+{
+  "rr": {
+    "root": "/var/www/roadrunners.com.br",
+    "before": {
+      "includes/estrutura/head.cfm": "e17b943895b0972927a4515de0b68223f59000e02d3c68711d12fe28f979a98a"
+    },
+    "watch": {
+      "evento/index.cfm": "0d90d138eb8b718603f4cbc2d35c1f93657a6e847d5aee42aee78a53008598c6",
+      "includes/estrutura/event_title_date.cfm": "46893b040ce21300628a123f2b16d3e327f0e378ab4760cd5179a7796cc0cfc1",
+      "services/EventRedirectService.cfc": "be9e085b471e1532feb6180d9bc20025e40b71d13c63c00deda2fd2954fe2fc4"
+    }
+  },
+  "business": {
+    "root": "/var/www/business.roadrunners.run",
+    "before": {
+      "includes/estrutura/head.cfm": "4a907823090148d55545f9e47259740fc1894343c02e4ee10398db60a8b54606"
+    },
+    "watch": {
+      "cadastro/index.cfm": "adf6c7771090617209c5266cc4df33d7dee7257d6294b60325263d34be32b720",
+      "cadastro/home.cfm": "48d6082969bf4b4cf2d745f5aa05568f6111e067981024b8bdb9caf8df740c92",
+      "Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970"
+    }
+  }
+}

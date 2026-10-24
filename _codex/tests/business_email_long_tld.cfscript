@@ -1,0 +1,29 @@
+checks=0;
+function check(required boolean ok,required string label){checks++;if(!ok)throw(message=label);}
+validator=createObject('component','__EMAIL__');
+for(value in ['tester@gmail.com','roberta@premium.srv.br','thiago@tm4.business','name+tag@sub.example.technology',"o'brien@example.business",repeatString('a',64)&'@example.business'])check(validator.isValidAddress(value),'Valid address rejected: '&value);
+for(value in ['', 'thiago@', '@tm4.business','thiago@@tm4.business','two names@tm4.business','thiago@-tm4.business','thiago@tm4-.business','thiago@tm4..business','thiago@tm4.bus1ness','.thiago@tm4.business','thiago.@tm4.business','thi..ago@tm4.business','thiago@tm4.business'&chr(10),repeatString('a',65)&'@tm4.business','thiago@'&repeatString('a',64)&'.business','thiago@tm4.' & repeatString('a',64)])check(!validator.isValidAddress(value),'Invalid address accepted');
+check(!validator.isValidAddress({email='thiago@tm4.business'}),'Complex address rejected');
+function token(required any pair,struct changes={}){
+ var data={iss='https://accounts.google.com',aud='email-regression',sub='isolated-test',email='test@example.business',email_verified=true,nonce='isolated-nonce',exp=int(createObject('java','java.lang.System').currentTimeMillis()/1000)+300};
+ structAppend(data,changes,true);var fields=[];for(var k in data)arrayAppend(fields,serializeJSON(lCase(k))&':'&serializeJSON(data[k]));
+ var j=createObject('java','org.jose4j.jws.JsonWebSignature').init();j.setPayload('{'&arrayToList(fields,',')&'}');j.setAlgorithmHeaderValue('RS256');j.setKey(pair.getPrivate());return j.getCompactSerialization();
+}
+keys=createObject('java','java.security.KeyPairGenerator').getInstance('RSA');keys.initialize(2048);pair=keys.generateKeyPair();jwk=createObject('java','org.jose4j.jwk.RsaJsonWebKey').init(pair.getPublic());resolver=createObject('java','org.jose4j.keys.resolvers.JwksVerificationKeyResolver').init(createObject('java','java.util.Collections').singletonList(jwk));
+google=createObject('component','__GOOGLE__').init('email-regression',resolver);
+claims=google.verify(token(pair),'isolated-nonce');check(claims.email=='test@example.business','Signed long-TLD identity accepted');
+for(changes in [{email_verified=false},{email='invalid@@example.business'},{nonce='wrong'},{aud='wrong'},{iss='https://invalid.example'},{exp=1}]){
+ rejected=false;try{google.verify(token(pair,changes),'isolated-nonce');}catch(any e){rejected=true;}check(rejected,'Invalid signed claim rejected');
+}
+rejected=false;try{google.verify(token(keys.generateKeyPair()),'isolated-nonce');}catch(any e){rejected=true;}check(rejected,'Invalid signature rejected');
+auth=createObject('component','__SESSION__');state={};claims.picture='';claims.name='Isolated test';auth.establish(state,42,claims);check(auth.identity(state).email=='test@example.business','Long-TLD session survives validation');state.businessAuthenticatedIdentity.version=0;check(structIsEmpty(auth.identity(state)),'Legacy identity rejected');auth.clear(state);check(structIsEmpty(state),'Session cleanup unchanged');
+// Exercise the actual voucher service inside a rollback; never expose the generated code.
+actor=queryExecute("SELECT id,name,lower(trim(email)) email FROM tb_usuarios WHERE lower(trim(email))='leonardo.sobral@gmail.com' AND is_admin=true",{},{datasource='runner_dba'});check(actor.recordCount==1,'Authorized operator available');
+REQUEST.businessIdentity={id=actor.id[1],name=actor.name[1],email=actor.email[1],version=1,sub='authorized-operator-email-validation'};
+service=createObject('component','__STUDY__').init('runner_dba');camp=queryExecute("SELECT id FROM estudo.campanhas WHERE codigo='abraceo-primeiro-acesso'",{},{datasource='runner_dba'});
+transaction{
+ voucher=service.adminCreateVoucher(actor.id[1],camp.id[1],'thiago@tm4.business','2026-11-10','Validação revertida de domínio longo');
+ check(voucher.voucher.email_destinatario=='thiago@tm4.business','Voucher supports long TLD');
+ transaction action='rollback';
+}
+report={total=checks,pass=true,signed_identity_verified=true,voucher_test_rolled_back=true};

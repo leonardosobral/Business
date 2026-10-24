@@ -1,0 +1,13 @@
+{
+  "targets": [
+    "/var/lib/runnerhub/reports/mif-2026",
+    "/etc/roadrunners/credentials/medical-mail.json",
+    "/var/lib/runnerhub-secrets/content-google-oauth.local.cfm"
+  ],
+  "files": 169,
+  "hashes_match": true,
+  "backup": "/var/backups/external-storage-20261013",
+  "owner": "root:coldfusion",
+  "file_mode": "0640",
+  "directory_mode": "0750"
+}

@@ -1,0 +1,502 @@
+- button "Pular para o conteúdo"
+- banner:
+  - combobox "Acesse a ferramenta…"
+  - button "Pesquisar":
+  - navigation:
+    - menubar:
+      - button "Convide usuários": Invite free users
+      - menuitem "Preços"
+      - menuitem "Empresarial"
+      - menuitem "Mais"
+      - menuitem "Meu perfil":
+        - generic: c
+- navigation:
+  - list:
+    - link "Início":
+      - /url: https://pt.semrush.com/home/?fid=8614846
+      - generic: Início
+    - link "SEO":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+      - generic: SEO
+    - link "IA":
+      - /url: https://pt.semrush.com/ai-seo/overview/?fid=8614846
+      - generic: IA
+  - list:
+    - link "Tráfego e mercado":
+      - /url: https://pt.semrush.com/analytics/traffic/?fid=8614846
+      - generic: Tráfego e mercado
+    - link "Local":
+      - /url: https://pt.semrush.com/local-business/?fid=8614846
+      - generic: Local
+    - link "Conteúdo":
+      - /url: https://pt.semrush.com/content/?fid=8614846
+      - generic: Conteúdo
+    - link "Anúncios":
+      - /url: https://pt.semrush.com/advertising/?fid=8614846
+      - generic: Anúncios
+    - link "RP para IA":
+      - /url: https://pt.semrush.com/pr-toolkit/?fid=8614846
+      - generic: RP para IA
+    - link "Social":
+      - /url: https://pt.semrush.com/social-media/?fid=8614846
+      - generic: Social
+  - list:
+    - link "Relatórios":
+      - /url: https://pt.semrush.com/my_reports/grid/?fid=8614846
+      - generic: Relatórios
+    - link "Apps":
+      - /url: https://pt.semrush.com/apps/?fid=8614846
+      - generic: Apps
+  - generic: SEO
+  - list:
+    - link "Painel de ferramentas":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+  - generic: Desempenho do site
+  - list:
+    - link "Auditoria do site":
+      - /url: https://pt.semrush.com/siteaudit/?fid=8614846
+    - link "Monitoramento de posição":
+      - /url: https://pt.semrush.com/position-tracking/?fid=8614846
+  - generic: Análise competitiva
+  - list:
+    - link "Visão geral do domínio":
+      - /url: https://pt.semrush.com/analytics/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Rankings orgânicos":
+      - /url: https://pt.semrush.com/analytics/organic/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Principais páginas":
+      - /url: https://pt.semrush.com/analytics/toppages/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Comparação de domínios":
+      - /url: https://pt.semrush.com/analytics/comparedomains/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nas palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordgap/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nos backlinks":
+      - /url: https://pt.semrush.com/analytics/gap/backlinks/?fid=8614846&q=roadrunners.run&searchType=domain
+  - generic: Pesquisa de palavras-chave
+  - list:
+    - link "Visão geral de palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordoverview/?fid=8614846
+    - link "Keyword Magic Tool":
+      - /url: https://pt.semrush.com/analytics/keywordmagic/?fid=8614846
+    - link "Keyword Strategy Builder":
+      - /url: https://pt.semrush.com/analytics/keywordmanager/?fid=8614846
+    - link "Palavras-chave salvas":
+      - /url: https://pt.semrush.com/saved-keywords/?fid=8614846
+  - generic: Ideias de conteúdo
+  - list:
+    - link "SEO Writing Assistant":
+      - /url: https://pt.semrush.com/swa/?fid=8614846
+    - link "Topic Research":
+      - /url: https://pt.semrush.com/topic-research/?fid=8614846
+    - link "SEO Content Template":
+      - /url: https://pt.semrush.com/seo-content-template/?fid=8614846
+  - generic: Construção de links
+  - list:
+    - link "Backlinks":
+      - /url: https://pt.semrush.com/analytics/backlinks/overview/?db=us&fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Domínios de referência":
+      - /url: https://pt.semrush.com/analytics/refdomains/report/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Backlink Audit":
+      - /url: https://pt.semrush.com/backlink_audit/?fid=8614846
+  - generic: Ferramentas extras
+  - list:
+    - link "Sensor":
+      - /url: https://pt.semrush.com/sensor/?fid=8614846&utm_medium=footer&utm_source=semrush
+    - link "SEOquake":
+      - /url: https://www.seoquake.com/?fid=8614846
+    - link "Ranking Semrush":
+      - /url: https://pt.semrush.com/analytics/ranks/rank/?fid=8614846
+  - generic: Outros
+  - list:
+    - link "On Page SEO Checker":
+      - /url: https://pt.semrush.com/on-page-seo-checker/26661911/overview/?fid=8614846
+    - link "Organic Traffic Insights":
+      - /url: https://pt.semrush.com/organic-traffic-insights/project/26661911/?fid=8614846
+    - link "Construção de links":
+      - /url: https://pt.semrush.com/link_building/26661911/main/overview/?fid=8614846
+- button "Ocultar navegação" [expanded]:
+- main:
+  - region "Cabeçalho da Auditoria do site":
+    - navigation "Trilhas de navegação":
+      - list:
+        - link "Início":
+          - /url: /home/
+        - link "SEO":
+          - /url: /seo/26661911/
+        - generic: Auditoria de Site
+    - button "Central de ajuda":
+      - text: Central de ajuda
+    - button "Enviar comentário":
+      - text: Enviar comentário
+    - heading [level=1]: "Auditoria de Site:"
+    - 'combobox "Projeto: Road Runners"':
+      - generic: Road Runners
+    - button "Rastreando páginas":
+      - text: Rastreando páginas
+    - text: "907"
+    - generic: /5.000
+    - progressbar
+    - button "Interromper o rastreamento e salvar os resultados":
+    - button "Exportar para PDF":
+      - generic: PDF
+    - button "Exportar para planilha":
+      - generic: Exportar
+    - button "Compartilhar":
+      - generic: Compartilhar
+    - button "Abrir configurações":
+    - generic: roadrunners.run
+    - generic: "Atualizado:"
+    - text: qui, 22 de out de 2026
+    - text: Móvel
+    - generic: "Renderização em JS:"
+    - text: Desativado
+    - generic: "Páginas rastreadas:"
+    - button "Problema nas páginas rastreadas":
+    - text: 5.000/5.000
+    - tablist "Relatórios de Auditoria do site":
+      - tab "Visão geral":
+        - generic: Visão geral
+      - tab "Problemas" [selected]:
+        - generic: Problemas
+      - tab "Páginas rastreadas":
+        - generic: Páginas rastreadas
+      - tab "Estatísticas":
+        - generic: Estatísticas
+      - tab "Comparar rastreamentos":
+        - generic: Comparar rastreamentos
+      - tab "Progresso":
+        - generic: Progresso
+      - tab "Impacto do JS":
+        - generic: Impacto do JS
+  - link "Todos os problemas":
+    - /url: /siteaudit/campaign/26661911/review/issues
+    - generic: Todos os problemas
+  - generic "Detalhes do problema":
+    - heading "4.799 URLs com redirecionamento temporário" [level=2]
+    - generic: Advertência
+    - button "Enviar para…":
+      - generic: Enviar para…
+    - link "Estrutura do site":
+      - /url: /siteaudit/campaign/26661911/review/pagereport/structure?restrictions=eyJ0cmlnZ2VyZWRJc3N1ZSI6MTA5fQ%253D%253D
+      - generic: Estrutura do site
+    - button "Excluir verificação":
+      - generic: Excluir verificação
+    - button "Como resolver este problema":
+      - generic "Como resolver este problema": Como resolver
+    - generic: "Falha:"
+    - generic: "4.799"
+    - generic: "Sucesso:"
+    - generic: "445.621"
+    - tablist:
+      - tab "Problemas 4.799" [selected]:
+        - generic: Problemas
+        - generic: "4.799"
+      - tab "Ocultos 0":
+        - generic: Ocultos
+        - generic: "0"
+    - textbox "Pesquisar"
+    - button "Pesquisar":
+    - combobox "Selecionar filtros avançados":
+      - generic: Filtros avançados
+    - grid:
+      - row "All items URL da página com link de redirecionamento ascending URL de redirecionamento inicial URL de destino final Código de status HTTP Descoberta":
+        - columnheader "All items":
+          - checkbox "All items"
+        - columnheader "URL da página com link de redirecionamento ascending":
+          - text: URL da página com link de redirecionamento
+          - button "ascending":
+        - columnheader "URL de redirecionamento inicial": URL de redirecionamento inicial
+        - columnheader "URL de destino final": URL de destino final
+        - columnheader "Código de status HTTP": Código de status HTTP
+        - columnheader "Descoberta": Descoberta
+        - columnheader
+      - generic: Sortable
+      - row "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/ Acessar https://business.roadrunners.run/ https://business.roadrunners.run/faq/ Acessar https://business.roadrunners.run/faq/ https://business.roadrunners.run/ Acessar https://business.roadrunners.run/ 302 out 13, 2026, 3:16 Ocultar https://business.roadrunners.run/ nos resultados de auditoria":
+        - gridcell "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/ Acessar https://business.roadrunners.run/":
+          - checkbox "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/ Acessar https://business.roadrunners.run/"
+        - gridcell "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/ Acessar https://business.roadrunners.run/":
+          - generic: Run Pro | O negócio da corrida acontece aqui
+          - link "https://business.roadrunners.run/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada66195071ca9fcc0e3cde
+            - generic: https://business.roadrunners.run/
+          - link "Acessar https://business.roadrunners.run/":
+            - /url: https://business.roadrunners.run/
+        - gridcell "https://business.roadrunners.run/faq/ Acessar https://business.roadrunners.run/faq/":
+          - generic: https://business.roadrunners.run/faq/
+          - link "Acessar https://business.roadrunners.run/faq/":
+            - /url: https://business.roadrunners.run/faq/
+        - gridcell "https://business.roadrunners.run/ Acessar https://business.roadrunners.run/":
+          - generic: https://business.roadrunners.run/
+          - link "Acessar https://business.roadrunners.run/":
+            - /url: https://business.roadrunners.run/
+        - gridcell "302":
+          - button "302":
+            - generic: "302"
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://business.roadrunners.run/ nos resultados de auditoria":
+          - button "Ocultar https://business.roadrunners.run/ nos resultados de auditoria":
+      - row "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/ Acessar https://business.roadrunners.run/ https://business.roadrunners.run/suporte/ Acessar https://business.roadrunners.run/suporte/ https://business.roadrunners.run/ Acessar https://business.roadrunners.run/ 302 out 13, 2026, 3:16 Ocultar https://business.roadrunners.run/ nos resultados de auditoria":
+        - gridcell "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/ Acessar https://business.roadrunners.run/":
+          - checkbox "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/ Acessar https://business.roadrunners.run/"
+        - gridcell "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/ Acessar https://business.roadrunners.run/":
+          - generic: Run Pro | O negócio da corrida acontece aqui
+          - link "https://business.roadrunners.run/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada66195071ca9fcc0e3cde
+            - generic: https://business.roadrunners.run/
+          - link "Acessar https://business.roadrunners.run/":
+            - /url: https://business.roadrunners.run/
+        - gridcell "https://business.roadrunners.run/suporte/ Acessar https://business.roadrunners.run/suporte/":
+          - generic: https://business.roadrunners.run/suporte/
+          - link "Acessar https://business.roadrunners.run/suporte/":
+            - /url: https://business.roadrunners.run/suporte/
+        - gridcell "https://business.roadrunners.run/ Acessar https://business.roadrunners.run/":
+          - generic: https://business.roadrunners.run/
+          - link "Acessar https://business.roadrunners.run/":
+            - /url: https://business.roadrunners.run/
+        - gridcell "302":
+          - button "302":
+            - generic: "302"
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://business.roadrunners.run/ nos resultados de auditoria":
+          - button "Ocultar https://business.roadrunners.run/ nos resultados de auditoria":
+      - row "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/?login=1 Acessar https://business.roadrunners.run/?login=1 https://business.roadrunners.run/suporte/ Acessar https://business.roadrunners.run/suporte/ https://business.roadrunners.run/ Acessar https://business.roadrunners.run/ 302 out 13, 2026, 3:16 Ocultar https://business.roadrunners.run/?login=1 nos resultados de auditoria":
+        - gridcell "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/?login=1 Acessar https://business.roadrunners.run/?login=1":
+          - checkbox "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/?login=1 Acessar https://business.roadrunners.run/?login=1"
+        - gridcell "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/?login=1 Acessar https://business.roadrunners.run/?login=1":
+          - generic: Run Pro | O negócio da corrida acontece aqui
+          - link "https://business.roadrunners.run/?login=1":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada66195071ca9fcc0e4bed
+            - generic: https://business.roadrunners.run/?login=1
+          - link "Acessar https://business.roadrunners.run/?login=1":
+            - /url: https://business.roadrunners.run/?login=1
+        - gridcell "https://business.roadrunners.run/suporte/ Acessar https://business.roadrunners.run/suporte/":
+          - generic: https://business.roadrunners.run/suporte/
+          - link "Acessar https://business.roadrunners.run/suporte/":
+            - /url: https://business.roadrunners.run/suporte/
+        - gridcell "https://business.roadrunners.run/ Acessar https://business.roadrunners.run/":
+          - generic: https://business.roadrunners.run/
+          - link "Acessar https://business.roadrunners.run/":
+            - /url: https://business.roadrunners.run/
+        - gridcell "302":
+          - button "302":
+            - generic: "302"
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://business.roadrunners.run/?login=1 nos resultados de auditoria":
+          - button "Ocultar https://business.roadrunners.run/?login=1 nos resultados de auditoria":
+      - row "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/?login=1 Acessar https://business.roadrunners.run/?login=1 https://business.roadrunners.run/faq/ Acessar https://business.roadrunners.run/faq/ https://business.roadrunners.run/ Acessar https://business.roadrunners.run/ 302 out 13, 2026, 3:16 Ocultar https://business.roadrunners.run/?login=1 nos resultados de auditoria":
+        - gridcell "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/?login=1 Acessar https://business.roadrunners.run/?login=1":
+          - checkbox "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/?login=1 Acessar https://business.roadrunners.run/?login=1"
+        - gridcell "Run Pro | O negócio da corrida acontece aqui https://business.roadrunners.run/?login=1 Acessar https://business.roadrunners.run/?login=1":
+          - generic: Run Pro | O negócio da corrida acontece aqui
+          - link "https://business.roadrunners.run/?login=1":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada66195071ca9fcc0e4bed
+            - generic: https://business.roadrunners.run/?login=1
+          - link "Acessar https://business.roadrunners.run/?login=1":
+            - /url: https://business.roadrunners.run/?login=1
+        - gridcell "https://business.roadrunners.run/faq/ Acessar https://business.roadrunners.run/faq/":
+          - generic: https://business.roadrunners.run/faq/
+          - link "Acessar https://business.roadrunners.run/faq/":
+            - /url: https://business.roadrunners.run/faq/
+        - gridcell "https://business.roadrunners.run/ Acessar https://business.roadrunners.run/":
+          - generic: https://business.roadrunners.run/
+          - link "Acessar https://business.roadrunners.run/":
+            - /url: https://business.roadrunners.run/
+        - gridcell "302":
+          - button "302":
+            - generic: "302"
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://business.roadrunners.run/?login=1 nos resultados de auditoria":
+          - button "Ocultar https://business.roadrunners.run/?login=1 nos resultados de auditoria":
+      - row "Road Runners Business https://business.roadrunners.run/cadastro/ Acessar https://business.roadrunners.run/cadastro/ https://business.roadrunners.run/suporte/ Acessar https://business.roadrunners.run/suporte/ https://business.roadrunners.run/ Acessar https://business.roadrunners.run/ 302 out 13, 2026, 3:16 Ocultar https://business.roadrunners.run/cadastro/ nos resultados de auditoria":
+        - gridcell "Road Runners Business https://business.roadrunners.run/cadastro/ Acessar https://business.roadrunners.run/cadastro/":
+          - checkbox "Road Runners Business https://business.roadrunners.run/cadastro/ Acessar https://business.roadrunners.run/cadastro/"
+        - gridcell "Road Runners Business https://business.roadrunners.run/cadastro/ Acessar https://business.roadrunners.run/cadastro/":
+          - generic: Road Runners Business
+          - link "https://business.roadrunners.run/cadastro/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada66195071ca9fcc0e40ed
+            - generic: https://business.roadrunners.run/cadastro/
+          - link "Acessar https://business.roadrunners.run/cadastro/":
+            - /url: https://business.roadrunners.run/cadastro/
+        - gridcell "https://business.roadrunners.run/suporte/ Acessar https://business.roadrunners.run/suporte/":
+          - generic: https://business.roadrunners.run/suporte/
+          - link "Acessar https://business.roadrunners.run/suporte/":
+            - /url: https://business.roadrunners.run/suporte/
+        - gridcell "https://business.roadrunners.run/ Acessar https://business.roadrunners.run/":
+          - generic: https://business.roadrunners.run/
+          - link "Acessar https://business.roadrunners.run/":
+            - /url: https://business.roadrunners.run/
+        - gridcell "302":
+          - button "302":
+            - generic: "302"
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://business.roadrunners.run/cadastro/ nos resultados de auditoria":
+          - button "Ocultar https://business.roadrunners.run/cadastro/ nos resultados de auditoria":
+      - row "Road Runners Business https://business.roadrunners.run/cadastro/ Acessar https://business.roadrunners.run/cadastro/ https://business.roadrunners.run/faq/ Acessar https://business.roadrunners.run/faq/ https://business.roadrunners.run/ Acessar https://business.roadrunners.run/ 302 out 13, 2026, 3:16 Ocultar https://business.roadrunners.run/cadastro/ nos resultados de auditoria":
+        - gridcell "Road Runners Business https://business.roadrunners.run/cadastro/ Acessar https://business.roadrunners.run/cadastro/":
+          - checkbox "Road Runners Business https://business.roadrunners.run/cadastro/ Acessar https://business.roadrunners.run/cadastro/"
+        - gridcell "Road Runners Business https://business.roadrunners.run/cadastro/ Acessar https://business.roadrunners.run/cadastro/":
+          - generic: Road Runners Business
+          - link "https://business.roadrunners.run/cadastro/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada66195071ca9fcc0e40ed
+            - generic: https://business.roadrunners.run/cadastro/
+          - link "Acessar https://business.roadrunners.run/cadastro/":
+            - /url: https://business.roadrunners.run/cadastro/
+        - gridcell "https://business.roadrunners.run/faq/ Acessar https://business.roadrunners.run/faq/":
+          - generic: https://business.roadrunners.run/faq/
+          - link "Acessar https://business.roadrunners.run/faq/":
+            - /url: https://business.roadrunners.run/faq/
+        - gridcell "https://business.roadrunners.run/ Acessar https://business.roadrunners.run/":
+          - generic: https://business.roadrunners.run/
+          - link "Acessar https://business.roadrunners.run/":
+            - /url: https://business.roadrunners.run/
+        - gridcell "302":
+          - button "302":
+            - generic: "302"
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://business.roadrunners.run/cadastro/ nos resultados de auditoria":
+          - button "Ocultar https://business.roadrunners.run/cadastro/ nos resultados de auditoria":
+      - row "Road Runners - O ponto de encontro da corrida. https://roadrunners.run/ Acessar https://roadrunners.run/ https://roadrunners.run/estado/ Acessar https://roadrunners.run/estado/ https://roadrunners.run/estado/sc/ Acessar https://roadrunners.run/estado/sc/ 302 out 13, 2026, 3:16 Ocultar https://roadrunners.run/ nos resultados de auditoria":
+        - gridcell "Road Runners - O ponto de encontro da corrida. https://roadrunners.run/ Acessar https://roadrunners.run/":
+          - checkbox "Road Runners - O ponto de encontro da corrida. https://roadrunners.run/ Acessar https://roadrunners.run/"
+        - gridcell "Road Runners - O ponto de encontro da corrida. https://roadrunners.run/ Acessar https://roadrunners.run/":
+          - generic: Road Runners - O ponto de encontro da corrida.
+          - link "https://roadrunners.run/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada66195071ca9fcc0e41f4
+            - generic: https://roadrunners.run/
+          - link "Acessar https://roadrunners.run/":
+            - /url: https://roadrunners.run/
+        - gridcell "https://roadrunners.run/estado/ Acessar https://roadrunners.run/estado/":
+          - generic: https://roadrunners.run/estado/
+          - link "Acessar https://roadrunners.run/estado/":
+            - /url: https://roadrunners.run/estado/
+        - gridcell "https://roadrunners.run/estado/sc/ Acessar https://roadrunners.run/estado/sc/":
+          - generic: https://roadrunners.run/estado/sc/
+          - link "Acessar https://roadrunners.run/estado/sc/":
+            - /url: https://roadrunners.run/estado/sc/
+        - gridcell "302":
+          - button "302":
+            - generic: "302"
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://roadrunners.run/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/ nos resultados de auditoria":
+      - row "Ajuda - Road Runners https://roadrunners.run/ajuda/ Acessar https://roadrunners.run/ajuda/ https://roadrunners.run/estado/ Acessar https://roadrunners.run/estado/ https://roadrunners.run/estado/sc/ Acessar https://roadrunners.run/estado/sc/ 302 out 13, 2026, 3:16 Ocultar https://roadrunners.run/ajuda/ nos resultados de auditoria":
+        - gridcell "Ajuda - Road Runners https://roadrunners.run/ajuda/ Acessar https://roadrunners.run/ajuda/":
+          - checkbox "Ajuda - Road Runners https://roadrunners.run/ajuda/ Acessar https://roadrunners.run/ajuda/"
+        - gridcell "Ajuda - Road Runners https://roadrunners.run/ajuda/ Acessar https://roadrunners.run/ajuda/":
+          - generic: Ajuda - Road Runners
+          - link "https://roadrunners.run/ajuda/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada66195071ca9fcc0e3a80
+            - generic: https://roadrunners.run/ajuda/
+          - link "Acessar https://roadrunners.run/ajuda/":
+            - /url: https://roadrunners.run/ajuda/
+        - gridcell "https://roadrunners.run/estado/ Acessar https://roadrunners.run/estado/":
+          - generic: https://roadrunners.run/estado/
+          - link "Acessar https://roadrunners.run/estado/":
+            - /url: https://roadrunners.run/estado/
+        - gridcell "https://roadrunners.run/estado/sc/ Acessar https://roadrunners.run/estado/sc/":
+          - generic: https://roadrunners.run/estado/sc/
+          - link "Acessar https://roadrunners.run/estado/sc/":
+            - /url: https://roadrunners.run/estado/sc/
+        - gridcell "302":
+          - button "302":
+            - generic: "302"
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://roadrunners.run/ajuda/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/ajuda/ nos resultados de auditoria":
+      - row "Ajuda - Road Runners https://roadrunners.run/ajuda/ Acessar https://roadrunners.run/ajuda/ https://roadrunners.run/atendimento/ Acessar https://roadrunners.run/atendimento/ https://roadrunners.run/login/?redirect=/atendimento/ Acessar https://roadrunners.run/login/?redirect=/atendimento/ 302 out 4, 2026, 2:39 Ocultar https://roadrunners.run/ajuda/ nos resultados de auditoria":
+        - gridcell "Ajuda - Road Runners https://roadrunners.run/ajuda/ Acessar https://roadrunners.run/ajuda/":
+          - checkbox "Ajuda - Road Runners https://roadrunners.run/ajuda/ Acessar https://roadrunners.run/ajuda/"
+        - gridcell "Ajuda - Road Runners https://roadrunners.run/ajuda/ Acessar https://roadrunners.run/ajuda/":
+          - generic: Ajuda - Road Runners
+          - link "https://roadrunners.run/ajuda/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada66195071ca9fcc0e3a80
+            - generic: https://roadrunners.run/ajuda/
+          - link "Acessar https://roadrunners.run/ajuda/":
+            - /url: https://roadrunners.run/ajuda/
+        - gridcell "https://roadrunners.run/atendimento/ Acessar https://roadrunners.run/atendimento/":
+          - generic: https://roadrunners.run/atendimento/
+          - link "Acessar https://roadrunners.run/atendimento/":
+            - /url: https://roadrunners.run/atendimento/
+        - gridcell "https://roadrunners.run/login/?redirect=/atendimento/ Acessar https://roadrunners.run/login/?redirect=/atendimento/":
+          - generic: https://roadrunners.run/login/?redirect=/atendimento/
+          - link "Acessar https://roadrunners.run/login/?redirect=/atendimento/":
+            - /url: https://roadrunners.run/login/?redirect=/atendimento/
+        - gridcell "302":
+          - button "302":
+            - generic: "302"
+        - gridcell "out 4, 2026, 2:39":
+          - generic: out 4, 2026, 2:39
+        - gridcell "Ocultar https://roadrunners.run/ajuda/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/ajuda/ nos resultados de auditoria":
+      - row "Busca - Road Runners https://roadrunners.run/busca/ Acessar https://roadrunners.run/busca/ https://roadrunners.run/estado/ Acessar https://roadrunners.run/estado/ https://roadrunners.run/estado/sc/ Acessar https://roadrunners.run/estado/sc/ 302 out 13, 2026, 3:16 Ocultar https://roadrunners.run/busca/ nos resultados de auditoria":
+        - gridcell "Busca - Road Runners https://roadrunners.run/busca/ Acessar https://roadrunners.run/busca/":
+          - checkbox "Busca - Road Runners https://roadrunners.run/busca/ Acessar https://roadrunners.run/busca/"
+        - gridcell "Busca - Road Runners https://roadrunners.run/busca/ Acessar https://roadrunners.run/busca/":
+          - generic: Busca - Road Runners
+          - link "https://roadrunners.run/busca/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada66195071ca9fcc0e3ffb
+            - generic: https://roadrunners.run/busca/
+          - link "Acessar https://roadrunners.run/busca/":
+            - /url: https://roadrunners.run/busca/
+        - gridcell "https://roadrunners.run/estado/ Acessar https://roadrunners.run/estado/":
+          - generic: https://roadrunners.run/estado/
+          - link "Acessar https://roadrunners.run/estado/":
+            - /url: https://roadrunners.run/estado/
+        - gridcell "https://roadrunners.run/estado/sc/ Acessar https://roadrunners.run/estado/sc/":
+          - generic: https://roadrunners.run/estado/sc/
+          - link "Acessar https://roadrunners.run/estado/sc/":
+            - /url: https://roadrunners.run/estado/sc/
+        - gridcell "302":
+          - button "302":
+            - generic: "302"
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://roadrunners.run/busca/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/busca/ nos resultados de auditoria":
+    - status
+    - navigation "Paginação":
+      - button "Primeira página" [disabled]:
+      - button "Anterior" [disabled]:
+        - generic: Anterior
+      - button "Próximo":
+        - generic: Próximo
+      - generic: "Página:"
+      - textbox "Página:": "1"
+      - generic: de
+      - button "Última página n.º 480":
+        - generic: "480"
+      - combobox:
+        - generic: "10"
+      - status: "Página: 1"
+- contentinfo:
+  - link "Fale conosco":
+    - /url: /company/contacts/
+  - link "Sobre nós":
+    - /url: /company/
+  - link "Blog":
+    - /url: /blog/
+  - button "Português (Brasil)"
+  - link "Ver planos e preços":
+    - /url: /pricing/
+  - link "Comece a usar a Semrush":
+    - /url: https://www.semrush.com/academy/courses/getting-started-with-semrush/
+  - link "Configurações dos cookies":
+    - /url: javascript:window.showConsentSettings();
+  - link "Informações jurídicas":
+    - /url: /company/legal/
+  - link "Política de privacidade":
+    - /url: /company/legal/privacy-policy/
+  - link "Não venda minhas informações pessoais":
+    - /url: javascript:window.showConsentSettings();
+  - generic: © 2026 Semrush Holdings. Todos os direitos reservados.
+- region "Notificações"
+- button "Abrir painel de ajuda"
+- iframe [id="intercom-frame"]
+- region "Notifications"

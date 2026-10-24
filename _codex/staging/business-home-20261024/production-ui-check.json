@@ -1,0 +1,24 @@
+{
+  "method": "Authenticated Chrome UI via CUA",
+  "url": "https://business.roadrunners.run/?periodo=7&home_area=audiencia",
+  "periods_verified": [
+    7,
+    30
+  ],
+  "metrics_rendered_from_production": true,
+  "zero_approval_queues_hidden": true,
+  "unavailable_history_labeled": true,
+  "tabs_verified": [
+    "audiencia",
+    "contas",
+    "conteudo",
+    "comunicacao"
+  ],
+  "keyboard_arrow_navigation_verified": true,
+  "selected_area_preserved_on_period_change": true,
+  "meet_presence_loaded": true,
+  "desktop_layout_inspected": true,
+  "screenshot": "home-publicada.png",
+  "delegated_account_session_tested": false,
+  "mobile_validation": "Local CFML render at 390px; no production session viewport changed"
+}

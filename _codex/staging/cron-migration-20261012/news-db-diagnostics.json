@@ -1,0 +1,73 @@
+{
+  "LOADED_CONFIG": {
+    "MESSAGE": "Error Executing Database Query.",
+    "DETAIL": "Executing the SQL statement is not allowed.",
+    "TYPE": "Database",
+    "CONTEXT": [
+      {
+        "LINE": 7,
+        "TEMPLATE": "/var/www/conteudo.roadrunners.run/inc/db.cfc"
+      },
+      {
+        "LINE": 136,
+        "TEMPLATE": "/var/www/conteudo.roadrunners.run/inc/content_local_config.cfc"
+      },
+      {
+        "LINE": 151,
+        "TEMPLATE": "/var/www/conteudo.roadrunners.run/inc/content_local_config.cfc"
+      },
+      {
+        "LINE": 8,
+        "TEMPLATE": "/var/www/conteudo.roadrunners.run/inc/content_local_config.cfc"
+      },
+      {
+        "LINE": 6,
+        "TEMPLATE": "/var/www/conteudo.roadrunners.run/cron-database-audit-zm71ot55/run.cfm"
+      }
+    ]
+  },
+  "DATABASE": {
+    "RUNTIME_TABLE": "news.tb_runtime_settings",
+    "USER": "runner_dba",
+    "NAME": "runnerhub"
+  },
+  "MAIL_CONFIG": {
+    "MESSAGE": "Error Executing Database Query.",
+    "DETAIL": "Executing the SQL statement is not allowed.",
+    "TYPE": "Database",
+    "CONTEXT": [
+      {
+        "LINE": 7,
+        "TEMPLATE": "/var/www/conteudo.roadrunners.run/inc/db.cfc"
+      },
+      {
+        "LINE": 136,
+        "TEMPLATE": "/var/www/conteudo.roadrunners.run/inc/content_local_config.cfc"
+      },
+      {
+        "LINE": 151,
+        "TEMPLATE": "/var/www/conteudo.roadrunners.run/inc/content_local_config.cfc"
+      },
+      {
+        "LINE": 8,
+        "TEMPLATE": "/var/www/conteudo.roadrunners.run/inc/content_local_config.cfc"
+      },
+      {
+        "LINE": 8,
+        "TEMPLATE": "/var/www/conteudo.roadrunners.run/inc/sixcomm_mail_config.cfc"
+      },
+      {
+        "LINE": 7,
+        "TEMPLATE": "/var/www/conteudo.roadrunners.run/cron-database-audit-zm71ot55/run.cfm"
+      }
+    ]
+  },
+  "CHANNEL": {
+    "SOURCEMEDIAALLOWED": true,
+    "AUTOPUBLISHSUMMARY": true,
+    "PUBLICATIONMODE": "licensed_full"
+  },
+  "FILE_CONFIG": {
+    "SECRET_PRESENT": true
+  }
+}

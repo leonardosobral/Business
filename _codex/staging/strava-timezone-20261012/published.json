@@ -1,0 +1,9 @@
+{
+  "published_at_utc": "2026-10-12T14:59:31.153478+00:00",
+  "backup": "/var/backups/strava-timezone-20261012-g18a8z2g",
+  "before": "2c182ac30ebadd3236b5ad2031a42e5b2e200ccb114dee99e3574b154e294cbf",
+  "after": "bf1431637911c560a7e96e93abd4fef0b105d1029b15d8a2fbf05f2bd9c75c84",
+  "auth_boundary_http": "405",
+  "auth_boundary_status": "error",
+  "metadata_preserved": true
+}

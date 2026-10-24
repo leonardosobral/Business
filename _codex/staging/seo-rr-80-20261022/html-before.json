@@ -1,0 +1,550 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "html_bytes": 375777,
+    "visible_text_bytes": 4729,
+    "groups": {
+      "script": 132911,
+      "style": 78598,
+      "svg": 43472,
+      "script_count": 51,
+      "style_count": 14,
+      "svg_count": 3
+    },
+    "largest": [
+      {
+        "tag": "div",
+        "id": "",
+        "class": "container",
+        "src": "",
+        "bytes": 187280,
+        "text_bytes": 2830
+      },
+      {
+        "tag": "main",
+        "id": "rr-page-content",
+        "class": "rr-page-content",
+        "src": "",
+        "bytes": 100809,
+        "text_bytes": 2368
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "row g-2",
+        "src": "",
+        "bytes": 67792,
+        "text_bytes": 1980
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "col-12 col-lg-9 order-2 px-lg-3",
+        "src": "",
+        "bytes": 66429,
+        "text_bytes": 1980
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "home-center-stack",
+        "src": "",
+        "bytes": 66348,
+        "text_bytes": 1980
+      },
+      {
+        "tag": "header",
+        "id": "",
+        "class": "fixed-top",
+        "src": "",
+        "bytes": 33264,
+        "text_bytes": 121
+      },
+      {
+        "tag": "nav",
+        "id": "",
+        "class": "navbar navbar-expand-lg navbar-light rr-topbar",
+        "src": "",
+        "bytes": 33215,
+        "text_bytes": 121
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "container",
+        "src": "",
+        "bytes": 33109,
+        "text_bytes": 121
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "row g-3 home-discovery-lists",
+        "src": "",
+        "bytes": 30974,
+        "text_bytes": 950
+      },
+      {
+        "tag": "section",
+        "id": "homeHeroSearch",
+        "class": "home-hero mb-3",
+        "src": "",
+        "bytes": 26587,
+        "text_bytes": 388
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "row g-3 align-items-center",
+        "src": "",
+        "bytes": 26517,
+        "text_bytes": 388
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "col-12 home-hero-copy",
+        "src": "",
+        "bytes": 26455,
+        "text_bytes": 388
+      },
+      {
+        "tag": "footer",
+        "id": "",
+        "class": "rr-portal-footer",
+        "src": "",
+        "bytes": 25165,
+        "text_bytes": 538
+      },
+      {
+        "tag": "div",
+        "id": "sticky-stop",
+        "class": "container rr-portal-footer-inner",
+        "src": "",
+        "bytes": 25091,
+        "text_bytes": 538
+      }
+    ],
+    "login_links": 0,
+    "private_links": {
+      "/atividades/": 1,
+      "/agenda/": 1,
+      "/atendimento/": 1,
+      "/atleta/": 1,
+      "/resultados/": 1
+    },
+    "seconds": 0.906
+  },
+  {
+    "path": "/evento/2026-together-run-pe/",
+    "status": 200,
+    "html_bytes": 337671,
+    "visible_text_bytes": 5394,
+    "groups": {
+      "script": 125208,
+      "style": 74296,
+      "svg": 43472,
+      "script_count": 53,
+      "style_count": 15,
+      "svg_count": 3
+    },
+    "largest": [
+      {
+        "tag": "div",
+        "id": "",
+        "class": "container",
+        "src": "",
+        "bytes": 162962,
+        "text_bytes": 3480
+      },
+      {
+        "tag": "main",
+        "id": "rr-page-content",
+        "class": "rr-page-content",
+        "src": "",
+        "bytes": 43579,
+        "text_bytes": 2618
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "row g-2",
+        "src": "",
+        "bytes": 43470,
+        "text_bytes": 2618
+      },
+      {
+        "tag": "header",
+        "id": "",
+        "class": "fixed-top",
+        "src": "",
+        "bytes": 33265,
+        "text_bytes": 121
+      },
+      {
+        "tag": "nav",
+        "id": "",
+        "class": "navbar navbar-expand-lg navbar-light rr-topbar",
+        "src": "",
+        "bytes": 33216,
+        "text_bytes": 121
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "container",
+        "src": "",
+        "bytes": 33110,
+        "text_bytes": 121
+      },
+      {
+        "tag": "section",
+        "id": "homeHeroSearch",
+        "class": "home-hero mb-3 is-collapsed",
+        "src": "",
+        "bytes": 26610,
+        "text_bytes": 400
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "row g-3 align-items-center",
+        "src": "",
+        "bytes": 26527,
+        "text_bytes": 400
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "col-12 home-hero-copy",
+        "src": "",
+        "bytes": 26465,
+        "text_bytes": 400
+      },
+      {
+        "tag": "footer",
+        "id": "",
+        "class": "rr-portal-footer",
+        "src": "",
+        "bytes": 25165,
+        "text_bytes": 538
+      },
+      {
+        "tag": "div",
+        "id": "sticky-stop",
+        "class": "container rr-portal-footer-inner",
+        "src": "",
+        "bytes": 25091,
+        "text_bytes": 538
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "rr-footer-main",
+        "src": "",
+        "bytes": 23460,
+        "text_bytes": 361
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "col-12 col-md-8 col-lg-6 col-xl-6 px-lg-3 order-1 order-md-2",
+        "src": "",
+        "bytes": 22474,
+        "text_bytes": 2108
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "class": "navbar-brand m-0 p-0",
+        "src": "",
+        "bytes": 21554,
+        "text_bytes": 0
+      }
+    ],
+    "login_links": 0,
+    "private_links": {
+      "/atividades/": 1,
+      "/agenda/": 1,
+      "/atendimento/": 2,
+      "/atleta/": 1,
+      "/resultados/": 1
+    },
+    "seconds": 0.317
+  },
+  {
+    "path": "/estado/ba/",
+    "status": 200,
+    "html_bytes": 564934,
+    "visible_text_bytes": 12422,
+    "groups": {
+      "script": 129494,
+      "style": 67460,
+      "svg": 45027,
+      "script_count": 56,
+      "style_count": 18,
+      "svg_count": 4
+    },
+    "largest": [
+      {
+        "tag": "div",
+        "id": "",
+        "class": "container",
+        "src": "",
+        "bytes": 401391,
+        "text_bytes": 10583
+      },
+      {
+        "tag": "main",
+        "id": "rr-page-content",
+        "class": "rr-page-content",
+        "src": "",
+        "bytes": 281940,
+        "text_bytes": 9718
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "row g-2",
+        "src": "",
+        "bytes": 170049,
+        "text_bytes": 4874
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "col-12 col-md-8 col-lg-6 col-xl-6 px-lg-3 order-1 order-md-2",
+        "src": "",
+        "bytes": 145088,
+        "text_bytes": 4136
+      },
+      {
+        "tag": "div",
+        "id": "container-proximas",
+        "class": "col-lg-12",
+        "src": "",
+        "bytes": 130636,
+        "text_bytes": 3807
+      },
+      {
+        "tag": "div",
+        "id": "scroll-container-proximas",
+        "class": "",
+        "src": "",
+        "bytes": 130435,
+        "text_bytes": 3807
+      },
+      {
+        "tag": "div",
+        "id": "listaEvento",
+        "class": "row g-2",
+        "src": "",
+        "bytes": 115375,
+        "text_bytes": 3703
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "page-section-hero",
+        "src": "",
+        "bytes": 111775,
+        "text_bytes": 4844
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "estado-page-hero-header",
+        "src": "",
+        "bytes": 111702,
+        "text_bytes": 4844
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "estado-page-hero-location",
+        "src": "",
+        "bytes": 109896,
+        "text_bytes": 4827
+      },
+      {
+        "tag": "details",
+        "id": "",
+        "class": "estado-location-picker estado-city-picker",
+        "src": "",
+        "bytes": 92603,
+        "text_bytes": 4490
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "estado-location-picker-panel estado-city-picker-panel",
+        "src": "",
+        "bytes": 92213,
+        "text_bytes": 4474
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "estado-location-picker-list",
+        "src": "",
+        "bytes": 91577,
+        "text_bytes": 4416
+      },
+      {
+        "tag": "header",
+        "id": "",
+        "class": "fixed-top",
+        "src": "",
+        "bytes": 33265,
+        "text_bytes": 121
+      }
+    ],
+    "login_links": 0,
+    "private_links": {
+      "/atividades/": 1,
+      "/agenda/": 1,
+      "/atendimento/": 1,
+      "/atleta/": 1,
+      "/resultados/": 1
+    },
+    "seconds": 0.371
+  },
+  {
+    "path": "/ajuda/",
+    "status": 200,
+    "html_bytes": 249474,
+    "visible_text_bytes": 6059,
+    "groups": {
+      "script": 86393,
+      "style": 48596,
+      "svg": 43472,
+      "script_count": 41,
+      "style_count": 8,
+      "svg_count": 3
+    },
+    "largest": [
+      {
+        "tag": "div",
+        "id": "",
+        "class": "container",
+        "src": "",
+        "bytes": 135704,
+        "text_bytes": 4448
+      },
+      {
+        "tag": "header",
+        "id": "",
+        "class": "fixed-top",
+        "src": "",
+        "bytes": 33265,
+        "text_bytes": 121
+      },
+      {
+        "tag": "nav",
+        "id": "",
+        "class": "navbar navbar-expand-lg navbar-light rr-topbar",
+        "src": "",
+        "bytes": 33216,
+        "text_bytes": 121
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "container",
+        "src": "",
+        "bytes": 33110,
+        "text_bytes": 121
+      },
+      {
+        "tag": "section",
+        "id": "homeHeroSearch",
+        "class": "home-hero mb-3 is-collapsed",
+        "src": "",
+        "bytes": 26603,
+        "text_bytes": 393
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "row g-3 align-items-center",
+        "src": "",
+        "bytes": 26520,
+        "text_bytes": 393
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "col-12 home-hero-copy",
+        "src": "",
+        "bytes": 26458,
+        "text_bytes": 393
+      },
+      {
+        "tag": "footer",
+        "id": "",
+        "class": "rr-portal-footer",
+        "src": "",
+        "bytes": 25165,
+        "text_bytes": 538
+      },
+      {
+        "tag": "div",
+        "id": "sticky-stop",
+        "class": "container rr-portal-footer-inner",
+        "src": "",
+        "bytes": 25091,
+        "text_bytes": 538
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "rr-footer-main",
+        "src": "",
+        "bytes": 23460,
+        "text_bytes": 361
+      },
+      {
+        "tag": "a",
+        "id": "",
+        "class": "navbar-brand m-0 p-0",
+        "src": "",
+        "bytes": 21554,
+        "text_bytes": 0
+      },
+      {
+        "tag": "svg",
+        "id": "",
+        "class": "",
+        "src": "",
+        "bytes": 21479,
+        "text_bytes": 0
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "rr-footer-brand",
+        "src": "",
+        "bytes": 20887,
+        "text_bytes": 142
+      },
+      {
+        "tag": "div",
+        "id": "",
+        "class": "home-hero-search mb-2",
+        "src": "",
+        "bytes": 20880,
+        "text_bytes": 52
+      }
+    ],
+    "login_links": 0,
+    "private_links": {
+      "/atividades/": 1,
+      "/agenda/": 1,
+      "/atendimento/": 4,
+      "/atleta/": 1,
+      "/resultados/": 1
+    },
+    "seconds": 0.129
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "before": {
+    "portal/includes/seo_queue_data.cfm": "a03d797c3a53e1ef8f9370a66b05b58525b78d01e7c5e649cc83dd4f7b5e950e"
+  },
+  "watch": {
+    "portal/conteudo/seo.cfm": "8ecd4a478379f470fe33cd8f7353a5f3e997ec7c05cbc68e2b952e2950db2870",
+    "portal/includes/seo_queue_backend.cfm": "d8d8d479aced0469dd2574fc1c9bb0897020a42b41ef8bf180159a7a46f12a98",
+    "portal/includes/seo_score_data.cfm": "8ba63c53d9242abcd9bb283a6e9f76da5ee5450fc70fb9901afe981a7abcd166",
+    "portal/includes/seo_semrush_data.cfm": "4336116e4a35e3fccdd4bf0f3396823b3c90fafb352142ea1c44c72352dedeea",
+    "portal/conteudo/seo_semrush.cfm": "fe55209e32e723abc7bfdeb47875542eee05d558eba3259dc7e5a4cfd5a1fa58",
+    "includes/backend/require_admin.cfm": "c2f9659ac3db941cc543a9f86d5b39b573c365a36ca2d3fba5a58675f6e017d6"
+  }
+}

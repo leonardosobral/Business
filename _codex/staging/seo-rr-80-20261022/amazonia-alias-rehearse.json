@@ -1,0 +1,7 @@
+{
+  "SITEMAP": true,
+  "ROUTING": true,
+  "FORWARD": true,
+  "INVERSE": true,
+  "ONLY_REDIRECT_CHANGED": true
+}

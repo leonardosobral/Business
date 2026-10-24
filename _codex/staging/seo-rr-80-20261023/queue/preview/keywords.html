@@ -1,0 +1,492 @@
+<!doctype html><html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEO · Semrush</title><link rel="stylesheet" href="/assets/css/mdb.min.css"><link rel="stylesheet" href="/assets/css/business-ui.css"></head><body data-mdb-theme="dark" class="bg-dark-subtle"><main class="container-fluid px-4 py-4">
+
+<style>
+  .seo-queue { --seo-border: rgba(255,255,255,.14); }
+  .seo-tabs { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.5rem 0; border-bottom:1px solid var(--seo-border); padding-bottom:.75rem; }
+  .seo-tabs a { padding:.7rem 1rem; border-radius:6px; color:var(--mdb-body-color); }
+  .seo-tabs a[aria-current="page"] { background:rgba(255,193,7,.15); color:#ffda86; font-weight:650; }
+  .seo-tabs a:focus-visible { outline:2px solid #ffda86; outline-offset:3px; }
+  .seo-queue .seo-subtitle { max-width: 760px; color: var(--mdb-secondary-color); }
+  .seo-queue .seo-run-grid, .seo-queue .seo-detail-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+  .seo-queue .seo-run, .seo-queue .seo-filter, .seo-queue .seo-issue { border: 1px solid var(--seo-border); border-radius: 8px; background: rgba(255,255,255,.025); }
+  .seo-queue .seo-run, .seo-queue .seo-filter { padding: 1rem; }
+  .seo-queue .seo-run-numbers { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .75rem; margin: 1rem 0; }
+  .seo-queue .seo-run-numbers dt { font-size: .75rem; font-weight: 400; color: var(--mdb-secondary-color); }
+  .seo-queue .seo-run-numbers dd { font-size: 1.3rem; font-weight: 650; margin: .25rem 0 0; }
+  .seo-queue .seo-label { display: inline-flex; align-items: center; gap: .35rem; border: 1px solid var(--seo-border); border-radius: 5px; padding: .25rem .5rem; font-size: .75rem; line-height: 1.4; }
+  .seo-queue .seo-partial, .seo-queue .seo-priority-p1 { color: #ffda86; background: rgba(255,193,7,.1); border-color: rgba(255,193,7,.3); }
+  .seo-queue .seo-complete { color: #a0dfd4; background: rgba(40,167,145,.1); border-color: rgba(40,167,145,.3); }
+  .seo-queue .seo-priority-p2 { color: #a9d1ff; background: rgba(95,164,242,.08); }
+  .seo-queue .seo-priority-p3, .seo-queue .seo-priority-review { color: #d6d6d6; }
+  .seo-queue .seo-filter { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; }
+  .seo-queue .seo-filter-field { flex: 1 1 180px; min-width: 0; }
+  .seo-queue .seo-filter .form-label { font-size: .85rem; }
+  .seo-queue .seo-filter .btn { min-height: 40px; }
+  .seo-queue .seo-issue { padding: 1.15rem 1.25rem; margin-bottom: .75rem; }
+  .seo-queue .seo-issue-head { display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
+  .seo-queue .seo-issue-heading { min-width: 0; }
+  .seo-queue .seo-issue-heading h3 { font-size: 1.05rem; margin: .65rem 0 .4rem; line-height: 1.45; }
+  .seo-queue .seo-meta { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+  .seo-queue .seo-state { font-size: .75rem; color: var(--mdb-secondary-color); white-space: nowrap; }
+  .seo-queue .seo-issue p { margin-bottom: .6rem; }
+  .seo-queue .seo-issue details { border-top: 1px solid var(--seo-border); margin-top: .85rem; padding-top: .6rem; }
+  .seo-queue .seo-issue summary { cursor: pointer; color: #ffda86; padding: .25rem 0; font-size: .875rem; width: fit-content; }
+  .seo-queue .seo-detail-grid { margin-top: 1rem; }
+  .seo-queue .seo-detail-grid dt { font-size: .8rem; color: var(--mdb-secondary-color); margin-bottom: .35rem; }
+  .seo-queue .seo-detail-grid dd { margin: 0; font-size: .9rem; overflow-wrap: anywhere; white-space: pre-line; }
+  .seo-queue .seo-urls { list-style: none; padding-left: 0; margin: .75rem 0 0; }
+  .seo-queue .seo-urls li { margin-top: .4rem; }
+  .seo-queue .seo-urls a { color: #b9d8ff; overflow-wrap: anywhere; font-size: .875rem; text-decoration: underline; text-underline-offset: 3px; }
+  .seo-queue a:focus-visible, .seo-queue summary:focus-visible { outline: 2px solid #ffda86; outline-offset: 4px; }
+  .seo-queue .seo-note { font-size: .8rem; line-height: 1.5; color: var(--mdb-secondary-color); }
+  .seo-queue .seo-report { margin-bottom: 2rem; }
+  .seo-queue .seo-section-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: 1rem; }
+  .seo-queue .seo-score-card { padding: 1.25rem; }
+  .seo-queue .seo-search-health { margin: 1rem 0; padding: 1rem; border: 1px solid var(--seo-status-border); border-left: 4px solid var(--seo-status-color); border-radius: .6rem; background: var(--seo-status-bg); }
+  .seo-queue .seo-search-health h4 { color: var(--seo-status-color); line-height: 1.5; }
+  .seo-queue .seo-search-eyebrow { font-size: .75rem; margin-bottom: .5rem; color: #bcc3cf; }
+  .seo-queue .seo-search-facts { margin: .85rem 0; }
+  .seo-queue .seo-search-facts div + div { margin-top: .85rem; }
+  .seo-queue .seo-search-facts dt { color: var(--seo-status-color); font-size: .85rem; }
+  .seo-queue .seo-search-facts dd { font-size: .8rem; margin: .3rem 0 0; line-height: 1.6; }
+  .seo-queue .seo-technical-score { padding: .8rem 0; margin-bottom: 1rem; border-bottom: 1px solid var(--seo-border); }
+  .seo-queue .seo-technical-score summary { cursor: pointer; font-size: .85rem; }
+  .seo-queue .seo-technical-score summary:focus-visible { outline: 2px solid #ffce67; outline-offset: 4px; }
+  .seo-queue .seo-score-main { display: flex; align-items: center; gap: 1.25rem; padding: 1rem 0; }
+  .seo-queue .seo-score-number { display: flex; align-items: baseline; gap: .25rem; flex-shrink: 0; }
+  .seo-queue .seo-score-value { font-size: 3rem; line-height: 1; font-weight: 750; letter-spacing: -.05em; color: #f3f5f8; }
+  .seo-queue .seo-score-max { font-size: 1rem; color: #aab2bd; }
+  .seo-queue .seo-score-copy { min-width: 0; }
+  .seo-queue .seo-score-copy strong { font-size: .9rem; }
+  .seo-queue .seo-status-totals { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .5rem; padding: 0; margin: 0 0 1rem; list-style: none; }
+  .seo-queue .seo-status-total { border: 1px solid; border-radius: 6px; padding: .6rem .5rem; }
+  .seo-queue .seo-status-total strong { display: block; font-size: 1.15rem; line-height: 1.3; }
+  .seo-queue .seo-status-total span { display: block; font-size: .7rem; line-height: 1.4; margin-top: .15rem; }
+  .seo-queue .seo-status-pass { --seo-status-color: #94e3b0; --seo-status-bg: rgba(83,199,125,.07); --seo-status-border: rgba(83,199,125,.3); }
+  .seo-queue .seo-status-warning { --seo-status-color: #ffda86; --seo-status-bg: rgba(255,193,7,.07); --seo-status-border: rgba(255,193,7,.3); }
+  .seo-queue .seo-status-error { --seo-status-color: #ffaaa6; --seo-status-bg: rgba(250,100,100,.08); --seo-status-border: rgba(250,100,100,.34); }
+  .seo-queue .seo-status-unknown { --seo-status-color: #bcc3cf; --seo-status-bg: rgba(170,180,195,.06); --seo-status-border: rgba(170,180,195,.25); }
+  .seo-queue .seo-status-total, .seo-queue .seo-status-badge { color: var(--seo-status-color); background: var(--seo-status-bg); border-color: var(--seo-status-border); }
+  .seo-queue .seo-score-card .seo-run-numbers { border-top: 1px solid var(--seo-border); padding-top: 1rem; }
+  .seo-queue .seo-report-note { border-left: 3px solid #7992ac; background: rgba(121,146,172,.06); padding: .8rem 1rem; margin-top: 1rem; }
+  .seo-queue .seo-method, .seo-queue .seo-checklist, .seo-queue .seo-history { border: 1px solid var(--seo-border); border-radius: 8px; background: rgba(255,255,255,.02); }
+  .seo-queue .seo-method { margin: 1rem 0 1.5rem; padding: 0 1rem; }
+  .seo-queue .seo-method > summary { cursor: pointer; padding: .9rem 0; font-size: .9rem; font-weight: 600; }
+  .seo-queue .seo-method-body { padding: .1rem 0 1rem; max-width: 960px; }
+  .seo-queue .seo-method-body p { margin-bottom: .6rem; font-size: .85rem; }
+  .seo-queue .seo-method-body p:last-child { margin-bottom: 0; }
+  .seo-queue .seo-checklist-grid, .seo-queue .seo-history-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 1rem; }
+  .seo-queue .seo-checklist { padding: 1.1rem; min-width: 0; }
+  .seo-queue .seo-checklist-heading { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; }
+  .seo-queue .seo-check-group + .seo-check-group { margin-top: 1.25rem; }
+  .seo-queue .seo-check-group-title { color: var(--seo-status-color); font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 650; margin: 0 0 .55rem; }
+  .seo-queue .seo-check { border: 1px solid var(--seo-border); border-left: 3px solid var(--seo-status-border); border-radius: 5px; margin-top: .5rem; background: var(--seo-status-bg); }
+  .seo-queue .seo-check > summary { display: flex; align-items: flex-start; gap: .6rem; padding: .85rem .8rem; cursor: pointer; list-style: none; }
+  .seo-queue .seo-check > summary::-webkit-details-marker { display: none; }
+  .seo-queue .seo-check-icon { flex: 0 0 1rem; color: var(--seo-status-color); font-weight: 700; line-height: 1.5; }
+  .seo-queue .seo-check-summary { flex: 1; min-width: 0; }
+  .seo-queue .seo-check-summary strong { display: block; font-size: .87rem; font-weight: 600; line-height: 1.5; }
+  .seo-queue .seo-check-summary-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; margin-top: .3rem; }
+  .seo-queue .seo-check-summary-meta span { font-size: .7rem; }
+  .seo-queue .seo-check-summary-meta .seo-status-text { color: var(--seo-status-color); font-weight: 600; }
+  .seo-queue .seo-check-chevron { color: #b7bfca; font-size: .85rem; line-height: 1.5; transition: transform .15s ease; }
+  .seo-queue .seo-check[open] > summary .seo-check-chevron { transform: rotate(90deg); }
+  .seo-queue .seo-check[open] > summary { border-bottom: 1px solid var(--seo-border); }
+  .seo-queue .seo-check-body { padding: .85rem .9rem; }
+  .seo-queue .seo-check-body > p { font-size: .83rem; line-height: 1.55; margin: 0 0 .75rem; }
+  .seo-queue .seo-check-counts { display: flex; flex-wrap: wrap; gap: .35rem .75rem; font-size: .75rem; margin: .65rem 0; }
+  .seo-queue .seo-check-counts span { color: var(--seo-status-color); }
+  .seo-queue .seo-check-cases { margin-top: .85rem; }
+  .seo-queue .seo-check-cases strong { font-size: .75rem; color: var(--seo-status-color); }
+  .seo-queue .seo-check-cases .seo-urls { margin-top: .3rem; }
+  .seo-queue .seo-check-cases .seo-urls a { font-size: .75rem; line-height: 1.5; }
+  .seo-queue .seo-history-grid { margin-top: 1rem; }
+  .seo-queue .seo-history { padding: 1rem; min-width: 0; }
+  .seo-queue .seo-history .table { margin: .75rem 0; --mdb-table-bg: transparent; }
+  .seo-queue .seo-history th { font-size: .72rem; color: #aab2bd; font-weight: 500; }
+  .seo-queue .seo-history td { font-size: .78rem; vertical-align: middle; }
+  .seo-queue .seo-history th, .seo-queue .seo-history td { padding: .7rem .3rem; border-color: var(--seo-border); }
+  .seo-queue .seo-history td:first-child { width: 48%; }
+  .seo-queue .seo-history td:nth-child(2) { white-space: nowrap; font-weight: 650; }
+  .seo-queue .seo-history .seo-note { margin-bottom: 0; }
+  @media (max-width: 767px) {
+    .seo-queue .seo-run-grid, .seo-queue .seo-detail-grid, .seo-queue .seo-checklist-grid, .seo-queue .seo-history-grid { grid-template-columns: 1fr; }
+    .seo-queue .seo-score-card, .seo-queue .seo-checklist { padding: 1rem; }
+    .seo-queue .seo-score-value { font-size: 2.65rem; }
+    .seo-queue .seo-score-main { gap: 1rem; }
+    .seo-queue .seo-status-totals { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .seo-queue .seo-status-total strong, .seo-queue .seo-status-total span { display: inline; }
+    .seo-queue .seo-status-total span { margin-left: .35rem; }
+    .seo-queue .seo-run-numbers { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .seo-queue .seo-issue { padding: 1rem; }
+    .seo-queue .seo-issue-head { flex-direction: column; gap: .5rem; }
+    .seo-queue .seo-filter-field { flex-basis: 100%; }
+    .seo-queue .seo-filter .btn { flex: 1; }
+  }
+</style>
+
+<section class="card shadow-0 mb-4">
+  <div class="card-body seo-queue">
+    <div class="d-flex flex-wrap justify-content-between gap-3 align-items-start">
+      <div>
+        <h1 class="h3 mb-2">SEO</h1>
+        <p class="seo-subtitle mb-0">Acompanhe o que está certo, o que precisa de atenção e as correções do Road Runners e do Open Results.</p>
+      </div>
+      <div class="small text-muted">Revisão da fila<br><strong>23&#x2f;10&#x2f;2026 &agrave;s 09&#x3a;13 &#x28;Bras&iacute;lia&#x29;</strong></div>
+    </div>
+    <nav class="seo-tabs" aria-label="Seções de SEO">
+      
+        <a href="/portal/seo/?aba=relatorio&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">Relat&oacute;rio t&eacute;cnico</a>
+      
+        <a href="/portal/seo/?aba=ga4&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">Audi&ecirc;ncia Google</a>
+      
+        <a href="/portal/seo/?aba=semrush&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all" aria-current="page">Semrush</a>
+      
+        <a href="/portal/seo/?aba=ia&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">SEO para IA</a>
+      
+        <a href="/portal/seo/?aba=fila&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">Fila de corre&ccedil;&otilde;es</a>
+      
+    </nav>
+    
+<style>
+.seo-semrush { min-width:0; }
+.seo-semrush .sr-metrics { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.75rem; margin:1rem 0; }
+.seo-semrush .sr-audit-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.seo-semrush .sr-metric { border:1px solid var(--seo-border); border-radius:8px; padding:1rem; }
+.seo-semrush .sr-metric dt { font-size:.8rem; color:var(--mdb-secondary-color); font-weight:400; }
+.seo-semrush .sr-metric dd { margin:.3rem 0 0; font-size:1.8rem; font-weight:650; }
+.seo-semrush .sr-nav { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.2rem 0; }
+.seo-semrush .sr-nav a { border:1px solid var(--seo-border); padding:.5rem .8rem; border-radius:5px; color:inherit; }
+.seo-semrush .sr-nav a[aria-current="page"] { color:#ffda86; background:rgba(255,193,7,.1); }
+.seo-semrush .sr-table-wrap { overflow-x:auto; max-width:100%; }
+.seo-semrush table { width:100%; border-collapse:collapse; font-size:.85rem; }
+.seo-semrush th,.seo-semrush td { text-align:left; padding:.8rem .6rem; border-bottom:1px solid var(--seo-border); vertical-align:top; }
+.seo-semrush th { color:var(--mdb-secondary-color); font-weight:500; }
+.seo-semrush td a { color:#b9d8ff; overflow-wrap:anywhere; }
+.seo-semrush .sr-measure { white-space:nowrap; }
+.seo-semrush .sr-keyword { min-width:155px; }
+.seo-semrush .sr-url { max-width:330px; min-width:180px; }
+.seo-semrush .sr-card-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem; }
+.seo-semrush .sr-card-grid .seo-issue { margin:0; min-width:0; }
+.seo-semrush .sr-card-grid h3 { font-size:1rem; line-height:1.5; margin:.6rem 0; }
+.seo-semrush .sr-card-grid p { font-size:.85rem; }
+.seo-semrush .sr-form { display:flex; flex-wrap:wrap; align-items:end; gap:.5rem; margin:1rem 0; }
+.seo-semrush .sr-form label { font-size:.85rem; }
+.seo-semrush .sr-form input { max-width:100%; }
+@media(max-width:767px){.seo-semrush .sr-metrics,.seo-semrush .sr-card-grid{grid-template-columns:1fr}.seo-semrush .sr-metric dd{font-size:1.5rem}.seo-semrush .sr-metric{padding:.75rem}}
+</style>
+<section class="seo-semrush" aria-labelledby="sr-title">
+
+  <div class="seo-section-head">
+    <h2 class="h5 mb-0" id="sr-title">Semrush · Road Runners</h2>
+    <a class="small" href="https://www.semrush.com/analytics/organic/positions/?q=roadrunners.run&amp;db=br" target="_blank" rel="noopener noreferrer">Abrir no Semrush ↗</a>
+  </div>
+  <p class="seo-note">Brasil · desktop · coleta de 04&#x2f;10&#x2f;2026, 14&#x3a;15 &#x28;Bras&iacute;lia&#x29;. As posições têm datas próprias. Dados do Semrush; não são cliques do Search Console.</p>
+  <dl class="sr-metrics">
+    <div class="sr-metric"><dt>Palavras-chave na base Semrush</dt><dd> 993</dd></div>
+    <div class="sr-metric"><dt>Palavras-chave nas posições 1–10</dt><dd>75</dd></div>
+    <div class="sr-metric"><dt>Tráfego orgânico mensal estimado</dt><dd>1.234</dd></div>
+  </dl>
+  <div class="seo-search-health seo-status-warning" data-semrush-audit="complete">
+    
+      <h3 class="h6">Última auditoria concluída · resultados da amostra</h3>
+      <p class="small mb-1">5.000 páginas rastreadas.   30 ocorrências de erro. 10.333 avisos. 5.892 observações. Uma mesma página pode gerar várias ocorrências; os totais não são páginas únicas. Os achados precisam de revisão por URL.</p>
+    
+      <dl class="sr-metrics sr-audit-metrics">
+        <div class="sr-metric"><dt>Site Health Semrush · amostra técnica</dt><dd>75%</dd></div>
+        <div class="sr-metric"><dt>Estado de pesquisa IA · Semrush</dt><dd>79%</dd></div>
+      </dl>
+      <p class="seo-note">Limite de 5.000 páginas atingido · rastreador móvel · sem renderização JavaScript. Comparativo disponível com a rodada anterior de 5.000 páginas. As auditorias de 500 páginas ficam no histórico, por terem outro limite e outras configurações observadas. As notas não comprovam indexação no Google, audiência nem uso por assistentes de IA.</p>
+    
+    <p class="seo-note mb-0">Estado consultado em 23&#x2f;10&#x2f;2026, 08&#x3a;49 &#x28;Bras&iacute;lia&#x29;. Última conclusão informada: 22&#x2f;10&#x2f;2026, 16&#x3a;38 &#x28;Bras&iacute;lia&#x29;. Este registro não atualiza ao recarregar a página.</p>
+  </div>
+  <p class="seo-note"><strong>Duplicidades corrigidas em 22/10:</strong> a URL repetida da Corrida das Cores da Amazônia passou a redirecionar ao cadastro original nos três idiomas, mantendo a data de 28/03/2027 e os vínculos. Quatro provas distintas passaram a preservar o nome completo nos títulos. Descrições de eventos com aspas e a descrição do cadastro Business também foram corrigidas.</p>
+  <p class="seo-note">A coleta de 22/10 às 16:38 registrou Site Health de 71% para 75%, conteúdo duplicado de seis para zero e títulos duplicados de 14 para quatro. Os contadores acima são os medidos pelo Semrush; o conjunto de URLs rastreadas pode mudar. Os quatro títulos e seis descrições duplicados restantes pertencem à loja externa, que continua no escopo. A meta de Site Health acima de 80% permanece aberta.</p>
+  
+  <details class="seo-method"><summary>Comparar as duas auditorias de 5.000 páginas</summary><div class="seo-method-body">
+    <p class="seo-note">22&#x2f;10&#x2f;2026, 12&#x3a;32 &#x28;Bras&iacute;lia&#x29; → 22&#x2f;10&#x2f;2026, 16&#x3a;38 &#x28;Bras&iacute;lia&#x29;. Mesmo limite de 5.000 p&aacute;ginas, rastreador m&oacute;vel e JavaScript desativado. O conjunto efetivo de URLs pode mudar&#x3b; corrigidos e novos s&atilde;o as classifica&ccedil;&otilde;es informadas no comparativo Semrush. N&atilde;o &eacute; uma medi&ccedil;&atilde;o de ranking ou indexa&ccedil;&atilde;o.</p>
+    <div class="sr-table-wrap" tabindex="0" role="region" aria-label="Comparação das auditorias Semrush"><table>
+      <caption class="visually-hidden">Comparação dos dois rastreamentos indicados, com limite de 5.000 páginas.</caption>
+      <thead><tr><th scope="col">Métrica ou grupo</th><th scope="col">Anterior</th><th scope="col">Atual</th><th scope="col">Variação</th><th scope="col">Corrigidos</th><th scope="col">Novos</th></tr></thead><tbody>
+      <tr>
+        <th scope="row">Site Health &#x28;&#x25;&#x29;</th><td>  71</td><td>  75</td>
+        <td><span class="seo-label seo-status-pass seo-status-badge">&#x2b;4</span></td>
+        <td>—</td><td>—</td>
+      </tr><tr>
+        <th scope="row">Estado de pesquisa IA &#x28;&#x25;&#x29;</th><td>  81</td><td>  79</td>
+        <td><span class="seo-label seo-status-warning seo-status-badge">-2</span></td>
+        <td>—</td><td>—</td>
+      </tr><tr>
+        <th scope="row">Ocorr&ecirc;ncias de erro</th><td>  44</td><td>  30</td>
+        <td><span class="seo-label seo-status-pass seo-status-badge">-14</span></td>
+        <td>  22</td><td>   8</td>
+      </tr><tr>
+        <th scope="row">Advert&ecirc;ncias</th><td>10.306</td><td>10.333</td>
+        <td><span class="seo-label seo-status-warning seo-status-badge">&#x2b;27</span></td>
+        <td>2.242</td><td>2.269</td>
+      </tr><tr>
+        <th scope="row">Observa&ccedil;&otilde;es</th><td>2.685</td><td>5.892</td>
+        <td><span class="seo-label seo-status-warning seo-status-badge">&#x2b;3207</span></td>
+        <td>1.112</td><td>4.319</td>
+      </tr><tr>
+        <th scope="row">Erros 4XX</th><td>   1</td><td>   1</td>
+        <td><span class="seo-label seo-status-unknown seo-status-badge">0</span></td>
+        <td>—</td><td>—</td>
+      </tr><tr>
+        <th scope="row">Tags de t&iacute;tulo duplicadas</th><td>  14</td><td>   4</td>
+        <td><span class="seo-label seo-status-pass seo-status-badge">-10</span></td>
+        <td>  10</td><td>—</td>
+      </tr><tr>
+        <th scope="row">Conte&uacute;do duplicado</th><td>   6</td><td>   0</td>
+        <td><span class="seo-label seo-status-pass seo-status-badge">-6</span></td>
+        <td>   6</td><td>—</td>
+      </tr><tr>
+        <th scope="row">Links internos quebrados</th><td>  15</td><td>  13</td>
+        <td><span class="seo-label seo-status-pass seo-status-badge">-2</span></td>
+        <td>   5</td><td>   3</td>
+      </tr><tr>
+        <th scope="row">Descri&ccedil;&otilde;es meta duplicadas</th><td>   6</td><td>   6</td>
+        <td><span class="seo-label seo-status-unknown seo-status-badge">0</span></td>
+        <td>—</td><td>—</td>
+      </tr><tr>
+        <th scope="row">Conflitos de hreflang no c&oacute;digo-fonte da p&aacute;gina</th><td>   1</td><td>   1</td>
+        <td><span class="seo-label seo-status-unknown seo-status-badge">0</span></td>
+        <td>—</td><td>—</td>
+      </tr><tr>
+        <th scope="row">Alto tempo de carregamento da p&aacute;gina</th><td>   1</td><td>   5</td>
+        <td><span class="seo-label seo-status-warning seo-status-badge">&#x2b;4</span></td>
+        <td>   1</td><td>   5</td>
+      </tr><tr>
+        <th scope="row">Redirecionamentos tempor&aacute;rios</th><td>4.765</td><td>4.799</td>
+        <td><span class="seo-label seo-status-warning seo-status-badge">&#x2b;34</span></td>
+        <td> 592</td><td> 626</td>
+      </tr><tr>
+        <th scope="row">Baixa propor&ccedil;&atilde;o texto&#x2f;HTML</th><td>3.848</td><td>3.852</td>
+        <td><span class="seo-label seo-status-warning seo-status-badge">&#x2b;4</span></td>
+        <td> 600</td><td> 604</td>
+      </tr><tr>
+        <th scope="row">Arquivos JavaScript e CSS n&atilde;o minificados</th><td>  67</td><td>  70</td>
+        <td><span class="seo-label seo-status-warning seo-status-badge">&#x2b;3</span></td>
+        <td>—</td><td>   3</td>
+      </tr>
+      </tbody></table></div>
+    <p class="seo-note">As variações comparam ocorrências das duas coletas. O conjunto efetivo de URLs pode mudar mesmo com o mesmo limite. Quando o comparativo do fornecedor não foi importado, corrigidos e novos permanecem sem medição; a diferença entre totais não substitui essas classificações.</p>
+  </div></details>
+  
+  <details class="seo-method"><summary>Grupos de erros e principais avisos desta auditoria</summary><div class="seo-method-body">
+    <div class="sr-table-wrap" tabindex="0" role="region" aria-label="Grupos da auditoria Semrush"><table>
+      <caption class="visually-hidden">Erros e principais avisos da auditoria Semrush de 5.000 páginas.</caption>
+      <thead><tr><th scope="col">Tipo</th><th scope="col">Grupo</th><th scope="col">Ocorrências</th></tr></thead><tbody>
+      <tr><td>Erro</td><td>Erros 4XX</td><td>   1</td></tr><tr><td>Erro</td><td>Tags de t&iacute;tulo duplicadas</td><td>   4</td></tr><tr><td><span class="seo-label seo-status-pass seo-status-badge">✓ Zero na amostra</span></td><td>Conte&uacute;do duplicado</td><td>   0</td></tr><tr><td>Erro</td><td>Links internos quebrados</td><td>  13</td></tr><tr><td>Erro</td><td>Descri&ccedil;&otilde;es meta duplicadas</td><td>   6</td></tr><tr><td>Erro</td><td>Conflitos de hreflang no c&oacute;digo-fonte da p&aacute;gina</td><td>   1</td></tr><tr><td>Erro</td><td>Alto tempo de carregamento da p&aacute;gina</td><td>   5</td></tr> <tr><td>Aviso</td><td>Links externos quebrados</td><td>  24</td></tr><tr><td>Aviso</td><td>Imagens externas quebradas</td><td>  60</td></tr><tr><td>Aviso</td><td>T&iacute;tulo curto demais</td><td>   1</td></tr><tr><td>Aviso</td><td>T&iacute;tulo grande demais</td><td> 460</td></tr><tr><td>Aviso</td><td>T&iacute;tulo h1 ausente</td><td>  13</td></tr><tr><td>Aviso</td><td>Redirecionamentos tempor&aacute;rios</td><td>4.799</td></tr><tr><td>Aviso</td><td>Atributos alt ausentes</td><td>  19</td></tr><tr><td>Aviso</td><td>Baixa propor&ccedil;&atilde;o texto&#x2f;HTML</td><td>3.852</td></tr><tr><td>Aviso</td><td>Par&acirc;metros de URL em excesso</td><td>   3</td></tr><tr><td>Aviso</td><td>Baixa quantidade de palavras</td><td>  10</td></tr><tr><td>Aviso</td><td>Caractere sublinhado em URL</td><td>   3</td></tr><tr><td>Aviso</td><td>Atributos nofollow em links internos de sa&iacute;da</td><td>1.018</td></tr><tr><td>Aviso</td><td>Tamanho total de JavaScript e CSS muito grande</td><td>   1</td></tr><tr><td>Aviso</td><td>Arquivos JavaScript e CSS n&atilde;o minificados</td><td>  70</td></tr>
+      </tbody></table></div>
+    <p class="seo-note">Campanha 26661911 · auditoria de 22&#x2f;10&#x2f;2026, 16&#x3a;38 &#x28;Bras&iacute;lia&#x29;. Contadores, comparativo, notas e configurações lidos na interface autenticada do Semrush no Chrome. Horário de conclusão informado com precisão de minuto. <a href="https&#x3a;&#x2f;&#x2f;pt.semrush.com&#x2f;siteaudit&#x2f;campaign&#x2f;26661911&#x2f;review&#x2f;overview" target="_blank" rel="noopener noreferrer">Abrir esta campanha ↗</a>. Saúde técnica e prontidão para IA são métricas próprias do fornecedor.</p>
+  </div></details>
+  
+  <details class="seo-method"><summary>Histórico e correções publicadas antes desta auditoria</summary><div class="seo-method-body">
+  <p class="seo-note"><strong>Reauditoria concluída em 08/10 às 20:20:</strong> 5.000 páginas, Site Health 75% e prontidão para IA 78%. Advertências passaram de 45.495 para 35.227; avisos de minificação caíram de 11.995 para 2.088. Os erros passaram de 27 para 39: 17 links quebrados, oito títulos duplicados, seis descrições duplicadas, quatro respostas 4xx e quatro páginas lentas. Estes são resultados históricos de 08/10.</p>
+  <p class="seo-note"><strong>Correções publicadas depois dessa coleta:</strong> cinco recursos adicionais ficaram 24,0% menores em <a href="/portal/seo/?aba=fila&amp;site=roadrunners#RR-37">RR-37</a>; quatro títulos de edições e a codificação dos links de eventos foram corrigidos em <a href="/portal/seo/?aba=fila&amp;site=roadrunners#RR-38">RR-38</a>. Os destinos foram conferidos com HTTP 200 nos três idiomas. Essas entregas foram posteriores à coleta de 08/10 e não alteraram retroativamente os 39 erros medidos naquela rodada.</p>
+  <p class="seo-note"><strong>Escopo daquela coleta:</strong> quatro títulos e seis descrições pertenciam à <a href="https://store.roadrunners.run/roadrunnersstore/products" target="_blank" rel="noopener noreferrer">loja externa</a>, detalhada em <a href="/portal/seo/?aba=fila&amp;site=roadrunners#RR-36">RR-36</a>. Proteção de e-mail e login foram preservados. As quatro páginas lentas daquela coleta precisavam de acompanhamento; uma resposta rápida pontual não encerra esse achado. As 47 páginas de maratonas receberam H1 em <a href="/portal/seo/?aba=fila&amp;site=roadrunners#RR-35">RR-35</a> durante o rastreamento, que pode ter lido parte da versão anterior.</p>
+
+  <p class="seo-note"><strong>Correções após a auditoria de 05/10:</strong> links de eventos com caracteres especiais, três variantes de maiúsculas, links de cinco assessorias, canonical/alternates e títulos das etapas com o mesmo nome em datas diferentes. Conferências públicas e limites em <a href="/portal/seo/?aba=fila&amp;site=roadrunners#RR-28">RR-28</a>. Aquela rodada tinha 126 ocorrências de erro. O comparativo acima usa as datas indicadas; este trecho mantém o histórico de outubro.</p>
+  <p class="seo-note"><strong>Revisão por URL em 05/10:</strong> duas rotas do circuito FCA representam o mesmo cadastro e foram consolidadas; rankings Supra 2024 e 2025 receberam títulos e descrições específicos. Entrega e controles em <a href="/portal/seo/?aba=fila&amp;site=roadrunners#RR-29">RR-29</a>. As duas corridas Farmelhor têm cidades e datas diferentes e foram preservadas. O sitemap histórico e a página lenta responderam HTTP 200 nesta checagem; isso não confirma indexação. Continuação em 06/10: rechecagem dos 62 endereços de títulos apontados pela auditoria: nove páginas ainda repetiam títulos porque o corte do nome retirava a cidade. Etapas Correr é Massa e Track&amp;Field receberam local/data nos títulos, com controles em <a href="/portal/seo/?aba=fila&amp;site=roadrunners#RR-30">RR-30</a>. A verificação direta após esse lote não encontrou títulos repetidos nessa amostra. O comparativo do fornecedor marcou os 62 casos anteriores de título duplicado como corrigidos. Indexação e ranking no Google têm acompanhamento próprio.</p>
+  <p class="seo-note"><strong>Revisão seguinte em 06/10:</strong> cinco endereços antigos de assessoria em <code>/assessoria/</code> foram recuperados com 301 para destinos 200 em <code>/timer/</code>. Controles e limites em <a href="/portal/seo/?aba=fila&amp;site=roadrunners#RR-31">RR-31</a>. Eventos de datas/cidades diferentes foram preservados. O sitemap histórico e os idiomas de Costa Esmeralda responderam normalmente nesta checagem. URLs incompletas, proteção de e-mail e o 403 do atleta continuam com análise própria; estes limites foram preservados na reauditoria.</p>
+
+    <p class="seo-note">Comparação das auditorias de 04/10/2026, 14:39 e 15:40: Site Health Semrush de 68 para 76; erros de 114 para 9. Ambas rastrearam 500 páginas, com os mesmos limites e configurações observáveis. Hreflang passou de 42 para 0, descrições duplicadas de 27 para 0, problemas de sitemap de 4 para 0 e imagens quebradas de 1 para 0. Evidências: <a href="/portal/seo/?aba=fila&amp;site=roadrunners#RR-17">RR-17</a>, <a href="/portal/seo/?aba=fila&amp;site=roadrunners#RR-18">RR-18</a> e <a href="/portal/seo/?aba=fila&amp;site=roadrunners#RR-19">RR-19</a>. Estes são resultados históricos de outra amostra.</p>
+    <p class="seo-note">Entregas posteriores: ranking RR-21, metadados dos circuitos RR-22, recursos compactados RR-23, reconciliação ABAVSE RR-25, diretório experimental llms.txt RR-26, ALT e H1 RR-27. Fontes e medições continuam na fila. Disponibilidade permanece em RR-24; revisões factuais com fonte permanecem em SH-02.</p>
+  </div></details>
+  <nav class="sr-nav" aria-label="Dados do Semrush">
+    <a href="/portal/seo/?aba=semrush&amp;secao=oportunidades&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">Oportunidades</a><a href="/portal/seo/?aba=semrush&amp;secao=palavras&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all" aria-current="page">Palavras-chave</a><a href="/portal/seo/?aba=semrush&amp;secao=concorrentes&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">Concorrentes</a>
+  </nav>
+  
+    <form class="sr-form" action="/portal/seo/" method="get">
+      <input type="hidden" name="aba" value="semrush"/><input type="hidden" name="secao" value="palavras"/>
+      <input type="hidden" name="site" value="all"/>
+      <input type="hidden" name="prioridade" value="all"/>
+      <input type="hidden" name="verificacao" value="all"/>
+      <div><label for="sr-search" class="form-label">Buscar palavra-chave ou URL</label><input class="form-control" id="sr-search" name="busca" maxlength="100" value=""/></div>
+      <button class="btn btn-warning" type="submit">Buscar</button>
+      <a class="btn btn-link text-reset" href="/portal/seo/?aba=semrush&amp;secao=palavras&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">Limpar busca</a>
+    </form>
+    <p class="seo-note" role="status">51 de 51 pares palavra-chave/URL da amostra. 49 termos distintos após remover sobreposição de duas consultas de 30 linhas. Não é a lista completa das 993 palavras-chave.</p>
+    
+    <div class="sr-table-wrap" tabindex="0" role="region" aria-label="Tabela de palavras-chave"><table>
+      <caption class="visually-hidden">Amostra Semrush Brasil desktop, ordenada por volume estimado de buscas.</caption>
+      <thead><tr><th scope="col">Palavra-chave</th><th scope="col">Posição</th><th scope="col">Buscas/mês estimadas</th><th scope="col">Dificuldade /100</th><th scope="col">URL</th><th scope="col">Observação</th></tr></thead><tbody>
+      <tr>
+        <td class="sr-keyword">run</td><td>13</td><td class="sr-measure">18.100</td><td>55</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;</a></td><td class="sr-measure">30&#x2f;09&#x2f;2026, 07&#x3a;29 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">sp city 2026</td><td>17</td><td class="sr-measure">5.400</td><td>26</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;es&#x2f;evento&#x2f;2026-sp-city-marathon&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;es&#x2f;evento&#x2f;2026-sp-city-marathon&#x2f;</a></td><td class="sr-measure">03&#x2f;10&#x2f;2026, 06&#x3a;54 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">p&aacute;tio vinhedos</td><td>10</td><td class="sr-measure">4.400</td><td>39</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-2-corrida-patio-vinhedos&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-2-corrida-patio-vinhedos&#x2f;</a></td><td class="sr-measure">27&#x2f;09&#x2f;2026, 17&#x3a;57 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">decathlon torres</td><td>12</td><td class="sr-measure">3.600</td><td>42</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2026-corrida-kids-decathlon-2026-carregando-as-energias&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2026-corrida-kids-decathlon-2026-carregando-as-energias&#x2f;</a></td><td class="sr-measure">25&#x2f;09&#x2f;2026, 16&#x3a;13 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">shopping natal</td><td>15</td><td class="sr-measure">3.600</td><td>39</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-track-field-run-series-2025-natal-shopping&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-track-field-run-series-2025-natal-shopping&#x2f;</a></td><td class="sr-measure">30&#x2f;09&#x2f;2026, 01&#x3a;57 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">runner on road</td><td>1</td><td class="sr-measure">1.600</td><td>38</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;</a></td><td class="sr-measure">24&#x2f;08&#x2f;2026, 19&#x3a;01 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">road runner&#x27;s</td><td>1</td><td class="sr-measure">1.000</td><td>44</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;</a></td><td class="sr-measure">25&#x2f;08&#x2f;2026, 13&#x3a;27 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">live run xp 2026</td><td>4</td><td class="sr-measure"> 880</td><td>31</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;en&#x2f;event&#x2f;2026-live-run-xp-porto-alegre-2026&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;en&#x2f;event&#x2f;2026-live-run-xp-porto-alegre-2026&#x2f;</a></td><td class="sr-measure">01&#x2f;10&#x2f;2026, 06&#x3a;57 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida em sp</td><td>16</td><td class="sr-measure"> 720</td><td>27</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;estado&#x2f;sp&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;estado&#x2f;sp&#x2f;</a></td><td class="sr-measure">24&#x2f;09&#x2f;2026, 06&#x3a;45 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida sest senat</td><td>20</td><td class="sr-measure"> 590</td><td>11</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-corrida-movimenta-sest-senat&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-corrida-movimenta-sest-senat&#x2f;</a></td><td class="sr-measure">02&#x2f;10&#x2f;2026, 20&#x3a;29 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">maratona de aracaju</td><td>12</td><td class="sr-measure"> 590</td><td>13</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2026-maratona-de-aracaju-2026&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2026-maratona-de-aracaju-2026&#x2f;</a></td><td class="sr-measure">03&#x2f;10&#x2f;2026, 17&#x3a;00 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">maratona salvador 2025</td><td>16</td><td class="sr-measure"> 590</td><td>21</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-maratona-salvador-2025&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-maratona-salvador-2025&#x2f;</a></td><td class="sr-measure">02&#x2f;10&#x2f;2026, 01&#x3a;15 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida do batman 2025</td><td>10</td><td class="sr-measure"> 480</td><td>12</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-7-batman-batgirl-run-series&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-7-batman-batgirl-run-series&#x2f;</a></td><td class="sr-measure">24&#x2f;09&#x2f;2026, 19&#x3a;05 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida policia federal</td><td>6</td><td class="sr-measure"> 480</td><td>11</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2024-meia-maratona-da-policia-federal-de-tocantins&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2024-meia-maratona-da-policia-federal-de-tocantins&#x2f;</a></td><td class="sr-measure">01&#x2f;10&#x2f;2026, 07&#x3a;47 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">road runners</td><td>1</td><td class="sr-measure"> 480</td><td>34</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;</a></td><td class="sr-measure">09&#x2f;08&#x2f;2026, 00&#x3a;50 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">xterra 2026</td><td>9</td><td class="sr-measure"> 480</td><td>19</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2026-xterra-costa-verde-2026&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2026-xterra-costa-verde-2026&#x2f;</a></td><td class="sr-measure">03&#x2f;10&#x2f;2026, 10&#x3a;04 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">2 corre corinthians 2026</td><td>9</td><td class="sr-measure"> 390</td><td>12</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2026-2-corre-corinthians&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2026-2-corre-corinthians&#x2f;</a></td><td class="sr-measure">28&#x2f;09&#x2f;2026, 11&#x3a;24 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">cat running</td><td>1</td><td class="sr-measure"> 390</td><td>36</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2026-cats-run-al-2026&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2026-cats-run-al-2026&#x2f;</a></td><td class="sr-measure">24&#x2f;09&#x2f;2026, 20&#x3a;46 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida maratona</td><td>12</td><td class="sr-measure"> 390</td><td>53</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-2-maratona-internacional-de-goiania&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-2-maratona-internacional-de-goiania&#x2f;</a></td><td class="sr-measure">24&#x2f;09&#x2f;2026, 19&#x3a;07 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corridas es</td><td>5</td><td class="sr-measure"> 390</td><td>12</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;estado&#x2f;es&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;estado&#x2f;es&#x2f;</a></td><td class="sr-measure">01&#x2f;10&#x2f;2026, 00&#x3a;29 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">dia do farmaceutico 2026</td><td>15</td><td class="sr-measure"> 390</td><td>12</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2026-corrida-do-farmaceutico-2026&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2026-corrida-do-farmaceutico-2026&#x2f;</a></td><td class="sr-measure">29&#x2f;09&#x2f;2026, 21&#x3a;25 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">sesi ca&ccedil;ador</td><td>11</td><td class="sr-measure"> 390</td><td>38</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2024-corrida-do-bem-sesi-cacador&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2024-corrida-do-bem-sesi-cacador&#x2f;</a></td><td class="sr-measure">03&#x2f;10&#x2f;2026, 18&#x3a;19 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">track and field goiania</td><td>10</td><td class="sr-measure"> 390</td><td>20</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-trackfields-run-series-goiania&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-trackfields-run-series-goiania&#x2f;</a></td><td class="sr-measure">27&#x2f;09&#x2f;2026, 03&#x3a;05 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">trirex</td><td>17</td><td class="sr-measure"> 390</td><td>17</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-trirex-2025-1-etapa-trail-run&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-trirex-2025-1-etapa-trail-run&#x2f;</a></td><td class="sr-measure">30&#x2f;09&#x2f;2026, 23&#x3a;29 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida bob esponja 2025</td><td>15</td><td class="sr-measure"> 320</td><td>13</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-corrida-do-bob-esponja-porto-alegre&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-corrida-do-bob-esponja-porto-alegre&#x2f;</a></td><td class="sr-measure">25&#x2f;09&#x2f;2026, 01&#x3a;05 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">maratona de santa maria 2025</td><td>8</td><td class="sr-measure"> 320</td><td>11</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;maratona-de-santa-maria&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;maratona-de-santa-maria&#x2f;</a></td><td class="sr-measure">02&#x2f;10&#x2f;2026, 23&#x3a;59 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">maratona internacional do paran&aacute;</td><td>7</td><td class="sr-measure"> 320</td><td>14</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2027-maratona-internacional-do-parana-2027&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2027-maratona-internacional-do-parana-2027&#x2f;</a></td><td class="sr-measure">01&#x2f;10&#x2f;2026, 00&#x3a;17 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">meia da reserva 2025</td><td>5</td><td class="sr-measure"> 320</td><td>15</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-6-meia-maratona-da-reserva&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-6-meia-maratona-da-reserva&#x2f;</a></td><td class="sr-measure">25&#x2f;09&#x2f;2026, 18&#x3a;57 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">open results corrida</td><td>1</td><td class="sr-measure"> 320</td><td>19</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;</a></td><td class="sr-measure">18&#x2f;08&#x2f;2026, 16&#x3a;26 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">track and field joao pessoa</td><td>18</td><td class="sr-measure"> 320</td><td>18</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-trackfields-run-series-joao-pessoa&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-trackfields-run-series-joao-pessoa&#x2f;</a></td><td class="sr-measure">13&#x2f;09&#x2f;2026, 23&#x3a;05 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida de rua rj 2025</td><td>1</td><td class="sr-measure"> 260</td><td>13</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-bimbo-global-race-2025-rio-de-janeiro&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-bimbo-global-race-2025-rio-de-janeiro&#x2f;</a></td><td class="sr-measure">25&#x2f;09&#x2f;2026, 00&#x3a;44 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida de rua rj 2025</td><td>5</td><td class="sr-measure"> 260</td><td>13</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-plaza-running&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-plaza-running&#x2f;</a></td><td class="sr-measure">25&#x2f;09&#x2f;2026, 00&#x3a;44 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida em santa catarina</td><td>15</td><td class="sr-measure"> 260</td><td>6</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;circuitocatarinense&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;circuitocatarinense&#x2f;</a></td><td class="sr-measure">03&#x2f;10&#x2f;2026, 02&#x3a;47 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida sirio libanes</td><td>18</td><td class="sr-measure"> 260</td><td>21</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;es&#x2f;evento&#x2f;2025-1-corrida-sirio-libanes-brasilia&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;es&#x2f;evento&#x2f;2025-1-corrida-sirio-libanes-brasilia&#x2f;</a></td><td class="sr-measure">03&#x2f;10&#x2f;2026, 06&#x3a;57 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corridas campo grande ms</td><td>5</td><td class="sr-measure"> 260</td><td>6</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;estado&#x2f;ms&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;estado&#x2f;ms&#x2f;</a></td><td class="sr-measure">29&#x2f;09&#x2f;2026, 21&#x3a;22 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corridas em santa catarina</td><td>9</td><td class="sr-measure"> 260</td><td>15</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;estado&#x2f;sc&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;estado&#x2f;sc&#x2f;</a></td><td class="sr-measure">03&#x2f;10&#x2f;2026, 03&#x3a;24 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">live run xp 2025</td><td>10</td><td class="sr-measure"> 260</td><td>18</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-live-run-xp-porto-alegre-2025&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-live-run-xp-porto-alegre-2025&#x2f;</a></td><td class="sr-measure">25&#x2f;09&#x2f;2026, 00&#x3a;29 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">roadrunners</td><td>1</td><td class="sr-measure"> 260</td><td>33</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;</a></td><td class="sr-measure">12&#x2f;09&#x2f;2026, 10&#x3a;06 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">roadrunners</td><td>5</td><td class="sr-measure"> 260</td><td>33</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;circuitocatarinense&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;circuitocatarinense&#x2f;</a></td><td class="sr-measure">12&#x2f;09&#x2f;2026, 10&#x3a;06 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida dos bombeiros 2025</td><td>6</td><td class="sr-measure"> 210</td><td>15</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-1-corrida-dos-bombeiros-voluntarios-de-corupa&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-1-corrida-dos-bombeiros-voluntarios-de-corupa&#x2f;</a></td><td class="sr-measure">25&#x2f;09&#x2f;2026, 05&#x3a;39 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida niteroi</td><td>5</td><td class="sr-measure"> 210</td><td>16</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;maratona&#x2f;maratona-de-niteroi&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;maratona&#x2f;maratona-de-niteroi&#x2f;</a></td><td class="sr-measure">02&#x2f;10&#x2f;2026, 23&#x3a;23 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">sportsland</td><td>8</td><td class="sr-measure"> 210</td><td>26</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;org&#x2f;sportsland&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;org&#x2f;sportsland&#x2f;</a></td><td class="sr-measure">30&#x2f;09&#x2f;2026, 09&#x3a;49 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida de rua natal</td><td>2</td><td class="sr-measure"> 140</td><td>12</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2026-run-kids-natal&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2026-run-kids-natal&#x2f;</a></td><td class="sr-measure">29&#x2f;09&#x2f;2026, 23&#x3a;11 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corrida em natal 2025</td><td>1</td><td class="sr-measure"> 140</td><td>11</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;evento&#x2f;2025-maratoninha-da-cidade-do-natal-2025&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;evento&#x2f;2025-maratoninha-da-cidade-do-natal-2025&#x2f;</a></td><td class="sr-measure">25&#x2f;09&#x2f;2026, 04&#x3a;26 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corridas em vitoria es</td><td>5</td><td class="sr-measure"> 140</td><td>7</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;estado&#x2f;es&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;estado&#x2f;es&#x2f;</a></td><td class="sr-measure">01&#x2f;10&#x2f;2026, 07&#x3a;51 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corridas no paran&aacute;</td><td>2</td><td class="sr-measure"> 140</td><td>9</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;estado&#x2f;pr&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;estado&#x2f;pr&#x2f;</a></td><td class="sr-measure">25&#x2f;09&#x2f;2026, 18&#x3a;59 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corridas paran&aacute;</td><td>5</td><td class="sr-measure"> 140</td><td>13</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;estado&#x2f;pr&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;estado&#x2f;pr&#x2f;</a></td><td class="sr-measure">25&#x2f;09&#x2f;2026, 18&#x3a;38 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corridas porto velho</td><td>5</td><td class="sr-measure"> 140</td><td>8</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;estado&#x2f;ro&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;estado&#x2f;ro&#x2f;</a></td><td class="sr-measure">01&#x2f;10&#x2f;2026, 08&#x3a;00 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">desafio 365 corrida no ar</td><td>1</td><td class="sr-measure"> 140</td><td>22</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;desafiocna&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;desafiocna&#x2f;</a></td><td class="sr-measure">01&#x2f;09&#x2f;2026, 16&#x3a;02 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">corridas joao pessoa 2025</td><td>1</td><td class="sr-measure">  90</td><td>31</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;estado&#x2f;pb&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;estado&#x2f;pb&#x2f;</a></td><td class="sr-measure">01&#x2f;10&#x2f;2026, 13&#x3a;11 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr><tr>
+        <td class="sr-keyword">road running</td><td>1</td><td class="sr-measure">  90</td><td>45</td>
+        <td class="sr-url"><a href="https&#x3a;&#x2f;&#x2f;roadrunners.run&#x2f;" target="_blank" rel="noopener noreferrer">&#x2f;</a></td><td class="sr-measure">19&#x2f;09&#x2f;2026, 05&#x3a;04 &#x28;Bras&iacute;lia&#x29;</td>
+      </tr></tbody></table></div> 
+  <details class="seo-method"><summary>Fonte, limites e acompanhamento</summary><div class="seo-method-body">
+    <p>Fonte: Semrush MCP, consultas de domínio, palavras-chave e concorrentes na base Brasil desktop. Tráfego e volume são estimativas do fornecedor. Posições são observações datadas; coleta recente não significa que todas as palavras foram medidas hoje.</p>
+    <p>Campanha diária: nenhum alvo retornado na consulta inicial. Configurar palavras-chave, Brasil e dispositivo no Position Tracking.</p>
+    <p>Palavras-chave e tráfego estimado mantêm a coleta original de 04/10; não foram atualizados pela auditoria técnica mais recente. O histórico técnico e as evidências do Search Console continuam nas outras abas. A auditoria Semrush tem limite próprio e não comprova indexação de todas as páginas.</p>
+    <p>Atualização por importação de uma nova coleta validada e publicação do painel. Abrir esta tela não consulta o fornecedor nem consome unidades.</p>
+  </div></details>
+
+</section>
+
+  </div>
+</section>
+<script>
+// Preserve existing links to correction IDs created before the section navigation.
+(function () {
+  function openLegacyIssue() {
+    if (/^#(?:RR|OR|SH)-\d+$/.test(location.hash)) {
+      var url = new URL(location.href);
+      if (url.searchParams.get('aba') !== 'fila') { url.searchParams.set('aba', 'fila'); location.replace(url.href); }
+    }
+  }
+  openLegacyIssue(); window.addEventListener('hashchange', openLegacyIssue);
+})();
+</script>
+</main></body></html>

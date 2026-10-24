@@ -1,0 +1,105 @@
+{
+  "checked_at": "2026-10-24T16:48:51.190152+00:00",
+  "root": "/var/www/business.roadrunners.run",
+  "files": {
+    "includes/estrutura/header.cfm": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "d8b619f6bf8d0a32ded7255a2e441fda19432070195a9cf2db933676e5f28fd7",
+      "bytes": 613,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0,
+      "matches_untouched_local_baseline": true
+    },
+    "includes/estrutura/navbar.cfm": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "5025a324475d2022c6de4e2fdd428df4f381936d230a6d71094d602444ec57d0",
+      "bytes": 22748,
+      "mode": 420,
+      "uid": 0,
+      "gid": 50,
+      "matches_untouched_local_baseline": true
+    },
+    "assets/css/business-shell.css": {
+      "exists": false,
+      "symlink": false
+    },
+    "assets/js/business-shell.js": {
+      "exists": false,
+      "symlink": false
+    }
+  },
+  "watch": {
+    "assets/css/style.css": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "ce3cad4bab08a6be7679d5a118273a45ddbee82b46daee3a7dcd2f7640d75f65",
+      "bytes": 3739,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "assets/css/admin-suite.css": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "f4add275af44f8e110b23534b3f7403929ca4e101809bd4931b0caddb2c35978",
+      "bytes": 6614,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/account_context_modal.cfm": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "adf6cb0ad03af3a3bbede1aaddda61772d66bb09ea745cb8d7a70b1b8afaac36",
+      "bytes": 10863,
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "template.cfm": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "ea49fa5bc9707616b49a414845ae59f82b5c8c55498fad7dbcbf8569dfb3b868",
+      "bytes": 761,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/head.cfm": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "37adbbbcc9a99f0cb8911aca76dda2e9ad456c086318bc812ab4e6ef8bd3673d",
+      "bytes": 2796,
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "includes/estrutura/sidenav.cfm": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "7fbcdf1b3e5648a823cb4cdd25f4b7f027f220230c2bf813cb288b4ebc5e2641",
+      "bytes": 75767,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "assets/css/admin-dashboard.css": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "1d2dffb9092c086791cf57e53691646c41bdf0f8f2d14cfb151e1ef15bc440d8",
+      "bytes": 32216,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "compiler": [
+    {
+      "executable": "/opt/coldfusion2025/cfusion/bin/cfcompile.sh",
+      "user": "coldfusion"
+    }
+  ]
+}

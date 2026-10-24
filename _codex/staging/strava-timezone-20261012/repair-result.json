@@ -1,0 +1,377 @@
+{
+  "backup": "/var/backups/strava-timezone-20261012-g18a8z2g",
+  "started_at_utc": "2026-10-12T15:00:48.443160+00:00",
+  "approved": 1689,
+  "updated": 1689,
+  "already_correct": 0,
+  "batches": [
+    {
+      "batch": 1,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "3",
+        "IdleWorkers": "72",
+        "ConnsTotal": "55",
+        "MemAvailable": 15421472,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.47216796875,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.251
+    },
+    {
+      "batch": 2,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "2",
+        "IdleWorkers": "73",
+        "ConnsTotal": "51",
+        "MemAvailable": 15432580,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.47216796875,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.209
+    },
+    {
+      "batch": 3,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "2",
+        "IdleWorkers": "73",
+        "ConnsTotal": "51",
+        "MemAvailable": 15430144,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.47216796875,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.449
+    },
+    {
+      "batch": 4,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "3",
+        "IdleWorkers": "72",
+        "ConnsTotal": "49",
+        "MemAvailable": 15429460,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.47216796875,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.296
+    },
+    {
+      "batch": 5,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "1",
+        "IdleWorkers": "74",
+        "ConnsTotal": "45",
+        "MemAvailable": 15432312,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.47216796875,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.239
+    },
+    {
+      "batch": 6,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "3",
+        "IdleWorkers": "72",
+        "ConnsTotal": "46",
+        "MemAvailable": 15429676,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.47216796875,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.186
+    },
+    {
+      "batch": 7,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "5",
+        "IdleWorkers": "70",
+        "ConnsTotal": "44",
+        "MemAvailable": 15431348,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.47216796875,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.228
+    },
+    {
+      "batch": 8,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "2",
+        "IdleWorkers": "73",
+        "ConnsTotal": "46",
+        "MemAvailable": 15429608,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.43408203125,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.2
+    },
+    {
+      "batch": 9,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "3",
+        "IdleWorkers": "72",
+        "ConnsTotal": "47",
+        "MemAvailable": 15429408,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.43408203125,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.127
+    },
+    {
+      "batch": 10,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "4",
+        "IdleWorkers": "71",
+        "ConnsTotal": "47",
+        "MemAvailable": 15431724,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.43408203125,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.144
+    },
+    {
+      "batch": 11,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "7",
+        "IdleWorkers": "68",
+        "ConnsTotal": "47",
+        "MemAvailable": 15425872,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.43408203125,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.376
+    },
+    {
+      "batch": 12,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "3",
+        "IdleWorkers": "72",
+        "ConnsTotal": "54",
+        "MemAvailable": 15430952,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.43408203125,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 1.329
+    },
+    {
+      "batch": 13,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "2",
+        "IdleWorkers": "73",
+        "ConnsTotal": "52",
+        "MemAvailable": 15425288,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.43408203125,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.068
+    },
+    {
+      "batch": 14,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "5",
+        "IdleWorkers": "70",
+        "ConnsTotal": "52",
+        "MemAvailable": 15420524,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.43408203125,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.078
+    },
+    {
+      "batch": 15,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "3",
+        "IdleWorkers": "72",
+        "ConnsTotal": "52",
+        "MemAvailable": 15425560,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.39892578125,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.079
+    },
+    {
+      "batch": 16,
+      "planned": 100,
+      "pending": 100,
+      "health": {
+        "BusyWorkers": "4",
+        "IdleWorkers": "71",
+        "ConnsTotal": "53",
+        "MemAvailable": 15422424,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.39892578125,
+        "cpus": 2
+      },
+      "result": {
+        "count": 100,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.079
+    },
+    {
+      "batch": 17,
+      "planned": 89,
+      "pending": 89,
+      "health": {
+        "BusyWorkers": "3",
+        "IdleWorkers": "72",
+        "ConnsTotal": "54",
+        "MemAvailable": 15425192,
+        "SwapTotal": 507900,
+        "SwapFree": 507900,
+        "load1": 0.39892578125,
+        "cpus": 2
+      },
+      "result": {
+        "count": 89,
+        "dates_correct": true,
+        "other_fields_preserved": true
+      },
+      "elapsed_seconds": 0.071
+    }
+  ],
+  "finished_at_utc": "2026-10-12T15:00:59.335665+00:00",
+  "final_health": {
+    "BusyWorkers": "3",
+    "IdleWorkers": "72",
+    "ConnsTotal": "50",
+    "MemAvailable": 15421468,
+    "SwapTotal": 507900,
+    "SwapFree": 507900,
+    "load1": 0.39892578125,
+    "cpus": 2
+  }
+}

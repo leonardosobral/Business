@@ -1,0 +1,122 @@
+{
+  "status": "published and verified 2026-10-17",
+  "files": [
+    {
+      "path": "_codex/tests/business-sidenav.test.js",
+      "before": "2e76c3385c99862129a2f474947e21d88ff0ca8086afaa144c0006d0052770c1",
+      "after": "a0cd0ee1a24f0ff45f8274dd12617391a4262c4edf1e291e2e9712c6f9ba15df",
+      "kind": "test"
+    },
+    {
+      "path": "_codex/tests/comparador/cadastros.cfm",
+      "before": null,
+      "after": "8d61673ac7416ddb6a3b3ba97d2c1e4a0af74999b07d14b0e8667b03436927bf",
+      "kind": "test"
+    },
+    {
+      "path": "_codex/tests/comparador/submenu.test.js",
+      "before": null,
+      "after": "cbcef78bedc985b43fd1dc597d8d662391d099724a3d6509ad4ee056fa6f9022",
+      "kind": "test"
+    },
+    {
+      "path": "administracao/comparador/cadastros/backend.cfm",
+      "before": null,
+      "after": "e8b6d5919fb2c0d1af456606e5b09009ecc09ab7f9f63eef95196b97c7f743c2",
+      "kind": "runtime"
+    },
+    {
+      "path": "administracao/comparador/cadastros/home.cfm",
+      "before": null,
+      "after": "b4e905ac70d5b9994feeea8d231fac5afe9cb1fe8df631f9ddb19ac6436ef20b",
+      "kind": "runtime"
+    },
+    {
+      "path": "administracao/comparador/cadastros/index.cfm",
+      "before": null,
+      "after": "f6836031bd3c4fb1acf927325348881b3f72c4781254c0eff4924ef9e76527da",
+      "kind": "runtime"
+    },
+    {
+      "path": "administracao/comparador/home.cfm",
+      "before": "c982cd4a39fff6d691c1ba918540e1ad623079ef99c4b57662b63ecf442c5fd8",
+      "after": "a7742a7a2929b1a528a54a49236d72a2a03e09472586cab26d9445c0b875abc2",
+      "kind": "runtime"
+    },
+    {
+      "path": "administracao/comparador/includes/navigation.cfm",
+      "before": null,
+      "after": "4bd521faf7e14eaa8001d08b2134797aafaecd0ba863dc2a462559987ec35413",
+      "kind": "runtime"
+    },
+    {
+      "path": "administracao/comparador/ofertas/backend.cfm",
+      "before": null,
+      "after": "0f85bb91d7ab77cb10098ee5f7aa43f2b36f2231cc6905142b8357cabaeb88ef",
+      "kind": "runtime"
+    },
+    {
+      "path": "administracao/comparador/ofertas/home.cfm",
+      "before": null,
+      "after": "33232c5bb6c34500a148569394c81b95c5b68be7539896829059cb68c4e518ea",
+      "kind": "runtime"
+    },
+    {
+      "path": "administracao/comparador/ofertas/index.cfm",
+      "before": null,
+      "after": "451b492662f9e921dd0c833f1ee45cc86a740daea3f306b77adc26b5af8f2e21",
+      "kind": "runtime"
+    },
+    {
+      "path": "assets/js/business-sidenav.js",
+      "before": "1c233b31c917f42511f4264441b2c641daedfd9c5e0608e7c6a27078bdbaed84",
+      "after": "7d5404e3422080528140d75810b080760f0600f3e07e9af09f2fc72c7721d490",
+      "kind": "runtime"
+    },
+    {
+      "path": "includes/estrutura/sidenav.cfm",
+      "before": "cdcf011b6251419ddfffbada9ff578f6ec3699853c2d9b94276830621070a70d",
+      "after": "1e62d780a499996995443dd77e5b5ba0f894817a2de36670e7ab1a7a9b0d6d07",
+      "kind": "runtime"
+    },
+    {
+      "path": "services/ComparadorAdminService.cfc",
+      "before": "21d66a79ea823e7aed1268269115230598690088f081a0205a85d102c3a2f7e7",
+      "after": "d5547f8df93edd02df98250ee6f7033b91af583bc377ecc3b0c9872dac74cbd0",
+      "kind": "runtime"
+    },
+    {
+      "path": "services/ComparadorCatalogService.cfc",
+      "before": null,
+      "after": "9d18b56ff6f8ac34072f1ab88ffa33228cfd8d8491c56aa2b759edf98534bef9",
+      "kind": "runtime"
+    },
+    {
+      "path": "_codex/tests/comparador/ofertas.cfm",
+      "before": null,
+      "after": "23850a016e3f63bf94d27275d9a383472bab6888ddae6c82d3e632e1049075d7",
+      "kind": "test"
+    },
+    {
+      "path": "_codex/tests/comparador/test_catalog_http.py",
+      "before": null,
+      "after": "04a22dd1b9426135d810c60302698e539544dc9e90218d8b27d25b9ab655473b",
+      "kind": "test"
+    }
+  ],
+  "validation": {
+    "navigation_js": 16,
+    "legacy_publisher_unit": 5,
+    "cfml": {
+      "products": 45,
+      "catalogs": 13,
+      "offers": 6,
+      "public_filters": 4
+    },
+    "production": "16 runtime files published; authenticated UI and public routes verified",
+    "http": {
+      "products": 29,
+      "catalogs_offers": 39
+    }
+  }
+}

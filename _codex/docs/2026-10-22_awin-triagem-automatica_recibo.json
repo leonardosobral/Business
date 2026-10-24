@@ -1,0 +1,721 @@
+{
+  "status": "published_and_validated",
+  "completedAtUTC": "2026-10-22T18:37:20.180363+00:00",
+  "runtimeProjects": [
+    "Business"
+  ],
+  "files": [
+    "services/ComparadorAwinPublicationService.cfc",
+    "api/comparador/awin-sync.cfm"
+  ],
+  "publication": {
+    "status": "runtime_published",
+    "release": "20261022T183449Z-3teba7un-r2",
+    "backup": "/var/backups/awin-auto-triagem-20261022/20261022T183449Z-3teba7un-r2",
+    "files": {
+      "services/ComparadorAwinPublicationService.cfc": {
+        "before": "958954d37b3161c77bd13178730e03a369e7c0ac6db5c144c31da88e6c3753fd",
+        "after": "0629cb8607480f464946826fafe837935f46f1347f0ffd6cbb7a4194e3761c7a"
+      },
+      "api/comparador/awin-sync.cfm": {
+        "before": "9f2abd87d8e787f472ba33cb0703ab4db0a7aef6bcc78af2445d184b38727431",
+        "after": "9f2abd87d8e787f472ba33cb0703ab4db0a7aef6bcc78af2445d184b38727431"
+      }
+    },
+    "previousRelease": "20261022T182635Z-3teba7un",
+    "cronUnchanged": true
+  },
+  "initialPublication": {
+    "status": "runtime_published",
+    "release": "20261022T182635Z-3teba7un",
+    "backup": "/var/backups/awin-auto-triagem-20261022/20261022T182635Z-3teba7un",
+    "files": {
+      "services/ComparadorAwinPublicationService.cfc": {
+        "before": "4833d7ef56856a648fbcbc371e889f6fb0f2262dbc00acbfd5ee5b44b8b1dd39",
+        "after": "958954d37b3161c77bd13178730e03a369e7c0ac6db5c144c31da88e6c3753fd"
+      },
+      "api/comparador/awin-sync.cfm": {
+        "before": "aa42adc410cf26171610ca818b8851f9432d5ad20d2655330852ef0acda54a71",
+        "after": "9f2abd87d8e787f472ba33cb0703ab4db0a7aef6bcc78af2445d184b38727431"
+      }
+    },
+    "cronUnchanged": true
+  },
+  "validation": {
+    "feedupdatedat": "2026-10-22T18:35:12.533069107Z",
+    "consumer": {
+      "campaignproducts": 0,
+      "minimachecks": 1253.0,
+      "variants": 1896.0,
+      "products": 68,
+      "genderchecks": 94.0
+    },
+    "reviewqueue": [
+      {
+        "fingerprint": "981cf0a546387123410a581dfaa33df7f1247b1334b3611f4e6efd504c48833f",
+        "title": "15% adicional na categoria Casual com o cupom ESTILO15",
+        "reason": "Campanha por categoria ou seleção: confirme quais modelos e gerações são elegíveis.",
+        "campaignid": "4148975",
+        "advertiser": "ASICS BR"
+      },
+      {
+        "fingerprint": "fa5a4023929117cf6aa936d4dcc624324a993a4fbd7829d921dca5eb56031f66",
+        "title": "15% adicional na categoria Quadras com o cupom JOGA15",
+        "reason": "Campanha por categoria ou seleção: confirme quais modelos e gerações são elegíveis.",
+        "campaignid": "4148973",
+        "advertiser": "ASICS BR"
+      },
+      {
+        "fingerprint": "352fb67f7c5b8f6d4d08d91d827b4f1beef2ca6d5d4632193643756b13018481",
+        "title": "15% adicional na categoria Running com o cupom RUN15",
+        "reason": "Campanha por categoria ou seleção: confirme quais modelos e gerações são elegíveis.",
+        "campaignid": "4148970",
+        "advertiser": "ASICS BR"
+      }
+    ],
+    "publishedat": "2026-10-22T18:34:51.989669667Z",
+    "run": {
+      "startedat": "October, 22 2026 15:34:49",
+      "finishedat": "October, 22 2026 15:35:12",
+      "status": "success",
+      "http": "200 OK",
+      "id": 236955,
+      "durationms": 23420
+    },
+    "samples": [
+      {
+        "shop": "Olympikus BR",
+        "merchantid": "17698",
+        "price": 549.99,
+        "gender": "U",
+        "productid": 4284,
+        "sku": "40343363799",
+        "slug": "olympikus-corre-grafeno-3",
+        "type": "tenis",
+        "buyUrlSha256": "2925402e3ac76ac47287f8ca643fadfe1fa920356d95b5ebc8b05d08c0537ac8"
+      },
+      {
+        "shop": "Centauro BR",
+        "merchantid": "17806",
+        "price": 998.99,
+        "gender": "U",
+        "productid": 4289,
+        "sku": "42912960845",
+        "slug": "olympikus-corre-supra-2",
+        "type": "tenis",
+        "buyUrlSha256": "68e151402aba4171c3c20520e38c3c4cea9f8eeadff020c88217831e5226fa19"
+      },
+      {
+        "shop": "Nike BR",
+        "merchantid": "17652",
+        "price": 1137.14,
+        "gender": "M",
+        "productid": 4314,
+        "sku": "42946907763",
+        "slug": "nike-air-zoom-alphafly-3",
+        "type": "tenis",
+        "buyUrlSha256": "04723470f653fd7a60d814862b8d53a5d6ef75a80833ad6f1c6a10fbc4ebf5c3"
+      },
+      {
+        "shop": "ASICS BR",
+        "merchantid": "23659",
+        "price": 899.99,
+        "gender": "U",
+        "productid": 4309,
+        "sku": "45343880699",
+        "slug": "asics-magic-speed-5",
+        "type": "tenis",
+        "buyUrlSha256": "dbefe0c7b8dbda8272b05e63effeb7d91008d7c3c35a79025387c1f91b11cdcf"
+      },
+      {
+        "shop": "Mizuno BR",
+        "merchantid": "51271",
+        "price": 299.99,
+        "gender": "M",
+        "productid": 1069,
+        "sku": "36104096164",
+        "slug": "mizuno-wave-falcon-5",
+        "type": "tenis",
+        "buyUrlSha256": "3a4867b9c88b329dbfa1a0d12db3f37857bc96c69d46417041eba11ddd8da580"
+      }
+    ],
+    "schedule": {
+      "laststatus": "success",
+      "active": 1,
+      "intervalminutes": 30,
+      "nextrunat": "October, 22 2026 16:05:12"
+    },
+    "ok": true,
+    "response": {
+      "new_items": 0,
+      "status": "ok",
+      "success": true,
+      "newreviewcampaignids": [],
+      "outsidecatalog": 45.0,
+      "pending": 3.0,
+      "newreviewcount": 0,
+      "campaigns": 0,
+      "offers": 0,
+      "feed": {
+        "status": "ok",
+        "errors": 0,
+        "offers": 98,
+        "feeds": 7
+      }
+    },
+    "feeds": [
+      {
+        "shop": "Nike BR",
+        "status": "ok",
+        "merchantid": "17652",
+        "feedid": "93360",
+        "offers": 12
+      },
+      {
+        "shop": "ASICS BR",
+        "status": "ok",
+        "merchantid": "23659",
+        "feedid": "116576",
+        "offers": 13
+      },
+      {
+        "shop": "Samsung BR",
+        "status": "ok",
+        "merchantid": "25539",
+        "feedid": "114866",
+        "offers": 0
+      },
+      {
+        "shop": "Mizuno BR",
+        "status": "ok",
+        "merchantid": "51271",
+        "feedid": "85451",
+        "offers": 9
+      },
+      {
+        "shop": "Olympikus BR",
+        "status": "ok",
+        "merchantid": "17698",
+        "feedid": "51837",
+        "offers": 14
+      },
+      {
+        "shop": "Centauro BR",
+        "status": "ok",
+        "merchantid": "17806",
+        "feedid": "91869",
+        "offers": 50
+      },
+      {
+        "shop": "adidas BR",
+        "status": "ok",
+        "merchantid": "79926",
+        "feedid": "95015",
+        "offers": 0
+      }
+    ]
+  },
+  "firstValidationRun": {
+    "startedat": "October, 22 2026 15:27:00",
+    "finishedat": "October, 22 2026 15:27:25",
+    "status": "success",
+    "http": "200 OK",
+    "id": 236919,
+    "durationms": 24949
+  },
+  "firstValidationNote": "A coleta inicial trouxe cinco campanhas novas de nutrição; a política foi ampliada e testada antes da validação final. Uma invocação do job existente por versão publicada.",
+  "unitTests": {
+    "checks": [
+      "Permissão rejeitada: {\"DELEGATED\":false,\"ISPOST\":true,\"ISADMIN\":false,\"CSRFVERIFIED\":true,\"ACTORID\":1}",
+      "Permissão rejeitada: {\"DELEGATED\":true,\"ISPOST\":true,\"ISADMIN\":true,\"CSRFVERIFIED\":true,\"ACTORID\":1}",
+      "Permissão rejeitada: {\"DELEGATED\":false,\"ISPOST\":false,\"ISADMIN\":true,\"CSRFVERIFIED\":true,\"ACTORID\":1}",
+      "Permissão rejeitada: {\"DELEGATED\":false,\"ISPOST\":true,\"ISADMIN\":true,\"CSRFVERIFIED\":false,\"ACTORID\":1}",
+      "Modelo e geração exatos",
+      "Geração 4 não corresponde a 40",
+      "Linha genérica exige confirmação",
+      "Variante GTX não é atribuída ao modelo base",
+      "Variante Pro não é atribuída ao modelo base",
+      "Identidade ambígua não publica",
+      "Não inventa preço a partir do texto",
+      "Bloqueio impede republicação automática",
+      "Uma campanha pode atender produtos confirmados",
+      "Mudança de condições invalida confirmação manual",
+      "Produto removido torna vínculo pendente",
+      "Campanha retirada deixa a publicação",
+      "Leitor aceita campanha vigente",
+      "Leitor suspende fonte desatualizada",
+      "Campanha futura não aparece",
+      "Vencimento respeita fuso exato",
+      "Vínculo confere identidade atual do produto",
+      "Protótipo nunca exibe oferta",
+      "Produto renomeado não herda campanha antiga",
+      "URL insegura nunca é publicada",
+      "Sincronização idempotente sem duplicar vínculos",
+      "Catálogo real tem correspondência inequívoca",
+      "Bloqueio é persistido atomicamente",
+      "Formulário antigo não sobrescreve decisão nova",
+      "Rotina preserva bloqueio manual",
+      "Administrador pode restaurar vínculo automático",
+      "Confirmação manual é persistida",
+      "Consulta antiga não substitui publicação vigente",
+      "Campanha desconhecida permanece na revisão",
+      "Fora do catálogo não conta como pendência nem publica",
+      "Classificação mostra o motivo registrado",
+      "Mudança da campanha reabre a revisão sem publicar",
+      "Modelo ausente pode ser separado após revisão",
+      "Novo modelo correspondente exige revisão antes de publicar",
+      "Reabertura explícita permanece na fila mesmo havendo correspondência automática",
+      "Classificar fora do catálogo exige um motivo",
+      "Classificação mantém a proteção CSRF",
+      "Classificação e motivo são persistidos sem reabrir um candidato já revisado",
+      "Sincronização preserva a classificação e o contador no histórico",
+      "Formulário antigo não sobrescreve classificação",
+      "Administrador pode mover a campanha de volta para revisão",
+      "Restaurar automático permite novamente o vínculo elegível",
+      "Vestuário não publica mesmo citando um modelo de tênis",
+      "Decisão automática registra origem e motivo",
+      "Categoria externa: Chuteira Nike Campo",
+      "Categoria externa: Chuteiras Oportunidades",
+      "Categoria externa: Fardamento Oportunidades",
+      "Categoria externa: Chinelo Olympikus",
+      "Categoria externa: Calção Adidas Estro",
+      "Categoria externa: Monitor Gamer Samsung",
+      "Categoria externa: Samsung Vision AI TV 55",
+      "Categoria externa: Galaxy Watch8 40mm",
+      "Nutrição fora do catálogo de tênis: Whey Protein Dux Isolado 450g Chocolate Branco",
+      "Nutrição fora do catálogo de tênis: Whey Protein Dux Concentrado 450g Butter Cookie",
+      "Nutrição fora do catálogo de tênis: Caixa +MU Chocowheyfer Cookies com 12 Unidades",
+      "Nutrição fora do catálogo de tênis: Whey Shark Pro JoyPro Leite por R$ 104 no Pix",
+      "Nutrição fora do catálogo de tênis: Suplementos com até 40% OFF",
+      "Suplementos com tênis exigem revisão da seleção mista",
+      "Seleção mista exige revisão sem vínculo por substring",
+      "Catálogo com outras categorias não presume ausência de vestuário",
+      "Catálogo vazio não produz exclusões automáticas",
+      "Triagem não substitui confirmação editorial",
+      "Bloqueio tem precedência sobre triagem",
+      "Reabertura editorial não é separada automaticamente",
+      "Modelo ausente exige título completo e endereço direto correspondente",
+      "Inclusão posterior no catálogo reavalia classificação automática",
+      "Título e endereço divergentes permanecem na revisão",
+      "Coleção não comprova identidade de modelo ausente",
+      "Linha ampla permanece na revisão",
+      "Marca sem identidade conhecida permanece na revisão",
+      "Variante incerta não é descartada como modelo ausente",
+      "Geração omitida exige revisão",
+      "Identidade duplicada não é separada como ausente",
+      "Cupom amplo não herda elegibilidade por marca ou navegação",
+      "Cupom por categoria exige confirmar a seleção",
+      "Categoria ampla não publica apenas por mencionar modelo exato",
+      "Endereço inválido não serve de evidência",
+      "Primeira pendência sinaliza necessidade de revisão",
+      "Pendência inalterada não repete aviso",
+      "Fora do catálogo não gera aviso de revisão",
+      "Reabertura da fila gera aviso mesmo com ID existente",
+      "Condições alteradas geram nova revisão",
+      "Mudança no motivo de revisão é sinalizada",
+      "Reconciliação persiste deduplicação dos avisos",
+      "Separação automática persiste decisão sem gravar regra manual",
+      "Histórico conserva contadores e necessidade real de revisão"
+    ],
+    "passed": 90
+  },
+  "cronNotificationTests": {
+    "checks": [
+      "Fora do catálogo e pendência repetida não avisam",
+      "Somente novas revisões sinalizam aviso"
+    ],
+    "passed": 2
+  },
+  "apiGuards": [
+    {
+      "method": "GET",
+      "http": 405,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "http": 401,
+      "passed": true
+    }
+  ],
+  "preservation": {
+    "publication.json": {
+      "decisionsPreserved": true,
+      "privateAttributesPreserved": true,
+      "rulesCount": 43,
+      "editorialOutside": 40,
+      "automaticOutside": 5
+    },
+    "feed-publication.json": {
+      "decisionsPreserved": true,
+      "privateAttributesPreserved": true
+    },
+    "runtimeHashes": {
+      "services/ComparadorAwinPublicationService.cfc": true,
+      "api/comparador/awin-sync.cfm": true
+    }
+  },
+  "publicSamples": [
+    {
+      "slug": "mizuno-wave-falcon-5",
+      "sku": "36104096164",
+      "shop": "Mizuno BR",
+      "gender": "M",
+      "price": 299.99,
+      "passed": true
+    },
+    {
+      "slug": "olympikus-corre-grafeno-3",
+      "sku": "40343363799",
+      "shop": "Olympikus BR",
+      "gender": "U",
+      "price": 549.99,
+      "passed": true
+    },
+    {
+      "slug": "olympikus-corre-supra-2",
+      "sku": "42912960845",
+      "shop": "Centauro BR",
+      "gender": "U",
+      "price": 998.99,
+      "passed": true
+    },
+    {
+      "slug": "nike-air-zoom-alphafly-3",
+      "sku": "42946907763",
+      "shop": "Nike BR",
+      "gender": "M",
+      "price": 1137.14,
+      "passed": true
+    },
+    {
+      "slug": "asics-magic-speed-5",
+      "sku": "45343880699",
+      "shop": "ASICS BR",
+      "gender": "U",
+      "price": 899.99,
+      "passed": true
+    }
+  ],
+  "shadow": {
+    "decisions": [
+      {
+        "classification": "fora_catalogo",
+        "title": "Whey Protein Dux Isolado 450g Chocolate Branco",
+        "id": "4148993",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Whey Protein Dux Concentrado 450g Butter Cookie",
+        "id": "4148992",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Caixa +MU Chocowheyfer Cookies com 12 Unidades",
+        "id": "4148991",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Whey Shark Pro JoyPro Leite por R$ 104 no Pix",
+        "id": "4148990",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Suplementos com até 40% OFF",
+        "id": "4148988",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "revisao",
+        "title": "15% adicional na categoria Casual com o cupom ESTILO15",
+        "id": "4148975",
+        "reason": "Campanha por categoria ou seleção: confirme quais modelos e gerações são elegíveis."
+      },
+      {
+        "classification": "revisao",
+        "title": "15% adicional na categoria Quadras com o cupom JOGA15",
+        "id": "4148973",
+        "reason": "Campanha por categoria ou seleção: confirme quais modelos e gerações são elegíveis."
+      },
+      {
+        "classification": "revisao",
+        "title": "15% adicional na categoria Running com o cupom RUN15",
+        "id": "4148970",
+        "reason": "Campanha por categoria ou seleção: confirme quais modelos e gerações são elegíveis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Camiseta Feminina Nike Manga Curta Dri-FIT One Classic 55% OFF",
+        "id": "4146528",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Kimono Keiko Ultra Light 2.2 Masculino",
+        "id": "4146522",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Camiseta Nike Total 90 Masculina",
+        "id": "4146521",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Camiseta da Seleção do Brasil CBF 26/27 Feminina",
+        "id": "4146520",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Calção Adidas Estro 19 Masculino",
+        "id": "4146519",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Camiseta Masculina Kappa Edinburgh",
+        "id": "4146518",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Camiseta Kappa Zurich Masculina",
+        "id": "4146517",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Bola de Futebol Nike Pitch Team",
+        "id": "4146515",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Camisa Corinthians Nike Crest Masculina",
+        "id": "4146513",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Bola de Futebol Society Brasil Nike 26",
+        "id": "4146512",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Jaqueta Capuz Nike Park 26 Hoodie Masculina",
+        "id": "4146511",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Chuteira Futsal Nike Vapor 15 Club IC Junior",
+        "id": "4146509",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Chuteira Society Adulto Nike Superfly 11 Club",
+        "id": "4146508",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Chuteira Futsal Infantil Nike Vapor 17 Club Flex",
+        "id": "4146507",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Chuteira Society Adulto Nike Vapor 17 Club",
+        "id": "4146506",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Calção Masculino Nike Dri-FIT Park III 21",
+        "id": "4146504",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Chuteira Futsal Nike Mercurial Vapor 16 Club IC Junior",
+        "id": "4146503",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "revisao",
+        "title": "Futebol Nacional Oportunidades",
+        "id": "4146502",
+        "reason": "Nenhuma correspondência única com modelo e versão."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Chuteiras Oportunidades",
+        "id": "4146501",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Fardamento Oportunidades",
+        "id": "4146500",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "revisao",
+        "title": "CBF - Vista Brasil",
+        "id": "4146499",
+        "reason": "Nenhuma correspondência única com modelo e versão."
+      },
+      {
+        "classification": "revisao",
+        "title": "Modelos Y2K a partir de R$ 299.99",
+        "id": "4146498",
+        "reason": "Campanha por categoria ou seleção: confirme quais modelos e gerações são elegíveis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Chinelo Nike Victori a partir de R$ 159.99 no Pix",
+        "id": "4146497",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Tênis Masculino Nike Court Vision Low Next Nature",
+        "id": "4146496",
+        "reason": "Triagem automática: modelo completo nike court vision low next nature confirmado no título e no endereço do produto, ausente do catálogo elegível."
+      },
+      {
+        "classification": "revisao",
+        "title": "Linha Precision a partir de R$ 379.99 no Pix",
+        "id": "4146495",
+        "reason": "Campanha por categoria ou seleção: confirme quais modelos e gerações são elegíveis."
+      },
+      {
+        "classification": "revisao",
+        "title": "Tênis Feminino Puma Carina 3.0 SD BDP",
+        "id": "4146491",
+        "reason": "Nenhuma correspondência única com modelo e versão."
+      },
+      {
+        "classification": "revisao",
+        "title": "Oportunidades da Semana - Vestuário",
+        "id": "4146490",
+        "reason": "Nenhuma correspondência única com modelo e versão."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Vestuário Corre Foco 20% OFF",
+        "id": "4146487",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "revisao",
+        "title": "Performance que se Veste",
+        "id": "4146483",
+        "reason": "Nenhuma correspondência única com modelo e versão."
+      },
+      {
+        "classification": "revisao",
+        "title": "Adidas Boost Run a partir de R$ 329.99 no Pix",
+        "id": "4146481",
+        "reason": "Nenhuma correspondência única com modelo e versão."
+      },
+      {
+        "classification": "revisao",
+        "title": "20% OFF em produtos selecionados com o cupom OLYBF. Parcelamento em até 10x sem juros. Válido enquanto durarem os estoques.",
+        "id": "4144101",
+        "reason": "Campanha por categoria ou seleção: confirme quais modelos e gerações são elegíveis."
+      },
+      {
+        "classification": "revisao",
+        "title": "Performance que se veste até 35% OFF",
+        "id": "4143246",
+        "reason": "Nenhuma correspondência única com modelo e versão."
+      },
+      {
+        "classification": "revisao",
+        "title": "adidas Boost Run a partir de 329.99 no pix",
+        "id": "4143216",
+        "reason": "Nenhuma correspondência única com modelo e versão."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Tênis de Treino Unissex Under Armour Tribase Reps",
+        "id": "4140757",
+        "reason": "Triagem automática: modelo completo under armour tribase reps confirmado no título e no endereço do produto, ausente do catálogo elegível."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Tênis de Corrida Under Armour Charged Endless",
+        "id": "4140751",
+        "reason": "Triagem automática: modelo completo under armour charged endless confirmado no título e no endereço do produto, ausente do catálogo elegível."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Monitor Gamer Samsung Odyssey G40 25\" FHD Tela Plana 240Hz 1ms HDMI FreeSync Premium G-Sync De R$ 2049.00 Por R$ 1253.57 (-35.60%OFF) *So no APP",
+        "id": "3720074",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Celular Samsung Galaxy A36 5G 128GB 6GB RAM Câmera 50MP IP67 Super AMOLED 6.7\" Recursos AI De R$ 1698.89 Por R$ 1452.55 *So no APP",
+        "id": "3720072",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Samsung Vision AI TV 55\" NEO QLED Ultra 4K QN1EF 2025 + Soundbar Samsung HW-B450F De R$ 5546.32 Por R$ 4601.65 *So no APP",
+        "id": "3720070",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Lavadora Digital Inverter Samsung WW11T Inox 11kg De R$ 3499.00 Por R$ 2889.15 (-13.08%OFF)",
+        "id": "3720068",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      },
+      {
+        "classification": "fora_catalogo",
+        "title": "Galaxy Watch8 40mm BT De R$ 2499.00 por R$ 1799.00 (-20%OFF)",
+        "id": "3720066",
+        "reason": "Triagem automática: categoria identificada no título; o catálogo elegível contém somente tênis."
+      }
+    ],
+    "products": 716,
+    "editorial": {
+      "published": 0,
+      "blocked": 0,
+      "outsidecatalog": 45.0,
+      "pending": 3.0,
+      "newreviews": []
+    },
+    "campaigns": 48,
+    "automaticonly": {
+      "published": 0,
+      "outsidecatalog": 34.0,
+      "pending": 14.0
+    },
+    "sourceupdatedat": "2026-10-22T18:27:04.147681231Z"
+  },
+  "automation": {
+    "ok": true,
+    "id": "sincronizar-awin-e-promo-es",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "schedulePreserved": true,
+    "threadPreserved": true
+  },
+  "notificationCheckpoint": "codex/docs/evidencias/awin-revisao-checkpoint.json",
+  "privateTemporaryResourcesRemoved": true,
+  "databaseMigration": false,
+  "newImporterOrCron": false,
+  "consumerRuntimeChanged": false,
+  "credentialsExposed": false
+}

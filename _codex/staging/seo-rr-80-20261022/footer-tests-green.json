@@ -1,0 +1,366 @@
+{
+  "checks": [
+    {
+      "name": "pt-BR False private /feed/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False private /atleta/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False private /agenda/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False private /results/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False private /challenges/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False private /support/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False public /search/?busca_tipo=eventos",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False public /radar/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False public /news/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False public /videos/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False public /about/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False public /help/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False public /terms/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False public /privacy/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR False route params preserved",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True private /feed/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True private /athlete/fixture-atleta/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True private /agenda/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True private /results/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True private /challenges/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True private /support/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True public /search/?busca_tipo=eventos",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True public /radar/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True public /news/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True public /videos/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True public /about/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True public /help/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True public /terms/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True public /privacy/",
+      "passed": true
+    },
+    {
+      "name": "pt-BR True route params preserved",
+      "passed": true
+    },
+    {
+      "name": "en False private /en/feed/",
+      "passed": true
+    },
+    {
+      "name": "en False private /atleta/",
+      "passed": true
+    },
+    {
+      "name": "en False private /en/agenda/",
+      "passed": true
+    },
+    {
+      "name": "en False private /en/results/",
+      "passed": true
+    },
+    {
+      "name": "en False private /en/challenges/",
+      "passed": true
+    },
+    {
+      "name": "en False private /en/support/",
+      "passed": true
+    },
+    {
+      "name": "en False public /en/search/?busca_tipo=eventos",
+      "passed": true
+    },
+    {
+      "name": "en False public /en/radar/",
+      "passed": true
+    },
+    {
+      "name": "en False public /en/news/",
+      "passed": true
+    },
+    {
+      "name": "en False public /en/videos/",
+      "passed": true
+    },
+    {
+      "name": "en False public /en/about/",
+      "passed": true
+    },
+    {
+      "name": "en False public /en/help/",
+      "passed": true
+    },
+    {
+      "name": "en False public /en/terms/",
+      "passed": true
+    },
+    {
+      "name": "en False public /en/privacy/",
+      "passed": true
+    },
+    {
+      "name": "en False route params preserved",
+      "passed": true
+    },
+    {
+      "name": "en True private /en/feed/",
+      "passed": true
+    },
+    {
+      "name": "en True private /en/athlete/fixture-atleta/",
+      "passed": true
+    },
+    {
+      "name": "en True private /en/agenda/",
+      "passed": true
+    },
+    {
+      "name": "en True private /en/results/",
+      "passed": true
+    },
+    {
+      "name": "en True private /en/challenges/",
+      "passed": true
+    },
+    {
+      "name": "en True private /en/support/",
+      "passed": true
+    },
+    {
+      "name": "en True public /en/search/?busca_tipo=eventos",
+      "passed": true
+    },
+    {
+      "name": "en True public /en/radar/",
+      "passed": true
+    },
+    {
+      "name": "en True public /en/news/",
+      "passed": true
+    },
+    {
+      "name": "en True public /en/videos/",
+      "passed": true
+    },
+    {
+      "name": "en True public /en/about/",
+      "passed": true
+    },
+    {
+      "name": "en True public /en/help/",
+      "passed": true
+    },
+    {
+      "name": "en True public /en/terms/",
+      "passed": true
+    },
+    {
+      "name": "en True public /en/privacy/",
+      "passed": true
+    },
+    {
+      "name": "en True route params preserved",
+      "passed": true
+    },
+    {
+      "name": "es False private /es/feed/",
+      "passed": true
+    },
+    {
+      "name": "es False private /atleta/",
+      "passed": true
+    },
+    {
+      "name": "es False private /es/agenda/",
+      "passed": true
+    },
+    {
+      "name": "es False private /es/results/",
+      "passed": true
+    },
+    {
+      "name": "es False private /es/challenges/",
+      "passed": true
+    },
+    {
+      "name": "es False private /es/support/",
+      "passed": true
+    },
+    {
+      "name": "es False public /es/search/?busca_tipo=eventos",
+      "passed": true
+    },
+    {
+      "name": "es False public /es/radar/",
+      "passed": true
+    },
+    {
+      "name": "es False public /es/news/",
+      "passed": true
+    },
+    {
+      "name": "es False public /es/videos/",
+      "passed": true
+    },
+    {
+      "name": "es False public /es/about/",
+      "passed": true
+    },
+    {
+      "name": "es False public /es/help/",
+      "passed": true
+    },
+    {
+      "name": "es False public /es/terms/",
+      "passed": true
+    },
+    {
+      "name": "es False public /es/privacy/",
+      "passed": true
+    },
+    {
+      "name": "es False route params preserved",
+      "passed": true
+    },
+    {
+      "name": "es True private /es/feed/",
+      "passed": true
+    },
+    {
+      "name": "es True private /es/athlete/fixture-atleta/",
+      "passed": true
+    },
+    {
+      "name": "es True private /es/agenda/",
+      "passed": true
+    },
+    {
+      "name": "es True private /es/results/",
+      "passed": true
+    },
+    {
+      "name": "es True private /es/challenges/",
+      "passed": true
+    },
+    {
+      "name": "es True private /es/support/",
+      "passed": true
+    },
+    {
+      "name": "es True public /es/search/?busca_tipo=eventos",
+      "passed": true
+    },
+    {
+      "name": "es True public /es/radar/",
+      "passed": true
+    },
+    {
+      "name": "es True public /es/news/",
+      "passed": true
+    },
+    {
+      "name": "es True public /es/videos/",
+      "passed": true
+    },
+    {
+      "name": "es True public /es/about/",
+      "passed": true
+    },
+    {
+      "name": "es True public /es/help/",
+      "passed": true
+    },
+    {
+      "name": "es True public /es/terms/",
+      "passed": true
+    },
+    {
+      "name": "es True public /es/privacy/",
+      "passed": true
+    },
+    {
+      "name": "es True route params preserved",
+      "passed": true
+    }
+  ],
+  "failed": [],
+  "source_hash": "a2908cc64b69c0ab9177e849ae8cce1f095fda0bd19a38da9b6f1efc9b55f179"
+}

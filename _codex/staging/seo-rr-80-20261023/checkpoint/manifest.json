@@ -1,0 +1,45 @@
+{
+  "savedAt": "2026-10-23T09:26:37.704561-03:00",
+  "files": [
+    {
+      "repository": "Business",
+      "path": "portal/includes/seo_semrush_data.cfm",
+      "state": "published",
+      "sha256": "4336116e4a35e3fccdd4bf0f3396823b3c90fafb352142ea1c44c72352dedeea"
+    },
+    {
+      "repository": "Business",
+      "path": "portal/conteudo/seo_semrush.cfm",
+      "state": "published",
+      "sha256": "fe55209e32e723abc7bfdeb47875542eee05d558eba3259dc7e5a4cfd5a1fa58"
+    },
+    {
+      "repository": "Business",
+      "path": "portal/includes/seo_queue_data.cfm",
+      "state": "published",
+      "sha256": "136941aaa5a3d73e1c38b852975a96228996ddb5c8ed67ead7553257bfc6337d"
+    },
+    {
+      "repository": "Business",
+      "path": "_codex/scripts/seo_semrush_snapshot.py",
+      "state": "local-generator",
+      "sha256": "63f29b5a356f464bebb6ddb9c11955f2a4d599f3f051bb128bace816faf671b5"
+    },
+    {
+      "repository": "RoadRunners",
+      "path": "includes/estrutura/menu_apps_data.cfm",
+      "state": "published",
+      "sha256": "ac0f6e809b53d1084d207d75b902a3cbee1c945b85a3269ec0ed69756204001e"
+    }
+  ],
+  "gitCommitCreated": false,
+  "lastCompletedSiteHealth": 75,
+  "newAudit": {
+    "running": true,
+    "observedPages": 975,
+    "limit": 5000,
+    "device": "mobile",
+    "javascriptRendered": false,
+    "campaign": 26661911
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "published": [
+    "noticias/index.cfm",
+    "org/index.cfm",
+    "timer/index.cfm"
+  ],
+  "backup": "/var/backups/seo-rr-80-20261022-metadata/baseline",
+  "published_at": "2026-10-22T14:49:31.769173+00:00"
+}

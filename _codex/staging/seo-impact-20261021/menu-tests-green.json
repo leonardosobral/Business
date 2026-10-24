@@ -1,0 +1,64 @@
+{
+  "checks": [
+    {
+      "name": "https://roadrunners.run once per request",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run script consumed by https://roadrunners.run",
+      "passed": true,
+      "actual": "https://roadrunners.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://roadrunners.run script consumed by https://openresults.run",
+      "passed": true,
+      "actual": "https://roadrunners.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://roadrunners.run endpoint stays same-origin",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run once per request",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run script consumed by https://beta.roadrunners.run",
+      "passed": true,
+      "actual": "https://beta.roadrunners.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://beta.roadrunners.run script consumed by https://openresults.run",
+      "passed": true,
+      "actual": "https://beta.roadrunners.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://beta.roadrunners.run endpoint stays same-origin",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run once per request",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run script consumed by https://dev.roadrunners.run",
+      "passed": true,
+      "actual": "https://dev.roadrunners.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://dev.roadrunners.run script consumed by https://openresults.run",
+      "passed": true,
+      "actual": "https://dev.roadrunners.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://dev.roadrunners.run endpoint stays same-origin",
+      "passed": true
+    },
+    {
+      "name": "OpenResults same-origin endpoint exists",
+      "passed": true
+    }
+  ],
+  "failed": [],
+  "menu_hash": "f9d90a1d3cc1335065599f72d31a4867d10343bf1f93067e373188c12f53f90c"
+}

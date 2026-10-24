@@ -1,0 +1,184 @@
+TAP version 13
+# Subtest: centralizes every current human-action queue with a direct destination
+ok 1 - centralizes every current human-action queue with a direct destination
+  ---
+  duration_ms: 1.59375
+  type: 'test'
+  ...
+# Subtest: uses the same actionable definitions as each source workspace
+ok 2 - uses the same actionable definitions as each source workspace
+  ---
+  duration_ms: 0.788833
+  type: 'test'
+  ...
+# Subtest: counts only operational exceptions that no longer look transient
+ok 3 - counts only operational exceptions that no longer look transient
+  ---
+  duration_ms: 0.7215
+  type: 'test'
+  ...
+# Subtest: keeps optional verified-athlete requests out until their schema exists
+ok 4 - keeps optional verified-athlete requests out until their schema exists
+  ---
+  duration_ms: 0.13825
+  type: 'test'
+  ...
+# Subtest: preserves per-source availability for the decision view
+ok 5 - preserves per-source availability for the decision view
+  ---
+  duration_ms: 0.137458
+  type: 'test'
+  ...
+# Subtest: renders the expanded queue responsively without affecting account dashboards
+ok 6 - renders the expanded queue responsively without affecting account dashboards
+  ---
+  duration_ms: 0.232458
+  type: 'test'
+  ...
+# Subtest: enhances server-selected links into connected accessible tabs without changing the URL
+ok 7 - enhances server-selected links into connected accessible tabs without changing the URL
+  ---
+  duration_ms: 11.114334
+  type: 'test'
+  ...
+# Subtest: primary click switches the panel and preserves path, period, other query values and history state
+ok 8 - primary click switches the panel and preserves path, period, other query values and history state
+  ---
+  duration_ms: 5.943125
+  type: 'test'
+  ...
+# Subtest: modified and non-primary clicks retain native link behavior
+ok 9 - modified and non-primary clicks retain native link behavior
+  ---
+  duration_ms: 0.77225
+  type: 'test'
+  ...
+# Subtest: arrows wrap and Home/End activate and focus a single keyboard tab stop
+ok 10 - arrows wrap and Home/End activate and focus a single keyboard tab stop
+  ---
+  duration_ms: 0.838541
+  type: 'test'
+  ...
+# Subtest: Space activates a tab but unrelated and modified keys retain native behavior
+ok 11 - Space activates a tab but unrelated and modified keys retain native behavior
+  ---
+  duration_ms: 2.888166
+  type: 'test'
+  ...
+# Subtest: a valid URL area opens directly and an unknown value retains the server selection
+ok 12 - a valid URL area opens directly and an unknown value retains the server selection
+  ---
+  duration_ms: 1.060833
+  type: 'test'
+  ...
+# Subtest: legacy content and health hashes open their areas and scroll to the area navigation
+ok 13 - legacy content and health hashes open their areas and scroll to the area navigation
+  ---
+  duration_ms: 0.982708
+  type: 'test'
+  ...
+# Subtest: legacy payment and infrastructure hashes keep the active area and reach current alerts
+ok 14 - legacy payment and infrastructure hashes keep the active area and reach current alerts
+  ---
+  duration_ms: 0.786667
+  type: 'test'
+  ...
+# Subtest: a direct panel hash reveals its hidden panel
+ok 15 - a direct panel hash reveals its hidden panel
+  ---
+  duration_ms: 2.317291
+  type: 'test'
+  ...
+# Subtest: browser history and hash navigation resynchronize the panels without taking focus
+ok 16 - browser history and hash navigation resynchronize the panels without taking focus
+  ---
+  duration_ms: 1.73425
+  type: 'test'
+  ...
+# Subtest: initialization waits for markup and is harmless on pages without the dashboard
+ok 17 - initialization waits for markup and is harmless on pages without the dashboard
+  ---
+  duration_ms: 0.860333
+  type: 'test'
+  ...
+# Subtest: an unavailable History API does not prevent local tab interaction
+ok 18 - an unavailable History API does not prevent local tab interaction
+  ---
+  duration_ms: 0.473208
+  type: 'test'
+  ...
+# Subtest: period and refresh links retain the selected area after switching tabs
+ok 19 - period and refresh links retain the selected area after switching tabs
+  ---
+  duration_ms: 0.618333
+  type: 'test'
+  ...
+# Subtest: new content enters review, never public or featured
+ok 20 - new content enters review, never public or featured
+  ---
+  duration_ms: 2.178375
+  type: 'test'
+  ...
+# Subtest: backfill is limited to untouched imported drafts without publication
+ok 21 - backfill is limited to untouched imported drafts without publication
+  ---
+  duration_ms: 0.203166
+  type: 'test'
+  ...
+# Subtest: list, preview, and global dashboard agree on review status
+ok 22 - list, preview, and global dashboard agree on review status
+  ---
+  duration_ms: 5.495958
+  type: 'test'
+  ...
+# Subtest: accepts only canonical Google Meet room links
+ok 23 - accepts only canonical Google Meet room links
+  ---
+  duration_ms: 0.662375
+  type: 'test'
+  ...
+# Subtest: renders all presence states and keeps participant names as plain values
+ok 24 - renders all presence states and keeps participant names as plain values
+  ---
+  duration_ms: 12.470208
+  type: 'test'
+  ...
+# Subtest: accepts JSON keys normalized to uppercase by CFML engines
+ok 25 - accepts JSON keys normalized to uppercase by CFML engines
+  ---
+  duration_ms: 0.100334
+  type: 'test'
+  ...
+# Subtest: builds compact, deterministic participant avatars
+ok 26 - builds compact, deterministic participant avatars
+  ---
+  duration_ms: 0.261583
+  type: 'test'
+  ...
+# Subtest: detects only participants who appeared after the silent baseline
+ok 27 - detects only participants who appeared after the silent baseline
+  ---
+  duration_ms: 0.196833
+  type: 'test'
+  ...
+# Subtest: keeps the Meet endpoint admin-only, read-only and non-cacheable
+ok 28 - keeps the Meet endpoint admin-only, read-only and non-cacheable
+  ---
+  duration_ms: 2.301584
+  type: 'test'
+  ...
+# Subtest: requests the Meet read-only OAuth scope and enforces it on callback
+ok 29 - requests the Meet read-only OAuth scope and enforces it on callback
+  ---
+  duration_ms: 0.536292
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 112.91625

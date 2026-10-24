@@ -1,0 +1,346 @@
+--- before/admin/importer_cbat_corridaderua.cfm
++++ after/admin/importer_cbat_corridaderua.cfm
+@@ -508,32 +508,41 @@
+ }
+ 
+ function ensureContentImportTable(required any db) {
+-    arguments.db.q("
+-      CREATE TABLE IF NOT EXISTS news.tb_content_imports (
+-        id SERIAL PRIMARY KEY,
+-        importer_key TEXT NOT NULL,
+-        source_name TEXT NOT NULL,
+-        source_key TEXT NOT NULL,
+-        source_url TEXT,
+-        source_guid TEXT,
+-        source_hash TEXT,
+-        source_author TEXT,
+-        content_id INTEGER REFERENCES news.tb_content(id) ON DELETE SET NULL,
+-        imported_at TIMESTAMP NOT NULL DEFAULT now(),
+-        updated_at TIMESTAMP NOT NULL DEFAULT now(),
+-        detail_json JSONB
+-      )
+-    ");
+-
+-    arguments.db.q("
+-      CREATE UNIQUE INDEX IF NOT EXISTS idx_tb_content_imports_unique_source
+-      ON news.tb_content_imports (importer_key, source_key)
+-    ");
+-
+-    arguments.db.q("
+-      CREATE INDEX IF NOT EXISTS idx_tb_content_imports_content_id
+-      ON news.tb_content_imports (content_id)
+-    ");
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "tb_content_imports")) {
++      arguments.db.q("
++        CREATE TABLE IF NOT EXISTS news.tb_content_imports (
++          id SERIAL PRIMARY KEY,
++          importer_key TEXT NOT NULL,
++          source_name TEXT NOT NULL,
++          source_key TEXT NOT NULL,
++          source_url TEXT,
++          source_guid TEXT,
++          source_hash TEXT,
++          source_author TEXT,
++          content_id INTEGER REFERENCES news.tb_content(id) ON DELETE SET NULL,
++          imported_at TIMESTAMP NOT NULL DEFAULT now(),
++          updated_at TIMESTAMP NOT NULL DEFAULT now(),
++          detail_json JSONB
++        )
++      ");
++    }
++
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "idx_tb_content_imports_unique_source")) {
++      arguments.db.q("
++        CREATE UNIQUE INDEX IF NOT EXISTS idx_tb_content_imports_unique_source
++        ON news.tb_content_imports (importer_key, source_key)
++      ");
++    }
++
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "idx_tb_content_imports_content_id")) {
++      arguments.db.q("
++        CREATE INDEX IF NOT EXISTS idx_tb_content_imports_content_id
++        ON news.tb_content_imports (content_id)
++      ");
++    }
+ }
+ 
+ function ensureContentType(required any db, required string contentTypeName) {
+--- before/admin/importer_contrarelogio.cfm
++++ after/admin/importer_contrarelogio.cfm
+@@ -927,32 +927,41 @@
+ }
+ 
+ function ensureContentImportTable(required any db) {
+-    arguments.db.q("
+-      CREATE TABLE IF NOT EXISTS news.tb_content_imports (
+-        id SERIAL PRIMARY KEY,
+-        importer_key TEXT NOT NULL,
+-        source_name TEXT NOT NULL,
+-        source_key TEXT NOT NULL,
+-        source_url TEXT,
+-        source_guid TEXT,
+-        source_hash TEXT,
+-        source_author TEXT,
+-        content_id INTEGER REFERENCES news.tb_content(id) ON DELETE SET NULL,
+-        imported_at TIMESTAMP NOT NULL DEFAULT now(),
+-        updated_at TIMESTAMP NOT NULL DEFAULT now(),
+-        detail_json JSONB
+-      )
+-    ");
+-
+-    arguments.db.q("
+-      CREATE UNIQUE INDEX IF NOT EXISTS idx_tb_content_imports_unique_source
+-      ON news.tb_content_imports (importer_key, source_key)
+-    ");
+-
+-    arguments.db.q("
+-      CREATE INDEX IF NOT EXISTS idx_tb_content_imports_content_id
+-      ON news.tb_content_imports (content_id)
+-    ");
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "tb_content_imports")) {
++      arguments.db.q("
++        CREATE TABLE IF NOT EXISTS news.tb_content_imports (
++          id SERIAL PRIMARY KEY,
++          importer_key TEXT NOT NULL,
++          source_name TEXT NOT NULL,
++          source_key TEXT NOT NULL,
++          source_url TEXT,
++          source_guid TEXT,
++          source_hash TEXT,
++          source_author TEXT,
++          content_id INTEGER REFERENCES news.tb_content(id) ON DELETE SET NULL,
++          imported_at TIMESTAMP NOT NULL DEFAULT now(),
++          updated_at TIMESTAMP NOT NULL DEFAULT now(),
++          detail_json JSONB
++        )
++      ");
++    }
++
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "idx_tb_content_imports_unique_source")) {
++      arguments.db.q("
++        CREATE UNIQUE INDEX IF NOT EXISTS idx_tb_content_imports_unique_source
++        ON news.tb_content_imports (importer_key, source_key)
++      ");
++    }
++
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "idx_tb_content_imports_content_id")) {
++      arguments.db.q("
++        CREATE INDEX IF NOT EXISTS idx_tb_content_imports_content_id
++        ON news.tb_content_imports (content_id)
++      ");
++    }
+ }
+ 
+ function ensureContentType(required any db, required string contentTypeName) {
+--- before/admin/importer_corridanoar.cfm
++++ after/admin/importer_corridanoar.cfm
+@@ -500,43 +500,55 @@
+ }
+ 
+ function ensureContentImportTable(required any db) {
+-    arguments.db.q("
+-      CREATE TABLE IF NOT EXISTS news.tb_content_imports (
+-        id SERIAL PRIMARY KEY,
+-        importer_key TEXT NOT NULL,
+-        source_name TEXT NOT NULL,
+-        source_key TEXT NOT NULL,
+-        source_url TEXT,
+-        source_guid TEXT,
+-        source_hash TEXT,
+-        source_author TEXT,
+-        content_id INTEGER REFERENCES news.tb_content(id) ON DELETE SET NULL,
+-        imported_at TIMESTAMP NOT NULL DEFAULT now(),
+-        updated_at TIMESTAMP NOT NULL DEFAULT now(),
+-        detail_json JSONB
+-      )
+-    ");
+-
+-    arguments.db.q("
+-      CREATE UNIQUE INDEX IF NOT EXISTS idx_tb_content_imports_unique_source
+-      ON news.tb_content_imports (importer_key, source_key)
+-    ");
+-
+-    arguments.db.q("
+-      CREATE INDEX IF NOT EXISTS idx_tb_content_imports_content_id
+-      ON news.tb_content_imports (content_id)
+-    ");
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "tb_content_imports")) {
++      arguments.db.q("
++        CREATE TABLE IF NOT EXISTS news.tb_content_imports (
++          id SERIAL PRIMARY KEY,
++          importer_key TEXT NOT NULL,
++          source_name TEXT NOT NULL,
++          source_key TEXT NOT NULL,
++          source_url TEXT,
++          source_guid TEXT,
++          source_hash TEXT,
++          source_author TEXT,
++          content_id INTEGER REFERENCES news.tb_content(id) ON DELETE SET NULL,
++          imported_at TIMESTAMP NOT NULL DEFAULT now(),
++          updated_at TIMESTAMP NOT NULL DEFAULT now(),
++          detail_json JSONB
++        )
++      ");
++    }
++
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "idx_tb_content_imports_unique_source")) {
++      arguments.db.q("
++        CREATE UNIQUE INDEX IF NOT EXISTS idx_tb_content_imports_unique_source
++        ON news.tb_content_imports (importer_key, source_key)
++      ");
++    }
++
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "idx_tb_content_imports_content_id")) {
++      arguments.db.q("
++        CREATE INDEX IF NOT EXISTS idx_tb_content_imports_content_id
++        ON news.tb_content_imports (content_id)
++      ");
++    }
+ }
+ 
+ function ensureImporterBackfillStateTable(required any db) {
+-    arguments.db.q("
+-      CREATE TABLE IF NOT EXISTS news.tb_importer_backfill_state (
+-        importer_key TEXT PRIMARY KEY,
+-        next_page INTEGER NOT NULL DEFAULT 1,
+-        completed BOOLEAN NOT NULL DEFAULT false,
+-        updated_at TIMESTAMP NOT NULL DEFAULT now()
+-      )
+-    ");
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "tb_importer_backfill_state")) {
++      arguments.db.q("
++        CREATE TABLE IF NOT EXISTS news.tb_importer_backfill_state (
++          importer_key TEXT PRIMARY KEY,
++          next_page INTEGER NOT NULL DEFAULT 1,
++          completed BOOLEAN NOT NULL DEFAULT false,
++          updated_at TIMESTAMP NOT NULL DEFAULT now()
++        )
++      ");
++    }
+ }
+ 
+ function loadImporterBackfillState(required any db, required string importerKey) {
+--- before/admin/importer_sixcomm_email.cfm
++++ after/admin/importer_sixcomm_email.cfm
+@@ -160,7 +160,10 @@
+ if (shouldFetchMailbox) {
+   try {
+     importer.prepareStorage(db);
+-    db.q("CREATE TABLE IF NOT EXISTS news.tb_importer_locks (lock_key TEXT PRIMARY KEY, owner TEXT NOT NULL, expires_at TIMESTAMPTZ NOT NULL)");
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!db.relationExists("news", "tb_importer_locks")) {
++      db.q("CREATE TABLE IF NOT EXISTS news.tb_importer_locks (lock_key TEXT PRIMARY KEY, owner TEXT NOT NULL, expires_at TIMESTAMPTZ NOT NULL)");
++    }
+     lockResult = db.q("INSERT INTO news.tb_importer_locks(lock_key,owner,expires_at) VALUES (:lock_key,:owner,now()+interval '20 minutes') ON CONFLICT(lock_key) DO UPDATE SET owner=EXCLUDED.owner,expires_at=EXCLUDED.expires_at WHERE news.tb_importer_locks.expires_at < now() RETURNING true AS acquired", {
+       lock_key: {value=lockKey, cfsqltype="cf_sql_varchar"},
+       owner: {value=lockOwner, cfsqltype="cf_sql_varchar"}
+--- before/inc/content_local_config.cfc
++++ after/inc/content_local_config.cfc
+@@ -133,13 +133,16 @@
+   private void function ensureSettingsTable() {
+     var db = getDb();
+ 
+-    db.q("
+-      CREATE TABLE IF NOT EXISTS news.tb_runtime_settings (
+-        setting_key TEXT PRIMARY KEY,
+-        setting_value TEXT,
+-        updated_at TIMESTAMP NOT NULL DEFAULT now()
+-      )
+-    ");
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!db.relationExists("news", "tb_runtime_settings")) {
++      db.q("
++        CREATE TABLE IF NOT EXISTS news.tb_runtime_settings (
++          setting_key TEXT PRIMARY KEY,
++          setting_value TEXT,
++          updated_at TIMESTAMP NOT NULL DEFAULT now()
++        )
++      ");
++    }
+   }
+ 
+   private struct function loadDatabaseSettings() {
+--- before/inc/db.cfc
++++ after/inc/db.cfc
+@@ -5,6 +5,16 @@
+       opts.datasource = application.datasource;
+     }
+     return QueryExecute(arguments.sql, arguments.params, arguments.opts);
++  }
++
++  public boolean function relationExists(required string schemaName, required string relationName, struct opts = {}) {
++    var lookup = q("
++      SELECT to_regclass(quote_ident(:schema_name) || '.' || quote_ident(:relation_name)) IS NOT NULL AS found
++    ", {
++      schema_name = {value=arguments.schemaName, cfsqltype="cf_sql_varchar"},
++      relation_name = {value=arguments.relationName, cfsqltype="cf_sql_varchar"}
++    }, arguments.opts);
++    return lookup.found[1];
+   }
+ 
+   public boolean function columnExists(required string schemaName, required string tableName, required string columnName, struct opts = {}){
+--- before/inc/sixcomm_email_importer.cfc
++++ after/inc/sixcomm_email_importer.cfc
+@@ -757,26 +757,32 @@
+   }
+ 
+   private void function ensureImportTable(required any db) {
+-    arguments.db.q("
+-      CREATE TABLE IF NOT EXISTS news.tb_content_imports (
+-        id SERIAL PRIMARY KEY,
+-        importer_key TEXT NOT NULL,
+-        source_name TEXT NOT NULL,
+-        source_key TEXT NOT NULL,
+-        source_url TEXT,
+-        source_guid TEXT,
+-        source_hash TEXT,
+-        source_author TEXT,
+-        content_id INTEGER REFERENCES news.tb_content(id) ON DELETE SET NULL,
+-        imported_at TIMESTAMP NOT NULL DEFAULT now(),
+-        updated_at TIMESTAMP NOT NULL DEFAULT now(),
+-        detail_json JSONB
+-      )
+-    ");
+-    arguments.db.q("
+-      CREATE UNIQUE INDEX IF NOT EXISTS idx_tb_content_imports_unique_source
+-      ON news.tb_content_imports (importer_key, source_key)
+-    ");
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "tb_content_imports")) {
++      arguments.db.q("
++        CREATE TABLE IF NOT EXISTS news.tb_content_imports (
++          id SERIAL PRIMARY KEY,
++          importer_key TEXT NOT NULL,
++          source_name TEXT NOT NULL,
++          source_key TEXT NOT NULL,
++          source_url TEXT,
++          source_guid TEXT,
++          source_hash TEXT,
++          source_author TEXT,
++          content_id INTEGER REFERENCES news.tb_content(id) ON DELETE SET NULL,
++          imported_at TIMESTAMP NOT NULL DEFAULT now(),
++          updated_at TIMESTAMP NOT NULL DEFAULT now(),
++          detail_json JSONB
++        )
++      ");
++    }
++    // Avoid DDL on provisioned databases whose datasource restricts schema changes.
++    if (!arguments.db.relationExists("news", "idx_tb_content_imports_unique_source")) {
++      arguments.db.q("
++        CREATE UNIQUE INDEX IF NOT EXISTS idx_tb_content_imports_unique_source
++        ON news.tb_content_imports (importer_key, source_key)
++      ");
++    }
+   }
+ 
+   private void function validateEditorialMappings(required any db) {

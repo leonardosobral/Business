@@ -1,0 +1,587 @@
+[
+  {
+    "host": "roadrunners.run",
+    "path": "/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "\"Corrida e Caminhada Franco Verão 26\" - corrida de rua - Road Runners",
+      "meta": {
+        "description": ""
+      },
+      "canonical": [
+        "https://roadrunners.run/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+          "name": "\"Corrida e Caminhada Franco Verão 26\"",
+          "description": "\"Corrida e Caminhada Franco Verão 26\" acontece em 29 novembro 2026, em SUPERMERCADO FRANCO: Rua Padre Camargo, 844, Palmeira, PR, Brasil - Palmeira - PR.",
+          "url": "https://roadrunners.run/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+          "startDate": "2026-11-29",
+          "endDate": "2026-11-29",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/BON6PHBQJP5MGBXEP4PQBC6NF9VQ2CP864RHN4AAQCGOPOS0AA.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "SUPERMERCADO FRANCO: Rua Padre Camargo, 844, Palmeira, PR, Brasil",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Palmeira",
+              "addressRegion": "PR",
+              "addressCountry": "BR",
+              "streetAddress": "SUPERMERCADO FRANCO: Rua Padre Camargo, 844, Palmeira, PR, Brasil"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88321&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/pr/",
+              "@type": "ListItem",
+              "name": "Paraná"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+              "@type": "ListItem",
+              "name": "\"Corrida e Caminhada Franco Verão 26\""
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/evento/2026-corrida-da-virada-2026-sp/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "CORRIDA DA VIRADA 2026 | São Paulo SP | 31/12/2026 | Road Runners",
+      "meta": {
+        "description": "CORRIDA DA VIRADA 2026 acontece em 31 dezembro 2026, em Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP."
+      },
+      "canonical": [
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/",
+          "name": "CORRIDA DA VIRADA 2026",
+          "description": "CORRIDA DA VIRADA 2026 acontece em 31 dezembro 2026, em Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP.",
+          "url": "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/",
+          "startDate": "2026-12-31",
+          "endDate": "2026-12-31",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/I1TOOGWQ9GY37SE88M5WH5ETYQYAM969YF6QM2LS5RFVRZNWIH.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Brasil: Parque Bruno Covas Pomar, 252",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São Paulo",
+              "addressRegion": "SP",
+              "addressCountry": "BR",
+              "streetAddress": "Brasil: Parque Bruno Covas Pomar, 252"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86184&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/sp/",
+              "@type": "ListItem",
+              "name": "São Paulo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/",
+              "@type": "ListItem",
+              "name": "CORRIDA DA VIRADA 2026"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/en/event/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "\"Corrida e Caminhada Franco Verão 26\" - Road race - Road Runners",
+      "meta": {
+        "description": ""
+      },
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/en/event/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+          "name": "\"Corrida e Caminhada Franco Verão 26\"",
+          "description": "\"Corrida e Caminhada Franco Verão 26\" takes place on 29 november 2026, in SUPERMERCADO FRANCO: Rua Padre Camargo, 844, Palmeira, PR, Brasil - Palmeira - PR.",
+          "url": "https://roadrunners.run/en/event/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+          "startDate": "2026-11-29",
+          "endDate": "2026-11-29",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/BON6PHBQJP5MGBXEP4PQBC6NF9VQ2CP864RHN4AAQCGOPOS0AA.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "SUPERMERCADO FRANCO: Rua Padre Camargo, 844, Palmeira, PR, Brasil",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Palmeira",
+              "addressRegion": "PR",
+              "addressCountry": "BR",
+              "streetAddress": "SUPERMERCADO FRANCO: Rua Padre Camargo, 844, Palmeira, PR, Brasil"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88321&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/en/",
+              "@type": "ListItem",
+              "name": "Home"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/pr/",
+              "@type": "ListItem",
+              "name": "Paraná"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/en/event/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+              "@type": "ListItem",
+              "name": "\"Corrida e Caminhada Franco Verão 26\""
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/en/event/2026-corrida-da-virada-2026-sp/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "CORRIDA DA VIRADA 2026 - Race | São Paulo SP 31/12/2026 | Road Runners",
+      "meta": {
+        "description": "CORRIDA DA VIRADA 2026 takes place on 31 december 2026, in Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP."
+      },
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/",
+          "name": "CORRIDA DA VIRADA 2026",
+          "description": "CORRIDA DA VIRADA 2026 takes place on 31 december 2026, in Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP.",
+          "url": "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/",
+          "startDate": "2026-12-31",
+          "endDate": "2026-12-31",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/I1TOOGWQ9GY37SE88M5WH5ETYQYAM969YF6QM2LS5RFVRZNWIH.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Brasil: Parque Bruno Covas Pomar, 252",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São Paulo",
+              "addressRegion": "SP",
+              "addressCountry": "BR",
+              "streetAddress": "Brasil: Parque Bruno Covas Pomar, 252"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86184&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/en/",
+              "@type": "ListItem",
+              "name": "Home"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/sp/",
+              "@type": "ListItem",
+              "name": "São Paulo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/",
+              "@type": "ListItem",
+              "name": "CORRIDA DA VIRADA 2026"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/es/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "\"Corrida e Caminhada Franco Verão 26\" - Carrera de ruta - Road Runners",
+      "meta": {
+        "description": ""
+      },
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/es/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+          "name": "\"Corrida e Caminhada Franco Verão 26\"",
+          "description": "\"Corrida e Caminhada Franco Verão 26\" se realiza el 29 noviembre 2026, en SUPERMERCADO FRANCO: Rua Padre Camargo, 844, Palmeira, PR, Brasil - Palmeira - PR.",
+          "url": "https://roadrunners.run/es/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+          "startDate": "2026-11-29",
+          "endDate": "2026-11-29",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/BON6PHBQJP5MGBXEP4PQBC6NF9VQ2CP864RHN4AAQCGOPOS0AA.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "SUPERMERCADO FRANCO: Rua Padre Camargo, 844, Palmeira, PR, Brasil",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Palmeira",
+              "addressRegion": "PR",
+              "addressCountry": "BR",
+              "streetAddress": "SUPERMERCADO FRANCO: Rua Padre Camargo, 844, Palmeira, PR, Brasil"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88321&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/es/",
+              "@type": "ListItem",
+              "name": "Inicio"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/pr/",
+              "@type": "ListItem",
+              "name": "Paraná"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/es/evento/2026-%22corrida-e-caminhada-franco-verao-26%22/",
+              "@type": "ListItem",
+              "name": "\"Corrida e Caminhada Franco Verão 26\""
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/es/evento/2026-corrida-da-virada-2026-sp/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "CORRIDA DA VIRADA 2026 | São Paulo SP | 31/12/2026 | Road Runners",
+      "meta": {
+        "description": "CORRIDA DA VIRADA 2026 se realiza el 31 diciembre 2026, en Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP."
+      },
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/",
+          "name": "CORRIDA DA VIRADA 2026",
+          "description": "CORRIDA DA VIRADA 2026 se realiza el 31 diciembre 2026, en Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP.",
+          "url": "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/",
+          "startDate": "2026-12-31",
+          "endDate": "2026-12-31",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/I1TOOGWQ9GY37SE88M5WH5ETYQYAM969YF6QM2LS5RFVRZNWIH.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Brasil: Parque Bruno Covas Pomar, 252",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São Paulo",
+              "addressRegion": "SP",
+              "addressCountry": "BR",
+              "streetAddress": "Brasil: Parque Bruno Covas Pomar, 252"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86184&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/es/",
+              "@type": "ListItem",
+              "name": "Inicio"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/sp/",
+              "@type": "ListItem",
+              "name": "São Paulo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/",
+              "@type": "ListItem",
+              "name": "CORRIDA DA VIRADA 2026"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "host": "business.roadrunners.run",
+    "path": "/cadastro/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Road Runners Business",
+      "meta": {},
+      "canonical": [],
+      "alternates": [],
+      "schema": []
+    }
+  },
+  {
+    "host": "business.roadrunners.run",
+    "path": "/login/",
+    "method": "GET",
+    "edge": false,
+    "status": 404,
+    "headers": {
+      "content-type": "text/html; charset=iso-8859-1"
+    }
+  }
+]

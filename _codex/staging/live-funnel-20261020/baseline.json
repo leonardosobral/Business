@@ -1,0 +1,102 @@
+[
+  {
+    "site": "RoadRunners",
+    "path": "evento/index.cfm",
+    "sha": "c3d797fe415f8967cd249ac8125b325a262ba84ef3e0f3dbdb933592d7d53b05",
+    "mode": 420,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "c3d797fe415f8967cd249ac8125b325a262ba84ef3e0f3dbdb933592d7d53b05",
+    "matches_local": true
+  },
+  {
+    "site": "RoadRunners",
+    "path": "circuito/live_highlight.cfm",
+    "sha": "1225da5557b2a2ca40c97f488b9be33d3bcc8986e906aa18d8d832550753bbfa",
+    "mode": 420,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "1225da5557b2a2ca40c97f488b9be33d3bcc8986e906aa18d8d832550753bbfa",
+    "matches_local": true
+  },
+  {
+    "site": "RoadRunners",
+    "path": "includes/card_evento_live.cfm",
+    "sha": "316d10e62cc5796f68366892bccc57fd27b7630f570f2dc88d19774e29e29cf5",
+    "mode": 420,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "316d10e62cc5796f68366892bccc57fd27b7630f570f2dc88d19774e29e29cf5",
+    "matches_local": true
+  },
+  {
+    "site": "RoadRunners",
+    "path": "assets/js/rr-audience.js",
+    "sha": "6db9c5e7be65271262f6837cc3bbc7905194eae03ac56fad3a24f29461aaf50d",
+    "mode": 420,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "6db9c5e7be65271262f6837cc3bbc7905194eae03ac56fad3a24f29461aaf50d",
+    "matches_local": true
+  },
+  {
+    "site": "RoadRunners",
+    "path": "services/AudienceMeasurementService.cfc",
+    "sha": "ece8218e02d5886540b2a1963ae0b343cf521bff7386c53aaefc7955a60ad476",
+    "mode": 420,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "ece8218e02d5886540b2a1963ae0b343cf521bff7386c53aaefc7955a60ad476",
+    "matches_local": true
+  },
+  {
+    "site": "RoadRunners",
+    "path": "includes/analytics/bootstrap.cfm",
+    "sha": "e7db84593ac3d9c30a99260909ffdc37a2d20e04efdc6f2fe2fccfe861f13812",
+    "mode": 493,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "e7db84593ac3d9c30a99260909ffdc37a2d20e04efdc6f2fe2fccfe861f13812",
+    "matches_local": true
+  },
+  {
+    "site": "Business",
+    "path": "portal/audiencia/queries/live_journey.sql",
+    "sha": "49f0b5acf3f32edaa51c615de2f326dad6f4e0bdf42f6d88a6d4c6ac491e3724",
+    "mode": 420,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "1cf17d3a2efc5067fcd597d5f0678be45244baf0549ccea42f58dd1f433ed775",
+    "matches_local": false
+  },
+  {
+    "site": "Business",
+    "path": "portal/audiencia/live_journey.cfm",
+    "sha": "2d61a5327e6a50acfbdad91b66f4bf8a5e456a4c647273ffc97b8af56f499737",
+    "mode": 420,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "2d61a5327e6a50acfbdad91b66f4bf8a5e456a4c647273ffc97b8af56f499737",
+    "matches_local": true
+  },
+  {
+    "site": "Business",
+    "path": "portal/includes/audience_backend.cfm",
+    "sha": "ce584ff7f6a61b11f5102c5ad92834149728163bcd46b9bc610aae44579e5b3a",
+    "mode": 420,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "ce584ff7f6a61b11f5102c5ad92834149728163bcd46b9bc610aae44579e5b3a",
+    "matches_local": true
+  },
+  {
+    "site": "Business",
+    "path": "portal/audiencia/home.cfm",
+    "sha": "501734c094b7052b46eb8758f9d0d5cff5e0f206698bafc2ddfda03be8c74ea4",
+    "mode": 420,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "501734c094b7052b46eb8758f9d0d5cff5e0f206698bafc2ddfda03be8c74ea4",
+    "matches_local": true
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "backup": "/var/backups/business-crm-shared-config-20261012T124317Z-l11qn7dl",
+  "before_sha256": {
+    "/var/www/business.roadrunners.run/config/business.local.cfm": "a467f589dc0b1af86624c2cf1ab207ab80d0ee5f089d430f0b114c32f8c5965a",
+    "/var/www/business.roadrunners.run/Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+    "/var/www/business.roadrunners.run/services/CrmClient.cfc": "a99f08ef5dcb4eaa9e5d3696ef97fe3cd90ab5fa498a16de25e71d4b125d652e",
+    "/var/www/roadrunners.com.br/api/crm-interno/_common.cfm": "9dc2ad5c346f0dd9d89507a0a65bbfa4d1ba4cbf62a125df5fde96772fd1ce10",
+    "/var/www/roadrunners.com.br/services/crm/CrmSecurity.cfc": "96e9a6c0d97a0a8d96b43e9fb026d5f9219ebd50fd6f4485d09f1b68df7fd815"
+  },
+  "preflight": {
+    "wrong_signature": {
+      "http": 403,
+      "status": "invalid_signature",
+      "success": false
+    },
+    "existing_dispatch_secret": {
+      "http": 403,
+      "status": "invalid_signature",
+      "success": false
+    },
+    "shared_cron_secret": {
+      "http": 422,
+      "status": "invalid_action",
+      "success": false
+    }
+  },
+  "changed_field": "notificationDispatchSecret",
+  "existing_source_ref": "cronSecrets.road_runners_handoff",
+  "credentials_generated": false,
+  "after_sha256": "454881a96a9a60ea25d7c80551f1f2c0b080aa87e33fbbb4261625e6cd187778",
+  "other_fields_unchanged": true,
+  "reload": {
+    "http": 200,
+    "json": false
+  },
+  "runner_guard": {
+    "http": 401,
+    "status": "unauthorized",
+    "success": false
+  },
+  "checked_at_utc": "2026-10-12T12:43:18.013864+00:00"
+}

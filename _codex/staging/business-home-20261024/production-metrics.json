@@ -1,0 +1,100 @@
+{
+  "PERIODS": [
+    {
+      "SOURCES": {
+        "ads": {
+          "ELAPSED_MS": 22.0,
+          "METRICS": {
+            "PREVIOUS_BANNER_COST": 0,
+            "COST": 55.35,
+            "PREVIOUS_COST": 182.7,
+            "EVENT_COST": 55.35,
+            "PREVIOUS_EVENT_COST": 182.7,
+            "PREVIOUS_IMPRESSIONS": 10520,
+            "COMPARISON_READY": true,
+            "BANNER_COST": 0,
+            "PREVIOUS_CLICKS": 229,
+            "CLICKS": 87,
+            "IMPRESSIONS": 7696
+          },
+          "LOADED": true
+        },
+        "accounts": {
+          "ELAPSED_MS": 2.0,
+          "METRICS": {
+            "COMPARISON_READY": true,
+            "PREVIOUS_NEW_COUNT": 90,
+            "NEW_COUNT": 0
+          },
+          "LOADED": true
+        },
+        "audience": {
+          "SQLSTATE": "57014",
+          "ERROR_TYPE": "Database",
+          "ELAPSED_MS": 5343.0,
+          "LOADED": false
+        },
+        "users": {
+          "ELAPSED_MS": 22.0,
+          "METRICS": {
+            "COMPARISON_READY": true,
+            "PREVIOUS_NEW_COUNT": 356,
+            "NEW_COUNT": 452
+          },
+          "LOADED": true
+        }
+      },
+      "DAYS": 7
+    },
+    {
+      "SOURCES": {
+        "ads": {
+          "ELAPSED_MS": 7.0,
+          "METRICS": {
+            "PREVIOUS_BANNER_COST": 0,
+            "COST": 463.97,
+            "PREVIOUS_COST": 309.41,
+            "EVENT_COST": 463.97,
+            "PREVIOUS_EVENT_COST": 309.41,
+            "PREVIOUS_IMPRESSIONS": 15426,
+            "COMPARISON_READY": true,
+            "BANNER_COST": 0,
+            "PREVIOUS_CLICKS": 365,
+            "CLICKS": 599,
+            "IMPRESSIONS": 35569
+          },
+          "LOADED": true
+        },
+        "accounts": {
+          "ELAPSED_MS": 2.0,
+          "METRICS": {
+            "COMPARISON_READY": true,
+            "PREVIOUS_NEW_COUNT": 3,
+            "NEW_COUNT": 90
+          },
+          "LOADED": true
+        },
+        "audience": {
+          "SQLSTATE": "57014",
+          "ERROR_TYPE": "Database",
+          "ELAPSED_MS": 5046.0,
+          "LOADED": false
+        },
+        "users": {
+          "ELAPSED_MS": 18.0,
+          "METRICS": {
+            "COMPARISON_READY": true,
+            "PREVIOUS_NEW_COUNT": 829,
+            "NEW_COUNT": 1433
+          },
+          "LOADED": true
+        }
+      },
+      "DAYS": 30
+    }
+  ],
+  "read_only": true,
+  "runtime_files_changed": false,
+  "source_sha256": "c1b53ac2a015b36e662d6cbd11684924931bbd0f75b28c1a716a2ac27d3f7b8a",
+  "cache_disabled": true
+}

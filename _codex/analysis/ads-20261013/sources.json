@@ -1,0 +1,1447 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "before-performance",
+      "title": "2 a 8 de outubro de 2026",
+      "queries": [
+        {
+          "id": "google-before",
+          "source": {
+            "label": "Google Ads — campanhas",
+            "links": [
+              {
+                "label": "Google Ads",
+                "url": "https://ads.google.com/aw/campaigns"
+              }
+            ],
+            "filters": [
+              "Fuso horário: Brasília",
+              "Campanhas da conta RunnerHub",
+              "Inclui campanhas pausadas com histórico"
+            ]
+          },
+          "reportingPeriod": "2 a 8 de outubro de 2026",
+          "columns": [
+            "campaign",
+            "cost_brl",
+            "clicks",
+            "impressions"
+          ],
+          "rows": [
+            {
+              "period": "before",
+              "campaign": "A",
+              "cost_brl": 34.62,
+              "clicks": 63,
+              "impressions": 653,
+              "sessions": 55,
+              "pageviews": 148,
+              "qualified_sessions": 45,
+              "outbound_sessions": 0,
+              "cost_qualified": 0.7693,
+              "cpc": 0.5495
+            },
+            {
+              "period": "before",
+              "campaign": "D",
+              "cost_brl": 26.65,
+              "clicks": 48,
+              "impressions": 489,
+              "sessions": 38,
+              "pageviews": 79,
+              "qualified_sessions": 30,
+              "outbound_sessions": 0,
+              "cost_qualified": 0.8883,
+              "cpc": 0.5552
+            },
+            {
+              "period": "before",
+              "campaign": "E",
+              "cost_brl": 26.91,
+              "clicks": 61,
+              "impressions": 502,
+              "sessions": 57,
+              "pageviews": 136,
+              "qualified_sessions": 42,
+              "outbound_sessions": 5,
+              "cost_qualified": 0.6407,
+              "cpc": 0.4411
+            },
+            {
+              "period": "before",
+              "campaign": "LIVE",
+              "cost_brl": 135.73,
+              "clicks": 1458,
+              "impressions": 23957,
+              "sessions": 708,
+              "pageviews": 10074,
+              "qualified_sessions": 124,
+              "outbound_sessions": 6,
+              "cost_qualified": 1.0946,
+              "cpc": 0.0931
+            },
+            {
+              "period": "before",
+              "campaign": "C",
+              "cost_brl": 18.39,
+              "clicks": 180,
+              "impressions": 2625,
+              "sessions": 93,
+              "pageviews": 424,
+              "qualified_sessions": 11,
+              "outbound_sessions": 0,
+              "cost_qualified": 1.6718,
+              "cpc": 0.1022
+            }
+          ]
+        },
+        {
+          "id": "before-live-journey",
+          "source": {
+            "label": "Business — live_journey",
+            "links": [
+              {
+                "label": "Audiência",
+                "url": "https://business.roadrunners.run/portal/audiencia/"
+              }
+            ],
+            "sql": "WITH regional AS (\n    SELECT e.*, coalesce(nullif(CASE 'market'\n        WHEN 'visitor' THEN visitor_uf WHEN 'profile' THEN profile_uf\n        WHEN 'context' THEN context_uf ELSE market_uf END, ''), repeat('-', 2)) AS audience_uf\n    FROM audience.events e\n    WHERE e.occurred_at >= TIMESTAMPTZ '2026-10-02 00:00:00-03'\n      AND e.occurred_at < LEAST(now(),TIMESTAMPTZ '2026-10-09 00:00:00-03')\n      AND e.environment = 'prod'\n      AND (false = true OR e.is_internal = false)\n), filtered AS (\n    SELECT * FROM regional\n    WHERE ('' = '' OR audience_uf = '')\n      AND ('' = '' OR page_family = '')\n      AND ('' = '' OR device_class = '')\n), page_identity AS (\n    -- Only the original page opening identifies the page, never video modals.\n    -- Resolve before UF filtering so later slot contexts keep that same identity.\n    SELECT page_view_id, max(content_type) AS page_content_type,\n           max(content_id) AS page_content_id\n    FROM regional WHERE event_kind = 'page_view'\n    GROUP BY page_view_id\n), page_metrics AS (\n    SELECT f.page_view_id, visitor_id, session_id, page_family, page_path,\n           coalesce(i.page_content_type, '') AS page_content_type,\n           coalesce(i.page_content_id, '') AS page_content_id,\n           source, medium, campaign, creative,\n           bool_or(event_kind = 'page_view') AS has_view,\n           coalesce(max(active_ms) FILTER (WHERE event_kind = 'page_engagement'), 0) AS active_ms\n    FROM filtered f LEFT JOIN page_identity i ON i.page_view_id = f.page_view_id\n    GROUP BY f.page_view_id, visitor_id, session_id, page_family, page_path,\n             i.page_content_type, i.page_content_id,\n             source, medium, campaign, creative\n)\n\n, journey_events AS (\n    SELECT * FROM filtered\n    WHERE campaign <> ''\n      AND ('google' = '' OR lower(source) = lower('google'))\n      AND ('' = '' OR position(lower('') in lower(campaign)) > 0)\n), journey_pages AS (\n    SELECT * FROM page_metrics\n    WHERE campaign <> ''\n      AND ('google' = '' OR lower(source) = lower('google'))\n      AND ('' = '' OR position(lower('') in lower(campaign)) > 0)\n), campaign_sessions AS (\n    SELECT source, medium, campaign, session_id,\n           count(DISTINCT page_view_id) FILTER (WHERE has_view) AS pageviews,\n           sum(active_ms) >= 30000 OR count(DISTINCT (page_path,page_content_type,page_content_id)) FILTER (WHERE has_view) >= 2 AS qualified\n    FROM journey_pages GROUP BY source,medium,campaign,session_id\n), live_outbounds AS (\n    SELECT source,medium,campaign,session_id,content_id,\n           min(received_at) AS first_outbound,max(received_at) AS last_outbound\n    FROM journey_events\n    WHERE event_kind = 'outbound_click' AND content_type = 'event'\n      AND content_id ~ '^[1-9][0-9]{0,9}$'\n      AND event_key = 'outbound_click:live_registration:' || content_id\n    GROUP BY source,medium,campaign,session_id,content_id\n), event_catalog AS (\n    SELECT evt.id_evento::text AS content_id,evt.nome_evento AS event_name,\n           evt.tag AS event_tag,evt.cidade AS event_city,evt.estado AS event_uf,\n           circuit.tag = 'live-run-xp' AS is_live\n    FROM public.tb_evento_corridas evt\n    LEFT JOIN public.tb_agrega_eventos circuit ON circuit.id_agrega_evento = evt.id_agrega_evento\n), live_visits AS (\n    SELECT e.source,e.medium,e.campaign,e.session_id,e.content_id,\n           count(DISTINCT e.page_view_id) AS pageviews\n    FROM journey_events e LEFT JOIN event_catalog c ON c.content_id = e.content_id\n    WHERE e.event_kind = 'page_view' AND e.page_family = 'event' AND e.content_type = 'event'\n      AND (c.is_live OR EXISTS (SELECT 1 FROM live_outbounds o WHERE o.content_id = e.content_id))\n    GROUP BY e.source,e.medium,e.campaign,e.session_id,e.content_id\n), event_sessions AS (\n    -- A page can be reloaded and several CTAs can be clicked. One session/event remains one journey.\n    SELECT source,medium,campaign,session_id,content_id,\n           coalesce(v.pageviews,0) AS pageviews,v.pageviews IS NOT NULL AS has_visit,\n           o.first_outbound IS NOT NULL AS has_outbound,o.first_outbound,o.last_outbound\n    FROM live_visits v FULL JOIN live_outbounds o USING(source,medium,campaign,session_id,content_id)\n), campaign_arrivals AS (\n    SELECT source,medium,campaign,sum(pageviews) AS pageviews,count(*) AS sessions,\n           count(*) FILTER (WHERE qualified) AS qualified_sessions\n    FROM campaign_sessions WHERE pageviews > 0 GROUP BY source,medium,campaign\n), campaign_progress AS (\n    SELECT source,medium,campaign,\n           count(DISTINCT session_id) FILTER (WHERE has_visit) AS event_sessions,\n           count(DISTINCT session_id) FILTER (WHERE has_outbound) AS outbound_sessions,\n           count(DISTINCT session_id) FILTER (WHERE has_visit AND has_outbound) AS matched_outbound_sessions,\n           count(DISTINCT session_id) FILTER (WHERE NOT has_visit AND has_outbound) AS unmatched_outbound_sessions,\n           min(first_outbound) AS first_outbound,max(last_outbound) AS last_outbound\n    FROM event_sessions GROUP BY source,medium,campaign\n), receipts AS (\n    SELECT source,medium,campaign,max(received_at) AS last_received\n    FROM journey_events GROUP BY source,medium,campaign\n), campaign_rows AS (\n    SELECT 'campaign'::text AS row_type,source,medium,campaign,''::text AS content_id,\n           ''::text AS event_name,''::text AS event_tag,''::text AS event_city,''::text AS event_uf,\n           coalesce(a.pageviews,0) AS pageviews,coalesce(a.sessions,0) AS sessions,\n           coalesce(a.qualified_sessions,0) AS qualified_sessions,\n           coalesce(p.event_sessions,0) AS event_sessions,coalesce(p.outbound_sessions,0) AS outbound_sessions,\n           coalesce(p.matched_outbound_sessions,0) AS matched_outbound_sessions,\n           coalesce(p.unmatched_outbound_sessions,0) AS unmatched_outbound_sessions,\n           p.first_outbound,p.last_outbound,r.last_received\n    FROM campaign_arrivals a FULL JOIN campaign_progress p USING(source,medium,campaign)\n    LEFT JOIN receipts r USING(source,medium,campaign)\n), event_rows AS (\n    SELECT 'event'::text AS row_type,e.source,e.medium,e.campaign,e.content_id,\n           coalesce(c.event_name,'Evento ' || e.content_id) AS event_name,\n           coalesce(c.event_tag,'') AS event_tag,coalesce(c.event_city,'') AS event_city,coalesce(c.event_uf,'') AS event_uf,\n           sum(e.pageviews) AS pageviews,count(*) FILTER (WHERE e.has_visit) AS sessions,\n           0::bigint AS qualified_sessions,count(*) FILTER (WHERE e.has_visit) AS event_sessions,\n           count(*) FILTER (WHERE e.has_outbound) AS outbound_sessions,\n           count(*) FILTER (WHERE e.has_visit AND e.has_outbound) AS matched_outbound_sessions,\n           count(*) FILTER (WHERE NOT e.has_visit AND e.has_outbound) AS unmatched_outbound_sessions,\n           min(e.first_outbound) AS first_outbound,max(e.last_outbound) AS last_outbound,r.last_received\n    FROM event_sessions e LEFT JOIN event_catalog c ON c.content_id = e.content_id\n    LEFT JOIN receipts r USING(source,medium,campaign)\n    -- City/event narrow detail only: campaign arrivals retain their full, deduplicated denominator.\n    WHERE ('' = '' OR position(lower('') in lower(coalesce(c.event_city,''))) > 0)\n      AND ('' = '' OR e.content_id = '')\n    GROUP BY e.source,e.medium,e.campaign,e.content_id,c.event_name,c.event_tag,c.event_city,c.event_uf,r.last_received\n), limited_campaigns AS (\n    SELECT * FROM campaign_rows ORDER BY sessions DESC,source,medium,campaign LIMIT 101\n), limited_events AS (\n    SELECT * FROM event_rows ORDER BY event_sessions DESC,source,medium,campaign,content_id LIMIT 201\n)\nSELECT * FROM limited_campaigns UNION ALL SELECT * FROM limited_events\nORDER BY row_type,source,medium,campaign,content_id\n",
+            "caveats": [
+              "Sessões qualificadas: pelo menos 30 segundos ativos ou duas páginas distintas. Cliques e sessões não são inscrições."
+            ]
+          },
+          "reportingPeriod": "2 a 8 de outubro de 2026",
+          "columns": [
+            "campaign",
+            "sessions",
+            "pageviews",
+            "qualified_sessions",
+            "outbound_sessions"
+          ],
+          "rows": [
+            {
+              "event_city": "",
+              "outbound_sessions": 6,
+              "medium": "cpc",
+              "first_outbound": "October, 03 2026 16:06:33",
+              "event_name": "",
+              "qualified_sessions": 124,
+              "last_outbound": "October, 07 2026 23:12:38",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 708,
+              "pageviews": 10074,
+              "matched_outbound_sessions": 6,
+              "row_type": "campaign",
+              "event_sessions": 22,
+              "last_received": "October, 08 2026 23:43:11",
+              "campaign": "live_cupom_2026_retomada",
+              "event_tag": ""
+            },
+            {
+              "event_city": "",
+              "outbound_sessions": 0,
+              "medium": "cpc",
+              "first_outbound": "",
+              "event_name": "",
+              "qualified_sessions": 45,
+              "last_outbound": "",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 55,
+              "pageviews": 148,
+              "matched_outbound_sessions": 0,
+              "row_type": "campaign",
+              "event_sessions": 0,
+              "last_received": "October, 08 2026 22:00:28",
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "event_tag": ""
+            },
+            {
+              "event_city": "",
+              "outbound_sessions": 0,
+              "medium": "cpc",
+              "first_outbound": "",
+              "event_name": "",
+              "qualified_sessions": 30,
+              "last_outbound": "",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 38,
+              "pageviews": 79,
+              "matched_outbound_sessions": 0,
+              "row_type": "campaign",
+              "event_sessions": 0,
+              "last_received": "October, 08 2026 19:50:03",
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "event_tag": ""
+            },
+            {
+              "event_city": "",
+              "outbound_sessions": 5,
+              "medium": "cpc",
+              "first_outbound": "October, 04 2026 01:18:31",
+              "event_name": "",
+              "qualified_sessions": 42,
+              "last_outbound": "October, 07 2026 13:05:49",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 57,
+              "pageviews": 136,
+              "matched_outbound_sessions": 5,
+              "row_type": "campaign",
+              "event_sessions": 8,
+              "last_received": "October, 08 2026 17:57:22",
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "event_tag": ""
+            },
+            {
+              "event_city": "",
+              "outbound_sessions": 0,
+              "medium": "display",
+              "first_outbound": "",
+              "event_name": "",
+              "qualified_sessions": 11,
+              "last_outbound": "",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 93,
+              "pageviews": 424,
+              "matched_outbound_sessions": 0,
+              "row_type": "campaign",
+              "event_sessions": 0,
+              "last_received": "October, 08 2026 14:47:07",
+              "campaign": "rr_teste_c_display_corridas_sc_202610",
+              "event_tag": ""
+            }
+          ],
+          "preview": {
+            "kind": "aggregate",
+            "note": "Agregados filtrados para Google e campanhas relevantes."
+          }
+        },
+        {
+          "id": "before-advertiser-acquisition",
+          "source": {
+            "label": "Business — advertiser_acquisition",
+            "links": [
+              {
+                "label": "Audiência",
+                "url": "https://business.roadrunners.run/portal/audiencia/"
+              }
+            ],
+            "sql": "WITH regional AS (\n    SELECT e.*, coalesce(nullif(CASE 'market'\n        WHEN 'visitor' THEN visitor_uf WHEN 'profile' THEN profile_uf\n        WHEN 'context' THEN context_uf ELSE market_uf END, ''), repeat('-', 2)) AS audience_uf\n    FROM audience.events e\n    WHERE e.occurred_at >= TIMESTAMPTZ '2026-10-02 00:00:00-03'\n      AND e.occurred_at < LEAST(now(),TIMESTAMPTZ '2026-10-09 00:00:00-03')\n      AND e.environment = 'prod'\n      AND (false = true OR e.is_internal = false)\n), filtered AS (\n    SELECT * FROM regional\n    WHERE ('' = '' OR audience_uf = '')\n      AND ('' = '' OR page_family = '')\n      AND ('' = '' OR device_class = '')\n), page_identity AS (\n    -- Only the original page opening identifies the page, never video modals.\n    -- Resolve before UF filtering so later slot contexts keep that same identity.\n    SELECT page_view_id, max(content_type) AS page_content_type,\n           max(content_id) AS page_content_id\n    FROM regional WHERE event_kind = 'page_view'\n    GROUP BY page_view_id\n), page_metrics AS (\n    SELECT f.page_view_id, visitor_id, session_id, page_family, page_path,\n           coalesce(i.page_content_type, '') AS page_content_type,\n           coalesce(i.page_content_id, '') AS page_content_id,\n           source, medium, campaign, creative,\n           bool_or(event_kind = 'page_view') AS has_view,\n           coalesce(max(active_ms) FILTER (WHERE event_kind = 'page_engagement'), 0) AS active_ms\n    FROM filtered f LEFT JOIN page_identity i ON i.page_view_id = f.page_view_id\n    GROUP BY f.page_view_id, visitor_id, session_id, page_family, page_path,\n             i.page_content_type, i.page_content_id,\n             source, medium, campaign, creative\n)\n\n, deliveries AS (\n SELECT source, medium, campaign, campaign_id, delivery_id,\n        bool_or(event_kind='ad_render') AS rendered,\n        bool_or(event_kind='ad_viewable') AS viewed,\n        count(DISTINCT session_id) FILTER (WHERE event_kind='ad_viewable') AS view_sessions\n FROM filtered\n WHERE campaign <> '' AND campaign_id IS NOT NULL AND delivery_id IS NOT NULL\n   AND event_kind IN ('ad_render','ad_viewable') AND slot_state='filled'\n GROUP BY source,medium,campaign,campaign_id,delivery_id\n), clicks AS (\n SELECT DISTINCT e.delivery_id, e.campaign_id\n FROM ads.events e\n JOIN (SELECT DISTINCT delivery_id,campaign_id FROM deliveries) d USING(delivery_id,campaign_id)\n WHERE e.event_type='CLICK' AND e.valid\n   AND e.received_at >= TIMESTAMPTZ '2026-10-02 00:00:00-03'\n   AND e.received_at < LEAST(now(),TIMESTAMPTZ '2026-10-09 00:00:00-03')\n), reach AS (\n SELECT source,medium,campaign,campaign_id,count(DISTINCT session_id) AS view_sessions\n FROM filtered WHERE campaign<>'' AND campaign_id IS NOT NULL AND delivery_id IS NOT NULL\n   AND event_kind='ad_viewable' AND slot_state='filled'\n GROUP BY source,medium,campaign,campaign_id\n)\nSELECT d.source,d.medium,d.campaign,d.campaign_id::text AS advertiser_id,\n       coalesce(nullif(c.name,''),d.campaign_id::text) AS advertiser_name,\n       count(*) FILTER(WHERE d.rendered) AS rendered_deliveries,\n       count(*) FILTER(WHERE d.viewed) AS viewed_deliveries,\n       coalesce(max(r.view_sessions),0) AS view_sessions,\n       count(*) FILTER(WHERE k.delivery_id IS NOT NULL) AS clicked_deliveries,\n       count(*) FILTER(WHERE k.delivery_id IS NOT NULL AND d.viewed) AS viewed_clicked_deliveries\nFROM deliveries d\nLEFT JOIN ads.campaigns c ON c.campaign_id=d.campaign_id\nLEFT JOIN clicks k ON k.delivery_id=d.delivery_id AND k.campaign_id=d.campaign_id\nLEFT JOIN reach r ON r.source=d.source AND r.medium=d.medium AND r.campaign=d.campaign AND r.campaign_id=d.campaign_id\nGROUP BY d.source,d.medium,d.campaign,d.campaign_id,c.name\nORDER BY view_sessions DESC,viewed_deliveries DESC,d.campaign,advertiser_name\nLIMIT 101\n",
+            "caveats": [
+              "Exposição de 50% da peça por 1 segundo; cliques válidos deduplicados por entrega. Banners sem delivery_id e visitas sem campanha UTM não entram. Não somar sessões entre anunciantes como pessoas únicas."
+            ]
+          },
+          "reportingPeriod": "2 a 8 de outubro de 2026",
+          "columns": [
+            "campaign",
+            "advertiser_name",
+            "view_sessions",
+            "viewed_deliveries",
+            "clicked_deliveries"
+          ],
+          "rows": [
+            {
+              "advertiser_name": "Maratona Internacional de Floripa 2027 — Divulgação",
+              "advertiser_id": "118e16c7-9f57-4e59-b138-a1fcd96bed4f",
+              "medium": "display",
+              "rendered_deliveries": 416,
+              "view_sessions": 58,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_c_display_corridas_sc_202610",
+              "viewed_deliveries": 373
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Campinas 2026 — Divulgação",
+              "advertiser_id": "577ce639-2181-4e44-86bf-366f198bf077",
+              "medium": "cpc",
+              "rendered_deliveries": 87,
+              "view_sessions": 55,
+              "source": "google",
+              "viewed_clicked_deliveries": 6,
+              "clicked_deliveries": 6,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 78
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Osasco 2026 — Divulgação",
+              "advertiser_id": "6b3047f5-6e56-4055-99f1-b34d9c711afb",
+              "medium": "cpc",
+              "rendered_deliveries": 87,
+              "view_sessions": 54,
+              "source": "google",
+              "viewed_clicked_deliveries": 2,
+              "clicked_deliveries": 2,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 75
+            },
+            {
+              "advertiser_name": "Maratona Internacional de Floripa 2027 — Divulgação",
+              "advertiser_id": "118e16c7-9f57-4e59-b138-a1fcd96bed4f",
+              "medium": "cpc",
+              "rendered_deliveries": 99,
+              "view_sessions": 52,
+              "source": "google",
+              "viewed_clicked_deliveries": 5,
+              "clicked_deliveries": 5,
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "viewed_deliveries": 89
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Itaipu 2026 — Divulgação",
+              "advertiser_id": "c55094a0-833e-4d8f-a35a-37c6d1c6e091",
+              "medium": "cpc",
+              "rendered_deliveries": 44,
+              "view_sessions": 38,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "viewed_deliveries": 44
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "cpc",
+              "rendered_deliveries": 45,
+              "view_sessions": 37,
+              "source": "google",
+              "viewed_clicked_deliveries": 4,
+              "clicked_deliveries": 4,
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "viewed_deliveries": 41
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "cpc",
+              "rendered_deliveries": 55,
+              "view_sessions": 33,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "viewed_deliveries": 41
+            },
+            {
+              "advertiser_name": "Maratona Internacional de São Paulo 2027 — Divulgação",
+              "advertiser_id": "33cbfec3-17cf-4bdd-9845-63fdec62539b",
+              "medium": "cpc",
+              "rendered_deliveries": 47,
+              "view_sessions": 28,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "viewed_deliveries": 34
+            },
+            {
+              "advertiser_name": "Maratona Internacional de São Paulo 2027 — Divulgação",
+              "advertiser_id": "33cbfec3-17cf-4bdd-9845-63fdec62539b",
+              "medium": "display",
+              "rendered_deliveries": 212,
+              "view_sessions": 19,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_c_display_corridas_sc_202610",
+              "viewed_deliveries": 172
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "display",
+              "rendered_deliveries": 204,
+              "view_sessions": 16,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_c_display_corridas_sc_202610",
+              "viewed_deliveries": 160
+            },
+            {
+              "advertiser_name": "Maratona Internacional de Floripa 2027 — Divulgação",
+              "advertiser_id": "118e16c7-9f57-4e59-b138-a1fcd96bed4f",
+              "medium": "cpc",
+              "rendered_deliveries": 23,
+              "view_sessions": 8,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 11
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "cpc",
+              "rendered_deliveries": 18,
+              "view_sessions": 5,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 5
+            },
+            {
+              "advertiser_name": "Maratona Internacional de São Paulo 2027 — Divulgação",
+              "advertiser_id": "33cbfec3-17cf-4bdd-9845-63fdec62539b",
+              "medium": "cpc",
+              "rendered_deliveries": 12,
+              "view_sessions": 3,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 4
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Osasco 2026 — Divulgação",
+              "advertiser_id": "6b3047f5-6e56-4055-99f1-b34d9c711afb",
+              "medium": "cpc",
+              "rendered_deliveries": 5,
+              "view_sessions": 2,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 5
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Campinas 2026 — Divulgação",
+              "advertiser_id": "577ce639-2181-4e44-86bf-366f198bf077",
+              "medium": "cpc",
+              "rendered_deliveries": 4,
+              "view_sessions": 2,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 4
+            },
+            {
+              "advertiser_name": "Maratona Internacional de São Paulo 2027 — Divulgação",
+              "advertiser_id": "33cbfec3-17cf-4bdd-9845-63fdec62539b",
+              "medium": "cpc",
+              "rendered_deliveries": 4,
+              "view_sessions": 2,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 2
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Itaipu 2026 — Divulgação",
+              "advertiser_id": "c55094a0-833e-4d8f-a35a-37c6d1c6e091",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 1,
+              "clicked_deliveries": 1,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Porto Alegre 2026 — Divulgação",
+              "advertiser_id": "1892c7b5-da4c-4e65-9616-a25f78c6eb6b",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "Maratona Internacional de Floripa 2027 — Divulgação",
+              "advertiser_id": "118e16c7-9f57-4e59-b138-a1fcd96bed4f",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "Maratona Internacional de São Paulo 2027 — Divulgação",
+              "advertiser_id": "33cbfec3-17cf-4bdd-9845-63fdec62539b",
+              "medium": "cpc",
+              "rendered_deliveries": 2,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "cpc",
+              "rendered_deliveries": 2,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Niterói 2026 — Divulgação",
+              "advertiser_id": "96df95eb-366d-4d4f-94de-97cb223d3dd3",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 0,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 0
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Rio de Janeiro 2026 — Divulgação",
+              "advertiser_id": "885c0d04-84e6-4739-adbb-66e8319f415c",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 0,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 0
+            },
+            {
+              "advertiser_name": "Maratona Internacional de Floripa 2027 — Divulgação",
+              "advertiser_id": "118e16c7-9f57-4e59-b138-a1fcd96bed4f",
+              "medium": "cpc",
+              "rendered_deliveries": 4,
+              "view_sessions": 0,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 0
+            }
+          ],
+          "preview": {
+            "kind": "aggregate",
+            "note": "Agregados filtrados para Google e campanhas relevantes."
+          }
+        }
+      ]
+    },
+    {
+      "id": "after-performance",
+      "title": "9 a 12 de outubro de 2026",
+      "queries": [
+        {
+          "id": "google-after",
+          "source": {
+            "label": "Google Ads — campanhas",
+            "links": [
+              {
+                "label": "Google Ads",
+                "url": "https://ads.google.com/aw/campaigns"
+              }
+            ],
+            "filters": [
+              "Fuso horário: Brasília",
+              "Campanhas da conta RunnerHub",
+              "Inclui campanhas pausadas com histórico"
+            ]
+          },
+          "reportingPeriod": "9 a 12 de outubro de 2026",
+          "columns": [
+            "campaign",
+            "cost_brl",
+            "clicks",
+            "impressions"
+          ],
+          "rows": [
+            {
+              "period": "after",
+              "campaign": "A",
+              "cost_brl": 20.33,
+              "clicks": 101,
+              "impressions": 433,
+              "sessions": 93,
+              "pageviews": 232,
+              "qualified_sessions": 78,
+              "outbound_sessions": 0,
+              "cost_qualified": 0.2606,
+              "cpc": 0.2013
+            },
+            {
+              "period": "after",
+              "campaign": "D",
+              "cost_brl": 22.2,
+              "clicks": 80,
+              "impressions": 486,
+              "sessions": 62,
+              "pageviews": 142,
+              "qualified_sessions": 43,
+              "outbound_sessions": 0,
+              "cost_qualified": 0.5163,
+              "cpc": 0.2775
+            },
+            {
+              "period": "after",
+              "campaign": "E",
+              "cost_brl": 21.76,
+              "clicks": 122,
+              "impressions": 573,
+              "sessions": 103,
+              "pageviews": 315,
+              "qualified_sessions": 82,
+              "outbound_sessions": 5,
+              "cost_qualified": 0.2654,
+              "cpc": 0.1784
+            },
+            {
+              "period": "after",
+              "campaign": "LIVE",
+              "cost_brl": 100.46,
+              "clicks": 956,
+              "impressions": 13737,
+              "sessions": 504,
+              "pageviews": 1049,
+              "qualified_sessions": 131,
+              "outbound_sessions": 13,
+              "cost_qualified": 0.7669,
+              "cpc": 0.1051
+            },
+            {
+              "period": "after",
+              "campaign": "C",
+              "cost_brl": 0,
+              "clicks": 0,
+              "impressions": 0,
+              "sessions": 0,
+              "pageviews": 0,
+              "qualified_sessions": 0,
+              "outbound_sessions": 0,
+              "cost_qualified": null,
+              "cpc": null
+            }
+          ]
+        },
+        {
+          "id": "after-live-journey",
+          "source": {
+            "label": "Business — live_journey",
+            "links": [
+              {
+                "label": "Audiência",
+                "url": "https://business.roadrunners.run/portal/audiencia/"
+              }
+            ],
+            "sql": "WITH regional AS (\n    SELECT e.*, coalesce(nullif(CASE 'market'\n        WHEN 'visitor' THEN visitor_uf WHEN 'profile' THEN profile_uf\n        WHEN 'context' THEN context_uf ELSE market_uf END, ''), repeat('-', 2)) AS audience_uf\n    FROM audience.events e\n    WHERE e.occurred_at >= TIMESTAMPTZ '2026-10-09 00:00:00-03'\n      AND e.occurred_at < LEAST(now(),TIMESTAMPTZ '2026-10-13 00:00:00-03')\n      AND e.environment = 'prod'\n      AND (false = true OR e.is_internal = false)\n), filtered AS (\n    SELECT * FROM regional\n    WHERE ('' = '' OR audience_uf = '')\n      AND ('' = '' OR page_family = '')\n      AND ('' = '' OR device_class = '')\n), page_identity AS (\n    -- Only the original page opening identifies the page, never video modals.\n    -- Resolve before UF filtering so later slot contexts keep that same identity.\n    SELECT page_view_id, max(content_type) AS page_content_type,\n           max(content_id) AS page_content_id\n    FROM regional WHERE event_kind = 'page_view'\n    GROUP BY page_view_id\n), page_metrics AS (\n    SELECT f.page_view_id, visitor_id, session_id, page_family, page_path,\n           coalesce(i.page_content_type, '') AS page_content_type,\n           coalesce(i.page_content_id, '') AS page_content_id,\n           source, medium, campaign, creative,\n           bool_or(event_kind = 'page_view') AS has_view,\n           coalesce(max(active_ms) FILTER (WHERE event_kind = 'page_engagement'), 0) AS active_ms\n    FROM filtered f LEFT JOIN page_identity i ON i.page_view_id = f.page_view_id\n    GROUP BY f.page_view_id, visitor_id, session_id, page_family, page_path,\n             i.page_content_type, i.page_content_id,\n             source, medium, campaign, creative\n)\n\n, journey_events AS (\n    SELECT * FROM filtered\n    WHERE campaign <> ''\n      AND ('google' = '' OR lower(source) = lower('google'))\n      AND ('' = '' OR position(lower('') in lower(campaign)) > 0)\n), journey_pages AS (\n    SELECT * FROM page_metrics\n    WHERE campaign <> ''\n      AND ('google' = '' OR lower(source) = lower('google'))\n      AND ('' = '' OR position(lower('') in lower(campaign)) > 0)\n), campaign_sessions AS (\n    SELECT source, medium, campaign, session_id,\n           count(DISTINCT page_view_id) FILTER (WHERE has_view) AS pageviews,\n           sum(active_ms) >= 30000 OR count(DISTINCT (page_path,page_content_type,page_content_id)) FILTER (WHERE has_view) >= 2 AS qualified\n    FROM journey_pages GROUP BY source,medium,campaign,session_id\n), live_outbounds AS (\n    SELECT source,medium,campaign,session_id,content_id,\n           min(received_at) AS first_outbound,max(received_at) AS last_outbound\n    FROM journey_events\n    WHERE event_kind = 'outbound_click' AND content_type = 'event'\n      AND content_id ~ '^[1-9][0-9]{0,9}$'\n      AND event_key = 'outbound_click:live_registration:' || content_id\n    GROUP BY source,medium,campaign,session_id,content_id\n), event_catalog AS (\n    SELECT evt.id_evento::text AS content_id,evt.nome_evento AS event_name,\n           evt.tag AS event_tag,evt.cidade AS event_city,evt.estado AS event_uf,\n           circuit.tag = 'live-run-xp' AS is_live\n    FROM public.tb_evento_corridas evt\n    LEFT JOIN public.tb_agrega_eventos circuit ON circuit.id_agrega_evento = evt.id_agrega_evento\n), live_visits AS (\n    SELECT e.source,e.medium,e.campaign,e.session_id,e.content_id,\n           count(DISTINCT e.page_view_id) AS pageviews\n    FROM journey_events e LEFT JOIN event_catalog c ON c.content_id = e.content_id\n    WHERE e.event_kind = 'page_view' AND e.page_family = 'event' AND e.content_type = 'event'\n      AND (c.is_live OR EXISTS (SELECT 1 FROM live_outbounds o WHERE o.content_id = e.content_id))\n    GROUP BY e.source,e.medium,e.campaign,e.session_id,e.content_id\n), event_sessions AS (\n    -- A page can be reloaded and several CTAs can be clicked. One session/event remains one journey.\n    SELECT source,medium,campaign,session_id,content_id,\n           coalesce(v.pageviews,0) AS pageviews,v.pageviews IS NOT NULL AS has_visit,\n           o.first_outbound IS NOT NULL AS has_outbound,o.first_outbound,o.last_outbound\n    FROM live_visits v FULL JOIN live_outbounds o USING(source,medium,campaign,session_id,content_id)\n), campaign_arrivals AS (\n    SELECT source,medium,campaign,sum(pageviews) AS pageviews,count(*) AS sessions,\n           count(*) FILTER (WHERE qualified) AS qualified_sessions\n    FROM campaign_sessions WHERE pageviews > 0 GROUP BY source,medium,campaign\n), campaign_progress AS (\n    SELECT source,medium,campaign,\n           count(DISTINCT session_id) FILTER (WHERE has_visit) AS event_sessions,\n           count(DISTINCT session_id) FILTER (WHERE has_outbound) AS outbound_sessions,\n           count(DISTINCT session_id) FILTER (WHERE has_visit AND has_outbound) AS matched_outbound_sessions,\n           count(DISTINCT session_id) FILTER (WHERE NOT has_visit AND has_outbound) AS unmatched_outbound_sessions,\n           min(first_outbound) AS first_outbound,max(last_outbound) AS last_outbound\n    FROM event_sessions GROUP BY source,medium,campaign\n), receipts AS (\n    SELECT source,medium,campaign,max(received_at) AS last_received\n    FROM journey_events GROUP BY source,medium,campaign\n), campaign_rows AS (\n    SELECT 'campaign'::text AS row_type,source,medium,campaign,''::text AS content_id,\n           ''::text AS event_name,''::text AS event_tag,''::text AS event_city,''::text AS event_uf,\n           coalesce(a.pageviews,0) AS pageviews,coalesce(a.sessions,0) AS sessions,\n           coalesce(a.qualified_sessions,0) AS qualified_sessions,\n           coalesce(p.event_sessions,0) AS event_sessions,coalesce(p.outbound_sessions,0) AS outbound_sessions,\n           coalesce(p.matched_outbound_sessions,0) AS matched_outbound_sessions,\n           coalesce(p.unmatched_outbound_sessions,0) AS unmatched_outbound_sessions,\n           p.first_outbound,p.last_outbound,r.last_received\n    FROM campaign_arrivals a FULL JOIN campaign_progress p USING(source,medium,campaign)\n    LEFT JOIN receipts r USING(source,medium,campaign)\n), event_rows AS (\n    SELECT 'event'::text AS row_type,e.source,e.medium,e.campaign,e.content_id,\n           coalesce(c.event_name,'Evento ' || e.content_id) AS event_name,\n           coalesce(c.event_tag,'') AS event_tag,coalesce(c.event_city,'') AS event_city,coalesce(c.event_uf,'') AS event_uf,\n           sum(e.pageviews) AS pageviews,count(*) FILTER (WHERE e.has_visit) AS sessions,\n           0::bigint AS qualified_sessions,count(*) FILTER (WHERE e.has_visit) AS event_sessions,\n           count(*) FILTER (WHERE e.has_outbound) AS outbound_sessions,\n           count(*) FILTER (WHERE e.has_visit AND e.has_outbound) AS matched_outbound_sessions,\n           count(*) FILTER (WHERE NOT e.has_visit AND e.has_outbound) AS unmatched_outbound_sessions,\n           min(e.first_outbound) AS first_outbound,max(e.last_outbound) AS last_outbound,r.last_received\n    FROM event_sessions e LEFT JOIN event_catalog c ON c.content_id = e.content_id\n    LEFT JOIN receipts r USING(source,medium,campaign)\n    -- City/event narrow detail only: campaign arrivals retain their full, deduplicated denominator.\n    WHERE ('' = '' OR position(lower('') in lower(coalesce(c.event_city,''))) > 0)\n      AND ('' = '' OR e.content_id = '')\n    GROUP BY e.source,e.medium,e.campaign,e.content_id,c.event_name,c.event_tag,c.event_city,c.event_uf,r.last_received\n), limited_campaigns AS (\n    SELECT * FROM campaign_rows ORDER BY sessions DESC,source,medium,campaign LIMIT 101\n), limited_events AS (\n    SELECT * FROM event_rows ORDER BY event_sessions DESC,source,medium,campaign,content_id LIMIT 201\n)\nSELECT * FROM limited_campaigns UNION ALL SELECT * FROM limited_events\nORDER BY row_type,source,medium,campaign,content_id\n",
+            "caveats": [
+              "Sessões qualificadas: pelo menos 30 segundos ativos ou duas páginas distintas. Cliques e sessões não são inscrições."
+            ]
+          },
+          "reportingPeriod": "9 a 12 de outubro de 2026",
+          "columns": [
+            "campaign",
+            "sessions",
+            "pageviews",
+            "qualified_sessions",
+            "outbound_sessions"
+          ],
+          "rows": [
+            {
+              "event_city": "",
+              "outbound_sessions": 13,
+              "medium": "cpc",
+              "first_outbound": "October, 09 2026 00:33:08",
+              "event_name": "",
+              "qualified_sessions": 131,
+              "last_outbound": "October, 12 2026 11:34:27",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 504,
+              "pageviews": 1049,
+              "matched_outbound_sessions": 13,
+              "row_type": "campaign",
+              "event_sessions": 41,
+              "last_received": "October, 12 2026 21:53:03",
+              "campaign": "live_cupom_2026_retomada",
+              "event_tag": ""
+            },
+            {
+              "event_city": "",
+              "outbound_sessions": 0,
+              "medium": "cpc",
+              "first_outbound": "",
+              "event_name": "",
+              "qualified_sessions": 78,
+              "last_outbound": "",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 93,
+              "pageviews": 232,
+              "matched_outbound_sessions": 0,
+              "row_type": "campaign",
+              "event_sessions": 0,
+              "last_received": "October, 12 2026 21:40:12",
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "event_tag": ""
+            },
+            {
+              "event_city": "",
+              "outbound_sessions": 0,
+              "medium": "cpc",
+              "first_outbound": "",
+              "event_name": "",
+              "qualified_sessions": 43,
+              "last_outbound": "",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 62,
+              "pageviews": 142,
+              "matched_outbound_sessions": 0,
+              "row_type": "campaign",
+              "event_sessions": 3,
+              "last_received": "October, 12 2026 20:56:01",
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "event_tag": ""
+            },
+            {
+              "event_city": "",
+              "outbound_sessions": 5,
+              "medium": "cpc",
+              "first_outbound": "October, 09 2026 06:33:17",
+              "event_name": "",
+              "qualified_sessions": 82,
+              "last_outbound": "October, 11 2026 20:34:02",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 103,
+              "pageviews": 315,
+              "matched_outbound_sessions": 5,
+              "row_type": "campaign",
+              "event_sessions": 19,
+              "last_received": "October, 12 2026 20:50:43",
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "event_tag": ""
+            }
+          ],
+          "preview": {
+            "kind": "aggregate",
+            "note": "Agregados filtrados para Google e campanhas relevantes."
+          }
+        },
+        {
+          "id": "after-advertiser-acquisition",
+          "source": {
+            "label": "Business — advertiser_acquisition",
+            "links": [
+              {
+                "label": "Audiência",
+                "url": "https://business.roadrunners.run/portal/audiencia/"
+              }
+            ],
+            "sql": "WITH regional AS (\n    SELECT e.*, coalesce(nullif(CASE 'market'\n        WHEN 'visitor' THEN visitor_uf WHEN 'profile' THEN profile_uf\n        WHEN 'context' THEN context_uf ELSE market_uf END, ''), repeat('-', 2)) AS audience_uf\n    FROM audience.events e\n    WHERE e.occurred_at >= TIMESTAMPTZ '2026-10-09 00:00:00-03'\n      AND e.occurred_at < LEAST(now(),TIMESTAMPTZ '2026-10-13 00:00:00-03')\n      AND e.environment = 'prod'\n      AND (false = true OR e.is_internal = false)\n), filtered AS (\n    SELECT * FROM regional\n    WHERE ('' = '' OR audience_uf = '')\n      AND ('' = '' OR page_family = '')\n      AND ('' = '' OR device_class = '')\n), page_identity AS (\n    -- Only the original page opening identifies the page, never video modals.\n    -- Resolve before UF filtering so later slot contexts keep that same identity.\n    SELECT page_view_id, max(content_type) AS page_content_type,\n           max(content_id) AS page_content_id\n    FROM regional WHERE event_kind = 'page_view'\n    GROUP BY page_view_id\n), page_metrics AS (\n    SELECT f.page_view_id, visitor_id, session_id, page_family, page_path,\n           coalesce(i.page_content_type, '') AS page_content_type,\n           coalesce(i.page_content_id, '') AS page_content_id,\n           source, medium, campaign, creative,\n           bool_or(event_kind = 'page_view') AS has_view,\n           coalesce(max(active_ms) FILTER (WHERE event_kind = 'page_engagement'), 0) AS active_ms\n    FROM filtered f LEFT JOIN page_identity i ON i.page_view_id = f.page_view_id\n    GROUP BY f.page_view_id, visitor_id, session_id, page_family, page_path,\n             i.page_content_type, i.page_content_id,\n             source, medium, campaign, creative\n)\n\n, deliveries AS (\n SELECT source, medium, campaign, campaign_id, delivery_id,\n        bool_or(event_kind='ad_render') AS rendered,\n        bool_or(event_kind='ad_viewable') AS viewed,\n        count(DISTINCT session_id) FILTER (WHERE event_kind='ad_viewable') AS view_sessions\n FROM filtered\n WHERE campaign <> '' AND campaign_id IS NOT NULL AND delivery_id IS NOT NULL\n   AND event_kind IN ('ad_render','ad_viewable') AND slot_state='filled'\n GROUP BY source,medium,campaign,campaign_id,delivery_id\n), clicks AS (\n SELECT DISTINCT e.delivery_id, e.campaign_id\n FROM ads.events e\n JOIN (SELECT DISTINCT delivery_id,campaign_id FROM deliveries) d USING(delivery_id,campaign_id)\n WHERE e.event_type='CLICK' AND e.valid\n   AND e.received_at >= TIMESTAMPTZ '2026-10-09 00:00:00-03'\n   AND e.received_at < LEAST(now(),TIMESTAMPTZ '2026-10-13 00:00:00-03')\n), reach AS (\n SELECT source,medium,campaign,campaign_id,count(DISTINCT session_id) AS view_sessions\n FROM filtered WHERE campaign<>'' AND campaign_id IS NOT NULL AND delivery_id IS NOT NULL\n   AND event_kind='ad_viewable' AND slot_state='filled'\n GROUP BY source,medium,campaign,campaign_id\n)\nSELECT d.source,d.medium,d.campaign,d.campaign_id::text AS advertiser_id,\n       coalesce(nullif(c.name,''),d.campaign_id::text) AS advertiser_name,\n       count(*) FILTER(WHERE d.rendered) AS rendered_deliveries,\n       count(*) FILTER(WHERE d.viewed) AS viewed_deliveries,\n       coalesce(max(r.view_sessions),0) AS view_sessions,\n       count(*) FILTER(WHERE k.delivery_id IS NOT NULL) AS clicked_deliveries,\n       count(*) FILTER(WHERE k.delivery_id IS NOT NULL AND d.viewed) AS viewed_clicked_deliveries\nFROM deliveries d\nLEFT JOIN ads.campaigns c ON c.campaign_id=d.campaign_id\nLEFT JOIN clicks k ON k.delivery_id=d.delivery_id AND k.campaign_id=d.campaign_id\nLEFT JOIN reach r ON r.source=d.source AND r.medium=d.medium AND r.campaign=d.campaign AND r.campaign_id=d.campaign_id\nGROUP BY d.source,d.medium,d.campaign,d.campaign_id,c.name\nORDER BY view_sessions DESC,viewed_deliveries DESC,d.campaign,advertiser_name\nLIMIT 101\n",
+            "caveats": [
+              "Exposição de 50% da peça por 1 segundo; cliques válidos deduplicados por entrega. Banners sem delivery_id e visitas sem campanha UTM não entram. Não somar sessões entre anunciantes como pessoas únicas."
+            ]
+          },
+          "reportingPeriod": "9 a 12 de outubro de 2026",
+          "columns": [
+            "campaign",
+            "advertiser_name",
+            "view_sessions",
+            "viewed_deliveries",
+            "clicked_deliveries"
+          ],
+          "rows": [
+            {
+              "advertiser_name": "LIVE! RUN XP Campinas 2026 — Divulgação",
+              "advertiser_id": "577ce639-2181-4e44-86bf-366f198bf077",
+              "medium": "cpc",
+              "rendered_deliveries": 201,
+              "view_sessions": 101,
+              "source": "google",
+              "viewed_clicked_deliveries": 16,
+              "clicked_deliveries": 17,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 180
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Osasco 2026 — Divulgação",
+              "advertiser_id": "6b3047f5-6e56-4055-99f1-b34d9c711afb",
+              "medium": "cpc",
+              "rendered_deliveries": 201,
+              "view_sessions": 100,
+              "source": "google",
+              "viewed_clicked_deliveries": 4,
+              "clicked_deliveries": 4,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 179
+            },
+            {
+              "advertiser_name": "Maratona Internacional de Floripa 2027 — Divulgação",
+              "advertiser_id": "118e16c7-9f57-4e59-b138-a1fcd96bed4f",
+              "medium": "cpc",
+              "rendered_deliveries": 131,
+              "view_sessions": 91,
+              "source": "google",
+              "viewed_clicked_deliveries": 6,
+              "clicked_deliveries": 6,
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "viewed_deliveries": 124
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Itaipu 2026 — Divulgação",
+              "advertiser_id": "c55094a0-833e-4d8f-a35a-37c6d1c6e091",
+              "medium": "cpc",
+              "rendered_deliveries": 78,
+              "view_sessions": 62,
+              "source": "google",
+              "viewed_clicked_deliveries": 4,
+              "clicked_deliveries": 4,
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "viewed_deliveries": 76
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "cpc",
+              "rendered_deliveries": 79,
+              "view_sessions": 60,
+              "source": "google",
+              "viewed_clicked_deliveries": 10,
+              "clicked_deliveries": 10,
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "viewed_deliveries": 73
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "cpc",
+              "rendered_deliveries": 74,
+              "view_sessions": 58,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "viewed_deliveries": 66
+            },
+            {
+              "advertiser_name": "Maratona Internacional de São Paulo 2027 — Divulgação",
+              "advertiser_id": "33cbfec3-17cf-4bdd-9845-63fdec62539b",
+              "medium": "cpc",
+              "rendered_deliveries": 59,
+              "view_sessions": 39,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "viewed_deliveries": 47
+            },
+            {
+              "advertiser_name": "Maratona Internacional de Floripa 2027 — Divulgação",
+              "advertiser_id": "118e16c7-9f57-4e59-b138-a1fcd96bed4f",
+              "medium": "cpc",
+              "rendered_deliveries": 19,
+              "view_sessions": 8,
+              "source": "google",
+              "viewed_clicked_deliveries": 1,
+              "clicked_deliveries": 1,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 10
+            },
+            {
+              "advertiser_name": "Maratona Internacional de São Paulo 2027 — Divulgação",
+              "advertiser_id": "33cbfec3-17cf-4bdd-9845-63fdec62539b",
+              "medium": "cpc",
+              "rendered_deliveries": 14,
+              "view_sessions": 5,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 5
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "cpc",
+              "rendered_deliveries": 11,
+              "view_sessions": 5,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 5
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Fortaleza 2026 — Divulgação",
+              "advertiser_id": "09f7f099-ffb9-40fc-853a-70e919b62c4d",
+              "medium": "cpc",
+              "rendered_deliveries": 4,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 3
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Itaipu 2026 — Divulgação",
+              "advertiser_id": "c55094a0-833e-4d8f-a35a-37c6d1c6e091",
+              "medium": "cpc",
+              "rendered_deliveries": 2,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 2
+            },
+            {
+              "advertiser_name": "Maratona Internacional de Floripa 2027 — Divulgação",
+              "advertiser_id": "118e16c7-9f57-4e59-b138-a1fcd96bed4f",
+              "medium": "cpc",
+              "rendered_deliveries": 3,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 2
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Niterói 2026 — Divulgação",
+              "advertiser_id": "96df95eb-366d-4d4f-94de-97cb223d3dd3",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Osasco 2026 — Divulgação",
+              "advertiser_id": "6b3047f5-6e56-4055-99f1-b34d9c711afb",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Rio de Janeiro 2026 — Divulgação",
+              "advertiser_id": "885c0d04-84e6-4739-adbb-66e8319f415c",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 1,
+              "clicked_deliveries": 1,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "Maratona Internacional de Floripa 2027 — Divulgação",
+              "advertiser_id": "118e16c7-9f57-4e59-b138-a1fcd96bed4f",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "Maratona Internacional de São Paulo 2027 — Divulgação",
+              "advertiser_id": "33cbfec3-17cf-4bdd-9845-63fdec62539b",
+              "medium": "cpc",
+              "rendered_deliveries": 3,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Campinas 2026 — Divulgação",
+              "advertiser_id": "577ce639-2181-4e44-86bf-366f198bf077",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 0,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 0
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "cpc",
+              "rendered_deliveries": 4,
+              "view_sessions": 0,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 0
+            }
+          ],
+          "preview": {
+            "kind": "aggregate",
+            "note": "Agregados filtrados para Google e campanhas relevantes."
+          }
+        }
+      ]
+    },
+    {
+      "id": "today-performance",
+      "title": "13 de outubro de 2026, parcial",
+      "queries": [
+        {
+          "id": "google-today",
+          "source": {
+            "label": "Google Ads — campanhas",
+            "links": [
+              {
+                "label": "Google Ads",
+                "url": "https://ads.google.com/aw/campaigns"
+              }
+            ],
+            "filters": [
+              "Fuso horário: Brasília",
+              "Campanhas da conta RunnerHub",
+              "Inclui campanhas pausadas com histórico"
+            ]
+          },
+          "reportingPeriod": "13 de outubro de 2026, parcial",
+          "columns": [
+            "campaign",
+            "cost_brl",
+            "clicks",
+            "impressions"
+          ],
+          "rows": [
+            {
+              "period": "today",
+              "campaign": "A",
+              "cost_brl": 3.91,
+              "clicks": 37,
+              "impressions": 94,
+              "sessions": 31,
+              "pageviews": 109,
+              "qualified_sessions": 30,
+              "outbound_sessions": 0,
+              "cost_qualified": 0.1303,
+              "cpc": 0.1057
+            },
+            {
+              "period": "today",
+              "campaign": "D",
+              "cost_brl": 2.7,
+              "clicks": 14,
+              "impressions": 88,
+              "sessions": 11,
+              "pageviews": 18,
+              "qualified_sessions": 8,
+              "outbound_sessions": 0,
+              "cost_qualified": 0.3375,
+              "cpc": 0.1929
+            },
+            {
+              "period": "today",
+              "campaign": "E",
+              "cost_brl": 4.89,
+              "clicks": 32,
+              "impressions": 195,
+              "sessions": 25,
+              "pageviews": 55,
+              "qualified_sessions": 20,
+              "outbound_sessions": 0,
+              "cost_qualified": 0.2445,
+              "cpc": 0.1528
+            },
+            {
+              "period": "today",
+              "campaign": "LIVE",
+              "cost_brl": 24.22,
+              "clicks": 214,
+              "impressions": 3283,
+              "sessions": 115,
+              "pageviews": 486,
+              "qualified_sessions": 29,
+              "outbound_sessions": 2,
+              "cost_qualified": 0.8352,
+              "cpc": 0.1132
+            },
+            {
+              "period": "today",
+              "campaign": "C",
+              "cost_brl": 0,
+              "clicks": 0,
+              "impressions": 0,
+              "sessions": 0,
+              "pageviews": 0,
+              "qualified_sessions": 0,
+              "outbound_sessions": 0,
+              "cost_qualified": null,
+              "cpc": null
+            }
+          ]
+        },
+        {
+          "id": "today-live-journey",
+          "source": {
+            "label": "Business — live_journey",
+            "links": [
+              {
+                "label": "Audiência",
+                "url": "https://business.roadrunners.run/portal/audiencia/"
+              }
+            ],
+            "sql": "WITH regional AS (\n    SELECT e.*, coalesce(nullif(CASE 'market'\n        WHEN 'visitor' THEN visitor_uf WHEN 'profile' THEN profile_uf\n        WHEN 'context' THEN context_uf ELSE market_uf END, ''), repeat('-', 2)) AS audience_uf\n    FROM audience.events e\n    WHERE e.occurred_at >= TIMESTAMPTZ '2026-10-13 00:00:00-03'\n      AND e.occurred_at < LEAST(now(),TIMESTAMPTZ '2026-10-14 00:00:00-03')\n      AND e.environment = 'prod'\n      AND (false = true OR e.is_internal = false)\n), filtered AS (\n    SELECT * FROM regional\n    WHERE ('' = '' OR audience_uf = '')\n      AND ('' = '' OR page_family = '')\n      AND ('' = '' OR device_class = '')\n), page_identity AS (\n    -- Only the original page opening identifies the page, never video modals.\n    -- Resolve before UF filtering so later slot contexts keep that same identity.\n    SELECT page_view_id, max(content_type) AS page_content_type,\n           max(content_id) AS page_content_id\n    FROM regional WHERE event_kind = 'page_view'\n    GROUP BY page_view_id\n), page_metrics AS (\n    SELECT f.page_view_id, visitor_id, session_id, page_family, page_path,\n           coalesce(i.page_content_type, '') AS page_content_type,\n           coalesce(i.page_content_id, '') AS page_content_id,\n           source, medium, campaign, creative,\n           bool_or(event_kind = 'page_view') AS has_view,\n           coalesce(max(active_ms) FILTER (WHERE event_kind = 'page_engagement'), 0) AS active_ms\n    FROM filtered f LEFT JOIN page_identity i ON i.page_view_id = f.page_view_id\n    GROUP BY f.page_view_id, visitor_id, session_id, page_family, page_path,\n             i.page_content_type, i.page_content_id,\n             source, medium, campaign, creative\n)\n\n, journey_events AS (\n    SELECT * FROM filtered\n    WHERE campaign <> ''\n      AND ('google' = '' OR lower(source) = lower('google'))\n      AND ('' = '' OR position(lower('') in lower(campaign)) > 0)\n), journey_pages AS (\n    SELECT * FROM page_metrics\n    WHERE campaign <> ''\n      AND ('google' = '' OR lower(source) = lower('google'))\n      AND ('' = '' OR position(lower('') in lower(campaign)) > 0)\n), campaign_sessions AS (\n    SELECT source, medium, campaign, session_id,\n           count(DISTINCT page_view_id) FILTER (WHERE has_view) AS pageviews,\n           sum(active_ms) >= 30000 OR count(DISTINCT (page_path,page_content_type,page_content_id)) FILTER (WHERE has_view) >= 2 AS qualified\n    FROM journey_pages GROUP BY source,medium,campaign,session_id\n), live_outbounds AS (\n    SELECT source,medium,campaign,session_id,content_id,\n           min(received_at) AS first_outbound,max(received_at) AS last_outbound\n    FROM journey_events\n    WHERE event_kind = 'outbound_click' AND content_type = 'event'\n      AND content_id ~ '^[1-9][0-9]{0,9}$'\n      AND event_key = 'outbound_click:live_registration:' || content_id\n    GROUP BY source,medium,campaign,session_id,content_id\n), event_catalog AS (\n    SELECT evt.id_evento::text AS content_id,evt.nome_evento AS event_name,\n           evt.tag AS event_tag,evt.cidade AS event_city,evt.estado AS event_uf,\n           circuit.tag = 'live-run-xp' AS is_live\n    FROM public.tb_evento_corridas evt\n    LEFT JOIN public.tb_agrega_eventos circuit ON circuit.id_agrega_evento = evt.id_agrega_evento\n), live_visits AS (\n    SELECT e.source,e.medium,e.campaign,e.session_id,e.content_id,\n           count(DISTINCT e.page_view_id) AS pageviews\n    FROM journey_events e LEFT JOIN event_catalog c ON c.content_id = e.content_id\n    WHERE e.event_kind = 'page_view' AND e.page_family = 'event' AND e.content_type = 'event'\n      AND (c.is_live OR EXISTS (SELECT 1 FROM live_outbounds o WHERE o.content_id = e.content_id))\n    GROUP BY e.source,e.medium,e.campaign,e.session_id,e.content_id\n), event_sessions AS (\n    -- A page can be reloaded and several CTAs can be clicked. One session/event remains one journey.\n    SELECT source,medium,campaign,session_id,content_id,\n           coalesce(v.pageviews,0) AS pageviews,v.pageviews IS NOT NULL AS has_visit,\n           o.first_outbound IS NOT NULL AS has_outbound,o.first_outbound,o.last_outbound\n    FROM live_visits v FULL JOIN live_outbounds o USING(source,medium,campaign,session_id,content_id)\n), campaign_arrivals AS (\n    SELECT source,medium,campaign,sum(pageviews) AS pageviews,count(*) AS sessions,\n           count(*) FILTER (WHERE qualified) AS qualified_sessions\n    FROM campaign_sessions WHERE pageviews > 0 GROUP BY source,medium,campaign\n), campaign_progress AS (\n    SELECT source,medium,campaign,\n           count(DISTINCT session_id) FILTER (WHERE has_visit) AS event_sessions,\n           count(DISTINCT session_id) FILTER (WHERE has_outbound) AS outbound_sessions,\n           count(DISTINCT session_id) FILTER (WHERE has_visit AND has_outbound) AS matched_outbound_sessions,\n           count(DISTINCT session_id) FILTER (WHERE NOT has_visit AND has_outbound) AS unmatched_outbound_sessions,\n           min(first_outbound) AS first_outbound,max(last_outbound) AS last_outbound\n    FROM event_sessions GROUP BY source,medium,campaign\n), receipts AS (\n    SELECT source,medium,campaign,max(received_at) AS last_received\n    FROM journey_events GROUP BY source,medium,campaign\n), campaign_rows AS (\n    SELECT 'campaign'::text AS row_type,source,medium,campaign,''::text AS content_id,\n           ''::text AS event_name,''::text AS event_tag,''::text AS event_city,''::text AS event_uf,\n           coalesce(a.pageviews,0) AS pageviews,coalesce(a.sessions,0) AS sessions,\n           coalesce(a.qualified_sessions,0) AS qualified_sessions,\n           coalesce(p.event_sessions,0) AS event_sessions,coalesce(p.outbound_sessions,0) AS outbound_sessions,\n           coalesce(p.matched_outbound_sessions,0) AS matched_outbound_sessions,\n           coalesce(p.unmatched_outbound_sessions,0) AS unmatched_outbound_sessions,\n           p.first_outbound,p.last_outbound,r.last_received\n    FROM campaign_arrivals a FULL JOIN campaign_progress p USING(source,medium,campaign)\n    LEFT JOIN receipts r USING(source,medium,campaign)\n), event_rows AS (\n    SELECT 'event'::text AS row_type,e.source,e.medium,e.campaign,e.content_id,\n           coalesce(c.event_name,'Evento ' || e.content_id) AS event_name,\n           coalesce(c.event_tag,'') AS event_tag,coalesce(c.event_city,'') AS event_city,coalesce(c.event_uf,'') AS event_uf,\n           sum(e.pageviews) AS pageviews,count(*) FILTER (WHERE e.has_visit) AS sessions,\n           0::bigint AS qualified_sessions,count(*) FILTER (WHERE e.has_visit) AS event_sessions,\n           count(*) FILTER (WHERE e.has_outbound) AS outbound_sessions,\n           count(*) FILTER (WHERE e.has_visit AND e.has_outbound) AS matched_outbound_sessions,\n           count(*) FILTER (WHERE NOT e.has_visit AND e.has_outbound) AS unmatched_outbound_sessions,\n           min(e.first_outbound) AS first_outbound,max(e.last_outbound) AS last_outbound,r.last_received\n    FROM event_sessions e LEFT JOIN event_catalog c ON c.content_id = e.content_id\n    LEFT JOIN receipts r USING(source,medium,campaign)\n    -- City/event narrow detail only: campaign arrivals retain their full, deduplicated denominator.\n    WHERE ('' = '' OR position(lower('') in lower(coalesce(c.event_city,''))) > 0)\n      AND ('' = '' OR e.content_id = '')\n    GROUP BY e.source,e.medium,e.campaign,e.content_id,c.event_name,c.event_tag,c.event_city,c.event_uf,r.last_received\n), limited_campaigns AS (\n    SELECT * FROM campaign_rows ORDER BY sessions DESC,source,medium,campaign LIMIT 101\n), limited_events AS (\n    SELECT * FROM event_rows ORDER BY event_sessions DESC,source,medium,campaign,content_id LIMIT 201\n)\nSELECT * FROM limited_campaigns UNION ALL SELECT * FROM limited_events\nORDER BY row_type,source,medium,campaign,content_id\n",
+            "caveats": [
+              "Sessões qualificadas: pelo menos 30 segundos ativos ou duas páginas distintas. Cliques e sessões não são inscrições."
+            ]
+          },
+          "reportingPeriod": "13 de outubro de 2026, parcial",
+          "columns": [
+            "campaign",
+            "sessions",
+            "pageviews",
+            "qualified_sessions",
+            "outbound_sessions"
+          ],
+          "rows": [
+            {
+              "event_city": "",
+              "outbound_sessions": 2,
+              "medium": "cpc",
+              "first_outbound": "October, 13 2026 08:45:27",
+              "event_name": "",
+              "qualified_sessions": 29,
+              "last_outbound": "October, 13 2026 10:14:10",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 115,
+              "pageviews": 486,
+              "matched_outbound_sessions": 2,
+              "row_type": "campaign",
+              "event_sessions": 5,
+              "last_received": "October, 13 2026 18:33:08",
+              "campaign": "live_cupom_2026_retomada",
+              "event_tag": ""
+            },
+            {
+              "event_city": "",
+              "outbound_sessions": 0,
+              "medium": "cpc",
+              "first_outbound": "",
+              "event_name": "",
+              "qualified_sessions": 30,
+              "last_outbound": "",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 31,
+              "pageviews": 109,
+              "matched_outbound_sessions": 0,
+              "row_type": "campaign",
+              "event_sessions": 0,
+              "last_received": "October, 13 2026 19:09:33",
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "event_tag": ""
+            },
+            {
+              "event_city": "",
+              "outbound_sessions": 0,
+              "medium": "cpc",
+              "first_outbound": "",
+              "event_name": "",
+              "qualified_sessions": 8,
+              "last_outbound": "",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 11,
+              "pageviews": 18,
+              "matched_outbound_sessions": 0,
+              "row_type": "campaign",
+              "event_sessions": 0,
+              "last_received": "October, 13 2026 17:02:41",
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "event_tag": ""
+            },
+            {
+              "event_city": "",
+              "outbound_sessions": 0,
+              "medium": "cpc",
+              "first_outbound": "",
+              "event_name": "",
+              "qualified_sessions": 20,
+              "last_outbound": "",
+              "event_uf": "",
+              "content_id": "",
+              "unmatched_outbound_sessions": 0,
+              "source": "google",
+              "sessions": 25,
+              "pageviews": 55,
+              "matched_outbound_sessions": 0,
+              "row_type": "campaign",
+              "event_sessions": 0,
+              "last_received": "October, 13 2026 19:15:31",
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "event_tag": ""
+            }
+          ],
+          "preview": {
+            "kind": "aggregate",
+            "note": "Agregados filtrados para Google e campanhas relevantes."
+          }
+        },
+        {
+          "id": "today-advertiser-acquisition",
+          "source": {
+            "label": "Business — advertiser_acquisition",
+            "links": [
+              {
+                "label": "Audiência",
+                "url": "https://business.roadrunners.run/portal/audiencia/"
+              }
+            ],
+            "sql": "WITH regional AS (\n    SELECT e.*, coalesce(nullif(CASE 'market'\n        WHEN 'visitor' THEN visitor_uf WHEN 'profile' THEN profile_uf\n        WHEN 'context' THEN context_uf ELSE market_uf END, ''), repeat('-', 2)) AS audience_uf\n    FROM audience.events e\n    WHERE e.occurred_at >= TIMESTAMPTZ '2026-10-13 00:00:00-03'\n      AND e.occurred_at < LEAST(now(),TIMESTAMPTZ '2026-10-14 00:00:00-03')\n      AND e.environment = 'prod'\n      AND (false = true OR e.is_internal = false)\n), filtered AS (\n    SELECT * FROM regional\n    WHERE ('' = '' OR audience_uf = '')\n      AND ('' = '' OR page_family = '')\n      AND ('' = '' OR device_class = '')\n), page_identity AS (\n    -- Only the original page opening identifies the page, never video modals.\n    -- Resolve before UF filtering so later slot contexts keep that same identity.\n    SELECT page_view_id, max(content_type) AS page_content_type,\n           max(content_id) AS page_content_id\n    FROM regional WHERE event_kind = 'page_view'\n    GROUP BY page_view_id\n), page_metrics AS (\n    SELECT f.page_view_id, visitor_id, session_id, page_family, page_path,\n           coalesce(i.page_content_type, '') AS page_content_type,\n           coalesce(i.page_content_id, '') AS page_content_id,\n           source, medium, campaign, creative,\n           bool_or(event_kind = 'page_view') AS has_view,\n           coalesce(max(active_ms) FILTER (WHERE event_kind = 'page_engagement'), 0) AS active_ms\n    FROM filtered f LEFT JOIN page_identity i ON i.page_view_id = f.page_view_id\n    GROUP BY f.page_view_id, visitor_id, session_id, page_family, page_path,\n             i.page_content_type, i.page_content_id,\n             source, medium, campaign, creative\n)\n\n, deliveries AS (\n SELECT source, medium, campaign, campaign_id, delivery_id,\n        bool_or(event_kind='ad_render') AS rendered,\n        bool_or(event_kind='ad_viewable') AS viewed,\n        count(DISTINCT session_id) FILTER (WHERE event_kind='ad_viewable') AS view_sessions\n FROM filtered\n WHERE campaign <> '' AND campaign_id IS NOT NULL AND delivery_id IS NOT NULL\n   AND event_kind IN ('ad_render','ad_viewable') AND slot_state='filled'\n GROUP BY source,medium,campaign,campaign_id,delivery_id\n), clicks AS (\n SELECT DISTINCT e.delivery_id, e.campaign_id\n FROM ads.events e\n JOIN (SELECT DISTINCT delivery_id,campaign_id FROM deliveries) d USING(delivery_id,campaign_id)\n WHERE e.event_type='CLICK' AND e.valid\n   AND e.received_at >= TIMESTAMPTZ '2026-10-13 00:00:00-03'\n   AND e.received_at < LEAST(now(),TIMESTAMPTZ '2026-10-14 00:00:00-03')\n), reach AS (\n SELECT source,medium,campaign,campaign_id,count(DISTINCT session_id) AS view_sessions\n FROM filtered WHERE campaign<>'' AND campaign_id IS NOT NULL AND delivery_id IS NOT NULL\n   AND event_kind='ad_viewable' AND slot_state='filled'\n GROUP BY source,medium,campaign,campaign_id\n)\nSELECT d.source,d.medium,d.campaign,d.campaign_id::text AS advertiser_id,\n       coalesce(nullif(c.name,''),d.campaign_id::text) AS advertiser_name,\n       count(*) FILTER(WHERE d.rendered) AS rendered_deliveries,\n       count(*) FILTER(WHERE d.viewed) AS viewed_deliveries,\n       coalesce(max(r.view_sessions),0) AS view_sessions,\n       count(*) FILTER(WHERE k.delivery_id IS NOT NULL) AS clicked_deliveries,\n       count(*) FILTER(WHERE k.delivery_id IS NOT NULL AND d.viewed) AS viewed_clicked_deliveries\nFROM deliveries d\nLEFT JOIN ads.campaigns c ON c.campaign_id=d.campaign_id\nLEFT JOIN clicks k ON k.delivery_id=d.delivery_id AND k.campaign_id=d.campaign_id\nLEFT JOIN reach r ON r.source=d.source AND r.medium=d.medium AND r.campaign=d.campaign AND r.campaign_id=d.campaign_id\nGROUP BY d.source,d.medium,d.campaign,d.campaign_id,c.name\nORDER BY view_sessions DESC,viewed_deliveries DESC,d.campaign,advertiser_name\nLIMIT 101\n",
+            "caveats": [
+              "Exposição de 50% da peça por 1 segundo; cliques válidos deduplicados por entrega. Banners sem delivery_id e visitas sem campanha UTM não entram. Não somar sessões entre anunciantes como pessoas únicas."
+            ]
+          },
+          "reportingPeriod": "13 de outubro de 2026, parcial",
+          "columns": [
+            "campaign",
+            "advertiser_name",
+            "view_sessions",
+            "viewed_deliveries",
+            "clicked_deliveries"
+          ],
+          "rows": [
+            {
+              "advertiser_name": "Maratona Internacional de Floripa 2027 — Divulgação",
+              "advertiser_id": "118e16c7-9f57-4e59-b138-a1fcd96bed4f",
+              "medium": "cpc",
+              "rendered_deliveries": 75,
+              "view_sessions": 30,
+              "source": "google",
+              "viewed_clicked_deliveries": 1,
+              "clicked_deliveries": 1,
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "viewed_deliveries": 71
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Osasco 2026 — Divulgação",
+              "advertiser_id": "6b3047f5-6e56-4055-99f1-b34d9c711afb",
+              "medium": "cpc",
+              "rendered_deliveries": 38,
+              "view_sessions": 24,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 35
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Campinas 2026 — Divulgação",
+              "advertiser_id": "577ce639-2181-4e44-86bf-366f198bf077",
+              "medium": "cpc",
+              "rendered_deliveries": 38,
+              "view_sessions": 23,
+              "source": "google",
+              "viewed_clicked_deliveries": 2,
+              "clicked_deliveries": 2,
+              "campaign": "rr_teste_e_corridas_interior_sp_202610",
+              "viewed_deliveries": 31
+            },
+            {
+              "advertiser_name": "Maratona Internacional de São Paulo 2027 — Divulgação",
+              "advertiser_id": "33cbfec3-17cf-4bdd-9845-63fdec62539b",
+              "medium": "cpc",
+              "rendered_deliveries": 35,
+              "view_sessions": 20,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "viewed_deliveries": 26
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "cpc",
+              "rendered_deliveries": 40,
+              "view_sessions": 15,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "rr_teste_a_corridas_sc_202610",
+              "viewed_deliveries": 28
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Itaipu 2026 — Divulgação",
+              "advertiser_id": "c55094a0-833e-4d8f-a35a-37c6d1c6e091",
+              "medium": "cpc",
+              "rendered_deliveries": 12,
+              "view_sessions": 10,
+              "source": "google",
+              "viewed_clicked_deliveries": 1,
+              "clicked_deliveries": 1,
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "viewed_deliveries": 11
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "cpc",
+              "rendered_deliveries": 12,
+              "view_sessions": 10,
+              "source": "google",
+              "viewed_clicked_deliveries": 1,
+              "clicked_deliveries": 1,
+              "campaign": "rr_teste_d_corridas_maringa_202610",
+              "viewed_deliveries": 10
+            },
+            {
+              "advertiser_name": "Maratona Internacional de São Paulo 2027 — Divulgação",
+              "advertiser_id": "33cbfec3-17cf-4bdd-9845-63fdec62539b",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "MIM | Campanha 01",
+              "advertiser_id": "cf0b12b1-86ef-4543-ab84-e4cfd0dfce44",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 1,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 1
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Niterói 2026 — Divulgação",
+              "advertiser_id": "96df95eb-366d-4d4f-94de-97cb223d3dd3",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 0,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 0
+            },
+            {
+              "advertiser_name": "LIVE! RUN XP Rio de Janeiro 2026 — Divulgação",
+              "advertiser_id": "885c0d04-84e6-4739-adbb-66e8319f415c",
+              "medium": "cpc",
+              "rendered_deliveries": 1,
+              "view_sessions": 0,
+              "source": "google",
+              "viewed_clicked_deliveries": 0,
+              "clicked_deliveries": 0,
+              "campaign": "live_cupom_2026_retomada",
+              "viewed_deliveries": 0
+            }
+          ],
+          "preview": {
+            "kind": "aggregate",
+            "note": "Agregados filtrados para Google e campanhas relevantes."
+          }
+        }
+      ]
+    },
+    {
+      "id": "google-live-conversion",
+      "title": "Conversão de saída LIVE! ativa",
+      "queries": [
+        {
+          "id": "google-conversions",
+          "source": {
+            "label": "Google Ads — todas as conversões",
+            "links": [
+              {
+                "label": "Conversões",
+                "url": "https://ads.google.com/aw/conversions/all"
+              }
+            ],
+            "caveats": [
+              "Conversão secundária: aparece em Todas as conv.; não é compra confirmada. Período distinto da tabela principal."
+            ]
+          },
+          "reportingPeriod": "1 a 13 de outubro de 2026",
+          "columns": [
+            "name",
+            "status",
+            "secondary",
+            "all_conversions",
+            "value"
+          ],
+          "rows": [
+            {
+              "name": "RR | Saída para inscrição LIVE!",
+              "status": "Ativa",
+              "secondary": true,
+              "all_conversions": 20,
+              "value": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

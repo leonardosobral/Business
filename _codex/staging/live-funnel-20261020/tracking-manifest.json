@@ -1,0 +1,38 @@
+[
+  {
+    "path": "assets/js/rr-audience.js",
+    "runtime": true,
+    "sha256": "a6eeb921973deaf04f87d4b29026077c3853dd2c428c393816319aeb882ee7f9",
+    "baseline_sha256": "6db9c5e7be65271262f6837cc3bbc7905194eae03ac56fad3a24f29461aaf50d"
+  },
+  {
+    "path": "assets/js/rr-audience.min.js",
+    "runtime": true,
+    "sha256": "f1448edecdbbab341d6b2983d2ce28a62f1a0f1e5b20902ad680addf46ab791f",
+    "baseline_sha256": "6fe7ce98e5a4a77fe1b6ab5ed21d76ab9cef19714c76a3943948cea189a17fe7"
+  },
+  {
+    "path": "services/AudienceMeasurementService.cfc",
+    "runtime": true,
+    "sha256": "2ddbf42382d2d9eb54055907db222914db5cbb6ac112218e0d2972c6f003b92c",
+    "baseline_sha256": "ece8218e02d5886540b2a1963ae0b343cf521bff7386c53aaefc7955a60ad476"
+  },
+  {
+    "path": "includes/analytics/bootstrap.cfm",
+    "runtime": true,
+    "sha256": "0903944db8783e3b5bc038e761a903b216dd0262a4f1ca66b0c9b43f8518ca49",
+    "baseline_sha256": "e7db84593ac3d9c30a99260909ffdc37a2d20e04efdc6f2fe2fccfe861f13812"
+  },
+  {
+    "path": "_codex/tests/audience-live-registration.test.js",
+    "runtime": false,
+    "sha256": "f85e39b6ceb3b9d48d18485f6c6755fb3a72587479ed8c8f3da7e1faf1d87c8b",
+    "baseline_sha256": "f0f3424bc9250c1f8e8430d1823b9bf76c249f68e7772fefd11dc1bc6825aabd"
+  },
+  {
+    "path": "_codex/tests/audience-live-contract.cfm",
+    "runtime": false,
+    "sha256": "c01788fa967ff1309f3cacd0f5866898095de91bf42bd49e517ff540b87c1e22",
+    "baseline_sha256": "2a7c5a907717802c1c04de2460ad6e18519dc1e5a83cbf8e676094cfb0e8b50a"
+  }
+]

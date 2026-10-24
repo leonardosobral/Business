@@ -1,0 +1,31 @@
+{
+  "compiled_templates": 3,
+  "proxy_tests": [
+    {
+      "method": "GET",
+      "status": 200,
+      "success": true,
+      "items": 8,
+      "groups": 2
+    },
+    {
+      "method": "GET",
+      "status": 200,
+      "success": true,
+      "items": 8,
+      "groups": 2
+    },
+    {
+      "method": "POST",
+      "status": 405,
+      "success": false,
+      "items": 0,
+      "groups": 0
+    }
+  ],
+  "tested_hashes": {
+    "or/api/runner_apps_menu.cfm": "6b564727cdd7edc45cf52ef7b04f64f19ef533ccba7347714483a2b62638af8c",
+    "rr/includes/estrutura/menu_apps.cfm": "f9d90a1d3cc1335065599f72d31a4867d10343bf1f93067e373188c12f53f90c",
+    "rr/includes/estrutura/event_title_date.cfm": "cf1853d8e592494582f355215460d52b5d7e9ccfc95e15fc5a20541b95896646"
+  }
+}

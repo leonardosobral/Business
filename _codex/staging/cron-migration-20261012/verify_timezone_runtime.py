@@ -1,0 +1,10 @@
+from pathlib import Path
+import hashlib,json,re,subprocess
+root=Path('/var/www/business.roadrunners.run')
+manifest={'includes/backend/cron_jobs_service.cfm': {'before': 'cfb9f9eec5fe7272e3dc07217c002dae5748c6e78b00532eec2c26e411b142d4', 'after': '2cdbbdcb5304ab274dfd0f8ac08656685bfe2516e708a9f0deedfcbd97b37270'}, 'administracao/cron-jobs/includes/backend.cfm': {'before': 'b22e437a86d58a40d7935041ee8a92c18abf16c1023b1df085a5d6c067b7f896', 'after': 'abdfeef2c1b2a5ae7d10963d04b001f6bcbf47dc152756ca77406b5bfbe8c4d3'}, 'administracao/cron-jobs/home.cfm': {'before': 'a8f13f9588d40566c7505dcf5f093722f06ba3fde454992a76d750d75064b29a', 'after': 'd9371c8561f2ff43b602f7b6f565212f0472de9ffc38509e9db9eaeed11f1384'}, 'cron-jobs/runner.cfm': {'before': 'a5bba9d1e900655865811480c5db6c419114c1aed002d67b269467b7e33c782d', 'after': '3fb19ec63c4aec38500dea20f58c5dab81c7a81a979651d58450eaac23464f1b'}}
+jvm=Path('/opt/coldfusion2025/cfusion/bin/jvm.config').read_bytes()
+before=Path('/var/backups/cf2025-timezone-sao-paulo-20261012T142754Z-a9hhvd3x/jvm.config.before').read_bytes()
+cron=subprocess.check_output(['crontab','-l'])
+report={'published_files':{name:hashlib.sha256((root/name).read_bytes()).hexdigest()==v['after'] for name,v in manifest.items()},'jvm_only_timezone_added':jvm.replace(b' -Duser.timezone=America/Sao_Paulo',b'',1)==before,'heap_options':re.findall(rb'-Xm[sx]\S+',jvm),'active_runner_entries':sum(1 for l in cron.decode().splitlines() if not l.lstrip().startswith('#') and '/cron-jobs/runner.cfm' in l),'cron_unchanged':hashlib.sha256(cron).hexdigest()=='b13e8c7337003182f40a3130c8313ddf6f9f3d470790aa18f6f84918ae8f055a','cf_active':subprocess.run(['systemctl','is-active','cf2025'],capture_output=True,text=True).stdout.strip(),'cron_active':subprocess.run(['systemctl','is-active','cron'],capture_output=True,text=True).stdout.strip(),'temporary_probes':[p.name for p in (root/'_codex').iterdir() if p.is_dir() and p.name.startswith(('cron-timezone-audit-','cron-outcomes-audit-'))]}
+report['heap_options']=[x.decode() for x in report['heap_options']]
+print(json.dumps(report,indent=2))

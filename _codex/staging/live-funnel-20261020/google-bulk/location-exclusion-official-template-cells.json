@@ -1,0 +1,70 @@
+{
+  "xl/worksheets/sheet1.xml": [
+    [
+      "A1",
+      "#optional unless uploading to multiple accounts on MCC Level"
+    ],
+    [
+      "B1",
+      "#required \nUse either Campaign ID or Campaign (by name)\nNote: If you use both, they both must be correct"
+    ],
+    [
+      "D1",
+      "#Required  \n\nSee https://support.google.com/google-ads/answer/10702623?hl=en&ref_topic=10703532#zippy=%2Cedit-location-targeting for formatting instructions.\n\nSee https://developers.google.com/adwords/api/docs/appendix/geotargeting for a list of all location codes"
+    ],
+    [
+      "A2",
+      "Customer ID"
+    ],
+    [
+      "B2",
+      "Campaign ID"
+    ],
+    [
+      "C2",
+      "Campaign"
+    ],
+    [
+      "D2",
+      "Exclusion"
+    ]
+  ],
+  "xl/worksheets/sheet2.xml": [
+    [
+      "A1",
+      "Customer ID"
+    ],
+    [
+      "B1",
+      "Campaign ID"
+    ],
+    [
+      "C1",
+      "Exclusion"
+    ],
+    [
+      "A2",
+      "123-456-7890"
+    ],
+    [
+      "B2",
+      "1234567890"
+    ],
+    [
+      "C2",
+      "Seattle, Washington, United States"
+    ],
+    [
+      "A3",
+      "098-765-4321"
+    ],
+    [
+      "B3",
+      "987654321"
+    ],
+    [
+      "C3",
+      "Seattle, Washington, United States ; Austria ; Belgium"
+    ]
+  ]
+}

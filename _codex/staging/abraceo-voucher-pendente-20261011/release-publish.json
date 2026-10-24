@@ -1,0 +1,10 @@
+{
+  "published": [
+    "services/accountDelegation/RequestBoundary.cfc",
+    "estudos/includes/FirstAccess.cfc",
+    "estudos/primeiro-acesso/index.cfm",
+    "estudos/primeiro-acesso/api.cfm",
+    "estudos/primeiro-acesso/primeiro-acesso.js"
+  ],
+  "backup": "/var/backups/business-abraceo-voucher-pendente-20261011/baseline"
+}

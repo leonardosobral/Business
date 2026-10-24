@@ -1,0 +1,10 @@
+{
+  "includes/estrutura/header.cfm": {
+    "sha256": "d8b619f6bf8d0a32ded7255a2e441fda19432070195a9cf2db933676e5f28fd7",
+    "bytes": 613
+  },
+  "includes/estrutura/navbar.cfm": {
+    "sha256": "5025a324475d2022c6de4e2fdd428df4f381936d230a6d71094d602444ec57d0",
+    "bytes": 22748
+  }
+}

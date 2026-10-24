@@ -1,0 +1,120 @@
+{
+  "checks": [
+    {
+      "name": "news 0 meaningful description",
+      "passed": false
+    },
+    {
+      "name": "news 0 well-formed attribute",
+      "passed": false
+    },
+    {
+      "name": "news 1 meaningful description",
+      "passed": false
+    },
+    {
+      "name": "news 1 well-formed attribute",
+      "passed": false
+    },
+    {
+      "name": "news 2 meaningful description",
+      "passed": false
+    },
+    {
+      "name": "news 2 well-formed attribute",
+      "passed": false
+    },
+    {
+      "name": "news 3 meaningful description",
+      "passed": true
+    },
+    {
+      "name": "news 3 well-formed attribute",
+      "passed": true
+    },
+    {
+      "name": "news 4 meaningful description",
+      "passed": true
+    },
+    {
+      "name": "news 4 well-formed attribute",
+      "passed": true
+    },
+    {
+      "name": "news 5 meaningful description",
+      "passed": true
+    },
+    {
+      "name": "news 5 well-formed attribute",
+      "passed": false
+    },
+    {
+      "name": "news 6 meaningful description",
+      "passed": true
+    },
+    {
+      "name": "news 6 well-formed attribute",
+      "passed": false
+    },
+    {
+      "name": "Corre Brasil role distinguishes title",
+      "passed": false
+    },
+    {
+      "name": "Corre Brasil organizer identity",
+      "passed": false
+    },
+    {
+      "name": "Corre Brasil timer identity",
+      "passed": false
+    },
+    {
+      "name": "Fornecedor \"A & B\" role distinguishes title",
+      "passed": false
+    },
+    {
+      "name": "Fornecedor \"A & B\" organizer identity",
+      "passed": false
+    },
+    {
+      "name": "Fornecedor \"A & B\" timer identity",
+      "passed": false
+    },
+    {
+      "name": "Fornecedor de corrida role distinguishes title",
+      "passed": false
+    },
+    {
+      "name": "Fornecedor de corrida organizer identity",
+      "passed": false
+    },
+    {
+      "name": "Fornecedor de corrida timer identity",
+      "passed": false
+    }
+  ],
+  "failed": [
+    "news 0 meaningful description",
+    "news 0 well-formed attribute",
+    "news 1 meaningful description",
+    "news 1 well-formed attribute",
+    "news 2 meaningful description",
+    "news 2 well-formed attribute",
+    "news 5 well-formed attribute",
+    "news 6 well-formed attribute",
+    "Corre Brasil role distinguishes title",
+    "Corre Brasil organizer identity",
+    "Corre Brasil timer identity",
+    "Fornecedor \"A & B\" role distinguishes title",
+    "Fornecedor \"A & B\" organizer identity",
+    "Fornecedor \"A & B\" timer identity",
+    "Fornecedor de corrida role distinguishes title",
+    "Fornecedor de corrida organizer identity",
+    "Fornecedor de corrida timer identity"
+  ],
+  "hashes": {
+    "noticias/index.cfm": "aaee87135088e4943ccc1b30cd97d31bb464dad2acb054a56fc4f1a64e2368d3",
+    "org/index.cfm": "7ccde155c0485ce5ab004a5a0fa4d3c14a8714ae58a7c573c229ab02a2487fb6",
+    "timer/index.cfm": "97c1ff2c685c5b3c398b1547e1032984c366c6e87ef590f888e82f6dd8d6b84b"
+  }
+}

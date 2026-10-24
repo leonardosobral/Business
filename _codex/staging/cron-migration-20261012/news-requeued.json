@@ -1,0 +1,32 @@
+{
+  "jobs": [
+    {
+      "id_cron_job": 3,
+      "next_run_at": "2026-10-12T12:54:45.860874",
+      "interval_minutes": 60
+    },
+    {
+      "id_cron_job": 4,
+      "next_run_at": "2026-10-12T12:54:45.860874",
+      "interval_minutes": 60
+    },
+    {
+      "id_cron_job": 5,
+      "next_run_at": "2026-10-12T12:54:45.860874",
+      "interval_minutes": 60
+    },
+    {
+      "id_cron_job": 13,
+      "next_run_at": "2026-10-12T12:54:45.860874",
+      "interval_minutes": 60
+    },
+    {
+      "id_cron_job": 14,
+      "next_run_at": "2026-10-12T12:54:45.860874",
+      "interval_minutes": 60
+    }
+  ],
+  "requeued_at": "2026-10-12T12:54:45.860874+00:00",
+  "backup": "/var/backups/cron-integration-retry-20261012T125445Z-_p2a_3fi",
+  "only_next_run_at_changed": true
+}

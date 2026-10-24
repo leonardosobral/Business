@@ -1,0 +1,656 @@
+[
+  {
+    "host": "roadrunners.run",
+    "path": "/evento/2026-corrida-da-virada-2026-sp/",
+    "status": 200,
+    "seconds": 0.623,
+    "title": "CORRIDA DA VIRADA 2026 - corrida de rua | 31/12/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+    ],
+    "description": "CORRIDA DA VIRADA 2026 acontece em 31 dezembro 2026, em Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+      ]
+    ],
+    "schema_hash": "8cc63c39686f84faa4197051c4941fb05f05e449f9e1302faf27b420f2ed65a4",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/evento/2026-corrida-da-virada-2026-porto-franco/",
+    "status": 200,
+    "seconds": 0.303,
+    "title": "CORRIDA DA VIRADA 2026 - corrida de rua | 31/12/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/evento/2026-corrida-da-virada-2026-porto-franco/"
+    ],
+    "description": "CORRIDA DA VIRADA 2026 acontece em 31 dezembro 2026, em PORTO FRANCO -MA - Porto Franco - MA.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-porto-franco/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-porto-franco/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-porto-franco/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-porto-franco/"
+      ]
+    ],
+    "schema_hash": "e7f0de0a93454dbfb291d5f6aede0065e3019c7e2c4593b68b3e298e3421523f",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/evento/2026-corrida-da-virada-2026-sc/",
+    "status": 200,
+    "seconds": 0.298,
+    "title": "Corrida Da Virada 2026 - corrida de rua | 31/12/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sc/"
+    ],
+    "description": "Corrida Da Virada 2026 acontece em 31 dezembro 2026, em Beira Mar Continental - Florianópolis - SC.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sc/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sc/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sc/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sc/"
+      ]
+    ],
+    "schema_hash": "31edaecba9d0a825682d917cbb66967be921dc16fbde828adb75fba8ca99c175",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/evento/2026-together-run-pe/",
+    "status": 200,
+    "seconds": 0.296,
+    "title": "Together Run - corrida de rua | 22/11/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/evento/2026-together-run-pe/"
+    ],
+    "description": "Together Run acontece em 22 novembro 2026, em Porto Do Recife - Recife - PE.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-together-run-pe/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-together-run-pe/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-together-run-pe/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-together-run-pe/"
+      ]
+    ],
+    "schema_hash": "8e4014ac72438082ca2a5dbe630c29d4e6de48ed613968db75734cc651a1d401",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/evento/2026-together-run-pb/",
+    "status": 200,
+    "seconds": 0.298,
+    "title": "TOGETHER RUN - corrida de rua | 22/11/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/evento/2026-together-run-pb/"
+    ],
+    "description": "TOGETHER RUN acontece em 22 novembro 2026, em Parque Solón De Lucena (Lagoa) - Lagoa - PB.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-together-run-pb/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-together-run-pb/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-together-run-pb/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-together-run-pb/"
+      ]
+    ],
+    "schema_hash": "71d553b4a132ad33fc6f7f5feb688660c692626e88500747bff64ae3e9a1e6a3",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/en/event/2026-corrida-da-virada-2026-sp/",
+    "status": 200,
+    "seconds": 0.269,
+    "title": "CORRIDA DA VIRADA 2026 - Road race | 31/12/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+    ],
+    "description": "CORRIDA DA VIRADA 2026 takes place on 31 december 2026, in Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+      ]
+    ],
+    "schema_hash": "bd0c91618c4379d27f91c17e32b22d49fd215663422217f8a04b66bfa068aa65",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/en/event/2026-corrida-da-virada-2026-porto-franco/",
+    "status": 200,
+    "seconds": 0.272,
+    "title": "CORRIDA DA VIRADA 2026 - Road race | 31/12/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-porto-franco/"
+    ],
+    "description": "CORRIDA DA VIRADA 2026 takes place on 31 december 2026, in PORTO FRANCO -MA - Porto Franco - MA.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-porto-franco/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-porto-franco/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-porto-franco/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-porto-franco/"
+      ]
+    ],
+    "schema_hash": "00bfc2d961b7beb619066a3cfd21328e58b7efa2b3a4a52c59f3615deb294f92",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/en/event/2026-corrida-da-virada-2026-sc/",
+    "status": 200,
+    "seconds": 0.239,
+    "title": "Corrida Da Virada 2026 - Road race | 31/12/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sc/"
+    ],
+    "description": "Corrida Da Virada 2026 takes place on 31 december 2026, in Beira Mar Continental - Florianópolis - SC.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sc/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sc/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sc/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sc/"
+      ]
+    ],
+    "schema_hash": "ff68c2716dfd5d1f84f4c441b2cd36b4d4f0309e80dc352dc1a86a8fa8ce3210",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/en/event/2026-together-run-pe/",
+    "status": 200,
+    "seconds": 0.219,
+    "title": "Together Run - Road race | 22/11/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/en/event/2026-together-run-pe/"
+    ],
+    "description": "Together Run takes place on 22 november 2026, in Porto Do Recife - Recife - PE.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-together-run-pe/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-together-run-pe/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-together-run-pe/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-together-run-pe/"
+      ]
+    ],
+    "schema_hash": "3da4a406e196a5ead6a4cbd0df1a159544a931bfb652191964b01c44808537ab",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/en/event/2026-together-run-pb/",
+    "status": 200,
+    "seconds": 0.234,
+    "title": "TOGETHER RUN - Road race | 22/11/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/en/event/2026-together-run-pb/"
+    ],
+    "description": "TOGETHER RUN takes place on 22 november 2026, in Parque Solón De Lucena (Lagoa) - Lagoa - PB.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-together-run-pb/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-together-run-pb/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-together-run-pb/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-together-run-pb/"
+      ]
+    ],
+    "schema_hash": "b991e1ec512f95699c08e0c4a8b6ca1b931ed4f18d4c43f3a4a358544cb08b63",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/es/evento/2026-corrida-da-virada-2026-sp/",
+    "status": 200,
+    "seconds": 0.229,
+    "title": "CORRIDA DA VIRADA 2026 - Carrera de ruta | 31/12/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+    ],
+    "description": "CORRIDA DA VIRADA 2026 se realiza el 31 diciembre 2026, en Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+      ]
+    ],
+    "schema_hash": "ba520f8edbdcbcf63aeed0b536fdb777b114cbde2bc0b5e662205263e94b4428",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/es/evento/2026-corrida-da-virada-2026-porto-franco/",
+    "status": 200,
+    "seconds": 0.247,
+    "title": "CORRIDA DA VIRADA 2026 - Carrera de ruta | 31/12/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-porto-franco/"
+    ],
+    "description": "CORRIDA DA VIRADA 2026 se realiza el 31 diciembre 2026, en PORTO FRANCO -MA - Porto Franco - MA.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-porto-franco/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-porto-franco/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-porto-franco/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-porto-franco/"
+      ]
+    ],
+    "schema_hash": "6590cc9a1717add464a77e9099d6e6a557c146c1202a45563c0d2a18754322f8",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/es/evento/2026-corrida-da-virada-2026-sc/",
+    "status": 200,
+    "seconds": 0.243,
+    "title": "Corrida Da Virada 2026 - Carrera de ruta | 31/12/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sc/"
+    ],
+    "description": "Corrida Da Virada 2026 se realiza el 31 diciembre 2026, en Beira Mar Continental - Florianópolis - SC.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sc/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sc/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sc/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sc/"
+      ]
+    ],
+    "schema_hash": "70b757a2da40ca15bd6f924ee105ba97992e45200c73ec362275aa1a1d2c8f3f",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/es/evento/2026-together-run-pe/",
+    "status": 200,
+    "seconds": 0.216,
+    "title": "Together Run - Carrera de ruta | 22/11/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/es/evento/2026-together-run-pe/"
+    ],
+    "description": "Together Run se realiza el 22 noviembre 2026, en Porto Do Recife - Recife - PE.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-together-run-pe/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-together-run-pe/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-together-run-pe/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-together-run-pe/"
+      ]
+    ],
+    "schema_hash": "e157eb50de6661a0fe7bde6612a3ed17b9f711f62a9031d5ffe6335768540a1e",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "roadrunners.run",
+    "path": "/es/evento/2026-together-run-pb/",
+    "status": 200,
+    "seconds": 0.222,
+    "title": "TOGETHER RUN - Carrera de ruta | 22/11/2026 | Road Runners",
+    "canonical": [
+      "https://roadrunners.run/es/evento/2026-together-run-pb/"
+    ],
+    "description": "TOGETHER RUN se realiza el 22 noviembre 2026, en Parque Solón De Lucena (Lagoa) - Lagoa - PB.",
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-together-run-pb/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-together-run-pb/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-together-run-pb/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-together-run-pb/"
+      ]
+    ],
+    "schema_hash": "b45bab0c8cfc797ff562fd3956e3bbd1a5afaef5150d0734fc6db8bafcfb7eed",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "openresults.run",
+    "path": "/",
+    "status": 200,
+    "seconds": 0.651,
+    "title": "Open Results - Todas os Resultados de Corridas do Brasil",
+    "canonical": [
+      "https://openresults.run/"
+    ],
+    "description": "Open Results é uma plataforma completa e confiável que reúne informações sobre todas as corridas de rua que acontecem no país.",
+    "hreflang": [],
+    "schema_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "openresults.run",
+    "path": "/estado/RJ/",
+    "status": 200,
+    "seconds": 5.009,
+    "title": "Eventos por estado: RJ - Open Results",
+    "canonical": [
+      "https://openresults.run/estado/RJ/"
+    ],
+    "description": "Resultados de eventos de corrida por estado",
+    "hreflang": [],
+    "schema_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "openresults.run",
+    "path": "/estado/rj/",
+    "status": 200,
+    "seconds": 0.101,
+    "title": "Eventos por estado: RJ - Open Results",
+    "canonical": [
+      "https://openresults.run/estado/RJ/"
+    ],
+    "description": "Resultados de eventos de corrida por estado",
+    "hreflang": [],
+    "schema_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "openresults.run",
+    "path": "/estado/sp/?cidade=sao-paulo",
+    "status": 200,
+    "seconds": 6.667,
+    "title": "Resultados de corridas em Sao Paulo (SP) - Open Results",
+    "canonical": [
+      "https://openresults.run/estado/SP/"
+    ],
+    "description": "Resultados de eventos de corrida por estado",
+    "hreflang": [],
+    "schema_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "openresults.run",
+    "path": "/proximas-provas/",
+    "status": 200,
+    "seconds": 0.186,
+    "title": "Próximas provas de corrida no Brasil - Open Results",
+    "canonical": [
+      "https://openresults.run/proximas-provas/"
+    ],
+    "description": "Consulte as provas de corrida no Brasil nos próximos 30 dias, com datas, cidades e páginas dos eventos para acompanhar os resultados quando publicados.",
+    "hreflang": [],
+    "schema_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  },
+  {
+    "host": "openresults.run",
+    "path": "/evento/2026-mizuno-athenas-run-longer-2026/",
+    "status": 200,
+    "seconds": 0.134,
+    "title": "Mizuno Athenas Run Longer 2026 - Resultados e informações - Open Results",
+    "canonical": [
+      "https://openresults.run/evento/2026-mizuno-athenas-run-longer-2026/"
+    ],
+    "description": "Mizuno Athenas Run Longer 2026 em São Paulo/SP. Resultados disponíveis. Consulte tempos, classificação e resultados por atleta e modalidade.",
+    "hreflang": [],
+    "schema_hash": "42e5a429d604cb2e05a7d9d14687807f8589e994307a73260106d97d1569854b",
+    "scripts": [
+      "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    ],
+    "endpoints": [
+      "/api/runner_apps_menu.cfm"
+    ]
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "verified_files": {
+    "assets/css/admin-dashboard.css": {
+      "sha256": "1d2dffb9092c086791cf57e53691646c41bdf0f8f2d14cfb151e1ef15bc440d8",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "assets/js/business-home-dashboard.js": {
+      "sha256": "938b393cebe68f8f309468e6b9c7f588a3b0434650a7589374493810ba571c87",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/backend/business_home_metrics.cfm": {
+      "sha256": "74187da3e0eb8a91f0cdd89ab3f71cb4e49ae1e8b60eeaa894b1c4730984cd86",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/home_admin_dashboard.cfm": {
+      "sha256": "8343710dfea3ebab2296e2de06e2712cf196201c2dcbe37f80e2d030319bc10a",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/home_admin_decision_view.cfm": {
+      "sha256": "0f15119745ffdcc118fd594a9e55ff9b1d00c17aefb180df882e4f616c040b03",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "preserved_dependencies": 6,
+  "stage": "/var/backups/business-home-20261024-bmev1ttg"
+}

@@ -1,0 +1,127 @@
+{
+  "dependencies": {
+    "tb_evento_percursos_gpx": 0,
+    "tb_badges": 0,
+    "tb_evento_corridas_relaciona": 0,
+    "tb_leaderboard_startlist_importacao": 0,
+    "tb_permit_atualiza": 0,
+    "tb_leaderboard_startlist": 0,
+    "tb_resultados_temp": 0,
+    "tb_resultados": 0,
+    "tb_evento_saude_config": 0,
+    "tb_percurso_migracoes_strava": 0,
+    "tb_leaderboard_percurso": 0,
+    "tb_resultados_resumo": 0,
+    "tb_inscricoes": 0
+  },
+  "translation_columns": [
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "id"
+    },
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "id_evento"
+    },
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "source_hash"
+    },
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "source_text"
+    },
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "status"
+    },
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "description_before"
+    },
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "description_after"
+    },
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "model"
+    },
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "error_code"
+    },
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "created_at"
+    },
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "finished_at"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "id"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "id_evento"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "language"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "source_hash"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "source_text"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "status"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "description_before"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "description_after"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "metadata_before"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "model"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "error_code"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "attempt_count"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "next_retry_at"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "reused_from_id"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "created_at"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "finished_at"
+    }
+  ]
+}

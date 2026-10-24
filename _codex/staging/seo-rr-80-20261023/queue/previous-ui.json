@@ -1,0 +1,19 @@
+{
+  "source": "Semrush — interface autenticada no Chrome",
+  "projectId": 26661911,
+  "status": "complete",
+  "crawled": 5000,
+  "limit": 5000,
+  "deviceLabel": "Móvel",
+  "javascriptRendered": false,
+  "siteHealth": 71,
+  "aiHealth": 81,
+  "errors": 44,
+  "warnings": 10306,
+  "notices": 2685,
+  "lastFinishedAt": "2026-10-22T15:32:00Z",
+  "finishedPrecision": "minute",
+  "sourceUrl": "https://pt.semrush.com/siteaudit/campaign/26661911/review/overview",
+  "lastFinishedLabel": "22/10/2026, 12:32 (Brasília)",
+  "completedAuditDate": "2026-10-22"
+}

@@ -1,0 +1,104 @@
+{
+  "reconciled_at_utc": "2026-10-17T01:42:06.321193+00:00",
+  "source_snapshot": "/private/tmp/business-comparador-20261016",
+  "checkout": "/Users/Shared/Projects/RunnerHub/Business",
+  "runtime_files": 5,
+  "support_files": 10,
+  "production_published": false,
+  "production_migration_confirmed": false,
+  "status": "reconciled; deployment pending coordinator confirmation",
+  "runtime_unchanged_since_review": true,
+  "excluded": "harness, auth support copies, baseline, test structural includes, generated browser state",
+  "files": [
+    {
+      "path": "services/ComparadorAdminService.cfc",
+      "before_sha256": null,
+      "after_sha256": "21d66a79ea823e7aed1268269115230598690088f081a0205a85d102c3a2f7e7",
+      "kind": "runtime"
+    },
+    {
+      "path": "administracao/comparador/index.cfm",
+      "before_sha256": null,
+      "after_sha256": "43cc251b80d7fe57bf83efe98667074ca4d7dfae646fd5b821786ec0735406c2",
+      "kind": "runtime"
+    },
+    {
+      "path": "administracao/comparador/home.cfm",
+      "before_sha256": null,
+      "after_sha256": "96775d9c70a61405294e3ac598a355f3cf162ff6deca37e3b41a78eafc4de0ff",
+      "kind": "runtime"
+    },
+    {
+      "path": "administracao/comparador/includes/backend.cfm",
+      "before_sha256": null,
+      "after_sha256": "fb38e9153eb1d5e21e4fe26a70c09920014d19e2aa0d19418135e7cb6654f043",
+      "kind": "runtime"
+    },
+    {
+      "path": "includes/estrutura/sidenav.cfm",
+      "before_sha256": "4342580dca5cb9311c9507ba8542db2c5ceac14d2f639ba0ceec22f2f7b64a0e",
+      "after_sha256": "cdcf011b6251419ddfffbada9ff578f6ec3699853c2d9b94276830621070a70d",
+      "kind": "runtime"
+    },
+    {
+      "path": "_codex/sql/2026-10-16_comparador_admin.sql",
+      "before_sha256": null,
+      "after_sha256": "f669178e9e7d11e2875332e34afc54276d447a7fa1cfd4d14147fb082b554561",
+      "kind": "support"
+    },
+    {
+      "path": "_codex/docs/2026-10-16_comparador_admin.md",
+      "before_sha256": null,
+      "after_sha256": "2e2b3820ac19ea4276e27a144756eed46e648bfd0a3431c5f4cc05f49e7f691c",
+      "kind": "support"
+    },
+    {
+      "path": "_codex/docs/2026-10-16_comparador_service_evidence.json",
+      "before_sha256": null,
+      "after_sha256": "6286822d89320831f174e45132a0e19de77996fda99f45c97ea04a757d2762d6",
+      "kind": "support"
+    },
+    {
+      "path": "_codex/docs/2026-10-16_comparador_http_evidence.json",
+      "before_sha256": null,
+      "after_sha256": "86d44e120e47628d9bca6c58bc04782907a73f2c01b17fd65aee19efa49caf39",
+      "kind": "support"
+    },
+    {
+      "path": "_codex/tests/comparador/service.cfm",
+      "before_sha256": null,
+      "after_sha256": "dbadbebc077ec15f93b34602db311fb1c11a4b5c518dd84ec2f7ce57b6b0db69",
+      "kind": "support"
+    },
+    {
+      "path": "_codex/tests/comparador/test_http.py",
+      "before_sha256": null,
+      "after_sha256": "877126ae36224e356f405985823768147eb3012f1cf571fddd878b317c301ff4",
+      "kind": "support"
+    },
+    {
+      "path": "output/playwright/comparador-20261016/desktop-novo.png",
+      "before_sha256": null,
+      "after_sha256": "458246afcabc99fcf1383629f5aca007b1b8d332c20e8b53917723dc1c84d8fd",
+      "kind": "support"
+    },
+    {
+      "path": "output/playwright/comparador-20261016/mobile-novo.png",
+      "before_sha256": null,
+      "after_sha256": "10a17b5a4e9c22093c9ef2f4b1ce474c287ff50725986d098f8e39d14ef3ce32",
+      "kind": "support"
+    },
+    {
+      "path": "output/playwright/comparador-20261016/mobile-caracteristicas.png",
+      "before_sha256": null,
+      "after_sha256": "668242f10a21227788816ad57f7cefad0ae0a11f2f29ee70d35f0e6291d624d5",
+      "kind": "support"
+    },
+    {
+      "path": "_codex/docs/2026-10-16_comparador_manifest.json",
+      "before_sha256": null,
+      "after_sha256": "6516e971f5bf0e3541a043c8a5a0693a8820f31f715bca1562804a11bfbd597d",
+      "kind": "support"
+    }
+  ]
+}

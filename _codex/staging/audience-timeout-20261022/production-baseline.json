@@ -1,0 +1,16 @@
+{
+  "portal/audiencia/index.cfm": {
+    "sha256": "953a7ec442c874814031860459bd38d369a00dc484904dd1f9c8750794a7e488",
+    "source": "<cfprocessingdirective pageencoding=\"utf-8\"/>\n<cfset VARIABLES.theme = \"dark\"/>\n<cfset VARIABLES.template = \"/portal/audiencia/\"/>\n<cfinclude template=\"../../includes/backend/backend_login.cfm\"/>\n<cfinclude template=\"../../includes/backend/require_admin.cfm\"/>\n<cfinclude template=\"../includes/audience_backend.cfm\"/>\n<!DOCTYPE html>\n<html lang=\"pt-br\">\n<cfinclude template=\"../../includes/estrutura/head.cfm\"/>\n<body data-mdb-theme=\"dark\" class=\"bg-dark-subtle\">\n    <cfinclude template=\"../../includes/estrutura/header.cfm\"/>\n    <main style=\"margin-top:-55px\"><div class=\"container-fluid px-4\">\n        <cfinclude template=\"home.cfm\"/>\n    </div></main>\n    <cfinclude template=\"../../includes/estrutura/footer.cfm\"/>\n</body>\n</html>\n"
+  },
+  "portal/audiencia/queries/filter.sql": {
+    "sha256": "139bbacf39f268a688dcb399d14af3286c684d5a6877af0784b3e52082c28676",
+    "source": "WITH regional AS (\n    SELECT e.*, coalesce(nullif(CASE :region_dimension\n        WHEN 'visitor' THEN visitor_uf WHEN 'profile' THEN profile_uf\n        WHEN 'context' THEN context_uf ELSE market_uf END, ''), repeat('-', 2)) AS audience_uf\n    FROM audience.events e\n    WHERE e.occurred_at >= (date_trunc('day', now() AT TIME ZONE 'America/Sao_Paulo')\n        - (CAST(:days AS integer) - 1) * interval '1 day') AT TIME ZONE 'America/Sao_Paulo'\n      AND e.occurred_at <= now()\n      AND e.environment = :environment\n      AND (:include_internal = true OR e.is_internal = false)\n), filtered AS (\n    SELECT * FROM regional\n    WHERE (:uf = '' OR audience_uf = :uf)\n      AND (:page_family = '' OR page_family = :page_family)\n      AND (:device_class = '' OR device_class = :device_class)\n), page_identity AS (\n    -- Only the original page opening identifies the page, never video modals.\n    -- Resolve before UF filtering so later slot contexts keep that same identity.\n    SELECT page_view_id, max(content_type) AS page_content_type,\n           max(content_id) AS page_content_id\n    FROM regional WHERE event_kind = 'page_view'\n    GROUP BY page_view_id\n), page_metrics AS (\n    SELECT f.page_view_id, visitor_id, session_id, page_family, page_path,\n           coalesce(i.page_content_type, '') AS page_content_type,\n           coalesce(i.page_content_id, '') AS page_content_id,\n           source, medium, campaign, creative,\n           bool_or(event_kind = 'page_view') AS has_view,\n           coalesce(max(active_ms) FILTER (WHERE event_kind = 'page_engagement'), 0) AS active_ms\n    FROM filtered f LEFT JOIN page_identity i ON i.page_view_id = f.page_view_id\n    GROUP BY f.page_view_id, visitor_id, session_id, page_family, page_path,\n             i.page_content_type, i.page_content_id,\n             source, medium, campaign, creative\n)\n"
+  },
+  "portal/includes/audience_backend.cfm": {
+    "sha256": "ce584ff7f6a61b11f5102c5ad92834149728163bcd46b9bc610aae44579e5b3a"
+  },
+  "Application.cfc": {
+    "sha256": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970"
+  }
+}

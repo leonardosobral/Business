@@ -1,0 +1,18 @@
+{
+  "observedAt": "2026-10-22T15:21:48.769085+00:00",
+  "source": "TicketSports oficial, inscrição 87544, conferida no Chrome",
+  "sourceUrl": "https://www.ticketsports.com.br/e/corrida-das-cores-da-amazonia-87544",
+  "eventIds": [
+    44162,
+    46375
+  ],
+  "sameOfficialRegistration": true,
+  "sameRegisteredPlaceAndDate": true,
+  "registeredDate": "2027-03-28",
+  "dateCorrectionRequired": false,
+  "referenceCountsChecked": 40,
+  "notAllReferenceTablesReadable": true,
+  "databaseWrites": 0,
+  "candidateNextAction": "Se o grupo permanecer e outro lote for necessário, avaliar alias pelo tag_301 existente, preservando a URL/ID original, dados e vínculos. Não excluir ou unir registros físicos para elevar a nota.",
+  "supplierFindings": "org e timer já renderizam listas no servidor, mas usam o mesmo filtro de id_fornecedor sem distinguir a função. Não mudar listas sem confirmar a classificação real de cada vínculo."
+}

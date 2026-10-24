@@ -1,0 +1,47 @@
+{
+  "cron_token_matches_file": true,
+  "cron_urls": [
+    "https://business.roadrunners.run/cron-jobs/runner.cfm?[QUERY REDACTED]"
+  ],
+  "public": {
+    "curl_rc": 0,
+    "http": "503",
+    "stderr": "",
+    "json": {
+      "MESSAGE": "Runner token nao configurado no Business.",
+      "STATUS": "not_configured",
+      "SUCCESS": false
+    }
+  },
+  "local": {
+    "curl_rc": 0,
+    "http": "503",
+    "stderr": "",
+    "json": {
+      "MESSAGE": "Runner token nao configurado no Business.",
+      "STATUS": "not_configured",
+      "SUCCESS": false
+    }
+  },
+  "logs": {
+    "/var/log/apache2/access.log": [
+      "104.23.254.128 - - [12/Oct/2026:12:17:01 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 503 4599 \"-\" \"curl/8.5.0\"",
+      "172.69.138.178 - - [12/Oct/2026:12:17:53 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 503 4601 \"-\" \"curl/7.81.0\"",
+      "172.69.11.118 - - [12/Oct/2026:12:18:01 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 503 4601 \"-\" \"curl/8.5.0\"",
+      "104.23.254.128 - - [12/Oct/2026:12:18:53 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 503 4600 \"-\" \"curl/7.81.0\"",
+      "172.69.138.178 - - [12/Oct/2026:12:19:02 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 503 4600 \"-\" \"curl/8.5.0\"",
+      "172.69.39.40 - - [12/Oct/2026:12:19:53 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 503 4600 \"-\" \"curl/7.81.0\"",
+      "104.22.10.72 - - [12/Oct/2026:12:20:01 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 503 4601 \"-\" \"curl/8.5.0\"",
+      "172.69.11.118 - - [12/Oct/2026:12:20:53 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 503 4599 \"-\" \"curl/7.81.0\"",
+      "104.22.10.72 - - [12/Oct/2026:12:21:01 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 503 4601 \"-\" \"curl/8.5.0\"",
+      "172.69.11.118 - - [12/Oct/2026:12:21:40 +0000] \"GET /cron-jobs/runner.cfm HTTP/1.1\" 503 4600 \"-\" \"curl/7.81.0\"",
+      "172.69.138.178 - - [12/Oct/2026:12:21:40 +0000] \"GET /cron-jobs/runner.cfm HTTP/1.1\" 503 4601 \"-\" \"curl/8.5.0\"",
+      "127.0.0.1 - - [12/Oct/2026:12:21:40 +0000] \"GET /cron-jobs/runner.cfm HTTP/1.1\" 503 4617 \"-\" \"curl/8.5.0\""
+    ],
+    "/var/log/apache2/error.log": [],
+    "/opt/coldfusion2025/cfusion/logs/exception.log": []
+  },
+  "java_processes": [
+    "5563"
+  ]
+}

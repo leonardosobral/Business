@@ -1,0 +1,151 @@
+{
+  "passed": 29,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Real session/login/admin guards: anonymous",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Real session/login/admin guards: common",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Real session/login/admin guards: account",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Real session/login/admin guards: delegated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Real session/login/admin guards: simulated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Real session/login/admin guards: admin",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Forged legacy cookies do not authenticate",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Direct include blocked administracao/comparador/includes/backend.cfm",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Direct include blocked administracao/comparador/home.cfm",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Admin page renders ",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Admin page renders ?novo=1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Admin page renders ?id=900004",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Admin page renders ?id=900004&aba=caracteristicas",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Admin page renders ?id=900004&aba=ofertas",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Admin page renders ?id=900004&aba=historico",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Admin page renders ?busca=Produto&pagina=2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Admin page renders ?tipo=cameras&pendencia=preco",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Admin page renders ?id=900001",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Page rejects invalid CSRF",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "GET action cannot mutate state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Search escaped in markup",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Complete product POST creates draft",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Created draft and text escaped",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Explicit publish accepts valid launch date and unknown price",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Stale page POST rejected with no reusable forms",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Complete specification POST preserves zero and decimal",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Complete expired offer POST supported",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Expired latest candidate labeled in history",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "HTTP writes visible in audit",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

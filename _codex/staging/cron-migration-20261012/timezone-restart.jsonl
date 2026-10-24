@@ -1,0 +1,34 @@
+{"stage": "config_saved", "backup": "/var/backups/cf2025-timezone-sao-paulo-20261012T142754Z-a9hhvd3x"}
+{"stage": "previous_jvm_stopped"}
+{
+  "backup": "/var/backups/cf2025-timezone-sao-paulo-20261012T142754Z-a9hhvd3x",
+  "started_at_utc": "2026-10-12T14:27:54.359335+00:00",
+  "before_sha256": "100138aafc4ece911e468478c6f2e8e952e7e14d31f34a00fac4dede03c2aa3b",
+  "after_sha256": "8682709d037f67dd5398dba3cdaee776c083c3e3a1f182d9c293702f9e428617",
+  "before_pid": 31255,
+  "timezone_before": "Etc/UTC",
+  "timezone_after": "America/Sao_Paulo",
+  "heap_mib_unchanged": {
+    "initial": 2048,
+    "maximum": 19200
+  },
+  "cron_before_sha256": "b13e8c7337003182f40a3130c8313ddf6f9f3d470790aa18f6f84918ae8f055a",
+  "only_change": "Append -Duser.timezone=America/Sao_Paulo to java.args",
+  "apache_configuration_changed": false,
+  "stop_rc": 0,
+  "start_rc": 0,
+  "after_pids": [
+    32589
+  ],
+  "service_active": "active",
+  "runtime_heap_options": [
+    "-Xms2048m",
+    "-Xmx19200m"
+  ],
+  "runtime_timezone_options": [
+    "-Duser.timezone=America/Sao_Paulo"
+  ],
+  "cron_after_sha256": "b13e8c7337003182f40a3130c8313ddf6f9f3d470790aa18f6f84918ae8f055a",
+  "cron_unchanged": true,
+  "finished_at_utc": "2026-10-12T14:28:06.148080+00:00"
+}

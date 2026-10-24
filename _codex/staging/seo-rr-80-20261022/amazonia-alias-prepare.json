@@ -1,0 +1,58 @@
+{
+  "prepared": true,
+  "baseline": {
+    "events": [
+      {
+        "active": true,
+        "state": "AM",
+        "without_redirect_hash": "2639f6a72546cbac2f0ab9583b5ab5d2",
+        "hash": "22cb9da94082e9c98c355d25a57fb731",
+        "name": "CORRIDA DAS CORES DA AMAZÔNIA",
+        "city": "Manaus",
+        "forward_hash": "22cb9da94082e9c98c355d25a57fb731",
+        "source": "https://www.ticketsports.com.br/e/CORRIDA+DAS+CORES+DA+AMAZ%C3%94NIA-87544",
+        "end": "2027-03-28",
+        "start": "2027-03-28",
+        "id": 44162,
+        "tag": "2026-corrida-das-cores-da-amazonia",
+        "registration": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87544&origem=novo-site&lang=en-US",
+        "redirect": null
+      },
+      {
+        "active": true,
+        "state": "AM",
+        "without_redirect_hash": "0583dbb15b6273792c5ec465f9b1360c",
+        "hash": "756af8fe50d2b918b0f83200b2f5651e",
+        "name": "CORRIDA DAS CORES DA AMAZÔNIA",
+        "city": "Manaus",
+        "forward_hash": "ba41af3963658a531caf9703cce75137",
+        "source": "https://www.ticketsports.com.br/e/CORRIDA+DAS+CORES+DA+AMAZ%C3%94NIA-87544",
+        "end": "2027-03-28",
+        "start": "2027-03-28",
+        "id": 46375,
+        "tag": "2027-corrida-das-cores-da-amazonia",
+        "registration": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87544&origem=novo-site&lang=en-US",
+        "redirect": null
+      }
+    ],
+    "routes": [
+      {
+        "event": 44162,
+        "hash": "2765e311b88c6f43a632a9af0a9ec007"
+      },
+      {
+        "event": 44162,
+        "hash": "7ec2c38d7e12aa005c04136d13aa40d8"
+      },
+      {
+        "event": 46375,
+        "hash": "061e87b81d27ff5d30f86ae034b2039a"
+      },
+      {
+        "event": 46375,
+        "hash": "78c2348278c62bca0f917f45c1503ee3"
+      }
+    ]
+  },
+  "backup": "/var/backups/seo-rr-80-20261022-amazonia-alias"
+}

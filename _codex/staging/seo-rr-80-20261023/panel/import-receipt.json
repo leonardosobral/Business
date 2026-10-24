@@ -1,0 +1,15 @@
+{
+  "projectId": 26661911,
+  "source": "Semrush — interface autenticada no Chrome",
+  "collectedAt": "2026-10-23T11:49:16.886030+00:00",
+  "finishedAt": "2026-10-22T19:38:00Z",
+  "siteHealth": 75,
+  "errors": 30,
+  "warnings": 10333,
+  "notices": 5892,
+  "organicCollectedAt": "2026-10-04T17:15:54Z",
+  "keywords": 51,
+  "opportunities": 6,
+  "organicPreserved": true,
+  "sourceSha256": "3ff64689c57dd2cb7ed4cf9f0e2b1e4ae587a685be648e1948d79a133c1d02f8"
+}

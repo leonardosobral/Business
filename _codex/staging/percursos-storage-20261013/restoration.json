@@ -1,0 +1,10 @@
+{
+  "files": 257,
+  "all_hashes_match": true,
+  "owner": "coldfusion:coldfusion",
+  "directories": "0750",
+  "files_mode": "0640",
+  "storage": "/var/lib/roadrunners/percursos",
+  "backup": "/var/backups/percursos-storage-20261013",
+  "probe": "read_all_and_write_ok"
+}

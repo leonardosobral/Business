@@ -1,0 +1,16 @@
+{
+  "rr": {
+    "published": [
+      "includes/estrutura/head.cfm"
+    ],
+    "backup": "/var/backups/seo-rr-80-20261022-heads-rr/baseline",
+    "published_at": "2026-10-22T18:13:02.260243+00:00"
+  },
+  "business": {
+    "published": [
+      "includes/estrutura/head.cfm"
+    ],
+    "backup": "/var/backups/seo-rr-80-20261022-heads-business/baseline",
+    "published_at": "2026-10-22T18:13:02.262068+00:00"
+  }
+}

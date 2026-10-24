@@ -1,0 +1,385 @@
+- button "Pular para o conteúdo"
+- banner:
+  - combobox "Acesse a ferramenta…"
+  - button "Pesquisar":
+  - navigation:
+    - menubar:
+      - button "Convide usuários": Invite free users
+      - menuitem "Preços"
+      - menuitem "Empresarial"
+      - menuitem "Mais"
+      - menuitem "Meu perfil":
+        - generic: c
+- navigation:
+  - list:
+    - link "Início":
+      - /url: https://pt.semrush.com/home/?fid=8614846
+      - generic: Início
+    - link "SEO":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+      - generic: SEO
+    - link "IA":
+      - /url: https://pt.semrush.com/ai-seo/overview/?fid=8614846
+      - generic: IA
+  - list:
+    - link "Tráfego e mercado":
+      - /url: https://pt.semrush.com/analytics/traffic/?fid=8614846
+      - generic: Tráfego e mercado
+    - link "Local":
+      - /url: https://pt.semrush.com/local-business/?fid=8614846
+      - generic: Local
+    - link "Conteúdo":
+      - /url: https://pt.semrush.com/content/?fid=8614846
+      - generic: Conteúdo
+    - link "Anúncios":
+      - /url: https://pt.semrush.com/advertising/?fid=8614846
+      - generic: Anúncios
+    - link "RP para IA":
+      - /url: https://pt.semrush.com/pr-toolkit/?fid=8614846
+      - generic: RP para IA
+    - link "Social":
+      - /url: https://pt.semrush.com/social-media/?fid=8614846
+      - generic: Social
+  - list:
+    - link "Relatórios":
+      - /url: https://pt.semrush.com/my_reports/grid/?fid=8614846
+      - generic: Relatórios
+    - link "Apps":
+      - /url: https://pt.semrush.com/apps/?fid=8614846
+      - generic: Apps
+  - generic: SEO
+  - list:
+    - link "Painel de ferramentas":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+  - generic: Desempenho do site
+  - list:
+    - link "Auditoria do site":
+      - /url: https://pt.semrush.com/siteaudit/?fid=8614846
+    - link "Monitoramento de posição":
+      - /url: https://pt.semrush.com/position-tracking/?fid=8614846
+  - generic: Análise competitiva
+  - list:
+    - link "Visão geral do domínio":
+      - /url: https://pt.semrush.com/analytics/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Rankings orgânicos":
+      - /url: https://pt.semrush.com/analytics/organic/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Principais páginas":
+      - /url: https://pt.semrush.com/analytics/toppages/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Comparação de domínios":
+      - /url: https://pt.semrush.com/analytics/comparedomains/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nas palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordgap/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nos backlinks":
+      - /url: https://pt.semrush.com/analytics/gap/backlinks/?fid=8614846&q=roadrunners.run&searchType=domain
+  - generic: Pesquisa de palavras-chave
+  - list:
+    - link "Visão geral de palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordoverview/?fid=8614846
+    - link "Keyword Magic Tool":
+      - /url: https://pt.semrush.com/analytics/keywordmagic/?fid=8614846
+    - link "Keyword Strategy Builder":
+      - /url: https://pt.semrush.com/analytics/keywordmanager/?fid=8614846
+    - link "Palavras-chave salvas":
+      - /url: https://pt.semrush.com/saved-keywords/?fid=8614846
+  - generic: Ideias de conteúdo
+  - list:
+    - link "SEO Writing Assistant":
+      - /url: https://pt.semrush.com/swa/?fid=8614846
+    - link "Topic Research":
+      - /url: https://pt.semrush.com/topic-research/?fid=8614846
+    - link "SEO Content Template":
+      - /url: https://pt.semrush.com/seo-content-template/?fid=8614846
+  - generic: Construção de links
+  - list:
+    - link "Backlinks":
+      - /url: https://pt.semrush.com/analytics/backlinks/overview/?db=us&fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Domínios de referência":
+      - /url: https://pt.semrush.com/analytics/refdomains/report/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Backlink Audit":
+      - /url: https://pt.semrush.com/backlink_audit/?fid=8614846
+  - generic: Ferramentas extras
+  - list:
+    - link "Sensor":
+      - /url: https://pt.semrush.com/sensor/?fid=8614846&utm_medium=footer&utm_source=semrush
+    - link "SEOquake":
+      - /url: https://www.seoquake.com/?fid=8614846
+    - link "Ranking Semrush":
+      - /url: https://pt.semrush.com/analytics/ranks/rank/?fid=8614846
+  - generic: Outros
+  - list:
+    - link "On Page SEO Checker":
+      - /url: https://pt.semrush.com/on-page-seo-checker/26661911/overview/?fid=8614846
+    - link "Organic Traffic Insights":
+      - /url: https://pt.semrush.com/organic-traffic-insights/project/26661911/?fid=8614846
+    - link "Construção de links":
+      - /url: https://pt.semrush.com/link_building/26661911/main/overview/?fid=8614846
+- button "Ocultar navegação" [expanded]:
+- main:
+  - region "Cabeçalho da Auditoria do site":
+    - navigation "Trilhas de navegação":
+      - list:
+        - link "Início":
+          - /url: /home/
+        - link "SEO":
+          - /url: /seo/26661911/
+        - generic: Auditoria de Site
+    - button "Central de ajuda":
+      - text: Central de ajuda
+    - button "Enviar comentário":
+      - text: Enviar comentário
+    - heading [level=1]: "Auditoria de Site:"
+    - 'combobox "Projeto: Road Runners"':
+      - generic: Road Runners
+    - button "Reexecutar campanha":
+      - generic: Reexecutar campanha
+    - button "Exportar para PDF":
+      - generic: PDF
+    - button "Exportar para planilha":
+      - generic: Exportar
+    - button "Compartilhar":
+      - generic: Compartilhar
+    - button "Abrir configurações":
+    - generic: roadrunners.run
+    - generic: "Atualizado:"
+    - text: qui, 22 de out de 2026
+    - text: Móvel
+    - generic: "Renderização em JS:"
+    - text: Desativado
+    - generic: "Páginas rastreadas:"
+    - button "Problema nas páginas rastreadas":
+    - text: 5.000/5.000
+    - tablist "Relatórios de Auditoria do site":
+      - tab "Visão geral":
+        - generic: Visão geral
+      - tab "Problemas" [selected]:
+        - generic: Problemas
+      - tab "Páginas rastreadas":
+        - generic: Páginas rastreadas
+      - tab "Estatísticas":
+        - generic: Estatísticas
+      - tab "Comparar rastreamentos":
+        - generic: Comparar rastreamentos
+      - tab "Progresso":
+        - generic: Progresso
+      - tab "Impacto do JS":
+        - generic: Impacto do JS
+  - link "Todos os problemas":
+    - /url: /siteaudit/campaign/26661911/review/issues
+    - generic: Todos os problemas
+  - generic "Detalhes do problema":
+    - heading "13 páginas não possuem o título h1" [level=2]
+    - generic: Advertência
+    - button "Enviar para…":
+      - generic: Enviar para…
+    - link "Estrutura do site":
+      - /url: /siteaudit/campaign/26661911/review/pagereport/structure?restrictions=eyJ0cmlnZ2VyZWRJc3N1ZSI6MTAzfQ%253D%253D
+      - generic: Estrutura do site
+    - button "Excluir verificação":
+      - generic: Excluir verificação
+    - button "Como resolver este problema":
+      - generic "Como resolver este problema": Como resolver
+    - generic: "Falha:"
+    - generic: "13"
+    - generic: "Sucesso:"
+    - generic: "3.839"
+    - tablist:
+      - tab "Problemas 13" [selected]:
+        - generic: Problemas
+        - generic: "13"
+      - tab "Ocultos 0":
+        - generic: Ocultos
+        - generic: "0"
+    - textbox "Pesquisar"
+    - button "Pesquisar":
+    - combobox "Selecionar filtros avançados":
+      - generic: Filtros avançados
+    - grid:
+      - row "All items URL da página ascending Descoberta":
+        - columnheader "All items":
+          - checkbox "All items"
+        - columnheader "URL da página ascending":
+          - text: URL da página
+          - button "ascending":
+        - columnheader "Descoberta": Descoberta
+        - columnheader
+      - generic: Sortable
+      - row "Go Runners https://gorunners.roadrunners.run/ Acessar https://gorunners.roadrunners.run/ out 4, 2026, 2:39 Ocultar https://gorunners.roadrunners.run/ nos resultados de auditoria":
+        - gridcell "Go Runners https://gorunners.roadrunners.run/ Acessar https://gorunners.roadrunners.run/":
+          - checkbox "Go Runners https://gorunners.roadrunners.run/ Acessar https://gorunners.roadrunners.run/"
+        - gridcell "Go Runners https://gorunners.roadrunners.run/ Acessar https://gorunners.roadrunners.run/":
+          - generic: Go Runners
+          - link "https://gorunners.roadrunners.run/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248a13
+            - generic: https://gorunners.roadrunners.run/
+          - link "Acessar https://gorunners.roadrunners.run/":
+            - /url: https://gorunners.roadrunners.run/
+        - gridcell "out 4, 2026, 2:39":
+          - generic: out 4, 2026, 2:39
+        - gridcell "Ocultar https://gorunners.roadrunners.run/ nos resultados de auditoria":
+          - button "Ocultar https://gorunners.roadrunners.run/ nos resultados de auditoria":
+      - row "Road Runners Store https://store.roadrunners.run/roadrunnersstore/inactive Acessar https://store.roadrunners.run/roadrunnersstore/inactive out 6, 2026, 5:20 Ocultar https://store.roadrunners.run/roadrunnersstore/inactive nos resultados de auditoria":
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/inactive Acessar https://store.roadrunners.run/roadrunnersstore/inactive":
+          - checkbox "Road Runners Store https://store.roadrunners.run/roadrunnersstore/inactive Acessar https://store.roadrunners.run/roadrunnersstore/inactive"
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/inactive Acessar https://store.roadrunners.run/roadrunnersstore/inactive":
+          - generic: Road Runners Store
+          - link "https://store.roadrunners.run/roadrunnersstore/inactive":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248a4d
+            - generic: https://store.roadrunners.run/roadrunnersstore/inactive
+          - link "Acessar https://store.roadrunners.run/roadrunnersstore/inactive":
+            - /url: https://store.roadrunners.run/roadrunnersstore/inactive
+        - gridcell "out 6, 2026, 5:20":
+          - generic: out 6, 2026, 5:20
+        - gridcell "Ocultar https://store.roadrunners.run/roadrunnersstore/inactive nos resultados de auditoria":
+          - button "Ocultar https://store.roadrunners.run/roadrunnersstore/inactive nos resultados de auditoria":
+      - row "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products Acessar https://store.roadrunners.run/roadrunnersstore/products out 6, 2026, 5:20 Ocultar https://store.roadrunners.run/roadrunnersstore/products nos resultados de auditoria":
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products Acessar https://store.roadrunners.run/roadrunnersstore/products":
+          - checkbox "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products Acessar https://store.roadrunners.run/roadrunnersstore/products"
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products Acessar https://store.roadrunners.run/roadrunnersstore/products":
+          - generic: Road Runners Store
+          - link "https://store.roadrunners.run/roadrunnersstore/products":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248c21
+            - generic: https://store.roadrunners.run/roadrunnersstore/products
+          - link "Acessar https://store.roadrunners.run/roadrunnersstore/products":
+            - /url: https://store.roadrunners.run/roadrunnersstore/products
+        - gridcell "out 6, 2026, 5:20":
+          - generic: out 6, 2026, 5:20
+        - gridcell "Ocultar https://store.roadrunners.run/roadrunnersstore/products nos resultados de auditoria":
+          - button "Ocultar https://store.roadrunners.run/roadrunnersstore/products nos resultados de auditoria":
+      - row "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=1 out 6, 2026, 5:20 Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=1 nos resultados de auditoria":
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=1":
+          - checkbox "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=1"
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=1":
+          - generic: Road Runners Store
+          - link "https://store.roadrunners.run/roadrunnersstore/products?page=1":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d185542490c5
+            - generic: https://store.roadrunners.run/roadrunnersstore/products?page=1
+          - link "Acessar https://store.roadrunners.run/roadrunnersstore/products?page=1":
+            - /url: https://store.roadrunners.run/roadrunnersstore/products?page=1
+        - gridcell "out 6, 2026, 5:20":
+          - generic: out 6, 2026, 5:20
+        - gridcell "Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=1 nos resultados de auditoria":
+          - button "Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=1 nos resultados de auditoria":
+      - row "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1 out 6, 2026, 5:20 Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1 nos resultados de auditoria":
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1":
+          - checkbox "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1"
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1":
+          - generic: Road Runners Store
+          - link "https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248e85
+            - generic: https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1
+          - link "Acessar https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1":
+            - /url: https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1
+        - gridcell "out 6, 2026, 5:20":
+          - generic: out 6, 2026, 5:20
+        - gridcell "Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1 nos resultados de auditoria":
+          - button "Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=1&product_type=1 nos resultados de auditoria":
+      - row "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=2 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=2 out 6, 2026, 5:20 Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=2 nos resultados de auditoria":
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=2 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=2":
+          - checkbox "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=2 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=2"
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=2 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=2":
+          - generic: Road Runners Store
+          - link "https://store.roadrunners.run/roadrunnersstore/products?page=2":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248d1e
+            - generic: https://store.roadrunners.run/roadrunnersstore/products?page=2
+          - link "Acessar https://store.roadrunners.run/roadrunnersstore/products?page=2":
+            - /url: https://store.roadrunners.run/roadrunnersstore/products?page=2
+        - gridcell "out 6, 2026, 5:20":
+          - generic: out 6, 2026, 5:20
+        - gridcell "Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=2 nos resultados de auditoria":
+          - button "Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=2 nos resultados de auditoria":
+      - row "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1 out 6, 2026, 5:20 Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1 nos resultados de auditoria":
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1":
+          - checkbox "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1"
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1":
+          - generic: Road Runners Store
+          - link "https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d185542491d9
+            - generic: https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1
+          - link "Acessar https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1":
+            - /url: https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1
+        - gridcell "out 6, 2026, 5:20":
+          - generic: out 6, 2026, 5:20
+        - gridcell "Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1 nos resultados de auditoria":
+          - button "Ocultar https://store.roadrunners.run/roadrunnersstore/products?page=2&product_type=1 nos resultados de auditoria":
+      - row "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=1 out 6, 2026, 5:20 Ocultar https://store.roadrunners.run/roadrunnersstore/products?product_type=1 nos resultados de auditoria":
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=1":
+          - checkbox "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=1"
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=1 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=1":
+          - generic: Road Runners Store
+          - link "https://store.roadrunners.run/roadrunnersstore/products?product_type=1":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248133
+            - generic: https://store.roadrunners.run/roadrunnersstore/products?product_type=1
+          - link "Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=1":
+            - /url: https://store.roadrunners.run/roadrunnersstore/products?product_type=1
+        - gridcell "out 6, 2026, 5:20":
+          - generic: out 6, 2026, 5:20
+        - gridcell "Ocultar https://store.roadrunners.run/roadrunnersstore/products?product_type=1 nos resultados de auditoria":
+          - button "Ocultar https://store.roadrunners.run/roadrunnersstore/products?product_type=1 nos resultados de auditoria":
+      - row "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=119 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=119 out 6, 2026, 5:20 Ocultar https://store.roadrunners.run/roadrunnersstore/products?product_type=119 nos resultados de auditoria":
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=119 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=119":
+          - checkbox "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=119 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=119"
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=119 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=119":
+          - generic: Road Runners Store
+          - link "https://store.roadrunners.run/roadrunnersstore/products?product_type=119":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248500
+            - generic: https://store.roadrunners.run/roadrunnersstore/products?product_type=119
+          - link "Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=119":
+            - /url: https://store.roadrunners.run/roadrunnersstore/products?product_type=119
+        - gridcell "out 6, 2026, 5:20":
+          - generic: out 6, 2026, 5:20
+        - gridcell "Ocultar https://store.roadrunners.run/roadrunnersstore/products?product_type=119 nos resultados de auditoria":
+          - button "Ocultar https://store.roadrunners.run/roadrunnersstore/products?product_type=119 nos resultados de auditoria":
+      - row "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=178 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=178 out 6, 2026, 5:20 Ocultar https://store.roadrunners.run/roadrunnersstore/products?product_type=178 nos resultados de auditoria":
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=178 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=178":
+          - checkbox "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=178 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=178"
+        - gridcell "Road Runners Store https://store.roadrunners.run/roadrunnersstore/products?product_type=178 Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=178":
+          - generic: Road Runners Store
+          - link "https://store.roadrunners.run/roadrunnersstore/products?product_type=178":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248cf2
+            - generic: https://store.roadrunners.run/roadrunnersstore/products?product_type=178
+          - link "Acessar https://store.roadrunners.run/roadrunnersstore/products?product_type=178":
+            - /url: https://store.roadrunners.run/roadrunnersstore/products?product_type=178
+        - gridcell "out 6, 2026, 5:20":
+          - generic: out 6, 2026, 5:20
+        - gridcell "Ocultar https://store.roadrunners.run/roadrunnersstore/products?product_type=178 nos resultados de auditoria":
+          - button "Ocultar https://store.roadrunners.run/roadrunnersstore/products?product_type=178 nos resultados de auditoria":
+    - status
+    - navigation "Paginação":
+      - button "Primeira página" [disabled]:
+      - button "Anterior" [disabled]:
+        - generic: Anterior
+      - button "Próximo":
+        - generic: Próximo
+      - generic: "Página:"
+      - textbox "Página:": "1"
+      - generic: de
+      - button "Última página n.º 2":
+        - generic: "2"
+      - combobox:
+        - generic: "10"
+      - status: "Página: 1"
+- contentinfo:
+  - link "Fale conosco":
+    - /url: /company/contacts/
+  - link "Sobre nós":
+    - /url: /company/
+  - link "Blog":
+    - /url: /blog/
+  - button "Português (Brasil)"
+  - link "Ver planos e preços":
+    - /url: /pricing/
+  - link "Comece a usar a Semrush":
+    - /url: https://www.semrush.com/academy/courses/getting-started-with-semrush/
+  - link "Configurações dos cookies":
+    - /url: javascript:window.showConsentSettings();
+  - link "Informações jurídicas":
+    - /url: /company/legal/
+  - link "Política de privacidade":
+    - /url: /company/legal/privacy-policy/
+  - link "Não venda minhas informações pessoais":
+    - /url: javascript:window.showConsentSettings();
+  - generic: © 2026 Semrush Holdings. Todos os direitos reservados.
+- region "Notificações"
+- button "Abrir painel de ajuda"
+- iframe [id="intercom-frame"]
+- region "Notifications"

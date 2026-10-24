@@ -1,0 +1,13 @@
+{
+  "hashes": {
+    "portal/conteudo/seo_semrush.cfm": "e913c62a03c0d89a22c09584127e1033ee00573966a4f26c19c8da7260b59973",
+    "portal/includes/seo_semrush_data.cfm": "baa04f1ee30cebb4ee23d8f65bc4736698bb1aebc387b077a9621989ba59ec07"
+  },
+  "scenarios": 19,
+  "mode": "candidate",
+  "access_checks": 8,
+  "siteHealth": 71,
+  "errors": 44,
+  "warnings": 10306,
+  "notices": 2685
+}

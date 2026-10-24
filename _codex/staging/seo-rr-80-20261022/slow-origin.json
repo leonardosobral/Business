@@ -1,0 +1,130 @@
+[
+  {
+    "path": "/en/",
+    "run": 1,
+    "status": 200,
+    "ttfb": 0.100596,
+    "total": 0.10219,
+    "bytes": 369441
+  },
+  {
+    "path": "/en/event/2007-83-corrida-internacional-de-sao-silvestre/",
+    "run": 1,
+    "status": 200,
+    "ttfb": 2.807326,
+    "total": 2.808572,
+    "bytes": 437380
+  },
+  {
+    "path": "/en/event/2026-2-corrida-cdl-movimenta-bom-jesus-do-oeste/",
+    "run": 1,
+    "status": 200,
+    "ttfb": 0.256341,
+    "total": 0.256949,
+    "bytes": 333661
+  },
+  {
+    "path": "/es/evento/2007-83-corrida-internacional-de-sao-silvestre/",
+    "run": 1,
+    "status": 200,
+    "ttfb": 1.664429,
+    "total": 1.66528,
+    "bytes": 439337
+  },
+  {
+    "path": "/es/evento/2026-corrida-farmacia-extra-popular/",
+    "run": 1,
+    "status": 200,
+    "ttfb": 0.278266,
+    "total": 0.278895,
+    "bytes": 332430
+  },
+  {
+    "path": "/evento/2008-maratona-internacional-de-sao-paulo-2008/",
+    "run": 1,
+    "status": 200,
+    "ttfb": 1.252047,
+    "total": 1.25314,
+    "bytes": 484751
+  },
+  {
+    "path": "/evento/2026-101-corrida-internacional-de-sao-silvestre/",
+    "run": 1,
+    "status": 200,
+    "ttfb": 1.658388,
+    "total": 1.659465,
+    "bytes": 455191
+  },
+  {
+    "path": "/evento/2026-circuito-sesc-etapa-garanhuns/",
+    "run": 1,
+    "status": 200,
+    "ttfb": 0.245193,
+    "total": 0.245878,
+    "bytes": 354809
+  },
+  {
+    "path": "/en/",
+    "run": 2,
+    "status": 200,
+    "ttfb": 0.046817,
+    "total": 0.047532,
+    "bytes": 369441
+  },
+  {
+    "path": "/en/event/2007-83-corrida-internacional-de-sao-silvestre/",
+    "run": 2,
+    "status": 200,
+    "ttfb": 1.60225,
+    "total": 1.602826,
+    "bytes": 437380
+  },
+  {
+    "path": "/en/event/2026-2-corrida-cdl-movimenta-bom-jesus-do-oeste/",
+    "run": 2,
+    "status": 200,
+    "ttfb": 0.190941,
+    "total": 0.191542,
+    "bytes": 333654
+  },
+  {
+    "path": "/es/evento/2007-83-corrida-internacional-de-sao-silvestre/",
+    "run": 2,
+    "status": 200,
+    "ttfb": 1.706219,
+    "total": 1.707155,
+    "bytes": 439336
+  },
+  {
+    "path": "/es/evento/2026-corrida-farmacia-extra-popular/",
+    "run": 2,
+    "status": 200,
+    "ttfb": 0.19065,
+    "total": 0.191355,
+    "bytes": 332415
+  },
+  {
+    "path": "/evento/2008-maratona-internacional-de-sao-paulo-2008/",
+    "run": 2,
+    "status": 200,
+    "ttfb": 0.792324,
+    "total": 0.793695,
+    "bytes": 484751
+  },
+  {
+    "path": "/evento/2026-101-corrida-internacional-de-sao-silvestre/",
+    "run": 2,
+    "status": 200,
+    "ttfb": 1.65296,
+    "total": 1.653991,
+    "bytes": 455184
+  },
+  {
+    "path": "/evento/2026-circuito-sesc-etapa-garanhuns/",
+    "run": 2,
+    "status": 200,
+    "ttfb": 0.198101,
+    "total": 0.199146,
+    "bytes": 354805
+  }
+]

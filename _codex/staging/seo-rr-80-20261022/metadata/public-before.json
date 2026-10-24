@@ -1,0 +1,123 @@
+[
+  {
+    "path": "/noticias/a-muralha-marathon-abre-inscricoes-hoje-para-edicao-2027/",
+    "status": 200,
+    "title": "A Muralha Marathon abre inscrições hoje para edição 2027 - Road Runners",
+    "description": "Notícia publicada no ecossistema Road Runners.",
+    "canonical": [
+      "https://roadrunners.run/noticias/a-muralha-marathon-abre-inscricoes-hoje-para-edicao-2027/"
+    ],
+    "robots": "",
+    "schema_core_hash": "606b2d449b65dcfcecfcc0e75ce3ba4080c1d8ef79e73f4d3d539a06420cda45"
+  },
+  {
+    "path": "/noticias/alison-dos-santos-concorre-ao-premio-de-atleta-mundial-do-ano-da-world-athletics/",
+    "status": 200,
+    "title": "Alison dos Santos concorre ao prêmio de Atleta Mundial do Ano da World Athletics - Road Runners",
+    "description": "Notícia publicada no ecossistema Road Runners.",
+    "canonical": [
+      "https://roadrunners.run/noticias/alison-dos-santos-concorre-ao-premio-de-atleta-mundial-do-ano-da-world-athletics/"
+    ],
+    "robots": "",
+    "schema_core_hash": "9d589da1929b2309d2d0319564ac802b07f51d1a517b67e73bc868aaf5edca04"
+  },
+  {
+    "path": "/noticias/circuito-caixa-chega-a-sao-paulo-em-15-de-novembro/",
+    "status": 200,
+    "title": "Circuito CAIXA chega a São Paulo em 15 de novembro - Road Runners",
+    "description": "Notícia publicada no ecossistema Road Runners.",
+    "canonical": [
+      "https://roadrunners.run/noticias/circuito-caixa-chega-a-sao-paulo-em-15-de-novembro/"
+    ],
+    "robots": "",
+    "schema_core_hash": "560afd4ed117b5356c70738df5ba191198c0e0c4a0b38828c633e50b2ca5f3d9"
+  },
+  {
+    "path": "/noticias/ibcc-promove-64-corrida-contra-o-cancer-de-mama-no-ibirapuera/",
+    "status": 200,
+    "title": "IBCC promove 64ª Corrida Contra o Câncer de Mama no Ibirapuera - Road Runners",
+    "description": "Notícia publicada no ecossistema Road Runners.",
+    "canonical": [
+      "https://roadrunners.run/noticias/ibcc-promove-64-corrida-contra-o-cancer-de-mama-no-ibirapuera/"
+    ],
+    "robots": "",
+    "schema_core_hash": "1f5a43fb95a6064504f5bc37dc25d0ef10c262b084d2e600e228b3153515feb3"
+  },
+  {
+    "path": "/noticias/maratona-de-berlim-quando-o-plano-muda-no-meio-da-prova/",
+    "status": 200,
+    "title": "Maratona de Berlim: quando o plano muda no meio da prova - Road Runners",
+    "description": "Notícia publicada no ecossistema Road Runners.",
+    "canonical": [
+      "https://roadrunners.run/noticias/maratona-de-berlim-quando-o-plano-muda-no-meio-da-prova/"
+    ],
+    "robots": "",
+    "schema_core_hash": "63f798d227e2f34a3ae343c4d6256b79fc2726693b5e7a0d19b2fe4b5476d674"
+  },
+  {
+    "path": "/noticias/maratona-de-nova-york-revela-medalha-da-edicao-de-2026/",
+    "status": 200,
+    "title": "Maratona de Nova York revela medalha da edição de 2026 - Road Runners",
+    "description": "Notícia publicada no ecossistema Road Runners.",
+    "canonical": [
+      "https://roadrunners.run/noticias/maratona-de-nova-york-revela-medalha-da-edicao-de-2026/"
+    ],
+    "robots": "",
+    "schema_core_hash": "e3dd202d80a7b8f5cc8d7acdad38d62eb3742fc499a170ba50cecbf73a5fe130"
+  },
+  {
+    "path": "/noticias/maratona-de-toquio-amplia-voluntariado-internacional-para-edicao-de-2027/",
+    "status": 200,
+    "title": "Maratona de Tóquio amplia voluntariado internacional para edição de 2027 - Road Runners",
+    "description": "Notícia publicada no ecossistema Road Runners.",
+    "canonical": [
+      "https://roadrunners.run/noticias/maratona-de-toquio-amplia-voluntariado-internacional-para-edicao-de-2027/"
+    ],
+    "robots": "",
+    "schema_core_hash": "7e7b06ad8427d83f5276a41863a9478a10b3ed002848669a047fc1ebce1b3a4a"
+  },
+  {
+    "path": "/noticias/ticket-sports-lanca-pesquisa-sobre-trail-running-no-brasil/",
+    "status": 200,
+    "title": "Ticket Sports lança pesquisa sobre trail running no Brasil - Road Runners",
+    "description": "Notícia publicada no ecossistema Road Runners.",
+    "canonical": [
+      "https://roadrunners.run/noticias/ticket-sports-lanca-pesquisa-sobre-trail-running-no-brasil/"
+    ],
+    "robots": "",
+    "schema_core_hash": "02ad2b0a658f6f27b5fa7731e52d6f1695eaee118acdefa1e8418d280fa60fcf"
+  },
+  {
+    "path": "/org/corre-brasil/",
+    "status": 200,
+    "title": "Corre Brasil - Road Runners",
+    "description": "Organizadores - Corre Brasil - Road Runners",
+    "canonical": [
+      "https://roadrunners.run/org/corre-brasil/"
+    ],
+    "robots": "",
+    "schema_core_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "path": "/timer/corre-brasil/",
+    "status": 200,
+    "title": "Corre Brasil - Road Runners",
+    "description": "Timers - Corre Brasil - Road Runners",
+    "canonical": [
+      "https://roadrunners.run/timer/corre-brasil/"
+    ],
+    "robots": "",
+    "schema_core_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "path": "/noticias/",
+    "status": 200,
+    "title": "Notícias - Road Runners",
+    "description": "Últimas notícias e conteúdos editoriais publicados no ecossistema Road Runners.",
+    "canonical": [
+      "https://roadrunners.run/noticias/"
+    ],
+    "robots": "",
+    "schema_core_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  }
+]

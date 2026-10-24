@@ -1,0 +1,1594 @@
+{
+  "EVENTS": [
+    {
+      "estado": "MG",
+      "data_final": "2023-01-08",
+      "nome_evento": "Corrida da Virada - São Pedro da União",
+      "ativo": true,
+      "id_evento": 1021,
+      "tag": "2023-corrida-da-virada-sao-pedro-da-uniao",
+      "cidade": "São Pedro da União",
+      "data_inicial": "2023-01-08"
+    },
+    {
+      "estado": "MG",
+      "data_final": "2023-01-08",
+      "nome_evento": "1ª Corrida da Virada",
+      "ativo": true,
+      "id_evento": 3013,
+      "tag": "2023-1-corrida-da-virada",
+      "cidade": "São Pedro da União",
+      "data_inicial": "2023-01-08"
+    },
+    {
+      "estado": "DF",
+      "data_final": "2023-01-22",
+      "nome_evento": "Corrida da Virada - Brasília",
+      "ativo": true,
+      "id_evento": 3073,
+      "tag": "2023-corrida-da-virada-brasilia",
+      "cidade": "Brasília",
+      "data_inicial": "2023-01-22"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2022-10-09",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa - Rio de Janeiro",
+      "ativo": true,
+      "id_evento": 7205,
+      "tag": "2022-corrida-e-caminhada-outubro-rosa-rio-de-janeiro",
+      "cidade": "Rio de Janeiro",
+      "data_inicial": "2022-10-09"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2022-10-23",
+      "nome_evento": "2ª Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 7346,
+      "tag": "2022-2-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Itápolis",
+      "data_inicial": "2022-10-23"
+    },
+    {
+      "estado": "RS",
+      "data_final": "2022-10-23",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa - Santa Maria",
+      "ativo": true,
+      "id_evento": 7369,
+      "tag": "2022-corrida-e-caminhada-outubro-rosa-santa-maria",
+      "cidade": "Santa Maria",
+      "data_inicial": "2022-10-23"
+    },
+    {
+      "estado": "MG",
+      "data_final": "2022-10-23",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa da Associação Presente",
+      "ativo": true,
+      "id_evento": 7395,
+      "tag": "2022-corrida-e-caminhada-outubro-rosa-da-associacao-presente",
+      "cidade": "Montes Claros",
+      "data_inicial": "2022-10-23"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2022-12-18",
+      "nome_evento": "Aj Corrida da Virada - 4ª Edição",
+      "ativo": true,
+      "id_evento": 7987,
+      "tag": "2022-aj-corrida-da-virada-4-edicao",
+      "cidade": "Niterói",
+      "data_inicial": "2022-12-18"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2022-12-31",
+      "nome_evento": "Corrida da Virada de Bastos",
+      "ativo": true,
+      "id_evento": 8024,
+      "tag": "2022-corrida-da-virada-de-bastos",
+      "cidade": "Bastos",
+      "data_inicial": "2022-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2022-12-31",
+      "nome_evento": "11ª Corrida da Virada Joseense",
+      "ativo": true,
+      "id_evento": 8029,
+      "tag": "2022-11-corrida-da-virada-joseense",
+      "cidade": "São José dos Campos",
+      "data_inicial": "2022-12-31"
+    },
+    {
+      "estado": "PB",
+      "data_final": "2022-12-31",
+      "nome_evento": "VI Corrida da Virada 2022/2023",
+      "ativo": true,
+      "id_evento": 8034,
+      "tag": "2022-vi-corrida-da-virada-20222023",
+      "cidade": "João Pessoa",
+      "data_inicial": "2022-12-31"
+    },
+    {
+      "estado": "PA",
+      "data_final": "2022-12-31",
+      "nome_evento": "Corrida da Virada",
+      "ativo": true,
+      "id_evento": 8035,
+      "tag": "2022-corrida-da-virada",
+      "cidade": "Salinópolis",
+      "data_inicial": "2022-12-31"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2021-10-03",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 8196,
+      "tag": "2021-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Rio de Janeiro",
+      "data_inicial": "2021-10-03"
+    },
+    {
+      "estado": "MG",
+      "data_final": "2021-10-30",
+      "nome_evento": "1ª Corrida e Caminhada Outubro Rosa Clínica Bem Viver",
+      "ativo": true,
+      "id_evento": 8283,
+      "tag": "2021-1-corrida-e-caminhada-outubro-rosa-clinica-bem-viver",
+      "cidade": "Tiradentes",
+      "data_inicial": "2021-10-30"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2021-12-26",
+      "nome_evento": "Corrida da Virada - 3ª Edição",
+      "ativo": true,
+      "id_evento": 8641,
+      "tag": "2021-corrida-da-virada-3-edicao",
+      "cidade": "Niterói",
+      "data_inicial": "2021-12-26"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2021-12-26",
+      "nome_evento": "Corrida da Viradamapa 2021",
+      "ativo": true,
+      "id_evento": 8646,
+      "tag": "2021-corrida-da-viradamapa-2021",
+      "cidade": "Rio Grande da Serra",
+      "data_inicial": "2021-12-26"
+    },
+    {
+      "estado": "ES",
+      "data_final": "2021-12-31",
+      "nome_evento": "3ª Corrida da Virada",
+      "ativo": true,
+      "id_evento": 8649,
+      "tag": "2021-3-corrida-da-virada",
+      "cidade": "Conceição da Barra",
+      "data_inicial": "2021-12-31"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2021-12-31",
+      "nome_evento": "Reveillon Run - IV Corrida da Virada de Guaratuba",
+      "ativo": true,
+      "id_evento": 8650,
+      "tag": "2021-reveillon-run-iv-corrida-da-virada-de-guaratuba",
+      "cidade": "Guaratuba",
+      "data_inicial": "2021-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2021-12-31",
+      "nome_evento": "65ª Corrida da Virada de Brotas",
+      "ativo": true,
+      "id_evento": 8653,
+      "tag": "2021-65-corrida-da-virada-de-brotas",
+      "cidade": "Brotas",
+      "data_inicial": "2021-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2023-10-22",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 8750,
+      "tag": "2023-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Boituva",
+      "data_inicial": "2023-10-22"
+    },
+    {
+      "estado": "MG",
+      "data_final": "2023-10-22",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa da Associação Presente",
+      "ativo": true,
+      "id_evento": 8800,
+      "tag": "2023-corrida-e-caminhada-outubro-rosa-da-associacao-presente",
+      "cidade": "Montes Claros",
+      "data_inicial": "2023-10-22"
+    },
+    {
+      "estado": "PE",
+      "data_final": "2023-12-31",
+      "nome_evento": "IV Corrida da Virada",
+      "ativo": true,
+      "id_evento": 9152,
+      "tag": "2023-iv-corrida-da-virada",
+      "cidade": "Brejão",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "PB",
+      "data_final": "2023-12-31",
+      "nome_evento": "Vii Corrida da Virada",
+      "ativo": true,
+      "id_evento": 9153,
+      "tag": "2023-vii-corrida-da-virada",
+      "cidade": "João Pessoa",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2023-12-31",
+      "nome_evento": "12ª Corrida da Virada Joseense",
+      "ativo": true,
+      "id_evento": 9332,
+      "tag": "2023-12-corrida-da-virada-joseense",
+      "cidade": "São José dos Campos",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "SC",
+      "data_final": "2023-12-31",
+      "nome_evento": "Corrida da Virada Floripa 2023",
+      "ativo": true,
+      "id_evento": 9343,
+      "tag": "2023-corrida-da-virada-floripa-2023",
+      "cidade": "Florianópolis",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2023-11-12",
+      "nome_evento": "2ª Corrida e Caminhada Outubro Rosa e Novembro Azul",
+      "ativo": true,
+      "id_evento": 9457,
+      "tag": "2023-2-corrida-e-caminhada-outubro-rosa-e-novembro-azul",
+      "cidade": "Itápolis",
+      "data_inicial": "2023-11-12"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2023-10-29",
+      "nome_evento": "1ª Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 9469,
+      "tag": "2023-1-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Araraquara",
+      "data_inicial": "2023-10-29"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2023-10-29",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa 2023",
+      "ativo": true,
+      "id_evento": 9474,
+      "tag": "2023-corrida-e-caminhada-outubro-rosa-2023",
+      "cidade": "Arujá",
+      "data_inicial": "2023-10-29"
+    },
+    {
+      "estado": "RS",
+      "data_final": "2023-12-31",
+      "nome_evento": "Corrida da Virada 2023",
+      "ativo": true,
+      "id_evento": 9776,
+      "tag": "2023-corrida-da-virada-2023",
+      "cidade": "Xangri-lá",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "MG",
+      "data_final": "2023-12-31",
+      "nome_evento": "Encontrão Corrida da Virada 2023",
+      "ativo": true,
+      "id_evento": 9982,
+      "tag": "2023-encontrao-corrida-da-virada-2023",
+      "cidade": "Sete Lagoas",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "RO",
+      "data_final": "2023-12-31",
+      "nome_evento": "3ª Corrida da Virada Podium SPort",
+      "ativo": true,
+      "id_evento": 9985,
+      "tag": "2023-3-corrida-da-virada-podium-sport",
+      "cidade": "Porto Velho",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2023-12-31",
+      "nome_evento": "IV Corrida da Virada de Guaratuba",
+      "ativo": true,
+      "id_evento": 9987,
+      "tag": "2023-iv-corrida-da-virada-de-guaratuba",
+      "cidade": "Guaratuba",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2023-11-19",
+      "nome_evento": "6ª Corrida e Caminhada Outubro Rosa e Novembro Azul",
+      "ativo": true,
+      "id_evento": 10321,
+      "tag": "2023-6-corrida-e-caminhada-outubro-rosa-e-novembro-azul",
+      "cidade": "Rio das Pedras",
+      "data_inicial": "2023-11-19"
+    },
+    {
+      "estado": "MA",
+      "data_final": "2023-12-31",
+      "nome_evento": "13ª Corrida da Virada",
+      "ativo": true,
+      "id_evento": 10670,
+      "tag": "2023-13-corrida-da-virada",
+      "cidade": "São Luis",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2023-12-31",
+      "nome_evento": "1ª Volta da Lagoa - a Corrida da Virada",
+      "ativo": true,
+      "id_evento": 10830,
+      "tag": "2023-1-volta-da-lagoa-a-corrida-da-virada",
+      "cidade": "Saquarema",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2023-12-31",
+      "nome_evento": "50ª Corrida da Virada - Troféu Jorge Oreiko",
+      "ativo": true,
+      "id_evento": 10833,
+      "tag": "2023-50-corrida-da-virada-trofeu-jorge-oreiko",
+      "cidade": "Guarapuava",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2023-12-28",
+      "nome_evento": "Corrida da Virada 2024",
+      "ativo": true,
+      "id_evento": 10841,
+      "tag": "2023-corrida-da-virada-2024",
+      "cidade": "Votuporanga",
+      "data_inicial": "2023-12-28"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2023-12-17",
+      "nome_evento": "Aj Corrida da Virada - 5ª Edição",
+      "ativo": true,
+      "id_evento": 10855,
+      "tag": "2023-aj-corrida-da-virada-5-edicao",
+      "cidade": "Niterói",
+      "data_inicial": "2023-12-17"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2023-10-15",
+      "nome_evento": "4ª Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 12164,
+      "tag": "2023-4-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Santos",
+      "data_inicial": "2023-10-15"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2023-10-08",
+      "nome_evento": "3ª Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 12253,
+      "tag": "2023-3-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Itápolis",
+      "data_inicial": "2023-10-08"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2024-01-28",
+      "nome_evento": "Corrida da Virada 2024",
+      "ativo": true,
+      "id_evento": 13397,
+      "tag": "2024-corrida-da-virada-2024",
+      "cidade": "Votuporanga",
+      "data_inicial": "2024-01-28"
+    },
+    {
+      "estado": "BA",
+      "data_final": "2024-10-13",
+      "nome_evento": "3ª Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 22433,
+      "tag": "2024-3-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Camaçari",
+      "data_inicial": "2024-10-13"
+    },
+    {
+      "estado": "MG",
+      "data_final": "2024-10-20",
+      "nome_evento": "12ª Corrida e Caminhada Outubro Rosa da Associação Presente",
+      "ativo": true,
+      "id_evento": 22451,
+      "tag": "2024-12-corrida-e-caminhada-outubro-rosa-da-associacao-presente",
+      "cidade": "Montes Claros",
+      "data_inicial": "2024-10-20"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2024-10-20",
+      "nome_evento": "2ª Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 22457,
+      "tag": "2024-2-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Boituva",
+      "data_inicial": "2024-10-20"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2024-12-22",
+      "nome_evento": "Aj Corrida da Virada - 6ª Edição",
+      "ativo": true,
+      "id_evento": 22560,
+      "tag": "2024-aj-corrida-da-virada-6-edicao",
+      "cidade": "Niterói",
+      "data_inicial": "2024-12-22"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2024-10-13",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 23317,
+      "tag": "2024-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Presidente Prudente",
+      "data_inicial": "2024-10-13"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2024-10-13",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa 2024",
+      "ativo": true,
+      "id_evento": 23318,
+      "tag": "2024-corrida-e-caminhada-outubro-rosa-2024",
+      "cidade": "Rio de Janeiro",
+      "data_inicial": "2024-10-13"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2024-10-13",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa Run",
+      "ativo": true,
+      "id_evento": 23319,
+      "tag": "2024-corrida-e-caminhada-outubro-rosa-run",
+      "cidade": "Nazaré Paulista",
+      "data_inicial": "2024-10-13"
+    },
+    {
+      "estado": "RO",
+      "data_final": "2024-10-20",
+      "nome_evento": "4ª Corrida e Caminhada Outubro Rosa Oab",
+      "ativo": true,
+      "id_evento": 23379,
+      "tag": "2024-4-corrida-e-caminhada-outubro-rosa-oab",
+      "cidade": "Ji-Paraná",
+      "data_inicial": "2024-10-20"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2024-10-27",
+      "nome_evento": "1ª Corrida e Caminhada Outubro Rosa Novembro Azul Lindoya Verão",
+      "ativo": true,
+      "id_evento": 23447,
+      "tag": "2024-1-corrida-e-caminhada-outubro-rosa-novembro-azul-lindoya-verao",
+      "cidade": "Mogi Mirim",
+      "data_inicial": "2024-10-27"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2024-12-31",
+      "nome_evento": "Corrida da Virada de Cabo Frio",
+      "ativo": true,
+      "id_evento": 23698,
+      "tag": "2024-corrida-da-virada-de-cabo-frio",
+      "cidade": "Cabo Frio",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "SC",
+      "data_final": "2024-12-31",
+      "nome_evento": "Corrida da Virada Floripa",
+      "ativo": true,
+      "id_evento": 23699,
+      "tag": "2024-corrida-da-virada-floripa",
+      "cidade": "Florianópolis",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "PB",
+      "data_final": "2021-12-31",
+      "nome_evento": "Corrida da Virada 2021-2022",
+      "ativo": true,
+      "id_evento": 23769,
+      "tag": "2021-corrida-da-virada-2021-2022",
+      "cidade": "João Pessoa",
+      "data_inicial": "2021-12-31"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2024-10-20",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa Novembro Azul",
+      "ativo": true,
+      "id_evento": 24032,
+      "tag": "2024-corrida-e-caminhada-outubro-rosa-novembro-azul",
+      "cidade": "Angra dos Reis",
+      "data_inicial": "2024-10-20"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2024-12-31",
+      "nome_evento": "1ª Corrida da Virada Matinhos",
+      "ativo": true,
+      "id_evento": 24083,
+      "tag": "2024-1-corrida-da-virada-matinhos",
+      "cidade": "Matinhos",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2024-12-31",
+      "nome_evento": "Vii Corrida da Virada de Guaratuba",
+      "ativo": true,
+      "id_evento": 24084,
+      "tag": "2024-vii-corrida-da-virada-de-guaratuba",
+      "cidade": "Guaratuba",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2024-12-31",
+      "nome_evento": "Corrida da Virada 2025 - Sorocaba",
+      "ativo": true,
+      "id_evento": 24175,
+      "tag": "2024-corrida-da-virada-2025-sorocaba",
+      "cidade": "Sorocaba",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "SC",
+      "data_final": "2024-12-31",
+      "nome_evento": "Corrida da Virada Floripa - 2024",
+      "ativo": true,
+      "id_evento": 25402,
+      "tag": "2024-corrida-da-virada-floripa-2024",
+      "cidade": "Florianópolis",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "DF",
+      "data_final": "2019-11-24",
+      "nome_evento": "Together Run",
+      "ativo": true,
+      "id_evento": 25428,
+      "tag": "2019-together-run",
+      "cidade": "Brasília",
+      "data_inicial": "2019-11-24"
+    },
+    {
+      "estado": "MG",
+      "data_final": "2024-10-26",
+      "nome_evento": "3ª Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 25494,
+      "tag": "2024-3-corrida-e-caminhada-outubro-rosa-MG",
+      "cidade": "Raul Soares",
+      "data_inicial": "2024-10-26"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2024-11-24",
+      "nome_evento": "3ª Corrida e Caminhada Outubro Rosa - Novembro Azul Passos Que Transformam",
+      "ativo": true,
+      "id_evento": 25540,
+      "tag": "2024-3-corrida-e-caminhada-outubro-rosa-novembro-azul-passos-que-transformam",
+      "cidade": "Itápolis",
+      "data_inicial": "2024-11-24"
+    },
+    {
+      "estado": "RN",
+      "data_final": "2024-12-29",
+      "nome_evento": "Corrida da Virada",
+      "ativo": true,
+      "id_evento": 25754,
+      "tag": "2024-corrida-da-virada",
+      "cidade": "Acari",
+      "data_inicial": "2024-12-29"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2024-12-31",
+      "nome_evento": "Corrida da Virada",
+      "ativo": true,
+      "id_evento": 25811,
+      "tag": "2024-corrida-da-virada-santa-cruz",
+      "cidade": "Santa Cruz da Esperança",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "BA",
+      "data_final": "2024-12-29",
+      "nome_evento": "2ª Corrida da Virada",
+      "ativo": true,
+      "id_evento": 25850,
+      "tag": "2024-2-corrida-da-virada",
+      "cidade": "Vitória da Conquista",
+      "data_inicial": "2024-12-29"
+    },
+    {
+      "estado": "MA",
+      "data_final": "2024-12-31",
+      "nome_evento": "14ª Corrida da Virada",
+      "ativo": true,
+      "id_evento": 25950,
+      "tag": "2024-14-corrida-da-virada",
+      "cidade": "Açailândia",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "PI",
+      "data_final": "2024-12-31",
+      "nome_evento": "Corrida da Virada",
+      "ativo": true,
+      "id_evento": 26100,
+      "tag": "2024-corrida-da-virada-pi",
+      "cidade": "Teresina",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "PB",
+      "data_final": "2024-12-31",
+      "nome_evento": "Corrida da Virada 2024/2025",
+      "ativo": true,
+      "id_evento": 26116,
+      "tag": "2024-corrida-da-virada-20242025",
+      "cidade": "João Pessoa",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "RO",
+      "data_final": "2024-12-31",
+      "nome_evento": "4ª Corrida da Virada Podium SPort",
+      "ativo": true,
+      "id_evento": 26121,
+      "tag": "2024-4-corrida-da-virada-podium-sport",
+      "cidade": "Porto Velho",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "RS",
+      "data_final": "2024-12-31",
+      "nome_evento": "3ª Corrida da Virada",
+      "ativo": true,
+      "id_evento": 26260,
+      "tag": "2024-3-corrida-da-virada",
+      "cidade": "Xangri-Lá",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "RS",
+      "data_final": "2024-12-29",
+      "nome_evento": "1ª Corrida da Virada",
+      "ativo": true,
+      "id_evento": 26263,
+      "tag": "2024-1-corrida-da-virada",
+      "cidade": "Porto Alegre",
+      "data_inicial": "2024-12-29"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2024-12-31",
+      "nome_evento": "13ª Corrida da Virada Joseense 2024",
+      "ativo": true,
+      "id_evento": 26647,
+      "tag": "2024-13-corrida-da-virada-joseense-2024",
+      "cidade": "São José dos Campos",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2024-12-29",
+      "nome_evento": "Corrida da Virada - Cabrália Paulista 2024",
+      "ativo": true,
+      "id_evento": 26655,
+      "tag": "2024-corrida-da-virada-cabralia-paulista-2024",
+      "cidade": "Cabrália Paulista",
+      "data_inicial": "2024-12-29"
+    },
+    {
+      "estado": "RN",
+      "data_final": "2024-12-31",
+      "nome_evento": "Corrida da Virada 2024/2025 Natal",
+      "ativo": true,
+      "id_evento": 26656,
+      "tag": "2024-corrida-da-virada-20242025-natal",
+      "cidade": "Natal",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2025-12-21",
+      "nome_evento": "Aj Corrida da Virada 7º Edição - Niterói RJ",
+      "ativo": true,
+      "id_evento": 26736,
+      "tag": "2025-aj-corrida-da-virada-7-edicao-niteroi-rj",
+      "cidade": "Niterói",
+      "data_inicial": "2025-12-21"
+    },
+    {
+      "estado": "BA",
+      "data_final": "2025-10-26",
+      "nome_evento": "4ª Corrida e Caminhada Outubro Rosa Camaçari 2025",
+      "ativo": true,
+      "id_evento": 28060,
+      "tag": "2025-4-corrida-e-caminhada-outubro-rosa-camacari-2025",
+      "cidade": "Camaçari",
+      "data_inicial": "2025-10-26"
+    },
+    {
+      "estado": "MA",
+      "data_final": "2025-12-31",
+      "nome_evento": "Corrida da Virada",
+      "ativo": true,
+      "id_evento": 28131,
+      "tag": "2025-corrida-da-virada",
+      "cidade": "Porto Franco",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-12-31",
+      "nome_evento": "Corrida da Virada 2026 - Sorocaba 2025",
+      "ativo": true,
+      "id_evento": 28252,
+      "tag": "2025-corrida-da-virada-2026-sorocaba-2025",
+      "cidade": "Sorocaba",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "TO",
+      "data_final": "2025-03-22",
+      "nome_evento": "Together Run",
+      "ativo": true,
+      "id_evento": 28837,
+      "tag": "2025-together-run",
+      "cidade": "Palmas",
+      "data_inicial": "2025-03-22"
+    },
+    {
+      "estado": "MT",
+      "data_final": "2025-03-23",
+      "nome_evento": "1ª. Together Run",
+      "ativo": true,
+      "id_evento": 28838,
+      "tag": "2025-1-together-run",
+      "cidade": "Sinop",
+      "data_inicial": "2025-03-23"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-10-05",
+      "nome_evento": "2ª Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 30737,
+      "tag": "2025-2-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Presidente Prudente",
+      "data_inicial": "2025-10-05"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2025-10-26",
+      "nome_evento": "4ª Corrida e Caminhada Outubro Rosa e Novembro Azul",
+      "ativo": true,
+      "id_evento": 31136,
+      "tag": "2025-4-corrida-e-caminhada-outubro-rosa-e-novembro-azul",
+      "cidade": "Teresópolis",
+      "data_inicial": "2025-10-26"
+    },
+    {
+      "estado": "MG",
+      "data_final": "2025-10-05",
+      "nome_evento": "13ª Corrida e Caminhada Outubro Rosa Da Associação Presente",
+      "ativo": true,
+      "id_evento": 31808,
+      "tag": "2025-13-corrida-e-caminhada-outubro-rosa-da-associacao-presente",
+      "cidade": "Montes Claros",
+      "data_inicial": "2025-10-05"
+    },
+    {
+      "estado": "PB",
+      "data_final": "2025-10-05",
+      "nome_evento": "6ª Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 31877,
+      "tag": "2025-6-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Patos",
+      "data_inicial": "2025-10-05"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-10-19",
+      "nome_evento": "3ª EdiÇÃo Corrida E Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 32402,
+      "tag": "2025-3-edicao-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Boituva",
+      "data_inicial": "2025-10-19"
+    },
+    {
+      "estado": "MS",
+      "data_final": "2025-10-18",
+      "nome_evento": "1ª MEXA-SE POR ELA – Corrida e Caminhada Outubro Rosa 2025",
+      "ativo": true,
+      "id_evento": 32420,
+      "tag": "2025-1-mexa-se-por-ela-–-corrida-e-caminhada-outubro-rosa-2025",
+      "cidade": "DOURADOS",
+      "data_inicial": "2025-10-18"
+    },
+    {
+      "estado": "PB",
+      "data_final": "2025-12-31",
+      "nome_evento": "Corrida Da Virada 2025-2026",
+      "ativo": true,
+      "id_evento": 32453,
+      "tag": "2025-corrida-da-virada-2025-2026",
+      "cidade": "JOÃO PESSOA",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "SC",
+      "data_final": "2025-12-31",
+      "nome_evento": "5ª CORRIDA DA VIRADA ACORDE 2025",
+      "ativo": true,
+      "id_evento": 32567,
+      "tag": "2025-5-corrida-da-virada-acorde-2025",
+      "cidade": "BLUMENAU",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "SC",
+      "data_final": "2025-12-31",
+      "nome_evento": "Corrida Da Virada 2025",
+      "ativo": true,
+      "id_evento": 32749,
+      "tag": "2025-corrida-da-virada-2025",
+      "cidade": "Florianópolis",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-10-11",
+      "nome_evento": "1ª Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 32769,
+      "tag": "2025-1-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Jaboticabal",
+      "data_inicial": "2025-10-11"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2025-12-31",
+      "nome_evento": "CORRIDA DA VIRADA - CABO FRIO 2026",
+      "ativo": true,
+      "id_evento": 33018,
+      "tag": "2025-corrida-da-virada-cabo-frio-2026",
+      "cidade": "Cabo Frio",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-10-26",
+      "nome_evento": "5ª CORRIDA E CAMINHADA OUTUBRO ROSA - ED 2025",
+      "ativo": true,
+      "id_evento": 33158,
+      "tag": "2025-5-corrida-e-caminhada-outubro-rosa-ed-2025",
+      "cidade": "Itápolis",
+      "data_inicial": "2025-10-26"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-10-12",
+      "nome_evento": "3ª CORRIDA E CAMINHADA OUTUBRO ROSA - SEST SENAT",
+      "ativo": true,
+      "id_evento": 33220,
+      "tag": "2025-3-corrida-e-caminhada-outubro-rosa-sest-senat",
+      "cidade": "Araraquara",
+      "data_inicial": "2025-10-12"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2025-10-05",
+      "nome_evento": "CORRIDA E CAMINHADA OUTUBRO ROSA",
+      "ativo": true,
+      "id_evento": 33262,
+      "tag": "2025-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Rio de Janeiro",
+      "data_inicial": "2025-10-05"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-12-28",
+      "nome_evento": "Corrida da Virada 2025",
+      "ativo": true,
+      "id_evento": 33691,
+      "tag": "2025-corrida-da-virada-2025-sp",
+      "cidade": "São Paulo",
+      "data_inicial": "2025-12-28"
+    },
+    {
+      "estado": "RO",
+      "data_final": "2025-10-26",
+      "nome_evento": "5ª Corrida e Caminhada Outubro Rosa OAB",
+      "ativo": true,
+      "id_evento": 33983,
+      "tag": "2025-5-corrida-e-caminhada-outubro-rosa-oab",
+      "cidade": "Ji-Paraná",
+      "data_inicial": "2025-10-26"
+    },
+    {
+      "estado": "RN",
+      "data_final": "2025-10-04",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 34189,
+      "tag": "2025-corrida-e-caminhada-outubro-rosa-rn",
+      "cidade": "Açu",
+      "data_inicial": "2025-10-04"
+    },
+    {
+      "estado": "RS",
+      "data_final": "2025-12-31",
+      "nome_evento": "4ª Corrida da Virada",
+      "ativo": true,
+      "id_evento": 34244,
+      "tag": "2025-4-corrida-da-virada",
+      "cidade": "Xangri-Lá",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-12-28",
+      "nome_evento": "CORRIDA DA VIRADA 2025  PQ DO POVO",
+      "ativo": true,
+      "id_evento": 34534,
+      "tag": "2025-corrida-da-virada-2025-pq-do-povo",
+      "cidade": "São Paulo",
+      "data_inicial": "2025-12-28"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-12-28",
+      "nome_evento": "CORRIDA DA VIRADA 2025 PQ ECOLÓGICO JACUI",
+      "ativo": true,
+      "id_evento": 34535,
+      "tag": "2025-corrida-da-virada-2025-pq-ecologico-jacui",
+      "cidade": "São Paulo",
+      "data_inicial": "2025-12-28"
+    },
+    {
+      "estado": "BA",
+      "data_final": "2025-10-19",
+      "nome_evento": "1ª Corrida e Caminhada Outubro Rosa Central Gym",
+      "ativo": true,
+      "id_evento": 34573,
+      "tag": "2025-1-corrida-e-caminhada-outubro-rosa-central-gym",
+      "cidade": "Muniz Ferreira",
+      "data_inicial": "2025-10-19"
+    },
+    {
+      "estado": "MG",
+      "data_final": "2025-10-05",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa ASPEC",
+      "ativo": true,
+      "id_evento": 34605,
+      "tag": "2025-corrida-e-caminhada-outubro-rosa-aspec",
+      "cidade": "Belo Horizonte",
+      "data_inicial": "2025-10-05"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-12-31",
+      "nome_evento": "14ª CORRIDA DA VIRADA JOSEENSE 2025",
+      "ativo": true,
+      "id_evento": 34857,
+      "tag": "2025-14-corrida-da-virada-joseense-2025",
+      "cidade": "São José dos Campos",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2025-12-31",
+      "nome_evento": "2ª CORRIDA DA VIRADA MATINHOS PR",
+      "ativo": true,
+      "id_evento": 34858,
+      "tag": "2025-2-corrida-da-virada-matinhos-pr",
+      "cidade": "Matinhos",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2025-10-26",
+      "nome_evento": "CORRIDA E CAMINHADA OUTUBRO ROSA NOVEMBRO AZUL",
+      "ativo": true,
+      "id_evento": 34974,
+      "tag": "2025-corrida-e-caminhada-outubro-rosa-novembro-azul",
+      "cidade": "Macaé",
+      "data_inicial": "2025-10-26"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-10-19",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 35254,
+      "tag": "2025-corrida-e-caminhada-outubro-rosa-sp",
+      "cidade": "Taquaritinga",
+      "data_inicial": "2025-10-19"
+    },
+    {
+      "estado": "RN",
+      "data_final": "2025-12-28",
+      "nome_evento": "CORRIDA DA VIRADA  2025",
+      "ativo": true,
+      "id_evento": 35843,
+      "tag": "2025-corrida-da-virada-2025-rn",
+      "cidade": "Natal",
+      "data_inicial": "2025-12-28"
+    },
+    {
+      "estado": "BA",
+      "data_final": "2025-11-30",
+      "nome_evento": "2ª Corrida E Caminhada Outubro Rosa Novembro Azul",
+      "ativo": true,
+      "id_evento": 35887,
+      "tag": "2025-2-corrida-e-caminhada-outubro-rosa-novembro-azul",
+      "cidade": "Seabra",
+      "data_inicial": "2025-11-30"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2025-12-31",
+      "nome_evento": "3ª VOLTA DA LAGOA - A CORRIDA DA VIRADA",
+      "ativo": true,
+      "id_evento": 35987,
+      "tag": "2025-3-volta-da-lagoa-a-corrida-da-virada",
+      "cidade": "Saquarema",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-12-31",
+      "nome_evento": "10ª CORRIDA DA VIRADA",
+      "ativo": true,
+      "id_evento": 36101,
+      "tag": "2025-10-corrida-da-virada",
+      "cidade": "MARÍLIA",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "RS",
+      "data_final": "2024-12-31",
+      "nome_evento": "3ª CORRIDA DA VIRADA - XANGRI-LÁ",
+      "ativo": true,
+      "id_evento": 36215,
+      "tag": "2024-3-corrida-da-virada-xangri-la",
+      "cidade": "Xangri-lá",
+      "data_inicial": "2024-12-31"
+    },
+    {
+      "estado": "RS",
+      "data_final": "2023-12-31",
+      "nome_evento": "2ª Corrida da Virada",
+      "ativo": true,
+      "id_evento": 36217,
+      "tag": "2023-2-corrida-da-virada",
+      "cidade": "Xangri-lá",
+      "data_inicial": "2023-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-12-31",
+      "nome_evento": "CORRIDA DA VIRADA 2ª CORRIDA DE IBIRAREMA SP",
+      "ativo": true,
+      "id_evento": 36626,
+      "tag": "2025-corrida-da-virada-2-corrida-de-ibirarema-sp",
+      "cidade": "IBIRAREMA",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-11-29",
+      "nome_evento": "4ª CORRIDA E CAMINHADA OUTUBRO ROSA - NOVEMBRO AZUL",
+      "ativo": true,
+      "id_evento": 36800,
+      "tag": "2025-4-corrida-e-caminhada-outubro-rosa-novembro-azul",
+      "cidade": "Itápolis",
+      "data_inicial": "2025-11-29"
+    },
+    {
+      "estado": "BA",
+      "data_final": "2026-10-18",
+      "nome_evento": "5ª Corrida E Caminhada Outubro Rosa CamaÇari 2026",
+      "ativo": true,
+      "id_evento": 36918,
+      "tag": "2026-5-corrida-e-caminhada-outubro-rosa-camacari-2026",
+      "cidade": "Camaçari",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-12-31",
+      "nome_evento": "69ªCorrida da Virada",
+      "ativo": true,
+      "id_evento": 37131,
+      "tag": "2025-69corrida-da-virada",
+      "cidade": "BROTAS",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-12-27",
+      "nome_evento": "3ª CORRIDA DA VIRADA DE IEPÊ",
+      "ativo": true,
+      "id_evento": 37150,
+      "tag": "2025-3-corrida-da-virada-de-iepe",
+      "cidade": "IEPÊ",
+      "data_inicial": "2025-12-27"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2025-12-21",
+      "nome_evento": "CORRIDA DA VIRADA - CABRÁLIA PAULISTA 2025",
+      "ativo": true,
+      "id_evento": 37244,
+      "tag": "2025-corrida-da-virada-cabralia-paulista-2025",
+      "cidade": "CABRÁLIA PAULISTA",
+      "data_inicial": "2025-12-21"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2025-12-31",
+      "nome_evento": "CORRIDA DA VIRADA GUARATUBA 2025",
+      "ativo": true,
+      "id_evento": 37629,
+      "tag": "2025-corrida-da-virada-guaratuba-2025",
+      "cidade": "Guaratuba",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "CE",
+      "data_final": "2025-12-26",
+      "nome_evento": "CORRIDA DA VIRADA - GOLF VILLE",
+      "ativo": true,
+      "id_evento": 37633,
+      "tag": "2025-corrida-da-virada-golf-ville",
+      "cidade": "Aquiraz",
+      "data_inicial": "2025-12-26"
+    },
+    {
+      "estado": "PA",
+      "data_final": "2025-12-31",
+      "nome_evento": "3ª CORRIDA DA VIRADA - MARABÁ-PA",
+      "ativo": true,
+      "id_evento": 37635,
+      "tag": "2025-3-corrida-da-virada-maraba-pa",
+      "cidade": "Maraba",
+      "data_inicial": "2025-12-31"
+    },
+    {
+      "estado": "BA",
+      "data_final": "2026-01-18",
+      "nome_evento": "Corrida Da Virada 2026",
+      "ativo": true,
+      "id_evento": 37698,
+      "tag": "2026-corrida-da-virada-2026",
+      "cidade": "Salvador",
+      "data_inicial": "2026-01-18"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2026-12-31",
+      "nome_evento": "CORRIDA DA VIRADA - CABO FRIO 2027",
+      "ativo": true,
+      "id_evento": 37856,
+      "tag": "2026-corrida-da-virada-cabo-frio-2027",
+      "cidade": "Cabo Frio",
+      "data_inicial": "2026-12-31"
+    },
+    {
+      "estado": "AL",
+      "data_final": "2026-03-21",
+      "nome_evento": "TOGETHER RUN",
+      "ativo": true,
+      "id_evento": 40029,
+      "tag": "2026-together-run",
+      "cidade": "Maceio",
+      "data_inicial": "2026-03-21"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2026-12-31",
+      "nome_evento": "CORRIDA DA VIRADA 2026",
+      "ativo": true,
+      "id_evento": 40288,
+      "tag": "2026-corrida-da-virada-2026-sp",
+      "cidade": "São Paulo",
+      "data_inicial": "2026-12-31"
+    },
+    {
+      "estado": "RO",
+      "data_final": "2026-10-18",
+      "nome_evento": "6ª CORRIDA E CAMINHADA OUTUBRO ROSA OAB 5K",
+      "ativo": true,
+      "id_evento": 41404,
+      "tag": "2026-6-corrida-e-caminhada-outubro-rosa-oab-5k",
+      "cidade": "Ji-Paraná",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "estado": "MA",
+      "data_final": "2026-12-31",
+      "nome_evento": "CORRIDA DA VIRADA 2026",
+      "ativo": true,
+      "id_evento": 41907,
+      "tag": "2026-corrida-da-virada-2026-porto-franco",
+      "cidade": "Porto Franco",
+      "data_inicial": "2026-12-31"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2026-10-04",
+      "nome_evento": "1ª CORRIDA E CAMINHADA OUTUBRO ROSA - HOSPITAL PARANAGUÁ E INSTITUTO PEITO ABERTO",
+      "ativo": false,
+      "id_evento": 42607,
+      "tag": "2026-1-corrida-e-caminhada-outubro-rosa-hospital-paranagua-e-instituto-peito-aberto",
+      "cidade": "Paranaguá",
+      "data_inicial": "2026-10-04"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2026-10-18",
+      "nome_evento": "4ª CORRIDA E CAMINHADA OUTUBRO ROSA",
+      "ativo": true,
+      "id_evento": 43672,
+      "tag": "2026-4-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Boituva",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "estado": "AM",
+      "data_final": "2027-03-28",
+      "nome_evento": "CORRIDA DAS CORES DA AMAZÔNIA",
+      "ativo": true,
+      "id_evento": 44162,
+      "tag": "2026-corrida-das-cores-da-amazonia",
+      "cidade": "Manaus",
+      "data_inicial": "2027-03-28"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2026-10-11",
+      "nome_evento": "CORRIDA E CAMINHADA OUTUBRO ROSA",
+      "ativo": true,
+      "id_evento": 44271,
+      "tag": "2026-corrida-e-caminhada-outubro-rosa",
+      "cidade": "Rio de Janeiro",
+      "data_inicial": "2026-10-11"
+    },
+    {
+      "estado": "SC",
+      "data_final": "2026-12-31",
+      "nome_evento": "Corrida Da Virada 2026",
+      "ativo": true,
+      "id_evento": 44892,
+      "tag": "2026-corrida-da-virada-2026-sc",
+      "cidade": "Florianópolis",
+      "data_inicial": "2026-12-31"
+    },
+    {
+      "estado": "SC",
+      "data_final": "2026-12-31",
+      "nome_evento": "Vi Corrida Da Virada Acorde",
+      "ativo": true,
+      "id_evento": 45346,
+      "tag": "2026-vi-corrida-da-virada-acorde",
+      "cidade": "Blumenau",
+      "data_inicial": "2026-12-31"
+    },
+    {
+      "estado": "MG",
+      "data_final": "2026-10-24",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa ASPEC",
+      "ativo": true,
+      "id_evento": 45473,
+      "tag": "2026-corrida-e-caminhada-outubro-rosa-aspec",
+      "cidade": "Belo Horizonte",
+      "data_inicial": "2026-10-24"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2026-10-11",
+      "nome_evento": "1ª Corrida e Caminhada Outubro Rosa - Fênix",
+      "ativo": true,
+      "id_evento": 45475,
+      "tag": "2026-1-corrida-e-caminhada-outubro-rosa-fenix",
+      "cidade": "Iperó",
+      "data_inicial": "2026-10-11"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2026-12-20",
+      "nome_evento": "AJ CORRIDA DA VIRADA 8º EDIÇÃO - NITERÓI RJ",
+      "ativo": true,
+      "id_evento": 45642,
+      "tag": "2026-aj-corrida-da-virada-8-edicao-niteroi-rj",
+      "cidade": "Niterói",
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "estado": "AM",
+      "data_final": "2027-03-28",
+      "nome_evento": "CORRIDA DAS CORES DA AMAZÔNIA",
+      "ativo": true,
+      "id_evento": 46375,
+      "tag": "2027-corrida-das-cores-da-amazonia",
+      "cidade": "Manaus",
+      "data_inicial": "2027-03-28"
+    },
+    {
+      "estado": "RN",
+      "data_final": "2026-11-22",
+      "nome_evento": "Corrida Solidária Da Adra - Together Run",
+      "ativo": true,
+      "id_evento": 46538,
+      "tag": "2026-corrida-solidaria-da-adra-together-run",
+      "cidade": "Natal",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "estado": "PE",
+      "data_final": "2026-11-22",
+      "nome_evento": "Together Run",
+      "ativo": true,
+      "id_evento": 46741,
+      "tag": "2026-together-run-pe",
+      "cidade": "Recife",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "estado": "PB",
+      "data_final": "2026-11-22",
+      "nome_evento": "TOGETHER RUN",
+      "ativo": true,
+      "id_evento": 46742,
+      "tag": "2026-together-run-pb",
+      "cidade": "Lagoa",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2026-12-31",
+      "nome_evento": "15ª CORRIDA DA VIRADA JOSEENSE 2026",
+      "ativo": true,
+      "id_evento": 46871,
+      "tag": "2026-15-corrida-da-virada-joseense-2026",
+      "cidade": "São José dos Campos",
+      "data_inicial": "2026-12-31"
+    },
+    {
+      "estado": "RS",
+      "data_final": "2026-12-27",
+      "nome_evento": "Corrida Da Virada Ii",
+      "ativo": true,
+      "id_evento": 46872,
+      "tag": "2026-corrida-da-virada-ii",
+      "cidade": "Imbé",
+      "data_inicial": "2026-12-27"
+    },
+    {
+      "estado": "PE",
+      "data_final": "2026-11-22",
+      "nome_evento": "Corrida Together Run",
+      "ativo": true,
+      "id_evento": 46904,
+      "tag": "2026-corrida-together-run",
+      "cidade": "Caruaru",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "estado": "RS",
+      "data_final": "2026-12-31",
+      "nome_evento": "5ª Corrida Da Virada",
+      "ativo": true,
+      "id_evento": 47162,
+      "tag": "2026-5-corrida-da-virada",
+      "cidade": "Xangri-lá",
+      "data_inicial": "2026-12-31"
+    },
+    {
+      "estado": "PA",
+      "data_final": "2026-10-17",
+      "nome_evento": "11ª Corrida E Caminhada - Outubro Rosa 2026",
+      "ativo": true,
+      "id_evento": 47486,
+      "tag": "2026-11-corrida-e-caminhada-outubro-rosa-2026",
+      "cidade": "Santarém",
+      "data_inicial": "2026-10-17"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2026-10-03",
+      "nome_evento": "1ª CORRIDA E CAMINHADA OUTUBRO ROSA - INSTITUTO PEITO ABERTO",
+      "ativo": true,
+      "id_evento": 47693,
+      "tag": "2026-1-corrida-e-caminhada-outubro-rosa-instituto-peito-aberto",
+      "cidade": "Paranaguá",
+      "data_inicial": "2026-10-03"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2026-10-03",
+      "nome_evento": "COLÉGIO NITERÓI CORRIDA E CAMINHADA OUTUBRO ROSA - 3K",
+      "ativo": true,
+      "id_evento": 47694,
+      "tag": "2026-colegio-niteroi-corrida-e-caminhada-outubro-rosa-3k",
+      "cidade": "Niterói",
+      "data_inicial": "2026-10-03"
+    },
+    {
+      "estado": "BA",
+      "data_final": "2026-10-11",
+      "nome_evento": "7ª Corrida e Caminhada Outubro Rosa da Ello Academia",
+      "ativo": true,
+      "id_evento": 47815,
+      "tag": "2026-7-corrida-e-caminhada-outubro-rosa-da-ello-academia",
+      "cidade": "Conceição do Coité",
+      "data_inicial": "2026-10-11"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2026-10-11",
+      "nome_evento": "4ª CORRIDA E CAMINHADA OUTUBRO ROSA",
+      "ativo": true,
+      "id_evento": 47857,
+      "tag": "2026-4-corrida-e-caminhada-outubro-rosa-sp",
+      "cidade": "Araraquara",
+      "data_inicial": "2026-10-11"
+    },
+    {
+      "estado": "RJ",
+      "data_final": "2026-11-01",
+      "nome_evento": "6ª CORRIDA E CAMINHADA OUTUBRO ROSA NOVEMBRO AZUL",
+      "ativo": true,
+      "id_evento": 47973,
+      "tag": "2026-6-corrida-e-caminhada-outubro-rosa-novembro-azul",
+      "cidade": "Macaé",
+      "data_inicial": "2026-11-01"
+    },
+    {
+      "estado": "MG",
+      "data_final": "2026-10-22",
+      "nome_evento": "8ª CORRIDA E CAMINHADA OUTUBRO ROSA E NOVEMBRO AZUL",
+      "ativo": true,
+      "id_evento": 48235,
+      "tag": "2026-8-corrida-e-caminhada-outubro-rosa-e-novembro-azul",
+      "cidade": "MARIANA",
+      "data_inicial": "2026-10-22"
+    },
+    {
+      "estado": "RO",
+      "data_final": "2026-10-25",
+      "nome_evento": "Corrida e caminhada Outubro Rosa.",
+      "ativo": true,
+      "id_evento": 48554,
+      "tag": "2026-corrida-e-caminhada-outubro-rosa-ro",
+      "cidade": "Chupinguaia",
+      "data_inicial": "2026-10-25"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2026-10-18",
+      "nome_evento": "6º Edição oficial - Porto Delas|Corrida e Caminhada Outubro Rosa em Parceria com EG Assessoria",
+      "ativo": true,
+      "id_evento": 48812,
+      "tag": "2026-6-edicao-oficial-porto-delascorrida-e-caminhada-outubro-rosa-em-parceria-com-eg-assessoria",
+      "cidade": "Praia Grande",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "estado": "RS",
+      "data_final": "2026-12-27",
+      "nome_evento": "Corrida Da Virada Atlântida Sul",
+      "ativo": true,
+      "id_evento": 48861,
+      "tag": "2026-corrida-da-virada-atlantida-sul",
+      "cidade": "Litoral Gaúcho",
+      "data_inicial": "2026-12-27"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2026-12-31",
+      "nome_evento": "3ª CORRIDA DA VIRADA MATINHOS PR",
+      "ativo": true,
+      "id_evento": 48876,
+      "tag": "2026-3-corrida-da-virada-matinhos-pr",
+      "cidade": "Matinhos",
+      "data_inicial": "2026-12-31"
+    },
+    {
+      "estado": "RO",
+      "data_final": "2026-10-31",
+      "nome_evento": "Corrida e caminhada Outubro Rosa.",
+      "ativo": true,
+      "id_evento": 48918,
+      "tag": "2026-corrida-e-caminhada-outubro-rosa-chupinguaia",
+      "cidade": "Chupinguaia",
+      "data_inicial": "2026-10-31"
+    },
+    {
+      "estado": "BA",
+      "data_final": "2026-10-24",
+      "nome_evento": "Corrida e Caminhada Outubro Rosa",
+      "ativo": true,
+      "id_evento": 49313,
+      "tag": "2026-corrida-e-caminhada-outubro-rosa-ba",
+      "cidade": "Caculé",
+      "data_inicial": "2026-10-24"
+    },
+    {
+      "estado": "PB",
+      "data_final": "2026-10-18",
+      "nome_evento": "7ª CORRIDA E CAMINHADA OUTUBRO ROSA NOVEMBRO AZUL",
+      "ativo": true,
+      "id_evento": 49337,
+      "tag": "2026-7-corrida-e-caminhada-outubro-rosa-novembro-azul",
+      "cidade": "Patos",
+      "data_inicial": "2026-10-18"
+    },
+    {
+      "estado": "PR",
+      "data_final": "2026-12-31",
+      "nome_evento": "CORRIDA DA VIRADA 2026 - GUARATUBA",
+      "ativo": true,
+      "id_evento": 49415,
+      "tag": "2026-corrida-da-virada-2026-guaratuba",
+      "cidade": "Guaratuba",
+      "data_inicial": "2026-12-31"
+    },
+    {
+      "estado": "SP",
+      "data_final": "2026-12-27",
+      "nome_evento": "CORRIDA DA VIRADA 2026",
+      "ativo": true,
+      "id_evento": 49427,
+      "tag": "2026-corrida-da-virada-2026-ribeirao",
+      "cidade": "Ribeirão Preto",
+      "data_inicial": "2026-12-27"
+    }
+  ]
+}

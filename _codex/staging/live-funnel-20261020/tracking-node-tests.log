@@ -1,0 +1,766 @@
+TAP version 13
+# Subtest: all active news card renderers expose the same id-first scalar identity as detail context
+ok 1 - all active news card renderers expose the same id-first scalar identity as detail context
+  ---
+  duration_ms: 5.002333
+  type: 'test'
+  ...
+# Subtest: all active video card renderers use the exact player id already passed to changeVideo
+ok 2 - all active video card renderers use the exact player id already passed to changeVideo
+  ---
+  duration_ms: 6.700084
+  type: 'test'
+  ...
+# Subtest: only the rendered news body carries the article-depth marker
+ok 3 - only the rendered news body carries the article-depth marker
+  ---
+  duration_ms: 0.371833
+  type: 'test'
+  ...
+# Subtest: an editorial card qualifies at one uninterrupted visible second, never at 999 ms
+ok 4 - an editorial card qualifies at one uninterrupted visible second, never at 999 ms
+  ---
+  duration_ms: 8.426167
+  type: 'test'
+  ...
+# Subtest: hidden tabs, broken images, CSS hiding and ancestor clipping prevent editorial qualification
+ok 5 - hidden tabs, broken images, CSS hiding and ancestor clipping prevent editorial qualification
+  ---
+  duration_ms: 9.362084
+  type: 'test'
+  ...
+# Subtest: observer exits, element replacement and identity changes cannot donate card continuity
+ok 6 - observer exits, element replacement and identity changes cannot donate card continuity
+  ---
+  duration_ms: 4.459375
+  type: 'test'
+  ...
+# Subtest: invalid identity and removed marker attributes reset editorial continuity
+ok 7 - invalid identity and removed marker attributes reset editorial continuity
+  ---
+  duration_ms: 19.264625
+  type: 'test'
+  ...
+# Subtest: duplicate instances never combine time and emit at most one page/content exposure
+ok 8 - duplicate instances never combine time and emit at most one page/content exposure
+  ---
+  duration_ms: 5.281208
+  type: 'test'
+  ...
+# Subtest: a newly inserted partial is sampled without creating another page view
+ok 9 - a newly inserted partial is sampled without creating another page view
+  ---
+  duration_ms: 1.439083
+  type: 'test'
+  ...
+# Subtest: opt-out stops editorial sampling and clears its queued exposure
+ok 10 - opt-out stops editorial sampling and clears its queued exposure
+  ---
+  duration_ms: 3.105666
+  type: 'test'
+  ...
+# Subtest: article progress uses only the canonical article body and exact viewport-bottom milestones
+ok 11 - article progress uses only the canonical article body and exact viewport-bottom milestones
+  ---
+  duration_ms: 1.124125
+  type: 'test'
+  ...
+# Subtest: article progress requires a visible tab, positive body height and never uses surrounding page height
+ok 12 - article progress requires a visible tab, positive body height and never uses surrounding page height
+  ---
+  duration_ms: 2.515
+  type: 'test'
+  ...
+# Subtest: article progress requires horizontal viewport intersection and survives no clipped ancestor
+ok 13 - article progress requires horizontal viewport intersection and survives no clipped ancestor
+  ---
+  duration_ms: 3.346708
+  type: 'test'
+  ...
+# Subtest: article progress uses the clipped visible bottom instead of the outer viewport bottom
+ok 14 - article progress uses the clipped visible bottom instead of the outer viewport bottom
+  ---
+  duration_ms: 12.495125
+  type: 'test'
+  ...
+# Subtest: LIVE registration emits one stable event across nested icons, repeated clicks and replacement modal content
+ok 15 - LIVE registration emits one stable event across nested icons, repeated clicks and replacement modal content
+  ---
+  duration_ms: 8.482708
+  type: 'test'
+  ...
+# Subtest: keyboard activation, modified click and middle click collect without cancelling navigation
+ok 16 - keyboard activation, modified click and middle click collect without cancelling navigation
+  ---
+  duration_ms: 8.684834
+  type: 'test'
+  ...
+# Subtest: window.open registration buttons and exact LIVE checkout hosts share the event identity
+ok 17 - window.open registration buttons and exact LIVE checkout hosts share the event identity
+  ---
+  duration_ms: 0.871917
+  type: 'test'
+  ...
+# Subtest: unmarked links, wrong hosts, non-HTTPS, credentials, ports and invalid event IDs never become LIVE registrations
+ok 18 - unmarked links, wrong hosts, non-HTTPS, credentials, ports and invalid event IDs never become LIVE registrations
+  ---
+  duration_ms: 0.700417
+  type: 'test'
+  ...
+# Subtest: disabled/cancelled activation and right/middle button actions on a button are ignored
+ok 19 - disabled/cancelled activation and right/middle button actions on a button are ignored
+  ---
+  duration_ms: 2.418833
+  type: 'test'
+  ...
+# Subtest: GPC, initial opt-out, storage failure and later refusal preserve controls and never send refused clicks
+ok 20 - GPC, initial opt-out, storage failure and later refusal preserve controls and never send refused clicks
+  ---
+  duration_ms: 2.215667
+  type: 'test'
+  ...
+# Subtest: transport failure does not escape the registration click handler
+ok 21 - transport failure does not escape the registration click handler
+  ---
+  duration_ms: 2.08525
+  type: 'test'
+  ...
+# Subtest: coupon exposure requires continuous half visibility and deduplicates a replaced section
+ok 22 - coupon exposure requires continuous half visibility and deduplicates a replaced section
+  ---
+  duration_ms: 3.650666
+  type: 'test'
+  ...
+# Subtest: hidden tabs and removed coupon markers reset continuous exposure
+ok 23 - hidden tabs and removed coupon markers reset continuous exposure
+  ---
+  duration_ms: 3.851708
+  type: 'test'
+  ...
+# Subtest: coupon attempts and clipboard outcomes are distinct, deduplicated and require an observed attempt
+ok 24 - coupon attempts and clipboard outcomes are distinct, deduplicated and require an observed attempt
+  ---
+  duration_ms: 1.326375
+  type: 'test'
+  ...
+# Subtest: coupon context mismatch, malformed ids, disabled buttons and arbitrary custom events are rejected
+ok 25 - coupon context mismatch, malformed ids, disabled buttons and arbitrary custom events are rejected
+  ---
+  duration_ms: 0.794459
+  type: 'test'
+  ...
+# Subtest: city selection accepts only available public city-UF options on a circuit and deduplicates
+ok 26 - city selection accepts only available public city-UF options on a circuit and deduplicates
+  ---
+  duration_ms: 0.7975
+  type: 'test'
+  ...
+# Subtest: official LIVE information exits on event pages never become registrations or Google conversions
+ok 27 - official LIVE information exits on event pages never become registrations or Google conversions
+  ---
+  duration_ms: 5.687542
+  type: 'test'
+  ...
+# Subtest: information classification rejects non-event context, insecure/lookalike hosts and cancelled actions
+ok 28 - information classification rejects non-event context, insecure/lookalike hosts and cancelled actions
+  ---
+  duration_ms: 2.246834
+  type: 'test'
+  ...
+# Subtest: new funnel actions preserve GPC and refusal including an in-flight clipboard result
+ok 29 - new funnel actions preserve GPC and refusal including an in-flight clipboard result
+  ---
+  duration_ms: 1.3595
+  type: 'test'
+  ...
+# Subtest: explicit refusal persists, notifies the tracker and reloads only after the click
+ok 30 - explicit refusal persists, notifies the tracker and reloads only after the click
+  ---
+  duration_ms: 5.0085
+  type: 'test'
+  ...
+# Subtest: explicit permission clears a prior refusal and reloads after the click
+ok 31 - explicit permission clears a prior refusal and reloads after the click
+  ---
+  duration_ms: 1.155
+  type: 'test'
+  ...
+# Subtest: refusal stays effective without reload when both preference stores are blocked
+ok 32 - refusal stays effective without reload when both preference stores are blocked
+  ---
+  duration_ms: 4.890084
+  type: 'test'
+  ...
+# Subtest: GPC prevails over stored preference without triggering an automatic reload
+ok 33 - GPC prevails over stored preference without triggering an automatic reload
+  ---
+  duration_ms: 0.455833
+  type: 'test'
+  ...
+# Subtest: a refusal from another tab updates status without reloading this page
+ok 34 - a refusal from another tab updates status without reloading this page
+  ---
+  duration_ms: 0.446458
+  type: 'test'
+  ...
+# Subtest: Escape closes the dialog and returns focus to the control that opened it
+ok 35 - Escape closes the dialog and returns focus to the control that opened it
+  ---
+  duration_ms: 1.6315
+  type: 'test'
+  ...
+# Subtest: Tab remains inside the modal while it is open
+ok 36 - Tab remains inside the modal while it is open
+  ---
+  duration_ms: 1.196791
+  type: 'test'
+  ...
+# Subtest: pages without the user-menu control initialize without errors
+ok 37 - pages without the user-menu control initialize without errors
+  ---
+  duration_ms: 1.187875
+  type: 'test'
+  ...
+# Subtest: privacy-control translations are complete and the CFML catalogs remain valid JSON
+ok 38 - privacy-control translations are complete and the CFML catalogs remain valid JSON
+  ---
+  duration_ms: 40.602375
+  type: 'test'
+  ...
+# Subtest: the published privacy explanation states identifier and session limits without promising retro-deletion
+ok 39 - the published privacy explanation states identifier and session limits without promising retro-deletion
+  ---
+  duration_ms: 8.376208
+  type: 'test'
+  ...
+# Subtest: the audience control remains separate from the non-blocking cookie notice
+ok 40 - the audience control remains separate from the non-blocking cookie notice
+  ---
+  duration_ms: 1.345125
+  type: 'test'
+  ...
+# Subtest: all eight active house-promo branches identify their five physical positions
+ok 41 - all eight active house-promo branches identify their five physical positions
+  ---
+  duration_ms: 36.584583
+  type: 'test'
+  ...
+# Subtest: loaded house images produce one opportunity and render per physical slot without paid-ad events
+ok 42 - loaded house images produce one opportunity and render per physical slot without paid-ad events
+  ---
+  duration_ms: 11.83125
+  type: 'test'
+  ...
+# Subtest: the marked root image must load before render and earn a new uninterrupted visible second
+ok 43 - the marked root image must load before render and earn a new uninterrupted visible second
+  ---
+  duration_ms: 3.188334
+  type: 'test'
+  ...
+# Subtest: house-promo applicability follows existing 992px, 768px and all-width ancestors
+ok 44 - house-promo applicability follows existing 992px, 768px and all-width ancestors
+  ---
+  duration_ms: 13.303666
+  type: 'test'
+  ...
+# Subtest: editorial navigation /noticias/ returns fresh HTML despite an older cached document
+ok 45 - editorial navigation /noticias/ returns fresh HTML despite an older cached document
+  ---
+  duration_ms: 41.649625
+  type: 'test'
+  ...
+# Subtest: editorial navigation /videos/ returns fresh HTML despite an older cached document
+ok 46 - editorial navigation /videos/ returns fresh HTML despite an older cached document
+  ---
+  duration_ms: 3.697833
+  type: 'test'
+  ...
+# Subtest: editorial navigation /en/news/ returns fresh HTML despite an older cached document
+ok 47 - editorial navigation /en/news/ returns fresh HTML despite an older cached document
+  ---
+  duration_ms: 1.874208
+  type: 'test'
+  ...
+# Subtest: editorial navigation /en/videos/ returns fresh HTML despite an older cached document
+ok 48 - editorial navigation /en/videos/ returns fresh HTML despite an older cached document
+  ---
+  duration_ms: 0.87275
+  type: 'test'
+  ...
+# Subtest: editorial navigation /es/noticias/ returns fresh HTML despite an older cached document
+ok 49 - editorial navigation /es/noticias/ returns fresh HTML despite an older cached document
+  ---
+  duration_ms: 2.31425
+  type: 'test'
+  ...
+# Subtest: editorial navigation /es/videos/ returns fresh HTML despite an older cached document
+ok 50 - editorial navigation /es/videos/ returns fresh HTML despite an older cached document
+  ---
+  duration_ms: 2.308792
+  type: 'test'
+  ...
+# Subtest: editorial navigation /noticias/?pagina=2 returns fresh HTML despite an older cached document
+ok 51 - editorial navigation /noticias/?pagina=2 returns fresh HTML despite an older cached document
+  ---
+  duration_ms: 1.641791
+  type: 'test'
+  ...
+# Subtest: editorial navigation /noticias/canal/corrida/ returns fresh HTML despite an older cached document
+ok 52 - editorial navigation /noticias/canal/corrida/ returns fresh HTML despite an older cached document
+  ---
+  duration_ms: 0.934083
+  type: 'test'
+  ...
+# Subtest: offline editorial navigation preserves its cached document
+ok 53 - offline editorial navigation preserves its cached document
+  ---
+  duration_ms: 1.068166
+  type: 'test'
+  ...
+# Subtest: offline editorial navigation without a cached document preserves the offline fallback
+ok 54 - offline editorial navigation without a cached document preserves the offline fallback
+  ---
+  duration_ms: 0.900709
+  type: 'test'
+  ...
+# Subtest: cached script assets still return immediately while their network refresh is pending
+ok 55 - cached script assets still return immediately while their network refresh is pending
+  ---
+  duration_ms: 0.779125
+  type: 'test'
+  ...
+# Subtest: cached images remain available without the network
+ok 56 - cached images remain available without the network
+  ---
+  duration_ms: 1.038959
+  type: 'test'
+  ...
+# Subtest: records one page and physical slot opportunity; only a continuous visible second qualifies
+ok 57 - records one page and physical slot opportunity; only a continuous visible second qualifies
+  ---
+  duration_ms: 7.688542
+  type: 'test'
+  ...
+# Subtest: two physical listing positions sharing an auction placement retain independent measurements
+ok 58 - two physical listing positions sharing an auction placement retain independent measurements
+  ---
+  duration_ms: 1.026833
+  type: 'test'
+  ...
+# Subtest: hidden tabs reset continuity and never accrue viewability
+ok 59 - hidden tabs reset continuity and never accrue viewability
+  ---
+  duration_ms: 1.454083
+  type: 'test'
+  ...
+# Subtest: an entire exit and reentry between 250 ms samples resets the continuous second
+ok 60 - an entire exit and reentry between 250 ms samples resets the continuous second
+  ---
+  duration_ms: 0.831167
+  type: 'test'
+  ...
+# Subtest: collapsed empty slots and CSS-hidden variants register inventory without renders
+ok 61 - collapsed empty slots and CSS-hidden variants register inventory without renders
+  ---
+  duration_ms: 0.682459
+  type: 'test'
+  ...
+# Subtest: a responsive desktop ancestor suppresses all inventory events on mobile
+ok 62 - a responsive desktop ancestor suppresses all inventory events on mobile
+  ---
+  duration_ms: 0.684417
+  type: 'test'
+  ...
+# Subtest: a detached mobile inventory marker keeps its responsive applicability without a visible wrapper
+ok 63 - a detached mobile inventory marker keeps its responsive applicability without a visible wrapper
+  ---
+  duration_ms: 0.649792
+  type: 'test'
+  ...
+# Subtest: sidebar applicability follows its 992px layout boundary without treating a collapsed marker as a render
+ok 64 - sidebar applicability follows its 992px layout boundary without treating a collapsed marker as a render
+  ---
+  duration_ms: 0.574458
+  type: 'test'
+  ...
+# Subtest: viewport exit breaks the uninterrupted second and excludes the ineligible duration
+ok 65 - viewport exit breaks the uninterrupted second and excludes the ineligible duration
+  ---
+  duration_ms: 1.10925
+  type: 'test'
+  ...
+# Subtest: broken or loading images do not render or qualify until loaded
+ok 66 - broken or loading images do not render or qualify until loaded
+  ---
+  duration_ms: 0.855833
+  type: 'test'
+  ...
+# Subtest: GPC and persisted opt-out suppress network and identifiers
+ok 67 - GPC and persisted opt-out suppress network and identifiers
+  ---
+  duration_ms: 0.651458
+  type: 'test'
+  ...
+# Subtest: GPC removes audience identifiers left by an earlier visit
+ok 68 - GPC removes audience identifiers left by an earlier visit
+  ---
+  duration_ms: 0.311334
+  type: 'test'
+  ...
+# Subtest: explicit opt-out clears queued events and stored audience identifiers immediately
+ok 69 - explicit opt-out clears queued events and stored audience identifiers immediately
+  ---
+  duration_ms: 0.361542
+  type: 'test'
+  ...
+# Subtest: opt-out saved in another tab clears this tab before its pending queue can flush
+ok 70 - opt-out saved in another tab clears this tab before its pending queue can flush
+  ---
+  duration_ms: 0.515416
+  type: 'test'
+  ...
+# Subtest: visitor UUID rotates when its immutable creation time is missing or older than ninety days
+ok 71 - visitor UUID rotates when its immutable creation time is missing or older than ninety days
+  ---
+  duration_ms: 1.097875
+  type: 'test'
+  ...
+# Subtest: visitor UUID creation time is not extended by activity
+ok 72 - visitor UUID creation time is not extended by activity
+  ---
+  duration_ms: 1.346958
+  type: 'test'
+  ...
+# Subtest: storage and cookie denial do not crash default collection; context stays signed and attribution drops full URLs
+ok 73 - storage and cookie denial do not crash default collection; context stays signed and attribution drops full URLs
+  ---
+  duration_ms: 0.608584
+  type: 'test'
+  ...
+# Subtest: content opening is separate from real player start and repeated opens are idempotent
+ok 74 - content opening is separate from real player start and repeated opens are idempotent
+  ---
+  duration_ms: 0.436875
+  type: 'test'
+  ...
+# Subtest: leaving and reentering resets the threshold; async replacements retain physical identity
+ok 75 - leaving and reentering resets the threshold; async replacements retain physical identity
+  ---
+  duration_ms: 0.8015
+  type: 'test'
+  ...
+# Subtest: a persistent collapsed AJAX marker and its populated slot remain one opportunity
+ok 76 - a persistent collapsed AJAX marker and its populated slot remain one opportunity
+  ---
+  duration_ms: 0.749417
+  type: 'test'
+  ...
+# Subtest: search partial SC keeps the parent page ID, signs its own batch and deduplicates identical partials
+ok 77 - search partial SC keeps the parent page ID, signs its own batch and deduplicates identical partials
+  ---
+  duration_ms: 0.664208
+  type: 'test'
+  ...
+# Subtest: a zero-result SC search still reports regional inventory with no exposure or new page
+ok 78 - a zero-result SC search still reports regional inventory with no exposure or new page
+  ---
+  duration_ms: 0.509958
+  type: 'test'
+  ...
+# Subtest: a different delivery in the same physical context earns its own second, without duplicating slot inventory
+ok 79 - a different delivery in the same physical context earns its own second, without duplicating slot inventory
+  ---
+  duration_ms: 0.57825
+  type: 'test'
+  ...
+# Subtest: returning to the same tab after thirty minutes rotates the client session ID
+ok 80 - returning to the same tab after thirty minutes rotates the client session ID
+  ---
+  duration_ms: 14.984458
+  type: 'test'
+  ...
+# Subtest: session rotation snapshots engagement, resets its clock and keeps prior logical events in their original session
+ok 81 - session rotation snapshots engagement, resets its clock and keeps prior logical events in their original session
+  ---
+  duration_ms: 43.649166
+  type: 'test'
+  ...
+# Subtest: engagement uses one stable key with monotonically increasing duration
+ok 82 - engagement uses one stable key with monotonically increasing duration
+  ---
+  duration_ms: 0.94125
+  type: 'test'
+  ...
+# Subtest: session entry attribution survives internal navigation and expires after thirty minutes
+ok 83 - session entry attribution survives internal navigation and expires after thirty minutes
+  ---
+  duration_ms: 1.146209
+  type: 'test'
+  ...
+# Subtest: incoming OpenResults UTMs create a new session for an already active visitor
+ok 84 - incoming OpenResults UTMs create a new session for an already active visitor
+  ---
+  duration_ms: 0.699958
+  type: 'test'
+  ...
+# Subtest: a changed explicit source starts a distinct audience session
+ok 85 - a changed explicit source starts a distinct audience session
+  ---
+  duration_ms: 0.710833
+  type: 'test'
+  ...
+# Subtest: a changed explicit medium starts a distinct audience session
+ok 86 - a changed explicit medium starts a distinct audience session
+  ---
+  duration_ms: 0.716292
+  type: 'test'
+  ...
+# Subtest: a changed explicit campaign starts a distinct audience session
+ok 87 - a changed explicit campaign starts a distinct audience session
+  ---
+  duration_ms: 0.628333
+  type: 'test'
+  ...
+# Subtest: a changed explicit creative starts a distinct audience session
+ok 88 - a changed explicit creative starts a distinct audience session
+  ---
+  duration_ms: 0.921
+  type: 'test'
+  ...
+# Subtest: identical UTMs after login redirect or reload retain the same session despite a changed referrer
+ok 89 - identical UTMs after login redirect or reload retain the same session despite a changed referrer
+  ---
+  duration_ms: 1.2295
+  type: 'test'
+  ...
+# Subtest: a repeated partial UTM tuple retains its referral fallback after an internal redirect
+ok 90 - a repeated partial UTM tuple retains its referral fallback after an internal redirect
+  ---
+  duration_ms: 1.304834
+  type: 'test'
+  ...
+# Subtest: legacy sessions and malformed entry metadata still accept a different valid campaign
+ok 91 - legacy sessions and malformed entry metadata still accept a different valid campaign
+  ---
+  duration_ms: 3.648166
+  type: 'test'
+  ...
+# Subtest: internal navigation without UTMs retains the full current attribution
+ok 92 - internal navigation without UTMs retains the full current attribution
+  ---
+  duration_ms: 0.789791
+  type: 'test'
+  ...
+# Subtest: invalid-only UTMs cannot rotate or erase an active attribution even with an OpenResults referrer
+ok 93 - invalid-only UTMs cannot rotate or erase an active attribution even with an OpenResults referrer
+  ---
+  duration_ms: 3.67125
+  type: 'test'
+  ...
+# Subtest: fresh attribution drops malformed labels and private values instead of converting them to campaign labels
+ok 94 - fresh attribution drops malformed labels and private values instead of converting them to campaign labels
+  ---
+  duration_ms: 2.582584
+  type: 'test'
+  ...
+# Subtest: a valid partial UTM starts its own attribution without inheriting prior campaign or rejected content
+ok 95 - a valid partial UTM starts its own attribution without inheriting prior campaign or rejected content
+  ---
+  duration_ms: 1.776542
+  type: 'test'
+  ...
+# Subtest: an expired campaign session restarts with current UTMs or the direct entry fallback
+ok 96 - an expired campaign session restarts with current UTMs or the direct entry fallback
+  ---
+  duration_ms: 1.048708
+  type: 'test'
+  ...
+# Subtest: queued events from an earlier page retain their original attribution after another tab starts a campaign
+ok 97 - queued events from an earlier page retain their original attribution after another tab starts a campaign
+  ---
+  duration_ms: 1.115042
+  type: 'test'
+  ...
+# Subtest: an older tab pointerdown cannot replace the latest campaign used by subsequent navigation
+ok 98 - an older tab pointerdown cannot replace the latest campaign used by subsequent navigation
+  ---
+  duration_ms: 2.641834
+  type: 'test'
+  ...
+# Subtest: an older tab visibilitychange cannot replace the latest campaign used by subsequent navigation
+ok 99 - an older tab visibilitychange cannot replace the latest campaign used by subsequent navigation
+  ---
+  duration_ms: 1.335833
+  type: 'test'
+  ...
+# Subtest: an older tab heartbeat cannot replace the latest campaign used by subsequent navigation
+ok 100 - an older tab heartbeat cannot replace the latest campaign used by subsequent navigation
+  ---
+  duration_ms: 3.188208
+  type: 'test'
+  ...
+# Subtest: making the same referral medium explicit keeps the effective attribution session
+ok 101 - making the same referral medium explicit keeps the effective attribution session
+  ---
+  duration_ms: 0.760375
+  type: 'test'
+  ...
+# Subtest: an older tab cannot replace newer partial-UTM entry metadata within the same effective session
+ok 102 - an older tab cannot replace newer partial-UTM entry metadata within the same effective session
+  ---
+  duration_ms: 1.798167
+  type: 'test'
+  ...
+# Subtest: exact OpenResults referrers establish referral attribution without inventing a campaign
+ok 103 - exact OpenResults referrers establish referral attribution without inventing a campaign
+  ---
+  duration_ms: 0.791
+  type: 'test'
+  ...
+# Subtest: a new external OpenResults arrival rotates direct attribution but retains a repeated referral session
+ok 104 - a new external OpenResults arrival rotates direct attribution but retains a repeated referral session
+  ---
+  duration_ms: 0.973167
+  type: 'test'
+  ...
+# Subtest: other hosts and internal references cannot be mistaken for an OpenResults arrival
+ok 105 - other hosts and internal references cannot be mistaken for an OpenResults arrival
+  ---
+  duration_ms: 6.954375
+  type: 'test'
+  ...
+# Subtest: attribution rejects email and full URLs, and batches never exceed fifty events
+ok 106 - attribution rejects email and full URLs, and batches never exceed fifty events
+  ---
+  duration_ms: 0.838417
+  type: 'test'
+  ...
+# Subtest: formatted personal numbers are discarded from campaign attribution
+ok 107 - formatted personal numbers are discarded from campaign attribution
+  ---
+  duration_ms: 0.354459
+  type: 'test'
+  ...
+# Subtest: background-loaded pages wait for visible activation before the page view
+ok 108 - background-loaded pages wait for visible activation before the page view
+  ---
+  duration_ms: 0.416792
+  type: 'test'
+  ...
+# Subtest: viewability duration grows using the same event key and overflow clipping prevents exposure
+ok 109 - viewability duration grows using the same event key and overflow clipping prevents exposure
+  ---
+  duration_ms: 2.217833
+  type: 'test'
+  ...
+# Subtest: an idle visible page stops refreshing the thirty-minute session clock
+ok 110 - an idle visible page stops refreshing the thirty-minute session clock
+  ---
+  duration_ms: 1.635
+  type: 'test'
+  ...
+# Subtest: failed collection retries the same logical events at most three times
+ok 111 - failed collection retries the same logical events at most three times
+  ---
+  duration_ms: 0.800542
+  type: 'test'
+  ...
+# Subtest: HTTP 429 honors a bounded Retry-After without losing one-shot events
+ok 112 - HTTP 429 honors a bounded Retry-After without losing one-shot events
+  ---
+  duration_ms: 2.629791
+  type: 'test'
+  ...
+# Subtest: invalid Retry-After falls back to sixty seconds and excessive values are capped at five minutes
+ok 113 - invalid Retry-After falls back to sixty seconds and excessive values are capped at five minutes
+  ---
+  duration_ms: 2.814375
+  type: 'test'
+  ...
+# Subtest: opt-out clears a rate-limited queue instead of retrying after the pause
+ok 114 - opt-out clears a rate-limited queue instead of retrying after the pause
+  ---
+  duration_ms: 0.763416
+  type: 'test'
+  ...
+# Subtest: real HTML video events produce start and bounded milestone progress, never a synthetic start
+ok 115 - real HTML video events produce start and bounded milestone progress, never a synthetic start
+  ---
+  duration_ms: 0.553875
+  type: 'test'
+  ...
+# Subtest: YouTube readiness, cueing, pause and buffering are not playback
+ok 116 - YouTube readiness, cueing, pause and buffering are not playback
+  ---
+  duration_ms: 0.6745
+  type: 'test'
+  ...
+# Subtest: YouTube real playing starts once and reports bounded position milestones plus observed end
+ok 117 - YouTube real playing starts once and reports bounded position milestones plus observed end
+  ---
+  duration_ms: 0.644916
+  type: 'test'
+  ...
+# Subtest: YouTube hidden playback and invalid duration never manufacture progress
+ok 118 - YouTube hidden playback and invalid duration never manufacture progress
+  ---
+  duration_ms: 0.545875
+  type: 'test'
+  ...
+# Subtest: YouTube stop, late callbacks and opt-out cannot keep collecting
+ok 119 - YouTube stop, late callbacks and opt-out cannot keep collecting
+  ---
+  duration_ms: 0.556292
+  type: 'test'
+  ...
+# Subtest: YouTube related videos cannot donate their progress or end to the selected video
+ok 120 - YouTube related videos cannot donate their progress or end to the selected video
+  ---
+  duration_ms: 0.405375
+  type: 'test'
+  ...
+# Subtest: YouTube unknown video identity suspends samples without sending the URL
+ok 121 - YouTube unknown video identity suspends samples without sending the URL
+  ---
+  duration_ms: 0.425583
+  type: 'test'
+  ...
+# Subtest: shared modal integrates with real tracker across ready, playing, close, switch and stale callbacks
+ok 122 - shared modal integrates with real tracker across ready, playing, close, switch and stale callbacks
+  ---
+  duration_ms: 1.025709
+  type: 'test'
+  ...
+# Subtest: Ads billing beacons require a loaded creative and a visible uninterrupted second
+ok 123 - Ads billing beacons require a loaded creative and a visible uninterrupted second
+  ---
+  duration_ms: 1.467792
+  type: 'test'
+  ...
+# Subtest: modal lazily attaches the YouTube API without treating modal open as playback
+ok 124 - modal lazily attaches the YouTube API without treating modal open as playback
+  ---
+  duration_ms: 1.971375
+  type: 'test'
+  ...
+# Subtest: modal discards closed and replaced videos even when provider readiness arrives late
+ok 125 - modal discards closed and replaced videos even when provider readiness arrives late
+  ---
+  duration_ms: 2.017542
+  type: 'test'
+  ...
+# Subtest: API failure or absent audience collection never prevents normal embeds or HTML5
+ok 126 - API failure or absent audience collection never prevents normal embeds or HTML5
+  ---
+  duration_ms: 1.601
+  type: 'test'
+  ...
+1..126
+# tests 126
+# suites 0
+# pass 126
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 338.353959

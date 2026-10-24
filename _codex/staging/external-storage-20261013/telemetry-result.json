@@ -1,0 +1,11 @@
+{
+  "backup": "/var/backups/external-storage-20261013/telemetry",
+  "helper": "/usr/local/sbin/runnerhub-telemetry-acl",
+  "logrotate_check": true,
+  "simulated_rotation_check": true,
+  "runtime_read_check": "telemetry_only_read_ok",
+  "after_acl": {
+    "/var/log/apache2": "user::rwx\nuser:coldfusion:--x\ngroup::r-x\nmask::r-x\nother::---\n",
+    "/var/log/apache2/api.roadrunners.run-telemetry.log": "user::rw-\nuser:coldfusion:r--\ngroup::r--\nmask::r--\nother::---\n"
+  }
+}

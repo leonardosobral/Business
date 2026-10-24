@@ -1,0 +1,129 @@
+// Operator-only rollback suite. Never publish as a route.
+faReport=[];
+function faAssert(required boolean value,required string label) {if(!value)throw(type='FirstAccessTest.Failed',message=label);arrayAppend(faReport,{name=label,passed=true});}
+function faQ(required string sql,struct params={}) {return queryExecute(sql,params,{datasource='runner_dba',timeout=15});}
+function faP(required any value,string type='cf_sql_varchar') {return {value=value,cfsqltype=type};}
+function faIdentity(required struct u) {REQUEST.businessIdentity={id=u.id,email=u.email,name=u.name,version=1,sub='rollback-first-access-test'};}
+function faScenario(required any operation) {transaction {try {operation();} finally {transaction action='rollback';}}}
+function faDenied(required any operation,required string kind,required string label) {
+    var denied=false;try{operation();}catch(any e){if(e.type=='StudyAccess.' & kind)denied=true;else rethrow;}
+    faAssert(denied,label);
+}
+function faIssue() {
+    faIdentity(faAdmin);
+    return faService.adminIssue(faAdmin.id,faCnpj,faA.email,dateFormat(dateAdd('d',2,now()),'yyyy-mm-dd'));
+}
+faService=createObject('component','__SERVICE__').init('runner_dba');
+faStudy=new estudos.includes.StudyAccess().init('runner_dba');
+faSavedIdentity=structKeyExists(REQUEST,'businessIdentity')?duplicate(REQUEST.businessIdentity):{};
+try {
+    faUsers=faQ("WITH candidates AS (SELECT u.id,u.name,lower(trim(u.email)) email,coalesce(u.is_admin,false) is_admin,
+        row_number() OVER(PARTITION BY coalesce(u.is_admin,false) ORDER BY u.id) n
+        FROM public.tb_usuarios u LEFT JOIN public.tb_usuarios_gestao g ON g.id_usuario=u.id
+        WHERE coalesce(g.ativo,true) AND NOT coalesce(g.excluido,false)
+          AND u.email ~ '^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$'
+          AND NOT EXISTS(SELECT 1 FROM estudo.acessos a WHERE a.usuario_id=u.id))
+        SELECT id,name,email,is_admin FROM candidates WHERE (is_admin AND n=1) OR (NOT is_admin AND n<=2) ORDER BY is_admin DESC,id");
+    faAdmin={};faReaders=[];
+    for(faU in faUsers) {if(faU.is_admin)faAdmin={id=faU.id,name=faU.name,email=faU.email};else arrayAppend(faReaders,{id=faU.id,name=faU.name,email=faU.email});}
+    faAssert(!structIsEmpty(faAdmin) && arrayLen(faReaders)==2,'available active test identities');
+    faA=faReaders[1];faB=faReaders[2];
+    faCompany=faQ("SELECT c.id_conta,c.documento FROM estudo.primeiro_acesso_empresas e JOIN public.tb_contas c USING(id_conta) WHERE e.ativo AND c.status='PENDENTE' AND c.documento IS NOT NULL ORDER BY c.id_conta LIMIT 1");
+    faCnpj=faCompany.documento[1];faAccount=faCompany.id_conta[1];
+    faCampaign=faQ("SELECT id FROM estudo.campanhas WHERE codigo='abraceo-primeiro-acesso'").id[1];
+    faCounts=faQ('SELECT (SELECT count(*) FROM estudo.vouchers) v,(SELECT count(*) FROM estudo.acessos) a,(SELECT count(*) FROM estudo.primeiro_acesso_representantes) r,(SELECT count(*) FROM public.tb_conta_usuarios) u');
+    faScenario(function(){
+        faIdentity(faA);var found=faService.lookup(faA.id,'CNPJ',faCnpj);
+        faAssert(found.company.cnpj==faCnpj && len(found.company.logo)>0,'CNPJ returns existing company and logo');
+        faAssert(found.representative.email==faA.email,'representative comes from verified identity');
+        faAssert(!structKeyExists(found.company,'dados'),'research internals excluded from response');
+        faDenied(function(){faService.lookup(faB.id,'CNPJ',faCnpj);},'Access','cannot act as another user');
+    });
+    faScenario(function(){faIdentity(faA);faDenied(function(){faService.lookup(faA.id,'CNPJ','11111111111111');},'Validation','invalid CNPJ denied');});
+    faScenario(function(){faIdentity(faA);faDenied(function(){faService.lookup(faA.id,'CNPJ','00000000000191');},'Missing','unlisted CNPJ denied');});
+    faScenario(function(){faIdentity(faA);faDenied(function(){faService.confirm(faA.id,'CNPJ',faCnpj,'Diretor',false);},'Validation','declaration required');});
+    faScenario(function(){faIdentity(faA);faDenied(function(){faService.confirm(faA.id,'CNPJ',faCnpj,'',true);},'Validation','representative role required');});
+    faScenario(function(){
+        faIdentity(faA);var first=faService.confirm(faA.id,'CNPJ',faCnpj,'Diretor',true,'Revisar endereço');
+        var second=faService.confirm(faA.id,'CNPJ',faCnpj,'Diretor',true,'Revisar endereço');
+        faAssert(first.status=='ACTIVE' && !first.operational_access_granted && second.status=='ACTIVE','CNPJ declaration grants only reading and tolerates retry');
+        var claims=faQ('SELECT count(*) n FROM estudo.primeiro_acesso_representantes WHERE usuario_id=:u AND id_conta=:c',{u=faP(faA.id,'cf_sql_bigint'),c=faP(faAccount,'cf_sql_bigint')});
+        faAssert(claims.n[1]==1,'duplicate submit creates one declaration');
+        faAssert(faQ('SELECT count(*) n FROM public.tb_conta_usuarios').n[1]==faCounts.u[1],'no operational memberships created');
+        faAssert(faQ('SELECT status FROM public.tb_contas WHERE id_conta=:c',{c=faP(faAccount,'cf_sql_bigint')}).status[1]=='PENDENTE','company remains pending');
+        faAssert(len(faStudy.read(faA.id,'previa-2026-q3').payload_json)>0,'new reader can access protected preview');
+        faDenied(function(){faStudy.read(faA.id,'anual-2026');},'Access','annual study remains unavailable');
+    });
+    faScenario(function(){
+        faIdentity(faA);faService.confirm(faA.id,'CNPJ',faCnpj,'Diretor',true);
+        var grants=faQ('SELECT acesso_id FROM estudo.primeiro_acesso_representantes WHERE usuario_id=:u AND id_conta=:c',{u=faP(faA.id,'cf_sql_bigint'),c=faP(faAccount,'cf_sql_bigint')});
+        faIdentity(faAdmin);faStudy.adminRevokeAccess(faAdmin.id,grants.acesso_id[1],'Rollback test');
+        faIdentity(faA);faDenied(function(){faService.confirm(faA.id,'CNPJ',faCnpj,'Diretor',true);},'Access','CNPJ cannot restore revoked access');
+    });
+    faScenario(function(){
+        var invitation=faIssue();faIdentity(faB);
+        faDenied(function(){faService.lookup(faB.id,'VOUCHER',invitation.code_once);},'Access','voucher rejects another email');
+    });
+    faScenario(function(){
+        var invitation=faIssue();faIdentity(faA);
+        faAssert(faService.lookup(faA.id,'VOUCHER',invitation.code_once).company.cnpj==faCnpj,'nominal voucher retrieves mapped company');
+        faService.confirm(faA.id,'VOUCHER',invitation.code_once,'Diretor',true);
+        faAssert(faService.confirm(faA.id,'VOUCHER',invitation.code_once,'Diretor',true).status=='ACTIVE','voucher confirmation replay is idempotent');
+    });
+    faScenario(function(){
+        var invitation=faIssue();faIdentity(faA);
+        faAssert(faService.confirm(faA.id,'CNPJ',faCnpj,'Diretor',true).status=='ACTIVE','CNPJ can redeem an existing nominal invitation for same email');
+    });
+    faScenario(function(){
+        var invitation=faIssue();faQ("UPDATE estudo.vouchers SET expira_em=clock_timestamp()-interval '1 day' WHERE id=:v",{v=faP(invitation.voucher.id,'cf_sql_bigint')});faIdentity(faA);
+        faDenied(function(){faService.lookup(faA.id,'VOUCHER',invitation.code_once);},'Access','expired voucher denied');
+    });
+    faScenario(function(){
+        faQ("UPDATE estudo.campanhas SET status='PAUSED' WHERE id=:c",{c=faP(faCampaign,'cf_sql_bigint')});faIdentity(faA);
+        faDenied(function(){faService.confirm(faA.id,'CNPJ',faCnpj,'Diretor',true);},'Access','paused campaign blocks new CNPJ access');
+    });
+    faScenario(function(){
+        faQ('UPDATE estudo.primeiro_acesso_empresas SET ativo=false WHERE id_conta=:c',{c=faP(faAccount,'cf_sql_bigint')});faIdentity(faA);
+        faDenied(function(){faService.confirm(faA.id,'CNPJ',faCnpj,'Diretor',true);},'Missing','disabled company denied');
+    });
+    faScenario(function(){faIdentity(faA);faDenied(function(){faService.adminIssue(faA.id,faCnpj,faA.email,'2027-01-01');},'Access','ordinary user cannot issue vouchers');});
+    faScenario(function(){REQUEST.businessIdentity={};faDenied(function(){faService.lookup(faA.id,'CNPJ',faCnpj);},'Access','anonymous identity denied');});
+    faBoundary=createObject('component','__BOUNDARY__').init('runner_dba',true);
+    faState={businessAccessSelectionInvalid=true};
+    faAssert(faBoundary.handle({},faState,'/estudos/primeiro-acesso/','GET',{},{}).status==200,'personal page independent from tenant selection');
+    faAssert(faBoundary.handle({},faState,'/estudos/primeiro-acesso/api.cfm','POST',{}, {operation='lookup',mode='CNPJ',value=faCnpj,csrf='test'}).status==200,'first access API parameters allowed');
+    faAssert(faBoundary.handle({},faState,'/estudos/primeiro-acesso/','GET',{resetApp='1'},{}).status==403,'global application actions rejected');
+    faAssert(faBoundary.handle({},faState,'/estudos/primeiro-acesso/api.cfm','POST',{}, {operation='confirm',actorId='1'}).status==403,'posted actor override rejected');
+    faAssert(faBoundary.handle({},faState,'/estudos/primeiro-acesso/api.cfm','POST',{}, {},'','','operation=lookup&operation=confirm').status==403,'duplicate POST parameters rejected');
+    faPending=faQ("SELECT c.id_conta,p.dados->>'cnpj_pesquisado' AS pesquisado FROM public.tb_contas c JOIN public.tb_conta_perfis_publicos p USING(id_conta) WHERE c.documento_pendente AND c.status='PENDENTE' ORDER BY c.id_conta LIMIT 1");
+    faPendingId=toString(faPending.id_conta[1]);
+    function faPendingIssue() {
+        faQ('INSERT INTO estudo.primeiro_acesso_empresas(id_conta) VALUES(:c) ON CONFLICT DO NOTHING',{c=faP(faPendingId,'cf_sql_bigint')});
+        faIdentity(faAdmin);
+        return faService.adminIssue(faAdmin.id,'',faA.email,dateFormat(dateAdd('d',2,now()),'yyyy-mm-dd'),faPendingId);
+    }
+    faScenario(function(){
+        var invitation=faPendingIssue();faIdentity(faA);
+        var found=faService.lookup(faA.id,'VOUCHER',invitation.code_once);
+        faAssert(found.company.id_conta==faPendingId && found.company.cnpj=='' && found.company.documento_pendente,'voucher retrieves exact account with pending CNPJ');
+        faAssert(len(found.company.logo)>0 && len(found.company.nome_empresa)>0,'pending company retains name and logo');
+        faDenied(function(){faService.lookup(faA.id,'CNPJ','');},'Validation','empty document cannot locate a pending company');
+        faIdentity(faB);faDenied(function(){faService.lookup(faB.id,'VOUCHER',invitation.code_once);},'Access','pending company voucher requires invited email');
+        faIdentity(faA);var granted=faService.confirm(faA.id,'VOUCHER',invitation.code_once,'Diretor',true,'Confirmar CNPJ depois');
+        faAssert(granted.status=='ACTIVE' && !granted.operational_access_granted,'pending CNPJ allows preview only');
+        faAssert(faService.confirm(faA.id,'VOUCHER',invitation.code_once,'Diretor',true).status=='ACTIVE','pending voucher replay idempotent');
+        faAssert(faQ('SELECT count(*) n FROM public.tb_conta_usuarios').n[1]==faCounts.u[1],'pending voucher adds no operational members');
+        faAssert(faQ("SELECT count(*) n FROM public.tb_contas WHERE id_conta=:c AND documento IS NULL AND documento_pendente AND status='PENDENTE'",{c=faP(faPendingId,'cf_sql_bigint')}).n[1]==1,'confirmation preserves pending legal identity and status');
+        faAssert(len(faStudy.read(faA.id,'previa-2026-q3').payload_json)>0,'pending voucher reads protected preview');
+        faDenied(function(){faStudy.read(faA.id,'anual-2026');},'Access','pending voucher does not grant annual study');
+    });
+    faScenario(function(){var invitation=faPendingIssue();faQ('UPDATE estudo.primeiro_acesso_empresas SET ativo=false WHERE id_conta=:c',{c=faP(faPendingId,'cf_sql_bigint')});faIdentity(faA);faDenied(function(){faService.lookup(faA.id,'VOUCHER',invitation.code_once);},'Missing','disabled pending account denied');});
+    faScenario(function(){faIdentity(faA);faDenied(function(){faService.adminIssue(faA.id,'',faA.email,'2026-11-10',faPendingId);},'Access','ordinary reader cannot issue by account ID');});
+    faScenario(function(){faIdentity(faAdmin);faDenied(function(){faService.adminIssue(faAdmin.id,faCnpj,faA.email,'2026-11-10',faPendingId);},'Validation','ambiguous CNPJ and account selection denied');});
+    faScenario(function(){faIdentity(faAdmin);faDenied(function(){faService.adminIssue(faAdmin.id,'',faA.email,'2026-11-10','-1');},'Validation','invalid account ID denied');});
+    faScenario(function(){faIdentity(faAdmin);faDenied(function(){faService.adminIssue(faAdmin.id,'',faA.email,'2026-11-10','999999999');},'Missing','unknown account denied');});
+    faAssert(faBoundary.handle({},faState,'/estudos/primeiro-acesso/api.cfm','POST',{}, {operation='issue',companyId=faPendingId,email=faA.email,expiresOn='2026-11-10',csrf='test'}).status==200,'nominal issue supports account ID through request boundary');
+    faAfter=faQ('SELECT (SELECT count(*) FROM estudo.vouchers) v,(SELECT count(*) FROM estudo.acessos) a,(SELECT count(*) FROM estudo.primeiro_acesso_representantes) r,(SELECT count(*) FROM public.tb_conta_usuarios) u');
+    faAssert(faAfter.v[1]==faCounts.v[1] && faAfter.a[1]==faCounts.a[1] && faAfter.r[1]==faCounts.r[1] && faAfter.u[1]==faCounts.u[1],'all test writes rolled back');
+    report={checks=faReport,total=arrayLen(faReport)};
+} finally {REQUEST.businessIdentity=faSavedIdentity;}

@@ -1,0 +1,202 @@
+diff --git a/administracao/cron-jobs/home.cfm b/administracao/cron-jobs/home.cfm
+index c10b419e..eece5d8e 100644
+--- a/administracao/cron-jobs/home.cfm
++++ b/administracao/cron-jobs/home.cfm
+@@ -251,7 +251,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
+     <cfset VARIABLES.cronJobFormRetry = qCronJobEdit.retry_limit/>
+     <cfset VARIABLES.cronJobFormMaxRuntime = qCronJobEdit.max_runtime_seconds/>
+     <cfset VARIABLES.cronJobFormNewItemsDestination = isNull(qCronJobEdit.notificacao_novos_itens_destino) ? "" : qCronJobEdit.notificacao_novos_itens_destino/>
+-    <cfset VARIABLES.cronJobFormNextRun = isNull(qCronJobEdit.next_run_at) ? "" : dateTimeFormat(qCronJobEdit.next_run_at, "yyyy-mm-dd'T'HH:nn")/>
++    <cfset VARIABLES.cronJobFormNextRun = isNull(qCronJobEdit.next_run_at) ? "" : dateTimeFormat(cronJobsLocalTimestamp(qCronJobEdit.next_run_at), "yyyy-mm-dd'T'HH:nn")/>
+     <cfset VARIABLES.cronJobFormActive = qCronJobEdit.ativo/>
+     <cfset VARIABLES.cronJobFormLate = qCronJobEdit.executar_em_atraso/>
+     <cfset VARIABLES.cronJobFormErrorAdminIds = ""/>
+@@ -686,7 +686,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
+                   </td>
+                   <td>
+                     <div>A cada #qCronJobs.interval_minutes# min</div>
+-                    <small class="cron-meta">Próxima: <cfif isDate(qCronJobs.next_run_at)>#lsDateFormat(qCronJobs.next_run_at, "dd/mm/yyyy")# #lsTimeFormat(qCronJobs.next_run_at, "HH:mm")#<cfelse>-</cfif></small>
++                    <small class="cron-meta">Próxima: <cfif isDate(qCronJobs.next_run_at)>#lsDateFormat(cronJobsLocalTimestamp(qCronJobs.next_run_at), "dd/mm/yyyy")# #lsTimeFormat(cronJobsLocalTimestamp(qCronJobs.next_run_at), "HH:mm")#<cfelse>-</cfif></small>
+                   </td>
+                   <td>
+                     <span class="badge <cfif qCronJobs.ativo>badge-success<cfelse>badge-secondary</cfif>"><cfif qCronJobs.ativo>Ativo<cfelse>Inativo</cfif></span>
+@@ -696,7 +696,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
+                   </td>
+                   <td>
+                     <cfif isDate(qCronJobs.last_run_at)>
+-                      #lsDateFormat(qCronJobs.last_run_at, "dd/mm/yyyy")# #lsTimeFormat(qCronJobs.last_run_at, "HH:mm")#
++                      #lsDateFormat(cronJobsLocalTimestamp(qCronJobs.last_run_at), "dd/mm/yyyy")# #lsTimeFormat(cronJobsLocalTimestamp(qCronJobs.last_run_at), "HH:mm")#
+                       <small class="cron-meta d-block">#encodeForHTML(VARIABLES.cronRowLastHttpStatus)# <cfif len(trim(VARIABLES.cronRowLastDuration))>#VARIABLES.cronRowLastDuration#ms</cfif></small>
+                     <cfelse>
+                       <span class="text-muted">-</span>
+@@ -828,7 +828,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
+                     <cfset VARIABLES.cronRunSummary = cronJobsBuildFriendlySummary(VARIABLES.cronRunResponse, VARIABLES.cronRunError)/>
+                   </cfif>
+                   <tr>
+-                    <td nowrap>#lsDateFormat(qCronJobRuns.started_at, "dd/mm/yyyy")# #lsTimeFormat(qCronJobRuns.started_at, "HH:mm:ss")#</td>
++                    <td nowrap>#lsDateFormat(cronJobsLocalTimestamp(qCronJobRuns.started_at), "dd/mm/yyyy")# #lsTimeFormat(cronJobsLocalTimestamp(qCronJobRuns.started_at), "HH:mm:ss")#</td>
+                     <td>#encodeForHTML(qCronJobRuns.nome)#</td>
+                     <td>#encodeForHTML(qCronJobRuns.trigger_type)#</td>
+                     <td><span class="badge <cfif qCronJobRuns.status EQ 'success'>badge-success<cfelseif qCronJobRuns.status EQ 'http_error'>badge-warning text-dark<cfelse>badge-danger</cfif>">#encodeForHTML(qCronJobRuns.status)#</span></td>
+diff --git a/administracao/cron-jobs/includes/backend.cfm b/administracao/cron-jobs/includes/backend.cfm
+index f3e9d7ad..46adea19 100644
+--- a/administracao/cron-jobs/includes/backend.cfm
++++ b/administracao/cron-jobs/includes/backend.cfm
+@@ -89,7 +89,7 @@
+         <cfquery>
+             UPDATE tb_cron_jobs
+             SET ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#URL.ativo#"/>,
+-                data_atualizacao = now(),
++                data_atualizacao = (now() AT TIME ZONE 'UTC'),
+                 id_usuario_atualizacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+             WHERE id_cron_job = <cfqueryparam cfsqltype="cf_sql_bigint" value="#URL.job_id#"/>
+         </cfquery>
+@@ -130,7 +130,7 @@
+         <cfset VARIABLES.cronJobActive = isDefined("FORM.ativo")/>
+         <cfset VARIABLES.cronJobExecuteLate = isDefined("FORM.executar_em_atraso")/>
+         <cfset VARIABLES.cronJobNextRun = isDefined("FORM.next_run_at") ? trim(FORM.next_run_at) : ""/>
+-        <cfset VARIABLES.cronJobNextRunValue = now()/>
++        <cfset VARIABLES.cronJobNextRunValue = dateConvert("local2utc", now())/>
+         <cfset VARIABLES.cronJobHeadersParsed = {}/>
+         <cfset VARIABLES.cronJobErrors = []/>
+         <cfset VARIABLES.cronJobErrorAdminIds = cronJobsParseAdminIds(isDefined("FORM.notificar_erro_admin_ids") ? FORM.notificar_erro_admin_ids : "")/>
+@@ -176,7 +176,7 @@
+             <cfset arrayAppend(VARIABLES.cronJobErrors, "Proxima execucao invalida.")/>
+         </cfif>
+         <cfif len(VARIABLES.cronJobNextRun) AND isDate(replace(VARIABLES.cronJobNextRun, "T", " ", "one"))>
+-            <cfset VARIABLES.cronJobNextRunValue = parseDateTime(replace(VARIABLES.cronJobNextRun, "T", " ", "one"))/>
++            <cfset VARIABLES.cronJobNextRunValue = dateConvert("local2utc", parseDateTime(replace(VARIABLES.cronJobNextRun, "T", " ", "one")))/>
+         </cfif>
+         <cfif len(VARIABLES.cronJobNewItemsDestination)>
+             <cfset VARIABLES.cronJobNewItemsDestination = "/" & reReplace(VARIABLES.cronJobNewItemsDestination, "^/+", "", "all")/>
+@@ -230,7 +230,7 @@
+                     max_runtime_seconds = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cronJobMaxRuntime#"/>,
+                     notificacao_novos_itens_destino = <cfqueryparam cfsqltype="cf_sql_longvarchar" value="#VARIABLES.cronJobNewItemsDestination#" null="#NOT len(VARIABLES.cronJobNewItemsDestination)#"/>,
+                     next_run_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.cronJobNextRunValue#"/>,
+-                    data_atualizacao = now(),
++                    data_atualizacao = (now() AT TIME ZONE 'UTC'),
+                     id_usuario_atualizacao = <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
+                 WHERE id_cron_job = <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.cronJobId#"/>
+             </cfquery>
+@@ -300,7 +300,7 @@
+         SELECT count(*) AS total_jobs,
+                count(*) FILTER (WHERE ativo) AS ativos,
+                count(*) FILTER (WHERE NOT ativo) AS inativos,
+-               count(*) FILTER (WHERE ativo AND next_run_at <= now()) AS vencidos,
++               count(*) FILTER (WHERE ativo AND next_run_at <= (now() AT TIME ZONE 'UTC')) AS vencidos,
+                count(*) FILTER (WHERE last_status = 'success') AS sucesso,
+                count(*) FILTER (WHERE lower(trim(coalesce(last_status, ''))) IN ('error', 'http_error', 'failed', 'timeout')) AS erro
+         FROM tb_cron_jobs
+@@ -328,7 +328,7 @@
+             AND last_status = 'success'
+         <cfelseif listFindNoCase("vencidos,atrasados", VARIABLES.cronJobsStatusFilter)>
+             AND ativo = true
+-            AND next_run_at <= now()
++            AND next_run_at <= (now() AT TIME ZONE 'UTC')
+         </cfif>
+     </cfquery>
+     <cfset VARIABLES.cronJobsTotal = qCronJobsCount.total/>
+@@ -358,7 +358,7 @@
+             AND last_status = 'success'
+         <cfelseif listFindNoCase("vencidos,atrasados", VARIABLES.cronJobsStatusFilter)>
+             AND ativo = true
+-            AND next_run_at <= now()
++            AND next_run_at <= (now() AT TIME ZONE 'UTC')
+         </cfif>
+         ORDER BY ativo DESC, next_run_at ASC, id_cron_job DESC
+         LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.cronJobsPerPage#"/>
+@@ -370,7 +370,7 @@
+                count(*) FILTER (WHERE lower(trim(coalesce(status, ''))) = 'success') AS sucesso,
+                count(*) FILTER (WHERE lower(trim(coalesce(status, ''))) IN ('error', 'http_error', 'failed', 'timeout')) AS erro,
+                count(*) FILTER (WHERE lower(trim(coalesce(status, ''))) = 'running') AS running,
+-               count(*) FILTER (WHERE started_at >= now() - interval '24 hours') AS ultimas_24h
++               count(*) FILTER (WHERE started_at >= (now() AT TIME ZONE 'UTC') - interval '24 hours') AS ultimas_24h
+         FROM tb_cron_job_runs
+     </cfquery>
+ 
+diff --git a/cron-jobs/runner.cfm b/cron-jobs/runner.cfm
+index 0e38eca5..310b5558 100644
+--- a/cron-jobs/runner.cfm
++++ b/cron-jobs/runner.cfm
+@@ -60,7 +60,7 @@ runnerResults = [];
+         SELECT id_cron_job
+         FROM tb_cron_jobs
+         WHERE ativo = true
+-          AND next_run_at <= now()
++          AND next_run_at <= (now() AT TIME ZONE 'UTC')
+         ORDER BY next_run_at ASC, id_cron_job ASC
+         LIMIT <cfqueryparam cfsqltype="cf_sql_integer" value="#runnerLimit#"/>
+     </cfquery>
+diff --git a/includes/backend/cron_jobs_service.cfm b/includes/backend/cron_jobs_service.cfm
+index 80e2c0ac..745cde9e 100644
+--- a/includes/backend/cron_jobs_service.cfm
++++ b/includes/backend/cron_jobs_service.cfm
+@@ -36,6 +36,11 @@
+ </cffunction>
+ 
+ <cfscript>
++// Cron timestamps are stored as UTC without a timezone; convert only at the UI boundary.
++function cronJobsLocalTimestamp(required date utcTimestamp) {
++    return dateConvert("utc2local", arguments.utcTimestamp);
++}
++
+ function cronJobsTablesReady() {
+     var qCronTables = "";
+     var qCronColumns = "";
+@@ -381,15 +386,15 @@ function cronJobsReconcileStaleRuns() {
+ 
+     staleRuns = queryExecute(
+         "UPDATE tb_cron_job_runs run
+-         SET finished_at = now(),
+-             duration_ms = LEAST(2147483647, GREATEST(0, (extract(epoch FROM (now() - run.started_at)) * 1000)::bigint))::integer,
++         SET finished_at = (now() AT TIME ZONE 'UTC'),
++             duration_ms = LEAST(2147483647, GREATEST(0, (extract(epoch FROM ((now() AT TIME ZONE 'UTC') - run.started_at)) * 1000)::bigint))::integer,
+              status = 'timeout',
+              error_message = coalesce(run.error_message, 'Execucao encerrada por exceder o tempo maximo configurado.')
+          FROM tb_cron_jobs job
+          WHERE job.id_cron_job = run.id_cron_job
+            AND run.status = 'running'
+            AND run.finished_at IS NULL
+-           AND run.started_at < now() - (interval '1 second' * GREATEST(30, job.max_runtime_seconds))
++           AND run.started_at < (now() AT TIME ZONE 'UTC') - (interval '1 second' * GREATEST(30, job.max_runtime_seconds))
+          RETURNING run.id_cron_job_run",
+         {},
+         { datasource = "runner_dba" }
+@@ -594,7 +599,7 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
+             cfqueryparam(cfsqltype = "cf_sql_bigint", value = arguments.jobId);
+             writeOutput(", ");
+             cfqueryparam(cfsqltype = "cf_sql_varchar", value = arguments.triggerType);
+-            writeOutput(", now(), 'running', ");
++            writeOutput(", (now() AT TIME ZONE 'UTC'), 'running', ");
+             cfqueryparam(cfsqltype = "cf_sql_longvarchar", value = endpointUrl);
+             writeOutput(", ");
+             cfqueryparam(cfsqltype = "cf_sql_longvarchar", value = cronJobsResponsePreview(requestBody), null = !len(trim(requestBody)));
+@@ -706,7 +711,7 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
+             cfquery(name = "qCronRunUpdate") {
+                 writeOutput("
+                     UPDATE tb_cron_job_runs
+-                    SET finished_at = now(),
++                    SET finished_at = (now() AT TIME ZONE 'UTC'),
+                         attempt = ");
+                 cfqueryparam(cfsqltype = "cf_sql_integer", value = result.attempt);
+                 writeOutput(",
+@@ -734,8 +739,8 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
+             cfquery(name = "qCronJobUpdate") {
+                 writeOutput("
+                     UPDATE tb_cron_jobs
+-                    SET last_run_at = now(),
+-                        next_run_at = now() + (interval '1 minute' * interval_minutes),
++                    SET last_run_at = (now() AT TIME ZONE 'UTC'),
++                        next_run_at = (now() AT TIME ZONE 'UTC') + (interval '1 minute' * interval_minutes),
+                         last_status = ");
+                 cfqueryparam(cfsqltype = "cf_sql_varchar", value = runStatus);
+                 writeOutput(",
+@@ -748,7 +753,7 @@ function cronJobsRunJob(required numeric jobId, string triggerType = "manual", n
+                         last_error = ");
+                 cfqueryparam(cfsqltype = "cf_sql_longvarchar", value = len(errorMessage) ? errorMessage : responsePreview, null = !(len(errorMessage) OR len(responsePreview)));
+                 writeOutput(",
+-                        data_atualizacao = now()
++                        data_atualizacao = (now() AT TIME ZONE 'UTC')
+                     WHERE id_cron_job = ");
+                 cfqueryparam(cfsqltype = "cf_sql_bigint", value = arguments.jobId);
+             }

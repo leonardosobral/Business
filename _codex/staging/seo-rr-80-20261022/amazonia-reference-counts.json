@@ -1,0 +1,204 @@
+{
+  "counts": [
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_agregadores_eventos.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_badges.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_desafios_rr_provas.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_corridas_cupom.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_corridas_fornecedores.id_evento"
+    },
+    {
+      "event_46375": 2,
+      "event_44162": 2,
+      "reference": "tb_evento_corridas_percursos.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_corridas_relaciona.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_resultados_resumo_2025.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_resultados_resumo.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_resultados.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_resultados_autodeclarados.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_treinos_config.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_treinos_config.id_evento_pai"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_percurso_embed_visualizacoes.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "crm.tb_crm_participacoes.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_leaderboard_config.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_leaderboard_percurso.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_leaderboard_startlist.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_conta_eventos.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_conta_evento_solicitacoes.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "crm.tb_crm_evento_versoes.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "crm.tb_crm_importacoes.id_evento"
+    },
+    {
+      "event_46375": 1,
+      "event_44162": 1,
+      "reference": "tb_foco_event_match_state.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_foco_event_match_candidates.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_foco_vinculos.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_agrega_review_candidates.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_corridas_audits.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_media.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_agenda_eventos.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_percursos_gpx.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_percurso_migracoes_strava.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_duplicidade_descartes.id_evento_a"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_duplicidade_descartes.id_evento_b"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_resultados_importacoes.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "ads.advertisements.core_event_id"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "ads.campaign_review_requests.core_event_id"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_leaderboard_startlist_importacao.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_saude_config.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_saude_historico.id_evento"
+    },
+    {
+      "event_46375": 0,
+      "event_44162": 0,
+      "reference": "tb_evento_saude_acesso_solicitacoes.id_evento"
+    }
+  ]
+}

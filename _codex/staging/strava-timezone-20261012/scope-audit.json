@@ -1,0 +1,315 @@
+{
+  "scope": "start_date between 2026-10-01 inclusive and 2026-10-14 exclusive",
+  "summary": {
+    "sp_stored": 5078,
+    "utc_stored": 1689,
+    "raw_activities": 6767,
+    "other_start_values": 0,
+    "wrong_activity_date": 0
+  },
+  "measured_at": "2026-10-12T11:50:34.275336-03:00",
+  "example_calendar": [
+    {
+      "day": "2026-10-01",
+      "qualifying_activities": 1
+    },
+    {
+      "day": "2026-10-02",
+      "qualifying_activities": 1
+    },
+    {
+      "day": "2026-10-03",
+      "qualifying_activities": 1
+    },
+    {
+      "day": "2026-10-04",
+      "qualifying_activities": 1
+    },
+    {
+      "day": "2026-10-05",
+      "qualifying_activities": 1
+    },
+    {
+      "day": "2026-10-06",
+      "qualifying_activities": 1
+    },
+    {
+      "day": "2026-10-07",
+      "qualifying_activities": 1
+    },
+    {
+      "day": "2026-10-08",
+      "qualifying_activities": 1
+    },
+    {
+      "day": "2026-10-09",
+      "qualifying_activities": 1
+    },
+    {
+      "day": "2026-10-10",
+      "qualifying_activities": 1
+    },
+    {
+      "day": "2026-10-11",
+      "qualifying_activities": 1
+    }
+  ],
+  "candidates_by_day": [
+    {
+      "activities": 93,
+      "stored_day": "2026-10-01",
+      "changed_day": 0
+    },
+    {
+      "activities": 90,
+      "stored_day": "2026-10-02",
+      "changed_day": 7
+    },
+    {
+      "activities": 110,
+      "stored_day": "2026-10-03",
+      "changed_day": 15
+    },
+    {
+      "activities": 78,
+      "stored_day": "2026-10-04",
+      "changed_day": 3
+    },
+    {
+      "activities": 98,
+      "stored_day": "2026-10-05",
+      "changed_day": 6
+    },
+    {
+      "activities": 101,
+      "stored_day": "2026-10-06",
+      "changed_day": 15
+    },
+    {
+      "activities": 113,
+      "stored_day": "2026-10-07",
+      "changed_day": 9
+    },
+    {
+      "activities": 98,
+      "stored_day": "2026-10-08",
+      "changed_day": 11
+    },
+    {
+      "activities": 177,
+      "stored_day": "2026-10-09",
+      "changed_day": 13
+    },
+    {
+      "activities": 318,
+      "stored_day": "2026-10-10",
+      "changed_day": 36
+    },
+    {
+      "activities": 288,
+      "stored_day": "2026-10-11",
+      "changed_day": 19
+    },
+    {
+      "activities": 125,
+      "stored_day": "2026-10-12",
+      "changed_day": 18
+    }
+  ],
+  "repair_candidates": {
+    "athletes": 258,
+    "activities": 1689,
+    "changed_day": 152,
+    "last_update": "2026-10-12T14:27:15.272197",
+    "first_update": "2026-10-11T17:58:38.110565",
+    "qualifying_runs": 1222,
+    "wrong_activity_date": 0,
+    "changed_day_athletes": 59,
+    "qualifying_runs_changed_day": 127,
+    "proposed_day_differs_from_local": 0
+  },
+  "candidate_timezones": [
+    {
+      "activities": 1374,
+      "changed_day": 104,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo"
+    },
+    {
+      "activities": 75,
+      "changed_day": 15,
+      "raw_timezone": "(GMT-03:00) America/Fortaleza"
+    },
+    {
+      "activities": 42,
+      "changed_day": 9,
+      "raw_timezone": "(GMT-03:00) America/Bahia"
+    },
+    {
+      "activities": 35,
+      "changed_day": 12,
+      "raw_timezone": "(GMT-03:00) America/Araguaina"
+    },
+    {
+      "activities": 33,
+      "changed_day": 4,
+      "raw_timezone": "(GMT-04:00) America/Cuiaba"
+    },
+    {
+      "activities": 29,
+      "changed_day": 2,
+      "raw_timezone": "(GMT-04:00) America/Campo_Grande"
+    },
+    {
+      "activities": 19,
+      "changed_day": 0,
+      "raw_timezone": "(GMT-03:00) America/Maceio"
+    },
+    {
+      "activities": 18,
+      "changed_day": 0,
+      "raw_timezone": "(GMT-03:00) America/Belem"
+    },
+    {
+      "activities": 11,
+      "changed_day": 0,
+      "raw_timezone": "(GMT-04:00) America/Porto_Velho"
+    },
+    {
+      "activities": 11,
+      "changed_day": 0,
+      "raw_timezone": "(GMT+01:00) Europe/Brussels"
+    },
+    {
+      "activities": 10,
+      "changed_day": 0,
+      "raw_timezone": "(GMT+00:00) GMT"
+    },
+    {
+      "activities": 7,
+      "changed_day": 0,
+      "raw_timezone": "(GMT-05:00) America/New_York"
+    },
+    {
+      "activities": 6,
+      "changed_day": 5,
+      "raw_timezone": "(GMT-04:00) America/Manaus"
+    },
+    {
+      "activities": 5,
+      "changed_day": 0,
+      "raw_timezone": "(GMT+01:00) Europe/Dublin"
+    },
+    {
+      "activities": 4,
+      "changed_day": 0,
+      "raw_timezone": "(GMT-04:00) America/Boa_Vista"
+    },
+    {
+      "activities": 3,
+      "changed_day": 0,
+      "raw_timezone": "(GMT+01:00) Europe/Paris"
+    },
+    {
+      "activities": 2,
+      "changed_day": 0,
+      "raw_timezone": "(GMT+00:00) Europe/Lisbon"
+    },
+    {
+      "activities": 2,
+      "changed_day": 0,
+      "raw_timezone": "(GMT-03:00) America/Recife"
+    },
+    {
+      "activities": 1,
+      "changed_day": 1,
+      "raw_timezone": "(GMT-07:00) America/Creston"
+    },
+    {
+      "activities": 1,
+      "changed_day": 0,
+      "raw_timezone": "(GMT+00:00) Europe/London"
+    },
+    {
+      "activities": 1,
+      "changed_day": 0,
+      "raw_timezone": "(GMT+01:00) Europe/Madrid"
+    }
+  ],
+  "example_corrections": [
+    {
+      "after": "2026-10-09T18:09:32",
+      "before": "2026-10-09T21:09:32",
+      "activity_id": 20519853973,
+      "calendar_day": "2026-10-09"
+    },
+    {
+      "after": "2026-10-10T19:02:32",
+      "before": "2026-10-10T22:02:32",
+      "activity_id": 20533724978,
+      "calendar_day": "2026-10-10"
+    },
+    {
+      "after": "2026-10-11T21:26:33",
+      "before": "2026-10-12T00:26:33",
+      "activity_id": 20548465009,
+      "calendar_day": "2026-10-11"
+    }
+  ],
+  "example_page_matches": true,
+  "candidates_challenges": [
+    {
+      "users": 5,
+      "desafio": "catarinensecorridaderua",
+      "activities": 20,
+      "changed_day": 0
+    },
+    {
+      "users": 2,
+      "desafio": "catarinensetrailrun",
+      "activities": 7,
+      "changed_day": 0
+    },
+    {
+      "users": 62,
+      "desafio": "circuitobrasilgigante",
+      "activities": 483,
+      "changed_day": 32
+    },
+    {
+      "users": 122,
+      "desafio": "desafio365",
+      "activities": 873,
+      "changed_day": 81
+    },
+    {
+      "users": 59,
+      "desafio": "desafio366",
+      "activities": 505,
+      "changed_day": 36
+    },
+    {
+      "users": 7,
+      "desafio": "desafiofoco",
+      "activities": 14,
+      "changed_day": 0
+    },
+    {
+      "users": 1,
+      "desafio": "desafiosupra",
+      "activities": 4,
+      "changed_day": 0
+    },
+    {
+      "users": 230,
+      "desafio": "todosantodia",
+      "activities": 1466,
+      "changed_day": 141
+    },
+    {
+      "users": 1,
+      "desafio": null,
+      "activities": 3,
+      "changed_day": 0
+    }
+  ]
+}

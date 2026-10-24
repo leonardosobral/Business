@@ -1,0 +1,102 @@
+{
+  "checks": [
+    {
+      "name": "news 0 meaningful description",
+      "passed": true
+    },
+    {
+      "name": "news 0 well-formed attribute",
+      "passed": true
+    },
+    {
+      "name": "news 1 meaningful description",
+      "passed": true
+    },
+    {
+      "name": "news 1 well-formed attribute",
+      "passed": true
+    },
+    {
+      "name": "news 2 meaningful description",
+      "passed": true
+    },
+    {
+      "name": "news 2 well-formed attribute",
+      "passed": true
+    },
+    {
+      "name": "news 3 meaningful description",
+      "passed": true
+    },
+    {
+      "name": "news 3 well-formed attribute",
+      "passed": true
+    },
+    {
+      "name": "news 4 meaningful description",
+      "passed": true
+    },
+    {
+      "name": "news 4 well-formed attribute",
+      "passed": true
+    },
+    {
+      "name": "news 5 meaningful description",
+      "passed": true
+    },
+    {
+      "name": "news 5 well-formed attribute",
+      "passed": true
+    },
+    {
+      "name": "news 6 meaningful description",
+      "passed": true
+    },
+    {
+      "name": "news 6 well-formed attribute",
+      "passed": true
+    },
+    {
+      "name": "Corre Brasil role distinguishes title",
+      "passed": true
+    },
+    {
+      "name": "Corre Brasil organizer identity",
+      "passed": true
+    },
+    {
+      "name": "Corre Brasil timer identity",
+      "passed": true
+    },
+    {
+      "name": "Fornecedor \"A & B\" role distinguishes title",
+      "passed": true
+    },
+    {
+      "name": "Fornecedor \"A & B\" organizer identity",
+      "passed": true
+    },
+    {
+      "name": "Fornecedor \"A & B\" timer identity",
+      "passed": true
+    },
+    {
+      "name": "Fornecedor de corrida role distinguishes title",
+      "passed": true
+    },
+    {
+      "name": "Fornecedor de corrida organizer identity",
+      "passed": true
+    },
+    {
+      "name": "Fornecedor de corrida timer identity",
+      "passed": true
+    }
+  ],
+  "failed": [],
+  "hashes": {
+    "noticias/index.cfm": "2d3879bc75705d7151954af80b4eec0d8e06ceee756d7d6307e1b80015498e5d",
+    "org/index.cfm": "4038327e74f2979d5b9610ebf0c468d54c32b7dd00e6da14c9db6516c7dc3272",
+    "timer/index.cfm": "3c6d5c43edb19e90a8df4830c582091286d66bc14528886741b0c4cee5811914"
+  }
+}

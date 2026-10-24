@@ -1,0 +1,9 @@
+<cfif NOT structKeyExists(REQUEST,'comparadorAdminPage')><cfheader statuscode="403"><cfabort></cfif>
+<nav class="nav nav-pills flex-nowrap overflow-auto gap-2 mb-4" aria-label="Gestão do Comparador">
+ <a class="nav-link flex-shrink-0 text-nowrap <cfif VARIABLES.template EQ '/administracao/comparador/resumo/'>active</cfif>" href="/administracao/comparador/resumo/" <cfif VARIABLES.template EQ '/administracao/comparador/resumo/'>aria-current="page"</cfif>>Resumo</a>
+ <a class="nav-link flex-shrink-0 text-nowrap <cfif VARIABLES.template EQ '/administracao/comparador/'>active</cfif>" href="/administracao/comparador/" <cfif VARIABLES.template EQ '/administracao/comparador/'>aria-current="page"</cfif>>Produtos</a>
+ <a class="nav-link flex-shrink-0 text-nowrap <cfif VARIABLES.template EQ '/administracao/comparador/ofertas/'>active</cfif>" href="/administracao/comparador/ofertas/" <cfif VARIABLES.template EQ '/administracao/comparador/ofertas/'>aria-current="page"</cfif>>Promoções e ofertas</a>
+ <a class="nav-link flex-shrink-0 text-nowrap <cfif VARIABLES.template EQ '/administracao/comparador/cadastros/'>active</cfif>" href="/administracao/comparador/cadastros/" <cfif VARIABLES.template EQ '/administracao/comparador/cadastros/'>aria-current="page"</cfif>>Filtros e cadastros</a>
+ <a class="nav-link flex-shrink-0 text-nowrap <cfif VARIABLES.template EQ '/administracao/comparador/curadoria/'>active</cfif>" href="/administracao/comparador/curadoria/" <cfif VARIABLES.template EQ '/administracao/comparador/curadoria/'>aria-current="page"</cfif>>Curadoria</a>
+ <a class="nav-link flex-shrink-0 text-nowrap <cfif VARIABLES.template EQ '/administracao/comparador/awin/'>active</cfif>" href="/administracao/comparador/awin/" <cfif VARIABLES.template EQ '/administracao/comparador/awin/'>aria-current="page"</cfif>>Integração Awin</a>
+</nav>

@@ -1,0 +1,62 @@
+{
+  "measured_at_utc": "2026-10-12T14:10:37.396844+00:00",
+  "root": "/opt/ColdFusion/cfusion",
+  "config_sha256": "d4025f9559821f86d185e3b2c82038b52f7bc61b88ae4bd2716b67b9c5c5ad5b",
+  "configured_classpath": "",
+  "selected_configured_arguments": [
+    "-Xms256m",
+    "-Xmx19200m",
+    "--add-exports=java.desktop/sun.awt.image=ALL-UNNAMED",
+    "--add-exports=java.desktop/sun.java2d=ALL-UNNAMED",
+    "--add-exports=java.base/sun.util.calendar=ALL-UNNAMED",
+    "--add-exports=java.desktop/sun.awt=ALL-UNNAMED",
+    "--add-opens=java.base/java.time=ALL-UNNAMED",
+    "--add-opens=java.base/java.util=ALL-UNNAMED",
+    "--add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED",
+    "--add-opens=java.base/java.nio=ALL-UNNAMED",
+    "--add-opens=java.base/java.lang=ALL-UNNAMED",
+    "--add-opens=java.base/sun.security.rsa=ALL-UNNAMED",
+    "--add-opens=java.base/sun.security.pkcs=ALL-UNNAMED",
+    "--add-opens=java.base/sun.security.x509=ALL-UNNAMED",
+    "--add-opens=java.base/sun.security.util=ALL-UNNAMED",
+    "--add-opens=java.base/java.security=ALL-UNNAMED",
+    "--add-opens=java.base/sun.util.cldr=ALL-UNNAMED",
+    "--add-opens=java.base/sun.util.locale.provider=ALL-UNNAMED",
+    "--add-opens=java.base/java.net=ALL-UNNAMED",
+    "--add-opens=java.base/java.io=ALL-UNNAMED",
+    "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED",
+    "-XX:+UseParallelGC",
+    "-Djava.locale.providers=COMPAT,SPI",
+    "-Duser.timezone=America/Sao_Paulo"
+  ],
+  "os_timezone": "Etc/UTC",
+  "legacy_cfform_jars": {
+    "directory_exists": true,
+    "files": [
+      "batik-awt-util.jar",
+      "batik-css.jar",
+      "batik-ext.jar",
+      "batik-transcoder.jar",
+      "batik-util.jar",
+      "commons-discovery.jar",
+      "commons-logging.jar",
+      "commons-logging.properties",
+      "concurrent.jar",
+      "jcert.jar",
+      "jnet.jar",
+      "jsse.jar"
+    ]
+  },
+  "updates": [
+    "chf20230016.jar"
+  ],
+  "runtime_probe_rc": 0,
+  "selected_runtime_properties": {
+    "java.locale.providers": "COMPAT,SPI",
+    "user.timezone": "America/Sao_Paulo",
+    "java.home": "/opt/ColdFusion/jre",
+    "java.runtime.version": "17.0.6+9-LTS-190",
+    "java.version": "17.0.6",
+    "java.vendor": "Oracle Corporation"
+  }
+}

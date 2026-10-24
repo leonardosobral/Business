@@ -1,0 +1,15 @@
+{
+  "measured_at_utc": "2026-10-12T12:34:38.385082+00:00",
+  "active_runner_entries": 0,
+  "crontab_sha256": "7e932cc6ca46b922aee4b62172c062f7ba93fecb52b83cb22136696b526d3cd9",
+  "backups": [
+    {
+      "path": "/var/backups/business-cron-cutover-20261012T122826Z-agwoa3ke",
+      "directory_mode": "0o700",
+      "backup_hashes_match": true,
+      "old_cron_matches_disabled_candidate": true
+    }
+  ],
+  "latest_runner_requests": [],
+  "cron_service": "active"
+}

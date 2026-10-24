@@ -1,0 +1,10 @@
+{
+  "rr": {
+    "compiled": 1,
+    "backup": "/var/backups/seo-rr-80-20261022-heads-rr/baseline"
+  },
+  "business": {
+    "compiled": 1,
+    "backup": "/var/backups/seo-rr-80-20261022-heads-business/baseline"
+  }
+}

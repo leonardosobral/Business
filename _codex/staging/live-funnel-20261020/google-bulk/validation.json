@@ -1,0 +1,29 @@
+{
+  "campaign": "RR | LIVE 2026 | Pesquisa por cidade | Cupom 15%",
+  "totalSelectedCities": 11,
+  "newGroups": 10,
+  "rioExcludedFromAdds": true,
+  "status": "Paused",
+  "files": [
+    {
+      "name": "01-ad-groups.csv",
+      "rows": 10,
+      "columns": 4,
+      "headersCheckedAgainst": "ad-groups-official-template"
+    },
+    {
+      "name": "02-responsive-search-ads.csv",
+      "rows": 10,
+      "columns": 18,
+      "headersCheckedAgainst": "rsa-official-template"
+    },
+    {
+      "name": "03-keywords.csv",
+      "rows": 50,
+      "columns": 6,
+      "headersCheckedAgainst": "keywords-official-template"
+    }
+  ],
+  "maxHeadlineLength": 25,
+  "maxDescriptionLength": 81
+}

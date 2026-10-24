@@ -1,0 +1,108 @@
+[
+  {
+    "path": "/evento/2026-clandestina-ou-travessuras?/",
+    "status": 404,
+    "location": [],
+    "canonical": [],
+    "hreflang": [],
+    "robots": [
+      "noindex,follow"
+    ],
+    "title": "Esse caminho n\u00e3o foi encontrado \u00b7 Road Runners"
+  },
+  {
+    "path": "/evento/2026-clandestina-ou-travessuras%3F/",
+    "status": 200,
+    "location": [],
+    "canonical": [
+      "https://roadrunners.run/evento/2026-clandestina-ou-travessuras%3F/"
+    ],
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-clandestina-ou-travessuras%3F/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-clandestina-ou-travessuras%3F/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-clandestina-ou-travessuras%3F/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-clandestina-ou-travessuras%3F/"
+      ]
+    ],
+    "robots": [],
+    "title": "CLANDESTINA OU TRAVESSURAS? - corrida de rua - Road Runners"
+  },
+  {
+    "path": "/evento/2026-clandestina-ou-travessuras/",
+    "status": 404,
+    "location": [],
+    "canonical": [],
+    "hreflang": [],
+    "robots": [
+      "noindex,follow"
+    ],
+    "title": "Esse caminho n\u00e3o foi encontrado \u00b7 Road Runners"
+  },
+  {
+    "path": "/en/event/2026-clandestina-ou-travessuras%3F/",
+    "status": 200,
+    "location": [],
+    "canonical": [
+      "https://roadrunners.run/en/event/2026-clandestina-ou-travessuras%3F/"
+    ],
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-clandestina-ou-travessuras%3F/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-clandestina-ou-travessuras%3F/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-clandestina-ou-travessuras%3F/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-clandestina-ou-travessuras%3F/"
+      ]
+    ],
+    "robots": [],
+    "title": "CLANDESTINA OU TRAVESSURAS? - Macei\u00f3 AL - Road race - Road Runners"
+  },
+  {
+    "path": "/es/evento/2026-clandestina-ou-travessuras%3F/",
+    "status": 200,
+    "location": [],
+    "canonical": [
+      "https://roadrunners.run/es/evento/2026-clandestina-ou-travessuras%3F/"
+    ],
+    "hreflang": [
+      [
+        "pt-BR",
+        "https://roadrunners.run/evento/2026-clandestina-ou-travessuras%3F/"
+      ],
+      [
+        "en",
+        "https://roadrunners.run/en/event/2026-clandestina-ou-travessuras%3F/"
+      ],
+      [
+        "es",
+        "https://roadrunners.run/es/evento/2026-clandestina-ou-travessuras%3F/"
+      ],
+      [
+        "x-default",
+        "https://roadrunners.run/evento/2026-clandestina-ou-travessuras%3F/"
+      ]
+    ],
+    "robots": [],
+    "title": "CLANDESTINA OU TRAVESSURAS? - Carrera de ruta - Road Runners"
+  }
+]

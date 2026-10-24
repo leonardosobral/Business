@@ -1,0 +1,12 @@
+{
+  "published": [
+    "or/api/runner_apps_menu.cfm",
+    "rr/includes/estrutura/menu_apps.cfm",
+    "rr/includes/estrutura/event_title_date.cfm"
+  ],
+  "verified_hashes": 3,
+  "preserved_dependencies": 11,
+  "rr_recovery": "/var/backups/seo-impact-20261021-rr",
+  "or_recovery": "Remove only the new api/runner_apps_menu.cfm after restoring its shared consumer. No existing OpenResults file changed.",
+  "published_at": "2026-10-21T15:34:13.434760+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "published_files": {
+    "includes/backend/cron_jobs_service.cfm": true,
+    "administracao/cron-jobs/includes/backend.cfm": true,
+    "administracao/cron-jobs/home.cfm": true,
+    "cron-jobs/runner.cfm": true
+  },
+  "jvm_only_timezone_added": true,
+  "heap_options": [
+    "-Xms2048m",
+    "-Xmx19200m"
+  ],
+  "active_runner_entries": 1,
+  "cron_unchanged": true,
+  "cf_active": "active",
+  "cron_active": "active",
+  "temporary_probes": []
+}

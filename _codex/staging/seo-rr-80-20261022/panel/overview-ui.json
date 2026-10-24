@@ -1,0 +1,20 @@
+{
+  "source": "Semrush — interface autenticada no Chrome",
+  "projectId": 26661911,
+  "domain": "roadrunners.run",
+  "status": "complete",
+  "crawled": 5000,
+  "limit": 5000,
+  "deviceLabel": "Móvel",
+  "javascriptRendered": false,
+  "siteHealth": 71,
+  "aiHealth": 81,
+  "errors": 44,
+  "warnings": 10306,
+  "checkedAt": "2026-10-22T15:41:10.971Z",
+  "lastFinishedAt": "2026-10-22T15:32:00Z",
+  "finishedPrecision": "minute",
+  "finishedDisplay": "22 out 2026 (12:32)",
+  "sourceUrl": "https://pt.semrush.com/siteaudit/campaign/26661911/review/overview",
+  "comparisonUrl": "https://pt.semrush.com/siteaudit/campaign/26661911/review/compare/overall_score"
+}

@@ -1,0 +1,979 @@
+{
+  "publishedAt": "2026-10-17T20:21:34.756436646Z",
+  "release": {
+    "release": "20261017T202057Z-74596b8b",
+    "status": "published_verified",
+    "projects": {
+      "comparador": {
+        "status": "published",
+        "created_at": "2026-10-17T20:21:00.443528+00:00",
+        "root": "/var/www/dev.comparador.run",
+        "backup": "/var/backups/awin-centauro-20261017/comparador/20261017T202057Z-74596b8b",
+        "files": {
+          "includes/produto_card.cfm": {
+            "before": "3a47db01612ba5d09ce7e9b277bc59d29de5921f87525a590034a060128fef27",
+            "after": "d5e42bcb1ebfe8959dfc9958df882872bddf451ebb6e21f13aeb03a014addf0c",
+            "attributes": {
+              "uid": 0,
+              "gid": 0,
+              "mode": 420
+            }
+          }
+        },
+        "changed": [
+          "includes/produto_card.cfm"
+        ],
+        "created_directories": [],
+        "published_at": "2026-10-17T20:21:00.451361+00:00"
+      },
+      "business": {
+        "status": "published",
+        "created_at": "2026-10-17T20:21:00.452877+00:00",
+        "root": "/var/www/business.roadrunners.run",
+        "backup": "/var/backups/awin-centauro-20261017/business/20261017T202057Z-74596b8b",
+        "files": {
+          "administracao/comparador/awin/feed.cfm": {
+            "before": "5632b8829992fc254beb3cc5f99ffbe81db310eb5b9682e04fea49f44bc2abba",
+            "after": "24019eb041e7c4f50dd60750aeb2a20c0abbfd413727998d8c95461f352daeb7",
+            "attributes": {
+              "uid": 0,
+              "gid": 0,
+              "mode": 420
+            }
+          },
+          "services/ComparadorAwinFeedService.cfc": {
+            "before": "452c34309dbc015592c96ad9f6e0aa8f037694e8284b9bb8e66193cf2e7e9fba",
+            "after": "9ed4234b7b5ae11e15812a6699da1aef20cb97b01ac7cbe0617b578a468430e1",
+            "attributes": {
+              "uid": 0,
+              "gid": 0,
+              "mode": 420
+            }
+          }
+        },
+        "changed": [
+          "administracao/comparador/awin/feed.cfm",
+          "services/ComparadorAwinFeedService.cfc"
+        ],
+        "created_directories": [],
+        "published_at": "2026-10-17T20:21:00.459554+00:00"
+      }
+    },
+    "checks": [
+      {
+        "name": "admin_login",
+        "url": "https://business.roadrunners.run/administracao/comparador/awin/",
+        "status": 302,
+        "expected": 302,
+        "passed": true,
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "include_guard",
+        "url": "https://business.roadrunners.run/administracao/comparador/awin/feed.cfm",
+        "status": 403,
+        "expected": 403,
+        "passed": true,
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "scheduled_method",
+        "url": "https://business.roadrunners.run/api/comparador/awin-sync.cfm",
+        "status": 405,
+        "expected": 405,
+        "passed": true,
+        "body_sha256": "d9f0984a67ba3d2dffa61026f83ee4382a56e8ef5bf9f8085e722551fe615c5e"
+      },
+      {
+        "name": "scheduled_auth",
+        "url": "https://business.roadrunners.run/api/comparador/awin-sync.cfm",
+        "status": 401,
+        "expected": 401,
+        "passed": true,
+        "body_sha256": "d9aa8c569c6b59baf7809e62793978194aedc30d01d74a16fbd465db451cef24"
+      },
+      {
+        "name": "service_nonremote",
+        "url": "https://business.roadrunners.run/services/ComparadorAwinFeedService.cfc?method=synchronizeScheduled",
+        "status": 500,
+        "expected": 500,
+        "passed": true,
+        "body_sha256": "1663fd92a3915c71656f5ddff983e26462a8ef6e86e66570ca208aba59e4b599"
+      },
+      {
+        "name": "source_nonremote",
+        "url": "https://business.roadrunners.run/services/ComparadorAwinService.cfc?method=refreshScheduled",
+        "status": 500,
+        "expected": 500,
+        "passed": true,
+        "body_sha256": "d24686ccec14713219f7299d9b582f4a010aa605b845f2957226238bb24b2c5a"
+      },
+      {
+        "name": "public_product",
+        "url": "https://comparador.roadrunners.run/tenis/olympikus-corre-4/",
+        "status": 200,
+        "expected": 200,
+        "passed": true,
+        "body_sha256": "aca67dc903ef80ec2fe7ecd141115a701393bab24785648cdc392df12ab2c8ae"
+      }
+    ]
+  },
+  "unitChecks": 102,
+  "queryChecks": 267,
+  "compilation": [
+    {
+      "group": "business",
+      "exit": 0,
+      "output": "successful 5\ntotal 5\nelapsed 2.997 sec\n\n\\n"
+    },
+    {
+      "group": "comparador",
+      "exit": 0,
+      "output": "successful 1\ntotal 1\nelapsed 1.75 sec\n\n\\n"
+    }
+  ],
+  "all95PublicOffersVerified": true,
+  "previous49Preserved": true,
+  "campaignOffers": 26,
+  "products": 64,
+  "centauroOffers": 46,
+  "centauroReport": {
+    "WARNINGS": {
+      "CENTAURO_EXPIRY_UNAVAILABLE": 41759.0
+    },
+    "MERCHANTID": "17806",
+    "FEEDID": "91869",
+    "IMPORTEDAT": "2026-10-17T16:25:05Z",
+    "PENDING": 40513.0,
+    "MATCHED": 1246.0,
+    "NAME": "Centauro BR 2024",
+    "SHOP": "Centauro BR",
+    "STATUS": "ok",
+    "CHECKEDAT": "2026-10-17T16:24:03Z",
+    "OFFERS": 46,
+    "ROWS": 41788.0,
+    "REJECTED": {
+      "preco": 29.0
+    }
+  },
+  "publicChecks": [
+    {
+      "productId": 4255,
+      "slug": "nike-air-zoom-pegasus-42",
+      "price": 999.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4314,
+      "slug": "nike-air-zoom-alphafly-3",
+      "price": 2499.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 171,
+      "slug": "nike-zoom-fly5",
+      "price": 1299.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 1014,
+      "slug": "nike-invincible-3",
+      "price": 1499.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 1011,
+      "slug": "nike-downshifter-12",
+      "price": 449.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4292,
+      "slug": "nike-pegasus-41",
+      "price": 999.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 95,
+      "slug": "nike-quest5",
+      "price": 599.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 52,
+      "slug": "nike-vaporfly-3",
+      "price": 1999.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 12,
+      "slug": "nike-mecton-9",
+      "price": 1199.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 13,
+      "slug": "nike-run-swift-3",
+      "price": 399.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4315,
+      "slug": "nike-zoom-fly-6",
+      "price": 1499.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4316,
+      "slug": "nike-zoomx-vaporfly-4",
+      "price": 1999.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4318,
+      "slug": "nike-vomero-18",
+      "price": 999.99,
+      "shop": "Nike BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4253,
+      "slug": "asics-novablast-6",
+      "price": 999.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4275,
+      "slug": "asics-gel-nimbus-27",
+      "price": 1199.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4310,
+      "slug": "asics-superblast-2",
+      "price": 1599.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4254,
+      "slug": "asics-gel-nimbus-28",
+      "price": 1299.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4279,
+      "slug": "asics-novablast-5",
+      "price": 999.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4311,
+      "slug": "asics-superblast-3",
+      "price": 1699.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4303,
+      "slug": "asics-gel-kayano-33",
+      "price": 1299.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4302,
+      "slug": "asics-gel-kayano-32",
+      "price": 1299.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4313,
+      "slug": "asics-noosa-tri-16",
+      "price": 999.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4305,
+      "slug": "asics-gel-cumulus-27",
+      "price": 899.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4306,
+      "slug": "asics-gel-cumulus-28",
+      "price": 899.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4309,
+      "slug": "asics-magic-speed-5",
+      "price": 1399.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4308,
+      "slug": "asics-magic-speed-4",
+      "price": 1299.99,
+      "shop": "ASICS BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 185,
+      "slug": "mizuno-wave-shadow5",
+      "price": 599.99,
+      "shop": "Mizuno BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 215,
+      "slug": "mizuno-wave-sky6",
+      "price": 799.99,
+      "shop": "Mizuno BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 1069,
+      "slug": "mizuno-wave-falcon-5",
+      "price": 299.99,
+      "shop": "Mizuno BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 65,
+      "slug": "mizuno-wave-rider26",
+      "price": 579.99,
+      "shop": "Mizuno BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 99,
+      "slug": "mizuno-wave-skyrise3",
+      "price": 559.99,
+      "shop": "Mizuno BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 66,
+      "slug": "mizuno-wave-prophecy-12-s",
+      "price": 1299.99,
+      "shop": "Mizuno BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 211,
+      "slug": "mizuno-wave-legend2",
+      "price": 399.99,
+      "shop": "Mizuno BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 201,
+      "slug": "mizuno-wave-vitality4",
+      "price": 249.99,
+      "shop": "Mizuno BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 159,
+      "slug": "mizuno-wave-mirai4",
+      "price": 349.99,
+      "shop": "Mizuno BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 108,
+      "slug": "olympikus-challenger4",
+      "price": 299.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 1075,
+      "slug": "olympicus-voa-2",
+      "price": 329.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4289,
+      "slug": "olympikus-corre-supra-2",
+      "price": 1299.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 1077,
+      "slug": "olympicus-pride-3",
+      "price": 349.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4287,
+      "slug": "olympikus-corre-max-2",
+      "price": 599.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4285,
+      "slug": "olympikus-corre-trilha-2",
+      "price": 599.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4252,
+      "slug": "olympikus-corre-5",
+      "price": 599.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 1073,
+      "slug": "olympicus-corre-grafeno-2",
+      "price": 799.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4283,
+      "slug": "olympikus-corre-vento-3",
+      "price": 499.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 74,
+      "slug": "olympicus-reverso-2",
+      "price": 379.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4284,
+      "slug": "olympikus-corre-grafeno-3",
+      "price": 799.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4262,
+      "slug": "olympikus-corre-trilha-3",
+      "price": 599.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 37,
+      "slug": "olympikus-corre3",
+      "price": 499.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4282,
+      "slug": "olympikus-corre-4",
+      "price": 599.99,
+      "shop": "Olympikus BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 1073,
+      "slug": "olympicus-corre-grafeno-2",
+      "price": 530.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4287,
+      "slug": "olympikus-corre-max-2",
+      "price": 599.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 169,
+      "slug": "nike-air-zoom-vomero16",
+      "price": 935.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4262,
+      "slug": "olympikus-corre-trilha-3",
+      "price": 599.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4284,
+      "slug": "olympikus-corre-grafeno-3",
+      "price": 549.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4285,
+      "slug": "olympikus-corre-trilha-2",
+      "price": 505.25,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4282,
+      "slug": "olympikus-corre-4",
+      "price": 399.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4283,
+      "slug": "olympikus-corre-vento-3",
+      "price": 399.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4318,
+      "slug": "nike-vomero-18",
+      "price": 899.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4316,
+      "slug": "nike-zoomx-vaporfly-4",
+      "price": 1139.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 13,
+      "slug": "nike-run-swift-3",
+      "price": 289.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4317,
+      "slug": "nike-vomero-17",
+      "price": 719.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4259,
+      "slug": "on-cloudmonster-3",
+      "price": 1499.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4315,
+      "slug": "nike-zoom-fly-6",
+      "price": 767.36,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4279,
+      "slug": "asics-novablast-5",
+      "price": 539.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4257,
+      "slug": "adidas-adizero-adios-pro-4",
+      "price": 1326.3,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4313,
+      "slug": "asics-noosa-tri-16",
+      "price": 634.49,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 12,
+      "slug": "nike-mecton-9",
+      "price": 625.49,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4310,
+      "slug": "asics-superblast-2",
+      "price": 979.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4255,
+      "slug": "nike-air-zoom-pegasus-42",
+      "price": 949.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 11,
+      "slug": "nike-zoomx-vaporfly-next2",
+      "price": 1237.49,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4256,
+      "slug": "adidas-adizero-boston-13",
+      "price": 890.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4311,
+      "slug": "asics-superblast-3",
+      "price": 1529.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4275,
+      "slug": "asics-gel-nimbus-27",
+      "price": 710.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4253,
+      "slug": "asics-novablast-6",
+      "price": 899.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4298,
+      "slug": "hoka-clifton-10",
+      "price": 1079.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4254,
+      "slug": "asics-gel-nimbus-28",
+      "price": 899.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4295,
+      "slug": "new-balance-fresh-foam-x-1080v14",
+      "price": 805.26,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 74,
+      "slug": "olympicus-reverso-2",
+      "price": 251.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4252,
+      "slug": "olympikus-corre-5",
+      "price": 539.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 95,
+      "slug": "nike-quest5",
+      "price": 296.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4274,
+      "slug": "asics-gel-nimbus-26",
+      "price": 760.49,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4293,
+      "slug": "adidas-adizero-boston-12",
+      "price": 850.49,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4292,
+      "slug": "nike-pegasus-41",
+      "price": 519.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4309,
+      "slug": "asics-magic-speed-5",
+      "price": 919.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 1118,
+      "slug": "hoka-clifton-9",
+      "price": 998.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4307,
+      "slug": "asics-magic-speed-3",
+      "price": 757.88,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4308,
+      "slug": "asics-magic-speed-4",
+      "price": 799.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4305,
+      "slug": "asics-gel-cumulus-27",
+      "price": 521.05,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4306,
+      "slug": "asics-gel-cumulus-28",
+      "price": 568.41,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 171,
+      "slug": "nike-zoom-fly5",
+      "price": 719.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4303,
+      "slug": "asics-gel-kayano-33",
+      "price": 1169.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 27,
+      "slug": "adidas-adizerosl",
+      "price": 571.49,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 1112,
+      "slug": "hoka-bondi-8",
+      "price": 1115.99,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 4289,
+      "slug": "olympikus-corre-supra-2",
+      "price": 899.09,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "productId": 130,
+      "slug": "nike-revolution6",
+      "price": 217.41,
+      "shop": "Centauro BR",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "permissions": {
+    "configuration": "0o640",
+    "configurationOwner": 0,
+    "configurationGroup": 988,
+    "feed": "0o600"
+  },
+  "diagnosis": {
+    "feed": {
+      "Advertiser ID": "17806",
+      "Advertiser Name": "Centauro BR",
+      "Primary Region": "BR",
+      "Membership Status": "active",
+      "Feed ID": "91869",
+      "Feed Name": "Centauro BR 2024",
+      "Language": "Portuguese",
+      "Vertical": "Fashion",
+      "Last Imported": "2026-10-17 16:25:05",
+      "Last Checked": "2026-10-17 16:24:03",
+      "No of products": "41788"
+    },
+    "dateValues": {
+      "1": 17601,
+      "2": 5170,
+      "3": 4886,
+      "10": 4097,
+      "4": 3984,
+      "5": 1903,
+      "6": 1443,
+      "7": 1204,
+      "8": 827,
+      "9": 673
+    },
+    "priceMapping": "Centauro 17806/91869: base_price (BRL) = cash price; search_price = original; base_price_amount not used"
+  },
+  "browserChecks": {
+    "desktop": true,
+    "mobileWidth": 390,
+    "mobileOverflow": false,
+    "shopSamples": [
+      {
+        "model": "Olympikus Corre 4",
+        "cashPrice": 399.99,
+        "destination": "https://www.centauro.com.br/tenis-unissex-olympikus-corre-4-990668.html?cor=H3"
+      },
+      {
+        "model": "Nike Pegasus 41",
+        "cashPrice": 519.99,
+        "payment": "Pix",
+        "destination": "https://www.centauro.com.br/tenis-nike-air-zoom-pegasus-41-feminino-990715.html?cor=52"
+      }
+    ]
+  },
+  "cleanup": {
+    "runtimeHashesVerified": 3,
+    "privateHarnessRemoved": true,
+    "privateDownloadsRemoved": true,
+    "configurationPermissionsPreserved": true
+  }
+}

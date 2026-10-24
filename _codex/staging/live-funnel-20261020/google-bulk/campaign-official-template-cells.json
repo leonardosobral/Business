@@ -1,0 +1,350 @@
+{
+  "xl/worksheets/sheet2.xml": [
+    [
+      "A1",
+      "Action"
+    ],
+    [
+      "B1",
+      "Campaign status"
+    ],
+    [
+      "C1",
+      "Customer ID"
+    ],
+    [
+      "D1",
+      "Campaign"
+    ],
+    [
+      "E1",
+      "Campaign type"
+    ],
+    [
+      "F1",
+      "Networks"
+    ],
+    [
+      "G1",
+      "Budget"
+    ],
+    [
+      "H1",
+      "Budget type"
+    ],
+    [
+      "I1",
+      "Bid strategy type"
+    ],
+    [
+      "J1",
+      "Campaign start date"
+    ],
+    [
+      "K1",
+      "Campaign end date"
+    ],
+    [
+      "L1",
+      "Language"
+    ],
+    [
+      "M1",
+      "Location"
+    ],
+    [
+      "N1",
+      "Devices"
+    ],
+    [
+      "O1",
+      "Tracking template"
+    ],
+    [
+      "A2",
+      "Add"
+    ],
+    [
+      "B2",
+      "Enabled"
+    ],
+    [
+      "C2",
+      "123-456-7890"
+    ],
+    [
+      "D2",
+      "Shoe Campaign"
+    ],
+    [
+      "E2",
+      "Search"
+    ],
+    [
+      "F2",
+      "Google Search"
+    ],
+    [
+      "G2",
+      "10"
+    ],
+    [
+      "H2",
+      "Daily"
+    ],
+    [
+      "I2",
+      "Manual CPC"
+    ],
+    [
+      "J2",
+      "45351"
+    ],
+    [
+      "K2",
+      "45443"
+    ],
+    [
+      "L2",
+      "en:+10%; fr:-5%; zh_tw;"
+    ],
+    [
+      "M2",
+      "20 | mi | Seattle, Washington, United States : -5% ; Taipei City, Taiwan : +10% ; Montréal, Québec, Canada ; 600 | km | Redmond, Washington"
+    ],
+    [
+      "N2",
+      "Computers:+10%; Mobile devices with full browsers:-5%; Tablets with full browsers:+15%"
+    ],
+    [
+      "O2",
+      "http://www.abc.com/tracking?param1=create&url={lpurl}."
+    ]
+  ],
+  "xl/worksheets/sheet1.xml": [
+    [
+      "A1",
+      "# Optional.\n Supported values: Add; Edit; Remove."
+    ],
+    [
+      "B1",
+      "# Optional.\n Supported values: Enabled; Paused; Removed."
+    ],
+    [
+      "C1",
+      "#Optional \nunless uploading to multiple accounts on MCC Level"
+    ],
+    [
+      "D1",
+      "#Required\nExample(s): Shoe campaign."
+    ],
+    [
+      "E1",
+      "#Required on create.\n Supported values (Add): Search; Display; Video.\n Supported values (Edit): Unknown; Search; Display; Shopping; Video; App; Smart; Hotel."
+    ],
+    [
+      "F1",
+      "#Optional.\n Supported values: Google search; Search partners; Display Network; YouTube search; YouTube videos."
+    ],
+    [
+      "G1",
+      "#Optional.\n Example(s): 10.00."
+    ],
+    [
+      "H1",
+      "#Optional.\n Supported values: Daily; Campaign Total; Monthly."
+    ],
+    [
+      "I1",
+      "#Required on create.\n Supported values (Add): CPC (enhanced); Manual CPC; cpc; Viewable CPM; cpm; CPA (target); Maximize clicks; Target ROAS; Target CPA; Maximize Conversions; Manual CPV; cpv; Target CPM; CPC%; Target Impression Share; Commission; Invalid; Target Position."
+    ],
+    [
+      "J1",
+      "#Optional.\n Portfolio bid strategy name, if applicable.\n Example(s): my bid strategy."
+    ],
+    [
+      "K1",
+      "#Optional.\n Example(s): 2024-02-29."
+    ],
+    [
+      "L1",
+      "#Optional.\n Example(s): 2024-05-31."
+    ],
+    [
+      "M1",
+      "#Optional.\n Example(s): en:+10%; fr:-5%; zh_tw;"
+    ],
+    [
+      "N1",
+      "#Optional.\n Example(s): 20 | mi | Seattle, Washington, United States : -5% ; Taipei City, Taiwan : +10% ; Montréal, Québec, Canada ; 600 | km | Redmond, Washington\n\nSee All Valid Location codes here: https://developers.google.com/google-ads/api/reference/data/geotargets"
+    ],
+    [
+      "O1",
+      "#Optional.\n Example(s): 20 | mi | Seattle, Washington, United States ; Taipei City, Taiwan ; Montréal, Québec, Canada ; 600 | km | Redmond, Washington\n\nSee All Valid Location codes here: https://developers.google.com/google-ads/api/reference/data/geotargets"
+    ],
+    [
+      "P1",
+      "#Optional.\n Example(s): Computers:+10%; Mobile devices with full browsers:-5%; Tablets with full browsers:+15%."
+    ],
+    [
+      "Q1",
+      "#Optional.\n Example(s): label 1; label 2; label 3 [123-456-7890].\n Supports remove_value."
+    ],
+    [
+      "R1",
+      "#Optional.\n Example(s): 10.00.\n Supports remove_value."
+    ],
+    [
+      "S1",
+      "#Optional.\n Example(s): 12%.\n Supports remove_value."
+    ],
+    [
+      "T1",
+      "#Optional.\n Example(s): 15%.\n Supports remove_value."
+    ],
+    [
+      "U1",
+      "#Optional.\n Example(s): 10.00.\n Supports remove_value."
+    ],
+    [
+      "V1",
+      "#Optional.\n Supported values: Anywhere on results page; Top of results page; Absolute top of results page.\n Supports remove_value."
+    ],
+    [
+      "W1",
+      "#Optional.\n Example(s): http://www.abc.com/tracking?param1=create&url={lpurl}.\n Supports remove_value."
+    ],
+    [
+      "X1",
+      "#Optional.\n Example(s): x=y.\n Supports remove_value."
+    ],
+    [
+      "Y1",
+      "#Optional.\n Example(s): {_color}=red ; {_bg}=blue.\n Supports remove_value."
+    ],
+    [
+      "Z1",
+      "#Optional.\n Supported values: None; MOAT; Double Verify; Integral Ad Science; comScore; Telemetry.\n Supports remove_value."
+    ],
+    [
+      "AA1",
+      "#Optional.\n Supported values: Expanded inventory; Standard inventory; Limited inventory."
+    ],
+    [
+      "AB1",
+      "#Optional.\n Supported values: Non-skippable; Drive conversions; Sequence; Mobile app; App engagement; Smart; Gmail display campaign; Engagement; Manufacturer; Comparison Listing; Shopping - Partners; Standard."
+    ],
+    [
+      "A2",
+      "Action"
+    ],
+    [
+      "B2",
+      "Campaign status"
+    ],
+    [
+      "C2",
+      "Customer ID"
+    ],
+    [
+      "D2",
+      "Campaign"
+    ],
+    [
+      "E2",
+      "Campaign type"
+    ],
+    [
+      "F2",
+      "Networks"
+    ],
+    [
+      "G2",
+      "Budget"
+    ],
+    [
+      "H2",
+      "Budget type"
+    ],
+    [
+      "I2",
+      "Bid strategy type"
+    ],
+    [
+      "J2",
+      "Bid strategy"
+    ],
+    [
+      "K2",
+      "Campaign start date"
+    ],
+    [
+      "L2",
+      "Campaign end date"
+    ],
+    [
+      "M2",
+      "Language"
+    ],
+    [
+      "N2",
+      "Location"
+    ],
+    [
+      "O2",
+      "Exclusion"
+    ],
+    [
+      "P2",
+      "Devices"
+    ],
+    [
+      "Q2",
+      "Label"
+    ],
+    [
+      "R2",
+      "Target CPA"
+    ],
+    [
+      "S2",
+      "Target ROAS"
+    ],
+    [
+      "T2",
+      "Target Impression Share"
+    ],
+    [
+      "U2",
+      "Max CPC Bid Limit for Target IS"
+    ],
+    [
+      "V2",
+      "Location Goal for Target IS"
+    ],
+    [
+      "W2",
+      "Tracking template"
+    ],
+    [
+      "X2",
+      "Final URL suffix"
+    ],
+    [
+      "Y2",
+      "Custom parameter"
+    ],
+    [
+      "Z2",
+      "Viewability vendor"
+    ],
+    [
+      "AA2",
+      "Inventory type"
+    ],
+    [
+      "AB2",
+      "Campaign subtype"
+    ]
+  ]
+}

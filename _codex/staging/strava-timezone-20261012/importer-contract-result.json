@@ -1,0 +1,96 @@
+{
+  "jvmZone": "America/Sao_Paulo",
+  "cases": [
+    {
+      "zone": "UTC",
+      "start": "2026-10-11T21:26:33",
+      "day": "2026-10-11",
+      "passed": true
+    },
+    {
+      "zone": "UTC",
+      "start": "2026-10-12T00:00:00",
+      "day": "2026-10-12",
+      "passed": true
+    },
+    {
+      "zone": "UTC",
+      "start": "2025-12-31T22:00:00",
+      "day": "2025-12-31",
+      "passed": true
+    },
+    {
+      "zone": "UTC",
+      "start": "2026-10-11T21:26:33",
+      "day": "2026-10-11",
+      "passed": true
+    },
+    {
+      "zone": "UTC",
+      "start": "2026-10-12T00:30:00",
+      "day": "2026-10-11",
+      "passed": true
+    },
+    {
+      "zone": "America/Sao_Paulo",
+      "start": "2026-10-11T21:26:33",
+      "day": "2026-10-11",
+      "passed": true
+    },
+    {
+      "zone": "America/Sao_Paulo",
+      "start": "2026-10-12T00:00:00",
+      "day": "2026-10-12",
+      "passed": true
+    },
+    {
+      "zone": "America/Sao_Paulo",
+      "start": "2025-12-31T22:00:00",
+      "day": "2025-12-31",
+      "passed": true
+    },
+    {
+      "zone": "America/Sao_Paulo",
+      "start": "2026-10-11T21:26:33",
+      "day": "2026-10-11",
+      "passed": true
+    },
+    {
+      "zone": "America/Sao_Paulo",
+      "start": "2026-10-12T00:30:00",
+      "day": "2026-10-11",
+      "passed": true
+    },
+    {
+      "zone": "Asia/Tokyo",
+      "start": "2026-10-11T21:26:33",
+      "day": "2026-10-11",
+      "passed": true
+    },
+    {
+      "zone": "Asia/Tokyo",
+      "start": "2026-10-12T00:00:00",
+      "day": "2026-10-12",
+      "passed": true
+    },
+    {
+      "zone": "Asia/Tokyo",
+      "start": "2025-12-31T22:00:00",
+      "day": "2025-12-31",
+      "passed": true
+    },
+    {
+      "zone": "Asia/Tokyo",
+      "start": "2026-10-11T21:26:33",
+      "day": "2026-10-11",
+      "passed": true
+    },
+    {
+      "zone": "Asia/Tokyo",
+      "start": "2026-10-12T00:30:00",
+      "day": "2026-10-11",
+      "passed": true
+    }
+  ],
+  "passed": 15
+}

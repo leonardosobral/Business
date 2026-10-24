@@ -1,0 +1,13 @@
+{
+  "before": {
+    "includes/estrutura/event_title_date.cfm": "cf1853d8e592494582f355215460d52b5d7e9ccfc95e15fc5a20541b95896646"
+  },
+  "watch": {
+    "services/EventRedirectService.cfc": "be9e085b471e1532feb6180d9bc20025e40b71d13c63c00deda2fd2954fe2fc4",
+    "includes/estrutura/event_redirect.cfm": "a856a2592c8fdd472cf0d892ce6c8310ff1cb0574446ca74770fbf477b89d64e",
+    "includes/backend/backend_evento.cfm": "8c0cccaf9205a049a098e442f5f1c9918ba65d28ee22a9c162910fc8491dc10d",
+    "sitemaps/index.cfm": "af6ebaf917199a0c444f9c6a422c56840c0ea568d5d709f64249290c00318cde",
+    "includes/estrutura/head.cfm": "e17b943895b0972927a4515de0b68223f59000e02d3c68711d12fe28f979a98a",
+    "evento/index.cfm": "0d90d138eb8b718603f4cbc2d35c1f93657a6e847d5aee42aee78a53008598c6"
+  }
+}

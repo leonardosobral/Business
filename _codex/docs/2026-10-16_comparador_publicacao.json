@@ -1,0 +1,123 @@
+{
+  "release": "20261017T014659Z-3a4a2992",
+  "backup": "/var/backups/business-comparador-admin-20261016/20261017T014659Z-3a4a2992",
+  "status": "published_verified",
+  "runtime_paths": [
+    "services/ComparadorAdminService.cfc",
+    "administracao/comparador/includes/backend.cfm",
+    "administracao/comparador/home.cfm",
+    "administracao/comparador/index.cfm",
+    "includes/estrutura/sidenav.cfm"
+  ],
+  "remote": {
+    "status": "published",
+    "created_at": "2026-10-17T01:47:02.058867+00:00",
+    "root": "/var/www/business.roadrunners.run",
+    "backup": "/var/backups/business-comparador-admin-20261016/20261017T014659Z-3a4a2992",
+    "files": {
+      "services/ComparadorAdminService.cfc": {
+        "before": null,
+        "after": "21d66a79ea823e7aed1268269115230598690088f081a0205a85d102c3a2f7e7",
+        "attributes": {
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        }
+      },
+      "administracao/comparador/includes/backend.cfm": {
+        "before": null,
+        "after": "fb38e9153eb1d5e21e4fe26a70c09920014d19e2aa0d19418135e7cb6654f043",
+        "attributes": {
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        }
+      },
+      "administracao/comparador/home.cfm": {
+        "before": null,
+        "after": "96775d9c70a61405294e3ac598a355f3cf162ff6deca37e3b41a78eafc4de0ff",
+        "attributes": {
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        }
+      },
+      "administracao/comparador/index.cfm": {
+        "before": null,
+        "after": "43cc251b80d7fe57bf83efe98667074ca4d7dfae646fd5b821786ec0735406c2",
+        "attributes": {
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        }
+      },
+      "includes/estrutura/sidenav.cfm": {
+        "before": "4342580dca5cb9311c9507ba8542db2c5ceac14d2f639ba0ceec22f2f7b64a0e",
+        "after": "cdcf011b6251419ddfffbada9ff578f6ec3699853c2d9b94276830621070a70d",
+        "attributes": {
+          "uid": 0,
+          "gid": 0,
+          "mode": 420
+        }
+      }
+    },
+    "changed": [
+      "services/ComparadorAdminService.cfc",
+      "administracao/comparador/includes/backend.cfm",
+      "administracao/comparador/home.cfm",
+      "administracao/comparador/index.cfm",
+      "includes/estrutura/sidenav.cfm"
+    ],
+    "created_directories": [
+      "administracao/comparador",
+      "administracao/comparador/includes"
+    ],
+    "published_at": "2026-10-17T01:47:02.079922+00:00"
+  },
+  "hash_verification": {
+    "status": "hashes_verified",
+    "files": {
+      "services/ComparadorAdminService.cfc": "21d66a79ea823e7aed1268269115230598690088f081a0205a85d102c3a2f7e7",
+      "administracao/comparador/includes/backend.cfm": "fb38e9153eb1d5e21e4fe26a70c09920014d19e2aa0d19418135e7cb6654f043",
+      "administracao/comparador/home.cfm": "96775d9c70a61405294e3ac598a355f3cf162ff6deca37e3b41a78eafc4de0ff",
+      "administracao/comparador/index.cfm": "43cc251b80d7fe57bf83efe98667074ca4d7dfae646fd5b821786ec0735406c2",
+      "includes/estrutura/sidenav.cfm": "cdcf011b6251419ddfffbada9ff578f6ec3699853c2d9b94276830621070a70d"
+    }
+  },
+  "smokes": [
+    {
+      "name": "anonymous_page",
+      "path": "/administracao/comparador/",
+      "status": 302,
+      "location": "/",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "passed": true
+    },
+    {
+      "name": "direct_backend",
+      "path": "/administracao/comparador/includes/backend.cfm",
+      "status": 403,
+      "location": "",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "passed": true
+    },
+    {
+      "name": "direct_view",
+      "path": "/administracao/comparador/home.cfm",
+      "status": 403,
+      "location": "",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "passed": true
+    },
+    {
+      "name": "cfc_nonremote",
+      "path": "/services/ComparadorAdminService.cfc?method=offerUrl&value=https%3A%2F%2Fexample.invalid%2Fcomparador-probe&returnformat=json",
+      "status": 500,
+      "location": "",
+      "body_sha256": "63b2dab75e4ce4fbaa73f75fada58aeca338f083ad1003d76c2a86f12b6c1c21",
+      "passed": true
+    }
+  ],
+  "verified_at": "2026-10-17T01:47:01.997817+00:00",
+  "cfc_refusal_confirmed": "The method 'offerUrl' ... cannot be accessed remotely."
+}

@@ -1,0 +1,95 @@
+{
+  "checked_at": "2026-10-24T16:19:36.800196+00:00",
+  "root": "/var/www/business.roadrunners.run",
+  "files": {
+    "includes/estrutura/home_admin_dashboard.cfm": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "894f9c30a1c6d6c0f16cbd38c75d101bd9754387fdd78d29a010547ae664637f",
+      "bytes": 90528,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0,
+      "matches_untouched_local_baseline": true
+    },
+    "assets/css/admin-dashboard.css": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "658e9feb9a21d8f98932404b1a72ce63945542bd0e7e1947986a2e48f2f2ccbd",
+      "bytes": 25885,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0,
+      "matches_untouched_local_baseline": true
+    },
+    "includes/backend/business_home_metrics.cfm": {
+      "exists": false,
+      "symlink": false
+    },
+    "includes/estrutura/home_admin_decision_view.cfm": {
+      "exists": false,
+      "symlink": false
+    },
+    "assets/js/business-home-dashboard.js": {
+      "exists": false,
+      "symlink": false
+    }
+  },
+  "watch": {
+    "index.cfm": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "c7d1f7cd5c43bf20cbf71cdd6943bee5da539eb6f97f0fc163b53831f03036e2",
+      "bytes": 1737,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/backend/backend_login.cfm": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "1e3bbcc53135f74cd5e8e75735053f3ded0d0f0201243fd8831d3356f1fd40da",
+      "bytes": 29320,
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "includes/estrutura/head.cfm": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "37adbbbcc9a99f0cb8911aca76dda2e9ad456c086318bc812ab4e6ef8bd3673d",
+      "bytes": 2796,
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "includes/estrutura/header.cfm": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "d8b619f6bf8d0a32ded7255a2e441fda19432070195a9cf2db933676e5f28fd7",
+      "bytes": 613,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/home.cfm": {
+      "exists": false,
+      "symlink": false
+    },
+    "Application.cfc": {
+      "exists": true,
+      "symlink": false,
+      "sha256": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+      "bytes": 22029,
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "compiler": [
+    {
+      "executable": "/opt/coldfusion2025/cfusion/bin/cfcompile.sh",
+      "user": "coldfusion"
+    }
+  ]
+}

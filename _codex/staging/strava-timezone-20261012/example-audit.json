@@ -1,0 +1,404 @@
+{
+  "challenges": [
+    {
+      "desafio": "circuitobrasilgigante"
+    },
+    {
+      "desafio": "todosantodia"
+    }
+  ],
+  "user_found": 1,
+  "measured_at": "2026-10-12T11:48:33.552369-03:00",
+  "time_offsets": [
+    {
+      "activities": 944,
+      "last_update": "2026-10-12T11:43:12.166018",
+      "first_update": "2026-10-08T05:55:48.372714",
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": -3.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 797,
+      "last_update": "2026-10-12T14:27:15.272197",
+      "first_update": "2026-10-11T17:58:38.110565",
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "wrong_start_day": 69,
+      "hours_vs_raw_utc": 0.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 104,
+      "last_update": "2026-10-12T11:43:09.927689",
+      "first_update": "2026-10-08T06:19:53.192085",
+      "raw_timezone": "(GMT-03:00) America/Fortaleza",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": -3.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 71,
+      "last_update": "2026-10-12T11:43:05.066157",
+      "first_update": "2026-10-08T07:31:50.975864",
+      "raw_timezone": "(GMT-03:00) America/Araguaina",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": -3.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 53,
+      "last_update": "2026-10-12T14:03:12.484862",
+      "first_update": "2026-10-12T04:44:24.178185",
+      "raw_timezone": "(GMT-03:00) America/Fortaleza",
+      "wrong_start_day": 7,
+      "hours_vs_raw_utc": 0.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 27,
+      "last_update": "2026-10-12T13:57:07.996818",
+      "first_update": "2026-10-12T04:44:22.108217",
+      "raw_timezone": "(GMT-03:00) America/Bahia",
+      "wrong_start_day": 5,
+      "hours_vs_raw_utc": 0.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 24,
+      "last_update": "2026-10-11T09:44:31.519256",
+      "first_update": "2026-10-09T09:48:52.380051",
+      "raw_timezone": "(GMT-03:00) America/Bahia",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": -3.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 22,
+      "last_update": "2026-10-12T14:26:01.727296",
+      "first_update": "2026-10-11T20:44:23.18222",
+      "raw_timezone": "(GMT-03:00) America/Araguaina",
+      "wrong_start_day": 6,
+      "hours_vs_raw_utc": 0.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 21,
+      "last_update": "2026-10-12T11:37:11.114154",
+      "first_update": "2026-10-09T08:59:53.659425",
+      "raw_timezone": "(GMT-04:00) America/Campo_Grande",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": -3.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 21,
+      "last_update": "2026-10-12T14:27:07.92076",
+      "first_update": "2026-10-12T12:44:07.326285",
+      "raw_timezone": "(GMT-04:00) America/Campo_Grande",
+      "wrong_start_day": 2,
+      "hours_vs_raw_utc": 0.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 21,
+      "last_update": "2026-10-12T11:37:10.194512",
+      "first_update": "2026-10-10T06:15:52.707826",
+      "raw_timezone": "(GMT-03:00) America/Belem",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": -3.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 15,
+      "last_update": "2026-10-12T13:33:08.03818",
+      "first_update": "2026-10-11T20:44:22.327611",
+      "raw_timezone": "(GMT-04:00) America/Cuiaba",
+      "wrong_start_day": 3,
+      "hours_vs_raw_utc": 0.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 14,
+      "last_update": "2026-10-12T14:09:15.758575",
+      "first_update": "2026-10-12T12:44:18.259172",
+      "raw_timezone": "(GMT-03:00) America/Belem",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": 0.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 14,
+      "last_update": "2026-10-12T14:15:10.945181",
+      "first_update": "2026-10-12T12:44:18.88265",
+      "raw_timezone": "(GMT-03:00) America/Maceio",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": 0.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 12,
+      "last_update": "2026-10-11T01:44:18.297332",
+      "first_update": "2026-10-09T08:53:53.329464",
+      "raw_timezone": "(GMT-03:00) America/Recife",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": -3.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 11,
+      "last_update": "2026-10-10T17:03:54.290694",
+      "first_update": "2026-10-08T07:01:51.575254",
+      "raw_timezone": "(GMT+00:00) GMT",
+      "wrong_start_day": 5,
+      "hours_vs_raw_utc": -3.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 10,
+      "last_update": "2026-10-10T11:15:53.105816",
+      "first_update": "2026-10-10T11:15:53.098747",
+      "raw_timezone": "(GMT-05:00) America/Rio_Branco",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": -3.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 8,
+      "last_update": "2026-10-11T09:44:15.904591",
+      "first_update": "2026-10-09T22:27:52.081504",
+      "raw_timezone": "(GMT-04:00) America/Cuiaba",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": -3.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 8,
+      "last_update": "2026-10-10T09:21:58.371723",
+      "first_update": "2026-10-08T17:43:50.220861",
+      "raw_timezone": "(GMT-03:00) America/Maceio",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": -3.0,
+      "wrong_calendar_day": 0
+    },
+    {
+      "activities": 7,
+      "last_update": "2026-10-12T13:45:08.514783",
+      "first_update": "2026-10-12T12:44:19.436219",
+      "raw_timezone": "(GMT-05:00) America/New_York",
+      "wrong_start_day": 0,
+      "hours_vs_raw_utc": 0.0,
+      "wrong_calendar_day": 0
+    }
+  ],
+  "example_activities": [
+    {
+      "raw_utc": "2026-10-01T21:24:44Z",
+      "updated": "2026-10-04T12:14:42.661781",
+      "processed": true,
+      "raw_local": "2026-10-01T18:24:44Z",
+      "athlete_id": 150794027,
+      "start_date": "2026-10-01T18:24:44",
+      "activity_id": 20412526179,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "activity_date": "2026-10-01",
+      "qualifying_run": true,
+      "activity_source": "strava",
+      "id_athlete_donation": 0
+    },
+    {
+      "raw_utc": "2026-10-02T23:02:54Z",
+      "updated": "2026-10-04T12:14:42.664644",
+      "processed": true,
+      "raw_local": "2026-10-02T20:02:54Z",
+      "athlete_id": 150794027,
+      "start_date": "2026-10-02T20:02:54",
+      "activity_id": 20426108653,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "activity_date": "2026-10-02",
+      "qualifying_run": true,
+      "activity_source": "strava",
+      "id_athlete_donation": 0
+    },
+    {
+      "raw_utc": "2026-10-04T00:11:17Z",
+      "updated": "2026-10-05T21:52:45.245588",
+      "processed": true,
+      "raw_local": "2026-10-03T21:11:17Z",
+      "athlete_id": 150794027,
+      "start_date": "2026-10-03T21:11:17",
+      "activity_id": 20440281664,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "activity_date": "2026-10-03",
+      "qualifying_run": true,
+      "activity_source": "strava",
+      "id_athlete_donation": 0
+    },
+    {
+      "raw_utc": "2026-10-04T14:45:17Z",
+      "updated": "2026-10-06T22:51:47.909308",
+      "processed": true,
+      "raw_local": "2026-10-04T11:45:17Z",
+      "athlete_id": 150794027,
+      "start_date": "2026-10-04T11:45:17",
+      "activity_id": 20449520708,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "activity_date": "2026-10-04",
+      "qualifying_run": true,
+      "activity_source": "strava",
+      "id_athlete_donation": 0
+    },
+    {
+      "raw_utc": "2026-10-06T00:35:32Z",
+      "updated": "2026-10-08T21:07:51.098973",
+      "processed": true,
+      "raw_local": "2026-10-05T21:35:32Z",
+      "athlete_id": 150794027,
+      "start_date": "2026-10-05T21:35:32",
+      "activity_id": 20467828403,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "activity_date": "2026-10-05",
+      "qualifying_run": true,
+      "activity_source": "strava",
+      "id_athlete_donation": 0
+    },
+    {
+      "raw_utc": "2026-10-07T01:29:57Z",
+      "updated": "2026-10-09T18:20:54.188595",
+      "processed": true,
+      "raw_local": "2026-10-06T22:29:57Z",
+      "athlete_id": 150794027,
+      "start_date": "2026-10-06T22:29:57",
+      "activity_id": 20483069640,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "activity_date": "2026-10-06",
+      "qualifying_run": true,
+      "activity_source": "strava",
+      "id_athlete_donation": 0
+    },
+    {
+      "raw_utc": "2026-10-08T00:59:43Z",
+      "updated": "2026-10-09T18:20:54.190602",
+      "processed": true,
+      "raw_local": "2026-10-07T21:59:43Z",
+      "athlete_id": 150794027,
+      "start_date": "2026-10-07T21:59:43",
+      "activity_id": 20496751692,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "activity_date": "2026-10-07",
+      "qualifying_run": true,
+      "activity_source": "strava",
+      "id_athlete_donation": 0
+    },
+    {
+      "raw_utc": "2026-10-08T23:41:25Z",
+      "updated": "2026-10-09T18:20:54.191552",
+      "processed": true,
+      "raw_local": "2026-10-08T20:41:25Z",
+      "athlete_id": 150794027,
+      "start_date": "2026-10-08T20:41:25",
+      "activity_id": 20509361176,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "activity_date": "2026-10-08",
+      "qualifying_run": true,
+      "activity_source": "strava",
+      "id_athlete_donation": 0
+    },
+    {
+      "raw_utc": "2026-10-09T21:09:32Z",
+      "updated": "2026-10-12T13:09:12.423582",
+      "processed": true,
+      "raw_local": "2026-10-09T18:09:32Z",
+      "athlete_id": 150794027,
+      "start_date": "2026-10-09T21:09:32",
+      "activity_id": 20519853973,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "activity_date": "2026-10-09",
+      "qualifying_run": true,
+      "activity_source": "strava",
+      "id_athlete_donation": 0
+    },
+    {
+      "raw_utc": "2026-10-10T22:02:32Z",
+      "updated": "2026-10-12T13:09:12.42513",
+      "processed": true,
+      "raw_local": "2026-10-10T19:02:32Z",
+      "athlete_id": 150794027,
+      "start_date": "2026-10-10T22:02:32",
+      "activity_id": 20533724978,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "activity_date": "2026-10-10",
+      "qualifying_run": true,
+      "activity_source": "strava",
+      "id_athlete_donation": 0
+    },
+    {
+      "raw_utc": "2026-10-12T00:26:33Z",
+      "updated": "2026-10-12T13:09:12.426122",
+      "processed": true,
+      "raw_local": "2026-10-11T21:26:33Z",
+      "athlete_id": 150794027,
+      "start_date": "2026-10-12T00:26:33",
+      "activity_id": 20548465009,
+      "raw_timezone": "(GMT-03:00) America/Sao_Paulo",
+      "activity_date": "2026-10-11",
+      "qualifying_run": true,
+      "activity_source": "strava",
+      "id_athlete_donation": 0
+    }
+  ],
+  "local_date_completeness": [
+    {
+      "processed": false,
+      "activities": 80,
+      "has_calendar_day": true,
+      "has_original_local_day": false
+    },
+    {
+      "processed": true,
+      "activities": 47,
+      "has_calendar_day": true,
+      "has_original_local_day": false
+    },
+    {
+      "processed": false,
+      "activities": 12120,
+      "has_calendar_day": false,
+      "has_original_local_day": false
+    },
+    {
+      "processed": true,
+      "activities": 29,
+      "has_calendar_day": false,
+      "has_original_local_day": false
+    },
+    {
+      "processed": true,
+      "activities": 2279,
+      "has_calendar_day": true,
+      "has_original_local_day": true
+    }
+  ],
+  "legacy_day_mismatch_challenges": [
+    {
+      "users": 13,
+      "desafio": "circuitobrasilgigante",
+      "activities": 20
+    },
+    {
+      "users": 27,
+      "desafio": "desafio365",
+      "activities": 60
+    },
+    {
+      "users": 16,
+      "desafio": "desafio366",
+      "activities": 31
+    },
+    {
+      "users": 52,
+      "desafio": "todosantodia",
+      "activities": 98
+    }
+  ]
+}

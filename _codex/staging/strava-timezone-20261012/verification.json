@@ -1,0 +1,78 @@
+{
+  "verified_at_utc": "2026-10-12T15:02:16.522493+00:00",
+  "totals": {
+    "checked": 1689,
+    "correct": 1689,
+    "other_fields_unchanged": 1689,
+    "calendar_unchanged": 1689
+  },
+  "user_100057": [
+    {
+      "start_date": "2026-10-09T18:09:32",
+      "activity_id": 20519853973,
+      "activity_date": "2026-10-09",
+      "matches_original": true
+    },
+    {
+      "start_date": "2026-10-10T19:02:32",
+      "activity_id": 20533724978,
+      "activity_date": "2026-10-10",
+      "matches_original": true
+    },
+    {
+      "start_date": "2026-10-11T21:26:33",
+      "activity_id": 20548465009,
+      "activity_date": "2026-10-11",
+      "matches_original": true
+    }
+  ],
+  "coldfusion_display": [
+    {
+      "id": 20519853973,
+      "displayStart": "09/10/2026 18:09:32",
+      "displayCalendar": "09/10/2026"
+    },
+    {
+      "id": 20533724978,
+      "displayStart": "10/10/2026 19:02:32",
+      "displayCalendar": "10/10/2026"
+    },
+    {
+      "id": 20548465009,
+      "displayStart": "11/10/2026 21:26:33",
+      "displayCalendar": "11/10/2026"
+    }
+  ],
+  "cron6": {
+    "job": {
+      "active": true,
+      "last_status": "success",
+      "last_run_at_utc": "2026-10-12T15:01:13.577927",
+      "next_run_at_utc": "2026-10-12T15:06:13.577927"
+    },
+    "runs": [
+      {
+        "status": "success",
+        "processed": "10",
+        "api_status": "ok",
+        "started_at": "2026-10-12T15:01:03.040315",
+        "api_success": "true",
+        "duration_ms": 10545,
+        "finished_at": "2026-10-12T15:01:13.577194",
+        "activities_upserted": null
+      }
+    ],
+    "measured_at": "2026-10-12T12:02:16.984247-03:00"
+  },
+  "runtime_sha256": "bf1431637911c560a7e96e93abd4fef0b105d1029b15d8a2fbf05f2bd9c75c84",
+  "health": {
+    "BusyWorkers": "3",
+    "IdleWorkers": "72",
+    "ConnsTotal": "50",
+    "MemAvailable": 15420820,
+    "SwapTotal": 507900,
+    "SwapFree": 507900,
+    "load1": 0.296875,
+    "cpus": 2
+  }
+}

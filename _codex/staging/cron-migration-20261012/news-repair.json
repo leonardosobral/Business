@@ -1,0 +1,113 @@
+{
+  "backup": "/var/backups/news-importers-reload-20261012T124302Z-h4pgewg2",
+  "before_sha256": {
+    "/var/www/conteudo.roadrunners.run/Application.cfc": "6d3e44b385237610e413f9d045edede55a73b78762447c45b6e31dba20485d30",
+    "/var/www/conteudo.roadrunners.run/reset.cfm": "297c0eac1a6f6118dc225054a82eeb58b4d1be4012e88035ae8ee3110ad26209",
+    "/var/www/conteudo.roadrunners.run/inc/content_local_config.cfc": "7854159eaec83ce28de0eb7ef46bb1a18c6499646299aac23986e85acc92573a",
+    "/var/www/conteudo.roadrunners.run/config/content.local.cfm": "f9cda7b59b529e4253ad754c0fbbaca8573e7a96e5af1fa1b87b70544a0015c5"
+  },
+  "existing_secret_matches": true,
+  "before_auth_guard": {
+    "http": 500,
+    "status": "misconfigured",
+    "success": false
+  },
+  "reload": {
+    "http": 200,
+    "json": false
+  },
+  "checks": [
+    {
+      "importer": "contrarelogio",
+      "unauthenticated": {
+        "http": 401,
+        "status": "unauthorized",
+        "success": false
+      },
+      "invalid_signature": {
+        "http": 401,
+        "status": "unauthorized",
+        "success": false
+      },
+      "authenticated_invalid_body": {
+        "http": 400,
+        "status": "invalid_body",
+        "success": false
+      }
+    },
+    {
+      "importer": "corridanoar",
+      "unauthenticated": {
+        "http": 401,
+        "status": "unauthorized",
+        "success": false
+      },
+      "invalid_signature": {
+        "http": 401,
+        "status": "unauthorized",
+        "success": false
+      },
+      "authenticated_invalid_body": {
+        "http": 400,
+        "status": "invalid_body",
+        "success": false
+      }
+    },
+    {
+      "importer": "cbat",
+      "unauthenticated": {
+        "http": 401,
+        "status": "unauthorized",
+        "success": false
+      },
+      "invalid_signature": {
+        "http": 401,
+        "status": "unauthorized",
+        "success": false
+      },
+      "authenticated_invalid_body": {
+        "http": 400,
+        "status": "invalid_body",
+        "success": false
+      }
+    },
+    {
+      "importer": "jornalcorrida",
+      "unauthenticated": {
+        "http": 401,
+        "status": "unauthorized",
+        "success": false
+      },
+      "invalid_signature": {
+        "http": 401,
+        "status": "unauthorized",
+        "success": false
+      },
+      "authenticated_invalid_body": {
+        "http": 400,
+        "status": "invalid_body",
+        "success": false
+      }
+    },
+    {
+      "importer": "sixcomm",
+      "unauthenticated": {
+        "http": 401,
+        "status": "unauthorized",
+        "success": false
+      },
+      "invalid_signature": {
+        "http": 401,
+        "status": "unauthorized",
+        "success": false
+      },
+      "authenticated_invalid_body": {
+        "http": 400,
+        "status": "invalid_body",
+        "success": false
+      }
+    }
+  ],
+  "runtime_files_unchanged": true,
+  "checked_at_utc": "2026-10-12T12:43:04.230693+00:00"
+}

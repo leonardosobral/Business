@@ -1,0 +1,264 @@
+{
+  "paths": [
+    {
+      "path": "/data/ID/event.json ou https",
+      "exists": false,
+      "refs": [
+        "/var/www/business.roadrunners.run/racetag/form.cfm:447"
+      ],
+      "reference_count": 1
+    },
+    {
+      "path": "/data/events.json",
+      "exists": false,
+      "refs": [
+        "/var/www/runnerhub.run/api/crawler/server.js:298",
+        "/var/www/runnerhub.run/api/crawler/index.cfm:367",
+        "/var/www/runnerhub.run/api/crawler/mapping_action.cfm:194",
+        "/var/www/runnerhub.run/api/crawler/list_action.cfm:175"
+      ],
+      "reference_count": 4
+    },
+    {
+      "path": "/etc/roadrunners/credentials/fcm-deumeet.json",
+      "exists": false,
+      "refs": [
+        "/var/www/roadrunners.com.br/services/NativePushOperationalConfig.cfc:17"
+      ],
+      "reference_count": 1
+    },
+    {
+      "path": "/etc/roadrunners/credentials/medical-mail.json",
+      "exists": true,
+      "refs": [
+        "/var/www/roadrunners.com.br/services/MedicalConfirmationMailer.cfc:24"
+      ],
+      "reference_count": 1
+    },
+    {
+      "path": "/etc/roadrunners/native-push.json",
+      "exists": false,
+      "refs": [
+        "/var/www/roadrunners.com.br/services/NativePushOperationalConfig.cfc:35"
+      ],
+      "reference_count": 1
+    },
+    {
+      "path": "/home/www/site.clubetumtum.com.br/root/assets/img/produtos/quadrada",
+      "exists": false,
+      "refs": [
+        "/var/www/runnerhub.run/admin/comparador/backend-edicao.cfm:58"
+      ],
+      "reference_count": 1
+    },
+    {
+      "path": "/opt/homebrew/bin/node",
+      "exists": false,
+      "refs": [
+        "/var/www/runnerhub.run/api/crawler/run.cfm:34",
+        "/var/www/runnerhub.run/api/crawler/check.cfm:38"
+      ],
+      "reference_count": 2
+    },
+    {
+      "path": "/tmp/#relatorioName#.xlsx",
+      "exists": false,
+      "refs": [
+        "/var/www/business.roadrunners.run/desafios/includes/exportar_excel.cfm:138",
+        "/var/www/business.roadrunners.run/desafios/includes/exportar_excel.cfm:144"
+      ],
+      "reference_count": 2
+    },
+    {
+      "path": "/tmp/runnerhub-runtime-syntax-test",
+      "exists": false,
+      "refs": [
+        "/var/www/runnerhub.run/api/crawler/tests/link-result-collectors.test.js:326"
+      ],
+      "reference_count": 1
+    },
+    {
+      "path": "/tmp/sixcomm-sample.json",
+      "exists": false,
+      "refs": [
+        "/var/www/conteudo.roadrunners.run/tests/sixcomm_sample_extract.py:3"
+      ],
+      "reference_count": 1
+    },
+    {
+      "path": "/usr/bin/chromium-browser",
+      "exists": false,
+      "refs": [
+        "/var/www/runnerhub.run/api/crawler/server.js:2340",
+        "/var/www/runnerhub.run/api/crawler/link resultado/tvcomrunning_link_resultado.js:14",
+        "/var/www/runnerhub.run/api/crawler/link resultado/chiprun_link_resultado.js:13",
+        "/var/www/runnerhub.run/api/crawler/link resultado/protiming_link_resultado.js:14",
+        "/var/www/runnerhub.run/api/crawler/link resultado/recebaDigital_link_resultado.js:15",
+        "/var/www/runnerhub.run/api/crawler/evento/psCrono_link_evento.js:14"
+      ],
+      "reference_count": 19
+    },
+    {
+      "path": "/usr/bin/curl",
+      "exists": true,
+      "refs": [
+        "/var/www/roadrunners.com.br/services/StravaCurlProcess.cfc:2",
+        "/var/www/roadrunners.com.br/services/StravaCurlProcess.cfc:4"
+      ],
+      "reference_count": 2
+    },
+    {
+      "path": "/usr/bin/node",
+      "exists": false,
+      "refs": [
+        "/var/www/runnerhub.run/api/crawler/run.cfm:32",
+        "/var/www/runnerhub.run/api/crawler/check.cfm:36"
+      ],
+      "reference_count": 2
+    },
+    {
+      "path": "/usr/local/bin/node",
+      "exists": false,
+      "refs": [
+        "/var/www/runnerhub.run/api/crawler/run.cfm:33",
+        "/var/www/runnerhub.run/api/crawler/check.cfm:37"
+      ],
+      "reference_count": 2
+    },
+    {
+      "path": "/usr/local/sbin",
+      "exists": true,
+      "refs": [
+        "/var/www/runnerhub.run/api/crawler/server.js:2266"
+      ],
+      "reference_count": 1
+    },
+    {
+      "path": "/var/lib/roadrunners/percursos",
+      "exists": true,
+      "refs": [
+        "/var/www/beta.roadrunners.run/config/mapbox.local.example.cfm:5",
+        "/var/www/beta.roadrunners.run/config/mapbox.local.cfm:4",
+        "/var/www/dev.roadrunners.run/config/mapbox.local.example.cfm:5",
+        "/var/www/dev.roadrunners.run/config/mapbox.local.cfm:4",
+        "/var/www/business.roadrunners.run/config/percursos.local.cfm:4",
+        "/var/www/roadrunners.com.br/config/mapbox.local.example.cfm:5"
+      ],
+      "reference_count": 7
+    },
+    {
+      "path": "/var/lib/runnerhub-secrets/content-google-oauth.local.cfm",
+      "exists": true,
+      "refs": [
+        "/var/www/conteudo.roadrunners.run/inc/content_local_config.cfc:24"
+      ],
+      "reference_count": 1
+    },
+    {
+      "path": "/var/lib/runnerhub/reports/mif-2026",
+      "exists": true,
+      "refs": [
+        "/var/www/business.roadrunners.run/relatorios/maratona-floripa-2026/includes/data.cfm:17",
+        "/var/www/business.roadrunners.run/relatorios/.maratona-floripa-2026-pre-9ccb16620569/includes/data.cfm:8",
+        "/var/www/business.roadrunners.run/relatorios/.maratona-floripa-2026-pre-6cfdae9/includes/data.cfm:10",
+        "/var/www/business.roadrunners.run/relatorios/.maratona-floripa-2026-pre-a7d4c35/includes/data.cfm:8",
+        "/var/www/business.roadrunners.run/relatorios/.maratona-floripa-2026-rollback-20260903-090541/includes/data.cfm:17"
+      ],
+      "reference_count": 5
+    },
+    {
+      "path": "/var/log/apache2/api.roadrunners.run-telemetry.log",
+      "exists": true,
+      "refs": [
+        "/var/www/business.roadrunners.run/Application.cfc:65",
+        "/var/www/business.roadrunners.run/administracao/api-monitor/includes/backend.cfm:13",
+        "/var/www/business.roadrunners.run/config/business.local.cfm:18",
+        "/var/www/business.roadrunners.run/config/business.local.example.cfm:18"
+      ],
+      "reference_count": 4
+    }
+  ],
+  "temp_usage": {
+    "beta.roadrunners.run": {
+      "count": 1,
+      "refs": [
+        "/var/www/beta.roadrunners.run/beta/index.cfm:239"
+      ]
+    },
+    "runnerhub.run": {
+      "count": 5,
+      "refs": [
+        "/var/www/runnerhub.run/admin/financeiro/controle/backend_ofx.cfm:13",
+        "/var/www/runnerhub.run/api/crawler/run.cfm:70",
+        "/var/www/runnerhub.run/leaderboard/admin/index.cfm:676",
+        "/var/www/runnerhub.run/leaderboard/admin/startlist_csv_prepare.cfm:22",
+        "/var/www/runnerhub.run/leaderboard/parciais/athlete_editor.cfm:198"
+      ]
+    },
+    "conteudo.roadrunners.run": {
+      "count": 6,
+      "refs": [
+        "/var/www/conteudo.roadrunners.run/admin/importer_cbat_corridaderua.cfm:1055",
+        "/var/www/conteudo.roadrunners.run/admin/importer_contrarelogio.cfm:1881",
+        "/var/www/conteudo.roadrunners.run/admin/importer_corridanoar.cfm:1099",
+        "/var/www/conteudo.roadrunners.run/admin/importer_correriacampinas.cfm:956",
+        "/var/www/conteudo.roadrunners.run/inc/sixcomm_email_importer.cfc:580",
+        "/var/www/conteudo.roadrunners.run/inc/sixcomm_temp_storage.cfc:31"
+      ]
+    },
+    "dev.roadrunners.run": {
+      "count": 2,
+      "refs": [
+        "/var/www/dev.roadrunners.run/api/integrations/profile-image-upload.cfm:68",
+        "/var/www/dev.roadrunners.run/beta/index.cfm:239"
+      ]
+    },
+    "dev.circuitobrasilgigante.com.br": {
+      "count": 2,
+      "refs": [
+        "/var/www/dev.circuitobrasilgigante.com.br/validacoes-documentos/arquivo/index.cfm:35",
+        "/var/www/dev.circuitobrasilgigante.com.br/cadastro-documentos/flow/documentos_step.cfm:81"
+      ]
+    },
+    "business.roadrunners.run": {
+      "count": 14,
+      "refs": [
+        "/var/www/business.roadrunners.run/administracao/drive/api.cfm:130",
+        "/var/www/business.roadrunners.run/administracao/config-check/index.cfm:167",
+        "/var/www/business.roadrunners.run/administracao/kanban/api.cfm:919",
+        "/var/www/business.roadrunners.run/administracao/vicky/includes/knowledge_batch.cfm:81",
+        "/var/www/business.roadrunners.run/administracao/usuarios/includes/backend.cfm:673",
+        "/var/www/business.roadrunners.run/percursos/geometry.cfm:50",
+        "/var/www/business.roadrunners.run/percursos/download.cfm:51",
+        "/var/www/business.roadrunners.run/percursos/includes/backend.cfm:84"
+      ]
+    },
+    "roadrunners.com.br": {
+      "count": 2,
+      "refs": [
+        "/var/www/roadrunners.com.br/api/integrations/profile-image-upload.cfm:68",
+        "/var/www/roadrunners.com.br/beta/index.cfm:239"
+      ]
+    },
+    "circuitobrasilgigante.com.br": {
+      "count": 2,
+      "refs": [
+        "/var/www/circuitobrasilgigante.com.br/validacoes-documentos/arquivo/index.cfm:35",
+        "/var/www/circuitobrasilgigante.com.br/cadastro-documentos/flow/documentos_step.cfm:81"
+      ]
+    }
+  },
+  "external_symlinks": [],
+  "runtime_environment_paths": [
+    {
+      "name": "LD_LIBRARY_PATH",
+      "path": "/opt/ColdFusion/cfusion/lib:/opt/ColdFusion/cfusion/lib/_linux64:/opt/ColdFusion/cfusion/lib:",
+      "exists": false
+    },
+    {
+      "name": "PWD",
+      "path": "/opt/ColdFusion/cfusion/bin",
+      "exists": true
+    }
+  ]
+}

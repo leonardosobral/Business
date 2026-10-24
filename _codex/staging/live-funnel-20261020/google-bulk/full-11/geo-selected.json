@@ -1,0 +1,126 @@
+{
+  "source": "https://developers.google.com/static/google-ads/api/data/geo/geotargets-2026-10-06.csv.zip",
+  "rows": [
+    {
+      "city": "Bonito",
+      "uf": "MS",
+      "Criteria ID": "1031495",
+      "Name": "Bonito",
+      "Canonical Name": "Bonito,State of Mato Grosso do Sul,Brazil",
+      "Parent ID": "20095",
+      "Country Code": "BR",
+      "Target Type": "City",
+      "Status": "Active"
+    },
+    {
+      "city": "Rio de Janeiro",
+      "uf": "RJ",
+      "Criteria ID": "1001655",
+      "Name": "Rio de Janeiro",
+      "Canonical Name": "Rio de Janeiro,State of Rio de Janeiro,Brazil",
+      "Parent ID": "20102",
+      "Country Code": "BR",
+      "Target Type": "City",
+      "Status": "Active"
+    },
+    {
+      "city": "Fortaleza",
+      "uf": "CE",
+      "Criteria ID": "1001538",
+      "Name": "Fortaleza",
+      "Canonical Name": "Fortaleza,Ceara,Brazil",
+      "Parent ID": "20089",
+      "Country Code": "BR",
+      "Target Type": "City",
+      "Status": "Active"
+    },
+    {
+      "city": "Recife",
+      "uf": "PE",
+      "Criteria ID": "1001625",
+      "Name": "Recife",
+      "Canonical Name": "Recife,State of Pernambuco,Brazil",
+      "Parent ID": "20099",
+      "Country Code": "BR",
+      "Target Type": "City",
+      "Status": "Active"
+    },
+    {
+      "city": "Belo Horizonte",
+      "uf": "MG",
+      "Criteria ID": "1001566",
+      "Name": "Belo Horizonte",
+      "Canonical Name": "Belo Horizonte,State of Minas Gerais,Brazil",
+      "Parent ID": "20094",
+      "Country Code": "BR",
+      "Target Type": "City",
+      "Status": "Active"
+    },
+    {
+      "city": "Porto Alegre",
+      "uf": "RS",
+      "Criteria ID": "1001686",
+      "Name": "Porto Alegre",
+      "Canonical Name": "Porto Alegre,State of Rio Grande do Sul,Brazil",
+      "Parent ID": "20104",
+      "Country Code": "BR",
+      "Target Type": "City",
+      "Status": "Active"
+    },
+    {
+      "city": "Niterói",
+      "uf": "RJ",
+      "Criteria ID": "1001650",
+      "Name": "Niteroi",
+      "Canonical Name": "Niteroi,State of Rio de Janeiro,Brazil",
+      "Parent ID": "20102",
+      "Country Code": "BR",
+      "Target Type": "City",
+      "Status": "Active"
+    },
+    {
+      "city": "Osasco",
+      "uf": "SP",
+      "Criteria ID": "1001754",
+      "Name": "Osasco",
+      "Canonical Name": "Osasco,State of Sao Paulo,Brazil",
+      "Parent ID": "20106",
+      "Country Code": "BR",
+      "Target Type": "City",
+      "Status": "Active"
+    },
+    {
+      "city": "Brasília",
+      "uf": "DF",
+      "Criteria ID": "1001541",
+      "Name": "Brasilia",
+      "Canonical Name": "Brasilia,Federal District,Brazil",
+      "Parent ID": "20090",
+      "Country Code": "BR",
+      "Target Type": "City",
+      "Status": "Active"
+    },
+    {
+      "city": "Foz do Iguaçu",
+      "uf": "PR",
+      "Criteria ID": "1031634",
+      "Name": "Foz do Iguacu",
+      "Canonical Name": "Foz do Iguacu,State of Parana,Brazil",
+      "Parent ID": "20101",
+      "Country Code": "BR",
+      "Target Type": "City",
+      "Status": "Active"
+    },
+    {
+      "city": "Salvador",
+      "uf": "BA",
+      "Criteria ID": "1001533",
+      "Name": "Salvador",
+      "Canonical Name": "Salvador,State of Bahia,Brazil",
+      "Parent ID": "20088",
+      "Country Code": "BR",
+      "Target Type": "City",
+      "Status": "Active"
+    }
+  ]
+}

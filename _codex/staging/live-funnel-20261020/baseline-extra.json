@@ -1,0 +1,22 @@
+[
+  {
+    "site": "RoadRunners",
+    "path": "assets/js/rr-audience.min.js",
+    "sha": "6fe7ce98e5a4a77fe1b6ab5ed21d76ab9cef19714c76a3943948cea189a17fe7",
+    "mode": 493,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "6fe7ce98e5a4a77fe1b6ab5ed21d76ab9cef19714c76a3943948cea189a17fe7",
+    "matches_local": true
+  },
+  {
+    "site": "Business",
+    "path": "portal/audiencia/queries/content.sql",
+    "sha": "7ced96e1dbfb1a56914ef4dd415a748c15452598ac834e8e13720f4f4477d5b8",
+    "mode": 420,
+    "uid": 0,
+    "gid": 0,
+    "local_sha": "7ced96e1dbfb1a56914ef4dd415a748c15452598ac834e8e13720f4f4477d5b8",
+    "matches_local": true
+  }
+]

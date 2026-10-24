@@ -1,0 +1,591 @@
+{
+  "checks": [
+    {
+      "name": "pt-BR date 23725",
+      "passed": true
+    },
+    {
+      "name": "pt-BR date 25734",
+      "passed": true
+    },
+    {
+      "name": "pt-BR date 37531",
+      "passed": true
+    },
+    {
+      "name": "pt-BR date 37568",
+      "passed": true
+    },
+    {
+      "name": "pt-BR date 37918",
+      "passed": true
+    },
+    {
+      "name": "pt-BR date 40288",
+      "passed": true
+    },
+    {
+      "name": "pt-BR bounded title 40288",
+      "passed": true
+    },
+    {
+      "name": "pt-BR city 40288",
+      "passed": false
+    },
+    {
+      "name": "pt-BR date 40833",
+      "passed": true
+    },
+    {
+      "name": "pt-BR date 41907",
+      "passed": true
+    },
+    {
+      "name": "pt-BR bounded title 41907",
+      "passed": true
+    },
+    {
+      "name": "pt-BR city 41907",
+      "passed": false
+    },
+    {
+      "name": "pt-BR date 44892",
+      "passed": true
+    },
+    {
+      "name": "pt-BR bounded title 44892",
+      "passed": true
+    },
+    {
+      "name": "pt-BR city 44892",
+      "passed": false
+    },
+    {
+      "name": "pt-BR date 45372",
+      "passed": true
+    },
+    {
+      "name": "pt-BR date 46741",
+      "passed": true
+    },
+    {
+      "name": "pt-BR bounded title 46741",
+      "passed": true
+    },
+    {
+      "name": "pt-BR city 46741",
+      "passed": false
+    },
+    {
+      "name": "pt-BR date 46742",
+      "passed": true
+    },
+    {
+      "name": "pt-BR bounded title 46742",
+      "passed": true
+    },
+    {
+      "name": "pt-BR city 46742",
+      "passed": false
+    },
+    {
+      "name": "en date 23725",
+      "passed": true
+    },
+    {
+      "name": "en date 25734",
+      "passed": true
+    },
+    {
+      "name": "en date 37531",
+      "passed": true
+    },
+    {
+      "name": "en date 37568",
+      "passed": true
+    },
+    {
+      "name": "en date 37918",
+      "passed": true
+    },
+    {
+      "name": "en date 40288",
+      "passed": true
+    },
+    {
+      "name": "en bounded title 40288",
+      "passed": true
+    },
+    {
+      "name": "en city 40288",
+      "passed": false
+    },
+    {
+      "name": "en date 40833",
+      "passed": true
+    },
+    {
+      "name": "en date 41907",
+      "passed": true
+    },
+    {
+      "name": "en bounded title 41907",
+      "passed": true
+    },
+    {
+      "name": "en city 41907",
+      "passed": false
+    },
+    {
+      "name": "en date 44892",
+      "passed": true
+    },
+    {
+      "name": "en bounded title 44892",
+      "passed": true
+    },
+    {
+      "name": "en city 44892",
+      "passed": false
+    },
+    {
+      "name": "en date 45372",
+      "passed": true
+    },
+    {
+      "name": "en date 46741",
+      "passed": true
+    },
+    {
+      "name": "en bounded title 46741",
+      "passed": true
+    },
+    {
+      "name": "en city 46741",
+      "passed": false
+    },
+    {
+      "name": "en date 46742",
+      "passed": true
+    },
+    {
+      "name": "en bounded title 46742",
+      "passed": true
+    },
+    {
+      "name": "en city 46742",
+      "passed": false
+    },
+    {
+      "name": "es date 23725",
+      "passed": true
+    },
+    {
+      "name": "es date 25734",
+      "passed": true
+    },
+    {
+      "name": "es date 37531",
+      "passed": true
+    },
+    {
+      "name": "es date 37568",
+      "passed": true
+    },
+    {
+      "name": "es date 37918",
+      "passed": true
+    },
+    {
+      "name": "es date 40288",
+      "passed": true
+    },
+    {
+      "name": "es bounded title 40288",
+      "passed": true
+    },
+    {
+      "name": "es city 40288",
+      "passed": false
+    },
+    {
+      "name": "es date 40833",
+      "passed": true
+    },
+    {
+      "name": "es date 41907",
+      "passed": true
+    },
+    {
+      "name": "es bounded title 41907",
+      "passed": true
+    },
+    {
+      "name": "es city 41907",
+      "passed": false
+    },
+    {
+      "name": "es date 44892",
+      "passed": true
+    },
+    {
+      "name": "es bounded title 44892",
+      "passed": true
+    },
+    {
+      "name": "es city 44892",
+      "passed": false
+    },
+    {
+      "name": "es date 45372",
+      "passed": true
+    },
+    {
+      "name": "es date 46741",
+      "passed": true
+    },
+    {
+      "name": "es bounded title 46741",
+      "passed": true
+    },
+    {
+      "name": "es city 46741",
+      "passed": false
+    },
+    {
+      "name": "es date 46742",
+      "passed": true
+    },
+    {
+      "name": "es bounded title 46742",
+      "passed": true
+    },
+    {
+      "name": "es city 46742",
+      "passed": false
+    },
+    {
+      "name": "pt-BR five distinct titles",
+      "passed": false
+    },
+    {
+      "name": "en five distinct titles",
+      "passed": false
+    },
+    {
+      "name": "es five distinct titles",
+      "passed": false
+    }
+  ],
+  "rows": [
+    {
+      "date": "04/05/2025",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "Meia Maratona Internacional de Florian&oacute;polis &#x7c; Florian&oacute;polis SC &#x7c; 04&#x2f;05&#x2f;2025 - corrida de rua &#x7c; Road Runners",
+      "id": 23725,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "15/03/2025",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "Jurer&ecirc; Night Run - Hard Rock Cafe Florian&oacute;polis &#x7c; Florian&oacute;polis SC &#x7c; 15&#x2f;03&#x2f;2025 - corrida de rua &#x7c; Road Runners",
+      "id": 25734,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "05/04/2026",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "title": "LIVE&#x21; RUN XP Rio de Janei - corrida de rua &#x7c; 05&#x2f;04&#x2f;2026 &#x7c; Road Runners",
+      "id": 37531,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "05/07/2026",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "title": "LIVE&#x21; RUN XP Rio de Janei - corrida de rua &#x7c; 05&#x2f;07&#x2f;2026 &#x7c; Road Runners",
+      "id": 37568,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "14/03/2026",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "JURER&Ecirc; NIGHT RUN - HARD ROCK CAFE FLORIAN&Oacute;POLIS &#x7c; Florian&oacute;polis SC &#x7c; 14&#x2f;03&#x2f;2026 - corrida de rua &#x7c; Road Runners",
+      "id": 37918,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "31/12/2026",
+      "city": "São Paulo",
+      "state": "SP",
+      "title": "CORRIDA DA VIRADA 2026 - corrida de rua &#x7c; 31&#x2f;12&#x2f;2026 &#x7c; Road Runners",
+      "id": 40288,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "02/11/2026",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "title": "LIVE&#x21; RUN XP Rio de Janei - corrida de rua &#x7c; 02&#x2f;11&#x2f;2026 &#x7c; Road Runners",
+      "id": 40833,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "31/12/2026",
+      "city": "Porto Franco",
+      "state": "MA",
+      "title": "CORRIDA DA VIRADA 2026 - corrida de rua &#x7c; 31&#x2f;12&#x2f;2026 &#x7c; Road Runners",
+      "id": 41907,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "31/12/2026",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "Corrida Da Virada 2026 - corrida de rua &#x7c; 31&#x2f;12&#x2f;2026 &#x7c; Road Runners",
+      "id": 44892,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "01/05/2027",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "MEIA MARATONA INTERNACIONAL DE FLORIAN&Oacute;POLIS &#x7c; Florian&oacute;polis SC &#x7c; 01&#x2f;05&#x2f;2027 - corrida de rua &#x7c; Road Runners",
+      "id": 45372,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "22/11/2026",
+      "city": "Recife",
+      "state": "PE",
+      "title": "Together Run - corrida de rua &#x7c; 22&#x2f;11&#x2f;2026 &#x7c; Road Runners",
+      "id": 46741,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "22/11/2026",
+      "city": "Lagoa",
+      "state": "PB",
+      "title": "TOGETHER RUN - corrida de rua &#x7c; 22&#x2f;11&#x2f;2026 &#x7c; Road Runners",
+      "id": 46742,
+      "lang": "pt-BR"
+    },
+    {
+      "date": "04/05/2025",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "Meia Maratona Internacional de Florian&oacute;polis &#x7c; Florian&oacute;polis SC &#x7c; 04&#x2f;05&#x2f;2025 - Road race &#x7c; Road Runners",
+      "id": 23725,
+      "lang": "en"
+    },
+    {
+      "date": "15/03/2025",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "Jurer&ecirc; Night Run - Hard Rock Cafe Florian&oacute;polis &#x7c; Florian&oacute;polis SC &#x7c; 15&#x2f;03&#x2f;2025 - Road race &#x7c; Road Runners",
+      "id": 25734,
+      "lang": "en"
+    },
+    {
+      "date": "05/04/2026",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "title": "LIVE&#x21; RUN XP Rio de Janeiro 20 - Road race &#x7c; 05&#x2f;04&#x2f;2026 &#x7c; Road Runners",
+      "id": 37531,
+      "lang": "en"
+    },
+    {
+      "date": "05/07/2026",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "title": "LIVE&#x21; RUN XP Rio de Janeiro 20 - Road race &#x7c; 05&#x2f;07&#x2f;2026 &#x7c; Road Runners",
+      "id": 37568,
+      "lang": "en"
+    },
+    {
+      "date": "14/03/2026",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "JURER&Ecirc; NIGHT RUN - HARD ROCK CAFE FLORIAN&Oacute;POLIS &#x7c; Florian&oacute;polis SC &#x7c; 14&#x2f;03&#x2f;2026 - Road race &#x7c; Road Runners",
+      "id": 37918,
+      "lang": "en"
+    },
+    {
+      "date": "31/12/2026",
+      "city": "São Paulo",
+      "state": "SP",
+      "title": "CORRIDA DA VIRADA 2026 - Road race &#x7c; 31&#x2f;12&#x2f;2026 &#x7c; Road Runners",
+      "id": 40288,
+      "lang": "en"
+    },
+    {
+      "date": "02/11/2026",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "title": "LIVE&#x21; RUN XP Rio de Janeiro 20 - Road race &#x7c; 02&#x2f;11&#x2f;2026 &#x7c; Road Runners",
+      "id": 40833,
+      "lang": "en"
+    },
+    {
+      "date": "31/12/2026",
+      "city": "Porto Franco",
+      "state": "MA",
+      "title": "CORRIDA DA VIRADA 2026 - Road race &#x7c; 31&#x2f;12&#x2f;2026 &#x7c; Road Runners",
+      "id": 41907,
+      "lang": "en"
+    },
+    {
+      "date": "31/12/2026",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "Corrida Da Virada 2026 - Road race &#x7c; 31&#x2f;12&#x2f;2026 &#x7c; Road Runners",
+      "id": 44892,
+      "lang": "en"
+    },
+    {
+      "date": "01/05/2027",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "MEIA MARATONA INTERNACIONAL DE FLORIAN&Oacute;POLIS &#x7c; Florian&oacute;polis SC &#x7c; 01&#x2f;05&#x2f;2027 - Road race &#x7c; Road Runners",
+      "id": 45372,
+      "lang": "en"
+    },
+    {
+      "date": "22/11/2026",
+      "city": "Recife",
+      "state": "PE",
+      "title": "Together Run - Road race &#x7c; 22&#x2f;11&#x2f;2026 &#x7c; Road Runners",
+      "id": 46741,
+      "lang": "en"
+    },
+    {
+      "date": "22/11/2026",
+      "city": "Lagoa",
+      "state": "PB",
+      "title": "TOGETHER RUN - Road race &#x7c; 22&#x2f;11&#x2f;2026 &#x7c; Road Runners",
+      "id": 46742,
+      "lang": "en"
+    },
+    {
+      "date": "04/05/2025",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "Meia Maratona Internacional de Florian&oacute;polis &#x7c; Florian&oacute;polis SC &#x7c; 04&#x2f;05&#x2f;2025 - Carrera de ruta &#x7c; Road Runners",
+      "id": 23725,
+      "lang": "es"
+    },
+    {
+      "date": "15/03/2025",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "Jurer&ecirc; Night Run - Hard Rock Cafe Florian&oacute;polis &#x7c; Florian&oacute;polis SC &#x7c; 15&#x2f;03&#x2f;2025 - Carrera de ruta &#x7c; Road Runners",
+      "id": 25734,
+      "lang": "es"
+    },
+    {
+      "date": "05/04/2026",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "title": "LIVE&#x21; RUN XP Rio de Jane - Carrera de ruta &#x7c; 05&#x2f;04&#x2f;2026 &#x7c; Road Runners",
+      "id": 37531,
+      "lang": "es"
+    },
+    {
+      "date": "05/07/2026",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "title": "LIVE&#x21; RUN XP Rio de Jane - Carrera de ruta &#x7c; 05&#x2f;07&#x2f;2026 &#x7c; Road Runners",
+      "id": 37568,
+      "lang": "es"
+    },
+    {
+      "date": "14/03/2026",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "JURER&Ecirc; NIGHT RUN - HARD ROCK CAFE FLORIAN&Oacute;POLIS &#x7c; Florian&oacute;polis SC &#x7c; 14&#x2f;03&#x2f;2026 - Carrera de ruta &#x7c; Road Runners",
+      "id": 37918,
+      "lang": "es"
+    },
+    {
+      "date": "31/12/2026",
+      "city": "São Paulo",
+      "state": "SP",
+      "title": "CORRIDA DA VIRADA 2026 - Carrera de ruta &#x7c; 31&#x2f;12&#x2f;2026 &#x7c; Road Runners",
+      "id": 40288,
+      "lang": "es"
+    },
+    {
+      "date": "02/11/2026",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "title": "LIVE&#x21; RUN XP Rio de Jane - Carrera de ruta &#x7c; 02&#x2f;11&#x2f;2026 &#x7c; Road Runners",
+      "id": 40833,
+      "lang": "es"
+    },
+    {
+      "date": "31/12/2026",
+      "city": "Porto Franco",
+      "state": "MA",
+      "title": "CORRIDA DA VIRADA 2026 - Carrera de ruta &#x7c; 31&#x2f;12&#x2f;2026 &#x7c; Road Runners",
+      "id": 41907,
+      "lang": "es"
+    },
+    {
+      "date": "31/12/2026",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "Corrida Da Virada 2026 - Carrera de ruta &#x7c; 31&#x2f;12&#x2f;2026 &#x7c; Road Runners",
+      "id": 44892,
+      "lang": "es"
+    },
+    {
+      "date": "01/05/2027",
+      "city": "Florianópolis",
+      "state": "SC",
+      "title": "MEIA MARATONA INTERNACIONAL DE FLORIAN&Oacute;POLIS &#x7c; Florian&oacute;polis SC &#x7c; 01&#x2f;05&#x2f;2027 - Carrera de ruta &#x7c; Road Runners",
+      "id": 45372,
+      "lang": "es"
+    },
+    {
+      "date": "22/11/2026",
+      "city": "Recife",
+      "state": "PE",
+      "title": "Together Run - Carrera de ruta &#x7c; 22&#x2f;11&#x2f;2026 &#x7c; Road Runners",
+      "id": 46741,
+      "lang": "es"
+    },
+    {
+      "date": "22/11/2026",
+      "city": "Lagoa",
+      "state": "PB",
+      "title": "TOGETHER RUN - Carrera de ruta &#x7c; 22&#x2f;11&#x2f;2026 &#x7c; Road Runners",
+      "id": 46742,
+      "lang": "es"
+    }
+  ],
+  "failed": [
+    "pt-BR city 40288",
+    "pt-BR city 41907",
+    "pt-BR city 44892",
+    "pt-BR city 46741",
+    "pt-BR city 46742",
+    "en city 40288",
+    "en city 41907",
+    "en city 44892",
+    "en city 46741",
+    "en city 46742",
+    "es city 40288",
+    "es city 41907",
+    "es city 44892",
+    "es city 46741",
+    "es city 46742",
+    "pt-BR five distinct titles",
+    "en five distinct titles",
+    "es five distinct titles"
+  ],
+  "source_hash": "6e497e9530c65d25784b93a1f05c9ea7632145b3538abd0eb70bf7342f83161a"
+}

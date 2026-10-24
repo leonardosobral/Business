@@ -1,0 +1,17 @@
+[
+  {
+    "file": "evento/index.cfm",
+    "baseline_sha256": "c3d797fe415f8967cd249ac8125b325a262ba84ef3e0f3dbdb933592d7d53b05",
+    "staged_sha256": "0d90d138eb8b718603f4cbc2d35c1f93657a6e847d5aee42aee78a53008598c6"
+  },
+  {
+    "file": "circuito/live_highlight.cfm",
+    "baseline_sha256": "1225da5557b2a2ca40c97f488b9be33d3bcc8986e906aa18d8d832550753bbfa",
+    "staged_sha256": "95f2ae7a16b866e9b7433d270d9a7f2a17a402ded1b6538c83d05b44560c407c"
+  },
+  {
+    "file": "includes/card_evento_live.cfm",
+    "baseline_sha256": "316d10e62cc5796f68366892bccc57fd27b7630f570f2dc88d19774e29e29cf5",
+    "staged_sha256": "da071e944d960a87520b90cd29acb65565d0d6bb4ffa62c6c2c304c385e8425b"
+  }
+]

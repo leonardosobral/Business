@@ -1,0 +1,279 @@
+{
+  "events": [
+    {
+      "id_evento": 44162,
+      "state": "AM",
+      "hash": "22cb9da94082e9c98c355d25a57fb731",
+      "name": "CORRIDA DAS CORES DA AMAZÔNIA",
+      "status": null,
+      "city": "Manaus",
+      "ativo": true,
+      "redirect_tag": null,
+      "source": "https://www.ticketsports.com.br/e/CORRIDA+DAS+CORES+DA+AMAZ%C3%94NIA-87544",
+      "provider": null,
+      "end": "2027-03-28",
+      "start": "2027-03-28",
+      "tag": "2026-corrida-das-cores-da-amazonia",
+      "registration": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87544&origem=novo-site&lang=en-US"
+    },
+    {
+      "id_evento": 46375,
+      "state": "AM",
+      "hash": "756af8fe50d2b918b0f83200b2f5651e",
+      "name": "CORRIDA DAS CORES DA AMAZÔNIA",
+      "status": null,
+      "city": "Manaus",
+      "ativo": true,
+      "redirect_tag": null,
+      "source": "https://www.ticketsports.com.br/e/CORRIDA+DAS+CORES+DA+AMAZ%C3%94NIA-87544",
+      "provider": null,
+      "end": "2027-03-28",
+      "start": "2027-03-28",
+      "tag": "2027-corrida-das-cores-da-amazonia",
+      "registration": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87544&origem=novo-site&lang=en-US"
+    }
+  ],
+  "can_update_redirect": true,
+  "references": [
+    {
+      "table": "tb_listas_importadas",
+      "column": "id_evento",
+      "constraint": "tb_listas_importadas_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_agregadores_eventos",
+      "column": "id_evento",
+      "constraint": "tb_agregadores_eventos_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_badges",
+      "column": "id_evento",
+      "constraint": "tb_badges_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_desafios_rr_provas",
+      "column": "id_evento",
+      "constraint": "tb_desafios_rr_provas_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_evento_corridas_cupom",
+      "column": "id_evento",
+      "constraint": "tb_evento_corridas_cupom_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_evento_corridas_fornecedores",
+      "column": "id_evento",
+      "constraint": "tb_evento_corridas_fornecedores_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_evento_corridas_percursos",
+      "column": "id_evento",
+      "constraint": "tb_evento_corridas_percursos_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_evento_corridas_relaciona",
+      "column": "id_evento",
+      "constraint": "tb_evento_corridas_relaciona_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_resultados_resumo_2025",
+      "column": "id_evento",
+      "constraint": "tb_resultados_resumo_2025_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_resultados_resumo",
+      "column": "id_evento",
+      "constraint": "tb_resultados_resumo_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_resultados",
+      "column": "id_evento",
+      "constraint": "tb_resultados_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_resultados_autodeclarados",
+      "column": "id_evento",
+      "constraint": "tb_resultados_autodeclarados_evento_fk"
+    },
+    {
+      "table": "tb_runtrack_sessoes",
+      "column": "event_id",
+      "constraint": "tb_runtrack_sessoes_event_id_fkey"
+    },
+    {
+      "table": "tb_evento_treinos_config",
+      "column": "id_evento",
+      "constraint": "tb_evento_treinos_config_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_evento_treinos_config",
+      "column": "id_evento_pai",
+      "constraint": "tb_evento_treinos_config_tb_evento_corridas_id_evento_fk2"
+    },
+    {
+      "table": "tb_evento_percurso_embed_visualizacoes",
+      "column": "id_evento",
+      "constraint": "tb_evento_percurso_embed_visualizacoes_id_evento_fkey"
+    },
+    {
+      "table": "crm.tb_crm_participacoes",
+      "column": "id_evento",
+      "constraint": "tb_crm_participacoes_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_leaderboard_config",
+      "column": "id_evento",
+      "constraint": "tb_leaderboard_config_id_evento_fkey"
+    },
+    {
+      "table": "tb_leaderboard_percurso",
+      "column": "id_evento",
+      "constraint": "tb_leaderboard_percurso_id_evento_fkey"
+    },
+    {
+      "table": "tb_leaderboard_startlist",
+      "column": "id_evento",
+      "constraint": "tb_leaderboard_startlist_id_evento_fkey"
+    },
+    {
+      "table": "tb_conta_eventos",
+      "column": "id_evento",
+      "constraint": "fk_conta_eventos_evento"
+    },
+    {
+      "table": "tb_conta_evento_solicitacoes",
+      "column": "id_evento",
+      "constraint": "tb_conta_evento_solicitacoes_id_evento_fkey"
+    },
+    {
+      "table": "crm.tb_crm_evento_versoes",
+      "column": "id_evento",
+      "constraint": "tb_crm_evento_versoes_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "crm.tb_crm_importacoes",
+      "column": "id_evento",
+      "constraint": "tb_crm_importacoes_tb_evento_corridas_id_evento_fk"
+    },
+    {
+      "table": "tb_foco_event_match_state",
+      "column": "id_evento",
+      "constraint": "tb_foco_event_match_state_id_evento_fkey"
+    },
+    {
+      "table": "tb_foco_event_match_candidates",
+      "column": "id_evento",
+      "constraint": "tb_foco_event_match_candidates_id_evento_fkey"
+    },
+    {
+      "table": "tb_evento_foco_vinculos",
+      "column": "id_evento",
+      "constraint": "tb_evento_foco_vinculos_id_evento_fkey"
+    },
+    {
+      "table": "tb_evento_agrega_review_candidates",
+      "column": "id_evento",
+      "constraint": "tb_evento_agrega_review_candidates_id_evento_fkey"
+    },
+    {
+      "table": "tb_evento_corridas_audits",
+      "column": "id_evento",
+      "constraint": "tb_evento_corridas_audits_id_evento_fkey"
+    },
+    {
+      "table": "tb_media",
+      "column": "id_evento",
+      "constraint": "tb_media_id_evento_fkey"
+    },
+    {
+      "table": "tb_agenda_eventos",
+      "column": "id_evento",
+      "constraint": "tb_agenda_eventos_id_evento_fkey"
+    },
+    {
+      "table": "tb_evento_percursos_gpx",
+      "column": "id_evento",
+      "constraint": "tb_evento_percursos_gpx_id_evento_fkey"
+    },
+    {
+      "table": "tb_percurso_migracoes_strava",
+      "column": "id_evento",
+      "constraint": "tb_percurso_migracoes_strava_id_evento_fkey"
+    },
+    {
+      "table": "tb_evento_duplicidade_descartes",
+      "column": "id_evento_a",
+      "constraint": "tb_evento_duplicidade_descartes_evento_a_fk"
+    },
+    {
+      "table": "tb_evento_duplicidade_descartes",
+      "column": "id_evento_b",
+      "constraint": "tb_evento_duplicidade_descartes_evento_b_fk"
+    },
+    {
+      "table": "tb_resultados_importacoes",
+      "column": "id_evento",
+      "constraint": "tb_resultados_importacoes_evento_fk"
+    },
+    {
+      "table": "ads.advertisements",
+      "column": "core_event_id",
+      "constraint": "fk_ads_advertisements_event"
+    },
+    {
+      "table": "ads.campaign_review_requests",
+      "column": "core_event_id",
+      "constraint": "campaign_review_requests_core_event_id_fkey"
+    },
+    {
+      "table": "tb_leaderboard_startlist_importacao",
+      "column": "id_evento",
+      "constraint": "tb_leaderboard_startlist_importacao_id_evento_fkey"
+    },
+    {
+      "table": "tb_evento_descricao_rewrites",
+      "column": "id_evento",
+      "constraint": "tb_evento_descricao_rewrites_id_evento_fkey"
+    },
+    {
+      "table": "tb_evento_descricao_translations",
+      "column": "id_evento",
+      "constraint": "tb_evento_descricao_translations_id_evento_fkey"
+    },
+    {
+      "table": "tb_evento_saude_config",
+      "column": "id_evento",
+      "constraint": "tb_evento_saude_config_id_evento_fkey"
+    },
+    {
+      "table": "tb_evento_saude_historico",
+      "column": "id_evento",
+      "constraint": "tb_evento_saude_historico_id_evento_fkey"
+    },
+    {
+      "table": "tb_resultado_pistas_historicas",
+      "column": "id_evento",
+      "constraint": "tb_resultado_pistas_historicas_id_evento_fkey"
+    },
+    {
+      "table": "tb_resultado_pistas_historicas",
+      "column": "id_evento_anterior",
+      "constraint": "tb_resultado_pistas_historicas_id_evento_anterior_fkey"
+    },
+    {
+      "table": "tb_evento_saude_acesso_solicitacoes",
+      "column": "id_evento",
+      "constraint": "tb_evento_saude_acesso_solicitacoes_id_evento_fkey"
+    },
+    {
+      "table": "tb_evento_geocoding",
+      "column": "id_evento",
+      "constraint": "tb_evento_geocoding_id_evento_fkey"
+    },
+    {
+      "table": "tb_evento_geocoding_audit",
+      "column": "id_evento",
+      "constraint": "tb_evento_geocoding_audit_id_evento_fkey"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "before": {
+    "includes/backend/backend_evento.cfm": "8c0cccaf9205a049a098e442f5f1c9918ba65d28ee22a9c162910fc8491dc10d",
+    "includes/estrutura/menu_apps_data.cfm": "f96197d6ba76c5ba9cda915abef461abdd6ca92c73275f0687afca122317cfca"
+  },
+  "watch": {
+    "evento/index.cfm": "0d90d138eb8b718603f4cbc2d35c1f93657a6e847d5aee42aee78a53008598c6",
+    "evento/parts/edicoes_evento.cfm": "f9c0985993f4c35eb2ba33e1e08d1e620394df13932b02ce5882ef5be1ebb8c9",
+    "includes/estrutura/head.cfm": "dc376f60aedfce1823b37d073fd724c1e92b5b354e4616bb89451e38fb2e2a9c",
+    "includes/estrutura/event_title_date.cfm": "46893b040ce21300628a123f2b16d3e327f0e378ab4760cd5179a7796cc0cfc1",
+    "includes/estrutura/menu_apps.cfm": "f9d90a1d3cc1335065599f72d31a4867d10343bf1f93067e373188c12f53f90c",
+    "includes/estrutura/header_slim.cfm": "07a620b089f70b79524f47b7dfcbc92aebbaee807f142f3768542b01785c9684",
+    "services/EventRedirectService.cfc": "be9e085b471e1532feb6180d9bc20025e40b71d13c63c00deda2fd2954fe2fc4",
+    "public-api/v1/discovery/runner-apps.cfm": "5d89ba014f96aa31f9de81df18a48ed23594813cbf6266e0918d82b03f3b919e"
+  }
+}

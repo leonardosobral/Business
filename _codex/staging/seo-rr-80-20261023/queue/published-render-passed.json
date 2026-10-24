@@ -1,0 +1,12 @@
+{
+  "hashes": {
+    "portal/includes/seo_queue_data.cfm": "136941aaa5a3d73e1c38b852975a96228996ddb5c8ed67ead7553257bfc6337d"
+  },
+  "scenarios": 22,
+  "mode": "published",
+  "access_checks": 8,
+  "siteHealth": 75,
+  "errors": 30,
+  "warnings": 10333,
+  "notices": 5892
+}

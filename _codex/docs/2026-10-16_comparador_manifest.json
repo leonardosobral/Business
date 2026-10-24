@@ -1,0 +1,69 @@
+{
+  "snapshot": "/private/tmp/business-comparador-20261016",
+  "production_root": "/var/www/business.roadrunners.run",
+  "runtime": [
+    {
+      "path": "services/ComparadorAdminService.cfc",
+      "sha256": "21d66a79ea823e7aed1268269115230598690088f081a0205a85d102c3a2f7e7",
+      "production_baseline_sha256": null
+    },
+    {
+      "path": "administracao/comparador/index.cfm",
+      "sha256": "43cc251b80d7fe57bf83efe98667074ca4d7dfae646fd5b821786ec0735406c2",
+      "production_baseline_sha256": null
+    },
+    {
+      "path": "administracao/comparador/home.cfm",
+      "sha256": "c982cd4a39fff6d691c1ba918540e1ad623079ef99c4b57662b63ecf442c5fd8",
+      "production_baseline_sha256": null
+    },
+    {
+      "path": "administracao/comparador/includes/backend.cfm",
+      "sha256": "fb38e9153eb1d5e21e4fe26a70c09920014d19e2aa0d19418135e7cb6654f043",
+      "production_baseline_sha256": null
+    },
+    {
+      "path": "includes/estrutura/sidenav.cfm",
+      "sha256": "cdcf011b6251419ddfffbada9ff578f6ec3699853c2d9b94276830621070a70d",
+      "production_baseline_sha256": "4342580dca5cb9311c9507ba8542db2c5ceac14d2f639ba0ceec22f2f7b64a0e"
+    }
+  ],
+  "migration": "_codex/sql/2026-10-16_comparador_admin.sql",
+  "documents": [
+    "_codex/docs/2026-10-16_comparador_admin.md",
+    "_codex/docs/2026-10-16_comparador_service_evidence.json",
+    "_codex/docs/2026-10-16_comparador_http_evidence.json",
+    "_codex/docs/2026-10-16_comparador_publicacao.json",
+    "_codex/docs/2026-10-16_comparador_public_link_evidence.json",
+    "_codex/docs/2026-10-16_comparador_public_link_publicacao.json"
+  ],
+  "tests": [
+    "_codex/tests/comparador/service.cfm",
+    "_codex/tests/comparador/test_http.py",
+    "_codex/tests/comparador/test_deploy.py",
+    "_codex/tests/comparador/test_public_link.py"
+  ],
+  "exclude_from_runtime": [
+    "harness",
+    "baseline",
+    "output",
+    ".playwright-cli",
+    "includes/backend",
+    "services/BusinessAuthSession.cfc",
+    "services/EmailAddress.cfc",
+    "services/BusinessAccountDelegation.cfc",
+    "services/accountDelegation",
+    "includes/estrutura/head.cfm",
+    "includes/estrutura/header.cfm",
+    "includes/estrutura/footer.cfm",
+    "_codex"
+  ],
+  "visual_evidence": [
+    "output/playwright/comparador-20261016/desktop-novo.png",
+    "output/playwright/comparador-20261016/mobile-novo.png",
+    "output/playwright/comparador-20261016/mobile-caracteristicas.png"
+  ],
+  "checkout_root": "/Users/Shared/Projects/RunnerHub/Business",
+  "release_tool": "_codex/scripts/deploy_comparador_admin.py",
+  "public_link_patch_tool": "_codex/scripts/deploy_comparador_public_link.py"
+}

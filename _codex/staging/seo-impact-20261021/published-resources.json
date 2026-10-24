@@ -1,0 +1,25 @@
+[
+  {
+    "host": "roadrunners.run",
+    "path": "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo",
+    "method": "GET",
+    "status": 200,
+    "sha256": "2def2c2e721eb39d551602bff6db6fda1be2dabaa23bd0408ad1d63f9f6ff085"
+  },
+  {
+    "host": "openresults.run",
+    "path": "/api/runner_apps_menu.cfm",
+    "method": "GET",
+    "status": 200,
+    "success": true,
+    "items": 8
+  },
+  {
+    "host": "openresults.run",
+    "path": "/api/runner_apps_menu.cfm",
+    "method": "POST",
+    "status": 405,
+    "success": false,
+    "items": 0
+  }
+]

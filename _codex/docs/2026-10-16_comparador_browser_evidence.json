@@ -1,0 +1,26 @@
+{
+  "checked_at_utc": "2026-10-17T01:56:02.824168+00:00",
+  "production_authenticated_readonly": true,
+  "catalog_count": 508,
+  "pages": [
+    "catalogo",
+    "dados",
+    "caracteristicas e variantes",
+    "ofertas",
+    "historico",
+    "novo produto"
+  ],
+  "mobile": {
+    "viewport": 390,
+    "document_width": 390,
+    "viewport_restored": true
+  },
+  "public_link_incomplete_product_4251": false,
+  "public_link_complete_product_90": "https://comparador.roadrunners.run/tenis/adidas%2Dadistar/",
+  "production_forms_submitted": 0,
+  "cleanup": {
+    "private_webroot_removed": true,
+    "test_datasource_file_removed": true,
+    "deleted_endpoint_status": 404
+  }
+}

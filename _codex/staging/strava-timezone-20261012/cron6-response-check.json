@@ -1,0 +1,19 @@
+{
+  "validJson": true,
+  "status": "ok",
+  "success": true,
+  "length": 148,
+  "keys": [
+    "message",
+    "status",
+    "success",
+    "RESPONSE_COMPACTED",
+    "updated",
+    "processed",
+    "skipped"
+  ],
+  "updated": 27.0,
+  "processed": 10.0,
+  "skipped": 0.0,
+  "found": true
+}

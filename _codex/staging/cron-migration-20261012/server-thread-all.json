@@ -1,0 +1,198 @@
+{
+  "rc": 0,
+  "stderr": "",
+  "thread_groups": [
+    {
+      "count": 20,
+      "top_stack": [
+        "at jdk.internal.misc.Unsafe.park(java.base@21.0.10/Native Method)",
+        "at java.util.concurrent.locks.LockSupport.park(java.base@21.0.10/LockSupport.java:371)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(java.base@21.0.10/AbstractQueuedSynchronizer.java:519)",
+        "at java.util.concurrent.ForkJoinPool.unmanagedBlock(java.base@21.0.10/ForkJoinPool.java:3778)",
+        "at java.util.concurrent.ForkJoinPool.managedBlock(java.base@21.0.10/ForkJoinPool.java:3723)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(java.base@21.0.10/AbstractQueuedSynchronizer.java:1712)",
+        "at java.util.concurrent.LinkedBlockingQueue.take(java.base@21.0.10/LinkedBlockingQueue.java:435)",
+        "at org.apache.tomcat.util.threads.TaskQueue.take(TaskQueue.java:130)"
+      ]
+    },
+    {
+      "count": 15,
+      "top_stack": [
+        "at jdk.internal.misc.Unsafe.park(java.base@21.0.10/Native Method)",
+        "at java.util.concurrent.locks.LockSupport.parkNanos(java.base@21.0.10/LockSupport.java:269)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(java.base@21.0.10/AbstractQueuedSynchronizer.java:1763)",
+        "at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(java.base@21.0.10/ScheduledThreadPoolExecutor.java:1182)",
+        "at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(java.base@21.0.10/ScheduledThreadPoolExecutor.java:899)",
+        "at java.util.concurrent.ThreadPoolExecutor.getTask(java.base@21.0.10/ThreadPoolExecutor.java:1070)",
+        "at java.util.concurrent.ThreadPoolExecutor.runWorker(java.base@21.0.10/ThreadPoolExecutor.java:1130)",
+        "at java.util.concurrent.ThreadPoolExecutor$Worker.run(java.base@21.0.10/ThreadPoolExecutor.java:642)"
+      ]
+    },
+    {
+      "count": 10,
+      "top_stack": []
+    },
+    {
+      "count": 10,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:568)"
+      ]
+    },
+    {
+      "count": 5,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:339)",
+        "at java.util.TimerThread.mainLoop(java.base@21.0.10/Timer.java:537)",
+        "at java.util.TimerThread.run(java.base@21.0.10/Timer.java:516)"
+      ]
+    },
+    {
+      "count": 5,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at coldfusion.server.j2ee.pool.PoolSkimmerThread.run(PoolSkimmerThread.java:44)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)",
+        "at java.lang.Thread.run(java.base@21.0.10/Thread.java:1583)"
+      ]
+    },
+    {
+      "count": 4,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at coldfusion.scheduling.Scheduler.createRunnable(Scheduler.java:129)",
+        "at coldfusion.scheduling.ThreadPool.createRunnable(ThreadPool.java:175)",
+        "at coldfusion.scheduling.WorkerThread.run(WorkerThread.java:62)"
+      ]
+    },
+    {
+      "count": 4,
+      "top_stack": [
+        "at jdk.internal.misc.Unsafe.park(java.base@21.0.10/Native Method)",
+        "at java.util.concurrent.locks.LockSupport.park(java.base@21.0.10/LockSupport.java:371)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(java.base@21.0.10/AbstractQueuedSynchronizer.java:519)",
+        "at java.util.concurrent.ForkJoinPool.unmanagedBlock(java.base@21.0.10/ForkJoinPool.java:3778)",
+        "at java.util.concurrent.ForkJoinPool.managedBlock(java.base@21.0.10/ForkJoinPool.java:3723)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(java.base@21.0.10/AbstractQueuedSynchronizer.java:1712)",
+        "at java.util.concurrent.LinkedBlockingQueue.take(java.base@21.0.10/LinkedBlockingQueue.java:435)",
+        "at java.util.concurrent.ThreadPoolExecutor.getTask(java.base@21.0.10/ThreadPoolExecutor.java:1070)"
+      ]
+    },
+    {
+      "count": 2,
+      "top_stack": [
+        "at sun.nio.ch.EPoll.wait(java.base@21.0.10/Native Method)",
+        "at sun.nio.ch.EPollSelectorImpl.doSelect(java.base@21.0.10/EPollSelectorImpl.java:121)",
+        "at sun.nio.ch.SelectorImpl.lockAndDoSelect(java.base@21.0.10/SelectorImpl.java:130)",
+        "at sun.nio.ch.SelectorImpl.select(java.base@21.0.10/SelectorImpl.java:142)",
+        "at org.apache.tomcat.util.net.NioEndpoint$Poller.run(NioEndpoint.java:907)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)",
+        "at java.lang.Thread.run(java.base@21.0.10/Thread.java:1583)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at java.lang.ref.Reference.waitForReferencePendingList(java.base@21.0.10/Native Method)",
+        "at java.lang.ref.Reference.processPendingReferences(java.base@21.0.10/Reference.java:246)",
+        "at java.lang.ref.Reference$ReferenceHandler.run(java.base@21.0.10/Reference.java:208)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:339)",
+        "at java.lang.ref.NativeReferenceQueue.await(java.base@21.0.10/NativeReferenceQueue.java:48)",
+        "at java.lang.ref.ReferenceQueue.remove0(java.base@21.0.10/ReferenceQueue.java:158)",
+        "at java.lang.ref.NativeReferenceQueue.remove(java.base@21.0.10/NativeReferenceQueue.java:89)",
+        "at java.lang.ref.Finalizer$FinalizerThread.run(java.base@21.0.10/Finalizer.java:173)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at jdk.internal.misc.Unsafe.park(java.base@21.0.10/Native Method)",
+        "at java.util.concurrent.locks.LockSupport.parkNanos(java.base@21.0.10/LockSupport.java:269)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(java.base@21.0.10/AbstractQueuedSynchronizer.java:1852)",
+        "at java.lang.ref.ReferenceQueue.await(java.base@21.0.10/ReferenceQueue.java:71)",
+        "at java.lang.ref.ReferenceQueue.remove0(java.base@21.0.10/ReferenceQueue.java:143)",
+        "at java.lang.ref.ReferenceQueue.remove(java.base@21.0.10/ReferenceQueue.java:218)",
+        "at jdk.internal.ref.CleanerImpl.run(java.base@21.0.10/CleanerImpl.java:140)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at java.lang.Thread.sleep0(java.base@21.0.10/Native Method)",
+        "at java.lang.Thread.sleep(java.base@21.0.10/Thread.java:509)",
+        "at com.adobe.coldfusion.bootstrap.ConsoleLogRotationHandler$1.run(ConsoleLogRotationHandler.java:62)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)",
+        "at java.lang.Thread.run(java.base@21.0.10/Thread.java:1583)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:339)",
+        "at sun.security.provider.SeedGenerator$ThreadedSeedGenerator.run(java.base@21.0.10/SeedGenerator.java:334)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)",
+        "at java.lang.Thread.run(java.base@21.0.10/Thread.java:1583)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at java.util.TimerThread.mainLoop(java.base@21.0.10/Timer.java:563)",
+        "at java.util.TimerThread.run(java.base@21.0.10/Timer.java:516)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:339)",
+        "at org.apache.felix.framework.EventDispatcher.run(EventDispatcher.java:1122)",
+        "at org.apache.felix.framework.EventDispatcher.access$000(EventDispatcher.java:54)",
+        "at org.apache.felix.framework.EventDispatcher$1.run(EventDispatcher.java:102)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)",
+        "at java.lang.Thread.run(java.base@21.0.10/Thread.java:1583)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:339)",
+        "at org.apache.felix.framework.FrameworkWiringImpl.run(FrameworkWiringImpl.java:169)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)",
+        "at java.lang.Thread.run(java.base@21.0.10/Thread.java:1583)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:339)",
+        "at org.apache.felix.framework.FrameworkStartLevelImpl.run(FrameworkStartLevelImpl.java:274)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)",
+        "at java.lang.Thread.run(java.base@21.0.10/Thread.java:1583)"
+      ]
+    }
+  ],
+  "cf_frames": {}
+}

@@ -1,0 +1,24 @@
+{
+  "backup": "/var/backups/business-cron-timezone-20261012T143505Z-vv02txti",
+  "published_at_utc": "2026-10-12T14:35:05.047701+00:00",
+  "files": {
+    "includes/backend/cron_jobs_service.cfm": {
+      "before": "cfb9f9eec5fe7272e3dc07217c002dae5748c6e78b00532eec2c26e411b142d4",
+      "after": "2cdbbdcb5304ab274dfd0f8ac08656685bfe2516e708a9f0deedfcbd97b37270"
+    },
+    "administracao/cron-jobs/includes/backend.cfm": {
+      "before": "b22e437a86d58a40d7935041ee8a92c18abf16c1023b1df085a5d6c067b7f896",
+      "after": "abdfeef2c1b2a5ae7d10963d04b001f6bcbf47dc152756ca77406b5bfbe8c4d3"
+    },
+    "administracao/cron-jobs/home.cfm": {
+      "before": "a8f13f9588d40566c7505dcf5f093722f06ba3fde454992a76d750d75064b29a",
+      "after": "d9371c8561f2ff43b602f7b6f565212f0472de9ffc38509e9db9eaeed11f1384"
+    },
+    "cron-jobs/runner.cfm": {
+      "before": "a5bba9d1e900655865811480c5db6c419114c1aed002d67b269467b7e33c782d",
+      "after": "3fb19ec63c4aec38500dea20f58c5dab81c7a81a979651d58450eaac23464f1b"
+    }
+  },
+  "metadata_preserved": true,
+  "server_permissions_changed": false
+}

@@ -1,0 +1,22 @@
+{
+  "browserId": "1",
+  "tabId": "283502210",
+  "browserBinding": "browser22",
+  "tabBinding": "rrAudit22",
+  "url": "https://pt.semrush.com/siteaudit/campaign/26661911/review/issue/detail/7",
+  "lastProgress": 5000,
+  "limit": 5000,
+  "state": "complete",
+  "lastCompletedSiteHealth": 71,
+  "next": "Rodada publicada: alias Amazônia (somente tag_301 do ID46375→44162; datas preservadas), títulos sem cortar identidade de quatro provas, descrições de evento com aspas e cadastro Business. 110 checks Adobe, 3 templates compilados, verificações HTTP e XML reais aprovadas. Usuário disse em 22/10: quando acabar essa rodada vou rodar a atualização. NÃO iniciar auditoria autonomamente nesta espera. Avisar que pode rodar 5.000 com a mesma configuração. Nota atual ainda71/IA81 da coleta12:32. Após usuário concluir, conferir resultado terminal, comparar, importar novo snapshot em staging/backup novo. Meta não concluída até Site Health >80. Outros grupos: loja externa sem acesso de edição, links /cdn-cgi/l/email-protection com404 semJS, hreflang URL especial; precisam investigação própria, não excluir checks nem reduzir proteção.",
+  "panelTabId": "283502250",
+  "panelBinding": "seoPanel22",
+  "verifiedAt": "2026-10-22T18:14:47.142619+00:00",
+  "lastTurnClassification": "progress",
+  "notes": "Publicados nesta rodada: RR event_title_date.cfm e head.cfm; Business head.cfm, diferença CSS pesquisa mantida local/prod. Banco: um único flag alias reversível, baseline/ensaio/rollback testados; nenhum outro campo ou vínculo. Ver recibos titles/, heads/ e amazonia-alias*.json. Não houve escrita Git. Painel permanece com medição real de12:32.",
+  "lastCompletedAiHealth": 81,
+  "lastCompletedAt": "2026-10-22T15:32:00Z",
+  "panelPublished": true,
+  "auditRunning": false,
+  "userWillRunNextAudit": true
+}

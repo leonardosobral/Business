@@ -1,0 +1,261 @@
+- button "Pular para o conteúdo"
+- banner:
+  - combobox "Acesse a ferramenta…"
+  - button "Pesquisar":
+  - navigation:
+    - menubar:
+      - button "Convide usuários": Invite free users
+      - menuitem "Preços"
+      - menuitem "Empresarial"
+      - menuitem "Mais"
+      - menuitem "Meu perfil":
+        - generic: c
+- navigation:
+  - list:
+    - link "Início":
+      - /url: https://pt.semrush.com/home/?fid=8614846
+      - generic: Início
+    - link "SEO":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+      - generic: SEO
+    - link "IA":
+      - /url: https://pt.semrush.com/ai-seo/overview/?fid=8614846
+      - generic: IA
+  - list:
+    - link "Tráfego e mercado":
+      - /url: https://pt.semrush.com/analytics/traffic/?fid=8614846
+      - generic: Tráfego e mercado
+    - link "Local":
+      - /url: https://pt.semrush.com/local-business/?fid=8614846
+      - generic: Local
+    - link "Conteúdo":
+      - /url: https://pt.semrush.com/content/?fid=8614846
+      - generic: Conteúdo
+    - link "Anúncios":
+      - /url: https://pt.semrush.com/advertising/?fid=8614846
+      - generic: Anúncios
+    - link "RP para IA":
+      - /url: https://pt.semrush.com/pr-toolkit/?fid=8614846
+      - generic: RP para IA
+    - link "Social":
+      - /url: https://pt.semrush.com/social-media/?fid=8614846
+      - generic: Social
+  - list:
+    - link "Relatórios":
+      - /url: https://pt.semrush.com/my_reports/grid/?fid=8614846
+      - generic: Relatórios
+    - link "Apps":
+      - /url: https://pt.semrush.com/apps/?fid=8614846
+      - generic: Apps
+  - generic: SEO
+  - list:
+    - link "Painel de ferramentas":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+  - generic: Desempenho do site
+  - list:
+    - link "Auditoria do site":
+      - /url: https://pt.semrush.com/siteaudit/?fid=8614846
+    - link "Monitoramento de posição":
+      - /url: https://pt.semrush.com/position-tracking/?fid=8614846
+  - generic: Análise competitiva
+  - list:
+    - link "Visão geral do domínio":
+      - /url: https://pt.semrush.com/analytics/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Rankings orgânicos":
+      - /url: https://pt.semrush.com/analytics/organic/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Principais páginas":
+      - /url: https://pt.semrush.com/analytics/toppages/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Comparação de domínios":
+      - /url: https://pt.semrush.com/analytics/comparedomains/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nas palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordgap/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nos backlinks":
+      - /url: https://pt.semrush.com/analytics/gap/backlinks/?fid=8614846&q=roadrunners.run&searchType=domain
+  - generic: Pesquisa de palavras-chave
+  - list:
+    - link "Visão geral de palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordoverview/?fid=8614846
+    - link "Keyword Magic Tool":
+      - /url: https://pt.semrush.com/analytics/keywordmagic/?fid=8614846
+    - link "Keyword Strategy Builder":
+      - /url: https://pt.semrush.com/analytics/keywordmanager/?fid=8614846
+    - link "Palavras-chave salvas":
+      - /url: https://pt.semrush.com/saved-keywords/?fid=8614846
+  - generic: Ideias de conteúdo
+  - list:
+    - link "SEO Writing Assistant":
+      - /url: https://pt.semrush.com/swa/?fid=8614846
+    - link "Topic Research":
+      - /url: https://pt.semrush.com/topic-research/?fid=8614846
+    - link "SEO Content Template":
+      - /url: https://pt.semrush.com/seo-content-template/?fid=8614846
+  - generic: Construção de links
+  - list:
+    - link "Backlinks":
+      - /url: https://pt.semrush.com/analytics/backlinks/overview/?db=us&fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Domínios de referência":
+      - /url: https://pt.semrush.com/analytics/refdomains/report/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Backlink Audit":
+      - /url: https://pt.semrush.com/backlink_audit/?fid=8614846
+  - generic: Ferramentas extras
+  - list:
+    - link "Sensor":
+      - /url: https://pt.semrush.com/sensor/?fid=8614846&utm_medium=footer&utm_source=semrush
+    - link "SEOquake":
+      - /url: https://www.seoquake.com/?fid=8614846
+    - link "Ranking Semrush":
+      - /url: https://pt.semrush.com/analytics/ranks/rank/?fid=8614846
+  - generic: Outros
+  - list:
+    - link "On Page SEO Checker":
+      - /url: https://pt.semrush.com/on-page-seo-checker/26661911/overview/?fid=8614846
+    - link "Organic Traffic Insights":
+      - /url: https://pt.semrush.com/organic-traffic-insights/project/26661911/?fid=8614846
+    - link "Construção de links":
+      - /url: https://pt.semrush.com/link_building/26661911/main/overview/?fid=8614846
+- button "Ocultar navegação" [expanded]:
+- main:
+  - region "Cabeçalho da Auditoria do site":
+    - navigation "Trilhas de navegação":
+      - list:
+        - link "Início":
+          - /url: /home/
+        - link "SEO":
+          - /url: /seo/26661911/
+        - generic: Auditoria de Site
+    - button "Central de ajuda":
+      - text: Central de ajuda
+    - button "Enviar comentário":
+      - text: Enviar comentário
+    - heading [level=1]: "Auditoria de Site:"
+    - 'combobox "Projeto: Road Runners"':
+      - generic: Road Runners
+    - generic: Preparando-se para rastrear
+    - progressbar
+    - button "Interromper o rastreamento e salvar os resultados":
+    - button "Exportar para PDF":
+      - generic: PDF
+    - button "Exportar para planilha":
+      - generic: Exportar
+    - button "Compartilhar":
+      - generic: Compartilhar
+    - button "Abrir configurações":
+    - generic: roadrunners.run
+    - generic: "Atualizado:"
+    - text: qui, 22 de out de 2026
+    - text: Móvel
+    - generic: "Renderização em JS:"
+    - text: Desativado
+    - generic: "Páginas rastreadas:"
+    - button "Problema nas páginas rastreadas":
+    - text: 5.000/5.000
+    - tablist "Relatórios de Auditoria do site":
+      - tab "Visão geral":
+        - generic: Visão geral
+      - tab "Problemas" [selected]:
+        - generic: Problemas
+      - tab "Páginas rastreadas":
+        - generic: Páginas rastreadas
+      - tab "Estatísticas":
+        - generic: Estatísticas
+      - tab "Comparar rastreamentos":
+        - generic: Comparar rastreamentos
+      - tab "Progresso":
+        - generic: Progresso
+      - tab "Impacto do JS":
+        - generic: Impacto do JS
+  - link "Todos os problemas":
+    - /url: /siteaudit/campaign/26661911/review/issues
+    - generic: Todos os problemas
+  - generic "Detalhes do problema":
+    - heading "1 conflito de hreflang no código-fonte da página" [level=2]
+    - generic: Erro
+    - button "Enviar para…":
+      - generic: Enviar para…
+    - link "Estrutura do site":
+      - /url: /siteaudit/campaign/26661911/review/pagereport/structure?restrictions=eyJ0cmlnZ2VyZWRJc3N1ZSI6MjR9
+      - generic: Estrutura do site
+    - button "Excluir verificação":
+      - generic: Excluir verificação
+    - button "Como resolver este problema":
+      - generic "Como resolver este problema": Como resolver
+    - generic: "Falha:"
+    - generic: "1"
+    - generic: "Sucesso:"
+    - generic: "10.867"
+    - tablist:
+      - tab "Problemas 1" [selected]:
+        - generic: Problemas
+        - generic: "1"
+      - tab "Ocultos 0":
+        - generic: Ocultos
+        - generic: "0"
+    - textbox "Pesquisar"
+    - button "Pesquisar":
+    - combobox "Selecionar filtros avançados":
+      - generic: Filtros avançados
+    - grid:
+      - row "All items URL da página ascending Valor hreflang Tipo de problema Descoberta":
+        - columnheader "All items":
+          - checkbox "All items"
+        - columnheader "URL da página ascending":
+          - text: URL da página
+          - button "ascending":
+        - columnheader "Valor hreflang"
+        - columnheader "Tipo de problema"
+        - columnheader "Descoberta": Descoberta
+        - columnheader
+      - generic: Sortable
+      - row "CLANDESTINA OU TRAVESSURAS? - corrida de rua - Road Runners https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/ Acessar https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/ — Nenhum hreflang de autorreferência out 13, 2026, 3:16 Ocultar https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/ nos resultados de auditoria":
+        - gridcell "CLANDESTINA OU TRAVESSURAS? - corrida de rua - Road Runners https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/ Acessar https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/":
+          - checkbox "CLANDESTINA OU TRAVESSURAS? - corrida de rua - Road Runners https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/ Acessar https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/"
+        - gridcell "CLANDESTINA OU TRAVESSURAS? - corrida de rua - Road Runners https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/ Acessar https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/":
+          - generic: CLANDESTINA OU TRAVESSURAS? - corrida de rua - Road Runners
+          - link "https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada66195071ca9fcc0e4627
+            - generic: https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/
+          - link "Acessar https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/":
+            - /url: https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/
+        - gridcell "—":
+          - generic: —
+        - gridcell "Nenhum hreflang de autorreferência":
+          - generic: Nenhum hreflang de autorreferência
+          - button:
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/evento/2026-clandestina-ou-travessuras?/ nos resultados de auditoria":
+    - status
+    - navigation "Paginação":
+      - generic: "Página:"
+      - textbox "Página:" [disabled]: "1"
+      - generic: de
+      - generic "Última página n.º 1": "1"
+      - combobox:
+        - generic: "10"
+      - status: "Página: 1"
+- contentinfo:
+  - link "Fale conosco":
+    - /url: /company/contacts/
+  - link "Sobre nós":
+    - /url: /company/
+  - link "Blog":
+    - /url: /blog/
+  - button "Português (Brasil)"
+  - link "Ver planos e preços":
+    - /url: /pricing/
+  - link "Comece a usar a Semrush":
+    - /url: https://www.semrush.com/academy/courses/getting-started-with-semrush/
+  - link "Configurações dos cookies":
+    - /url: javascript:window.showConsentSettings();
+  - link "Informações jurídicas":
+    - /url: /company/legal/
+  - link "Política de privacidade":
+    - /url: /company/legal/privacy-policy/
+  - link "Não venda minhas informações pessoais":
+    - /url: javascript:window.showConsentSettings();
+  - generic: © 2026 Semrush Holdings. Todos os direitos reservados.
+- region "Notificações"
+- button "Abrir painel de ajuda"
+- iframe [id="intercom-frame"]
+- region "Notifications"

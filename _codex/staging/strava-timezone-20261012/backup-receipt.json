@@ -1,0 +1,19 @@
+{
+  "backup": "/var/backups/strava-timezone-20261012-g18a8z2g",
+  "captured_at": "2026-10-12T11:58:53.115853-03:00",
+  "activities": 1689,
+  "changed_day": 152,
+  "backup_sha256": "876ee7ab2113ba8e19c5f5ae9e9ca2efa0971d4a5b75068b8a5829322e6021a2",
+  "runtime_before_sha256": "2c182ac30ebadd3236b5ad2031a42e5b2e200ccb114dee99e3574b154e294cbf",
+  "health": {
+    "BusyWorkers": "2",
+    "IdleWorkers": "73",
+    "ConnsTotal": "49",
+    "MemAvailable": 15419324,
+    "SwapTotal": 507900,
+    "SwapFree": 507900,
+    "load1": 0.1005859375,
+    "cpus": 2
+  },
+  "only_mutated_column_planned": "start_date"
+}

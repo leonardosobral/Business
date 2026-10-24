@@ -1,0 +1,550 @@
+<cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED">
+    <nav aria-label="Conta ativa" class="business-delegated-navigation p-3">
+        <cfoutput><strong>#encodeForHTML(VARIABLES.businessActiveAccountName)#</strong> · Acesso pela gestora</cfoutput>
+        <a href="/selecionar-conta/">Trocar conta</a> · <a href="/logout.cfm">Sair</a>
+    </nav>
+    <cfexit method="exittemplate"/>
+</cfif>
+<style>
+  .business-topbar-notification-menu {
+    width: min(22rem, calc(100vw - 1rem));
+    min-width: 18rem;
+    max-width: calc(100vw - 1rem);
+  }
+
+  .business-topbar-notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    white-space: normal;
+    line-height: 1.35;
+  }
+
+  .business-topbar-notification-icon {
+    flex: 0 0 auto;
+    margin-top: 0.1rem;
+  }
+
+  .business-topbar-notification-text {
+    min-width: 0;
+  }
+
+  .business-topbar-notification-actions {
+    background: var(--mdb-body-bg);
+  }
+
+  .business-navbar-maintenance-indicator {
+    color: rgba(255, 255, 255, .62);
+    cursor: default;
+    position: relative;
+  }
+
+  .business-navbar-maintenance-indicator:hover {
+    color: rgba(255, 255, 255, .62);
+  }
+
+  .business-navbar-maintenance-indicator.is-clear {
+    opacity: .28;
+  }
+
+  .business-meet-topbar-item {
+    align-items: center;
+    display: flex;
+  }
+
+  .business-meet-topbar-link {
+    align-items: center;
+    background: rgba(255, 255, 255, .045);
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, .82) !important;
+    display: inline-flex;
+    font-family: inherit;
+    gap: .38rem;
+    margin: 0 .35rem;
+    min-height: 2.15rem;
+    padding: .22rem .55rem !important;
+    transition: background-color .16s ease, border-color .16s ease, color .16s ease;
+  }
+
+  .business-meet-topbar-link:hover,
+  .business-meet-topbar-link:focus {
+    background: rgba(52, 168, 83, .14);
+    border-color: rgba(82, 210, 119, .45);
+    color: #fff !important;
+  }
+
+  .business-meet-topbar-link.disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  .business-meet-topbar-status {
+    background: #8b949e;
+    border: 2px solid #333;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .12);
+    flex: 0 0 .62rem;
+    height: .62rem;
+    width: .62rem;
+  }
+
+  .business-meet-topbar-item.is-active .business-meet-topbar-status {
+    background: #52d273;
+    box-shadow: 0 0 0 1px rgba(82, 210, 115, .3), 0 0 .5rem rgba(82, 210, 115, .45);
+  }
+
+  .business-meet-topbar-item.is-warning .business-meet-topbar-status {
+    background: #fab120;
+  }
+
+  .business-meet-topbar-item.is-error .business-meet-topbar-status {
+    background: #ef6c72;
+  }
+
+  .business-meet-topbar-label {
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+  }
+
+  .business-meet-topbar-avatars {
+    align-items: center;
+    display: flex;
+    padding-left: .15rem;
+  }
+
+  .business-meet-topbar-avatar {
+    align-items: center;
+    border: 2px solid #333;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    flex: 0 0 1.65rem;
+    font-size: .57rem;
+    font-weight: 800;
+    height: 1.65rem;
+    justify-content: center;
+    letter-spacing: -.02em;
+    line-height: 1;
+    text-transform: uppercase;
+    width: 1.65rem;
+  }
+
+  .business-meet-topbar-avatar + .business-meet-topbar-avatar {
+    margin-left: -.42rem;
+  }
+
+  .business-meet-topbar-avatar-tone-0 { background: #3568d4; }
+  .business-meet-topbar-avatar-tone-1 { background: #8b5cc7; }
+  .business-meet-topbar-avatar-tone-2 { background: #168b75; }
+  .business-meet-topbar-avatar-tone-3 { background: #b45c46; }
+  .business-meet-topbar-avatar-tone-4 { background: #60758d; }
+  .business-meet-topbar-avatar-overflow { background: #59616b; }
+
+  .business-meet-topbar-count {
+    align-items: center;
+    background: rgba(82, 210, 115, .16);
+    border-radius: 999px;
+    color: #9ce8b1;
+    display: none;
+    font-size: .68rem;
+    font-weight: 800;
+    justify-content: center;
+    min-width: 1.35rem;
+    padding: .14rem .32rem;
+  }
+
+  .business-meet-arrival-toasts {
+    display: grid;
+    gap: .65rem;
+    max-width: calc(100vw - 2rem);
+    pointer-events: none;
+    position: fixed;
+    right: 1rem;
+    top: 4.6rem;
+    width: min(23rem, calc(100vw - 2rem));
+    z-index: 2000000;
+  }
+
+  .business-meet-arrival-toast {
+    align-items: center;
+    animation: business-meet-toast-in .22s ease-out both;
+    background: rgba(35, 40, 45, .97);
+    border: 1px solid rgba(82, 210, 115, .38);
+    border-radius: .8rem;
+    box-shadow: 0 .75rem 2rem rgba(0, 0, 0, .3);
+    color: #fff;
+    display: grid;
+    gap: .7rem;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    min-height: 4.2rem;
+    padding: .72rem .78rem;
+    pointer-events: auto;
+    transition: opacity .18s ease, transform .18s ease;
+  }
+
+  .business-meet-arrival-toast.is-leaving {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+
+  .business-meet-arrival-avatar {
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, .22);
+    border-radius: 50%;
+    color: #fff;
+    display: inline-flex;
+    flex: 0 0 2.55rem;
+    font-size: .76rem;
+    font-weight: 800;
+    height: 2.55rem;
+    justify-content: center;
+    letter-spacing: -.02em;
+    width: 2.55rem;
+  }
+
+  .business-meet-arrival-copy {
+    display: grid;
+    gap: .08rem;
+    min-width: 0;
+  }
+
+  .business-meet-arrival-copy strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .business-meet-arrival-copy span {
+    color: rgba(255, 255, 255, .68);
+    font-size: .78rem;
+  }
+
+  .business-meet-arrival-close {
+    align-self: start;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, .62);
+    font-size: 1.25rem;
+    height: 1.8rem;
+    line-height: 1;
+    padding: 0;
+    width: 1.8rem;
+  }
+
+  .business-meet-arrival-close:hover,
+  .business-meet-arrival-close:focus-visible {
+    background: rgba(255, 255, 255, .1);
+    color: #fff;
+    outline: none;
+  }
+
+  @keyframes business-meet-toast-in {
+    from { opacity: 0; transform: translateY(-.5rem) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .business-meet-arrival-toast { animation: none; transition: none; }
+  }
+
+  .business-navbar-account-context {
+    align-items: center;
+    display: flex;
+    gap: .55rem;
+    min-width: 0;
+  }
+
+  .business-navbar-account-icon {
+    align-items: center;
+    background: rgba(250, 177, 32, .12);
+    border-radius: .6rem;
+    color: #fab120;
+    display: inline-flex;
+    flex: 0 0 2.15rem;
+    height: 2.15rem;
+    justify-content: center;
+  }
+
+  .business-navbar-account-copy {
+    min-width: 0;
+  }
+
+  .business-navbar-account-label {
+    color: rgba(255, 255, 255, .52);
+    display: block;
+    font-size: .65rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    line-height: 1;
+    margin-bottom: .25rem;
+    text-transform: uppercase;
+  }
+
+  .business-navbar-account-name {
+    color: #fff;
+    display: block;
+    font-size: .92rem;
+    font-weight: 700;
+    line-height: 1.1;
+    max-width: min(38vw, 28rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .business-navbar-account-switch {
+    align-items: center;
+    border-color: rgba(255, 255, 255, .18);
+    border-radius: 50%;
+    color: rgba(255, 255, 255, .78);
+    display: inline-flex;
+    flex: 0 0 2rem;
+    height: 2rem;
+    justify-content: center;
+    padding: 0;
+    width: 2rem;
+  }
+
+  .business-navbar-account-switch:hover,
+  .business-navbar-account-switch:focus {
+    border-color: #fab120;
+    color: #fab120;
+  }
+
+  @media (max-width: 767.98px) {
+    .business-navbar-account-icon,
+    .business-navbar-account-label {
+      display: none;
+    }
+
+    .business-navbar-account-name {
+      max-width: 42vw;
+    }
+
+    .business-meet-topbar-link {
+      gap: .28rem;
+      margin-left: .15rem;
+      margin-right: .15rem;
+      padding-left: .42rem !important;
+      padding-right: .42rem !important;
+    }
+
+    .business-meet-topbar-avatars {
+      display: none;
+    }
+
+    .business-meet-topbar-count:not([hidden]) {
+      display: inline-flex;
+    }
+  }
+</style>
+
+<nav id="main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top shadow-1" style="background-color: #333333;">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Toggler -->
+        <button data-mdb-toggle="sidenav" data-mdb-target="#main-sidenav"
+                class="btn shadow-0 p-0 me-3 d-block d-xl-none"
+                data-mdb-ripple-init aria-controls="#main-sidenav" aria-haspopup="true">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+
+        <!-- Account context -->
+        <cfset VARIABLES.businessNavbarAccountName = "Road Runners Business"/>
+        <cfif isDefined("VARIABLES.businessActiveAccountName") AND len(trim(VARIABLES.businessActiveAccountName))>
+            <cfset VARIABLES.businessNavbarAccountName = VARIABLES.businessActiveAccountName/>
+        <cfelseif isDefined("VARIABLES.businessPendingAccountName") AND len(trim(VARIABLES.businessPendingAccountName))>
+            <cfset VARIABLES.businessNavbarAccountName = VARIABLES.businessPendingAccountName/>
+        <cfelseif isDefined("VARIABLES.businessRealIsAdmin") AND VARIABLES.businessRealIsAdmin>
+            <cfset VARIABLES.businessNavbarAccountName = "Todas as contas"/>
+        </cfif>
+        <div class="business-navbar-account-context my-auto">
+            <span class="business-navbar-account-icon"><i class="fa-solid fa-building"></i></span>
+            <span class="business-navbar-account-copy">
+                <span class="business-navbar-account-label"><cfif isDefined("VARIABLES.businessPendingWorkspace") AND VARIABLES.businessPendingWorkspace>Conta em análise<cfelse>Conta ativa</cfif></span>
+                <cfoutput><span class="business-navbar-account-name" title="#encodeForHTMLAttribute(VARIABLES.businessNavbarAccountName)#">#encodeForHTML(VARIABLES.businessNavbarAccountName)#</span></cfoutput>
+            </span>
+            <cfif structKeyExists(REQUEST,"businessDelegationEnabled") AND REQUEST.businessDelegationEnabled>
+                <a class="btn btn-outline-light business-navbar-account-switch" href="/selecionar-conta/" aria-label="Trocar conta">Trocar conta</a>
+            <cfelseif isDefined("VARIABLES.businessAccountSwitchAvailable") AND VARIABLES.businessAccountSwitchAvailable>
+                <button class="btn btn-outline-light business-navbar-account-switch" type="button" data-business-account-modal-open aria-label="Trocar conta" title="Trocar conta">
+                    <i class="fa-solid fa-right-left"></i>
+                </button>
+            </cfif>
+        </div>
+
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+            <cfif isDefined("VARIABLES.businessCanShowAdminNavigation") AND VARIABLES.businessCanShowAdminNavigation>
+                <li class="nav-item d-flex">
+                    <span class="nav-link me-3 me-lg-0 hidden-arrow business-navbar-maintenance-indicator<cfif VARIABLES.businessPendingTasksTotal EQ 0> is-clear</cfif>"
+                          title="Tarefas pendentes de serviço e manutenção"
+                          aria-label="<cfoutput>#VARIABLES.businessPendingTasksTotal# tarefa<cfif VARIABLES.businessPendingTasksTotal NEQ 1>s</cfif> pendente<cfif VARIABLES.businessPendingTasksTotal NEQ 1>s</cfif> de serviço e manutenção</cfoutput>">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <cfif VARIABLES.businessPendingTasksTotal GT 0>
+                            <span class="badge rounded-pill badge-notification bg-danger"><cfoutput>#VARIABLES.businessPendingTasksTotal#</cfoutput></span>
+                        </cfif>
+                    </span>
+                </li>
+            </cfif>
+            <cfif isDefined("VARIABLES.businessCanShowAdminNavigation") AND VARIABLES.businessCanShowAdminNavigation>
+                <li class="nav-item business-meet-topbar-item" id="businessMeetTopbar"
+                    data-status-url="/administracao/meet/status.cfm" data-poll-ms="20000">
+                    <button class="nav-link business-meet-topbar-link disabled" id="businessMeetTopbarJoin"
+                       type="button" disabled aria-disabled="true"
+                       aria-label="Verificando a sala virtual" title="Verificando a sala virtual…">
+                        <span class="business-meet-topbar-status" id="businessMeetTopbarStatus" aria-hidden="true"></span>
+                        <i class="fa-solid fa-video" aria-hidden="true"></i>
+                        <span class="business-meet-topbar-label d-none d-xl-inline">Meet</span>
+                        <span class="business-meet-topbar-avatars" id="businessMeetTopbarAvatars" aria-hidden="true"></span>
+                        <span class="business-meet-topbar-count" id="businessMeetTopbarCount" hidden></span>
+                    </button>
+                </li>
+            </cfif>
+            <!-- Notification dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownNotifications"
+                   role="button" data-mdb-dropdown-init aria-expanded="false">
+                    <i class="fas fa-bell link-secondary"></i>
+                    <cfif isDefined("qNotificacoesNaoLidas")
+                        AND qNotificacoesNaoLidas.recordcount
+                        AND val(qNotificacoesNaoLidas.total) GT 0>
+                        <span class="badge rounded-pill badge-notification bg-danger"
+                              aria-label="<cfoutput>Notificações não lidas: #val(qNotificacoesNaoLidas.total)#</cfoutput>"><cfoutput>#val(qNotificacoesNaoLidas.total)#</cfoutput></span>
+                    </cfif>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end business-topbar-notification-menu" aria-labelledby="navbarDropdownNotifications">
+                    <li class="bg-light-subtle"><span class="dropdown-header text-center">Notificações</span></li>
+                    <cfif isDefined("qNotificacoesNaoLidas")
+                        AND qNotificacoesNaoLidas.recordcount
+                        AND val(qNotificacoesNaoLidas.total) GT 0
+                        AND isDefined("VARIABLES.businessNotificationCsrf")>
+                        <cfset VARIABLES.businessNotificationReturnUrl = CGI.SCRIPT_NAME/>
+                        <cfif len(trim(CGI.QUERY_STRING))>
+                            <cfset VARIABLES.businessNotificationReturnUrl &= "?" & CGI.QUERY_STRING/>
+                        </cfif>
+                        <li class="business-topbar-notification-actions border-top border-1 border-light-subtle p-2">
+                            <form method="post" action="<cfoutput>#encodeForHTMLAttribute(CGI.SCRIPT_NAME)#</cfoutput>" class="m-0">
+                                <input type="hidden" name="action" value="marcar_todas_notificacoes_lidas"/>
+                                <input type="hidden" name="business_notification_csrf" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.businessNotificationCsrf)#</cfoutput>"/>
+                                <input type="hidden" name="business_notification_return" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.businessNotificationReturnUrl)#</cfoutput>"/>
+                                <button type="submit" class="btn btn-sm btn-outline-secondary w-100">
+                                    <i class="fa-solid fa-check-double me-2"></i>Marcar todas como lidas
+                                </button>
+                            </form>
+                        </li>
+                    </cfif>
+                    <cfif isDefined("qNotificacoes") AND qNotificacoes.recordcount>
+                        <cfoutput query="qNotificacoes">
+                            <cfset VARIABLES.businessNotificationHref = trim(qNotificacoes.link)/>
+                            <cfif len(VARIABLES.businessNotificationHref)>
+                                <cfif reFindNoCase("^https?://", VARIABLES.businessNotificationHref)>
+                                    <cfset VARIABLES.businessNotificationUrl = VARIABLES.businessNotificationHref/>
+                                <cfelseif left(VARIABLES.businessNotificationHref, 1) EQ "/">
+                                    <cfset VARIABLES.businessNotificationUrl = VARIABLES.roadRunnersBaseUrl & VARIABLES.businessNotificationHref/>
+                                <cfelse>
+                                    <cfset VARIABLES.businessNotificationUrl = VARIABLES.roadRunnersBaseUrl & "/" & VARIABLES.businessNotificationHref/>
+                                </cfif>
+                                <cfset VARIABLES.businessNotificationReadUrl = "/?action=abrir_notificacao&id_notifica=" & qNotificacoes.id_notifica & "&destino=" & urlEncodedFormat(VARIABLES.businessNotificationUrl)/>
+                                <li class="border-top border-1 border-light-subtle">
+                                    <a class="dropdown-item business-topbar-notification-item" href="#VARIABLES.businessNotificationReadUrl#" target="_blank">
+                                        <i class="#len(trim(qNotificacoes.icone)) ? qNotificacoes.icone : 'fa-solid fa-bell'# business-topbar-notification-icon"></i>
+                                        <span class="business-topbar-notification-text">#qNotificacoes.conteudo_notifica#</span>
+                                    </a>
+                                </li>
+                            </cfif>
+                        </cfoutput>
+                    <cfelse>
+                        <li><span class="dropdown-item text-muted">Nenhuma notificação</span></li>
+                    </cfif>
+                </ul>
+            </li>
+
+            <!-- Icon dropdown -->
+            <!---<li class="nav-item dropdown">
+                <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown" role="button"
+                   data-mdb-dropdown-init aria-expanded="false">
+                    <i class="flag flag-united-kingdom m-0"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li>
+                        <a class="dropdown-item" href="#"><i class="flag flag-united-kingdom"></i>English
+                            <i class="fa fa-check text-success ms-2"></i></a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"><i class="flag flag-poland"></i>Polski</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"><i class="flag flag-china"></i>中文</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"><i class="flag flag-japan"></i>日本語</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"><i class="flag flag-germany"></i>Deutsch</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"><i class="flag flag-france"></i>Français</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"><i class="flag flag-spain"></i>Español</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"><i class="flag flag-russia"></i>Русский</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"><i class="flag flag-portugal"></i>Português</a>
+                    </li>
+                </ul>
+            </li>--->
+
+            <!-- Avatar -->
+            <div class="g-signin2 d-none" data-onsuccess="onSignIn"></div>
+            <li class="nav-item dropdown">
+
+                <!---<a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"--->
+                   <!---id="navbarDropdownMenuLink" role="button" data-mdb-dropdown-init aria-expanded="false">--->
+                    <!---<img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="22" alt="Avatar"--->
+                         <!---loading="lazy" />--->
+                <!---</a>--->
+                <!---<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">--->
+                    <!---<li><a class="dropdown-item " href="#">Cadastro</a></li>--->
+                    <!---<li><a class="dropdown-item" href="#">Configurações</a></li>--->
+                    <!---<li><a class="dropdown-item" href="#">Sair</a></li>--->
+                <!---</ul>--->
+
+
+                <!--- USER --->
+
+                <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-dropdown-init aria-expanded="false">
+                    <cfoutput><img src="#len(trim(qPerfil.imagem_usuario)) ? qPerfil.imagem_usuario : '/assets/user.png'#"
+                    style="max-height: 22px;" alt="imagem do usuário" class="rounded-circle" onerror="this.onerror=null;this.src='/assets/user.png';"/></cfoutput>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" style="z-index: 999999;">
+                    <li><a class="dropdown-item" href="/">Meus Painéis</a></li>
+                    <li><a class="dropdown-item" href="https://roadrunners.run/atleta/" target="_blank">Meu Perfil</a></li>
+                    <!---<li><a class="dropdown-item" href="/powerups/">Power Ups</a></li>--->
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/logout.cfm" onclick="return typeof signOut === 'function' ? signOut(event) : true">Sair</a></li>
+                </ul>
+
+            </li>
+        </ul>
+    </div>
+    <!-- Container wrapper -->
+</nav>
+
+<cfif isDefined("VARIABLES.businessCanShowAdminNavigation") AND VARIABLES.businessCanShowAdminNavigation>
+    <script src="/assets/js/business-meet-room.js?v=2026091701" defer></script>
+</cfif>
+
+<cfif isDefined("VARIABLES.businessAccountSwitchAvailable") AND VARIABLES.businessAccountSwitchAvailable>
+    <cfset VARIABLES.businessAccountModalRequired = false/>
+    <cfinclude template="account_context_modal.cfm"/>
+</cfif>

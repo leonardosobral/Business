@@ -1,0 +1,69 @@
+{
+  "checks": [
+    {
+      "name": "https://roadrunners.run once per request",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run script consumed by https://roadrunners.run",
+      "passed": true,
+      "actual": "https://roadrunners.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://roadrunners.run script consumed by https://openresults.run",
+      "passed": false,
+      "actual": "https://openresults.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://roadrunners.run endpoint stays same-origin",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run once per request",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run script consumed by https://beta.roadrunners.run",
+      "passed": true,
+      "actual": "https://beta.roadrunners.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://beta.roadrunners.run script consumed by https://openresults.run",
+      "passed": false,
+      "actual": "https://openresults.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://beta.roadrunners.run endpoint stays same-origin",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run once per request",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run script consumed by https://dev.roadrunners.run",
+      "passed": true,
+      "actual": "https://dev.roadrunners.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://dev.roadrunners.run script consumed by https://openresults.run",
+      "passed": false,
+      "actual": "https://openresults.run/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo"
+    },
+    {
+      "name": "https://dev.roadrunners.run endpoint stays same-origin",
+      "passed": true
+    },
+    {
+      "name": "OpenResults same-origin endpoint exists",
+      "passed": false
+    }
+  ],
+  "failed": [
+    "https://roadrunners.run script consumed by https://openresults.run",
+    "https://beta.roadrunners.run script consumed by https://openresults.run",
+    "https://dev.roadrunners.run script consumed by https://openresults.run",
+    "OpenResults same-origin endpoint exists"
+  ],
+  "menu_hash": "64df625fca197a34c0484a6a353a6ce19b8d3f9a662b89a2f5370dc7626d3c8d"
+}

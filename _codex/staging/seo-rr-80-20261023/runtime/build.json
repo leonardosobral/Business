@@ -1,0 +1,7 @@
+{
+  "only_query_changed": true,
+  "method": "Linear minimum keys, all ranking ties and live profile resolution",
+  "no_cache_added": true,
+  "no_database_write": true,
+  "sha256": "c5b5bc23dfc4f7f8a487fb4a82ba1fc72dee104b0c5247abd50e3b65a3156ce0"
+}

@@ -1,0 +1,21 @@
+{
+  "source": "Semrush — interface autenticada no Chrome",
+  "projectId": 26661911,
+  "lastFinishedLabel": "21/10/2026, 10:06 (Brasília)",
+  "completedAuditDate": "2026-10-21",
+  "crawled": 5000,
+  "limit": 5000,
+  "deviceLabel": "Móvel",
+  "javascriptRendered": false,
+  "siteHealth": 71,
+  "aiHealth": 79,
+  "errors": 63,
+  "warnings": 33179,
+  "observedAt": "2026-10-22T15:22:39.889Z",
+  "sourceUrl": "https://pt.semrush.com/siteaudit/campaign/26661911/review/",
+  "newAuditWasRunningWhenObserved": true,
+  "lastFinishedAt": "2026-10-21T13:06:00Z",
+  "finishedPrecision": "minute",
+  "notices": 5865,
+  "timeZoneEvidence": "O seletor lista 08/10/2026 20:20 e 06/10/2026 17:20, iguais aos horários Brasília dos snapshots MCP previamente importados."
+}

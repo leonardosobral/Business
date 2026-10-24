@@ -1,0 +1,82 @@
+{
+  "files": {
+    "or": {
+      "includes/menu_apps.cfm": {
+        "sha256": "e4f26d3fe2ffbc02294553388cbd3687e7170fa4d741c8aa7734aa770d07be48",
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "includes/seo-web-tools-body-end.cfm": {
+        "sha256": "cd9a56e38d0ffdd12477f9cec2fdd85f98dce01fec68ff331b2a840396b6f886",
+        "mode": 493,
+        "uid": 0,
+        "gid": 0
+      },
+      "includes/header.cfm": {
+        "sha256": "698e8c87c634629786e8ee0858a4505718fe997fa1edc5c532c7b44baa7eb4e6",
+        "mode": 493,
+        "uid": 0,
+        "gid": 0
+      },
+      "includes/head.cfm": {
+        "sha256": "dfa64aeaf2d90a2bbef31b12bf671a2fd467d45ddb4d82de2d0682f39083673f",
+        "mode": 493,
+        "uid": 0,
+        "gid": 0
+      },
+      "estado/index.cfm": {
+        "sha256": "248d811835f5c8e11753b02ea169944b20c0a6069edc111202203f1e27b2e0b9",
+        "mode": 493,
+        "uid": 0,
+        "gid": 0
+      },
+      "robots.txt": {
+        "sha256": "8e4bd5112e36b26ac104efe0e382b7ceac690c30f2fb87c9d360b6d9ebb810d3",
+        "mode": 493,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "rr": {
+      "includes/estrutura/event_title_date.cfm": {
+        "sha256": "6e497e9530c65d25784b93a1f05c9ea7632145b3538abd0eb70bf7342f83161a",
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      },
+      "evento/index.cfm": {
+        "sha256": "0d90d138eb8b718603f4cbc2d35c1f93657a6e847d5aee42aee78a53008598c6",
+        "mode": 420,
+        "uid": 0,
+        "gid": 0
+      }
+    }
+  },
+  "http": [
+    {
+      "host": "openresults.run",
+      "path": "/",
+      "status": 200,
+      "type": "text/html;charset=UTF-8"
+    },
+    {
+      "host": "openresults.run",
+      "path": "/assets/js/runner-apps-menu-lazy.min.js?v=20261008seo",
+      "status": 404,
+      "type": "text/html"
+    },
+    {
+      "host": "openresults.run",
+      "path": "/estado/RJ/",
+      "status": 200,
+      "type": "text/html;charset=UTF-8"
+    },
+    {
+      "host": "openresults.run",
+      "path": "/estado/rj/",
+      "status": 200,
+      "type": "text/html;charset=UTF-8"
+    }
+  ]
+}

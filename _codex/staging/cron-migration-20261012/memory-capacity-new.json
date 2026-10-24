@@ -1,0 +1,127 @@
+{
+  "measured_at_utc": "2026-10-12T14:05:51.785219+00:00",
+  "memory_kib": {
+    "MemTotal": 24610696,
+    "MemAvailable": 19676920,
+    "SwapTotal": 507900,
+    "SwapFree": 507900,
+    "Slab": 658560,
+    "SReclaimable": 548912,
+    "KernelStack": 7704,
+    "PageTables": 13660
+  },
+  "load": "0.08 0.20 0.24 1/480 30817",
+  "cpu_count": "2",
+  "java": [
+    {
+      "pid": 28216,
+      "heap_options": [
+        "-Xms2048m",
+        "-Xmx8192m"
+      ],
+      "threads": "236",
+      "cgroup": "0::/user.slice/user-999.slice/session-c1.scope"
+    }
+  ],
+  "process_memory": {
+    "java": {
+      "rss_kib": 4134564,
+      "pss_kib": 4130780,
+      "processes": 1
+    },
+    "apache2": {
+      "rss_kib": 186444,
+      "pss_kib": 140184,
+      "processes": 4
+    },
+    "snapd": {
+      "rss_kib": 44672,
+      "pss_kib": 44668,
+      "processes": 1
+    },
+    "fwupd": {
+      "rss_kib": 47140,
+      "pss_kib": 38336,
+      "processes": 1
+    },
+    "sshd": {
+      "rss_kib": 63516,
+      "pss_kib": 17580,
+      "processes": 6
+    },
+    "unattended-upgr": {
+      "rss_kib": 23112,
+      "pss_kib": 15246,
+      "processes": 1
+    },
+    "systemd": {
+      "rss_kib": 36468,
+      "pss_kib": 12222,
+      "processes": 3
+    },
+    "systemd-journal": {
+      "rss_kib": 15968,
+      "pss_kib": 9573,
+      "processes": 1
+    },
+    "python3": {
+      "rss_kib": 16544,
+      "pss_kib": 9267,
+      "processes": 1
+    },
+    "udisksd": {
+      "rss_kib": 13532,
+      "pss_kib": 6528,
+      "processes": 1
+    },
+    "systemd-udevd": {
+      "rss_kib": 8272,
+      "pss_kib": 4895,
+      "processes": 1
+    },
+    "(sd-pam)": {
+      "rss_kib": 7068,
+      "pss_kib": 3742,
+      "processes": 2
+    },
+    "systemd-resolve": {
+      "rss_kib": 12780,
+      "pss_kib": 3682,
+      "processes": 1
+    },
+    "haveged": {
+      "rss_kib": 5020,
+      "pss_kib": 3369,
+      "processes": 1
+    },
+    "bash": {
+      "rss_kib": 5564,
+      "pss_kib": 3305,
+      "processes": 1
+    }
+  },
+  "jvm_config": {
+    "path": "/opt/coldfusion2025/cfusion/bin/jvm.config",
+    "sha256": "90f62b70a87e5e6a68def5f15dd50f95cd590eda0a71dfb9eaefa5d55208ba32",
+    "heap_options": [
+      "-Xms2048m",
+      "-Xmx8192m"
+    ]
+  },
+  "cf_service_limits": [
+    "MainPID=0",
+    "MemoryHigh=infinity",
+    "MemoryMax=infinity",
+    "TasksMax=28742",
+    "ActiveState=active"
+  ],
+  "apache": [
+    "BusyWorkers: 3",
+    "IdleWorkers: 72"
+  ],
+  "queues": [
+    "LISTEN 0      511                     *:443             *:*          ",
+    "LISTEN 0      511                     *:80              *:*          ",
+    "LISTEN 0      100                 [::1]:8124         [::]:*          "
+  ]
+}

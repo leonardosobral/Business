@@ -1,0 +1,407 @@
+{
+  "nodes": [
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Shared Hit Blocks": 89694,
+      "Actual Total Time": 1804.566,
+      "Actual Rows": 19,
+      "Node Type": "Sort"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Shared Hit Blocks": 89694,
+      "Actual Total Time": 1804.519,
+      "Actual Rows": 19,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Relation Name": "tb_evento_corridas",
+      "Shared Hit Blocks": 84,
+      "Actual Total Time": 114.3,
+      "Actual Rows": 19,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 59,
+      "Actual Total Time": 0.018,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 2",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Relation Name": "tb_resultados_resumo",
+      "Shared Hit Blocks": 59,
+      "Actual Total Time": 0.013,
+      "Actual Rows": 6,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Shared Hit Blocks": 4,
+      "Actual Total Time": 0.026,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 3",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Relation Name": "tb_resultados",
+      "Shared Hit Blocks": 4,
+      "Actual Total Time": 0.022,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Shared Hit Blocks": 4,
+      "Actual Total Time": 0.012,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 89522,
+      "Actual Total Time": 88.931,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 77240,
+      "Actual Total Time": 39.815,
+      "Actual Rows": 23495,
+      "Subplan Name": "CTE evento_resultados_elegiveis",
+      "Node Type": "Result"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_resultados",
+      "Shared Hit Blocks": 77240,
+      "Actual Total Time": 34.239,
+      "Actual Rows": 24801,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Shared Hit Blocks": 8295,
+      "Actual Total Time": 1.783,
+      "Actual Rows": 24802,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83384,
+      "Actual Total Time": 70.507,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 0.001,
+      "Actual Rows": 1,
+      "Node Type": "Result"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83384,
+      "Actual Total Time": 70.504,
+      "Actual Rows": 1,
+      "Node Type": "Limit"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83384,
+      "Actual Total Time": 70.504,
+      "Actual Rows": 1,
+      "Node Type": "Result"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83384,
+      "Actual Total Time": 70.498,
+      "Actual Rows": 1,
+      "Node Type": "Sort"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83384,
+      "Actual Total Time": 70.49,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83381,
+      "Actual Total Time": 70.484,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83378,
+      "Actual Total Time": 70.464,
+      "Actual Rows": 1,
+      "Node Type": "Hash Join"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_paginas_usuarios",
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 3.6,
+      "Actual Rows": 57469,
+      "Node Type": "Seq Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 77240,
+      "Actual Total Time": 62.089,
+      "Actual Rows": 1,
+      "Node Type": "Hash"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 77240,
+      "Actual Total Time": 62.085,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Shared Hit Blocks": 68926,
+      "Actual Total Time": 53.683,
+      "Actual Rows": 1,
+      "Subplan Name": "CTE melhor_classificacao",
+      "Node Type": "Limit"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Shared Hit Blocks": 68926,
+      "Actual Total Time": 53.682,
+      "Actual Rows": 1,
+      "Node Type": "Sort"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Shared Hit Blocks": 68926,
+      "Actual Total Time": 50.795,
+      "Actual Rows": 17520,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 8314,
+      "Actual Total Time": 5.426,
+      "Actual Rows": 16598,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 315356,
+      "Shared Hit Blocks": 68926,
+      "Actual Total Time": 0.003,
+      "Actual Rows": 1,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_usuarios",
+      "Shared Hit Blocks": 3,
+      "Actual Total Time": 0.003,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_paginas",
+      "Shared Hit Blocks": 3,
+      "Actual Total Time": 0.002,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 18.421,
+      "Actual Rows": 1,
+      "Node Type": "Limit"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 18.42,
+      "Actual Rows": 1,
+      "Node Type": "Result"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 18.416,
+      "Actual Rows": 1,
+      "Node Type": "Sort"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 18.409,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 18.406,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 18.397,
+      "Actual Rows": 1,
+      "Node Type": "Hash Join"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_paginas_usuarios",
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 3.545,
+      "Actual Rows": 57469,
+      "Node Type": "Seq Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 10.178,
+      "Actual Rows": 1,
+      "Node Type": "Hash"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 10.175,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 5.276,
+      "Actual Rows": 1,
+      "Subplan Name": "CTE melhor_classificacao",
+      "Node Type": "Limit"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 5.266,
+      "Actual Rows": 1,
+      "Node Type": "Sort"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 4.094,
+      "Actual Rows": 7281,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 2.871,
+      "Actual Rows": 6898,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 131055,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 0.001,
+      "Actual Rows": 1,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_usuarios",
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 0.001,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_paginas",
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 0.001,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 88,
+      "Actual Total Time": 0.016,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 1",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Relation Name": "tb_resultados_resumo",
+      "Shared Hit Blocks": 88,
+      "Actual Total Time": 0.013,
+      "Actual Rows": 6,
+      "Node Type": "Index Scan"
+    }
+  ],
+  "execution_ms": 1816.822,
+  "rows": 19
+}

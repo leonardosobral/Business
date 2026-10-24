@@ -1,0 +1,201 @@
+{
+  "passed": 39,
+  "failed": 0,
+  "results": [
+    {
+      "name": "cadastros authorization anonymous",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ofertas authorization anonymous",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cadastros authorization common",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ofertas authorization common",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cadastros authorization account",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ofertas authorization account",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cadastros authorization delegated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ofertas authorization delegated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cadastros authorization simulated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ofertas authorization simulated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "cadastros authorization admin",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ofertas authorization admin",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Direct cadastros/backend.cfm",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Direct cadastros/home.cfm",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Direct ofertas/backend.cfm",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Direct ofertas/home.cfm",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "marcas renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "marcas&novo=1 renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tipos renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "tipos&novo=1 renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "categorias renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "categorias&novo=1 renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "caracteristicas renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "caracteristicas&novo=1 renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "vinculos renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "vinculos&novo=1 renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "filtros renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "filtros&novo=1 renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "opcoes renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "opcoes&novo=1 renders",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Catalog invalid CSRF",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Create brand form",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Brand escaped/history",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Update brand form",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Stale brand form",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Delete owned synthetic brand",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Offer list recentes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Offer list anteriores",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Offer list vencidas",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "rc": 0,
+  "stderr": "",
+  "thread_groups": [
+    {
+      "count": 10,
+      "top_stack": [
+        "at jdk.internal.misc.Unsafe.park(java.base@21.0.10/Native Method)",
+        "at java.util.concurrent.locks.LockSupport.park(java.base@21.0.10/LockSupport.java:371)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(java.base@21.0.10/AbstractQueuedSynchronizer.java:519)",
+        "at java.util.concurrent.ForkJoinPool.unmanagedBlock(java.base@21.0.10/ForkJoinPool.java:3778)",
+        "at java.util.concurrent.ForkJoinPool.managedBlock(java.base@21.0.10/ForkJoinPool.java:3723)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(java.base@21.0.10/AbstractQueuedSynchronizer.java:1712)",
+        "at java.util.concurrent.LinkedBlockingQueue.take(java.base@21.0.10/LinkedBlockingQueue.java:435)",
+        "at org.apache.tomcat.util.threads.TaskQueue.take(TaskQueue.java:130)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at sun.nio.ch.EPoll.wait(java.base@21.0.10/Native Method)",
+        "at sun.nio.ch.EPollSelectorImpl.doSelect(java.base@21.0.10/EPollSelectorImpl.java:121)",
+        "at sun.nio.ch.SelectorImpl.lockAndDoSelect(java.base@21.0.10/SelectorImpl.java:130)",
+        "at sun.nio.ch.SelectorImpl.select(java.base@21.0.10/SelectorImpl.java:142)",
+        "at org.apache.tomcat.util.net.NioEndpoint$Poller.run(NioEndpoint.java:907)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)",
+        "at java.lang.Thread.run(java.base@21.0.10/Thread.java:1583)"
+      ]
+    }
+  ],
+  "cf_frames": {}
+}

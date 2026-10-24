@@ -1,0 +1,309 @@
+{
+  "ELAPSED_MS": 10.0,
+  "PLAN": [
+    {
+      "JIT": {
+        "Functions": 46,
+        "Options": {
+          "Expressions": true,
+          "Inlining": true,
+          "Deforming": true,
+          "Optimization": true
+        }
+      },
+      "Plan": {
+        "Partial Mode": "Simple",
+        "Plans": [
+          {
+            "Filter": "((NOT is_internal) AND (environment = 'prod'::text) AND (occurred_at <= now()) AND (occurred_at >= ((date_trunc('day'::text, (now() AT TIME ZONE 'America/Sao_Paulo'::text)) - '29 days'::interval) AT TIME ZONE 'America/Sao_Paulo'::text)))",
+            "Plan Rows": 729272,
+            "Alias": "e",
+            "Async Capable": false,
+            "Parent Relationship": "InitPlan",
+            "Parallel Aware": false,
+            "Subplan Name": "CTE regional",
+            "Total Cost": 79057.58,
+            "Plan Width": 342,
+            "Relation Name": "events",
+            "Node Type": "Seq Scan",
+            "Startup Cost": 0.0
+          },
+          {
+            "Plan Width": 877,
+            "Plan Rows": 729272,
+            "Alias": "regional",
+            "Async Capable": false,
+            "CTE Name": "regional",
+            "Parent Relationship": "InitPlan",
+            "Parallel Aware": false,
+            "Subplan Name": "CTE filtered",
+            "Total Cost": 14585.44,
+            "Node Type": "CTE Scan",
+            "Startup Cost": 0.0
+          },
+          {
+            "Plans": [
+              {
+                "Plans": [
+                  {
+                    "Join Type": "Left",
+                    "Plans": [
+                      {
+                        "Plan Width": 276,
+                        "Plan Rows": 729272,
+                        "Alias": "f",
+                        "Async Capable": false,
+                        "CTE Name": "filtered",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Total Cost": 14585.44,
+                        "Node Type": "CTE Scan",
+                        "Startup Cost": 0.0
+                      },
+                      {
+                        "Plans": [
+                          {
+                            "Plans": [
+                              {
+                                "Planned Partitions": 0,
+                                "Plans": [
+                                  {
+                                    "Plan Width": 80,
+                                    "Filter": "(event_kind = 'page_view'::text)",
+                                    "Plan Rows": 85082,
+                                    "Alias": "regional_1",
+                                    "Async Capable": false,
+                                    "CTE Name": "regional",
+                                    "Parent Relationship": "Outer",
+                                    "Parallel Aware": false,
+                                    "Total Cost": 16408.62,
+                                    "Node Type": "CTE Scan",
+                                    "Startup Cost": 0.0
+                                  }
+                                ],
+                                "Plan Rows": 43900,
+                                "Strategy": "Hashed",
+                                "Async Capable": false,
+                                "Parent Relationship": "Subquery",
+                                "Parallel Aware": false,
+                                "Total Cost": 17485.74,
+                                "Partial Mode": "Simple",
+                                "Plan Width": 80,
+                                "Group Key": [
+                                  "regional_1.page_view_id"
+                                ],
+                                "Node Type": "Aggregate",
+                                "Startup Cost": 17046.74
+                              }
+                            ],
+                            "Plan Width": 80,
+                            "Plan Rows": 43900,
+                            "Alias": "i",
+                            "Async Capable": false,
+                            "Parent Relationship": "Outer",
+                            "Parallel Aware": false,
+                            "Total Cost": 17924.74,
+                            "Node Type": "Subquery Scan",
+                            "Startup Cost": 17046.74
+                          }
+                        ],
+                        "Plan Width": 80,
+                        "Plan Rows": 43900,
+                        "Async Capable": false,
+                        "Parent Relationship": "Inner",
+                        "Parallel Aware": false,
+                        "Total Cost": 17924.74,
+                        "Node Type": "Hash",
+                        "Startup Cost": 17924.74
+                      }
+                    ],
+                    "Plan Rows": 729272,
+                    "Hash Cond": "(f.page_view_id = i.page_view_id)",
+                    "Async Capable": false,
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Total Cost": 34973.41,
+                    "Plan Width": 340,
+                    "Inner Unique": true,
+                    "Node Type": "Hash Join",
+                    "Startup Cost": 18473.49
+                  }
+                ],
+                "Plan Width": 340,
+                "Plan Rows": 729272,
+                "Sort Key": [
+                  "f.page_view_id",
+                  "f.visitor_id",
+                  "f.session_id",
+                  "f.page_family",
+                  "f.page_path",
+                  "i.page_content_type",
+                  "i.page_content_id",
+                  "f.source",
+                  "f.medium",
+                  "f.campaign",
+                  "f.creative"
+                ],
+                "Async Capable": false,
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 222476.95,
+                "Node Type": "Sort",
+                "Startup Cost": 220653.77
+              }
+            ],
+            "Plan Rows": 729272,
+            "Strategy": "Sorted",
+            "Async Capable": false,
+            "Parent Relationship": "InitPlan",
+            "Parallel Aware": false,
+            "Subplan Name": "CTE page_metrics",
+            "Total Cost": 257117.37,
+            "Partial Mode": "Simple",
+            "Plan Width": 373,
+            "Group Key": [
+              "f.page_view_id",
+              "f.visitor_id",
+              "f.session_id",
+              "f.page_family",
+              "f.page_path",
+              "i.page_content_type",
+              "i.page_content_id",
+              "f.source",
+              "f.medium",
+              "f.campaign",
+              "f.creative"
+            ],
+            "Node Type": "Aggregate",
+            "Startup Cost": 220653.77
+          },
+          {
+            "Plans": [
+              {
+                "Plan Width": 16,
+                "Filter": "has_view",
+                "Plan Rows": 364636,
+                "Alias": "page_metrics",
+                "Async Capable": false,
+                "CTE Name": "page_metrics",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 14585.44,
+                "Node Type": "CTE Scan",
+                "Startup Cost": 0.0
+              }
+            ],
+            "Plan Rows": 1,
+            "Strategy": "Plain",
+            "Async Capable": false,
+            "Parent Relationship": "InitPlan",
+            "Parallel Aware": false,
+            "Subplan Name": "InitPlan 4",
+            "Total Cost": 15497.04,
+            "Partial Mode": "Simple",
+            "Plan Width": 8,
+            "Node Type": "Aggregate",
+            "Startup Cost": 15497.03
+          },
+          {
+            "Plans": [
+              {
+                "Plans": [
+                  {
+                    "Plans": [
+                      {
+                        "Plan Width": 116,
+                        "Plan Rows": 729272,
+                        "Alias": "page_metrics_1",
+                        "Async Capable": false,
+                        "CTE Name": "page_metrics",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Total Cost": 14585.44,
+                        "Node Type": "CTE Scan",
+                        "Startup Cost": 0.0
+                      }
+                    ],
+                    "Plan Width": 116,
+                    "Plan Rows": 729272,
+                    "Sort Key": [
+                      "page_metrics_1.session_id",
+                      "(ROW(page_metrics_1.page_path, page_metrics_1.page_content_type, page_metrics_1.page_content_id))"
+                    ],
+                    "Async Capable": false,
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Total Cost": 132295.48,
+                    "Node Type": "Sort",
+                    "Startup Cost": 130472.3
+                  }
+                ],
+                "Filter": "((sum(page_metrics_1.active_ms) >= 30000) OR (count(DISTINCT (ROW(page_metrics_1.page_path, page_metrics_1.page_content_type, page_metrics_1.page_content_id))) >= 2))",
+                "Plan Rows": 111,
+                "Strategy": "Sorted",
+                "Async Capable": false,
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 137768.02,
+                "Partial Mode": "Simple",
+                "Plan Width": 16,
+                "Group Key": [
+                  "page_metrics_1.session_id"
+                ],
+                "Node Type": "Aggregate",
+                "Startup Cost": 130472.3
+              }
+            ],
+            "Plan Rows": 1,
+            "Strategy": "Plain",
+            "Async Capable": false,
+            "Parent Relationship": "InitPlan",
+            "Parallel Aware": false,
+            "Subplan Name": "InitPlan 5",
+            "Total Cost": 137769.42,
+            "Partial Mode": "Simple",
+            "Plan Width": 8,
+            "Node Type": "Aggregate",
+            "Startup Cost": 137769.41
+          },
+          {
+            "Plans": [
+              {
+                "Plan Width": 160,
+                "Plan Rows": 729272,
+                "Alias": "filtered",
+                "Async Capable": false,
+                "CTE Name": "filtered",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 14585.44,
+                "Node Type": "CTE Scan",
+                "Startup Cost": 0.0
+              }
+            ],
+            "Plan Width": 160,
+            "Plan Rows": 729272,
+            "Sort Key": [
+              "filtered.page_view_id"
+            ],
+            "Async Capable": false,
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Total Cost": 144758.98,
+            "Node Type": "Sort",
+            "Startup Cost": 142935.8
+          }
+        ],
+        "Plan Width": 112,
+        "Plan Rows": 1,
+        "Strategy": "Plain",
+        "Async Capable": false,
+        "Parallel Aware": false,
+        "Total Cost": 687072.62,
+        "Node Type": "Aggregate",
+        "Startup Cost": 687072.61
+      }
+    }
+  ],
+  "ROWS": 1
+}

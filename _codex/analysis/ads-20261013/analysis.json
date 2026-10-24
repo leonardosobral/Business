@@ -1,0 +1,290 @@
+{
+  "ads": {
+    "before": {
+      "A": [
+        34.62,
+        63,
+        653
+      ],
+      "D": [
+        26.65,
+        48,
+        489
+      ],
+      "E": [
+        26.91,
+        61,
+        502
+      ],
+      "LIVE": [
+        135.73,
+        1458,
+        23957
+      ],
+      "C": [
+        18.39,
+        180,
+        2625
+      ]
+    },
+    "after": {
+      "A": [
+        20.33,
+        101,
+        433
+      ],
+      "D": [
+        22.2,
+        80,
+        486
+      ],
+      "E": [
+        21.76,
+        122,
+        573
+      ],
+      "LIVE": [
+        100.46,
+        956,
+        13737
+      ],
+      "C": [
+        0,
+        0,
+        0
+      ]
+    },
+    "today": {
+      "A": [
+        3.91,
+        37,
+        94
+      ],
+      "D": [
+        2.7,
+        14,
+        88
+      ],
+      "E": [
+        4.89,
+        32,
+        195
+      ],
+      "LIVE": [
+        24.22,
+        214,
+        3283
+      ],
+      "C": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "metrics": [
+    {
+      "period": "before",
+      "campaign": "A",
+      "cost_brl": 34.62,
+      "clicks": 63,
+      "impressions": 653,
+      "sessions": 55,
+      "pageviews": 148,
+      "qualified_sessions": 45,
+      "outbound_sessions": 0,
+      "cost_qualified": 0.7693,
+      "cpc": 0.5495
+    },
+    {
+      "period": "before",
+      "campaign": "D",
+      "cost_brl": 26.65,
+      "clicks": 48,
+      "impressions": 489,
+      "sessions": 38,
+      "pageviews": 79,
+      "qualified_sessions": 30,
+      "outbound_sessions": 0,
+      "cost_qualified": 0.8883,
+      "cpc": 0.5552
+    },
+    {
+      "period": "before",
+      "campaign": "E",
+      "cost_brl": 26.91,
+      "clicks": 61,
+      "impressions": 502,
+      "sessions": 57,
+      "pageviews": 136,
+      "qualified_sessions": 42,
+      "outbound_sessions": 5,
+      "cost_qualified": 0.6407,
+      "cpc": 0.4411
+    },
+    {
+      "period": "before",
+      "campaign": "LIVE",
+      "cost_brl": 135.73,
+      "clicks": 1458,
+      "impressions": 23957,
+      "sessions": 708,
+      "pageviews": 10074,
+      "qualified_sessions": 124,
+      "outbound_sessions": 6,
+      "cost_qualified": 1.0946,
+      "cpc": 0.0931
+    },
+    {
+      "period": "before",
+      "campaign": "C",
+      "cost_brl": 18.39,
+      "clicks": 180,
+      "impressions": 2625,
+      "sessions": 93,
+      "pageviews": 424,
+      "qualified_sessions": 11,
+      "outbound_sessions": 0,
+      "cost_qualified": 1.6718,
+      "cpc": 0.1022
+    },
+    {
+      "period": "after",
+      "campaign": "A",
+      "cost_brl": 20.33,
+      "clicks": 101,
+      "impressions": 433,
+      "sessions": 93,
+      "pageviews": 232,
+      "qualified_sessions": 78,
+      "outbound_sessions": 0,
+      "cost_qualified": 0.2606,
+      "cpc": 0.2013
+    },
+    {
+      "period": "after",
+      "campaign": "D",
+      "cost_brl": 22.2,
+      "clicks": 80,
+      "impressions": 486,
+      "sessions": 62,
+      "pageviews": 142,
+      "qualified_sessions": 43,
+      "outbound_sessions": 0,
+      "cost_qualified": 0.5163,
+      "cpc": 0.2775
+    },
+    {
+      "period": "after",
+      "campaign": "E",
+      "cost_brl": 21.76,
+      "clicks": 122,
+      "impressions": 573,
+      "sessions": 103,
+      "pageviews": 315,
+      "qualified_sessions": 82,
+      "outbound_sessions": 5,
+      "cost_qualified": 0.2654,
+      "cpc": 0.1784
+    },
+    {
+      "period": "after",
+      "campaign": "LIVE",
+      "cost_brl": 100.46,
+      "clicks": 956,
+      "impressions": 13737,
+      "sessions": 504,
+      "pageviews": 1049,
+      "qualified_sessions": 131,
+      "outbound_sessions": 13,
+      "cost_qualified": 0.7669,
+      "cpc": 0.1051
+    },
+    {
+      "period": "after",
+      "campaign": "C",
+      "cost_brl": 0,
+      "clicks": 0,
+      "impressions": 0,
+      "sessions": 0,
+      "pageviews": 0,
+      "qualified_sessions": 0,
+      "outbound_sessions": 0,
+      "cost_qualified": null,
+      "cpc": null
+    },
+    {
+      "period": "today",
+      "campaign": "A",
+      "cost_brl": 3.91,
+      "clicks": 37,
+      "impressions": 94,
+      "sessions": 31,
+      "pageviews": 109,
+      "qualified_sessions": 30,
+      "outbound_sessions": 0,
+      "cost_qualified": 0.1303,
+      "cpc": 0.1057
+    },
+    {
+      "period": "today",
+      "campaign": "D",
+      "cost_brl": 2.7,
+      "clicks": 14,
+      "impressions": 88,
+      "sessions": 11,
+      "pageviews": 18,
+      "qualified_sessions": 8,
+      "outbound_sessions": 0,
+      "cost_qualified": 0.3375,
+      "cpc": 0.1929
+    },
+    {
+      "period": "today",
+      "campaign": "E",
+      "cost_brl": 4.89,
+      "clicks": 32,
+      "impressions": 195,
+      "sessions": 25,
+      "pageviews": 55,
+      "qualified_sessions": 20,
+      "outbound_sessions": 0,
+      "cost_qualified": 0.2445,
+      "cpc": 0.1528
+    },
+    {
+      "period": "today",
+      "campaign": "LIVE",
+      "cost_brl": 24.22,
+      "clicks": 214,
+      "impressions": 3283,
+      "sessions": 115,
+      "pageviews": 486,
+      "qualified_sessions": 29,
+      "outbound_sessions": 2,
+      "cost_qualified": 0.8352,
+      "cpc": 0.1132
+    },
+    {
+      "period": "today",
+      "campaign": "C",
+      "cost_brl": 0,
+      "clicks": 0,
+      "impressions": 0,
+      "sessions": 0,
+      "pageviews": 0,
+      "qualified_sessions": 0,
+      "outbound_sessions": 0,
+      "cost_qualified": null,
+      "cpc": null
+    }
+  ],
+  "google_conversion": {
+    "period": "2026-10-01 a 2026-10-13",
+    "name": "RR | Saída para inscrição LIVE!",
+    "status": "Ativa",
+    "secondary": true,
+    "all_conversions": 20,
+    "value": 0
+  }
+}

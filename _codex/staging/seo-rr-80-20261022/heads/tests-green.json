@@ -1,0 +1,93 @@
+{
+  "checks": [
+    {
+      "name": "0 description",
+      "passed": true
+    },
+    {
+      "name": "0 og:description",
+      "passed": true
+    },
+    {
+      "name": "0 twitter:description",
+      "passed": true
+    },
+    {
+      "name": "1 description",
+      "passed": true
+    },
+    {
+      "name": "1 og:description",
+      "passed": true
+    },
+    {
+      "name": "1 twitter:description",
+      "passed": true
+    },
+    {
+      "name": "2 description",
+      "passed": true
+    },
+    {
+      "name": "2 og:description",
+      "passed": true
+    },
+    {
+      "name": "2 twitter:description",
+      "passed": true
+    },
+    {
+      "name": "3 description",
+      "passed": true
+    },
+    {
+      "name": "3 og:description",
+      "passed": true
+    },
+    {
+      "name": "3 twitter:description",
+      "passed": true
+    },
+    {
+      "name": "/cadastro/ description policy",
+      "passed": true
+    },
+    {
+      "name": "/cadastro/ existing title",
+      "passed": true
+    },
+    {
+      "name": "/login/ description policy",
+      "passed": true
+    },
+    {
+      "name": "/login/ existing title",
+      "passed": true
+    },
+    {
+      "name": "/portal/seo/ description policy",
+      "passed": true
+    },
+    {
+      "name": "/portal/seo/ existing title",
+      "passed": true
+    },
+    {
+      "name": "/portal/conteudo/ description policy",
+      "passed": true
+    },
+    {
+      "name": "/portal/conteudo/ existing title",
+      "passed": true
+    }
+  ],
+  "failed": [],
+  "hashes": {
+    "rr": {
+      "includes/estrutura/head.cfm": "dc376f60aedfce1823b37d073fd724c1e92b5b354e4616bb89451e38fb2e2a9c"
+    },
+    "business": {
+      "includes/estrutura/head.cfm": "37adbbbcc9a99f0cb8911aca76dda2e9ad456c086318bc812ab4e6ef8bd3673d"
+    }
+  }
+}

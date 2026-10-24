@@ -1,0 +1,323 @@
+{
+  "release": "20261017T193048Z-57cce513",
+  "status": "published_verified",
+  "projects": {
+    "business": {
+      "status": "published",
+      "created_at": "2026-10-17T19:30:51.415635+00:00",
+      "root": "/var/www/business.roadrunners.run",
+      "backup": "/var/backups/awin-publication-20261017/business/20261017T193048Z-57cce513",
+      "files": {
+        "administracao/comparador/awin/backend.cfm": {
+          "before": "9d8642eee0ba6685197777f0acf2e0df650e4f53f0d320611c6a1b2efb178037",
+          "after": "4d24ea9a703743b3e8088adbf933c13cbc96ff3d6e863aad9dcd36cb9caca24f",
+          "attributes": {
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        },
+        "administracao/comparador/awin/home.cfm": {
+          "before": "8b902b3c542cb66d9370c9d0e38be542277da68cfffc57fb9dd22b57bc345e9b",
+          "after": "b2406b3f793d20980702b32643f95e2f7f85d0e8dddd7a92b4fd7ccc9e5f0723",
+          "attributes": {
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        },
+        "administracao/comparador/awin/publication.cfm": {
+          "before": null,
+          "after": "18ec899c7a277482a11a7590ce381852da08de83c12b24238289267852c827a6",
+          "attributes": {
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        },
+        "api/comparador/awin-sync.cfm": {
+          "before": null,
+          "after": "b7a4b70fd2b1d655f28099787b27b3be641d227496a495314bbee4a15799408f",
+          "attributes": {
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        },
+        "services/ComparadorAwinPublicationService.cfc": {
+          "before": null,
+          "after": "6ddc84d2cd8816848a15ff29c0c3e7651ecc91595be65efe02d6ae7f05fec27e",
+          "attributes": {
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        },
+        "services/ComparadorAwinService.cfc": {
+          "before": "d422644b853dcdcd1607dc66c6ef6988778859998753d32242f7f1107e75a75f",
+          "after": "7a9c37761b9feb94f863a5d7e2b3a66f609148d9bfecfb25cb1fedaaff8a8935",
+          "attributes": {
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        }
+      },
+      "changed": [
+        "administracao/comparador/awin/backend.cfm",
+        "administracao/comparador/awin/home.cfm",
+        "administracao/comparador/awin/publication.cfm",
+        "api/comparador/awin-sync.cfm",
+        "services/ComparadorAwinPublicationService.cfc",
+        "services/ComparadorAwinService.cfc"
+      ],
+      "created_directories": [
+        "api/comparador"
+      ],
+      "published_at": "2026-10-17T19:30:51.431929+00:00"
+    },
+    "comparador": {
+      "status": "published",
+      "created_at": "2026-10-17T19:30:51.433214+00:00",
+      "root": "/var/www/dev.comparador.run",
+      "backup": "/var/backups/awin-publication-20261017/comparador/20261017T193048Z-57cce513",
+      "files": {
+        "includes/produto_card.cfm": {
+          "before": "d3ce21a852b39626e7bd99baf08283f7eb4a3364e9566c9db6bd50fc1dd81a72",
+          "after": "33d7dc66f555f808557d2e8d2e872ecd9f9e800fbfdbfde1a06985388f0b2a4c",
+          "attributes": {
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        },
+        "services/AwinOfferReader.cfc": {
+          "before": null,
+          "after": "d78d8950f24c0cd7bd3403a7adb03029432b8a353feafeed091ad7a49993604e",
+          "attributes": {
+            "uid": 0,
+            "gid": 0,
+            "mode": 493
+          }
+        }
+      },
+      "changed": [
+        "includes/produto_card.cfm",
+        "services/AwinOfferReader.cfc"
+      ],
+      "created_directories": [],
+      "published_at": "2026-10-17T19:30:51.439026+00:00"
+    }
+  },
+  "checks": [
+    {
+      "name": "admin_login",
+      "url": "https://business.roadrunners.run/administracao/comparador/awin/",
+      "status": 302,
+      "expected": 302,
+      "passed": true,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "include_guard",
+      "url": "https://business.roadrunners.run/administracao/comparador/awin/publication.cfm",
+      "status": 403,
+      "expected": 403,
+      "passed": true,
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "scheduled_method",
+      "url": "https://business.roadrunners.run/api/comparador/awin-sync.cfm",
+      "status": 405,
+      "expected": 405,
+      "passed": true,
+      "body_sha256": "d9f0984a67ba3d2dffa61026f83ee4382a56e8ef5bf9f8085e722551fe615c5e"
+    },
+    {
+      "name": "scheduled_auth",
+      "url": "https://business.roadrunners.run/api/comparador/awin-sync.cfm",
+      "status": 401,
+      "expected": 401,
+      "passed": true,
+      "body_sha256": "d9aa8c569c6b59baf7809e62793978194aedc30d01d74a16fbd465db451cef24"
+    },
+    {
+      "name": "service_nonremote",
+      "url": "https://business.roadrunners.run/services/ComparadorAwinPublicationService.cfc?method=synchronizeScheduled",
+      "status": 500,
+      "expected": 500,
+      "passed": true,
+      "body_sha256": "7457ca80d5c8af60c9e3573b7fb71e1f0ba975a1828b3a42810d2abc828e52ba"
+    },
+    {
+      "name": "source_nonremote",
+      "url": "https://business.roadrunners.run/services/ComparadorAwinService.cfc?method=refreshScheduled",
+      "status": 500,
+      "expected": 500,
+      "passed": true,
+      "body_sha256": "65b2b54946c923b2fad35b84c00fe641aa1327c3563f24f399dbc6de225b64f8"
+    },
+    {
+      "name": "public_product",
+      "url": "https://comparador.roadrunners.run/tenis/olympikus-corre-4/",
+      "status": 200,
+      "expected": 200,
+      "passed": true,
+      "body_sha256": "b6aca68fb1bb6a2688ea20923b4008ab440a079d3e532dc75a7247da89d7e5e3"
+    }
+  ],
+  "tests": {
+    "CHECKS": [
+      "Permissão rejeitada: {\"DELEGATED\":false,\"ISPOST\":true,\"ISADMIN\":false,\"CSRFVERIFIED\":true,\"ACTORID\":1}",
+      "Permissão rejeitada: {\"DELEGATED\":true,\"ISPOST\":true,\"ISADMIN\":true,\"CSRFVERIFIED\":true,\"ACTORID\":1}",
+      "Permissão rejeitada: {\"DELEGATED\":false,\"ISPOST\":false,\"ISADMIN\":true,\"CSRFVERIFIED\":true,\"ACTORID\":1}",
+      "Permissão rejeitada: {\"DELEGATED\":false,\"ISPOST\":true,\"ISADMIN\":true,\"CSRFVERIFIED\":false,\"ACTORID\":1}",
+      "Modelo e geração exatos",
+      "Geração 4 não corresponde a 40",
+      "Linha genérica exige confirmação",
+      "Variante GTX não é atribuída ao modelo base",
+      "Variante Pro não é atribuída ao modelo base",
+      "Identidade ambígua não publica",
+      "Não inventa preço a partir do texto",
+      "Bloqueio impede republicação automática",
+      "Uma campanha pode atender produtos confirmados",
+      "Mudança de condições invalida confirmação manual",
+      "Produto removido torna vínculo pendente",
+      "Campanha retirada deixa a publicação",
+      "Leitor aceita campanha vigente",
+      "Leitor suspende fonte desatualizada",
+      "Campanha futura não aparece",
+      "Vencimento respeita fuso exato",
+      "Vínculo confere identidade atual do produto",
+      "Protótipo nunca exibe oferta",
+      "Produto renomeado não herda campanha antiga",
+      "URL insegura nunca é publicada",
+      "Sincronização idempotente sem duplicar vínculos",
+      "Catálogo real tem correspondência inequívoca",
+      "Bloqueio é persistido atomicamente",
+      "Formulário antigo não sobrescreve decisão nova",
+      "Rotina preserva bloqueio manual",
+      "Administrador pode restaurar vínculo automático",
+      "Confirmação manual é persistida",
+      "Consulta antiga não substitui publicação vigente"
+    ],
+    "PASSED": 32
+  },
+  "scheduled_first_run": {
+    "PUBLICATION": {
+      "DECISIONS": 38,
+      "EXISTS": true,
+      "PUBLISHEDAT": "2026-10-17T19:32:17.482197909Z",
+      "OFFERS": 1,
+      "SOURCEUPDATEDAT": "2026-10-17T19:32:17.204711328Z",
+      "HISTORY": 1
+    },
+    "JOBS": {
+      "COLUMNS": [
+        "ID_CRON_JOB",
+        "NOME",
+        "ATIVO",
+        "INTERVAL_MINUTES",
+        "LAST_STATUS",
+        "LAST_HTTP_STATUS",
+        "LAST_RUN_AT",
+        "NEXT_RUN_AT"
+      ],
+      "DATA": [
+        [
+          24,
+          "Comparador - Campanhas e ofertas Awin",
+          true,
+          30,
+          "success",
+          "200 OK",
+          "October, 17 2026 19:32:15",
+          "October, 17 2026 20:02:15"
+        ]
+      ]
+    },
+    "RUNS": {
+      "COLUMNS": [
+        "ID_CRON_JOB_RUN",
+        "TRIGGER_TYPE",
+        "STARTED_AT",
+        "FINISHED_AT",
+        "STATUS",
+        "HTTP_STATUS",
+        "RESPONSE_PREVIEW",
+        "ERROR_MESSAGE"
+      ],
+      "DATA": [
+        [
+          211126,
+          "scheduled",
+          "October, 17 2026 19:32:13",
+          "October, 17 2026 19:32:15",
+          "success",
+          "200 OK",
+          "{\"STATUS\":\"ok\",\"SUCCESS\":true,\"PENDING\":37.0,\"CAMPAIGNS\":1.0,\"OFFERS\":1} ",
+          null
+        ]
+      ]
+    }
+  },
+  "visual": {
+    "public_desktop": "awin-oferta-corre4-desktop.png",
+    "public_mobile": "awin-oferta-corre4-mobile.png",
+    "business": "awin-business-vinculacao.png",
+    "mobile_width": 390,
+    "mobile_scroll_width": 390
+  },
+  "final_verification": {
+    "verified_files": [
+      {
+        "project": "business",
+        "file": "administracao/comparador/awin/backend.cfm",
+        "sha256": "4d24ea9a703743b3e8088adbf933c13cbc96ff3d6e863aad9dcd36cb9caca24f"
+      },
+      {
+        "project": "business",
+        "file": "administracao/comparador/awin/home.cfm",
+        "sha256": "b2406b3f793d20980702b32643f95e2f7f85d0e8dddd7a92b4fd7ccc9e5f0723"
+      },
+      {
+        "project": "business",
+        "file": "administracao/comparador/awin/publication.cfm",
+        "sha256": "18ec899c7a277482a11a7590ce381852da08de83c12b24238289267852c827a6"
+      },
+      {
+        "project": "business",
+        "file": "api/comparador/awin-sync.cfm",
+        "sha256": "b7a4b70fd2b1d655f28099787b27b3be641d227496a495314bbee4a15799408f"
+      },
+      {
+        "project": "business",
+        "file": "services/ComparadorAwinPublicationService.cfc",
+        "sha256": "6ddc84d2cd8816848a15ff29c0c3e7651ecc91595be65efe02d6ae7f05fec27e"
+      },
+      {
+        "project": "business",
+        "file": "services/ComparadorAwinService.cfc",
+        "sha256": "7a9c37761b9feb94f863a5d7e2b3a66f609148d9bfecfb25cb1fedaaff8a8935"
+      },
+      {
+        "project": "comparador",
+        "file": "includes/produto_card.cfm",
+        "sha256": "33d7dc66f555f808557d2e8d2e872ecd9f9e800fbfdbfde1a06985388f0b2a4c"
+      },
+      {
+        "project": "comparador",
+        "file": "services/AwinOfferReader.cfc",
+        "sha256": "d78d8950f24c0cd7bd3403a7adb03029432b8a353feafeed091ad7a49993604e"
+      }
+    ],
+    "publication": {
+      "offers": 1,
+      "mode": "0o600",
+      "uid": 999,
+      "bytes": 13121
+    },
+    "temporary_harness_removed": true
+  }
+}

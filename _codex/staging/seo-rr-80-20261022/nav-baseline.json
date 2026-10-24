@@ -1,0 +1,15 @@
+{
+  "watch": {
+    "Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "includes/backend/backend_require_login.cfm": "bc92f4931663425c6ed823bdc53ee04d6238c4ed47e3421e8acaf6a9c8e74401",
+    "includes/modal/modal_login.cfm": "d349841c90e170a59603001b13d42501191aab257fe207cf680552648a89acf0",
+    "includes/estrutura/header.cfm": "5d6814586755b02a436ab980d40567024b2ccc3744ab4eb7d49a1f4c127b7c8a",
+    "includes/estrutura/head.cfm": "e17b943895b0972927a4515de0b68223f59000e02d3c68711d12fe28f979a98a",
+    "includes/estrutura/menu_apps.cfm": "f9d90a1d3cc1335065599f72d31a4867d10343bf1f93067e373188c12f53f90c",
+    "includes/estrutura/event_title_date.cfm": "cf1853d8e592494582f355215460d52b5d7e9ccfc95e15fc5a20541b95896646",
+    "includes/estrutura/footer_assets.cfm": "16b38566933985074b7b0b4bfa95c0a397c710b7e3fcb27d07c999a8b540c705"
+  },
+  "before": {
+    "includes/estrutura/footer.cfm": "8a8947814e6991d9dbfe27a224a71bc4fa96f963e87b8e591e54eb82b060be1d"
+  }
+}

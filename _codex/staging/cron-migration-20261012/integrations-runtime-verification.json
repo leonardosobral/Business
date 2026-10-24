@@ -1,0 +1,24 @@
+{
+  "measured_at_utc": "2026-10-12T13:16:32.197595+00:00",
+  "published_files": {
+    "admin/importer_cbat_corridaderua.cfm": true,
+    "admin/importer_contrarelogio.cfm": true,
+    "admin/importer_corridanoar.cfm": true,
+    "admin/importer_sixcomm_email.cfm": true,
+    "inc/content_local_config.cfc": true,
+    "inc/db.cfc": true,
+    "inc/sixcomm_email_importer.cfc": true
+  },
+  "active_new_runner_entries": 1,
+  "cf_service": "active",
+  "cf_enabled": "enabled",
+  "heap_options": [
+    "-Xms2048m",
+    "-Xmx8192m"
+  ],
+  "temporary_probe_directories": [],
+  "apache_workers": [
+    "BusyWorkers: 5",
+    "IdleWorkers: 70"
+  ]
+}

@@ -1,0 +1,1497 @@
+- button "Pular para o conteúdo"
+- banner:
+  - combobox "Acesse a ferramenta…"
+  - button "Pesquisar":
+  - navigation:
+    - menubar:
+      - button "Convide usuários": Invite free users
+      - menuitem "Preços"
+      - menuitem "Empresarial"
+      - menuitem "Mais"
+      - menuitem "Meu perfil":
+        - generic: c
+- navigation:
+  - list:
+    - link "Início":
+      - /url: https://pt.semrush.com/home/?fid=8614846
+      - generic: Início
+    - link "SEO":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+      - generic: SEO
+    - link "IA":
+      - /url: https://pt.semrush.com/ai-seo/overview/?fid=8614846
+      - generic: IA
+  - list:
+    - link "Tráfego e mercado":
+      - /url: https://pt.semrush.com/analytics/traffic/?fid=8614846
+      - generic: Tráfego e mercado
+    - link "Local":
+      - /url: https://pt.semrush.com/local-business/?fid=8614846
+      - generic: Local
+    - link "Conteúdo":
+      - /url: https://pt.semrush.com/content/?fid=8614846
+      - generic: Conteúdo
+    - link "Anúncios":
+      - /url: https://pt.semrush.com/advertising/?fid=8614846
+      - generic: Anúncios
+    - link "RP para IA":
+      - /url: https://pt.semrush.com/pr-toolkit/?fid=8614846
+      - generic: RP para IA
+    - link "Social":
+      - /url: https://pt.semrush.com/social-media/?fid=8614846
+      - generic: Social
+  - list:
+    - link "Relatórios":
+      - /url: https://pt.semrush.com/my_reports/grid/?fid=8614846
+      - generic: Relatórios
+    - link "Apps":
+      - /url: https://pt.semrush.com/apps/?fid=8614846
+      - generic: Apps
+  - generic: SEO
+  - list:
+    - link "Painel de ferramentas":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+  - generic: Desempenho do site
+  - list:
+    - link "Auditoria do site":
+      - /url: https://pt.semrush.com/siteaudit/?fid=8614846
+    - link "Monitoramento de posição":
+      - /url: https://pt.semrush.com/position-tracking/?fid=8614846
+  - generic: Análise competitiva
+  - list:
+    - link "Visão geral do domínio":
+      - /url: https://pt.semrush.com/analytics/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Rankings orgânicos":
+      - /url: https://pt.semrush.com/analytics/organic/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Principais páginas":
+      - /url: https://pt.semrush.com/analytics/toppages/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Comparação de domínios":
+      - /url: https://pt.semrush.com/analytics/comparedomains/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nas palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordgap/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nos backlinks":
+      - /url: https://pt.semrush.com/analytics/gap/backlinks/?fid=8614846&q=roadrunners.run&searchType=domain
+  - generic: Pesquisa de palavras-chave
+  - list:
+    - link "Visão geral de palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordoverview/?fid=8614846
+    - link "Keyword Magic Tool":
+      - /url: https://pt.semrush.com/analytics/keywordmagic/?fid=8614846
+    - link "Keyword Strategy Builder":
+      - /url: https://pt.semrush.com/analytics/keywordmanager/?fid=8614846
+    - link "Palavras-chave salvas":
+      - /url: https://pt.semrush.com/saved-keywords/?fid=8614846
+  - generic: Ideias de conteúdo
+  - list:
+    - link "SEO Writing Assistant":
+      - /url: https://pt.semrush.com/swa/?fid=8614846
+    - link "Topic Research":
+      - /url: https://pt.semrush.com/topic-research/?fid=8614846
+    - link "SEO Content Template":
+      - /url: https://pt.semrush.com/seo-content-template/?fid=8614846
+  - generic: Construção de links
+  - list:
+    - link "Backlinks":
+      - /url: https://pt.semrush.com/analytics/backlinks/overview/?db=us&fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Domínios de referência":
+      - /url: https://pt.semrush.com/analytics/refdomains/report/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Backlink Audit":
+      - /url: https://pt.semrush.com/backlink_audit/?fid=8614846
+  - generic: Ferramentas extras
+  - list:
+    - link "Sensor":
+      - /url: https://pt.semrush.com/sensor/?fid=8614846&utm_medium=footer&utm_source=semrush
+    - link "SEOquake":
+      - /url: https://www.seoquake.com/?fid=8614846
+    - link "Ranking Semrush":
+      - /url: https://pt.semrush.com/analytics/ranks/rank/?fid=8614846
+  - generic: Outros
+  - list:
+    - link "On Page SEO Checker":
+      - /url: https://pt.semrush.com/on-page-seo-checker/26661911/overview/?fid=8614846
+    - link "Organic Traffic Insights":
+      - /url: https://pt.semrush.com/organic-traffic-insights/project/26661911/?fid=8614846
+    - link "Construção de links":
+      - /url: https://pt.semrush.com/link_building/26661911/main/overview/?fid=8614846
+- button "Ocultar navegação" [expanded]:
+- main:
+  - region "Cabeçalho da Auditoria do site":
+    - navigation "Trilhas de navegação":
+      - list:
+        - link "Início":
+          - /url: /home/
+        - link "SEO":
+          - /url: /seo/26661911/
+        - generic: Auditoria de Site
+    - button "Central de ajuda":
+      - text: Central de ajuda
+    - button "Enviar comentário":
+      - text: Enviar comentário
+    - heading [level=1]: "Auditoria de Site:"
+    - 'combobox "Projeto: Road Runners"':
+      - generic: Road Runners
+    - button "Reexecutar campanha":
+      - generic: Reexecutar campanha
+    - button "Exportar para PDF":
+      - generic: PDF
+    - button "Exportar para planilha":
+      - generic: Exportar
+    - button "Compartilhar":
+      - generic: Compartilhar
+    - button "Abrir configurações":
+    - generic: roadrunners.run
+    - generic: "Atualizado:"
+    - text: qui, 22 de out de 2026
+    - text: Móvel
+    - generic: "Renderização em JS:"
+    - text: Desativado
+    - generic: "Páginas rastreadas:"
+    - button "Problema nas páginas rastreadas":
+    - text: 5.000/5.000
+    - tablist "Relatórios de Auditoria do site":
+      - tab "Visão geral":
+        - generic: Visão geral
+      - tab "Problemas":
+        - generic: Problemas
+      - tab "Páginas rastreadas":
+        - generic: Páginas rastreadas
+      - tab "Estatísticas":
+        - generic: Estatísticas
+      - tab "Comparar rastreamentos" [selected]:
+        - generic: Comparar rastreamentos
+      - tab "Progresso":
+        - generic: Progresso
+      - tab "Impacto do JS":
+        - generic: Impacto do JS
+  - region "Comparar rastreamentos":
+    - table:
+      - rowgroup:
+        - row "Geral Selecione a primeira data de rastreamento para comparação X Selecione a segunda data de rastreamento para comparação Corrigidos Novos":
+          - cell "Geral":
+            - heading "Geral" [level=2]
+          - cell "Selecione a primeira data de rastreamento para comparação X":
+            - button "Selecione a primeira data de rastreamento para comparação":
+              - generic: 22 out 2026 (12:32)
+            - generic: X
+          - cell "Selecione a segunda data de rastreamento para comparação":
+            - button "Selecione a segunda data de rastreamento para comparação":
+              - generic: 22 out 2026 (16:38)
+          - cell "Corrigidos"
+          - cell "Novos"
+        - row "Abrir páginas rastreadas Abrir o Relatório de Progresso 5,000 5,000":
+          - cell "Abrir páginas rastreadas Abrir o Relatório de Progresso":
+            - link "Abrir páginas rastreadas":
+              - /url: /siteaudit/campaign/26661911/review/pagereport
+              - text: Páginas rastreadas
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/g1
+          - cell "5,000"
+          - cell "5,000"
+          - cell
+          - cell
+        - row "Abrir pontuação Site Health Abrir o Relatório de Progresso 71 75":
+          - cell "Abrir pontuação Site Health Abrir o Relatório de Progresso":
+            - link "Abrir pontuação Site Health":
+              - /url: /siteaudit/campaign/26661911/review/overview
+              - text: Site Health
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/g2
+          - cell "71"
+          - cell "75"
+          - cell
+          - cell
+        - row "Abrir todos os problemas Abrir o Relatório de Progresso 13,035 16,255 3,376 6,596":
+          - cell "Abrir todos os problemas Abrir o Relatório de Progresso":
+            - link "Abrir todos os problemas":
+              - /url: /siteaudit/campaign/26661911/review/issues
+              - text: Total de problemas
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/g3
+          - cell "13,035"
+          - cell "16,255"
+          - cell "3,376":
+            - generic: 3,376
+          - cell "6,596":
+            - generic: 6,596
+        - row "Abrir todos os erros Abrir o Relatório de Progresso 44 30 22 8":
+          - cell "Abrir todos os erros Abrir o Relatório de Progresso":
+            - link "Abrir todos os erros":
+              - /url: /siteaudit/campaign/26661911/review/issues?restrictions=errors
+              - text: Total de erros
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/g4
+          - cell "44"
+          - cell "30"
+          - cell "22":
+            - generic: "22"
+          - cell "8":
+            - generic: "8"
+        - row "Abrir todas as advertências Abrir o Relatório de Progresso 10,306 10,333 2,242 2,269":
+          - cell "Abrir todas as advertências Abrir o Relatório de Progresso":
+            - link "Abrir todas as advertências":
+              - /url: /siteaudit/campaign/26661911/review/issues?restrictions=warnings
+              - text: Total de advertências
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/g5
+          - cell "10,306"
+          - cell "10,333"
+          - cell "2,242":
+            - generic: 2,242
+          - cell "2,269":
+            - generic: 2,269
+        - row "Abrir todos os avisos Abrir o Relatório de Progresso 2,685 5,892 1,112 4,319":
+          - cell "Abrir todos os avisos Abrir o Relatório de Progresso":
+            - link "Abrir todos os avisos":
+              - /url: /siteaudit/campaign/26661911/review/issues?restrictions=notices
+              - text: Total de avisos
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/g6
+          - cell "2,685"
+          - cell "5,892"
+          - cell "1,112":
+            - generic: 1,112
+          - cell "4,319":
+            - generic: 4,319
+        - row "Erros":
+          - cell "Erros":
+            - heading "Erros" [level=2]
+          - cell
+          - cell
+          - cell
+          - cell
+        - row "Erros 5XX, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Erros 5XX, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Erros 5XX, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/1
+              - text: Erros 5XX
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/1
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Erros 4XX, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 1 1 — —":
+          - cell "Erros 4XX, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Erros 4XX, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/2
+              - text: Erros 4XX
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/2
+          - cell "1"
+          - cell "1"
+          - cell "—"
+          - cell "—"
+        - row "Tags de título ausentes, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Tags de título ausentes, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Tags de título ausentes, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/3
+              - text: Tags de título ausentes
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/3
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Tags de título duplicadas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 14 4 10 —":
+          - cell "Tags de título duplicadas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Tags de título duplicadas, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/6
+              - text: Tags de título duplicadas
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/6
+          - cell "14"
+          - cell "4"
+          - cell "10":
+            - generic: "10"
+          - cell "—"
+        - row "Conteúdo duplicado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 6 0 6 —":
+          - cell "Conteúdo duplicado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Conteúdo duplicado, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/7
+              - text: Conteúdo duplicado
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/7
+          - cell "6"
+          - cell "0"
+          - cell "6":
+            - generic: "6"
+          - cell "—"
+        - row "Links internos quebrados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 15 13 5 3":
+          - cell "Links internos quebrados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Links internos quebrados, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/8
+              - text: Links internos quebrados
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/8
+          - cell "15"
+          - cell "13"
+          - cell "5":
+            - generic: "5"
+          - cell "3":
+            - generic: "3"
+        - row "Páginas não rastreadas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Páginas não rastreadas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Páginas não rastreadas, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/9
+              - text: Páginas não rastreadas
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/9
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Problema de resolução DNS, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Problema de resolução DNS, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Problema de resolução DNS, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/10
+              - text: Problema de resolução DNS
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/10
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Não conseguimos abrir a URL da página, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Não conseguimos abrir a URL da página, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Não conseguimos abrir a URL da página, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/11
+              - text: Não conseguimos abrir a URL da página
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/11
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Imagens internas quebradas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Imagens internas quebradas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Imagens internas quebradas, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/13
+              - text: Imagens internas quebradas
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/13
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Descrições meta duplicadas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 6 6 — —":
+          - cell "Descrições meta duplicadas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Descrições meta duplicadas, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/15
+              - text: Descrições meta duplicadas
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/15
+          - cell "6"
+          - cell "6"
+          - cell "—"
+          - cell "—"
+        - row "Formato do robots.txt inválido, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Formato do robots.txt inválido, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Formato do robots.txt inválido, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/16
+              - text: Formato do robots.txt inválido
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/16
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Formato do sitemap.xml inválido, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Formato do sitemap.xml inválido, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Formato do sitemap.xml inválido, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/17
+              - text: Formato do sitemap.xml inválido
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/17
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "URLs incorretas no sitemap.xml, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "URLs incorretas no sitemap.xml, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "URLs incorretas no sitemap.xml, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/18
+              - text: URLs incorretas no sitemap.xml
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/18
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Problemas de resolução www, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Problemas de resolução www, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Problemas de resolução www, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/19
+              - text: Problemas de resolução www
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/19
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Viewport não configurado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Viewport não configurado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Viewport não configurado, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/20
+              - text: Viewport não configurado
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/20
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Página HTML grande mais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Página HTML grande mais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Página HTML grande mais, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/21
+              - text: Página HTML grande mais
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/21
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Tag canônica ausente em páginas AMP, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Tag canônica ausente em páginas AMP, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Tag canônica ausente em páginas AMP, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/22
+              - text: Tag canônica ausente em páginas AMP
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/22
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Problemas de implementação hreflang, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Problemas de implementação hreflang, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Problemas de implementação hreflang, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/23
+              - text: Problemas de implementação hreflang
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/23
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Conflitos de hreflang no código-fonte da página, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 1 1 — —":
+          - cell "Conflitos de hreflang no código-fonte da página, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Conflitos de hreflang no código-fonte da página, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/24
+              - text: Conflitos de hreflang no código-fonte da página
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/24
+          - cell "1"
+          - cell "1"
+          - cell "—"
+          - cell "—"
+        - row "Problemas com links incorretos em hreflangs, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Problemas com links incorretos em hreflangs, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Problemas com links incorretos em hreflangs, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/25
+              - text: Problemas com links incorretos em hreflangs
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/25
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Páginas não seguras, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Páginas não seguras, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Páginas não seguras, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/26
+              - text: Páginas não seguras
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/26
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Certificado expirado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Certificado expirado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Certificado expirado, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/27
+              - text: Certificado expirado
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/27
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Versão antiga do protocolo de segurança, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Versão antiga do protocolo de segurança, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Versão antiga do protocolo de segurança, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/28
+              - text: Versão antiga do protocolo de segurança
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/28
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Certificado registrado com nome incorreto, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Certificado registrado com nome incorreto, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Certificado registrado com nome incorreto, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/29
+              - text: Certificado registrado com nome incorreto
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/29
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Problemas de conteúdo misto, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Problemas de conteúdo misto, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Problemas de conteúdo misto, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/30
+              - text: Problemas de conteúdo misto
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/30
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Ausência de URL canônica ou redirecionamento 301 na página inicial HTTP, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Ausência de URL canônica ou redirecionamento 301 na página inicial HTTP, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Ausência de URL canônica ou redirecionamento 301 na página inicial HTTP, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/32
+              - text: Ausência de URL canônica ou redirecionamento 301 na página inicial HTTP
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/32
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Cadeias e loops de redirecionamento, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Cadeias e loops de redirecionamento, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Cadeias e loops de redirecionamento, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/33
+              - text: Cadeias e loops de redirecionamento
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/33
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "URLs canônicas quebradas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "URLs canônicas quebradas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "URLs canônicas quebradas, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/38
+              - text: URLs canônicas quebradas
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/38
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Várias URLs canônicas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Várias URLs canônicas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Várias URLs canônicas, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/39
+              - text: Várias URLs canônicas
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/39
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Redirecionamentos via meta refresh, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Redirecionamentos via meta refresh, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Redirecionamentos via meta refresh, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/40
+              - text: Redirecionamentos via meta refresh
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/40
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Arquivos JavaScript e CSS internos quebrados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Arquivos JavaScript e CSS internos quebrados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Arquivos JavaScript e CSS internos quebrados, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/41
+              - text: Arquivos JavaScript e CSS internos quebrados
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/41
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Algoritmos de criptografia inseguros, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Algoritmos de criptografia inseguros, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Algoritmos de criptografia inseguros, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/42
+              - text: Algoritmos de criptografia inseguros
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/42
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Sitemap.xml grande demais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Sitemap.xml grande demais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Sitemap.xml grande demais, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/43
+              - text: Sitemap.xml grande demais
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/43
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Links com problemas no formato, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Links com problemas no formato, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Links com problemas no formato, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/44
+              - text: Links com problemas no formato
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/44
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Elementos de dados estruturados inválidos, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Elementos de dados estruturados inválidos, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Elementos de dados estruturados inválidos, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/45
+              - text: Elementos de dados estruturados inválidos
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/45
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Largura da viewport não definida, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Largura da viewport não definida, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Largura da viewport não definida, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/46
+              - text: Largura da viewport não definida
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/46
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Alto tempo de carregamento da página, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 1 5 1 5":
+          - cell "Alto tempo de carregamento da página, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Alto tempo de carregamento da página, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/111
+              - text: Alto tempo de carregamento da página
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/111
+          - cell "1"
+          - cell "5"
+          - cell "1":
+            - generic: "1"
+          - cell "5":
+            - generic: "5"
+        - row "Advertências":
+          - cell "Advertências":
+            - heading "Advertências" [level=2]
+          - cell
+          - cell
+          - cell
+          - cell
+        - row "Links externos quebrados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 24 24 — —":
+          - cell "Links externos quebrados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Links externos quebrados, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/12
+              - text: Links externos quebrados
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/12
+          - cell "24"
+          - cell "24"
+          - cell "—"
+          - cell "—"
+        - row "Imagens externas quebradas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 72 60 15 3":
+          - cell "Imagens externas quebradas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Imagens externas quebradas, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/14
+              - text: Imagens externas quebradas
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/14
+          - cell "72"
+          - cell "60"
+          - cell "15":
+            - generic: "15"
+          - cell "3":
+            - generic: "3"
+        - row "Links de site HTTPS que levam a páginas HTTP, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Links de site HTTPS que levam a páginas HTTP, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Links de site HTTPS que levam a páginas HTTP, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/31
+              - text: Links de site HTTPS que levam a páginas HTTP
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/31
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Título curto demais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 1 1 — —":
+          - cell "Título curto demais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Título curto demais, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/101
+              - text: Título curto demais
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/101
+          - cell "1"
+          - cell "1"
+          - cell "—"
+          - cell "—"
+        - row "Título grande demais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 460 460 95 95":
+          - cell "Título grande demais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Título grande demais, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/102
+              - text: Título grande demais
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/102
+          - cell "460"
+          - cell "460"
+          - cell "95":
+            - generic: "95"
+          - cell "95":
+            - generic: "95"
+        - row "Título h1 ausente, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 13 13 — —":
+          - cell "Título h1 ausente, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Título h1 ausente, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/103
+              - text: Título h1 ausente
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/103
+          - cell "13"
+          - cell "13"
+          - cell "—"
+          - cell "—"
+        - row "Conteúdo duplicado nas tags h1 e título, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Conteúdo duplicado nas tags h1 e título, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Conteúdo duplicado nas tags h1 e título, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/105
+              - text: Conteúdo duplicado nas tags h1 e título
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/105
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Descrição meta ausente, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 2 0 2 —":
+          - cell "Descrição meta ausente, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Descrição meta ausente, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/106
+              - text: Descrição meta ausente
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/106
+          - cell "2"
+          - cell "0"
+          - cell "2":
+            - generic: "2"
+          - cell "—"
+        - row "A página possui links em excesso, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "A página possui links em excesso, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "A página possui links em excesso, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/108
+              - text: A página possui links em excesso
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/108
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Redirecionamentos temporários, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 4,765 4,799 592 626":
+          - cell "Redirecionamentos temporários, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Redirecionamentos temporários, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/109
+              - text: Redirecionamentos temporários
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/109
+          - cell "4,765"
+          - cell "4,799"
+          - cell "592":
+            - generic: "592"
+          - cell "626":
+            - generic: "626"
+        - row "Atributos alt ausentes, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 19 19 — —":
+          - cell "Atributos alt ausentes, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Atributos alt ausentes, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/110
+              - text: Atributos alt ausentes
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/110
+          - cell "19"
+          - cell "19"
+          - cell "—"
+          - cell "—"
+        - row "Baixa proporção texto/HTML, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 3,848 3,852 600 604":
+          - cell "Baixa proporção texto/HTML, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Baixa proporção texto/HTML, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/112
+              - text: Baixa proporção texto/HTML
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/112
+          - cell "3,848"
+          - cell "3,852"
+          - cell "600":
+            - generic: "600"
+          - cell "604":
+            - generic: "604"
+        - row "Parâmetros de URL em excesso, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 3 3 — —":
+          - cell "Parâmetros de URL em excesso, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Parâmetros de URL em excesso, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/113
+              - text: Parâmetros de URL em excesso
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/113
+          - cell "3"
+          - cell "3"
+          - cell "—"
+          - cell "—"
+        - row "Atributos hreflang e lang ausentes, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Atributos hreflang e lang ausentes, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Atributos hreflang e lang ausentes, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/114
+              - text: Atributos hreflang e lang ausentes
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/114
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Codificação não informada, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Codificação não informada, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Codificação não informada, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/115
+              - text: Codificação não informada
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/115
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Tipo de documento não informado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Tipo de documento não informado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Tipo de documento não informado, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/116
+              - text: Tipo de documento não informado
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/116
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Baixa quantidade de palavras, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 10 10 — —":
+          - cell "Baixa quantidade de palavras, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Baixa quantidade de palavras, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/117
+              - text: Baixa quantidade de palavras
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/117
+          - cell "10"
+          - cell "10"
+          - cell "—"
+          - cell "—"
+        - row "Plug-ins incompatíveis usados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Plug-ins incompatíveis usados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Plug-ins incompatíveis usados, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/120
+              - text: Plug-ins incompatíveis usados
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/120
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Quadros (frames) são utilizados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Quadros (frames) são utilizados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Quadros (frames) são utilizados, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/121
+              - text: Quadros (frames) são utilizados
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/121
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Caractere sublinhado em URL, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 3 3 — —":
+          - cell "Caractere sublinhado em URL, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Caractere sublinhado em URL, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/122
+              - text: Caractere sublinhado em URL
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/122
+          - cell "3"
+          - cell "3"
+          - cell "—"
+          - cell "—"
+        - row "Atributos nofollow em links internos de saída, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 1,018 1,018 938 938":
+          - cell "Atributos nofollow em links internos de saída, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Atributos nofollow em links internos de saída, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/123
+              - text: Atributos nofollow em links internos de saída
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/123
+          - cell "1,018"
+          - cell "1,018"
+          - cell "938":
+            - generic: "938"
+          - cell "938":
+            - generic: "938"
+        - row "O sitemap.xml não está especificado no robots.txt, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "O sitemap.xml não está especificado no robots.txt, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "O sitemap.xml não está especificado no robots.txt, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/124
+              - text: O sitemap.xml não está especificado no robots.txt
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/124
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Sitemap.xml não encontrado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Sitemap.xml não encontrado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Sitemap.xml não encontrado, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/125
+              - text: Sitemap.xml não encontrado
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/125
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Criptografia HTTPS não usada, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Criptografia HTTPS não usada, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Criptografia HTTPS não usada, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/126
+              - text: Criptografia HTTPS não usada
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/126
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Sem suporte a SNI, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Sem suporte a SNI, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Sem suporte a SNI, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/127
+              - text: Sem suporte a SNI
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/127
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "URLs HTTP no sitemap.xml para site HTTPS, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "URLs HTTP no sitemap.xml para site HTTPS, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "URLs HTTP no sitemap.xml para site HTTPS, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/128
+              - text: URLs HTTP no sitemap.xml para site HTTPS
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/128
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Página não compactadas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Página não compactadas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Página não compactadas, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/129
+              - text: Página não compactadas
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/129
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Recursos internos bloqueados no robots.txt, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Recursos internos bloqueados no robots.txt, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Recursos internos bloqueados no robots.txt, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/130
+              - text: Recursos internos bloqueados no robots.txt
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/130
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Arquivos JavaScript e CSS não compactados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Arquivos JavaScript e CSS não compactados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Arquivos JavaScript e CSS não compactados, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/131
+              - text: Arquivos JavaScript e CSS não compactados
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/131
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Arquivos JavaScript e CSS não armazenados em cache, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Arquivos JavaScript e CSS não armazenados em cache, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Arquivos JavaScript e CSS não armazenados em cache, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/132
+              - text: Arquivos JavaScript e CSS não armazenados em cache
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/132
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Tamanho total de JavaScript e CSS muito grande, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 1 1 — —":
+          - cell "Tamanho total de JavaScript e CSS muito grande, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Tamanho total de JavaScript e CSS muito grande, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/133
+              - text: Tamanho total de JavaScript e CSS muito grande
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/133
+          - cell "1"
+          - cell "1"
+          - cell "—"
+          - cell "—"
+        - row "Muitos arquivos JavaScript e CSS, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Muitos arquivos JavaScript e CSS, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Muitos arquivos JavaScript e CSS, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/134
+              - text: Muitos arquivos JavaScript e CSS
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/134
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Arquivos JavaScript e CSS não minificados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 67 70 — 3":
+          - cell "Arquivos JavaScript e CSS não minificados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Arquivos JavaScript e CSS não minificados, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/135
+              - text: Arquivos JavaScript e CSS não minificados
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/135
+          - cell "67"
+          - cell "70"
+          - cell "—"
+          - cell "3":
+            - generic: "3"
+        - row "URLs dos links grandes demais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "URLs dos links grandes demais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "URLs dos links grandes demais, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/136
+              - text: URLs dos links grandes demais
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/136
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Avisos":
+          - cell "Avisos":
+            - heading "Avisos" [level=2]
+          - cell
+          - cell
+          - cell
+          - cell
+        - row "Múltiplos títulos h1, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 1 1 — —":
+          - cell "Múltiplos títulos h1, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Múltiplos títulos h1, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/104
+              - text: Múltiplos títulos h1
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/104
+          - cell "1"
+          - cell "1"
+          - cell "—"
+          - cell "—"
+        - row "Arquivo llms.txt não encontrado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Arquivo llms.txt não encontrado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Arquivo llms.txt não encontrado, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/137
+              - text: Arquivo llms.txt não encontrado
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/137
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Bloqueada para rastreamento, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 4 4 — —":
+          - cell "Bloqueada para rastreamento, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Bloqueada para rastreamento, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/4
+              - text: Bloqueada para rastreamento
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/4
+          - cell "4"
+          - cell "4"
+          - cell "—"
+          - cell "—"
+        - row "URLs com mais de 200 caracteres, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "URLs com mais de 200 caracteres, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "URLs com mais de 200 caracteres, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/201
+              - text: URLs com mais de 200 caracteres
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/201
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Nofollow attributes outgoing in external links, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Nofollow attributes outgoing in external links, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Nofollow attributes outgoing in external links, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/202
+              - text: Nofollow attributes outgoing in external links
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/202
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Robots.txt não encontrado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Robots.txt não encontrado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Robots.txt não encontrado, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/203
+              - text: Robots.txt não encontrado
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/203
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Problemas de incompatibilidade de idiomas no hreflang, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 47 29 27 9":
+          - cell "Problemas de incompatibilidade de idiomas no hreflang, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Problemas de incompatibilidade de idiomas no hreflang, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/204
+              - text: Problemas de incompatibilidade de idiomas no hreflang
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/204
+          - cell "47"
+          - cell "29"
+          - cell "27":
+            - generic: "27"
+          - cell "9":
+            - generic: "9"
+        - row "Sem suporte a HSTS, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 4 4 — —":
+          - cell "Sem suporte a HSTS, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Sem suporte a HSTS, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/205
+              - text: Sem suporte a HSTS
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/205
+          - cell "4"
+          - cell "4"
+          - cell "—"
+          - cell "—"
+        - row "Páginas órfãs (Google Analytics), abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Páginas órfãs (Google Analytics), abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Páginas órfãs (Google Analytics), abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/206
+              - text: Páginas órfãs (Google Analytics)
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/206
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Páginas órfãs no sitemap, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Páginas órfãs no sitemap, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Páginas órfãs no sitemap, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/207
+              - text: Páginas órfãs no sitemap
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/207
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - 'row "Bloqueada por X-Robots-Tag: cabeçalho HTTP com noindex, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 1 1 — —"':
+          - 'cell "Bloqueada por X-Robots-Tag: cabeçalho HTTP com noindex, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso"':
+            - 'link "Bloqueada por X-Robots-Tag: cabeçalho HTTP com noindex, abrir todas as páginas com esse problema"':
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/209
+              - text: "Bloqueada por X-Robots-Tag: cabeçalho HTTP com noindex"
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/209
+          - cell "1"
+          - cell "1"
+          - cell "—"
+          - cell "—"
+        - row "Recursos externos bloqueados no robots.txt, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Recursos externos bloqueados no robots.txt, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Recursos externos bloqueados no robots.txt, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/210
+              - text: Recursos externos bloqueados no robots.txt
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/210
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Arquivos JavaScript e CSS externos quebrados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Arquivos JavaScript e CSS externos quebrados, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Arquivos JavaScript e CSS externos quebrados, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/211
+              - text: Arquivos JavaScript e CSS externos quebrados
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/211
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Profundidade do rastreamento da página superior a 3 cliques, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 1,661 961 706 6":
+          - cell "Profundidade do rastreamento da página superior a 3 cliques, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Profundidade do rastreamento da página superior a 3 cliques, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/212
+              - text: Profundidade do rastreamento da página superior a 3 cliques
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/212
+          - cell "1,661"
+          - cell "961"
+          - cell "706":
+            - generic: "706"
+          - cell "6":
+            - generic: "6"
+        - row "Páginas com apenas um link interno, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 704 601 361 258":
+          - cell "Páginas com apenas um link interno, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Páginas com apenas um link interno, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/213
+              - text: Páginas com apenas um link interno
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/213
+          - cell "704"
+          - cell "601"
+          - cell "361":
+            - generic: "361"
+          - cell "258":
+            - generic: "258"
+        - row "Redirecionamentos permanentes, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 16 3,854 2 3,840":
+          - cell "Redirecionamentos permanentes, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Redirecionamentos permanentes, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/214
+              - text: Redirecionamentos permanentes
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/214
+          - cell "16"
+          - cell "3,854"
+          - cell "2":
+            - generic: "2"
+          - cell "3,840":
+            - generic: 3,840
+        - row "Recursos formatados como links de páginas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Recursos formatados como links de páginas, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Recursos formatados como links de páginas, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/215
+              - text: Recursos formatados como links de páginas
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/215
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Links sem texto âncora, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 12 — 12":
+          - cell "Links sem texto âncora, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Links sem texto âncora, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/216
+              - text: Links sem texto âncora
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/216
+          - cell "0"
+          - cell "12"
+          - cell "—"
+          - cell "12":
+            - generic: "12"
+        - row "Links com texto âncora não descritivo, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 164 168 — 4":
+          - cell "Links com texto âncora não descritivo, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Links com texto âncora não descritivo, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/217
+              - text: Links com texto âncora não descritivo
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/217
+          - cell "164"
+          - cell "168"
+          - cell "—"
+          - cell "4":
+            - generic: "4"
+        - row "Páginas ou recursos externos com código de status HTTP 403, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 75 242 12 179":
+          - cell "Páginas ou recursos externos com código de status HTTP 403, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Páginas ou recursos externos com código de status HTTP 403, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/218
+              - text: Páginas ou recursos externos com código de status HTTP 403
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/218
+          - cell "75"
+          - cell "242"
+          - cell "12":
+            - generic: "12"
+          - cell "179":
+            - generic: "179"
+        - row "O arquivo llms.txt está com problemas de formatação, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "O arquivo llms.txt está com problemas de formatação, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "O arquivo llms.txt está com problemas de formatação, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/219
+              - text: O arquivo llms.txt está com problemas de formatação
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/219
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Conteúdo demais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 0 0 — —":
+          - cell "Conteúdo demais, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Conteúdo demais, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/220
+              - text: Conteúdo demais
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/220
+          - cell "0"
+          - cell "0"
+          - cell "—"
+          - cell "—"
+        - row "Conteúdo desatualizado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 2 2 — —":
+          - cell "Conteúdo desatualizado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Conteúdo desatualizado, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/221
+              - text: Conteúdo desatualizado
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/221
+          - cell "2"
+          - cell "2"
+          - cell "—"
+          - cell "—"
+        - row "Baixo uso de HTML semântico, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 2 1 1 —":
+          - cell "Baixo uso de HTML semântico, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Baixo uso de HTML semântico, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/222
+              - text: Baixo uso de HTML semântico
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/222
+          - cell "2"
+          - cell "1"
+          - cell "1":
+            - generic: "1"
+          - cell "—"
+        - row "Conteúdo não otimizado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso 4 12 3 11":
+          - cell "Conteúdo não otimizado, abrir todas as páginas com esse problema Saiba mais sobre este problema Abrir o Relatório de Progresso":
+            - link "Conteúdo não otimizado, abrir todas as páginas com esse problema":
+              - /url: /siteaudit/campaign/26661911/review/issue/detail/223
+              - text: Conteúdo não otimizado
+            - button "Saiba mais sobre este problema": Ler mais
+            - link "Abrir o Relatório de Progresso":
+              - /url: /siteaudit/campaign/26661911/review/history/id/223
+          - cell "4"
+          - cell "12"
+          - cell "3":
+            - generic: "3"
+          - cell "11":
+            - generic: "11"
+- contentinfo:
+  - link "Fale conosco":
+    - /url: /company/contacts/
+  - link "Sobre nós":
+    - /url: /company/
+  - link "Blog":
+    - /url: /blog/
+  - button "Português (Brasil)"
+  - link "Ver planos e preços":
+    - /url: /pricing/
+  - link "Comece a usar a Semrush":
+    - /url: https://www.semrush.com/academy/courses/getting-started-with-semrush/
+  - link "Configurações dos cookies":
+    - /url: javascript:window.showConsentSettings();
+  - link "Informações jurídicas":
+    - /url: /company/legal/
+  - link "Política de privacidade":
+    - /url: /company/legal/privacy-policy/
+  - link "Não venda minhas informações pessoais":
+    - /url: javascript:window.showConsentSettings();
+  - generic: © 2026 Semrush Holdings. Todos os direitos reservados.
+- region "Notificações"
+- button "Abrir painel de ajuda"
+- iframe [id="intercom-frame"]
+- region "Notifications"

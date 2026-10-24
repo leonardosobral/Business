@@ -1,0 +1,13 @@
+{
+  "watch": {
+    "Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "includes/estrutura/head.cfm": "e17b943895b0972927a4515de0b68223f59000e02d3c68711d12fe28f979a98a",
+    "includes/estrutura/footer.cfm": "a2908cc64b69c0ab9177e849ae8cce1f095fda0bd19a38da9b6f1efc9b55f179",
+    "includes/estrutura/event_title_date.cfm": "cf1853d8e592494582f355215460d52b5d7e9ccfc95e15fc5a20541b95896646"
+  },
+  "before": {
+    "noticias/index.cfm": "aaee87135088e4943ccc1b30cd97d31bb464dad2acb054a56fc4f1a64e2368d3",
+    "org/index.cfm": "7ccde155c0485ce5ab004a5a0fa4d3c14a8714ae58a7c573c229ab02a2487fb6",
+    "timer/index.cfm": "97c1ff2c685c5b3c398b1547e1032984c366c6e87ef590f888e82f6dd8d6b84b"
+  }
+}

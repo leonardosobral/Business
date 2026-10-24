@@ -1,0 +1,58 @@
+{
+  "measured_at": "2026-10-12T13:08:28.302914+00:00",
+  "sites": [
+    {
+      "host": "roadrunners.run",
+      "origin_direct": true,
+      "result": "200 6.914944",
+      "rc": 0
+    },
+    {
+      "host": "roadrunners.run",
+      "origin_direct": false,
+      "result": "200 3.210359",
+      "rc": 0
+    },
+    {
+      "host": "runnerhub.run",
+      "origin_direct": true,
+      "result": "200 0.071652",
+      "rc": 0
+    },
+    {
+      "host": "runnerhub.run",
+      "origin_direct": false,
+      "result": "200 0.541918",
+      "rc": 0
+    },
+    {
+      "host": "conteudo.roadrunners.run",
+      "origin_direct": true,
+      "result": "200 0.052076",
+      "rc": 0
+    },
+    {
+      "host": "conteudo.roadrunners.run",
+      "origin_direct": false,
+      "result": "200 0.103122",
+      "rc": 0
+    },
+    {
+      "host": "business.roadrunners.run",
+      "origin_direct": true,
+      "result": "200 0.064708",
+      "rc": 0
+    },
+    {
+      "host": "business.roadrunners.run",
+      "origin_direct": false,
+      "result": "200 0.456533",
+      "rc": 0
+    }
+  ],
+  "apache": [
+    "BusyWorkers: 2",
+    "IdleWorkers: 73",
+    "ConnsTotal: 82"
+  ]
+}

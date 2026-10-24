@@ -1,0 +1,149 @@
+{
+  "release": "20261017T222940Z-d2910071",
+  "runtime": {
+    "release": "20261017T222940Z-d2910071",
+    "project": "business",
+    "status": "published_verified",
+    "receipt": {
+      "status": "published",
+      "created_at": "2026-10-17T22:29:43.698391+00:00",
+      "root": "/var/www/business.roadrunners.run",
+      "backup": "/var/backups/awin-variant-offers-20261017/business/20261017T222940Z-d2910071",
+      "files": {
+        "services/ComparadorAwinService.cfc": {
+          "before": "7a9c37761b9feb94f863a5d7e2b3a66f609148d9bfecfb25cb1fedaaff8a8935",
+          "after": "9fe2944b9e887f2a5ca75ed63c4b6a3584169baf22251fa70243e553b78d74fc",
+          "attributes": {
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        },
+        "services/ComparadorAwinFeedService.cfc": {
+          "before": "b129aef253c0ff4670bb8c85b266f484d07b58dd213119f6c1544565b6d1778f",
+          "after": "82c59904f5bb90064fa6d6ded592745c50796090bdae8d9bbd2aafd6b55b5dff",
+          "attributes": {
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        },
+        "services/ComparadorAwinPublicationService.cfc": {
+          "before": "6ddc84d2cd8816848a15ff29c0c3e7651ecc91595be65efe02d6ae7f05fec27e",
+          "after": "6e5ed7e39c7d62508c720348e0c75413b3bf70f9efead22225fb832413c56e9a",
+          "attributes": {
+            "uid": 0,
+            "gid": 0,
+            "mode": 420
+          }
+        }
+      },
+      "changed": [
+        "services/ComparadorAwinService.cfc",
+        "services/ComparadorAwinFeedService.cfc",
+        "services/ComparadorAwinPublicationService.cfc"
+      ],
+      "created_directories": [],
+      "published_at": "2026-10-17T22:29:43.707995+00:00"
+    },
+    "checks": [
+      {
+        "name": "admin_auth",
+        "url": "https://business.roadrunners.run/administracao/comparador/awin/",
+        "status": 302,
+        "contentType": "text/html;charset=UTF-8",
+        "passed": true
+      },
+      {
+        "name": "include_guard",
+        "url": "https://business.roadrunners.run/administracao/comparador/awin/feed.cfm",
+        "status": 403,
+        "contentType": "text/html;charset=UTF-8",
+        "passed": true
+      },
+      {
+        "name": "sync_method",
+        "url": "https://business.roadrunners.run/api/comparador/awin-sync.cfm",
+        "status": 405,
+        "contentType": "application/json;charset=utf-8",
+        "passed": true
+      },
+      {
+        "name": "sync_auth",
+        "url": "https://business.roadrunners.run/api/comparador/awin-sync.cfm",
+        "status": 401,
+        "contentType": "application/json;charset=utf-8",
+        "passed": true
+      }
+    ],
+    "verification": {
+      "status": "hashes_verified",
+      "files": {
+        "services/ComparadorAwinService.cfc": "9fe2944b9e887f2a5ca75ed63c4b6a3584169baf22251fa70243e553b78d74fc",
+        "services/ComparadorAwinFeedService.cfc": "82c59904f5bb90064fa6d6ded592745c50796090bdae8d9bbd2aafd6b55b5dff",
+        "services/ComparadorAwinPublicationService.cfc": "6e5ed7e39c7d62508c720348e0c75413b3bf70f9efead22225fb832413c56e9a"
+      }
+    }
+  },
+  "data": {
+    "parentOffers": 97,
+    "products": 65,
+    "variantOffers": 1858,
+    "images": 1858,
+    "logos": 1858,
+    "genders": {
+      "M": 481,
+      "F": 475,
+      "unknown": 159,
+      "U": 743
+    },
+    "feeds": [
+      {
+        "shop": "Nike BR",
+        "status": "ok"
+      },
+      {
+        "shop": "ASICS BR",
+        "status": "ok"
+      },
+      {
+        "shop": "Samsung BR",
+        "status": "ok"
+      },
+      {
+        "shop": "Mizuno BR",
+        "status": "ok"
+      },
+      {
+        "shop": "Olympikus BR",
+        "status": "ok"
+      },
+      {
+        "shop": "Centauro BR",
+        "status": "ok"
+      }
+    ],
+    "campaignOffers": 26,
+    "campaignLogos": 26,
+    "blocksPreserved": true,
+    "campaignRulesPreserved": true,
+    "updatedAt": "2026-10-17T22:30:32.683391720Z",
+    "demos": [
+      {
+        "SLUG": "hoka-clifton-9",
+        "MALE": 1007.99,
+        "FEMALE": 998.99
+      },
+      {
+        "SLUG": "mizuno-wave-prophecy-12-s",
+        "MALE": 1299.99,
+        "FEMALE": 1228.49
+      },
+      {
+        "SLUG": "nike-run-swift-3",
+        "MALE": 239.99,
+        "FEMALE": 239.99
+      }
+    ]
+  }
+}

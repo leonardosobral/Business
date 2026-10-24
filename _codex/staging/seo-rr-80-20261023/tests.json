@@ -1,0 +1,254 @@
+{
+  "CHECKS": [
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "no-results",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "expected_f": 1,
+      "NAME": "male-and-female",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "male-alias-MASC",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "male-alias-MASCULINO",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "male-alias-MASCULINA",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "male-alias-m",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_f": 1,
+      "NAME": "female-alias-FEM",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_f": 1,
+      "NAME": "female-alias-FEMININO",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_f": 1,
+      "NAME": "female-alias-FEMININA",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_f": 1,
+      "NAME": "female-alias-f",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "classification-before-time",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "positive-before-missing",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "zero-before-null",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "excluded-concluinte-False",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "excluded-homologado-False",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "excluded-status_final-3",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "excluded-pcd-True",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "excluded-nome_categoria-Geral PCD",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "excluded-modalidade-Corrida PCD",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "excluded-tempo_total-00:00:00",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "excluded-tempo_total-None",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "excluded-percurso-5",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "excluded-sexo-X",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "nullable-final-flags",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "summary-distance-floor",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "fallback-distance",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "NAME": "empty-distance",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "expected_link": 1,
+      "NAME": "wrong-importer-name",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "expected_link": 1,
+      "NAME": "matching-alias",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "expected_tag": 1,
+      "NAME": "private-profile",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "expected_tag": 1,
+      "NAME": "non-athlete-profile",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "expected_tag": 1,
+      "NAME": "multiple-pages-tie",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "expected_tag": 1,
+      "NAME": "different-athletes-tie",
+      "previous_rows": 1
+    },
+    {
+      "current_rows": 1,
+      "differences": 0,
+      "expected_m": 1,
+      "expected_tag": 1,
+      "NAME": "private-tie-cannot-be-preferred",
+      "previous_rows": 1
+    }
+  ],
+  "failed": [],
+  "source_hash": "45bd57cd32dce2d4211a4aa2d2b996b958f547c3bd0d7d19cf2a7443308d00ca",
+  "fixture_only": true,
+  "database_mutations": false
+}

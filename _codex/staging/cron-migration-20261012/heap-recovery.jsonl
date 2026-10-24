@@ -1,0 +1,21 @@
+{"stage": "backup_and_heap_saved", "backup": "/var/backups/cf2025-heap-recovery-20261012T130650Z-bj2mfaz4"}
+{"stage": "old_jvm_stopped"}
+{
+  "backup": "/var/backups/cf2025-heap-recovery-20261012T130650Z-bj2mfaz4",
+  "started_at_utc": "2026-10-12T13:06:50.259020+00:00",
+  "before_heap": {
+    "initial_mb": 256,
+    "maximum_mb": 1024
+  },
+  "after_heap": {
+    "initial_mb": 2048,
+    "maximum_mb": 8192
+  },
+  "before_sha256": "de1292ccc1bface21ec65f212001b9d1515ee742f70a4382b6a082809dda3583",
+  "apache_workers_unchanged": 150,
+  "after_sha256": "90f62b70a87e5e6a68def5f15dd50f95cd590eda0a71dfb9eaefa5d55208ba32",
+  "stop_rc": 0,
+  "start_rc": 0,
+  "service_active": "active",
+  "finished_at_utc": "2026-10-12T13:07:00.783915+00:00"
+}

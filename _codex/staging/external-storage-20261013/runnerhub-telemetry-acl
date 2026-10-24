@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+"""Allow ColdFusion to traverse Apache's log directory and read API telemetry only."""
+import ctypes
+import os
+import pwd
+import stat
+
+LIB=ctypes.CDLL('libacl.so.1',use_errno=True)
+LIB.acl_from_text.argtypes=[ctypes.c_char_p];LIB.acl_from_text.restype=ctypes.c_void_p
+LIB.acl_set_file.argtypes=[ctypes.c_char_p,ctypes.c_int,ctypes.c_void_p];LIB.acl_set_file.restype=ctypes.c_int
+LIB.acl_free.argtypes=[ctypes.c_void_p]
+
+def apply_acl(path,text):
+    acl=LIB.acl_from_text(text.encode())
+    if not acl:raise OSError(ctypes.get_errno(),'Invalid ACL')
+    try:
+        if LIB.acl_set_file(os.fsencode(path),0x8000,acl)!=0:
+            raise OSError(ctypes.get_errno(),'Cannot apply telemetry ACL')
+    finally:LIB.acl_free(acl)
+
+def main():
+    directory='/var/log/apache2';log=directory+'/api.roadrunners.run-telemetry.log'
+    uid=pwd.getpwnam('coldfusion').pw_uid
+    if os.path.islink(directory) or os.path.islink(log):raise RuntimeError('Symlink refused')
+    assert stat.S_ISDIR(os.stat(directory).st_mode)
+    apply_acl(directory,f'user::rwx,user:{uid}:--x,group::r-x,mask::r-x,other::---')
+    if os.path.exists(log):
+        assert stat.S_ISREG(os.stat(log).st_mode)
+        apply_acl(log,f'user::rw-,user:{uid}:r--,group::r--,mask::r--,other::---')
+
+if __name__=='__main__':main()

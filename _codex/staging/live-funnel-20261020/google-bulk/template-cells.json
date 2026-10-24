@@ -1,0 +1,1074 @@
+{
+  "keywords-official-template": {
+    "xl/worksheets/sheet1.xml": [
+      [
+        [
+          "A1",
+          "# Optional.\n Supported values: Add; Edit; Remove."
+        ],
+        [
+          "B1",
+          "# Optional.\n Supported values: Enabled; Removed; Paused."
+        ],
+        [
+          "C1",
+          "#Optional \nunless uploading to multiple accounts on MCC Level\n\nYou can specify either the Account Name in the \"Account\" column or the Account's ID in the \"Customer ID\" Column (Example: 123-456-7890)\nNote: Please use one or the other rather than both. If you use both, they must match in referring to the same account "
+        ],
+        [
+          "E1",
+          "#required \nUse either Campaign ID or Campaign (by name)\nNote: Please use one or the other rather than both. If you use both, they must match in referring to the same campaign "
+        ],
+        [
+          "G1",
+          "#required \nUse either Ad group ID or Ad group (by name)\nNote: If you use both, they both must be correct\n\nIf you use Ad group ID then there is no need to specific Campaign or Campaign ID        "
+        ],
+        [
+          "I1",
+          "# Optional.\n Example(s): 1234."
+        ],
+        [
+          "J1",
+          "# Required on create.\n Example(s): buy frisbee."
+        ],
+        [
+          "K1",
+          "# Optional.\n Supported values: Exact match; Phrase match; Broad match."
+        ],
+        [
+          "L1",
+          "# Optional.\n Example(s): label 1; label 2; label 3 [123-456-7890].\n To remove an exisiting label input \"remove_value\""
+        ],
+        [
+          "M1",
+          "# Optional.\n Example(s): 12.34.\n To remove an exisiting bid input \"remove_value\""
+        ],
+        [
+          "N1",
+          " # Optional.\n Example(s): 12.34.\n To remove an exisiting bid input \"remove_value\""
+        ],
+        [
+          "O1",
+          "# Optional.\n Example(s): https://www.example.com ; https://www.example.org.\n To remove an exisiting Final URL input \"remove_value\""
+        ],
+        [
+          "P1",
+          "# Optional.\n Example(s): https://m.example.com ; https://m.example.org.\n To remove an exisiting Mobile Final URL input \"remove_value\""
+        ],
+        [
+          "Q1",
+          "# Optional.\n Example(s): https://www.abc.com/tracking?param1=create&url={lpurl}.\n  To remove an exisiting Tracking Template input \"remove_value\""
+        ],
+        [
+          "R1",
+          "# Optional.\n Example(s): x=y.\n  To remove an exisiting Final URL Suffix input \"remove_value\""
+        ],
+        [
+          "S1",
+          "# Optional.\n Example(s): {_color}=red ; {_bg}=blue.\n  To remove an exisiting Custom Parameter input \"remove_value\""
+        ]
+      ],
+      [
+        [
+          "A2",
+          "Action"
+        ],
+        [
+          "B2",
+          "Keyword status"
+        ],
+        [
+          "C2",
+          "Account"
+        ],
+        [
+          "D2",
+          "Customer ID"
+        ],
+        [
+          "E2",
+          "Campaign ID"
+        ],
+        [
+          "F2",
+          "Campaign"
+        ],
+        [
+          "G2",
+          "Ad group ID"
+        ],
+        [
+          "H2",
+          "Ad group"
+        ],
+        [
+          "I2",
+          "Keyword ID"
+        ],
+        [
+          "J2",
+          "Keyword"
+        ],
+        [
+          "K2",
+          "Match Type"
+        ],
+        [
+          "L2",
+          "Label"
+        ],
+        [
+          "M2",
+          "Default max. CPC"
+        ],
+        [
+          "N2",
+          "Max. CPV"
+        ],
+        [
+          "O2",
+          "Final URL"
+        ],
+        [
+          "P2",
+          "Mobile final URL"
+        ],
+        [
+          "Q2",
+          "Tracking template"
+        ],
+        [
+          "R2",
+          "Final URL suffix"
+        ],
+        [
+          "S2",
+          "Custom parameter"
+        ]
+      ],
+      [
+        [
+          "A3",
+          "Add"
+        ]
+      ]
+    ],
+    "xl/worksheets/sheet2.xml": [
+      [
+        [
+          "A1",
+          "Action"
+        ],
+        [
+          "B1",
+          "Keyword status"
+        ],
+        [
+          "C1",
+          "Customer ID"
+        ],
+        [
+          "D1",
+          "Ad group ID"
+        ],
+        [
+          "E1",
+          "Keyword"
+        ],
+        [
+          "F1",
+          "Match Type"
+        ],
+        [
+          "G1",
+          "Default max. CPC"
+        ],
+        [
+          "H1",
+          "Final URL"
+        ],
+        [
+          "I1",
+          "Mobile final URL"
+        ],
+        [
+          "J1",
+          "Tracking template"
+        ]
+      ],
+      [
+        [
+          "A2",
+          "Add"
+        ],
+        [
+          "B2",
+          "Enabled"
+        ],
+        [
+          "C2",
+          "123-456-7890"
+        ],
+        [
+          "D2",
+          "9.87654321987E11"
+        ],
+        [
+          "E2",
+          "shoes"
+        ],
+        [
+          "F2",
+          "Exact Match"
+        ],
+        [
+          "G2",
+          "12.5"
+        ],
+        [
+          "H2",
+          "https://www.example.com"
+        ],
+        [
+          "I2",
+          "https://m.example.com"
+        ],
+        [
+          "J2",
+          "http://www.example.com/tracking?param1=create&url={lpurl}."
+        ]
+      ]
+    ]
+  },
+  "ad-groups-official-template": {
+    "xl/worksheets/sheet3.xml": [
+      [
+        [
+          "A1",
+          "Action"
+        ],
+        [
+          "B1",
+          "Customer ID"
+        ],
+        [
+          "C1",
+          "Campaign"
+        ],
+        [
+          "D1",
+          "Ad group"
+        ]
+      ],
+      [
+        [
+          "A2",
+          "Add"
+        ],
+        [
+          "B2",
+          "123-456-7890"
+        ],
+        [
+          "C2",
+          "Shoe campaign"
+        ],
+        [
+          "D2",
+          "New Ad Group 1"
+        ]
+      ]
+    ],
+    "xl/worksheets/sheet1.xml": [
+      [
+        [
+          "A1",
+          "# Required.\n Supported values: Add; Edit; Remove."
+        ],
+        [
+          "B1",
+          "#Optional \nunless uploading to multiple accounts on MCC Level"
+        ],
+        [
+          "C1",
+          "#Required \nUse either Campaign ID or Campaign (by name)\nNote: If you use both, they both must be correct"
+        ],
+        [
+          "E1",
+          "#Required\n\nDesired Name of new Ad Group"
+        ],
+        [
+          "F1",
+          "#Optional \n Supported values: Enabled; Paused\n\nDefaults to Enabled if omitted"
+        ],
+        [
+          "G1",
+          "#Optional\n\nDefines the ad group type"
+        ]
+      ],
+      [
+        [
+          "A2",
+          "Action"
+        ],
+        [
+          "B2",
+          "Customer ID"
+        ],
+        [
+          "C2",
+          "Campaign"
+        ],
+        [
+          "D2",
+          "Campaign ID"
+        ],
+        [
+          "E2",
+          "Ad group"
+        ],
+        [
+          "F2",
+          "Status"
+        ],
+        [
+          "G2",
+          "Ad group type"
+        ]
+      ],
+      [
+        [
+          "A3",
+          "Add"
+        ]
+      ]
+    ],
+    "xl/worksheets/sheet2.xml": [
+      [
+        [
+          "A1",
+          "Action"
+        ],
+        [
+          "B1",
+          "Customer ID"
+        ],
+        [
+          "C1",
+          "Campaign ID"
+        ],
+        [
+          "D1",
+          "Ad group"
+        ],
+        [
+          "E1",
+          "Status"
+        ],
+        [
+          "F1",
+          "Ad group type"
+        ]
+      ],
+      [
+        [
+          "A2",
+          "Add"
+        ],
+        [
+          "B2",
+          "123-456-7890"
+        ],
+        [
+          "C2",
+          "9876543"
+        ],
+        [
+          "D2",
+          "New Ad Group 1"
+        ],
+        [
+          "E2",
+          "Paused"
+        ],
+        [
+          "F2",
+          "Dynamic"
+        ]
+      ]
+    ]
+  },
+  "rsa-official-template": {
+    "xl/worksheets/sheet3.xml": [
+      [
+        [
+          "A1",
+          "Action"
+        ],
+        [
+          "B1",
+          "Ad status"
+        ],
+        [
+          "C1",
+          "Customer ID"
+        ],
+        [
+          "D1",
+          "Ad group ID"
+        ],
+        [
+          "E1",
+          "Ad type"
+        ],
+        [
+          "F1",
+          "Headline 1"
+        ],
+        [
+          "G1",
+          "Headline 1 position"
+        ],
+        [
+          "H1",
+          "Headline 2"
+        ],
+        [
+          "I1",
+          "Headline 3"
+        ],
+        [
+          "J1",
+          "Headline 4"
+        ],
+        [
+          "K1",
+          "Description"
+        ],
+        [
+          "L1",
+          "Description 2"
+        ],
+        [
+          "M1",
+          "Description 3"
+        ],
+        [
+          "N1",
+          "Final URL"
+        ],
+        [
+          "O1",
+          "Mobile final URL"
+        ]
+      ],
+      [
+        [
+          "A2",
+          "Add"
+        ],
+        [
+          "B2",
+          "Enabled"
+        ],
+        [
+          "C2",
+          "123-456-7890"
+        ],
+        [
+          "D2",
+          "9876543210"
+        ],
+        [
+          "E2",
+          "Responsive search ad"
+        ],
+        [
+          "F2",
+          "This is the first headline"
+        ],
+        [
+          "G2",
+          "1"
+        ],
+        [
+          "H2",
+          "This is the second headline"
+        ],
+        [
+          "I2",
+          "This is the third headline"
+        ],
+        [
+          "J2",
+          "This is the fourth headline"
+        ],
+        [
+          "K2",
+          "This is the first description"
+        ],
+        [
+          "L2",
+          "This is the second description"
+        ],
+        [
+          "M2",
+          "This is the third description"
+        ],
+        [
+          "N2",
+          "https://www.example.com"
+        ],
+        [
+          "O2",
+          "https://m.example.com"
+        ]
+      ]
+    ],
+    "xl/worksheets/sheet2.xml": [
+      [
+        [
+          "A1",
+          "Action"
+        ],
+        [
+          "B1",
+          "Ad status"
+        ],
+        [
+          "C1",
+          "Customer ID"
+        ],
+        [
+          "D1",
+          "Campaign"
+        ],
+        [
+          "E1",
+          "Ad group"
+        ],
+        [
+          "F1",
+          "Ad type"
+        ],
+        [
+          "G1",
+          "Headline 1"
+        ],
+        [
+          "H1",
+          "Headline 2"
+        ],
+        [
+          "I1",
+          "Headline 3"
+        ],
+        [
+          "J1",
+          "Description"
+        ],
+        [
+          "K1",
+          "Description 2"
+        ],
+        [
+          "L1",
+          "Final URL"
+        ]
+      ],
+      [
+        [
+          "A2",
+          "Add"
+        ],
+        [
+          "B2",
+          "Paused"
+        ],
+        [
+          "C2",
+          "123-456-7890"
+        ],
+        [
+          "D2",
+          "Shoe Campaign"
+        ],
+        [
+          "E2",
+          "Sandals"
+        ],
+        [
+          "F2",
+          "Responsive search ad"
+        ],
+        [
+          "G2",
+          "This is the first headline"
+        ],
+        [
+          "H2",
+          "This is the second headline"
+        ],
+        [
+          "I2",
+          "This is the third headline"
+        ],
+        [
+          "J2",
+          "This is the first description"
+        ],
+        [
+          "K2",
+          "This is the second description"
+        ],
+        [
+          "L2",
+          "www.example.com"
+        ]
+      ]
+    ],
+    "xl/worksheets/sheet1.xml": [
+      [
+        [
+          "A1",
+          "#Optional.\n"
+        ],
+        [
+          "B1",
+          "#Optional.\n Supported values: Enabled; Paused\n\nDefault: Enabled"
+        ],
+        [
+          "C1",
+          "#Optional.\n Example(s): 123-456-7890."
+        ],
+        [
+          "D1",
+          "#Optional\nRequired If using Ad group (by name)\nCan be left out if using Ad group ID\n\nUse either Campaign ID or Campaign (by name)\nNote: If you use both, they both must be correct       "
+        ],
+        [
+          "F1",
+          "# Required if used in combination with Campaign/Campaign ID\nNot needed if Ad Group ID is used"
+        ],
+        [
+          "G1",
+          "#Optional\n\nCan be used instead of Campaign/Campaign ID + Ad group combination"
+        ],
+        [
+          "H1",
+          "#Required"
+        ],
+        [
+          "I1",
+          "#Optional.\n Example(s): label 1; label 2; label 3 [123-456-7890]."
+        ],
+        [
+          "J1",
+          "#Required\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\nExample(s): headline 1."
+        ],
+        [
+          "K1",
+          "#Required\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\nExample(s): headline 2."
+        ],
+        [
+          "L1",
+          "#Required\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Example(s): headline 3."
+        ],
+        [
+          "M1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Example(s): headline 4."
+        ],
+        [
+          "N1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Example(s): headline 5."
+        ],
+        [
+          "O1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Example(s): headline 6."
+        ],
+        [
+          "P1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Example(s): headline 7."
+        ],
+        [
+          "Q1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Example(s): headline 8."
+        ],
+        [
+          "R1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Example(s): headline 9."
+        ],
+        [
+          "S1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Example(s): headline 10."
+        ],
+        [
+          "T1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Example(s): headline 11."
+        ],
+        [
+          "U1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Example(s): headline 12."
+        ],
+        [
+          "V1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Example(s): headline 13."
+        ],
+        [
+          "W1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Supports remove_value."
+        ],
+        [
+          "X1",
+          "#Optional\n\nMinimum of 3 headlines required.\nMaximum of 15 optional\n Supports remove_value."
+        ],
+        [
+          "Y1",
+          "#Required\n\nMinimum of 2 descriptions required\nMaximum of 4 descriptions optional\n Example(s): description 1."
+        ],
+        [
+          "Z1",
+          "#Required\n\nMinimum of 2 descriptions required\nMaximum of 4 descriptions optional\n Example(s): description 2."
+        ],
+        [
+          "AA1",
+          "#Optional\n\nMinimum of 2 descriptions required\nMaximum of 4 descriptions optional\n Example(s): description 3."
+        ],
+        [
+          "AB1",
+          "#Optional\n\nMinimum of 2 descriptions required\nMaximum of 4 descriptions optional\n Example(s): description 4."
+        ],
+        [
+          "AC1",
+          "#Optional\n\nPins Headline 1 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AD1",
+          "#Optional\n\nPins Headline 2 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AE1",
+          "#Optional\n\nPins Headline 3 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AF1",
+          "#Optional\n\nPins Headline 4 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AG1",
+          "#Optional\n\nPins Headline 5 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AH1",
+          "#Optional\n\nPins Headline 6 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AI1",
+          "#Optional\n\nPins Headline 7 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AJ1",
+          "#Optional\n\nPins Headline 8 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AK1",
+          "#Optional\n\nPins Headline 9 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AL1",
+          "#Optional\n\nPins Headline 10 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AM1",
+          "#Optional\n\nPins Headline 11 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AN1",
+          "#Optional\n\nPins Headline 12 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AO1",
+          "#Optional\n\nPins Headline 13 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AP1",
+          "#Optional\n\nPins Headline 14 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AQ1",
+          "#Optional\n\nPins Headline 15 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AR1",
+          "#Optional\n\nPins Description 1 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AS1",
+          "#Optional\n\nPins Description 2 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AT1",
+          "#Optional\n\nPins Description 3 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AU1",
+          "#Optional\n\nPins Description 4 in a specific position\n Supported values: 1; 2; 3."
+        ],
+        [
+          "AV1",
+          "#Optional.\n Example(s): path 1."
+        ],
+        [
+          "AW1",
+          "#Optional\n Example(s): path 2."
+        ],
+        [
+          "AX1",
+          "#Required\n Example(s): https://www.example.com ; http://www.example.org.\nNote: including \"https://\" or \"http://\" prefix is required"
+        ],
+        [
+          "AY1",
+          "#Optional.\n Example(s): https://m.example.com ; https://m.example.org.\nNote: including \"https://\" or \"http://\" prefix is required"
+        ],
+        [
+          "AZ1",
+          "#Optional.\n Example(s): http://www.abc.com/tracking?param1=create&url={lpurl}."
+        ],
+        [
+          "BA1",
+          "#Optional.\n Example(s): x=y."
+        ],
+        [
+          "BB1",
+          "#Optional.\n Example(s): {_color}=red ; {_bg}=blue."
+        ]
+      ],
+      [
+        [
+          "A2",
+          "Action"
+        ],
+        [
+          "B2",
+          "Ad status"
+        ],
+        [
+          "C2",
+          "Customer ID"
+        ],
+        [
+          "D2",
+          "Campaign ID"
+        ],
+        [
+          "E2",
+          "Campaign"
+        ],
+        [
+          "F2",
+          "Ad group"
+        ],
+        [
+          "G2",
+          "Ad group ID"
+        ],
+        [
+          "H2",
+          "Ad type"
+        ],
+        [
+          "I2",
+          "Label"
+        ],
+        [
+          "J2",
+          "Headline 1"
+        ],
+        [
+          "K2",
+          "Headline 2"
+        ],
+        [
+          "L2",
+          "Headline 3"
+        ],
+        [
+          "M2",
+          "Headline 4"
+        ],
+        [
+          "N2",
+          "Headline 5"
+        ],
+        [
+          "O2",
+          "Headline 6"
+        ],
+        [
+          "P2",
+          "Headline 7"
+        ],
+        [
+          "Q2",
+          "Headline 8"
+        ],
+        [
+          "R2",
+          "Headline 9"
+        ],
+        [
+          "S2",
+          "Headline 10"
+        ],
+        [
+          "T2",
+          "Headline 11"
+        ],
+        [
+          "U2",
+          "Headline 12"
+        ],
+        [
+          "V2",
+          "Headline 13"
+        ],
+        [
+          "W2",
+          "Headline 14"
+        ],
+        [
+          "X2",
+          "Headline 15"
+        ],
+        [
+          "Y2",
+          "Description"
+        ],
+        [
+          "Z2",
+          "Description 2"
+        ],
+        [
+          "AA2",
+          "Description 3"
+        ],
+        [
+          "AB2",
+          "Description 4"
+        ],
+        [
+          "AC2",
+          "Headline 1 position"
+        ],
+        [
+          "AD2",
+          "Headline 2 position"
+        ],
+        [
+          "AE2",
+          "Headline 3 position"
+        ],
+        [
+          "AF2",
+          "Headline 4 position"
+        ],
+        [
+          "AG2",
+          "Headline 5 position"
+        ],
+        [
+          "AH2",
+          "Headline 6 position"
+        ],
+        [
+          "AI2",
+          "Headline 7 position"
+        ],
+        [
+          "AJ2",
+          "Headline 8 position"
+        ],
+        [
+          "AK2",
+          "Headline 9 position"
+        ],
+        [
+          "AL2",
+          "Headline 10 position"
+        ],
+        [
+          "AM2",
+          "Headline 11 position"
+        ],
+        [
+          "AN2",
+          "Headline 12 position"
+        ],
+        [
+          "AO2",
+          "Headline 13 position"
+        ],
+        [
+          "AP2",
+          "Headline 14 position"
+        ],
+        [
+          "AQ2",
+          "Headline 15 position"
+        ],
+        [
+          "AR2",
+          "Description 1 position"
+        ],
+        [
+          "AS2",
+          "Description 2 position"
+        ],
+        [
+          "AT2",
+          "Description 3 position"
+        ],
+        [
+          "AU2",
+          "Description 4 position"
+        ],
+        [
+          "AV2",
+          "Path 1"
+        ],
+        [
+          "AW2",
+          "Path 2"
+        ],
+        [
+          "AX2",
+          "Final URL"
+        ],
+        [
+          "AY2",
+          "Mobile final URL"
+        ],
+        [
+          "AZ2",
+          "Tracking template"
+        ],
+        [
+          "BA2",
+          "Final URL suffix"
+        ],
+        [
+          "BB2",
+          "Custom parameter"
+        ]
+      ],
+      [
+        [
+          "A3",
+          "Add"
+        ],
+        [
+          "H3",
+          "Responsive search ad"
+        ]
+      ]
+    ]
+  }
+}

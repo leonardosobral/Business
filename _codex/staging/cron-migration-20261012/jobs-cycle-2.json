@@ -1,0 +1,362 @@
+{
+  "jobs": [
+    {
+      "due": false,
+      "nome": "RunnerHub Update Feed",
+      "ativo": true,
+      "error_code": "ok",
+      "id_cron_job": 1,
+      "last_run_at": "2026-10-12T12:31:42.661988",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T12:41:42.661988",
+      "interval_minutes": 10,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": true,
+      "nome": "Importador YouTube RunnerHub",
+      "ativo": true,
+      "error_code": "ok",
+      "id_cron_job": 2,
+      "last_run_at": "2026-10-10T16:53:54.091045",
+      "last_status": "success",
+      "next_run_at": "2026-10-10T17:53:54.091045",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": true,
+      "nome": "Conte\u00fado Corrida No Ar",
+      "ativo": true,
+      "error_code": "completed",
+      "id_cron_job": 3,
+      "last_run_at": "2026-10-10T16:44:51.39694",
+      "last_status": "success",
+      "next_run_at": "2026-10-10T17:44:51.39694",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "Conte\u00fado Contra Rel\u00f3gio",
+      "ativo": true,
+      "error_code": "misconfigured",
+      "id_cron_job": 4,
+      "last_run_at": "2026-10-12T12:32:13.508996",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T13:32:13.508996",
+      "interval_minutes": 60,
+      "last_http_status": "500 Internal Server Error"
+    },
+    {
+      "due": true,
+      "nome": "Conte\u00fado CBAt",
+      "ativo": true,
+      "error_code": "completed",
+      "id_cron_job": 5,
+      "last_run_at": "2026-10-10T16:50:05.635069",
+      "last_status": "success",
+      "next_run_at": "2026-10-10T17:50:05.635069",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "Road Runners - Fila Strava",
+      "ativo": true,
+      "error_code": "ok",
+      "id_cron_job": 6,
+      "last_run_at": "2026-10-12T12:32:12.844591",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T12:37:12.844591",
+      "interval_minutes": 5,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "RunnerHub - Ticket Sports 88278",
+      "ativo": false,
+      "error_code": "upstream_error",
+      "id_cron_job": 7,
+      "last_run_at": "2026-09-25T16:55:25.830432",
+      "last_status": "http_error",
+      "next_run_at": "2026-09-25T17:05:25.830432",
+      "interval_minutes": 10,
+      "last_http_status": "424 Failed Dependency"
+    },
+    {
+      "due": true,
+      "nome": "RunnerHub - Vinculacao Foco Radical",
+      "ativo": true,
+      "error_code": "partial",
+      "id_cron_job": 8,
+      "last_run_at": "2026-10-10T17:26:57.041977",
+      "last_status": "success",
+      "next_run_at": "2026-10-10T18:26:57.041977",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": true,
+      "nome": "Business - Metricas de publicidade",
+      "ativo": true,
+      "error_code": "refreshed",
+      "id_cron_job": 9,
+      "last_run_at": "2026-10-10T16:50:09.690656",
+      "last_status": "success",
+      "next_run_at": "2026-10-10T17:50:09.690656",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": true,
+      "nome": "Vicky \u2014 Intera\u00e7\u00f5es ativas",
+      "ativo": true,
+      "error_code": null,
+      "id_cron_job": 10,
+      "last_run_at": "2026-10-12T12:31:42.83687",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T12:32:42.83687",
+      "interval_minutes": 1,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": true,
+      "nome": "Vicky Pacer",
+      "ativo": true,
+      "error_code": null,
+      "id_cron_job": 11,
+      "last_run_at": "2026-10-12T12:31:42.736057",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T12:32:42.736057",
+      "interval_minutes": 1,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": true,
+      "nome": "Business - Reconciliacao de pagamentos Ads",
+      "ativo": true,
+      "error_code": "not_configured",
+      "id_cron_job": 12,
+      "last_run_at": "2026-10-12T12:11:22.191727",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T12:16:22.191727",
+      "interval_minutes": 5,
+      "last_http_status": "503 Service Unavailable"
+    },
+    {
+      "due": true,
+      "nome": "Conteudo - Importador Jornal da Corrida",
+      "ativo": true,
+      "error_code": "completed",
+      "id_cron_job": 13,
+      "last_run_at": "2026-10-10T17:02:53.986906",
+      "last_status": "success",
+      "next_run_at": "2026-10-10T18:02:53.986906",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": true,
+      "nome": "Conteudo - Importador SixComm",
+      "ativo": true,
+      "error_code": "completed",
+      "id_cron_job": 14,
+      "last_run_at": "2026-10-10T16:50:09.631286",
+      "last_status": "success",
+      "next_run_at": "2026-10-10T17:50:09.631286",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "Business - Reescrita de descricoes de eventos",
+      "ativo": false,
+      "error_code": "provider_quota_exhausted",
+      "id_cron_job": 15,
+      "last_run_at": "2026-09-25T21:14:33.165072",
+      "last_status": "http_error",
+      "next_run_at": "2026-09-25T21:24:33.165072",
+      "interval_minutes": 10,
+      "last_http_status": "424 Failed Dependency"
+    },
+    {
+      "due": true,
+      "nome": "AI-mails \u00b7 Coletar Gmail",
+      "ativo": true,
+      "error_code": "ok",
+      "id_cron_job": 17,
+      "last_run_at": "2026-10-10T16:53:54.742262",
+      "last_status": "success",
+      "next_run_at": "2026-10-10T17:53:54.742262",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "AI-mails \u00b7 Analisar conversas",
+      "ativo": false,
+      "error_code": "error",
+      "id_cron_job": 18,
+      "last_run_at": "2026-09-29T08:34:37.387244",
+      "last_status": "http_error",
+      "next_run_at": "2026-09-29T09:34:37.387244",
+      "interval_minutes": 60,
+      "last_http_status": "503 Service Unavailable"
+    },
+    {
+      "due": false,
+      "nome": "Conte\u00fado - Resumos autom\u00e1ticos de not\u00edcias",
+      "ativo": true,
+      "error_code": null,
+      "id_cron_job": 19,
+      "last_run_at": "2026-10-12T12:32:02.25955",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T12:42:02.25955",
+      "interval_minutes": 10,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "CRM interno - Notifica\u00e7\u00f5es",
+      "ativo": true,
+      "error_code": "invalid_signature",
+      "id_cron_job": 20,
+      "last_run_at": "2026-10-12T12:31:42.885052",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T12:33:42.885052",
+      "interval_minutes": 2,
+      "last_http_status": "503 Service Unavailable"
+    },
+    {
+      "due": false,
+      "nome": "CRM interno - E-mail",
+      "ativo": true,
+      "error_code": "service_unavailable",
+      "id_cron_job": 21,
+      "last_run_at": "2026-10-12T12:31:42.93391",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T12:33:42.93391",
+      "interval_minutes": 2,
+      "last_http_status": "503 Service Unavailable"
+    },
+    {
+      "due": false,
+      "nome": "CRM interno - Hist\u00f3rico de p\u00fablicos",
+      "ativo": true,
+      "error_code": "invalid_signature",
+      "id_cron_job": 22,
+      "last_run_at": "2026-10-12T12:32:12.937694",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T12:42:12.937694",
+      "interval_minutes": 10,
+      "last_http_status": "503 Service Unavailable"
+    },
+    {
+      "due": false,
+      "nome": "CRM interno - Compras Todo Santo Dia",
+      "ativo": true,
+      "error_code": "service_unavailable",
+      "id_cron_job": 23,
+      "last_run_at": "2026-10-12T12:32:02.135523",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T12:37:02.135523",
+      "interval_minutes": 5,
+      "last_http_status": "503 Service Unavailable"
+    }
+  ],
+  "timezone": "Etc/UTC",
+  "measured_at": "2026-10-12T12:32:48.22768+00:00",
+  "runs_since_reload": [
+    {
+      "runs": 1,
+      "status": "success",
+      "id_cron_job": 1,
+      "last_started": "2026-10-12T12:30:02.507415",
+      "trigger_type": "scheduled",
+      "first_started": "2026-10-12T12:30:02.507415",
+      "last_finished": "2026-10-12T12:31:42.660533"
+    },
+    {
+      "runs": 1,
+      "status": "http_error",
+      "id_cron_job": 4,
+      "last_started": "2026-10-12T12:32:12.947382",
+      "trigger_type": "scheduled",
+      "first_started": "2026-10-12T12:32:12.947382",
+      "last_finished": "2026-10-12T12:32:13.507339"
+    },
+    {
+      "runs": 1,
+      "status": "success",
+      "id_cron_job": 6,
+      "last_started": "2026-10-12T12:32:02.26893",
+      "trigger_type": "scheduled",
+      "first_started": "2026-10-12T12:32:02.26893",
+      "last_finished": "2026-10-12T12:32:12.843688"
+    },
+    {
+      "runs": 2,
+      "status": "success",
+      "id_cron_job": 10,
+      "last_started": "2026-10-12T12:31:42.745377",
+      "trigger_type": "scheduled",
+      "first_started": "2026-10-12T12:31:03.265266",
+      "last_finished": "2026-10-12T12:31:42.836095"
+    },
+    {
+      "runs": 2,
+      "status": "success",
+      "id_cron_job": 11,
+      "last_started": "2026-10-12T12:31:42.673072",
+      "trigger_type": "scheduled",
+      "first_started": "2026-10-12T12:31:02.490206",
+      "last_finished": "2026-10-12T12:31:42.735016"
+    },
+    {
+      "runs": 1,
+      "status": "success",
+      "id_cron_job": 19,
+      "last_started": "2026-10-12T12:32:02.14398",
+      "trigger_type": "scheduled",
+      "first_started": "2026-10-12T12:32:02.14398",
+      "last_finished": "2026-10-12T12:32:02.258412"
+    },
+    {
+      "runs": 2,
+      "status": "http_error",
+      "id_cron_job": 20,
+      "last_started": "2026-10-12T12:31:42.845326",
+      "trigger_type": "scheduled",
+      "first_started": "2026-10-12T12:31:03.556244",
+      "last_finished": "2026-10-12T12:31:42.884328"
+    },
+    {
+      "runs": 2,
+      "status": "http_error",
+      "id_cron_job": 21,
+      "last_started": "2026-10-12T12:31:42.892704",
+      "trigger_type": "scheduled",
+      "first_started": "2026-10-12T12:31:03.75384",
+      "last_finished": "2026-10-12T12:31:42.933124"
+    },
+    {
+      "runs": 1,
+      "status": "http_error",
+      "id_cron_job": 22,
+      "last_started": "2026-10-12T12:32:12.857019",
+      "trigger_type": "scheduled",
+      "first_started": "2026-10-12T12:32:12.857019",
+      "last_finished": "2026-10-12T12:32:12.935286"
+    },
+    {
+      "runs": 1,
+      "status": "http_error",
+      "id_cron_job": 23,
+      "last_started": "2026-10-12T12:32:02.007485",
+      "trigger_type": "scheduled",
+      "first_started": "2026-10-12T12:32:02.007485",
+      "last_finished": "2026-10-12T12:32:02.134421"
+    }
+  ]
+}

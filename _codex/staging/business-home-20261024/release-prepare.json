@@ -1,0 +1,13 @@
+{
+  "stage": "/var/backups/business-home-20261024-bmev1ttg",
+  "manifest_sha256": "57c0131c11568ab1f1d505e95656361c31fe893080457e34c4d5a8525ea3620d",
+  "candidate_hashes": {
+    "includes/backend/business_home_metrics.cfm": "74187da3e0eb8a91f0cdd89ab3f71cb4e49ae1e8b60eeaa894b1c4730984cd86",
+    "includes/estrutura/home_admin_decision_view.cfm": "0f15119745ffdcc118fd594a9e55ff9b1d00c17aefb180df882e4f616c040b03",
+    "assets/js/business-home-dashboard.js": "938b393cebe68f8f309468e6b9c7f588a3b0434650a7589374493810ba571c87",
+    "assets/css/admin-dashboard.css": "1d2dffb9092c086791cf57e53691646c41bdf0f8f2d14cfb151e1ef15bc440d8",
+    "includes/estrutura/home_admin_dashboard.cfm": "8343710dfea3ebab2296e2de06e2712cf196201c2dcbe37f80e2d030319bc10a"
+  },
+  "backup": "/var/backups/business-home-20261024-bmev1ttg/baseline",
+  "runtime_files_changed": false
+}

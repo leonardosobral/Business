@@ -1,0 +1,7 @@
+{
+  "failed_contract": "audience-editorial-templates.test.js:10",
+  "unmodified_file": "api/home_news.cfm",
+  "equals_HEAD": true,
+  "actual_markers": 1,
+  "expected_markers": 2
+}

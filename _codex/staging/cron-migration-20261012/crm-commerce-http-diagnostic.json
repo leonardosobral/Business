@@ -1,0 +1,24 @@
+{
+  "CONFIG": {
+    "SECRET_PRESENT": true
+  },
+  "SCOPES": {
+    "VARIABLES_KEY_COUNT": 0,
+    "VARIABLES_CONFIG_PRESENT": false
+  },
+  "HTTP": {
+    "VARIABLES_RESPONSE_PRESENT": false,
+    "LOCAL_KEYS": [
+      "Errordetail",
+      "Mimetype",
+      "Statuscode",
+      "Filecontent",
+      "Responseheader",
+      "Text",
+      "Charset",
+      "Header"
+    ],
+    "LOCAL_STATUS": "401 Unauthorized",
+    "VARIABLES_STATUS": ""
+  }
+}

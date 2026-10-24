@@ -1,0 +1,200 @@
+{
+  "cron6": {
+    "active": true,
+    "last_run_at": "2026-10-12T14:43:12.173159",
+    "last_status": "success",
+    "next_run_at": "2026-10-12T14:48:12.173159"
+  },
+  "by_day": [
+    {
+      "day": "2026-10-08",
+      "total": 3659,
+      "wrong_start_day": 15,
+      "wrong_day_athletes": 0,
+      "wrong_activity_date": 0
+    },
+    {
+      "day": "2026-10-09",
+      "total": 2893,
+      "wrong_start_day": 15,
+      "wrong_day_athletes": 0,
+      "wrong_activity_date": 0
+    },
+    {
+      "day": "2026-10-10",
+      "total": 3213,
+      "wrong_start_day": 36,
+      "wrong_day_athletes": 0,
+      "wrong_activity_date": 0
+    },
+    {
+      "day": "2026-10-11",
+      "total": 3069,
+      "wrong_start_day": 19,
+      "wrong_day_athletes": 0,
+      "wrong_activity_date": 0
+    },
+    {
+      "day": "2026-10-12",
+      "total": 1715,
+      "wrong_start_day": 18,
+      "wrong_day_athletes": 0,
+      "wrong_activity_date": 0
+    }
+  ],
+  "counts": {
+    "total": 14549,
+    "processed": 2355,
+    "latest_update": "2026-10-12T14:27:52.496376",
+    "with_local_day": 2279,
+    "earliest_update": "2025-01-06T02:57:38.241826",
+    "wrong_start_day": 103,
+    "wrong_activity_date": 0
+  },
+  "columns": [
+    {
+      "name": "activity_id",
+      "type": "bigint",
+      "default": null
+    },
+    {
+      "name": "athlete_id",
+      "type": "bigint",
+      "default": null
+    },
+    {
+      "name": "distance",
+      "type": "double precision",
+      "default": null
+    },
+    {
+      "name": "type",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "name": "start_date",
+      "type": "timestamp without time zone",
+      "default": null
+    },
+    {
+      "name": "title",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "name": "moving_time",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "name": "strava_raw",
+      "type": "jsonb",
+      "default": null
+    },
+    {
+      "name": "resource_state",
+      "type": "integer",
+      "default": "1"
+    },
+    {
+      "name": "processed",
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "name": "id_athlete_owner",
+      "type": "integer",
+      "default": "0"
+    },
+    {
+      "name": "id_athlete_donation",
+      "type": "integer",
+      "default": "0"
+    },
+    {
+      "name": "activity_date",
+      "type": "date",
+      "default": null
+    },
+    {
+      "name": "activity_source",
+      "type": "character varying",
+      "default": "'strava'::character varying"
+    },
+    {
+      "name": "total_elevation_gain",
+      "type": "double precision",
+      "default": "0"
+    },
+    {
+      "name": "updated",
+      "type": "timestamp without time zone",
+      "default": "now()"
+    },
+    {
+      "name": "calories",
+      "type": "double precision",
+      "default": "0"
+    },
+    {
+      "name": "fingerprint",
+      "type": "character varying",
+      "default": null
+    },
+    {
+      "name": "processed_at",
+      "type": "timestamp without time zone",
+      "default": null
+    },
+    {
+      "name": "hex_count",
+      "type": "integer",
+      "default": "0"
+    },
+    {
+      "name": "gorunners_user_id",
+      "type": "uuid",
+      "default": null
+    },
+    {
+      "name": "elapsed_time",
+      "type": "integer",
+      "default": null
+    },
+    {
+      "name": "strava_streams",
+      "type": "jsonb",
+      "default": null
+    },
+    {
+      "name": "strava_streams_status",
+      "type": "character varying",
+      "default": "'not_requested'::character varying"
+    },
+    {
+      "name": "strava_streams_fetched_at",
+      "type": "timestamp without time zone",
+      "default": null
+    },
+    {
+      "name": "strava_streams_attempts",
+      "type": "integer",
+      "default": "0"
+    },
+    {
+      "name": "strava_streams_next_attempt_at",
+      "type": "timestamp without time zone",
+      "default": null
+    },
+    {
+      "name": "strava_streams_last_error",
+      "type": "text",
+      "default": null
+    }
+  ],
+  "timezone": "America/Sao_Paulo",
+  "triggers": null,
+  "measured_at": "2026-10-12T11:46:44.921558-03:00",
+  "mismatch_groups": null
+}

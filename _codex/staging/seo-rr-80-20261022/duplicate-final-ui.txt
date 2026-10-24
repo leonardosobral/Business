@@ -1,0 +1,149 @@
+
+    - heading "6 páginas estão com problema de conteúdo duplicado" [level=2]
+    - generic: Erro
+    - button "Enviar para…":
+      - generic: Enviar para…
+    - link "Estrutura do site":
+      - /url: /siteaudit/campaign/26661911/review/pagereport/structure?restrictions=eyJ0cmlnZ2VyZWRJc3N1ZSI6N30%253D
+      - generic: Estrutura do site
+    - button "Excluir verificação":
+      - generic: Excluir verificação
+    - button "Como resolver este problema":
+      - generic "Como resolver este problema": Como resolver
+    - generic: "Falha:"
+    - generic: "6"
+    - generic: "Sucesso:"
+    - generic: "82"
+    - tablist:
+      - tab "Problemas 6" [selected]:
+        - generic: Problemas
+        - generic: "6"
+      - tab "Ocultos 0":
+        - generic: Ocultos
+        - generic: "0"
+    - textbox "Pesquisar"
+    - button "Pesquisar":
+    - combobox "Selecionar filtros avançados":
+      - generic: Filtros avançados
+    - grid:
+      - row "All items URL da página ascending Duplicados Descoberta":
+        - columnheader "All items":
+          - checkbox "All items"
+        - columnheader "URL da página ascending":
+          - text: URL da página
+          - button "ascending":
+        - columnheader "Duplicados": Duplicados
+        - columnheader "Descoberta": Descoberta
+        - columnheader
+      - generic: Sortable
+      - row "CORRIDA DAS CORES DA AMAZÔNIA - Manaus AM - Road race - Road Runners https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/ Show details 1 página out 19, 2026, 6:09 Ocultar https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - Manaus AM - Road race - Road Runners https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/":
+          - checkbox "CORRIDA DAS CORES DA AMAZÔNIA - Manaus AM - Road race - Road Runners https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/"
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - Manaus AM - Road race - Road Runners https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/":
+          - generic: CORRIDA DAS CORES DA AMAZÔNIA - Manaus AM - Road race - Road Runners
+          - link "https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d185542483c9
+            - generic: https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/
+          - link "Acessar https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/":
+            - /url: https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/
+        - gridcell "Show details 1 página":
+          - button "Show details":
+          - generic: 1 página
+        - gridcell "out 19, 2026, 6:09":
+          - generic: out 19, 2026, 6:09
+        - gridcell "Ocultar https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+      - row "CORRIDA DAS CORES DA AMAZÔNIA - Manaus AM - Road race - Road Runners https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/ Show details 1 página out 19, 2026, 6:09 Ocultar https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - Manaus AM - Road race - Road Runners https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/":
+          - checkbox "CORRIDA DAS CORES DA AMAZÔNIA - Manaus AM - Road race - Road Runners https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/"
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - Manaus AM - Road race - Road Runners https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/":
+          - generic: CORRIDA DAS CORES DA AMAZÔNIA - Manaus AM - Road race - Road Runners
+          - link "https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248e97
+            - generic: https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/
+          - link "Acessar https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/":
+            - /url: https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/
+        - gridcell "Show details 1 página":
+          - button "Show details":
+          - generic: 1 página
+        - gridcell "out 19, 2026, 6:09":
+          - generic: out 19, 2026, 6:09
+        - gridcell "Ocultar https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/en/event/2027-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+      - row "CORRIDA DAS CORES DA AMAZÔNIA - Carrera de ruta - Road Runners https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/ Show details 1 página out 19, 2026, 6:09 Ocultar https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - Carrera de ruta - Road Runners https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/":
+          - checkbox "CORRIDA DAS CORES DA AMAZÔNIA - Carrera de ruta - Road Runners https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/"
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - Carrera de ruta - Road Runners https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/":
+          - generic: CORRIDA DAS CORES DA AMAZÔNIA - Carrera de ruta - Road Runners
+          - link "https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d1855424839c
+            - generic: https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/
+          - link "Acessar https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/":
+            - /url: https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/
+        - gridcell "Show details 1 página":
+          - button "Show details":
+          - generic: 1 página
+        - gridcell "out 19, 2026, 6:09":
+          - generic: out 19, 2026, 6:09
+        - gridcell "Ocultar https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+      - row "CORRIDA DAS CORES DA AMAZÔNIA - Carrera de ruta - Road Runners https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/ Show details 1 página out 19, 2026, 6:09 Ocultar https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - Carrera de ruta - Road Runners https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/":
+          - checkbox "CORRIDA DAS CORES DA AMAZÔNIA - Carrera de ruta - Road Runners https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/"
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - Carrera de ruta - Road Runners https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/":
+          - generic: CORRIDA DAS CORES DA AMAZÔNIA - Carrera de ruta - Road Runners
+          - link "https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d1855424906b
+            - generic: https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/
+          - link "Acessar https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/":
+            - /url: https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/
+        - gridcell "Show details 1 página":
+          - button "Show details":
+          - generic: 1 página
+        - gridcell "out 19, 2026, 6:09":
+          - generic: out 19, 2026, 6:09
+        - gridcell "Ocultar https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/es/evento/2027-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+      - row "CORRIDA DAS CORES DA AMAZÔNIA - corrida de rua - Road Runners https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/ Show details 1 página out 19, 2026, 6:09 Ocultar https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - corrida de rua - Road Runners https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/":
+          - checkbox "CORRIDA DAS CORES DA AMAZÔNIA - corrida de rua - Road Runners https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/"
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - corrida de rua - Road Runners https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/":
+          - generic: CORRIDA DAS CORES DA AMAZÔNIA - corrida de rua - Road Runners
+          - link "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d185542492b8
+            - generic: https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/
+          - link "Acessar https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/":
+            - /url: https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/
+        - gridcell "Show details 1 página":
+          - button "Show details":
+          - generic: 1 página
+        - gridcell "out 19, 2026, 6:09":
+          - generic: out 19, 2026, 6:09
+        - gridcell "Ocultar https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+      - row "CORRIDA DAS CORES DA AMAZÔNIA - corrida de rua - Road Runners https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/ Show details 1 página out 19, 2026, 6:09 Ocultar https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - corrida de rua - Road Runners https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/":
+          - checkbox "CORRIDA DAS CORES DA AMAZÔNIA - corrida de rua - Road Runners https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/"
+        - gridcell "CORRIDA DAS CORES DA AMAZÔNIA - corrida de rua - Road Runners https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/ Acessar https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/":
+          - generic: CORRIDA DAS CORES DA AMAZÔNIA - corrida de rua - Road Runners
+          - link "https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248988
+            - generic: https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/
+          - link "Acessar https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/":
+            - /url: https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/
+        - gridcell "Show details 1 página":
+          - button "Show details":
+          - generic: 1 página
+        - gridcell "out 19, 2026, 6:09":
+          - generic: out 19, 2026, 6:09
+        - gridcell "Ocultar https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/ nos resultados de auditoria":
+    - status
+    - navigation "Paginação":
+      - generic: "Página:"
+      - textbox "Página:" [disabled]: "1"
+      - generic: de
+      - generic "Última página n.º 1": "1"
+      - combobox:
+        - generic: "10"
+      - status: "Página: 1"

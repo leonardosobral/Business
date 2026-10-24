@@ -1,0 +1,1709 @@
+[
+  {
+    "path": "/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Track&Field Run Series 2025 - São José do Rio Preto | 15/11/2026 | Road Runners",
+      "meta": {
+        "description": "Track&Field Run Series 2025 - São José do Rio Preto acontece em 15 novembro 2026, em 📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890 - São José do Rio Preto - SP."
+      },
+      "canonical": [
+        "https://roadrunners.run/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+          "name": "Track&Field Run Series 2025 - São José do Rio Preto",
+          "description": "Track&Field Run Series 2025 - São José do Rio Preto acontece em 15 novembro 2026, em 📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890 - São José do Rio Preto - SP.",
+          "url": "https://roadrunners.run/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+          "startDate": "2026-11-15",
+          "endDate": "2026-11-15",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://d1au5iau2exwyo.cloudfront.net/KV_Run_Series_SOLD_OUT_SEM_FAIXA_8525ba69cd.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São José do Rio Preto",
+              "addressRegion": "SP",
+              "addressCountry": "BR",
+              "streetAddress": "📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.tfsports.com.br/run-series/sao-jose-do-rio-preto-2026/"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "TFSPORT",
+            "url": "https://www.tfsports.com.br/"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/sp/",
+              "@type": "ListItem",
+              "name": "São Paulo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+              "@type": "ListItem",
+              "name": "Track&Field Run Series 2025 - São José do Rio Preto"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Track&Field Run Series 2025 - Shopping Vitória II | 15/11/2026 | Road Runners",
+      "meta": {
+        "description": "Track&Field Run Series 2025 - Shopping Vitória II acontece em 15 novembro 2026, em 📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902 - Vitória - ES."
+      },
+      "canonical": [
+        "https://roadrunners.run/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+          "name": "Track&Field Run Series 2025 - Shopping Vitória II",
+          "description": "Track&Field Run Series 2025 - Shopping Vitória II acontece em 15 novembro 2026, em 📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902 - Vitória - ES.",
+          "url": "https://roadrunners.run/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+          "startDate": "2026-11-15",
+          "endDate": "2026-11-15",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://d1au5iau2exwyo.cloudfront.net/RUN_SERIES_8c536e066d.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Vitória",
+              "addressRegion": "ES",
+              "addressCountry": "BR",
+              "streetAddress": "📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-20.3125338",
+              "longitude": "-40.2877922"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.tfsports.com.br/run-series/shopping-vitoria-ii-2026/"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "TFSPORT",
+            "url": "https://www.tfsports.com.br/"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/es/",
+              "@type": "ListItem",
+              "name": "Espírito Santo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+              "@type": "ListItem",
+              "name": "Track&Field Run Series 2025 - Shopping Vitória II"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Corrida e Caminhada Outubro Rosa ASPEC | 24/10/2026 | Road Runners",
+      "meta": {
+        "description": "Corrida e Caminhada Outubro Rosa ASPEC acontece em 24 outubro 2026, em Avenida dos Bandeirantes - Belo Horizonte - MG."
+      },
+      "canonical": [
+        "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+          "name": "Corrida e Caminhada Outubro Rosa ASPEC",
+          "description": "Corrida e Caminhada Outubro Rosa ASPEC acontece em 24 outubro 2026, em Avenida dos Bandeirantes - Belo Horizonte - MG.",
+          "url": "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+          "startDate": "2026-10-24",
+          "endDate": "2026-10-24",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://images.sympla.com.br/6a394ee2d2fbc.jpg"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Avenida dos Bandeirantes",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Belo Horizonte",
+              "addressRegion": "MG",
+              "addressCountry": "BR",
+              "streetAddress": "Avenida dos Bandeirantes"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.sympla.com.br/evento/corrida-e-caminhada-outubro-rosa-aspec/3414158"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/mg/",
+              "@type": "ListItem",
+              "name": "Minas Gerais"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+              "@type": "ListItem",
+              "name": "Corrida e Caminhada Outubro Rosa ASPEC"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/evento/2026-corrida-e-caminhada-outubro-rosa-ba/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Corrida e Caminhada Outubro Rosa - corrida 24/10/2026 | Road Runners",
+      "meta": {
+        "description": "Corrida e Caminhada Outubro Rosa acontece em 24 outubro 2026, em Rua treze de Maio - Caculé - BA."
+      },
+      "canonical": [
+        "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ba/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ba/",
+          "name": "Corrida e Caminhada Outubro Rosa",
+          "description": "Corrida e Caminhada Outubro Rosa acontece em 24 outubro 2026, em Rua treze de Maio - Caculé - BA.",
+          "url": "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ba/",
+          "startDate": "2026-10-24",
+          "endDate": "2026-10-24",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "Rua treze de Maio",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Caculé",
+              "addressRegion": "BA",
+              "addressCountry": "BR",
+              "streetAddress": "Rua treze de Maio"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.sympla.com.br/evento/corrida-e-caminhada-outubro-rosa/3612965"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Veloz Assessoria Esportiva",
+            "url": "http://www.veloz-rs.com/"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/ba/",
+              "@type": "ListItem",
+              "name": "Bahia"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ba/",
+              "@type": "ListItem",
+              "name": "Corrida e Caminhada Outubro Rosa"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/evento/2026-corrida-da-virada-2026-sp/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "CORRIDA DA VIRADA 2026 | São Paulo SP | 31/12/2026 | Road Runners",
+      "meta": {
+        "description": "CORRIDA DA VIRADA 2026 acontece em 31 dezembro 2026, em Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP."
+      },
+      "canonical": [
+        "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/",
+          "name": "CORRIDA DA VIRADA 2026",
+          "description": "CORRIDA DA VIRADA 2026 acontece em 31 dezembro 2026, em Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP.",
+          "url": "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/",
+          "startDate": "2026-12-31",
+          "endDate": "2026-12-31",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/I1TOOGWQ9GY37SE88M5WH5ETYQYAM969YF6QM2LS5RFVRZNWIH.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Brasil: Parque Bruno Covas Pomar, 252",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São Paulo",
+              "addressRegion": "SP",
+              "addressCountry": "BR",
+              "streetAddress": "Brasil: Parque Bruno Covas Pomar, 252"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86184&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/sp/",
+              "@type": "ListItem",
+              "name": "São Paulo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/",
+              "@type": "ListItem",
+              "name": "CORRIDA DA VIRADA 2026"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/evento/2026-together-run-pe/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Together Run - corrida de rua | Recife PE | 22/11/2026 | Road Runners",
+      "meta": {
+        "description": "Together Run acontece em 22 novembro 2026, em Porto Do Recife - Recife - PE."
+      },
+      "canonical": [
+        "https://roadrunners.run/evento/2026-together-run-pe/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-together-run-pe/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-together-run-pe/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-together-run-pe/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-together-run-pe/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/evento/2026-together-run-pe/",
+          "name": "Together Run",
+          "description": "Together Run acontece em 22 novembro 2026, em Porto Do Recife - Recife - PE.",
+          "url": "https://roadrunners.run/evento/2026-together-run-pe/",
+          "startDate": "2026-11-22",
+          "endDate": "2026-11-22",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://www.timecrono.com.br/painel/upload/img/inscricao/img-074-12082026161634-2cfd4560539f887a5e420412b370b361.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Porto Do Recife",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Recife",
+              "addressRegion": "PE",
+              "addressCountry": "BR",
+              "streetAddress": "Porto Do Recife"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.timecrono.com.br/evento/9261/together-run"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/pe/",
+              "@type": "ListItem",
+              "name": "Pernambuco"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/evento/2026-together-run-pe/",
+              "@type": "ListItem",
+              "name": "Together Run"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/en/event/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Track&Field Run Series 2025 - São José do Rio Preto | 15/11/2026 | Road Runners",
+      "meta": {
+        "description": "Track&Field Run Series 2025 - São José do Rio Preto takes place on 15 november 2026, in 📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890 - São José do Rio Preto - SP."
+      },
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+          "name": "Track&Field Run Series 2025 - São José do Rio Preto",
+          "description": "Track&Field Run Series 2025 - São José do Rio Preto takes place on 15 november 2026, in 📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890 - São José do Rio Preto - SP.",
+          "url": "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+          "startDate": "2026-11-15",
+          "endDate": "2026-11-15",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://d1au5iau2exwyo.cloudfront.net/KV_Run_Series_SOLD_OUT_SEM_FAIXA_8525ba69cd.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São José do Rio Preto",
+              "addressRegion": "SP",
+              "addressCountry": "BR",
+              "streetAddress": "📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.tfsports.com.br/run-series/sao-jose-do-rio-preto-2026/"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "TFSPORT",
+            "url": "https://www.tfsports.com.br/"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/en/",
+              "@type": "ListItem",
+              "name": "Home"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/sp/",
+              "@type": "ListItem",
+              "name": "São Paulo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+              "@type": "ListItem",
+              "name": "Track&Field Run Series 2025 - São José do Rio Preto"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/en/event/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Track&Field Run Series 2025 - Shopping Vitória II | 15/11/2026 | Road Runners",
+      "meta": {
+        "description": "Track&Field Run Series 2025 - Shopping Vitória II takes place on 15 november 2026, in 📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902 - Vitória - ES."
+      },
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+          "name": "Track&Field Run Series 2025 - Shopping Vitória II",
+          "description": "Track&Field Run Series 2025 - Shopping Vitória II takes place on 15 november 2026, in 📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902 - Vitória - ES.",
+          "url": "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+          "startDate": "2026-11-15",
+          "endDate": "2026-11-15",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://d1au5iau2exwyo.cloudfront.net/RUN_SERIES_8c536e066d.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Vitória",
+              "addressRegion": "ES",
+              "addressCountry": "BR",
+              "streetAddress": "📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-20.3125338",
+              "longitude": "-40.2877922"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.tfsports.com.br/run-series/shopping-vitoria-ii-2026/"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "TFSPORT",
+            "url": "https://www.tfsports.com.br/"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/en/",
+              "@type": "ListItem",
+              "name": "Home"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/es/",
+              "@type": "ListItem",
+              "name": "Espírito Santo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+              "@type": "ListItem",
+              "name": "Track&Field Run Series 2025 - Shopping Vitória II"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/en/event/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Corrida e Caminhada Outubro Rosa ASPEC | 24/10/2026 | Road Runners",
+      "meta": {
+        "description": "Corrida e Caminhada Outubro Rosa ASPEC takes place on 24 october 2026, in Avenida dos Bandeirantes - Belo Horizonte - MG."
+      },
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+          "name": "Corrida e Caminhada Outubro Rosa ASPEC",
+          "description": "Corrida e Caminhada Outubro Rosa ASPEC takes place on 24 october 2026, in Avenida dos Bandeirantes - Belo Horizonte - MG.",
+          "url": "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+          "startDate": "2026-10-24",
+          "endDate": "2026-10-24",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://images.sympla.com.br/6a394ee2d2fbc.jpg"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Avenida dos Bandeirantes",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Belo Horizonte",
+              "addressRegion": "MG",
+              "addressCountry": "BR",
+              "streetAddress": "Avenida dos Bandeirantes"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.sympla.com.br/evento/corrida-e-caminhada-outubro-rosa-aspec/3414158"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/en/",
+              "@type": "ListItem",
+              "name": "Home"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/mg/",
+              "@type": "ListItem",
+              "name": "Minas Gerais"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+              "@type": "ListItem",
+              "name": "Corrida e Caminhada Outubro Rosa ASPEC"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/en/event/2026-corrida-e-caminhada-outubro-rosa-ba/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Corrida e Caminhada Outubro Rosa - Race 24/10/2026 | Road Runners",
+      "meta": {
+        "description": "Corrida e Caminhada Outubro Rosa takes place on 24 october 2026, in Rua treze de Maio - Caculé - BA."
+      },
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-ba/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-ba/",
+          "name": "Corrida e Caminhada Outubro Rosa",
+          "description": "Corrida e Caminhada Outubro Rosa takes place on 24 october 2026, in Rua treze de Maio - Caculé - BA.",
+          "url": "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-ba/",
+          "startDate": "2026-10-24",
+          "endDate": "2026-10-24",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "Rua treze de Maio",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Caculé",
+              "addressRegion": "BA",
+              "addressCountry": "BR",
+              "streetAddress": "Rua treze de Maio"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.sympla.com.br/evento/corrida-e-caminhada-outubro-rosa/3612965"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Veloz Assessoria Esportiva",
+            "url": "http://www.veloz-rs.com/"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/en/",
+              "@type": "ListItem",
+              "name": "Home"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/ba/",
+              "@type": "ListItem",
+              "name": "Bahia"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-ba/",
+              "@type": "ListItem",
+              "name": "Corrida e Caminhada Outubro Rosa"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/en/event/2026-corrida-da-virada-2026-sp/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "CORRIDA DA VIRADA 2026 - Race | São Paulo SP 31/12/2026 | Road Runners",
+      "meta": {
+        "description": "CORRIDA DA VIRADA 2026 takes place on 31 december 2026, in Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP."
+      },
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/",
+          "name": "CORRIDA DA VIRADA 2026",
+          "description": "CORRIDA DA VIRADA 2026 takes place on 31 december 2026, in Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP.",
+          "url": "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/",
+          "startDate": "2026-12-31",
+          "endDate": "2026-12-31",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/I1TOOGWQ9GY37SE88M5WH5ETYQYAM969YF6QM2LS5RFVRZNWIH.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Brasil: Parque Bruno Covas Pomar, 252",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São Paulo",
+              "addressRegion": "SP",
+              "addressCountry": "BR",
+              "streetAddress": "Brasil: Parque Bruno Covas Pomar, 252"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86184&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/en/",
+              "@type": "ListItem",
+              "name": "Home"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/sp/",
+              "@type": "ListItem",
+              "name": "São Paulo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/",
+              "@type": "ListItem",
+              "name": "CORRIDA DA VIRADA 2026"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/en/event/2026-together-run-pe/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Together Run - Road race | Recife PE | 22/11/2026 | Road Runners",
+      "meta": {
+        "description": "Together Run takes place on 22 november 2026, in Porto Do Recife - Recife - PE."
+      },
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-together-run-pe/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-together-run-pe/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-together-run-pe/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-together-run-pe/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-together-run-pe/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/en/event/2026-together-run-pe/",
+          "name": "Together Run",
+          "description": "Together Run takes place on 22 november 2026, in Porto Do Recife - Recife - PE.",
+          "url": "https://roadrunners.run/en/event/2026-together-run-pe/",
+          "startDate": "2026-11-22",
+          "endDate": "2026-11-22",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://www.timecrono.com.br/painel/upload/img/inscricao/img-074-12082026161634-2cfd4560539f887a5e420412b370b361.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Porto Do Recife",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Recife",
+              "addressRegion": "PE",
+              "addressCountry": "BR",
+              "streetAddress": "Porto Do Recife"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.timecrono.com.br/evento/9261/together-run"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/en/",
+              "@type": "ListItem",
+              "name": "Home"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/pe/",
+              "@type": "ListItem",
+              "name": "Pernambuco"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/en/event/2026-together-run-pe/",
+              "@type": "ListItem",
+              "name": "Together Run"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/es/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Track&Field Run Series 2025 - São José do Rio Preto | 15/11/2026 | Road Runners",
+      "meta": {
+        "description": "Track&Field Run Series 2025 - São José do Rio Preto se realiza el 15 noviembre 2026, en 📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890 - São José do Rio Preto - SP."
+      },
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+          "name": "Track&Field Run Series 2025 - São José do Rio Preto",
+          "description": "Track&Field Run Series 2025 - São José do Rio Preto se realiza el 15 noviembre 2026, en 📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890 - São José do Rio Preto - SP.",
+          "url": "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+          "startDate": "2026-11-15",
+          "endDate": "2026-11-15",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://d1au5iau2exwyo.cloudfront.net/KV_Run_Series_SOLD_OUT_SEM_FAIXA_8525ba69cd.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São José do Rio Preto",
+              "addressRegion": "SP",
+              "addressCountry": "BR",
+              "streetAddress": "📍 Av. Benedito Rodrigues Lisboa, 2191-2265 - Jardim Bosque das Vivendas, São José do Rio Preto - SP, 15085-890"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.tfsports.com.br/run-series/sao-jose-do-rio-preto-2026/"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "TFSPORT",
+            "url": "https://www.tfsports.com.br/"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/es/",
+              "@type": "ListItem",
+              "name": "Inicio"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/sp/",
+              "@type": "ListItem",
+              "name": "São Paulo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/",
+              "@type": "ListItem",
+              "name": "Track&Field Run Series 2025 - São José do Rio Preto"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/es/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Track&Field Run Series 2025 - Shopping Vitória II | 15/11/2026 | Road Runners",
+      "meta": {
+        "description": "Track&Field Run Series 2025 - Shopping Vitória II se realiza el 15 noviembre 2026, en 📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902 - Vitória - ES."
+      },
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+          "name": "Track&Field Run Series 2025 - Shopping Vitória II",
+          "description": "Track&Field Run Series 2025 - Shopping Vitória II se realiza el 15 noviembre 2026, en 📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902 - Vitória - ES.",
+          "url": "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+          "startDate": "2026-11-15",
+          "endDate": "2026-11-15",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://d1au5iau2exwyo.cloudfront.net/RUN_SERIES_8c536e066d.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Vitória",
+              "addressRegion": "ES",
+              "addressCountry": "BR",
+              "streetAddress": "📍Av. Américo Buaiz, 200 - A 15 - Enseada do Suá, Vitória - ES, 29050-902"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "-20.3125338",
+              "longitude": "-40.2877922"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.tfsports.com.br/run-series/shopping-vitoria-ii-2026/"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "TFSPORT",
+            "url": "https://www.tfsports.com.br/"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/es/",
+              "@type": "ListItem",
+              "name": "Inicio"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/es/",
+              "@type": "ListItem",
+              "name": "Espírito Santo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/es/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/",
+              "@type": "ListItem",
+              "name": "Track&Field Run Series 2025 - Shopping Vitória II"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/es/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Corrida e Caminhada Outubro Rosa ASPEC | 24/10/2026 | Road Runners",
+      "meta": {
+        "description": "Corrida e Caminhada Outubro Rosa ASPEC se realiza el 24 octubre 2026, en Avenida dos Bandeirantes - Belo Horizonte - MG."
+      },
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+          "name": "Corrida e Caminhada Outubro Rosa ASPEC",
+          "description": "Corrida e Caminhada Outubro Rosa ASPEC se realiza el 24 octubre 2026, en Avenida dos Bandeirantes - Belo Horizonte - MG.",
+          "url": "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+          "startDate": "2026-10-24",
+          "endDate": "2026-10-24",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://images.sympla.com.br/6a394ee2d2fbc.jpg"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Avenida dos Bandeirantes",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Belo Horizonte",
+              "addressRegion": "MG",
+              "addressCountry": "BR",
+              "streetAddress": "Avenida dos Bandeirantes"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.sympla.com.br/evento/corrida-e-caminhada-outubro-rosa-aspec/3414158"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/es/",
+              "@type": "ListItem",
+              "name": "Inicio"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/mg/",
+              "@type": "ListItem",
+              "name": "Minas Gerais"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-aspec/",
+              "@type": "ListItem",
+              "name": "Corrida e Caminhada Outubro Rosa ASPEC"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/es/evento/2026-corrida-e-caminhada-outubro-rosa-ba/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Corrida e Caminhada Outubro Rosa - Carrera 24/10/2026 | Road Runners",
+      "meta": {
+        "description": "Corrida e Caminhada Outubro Rosa se realiza el 24 octubre 2026, en Rua treze de Maio - Caculé - BA."
+      },
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-ba/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ba/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-ba/",
+          "name": "Corrida e Caminhada Outubro Rosa",
+          "description": "Corrida e Caminhada Outubro Rosa se realiza el 24 octubre 2026, en Rua treze de Maio - Caculé - BA.",
+          "url": "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-ba/",
+          "startDate": "2026-10-24",
+          "endDate": "2026-10-24",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "location": {
+            "@type": "Place",
+            "name": "Rua treze de Maio",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Caculé",
+              "addressRegion": "BA",
+              "addressCountry": "BR",
+              "streetAddress": "Rua treze de Maio"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.sympla.com.br/evento/corrida-e-caminhada-outubro-rosa/3612965"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Veloz Assessoria Esportiva",
+            "url": "http://www.veloz-rs.com/"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/es/",
+              "@type": "ListItem",
+              "name": "Inicio"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/ba/",
+              "@type": "ListItem",
+              "name": "Bahia"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/es/evento/2026-corrida-e-caminhada-outubro-rosa-ba/",
+              "@type": "ListItem",
+              "name": "Corrida e Caminhada Outubro Rosa"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/es/evento/2026-corrida-da-virada-2026-sp/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "CORRIDA DA VIRADA 2026 | São Paulo SP | 31/12/2026 | Road Runners",
+      "meta": {
+        "description": "CORRIDA DA VIRADA 2026 se realiza el 31 diciembre 2026, en Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP."
+      },
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-da-virada-2026-sp/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/",
+          "name": "CORRIDA DA VIRADA 2026",
+          "description": "CORRIDA DA VIRADA 2026 se realiza el 31 diciembre 2026, en Brasil: Parque Bruno Covas Pomar, 252 - São Paulo - SP.",
+          "url": "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/",
+          "startDate": "2026-12-31",
+          "endDate": "2026-12-31",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/I1TOOGWQ9GY37SE88M5WH5ETYQYAM969YF6QM2LS5RFVRZNWIH.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Brasil: Parque Bruno Covas Pomar, 252",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São Paulo",
+              "addressRegion": "SP",
+              "addressCountry": "BR",
+              "streetAddress": "Brasil: Parque Bruno Covas Pomar, 252"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86184&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/es/",
+              "@type": "ListItem",
+              "name": "Inicio"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/sp/",
+              "@type": "ListItem",
+              "name": "São Paulo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/es/evento/2026-corrida-da-virada-2026-sp/",
+              "@type": "ListItem",
+              "name": "CORRIDA DA VIRADA 2026"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/es/evento/2026-together-run-pe/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "Together Run - Carrera de ruta | Recife PE | 22/11/2026 | Road Runners",
+      "meta": {
+        "description": "Together Run se realiza el 22 noviembre 2026, en Porto Do Recife - Recife - PE."
+      },
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-together-run-pe/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-together-run-pe/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-together-run-pe/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-together-run-pe/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-together-run-pe/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/es/evento/2026-together-run-pe/",
+          "name": "Together Run",
+          "description": "Together Run se realiza el 22 noviembre 2026, en Porto Do Recife - Recife - PE.",
+          "url": "https://roadrunners.run/es/evento/2026-together-run-pe/",
+          "startDate": "2026-11-22",
+          "endDate": "2026-11-22",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://www.timecrono.com.br/painel/upload/img/inscricao/img-074-12082026161634-2cfd4560539f887a5e420412b370b361.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Porto Do Recife",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Recife",
+              "addressRegion": "PE",
+              "addressCountry": "BR",
+              "streetAddress": "Porto Do Recife"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://www.timecrono.com.br/evento/9261/together-run"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/es/",
+              "@type": "ListItem",
+              "name": "Inicio"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/pe/",
+              "@type": "ListItem",
+              "name": "Pernambuco"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/es/evento/2026-together-run-pe/",
+              "@type": "ListItem",
+              "name": "Together Run"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  }
+]

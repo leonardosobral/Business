@@ -1,0 +1,368 @@
+[
+  {
+    "path": "/evento/2026-corrida-das-cores-da-amazonia/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "CORRIDA DAS CORES DA AMAZÔNIA - corrida de rua - Road Runners",
+      "meta": {
+        "description": "CORRIDA DAS CORES DA AMAZÔNIA acontece em 28 março 2027, em Manaus: A definir, Manaus, AM, Brasil - Manaus - AM."
+      },
+      "canonical": [
+        "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/",
+          "name": "CORRIDA DAS CORES DA AMAZÔNIA",
+          "description": "CORRIDA DAS CORES DA AMAZÔNIA acontece em 28 março 2027, em Manaus: A definir, Manaus, AM, Brasil - Manaus - AM.",
+          "url": "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/",
+          "startDate": "2027-03-28",
+          "endDate": "2027-03-28",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/Z475NNZ0Q9MVWVZNQXF9RJXN3DGJECL4ISX96A56NQC9568CWO.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Manaus: A definir, Manaus, AM, Brasil",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Manaus",
+              "addressRegion": "AM",
+              "addressCountry": "BR",
+              "streetAddress": "Manaus: A definir, Manaus, AM, Brasil"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87544&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/am/",
+              "@type": "ListItem",
+              "name": "Amazonas"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/",
+              "@type": "ListItem",
+              "name": "CORRIDA DAS CORES DA AMAZÔNIA"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/evento/2027-corrida-das-cores-da-amazonia/",
+    "method": "GET",
+    "edge": false,
+    "status": 301,
+    "headers": {
+      "location": "/evento/2026-corrida-das-cores-da-amazonia/",
+      "content-type": "text/html;charset=UTF-8"
+    }
+  },
+  {
+    "path": "/en/event/2026-corrida-das-cores-da-amazonia/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "CORRIDA DAS CORES DA AMAZÔNIA - Manaus AM - Road race - Road Runners",
+      "meta": {
+        "description": "CORRIDA DAS CORES DA AMAZÔNIA takes place on 28 march 2027, in Manaus: A definir, Manaus, AM, Brasil - Manaus - AM."
+      },
+      "canonical": [
+        "https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/",
+          "name": "CORRIDA DAS CORES DA AMAZÔNIA",
+          "description": "CORRIDA DAS CORES DA AMAZÔNIA takes place on 28 march 2027, in Manaus: A definir, Manaus, AM, Brasil - Manaus - AM.",
+          "url": "https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/",
+          "startDate": "2027-03-28",
+          "endDate": "2027-03-28",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/Z475NNZ0Q9MVWVZNQXF9RJXN3DGJECL4ISX96A56NQC9568CWO.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Manaus: A definir, Manaus, AM, Brasil",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Manaus",
+              "addressRegion": "AM",
+              "addressCountry": "BR",
+              "streetAddress": "Manaus: A definir, Manaus, AM, Brasil"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87544&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/en/",
+              "@type": "ListItem",
+              "name": "Home"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/am/",
+              "@type": "ListItem",
+              "name": "Amazonas"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/",
+              "@type": "ListItem",
+              "name": "CORRIDA DAS CORES DA AMAZÔNIA"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/en/event/2027-corrida-das-cores-da-amazonia/",
+    "method": "GET",
+    "edge": false,
+    "status": 301,
+    "headers": {
+      "location": "/en/event/2026-corrida-das-cores-da-amazonia/",
+      "content-type": "text/html;charset=UTF-8"
+    }
+  },
+  {
+    "path": "/es/evento/2026-corrida-das-cores-da-amazonia/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "metadata": {
+      "title": "CORRIDA DAS CORES DA AMAZÔNIA - Carrera de ruta - Road Runners",
+      "meta": {
+        "description": "CORRIDA DAS CORES DA AMAZÔNIA se realiza el 28 marzo 2027, en Manaus: A definir, Manaus, AM, Brasil - Manaus - AM."
+      },
+      "canonical": [
+        "https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-corrida-das-cores-da-amazonia/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/",
+          "name": "CORRIDA DAS CORES DA AMAZÔNIA",
+          "description": "CORRIDA DAS CORES DA AMAZÔNIA se realiza el 28 marzo 2027, en Manaus: A definir, Manaus, AM, Brasil - Manaus - AM.",
+          "url": "https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/",
+          "startDate": "2027-03-28",
+          "endDate": "2027-03-28",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://cdn.ticketsports.com.br/ticketagora/images/Z475NNZ0Q9MVWVZNQXF9RJXN3DGJECL4ISX96A56NQC9568CWO.png"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Manaus: A definir, Manaus, AM, Brasil",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Manaus",
+              "addressRegion": "AM",
+              "addressCountry": "BR",
+              "streetAddress": "Manaus: A definir, Manaus, AM, Brasil"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87544&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/es/",
+              "@type": "ListItem",
+              "name": "Inicio"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/am/",
+              "@type": "ListItem",
+              "name": "Amazonas"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/es/evento/2026-corrida-das-cores-da-amazonia/",
+              "@type": "ListItem",
+              "name": "CORRIDA DAS CORES DA AMAZÔNIA"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/es/evento/2027-corrida-das-cores-da-amazonia/",
+    "method": "GET",
+    "edge": false,
+    "status": 301,
+    "headers": {
+      "location": "/es/evento/2026-corrida-das-cores-da-amazonia/",
+      "content-type": "text/html;charset=UTF-8"
+    }
+  },
+  {
+    "path": "/evento/2027-corrida-das-cores-da-amazonia/",
+    "method": "HEAD",
+    "edge": false,
+    "status": 301,
+    "headers": {
+      "location": "/evento/2026-corrida-das-cores-da-amazonia/",
+      "content-type": "text/html;charset=UTF-8"
+    }
+  },
+  {
+    "path": "/evento/2027-corrida-das-cores-da-amazonia/",
+    "method": "GET",
+    "edge": true,
+    "status": 301,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8",
+      "location": "/evento/2026-corrida-das-cores-da-amazonia/"
+    }
+  },
+  {
+    "path": "/en/event/2027-corrida-das-cores-da-amazonia/",
+    "method": "HEAD",
+    "edge": false,
+    "status": 301,
+    "headers": {
+      "location": "/en/event/2026-corrida-das-cores-da-amazonia/",
+      "content-type": "text/html;charset=UTF-8"
+    }
+  },
+  {
+    "path": "/en/event/2027-corrida-das-cores-da-amazonia/",
+    "method": "GET",
+    "edge": true,
+    "status": 301,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8",
+      "location": "/en/event/2026-corrida-das-cores-da-amazonia/"
+    }
+  },
+  {
+    "path": "/es/evento/2027-corrida-das-cores-da-amazonia/",
+    "method": "HEAD",
+    "edge": false,
+    "status": 301,
+    "headers": {
+      "location": "/es/evento/2026-corrida-das-cores-da-amazonia/",
+      "content-type": "text/html;charset=UTF-8"
+    }
+  },
+  {
+    "path": "/es/evento/2027-corrida-das-cores-da-amazonia/",
+    "method": "GET",
+    "edge": true,
+    "status": 301,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8",
+      "location": "/es/evento/2026-corrida-das-cores-da-amazonia/"
+    }
+  }
+]

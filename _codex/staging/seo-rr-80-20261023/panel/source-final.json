@@ -1,0 +1,1025 @@
+{
+  "source": "Semrush — interface autenticada no Chrome",
+  "projectId": 26661911,
+  "domain": "roadrunners.run",
+  "status": "complete",
+  "crawled": 5000,
+  "limit": 5000,
+  "deviceLabel": "Móvel",
+  "javascriptRendered": false,
+  "siteHealth": 75,
+  "aiHealth": 79,
+  "errors": 30,
+  "warnings": 10333,
+  "checkedAt": "2026-10-23T11:49:16.886030+00:00",
+  "lastFinishedAt": "2026-10-22T19:38:00Z",
+  "finishedPrecision": "minute",
+  "finishedDisplay": "22 out 2026 (16:38)",
+  "sourceUrl": "https://pt.semrush.com/siteaudit/campaign/26661911/review/overview",
+  "comparisonUrl": "https://pt.semrush.com/siteaudit/campaign/26661911/review/compare/overall_score",
+  "notices": 5892,
+  "noticesByType": [
+    {
+      "issueId": 104,
+      "label": "Múltiplos títulos h1",
+      "count": 1
+    },
+    {
+      "issueId": 4,
+      "label": "Bloqueada para rastreamento",
+      "count": 4
+    },
+    {
+      "issueId": 204,
+      "label": "Problemas de incompatibilidade de idiomas no hreflang",
+      "count": 47
+    },
+    {
+      "issueId": 205,
+      "label": "Sem suporte a HSTS",
+      "count": 4
+    },
+    {
+      "issueId": 209,
+      "label": "Bloqueada por X-Robots-Tag: cabeçalho HTTP com noindex",
+      "count": 1
+    },
+    {
+      "issueId": 212,
+      "label": "Profundidade do rastreamento da página superior a 3 cliques",
+      "count": 1661
+    },
+    {
+      "issueId": 213,
+      "label": "Páginas com apenas um link interno",
+      "count": 704
+    },
+    {
+      "issueId": 214,
+      "label": "Redirecionamentos permanentes",
+      "count": 16
+    },
+    {
+      "issueId": 217,
+      "label": "Links com texto âncora não descritivo",
+      "count": 164
+    },
+    {
+      "issueId": 218,
+      "label": "Páginas ou recursos externos com código de status HTTP 403",
+      "count": 75
+    },
+    {
+      "issueId": 221,
+      "label": "Conteúdo desatualizado",
+      "count": 2
+    },
+    {
+      "issueId": 222,
+      "label": "Baixo uso de HTML semântico",
+      "count": 2
+    },
+    {
+      "issueId": 223,
+      "label": "Conteúdo não otimizado",
+      "count": 4
+    }
+  ],
+  "observedDetails": {
+    "previousDateLabel": "21 out 2026 (10:06)",
+    "currentDateLabel": "22 out 2026 (12:32)",
+    "source": "Overview and comparison, both read from authenticated UI; group sums reconciled for both periods.",
+    "sameCrawlSettings": true
+  },
+  "comparisonUI": {
+    "metrics": {
+      "g1": {
+        "previous": 5000,
+        "current": 5000,
+        "fixed": null,
+        "new": null
+      },
+      "g2": {
+        "previous": 71,
+        "current": 75,
+        "fixed": null,
+        "new": null
+      },
+      "g3": {
+        "previous": 13035,
+        "current": 16255,
+        "fixed": 3376,
+        "new": 6596
+      },
+      "g4": {
+        "previous": 44,
+        "current": 30,
+        "fixed": 22,
+        "new": 8
+      },
+      "g5": {
+        "previous": 10306,
+        "current": 10333,
+        "fixed": 2242,
+        "new": 2269
+      },
+      "g6": {
+        "previous": 2685,
+        "current": 5892,
+        "fixed": 1112,
+        "new": 4319
+      }
+    },
+    "errors": [
+      {
+        "issueId": 1,
+        "label": "Erros 5XX",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 2,
+        "label": "Erros 4XX",
+        "previous": 1,
+        "current": 1,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 3,
+        "label": "Tags de título ausentes",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 6,
+        "label": "Tags de título duplicadas",
+        "previous": 14,
+        "current": 4,
+        "fixed": 10,
+        "new": null
+      },
+      {
+        "issueId": 7,
+        "label": "Conteúdo duplicado",
+        "previous": 6,
+        "current": 0,
+        "fixed": 6,
+        "new": null
+      },
+      {
+        "issueId": 8,
+        "label": "Links internos quebrados",
+        "previous": 15,
+        "current": 13,
+        "fixed": 5,
+        "new": 3
+      },
+      {
+        "issueId": 9,
+        "label": "Páginas não rastreadas",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 10,
+        "label": "Problema de resolução DNS",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 11,
+        "label": "Não conseguimos abrir a URL da página",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 13,
+        "label": "Imagens internas quebradas",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 15,
+        "label": "Descrições meta duplicadas",
+        "previous": 6,
+        "current": 6,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 16,
+        "label": "Formato do robots.txt inválido",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 17,
+        "label": "Formato do sitemap.xml inválido",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 18,
+        "label": "URLs incorretas no sitemap.xml",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 19,
+        "label": "Problemas de resolução www",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 20,
+        "label": "Viewport não configurado",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 21,
+        "label": "Página HTML grande mais",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 22,
+        "label": "Tag canônica ausente em páginas AMP",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 23,
+        "label": "Problemas de implementação hreflang",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 24,
+        "label": "Conflitos de hreflang no código-fonte da página",
+        "previous": 1,
+        "current": 1,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 25,
+        "label": "Problemas com links incorretos em hreflangs",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 26,
+        "label": "Páginas não seguras",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 27,
+        "label": "Certificado expirado",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 28,
+        "label": "Versão antiga do protocolo de segurança",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 29,
+        "label": "Certificado registrado com nome incorreto",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 30,
+        "label": "Problemas de conteúdo misto",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 32,
+        "label": "Ausência de URL canônica ou redirecionamento 301 na página inicial HTTP",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 33,
+        "label": "Cadeias e loops de redirecionamento",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 38,
+        "label": "URLs canônicas quebradas",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 39,
+        "label": "Várias URLs canônicas",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 40,
+        "label": "Redirecionamentos via meta refresh",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 41,
+        "label": "Arquivos JavaScript e CSS internos quebrados",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 42,
+        "label": "Algoritmos de criptografia inseguros",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 43,
+        "label": "Sitemap.xml grande demais",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 44,
+        "label": "Links com problemas no formato",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 45,
+        "label": "Elementos de dados estruturados inválidos",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 46,
+        "label": "Largura da viewport não definida",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 111,
+        "label": "Alto tempo de carregamento da página",
+        "previous": 1,
+        "current": 5,
+        "fixed": 1,
+        "new": 5
+      }
+    ],
+    "warnings": [
+      {
+        "issueId": 12,
+        "label": "Links externos quebrados",
+        "previous": 24,
+        "current": 24,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 14,
+        "label": "Imagens externas quebradas",
+        "previous": 72,
+        "current": 60,
+        "fixed": 15,
+        "new": 3
+      },
+      {
+        "issueId": 31,
+        "label": "Links de site HTTPS que levam a páginas HTTP",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 101,
+        "label": "Título curto demais",
+        "previous": 1,
+        "current": 1,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 102,
+        "label": "Título grande demais",
+        "previous": 460,
+        "current": 460,
+        "fixed": 95,
+        "new": 95
+      },
+      {
+        "issueId": 103,
+        "label": "Título h1 ausente",
+        "previous": 13,
+        "current": 13,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 105,
+        "label": "Conteúdo duplicado nas tags h1 e título",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 106,
+        "label": "Descrição meta ausente",
+        "previous": 2,
+        "current": 0,
+        "fixed": 2,
+        "new": null
+      },
+      {
+        "issueId": 108,
+        "label": "A página possui links em excesso",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 109,
+        "label": "Redirecionamentos temporários",
+        "previous": 4765,
+        "current": 4799,
+        "fixed": 592,
+        "new": 626
+      },
+      {
+        "issueId": 110,
+        "label": "Atributos alt ausentes",
+        "previous": 19,
+        "current": 19,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 112,
+        "label": "Baixa proporção texto/HTML",
+        "previous": 3848,
+        "current": 3852,
+        "fixed": 600,
+        "new": 604
+      },
+      {
+        "issueId": 113,
+        "label": "Parâmetros de URL em excesso",
+        "previous": 3,
+        "current": 3,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 114,
+        "label": "Atributos hreflang e lang ausentes",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 115,
+        "label": "Codificação não informada",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 116,
+        "label": "Tipo de documento não informado",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 117,
+        "label": "Baixa quantidade de palavras",
+        "previous": 10,
+        "current": 10,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 120,
+        "label": "Plug-ins incompatíveis usados",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 121,
+        "label": "Quadros (frames) são utilizados",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 122,
+        "label": "Caractere sublinhado em URL",
+        "previous": 3,
+        "current": 3,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 123,
+        "label": "Atributos nofollow em links internos de saída",
+        "previous": 1018,
+        "current": 1018,
+        "fixed": 938,
+        "new": 938
+      },
+      {
+        "issueId": 124,
+        "label": "O sitemap.xml não está especificado no robots.txt",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 125,
+        "label": "Sitemap.xml não encontrado",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 126,
+        "label": "Criptografia HTTPS não usada",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 127,
+        "label": "Sem suporte a SNI",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 128,
+        "label": "URLs HTTP no sitemap.xml para site HTTPS",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 129,
+        "label": "Página não compactadas",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 130,
+        "label": "Recursos internos bloqueados no robots.txt",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 131,
+        "label": "Arquivos JavaScript e CSS não compactados",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 132,
+        "label": "Arquivos JavaScript e CSS não armazenados em cache",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 133,
+        "label": "Tamanho total de JavaScript e CSS muito grande",
+        "previous": 1,
+        "current": 1,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 134,
+        "label": "Muitos arquivos JavaScript e CSS",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 135,
+        "label": "Arquivos JavaScript e CSS não minificados",
+        "previous": 67,
+        "current": 70,
+        "fixed": null,
+        "new": 3
+      },
+      {
+        "issueId": 136,
+        "label": "URLs dos links grandes demais",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      }
+    ],
+    "notices": [
+      {
+        "issueId": 104,
+        "label": "Múltiplos títulos h1",
+        "previous": 1,
+        "current": 1,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 137,
+        "label": "Arquivo llms.txt não encontrado",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 4,
+        "label": "Bloqueada para rastreamento",
+        "previous": 4,
+        "current": 4,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 201,
+        "label": "URLs com mais de 200 caracteres",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 202,
+        "label": "Nofollow attributes outgoing in external links",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 203,
+        "label": "Robots.txt não encontrado",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 204,
+        "label": "Problemas de incompatibilidade de idiomas no hreflang",
+        "previous": 47,
+        "current": 29,
+        "fixed": 27,
+        "new": 9
+      },
+      {
+        "issueId": 205,
+        "label": "Sem suporte a HSTS",
+        "previous": 4,
+        "current": 4,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 206,
+        "label": "Páginas órfãs (Google Analytics)",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 207,
+        "label": "Páginas órfãs no sitemap",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 209,
+        "label": "Bloqueada por X-Robots-Tag: cabeçalho HTTP com noindex",
+        "previous": 1,
+        "current": 1,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 210,
+        "label": "Recursos externos bloqueados no robots.txt",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 211,
+        "label": "Arquivos JavaScript e CSS externos quebrados",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 212,
+        "label": "Profundidade do rastreamento da página superior a 3 cliques",
+        "previous": 1661,
+        "current": 961,
+        "fixed": 706,
+        "new": 6
+      },
+      {
+        "issueId": 213,
+        "label": "Páginas com apenas um link interno",
+        "previous": 704,
+        "current": 601,
+        "fixed": 361,
+        "new": 258
+      },
+      {
+        "issueId": 214,
+        "label": "Redirecionamentos permanentes",
+        "previous": 16,
+        "current": 3854,
+        "fixed": 2,
+        "new": 3840
+      },
+      {
+        "issueId": 215,
+        "label": "Recursos formatados como links de páginas",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 216,
+        "label": "Links sem texto âncora",
+        "previous": 0,
+        "current": 12,
+        "fixed": null,
+        "new": 12
+      },
+      {
+        "issueId": 217,
+        "label": "Links com texto âncora não descritivo",
+        "previous": 164,
+        "current": 168,
+        "fixed": null,
+        "new": 4
+      },
+      {
+        "issueId": 218,
+        "label": "Páginas ou recursos externos com código de status HTTP 403",
+        "previous": 75,
+        "current": 242,
+        "fixed": 12,
+        "new": 179
+      },
+      {
+        "issueId": 219,
+        "label": "O arquivo llms.txt está com problemas de formatação",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 220,
+        "label": "Conteúdo demais",
+        "previous": 0,
+        "current": 0,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 221,
+        "label": "Conteúdo desatualizado",
+        "previous": 2,
+        "current": 2,
+        "fixed": null,
+        "new": null
+      },
+      {
+        "issueId": 222,
+        "label": "Baixo uso de HTML semântico",
+        "previous": 2,
+        "current": 1,
+        "fixed": 1,
+        "new": null
+      },
+      {
+        "issueId": 223,
+        "label": "Conteúdo não otimizado",
+        "previous": 4,
+        "current": 12,
+        "fixed": 3,
+        "new": 11
+      }
+    ]
+  },
+  "errorsByType": [
+    {
+      "issueId": 2,
+      "label": "Erros 4XX",
+      "count": 1
+    },
+    {
+      "issueId": 6,
+      "label": "Tags de título duplicadas",
+      "count": 4
+    },
+    {
+      "issueId": 7,
+      "label": "Conteúdo duplicado",
+      "count": 0
+    },
+    {
+      "issueId": 8,
+      "label": "Links internos quebrados",
+      "count": 13
+    },
+    {
+      "issueId": 15,
+      "label": "Descrições meta duplicadas",
+      "count": 6
+    },
+    {
+      "issueId": 24,
+      "label": "Conflitos de hreflang no código-fonte da página",
+      "count": 1
+    },
+    {
+      "issueId": 111,
+      "label": "Alto tempo de carregamento da página",
+      "count": 5
+    }
+  ],
+  "warningsByType": [
+    {
+      "issueId": 12,
+      "label": "Links externos quebrados",
+      "count": 24
+    },
+    {
+      "issueId": 14,
+      "label": "Imagens externas quebradas",
+      "count": 60
+    },
+    {
+      "issueId": 101,
+      "label": "Título curto demais",
+      "count": 1
+    },
+    {
+      "issueId": 102,
+      "label": "Título grande demais",
+      "count": 460
+    },
+    {
+      "issueId": 103,
+      "label": "Título h1 ausente",
+      "count": 13
+    },
+    {
+      "issueId": 109,
+      "label": "Redirecionamentos temporários",
+      "count": 4799
+    },
+    {
+      "issueId": 110,
+      "label": "Atributos alt ausentes",
+      "count": 19
+    },
+    {
+      "issueId": 112,
+      "label": "Baixa proporção texto/HTML",
+      "count": 3852
+    },
+    {
+      "issueId": 113,
+      "label": "Parâmetros de URL em excesso",
+      "count": 3
+    },
+    {
+      "issueId": 117,
+      "label": "Baixa quantidade de palavras",
+      "count": 10
+    },
+    {
+      "issueId": 122,
+      "label": "Caractere sublinhado em URL",
+      "count": 3
+    },
+    {
+      "issueId": 123,
+      "label": "Atributos nofollow em links internos de saída",
+      "count": 1018
+    },
+    {
+      "issueId": 133,
+      "label": "Tamanho total de JavaScript e CSS muito grande",
+      "count": 1
+    },
+    {
+      "issueId": 135,
+      "label": "Arquivos JavaScript e CSS não minificados",
+      "count": 70
+    }
+  ]
+}

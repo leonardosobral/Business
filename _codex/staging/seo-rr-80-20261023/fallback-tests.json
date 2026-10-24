@@ -1,0 +1,150 @@
+{
+  "checks": [
+    {
+      "name": "https://roadrunners.run/ exact remaining items",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run/ group contract",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run/ powered by",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run/ localized home",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run/en/ exact remaining items",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run/en/ group contract",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run/en/ powered by",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run/en/ localized home",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run/es/ exact remaining items",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run/es/ group contract",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run/es/ powered by",
+      "passed": true
+    },
+    {
+      "name": "https://roadrunners.run/es/ localized home",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/ exact remaining items",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/ group contract",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/ powered by",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/ localized home",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/en/ exact remaining items",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/en/ group contract",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/en/ powered by",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/en/ localized home",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/es/ exact remaining items",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/es/ group contract",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/es/ powered by",
+      "passed": true
+    },
+    {
+      "name": "https://beta.roadrunners.run/es/ localized home",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/ exact remaining items",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/ group contract",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/ powered by",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/ localized home",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/en/ exact remaining items",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/en/ group contract",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/en/ powered by",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/en/ localized home",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/es/ exact remaining items",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/es/ group contract",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/es/ powered by",
+      "passed": true
+    },
+    {
+      "name": "https://dev.roadrunners.run/es/ localized home",
+      "passed": true
+    }
+  ],
+  "failed": [],
+  "source_hash": "ac0f6e809b53d1084d207d75b902a3cbee1c945b85a3269ec0ed69756204001e"
+}

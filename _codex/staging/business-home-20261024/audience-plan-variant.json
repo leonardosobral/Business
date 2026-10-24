@@ -1,0 +1,354 @@
+{
+  "STATS": {
+    "COLUMNS": [
+      "N_LIVE_TUP",
+      "N_DEAD_TUP",
+      "LAST_ANALYZE",
+      "LAST_AUTOANALYZE",
+      "BYTES"
+    ],
+    "DATA": [
+      [
+        1058687,
+        14658,
+        null,
+        "October, 23 2026 17:59:05",
+        800186368
+      ]
+    ]
+  },
+  "CASES": [
+    {
+      "ELAPSED_MS": 6.0,
+      "DAYS": 7,
+      "PLAN": [
+        {
+          "Plan": {
+            "Partial Mode": "Simple",
+            "Plans": [
+              {
+                "Plan Width": 24,
+                "Plan Rows": 1,
+                "Async Capable": false,
+                "Parent Relationship": "InitPlan",
+                "Parallel Aware": false,
+                "Subplan Name": "CTE bounds",
+                "Total Cost": 0.04,
+                "Node Type": "Result",
+                "Startup Cost": 0.0
+              },
+              {
+                "Join Type": "Inner",
+                "Plans": [
+                  {
+                    "Plan Width": 16,
+                    "Plan Rows": 1,
+                    "Alias": "b_1",
+                    "Async Capable": false,
+                    "CTE Name": "bounds",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Total Cost": 0.02,
+                    "Node Type": "CTE Scan",
+                    "Startup Cost": 0.0
+                  },
+                  {
+                    "Plans": [
+                      {
+                        "Plan Width": 0,
+                        "Index Name": "audience_events_report_period",
+                        "Plan Rows": 110459,
+                        "Index Cond": "((environment = 'prod'::text) AND (is_internal = false) AND (occurred_at >= (b_1.previous_at - '1 day'::interval)) AND (occurred_at <= b_1.until_at))",
+                        "Async Capable": false,
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Total Cost": 4601.31,
+                        "Node Type": "Bitmap Index Scan",
+                        "Startup Cost": 0.0
+                      }
+                    ],
+                    "Plan Rows": 110459,
+                    "Alias": "e_1",
+                    "Async Capable": false,
+                    "Parent Relationship": "Inner",
+                    "Parallel Aware": false,
+                    "Total Cost": 54043.11,
+                    "Plan Width": 53,
+                    "Relation Name": "events",
+                    "Recheck Cond": "((environment = 'prod'::text) AND (NOT is_internal) AND (occurred_at >= (b_1.previous_at - '1 day'::interval)) AND (occurred_at <= b_1.until_at))",
+                    "Node Type": "Bitmap Heap Scan",
+                    "Startup Cost": 4628.93
+                  }
+                ],
+                "Plan Rows": 110459,
+                "Async Capable": false,
+                "Parent Relationship": "InitPlan",
+                "Parallel Aware": false,
+                "Subplan Name": "CTE measured",
+                "Total Cost": 55147.72,
+                "Plan Width": 53,
+                "Inner Unique": false,
+                "Node Type": "Nested Loop",
+                "Startup Cost": 4628.93
+              },
+              {
+                "Plans": [
+                  {
+                    "Join Type": "Inner",
+                    "Plans": [
+                      {
+                        "Plan Width": 16,
+                        "Plan Rows": 1,
+                        "Alias": "b",
+                        "Async Capable": false,
+                        "CTE Name": "bounds",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Total Cost": 0.02,
+                        "Node Type": "CTE Scan",
+                        "Startup Cost": 0.0
+                      },
+                      {
+                        "Plan Width": 72,
+                        "Plan Rows": 110459,
+                        "Alias": "e",
+                        "Async Capable": false,
+                        "CTE Name": "measured",
+                        "Parent Relationship": "Inner",
+                        "Parallel Aware": false,
+                        "Total Cost": 2209.18,
+                        "Node Type": "CTE Scan",
+                        "Startup Cost": 0.0
+                      }
+                    ],
+                    "Plan Width": 88,
+                    "Inner Unique": false,
+                    "Plan Rows": 110459,
+                    "Async Capable": false,
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Total Cost": 3313.79,
+                    "Node Type": "Nested Loop",
+                    "Startup Cost": 0.0
+                  }
+                ],
+                "Plan Width": 88,
+                "Plan Rows": 110459,
+                "Sort Key": [
+                  "e.visitor_id"
+                ],
+                "Async Capable": false,
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 12842.62,
+                "Node Type": "Sort",
+                "Startup Cost": 12566.47
+              }
+            ],
+            "Plan Width": 49,
+            "Plan Rows": 1,
+            "Strategy": "Plain",
+            "Async Capable": false,
+            "Parallel Aware": false,
+            "Total Cost": 75998.67,
+            "Node Type": "Aggregate",
+            "Startup Cost": 75998.66
+          }
+        }
+      ],
+      "LOADED": true,
+      "NAME": "original-plan"
+    },
+    {
+      "ELAPSED_MS": 4.0,
+      "DAYS": 30,
+      "PLAN": [
+        {
+          "Plan": {
+            "Partial Mode": "Simple",
+            "Plans": [
+              {
+                "Plan Width": 24,
+                "Plan Rows": 1,
+                "Async Capable": false,
+                "Parent Relationship": "InitPlan",
+                "Parallel Aware": false,
+                "Subplan Name": "CTE bounds",
+                "Total Cost": 0.04,
+                "Node Type": "Result",
+                "Startup Cost": 0.0
+              },
+              {
+                "Join Type": "Inner",
+                "Plans": [
+                  {
+                    "Plan Width": 16,
+                    "Plan Rows": 1,
+                    "Alias": "b_1",
+                    "Async Capable": false,
+                    "CTE Name": "bounds",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Total Cost": 0.02,
+                    "Node Type": "CTE Scan",
+                    "Startup Cost": 0.0
+                  },
+                  {
+                    "Plans": [
+                      {
+                        "Plan Width": 0,
+                        "Index Name": "audience_events_report_period",
+                        "Plan Rows": 110459,
+                        "Index Cond": "((environment = 'prod'::text) AND (is_internal = false) AND (occurred_at >= (b_1.previous_at - '1 day'::interval)) AND (occurred_at <= b_1.until_at))",
+                        "Async Capable": false,
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Total Cost": 4601.31,
+                        "Node Type": "Bitmap Index Scan",
+                        "Startup Cost": 0.0
+                      }
+                    ],
+                    "Plan Rows": 110459,
+                    "Alias": "e_1",
+                    "Async Capable": false,
+                    "Parent Relationship": "Inner",
+                    "Parallel Aware": false,
+                    "Total Cost": 54043.11,
+                    "Plan Width": 53,
+                    "Relation Name": "events",
+                    "Recheck Cond": "((environment = 'prod'::text) AND (NOT is_internal) AND (occurred_at >= (b_1.previous_at - '1 day'::interval)) AND (occurred_at <= b_1.until_at))",
+                    "Node Type": "Bitmap Heap Scan",
+                    "Startup Cost": 4628.93
+                  }
+                ],
+                "Plan Rows": 110459,
+                "Async Capable": false,
+                "Parent Relationship": "InitPlan",
+                "Parallel Aware": false,
+                "Subplan Name": "CTE measured",
+                "Total Cost": 55147.72,
+                "Plan Width": 53,
+                "Inner Unique": false,
+                "Node Type": "Nested Loop",
+                "Startup Cost": 4628.93
+              },
+              {
+                "Plans": [
+                  {
+                    "Join Type": "Inner",
+                    "Plans": [
+                      {
+                        "Plan Width": 16,
+                        "Plan Rows": 1,
+                        "Alias": "b",
+                        "Async Capable": false,
+                        "CTE Name": "bounds",
+                        "Parent Relationship": "Outer",
+                        "Parallel Aware": false,
+                        "Total Cost": 0.02,
+                        "Node Type": "CTE Scan",
+                        "Startup Cost": 0.0
+                      },
+                      {
+                        "Plan Width": 72,
+                        "Plan Rows": 110459,
+                        "Alias": "e",
+                        "Async Capable": false,
+                        "CTE Name": "measured",
+                        "Parent Relationship": "Inner",
+                        "Parallel Aware": false,
+                        "Total Cost": 2209.18,
+                        "Node Type": "CTE Scan",
+                        "Startup Cost": 0.0
+                      }
+                    ],
+                    "Plan Width": 88,
+                    "Inner Unique": false,
+                    "Plan Rows": 110459,
+                    "Async Capable": false,
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Total Cost": 3313.79,
+                    "Node Type": "Nested Loop",
+                    "Startup Cost": 0.0
+                  }
+                ],
+                "Plan Width": 88,
+                "Plan Rows": 110459,
+                "Sort Key": [
+                  "e.visitor_id"
+                ],
+                "Async Capable": false,
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Total Cost": 12842.62,
+                "Node Type": "Sort",
+                "Startup Cost": 12566.47
+              }
+            ],
+            "Plan Width": 49,
+            "Plan Rows": 1,
+            "Strategy": "Plain",
+            "Async Capable": false,
+            "Parallel Aware": false,
+            "Total Cost": 75998.67,
+            "Node Type": "Aggregate",
+            "Startup Cost": 75998.66
+          }
+        }
+      ],
+      "LOADED": true,
+      "NAME": "original-plan"
+    },
+    {
+      "SQLSTATE": "57014",
+      "ERROR_TYPE": "Database",
+      "ELAPSED_MS": 5002.0,
+      "DAYS": 7,
+      "LOADED": false,
+      "NAME": "inline"
+    },
+    {
+      "SQLSTATE": "57014",
+      "ERROR_TYPE": "Database",
+      "ELAPSED_MS": 5027.0,
+      "DAYS": 30,
+      "LOADED": false,
+      "NAME": "inline"
+    }
+  ],
+  "INDEXES": {
+    "COLUMNS": [
+      "INDEXNAME",
+      "INDEXDEF"
+    ],
+    "DATA": [
+      [
+        "events_pkey",
+        "CREATE UNIQUE INDEX events_pkey ON audience.events USING btree (page_view_id, event_key)"
+      ],
+      [
+        "audience_events_period",
+        "CREATE INDEX audience_events_period ON audience.events USING btree (received_at)"
+      ],
+      [
+        "audience_events_scope",
+        "CREATE INDEX audience_events_scope ON audience.events USING btree (environment, is_internal, market_uf, page_family, received_at)"
+      ],
+      [
+        "audience_events_report_period",
+        "CREATE INDEX audience_events_report_period ON audience.events USING btree (environment, is_internal, occurred_at)"
+      ],
+      [
+        "audience_events_visitor",
+        "CREATE INDEX audience_events_visitor ON audience.events USING btree (visitor_id, received_at)"
+      ],
+      [
+        "audience_events_session",
+        "CREATE INDEX audience_events_session ON audience.events USING btree (session_id, received_at)"
+      ]
+    ]
+  },
+  "read_only": true,
+  "runtime_files_changed": false
+}

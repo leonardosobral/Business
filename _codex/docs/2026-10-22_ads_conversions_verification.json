@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-22",
+  "task": "Corrigir medição Google Ads e verificar timeout da audiência, preservando orçamentos",
+  "google_ads": {
+    "account": "RunnerHub 7297522870",
+    "campaign_id": "24383115532",
+    "campaign": "RR | LIVE 2026 | Pesquisa | Etapas e cupom",
+    "diagnosis": "A ação GA4 já recebe eventos, mas é secundária. A campanha usava a categoria genérica Cliques de saída; a coluna Conversões não incluía a ação LIVE.",
+    "conversion_action": "RR | Saída para inscrição LIVE!",
+    "conversion_action_id": "7830505877",
+    "ga4_event": "rr_live_registration_outbound",
+    "action_status": "Ativa",
+    "action_optimization_unchanged": "Secundário",
+    "counting_unchanged": "Uma conversão",
+    "value_unchanged": "Não usar valor",
+    "click_window_unchanged_days": 90,
+    "change": "Criada meta personalizada RR | LIVE | Saída para inscrição contendo somente a ação 7830505877; substituída a categoria genérica na campanha 24383115532. Ação secundária em meta personalizada é incluída nos relatórios dessa campanha sem promovê-la globalmente.",
+    "verified_after_reload": true,
+    "daily_budget_brl_unchanged": 20,
+    "bidding_unchanged": "Maximizar cliques",
+    "other_campaigns_unchanged": true,
+    "report_columns_added_adgroups": ["Todas as conv.", "Custo / todas as conv."],
+    "observed_20_to_22_oct_partial": {
+      "account_all_conversions_for_action": 5,
+      "new_live_campaign_all_conversions": 2,
+      "new_live_campaign_groups": {"Bonito": 1, "Niterói": 1},
+      "new_live_campaign_cost_brl": 11.24,
+      "new_live_campaign_cost_per_all_conversion_brl": 5.62,
+      "new_live_campaign_primary_conversions_still_historical": 0
+    },
+    "limitations": "Saída é intenção de inscrição, não compra. Não foram geradas conversões artificiais nem alterados GTM/GA4/código do coletor. Histórico permanece observável em Todas as conv.; não foi comprovado novo evento atribuído após a mudança de meta.",
+    "rollback": "Na campanha 24383115532, Metas de conversão > Específicas da campanha: remover RR | LIVE | Saída para inscrição e selecionar Cliques de saída. Não alterar a ação GA4 nem o orçamento.",
+    "reference": "https://developers.google.com/google-ads/api/docs/conversions/goals/overview"
+  },
+  "business_audience": {
+    "status": "Correção publicada por outra frente hoje, preservada e revalidada nesta tarefa",
+    "diagnosis": "Acúmulo de tempo nas consultas do relatório excedia orçamento global; sidenav era o ponto da interrupção, não a causa demonstrada.",
+    "existing_fix": "regional/filtered NOT MATERIALIZED e requesttimeout específico de 60s após autorização",
+    "production_hashes_verified": {
+      "portal/audiencia/queries/filter.sql": "b9e9ca1e9978c4d0e3517010b73b312688e2b57282a26500e1317ca1000a9e02",
+      "portal/audiencia/index.cfm": "3109fe5f1b0028366942e2de06f677822dbcb53394af542dcaa5881381e742b7"
+    },
+    "existing_backup": "/var/backups/business-audience-timeout-20261022-pqgvqn9_",
+    "authenticated_production_verification": "Após usuário renovar sessão, URL de 30 dias carregou indicadores, filtros, abas e gráficos sem timeout; última recepção 22/10 14:52 Brasília.",
+    "limits": "Recorte de 90 dias não revalidado. Relatório sem cache ainda pode demorar dezenas de segundos.",
+    "prior_release_document": "2026-10-22_audiencia_30_dias_timeout.md"
+  },
+  "runtime_files_changed_in_this_task": [],
+  "evidence_directory": "_codex/staging/ads-conversions-20261022/",
+  "evidence": ["live-goal-saved.png", "live-outbounds-report.png", "audience-30-days-revalidated.png"]
+}

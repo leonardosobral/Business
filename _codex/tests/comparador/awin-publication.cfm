@@ -1,0 +1,105 @@
+<cfscript>
+cfsetting(showdebugoutput=false,requesttimeout=120);
+root='/var/tmp/runnerhub-awin-publication-validation/fixture';pub=new services.ComparadorAwinPublicationService().init(root);source=new services.ComparadorAwinService().init(root);reader=new publicservices.AwinOfferReader();checks=[];
+function check(required boolean condition,required string label){if(!condition)throw(message=label);arrayAppend(checks,label);}
+function forbidden(required struct context){var caught=false;try{pub.synchronize(context,{});}catch(Comparador.Forbidden e){caught=true;}check(caught,'Permissão rejeitada: ' & serializeJSON(context));}
+forbidden({actorId=1,isAdmin=false,delegated=false,isPost=true,csrfVerified=true});
+forbidden({actorId=1,isAdmin=true,delegated=true,isPost=true,csrfVerified=true});
+forbidden({actorId=1,isAdmin=true,delegated=false,isPost=false,csrfVerified=true});
+forbidden({actorId=1,isAdmin=true,delegated=false,isPost=true,csrfVerified=false});
+products=[{id=1,name='Corre',version='4',brand='olympikus',brandName='Olympikus',slug='olympikus-corre-4',type='tenis',label='Olympikus Corre 4'},{id=2,name='Corre',version='5',brand='olympikus',brandName='Olympikus',slug='olympikus-corre-5',type='tenis',label='Olympikus Corre 5'}];
+campaign={id='10',advertiserId='17806',advertiser='Centauro BR',title='Corre 4 por 399.99',description='Itens e tamanhos disponíveis na loja.',terms='Pagamento no Pix.',code='',url='https://www.centauro.com.br/hotsite/promo-corre4',trackingUrl='https://www.awin1.com/cread.php?awinmid=17806&awinaffid=1455398',startDate='2026-10-17T03:00:00Z',endDate='2026-10-19T02:59:59Z',endLabel='18/10/2026 23:59',state='active'};
+check(serializeJSON(pub.automaticMatches(campaign,products))=='[1]','Modelo e geração exatos');
+campaign.title='Corre 40 por 399';check(!arrayLen(pub.automaticMatches(campaign,products)),'Geração 4 não corresponde a 40');
+campaign.title='Linha Corre 4 com descontos';check(!arrayLen(pub.automaticMatches(campaign,products)),'Linha genérica exige confirmação');
+campaign.title='Corre 4 GTX';check(!arrayLen(pub.automaticMatches(campaign,products)),'Variante GTX não é atribuída ao modelo base');
+campaign.title='Corre 4 Pro';check(!arrayLen(pub.automaticMatches(campaign,products)),'Variante Pro não é atribuída ao modelo base');
+campaign.title='Corre 4';dupes=duplicate(products);dup=duplicate(products[1]);dup.id=3;arrayAppend(dupes,dup);check(!arrayLen(pub.automaticMatches(campaign,dupes)),'Identidade ambígua não publica');
+campaign.title='Corre 4';data={publisherId='1455398',updatedAt=createObject('java','java.time.Instant').now().toString(),promotions=[campaign]};
+plan=pub.plan(data,products,{});check(arrayLen(plan.offers)==1 AND !structKeyExists(plan.offers[1],'price'),'Não inventa preço a partir do texto');
+rules={'10'={mode='bloqueado',products=[],fingerprint=pub.fingerprint(campaign)}};check(!arrayLen(pub.plan(data,products,rules).offers),'Bloqueio impede republicação automática');
+rules['10']={mode='manual',products=[1,2],fingerprint=pub.fingerprint(campaign)};check(arrayLen(pub.plan(data,products,rules).offers)==2,'Uma campanha pode atender produtos confirmados');
+changed=duplicate(data);changed.promotions[1].terms='Somente primeira compra';check(!arrayLen(pub.plan(changed,products,rules).offers),'Mudança de condições invalida confirmação manual');
+check(!arrayLen(pub.plan(data,[products[1]],rules).offers),'Produto removido torna vínculo pendente');
+check(!arrayLen(pub.plan({promotions=[]},products,rules).offers),'Campanha retirada deixa a publicação');
+state={schemaVersion=1,publisherId='1455398',sourceUpdatedAt='2026-10-18T11:00:00Z',offers=plan.offers};path=root & '/reader-test.json';fileWrite(path,serializeJSON(state));nowMs=createObject('java','java.time.Instant').parse('2026-10-18T12:00:00Z').toEpochMilli();
+read=reader.read(path,nowMs);check(structKeyExists(read,'1'),'Leitor aceita campanha vigente');
+check(!structCount(reader.read(path,nowMs+21600001)),'Leitor suspende fonte desatualizada');
+state.sourceUpdatedAt='2026-10-17T01:00:00Z';fileWrite(path,serializeJSON(state));check(!structCount(reader.read(path,createObject('java','java.time.Instant').parse('2026-10-17T02:00:00Z').toEpochMilli())),'Campanha futura não aparece');
+state.sourceUpdatedAt='2026-10-19T03:00:00Z';fileWrite(path,serializeJSON(state));check(!structCount(reader.read(path,createObject('java','java.time.Instant').parse('2026-10-19T03:00:00Z').toEpochMilli())),'Vencimento respeita fuso exato');
+product={id_produto=1,nome_produto='Corre',versao='4',tag_produto='olympikus-corre-4',tag_marca='olympikus',wa_prototipo=false,wa_compra_bloqueada=false};check(arrayLen(reader.forProduct(read,product))==1,'Vínculo confere identidade atual do produto');
+product.wa_prototipo=true;check(!arrayLen(reader.forProduct(read,product)),'Protótipo nunca exibe oferta');product.wa_prototipo=false;product.versao='5';check(!arrayLen(reader.forProduct(read,product)),'Produto renomeado não herda campanha antiga');
+state.sourceUpdatedAt='2026-10-18T11:00:00Z';state.offers[1].url='javascript:alert(1)';fileWrite(path,serializeJSON(state));check(!structCount(reader.read(path,nowMs)),'URL insegura nunca é publicada');fileDelete(path);
+context={actorId=99,isAdmin=true,delegated=false,isPost=true,csrfVerified=true};realData=source.dashboard(context);
+first=pub.synchronize(context,realData);second=pub.synchronize(context,realData);check(first.offers==second.offers,'Sincronização idempotente sem duplicar vínculos');
+admin=pub.dashboard(context,realData);check(admin.plan.published>=1,'Catálogo real tem correspondência inequívoca');target={};for(item in admin.plan.decisions)if(arrayLen(item.products)){target=item;break;}
+pub.saveRule(context,realData,target.campaignId,'bloqueado','',admin.token,target.fingerprint);blocked=pub.dashboard(context,realData);check(blocked.plan.blocked==1,'Bloqueio é persistido atomicamente');
+stale=false;try{pub.saveRule(context,realData,target.campaignId,'automatico','',admin.token,target.fingerprint);}catch(Comparador.Conflict e){stale=true;}check(stale,'Formulário antigo não sobrescreve decisão nova');
+pub.synchronize(context,realData);check(pub.dashboard(context,realData).plan.blocked==1,'Rotina preserva bloqueio manual');
+current=pub.dashboard(context,realData);pub.saveRule(context,realData,target.campaignId,'automatico','',current.token,target.fingerprint);check(pub.dashboard(context,realData).plan.blocked==0,'Administrador pode restaurar vínculo automático');
+current=pub.dashboard(context,realData);pub.saveRule(context,realData,target.campaignId,'manual',arrayToList(target.products),current.token,target.fingerprint);manual=pub.dashboard(context,realData);check(manual.rules[target.campaignId].mode=='manual','Confirmação manual é persistida');
+older=duplicate(realData);older.updatedAt='2020-01-01T00:00:00Z';rejected=false;try{pub.synchronize(context,older);}catch(any e){rejected=true;}check(rejected,'Consulta antiga não substitui publicação vigente');
+// Classification never treats an unmatched promotion as an implicit editorial decision.
+unknown=duplicate(campaign);unknown.title='Produtos selecionados com desconto';unknownData={promotions=[unknown]};
+unknownPlan=pub.plan(unknownData,products,{});check(unknownPlan.pending==1 AND unknownPlan.outsideCatalog==0,'Campanha desconhecida permanece na revisão');
+outsideRules={'10'={mode='fora_catalogo',products=[],fingerprint=pub.fingerprint(unknown),catalogueMatches=[],reason='Seleção de vestuário sem produtos correspondentes.'}};
+outsidePlan=pub.plan(unknownData,products,outsideRules);check(outsidePlan.outsideCatalog==1 AND outsidePlan.pending==0 AND !arrayLen(outsidePlan.offers),'Fora do catálogo não conta como pendência nem publica');
+check(outsidePlan.decisions[1].classification=='fora_catalogo' AND outsidePlan.decisions[1].reason==outsideRules['10'].reason,'Classificação mostra o motivo registrado');
+changedUnknown=duplicate(unknownData);changedUnknown.promotions[1].terms='Agora inclui outros produtos';changedPlan=pub.plan(changedUnknown,products,outsideRules);check(changedPlan.pending==1 AND changedPlan.outsideCatalog==0 AND !arrayLen(changedPlan.offers),'Mudança da campanha reabre a revisão sem publicar');
+newModel=duplicate(campaign);newModel.title='Olympikus Corre 6 em oferta';newModelData={promotions=[newModel]};newRules={'10'={mode='fora_catalogo',products=[],fingerprint=pub.fingerprint(newModel),catalogueMatches=[],reason='Corre 6 não consta do catálogo.'}};
+check(pub.plan(newModelData,products,newRules).outsideCatalog==1,'Modelo ausente pode ser separado após revisão');
+expanded=duplicate(products);newProduct=duplicate(products[1]);newProduct.id=3;newProduct.version='6';newProduct.slug='olympikus-corre-6';arrayAppend(expanded,newProduct);
+newMatch=pub.plan(newModelData,expanded,newRules);check(newMatch.pending==1 AND newMatch.outsideCatalog==0 AND !arrayLen(newMatch.offers),'Novo modelo correspondente exige revisão antes de publicar');
+reopenedRules={'10'={mode='revisar',products=[],fingerprint=pub.fingerprint(campaign)}};reopenedPlan=pub.plan(data,products,reopenedRules);check(reopenedPlan.pending==1 AND !arrayLen(reopenedPlan.offers),'Reabertura explícita permanece na fila mesmo havendo correspondência automática');
+current=pub.dashboard(context,realData);badReason=false;try{pub.saveRule(context,realData,target.campaignId,'fora_catalogo','',current.token,target.fingerprint,'');}catch(Comparador.Validation e){badReason=true;}check(badReason,'Classificar fora do catálogo exige um motivo');
+badPermission=false;try{pub.saveRule({actorId=99,isAdmin=true,delegated=false,isPost=true,csrfVerified=false},realData,target.campaignId,'fora_catalogo','',current.token,target.fingerprint,'Sem produto correspondente.');}catch(Comparador.Forbidden e){badPermission=true;}check(badPermission,'Classificação mantém a proteção CSRF');
+reason='Revisão manual: seleção não corresponde à apresentação cadastrada.';pub.saveRule(context,realData,target.campaignId,'fora_catalogo','',current.token,target.fingerprint,reason);
+classified=pub.dashboard(context,realData);check(classified.plan.outsideCatalog==1 AND classified.plan.pending==0 AND classified.rules[target.campaignId].reason==reason,'Classificação e motivo são persistidos sem reabrir um candidato já revisado');
+pub.synchronize(context,realData);persisted=pub.dashboard(context,realData);check(persisted.plan.outsideCatalog==1 AND persisted.history[1].outsideCatalog==1,'Sincronização preserva a classificação e o contador no histórico');
+outdated=false;try{pub.saveRule(context,realData,target.campaignId,'revisar','',current.token,target.fingerprint);}catch(Comparador.Conflict e){outdated=true;}check(outdated,'Formulário antigo não sobrescreve classificação');
+pub.saveRule(context,realData,target.campaignId,'revisar','',persisted.token,target.fingerprint);reopened=pub.dashboard(context,realData);check(reopened.plan.outsideCatalog==0 AND reopened.plan.pending==1,'Administrador pode mover a campanha de volta para revisão');
+pub.saveRule(context,realData,target.campaignId,'automatico','',reopened.token,target.fingerprint);restored=pub.dashboard(context,realData);check(restored.plan.published>=1 AND restored.plan.pending==0,'Restaurar automático permite novamente o vínculo elegível');
+// Automatic triage uses positive evidence and never persists an editorial rule.
+auto=duplicate(campaign);auto.title='Camiseta Olympikus Corre 4';autoData={promotions=[auto]};
+autoPlan=pub.plan(autoData,products,{});check(autoPlan.outsideCatalog==1 AND autoPlan.pending==0 AND !arrayLen(autoPlan.offers),'Vestuário não publica mesmo citando um modelo de tênis');
+check(autoPlan.decisions[1].origin=='automatico' AND find('Triagem automática',autoPlan.decisions[1].reason),'Decisão automática registra origem e motivo');
+for(categoryTitle in ['Chuteira Nike Campo','Chuteiras Oportunidades','Fardamento Oportunidades','Chinelo Olympikus','Calção Adidas Estro','Monitor Gamer Samsung','Samsung Vision AI TV 55','Galaxy Watch8 40mm']){auto.title=categoryTitle;check(pub.plan({promotions=[auto]},products,{}).outsideCatalog==1,'Categoria externa: ' & categoryTitle);}
+for(categoryTitle in ['Whey Protein Dux Isolado 450g Chocolate Branco','Whey Protein Dux Concentrado 450g Butter Cookie','Caixa +MU Chocowheyfer Cookies com 12 Unidades','Whey Shark Pro JoyPro Leite por R$ 104 no Pix','Suplementos com até 40% OFF']){auto.title=categoryTitle;check(pub.plan({promotions=[auto]},products,{}).outsideCatalog==1,'Nutrição fora do catálogo de tênis: ' & categoryTitle);}
+auto.title='Suplementos e Tênis Olympikus Corre 4';check(pub.plan({promotions=[auto]},products,{}).pending==1,'Suplementos com tênis exigem revisão da seleção mista');
+auto.title='Camiseta e Tênis Olympikus Corre 4';mixedPlan=pub.plan({promotions=[auto]},products,{});check(mixedPlan.pending==1 AND !arrayLen(mixedPlan.offers),'Seleção mista exige revisão sem vínculo por substring');
+auto.title='Camiseta Olympikus Corre 4';mixedProducts=duplicate(products);shirt=duplicate(products[1]);shirt.id=3;shirt.type='camiseta';arrayAppend(mixedProducts,shirt);
+check(pub.plan({promotions=[auto]},mixedProducts,{}).pending==1,'Catálogo com outras categorias não presume ausência de vestuário');
+check(pub.plan({promotions=[auto]},[],{}).pending==1,'Catálogo vazio não produz exclusões automáticas');
+override={'10'={mode='manual',products=[1],fingerprint=pub.fingerprint(auto)}};check(pub.plan({promotions=[auto]},products,override).published==1,'Triagem não substitui confirmação editorial');
+override['10']={mode='bloqueado',products=[],fingerprint=pub.fingerprint(auto)};check(pub.plan({promotions=[auto]},products,override).blocked==1,'Bloqueio tem precedência sobre triagem');
+override['10']={mode='revisar',products=[],fingerprint=pub.fingerprint(auto)};check(pub.plan({promotions=[auto]},products,override).pending==1,'Reabertura editorial não é separada automaticamente');
+auto.title='Tênis Olympikus Corre 6';auto.url='https://www.centauro.com.br/tenis-olympikus-corre-6-123456.html';absentData={promotions=[auto]};absentPlan=pub.plan(absentData,products,{});
+check(absentPlan.outsideCatalog==1 AND !arrayLen(absentPlan.offers),'Modelo ausente exige título completo e endereço direto correspondente');
+check(pub.plan(absentData,expanded,{}).published==1,'Inclusão posterior no catálogo reavalia classificação automática');
+auto.url='https://www.centauro.com.br/tenis-olympikus-corre-7-123456.html';check(pub.plan({promotions=[auto]},products,{}).pending==1,'Título e endereço divergentes permanecem na revisão');
+auto.url='https://www.centauro.com.br/hotsite/olympikus-corre-6';check(pub.plan({promotions=[auto]},products,{}).pending==1,'Coleção não comprova identidade de modelo ausente');
+auto.url='https://www.centauro.com.br/tenis-olympikus-corre-6-123456.html';auto.title='Linha Olympikus Corre 6';check(pub.plan({promotions=[auto]},products,{}).pending==1,'Linha ampla permanece na revisão');
+auto.title='Tênis Marca Desconhecida Modelo 6';auto.url='https://www.example.org/tenis-marca-desconhecida-modelo-6.html';check(pub.plan({promotions=[auto]},products,{}).pending==1,'Marca sem identidade conhecida permanece na revisão');
+auto.title='Tênis Olympikus Corre 4 Wide';auto.url='https://www.centauro.com.br/tenis-olympikus-corre-4-wide.html';check(pub.plan({promotions=[auto]},products,{}).pending==1,'Variante incerta não é descartada como modelo ausente');
+auto.title='Tênis Olympikus Corre';auto.url='https://www.centauro.com.br/tenis-olympikus-corre.html';check(pub.plan({promotions=[auto]},products,{}).pending==1,'Geração omitida exige revisão');
+auto.title='Tênis Olympikus Corre 4';auto.url='https://www.centauro.com.br/tenis-olympikus-corre-4.html';check(pub.plan({promotions=[auto]},dupes,{}).pending==1,'Identidade duplicada não é separada como ausente');
+auto.title='20% OFF em produtos selecionados';auto.url='https://www.olympikus.com.br/ganhe-20';check(pub.plan({promotions=[auto]},products,{}).pending==1,'Cupom amplo não herda elegibilidade por marca ou navegação');
+auto.title='15% adicional na categoria Running com o cupom RUN15';check(pub.plan({promotions=[auto]},products,{}).pending==1,'Cupom por categoria exige confirmar a seleção');
+auto.title='Categoria Olympikus Corre 4 e outros modelos';check(pub.plan({promotions=[auto]},products,{}).pending==1,'Categoria ampla não publica apenas por mencionar modelo exato');
+auto.title='Tênis Olympikus Corre 6';auto.url='javascript:alert(1)';check(pub.plan({promotions=[auto]},products,{}).pending==1,'Endereço inválido não serve de evidência');
+review=unknownPlan.decisions;check(arrayLen(pub.newReviewCampaignIds(review,[]))==1,'Primeira pendência sinaliza necessidade de revisão');
+check(!arrayLen(pub.newReviewCampaignIds(review,review)),'Pendência inalterada não repete aviso');
+check(!arrayLen(pub.newReviewCampaignIds(absentPlan.decisions,[])),'Fora do catálogo não gera aviso de revisão');
+check(arrayLen(pub.newReviewCampaignIds(review,absentPlan.decisions))==1,'Reabertura da fila gera aviso mesmo com ID existente');
+changedReview=duplicate(review);changedReview[1].fingerprint='updated';check(arrayLen(pub.newReviewCampaignIds(changedReview,review))==1,'Condições alteradas geram nova revisão');
+changedReview=duplicate(review);changedReview[1].reason='Nova ambiguidade de catálogo.';check(arrayLen(pub.newReviewCampaignIds(changedReview,review))==1,'Mudança no motivo de revisão é sinalizada');
+fileDelete(root & '/cache/publication.json');
+liveFixture=duplicate(realData);liveFixture.promotions=[unknown];liveFixture.updatedAt=createObject('java','java.time.Instant').now().toString();
+firstReview=pub.synchronize(context,liveFixture);repeatReview=pub.synchronize(context,liveFixture);
+check(firstReview.newReviewCount==1 AND repeatReview.newReviewCount==0,'Reconciliação persiste deduplicação dos avisos');
+auto.title='Camiseta Olympikus';liveFixture.promotions=[auto];outsideSync=pub.synchronize(context,liveFixture);outsideState=deserializeJSON(fileRead(root & '/cache/publication.json'));
+check(outsideSync.outsideCatalog==1 AND outsideSync.newReviewCount==0 AND structIsEmpty(outsideState.rules),'Separação automática persiste decisão sem gravar regra manual');
+check(outsideState.history[1].outsideCatalog==1 AND outsideState.history[1].newReviewCount==0,'Histórico conserva contadores e necessidade real de revisão');
+fileDelete(root & '/cache/publication.json');
+cfcontent(type='application/json');writeOutput(serializeJSON({passed=arrayLen(checks),checks=checks}));
+</cfscript>

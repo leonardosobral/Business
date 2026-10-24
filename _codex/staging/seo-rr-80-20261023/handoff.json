@@ -1,0 +1,22 @@
+{
+  "browserId": "1",
+  "tabId": "283501509",
+  "browserBinding": "browser23",
+  "tabBinding": "semrush23",
+  "state": "crawling",
+  "auditRunning": true,
+  "lastCompletedSiteHealth": 75,
+  "lastCompletedAiHealth": 79,
+  "lastCompletedAt": "2026-10-22T19:38:00Z",
+  "limit": 5000,
+  "device": "mobile",
+  "javascriptRendered": false,
+  "verifiedAt": "2026-10-23T09:26:37.704561-03:00",
+  "panelTabId": "283502437",
+  "panelBinding": "seoPanel23",
+  "notes": "Usuário pediu checkpoint para retomar no escritório. Auditoria existente continua rastreando; última observação 975/5000. Não reiniciar. Painel 75% e fila de23/10 publicados/verificados; loja desativada retirada do fallback. SQL sem ganho não foi publicado. Próximos passos completos no checkpoint.",
+  "next": "Acompanhar auditoria de5.000/mobile/JSoff até resultado terminal. Enquanto roda, investigação sem alterações de amostra ou exclusão de verificações. Após concluir, comparar com75 da coleta22/10 16:38, importar resultado novo em staging/backup novo, conferir painelreal. Prosseguir correções reais seSiteHealth<=80. Não marcar objetivo concluído antes de>80 real. Usuário confirmouloja desativada; catálogo app7jáoculto, fallbackagoracorrigido; não tentar acesso ou ações na plataforma externa.",
+  "observedPages": 975,
+  "checkpoint": "_codex/docs/2026-10-23_seo_checkpoint.md",
+  "workPausedAtUserRequest": true
+}

@@ -1,0 +1,460 @@
+- button "Pular para o conteúdo"
+- banner:
+  - combobox "Acesse a ferramenta…"
+  - button "Pesquisar":
+  - navigation:
+    - menubar:
+      - button "Convide usuários": Invite free users
+      - menuitem "Preços"
+      - menuitem "Empresarial"
+      - menuitem "Mais"
+      - menuitem "Meu perfil":
+        - generic: c
+- navigation:
+  - list:
+    - link "Início":
+      - /url: https://pt.semrush.com/home/?fid=8614846
+      - generic: Início
+    - link "SEO":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+      - generic: SEO
+    - link "IA":
+      - /url: https://pt.semrush.com/ai-seo/overview/?fid=8614846
+      - generic: IA
+  - list:
+    - link "Tráfego e mercado":
+      - /url: https://pt.semrush.com/analytics/traffic/?fid=8614846
+      - generic: Tráfego e mercado
+    - link "Local":
+      - /url: https://pt.semrush.com/local-business/?fid=8614846
+      - generic: Local
+    - link "Conteúdo":
+      - /url: https://pt.semrush.com/content/?fid=8614846
+      - generic: Conteúdo
+    - link "Anúncios":
+      - /url: https://pt.semrush.com/advertising/?fid=8614846
+      - generic: Anúncios
+    - link "RP para IA":
+      - /url: https://pt.semrush.com/pr-toolkit/?fid=8614846
+      - generic: RP para IA
+    - link "Social":
+      - /url: https://pt.semrush.com/social-media/?fid=8614846
+      - generic: Social
+  - list:
+    - link "Relatórios":
+      - /url: https://pt.semrush.com/my_reports/grid/?fid=8614846
+      - generic: Relatórios
+    - link "Apps":
+      - /url: https://pt.semrush.com/apps/?fid=8614846
+      - generic: Apps
+  - generic: SEO
+  - list:
+    - link "Painel de ferramentas":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+  - generic: Desempenho do site
+  - list:
+    - link "Auditoria do site":
+      - /url: https://pt.semrush.com/siteaudit/?fid=8614846
+    - link "Monitoramento de posição":
+      - /url: https://pt.semrush.com/position-tracking/?fid=8614846
+  - generic: Análise competitiva
+  - list:
+    - link "Visão geral do domínio":
+      - /url: https://pt.semrush.com/analytics/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Rankings orgânicos":
+      - /url: https://pt.semrush.com/analytics/organic/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Principais páginas":
+      - /url: https://pt.semrush.com/analytics/toppages/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Comparação de domínios":
+      - /url: https://pt.semrush.com/analytics/comparedomains/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nas palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordgap/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nos backlinks":
+      - /url: https://pt.semrush.com/analytics/gap/backlinks/?fid=8614846&q=roadrunners.run&searchType=domain
+  - generic: Pesquisa de palavras-chave
+  - list:
+    - link "Visão geral de palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordoverview/?fid=8614846
+    - link "Keyword Magic Tool":
+      - /url: https://pt.semrush.com/analytics/keywordmagic/?fid=8614846
+    - link "Keyword Strategy Builder":
+      - /url: https://pt.semrush.com/analytics/keywordmanager/?fid=8614846
+    - link "Palavras-chave salvas":
+      - /url: https://pt.semrush.com/saved-keywords/?fid=8614846
+  - generic: Ideias de conteúdo
+  - list:
+    - link "SEO Writing Assistant":
+      - /url: https://pt.semrush.com/swa/?fid=8614846
+    - link "Topic Research":
+      - /url: https://pt.semrush.com/topic-research/?fid=8614846
+    - link "SEO Content Template":
+      - /url: https://pt.semrush.com/seo-content-template/?fid=8614846
+  - generic: Construção de links
+  - list:
+    - link "Backlinks":
+      - /url: https://pt.semrush.com/analytics/backlinks/overview/?db=us&fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Domínios de referência":
+      - /url: https://pt.semrush.com/analytics/refdomains/report/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Backlink Audit":
+      - /url: https://pt.semrush.com/backlink_audit/?fid=8614846
+  - generic: Ferramentas extras
+  - list:
+    - link "Sensor":
+      - /url: https://pt.semrush.com/sensor/?fid=8614846&utm_medium=footer&utm_source=semrush
+    - link "SEOquake":
+      - /url: https://www.seoquake.com/?fid=8614846
+    - link "Ranking Semrush":
+      - /url: https://pt.semrush.com/analytics/ranks/rank/?fid=8614846
+  - generic: Outros
+  - list:
+    - link "On Page SEO Checker":
+      - /url: https://pt.semrush.com/on-page-seo-checker/26661911/overview/?fid=8614846
+    - link "Organic Traffic Insights":
+      - /url: https://pt.semrush.com/organic-traffic-insights/project/26661911/?fid=8614846
+    - link "Construção de links":
+      - /url: https://pt.semrush.com/link_building/26661911/main/overview/?fid=8614846
+- button "Ocultar navegação" [expanded]:
+- main:
+  - region "Cabeçalho da Auditoria do site":
+    - navigation "Trilhas de navegação":
+      - list:
+        - link "Início":
+          - /url: /home/
+        - link "SEO":
+          - /url: /seo/26661911/
+        - generic: Auditoria de Site
+    - button "Central de ajuda":
+      - text: Central de ajuda
+    - button "Enviar comentário":
+      - text: Enviar comentário
+    - heading [level=1]: "Auditoria de Site:"
+    - 'combobox "Projeto: Road Runners"':
+      - generic: Road Runners
+    - button "Reexecutar campanha":
+      - generic: Reexecutar campanha
+    - button "Exportar para PDF":
+      - generic: PDF
+    - button "Exportar para planilha":
+      - generic: Exportar
+    - button "Compartilhar":
+      - generic: Compartilhar
+    - button "Abrir configurações":
+    - generic: roadrunners.run
+    - generic: "Atualizado:"
+    - text: qui, 22 de out de 2026
+    - text: Móvel
+    - generic: "Renderização em JS:"
+    - text: Desativado
+    - generic: "Páginas rastreadas:"
+    - button "Problema nas páginas rastreadas":
+    - text: 5.000/5.000
+    - tablist "Relatórios de Auditoria do site":
+      - tab "Visão geral":
+        - generic: Visão geral
+      - tab "Problemas" [selected]:
+        - generic: Problemas
+      - tab "Páginas rastreadas":
+        - generic: Páginas rastreadas
+      - tab "Estatísticas":
+        - generic: Estatísticas
+      - tab "Comparar rastreamentos":
+        - generic: Comparar rastreamentos
+      - tab "Progresso":
+        - generic: Progresso
+      - tab "Impacto do JS":
+        - generic: Impacto do JS
+  - link "Todos os problemas":
+    - /url: /siteaudit/campaign/26661911/review/issues
+    - generic: Todos os problemas
+  - generic "Detalhes do problema":
+    - heading "15 links internos estão quebrados" [level=2]
+    - generic: Erro
+    - button "Enviar para…":
+      - generic: Enviar para…
+    - link "Estrutura do site":
+      - /url: /siteaudit/campaign/26661911/review/pagereport/structure?restrictions=eyJ0cmlnZ2VyZWRJc3N1ZSI6OH0%253D
+      - generic: Estrutura do site
+    - button "Excluir verificação":
+      - generic: Excluir verificação
+    - button "Como resolver este problema":
+      - generic "Como resolver este problema": Como resolver
+    - generic: "Falha:"
+    - generic: "15"
+    - generic: "Sucesso:"
+    - generic: "238.065"
+    - tablist:
+      - tab "Problemas 15" [selected]:
+        - generic: Problemas
+        - generic: "15"
+      - tab "Ocultos 0":
+        - generic: Ocultos
+        - generic: "0"
+    - textbox "Pesquisar"
+    - button "Pesquisar":
+    - combobox "Selecionar filtros avançados":
+      - generic: Filtros avançados
+    - grid:
+      - row "All items URL da página ascending URL do link quebrado Código de status HTTP Descoberta":
+        - columnheader "All items":
+          - checkbox "All items"
+        - columnheader "URL da página ascending":
+          - text: URL da página
+          - button "ascending":
+        - columnheader "URL do link quebrado": URL do link quebrado
+        - columnheader "Código de status HTTP": Código de status HTTP
+        - columnheader "Descoberta": Descoberta
+        - columnheader
+      - generic: Sortable
+      - row "Privacy Policy - Road Runners https://roadrunners.run/en/privacy/ Acessar https://roadrunners.run/en/privacy/ https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection 404 out 4, 2026, 2:39 Ocultar https://roadrunners.run/en/privacy/ nos resultados de auditoria":
+        - gridcell "Privacy Policy - Road Runners https://roadrunners.run/en/privacy/ Acessar https://roadrunners.run/en/privacy/":
+          - checkbox "Privacy Policy - Road Runners https://roadrunners.run/en/privacy/ Acessar https://roadrunners.run/en/privacy/"
+        - gridcell "Privacy Policy - Road Runners https://roadrunners.run/en/privacy/ Acessar https://roadrunners.run/en/privacy/":
+          - generic: Privacy Policy - Road Runners
+          - link "https://roadrunners.run/en/privacy/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248b5a
+            - generic: https://roadrunners.run/en/privacy/
+          - link "Acessar https://roadrunners.run/en/privacy/":
+            - /url: https://roadrunners.run/en/privacy/
+        - gridcell "https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+          - generic: https://roadrunners.run/cdn-cgi/l/email-protection
+          - link "Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+            - /url: https://roadrunners.run/cdn-cgi/l/email-protection
+        - gridcell "404":
+          - button "404":
+            - generic: "404"
+        - gridcell "out 4, 2026, 2:39":
+          - generic: out 4, 2026, 2:39
+        - gridcell "Ocultar https://roadrunners.run/en/privacy/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/en/privacy/ nos resultados de auditoria":
+      - row "Política de Privacidad - Road Runners https://roadrunners.run/es/privacidad/ Acessar https://roadrunners.run/es/privacidad/ https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection 404 out 4, 2026, 2:39 Ocultar https://roadrunners.run/es/privacidad/ nos resultados de auditoria":
+        - gridcell "Política de Privacidad - Road Runners https://roadrunners.run/es/privacidad/ Acessar https://roadrunners.run/es/privacidad/":
+          - checkbox "Política de Privacidad - Road Runners https://roadrunners.run/es/privacidad/ Acessar https://roadrunners.run/es/privacidad/"
+        - gridcell "Política de Privacidad - Road Runners https://roadrunners.run/es/privacidad/ Acessar https://roadrunners.run/es/privacidad/":
+          - generic: Política de Privacidad - Road Runners
+          - link "https://roadrunners.run/es/privacidad/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248c2d
+            - generic: https://roadrunners.run/es/privacidad/
+          - link "Acessar https://roadrunners.run/es/privacidad/":
+            - /url: https://roadrunners.run/es/privacidad/
+        - gridcell "https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+          - generic: https://roadrunners.run/cdn-cgi/l/email-protection
+          - link "Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+            - /url: https://roadrunners.run/cdn-cgi/l/email-protection
+        - gridcell "404":
+          - button "404":
+            - generic: "404"
+        - gridcell "out 4, 2026, 2:39":
+          - generic: out 4, 2026, 2:39
+        - gridcell "Ocultar https://roadrunners.run/es/privacidad/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/es/privacidad/ nos resultados de auditoria":
+      - row "1ª CORRIDA DA MATRIZ OXFORD - corrida de rua - Road Runners https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/ Acessar https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/ https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection 404 out 11, 2026, 12:14 Ocultar https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/ nos resultados de auditoria":
+        - gridcell "1ª CORRIDA DA MATRIZ OXFORD - corrida de rua - Road Runners https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/ Acessar https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/":
+          - checkbox "1ª CORRIDA DA MATRIZ OXFORD - corrida de rua - Road Runners https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/ Acessar https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/"
+        - gridcell "1ª CORRIDA DA MATRIZ OXFORD - corrida de rua - Road Runners https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/ Acessar https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/":
+          - generic: 1ª CORRIDA DA MATRIZ OXFORD - corrida de rua - Road Runners
+          - link "https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248c7e
+            - generic: https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/
+          - link "Acessar https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/":
+            - /url: https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/
+        - gridcell "https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+          - generic: https://roadrunners.run/cdn-cgi/l/email-protection
+          - link "Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+            - /url: https://roadrunners.run/cdn-cgi/l/email-protection
+        - gridcell "404":
+          - button "404":
+            - generic: "404"
+        - gridcell "out 11, 2026, 12:14":
+          - generic: out 11, 2026, 12:14
+        - gridcell "Ocultar https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/evento/2025-1-corrida-da-matriz-oxford/ nos resultados de auditoria":
+      - row "2026 Nubank Ultravioleta TRIDAY Series - Bertioga | Bertioga SP | 08/11/2026 - corrida de rua | Road Runners https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/ Acessar https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/ https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection 404 out 22, 2026, 12:32 Novo Ocultar https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/ nos resultados de auditoria":
+        - gridcell "2026 Nubank Ultravioleta TRIDAY Series - Bertioga | Bertioga SP | 08/11/2026 - corrida de rua | Road Runners https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/ Acessar https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/":
+          - checkbox "2026 Nubank Ultravioleta TRIDAY Series - Bertioga | Bertioga SP | 08/11/2026 - corrida de rua | Road Runners https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/ Acessar https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/"
+        - gridcell "2026 Nubank Ultravioleta TRIDAY Series - Bertioga | Bertioga SP | 08/11/2026 - corrida de rua | Road Runners https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/ Acessar https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/":
+          - generic: 2026 Nubank Ultravioleta TRIDAY Series - Bertioga | Bertioga SP | 08/11/2026 - corrida de rua | Road Runners
+          - link "https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248ea7
+            - generic: https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/
+          - link "Acessar https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/":
+            - /url: https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/
+        - gridcell "https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+          - generic: https://roadrunners.run/cdn-cgi/l/email-protection
+          - link "Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+            - /url: https://roadrunners.run/cdn-cgi/l/email-protection
+        - gridcell "404":
+          - button "404":
+            - generic: "404"
+        - gridcell "out 22, 2026, 12:32 Novo":
+          - generic: out 22, 2026, 12:32
+          - generic: Novo
+        - gridcell "Ocultar https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/evento/2026-2026-nubank-ultravioleta-triday-series-bertioga-ii/ nos resultados de auditoria":
+      - row "9° CORRIDA SÃO BERTIOGA 15K E 5K - corrida de rua - Road Runners https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/ Acessar https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/ https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection 404 out 22, 2026, 12:32 Novo Ocultar https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/ nos resultados de auditoria":
+        - gridcell "9° CORRIDA SÃO BERTIOGA 15K E 5K - corrida de rua - Road Runners https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/ Acessar https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/":
+          - checkbox "9° CORRIDA SÃO BERTIOGA 15K E 5K - corrida de rua - Road Runners https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/ Acessar https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/"
+        - gridcell "9° CORRIDA SÃO BERTIOGA 15K E 5K - corrida de rua - Road Runners https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/ Acessar https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/":
+          - generic: 9° CORRIDA SÃO BERTIOGA 15K E 5K - corrida de rua - Road Runners
+          - link "https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248dc4
+            - generic: https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/
+          - link "Acessar https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/":
+            - /url: https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/
+        - gridcell "https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+          - generic: https://roadrunners.run/cdn-cgi/l/email-protection
+          - link "Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+            - /url: https://roadrunners.run/cdn-cgi/l/email-protection
+        - gridcell "404":
+          - button "404":
+            - generic: "404"
+        - gridcell "out 22, 2026, 12:32 Novo":
+          - generic: out 22, 2026, 12:32
+          - generic: Novo
+        - gridcell "Ocultar https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/evento/2026-9-corrida-sao-bertioga-15k-e-5k/ nos resultados de auditoria":
+      - row "Circuito runaway 2026 - etapa êxito - corrida de rua - Road Runners https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/ Acessar https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/ https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection 404 out 22, 2026, 12:32 Novo Ocultar https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/ nos resultados de auditoria":
+        - gridcell "Circuito runaway 2026 - etapa êxito - corrida de rua - Road Runners https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/ Acessar https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/":
+          - checkbox "Circuito runaway 2026 - etapa êxito - corrida de rua - Road Runners https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/ Acessar https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/"
+        - gridcell "Circuito runaway 2026 - etapa êxito - corrida de rua - Road Runners https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/ Acessar https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/":
+          - generic: Circuito runaway 2026 - etapa êxito - corrida de rua - Road Runners
+          - link "https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248660
+            - generic: https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/
+          - link "Acessar https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/":
+            - /url: https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/
+        - gridcell "https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+          - generic: https://roadrunners.run/cdn-cgi/l/email-protection
+          - link "Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+            - /url: https://roadrunners.run/cdn-cgi/l/email-protection
+        - gridcell "404":
+          - button "404":
+            - generic: "404"
+        - gridcell "out 22, 2026, 12:32 Novo":
+          - generic: out 22, 2026, 12:32
+          - generic: Novo
+        - gridcell "Ocultar https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/evento/2026-circuito-runaway-2026-etapa-exito/ nos resultados de auditoria":
+      - row "CORRIDA E CAMINHADA INCLUSÃO A TODA PROVA 03.12 DF - corrida de rua - Road Runners https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/ Acessar https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/ https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection 404 out 13, 2026, 3:16 Ocultar https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/ nos resultados de auditoria":
+        - gridcell "CORRIDA E CAMINHADA INCLUSÃO A TODA PROVA 03.12 DF - corrida de rua - Road Runners https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/ Acessar https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/":
+          - checkbox "CORRIDA E CAMINHADA INCLUSÃO A TODA PROVA 03.12 DF - corrida de rua - Road Runners https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/ Acessar https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/"
+        - gridcell "CORRIDA E CAMINHADA INCLUSÃO A TODA PROVA 03.12 DF - corrida de rua - Road Runners https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/ Acessar https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/":
+          - generic: CORRIDA E CAMINHADA INCLUSÃO A TODA PROVA 03.12 DF - corrida de rua - Road Runners
+          - link "https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554249353
+            - generic: https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/
+          - link "Acessar https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/":
+            - /url: https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/
+        - gridcell "https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+          - generic: https://roadrunners.run/cdn-cgi/l/email-protection
+          - link "Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+            - /url: https://roadrunners.run/cdn-cgi/l/email-protection
+        - gridcell "404":
+          - button "404":
+            - generic: "404"
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/evento/2026-corrida-e-caminhada-inclusao-a-toda-prova-0312-df-2026/ nos resultados de auditoria":
+      - row "FEIRA NIGHT RUN ANÁLISE 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-feira-night-run-analise-2026/ Acessar https://roadrunners.run/evento/2026-feira-night-run-analise-2026/ https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection 404 out 11, 2026, 12:14 Ocultar https://roadrunners.run/evento/2026-feira-night-run-analise-2026/ nos resultados de auditoria":
+        - gridcell "FEIRA NIGHT RUN ANÁLISE 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-feira-night-run-analise-2026/ Acessar https://roadrunners.run/evento/2026-feira-night-run-analise-2026/":
+          - checkbox "FEIRA NIGHT RUN ANÁLISE 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-feira-night-run-analise-2026/ Acessar https://roadrunners.run/evento/2026-feira-night-run-analise-2026/"
+        - gridcell "FEIRA NIGHT RUN ANÁLISE 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-feira-night-run-analise-2026/ Acessar https://roadrunners.run/evento/2026-feira-night-run-analise-2026/":
+          - generic: FEIRA NIGHT RUN ANÁLISE 2026 - corrida de rua - Road Runners
+          - link "https://roadrunners.run/evento/2026-feira-night-run-analise-2026/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d185542483b6
+            - generic: https://roadrunners.run/evento/2026-feira-night-run-analise-2026/
+          - link "Acessar https://roadrunners.run/evento/2026-feira-night-run-analise-2026/":
+            - /url: https://roadrunners.run/evento/2026-feira-night-run-analise-2026/
+        - gridcell "https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+          - generic: https://roadrunners.run/cdn-cgi/l/email-protection
+          - link "Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+            - /url: https://roadrunners.run/cdn-cgi/l/email-protection
+        - gridcell "404":
+          - button "404":
+            - generic: "404"
+        - gridcell "out 11, 2026, 12:14":
+          - generic: out 11, 2026, 12:14
+        - gridcell "Ocultar https://roadrunners.run/evento/2026-feira-night-run-analise-2026/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/evento/2026-feira-night-run-analise-2026/ nos resultados de auditoria":
+      - row "Maratona Internacional do Paraná 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/ Acessar https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/ https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection 404 out 13, 2026, 3:16 Ocultar https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/ nos resultados de auditoria":
+        - gridcell "Maratona Internacional do Paraná 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/ Acessar https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/":
+          - checkbox "Maratona Internacional do Paraná 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/ Acessar https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/"
+        - gridcell "Maratona Internacional do Paraná 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/ Acessar https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/":
+          - generic: Maratona Internacional do Paraná 2026 - corrida de rua - Road Runners
+          - link "https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248c25
+            - generic: https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/
+          - link "Acessar https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/":
+            - /url: https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/
+        - gridcell "https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+          - generic: https://roadrunners.run/cdn-cgi/l/email-protection
+          - link "Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+            - /url: https://roadrunners.run/cdn-cgi/l/email-protection
+        - gridcell "404":
+          - button "404":
+            - generic: "404"
+        - gridcell "out 13, 2026, 3:16":
+          - generic: out 13, 2026, 3:16
+        - gridcell "Ocultar https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/evento/2026-maratona-internacional-do-parana-edicao-ponte-de-guaratuba/ nos resultados de auditoria":
+      - row "MEIA MARATONA BLUE RUN SALVADOR 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/ Acessar https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/ https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection 404 out 11, 2026, 12:14 Ocultar https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/ nos resultados de auditoria":
+        - gridcell "MEIA MARATONA BLUE RUN SALVADOR 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/ Acessar https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/":
+          - checkbox "MEIA MARATONA BLUE RUN SALVADOR 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/ Acessar https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/"
+        - gridcell "MEIA MARATONA BLUE RUN SALVADOR 2026 - corrida de rua - Road Runners https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/ Acessar https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/":
+          - generic: MEIA MARATONA BLUE RUN SALVADOR 2026 - corrida de rua - Road Runners
+          - link "https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/":
+            - /url: /siteaudit/campaign/26661911/review/page/6ada2c8047c0d18554248ea6
+            - generic: https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/
+          - link "Acessar https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/":
+            - /url: https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/
+        - gridcell "https://roadrunners.run/cdn-cgi/l/email-protection Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+          - generic: https://roadrunners.run/cdn-cgi/l/email-protection
+          - link "Acessar https://roadrunners.run/cdn-cgi/l/email-protection":
+            - /url: https://roadrunners.run/cdn-cgi/l/email-protection
+        - gridcell "404":
+          - button "404":
+            - generic: "404"
+        - gridcell "out 11, 2026, 12:14":
+          - generic: out 11, 2026, 12:14
+        - gridcell "Ocultar https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/ nos resultados de auditoria":
+          - button "Ocultar https://roadrunners.run/evento/2026-meia-maratona-blue-run-salvador-2026/ nos resultados de auditoria":
+    - status
+    - navigation "Paginação":
+      - button "Primeira página" [disabled]:
+      - button "Anterior" [disabled]:
+        - generic: Anterior
+      - button "Próximo":
+        - generic: Próximo
+      - generic: "Página:"
+      - textbox "Página:": "1"
+      - generic: de
+      - button "Última página n.º 2":
+        - generic: "2"
+      - combobox:
+        - generic: "10"
+      - status: "Página: 1"
+- contentinfo:
+  - link "Fale conosco":
+    - /url: /company/contacts/
+  - link "Sobre nós":
+    - /url: /company/
+  - link "Blog":
+    - /url: /blog/
+  - button "Português (Brasil)"
+  - link "Ver planos e preços":
+    - /url: /pricing/
+  - link "Comece a usar a Semrush":
+    - /url: https://www.semrush.com/academy/courses/getting-started-with-semrush/
+  - link "Configurações dos cookies":
+    - /url: javascript:window.showConsentSettings();
+  - link "Informações jurídicas":
+    - /url: /company/legal/
+  - link "Política de privacidade":
+    - /url: /company/legal/privacy-policy/
+  - link "Não venda minhas informações pessoais":
+    - /url: javascript:window.showConsentSettings();
+  - generic: © 2026 Semrush Holdings. Todos os direitos reservados.
+- region "Notificações"
+- button "Abrir painel de ajuda"
+- iframe [id="intercom-frame"]
+- region "Notifications"

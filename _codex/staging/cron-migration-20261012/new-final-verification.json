@@ -1,0 +1,24 @@
+{
+  "measured_at_utc": "2026-10-12T12:35:33.096981+00:00",
+  "active_runner_entries": 1,
+  "crontab_sha256": "b13e8c7337003182f40a3130c8313ddf6f9f3d470790aa18f6f84918ae8f055a",
+  "backups": [
+    {
+      "path": "/var/backups/business-cron-reload-20261012T122956Z-nbbttja7",
+      "directory_mode": "0o700",
+      "backup_hashes_match": true,
+      "new_cron_unchanged": true
+    }
+  ],
+  "latest_runner_requests": [
+    "172.71.234.75 - - [12/Oct/2026:12:28:53 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 503 4600 \"-\" \"curl/7.81.0\"",
+    "172.71.234.75 - - [12/Oct/2026:12:29:01 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 503 4599 \"-\" \"curl/8.5.0\"",
+    "172.68.19.230 - - [12/Oct/2026:12:31:01 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 200 5444 \"-\" \"curl/8.5.0\"",
+    "172.71.238.23 - - [12/Oct/2026:12:30:01 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 200 5459 \"-\" \"curl/8.5.0\"",
+    "172.68.19.230 - - [12/Oct/2026:12:32:01 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 200 5525 \"-\" \"curl/8.5.0\"",
+    "172.71.234.75 - - [12/Oct/2026:12:33:01 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 200 5534 \"-\" \"curl/8.5.0\"",
+    "172.68.19.230 - - [12/Oct/2026:12:34:01 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 200 5408 \"-\" \"curl/8.5.0\"",
+    "172.68.19.230 - - [12/Oct/2026:12:35:01 +0000] \"GET /cron-jobs/runner.cfm?limit=5 HTTP/1.1\" 200 5173 \"-\" \"curl/8.5.0\""
+  ],
+  "cron_service": "active"
+}

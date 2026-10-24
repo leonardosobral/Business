@@ -1,0 +1,49 @@
+{
+  "LOADED_CONFIG": {
+    "ENCRYPTED_GMAIL_PRESENT": true,
+    "KEYS": [
+      "openAiApiKey",
+      "contraRelogioFeedAcceptLanguage",
+      "sixCommAllowedImageHosts",
+      "importerHandoffSecret",
+      "sixCommMailScanRows",
+      "contraRelogioFeedUserAgent",
+      "sixCommMailPassword",
+      "newsTtsEnabled",
+      "sixCommGmailClientId",
+      "contraRelogioFeedUpdatedAt",
+      "contraRelogioFeedRetryDelayMs",
+      "sixCommGmailRefreshTokenEncrypted",
+      "sixCommGmailRedirectUri",
+      "weeklyDigestSecret",
+      "contraRelogioFeedRetryCount",
+      "contraRelogioFeedCookie",
+      "sixCommGmailClientSecret",
+      "weeklyDigestEnabled",
+      "weeklyDigestModel",
+      "googleOAuthClientId",
+      "sixCommMailPasswordEncrypted",
+      "rrInternalBase",
+      "sixCommMailMaxRows",
+      "googleOAuthClientSecret",
+      "googleOAuthRedirectUri",
+      "sixCommGmailEmail"
+    ]
+  },
+  "DATABASE": {
+    "RUNTIME_TABLE": "news.tb_runtime_settings",
+    "USER": "runner_dba",
+    "NAME": "runnerhub"
+  },
+  "MAIL_CONFIG": {
+    "REFRESH_TOKEN_PRESENT": true
+  },
+  "CHANNEL": {
+    "SOURCEMEDIAALLOWED": true,
+    "AUTOPUBLISHSUMMARY": true,
+    "PUBLICATIONMODE": "licensed_full"
+  },
+  "FILE_CONFIG": {
+    "SECRET_PRESENT": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "manifest_sha256": "57c0131c11568ab1f1d505e95656361c31fe893080457e34c4d5a8525ea3620d",
+  "compiled_templates": 3,
+  "compiler": "/opt/coldfusion2025/cfusion/bin/cfcompile.sh",
+  "runtime_user": "coldfusion",
+  "stage": "/var/backups/business-home-20261024-bmev1ttg",
+  "runtime_files_changed": false
+}

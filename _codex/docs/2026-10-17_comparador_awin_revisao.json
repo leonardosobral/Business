@@ -1,0 +1,1650 @@
+{
+  "reviewedAt": "2026-10-17T19:45:55.648580+00:00",
+  "sourceSnapshotAt": "2026-10-17T19:32:17.204711328Z",
+  "verifiedAfterResyncAt": "2026-10-17T19:43:54.865769113Z",
+  "reviewedCampaigns": 37,
+  "newLinkedCampaigns": 3,
+  "newProductCampaignPairs": 25,
+  "totalLinkedCampaigns": 4,
+  "totalPairs": 26,
+  "totalProducts": 25,
+  "pendingCampaigns": 34,
+  "pendingReasons": {
+    "fora_catalogo": 22,
+    "sem_modelo": 6,
+    "geracao_diferente": 4,
+    "condicoes_divergentes": 1,
+    "destino_divergente": 1
+  },
+  "reviews": [
+    {
+      "campaignId": 4143246,
+      "advertiser": "Centauro BR",
+      "title": "Performance que se veste até 35% OFF",
+      "destination": "https://www.centauro.com.br/hotsite/performance-que-se-veste",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-23T02:59:59+00:00",
+      "description": "Performance que se veste até 35% OFF",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Seleção de vestuário Asics/Oxer/Puma/Adidas/Nike, sem os tops LB Run cadastrados."
+    },
+    {
+      "campaignId": 4143245,
+      "advertiser": "Centauro BR",
+      "title": "Camiseta Kappa Zurich Masculina",
+      "destination": "https://www.centauro.com.br/camiseta-kappa-zurich-masc-9972FX.html?cor=05",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Camiseta Kappa Zurich Masculina",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143244,
+      "advertiser": "Centauro BR",
+      "title": "Bola Campo Nike Pitch Train",
+      "destination": "https://www.centauro.com.br/bola-campo-nike-ptch-train-9973NV.html?cor=EZ",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Bola Campo Nike Pitch Train",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143243,
+      "advertiser": "Centauro BR",
+      "title": "Bola adidas UEFA Champions League Final Club",
+      "destination": "https://www.centauro.com.br/bola-adidas-uefa-champions-league-final-club-9973RW.html?cor=2U",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Bola adidas UEFA Champions League Final Club",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143242,
+      "advertiser": "Centauro BR",
+      "title": "Mini Bola adidas UCL Champions League",
+      "destination": "https://www.centauro.com.br/minibola-adidas-ucl-champions-league-9976JO.html?cor=01",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Mini Bola adidas UCL Champions League",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143241,
+      "advertiser": "Centauro BR",
+      "title": "Bola Nike Phantom FA25",
+      "destination": "https://www.centauro.com.br/bola-nike-phantom-fa25-9975AB.html?cor=52",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Bola Nike Phantom FA25",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143240,
+      "advertiser": "Centauro BR",
+      "title": "Bola de Futsal Nike Maestro",
+      "destination": "https://www.centauro.com.br/bola-de-futsal-nike-maestro-99722G.html?cor=ZR",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Bola de Futsal Nike Maestro",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143239,
+      "advertiser": "Centauro BR",
+      "title": "Camiseta Nike Corinthians 2026 Treino Infantil",
+      "destination": "https://www.centauro.com.br/camisa-nike-corinthians-2026-treino-infantil-997503.html?cor=3V",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Camiseta Nike Corinthians 2026 Treino Infantil",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143238,
+      "advertiser": "Centauro BR",
+      "title": "Chuteira Futsal Adulto Nike Tiempo Maestro Club T",
+      "destination": "https://www.centauro.com.br/chuteira-futsal-adulto-nike-tiempo-maestro-club-t-9975HM.html?cor=EZ",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Chuteira Futsal Adulto Nike Tiempo Maestro Club T",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143237,
+      "advertiser": "Centauro BR",
+      "title": "Chuteira Society Adulto Nike Tiempo Maestro Club T",
+      "destination": "https://www.centauro.com.br/chuteira-society-adulto-nike-tiempo-maestro-club-t-9975HN.html?cor=Q4",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Chuteira Society Adulto Nike Tiempo Maestro Club T",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143236,
+      "advertiser": "Centauro BR",
+      "title": "Chuteira de Campo Adulto Nike Phantom 6 Club",
+      "destination": "https://www.centauro.com.br/chuteira-de%20campo-adulto-nike-phantom-360-club-9971AE.html?cor=2V",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Chuteira de Campo Adulto Nike Phantom 6 Club",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143235,
+      "advertiser": "Centauro BR",
+      "title": "Chuteira de Campo Adulto Nike Vapor 17 Pro",
+      "destination": "https://www.centauro.com.br/chuteira-campo-adulto-nike-vapor-17-pro-99770A.html?cor=06",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Chuteira de Campo Adulto Nike Vapor 17 Pro",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143234,
+      "advertiser": "Centauro BR",
+      "title": "Chuteira Futsal Adulto Penalty Evolution Club Locker Y-1",
+      "destination": "https://www.centauro.com.br/chuteira-futsal-adulto-penalty-evolution-club-locker-y1-9972LZ.html?cor=33",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Chuteira Futsal Adulto Penalty Evolution Club Locker Y-1",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143233,
+      "advertiser": "Centauro BR",
+      "title": "Camisa do Palmeiras I 2026 Puma Torcedor Masculina",
+      "destination": "https://www.centauro.com.br/camisa-do-palmeiras-i-2026-puma-torcedor-masculina-9976TH.html?cor=07",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Camisa do Palmeiras I 2026 Puma Torcedor Masculina",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143232,
+      "advertiser": "Centauro BR",
+      "title": "Camisa do Flamengo III 2026/27 adidas Torcedor Infantil",
+      "destination": "https://www.centauro.com.br/camisa-flamengo-iii-2026-27-adidas-torcedor-infantil-9976IX.html?cor=06",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Camisa do Flamengo III 2026/27 adidas Torcedor Infantil",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143231,
+      "advertiser": "Centauro BR",
+      "title": "Camiseta Nike Total 90 Masculina",
+      "destination": "https://www.centauro.com.br/camiseta-nike-total-90-masculina-9971AN.html?cor=07",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Camiseta Nike Total 90 Masculina",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143230,
+      "advertiser": "Centauro BR",
+      "title": "Bermuda Masculina Adams Compressão Proteção UV",
+      "destination": "https://www.centauro.com.br/bermuda-masculina-adams-compressao-protecao-uv-991140.html?cor=02",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Bermuda Masculina Adams Compressão Proteção UV",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143229,
+      "advertiser": "Centauro BR",
+      "title": "Chuteira Society Adulto Joma Máxima melhor do mercado",
+      "destination": "https://www.centauro.com.br/chuteira-society-adulto-joma-maxima-997772.html?cor=31",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Chuteira Society Adulto Joma Máxima melhor do mercado",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Bolas, chuteiras ou vestuário sem produto correspondente nos tipos tênis de corrida, monitores esportivos e tops LB Run do catálogo."
+    },
+    {
+      "campaignId": 4143228,
+      "advertiser": "Centauro BR",
+      "title": "Últimos lançamentos OXER",
+      "destination": "https://www.centauro.com.br/hotsite/lancamento-oxer",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Últimos lançamentos OXER",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "sem_modelo",
+      "reason": "Não há produtos Oxer elegíveis no catálogo."
+    },
+    {
+      "campaignId": 4143227,
+      "advertiser": "Centauro BR",
+      "title": "adidas Response Runner 2 por 259.99 no pix",
+      "destination": "https://www.centauro.com.br/hotsite/response-runner-2?fields=vendidopor%3Acentauro",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "adidas Response Runner 2 por 259.99 no pix",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "geracao_diferente",
+      "reason": "Campanha Response Runner 2; o cadastro disponível é Response runner sem geração 2."
+    },
+    {
+      "campaignId": 4143226,
+      "advertiser": "Centauro BR",
+      "title": "Linha Downshifter a partir de 289.99 no pix",
+      "destination": "https://www.centauro.com.br/hotsite/linha-downshifter",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Linha Downshifter a partir de 289.99 no pix",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "geracao_diferente",
+      "reason": "A seleção da loja contém Downshifter 13/14; o cadastro é Downshifter 12."
+    },
+    {
+      "campaignId": 4143225,
+      "advertiser": "Centauro BR",
+      "title": "Revolution 8 por 299.99 no pix",
+      "destination": "https://www.centauro.com.br/hotsite/revolution-8?fields=vendidopor%3Acentauro",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Revolution 8 por 299.99 no pix",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "geracao_diferente",
+      "reason": "Campanha Revolution 8; o cadastro é Revolution 6."
+    },
+    {
+      "campaignId": 4143224,
+      "advertiser": "Centauro BR",
+      "title": "Os melhores tênis para corrida Nike até 50% OFF",
+      "destination": "https://www.centauro.com.br/hotsite/o-melhor-da-corrida-nike?fields=vendidopor%3Acentauro",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Os melhores tênis para corrida Nike até 50% OFF",
+      "terms": ".",
+      "decision": "vinculada",
+      "reason": "Modelos e gerações confirmados na seleção da campanha da loja, com desconto visível.",
+      "products": [
+        {
+          "productId": 4292,
+          "name": "Nike Pegasus 41",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/nike-pegasus-41/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/o-melhor-da-corrida-nike?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Masculino Nike Air Zoom Pegasus 41 na posição 2 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-nike-air-zoom-pegasus-41-masculino-988386.html?cor=SN",
+              "observedDiscount": "42% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/o-melhor-da-corrida-nike?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Masculino Nike Air Zoom Pegasus 41 na posição 3 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-nike-air-zoom-pegasus-41-masculino-988386.html?cor=3L",
+              "observedDiscount": "42% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4947,
+          "name": "Nike Pegasus Plus",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/nike-pegasus-plus-wa-973bc494/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/o-melhor-da-corrida-nike?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Nike Pegasus Plus - Masculino na posição 4 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-nike-pegasus-plus-masculino-989889.html?cor=0R",
+              "observedDiscount": "41% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/o-melhor-da-corrida-nike?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Nike Pegasus Plus - Feminino na posição 28 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-nike-pegasus-plus-4-feminino-989888.html?cor=9T",
+              "observedDiscount": "39% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4954,
+          "name": "Nike Streakfly 2",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/nike-streakfly-2-wa-bef89b3b/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/o-melhor-da-corrida-nike?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis de Corrida Unissex Nike ZoomX Streakfly 2 na posição 25 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-de-corrida-unissex-nike-zoomx-streakfly-2-99769A.html?cor=51",
+              "observedDiscount": "41% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/o-melhor-da-corrida-nike?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Masculino Nike ZoomX Streakfly 2 na posição 26 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-masculino-nike-zoomx-streakfly-2-995891.html?cor=QL",
+              "observedDiscount": "37% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4315,
+          "name": "Nike Zoom Fly 6",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/nike-zoom-fly-6/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/o-melhor-da-corrida-nike?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Masculino Nike Zoom Fly 6 na posição 14 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-nike-zoom-fly-6-masculino-993066.html?cor=52",
+              "observedDiscount": "47% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4316,
+          "name": "Nike ZoomX Vaporfly 4",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/nike-zoomx-vaporfly-4/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/o-melhor-da-corrida-nike?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Feminino Nike ZoomX VaporFly 4 na posição 6 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-feminino-nike-zoomx-vaporfly-next-4-996686.html?cor=20",
+              "observedDiscount": "50% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/o-melhor-da-corrida-nike?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Feminino Nike ZoomX VaporFly 4 na posição 7 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-feminino-nike-zoomx-vaporfly-next-4-996686.html?cor=04",
+              "observedDiscount": "50% OFF"
+            }
+          ]
+        }
+      ],
+      "conditions": "Percentual da campanha é um limite (até), não desconto fixo de cada SKU. Preços e estoque continuam dependentes da loja; valores não foram importados."
+    },
+    {
+      "campaignId": 4143223,
+      "advertiser": "Centauro BR",
+      "title": "Últimas peças do Ultraboost 5 por 699.99 no pix",
+      "destination": "https://www.centauro.com.br/tenis-adidas-ultraboost-5-masculino-990526.html?cor=04",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Últimas peças do Ultraboost 5 por 699.99 no pix",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "geracao_diferente",
+      "reason": "Campanha Ultraboost 5; os cadastros são Ultraboost 22 e Ultraboost Light 23."
+    },
+    {
+      "campaignId": 4143222,
+      "advertiser": "Centauro BR",
+      "title": "Fila Speedzone a partir de 299.99 no pix",
+      "destination": "https://www.centauro.com.br/hotsite/-speedzone-?fields=vendidopor%3Acentauro&sorting=AscPrice",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Fila Speedzone a partir de 299.99 no pix",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "sem_modelo",
+      "reason": "Fila Speedzone não consta entre os produtos elegíveis. Outros Fila Racer/Float não equivalem ao modelo."
+    },
+    {
+      "campaignId": 4143221,
+      "advertiser": "Centauro BR",
+      "title": "Evo SL as cores mais recentes",
+      "destination": "https://www.centauro.com.br/hotsite/melhores-cores-evo?fields=vendidopor%3Acentauro",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Evo SL as cores mais recentes",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "sem_modelo",
+      "reason": "Adizero Evo SL não consta entre os produtos elegíveis. Adios Pro Evo e outros Adizero não equivalem ao modelo."
+    },
+    {
+      "campaignId": 4143220,
+      "advertiser": "Centauro BR",
+      "title": "Tênis de corrida Olympikus x Asics até 50% OFF",
+      "destination": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Tênis de corrida Olympikus x Asics até 50% OFF",
+      "terms": ".",
+      "decision": "vinculada",
+      "reason": "Modelos e gerações confirmados na seleção da campanha da loja, com desconto visível.",
+      "products": [
+        {
+          "productId": 4305,
+          "name": "Asics GEL-CUMULUS 27",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/asics-gel-cumulus-27/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis ASICS Gel-Cumulus 27 Feminino na posição 11 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-asics-gel-cumulus-27-feminino-992575.html?cor=9E",
+              "observedDiscount": "42% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=2",
+              "name": "Produto Tênis ASICS Gel-Cumulus 27 Feminino na posição 28 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-asics-gel-cumulus-27-feminino-992575.html?cor=50",
+              "observedDiscount": "42% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4306,
+          "name": "Asics GEL-CUMULUS 28",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/asics-gel-cumulus-28/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Feminino ASICS Gel Cumulus 28 na posição 13 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-feminino-asics-gelcumulus-28-9973D3.html?cor=3B",
+              "observedDiscount": "37% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=2",
+              "name": "Produto Tênis Feminino ASICS Gel Cumulus 28 na posição 12 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-feminino-asics-gelcumulus-28-9973D3.html?cor=CC",
+              "observedDiscount": "37% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4303,
+          "name": "Asics GEL-KAYANO 33",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/asics-gel-kayano-33/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Masculino Asics Gel-Kayano 33 na posição 23 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-asics-gelkayano-33-9976HE.html?cor=70",
+              "observedDiscount": "10% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=3",
+              "name": "Produto Tênis Feminino Asics Gel-Kayano 33 na posição 3 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-asics-gelkayano-33-9976HG.html?cor=RH",
+              "observedDiscount": "10% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4307,
+          "name": "Asics MAGIC SPEED 3",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/asics-magic-speed-3/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis ASICS Magic Speed 3 - Feminino na posição 16 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-asics-magic-speed-3-feminino-983251.html?cor=ZQ",
+              "observedDiscount": "42% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4308,
+          "name": "Asics MAGIC SPEED 4",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/asics-magic-speed-4/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis ASICS Magic Speed 4 Feminino na posição 18 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-asics-magic-speed-4-feminino-990041.html?cor=PG",
+              "observedDiscount": "38% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=2",
+              "name": "Produto Tênis ASICS Magic Speed 4 Feminino na posição 36 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-asics-magic-speed-4-feminino-990041.html?cor=3W",
+              "observedDiscount": "38% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4309,
+          "name": "Asics MAGIC SPEED 5",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/asics-magic-speed-5/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=3",
+              "name": "Produto Tênis Masculino ASICS Magic Speed 5 na posição 8 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-masculino-asics-magic-speed-5-9973E1.html?cor=FH",
+              "observedDiscount": "34% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=3",
+              "name": "Produto Tênis Masculino ASICS Magic Speed 5 na posição 19 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-masculino-asics-magic-speed-5-9973E1.html?cor=FP",
+              "observedDiscount": "10% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4486,
+          "name": "Asics METASPEED EDGE TOKYO",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/asics-metaspeed-edge-tokyo-wa-b45fab06/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Unissex ASICS Metaspeed Edge Tokyo na posição 24 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-unissex-asics-metaspeed-edge-tokyo-9972OP.html?cor=2R",
+              "observedDiscount": "10% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4496,
+          "name": "Asics METASPEED SKY TOKYO",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/asics-metaspeed-sky-tokyo-wa-ce51459c/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=2",
+              "name": "Produto Tênis Unissex Asics Metaspeed Sky Tokyo na posição 35 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/-tenis-unissex-asics-metaspeed-sky-tokyo-9972oo.html?cor=2R",
+              "observedDiscount": "10% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4279,
+          "name": "Asics NOVABLAST 5",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/asics-novablast-5/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Masculino ASICS Novablast 5 na posição 9 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-masculino-asics-novablast-5-9973DP.html?cor=BK",
+              "observedDiscount": "51% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Feminino Asics Novablast 5 na posição 29 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-asics-novablast-5-feminino-992317.html?cor=FP",
+              "observedDiscount": "46% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4310,
+          "name": "Asics SUPERBLAST 2",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/asics-superblast-2/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=2",
+              "name": "Produto Tênis ASICS Superblast 2 Unissex na posição 23 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-asics-superblast-2-unissex-990049.html?cor=2R",
+              "observedDiscount": "39% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4311,
+          "name": "Asics SUPERBLAST 3",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/asics-superblast-3/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=2",
+              "name": "Produto Tênis Unissex Asics Superblast 3 na posição 13 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-unissex-asics-superblast-3-9973E0.html?cor=38",
+              "observedDiscount": "10% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4282,
+          "name": "Olympikus Corre 4",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/olympikus-corre-4/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Unissex Olympikus Corre 4 na posição 2 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-unissex-olympikus-corre-4-990668.html?cor=H3",
+              "observedDiscount": "33% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Unissex Olympikus Corre 4 na posição 25 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-unissex-olympikus-corre-4-990668.html?cor=03",
+              "observedDiscount": "33% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4252,
+          "name": "Olympikus Corre 5",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/olympikus-corre-5/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Unissex Olympikus Corre 5 na posição 8 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/-tenis-unissex-olympikus-corre-5-9974a7.html?cor=08",
+              "observedDiscount": "10% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Unissex Olympikus Corre 5 na posição 27 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/-tenis-unissex-olympikus-corre-5-9974a7.html?cor=02",
+              "observedDiscount": "10% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4284,
+          "name": "Olympikus Corre Grafeno 3",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/olympikus-corre-grafeno-3/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Masculino Olympikus Corre Grafeno 3 na posição 12 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-masculino-olympikus-corre-grafeno-3-990659.html?cor=80",
+              "observedDiscount": "31% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Masculino Olympikus Corre Grafeno 3 na posição 28 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-masculino-olympikus-corre-grafeno-3-990659.html?cor=03",
+              "observedDiscount": "31% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4286,
+          "name": "Olympikus Corre Max 1",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/olympikus-corre-max/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Unissex Olympikus Corre Max na posição 6 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-unissex-olympikus-corre-max-990670.html?cor=31",
+              "observedDiscount": "27% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Unissex Olympikus Corre Max na posição 34 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-unissex-olympikus-corre-max-990670.html?cor=H3",
+              "observedDiscount": "13% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4287,
+          "name": "Olympikus Corre Max 2",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/olympikus-corre-max-2/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=2",
+              "name": "Produto Tênis Unissex Olympikus Corre Max 2 na posição 8 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-de-corrida-unissex-olympikus-corre-max-2-99776Q.html?cor=12",
+              "observedDiscount": "5% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4288,
+          "name": "Olympikus Corre Supra 1",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/olympikus-corre-supra/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Olympikus Corre Supra Unissex na posição 17 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-olympikus-corre-supra-unissex-987947.html?cor=11",
+              "observedDiscount": "25% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=3",
+              "name": "Produto Tênis Olympikus Corre Supra Unissex na posição 9 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-olympikus-corre-supra-unissex-987947.html?cor=07",
+              "observedDiscount": "25% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4289,
+          "name": "Olympikus Corre Supra 2",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/olympikus-corre-supra-2/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Unissex Olympikus Corre Supra 2 na posição 19 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-unissex-olympikus-corre-supra-2-993182.html?cor=80",
+              "observedDiscount": "23% OFF"
+            }
+          ]
+        },
+        {
+          "productId": 4283,
+          "name": "Olympikus Corre Vento 3",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/olympikus-corre-vento-3/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro",
+              "name": "Produto Tênis Unissex Olympikus Corre Vento 3 na posição 4 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-unissex-olympikus-corre-vento-3-9974AB.html?cor=3P",
+              "observedDiscount": "24% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/olympikus-e-asics?fields=vendidopor%3Acentauro&page=2",
+              "name": "Produto Tênis Unissex Olympikus Corre Vento 3 na posição 2 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-unissex-olympikus-corre-vento-3-9974AB.html?cor=12",
+              "observedDiscount": "20% OFF"
+            }
+          ]
+        }
+      ],
+      "conditions": "Percentual da campanha é um limite (até), não desconto fixo de cada SKU. Preços e estoque continuam dependentes da loja; valores não foram importados."
+    },
+    {
+      "campaignId": 4143217,
+      "advertiser": "Centauro BR",
+      "title": "Tênis de caminhada Nike com até 40% OFF",
+      "destination": "https://www.centauro.com.br/hotsite/caminhada-nike?fields=vendidopor%3Acentauro&sorting=DescDiscount",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Tênis de caminhada Nike com até 40% OFF",
+      "terms": ".",
+      "decision": "vinculada",
+      "reason": "Modelos e gerações confirmados na seleção da campanha da loja, com desconto visível.",
+      "products": [
+        {
+          "productId": 13,
+          "name": "Nike Run Swift 3",
+          "publicUrl": "https://comparador.roadrunners.run/tenis/nike-run-swift-3/",
+          "evidence": [
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/caminhada-nike?fields=vendidopor%3Acentauro&sorting=DescDiscount",
+              "name": "Produto Tênis Nike Run Swift 3 - Feminino na posição 32 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-nike-run-swift-3-feminino-985038.html?cor=12",
+              "observedDiscount": "23% OFF"
+            },
+            {
+              "campaignPage": "https://www.centauro.com.br/hotsite/caminhada-nike?fields=vendidopor%3Acentauro&sorting=DescDiscount",
+              "name": "Produto Tênis Nike Run Swift 3 - Feminino na posição 33 da lista de produtos",
+              "productUrl": "https://www.centauro.com.br/tenis-nike-run-swift-3-feminino-985038.html?cor=KL",
+              "observedDiscount": "23% OFF"
+            }
+          ]
+        }
+      ],
+      "conditions": "Percentual da campanha é um limite (até), não desconto fixo de cada SKU. Preços e estoque continuam dependentes da loja; valores não foram importados."
+    },
+    {
+      "campaignId": 4143216,
+      "advertiser": "Centauro BR",
+      "title": "adidas Boost Run a partir de 329.99 no pix",
+      "destination": "https://www.centauro.com.br/hotsite/boost-run?fields=vendidopor%3Acentauro&sorting=AscPrice",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-31T02:59:59+00:00",
+      "description": "adidas Boost Run a partir de 329.99 no pix",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "sem_modelo",
+      "reason": "Adidas Boost Run não consta entre os produtos elegíveis. Outros Boost não equivalem ao modelo."
+    },
+    {
+      "campaignId": 4142920,
+      "advertiser": "Authentic Feet BR",
+      "title": "Itens selecionados a partir de 30% OFF",
+      "destination": "https://www.authenticfeet.com.br/especial-on",
+      "startDate": "2026-10-16T03:00:00+00:00",
+      "endDate": "2026-10-19T02:59:59+00:00",
+      "description": "Itens selecionados a partir de 30% OFF",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "condicoes_divergentes",
+      "reason": "Todos os 54 itens da seleção exibiam descontos entre 17% e 27%; os modelos correspondentes Cloudmonster/Cloudrunner tinham 23%/20%, abaixo dos a partir de 30% anunciados. Cloudsurfer 2 também não corresponde ao cadastro da primeira geração."
+    },
+    {
+      "campaignId": 4140757,
+      "advertiser": "Under Armour BR",
+      "title": "Tênis de Treino Unissex Under Armour Tribase Reps",
+      "destination": "https://www.underarmour.com.br/tenis-de-treino-unissex-under-armour-tribase-reps-3027500-001/p",
+      "startDate": "2026-10-14T03:00:00+00:00",
+      "endDate": "2026-11-01T02:59:59+00:00",
+      "description": "Tênis de Treino Unissex Under Armour Tribase Reps",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "sem_modelo",
+      "reason": "Under Armour Tribase Reps não consta no catálogo; campanha de treino funcional não deve ser atribuída a outro tênis."
+    },
+    {
+      "campaignId": 4140751,
+      "advertiser": "Under Armour BR",
+      "title": "Tênis de Corrida Under Armour Charged Endless",
+      "destination": "https://www.underarmour.com.br/tenis-de-corrida-under-armour-charged-endless-6014732-001/p",
+      "startDate": "2026-10-14T03:00:00+00:00",
+      "endDate": "2026-11-01T02:59:59+00:00",
+      "description": "Tênis de Corrida Under Armour Charged Endless",
+      "terms": ".",
+      "decision": "pendente",
+      "category": "sem_modelo",
+      "reason": "Under Armour Charged Endless não consta no catálogo; Charged Prorun é outro modelo."
+    },
+    {
+      "campaignId": 3720074,
+      "advertiser": "Samsung BR",
+      "title": "Monitor Gamer Samsung Odyssey G40 25\" FHD Tela Plana 240Hz 1ms HDMI FreeSync Premium G-Sync De R$ 2049.00 Por R$ 1253.57 (-35.60%OFF) *So no APP",
+      "destination": "https://shop.samsung.com/br/monitor-gamer-samsung-odyssey-g40b-2092/p?skuId=3453",
+      "startDate": "2026-02-05T03:00:00+00:00",
+      "endDate": "2026-11-15T02:59:59+00:00",
+      "description": "Monitor Gamer Samsung Odyssey G40 25\" FHD Tela Plana 240Hz 1ms HDMI FreeSync Premium G-Sync De R$ 2049.00 Por R$ 1253.57 (-35.60%OFF) *So no APP",
+      "terms": "..",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Monitor gamer não corresponde ao tipo monitores esportivos; único cadastro é Garmin Forerunner 265."
+    },
+    {
+      "campaignId": 3720072,
+      "advertiser": "Samsung BR",
+      "title": "Celular Samsung Galaxy A36 5G 128GB 6GB RAM Câmera 50MP IP67 Super AMOLED 6.7\" Recursos AI De R$ 1698.89 Por R$ 1452.55 *So no APP",
+      "destination": "https://shop.samsung.com/br/galaxy-a36/p?skuId=8782",
+      "startDate": "2026-02-05T03:00:00+00:00",
+      "endDate": "2026-11-15T02:59:59+00:00",
+      "description": "Celular Samsung Galaxy A36 5G 128GB 6GB RAM Câmera 50MP IP67 Super AMOLED 6.7\" Recursos AI De R$ 1698.89 Por R$ 1452.55 *So no APP",
+      "terms": "..",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Celular Samsung Galaxy A36 não faz parte do catálogo."
+    },
+    {
+      "campaignId": 3720070,
+      "advertiser": "Samsung BR",
+      "title": "Samsung Vision AI TV 55\" NEO QLED Ultra 4K QN1EF 2025 + Soundbar Samsung HW-B450F De R$ 5546.32 Por R$ 4601.65 *So no APP",
+      "destination": "https://shop.samsung.com/br/vision-ai-tv-55-neo-qled-ultra-4k-qn1ef-com-soundbar-hw-b450f/p?skuId=12904",
+      "startDate": "2026-02-05T03:00:00+00:00",
+      "endDate": "2026-11-15T02:59:59+00:00",
+      "description": "Samsung Vision AI TV 55\" NEO QLED Ultra 4K QN1EF 2025 + Soundbar Samsung HW-B450F De R$ 5546.32 Por R$ 4601.65 *So no APP",
+      "terms": "..",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "TV e soundbar Samsung não fazem parte do catálogo."
+    },
+    {
+      "campaignId": 3720068,
+      "advertiser": "Samsung BR",
+      "title": "Lavadora Digital Inverter Samsung WW11T Inox 11kg De R$ 3499.00 Por R$ 2889.15 (-13.08%OFF)",
+      "destination": "https://shop.samsung.com/br/lavadora-digital-inverter-samsung-ww11t-inox-11kg/p?skuId=7636",
+      "startDate": "2026-02-05T03:00:00+00:00",
+      "endDate": "2026-11-15T02:59:59+00:00",
+      "description": "Lavadora Digital Inverter Samsung WW11T Inox 11kg De R$ 3499.00 Por R$ 2889.15 (-13.08%OFF)",
+      "terms": "..",
+      "decision": "pendente",
+      "category": "fora_catalogo",
+      "reason": "Lavadora Samsung não faz parte do catálogo."
+    },
+    {
+      "campaignId": 3720066,
+      "advertiser": "Samsung BR",
+      "title": "Galaxy Watch8 40mm BT De R$ 2499.00 por R$ 1799.00 (-20%OFF)",
+      "destination": "https://shop.samsung.com/br/galaxy-watch7-bt-40mm/p?skuId=6473",
+      "startDate": "2026-02-05T03:00:00+00:00",
+      "endDate": "2026-11-15T02:59:59+00:00",
+      "description": "Galaxy Watch8 40mm BT De R$ 2499.00 por R$ 1799.00 (-20%OFF)",
+      "terms": "..",
+      "decision": "pendente",
+      "category": "destino_divergente",
+      "reason": "Título anuncia Galaxy Watch8, mas URL aponta galaxy-watch7-bt-40mm. Também não há Samsung elegível no catálogo."
+    }
+  ],
+  "publicChecks": [
+    {
+      "id": 4292,
+      "name": "Nike Pegasus 41",
+      "url": "https://comparador.roadrunners.run/tenis/nike-pegasus-41/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4947,
+      "name": "Nike Pegasus Plus",
+      "url": "https://comparador.roadrunners.run/tenis/nike-pegasus-plus-wa-973bc494/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4954,
+      "name": "Nike Streakfly 2",
+      "url": "https://comparador.roadrunners.run/tenis/nike-streakfly-2-wa-bef89b3b/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4315,
+      "name": "Nike Zoom Fly 6",
+      "url": "https://comparador.roadrunners.run/tenis/nike-zoom-fly-6/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4316,
+      "name": "Nike ZoomX Vaporfly 4",
+      "url": "https://comparador.roadrunners.run/tenis/nike-zoomx-vaporfly-4/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4305,
+      "name": "Asics GEL-CUMULUS 27",
+      "url": "https://comparador.roadrunners.run/tenis/asics-gel-cumulus-27/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4306,
+      "name": "Asics GEL-CUMULUS 28",
+      "url": "https://comparador.roadrunners.run/tenis/asics-gel-cumulus-28/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4303,
+      "name": "Asics GEL-KAYANO 33",
+      "url": "https://comparador.roadrunners.run/tenis/asics-gel-kayano-33/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4307,
+      "name": "Asics MAGIC SPEED 3",
+      "url": "https://comparador.roadrunners.run/tenis/asics-magic-speed-3/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4308,
+      "name": "Asics MAGIC SPEED 4",
+      "url": "https://comparador.roadrunners.run/tenis/asics-magic-speed-4/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4309,
+      "name": "Asics MAGIC SPEED 5",
+      "url": "https://comparador.roadrunners.run/tenis/asics-magic-speed-5/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4486,
+      "name": "Asics METASPEED EDGE TOKYO",
+      "url": "https://comparador.roadrunners.run/tenis/asics-metaspeed-edge-tokyo-wa-b45fab06/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4496,
+      "name": "Asics METASPEED SKY TOKYO",
+      "url": "https://comparador.roadrunners.run/tenis/asics-metaspeed-sky-tokyo-wa-ce51459c/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4279,
+      "name": "Asics NOVABLAST 5",
+      "url": "https://comparador.roadrunners.run/tenis/asics-novablast-5/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4310,
+      "name": "Asics SUPERBLAST 2",
+      "url": "https://comparador.roadrunners.run/tenis/asics-superblast-2/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4311,
+      "name": "Asics SUPERBLAST 3",
+      "url": "https://comparador.roadrunners.run/tenis/asics-superblast-3/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4282,
+      "name": "Olympikus Corre 4",
+      "url": "https://comparador.roadrunners.run/tenis/olympikus-corre-4/",
+      "status": 200,
+      "expectedOffers": 2,
+      "passed": true
+    },
+    {
+      "id": 4252,
+      "name": "Olympikus Corre 5",
+      "url": "https://comparador.roadrunners.run/tenis/olympikus-corre-5/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4284,
+      "name": "Olympikus Corre Grafeno 3",
+      "url": "https://comparador.roadrunners.run/tenis/olympikus-corre-grafeno-3/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4286,
+      "name": "Olympikus Corre Max 1",
+      "url": "https://comparador.roadrunners.run/tenis/olympikus-corre-max/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4287,
+      "name": "Olympikus Corre Max 2",
+      "url": "https://comparador.roadrunners.run/tenis/olympikus-corre-max-2/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4288,
+      "name": "Olympikus Corre Supra 1",
+      "url": "https://comparador.roadrunners.run/tenis/olympikus-corre-supra/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4289,
+      "name": "Olympikus Corre Supra 2",
+      "url": "https://comparador.roadrunners.run/tenis/olympikus-corre-supra-2/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 4283,
+      "name": "Olympikus Corre Vento 3",
+      "url": "https://comparador.roadrunners.run/tenis/olympikus-corre-vento-3/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    },
+    {
+      "id": 13,
+      "name": "Nike Run Swift 3",
+      "url": "https://comparador.roadrunners.run/tenis/nike-run-swift-3/",
+      "status": 200,
+      "expectedOffers": 1,
+      "passed": true
+    }
+  ],
+  "rules": {
+    "4143220": {
+      "FINGERPRINT": "a345b7808f0d12cfd14728fd1909c2a2cdd15f0f47b7f2794fa8a87a65100bb9",
+      "PRODUCTS": [
+        4305.0,
+        4306.0,
+        4303.0,
+        4307.0,
+        4308.0,
+        4309.0,
+        4486.0,
+        4496.0,
+        4279.0,
+        4310.0,
+        4311.0,
+        4282.0,
+        4252.0,
+        4284.0,
+        4286.0,
+        4287.0,
+        4288.0,
+        4289.0,
+        4283.0
+      ],
+      "MODE": "manual",
+      "ACTORID": 139
+    },
+    "4143217": {
+      "FINGERPRINT": "f8b96f720079f531dfb65644da72d7ccbe1f2027a18215fa0cd762ebb878e14f",
+      "PRODUCTS": [
+        13.0
+      ],
+      "MODE": "manual",
+      "ACTORID": 139
+    },
+    "4143224": {
+      "FINGERPRINT": "a6747da44c00794e386f551942a346ce4b64641697a39479c4c0ec3f3cb34417",
+      "PRODUCTS": [
+        4292.0,
+        4947.0,
+        4954.0,
+        4315.0,
+        4316.0
+      ],
+      "MODE": "manual",
+      "ACTORID": 139
+    }
+  },
+  "beforePublication": {
+    "DECISIONS": [
+      {
+        "FINGERPRINT": "d2043db9e5c7077aac328e0ffe79970e2b8a05c1768eda9370b44a7048fb4889",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Performance que se veste até 35% OFF",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143246",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "51687203855a1dc7cb84d656402e45660c5ef9f46b1e268a624dc52dc240f278",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Camiseta Kappa Zurich Masculina",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143245",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "fd81f8e0e29410178e3ef8cdfa4022344156404bc0d09706c0602ea13694dd20",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Bola Campo Nike Pitch Train",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143244",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "3b02ba788a960466b098d7af50b15a5ff34e5f505ce553cbd82a9c982be6d6d0",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Bola adidas UEFA Champions League Final Club",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143243",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "cf2fc777f773112b7e3a558842ace3f9d60d07fb808e2d0059ac458c5bcec1f6",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Mini Bola adidas UCL Champions League",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143242",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "c2753095361f9a0c1ba4932874347fafd7e1315c62f448d5f1b144b24ed348e8",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Bola Nike Phantom FA25",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143241",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "2ed31a74ff6e87ddb69cd2e36bbeb1262415e32ffc44ddc30ac0432d89661730",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Bola de Futsal Nike Maestro",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143240",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "b25b5d20450047b1c8f926602c905570450f8e79c6b7f80e3eeb9dd690a154cf",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Camiseta Nike Corinthians 2026 Treino Infantil",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143239",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "c85162855cc5cd2cd92fa005d5454a2afe9249be74d537851e93405fdf4f50af",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Chuteira Futsal Adulto Nike Tiempo Maestro Club T",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143238",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "ac48e82b24913fa9c6fb574e143c6366efe561b2c57540eba9c407e2bb8c0d36",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Chuteira Society Adulto Nike Tiempo Maestro Club T",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143237",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "3bfdb167122a9ef985df2254c32ade10da89b1fcd1487fa381d33fca6ef90f7c",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Chuteira de Campo Adulto Nike Phantom 6 Club",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143236",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "1bcc716a35da54926e8022cafeb65905f845d20c458f8fb405d92bb1e9df77d8",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Chuteira de Campo Adulto Nike Vapor 17 Pro",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143235",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "5dc3f02336e53f9003152b00089c4f036199b0b1afa47d1a5956d18d372a4427",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Chuteira Futsal Adulto Penalty Evolution Club Locker Y-1",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143234",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "5767dc9ec92f0a56084c5d22ad24cde9718615967daa381b311b98817c2bd7a1",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Camisa do Palmeiras I 2026 Puma Torcedor Masculina",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143233",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "ac7f0191631c815f10c0fa7d7f589e98588c5d97c21caddbf91cda7ac2f0ce3f",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Camisa do Flamengo III 2026/27 adidas Torcedor Infantil",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143232",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "e35c62a6e79691f445f4d89deb58fcb2a9a001b4afef771aaecb8f6ac192fe29",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Camiseta Nike Total 90 Masculina",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143231",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "e3432faad39c14fa216b03dffab9cd0c80ca47d32a38c114a3317f5e19c66ca2",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Bermuda Masculina Adams Compressão Proteção UV",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143230",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "c0af606db38ab212a1022464419b354adc6f643dad92334f362b7ea49e37f36f",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Chuteira Society Adulto Joma Máxima melhor do mercado",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143229",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "34e29da0b40cf8a1879da6ef06444a1c10a8763f256b0dcb0dd1832ddb0b19f7",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Últimos lançamentos OXER",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143228",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "9d96b4fd58bc8e5149e4b6b96ff3cdd88cb98d092ae968e76a48ab2fa9423e7c",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "adidas Response Runner 2 por 259.99 no pix",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143227",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "b7aa5cda372ce3064ac311be555f44014e8cbc47e1a8dd77f5fef6d70193430d",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Linha Downshifter a partir de 289.99 no pix",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143226",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "a78f45f167ba8732f455742da42104889b89592bcbcd596b32f81abb7e6234f2",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Revolution 8 por 299.99 no pix",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143225",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "a6747da44c00794e386f551942a346ce4b64641697a39479c4c0ec3f3cb34417",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Os melhores tênis para corrida Nike até 50% OFF",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143224",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "039f205a3475fb340555f1a8bb07900977eb2c6a289421650a33f85a3b5e97ec",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Últimas peças do Ultraboost 5 por 699.99 no pix",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143223",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "5394297c67c5edc038c70f98579234d24dcf421900516e65ffa3610022fc40a7",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Fila Speedzone a partir de 299.99 no pix",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143222",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "244662b407d67b3327f23cdb2cf2c7df0beb9f6505b785ee87a9421a4b49fe6e",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Evo SL as cores mais recentes",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143221",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "a345b7808f0d12cfd14728fd1909c2a2cdd15f0f47b7f2794fa8a87a65100bb9",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Tênis de corrida Olympikus x Asics até 50% OFF",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143220",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "6b4056657b459deb0bbbecd1e2dc6c9c6db2c6179b760e0e1db5ac8df0760988",
+        "PRODUCTS": [
+          4282
+        ],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Corre 4 por 399.99",
+        "LABELS": [
+          "Olympikus Corre 4"
+        ],
+        "REASON": "Modelo e versão identificados de forma única no título.",
+        "CAMPAIGNID": "4143219",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "f8b96f720079f531dfb65644da72d7ccbe1f2027a18215fa0cd762ebb878e14f",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Tênis de caminhada Nike com até 40% OFF",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143217",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "d832a7de3e77b152af3b3a25de93755db572afd16bfacc9d236643bbbe3a5bc7",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "adidas Boost Run a partir de 329.99 no pix",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4143216",
+        "ADVERTISER": "Centauro BR"
+      },
+      {
+        "FINGERPRINT": "f824eb139287fa729edcebd4bd45f963439e88db68c0722f5088fcf4b3753dbf",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Itens selecionados a partir de 30% OFF",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4142920",
+        "ADVERTISER": "Authentic Feet BR"
+      },
+      {
+        "FINGERPRINT": "b776dda62f60df23e410dcb127bf739f00c59a6a489c2dcde11ff555b1f0c2b6",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Tênis de Treino Unissex Under Armour Tribase Reps",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4140757",
+        "ADVERTISER": "Under Armour BR"
+      },
+      {
+        "FINGERPRINT": "e41d9fb4a840bc16a95fe41f33db9b2378d75e61c89c106eedc59c2b10678949",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Tênis de Corrida Under Armour Charged Endless",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "4140751",
+        "ADVERTISER": "Under Armour BR"
+      },
+      {
+        "FINGERPRINT": "67af9dcaac4aac9d58fb6c3371936ce24997a410bfc7a3823601b9c51626ebb2",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Monitor Gamer Samsung Odyssey G40 25\" FHD Tela Plana 240Hz 1ms HDMI FreeSync Premium G-Sync De R$ 2049.00 Por R$ 1253.57 (-35.60%OFF) *So no APP",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "3720074",
+        "ADVERTISER": "Samsung BR"
+      },
+      {
+        "FINGERPRINT": "115f083908d4012b80c9a73ae241adc763782c6f8a178ea028a46979c52e55da",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Celular Samsung Galaxy A36 5G 128GB 6GB RAM Câmera 50MP IP67 Super AMOLED 6.7\" Recursos AI De R$ 1698.89 Por R$ 1452.55 *So no APP",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "3720072",
+        "ADVERTISER": "Samsung BR"
+      },
+      {
+        "FINGERPRINT": "c642d364660600f58a27a8e5a9eb11d54375ccf8c28b436fc89e347b3a272cec",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Samsung Vision AI TV 55\" NEO QLED Ultra 4K QN1EF 2025 + Soundbar Samsung HW-B450F De R$ 5546.32 Por R$ 4601.65 *So no APP",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "3720070",
+        "ADVERTISER": "Samsung BR"
+      },
+      {
+        "FINGERPRINT": "73614683ddfc56c6e1d727197b4c16c14a6189742308852dd8a72d6ff7786884",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Lavadora Digital Inverter Samsung WW11T Inox 11kg De R$ 3499.00 Por R$ 2889.15 (-13.08%OFF)",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "3720068",
+        "ADVERTISER": "Samsung BR"
+      },
+      {
+        "FINGERPRINT": "36bda25b92159f84c2a7021944eabab72cb4e1d361afedd7d7455dbc92fffea9",
+        "PRODUCTS": [],
+        "MODE": "automatico",
+        "STATE": "active",
+        "TITLE": "Galaxy Watch8 40mm BT De R$ 2499.00 por R$ 1799.00 (-20%OFF)",
+        "LABELS": [],
+        "REASON": "Nenhuma correspondência única com modelo e versão.",
+        "CAMPAIGNID": "3720066",
+        "ADVERTISER": "Samsung BR"
+      }
+    ],
+    "PUBLISHEDAT": "2026-10-17T19:32:17.482197909Z",
+    "RULES": {},
+    "OFFERS": [
+      {
+        "PRODUCTSLUG": "olympikus-corre-4",
+        "STARTDATE": "2026-10-16T03:00:00+00:00",
+        "TERMS": ".",
+        "MODE": "automatico",
+        "PRODUCTID": 4282,
+        "PRODUCTNAME": "Corre",
+        "PRODUCTVERSION": "4",
+        "URL": "https://www.awin1.com/cread.php?awinmid=17806&awinaffid=1455398&ued=https%3A%2F%2Fwww.centauro.com.br%2Fhotsite%2Fpromo-corre4%3Ffields%3Dvendidopor%253Acentauro",
+        "ENDDATE": "2026-10-19T02:59:59+00:00",
+        "SHOP": "Centauro BR",
+        "COUPON": "",
+        "DESCRIPTION": "Corre 4 por 399.99",
+        "ENDLABEL": "18/10/2026 23:59",
+        "PRODUCTBRAND": "olympikus",
+        "TITLE": "Corre 4 por 399.99",
+        "CAMPAIGNID": "4143219"
+      }
+    ],
+    "SCHEMAVERSION": 1,
+    "PUBLISHERID": "1455398",
+    "SOURCEUPDATEDAT": "2026-10-17T19:32:17.204711328Z",
+    "HISTORY": [
+      {
+        "AT": "2026-10-17T19:32:17.482197909Z",
+        "ACTION": "sincronizar",
+        "PENDING": 37.0,
+        "RULES": {},
+        "OFFERS": 1,
+        "ACTORID": 0
+      }
+    ]
+  },
+  "afterPublicationHash": "252c540b7d7b240674f01a4a7ffee825e6b840f23273281aef9a0397c62a3e76",
+  "ui": "Dados salvos pela sessão administrativa autenticada, formulários com CSRF e controle de versão; sem escrita direta no estado.",
+  "runtimeChanged": false,
+  "temporaryReadOnlyHarnessRemoved": true
+}

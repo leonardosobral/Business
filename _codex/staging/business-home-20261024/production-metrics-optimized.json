@@ -1,0 +1,114 @@
+{
+  "PERIODS": [
+    {
+      "SOURCES": {
+        "ads": {
+          "ELAPSED_MS": 18.0,
+          "METRICS": {
+            "PREVIOUS_BANNER_COST": 0,
+            "COST": 55.35,
+            "PREVIOUS_COST": 182.7,
+            "EVENT_COST": 55.35,
+            "PREVIOUS_EVENT_COST": 182.7,
+            "PREVIOUS_IMPRESSIONS": 10520,
+            "COMPARISON_READY": true,
+            "BANNER_COST": 0,
+            "PREVIOUS_CLICKS": 229,
+            "CLICKS": 87,
+            "IMPRESSIONS": 7696
+          },
+          "LOADED": true
+        },
+        "accounts": {
+          "ELAPSED_MS": 3.0,
+          "METRICS": {
+            "COMPARISON_READY": true,
+            "PREVIOUS_NEW_COUNT": 90,
+            "NEW_COUNT": 0
+          },
+          "LOADED": true
+        },
+        "audience": {
+          "ELAPSED_MS": 1099.0,
+          "METRICS": {
+            "COMPARISON_READY": false,
+            "PAGEVIEWS": 26031,
+            "PREVIOUS_PAGEVIEWS": 27276,
+            "INTERACTIONS": 10082,
+            "PREVIOUS_VISITORS": 15208,
+            "PREVIOUS_INTERACTIONS": 9636,
+            "VISITORS": 12838
+          },
+          "LOADED": true
+        },
+        "users": {
+          "ELAPSED_MS": 17.0,
+          "METRICS": {
+            "COMPARISON_READY": true,
+            "PREVIOUS_NEW_COUNT": 356,
+            "NEW_COUNT": 452
+          },
+          "LOADED": true
+        }
+      },
+      "DAYS": 7
+    },
+    {
+      "SOURCES": {
+        "ads": {
+          "ELAPSED_MS": 7.0,
+          "METRICS": {
+            "PREVIOUS_BANNER_COST": 0,
+            "COST": 463.97,
+            "PREVIOUS_COST": 309.41,
+            "EVENT_COST": 463.97,
+            "PREVIOUS_EVENT_COST": 309.41,
+            "PREVIOUS_IMPRESSIONS": 15426,
+            "COMPARISON_READY": true,
+            "BANNER_COST": 0,
+            "PREVIOUS_CLICKS": 365,
+            "CLICKS": 599,
+            "IMPRESSIONS": 35569
+          },
+          "LOADED": true
+        },
+        "accounts": {
+          "ELAPSED_MS": 2.0,
+          "METRICS": {
+            "COMPARISON_READY": true,
+            "PREVIOUS_NEW_COUNT": 3,
+            "NEW_COUNT": 90
+          },
+          "LOADED": true
+        },
+        "audience": {
+          "ELAPSED_MS": 1831.0,
+          "METRICS": {
+            "COMPARISON_READY": false,
+            "PAGEVIEWS": 94830,
+            "PREVIOUS_PAGEVIEWS": 25030,
+            "INTERACTIONS": 45896,
+            "PREVIOUS_VISITORS": 5531,
+            "PREVIOUS_INTERACTIONS": 10964,
+            "VISITORS": 38656
+          },
+          "LOADED": true
+        },
+        "users": {
+          "ELAPSED_MS": 19.0,
+          "METRICS": {
+            "COMPARISON_READY": true,
+            "PREVIOUS_NEW_COUNT": 829,
+            "NEW_COUNT": 1433
+          },
+          "LOADED": true
+        }
+      },
+      "DAYS": 30
+    }
+  ],
+  "read_only": true,
+  "runtime_files_changed": false,
+  "source_sha256": "dd33cdee60e0dafb2e778cf3ba67ec69ee39539c7f92a034f8aec086e13c2ba9",
+  "cache_disabled": true
+}

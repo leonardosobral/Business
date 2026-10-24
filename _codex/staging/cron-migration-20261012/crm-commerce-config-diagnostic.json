@@ -1,0 +1,9 @@
+{
+  "CONFIG": {
+    "SECRET_PRESENT": true
+  },
+  "SCOPES": {
+    "VARIABLES_KEY_COUNT": 0,
+    "VARIABLES_CONFIG_PRESENT": false
+  }
+}

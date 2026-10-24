@@ -1,0 +1,38 @@
+[
+  {
+    "aggregator": 49,
+    "query_ms": 2550,
+    "elapsed_ms": 2550.0,
+    "tag": "2021-96-corrida-internacional-de-sao-silvestre",
+    "event": 8655,
+    "rows": 19,
+    "hash": "91CA1D17F38CF7218EC2725F1794F41F0BDC134118109E98C6CCE48A940952A5"
+  },
+  {
+    "aggregator": 49,
+    "query_ms": 1292,
+    "elapsed_ms": 1292.0,
+    "tag": "2007-83-corrida-internacional-de-sao-silvestre",
+    "event": 37609,
+    "rows": 19,
+    "hash": "91CA1D17F38CF7218EC2725F1794F41F0BDC134118109E98C6CCE48A940952A5"
+  },
+  {
+    "aggregator": 49,
+    "query_ms": 1327,
+    "elapsed_ms": 1327.0,
+    "tag": "2015-91-corrida-internacional-de-sao-silvestre",
+    "event": 37617,
+    "rows": 19,
+    "hash": "91CA1D17F38CF7218EC2725F1794F41F0BDC134118109E98C6CCE48A940952A5"
+  },
+  {
+    "aggregator": 49,
+    "query_ms": 1344,
+    "elapsed_ms": 1344.0,
+    "tag": "2026-101-corrida-internacional-de-sao-silvestre",
+    "event": 48728,
+    "rows": 19,
+    "hash": "91CA1D17F38CF7218EC2725F1794F41F0BDC134118109E98C6CCE48A940952A5"
+  }
+]

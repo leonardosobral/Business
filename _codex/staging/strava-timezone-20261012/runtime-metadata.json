@@ -1,0 +1,10 @@
+{
+  "uid": 0,
+  "gid": 0,
+  "mode": "0o644",
+  "runtime_sha256": "bf1431637911c560a7e96e93abd4fef0b105d1029b15d8a2fbf05f2bd9c75c84",
+  "backup_directory_mode": "0o700",
+  "backup_data_mode": "0o600",
+  "backup_data_sha256": "876ee7ab2113ba8e19c5f5ae9e9ca2efa0971d4a5b75068b8a5829322e6021a2",
+  "temporary_probes_remaining": 0
+}

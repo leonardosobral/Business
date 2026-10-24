@@ -1,0 +1,36 @@
+{
+  "backup": "/var/backups/news-importers-cf2025-20261012T125425Z-43qei4ix",
+  "published_at_utc": "2026-10-12T12:54:25.496452+00:00",
+  "files": {
+    "admin/importer_cbat_corridaderua.cfm": {
+      "before": "d167b77bf43968588b76a3a434634ab4b68130f314d30fa88d6563ec86ded711",
+      "after": "19e876e8b141ab56cfeee04e30c1548a63b3a0452dcd00c7c40e3704a79a5d87"
+    },
+    "admin/importer_contrarelogio.cfm": {
+      "before": "4c12f261fac5f540d5338fa013aa45bfe14d3d4a4ac99ebbe3738322cdb79f9e",
+      "after": "c155afe4d8ce49f4eba354d817900624556b9c7959c373a9b2115b2776152776"
+    },
+    "admin/importer_corridanoar.cfm": {
+      "before": "22931c1168e379d782c07ad20600162d7092fe48cc958d042be5b47e9054eb7c",
+      "after": "df6e4647efbd55c4745b6f36e0d0bfc507497c45befa5dd5335dd629b1f77893"
+    },
+    "admin/importer_sixcomm_email.cfm": {
+      "before": "fff0a3f215b0a40646228f1eed2efcb743b88c73e75a5f612b9916a6313f29ba",
+      "after": "d06fb14ac01d175ccbcb37bddbc222b479202abe8d91ef6391975eb47bd57ca8"
+    },
+    "inc/content_local_config.cfc": {
+      "before": "7854159eaec83ce28de0eb7ef46bb1a18c6499646299aac23986e85acc92573a",
+      "after": "bb4c52dd643c816f238c4c00d50bebc74f5596d57ef5ef4c9327c8dee9f38514"
+    },
+    "inc/db.cfc": {
+      "before": "d0712b331cc6f6da6220325874391ceced3b00e596518564dd705553dbb36501",
+      "after": "6ec984a8b8d0ab41e3359adc5162ded03d38d9f03de48bf47abdab5c0a5f920c"
+    },
+    "inc/sixcomm_email_importer.cfc": {
+      "before": "e993f64320fffb2e4d232ab766585fad271622ba2b768308a4c8442b65c838c0",
+      "after": "f359f28027d00f94c9aab072a6e2da758487a2d06c630ee8c734475488de54ef"
+    }
+  },
+  "metadata_preserved": true,
+  "server_permissions_changed": false
+}

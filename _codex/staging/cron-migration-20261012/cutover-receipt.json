@@ -1,0 +1,319 @@
+{
+  "action": "Desativar somente o runner no antigo e recarregar a aplicacao Business no novo",
+  "old_server": "172.233.26.63",
+  "new_server": "172.233.2.76",
+  "verified_at_brasilia": "2026-10-12T09:35:33.096981-03:00",
+  "outcomes_measured_at_utc": "2026-10-12T12:34:39.325188+00:00",
+  "old_runner_disabled": true,
+  "new_runner_active": true,
+  "scheduled_jobs_observed": 19,
+  "active_jobs": 19,
+  "successful_jobs": 10,
+  "failed_jobs": 9,
+  "inactive_jobs_preserved": [
+    7,
+    15,
+    18
+  ],
+  "old_backup": [
+    {
+      "path": "/var/backups/business-cron-cutover-20261012T122826Z-agwoa3ke",
+      "directory_mode": "0o700",
+      "backup_hashes_match": true,
+      "old_cron_matches_disabled_candidate": true
+    }
+  ],
+  "new_backup": [
+    {
+      "path": "/var/backups/business-cron-reload-20261012T122956Z-nbbttja7",
+      "directory_mode": "0o700",
+      "backup_hashes_match": true,
+      "new_cron_unchanged": true
+    }
+  ],
+  "reload": {
+    "server": "172.233.2.76",
+    "backup": "/var/backups/business-cron-reload-20261012T122956Z-nbbttja7",
+    "before_sha256": {
+      "Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+      "bi/Application.cfc": "44c59465704a9770e15e857d2a7e347ebc4036d46ace208ac265f020459e4385",
+      "config/business.local.cfm": "a467f589dc0b1af86624c2cf1ab207ab80d0ee5f089d430f0b114c32f8c5965a",
+      "cron-jobs/runner.cfm": "a5bba9d1e900655865811480c5db6c419114c1aed002d67b269467b7e33c782d",
+      "includes/backend/cron_jobs_service.cfm": "cfb9f9eec5fe7272e3dc07217c002dae5748c6e78b00532eec2c26e411b142d4"
+    },
+    "before": {
+      "curl_rc": 0,
+      "http": "503",
+      "json": {
+        "MESSAGE": "Runner token nao configurado no Business.",
+        "STATUS": "not_configured",
+        "SUCCESS": false
+      }
+    },
+    "reset": {
+      "curl_rc": 0,
+      "http": "200",
+      "body_bytes": 0
+    },
+    "after_local": {
+      "curl_rc": 0,
+      "http": "401",
+      "json": {
+        "MESSAGE": "Token invalido.",
+        "STATUS": "unauthorized",
+        "SUCCESS": false
+      }
+    },
+    "after_public": {
+      "curl_rc": 0,
+      "http": "401",
+      "json": {
+        "MESSAGE": "Token invalido.",
+        "STATUS": "unauthorized",
+        "SUCCESS": false
+      }
+    },
+    "runtime_files_unchanged": true,
+    "crontab_unchanged": true,
+    "checked_at_utc": "2026-10-12T12:29:57.235063+00:00"
+  },
+  "jobs": [
+    {
+      "due": false,
+      "nome": "RunnerHub Update Feed",
+      "ativo": true,
+      "error_code": "ok",
+      "id_cron_job": 1,
+      "last_run_at": "2026-10-12T12:31:42.661988",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T12:41:42.661988",
+      "interval_minutes": 10,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "Importador YouTube RunnerHub",
+      "ativo": true,
+      "error_code": "ok",
+      "id_cron_job": 2,
+      "last_run_at": "2026-10-12T12:33:06.201125",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T13:33:06.201125",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "Conteúdo Corrida No Ar",
+      "ativo": true,
+      "error_code": "misconfigured",
+      "id_cron_job": 3,
+      "last_run_at": "2026-10-12T12:33:02.173517",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T13:33:02.173517",
+      "interval_minutes": 60,
+      "last_http_status": "500 Internal Server Error"
+    },
+    {
+      "due": false,
+      "nome": "Conteúdo Contra Relógio",
+      "ativo": true,
+      "error_code": "misconfigured",
+      "id_cron_job": 4,
+      "last_run_at": "2026-10-12T12:32:13.508996",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T13:32:13.508996",
+      "interval_minutes": 60,
+      "last_http_status": "500 Internal Server Error"
+    },
+    {
+      "due": false,
+      "nome": "Conteúdo CBAt",
+      "ativo": true,
+      "error_code": "misconfigured",
+      "id_cron_job": 5,
+      "last_run_at": "2026-10-12T12:33:02.821442",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T13:33:02.821442",
+      "interval_minutes": 60,
+      "last_http_status": "500 Internal Server Error"
+    },
+    {
+      "due": false,
+      "nome": "Road Runners - Fila Strava",
+      "ativo": true,
+      "error_code": "ok",
+      "id_cron_job": 6,
+      "last_run_at": "2026-10-12T12:32:12.844591",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T12:37:12.844591",
+      "interval_minutes": 5,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "RunnerHub - Vinculacao Foco Radical",
+      "ativo": true,
+      "error_code": "ok",
+      "id_cron_job": 8,
+      "last_run_at": "2026-10-12T12:34:07.987404",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T13:34:07.987404",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "Business - Metricas de publicidade",
+      "ativo": true,
+      "error_code": "refreshed",
+      "id_cron_job": 9,
+      "last_run_at": "2026-10-12T12:33:03.018026",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T13:33:03.018026",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": true,
+      "nome": "Vicky — Interações ativas",
+      "ativo": true,
+      "error_code": null,
+      "id_cron_job": 10,
+      "last_run_at": "2026-10-12T12:31:42.83687",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T12:32:42.83687",
+      "interval_minutes": 1,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "Vicky Pacer",
+      "ativo": true,
+      "error_code": null,
+      "id_cron_job": 11,
+      "last_run_at": "2026-10-12T12:34:08.203022",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T12:35:08.203022",
+      "interval_minutes": 1,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "Business - Reconciliacao de pagamentos Ads",
+      "ativo": true,
+      "error_code": "reconciled",
+      "id_cron_job": 12,
+      "last_run_at": "2026-10-12T12:34:08.122224",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T12:39:08.122224",
+      "interval_minutes": 5,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "Conteudo - Importador Jornal da Corrida",
+      "ativo": true,
+      "error_code": "misconfigured",
+      "id_cron_job": 13,
+      "last_run_at": "2026-10-12T12:34:03.083638",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T13:34:03.083638",
+      "interval_minutes": 60,
+      "last_http_status": "500 Internal Server Error"
+    },
+    {
+      "due": false,
+      "nome": "Conteudo - Importador SixComm",
+      "ativo": true,
+      "error_code": "misconfigured",
+      "id_cron_job": 14,
+      "last_run_at": "2026-10-12T12:33:02.910521",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T13:33:02.910521",
+      "interval_minutes": 60,
+      "last_http_status": "500 Internal Server Error"
+    },
+    {
+      "due": false,
+      "nome": "AI-mails · Coletar Gmail",
+      "ativo": true,
+      "error_code": "ok",
+      "id_cron_job": 17,
+      "last_run_at": "2026-10-12T12:34:03.060294",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T13:34:03.060294",
+      "interval_minutes": 60,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": false,
+      "nome": "Conteúdo - Resumos automáticos de notícias",
+      "ativo": true,
+      "error_code": null,
+      "id_cron_job": 19,
+      "last_run_at": "2026-10-12T12:32:02.25955",
+      "last_status": "success",
+      "next_run_at": "2026-10-12T12:42:02.25955",
+      "interval_minutes": 10,
+      "last_http_status": "200 OK"
+    },
+    {
+      "due": true,
+      "nome": "CRM interno - Notificações",
+      "ativo": true,
+      "error_code": "invalid_signature",
+      "id_cron_job": 20,
+      "last_run_at": "2026-10-12T12:31:42.885052",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T12:33:42.885052",
+      "interval_minutes": 2,
+      "last_http_status": "503 Service Unavailable"
+    },
+    {
+      "due": true,
+      "nome": "CRM interno - E-mail",
+      "ativo": true,
+      "error_code": "service_unavailable",
+      "id_cron_job": 21,
+      "last_run_at": "2026-10-12T12:31:42.93391",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T12:33:42.93391",
+      "interval_minutes": 2,
+      "last_http_status": "503 Service Unavailable"
+    },
+    {
+      "due": false,
+      "nome": "CRM interno - Histórico de públicos",
+      "ativo": true,
+      "error_code": "invalid_signature",
+      "id_cron_job": 22,
+      "last_run_at": "2026-10-12T12:32:12.937694",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T12:42:12.937694",
+      "interval_minutes": 10,
+      "last_http_status": "503 Service Unavailable"
+    },
+    {
+      "due": false,
+      "nome": "CRM interno - Compras Todo Santo Dia",
+      "ativo": true,
+      "error_code": "service_unavailable",
+      "id_cron_job": 23,
+      "last_run_at": "2026-10-12T12:32:02.135523",
+      "last_status": "http_error",
+      "next_run_at": "2026-10-12T12:37:02.135523",
+      "interval_minutes": 5,
+      "last_http_status": "503 Service Unavailable"
+    }
+  ],
+  "source_files_published": [],
+  "legacy_coldfusion_scheduled_tasks_changed": false,
+  "verification_notes": [
+    "Todos os 19 jobs ativos tiveram trigger_type scheduled apos a recarga.",
+    "Logs do novo registraram seis chamadas automaticas consecutivas do runner com HTTP 200 entre 12:30 e 12:35 UTC.",
+    "HTTP 200 do runner confirma processamento do lote; os resultados individuais incluem nove falhas de integracao.",
+    "Os cinco importadores de noticias retornaram HTTP 500 misconfigured; quatro jobs CRM retornaram HTTP 503 invalid_signature ou service_unavailable.",
+    "Scripts temporarios de diagnostico removidos dos servidores apos cada consulta."
+  ]
+}

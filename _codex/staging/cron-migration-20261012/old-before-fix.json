@@ -1,0 +1,45 @@
+{
+  "cron_token_matches_file": true,
+  "cron_urls": [
+    "https://business.roadrunners.run/cron-jobs/runner.cfm?[QUERY REDACTED]"
+  ],
+  "public": {
+    "curl_rc": 0,
+    "http": "503",
+    "stderr": "",
+    "json": {
+      "MESSAGE": "Runner token nao configurado no Business.",
+      "STATUS": "not_configured",
+      "SUCCESS": false
+    }
+  },
+  "local": {
+    "curl_rc": 0,
+    "http": "503",
+    "stderr": "",
+    "json": {
+      "MESSAGE": "Runner token nao configurado no Business.",
+      "STATUS": "not_configured",
+      "SUCCESS": false
+    }
+  },
+  "logs": {
+    "/var/log/apache2/error.log": [],
+    "/var/log/apache2/access.log": [
+      "127.0.0.1 - - [12/Oct/2026:12:20:48 +0000] \"GET /cron-jobs/runner.cfm HTTP/1.1\" 503 4643 \"-\" \"curl/7.81.0\"",
+      "127.0.0.1 - - [12/Oct/2026:12:27:43 +0000] \"GET /cron-jobs/runner.cfm HTTP/1.1\" 503 4644 \"-\" \"curl/7.81.0\""
+    ],
+    "/opt/ColdFusion/cfusion/logs/exception.log": [],
+    "/opt/ColdFusion/cfusion/logs/scheduler.log": [
+      "\"Information\",\"DefaultQuartzScheduler_Worker-10\",\"10/11/26\",\"21:00:00\",\"\",\"Task DEFAULT.runpress_import_corridanoar_6h triggered.\"",
+      "\"Information\",\"DefaultQuartzScheduler_Worker-3\",\"10/11/26\",\"21:00:00\",\"\",\"Task DEFAULT.runpress_import_contrarelogio_6h triggered.\"",
+      "\"Information\",\"DefaultQuartzScheduler_Worker-1\",\"10/11/26\",\"21:00:00\",\"\",\"Task DEFAULT.runpress_import_corridanoar_6h triggered.\"",
+      "\"Error\",\"DefaultQuartzScheduler_Worker-3\",\"10/11/26\",\"21:00:00\",\"\",\"403 Forbidden\"",
+      "\"Error\",\"DefaultQuartzScheduler_Worker-1\",\"10/11/26\",\"21:00:00\",\"\",\"403 Forbidden\"",
+      "\"Error\",\"DefaultQuartzScheduler_Worker-10\",\"10/11/26\",\"21:00:00\",\"\",\"403 Forbidden\""
+    ]
+  },
+  "java_processes": [
+    "672471"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "server": "172.233.26.63",
+  "changed_at_utc": "20261012T122826Z",
+  "backup": "/var/backups/business-cron-cutover-20261012T122826Z-agwoa3ke",
+  "before_sha256": "b13e8c7337003182f40a3130c8313ddf6f9f3d470790aa18f6f84918ae8f055a",
+  "after_sha256": "7e932cc6ca46b922aee4b62172c062f7ba93fecb52b83cb22136696b526d3cd9",
+  "disabled_runner_entries": 1,
+  "remaining_active_runner_entries": 0,
+  "other_lines_preserved": true
+}

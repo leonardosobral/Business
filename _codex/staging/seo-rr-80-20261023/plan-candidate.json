@@ -1,0 +1,374 @@
+{
+  "nodes": [
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Shared Hit Blocks": 89694,
+      "Actual Total Time": 2172.832,
+      "Actual Rows": 19,
+      "Node Type": "Sort"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Shared Hit Blocks": 89694,
+      "Actual Total Time": 2172.785,
+      "Actual Rows": 19,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Relation Name": "tb_evento_corridas",
+      "Shared Hit Blocks": 84,
+      "Actual Total Time": 110.65,
+      "Actual Rows": 19,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 59,
+      "Actual Total Time": 0.018,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 2",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Relation Name": "tb_resultados_resumo",
+      "Shared Hit Blocks": 59,
+      "Actual Total Time": 0.013,
+      "Actual Rows": 6,
+      "Node Type": "Index Only Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Shared Hit Blocks": 4,
+      "Actual Total Time": 0.024,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 3",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Relation Name": "tb_resultados",
+      "Shared Hit Blocks": 4,
+      "Actual Total Time": 0.02,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 1,
+      "Shared Hit Blocks": 4,
+      "Actual Total Time": 0.011,
+      "Actual Rows": 0,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 89522,
+      "Actual Total Time": 108.506,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 77240,
+      "Actual Total Time": 49.607,
+      "Actual Rows": 23495,
+      "Subplan Name": "CTE evento_resultados_elegiveis",
+      "Node Type": "Result"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_resultados",
+      "Shared Hit Blocks": 77240,
+      "Actual Total Time": 37.134,
+      "Actual Rows": 24801,
+      "Node Type": "Bitmap Heap Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Shared Hit Blocks": 8295,
+      "Actual Total Time": 1.949,
+      "Actual Rows": 24802,
+      "Node Type": "Bitmap Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 9.631,
+      "Actual Rows": 1,
+      "Subplan Name": "CTE evento_melhores_chaves",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 2.611,
+      "Actual Rows": 24801,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83384,
+      "Actual Total Time": 91.181,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 0.001,
+      "Actual Rows": 1,
+      "Node Type": "Result"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83384,
+      "Actual Total Time": 91.179,
+      "Actual Rows": 1,
+      "Node Type": "Limit"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83384,
+      "Actual Total Time": 91.178,
+      "Actual Rows": 1,
+      "Node Type": "Result"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83384,
+      "Actual Total Time": 91.173,
+      "Actual Rows": 1,
+      "Node Type": "Sort"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83384,
+      "Actual Total Time": 91.156,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83381,
+      "Actual Total Time": 91.15,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83378,
+      "Actual Total Time": 91.144,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 83378,
+      "Actual Total Time": 75.756,
+      "Actual Rows": 16598,
+      "Node Type": "Hash Join"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_paginas_usuarios",
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 3.768,
+      "Actual Rows": 57469,
+      "Node Type": "Seq Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 77240,
+      "Actual Total Time": 63.942,
+      "Actual Rows": 16598,
+      "Node Type": "Hash"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 77240,
+      "Actual Total Time": 60.591,
+      "Actual Rows": 16598,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 315356,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 0.001,
+      "Actual Rows": 1,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_usuarios",
+      "Shared Hit Blocks": 3,
+      "Actual Total Time": 0.002,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_paginas",
+      "Shared Hit Blocks": 3,
+      "Actual Total Time": 0.003,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 17.322,
+      "Actual Rows": 1,
+      "Node Type": "Limit"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 17.321,
+      "Actual Rows": 1,
+      "Node Type": "Result"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 17.314,
+      "Actual Rows": 1,
+      "Node Type": "Sort"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 17.297,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 17.294,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 17.289,
+      "Actual Rows": 1,
+      "Node Type": "Nested Loop"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 14.62,
+      "Actual Rows": 6898,
+      "Node Type": "Hash Join"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_paginas_usuarios",
+      "Shared Hit Blocks": 6138,
+      "Actual Total Time": 3.585,
+      "Actual Rows": 57469,
+      "Node Type": "Seq Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 4.78,
+      "Actual Rows": 6898,
+      "Node Type": "Hash"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 3.52,
+      "Actual Rows": 6898,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 131055,
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 0.0,
+      "Actual Rows": 1,
+      "Node Type": "CTE Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_usuarios",
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 0.001,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 18,
+      "Relation Name": "tb_paginas",
+      "Shared Hit Blocks": 0,
+      "Actual Total Time": 0.001,
+      "Actual Rows": 0,
+      "Node Type": "Index Scan"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Shared Hit Blocks": 88,
+      "Actual Total Time": 0.017,
+      "Actual Rows": 1,
+      "Subplan Name": "SubPlan 1",
+      "Node Type": "Aggregate"
+    },
+    {
+      "Shared Read Blocks": 0,
+      "Actual Loops": 19,
+      "Relation Name": "tb_resultados_resumo",
+      "Shared Hit Blocks": 88,
+      "Actual Total Time": 0.013,
+      "Actual Rows": 6,
+      "Node Type": "Index Scan"
+    }
+  ],
+  "execution_ms": 2185.038,
+  "rows": 19
+}

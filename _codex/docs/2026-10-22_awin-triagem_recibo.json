@@ -1,0 +1,275 @@
+{
+  "status": "published",
+  "release": "20261022T145246Z-cicd0nxl",
+  "backup": "/var/backups/awin-triagem-20261022/20261022T145246Z-cicd0nxl",
+  "files": [
+    "services/ComparadorAwinPublicationService.cfc",
+    "administracao/comparador/awin/backend.cfm",
+    "administracao/comparador/awin/publication.cfm",
+    "administracao/comparador/awin/home.cfm",
+    "api/comparador/awin-sync.cfm"
+  ],
+  "hashesBefore": {
+    "services/ComparadorAwinPublicationService.cfc": "6e5ed7e39c7d62508c720348e0c75413b3bf70f9efead22225fb832413c56e9a",
+    "administracao/comparador/awin/backend.cfm": "b7618115bdb915c48044be4c74fdd8c2a5f54dadff6ebb154cc8976b04f05560",
+    "administracao/comparador/awin/publication.cfm": "18ec899c7a277482a11a7590ce381852da08de83c12b24238289267852c827a6",
+    "administracao/comparador/awin/home.cfm": "7d1e27259ae255142a31e7590b7a020c3ce53c6d26e0cb0cccf6746b90fb0a21",
+    "api/comparador/awin-sync.cfm": "121006c4eadbd44945ab6a907b0e05f2b8281fb9c3818d9424b0316285e46f65"
+  },
+  "hashesAfter": {
+    "services/ComparadorAwinPublicationService.cfc": "4833d7ef56856a648fbcbc371e889f6fb0f2262dbc00acbfd5ee5b44b8b1dd39",
+    "administracao/comparador/awin/backend.cfm": "9e0a46c70b510a5067ec5b3163be22171872977896ae898983da3d665dd8488d",
+    "administracao/comparador/awin/publication.cfm": "b78dcbee9831dd43b1841c43ccc79263687fb8b328627a80697d17ad17387867",
+    "administracao/comparador/awin/home.cfm": "a0b725ff3bbd977cac07340a00e71ae231e0cce637d7efb88591403f02021af8",
+    "api/comparador/awin-sync.cfm": "aa42adc410cf26171610ca818b8851f9432d5ad20d2655330852ef0acda54a71"
+  },
+  "classification": {
+    "classified": 40,
+    "pending": 0,
+    "outsideCatalog": 40,
+    "sourceReview": "2026-10-22_awin-revisao-40-campanhas.json",
+    "actor": "server_operation",
+    "historyAction": "classificacao_catalogo_operacional"
+  },
+  "invocation": {
+    "status": "success",
+    "action": "invoked",
+    "runid": 236138
+  },
+  "validation": {
+    "consumer": {
+      "feedproducts": 66,
+      "campaignproducts": 0,
+      "feedvariants": 1881.0
+    },
+    "run": {
+      "startedat": "October, 22 2026 11:55:17",
+      "finishedat": "October, 22 2026 11:55:42",
+      "status": "success",
+      "httpstatus": "200 OK",
+      "id": 236138,
+      "durationms": 25438
+    },
+    "schedule": {
+      "next_run_at": "October, 22 2026 12:25:42",
+      "interval_minutes": 30,
+      "ativo": 1,
+      "last_status": "success",
+      "last_http_status": "200 OK"
+    },
+    "response": {
+      "status": "ok",
+      "success": true,
+      "outsidecatalog": 40.0,
+      "pending": 0,
+      "campaigns": 0,
+      "offers": 0,
+      "feed": {
+        "status": "ok",
+        "errors": 0,
+        "offers": 95,
+        "feeds": 7
+      }
+    }
+  },
+  "apiGuards": [
+    {
+      "method": "GET",
+      "http": 405,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "http": 401,
+      "passed": true
+    }
+  ],
+  "oldEditorialRulesPreserved": true,
+  "feedBlocksPreserved": true,
+  "privateAttributesPreserved": true,
+  "feedCommercialUnchangedDuringValidation": true,
+  "feedOffers": 95,
+  "feeds": [
+    {
+      "feedid": "44669",
+      "merchantid": "17652",
+      "shop": "Nike BR",
+      "status": "ok",
+      "offers": 12
+    },
+    {
+      "feedid": "116576",
+      "merchantid": "23659",
+      "shop": "ASICS BR",
+      "status": "ok",
+      "offers": 13
+    },
+    {
+      "feedid": "114866",
+      "merchantid": "25539",
+      "shop": "Samsung BR",
+      "status": "ok",
+      "offers": 0
+    },
+    {
+      "feedid": "85451",
+      "merchantid": "51271",
+      "shop": "Mizuno BR",
+      "status": "ok",
+      "offers": 9
+    },
+    {
+      "feedid": "51837",
+      "merchantid": "17698",
+      "shop": "Olympikus BR",
+      "status": "ok",
+      "offers": 15
+    },
+    {
+      "feedid": "91869",
+      "merchantid": "17806",
+      "shop": "Centauro BR",
+      "status": "ok",
+      "offers": 46
+    },
+    {
+      "feedid": "95015",
+      "merchantid": "79926",
+      "shop": "adidas BR",
+      "status": "ok",
+      "offers": 0
+    }
+  ],
+  "harnessRemoved": true,
+  "runtimeProjects": [
+    "Business"
+  ],
+  "databaseMigration": false,
+  "privateStateClassificationUpdated": true,
+  "credentialsExposed": false,
+  "smokeCheckAdjustment": "Endpoint guards verified with a named validation User-Agent; no protection was changed.",
+  "completedAtUTC": "2026-10-22T14:55:42.779987+00:00",
+  "unitTests": {
+    "CHECKS": [
+      "Permissão rejeitada: {\"DELEGATED\":false,\"ISPOST\":true,\"ISADMIN\":false,\"CSRFVERIFIED\":true,\"ACTORID\":1}",
+      "Permissão rejeitada: {\"DELEGATED\":true,\"ISPOST\":true,\"ISADMIN\":true,\"CSRFVERIFIED\":true,\"ACTORID\":1}",
+      "Permissão rejeitada: {\"DELEGATED\":false,\"ISPOST\":false,\"ISADMIN\":true,\"CSRFVERIFIED\":true,\"ACTORID\":1}",
+      "Permissão rejeitada: {\"DELEGATED\":false,\"ISPOST\":true,\"ISADMIN\":true,\"CSRFVERIFIED\":false,\"ACTORID\":1}",
+      "Modelo e geração exatos",
+      "Geração 4 não corresponde a 40",
+      "Linha genérica exige confirmação",
+      "Variante GTX não é atribuída ao modelo base",
+      "Variante Pro não é atribuída ao modelo base",
+      "Identidade ambígua não publica",
+      "Não inventa preço a partir do texto",
+      "Bloqueio impede republicação automática",
+      "Uma campanha pode atender produtos confirmados",
+      "Mudança de condições invalida confirmação manual",
+      "Produto removido torna vínculo pendente",
+      "Campanha retirada deixa a publicação",
+      "Leitor aceita campanha vigente",
+      "Leitor suspende fonte desatualizada",
+      "Campanha futura não aparece",
+      "Vencimento respeita fuso exato",
+      "Vínculo confere identidade atual do produto",
+      "Protótipo nunca exibe oferta",
+      "Produto renomeado não herda campanha antiga",
+      "URL insegura nunca é publicada",
+      "Sincronização idempotente sem duplicar vínculos",
+      "Catálogo real tem correspondência inequívoca",
+      "Bloqueio é persistido atomicamente",
+      "Formulário antigo não sobrescreve decisão nova",
+      "Rotina preserva bloqueio manual",
+      "Administrador pode restaurar vínculo automático",
+      "Confirmação manual é persistida",
+      "Consulta antiga não substitui publicação vigente",
+      "Campanha desconhecida permanece na revisão",
+      "Fora do catálogo não conta como pendência nem publica",
+      "Classificação mostra o motivo registrado",
+      "Mudança da campanha reabre a revisão sem publicar",
+      "Modelo ausente pode ser separado após revisão",
+      "Novo modelo correspondente exige revisão antes de publicar",
+      "Reabertura explícita permanece na fila mesmo havendo correspondência automática",
+      "Classificar fora do catálogo exige um motivo",
+      "Classificação mantém a proteção CSRF",
+      "Classificação e motivo são persistidos sem reabrir um candidato já revisado",
+      "Sincronização preserva a classificação e o contador no histórico",
+      "Formulário antigo não sobrescreve classificação",
+      "Administrador pode mover a campanha de volta para revisão",
+      "Restaurar automático permite novamente o vínculo elegível"
+    ],
+    "PASSED": 46
+  },
+  "uiServerRendering": {
+    "revisao": {
+      "bytes": 36336,
+      "cards": 0
+    },
+    "fora-catalogo": {
+      "bytes": 68265,
+      "cards": 40
+    },
+    "editor": {
+      "bytes": 74054,
+      "cards": 40
+    },
+    "search": {
+      "bytes": 37190,
+      "cards": 1
+    },
+    "program": {
+      "bytes": 37212,
+      "cards": 1
+    }
+  },
+  "uiPreview": {
+    "preview": "Isolated CF fixture rendered with the candidate Business templates",
+    "checks": [
+      {
+        "activeQueue": "Fora do catálogo 40",
+        "cards": 40,
+        "height": 960,
+        "horizontalOverflow": false,
+        "outsideCards": 40,
+        "reasonShown": "Campanha de vestuário, futebol ou chinelo. O catálogo público elegível atual contém exclusivamente tênis; não há item correspondente para vinculação.",
+        "width": 1280
+      },
+      {
+        "activeQueue": "Fora do catálogo 40",
+        "cards": 40,
+        "height": 844,
+        "horizontalOverflow": false,
+        "outsideCards": 40,
+        "reasonShown": "Campanha de vestuário, futebol ou chinelo. O catálogo público elegível atual contém exclusivamente tênis; não há item correspondente para vinculação.",
+        "width": 390
+      },
+      {
+        "cards": 0,
+        "emptyReviewShown": true,
+        "horizontalOverflow": false,
+        "url": "http://127.0.0.1:8766/?aba=publicacao&busca=&anunciante=&fila=revisao"
+      }
+    ]
+  },
+  "screenshots": [
+    "codex/docs/evidencias/awin-triagem-2026-10-22-desktop.jpg",
+    "codex/docs/evidencias/awin-triagem-2026-10-22-mobile.jpg"
+  ],
+  "completedAtBRT": "2026-10-22T11:56:45.881856-03:00",
+  "temporaryResourcesRemoved": true,
+  "localFilesUpdated": [
+    "services/ComparadorAwinPublicationService.cfc",
+    "administracao/comparador/awin/backend.cfm",
+    "administracao/comparador/awin/publication.cfm",
+    "administracao/comparador/awin/home.cfm",
+    "api/comparador/awin-sync.cfm",
+    "_codex/tests/comparador/awin-publication.cfm"
+  ],
+  "productionAdminSessionSimulated": false,
+  "initialClassificationMethod": "Authorized SSH operation under the existing publication lock; only reviewed absent-catalogue rules were added, preserving prior editorial rules. Normal admin forms remain protected by the existing login, global-admin, POST, CSRF and optimistic token checks.",
+  "privateTemporaryResourcesRemoved": true,
+  "localTemporaryResourcesRemoved": true,
+  "previewServerStopped": true,
+  "browserTemporaryTabClosed": true,
+  "viewportOverrideReset": true
+}

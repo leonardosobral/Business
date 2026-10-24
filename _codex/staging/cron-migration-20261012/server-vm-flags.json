@@ -1,0 +1,5 @@
+{
+  "rc": 0,
+  "stdout": "-XX:CICompilerCount=2 -XX:InitialHeapSize=268435456 -XX:MaxHeapSize=1073741824 -XX:MaxNewSize=357564416 -XX:MinHeapDeltaBytes=524288 -XX:MinHeapSize=268435456 -XX:NewSize=89128960 -XX:NonNMethodCodeHeapSize=5826188 -XX:NonProfiledCodeHeapSize=122916026 -XX:OldSize=179306496 -XX:ProfiledCodeHeapSize=122916026 -XX:ReservedCodeCacheSize=251658240 -XX:+SegmentedCodeCache -XX:SoftMaxHeapSize=1073741824 -XX:-THPStackMitigation -XX:+UseCompressedOops -XX:+UseParallelGC \n",
+  "stderr": ""
+}

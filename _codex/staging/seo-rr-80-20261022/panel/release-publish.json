@@ -1,0 +1,8 @@
+{
+  "published": [
+    "portal/includes/seo_semrush_data.cfm",
+    "portal/conteudo/seo_semrush.cfm"
+  ],
+  "backup": "/var/backups/seo-rr-80-20261022-panel/baseline",
+  "published_at": "2026-10-22T16:15:03.875762+00:00"
+}

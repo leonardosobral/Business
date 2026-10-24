@@ -1,0 +1,633 @@
+- button "Pular para o conteúdo"
+- banner:
+  - combobox "Acesse a ferramenta…"
+  - button "Pesquisar":
+  - navigation:
+    - menubar:
+      - button "Convide usuários": Invite free users
+      - menuitem "Preços"
+      - menuitem "Empresarial"
+      - menuitem "Mais"
+      - menuitem "Meu perfil":
+        - generic: c
+- navigation:
+  - list:
+    - link "Início":
+      - /url: https://pt.semrush.com/home/?fid=8614846
+      - generic: Início
+    - link "SEO":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+      - generic: SEO
+    - link "IA":
+      - /url: https://pt.semrush.com/ai-seo/overview/?fid=8614846
+      - generic: IA
+  - list:
+    - link "Tráfego e mercado":
+      - /url: https://pt.semrush.com/analytics/traffic/?fid=8614846
+      - generic: Tráfego e mercado
+    - link "Local":
+      - /url: https://pt.semrush.com/local-business/?fid=8614846
+      - generic: Local
+    - link "Conteúdo":
+      - /url: https://pt.semrush.com/content/?fid=8614846
+      - generic: Conteúdo
+    - link "Anúncios":
+      - /url: https://pt.semrush.com/advertising/?fid=8614846
+      - generic: Anúncios
+    - link "RP para IA":
+      - /url: https://pt.semrush.com/pr-toolkit/?fid=8614846
+      - generic: RP para IA
+    - link "Social":
+      - /url: https://pt.semrush.com/social-media/?fid=8614846
+      - generic: Social
+  - list:
+    - link "Relatórios":
+      - /url: https://pt.semrush.com/my_reports/grid/?fid=8614846
+      - generic: Relatórios
+    - link "Apps":
+      - /url: https://pt.semrush.com/apps/?fid=8614846
+      - generic: Apps
+  - generic: SEO
+  - list:
+    - link "Painel de ferramentas":
+      - /url: https://pt.semrush.com/seo/?fid=8614846
+  - generic: Desempenho do site
+  - list:
+    - link "Auditoria do site":
+      - /url: https://pt.semrush.com/siteaudit/?fid=8614846
+    - link "Monitoramento de posição":
+      - /url: https://pt.semrush.com/position-tracking/?fid=8614846
+  - generic: Análise competitiva
+  - list:
+    - link "Visão geral do domínio":
+      - /url: https://pt.semrush.com/analytics/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Rankings orgânicos":
+      - /url: https://pt.semrush.com/analytics/organic/overview/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Principais páginas":
+      - /url: https://pt.semrush.com/analytics/toppages/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Comparação de domínios":
+      - /url: https://pt.semrush.com/analytics/comparedomains/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nas palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordgap/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Lacunas nos backlinks":
+      - /url: https://pt.semrush.com/analytics/gap/backlinks/?fid=8614846&q=roadrunners.run&searchType=domain
+  - generic: Pesquisa de palavras-chave
+  - list:
+    - link "Visão geral de palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordoverview/?fid=8614846
+    - link "Keyword Magic Tool":
+      - /url: https://pt.semrush.com/analytics/keywordmagic/?fid=8614846
+    - link "Keyword Strategy Builder":
+      - /url: https://pt.semrush.com/analytics/keywordmanager/?fid=8614846
+    - link "Palavras-chave salvas":
+      - /url: https://pt.semrush.com/saved-keywords/?fid=8614846
+  - generic: Ideias de conteúdo
+  - list:
+    - link "SEO Writing Assistant":
+      - /url: https://pt.semrush.com/swa/?fid=8614846
+    - link "Topic Research":
+      - /url: https://pt.semrush.com/topic-research/?fid=8614846
+    - link "SEO Content Template":
+      - /url: https://pt.semrush.com/seo-content-template/?fid=8614846
+  - generic: Construção de links
+  - list:
+    - link "Backlinks":
+      - /url: https://pt.semrush.com/analytics/backlinks/overview/?db=us&fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Domínios de referência":
+      - /url: https://pt.semrush.com/analytics/refdomains/report/?fid=8614846&q=roadrunners.run&searchType=domain
+    - link "Backlink Audit":
+      - /url: https://pt.semrush.com/backlink_audit/?fid=8614846
+  - generic: Ferramentas extras
+  - list:
+    - link "Sensor":
+      - /url: https://pt.semrush.com/sensor/?fid=8614846&utm_medium=footer&utm_source=semrush
+    - link "SEOquake":
+      - /url: https://www.seoquake.com/?fid=8614846
+    - link "Ranking Semrush":
+      - /url: https://pt.semrush.com/analytics/ranks/rank/?fid=8614846
+  - generic: Outros
+  - list:
+    - link "On Page SEO Checker":
+      - /url: https://pt.semrush.com/on-page-seo-checker/26661911/overview/?fid=8614846
+    - link "Organic Traffic Insights":
+      - /url: https://pt.semrush.com/organic-traffic-insights/project/26661911/?fid=8614846
+    - link "Construção de links":
+      - /url: https://pt.semrush.com/link_building/26661911/main/overview/?fid=8614846
+- button "Ocultar navegação" [expanded]:
+- main:
+  - generic "Relatório de problemas":
+    - region "Cabeçalho da Auditoria do site":
+      - navigation "Trilhas de navegação":
+        - list:
+          - link "Início":
+            - /url: /home/
+          - link "SEO":
+            - /url: /seo/26661911/
+          - generic: Auditoria de Site
+      - button "Central de ajuda":
+        - text: Central de ajuda
+      - button "Enviar comentário":
+        - text: Enviar comentário
+      - heading [level=1]: "Auditoria de Site:"
+      - 'combobox "Projeto: Road Runners"':
+        - generic: Road Runners
+      - button "Reexecutar campanha":
+        - generic: Reexecutar campanha
+      - button "Exportar para PDF":
+        - generic: PDF
+      - button "Exportar para planilha":
+        - generic: Exportar
+      - button "Compartilhar":
+        - generic: Compartilhar
+      - button "Abrir configurações":
+      - generic: roadrunners.run
+      - generic: "Atualizado:"
+      - text: qui, 22 de out de 2026
+      - text: Móvel
+      - generic: "Renderização em JS:"
+      - text: Desativado
+      - generic: "Páginas rastreadas:"
+      - button "Problema nas páginas rastreadas":
+      - text: 5.000/5.000
+      - tablist "Relatórios de Auditoria do site":
+        - tab "Visão geral":
+          - generic: Visão geral
+        - tab "Problemas" [selected]:
+          - generic: Problemas
+        - tab "Páginas rastreadas":
+          - generic: Páginas rastreadas
+        - tab "Estatísticas":
+          - generic: Estatísticas
+        - tab "Comparar rastreamentos":
+          - generic: Comparar rastreamentos
+        - tab "Progresso":
+          - generic: Progresso
+        - tab "Impacto do JS":
+          - generic: Impacto do JS
+    - textbox "Pesquisar"
+    - tablist:
+      - tab "Todas 35" [selected]:
+        - generic: Todas
+        - generic: "35"
+      - tab "Pesquisa com IA 5":
+        - generic: Pesquisa com IA
+        - generic: "5"
+      - tab "Rastreabilidade 14":
+        - generic: Rastreabilidade
+        - generic: "14"
+      - tab "Conteúdo 8":
+        - generic: Conteúdo
+        - generic: "8"
+      - tab "Tags meta 8":
+        - generic: Tags meta
+        - generic: "8"
+      - button:
+        - tab:
+    - tablist:
+      - tab "!UNDEFINED TEXT!.all" [selected]:
+        - generic: Todos
+        - generic: "35"
+      - tab "!UNDEFINED TEXT!.errors":
+        - generic: Erros
+        - generic: "7"
+      - tab "!UNDEFINED TEXT!.warnings":
+        - generic: Advertências
+        - generic: "15"
+      - tab "!UNDEFINED TEXT!.notices":
+        - generic: Avisos
+        - generic: "13"
+    - generic: Filtrar problemas pelo tipo de verificações acionadas
+    - combobox "Filtrar problemas pelo tipo de verificações acionadas":
+      - generic: Com problemas
+    - button "Clear":
+    - region "Problemas":
+      - heading "Erros" [level=2]
+      - generic: (7)
+      - button:
+      - link "Progresso nos últimos 7 rastreamentos.":
+        - /url: /siteaudit/campaign/26661911/review/history/id/g4
+      - list:
+        - link "15 links internos":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/8
+        - text: estão quebrados
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 5 novos problemas":
+          - generic: 5 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/8
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "14 problemas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/6
+        - text: de tag de título duplicada
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 2 novos problemas":
+          - generic: 2 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/6
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "6 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/7
+        - text: estão com problema de conteúdo duplicado
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/7
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "6 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/15
+        - text: possuem descrição meta duplicada
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/15
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "1 página":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/2
+        - text: retornou código de status 4XX
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/2
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "1 conflito de hreflang":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/24
+        - text: no código-fonte da página
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/24
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "1 página":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/111
+        - text: está com tempo de carregamento alto
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 1 novo problema":
+          - generic: 1 novo problema
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/111
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+      - heading "Advertências" [level=2]
+      - generic: (15)
+      - button:
+      - link "Progresso nos últimos 7 rastreamentos.":
+        - /url: /siteaudit/campaign/26661911/review/history/id/g5
+      - list:
+        - link "4.765 URLs":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/109
+        - text: com redirecionamento temporário
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 620 novos problemas":
+          - generic: 620 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/109
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "3.848 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/112
+        - text: possuem baixa proporção texto/HTML
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 625 novos problemas":
+          - generic: 625 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/112
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "1.018 links internos de saída":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/123
+        - text: contêm o atributo nofollow
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 938 novos problemas":
+          - generic: 938 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/123
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "460 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/102
+        - text: possuem texto demais dentro da tag de título
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 110 novos problemas":
+          - generic: 110 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/102
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "72 imagens externas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/14
+        - text: estão quebradas
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 18 novos problemas":
+          - generic: 18 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/14
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "67 problemas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/135
+        - text: com arquivos JavaScript e CSS não minificados
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/135
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "24 links externos":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/12
+        - text: estão quebrados
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 6 novos problemas":
+          - generic: 6 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/12
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "19 imagens":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/110
+        - text: não possuem atributo alt
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/110
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "13 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/103
+        - text: não possuem o título h1
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/103
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "10 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/117
+        - text: possuem baixa quantidade de palavras
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/117
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "3 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/113
+        - text: possuem parâmetros em excesso na URL
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/113
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "3 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/122
+        - text: possuem o caractere de sublinhado na URL
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/122
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "2 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/106
+        - text: não têm descrição meta
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/106
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "1 página":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/101
+        - text: não possui texto suficiente dentro da tag de título
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/101
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "1 página":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/133
+        - text: com tamanho total de JavaScript e CSS muito grande
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 1 novo problema":
+          - generic: 1 novo problema
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/133
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+      - heading "Avisos" [level=2]
+      - generic: (13)
+      - button:
+      - link "Progresso nos últimos 7 rastreamentos.":
+        - /url: /siteaudit/campaign/26661911/review/history/id/g6
+      - list:
+        - link "1.661 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/212
+        - text: requerem mais de 3 cliques para que sejam alcançadas
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 698 novos problemas":
+          - generic: 698 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/212
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "704 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/213
+        - text: têm apenas um link interno de entrada
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 368 novos problemas":
+          - generic: 368 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/213
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "164 links":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/217
+        - text: apresentam texto âncora não descritivo
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/217
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "75 links":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/218
+        - text: para páginas ou recursos externos apresentam código de status HTTP 403
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 12 novos problemas":
+          - generic: 12 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/218
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "47 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/204
+        - text: com problemas de incompatibilidade de idiomas no hreflang
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 29 novos problemas":
+          - generic: 29 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/204
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "16 URLs":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/214
+        - text: com redirecionamento permanente
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 2 novos problemas":
+          - generic: 2 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/214
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "4 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/4
+        - text: bloquearam o rastreador Semrush
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/4
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "4 subdomínios":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/205
+        - text: não suportam o HSTS
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/205
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - generic: novo
+        - link "4 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/223
+        - text: requerem otimização de conteúdo
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 3 novos problemas":
+          - generic: 3 novos problemas
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/223
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - generic: novo
+        - link "2 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/221
+        - text: têm conteúdo desatualizado
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/221
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - generic: novo
+        - link "2 páginas":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/222
+        - text: têm baixo uso de HTML semântico
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - button "!UNDEFINED TEXT! 1 novo problema":
+          - generic: 1 novo problema
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/222
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "1 página":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/104
+        - text: possui mais de um título H1
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/104
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+        - link "1 página":
+          - /url: /siteaudit/campaign/26661911/review/issue/detail/209
+        - text: "bloqueada por X-Robots-Tag: cabeçalho HTTP com noindex"
+        - button "Como resolver este problema":
+          - generic "Como resolver este problema": Como resolver
+        - link "Progresso nos últimos 7 rastreamentos.":
+          - /url: /siteaudit/campaign/26661911/review/history/id/209
+        - button "Enviar para…":
+          - generic: Enviar para…
+        - button "Excluir verificação":
+- contentinfo:
+  - link "Fale conosco":
+    - /url: /company/contacts/
+  - link "Sobre nós":
+    - /url: /company/
+  - link "Blog":
+    - /url: /blog/
+  - button "Português (Brasil)"
+  - link "Ver planos e preços":
+    - /url: /pricing/
+  - link "Comece a usar a Semrush":
+    - /url: https://www.semrush.com/academy/courses/getting-started-with-semrush/
+  - link "Configurações dos cookies":
+    - /url: javascript:window.showConsentSettings();
+  - link "Informações jurídicas":
+    - /url: /company/legal/
+  - link "Política de privacidade":
+    - /url: /company/legal/privacy-policy/
+  - link "Não venda minhas informações pessoais":
+    - /url: javascript:window.showConsentSettings();
+  - generic: © 2026 Semrush Holdings. Todos os direitos reservados.
+- region "Notificações"
+- button "Abrir painel de ajuda"
+- iframe [id="intercom-frame"]
+- region "Notifications"

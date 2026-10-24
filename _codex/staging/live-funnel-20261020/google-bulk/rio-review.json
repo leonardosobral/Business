@@ -1,0 +1,48 @@
+{
+  "instruction": "Review only. Existing group Grupo de anúncios1 already has an ad and 5 keywords. Do not upload Add rows for Rio. Compare/edit existing items in the UI; IDs required for reliable bulk edits are not supplied.",
+  "existingGroup": "Grupo de anúncios1",
+  "campaign": "RR | LIVE 2026 | Pesquisa por cidade | Cupom 15%",
+  "eventId": 40833,
+  "city": "Rio de Janeiro",
+  "uf": "RJ",
+  "group": "LIVE - Rio de Janeiro - RJ",
+  "url": "https://roadrunners.run/evento/2026-live-run-xp-rio-de-janeiro-2026-21k/?utm_source=google&utm_medium=cpc&utm_campaign=live_pesquisa_cidades_202610&utm_content=rio-de-janeiro-rj",
+  "headlines": [
+    "LIVE! Run Rio de Janeiro",
+    "Cupom LIVE! com 15% OFF",
+    "Use o código ROADRUNNERS",
+    "Corrida em Rio de Janeiro",
+    "Inscrição LIVE! 2026",
+    "Veja a prova e o cupom",
+    "Corra com 15% de desconto",
+    "Cupom para sua inscrição"
+  ],
+  "descriptions": [
+    "LIVE! Run em Rio de Janeiro: veja a prova e use ROADRUNNERS para 15% de desconto.",
+    "Confira data e distâncias no Road Runners. Copie o cupom e siga para a LIVE!.",
+    "Acesse o cupom de 15% para esta etapa. Confira o desconto antes de pagar.",
+    "Escolha sua distância e confira as condições da inscrição no site da LIVE!."
+  ],
+  "keywords": [
+    [
+      "live run rio de janeiro",
+      "Phrase match"
+    ],
+    [
+      "live run rio de janeiro",
+      "Exact match"
+    ],
+    [
+      "cupom live run rio de janeiro",
+      "Phrase match"
+    ],
+    [
+      "cupom live run rio de janeiro",
+      "Exact match"
+    ],
+    [
+      "inscricao live run rio de janeiro",
+      "Phrase match"
+    ]
+  ]
+}

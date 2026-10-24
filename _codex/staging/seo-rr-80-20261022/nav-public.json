@@ -1,0 +1,103 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "direct_login_links": 6,
+    "return_targets": [
+      "/atividades/",
+      "/atleta/",
+      "/agenda/",
+      "/resultados/",
+      "/desafios/",
+      "/atendimento/"
+    ],
+    "canonical": [
+      "https://roadrunners.run/"
+    ]
+  },
+  {
+    "path": "/evento/2026-together-run-pe/",
+    "status": 200,
+    "direct_login_links": 6,
+    "return_targets": [
+      "/atividades/",
+      "/atleta/",
+      "/agenda/",
+      "/resultados/",
+      "/desafios/",
+      "/atendimento/"
+    ],
+    "canonical": [
+      "https://roadrunners.run/evento/2026-together-run-pe/"
+    ]
+  },
+  {
+    "path": "/estado/ba/",
+    "status": 200,
+    "direct_login_links": 6,
+    "return_targets": [
+      "/atividades/",
+      "/atleta/",
+      "/agenda/",
+      "/resultados/",
+      "/desafios/",
+      "/atendimento/"
+    ],
+    "canonical": [
+      "https://roadrunners.run/estado/ba/"
+    ]
+  },
+  {
+    "path": "/ajuda/",
+    "status": 200,
+    "direct_login_links": 6,
+    "return_targets": [
+      "/atividades/",
+      "/atleta/",
+      "/agenda/",
+      "/resultados/",
+      "/desafios/",
+      "/atendimento/"
+    ],
+    "canonical": [
+      "https://roadrunners.run/ajuda/"
+    ]
+  },
+  {
+    "path": "/en/event/2026-together-run-pe/",
+    "status": 200,
+    "direct_login_links": 6,
+    "return_targets": [
+      "/en/activities/",
+      "/atleta/",
+      "/en/calendar/",
+      "/en/results/",
+      "/en/challenges/",
+      "/en/support/"
+    ],
+    "canonical": [
+      "https://roadrunners.run/en/event/2026-together-run-pe/"
+    ]
+  },
+  {
+    "path": "/es/evento/2026-together-run-pe/",
+    "status": 200,
+    "direct_login_links": 6,
+    "return_targets": [
+      "/es/actividades/",
+      "/atleta/",
+      "/es/agenda/",
+      "/es/resultados/",
+      "/es/desafios/",
+      "/es/soporte/"
+    ],
+    "canonical": [
+      "https://roadrunners.run/es/evento/2026-together-run-pe/"
+    ]
+  },
+  {
+    "path": "/login/?redirect=%2Fatividades%2F",
+    "status": 200,
+    "login_destination_works": true
+  }
+]

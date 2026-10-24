@@ -1,0 +1,91 @@
+{
+  "TABLE": {
+    "COLUMNS": [
+      "N_LIVE_TUP",
+      "N_DEAD_TUP",
+      "LAST_ANALYZE",
+      "LAST_AUTOANALYZE",
+      "BYTES"
+    ],
+    "DATA": [
+      [
+        1004773,
+        12069,
+        null,
+        "October, 21 2026 17:44:57",
+        757628928
+      ]
+    ]
+  },
+  "ELAPSED_MS": 19.0,
+  "WAITS": {
+    "COLUMNS": [
+      "STATE",
+      "WAIT_EVENT_TYPE",
+      "WAIT_EVENT",
+      "COUNT"
+    ],
+    "DATA": [
+      [
+        "active",
+        null,
+        null,
+        1
+      ],
+      [
+        "idle",
+        "Client",
+        "ClientRead",
+        13
+      ],
+      [
+        null,
+        null,
+        null,
+        17
+      ]
+    ]
+  },
+  "WORK_MEM": {
+    "COLUMNS": [
+      "WORK_MEM"
+    ],
+    "DATA": [
+      [
+        "64MB"
+      ]
+    ]
+  },
+  "INDEXES": {
+    "COLUMNS": [
+      "INDEXNAME",
+      "INDEXDEF"
+    ],
+    "DATA": [
+      [
+        "events_pkey",
+        "CREATE UNIQUE INDEX events_pkey ON audience.events USING btree (page_view_id, event_key)"
+      ],
+      [
+        "audience_events_period",
+        "CREATE INDEX audience_events_period ON audience.events USING btree (received_at)"
+      ],
+      [
+        "audience_events_scope",
+        "CREATE INDEX audience_events_scope ON audience.events USING btree (environment, is_internal, market_uf, page_family, received_at)"
+      ],
+      [
+        "audience_events_report_period",
+        "CREATE INDEX audience_events_report_period ON audience.events USING btree (environment, is_internal, occurred_at)"
+      ],
+      [
+        "audience_events_visitor",
+        "CREATE INDEX audience_events_visitor ON audience.events USING btree (visitor_id, received_at)"
+      ],
+      [
+        "audience_events_session",
+        "CREATE INDEX audience_events_session ON audience.events USING btree (session_id, received_at)"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,312 @@
+[
+  {
+    "path": "/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "store_links": 0,
+    "metadata": {
+      "title": "Road Runners - O ponto de encontro da corrida.",
+      "meta": {
+        "description": "Descubra provas, acompanhe resultados, explore conteúdo editorial e viva a corrida com mais contexto no Road Runners."
+      },
+      "canonical": [
+        "https://roadrunners.run/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "publisher": {
+                "@id": "https://roadrunners.run/#publisher"
+              },
+              "@type": "WebSite",
+              "@id": "https://roadrunners.run/#website",
+              "url": "https://roadrunners.run/",
+              "name": "Road Runners"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://roadrunners.run/#publisher",
+              "url": "https://runnerhub.run/",
+              "name": "RunnerHub Inteligência Esportiva"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "path": "/en/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "store_links": 0,
+    "metadata": {
+      "title": "Road Runners - O ponto de encontro da corrida.",
+      "meta": {
+        "description": "Discover races, follow results, explore editorial content and experience running with more context on Road Runners."
+      },
+      "canonical": [
+        "https://roadrunners.run/en/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "publisher": {
+                "@id": "https://roadrunners.run/#publisher"
+              },
+              "@type": "WebSite",
+              "@id": "https://roadrunners.run/#website",
+              "url": "https://roadrunners.run/",
+              "name": "Road Runners"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://roadrunners.run/#publisher",
+              "url": "https://runnerhub.run/",
+              "name": "RunnerHub Inteligência Esportiva"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "path": "/es/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "store_links": 0,
+    "metadata": {
+      "title": "Road Runners - O ponto de encontro da corrida.",
+      "meta": {
+        "description": "Descubre carreras, sigue resultados, explora contenido editorial y vive el running con más contexto en Road Runners."
+      },
+      "canonical": [
+        "https://roadrunners.run/es/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "publisher": {
+                "@id": "https://roadrunners.run/#publisher"
+              },
+              "@type": "WebSite",
+              "@id": "https://roadrunners.run/#website",
+              "url": "https://roadrunners.run/",
+              "name": "Road Runners"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://roadrunners.run/#publisher",
+              "url": "https://runnerhub.run/",
+              "name": "RunnerHub Inteligência Esportiva"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "path": "/estado/ba/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "store_links": 0,
+    "metadata": {
+      "title": "Corridas na Bahia: calendário de provas | Road Runners",
+      "meta": {
+        "description": "Calendário de corridas de rua e trail na Bahia. Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+      },
+      "canonical": [
+        "https://roadrunners.run/estado/ba/"
+      ],
+      "alternates": [],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/ba/",
+              "@type": "ListItem",
+              "name": "Bahia"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  },
+  {
+    "path": "/evento/2026-101-corrida-internacional-de-sao-silvestre/",
+    "method": "GET",
+    "edge": false,
+    "status": 200,
+    "headers": {
+      "content-type": "text/html;charset=UTF-8"
+    },
+    "store_links": 0,
+    "metadata": {
+      "title": "101ª CORRIDA INTERNACIONAL DE SÃO SILVESTRE - corrida de rua - Road Runners",
+      "meta": {
+        "description": "101ª CORRIDA INTERNACIONAL DE SÃO SILVESTRE acontece em 31 dezembro 2026, em Avenida Paulista : Avenida paulista, São Paulo, SP, Brasil - São Paulo - SP."
+      },
+      "canonical": [
+        "https://roadrunners.run/evento/2026-101-corrida-internacional-de-sao-silvestre/"
+      ],
+      "alternates": [
+        [
+          "pt-BR",
+          "https://roadrunners.run/evento/2026-101-corrida-internacional-de-sao-silvestre/"
+        ],
+        [
+          "en",
+          "https://roadrunners.run/en/event/2026-101-corrida-internacional-de-sao-silvestre/"
+        ],
+        [
+          "es",
+          "https://roadrunners.run/es/evento/2026-101-corrida-internacional-de-sao-silvestre/"
+        ],
+        [
+          "x-default",
+          "https://roadrunners.run/evento/2026-101-corrida-internacional-de-sao-silvestre/"
+        ]
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "@id": "https://roadrunners.run/evento/2026-101-corrida-internacional-de-sao-silvestre/",
+          "name": "101ª CORRIDA INTERNACIONAL DE SÃO SILVESTRE",
+          "description": "101ª CORRIDA INTERNACIONAL DE SÃO SILVESTRE acontece em 31 dezembro 2026, em Avenida Paulista : Avenida paulista, São Paulo, SP, Brasil - São Paulo - SP.",
+          "url": "https://roadrunners.run/evento/2026-101-corrida-internacional-de-sao-silvestre/",
+          "startDate": "2026-12-31",
+          "endDate": "2026-12-31",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "image": [
+            "https://library.sportingnews.com/styles/crop_style_16_9_1280_webp/s3/2026-09/sao-silvestre-2026.jpg.webp"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Avenida Paulista : Avenida paulista, São Paulo, SP, Brasil",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São Paulo",
+              "addressRegion": "SP",
+              "addressCountry": "BR",
+              "streetAddress": "Avenida Paulista : Avenida paulista, São Paulo, SP, Brasil"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87655&origem=novo-site&lang=en-US"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "position": 1,
+              "item": "https://roadrunners.run/",
+              "@type": "ListItem",
+              "name": "Início"
+            },
+            {
+              "position": 2,
+              "item": "https://roadrunners.run/estado/sp/",
+              "@type": "ListItem",
+              "name": "São Paulo"
+            },
+            {
+              "position": 3.0,
+              "item": "https://roadrunners.run/evento/2026-101-corrida-internacional-de-sao-silvestre/",
+              "@type": "ListItem",
+              "name": "101ª CORRIDA INTERNACIONAL DE SÃO SILVESTRE"
+            }
+          ],
+          "@type": "BreadcrumbList"
+        }
+      ]
+    }
+  }
+]
