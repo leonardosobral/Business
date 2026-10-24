@@ -28,6 +28,9 @@ for (fixtureType in ["campaign","event"]) {
         first_outbound=now(),last_outbound=now(),last_received=now()
     });
 }
+for (fixtureColumn in ["coupon_view_sessions","copy_attempt_sessions","copy_success_sessions","copy_error_sessions","information_sessions","city_select_sessions"]) {
+    queryAddColumn(VARIABLES.audienceLiveQuery,fixtureColumn,"bigint",[1,1]);
+}
 </cfscript>
 <!doctype html><html lang="pt-br"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Fixture sintética LIVE</title>
 <link rel="stylesheet" href="/assets/css/mdb.min.css"/><link rel="stylesheet" href="/assets/css/business-ui.css"/><link rel="stylesheet" href="/assets/css/audience-dashboard.css"/></head>
@@ -42,7 +45,19 @@ for (fixtureType in ["campaign","event"]) {
 <cfset querySetCell(VARIABLES.audienceLiveQuery,"matched_outbound_sessions",0,2)/>
 <cfset querySetCell(VARIABLES.audienceLiveQuery,"event_city","",2)/>
 <cfset querySetCell(VARIABLES.audienceLiveQuery,"event_tag","javascript:alert(1)",2)/>
+<cfloop list="coupon_view_sessions,copy_attempt_sessions,copy_success_sessions,copy_error_sessions,information_sessions,city_select_sessions" index="fixtureColumn">
+    <cfset querySetCell(VARIABLES.audienceLiveQuery,fixtureColumn,0,1)/>
+    <cfset querySetCell(VARIABLES.audienceLiveQuery,fixtureColumn,0,2)/>
+</cfloop>
 <div data-fixture="historical"><cfinclude template="portal/audiencia/live_journey.cfm"/></div>
+<cfset audLiveLegacySource = VARIABLES.audienceLiveQuery/>
+<cfquery name="VARIABLES.audienceLiveQuery" dbtype="query">
+    SELECT row_type,source,medium,campaign,content_id,event_name,event_tag,event_city,event_uf,
+           pageviews,sessions,qualified_sessions,event_sessions,outbound_sessions,
+           matched_outbound_sessions,unmatched_outbound_sessions,first_outbound,last_outbound,last_received
+    FROM audLiveLegacySource
+</cfquery>
+<div data-fixture="legacy"><cfinclude template="portal/audiencia/live_journey.cfm"/></div>
 <cfset VARIABLES.audienceLiveUnavailable = true/>
 <div data-fixture="unavailable"><cfinclude template="portal/audiencia/live_journey.cfm"/></div>
 </main></body></html>

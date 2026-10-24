@@ -22,12 +22,41 @@
       AND content_id ~ '^[1-9][0-9]{0,9}$'
       AND event_key = 'outbound_click:live_registration:' || content_id
     GROUP BY source,medium,campaign,session_id,content_id
+), live_interactions AS (
+    SELECT source,medium,campaign,session_id,content_id,
+           bool_or(event_key = 'content_open:live_coupon_viewable:' || content_id) AS has_coupon_view,
+           bool_or(event_key = 'content_open:live_coupon_copy_attempt:' || content_id) AS has_copy_attempt,
+           bool_or(event_key = 'content_open:live_coupon_copy_success:' || content_id) AS has_copy_success,
+           bool_or(event_key = 'content_open:live_coupon_copy_error:' || content_id) AS has_copy_error,
+           bool_or(event_key = 'outbound_click:live_information:' || content_id) AS has_information
+    FROM journey_events
+    WHERE content_type = 'event' AND content_id ~ '^[1-9][0-9]{0,9}$'
+      AND ((event_kind = 'content_open' AND event_key IN (
+              'content_open:live_coupon_viewable:' || content_id,
+              'content_open:live_coupon_copy_attempt:' || content_id,
+              'content_open:live_coupon_copy_success:' || content_id,
+              'content_open:live_coupon_copy_error:' || content_id))
+           OR (event_kind = 'outbound_click' AND event_key = 'outbound_click:live_information:' || content_id))
+    GROUP BY source,medium,campaign,session_id,content_id
+), city_selections AS (
+    SELECT source,medium,campaign,count(DISTINCT session_id) AS city_select_sessions
+    FROM journey_events
+    WHERE event_kind = 'content_open' AND content_type = 'circuit'
+      AND content_id ~ '^[1-9][0-9]{0,9}$'
+      AND event_key ~ ('^content_open:live_city_select:' || content_id || ':[a-z0-9]+(-[a-z0-9]+)*$')
+    GROUP BY source,medium,campaign
 ), event_catalog AS (
     SELECT evt.id_evento::text AS content_id,evt.nome_evento AS event_name,
            evt.tag AS event_tag,evt.cidade AS event_city,evt.estado AS event_uf,
-           circuit.tag = 'live-run-xp' AS is_live
+           EXISTS (
+               SELECT 1
+               FROM public.tb_agregadores_eventos ge
+               JOIN public.tb_agregadores g USING(agregador_tag)
+               LEFT JOIN public.tb_agrega_eventos circuit ON circuit.id_agrega_evento = g.id_agrega_evento_legado
+               WHERE ge.id_evento = evt.id_evento AND g.agregador_tipo = 'circuito'
+                 AND coalesce(nullif(circuit.tag,''),g.agregador_tag) = 'live-run-xp'
+           ) AS is_live
     FROM public.tb_evento_corridas evt
-    LEFT JOIN public.tb_agrega_eventos circuit ON circuit.id_agrega_evento = evt.id_agrega_evento
 ), live_visits AS (
     SELECT e.source,e.medium,e.campaign,e.session_id,e.content_id,
            count(DISTINCT e.page_view_id) AS pageviews
@@ -39,8 +68,12 @@
     -- A page can be reloaded and several CTAs can be clicked. One session/event remains one journey.
     SELECT source,medium,campaign,session_id,content_id,
            coalesce(v.pageviews,0) AS pageviews,v.pageviews IS NOT NULL AS has_visit,
-           o.first_outbound IS NOT NULL AS has_outbound,o.first_outbound,o.last_outbound
+           o.first_outbound IS NOT NULL AS has_outbound,o.first_outbound,o.last_outbound,
+           coalesce(i.has_coupon_view,false) AS has_coupon_view,coalesce(i.has_copy_attempt,false) AS has_copy_attempt,
+           coalesce(i.has_copy_success,false) AS has_copy_success,coalesce(i.has_copy_error,false) AS has_copy_error,
+           coalesce(i.has_information,false) AS has_information
     FROM live_visits v FULL JOIN live_outbounds o USING(source,medium,campaign,session_id,content_id)
+    FULL JOIN live_interactions i USING(source,medium,campaign,session_id,content_id)
 ), campaign_arrivals AS (
     SELECT source,medium,campaign,sum(pageviews) AS pageviews,count(*) AS sessions,
            count(*) FILTER (WHERE qualified) AS qualified_sessions
@@ -51,6 +84,11 @@
            count(DISTINCT session_id) FILTER (WHERE has_outbound) AS outbound_sessions,
            count(DISTINCT session_id) FILTER (WHERE has_visit AND has_outbound) AS matched_outbound_sessions,
            count(DISTINCT session_id) FILTER (WHERE NOT has_visit AND has_outbound) AS unmatched_outbound_sessions,
+           count(DISTINCT session_id) FILTER (WHERE has_coupon_view) AS coupon_view_sessions,
+           count(DISTINCT session_id) FILTER (WHERE has_copy_attempt) AS copy_attempt_sessions,
+           count(DISTINCT session_id) FILTER (WHERE has_copy_success) AS copy_success_sessions,
+           count(DISTINCT session_id) FILTER (WHERE has_copy_error) AS copy_error_sessions,
+           count(DISTINCT session_id) FILTER (WHERE has_information) AS information_sessions,
            min(first_outbound) AS first_outbound,max(last_outbound) AS last_outbound
     FROM event_sessions GROUP BY source,medium,campaign
 ), receipts AS (
@@ -64,8 +102,12 @@
            coalesce(p.event_sessions,0) AS event_sessions,coalesce(p.outbound_sessions,0) AS outbound_sessions,
            coalesce(p.matched_outbound_sessions,0) AS matched_outbound_sessions,
            coalesce(p.unmatched_outbound_sessions,0) AS unmatched_outbound_sessions,
-           p.first_outbound,p.last_outbound,r.last_received
+           p.first_outbound,p.last_outbound,r.last_received,
+           coalesce(p.coupon_view_sessions,0) AS coupon_view_sessions,coalesce(p.copy_attempt_sessions,0) AS copy_attempt_sessions,
+           coalesce(p.copy_success_sessions,0) AS copy_success_sessions,coalesce(p.copy_error_sessions,0) AS copy_error_sessions,
+           coalesce(p.information_sessions,0) AS information_sessions,coalesce(cs.city_select_sessions,0) AS city_select_sessions
     FROM campaign_arrivals a FULL JOIN campaign_progress p USING(source,medium,campaign)
+    FULL JOIN city_selections cs USING(source,medium,campaign)
     LEFT JOIN receipts r USING(source,medium,campaign)
 ), event_rows AS (
     SELECT 'event'::text AS row_type,e.source,e.medium,e.campaign,e.content_id,
@@ -76,7 +118,12 @@
            count(*) FILTER (WHERE e.has_outbound) AS outbound_sessions,
            count(*) FILTER (WHERE e.has_visit AND e.has_outbound) AS matched_outbound_sessions,
            count(*) FILTER (WHERE NOT e.has_visit AND e.has_outbound) AS unmatched_outbound_sessions,
-           min(e.first_outbound) AS first_outbound,max(e.last_outbound) AS last_outbound,r.last_received
+           min(e.first_outbound) AS first_outbound,max(e.last_outbound) AS last_outbound,r.last_received,
+           count(*) FILTER (WHERE e.has_coupon_view) AS coupon_view_sessions,
+           count(*) FILTER (WHERE e.has_copy_attempt) AS copy_attempt_sessions,
+           count(*) FILTER (WHERE e.has_copy_success) AS copy_success_sessions,
+           count(*) FILTER (WHERE e.has_copy_error) AS copy_error_sessions,
+           count(*) FILTER (WHERE e.has_information) AS information_sessions,0::bigint AS city_select_sessions
     FROM event_sessions e LEFT JOIN event_catalog c ON c.content_id = e.content_id
     LEFT JOIN receipts r USING(source,medium,campaign)
     -- City/event narrow detail only: campaign arrivals retain their full, deduplicated denominator.

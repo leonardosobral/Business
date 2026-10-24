@@ -1,4 +1,5 @@
-WITH regional AS (
+-- Let each report push its predicates/projection down instead of copying all event columns twice.
+WITH regional AS NOT MATERIALIZED (
     SELECT e.*, coalesce(nullif(CASE :region_dimension
         WHEN 'visitor' THEN visitor_uf WHEN 'profile' THEN profile_uf
         WHEN 'context' THEN context_uf ELSE market_uf END, ''), repeat('-', 2)) AS audience_uf
@@ -8,7 +9,7 @@ WITH regional AS (
       AND e.occurred_at <= now()
       AND e.environment = :environment
       AND (:include_internal = true OR e.is_internal = false)
-), filtered AS (
+), filtered AS NOT MATERIALIZED (
     SELECT * FROM regional
     WHERE (:uf = '' OR audience_uf = :uf)
       AND (:page_family = '' OR page_family = :page_family)

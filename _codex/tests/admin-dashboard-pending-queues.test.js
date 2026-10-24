@@ -64,12 +64,13 @@ test('keeps optional verified-athlete requests out until their schema exists', (
   assert.match(dashboard, /label="Atletas verificados"/);
 });
 
-test('distinguishes unavailable sources from zero and computes one aggregate', () => {
-  assert.match(dashboard, /businessAdminHomeDecisionLoaded = true/);
-  assert.match(dashboard, /businessAdminHomeDecisionTotal \+= VARIABLES\.businessAdminHomeQueueItem\.value/);
-  assert.match(dashboard, /businessAdminHomeDecisionLoaded = false/);
-  assert.match(dashboard, /cada item é contado em uma única fila/);
-  assert.match(dashboard, /Total indisponível: uma das filas não pôde ser consultada/);
+test('preserves per-source availability for the decision view', () => {
+  assert.match(dashboard, /businessAdminHomeStatsLoaded/);
+  assert.match(dashboard, /loaded=VARIABLES\.businessAdminHomeAdsPaymentsLoaded/);
+  assert.match(dashboard, /loaded=VARIABLES\.businessAdminHomeCronLoaded/);
+  assert.match(dashboard, /loaded=VARIABLES\.uptimeStatus\.loaded/);
+  assert.match(dashboard, /cfinclude template="home_admin_decision_view\.cfm"/);
+  // Empty, unavailable and positive rendering is exercised by test_business_home_view.mjs.
 });
 
 test('renders the expanded queue responsively without affecting account dashboards', () => {

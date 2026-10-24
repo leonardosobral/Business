@@ -146,6 +146,24 @@
         finishSubgroup();
     }
 
+    function updateSearch(item, query, matches) {
+        var links = Array.prototype.slice.call(item.querySelectorAll('.sidenav-link'));
+        var visible = !query.trim() || links.some(function (link) {
+            return matches(link.textContent, link.getAttribute('data-menu-aliases') || '', query);
+        });
+        var submenu = item.querySelector('details[data-business-submenu]');
+        if (submenu) {
+            if (query.trim()) {
+                if (!submenu.hasAttribute('data-open-before-search')) submenu.setAttribute('data-open-before-search', submenu.open ? 'true' : 'false');
+                submenu.open = visible;
+            } else if (submenu.hasAttribute('data-open-before-search')) {
+                submenu.open = submenu.getAttribute('data-open-before-search') === 'true';
+                submenu.removeAttribute('data-open-before-search');
+            }
+        }
+        return visible;
+    }
+
     function initSearch(options, sections) {
         var input = document.querySelector(options.searchInputSelector || "#business-sidenav-search-input");
         var emptyState = document.querySelector(options.searchEmptySelector || "#business-sidenav-search-empty");
@@ -167,12 +185,7 @@
                         return;
                     }
 
-                    var link = item.querySelector(".sidenav-link");
-                    var visible = !normalizeText(query) || (link && matchesMenuItem(
-                        link.textContent,
-                        link.getAttribute("data-menu-aliases") || "",
-                        query
-                    ));
+                    var visible = updateSearch(item, query, matchesMenuItem);
 
                     setSearchVisibility(item, visible);
                     if (visible && normalizeText(query)) {
@@ -292,6 +305,7 @@
         chooseInitialSection: chooseInitialSection,
         init: init,
         matchesMenuItem: matchesMenuItem,
+        updateSearch: updateSearch,
         nextExpandedSection: nextExpandedSection,
         normalizeText: normalizeText,
         sectionKey: sectionKey

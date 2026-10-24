@@ -133,6 +133,11 @@
         display: none !important;
     }
 
+    .business-comparador-menu summary { cursor: pointer; display: flex; align-items: center; gap: .3rem; }
+    .business-comparador-menu summary::after { content: "▸"; margin-left: auto; }
+    .business-comparador-menu[open] summary::after { content: "▾"; }
+    .business-comparador-menu summary:focus-visible { outline: 2px solid #fab120; outline-offset: -2px; }
+
     .business-sidenav-submenu {
         display: block !important;
         margin: 0;
@@ -609,6 +614,7 @@
                 </a>
             </li>
 
+
             <!--- DESAFIOS E TREINOS --->
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios e treinos</span>
@@ -835,6 +841,21 @@
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/bi/">link-warning</cfif>" href="/bi/" data-menu-aliases="business intelligence indicadores relatórios dados">
                     <i class="fa-solid fa-chart-column fa-fw me-3"></i><span>Business Intelligence</span>
                 </a>
+            </li>
+
+            <li class="sidenav-item">
+                <details class="business-comparador-menu" data-business-submenu <cfif left(VARIABLES.template,26) EQ "/administracao/comparador/">open</cfif>>
+                    <summary class="sidenav-link" data-menu-aliases="comparador catálogo corrida trail triatlon">
+                        <i class="fa-solid fa-tags fa-fw me-3" aria-hidden="true"></i><span>Comparador</span>
+                    </summary>
+                    <ul class="business-sidenav-submenu list-unstyled">
+                        <li><a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/comparador/resumo/">link-warning</cfif>" href="/administracao/comparador/resumo/" data-menu-aliases="comparador resumo dados cobertura pendências prioridades">Resumo</a></li>
+                        <li><a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/comparador/">link-warning</cfif>" href="/administracao/comparador/" data-menu-aliases="comparador catálogo tênis corrida trail triatlon produtos">Produtos</a></li>
+                        <li><a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/comparador/ofertas/">link-warning</cfif>" href="/administracao/comparador/ofertas/" data-menu-aliases="comparador promoções ofertas preços cupons">Promoções e ofertas</a></li>
+                        <li><a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/comparador/cadastros/">link-warning</cfif>" href="/administracao/comparador/cadastros/" data-menu-aliases="comparador filtros cadastros marcas categorias tipos características">Filtros e cadastros</a></li>
+                        <li><a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/comparador/awin/">link-warning</cfif>" href="/administracao/comparador/awin/" data-menu-aliases="comparador awin afiliados campanhas cupons lojas programas links">Integração Awin</a></li>
+                    </ul>
+                </details>
             </li>
 
             <cfif VARIABLES.businessCanShowUserManagementNavigation>
@@ -1114,7 +1135,7 @@
 
     </ul>
 
-    <script src="/assets/js/business-sidenav.js?v=20260824-1"></script>
+    <script src="/assets/js/business-sidenav.js?v=20261017-comparador"></script>
     <script>
         window.BusinessSidenav.init({
             isAdmin: <cfif VARIABLES.businessCanShowAdminNavigation>true<cfelse>false</cfif>,

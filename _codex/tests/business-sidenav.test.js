@@ -84,7 +84,7 @@ test("admin lists Plataforma destinations alphabetically", () => {
     const template = fs.readFileSync(path.resolve(__dirname, "../../includes/estrutura/sidenav.cfm"), "utf8");
     const section = template.split("<!--- PLATAFORMA --->")[1].split("<!--- AJUDA --->")[0];
     assert.deepEqual([...section.matchAll(/href="([^"]+)"/g)].map(match => match[1]), [
-        "/bi/", "/crm-interno/", "/administracao/cron-jobs/", "/portal/erros/",
+        "/bi/", "/administracao/comparador/", "/administracao/comparador/ofertas/", "/administracao/comparador/cadastros/", "/crm-interno/", "/administracao/cron-jobs/", "/portal/erros/",
         "/estudo/", "/administracao/api-monitor/", "/notificacoes/", "/administracao/pesquisas/",
         "/portal/runner-apps/", "/portal/seo/", "/administracao/status/", "/temas/", "/administracao/vicky/"
     ]);

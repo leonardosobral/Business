@@ -11,15 +11,15 @@
 </cfif>
 
 <!---
-    Posição curada manualmente; última auditoria em _codex/docs/2026-10-03_seo_evidencias.md.
+    Fila curada manualmente; coletas e verificações têm datas próprias. Revisão atual em _codex/docs/2026-10-23_seo_semrush_5000.md.
     Atualizar data, medições e evidências juntas após uma nova conferência.
     Este snapshot não é uma coleta ao vivo nem contém acesso aos relatórios privados.
     Textos e URLs são dados; a view deve aplicar o escape do contexto de saída.
 --->
 <cfscript>
 VARIABLES.seoQueueSnapshot = {
-    updatedAt = "2026-10-08T22:54:20-03:00",
-    updatedLabel = "08/10/2026 às 22:54 (Brasília)",
+    updatedAt = "2026-10-23T09:13:01-03:00",
+    updatedLabel = "23/10/2026 às 09:13 (Brasília)",
     runs = [
         {
             siteId = "roadrunners",
@@ -49,6 +49,10 @@ VARIABLES.seoQueueSnapshot = {
         }
     ],
     items = [
+        {resolved = true, id = "RR-40", sites = ["roadrunners"], priority = "p1", priorityLabel = "P1 · SEO técnico", title = "Consolidar a URL duplicada da Corrida das Cores da Amazônia", summary = "A mesma prova tinha duas URLs em cada idioma. A auditoria de 22/10 às16:38 passou de seis para zero casos de conteúdo duplicado.", impact = "Melhora a consistência e o acesso às páginas ativas; notas e indexação exigem medições próprias.", owner = "RoadRunners", rule = "semrush.7; semrush.6; canonical.alias", evidence = "Fonte oficial TicketSports87544 confirma a prova em ManausAM em28/03/2027. Somente tag_301 do cadastro46375 passou a apontar ao original44162. Datas e demais campos preservados, sem excluir ou unir fisicamente registros ou transferir vínculos. Baseline recuperável, ensaio de ida e volta em transação e serviço existente conferidos. Nove respostas301 em GET/HEAD e borda nos três idiomas; três destinos200 com metadados intactos. Sitemap real mantém três URLs originais e zero aliases.", acceptance = "Publicado em22/10 e medido na coleta concluída às16:38: conteúdo duplicado6→0. O prefixo2026 da URL original não muda a data correta de28/03/2027.", urls = [{url = "https://roadrunners.run/evento/2026-corrida-das-cores-da-amazonia/", label = "Cadastro original"}, {url = "https://roadrunners.run/evento/2027-corrida-das-cores-da-amazonia/", label = "Alias301"}], stateLabel = "Publicado e verificado"},
+        {resolved = true, id = "RR-41", sites = ["roadrunners"], priority = "p1", priorityLabel = "P1 · SEO técnico", title = "Preservar a identidade das provas nos títulos e descrições", summary = "Quatro provas distintas perdiam parte do nome no título; aspas no nome de Franco Verão deixavam a descrição vazia nos três idiomas.", impact = "Melhora a consistência e o acesso às páginas ativas; notas e indexação exigem medições próprias.", owner = "RoadRunners / Business", rule = "semrush.6; semrush.106; metadata.encoding", evidence = "O título agora preserva o nome cadastrado completo e a data, reduzindo primeiro o rótulo opcional de modalidade. A descrição é codificada somente nos atributos HTML; texto do corpo e JSON-LD preservados. Cadastro público Business recebeu descrição. Noventa verificações Adobe de títulos e20 de metadados aprovadas, três templates compilados e respostas reais conferidas. Nenhum nome, data, tag ou cadastro alterado por este lote.", acceptance = "Coleta de22/10 às16:38: títulos duplicados14→4 e descrições ausentes2→0. Os quatro títulos restantes eram da loja, desativada conforme informação do proprietário em23/10; RR-36 registra o encerramento dessa pendência.", urls = [{url = "https://roadrunners.run/evento/2026-trackfield-run-series-2025-sao-jose-do-rio-preto/", label = "Track&Field São José do Rio Preto"}, {url = "https://roadrunners.run/evento/2026-trackfield-run-series-2025-shopping-vitoria-ii/", label = "Track&Field Vitória"}], stateLabel = "Publicado e verificado"},
+        {resolved = true, id = "RR-42", sites = ["roadrunners"], priority = "p1", priorityLabel = "P1 · SEO técnico", title = "Retirar o atalho de compra da loja desativada", summary = "O catálogo administrativo já mantinha a loja oculta; o fallback estático ainda oferecia o link no HTML inicial.", impact = "Melhora a consistência e o acesso às páginas ativas; notas e indexação exigem medições próprias.", owner = "RoadRunners", rule = "navigation.retired_product", evidence = "O proprietário confirmou a desativação em23/10. O app7 já estava Oculto no catálogo real; nenhum registro precisou mudar. Foi retirado somente o item obsoleto de menu_apps_data.cfm, preservando os demais grupos, itens, textos, links, idiomas e ambientes. Trinta e seis verificações Adobe, um template compilado, cinco páginas200 com links da loja5→0 e metadados iguais. Menu conferido em desktop e390px, incluindo os oito apps ativos carregados sob demanda.", acceptance = "Publicado e conferido em23/10. Nova auditoria de5.000 páginas iniciada depois da entrega; o resultado anterior continua75% até a conclusão real. Não houve alteração de configurações ou exclusão de checks no Semrush.", urls = [{url = "https://roadrunners.run/", label = "Menu da home"}, {url = "https://roadrunners.run/estado/ba/", label = "Menu do calendário"}], stateLabel = "Publicado e verificado"},
+        {resolved = false, id = "RR-43", sites = ["roadrunners"], priority = "p1", priorityLabel = "P1 · SEO técnico", title = "Reduzir o custo de carregar as edições da São Silvestre", summary = "A coleta de22/10 às16:38 apontou cinco páginas lentas de edições da São Silvestre.", impact = "Melhora a consistência e o acesso às páginas ativas; notas e indexação exigem medições próprias.", owner = "RoadRunners", rule = "semrush.111; performance.event_editions", evidence = "A consulta de edições levou1,3–2,6s em fixture Adobe READ ONLY e cerca de1,8s no plano SQL. Uma alternativa preservou os resultados em34 cenários sintéticos e32 edições de quatro séries, mas não mostrou ganho de tempo e não foi publicada. As demais tentativas também ficaram fora de produção. O backend atual permanece preservado; não foi criado cache de atletas, índice ou estrutura no banco.", acceptance = "Demonstrar redução consistente antes de publicar outra consulta. Preservar empates, PCD, classificação, homologação, conclusão, identidade e perfil público consultado ao vivo. Confirmar a baixa dos achados em auditoria comparável.", urls = [{url = "https://roadrunners.run/evento/2026-101-corrida-internacional-de-sao-silvestre/", label = "São Silvestre2026"}, {url = "https://roadrunners.run/en/event/2015-91-corrida-internacional-de-sao-silvestre/", label = "São Silvestre2015"}], stateLabel = "Pendente — investigado; sem nova publicação"},
         {
             resolved = true, id = "RR-39", sites = ["roadrunners"], priority = "p1", priorityLabel = "P1 · Tempo de resposta de eventos",
             title = "Otimizar a consulta das edições anteriores",
@@ -96,17 +100,17 @@ VARIABLES.seoQueueSnapshot = {
             stateLabel = "Publicado — 47 páginas com H1; aguardando reauditoria"
         },
         {
-            resolved = false,
+            resolved = true,
             id = "RR-36", sites = ["roadrunners"], priority = "p1", priorityLabel = "P1 · Metadados da loja",
-            title = "Corrigir títulos e descrições na plataforma da loja",
-            summary = "Quatro páginas da loja tinham título igual e seis compartilhavam a descrição na auditoria de 06/10. A correção pertence à aplicação externa que serve store.roadrunners.run.",
+            title = "Encerrar a pendência da loja desativada",
+            summary = "O proprietário confirmou em23/10 que a loja está desativada. Os quatro títulos e seis descrições duplicadas da coleta de22/10 permanecem no histórico medido; não são correções na plataforma externa.",
             impact = "Distingue catálogo, conta e páginas institucionais e esclarece quais páginas da loja devem participar da busca.",
             owner = "Plataforma externa da Road Runners Store",
             rule = "semrush.6; semrush.15",
-            evidence = "Inspeção em 08/10 das seis URLs detalhadas pelo Semrush e da raiz da loja: respostas finais 200, com quatro títulos Road Runners Store e uma descrição comum nas seis páginas. A raiz faz 301 e 302 até /roadrunnersstore/inactive; essa página retorna X-Robots-Tag noindex. Catálogo, sua página 2 e login mantêm o título igual; política de privacidade e termos têm títulos distintos, mas usam a mesma descrição. O servidor público informa Heroku e não há vhost store.roadrunners.run no Apache RunnerHub conferido. Não foi localizado o código da aplicação da loja neste projeto. Os dados atuais não autorizam concluir que todas as páginas da loja estão fora da busca nem que a página inactive representa os demais caminhos.",
-            acceptance = "Revisar o tema/editor da plataforma da loja: títulos e descrições por finalidade, política de indexação para login e inactive, e consistência entre catálogo e paginação. Validar respostas públicas e confirmar a baixa na auditoria de 5.000 páginas. A entrega depende de acesso à plataforma responsável, indisponível nesta sessão.",
+            evidence = "A inspeção anterior confirmou que a loja é servida por plataforma externa. Em23/10 o proprietário confirmou sua desativação e a tela administrativa Runner Apps já mostrava o app7 Oculto. O fallback estático foi corrigido emRR-42 para não oferecer compra em um produto fora de operação. Nenhuma configuração da loja externa, DNS ou indexação foi alterada.",
+            acceptance = "Encerrada por desativação comercial confirmada, sem afirmar que os metadados externos foram corrigidos. Preservar os contadores da coleta histórica e medir o site ativo na nova auditoria com as mesmas configurações.",
             urls = [],
-            stateLabel = "Pendente — depende da plataforma da loja"
+            stateLabel = "Encerrado — loja desativada; histórico preservado"
         },
         {
             resolved = true,

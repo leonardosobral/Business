@@ -6,6 +6,10 @@
 
     <title><cfif isDefined("VARIABLES.template") AND VARIABLES.template EQ "/portal/seo/">SEO · <cfelseif isDefined("VARIABLES.template") AND VARIABLES.template EQ "/portal/conteudo/">Conteúdo das provas · </cfif>Road Runners Business</title>
 
+    <cfif isDefined("VARIABLES.template") AND VARIABLES.template EQ "/cadastro/">
+        <meta name="description" content="Cadastre sua empresa no Road Runners Business para gerenciar provas, inscrições e serviços para corredores." />
+    </cfif>
+
     <!--- FONT AWESOME --->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.1.0/css/all.css" />
 

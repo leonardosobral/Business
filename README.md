@@ -4,6 +4,10 @@
 
 Este repositório hoje funciona como um monólito em Adobe ColdFusion/CFML, com renderização server-side em `*.cfm`, componentes `*.cfc`, PostgreSQL como base principal e interface apoiada em MDBootstrap.
 
+## Resumo do Comparador — 19/10/2026
+
+[PLATAFORMA → Comparador → Resumo](https://business.roadrunners.run/administracao/comparador/resumo/): painel de acervo, cobertura por campo e fila de revisão com prioridade Brasil, consultando os dados atuais. Restrito a administradores globais, somente leitura, com protótipos e arquivados separados das lacunas técnicas. [Operação, publicação e validação](_codex/docs/2026-10-19_comparador_resumo.md).
+
 ## Resumo rápido
 
 - Stack principal: Adobe ColdFusion + CFML + PostgreSQL + MDBootstrap.

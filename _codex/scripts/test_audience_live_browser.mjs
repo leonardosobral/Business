@@ -38,7 +38,7 @@ try {
     assert.equal(await page.locator('[data-fixture="unavailable"] [role="status"]').isVisible(),true,'query failure is visible');
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,'tables scroll inside their regions without page overflow');
     if(width===390) assert.equal(await observed.locator('.table-responsive').first().evaluate(el=>el.scrollWidth>el.clientWidth),true,'wide campaign table is reachable through local horizontal scroll');
-    await page.locator('[data-fixture="historical"], [data-fixture="unavailable"]').evaluateAll(elements=>elements.forEach(el=>el.remove()));
+    await page.locator('[data-fixture="historical"], [data-fixture="legacy"], [data-fixture="unavailable"]').evaluateAll(elements=>elements.forEach(el=>el.remove()));
     await page.screenshot({path:resolve(output,`live-${width}.png`),fullPage:true});
     console.log(`PASS LIVE CFML browser ${width}px: forms, scope, unavailable state, tables, no page overflow, no JS dependency`);
     await page.close();

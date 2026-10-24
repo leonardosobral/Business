@@ -3,6 +3,8 @@
 <cfset VARIABLES.template = "/portal/audiencia/"/>
 <cfinclude template="../../includes/backend/backend_login.cfm"/>
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
+<!--- Several bounded reports share this admin request; the global 20s budget is too short. --->
+<cfsetting requesttimeout="60"/>
 <cfinclude template="../includes/audience_backend.cfm"/>
 <!DOCTYPE html>
 <html lang="pt-br">

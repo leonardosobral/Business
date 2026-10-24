@@ -141,10 +141,10 @@ def build_snapshot(source, audit_state=None):
 GUARD = '''<cfprocessingdirective pageencoding="utf-8"/>
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
 <cfif compareNoCase(getBaseTemplatePath(), getCurrentTemplatePath()) EQ 0>
-  <cfheader statuscode="403" statustext="Forbidden"/><cfabort/>
+  <cfheader statuscode="403"/><cfabort/>
 </cfif>
 <cfif structKeyExists(CGI,"request_method") AND compareNoCase(CGI.request_method,"GET") NEQ 0>
-  <cfheader statuscode="405" statustext="Method Not Allowed"/><cfheader name="Allow" value="GET"/><cfabort/>
+  <cfheader statuscode="405"/><cfheader name="Allow" value="GET"/><cfabort/>
 </cfif>
 '''
 

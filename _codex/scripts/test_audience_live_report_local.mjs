@@ -44,12 +44,25 @@ try {
       slot_key text DEFAULT '', placement_key text DEFAULT '', slot_state text DEFAULT '', device_class text DEFAULT 'MOBILE',
       active_ms integer DEFAULT 0, PRIMARY KEY(page_view_id,event_key));
     CREATE TABLE public.tb_agrega_eventos(id_agrega_evento integer PRIMARY KEY,tag text);
+    CREATE TABLE public.tb_agregadores(agregador_tag text PRIMARY KEY,agregador_tipo text,id_agrega_evento_legado integer);
+    CREATE TABLE public.tb_agregadores_eventos(agregador_tag text,id_evento integer);
     CREATE TABLE public.tb_evento_corridas(id_evento integer PRIMARY KEY,id_agrega_evento integer,nome_evento text,tag text,cidade text,estado text);
     INSERT INTO public.tb_agrega_eventos VALUES(1,'live-run-xp'),(2,'outro-circuito');
+    INSERT INTO public.tb_agregadores VALUES
+      ('live-circuit-alias','circuito',1),('live-second-alias','circuito',1),
+      ('live-run-xp','circuito',NULL),('outro-circuito','circuito',2),('live-tema','tema',1);
+    INSERT INTO public.tb_agregadores_eventos VALUES
+      ('live-circuit-alias',101),('live-circuit-alias',102),('outro-circuito',103),
+      ('live-circuit-alias',104),('live-second-alias',104),('outro-circuito',105),
+      ('live-run-xp',106),('live-tema',107);
     INSERT INTO public.tb_evento_corridas VALUES
       (101,1,'Live Jaraguá','live-jaragua','Jaraguá do Sul','SC'),
       (102,1,'Live Campinas','live-campinas','Campinas','SP'),
-      (103,2,'Outra prova','outra-prova','Campinas','SP');`);
+      (103,2,'Outra prova','outra-prova','Campinas','SP'),
+      (104,NULL,'Live atual','live-atual','Curitiba','PR'),
+      (105,1,'Vínculo antigo','vinculo-antigo','Curitiba','PR'),
+      (106,NULL,'Live sem legado','live-sem-legado','Curitiba','PR'),
+      (107,NULL,'Tema sem circuito','tema-sem-circuito','Curitiba','PR');`);
   const id = (prefix, n) => `${prefix}0000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
   const add = (page, session, kind = 'page_view', content = '', extra = {}) => {
     const row = {
@@ -79,8 +92,16 @@ try {
   add(17,14,'page_view','101',{campaign:'live_second',creative:'ad_b'});
   // One session spans creative labels; campaign totals still deduplicate it.
   add(18,1,'page_engagement','101',{creative:'ad_b',active_ms:5000});
+  // No outbound may rescue these visits: classification must use the current circuit membership.
+  for (const [page, content] of [[19,'104'],[20,'105'],[21,'106'],[22,'107']])
+    add(page,page,'page_view',content,{campaign:'live_catalog'});
 
   const rows = query(), campaign = find(rows,'campaign');
+  eq(counts(find(rows,'campaign','','live_catalog')), {pageviews:4,sessions:4,qualified_sessions:0,event_sessions:2,outbound_sessions:0,matched_outbound_sessions:0,unmatched_outbound_sessions:0}, 'current circuit links recover page-only journeys while retaining all campaign arrivals');
+  eq(Number(find(rows,'event','104','live_catalog')?.event_sessions),1,'canonical circuit alias recognizes modern membership exactly once across multiple links');
+  eq(find(rows,'event','105','live_catalog'),undefined,'obsolete event legacy field does not override current unrelated membership');
+  eq(Number(find(rows,'event','106','live_catalog')?.event_sessions),1,'aggregator tag resolves the circuit when no legacy catalog row exists');
+  eq(find(rows,'event','107','live_catalog'),undefined,'a non-circuit aggregator is not a LIVE circuit visit');
   eq(counts(campaign), {pageviews:7,sessions:4,qualified_sessions:2,event_sessions:2,outbound_sessions:3,matched_outbound_sessions:1,unmatched_outbound_sessions:2}, 'campaign totals count arrivals once, keep bounces and distinguish missing page beacons');
   eq(counts(find(rows,'event','101')), {pageviews:3,sessions:2,qualified_sessions:0,event_sessions:2,outbound_sessions:2,matched_outbound_sessions:1,unmatched_outbound_sessions:1}, 'repeat page/CTA clicks deduplicate by session/event, not visitor');
   eq(counts(find(rows,'event','102')), {pageviews:1,sessions:1,qualified_sessions:0,event_sessions:1,outbound_sessions:1,matched_outbound_sessions:1,unmatched_outbound_sessions:0}, 'a second event in the same session is distinct only within event detail');
@@ -112,6 +133,28 @@ try {
   sql("DELETE FROM audience.events WHERE event_kind='outbound_click';");
   eq(Number(find(query(),'campaign').outbound_sessions),0,'historical views survive when no outgoing telemetry exists');
   eq(find(query(),'campaign').first_outbound,null,'historical page-only data provides no false outbound coverage evidence');
+  const beforeInteractions = counts(find(query(),'campaign'));
+  for (const [page, session, content, stage] of [
+    [2,1,'101','viewable'],[3,1,'101','viewable'],[4,1,'102','viewable'],
+    [2,1,'101','copy_attempt'],[2,1,'101','copy_success'],[3,1,'101','copy_error'],
+    [23,23,'104','copy_success']
+  ]) add(page,session,'content_open',content,{event_key:`content_open:live_coupon_${stage}:${content}`});
+  add(2,1,'outbound_click','101',{event_key:'outbound_click:live_information:101'});
+  add(3,1,'outbound_click','101',{event_key:'outbound_click:live_information:101'});
+  add(1,1,'content_open','',{event_key:'content_open:live_city_select:1:curitiba-pr'});
+  add(5,2,'content_open','',{event_key:'content_open:live_city_select:1:all'});
+  add(24,24,'content_open','',{event_key:'content_open:live_city_select:1:curitiba-pr',campaign:'city_only'});
+  add(25,25,'content_open','101',{event_key:'content_open:live_coupon_copy_success:102'});
+  add(26,26,'content_open','101',{event_key:'content_open:live_coupon_copy_success:101',is_internal:true});
+  const stages = row => Object.fromEntries(['coupon_view_sessions','copy_attempt_sessions','copy_success_sessions','copy_error_sessions','information_sessions','city_select_sessions'].map(k => [k,Number(row?.[k])]));
+  const interactionRows=query(), interactionCampaign=find(interactionRows,'campaign');
+  eq(counts(interactionCampaign),beforeInteractions,'coupon and information interactions do not fabricate arrivals, visits or registration exits');
+  eq(stages(interactionCampaign),{coupon_view_sessions:1,copy_attempt_sessions:1,copy_success_sessions:2,copy_error_sessions:1,information_sessions:1,city_select_sessions:2},'interaction stages deduplicate across pages/events while preserving separate actions and excluding mismatched/internal keys');
+  eq(stages(find(interactionRows,'event','101')),{coupon_view_sessions:1,copy_attempt_sessions:1,copy_success_sessions:1,copy_error_sessions:1,information_sessions:1,city_select_sessions:0},'event stages count sessions independently without treating city choice as an event visit');
+  eq(Number(find(interactionRows,'event','104').event_sessions),0,'copy-only event remains visible without inventing a visit');
+  eq(Number(find(interactionRows,'campaign','','city_only').city_select_sessions),1,'a city-choice-only session remains observable without page telemetry');
+  eq(Number(find(interactionRows,'campaign','','city_only').sessions),0,'city-choice-only telemetry does not fabricate an arrival');
+  eq(stages(find(query({live_city:'camp'}),'campaign')),stages(interactionCampaign),'detail city filter preserves campaign interaction denominators');
   console.log(`Audience LIVE report SQL: ${checks} behavioral assertions passed against isolated PostgreSQL.`);
 } finally {
   if (started) run('pg_ctl',['-D',resolve(scratch,'data'),'-m','immediate','-w','stop']);

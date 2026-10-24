@@ -136,7 +136,17 @@ try {
   assert.equal(Number(query('summary',{page_family:'videos'})[0].engaged_sessions),0,'two video modals on one page do not qualify a session');
   assert.equal(Number(query('acquisition',{page_family:'videos'})[0].engaged_sessions),0,'acquisition ignores modal content identity for page qualification');
   assert.equal(Number(query('summary',{page_family:'videos'})[0].pageviews),1,'opening modals does not create page views');
-  console.log('Audience report SQL: 51 assertions passed against isolated PostgreSQL.');
+  sql(`INSERT INTO audience.events(page_view_id,event_key,event_kind,visitor_id,session_id,market_uf,page_family,page_path,content_type,content_id)
+       VALUES ('00000000-0000-4000-8000-000000000014','content_open:event:101','content_open','10000000-0000-4000-8000-000000000014','20000000-0000-4000-8000-000000000014','SC','event','/evento/live/','event','101'),
+              ('00000000-0000-4000-8000-000000000015','content_open:live_coupon_copy_success:101','content_open','10000000-0000-4000-8000-000000000015','20000000-0000-4000-8000-000000000015','SC','circuit','/circuito/live-run-xp/','event','101'),
+              ('00000000-0000-4000-8000-000000000016','content_open:live_coupon_viewable:102','content_open','10000000-0000-4000-8000-000000000016','20000000-0000-4000-8000-000000000016','SC','circuit','/circuito/live-run-xp/','event','102');`);
+  const eventContent=query('content').find(r=>r.content_type==='event' && r.content_id==='101');
+  assert.equal(Number(eventContent.opens),1,'coupon interaction is not a content opening');
+  assert.equal(Number(eventContent.visitors),1,'coupon-only visitor is not counted as content visitor');
+  assert.equal(eventContent.page_path,'/evento/live/','coupon interaction does not replace the content path');
+  assert.equal(query('content').some(r=>r.content_type==='event' && r.content_id==='102'),false,'coupon-only exposure does not fabricate an editorial content row');
+  assert.equal(Number(query('content').find(r=>r.content_id==='video-1').opens),1,'legacy content-open keys remain compatible');
+  console.log('Audience report SQL: 56 assertions passed against isolated PostgreSQL.');
 } finally {
   if (started) run('pg_ctl', ['-D', resolve(scratch,'data'), '-m', 'immediate', '-w', 'stop']);
   rmSync(scratch, {recursive:true, force:true});

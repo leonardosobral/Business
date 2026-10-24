@@ -14,6 +14,8 @@ SELECT content_type, content_id,
     count(DISTINCT page_view_id) FILTER (WHERE event_kind = 'content_progress' AND view_ratio >= 1.00) AS depth_100,
     coalesce(sum(active_ms) FILTER (WHERE event_kind = 'page_engagement'), 0) AS active_ms
 FROM filtered WHERE content_id <> '' AND content_type IN ('news','video','event','profile')
+  -- LIVE coupon interactions reuse content_open but are not openings of editorial content.
+  AND NOT (event_kind = 'content_open' AND position('content_open:live_' in event_key) = 1)
 GROUP BY content_type, content_id
 ORDER BY count(DISTINCT page_view_id) FILTER (
     WHERE event_kind IN ('page_view','content_open','content_viewable')

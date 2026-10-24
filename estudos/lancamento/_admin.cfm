@@ -4,9 +4,10 @@
 // The page and every document share the same personal administrator check.
 centralFile=listLast(getBaseTemplatePath(),'/');
 if(centralFile=='_admin.cfm') {cfheader(statuscode=404);abort;}
-centralAllowed=centralFile=='arquivo.cfm'?'doc':'';
+centralAllowed=centralFile=='arquivo.cfm'?'doc':(centralFile=='maratonas.cfm'?'ano':'');
 centralValid=CGI.request_method=='GET' && (!structKeyExists(CGI,'path_info') || !len(CGI.path_info));
 for(centralKey in URL) if(!listFindNoCase(centralAllowed,centralKey) || !isSimpleValue(URL[centralKey])) centralValid=false;
+if(centralValid && centralFile=='maratonas.cfm' && structKeyExists(URL,'ano')) centralValid=reFind('^(2025|2026)$',toString(URL.ano))==1;
 if(!centralValid) {cfheader(statuscode=403);writeOutput('Requisição não permitida.');abort;}
 if(!studyActor) {
     cfheader(statuscode=401);

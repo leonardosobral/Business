@@ -21,7 +21,8 @@ try {
   assert.equal(result.status,0,`CFML render must compile: ${result.error || ''}${result.stdout || ''}${result.stderr || ''}`);
   const html=result.stdout;
   const observed=html.split('data-fixture="observed"')[1]?.split('data-fixture="historical"')[0] || '';
-  const history=html.split('data-fixture="historical"')[1]?.split('data-fixture="unavailable"')[0] || '';
+  const history=html.split('data-fixture="historical"')[1]?.split('data-fixture="legacy"')[0] || '';
+  const legacy=html.split('data-fixture="legacy"')[1]?.split('data-fixture="unavailable"')[0] || '';
   const unavailable=html.split('data-fixture="unavailable"')[1] || '';
   assert.match(observed,/25[.,]0%/,'campaign progression divides the matched session by four arrivals');
   assert.match(observed,/50[.,]0%/,'event rate divides matched exits by two event visits');
@@ -38,8 +39,16 @@ try {
   assert.match(observed,/name="dispositivo" value="MOBILE"/,'section filter preserves device scope');
   assert.match(unavailable,/indisponível/i,'optional report failure must be visible without inventing zero');
   assert.ok(!unavailable.includes('<table'),'unavailable data is not presented as an empty valid table');
+  assert.match(observed,/Cupom visível/,'coupon exposure has its own observed stage');
+  assert.match(observed,/Cópia confirmada/,'copy success is distinguished from a copy attempt');
+  assert.match(observed,/Erro de cópia/,'copy failures remain explicit');
+  assert.match(observed,/Site oficial/,'information exits remain separate from registration exits');
+  assert.match(observed,/Escolha de cidade/,'city selection is shown at campaign scope');
+  assert.match(history,/não comprova cobertura/i,'zero new events does not imply complete historical collection');
+  assert.match(legacy,/Resumo por campanha/,'the previous SQL contract can still render during rollout');
+  assert.ok(!legacy.includes('Cupom visível'),'the old SQL result never fabricates zero coupon observations');
   mkdirSync(resolve(output,'assets/css'),{recursive:true});
   for(const asset of ['mdb.min.css','business-ui.css','audience-dashboard.css']) copyFileSync(resolve(root,'assets/css',asset),resolve(output,'assets/css',asset));
   writeFileSync(resolve(output,'live-fixture.html'),html,'utf8');
-  console.log(`Audience LIVE CFML: 15 rendered behavior assertions passed.\nHTML: ${resolve(output,'live-fixture.html')}`);
+  console.log(`Audience LIVE CFML: 23 rendered behavior assertions passed.\nHTML: ${resolve(output,'live-fixture.html')}`);
 } finally {rmSync(scratch,{recursive:true,force:true});}
