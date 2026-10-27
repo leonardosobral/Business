@@ -77,7 +77,135 @@
 <cfif VARIABLES.vickySection EQ "interacoes">
 <div class="row g-3 mb-4"><cfoutput><div class="col-6 col-xl"><div class="vp-card"><div class="vp-muted">Programadas</div><div class="vp-metric">#qVickyProactiveSummary.total#</div></div></div><div class="col-6 col-xl"><div class="vp-card"><div class="vp-muted">Concluídas</div><div class="vp-metric">#qVickyProactiveSummary.completed#</div></div></div><div class="col-6 col-xl"><div class="vp-card"><div class="vp-muted">Na fila</div><div class="vp-metric">#qVickyProactiveSummary.queued#</div></div></div><div class="col-6 col-xl"><div class="vp-card"><div class="vp-muted">Falhas</div><div class="vp-metric">#qVickyProactiveSummary.failed#</div></div></div><div class="col-6 col-xl"><div class="vp-card"><div class="vp-muted">Usuários</div><div class="vp-metric">#qVickyProactiveSummary.users#</div></div></div></cfoutput></div>
 <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3"><div><h2 class="h4 mb-1">Regras automáticas</h2><p class="vp-muted mb-0">Configure o gatilho, público, canais e mensagem de cada interação. As mensagens são determinísticas e não consomem tokens de IA.</p></div><span class="badge rounded-pill text-bg-secondary"><cfoutput>#qVickyProactiveRules.recordCount# regras disponíveis</cfoutput></span></div>
-<div class="row g-4 mb-4"><cfoutput query="qVickyProactiveRules"><cfset VARIABLES.ruleWeb=""/><cfset VARIABLES.ruleWhatsapp=""/><cfset VARIABLES.ruleProvider=""/><cfset VARIABLES.ruleIcon=trigger_type EQ "result_published"?"fa-medal":(trigger_type EQ "agenda_added"?"fa-calendar-plus":"fa-calendar-check")/><cfset VARIABLES.ruleDescription=trigger_type EQ "result_published"?"Avisa após resultados oficiais serem publicados para uma prova que já estava na agenda.":(trigger_type EQ "agenda_added"?"Confirma a inclusão de um evento futuro e explica os próximos avisos.":"Lembra o usuário antes de um evento salvo na agenda.")/><cfset VARIABLES.ruleInfo=trigger_type EQ "agenda_added"?"Dispara somente para eventos futuros adicionados depois da ativação desta regra.":"Exige evento passado, agenda anterior à prova e resultados oficiais processados após a criação da regra."/><cfloop query="qVickyProactiveTemplates"><cfif codigo EQ qVickyProactiveRules.codigo><cfif channel EQ "web"><cfset VARIABLES.ruleWeb=content&""/><cfelseif channel EQ "whatsapp"><cfset VARIABLES.ruleWhatsapp=content&""/><cfset VARIABLES.ruleProvider=provider_template_name&""/></cfif></cfif></cfloop><div class="col-12 col-xxl-6"><article class="vp-rule-card #enabled?'is-enabled':'is-disabled'#"><form method="post"><input type="hidden" name="action" value="save_proactive_rule"><input type="hidden" name="rule_code" value="#encodeForHtmlAttribute(codigo)#"><header class="vp-rule-head"><div class="vp-rule-icon"><i class="fa-solid #VARIABLES.ruleIcon#"></i></div><div class="flex-grow-1"><div class="d-flex flex-wrap align-items-center gap-2"><h3 class="h5 mb-0">#encodeForHtml(nome)#</h3><span class="badge #enabled?'text-bg-success':'text-bg-secondary'#">#enabled?'Ativa':'Inativa'#</span></div><p class="vp-muted small mb-0 mt-1">#VARIABLES.ruleDescription#</p></div><div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="enabled_#codigo#" name="rule_enabled"<cfif enabled> checked</cfif>><label class="visually-hidden" for="enabled_#codigo#">Ativar regra</label></div></header><div class="vp-rule-stats"><span><strong>#total#</strong> geradas</span><span><strong>#completed#</strong> entregues</span><span><strong>#failed#</strong> falhas</span></div><div class="vp-rule-body"><div class="row g-3"><div class="col-md-6"><label class="form-label">Público</label><div class="form-check"><input class="form-check-input" type="checkbox" id="admin_#codigo#" name="admin_only"<cfif admin_only> checked</cfif>><label class="form-check-label" for="admin_#codigo#">Somente administradores</label></div></div><div class="col-md-6"><label class="form-label">Canais</label><div class="d-flex flex-wrap gap-3"><div class="form-check"><input class="form-check-input" type="checkbox" id="web_#codigo#" name="web_enabled"<cfif web_enabled> checked</cfif>><label class="form-check-label" for="web_#codigo#">Chat web</label></div><div class="form-check"><input class="form-check-input" type="checkbox" id="wa_#codigo#" name="whatsapp_enabled"<cfif whatsapp_enabled> checked</cfif>><label class="form-check-label" for="wa_#codigo#">WhatsApp</label></div></div></div><cfif trigger_type EQ "agenda_d7"><div class="col-6 col-md-3"><label class="form-label">Dias antes</label><input class="form-control" type="number" name="days_before" min="0" max="365" value="#days_before#"></div><cfelse><input type="hidden" name="days_before" value="0"><div class="col-12 col-md-6"><div class="vp-info-box"><i class="fa-solid fa-circle-info"></i><span>#encodeForHtml(VARIABLES.ruleInfo)#</span></div></div></cfif><div class="col-6 col-md-3"><label class="form-label">Máximo por dia</label><input class="form-control" type="number" name="max_per_day" min="1" max="20" value="#max_per_day#"></div><div class="col-6 col-md-3"><label class="form-label">Silêncio inicia</label><input class="form-control" type="time" name="quiet_start" value="#timeFormat(quiet_start,'HH:mm')#"></div><div class="col-6 col-md-3"><label class="form-label">Silêncio termina</label><input class="form-control" type="time" name="quiet_end" value="#timeFormat(quiet_end,'HH:mm')#"></div></div><details class="vp-rule-messages mt-3"><summary>Personalizar mensagens e template</summary><div class="d-grid gap-3 pt-3"><label>Mensagem no chat web<textarea class="form-control" name="web_content" rows="3" maxlength="2000" required>#encodeForHtml(VARIABLES.ruleWeb)#</textarea></label><label>Mensagem no WhatsApp<textarea class="form-control" name="whatsapp_content" rows="3" maxlength="2000" required>#encodeForHtml(VARIABLES.ruleWhatsapp)#</textarea></label><label>Template aprovado na Meta<input class="form-control" name="provider_template_name" maxlength="160" value="#encodeForHtmlAttribute(VARIABLES.ruleProvider)#"><small class="vp-muted">Nome exato do modelo aprovado no WhatsApp Manager. Variáveis disponíveis: <code>{{event_name}}</code>, <code>{{event_tag}}</code> e <code>{{event_date}}</code>.</small></label></div></details></div><footer class="vp-rule-footer"><small class="vp-muted">Código: #encodeForHtml(codigo)#</small><button class="btn btn-warning" type="submit"><i class="fa-solid fa-floppy-disk me-2"></i>Salvar regra</button></footer></form></article></div></cfoutput></div>
+<div class="row g-4 mb-4">
+<cfoutput query="qVickyProactiveRules">
+<cfset VARIABLES.ruleWeb=""/>
+<cfset VARIABLES.ruleWhatsapp=""/>
+<cfset VARIABLES.ruleProvider=""/>
+<cfset VARIABLES.ruleIcon=trigger_type EQ "result_published"?"fa-medal":(trigger_type EQ "agenda_added"?"fa-calendar-plus":"fa-calendar-check")/>
+<cfset VARIABLES.ruleDescription=trigger_type EQ "result_published"?"Avisa após resultados oficiais serem publicados para uma prova que já estava na agenda.":(trigger_type EQ "agenda_added"?"Confirma a inclusão de um evento futuro e explica os próximos avisos.":"Lembra o usuário antes de um evento salvo na agenda.")/>
+<cfset VARIABLES.ruleInfo=trigger_type EQ "agenda_added"?"Dispara somente para eventos futuros adicionados depois da ativação desta regra.":"Exige evento passado, agenda anterior à prova e resultados oficiais processados após a criação da regra."/>
+<cfset VARIABLES.ruleIsBrasilGigante=codigo EQ "brasil_gigante_d7"/>
+<cfif VARIABLES.ruleIsBrasilGigante>
+<cfset VARIABLES.ruleIcon="fa-flag-checkered"/>
+<cfset VARIABLES.ruleDescription="Lembra todos os inscritos no Circuito Brasil Gigante sete dias antes de cada etapa oficial. Sem depender da agenda individual."/>
+</cfif>
+<cfloop query="qVickyProactiveTemplates">
+<cfif codigo EQ qVickyProactiveRules.codigo>
+<cfif channel EQ "web">
+<cfset VARIABLES.ruleWeb=content&""/>
+<cfelseif channel EQ "whatsapp">
+<cfset VARIABLES.ruleWhatsapp=content&""/>
+<cfset VARIABLES.ruleProvider=provider_template_name&""/>
+</cfif>
+</cfif>
+</cfloop>
+<div class="col-12 col-xxl-6">
+<article class="vp-rule-card #enabled?'is-enabled':'is-disabled'#">
+<form method="post">
+<input type="hidden" name="action" value="save_proactive_rule">
+<input type="hidden" name="rule_code" value="#encodeForHtmlAttribute(codigo)#">
+<input type="hidden" name="csrf_token" value="#encodeForHtmlAttribute(VARIABLES.vickyAdminCsrfToken)#">
+<header class="vp-rule-head">
+<div class="vp-rule-icon">
+<i class="fa-solid #VARIABLES.ruleIcon#">
+</i>
+</div>
+<div class="flex-grow-1">
+<div class="d-flex flex-wrap align-items-center gap-2">
+<h3 class="h5 mb-0">#encodeForHtml(nome)#</h3>
+<span class="badge #enabled?'text-bg-success':'text-bg-secondary'#">#enabled?'Ativa':'Inativa'#</span>
+</div>
+<p class="vp-muted small mb-0 mt-1">#VARIABLES.ruleDescription#</p>
+</div>
+<div class="form-check form-switch">
+<input class="form-check-input" type="checkbox" role="switch" id="enabled_#codigo#" name="rule_enabled"<cfif enabled> checked</cfif>>
+<label class="visually-hidden" for="enabled_#codigo#">Ativar regra</label>
+</div>
+</header>
+<div class="vp-rule-stats">
+<span>
+<strong>#total#</strong> geradas</span>
+<span>
+<strong>#completed#</strong> entregues</span>
+<span>
+<strong>#failed#</strong> falhas</span>
+</div>
+<div class="vp-rule-body">
+<div class="row g-3">
+<div class="col-md-6">
+<label class="form-label">Público</label>
+<cfif VARIABLES.ruleIsBrasilGigante><p class="small mb-2">Inscritos no Brasil Gigante · respeita preferências e consentimento do WhatsApp.</p></cfif>
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="admin_#codigo#" name="admin_only"<cfif admin_only> checked</cfif>>
+<label class="form-check-label" for="admin_#codigo#">Somente administradores</label>
+</div>
+</div>
+<div class="col-md-6">
+<label class="form-label">Canais</label>
+<div class="d-flex flex-wrap gap-3">
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="web_#codigo#" name="web_enabled"<cfif web_enabled> checked</cfif>>
+<label class="form-check-label" for="web_#codigo#">Chat web</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="wa_#codigo#" name="whatsapp_enabled"<cfif whatsapp_enabled> checked</cfif>>
+<label class="form-check-label" for="wa_#codigo#">WhatsApp</label>
+</div>
+</div>
+</div>
+<cfif trigger_type EQ "agenda_d7" OR VARIABLES.ruleIsBrasilGigante>
+<div class="col-6 col-md-3">
+<label class="form-label">Dias antes</label>
+<input class="form-control" type="number" name="days_before" min="0" max="365" value="#days_before#"<cfif VARIABLES.ruleIsBrasilGigante> readonly</cfif>>
+</div>
+<cfelse>
+<input type="hidden" name="days_before" value="0">
+<div class="col-12 col-md-6">
+<div class="vp-info-box">
+<i class="fa-solid fa-circle-info">
+</i>
+<span>#encodeForHtml(VARIABLES.ruleInfo)#</span>
+</div>
+</div>
+</cfif>
+<div class="col-6 col-md-3">
+<label class="form-label"><cfif VARIABLES.ruleIsBrasilGigante>Por atleta/etapa/canal<cfelse>Máximo por dia</cfif></label>
+<input class="form-control" type="number" name="max_per_day" min="1" max="20" value="#max_per_day#"<cfif VARIABLES.ruleIsBrasilGigante> readonly</cfif>>
+</div>
+<div class="col-6 col-md-3">
+<label class="form-label">Silêncio inicia</label>
+<input class="form-control" type="time" name="quiet_start" value="#timeFormat(quiet_start,'HH:mm')#">
+</div>
+<div class="col-6 col-md-3">
+<label class="form-label">Silêncio termina</label>
+<input class="form-control" type="time" name="quiet_end" value="#timeFormat(quiet_end,'HH:mm')#">
+</div>
+</div>
+<details class="vp-rule-messages mt-3">
+<summary>Personalizar mensagens e template</summary>
+<div class="d-grid gap-3 pt-3">
+<label>Mensagem no chat web<textarea class="form-control" name="web_content" rows="3" maxlength="2000" required>#encodeForHtml(VARIABLES.ruleWeb)#</textarea>
+</label>
+<label>Mensagem no WhatsApp<textarea class="form-control" name="whatsapp_content" rows="3" maxlength="2000" required<cfif VARIABLES.ruleIsBrasilGigante> readonly</cfif>>#encodeForHtml(VARIABLES.ruleWhatsapp)#</textarea>
+</label>
+<label>Template aprovado na Meta<input class="form-control" name="provider_template_name" maxlength="160" value="#encodeForHtmlAttribute(VARIABLES.ruleProvider)#"<cfif VARIABLES.ruleIsBrasilGigante> readonly</cfif>>
+<small class="vp-muted"><cfif VARIABLES.ruleIsBrasilGigante>Modelo atualize_cbg aprovado, sem variáveis. O texto efetivo do WhatsApp é mantido no WhatsApp Manager. Cada atleta recebe no máximo um lembrete por etapa e canal; o horário de silêncio é respeitado.<cfelse>Nome exato do modelo aprovado no WhatsApp Manager. Variáveis disponíveis: <code>{{event_name}}</code>, <code>{{event_tag}}</code> e <code>{{event_date}}</code>.</cfif></small>
+</label>
+</div>
+</details>
+</div>
+<footer class="vp-rule-footer">
+<small class="vp-muted">Código: #encodeForHtml(codigo)#</small>
+<button class="btn btn-warning" type="submit">
+<i class="fa-solid fa-floppy-disk me-2">
+</i>Salvar regra</button>
+</footer>
+</form>
+</article>
+</div>
+</cfoutput>
+</div>
 <div class="vp-card mb-4"><div class="row align-items-center g-4"><div class="col-lg-4"><h2 class="h5 mb-1">Seu usuário de validação</h2><p class="vp-muted small mb-0">Estas preferências afetam somente o administrador atualmente autenticado. O WhatsApp exige vínculo ativo e consentimento explícito.</p></div><div class="col-lg-8"><form method="post" class="d-flex flex-wrap align-items-center justify-content-lg-end gap-3"><input type="hidden" name="action" value="save_proactive_preference"><div class="form-check form-switch"><input class="form-check-input" type="checkbox" name="test_web" id="test_web"<cfif NOT qVickyProactivePreference.recordCount OR qVickyProactivePreference.web_enabled> checked</cfif>><label class="form-check-label" for="test_web">Chat web</label></div><div class="form-check form-switch"><input class="form-check-input" type="checkbox" name="test_whatsapp" id="test_whatsapp"<cfif qVickyProactivePreference.recordCount AND qVickyProactivePreference.whatsapp_enabled> checked</cfif>><label class="form-check-label" for="test_whatsapp">WhatsApp</label></div><div class="form-check form-switch"><input class="form-check-input" type="checkbox" name="test_agenda" id="test_agenda"<cfif NOT qVickyProactivePreference.recordCount OR qVickyProactivePreference.agenda_enabled> checked</cfif>><label class="form-check-label" for="test_agenda">Lembretes</label></div><div class="form-check form-switch"><input class="form-check-input" type="checkbox" name="test_results" id="test_results"<cfif NOT qVickyProactivePreference.recordCount OR qVickyProactivePreference.results_enabled> checked</cfif>><label class="form-check-label" for="test_results">Resultados</label></div><button class="btn btn-outline-warning" type="submit">Salvar preferências</button></form></div></div></div>
 <div class="vp-card"><div class="d-flex flex-wrap justify-content-between gap-2 align-items-center mb-3"><div><h2 class="h5 mb-1">Fila e auditoria de entregas</h2><p class="vp-muted small mb-0">Últimas 100 interações, incluindo tentativas e motivo de falha ou supressão.</p></div></div><div class="table-responsive"><table class="table table-sm align-middle"><thead><tr><th>Data</th><th>Regra</th><th>Usuário</th><th>Canal</th><th>Status</th><th>Tentativas</th><th>Erro</th></tr></thead><tbody><cfoutput query="qVickyProactiveQueue"><tr><td>#dateTimeFormat(created_at,'dd/mm/yyyy HH:nn')#</td><td>#encodeForHtml(nome)#</td><td>###id_usuario# · #encodeForHtml(usuario_nome)#</td><td><span class="badge text-bg-dark">#encodeForHtml(channel)#</span></td><td><span class="badge #status EQ 'completed'?'text-bg-success':(listFindNoCase('failed,dead_letter',status)?'text-bg-danger':'text-bg-secondary')#">#encodeForHtml(status)#</span></td><td>#attempts#</td><td>#encodeForHtml(error_code&'')#</td></tr></cfoutput><cfif NOT qVickyProactiveQueue.recordCount><tr><td colspan="7" class="text-center vp-muted py-4">Nenhuma interação programada.</td></tr></cfif></tbody></table></div></div>
 </cfif>

@@ -1,0 +1,10 @@
+<cfscript>
+q=queryExecute("SELECT id_cron_job,nome,ativo,interval_minutes,http_method,last_status,last_run_at,next_run_at FROM tb_cron_jobs WHERE endpoint_url LIKE '%/vicky-proactive/worker.cfm' ORDER BY id_cron_job",{},{datasource='runner_dba'});writeOutput('CRON ' & serializeJSON(q));
+q=queryExecute("SELECT r.codigo,r.enabled,r.admin_only,r.days_before,r.web_enabled,r.whatsapp_enabled,r.quiet_start,r.quiet_end,t.channel,t.provider_template_name,t.content FROM tb_vicky_notificacao_regra r JOIN tb_vicky_notificacao_template t USING(id_vicky_notificacao_regra) WHERE r.codigo='brasil_gigante_d7' ORDER BY t.channel",{},{datasource='runner_dba'});writeOutput('RULE ' & serializeJSON(q));
+q=queryExecute("SELECT f.channel,f.status,count(*) jobs FROM tb_vicky_notificacao_fila f JOIN tb_vicky_notificacao_regra r USING(id_vicky_notificacao_regra) WHERE r.codigo='brasil_gigante_d7' GROUP BY f.channel,f.status ORDER BY f.channel,f.status",{},{datasource='runner_dba'});writeOutput('QUEUE ' & serializeJSON(q));
+q=queryExecute("SELECT f.channel,f.error_code,count(*) jobs FROM tb_vicky_notificacao_fila f JOIN tb_vicky_notificacao_regra r USING(id_vicky_notificacao_regra) WHERE r.codigo='brasil_gigante_d7' AND f.error_code IS NOT NULL GROUP BY f.channel,f.error_code ORDER BY f.channel,f.error_code",{},{datasource='runner_dba'});writeOutput('ERRORS ' & serializeJSON(q));
+q=queryExecute("SELECT status,http_status,duration_ms,response_preview FROM tb_cron_job_runs WHERE id_cron_job=10 ORDER BY id_cron_job_run DESC LIMIT 1",{},{datasource='runner_dba'});
+if(q.recordCount){out={status=q.status,http_status=q.http_status,duration_ms=q.duration_ms};if(isJSON(q.response_preview)){body=deserializeJSON(q.response_preview);for(key in ['generated','generatedBrasilGigante','processed','completed','failed'])if(structKeyExists(body,key))out[key]=body[key];}writeOutput('LAST_RUN ' & serializeJSON(out));}
+if(createObject('component','services' & '.geocoding.Store').settings().enabled)throw(message='Geolocalização deve permanecer pausada');
+writeOutput('VICKY_CBG_ACCEPTANCE_PASSED');
+</cfscript>
