@@ -736,7 +736,10 @@ function userManagerDateInput(any value = "") {
           <div class="col-12 col-lg"><div class="user-manager-metric"><div class="d-flex justify-content-between"><span class="small text-muted">Com Strava</span><span class="user-manager-metric-icon"><i class="fa-brands fa-strava"></i></span></div><div class="h3 mt-2 mb-0"><cfoutput>#LSNumberFormat(qUserManagerStats.com_strava)#</cfoutput></div></div></div>
         </div>
 
-        <form class="user-manager-panel p-3 mb-4" method="get" action="./">
+        <cfinclude template="includes/acquisition.cfm"/>
+
+        <form class="user-manager-panel p-3 mb-4" method="get" action="./" data-user-list-filters>
+          <input type="hidden" name="aquisicao_dias" value="<cfoutput>#VARIABLES.userAcquisitionDays#</cfoutput>"/>
           <div class="row g-3 align-items-end">
             <div class="col-12 col-lg-6"><label class="form-label">Buscar usuário</label><div class="input-group"><span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span><input class="form-control" name="busca" value="<cfoutput>#encodeForHTMLAttribute(VARIABLES.userManagerSearch)#</cfoutput>" placeholder="Nome, e-mail, username ou ID"/></div></div>
             <div class="col-6 col-lg-2"><label class="form-label">Status</label><select class="form-select" name="status"><option value="ativos" <cfif VARIABLES.userManagerStatus EQ "ativos">selected</cfif>>Ativos</option><option value="inativos" <cfif VARIABLES.userManagerStatus EQ "inativos">selected</cfif>>Inativos</option><option value="excluidos" <cfif VARIABLES.userManagerStatus EQ "excluidos">selected</cfif>>Excluídos</option><option value="todos" <cfif VARIABLES.userManagerStatus EQ "todos">selected</cfif>>Todos</option></select></div>
@@ -780,11 +783,11 @@ function userManagerDateInput(any value = "") {
           </tbody></table></div>
 
           <cfif VARIABLES.userManagerPagesTotal GT 1>
-            <nav class="d-flex justify-content-center pt-3" aria-label="Paginação de usuários"><ul class="pagination pagination-sm mb-0">
+            <nav class="d-flex justify-content-center pt-3" aria-label="Paginação de usuários" data-user-pagination><ul class="pagination pagination-sm mb-0">
               <cfset VARIABLES.userManagerPageStart = max(1, VARIABLES.userManagerPage - 2)/><cfset VARIABLES.userManagerPageEnd = min(VARIABLES.userManagerPagesTotal, VARIABLES.userManagerPage + 2)/>
-              <cfoutput><li class="page-item <cfif VARIABLES.userManagerPage LTE 1>disabled</cfif>"><a class="page-link" href="./?pagina=#max(1,VARIABLES.userManagerPage-1)#&amp;busca=#urlEncodedFormat(VARIABLES.userManagerSearch)#&amp;status=#VARIABLES.userManagerStatus#&amp;papel=#VARIABLES.userManagerRole#">Anterior</a></li></cfoutput>
-              <cfloop from="#VARIABLES.userManagerPageStart#" to="#VARIABLES.userManagerPageEnd#" index="VARIABLES.userManagerPageIndex"><cfoutput><li class="page-item <cfif VARIABLES.userManagerPageIndex EQ VARIABLES.userManagerPage>active</cfif>"><a class="page-link" href="./?pagina=#VARIABLES.userManagerPageIndex#&amp;busca=#urlEncodedFormat(VARIABLES.userManagerSearch)#&amp;status=#VARIABLES.userManagerStatus#&amp;papel=#VARIABLES.userManagerRole#">#VARIABLES.userManagerPageIndex#</a></li></cfoutput></cfloop>
-              <cfoutput><li class="page-item <cfif VARIABLES.userManagerPage GTE VARIABLES.userManagerPagesTotal>disabled</cfif>"><a class="page-link" href="./?pagina=#min(VARIABLES.userManagerPagesTotal,VARIABLES.userManagerPage+1)#&amp;busca=#urlEncodedFormat(VARIABLES.userManagerSearch)#&amp;status=#VARIABLES.userManagerStatus#&amp;papel=#VARIABLES.userManagerRole#">Próxima</a></li></cfoutput>
+              <cfoutput><li class="page-item <cfif VARIABLES.userManagerPage LTE 1>disabled</cfif>"><a class="page-link" href="./?pagina=#max(1,VARIABLES.userManagerPage-1)#&amp;busca=#urlEncodedFormat(VARIABLES.userManagerSearch)#&amp;status=#VARIABLES.userManagerStatus#&amp;papel=#VARIABLES.userManagerRole#&amp;aquisicao_dias=#VARIABLES.userAcquisitionDays#">Anterior</a></li></cfoutput>
+              <cfloop from="#VARIABLES.userManagerPageStart#" to="#VARIABLES.userManagerPageEnd#" index="VARIABLES.userManagerPageIndex"><cfoutput><li class="page-item <cfif VARIABLES.userManagerPageIndex EQ VARIABLES.userManagerPage>active</cfif>"><a class="page-link" href="./?pagina=#VARIABLES.userManagerPageIndex#&amp;busca=#urlEncodedFormat(VARIABLES.userManagerSearch)#&amp;status=#VARIABLES.userManagerStatus#&amp;papel=#VARIABLES.userManagerRole#&amp;aquisicao_dias=#VARIABLES.userAcquisitionDays#">#VARIABLES.userManagerPageIndex#</a></li></cfoutput></cfloop>
+              <cfoutput><li class="page-item <cfif VARIABLES.userManagerPage GTE VARIABLES.userManagerPagesTotal>disabled</cfif>"><a class="page-link" href="./?pagina=#min(VARIABLES.userManagerPagesTotal,VARIABLES.userManagerPage+1)#&amp;busca=#urlEncodedFormat(VARIABLES.userManagerSearch)#&amp;status=#VARIABLES.userManagerStatus#&amp;papel=#VARIABLES.userManagerRole#&amp;aquisicao_dias=#VARIABLES.userAcquisitionDays#">Próxima</a></li></cfoutput>
             </ul></nav>
           </cfif>
         </div>

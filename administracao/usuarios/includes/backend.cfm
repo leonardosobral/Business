@@ -1282,6 +1282,18 @@ function userManagerMutationAccess(required numeric targetUserId, boolean destru
         </cfif>
     </cfquery>
 
+    <cfset VARIABLES.userAcquisitionReady = false/>
+    <cfset VARIABLES.userAcquisitionMetrics = new services.UserAcquisitionMetrics()/>
+    <cfset VARIABLES.userAcquisitionDays = VARIABLES.userAcquisitionMetrics.period(structKeyExists(URL,"aquisicao_dias") ? URL.aquisicao_dias : 30)/>
+    <cftry>
+        <cfset VARIABLES.userAcquisition = VARIABLES.userAcquisitionMetrics.load(VARIABLES.userAcquisitionDays)/>
+        <cfset VARIABLES.userAcquisitionReady = true/>
+        <cfcatch type="any">
+            <!--- Metrics are read-only and optional; a failure must not block user operations. --->
+            <cflog file="business-user-acquisition" type="warning" text="acquisition_metrics_unavailable"/>
+        </cfcatch>
+    </cftry>
+
     <cfquery name="qUserManagerTotal">
         SELECT count(*) AS total
         FROM tb_usuarios usr

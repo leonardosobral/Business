@@ -146,6 +146,8 @@ for include in (ROOT/'administracao/usuarios/includes').glob('*.cfm'):
     if include.name!='backend.cfm':payload['includes/'+include.name]=include.read_text()
 service=ROOT/'services/BusinessDevLogin.cfc'
 if service.exists():payload['services/BusinessDevLogin.cfc']=service.read_text()
+acquisition_service=ROOT/'services/UserAcquisitionMetrics.cfc'
+if acquisition_service.exists():payload['services/UserAcquisitionMetrics.cfc']=acquisition_service.read_text()
 patch=ROOT/'_codex/patches/dev-login-receiver-identity.json'
 if patch.exists():payload['receiver_patch']=json.loads(patch.read_text())
 session_patch=ROOT/'_codex/patches/dev-login-session-identity.json'
