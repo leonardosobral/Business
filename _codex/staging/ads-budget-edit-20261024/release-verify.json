@@ -1,0 +1,36 @@
+{
+  "verified_files": {
+    "ads/home.cfm": {
+      "sha256": "dd1de564f3acec3926fd9de12edccdf1f7b7afcd5d445d2a6a2f4222e46b3e1d",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "ads/includes/workspace_admin.cfm": {
+      "sha256": "0ef3306b1e6094362d21b438599139a73fbc695738f1f003bff85f799beb13af",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "ads/includes/workspace_campaign_detail.cfm": {
+      "sha256": "5370e72ffc955c8f0f31b9f281244a38a1c0671a4afd24d5f7fc724fdd05fcf6",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "ads/includes/workspace_campaigns.cfm": {
+      "sha256": "dd927193ea422493e1bfdf16750ce1a8578fe71bce4413a9fcee800756055ba2",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "services/accountDelegation/Store.cfc": {
+      "sha256": "4dc51efb3a3f93475fa76e51b743c9012e5c44b0e2f2800a70eb2c6c8de6d8c2",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "preserved_dependencies": 5,
+  "stage": "/var/backups/ads-budget-edit-20261024-rqi3gkb1"
+}

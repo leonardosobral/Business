@@ -1,0 +1,9 @@
+{
+  "published": [
+    "assets/js/runnerhub-pace.js",
+    "assets/js/runnerhub-pace.min.js",
+    "calculadora-de-pace/index.cfm"
+  ],
+  "backup": "/var/backups/seo-regionais-pace-20261025/updates/national-context/baseline",
+  "compiled_templates": 1
+}

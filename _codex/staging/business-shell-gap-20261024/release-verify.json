@@ -1,0 +1,30 @@
+{
+  "verified_files": {
+    "assets/css/business-shell.css": {
+      "sha256": "baca99ed5f64ad7ad93b5c3268923cafbb868a122a8a15ab0d98d0e8592f0f4e",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "assets/js/business-shell.js": {
+      "sha256": "b25989c9951f45e6749f5812b20eeeed1165478250d5fe5aa3febf7c4255ef01",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/header.cfm": {
+      "sha256": "8099d39e60a32911e70c598b10ecd9bacf0387f13e5dedc9a90c93301497255c",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/navbar.cfm": {
+      "sha256": "aac182cd1d0ccf356ec4a3a81ce66fea99eb03a024117a8594833aa83acb6476",
+      "mode": 420,
+      "uid": 0,
+      "gid": 50
+    }
+  },
+  "preserved_dependencies": 7,
+  "stage": "/var/backups/business-shell-gap-20261024-9wz2l4b6"
+}

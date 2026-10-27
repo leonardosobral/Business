@@ -1,0 +1,12 @@
+{
+  "verified_files": {
+    "ads/home.cfm": {
+      "sha256": "f999458f13ad00310594b0174917ad84f359c6bf129d3984d291561e3c11ddbe",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    }
+  },
+  "preserved_dependencies": 11,
+  "stage": "/var/backups/ads-budget-width-20261024-zh64c6jk"
+}

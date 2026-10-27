@@ -1,0 +1,51 @@
+{
+  "source": "Google Search Console UI",
+  "property": "sc-domain:roadrunners.run",
+  "collected_on": "2026-10-25",
+  "period": {
+    "from": "2026-09-26",
+    "to": "2026-10-23"
+  },
+  "search_type": "Web",
+  "countries": "all",
+  "devices": "all",
+  "page_regex": "^https://roadrunners\\.run/estado/(pr/(curitiba/)?|df/(brasilia/)?)(\\?.*)?$",
+  "summary": {
+    "clicks": 316,
+    "impressions_display": "10,7 mil",
+    "ctr_display": "2,9%",
+    "position": 7.4
+  },
+  "pages": [
+    {
+      "url": "https://roadrunners.run/estado/pr/",
+      "clicks": 197,
+      "impressions": 4888,
+      "ctr_display": "4%",
+      "position": 6.2
+    },
+    {
+      "url": "https://roadrunners.run/estado/df/",
+      "clicks": 119,
+      "impressions": 5826,
+      "ctr_display": "2%",
+      "position": 8.4
+    },
+    {
+      "url": "https://roadrunners.run/estado/pr/curitiba/",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr_display": "0%",
+      "position": 6.8
+    }
+  ],
+  "missing_page_row": "https://roadrunners.run/estado/df/brasilia/",
+  "query_rows_available": 241,
+  "query_rows_captured": 10,
+  "limitations": [
+    "Manual snapshot, not automatic sync",
+    "Absent row is not evidence of deindexing",
+    "Summary impressions rounded by Google",
+    "All dates precede publication, not impact evidence"
+  ]
+}

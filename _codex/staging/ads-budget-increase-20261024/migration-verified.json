@@ -1,0 +1,9 @@
+{
+  "registered": true,
+  "audit_table": true,
+  "app_can_execute": true,
+  "functions": {
+    "invalidate_campaign_review_on_edit": "matches; indentation and surrounding blank lines ignored",
+    "increase_campaign_budget": "matches; indentation and surrounding blank lines ignored"
+  }
+}

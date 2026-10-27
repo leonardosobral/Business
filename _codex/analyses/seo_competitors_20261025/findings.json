@@ -1,0 +1,522 @@
+{
+  "collectedAt": "2026-10-25T15:52:02.218449-03:00",
+  "reportDate": "2026-10-24",
+  "country": "BR",
+  "device": "desktop",
+  "scope": "first 100 rows of all positions, unless fewer; includes SERP features. Percentages are vendor estimates, not analytics clicks.",
+  "reports": [
+    {
+      "domain": "brasilcorrida.com.br",
+      "sourceFile": "brasilcorrida-positions.txt",
+      "sha256": "c2f2e075ebc2397f46b692c471f5a57790953971224f6b8c6cbac3dd0375da18",
+      "rowsCaptured": 100,
+      "selectedQueries": [
+        {
+          "keyword": "brasil corrida",
+          "positionOrFeature": "1",
+          "trafficDisplayed": "2,9K",
+          "trafficSharePct": "28,15",
+          "volumeDisplayed": "22,2K",
+          "kdDisplayed": "48",
+          "url": "brasilcorrida.com.br/",
+          "serpUpdatedLabel": "21 de out."
+        },
+        {
+          "keyword": "corrida de reis 2026 df",
+          "positionOrFeature": "1",
+          "trafficDisplayed": "316",
+          "trafficSharePct": "3,03",
+          "volumeDisplayed": "2,4K",
+          "kdDisplayed": "11",
+          "url": "brasilcorrida.com.br/",
+          "serpUpdatedLabel": "27 de set."
+        },
+        {
+          "keyword": "corrida brasilia",
+          "positionOrFeature": "3",
+          "trafficDisplayed": "155",
+          "trafficSharePct": "1,48",
+          "volumeDisplayed": "1,9K",
+          "kdDisplayed": "24",
+          "url": "brasilcorrida.com.br/",
+          "serpUpdatedLabel": "16 de out."
+        },
+        {
+          "keyword": "corridas em brasilia",
+          "positionOrFeature": "4",
+          "trafficDisplayed": "66",
+          "trafficSharePct": "0,63",
+          "volumeDisplayed": "1,9K",
+          "kdDisplayed": "20",
+          "url": "brasilcorrida.com.br/",
+          "serpUpdatedLabel": "15 de out."
+        },
+        {
+          "keyword": "brasil corrida",
+          "positionOrFeature": "Posição atual: Visão geral criada por IA",
+          "trafficDisplayed": "23",
+          "trafficSharePct": "0,22",
+          "volumeDisplayed": "22,2K",
+          "kdDisplayed": "48",
+          "url": "brasilcorrida.com.br/",
+          "serpUpdatedLabel": "21 de out."
+        }
+      ]
+    },
+    {
+      "domain": "portaldascorridas.com.br",
+      "sourceFile": "portaldascorridas-positions.txt",
+      "sha256": "98df04a504ca4589bb3e852b275082c8f165fbaffceacba871eae37b8c52a40b",
+      "rowsCaptured": 100,
+      "selectedQueries": [
+        {
+          "keyword": "central da corrida",
+          "positionOrFeature": "Posição atual: Visão geral criada por IA",
+          "trafficDisplayed": "4,1K",
+          "trafficSharePct": "33,15",
+          "volumeDisplayed": "18,1K",
+          "kdDisplayed": "32",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "18 de out."
+        },
+        {
+          "keyword": "portal das corridas",
+          "positionOrFeature": "Posição atual: Sitelinks 1",
+          "trafficDisplayed": "2,9K",
+          "trafficSharePct": "23,55",
+          "volumeDisplayed": "3,6K",
+          "kdDisplayed": "38",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "17 de out."
+        },
+        {
+          "keyword": "portal da corrida",
+          "positionOrFeature": "Posição atual: Sitelinks 1",
+          "trafficDisplayed": "2,3K",
+          "trafficSharePct": "18,97",
+          "volumeDisplayed": "2,9K",
+          "kdDisplayed": "44",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "16 de out."
+        },
+        {
+          "keyword": "portal das corrida",
+          "positionOrFeature": "Posição atual: Sitelinks 1",
+          "trafficDisplayed": "1K",
+          "trafficSharePct": "8,50",
+          "volumeDisplayed": "1,3K",
+          "kdDisplayed": "43",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "18 de out."
+        },
+        {
+          "keyword": "portal das corridas",
+          "positionOrFeature": "Posição atual: Painel do conhecimento",
+          "trafficDisplayed": "117",
+          "trafficSharePct": "0,95",
+          "volumeDisplayed": "3,6K",
+          "kdDisplayed": "38",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "17 de out."
+        },
+        {
+          "keyword": "portal das corridas",
+          "positionOrFeature": "Posição atual: Painel do conhecimento",
+          "trafficDisplayed": "114",
+          "trafficSharePct": "0,93",
+          "volumeDisplayed": "3,6K",
+          "kdDisplayed": "38",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "17 de out."
+        },
+        {
+          "keyword": "central da corrida",
+          "positionOrFeature": "6",
+          "trafficDisplayed": "108",
+          "trafficSharePct": "0,88",
+          "volumeDisplayed": "18,1K",
+          "kdDisplayed": "32",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "18 de out."
+        },
+        {
+          "keyword": "portal da corrida",
+          "positionOrFeature": "Posição atual: Painel do conhecimento",
+          "trafficDisplayed": "94",
+          "trafficSharePct": "0,76",
+          "volumeDisplayed": "2,9K",
+          "kdDisplayed": "44",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "16 de out."
+        },
+        {
+          "keyword": "portal da corrida",
+          "positionOrFeature": "Posição atual: Painel do conhecimento",
+          "trafficDisplayed": "92",
+          "trafficSharePct": "0,75",
+          "volumeDisplayed": "2,9K",
+          "kdDisplayed": "44",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "16 de out."
+        },
+        {
+          "keyword": "calendario de corrida",
+          "positionOrFeature": "1",
+          "trafficDisplayed": "64",
+          "trafficSharePct": "0,52",
+          "volumeDisplayed": "260",
+          "kdDisplayed": "18",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "18 de out."
+        },
+        {
+          "keyword": "corridas mg",
+          "positionOrFeature": "2",
+          "trafficDisplayed": "42",
+          "trafficSharePct": "0,34",
+          "volumeDisplayed": "320",
+          "kdDisplayed": "17",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "04 de out."
+        },
+        {
+          "keyword": "portal das corrida",
+          "positionOrFeature": "Posição atual: Painel do conhecimento",
+          "trafficDisplayed": "42",
+          "trafficSharePct": "0,34",
+          "volumeDisplayed": "1,3K",
+          "kdDisplayed": "43",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "18 de out."
+        },
+        {
+          "keyword": "portal das corrida",
+          "positionOrFeature": "Posição atual: Painel do conhecimento",
+          "trafficDisplayed": "41",
+          "trafficSharePct": "0,33",
+          "volumeDisplayed": "1,3K",
+          "kdDisplayed": "43",
+          "url": "www.portaldascorridas.com.br/",
+          "serpUpdatedLabel": "18 de out."
+        }
+      ]
+    },
+    {
+      "domain": "suacorrida.com.br",
+      "sourceFile": "suacorrida-positions.txt",
+      "sha256": "260ed65f13b985e93e0b7c6450440ca9773ad3d7b8d651c9d4c52f49b5b1d50b",
+      "rowsCaptured": 100,
+      "selectedQueries": [
+        {
+          "keyword": "calcular pace",
+          "positionOrFeature": "1",
+          "trafficDisplayed": "1,1K",
+          "trafficSharePct": "60,14",
+          "volumeDisplayed": "4,4K",
+          "kdDisplayed": "15",
+          "url": "www.suacorrida.com.br/calculadoras/",
+          "serpUpdatedLabel": "17 de out."
+        },
+        {
+          "keyword": "calculadora de pace",
+          "positionOrFeature": "8",
+          "trafficDisplayed": "266",
+          "trafficSharePct": "14,66",
+          "volumeDisplayed": "12,1K",
+          "kdDisplayed": "21",
+          "url": "www.suacorrida.com.br/calculadoras/",
+          "serpUpdatedLabel": "3 dias"
+        },
+        {
+          "keyword": "calculadora de ritmo",
+          "positionOrFeature": "1",
+          "trafficDisplayed": "42",
+          "trafficSharePct": "2,31",
+          "volumeDisplayed": "170",
+          "kdDisplayed": "7",
+          "url": "www.suacorrida.com.br/calculadoras/",
+          "serpUpdatedLabel": "10 de out."
+        },
+        {
+          "keyword": "pace corrida",
+          "positionOrFeature": "18",
+          "trafficDisplayed": "22",
+          "trafficSharePct": "1,21",
+          "volumeDisplayed": "14,8K",
+          "kdDisplayed": "25",
+          "url": "www.suacorrida.com.br/calculadoras/",
+          "serpUpdatedLabel": "3 dias"
+        },
+        {
+          "keyword": "corrida pão de açucar 2025",
+          "positionOrFeature": "9",
+          "trafficDisplayed": "11",
+          "trafficSharePct": "0,60",
+          "volumeDisplayed": "880",
+          "kdDisplayed": "12",
+          "url": "www.suacorrida.com.br/evento/corrida-pao-de-acucar/",
+          "serpUpdatedLabel": "13 de set."
+        },
+        {
+          "keyword": "athenas corrida 2026",
+          "positionOrFeature": "9",
+          "trafficDisplayed": "9",
+          "trafficSharePct": "0,49",
+          "volumeDisplayed": "480",
+          "kdDisplayed": "15",
+          "url": "www.suacorrida.com.br/evento/athenas-run-stronger-2026/",
+          "serpUpdatedLabel": "17 de set."
+        }
+      ]
+    },
+    {
+      "domain": "portaldocorredor.com.br",
+      "sourceFile": "portaldocorredor-positions.txt",
+      "sha256": "1854db0b4f5e679a74b68143db7e3a8fc234fb726a0d7c09fd357e58f3b2b0b1",
+      "rowsCaptured": 37,
+      "selectedQueries": [
+        {
+          "keyword": "corredor",
+          "positionOrFeature": "2",
+          "trafficDisplayed": "651",
+          "trafficSharePct": "89,05",
+          "volumeDisplayed": "14,8K",
+          "kdDisplayed": "43",
+          "url": "www.portaldocorredor.com.br/",
+          "serpUpdatedLabel": "18 de out."
+        },
+        {
+          "keyword": "coredor",
+          "positionOrFeature": "2",
+          "trafficDisplayed": "65",
+          "trafficSharePct": "8,89",
+          "volumeDisplayed": "1K",
+          "kdDisplayed": "36",
+          "url": "www.portaldocorredor.com.br/",
+          "serpUpdatedLabel": "22 de set."
+        },
+        {
+          "keyword": "resultado maratona fortaleza",
+          "positionOrFeature": "5",
+          "trafficDisplayed": "4",
+          "trafficSharePct": "0,54",
+          "volumeDisplayed": "110",
+          "kdDisplayed": "20",
+          "url": "www.portaldocorredor.com.br/noticias/maratonas-fortaleza",
+          "serpUpdatedLabel": "24 de set."
+        }
+      ]
+    },
+    {
+      "domain": "guiadacorrida.com.br",
+      "sourceFile": "guiadacorrida-positions.txt",
+      "sha256": "7f658950194e3714f9d1febfd7c9f4264f299b6787c8ea83925bad50d151625a",
+      "rowsCaptured": 100,
+      "selectedQueries": [
+        {
+          "keyword": "corrida do café 2026",
+          "positionOrFeature": "3",
+          "trafficDisplayed": "65",
+          "trafficSharePct": "21,10",
+          "volumeDisplayed": "1K",
+          "kdDisplayed": "17",
+          "url": "www.guiadacorrida.com.br/noticias/tag/dicas+corrida",
+          "serpUpdatedLabel": "25 de set."
+        },
+        {
+          "keyword": "maratona de curitiba 2026",
+          "positionOrFeature": "4",
+          "trafficDisplayed": "56",
+          "trafficSharePct": "18,18",
+          "volumeDisplayed": "1,6K",
+          "kdDisplayed": "20",
+          "url": "www.guiadacorrida.com.br/calendario/parana/curitiba/meia-maratona-internacional-de-curitiba-2026-curitiba-pr-2026",
+          "serpUpdatedLabel": "30 de set."
+        },
+        {
+          "keyword": "treino de corrida tiro",
+          "positionOrFeature": "5",
+          "trafficDisplayed": "17",
+          "trafficSharePct": "5,51",
+          "volumeDisplayed": "590",
+          "kdDisplayed": "31",
+          "url": "www.guiadacorrida.com.br/post/treino-tiro-ganhar-velocidade-pace",
+          "serpUpdatedLabel": "24 de set."
+        },
+        {
+          "keyword": "corridas unimed 2026",
+          "positionOrFeature": "7",
+          "trafficDisplayed": "11",
+          "trafficSharePct": "3,57",
+          "volumeDisplayed": "480",
+          "kdDisplayed": "15",
+          "url": "www.guiadacorrida.com.br/post/circuito-corridas-rua-unimed-2026-calendario-etapas-inscricoes",
+          "serpUpdatedLabel": "3 dias"
+        },
+        {
+          "keyword": "corridas unimed 2026",
+          "positionOrFeature": "18",
+          "trafficDisplayed": "1",
+          "trafficSharePct": "0,32",
+          "volumeDisplayed": "480",
+          "kdDisplayed": "15",
+          "url": "www.guiadacorrida.com.br/post/circuito-corridas-rua-unimed-2026-calendario-etapas-inscricoes",
+          "serpUpdatedLabel": "3 dias"
+        }
+      ]
+    },
+    {
+      "domain": "roadrunners.run",
+      "sourceFile": "roadrunners-positions.txt",
+      "sha256": "d6a8d87a585dc57b90e15906377fc9dbd642a370eca52b5f374b7245874aae71",
+      "rowsCaptured": 100,
+      "selectedQueries": [
+        {
+          "keyword": "corridas parana",
+          "positionOrFeature": "2",
+          "trafficDisplayed": "95",
+          "trafficSharePct": "2,98",
+          "volumeDisplayed": "720",
+          "kdDisplayed": "20",
+          "url": "roadrunners.run/estado/pr/",
+          "serpUpdatedLabel": "21 de out."
+        },
+        {
+          "keyword": "corridas em curitiba",
+          "positionOrFeature": "6",
+          "trafficDisplayed": "45",
+          "trafficSharePct": "1,41",
+          "volumeDisplayed": "1,9K",
+          "kdDisplayed": "12",
+          "url": "roadrunners.run/estado/pr/",
+          "serpUpdatedLabel": "15 de out."
+        },
+        {
+          "keyword": "corridas em brasilia",
+          "positionOrFeature": "7",
+          "trafficDisplayed": "41",
+          "trafficSharePct": "1,28",
+          "volumeDisplayed": "1,9K",
+          "kdDisplayed": "20",
+          "url": "roadrunners.run/estado/df/",
+          "serpUpdatedLabel": "15 de out."
+        },
+        {
+          "keyword": "sp city marathon",
+          "positionOrFeature": "7",
+          "trafficDisplayed": "41",
+          "trafficSharePct": "1,28",
+          "volumeDisplayed": "1,9K",
+          "kdDisplayed": "18",
+          "url": "roadrunners.run/evento/2026-sp-city-marathon/",
+          "serpUpdatedLabel": "10 de out."
+        },
+        {
+          "keyword": "corrida sc",
+          "positionOrFeature": "7",
+          "trafficDisplayed": "31",
+          "trafficSharePct": "0,97",
+          "volumeDisplayed": "1,3K",
+          "kdDisplayed": "18",
+          "url": "roadrunners.run/estado/sc/",
+          "serpUpdatedLabel": "16 de out."
+        },
+        {
+          "keyword": "corridas rs",
+          "positionOrFeature": "11",
+          "trafficDisplayed": "11",
+          "trafficSharePct": "0,34",
+          "volumeDisplayed": "880",
+          "kdDisplayed": "50",
+          "url": "roadrunners.run/estado/rs/",
+          "serpUpdatedLabel": "3 dias"
+        }
+      ]
+    }
+  ],
+  "nearPageOne": [
+    {
+      "keyword": "corridas rs",
+      "positionOrFeature": "11",
+      "trafficDisplayed": "11",
+      "trafficSharePct": "0,34",
+      "volumeDisplayed": "880",
+      "kdDisplayed": "50",
+      "url": "roadrunners.run/estado/rs/",
+      "serpUpdatedLabel": "3 dias"
+    },
+    {
+      "keyword": "corridas brasilia",
+      "positionOrFeature": "14",
+      "trafficDisplayed": "4",
+      "trafficSharePct": "0,12",
+      "volumeDisplayed": "1K",
+      "kdDisplayed": "17",
+      "url": "roadrunners.run/estado/df/",
+      "serpUpdatedLabel": "17 de out."
+    },
+    {
+      "keyword": "maratona de floripa",
+      "positionOrFeature": "14",
+      "trafficDisplayed": "3",
+      "trafficSharePct": "0,09",
+      "volumeDisplayed": "1,3K",
+      "kdDisplayed": "29",
+      "url": "roadrunners.run/maratona/maratona-internacional-de-floripa/",
+      "serpUpdatedLabel": "17 de out."
+    },
+    {
+      "keyword": "10 milhas garoto 2026",
+      "positionOrFeature": "15",
+      "trafficDisplayed": "2",
+      "trafficSharePct": "0,06",
+      "volumeDisplayed": "590",
+      "kdDisplayed": "17",
+      "url": "roadrunners.run/evento/2026-dez-milhas-garoto-2026/",
+      "serpUpdatedLabel": "08 de out."
+    },
+    {
+      "keyword": "maratona salvador",
+      "positionOrFeature": "11",
+      "trafficDisplayed": "2",
+      "trafficSharePct": "0,06",
+      "volumeDisplayed": "880",
+      "kdDisplayed": "30",
+      "url": "roadrunners.run/evento/2026-maratona-salvador-2026/",
+      "serpUpdatedLabel": "15 de out."
+    },
+    {
+      "keyword": "corrida em sp",
+      "positionOrFeature": "16",
+      "trafficDisplayed": "2",
+      "trafficSharePct": "0,06",
+      "volumeDisplayed": "720",
+      "kdDisplayed": "27",
+      "url": "roadrunners.run/estado/sp/",
+      "serpUpdatedLabel": "24 de set."
+    },
+    {
+      "keyword": "corrida da pampulha 2026",
+      "positionOrFeature": "11",
+      "trafficDisplayed": "2",
+      "trafficSharePct": "0,06",
+      "volumeDisplayed": "480",
+      "kdDisplayed": "14",
+      "url": "roadrunners.run/evento/2026-27-volta-intl-da-pampulha/",
+      "serpUpdatedLabel": "13 de out."
+    }
+  ],
+  "concentrations": {
+    "suaCorridaTopTwoCalculatorQueriesPct": 74.8,
+    "portalDoCorredorTopTwoQueriesPct": 97.94,
+    "portalDasCorridasThreeBrandVariantsPct": 51.02
+  },
+  "monthlyChangeSource": "../seo_domains/2026-10-25T150300-0300.json",
+  "limitations": [
+    "Not a causal analysis of monthly growth.",
+    "Positions and search volume have their own collection/update dates.",
+    "Two-day changes report retained separately; an attempted 28-day selection did not change the confirmed date range and was not used for monthly claims.",
+    "Report rows are a sample, not all rankings or all landing pages.",
+    "No site runtime, database or Semrush project settings changed."
+  ]
+}

@@ -10,6 +10,7 @@
 <p>Esta integração está disponível para o Road Runners.</p><a href="/portal/seo/?aba=ga4&amp;site=roadrunners">Ver Road Runners</a>
 <cfelse>
 <p class="seo-note">Dados medidos pelo GA4. Incluem os canais identificados pelo Google; não são a estimativa orgânica do Semrush nem os contadores próprios.</p>
+<cfinclude template="seo_growth_baseline.cfm"/>
 <cfif structKeyExists(session,"seoGa4Message")><p class="ga4-notice"><cfoutput>#encodeForHtml(session.seoGa4Message)#</cfoutput></p><cfset structDelete(session,"seoGa4Message")/></cfif>
 <cfoutput><div id="ga4-app" data-csrf="#encodeForHtmlAttribute(session.seoGa4Csrf)#"></cfoutput>
 <p id="ga4-status" role="status" aria-live="polite">Verificando conexão Google…</p>

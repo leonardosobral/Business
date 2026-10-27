@@ -1,0 +1,13 @@
+{
+  "stage": "/var/backups/ads-budget-edit-20261024-rqi3gkb1",
+  "manifest_sha256": "1dfab30336c1fa69d3f30bb47f83c8ab7f901685c870261ee5a23a0b84400e89",
+  "candidate_hashes": {
+    "services/accountDelegation/Store.cfc": "4dc51efb3a3f93475fa76e51b743c9012e5c44b0e2f2800a70eb2c6c8de6d8c2",
+    "ads/home.cfm": "dd1de564f3acec3926fd9de12edccdf1f7b7afcd5d445d2a6a2f4222e46b3e1d",
+    "ads/includes/workspace_campaigns.cfm": "dd927193ea422493e1bfdf16750ce1a8578fe71bce4413a9fcee800756055ba2",
+    "ads/includes/workspace_campaign_detail.cfm": "5370e72ffc955c8f0f31b9f281244a38a1c0671a4afd24d5f7fc724fdd05fcf6",
+    "ads/includes/workspace_admin.cfm": "0ef3306b1e6094362d21b438599139a73fbc695738f1f003bff85f799beb13af"
+  },
+  "backup": "/var/backups/ads-budget-edit-20261024-rqi3gkb1/baseline",
+  "runtime_files_changed": false
+}

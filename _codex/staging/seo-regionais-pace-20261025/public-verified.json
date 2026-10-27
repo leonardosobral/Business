@@ -1,0 +1,48 @@
+{
+  "/calculadora-de-pace/": {
+    "status": 200,
+    "bytes": 211218
+  },
+  "/estado/pr/": {
+    "status": 200,
+    "bytes": 570623,
+    "events": 128
+  },
+  "/estado/pr/curitiba/": {
+    "status": 200,
+    "bytes": 491546,
+    "events": 16
+  },
+  "/estado/df/": {
+    "status": 200,
+    "bytes": 430575,
+    "events": 25
+  },
+  "/estado/df/brasilia/": {
+    "status": 200,
+    "bytes": 431098,
+    "events": 25
+  },
+  "/api/eventos.cfm?tag=PR&cidade=curitiba&distancia=5,5&page=0": {
+    "status": 200,
+    "bytes": 56214,
+    "events": 11
+  },
+  "/sitemaps/static.xml": {
+    "status": 200,
+    "bytes": 67739,
+    "calculatorInSitemap": true
+  },
+  "/assets/js/runnerhub-pace.min.js?v=20261025b": {
+    "status": 200,
+    "bytes": 7904
+  },
+  "/assets/css/runnerhub-pace.min.css?v=20261025a": {
+    "status": 200,
+    "bytes": 3569
+  },
+  "/assets/css/runnerhub-regionais.min.css?v=20261025a": {
+    "status": 200,
+    "bytes": 1662
+  }
+}

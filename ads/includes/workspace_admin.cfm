@@ -135,6 +135,7 @@
           <div class="ads-operation-grid ads-operation-head" aria-hidden="true"><span>Campanha / conta</span><span>Status</span><span>Investimento</span><span>Resultados</span><span>CTR / CPC médio</span><span>Detalhes</span></div>
           <cfoutput query="qAdsV1AdminOperationalCampaigns">
             <cfset VARIABLES.adsV1AdminOperationalStatus = uCase(trim(campaign_status & ""))/>
+            <cfset VARIABLES.adsV1AdminOperationalBudgetExhausted = adsV1CampaignBudgetExhausted(VARIABLES.adsV1AdminOperationalStatus, budget_total, spent_total, cpc_bid)/>
             <cfset VARIABLES.adsV1AdminOperationalCtr = val(viewable_impression_count) GT 0 ? val(valid_click_count) * 100 / val(viewable_impression_count) : 0/>
             <cfset VARIABLES.adsV1AdminOperationalCtrLabel = val(viewable_impression_count) GT 0 ? lsNumberFormat(VARIABLES.adsV1AdminOperationalCtr, "9.99") & "%" : "—"/>
             <cfset VARIABLES.adsV1AdminOperationalAverageCpc = val(billable_click_count) GT 0 ? val(cost) / val(billable_click_count) : 0/>
@@ -148,7 +149,7 @@
             <details class="ads-operation-row">
               <summary class="ads-operation-grid">
                 <span class="ads-operation-campaign"><strong class="ads-operation-name">#encodeForHTML(campaign_name)#</strong><span class="ads-operation-secondary">#encodeForHTML(account_name)#</span></span>
-                <span><span class="ads-operation-label">Status</span><span class="badge <cfif VARIABLES.adsV1AdminOperationalStatus EQ 'ACTIVE'>badge-success<cfelse>badge-warning</cfif>">#encodeForHTML(adsV1CampaignStatusLabel(campaign_status))#</span></span>
+                <span><span class="ads-operation-label">Status</span><span class="badge <cfif VARIABLES.adsV1AdminOperationalStatus EQ 'ACTIVE' AND NOT VARIABLES.adsV1AdminOperationalBudgetExhausted>badge-success<cfelse>badge-warning</cfif>"><cfif VARIABLES.adsV1AdminOperationalStatus EQ 'ACTIVE' AND VARIABLES.adsV1AdminOperationalBudgetExhausted>Orçamento esgotado<cfelse>#encodeForHTML(adsV1CampaignStatusLabel(campaign_status))#</cfif></span></span>
                 <span><span class="ads-operation-label">Investimento</span><strong>#lsCurrencyFormat(spent_total)#</strong><span class="ads-operation-secondary">de #lsCurrencyFormat(budget_total)#</span></span>
                 <span><strong>#lsNumberFormat(viewable_impression_count, "9,999,999")# impressões</strong><span class="ads-operation-secondary">#lsNumberFormat(valid_click_count, "9,999,999")# cliques</span></span>
                 <span><strong<cfif val(viewable_impression_count) LTE 0> title="CTR indisponível: ainda não há impressões registradas."</cfif>>CTR #VARIABLES.adsV1AdminOperationalCtrLabel#</strong><span class="ads-operation-secondary">CPC médio #lsCurrencyFormat(VARIABLES.adsV1AdminOperationalAverageCpc)#</span></span>
@@ -156,6 +157,7 @@
               </summary>
               <div class="ads-operation-detail">
                 <h3>#encodeForHTML(campaign_name)#</h3>
+                <cfif VARIABLES.adsV1AdminOperationalBudgetExhausted><div class="alert alert-warning">Orçamento esgotado para o próximo lance: restam #lsCurrencyFormat(max(0, val(budget_total) - val(spent_total)))#, abaixo de #lsCurrencyFormat(cpc_bid)#. Saldo na conta não aumenta automaticamente o limite desta campanha.</div></cfif>
                 <dl class="ads-operation-facts">
                   <div><dt>Conta e evento</dt><dd><strong>#encodeForHTML(account_name)#</strong><br/>#encodeForHTML(event_name)#<br/>#encodeForHTML(event_city)#<cfif len(trim(event_state & ""))>/#encodeForHTML(event_state)#</cfif></dd></div>
                   <div><dt>Público</dt><dd><cfif len(trim(target_region_code & ""))>#encodeForHTML(target_region_code)#<cfelse>Todo o país</cfif> · #encodeForHTML(target_country_code)#<br/><cfif uCase(trim(target_device_class & "")) EQ "MOBILE">Celular<cfelseif uCase(trim(target_device_class & "")) EQ "DESKTOP">Desktop<cfelse>Todos os dispositivos</cfif></dd></div>

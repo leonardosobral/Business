@@ -1,0 +1,23 @@
+{
+  "pace": {
+    "status": 200,
+    "context": {
+      "environment": "prod",
+      "isInternal": false
+    }
+  },
+  "source": {
+    "status": 200,
+    "hash_matches": true
+  },
+  "min": {
+    "status": 200,
+    "hash_matches": true
+  },
+  "direct_baseline": {
+    "status": 403
+  },
+  "anonymous_panel": {
+    "status": 302
+  }
+}

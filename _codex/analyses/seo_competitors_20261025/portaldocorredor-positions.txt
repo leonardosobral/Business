@@ -1,0 +1,1776 @@
+- button "Pular para o conteúdo"
+- banner:
+  - combobox "Informe o site ou a palavra-chave": portaldocorredor.com.br
+  - generic: portaldocorredor.com.br
+  - button "Limpar":
+  - combobox:
+    - generic: Domínio raiz
+  - button "Analisar":
+    - generic: Analisar
+  - navigation:
+    - menubar:
+      - button "Convide usuários": Invite free users
+      - menuitem "Preços"
+      - menuitem "Empresarial"
+      - menuitem "Mais"
+      - menuitem "Meu perfil":
+        - generic: c
+- navigation:
+  - list:
+    - link "Início":
+      - /url: https://pt.semrush.com/home/
+      - generic: Início
+    - link "SEO":
+      - /url: https://pt.semrush.com/seo/
+      - generic: SEO
+    - link "IA":
+      - /url: https://pt.semrush.com/ai-seo/overview/
+      - generic: IA
+  - list:
+    - link "Tráfego e mercado":
+      - /url: https://pt.semrush.com/analytics/traffic/
+      - generic: Tráfego e mercado
+    - link "Local":
+      - /url: https://pt.semrush.com/local-business/
+      - generic: Local
+    - link "Conteúdo":
+      - /url: https://pt.semrush.com/content/
+      - generic: Conteúdo
+    - link "Anúncios":
+      - /url: https://pt.semrush.com/advertising/
+      - generic: Anúncios
+    - link "RP para IA":
+      - /url: https://pt.semrush.com/pr-toolkit/
+      - generic: RP para IA
+    - link "Social":
+      - /url: https://pt.semrush.com/social-media/
+      - generic: Social
+  - list:
+    - link "Relatórios":
+      - /url: https://pt.semrush.com/my_reports/grid/
+      - generic: Relatórios
+    - link "Apps":
+      - /url: https://pt.semrush.com/apps/
+      - generic: Apps
+  - generic: SEO
+  - list:
+    - link "Painel de ferramentas":
+      - /url: https://pt.semrush.com/seo/
+  - generic: Desempenho do site
+  - list:
+    - link "Auditoria do site":
+      - /url: https://pt.semrush.com/siteaudit/
+    - link "Monitoramento de posição":
+      - /url: https://pt.semrush.com/position-tracking/
+  - generic: Análise competitiva
+  - list:
+    - link "Visão geral do domínio":
+      - /url: https://pt.semrush.com/analytics/overview/?db=br&q=portaldocorredor.com.br&searchType=domain
+    - link "Rankings orgânicos":
+      - /url: https://pt.semrush.com/analytics/organic/overview?db=br&q=portaldocorredor.com.br&searchType=domain
+    - link "Principais páginas":
+      - /url: https://pt.semrush.com/analytics/toppages/?db=br&q=portaldocorredor.com.br&searchType=domain
+    - link "Comparação de domínios":
+      - /url: https://pt.semrush.com/analytics/comparedomains/?db=br&q=portaldocorredor.com.br&searchType=domain
+    - link "Lacunas nas palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordgap/?db=br&q=portaldocorredor.com.br&searchType=domain
+    - link "Lacunas nos backlinks":
+      - /url: https://pt.semrush.com/analytics/gap/backlinks/?q=portaldocorredor.com.br&searchType=domain
+  - generic: Pesquisa de palavras-chave
+  - list:
+    - link "Visão geral de palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordoverview/?db=br
+    - link "Keyword Magic Tool":
+      - /url: https://pt.semrush.com/analytics/keywordmagic/?db=br
+    - link "Keyword Strategy Builder":
+      - /url: https://pt.semrush.com/analytics/keywordmanager/?db=br
+    - link "Palavras-chave salvas":
+      - /url: https://pt.semrush.com/saved-keywords/
+  - generic: Ideias de conteúdo
+  - list:
+    - link "SEO Writing Assistant":
+      - /url: https://pt.semrush.com/swa/
+    - link "Topic Research":
+      - /url: https://pt.semrush.com/topic-research/
+    - link "SEO Content Template":
+      - /url: https://pt.semrush.com/seo-content-template/
+  - generic: Construção de links
+  - list:
+    - link "Backlinks":
+      - /url: https://pt.semrush.com/analytics/backlinks/overview/?q=portaldocorredor.com.br&searchType=domain
+    - link "Domínios de referência":
+      - /url: https://pt.semrush.com/analytics/refdomains/report/?q=portaldocorredor.com.br&searchType=domain
+    - link "Backlink Audit":
+      - /url: https://pt.semrush.com/backlink_audit/
+  - generic: Ferramentas extras
+  - list:
+    - link "Sensor":
+      - /url: https://pt.semrush.com/sensor/?utm_medium=footer&utm_source=semrush
+    - link "SEOquake":
+      - /url: https://www.seoquake.com/
+    - link "Ranking Semrush":
+      - /url: https://pt.semrush.com/analytics/ranks/rank/?db=br&q=portaldocorredor.com.br&searchType=domain
+  - generic: Outros
+  - list:
+    - link "On Page SEO Checker":
+      - /url: https://pt.semrush.com/on-page-seo-checker/
+    - link "Organic Traffic Insights":
+      - /url: https://pt.semrush.com/organic_traffic_insights/
+    - link "Construção de links":
+      - /url: https://pt.semrush.com/link_building/
+- button "Ocultar navegação" [expanded]:
+- main:
+  - region "Cabeçalho de Rankings orgânicos":
+    - navigation "Trilhas de navegação":
+      - list:
+        - link "Início":
+          - /url: /projects/
+        - link "SEO":
+          - /url: /seo/
+        - link "Visão geral do domínio":
+          - /url: /analytics/overview/?db=br&q=portaldocorredor.com.br&searchType=domain&currency=usd
+        - generic: Rankings orgânicos
+    - link "user manual":
+      - /url: /kb/494-organic-research-positions-report
+      - text: Manual do usuário
+    - button "Enviar comentários":
+      - button "Enviar comentários":
+        - generic: Enviar comentários
+    - 'heading "Rankings orgânicos: portaldocorredor.com.br" [level=1]':
+      - generic: "Rankings orgânicos:"
+      - generic: portaldocorredor.com.br
+    - link "Acessar portaldocorredor.com.br":
+      - /url: http://portaldocorredor.com.br
+    - button "Exportar o relatório Posições para PDF":
+      - generic: Exportar para PDF
+    - radiogroup "Países":
+      - radio "BR 37" [checked]:
+        - generic: BR
+        - generic: "37"
+      - radio "US 2":
+        - generic: US
+        - generic: "2"
+      - radio "UK 0":
+        - generic: UK
+        - generic: "0"
+      - radio:
+    - generic: "Dispositivo:"
+    - combobox "Selecionar o dispositivo":
+      - generic: Computador
+    - generic: "Data:"
+    - combobox "Selecionar o período":
+      - generic: 24 de out. de 2026
+    - generic: "Moeda:"
+    - combobox "Selecionar a moeda":
+      - generic: USD
+  - tablist "Relatórios":
+    - tab "Visão geral":
+      - generic: Visão geral
+    - tab "Posições" [selected]:
+      - generic: Posições
+    - tab "Alterações na posição":
+      - generic: Alterações na posição
+    - tab "Concorrentes":
+      - generic: Concorrentes
+    - tab "Assuntos":
+      - generic: Assuntos
+    - tab "Subdomínios":
+      - generic: Subdomínios
+  - form "Filtros":
+    - radiogroup "Tipos de posição":
+      - radio "Todas as posições" [checked]:
+        - generic: Todas as posições
+      - radio "Orgânicas":
+        - generic: Orgânicas
+      - radio "Recursos de SERP":
+        - generic: Recursos de SERP
+  - form "Filtros":
+    - generic "Informar a palavra-chave a filtrar":
+      - generic "Informar a palavra-chave a filtrar":
+        - textbox "Filtrar por palavra-chave"
+      - button "Filtro":
+    - combobox "Selecionar o intervalo de posições":
+      - generic: Posições
+    - combobox "Selecione o intervalo de volume":
+      - generic: Volume
+    - combobox "Selecionar a dificuldade da palavra-chave":
+      - generic: KD
+    - combobox "Selecionar a intenção da palavra-chave":
+      - generic: Intenção
+    - combobox "Selecionar o recurso de SERP":
+      - generic: Recursos de SERP
+    - combobox "Selecionar filtros avançados":
+      - generic: Filtros avançados
+  - region "Resumo do domínio":
+    - button "37 palavras-chave, abrir Palavras-chave" [expanded]:
+      - generic: Palavras-chave
+      - generic: "37"
+      - generic: "-15,91%"
+      - img "Chart": "0"
+    - separator
+    - button "O tráfego é 731, abrir Tendência do tráfego estimado":
+      - generic: Tráfego
+      - generic: "731"
+      - generic: 299,45%
+      - img "Chart":
+        - text: "0"
+    - separator
+    - generic: Custo do tráfego
+    - generic: US$ 146,0
+    - generic: 1.227,27%
+    - generic: Palavras-chave
+    - button "Ocultar dados de tendência"
+    - group "Posições para mostrar":
+      - generic "Top 3 palavras-chave":
+        - checkbox "Top 3 palavras-chave" [checked]
+        - generic "Top 3 palavras-chave": Top 3
+      - generic "Top 4 a 10 palavras-chave":
+        - checkbox "Top 4 a 10 palavras-chave" [checked]
+        - generic "Top 4 a 10 palavras-chave": 4-10
+      - generic "Top 11 a 20 palavras-chave":
+        - checkbox "Top 11 a 20 palavras-chave" [checked]
+        - generic "Top 11 a 20 palavras-chave": 11-20
+      - generic "Top 21 a 50 palavras-chave":
+        - checkbox "Top 21 a 50 palavras-chave" [checked]
+        - generic "Top 21 a 50 palavras-chave": 21-50
+      - generic "Top 51 a 100 palavras-chave":
+        - checkbox "Top 51 a 100 palavras-chave" [checked]
+        - generic "Top 51 a 100 palavras-chave": 51-100
+      - generic "Recursos de SERP":
+        - checkbox "Recursos de SERP" [checked]
+        - generic "Recursos de SERP"
+    - button "Gerenciar anotações":
+      - generic: Anotações
+    - tablist "Período":
+      - tab "1M" [selected]:
+        - generic: 1M
+      - tab "6M":
+        - generic: 6M
+      - tab "1A":
+        - generic: 1A
+      - tab "2A":
+        - generic: 2A
+      - tab "Tempo total":
+        - generic: Tempo total
+    - img "Chart":
+      - generic: 24 de set.
+      - generic: 26 de set.
+      - generic: 28 de set.
+      - generic: 30 de set.
+      - generic: 2 de out.
+      - generic: 4 de out.
+      - generic: 6 de out.
+      - generic: 8 de out.
+      - generic: 10 de out.
+      - generic: 12 de out.
+      - generic: 14 de out.
+      - generic: 16 de out.
+      - generic: 18 de out.
+      - generic: 20 de out.
+      - generic: 22 de out.
+      - generic: 24 de out.
+      - generic: "0"
+      - generic: "20"
+      - generic: "40"
+      - generic: "60"
+      - text: "0"
+      - text: "0"
+      - text: "0"
+      - text: "0"
+      - text: "0"
+      - text: "0"
+      - button "Abrir anotação de set 23"
+      - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+  - region "Notification":
+    - paragraph: Você está recebendo menções na pesquisa do ChatGPT?
+    - paragraph: Podemos monitorar para você.
+    - button "Configurar":
+      - generic: Configurar
+    - button "Close notification":
+  - region "Posições na pesquisa orgânica":
+    - generic: "Posições na pesquisa orgânica:"
+    - generic: "37"
+    - generic "Adicionar palavra-chave à lista de palavras-chave":
+      - button "Salvar palavras-chave":
+        - generic: Salvar palavras-chave
+    - 'button "Gerenciar colunas da tabela. Colunas mostradas: 10 de 15"':
+      - 'button "Gerenciar colunas da tabela. Colunas mostradas: 10 de 15"':
+        - generic: Gerenciar colunas
+        - generic: 10/15
+    - button "Exportar dados das alterações nas posições":
+      - generic: Exportar
+    - grid:
+      - row "Selecionar todas as palavras-chave Palavra-chave Intenção Classificar por Posição atual em ordem crescente RS Classificar por Tráfego em ordem crescente Classificar por Tráfego % em ordem crescente Classificar por Volume em ordem crescente Classificar por Dificuldade da palavra-chave em ordem crescente URL Classificar por última atualização em ordem crescente":
+        - columnheader "Selecionar todas as palavras-chave":
+          - checkbox "Selecionar todas as palavras-chave"
+        - columnheader "Palavra-chave":
+          - generic: Palavra-chave
+        - columnheader "Intenção":
+          - generic: Intenção
+        - columnheader "Classificar por Posição atual em ordem crescente":
+          - generic: Posição
+        - columnheader "RS":
+          - generic: RS
+        - columnheader "Classificar por Tráfego em ordem crescente":
+          - generic: Tráfego
+        - columnheader "Classificar por Tráfego % em ordem crescente":
+          - generic: Tráfego %
+          - button "descending":
+        - columnheader "Classificar por Volume em ordem crescente":
+          - generic: Volume
+        - columnheader "Classificar por Dificuldade da palavra-chave em ordem crescente":
+          - generic: KD %
+        - columnheader "URL":
+          - generic: URL
+        - columnheader "Classificar por última atualização em ordem crescente":
+          - generic: At.
+      - generic: Sortable
+      - 'row "Show details Selecionar corredor Salvar na lista de palavras-chave Analisar corredor na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 2 Acessar SERP de corredor Recursos de SERP na SERP: 8 651 89,05 14,8K 43 Analise www.portaldocorredor.com.br/ Acessar www.portaldocorredor.com.br/ 18 de out."':
+        - gridcell "Show details Selecionar corredor":
+          - button "Show details":
+          - checkbox "Selecionar corredor"
+        - gridcell "Salvar na lista de palavras-chave Analisar corredor na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corredor na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corredor&currency=usd
+            - text: corredor
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "2":
+          - generic: "2"
+        - 'gridcell "Acessar SERP de corredor Recursos de SERP na SERP: 8"':
+          - link "Acessar SERP de corredor":
+            - /url: /analytics/serp?phrase=corredor&domain=portaldocorredor.com.br&db=br&position=2&type=organic&serpId=b-h-97-1018-1158871355296039917
+          - separator
+          - 'button "Recursos de SERP na SERP: 8"':
+            - button "8":
+              - generic: "8"
+        - gridcell "651":
+          - generic: "651"
+        - gridcell "89,05":
+          - generic: 89,05
+        - gridcell "14,8K":
+          - generic: 14,8K
+        - gridcell "43":
+          - generic: "43"
+        - gridcell "Analise www.portaldocorredor.com.br/ Acessar www.portaldocorredor.com.br/":
+          - link "Analise www.portaldocorredor.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2F&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/
+          - link "Acessar www.portaldocorredor.com.br/":
+            - /url: https://www.portaldocorredor.com.br/
+        - gridcell "18 de out."
+      - 'row "Show details Selecionar coredor Salvar na lista de palavras-chave Analisar coredor na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 2 Acessar SERP de coredor Recursos de SERP na SERP: 8 65 8,89 1K 36 Analise www.portaldocorredor.com.br/ Acessar www.portaldocorredor.com.br/ 22 de set."':
+        - gridcell "Show details Selecionar coredor":
+          - button "Show details":
+          - checkbox "Selecionar coredor"
+        - gridcell "Salvar na lista de palavras-chave Analisar coredor na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar coredor na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=coredor&currency=usd
+            - text: coredor
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "2":
+          - generic: "2"
+        - 'gridcell "Acessar SERP de coredor Recursos de SERP na SERP: 8"':
+          - link "Acessar SERP de coredor":
+            - /url: /analytics/serp?phrase=coredor&domain=portaldocorredor.com.br&db=br&position=2&type=organic&serpId=b-h-97-0922-15075758754181142443
+          - separator
+          - 'button "Recursos de SERP na SERP: 8"':
+            - button "8":
+              - generic: "8"
+        - gridcell "65":
+          - generic: "65"
+        - gridcell "8,89":
+          - generic: 8,89
+        - gridcell "1K":
+          - generic: 1K
+        - gridcell "36":
+          - generic: "36"
+        - gridcell "Analise www.portaldocorredor.com.br/ Acessar www.portaldocorredor.com.br/":
+          - link "Analise www.portaldocorredor.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2F&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/
+          - link "Acessar www.portaldocorredor.com.br/":
+            - /url: https://www.portaldocorredor.com.br/
+        - gridcell "22 de set."
+      - 'row "Show details Selecionar resultado maratona fortaleza Salvar na lista de palavras-chave Analisar resultado maratona fortaleza na Visão geral de palavras-chave Abrir visão geral Intenção: Comercial 5 Acessar SERP de resultado maratona fortaleza Recursos de SERP na SERP: 4 4 0,54 110 20 Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza 24 de set."':
+        - gridcell "Show details Selecionar resultado maratona fortaleza":
+          - button "Show details":
+          - checkbox "Selecionar resultado maratona fortaleza"
+        - gridcell "Salvar na lista de palavras-chave Analisar resultado maratona fortaleza na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar resultado maratona fortaleza na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=resultado%20maratona%20fortaleza&currency=usd
+            - text: resultado maratona fortaleza
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Comercial"':
+          - 'generic "Intenção: Comercial"':
+            - button "C":
+              - generic: C
+        - gridcell "5":
+          - generic: "5"
+        - 'gridcell "Acessar SERP de resultado maratona fortaleza Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de resultado maratona fortaleza":
+            - /url: /analytics/serp?phrase=resultado+maratona+fortaleza&domain=portaldocorredor.com.br&db=br&position=5&type=organic&serpId=b-f-97-0924-3706551073165842393
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "4":
+          - generic: "4"
+        - gridcell "0,54":
+          - generic: 0,54
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "20":
+          - generic: "20"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+          - link "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fmaratonas-fortaleza&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+          - link "Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: https://www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+        - gridcell "24 de set."
+      - 'row "Show details Selecionar revista contra relogio Salvar na lista de palavras-chave Analisar revista contra relogio na Visão geral de palavras-chave Abrir visão geral Intenção: Comercial Intenção: De navegação 4 Acessar SERP de revista contra relogio Recursos de SERP na SERP: 4 2 0,27 170 26 Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio 22 de set."':
+        - gridcell "Show details Selecionar revista contra relogio":
+          - button "Show details":
+          - checkbox "Selecionar revista contra relogio"
+        - gridcell "Salvar na lista de palavras-chave Analisar revista contra relogio na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar revista contra relogio na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=revista%20contra%20relogio&currency=usd
+            - text: revista contra relogio
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Comercial Intenção: De navegação"':
+          - 'generic "Intenção: Comercial"':
+            - button "C":
+              - generic: C
+          - 'generic "Intenção: De navegação"':
+            - button "N":
+              - generic: "N"
+        - gridcell "4":
+          - generic: "4"
+        - 'gridcell "Acessar SERP de revista contra relogio Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de revista contra relogio":
+            - /url: /analytics/serp?phrase=revista+contra+relogio&domain=portaldocorredor.com.br&db=br&position=4&type=organic&serpId=b-e-97-0922-12944778170193149226
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "2":
+          - generic: "2"
+        - gridcell "0,27":
+          - generic: 0,27
+        - gridcell "170":
+          - generic: "170"
+        - gridcell "26":
+          - generic: "26"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+          - link "Analise www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fcontra-relogio&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/contra-relogio
+          - link "Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: https://www.portaldocorredor.com.br/noticias/contra-relogio
+        - gridcell "22 de set."
+      - 'row "Show details Selecionar resultados maratona fortaleza Salvar na lista de palavras-chave Analisar resultados maratona fortaleza na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 8 Acessar SERP de resultados maratona fortaleza Recursos de SERP na SERP: 4 2 0,27 110 16 Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza 18 de set."':
+        - gridcell "Show details Selecionar resultados maratona fortaleza":
+          - button "Show details":
+          - checkbox "Selecionar resultados maratona fortaleza"
+        - gridcell "Salvar na lista de palavras-chave Analisar resultados maratona fortaleza na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar resultados maratona fortaleza na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=resultados%20maratona%20fortaleza&currency=usd
+            - text: resultados maratona fortaleza
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "8":
+          - generic: "8"
+        - 'gridcell "Acessar SERP de resultados maratona fortaleza Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de resultados maratona fortaleza":
+            - /url: /analytics/serp?phrase=resultados+maratona+fortaleza&domain=portaldocorredor.com.br&db=br&position=8&type=organic&serpId=b-i-97-0918-12708882302804612984
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "2":
+          - generic: "2"
+        - gridcell "0,27":
+          - generic: 0,27
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "16":
+          - generic: "16"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+          - link "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fmaratonas-fortaleza&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+          - link "Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: https://www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+        - gridcell "18 de set."
+      - 'row "Show details Selecionar portal do atleta Salvar na lista de palavras-chave Analisar portal do atleta na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 6 Acessar SERP de portal do atleta Recursos de SERP na SERP: 4 2 0,27 110 15 Analise www.portaldocorredor.com.br/quem-somos Acessar www.portaldocorredor.com.br/quem-somos 26 de set."':
+        - gridcell "Show details Selecionar portal do atleta":
+          - button "Show details":
+          - checkbox "Selecionar portal do atleta"
+        - gridcell "Salvar na lista de palavras-chave Analisar portal do atleta na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar portal do atleta na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=portal%20do%20atleta&currency=usd
+            - text: portal do atleta
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "6":
+          - generic: "6"
+        - 'gridcell "Acessar SERP de portal do atleta Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de portal do atleta":
+            - /url: /analytics/serp?phrase=portal+do+atleta&domain=portaldocorredor.com.br&db=br&position=6&type=organic&serpId=b-h-97-0926-10295437448097880474
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "2":
+          - generic: "2"
+        - gridcell "0,27":
+          - generic: 0,27
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "15":
+          - generic: "15"
+        - gridcell "Analise www.portaldocorredor.com.br/quem-somos Acessar www.portaldocorredor.com.br/quem-somos":
+          - link "Analise www.portaldocorredor.com.br/quem-somos":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fquem-somos&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/quem-somos
+          - link "Acessar www.portaldocorredor.com.br/quem-somos":
+            - /url: https://www.portaldocorredor.com.br/quem-somos
+        - gridcell "26 de set."
+      - 'row "Show details Selecionar contra relógio revista Salvar na lista de palavras-chave Analisar contra relógio revista na Visão geral de palavras-chave Abrir visão geral Intenção: Comercial Intenção: De navegação 4 Acessar SERP de contra relógio revista Recursos de SERP na SERP: 4 1 0,13 170 21 Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio 14 de out."':
+        - gridcell "Show details Selecionar contra relógio revista":
+          - button "Show details":
+          - checkbox "Selecionar contra relógio revista"
+        - gridcell "Salvar na lista de palavras-chave Analisar contra relógio revista na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar contra relógio revista na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=contra%20rel%C3%B3gio%20revista&currency=usd
+            - text: contra relógio revista
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Comercial Intenção: De navegação"':
+          - 'generic "Intenção: Comercial"':
+            - button "C":
+              - generic: C
+          - 'generic "Intenção: De navegação"':
+            - button "N":
+              - generic: "N"
+        - gridcell "4":
+          - generic: "4"
+        - 'gridcell "Acessar SERP de contra relógio revista Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de contra relógio revista":
+            - /url: /analytics/serp?phrase=contra+rel%C3%B3gio+revista&domain=portaldocorredor.com.br&db=br&position=4&type=organic&serpId=b-d-97-1014-12224002077255524300
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "1":
+          - generic: "1"
+        - gridcell "0,13":
+          - generic: 0,13
+        - gridcell "170":
+          - generic: "170"
+        - gridcell "21":
+          - generic: "21"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+          - link "Analise www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fcontra-relogio&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/contra-relogio
+          - link "Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: https://www.portaldocorredor.com.br/noticias/contra-relogio
+        - gridcell "14 de out."
+      - 'row "Show details Selecionar contra relogio revista Salvar na lista de palavras-chave Analisar contra relogio revista na Visão geral de palavras-chave Abrir visão geral Intenção: Comercial Intenção: De navegação 4 Acessar SERP de contra relogio revista Recursos de SERP na SERP: 4 1 0,13 170 16 Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio 20 de out."':
+        - gridcell "Show details Selecionar contra relogio revista":
+          - button "Show details":
+          - checkbox "Selecionar contra relogio revista"
+        - gridcell "Salvar na lista de palavras-chave Analisar contra relogio revista na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar contra relogio revista na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=contra%20relogio%20revista&currency=usd
+            - text: contra relogio revista
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Comercial Intenção: De navegação"':
+          - 'generic "Intenção: Comercial"':
+            - button "C":
+              - generic: C
+          - 'generic "Intenção: De navegação"':
+            - button "N":
+              - generic: "N"
+        - gridcell "4":
+          - generic: "4"
+        - 'gridcell "Acessar SERP de contra relogio revista Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de contra relogio revista":
+            - /url: /analytics/serp?phrase=contra+relogio+revista&domain=portaldocorredor.com.br&db=br&position=4&type=organic&serpId=b-d-97-1019-1572733573036049982
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "1":
+          - generic: "1"
+        - gridcell "0,13":
+          - generic: 0,13
+        - gridcell "170":
+          - generic: "170"
+        - gridcell "16":
+          - generic: "16"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+          - link "Analise www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fcontra-relogio&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/contra-relogio
+          - link "Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: https://www.portaldocorredor.com.br/noticias/contra-relogio
+        - gridcell "20 de out."
+      - 'row "Show details Selecionar san silvestre Salvar na lista de palavras-chave Analisar san silvestre na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 14 Acessar SERP de san silvestre Recursos de SERP na SERP: 6 1 0,13 260 61 Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo 10 de out."':
+        - gridcell "Show details Selecionar san silvestre":
+          - button "Show details":
+          - checkbox "Selecionar san silvestre"
+        - gridcell "Salvar na lista de palavras-chave Analisar san silvestre na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar san silvestre na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=san%20silvestre&currency=usd
+            - text: san silvestre
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "14":
+          - generic: "14"
+        - 'gridcell "Acessar SERP de san silvestre Recursos de SERP na SERP: 6"':
+          - link "Acessar SERP de san silvestre":
+            - /url: /analytics/serp?phrase=san+silvestre&domain=portaldocorredor.com.br&db=br&position=14&type=organic&serpId=b-h-97-1010-18406047031716629041
+          - separator
+          - 'button "Recursos de SERP na SERP: 6"':
+            - button "6":
+              - generic: "6"
+        - gridcell "1":
+          - generic: "1"
+        - gridcell "0,13":
+          - generic: 0,13
+        - gridcell "260":
+          - generic: "260"
+        - gridcell "61":
+          - generic: "61"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+          - link "Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fsao-silvestres-mundo&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/sao-silvestres-mundo
+          - link "Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+            - /url: https://www.portaldocorredor.com.br/noticias/sao-silvestres-mundo
+        - gridcell "10 de out."
+      - 'row "Show details Selecionar contra relogio Salvar na lista de palavras-chave Analisar contra relogio na Visão geral de palavras-chave Abrir visão geral Intenção: De navegação 9 Acessar SERP de contra relogio Recursos de SERP na SERP: 5 1 0,13 260 37 Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio 06 de set."':
+        - gridcell "Show details Selecionar contra relogio":
+          - button "Show details":
+          - checkbox "Selecionar contra relogio"
+        - gridcell "Salvar na lista de palavras-chave Analisar contra relogio na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar contra relogio na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=contra%20relogio&currency=usd
+            - text: contra relogio
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: De navegação"':
+          - 'generic "Intenção: De navegação"':
+            - button "N":
+              - generic: "N"
+        - gridcell "9":
+          - generic: "9"
+        - 'gridcell "Acessar SERP de contra relogio Recursos de SERP na SERP: 5"':
+          - link "Acessar SERP de contra relogio":
+            - /url: /analytics/serp?phrase=contra+relogio&domain=portaldocorredor.com.br&db=br&position=9&type=organic&serpId=b-h-97-0906-5201649395195896296
+          - separator
+          - 'button "Recursos de SERP na SERP: 5"':
+            - button "5":
+              - generic: "5"
+        - gridcell "1":
+          - generic: "1"
+        - gridcell "0,13":
+          - generic: 0,13
+        - gridcell "260":
+          - generic: "260"
+        - gridcell "37":
+          - generic: "37"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+          - link "Analise www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fcontra-relogio&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/contra-relogio
+          - link "Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: https://www.portaldocorredor.com.br/noticias/contra-relogio
+        - gridcell "06 de set."
+      - 'row "Show details Selecionar contra o relogio Salvar na lista de palavras-chave Analisar contra o relogio na Visão geral de palavras-chave Abrir visão geral Intenção: Comercial Intenção: De navegação 6 Acessar SERP de contra o relogio Recursos de SERP na SERP: 5 1 0,13 260 33 Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio 09 de out."':
+        - gridcell "Show details Selecionar contra o relogio":
+          - button "Show details":
+          - checkbox "Selecionar contra o relogio"
+        - gridcell "Salvar na lista de palavras-chave Analisar contra o relogio na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar contra o relogio na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=contra%20o%20relogio&currency=usd
+            - text: contra o relogio
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Comercial Intenção: De navegação"':
+          - 'generic "Intenção: Comercial"':
+            - button "C":
+              - generic: C
+          - 'generic "Intenção: De navegação"':
+            - button "N":
+              - generic: "N"
+        - gridcell "6":
+          - generic: "6"
+        - 'gridcell "Acessar SERP de contra o relogio Recursos de SERP na SERP: 5"':
+          - link "Acessar SERP de contra o relogio":
+            - /url: /analytics/serp?phrase=contra+o+relogio&domain=portaldocorredor.com.br&db=br&position=6&type=organic&serpId=b-h-97-1009-2251876655931225148
+          - separator
+          - 'button "Recursos de SERP na SERP: 5"':
+            - button "5":
+              - generic: "5"
+        - gridcell "1":
+          - generic: "1"
+        - gridcell "0,13":
+          - generic: 0,13
+        - gridcell "260":
+          - generic: "260"
+        - gridcell "33":
+          - generic: "33"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+          - link "Analise www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fcontra-relogio&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/contra-relogio
+          - link "Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: https://www.portaldocorredor.com.br/noticias/contra-relogio
+        - gridcell "09 de out."
+      - 'row "Show details Selecionar portal corridas Salvar na lista de palavras-chave Analisar portal corridas na Visão geral de palavras-chave Abrir visão geral Intenção: De navegação 22 Acessar SERP de portal corridas Recursos de SERP na SERP: 5 0 < 0,01 110 40 Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case 28 de set."':
+        - gridcell "Show details Selecionar portal corridas":
+          - button "Show details":
+          - checkbox "Selecionar portal corridas"
+        - gridcell "Salvar na lista de palavras-chave Analisar portal corridas na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar portal corridas na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=portal%20corridas&currency=usd
+            - text: portal corridas
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: De navegação"':
+          - 'generic "Intenção: De navegação"':
+            - button "N":
+              - generic: "N"
+        - gridcell "22":
+          - generic: "22"
+        - 'gridcell "Acessar SERP de portal corridas Recursos de SERP na SERP: 5"':
+          - link "Acessar SERP de portal corridas":
+            - /url: /analytics/serp?phrase=portal+corridas&domain=portaldocorredor.com.br&db=br&position=22&type=organic&serpId=b-h-97-0928-7860193524447169076
+          - separator
+          - 'button "Recursos de SERP na SERP: 5"':
+            - button "5":
+              - generic: "5"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "40":
+          - generic: "40"
+        - gridcell "Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case":
+          - link "Analise www.portaldocorredor.com.br/case":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fcase&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/case
+          - link "Acessar www.portaldocorredor.com.br/case":
+            - /url: https://www.portaldocorredor.com.br/case
+        - gridcell "28 de set."
+      - 'row "Show details Selecionar quantos quilômetros são a são silvestre Salvar na lista de palavras-chave Analisar quantos quilômetros são a são silvestre na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 33 Acessar SERP de quantos quilômetros são a são silvestre Recursos de SERP na SERP: 7 0 < 0,01 110 56 Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo 05 de out."':
+        - gridcell "Show details Selecionar quantos quilômetros são a são silvestre":
+          - button "Show details":
+          - checkbox "Selecionar quantos quilômetros são a são silvestre"
+        - gridcell "Salvar na lista de palavras-chave Analisar quantos quilômetros são a são silvestre na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar quantos quilômetros são a são silvestre na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=quantos%20quil%C3%B4metros%20s%C3%A3o%20a%20s%C3%A3o%20silvestre&currency=usd
+            - text: quantos quilômetros são a são silvestre
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "33":
+          - generic: "33"
+        - 'gridcell "Acessar SERP de quantos quilômetros são a são silvestre Recursos de SERP na SERP: 7"':
+          - link "Acessar SERP de quantos quilômetros são a são silvestre":
+            - /url: /analytics/serp?phrase=quantos+quil%C3%B4metros+s%C3%A3o+a+s%C3%A3o+silvestre&domain=portaldocorredor.com.br&db=br&position=33&type=organic&serpId=b-h-97-1005-15164273756046913068
+          - separator
+          - 'button "Recursos de SERP na SERP: 7"':
+            - button "7":
+              - generic: "7"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "56":
+          - generic: "56"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+          - link "Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fsao-silvestres-mundo&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/sao-silvestres-mundo
+          - link "Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+            - /url: https://www.portaldocorredor.com.br/noticias/sao-silvestres-mundo
+        - gridcell "05 de out."
+      - 'row "Show details Selecionar resultado maratona de fortaleza 2026 Salvar na lista de palavras-chave Analisar resultado maratona de fortaleza 2026 na Visão geral de palavras-chave Abrir visão geral Intenção: Comercial 13 Acessar SERP de resultado maratona de fortaleza 2026 Recursos de SERP na SERP: 4 0 < 0,01 110 24 Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza 18 de set."':
+        - gridcell "Show details Selecionar resultado maratona de fortaleza 2026":
+          - button "Show details":
+          - checkbox "Selecionar resultado maratona de fortaleza 2026"
+        - gridcell "Salvar na lista de palavras-chave Analisar resultado maratona de fortaleza 2026 na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar resultado maratona de fortaleza 2026 na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=resultado%20maratona%20de%20fortaleza%202026&currency=usd
+            - text: resultado maratona de fortaleza 2026
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Comercial"':
+          - 'generic "Intenção: Comercial"':
+            - button "C":
+              - generic: C
+        - gridcell "13":
+          - generic: "13"
+        - 'gridcell "Acessar SERP de resultado maratona de fortaleza 2026 Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de resultado maratona de fortaleza 2026":
+            - /url: /analytics/serp?phrase=resultado+maratona+de+fortaleza+2026&domain=portaldocorredor.com.br&db=br&position=13&type=organic&serpId=b-g-97-0918-15415734900208042987
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "24":
+          - generic: "24"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+          - link "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fmaratonas-fortaleza&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+          - link "Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: https://www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+        - gridcell "18 de set."
+      - 'row "Show details Selecionar corridas em fortaleza Salvar na lista de palavras-chave Analisar corridas em fortaleza na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 41 Acessar SERP de corridas em fortaleza Recursos de SERP na SERP: 4 0 < 0,01 590 11 Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case 07 de out."':
+        - gridcell "Show details Selecionar corridas em fortaleza":
+          - button "Show details":
+          - checkbox "Selecionar corridas em fortaleza"
+        - gridcell "Salvar na lista de palavras-chave Analisar corridas em fortaleza na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corridas em fortaleza na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corridas%20em%20fortaleza&currency=usd
+            - text: corridas em fortaleza
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "41":
+          - generic: "41"
+        - 'gridcell "Acessar SERP de corridas em fortaleza Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de corridas em fortaleza":
+            - /url: /analytics/serp?phrase=corridas+em+fortaleza&domain=portaldocorredor.com.br&db=br&position=41&type=organic&serpId=b-f-97-1007-3811557561047950188
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "590":
+          - generic: "590"
+        - gridcell "11":
+          - generic: "11"
+        - gridcell "Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case":
+          - link "Analise www.portaldocorredor.com.br/case":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fcase&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/case
+          - link "Acessar www.portaldocorredor.com.br/case":
+            - /url: https://www.portaldocorredor.com.br/case
+        - gridcell "07 de out."
+      - 'row "Show details Selecionar maratona fortaleza Salvar na lista de palavras-chave Analisar maratona fortaleza na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 15 Acessar SERP de maratona fortaleza Recursos de SERP na SERP: 4 0 < 0,01 260 26 Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza 15 de set."':
+        - gridcell "Show details Selecionar maratona fortaleza":
+          - button "Show details":
+          - checkbox "Selecionar maratona fortaleza"
+        - gridcell "Salvar na lista de palavras-chave Analisar maratona fortaleza na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar maratona fortaleza na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=maratona%20fortaleza&currency=usd
+            - text: maratona fortaleza
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "15":
+          - generic: "15"
+        - 'gridcell "Acessar SERP de maratona fortaleza Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de maratona fortaleza":
+            - /url: /analytics/serp?phrase=maratona+fortaleza&domain=portaldocorredor.com.br&db=br&position=15&type=organic&serpId=b-e-97-0915-10066746717643551180
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "260":
+          - generic: "260"
+        - gridcell "26":
+          - generic: "26"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+          - link "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fmaratonas-fortaleza&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+          - link "Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: https://www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+        - gridcell "15 de set."
+      - 'row "Show details Selecionar contrarelogio Salvar na lista de palavras-chave Analisar contrarelogio na Visão geral de palavras-chave Abrir visão geral Intenção: De navegação 5 Acessar SERP de contrarelogio Recursos de SERP na SERP: 5 0 < 0,01 90 36 Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio 07 de out."':
+        - gridcell "Show details Selecionar contrarelogio":
+          - button "Show details":
+          - checkbox "Selecionar contrarelogio"
+        - gridcell "Salvar na lista de palavras-chave Analisar contrarelogio na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar contrarelogio na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=contrarelogio&currency=usd
+            - text: contrarelogio
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: De navegação"':
+          - 'generic "Intenção: De navegação"':
+            - button "N":
+              - generic: "N"
+        - gridcell "5":
+          - generic: "5"
+        - 'gridcell "Acessar SERP de contrarelogio Recursos de SERP na SERP: 5"':
+          - link "Acessar SERP de contrarelogio":
+            - /url: /analytics/serp?phrase=contrarelogio&domain=portaldocorredor.com.br&db=br&position=5&type=organic&serpId=b-g-97-1007-4439660681715003607
+          - separator
+          - 'button "Recursos de SERP na SERP: 5"':
+            - button "5":
+              - generic: "5"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "90":
+          - generic: "90"
+        - gridcell "36":
+          - generic: "36"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+          - link "Analise www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fcontra-relogio&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/contra-relogio
+          - link "Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: https://www.portaldocorredor.com.br/noticias/contra-relogio
+        - gridcell "07 de out."
+      - 'row "Show details Selecionar night run fortaleza Salvar na lista de palavras-chave Analisar night run fortaleza na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 24 Acessar SERP de night run fortaleza Recursos de SERP na SERP: 5 0 < 0,01 320 11 Analise www.portaldocorredor.com.br/noticias/night-run-ce-2022-end Acessar www.portaldocorredor.com.br/noticias/night-run-ce-2022-end 03 de set."':
+        - gridcell "Show details Selecionar night run fortaleza":
+          - button "Show details":
+          - checkbox "Selecionar night run fortaleza"
+        - gridcell "Salvar na lista de palavras-chave Analisar night run fortaleza na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar night run fortaleza na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=night%20run%20fortaleza&currency=usd
+            - text: night run fortaleza
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "24":
+          - generic: "24"
+        - 'gridcell "Acessar SERP de night run fortaleza Recursos de SERP na SERP: 5"':
+          - link "Acessar SERP de night run fortaleza":
+            - /url: /analytics/serp?phrase=night+run+fortaleza&domain=portaldocorredor.com.br&db=br&position=24&type=organic&serpId=b-i-97-0903-4515244414125396504
+          - separator
+          - 'button "Recursos de SERP na SERP: 5"':
+            - button "5":
+              - generic: "5"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "320":
+          - generic: "320"
+        - gridcell "11":
+          - generic: "11"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/night-run-ce-2022-end Acessar www.portaldocorredor.com.br/noticias/night-run-ce-2022-end":
+          - link "Analise www.portaldocorredor.com.br/noticias/night-run-ce-2022-end":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fnight-run-ce-2022-end&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/night-run-ce-2022-end
+          - link "Acessar www.portaldocorredor.com.br/noticias/night-run-ce-2022-end":
+            - /url: https://www.portaldocorredor.com.br/noticias/night-run-ce-2022-end
+        - gridcell "03 de set."
+      - 'row "Show details Selecionar corrida fortaleza Salvar na lista de palavras-chave Analisar corrida fortaleza na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 43 Acessar SERP de corrida fortaleza Recursos de SERP na SERP: 5 0 < 0,01 720 20 Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case 04 de set."':
+        - gridcell "Show details Selecionar corrida fortaleza":
+          - button "Show details":
+          - checkbox "Selecionar corrida fortaleza"
+        - gridcell "Salvar na lista de palavras-chave Analisar corrida fortaleza na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corrida fortaleza na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corrida%20fortaleza&currency=usd
+            - text: corrida fortaleza
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "43":
+          - generic: "43"
+        - 'gridcell "Acessar SERP de corrida fortaleza Recursos de SERP na SERP: 5"':
+          - link "Acessar SERP de corrida fortaleza":
+            - /url: /analytics/serp?phrase=corrida+fortaleza&domain=portaldocorredor.com.br&db=br&position=43&type=organic&serpId=b-h-97-0904-7171624169504948529
+          - separator
+          - 'button "Recursos de SERP na SERP: 5"':
+            - button "5":
+              - generic: "5"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "720":
+          - generic: "720"
+        - gridcell "20":
+          - generic: "20"
+        - gridcell "Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case":
+          - link "Analise www.portaldocorredor.com.br/case":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fcase&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/case
+          - link "Acessar www.portaldocorredor.com.br/case":
+            - /url: https://www.portaldocorredor.com.br/case
+        - gridcell "04 de set."
+      - 'row "Show details Selecionar emerson iser bem Salvar na lista de palavras-chave Analisar emerson iser bem na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa Intenção: Transacional 21 Acessar SERP de emerson iser bem Recursos de SERP na SERP: 7 0 < 0,01 110 29 Analise www.portaldocorredor.com.br/noticias/iser-ben-vence-a-sao-silvestre-1997 Acessar www.portaldocorredor.com.br/noticias/iser-ben-vence-a-sao-silvestre-1997 09 de set."':
+        - gridcell "Show details Selecionar emerson iser bem":
+          - button "Show details":
+          - checkbox "Selecionar emerson iser bem"
+        - gridcell "Salvar na lista de palavras-chave Analisar emerson iser bem na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar emerson iser bem na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=emerson%20iser%20bem&currency=usd
+            - text: emerson iser bem
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa Intenção: Transacional"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+          - 'generic "Intenção: Transacional"':
+            - button "T":
+              - generic: T
+        - gridcell "21":
+          - generic: "21"
+        - 'gridcell "Acessar SERP de emerson iser bem Recursos de SERP na SERP: 7"':
+          - link "Acessar SERP de emerson iser bem":
+            - /url: /analytics/serp?phrase=emerson+iser+bem&domain=portaldocorredor.com.br&db=br&position=21&type=organic&serpId=b-g-97-0909-994673894363036395
+          - separator
+          - 'button "Recursos de SERP na SERP: 7"':
+            - button "7":
+              - generic: "7"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "29":
+          - generic: "29"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/iser-ben-vence-a-sao-silvestre-1997 Acessar www.portaldocorredor.com.br/noticias/iser-ben-vence-a-sao-silvestre-1997":
+          - link "Analise www.portaldocorredor.com.br/noticias/iser-ben-vence-a-sao-silvestre-1997":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fiser-ben-vence-a-sao-silvestre-1997&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/iser-ben-vence-a-sao-silvestre-1997
+          - link "Acessar www.portaldocorredor.com.br/noticias/iser-ben-vence-a-sao-silvestre-1997":
+            - /url: https://www.portaldocorredor.com.br/noticias/iser-ben-vence-a-sao-silvestre-1997
+        - gridcell "09 de set."
+      - 'row "Show details Selecionar maratona internacional de fortaleza Salvar na lista de palavras-chave Analisar maratona internacional de fortaleza na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 20 Acessar SERP de maratona internacional de fortaleza Recursos de SERP na SERP: 5 0 < 0,01 480 21 Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza 17 de out."':
+        - gridcell "Show details Selecionar maratona internacional de fortaleza":
+          - button "Show details":
+          - checkbox "Selecionar maratona internacional de fortaleza"
+        - gridcell "Salvar na lista de palavras-chave Analisar maratona internacional de fortaleza na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar maratona internacional de fortaleza na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=maratona%20internacional%20de%20fortaleza&currency=usd
+            - text: maratona internacional de fortaleza
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "20":
+          - generic: "20"
+        - 'gridcell "Acessar SERP de maratona internacional de fortaleza Recursos de SERP na SERP: 5"':
+          - link "Acessar SERP de maratona internacional de fortaleza":
+            - /url: /analytics/serp?phrase=maratona+internacional+de+fortaleza&domain=portaldocorredor.com.br&db=br&position=20&type=organic&serpId=b-f-97-1017-8839556443449020625
+          - separator
+          - 'button "Recursos de SERP na SERP: 5"':
+            - button "5":
+              - generic: "5"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "480":
+          - generic: "480"
+        - gridcell "21":
+          - generic: "21"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+          - link "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fmaratonas-fortaleza&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+          - link "Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: https://www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+        - gridcell "17 de out."
+      - 'row "Show details Selecionar corridas fortaleza Salvar na lista de palavras-chave Analisar corridas fortaleza na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 29 Acessar SERP de corridas fortaleza Recursos de SERP na SERP: 4 0 < 0,01 480 21 Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case 25 de set."':
+        - gridcell "Show details Selecionar corridas fortaleza":
+          - button "Show details":
+          - checkbox "Selecionar corridas fortaleza"
+        - gridcell "Salvar na lista de palavras-chave Analisar corridas fortaleza na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corridas fortaleza na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corridas%20fortaleza&currency=usd
+            - text: corridas fortaleza
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "29":
+          - generic: "29"
+        - 'gridcell "Acessar SERP de corridas fortaleza Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de corridas fortaleza":
+            - /url: /analytics/serp?phrase=corridas+fortaleza&domain=portaldocorredor.com.br&db=br&position=29&type=organic&serpId=b-e-97-0925-8969589721450649416
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "480":
+          - generic: "480"
+        - gridcell "21":
+          - generic: "21"
+        - gridcell "Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case":
+          - link "Analise www.portaldocorredor.com.br/case":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fcase&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/case
+          - link "Acessar www.portaldocorredor.com.br/case":
+            - /url: https://www.portaldocorredor.com.br/case
+        - gridcell "25 de set."
+      - 'row "Show details Selecionar corrida fortaleza 2025 Salvar na lista de palavras-chave Analisar corrida fortaleza 2025 na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 45 Acessar SERP de corrida fortaleza 2025 Recursos de SERP na SERP: 4 0 < 0,01 170 12 Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case 10 de out."':
+        - gridcell "Show details Selecionar corrida fortaleza 2025":
+          - button "Show details":
+          - checkbox "Selecionar corrida fortaleza 2025"
+        - gridcell "Salvar na lista de palavras-chave Analisar corrida fortaleza 2025 na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corrida fortaleza 2025 na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corrida%20fortaleza%202025&currency=usd
+            - text: corrida fortaleza 2025
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "45":
+          - generic: "45"
+        - 'gridcell "Acessar SERP de corrida fortaleza 2025 Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de corrida fortaleza 2025":
+            - /url: /analytics/serp?phrase=corrida+fortaleza+2025&domain=portaldocorredor.com.br&db=br&position=45&type=organic&serpId=b-g-97-1010-16310595034753638181
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "170":
+          - generic: "170"
+        - gridcell "12":
+          - generic: "12"
+        - gridcell "Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case":
+          - link "Analise www.portaldocorredor.com.br/case":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fcase&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/case
+          - link "Acessar www.portaldocorredor.com.br/case":
+            - /url: https://www.portaldocorredor.com.br/case
+        - gridcell "10 de out."
+      - 'row "Show details Selecionar corrida em fortaleza Salvar na lista de palavras-chave Analisar corrida em fortaleza na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 41 Acessar SERP de corrida em fortaleza Recursos de SERP na SERP: 4 0 < 0,01 170 18 Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case 07 de set."':
+        - gridcell "Show details Selecionar corrida em fortaleza":
+          - button "Show details":
+          - checkbox "Selecionar corrida em fortaleza"
+        - gridcell "Salvar na lista de palavras-chave Analisar corrida em fortaleza na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corrida em fortaleza na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corrida%20em%20fortaleza&currency=usd
+            - text: corrida em fortaleza
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "41":
+          - generic: "41"
+        - 'gridcell "Acessar SERP de corrida em fortaleza Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de corrida em fortaleza":
+            - /url: /analytics/serp?phrase=corrida+em+fortaleza&domain=portaldocorredor.com.br&db=br&position=41&type=organic&serpId=b-f-97-0907-13563509864415930398
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "170":
+          - generic: "170"
+        - gridcell "18":
+          - generic: "18"
+        - gridcell "Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case":
+          - link "Analise www.portaldocorredor.com.br/case":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fcase&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/case
+          - link "Acessar www.portaldocorredor.com.br/case":
+            - /url: https://www.portaldocorredor.com.br/case
+        - gridcell "07 de set."
+      - 'row "Show details Selecionar maratona internacional de fortaleza 2026 Salvar na lista de palavras-chave Analisar maratona internacional de fortaleza 2026 na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 20 Acessar SERP de maratona internacional de fortaleza 2026 Recursos de SERP na SERP: 3 0 < 0,01 170 19 Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza 01 de set."':
+        - gridcell "Show details Selecionar maratona internacional de fortaleza 2026":
+          - button "Show details":
+          - checkbox "Selecionar maratona internacional de fortaleza 2026"
+        - gridcell "Salvar na lista de palavras-chave Analisar maratona internacional de fortaleza 2026 na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar maratona internacional de fortaleza 2026 na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=maratona%20internacional%20de%20fortaleza%202026&currency=usd
+            - text: maratona internacional de fortaleza 2026
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "20":
+          - generic: "20"
+        - 'gridcell "Acessar SERP de maratona internacional de fortaleza 2026 Recursos de SERP na SERP: 3"':
+          - link "Acessar SERP de maratona internacional de fortaleza 2026":
+            - /url: /analytics/serp?phrase=maratona+internacional+de+fortaleza+2026&domain=portaldocorredor.com.br&db=br&position=20&type=organic&serpId=b-f-97-0901-7727319150731117917
+          - separator
+          - 'button "Recursos de SERP na SERP: 3"':
+            - button "3":
+              - generic: "3"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "170":
+          - generic: "170"
+        - gridcell "19":
+          - generic: "19"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+          - link "Analise www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fmaratonas-fortaleza&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+          - link "Acessar www.portaldocorredor.com.br/noticias/maratonas-fortaleza":
+            - /url: https://www.portaldocorredor.com.br/noticias/maratonas-fortaleza
+        - gridcell "01 de set."
+      - 'row "Show details Selecionar portal do atleta Salvar na lista de palavras-chave Analisar portal do atleta na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 21 Acessar SERP de portal do atleta Recursos de SERP na SERP: 4 0 < 0,01 110 15 Analise www.portaldocorredor.com.br/ Acessar www.portaldocorredor.com.br/ 26 de set."':
+        - gridcell "Show details Selecionar portal do atleta":
+          - button "Show details":
+          - checkbox "Selecionar portal do atleta"
+        - gridcell "Salvar na lista de palavras-chave Analisar portal do atleta na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar portal do atleta na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=portal%20do%20atleta&currency=usd
+            - text: portal do atleta
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "21":
+          - generic: "21"
+        - 'gridcell "Acessar SERP de portal do atleta Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de portal do atleta":
+            - /url: /analytics/serp?phrase=portal+do+atleta&domain=portaldocorredor.com.br&db=br&position=21&type=organic&serpId=b-h-97-0926-10295437448097880474
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "15":
+          - generic: "15"
+        - gridcell "Analise www.portaldocorredor.com.br/ Acessar www.portaldocorredor.com.br/":
+          - link "Analise www.portaldocorredor.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2F&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/
+          - link "Acessar www.portaldocorredor.com.br/":
+            - /url: https://www.portaldocorredor.com.br/
+        - gridcell "26 de set."
+      - 'row "Show details Selecionar portal do atleta Salvar na lista de palavras-chave Analisar portal do atleta na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 72 Acessar SERP de portal do atleta Recursos de SERP na SERP: 4 0 < 0,01 110 15 Analise www.portaldocorredor.com.br/resultados Acessar www.portaldocorredor.com.br/resultados 26 de set."':
+        - gridcell "Show details Selecionar portal do atleta":
+          - button "Show details":
+          - checkbox "Selecionar portal do atleta"
+        - gridcell "Salvar na lista de palavras-chave Analisar portal do atleta na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar portal do atleta na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=portal%20do%20atleta&currency=usd
+            - text: portal do atleta
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "72":
+          - generic: "72"
+        - 'gridcell "Acessar SERP de portal do atleta Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de portal do atleta":
+            - /url: /analytics/serp?phrase=portal+do+atleta&domain=portaldocorredor.com.br&db=br&position=72&type=organic&serpId=b-h-97-0926-10295437448097880474
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "15":
+          - generic: "15"
+        - gridcell "Analise www.portaldocorredor.com.br/resultados Acessar www.portaldocorredor.com.br/resultados":
+          - link "Analise www.portaldocorredor.com.br/resultados":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fresultados&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/resultados
+          - link "Acessar www.portaldocorredor.com.br/resultados":
+            - /url: https://www.portaldocorredor.com.br/resultados
+        - gridcell "26 de set."
+      - 'row "Show details Selecionar night run fortaleza 2025 Salvar na lista de palavras-chave Analisar night run fortaleza 2025 na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 25 Acessar SERP de night run fortaleza 2025 Recursos de SERP na SERP: 4 0 < 0,01 210 10 Analise www.portaldocorredor.com.br/noticias/night-run-ce-2022-end Acessar www.portaldocorredor.com.br/noticias/night-run-ce-2022-end 14 de set."':
+        - gridcell "Show details Selecionar night run fortaleza 2025":
+          - button "Show details":
+          - checkbox "Selecionar night run fortaleza 2025"
+        - gridcell "Salvar na lista de palavras-chave Analisar night run fortaleza 2025 na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar night run fortaleza 2025 na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=night%20run%20fortaleza%202025&currency=usd
+            - text: night run fortaleza 2025
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "25":
+          - generic: "25"
+        - 'gridcell "Acessar SERP de night run fortaleza 2025 Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de night run fortaleza 2025":
+            - /url: /analytics/serp?phrase=night+run+fortaleza+2025&domain=portaldocorredor.com.br&db=br&position=25&type=organic&serpId=b-f-97-0914-13288318908499008284
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "210":
+          - generic: "210"
+        - gridcell "10":
+          - generic: "10"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/night-run-ce-2022-end Acessar www.portaldocorredor.com.br/noticias/night-run-ce-2022-end":
+          - link "Analise www.portaldocorredor.com.br/noticias/night-run-ce-2022-end":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fnight-run-ce-2022-end&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/night-run-ce-2022-end
+          - link "Acessar www.portaldocorredor.com.br/noticias/night-run-ce-2022-end":
+            - /url: https://www.portaldocorredor.com.br/noticias/night-run-ce-2022-end
+        - gridcell "14 de set."
+      - 'row "Show details Selecionar km sao silvestre Salvar na lista de palavras-chave Analisar km sao silvestre na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 10 Acessar SERP de km sao silvestre Recursos de SERP na SERP: 7 0 < 0,01 210 12 Analise www.portaldocorredor.com.br/noticias/97-sao-silvestre Acessar www.portaldocorredor.com.br/noticias/97-sao-silvestre 26 de set."':
+        - gridcell "Show details Selecionar km sao silvestre":
+          - button "Show details":
+          - checkbox "Selecionar km sao silvestre"
+        - gridcell "Salvar na lista de palavras-chave Analisar km sao silvestre na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar km sao silvestre na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=km%20sao%20silvestre&currency=usd
+            - text: km sao silvestre
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "10":
+          - generic: "10"
+        - 'gridcell "Acessar SERP de km sao silvestre Recursos de SERP na SERP: 7"':
+          - link "Acessar SERP de km sao silvestre":
+            - /url: /analytics/serp?phrase=km+sao+silvestre&domain=portaldocorredor.com.br&db=br&position=10&type=organic&serpId=b-e-97-0926-16306702497985206170
+          - separator
+          - 'button "Recursos de SERP na SERP: 7"':
+            - button "7":
+              - generic: "7"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "210":
+          - generic: "210"
+        - gridcell "12":
+          - generic: "12"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/97-sao-silvestre Acessar www.portaldocorredor.com.br/noticias/97-sao-silvestre":
+          - link "Analise www.portaldocorredor.com.br/noticias/97-sao-silvestre":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2F97-sao-silvestre&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/97-sao-silvestre
+          - link "Acessar www.portaldocorredor.com.br/noticias/97-sao-silvestre":
+            - /url: https://www.portaldocorredor.com.br/noticias/97-sao-silvestre
+        - gridcell "26 de set."
+      - 'row "Show details Selecionar casa do corredor Salvar na lista de palavras-chave Analisar casa do corredor na Visão geral de palavras-chave Abrir visão geral Intenção: De navegação 12 Acessar SERP de casa do corredor Recursos de SERP na SERP: 5 0 < 0,01 90 40 Analise www.portaldocorredor.com.br/ Acessar www.portaldocorredor.com.br/ 04 de set."':
+        - gridcell "Show details Selecionar casa do corredor":
+          - button "Show details":
+          - checkbox "Selecionar casa do corredor"
+        - gridcell "Salvar na lista de palavras-chave Analisar casa do corredor na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar casa do corredor na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=casa%20do%20corredor&currency=usd
+            - text: casa do corredor
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: De navegação"':
+          - 'generic "Intenção: De navegação"':
+            - button "N":
+              - generic: "N"
+        - gridcell "12":
+          - generic: "12"
+        - 'gridcell "Acessar SERP de casa do corredor Recursos de SERP na SERP: 5"':
+          - link "Acessar SERP de casa do corredor":
+            - /url: /analytics/serp?phrase=casa+do+corredor&domain=portaldocorredor.com.br&db=br&position=12&type=organic&serpId=b-h-97-0904-13445004356985128571
+          - separator
+          - 'button "Recursos de SERP na SERP: 5"':
+            - button "5":
+              - generic: "5"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "90":
+          - generic: "90"
+        - gridcell "40":
+          - generic: "40"
+        - gridcell "Analise www.portaldocorredor.com.br/ Acessar www.portaldocorredor.com.br/":
+          - link "Analise www.portaldocorredor.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2F&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/
+          - link "Acessar www.portaldocorredor.com.br/":
+            - /url: https://www.portaldocorredor.com.br/
+        - gridcell "04 de set."
+      - 'row "Show details Selecionar quantos quilômetros é a são silvestre Salvar na lista de palavras-chave Analisar quantos quilômetros é a são silvestre na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 33 Acessar SERP de quantos quilômetros é a são silvestre Recursos de SERP na SERP: 8 0 < 0,01 390 35 Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo 13 de set."':
+        - gridcell "Show details Selecionar quantos quilômetros é a são silvestre":
+          - button "Show details":
+          - checkbox "Selecionar quantos quilômetros é a são silvestre"
+        - gridcell "Salvar na lista de palavras-chave Analisar quantos quilômetros é a são silvestre na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar quantos quilômetros é a são silvestre na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=quantos%20quil%C3%B4metros%20%C3%A9%20a%20s%C3%A3o%20silvestre&currency=usd
+            - text: quantos quilômetros é a são silvestre
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "33":
+          - generic: "33"
+        - 'gridcell "Acessar SERP de quantos quilômetros é a são silvestre Recursos de SERP na SERP: 8"':
+          - link "Acessar SERP de quantos quilômetros é a são silvestre":
+            - /url: /analytics/serp?phrase=quantos+quil%C3%B4metros+%C3%A9+a+s%C3%A3o+silvestre&domain=portaldocorredor.com.br&db=br&position=33&type=organic&serpId=b-f-97-0913-9789698132709122551
+          - separator
+          - 'button "Recursos de SERP na SERP: 8"':
+            - button "8":
+              - generic: "8"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "390":
+          - generic: "390"
+        - gridcell "35":
+          - generic: "35"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+          - link "Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fsao-silvestres-mundo&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/sao-silvestres-mundo
+          - link "Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+            - /url: https://www.portaldocorredor.com.br/noticias/sao-silvestres-mundo
+        - gridcell "13 de set."
+      - 'row "Show details Selecionar portal corrida Salvar na lista de palavras-chave Analisar portal corrida na Visão geral de palavras-chave Abrir visão geral Intenção: De navegação 20 Acessar SERP de portal corrida Recursos de SERP na SERP: 5 0 < 0,01 210 47 Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case 24 de set."':
+        - gridcell "Show details Selecionar portal corrida":
+          - button "Show details":
+          - checkbox "Selecionar portal corrida"
+        - gridcell "Salvar na lista de palavras-chave Analisar portal corrida na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar portal corrida na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=portal%20corrida&currency=usd
+            - text: portal corrida
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: De navegação"':
+          - 'generic "Intenção: De navegação"':
+            - button "N":
+              - generic: "N"
+        - gridcell "20":
+          - generic: "20"
+        - 'gridcell "Acessar SERP de portal corrida Recursos de SERP na SERP: 5"':
+          - link "Acessar SERP de portal corrida":
+            - /url: /analytics/serp?phrase=portal+corrida&domain=portaldocorredor.com.br&db=br&position=20&type=organic&serpId=b-e-97-0924-1545036756001477019
+          - separator
+          - 'button "Recursos de SERP na SERP: 5"':
+            - button "5":
+              - generic: "5"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "210":
+          - generic: "210"
+        - gridcell "47":
+          - generic: "47"
+        - gridcell "Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case":
+          - link "Analise www.portaldocorredor.com.br/case":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fcase&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/case
+          - link "Acessar www.portaldocorredor.com.br/case":
+            - /url: https://www.portaldocorredor.com.br/case
+        - gridcell "24 de set."
+      - 'row "Show details Selecionar corrida ceara Salvar na lista de palavras-chave Analisar corrida ceara na Visão geral de palavras-chave Abrir visão geral Intenção: Comercial 56 Acessar SERP de corrida ceara Recursos de SERP na SERP: 4 0 < 0,01 90 7 Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case 23 de set."':
+        - gridcell "Show details Selecionar corrida ceara":
+          - button "Show details":
+          - checkbox "Selecionar corrida ceara"
+        - gridcell "Salvar na lista de palavras-chave Analisar corrida ceara na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corrida ceara na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corrida%20ceara&currency=usd
+            - text: corrida ceara
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Comercial"':
+          - 'generic "Intenção: Comercial"':
+            - button "C":
+              - generic: C
+        - gridcell "56":
+          - generic: "56"
+        - 'gridcell "Acessar SERP de corrida ceara Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de corrida ceara":
+            - /url: /analytics/serp?phrase=corrida+ceara&domain=portaldocorredor.com.br&db=br&position=56&type=organic&serpId=b-i-97-0923-2572260760950715867
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "90":
+          - generic: "90"
+        - gridcell "7":
+          - generic: "7"
+        - gridcell "Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case":
+          - link "Analise www.portaldocorredor.com.br/case":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fcase&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/case
+          - link "Acessar www.portaldocorredor.com.br/case":
+            - /url: https://www.portaldocorredor.com.br/case
+        - gridcell "23 de set."
+      - 'row "Show details Selecionar open results Salvar na lista de palavras-chave Analisar open results na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 18 Acessar SERP de open results Recursos de SERP na SERP: 4 0 < 0,01 720 36 Analise www.portaldocorredor.com.br/resultados Acessar www.portaldocorredor.com.br/resultados 14 de out."':
+        - gridcell "Show details Selecionar open results":
+          - button "Show details":
+          - checkbox "Selecionar open results"
+        - gridcell "Salvar na lista de palavras-chave Analisar open results na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar open results na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=open%20results&currency=usd
+            - text: open results
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "18":
+          - generic: "18"
+        - 'gridcell "Acessar SERP de open results Recursos de SERP na SERP: 4"':
+          - link "Acessar SERP de open results":
+            - /url: /analytics/serp?phrase=open+results&domain=portaldocorredor.com.br&db=br&position=18&type=organic&serpId=b-h-97-1014-12132264770700387684
+          - separator
+          - 'button "Recursos de SERP na SERP: 4"':
+            - button "4":
+              - generic: "4"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "720":
+          - generic: "720"
+        - gridcell "36":
+          - generic: "36"
+        - gridcell "Analise www.portaldocorredor.com.br/resultados Acessar www.portaldocorredor.com.br/resultados":
+          - link "Analise www.portaldocorredor.com.br/resultados":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fresultados&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/resultados
+          - link "Acessar www.portaldocorredor.com.br/resultados":
+            - /url: https://www.portaldocorredor.com.br/resultados
+        - gridcell "14 de out."
+      - 'row "Show details Selecionar corridas ceara Salvar na lista de palavras-chave Analisar corridas ceara na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 48 Acessar SERP de corridas ceara Recursos de SERP na SERP: 2 0 < 0,01 140 8 Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case 26 de set."':
+        - gridcell "Show details Selecionar corridas ceara":
+          - button "Show details":
+          - checkbox "Selecionar corridas ceara"
+        - gridcell "Salvar na lista de palavras-chave Analisar corridas ceara na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corridas ceara na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corridas%20ceara&currency=usd
+            - text: corridas ceara
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "48":
+          - generic: "48"
+        - 'gridcell "Acessar SERP de corridas ceara Recursos de SERP na SERP: 2"':
+          - link "Acessar SERP de corridas ceara":
+            - /url: /analytics/serp?phrase=corridas+ceara&domain=portaldocorredor.com.br&db=br&position=48&type=organic&serpId=b-h-97-0926-10179064314536518706
+          - separator
+          - 'button "Recursos de SERP na SERP: 2"':
+            - button "2":
+              - generic: "2"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "140":
+          - generic: "140"
+        - gridcell "8":
+          - generic: "8"
+        - gridcell "Analise www.portaldocorredor.com.br/case Acessar www.portaldocorredor.com.br/case":
+          - link "Analise www.portaldocorredor.com.br/case":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fcase&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/case
+          - link "Acessar www.portaldocorredor.com.br/case":
+            - /url: https://www.portaldocorredor.com.br/case
+        - gridcell "26 de set."
+      - 'row "Show details Selecionar quantos quilômetros tem a são silvestre Salvar na lista de palavras-chave Analisar quantos quilômetros tem a são silvestre na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 32 Acessar SERP de quantos quilômetros tem a são silvestre Recursos de SERP na SERP: 8 0 < 0,01 590 36 Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo 06 de out."':
+        - gridcell "Show details Selecionar quantos quilômetros tem a são silvestre":
+          - button "Show details":
+          - checkbox "Selecionar quantos quilômetros tem a são silvestre"
+        - gridcell "Salvar na lista de palavras-chave Analisar quantos quilômetros tem a são silvestre na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar quantos quilômetros tem a são silvestre na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=quantos%20quil%C3%B4metros%20tem%20a%20s%C3%A3o%20silvestre&currency=usd
+            - text: quantos quilômetros tem a são silvestre
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "32":
+          - generic: "32"
+        - 'gridcell "Acessar SERP de quantos quilômetros tem a são silvestre Recursos de SERP na SERP: 8"':
+          - link "Acessar SERP de quantos quilômetros tem a são silvestre":
+            - /url: /analytics/serp?phrase=quantos+quil%C3%B4metros+tem+a+s%C3%A3o+silvestre&domain=portaldocorredor.com.br&db=br&position=32&type=organic&serpId=b-h-97-1006-2459984044358316514
+          - separator
+          - 'button "Recursos de SERP na SERP: 8"':
+            - button "8":
+              - generic: "8"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "590":
+          - generic: "590"
+        - gridcell "36":
+          - generic: "36"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+          - link "Analise www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fsao-silvestres-mundo&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/sao-silvestres-mundo
+          - link "Acessar www.portaldocorredor.com.br/noticias/sao-silvestres-mundo":
+            - /url: https://www.portaldocorredor.com.br/noticias/sao-silvestres-mundo
+        - gridcell "06 de out."
+      - 'row "Show details Selecionar contra o relogio Salvar na lista de palavras-chave Analisar contra o relogio na Visão geral de palavras-chave Abrir visão geral Intenção: Comercial Intenção: De navegação 8 Acessar SERP de contra o relogio Recursos de SERP na SERP: 5 0 < 0,01 260 33 Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio 09 de out."':
+        - gridcell "Show details Selecionar contra o relogio":
+          - button "Show details":
+          - checkbox "Selecionar contra o relogio"
+        - gridcell "Salvar na lista de palavras-chave Analisar contra o relogio na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar contra o relogio na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=contra%20o%20relogio&currency=usd
+            - text: contra o relogio
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Comercial Intenção: De navegação"':
+          - 'generic "Intenção: Comercial"':
+            - button "C":
+              - generic: C
+          - 'generic "Intenção: De navegação"':
+            - button "N":
+              - generic: "N"
+        - gridcell "8":
+          - generic: "8"
+        - 'gridcell "Acessar SERP de contra o relogio Recursos de SERP na SERP: 5"':
+          - link "Acessar SERP de contra o relogio":
+            - /url: /analytics/serp?phrase=contra+o+relogio&domain=portaldocorredor.com.br&db=br&position=8&type=organic&serpId=b-h-97-1009-2251876655931225148
+          - separator
+          - 'button "Recursos de SERP na SERP: 5"':
+            - button "5":
+              - generic: "5"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "260":
+          - generic: "260"
+        - gridcell "33":
+          - generic: "33"
+        - gridcell "Analise www.portaldocorredor.com.br/noticias/contra-relogio Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+          - link "Analise www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.portaldocorredor.com.br%2Fnoticias%2Fcontra-relogio&searchType=url&currency=usd
+            - generic: www.portaldocorredor.com.br/noticias/contra-relogio
+          - link "Acessar www.portaldocorredor.com.br/noticias/contra-relogio":
+            - /url: https://www.portaldocorredor.com.br/noticias/contra-relogio
+        - gridcell "09 de out."
+- contentinfo:
+  - link "Fale conosco":
+    - /url: /company/contacts/
+  - link "Sobre nós":
+    - /url: /company/
+  - link "Blog":
+    - /url: /blog/
+  - button "Português (Brasil)"
+  - link "Ver planos e preços":
+    - /url: /pricing/
+  - link "Comece a usar a Semrush":
+    - /url: https://www.semrush.com/academy/courses/getting-started-with-semrush/
+  - link "Configurações dos cookies":
+    - /url: javascript:window.showConsentSettings();
+  - link "Informações jurídicas":
+    - /url: /company/legal/
+  - link "Política de privacidade":
+    - /url: /company/legal/privacy-policy/
+  - link "Não venda minhas informações pessoais":
+    - /url: javascript:window.showConsentSettings();
+  - generic: © 2026 Semrush Holdings. Todos os direitos reservados.
+- region "Notificações"
+- button "Abrir painel de ajuda"
+- region "Notifications"
+- iframe [id="intercom-frame"]

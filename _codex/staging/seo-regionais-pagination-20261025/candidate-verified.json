@@ -1,0 +1,39 @@
+{
+  "scenarios": 21,
+  "performance": {
+    "candidate": [
+      0.290168,
+      0.253595,
+      0.263429
+    ],
+    "baseline": [
+      0.261839,
+      0.248654,
+      0.273062
+    ]
+  },
+  "compiledTemplates": 10,
+  "totalPR": 128.0,
+  "disjointIds": 128,
+  "exactRows": 50,
+  "hashes": {
+    "estado/index.cfm": "904d12ef58fe5b7254241dc893a2c24894a4dcc2c47a69a9d561f241f64edce2",
+    "api/eventos.cfm": "0adf60218cfb63c644c66c24e4dfb267d3f58d4eefc0a0382629be5e572f0fe7",
+    "includes/backend/backend.cfm": "621da774121ce14ba9a1e30d3421f7e446e53995afb7bf9c66999f7d25bc0172",
+    "includes/backend/backend_estado_cidades.cfm": "9614fb2c3486eb9cf7e1b9f2f3bbb0e89cb7ff6f49ae6daa541f786092af65ec",
+    "includes/lista_de_eventos_simple.cfm": "f4b2997de75c27169780299ed161859eb353143985665594175799820bf4f321",
+    "includes/filtros.cfm": "30b45fb6680dfcc3c0efd1079c0ea40136f300971a3572124b21847cc4690046",
+    "includes/regional_summary.cfm": "6ab8640496852d1d6450b9dbba5f2114717b0f7e609da7dcab8874501cb7d0a3",
+    "assets/js/runnerhub-event-filters.js": "86040cbf95df31c2b763393af33d7983fd0d9a55c7ec04ff968235f4edae9848",
+    "assets/js/runnerhub-event-filters.min.js": "3ef1898e195fa437e0ebe5e284009b7ccecbe3c6ebccbb88cd04002eebf81cb2",
+    "assets/js/runnerhub-estado-cidades.js": "80f3c0f94f66ac65929565058ceb62d7fcfbf50efa3ccf3684fe37c85e3692da",
+    "assets/js/runnerhub-estado-cidades.min.js": "0a06fb9d615b5a5047eb613a58970798f5c566f53907bf8df6877efa55351715",
+    "assets/css/runnerhub-regionais.css": "79576e1b92150ebd7f96d8b0186c378698f909e0078b3e5999320290198d0330",
+    "assets/css/runnerhub-regionais.min.css": "71b501799518038a211622d728cc83d2db6c2f00737d7e83e80033509e10af6b",
+    "includes/backend/backend_regional_calendar.cfm": "775e177a63c68c1a38a51e5a0c8bccca5a9ab44c3b5d9049ac741ff17f78ca39",
+    "includes/regional_period.cfm": "bddb0810907de58ea0f54c81627ddd3f01ec2379746fcb7b023912ff61a98415",
+    "includes/regional_pagination.cfm": "c2187c1369979277de6572d55ac57abee15e442944ac8d9ad391d37714ecc3c2",
+    "assets/js/runnerhub-regional-period.js": "cffcb013cdfed33b0598e8a3d27453f255c1d27a4d31381fbbbe91b42917637b",
+    "assets/js/runnerhub-regional-period.min.js": "85ce61fec98a342a190b6ae8b5c289445b15698396e401f738fd2ead6331604b"
+  }
+}

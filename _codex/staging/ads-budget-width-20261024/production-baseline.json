@@ -1,0 +1,90 @@
+{
+  "files": {
+    "ads/home.cfm": {
+      "exists": true,
+      "sha256": "dd1de564f3acec3926fd9de12edccdf1f7b7afcd5d445d2a6a2f4222e46b3e1d",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    }
+  },
+  "watch": {
+    "services/accountDelegation/Store.cfc": {
+      "exists": true,
+      "sha256": "4dc51efb3a3f93475fa76e51b743c9012e5c44b0e2f2800a70eb2c6c8de6d8c2",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/header.cfm": {
+      "exists": true,
+      "sha256": "8099d39e60a32911e70c598b10ecd9bacf0387f13e5dedc9a90c93301497255c",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/navbar.cfm": {
+      "exists": true,
+      "sha256": "aac182cd1d0ccf356ec4a3a81ce66fea99eb03a024117a8594833aa83acb6476",
+      "mode": 420,
+      "uid": 0,
+      "gid": 50
+    },
+    "services/BusinessAccountDelegation.cfc": {
+      "exists": true,
+      "sha256": "061aa91502797c0476edbb8fca5cf67c251b411ec99de3a17279ba5c0e3e1e1e",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads/includes/delegation.cfm": {
+      "exists": true,
+      "sha256": "774c95418db2df140afbda439498501f3370d243fecb8b1330cd123015ab6704",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads/includes/backend.cfm": {
+      "exists": true,
+      "sha256": "e9635d74da75e09b8f500337db4a93df8201f325f990c58cdac66f48df50e6fa",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "ads/includes/campaign_mutations.cfm": {
+      "exists": true,
+      "sha256": "c70d158dd59e8aa2826a0668138237ccb34e3e643f0d13ec28d796ddb6eaa28f",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads/includes/workspace_campaign_detail.cfm": {
+      "exists": true,
+      "sha256": "34b9848492e79bc934d089d9638936bd7b9f3268a94cea6b4dd5fdb20b19d7b0",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "ads/includes/workspace_campaigns.cfm": {
+      "exists": true,
+      "sha256": "e5b919c5b99ef0ae7a00601eb9ad6237c5a841c64fe0ef9b5d0655d727e03ade",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "includes/estrutura/home_conta_dashboard.cfm": {
+      "exists": true,
+      "sha256": "fb6b3fc31f58388f177d130dbbf6e837be26457d3c10330aafa88d2d29bdbe74",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "services/accountDelegation/Policy.cfc": {
+      "exists": true,
+      "sha256": "7d07c4d6d2bffea13d4abf674d99956d3c260dbe494c1d4c86a85f5ad4e6272d",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  }
+}

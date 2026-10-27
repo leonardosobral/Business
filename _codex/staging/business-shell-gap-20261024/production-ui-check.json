@@ -1,0 +1,35 @@
+[
+  {
+    "accountLink": true,
+    "gap": 16.40625,
+    "navbarHeight": 58.59375,
+    "page": "home",
+    "shellHeight": 59,
+    "strayParagraph": false
+  },
+  {
+    "gap": 16.40625,
+    "page": "kanban",
+    "rendered": true,
+    "strayParagraph": false
+  },
+  {
+    "gap": 16.40625,
+    "page": "agenda",
+    "rendered": true,
+    "strayParagraph": false
+  },
+  {
+    "gap": 20.40625,
+    "page": "crm",
+    "rendered": true,
+    "strayParagraph": false
+  },
+  {
+    "choicesAvailable": true,
+    "newStylesheet": false,
+    "page": "selecionar-conta",
+    "rendered": true,
+    "sharedShell": false
+  }
+]

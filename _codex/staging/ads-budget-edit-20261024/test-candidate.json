@@ -1,0 +1,23 @@
+{
+  "CHECKS": [
+    "budget boundary 1",
+    "budget boundary 2",
+    "budget boundary 3",
+    "budget boundary 4",
+    "budget boundary 5",
+    "budget boundary 6",
+    "budget boundary 7",
+    "budget boundary 8",
+    "budget boundary 9",
+    "budget boundary 10",
+    "budget boundary 11",
+    "no existing regression audit entries",
+    "original audit reproduces CF query return-type error",
+    "corrected audit returns successfully within transaction",
+    "invalid audit context still fails",
+    "failed audit cannot leave a second entry",
+    "entire audit regression rolled back; no persistent writes"
+  ],
+  "ENGINE": "2025,0,13,331960",
+  "CUSTOMER_RECORDS_CHANGED": false
+}

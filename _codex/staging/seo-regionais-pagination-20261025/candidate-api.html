@@ -1,0 +1,626 @@
+
+<section class="rr-regional-summary" aria-label="Resumo do calendário" data-regional-summary data-regional-total="8">
+    <p class="rr-regional-summary-count"><strong>8 provas cadastradas</strong> para os filtros selecionados.</p>
+    <p class="rr-regional-period">Período: 01&#x2f;11&#x2f;2026 a 30&#x2f;11&#x2f;2026.</p> 
+        <nav class="rr-regional-shortcuts" aria-label="Filtrar provas por distância">
+            
+                <a href="&#x2f;estado&#x2f;pr&#x2f;curitiba&#x2f;&#x3f;distancia&#x3d;5&#x25;2C5&amp;tempo&#x3d;0&#x25;2C12&amp;rua&#x3d;true&amp;trail&#x3d;true&amp;nacional&#x3d;true&amp;internacional&#x3d;false&amp;cupom&#x3d;false&amp;periodo_inicio&#x3d;2026&#x25;2D11&#x25;2D01&amp;periodo_fim&#x3d;2026&#x25;2D11&#x25;2D30" aria-current="true">5 km</a>
+            
+                <a href="&#x2f;estado&#x2f;pr&#x2f;curitiba&#x2f;&#x3f;distancia&#x3d;10&#x25;2C10&amp;tempo&#x3d;0&#x25;2C12&amp;rua&#x3d;true&amp;trail&#x3d;true&amp;nacional&#x3d;true&amp;internacional&#x3d;false&amp;cupom&#x3d;false&amp;periodo_inicio&#x3d;2026&#x25;2D11&#x25;2D01&amp;periodo_fim&#x3d;2026&#x25;2D11&#x25;2D30">10 km</a>
+            
+                <a href="&#x2f;estado&#x2f;pr&#x2f;curitiba&#x2f;&#x3f;distancia&#x3d;21&#x25;2C21&amp;tempo&#x3d;0&#x25;2C12&amp;rua&#x3d;true&amp;trail&#x3d;true&amp;nacional&#x3d;true&amp;internacional&#x3d;false&amp;cupom&#x3d;false&amp;periodo_inicio&#x3d;2026&#x25;2D11&#x25;2D01&amp;periodo_fim&#x3d;2026&#x25;2D11&#x25;2D30">21 km</a>
+            
+            <a href="&#x2f;estado&#x2f;pr&#x2f;curitiba&#x2f;">Limpar filtros</a>
+        </nav>
+    
+    <details class="rr-regional-help"><summary>Como consultar este calendário</summary>
+        <p>O período inclui provas que acontecem em qualquer dia entre as datas escolhidas, inclusive eventos de mais de um dia. Abra o evento para conferir datas, distâncias, regulamento e informações de inscrição. Consulte as condições de qualquer cupom antes de utilizá-lo.</p>
+        <p>Para planejar o tempo de prova, use a <a href="/calculadora-de-pace/?estado=pr">calculadora de pace</a>.</p>
+    </details>
+</section>
+
+
+<div class="row g-2" id="listaEvento">
+
+
+
+
+            
+            <div class="text-divider fw-bold mt-2">Novembro</div>
+        <div class="col-12 mb-1">
+
+    
+    
+        <style>
+            .home-event-card {
+                border: 1px solid rgba(51, 51, 51, 0.08);
+                border-radius: 10px;
+                background-color: #ffffff;
+                overflow: hidden;
+            }
+
+            .home-event-card-link {
+                display: block;
+                color: #333333;
+                text-decoration: none;
+            }
+
+            .home-event-card-body {
+                padding: 0.95rem;
+            }
+
+            .home-event-card-top {
+                display: grid;
+                grid-template-columns: 62px minmax(0, 1fr);
+                gap: 0.85rem;
+                align-items: start;
+            }
+
+            .home-event-card-date {
+                border: 1px solid rgba(51, 51, 51, 0.08);
+                border-radius: 10px;
+                background-color: #efefef;
+                overflow: hidden;
+                text-align: center;
+                color: #333333;
+            }
+
+            .home-event-card-date .day {
+                display: block;
+                font-size: 1.35rem;
+                font-weight: 700;
+                line-height: 1;
+                padding: 0.5rem 0.2rem 0.1rem;
+            }
+
+            .home-event-card-date .month {
+                display: block;
+                background-color: #fab120;
+                color: #333333;
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                padding: 0.1rem;
+                text-transform: uppercase;
+            }
+
+            .home-event-card-date .year {
+                display: block;
+                background-color: transparent;
+                color: #333333;
+                font-size: 0.72rem;
+                font-weight: 700;
+                padding: 0.1rem;
+            }
+
+            .home-event-card-title {
+                color: #333333;
+                font-size: 1rem;
+                font-weight: 700;
+                line-height: 1.25;
+                margin-bottom: 0.4rem;
+            }
+
+            .home-event-card-meta {
+                color: rgba(51, 51, 51, 0.72);
+                font-size: 0.82rem;
+                line-height: 1.35;
+            }
+
+            .home-event-card-meta i {
+                color: #fab120;
+            }
+
+            .home-event-card-flags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.4rem;
+                margin-top: 0.65rem;
+            }
+
+            .home-event-flag {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.38rem 0.65rem;
+                border-radius: 8px;
+                border: 1px solid rgba(51, 51, 51, 0.1);
+                background-color: #efefef;
+                color: #333333;
+                font-size: 0.74rem;
+                font-weight: 700;
+                line-height: 1;
+            }
+
+            .home-event-flag.is-coupon {
+                background-color: #fab120;
+                border-color: #fab120;
+                color: #333333;
+                font-weight: 800;
+                box-shadow: inset 0 0 0 1px rgba(51, 51, 51, 0.03);
+            }
+
+            .home-event-card-distances {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.45rem;
+                margin-top: 0.8rem;
+            }
+
+            .home-event-distance {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.35rem;
+                padding: 0.42rem 0.68rem;
+                border-radius: 8px;
+                border: 1px solid rgba(51, 51, 51, 0.08);
+                background-color: #ffffff;
+                color: #333333;
+                font-size: 0.8rem;
+                font-weight: 600;
+                line-height: 1;
+            }
+
+            .home-event-distance i {
+                color: #fab120;
+            }
+
+            .home-event-card-badges {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.35rem;
+                margin-top: 0.8rem;
+                padding-top: 0.8rem;
+                border-top: 1px solid rgba(51, 51, 51, 0.08);
+            }
+
+            .home-event-card-badges img {
+                width: 24px;
+                height: 24px;
+                border-radius: 6px;
+            }
+        </style>
+    
+
+            <a href="/evento/2026-8-corrida-do-fogo-curitiba/" class="home-event-card-link">
+                <div class="home-event-card" id="2026-8-corrida-do-fogo-curitiba">
+                    <div class="home-event-card-body">
+                        <div class="home-event-card-top">
+                            <div class="home-event-card-date">
+                                <span class="day">01</span>
+                                <span class="month">nov</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="home-event-card-title ">
+                                    8ª CORRIDA DO FOGO - CURITIBA
+                                </div>
+                                <div class="home-event-card-meta">
+                                    <i class="fa-solid fa-location-dot me-1"></i>Curitiba&nbsp;-&nbspPR
+                                </div>
+
+                                <div class="home-event-card-flags">
+                                    
+                                        <span class="home-event-flag">Corrida de rua</span>
+                                    
+                                </div>
+                                
+                                    <div class="home-event-card-distances">
+                                        
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    5km
+                                                </span>
+                                            
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    10km
+                                                </span>
+                                            
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        
+        
+
+</div>
+<div class="col-12 mb-1">
+
+    
+    
+
+            <a href="/evento/2026-lupo-sport-corre-curitiba/" class="home-event-card-link">
+                <div class="home-event-card" id="2026-lupo-sport-corre-curitiba">
+                    <div class="home-event-card-body">
+                        <div class="home-event-card-top">
+                            <div class="home-event-card-date">
+                                <span class="day">01</span>
+                                <span class="month">nov</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="home-event-card-title ">
+                                    LUPO SPORT CORRE CURITIBA
+                                </div>
+                                <div class="home-event-card-meta">
+                                    <i class="fa-solid fa-location-dot me-1"></i>Curitiba&nbsp;-&nbspPR
+                                </div>
+
+                                <div class="home-event-card-flags">
+                                    
+                                        <span class="home-event-flag">Corrida de rua</span>
+                                    
+                                </div>
+                                
+                                    <div class="home-event-card-distances">
+                                        
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    3km
+                                                </span>
+                                            
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    5km
+                                                </span>
+                                            
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    10km
+                                                </span>
+                                            
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        
+        
+
+</div>
+<div class="col-12 mb-1">
+
+    
+    
+
+            <a href="/evento/2026-1-corrida-da-capela-da-pmpr/" class="home-event-card-link">
+                <div class="home-event-card" id="2026-1-corrida-da-capela-da-pmpr">
+                    <div class="home-event-card-body">
+                        <div class="home-event-card-top">
+                            <div class="home-event-card-date">
+                                <span class="day">08</span>
+                                <span class="month">nov</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="home-event-card-title ">
+                                    1 Corrida da Capela da PMPR
+                                </div>
+                                <div class="home-event-card-meta">
+                                    <i class="fa-solid fa-location-dot me-1"></i>Curitiba&nbsp;-&nbspPR
+                                </div>
+
+                                <div class="home-event-card-flags">
+                                    
+                                        <span class="home-event-flag">Corrida de rua</span>
+                                    
+                                </div>
+                                
+                                    <div class="home-event-card-distances">
+                                        
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    5km
+                                                </span>
+                                            
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        
+        
+
+</div>
+<div class="col-12 mb-1">
+
+    
+    
+
+            <a href="/evento/2026-maratona-de-curitiba-santander-2026/" class="home-event-card-link">
+                <div class="home-event-card" id="2026-maratona-de-curitiba-santander-2026">
+                    <div class="home-event-card-body">
+                        <div class="home-event-card-top">
+                            <div class="home-event-card-date">
+                                <span class="day">15</span>
+                                <span class="month">nov</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="home-event-card-title ">
+                                    MARATONA DE CURITIBA SANTANDER 2026
+                                </div>
+                                <div class="home-event-card-meta">
+                                    <i class="fa-solid fa-location-dot me-1"></i>Curitiba&nbsp;-&nbspPR
+                                </div>
+
+                                <div class="home-event-card-flags">
+                                    
+                                        <span class="home-event-flag">Corrida de rua</span>
+                                    
+                                </div>
+                                
+                                    <div class="home-event-card-distances">
+                                        
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    5km
+                                                </span>
+                                            
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    10km
+                                                </span>
+                                            
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    21km
+                                                </span>
+                                            
+                                    </div>
+                                
+                                    <div class="home-event-card-badges">
+                                        
+                                                <img src="https://roadrunners.run/assets/badges/badge_foco.jpg" alt="Cobertura fotográfica Foco Radical" title="Cobertura fotográfica Foco Radical" data-mdb-tooltip-init>
+                                            
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        
+        
+
+</div>
+<div class="col-12 mb-1">
+
+    
+    
+
+            <a href="/evento/2026-final-do-circuito-procorrer-2026-mizuno/" class="home-event-card-link">
+                <div class="home-event-card" id="2026-final-do-circuito-procorrer-2026-mizuno">
+                    <div class="home-event-card-body">
+                        <div class="home-event-card-top">
+                            <div class="home-event-card-date">
+                                <span class="day">21</span>
+                                <span class="month">nov</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="home-event-card-title ">
+                                    FINAL DO CIRCUITO PROCORRER 2026 - MIZUNO
+                                </div>
+                                <div class="home-event-card-meta">
+                                    <i class="fa-solid fa-location-dot me-1"></i>Curitiba&nbsp;-&nbspPR
+                                </div>
+
+                                <div class="home-event-card-flags">
+                                    
+                                        <span class="home-event-flag">Corrida de rua</span>
+                                    
+                                </div>
+                                
+                                    <div class="home-event-card-distances">
+                                        
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    5km
+                                                </span>
+                                            
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        
+        
+
+</div>
+<div class="col-12 mb-1">
+
+    
+    
+
+            <a href="/evento/2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba/" class="home-event-card-link">
+                <div class="home-event-card" id="2026-circuito-de-corridas-correr-e-massa-apostou-loterias-etapa-curitiba">
+                    <div class="home-event-card-body">
+                        <div class="home-event-card-top">
+                            <div class="home-event-card-date">
+                                <span class="day">22</span>
+                                <span class="month">nov</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="home-event-card-title ">
+                                    CIRCUITO DE CORRIDAS - CORRER É MASSA APOSTOU LOTERIAS - ETAPA CURITIBA
+                                </div>
+                                <div class="home-event-card-meta">
+                                    <i class="fa-solid fa-location-dot me-1"></i>Curitiba&nbsp;-&nbspPR
+                                </div>
+
+                                <div class="home-event-card-flags">
+                                    
+                                        <span class="home-event-flag">Corrida de rua</span>
+                                    
+                                </div>
+                                
+                                    <div class="home-event-card-distances">
+                                        
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    5km
+                                                </span>
+                                            
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    10km
+                                                </span>
+                                            
+                                    </div>
+                                
+                                    <div class="home-event-card-badges">
+                                        
+                                                <img src="https://roadrunners.run/assets/badges/badge_foco.jpg" alt="Cobertura fotográfica Foco Radical" title="Cobertura fotográfica Foco Radical" data-mdb-tooltip-init>
+                                            
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        
+        
+
+</div>
+<div class="col-12 mb-1">
+
+    
+    
+
+            <a href="/evento/2026-circuito-das-estacoes-2026-verao-curitiba/" class="home-event-card-link">
+                <div class="home-event-card" id="2026-circuito-das-estacoes-2026-verao-curitiba">
+                    <div class="home-event-card-body">
+                        <div class="home-event-card-top">
+                            <div class="home-event-card-date">
+                                <span class="day">29</span>
+                                <span class="month">nov</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="home-event-card-title ">
+                                    Circuito das Estações 2026 - Verão - Curitiba
+                                </div>
+                                <div class="home-event-card-meta">
+                                    <i class="fa-solid fa-location-dot me-1"></i>Curitiba&nbsp;-&nbspPR
+                                </div>
+
+                                <div class="home-event-card-flags">
+                                    
+                                        <span class="home-event-flag">Corrida de rua</span>
+                                    
+                                </div>
+                                
+                                    <div class="home-event-card-distances">
+                                        
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    5km
+                                                </span>
+                                            
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    10km
+                                                </span>
+                                            
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        
+        
+
+</div>
+<div class="col-12 mb-1">
+
+    
+    
+
+            <a href="/evento/2026-track-field-run-series-2026motiva-aeroportos-curitiba/" class="home-event-card-link">
+                <div class="home-event-card" id="2026-track-field-run-series-2026motiva-aeroportos-curitiba">
+                    <div class="home-event-card-body">
+                        <div class="home-event-card-top">
+                            <div class="home-event-card-date">
+                                <span class="day">29</span>
+                                <span class="month">nov</span>
+                                <span class="year">2026</span>
+                            </div>
+                            <div class="min-w-0">
+                                <div class="home-event-card-title ">
+                                    Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba
+                                </div>
+                                <div class="home-event-card-meta">
+                                    <i class="fa-solid fa-location-dot me-1"></i>Curitiba&nbsp;-&nbspPR
+                                </div>
+
+                                <div class="home-event-card-flags">
+                                    
+                                        <span class="home-event-flag">Corrida de rua</span>
+                                    
+                                </div>
+                                
+                                    <div class="home-event-card-distances">
+                                        
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    5km
+                                                </span>
+                                            
+                                                <span class="home-event-distance">
+                                                    <i class="fa-solid fa-person-running"></i>
+                                                    10km
+                                                </span>
+                                            
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        
+        
+
+</div>
+
+
+</div>
+
+
+
+<script>
+    totalEventos = 8;
+    lastMonth = 11;
+</script>
+
+<nav class="rr-regional-pagination" aria-label="Páginas do calendário" data-regional-pagination data-page="1" data-pages="1">
+    <p>Página 1 de 1 · 8 provas</p>
+    <div>
+    
+    </div>
+</nav>
+
+    <script>if (window.RunnerHubEstadoCities && window.RunnerHubEstadoCities.update) window.RunnerHubEstadoCities.update(JSON.parse('\x7B\x22total\x22\x3A44.0,\x22uf\x22\x3A\x22pr\x22,\x22filters\x22\x3A\x7B\x22distancia\x22\x3A\x225,5\x22,\x22internacional\x22\x3A\x22false\x22,\x22trail\x22\x3A\x22true\x22,\x22badges\x22\x3A\x22\x22,\x22cupom\x22\x3A\x22false\x22,\x22periodo_inicio\x22\x3A\x222026\x2D11\x2D01\x22,\x22periodo_fim\x22\x3A\x222026\x2D11\x2D30\x22,\x22tempo\x22\x3A\x220,12\x22,\x22nacional\x22\x3A\x22true\x22,\x22rua\x22\x3A\x22true\x22\x7D,\x22cities\x22\x3A\x5B\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22abapa\x22,\x22name\x22\x3A\x22Abapa\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22agudos\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22Agudos\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22almirante\x2Dtamandare\x22,\x22name\x22\x3A\x22Almirante\x20Tamandare\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22alto\x2Dparana\x22,\x22name\x22\x3A\x22Alto\x20Paran\xE1\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22alvorada\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22Alvorada\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22andira\x22,\x22name\x22\x3A\x22Andir\xE1\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22antonina\x22,\x22name\x22\x3A\x22Antonina\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22antonio\x2Dolinto\x22,\x22name\x22\x3A\x22Antonio\x20Olinto\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22apucarana\x22,\x22name\x22\x3A\x22Apucarana\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22arapongas\x22,\x22name\x22\x3A\x22Arapongas\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22arapoti\x22,\x22name\x22\x3A\x22Arapoti\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22araucaria\x22,\x22name\x22\x3A\x22Araucaria\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22assai\x22,\x22name\x22\x3A\x22Assa\xED\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22assis\x2Dchateaubriand\x22,\x22name\x22\x3A\x22Assis\x20Chateaubriand\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22balsa\x2Dnova\x22,\x22name\x22\x3A\x22Balsa\x20Nova\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22bandeirantes\x22,\x22name\x22\x3A\x22Bandeirantes\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22barracao\x22,\x22name\x22\x3A\x22Barrac\xE3o\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22barra\x2Ddo\x2Djacare\x22,\x22name\x22\x3A\x22Barra\x20do\x20Jacar\xE9\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22bela\x2Dvista\x2Ddo\x2Dparaiso\x22,\x22name\x22\x3A\x22Bela\x20Vista\x20do\x20Para\xEDso\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22bituruna\x22,\x22name\x22\x3A\x22Bituruna\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22bocaiuva\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22Bocaiuva\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22bom\x2Dsucesso\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22Bom\x20Sucesso\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22cafeara\x22,\x22name\x22\x3A\x22Cafeara\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22cafelandia\x22,\x22name\x22\x3A\x22Cafel\xE2ndia\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22california\x22,\x22name\x22\x3A\x22Calif\xF3rnia\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22cambe\x22,\x22name\x22\x3A\x22Camb\xE9\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22cambira\x22,\x22name\x22\x3A\x22Cambira\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22campina\x2Dgrande\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22Campina\x20Grande\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22campo\x2Ddo\x2Dtenente\x22,\x22name\x22\x3A\x22Campo\x20do\x20Tenente\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22campo\x2Dlargo\x22,\x22name\x22\x3A\x22Campo\x20Largo\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22campo\x2Dmagro\x22,\x22name\x22\x3A\x22Campo\x20Magro\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22campo\x2Dmourao\x22,\x22name\x22\x3A\x22Campo\x20Mourao\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22capanema\x22,\x22name\x22\x3A\x22Capanema\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22capitao\x2Dleonidas\x2Dmarques\x22,\x22name\x22\x3A\x22Capit\xE3o\x20Le\xF4nidas\x20Marques\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22carambei\x22,\x22name\x22\x3A\x22Carambe\xED\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22carlopolis\x22,\x22name\x22\x3A\x22Carl\xF3polis\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22cascavel\x22,\x22name\x22\x3A\x22Cascavel\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22castro\x22,\x22name\x22\x3A\x22Castro\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22cerro\x2Dazul\x22,\x22name\x22\x3A\x22Cerro\x20Azul\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22ceu\x2Dazul\x22,\x22name\x22\x3A\x22C\xE9u\x20Azul\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22chopinzinho\x22,\x22name\x22\x3A\x22Chopinzinho\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22cianorte\x22,\x22name\x22\x3A\x22Cianorte\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22cidade\x2Dgaucha\x22,\x22name\x22\x3A\x22Cidade\x20Ga\xFAcha\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22clevelandia\x22,\x22name\x22\x3A\x22Clevel\xE2ndia\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22colombo\x22,\x22name\x22\x3A\x22Colombo\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22colorado\x22,\x22name\x22\x3A\x22Colorado\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22contenda\x22,\x22name\x22\x3A\x22Contenda\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22corbelia\x22,\x22name\x22\x3A\x22Corbelia\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22cornelio\x2Dprocopio\x22,\x22name\x22\x3A\x22Cornelio\x20Procopio\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22coronel\x2Dvivida\x22,\x22name\x22\x3A\x22Coronel\x20Vivida\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22cruzeiro\x2Ddo\x2Doeste\x22,\x22name\x22\x3A\x22Cruzeiro\x20do\x20Oeste\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22cruzeiro\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22Cruzeiro\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A8,\x22slug\x22\x3A\x22curitiba\x22,\x22name\x22\x3A\x22Curitiba\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22curiuva\x22,\x22name\x22\x3A\x22Curi\xFAva\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22dois\x2Dvizinhos\x22,\x22name\x22\x3A\x22Dois\x20Vizinhos\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22doutor\x2Dcamargo\x22,\x22name\x22\x3A\x22Doutor\x20Camargo\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22faxinal\x22,\x22name\x22\x3A\x22Faxinal\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22fazenda\x2Drio\x2Dgrande\x22,\x22name\x22\x3A\x22Fazenda\x20Rio\x20Grande\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22figueira\x22,\x22name\x22\x3A\x22Figueira\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22florestopolis\x22,\x22name\x22\x3A\x22Florest\xF3polis\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22florida\x22,\x22name\x22\x3A\x22Fl\xF3rida\x22\x7D,\x7B\x22total\x22\x3A2,\x22slug\x22\x3A\x22foz\x2Ddo\x2Diguacu\x22,\x22name\x22\x3A\x22Foz\x20do\x20Igua\xE7u\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22foz\x2Ddo\x2Djordao\x22,\x22name\x22\x3A\x22Foz\x20do\x20Jord\xE3o\x22\x7D,\x7B\x22total\x22\x3A2,\x22slug\x22\x3A\x22francisco\x2Dbeltrao\x22,\x22name\x22\x3A\x22Francisco\x20Beltr\xE3o\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22goioere\x22,\x22name\x22\x3A\x22Goioer\xEA\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22guaira\x22,\x22name\x22\x3A\x22Gua\xEDra\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22guaraci\x22,\x22name\x22\x3A\x22Guaraci\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22guaraniacu\x22,\x22name\x22\x3A\x22Guarania\xE7u\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22guarapuava\x22,\x22name\x22\x3A\x22Guarapuava\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22guaratuba\x22,\x22name\x22\x3A\x22Guaratuba\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22honorio\x2Dserpa\x22,\x22name\x22\x3A\x22Hon\xF3rio\x20Serpa\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22ibaiti\x22,\x22name\x22\x3A\x22Ibaiti\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22ibipora\x22,\x22name\x22\x3A\x22Ibipora\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22imbau\x22,\x22name\x22\x3A\x22Imbau\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22imbituva\x22,\x22name\x22\x3A\x22Imbituva\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22inacio\x2Dmartins\x22,\x22name\x22\x3A\x22In\xE1cio\x20Martins\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22ipora\x22,\x22name\x22\x3A\x22Ipor\xE3\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22irati\x22,\x22name\x22\x3A\x22Irati\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22iretama\x22,\x22name\x22\x3A\x22Iretama\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22itaguaje\x22,\x22name\x22\x3A\x22Itaguaj\xE9\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22itapejara\x2Dd\x2Doeste\x22,\x22name\x22\x3A\x22Itapejara\x20D\x20Oeste\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22itaperucu\x22,\x22name\x22\x3A\x22Itaperu\xE7u\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22ivaipora\x22,\x22name\x22\x3A\x22Ivaipora\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22ivate\x22,\x22name\x22\x3A\x22Ivat\xE9\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22ivatuba\x22,\x22name\x22\x3A\x22Ivatuba\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22jaboti\x22,\x22name\x22\x3A\x22Jaboti\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22jacarezinho\x22,\x22name\x22\x3A\x22Jacarezinho\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22jaguariaiva\x22,\x22name\x22\x3A\x22Jaguariaiva\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22jandaia\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22Jandaia\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22japira\x22,\x22name\x22\x3A\x22Japira\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22japura\x22,\x22name\x22\x3A\x22Japur\xE1\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22jardim\x2Dalegre\x22,\x22name\x22\x3A\x22Jardim\x20Alegre\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22jesuitas\x22,\x22name\x22\x3A\x22Jesu\xEDtas\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22juranda\x22,\x22name\x22\x3A\x22Juranda\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22kalore\x22,\x22name\x22\x3A\x22Kalor\xE9\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22lapa\x22,\x22name\x22\x3A\x22Lapa\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22laranjeiras\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22Laranjeiras\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22loanda\x22,\x22name\x22\x3A\x22Loanda\x22\x7D,\x7B\x22total\x22\x3A2,\x22slug\x22\x3A\x22londrina\x22,\x22name\x22\x3A\x22Londrina\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22lunardelli\x22,\x22name\x22\x3A\x22Lunardelli\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22mallet\x22,\x22name\x22\x3A\x22Mallet\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22mambore\x22,\x22name\x22\x3A\x22Mambor\xEA\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22mandaguacu\x22,\x22name\x22\x3A\x22Mandagua\xE7u\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22mandaguari\x22,\x22name\x22\x3A\x22Mandaguari\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22mandirituba\x22,\x22name\x22\x3A\x22Mandirituba\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22mangueirinha\x22,\x22name\x22\x3A\x22Mangueirinha\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22marechal\x2Dcandido\x2Drondon\x22,\x22name\x22\x3A\x22Marechal\x20Candido\x20Rondon\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22maria\x2Dhelena\x22,\x22name\x22\x3A\x22Maria\x20Helena\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22mariluz\x22,\x22name\x22\x3A\x22Mariluz\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22maringa\x22,\x22name\x22\x3A\x22Maringa\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22mariopolis\x22,\x22name\x22\x3A\x22Mari\xF3polis\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22maripa\x22,\x22name\x22\x3A\x22Marip\xE1\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22marmeleiro\x22,\x22name\x22\x3A\x22Marmeleiro\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22marumbi\x22,\x22name\x22\x3A\x22Marumbi\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22matinhos\x22,\x22name\x22\x3A\x22Matinhos\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22maua\x2Dda\x2Dserra\x22,\x22name\x22\x3A\x22Mau\xE1\x20da\x20Serra\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22medianeira\x22,\x22name\x22\x3A\x22Medianeira\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22mercedes\x22,\x22name\x22\x3A\x22Mercedes\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22morretes\x22,\x22name\x22\x3A\x22Morretes\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22nova\x2Daurora\x22,\x22name\x22\x3A\x22Nova\x20Aurora\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22nova\x2Desperanca\x22,\x22name\x22\x3A\x22Nova\x20Esperanca\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22nova\x2Desperanca\x2Ddo\x2Dsudoeste\x22,\x22name\x22\x3A\x22Nova\x20Esperan\xE7a\x20do\x20Sudoeste\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22nova\x2Dlondrina\x22,\x22name\x22\x3A\x22Nova\x20Londrina\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22nova\x2Dprata\x2Ddo\x2Diguacu\x22,\x22name\x22\x3A\x22Nova\x20Prata\x20do\x20Igua\xE7u\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22nova\x2Dsanta\x2Drosa\x22,\x22name\x22\x3A\x22Nova\x20Santa\x20Rosa\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22novo\x2Ditacolomi\x22,\x22name\x22\x3A\x22Novo\x20Itacolomi\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22ortigueira\x22,\x22name\x22\x3A\x22Ortigueira\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22ouro\x2Dverde\x2Ddo\x2Doeste\x22,\x22name\x22\x3A\x22Ouro\x20Verde\x20do\x20Oeste\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22paicandu\x22,\x22name\x22\x3A\x22Paicandu\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22palmas\x22,\x22name\x22\x3A\x22Palmas\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22palmeira\x22,\x22name\x22\x3A\x22Palmeira\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22palotina\x22,\x22name\x22\x3A\x22Palotina\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22paraiso\x2Ddo\x2Dnorte\x22,\x22name\x22\x3A\x22Para\xEDso\x20do\x20Norte\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22paranacity\x22,\x22name\x22\x3A\x22Paranacity\x22\x7D,\x7B\x22total\x22\x3A2,\x22slug\x22\x3A\x22paranagua\x22,\x22name\x22\x3A\x22Paranagua\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22paranapoema\x22,\x22name\x22\x3A\x22Paranapoema\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22paranavai\x22,\x22name\x22\x3A\x22Paranavai\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22pato\x2Dbragado\x22,\x22name\x22\x3A\x22Pato\x20Bragado\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22pato\x2Dbranco\x22,\x22name\x22\x3A\x22Pato\x20Branco\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22paulo\x2Dfrontin\x22,\x22name\x22\x3A\x22Paulo\x20Frontin\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22peabiru\x22,\x22name\x22\x3A\x22Peabiru\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22pien\x22,\x22name\x22\x3A\x22Pi\xEAn\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22pinhais\x22,\x22name\x22\x3A\x22Pinhais\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22pinhalao\x22,\x22name\x22\x3A\x22Pinhal\xE3o\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22pinhao\x22,\x22name\x22\x3A\x22Pinh\xE3o\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22pirai\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22Pirai\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22piraquara\x22,\x22name\x22\x3A\x22Piraquara\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22pitanga\x22,\x22name\x22\x3A\x22Pitanga\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22planaltina\x2Ddo\x2Dparana\x22,\x22name\x22\x3A\x22Planaltina\x20do\x20Paran\xE1\x22\x7D,\x7B\x22total\x22\x3A5,\x22slug\x22\x3A\x22ponta\x2Dgrossa\x22,\x22name\x22\x3A\x22Ponta\x20Grossa\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22pontal\x2Ddo\x2Dparana\x22,\x22name\x22\x3A\x22Pontal\x20do\x20Paran\xE1\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22porecatu\x22,\x22name\x22\x3A\x22Porecatu\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22porto\x2Drico\x22,\x22name\x22\x3A\x22Porto\x20Rico\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22porto\x2Dvitoria\x22,\x22name\x22\x3A\x22Porto\x20Vit\xF3ria\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22primeiro\x2Dde\x2Dmaio\x22,\x22name\x22\x3A\x22Primeiro\x20de\x20Maio\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22prudentopolis\x22,\x22name\x22\x3A\x22Prudent\xF3polis\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22quatro\x2Dbarras\x22,\x22name\x22\x3A\x22Quatro\x20Barras\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22rancho\x2Dalegre\x22,\x22name\x22\x3A\x22Rancho\x20Alegre\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22realeza\x22,\x22name\x22\x3A\x22Realeza\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22reboucas\x22,\x22name\x22\x3A\x22Rebou\xE7as\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22renascenca\x22,\x22name\x22\x3A\x22Renascen\xE7a\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22ribeirao\x2Dclaro\x22,\x22name\x22\x3A\x22Ribeir\xE3o\x20Claro\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22rio\x2Dbom\x22,\x22name\x22\x3A\x22Rio\x20Bom\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22rio\x2Dbranco\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22Rio\x20Branco\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22rio\x2Dnegro\x22,\x22name\x22\x3A\x22Rio\x20Negro\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22rolandia\x22,\x22name\x22\x3A\x22Rol\xE2ndia\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22rondon\x22,\x22name\x22\x3A\x22Rondon\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22salto\x2Ddo\x2Ditarare\x22,\x22name\x22\x3A\x22Salto\x20do\x20Itarar\xE9\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22salto\x2Ddo\x2Dlontra\x22,\x22name\x22\x3A\x22Salto\x20do\x20Lontra\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22santa\x2Damelia\x22,\x22name\x22\x3A\x22Santa\x20Am\xE9lia\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22santa\x2Dcruz\x2Dde\x2Dmonte\x2Dcastelo\x22,\x22name\x22\x3A\x22Santa\x20Cruz\x20de\x20Monte\x20Castelo\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22santa\x2Dfe\x22,\x22name\x22\x3A\x22Santa\x20F\xE9\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22santa\x2Dhelena\x22,\x22name\x22\x3A\x22Santa\x20Helena\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22santa\x2Dtereza\x2Ddo\x2Doeste\x22,\x22name\x22\x3A\x22Santa\x20Tereza\x20do\x20Oeste\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22santa\x2Dterezinha\x2Dde\x2Ditaipu\x22,\x22name\x22\x3A\x22Santa\x20Terezinha\x20de\x20Itaipu\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22santo\x2Dantonio\x2Dda\x2Dplatina\x22,\x22name\x22\x3A\x22Santo\x20Ant\xF4nio\x20da\x20Platina\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22santo\x2Dantonio\x2Ddo\x2Dsudoeste\x22,\x22name\x22\x3A\x22Santo\x20Antonio\x20do\x20Sudoeste\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22santo\x2Dinacio\x22,\x22name\x22\x3A\x22Santo\x20In\xE1cio\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22sao\x2Djeronimo\x2Dda\x2Dserra\x22,\x22name\x22\x3A\x22S\xE3o\x20Jer\xF4nimo\x20da\x20Serra\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22sao\x2Djoao\x22,\x22name\x22\x3A\x22S\xE3o\x20Jo\xE3o\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22sao\x2Djoao\x2Ddo\x2Dcaiua\x22,\x22name\x22\x3A\x22S\xE3o\x20Jo\xE3o\x20do\x20Caiu\xE1\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22sao\x2Djoao\x2Ddo\x2Divai\x22,\x22name\x22\x3A\x22S\xE3o\x20Jo\xE3o\x20do\x20Iva\xED\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22sao\x2Djose\x2Ddos\x2Dpinhais\x22,\x22name\x22\x3A\x22Sao\x20Jose\x20dos\x20Pinhais\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22sao\x2Dmateus\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22S\xE3o\x20Mateus\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22sao\x2Dmiguel\x2Ddo\x2Diguacu\x22,\x22name\x22\x3A\x22S\xE3o\x20Miguel\x20do\x20Igua\xE7u\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22sao\x2Dpedro\x2Ddo\x2Dparana\x22,\x22name\x22\x3A\x22S\xE3o\x20Pedro\x20do\x20Paran\xE1\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22sarandi\x22,\x22name\x22\x3A\x22Sarandi\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22senges\x22,\x22name\x22\x3A\x22Senges\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22sertaneja\x22,\x22name\x22\x3A\x22Sertaneja\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22sertanopolis\x22,\x22name\x22\x3A\x22Sertan\xF3polis\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22siqueira\x2Dcampos\x22,\x22name\x22\x3A\x22Siqueira\x20Campos\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22tamarana\x22,\x22name\x22\x3A\x22Tamarana\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22tapejara\x22,\x22name\x22\x3A\x22Tapejara\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22telemaco\x2Dborba\x22,\x22name\x22\x3A\x22Tel\xEAmaco\x20Borba\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22terra\x2Dboa\x22,\x22name\x22\x3A\x22Terra\x20Boa\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22terra\x2Drica\x22,\x22name\x22\x3A\x22Terra\x20Rica\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22terra\x2Droxa\x22,\x22name\x22\x3A\x22Terra\x20Roxa\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22tibagi\x22,\x22name\x22\x3A\x22Tibagi\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22tijucas\x2Ddo\x2Dsul\x22,\x22name\x22\x3A\x22Tijucas\x20do\x20Sul\x22\x7D,\x7B\x22total\x22\x3A2,\x22slug\x22\x3A\x22toledo\x22,\x22name\x22\x3A\x22Toledo\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22ubirata\x22,\x22name\x22\x3A\x22Ubirat\xE3\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22umuarama\x22,\x22name\x22\x3A\x22Umuarama\x22\x7D,\x7B\x22total\x22\x3A1,\x22slug\x22\x3A\x22uniao\x2Dda\x2Dvitoria\x22,\x22name\x22\x3A\x22Uni\xE3o\x20da\x20Vit\xF3ria\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22vere\x22,\x22name\x22\x3A\x22Ver\xEA\x22\x7D,\x7B\x22total\x22\x3A0,\x22slug\x22\x3A\x22wenceslau\x2Dbraz\x22,\x22name\x22\x3A\x22Wenceslau\x20Braz\x22\x7D\x5D\x7D'));</script>

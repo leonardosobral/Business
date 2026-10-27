@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-25",
+  "panel": {
+    "authenticated": true,
+    "baseline_visible": true,
+    "details_expanded": true,
+    "viewport_width": 390,
+    "document_scroll_width": 390,
+    "table_scroll_widths": [
+      415,
+      425
+    ],
+    "ga4_read_scope": "pending_user_authorization"
+  },
+  "calculator": {
+    "calculation": "5 km in 30 minutes",
+    "result": "6:00 min/km",
+    "calendar_link": "5 km, BR",
+    "mobile_width": 390
+  },
+  "ga4_receipt": "not_verified"
+}

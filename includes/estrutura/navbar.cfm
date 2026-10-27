@@ -544,7 +544,9 @@
     <script src="/assets/js/business-meet-room.js?v=2026091701" defer></script>
 </cfif>
 
-<cfif isDefined("VARIABLES.businessAccountSwitchAvailable") AND VARIABLES.businessAccountSwitchAvailable>
+<!--- Delegation mode already links to the dedicated selector in the navbar. --->
+<cfif isDefined("VARIABLES.businessAccountSwitchAvailable") AND VARIABLES.businessAccountSwitchAvailable
+    AND NOT (structKeyExists(REQUEST,"businessDelegationEnabled") AND REQUEST.businessDelegationEnabled)>
     <cfset VARIABLES.businessAccountModalRequired = false/>
     <cfinclude template="account_context_modal.cfm"/>
 </cfif>

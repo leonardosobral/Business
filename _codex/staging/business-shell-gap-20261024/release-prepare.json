@@ -1,0 +1,12 @@
+{
+  "stage": "/var/backups/business-shell-gap-20261024-9wz2l4b6",
+  "manifest_sha256": "0ea4fbdfc652846adff530a1a861ba1e56aa10ab44d8db70a28138bec16e1d2a",
+  "candidate_hashes": {
+    "assets/css/business-shell.css": "baca99ed5f64ad7ad93b5c3268923cafbb868a122a8a15ab0d98d0e8592f0f4e",
+    "assets/js/business-shell.js": "b25989c9951f45e6749f5812b20eeeed1165478250d5fe5aa3febf7c4255ef01",
+    "includes/estrutura/navbar.cfm": "aac182cd1d0ccf356ec4a3a81ce66fea99eb03a024117a8594833aa83acb6476",
+    "includes/estrutura/header.cfm": "8099d39e60a32911e70c598b10ecd9bacf0387f13e5dedc9a90c93301497255c"
+  },
+  "backup": "/var/backups/business-shell-gap-20261024-9wz2l4b6/baseline",
+  "runtime_files_changed": false
+}

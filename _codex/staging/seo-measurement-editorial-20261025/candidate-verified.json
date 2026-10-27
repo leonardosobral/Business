@@ -1,0 +1,15 @@
+{
+  "hashes": {
+    "RoadRunners": {
+      "assets/js/runnerhub-pace.js": "c98159df2cda6805c1273914285e2fffb3a1d8788be1abd38441cd527f7efbd8",
+      "assets/js/runnerhub-pace.min.js": "a5bfca84fb8d8998633cb8399199d091b21e0ab8144ab708bfa680a446bbeefa",
+      "calculadora-de-pace/index.cfm": "8046ce2059c874d7a63a49a137c39d7ce425a33c580b814a205a67177f252197"
+    },
+    "Business": {
+      "portal/conteudo/seo_ga4.cfm": "7d4be6ce48c7be4fdb28603a02b5fb3ce60b4585c746b55f01ea64009c1ce3ff",
+      "portal/conteudo/seo_growth_baseline.cfm": "89411ca3ea196f2c6e38863f04377ee515aaf310a4a61ea344849eaf874da11f"
+    }
+  },
+  "compiledTemplates": 3,
+  "scenarios": 6
+}

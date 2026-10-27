@@ -1,0 +1,38 @@
+{
+  "verifiedAt": "2026-10-25T18:23:06.546203+00:00",
+  "authenticated": true,
+  "tabId": "283503098",
+  "domains": 27,
+  "checks": [
+    "numeric traffic order",
+    "traffic change order",
+    "keyword order using Enter",
+    "direction toggle",
+    "own group",
+    "declining own group empty",
+    "reset",
+    "case-insensitive search",
+    "URL filters after reload",
+    "mobile width 390 with no document overflow",
+    "mobile horizontal keyboard scroll",
+    "desktop restored",
+    "filters restored",
+    "browser console no errors"
+  ],
+  "desktop": {
+    "width": 1516,
+    "documentWidth": 1516
+  },
+  "mobile": {
+    "width": 390,
+    "height": 844,
+    "documentWidth": 390,
+    "tableWidth": 324,
+    "tableScrollLeft": 27.5
+  },
+  "screenshots": [
+    "published-desktop.png",
+    "published-mobile.png"
+  ],
+  "snapshotsAutomaticallyRefreshed": false
+}

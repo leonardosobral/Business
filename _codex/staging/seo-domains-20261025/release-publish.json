@@ -1,0 +1,11 @@
+{
+  "published": [
+    "portal/includes/seo_domains_data.cfm",
+    "portal/conteudo/seo_domains.cfm",
+    "portal/seo/assets/domains.css",
+    "portal/seo/assets/domains.js",
+    "portal/conteudo/seo.cfm"
+  ],
+  "backup": "/var/backups/seo-domains-20261025/baseline",
+  "published_at": "2026-10-25T18:18:04.896305+00:00"
+}

@@ -1,0 +1,90 @@
+{
+  "files": {
+    "services/accountDelegation/Policy.cfc": {
+      "exists": true,
+      "sha256": "e41057a79cea2d867f068bf0cb8e2c7325db52e7c82a5b480618305445b1a7c4",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads/includes/campaign_mutations.cfm": {
+      "exists": true,
+      "sha256": "a50bc0133c4c483feb780f85f973eb24e138f432eaf2bf37019474f4cfe3992e",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads/includes/backend.cfm": {
+      "exists": true,
+      "sha256": "7c8bf76eef26384f59532cc467c8bf3c4b68f8d2f73ea00e1a1023bab6a344f8",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "ads/includes/workspace_campaigns.cfm": {
+      "exists": true,
+      "sha256": "dd927193ea422493e1bfdf16750ce1a8578fe71bce4413a9fcee800756055ba2",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "ads/includes/workspace_campaign_detail.cfm": {
+      "exists": true,
+      "sha256": "5370e72ffc955c8f0f31b9f281244a38a1c0671a4afd24d5f7fc724fdd05fcf6",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "includes/estrutura/home_conta_dashboard.cfm": {
+      "exists": true,
+      "sha256": "e61a0c6778404ec4adf5334744c8aebdf91458e9a4ffaae31a60a02d086b9e35",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "watch": {
+    "ads/home.cfm": {
+      "exists": true,
+      "sha256": "dd1de564f3acec3926fd9de12edccdf1f7b7afcd5d445d2a6a2f4222e46b3e1d",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "services/accountDelegation/Store.cfc": {
+      "exists": true,
+      "sha256": "4dc51efb3a3f93475fa76e51b743c9012e5c44b0e2f2800a70eb2c6c8de6d8c2",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/header.cfm": {
+      "exists": true,
+      "sha256": "8099d39e60a32911e70c598b10ecd9bacf0387f13e5dedc9a90c93301497255c",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/navbar.cfm": {
+      "exists": true,
+      "sha256": "aac182cd1d0ccf356ec4a3a81ce66fea99eb03a024117a8594833aa83acb6476",
+      "mode": 420,
+      "uid": 0,
+      "gid": 50
+    },
+    "services/BusinessAccountDelegation.cfc": {
+      "exists": true,
+      "sha256": "061aa91502797c0476edbb8fca5cf67c251b411ec99de3a17279ba5c0e3e1e1e",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads/includes/delegation.cfm": {
+      "exists": true,
+      "sha256": "774c95418db2df140afbda439498501f3370d243fecb8b1330cd123015ab6704",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  }
+}

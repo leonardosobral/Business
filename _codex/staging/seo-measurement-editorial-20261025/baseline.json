@@ -1,0 +1,46 @@
+{
+  "RoadRunners": {
+    "root": "/var/www/roadrunners.com.br",
+    "before": {
+      "assets/js/runnerhub-pace.js": "ca8fc3b4356dd76b77b31111358e087d15de8b2779fc6d81643376e81c563fee",
+      "assets/js/runnerhub-pace.min.js": "070aadd0e1a0b11cba146735337a45ba0e29cbc479fed651662c327ae8a4153f",
+      "calculadora-de-pace/index.cfm": "2ff9290862470801d3c37ced1ac1779ddcd6107ceb550de25f485bb92078fe4a"
+    },
+    "local": {
+      "assets/js/runnerhub-pace.js": "ca8fc3b4356dd76b77b31111358e087d15de8b2779fc6d81643376e81c563fee",
+      "assets/js/runnerhub-pace.min.js": "070aadd0e1a0b11cba146735337a45ba0e29cbc479fed651662c327ae8a4153f",
+      "calculadora-de-pace/index.cfm": "2ff9290862470801d3c37ced1ac1779ddcd6107ceb550de25f485bb92078fe4a"
+    },
+    "watch": {
+      "includes/estrutura/seo-web-tools-head.cfm": "583c71beb1209eae7b0ae1b63a471162277ac84eae908859ef2fd30d99be172d",
+      "includes/analytics/bootstrap.cfm": "0903944db8783e3b5bc038e761a903b216dd0262a4f1ca66b0c9b43f8518ca49",
+      "includes/estrutura/head.cfm": "84258c3f09772972a39d3f1870f46da6c598f6f218b2b192f6fb843f84695896",
+      "Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282"
+    },
+    "names": [
+      "assets/js/runnerhub-pace.js",
+      "assets/js/runnerhub-pace.min.js",
+      "calculadora-de-pace/index.cfm"
+    ]
+  },
+  "Business": {
+    "root": "/var/www/business.roadrunners.run",
+    "before": {
+      "portal/conteudo/seo_ga4.cfm": "da246fcc39f6c5d904357e97d90f19a5b7bf5053a9e0d8a2e1f03aee3f44b160"
+    },
+    "local": {
+      "portal/conteudo/seo_ga4.cfm": "da246fcc39f6c5d904357e97d90f19a5b7bf5053a9e0d8a2e1f03aee3f44b160",
+      "portal/conteudo/seo_growth_baseline.cfm": null
+    },
+    "watch": {
+      "portal/conteudo/seo.cfm": "1d6d39f89638460c09d94ef6c01ea1f2f77c1dbb4307ca40d10a241e4a097a28",
+      "portal/seo/ga4_service.cfm": "ee375b67bc74c38156b17fb36191e71bb3795ceedaca9c196dce03105b3c9c48",
+      "portal/seo/ga4_api.cfm": "4acceeda72ba16da379d3a3dd622d1b05297496c8b6110795190b74285f487ad",
+      "includes/backend/require_admin.cfm": "c2f9659ac3db941cc543a9f86d5b39b573c365a36ca2d3fba5a58675f6e017d6"
+    },
+    "names": [
+      "portal/conteudo/seo_ga4.cfm",
+      "portal/conteudo/seo_growth_baseline.cfm"
+    ]
+  }
+}

@@ -70,6 +70,14 @@ function adsV1CampaignStatusLabel(required any status) {
     }
 }
 
+function adsV1CampaignBudgetExhausted(required any status, required any budget, required any spent, required any bid) {
+    if (!listFindNoCase("ACTIVE,PAUSED", trim(arguments.status & ""))
+        OR !isNumeric(arguments.budget) OR !isNumeric(arguments.spent)
+        OR !isNumeric(arguments.bid) OR arguments.bid LTE 0) return false;
+    // Match the auction's full-bid budget check, without binary floating-point drift.
+    return precisionEvaluate(arguments.spent + arguments.bid) GT arguments.budget;
+}
+
 function adsV1LedgerLabel(required any entryType, required any sourceType) {
     var entry = uCase(trim(arguments.entryType & ""));
     var source = uCase(trim(arguments.sourceType & ""));
@@ -179,10 +187,12 @@ VARIABLES.adsV1IsCampaignDetailFocus = VARIABLES.adsV1WorkspaceView EQ "campaign
 <cfset VARIABLES.adsV1DraftCount = 0/>
 <cfset VARIABLES.adsV1EndedCount = 0/>
 <cfset VARIABLES.adsV1OngoingCount = 0/>
+<cfset VARIABLES.adsV1BudgetExhaustedCount = 0/>
 <cfloop query="qAdsV1Campaigns">
     <cfif qAdsV1Campaigns.status EQ "DRAFT"><cfset VARIABLES.adsV1DraftCount++/></cfif>
     <cfif qAdsV1Campaigns.status EQ "ENDED"><cfset VARIABLES.adsV1EndedCount++/></cfif>
     <cfif listFind("ACTIVE,PAUSED", qAdsV1Campaigns.status)><cfset VARIABLES.adsV1OngoingCount++/></cfif>
+    <cfif qAdsV1Campaigns.status EQ "ACTIVE" AND adsV1CampaignBudgetExhausted(qAdsV1Campaigns.status, qAdsV1Campaigns.budget_total, qAdsV1Campaigns.spent_total, qAdsV1Campaigns.cpc_bid)><cfset VARIABLES.adsV1BudgetExhaustedCount++/></cfif>
 </cfloop>
 <cfif NOT len(VARIABLES.adsV1CampaignFilter)>
     <cfset VARIABLES.adsV1CampaignFilter = VARIABLES.adsV1OngoingCount EQ 0
@@ -243,7 +253,7 @@ VARIABLES.adsV1IsCampaignDetailFocus = VARIABLES.adsV1WorkspaceView EQ "campaign
   .ads-row-actions { display: inline-block; position: relative; }
   .ads-row-actions summary { list-style: none; }
   .ads-row-actions summary::-webkit-details-marker { display: none; }
-  .ads-row-actions-panel { background: #303030; border: 1px solid rgba(255,255,255,.12); border-radius: .4rem; display: flex; flex-direction: column; gap: .45rem; margin-top: .35rem; min-width: 230px; padding: .75rem; }
+  .ads-row-actions-panel { background: #303030; border: 1px solid rgba(255,255,255,.12); border-radius: .4rem; display: flex; flex-direction: column; gap: .45rem; margin-top: .35rem; min-width: 230px; width: 260px; max-width: calc(100vw - 3rem); padding: .75rem; white-space: normal; }
   .ads-performance-card { border: 1px solid rgba(98,199,216,.22); }
   .ads-performance-controls { align-items: flex-end; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: flex-end; }
   .ads-performance-campaign-filter { min-width: min(320px, 100%); }
@@ -318,7 +328,7 @@ VARIABLES.adsV1IsCampaignDetailFocus = VARIABLES.adsV1WorkspaceView EQ "campaign
         </cfif>
       </div>
       <div class="col ads-health-item"><div class="text-muted small mb-2">Gasto total</div><div class="ads-v1-summary-value"><cfoutput>#lsCurrencyFormat(VARIABLES.adsV1Summary.spent)#</cfoutput></div><div class="small text-muted mt-2">Investimento em campanhas</div></div>
-      <div class="col ads-health-item"><div class="text-muted small mb-2">Campanhas ativas</div><div class="ads-v1-summary-value"><cfoutput>#VARIABLES.adsV1Summary.active#</cfoutput></div><div class="small text-muted mt-2"><cfoutput>#VARIABLES.adsV1Summary.paused# pausadas</cfoutput></div></div>
+      <div class="col ads-health-item"><div class="text-muted small mb-2">Campanhas ativas</div><div class="ads-v1-summary-value"><cfoutput>#VARIABLES.adsV1Summary.active#</cfoutput></div><div class="small text-muted mt-2"><cfoutput>#VARIABLES.adsV1Summary.paused# pausadas</cfoutput></div><cfif VARIABLES.adsV1BudgetExhaustedCount GT 0><div class="small text-warning mt-1"><cfoutput>#VARIABLES.adsV1BudgetExhaustedCount#</cfoutput> sem exibição por orçamento esgotado</div></cfif></div>
       <div class="col ads-health-item"><div class="text-muted small mb-2">Desempenho</div><div class="ads-v1-summary-value"><cfoutput>#lsNumberFormat(VARIABLES.adsV1Summary.clicks, "9,999,999")# cliques</cfoutput></div><div class="small text-muted mt-2"><cfoutput>#lsNumberFormat(VARIABLES.adsV1Summary.views, "9,999,999")# visualizações</cfoutput></div></div>
     </div>
   </section>

@@ -1,0 +1,8 @@
+{
+  "manifest_sha256": "0ea4fbdfc652846adff530a1a861ba1e56aa10ab44d8db70a28138bec16e1d2a",
+  "compiled_templates": 2,
+  "compiler": "/opt/coldfusion2025/cfusion/bin/cfcompile.sh",
+  "runtime_user": "coldfusion",
+  "stage": "/var/backups/business-shell-gap-20261024-9wz2l4b6",
+  "runtime_files_changed": false
+}

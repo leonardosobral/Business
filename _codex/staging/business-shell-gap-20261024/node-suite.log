@@ -1,0 +1,1766 @@
+TAP version 13
+# Subtest: centralizes every current human-action queue with a direct destination
+ok 1 - centralizes every current human-action queue with a direct destination
+  ---
+  duration_ms: 1.9285
+  type: 'test'
+  ...
+# Subtest: uses the same actionable definitions as each source workspace
+ok 2 - uses the same actionable definitions as each source workspace
+  ---
+  duration_ms: 1.390583
+  type: 'test'
+  ...
+# Subtest: counts only operational exceptions that no longer look transient
+ok 3 - counts only operational exceptions that no longer look transient
+  ---
+  duration_ms: 1.129583
+  type: 'test'
+  ...
+# Subtest: keeps optional verified-athlete requests out until their schema exists
+ok 4 - keeps optional verified-athlete requests out until their schema exists
+  ---
+  duration_ms: 0.28925
+  type: 'test'
+  ...
+# Subtest: preserves per-source availability for the decision view
+ok 5 - preserves per-source availability for the decision view
+  ---
+  duration_ms: 0.262625
+  type: 'test'
+  ...
+# Subtest: renders the expanded queue responsively without affecting account dashboards
+ok 6 - renders the expanded queue responsively without affecting account dashboards
+  ---
+  duration_ms: 0.342625
+  type: 'test'
+  ...
+# Subtest: Kanban, Agenda and Documents share the administrative suite shell
+ok 7 - Kanban, Agenda and Documents share the administrative suite shell
+  ---
+  duration_ms: 3.294083
+  type: 'test'
+  ...
+# Subtest: suite navigation exposes all tools and identifies the current page
+ok 8 - suite navigation exposes all tools and identifies the current page
+  ---
+  duration_ms: 0.703667
+  type: 'test'
+  ...
+# Subtest: suite styles preserve keyboard focus and responsive navigation
+ok 9 - suite styles preserve keyboard focus and responsive navigation
+  ---
+  duration_ms: 1.308167
+  type: 'test'
+  ...
+# Subtest: estimates a realistic click range from budget and CPC
+ok 10 - estimates a realistic click range from budget and CPC
+  ---
+  duration_ms: 2.386959
+  type: 'test'
+  ...
+# Subtest: returns no estimate when budget or CPC is invalid
+ok 11 - returns no estimate when budget or CPC is invalid
+  ---
+  duration_ms: 0.245334
+  type: 'test'
+  ...
+# Subtest: suggests ending the campaign on the event date at 23:59
+ok 12 - suggests ending the campaign on the event date at 23:59
+  ---
+  duration_ms: 11.370667
+  type: 'test'
+  ...
+# Subtest: draft and review buttons only appear on the last step
+ok 13 - draft and review buttons only appear on the last step
+  ---
+  duration_ms: 0.489125
+  type: 'test'
+  ...
+# Subtest: switching events replaces the automatically suggested region
+ok 14 - switching events replaces the automatically suggested region
+  ---
+  duration_ms: 1.548209
+  type: 'test'
+  ...
+# Subtest: selecting another event suggests its final day at 23:59
+ok 15 - selecting another event suggests its final day at 23:59
+  ---
+  duration_ms: 3.286208
+  type: 'test'
+  ...
+# Subtest: event changes preserve manually entered region and end date
+ok 16 - event changes preserve manually entered region and end date
+  ---
+  duration_ms: 0.295458
+  type: 'test'
+  ...
+# Subtest: a manually cleared region stays unrestricted on event change
+ok 17 - a manually cleared region stays unrestricted on event change
+  ---
+  duration_ms: 23.74625
+  type: 'test'
+  ...
+# Subtest: reopening an existing campaign preserves saved targeting and dates
+ok 18 - reopening an existing campaign preserves saved targeting and dates
+  ---
+  duration_ms: 11.323458
+  type: 'test'
+  ...
+# Subtest: redisplaying a failed submission preserves the user's blank region and date
+ok 19 - redisplaying a failed submission preserves the user's blank region and date
+  ---
+  duration_ms: 1.353333
+  type: 'test'
+  ...
+# Subtest: does not invent an end date when the event date is unavailable
+ok 20 - does not invent an end date when the event date is unavailable
+  ---
+  duration_ms: 0.2665
+  type: 'test'
+  ...
+# Subtest: normalizes decimal values entered with Brazilian commas
+ok 21 - normalizes decimal values entered with Brazilian commas
+  ---
+  duration_ms: 0.121625
+  type: 'test'
+  ...
+# Subtest: requires the linked event and campaign name in the first step
+ok 22 - requires the linked event and campaign name in the first step
+  ---
+  duration_ms: 0.1875
+  type: 'test'
+  ...
+# Subtest: rejects a daily limit above the total budget
+ok 23 - rejects a daily limit above the total budget
+  ---
+  duration_ms: 0.100542
+  type: 'test'
+  ...
+# Subtest: enforces the auction floor for a custom CPC bid
+ok 24 - enforces the auction floor for a custom CPC bid
+  ---
+  duration_ms: 0.093417
+  type: 'test'
+  ...
+# Subtest: requires chronological dates and a country in the audience step
+ok 25 - requires chronological dates and a country in the audience step
+  ---
+  duration_ms: 4.239625
+  type: 'test'
+  ...
+# Subtest: requires at least one native placement in the final step
+ok 26 - requires at least one native placement in the final step
+  ---
+  duration_ms: 0.254333
+  type: 'test'
+  ...
+# Subtest: finds the step navigation in the wizard shell outside the form
+ok 27 - finds the step navigation in the wizard shell outside the form
+  ---
+  duration_ms: 0.20775
+  type: 'test'
+  ...
+# Subtest: allows direct access to every step while editing
+ok 28 - allows direct access to every step while editing
+  ---
+  duration_ms: 0.096584
+  type: 'test'
+  ...
+# Subtest: keeps progressive unlocking for a new campaign
+ok 29 - keeps progressive unlocking for a new campaign
+  ---
+  duration_ms: 0.358958
+  type: 'test'
+  ...
+# Subtest: does not shadow a ColdFusion function with the variable receiving its result
+ok 30 - does not shadow a ColdFusion function with the variable receiving its result
+  ---
+  duration_ms: 2.113833
+  type: 'test'
+  ...
+# Subtest: event choices follow the displayed final date ascending, with undated events last
+ok 31 - event choices follow the displayed final date ascending, with undated events last
+  ---
+  duration_ms: 43.581167
+  type: 'test'
+  ...
+# Subtest: creation lists only active linked events ending today or later
+ok 32 - creation lists only active linked events ending today or later
+  ---
+  duration_ms: 81.916417
+  type: 'test'
+  ...
+# Subtest: summarizes impressions, clicks, CTR, investment and actual CPC
+ok 33 - summarizes impressions, clicks, CTR, investment and actual CPC
+  ---
+  duration_ms: 0.921709
+  type: 'test'
+  ...
+# Subtest: keeps rates and costs at zero when there is no delivery
+ok 34 - keeps rates and costs at zero when there is no delivery
+  ---
+  duration_ms: 0.075875
+  type: 'test'
+  ...
+# Subtest: compares the selected period with the immediately previous period
+ok 35 - compares the selected period with the immediately previous period
+  ---
+  duration_ms: 0.116625
+  type: 'test'
+  ...
+# Subtest: builds a daily chart with independent traffic and currency axes
+ok 36 - builds a daily chart with independent traffic and currency axes
+  ---
+  duration_ms: 0.273208
+  type: 'test'
+  ...
+# Subtest: adapts the chart configuration to the MDB chart constructor
+ok 37 - adapts the chart configuration to the MDB chart constructor
+  ---
+  duration_ms: 0.089625
+  type: 'test'
+  ...
+# AI-mails start-now checks: OK
+# Subtest: _codex/tests/ai-mail-start-now.test.js
+ok 7 - _codex/tests/ai-mail-start-now.test.js
+  ---
+  duration_ms: 55.1675
+  type: 'test'
+  ...
+# AI-mails batch checks: OK
+# Subtest: _codex/tests/ai-mails-batches.test.js
+ok 8 - _codex/tests/ai-mails-batches.test.js
+  ---
+  duration_ms: 148.460334
+  type: 'test'
+  ...
+# Subtest: HOUSE chart uses dated real traffic only, without monetary datasets
+ok 40 - HOUSE chart uses dated real traffic only, without monetary datasets
+  ---
+  duration_ms: 3.897291
+  type: 'test'
+  ...
+# Subtest: empty chart is supported and shared ads config remains unchanged
+ok 41 - empty chart is supported and shared ads config remains unchanged
+  ---
+  duration_ms: 0.581333
+  type: 'test'
+  ...
+# Subtest: recognizes direct HTTPS requests before persisting uploaded banner URLs
+ok 42 - recognizes direct HTTPS requests before persisting uploaded banner URLs
+  ---
+  duration_ms: 13.221
+  type: 'test'
+  ...
+# Subtest: normalizes uploaded filenames before building public banner URLs
+ok 43 - normalizes uploaded filenames before building public banner URLs
+  ---
+  duration_ms: 4.539834
+  type: 'test'
+  ...
+# Subtest: scope selection requires an item; ALL permits empty values
+ok 44 - scope selection requires an item; ALL permits empty values
+  ---
+  duration_ms: 2.3865
+  type: 'test'
+  ...
+# Subtest: preview reports real decoded dimensions and releases object URLs
+ok 45 - preview reports real decoded dimensions and releases object URLs
+  ---
+  duration_ms: 1.0875
+  type: 'test'
+  ...
+# Subtest: clearing file input restores the saved image preview
+ok 46 - clearing file input restores the saved image preview
+  ---
+  duration_ms: 0.308042
+  type: 'test'
+  ...
+# Subtest: enhances server-selected links into connected accessible tabs without changing the URL
+ok 47 - enhances server-selected links into connected accessible tabs without changing the URL
+  ---
+  duration_ms: 5.315916
+  type: 'test'
+  ...
+# Subtest: primary click switches the panel and preserves path, period, other query values and history state
+ok 48 - primary click switches the panel and preserves path, period, other query values and history state
+  ---
+  duration_ms: 3.942541
+  type: 'test'
+  ...
+# Subtest: modified and non-primary clicks retain native link behavior
+ok 49 - modified and non-primary clicks retain native link behavior
+  ---
+  duration_ms: 0.714625
+  type: 'test'
+  ...
+# Subtest: arrows wrap and Home/End activate and focus a single keyboard tab stop
+ok 50 - arrows wrap and Home/End activate and focus a single keyboard tab stop
+  ---
+  duration_ms: 0.748292
+  type: 'test'
+  ...
+# Subtest: Space activates a tab but unrelated and modified keys retain native behavior
+ok 51 - Space activates a tab but unrelated and modified keys retain native behavior
+  ---
+  duration_ms: 2.304375
+  type: 'test'
+  ...
+# Subtest: a valid URL area opens directly and an unknown value retains the server selection
+ok 52 - a valid URL area opens directly and an unknown value retains the server selection
+  ---
+  duration_ms: 2.054292
+  type: 'test'
+  ...
+# Subtest: legacy content and health hashes open their areas and scroll to the area navigation
+ok 53 - legacy content and health hashes open their areas and scroll to the area navigation
+  ---
+  duration_ms: 1.990458
+  type: 'test'
+  ...
+# Subtest: legacy payment and infrastructure hashes keep the active area and reach current alerts
+ok 54 - legacy payment and infrastructure hashes keep the active area and reach current alerts
+  ---
+  duration_ms: 1.699375
+  type: 'test'
+  ...
+# Subtest: a direct panel hash reveals its hidden panel
+ok 55 - a direct panel hash reveals its hidden panel
+  ---
+  duration_ms: 2.688042
+  type: 'test'
+  ...
+# Subtest: browser history and hash navigation resynchronize the panels without taking focus
+ok 56 - browser history and hash navigation resynchronize the panels without taking focus
+  ---
+  duration_ms: 2.087209
+  type: 'test'
+  ...
+# Subtest: initialization waits for markup and is harmless on pages without the dashboard
+ok 57 - initialization waits for markup and is harmless on pages without the dashboard
+  ---
+  duration_ms: 2.317791
+  type: 'test'
+  ...
+# Subtest: an unavailable History API does not prevent local tab interaction
+ok 58 - an unavailable History API does not prevent local tab interaction
+  ---
+  duration_ms: 0.956584
+  type: 'test'
+  ...
+# Subtest: period and refresh links retain the selected area after switching tabs
+ok 59 - period and refresh links retain the selected area after switching tabs
+  ---
+  duration_ms: 1.239041
+  type: 'test'
+  ...
+# Subtest: reserves the measured navbar height instead of the decorative header height
+ok 60 - reserves the measured navbar height instead of the decorative header height
+  ---
+  duration_ms: 4.439333
+  type: 'test'
+  ...
+# Subtest: follows navbar wrapping and font changes without a viewport resize
+ok 61 - follows navbar wrapping and font changes without a viewport resize
+  ---
+  duration_ms: 0.501791
+  type: 'test'
+  ...
+# Subtest: viewport resize still updates the reserve without ResizeObserver
+ok 62 - viewport resize still updates the reserve without ResizeObserver
+  ---
+  duration_ms: 0.746209
+  type: 'test'
+  ...
+# Subtest: a temporarily hidden navbar does not collapse the last valid reserve
+ok 63 - a temporarily hidden navbar does not collapse the last valid reserve
+  ---
+  duration_ms: 0.745
+  type: 'test'
+  ...
+# Subtest: standalone pages without the shared shell remain untouched
+ok 64 - standalone pages without the shared shell remain untouched
+  ---
+  duration_ms: 2.40575
+  type: 'test'
+  ...
+# Subtest: opens the section containing the active page before persisted or default state
+ok 65 - opens the section containing the active page before persisted or default state
+  ---
+  duration_ms: 1.312166
+  type: 'test'
+  ...
+# Subtest: admin accordion keeps at most one first-level section open
+ok 66 - admin accordion keeps at most one first-level section open
+  ---
+  duration_ms: 0.134917
+  type: 'test'
+  ...
+# Subtest: search ignores accents and finds operational aliases
+ok 67 - search ignores accents and finds operational aliases
+  ---
+  duration_ms: 1.804958
+  type: 'test'
+  ...
+# Subtest: section keys remain stable for Portuguese labels
+ok 68 - section keys remain stable for Portuguese labels
+  ---
+  duration_ms: 0.2525
+  type: 'test'
+  ...
+# Subtest: admin places Banners in Marketing e audiência
+ok 69 - admin places Banners in Marketing e audiência
+  ---
+  duration_ms: 2.84825
+  type: 'test'
+  ...
+# Subtest: admin places Verificados in Contas e parceiros
+ok 70 - admin places Verificados in Contas e parceiros
+  ---
+  duration_ms: 0.78975
+  type: 'test'
+  ...
+# Subtest: admin finds Runner Apps under Plataforma
+ok 71 - admin finds Runner Apps under Plataforma
+  ---
+  duration_ms: 0.292916
+  type: 'test'
+  ...
+# Subtest: admin finds Notificações under Plataforma
+ok 72 - admin finds Notificações under Plataforma
+  ---
+  duration_ms: 0.455959
+  type: 'test'
+  ...
+# Subtest: admin finds Temas under Plataforma
+ok 73 - admin finds Temas under Plataforma
+  ---
+  duration_ms: 0.47125
+  type: 'test'
+  ...
+# Subtest: admin finds CRM interno under Plataforma
+ok 74 - admin finds CRM interno under Plataforma
+  ---
+  duration_ms: 0.480583
+  type: 'test'
+  ...
+# Subtest: admin finds Vicky Pacer under Plataforma
+ok 75 - admin finds Vicky Pacer under Plataforma
+  ---
+  duration_ms: 0.264125
+  type: 'test'
+  ...
+# Subtest: admin exposes challenges and training as their own top-level section
+ok 76 - admin exposes challenges and training as their own top-level section
+  ---
+  duration_ms: 1.352958
+  type: 'test'
+  ...
+# Subtest: admin lists Plataforma destinations alphabetically
+not ok 77 - admin lists Plataforma destinations alphabetically
+  ---
+  duration_ms: 1.755333
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/tests/business-sidenav.test.js:83:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+    +   '/administracao/consumo-openai/',
+        '/bi/',
+    +   '/administracao/comparador/resumo/',
+        '/administracao/comparador/',
+        '/administracao/comparador/ofertas/',
+        '/administracao/comparador/cadastros/',
+    +   '/administracao/comparador/awin/',
+        '/crm-interno/',
+        '/administracao/cron-jobs/',
+        '/portal/erros/',
+        '/estudo/',
+        '/administracao/api-monitor/',
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: '/bi/'
+    1: '/administracao/comparador/'
+    2: '/administracao/comparador/ofertas/'
+    3: '/administracao/comparador/cadastros/'
+    4: '/crm-interno/'
+    5: '/administracao/cron-jobs/'
+    6: '/portal/erros/'
+    7: '/estudo/'
+    8: '/administracao/api-monitor/'
+    9: '/notificacoes/'
+    10: '/administracao/pesquisas/'
+    11: '/portal/runner-apps/'
+    12: '/portal/seo/'
+    13: '/administracao/status/'
+    14: '/temas/'
+    15: '/administracao/vicky/'
+  actual:
+    0: '/administracao/consumo-openai/'
+    1: '/bi/'
+    2: '/administracao/comparador/resumo/'
+    3: '/administracao/comparador/'
+    4: '/administracao/comparador/ofertas/'
+    5: '/administracao/comparador/cadastros/'
+    6: '/administracao/comparador/awin/'
+    7: '/crm-interno/'
+    8: '/administracao/cron-jobs/'
+    9: '/portal/erros/'
+    10: '/estudo/'
+    11: '/administracao/api-monitor/'
+    12: '/notificacoes/'
+    13: '/administracao/pesquisas/'
+    14: '/portal/runner-apps/'
+    15: '/portal/seo/'
+    16: '/administracao/status/'
+    17: '/temas/'
+    18: '/administracao/vicky/'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/tests/business-sidenav.test.js:86:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: new content enters review, never public or featured
+ok 78 - new content enters review, never public or featured
+  ---
+  duration_ms: 0.794667
+  type: 'test'
+  ...
+# Subtest: backfill is limited to untouched imported drafts without publication
+ok 79 - backfill is limited to untouched imported drafts without publication
+  ---
+  duration_ms: 0.206792
+  type: 'test'
+  ...
+# Subtest: list, preview, and global dashboard agree on review status
+ok 80 - list, preview, and global dashboard agree on review status
+  ---
+  duration_ms: 2.932458
+  type: 'test'
+  ...
+# node:fs:441
+#     return binding.readFileUtf8(path, stringToFlags(options.flag));
+#                    ^
+# Error: ENOENT: no such file or directory, open '/Users/Shared/Projects/RunnerHub/News/api/admin/jobs/article_summary.cfm'
+#     at Object.readFileSync (node:fs:441:20)
+#     at read (/Users/Shared/Projects/RunnerHub/Business/_codex/tests/content-summary-individual.test.js:9:37)
+#     at Object.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/tests/content-summary-individual.test.js:13:18)
+#     at Module._compile (node:internal/modules/cjs/loader:1706:14)
+#     at Object..js (node:internal/modules/cjs/loader:1839:10)
+#     at Module.load (node:internal/modules/cjs/loader:1441:32)
+#     at Function._load (node:internal/modules/cjs/loader:1263:12)
+#     at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+#     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5) {
+#   errno: -2,
+#   code: 'ENOENT',
+#   syscall: 'open',
+#   path: '/Users/Shared/Projects/RunnerHub/News/api/admin/jobs/article_summary.cfm'
+# }
+# Node.js v22.21.1
+# Subtest: _codex/tests/content-summary-individual.test.js
+not ok 16 - _codex/tests/content-summary-individual.test.js
+  ---
+  duration_ms: 61.324083
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/tests/content-summary-individual.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: opens the collapsed request panel, scrolls to it and focuses the event search
+ok 82 - opens the collapsed request panel, scrolls to it and focuses the event search
+  ---
+  duration_ms: 1.487792
+  type: 'test'
+  ...
+# Subtest: opens the request panel on initial load when its hash is present
+ok 83 - opens the request panel on initial load when its hash is present
+  ---
+  duration_ms: 0.253708
+  type: 'test'
+  ...
+# Subtest: a request CTA opens the panel without navigating away
+ok 84 - a request CTA opens the panel without navigating away
+  ---
+  duration_ms: 0.386792
+  type: 'test'
+  ...
+# node:internal/modules/cjs/loader:1386
+#   throw err;
+#   ^
+# Error: Cannot find module 'jsdom'
+# Require stack:
+# - /Users/Shared/Projects/RunnerHub/Business/_codex/tests/google-agenda-browser.test.js
+#     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+#     at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+#     at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+#     at Function._load (node:internal/modules/cjs/loader:1192:37)
+#     at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+#     at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+#     at Module.require (node:internal/modules/cjs/loader:1463:12)
+#     at require (node:internal/modules/helpers:147:16)
+#     at Object.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/tests/google-agenda-browser.test.js:5:15)
+#     at Module._compile (node:internal/modules/cjs/loader:1706:14) {
+#   code: 'MODULE_NOT_FOUND',
+#   requireStack: [
+#     '/Users/Shared/Projects/RunnerHub/Business/_codex/tests/google-agenda-browser.test.js'
+#   ]
+# }
+# Node.js v22.21.1
+# Subtest: _codex/tests/google-agenda-browser.test.js
+not ok 18 - _codex/tests/google-agenda-browser.test.js
+  ---
+  duration_ms: 59.694459
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/tests/google-agenda-browser.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: PostgreSQL migration is repeatable and enforces one account and one event per card
+not ok 86 - PostgreSQL migration is repeatable and enforces one account and one event per card
+  ---
+  duration_ms: 0.65475
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/tests/google-agenda-schema.test.js:5:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '@electric-sql/pglite'
+    Require stack:
+    - /Users/Shared/Projects/RunnerHub/Business/_codex/tests/google-agenda-schema.test.js
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+    Function.resolve (node:internal/modules/helpers:157:19)
+    TestContext.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/tests/google-agenda-schema.test.js:6:39)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: month grid includes complete Monday–Sunday weeks, including adjacent months
+ok 87 - month grid includes complete Monday–Sunday weeks, including adjacent months
+  ---
+  duration_ms: 3.0235
+  type: 'test'
+  ...
+# Subtest: week and list boundaries handle year transitions and leap years
+ok 88 - week and list boundaries handle year transitions and leap years
+  ---
+  duration_ms: 0.171542
+  type: 'test'
+  ...
+# Subtest: all-day end is exclusive and spans multiple days without timezone conversion
+ok 89 - all-day end is exclusive and spans multiple days without timezone conversion
+  ---
+  duration_ms: 0.089917
+  type: 'test'
+  ...
+# Subtest: timed events use Brasília regardless of the browser timezone, with midnight-exclusive end
+ok 90 - timed events use Brasília regardless of the browser timezone, with midnight-exclusive end
+  ---
+  duration_ms: 56.837834
+  type: 'test'
+  ...
+# Subtest: historical timezone offsets are resolved by the IANA timezone
+ok 91 - historical timezone offsets are resolved by the IANA timezone
+  ---
+  duration_ms: 0.258292
+  type: 'test'
+  ...
+# Subtest: guest input accepts a pasted list, normalizes and deduplicates without silently losing invalid addresses
+ok 92 - guest input accepts a pasted list, normalizes and deduplicates without silently losing invalid addresses
+  ---
+  duration_ms: 1.042292
+  type: 'test'
+  ...
+# Subtest: meeting links are HTTPS only and prefer video entry points over legacy hangoutLink
+ok 93 - meeting links are HTTPS only and prefer video entry points over legacy hangoutLink
+  ---
+  duration_ms: 0.30275
+  type: 'test'
+  ...
+# Subtest: RSVP counts exclude organizers and label unknown responses as pending
+ok 94 - RSVP counts exclude organizers and label unknown responses as pending
+  ---
+  duration_ms: 0.134042
+  type: 'test'
+  ...
+# Subtest: duration respects exclusive all-day ends and search includes guests and organizer
+ok 95 - duration respects exclusive all-day ends and search includes guests and organizer
+  ---
+  duration_ms: 0.717833
+  type: 'test'
+  ...
+# Subtest: Drive migration is repeatable and enforces one valid root
+not ok 96 - Drive migration is repeatable and enforces one valid root
+  ---
+  duration_ms: 0.641667
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/tests/google-drive-schema.test.js:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Cannot find module '@electric-sql/pglite'
+    Require stack:
+    - /Users/Shared/Projects/RunnerHub/Business/_codex/tests/google-drive-schema.test.js
+  code: 'MODULE_NOT_FOUND'
+  stack: |-
+    Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+    Function.resolve (node:internal/modules/helpers:157:19)
+    TestContext.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/tests/google-drive-schema.test.js:7:43)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: formats Drive item types and sizes
+ok 97 - formats Drive item types and sizes
+  ---
+  duration_ms: 0.586625
+  type: 'test'
+  ...
+# Subtest: opens only HTTPS links hosted by Google
+ok 98 - opens only HTTPS links hosted by Google
+  ---
+  duration_ms: 0.366208
+  type: 'test'
+  ...
+# Subtest: normalizes Picker file IDs without accepting paths or oversized selections
+ok 99 - normalizes Picker file IDs without accepting paths or oversized selections
+  ---
+  duration_ms: 0.590875
+  type: 'test'
+  ...
+# Subtest: Drive backend is admin-only, CSRF-protected and root-scoped
+ok 100 - Drive backend is admin-only, CSRF-protected and root-scoped
+  ---
+  duration_ms: 4.75625
+  type: 'test'
+  ...
+# Subtest: accepts only canonical Google Meet room links
+ok 101 - accepts only canonical Google Meet room links
+  ---
+  duration_ms: 0.533417
+  type: 'test'
+  ...
+# Subtest: renders all presence states and keeps participant names as plain values
+ok 102 - renders all presence states and keeps participant names as plain values
+  ---
+  duration_ms: 8.405833
+  type: 'test'
+  ...
+# Subtest: accepts JSON keys normalized to uppercase by CFML engines
+ok 103 - accepts JSON keys normalized to uppercase by CFML engines
+  ---
+  duration_ms: 0.116833
+  type: 'test'
+  ...
+# Subtest: builds compact, deterministic participant avatars
+ok 104 - builds compact, deterministic participant avatars
+  ---
+  duration_ms: 0.397666
+  type: 'test'
+  ...
+# Subtest: detects only participants who appeared after the silent baseline
+ok 105 - detects only participants who appeared after the silent baseline
+  ---
+  duration_ms: 0.303916
+  type: 'test'
+  ...
+# Subtest: keeps the Meet endpoint admin-only, read-only and non-cacheable
+ok 106 - keeps the Meet endpoint admin-only, read-only and non-cacheable
+  ---
+  duration_ms: 2.856167
+  type: 'test'
+  ...
+# Subtest: requests the Meet read-only OAuth scope and enforces it on callback
+ok 107 - requests the Meet read-only OAuth scope and enforces it on callback
+  ---
+  duration_ms: 0.177542
+  type: 'test'
+  ...
+# Subtest: auth reuses Business login and fails closed without a profile
+ok 108 - auth reuses Business login and fails closed without a profile
+  ---
+  duration_ms: 1.03875
+  type: 'test'
+  ...
+# Subtest: auth only accepts a local path as its login return target
+ok 109 - auth only accepts a local path as its login return target
+  ---
+  duration_ms: 0.269291
+  type: 'test'
+  ...
+# Subtest: private data loader is authorized, rooted and manifest allowlisted
+ok 110 - private data loader is authorized, rooted and manifest allowlisted
+  ---
+  duration_ms: 0.49775
+  type: 'test'
+  ...
+# Subtest: private data loader validates receipt bytes hash source and transform before deserializing
+ok 111 - private data loader validates receipt bytes hash source and transform before deserializing
+  ---
+  duration_ms: 0.42575
+  type: 'test'
+  ...
+# Subtest: authenticated validation failures render a readable unavailable state without conclusions
+ok 112 - authenticated validation failures render a readable unavailable state without conclusions
+  ---
+  duration_ms: 0.268084
+  type: 'test'
+  ...
+# Subtest: data files remain outside the web route
+ok 113 - data files remain outside the web route
+  ---
+  duration_ms: 0.236583
+  type: 'test'
+  ...
+# Subtest: channel index reads only the index and renders commercial DESC order
+ok 114 - channel index reads only the index and renders commercial DESC order
+  ---
+  duration_ms: 3.096833
+  type: 'test'
+  ...
+# Subtest: channel pages keep the full global action group and highlight dossiers
+ok 115 - channel pages keep the full global action group and highlight dossiers
+  ---
+  duration_ms: 1.310042
+  type: 'test'
+  ...
+# Subtest: dossier validates the slug against the manifest and loads one file
+ok 116 - dossier validates the slug against the manifest and loads one file
+  ---
+  duration_ms: 1.254041
+  type: 'test'
+  ...
+# Subtest: dossier declares all seven sections, recommendation and print controls
+ok 117 - dossier declares all seven sections, recommendation and print controls
+  ---
+  duration_ms: 0.850417
+  type: 'test'
+  ...
+# Subtest: renderer preserves recommendation, small-sample warning and coupon table
+ok 118 - renderer preserves recommendation, small-sample warning and coupon table
+  ---
+  duration_ms: 0.62725
+  type: 'test'
+  ...
+# Subtest: web route contains code and assets only, never report JSON
+ok 119 - web route contains code and assets only, never report JSON
+  ---
+  duration_ms: 2.180958
+  type: 'test'
+  ...
+# Subtest: every private-data consumer authenticates first
+ok 120 - every private-data consumer authenticates first
+  ---
+  duration_ms: 4.897416
+  type: 'test'
+  ...
+# Subtest: public code has local assets and no embedded production snapshot
+ok 121 - public code has local assets and no embedded production snapshot
+  ---
+  duration_ms: 4.688167
+  type: 'test'
+  ...
+# Subtest: modular manifest passes portable privacy and hash verification
+ok 122 - modular manifest passes portable privacy and hash verification
+  ---
+  duration_ms: 5391.15675
+  type: 'test'
+  ...
+# Subtest: the modular feature never changes the existing registrations screen
+not ok 123 - the modular feature never changes the existing registrations screen
+  ---
+  duration_ms: 19.037583
+  type: 'test'
+  location: '/Users/Shared/Projects/RunnerHub/Business/_codex/tests/mif-report-deployment-contract.test.js:88:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'inscricoes/home.cfm\ninscricoes/includes/backend.cfm'
+    - ''
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ''
+  actual: |-
+    inscricoes/home.cfm
+    inscricoes/includes/backend.cfm
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/Shared/Projects/RunnerHub/Business/_codex/tests/mif-report-deployment-contract.test.js:96:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: explorer page authenticates and reads only the private explorer cube
+ok 124 - explorer page authenticates and reads only the private explorer cube
+  ---
+  duration_ms: 1.94075
+  type: 'test'
+  ...
+# Subtest: page offers metric, one main dimension, one comparison and filters
+ok 125 - page offers metric, one main dimension, one comparison and filters
+  ---
+  duration_ms: 0.810416
+  type: 'test'
+  ...
+# Subtest: page restores URL state, exposes validation, grain and share link
+ok 126 - page restores URL state, exposes validation, grain and share link
+  ---
+  duration_ms: 0.32775
+  type: 'test'
+  ...
+# Subtest: explorer uses local report assets, public brand fonts and links to the static analysis
+ok 127 - explorer uses local report assets, public brand fonts and links to the static analysis
+  ---
+  duration_ms: 1.138125
+  type: 'test'
+  ...
+# Subtest: explorer keeps the global action group and highlights itself
+ok 128 - explorer keeps the global action group and highlights itself
+  ---
+  duration_ms: 0.566792
+  type: 'test'
+  ...
+# Subtest: selection permits one or two dimensions and rejects a third
+ok 129 - selection permits one or two dimensions and rejects a third
+  ---
+  duration_ms: 1.328208
+  type: 'test'
+  ...
+# Subtest: metric and dimension must belong to the same anonymous cube
+ok 130 - metric and dimension must belong to the same anonymous cube
+  ---
+  duration_ms: 0.352958
+  type: 'test'
+  ...
+# Subtest: filters are exact and aggregation computes ticket from ratio of totals
+ok 131 - filters are exact and aggregation computes ticket from ratio of totals
+  ---
+  duration_ms: 0.334459
+  type: 'test'
+  ...
+# Subtest: two-dimensional grouping stays complete and ordered by value
+ok 132 - two-dimensional grouping stays complete and ordered by value
+  ---
+  duration_ms: 1.288833
+  type: 'test'
+  ...
+# Subtest: render standardizes lot labels and channel names without changing filter values
+ok 133 - render standardizes lot labels and channel names without changing filter values
+  ---
+  duration_ms: 1.685292
+  type: 'test'
+  ...
+# Subtest: lot dimension omits the invalid OUTRO zero bucket
+ok 134 - lot dimension omits the invalid OUTRO zero bucket
+  ---
+  duration_ms: 0.186
+  type: 'test'
+  ...
+# Subtest: explorer presents the technical launch phase as pre-launch
+ok 135 - explorer presents the technical launch phase as pre-launch
+  ---
+  duration_ms: 0.16775
+  type: 'test'
+  ...
+# Subtest: chart uses Top 10 + Outros while the table remains complete
+ok 136 - chart uses Top 10 + Outros while the table remains complete
+  ---
+  duration_ms: 0.54975
+  type: 'test'
+  ...
+# Subtest: product-name charts use Top 10 without fabricating Outros
+ok 137 - product-name charts use Top 10 without fabricating Outros
+  ---
+  duration_ms: 0.459125
+  type: 'test'
+  ...
+# Subtest: share URL is deterministic and includes only validated state
+ok 138 - share URL is deterministic and includes only validated state
+  ---
+  duration_ms: 1.475167
+  type: 'test'
+  ...
+# Subtest: general page authenticates before reading exactly three compact bundles
+ok 139 - general page authenticates before reading exactly three compact bundles
+  ---
+  duration_ms: 2.610916
+  type: 'test'
+  ...
+# Subtest: general page declares the eight editorial chapters and print action
+ok 140 - general page declares the eight editorial chapters and print action
+  ---
+  duration_ms: 0.265917
+  type: 'test'
+  ...
+# Subtest: general page exposes one portfolio action and highlights Visão geral
+ok 141 - general page exposes one portfolio action and highlights Visão geral
+  ---
+  duration_ms: 0.338542
+  type: 'test'
+  ...
+# Subtest: general page embeds escaped JSON and limits remote assets to public brand fonts
+ok 142 - general page embeds escaped JSON and limits remote assets to public brand fonts
+  ---
+  duration_ms: 0.317583
+  type: 'test'
+  ...
+# Subtest: report pages render the public Run Pro brand system
+ok 143 - report pages render the public Run Pro brand system
+  ---
+  duration_ms: 2.93375
+  type: 'test'
+  ...
+# Subtest: every report screen exposes the full global navigation and highlights the current screen
+ok 144 - every report screen exposes the full global navigation and highlights the current screen
+  ---
+  duration_ms: 3.440458
+  type: 'test'
+  ...
+# Subtest: shared header and hero use available width without hiding navigation
+ok 145 - shared header and hero use available width without hiding navigation
+  ---
+  duration_ms: 0.897667
+  type: 'test'
+  ...
+# Subtest: static portfolio page authenticates before reading only its compact summary
+ok 146 - static portfolio page authenticates before reading only its compact summary
+  ---
+  duration_ms: 1.644125
+  type: 'test'
+  ...
+# Subtest: static portfolio page embeds escaped JSON and renders the approved six chapters
+ok 147 - static portfolio page embeds escaped JSON and renders the approved six chapters
+  ---
+  duration_ms: 0.930042
+  type: 'test'
+  ...
+# Subtest: static portfolio header exposes the global navigation and highlights portfolio
+ok 148 - static portfolio header exposes the global navigation and highlights portfolio
+  ---
+  duration_ms: 0.591542
+  type: 'test'
+  ...
+# Subtest: static portfolio page uses versioned local report and portfolio assets only
+ok 149 - static portfolio page uses versioned local report and portfolio assets only
+  ---
+  duration_ms: 0.681
+  type: 'test'
+  ...
+# Subtest: portfolio CSS extends the shared system for dimensions, selector, mobile and print
+ok 150 - portfolio CSS extends the shared system for dimensions, selector, mobile and print
+  ---
+  duration_ms: 1.582958
+  type: 'test'
+  ...
+# Subtest: simulator authenticates before reading only its compact simulator payload
+ok 151 - simulator authenticates before reading only its compact simulator payload
+  ---
+  duration_ms: 1.46575
+  type: 'test'
+  ...
+# Subtest: simulator preserves repeated channel parameters through the authenticated return path
+ok 152 - simulator preserves repeated channel parameters through the authenticated return path
+  ---
+  duration_ms: 0.1385
+  type: 'test'
+  ...
+# Subtest: simulator header exposes global navigation and highlights simulator
+ok 153 - simulator header exposes global navigation and highlights simulator
+  ---
+  duration_ms: 0.350125
+  type: 'test'
+  ...
+# Subtest: simulator restores repeated channels, sorts choices by gross value and replaces a deterministic URL
+ok 154 - simulator restores repeated channels, sorts choices by gross value and replaces a deterministic URL
+  ---
+  duration_ms: 5.206292
+  type: 'test'
+  ...
+# Subtest: simulator search filters rendered choices without submitting the form
+ok 155 - simulator search filters rendered choices without submitting the form
+  ---
+  duration_ms: 3.0745
+  type: 'test'
+  ...
+# Subtest: simulator leaves an invalid shared slug visible instead of silently rewriting it
+ok 156 - simulator leaves an invalid shared slug visible instead of silently rewriting it
+  ---
+  duration_ms: 1.598167
+  type: 'test'
+  ...
+# Subtest: simulator deduplicates repeated shared slugs before enforcing ten channels
+ok 157 - simulator deduplicates repeated shared slugs before enforcing ten channels
+  ---
+  duration_ms: 0.670833
+  type: 'test'
+  ...
+# Subtest: simulation rejects unknown and oversized selections
+ok 158 - simulation rejects unknown and oversized selections
+  ---
+  duration_ms: 1.091583
+  type: 'test'
+  ...
+# Subtest: simulation keeps selected aggregates while suppressing cells below five registrations
+ok 159 - simulation keeps selected aggregates while suppressing cells below five registrations
+  ---
+  duration_ms: 0.488625
+  type: 'test'
+  ...
+# Subtest: simulation preserves unavailable selected money as explicit null
+ok 160 - simulation preserves unavailable selected money as explicit null
+  ---
+  duration_ms: 0.551708
+  type: 'test'
+  ...
+# Subtest: simulation keeps global event and commercial denominators outside selected cells
+ok 161 - simulation keeps global event and commercial denominators outside selected cells
+  ---
+  duration_ms: 6.529334
+  type: 'test'
+  ...
+# Subtest: simulation describes exposure and selects the largest remaining commercial alternative
+ok 162 - simulation describes exposure and selects the largest remaining commercial alternative
+  ---
+  duration_ms: 0.507041
+  type: 'test'
+  ...
+# Subtest: simulation deduplicates slugs before enforcing the selection limit
+ok 163 - simulation deduplicates slugs before enforcing the selection limit
+  ---
+  duration_ms: 0.111875
+  type: 'test'
+  ...
+# Subtest: canonical ROADRUNNERS plus SPORTS WEEK scenario reconciles registrations and gross value
+ok 164 - canonical ROADRUNNERS plus SPORTS WEEK scenario reconciles registrations and gross value
+  ---
+  duration_ms: 34.825917
+  type: 'test'
+  ...
+# Subtest: simulation consumes every exposure threshold supplied by the payload
+ok 165 - simulation consumes every exposure threshold supplied by the payload
+  ---
+  duration_ms: 0.291833
+  type: 'test'
+  ...
+# Subtest: simulation ordering breaks ties by phase, modality and state after exposure and volume
+ok 166 - simulation ordering breaks ties by phase, modality and state after exposure and volume
+  ---
+  duration_ms: 0.347458
+  type: 'test'
+  ...
+# Subtest: summary renderer exposes the six portfolio chapters and five separated dimension panels
+ok 167 - summary renderer exposes the six portfolio chapters and five separated dimension panels
+  ---
+  duration_ms: 2.243291
+  type: 'test'
+  ...
+# Subtest: summary renderer draws one real four-group matrix for every dimension panel
+ok 168 - summary renderer draws one real four-group matrix for every dimension panel
+  ---
+  duration_ms: 1.424083
+  type: 'test'
+  ...
+# Subtest: summary renderer keeps channel names safe and uses Portuguese report conventions
+ok 169 - summary renderer keeps channel names safe and uses Portuguese report conventions
+  ---
+  duration_ms: 2.385125
+  type: 'test'
+  ...
+# Subtest: summary renderer consumes full producer-shaped dependencies for KPI and additive Outros
+ok 170 - summary renderer consumes full producer-shaped dependencies for KPI and additive Outros
+  ---
+  duration_ms: 3.688792
+  type: 'test'
+  ...
+# Subtest: summary renderer visibly qualifies reduced dependency samples without causal wording
+ok 171 - summary renderer visibly qualifies reduced dependency samples without causal wording
+  ---
+  duration_ms: 1.952792
+  type: 'test'
+  ...
+# Subtest: summary renderer presents every Top 10 redundancy pair as complete semantic evidence cards
+ok 172 - summary renderer presents every Top 10 redundancy pair as complete semantic evidence cards
+  ---
+  duration_ms: 2.297541
+  type: 'test'
+  ...
+# Subtest: summary renders global p75, population and a complete expandable gross-desc table
+ok 173 - summary renders global p75, population and a complete expandable gross-desc table
+  ---
+  duration_ms: 6.073667
+  type: 'test'
+  ...
+# Subtest: missing dimension benchmarks render as insufficient evidence, never zero
+ok 174 - missing dimension benchmarks render as insufficient evidence, never zero
+  ---
+  duration_ms: 3.227458
+  type: 'test'
+  ...
+# Subtest: dependency evidence ranks relevant cells, labels channels and keeps low rows in a full appendix
+ok 175 - dependency evidence ranks relevant cells, labels channels and keeps low rows in a full appendix
+  ---
+  duration_ms: 2.206375
+  type: 'test'
+  ...
+# Subtest: dependency chart preserves severity ranking and aggregates only the ranked tail
+ok 176 - dependency chart preserves severity ranking and aggregates only the ranked tail
+  ---
+  duration_ms: 2.0655
+  type: 'test'
+  ...
+# Subtest: executive summary distinguishes total qualified pairs from the displayed Top 10
+ok 177 - executive summary distinguishes total qualified pairs from the displayed Top 10
+  ---
+  duration_ms: 1.909
+  type: 'test'
+  ...
+# Subtest: simulation renderer exposes four KPI cards and complete publishable-cell evidence
+ok 178 - simulation renderer exposes four KPI cards and complete publishable-cell evidence
+  ---
+  duration_ms: 0.49925
+  type: 'test'
+  ...
+# Subtest: simulation renderer states when no commercial alternative was observed
+ok 179 - simulation renderer states when no commercial alternative was observed
+  ---
+  duration_ms: 0.415084
+  type: 'test'
+  ...
+# Subtest: share URL repeats deterministically ordered channel parameters
+ok 180 - share URL repeats deterministically ordered channel parameters
+  ---
+  duration_ms: 1.170333
+  type: 'test'
+  ...
+# Subtest: Top 10 is value-descending and combines every remaining row as Outros
+ok 181 - Top 10 is value-descending and combines every remaining row as Outros
+  ---
+  duration_ms: 1.583333
+  type: 'test'
+  ...
+# Subtest: formatters and ticket use ratio of totals
+ok 182 - formatters and ticket use ratio of totals
+  ---
+  duration_ms: 1.722709
+  type: 'test'
+  ...
+# Subtest: HTML escaping protects headings, table cells and links
+ok 183 - HTML escaping protects headings, table cells and links
+  ---
+  duration_ms: 0.757166
+  type: 'test'
+  ...
+# Subtest: long tables show ten rows first and expose the complete table on demand
+ok 184 - long tables show ten rows first and expose the complete table on demand
+  ---
+  duration_ms: 0.294333
+  type: 'test'
+  ...
+# Subtest: short tables stay open and callers can disable automatic disclosure
+ok 185 - short tables stay open and callers can disable automatic disclosure
+  ---
+  duration_ms: 0.121584
+  type: 'test'
+  ...
+# Subtest: metric cards classify numeric values so they never split inside a number
+ok 186 - metric cards classify numeric values so they never split inside a number
+  ---
+  duration_ms: 0.2585
+  type: 'test'
+  ...
+# Subtest: generated narrative renders safe emphasis without Markdown artifacts
+ok 187 - generated narrative renders safe emphasis without Markdown artifacts
+  ---
+  duration_ms: 0.15325
+  type: 'test'
+  ...
+# Subtest: ordered charts preserve commercial sequences such as lots
+ok 188 - ordered charts preserve commercial sequences such as lots
+  ---
+  duration_ms: 0.527541
+  type: 'test'
+  ...
+# Subtest: phase presentation renames launch and exposes every closed-cycle date range
+ok 189 - phase presentation renames launch and exposes every closed-cycle date range
+  ---
+  duration_ms: 1.825375
+  type: 'test'
+  ...
+# Subtest: channel-volume ordering is descending and keeps Outros last
+ok 190 - channel-volume ordering is descending and keeps Outros last
+  ---
+  duration_ms: 0.42225
+  type: 'test'
+  ...
+# Subtest: channel list is ordered by gross DESC, registrations DESC and name
+ok 191 - channel list is ordered by gross DESC, registrations DESC and name
+  ---
+  duration_ms: 0.998166
+  type: 'test'
+  ...
+# Subtest: channel directory renders executive highlights without raw Markdown
+ok 192 - channel directory renders executive highlights without raw Markdown
+  ---
+  duration_ms: 0.39375
+  type: 'test'
+  ...
+# Subtest: channel directory keeps the ten leaders visible and puts the remainder in a disclosure
+ok 193 - channel directory keeps the ten leaders visible and puts the remainder in a disclosure
+  ---
+  duration_ms: 1.069958
+  type: 'test'
+  ...
+# Subtest: commercial channel views hide ticket at or below ten reais
+ok 194 - commercial channel views hide ticket at or below ten reais
+  ---
+  duration_ms: 0.218084
+  type: 'test'
+  ...
+# Subtest: general channel matrix filters the commercial cutoff and orders sales descending
+ok 195 - general channel matrix filters the commercial cutoff and orders sales descending
+  ---
+  duration_ms: 2.699375
+  type: 'test'
+  ...
+# Subtest: chart markup states title, denominator, source and Top 10 rule
+ok 196 - chart markup states title, denominator, source and Top 10 rule
+  ---
+  duration_ms: 0.162792
+  type: 'test'
+  ...
+# Subtest: overlapping product charts truncate at ten without manufacturing Outros
+ok 197 - overlapping product charts truncate at ten without manufacturing Outros
+  ---
+  duration_ms: 0.228958
+  type: 'test'
+  ...
+# Subtest: matrix chart renders exact row-column crossings with an inspectable legend
+ok 198 - matrix chart renders exact row-column crossings with an inspectable legend
+  ---
+  duration_ms: 0.318375
+  type: 'test'
+  ...
+# Subtest: overlapping product matrix keeps only its top ten columns without Outros
+ok 199 - overlapping product matrix keeps only its top ten columns without Outros
+  ---
+  duration_ms: 0.350333
+  type: 'test'
+  ...
+# Subtest: general and channel renderers expose every print chapter
+ok 200 - general and channel renderers expose every print chapter
+  ---
+  duration_ms: 1.939583
+  type: 'test'
+  ...
+# Subtest: chapter 7 deep-dives into the six largest non-organic channels by gross value
+ok 201 - chapter 7 deep-dives into the six largest non-organic channels by gross value
+  ---
+  duration_ms: 1.228833
+  type: 'test'
+  ...
+# Subtest: general report fixes every strategic crossing and playbook in the editorial flow
+ok 202 - general report fixes every strategic crossing and playbook in the editorial flow
+  ---
+  duration_ms: 4.181875
+  type: 'test'
+  ...
+# Subtest: states page authenticates before reading only the compact territorial bundle
+ok 203 - states page authenticates before reading only the compact territorial bundle
+  ---
+  duration_ms: 1.894083
+  type: 'test'
+  ...
+# Subtest: states page defaults to visible selected Visão geral and declares all three views
+ok 204 - states page defaults to visible selected Visão geral and declares all three views
+  ---
+  duration_ms: 0.502208
+  type: 'test'
+  ...
+# Subtest: states page embeds safe JSON and uses only versioned local report assets
+ok 205 - states page embeds safe JSON and uses only versioned local report assets
+  ---
+  duration_ms: 0.816208
+  type: 'test'
+  ...
+# Subtest: states styling covers tabs, comparison, responsive navigation and print
+ok 206 - states styling covers tabs, comparison, responsive navigation and print
+  ---
+  duration_ms: 2.876583
+  type: 'test'
+  ...
+# Subtest: state selection returns complete totals and commercial channels in sales DESC order
+ok 207 - state selection returns complete totals and commercial channels in sales DESC order
+  ---
+  duration_ms: 1.457
+  type: 'test'
+  ...
+# Subtest: partner comparison accepts one to three known slugs and exposes pair overlap
+ok 208 - partner comparison accepts one to three known slugs and exposes pair overlap
+  ---
+  duration_ms: 12.724708
+  type: 'test'
+  ...
+# Subtest: overview renderer exposes territorial strategy, fixed pair and safe channel names
+ok 209 - overview renderer exposes territorial strategy, fixed pair and safe channel names
+  ---
+  duration_ms: 14.274958
+  type: 'test'
+  ...
+# Subtest: state charts apply Top 10 plus Outros and preserve Outros last
+ok 210 - state charts apply Top 10 plus Outros and preserve Outros last
+  ---
+  duration_ms: 0.434416
+  type: 'test'
+  ...
+# Subtest: share URL is deterministic and keeps the selected view
+ok 211 - share URL is deterministic and keeps the selected view
+  ---
+  duration_ms: 0.421
+  type: 'test'
+  ...
+# Subtest: shared state URLs restore only known views, states and partner slugs
+ok 212 - shared state URLs restore only known views, states and partner slugs
+  ---
+  duration_ms: 0.614209
+  type: 'test'
+  ...
+# Subtest: global admin can create without an active account, including simulated context
+ok 213 - global admin can create without an active account, including simulated context
+  ---
+  duration_ms: 2.079791
+  type: 'test'
+  ...
+# Subtest: ordinary users still require operational membership of the active account
+ok 214 - ordinary users still require operational membership of the active account
+  ---
+  duration_ms: 1.081958
+  type: 'test'
+  ...
+# Subtest: ownership resolver refuses forged platform/foreign account choices and inactive accounts
+ok 215 - ownership resolver refuses forged platform/foreign account choices and inactive accounts
+  ---
+  duration_ms: 0.415916
+  type: 'test'
+  ...
+# Subtest: platform routes remain editable by global admin, not event managers or pending legacy creators
+ok 216 - platform routes remain editable by global admin, not event managers or pending legacy creators
+  ---
+  duration_ms: 0.515541
+  type: 'test'
+  ...
+# Subtest: global admin may manage platform links; common account roles do not gain that power
+ok 217 - global admin may manage platform links; common account roles do not gain that power
+  ---
+  duration_ms: 0.723875
+  type: 'test'
+  ...
+# Subtest: every route write lookup permits explicit platform ownership only for global admin
+ok 218 - every route write lookup permits explicit platform ownership only for global admin
+  ---
+  duration_ms: 2.361125
+  type: 'test'
+  ...
+# Subtest: event search and link validation do not require an organizer for global admin
+ok 219 - event search and link validation do not require an organizer for global admin
+  ---
+  duration_ms: 0.574084
+  type: 'test'
+  ...
+# Subtest: new platform INSERT uses NULL owner, explicit scope, private visibility and real author
+ok 220 - new platform INSERT uses NULL owner, explicit scope, private visibility and real author
+  ---
+  duration_ms: 0.519458
+  type: 'test'
+  ...
+# Subtest: platform-to-account transfer resets scope, locks ownership and preserves authorship/links
+ok 221 - platform-to-account transfer resets scope, locks ownership and preserves authorship/links
+  ---
+  duration_ms: 0.813125
+  type: 'test'
+  ...
+# Subtest: platform scope cannot use the legacy creator exception in read or elevation endpoints
+ok 222 - platform scope cannot use the legacy creator exception in read or elevation endpoints
+  ---
+  duration_ms: 0.952375
+  type: 'test'
+  ...
+# Subtest: migration preserves legacy pending rows and enforces exactly one ownership type
+ok 223 - migration preserves legacy pending rows and enforces exactly one ownership type
+  ---
+  duration_ms: 1.409667
+  type: 'test'
+  ...
+# Subtest: UI differentiates platform, account and legacy ownership and guides the second step
+ok 224 - UI differentiates platform, account and legacy ownership and guides the second step
+  ---
+  duration_ms: 0.192
+  type: 'test'
+  ...
+# Subtest: changed CFML templates preserve nesting of paired control tags
+ok 225 - changed CFML templates preserve nesting of paired control tags
+  ---
+  duration_ms: 1.730334
+  type: 'test'
+  ...
+# Subtest: classifies boolean, missing and invalid openResultsEnabled values
+ok 226 - classifies boolean, missing and invalid openResultsEnabled values
+  ---
+  duration_ms: 2.484792
+  type: 'test'
+  ...
+# Subtest: blocks a disabled event for external account users
+ok 227 - blocks a disabled event for external account users
+  ---
+  duration_ms: 0.186292
+  type: 'test'
+  ...
+# Subtest: requires an explicit internal-admin override for a disabled event
+ok 228 - requires an explicit internal-admin override for a disabled event
+  ---
+  duration_ms: 0.072
+  type: 'test'
+  ...
+# Subtest: allows enabled and legacy events without an override
+ok 229 - allows enabled and legacy events without an override
+  ---
+  duration_ms: 0.368625
+  type: 'test'
+  ...
+# Subtest: treats an invalid flag as blocked but overridable by an internal admin
+ok 230 - treats an invalid flag as blocked but overridable by an internal admin
+  ---
+  duration_ms: 0.12825
+  type: 'test'
+  ...
+# Subtest: event.json prevails over a conflicting persisted API intent
+ok 231 - event.json prevails over a conflicting persisted API intent
+  ---
+  duration_ms: 0.097625
+  type: 'test'
+  ...
+# Subtest: falls back to the persisted API intent only when event.json omits the flag
+ok 232 - falls back to the persisted API intent only when event.json omits the flag
+  ---
+  duration_ms: 1.378041
+  type: 'test'
+  ...
+# Subtest: only an internal administrator can override an effective block
+ok 233 - only an internal administrator can override an effective block
+  ---
+  duration_ms: 0.38325
+  type: 'test'
+  ...
+# Subtest: enables the manual override button only after confirmation
+ok 234 - enables the manual override button only after confirmation
+  ---
+  duration_ms: 0.601083
+  type: 'test'
+  ...
+# Subtest: defines an idempotent non-null open-results column with default true
+ok 235 - defines an idempotent non-null open-results column with default true
+  ---
+  duration_ms: 15.487834
+  type: 'test'
+  ...
+# Subtest: accepts and returns open_results_enabled while keeping the internal boolean flow
+ok 236 - accepts and returns open_results_enabled while keeping the internal boolean flow
+  ---
+  duration_ms: 1.925458
+  type: 'test'
+  ...
+# Subtest: keeps a legacy hash path and appends the boolean only to the new hash
+ok 237 - keeps a legacy hash path and appends the boolean only to the new hash
+  ---
+  duration_ms: 0.239917
+  type: 'test'
+  ...
+# Subtest: documents open_results_enabled in request, response and playground
+ok 238 - documents open_results_enabled in request, response and playground
+  ---
+  duration_ms: 4.261
+  type: 'test'
+  ...
+# Subtest: reads the persisted intent and never fetches event.json from the queue
+ok 239 - reads the persisted intent and never fetches event.json from the queue
+  ---
+  duration_ms: 2.094958
+  type: 'test'
+  ...
+# Subtest: passes the persisted intent to the RaceTag processor and lets event.json prevail
+ok 240 - passes the persisted intent to the RaceTag processor and lets event.json prevail
+  ---
+  duration_ms: 1.34525
+  type: 'test'
+  ...
+# Subtest: extracts the RaceTag event slug from the public URL fragment
+ok 241 - extracts the RaceTag event slug from the public URL fragment
+  ---
+  duration_ms: 3.475083
+  type: 'test'
+  ...
+# Subtest: prefers submitted event identifiers over URL-derived hints
+ok 242 - prefers submitted event identifiers over URL-derived hints
+  ---
+  duration_ms: 0.283542
+  type: 'test'
+  ...
+# Subtest: falls back to the final public URL path segment
+ok 243 - falls back to the final public URL path segment
+  ---
+  duration_ms: 0.480792
+  type: 'test'
+  ...
+# Subtest: extracts the external ID from a technical event.json URL
+ok 244 - extracts the external ID from a technical event.json URL
+  ---
+  duration_ms: 0.553334
+  type: 'test'
+  ...
+# Subtest: returns no event hint for missing or malformed sources
+ok 245 - returns no event hint for missing or malformed sources
+  ---
+  duration_ms: 0.329458
+  type: 'test'
+  ...
+# Subtest: allows discarding only pending or failed submissions with process permission
+ok 246 - allows discarding only pending or failed submissions with process permission
+  ---
+  duration_ms: 0.181
+  type: 'test'
+  ...
+# Subtest: hides cancelled submissions only from the unfiltered queue
+ok 247 - hides cancelled submissions only from the unfiltered queue
+  ---
+  duration_ms: 0.404333
+  type: 'test'
+  ...
+# Subtest: renders the external event hint in unlinked queue rows
+ok 248 - renders the external event hint in unlinked queue rows
+  ---
+  duration_ms: 0.381
+  type: 'test'
+  ...
+# Subtest: applies discard and default-list rules to queue elements
+ok 249 - applies discard and default-list rules to queue elements
+  ---
+  duration_ms: 0.918167
+  type: 'test'
+  ...
+# Subtest: Kanban pages are restricted to Business admins
+ok 250 - Kanban pages are restricted to Business admins
+  ---
+  duration_ms: 1.841167
+  type: 'test'
+  ...
+# Subtest: Trello credentials stay on the server and use the Authorization header
+ok 251 - Trello credentials stay on the server and use the Authorization header
+  ---
+  duration_ms: 4.059708
+  type: 'test'
+  ...
+# Subtest: Trello mutations use an explicit URL-encoded body compatible with POST and PUT
+ok 252 - Trello mutations use an explicit URL-encoded body compatible with POST and PUT
+  ---
+  duration_ms: 0.295458
+  type: 'test'
+  ...
+# Subtest: Upstream failures preserve JSON responses and log only safe request metadata
+ok 253 - Upstream failures preserve JSON responses and log only safe request metadata
+  ---
+  duration_ms: 0.348417
+  type: 'test'
+  ...
+# Subtest: Mutations require CSRF and a locally authorized board
+ok 254 - Mutations require CSRF and a locally authorized board
+  ---
+  duration_ms: 0.501958
+  type: 'test'
+  ...
+# Subtest: Schema keeps board allowlist and immutable audit records
+ok 255 - Schema keeps board allowlist and immutable audit records
+  ---
+  duration_ms: 0.284958
+  type: 'test'
+  ...
+# Subtest: Browser UI supports live board operations without exposing arbitrary Trello routes
+ok 256 - Browser UI supports live board operations without exposing arbitrary Trello routes
+  ---
+  duration_ms: 0.819042
+  type: 'test'
+  ...
+# Subtest: Card editor exposes the operational Trello card feature set
+ok 257 - Card editor exposes the operational Trello card feature set
+  ---
+  duration_ms: 1.623584
+  type: 'test'
+  ...
+# Subtest: Advanced card mutations retain scope, upload, and destructive-action safeguards
+ok 258 - Advanced card mutations retain scope, upload, and destructive-action safeguards
+  ---
+  duration_ms: 0.643291
+  type: 'test'
+  ...
+# Subtest: Admin navigation exposes the Kanban module
+ok 259 - Admin navigation exposes the Kanban module
+  ---
+  duration_ms: 0.899125
+  type: 'test'
+  ...
+# Subtest: exposes a CSRF-protected repair action only when documents failed
+ok 260 - exposes a CSRF-protected repair action only when documents failed
+  ---
+  duration_ms: 1.005917
+  type: 'test'
+  ...
+# Subtest: reuses a healthy index and recreates only a missing index
+ok 261 - reuses a healthy index and recreates only a missing index
+  ---
+  duration_ms: 0.874125
+  type: 'test'
+  ...
+# Subtest: rebuilds the missing index and recovers changed OpenAI file ids
+ok 262 - rebuilds the missing index and recovers changed OpenAI file ids
+  ---
+  duration_ms: 0.129875
+  type: 'test'
+  ...
+# Subtest: validates the index before uploading and preserves a file when attachment fails
+ok 263 - validates the index before uploading and preserves a file when attachment fails
+  ---
+  duration_ms: 0.3055
+  type: 'test'
+  ...
+1..263
+# tests 263
+# suites 0
+# pass 257
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5807.26425

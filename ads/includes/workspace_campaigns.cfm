@@ -32,6 +32,7 @@
                 <cfset VARIABLES.adsV1CampaignRowsShown = 0/>
                 <cfloop query="qAdsV1Campaigns">
                   <cfset VARIABLES.adsV1RowStatus = uCase(qAdsV1Campaigns.status & "")/>
+                  <cfset VARIABLES.adsV1RowBudgetExhausted = adsV1CampaignBudgetExhausted(VARIABLES.adsV1RowStatus, qAdsV1Campaigns.budget_total, qAdsV1Campaigns.spent_total, qAdsV1Campaigns.cpc_bid)/>
                   <cfset VARIABLES.adsV1RowReviewStatus = uCase(trim(qAdsV1Campaigns.review_status & ""))/>
                   <cfset VARIABLES.adsV1ShowCampaignRow = VARIABLES.adsV1WorkspaceView EQ "overview"
                     ? listFind("ACTIVE,PAUSED", VARIABLES.adsV1RowStatus) GT 0
@@ -44,10 +45,11 @@
                     <cfset VARIABLES.adsV1RowCtr = val(qAdsV1Campaigns.viewable_impression_count) GT 0 ? val(qAdsV1Campaigns.valid_click_count) * 100 / val(qAdsV1Campaigns.viewable_impression_count) : 0/>
                     <cfset VARIABLES.adsV1RowAverageCpc = val(qAdsV1Campaigns.billable_click_count) GT 0 ? val(qAdsV1Campaigns.cost) / val(qAdsV1Campaigns.billable_click_count) : 0/>
                     <cfoutput>
-                      <tr>
+                      <tr id="campaign-#encodeForHTMLAttribute(qAdsV1Campaigns.campaign_id)#">
                         <td><div class="d-flex align-items-start gap-2"><div class="ads-campaign-mark"><i class="fas fa-bullhorn" aria-hidden="true"></i></div><div class="min-w-0"><a class="text-body text-decoration-none ads-campaign-title" href="./?view=campaign-detail&amp;campaign=#urlEncodedFormat(qAdsV1Campaigns.campaign_id)#"><strong>#encodeForHTML(qAdsV1Campaigns.name)#</strong></a><div class="small text-muted ads-campaign-event">#encodeForHTML(qAdsV1Campaigns.nome_evento)#</div><div class="small text-muted">#encodeForHTML(adsV1PlacementCountSummary(qAdsV1Campaigns.placement_keys))#</div><cfif VARIABLES.adsV1WorkspaceView EQ "overview"><a class="ads-campaign-performance-link" href="./?view=campaign-detail&amp;campaign=#urlEncodedFormat(qAdsV1Campaigns.campaign_id)#">Ver desempenho <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i></a></cfif></div></div></td>
                         <td>
-                          <span class="badge <cfif VARIABLES.adsV1RowStatus EQ 'ACTIVE'>badge-success<cfelseif VARIABLES.adsV1RowStatus EQ 'PAUSED'>badge-warning<cfelseif VARIABLES.adsV1RowStatus EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>">#encodeForHTML(adsV1CampaignStatusLabel(VARIABLES.adsV1RowStatus))#</span>
+                          <span class="badge <cfif VARIABLES.adsV1RowBudgetExhausted OR VARIABLES.adsV1RowStatus EQ 'PAUSED'>badge-warning<cfelseif VARIABLES.adsV1RowStatus EQ 'ACTIVE'>badge-success<cfelseif VARIABLES.adsV1RowStatus EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>"><cfif VARIABLES.adsV1RowBudgetExhausted AND VARIABLES.adsV1RowStatus EQ 'ACTIVE'>Orçamento esgotado<cfelse>#encodeForHTML(adsV1CampaignStatusLabel(VARIABLES.adsV1RowStatus))#</cfif></span>
+                          <cfif VARIABLES.adsV1RowBudgetExhausted><div class="small text-warning mt-1">Orçamento restante abaixo do lance. Revise o limite em Gerenciar para voltar a concorrer.</div></cfif>
                           <cfif VARIABLES.adsV1RowReviewStatus EQ "WAITING_PREREQUISITES">
                             <div class="mt-2"><span class="badge badge-warning">Aguardando pré-requisitos</span></div>
                             <div class="small text-muted mt-1">A campanha está preparada e será enviada à RunnerHub quando a conta e o evento forem aprovados.</div>
@@ -84,7 +86,20 @@
                                 <button class="btn btn-sm btn-info w-100" type="submit"><cfif VARIABLES.adsV1RowReviewStatus EQ "CHANGES_REQUESTED">Reenviar<cfelse>Enviar</cfif> para análise</button>
                               </form>
                             </cfif>
-                            <details class="ads-row-actions text-start"><summary class="btn btn-sm btn-outline-info">Gerenciar</summary><div class="ads-row-actions-panel">
+                            <details class="ads-row-actions text-start" <cfif structKeyExists(URL, "manage") AND compareNoCase(URL.manage & "", qAdsV1Campaigns.campaign_id & "") EQ 0>open</cfif>><summary class="btn btn-sm btn-outline-info">Gerenciar</summary><div class="ads-row-actions-panel">
+                              <cfif VARIABLES.adsV1BudgetIncreaseReady AND VARIABLES.adsV1RowReviewStatus EQ "APPROVED" AND listFind("ACTIVE,PAUSED", VARIABLES.adsV1RowStatus)>
+                                <form method="post" action="./?view=campaigns" class="mb-3">
+                                  <cfinclude template="../../includes/parts/business_delegation_form.cfm"/>
+                                  <input type="hidden" name="ads_v1_action" value="increase_campaign_budget"/>
+                                  <input type="hidden" name="ads_v1_csrf" value="#encodeForHTMLAttribute(VARIABLES.adsV1Csrf)#"/>
+                                  <input type="hidden" name="campaign_id" value="#encodeForHTMLAttribute(qAdsV1Campaigns.campaign_id)#"/>
+                                  <input type="hidden" name="expected_budget_total" value="#numberFormat(qAdsV1Campaigns.budget_total, '0.00')#"/>
+                                  <label class="form-label small" for="budget-#encodeForHTMLAttribute(qAdsV1Campaigns.campaign_id)#">Novo orçamento total (R$)</label>
+                                  <input id="budget-#encodeForHTMLAttribute(qAdsV1Campaigns.campaign_id)#" class="form-control form-control-sm" type="number" name="new_budget_total" min="#numberFormat(precisionEvaluate(qAdsV1Campaigns.budget_total + 0.01), '0.00')#" max="999999999999.99" step="0.01" required placeholder="Acima de #numberFormat(qAdsV1Campaigns.budget_total, '0.00')#"/>
+                                  <p class="small text-muted my-2">Aumenta o limite desta campanha sem pausar nem pedir nova aprovação. Não adiciona crédito à conta. Campanhas pausadas continuam pausadas.</p>
+                                  <button type="submit" class="btn btn-sm btn-info w-100">Aumentar orçamento</button>
+                                </form>
+                              </cfif>
                               <cfif VARIABLES.adsV1RowStatus EQ "DRAFT"
                                 AND listFind("PENDING_REVIEW,WAITING_PREREQUISITES", VARIABLES.adsV1RowReviewStatus)>
                                 <form method="post" action="./?view=campaigns"><cfinclude template="../../includes/parts/business_delegation_form.cfm"/>

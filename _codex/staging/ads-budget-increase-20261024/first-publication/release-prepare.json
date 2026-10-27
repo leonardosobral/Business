@@ -1,0 +1,14 @@
+{
+  "stage": "/var/backups/ads-budget-increase-20261024-u2edme08",
+  "manifest_sha256": "c7a50253dd60b417090f06717f551f55ea91f5565dfee1dc8c60c3dc2092309a",
+  "candidate_hashes": {
+    "services/accountDelegation/Policy.cfc": "7d07c4d6d2bffea13d4abf674d99956d3c260dbe494c1d4c86a85f5ad4e6272d",
+    "ads/includes/campaign_mutations.cfm": "c70d158dd59e8aa2826a0668138237ccb34e3e643f0d13ec28d796ddb6eaa28f",
+    "ads/includes/backend.cfm": "e9635d74da75e09b8f500337db4a93df8201f325f990c58cdac66f48df50e6fa",
+    "ads/includes/workspace_campaigns.cfm": "e5b919c5b99ef0ae7a00601eb9ad6237c5a841c64fe0ef9b5d0655d727e03ade",
+    "ads/includes/workspace_campaign_detail.cfm": "34b9848492e79bc934d089d9638936bd7b9f3268a94cea6b4dd5fdb20b19d7b0",
+    "includes/estrutura/home_conta_dashboard.cfm": "da9192179b73c55a72d904895a30da1e8953e88cce88993af7afaa86ff1a3ecf"
+  },
+  "backup": "/var/backups/ads-budget-increase-20261024-u2edme08/baseline",
+  "runtime_files_changed": false
+}

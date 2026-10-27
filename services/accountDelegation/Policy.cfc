@@ -172,7 +172,7 @@ component output=false {
             if(structKeyExists(arguments.query,'payment') && len(arguments.query.payment)) cap='ads.payments.view';
             if(verb=='POST') {
                 if(actionKey!='ads_v1_action') return denied;
-                if(listFind('save_campaign,prepare_campaign_edit,submit_campaign_review,change_campaign_status',action)) cap='ads.campaigns.manage';
+                if(listFind('save_campaign,prepare_campaign_edit,submit_campaign_review,change_campaign_status,increase_campaign_budget',action)) cap='ads.campaigns.manage';
                 else if(action=='create_payment_checkout') cap='ads.credits.purchase';
                 else return denied;
             }

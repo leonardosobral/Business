@@ -1,0 +1,18 @@
+{
+  "RoadRunners": {
+    "published": [
+      "assets/js/runnerhub-pace.js",
+      "assets/js/runnerhub-pace.min.js",
+      "calculadora-de-pace/index.cfm"
+    ],
+    "backup": "/var/backups/seo-measurement-editorial-20261025/RoadRunners/baseline"
+  },
+  "Business": {
+    "published": [
+      "portal/conteudo/seo_growth_baseline.cfm",
+      "portal/conteudo/seo_ga4.cfm"
+    ],
+    "backup": "/var/backups/seo-measurement-editorial-20261025/Business/baseline"
+  },
+  "at": "2026-10-25T21:48:13.429661+00:00"
+}

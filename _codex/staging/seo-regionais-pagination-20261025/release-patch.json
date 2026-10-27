@@ -1,0 +1,9 @@
+{
+  "published": [
+    "assets/js/runnerhub-event-filters.js",
+    "assets/js/runnerhub-event-filters.min.js",
+    "estado/index.cfm"
+  ],
+  "backup": "/var/backups/seo-regionais-pagination-20261025/slider-fix/baseline",
+  "verified_hashes": 18
+}

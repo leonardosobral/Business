@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-25",
+  "desktop": {
+    "width": 1529,
+    "calculatorColumns": 2,
+    "overflow": false
+  },
+  "mobile": {
+    "width": 390,
+    "calculatorColumns": 1,
+    "overflow": false,
+    "citiesVisible": true
+  },
+  "calculations": {
+    "5km30min": "6:00 min/km",
+    "10km5m30s": "00:55:00",
+    "45min6m": "7,5 km",
+    "marathon5m": "03:30:59",
+    "finalSplit": "42,195 km / 03:30:59"
+  },
+  "validation": {
+    "zeroRejected": true,
+    "staleResultHidden": true,
+    "correctionAccepted": true
+  },
+  "regional": {
+    "city": "Curitiba/PR",
+    "all": 16,
+    "distance5km": 11,
+    "coupon": 0,
+    "summariesAfterAjax": 1,
+    "couponCityFacet": "Foz do Iguaçu / 1 prova",
+    "eventBreadcrumb": [
+      "Início",
+      "Paraná",
+      "Curitiba",
+      "Santander Night Run - Etapa 1 - Curitiba 2026"
+    ]
+  },
+  "calendar": {
+    "state": "PR",
+    "nationalContext": "BR",
+    "nationalStateEmptyAfterNavigation": true
+  },
+  "analyticsReceipt": "not verified"
+}

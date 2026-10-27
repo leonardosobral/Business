@@ -1,0 +1,74 @@
+[
+  {
+    "case": "home-1280",
+    "navbarBottom": 58.59375,
+    "contentTop": 75,
+    "gap": 16.40625
+  },
+  {
+    "case": "suite-1280",
+    "navbarBottom": 58.59375,
+    "contentTop": 75,
+    "gap": 16.40625
+  },
+  {
+    "case": "kanban-1280",
+    "navbarBottom": 58.59375,
+    "contentTop": 75,
+    "gap": 16.40625
+  },
+  {
+    "case": "legacy-1280",
+    "navbarBottom": 58.59375,
+    "contentTop": 75,
+    "gap": 16.40625
+  },
+  {
+    "case": "crm-1280",
+    "navbarBottom": 58.59375,
+    "contentTop": 91,
+    "gap": 32.40625
+  },
+  {
+    "case": "standalone-1280",
+    "navbarBottom": 0,
+    "contentTop": 32,
+    "gap": 32
+  },
+  {
+    "case": "home-390",
+    "navbarBottom": 58.59375,
+    "contentTop": 75,
+    "gap": 16.40625
+  },
+  {
+    "case": "suite-390",
+    "navbarBottom": 58.59375,
+    "contentTop": 75,
+    "gap": 16.40625
+  },
+  {
+    "case": "kanban-390",
+    "navbarBottom": 58.59375,
+    "contentTop": 75,
+    "gap": 16.40625
+  },
+  {
+    "case": "legacy-390",
+    "navbarBottom": 58.59375,
+    "contentTop": 75,
+    "gap": 16.40625
+  },
+  {
+    "case": "crm-390",
+    "navbarBottom": 58.59375,
+    "contentTop": 91,
+    "gap": 32.40625
+  },
+  {
+    "case": "standalone-390",
+    "navbarBottom": 0,
+    "contentTop": 32,
+    "gap": 32
+  }
+]

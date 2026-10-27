@@ -1,0 +1,27 @@
+{
+  "sources": [
+    {
+      "file": "corridasbr-positions.txt",
+      "sha256": "42d4225d95db27fb9d5a3d1b34efc81f3b1ce36a3f32fb42e44b29d1989432a3",
+      "rows": 100,
+      "reportDate": "2026-10-24",
+      "database": "BR",
+      "device": "desktop",
+      "scope": "first100_all_positions",
+      "readDate": "2026-10-25"
+    },
+    {
+      "file": "ticketsports-positions.txt",
+      "sha256": "45cd178793c1f6194ff9b752782477b26b24299860b305e9be48a19b787629fa",
+      "rows": 100,
+      "reportDate": "2026-10-24",
+      "database": "BR",
+      "device": "desktop",
+      "scope": "first100_all_positions",
+      "readDate": "2026-10-25"
+    }
+  ],
+  "limitation": "Current positions do not establish the cause of monthly traffic changes; SERP features are not measured clicks.",
+  "plan": "../../docs/2026-10-25_plano_seo_regionais_pace.md",
+  "changes": "Planning and evidence only; no runtime or database changes."
+}

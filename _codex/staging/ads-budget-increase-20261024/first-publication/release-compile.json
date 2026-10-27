@@ -1,0 +1,8 @@
+{
+  "manifest_sha256": "c7a50253dd60b417090f06717f551f55ea91f5565dfee1dc8c60c3dc2092309a",
+  "compiled_templates": 6,
+  "compiler": "/opt/coldfusion2025/cfusion/bin/cfcompile.sh",
+  "runtime_user": "coldfusion",
+  "stage": "/var/backups/ads-budget-increase-20261024-u2edme08",
+  "runtime_files_changed": false
+}

@@ -1,0 +1,76 @@
+{
+  "files": {
+    "services/accountDelegation/Store.cfc": {
+      "exists": true,
+      "sha256": "2676c0017a652bdf92d4a96482db79889909c4bc696c89e2a554fb49d3d20dcb",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads/home.cfm": {
+      "exists": true,
+      "sha256": "6bba8efee17dfdc0be4f9cbba30f5fef68155a936798ecee5260287f541de090",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "ads/includes/workspace_campaigns.cfm": {
+      "exists": true,
+      "sha256": "3414e8b6018ccb8badaa396ac3a8b780a77f8641f8acbe74b18ac9cc1c8e1ce6",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "ads/includes/workspace_campaign_detail.cfm": {
+      "exists": true,
+      "sha256": "308366cb2bd38d6ef4fc88d4c3e21894a70cb075262a2f029ff5f4d71fdb9479",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    },
+    "ads/includes/workspace_admin.cfm": {
+      "exists": true,
+      "sha256": "cbb7bf36676e0b990002b2812cac594510cd6404b91f78613d5d001d6125752f",
+      "mode": 420,
+      "uid": 501,
+      "gid": 50
+    }
+  },
+  "watch": {
+    "includes/estrutura/header.cfm": {
+      "exists": true,
+      "sha256": "8099d39e60a32911e70c598b10ecd9bacf0387f13e5dedc9a90c93301497255c",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "includes/estrutura/navbar.cfm": {
+      "exists": true,
+      "sha256": "aac182cd1d0ccf356ec4a3a81ce66fea99eb03a024117a8594833aa83acb6476",
+      "mode": 420,
+      "uid": 0,
+      "gid": 50
+    },
+    "services/BusinessAccountDelegation.cfc": {
+      "exists": true,
+      "sha256": "061aa91502797c0476edbb8fca5cf67c251b411ec99de3a17279ba5c0e3e1e1e",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads/includes/delegation.cfm": {
+      "exists": true,
+      "sha256": "774c95418db2df140afbda439498501f3370d243fecb8b1330cd123015ab6704",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    },
+    "ads/includes/campaign_mutations.cfm": {
+      "exists": true,
+      "sha256": "a50bc0133c4c483feb780f85f973eb24e138f432eaf2bf37019474f4cfe3992e",
+      "mode": 420,
+      "uid": 0,
+      "gid": 0
+    }
+  }
+}

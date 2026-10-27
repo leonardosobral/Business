@@ -146,64 +146,28 @@
     </cftry>
 
     <cftry>
-        <cfquery name="qBusinessHomeVoucherColumnCheck">
-            SELECT count(*)::integer AS total_columns
-            FROM information_schema.columns
-            WHERE table_schema = 'ads'
-              AND table_name = <cfqueryparam cfsqltype="cf_sql_varchar" value="tb_ad_vouchers"/>
-              AND column_name IN (
-                  <cfqueryparam cfsqltype="cf_sql_varchar" value="id_conta"/>,
-                  <cfqueryparam cfsqltype="cf_sql_varchar" value="credito"/>,
-                  <cfqueryparam cfsqltype="cf_sql_varchar" value="credito_disponivel"/>,
-                  <cfqueryparam cfsqltype="cf_sql_varchar" value="status"/>,
-                  <cfqueryparam cfsqltype="cf_sql_varchar" value="data_resgate"/>
-              )
-        </cfquery>
-        <cfset VARIABLES.businessHomeVoucherColumnsReady = qBusinessHomeVoucherColumnCheck.recordcount GT 0 AND val(qBusinessHomeVoucherColumnCheck.total_columns) GTE 5/>
-
         <cfquery name="qBusinessHomeMarketingSummary" datasource="runnerhub">
-            WITH linked_events AS (
-                SELECT DISTINCT id_evento
-                FROM public.tb_conta_eventos
-                WHERE id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
-                  AND status::text = 'ATIVO'
-            ),
-            <cfif VARIABLES.businessHomeVoucherColumnsReady>
-            voucher_summary AS (
-                SELECT coalesce(sum(CASE WHEN status = 2 AND data_resgate IS NOT NULL THEN coalesce(credito_disponivel, credito, 0) ELSE 0 END), 0) AS saldo_ads,
-                       count(*) FILTER (WHERE status = 2 AND data_resgate IS NOT NULL) AS vouchers_resgatados
-                FROM ads.tb_ad_vouchers
-                WHERE id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
-            ),
-            <cfelse>
-            voucher_summary AS (
-                SELECT 0::numeric AS saldo_ads,
-                       0::integer AS vouchers_resgatados
-            ),
-            </cfif>
-            ad_summary AS (
-                SELECT count(DISTINCT ad.id_ad_evento) AS ads_total,
-                       count(DISTINCT ad.id_ad_evento) FILTER (
-                           WHERE ad.status = 1
-                             AND (ad.inicio_ad IS NULL OR ad.inicio_ad <= now())
-                             AND (ad.final_ad IS NULL OR ad.final_ad >= now())
-                       ) AS ads_ativos,
-                       coalesce(sum(coalesce(ad.limite_ad, 0)), 0) AS ads_budget_total,
-                       coalesce(sum(coalesce(ad.limite_diario, 0)) FILTER (
-                           WHERE ad.status = 1
-                             AND (ad.inicio_ad IS NULL OR ad.inicio_ad <= now())
-                             AND (ad.final_ad IS NULL OR ad.final_ad >= now())
-                       ), 0) AS ads_daily_limit
-                FROM ads.tb_ad_eventos ad
-                INNER JOIN linked_events evt ON evt.id_evento = ad.id_evento
+            WITH wallet AS (
+                SELECT coalesce(sum(available_balance), 0) AS saldo_ads
+                FROM ads.account_balances
+                WHERE account_id IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
+            ), vouchers AS (
+                SELECT count(*) AS vouchers_resgatados
+                FROM ads.credit_ledger
+                WHERE account_id IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
+                  AND source_type='VOUCHER' AND entry_type='CREDIT'
+            ), campaigns AS (
+                SELECT count(*) AS ads_total,
+                       count(*) FILTER (WHERE status='ACTIVE') AS ads_ativos,
+                       coalesce(sum(budget_total) FILTER (WHERE status IN ('ACTIVE','PAUSED','DRAFT')),0) AS ads_budget_total,
+                       coalesce(sum(budget_daily) FILTER (WHERE status='ACTIVE'),0) AS ads_daily_limit
+                FROM ads.campaigns c
+                WHERE account_id IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
+                  AND billing_model='CPC'
+                  AND EXISTS(SELECT 1 FROM ads.advertisements a WHERE a.campaign_id=c.campaign_id AND a.ad_type='EVENT')
             )
-            SELECT coalesce(voucher_summary.saldo_ads, 0) AS saldo_ads,
-                   coalesce(voucher_summary.vouchers_resgatados, 0) AS vouchers_resgatados,
-                   coalesce(ad_summary.ads_total, 0) AS ads_total,
-                   coalesce(ad_summary.ads_ativos, 0) AS ads_ativos,
-                   coalesce(ad_summary.ads_budget_total, 0) AS ads_budget_total,
-                   coalesce(ad_summary.ads_daily_limit, 0) AS ads_daily_limit
-            FROM voucher_summary, ad_summary
+            SELECT wallet.saldo_ads,vouchers.vouchers_resgatados,campaigns.*
+            FROM wallet,vouchers,campaigns
         </cfquery>
 
         <cfif qBusinessHomeMarketingSummary.recordcount>
@@ -216,25 +180,17 @@
         </cfif>
 
         <cfquery name="qBusinessHomeAdCampaigns" datasource="runnerhub">
-            WITH linked_events AS (
-                SELECT DISTINCT id_evento
-                FROM public.tb_conta_eventos
-                WHERE id_conta IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
-                  AND status::text = 'ATIVO'
-            )
-            SELECT ad.id_ad_evento,
-                   evt.nome_evento,
-                   evt.tag,
-                   ad.status,
-                   ad.cpc_max,
-                   ad.limite_diario,
-                   ad.limite_ad,
-                   ad.inicio_ad,
-                   ad.final_ad
-            FROM ads.tb_ad_eventos ad
-            INNER JOIN public.tb_evento_corridas evt ON evt.id_evento = ad.id_evento
-            INNER JOIN linked_events ce ON ce.id_evento = evt.id_evento
-            ORDER BY ad.status ASC, ad.final_ad DESC NULLS LAST, evt.nome_evento
+            SELECT campaign.campaign_id AS id_ad_evento,campaign.name AS nome_evento,
+                   campaign.status,campaign.cpc_bid AS cpc_max,campaign.budget_daily AS limite_diario,
+                   campaign.budget_total AS limite_ad,campaign.starts_at AS inicio_ad,campaign.ends_at AS final_ad,
+                   (campaign.status IN ('ACTIVE','PAUSED') AND coalesce(budget.spent_total,0)+campaign.cpc_bid > campaign.budget_total) AS budget_exhausted
+            FROM ads.campaigns campaign
+            LEFT JOIN ads.campaign_budget_state budget ON budget.campaign_id=campaign.campaign_id
+            WHERE campaign.account_id IN (<cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.businessHomeAccountIds#" list="true"/>)
+              AND campaign.billing_model='CPC'
+              AND EXISTS(SELECT 1 FROM ads.advertisements a WHERE a.campaign_id=campaign.campaign_id AND a.ad_type='EVENT')
+            ORDER BY CASE campaign.status WHEN 'ACTIVE' THEN 0 WHEN 'PAUSED' THEN 1 WHEN 'DRAFT' THEN 2 ELSE 3 END,
+                     campaign.updated_at DESC
             LIMIT 5
         </cfquery>
 
@@ -647,7 +603,7 @@
                         <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-3">
                             <div>
                                 <h5 class="mb-1">Marketing e vendas</h5>
-                                <div class="text-muted small">Credito, campanhas e orcamento de anuncios.</div>
+                                <div class="text-muted small">O saldo da conta é compartilhado entre campanhas de eventos e banners. Cada campanha tem seu próprio limite de investimento.</div>
                             </div>
                             <div class="dashboard-actions">
                                 <a class="btn btn-sm btn-warning" href="/ads/">Nova campanha</a>
@@ -671,7 +627,7 @@
                             <div class="col-md-4">
                                 <div class="border rounded p-2 h-100">
                                     <div class="text-muted small">Limite diario ativo</div>
-                                    <div class="fw-bold"><cfoutput>#lsCurrencyFormat(VARIABLES.businessHomeAdsDailyLimit)#</cfoutput></div>
+                                    <div class="fw-bold"><cfif VARIABLES.businessHomeAdsAtivos EQ 0>Sem campanhas ativas<cfelseif VARIABLES.businessHomeAdsDailyLimit EQ 0>Sem limite diário<cfelse><cfoutput>#lsCurrencyFormat(VARIABLES.businessHomeAdsDailyLimit)#</cfoutput></cfif></div>
                                 </div>
                             </div>
                         </div>
@@ -686,36 +642,39 @@
                                             <th>Periodo</th>
                                             <th class="text-end">CPC</th>
                                             <th class="text-end">Limite/dia</th>
-                                            <th class="text-end">Orcamento</th>
+                                            <th class="text-end">Orçamento total</th><th class="text-end">Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <cfoutput query="qBusinessHomeAdCampaigns">
                                             <cfset VARIABLES.businessHomeAdStatusClass = "bg-secondary"/>
                                             <cfset VARIABLES.businessHomeAdStatusLabel = "Status " & qBusinessHomeAdCampaigns.status/>
-                                            <cfif qBusinessHomeAdCampaigns.status EQ 1>
+                                            <cfif qBusinessHomeAdCampaigns.status EQ "ACTIVE">
                                                 <cfset VARIABLES.businessHomeAdStatusClass = "bg-success"/>
                                                 <cfset VARIABLES.businessHomeAdStatusLabel = "Ativa"/>
-                                            <cfelseif qBusinessHomeAdCampaigns.status EQ 3>
+                                            <cfelseif qBusinessHomeAdCampaigns.status EQ "PAUSED">
                                                 <cfset VARIABLES.businessHomeAdStatusLabel = "Pausada"/>
-                                            <cfelseif qBusinessHomeAdCampaigns.status EQ 4>
-                                                <cfset VARIABLES.businessHomeAdStatusLabel = "Arquivada"/>
+                                            <cfelseif qBusinessHomeAdCampaigns.status EQ "ENDED">
+                                                <cfset VARIABLES.businessHomeAdStatusLabel = "Finalizada"/>
                                             </cfif>
+                                            <cfif qBusinessHomeAdCampaigns.status EQ "DRAFT"><cfset VARIABLES.businessHomeAdStatusLabel = "Rascunho"/></cfif>
+                                            <cfif qBusinessHomeAdCampaigns.status EQ "ACTIVE" AND qBusinessHomeAdCampaigns.budget_exhausted><cfset VARIABLES.businessHomeAdStatusClass = "bg-warning text-dark"/><cfset VARIABLES.businessHomeAdStatusLabel = "Orçamento esgotado"/></cfif>
                                             <cfset VARIABLES.businessHomeAdPeriod = "Sem periodo"/>
                                             <cfif isDate(qBusinessHomeAdCampaigns.inicio_ad) AND isDate(qBusinessHomeAdCampaigns.final_ad)>
-                                                <cfset VARIABLES.businessHomeAdPeriod = dateFormat(qBusinessHomeAdCampaigns.inicio_ad, "dd/mm") & " a " & dateFormat(qBusinessHomeAdCampaigns.final_ad, "dd/mm")/>
+                                                <cfset VARIABLES.businessHomeAdPeriod = dateFormat(qBusinessHomeAdCampaigns.inicio_ad, "dd/mm/yyyy") & " a " & dateFormat(qBusinessHomeAdCampaigns.final_ad, "dd/mm/yyyy")/>
                                             <cfelseif isDate(qBusinessHomeAdCampaigns.inicio_ad)>
-                                                <cfset VARIABLES.businessHomeAdPeriod = "Desde " & dateFormat(qBusinessHomeAdCampaigns.inicio_ad, "dd/mm")/>
+                                                <cfset VARIABLES.businessHomeAdPeriod = "Desde " & dateFormat(qBusinessHomeAdCampaigns.inicio_ad, "dd/mm/yyyy")/>
                                             <cfelseif isDate(qBusinessHomeAdCampaigns.final_ad)>
-                                                <cfset VARIABLES.businessHomeAdPeriod = "Ate " & dateFormat(qBusinessHomeAdCampaigns.final_ad, "dd/mm")/>
+                                                <cfset VARIABLES.businessHomeAdPeriod = "Ate " & dateFormat(qBusinessHomeAdCampaigns.final_ad, "dd/mm/yyyy")/>
                                             </cfif>
+                                            <cfset VARIABLES.businessHomeAdManageUrl = "/ads/?view=campaigns&amp;status=" & (qBusinessHomeAdCampaigns.status EQ "ENDED" ? "ended" : (qBusinessHomeAdCampaigns.status EQ "DRAFT" ? "draft" : "ongoing")) & "&amp;manage=" & urlEncodedFormat(qBusinessHomeAdCampaigns.id_ad_evento) & "##campaign-" & qBusinessHomeAdCampaigns.id_ad_evento/>
                                             <tr>
-                                                <td>#encodeForHTML(qBusinessHomeAdCampaigns.nome_evento)#</td>
+                                                <td><a href="#VARIABLES.businessHomeAdManageUrl#">#encodeForHTML(qBusinessHomeAdCampaigns.nome_evento)#</a></td>
                                                 <td><span class="badge #VARIABLES.businessHomeAdStatusClass#">#encodeForHTML(VARIABLES.businessHomeAdStatusLabel)#</span></td>
                                                 <td>#encodeForHTML(VARIABLES.businessHomeAdPeriod)#</td>
                                                 <td class="text-end">#lsCurrencyFormat(val(qBusinessHomeAdCampaigns.cpc_max))#</td>
-                                                <td class="text-end">#lsCurrencyFormat(val(qBusinessHomeAdCampaigns.limite_diario))#</td>
-                                                <td class="text-end">#lsCurrencyFormat(val(qBusinessHomeAdCampaigns.limite_ad))#</td>
+                                                <td class="text-end"><cfif isNumeric(qBusinessHomeAdCampaigns.limite_diario)>#lsCurrencyFormat(qBusinessHomeAdCampaigns.limite_diario)#<cfelse>Sem limite diário</cfif></td>
+                                                <td class="text-end">#lsCurrencyFormat(val(qBusinessHomeAdCampaigns.limite_ad))#</td><td class="text-end"><a class="btn btn-sm btn-outline-info" href="#VARIABLES.businessHomeAdManageUrl#">Gerenciar</a></td>
                                             </tr>
                                         </cfoutput>
                                     </tbody>

@@ -68,7 +68,8 @@ function adsV1FormList(required any value) {
 <cfset VARIABLES.adsV1PerformanceCampaignName = ""/>
 <cfset VARIABLES.adsV1CreditIdempotencyKey = ""/>
 <cfset VARIABLES.adsV1ReversalIdempotencyKey = ""/>
-<cfset VARIABLES.adsV1CampaignActions = "save_campaign,prepare_campaign_edit,submit_campaign_review,change_campaign_status"/>
+<cfset VARIABLES.adsV1CampaignActions = "save_campaign,prepare_campaign_edit,submit_campaign_review,change_campaign_status,increase_campaign_budget"/>
+<cfset VARIABLES.adsV1BudgetIncreaseReady = false/>
 <cfset VARIABLES.adsV1FinanceActions = "credit_account,reverse_click_debit"/>
 <cfset VARIABLES.adsV1VoucherActions = "redeem_voucher,reserve_voucher"/>
 <cfset VARIABLES.adsV1VoucherAdminActions = "create_admin_voucher"/>
@@ -173,6 +174,7 @@ function adsV1FormList(required any value) {
 </cfif>
 
 <cfswitch expression="#trim(URL.success & '')#">
+    <cfcase value="budget-increased"><cfset VARIABLES.adsV1Notice = "Orçamento total aumentado. O status e a aprovação foram mantidos; a exibição continua respeitando saldo, período e limite diário."/></cfcase>
     <cfcase value="campaign-saved"><cfset VARIABLES.adsV1Notice = "Rascunho salvo. A campanha ainda não foi enviada para análise."/></cfcase>
     <cfcase value="campaign-edit-ready"><cfset VARIABLES.adsV1Notice = "Campanha liberada para edição e fora do ar. A análise anterior foi cancelada. Após alterar, escolha Enviar para análise ou Salvar como rascunho."/></cfcase>
     <cfcase value="campaign-submitted"><cfset VARIABLES.adsV1Notice = "Campanha enviada para análise. Ainda não está no ar: aguardará as aprovações da conta, do evento e da RunnerHub."/></cfcase>
@@ -190,6 +192,11 @@ function adsV1FormList(required any value) {
 </cfswitch>
 
 <cftry>
+    <cfquery name="qAdsV1BudgetIncreaseReadiness" datasource="runnerhub">
+        SELECT coalesce(has_function_privilege(current_user,
+            to_regprocedure('ads.increase_campaign_budget(uuid,bigint,integer,numeric,numeric)'), 'EXECUTE'), false) AS ready
+    </cfquery>
+    <cfset VARIABLES.adsV1BudgetIncreaseReady = qAdsV1BudgetIncreaseReadiness.ready/>
     <cfquery name="qAdsV1Readiness" datasource="runnerhub">
         WITH expected_functions(signature) AS (
             VALUES
@@ -1447,6 +1454,23 @@ function adsV1FormList(required any value) {
                 <cfelse>
                     <cflocation addtoken="false" url="./?view=admin&amp;success=campaign-review-canceled"/>
                 </cfif>
+            </cfcase>
+
+            <cfcase value="increase_campaign_budget">
+                <cfif NOT VARIABLES.adsV1BudgetIncreaseReady><cfthrow type="AdsV1.Validation" message="O aumento direto de orçamento ainda não está disponível."/></cfif>
+                <cfset VARIABLES.adsV1BudgetCampaignId = structKeyExists(FORM, "campaign_id") ? lCase(trim(FORM.campaign_id & "")) : ""/>
+                <cfset VARIABLES.adsV1NewBudgetRaw = structKeyExists(FORM, "new_budget_total") ? trim(FORM.new_budget_total & "") : ""/>
+                <cfset VARIABLES.adsV1ExpectedBudgetRaw = structKeyExists(FORM, "expected_budget_total") ? trim(FORM.expected_budget_total & "") : ""/>
+                <cfif NOT adsV1IsUuid(VARIABLES.adsV1BudgetCampaignId)
+                    OR NOT reFind("^[0-9]{1,12}([.,][0-9]{1,2})?$", VARIABLES.adsV1NewBudgetRaw)
+                    OR NOT reFind("^[0-9]{1,12}([.,][0-9]{1,2})?$", VARIABLES.adsV1ExpectedBudgetRaw)>
+                    <cfthrow type="AdsV1.Validation" message="Informe o novo orçamento total com até duas casas decimais, sem separador de milhar."/>
+                </cfif>
+                <cfset VARIABLES.adsV1NewBudget = adsV1MoneyValue(VARIABLES.adsV1NewBudgetRaw)/>
+                <cfset VARIABLES.adsV1ExpectedBudget = adsV1MoneyValue(VARIABLES.adsV1ExpectedBudgetRaw)/>
+                <cfif VARIABLES.adsV1NewBudget LTE VARIABLES.adsV1ExpectedBudget><cfthrow type="AdsV1.Validation" message="O novo orçamento total deve ser maior que o atual."/></cfif>
+                <cfset adsDelegationMutation(FORM,'ads.campaigns.manage',{type='CAMPAIGN',id=VARIABLES.adsV1BudgetCampaignId},adsV1MutationIncreaseBudget,VARIABLES)/>
+                <cflocation addtoken="false" url="./?view=campaigns&status=ongoing&success=budget-increased"/>
             </cfcase>
 
             <cfcase value="prepare_campaign_edit">

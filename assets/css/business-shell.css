@@ -1,0 +1,15 @@
+/* Reserve only the fixed navbar's height; keep standalone pages outside this shell. */
+body > .business-shell-header {
+    height: var(--business-navbar-height, 60px);
+}
+
+/* Existing pages still carry inline -55px/-80px offsets from the decorative header. */
+body > .business-shell-header ~ main {
+    margin-top: 0 !important;
+    padding-top: 1rem !important;
+}
+
+/* The shell now provides the top inset for nested admin pages as well. */
+body > .business-shell-header ~ main .admin-suite-page {
+    padding-top: 0;
+}

@@ -1,0 +1,24 @@
+{
+  "published": [
+    "includes/backend/backend_regional_calendar.cfm",
+    "includes/regional_period.cfm",
+    "includes/regional_pagination.cfm",
+    "assets/js/runnerhub-regional-period.js",
+    "assets/js/runnerhub-regional-period.min.js",
+    "includes/backend/backend_estado_cidades.cfm",
+    "includes/lista_de_eventos_simple.cfm",
+    "includes/filtros.cfm",
+    "includes/regional_summary.cfm",
+    "assets/js/runnerhub-event-filters.js",
+    "assets/js/runnerhub-event-filters.min.js",
+    "assets/js/runnerhub-estado-cidades.js",
+    "assets/js/runnerhub-estado-cidades.min.js",
+    "assets/css/runnerhub-regionais.css",
+    "assets/css/runnerhub-regionais.min.css",
+    "includes/backend/backend.cfm",
+    "api/eventos.cfm",
+    "estado/index.cfm"
+  ],
+  "backup": "/var/backups/seo-regionais-pagination-20261025/baseline",
+  "published_at": "2026-10-25T21:09:22.265091+00:00"
+}

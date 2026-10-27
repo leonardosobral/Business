@@ -191,8 +191,9 @@ component output=false {
             {id={value=lCase(paymentIntentId),cfsqltype='cf_sql_varchar'},account=idParam(context.accountId),actor=idParam(context.actorId),manager=idParam(context.managerAccountId),relationship=idParam(context.relationshipId)}).recordCount==1;
     }
     public void function audit(required struct context,required string capability,required struct resource) {
+        // execute() promises a query; CF2025 rejects a DML update count and rolls back the mutation.
         execute("INSERT INTO tb_conta_gestao_auditoria(id_usuario_ator,id_conta_gestora,id_conta_cliente,id_vinculo,acao,recurso_tipo,recurso_id,resultado)
-            VALUES(:actor,NULLIF(:manager,0),:account,NULLIF(:relationship,0),:action,:type,:id,'SUCCESS')",
+            VALUES(:actor,NULLIF(:manager,0),:account,NULLIF(:relationship,0),:action,:type,:id,'SUCCESS') RETURNING 1 AS recorded",
             {actor=idParam(context.actorId),manager=idParam(context.managerAccountId),account=idParam(context.accountId),relationship=idParam(context.relationshipId),
              action={value=capability,cfsqltype='cf_sql_varchar'},type={value=resource.type,cfsqltype='cf_sql_varchar'},id={value=resource.id,cfsqltype='cf_sql_varchar'}});
     }

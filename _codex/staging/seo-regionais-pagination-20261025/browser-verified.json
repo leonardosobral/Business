@@ -1,0 +1,23 @@
+{
+  "verified_at": "2026-10-25T21:14:22.129711+00:00",
+  "desktop_width": 1529,
+  "mobile_width": 390,
+  "checks": [
+    "page2_to_page3",
+    "next_month_resets_page",
+    "ajax_coupon_preserves_period",
+    "date_form_preserves_live_coupon",
+    "distance_slider_visible_with_hidden_legacy_period",
+    "distance_drag_updates_url",
+    "city_preserves_period_and_distance",
+    "city_count_equals_summary",
+    "custom_december_dates_preserve_filters",
+    "mobile_no_horizontal_overflow"
+  ],
+  "snapshot": {
+    "pr_total": 128,
+    "pr_november_total": 66,
+    "curitiba_november_1_to_11km": 9,
+    "curitiba_december_1_to_11km": 2
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "published": [
+    "includes/regional_summary.cfm",
+    "assets/css/runnerhub-regionais.css",
+    "assets/css/runnerhub-regionais.min.css",
+    "calculadora-de-pace/index.cfm",
+    "assets/js/runnerhub-pace.js",
+    "assets/js/runnerhub-pace.min.js",
+    "assets/css/runnerhub-pace.css",
+    "assets/css/runnerhub-pace.min.css",
+    "includes/backend/backend_evento.cfm",
+    "evento/parts/breadcrumb.cfm",
+    "includes/estrutura/footer.cfm",
+    "sitemaps/index.cfm",
+    "api/eventos.cfm",
+    "estado/index.cfm"
+  ],
+  "backup": "/var/backups/seo-regionais-pace-20261025/baseline",
+  "published_at": "2026-10-25T20:46:56.622344+00:00"
+}

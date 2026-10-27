@@ -1,0 +1,14 @@
+{
+  "mode": "candidate",
+  "scenarios": 16,
+  "accessChecks": 8,
+  "domains": 27,
+  "metricCellsVerified": 162,
+  "hashes": {
+    "portal/includes/seo_domains_data.cfm": "002292d12f803c20ac3b6205e32b5fe620f7b83577d9d1de15fa6d1146c787f2",
+    "portal/conteudo/seo_domains.cfm": "19a19eb33207557b81c18a0b4dbd42324885ffc4ec58991a9344fb111d667b85",
+    "portal/seo/assets/domains.css": "9275be2a657cd5ff5c69a12658ea0f42356157a9bbdde99cd1a536f68f14f6cb",
+    "portal/seo/assets/domains.js": "acf8006dfd68d1177477462e62226f1d775d9082e0a544241b8653f837191b38",
+    "portal/conteudo/seo.cfm": "1d6d39f89638460c09d94ef6c01ea1f2f77c1dbb4307ca40d10a241e4a097a28"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "pr1": {
+    "status": 200,
+    "canonical": "https://roadrunners.run/estado/pr/"
+  },
+  "pr2": {
+    "status": 200,
+    "canonical": "https://roadrunners.run/estado/pr/?pagina=2"
+  },
+  "pr3": {
+    "status": 200,
+    "canonical": "https://roadrunners.run/estado/pr/?pagina=3"
+  },
+  "curitiba": {
+    "status": 200
+  },
+  "df": {
+    "status": 200
+  },
+  "sc": {
+    "status": 200
+  },
+  "rs": {
+    "status": 200
+  },
+  "sp": {
+    "status": 200
+  },
+  "exact": {
+    "status": 200
+  },
+  "missing": {
+    "status": 404
+  },
+  "invalid": {
+    "status": 400
+  },
+  "invalid-date": {
+    "status": 400
+  },
+  "api": {
+    "status": 200
+  },
+  "pace": {
+    "status": 200
+  },
+  "assets/js/runnerhub-regional-period.min.js": {
+    "sha256": "85ce61fec98a342a190b6ae8b5c289445b15698396e401f738fd2ead6331604b"
+  },
+  "assets/js/runnerhub-event-filters.min.js": {
+    "sha256": "3ef1898e195fa437e0ebe5e284009b7ccecbe3c6ebccbb88cd04002eebf81cb2"
+  },
+  "assets/js/runnerhub-estado-cidades.min.js": {
+    "sha256": "0a06fb9d615b5a5047eb613a58970798f5c566f53907bf8df6877efa55351715"
+  },
+  "assets/css/runnerhub-regionais.min.css": {
+    "sha256": "71b501799518038a211622d728cc83d2db6c2f00737d7e83e80033509e10af6b"
+  }
+}

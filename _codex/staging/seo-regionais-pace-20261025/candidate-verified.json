@@ -1,0 +1,21 @@
+{
+  "scenarios": 9,
+  "compiledTemplates": 8,
+  "hashes": {
+    "estado/index.cfm": "291fac574226b69a4d96ae578228b45de2c39fd3686ed599a60f87b3ca689b82",
+    "api/eventos.cfm": "ceb37a00540709b2211b06863b5c1d94f74ac6d8fd781122bc61385bd6666271",
+    "includes/backend/backend_evento.cfm": "4d0df6e93e420bfde648a5c616003eb8e442affc0764acedbae55036324a9f15",
+    "evento/parts/breadcrumb.cfm": "11ec640103fc4f2af03fd6ed37c359c2b9963ce243a276c299856bac3a2f5bf2",
+    "includes/estrutura/footer.cfm": "3e1a2711dd374c6a5c48e86484ec34c860bc0728f3cab73d318d63e29f5510f4",
+    "sitemaps/index.cfm": "fed632b8562a36211d53633cebba622b21abf75724c17867114710e962d80d81",
+    "includes/regional_summary.cfm": "d08e621520c1ae3dcaa398a663632032570c60476a152403da1052354ae39216",
+    "assets/css/runnerhub-regionais.css": "eb971845b8ffe80f039393b13ad9529d0a9a82d52d1af130f1de990c5826a234",
+    "assets/css/runnerhub-regionais.min.css": "18f371f7f90baac11fcf8bee6bc0519cd086c4dfd21c0125c6e30da97202ddd5",
+    "calculadora-de-pace/index.cfm": "2ff9290862470801d3c37ced1ac1779ddcd6107ceb550de25f485bb92078fe4a",
+    "assets/js/runnerhub-pace.js": "ca8fc3b4356dd76b77b31111358e087d15de8b2779fc6d81643376e81c563fee",
+    "assets/js/runnerhub-pace.min.js": "070aadd0e1a0b11cba146735337a45ba0e29cbc479fed651662c327ae8a4153f",
+    "assets/css/runnerhub-pace.css": "453985fa10fa26149b93a17839fa91b9194b1c13f450875c9c2c380e773926fc",
+    "assets/css/runnerhub-pace.min.css": "eef60356edae08b49190dffad0f009cd6d9564c8d362efb064d103e3cc840783"
+  },
+  "followup": "National calendar context: 10 Node tests and calculator recompiled; public UI verification follows."
+}

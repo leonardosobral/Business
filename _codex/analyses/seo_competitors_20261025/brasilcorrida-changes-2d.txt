@@ -1,0 +1,1180 @@
+- button "Pular para o conteúdo"
+- banner:
+  - combobox "Informe o site ou a palavra-chave": brasilcorrida.com.br
+  - generic: brasilcorrida.com.br
+  - button "Limpar":
+  - combobox:
+    - generic: Domínio raiz
+  - button "Analisar":
+    - generic: Analisar
+  - navigation:
+    - menubar:
+      - button "Convide usuários": Invite free users
+      - menuitem "Preços"
+      - menuitem "Empresarial"
+      - menuitem "Mais"
+      - menuitem "Meu perfil":
+        - generic: c
+- navigation:
+  - list:
+    - link "Início":
+      - /url: https://pt.semrush.com/home/
+      - generic: Início
+    - link "SEO":
+      - /url: https://pt.semrush.com/seo/
+      - generic: SEO
+    - link "IA":
+      - /url: https://pt.semrush.com/ai-seo/overview/
+      - generic: IA
+  - list:
+    - link "Tráfego e mercado":
+      - /url: https://pt.semrush.com/analytics/traffic/
+      - generic: Tráfego e mercado
+    - link "Local":
+      - /url: https://pt.semrush.com/local-business/
+      - generic: Local
+    - link "Conteúdo":
+      - /url: https://pt.semrush.com/content/
+      - generic: Conteúdo
+    - link "Anúncios":
+      - /url: https://pt.semrush.com/advertising/
+      - generic: Anúncios
+    - link "RP para IA":
+      - /url: https://pt.semrush.com/pr-toolkit/
+      - generic: RP para IA
+    - link "Social":
+      - /url: https://pt.semrush.com/social-media/
+      - generic: Social
+  - list:
+    - link "Relatórios":
+      - /url: https://pt.semrush.com/my_reports/grid/
+      - generic: Relatórios
+    - link "Apps":
+      - /url: https://pt.semrush.com/apps/
+      - generic: Apps
+  - generic: SEO
+  - list:
+    - link "Painel de ferramentas":
+      - /url: https://pt.semrush.com/seo/
+  - generic: Desempenho do site
+  - list:
+    - link "Auditoria do site":
+      - /url: https://pt.semrush.com/siteaudit/
+    - link "Monitoramento de posição":
+      - /url: https://pt.semrush.com/position-tracking/
+  - generic: Análise competitiva
+  - list:
+    - link "Visão geral do domínio":
+      - /url: https://pt.semrush.com/analytics/overview/?db=br&q=brasilcorrida.com.br&searchType=domain
+    - link "Rankings orgânicos":
+      - /url: https://pt.semrush.com/analytics/organic/overview?db=br&q=brasilcorrida.com.br&searchType=domain
+    - link "Principais páginas":
+      - /url: https://pt.semrush.com/analytics/toppages/?db=br&q=brasilcorrida.com.br&searchType=domain
+    - link "Comparação de domínios":
+      - /url: https://pt.semrush.com/analytics/comparedomains/?db=br&q=brasilcorrida.com.br&searchType=domain
+    - link "Lacunas nas palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordgap/?db=br&q=brasilcorrida.com.br&searchType=domain
+    - link "Lacunas nos backlinks":
+      - /url: https://pt.semrush.com/analytics/gap/backlinks/?q=brasilcorrida.com.br&searchType=domain
+  - generic: Pesquisa de palavras-chave
+  - list:
+    - link "Visão geral de palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordoverview/?db=br
+    - link "Keyword Magic Tool":
+      - /url: https://pt.semrush.com/analytics/keywordmagic/?db=br
+    - link "Keyword Strategy Builder":
+      - /url: https://pt.semrush.com/analytics/keywordmanager/?db=br
+    - link "Palavras-chave salvas":
+      - /url: https://pt.semrush.com/saved-keywords/
+  - generic: Ideias de conteúdo
+  - list:
+    - link "SEO Writing Assistant":
+      - /url: https://pt.semrush.com/swa/
+    - link "Topic Research":
+      - /url: https://pt.semrush.com/topic-research/
+    - link "SEO Content Template":
+      - /url: https://pt.semrush.com/seo-content-template/
+  - generic: Construção de links
+  - list:
+    - link "Backlinks":
+      - /url: https://pt.semrush.com/analytics/backlinks/overview/?q=brasilcorrida.com.br&searchType=domain
+    - link "Domínios de referência":
+      - /url: https://pt.semrush.com/analytics/refdomains/report/?q=brasilcorrida.com.br&searchType=domain
+    - link "Backlink Audit":
+      - /url: https://pt.semrush.com/backlink_audit/
+  - generic: Ferramentas extras
+  - list:
+    - link "Sensor":
+      - /url: https://pt.semrush.com/sensor/?utm_medium=footer&utm_source=semrush
+    - link "SEOquake":
+      - /url: https://www.seoquake.com/
+    - link "Ranking Semrush":
+      - /url: https://pt.semrush.com/analytics/ranks/rank/?db=br&q=brasilcorrida.com.br&searchType=domain
+  - generic: Outros
+  - list:
+    - link "On Page SEO Checker":
+      - /url: https://pt.semrush.com/on-page-seo-checker/
+    - link "Organic Traffic Insights":
+      - /url: https://pt.semrush.com/organic_traffic_insights/
+    - link "Construção de links":
+      - /url: https://pt.semrush.com/link_building/
+- button "Ocultar navegação" [expanded]:
+- main:
+  - region "Cabeçalho de Rankings orgânicos":
+    - navigation "Trilhas de navegação":
+      - list:
+        - link "Início":
+          - /url: /projects/
+        - link "SEO":
+          - /url: /seo/
+        - link "Visão geral do domínio":
+          - /url: /analytics/overview/?db=br&q=brasilcorrida.com.br&searchType=domain&currency=usd
+        - generic: Rankings orgânicos
+    - link "user manual":
+      - /url: /kb/495-organic-research-position-changes-report
+      - text: Manual do usuário
+    - button "Enviar comentários":
+      - button "Enviar comentários":
+        - generic: Enviar comentários
+    - 'heading "Rankings orgânicos: brasilcorrida.com.br" [level=1]':
+      - generic: "Rankings orgânicos:"
+      - generic: brasilcorrida.com.br
+    - link "Acessar brasilcorrida.com.br":
+      - /url: http://brasilcorrida.com.br
+    - button "Exportar o relatório Alterações na posição para PDF":
+      - generic: Exportar para PDF
+    - radiogroup "Países":
+      - radio "BR 678" [checked]:
+        - generic: BR
+        - generic: "678"
+      - radio "MX 2":
+        - generic: MX
+        - generic: "2"
+      - radio "US 2":
+        - generic: US
+        - generic: "2"
+      - radio:
+    - generic: "Dispositivo:"
+    - combobox "Selecionar o dispositivo":
+      - generic: Computador
+    - generic: "Moeda:"
+    - combobox "Selecionar a moeda":
+      - generic: USD
+  - tablist "Relatórios":
+    - tab "Visão geral":
+      - generic: Visão geral
+    - tab "Posições":
+      - generic: Posições
+    - tab "Alterações na posição" [selected]:
+      - generic: Alterações na posição
+    - tab "Concorrentes":
+      - generic: Concorrentes
+    - tab "Assuntos":
+      - generic: Assuntos
+    - tab "Subdomínios":
+      - generic: Subdomínios
+  - region "Tendência de alterações na posição":
+    - generic: Tendência de alterações na posição
+    - generic: Tráfego
+    - generic: Melhoradas
+    - generic: Pioradas
+    - button "Gerenciar anotações":
+      - generic: Anotações
+    - tablist "Periodicidade":
+      - tab "Diariamente" [selected]:
+        - generic: Diariamente
+      - tab "Mensalmente":
+        - generic: Mensalmente
+    - img "Chart":
+      - generic: "0"
+      - generic: 8,5K
+      - generic: 17K
+      - generic: 25,5K
+      - text: "0"
+      - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+    - img "Chart":
+      - generic: 27 de set.
+      - generic: 30 de set.
+      - generic: 3 de out.
+      - generic: 6 de out.
+      - generic: 9 de out.
+      - generic: 12 de out.
+      - generic: 15 de out.
+      - generic: 18 de out.
+      - generic: 21 de out.
+      - generic: 24 de out.
+      - generic: "0"
+      - generic: "2"
+      - generic: "4"
+      - generic: "6"
+      - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+  - region "Alterações nas Principais páginas":
+    - generic: Alterações nas Principais páginas
+    - generic: Últimos 28 dias
+    - grid:
+      - row "URL Tráfego Alteração no tráfego descending":
+        - columnheader "URL":
+          - generic: URL
+        - columnheader "Tráfego":
+          - generic: Tráfego
+        - columnheader "Alteração no tráfego descending":
+          - generic: Alteração no tráfego
+          - button "descending":
+        - columnheader
+      - generic: Sortable
+      - row "Analise https://brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 10,3K +2,3K Filtrar alterações nas posições por URL":
+        - gridcell "Analise https://brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise https://brasilcorrida.com.br/":
+            - /url: /analytics/organic/changes/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: https://brasilcor
+            - generic: rida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "10,3K":
+          - generic: 10,3K
+        - gridcell "+2,3K":
+          - generic: +2,3K
+        - gridcell "Filtrar alterações nas posições por URL":
+          - link "Filtrar alterações nas posições por URL":
+      - row "Analise https://brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/CATSRUN.clax Acessar brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/CATSRUN.clax 33 +26 Filtrar alterações nas posições por URL":
+        - gridcell "Analise https://brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/CATSRUN.clax Acessar brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/CATSRUN.clax":
+          - link "Analise https://brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/CATSRUN.clax":
+            - /url: /analytics/organic/changes/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2Fwiclax%2Fg-live.html%3Ff%3DRESONLINE%2FCATSRUN.clax&searchType=url&currency=usd
+            - generic: https://brasilcorrida.com.br/wiclax/g-live.html?f=RES
+            - generic: ONLINE/CATSRUN.clax
+          - link "Acessar brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/CATSRUN.clax":
+            - /url: https://brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/CATSRUN.clax
+        - gridcell "33":
+          - generic: "33"
+        - gridcell "+26":
+          - generic: "+26"
+        - gridcell "Filtrar alterações nas posições por URL":
+          - link "Filtrar alterações nas posições por URL":
+      - row "Analise https://brasilcorrida.com.br/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEwRWx3QUR5cDRxTFE3d2E5MgEek68bjoAmaoik14bBlD3uAVBQJAS-JaFdVnfgHmGThI8mDqOVfveCMt0Tqzk_aem_T6I_8rrXPrRwIlSZEViWCQ Acessar brasilcorrida.com.br/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEwRWx3QUR5cDRxTFE3d2E5MgEek68bjoAmaoik14bBlD3uAVBQJAS-JaFdVnfgHmGThI8mDqOVfveCMt0Tqzk_aem_T6I_8rrXPrRwIlSZEViWCQ 7 -21 Filtrar alterações nas posições por URL":
+        - gridcell "Analise https://brasilcorrida.com.br/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEwRWx3QUR5cDRxTFE3d2E5MgEek68bjoAmaoik14bBlD3uAVBQJAS-JaFdVnfgHmGThI8mDqOVfveCMt0Tqzk_aem_T6I_8rrXPrRwIlSZEViWCQ Acessar brasilcorrida.com.br/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEwRWx3QUR5cDRxTFE3d2E5MgEek68bjoAmaoik14bBlD3uAVBQJAS-JaFdVnfgHmGThI8mDqOVfveCMt0Tqzk_aem_T6I_8rrXPrRwIlSZEViWCQ":
+          - link "Analise https://brasilcorrida.com.br/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEwRWx3QUR5cDRxTFE3d2E5MgEek68bjoAmaoik14bBlD3uAVBQJAS-JaFdVnfgHmGThI8mDqOVfveCMt0Tqzk_aem_T6I_8rrXPrRwIlSZEViWCQ":
+            - /url: /analytics/organic/changes/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBEwRWx3QUR5cDRxTFE3d2E5MgEek68bjoAmaoik14bBlD3uAVBQJAS-JaFdVnfgHmGThI8mDqOVfveCMt0Tqzk_aem_T6I_8rrXPrRwIlSZEViWCQ&searchType=url&currency=usd
+            - generic: https://brasilcorrida.com.br/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEwRWx3QUR5cDRxTFE3d2E5MgEek68bjoAmaoik14bBlD3uAVBQJAS-JaFdVnfgHmGThI8mDqOVfveCMt0Tqzk_aem_T6I
+            - generic: _8rrXPrRwIlSZEViWCQ
+          - link "Acessar brasilcorrida.com.br/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEwRWx3QUR5cDRxTFE3d2E5MgEek68bjoAmaoik14bBlD3uAVBQJAS-JaFdVnfgHmGThI8mDqOVfveCMt0Tqzk_aem_T6I_8rrXPrRwIlSZEViWCQ":
+            - /url: https://brasilcorrida.com.br/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEwRWx3QUR5cDRxTFE3d2E5MgEek68bjoAmaoik14bBlD3uAVBQJAS-JaFdVnfgHmGThI8mDqOVfveCMt0Tqzk_aem_T6I_8rrXPrRwIlSZEViWCQ
+        - gridcell "7":
+          - generic: "7"
+        - gridcell "-21":
+          - generic: "-21"
+        - gridcell "Filtrar alterações nas posições por URL":
+          - link "Filtrar alterações nas posições por URL":
+      - row "Analise https://brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/28DEJANEIROteste.clax Acessar brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/28DEJANEIROteste.clax 3 +2 Filtrar alterações nas posições por URL":
+        - gridcell "Analise https://brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/28DEJANEIROteste.clax Acessar brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/28DEJANEIROteste.clax":
+          - link "Analise https://brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/28DEJANEIROteste.clax":
+            - /url: /analytics/organic/changes/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2Fwiclax%2Fg-live.html%3Ff%3DRESONLINE%2F28DEJANEIROteste.clax&searchType=url&currency=usd
+            - generic: https://brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/28
+            - generic: DEJANEIROteste.clax
+          - link "Acessar brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/28DEJANEIROteste.clax":
+            - /url: https://brasilcorrida.com.br/wiclax/g-live.html?f=RESONLINE/28DEJANEIROteste.clax
+        - gridcell "3":
+          - generic: "3"
+        - gridcell "+2":
+          - generic: "+2"
+        - gridcell "Filtrar alterações nas posições por URL":
+          - link "Filtrar alterações nas posições por URL":
+      - row "Analise https://brasilcorrida.com.br/?fbclid=PAZnRzaASvSthleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafgOLznD6hcjdSAkZ2DR4LaM-_vSpddQku4cX2bWYx2cHH66ZtMt_MYq_kR2g_aem_3XAzAoF9TA2QReISRCe-yw Acessar brasilcorrida.com.br/?fbclid=PAZnRzaASvSthleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafgOLznD6hcjdSAkZ2DR4LaM-_vSpddQku4cX2bWYx2cHH66ZtMt_MYq_kR2g_aem_3XAzAoF9TA2QReISRCe-yw 0 -1 Filtrar alterações nas posições por URL":
+        - gridcell "Analise https://brasilcorrida.com.br/?fbclid=PAZnRzaASvSthleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafgOLznD6hcjdSAkZ2DR4LaM-_vSpddQku4cX2bWYx2cHH66ZtMt_MYq_kR2g_aem_3XAzAoF9TA2QReISRCe-yw Acessar brasilcorrida.com.br/?fbclid=PAZnRzaASvSthleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafgOLznD6hcjdSAkZ2DR4LaM-_vSpddQku4cX2bWYx2cHH66ZtMt_MYq_kR2g_aem_3XAzAoF9TA2QReISRCe-yw":
+          - link "Analise https://brasilcorrida.com.br/?fbclid=PAZnRzaASvSthleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafgOLznD6hcjdSAkZ2DR4LaM-_vSpddQku4cX2bWYx2cHH66ZtMt_MYq_kR2g_aem_3XAzAoF9TA2QReISRCe-yw":
+            - /url: /analytics/organic/changes/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F%3Ffbclid%3DPAZnRzaASvSthleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafgOLznD6hcjdSAkZ2DR4LaM-_vSpddQku4cX2bWYx2cHH66ZtMt_MYq_kR2g_aem_3XAzAoF9TA2QReISRCe-yw&searchType=url&currency=usd
+            - generic: https://brasilcorrida.com.br/?fbclid=PAZnRzaASvSthleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafgOLznD6hcjdSAkZ2DR4LaM-_vSpddQku4cX2bWYx2cHH66ZtMt_MYq_kR2g_aem_3XA
+            - generic: zAoF9TA2QReISRCe-yw
+          - link "Acessar brasilcorrida.com.br/?fbclid=PAZnRzaASvSthleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafgOLznD6hcjdSAkZ2DR4LaM-_vSpddQku4cX2bWYx2cHH66ZtMt_MYq_kR2g_aem_3XAzAoF9TA2QReISRCe-yw":
+            - /url: https://brasilcorrida.com.br/?fbclid=PAZnRzaASvSthleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafgOLznD6hcjdSAkZ2DR4LaM-_vSpddQku4cX2bWYx2cHH66ZtMt_MYq_kR2g_aem_3XAzAoF9TA2QReISRCe-yw
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "-1":
+          - generic: "-1"
+        - gridcell "Filtrar alterações nas posições por URL":
+          - link "Filtrar alterações nas posições por URL":
+    - link "Visualizar relatório completo sobre as páginas":
+      - /url: /analytics/toppages/?db=br&q=brasilcorrida.com.br&searchType=domain&currency=usd
+      - generic: Visualizar relatório completo
+  - region "Notification":
+    - paragraph: Monitore posições com suas palavras-chave específicas diariamente. Defina diferentes dispositivos e locais como alvo.
+    - button "Configurar a ferramenta Monitoramento de posição":
+      - generic: Configurar a ferramenta Monitoramento de posição
+    - button "Close notification"
+  - button "Selecionar o período":
+    - button "23 – 24 de out. de 2026":
+      - generic: 23 – 24 de out. de 2026
+  - radiogroup "Tipos de alteração de posição":
+    - radio "Mostrar todas as alterações nas posições" [checked]:
+      - generic: Todas as alterações
+      - generic: "18"
+      - generic: Veja todas as alterações de posição
+    - radio "Mostrar posições com aumento de tráfego":
+      - generic: Melhoradas
+      - generic: "3"
+      - generic: Aumento do tráfego do domínio
+    - radio "Mostrar posições com diminuição de tráfego":
+      - generic: Pioradas
+      - generic: "2"
+      - generic: Diminuição do tráfego do domínio
+    - radio "Mostrar alterações significativas nas SERPs":
+      - generic: Alterações na SERP
+      - generic: "5"
+      - generic: Alterações significativas na SERP
+  - form "Filtros":
+    - radiogroup "Tipos de posição":
+      - radio "Todas as posições" [checked]:
+        - generic: Todas as posições
+      - radio "Orgânicas":
+        - generic: Orgânicas
+      - radio "Recursos de SERP":
+        - generic: Recursos de SERP
+    - generic "Informar a palavra-chave a filtrar":
+      - generic "Informar a palavra-chave a filtrar":
+        - textbox "Filtrar por palavra-chave"
+      - button "Filtro":
+    - generic "Informar a URL a filtrar":
+      - generic "Informar a palavra-chave a filtrar":
+        - textbox "Filtrar por URL"
+      - button "Filtro":
+    - button "Adicionar filtro":
+      - generic: Adicionar filtro
+  - region "Todas as alterações de posição":
+    - generic: "Todas as alterações de posição:"
+    - generic: "18"
+    - generic "Adicionar palavra-chave à lista de palavras-chave":
+      - button "Salvar palavras-chave":
+        - generic: Salvar palavras-chave
+    - 'button "Gerenciar colunas da tabela. Colunas mostradas: 13 de 16"':
+      - 'button "Gerenciar colunas da tabela. Colunas mostradas: 13 de 16"':
+        - generic: Gerenciar colunas
+        - generic: 13/16
+    - button "Exportar dados das alterações nas posições":
+      - generic: Exportar
+    - grid:
+      - row "Selecionar todas as palavras-chave Palavra-chave Intenção Classificar por posição anterior em ordem crescente Classificar por posição atual em ordem crescente Classificar por diferença de posição em ordem crescente Classificar por diferença de tráfego em ordem crescente Classificar por tráfego % em ordem crescente Alterações na SERP Classificar por Volume em ordem crescente Classificar por dificuldade da palavra-chave em ordem crescente Classificar por Custo por clique em ordem crescente URL At.":
+        - columnheader "Selecionar todas as palavras-chave":
+          - checkbox "Selecionar todas as palavras-chave"
+        - columnheader "Palavra-chave":
+          - generic: Palavra-chave
+        - columnheader "Intenção":
+          - generic: Intenção
+        - columnheader "Classificar por posição anterior em ordem crescente":
+          - generic: Anterior
+        - columnheader "Classificar por posição atual em ordem crescente":
+          - generic: Atual
+        - columnheader "Classificar por diferença de posição em ordem crescente":
+          - generic: Dif.
+        - columnheader "Classificar por diferença de tráfego em ordem crescente":
+          - generic: Alteração no tráfego
+          - button "descending":
+        - columnheader "Classificar por tráfego % em ordem crescente":
+          - generic: Tráfego %
+        - columnheader "Alterações na SERP":
+          - generic: Alterações na SERP
+        - columnheader "Classificar por Volume em ordem crescente":
+          - generic: Volume
+        - columnheader "Classificar por dificuldade da palavra-chave em ordem crescente":
+          - generic: KD %
+        - columnheader "Classificar por Custo por clique em ordem crescente":
+          - generic: CPC
+        - columnheader "URL":
+          - generic: URL
+        - columnheader "At.":
+          - generic: At.
+      - generic: Sortable
+      - 'row "Show details Selecionar brasil corrida.com.br Salvar na lista de palavras-chave Analisar brasil corrida.com.br na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 1 1 0 +240 9,99 Acessar SERP de brasil corrida.com.br Alterações na SERP: +1 1,3K 51 0,37 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 2 dias"':
+        - gridcell "Show details Selecionar brasil corrida.com.br":
+          - button "Show details":
+          - checkbox "Selecionar brasil corrida.com.br"
+        - gridcell "Salvar na lista de palavras-chave Analisar brasil corrida.com.br na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar brasil corrida.com.br na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=brasil%20corrida.com.br&currency=usd
+            - text: brasil corrida.com.br
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "1":
+          - generic: "1"
+        - gridcell "1":
+          - generic: "1"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "+240":
+          - generic: "+240"
+        - gridcell "9,99":
+          - generic: 9,99
+        - 'gridcell "Acessar SERP de brasil corrida.com.br Alterações na SERP: +1"':
+          - link "Acessar SERP de brasil corrida.com.br":
+            - /url: /analytics/serp?phrase=brasil+corrida.com.br&domain=brasilcorrida.com.br&db=br&position=1&type=organic&serpId=b-f-97-1023-17526626289919970071
+          - separator
+          - 'button "Alterações na SERP: +1"':
+            - button "+1":
+              - generic: "+1"
+        - gridcell "1,3K":
+          - generic: 1,3K
+        - gridcell "51":
+          - generic: "51"
+        - gridcell "0,37":
+          - generic: 0,37
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "2 dias"
+      - 'row "Show details Selecionar correr df Salvar na lista de palavras-chave Analisar correr df na Visão geral de palavras-chave Abrir visão geral Intenção: Comercial 3 perdida -48 < 0,01 Acessar SERP de correr df 590 23 0,19 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 2 dias"':
+        - gridcell "Show details Selecionar correr df":
+          - button "Show details":
+          - checkbox "Selecionar correr df"
+        - gridcell "Salvar na lista de palavras-chave Analisar correr df na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar correr df na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=correr%20df&currency=usd
+            - text: correr df
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Comercial"':
+          - 'generic "Intenção: Comercial"':
+            - button "C":
+              - generic: C
+        - gridcell "3":
+          - generic: "3"
+        - gridcell
+        - gridcell "perdida":
+          - generic: perdida
+        - gridcell "-48":
+          - generic: "-48"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de correr df":
+          - link "Acessar SERP de correr df":
+            - /url: /analytics/serp?phrase=correr+df&domain=brasilcorrida.com.br&db=br&position=0&type=organic&serpId=b-h-97-0829-9051714637278094361
+          - separator
+        - gridcell "590":
+          - generic: "590"
+        - gridcell "23":
+          - generic: "23"
+        - gridcell "0,19":
+          - generic: 0,19
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "2 dias"
+      - 'row "Show details Selecionar corrida de rua anapolis Salvar na lista de palavras-chave Analisar corrida de rua anapolis na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa Posição anterior: Visão geral criada por IA Posição atual: Visão geral criada por IA -10 < 0,01 Acessar SERP de corrida de rua anapolis Alterações na SERP: +1/-1 170 10 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 22 horas"':
+        - gridcell "Show details Selecionar corrida de rua anapolis":
+          - button "Show details":
+          - checkbox "Selecionar corrida de rua anapolis"
+        - gridcell "Salvar na lista de palavras-chave Analisar corrida de rua anapolis na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corrida de rua anapolis na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corrida%20de%20rua%20anapolis&currency=usd
+            - text: corrida de rua anapolis
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - 'gridcell "Posição anterior: Visão geral criada por IA"':
+          - 'link "Posição anterior: Visão geral criada por IA"':
+            - /url: /analytics/organic/positions/?db=br&q=brasilcorrida.com.br&searchType=domain&currency=usd&filter=%7B%22search%22%3A%22%22%2C%22serpFeatures%22%3A%7B%22type%22%3A%22domain_ranks%22%2C%22id%22%3A52%7D%2C%22advanced%22%3A%7B%7D%7D
+            - button
+        - 'gridcell "Posição atual: Visão geral criada por IA"':
+          - 'link "Posição atual: Visão geral criada por IA"':
+            - /url: /analytics/organic/positions/?db=br&q=brasilcorrida.com.br&searchType=domain&currency=usd&filter=%7B%22search%22%3A%22%22%2C%22serpFeatures%22%3A%7B%22type%22%3A%22domain_ranks%22%2C%22id%22%3A52%7D%2C%22advanced%22%3A%7B%7D%7D
+            - button
+        - gridcell
+        - gridcell "-10":
+          - generic: "-10"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - 'gridcell "Acessar SERP de corrida de rua anapolis Alterações na SERP: +1/-1"':
+          - link "Acessar SERP de corrida de rua anapolis":
+            - /url: /analytics/serp?phrase=corrida+de+rua+anapolis&domain=brasilcorrida.com.br&db=br&position=1&type=ai-overview&serpId=b-f-97-1024-17688298808217011471
+          - separator
+          - 'button "Alterações na SERP: +1/-1"':
+            - button "+1/-1":
+              - generic: +1/-1
+        - gridcell "170":
+          - generic: "170"
+        - gridcell "10":
+          - generic: "10"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "22 horas"
+      - 'row "Show details Selecionar corrida de rua anapolis Salvar na lista de palavras-chave Analisar corrida de rua anapolis na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 1 1 0 -9 0,12 Acessar SERP de corrida de rua anapolis Alterações na SERP: +1/-1 170 10 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 22 horas"':
+        - gridcell "Show details Selecionar corrida de rua anapolis":
+          - button "Show details":
+          - checkbox "Selecionar corrida de rua anapolis"
+        - gridcell "Salvar na lista de palavras-chave Analisar corrida de rua anapolis na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corrida de rua anapolis na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corrida%20de%20rua%20anapolis&currency=usd
+            - text: corrida de rua anapolis
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "1":
+          - generic: "1"
+        - gridcell "1":
+          - generic: "1"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "-9":
+          - generic: "-9"
+        - gridcell "0,12":
+          - generic: 0,12
+        - 'gridcell "Acessar SERP de corrida de rua anapolis Alterações na SERP: +1/-1"':
+          - link "Acessar SERP de corrida de rua anapolis":
+            - /url: /analytics/serp?phrase=corrida+de+rua+anapolis&domain=brasilcorrida.com.br&db=br&position=1&type=organic&serpId=b-f-97-1024-17688298808217011471
+          - separator
+          - 'button "Alterações na SERP: +1/-1"':
+            - button "+1/-1":
+              - generic: +1/-1
+        - gridcell "170":
+          - generic: "170"
+        - gridcell "10":
+          - generic: "10"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "22 horas"
+      - 'row "Show details Selecionar brasil corrida.com.br Salvar na lista de palavras-chave Analisar brasil corrida.com.br na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa Posição atual: Visão geral criada por IA nova +4 0,03 Acessar SERP de brasil corrida.com.br 1,3K 51 0,37 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 2 dias"':
+        - gridcell "Show details Selecionar brasil corrida.com.br":
+          - button "Show details":
+          - checkbox "Selecionar brasil corrida.com.br"
+        - gridcell "Salvar na lista de palavras-chave Analisar brasil corrida.com.br na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar brasil corrida.com.br na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=brasil%20corrida.com.br&currency=usd
+            - text: brasil corrida.com.br
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell
+        - 'gridcell "Posição atual: Visão geral criada por IA"':
+          - 'link "Posição atual: Visão geral criada por IA"':
+            - /url: /analytics/organic/positions/?db=br&q=brasilcorrida.com.br&searchType=domain&currency=usd&filter=%7B%22search%22%3A%22%22%2C%22serpFeatures%22%3A%7B%22type%22%3A%22domain_ranks%22%2C%22id%22%3A52%7D%2C%22advanced%22%3A%7B%7D%7D
+            - button
+        - gridcell "nova":
+          - generic: nova
+        - gridcell "+4":
+          - generic: "+4"
+        - gridcell "0,03":
+          - generic: 0,03
+        - gridcell "Acessar SERP de brasil corrida.com.br":
+          - link "Acessar SERP de brasil corrida.com.br":
+            - /url: /analytics/serp?phrase=brasil+corrida.com.br&domain=brasilcorrida.com.br&db=br&position=1&type=ai-overview&serpId=b-f-97-1023-17526626289919970071
+          - separator
+        - gridcell "1,3K":
+          - generic: 1,3K
+        - gridcell "51":
+          - generic: "51"
+        - gridcell "0,37":
+          - generic: 0,37
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "2 dias"
+      - 'row "Show details Selecionar corridas em goias Salvar na lista de palavras-chave Analisar corridas em goias na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 7 19 ↓ 12 -4 < 0,01 Acessar SERP de corridas em goias Alterações na SERP: +1 170 11 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 2 dias"':
+        - gridcell "Show details Selecionar corridas em goias":
+          - button "Show details":
+          - checkbox "Selecionar corridas em goias"
+        - gridcell "Salvar na lista de palavras-chave Analisar corridas em goias na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corridas em goias na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corridas%20em%20goias&currency=usd
+            - text: corridas em goias
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "7":
+          - generic: "7"
+        - gridcell "19":
+          - generic: "19"
+        - gridcell "↓ 12":
+          - generic: ↓
+          - generic: "12"
+        - gridcell "-4":
+          - generic: "-4"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - 'gridcell "Acessar SERP de corridas em goias Alterações na SERP: +1"':
+          - link "Acessar SERP de corridas em goias":
+            - /url: /analytics/serp?phrase=corridas+em+goias&domain=brasilcorrida.com.br&db=br&position=19&type=organic&serpId=b-d-97-1024-7488576562746073336
+          - separator
+          - 'button "Alterações na SERP: +1"':
+            - button "+1":
+              - generic: "+1"
+        - gridcell "170":
+          - generic: "170"
+        - gridcell "11":
+          - generic: "11"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "2 dias"
+      - 'row "Show details Selecionar corridas em aracaju Salvar na lista de palavras-chave Analisar corridas em aracaju na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa Posição atual: Visão geral criada por IA nova +1 < 0,01 Acessar SERP de corridas em aracaju 170 8 0 Analise www.brasilcorrida.com.br/ Acessar www.brasilcorrida.com.br/ 1 dia"':
+        - gridcell "Show details Selecionar corridas em aracaju":
+          - button "Show details":
+          - checkbox "Selecionar corridas em aracaju"
+        - gridcell "Salvar na lista de palavras-chave Analisar corridas em aracaju na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corridas em aracaju na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corridas%20em%20aracaju&currency=usd
+            - text: corridas em aracaju
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell
+        - 'gridcell "Posição atual: Visão geral criada por IA"':
+          - 'link "Posição atual: Visão geral criada por IA"':
+            - /url: /analytics/organic/positions/?db=br&q=brasilcorrida.com.br&searchType=domain&currency=usd&filter=%7B%22search%22%3A%22%22%2C%22serpFeatures%22%3A%7B%22type%22%3A%22domain_ranks%22%2C%22id%22%3A52%7D%2C%22advanced%22%3A%7B%7D%7D
+            - button
+        - gridcell "nova":
+          - generic: nova
+        - gridcell "+1":
+          - generic: "+1"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de corridas em aracaju":
+          - link "Acessar SERP de corridas em aracaju":
+            - /url: /analytics/serp?phrase=corridas+em+aracaju&domain=brasilcorrida.com.br&db=br&position=1&type=ai-overview&serpId=b-h-97-1024-10627438059288976525
+          - separator
+        - gridcell "170":
+          - generic: "170"
+        - gridcell "8":
+          - generic: "8"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise www.brasilcorrida.com.br/ Acessar www.brasilcorrida.com.br/":
+          - link "Analise www.brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fwww.brasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: www.brasilcorrida.com.br/
+          - link "Acessar www.brasilcorrida.com.br/":
+            - /url: https://www.brasilcorrida.com.br/
+        - gridcell "1 dia"
+      - 'row "Show details Selecionar resultados da corrida Salvar na lista de palavras-chave Analisar resultados da corrida na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 27 nova +1 < 0,01 Acessar SERP de resultados da corrida 880 32 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 2 dias"':
+        - gridcell "Show details Selecionar resultados da corrida":
+          - button "Show details":
+          - checkbox "Selecionar resultados da corrida"
+        - gridcell "Salvar na lista de palavras-chave Analisar resultados da corrida na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar resultados da corrida na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=resultados%20da%20corrida&currency=usd
+            - text: resultados da corrida
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell
+        - gridcell "27":
+          - generic: "27"
+        - gridcell "nova":
+          - generic: nova
+        - gridcell "+1":
+          - generic: "+1"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de resultados da corrida":
+          - link "Acessar SERP de resultados da corrida":
+            - /url: /analytics/serp?phrase=resultados+da+corrida&domain=brasilcorrida.com.br&db=br&position=27&type=organic&serpId=b-g-97-1024-15744363121960723417
+          - separator
+        - gridcell "880":
+          - generic: "880"
+        - gridcell "32":
+          - generic: "32"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "2 dias"
+      - 'row "Show details Selecionar chevrolet run 2026 Salvar na lista de palavras-chave Analisar chevrolet run 2026 na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 38 nova 0 < 0,01 Acessar SERP de chevrolet run 2026 170 9 1,04 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 1 dia"':
+        - gridcell "Show details Selecionar chevrolet run 2026":
+          - button "Show details":
+          - checkbox "Selecionar chevrolet run 2026"
+        - gridcell "Salvar na lista de palavras-chave Analisar chevrolet run 2026 na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar chevrolet run 2026 na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=chevrolet%20run%202026&currency=usd
+            - text: chevrolet run 2026
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell
+        - gridcell "38":
+          - generic: "38"
+        - gridcell "nova":
+          - generic: nova
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de chevrolet run 2026":
+          - link "Acessar SERP de chevrolet run 2026":
+            - /url: /analytics/serp?phrase=chevrolet+run+2026&domain=brasilcorrida.com.br&db=br&position=38&type=organic&serpId=b-d-97-1024-3002493769489089158
+          - separator
+        - gridcell "170":
+          - generic: "170"
+        - gridcell "9":
+          - generic: "9"
+        - gridcell "1,04":
+          - generic: 1,04
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "1 dia"
+      - 'row "Show details Selecionar corrida bell marques brasilia Salvar na lista de palavras-chave Analisar corrida bell marques brasilia na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 29 30 ↓ 1 0 < 0,01 Acessar SERP de corrida bell marques brasilia 0 140 18 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 22 horas"':
+        - gridcell "Show details Selecionar corrida bell marques brasilia":
+          - button "Show details":
+          - checkbox "Selecionar corrida bell marques brasilia"
+        - gridcell "Salvar na lista de palavras-chave Analisar corrida bell marques brasilia na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corrida bell marques brasilia na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corrida%20bell%20marques%20brasilia&currency=usd
+            - text: corrida bell marques brasilia
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "29":
+          - generic: "29"
+        - gridcell "30":
+          - generic: "30"
+        - gridcell "↓ 1":
+          - generic: ↓
+          - generic: "1"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de corrida bell marques brasilia 0":
+          - link "Acessar SERP de corrida bell marques brasilia":
+            - /url: /analytics/serp?phrase=corrida+bell+marques+brasilia&domain=brasilcorrida.com.br&db=br&position=30&type=organic&serpId=b-d-97-1024-10424232164972937916
+          - separator
+          - generic: "0"
+        - gridcell "140":
+          - generic: "140"
+        - gridcell "18":
+          - generic: "18"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "22 horas"
+      - 'row "Show details Selecionar circuitinho das estações brasilia Salvar na lista de palavras-chave Analisar circuitinho das estações brasilia na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 24 37 ↓ 13 0 < 0,01 Acessar SERP de circuitinho das estações brasilia Alterações na SERP: -1 140 16 0,34 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 1 dia"':
+        - gridcell "Show details Selecionar circuitinho das estações brasilia":
+          - button "Show details":
+          - checkbox "Selecionar circuitinho das estações brasilia"
+        - gridcell "Salvar na lista de palavras-chave Analisar circuitinho das estações brasilia na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar circuitinho das estações brasilia na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=circuitinho%20das%20esta%C3%A7%C3%B5es%20brasilia&currency=usd
+            - text: circuitinho das estações brasilia
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "24":
+          - generic: "24"
+        - gridcell "37":
+          - generic: "37"
+        - gridcell "↓ 13":
+          - generic: ↓
+          - generic: "13"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - 'gridcell "Acessar SERP de circuitinho das estações brasilia Alterações na SERP: -1"':
+          - link "Acessar SERP de circuitinho das estações brasilia":
+            - /url: /analytics/serp?phrase=circuitinho+das+esta%C3%A7%C3%B5es+brasilia&domain=brasilcorrida.com.br&db=br&position=37&type=organic&serpId=b-d-97-1024-12049545958235384513
+          - separator
+          - 'button "Alterações na SERP: -1"':
+            - button "-1":
+              - generic: "-1"
+        - gridcell "140":
+          - generic: "140"
+        - gridcell "16":
+          - generic: "16"
+        - gridcell "0,34":
+          - generic: 0,34
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "1 dia"
+      - 'row "Show details Selecionar maratona do frevo 2026 Salvar na lista de palavras-chave Analisar maratona do frevo 2026 na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 44 nova 0 < 0,01 Acessar SERP de maratona do frevo 2026 110 11 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 23 horas"':
+        - gridcell "Show details Selecionar maratona do frevo 2026":
+          - button "Show details":
+          - checkbox "Selecionar maratona do frevo 2026"
+        - gridcell "Salvar na lista de palavras-chave Analisar maratona do frevo 2026 na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar maratona do frevo 2026 na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=maratona%20do%20frevo%202026&currency=usd
+            - text: maratona do frevo 2026
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell
+        - gridcell "44":
+          - generic: "44"
+        - gridcell "nova":
+          - generic: nova
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de maratona do frevo 2026":
+          - link "Acessar SERP de maratona do frevo 2026":
+            - /url: /analytics/serp?phrase=maratona+do+frevo+2026&domain=brasilcorrida.com.br&db=br&position=44&type=organic&serpId=b-d-97-1024-2676377905097357452
+          - separator
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "11":
+          - generic: "11"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "23 horas"
+      - 'row "Show details Selecionar rumo certo jf Salvar na lista de palavras-chave Analisar rumo certo jf na Visão geral de palavras-chave Abrir visão geral Intenção: De navegação 43 nova 0 < 0,01 Acessar SERP de rumo certo jf 110 34 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 20 horas"':
+        - gridcell "Show details Selecionar rumo certo jf":
+          - button "Show details":
+          - checkbox "Selecionar rumo certo jf"
+        - gridcell "Salvar na lista de palavras-chave Analisar rumo certo jf na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar rumo certo jf na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=rumo%20certo%20jf&currency=usd
+            - text: rumo certo jf
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: De navegação"':
+          - 'generic "Intenção: De navegação"':
+            - button "N":
+              - generic: "N"
+        - gridcell
+        - gridcell "43":
+          - generic: "43"
+        - gridcell "nova":
+          - generic: nova
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de rumo certo jf":
+          - link "Acessar SERP de rumo certo jf":
+            - /url: /analytics/serp?phrase=rumo+certo+jf&domain=brasilcorrida.com.br&db=br&position=43&type=organic&serpId=b-g-97-1024-13903610562726109908
+          - separator
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "34":
+          - generic: "34"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "20 horas"
+      - 'row "Show details Selecionar corrida da embasa Salvar na lista de palavras-chave Analisar corrida da embasa na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 24 53 ↓ 29 0 < 0,01 Acessar SERP de corrida da embasa 0 90 10 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 22 horas"':
+        - gridcell "Show details Selecionar corrida da embasa":
+          - button "Show details":
+          - checkbox "Selecionar corrida da embasa"
+        - gridcell "Salvar na lista de palavras-chave Analisar corrida da embasa na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar corrida da embasa na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=corrida%20da%20embasa&currency=usd
+            - text: corrida da embasa
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell "24":
+          - generic: "24"
+        - gridcell "53":
+          - generic: "53"
+        - gridcell "↓ 29":
+          - generic: ↓
+          - generic: "29"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de corrida da embasa 0":
+          - link "Acessar SERP de corrida da embasa":
+            - /url: /analytics/serp?phrase=corrida+da+embasa&domain=brasilcorrida.com.br&db=br&position=53&type=organic&serpId=b-f-97-1024-212764542059623394
+          - separator
+          - generic: "0"
+        - gridcell "90":
+          - generic: "90"
+        - gridcell "10":
+          - generic: "10"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "22 horas"
+      - 'row "Show details Selecionar calendário corrida de rua 2025 Salvar na lista de palavras-chave Analisar calendário corrida de rua 2025 na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 53 nova 0 < 0,01 Acessar SERP de calendário corrida de rua 2025 90 9 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 2 dias"':
+        - gridcell "Show details Selecionar calendário corrida de rua 2025":
+          - button "Show details":
+          - checkbox "Selecionar calendário corrida de rua 2025"
+        - gridcell "Salvar na lista de palavras-chave Analisar calendário corrida de rua 2025 na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar calendário corrida de rua 2025 na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=calend%C3%A1rio%20corrida%20de%20rua%202025&currency=usd
+            - text: calendário corrida de rua 2025
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell
+        - gridcell "53":
+          - generic: "53"
+        - gridcell "nova":
+          - generic: nova
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de calendário corrida de rua 2025":
+          - link "Acessar SERP de calendário corrida de rua 2025":
+            - /url: /analytics/serp?phrase=calend%C3%A1rio+corrida+de+rua+2025&domain=brasilcorrida.com.br&db=br&position=53&type=organic&serpId=b-d-97-1024-4735563208532155172
+          - separator
+        - gridcell "90":
+          - generic: "90"
+        - gridcell "9":
+          - generic: "9"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "2 dias"
+      - 'row "Show details Selecionar circuito das estações brasilia 2026 Salvar na lista de palavras-chave Analisar circuito das estações brasilia 2026 na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 80 nova 0 < 0,01 Acessar SERP de circuito das estações brasilia 2026 110 10 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 19 horas"':
+        - gridcell "Show details Selecionar circuito das estações brasilia 2026":
+          - button "Show details":
+          - checkbox "Selecionar circuito das estações brasilia 2026"
+        - gridcell "Salvar na lista de palavras-chave Analisar circuito das estações brasilia 2026 na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar circuito das estações brasilia 2026 na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=circuito%20das%20esta%C3%A7%C3%B5es%20brasilia%202026&currency=usd
+            - text: circuito das estações brasilia 2026
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell
+        - gridcell "80":
+          - generic: "80"
+        - gridcell "nova":
+          - generic: nova
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de circuito das estações brasilia 2026":
+          - link "Acessar SERP de circuito das estações brasilia 2026":
+            - /url: /analytics/serp?phrase=circuito+das+esta%C3%A7%C3%B5es+brasilia+2026&domain=brasilcorrida.com.br&db=br&position=80&type=organic&serpId=b-h-97-1024-7185424909967757790
+          - separator
+        - gridcell "110":
+          - generic: "110"
+        - gridcell "10":
+          - generic: "10"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "19 horas"
+      - 'row "Show details Selecionar circuito procorrer 2026 Salvar na lista de palavras-chave Analisar circuito procorrer 2026 na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa 39 nova 0 < 0,01 Acessar SERP de circuito procorrer 2026 90 12 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 18 horas"':
+        - gridcell "Show details Selecionar circuito procorrer 2026":
+          - button "Show details":
+          - checkbox "Selecionar circuito procorrer 2026"
+        - gridcell "Salvar na lista de palavras-chave Analisar circuito procorrer 2026 na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar circuito procorrer 2026 na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=circuito%20procorrer%202026&currency=usd
+            - text: circuito procorrer 2026
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell
+        - gridcell "39":
+          - generic: "39"
+        - gridcell "nova":
+          - generic: nova
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de circuito procorrer 2026":
+          - link "Acessar SERP de circuito procorrer 2026":
+            - /url: /analytics/serp?phrase=circuito+procorrer+2026&domain=brasilcorrida.com.br&db=br&position=39&type=organic&serpId=b-g-97-1024-6038785516129763937
+          - separator
+        - gridcell "90":
+          - generic: "90"
+        - gridcell "12":
+          - generic: "12"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "18 horas"
+      - 'row "Show details Selecionar correr df Salvar na lista de palavras-chave Analisar correr df na Visão geral de palavras-chave Abrir visão geral Intenção: Informativa Posição atual: Visão geral criada por IA nova 0 < 0,01 Acessar SERP de correr df 480 12 0 Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/ 19 horas"':
+        - gridcell "Show details Selecionar correr df":
+          - button "Show details":
+          - checkbox "Selecionar correr df"
+        - gridcell "Salvar na lista de palavras-chave Analisar correr df na Visão geral de palavras-chave Abrir visão geral":
+          - button "Salvar na lista de palavras-chave":
+          - link "Analisar correr df na Visão geral de palavras-chave":
+            - /url: /analytics/keywordoverview/?db=br&device=0&q=correr%20df&currency=usd
+            - text: correr df
+          - button "Abrir visão geral":
+        - 'gridcell "Intenção: Informativa"':
+          - 'generic "Intenção: Informativa"':
+            - button "I":
+              - generic: I
+        - gridcell
+        - 'gridcell "Posição atual: Visão geral criada por IA"':
+          - 'link "Posição atual: Visão geral criada por IA"':
+            - /url: /analytics/organic/positions/?db=br&q=brasilcorrida.com.br&searchType=domain&currency=usd&filter=%7B%22search%22%3A%22%22%2C%22serpFeatures%22%3A%7B%22type%22%3A%22domain_ranks%22%2C%22id%22%3A52%7D%2C%22advanced%22%3A%7B%7D%7D
+            - button
+        - gridcell "nova":
+          - generic: nova
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "< 0,01":
+          - generic: < 0,01
+        - gridcell "Acessar SERP de correr df":
+          - link "Acessar SERP de correr df":
+            - /url: /analytics/serp?phrase=correr+df&domain=brasilcorrida.com.br&db=br&position=1&type=ai-overview&serpId=b-d-97-1024-4217007512908118902
+          - separator
+        - gridcell "480":
+          - generic: "480"
+        - gridcell "12":
+          - generic: "12"
+        - gridcell "0":
+          - generic: "0"
+        - gridcell "Analise brasilcorrida.com.br/ Acessar brasilcorrida.com.br/":
+          - link "Analise brasilcorrida.com.br/":
+            - /url: /analytics/organic/overview/?db=br&q=https%3A%2F%2Fbrasilcorrida.com.br%2F&searchType=url&currency=usd
+            - generic: brasilcorrida.com.br/
+          - link "Acessar brasilcorrida.com.br/":
+            - /url: https://brasilcorrida.com.br/
+        - gridcell "19 horas"
+    - scrollbar
+- contentinfo:
+  - link "Fale conosco":
+    - /url: /company/contacts/
+  - link "Sobre nós":
+    - /url: /company/
+  - link "Blog":
+    - /url: /blog/
+  - button "Português (Brasil)"
+  - link "Ver planos e preços":
+    - /url: /pricing/
+  - link "Comece a usar a Semrush":
+    - /url: https://www.semrush.com/academy/courses/getting-started-with-semrush/
+  - link "Configurações dos cookies":
+    - /url: javascript:window.showConsentSettings();
+  - link "Informações jurídicas":
+    - /url: /company/legal/
+  - link "Política de privacidade":
+    - /url: /company/legal/privacy-policy/
+  - link "Não venda minhas informações pessoais":
+    - /url: javascript:window.showConsentSettings();
+  - generic: © 2026 Semrush Holdings. Todos os direitos reservados.
+- region "Notificações"
+- button "Abrir painel de ajuda"
+- iframe [id="intercom-frame"]
+- region "Notifications"
+- dialog "Modal window":
+  - button "Close" [active]:
+  - paragraph: Obtenha mais com o plano Guru
+  - paragraph:
+    - generic: Os dados históricos são limitados.
+    - text: Mude para o plano Guru para abrir novas possibilidades e funções. Você vai gostar!
+  - paragraph: 5K relatórios por dia
+  - paragraph: Dados históricos
+  - paragraph: 30K palavras-chave por relatório
+  - button "Atualizar para Guru":
+    - generic: Atualizar para Guru
+  - button "Agradeço, mas não agora":
+    - generic: Agradeço, mas não agora

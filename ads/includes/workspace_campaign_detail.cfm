@@ -12,6 +12,7 @@
   <cfset VARIABLES.adsV1DetailReviewStatus = uCase(trim(qAdsV1SelectedCampaign.review_status & ""))/>
   <cfset VARIABLES.adsV1DetailBudget = val(qAdsV1SelectedCampaign.budget_total)/>
   <cfset VARIABLES.adsV1DetailSpent = val(qAdsV1SelectedCampaign.spent_total)/>
+  <cfset VARIABLES.adsV1DetailBudgetExhausted = adsV1CampaignBudgetExhausted(VARIABLES.adsV1DetailStatus, VARIABLES.adsV1DetailBudget, VARIABLES.adsV1DetailSpent, qAdsV1SelectedCampaign.cpc_bid)/>
   <cfset VARIABLES.adsV1DetailRemaining = max(0, VARIABLES.adsV1DetailBudget - VARIABLES.adsV1DetailSpent)/>
   <cfset VARIABLES.adsV1DetailProgress = VARIABLES.adsV1DetailBudget GT 0
     ? min(100, max(0, VARIABLES.adsV1DetailSpent * 100 / VARIABLES.adsV1DetailBudget))
@@ -36,7 +37,7 @@
           </p>
         </div>
         <div class="d-flex flex-wrap gap-2">
-          <span class="badge <cfif VARIABLES.adsV1DetailStatus EQ 'ACTIVE'>badge-success<cfelseif VARIABLES.adsV1DetailStatus EQ 'PAUSED'>badge-warning<cfelseif VARIABLES.adsV1DetailStatus EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>"><cfoutput>#encodeForHTML(adsV1CampaignStatusLabel(VARIABLES.adsV1DetailStatus))#</cfoutput></span>
+          <span class="badge <cfif VARIABLES.adsV1DetailBudgetExhausted OR VARIABLES.adsV1DetailStatus EQ 'PAUSED'>badge-warning<cfelseif VARIABLES.adsV1DetailStatus EQ 'ACTIVE'>badge-success<cfelseif VARIABLES.adsV1DetailStatus EQ 'ENDED'>badge-danger<cfelse>badge-secondary</cfif>"><cfif VARIABLES.adsV1DetailBudgetExhausted AND VARIABLES.adsV1DetailStatus EQ 'ACTIVE'>Orçamento esgotado<cfelse><cfoutput>#encodeForHTML(adsV1CampaignStatusLabel(VARIABLES.adsV1DetailStatus))#</cfoutput></cfif></span>
           <cfif VARIABLES.adsV1DetailReviewStatus EQ "APPROVED"><span class="badge badge-success">Aprovada pela RunnerHub</span>
           <cfelseif VARIABLES.adsV1DetailReviewStatus EQ "PENDING_REVIEW"><span class="badge badge-info">Em análise</span>
           <cfelseif VARIABLES.adsV1DetailReviewStatus EQ "WAITING_PREREQUISITES"><span class="badge badge-warning">Aguardando pré-requisitos</span>
@@ -55,6 +56,7 @@
         <div class="card-body p-3 p-lg-4">
           <div class="ads-v1-eyebrow mb-2">Investimento</div>
           <h2 class="h5 mb-4">Orçamento e período</h2>
+          <cfif VARIABLES.adsV1DetailBudgetExhausted><div class="alert alert-warning"><strong>Orçamento esgotado para o próximo lance.</strong> Restam <cfoutput>#lsCurrencyFormat(VARIABLES.adsV1DetailRemaining)#</cfoutput>, abaixo do lance de <cfoutput>#lsCurrencyFormat(qAdsV1SelectedCampaign.cpc_bid)#</cfoutput>. A campanha não concorre à exibição, mesmo com saldo na conta. <cfif VARIABLES.adsV1BudgetIncreaseReady>Em Gerenciar, use Aumentar orçamento para manter a aprovação. Alterações nos demais dados continuam exigindo nova análise.<cfelse>Consulte os limites da campanha em Gerenciar.</cfif></div></cfif>
           <div class="row g-4">
             <div class="col-sm-6"><div class="text-muted small">Orçamento total</div><strong class="h5"><cfoutput>#lsCurrencyFormat(VARIABLES.adsV1DetailBudget)#</cfoutput></strong></div>
             <div class="col-sm-6"><div class="text-muted small">Orçamento restante</div><strong class="h5"><cfoutput>#lsCurrencyFormat(VARIABLES.adsV1DetailRemaining)#</cfoutput></strong></div>

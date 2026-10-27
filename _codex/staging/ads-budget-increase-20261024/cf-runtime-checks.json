@@ -1,0 +1,12 @@
+{
+  "CHECKS": [
+    "budget POST requires campaign management",
+    "budget mutation through GET denied",
+    "ambiguous action denied",
+    "manage deep link remains read only",
+    "comma and dot decimal amounts parsed",
+    "browser min and hidden amount use decimal dot"
+  ],
+  "CUSTOMER_RECORDS_CHANGED": false,
+  "MIGRATION_READY": 1
+}

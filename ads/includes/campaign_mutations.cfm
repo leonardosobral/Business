@@ -1,3 +1,26 @@
+<cffunction name="adsV1MutationIncreaseBudget" output="false">
+    <cfargument name="fresh" type="struct" required="true"/><cfargument name="state" type="struct" required="true"/>
+    <cftry>
+        <cfquery name="local.increased" datasource="#arguments.fresh.datasource#">
+            SELECT ads.increase_campaign_budget(
+                CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.state.adsV1BudgetCampaignId#"/> AS uuid),
+                CAST(<cfqueryparam cfsqltype="cf_sql_bigint" value="#arguments.state.adsV1AccountId#"/> AS bigint),
+                CAST(<cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.state.adsV1ActorId#"/> AS integer),
+                CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#arguments.state.adsV1ExpectedBudget#" scale="2"/> AS numeric),
+                CAST(<cfqueryparam cfsqltype="cf_sql_decimal" value="#arguments.state.adsV1NewBudget#" scale="2"/> AS numeric)
+            ) AS budget_total
+        </cfquery>
+        <cfcatch type="database">
+            <cfset local.errorText = cfcatch.message & " " & cfcatch.detail/>
+            <cfif find("ADS_BUDGET_STALE", local.errorText)><cfthrow type="AdsV1.Validation" message="O orçamento foi alterado em outra sessão. Recarregue a página antes de aumentar novamente."/></cfif>
+            <cfif find("ADS_BUDGET_NOT_APPROVED", local.errorText)><cfthrow type="AdsV1.Validation" message="O aumento direto exige uma campanha aprovada, ativa ou pausada. Recarregue a página."/></cfif>
+            <cfif find("ADS_BUDGET_INCREASE_ONLY", local.errorText) OR find("ADS_BUDGET_INVALID", local.errorText)><cfthrow type="AdsV1.Validation" message="Informe um orçamento total maior que o atual, com até duas casas decimais."/></cfif>
+            <cfif find("ADS_BUDGET_FORBIDDEN", local.errorText) OR find("ADS_BUDGET_NOT_FOUND", local.errorText)><cfthrow type="AdsV1.Validation" message="Você não pode alterar o orçamento desta campanha na conta selecionada."/></cfif>
+            <cfrethrow/>
+        </cfcatch>
+    </cftry>
+    <cfreturn true/>
+</cffunction>
 <cffunction name="adsV1MutationPrepare" output="false"><cfargument name="fresh" type="struct" required="true"/><cfargument name="state" type="struct" required="true"/>
 <cfquery name="arguments.state.qAdsV1PrepareEditTarget" datasource="#arguments.fresh.datasource#">
                     SELECT campaign.campaign_id

@@ -1,0 +1,22 @@
+{
+  "before": {
+    "portal/conteudo/seo.cfm": "8ecd4a478379f470fe33cd8f7353a5f3e997ec7c05cbc68e2b952e2950db2870"
+  },
+  "watch": {
+    "portal/seo/index.cfm": "26d987d49984a957e85696ede50a00402fd15f7989e9702dc6cb99b56f4c03a0",
+    "includes/backend/require_admin.cfm": "c2f9659ac3db941cc543a9f86d5b39b573c365a36ca2d3fba5a58675f6e017d6",
+    "portal/includes/seo_semrush_data.cfm": "4336116e4a35e3fccdd4bf0f3396823b3c90fafb352142ea1c44c72352dedeea",
+    "portal/conteudo/seo_semrush.cfm": "fe55209e32e723abc7bfdeb47875542eee05d558eba3259dc7e5a4cfd5a1fa58",
+    "portal/includes/seo_queue_data.cfm": "136941aaa5a3d73e1c38b852975a96228996ddb5c8ed67ead7553257bfc6337d",
+    "portal/includes/seo_score_data.cfm": "8ba63c53d9242abcd9bb283a6e9f76da5ee5450fc70fb9901afe981a7abcd166",
+    "portal/conteudo/seo_ga4.cfm": "da246fcc39f6c5d904357e97d90f19a5b7bf5053a9e0d8a2e1f03aee3f44b160",
+    "portal/seo/ga4_service.cfm": "ee375b67bc74c38156b17fb36191e71bb3795ceedaca9c196dce03105b3c9c48"
+  },
+  "names": [
+    "portal/includes/seo_domains_data.cfm",
+    "portal/conteudo/seo_domains.cfm",
+    "portal/seo/assets/domains.css",
+    "portal/seo/assets/domains.js",
+    "portal/conteudo/seo.cfm"
+  ]
+}
