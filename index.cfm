@@ -2,6 +2,7 @@
     <cflocation addtoken="false" url="/logout.cfm"/>
 </cfif>
 
+<cfinclude template="teams/includes/home_return.cfm"/>
 <cfinclude template="includes/backend/backend_login.cfm"/>
 <cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED">
     <cfinclude template="includes/estrutura/home_delegated_account.cfm"/>

@@ -1,6 +1,6 @@
 <cfif structKeyExists(REQUEST,"businessAccessContext") AND REQUEST.businessAccessContext.accessMode EQ "DELEGATED">
     <nav aria-label="Serviços do cliente" class="business-delegated-navigation p-3">
-        <a href="/">Início</a> · <a href="/gestao-clientes/">Gestão de clientes</a>
+        <a href="/">Início</a> · <a href="/gestao-clientes/">Gestão de clientes</a> · <a href="/teams/">Meus Teams</a>
         <cfif REQUEST.businessDelegationService.has(REQUEST.businessAccessContext,"ads.campaigns.view")> · <a href="/ads/">Publicidade</a> · <a href="/portal/banners/">Banners CPC</a></cfif>
         <cfif REQUEST.businessDelegationService.has(REQUEST.businessAccessContext,"events.view")> · <a href="/eventos/">Eventos</a></cfif>
     </nav>
@@ -810,9 +810,13 @@
 
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/administracao/contas/">link-warning</cfif>" href="/administracao/contas/" data-menu-aliases="empresas clientes cadastro">
-                    <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Contas</span>
+                    <i class="fa-solid fa-building-user fa-fw me-3"></i><span>Empresas</span>
                 </a>
             </li>
+
+            <cfif isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
+            <li class="sidenav-item"><a class="sidenav-link <cfif VARIABLES.template EQ '/administracao/teams/'>link-warning</cfif>" href="/administracao/teams/" data-menu-aliases="times assessorias clubes corrida aprovações"><i class="fa-solid fa-people-group fa-fw me-3"></i><span>Gestão de Teams</span></a></li>
+            </cfif>
 
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/verificados/">link-warning</cfif>" href="/portal/verificados/" data-menu-aliases="perfis selo">
@@ -1110,6 +1114,8 @@
                     </li>
                 </cfif>
             </cfif>
+
+            <li class="sidenav-item"><a class="sidenav-link" href="/teams/" data-menu-aliases="times assessorias clubes corrida"><i class="fa-solid fa-people-group fa-fw me-3"></i><span>Meus Teams</span></a></li>
 
             <!--- AJUDA --->
             <li class="sidenav-item pt-3">

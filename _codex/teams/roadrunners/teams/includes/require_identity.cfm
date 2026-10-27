@@ -1,0 +1,1 @@
+<cfif structIsEmpty(teamUser)><cfset teamReturn=teamIdentity.returnPath(structKeyExists(CGI,'REQUEST_URI')?CGI.REQUEST_URI:'/teams/meu-team/')><cflocation url="/teams/entrar/?redirect=#urlEncodedFormat(teamReturn)#" addtoken="false"></cfif>

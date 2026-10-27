@@ -1,0 +1,7 @@
+<cfset teamForm={name=tt.name,type=tt.type,document=tt.document,ownerName=tt.owner_name,technicalName=tt.technical_name,cref=tt.cref,crefUf=tt.cref_uf,email=tt.email,phone=tt.phone,whatsapp=tt.whatsapp,city=tt.city,uf=tt.uf,attendance=tt.attendance,description=tt.description,website=tt.website}>
+<cfset teamFormVersion=tt.version>
+<cfif CGI.request_method EQ 'POST' AND len(teamError) AND structKeyExists(FORM,'operation') AND isSimpleValue(FORM.operation) AND FORM.operation EQ 'save'>
+<cfloop collection="#teamForm#" item="teamFormKey"><cfif structKeyExists(FORM,teamFormKey) AND isSimpleValue(FORM[teamFormKey])><cfset teamForm[teamFormKey]=FORM[teamFormKey]></cfif></cfloop>
+<cfif structKeyExists(FORM,'version') AND isSimpleValue(FORM.version) AND reFind('^[0-9]{1,14}$',FORM.version)><cfset teamFormVersion=val(FORM.version)></cfif>
+</cfif>
+<section class="teams-panel"><h2>Dados do Team</h2><cfif teamCanWrite><p class="teams-muted">Alterações de nome, titular, documento ou responsável técnico voltam para análise antes de novas adesões.</p><form class="teams-form" method="post"><input type="hidden" name="csrf" value="<cfoutput>#teamCsrf#</cfoutput>"><input type="hidden" name="operation" value="save"><input type="hidden" name="team" value="<cfoutput>#teamId#</cfoutput>"><input type="hidden" name="version" value="<cfoutput>#teamFormVersion#</cfoutput>"><cfinclude template="fields.cfm"><div class="full"><button>Salvar cadastro</button></div></form><cfelse><p>Consulte o responsável do Team para atualizar o cadastro.</p></cfif></section>

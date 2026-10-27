@@ -36,6 +36,17 @@ component output=false {
     }
     public struct function handle(required struct identity,required struct state,required string targetPath,required string method,required struct query,required struct form,string pathInfo='',string rawQuery='',string rawBody='',boolean multipartValid=true) {
         var result={status=200,context={},invalid=false,route={allowed=true,capability='',action=''},selectionChanged=false,selectionRequired=false};
+        // Teams is a personal-identity domain; membership is revalidated by its own service.
+        if(listFind('/teams/,/teams/index.cfm,/teams/cadastro/,/teams/cadastro/index.cfm,/teams/convites/,/teams/convites/index.cfm,/teams/mail-worker.cfm',targetPath)) {
+            var allowedQuery='team,tab,q,page,saved,accepted,token,user_busca,updated,invited';
+            var allowedForm='csrf,operation,team,athlete,member,invite,version,name,type,document,ownerName,technicalName,cref,crefUf,email,phone,whatsapp,city,uf,attendance,description,website,confirm,role,decision,note,evidence,cref_active,token,expected_role';
+            var valid=!len(pathInfo) && multipartValid && variables.policy.uniqueParameters(rawQuery) && variables.policy.uniqueParameters(rawBody) && listFind('GET,POST',uCase(method));
+            for(var key in arguments.query)if(!listFindNoCase(allowedQuery,key)||!isSimpleValue(arguments.query[key]))valid=false;
+            for(var key in arguments.form)if(key!='FIELDNAMES' && (!listFindNoCase(allowedForm,key)||!isSimpleValue(arguments.form[key])))valid=false;
+            if(targetPath=='/teams/mail-worker.cfm' && (structCount(arguments.query)||structCount(arguments.form)))valid=false;
+            if(!valid)result.status=403;
+            return result;
+        }
         // Personal library: never resolve or inherit the selected organization's permissions.
         // Exact endpoints and parameter allowlists also exclude global Application actions.
         var studyPage=listFind('/estudos/,/estudos/index.cfm',targetPath)>0;

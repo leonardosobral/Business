@@ -117,7 +117,9 @@
         AND NOT find(chr(10), VARIABLES.googleSignInRequestedRedirect)
         AND NOT find(chr(13), VARIABLES.googleSignInRequestedRedirect)
         AND NOT findNoCase("logout=1", VARIABLES.googleSignInRequestedRedirect)/>
-    <cfif VARIABLES.googleInviteReturn EQ "/convites/">
+    <cfif VARIABLES.googleSignInValidRedirect AND reFind("^/teams/(cadastro/|convites/)?(\?.*)?$",VARIABLES.googleSignInRequestedRedirect)>
+        <cfset VARIABLES.googleSignInRedirect = VARIABLES.googleSignInRequestedRedirect/>
+    <cfelseif VARIABLES.googleInviteReturn EQ "/convites/">
         <cfset VARIABLES.googleSignInRedirect = "/convites/"/>
     <cfelseif VARIABLES.googleSignInValidRedirect AND listFind("/estudos/,/estudos/?interesse=anual,/estudos/?interesse=editorial,/estudos/primeiro-acesso/",VARIABLES.googleSignInRequestedRedirect)>
         <!--- The study library uses the verified personal identity; organization approval is independent. --->

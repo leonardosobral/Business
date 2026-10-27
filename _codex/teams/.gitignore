@@ -1,0 +1,19 @@
+# Private production baselines, generated releases and verification evidence.
+/baseline/
+/release/
+/global/
+/manual/
+/existing/
+/roles/
+/tenant-admins/
+/logo-preview/
+/*.json
+/native-first-attempt.cfm
+/progress.md
+/__pycache__/
+
+# Generated copies; deploy/sync overlay the canonical Business assets/services.
+/roadrunners/atleta/
+/roadrunners/includes/
+/roadrunners/services/
+/roadrunners/teams/assets/

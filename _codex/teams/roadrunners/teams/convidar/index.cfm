@@ -1,0 +1,13 @@
+<cfinclude template="../includes/start.cfm"><cfinclude template="../includes/require_identity.cfm">
+<cfscript>
+teamTitle='Convide seu Team · Road Runners';inviteLink='';
+if(CGI.request_method=='POST'){
+ try {teamPost();sentInvite=teamSvc.recruit(teamUser.id,teamBoundary.text(FORM,'team_name'),teamBoundary.text(FORM,'channel'),teamBoundary.text(FORM,'destination'));
+ if(sentInvite.channel=='WHATSAPP'){inviteText='Olá! Quero representar ' & sentInvite.teamName & ' no Road Runners. Cadastre nosso Team: https://business.roadrunners.run/teams/cadastro/ O cadastro exige um responsável técnico com CREF ativo e aprovação do RR.';inviteLink='https://wa.me/' & sentInvite.destination & '?text=' & urlEncodedFormat(inviteText);teamSuccess='Seu convite está pronto. Revise a mensagem e envie pelo WhatsApp.';}
+ else teamSuccess='Convite registrado para envio por email. Após a aprovação do cadastro, você poderá confirmar sua adesão.';
+ }catch(Teams.Validation failed){teamError=failed.message;}catch(Teams.Forbidden failed){cfheader(statuscode=403);teamError=failed.message;}catch(any failed){writeLog(file='teams',type='error',text='recruit_failed type=' & failed.type);teamError='Não foi possível criar o convite. Tente novamente.';}
+}
+</cfscript>
+<cfinclude template="../includes/header.cfm"><section class="teams-hero"><span class="teams-eyebrow">Traga sua comunidade</span><h1>Convide seu Team.</h1><p>Envie um convite ao responsável pela sua assessoria, treinador, clube ou grupo de corrida.</p></section>
+<cfif len(inviteLink)><section class="teams-panel"><h2>Envie seu convite</h2><p>O WhatsApp abrirá com a mensagem preenchida. O envio será feito por você.</p><a class="teams-button" href="<cfoutput>#encodeForHTMLAttribute(inviteLink)#</cfoutput>" target="_blank" rel="noopener noreferrer">Revisar e enviar no WhatsApp</a></section></cfif>
+<section class="teams-panel"><form class="teams-form" method="post"><input type="hidden" name="csrf" value="<cfoutput>#teamCsrf#</cfoutput>"><label class="teams-field full">Nome do Team<input name="team_name" required maxlength="160"></label><label class="teams-field">Canal<select name="channel"><option value="EMAIL">Email</option><option value="WHATSAPP">WhatsApp</option></select></label><label class="teams-field">Email ou WhatsApp do responsável<input name="destination" required maxlength="255" placeholder="Email ou número com DDD"></label><div class="full"><button>Preparar convite</button></div></form><p class="teams-small teams-muted">Até cinco convites por dia. O mesmo contato pode receber um novo convite após sete dias. O convite não filia seu perfil automaticamente.</p></section><cfinclude template="../includes/footer.cfm">
