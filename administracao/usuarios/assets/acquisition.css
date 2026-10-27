@@ -1,0 +1,33 @@
+.user-acquisition { border: 1px solid var(--um-border); border-radius: 1rem; background: var(--um-surface); }
+.user-acquisition-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.user-acquisition-periods { display: flex; gap: .3rem; padding: .25rem; border: 1px solid var(--um-border); border-radius: .65rem; }
+.user-acquisition-periods a { color: var(--bs-secondary-color, #bbb); text-decoration: none; border-radius: .4rem; padding: .45rem .75rem; font-size: .8rem; font-weight: 600; white-space: nowrap; }
+.user-acquisition-periods a.is-selected { background: var(--um-accent); color: #151515; }
+.user-acquisition-periods a:hover:not(.is-selected) { background: rgba(255,255,255,.07); color: #fff; }
+.user-acquisition-periods a:focus-visible, .user-acquisition-plot:focus-visible { outline: 2px solid var(--um-accent); outline-offset: 3px; }
+.user-acquisition-summary { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; margin: 1rem 0 .5rem; }
+.user-acquisition-summary > div + div { border-left: 1px solid var(--um-border); padding-left: 1rem; }
+.user-acquisition-summary .acq-value { display: block; font-size: clamp(1.3rem,2.3vw,1.8rem); font-weight: 700; line-height: 1.2; margin-top: .3rem; }
+.user-acquisition-plot { position: relative; height: 250px; min-width: 0; color: var(--um-accent); touch-action: pan-y; border-radius: .4rem; }
+.user-acquisition-plot svg { width: 100%; height: 250px; display: block; overflow: visible; }
+.user-acquisition-plot [hidden] { display: none; }
+.acq-grid { stroke: rgba(255,255,255,.09); stroke-width: 1; }
+.acq-label { fill: var(--bs-secondary-color, #bdbdbd); font-size: 11px; font-family: inherit; }
+.acq-area { fill: rgba(250,177,32,.1); }
+.acq-line { stroke: var(--um-accent); stroke-width: 2; fill: none; stroke-linejoin: round; }
+.acq-point { fill: var(--um-accent); }
+.acq-guide { stroke: rgba(250,177,32,.5); stroke-dasharray: 3 3; }
+.acq-marker { fill: var(--um-accent); stroke: #222; stroke-width: 2; }
+.user-acquisition-tooltip { position: absolute; top: 0; max-width: 100%; background: #171717; color: #fff; border: 1px solid var(--um-accent); border-radius: .4rem; padding: .35rem .6rem; font-size: .78rem; pointer-events: none; box-shadow: 0 3px 14px #0005; z-index: 1; }
+.user-acquisition-details { margin-top: .6rem; font-size: .8rem; color: var(--bs-secondary-color, #bdbdbd); }
+.user-acquisition-details summary { cursor: pointer; width: fit-content; }
+.user-acquisition-data { max-height: 240px; overflow: auto; margin-top: .8rem; }
+.user-acquisition-data th { font-weight: 400; }
+.user-acquisition-data thead th { position: sticky; top: 0; background: var(--bs-body-bg, #222); z-index: 1; }
+.user-acquisition-data td { text-align: right; }
+@media (max-width: 575px) {
+  .user-acquisition-periods { width: 100%; justify-content: space-between; }
+  .user-acquisition-periods a { padding: .45rem .65rem; }
+  .user-acquisition-summary { gap: .5rem; }
+  .user-acquisition-summary > div + div { padding-left: .5rem; }
+}

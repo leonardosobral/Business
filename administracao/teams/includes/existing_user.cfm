@@ -18,3 +18,4 @@ if(CGI.request_method=='POST'&&teamPostOperation=='add_existing_admin'){
 <p class="teams-small teams-muted">Titular: gestão completa da equipe. Administrador: operação do Team. Consulta: somente leitura.</p>
 <div class="full"><button type="submit">Adicionar à gestão</button></div><p class="teams-small teams-muted full">A inclusão libera o acesso imediatamente com o papel escolhido. O vínculo de atleta é uma escolha separada.</p></form>
 <cfelseif len(teamExistingSearch)><p class="teams-muted mt-3"><cfif len(teamExistingSearch) LT 2 AND NOT reFind('^[1-9][0-9]{0,14}$',teamExistingSearch)>Digite pelo menos dois caracteres do nome/email ou um ID válido.<cfelse>Nenhum usuário ativo sem vínculo encontrado. Confira a busca ou os acessos já listados abaixo.</cfif></p></cfif>
+
