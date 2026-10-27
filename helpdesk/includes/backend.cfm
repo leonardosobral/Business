@@ -53,7 +53,7 @@
 <cfset qHelpdeskSetores = QueryNew("id_setor,nome_setor,descricao_setor,id_usuario_responsavel,nome_responsavel,ativo,created_at,updated_at")/>
 <cfset qHelpdeskChamados = QueryNew("id_chamado,protocolo,id_usuario,id_setor,assunto,status,created_at,updated_at,nome_setor,nome_usuario,nome_responsavel")/>
 <cfset qHelpdeskTicketEdit = QueryNew("id_chamado,protocolo,id_usuario,id_setor,assunto,status,created_at,updated_at,nome_setor,nome_usuario,email_usuario,nome_responsavel,perfil_tag,perfil_tag_prefix")/>
-<cfset qHelpdeskMensagens = QueryNew("id_mensagem,id_chamado,id_usuario,mensagem,created_at,is_admin,nome_usuario,email_usuario")/>
+<cfset qHelpdeskMensagens = QueryNew("id_mensagem,id_chamado,id_usuario,mensagem,interno,created_at,is_admin,nome_usuario,email_usuario")/>
 <cfset qHelpdeskSetorEdit = QueryNew("id_setor,nome_setor,descricao_setor,id_usuario_responsavel,ativo")/>
 <cfset qHelpdeskStats = QueryNew("total_chamados,total_abertos,total_setores", "integer,integer,integer")/>
 <cfset QueryAddRow(qHelpdeskStats, 1)/>
@@ -581,6 +581,7 @@
                        msg.id_chamado,
                        msg.id_usuario,
                        msg.mensagem,
+                       msg.interno,
                        msg.created_at,
                        usr.is_admin,
                        usr.name as nome_usuario,

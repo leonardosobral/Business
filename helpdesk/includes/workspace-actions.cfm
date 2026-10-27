@@ -4,6 +4,20 @@
   <cfif CGI.request_method NEQ "POST" OR NOT structKeyExists(FORM,"helpdesk_csrf") OR compare(FORM.helpdesk_csrf,SESSION.helpdeskCsrf) NEQ 0>
     <cfheader statuscode="403"/><cfoutput><p>Sessão de atendimento expirada. Volte ao chamado e recarregue a página antes de tentar novamente.</p></cfoutput><cfabort/>
   </cfif>
+  <cfinclude template="workspace-replies-actions.cfm"/>
+  <cfif FORM.helpdesk_action EQ "nota_ticket">
+    <cfset helpdeskAdminHandled=true/>
+    <cftry>
+      <cfif NOT reFind("^[0-9]{1,9}$",FORM.ticket_id ?: "") OR NOT reFind("^[0-9]{1,12}$",FORM.ticket_last_message ?: "")>
+        <cfthrow type="HelpdeskNotes.Validation" message="Chamado inválido. Recarregue a página antes de salvar sua nota."/>
+      </cfif>
+      <cfset createObject('component','helpdesk.includes.HelpdeskNotes').save(val(FORM.ticket_id),val(qPerfil.id),FORM.ticket_mensagem ?: '',FORM.ticket_revision ?: '',val(FORM.ticket_last_message))/>
+      <cflocation url="#hdUrl({ticket_id=val(FORM.ticket_id),salvo='nota'})###hd-editor" addtoken="false"/>
+      <cfcatch type="HelpdeskNotes.Validation"><cfset hdError=cfcatch.message/></cfcatch>
+      <cfcatch type="HelpdeskNotes.Conflict"><cfset hdError=cfcatch.message/></cfcatch>
+      <cfcatch type="any"><cfset hdError="Não foi possível salvar a nota interna. Seu texto foi preservado; tente novamente."/></cfcatch>
+    </cftry>
+  </cfif>
   <cfif listFindNoCase("responder_ticket,atualizar_ticket",FORM.helpdesk_action)>
     <cfset helpdeskAdminHandled=true/>
     <cfset hdMessage=trim(FORM.ticket_mensagem ?: "")/>
@@ -11,6 +25,8 @@
     <cfset hdActionReply=FORM.helpdesk_action EQ "responder_ticket"/>
     <cfif NOT reFind("^[0-9]{1,9}$",FORM.ticket_id ?: "") OR NOT reFind("^[0-9]{1,9}$",FORM.ticket_setor_id ?: "") OR NOT listFindNoCase("aberto,cliente_respondeu,em_atendimento,aguardando_cliente,resolvido,fechado",hdNextStatus)>
       <cfset hdError="Selecione um chamado, um setor e um status válidos."/>
+    <cfelseif hdActionReply AND (FORM.message_kind ?: '') EQ 'nota'>
+      <cfset hdError="Para manter esta mensagem privada, use Salvar nota interna. Seu texto foi preservado."/>
     <cfelseif hdActionReply AND (NOT len(hdMessage) OR len(hdMessage) GT 12000)>
       <cfset hdError="Escreva uma resposta entre 1 e 12.000 caracteres. Seu texto foi preservado."/>
     <cfelse>
