@@ -2,6 +2,7 @@ const test=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const vm=require('node:vm');
+const {JSDOM}=require('jsdom');
 const runtime=process.env.RR_CHAT_RUNTIME || require('node:path').resolve(__dirname,'../../../RoadRunners/assets/js/runnerhub-chat.js');
 async function enter(action,folder){
   const calls=[]; let click; let thread;
@@ -15,8 +16,10 @@ async function enter(action,folder){
   const fetch=async(url,options={})=>{calls.push({url:String(url),options});return {ok:true,json:async()=>({}),text:async()=>''};};
   const context={window,document,location,history:{state:{},replaceState(){}},fetch,URL,AbortController,CustomEvent:class{},DOMParser:class{parseFromString(){return {querySelector(selector){return selector==='[data-chat-thread]'?thread:list;}};}},setInterval(){},alert(message){throw new Error(message);}};
   vm.runInNewContext(fs.readFileSync(runtime,'utf8'),context);
-  const button={dataset:{chatAction:action},isConnected:true};
-  await click({button:0,preventDefault(){},target:{closest(selector){return selector==='[data-chat-action]'?button:null;}}});
+  const dom=new JSDOM('<button data-chat-action="'+action+'">Entrar</button>');
+  try {
+    await click({button:0,preventDefault(){},target:dom.window.document.querySelector('button')});
+  } finally {dom.window.close();}
   return calls.filter(call=>!call.options.method && !call.options.headers?.['X-RR-Chat-Partial']).map(call=>call.url);
 }
 test('joining a group refreshes the group list, not channels',async()=>{assert.deepEqual(await enter('join','groups'),['/mensagens/grupos/']);});

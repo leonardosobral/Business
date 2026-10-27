@@ -1,11 +1,17 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {parseHtml} from '/Users/Shared/Projects/RunnerHub/RoadRunners/_codex/scripts/seo/html.mjs';
-const source=process.argv[2]||'_codex/staging/seo-institutional-20261003/marathons/baseline/RoadRunners';
-const text=readFileSync(source+'/maratonas/index.cfm','utf8');
+import path from 'node:path';
+import test from 'node:test';
+import {JSDOM} from 'jsdom';
+test('public marathon listing has one main heading with the existing appearance',()=>{
+const source=process.env.RR_SEO_SOURCE ? path.join(process.env.RR_SEO_SOURCE,'maratonas/index.cfm') : new URL('../../../RoadRunners/maratonas/index.cfm',import.meta.url);
+const text=readFileSync(source,'utf8');
 const fragment=text.slice(text.indexOf('<!--- TITULO --->'),text.indexOf('<!--- LISTA DE MARATONAS --->'));
-const parsed=parseHtml('<main>'+fragment+'</main>','https://roadrunners.run/maratonas/');
-assert.equal(parsed.h1_count,1,'The public marathon listing must identify its main heading');
-assert.match(fragment,/<h1 class="h3">/,'Keep the existing h3 appearance');
-assert.match(fragment,/Maratonas do Brasil/);
-console.log('Marathon listing has one main heading with the existing appearance.');
+const dom=new JSDOM('<main>'+fragment+'</main>');
+try {
+  const headings=dom.window.document.querySelectorAll('main h1');
+  assert.equal(headings.length,1,'The public marathon listing must identify its main heading');
+  assert.equal(headings[0].classList.contains('h3'),true,'Keep the existing h3 appearance');
+  assert.match(headings[0].textContent,/Maratonas do Brasil/);
+} finally {dom.window.close();}
+});

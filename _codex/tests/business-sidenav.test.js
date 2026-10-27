@@ -80,11 +80,14 @@ test("admin exposes challenges and training as their own top-level section", () 
     assert.equal(adminSectionForHref("/desafios/circuitobrasilgigante/"), "Desafios e treinos");
 });
 
-test("admin lists Plataforma destinations alphabetically", () => {
+test("admin preserves Plataforma destinations and the nested Comparador order", () => {
     const template = fs.readFileSync(path.resolve(__dirname, "../../includes/estrutura/sidenav.cfm"), "utf8");
     const section = template.split("<!--- PLATAFORMA --->")[1].split("<!--- AJUDA --->")[0];
     assert.deepEqual([...section.matchAll(/href="([^"]+)"/g)].map(match => match[1]), [
-        "/bi/", "/administracao/comparador/", "/administracao/comparador/ofertas/", "/administracao/comparador/cadastros/", "/crm-interno/", "/administracao/cron-jobs/", "/portal/erros/",
+        "/administracao/consumo-openai/", "/bi/", "/administracao/comparador/resumo/",
+        "/administracao/comparador/", "/administracao/comparador/ofertas/",
+        "/administracao/comparador/cadastros/", "/administracao/comparador/awin/",
+        "/crm-interno/", "/administracao/cron-jobs/", "/portal/erros/",
         "/estudo/", "/administracao/api-monitor/", "/notificacoes/", "/administracao/pesquisas/",
         "/portal/runner-apps/", "/portal/seo/", "/administracao/status/", "/temas/", "/administracao/vicky/"
     ]);
