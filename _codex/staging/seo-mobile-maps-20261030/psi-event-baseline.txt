@@ -1,0 +1,170 @@
+Entender a experiência dos seus usuários
+Este URL
+Origem
+Avaliação das Core Web Vitals: 
+aprovado
+Abrir visualização
+Largest Contentful Paint (LCP)
+1,9s
+Interaction to Next Paint (INP)
+191ms
+Cumulative Layout Shift (CLS)
+0
+OUTRAS MÉTRICAS IMPORTANTES
+First Contentful Paint (FCP)
+1,4s
+Time to First Byte (TTFB)
+0,9s
+Período dos últimos 28 dias
+(
+histórico
+)
+Vários dispositivos móveis
+Muitas amostras (
+Relatório de UX do Chrome
+)
+Durações de visitas completas
+Várias conexões de rede
+Todas as versões do Chrome
+Diagnosticar problemas de desempenho
+33
+Desempenho
+81
+Acessibilidade
+96
+Práticas recomendadas
+100
+SEO
+2/3
+Navegação agêntica
+33
+FCP
++7
+LCP
++1
+TBT
++0
+CLS
++25
+SI
++0
+Desempenho
+Os valores são estimados e podem variar. O índice de desempenho é calculado diretamente por essas métricas.Ver calculadora.
+0–49
+50–89
+90–100
+MÉTRICAS
+Abrir visualização
+First Contentful Paint
+2,4 s
+Largest Contentful Paint
+8,3 s
+Total Blocking Time
+8.030 ms
+Cumulative Layout Shift
+0.038
+Speed Index
+12,5 s
+Captured at 30 de out. de 2026, 16:14 BRT
+Moto G Power emulado with Lighthouse 13.6.0
+Sessão de uma única página
+Carregamento inicial da página
+Limitação lenta de 4G
+Using HeadlessChromium 153.0.8010.36 with lr
+Ver Treemap
+Mostrar auditorias relevantes para:
+All
+FCP
+LCP
+TBT
+CLS
+INSIGHTS
+Solicitações que bloquearam a renderização Economia estimada de 1.600 ms
+Detalhamento da LCP
+Árvore de dependência da rede
+Use ciclos de vida eficientes de cache Economia estimada de 836 KiB
+Exibição de fontes Economia estimada de 20 ms
+Melhorar a entrega de imagens Economia estimada de 388 KiB
+JavaScript duplicado Economia estimada de 1 KiB
+JavaScript legado Economia estimada de 23 KiB
+Causas da troca de layout
+Terceiros
+Esses insights também estão disponíveis no painel de desempenho do Chrome DevTools. Grave um rastro para ver informações mais detalhadas.
+DIAGNÓSTICO
+Minimize o trabalho da thread principal 16,2 s
+Reduza o CSS não usado Economia estimada de 96 KiB
+Reduza o tempo de execução de JavaScript 2,5 s
+Os elementos de imagem não têm width e height explícitas
+Reduza o JavaScript não usado Economia estimada de 789 KiB
+Evite payloads de rede muito grandes O tamanho total foi de 5.741 KiB
+Evitar tarefas longas da linha de execução principal 20 tarefas longas encontradas
+Marcações e medições de User Timing 6 velocidades do usuário
+Mais informações sobre o desempenho do seu aplicativo. Esses números não afetam diretamente o índice de desempenho.
+AUDITORIAS APROVADAS (9)
+Mostrar
+81
+Acessibilidade
+Essas verificações destacam oportunidades para melhorar a acessibilidade do seu app da Web. A detecção automática só detecta um subconjunto de problemas e não garante a acessibilidade do seu app da Web. Portanto, também recomendamos o teste manual.
+ARIA
+Elementos com uma [role] ARIA que exigem que os filhos contenham uma [role] específica não têm alguns ou nenhum dos filhos obrigatórios.
+Veja aqui oportunidades de melhorar o uso de ARIA no seu aplicativo, o que pode aprimorar a experiência dos usuários de tecnologias assistivas, como leitores de tela.
+PRÁTICAS RECOMENDADAS
+[user-scalable="no"] é usado no elemento <meta name="viewport"> ou o atributo [maximum-scale] é menor que 5.
+Links idênticos têm a mesma finalidade.
+Esses itens destacam as práticas recomendadas comuns para acessibilidade.
+CONTRASTE
+As cores de primeiro e segundo plano não têm uma taxa de contraste suficiente.
+Veja aqui oportunidades de melhorar a legibilidade do seu conteúdo.
+NOMES E ETIQUETAS
+Os links não têm um nome compreensível
+Veja aqui oportunidades de melhorar a semântica dos controles do seu aplicativo. Isso pode melhorar a experiência de usuários de tecnologias assistivas, como leitores de tela.
+TABELAS E LISTAS
+Itens de lista (<li>) não estão contidos nos elementos pai <ul>, <ol> ou <menu>.
+Veja aqui oportunidades para melhorar a experiência de leitura de dados em tabelas ou listas usando tecnologia adaptativa, como um leitor de tela.
+NAVEGAÇÃO
+Os elementos de título não aparecem em uma ordem sequencial descendente
+Veja aqui oportunidades de melhorar a navegação por teclado no seu aplicativo.
+OUTROS ITENS PARA VERIFICAÇÃO MANUAL (10)
+Mostrar
+Esses itens se referem a áreas que uma ferramenta de teste automatizada não pode cobrir. Saiba mais no nosso guia sobre como realizar uma avaliação de acessibilidade.
+AUDITORIAS APROVADAS (26)
+Mostrar
+NÃO APLICÁVEL (30)
+Mostrar
+96
+Práticas recomendadas
+GERAL
+Erros do navegador foram registrados no console
+Bibliotecas JavaScript detectadas
+Mapas de origem ausentes no JavaScript principal grande
+GARANTIA E SEGURANÇA
+Conferir se a CSP é eficaz contra ataques de XSS
+Usar uma política HSTS forte
+Garantir o isolamento adequado da origem com COOP
+Mitigar clickjacking com XFO ou CSP
+Mitigar XSS baseado em DOM com Tipos Confiáveis
+COMPATIBILIDADE DE NAVEGADORES
+Recursos de referência
+AUDITORIAS APROVADAS (11)
+Mostrar
+NÃO APLICÁVEL (1)
+Mostrar
+100
+SEO
+Essas verificações garantem que sua página siga orientações básicas para otimização de mecanismos de pesquisa. Há muitos outros fatores não avaliados pelo Lighthouse que ainda podem afetar sua classificação na pesquisa, como a performance nas Core Web Vitals. Saiba mais sobre os Fundamentos da Pesquisa Google.
+OUTROS ITENS PARA VERIFICAÇÃO MANUAL (1)
+Ocultar
+Os dados estruturados são válidos
+Execute estes validadores adicionais no seu site para verificar mais práticas recomendadas de SEO.
+AUDITORIAS APROVADAS (10)
+Mostrar
+2/3
+Navegação agêntica
+Essas verificações garantem sites navegáveis e de alta qualidade para agentes de IA, além de validarem a exatidão das integrações do WebMCP. Esta categoria ainda está em desenvolvimento e sujeita a mudanças.
+ACESSIBILIDADE DO AGENTE
+A árvore de acessibilidade não está bem estruturada
+Essas auditorias destacam as práticas recomendadas para melhorar a acessibilidade do site para agentes de IA.
+AUDITORIAS APROVADAS (2)
+Mostrar
+NÃO APLICÁVEL (4)
+Mostrar

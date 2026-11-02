@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: event-maps-lazy.js defers offscreen maps and shares one library between independent sections
+ok 1 - event-maps-lazy.js defers offscreen maps and shares one library between independent sections
+  ---
+  duration_ms: 40.7095
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.js preserves the last route selected while downloads are pending
+ok 2 - event-maps-lazy.js preserves the last route selected while downloads are pending
+  ---
+  duration_ms: 9.021
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.js keyboard focus loads a section and duplicate focus never duplicates a request
+ok 3 - event-maps-lazy.js keyboard focus loads a section and duplicate focus never duplicates a request
+  ---
+  duration_ms: 5.871833
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.js older browsers and a failed observer retain the original widgets
+ok 4 - event-maps-lazy.js older browsers and a failed observer retain the original widgets
+  ---
+  duration_ms: 9.535
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.js library failure still loads native widget fallbacks; module failure shows the existing error
+ok 5 - event-maps-lazy.js library failure still loads native widget fallbacks; module failure shows the existing error
+  ---
+  duration_ms: 4.769667
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.js timeout falls back and untrusted remote scripts are never requested
+ok 6 - event-maps-lazy.js timeout falls back and untrusted remote scripts are never requested
+  ---
+  duration_ms: 7.923625
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.js honors DOM readiness, an existing library, and duplicate bootstrap protection
+ok 7 - event-maps-lazy.js honors DOM readiness, an existing library, and duplicate bootstrap protection
+  ---
+  duration_ms: 9.899
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.min.js defers offscreen maps and shares one library between independent sections
+ok 8 - event-maps-lazy.min.js defers offscreen maps and shares one library between independent sections
+  ---
+  duration_ms: 5.940791
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.min.js preserves the last route selected while downloads are pending
+ok 9 - event-maps-lazy.min.js preserves the last route selected while downloads are pending
+  ---
+  duration_ms: 5.101459
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.min.js keyboard focus loads a section and duplicate focus never duplicates a request
+ok 10 - event-maps-lazy.min.js keyboard focus loads a section and duplicate focus never duplicates a request
+  ---
+  duration_ms: 3.570375
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.min.js older browsers and a failed observer retain the original widgets
+ok 11 - event-maps-lazy.min.js older browsers and a failed observer retain the original widgets
+  ---
+  duration_ms: 6.712416
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.min.js library failure still loads native widget fallbacks; module failure shows the existing error
+ok 12 - event-maps-lazy.min.js library failure still loads native widget fallbacks; module failure shows the existing error
+  ---
+  duration_ms: 5.610708
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.min.js timeout falls back and untrusted remote scripts are never requested
+ok 13 - event-maps-lazy.min.js timeout falls back and untrusted remote scripts are never requested
+  ---
+  duration_ms: 6.3035
+  type: 'test'
+  ...
+# Subtest: event-maps-lazy.min.js honors DOM readiness, an existing library, and duplicate bootstrap protection
+ok 14 - event-maps-lazy.min.js honors DOM readiness, an existing library, and duplicate bootstrap protection
+  ---
+  duration_ms: 3.414875
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 513.099375

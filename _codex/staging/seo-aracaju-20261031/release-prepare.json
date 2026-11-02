@@ -1,0 +1,11 @@
+{
+  "rr": {
+    "files": 4,
+    "backup": "/var/backups/seo-aracaju-20261031-rr/baseline"
+  },
+  "or": {
+    "files": 3,
+    "recovery": "Exact source baseline retained in task workspace; no persistent server backup, per OpenResults preference."
+  },
+  "at": "2026-10-31T16:58:44.087437+00:00"
+}

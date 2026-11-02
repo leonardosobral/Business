@@ -1,0 +1,26 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "images": 12,
+    "highPriority": 1,
+    "lazy": 11,
+    "canonical": "https://roadrunners.run/"
+  },
+  {
+    "route": "/en/",
+    "status": 200,
+    "images": 12,
+    "highPriority": 1,
+    "lazy": 11,
+    "canonical": "https://roadrunners.run/en/"
+  },
+  {
+    "route": "/es/",
+    "status": 200,
+    "images": 12,
+    "highPriority": 1,
+    "lazy": 11,
+    "canonical": "https://roadrunners.run/es/"
+  }
+]

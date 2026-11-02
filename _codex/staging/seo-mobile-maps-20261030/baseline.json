@@ -1,0 +1,27 @@
+{
+  "names": [
+    "assets/js/event-maps-lazy.js",
+    "assets/js/event-maps-lazy.min.js",
+    "evento/index.cfm"
+  ],
+  "before": {
+    "evento/index.cfm": "28a5e94801bebbe2442aef8d89d48ab289397528e52f42bac8e9e56ff94ee2d5"
+  },
+  "local": {
+    "assets/js/event-maps-lazy.js": null,
+    "assets/js/event-maps-lazy.min.js": null,
+    "evento/index.cfm": "28a5e94801bebbe2442aef8d89d48ab289397528e52f42bac8e9e56ff94ee2d5"
+  },
+  "watch": {
+    "Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "includes/estrutura/variaveis.cfm": "b4ab09efe0053cdb6b04ac0bf6b864fa718457824989123c27c90467e7e365aa",
+    "includes/estrutura/head.cfm": "84258c3f09772972a39d3f1870f46da6c598f6f218b2b192f6fb843f84695896",
+    "includes/estrutura/header.cfm": "69d0bf927acc0c8c8b878f43a5383fa23f2120546f992d1bc04e76ac2f632202",
+    ".htaccess": "3866eeac7aa05ceb1fe135a649618d531ca9d23edf42f77e3e6129ecce922688",
+    "assets/js/event-route-mapbox.js": "3eabfcfde849373e216868ec493da8820e06beaafa4c7def58612ebe451a7c85",
+    "assets/js/event-route-mapbox.min.js": "1584c40ebb6b268437edb017ac46552207e02039db71a6050828e11122077ef8",
+    "assets/js/event-location-mapbox.js": "9566ccc01ed603db0d140edae73b50822b87983a9b20c34ecce84da95f90296e",
+    "assets/js/event-location-mapbox.min.js": "7b51b25b226e92dee9f804cec008a6b7a7ca827008498ccca2e027d037abf854",
+    "embed/percursos/index.cfm": "59bfd1f3733d200d9c9c9055f075a5dc13a37710c72f974151fb81d5a14d2cf6"
+  }
+}

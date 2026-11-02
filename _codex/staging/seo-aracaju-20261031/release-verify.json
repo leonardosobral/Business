@@ -1,0 +1,11 @@
+{
+  "rr": {
+    "verified_hashes": 4,
+    "preserved_dependencies": 6
+  },
+  "or": {
+    "verified_hashes": 3,
+    "preserved_dependencies": 8
+  },
+  "at": "2026-10-31T17:07:39.327386+00:00"
+}

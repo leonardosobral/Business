@@ -1,0 +1,263 @@
+- paragraph:
+  - text: Usamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa
+  - link "Política de Privacidade":
+    - /url: https://www.ticketsports.com.br/PoliticaPrivacidade
+- button "Aceitar"
+- navigation:
+  - link:
+    - /url: https://www.ticketsports.com.br/
+  - button "Modalidade"
+  - link "Calendário de Eventos":
+    - /url: /calendario/filters
+  - link "Atendimento":
+    - /url: https://ajuda.ticketsports.com.br/hc/pt-br?_gl=1*10sclrc*_gcl_au*OTQ2MTMwMjYzLjE3NjgzOTE2NzEuMTEzNTI5MDA2NS4xNzY4MzkxNzIxLjE3NjgzOTE3MzU.*_ga*MzM2MTM4MzM4LjE3NDg4NzQyODM.*_ga_SLL66C2YZ7*czE3Njk1OTk3MTQkbzI0JGcxJHQxNzY5NjAxNjUyJGo1NyRsMCRoMjY5NDExNjI2
+  - link "Crie seu evento":
+    - /url: /funcionalidades
+  - button "Idioma BR":
+    - paragraph: Idioma
+    - generic: BR
+  - link "Login":
+    - /url: https://accounts.ticketsports.com.br?redirectTo=https%3A%2F%2Fwww.ticketsports.com.br%2Fe%2FCORRIDA%2BADC%2BZF%2BCLUBE-88536
+    - button "Login"
+- main:
+  - main:
+    - strong: Inscrição
+    - paragraph: "Data do evento: 24/01/2027"
+    - paragraph: Inscrições até 22/01/2027
+    - link "INSCREVA-SE":
+      - /url: https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88536&origem=novo-site&lang=pt-BR
+      - button "INSCREVA-SE"
+    - strong: "Local do evento:"
+    - 'link "Sede Campestre ADC ZF: Rua Dr Jurgen Ulderup, S/N, Sorocaba, SP, Brasil"':
+      - /url: "https://www.google.com/maps/search/?api=1&query=Sede Campestre ADC ZF: Rua Dr Jurgen Ulderup, S/N, Sorocaba, SP, Brasil"
+    - strong: Já fez sua inscrição?
+    - paragraph: "Segue alguns links rápidos:"
+    - link "2º via de boleto":
+      - /url: https://ajuda.ticketsports.com.br/hc/pt-br/articles/12462164968219-2%C2%AA-Via-de-boleto-Como-fa%C3%A7o-para-recuperar-ou-refazer-a-inscri%C3%A7%C3%A3o?_gl=1*1921o1v*_gcl_au*ODQ5MTkwNDcuMTc0ODQzNDc4Ni4xODMyOTAxNTUzLjE3NTE1NzUzNDIuMTc1MTU3NTM0MQ..*_ga*MTUzNjc2MzAyNy4xNzQwNTgxNzM4*_ga_SLL66C2YZ7*czE3NTE1NzUzMzIkbzM2JGcxJHQxNzUxNTc1MzQxJGo1MSRsMCRoMA..
+      - button "2º via de boleto"
+    - link "Protocolo de inscrição":
+      - /url: https://ajuda.ticketsports.com.br/hc/pt-br/articles/12462230398747-N%C3%A3o-recebi-meu-protocolo-confirma%C3%A7%C3%A3o-do-pedido-como-eu-fa%C3%A7o?_gl=1%2Aklkwv5%2A_gcl_au%2AODQ5MTkwNDcuMTc0ODQzNDc4Ni4xODMyOTAxNTUzLjE3NTE1NzUzNDIuMTc1MTU3NTM0MQ..%2A_ga%2AMTUzNjc2MzAyNy4xNzQwNTgxNzM4%2A_ga_SLL66C2YZ7%2AczE3NTE1NzUzMzIkbzM2JGcxJHQxNzUxNTc1MzQxJGo1MSRsMCRoMA..
+      - button "Protocolo de inscrição"
+    - link "Denunciar evento":
+      - /url: https://ajuda.ticketsports.com.br/hc/pt-br/requests/new?_gl=1*1kekp8c*_gcl_au*ODQ5MTkwNDcuMTc0ODQzNDc4Ni4xODMyOTAxNTUzLjE3NTE1NzUzNDIuMTc1MTU3NTM0MQ..*_ga*MTUzNjc2MzAyNy4xNzQwNTgxNzM4*_ga_SLL66C2YZ7*czE3NTE1NzUzMzIkbzM2JGcxJHQxNzUxNTc1NjAxJGo2MCRsMCRoMA..
+      - button "Denunciar evento"
+    - link "FAQ":
+      - /url: https://ajuda.ticketsports.com.br/hc/pt-br?_gl=1*80o2dg*_gcl_au*ODQ5MTkwNDcuMTc0ODQzNDc4Ni4xODMyOTAxNTUzLjE3NTE1NzUzNDIuMTc1MTU3NTM0MQ..*_ga*MTUzNjc2MzAyNy4xNzQwNTgxNzM4*_ga_SLL66C2YZ7*czE3NTE1NzUzMzIkbzM2JGcxJHQxNzUxNTc1NjAxJGo2MCRsMCRoMA..
+      - button "FAQ"
+    - link "Área do Participante":
+      - /url: https://accounts.ticketsports.com.br/?redirectTo=https%3A%2F%2Fwww.ticketsports.com.br%2F
+      - button "Área do Participante"
+    - link "Dúvidas sobre a inscrição":
+      - /url: https://ajuda.ticketsports.com.br/hc/pt-br?_gl=1*80o2dg*_gcl_au*ODQ5MTkwNDcuMTc0ODQzNDc4Ni4xODMyOTAxNTUzLjE3NTE1NzUzNDIuMTc1MTU3NTM0MQ..*_ga*MTUzNjc2MzAyNy4xNzQwNTgxNzM4*_ga_SLL66C2YZ7*czE3NTE1NzUzMzIkbzM2JGcxJHQxNzUxNTc1NjAxJGo2MCRsMCRoMA..
+      - button "Dúvidas sobre a inscrição"
+    - heading "CORRIDA ADC ZF CLUBE" [level=1]
+    - img "Ícone de organizador"
+    - paragraph: "Realizado por: PROEESP"
+    - button "Compartilhe"
+    - img "CORRIDA ADC ZF CLUBE"
+    - paragraph: SOBRE O EVENTO
+    - generic: CORRIDA ZF clube
+    - text: "🏢 Organização: PROEESP"
+    - text: "🏛️ Realização: ADC ZF CLUBE"
+    - text: "📅 Data: 24/01/2027 (domingo)"
+    - text: "📍 Local: Sede Campestre ADC ZF Clube"
+    - text: "⏰ Largada: 7h00"
+    - text: "⏳ Chegue com antecedência: recomendado 1h antes"
+    - text: "⏱️ Duração máxima do evento: aproximadamente 2h"
+    - paragraph: INSCRIÇÕES
+    - generic: "💰 Valores:"
+    - generic: Caminhada - R$ 120,00 (cento e vinte reais) -
+    - generic: Corrida 4km - R$ 120,00 (cento e vinte reais) - Somente 100 vagas (Público geral)
+    - generic: Corrida 8km - R$ 140,00 (cento e quarenta reais) - Somente 100 vagas (Público geral)
+    - generic: SOMENTE 250 VAGAS
+    - paragraph: PREMIAÇÃO
+    - text: 🏆 Premiação (Corrida 4K - 8k)
+    - text: PUBLÍCO EM GERAL
+    - text: "🥇 Geral – Feminino e Masculino:"
+    - text: "🏅 1º ao 3º lugar: Troféu"
+    - generic: "🏅 Medalha de participação: para quem concluir dentro do tempo máximo previsto"
+    - paragraph: CURIOSIDADES
+    - text: "📣 Divulgação e resultados:"
+    - text: "📊 O resultado da corrida estará disponível em até 24h após a prova em: http://www.globalcronometragem.com.br"
+    - text: "🔎 Nome para busca nos sites de inscrição: “CORRIDA ZF CLUBE”"
+    - generic: fOTOS - Fotop
+    - paragraph: REGRAS IMPORTANTES
+    - paragraph:
+      - text: 🔢 Número de peito deverá estar fixado na parte frontal da camiseta em local visível. Sua adulteração, mutilação ou má visualização poderá resultar em desclassificação.
+      - text: 🧍‍♂️ Cada Atleta é responsável por seus dados, condições de saúde e despesas (transporte, alimentação etc.)
+      - text: 🚑 Haverá atendimento de emergência no local com ambulância disponível para remoção; Caso seja necessário o atendimento médico posterior será de responsabilidade da rede pública
+      - text: ⛈️ Organização pode suspender ou cancelar o evento por motivos de segurança/força maior, sem previsão de reembolso
+      - text: ❌ Não haverá devolução do valor da inscrição em caso de desistência ou não comparecimento do participante
+    - paragraph:
+      - text: "📊 Resultado Geral 4K e 8K em até 24h após a prova:"
+      - link "http://www.globalcronometragem.com.br":
+        - /url: http://www.globalcronometragem.com.br
+    - paragraph
+    - paragraph:
+      - text: A cobertura fotográfica oficial será realizada exclusivamente pela FOTOP.
+      - text: "🔞 Idade mínima:"
+      - text: "🏃 Corrida 4Km - 8Km: 16 anos completos até 31/12/2027 (normas CBAT)"
+    - paragraph: "🚶 Caminhada: idade livre"
+    - paragraph: ENTREGA DE KITS
+    - text: "🎒 Kit do atleta (incluso na inscrição):"
+    - text: 🔢 Número de peito (uso obrigatório e intransferível)
+    - text: 👜 Bag
+    - text: 📟 Chip (retornável ou descartável)
+    - text: 💧 Hidratação no percurso e 🍌 fruta na chegada
+    - text: 🏅 Medalha (para concluintes dentro do tempo máximo)
+    - text: 👕 Camiseta
+    - text: "👕 Tamanhos de camiseta:"
+    - text: "👕 Unissex: P, M, G"
+    - text: "📦 Retirada de kits:"
+    - text: 📅A informar
+    - link "Modelo autorização de retirada do kit por terceiros.":
+      - /url: https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/86256/afd209bf114e437185abec7b2e198e5a639093504732017730.pdf
+      - generic: Modelo autorização de retirada do kit por terceiros.
+    - paragraph: DÚVIDAS SOBRE INSCRIÇÕES ,
+    - text: ℹ️ Informações
+    - text: "Mínimo de participantes para solicitação de reserva: –"
+    - text: "Data limite para fazer as inscrições*: –"
+    - text: "Desconto/cortesias: Caso tenha"
+    - text: "Forma de pagamento: Pix ou boleto"
+    - text: Para solicitar sua reserva ➡️
+    - link "CLIQUE AQUI":
+      - /url: https://grupos.ticketsports.com.br/?eventId=86188
+    - text: "*A data é uma previsão de encerramento, caso as vagas da prova esgotem antes da emissão do seu pedido na reserva, não será possível realizar esse processo, nem o pagamento das vagas, portanto, as inscrições não serão garantidas."
+    - text: ______________________________________________
+    - text: ⚠️ Importante
+    - text: Após a solicitação é preciso aguardar aprovação do organizador.
+    - text: Depois de aprovada, você receberá em seu e-mail uma notificação. Caso não localize essa comunicação em seu e-mail, acesse sua reserva ➡️
+    - link "Clicando Aqui":
+      - /url: https://grupos.ticketsports.com.br/login?_gl=1*5g5o5k*_gcl_au*MzA4OTExODQxLjE3NjE3NDg0MTMuMTA1OTk1NDM5OC4xNzY3MTE2ODI1LjE3NjcxMTY4MjQ.*_ga*MTkwMjYzODg1Ni4xNzYxNzQ3NDE5*_ga_SLL66C2YZ7*czE3NjcxMTY4MTkkbzEwMiRnMSR0MTc2NzExNjgyNCRqNTUkbDAkaDE5MDQ0NDAxNTY.
+    - text: ____________________________________________
+    - text: 📢 Alô Time!
+    - text: "📞 WhatsApp:"
+    - link "Clique aqui":
+      - /url: https://api.whatsapp.com/send/?phone=5511968646757&text=Ol%C3%A1%2C+vim+da+Central+de+Ajuda+de+Grupos+e+Assessorias+Meu+Nome+%C3%A9&type=phone_number&app_absent=0
+    - text: 📩 grupos@ticketsports.com.br
+    - text: 📲 11 3588-0326 - Ramal 2
+    - text: Quer saber mais ou ainda tem dúvidas? Acesse a Trilha do Líder ➡️
+    - link "Clicando aqui":
+      - /url: https://gruposesportivosts.zendesk.com/hc/pt-br
+    - paragraph: DUVIDAS FREQUENTES
+    - table:
+      - rowgroup:
+        - 'row "Disponível para atualizações via menu de Serviços Automatizados Para esse evento você pode fazer as seguintes alterações: - Troca de camiseta - Troca de titularidade - Upgrade de kit - Troca de distância"':
+          - cell "Disponível para atualizações via menu de Serviços Automatizados"
+          - 'cell "Para esse evento você pode fazer as seguintes alterações: - Troca de camiseta - Troca de titularidade - Upgrade de kit - Troca de distância"':
+            - text: "Para esse evento você pode fazer as seguintes alterações:"
+            - text: "- Troca de camiseta"
+            - text: "- Troca de titularidade"
+            - text: "- Upgrade de kit"
+            - text: "- Troca de distância"
+        - row "Alterações no Pedido Alterações possíveis até 20 dias antes do evento, faça aqui selecionando a opção \"Serviços Automatizados\"":
+          - cell "Alterações no Pedido"
+          - cell "Alterações possíveis até 20 dias antes do evento, faça aqui selecionando a opção \"Serviços Automatizados\"":
+            - text: Alterações possíveis até 20 dias antes do evento, faça
+            - link "aqui":
+              - /url: https://www.ticketsports.com.br/Entrar/Participante
+            - text: selecionando a opção "Serviços Automatizados"
+        - row "Reembolso do Pedido Reembolso somente dentro dos 7 dias, solicite aqui!":
+          - cell "Reembolso do Pedido"
+          - cell "Reembolso somente dentro dos 7 dias, solicite aqui!":
+            - text: Reembolso somente dentro dos 7 dias, solicite
+            - link "aqui":
+              - /url: https://ajuda.ticketsports.com.br/hc/pt-br/articles/12461829156251-Qual-o-e-mail-e-telefone-para-esclarecer-d%C3%BAvidas-referentes-%C3%A0s-inscri%C3%A7%C3%B5es
+            - text: "!"
+        - row "Status do Pedido/Comprovante de Inscrição Para visualizar seu protocolo siga o procedimento clicando aqui.":
+          - cell "Status do Pedido/Comprovante de Inscrição"
+          - cell "Para visualizar seu protocolo siga o procedimento clicando aqui.":
+            - text: Para visualizar seu protocolo siga o procedimento clicando
+            - link "aqui":
+              - /url: https://ajuda.ticketsports.com.br/hc/pt-br/articles/12462230398747-N%C3%A3o-recebi-meu-protocolo-confirma%C3%A7%C3%A3o-do-pedido-como-eu-fa%C3%A7o?_gl=1%2A1mhmld2%2A_gcl_aw%2AR0NMLjE3NTgxMTMwMjguQ2owS0NRand1S25HQmhENUFSSXNBRDE5UnNiS3RGV2R3VXhnakNjaF9oR0lESXNFQTcyWlZlb0RBTjF0X1Q3Ymlja1A0VlFmWTZZWS1PNGFBZ2FGRUFMd193Y0I.%2A_gcl_au%2ANDA4NDI0MzgxLjE3NjA5NjYwMjQuMTE3MjYwODQwMC4xNzYxMzA4NDM3LjE3NjEzMDg1Njg.%2A_ga%2AMTM0NDg5MjUxMS4xNzUzMTAxNzIx%2A_ga_SLL66C2YZ7%2AczE3NjEzMTIyNjAkbzIyNSRnMSR0MTc2MTMxMjMyMCRqNjAkbDAkaDA.
+            - text: .
+        - row "Dúvidas Técnicas do evento Dúvidas relacionadas ao percurso, entrega de kits, retirada de kits por terceiros. Entrar em contato com a organização através do botão \"Fale com o organizador\" abaixo do botão inscreva-se.":
+          - cell "Dúvidas Técnicas do evento"
+          - cell "Dúvidas relacionadas ao percurso, entrega de kits, retirada de kits por terceiros. Entrar em contato com a organização através do botão \"Fale com o organizador\" abaixo do botão inscreva-se."
+        - row "Retirada de kits - 09/05/2026 (sábado) — CCI (Praça de Eventos – Rodoviária) — 14h às 16h - 10/05/2026 (domingo – dia da prova) — CCI — 6h às 7h — Exclusivo para atletas de fora da região — taxa de R$ 30,00.":
+          - cell "Retirada de kits"
+          - cell "- 09/05/2026 (sábado) — CCI (Praça de Eventos – Rodoviária) — 14h às 16h - 10/05/2026 (domingo – dia da prova) — CCI — 6h às 7h — Exclusivo para atletas de fora da região — taxa de R$ 30,00."
+        - row "Demais Dúvidas ou outras solicitações Acesse nossa central de ajuda clicando aqui.":
+          - cell "Demais Dúvidas ou outras solicitações"
+          - cell "Acesse nossa central de ajuda clicando aqui.":
+            - text: Acesse nossa central de ajuda clicando
+            - link "aqui.":
+              - /url: https://ajuda.ticketsports.com.br/hc/pt-br?_gl=1*12sszgq*_gcl_aw*R0NMLjE3NTgxMTMwMjguQ2owS0NRand1S25HQmhENUFSSXNBRDE5UnNiS3RGV2R3VXhnakNjaF9oR0lESXNFQTcyWlZlb0RBTjF0X1Q3Ymlja1A0VlFmWTZZWS1PNGFBZ2FGRUFMd193Y0I.*_gcl_au*NDA4NDI0MzgxLjE3NjA5NjYwMjQuMTE3MjYwODQwMC4xNzYxMzA4NDM3LjE3NjEzMDg1Njg.*_ga*MTM0NDg5MjUxMS4xNzUzMTAxNzIx*_ga_SLL66C2YZ7*czE3NjEzMTIyNjAkbzIyNSRnMSR0MTc2MTMxMjI2MSRqNTkkbDAkaDA.
+    - text: "VEJA COMO FUNCIONA O MENU DE SERVIÇOS AUTOMATIZADOS:"
+    - iframe:
+      - generic "Player de vídeo do YouTube"
+      - button "Assistir vídeo"
+      - button "Ocultar controles do player"
+      - link "Menu de Serviços 2.0 - Veja como funciona a ferramenta para o seu participante":
+        - /url: https://www.youtube.com/watch?v=ZJzDmNenL8g
+      - link "Ticket Sports HUB":
+        - /url: /channel/UCf0yAEJ6zgkF06wy2EENsqw
+        - generic: Ticket Sports HUB
+      - button
+      - generic: Ticket Sports HUB
+      - generic: 1,77 mil inscritos
+      - button "Copiar link":
+      - link "Assistir no YouTube":
+        - /url: https://www.youtube.com/watch?v=ZJzDmNenL8g
+        - text: Assista no
+- contentinfo:
+  - img "Logo TicketSports"
+  - paragraph: Ticket Sports é líder nacional para organizadores de eventos esportivos, faça parte agora!
+  - link "Facebook":
+    - /url: https://www.facebook.com/ticketsportss/?locale=pt_BR
+    - img "Ícone Facebook"
+  - link "YouTube":
+    - /url: https://www.youtube.com/@TicketSportsHUB
+    - img "Ícone YouTube"
+  - link "Instagram":
+    - /url: https://www.instagram.com/ticket.sports/
+    - img "Ícone Instagram"
+  - heading "PARTICIPANTES" [level=5]
+  - link "Login":
+    - /url: https://accounts.ticketsports.com.br
+    - paragraph: Login
+  - link "Cadastre-se":
+    - /url: https://accounts.ticketsports.com.br/register
+    - paragraph: Cadastre-se
+  - link "Central de Ajuda":
+    - /url: https://ajuda.ticketsports.com.br/hc/pt-br
+    - paragraph: Central de Ajuda
+  - link "Termos de Compra":
+    - /url: https://www.ticketsports.com.br/TermosCompra
+    - paragraph: Termos de Compra
+  - heading "ORGANIZADORES" [level=5]
+  - link "Sobre a Plataforma":
+    - /url: https://www.ticketsports.com.br/funcionalidades
+    - paragraph: Sobre a Plataforma
+  - link "Solicitar um Orçamento":
+    - /url: https://www.ticketsports.com.br/funcionalidades
+    - paragraph: Solicitar um Orçamento
+  - link "Suporte":
+    - /url: https://organizadorpainel.zendesk.com/hc/pt-br
+    - paragraph: Suporte
+  - link "HUB":
+    - /url: https://hub.ticketsports.com.br
+    - paragraph: HUB
+  - heading "GRUPOS ESPORTIVOS" [level=5]
+  - link "Login":
+    - /url: https://grupos.ticketsports.com.br/login
+    - paragraph: Login
+  - link "Cadastre-se":
+    - /url: https://materiais.ticketsports.com.br/grupos-e-assessorias
+    - paragraph: Cadastre-se
+  - link "Central de Ajuda":
+    - /url: https://gruposesportivosts.zendesk.com/hc/pt-br
+    - paragraph: Central de Ajuda
+  - heading "EMPRESA" [level=5]
+  - link "Quem somos":
+    - /url: https://www.ticketsports.com.br/QuemSomos
+    - paragraph: Quem somos
+  - link "Trabalhe conosco":
+    - /url: https://www.ticketsports.com.br/TrabalheConosco
+    - paragraph: Trabalhe conosco
+  - link "Política de Privacidade":
+    - /url: https://www.ticketsports.com.br/PoliticaPrivacidade
+    - paragraph: Política de Privacidade
+  - separator
+  - paragraph: © 2026 Ticket Sports. Serviços de reservas, intermediações e agenciamento LTDA
+- alert

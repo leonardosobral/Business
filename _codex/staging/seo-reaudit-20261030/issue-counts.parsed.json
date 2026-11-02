@@ -1,0 +1,158 @@
+{
+  "Erros": [
+    {
+      "issueId": 15,
+      "label": "possuem descrição meta duplicada",
+      "count": 34
+    },
+    {
+      "issueId": 8,
+      "label": "estão quebrados",
+      "count": 18
+    },
+    {
+      "issueId": 6,
+      "label": "de tag de título duplicada",
+      "count": 4
+    },
+    {
+      "issueId": 7,
+      "label": "estão com problema de conteúdo duplicado",
+      "count": 4
+    },
+    {
+      "issueId": 2,
+      "label": "páginas retornaram código de status 4XX",
+      "count": 2
+    },
+    {
+      "issueId": 24,
+      "label": "no código-fonte da página",
+      "count": 1
+    },
+    {
+      "issueId": 111,
+      "label": "está com tempo de carregamento alto",
+      "count": 1
+    }
+  ],
+  "Advertências": [
+    {
+      "issueId": 109,
+      "label": "com redirecionamento temporário",
+      "count": 3843
+    },
+    {
+      "issueId": 112,
+      "label": "possuem baixa proporção texto/HTML",
+      "count": 3081
+    },
+    {
+      "issueId": 123,
+      "label": "contêm o atributo nofollow",
+      "count": 982
+    },
+    {
+      "issueId": 102,
+      "label": "possuem texto demais dentro da tag de título",
+      "count": 382
+    },
+    {
+      "issueId": 135,
+      "label": "com arquivos JavaScript e CSS não minificados",
+      "count": 38
+    },
+    {
+      "issueId": 12,
+      "label": "estão quebrados",
+      "count": 21
+    },
+    {
+      "issueId": 110,
+      "label": "não possuem atributo alt",
+      "count": 18
+    },
+    {
+      "issueId": 14,
+      "label": "estão quebradas",
+      "count": 15
+    },
+    {
+      "issueId": 113,
+      "label": "possuem parâmetros em excesso na URL",
+      "count": 3
+    },
+    {
+      "issueId": 117,
+      "label": "possuem baixa quantidade de palavras",
+      "count": 2
+    },
+    {
+      "issueId": 101,
+      "label": "não possui texto suficiente dentro da tag de título",
+      "count": 1
+    },
+    {
+      "issueId": 103,
+      "label": "não possui o título h1",
+      "count": 1
+    },
+    {
+      "issueId": 133,
+      "label": "com tamanho total de JavaScript e CSS muito grande",
+      "count": 1
+    }
+  ],
+  "Avisos": [
+    {
+      "issueId": 4,
+      "label": "bloquearam o rastreador Semrush",
+      "count": 1024
+    },
+    {
+      "issueId": 212,
+      "label": "requerem mais de 3 cliques para que sejam alcançadas",
+      "count": 374
+    },
+    {
+      "issueId": 213,
+      "label": "têm apenas um link interno de entrada",
+      "count": 131
+    },
+    {
+      "issueId": 217,
+      "label": "apresentam texto âncora não descritivo",
+      "count": 52
+    },
+    {
+      "issueId": 218,
+      "label": "para páginas ou recursos externos apresentam código de status HTTP 403",
+      "count": 21
+    },
+    {
+      "issueId": 216,
+      "label": "não têm texto âncora",
+      "count": 12
+    },
+    {
+      "issueId": 204,
+      "label": "com problemas de incompatibilidade de idiomas no hreflang",
+      "count": 11
+    },
+    {
+      "issueId": 223,
+      "label": "requerem otimização de conteúdo",
+      "count": 11
+    },
+    {
+      "issueId": 205,
+      "label": "não suportam o HSTS",
+      "count": 4
+    },
+    {
+      "issueId": 214,
+      "label": "com redirecionamento permanente",
+      "count": 3
+    }
+  ]
+}

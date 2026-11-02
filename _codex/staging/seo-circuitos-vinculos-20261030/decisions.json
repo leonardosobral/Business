@@ -1,0 +1,153 @@
+{
+  "addMemberships": [
+    {
+      "id_evento": 37762,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-goiania"
+    },
+    {
+      "id_evento": 37763,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-natal"
+    },
+    {
+      "id_evento": 37764,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-anapolis"
+    },
+    {
+      "id_evento": 37766,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-jo-o-pessoa"
+    },
+    {
+      "id_evento": 37768,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-cuiaba"
+    },
+    {
+      "id_evento": 37769,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-palmas"
+    },
+    {
+      "id_evento": 37770,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-luis"
+    },
+    {
+      "id_evento": 38506,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-teresina"
+    },
+    {
+      "id_evento": 40742,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-campo-grande"
+    },
+    {
+      "id_evento": 46197,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-jose-dos-campos"
+    },
+    {
+      "id_evento": 46473,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-paulo"
+    },
+    {
+      "id_evento": 46476,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-belem"
+    },
+    {
+      "id_evento": 46509,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-recife"
+    },
+    {
+      "id_evento": 46510,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-rio-de-janeiro"
+    },
+    {
+      "id_evento": 46520,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-belo-horizonte"
+    },
+    {
+      "id_evento": 46522,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-fortaleza"
+    },
+    {
+      "id_evento": 47168,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-vitoria"
+    },
+    {
+      "id_evento": 47176,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-salvador"
+    },
+    {
+      "id_evento": 47179,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-porto-alegre"
+    },
+    {
+      "id_evento": 47216,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-manaus"
+    },
+    {
+      "id_evento": 48479,
+      "agregador_tag": "estacoes",
+      "source": "https://www.runningland.com.br/circuito-da-estacoes-2026-ver-o-campinas"
+    },
+    {
+      "id_evento": 48557,
+      "agregador_tag": "live-run-xp",
+      "source": "https://www.liverun.com.br/etapa/live-run-ribeirao-preto-ii-2026"
+    }
+  ],
+  "eventChanges": {
+    "45366": {
+      "ativo": false,
+      "tag_301": "2026-live-run-xp-fortaleza-2026-ii"
+    },
+    "48557": {
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-ribeirao-preto-ii-2026",
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live-run-ribeirao-preto-ii-2026",
+      "categorias": "5km,10km,15km,kids",
+      "descricao": "A LIVE! RUN XP Ribeirão Preto II 2026 está programada para 22 de novembro em Ribeirão Preto (SP), com provas de 5 km, 10 km, 15 km e Corrida Kids. Consulte a página oficial para horários, local de largada, retirada de kits e condições de inscrição.",
+      "descricao_en": "LIVE! RUN XP Ribeirão Preto II 2026 is scheduled for November 22 in Ribeirão Preto, São Paulo, with 5 km, 10 km and 15 km races plus a Kids Run. Check the official event page for starting times, start location, race kit collection and registration conditions.",
+      "descricao_es": "LIVE! RUN XP Ribeirão Preto II 2026 está programada para el 22 de noviembre en Ribeirão Preto (SP), con pruebas de 5 km, 10 km, 15 km y Carrera Kids. Consulte la página oficial para horarios, lugar de salida, entrega de kits y condiciones de inscripción.",
+      "descricao_traducoes_meta": {
+        "en": {
+          "source_hash": "36cafb95d58bed3f198857956f1f9848",
+          "description_hash": "0e681338d8560726442178b50328dd6c"
+        },
+        "es": {
+          "source_hash": "36cafb95d58bed3f198857956f1f9848",
+          "description_hash": "575f950d14a246977cdb0a84cef87a21"
+        }
+      }
+    }
+  },
+  "pending": [
+    {
+      "id_evento": 37765,
+      "reason": "Imperatriz: ficha oficial O2 sem detalhes e cidade ausente do seletor atual do circuito; não inferir cancelamento."
+    }
+  ],
+  "excluded": [
+    46015,
+    47208,
+    48556,
+    50019,
+    48100,
+    50267,
+    50485
+  ]
+}

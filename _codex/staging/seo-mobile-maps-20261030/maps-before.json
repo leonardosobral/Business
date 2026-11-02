@@ -1,0 +1,18 @@
+{
+  "components": [
+    {
+      "canvases": 1,
+      "top": 1862,
+      "type": "route"
+    },
+    {
+      "canvases": 1,
+      "top": 2616,
+      "type": "location"
+    }
+  ],
+  "viewport": {
+    "height": 834,
+    "width": 1283
+  }
+}

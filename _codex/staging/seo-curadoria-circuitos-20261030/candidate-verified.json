@@ -1,0 +1,24 @@
+{
+  "scenarios": 7,
+  "performance": {
+    "candidate": [
+      0.238559,
+      0.285595,
+      0.227023
+    ],
+    "baseline": [
+      0.218867,
+      0.228384,
+      0.2271
+    ]
+  },
+  "compiledTemplates": 5,
+  "modelResult": "RACE_MODEL_PASSED:16",
+  "hashes": {
+    "maratona/index.cfm": "f7bdc2ef8cd1b47bcdaf8b0fb0d06c21c14ccd6c22d94e83374527f1248b2c06",
+    "circuito/index.cfm": "dc1a5415093c2c8f8d200f1f9d6b18a6a7804b04b90e4dcfdb0a6ea5ee573693",
+    "includes/backend/backend_permanent_race.cfm": "6bce2682725f14d7bb6aec4ea28ada482af1f521b79b8d24481c6dda6a73932d",
+    "includes/permanent_race_overview.cfm": "3a79400c5153284f6632e07cb2b178b7a265b21eda954afa215d973054a076cc",
+    "includes/permanent_race_editorial.cfm": "d2b1d9b6712949ea484b6fcb51cce82100623fc1cf473ebaeccdd3df787f14db"
+  }
+}

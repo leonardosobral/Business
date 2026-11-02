@@ -1,0 +1,15 @@
+{
+  "scenarios": 6,
+  "compiledTemplates": 1,
+  "imageCounts": {
+    "pt": 12,
+    "en": 12,
+    "es": 12,
+    "three": 3,
+    "missing": 1,
+    "empty": 0
+  },
+  "hashes": {
+    "index.cfm": "6e13c8f2c87b36c86b116c10dad00a0e1d12cd32e70a16d1da21966b3a02d639"
+  }
+}

@@ -1,0 +1,526 @@
+- main:
+  - link "Logo Running Land":
+    - /url: /
+    - img "Logo Running Land"
+  - navigation "Menu principal":
+    - list:
+      - link "Loja Online":
+        - /url: https://loja.runningland.com.br/?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_1&utm_content=loja_online
+      - link "Eventos":
+        - /url: /eventos
+      - link "O2 Prime":
+        - /url: /clube-prime
+      - link "Espaço Running Land":
+        - /url: /#espaco-running-land
+  - navigation "Categorias da loja online":
+    - list:
+      - link "Novidades":
+        - /url: https://loja.runningland.com.br/novidades.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=novidades
+      - link "Tênis de Corrida":
+        - /url: https://loja.runningland.com.br/tenis-de-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=tenis_corrida
+      - link "Vestuário":
+        - /url: https://loja.runningland.com.br/roupas-para-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=vestuario
+      - link "Acessórios":
+        - /url: https://loja.runningland.com.br/acessorios-para-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=acessorios
+      - link "Suplementos":
+        - /url: https://loja.runningland.com.br/suplementos-para-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=suplementos
+      - link "Marcas":
+        - /url: https://loja.runningland.com.br/marcas-de-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=marcas
+      - link "Sale":
+        - /url: https://loja.runningland.com.br/sale.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=sale
+    - button "Abrir / Fechar Menu Minha Conta":
+    - button "Abrir / fechar mini-carrinho. Você tem 0 itens no seu carrinho.":
+  - img "Santander Night Run - Etapa 1 - Curitiba 2026"
+  - strong: "31"
+  - generic: Out
+  - heading "Santander Night Run - Etapa 1 - Curitiba 2026" [level=1]
+  - list:
+    - strong: Curitiba, PR
+    - strong: 5K, 10K
+  - button "Regulamento" [active]:
+    - text: Regulamento
+  - button "Percurso":
+    - text: Percurso
+  - button "Compartilhar":
+    - text: Compartilhar
+  - button "Informações do evento":
+    - generic: Informações do evento
+  - heading "Local" [level=5]
+  - paragraph: "Parque das Águas - Pinhais - PR / Largadas: 5k ( Pelotões Quenia/Azul/Verde às 19h00 - Pelotão Branco às 19h25 ) Largada única10k - 20h00"
+  - figure:
+    - img "Kit Night Run"
+  - heading "Kit Night Run" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 169,99
+  - button:
+  - paragraph: O kit contém camiseta manga longa, garrafa, sacola e medalha (pós-prova).
+  - generic: 5Km
+  - generic: R$ 152,99
+  - generic: "De:"
+  - generic: R$
+  - generic: "209"
+  - generic: ","
+  - generic: "99"
+  - generic: "por:"
+  - text: R$ 169,99
+  - button:
+  - textbox: "0"
+  - button:
+  - generic: 10Km
+  - generic: R$ 152,99
+  - generic: "De:"
+  - generic: R$
+  - generic: "209"
+  - generic: ","
+  - generic: "99"
+  - generic: "por:"
+  - text: R$ 169,99
+  - button:
+  - textbox: "0"
+  - button:
+  - figure:
+  - button "Zoom image"
+  - button:
+  - figure:
+  - figure:
+  - figure:
+  - figure:
+  - figure:
+  - button:
+  - figure:
+    - img "Bota Pra Correr"
+  - heading "Bota Pra Correr" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 339,98
+  - button:
+  - figure:
+    - img "Kit Capitão"
+  - heading "Kit Capitão" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 679,95
+  - button:
+  - figure:
+    - img "Meia Inscrição"
+  - heading "Meia Inscrição" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 79,99
+  - button:
+  - figure:
+    - img "Kit Patrocinador"
+  - heading "Kit Patrocinador" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 169,99
+  - button:
+  - heading "Descrição" [level=3]
+  - paragraph: Mais do que uma corrida, a Santander Night Run é uma experiência. Quando a noite cai, a cidade se ilumina e vira palco para quem acredita que movimento também é celebração. Música, luz, suor, flow e liberdade — tudo se encontra na pista. Coloque seu tênis, vista sua melhor energia e venha correr com brilho nos olhos. A pista é sua.
+  - paragraph
+  - paragraph: "Percursos:"
+  - paragraph
+  - paragraph:
+    - text: 5km -
+    - link "https://www.google.com/maps/d/u/0/embed?mid=1v0ZEBvcokdbeFQdJD7Z0NayM4UNHLqI&ehbc=2E312F":
+      - /url: https://www.google.com/maps/d/u/0/embed?mid=1v0ZEBvcokdbeFQdJD7Z0NayM4UNHLqI&ehbc=2E312F
+  - paragraph
+  - paragraph:
+    - text: 10km -
+    - link "https://www.google.com/maps/d/u/0/embed?mid=16zU2Uz2lvFD3WVjyK0A2ydAaXxJ6bTM&ehbc=2E312F":
+      - /url: https://www.google.com/maps/d/u/0/embed?mid=16zU2Uz2lvFD3WVjyK0A2ydAaXxJ6bTM&ehbc=2E312F
+  - button "Continuar lendo"
+  - figure:
+    - link:
+      - /url: https://loja.runningland.com.br/tenis-de-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape_banner&utm_content=banner_rodape
+  - generic: Fique por
+  - generic: Dentro
+  - generic: Receba novidades da loja, calendário de corridas e benefícios Prime.
+  - textbox "Digite seu e-mail"
+  - button "Assinar":
+    - generic: Assinar
+  - img "Running Land"
+  - paragraph: "Mais do que loja: um ecossistema para quem vive corrida."
+  - heading "Loja Online" [level=5]
+  - list:
+    - link "Tênis":
+      - /url: https://loja.runningland.com.br/tenis-de-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape&utm_content=link_rodape
+    - link "Roupas":
+      - /url: https://loja.runningland.com.br/roupas-para-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape&utm_content=link_rodape
+    - link "Acessórios":
+      - /url: https://loja.runningland.com.br/acessorios-para-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape&utm_content=link_rodape
+    - link "Tecnologia":
+      - /url: https://loja.runningland.com.br/acessorios-para-corrida/categorias/relogio-inteligente.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape&utm_content=link_rodape
+  - heading "Corridas" [level=5]
+  - list:
+    - link "Calendário":
+      - /url: /eventos
+    - link "Retirada de Kits":
+      - /url: /faq/search?query=Retirada%20de%20Kit
+  - heading "Institucional" [level=5]
+  - list:
+    - link "Seja Sócio Prime":
+      - /url: /clube-prime
+    - link "Espaço Running Land":
+      - /url: /#espaco-running-land
+    - link "Atendimento":
+      - /url: /fale-conosco
+  - paragraph: "CNPJ: 03.787.821/0001-08 - VILLA OLÍMPICA SERVIÇO LTDA. Todos os direitos reservados."
+  - button "Whatsapp icon":
+    - img "Whatsapp icon"
+  - img "Whatsapp icon"
+  - generic: "Quero falar sobre:"
+  - link "File done icon illustration Inscrições, Pedidos e Assinaturas":
+    - /url: /chat
+    - img "File done icon illustration"
+    - generic: Inscrições, Pedidos e Assinaturas
+  - link "Store icon illustration Minhas Fotos":
+    - /url: https://www.fotto.com.br/contato
+    - img "Store icon illustration"
+    - generic: Minhas Fotos
+  - link "Store icon illustration Loja São Paulo":
+    - /url: https://wa.me/5511976513903
+    - img "Store icon illustration"
+    - generic: Loja São Paulo
+  - link "Store icon illustration Loja Rio de Janeiro":
+    - /url: https://wa.me/5511976513903
+    - img "Store icon illustration"
+    - generic: Loja Rio de Janeiro
+  - link "Whatsapp icon illustration Compre pelo WhatsApp":
+    - /url: https://wa.me/5511976513903
+    - img "Whatsapp icon illustration"
+    - generic: Compre pelo WhatsApp
+- navigation:
+  - list:
+    - link "Loja Online":
+      - /url: https://loja.runningland.com.br/?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_1&utm_content=loja_online
+    - link "Eventos":
+      - /url: /eventos
+    - link "O2 Prime":
+      - /url: /clube-prime
+    - link "Espaço Running Land":
+      - /url: /#espaco-running-land
+  - button:
+- complementary:
+  - button
+  - generic: Regulamento
+  - button:
+  - paragraph: REGULAMENTO GERAL
+  - paragraph
+  - paragraph: CAPÍTULO I. DAS INFORMAÇÕES GERAIS
+  - paragraph
+  - paragraph: O evento esportivo, aqui denominado “Evento”, será realizado em data, horário e local divulgado no próprio site oficial e/ou na tiqueteria oficial do evento.
+  - paragraph
+  - paragraph: As informações gerais poderão ser consultadas no próprio site oficial e/ou na tiqueteria oficial do evento. Caso haja atualizações, as mesmas se encontrarão no site oficial e/ou na tiqueteria oficial.
+  - paragraph
+  - paragraph: CAPÍTULO II. DA ORGANIZAÇÃO E REGRAS
+  - paragraph
+  - paragraph: Este Evento é realizado pela Organizadora, conforme site oficial e/ou informações constantes na tiqueteria do Evento.
+  - paragraph
+  - paragraph: Será constituída uma “Comissão Organizadora”, formada pelo Diretor de Prova e colaboradores designados para tal atribuição, que terá competência para resolver qualquer problema ou responder dúvidas durante o Evento.
+  - paragraph
+  - paragraph: O Evento é regido por uma série de normas técnicas, e regulações técnico-desportivos que são divulgados através de regulamento técnico-esportivo próprio, que estará disponível no site do Evento. Tal regulamento dá orientações em relação a classificação, premiação, conduta, normas técnicas, motivos de desclassificação, entre outros.
+  - paragraph
+  - paragraph: O regulamento técnico-esportivo complementa este regulamento, denominado “regulamento geral”, e trata somente das questões esportivas, devendo sempre ser lido em conjunto com este.
+  - paragraph
+  - paragraph: CAPÍTULO III. INSCRIÇÃO PARTICIPAÇÃO, KIT E VALORES
+  - paragraph
+  - paragraph: O participante poderá realizar a inscrição no Evento, a qual, contempla o número de peito e o direito à medalha pós prova, garantindo a sua participação, vulgo, “inscrição participação”.
+  - paragraph
+  - paragraph: O participante poderá adquirir kits que contemplam a inscrição, bem como, itens adicionais e opcionais, conforme descrito no momento de aquisição.
+  - paragraph
+  - paragraph: As aquisições do Evento poderão ser realizadas pela Internet na página da tiqueteria ou pelo hotsite do Evento.
+  - paragraph
+  - paragraph: O preço da aquisição será aquele descrito em tempo real no site oficial do Evento ou na página da tiqueteria, sendo este definido segundo critério de disponibilidade por lote, combinando com eventual concessão de desconto em razão de promoção vigente na data de inscrição.
+  - paragraph
+  - paragraph: Após a solicitação de aquisição e inscrição no Evento, o participante receberá um e-mail com a confirmação desta solicitação, sendo que a aquisição e inscrição só será efetivada após o devido pagamento.
+  - paragraph
+  - paragraph: Na hipótese de não efetivação, seja pela falta de pagamento do boleto bancário, pela não efetivação de pagamento via Pix, seja pela não autorização da compra pela operadora do cartão de cartão ou débito, o participante deverá realizar novo procedimento, ocasião em que poderá ocorrer variação de preço.
+  - paragraph
+  - paragraph: A Organizadora disponibilizará inscrição de participação para qualquer participante que tiver a inscrição efetivada no Evento.
+  - paragraph
+  - paragraph: A inscrição de participação e o kit são formados por itens que integram o serviço de organização do Evento, sendo composto por insumos diversos e devidamente descritos na tela de escolha da modalidade no momento da aquisição. A retirada destes itens é definida neste Regulamento.
+  - paragraph
+  - paragraph: "Pela inscrição ou aquisição online, será cobrado um valor (denominado “taxa de serviço”) que garante a segurança e conveniência da transação realizada pelo usuário e também remunera os serviços das empresas responsáveis pelo: (i) controle de confirmação e autenticação de pagamento online junto a instituições financeiras; (ii) sistema de segurança da informação, que armazena informações pessoais e utilizadas informações criptografadas de cartão de crédito dos clientes; (iii) disparos de e-mail de confirmação do pedido realizado (antes da confirmação do pagamento); (iv), disparo de e-mail de efetivação de pedido (ou reprovação); (v) custo de hospedagem para acesso online (iv) custo de manutenção de estrutura antifraude."
+  - paragraph
+  - paragraph: Caso o(a) participante não queira arcar com o custo do serviço on-line, ele poderá realizar a inscrição física, devendo esta ser realizada pessoalmente, pois não serão aceitas inscrições por procuração, na Avenida Santa Marina, nº 2148, Vila Albertina, São Paulo/SP, de segunda a sexta-feira das 9h00 às 17h00 até 10 dias anteriores ao evento, enquanto as inscrições permanecerem abertas.
+  - paragraph
+  - paragraph: No ato da aquisição, ao concordar com o Regulamento assinalando a opção apresentada no sistema on-line, o(a) participante aceitará todos os termos do Regulamento e assumirá total responsabilidade por sua participação no Evento de acordo com o TERMO DE RESPONSABILIDADE, anexo a este Regulamento.
+  - paragraph
+  - paragraph: As inscrições e vendas de kit poderão encerrar-se a qualquer tempo, caso seja atingido o limite técnico definido para o Evento.
+  - paragraph
+  - paragraph: A inscrição no Evento é pessoal e intransferível, responsabilizando-se o Participante pela veracidade das informações inseridas, sob as penalidades da Lei.
+  - paragraph
+  - paragraph: O participante que ceder seu número de peito ou qualquer outro item de identificação do evento para outra pessoa será responsável por qualquer acidente ou dano que aquela venha a sofrer.
+  - paragraph
+  - paragraph: Caso haja fraude comprovada na inscrição, os(as) participantes envolvidos serão desclassificados do Evento, podendo, a critério da Organizadora, ficar impedidos de participar de outras edições de Eventos realizadas pela Organizadora, ainda, sendo passível de incorrer nas sanções previstas neste Regulamento e responderão por crime de falsidade ideológica e/ou documental perante as autoridades competentes.
+  - paragraph
+  - paragraph: Não haverá inscrições gratuitas ou cortesias, ressalvadas as hipóteses excepcionais e temporárias de inscrições de grandes grupos.
+  - paragraph
+  - paragraph: Para todos os efeitos não serão reconhecidas as inscrições comercializadas nas redes sociais ou por outros revendedores e cambistas além do site ou tiqueteria oficial do evento.
+  - paragraph
+  - paragraph: CAPÍTULO IV. MEIA ENTRADA E BENEFICIÁRIOS
+  - paragraph
+  - paragraph: Aos beneficiários, por lei, será concedido o desconto de 50% (cinquenta por cento) no valor da INSCRIÇÃO PARTICIPAÇÃO, garantindo o seu acesso ao evento via Inscrição Participação - Meia Entrada. Esta inscrição participação contemplará o número de peito e medalha após a prova.
+  - paragraph
+  - paragraph: Este benefício se restringe ao direito de participação, não se estendendo a aquisição de produtos complementares ou serviços diversos adicionais.
+  - paragraph
+  - paragraph: Caso o beneficiário deseje adquirir outros produtos ou serviços complementares, deverá realizar o pagamento pelos mesmos.
+  - paragraph
+  - paragraph: Os Estudantes, Idosos, Portadores de Deficiência (PCD) e outros beneficiários, para fazer jus ao benefício de 50% (cinquenta por cento) de desconto, deverão adquirir o plano de “Meia Entrada” no momento da aquisição.
+  - paragraph
+  - paragraph: No momento da retirada de número de peito e eventual kit, os beneficiários deverão apresentar o documento comprobatório de seu direito junto com a sua identificação. Mediante comprovação, os descontos serão concedidos de forma pessoal e intransferível.
+  - paragraph
+  - paragraph: A retirada não poderá ser realizada por terceiro.
+  - paragraph
+  - paragraph: O(a) Participante portador de deficiência (PCD) poderá concorrer em categoria específica, conforme evento, sendo premiado conforme Regulamento esportivo. O Participante portador de deficiência (PCD), caso necessário, possui o direito de ter um acompanhante, o qual, por sua vez, também faz jus ao desconto de 50% (cinquenta por cento).
+  - paragraph
+  - paragraph: O benefício previsto neste Capítulo não será cumulativo com quaisquer outras promoções, convênios, produtos e, também, não se aplicará ao valor dos serviços ou produtos adicionais eventualmente oferecidos pela Organizadora ou patrocinadores em conformidade com o art.1, § 1º, Lei nº 12.933, de 26 de dezembro de 2013.
+  - paragraph
+  - paragraph: Ressaltamos novamente que caso os Participantes beneficiários de algum desconto definidos por lei queiram adquirir kit especiais ou produtos deverão pagar pelo(s) produto(s) selecionado(s), de maneira que o desconto incidirá apenas sobre o valor correspondente à inscrição no Evento, constante na categoria “Inscrição Participação - Meia Entrada”.
+  - paragraph
+  - paragraph: Caso opte pela aquisição de um kit, não há desconto sobre o mesmo. O usuário está renunciando ao direito de participação e optando pela aquisição do kit e produtos adicionais. O desconto se aplica única e exclusivamente para a “Inscrição Participação - Meia Entrada”.
+  - paragraph
+  - paragraph: No caso de ser identificada inscrição fraudulenta, com a finalidade de uso por terceiros dos benefícios descritos neste Capítulo, o(a) Participante ficará impossibilitado de participar em futuras edições de eventos esportivos realizados pela Organizadora, autorizando, desde já, que seja emitido um boleto bancário referente à diferença dos valores devidos pela inscrição e sujeitar-se-á às responsabilidades penais cabíveis.
+  - paragraph
+  - paragraph: CAPÍTULO V. POLÍTICA DE REEMBOLSO
+  - paragraph
+  - paragraph: Caso o(a) participantes(a) comunique a desistência da inscrição e solicite reembolso DENTRO DO PRAZO DE 07 (sete) dias da efetivação do pagamento, será devida a devolução integral do valor da inscrição, após será descontada a taxa de serviço descrita neste regulamento.
+  - paragraph
+  - paragraph: Independentemente da observância do prazo previsto neste artigo, fica ressalvado que o valor da inscrição não será devolvido caso o Evento já tenha ocorrido ou mesmo o Participantes já tenha retirado kit.
+  - paragraph
+  - paragraph: "Caso o(a) participantes(a) comunique a desistência da inscrição e solicite reembolso APÓS O PRAZO DE 07 (sete) dias da efetivação do pagamento, será devida a devolução proporcional do valor da inscrição, após ser descontada a taxa de serviço descrita neste Regulamento, observando-se as condições e os prazos descritos a seguir:"
+  - paragraph
+  - paragraph: "Data do pedido de desistência - Percentual de reembolso da inscrição:"
+  - paragraph: ● Até 30 dias antes do Evento - 50% (cinquenta por cento) de reembolso
+  - paragraph: ● De 29-10 dias antes do Evento - 30% (trinta por cento) de reembolso
+  - paragraph: ● De 09-04 dias antes do Evento - 10% (dez por cento) de reembolso
+  - paragraph
+  - paragraph: Os Participantes que realizarem o pagamento via cartão de crédito e débito receberão os valores pagos pela inscrição via estorno (cancelamento da venda e estorno do valor ao titular do cartão do crédito).
+  - paragraph
+  - paragraph: Os Participantes que realizaram o pagamento via boleto bancário ou pix deverão entrar em contato com Organizadora para indicar os dados bancários e serem reembolsados dos valores pagos pela inscrição.
+  - paragraph
+  - paragraph: Não haverá devolução proporcional do valor da inscrição caso o Participantes tenha retirado o kit ou após a data do Evento.
+  - paragraph
+  - paragraph: Será considerado para efeito de prazo do pedido de desistência, e consequente reembolso, o primeiro dia útil seguinte à data da comunicação da desistência.
+  - paragraph
+  - paragraph: Será descontado do valor de R$9,90 (nove reais e noventa centavos) a título de despesas bancárias para qualquer operação de reembolso (via cartão de crédito ou depósito em conta corrente) motivada pela desistência de inscrição. Caso o valor de reembolso devido seja menor que R$9,90, o valor não será devolvido e será disponibilizado um cupom de desconto no valor para uso posterior.
+  - paragraph
+  - paragraph: Em caso de aquisição realizada dentro de um “Combo” ou “Pacote”, o valor considerado será o rateio do valor total do pedido dividido pelo número de aquisições no pacote.
+  - paragraph
+  - paragraph: CAPÍTULO VI. ENTREGA DE INSCRIÇÕES PARTICIPAÇÃO E KITS
+  - paragraph
+  - paragraph: As inscrições participações devem ser retiradas presencialmente, esta prática se dá devido a segurança aplicada no número de peito fornecido, não sendo possível, por parte do participante, realizar a impressão por conta própria ou à distância
+  - paragraph
+  - paragraph: A entrega das inscrições e/ou dos kit pela Organizadora acontecerão no(s) dia(s) que antecedem ao Evento, em local, data e horário a ser informado, exclusivamente, no site oficial do Evento ou tiqueteria.
+  - paragraph
+  - paragraph: As obrigações esportivas específicas, referente à entrega de inscrições participação ou kit, estão contempladas no regulamento esportivo anexo ao regulamento geral
+  - paragraph
+  - paragraph: Para retirar a inscrições participação e/ou kit o Participantes deverá apresentar documento de identificação e a respectiva confirmação de inscrição. A retirada de inscrições participação e/ou kit por terceiros poderá ser feita mediante apresentação de autorização específica para este fim e cópia de documento de identificação do inscrito.
+  - paragraph
+  - paragraph: O(a) Participantes não poderá alegar impossibilidade de participar do Evento pela não retirada tempestiva do inscrições participação e/ou kit.
+  - paragraph
+  - paragraph: CAPÍTULO VII. ENTREGAS POSTERIORES DE KIT
+  - paragraph
+  - paragraph: "Caso haja kit pós-evento na prova em que o(a) Participante estiver inscrito(a), essa informação poderá ser confirmada por meio do canal de atendimento: https://www.runningland.com.br/fale-conosco."
+  - paragraph
+  - paragraph: O(a) Participante que não retirar o kit na data e horário estipulados pela organização e divulgados no site oficial não poderá participar do evento e, se aplicável, poderá solicitar informações sobre a possibilidade de envio posterior do kit pelo canal de atendimento mencionado.
+  - paragraph: O kit só será encaminhado pela Organizadora após a comprovação de pagamento dos custos de remessa (envio, embalagem, seguro e outros) pelo(a) Participantes.
+  - paragraph
+  - paragraph: Este kit não se confunde com a inscrição participação, ou seja, se refere única e exclusivamente aos produtos adicionais adquiridos “kit”. O número de peito e medalhas não serão entregues posteriormente.
+  - paragraph
+  - paragraph: CAPÍTULO VIII. INSTRUÇÕES E REGRAS GENÉRICAS DO EVENTO
+  - paragraph
+  - paragraph: O Evento será realizado de acordo com as regras estabelecidas neste Regulamento, no Regulamento Técnico, nas normas técnicas da Confederação Brasileira de Atletismo (CBAt) e demais regulamentações aplicáveis, observando integralmente as disposições previstas na Norma N.º 07 da CBAt e demais diretrizes técnicas vigentes aplicáveis à modalidade e à organização do evento.
+  - paragraph
+  - paragraph: Os Participantes deverão tomar cuidado com eventuais desníveis, obstáculos, fios elétricos, protetores de cabos, aclives ou declives que possam existir no percurso. A Organizadora não se responsabiliza por possíveis defeitos na pista. Por conta disso, os Participantes deverão consultar, no site oficial do Evento ou na página da tiqueteria, as ruas ou eventuais trechos de areia, declives e aclives que integram o percurso do Evento.
+  - paragraph
+  - paragraph: As ruas usadas para a competição estarão fechadas para tráfego motorizado, sendo providenciadas sinalizações e cavaletes para a orientação dos Participantes.
+  - paragraph
+  - paragraph: O(a) Participante desclassificado(a) não terá o seu tempo divulgado no site.
+  - paragraph
+  - paragraph: CAPÍTULO IX. CONDIÇÕES FÍSICAS E MÉDICAS DOS PARTICIPANTES
+  - paragraph
+  - paragraph: Todos(as) os(as) Participantes deverão estar em dia com rigorosa avaliação médica para realização do Evento, sendo conhecedores de seu estado de saúde e de sua aptidão física para participar do Evento. A Organizadora não se responsabilizará pela saúde física dos Participantes.
+  - paragraph
+  - paragraph: O(a) Participante é responsável pela decisão de participar do Evento, avaliando sua condição física, desempenho e julgando por si só se deve ou não permanecer na competição.
+  - paragraph
+  - paragraph: A Organizadora também não tem responsabilidade sobre o atendimento médico dos Participantes, despesas médicas em casos de internação ou lesões geradas pela participação no Evento. Porém, será disponibilizado um serviço de ambulância UTI para atendimento emergencial dos Participantes e para a remoção destes aos hospitais da rede pública de saúde
+  - paragraph
+  - paragraph: CAPÍTULO X. SERVIÇOS DE APOIO
+  - paragraph
+  - paragraph: Ao longo do percurso haverá postos de hidratação.
+  - paragraph
+  - paragraph: Serão colocados à disposição dos Participantes, banheiros químicos femininos, masculinos.
+  - paragraph
+  - paragraph: Serão disponibilizados, dentro da área de dispersão, o espaço para a guarda dos equipamentos necessários a atividade esportiva, sendo vedados a guarda de bens infungíveis ou de alto valor, tais como relógios, joias, equipamentos eletrônicos, celulares, cheques, cartão de crédito. O guarda volume será desativado em até uma hora após o término do Evento.
+  - paragraph
+  - paragraph: CAPÍTULO XI. DIREITOS DE IMAGEM E DIREITOS AUTORAIS
+  - paragraph
+  - paragraph: O(a) Participantes ao participar do Evento estará incondicionalmente aceitando e concordando em ceder os direitos de utilização de sua imagem e voz para a Organizadora, Patrocinadores e os parceiros comerciais, autorizado que sua imagem e voz sejam divulgadas através de fotos, clips, filmes ou vídeos em rádio, jornais, revistas, sites e televisão, ou qualquer outro meio de comunicação, para uso informativo, promocional ou publicitário, sem que tais ações acarretem ônus à Organizadora e aos patrocinadores, renunciando o recebimento de qualquer renda que vier a ser auferida com tais direitos em qualquer tempo.
+  - paragraph
+  - paragraph: CAPÍTULO XII. ALTERAÇÃO NA DATA, HORÁRIO E LOCAL DO EVENTO
+  - paragraph
+  - paragraph: A Organizadora poderá alterar a data e o horário do Evento, seja para antecipar ou postergar data e horário inicialmente informado. Igualmente, a Organizadora poderá alterar o local do Evento previamente autorizado.
+  - paragraph
+  - paragraph: Não se enquadram nesse capítulo alteração decorrentes de determinação exclusiva do poder público e/ou motivos de força maior inclusive por questões de segurança pública.
+  - paragraph
+  - paragraph: A informação de alteração na data, horário e local do Evento será divulgada no site oficial e via e-mail enviado aos Participantes.
+  - paragraph
+  - paragraph: Na hipótese de alteração na data e/ou no local do Evento, os Participantes terão o prazo de 07 (sete) dias corridos para solicitarem a devolução do valor pago pela inscrição, contados da data do e-mail de divulgação de nova data. A ausência de manifestação do Participantes dentro deste prazo importará em concordância com a nova data e/ou local.
+  - paragraph
+  - paragraph: Na hipótese de alteração somente no horário do Evento não haverá devolução do valor pago pela inscrição aos Participantes.
+  - paragraph
+  - paragraph: CAPÍTULO XIII. ALTERAÇÃO DE DATA, HORÁRIO E LOCAL DO EVENTO POR DETERMINAÇÃO EXCLUSIVA DO PODER PUBLICO
+  - paragraph
+  - paragraph: A Organizadora poderá ser obrigada a alterar a data, local e o horário do Evento, seja para antecipar ou postergar, as datas e horários que foram inicialmente informados, por determinação do poder público.
+  - paragraph
+  - paragraph: A informação de alteração na data, horário e local do Evento será divulgada no site oficial e via e-mail enviado aos Participantes.
+  - paragraph
+  - paragraph: Os participantes inscritos terão, nessa hipótese, suas inscrições automaticamente transferidas para nova data, horário e local. os Participantes terão o prazo de 07 (sete) dias corridos para solicitarem a devolução do valor pago pela inscrição, contados da data do e-mail
+  - paragraph
+  - paragraph: CAPÍTULO XIV. INTERRUPÇÃO DO EVENTO
+  - paragraph
+  - paragraph: A Organizadora, primando pela segurança e incolumidade física dos Participantes, poderá interromper o Evento, iniciado ou em vias de iniciar, por questões de segurança pública, determinação do Poder Público e/ou motivos de força maior.
+  - paragraph
+  - paragraph: Para fins de aplicação das regras previstas nesta seção, considera-se “Interrupção do Evento” aquele em que foi realizada a entrega da inscrição participação e/ou dos kits, a organização disponibilizou a estrutura para execução do Evento, mas que não foi finalizado, ou ainda, nos casos em que a estrutura não tenha sido disponibilizada por determinação do poder público, em especial por questões de segurança pública.
+  - paragraph
+  - paragraph: Na hipótese de “Interrupção do Evento” não haverá devolução do valor da inscrição aos Participantes e o Evento será, para todos os efeitos, considerado realizado.
+  - paragraph
+  - paragraph: Os(as) Participantes ficam cientes que deverão assumir, no ato da inscrição, todos os riscos e danos da eventual “Interrupção do Evento” (iniciado ou em vias de iniciar) por questões de segurança pública, determinação do Poder Público e/ou motivos de força maior, não gerando qualquer responsabilidade para a Organizadora.
+  - paragraph
+  - paragraph: CAPÍTULO XV. CANCELAMENTO DO EVENTO
+  - paragraph
+  - paragraph: A Organizadora poderá cancelar a realização do Evento por seu exclusivo critério ou por determinação do Poder Público. O Evento declarado cancelado não será realizado em outra data.
+  - paragraph
+  - paragraph: Para fins de aplicação das regras previstas nesta seção, considera-se “Cancelamento do Evento” aquele em que os participantes não receberam a inscrição participação e os kits e/ou a Organizadora não disponibilizou a estrutura para execução da Evento.
+  - paragraph
+  - paragraph: A informação de “Cancelamento do Evento” será divulgada no site oficial e comunicada aos inscritos por e-mail.
+  - paragraph
+  - paragraph: Na hipótese de “Cancelamento do Evento” a Organizadora devolverá aos Participantes os valores pagos pela inscrição, exceto o valor eventualmente pago pela taxa de serviço.
+  - paragraph
+  - paragraph
+  - paragraph
+  - paragraph: CAPÍTULO XVI. LEI GERAL DE PROTEÇÃO DE DADOS
+  - paragraph
+  - paragraph: "Nós podemos compartilhar os Dados Pessoais com terceiros, preservando ao máximo a sua privacidade e, sempre que possível, de forma anonimizada. Abaixo, descrevemos situações em que podemos compartilhar Dados Pessoais:"
+  - paragraph
+  - paragraph: a. Internamente, com nossas áreas de negócio, enviar publicidade, promover e desenvolver nossos serviços;
+  - paragraph: b. Com nossos fornecedores e parceiros comerciais, com quem firmamos obrigações contratuais de segurança e proteção de dados pessoais. Os fornecedores incluem, mas não se limitam, a empresas de hospedagem de dados e servidores; ferramentas de publicidade, marketing, mídia digital e social; fornecedores dos serviços de credenciamento/bilheteria/entrega de kits; empresas de cronometragem; patrocinadores dos eventos;
+  - paragraph: c. Com Autoridades Públicas, sempre que houver determinação legal, requerimento, requisição ou ordem judicial nesse sentido;
+  - paragraph: d. De forma automática, em caso de movimentações societárias, como fusão, aquisição e incorporação de empresas.
+  - paragraph
+  - paragraph: CAPÍTULO XVII. DISPOSIÇÕES GERAIS
+  - paragraph
+  - paragraph: Os protestos e reclamações relativos aos resultados finais do Evento deverão ser feitos por escrito e no prazo máximo de 10 (dez) após a divulgação oficial para o Serviço de Atendimento ao Cliente (SAC).
+  - paragraph
+  - paragraph: Não haverá reembolso, por parte da Organizadora, patrocinadores e parceiros, de nenhum valor correspondente a danos aos equipamentos e/ou acessórios utilizados pelos Participantes no Evento, independentemente do motivo, tampouco, por qualquer extravio de materiais ou prejuízo que porventura os Participantes ou terceiros venham a sofrer durante a participação no Evento.
+  - paragraph
+  - paragraph: Os custos de transporte, hospedagem, alimentação, treinamentos, seguros ou quaisquer outras despesas necessárias para a participação do(a) Participantes, antes, durante e depois do Evento serão de responsabilidade exclusiva do(a) Participantes.
+  - paragraph
+  - paragraph: A Organizadora poderá, a qualquer momento, prorrogar ou antecipar a data para inscrição ou, ainda, elevar ou limitar o número de inscrições, em função de disponibilidade técnica e/ou questões estruturais, sem aviso prévio.
+  - paragraph
+  - paragraph: As dúvidas ou solicitações de informações técnicas deverão ser encaminhadas para o Serviço de Atendimento ao Cliente (SAC) para que sejam registradas e respondidas à contento.
+  - paragraph
+  - paragraph: Os Participantes são responsáveis pela veracidade das informações fornecidas no sistema on-line ou na ficha de inscrição. Os Participantes concordam que o site do Evento, a tiqueteria e o e-mail serão os meios de comunicação utilizados pela Organizadora para repassar informações e atualizações referentes ao Evento.
+  - paragraph
+  - paragraph: A Organizadora poderá, a seu critério ou conforme as necessidades do Evento, alterar ou revogar este Regulamento, total ou parcialmente, informando as mudanças no site oficial do Evento.
+  - paragraph
+  - paragraph: As dúvidas ou omissões acerca dos Regulamentos serão dirimidas pela Organizadora e/ou Comissão Organizadora do Evento de forma soberana.
+  - paragraph
+  - paragraph: ANEXO I
+  - paragraph: REGULAMENTO ESPORTIVO
+  - paragraph
+  - paragraph: CAPÍTULO I. O EVENTO ESPORTIVO
+  - paragraph
+  - paragraph: O evento de Corrida de Rua, aqui denominado “Evento”, será realizado em data, horário e local divulgados no próprio site oficial do Evento ou na página oficial do evento.
+  - paragraph
+  - paragraph: Este Evento é organizado pela empresa aqui denominada “Organizadora”. Será constituída uma “Comissão Organizadora”, formada pelo Diretor de Prova e colaboradores designados para tal atribuição, que terá competência para resolver qualquer problema ou responder dúvidas durante o Evento.
+  - paragraph
+  - paragraph: Este Regulamento Esportivo é um anexo do Regulamento Geral do evento, que trata das normas técnico-esportivas, dá orientações em relação às regras e proibições, classificações, premiação, categorias, entre outros. O Regulamento Geral trata de todas as questões legais a respeito da relação com o consumidor, assim como as obrigações e direitos dos (as) Participantes ao se inscrever no evento. O Regulamento Esportivo deve sempre ser lido em conjunto com o Regulamento Geral, que se encontra no site oficial do evento.
+  - paragraph
+  - paragraph: CAPÍTULO II - COMPETIDORES
+  - paragraph
+  - paragraph: De acordo com a determinação da Confederação Brasileira de Atletismo a idade mínima para o(a) Participantes se inscrever e participar de corridas de rua é a seguinte
+  - paragraph
+  - paragraph: "(i) Corridas com percurso até 5km: 14 (catorze) anos;"
+  - paragraph: "(ii) Corridas com percurso menor que 10km: 16 (dezesseis) anos;"
+  - paragraph: "(iii) Corridas com percurso de 10km até 30km: 18 (dezoito) anos;"
+  - paragraph: "(iv) Maratona e acima: 20 (vinte) anos."
+  - paragraph
+  - paragraph: A idade a ser considerada obrigatoriamente para os efeitos de inscrição e classificação por faixas etárias é a que o Participantes tiver em 31 de dezembro do ano em que for realizado o Evento.
+  - paragraph
+  - paragraph: Os Participantes menores de 18 anos só poderão participar de Eventos com prévia autorização por escrito dos pais ou do responsável legal. A autorização deverá estar acompanhada de cópia de um documento de identidade do menor de 18 anos de idade, autorização que será retida pela Organizadora, no ato de entrega das inscrições participações ou kits.
+  - paragraph
+  - paragraph: A entrega da autorização é requisito para validação da inscrição.
+  - paragraph
+  - paragraph: CAPÍTULO III – CRONOMETRAGEM, CLASSIFICAÇÃO E USO DO CHIP
+  - paragraph
+  - paragraph: Será utilizado sistema de cronometragem eletrônica para apuração dos tempos através de chips individuais.
+  - paragraph
+  - paragraph: Os (as) Participantes serão classificados de acordo com o tempo registrado pelo sistema de cronometragem, não serão considerados os tempos individuais registrados pelos próprios participantes, em nenhuma hipótese.
+  - paragraph
+  - paragraph: Nos eventos onde houver premiação, as três primeiras colocações das categorias individual feminino e masculino serão definidos por ordem de chegada. As demais colocações da categoria individual serão definidas pela apuração do tempo líquido gasto por cada Participantes para completar o percurso, definido e delimitado pelos tapetes de cronometragem
+  - paragraph
+  - paragraph: Poderá haver ponto(s) de controle distintos de medição do tempo dos (as) Participantes, devendo os mesmos ficarem atentos para cruzarem todos os pontos, além da largada e de chegada, devendo ser por cima dos tapetes de cronometragem do percurso.
+  - paragraph
+  - paragraph: O chip deve ser utilizado, de acordo com a orientação técnica, durante todo o percurso do Evento e livre de interferência direta de outros aparelhos eletrônicos.
+  - paragraph
+  - paragraph: A utilização inadequada do chip pelo(a) participantes acarreta a não marcação do tempo, isentando-se, então, a Organizadora e parceiros, da divulgação do tempo e classificação deste Participantes.
+  - paragraph
+  - paragraph: O Participantes que ceder seu número de peito a outro competidor será desclassificado.
+  - paragraph
+  - paragraph: A troca de chips entre Participantes, a qualquer tempo, configura atitude desleal e anticompetitiva, ensejando a automática desclassificação dos envolvidos.
+  - paragraph
+  - paragraph: CAPÍTULO IV - RESULTADOS OFICIAIS, CLASSIFICAÇÃO E PREMIAÇÃO
+  - paragraph
+  - paragraph: Os resultados oficiais dos Participantes serão informados no site do Evento em até 03 (três) dias após a realização do Evento, desde que estes observem as regras definidas neste Regulamento.
+  - paragraph
+  - paragraph: "As categorias serão classificadas, em cada um dos percursos, da seguinte forma:"
+  - paragraph
+  - paragraph:
+    - text: Masculino Geral e Feminino geral
+    - text: "Demais categorias: Masculino e Feminino: 14 a 19 anos, 20 a 24 anos, 25 a 29 anos, 30 a 34 anos, 35 a 39 anos, 40 a 44 anos, 45 a 49 anos, 50 a 54 anos e 55 a 59 anos e 60 anos ou mais."
+  - paragraph: Não haverá premiação em dinheiro, nem premiação para categoria por faixa etária.
+  - paragraph
+  - paragraph: Os(as) Participantes que fizerem jus à premiação deverão comparecer ao podium, assim que a cerimônia de premiação for iniciada e a categoria dele for chamada.
+  - paragraph
+  - paragraph: "O(a) Participantes que não comparecer ao podium, durante a cerimônia de premiação, perderá o direito ao troféu e eventuais prêmios. A premiação deste evento será assim distribuída:"
+  - paragraph
+  - paragraph:
+    - text: Os três primeiros Participantes colocados na categoria masculina de cada um dos percursos, receberão troféu, podendo, eventualmente, receber prêmios.
+    - text: As três primeiras Participantes colocadas na categoria feminina de cada um dos percursos, receberão troféu, podendo, eventualmente, receber prêmios.
+  - paragraph: Na hipótese de desclassificação dos Participantes primeiros colocados, serão chamados os classificados com melhor tempo, sucessivamente.
+  - paragraph
+  - paragraph: As medalhas serão entregues para todos os (as) Participantes que completarem a prova.
+  - paragraph
+  - paragraph: CAPÍTULO V. CONDIÇÕES FÍSICAS DOS PARTICIPANTES E SERVIÇOS DE APOIO
+  - paragraph
+  - paragraph: A Comissão Organizadora poderá, seguindo recomendação do médico responsável pelo Evento, sugerir que o(a) Participantes interrompa ou não participe do Evento.
+  - paragraph
+  - paragraph: A Organizadora não tem responsabilidade sobre o atendimento médico dos Participantes, despesas médicas em casos de internação ou lesões geradas pela participação no Evento. Porém, será disponibilizado um serviço de ambulância UTI para atendimento emergencial dos Participantes e para a remoção destes aos hospitais da rede pública de saúde.
+  - paragraph
+  - paragraph: Ao longo do percurso haverá postos de hidratação obedecendo a distância máxima de 3km entre cada posto.
+  - paragraph
+  - paragraph: INFORMAÇÕES IMPORTANTES
+  - paragraph
+  - paragraph: A participação do(a) Participantes no Evento é estritamente individual sendo proibido o auxílio de terceiros (assessores, personal trainer) ou de ciclista e a utilização de algum recurso tecnológico que importe em vantagem competitiva.
+  - paragraph
+  - paragraph: ANEXO II. TERMO DE RESPONSABILIDADE
+  - paragraph
+  - paragraph: "Eu, “identificado no cadastramento da inscrição”, no perfeito uso de minhas faculdades, DECLARO para os devidos fins de direito que:"
+  - paragraph
+  - paragraph: Estou ciente de que se trata de um evento de Corrida de Rua cujo percurso é de meu conhecimento.
+  - paragraph
+  - paragraph: Estou em plenas condições físicas e psicológicas de participar deste Evento e estou ciente que não existe nenhuma recomendação médica que me impeça de praticar atividades físicas.
+  - paragraph
+  - paragraph: Li, conheço, aceito e submeto-me integralmente a todos os termos dos Regulamentos Geral e Técnico do Evento.
+  - paragraph
+  - paragraph: Declaro que não portarei, nem utilizarei, no percurso e no entorno, bem como no local de entrega de inscrições participação e kits, nenhum material publicitário, promocional ou político, sem a devida autorização por escrito da Organizadora; e, também, de qualquer material ou objeto que ponha em risco a segurança dos participantes.
+  - paragraph
+  - paragraph: Estou ciente das penalidades e possível desclassificação que posso sofrer caso descumpra o Regulamento ou cometa atitude antiesportiva. Excluo meu direito de reclamação sobre tais aspectos do Evento.
+  - paragraph
+  - paragraph: Autorizo o uso de minha imagem, para fins de divulgação do Evento, por fotos, vídeos e entrevistas em qualquer meio de comunicação, sem ônus para a Organizadora e patrocinadores.
+  - paragraph
+  - paragraph: Estou ciente que na hipótese de alteração na data, horário e local do Evento, bem como interrupção e cancelamento do Evento, as eventuais despesas referentes à locomoção, preparação, estadia, viagem, entre outras serão suportados única e exclusivamente por mim, isentando a Organizadora e patrocinadores pelo ressarcimento de quaisquer destas despesas.
+  - paragraph
+  - paragraph: Assumo com todas as despesas de hospedagem, traslados, seguros, assistência médica e quaisquer outras despesas necessárias, ou provenientes da minha participação neste Evento; antes, durante ou depois da mesma.
+  - paragraph
+  - paragraph: Compreendi e estou de acordo com todos os itens deste TERMO DE RESPONSABILIDADE.
+- paragraph

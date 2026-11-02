@@ -1,0 +1,72 @@
+- navigation "Indicadores de localização atual":
+  - link "Core Web Vitals":
+    - /url: ./search-console/core-web-vitals?resource_id=sc-domain%3Aroadrunners.run
+  - generic: 
+  - link "Celular":
+    - /url: ./search-console/core-web-vitals/summary?resource_id=sc-domain%3Aroadrunners.run&device=2
+  - generic: 
+  - 'heading "Problema de LCP: mais de 2,5s (dispositivos móveis)" [level=1]'
+- button "EXPORTAR":
+  - generic: 
+  - generic: EXPORTAR
+- button "Gere um link compartilhável.":
+  - generic: 
+  - generic: COMPARTILHAR
+- text: "Fonte: Relatório de UX do Chrome"
+- button "null":
+  - generic: 
+- generic: "Última atualização: 28/10/2026"
+- main:
+  - generic: warning
+  - generic: "Problema de LCP: mais de 2,5s (dispositivos móveis)"
+  - generic: Os URLs com esse problema precisam melhorar a experiência na página que eles oferecem
+  - link "Link para documentação mais elaborada":
+    - /url: https://web.dev/lcp/
+    - generic: Saiba mais
+  - generic: "Detectada pela primeira vez: 02/01/2025"
+  - generic: Você terminou de corrigir os problemas?
+  - button "validar a correção":
+    - generic: validar a correção
+  - button "null":
+    - generic: 
+  - generic "URLs afetados"
+  - generic "391"
+  - generic: Grupos de URLs
+  - button "null":
+    - generic: 
+  - button "Filtrar linhas da tabela":
+    - generic: 
+  - table:
+    - rowgroup:
+      - row "URL de exemplo null População do grupo null Grupo LCP":
+        - columnheader "URL de exemplo null":
+          - text: URL de exemplo
+          - button "null":
+            - generic: 
+        - columnheader "População do grupo null":
+          - text: População do grupo
+          - button "null":
+            - generic: 
+        - columnheader "Grupo LCP":
+          - generic: Grupo LCP
+    - rowgroup:
+      - row "https://roadrunners.run/ 391 2,5s":
+        - cell "https://roadrunners.run/":
+          - generic "https://roadrunners.run/"
+        - cell "391":
+          - generic: "391"
+        - cell "2,5s":
+          - generic: 2,5s
+  - generic: "Linhas por página:"
+  - listbox "Número de linhas por página":
+    - option "5"
+    - option "10" [selected]
+    - option "25"
+    - option "50"
+    - option "100"
+    - option "250"
+    - option "500"
+  - generic: 1-1 de 1
+  - generic: 
+  - generic: 
+- generic: Core Web Vitals

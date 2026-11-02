@@ -1,0 +1,42 @@
+[
+  {
+    "route": "/evento/2026-maratona-de-aracaju-2026/",
+    "status": 200,
+    "verified": true
+  },
+  {
+    "route": "/en/event/2026-maratona-de-aracaju-2026/",
+    "status": 200,
+    "verified": true
+  },
+  {
+    "route": "/es/evento/2026-maratona-de-aracaju-2026/",
+    "status": 200,
+    "verified": true
+  },
+  {
+    "route": "/evento/2026-maratona-internacional-de-floripa-2026/",
+    "status": 200,
+    "verified": true
+  },
+  {
+    "route": "/evento/2026-live-run-xp-porto-seguro-2026/",
+    "status": 200,
+    "verified": true
+  },
+  {
+    "route": "/embed/percursos/?evento=2026-maratona-de-aracaju-2026&i18n_lang=pt-BR",
+    "status": 200,
+    "verified": true
+  },
+  {
+    "route": "/assets/js/event-maps-lazy.js",
+    "status": 200,
+    "verified": true
+  },
+  {
+    "route": "/assets/js/event-maps-lazy.min.js",
+    "status": 200,
+    "verified": true
+  }
+]

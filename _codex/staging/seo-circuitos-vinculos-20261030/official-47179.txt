@@ -1,0 +1,230 @@
+- main:
+  - link "Logo Running Land":
+    - /url: /
+    - img "Logo Running Land"
+  - navigation "Menu principal":
+    - list:
+      - link "Loja Online":
+        - /url: https://loja.runningland.com.br/?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_1&utm_content=loja_online
+      - link "Eventos":
+        - /url: /eventos
+      - link "O2 Prime":
+        - /url: /clube-prime
+      - link "Espaço Running Land":
+        - /url: /#espaco-running-land
+  - navigation "Categorias da loja online":
+    - list:
+      - link "Novidades":
+        - /url: https://loja.runningland.com.br/novidades.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=novidades
+      - link "Tênis de Corrida":
+        - /url: https://loja.runningland.com.br/tenis-de-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=tenis_corrida
+      - link "Vestuário":
+        - /url: https://loja.runningland.com.br/roupas-para-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=vestuario
+      - link "Acessórios":
+        - /url: https://loja.runningland.com.br/acessorios-para-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=acessorios
+      - link "Suplementos":
+        - /url: https://loja.runningland.com.br/suplementos-para-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=suplementos
+      - link "Marcas":
+        - /url: https://loja.runningland.com.br/marcas-de-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=marcas
+      - link "Sale":
+        - /url: https://loja.runningland.com.br/sale.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_2&utm_content=sale
+    - button "Abrir / Fechar Menu Minha Conta":
+    - button "Abrir / fechar mini-carrinho. Você tem 0 itens no seu carrinho.":
+  - img "Circuito das Estações 2026 - Verão - Porto Alegre"
+  - strong: "6"
+  - generic: Dez
+  - heading "Circuito das Estações 2026 - Verão - Porto Alegre" [level=1]
+  - list:
+    - strong: Porto Alegre, RS
+    - strong: 5K, 10K
+  - button "Regulamento":
+    - text: Regulamento
+  - button "Percurso":
+    - text: Percurso
+  - button "Compartilhar":
+    - text: Compartilhar
+  - button "Informações do evento":
+    - generic: Informações do evento
+  - heading "Local" [level=5]
+  - paragraph: EM BREVE
+  - figure:
+    - img "Promo Relâmpago - R$199,99 por R$99,99"
+  - heading "Promo Relâmpago - R$199,99 por R$99,99" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 99,99
+  - button:
+  - paragraph: "O kit contém: camiseta, garrafa, mochila, número de peito e medalha (pós-prova)."
+  - generic: 5Km
+  - generic: R$ 89,99
+  - generic: "De:"
+  - generic: R$
+  - generic: "199"
+  - generic: ","
+  - generic: "99"
+  - generic: "por:"
+  - text: R$ 99,99
+  - button:
+  - textbox: "0"
+  - button:
+  - generic: 10Km
+  - generic: R$ 89,99
+  - generic: "De:"
+  - generic: R$
+  - generic: "199"
+  - generic: ","
+  - generic: "99"
+  - generic: "por:"
+  - text: R$ 99,99
+  - button:
+  - textbox: "0"
+  - button:
+  - figure:
+  - button "Zoom image"
+  - button:
+  - figure:
+  - figure:
+  - figure:
+  - figure:
+  - figure:
+  - button:
+  - figure:
+    - img "Kit Estações"
+  - heading "Kit Estações" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 199,99
+  - button:
+  - figure:
+    - img "Kit Estações + Porta Mandala"
+  - heading "Kit Estações + Porta Mandala" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 349,98
+  - button:
+  - figure:
+    - img "Kit Plus"
+  - heading "Kit Plus" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 269,98
+  - button:
+  - figure:
+    - img "Kit Super"
+  - heading "Kit Super" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 389,98
+  - button:
+  - figure:
+    - img "Kit Bota pra Correr"
+  - heading "Kit Bota pra Correr" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 199,99
+  - button:
+  - figure:
+    - img "Kit Capitão"
+  - heading "Kit Capitão" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 159,99
+  - button:
+  - figure:
+    - img "Inscrição Participação"
+  - heading "Inscrição Participação" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 189,99
+  - button:
+  - figure:
+    - img "Meia Inscrição"
+  - heading "Meia Inscrição" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 94,99
+  - button:
+  - figure:
+    - img "Kit Patrocinador"
+  - heading "Kit Patrocinador" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 199,99
+  - button:
+  - heading "Descrição" [level=3]
+  - paragraph: Em 2026, o maior circuito de corridas de rua do mundo chega aos 20 anos celebrando histórias como a sua. No Circuito das Estações, cada etapa é um novo capítulo de superação, movimento e conquista. Complete sua mandala, reviva suas jornadas e escreva, passo a passo, a história que só você pode contar.
+  - paragraph
+  - paragraph: "Percursos:"
+  - paragraph
+  - paragraph:
+    - text: 5km -
+    - link "https://www.google.com/maps/d/embed?mid=1EzYun1_hXmnT3D_jAgNdvJGDlV42VkE&ehbc=2E312F":
+      - /url: https://www.google.com/maps/d/embed?mid=1EzYun1_hXmnT3D_jAgNdvJGDlV42VkE&ehbc=2E312F
+  - paragraph
+  - paragraph:
+    - text: 10km -
+    - link "https://www.google.com/maps/d/embed?mid=1Xv9Zj3bicELXffJDxg5zAKaHtc_j76k&ehbc=2E312F":
+      - /url: https://www.google.com/maps/d/embed?mid=1Xv9Zj3bicELXffJDxg5zAKaHtc_j76k&ehbc=2E312F
+  - button "Continuar lendo"
+  - figure:
+    - link:
+      - /url: https://loja.runningland.com.br/tenis-de-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape_banner&utm_content=banner_rodape
+  - generic: Fique por
+  - generic: Dentro
+  - generic: Receba novidades da loja, calendário de corridas e benefícios Prime.
+  - textbox "Digite seu e-mail"
+  - button "Assinar":
+    - generic: Assinar
+  - img "Running Land"
+  - paragraph: "Mais do que loja: um ecossistema para quem vive corrida."
+  - heading "Loja Online" [level=5]
+  - list:
+    - link "Tênis":
+      - /url: https://loja.runningland.com.br/tenis-de-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape&utm_content=link_rodape
+    - link "Roupas":
+      - /url: https://loja.runningland.com.br/roupas-para-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape&utm_content=link_rodape
+    - link "Acessórios":
+      - /url: https://loja.runningland.com.br/acessorios-para-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape&utm_content=link_rodape
+    - link "Tecnologia":
+      - /url: https://loja.runningland.com.br/acessorios-para-corrida/categorias/relogio-inteligente.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape&utm_content=link_rodape
+  - heading "Corridas" [level=5]
+  - list:
+    - link "Calendário":
+      - /url: /eventos
+    - link "Retirada de Kits":
+      - /url: /faq/search?query=Retirada%20de%20Kit
+  - heading "Institucional" [level=5]
+  - list:
+    - link "Seja Sócio Prime":
+      - /url: /clube-prime
+    - link "Espaço Running Land":
+      - /url: /#espaco-running-land
+    - link "Atendimento":
+      - /url: /fale-conosco
+  - paragraph: "CNPJ: 03.787.821/0001-08 - VILLA OLÍMPICA SERVIÇO LTDA. Todos os direitos reservados."
+  - button "Whatsapp icon":
+    - img "Whatsapp icon"
+  - img "Whatsapp icon"
+  - generic: "Quero falar sobre:"
+  - link "File done icon illustration Inscrições, Pedidos e Assinaturas":
+    - /url: /chat
+    - img "File done icon illustration"
+    - generic: Inscrições, Pedidos e Assinaturas
+  - link "Store icon illustration Minhas Fotos":
+    - /url: https://www.fotto.com.br/contato
+    - img "Store icon illustration"
+    - generic: Minhas Fotos
+  - link "Store icon illustration Loja São Paulo":
+    - /url: https://wa.me/5511976513903
+    - img "Store icon illustration"
+    - generic: Loja São Paulo
+  - link "Store icon illustration Loja Rio de Janeiro":
+    - /url: https://wa.me/5511976513903
+    - img "Store icon illustration"
+    - generic: Loja Rio de Janeiro
+  - link "Whatsapp icon illustration Compre pelo WhatsApp":
+    - /url: https://wa.me/5511976513903
+    - img "Whatsapp icon illustration"
+    - generic: Compre pelo WhatsApp
+- navigation:
+  - list:
+    - link "Loja Online":
+      - /url: https://loja.runningland.com.br/?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_1&utm_content=loja_online
+    - link "Eventos":
+      - /url: /eventos
+    - link "O2 Prime":
+      - /url: /clube-prime
+    - link "Espaço Running Land":
+      - /url: /#espaco-running-land
+  - button:
+- paragraph

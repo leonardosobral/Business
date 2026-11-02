@@ -1,0 +1,22 @@
+{
+  "verifiedOn": "2026-10-30",
+  "desktop": {
+    "carouselMoved": true,
+    "images": 12,
+    "highPriority": 1,
+    "lazy": 11
+  },
+  "mobile390": {
+    "carouselLeft": 328.5,
+    "pageWidth": 390,
+    "width": 390,
+    "images": 12,
+    "highPriority": 1,
+    "lazy": 11
+  },
+  "viewportReset": true,
+  "screenshots": [
+    "published-desktop.png",
+    "published-mobile.png"
+  ]
+}

@@ -1,0 +1,238 @@
+- banner:
+  - link "LIVE! RUN XP - Página inicial":
+    - /url: /
+    - text: LIVE! Run xp
+  - navigation:
+    - link:
+      - /url: /calendario
+      - text: Calendário
+    - link:
+      - /url: /resultados
+      - text: Resultados
+    - link:
+      - /url: /atracoes
+      - text: Atrações
+    - link:
+      - /url: /beneficios-xp
+      - text: Benefícios XP
+    - link:
+      - /url: /assessoria
+      - text: Assessoria
+    - link:
+      - /url: /faq
+      - text: FAQ
+    - link:
+      - /url: https://www.instagram.com/liveexperience
+      - text: Siga @liveexperience
+- heading "Rio de Janeiro - RJ" [level=1]
+- paragraph: 02/11
+- generic: Inscrições abertas
+- generic: Últimas vagas
+- link "Inscreva-se":
+  - /url: https://www.appliveexperience.com.br/evento/live21k-rio-de-janeiro-2026
+- text: 
+- generic: Largada
+- list:
+  - listitem: 5 km
+  - listitem: 10 km
+  - listitem: 21 km
+  - listitem: Corrida Kids
+- heading "Aterro do Flamengo" [level=3]
+- paragraph: AXIA Marina da Glória
+- heading "Sobre o evento" [level=3]
+- paragraph: O único circuito de corrida de rua presente em todos os estados do Brasil terá 70 etapas em 53 cidades, de março a dezembro.
+- paragraph: LIVE!21K XP - RIO DE JANEIRO 2026
+- paragraph:
+  - text: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km, 21 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.
+  - text: Venha se desafiar na distância que mais combina com seu ritmo e vibrar ao som do show da Banda Eva para deixar essa experiência ainda mais especial.
+  - strong:
+    - text: ACESSO AO SHOW NO PAVILHÃO
+    - text: "-"
+    - text: O pavilhão coberto da AXIA Marina da Glória possui capacidade máxima de ocupação simultânea. Por isso, o acesso ao show estará sujeito à disponibilidade de espaço no momento da entrada.
+  - strong:
+    - text: "-"
+    - text: "Atletas inscritos nas modalidades 5 km, 10 km e 21 km: deverão apresentar o número de peito para acessar o pavilhão, sem direito a acompanhante."
+    - text: "Atletas inscritos nas modalidades 5 km PCD, 10 KM PCD, 21 km PCD e Corrida Kids: deverão apresentar o número de peito para acessar o pavilhão, com direito a 1 acompanhante, que deverá apresentar a pulseira de identificação, entregue durante a retirada de kits."
+    - text: "-"
+    - text: "Importante: a apresentação do número de peito ou da pulseira não garante entrada imediata caso o pavilhão tenha atingido sua capacidade máxima."
+    - text: Nessa situação, será necessário aguardar a saída de outros participantes para que novos acessos sejam liberados.
+    - text: "-"
+    - text: "Atenção: a mesma regra será aplicada aos participantes que saírem do pavilhão e desejarem retornar. O acesso estará novamente sujeito à disponibilidade de espaço."
+    - text: Essas medidas são necessárias para garantir a segurança, o conforto e o cumprimento dos limites de ocupação, proporcionando uma experiência organizada e segura para todos.
+- button "Ver regulamento"
+- heading "MAIS INFORMAÇÕES" [level=3]
+- paragraph:
+  - text: "LARGADA POR PACE: HORÁRIOS DE ACESSO ÀS BAIAS"
+  - text: "-"
+  - text: Os tempos abaixo representam a duração estimada da corrida, conforme o pace de cada baia.
+  - text: "-"
+  - text: 21 KM
+  - text: "🏁 Largada geral: 06h00"
+  - text: "🏁 Largada PCD: 05h57"
+  - text: "-"
+  - text: Baia PCD
+  - text: "Tempo de conclusão: conforme o pace de cada atleta."
+  - text: Baia A — até 4:30 min/km
+  - text: "Tempo estimado: até 1h34min30s."
+  - text: Baia B — de 4:31 a 6:00 min/km
+  - text: "Tempo estimado: de 1h34min51s a 2h06min."
+  - text: Baia C — a partir de 6:01 min/km
+  - text: "Tempo estimado: a partir de 2h06min21s."
+  - text: "⏰ Abertura das baias — todos os atletas: 05h00"
+  - text: "⏰ Fechamento das baias — largada geral: 06h00"
+  - text: "⏰ Fechamento da baia — atletas PCD: 05h57"
+  - text: ────────────────────────────────────────────────
+  - text: 10 KM
+  - text: "🏁 Largada geral: 06h45"
+  - text: "🏁 Largada PCD: 06h42"
+  - text: Baia PCD
+  - text: "Tempo de conclusão: conforme o pace de cada atleta."
+  - text: Baia A — até 4:30 min/km
+  - text: "Tempo estimado: até 45min."
+  - text: Baia B — de 4:31 a 6:00 min/km
+  - text: "Tempo estimado: de 45min10s a 1h."
+  - text: Baia C — a partir de 6:01 min/km
+  - text: "Tempo estimado: a partir de 1h00min10s."
+  - text: "⏰ Abertura das baias — todos os atletas: 06h20"
+  - text: "⏰ Fechamento das baias — largada geral: 06h45"
+  - text: "⏰ Fechamento da baia — atletas PCD: 06h42"
+  - text: ────────────────────────────────────────────────
+  - text: 5 KM
+  - text: "🏁 Largada geral: 07h30"
+  - text: "🏁 Largada PCD: 07h27"
+  - text: Baia PCD
+  - text: "Tempo de conclusão: conforme o pace de cada atleta."
+  - text: Baia A — até 4:30 min/km
+  - text: "Tempo estimado: até 22min30s."
+  - text: Baia B — de 4:31 a 6:00 min/km
+  - text: "Tempo estimado: de 22min35s a 30min."
+  - text: Baia C — a partir de 6:01 min/km
+  - text: "Tempo estimado: a partir de 30min05s."
+  - text: "⏰ Abertura das baias — todos os atletas: 07h05"
+  - text: "⏰ Fechamento das baias — largada geral: 07h30"
+  - text: "⏰ Fechamento da baia — atletas PCD: 07h27"
+  - text: ────────────────────────────────────────────────
+  - text: ⚠️ IMPORTANTE — TODAS AS DISTÂNCIAS
+  - text: "* Respeite os horários de fechamento indicados para sua categoria e distância."
+  - text: "* Atletas PCD devem estar posicionados na baia antes do horário da sua largada, respeitando também o horário de fechamento informado."
+  - text: "* Caso não tenha o adesivo de pace, você será direcionado à Baia C."
+  - text: Fique atento aos horários de acesso e à sua baia para garantir a melhor experiência na prova!
+  - text: Tempos estimados calculados considerando as distâncias de 21 km, 10 km e 5 km.
+- link "Inscreva-se":
+  - /url: https://www.appliveexperience.com.br/evento/live21k-rio-de-janeiro-2026
+- img "image"
+- img "Kit kids"
+- img "kit 5 km e 10 km (XP)"
+- img "Kit 21 km (XP)"
+- img "Kit 21 km"
+- img "Kit 5 km e 10 km"
+- generic: 
+- generic: 
+- generic: Kit 21 km
+- generic: Kit 5 km e 10 km
+- generic: Kit kids
+- generic: kit 5 km e 10 km (XP)
+- generic: Kit 21 km (XP)
+- generic: RETIRADA DE KITS
+- generic: Todos os atletas precisam escolher no ato da inscrição uma loja para a retirada de kits.
+- paragraph: "Período de entrega: 30/10/2026 à 01/11/2026"
+- heading "LIVE! Shopping Rio Sul" [level=3]
+- heading "AV LAURO SODRE, 445, Botafogo - Rio de Janeiro/Rio de Janeiro" [level=4]
+- paragraph: "Dom: 14:00 às 20:00"
+- paragraph: "Sex: 10:00 às 22:00"
+- paragraph: "Sáb: 10:00 às 22:00"
+- heading "LIVE! Ipanema" [level=3]
+- heading "Rua Joana Angélica, 108, Ipanema - Rio de Janeiro/Rio de Janeiro" [level=4]
+- paragraph: "Dom: 09:00 às 15:00"
+- paragraph: "Sex: 09:00 às 19:00"
+- paragraph: "Sáb: 09:00 às 19:00"
+- strong: Retirada por terceiro.
+- paragraph: Caso um terceiro for retirar o seu kit, será necessário apresentar o documento com foto do titular do kit no ato da retirada.
+- heading "Programação da arena" [level=3]
+- list:
+  - generic: 4h30 - Abertura da Arena LIVE!
+  - generic: 5h30 - Aquecimento 21 km
+  - generic: 5h57 - Largada PCD 21 km
+  - generic: 6h00 - Largada 21 km
+  - generic: 6h00 - Aquecimento 10 km
+  - generic: 6h42 - Largada PCD 10 km
+  - generic: 6h45 - Largada 10 km
+  - generic: 7h00 - Aquecimento 5 km
+  - generic: 7h27 - Largada PCD 5 km
+  - generic: 7h30 - Largada 5 km
+  - generic: 8h00 - Premiação
+  - generic: 9h15 - Banda Eva
+  - generic: 9h15 - Premiação por faixa etária 21 km (será feito na tenda por faixa etária)
+  - generic: 10h00 - Corrida Kids
+  - generic: 11h00 - Encerramento
+- heading "Corrida Kids" [level=3]
+- list:
+  - generic: 12 A 13 ANOS
+  - generic: 400m
+  - generic: 10 A 11 ANOS
+  - generic: 300m
+  - generic: 8 A 9 ANOS
+  - generic: 200m
+  - generic: 5 A 7 ANOS
+  - generic: 100m
+  - generic: CRIANÇAS MENORES DE 5 ANOS
+  - generic: 50m
+- iframe:
+  - generic "Compartilhar":
+    - button
+  - generic "Ver mapa ampliado"
+  - generic "LIVE! 21K XP 2026 - Rio de Janeiro 5 km"
+  - generic "Marcar este mapa com uma estrela para visualizá-lo no Google Maps":
+    - checkbox "Toggle star"
+  - text: Este mapa foi feito com o Google My Maps.
+  - link "Crie o seu":
+    - /url: //support.google.com/mymaps/answer/3024454?hl=en&amp;ref_topic=3188329
+  - text: .
+  - generic "Aumentar zoom"
+  - generic "Diminuir zoom"
+  - list:
+    - link "Termos":
+      - /url: //www.google.com/intl/pt_BR/help/terms_maps.html
+  - text: Este mapa foi criado por um usuário.
+  - link "Saiba como criar o seu.":
+    - /url: //support.google.com/mymaps/answer/3024454?hl=en&amp;ref_topic=3188329
+  - generic "Fechar"
+  - generic: Leonardo Sobral
+  - generic: leonardo.sobral@gmail.com
+  - generic: Criar novo mapa
+  - generic: Abrir mapa
+  - generic: Compartilhados com você
+  - generic: Ajuda
+  - generic: Feedback
+  - button "Denunciar conteúdo inadequado"
+  - generic: Google Drive
+- button "5 km" [pressed]
+- button "10 km"
+- button "21 km"
+- contentinfo:
+  - heading "SAC LIVE! Run" [level=3]
+  - list:
+    - text: WhatsApp
+    - link "(47) 2106-7460":
+      - /url: https://wa.me/+554721067460?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20suporte%20do%20LIVE!%20Run%20XP.
+    - listitem: Atendimento APP Experience LIVE! RUN XP
+    - text: E-mail
+    - link "liverunxp@liveoficial.com.br":
+      - /url: mailto:liverunxp@liveoficial.com.br
+    - text: .
+  - heading "Fique atento aos nossos canais oficiais" [level=3]
+  - link "":
+    - /url: https://www.tiktok.com/@live.oficial
+  - link "":
+    - /url: https://www.instagram.com/liveoficial
+  - link "":
+    - /url: https://www.threads.com/@liveexperience
+  - heading "Baixe o nosso app LIVE! Experience" [level=3]
+  - link "":
+    - /url: https://apps.apple.com/br/app/live-experience/id1544956484
+  - link "":
+    - /url: https://play.google.com/store/apps/details?id=live.experience
+  - paragraph:
+    - text: "LIVE! © 2025 - TODOS OS DIREITOS RESERVADOS - Rua Manoel Francisco da Costa, 1600 - Bairro Vieira - CEP 89257-207 - Jaraguá do Sul/SC - CNPJ: 05.108.435/0001-78 -"
+    - link "MAPA DO SITE":
+      - /url: /sitemap.xml

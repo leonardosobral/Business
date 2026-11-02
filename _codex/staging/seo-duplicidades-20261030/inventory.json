@@ -1,0 +1,110 @@
+{
+  "events": [
+    {
+      "results": 0,
+      "regulation": "https://www.ticketsports.com.br/e/CORRIDA+ADC+ZF+CLUBE-88536",
+      "active": true,
+      "id_evento": 48501,
+      "state": "SP",
+      "name": "CORRIDA ADC ZF CLUBE",
+      "family": null,
+      "finish": "2027-01-24",
+      "city": "Sorocaba",
+      "description": null,
+      "homepage": "https://www.ticketsports.com.br/e/CORRIDA+ADC+ZF+CLUBE-88536",
+      "start": "2027-01-24",
+      "tag": "2026-corrida-adc-zf-clube",
+      "registration": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88536&origem=novo-site&lang=en-US",
+      "courses": [
+        {
+          "date": "2026-10-25",
+          "distance": 4,
+          "id": 71328
+        },
+        {
+          "date": "2026-10-25",
+          "distance": 8,
+          "id": 71327
+        }
+      ],
+      "redirect": null
+    },
+    {
+      "results": 0,
+      "regulation": "",
+      "active": true,
+      "id_evento": 48918,
+      "state": "RO",
+      "name": "Corrida e caminhada Outubro Rosa.",
+      "family": null,
+      "finish": "2026-10-31",
+      "city": "Chupinguaia",
+      "description": "CORRIDA E CAMINHADA OUTUBRO ROSA<br>No dia 25 de outubro, o Corre Chupinguaia convida voc&ecirc; para um momento especial de esporte, sa&uacute;de, uni&atilde;o e conscientiza&ccedil;&atilde;o. A Corrida e Caminhada Outubro Rosa foi organizada para reunir corredores, caminhantes, fam&iacute;lias e toda a comunidade em uma manh&atilde; dedicada a incentivar a pr&aacute;tica de atividade f&iacute;sica e destacar a import&acirc;ncia do cuidado com a sa&uacute;de da mulher.<br>Mais do que correr, &eacute; cuidar. Mais do que caminhar, &eacute; incentivar. Juntos, vamos vestir essa causa e divulgar uma mensagem de preven&ccedil;&atilde;o, autocuidado e amor &agrave; vida.<br>Venha participar conosco&#x21; Seja correndo, caminhando ou apenas apoiando, voc&ecirc; faz parte dessa causa.<br>Corre Chupinguaia &mdash; um movimento que une pessoas e transforma vidas&#x21;<br><br>25 de outubro<br>Corrida e Caminhada Outubro Rosa<br>Data&#x3a; 25 de outubro<br>Largada&#x3a; 6h da manh&atilde;<br>Local&#x3a; em frente ao Sicredi<br>Percurso&#x3a; 5 km",
+      "homepage": "https://www.sympla.com.br/evento/corrida-e-caminhada-outubro-rosa/3594186",
+      "start": "2026-10-31",
+      "tag": "2026-corrida-e-caminhada-outubro-rosa-chupinguaia",
+      "registration": "https://www.sympla.com.br/evento/corrida-e-caminhada-outubro-rosa/3594186",
+      "courses": [
+        {
+          "date": "2026-10-31",
+          "distance": 5,
+          "id": 71385
+        }
+      ],
+      "redirect": null
+    },
+    {
+      "results": 0,
+      "regulation": "",
+      "active": true,
+      "id_evento": 48554,
+      "state": "RO",
+      "name": "Corrida e caminhada Outubro Rosa.",
+      "family": null,
+      "finish": "2026-10-31",
+      "city": "Chupinguaia",
+      "description": "CORRIDA E CAMINHADA OUTUBRO ROSA<br>No dia 25 de outubro, o Corre Chupinguaia convida voc&ecirc; para um momento especial de esporte, sa&uacute;de, uni&atilde;o e conscientiza&ccedil;&atilde;o. A Corrida e Caminhada Outubro Rosa foi organizada para reunir corredores, caminhantes, fam&iacute;lias e toda a comunidade em uma manh&atilde; dedicada a incentivar a pr&aacute;tica de atividade f&iacute;sica e destacar a import&acirc;ncia do cuidado com a sa&uacute;de da mulher.<br>Mais do que correr, &eacute; cuidar. Mais do que caminhar, &eacute; incentivar. Juntos, vamos vestir essa causa e divulgar uma mensagem de preven&ccedil;&atilde;o, autocuidado e amor &agrave; vida.<br>Venha participar conosco&#x21; Seja correndo, caminhando ou apenas apoiando, voc&ecirc; faz parte dessa causa.<br>Corre Chupinguaia &mdash; um movimento que une pessoas e transforma vidas&#x21;<br>25 de outubro<br>Corrida e Caminhada Outubro Rosa<br>Data&#x3a; 25 de outubro<br>Largada&#x3a; 6h da manh&atilde;<br>Local&#x3a; em frente ao Sicredi<br>Percurso&#x3a; 5 km",
+      "homepage": "https://www.sympla.com.br/evento/corrida-e-caminhada-outubro-rosa/3594186",
+      "start": "2026-10-31",
+      "tag": "2026-corrida-e-caminhada-outubro-rosa-ro",
+      "registration": "https://www.sympla.com.br/evento/corrida-e-caminhada-outubro-rosa/3594186",
+      "courses": [
+        {
+          "date": "2026-10-25",
+          "distance": 5,
+          "id": 70945
+        }
+      ],
+      "redirect": null
+    },
+    {
+      "results": 0,
+      "regulation": "https://www.ticketsports.com.br/e/CORRIDA+ADC+ZF+CLUBE-88536",
+      "active": true,
+      "id_evento": 49606,
+      "state": "SP",
+      "name": "CORRIDA ADC ZF CLUBE",
+      "family": null,
+      "finish": "2027-01-24",
+      "city": "Sorocaba",
+      "description": null,
+      "homepage": "https://www.ticketsports.com.br/e/CORRIDA+ADC+ZF+CLUBE-88536",
+      "start": "2027-01-24",
+      "tag": "2027-corrida-adc-zf-clube",
+      "registration": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88536&origem=novo-site&lang=en-US",
+      "courses": [
+        {
+          "date": "2027-01-24",
+          "distance": 4,
+          "id": 72128
+        },
+        {
+          "date": "2027-01-24",
+          "distance": 8,
+          "id": 72127
+        }
+      ],
+      "redirect": null
+    }
+  ]
+}

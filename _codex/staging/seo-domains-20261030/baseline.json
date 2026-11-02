@@ -1,0 +1,16 @@
+{
+  "names": [
+    "portal/includes/seo_domains_data.cfm",
+    "portal/conteudo/seo_domains.cfm"
+  ],
+  "before": {
+    "portal/includes/seo_domains_data.cfm": "002292d12f803c20ac3b6205e32b5fe620f7b83577d9d1de15fa6d1146c787f2",
+    "portal/conteudo/seo_domains.cfm": "19a19eb33207557b81c18a0b4dbd42324885ffc4ec58991a9344fb111d667b85"
+  },
+  "watch": {
+    "portal/conteudo/seo.cfm": "db68bb5e2742309c4a2d00e40562b874ed3e36066a679507fc6be60ae5dd2c3c",
+    "portal/seo/assets/domains.js": "acf8006dfd68d1177477462e62226f1d775d9082e0a544241b8653f837191b38",
+    "portal/seo/assets/domains.css": "9275be2a657cd5ff5c69a12658ea0f42356157a9bbdde99cd1a536f68f14f6cb",
+    "includes/backend/require_admin.cfm": "c2f9659ac3db941cc543a9f86d5b39b573c365a36ca2d3fba5a58675f6e017d6"
+  }
+}

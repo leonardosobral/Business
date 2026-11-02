@@ -1,0 +1,31 @@
+{
+  "observedAt": "2026-10-30T19:51:38.444818+00:00",
+  "previousGoalTurn": "progress",
+  "thisGoalTurn": "progress",
+  "goalStillActive": true,
+  "campaign": 26661911,
+  "browserId": "3",
+  "tabId": "283505491",
+  "url": "https://pt.semrush.com/siteaudit/campaign/26661911/review/compare",
+  "binding": "seoContinueTab",
+  "observedStatus": "Analisando recursos e links",
+  "observedProgress": "Resource/link analysis; completed result pending",
+  "restartAllowed": false,
+  "publishedPanelTabId": "283505525",
+  "lastCompletedAudit": {
+    "finishedAt": "2026-10-29T12:32:00Z",
+    "siteHealth": 73,
+    "aiHealth": 84,
+    "errors": 64,
+    "warnings": 8388,
+    "notices": 1643
+  },
+  "nextAction": "Poll the same campaign handle; state changed from crawling 4988/5000 to Analisando recursos e links, so still live and not terminal. Never restart on observation timeout. Fresh Semrush panel baseline is already captured in seo-semrush-20261030-final/panel; guard current hashes before using it. Import only verified completed totals/date/5000/mobile/noJS, with comparison to Oct29. Home image priority published16:38:27BRT; 6 Adobe cases, 3 public language checks, desktop/mobile390 passed. PSI payload8330to6324KiB but performance60to56/LCP8.9to10.8s, so no LCP improvement claimed. Next image work must reduce actual bytes/responsive formats. Read-only image variants confirm Aracaju main/listing URLs identical; Curitiba listing is a different thumb, unreviewed. No DB mutations.",
+  "latestEvidence": "phase-after-home.txt",
+  "publishedGoogleTabId": "283505569",
+  "publishedGoogleStage": "_codex/staging/seo-gsc-20261030",
+  "publishedMapsStage": "_codex/staging/seo-mobile-maps-20261030",
+  "lastObservedCrawlProgress": "4.988/5.000",
+  "publishedHomeStage": "_codex/staging/seo-home-images-20261030",
+  "pendingPanelStage": "_codex/staging/seo-semrush-20261030-final/panel"
+}

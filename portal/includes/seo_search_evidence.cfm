@@ -15,12 +15,12 @@
 VARIABLES.seoSearchEvidence = {
  roadrunners = {
   status="warning", label="Indexação com pendências",
-  source="Consulta direta ao Search Console em 04/10/2026. Sitemaps e indexação têm datas de atualização próprias; relatório de indexação atualizado em 20/09/2026.",
+  source="Consulta direta ao Search Console em 30/10/2026. Indexação atualizada em 22/10; propriedade de domínio roadrunners.run, incluindo subdomínios. Esse relatório antecede as melhorias de 25 e 30/10.",
   sitemapStatus="pass", sitemapLabel="Índice do sitemap processado pelo Google",
-  sitemapDetail="103.030 URLs descobertas na consulta de 04/10. Índice lido em 26/09; sete lotes processados. O lote static.xml ainda mostra 49 URLs e leitura de 30/09, anterior à ampliação de estados e cidades. Descoberta não comprova indexação.",
-  indexStatus="warning", indexLabel="14,1 mil páginas indexadas em 20/09/2026",
-  indexDetail="Todas as páginas conhecidas: cerca de 109 mil não indexadas. Entre os motivos: 167 soft 404, 52 não encontradas, 23 erros 5xx e 5 bloqueios 403. Os totais são os valores arredondados exibidos pelo Google e não representam a situação de hoje.",
-  nextAction="Estatísticas de 2025 corrigidas e verificadas em 04/10/2026: cinco URLs públicas responderam 200, incluindo filtros de cidade e estado. A primeira carga levou 5,2 s; filtros com cache, cerca de 0,2 s. Isso não confirma reprocessamento pelo Google. Em 04/10 também foi corrigido o redirect genérico de evento inexistente: nove URLs agora respondem 404 e onze controles válidos continuam 200. Demais soft 404 seguem em revisão (RR-16); nenhum reprocessamento pelo Google foi confirmado. Canonical, redirects e bloqueios intencionais exigem contexto."
+  sitemapDetail="107.352 URLs descobertas no sitemap do site principal. Índice lido em 26/10; sete lotes processados com leituras de 28 a 30/10. O lote static.xml mostra 990 URLs e leitura de 28/10. Descoberta não comprova indexação.",
+  indexStatus="warning", indexLabel="21.335 páginas indexadas em 22/10/2026",
+  indexDetail="116.687 não indexadas na propriedade de domínio: 87.026 detectadas e 5.025 rastreadas sem indexação; 225 soft 404, 80 não encontradas, 34 erros 5xx e 5 bloqueios 403. Também há exclusões por canonical, redirects, robots e noindex; nem toda exclusão é um erro. O relatório não comprova o estado de cada URL hoje.",
+  nextAction="Revisar exemplos dos erros de indexação e das páginas detectadas/rastreadas sem indexação, preservando exclusões intencionais. Experiência móvel atualizada em 28/10: grupo de INP com 926 URLs e grupo de LCP com 391 URLs precisam de melhorias. Detalhes e comparação de buscas na aba Audiência Google. Acompanhar nova leitura do Google após as publicações; respostas HTTP 200 não comprovam reprocessamento nem ganho de ranking."
  },
  openresults = {
   status="warning", label="Sitemap recuperado; indexação a confirmar",

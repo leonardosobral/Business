@@ -1,0 +1,775 @@
+{
+  "counts": [
+    {
+      "linked": 246,
+      "upcoming": 3,
+      "agregador_tag": "estacoes"
+    },
+    {
+      "linked": 187,
+      "upcoming": 11,
+      "agregador_tag": "live-run-xp"
+    }
+  ],
+  "events": [
+    {
+      "id_evento": 37556,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-experience-jurer-2026",
+      "id_agrega_evento": 1731,
+      "row_hash": "618909f2d1a5e4f84250850d22bf125b",
+      "data_inicial": "2026-11-01",
+      "estado": "MS",
+      "data_final": "2026-11-01",
+      "nome_evento": "LIVE! RUN XP Bonito 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live-experience-jurer-2026",
+      "memberships": [
+        {
+          "id_evento": 37556,
+          "agregador_tag": "live-run-xp",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-live-run-xp-bonito-2026",
+      "cidade": "Bonito"
+    },
+    {
+      "id_evento": 40833,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-rio-de-janeiro-2026",
+      "id_agrega_evento": null,
+      "row_hash": "2b328f15d177e92d5aa5011994fc2c87",
+      "data_inicial": "2026-11-02",
+      "estado": "RJ",
+      "data_final": "2026-11-02",
+      "nome_evento": "LIVE! RUN XP Rio de Janeiro 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live21k-rio-de-janeiro-2026",
+      "memberships": [
+        {
+          "id_evento": 40833,
+          "agregador_tag": "live-run-xp",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-live-run-xp-rio-de-janeiro-2026-21k",
+      "cidade": "Rio de Janeiro"
+    },
+    {
+      "id_evento": 46015,
+      "url_hotsite": "https://app.sprinta.com.br/event/26376a69fc3e86b5e",
+      "id_agrega_evento": null,
+      "row_hash": "2ca84ec954aab713af8334084ff9691e",
+      "data_inicial": "2026-11-15",
+      "estado": "RS",
+      "data_final": "2026-11-15",
+      "nome_evento": "CIRCUITO TRAIL ESTAÇÕES - SAPIRANGA",
+      "ativo": true,
+      "url_inscricao": "https://app.sprinta.com.br/event/26376a69fc3e86b5e",
+      "memberships": [],
+      "tag": "2026-circuito-trail-estacoes-sapiranga",
+      "cidade": "Sapiranga"
+    },
+    {
+      "id_evento": 47216,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-manaus",
+      "id_agrega_evento": 1674,
+      "row_hash": "29d256c48cceb7b63d5e3191d9aec596",
+      "data_inicial": "2026-11-15",
+      "estado": "AM",
+      "data_final": "2026-11-15",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Manaus",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-manaus",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-manaus",
+      "cidade": "Manaus"
+    },
+    {
+      "id_evento": 48479,
+      "url_hotsite": "https://www.runningland.com.br/circuito-da-estacoes-2026-ver-o-campinas",
+      "id_agrega_evento": null,
+      "row_hash": "06d4779c0ade9e637c6a40ce7e876ab2",
+      "data_inicial": "2026-11-15",
+      "estado": "SP",
+      "data_final": "2026-11-15",
+      "nome_evento": "Circuito da Estações 2026 - Verão - Campinas",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-da-estacoes-2026-ver-o-campinas",
+      "memberships": [],
+      "tag": "2026-circuito-da-estacoes-2026-verao-campinas",
+      "cidade": "Campinas"
+    },
+    {
+      "id_evento": 37570,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-fortaleza-2026",
+      "id_agrega_evento": null,
+      "row_hash": "50825dc05827a41fa299265c9a61a77f",
+      "data_inicial": "2026-11-20",
+      "estado": "CE",
+      "data_final": "2026-11-20",
+      "nome_evento": "LIVE! RUN XP Fortaleza 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.liverun.com.br/etapa/live21k-fortaleza-2026",
+      "memberships": [
+        {
+          "id_evento": 37570,
+          "agregador_tag": "live-run-xp",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-live-run-xp-fortaleza-2026-ii",
+      "cidade": "Fortaleza"
+    },
+    {
+      "id_evento": 40834,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-recife-2026",
+      "id_agrega_evento": null,
+      "row_hash": "b9ab4c04c64114fa8646ccccc30c7625",
+      "data_inicial": "2026-11-20",
+      "estado": "PE",
+      "data_final": "2026-11-20",
+      "nome_evento": "LIVE! RUN XP Recife 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live21k-recife-2026",
+      "memberships": [
+        {
+          "id_evento": 40834,
+          "agregador_tag": "live-run-xp",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-live-run-xp-recife-2026",
+      "cidade": "Recife"
+    },
+    {
+      "id_evento": 45366,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-fortaleza-2026",
+      "id_agrega_evento": null,
+      "row_hash": "9ce9e824a80929dadcea2c95769bff1c",
+      "data_inicial": "2026-11-20",
+      "estado": "CE",
+      "data_final": "2026-11-20",
+      "nome_evento": "LIVE!21K - FORTALEZA 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live21k-fortaleza-2026",
+      "memberships": [],
+      "tag": "2026-live21k-fortaleza-2026",
+      "cidade": "Fortaleza"
+    },
+    {
+      "id_evento": 47208,
+      "url_hotsite": "https://www.sportschrono.com.br/evento/2026/corrida-de-rua/oliver-night-run",
+      "id_agrega_evento": null,
+      "row_hash": "7897d739239cdc027f19f4054e7f599a",
+      "data_inicial": "2026-11-21",
+      "estado": "SE",
+      "data_final": "2026-11-21",
+      "nome_evento": "Oliver Night Run",
+      "ativo": true,
+      "url_inscricao": "https://www.sportschrono.com.br/inscricao-select/2026/corrida-de-rua/oliver-night-run",
+      "memberships": [],
+      "tag": "2026-oliver-night-run",
+      "cidade": "Itabaiana"
+    },
+    {
+      "id_evento": 48556,
+      "url_hotsite": "",
+      "id_agrega_evento": null,
+      "row_hash": "2f7dfb7a3b830963800573ccd8cd9c1e",
+      "data_inicial": "2026-11-21",
+      "estado": "PR",
+      "data_final": "2026-11-21",
+      "nome_evento": "CORRIDA DAS 4 ESTAÇÕES IRATI - PR - EDIÇÃO PIMAVERA",
+      "ativo": true,
+      "url_inscricao": "https://app.assessocor.online/evento/corrida-das-4-estacoes-irati/927",
+      "memberships": [],
+      "tag": "2026-corrida-das-4-estacoes-irati-pr-edicao-pimavera-pr",
+      "cidade": "Irati"
+    },
+    {
+      "id_evento": 37483,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-xp-porto-alegre-2026",
+      "id_agrega_evento": null,
+      "row_hash": "3030df109b2b71bf93c4d8c442247a10",
+      "data_inicial": "2026-11-22",
+      "estado": "RS",
+      "data_final": "2026-11-22",
+      "nome_evento": "LIVE! RUN XP Porto Alegre 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.liverun.com.br/etapa/live-run-xp-porto-alegre-2026",
+      "memberships": [
+        {
+          "id_evento": 37483,
+          "agregador_tag": "live-run-xp",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-live-run-xp-porto-alegre-2026",
+      "cidade": "Porto Alegre"
+    },
+    {
+      "id_evento": 37769,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-palmas",
+      "id_agrega_evento": 1677,
+      "row_hash": "46abdf395be2be95e902b1442104cd9a",
+      "data_inicial": "2026-11-22",
+      "estado": "TO",
+      "data_final": "2026-11-22",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Palmas",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-palmas",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-palmas",
+      "cidade": "Palmas"
+    },
+    {
+      "id_evento": 37771,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-aracaju",
+      "id_agrega_evento": 1598,
+      "row_hash": "fdb5c1397eacebb46d02e405fe0c9c66",
+      "data_inicial": "2026-11-22",
+      "estado": "SE",
+      "data_final": "2026-11-22",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Aracaju",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-aracaju",
+      "memberships": [
+        {
+          "id_evento": 37771,
+          "agregador_tag": "estacoes",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-circuito-das-estacoes-2026-verao-aracaju",
+      "cidade": "Aracaju"
+    },
+    {
+      "id_evento": 41834,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-xp-belo-horizonte-iii-2026",
+      "id_agrega_evento": null,
+      "row_hash": "32fc22d38d0044317a0dd427001f9cb4",
+      "data_inicial": "2026-11-22",
+      "estado": "MG",
+      "data_final": "2026-11-22",
+      "nome_evento": "LIVE! RUN XP belo horizonte iii 2026 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live-run-xp-belo-horizonte-iii-2026",
+      "memberships": [
+        {
+          "id_evento": 41834,
+          "agregador_tag": "live-run-xp",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-live-run-xp-belo-horizonte-iii-2026-2026",
+      "cidade": "Belo Horizonte"
+    },
+    {
+      "id_evento": 48557,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-rio-de-janeiro-ii-2026",
+      "id_agrega_evento": null,
+      "row_hash": "8de8ef394ebc79fe30425874513a01c6",
+      "data_inicial": "2026-11-22",
+      "estado": "SP",
+      "data_final": "2026-11-22",
+      "nome_evento": "LIVE! RUN XP - RIBEIRÃO PRETO II 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live-run-rio-de-janeiro-ii-2026",
+      "memberships": [],
+      "tag": "2026-live-run-xp-ribeirao-preto-ii-2026",
+      "cidade": "Ribeirão Preto"
+    },
+    {
+      "id_evento": 46520,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-belo-horizonte",
+      "id_agrega_evento": 1693,
+      "row_hash": "46e74cb691c783d4e9c7b31151ade408",
+      "data_inicial": "2026-11-29",
+      "estado": "MG",
+      "data_final": "2026-11-29",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Belo Horizonte",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-belo-horizonte",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-belo-horizonte",
+      "cidade": "Belo Horizonte"
+    },
+    {
+      "id_evento": 46521,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-curitiba",
+      "id_agrega_evento": 1744,
+      "row_hash": "fccb2b38d8cfca6eb4fb5604e27b3dc4",
+      "data_inicial": "2026-11-29",
+      "estado": "PR",
+      "data_final": "2026-11-29",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Curitiba",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-curitiba",
+      "memberships": [
+        {
+          "id_evento": 46521,
+          "agregador_tag": "estacoes",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-circuito-das-estacoes-2026-verao-curitiba",
+      "cidade": "Curitiba"
+    },
+    {
+      "id_evento": 46522,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-fortaleza",
+      "id_agrega_evento": 1732,
+      "row_hash": "ee1575cb7524efa5cd606cce37e09485",
+      "data_inicial": "2026-11-29",
+      "estado": "CE",
+      "data_final": "2026-11-29",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Fortaleza",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-fortaleza",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-fortaleza",
+      "cidade": "Fortaleza"
+    },
+    {
+      "id_evento": 37526,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-niteri-2026",
+      "id_agrega_evento": 1686,
+      "row_hash": "9877bc043c5cc16cef026441c04e3cd7",
+      "data_inicial": "2026-12-05",
+      "estado": "RJ",
+      "data_final": "2026-12-05",
+      "nome_evento": "LIVE! RUN XP Niterói 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.liverun.com.br/etapa/live-run-niteri-2026",
+      "memberships": [
+        {
+          "id_evento": 37526,
+          "agregador_tag": "live-run-xp",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-live-run-xp-niteroi-2026",
+      "cidade": "Niterói"
+    },
+    {
+      "id_evento": 37528,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-osasco-2026",
+      "id_agrega_evento": null,
+      "row_hash": "1bce7e7d8315c4a3bcb8f1f0544ee8a3",
+      "data_inicial": "2026-12-06",
+      "estado": "SP",
+      "data_final": "2026-12-06",
+      "nome_evento": "LIVE! RUN XP Osasco 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.liverun.com.br/etapa/live-run-osasco-2026",
+      "memberships": [
+        {
+          "id_evento": 37528,
+          "agregador_tag": "live-run-xp",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-live-run-xp-osasco-2026",
+      "cidade": "Osasco"
+    },
+    {
+      "id_evento": 37768,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-cuiaba",
+      "id_agrega_evento": 1675,
+      "row_hash": "157932297314f491316af2203830ab43",
+      "data_inicial": "2026-12-06",
+      "estado": "MT",
+      "data_final": "2026-12-06",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Cuiabá",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-cuiaba",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-cuiaba",
+      "cidade": "Cuiabá"
+    },
+    {
+      "id_evento": 37770,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-luis",
+      "id_agrega_evento": 1710,
+      "row_hash": "d982252b25c4c32d4f60bde6649f62fd",
+      "data_inicial": "2026-12-06",
+      "estado": "MA",
+      "data_final": "2026-12-06",
+      "nome_evento": "Circuito das Estações 2026 - Verão - São Luís",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-luis",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-sao-luis",
+      "cidade": "São Luís"
+    },
+    {
+      "id_evento": 38506,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-teresina",
+      "id_agrega_evento": 1661,
+      "row_hash": "f19db28982c125e9ac75ae59df693fff",
+      "data_inicial": "2026-12-06",
+      "estado": "PI",
+      "data_final": "2026-12-06",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Teresina",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-teresina",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-teresina",
+      "cidade": "Teresina"
+    },
+    {
+      "id_evento": 46508,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-brasilia",
+      "id_agrega_evento": 1651,
+      "row_hash": "e3a319039586c4b648eeaddb5e35bac3",
+      "data_inicial": "2026-12-06",
+      "estado": "DF",
+      "data_final": "2026-12-06",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Brasília",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-brasilia",
+      "memberships": [
+        {
+          "id_evento": 46508,
+          "agregador_tag": "estacoes",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-circuito-das-estacoes-2026-verao-brasilia",
+      "cidade": "Brasilia"
+    },
+    {
+      "id_evento": 46509,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-recife",
+      "id_agrega_evento": 1719,
+      "row_hash": "d23b7c15427824d713f821521cde800c",
+      "data_inicial": "2026-12-06",
+      "estado": "PE",
+      "data_final": "2026-12-06",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Recife",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-recife",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-recife",
+      "cidade": "Recife"
+    },
+    {
+      "id_evento": 46510,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-rio-de-janeiro",
+      "id_agrega_evento": 1704,
+      "row_hash": "896af342a85ff761f62515e0f076ce78",
+      "data_inicial": "2026-12-06",
+      "estado": "RJ",
+      "data_final": "2026-12-06",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Rio de Janeiro",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-rio-de-janeiro",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-rio-de-janeiro",
+      "cidade": "Rio de Janeiro"
+    },
+    {
+      "id_evento": 47179,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-porto-alegre",
+      "id_agrega_evento": 1703,
+      "row_hash": "ec2821a6c9f41074cb1dda1d38072abd",
+      "data_inicial": "2026-12-06",
+      "estado": "RS",
+      "data_final": "2026-12-06",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Porto Alegre",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-porto-alegre",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-porto-alegre",
+      "cidade": "Porto Alegre"
+    },
+    {
+      "id_evento": 37572,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-braslia-2026",
+      "id_agrega_evento": null,
+      "row_hash": "b73a6a479c8d47f41b8f570ec5999004",
+      "data_inicial": "2026-12-13",
+      "estado": "DF",
+      "data_final": "2026-12-13",
+      "nome_evento": "LIVE! RUN XP Brasília 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.liverun.com.br/etapa/live-run-braslia-2026",
+      "memberships": [
+        {
+          "id_evento": 37572,
+          "agregador_tag": "live-run-xp",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-live-run-xp-brasilia-2026-iii",
+      "cidade": "Brasília"
+    },
+    {
+      "id_evento": 37764,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-anapolis",
+      "id_agrega_evento": null,
+      "row_hash": "de3f1439b23a336cff2506b2214d0d3c",
+      "data_inicial": "2026-12-13",
+      "estado": "GO",
+      "data_final": "2026-12-13",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Anápolis",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-anapolis",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-anapolis",
+      "cidade": "Anápolis"
+    },
+    {
+      "id_evento": 37765,
+      "url_hotsite": "",
+      "id_agrega_evento": null,
+      "row_hash": "8fd8d358e9d26651291bfa4ab0388cef",
+      "data_inicial": "2026-12-13",
+      "estado": "MA",
+      "data_final": "2026-12-13",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Imperatriz",
+      "ativo": true,
+      "url_inscricao": "https://www.o2corre.com.br/calendario/circuito-das-estacoes-2026-ver-o-imperatriz",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-imperatriz",
+      "cidade": "Imperatriz"
+    },
+    {
+      "id_evento": 37766,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-jo-o-pessoa",
+      "id_agrega_evento": 1724,
+      "row_hash": "9b234cb3c383e695fc12c40548dff537",
+      "data_inicial": "2026-12-13",
+      "estado": "PB",
+      "data_final": "2026-12-13",
+      "nome_evento": "Circuito das Estações 2026 - Verão - João Pessoa",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-jo-o-pessoa",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-joao-pessoa",
+      "cidade": "João Pessoa"
+    },
+    {
+      "id_evento": 40103,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-foz-do-iguau-2026",
+      "id_agrega_evento": null,
+      "row_hash": "dbc9c9e7b35a2af69e4cbefca4b49a8e",
+      "data_inicial": "2026-12-13",
+      "estado": "PR",
+      "data_final": "2026-12-13",
+      "nome_evento": "LIVE! RUN XP Itaipu 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live21k-foz-do-iguau-2026",
+      "memberships": [
+        {
+          "id_evento": 40103,
+          "agregador_tag": "live-run-xp",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-live-run-xp-itaipu-2026",
+      "cidade": "Foz do Iguaçu"
+    },
+    {
+      "id_evento": 40742,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-campo-grande",
+      "id_agrega_evento": 871,
+      "row_hash": "d52b32cf20734ae67d253cb936dabf79",
+      "data_inicial": "2026-12-13",
+      "estado": "MS",
+      "data_final": "2026-12-13",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Campo Grande",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-campo-grande",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-campo-grande",
+      "cidade": "Campo Grande"
+    },
+    {
+      "id_evento": 46476,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-belem",
+      "id_agrega_evento": 1684,
+      "row_hash": "977f91965c3f8fd9640030f35e10d76f",
+      "data_inicial": "2026-12-13",
+      "estado": "PA",
+      "data_final": "2026-12-13",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Belém",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-belem",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-belem",
+      "cidade": "Belém"
+    },
+    {
+      "id_evento": 47176,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-salvador",
+      "id_agrega_evento": 1681,
+      "row_hash": "3e60a631900d88754f8e4689b094335f",
+      "data_inicial": "2026-12-13",
+      "estado": "BA",
+      "data_final": "2026-12-13",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Salvador",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-salvador",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-salvador",
+      "cidade": "Salvador"
+    },
+    {
+      "id_evento": 50019,
+      "url_hotsite": "https://dwsportsonline.com.br/eventos/2a-corrida-run-das-estacoes",
+      "id_agrega_evento": null,
+      "row_hash": "da418ef2b713e554756b6793d16f27c1",
+      "data_inicial": "2026-12-13",
+      "estado": "MG",
+      "data_final": "2026-12-13",
+      "nome_evento": "2ª CORRIDA RUN DAS ESTAÇÕES",
+      "ativo": true,
+      "url_inscricao": "https://dwsportsonline.com.br/eventos/2a-corrida-run-das-estacoes",
+      "memberships": [],
+      "tag": "2026-2-corrida-run-das-estacoes",
+      "cidade": "Pitangui"
+    },
+    {
+      "id_evento": 37564,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live21k-salvador-2026",
+      "id_agrega_evento": null,
+      "row_hash": "bbc8476e0f4dd0ad17ba693da4c81bbe",
+      "data_inicial": "2026-12-20",
+      "estado": "BA",
+      "data_final": "2026-12-20",
+      "nome_evento": "LIVE! RUN XP Salvador 2026",
+      "ativo": true,
+      "url_inscricao": "https://www.appliveexperience.com.br/evento/live21k-salvador-2026",
+      "memberships": [
+        {
+          "id_evento": 37564,
+          "agregador_tag": "live-run-xp",
+          "percursos": null
+        }
+      ],
+      "tag": "2026-live-run-xp-salvador-2026-ii",
+      "cidade": "Salvador"
+    },
+    {
+      "id_evento": 37762,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-goiania",
+      "id_agrega_evento": 1640,
+      "row_hash": "741edd7f966b343b7ea7ace7e83bb710",
+      "data_inicial": "2026-12-20",
+      "estado": "GO",
+      "data_final": "2026-12-20",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Goiânia",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-goiania",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-goiania",
+      "cidade": "Goiania"
+    },
+    {
+      "id_evento": 37763,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-natal",
+      "id_agrega_evento": 1638,
+      "row_hash": "e3efe5407f11e657007855071e153972",
+      "data_inicial": "2026-12-20",
+      "estado": "RN",
+      "data_final": "2026-12-20",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Natal",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-natal",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-natal",
+      "cidade": "Natal"
+    },
+    {
+      "id_evento": 46197,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-jose-dos-campos",
+      "id_agrega_evento": null,
+      "row_hash": "c154e24a0a29bc4b330f897ccc20cc66",
+      "data_inicial": "2026-12-20",
+      "estado": "SP",
+      "data_final": "2026-12-20",
+      "nome_evento": "Circuito das Estações 2026 - Verão - São José dos Campos",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-jose-dos-campos",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-sao-jose-dos-campos",
+      "cidade": "São José dos Campos"
+    },
+    {
+      "id_evento": 46473,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-paulo",
+      "id_agrega_evento": 1705,
+      "row_hash": "b865e144b137950e8c2a62cff90a145c",
+      "data_inicial": "2026-12-20",
+      "estado": "SP",
+      "data_final": "2026-12-20",
+      "nome_evento": "Circuito das Estações 2026 - Verão - São Paulo",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-paulo",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-sao-paulo",
+      "cidade": "São Paulo"
+    },
+    {
+      "id_evento": 47168,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-vitoria",
+      "id_agrega_evento": 590,
+      "row_hash": "fe6e96e4ef00be48a8f838a39ad4ff3d",
+      "data_inicial": "2026-12-20",
+      "estado": "ES",
+      "data_final": "2026-12-20",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Vitória",
+      "ativo": true,
+      "url_inscricao": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-vitoria",
+      "memberships": [],
+      "tag": "2026-circuito-das-estacoes-2026-verao-vitoria",
+      "cidade": "Vitória"
+    },
+    {
+      "id_evento": 48100,
+      "url_hotsite": "https://www.sympla.com.br/evento/5o-jesus-live-run/3580489",
+      "id_agrega_evento": null,
+      "row_hash": "bb21bae332fc184ff0998aeb23f7a3a5",
+      "data_inicial": "2026-12-20",
+      "estado": "SP",
+      "data_final": "2026-12-20",
+      "nome_evento": "5o. JESUS LIVE RUN",
+      "ativo": true,
+      "url_inscricao": "https://www.sympla.com.br/evento/5o-jesus-live-run/3580489",
+      "memberships": [],
+      "tag": "2026-5o-jesus-live-run",
+      "cidade": "São Paulo"
+    },
+    {
+      "id_evento": 50267,
+      "url_hotsite": "https://platoon.com.br/blogrunestacoes",
+      "id_agrega_evento": null,
+      "row_hash": "084f1d3b99b1834404385f8c657e4bba",
+      "data_inicial": "2026-12-20",
+      "estado": "BA",
+      "data_final": "2026-12-20",
+      "nome_evento": "Blog Run Estações Circuito Verão",
+      "ativo": true,
+      "url_inscricao": "https://platoon.com.br/blogrunestacoes",
+      "memberships": [],
+      "tag": "2026-blog-run-estacoes-circuito-verao",
+      "cidade": "Conceição da Feira"
+    },
+    {
+      "id_evento": 50485,
+      "url_hotsite": "https://agendaoffroad.com.br/_circuitodasestacoes_verao2026",
+      "id_agrega_evento": null,
+      "row_hash": "a2c90f404f3ecf0460f02262c24360d4",
+      "data_inicial": "2026-12-20",
+      "estado": "PR",
+      "data_final": "2026-12-20",
+      "nome_evento": "Etapa - Verão Circuito 4 Estações de Corrida de Rua 5km",
+      "ativo": true,
+      "url_inscricao": "https://agendaoffroad.com.br/_circuitodasestacoes_verao2026",
+      "memberships": [],
+      "tag": "2026-etapa-verao-circuito-4-estacoes-de-corrida-de-rua-5km",
+      "cidade": "Castro"
+    }
+  ]
+}

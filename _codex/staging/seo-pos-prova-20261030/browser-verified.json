@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-30",
+  "method": "Chrome via CUA; produção real",
+  "desktop": {
+    "eventId": 34529,
+    "postRaceVisible": true,
+    "nextEdition": "28/08/2027 – 29/08/2027",
+    "photoModalGalleries": 2,
+    "existingCouponVisible": true,
+    "screenshot": "floripa-published-desktop.png"
+  },
+  "mobile": {
+    "width": 390,
+    "cases": [
+      {
+        "path": "/maratona/maratona-internacional-de-floripa/",
+        "recentLinks": 3,
+        "openedWithKeyboard": true,
+        "scrollWidth": 390
+      },
+      {
+        "eventId": 34529,
+        "anchor": "#pos-prova",
+        "scrollWidth": 390,
+        "screenshot": "floripa-published-mobile.png"
+      },
+      {
+        "eventId": 28132,
+        "importedResults": false,
+        "photosVisible": true,
+        "photoModalOpened": true,
+        "scrollWidth": 390,
+        "screenshot": "photos-only-published-mobile.png"
+      }
+    ]
+  },
+  "openResultsDestination": {
+    "eventId": 34529,
+    "name": "Maratona Internacional de Floripa 2026",
+    "finishers": 12936,
+    "modalitiesVisible": true
+  },
+  "viewportReset": true
+}

@@ -1,0 +1,1892 @@
+- button "Pular para o conteúdo"
+- paragraph: "Renove sua assinatura antes do término e mantenha seus dados. Dias restantes: 4"
+- button "Renovar assinatura"
+- button "Close"
+- banner:
+  - combobox "Informe o site ou a palavra-chave"
+  - button "Analisar":
+    - generic: Analisar
+  - navigation:
+    - menubar:
+      - button "Convide usuários"
+      - menuitem "Preços"
+      - menuitem "Empresarial"
+      - menuitem "Mais"
+      - menuitem "Meu perfil":
+        - generic: c
+- navigation:
+  - list:
+    - link "Início":
+      - /url: https://pt.semrush.com/home/?fid=13995865
+      - generic: Início
+    - link "SEO":
+      - /url: https://pt.semrush.com/seo/?fid=13995865
+      - generic: SEO
+    - link "IA":
+      - /url: https://pt.semrush.com/ai-seo/overview/?fid=13995865
+      - generic: IA
+  - list:
+    - link "Tráfego e mercado":
+      - /url: https://pt.semrush.com/analytics/traffic/?fid=13995865
+      - generic: Tráfego e mercado
+    - link "Local":
+      - /url: https://pt.semrush.com/local-business/?fid=13995865
+      - generic: Local
+    - link "Conteúdo":
+      - /url: https://pt.semrush.com/content/?fid=13995865
+      - generic: Conteúdo
+    - link "Anúncios":
+      - /url: https://pt.semrush.com/advertising/?fid=13995865
+      - generic: Anúncios
+    - link "RP para IA":
+      - /url: https://pt.semrush.com/pr-toolkit/?fid=13995865
+      - generic: RP para IA
+    - link "Social":
+      - /url: https://pt.semrush.com/social-media/?fid=13995865
+      - generic: Social
+  - list:
+    - link "Relatórios":
+      - /url: https://pt.semrush.com/my_reports/grid/?fid=13995865
+      - generic: Relatórios
+    - link "Apps":
+      - /url: https://pt.semrush.com/apps/?fid=13995865
+      - generic: Apps
+- main:
+  - region "Kits de ferramentas e aplicativos recomendados":
+    - list:
+      - link "Cartão de recomendação - AdClarity;":
+        - /url: https://semrush.com/apps/adclarity-advertising-intelligence
+        - heading "AdClarity" [level=3]
+        - paragraph: Veja como são as campanhas publicitárias de seus concorrentes.
+        - generic: Para você
+        - button "Fechar cartão de recomendação":
+      - link "Cartão de produto - Tráfego e mercado;":
+        - /url: /analytics/traffic/
+        - heading "Tráfego e mercado" [level=3]
+        - paragraph: Monitore concorrentes e descubra oportunidades de crescimento.
+      - link "Cartão de produto - Local;":
+        - /url: /local-business/
+        - heading "Local" [level=3]
+        - paragraph: Gerencie avaliações, aumente a visibilidade e monitore concorrentes.
+      - link "Cartão de produto - Conteúdo;":
+        - /url: /content/
+        - heading "Conteúdo" [level=3]
+        - paragraph: Crie conteúdo otimizado para SEO com IA e dados de competitividade.
+      - link "Cartão de produto - Publicidade;":
+        - /url: /advertising/
+        - heading "Publicidade" [level=3]
+        - paragraph: Pesquise concorrentes, lance e otimize anúncios do Google e da Meta.
+      - link "Cartão de produto - RP com IA;":
+        - /url: /pr-toolkit/
+        - heading "RP com IA" [level=3]
+        - paragraph: Garanta cobertura da imprensa que molda a visibilidade da sua marca nos LLMs.
+      - link "Cartão de produto comprado - Visibilidade na IA;":
+        - /url: /ai-seo/overview/
+        - heading "Visibilidade na IA" [level=3]
+        - paragraph: Apareça no ChatGPT, IA do Google e outros mecanismos de pesquisa com IA.
+    - button "Rolar para a direita":
+  - generic: Projetos
+  - button "Oculte filtros e altere a visualização":
+    - generic: Oculte filtros e altere a visualização
+  - button "Compartilhar":
+    - generic: Compartilhar
+  - button "Criar projeto":
+    - generic: Criar projeto
+  - textbox "Nome do site ou do projeto"
+  - combobox:
+    - generic: Propriedade
+  - combobox "Tags":
+    - generic: Tags
+  - switch "Visualização de tabela (somente SEO)"
+  - generic: Visualização de tabela (somente SEO)
+  - link "comparador.roadrunners.run":
+    - /url: /seo/31636697/?fid=13882084
+    - generic: comparador.roadrunners.run
+  - link "comparador.roadrunners.run":
+    - /url: https://comparador.roadrunners.run
+    - generic: comparador.roadrunners.run
+  - group "tags do projeto"
+  - button "Configurações":
+  - generic: Visibilidade na IA
+  - link "23":
+    - /url: /ai-seo/overview/?q=comparador.roadrunners.run
+    - generic: "23"
+  - generic: Menções
+  - link "47":
+    - /url: /ai-seo/overview/?q=comparador.roadrunners.run
+    - generic: "47"
+  - generic: Site Health
+  - link "83%":
+    - /url: /siteaudit/campaign/31636697/review/overview/
+    - generic: 83%
+  - generic: Visibilidade
+  - link "0%":
+    - /url: /tracking/landscape/31636697_5658410.html?fid=13882084
+    - generic: 0%
+  - link "0":
+    - /url: /tracking/landscape/31636697_5658410.html?fid=13882084
+    - generic: "0"
+  - text: ","
+  - generic: há 13 h
+  - generic: Tráfego orgânico
+  - link "n.d.":
+    - /url: /analytics/overview/?q=comparador.roadrunners.run&searchType=subdomain
+    - generic: n.d.
+  - generic: Palavras-chave orgânicas
+  - link "n.d.":
+    - /url: /analytics/organic/overview/?q=comparador.roadrunners.run&searchType=subdomain
+    - generic: n.d.
+  - generic: Backlinks
+  - link "n.d.":
+    - /url: /analytics/backlinks/overview/?q=comparador.roadrunners.run&searchType=subdomain
+    - generic: n.d.
+  - link "econrio.com.br":
+    - /url: /seo/31484259/?fid=13721380
+    - generic: econrio.com.br
+  - link "econrio.com.br":
+    - /url: https://econrio.com.br
+    - generic: econrio.com.br
+  - group "tags do projeto"
+  - button "Configurações":
+  - generic: Visibilidade na IA
+  - link "26":
+    - /url: /ai-seo/overview/?q=econrio.com.br
+    - generic: "26"
+  - generic: Menções
+  - link "25":
+    - /url: /ai-seo/overview/?q=econrio.com.br
+    - generic: "25"
+  - generic: Site Health
+  - link "80%":
+    - /url: /siteaudit/campaign/31484259/review/overview/
+    - generic: 80%
+  - generic: Visibilidade
+  - link "34,06%":
+    - /url: /tracking/landscape/31484259_5594920.html?fid=13721380
+    - generic: 34,06%
+  - link "-0,12":
+    - /url: /tracking/landscape/31484259_5594920.html?fid=13721380
+    - generic: "-0,12"
+  - generic: há 15 h
+  - generic: Tráfego orgânico
+  - link "6,7 mil":
+    - /url: /analytics/overview/?q=econrio.com.br&searchType=domain
+    - generic: 6,7 mil
+  - link "-4,37%":
+    - /url: /analytics/overview/?q=econrio.com.br&searchType=domain
+    - generic: "-4,37%"
+  - generic: Palavras-chave orgânicas
+  - link "7 mil":
+    - /url: /analytics/organic/overview/?q=econrio.com.br&searchType=domain
+    - generic: 7 mil
+  - link "+78,07%":
+    - /url: /analytics/organic/overview/?q=econrio.com.br&searchType=domain
+    - generic: +78,07%
+  - generic: Backlinks
+  - link "413 mil":
+    - /url: /analytics/backlinks/overview/?q=econrio.com.br&searchType=domain
+    - generic: 413 mil
+  - link "+0,19%":
+    - /url: /analytics/backlinks/overview/?q=econrio.com.br&searchType=domain
+    - generic: +0,19%
+  - link "Maratona de Floripa":
+    - /url: /seo/31470330/?fid=8618125
+    - generic: Maratona de Floripa
+  - link "maratonadefloripa.com.br":
+    - /url: https://maratonadefloripa.com.br
+    - generic: maratonadefloripa.com.br
+  - group "tags do projeto"
+  - button "Configurações":
+  - generic: Visibilidade na IA
+  - link "27":
+    - /url: /ai-seo/overview/?q=maratonadefloripa.com.br
+    - generic: "27"
+  - generic: Menções
+  - link "44":
+    - /url: /ai-seo/overview/?q=maratonadefloripa.com.br
+    - generic: "44"
+  - generic: Site Health
+  - link "89%":
+    - /url: /siteaudit/campaign/31470330/review/overview/
+    - generic: 89%
+  - link "0":
+    - /url: /siteaudit/campaign/31470330/review/overview/
+    - generic: "0"
+  - generic: Visibilidade
+  - link "47,43%":
+    - /url: /tracking/landscape/31470330_5588638.html?fid=8618125
+    - generic: 47,43%
+  - link "-2,56":
+    - /url: /tracking/landscape/31470330_5588638.html?fid=8618125
+    - generic: "-2,56"
+  - generic: há 15 h
+  - generic: Tráfego orgânico
+  - link "2,9 mil":
+    - /url: /analytics/overview/?q=maratonadefloripa.com.br&searchType=domain
+    - generic: 2,9 mil
+  - link "-23,05%":
+    - /url: /analytics/overview/?q=maratonadefloripa.com.br&searchType=domain
+    - generic: "-23,05%"
+  - generic: Palavras-chave orgânicas
+  - link "178":
+    - /url: /analytics/organic/overview/?q=maratonadefloripa.com.br&searchType=domain
+    - generic: "178"
+  - link "+6,59%":
+    - /url: /analytics/organic/overview/?q=maratonadefloripa.com.br&searchType=domain
+    - generic: +6,59%
+  - generic: Backlinks
+  - link "846":
+    - /url: /analytics/backlinks/overview/?q=maratonadefloripa.com.br&searchType=domain
+    - generic: "846"
+  - link "+20,68%":
+    - /url: /analytics/backlinks/overview/?q=maratonadefloripa.com.br&searchType=domain
+    - generic: +20,68%
+  - link "Open Results":
+    - /url: /seo/31744040/?fid=13995865
+    - generic: Open Results
+  - link "openresults.run":
+    - /url: https://openresults.run
+    - generic: openresults.run
+  - group "tags do projeto"
+  - button "Configurações":
+  - generic: Visibilidade na IA
+  - link "16":
+    - /url: /ai-seo/overview/?q=openresults.run
+    - generic: "16"
+  - generic: Menções
+  - link "17":
+    - /url: /ai-seo/overview/?q=openresults.run
+    - generic: "17"
+  - generic: Site Health
+  - link "79%":
+    - /url: /siteaudit/campaign/31744040/review/overview/
+    - generic: 79%
+  - link "-8":
+    - /url: /siteaudit/campaign/31744040/review/overview/
+    - generic: "-8"
+  - generic: Visibilidade
+  - link "10,97%":
+    - /url: /tracking/landscape/31744040_5698155.html?fid=13995865
+    - generic: 10,97%
+  - link "+2,14":
+    - /url: /tracking/landscape/31744040_5698155.html?fid=13995865
+    - generic: +2,14
+  - generic: há 18 h
+  - generic: Tráfego orgânico
+  - link "22":
+    - /url: /analytics/overview/?q=openresults.run&searchType=domain
+    - generic: "22"
+  - link "-98,04%":
+    - /url: /analytics/overview/?q=openresults.run&searchType=domain
+    - generic: "-98,04%"
+  - generic: Palavras-chave orgânicas
+  - link "3":
+    - /url: /analytics/organic/overview/?q=openresults.run&searchType=domain
+    - generic: "3"
+  - link "-99,42%":
+    - /url: /analytics/organic/overview/?q=openresults.run&searchType=domain
+    - generic: "-99,42%"
+  - generic: Backlinks
+  - link "196 mil":
+    - /url: /analytics/backlinks/overview/?q=openresults.run&searchType=domain
+    - generic: 196 mil
+  - link "+7,06%":
+    - /url: /analytics/backlinks/overview/?q=openresults.run&searchType=domain
+    - generic: +7,06%
+  - link "Road Runners":
+    - /url: /seo/26661911/?fid=8614846
+    - generic: Road Runners
+  - link "roadrunners.run":
+    - /url: https://roadrunners.run
+    - generic: roadrunners.run
+  - group "tags do projeto"
+  - button "Configurações":
+  - generic: Visibilidade na IA
+  - link "23":
+    - /url: /ai-seo/overview/?q=roadrunners.run
+    - generic: "23"
+  - generic: Menções
+  - link "47":
+    - /url: /ai-seo/overview/?q=roadrunners.run
+    - generic: "47"
+  - generic: Site Health
+  - link "73%":
+    - /url: /siteaudit/campaign/26661911/review/overview/
+    - generic: 73%
+  - link "-6":
+    - /url: /siteaudit/campaign/26661911/review/overview/
+    - generic: "-6"
+  - generic: Visibilidade
+  - link "25%":
+    - /url: /tracking/landscape/26661911_3446845.html?fid=8614846
+    - generic: 25%
+  - link "-0,72":
+    - /url: /tracking/landscape/26661911_3446845.html?fid=8614846
+    - generic: "-0,72"
+  - generic: há 16 h
+  - generic: Tráfego orgânico
+  - link "4 mil":
+    - /url: /analytics/overview/?q=roadrunners.run&searchType=domain
+    - generic: 4 mil
+  - link "+267,15%":
+    - /url: /analytics/overview/?q=roadrunners.run&searchType=domain
+    - generic: +267,15%
+  - generic: Palavras-chave orgânicas
+  - link "1,4 mil":
+    - /url: /analytics/organic/overview/?q=roadrunners.run&searchType=domain
+    - generic: 1,4 mil
+  - link "+40,45%":
+    - /url: /analytics/organic/overview/?q=roadrunners.run&searchType=domain
+    - generic: +40,45%
+  - generic: Backlinks
+  - link "287 mil":
+    - /url: /analytics/backlinks/overview/?q=roadrunners.run&searchType=domain
+    - generic: 287 mil
+  - link "+109,37%":
+    - /url: /analytics/backlinks/overview/?q=roadrunners.run&searchType=domain
+    - generic: +109,37%
+  - heading "Domínios para monitoramento" [level=3]
+  - radiogroup:
+    - radio "Mês" [checked]:
+      - generic: Mês
+    - radio "Ano":
+      - generic: Ano
+  - button "Adicionar domínio":
+    - generic: Adicionar domínio
+  - grid:
+    - rowgroup:
+      - row "Domínio Palavras-chave orgânicas Tráfego orgânico Palavras-chave pagas Tráfego pago Domínios de ref. Authority Score":
+        - columnheader "Domínio":
+          - generic: Domínio
+        - columnheader "Palavras-chave orgânicas":
+          - generic: Palavras-chave orgânicas
+        - columnheader "Tráfego orgânico":
+          - generic: Tráfego orgânico
+        - columnheader "Palavras-chave pagas":
+          - generic: Palavras-chave pagas
+        - columnheader "Tráfego pago":
+          - generic: Tráfego pago
+        - columnheader "Domínios de ref.":
+          - generic: Domínios de ref.
+        - columnheader "Authority Score":
+          - generic: Authority Score
+    - generic: Sortable
+    - rowgroup:
+      - row "corridinhas.com.br BR 2,7K -29.47% Chart 3,3K -13.84% Chart 0 0% Chart 0 0% Chart 170 +66.67% Chart Chart 20 +1 Chart":
+        - gridcell "corridinhas.com.br BR":
+          - link "corridinhas.com.br":
+            - /url: /analytics/overview/?q=corridinhas.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: corridinhas.com.br
+          - link:
+            - /url: //corridinhas.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "2,7K -29.47% Chart":
+          - link "2,7K":
+            - /url: /analytics/organic/positions/?q=corridinhas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-29.47%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "3,3K -13.84% Chart":
+          - link "3,3K":
+            - /url: /analytics/organic/positions/?q=corridinhas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-13.84%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=corridinhas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=corridinhas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "170 +66.67% Chart":
+          - link "170":
+            - /url: /analytics/backlinks/overview/?q=corridinhas.com.br&fid=13995865
+          - generic: +66.67%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 20 +1 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "20":
+            - /url: /analytics/backlinks/overview/?q=corridinhas.com.br&fid=13995865
+          - generic: "+1"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "ticketsports.com.br BR 28,1K +33.1% Chart 167,7K -4.28% Chart 15 +15.38% Chart 112 -36.72% Chart 9,3K +27.05% Chart Chart 49 +1 Chart":
+        - gridcell "ticketsports.com.br BR":
+          - link "ticketsports.com.br":
+            - /url: /analytics/overview/?q=ticketsports.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: ticketsports.com.br
+          - link:
+            - /url: //ticketsports.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "28,1K +33.1% Chart":
+          - link "28,1K":
+            - /url: /analytics/organic/positions/?q=ticketsports.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: +33.1%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "167,7K -4.28% Chart":
+          - link "167,7K":
+            - /url: /analytics/organic/positions/?q=ticketsports.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-4.28%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "15 +15.38% Chart":
+          - link "15":
+            - /url: /analytics/adwords/positions/?q=ticketsports.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: +15.38%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "112 -36.72% Chart":
+          - link "112":
+            - /url: /analytics/adwords/positions/?q=ticketsports.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-36.72%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "9,3K +27.05% Chart":
+          - link "9,3K":
+            - /url: /analytics/backlinks/overview/?q=ticketsports.com.br&fid=13995865
+          - generic: +27.05%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 49 +1 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "49":
+            - /url: /analytics/backlinks/overview/?q=ticketsports.com.br&fid=13995865
+          - generic: "+1"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "corridasbr.com.br BR 5,3K -11.6% Chart 21,7K -4.15% Chart 0 0% Chart 0 0% Chart 809 +7.72% Chart Chart 30 0 Chart":
+        - gridcell "corridasbr.com.br BR":
+          - link "corridasbr.com.br":
+            - /url: /analytics/overview/?q=corridasbr.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: corridasbr.com.br
+          - link:
+            - /url: //corridasbr.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "5,3K -11.6% Chart":
+          - link "5,3K":
+            - /url: /analytics/organic/positions/?q=corridasbr.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-11.6%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "21,7K -4.15% Chart":
+          - link "21,7K":
+            - /url: /analytics/organic/positions/?q=corridasbr.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-4.15%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=corridasbr.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=corridasbr.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "809 +7.72% Chart":
+          - link "809":
+            - /url: /analytics/backlinks/overview/?q=corridasbr.com.br&fid=13995865
+          - generic: +7.72%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 30 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "30":
+            - /url: /analytics/backlinks/overview/?q=corridasbr.com.br&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "ativo.com BR 43,1K -2.4% Chart 114,1K -24.49% Chart 0 0% Chart 0 0% Chart 5,8K +39.02% Chart Chart 47 0 Chart":
+        - gridcell "ativo.com BR":
+          - link "ativo.com":
+            - /url: /analytics/overview/?q=ativo.com&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: ativo.com
+          - link:
+            - /url: //ativo.com
+          - generic: BR
+          - separator
+          - button
+        - gridcell "43,1K -2.4% Chart":
+          - link "43,1K":
+            - /url: /analytics/organic/positions/?q=ativo.com&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-2.4%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "114,1K -24.49% Chart":
+          - link "114,1K":
+            - /url: /analytics/organic/positions/?q=ativo.com&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-24.49%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=ativo.com&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=ativo.com&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "5,8K +39.02% Chart":
+          - link "5,8K":
+            - /url: /analytics/backlinks/overview/?q=ativo.com&fid=13995865
+          - generic: +39.02%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 47 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "47":
+            - /url: /analytics/backlinks/overview/?q=ativo.com&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "focoradical.com.br BR 15,7K +20.04% Chart 497,2K +17.69% Chart 0 0% Chart 0 0% Chart 5,4K +174.29% Chart Chart 49 0 Chart":
+        - gridcell "focoradical.com.br BR":
+          - link "focoradical.com.br":
+            - /url: /analytics/overview/?q=focoradical.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: focoradical.com.br
+          - link:
+            - /url: //focoradical.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "15,7K +20.04% Chart":
+          - link "15,7K":
+            - /url: /analytics/organic/positions/?q=focoradical.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: +20.04%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "497,2K +17.69% Chart":
+          - link "497,2K":
+            - /url: /analytics/organic/positions/?q=focoradical.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +17.69%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=focoradical.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=focoradical.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "5,4K +174.29% Chart":
+          - link "5,4K":
+            - /url: /analytics/backlinks/overview/?q=focoradical.com.br&fid=13995865
+          - generic: +174.29%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 49 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "49":
+            - /url: /analytics/backlinks/overview/?q=focoradical.com.br&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "webrun.com.br BR 18,9K -3% Chart 10,7K -1.72% Chart 0 0% Chart 0 0% Chart 2,5K +0.78% Chart Chart 35 0 Chart":
+        - gridcell "webrun.com.br BR":
+          - link "webrun.com.br":
+            - /url: /analytics/overview/?q=webrun.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: webrun.com.br
+          - link:
+            - /url: //webrun.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "18,9K -3% Chart":
+          - link "18,9K":
+            - /url: /analytics/organic/positions/?q=webrun.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-3%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "10,7K -1.72% Chart":
+          - link "10,7K":
+            - /url: /analytics/organic/positions/?q=webrun.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-1.72%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=webrun.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=webrun.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "2,5K +0.78% Chart":
+          - link "2,5K":
+            - /url: /analytics/backlinks/overview/?q=webrun.com.br&fid=13995865
+          - generic: +0.78%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 35 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "35":
+            - /url: /analytics/backlinks/overview/?q=webrun.com.br&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "fotop.com.br BR 20K -2.63% Chart 45,4K +7.61% Chart 0 0% Chart 0 0% Chart 4,7K +94.97% Chart Chart 42 +1 Chart":
+        - gridcell "fotop.com.br BR":
+          - link "fotop.com.br":
+            - /url: /analytics/overview/?q=fotop.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: fotop.com.br
+          - link:
+            - /url: //fotop.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "20K -2.63% Chart":
+          - link "20K":
+            - /url: /analytics/organic/positions/?q=fotop.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-2.63%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "45,4K +7.61% Chart":
+          - link "45,4K":
+            - /url: /analytics/organic/positions/?q=fotop.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +7.61%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=fotop.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=fotop.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "4,7K +94.97% Chart":
+          - link "4,7K":
+            - /url: /analytics/backlinks/overview/?q=fotop.com.br&fid=13995865
+          - generic: +94.97%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 42 +1 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "42":
+            - /url: /analytics/backlinks/overview/?q=fotop.com.br&fid=13995865
+          - generic: "+1"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "roadrunners.run BR 1,3K +41.3% Chart 3,9K +260.71% Chart 0 0% Chart 0 0% Chart 689 +18.59% Chart Chart 22 0 Chart":
+        - gridcell "roadrunners.run BR":
+          - link "roadrunners.run":
+            - /url: /analytics/overview/?q=roadrunners.run&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: roadrunners.run
+          - link:
+            - /url: //roadrunners.run
+          - generic: BR
+          - separator
+          - button
+        - gridcell "1,3K +41.3% Chart":
+          - link "1,3K":
+            - /url: /analytics/organic/positions/?q=roadrunners.run&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: +41.3%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "3,9K +260.71% Chart":
+          - link "3,9K":
+            - /url: /analytics/organic/positions/?q=roadrunners.run&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +260.71%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=roadrunners.run&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=roadrunners.run&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "689 +18.59% Chart":
+          - link "689":
+            - /url: /analytics/backlinks/overview/?q=roadrunners.run&fid=13995865
+          - generic: +18.59%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 22 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "22":
+            - /url: /analytics/backlinks/overview/?q=roadrunners.run&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "openresults.run BR 479 +0% Chart 1,1K +0% Chart 0 0% Chart 0 0% Chart 745 -0.8% Chart Chart 5 0 Chart":
+        - gridcell "openresults.run BR":
+          - link "openresults.run":
+            - /url: /analytics/overview/?q=openresults.run&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: openresults.run
+          - link:
+            - /url: //openresults.run
+          - generic: BR
+          - separator
+          - button
+        - gridcell "479 +0% Chart":
+          - link "479":
+            - /url: /analytics/organic/positions/?q=openresults.run&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: +0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "1,1K +0% Chart":
+          - link "1,1K":
+            - /url: /analytics/organic/positions/?q=openresults.run&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=openresults.run&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=openresults.run&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "745 -0.8% Chart":
+          - link "745":
+            - /url: /analytics/backlinks/overview/?q=openresults.run&fid=13995865
+          - generic: "-0.8%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 5 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "5":
+            - /url: /analytics/backlinks/overview/?q=openresults.run&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "soucorredor.com.br BR 3,6K -4.81% Chart 5K +4.29% Chart 0 0% Chart 0 0% Chart 399 +33.89% Chart Chart 24 -1 Chart":
+        - gridcell "soucorredor.com.br BR":
+          - link "soucorredor.com.br":
+            - /url: /analytics/overview/?q=soucorredor.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: soucorredor.com.br
+          - link:
+            - /url: //soucorredor.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "3,6K -4.81% Chart":
+          - link "3,6K":
+            - /url: /analytics/organic/positions/?q=soucorredor.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-4.81%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "5K +4.29% Chart":
+          - link "5K":
+            - /url: /analytics/organic/positions/?q=soucorredor.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +4.29%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=soucorredor.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=soucorredor.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "399 +33.89% Chart":
+          - link "399":
+            - /url: /analytics/backlinks/overview/?q=soucorredor.com.br&fid=13995865
+          - generic: +33.89%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 24 -1 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "24":
+            - /url: /analytics/backlinks/overview/?q=soucorredor.com.br&fid=13995865
+          - generic: "-1"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "catarinarun.com.br BR 862 -3.15% Chart 2,2K -10.79% Chart 0 0% Chart 0 0% Chart 354 +22.92% Chart Chart 19 -3 Chart":
+        - gridcell "catarinarun.com.br BR":
+          - link "catarinarun.com.br":
+            - /url: /analytics/overview/?q=catarinarun.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: catarinarun.com.br
+          - link:
+            - /url: //catarinarun.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "862 -3.15% Chart":
+          - link "862":
+            - /url: /analytics/organic/positions/?q=catarinarun.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-3.15%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "2,2K -10.79% Chart":
+          - link "2,2K":
+            - /url: /analytics/organic/positions/?q=catarinarun.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-10.79%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=catarinarun.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=catarinarun.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "354 +22.92% Chart":
+          - link "354":
+            - /url: /analytics/backlinks/overview/?q=catarinarun.com.br&fid=13995865
+          - generic: +22.92%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 19 -3 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "19":
+            - /url: /analytics/backlinks/overview/?q=catarinarun.com.br&fid=13995865
+          - generic: "-3"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "corridasemaratonas.com.br BR 936 -6.49% Chart 409 +13.3% Chart 0 0% Chart 0 0% Chart 344 +39.27% Chart Chart 10 0 Chart":
+        - gridcell "corridasemaratonas.com.br BR":
+          - link "corridasemaratonas.com.br":
+            - /url: /analytics/overview/?q=corridasemaratonas.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: corridasemaratonas.com.br
+          - link:
+            - /url: //corridasemaratonas.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "936 -6.49% Chart":
+          - link "936":
+            - /url: /analytics/organic/positions/?q=corridasemaratonas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-6.49%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "409 +13.3% Chart":
+          - link "409":
+            - /url: /analytics/organic/positions/?q=corridasemaratonas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +13.3%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=corridasemaratonas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=corridasemaratonas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "344 +39.27% Chart":
+          - link "344":
+            - /url: /analytics/backlinks/overview/?q=corridasemaratonas.com.br&fid=13995865
+          - generic: +39.27%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 10 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "10":
+            - /url: /analytics/backlinks/overview/?q=corridasemaratonas.com.br&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "movnow.com.br BR 368 -4.42% Chart 811 +10.04% Chart 0 0% Chart 0 0% Chart 423 +23.68% Chart Chart 24 0 Chart":
+        - gridcell "movnow.com.br BR":
+          - link "movnow.com.br":
+            - /url: /analytics/overview/?q=movnow.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: movnow.com.br
+          - link:
+            - /url: //movnow.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "368 -4.42% Chart":
+          - link "368":
+            - /url: /analytics/organic/positions/?q=movnow.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-4.42%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "811 +10.04% Chart":
+          - link "811":
+            - /url: /analytics/organic/positions/?q=movnow.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +10.04%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=movnow.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=movnow.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "423 +23.68% Chart":
+          - link "423":
+            - /url: /analytics/backlinks/overview/?q=movnow.com.br&fid=13995865
+          - generic: +23.68%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 24 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "24":
+            - /url: /analytics/backlinks/overview/?q=movnow.com.br&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "corridanoar.com BR 203 -31.65% Chart 52 -82.78% Chart 0 0% Chart 0 0% Chart 1,5K +304.01% Chart Chart 21 +2 Chart":
+        - gridcell "corridanoar.com BR":
+          - link "corridanoar.com":
+            - /url: /analytics/overview/?q=corridanoar.com&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: corridanoar.com
+          - link:
+            - /url: //corridanoar.com
+          - generic: BR
+          - separator
+          - button
+        - gridcell "203 -31.65% Chart":
+          - link "203":
+            - /url: /analytics/organic/positions/?q=corridanoar.com&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-31.65%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "52 -82.78% Chart":
+          - link "52":
+            - /url: /analytics/organic/positions/?q=corridanoar.com&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-82.78%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=corridanoar.com&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=corridanoar.com&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "1,5K +304.01% Chart":
+          - link "1,5K":
+            - /url: /analytics/backlinks/overview/?q=corridanoar.com&fid=13995865
+          - generic: +304.01%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 21 +2 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "21":
+            - /url: /analytics/backlinks/overview/?q=corridanoar.com&fid=13995865
+          - generic: "+2"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "jornalcorrida.com.br BR 227 -5.42% Chart 107 -31.85% Chart 0 0% Chart 0 0% Chart 476 +35.61% Chart Chart 13 -1 Chart":
+        - gridcell "jornalcorrida.com.br BR":
+          - link "jornalcorrida.com.br":
+            - /url: /analytics/overview/?q=jornalcorrida.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: jornalcorrida.com.br
+          - link:
+            - /url: //jornalcorrida.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "227 -5.42% Chart":
+          - link "227":
+            - /url: /analytics/organic/positions/?q=jornalcorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-5.42%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "107 -31.85% Chart":
+          - link "107":
+            - /url: /analytics/organic/positions/?q=jornalcorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-31.85%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=jornalcorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=jornalcorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "476 +35.61% Chart":
+          - link "476":
+            - /url: /analytics/backlinks/overview/?q=jornalcorrida.com.br&fid=13995865
+          - generic: +35.61%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 13 -1 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "13":
+            - /url: /analytics/backlinks/overview/?q=jornalcorrida.com.br&fid=13995865
+          - generic: "-1"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "chelso.com.br BR 1,9K -13.67% Chart 6,2K +14.03% Chart 0 0% Chart 0 0% Chart 788 +10.52% Chart Chart 28 0 Chart":
+        - gridcell "chelso.com.br BR":
+          - link "chelso.com.br":
+            - /url: /analytics/overview/?q=chelso.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: chelso.com.br
+          - link:
+            - /url: //chelso.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "1,9K -13.67% Chart":
+          - link "1,9K":
+            - /url: /analytics/organic/positions/?q=chelso.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-13.67%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "6,2K +14.03% Chart":
+          - link "6,2K":
+            - /url: /analytics/organic/positions/?q=chelso.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +14.03%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=chelso.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=chelso.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "788 +10.52% Chart":
+          - link "788":
+            - /url: /analytics/backlinks/overview/?q=chelso.com.br&fid=13995865
+          - generic: +10.52%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 28 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "28":
+            - /url: /analytics/backlinks/overview/?q=chelso.com.br&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "o2corre.com.br BR 12,7K -4.46% Chart 19,9K -18.03% Chart 0 0% Chart 0 0% Chart 641 +16.97% Chart Chart 35 +1 Chart":
+        - gridcell "o2corre.com.br BR":
+          - link "o2corre.com.br":
+            - /url: /analytics/overview/?q=o2corre.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: o2corre.com.br
+          - link:
+            - /url: //o2corre.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "12,7K -4.46% Chart":
+          - link "12,7K":
+            - /url: /analytics/organic/positions/?q=o2corre.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-4.46%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "19,9K -18.03% Chart":
+          - link "19,9K":
+            - /url: /analytics/organic/positions/?q=o2corre.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-18.03%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=o2corre.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=o2corre.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "641 +16.97% Chart":
+          - link "641":
+            - /url: /analytics/backlinks/overview/?q=o2corre.com.br&fid=13995865
+          - generic: +16.97%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 35 +1 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "35":
+            - /url: /analytics/backlinks/overview/?q=o2corre.com.br&fid=13995865
+          - generic: "+1"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "centraldacorrida.com.br BR 3,6K +12.97% Chart 23K -47.25% Chart 0 0% Chart 0 0% Chart 2,1K +1.89% Chart Chart 37 -1 Chart":
+        - gridcell "centraldacorrida.com.br BR":
+          - link "centraldacorrida.com.br":
+            - /url: /analytics/overview/?q=centraldacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: centraldacorrida.com.br
+          - link:
+            - /url: //centraldacorrida.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "3,6K +12.97% Chart":
+          - link "3,6K":
+            - /url: /analytics/organic/positions/?q=centraldacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: +12.97%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "23K -47.25% Chart":
+          - link "23K":
+            - /url: /analytics/organic/positions/?q=centraldacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-47.25%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=centraldacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=centraldacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "2,1K +1.89% Chart":
+          - link "2,1K":
+            - /url: /analytics/backlinks/overview/?q=centraldacorrida.com.br&fid=13995865
+          - generic: +1.89%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 37 -1 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "37":
+            - /url: /analytics/backlinks/overview/?q=centraldacorrida.com.br&fid=13995865
+          - generic: "-1"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "portaldascorridas.com.br BR 1,4K -12.75% Chart 12,2K +16.25% Chart 0 0% Chart 0 0% Chart 469 +24.73% Chart Chart 28 +1 Chart":
+        - gridcell "portaldascorridas.com.br BR":
+          - link "portaldascorridas.com.br":
+            - /url: /analytics/overview/?q=portaldascorridas.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: portaldascorridas.com.br
+          - link:
+            - /url: //portaldascorridas.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "1,4K -12.75% Chart":
+          - link "1,4K":
+            - /url: /analytics/organic/positions/?q=portaldascorridas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-12.75%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "12,2K +16.25% Chart":
+          - link "12,2K":
+            - /url: /analytics/organic/positions/?q=portaldascorridas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +16.25%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=portaldascorridas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=portaldascorridas.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "469 +24.73% Chart":
+          - link "469":
+            - /url: /analytics/backlinks/overview/?q=portaldascorridas.com.br&fid=13995865
+          - generic: +24.73%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 28 +1 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "28":
+            - /url: /analytics/backlinks/overview/?q=portaldascorridas.com.br&fid=13995865
+          - generic: "+1"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "finishers.com BR 3,1K -3.94% Chart 8,5K +3.88% Chart 0 0% Chart 0 0% Chart 11,3K +22.32% Chart Chart 51 +1 Chart":
+        - gridcell "finishers.com BR":
+          - link "finishers.com":
+            - /url: /analytics/overview/?q=finishers.com&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: finishers.com
+          - link:
+            - /url: //finishers.com
+          - generic: BR
+          - separator
+          - button
+        - gridcell "3,1K -3.94% Chart":
+          - link "3,1K":
+            - /url: /analytics/organic/positions/?q=finishers.com&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-3.94%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "8,5K +3.88% Chart":
+          - link "8,5K":
+            - /url: /analytics/organic/positions/?q=finishers.com&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +3.88%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=finishers.com&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=finishers.com&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "11,3K +22.32% Chart":
+          - link "11,3K":
+            - /url: /analytics/backlinks/overview/?q=finishers.com&fid=13995865
+          - generic: +22.32%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 51 +1 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "51":
+            - /url: /analytics/backlinks/overview/?q=finishers.com&fid=13995865
+          - generic: "+1"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "brasilcorrida.com.br BR 700 +10.76% Chart 10,5K +33.29% Chart 0 0% Chart 0 0% Chart 684 +9.62% Chart Chart 28 -1 Chart":
+        - gridcell "brasilcorrida.com.br BR":
+          - link "brasilcorrida.com.br":
+            - /url: /analytics/overview/?q=brasilcorrida.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: brasilcorrida.com.br
+          - link:
+            - /url: //brasilcorrida.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "700 +10.76% Chart":
+          - link "700":
+            - /url: /analytics/organic/positions/?q=brasilcorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: +10.76%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "10,5K +33.29% Chart":
+          - link "10,5K":
+            - /url: /analytics/organic/positions/?q=brasilcorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +33.29%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=brasilcorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=brasilcorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "684 +9.62% Chart":
+          - link "684":
+            - /url: /analytics/backlinks/overview/?q=brasilcorrida.com.br&fid=13995865
+          - generic: +9.62%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 28 -1 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "28":
+            - /url: /analytics/backlinks/overview/?q=brasilcorrida.com.br&fid=13995865
+          - generic: "-1"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "suacorrida.com.br BR 1,4K -10.87% Chart 1,8K +165.28% Chart 0 0% Chart 0 0% Chart 810 +11.72% Chart Chart 27 0 Chart":
+        - gridcell "suacorrida.com.br BR":
+          - link "suacorrida.com.br":
+            - /url: /analytics/overview/?q=suacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: suacorrida.com.br
+          - link:
+            - /url: //suacorrida.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "1,4K -10.87% Chart":
+          - link "1,4K":
+            - /url: /analytics/organic/positions/?q=suacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-10.87%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "1,8K +165.28% Chart":
+          - link "1,8K":
+            - /url: /analytics/organic/positions/?q=suacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +165.28%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=suacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=suacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "810 +11.72% Chart":
+          - link "810":
+            - /url: /analytics/backlinks/overview/?q=suacorrida.com.br&fid=13995865
+          - generic: +11.72%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 27 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "27":
+            - /url: /analytics/backlinks/overview/?q=suacorrida.com.br&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "runnerbrasil.com.br BR 992 -2.36% Chart 6,4K -7.01% Chart 0 0% Chart 0 0% Chart 1,1K +3.53% Chart Chart 29 0 Chart":
+        - gridcell "runnerbrasil.com.br BR":
+          - link "runnerbrasil.com.br":
+            - /url: /analytics/overview/?q=runnerbrasil.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: runnerbrasil.com.br
+          - link:
+            - /url: //runnerbrasil.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "992 -2.36% Chart":
+          - link "992":
+            - /url: /analytics/organic/positions/?q=runnerbrasil.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-2.36%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "6,4K -7.01% Chart":
+          - link "6,4K":
+            - /url: /analytics/organic/positions/?q=runnerbrasil.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-7.01%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=runnerbrasil.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=runnerbrasil.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "1,1K +3.53% Chart":
+          - link "1,1K":
+            - /url: /analytics/backlinks/overview/?q=runnerbrasil.com.br&fid=13995865
+          - generic: +3.53%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 29 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "29":
+            - /url: /analytics/backlinks/overview/?q=runnerbrasil.com.br&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "cbat.org.br BR 8K +41.5% Chart 23K -11.31% Chart 0 0% Chart 0 0% Chart 2,8K -0.04% Chart Chart 40 0 Chart":
+        - gridcell "cbat.org.br BR":
+          - link "cbat.org.br":
+            - /url: /analytics/overview/?q=cbat.org.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: cbat.org.br
+          - link:
+            - /url: //cbat.org.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "8K +41.5% Chart":
+          - link "8K":
+            - /url: /analytics/organic/positions/?q=cbat.org.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: +41.5%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "23K -11.31% Chart":
+          - link "23K":
+            - /url: /analytics/organic/positions/?q=cbat.org.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: "-11.31%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=cbat.org.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=cbat.org.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "2,8K -0.04% Chart":
+          - link "2,8K":
+            - /url: /analytics/backlinks/overview/?q=cbat.org.br&fid=13995865
+          - generic: "-0.04%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 40 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "40":
+            - /url: /analytics/backlinks/overview/?q=cbat.org.br&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "contrarelogio.com.br BR 2K -10.99% Chart 2,2K +0.72% Chart 0 0% Chart 0 0% Chart 818 +16.36% Chart Chart 27 +1 Chart":
+        - gridcell "contrarelogio.com.br BR":
+          - link "contrarelogio.com.br":
+            - /url: /analytics/overview/?q=contrarelogio.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: contrarelogio.com.br
+          - link:
+            - /url: //contrarelogio.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "2K -10.99% Chart":
+          - link "2K":
+            - /url: /analytics/organic/positions/?q=contrarelogio.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-10.99%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "2,2K +0.72% Chart":
+          - link "2,2K":
+            - /url: /analytics/organic/positions/?q=contrarelogio.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +0.72%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=contrarelogio.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=contrarelogio.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "818 +16.36% Chart":
+          - link "818":
+            - /url: /analytics/backlinks/overview/?q=contrarelogio.com.br&fid=13995865
+          - generic: +16.36%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 27 +1 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "27":
+            - /url: /analytics/backlinks/overview/?q=contrarelogio.com.br&fid=13995865
+          - generic: "+1"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "portaldocorredor.com.br BR 37 -15.91% Chart 1,3K +606.56% Chart 0 0% Chart 0 0% Chart 331 +34.55% Chart Chart 24 -2 Chart":
+        - gridcell "portaldocorredor.com.br BR":
+          - link "portaldocorredor.com.br":
+            - /url: /analytics/overview/?q=portaldocorredor.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: portaldocorredor.com.br
+          - link:
+            - /url: //portaldocorredor.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "37 -15.91% Chart":
+          - link "37":
+            - /url: /analytics/organic/positions/?q=portaldocorredor.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: "-15.91%"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "1,3K +606.56% Chart":
+          - link "1,3K":
+            - /url: /analytics/organic/positions/?q=portaldocorredor.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +606.56%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=portaldocorredor.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=portaldocorredor.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "331 +34.55% Chart":
+          - link "331":
+            - /url: /analytics/backlinks/overview/?q=portaldocorredor.com.br&fid=13995865
+          - generic: +34.55%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 24 -2 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "24":
+            - /url: /analytics/backlinks/overview/?q=portaldocorredor.com.br&fid=13995865
+          - generic: "-2"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+      - row "guiadacorrida.com.br BR 1K +30.4% Chart 320 +29.03% Chart 0 0% Chart 0 0% Chart 346 +36.76% Chart Chart 8 0 Chart":
+        - gridcell "guiadacorrida.com.br BR":
+          - link "guiadacorrida.com.br":
+            - /url: /analytics/overview/?q=guiadacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&fid=13995865
+            - generic: guiadacorrida.com.br
+          - link:
+            - /url: //guiadacorrida.com.br
+          - generic: BR
+          - separator
+          - button
+        - gridcell "1K +30.4% Chart":
+          - link "1K":
+            - /url: /analytics/organic/positions/?q=guiadacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: +30.4%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "320 +29.03% Chart":
+          - link "320":
+            - /url: /analytics/organic/positions/?q=guiadacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: +29.03%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=guiadacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=keywords&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "0 0% Chart":
+          - link "0":
+            - /url: /analytics/adwords/positions/?q=guiadacorrida.com.br&db=br&searchType=domain&chartPeriod=1m&chartType=traffic&fid=13995865
+          - generic: 0%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "346 +36.76% Chart":
+          - link "346":
+            - /url: /analytics/backlinks/overview/?q=guiadacorrida.com.br&fid=13995865
+          - generic: +36.76%
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+        - gridcell "Chart 8 0 Chart":
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+          - link "8":
+            - /url: /analytics/backlinks/overview/?q=guiadacorrida.com.br&fid=13995865
+          - generic: "0"
+          - img "Chart":
+            - generic: Pressione "Tab" para habilitar o módulo de acessibilidade a gráficos.
+  - button "Enviar comentário":
+    - text: Enviar comentário
+- contentinfo:
+  - link "Fale conosco":
+    - /url: /company/contacts/
+  - link "Sobre nós":
+    - /url: /company/
+  - link "Blog":
+    - /url: /blog/
+  - button "Português (Brasil)"
+  - link "Ver planos e preços":
+    - /url: /pricing/
+  - link "Comece a usar a Semrush":
+    - /url: https://www.semrush.com/academy/courses/getting-started-with-semrush/
+  - link "Configurações dos cookies":
+    - /url: javascript:window.showConsentSettings();
+  - link "Informações jurídicas":
+    - /url: /company/legal/
+  - link "Política de privacidade":
+    - /url: /company/legal/privacy-policy/
+  - link "Não venda minhas informações pessoais":
+    - /url: javascript:window.showConsentSettings();
+  - generic: © 2026 Semrush Holdings. Todos os direitos reservados.
+- region "Notificações"
+- button "Abrir painel de ajuda"
+- iframe [id="intercom-frame"]
+- region "Notificações"
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status

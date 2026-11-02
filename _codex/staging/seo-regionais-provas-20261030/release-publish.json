@@ -1,0 +1,12 @@
+{
+  "published": [
+    "includes/backend/backend_permanent_race.cfm",
+    "includes/permanent_race_overview.cfm",
+    "includes/regional_races.cfm",
+    "assets/css/runnerhub-race-guides.css",
+    "estado/index.cfm",
+    "maratona/index.cfm"
+  ],
+  "backup": "/var/backups/seo-regionais-provas-20261030/baseline",
+  "published_at": "2026-10-30T15:55:51.060891+00:00"
+}

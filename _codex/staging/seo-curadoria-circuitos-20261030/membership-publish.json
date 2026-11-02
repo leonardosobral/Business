@@ -1,0 +1,24 @@
+{
+  "events": [
+    {
+      "id": 46508,
+      "hash": "e3a319039586c4b648eeaddb5e35bac3"
+    },
+    {
+      "id": 46521,
+      "hash": "fccb2b38d8cfca6eb4fb5604e27b3dc4"
+    }
+  ],
+  "memberships": [
+    {
+      "id_evento": 46508,
+      "agregador_tag": "estacoes",
+      "percursos": null
+    },
+    {
+      "id_evento": 46521,
+      "agregador_tag": "estacoes",
+      "percursos": null
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "names": [
+    "maratona/index.cfm",
+    "circuito/index.cfm",
+    "includes/backend/backend_permanent_race.cfm",
+    "includes/permanent_race_overview.cfm",
+    "includes/permanent_race_editorial.cfm"
+  ],
+  "before": {
+    "maratona/index.cfm": "f7bdc2ef8cd1b47bcdaf8b0fb0d06c21c14ccd6c22d94e83374527f1248b2c06",
+    "circuito/index.cfm": "8744fc21ec683f200406b608c637873a316dcb43873b3e7e28ad461a753a4b9a",
+    "includes/backend/backend_permanent_race.cfm": "1da7ff140d48acfe4b95b7974aa9044b951e8c1ab983adcf8a53d01e897f0aa0",
+    "includes/permanent_race_overview.cfm": "91bc0548f44bf72b243f0889dcdd802d961c6913713f650c413c502bed66db50"
+  },
+  "local": {
+    "maratona/index.cfm": "f7bdc2ef8cd1b47bcdaf8b0fb0d06c21c14ccd6c22d94e83374527f1248b2c06",
+    "circuito/index.cfm": "8744fc21ec683f200406b608c637873a316dcb43873b3e7e28ad461a753a4b9a",
+    "includes/backend/backend_permanent_race.cfm": "1da7ff140d48acfe4b95b7974aa9044b951e8c1ab983adcf8a53d01e897f0aa0",
+    "includes/permanent_race_overview.cfm": "91bc0548f44bf72b243f0889dcdd802d961c6913713f650c413c502bed66db50",
+    "includes/permanent_race_editorial.cfm": null
+  },
+  "watch": {
+    "Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "includes/estrutura/variaveis.cfm": "b4ab09efe0053cdb6b04ac0bf6b864fa718457824989123c27c90467e7e365aa",
+    "includes/estrutura/head.cfm": "84258c3f09772972a39d3f1870f46da6c598f6f218b2b192f6fb843f84695896",
+    "includes/estrutura/header.cfm": "69d0bf927acc0c8c8b878f43a5383fa23f2120546f992d1bc04e76ac2f632202",
+    ".htaccess": "3866eeac7aa05ceb1fe135a649618d531ca9d23edf42f77e3e6129ecce922688"
+  }
+}

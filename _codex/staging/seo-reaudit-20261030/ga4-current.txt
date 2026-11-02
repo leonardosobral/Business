@@ -1,0 +1,18 @@
+Audiência Google · Road Runners
+
+Dados medidos pelo GA4. Incluem os canais identificados pelo Google; não são a estimativa orgânica do Semrush nem os contadores próprios.
+
+Search Console · ponto de partida das regionais
+
+316 cliques · 10,7 mil impressões · CTR 2,9% · posição média 7,4
+
+Registro manual consultado em 25/10/2026. Pesquisa Web, todos os países e dispositivos, de 26/09 a 23/10/2026. O período antecede as melhorias publicadas em 25/10; estes números não medem o resultado delas. Impressões do resumo arredondadas pelo Google.
+
+Ver páginas, consultas e próximos passos da medição
+
+O Google negou acesso. Confira a permissão da conta na propriedade e habilite Google Analytics Data API e Google Analytics Admin API no projeto Google Cloud da conexão.
+
+Autorize a leitura do Analytics com contato@runnerhub.run. A autorização acontece no Google; as outras integrações do Business continuam usando a mesma conexão.
+
+AUTORIZAR GOOGLE ANALYTICS
+Configuração e limites da medição

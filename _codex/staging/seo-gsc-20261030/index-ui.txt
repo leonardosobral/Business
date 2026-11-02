@@ -1,0 +1,264 @@
+- navigation "Indicadores de localização atual":
+  - heading "Indexação das páginas" [level=1]
+- button "EXPORTAR":
+  - generic: 
+  - generic: EXPORTAR
+- listbox:
+  - option "Todas as páginas conhecidas" [selected]
+  - option "Todas as páginas enviadas"
+  - option "Somente páginas não enviadas"
+  - option "https://comparador.roadrunners.run/sitemap-comparacoes.xml"
+  - option "https://comparador.roadrunners.run/sitemap.xml"
+  - option "https://roadrunners.run/sitemap.xml"
+- generic: "Última atualização: 22/10/2026"
+- main:
+  - button "Não indexadas 117 mil 13 motivos":
+    - generic "Não indexadas":
+      - generic: 
+      - generic: Não indexadas
+    - generic "116.687": 117 mil
+    - generic: 13 motivos
+  - button "null":
+    - generic: 
+  - button "Indexados 21,3 mil":
+    - generic "Indexados":
+      - generic: 
+      - generic: Indexados
+    - generic "21.335": 21,3 mil
+  - button "null":
+    - generic: 
+  - checkbox "Impressões"
+  - generic: Impressões
+  - generic: Páginas
+  - link "Ver dados sobre páginas indexadas":
+    - /url: ./search-console/index/drilldown?resource_id=sc-domain%3Aroadrunners.run&pages=ALL_URLS
+    - generic: check_circle
+    - generic: Ver dados sobre páginas indexadas
+    - generic: 
+  - generic: info_filled
+  - generic: Por que as páginas não foram indexadas
+  - generic: As páginas não indexadas não são exibidas no Google
+  - button "Filtrar linhas da tabela":
+    - generic: 
+  - table:
+    - rowgroup:
+      - row "Motivo Fonte null Validação Tendência Páginas":
+        - columnheader "Motivo":
+          - generic: Motivo
+        - columnheader "Fonte null":
+          - text: Fonte
+          - button "null":
+            - generic: 
+        - columnheader "Validação":
+          - generic: Validação
+        - columnheader "Tendência":
+          - generic: Tendência
+        - columnheader "Páginas":
+          - generic: Páginas
+    - rowgroup:
+      - row "Página alternativa com tag canônica adequada Site Não foi iniciado 12.928":
+        - cell "Página alternativa com tag canônica adequada":
+          - generic "Página alternativa com tag canônica adequada"
+        - cell "Site":
+          - generic: Site
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "12.928":
+          - generic: "12.928"
+      - row "Bloqueada pelo robots.txt Site Não foi iniciado 7.241":
+        - cell "Bloqueada pelo robots.txt":
+          - generic "Bloqueada pelo robots.txt"
+        - cell "Site":
+          - generic: Site
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "7.241":
+          - generic: "7.241"
+      - row "Página com redirecionamento Site Não foi iniciado 3.638":
+        - cell "Página com redirecionamento":
+          - generic "Página com redirecionamento"
+        - cell "Site":
+          - generic: Site
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "3.638":
+          - generic: "3.638"
+      - row "Excluída pela tag \"noindex\" Site Não foi iniciado 473":
+        - cell "Excluída pela tag \"noindex\"":
+          - generic "Excluída pela tag \"noindex\""
+        - cell "Site":
+          - generic: Site
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "473":
+          - generic: "473"
+      - row "Erro soft 404 Site Não foi iniciado 225":
+        - cell "Erro soft 404":
+          - generic "Erro soft 404"
+        - cell "Site":
+          - generic: Site
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "225":
+          - generic: "225"
+      - row "Não encontrado (404) Site Não foi iniciado 80":
+        - cell "Não encontrado (404)":
+          - generic "Não encontrado (404)"
+        - cell "Site":
+          - generic: Site
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "80":
+          - generic: "80"
+      - row "Erro no servidor (5xx) Site Não foi iniciado 34":
+        - cell "Erro no servidor (5xx)":
+          - generic "Erro no servidor (5xx)"
+        - cell "Site":
+          - generic: Site
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "34":
+          - generic: "34"
+      - row "Bloqueada devido a acesso proibido (403) Site Não foi iniciado 5":
+        - cell "Bloqueada devido a acesso proibido (403)":
+          - generic "Bloqueada devido a acesso proibido (403)"
+        - cell "Site":
+          - generic: Site
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "5":
+          - generic: "5"
+      - row "Cópia sem página canônica selecionada pelo usuário Site Não foi iniciado 4":
+        - cell "Cópia sem página canônica selecionada pelo usuário":
+          - generic "Cópia sem página canônica selecionada pelo usuário"
+        - cell "Site":
+          - generic: Site
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "4":
+          - generic: "4"
+      - row "Erro de redirecionamento Site Não foi iniciado 2":
+        - cell "Erro de redirecionamento":
+          - generic "Erro de redirecionamento"
+        - cell "Site":
+          - generic: Site
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "2":
+          - generic: "2"
+      - row "Detectada, mas não indexada no momento Sistemas do Google Não foi iniciado 87.026":
+        - cell "Detectada, mas não indexada no momento":
+          - generic "Detectada, mas não indexada no momento": Detectada, mas não indexada no momento
+        - cell "Sistemas do Google":
+          - generic: Sistemas do Google
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "87.026":
+          - generic: "87.026"
+      - row "Rastreada, mas não indexada no momento Sistemas do Google Não foi iniciado 5.025":
+        - cell "Rastreada, mas não indexada no momento":
+          - generic "Rastreada, mas não indexada no momento"
+        - cell "Sistemas do Google":
+          - generic: Sistemas do Google
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "5.025":
+          - generic: "5.025"
+      - row "Cópia, o Google e o usuário selecionaram uma página canônica diferente Sistemas do Google Não foi iniciado 6":
+        - cell "Cópia, o Google e o usuário selecionaram uma página canônica diferente":
+          - generic "Cópia, o Google e o usuário selecionaram uma página canônica diferente"
+        - cell "Sistemas do Google":
+          - generic: Sistemas do Google
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "6":
+          - generic: "6"
+  - generic: "Linhas por página:"
+  - listbox "Número de linhas por página":
+    - option "5"
+    - option "10"
+    - option "25" [active] [selected]
+    - option "50"
+    - option "100"
+    - option "250"
+    - option "500"
+    - option: "5"
+    - option [selected]: "10"
+    - option: "25"
+    - option: "50"
+    - option: "100"
+    - option: "250"
+    - option: "500"
+  - generic: 1-13 de 13
+  - generic: 
+  - generic: 
+  - generic: warning
+  - generic: Melhorar o aspecto das páginas
+  - generic: As páginas com esses problemas são indexadas, mas a aparência delas nos resultados da pesquisa pode ser melhorada
+  - button "Filtrar linhas da tabela":
+    - generic: 
+  - table:
+    - rowgroup:
+      - row "Motivo Fonte null Validação Tendência Páginas":
+        - columnheader "Motivo":
+          - generic: Motivo
+        - columnheader "Fonte null":
+          - text: Fonte
+          - button "null":
+            - generic: 
+        - columnheader "Validação":
+          - generic: Validação
+        - columnheader "Tendência":
+          - generic: Tendência
+        - columnheader "Páginas":
+          - generic: Páginas
+    - rowgroup:
+      - row "Indexada, mas bloqueada pelo robots.txt Site Não foi iniciado 69":
+        - cell "Indexada, mas bloqueada pelo robots.txt":
+          - generic "Indexada, mas bloqueada pelo robots.txt"
+        - cell "Site":
+          - generic: Site
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "69":
+          - generic: "69"
+  - generic: "Linhas por página:"
+  - listbox "Número de linhas por página":
+    - option "5"
+    - option "10" [selected]
+    - option "25"
+    - option "50"
+    - option "100"
+    - option "250"
+    - option "500"
+  - generic: 1-1 de 1
+  - generic: 
+  - generic: 

@@ -1,0 +1,1999 @@
+[
+  {
+    "cells": [
+      "Geral",
+      "24 out 2026 (23:40) 29 out 2026 (09:32) 24 out 2026 (23:40) 23 out 2026 (10:22) 22 out 2026 (16:38) 22 out 2026 (12:32) 21 out 2026 (10:06) 19 out 2026 (18:09) 13 out 2026 (15:16) 11 out 2026 (00:14) 8 out 2026 (20:20) 6 out 2026 (17:20) 5 out 2026 (01:37) 4 out 2026 (19:58) 4 out 2026 (15:40) 4 out 2026 (14:39) 7 out 2025 (10:52) 7 out 2025 (10:27) 7 out 2025 (00:37) 5 out 2025 (21:15) 5 out 2025 (17:44) 5 out 2025 (17:14) 5 out 2025 (16:44) 5 out 2025 (00:19) 4 out 2025 (21:48) X",
+      "29 out 2026 (09:32) 29 out 2026 (09:32) 24 out 2026 (23:40) 23 out 2026 (10:22) 22 out 2026 (16:38) 22 out 2026 (12:32) 21 out 2026 (10:06) 19 out 2026 (18:09) 13 out 2026 (15:16) 11 out 2026 (00:14) 8 out 2026 (20:20) 6 out 2026 (17:20) 5 out 2026 (01:37) 4 out 2026 (19:58) 4 out 2026 (15:40) 4 out 2026 (14:39) 7 out 2025 (10:52) 7 out 2025 (10:27) 7 out 2025 (00:37) 5 out 2025 (21:15) 5 out 2025 (17:44) 5 out 2025 (17:14) 5 out 2025 (16:44) 5 out 2025 (00:19) 4 out 2025 (21:48)",
+      "Corrigidos",
+      "Novos"
+    ],
+    "links": []
+  },
+  {
+    "cells": [
+      "Páginas rastreadas Ir para Progresso",
+      "5,000",
+      "5,000",
+      "",
+      ""
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/pagereport",
+        "text": "Páginas rastreadas"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/g1",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Site Health Ir para Progresso",
+      "79",
+      "73",
+      "",
+      ""
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/overview",
+        "text": "Site Health"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/g2",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Total de problemas Ir para Progresso",
+      "12,201",
+      "10,095",
+      "5,491",
+      "3,385"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issues",
+        "text": "Total de problemas"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/g3",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Total de erros Ir para Progresso",
+      "20",
+      "64",
+      "8",
+      "52"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issues?restrictions=errors",
+        "text": "Total de erros"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/g4",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Total de advertências Ir para Progresso",
+      "10,079",
+      "8,388",
+      "3,869",
+      "2,178"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issues?restrictions=warnings",
+        "text": "Total de advertências"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/g5",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Total de avisos Ir para Progresso",
+      "2,102",
+      "1,643",
+      "1,614",
+      "1,155"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issues?restrictions=notices",
+        "text": "Total de avisos"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/g6",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Erros",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "links": []
+  },
+  {
+    "cells": [
+      "Erros 5XX Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/1",
+        "text": "Erros 5XX"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/1",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Erros 4XX Ler mais Ir para Progresso",
+      "1",
+      "2",
+      "—",
+      "1"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/2",
+        "text": "Erros 4XX"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/2",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Tags de título ausentes Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/3",
+        "text": "Tags de título ausentes"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/3",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Tags de título duplicadas Ler mais Ir para Progresso",
+      "0",
+      "4",
+      "—",
+      "4"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/6",
+        "text": "Tags de título duplicadas"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/6",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Conteúdo duplicado Ler mais Ir para Progresso",
+      "0",
+      "4",
+      "—",
+      "4"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/7",
+        "text": "Conteúdo duplicado"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/7",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Links internos quebrados Ler mais Ir para Progresso",
+      "14",
+      "18",
+      "4",
+      "8"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/8",
+        "text": "Links internos quebrados"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/8",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Páginas não rastreadas Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/9",
+        "text": "Páginas não rastreadas"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/9",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Problema de resolução DNS Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/10",
+        "text": "Problema de resolução DNS"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/10",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Não conseguimos abrir a URL da página Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/11",
+        "text": "Não conseguimos abrir a URL da página"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/11",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Imagens internas quebradas Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/13",
+        "text": "Imagens internas quebradas"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/13",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Descrições meta duplicadas Ler mais Ir para Progresso",
+      "0",
+      "34",
+      "—",
+      "34"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/15",
+        "text": "Descrições meta duplicadas"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/15",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Formato do robots.txt inválido Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/16",
+        "text": "Formato do robots.txt inválido"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/16",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Formato do sitemap.xml inválido Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/17",
+        "text": "Formato do sitemap.xml inválido"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/17",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "URLs incorretas no sitemap.xml Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/18",
+        "text": "URLs incorretas no sitemap.xml"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/18",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Problemas de resolução www Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/19",
+        "text": "Problemas de resolução www"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/19",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Viewport não configurado Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/20",
+        "text": "Viewport não configurado"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/20",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Página HTML grande mais Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/21",
+        "text": "Página HTML grande mais"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/21",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Tag canônica ausente em páginas AMP Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/22",
+        "text": "Tag canônica ausente em páginas AMP"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/22",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Problemas de implementação hreflang Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/23",
+        "text": "Problemas de implementação hreflang"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/23",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Conflitos de hreflang no código-fonte da página Ler mais Ir para Progresso",
+      "1",
+      "1",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/24",
+        "text": "Conflitos de hreflang no código-fonte da página"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/24",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Problemas com links incorretos em hreflangs Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/25",
+        "text": "Problemas com links incorretos em hreflangs"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/25",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Páginas não seguras Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/26",
+        "text": "Páginas não seguras"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/26",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Certificado expirado Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/27",
+        "text": "Certificado expirado"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/27",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Versão antiga do protocolo de segurança Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/28",
+        "text": "Versão antiga do protocolo de segurança"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/28",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Certificado registrado com nome incorreto Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/29",
+        "text": "Certificado registrado com nome incorreto"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/29",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Problemas de conteúdo misto Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/30",
+        "text": "Problemas de conteúdo misto"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/30",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Ausência de URL canônica ou redirecionamento 301 na página inicial HTTP Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/32",
+        "text": "Ausência de URL canônica ou redirecionamento 301 na página inicial HTTP"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/32",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Cadeias e loops de redirecionamento Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/33",
+        "text": "Cadeias e loops de redirecionamento"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/33",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "URLs canônicas quebradas Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/38",
+        "text": "URLs canônicas quebradas"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/38",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Várias URLs canônicas Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/39",
+        "text": "Várias URLs canônicas"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/39",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Redirecionamentos via meta refresh Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/40",
+        "text": "Redirecionamentos via meta refresh"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/40",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Arquivos JavaScript e CSS internos quebrados Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/41",
+        "text": "Arquivos JavaScript e CSS internos quebrados"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/41",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Algoritmos de criptografia inseguros Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/42",
+        "text": "Algoritmos de criptografia inseguros"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/42",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Sitemap.xml grande demais Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/43",
+        "text": "Sitemap.xml grande demais"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/43",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Links com problemas no formato Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/44",
+        "text": "Links com problemas no formato"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/44",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Elementos de dados estruturados inválidos Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/45",
+        "text": "Elementos de dados estruturados inválidos"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/45",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Largura da viewport não definida Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/46",
+        "text": "Largura da viewport não definida"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/46",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Alto tempo de carregamento da página Ler mais Ir para Progresso",
+      "4",
+      "1",
+      "4",
+      "1"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/111",
+        "text": "Alto tempo de carregamento da página"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/111",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Advertências",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "links": []
+  },
+  {
+    "cells": [
+      "Links externos quebrados Ler mais Ir para Progresso",
+      "21",
+      "21",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/12",
+        "text": "Links externos quebrados"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/12",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Imagens externas quebradas Ler mais Ir para Progresso",
+      "63",
+      "15",
+      "48",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/14",
+        "text": "Imagens externas quebradas"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/14",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Links de site HTTPS que levam a páginas HTTP Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/31",
+        "text": "Links de site HTTPS que levam a páginas HTTP"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/31",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Título curto demais Ler mais Ir para Progresso",
+      "1",
+      "1",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/101",
+        "text": "Título curto demais"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/101",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Título grande demais Ler mais Ir para Progresso",
+      "476",
+      "382",
+      "163",
+      "69"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/102",
+        "text": "Título grande demais"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/102",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Título h1 ausente Ler mais Ir para Progresso",
+      "1",
+      "1",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/103",
+        "text": "Título h1 ausente"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/103",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Conteúdo duplicado nas tags h1 e título Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/105",
+        "text": "Conteúdo duplicado nas tags h1 e título"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/105",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Descrição meta ausente Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/106",
+        "text": "Descrição meta ausente"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/106",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "A página possui links em excesso Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/108",
+        "text": "A página possui links em excesso"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/108",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Redirecionamentos temporários Ler mais Ir para Progresso",
+      "4,646",
+      "3,843",
+      "1,230",
+      "427"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/109",
+        "text": "Redirecionamentos temporários"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/109",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Atributos alt ausentes Ler mais Ir para Progresso",
+      "18",
+      "18",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/110",
+        "text": "Atributos alt ausentes"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/110",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Baixa proporção texto/HTML Ler mais Ir para Progresso",
+      "3,865",
+      "3,081",
+      "1,482",
+      "698"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/112",
+        "text": "Baixa proporção texto/HTML"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/112",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Parâmetros de URL em excesso Ler mais Ir para Progresso",
+      "3",
+      "3",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/113",
+        "text": "Parâmetros de URL em excesso"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/113",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Atributos hreflang e lang ausentes Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/114",
+        "text": "Atributos hreflang e lang ausentes"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/114",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Codificação não informada Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/115",
+        "text": "Codificação não informada"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/115",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Tipo de documento não informado Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/116",
+        "text": "Tipo de documento não informado"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/116",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Baixa quantidade de palavras Ler mais Ir para Progresso",
+      "2",
+      "2",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/117",
+        "text": "Baixa quantidade de palavras"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/117",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Plug-ins incompatíveis usados Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/120",
+        "text": "Plug-ins incompatíveis usados"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/120",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Quadros (frames) são utilizados Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/121",
+        "text": "Quadros (frames) são utilizados"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/121",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Caractere sublinhado em URL Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/122",
+        "text": "Caractere sublinhado em URL"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/122",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Atributos nofollow em links internos de saída Ler mais Ir para Progresso",
+      "939",
+      "982",
+      "939",
+      "982"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/123",
+        "text": "Atributos nofollow em links internos de saída"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/123",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "O sitemap.xml não está especificado no robots.txt Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/124",
+        "text": "O sitemap.xml não está especificado no robots.txt"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/124",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Sitemap.xml não encontrado Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/125",
+        "text": "Sitemap.xml não encontrado"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/125",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Criptografia HTTPS não usada Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/126",
+        "text": "Criptografia HTTPS não usada"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/126",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Sem suporte a SNI Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/127",
+        "text": "Sem suporte a SNI"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/127",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "URLs HTTP no sitemap.xml para site HTTPS Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/128",
+        "text": "URLs HTTP no sitemap.xml para site HTTPS"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/128",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Página não compactadas Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/129",
+        "text": "Página não compactadas"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/129",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Recursos internos bloqueados no robots.txt Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/130",
+        "text": "Recursos internos bloqueados no robots.txt"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/130",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Arquivos JavaScript e CSS não compactados Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/131",
+        "text": "Arquivos JavaScript e CSS não compactados"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/131",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Arquivos JavaScript e CSS não armazenados em cache Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/132",
+        "text": "Arquivos JavaScript e CSS não armazenados em cache"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/132",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Tamanho total de JavaScript e CSS muito grande Ler mais Ir para Progresso",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/133",
+        "text": "Tamanho total de JavaScript e CSS muito grande"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/133",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Muitos arquivos JavaScript e CSS Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/134",
+        "text": "Muitos arquivos JavaScript e CSS"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/134",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Arquivos JavaScript e CSS não minificados Ler mais Ir para Progresso",
+      "43",
+      "38",
+      "6",
+      "1"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/135",
+        "text": "Arquivos JavaScript e CSS não minificados"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/135",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "URLs dos links grandes demais Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/136",
+        "text": "URLs dos links grandes demais"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/136",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Avisos",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "links": []
+  },
+  {
+    "cells": [
+      "Múltiplos títulos h1 Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/104",
+        "text": "Múltiplos títulos h1"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/104",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Arquivo llms.txt não encontrado Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/137",
+        "text": "Arquivo llms.txt não encontrado"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/137",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Bloqueada para rastreamento Ler mais Ir para Progresso",
+      "1",
+      "1,024",
+      "—",
+      "1,023"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/4",
+        "text": "Bloqueada para rastreamento"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/4",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "URLs com mais de 200 caracteres Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/201",
+        "text": "URLs com mais de 200 caracteres"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/201",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Nofollow attributes outgoing in external links Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/202",
+        "text": "Nofollow attributes outgoing in external links"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/202",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Robots.txt não encontrado Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/203",
+        "text": "Robots.txt não encontrado"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/203",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Problemas de incompatibilidade de idiomas no hreflang Ler mais Ir para Progresso",
+      "27",
+      "11",
+      "26",
+      "10"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/204",
+        "text": "Problemas de incompatibilidade de idiomas no hreflang"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/204",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Sem suporte a HSTS Ler mais Ir para Progresso",
+      "4",
+      "4",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/205",
+        "text": "Sem suporte a HSTS"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/205",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Páginas órfãs (Google Analytics) Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/206",
+        "text": "Páginas órfãs (Google Analytics)"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/206",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Páginas órfãs no sitemap Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/207",
+        "text": "Páginas órfãs no sitemap"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/207",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Bloqueada por X-Robots-Tag: cabeçalho HTTP com noindex Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/209",
+        "text": "Bloqueada por X-Robots-Tag: cabeçalho HTTP com noindex"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/209",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Recursos externos bloqueados no robots.txt Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/210",
+        "text": "Recursos externos bloqueados no robots.txt"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/210",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Arquivos JavaScript e CSS externos quebrados Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/211",
+        "text": "Arquivos JavaScript e CSS externos quebrados"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/211",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Profundidade do rastreamento da página superior a 3 cliques Ler mais Ir para Progresso",
+      "1,000",
+      "374",
+      "699",
+      "73"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/212",
+        "text": "Profundidade do rastreamento da página superior a 3 cliques"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/212",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Páginas com apenas um link interno Ler mais Ir para Progresso",
+      "625",
+      "131",
+      "529",
+      "35"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/213",
+        "text": "Páginas com apenas um link interno"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/213",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Redirecionamentos permanentes Ler mais Ir para Progresso",
+      "3",
+      "3",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/214",
+        "text": "Redirecionamentos permanentes"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/214",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Recursos formatados como links de páginas Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/215",
+        "text": "Recursos formatados como links de páginas"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/215",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Links sem texto âncora Ler mais Ir para Progresso",
+      "12",
+      "12",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/216",
+        "text": "Links sem texto âncora"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/216",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Links com texto âncora não descritivo Ler mais Ir para Progresso",
+      "168",
+      "52",
+      "119",
+      "3"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/217",
+        "text": "Links com texto âncora não descritivo"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/217",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Páginas ou recursos externos com código de status HTTP 403 Ler mais Ir para Progresso",
+      "251",
+      "21",
+      "230",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/218",
+        "text": "Páginas ou recursos externos com código de status HTTP 403"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/218",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "O arquivo llms.txt está com problemas de formatação Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/219",
+        "text": "O arquivo llms.txt está com problemas de formatação"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/219",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Conteúdo demais Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/220",
+        "text": "Conteúdo demais"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/220",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Conteúdo desatualizado Ler mais Ir para Progresso",
+      "0",
+      "0",
+      "—",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/221",
+        "text": "Conteúdo desatualizado"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/221",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Baixo uso de HTML semântico Ler mais Ir para Progresso",
+      "1",
+      "0",
+      "1",
+      "—"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/222",
+        "text": "Baixo uso de HTML semântico"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/222",
+        "text": "Ir para Progresso"
+      }
+    ]
+  },
+  {
+    "cells": [
+      "Conteúdo não otimizado Ler mais Ir para Progresso",
+      "10",
+      "11",
+      "10",
+      "11"
+    ],
+    "links": [
+      {
+        "href": "/siteaudit/campaign/26661911/review/issue/detail/223",
+        "text": "Conteúdo não otimizado"
+      },
+      {
+        "href": "/siteaudit/campaign/26661911/review/history/id/223",
+        "text": "Ir para Progresso"
+      }
+    ]
+  }
+]

@@ -1,0 +1,364 @@
+{
+  "families": [
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional de Porto Alegre",
+      "editions": 31,
+      "next_date": "2027-06-05",
+      "tag": "maratona-internacional-de-porto-alegre"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional de São Paulo",
+      "editions": 31,
+      "next_date": "2027-04-04",
+      "tag": "maratona-internacional-de-sao-paulo"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional de Floripa",
+      "editions": 19,
+      "next_date": "2027-08-28",
+      "tag": "maratona-internacional-de-floripa"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona da Cidade de Florianópolis",
+      "editions": 6,
+      "next_date": null,
+      "tag": "maratona-cidade-de-florianopolis"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Terra dos Marechais",
+      "editions": 6,
+      "next_date": null,
+      "tag": null
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Monumental de Brasília",
+      "editions": 6,
+      "next_date": "2026-11-21",
+      "tag": "maratona-monumental-de-brasilia"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Vitória",
+      "editions": 6,
+      "next_date": "2027-08-29",
+      "tag": "maratona-de-vitoria"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Campo Grande",
+      "editions": 6,
+      "next_date": "2027-07-03",
+      "tag": "maratona-de-campo-grande"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional de João Pessoa",
+      "editions": 6,
+      "next_date": null,
+      "tag": "maratona-internacional-de-joao-pessoa"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "A Muralha Up And Down Marathon",
+      "editions": 5,
+      "next_date": null,
+      "tag": null
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "SP City Marathon",
+      "editions": 5,
+      "next_date": null,
+      "tag": "sao-paulo-city-marathon"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Nilson Lima Uberlândia",
+      "editions": 5,
+      "next_date": null,
+      "tag": "maratona-nilson-lima-uberlandia"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Tubarão",
+      "editions": 5,
+      "next_date": null,
+      "tag": "maratona-de-tubarao"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Niterói",
+      "editions": 5,
+      "next_date": null,
+      "tag": "maratona-de-niteroi"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional de Manaus",
+      "editions": 5,
+      "next_date": null,
+      "tag": "maratona-internacional-de-manaus"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Salvador",
+      "editions": 5,
+      "next_date": null,
+      "tag": "maratona-de-salvador"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional de Blumenau",
+      "editions": 5,
+      "next_date": "2027-07-04",
+      "tag": "maratona-internacional-de-blumenau"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Criciúma",
+      "editions": 4,
+      "next_date": null,
+      "tag": "maratona-de-criciuma"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Curitiba",
+      "editions": 4,
+      "next_date": null,
+      "tag": "maratona-de-curitiba"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de João Pessoa",
+      "editions": 4,
+      "next_date": "2027-04-18",
+      "tag": "maratona-de-joao-pessoa"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Jurerê",
+      "editions": 4,
+      "next_date": null,
+      "tag": "maratona-de-jurere"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional de Olinda",
+      "editions": 4,
+      "next_date": null,
+      "tag": "maratona-internacional-de-olinda"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional do Rio de Janeiro",
+      "editions": 4,
+      "next_date": null,
+      "tag": "maratona-internacional-do-rio-de-janeiro"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "New Balance 42K Porto Alegre",
+      "editions": 4,
+      "next_date": "2027-08-21",
+      "tag": "new-balance-42k-porto-alegre"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional de Pomerode",
+      "editions": 3,
+      "next_date": null,
+      "tag": null
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Goiânia",
+      "editions": 3,
+      "next_date": null,
+      "tag": "maratona-de-goiania"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Desafio da Ponte",
+      "editions": 3,
+      "next_date": null,
+      "tag": null
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Novembro Azul Sorocaba",
+      "editions": 3,
+      "next_date": null,
+      "tag": "maratona-novembro-azul-sorocaba"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Londrina",
+      "editions": 3,
+      "next_date": "2027-07-04",
+      "tag": "maratona-de-londrina"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Revezamento - Belo Horizonte",
+      "editions": 3,
+      "next_date": null,
+      "tag": null
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Brasília",
+      "editions": 3,
+      "next_date": null,
+      "tag": "maratona-de-brasilia"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Fila",
+      "editions": 3,
+      "next_date": null,
+      "tag": "maratona-fila"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Campinas",
+      "editions": 2,
+      "next_date": null,
+      "tag": "maratona-de-campinas"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Pedra Azul",
+      "editions": 2,
+      "next_date": "2026-11-01",
+      "tag": "maratona-pedra-azul"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Meia Maratona 21k Alpha Run",
+      "editions": 2,
+      "next_date": null,
+      "tag": null
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Aracaju",
+      "editions": 2,
+      "next_date": "2026-10-31",
+      "tag": "maratona-de-aracaju"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Duque de Caxias",
+      "editions": 2,
+      "next_date": null,
+      "tag": "maratona-duque-de-caxias"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Ribeirão Preto",
+      "editions": 2,
+      "next_date": null,
+      "tag": "maratona-de-ribeirao-preto"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional de Foz do Iguaçu",
+      "editions": 2,
+      "next_date": null,
+      "tag": "maratona-internacional-de-foz-do-iguacu"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Ponta Grossa",
+      "editions": 2,
+      "next_date": null,
+      "tag": "maratona-de-ponta-grossa"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Piracicaba",
+      "editions": 2,
+      "next_date": "2027-05-02",
+      "tag": "maratona-de-piracicaba"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional do Paraná",
+      "editions": 2,
+      "next_date": "2027-03-26",
+      "tag": "maratona-internacional-do-parana"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona da Cidade de São Luís",
+      "editions": 2,
+      "next_date": null,
+      "tag": "maratona-da-cidade-de-sao-luis"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional Mauricio de Nassau",
+      "editions": 2,
+      "next_date": null,
+      "tag": "maratona-internacional-mauricio-de-nassau"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de BH",
+      "editions": 2,
+      "next_date": null,
+      "tag": null
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona do Litoral",
+      "editions": 2,
+      "next_date": null,
+      "tag": null
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona Internacional de Assunção",
+      "editions": 2,
+      "next_date": null,
+      "tag": null
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Torres",
+      "editions": 2,
+      "next_date": null,
+      "tag": "maratona-de-torres"
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona AP",
+      "editions": 2,
+      "next_date": null,
+      "tag": null
+    },
+    {
+      "tipo_agregacao": "maratona",
+      "nome_evento_agregado": "Maratona de Marília",
+      "editions": 1,
+      "next_date": null,
+      "tag": "maratona-de-marilia"
+    }
+  ],
+  "columns": [
+    "id_evento",
+    "cidade",
+    "estado",
+    "pais",
+    "data_inicial",
+    "data_final",
+    "tag",
+    "tag_cidade"
+  ]
+}

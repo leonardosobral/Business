@@ -1,0 +1,1 @@
+SELECT jsonb_build_object('events',(SELECT jsonb_agg(to_jsonb(e)||jsonb_build_object('row_hash',md5(to_jsonb(e)::text))) FROM tb_evento_corridas e WHERE id_evento IN (46521,46508)),'memberships',(SELECT coalesce(jsonb_agg(to_jsonb(g)),'[]') FROM tb_agregadores_eventos g WHERE id_evento IN (46521,46508)))::text payload

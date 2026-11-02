@@ -1,0 +1,73 @@
+- main:
+  - button "Abrir / fechar painel de navegação":
+  - link "Logo Running Land":
+    - /url: /
+    - img "Logo Running Land"
+  - button "Abrir / fechar mini-carrinho. Você tem 0 itens no seu carrinho.":
+  - img "Circuito das Estações 2026 - Verão - Brasília"
+  - strong: "6"
+  - generic: Dez
+  - heading "Circuito das Estações 2026 - Verão - Brasília" [level=1]
+  - list
+  - button "Compartilhar":
+    - text: Compartilhar
+  - figure:
+    - link:
+      - /url: https://loja.runningland.com.br/tenis-de-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape_banner&utm_content=banner_rodape
+  - generic: Fique por
+  - generic: Dentro
+  - generic: Receba novidades da loja, calendário de corridas e benefícios Prime.
+  - textbox "Digite seu e-mail"
+  - button "Assinar":
+    - generic: Assinar
+  - img "Running Land"
+  - paragraph: "Mais do que loja: um ecossistema para quem vive corrida."
+  - heading "Loja Online +" [level=5]:
+    - generic: Loja Online
+    - text: +
+  - heading "Corridas +" [level=5]:
+    - generic: Corridas
+    - text: +
+  - heading "Institucional +" [level=5]:
+    - generic: Institucional
+    - text: +
+  - paragraph: "CNPJ: 03.787.821/0001-08 - VILLA OLÍMPICA SERVIÇO LTDA. Todos os direitos reservados."
+  - button "Whatsapp icon":
+    - img "Whatsapp icon"
+  - img "Whatsapp icon"
+  - generic: "Quero falar sobre:"
+  - button "Close icon":
+    - img "Close icon"
+  - link "File done icon illustration Inscrições, Pedidos e Assinaturas":
+    - /url: /chat
+    - img "File done icon illustration"
+    - generic: Inscrições, Pedidos e Assinaturas
+  - link "Store icon illustration Minhas Fotos":
+    - /url: https://www.fotto.com.br/contato
+    - img "Store icon illustration"
+    - generic: Minhas Fotos
+  - link "Store icon illustration Loja São Paulo":
+    - /url: https://wa.me/5511976513903
+    - img "Store icon illustration"
+    - generic: Loja São Paulo
+  - link "Store icon illustration Loja Rio de Janeiro":
+    - /url: https://wa.me/5511976513903
+    - img "Store icon illustration"
+    - generic: Loja Rio de Janeiro
+  - link "Whatsapp icon illustration Compre pelo WhatsApp":
+    - /url: https://wa.me/5511976513903
+    - img "Whatsapp icon illustration"
+    - generic: Compre pelo WhatsApp
+- navigation:
+  - list:
+    - link "Loja Online":
+      - /url: https://loja.runningland.com.br/?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_1&utm_content=loja_online
+    - link "Eventos":
+      - /url: /eventos
+    - link "O2 Prime":
+      - /url: /clube-prime
+    - link "Espaço Running Land":
+      - /url: /#espaco-running-land
+  - button "Conta":
+    - generic: Conta
+- paragraph

@@ -1,0 +1,91 @@
+- banner:
+  - paragraph:
+    - strong: 10%* OFF PARA QUEM É CLUBE O2 PRIME
+  - navigation:
+    - link "o2corre Logo":
+      - /url: /
+      - img "o2corre Logo"
+    - link "Calendário":
+      - /url: /calendario/
+      - paragraph: Calendário
+    - separator
+    - link "Loja":
+      - /url: https://www.runningland.com.br/
+      - paragraph: Loja
+    - button "Botão de pesquisa":
+    - link "Seja Prime":
+      - /url: https://www.runningland.com.br/clube-prime
+      - generic: Seja Prime
+  - navigation:
+    - link "Eventos":
+      - /url: /./calendario/
+    - link "Resultados":
+      - /url: /./resultado/
+    - link "Guia do Tênis":
+      - /url: /./guia-do-tenis/
+    - link "Calculadoras":
+      - /url: /./calculadoras/#pace
+    - link "Notícias":
+      - /url: /./categoria/
+    - link "Experts":
+      - /url: /./experts/
+- contentinfo:
+  - paragraph: Receba frases e dicas diárias em sua caixa de entrada.
+  - textbox "Insira seu e-mail"
+  - button "Assinar"
+  - paragraph: Sobre Nós
+  - link "Sobre o O2 Corre":
+    - /url: /sobre-nos
+  - link "Anuncie Conosco":
+    - /url: https://www.nortemkt.com/contato/
+  - link "Política de Privacidade":
+    - /url: /politicas-de-privacidade
+  - link "Política de Uso":
+    - /url: /politicas-de-uso
+  - paragraph: PRA VOCÊ
+  - link "Calendário de Eventos":
+    - /url: /calendario
+  - link "Guia do Tênis":
+    - /url: /guia-do-tenis
+  - link "Sua Foto":
+    - /url: https://suafoto.ativo.com/
+  - link "Monte sua planilha":
+    - /url: /planilhas-de-treino
+  - link "RunningLand":
+    - /url: https://www.runningland.com.br/
+  - link "Calculadoras de performance":
+    - /url: /calculadoras#pace
+  - paragraph: EVENTOS
+  - link "Minha conta":
+    - /url: https://checkout.ativo.com/user/login
+  - link "Inscrições para grupos":
+    - /url: https://grupos.nortemkt.com/
+  - link "Resultados":
+    - /url: /resultado
+  - paragraph: AJUDA
+  - link "Fale Conosco":
+    - /url: https://faq.ativo.com/eventos-o2/
+  - paragraph: SIGA-NOS
+  - link "Link do Facebook":
+    - /url: https://www.facebook.com/o2correbrasil/
+  - link "Link do Instagram":
+    - /url: https://www.instagram.com/o2correbrasil/
+  - link "Link do Youtube":
+    - /url: https://www.youtube.com/channel/UC4X0-tkdfMfUb1pXdLhWwgg
+  - paragraph: Baixe Nosso App
+  - link "Link da Google Play":
+    - /url: https://play.google.com/store/apps/details?id=br.com.runningland&pcampaignid=web_share
+    - img "Google Play"
+  - link "Link da Apple":
+    - /url: https://apps.apple.com/br/app/running-land/id1566957973
+    - img "Apple Store"
+  - img "o2corre logo"
+  - paragraph: O2Corre.com © 2000 - 2026
+- list
+- list
+- list
+- list
+- list
+- list
+- alert
+- iframe [id="rd_tmgr"]

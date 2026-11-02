@@ -1,0 +1,1 @@
+SELECT jsonb_build_object('foreignKeys',(SELECT jsonb_agg(jsonb_build_object('table',conrelid::regclass::text,'column',a.attname)) FROM pg_constraint c JOIN pg_attribute a ON a.attrelid=c.conrelid AND a.attnum=c.conkey[1] WHERE c.contype='f' AND c.confrelid='tb_evento_corridas'::regclass AND array_length(c.conkey,1)=1))::text payload

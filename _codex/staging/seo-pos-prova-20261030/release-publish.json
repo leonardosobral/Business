@@ -1,0 +1,14 @@
+{
+  "published": [
+    "evento/parts/post_race_data.cfm",
+    "evento/parts/post_race.cfm",
+    "evento/index.cfm",
+    "includes/backend/backend_permanent_race.cfm",
+    "includes/permanent_race_overview.cfm",
+    "assets/css/runnerhub-race-guides.css",
+    "maratona/index.cfm",
+    "circuito/index.cfm"
+  ],
+  "backup": "/var/backups/seo-pos-prova-20261030/baseline",
+  "published_at": "2026-10-30T18:12:29.311982+00:00"
+}

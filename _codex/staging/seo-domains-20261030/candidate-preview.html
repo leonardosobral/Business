@@ -1,0 +1,1188 @@
+
+
+<style>
+  .seo-queue { --seo-border: rgba(255,255,255,.14); }
+  .seo-tabs { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.5rem 0; border-bottom:1px solid var(--seo-border); padding-bottom:.75rem; }
+  .seo-tabs a { padding:.7rem 1rem; border-radius:6px; color:var(--mdb-body-color); }
+  .seo-tabs a[aria-current="page"] { background:rgba(255,193,7,.15); color:#ffda86; font-weight:650; }
+  .seo-tabs a:focus-visible { outline:2px solid #ffda86; outline-offset:3px; }
+  .seo-queue .seo-subtitle { max-width: 760px; color: var(--mdb-secondary-color); }
+  .seo-queue .seo-run-grid, .seo-queue .seo-detail-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+  .seo-queue .seo-run, .seo-queue .seo-filter, .seo-queue .seo-issue { border: 1px solid var(--seo-border); border-radius: 8px; background: rgba(255,255,255,.025); }
+  .seo-queue .seo-run, .seo-queue .seo-filter { padding: 1rem; }
+  .seo-queue .seo-run-numbers { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .75rem; margin: 1rem 0; }
+  .seo-queue .seo-run-numbers dt { font-size: .75rem; font-weight: 400; color: var(--mdb-secondary-color); }
+  .seo-queue .seo-run-numbers dd { font-size: 1.3rem; font-weight: 650; margin: .25rem 0 0; }
+  .seo-queue .seo-label { display: inline-flex; align-items: center; gap: .35rem; border: 1px solid var(--seo-border); border-radius: 5px; padding: .25rem .5rem; font-size: .75rem; line-height: 1.4; }
+  .seo-queue .seo-partial, .seo-queue .seo-priority-p1 { color: #ffda86; background: rgba(255,193,7,.1); border-color: rgba(255,193,7,.3); }
+  .seo-queue .seo-complete { color: #a0dfd4; background: rgba(40,167,145,.1); border-color: rgba(40,167,145,.3); }
+  .seo-queue .seo-priority-p2 { color: #a9d1ff; background: rgba(95,164,242,.08); }
+  .seo-queue .seo-priority-p3, .seo-queue .seo-priority-review { color: #d6d6d6; }
+  .seo-queue .seo-filter { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; }
+  .seo-queue .seo-filter-field { flex: 1 1 180px; min-width: 0; }
+  .seo-queue .seo-filter .form-label { font-size: .85rem; }
+  .seo-queue .seo-filter .btn { min-height: 40px; }
+  .seo-queue .seo-issue { padding: 1.15rem 1.25rem; margin-bottom: .75rem; }
+  .seo-queue .seo-issue-head { display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
+  .seo-queue .seo-issue-heading { min-width: 0; }
+  .seo-queue .seo-issue-heading h3 { font-size: 1.05rem; margin: .65rem 0 .4rem; line-height: 1.45; }
+  .seo-queue .seo-meta { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+  .seo-queue .seo-state { font-size: .75rem; color: var(--mdb-secondary-color); white-space: nowrap; }
+  .seo-queue .seo-issue p { margin-bottom: .6rem; }
+  .seo-queue .seo-issue details { border-top: 1px solid var(--seo-border); margin-top: .85rem; padding-top: .6rem; }
+  .seo-queue .seo-issue summary { cursor: pointer; color: #ffda86; padding: .25rem 0; font-size: .875rem; width: fit-content; }
+  .seo-queue .seo-detail-grid { margin-top: 1rem; }
+  .seo-queue .seo-detail-grid dt { font-size: .8rem; color: var(--mdb-secondary-color); margin-bottom: .35rem; }
+  .seo-queue .seo-detail-grid dd { margin: 0; font-size: .9rem; overflow-wrap: anywhere; white-space: pre-line; }
+  .seo-queue .seo-urls { list-style: none; padding-left: 0; margin: .75rem 0 0; }
+  .seo-queue .seo-urls li { margin-top: .4rem; }
+  .seo-queue .seo-urls a { color: #d4d4d4; overflow-wrap: anywhere; font-size: .875rem; text-decoration: underline; text-underline-offset: 3px; }
+  .seo-queue a:focus-visible, .seo-queue summary:focus-visible { outline: 2px solid #ffda86; outline-offset: 4px; }
+  .seo-queue .seo-note { font-size: .8rem; line-height: 1.5; color: var(--mdb-secondary-color); }
+  .seo-queue .seo-report { margin-bottom: 2rem; }
+  .seo-queue .seo-section-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: 1rem; }
+  .seo-queue .seo-score-card { padding: 1.25rem; }
+  .seo-queue .seo-search-health { margin: 1rem 0; padding: 1rem; border: 1px solid var(--seo-status-border); border-left: 4px solid var(--seo-status-color); border-radius: .6rem; background: var(--seo-status-bg); }
+  .seo-queue .seo-search-health h4 { color: var(--seo-status-color); line-height: 1.5; }
+  .seo-queue .seo-search-eyebrow { font-size: .75rem; margin-bottom: .5rem; color: #c2c2c2; }
+  .seo-queue .seo-search-facts { margin: .85rem 0; }
+  .seo-queue .seo-search-facts div + div { margin-top: .85rem; }
+  .seo-queue .seo-search-facts dt { color: var(--seo-status-color); font-size: .85rem; }
+  .seo-queue .seo-search-facts dd { font-size: .8rem; margin: .3rem 0 0; line-height: 1.6; }
+  .seo-queue .seo-technical-score { padding: .8rem 0; margin-bottom: 1rem; border-bottom: 1px solid var(--seo-border); }
+  .seo-queue .seo-technical-score summary { cursor: pointer; font-size: .85rem; }
+  .seo-queue .seo-technical-score summary:focus-visible { outline: 2px solid #ffce67; outline-offset: 4px; }
+  .seo-queue .seo-score-main { display: flex; align-items: center; gap: 1.25rem; padding: 1rem 0; }
+  .seo-queue .seo-score-number { display: flex; align-items: baseline; gap: .25rem; flex-shrink: 0; }
+  .seo-queue .seo-score-value { font-size: 3rem; line-height: 1; font-weight: 750; letter-spacing: -.05em; color: #f5f5f5; }
+  .seo-queue .seo-score-max { font-size: 1rem; color: #b1b1b1; }
+  .seo-queue .seo-score-copy { min-width: 0; }
+  .seo-queue .seo-score-copy strong { font-size: .9rem; }
+  .seo-queue .seo-status-totals { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .5rem; padding: 0; margin: 0 0 1rem; list-style: none; }
+  .seo-queue .seo-status-total { border: 1px solid; border-radius: 6px; padding: .6rem .5rem; }
+  .seo-queue .seo-status-total strong { display: block; font-size: 1.15rem; line-height: 1.3; }
+  .seo-queue .seo-status-total span { display: block; font-size: .7rem; line-height: 1.4; margin-top: .15rem; }
+  .seo-queue .seo-status-pass { --seo-status-color: #94e3b0; --seo-status-bg: rgba(83,199,125,.07); --seo-status-border: rgba(83,199,125,.3); }
+  .seo-queue .seo-status-warning { --seo-status-color: #ffda86; --seo-status-bg: rgba(255,193,7,.07); --seo-status-border: rgba(255,193,7,.3); }
+  .seo-queue .seo-status-error { --seo-status-color: #ffaaa6; --seo-status-bg: rgba(250,100,100,.08); --seo-status-border: rgba(250,100,100,.34); }
+  .seo-queue .seo-status-unknown { --seo-status-color: #c2c2c2; --seo-status-bg: rgba(179,179,179,.06); --seo-status-border: rgba(179,179,179,.25); }
+  .seo-queue .seo-status-total, .seo-queue .seo-status-badge { color: var(--seo-status-color); background: var(--seo-status-bg); border-color: var(--seo-status-border); }
+  .seo-queue .seo-score-card .seo-run-numbers { border-top: 1px solid var(--seo-border); padding-top: 1rem; }
+  .seo-queue .seo-report-note { border-left: 3px solid #8f8f8f; background: rgba(143,143,143,.06); padding: .8rem 1rem; margin-top: 1rem; }
+  .seo-queue .seo-method, .seo-queue .seo-checklist, .seo-queue .seo-history { border: 1px solid var(--seo-border); border-radius: 8px; background: rgba(255,255,255,.02); }
+  .seo-queue .seo-method { margin: 1rem 0 1.5rem; padding: 0 1rem; }
+  .seo-queue .seo-method > summary { cursor: pointer; padding: .9rem 0; font-size: .9rem; font-weight: 600; }
+  .seo-queue .seo-method-body { padding: .1rem 0 1rem; max-width: 960px; }
+  .seo-queue .seo-method-body p { margin-bottom: .6rem; font-size: .85rem; }
+  .seo-queue .seo-method-body p:last-child { margin-bottom: 0; }
+  .seo-queue .seo-checklist-grid, .seo-queue .seo-history-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 1rem; }
+  .seo-queue .seo-checklist { padding: 1.1rem; min-width: 0; }
+  .seo-queue .seo-checklist-heading { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; }
+  .seo-queue .seo-check-group + .seo-check-group { margin-top: 1.25rem; }
+  .seo-queue .seo-check-group-title { color: var(--seo-status-color); font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 650; margin: 0 0 .55rem; }
+  .seo-queue .seo-check { border: 1px solid var(--seo-border); border-left: 3px solid var(--seo-status-border); border-radius: 5px; margin-top: .5rem; background: var(--seo-status-bg); }
+  .seo-queue .seo-check > summary { display: flex; align-items: flex-start; gap: .6rem; padding: .85rem .8rem; cursor: pointer; list-style: none; }
+  .seo-queue .seo-check > summary::-webkit-details-marker { display: none; }
+  .seo-queue .seo-check-icon { flex: 0 0 1rem; color: var(--seo-status-color); font-weight: 700; line-height: 1.5; }
+  .seo-queue .seo-check-summary { flex: 1; min-width: 0; }
+  .seo-queue .seo-check-summary strong { display: block; font-size: .87rem; font-weight: 600; line-height: 1.5; }
+  .seo-queue .seo-check-summary-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; margin-top: .3rem; }
+  .seo-queue .seo-check-summary-meta span { font-size: .7rem; }
+  .seo-queue .seo-check-summary-meta .seo-status-text { color: var(--seo-status-color); font-weight: 600; }
+  .seo-queue .seo-check-chevron { color: #bebebe; font-size: .85rem; line-height: 1.5; transition: transform .15s ease; }
+  .seo-queue .seo-check[open] > summary .seo-check-chevron { transform: rotate(90deg); }
+  .seo-queue .seo-check[open] > summary { border-bottom: 1px solid var(--seo-border); }
+  .seo-queue .seo-check-body { padding: .85rem .9rem; }
+  .seo-queue .seo-check-body > p { font-size: .83rem; line-height: 1.55; margin: 0 0 .75rem; }
+  .seo-queue .seo-check-counts { display: flex; flex-wrap: wrap; gap: .35rem .75rem; font-size: .75rem; margin: .65rem 0; }
+  .seo-queue .seo-check-counts span { color: var(--seo-status-color); }
+  .seo-queue .seo-check-cases { margin-top: .85rem; }
+  .seo-queue .seo-check-cases strong { font-size: .75rem; color: var(--seo-status-color); }
+  .seo-queue .seo-check-cases .seo-urls { margin-top: .3rem; }
+  .seo-queue .seo-check-cases .seo-urls a { font-size: .75rem; line-height: 1.5; }
+  .seo-queue .seo-history-grid { margin-top: 1rem; }
+  .seo-queue .seo-history { padding: 1rem; min-width: 0; }
+  .seo-queue .seo-history .table { margin: .75rem 0; --mdb-table-bg: transparent; }
+  .seo-queue .seo-history th { font-size: .72rem; color: #b1b1b1; font-weight: 500; }
+  .seo-queue .seo-history td { font-size: .78rem; vertical-align: middle; }
+  .seo-queue .seo-history th, .seo-queue .seo-history td { padding: .7rem .3rem; border-color: var(--seo-border); }
+  .seo-queue .seo-history td:first-child { width: 48%; }
+  .seo-queue .seo-history td:nth-child(2) { white-space: nowrap; font-weight: 650; }
+  .seo-queue .seo-history .seo-note { margin-bottom: 0; }
+  @media (max-width: 767px) {
+    .seo-queue .seo-run-grid, .seo-queue .seo-detail-grid, .seo-queue .seo-checklist-grid, .seo-queue .seo-history-grid { grid-template-columns: 1fr; }
+    .seo-queue .seo-score-card, .seo-queue .seo-checklist { padding: 1rem; }
+    .seo-queue .seo-score-value { font-size: 2.65rem; }
+    .seo-queue .seo-score-main { gap: 1rem; }
+    .seo-queue .seo-status-totals { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .seo-queue .seo-status-total strong, .seo-queue .seo-status-total span { display: inline; }
+    .seo-queue .seo-status-total span { margin-left: .35rem; }
+    .seo-queue .seo-run-numbers { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .seo-queue .seo-issue { padding: 1rem; }
+    .seo-queue .seo-issue-head { flex-direction: column; gap: .5rem; }
+    .seo-queue .seo-filter-field { flex-basis: 100%; }
+    .seo-queue .seo-filter .btn { flex: 1; }
+  }
+</style>
+
+<section class="card shadow-0 mb-4">
+  <div class="card-body seo-queue">
+    <div class="d-flex flex-wrap justify-content-between gap-3 align-items-start">
+      <div>
+        <h1 class="h3 mb-2">SEO</h1>
+        <p class="seo-subtitle mb-0">Acompanhe o que está certo, o que precisa de atenção e as correções do Road Runners e do Open Results.</p>
+      </div>
+      <div class="small text-muted">Revisão da fila<br><strong>23&#x2f;10&#x2f;2026 &agrave;s 09&#x3a;13 &#x28;Bras&iacute;lia&#x29;</strong></div>
+    </div>
+    <nav class="seo-tabs" aria-label="Seções de SEO">
+      
+        <a href="/portal/seo/?aba=relatorio&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">Relat&oacute;rio t&eacute;cnico</a>
+      
+        <a href="/portal/seo/?aba=ga4&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">Audi&ecirc;ncia Google</a>
+      
+        <a href="/portal/seo/?aba=semrush&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">Semrush</a>
+      
+        <a href="/portal/seo/?aba=dominios&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all" aria-current="page">Dom&iacute;nios</a>
+      
+        <a href="/portal/seo/?aba=ia&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">SEO para IA</a>
+      
+        <a href="/portal/seo/?aba=fila&amp;site&#x3d;all&amp;prioridade&#x3d;all&amp;verificacao&#x3d;all">Fila de corre&ccedil;&otilde;es</a>
+      
+    </nav>
+    
+<link rel="stylesheet" href="/portal/seo/assets/domains.css?v=20261025-1"/>
+<section class="seo-domains" aria-labelledby="sd-title" data-domains-dashboard>
+
+  <div class="seo-section-head">
+    <div><h2 class="h5 mb-1" id="sd-title">Domínios monitorados</h2><p class="seo-note mb-0">Sua lista do Semrush · Brasil · janela “Mês”</p></div>
+    <a class="small" href="https&#x3a;&#x2f;&#x2f;pt.semrush.com&#x2f;home&#x2f;" target="_blank" rel="noopener noreferrer">Ver lista no Semrush ↗</a>
+  </div>
+  <p class="seo-note">Importado em <strong>30&#x2f;10&#x2f;2026 &agrave;s 12&#x3a;17 &#x28;Bras&iacute;lia&#x29;</strong>. Estimativas de busca orgânica; não representam todo o acesso do site, tráfego direto ou referências de IA. Para audiência medida, use <a href="/portal/seo/?aba=ga4">Audiência Google</a>. A importação não atualiza ao recarregar esta página.</p>
+  <div class="sd-summary">
+    
+    <article class="sd-card sd-own"><h3>Road Runners · tr&aacute;fego</h3><div class="sd-rank">16º <span>de 27</span></div><p><strong>3.900</strong> estimados <span class="sd-change sd-up">↑ &#x2b;260,71&#x25;</span></p></article>
+    
+    <article class="sd-card sd-own"><h3>Road Runners · palavras-chave</h3><div class="sd-rank">17º <span>de 27</span></div><p><strong>1.300</strong> palavras-chave <span class="sd-change sd-up">↑ &#x2b;41,3&#x25;</span></p></article>
+    
+    <article class="sd-card"><h3>Movimento do tráfego no grupo</h3><div class="sd-movement"><span class="sd-up">↑ 14 em alta</span><span class="sd-down">↓ 12 em queda</span><span>→ 1 estável</span></div><p>Variações da janela “Mês” exibidas pelo Semrush.</p></article>
+  </div>
+  <p class="seo-note">Posições somente entre os <strong>27 domínios desta lista</strong>. Valores abreviados na fonte são aproximados; empates compartilham posição. O Open Results está em <strong>22º em tráfego</strong> nessa base Brasil.</p>
+
+  <form class="sd-controls" data-domain-controls method="get" action="/portal/seo/">
+    <input type="hidden" name="aba" value="dominios"/>
+    <div class="sd-search"><label for="sd-search">Buscar domínio</label><input id="sd-search" type="search" class="form-control" name="dominio_busca" placeholder="Ex.: roadrunners, corridas…" maxlength="100" autocomplete="off"/></div>
+    <div><label for="sd-group">Grupo</label><select id="sd-group" class="form-select" name="dominio_grupo"><option value="all">Todos os domínios</option><option value="own">Road Runners e Open Results</option><option value="reference">Demais referências</option></select></div>
+    <div><label for="sd-trend">Movimento do tráfego</label><select id="sd-trend" class="form-select" name="dominio_sinal"><option value="all">Todos</option><option value="up">Em alta</option><option value="down">Em queda</option><option value="flat">Estável</option><option value="unknown">Sem variação medida</option></select></div>
+    <div><label for="sd-order">Ordenar por</label><select id="sd-order" class="form-select" name="dominio_ordem"><option value="traffic">Tráfego orgânico</option><option value="trafficChange">Variação do tráfego (%)</option><option value="keywords">Palavras-chave orgânicas</option><option value="keywordsChange">Variação de palavras-chave (%)</option><option value="refDomains">Domínios de referência</option><option value="refDomainsChange">Variação de referências (%)</option><option value="authority">Authority Score</option><option value="authorityChange">Variação do Authority Score (pontos)</option><option value="paidKeywords">Palavras-chave pagas</option><option value="paidKeywordsChange">Variação de palavras-chave pagas (%)</option><option value="paidTraffic">Tráfego pago</option><option value="paidTrafficChange">Variação do tráfego pago (%)</option><option value="domain">Domínio</option></select></div>
+    <button class="btn btn-outline-light sd-direction" type="button" id="sd-direction" aria-label="Inverter direção da ordenação">Maior → menor</button>
+    <button class="btn btn-link text-reset" type="reset">Limpar</button>
+  </form>
+  <noscript><p class="seo-note">A tabela completa está ordenada por tráfego. Ative JavaScript para ordenar as colunas e aplicar filtros sem recarregar.</p></noscript>
+  <p id="sd-status" class="seo-note" role="status" aria-live="polite">27 domínios · tráfego orgânico, do maior para o menor.</p>
+  <div class="sd-table-wrap" tabindex="0" role="region" aria-label="Comparação dos domínios; role horizontalmente para ver todas as colunas">
+    <table class="sd-table">
+      <caption class="visually-hidden">Domínios monitorados no Semrush, base Brasil, janela Mês. Clique em um cabeçalho para ordenar; as variações podem ser ordenadas pelo seletor acima.</caption>
+      <thead><tr><th scope="col" class="sd-position">Rank<br>tráfego</th><th scope="col" data-domain-column="domain"><button type="button" data-domain-sort="domain">Domínio <span aria-hidden="true">↕</span></button></th>
+      <th scope="col" data-domain-column="traffic" aria-sort="descending"><button type="button" data-domain-sort="traffic">Tr&aacute;fego org&acirc;nico <span aria-hidden="true">↓</span></button></th><th scope="col" data-domain-column="keywords"><button type="button" data-domain-sort="keywords">Palavras-chave org&acirc;nicas <span aria-hidden="true">↕</span></button></th><th scope="col" data-domain-column="refDomains"><button type="button" data-domain-sort="refDomains">Dom&iacute;nios de refer&ecirc;ncia <span aria-hidden="true">↕</span></button></th><th scope="col" data-domain-column="authority"><button type="button" data-domain-sort="authority">Authority Score <span aria-hidden="true">↕</span></button></th><th scope="col" data-domain-column="paidKeywords"><button type="button" data-domain-sort="paidKeywords">Palavras-chave pagas <span aria-hidden="true">↕</span></button></th><th scope="col" data-domain-column="paidTraffic"><button type="button" data-domain-sort="paidTraffic">Tr&aacute;fego pago <span aria-hidden="true">↕</span></button></th>
+      </tr></thead>
+      <tbody>
+      
+        <tr data-domain-row data-domain="focoradical.com.br" data-own="false">
+          <td class="sd-position">1º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=focoradical.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">focoradical.com.br ↗</a><span class="sd-country">BR · <a href="https://focoradical.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="497200" data-change="17.69">
+            <strong title="Exibido na fonte: 497,2K">497.200</strong>
+            <span class="sd-change sd-up">↑ &#x2b;17,69&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="15700" data-change="20.04">
+            <strong title="Exibido na fonte: 15,7K">15.700</strong>
+            <span class="sd-change sd-up">↑ &#x2b;20,04&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="5400" data-change="174.29">
+            <strong title="Exibido na fonte: 5,4K">5.400</strong>
+            <span class="sd-change sd-up">↑ &#x2b;174,29&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="49" data-change="0">
+            <strong title="Exibido na fonte: 49">  49</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="ticketsports.com.br" data-own="false">
+          <td class="sd-position">2º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=ticketsports.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">ticketsports.com.br ↗</a><span class="sd-country">BR · <a href="https://ticketsports.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="167700" data-change="-4.28">
+            <strong title="Exibido na fonte: 167,7K">167.700</strong>
+            <span class="sd-change sd-down">↓ -4,28&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="28100" data-change="33.1">
+            <strong title="Exibido na fonte: 28,1K">28.100</strong>
+            <span class="sd-change sd-up">↑ &#x2b;33,1&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="9300" data-change="27.05">
+            <strong title="Exibido na fonte: 9,3K">9.300</strong>
+            <span class="sd-change sd-up">↑ &#x2b;27,05&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="49" data-change="1">
+            <strong title="Exibido na fonte: 49">  49</strong>
+            <span class="sd-change sd-up">↑ &#x2b;1 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="15" data-change="15.38">
+            <strong title="Exibido na fonte: 15">  15</strong>
+            <span class="sd-change sd-up">↑ &#x2b;15,38&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="112" data-change="-36.72">
+            <strong title="Exibido na fonte: 112"> 112</strong>
+            <span class="sd-change sd-down">↓ -36,72&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="ativo.com" data-own="false">
+          <td class="sd-position">3º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=ativo.com&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">ativo.com ↗</a><span class="sd-country">BR · <a href="https://ativo.com/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="114100" data-change="-24.49">
+            <strong title="Exibido na fonte: 114,1K">114.100</strong>
+            <span class="sd-change sd-down">↓ -24,49&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="43100" data-change="-2.4">
+            <strong title="Exibido na fonte: 43,1K">43.100</strong>
+            <span class="sd-change sd-down">↓ -2,4&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="5800" data-change="39.02">
+            <strong title="Exibido na fonte: 5,8K">5.800</strong>
+            <span class="sd-change sd-up">↑ &#x2b;39,02&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="47" data-change="0">
+            <strong title="Exibido na fonte: 47">  47</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="fotop.com.br" data-own="false">
+          <td class="sd-position">4º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=fotop.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">fotop.com.br ↗</a><span class="sd-country">BR · <a href="https://fotop.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="45400" data-change="7.61">
+            <strong title="Exibido na fonte: 45,4K">45.400</strong>
+            <span class="sd-change sd-up">↑ &#x2b;7,61&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="20000" data-change="-2.63">
+            <strong title="Exibido na fonte: 20K">20.000</strong>
+            <span class="sd-change sd-down">↓ -2,63&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="4700" data-change="94.97">
+            <strong title="Exibido na fonte: 4,7K">4.700</strong>
+            <span class="sd-change sd-up">↑ &#x2b;94,97&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="42" data-change="1">
+            <strong title="Exibido na fonte: 42">  42</strong>
+            <span class="sd-change sd-up">↑ &#x2b;1 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="cbat.org.br" data-own="false">
+          <td class="sd-position">5º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=cbat.org.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">cbat.org.br ↗</a><span class="sd-country">BR · <a href="https://cbat.org.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="23000" data-change="-11.31">
+            <strong title="Exibido na fonte: 23K">23.000</strong>
+            <span class="sd-change sd-down">↓ -11,31&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="8000" data-change="41.5">
+            <strong title="Exibido na fonte: 8K">8.000</strong>
+            <span class="sd-change sd-up">↑ &#x2b;41,5&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="2800" data-change="-0.04">
+            <strong title="Exibido na fonte: 2,8K">2.800</strong>
+            <span class="sd-change sd-down">↓ -0,04&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="40" data-change="0">
+            <strong title="Exibido na fonte: 40">  40</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="centraldacorrida.com.br" data-own="false">
+          <td class="sd-position">5º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=centraldacorrida.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">centraldacorrida.com.br ↗</a><span class="sd-country">BR · <a href="https://centraldacorrida.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="23000" data-change="-47.25">
+            <strong title="Exibido na fonte: 23K">23.000</strong>
+            <span class="sd-change sd-down">↓ -47,25&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="3600" data-change="12.97">
+            <strong title="Exibido na fonte: 3,6K">3.600</strong>
+            <span class="sd-change sd-up">↑ &#x2b;12,97&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="2100" data-change="1.89">
+            <strong title="Exibido na fonte: 2,1K">2.100</strong>
+            <span class="sd-change sd-up">↑ &#x2b;1,89&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="37" data-change="-1">
+            <strong title="Exibido na fonte: 37">  37</strong>
+            <span class="sd-change sd-down">↓ -1 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="corridasbr.com.br" data-own="false">
+          <td class="sd-position">7º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=corridasbr.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">corridasbr.com.br ↗</a><span class="sd-country">BR · <a href="https://corridasbr.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="21700" data-change="-4.15">
+            <strong title="Exibido na fonte: 21,7K">21.700</strong>
+            <span class="sd-change sd-down">↓ -4,15&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="5300" data-change="-11.6">
+            <strong title="Exibido na fonte: 5,3K">5.300</strong>
+            <span class="sd-change sd-down">↓ -11,6&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="809" data-change="7.72">
+            <strong title="Exibido na fonte: 809"> 809</strong>
+            <span class="sd-change sd-up">↑ &#x2b;7,72&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="30" data-change="0">
+            <strong title="Exibido na fonte: 30">  30</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="o2corre.com.br" data-own="false">
+          <td class="sd-position">8º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=o2corre.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">o2corre.com.br ↗</a><span class="sd-country">BR · <a href="https://o2corre.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="19900" data-change="-18.03">
+            <strong title="Exibido na fonte: 19,9K">19.900</strong>
+            <span class="sd-change sd-down">↓ -18,03&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="12700" data-change="-4.46">
+            <strong title="Exibido na fonte: 12,7K">12.700</strong>
+            <span class="sd-change sd-down">↓ -4,46&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="641" data-change="16.97">
+            <strong title="Exibido na fonte: 641"> 641</strong>
+            <span class="sd-change sd-up">↑ &#x2b;16,97&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="35" data-change="1">
+            <strong title="Exibido na fonte: 35">  35</strong>
+            <span class="sd-change sd-up">↑ &#x2b;1 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="portaldascorridas.com.br" data-own="false">
+          <td class="sd-position">9º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=portaldascorridas.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">portaldascorridas.com.br ↗</a><span class="sd-country">BR · <a href="https://portaldascorridas.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="12200" data-change="16.25">
+            <strong title="Exibido na fonte: 12,2K">12.200</strong>
+            <span class="sd-change sd-up">↑ &#x2b;16,25&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="1400" data-change="-12.75">
+            <strong title="Exibido na fonte: 1,4K">1.400</strong>
+            <span class="sd-change sd-down">↓ -12,75&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="469" data-change="24.73">
+            <strong title="Exibido na fonte: 469"> 469</strong>
+            <span class="sd-change sd-up">↑ &#x2b;24,73&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="28" data-change="1">
+            <strong title="Exibido na fonte: 28">  28</strong>
+            <span class="sd-change sd-up">↑ &#x2b;1 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="webrun.com.br" data-own="false">
+          <td class="sd-position">10º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=webrun.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">webrun.com.br ↗</a><span class="sd-country">BR · <a href="https://webrun.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="10700" data-change="-1.72">
+            <strong title="Exibido na fonte: 10,7K">10.700</strong>
+            <span class="sd-change sd-down">↓ -1,72&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="18900" data-change="-3">
+            <strong title="Exibido na fonte: 18,9K">18.900</strong>
+            <span class="sd-change sd-down">↓ -3&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="2500" data-change="0.78">
+            <strong title="Exibido na fonte: 2,5K">2.500</strong>
+            <span class="sd-change sd-up">↑ &#x2b;0,78&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="35" data-change="0">
+            <strong title="Exibido na fonte: 35">  35</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="brasilcorrida.com.br" data-own="false">
+          <td class="sd-position">11º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=brasilcorrida.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">brasilcorrida.com.br ↗</a><span class="sd-country">BR · <a href="https://brasilcorrida.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="10500" data-change="33.29">
+            <strong title="Exibido na fonte: 10,5K">10.500</strong>
+            <span class="sd-change sd-up">↑ &#x2b;33,29&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="700" data-change="10.76">
+            <strong title="Exibido na fonte: 700"> 700</strong>
+            <span class="sd-change sd-up">↑ &#x2b;10,76&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="684" data-change="9.62">
+            <strong title="Exibido na fonte: 684"> 684</strong>
+            <span class="sd-change sd-up">↑ &#x2b;9,62&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="28" data-change="-1">
+            <strong title="Exibido na fonte: 28">  28</strong>
+            <span class="sd-change sd-down">↓ -1 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="finishers.com" data-own="false">
+          <td class="sd-position">12º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=finishers.com&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">finishers.com ↗</a><span class="sd-country">BR · <a href="https://finishers.com/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="8500" data-change="3.88">
+            <strong title="Exibido na fonte: 8,5K">8.500</strong>
+            <span class="sd-change sd-up">↑ &#x2b;3,88&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="3100" data-change="-3.94">
+            <strong title="Exibido na fonte: 3,1K">3.100</strong>
+            <span class="sd-change sd-down">↓ -3,94&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="11300" data-change="22.32">
+            <strong title="Exibido na fonte: 11,3K">11.300</strong>
+            <span class="sd-change sd-up">↑ &#x2b;22,32&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="51" data-change="1">
+            <strong title="Exibido na fonte: 51">  51</strong>
+            <span class="sd-change sd-up">↑ &#x2b;1 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="runnerbrasil.com.br" data-own="false">
+          <td class="sd-position">13º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=runnerbrasil.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">runnerbrasil.com.br ↗</a><span class="sd-country">BR · <a href="https://runnerbrasil.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="6400" data-change="-7.01">
+            <strong title="Exibido na fonte: 6,4K">6.400</strong>
+            <span class="sd-change sd-down">↓ -7,01&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="992" data-change="-2.36">
+            <strong title="Exibido na fonte: 992"> 992</strong>
+            <span class="sd-change sd-down">↓ -2,36&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="1100" data-change="3.53">
+            <strong title="Exibido na fonte: 1,1K">1.100</strong>
+            <span class="sd-change sd-up">↑ &#x2b;3,53&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="29" data-change="0">
+            <strong title="Exibido na fonte: 29">  29</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="chelso.com.br" data-own="false">
+          <td class="sd-position">14º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=chelso.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">chelso.com.br ↗</a><span class="sd-country">BR · <a href="https://chelso.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="6200" data-change="14.03">
+            <strong title="Exibido na fonte: 6,2K">6.200</strong>
+            <span class="sd-change sd-up">↑ &#x2b;14,03&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="1900" data-change="-13.67">
+            <strong title="Exibido na fonte: 1,9K">1.900</strong>
+            <span class="sd-change sd-down">↓ -13,67&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="788" data-change="10.52">
+            <strong title="Exibido na fonte: 788"> 788</strong>
+            <span class="sd-change sd-up">↑ &#x2b;10,52&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="28" data-change="0">
+            <strong title="Exibido na fonte: 28">  28</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="soucorredor.com.br" data-own="false">
+          <td class="sd-position">15º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=soucorredor.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">soucorredor.com.br ↗</a><span class="sd-country">BR · <a href="https://soucorredor.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="5000" data-change="4.29">
+            <strong title="Exibido na fonte: 5K">5.000</strong>
+            <span class="sd-change sd-up">↑ &#x2b;4,29&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="3600" data-change="-4.81">
+            <strong title="Exibido na fonte: 3,6K">3.600</strong>
+            <span class="sd-change sd-down">↓ -4,81&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="399" data-change="33.89">
+            <strong title="Exibido na fonte: 399"> 399</strong>
+            <span class="sd-change sd-up">↑ &#x2b;33,89&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="24" data-change="-1">
+            <strong title="Exibido na fonte: 24">  24</strong>
+            <span class="sd-change sd-down">↓ -1 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="roadrunners.run" data-own="true" class="sd-row-own">
+          <td class="sd-position">16º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=roadrunners.run&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">roadrunners.run ↗</a><span class="sd-badge">Nosso site</span><span class="sd-country">BR · <a href="https://roadrunners.run/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="3900" data-change="260.71">
+            <strong title="Exibido na fonte: 3,9K">3.900</strong>
+            <span class="sd-change sd-up">↑ &#x2b;260,71&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="1300" data-change="41.3">
+            <strong title="Exibido na fonte: 1,3K">1.300</strong>
+            <span class="sd-change sd-up">↑ &#x2b;41,3&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="689" data-change="18.59">
+            <strong title="Exibido na fonte: 689"> 689</strong>
+            <span class="sd-change sd-up">↑ &#x2b;18,59&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="22" data-change="0">
+            <strong title="Exibido na fonte: 22">  22</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="corridinhas.com.br" data-own="false">
+          <td class="sd-position">17º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=corridinhas.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">corridinhas.com.br ↗</a><span class="sd-country">BR · <a href="https://corridinhas.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="3300" data-change="-13.84">
+            <strong title="Exibido na fonte: 3,3K">3.300</strong>
+            <span class="sd-change sd-down">↓ -13,84&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="2700" data-change="-29.47">
+            <strong title="Exibido na fonte: 2,7K">2.700</strong>
+            <span class="sd-change sd-down">↓ -29,47&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="170" data-change="66.67">
+            <strong title="Exibido na fonte: 170"> 170</strong>
+            <span class="sd-change sd-up">↑ &#x2b;66,67&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="20" data-change="1">
+            <strong title="Exibido na fonte: 20">  20</strong>
+            <span class="sd-change sd-up">↑ &#x2b;1 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="catarinarun.com.br" data-own="false">
+          <td class="sd-position">18º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=catarinarun.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">catarinarun.com.br ↗</a><span class="sd-country">BR · <a href="https://catarinarun.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="2200" data-change="-10.79">
+            <strong title="Exibido na fonte: 2,2K">2.200</strong>
+            <span class="sd-change sd-down">↓ -10,79&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="862" data-change="-3.15">
+            <strong title="Exibido na fonte: 862"> 862</strong>
+            <span class="sd-change sd-down">↓ -3,15&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="354" data-change="22.92">
+            <strong title="Exibido na fonte: 354"> 354</strong>
+            <span class="sd-change sd-up">↑ &#x2b;22,92&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="19" data-change="-3">
+            <strong title="Exibido na fonte: 19">  19</strong>
+            <span class="sd-change sd-down">↓ -3 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="contrarelogio.com.br" data-own="false">
+          <td class="sd-position">18º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=contrarelogio.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">contrarelogio.com.br ↗</a><span class="sd-country">BR · <a href="https://contrarelogio.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="2200" data-change="0.72">
+            <strong title="Exibido na fonte: 2,2K">2.200</strong>
+            <span class="sd-change sd-up">↑ &#x2b;0,72&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="2000" data-change="-10.99">
+            <strong title="Exibido na fonte: 2K">2.000</strong>
+            <span class="sd-change sd-down">↓ -10,99&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="818" data-change="16.36">
+            <strong title="Exibido na fonte: 818"> 818</strong>
+            <span class="sd-change sd-up">↑ &#x2b;16,36&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="27" data-change="1">
+            <strong title="Exibido na fonte: 27">  27</strong>
+            <span class="sd-change sd-up">↑ &#x2b;1 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="suacorrida.com.br" data-own="false">
+          <td class="sd-position">20º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=suacorrida.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">suacorrida.com.br ↗</a><span class="sd-country">BR · <a href="https://suacorrida.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="1800" data-change="165.28">
+            <strong title="Exibido na fonte: 1,8K">1.800</strong>
+            <span class="sd-change sd-up">↑ &#x2b;165,28&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="1400" data-change="-10.87">
+            <strong title="Exibido na fonte: 1,4K">1.400</strong>
+            <span class="sd-change sd-down">↓ -10,87&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="810" data-change="11.72">
+            <strong title="Exibido na fonte: 810"> 810</strong>
+            <span class="sd-change sd-up">↑ &#x2b;11,72&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="27" data-change="0">
+            <strong title="Exibido na fonte: 27">  27</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="portaldocorredor.com.br" data-own="false">
+          <td class="sd-position">21º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=portaldocorredor.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">portaldocorredor.com.br ↗</a><span class="sd-country">BR · <a href="https://portaldocorredor.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="1300" data-change="606.56">
+            <strong title="Exibido na fonte: 1,3K">1.300</strong>
+            <span class="sd-change sd-up">↑ &#x2b;606,56&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="37" data-change="-15.91">
+            <strong title="Exibido na fonte: 37">  37</strong>
+            <span class="sd-change sd-down">↓ -15,91&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="331" data-change="34.55">
+            <strong title="Exibido na fonte: 331"> 331</strong>
+            <span class="sd-change sd-up">↑ &#x2b;34,55&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="24" data-change="-2">
+            <strong title="Exibido na fonte: 24">  24</strong>
+            <span class="sd-change sd-down">↓ -2 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="openresults.run" data-own="true" class="sd-row-own">
+          <td class="sd-position">22º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=openresults.run&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">openresults.run ↗</a><span class="sd-badge">Nosso site</span><span class="sd-country">BR · <a href="https://openresults.run/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="1100" data-change="0">
+            <strong title="Exibido na fonte: 1,1K">1.100</strong>
+            <span class="sd-change sd-flat">→ &#x2b;0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="479" data-change="0">
+            <strong title="Exibido na fonte: 479"> 479</strong>
+            <span class="sd-change sd-flat">→ &#x2b;0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="745" data-change="-0.8">
+            <strong title="Exibido na fonte: 745"> 745</strong>
+            <span class="sd-change sd-down">↓ -0,8&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="5" data-change="0">
+            <strong title="Exibido na fonte: 5">   5</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="movnow.com.br" data-own="false">
+          <td class="sd-position">23º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=movnow.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">movnow.com.br ↗</a><span class="sd-country">BR · <a href="https://movnow.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="811" data-change="10.04">
+            <strong title="Exibido na fonte: 811"> 811</strong>
+            <span class="sd-change sd-up">↑ &#x2b;10,04&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="368" data-change="-4.42">
+            <strong title="Exibido na fonte: 368"> 368</strong>
+            <span class="sd-change sd-down">↓ -4,42&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="423" data-change="23.68">
+            <strong title="Exibido na fonte: 423"> 423</strong>
+            <span class="sd-change sd-up">↑ &#x2b;23,68&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="24" data-change="0">
+            <strong title="Exibido na fonte: 24">  24</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="corridasemaratonas.com.br" data-own="false">
+          <td class="sd-position">24º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=corridasemaratonas.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">corridasemaratonas.com.br ↗</a><span class="sd-country">BR · <a href="https://corridasemaratonas.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="409" data-change="13.3">
+            <strong title="Exibido na fonte: 409"> 409</strong>
+            <span class="sd-change sd-up">↑ &#x2b;13,3&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="936" data-change="-6.49">
+            <strong title="Exibido na fonte: 936"> 936</strong>
+            <span class="sd-change sd-down">↓ -6,49&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="344" data-change="39.27">
+            <strong title="Exibido na fonte: 344"> 344</strong>
+            <span class="sd-change sd-up">↑ &#x2b;39,27&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="10" data-change="0">
+            <strong title="Exibido na fonte: 10">  10</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="guiadacorrida.com.br" data-own="false">
+          <td class="sd-position">25º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=guiadacorrida.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">guiadacorrida.com.br ↗</a><span class="sd-country">BR · <a href="https://guiadacorrida.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="320" data-change="29.03">
+            <strong title="Exibido na fonte: 320"> 320</strong>
+            <span class="sd-change sd-up">↑ &#x2b;29,03&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="1000" data-change="30.4">
+            <strong title="Exibido na fonte: 1K">1.000</strong>
+            <span class="sd-change sd-up">↑ &#x2b;30,4&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="346" data-change="36.76">
+            <strong title="Exibido na fonte: 346"> 346</strong>
+            <span class="sd-change sd-up">↑ &#x2b;36,76&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="8" data-change="0">
+            <strong title="Exibido na fonte: 8">   8</strong>
+            <span class="sd-change sd-flat">→ 0 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="jornalcorrida.com.br" data-own="false">
+          <td class="sd-position">26º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=jornalcorrida.com.br&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">jornalcorrida.com.br ↗</a><span class="sd-country">BR · <a href="https://jornalcorrida.com.br/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="107" data-change="-31.85">
+            <strong title="Exibido na fonte: 107"> 107</strong>
+            <span class="sd-change sd-down">↓ -31,85&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="227" data-change="-5.42">
+            <strong title="Exibido na fonte: 227"> 227</strong>
+            <span class="sd-change sd-down">↓ -5,42&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="476" data-change="35.61">
+            <strong title="Exibido na fonte: 476"> 476</strong>
+            <span class="sd-change sd-up">↑ &#x2b;35,61&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="13" data-change="-1">
+            <strong title="Exibido na fonte: 13">  13</strong>
+            <span class="sd-change sd-down">↓ -1 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+        <tr data-domain-row data-domain="corridanoar.com" data-own="false">
+          <td class="sd-position">27º</td>
+          <th scope="row" class="sd-domain"><a href="https://pt.semrush.com/analytics/overview/?q=corridanoar.com&amp;db=br&amp;searchType=domain&amp;chartPeriod=1m" target="_blank" rel="noopener noreferrer">corridanoar.com ↗</a><span class="sd-country">BR · <a href="https://corridanoar.com/" target="_blank" rel="noopener noreferrer">visitar site ↗</a></span></th>
+          
+          <td class="sd-value" data-metric="traffic" data-value="52" data-change="-82.78">
+            <strong title="Exibido na fonte: 52">  52</strong>
+            <span class="sd-change sd-down">↓ -82,78&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="keywords" data-value="203" data-change="-31.65">
+            <strong title="Exibido na fonte: 203"> 203</strong>
+            <span class="sd-change sd-down">↓ -31,65&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="refDomains" data-value="1500" data-change="304.01">
+            <strong title="Exibido na fonte: 1,5K">1.500</strong>
+            <span class="sd-change sd-up">↑ &#x2b;304,01&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="authority" data-value="21" data-change="2">
+            <strong title="Exibido na fonte: 21">  21</strong>
+            <span class="sd-change sd-up">↑ &#x2b;2 pt.</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidKeywords" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+          <td class="sd-value" data-metric="paidTraffic" data-value="0" data-change="0">
+            <strong title="Exibido na fonte: 0">   0</strong>
+            <span class="sd-change sd-flat">→ 0&#x25;</span>
+          </td>
+          
+        </tr>
+      
+      </tbody>
+    </table>
+  </div>
+  <p class="sd-empty" id="sd-empty" hidden>Nenhum domínio corresponde aos filtros. Use “Limpar” para voltar à lista completa.</p>
+  <details class="seo-method sd-method"><summary>Como comparar e escolher os próximos sites para análise</summary><div class="seo-method-body">
+    <p>O rank de tráfego permanece o mesmo quando você ordena outra coluna ou filtra o grupo. É a posição na lista completa, em ordem decrescente de tráfego orgânico estimado.</p>
+    <p>As porcentagens são as variações do recorte “Mês” exibidas pela fonte. Authority Score varia em pontos. A classificação “em alta” ou “em queda” considera apenas o tráfego orgânico; não comprova causa, conversão nem tendência sustentada.</p>
+    <p>Comece pelas referências próximas ao Road Runners e pelas que crescem em tráfego e palavras-chave. Abra o domínio no Semrush para comparar as páginas e consultas responsáveis. Sites de inscrições, fotos e notícias podem atender buscas diferentes das de um calendário.</p>
+    <p>As coletas desta lista são preservadas para comparação histórica. Os números acima correspondem à data de importação indicada nesta página. Os gráficos da fonte não foram reconstruídos com valores inferidos. Ausência de medição não equivale a zero.</p>
+  </div></details>
+</section>
+<script src="/portal/seo/assets/domains.js?v=20261025-1" defer></script>
+
+  </div>
+</section>
+<script>
+// Preserve existing links to correction IDs created before the section navigation.
+(function () {
+  function openLegacyIssue() {
+    if (/^#(?:RR|OR|SH)-\d+$/.test(location.hash)) {
+      var url = new URL(location.href);
+      if (url.searchParams.get('aba') !== 'fila') { url.searchParams.set('aba', 'fila'); location.replace(url.href); }
+    }
+  }
+  openLegacyIssue(); window.addEventListener('hashchange', openLegacyIssue);
+})();
+</script>

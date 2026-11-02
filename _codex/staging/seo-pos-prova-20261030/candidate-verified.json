@@ -1,0 +1,27 @@
+{
+  "scenarios": 15,
+  "performance": {
+    "candidate": [
+      0.440917,
+      0.402629,
+      0.397768
+    ],
+    "baseline": [
+      0.404668,
+      0.429758,
+      0.446301
+    ]
+  },
+  "compiledTemplates": 7,
+  "modelResult": "POST_RACE_PASSED:19",
+  "hashes": {
+    "evento/index.cfm": "28a5e94801bebbe2442aef8d89d48ab289397528e52f42bac8e9e56ff94ee2d5",
+    "evento/parts/post_race_data.cfm": "4a2679b2b55f2c55fb37c2653b120f4d4142770ec6ee9fe6044e396d81f238dc",
+    "evento/parts/post_race.cfm": "bf114dcc21dd90c16bb1c95314902faa8ac2689e4bea4bd6cd82e3c0089fc7e2",
+    "includes/backend/backend_permanent_race.cfm": "78983314a8014b75d9b7a9198e08e62bea6283b9d70e96b3b4a3602472fe689f",
+    "includes/permanent_race_overview.cfm": "8f297fdb2bfece4270aedece736d9fdaa13c528edd51f1f2b76993a4aa19bbf8",
+    "assets/css/runnerhub-race-guides.css": "240a08954993435a77cfb08ee6056d1b00791cf5b89bdb069cadc99670b03010",
+    "maratona/index.cfm": "c9a9d0301493b2d82a21f25ca49157086988d43d28cbcb75cf567d129889dc94",
+    "circuito/index.cfm": "c834ef189d0192287fa9c10c2c6ea94d751b1b1c1cc0fed1f137d5d960348b47"
+  }
+}

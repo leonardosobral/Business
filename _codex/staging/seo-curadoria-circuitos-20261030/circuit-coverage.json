@@ -1,0 +1,307 @@
+{
+  "nextEstacoes": [
+    {
+      "estado": "RS",
+      "nome_evento": "CIRCUITO TRAIL ESTAÇÕES - SAPIRANGA",
+      "id_evento": 46015,
+      "url_hotsite": "https://app.sprinta.com.br/event/26376a69fc3e86b5e",
+      "memberships": null,
+      "tag": "2026-circuito-trail-estacoes-sapiranga",
+      "cidade": "Sapiranga",
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "estado": "SP",
+      "nome_evento": "Circuito da Estações 2026 - Verão - Campinas",
+      "id_evento": 48479,
+      "url_hotsite": "https://www.runningland.com.br/circuito-da-estacoes-2026-ver-o-campinas",
+      "memberships": null,
+      "tag": "2026-circuito-da-estacoes-2026-verao-campinas",
+      "cidade": "Campinas",
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "estado": "AM",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Manaus",
+      "id_evento": 47216,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-manaus",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-manaus",
+      "cidade": "Manaus",
+      "data_inicial": "2026-11-15"
+    },
+    {
+      "estado": "PR",
+      "nome_evento": "CORRIDA DAS 4 ESTAÇÕES IRATI - PR - EDIÇÃO PIMAVERA",
+      "id_evento": 48556,
+      "url_hotsite": "",
+      "memberships": null,
+      "tag": "2026-corrida-das-4-estacoes-irati-pr-edicao-pimavera-pr",
+      "cidade": "Irati",
+      "data_inicial": "2026-11-21"
+    },
+    {
+      "estado": "SE",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Aracaju",
+      "id_evento": 37771,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-aracaju",
+      "memberships": [
+        "estacoes"
+      ],
+      "tag": "2026-circuito-das-estacoes-2026-verao-aracaju",
+      "cidade": "Aracaju",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "estado": "TO",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Palmas",
+      "id_evento": 37769,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-palmas",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-palmas",
+      "cidade": "Palmas",
+      "data_inicial": "2026-11-22"
+    },
+    {
+      "estado": "CE",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Fortaleza",
+      "id_evento": 46522,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-fortaleza",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-fortaleza",
+      "cidade": "Fortaleza",
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "estado": "MG",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Belo Horizonte",
+      "id_evento": 46520,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-belo-horizonte",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-belo-horizonte",
+      "cidade": "Belo Horizonte",
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "estado": "PR",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Curitiba",
+      "id_evento": 46521,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-curitiba",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-curitiba",
+      "cidade": "Curitiba",
+      "data_inicial": "2026-11-29"
+    },
+    {
+      "estado": "RS",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Porto Alegre",
+      "id_evento": 47179,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-porto-alegre",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-porto-alegre",
+      "cidade": "Porto Alegre",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "estado": "MT",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Cuiabá",
+      "id_evento": 37768,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-cuiaba",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-cuiaba",
+      "cidade": "Cuiabá",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "estado": "PI",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Teresina",
+      "id_evento": 38506,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-teresina",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-teresina",
+      "cidade": "Teresina",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "estado": "DF",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Brasília",
+      "id_evento": 46508,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-brasilia",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-brasilia",
+      "cidade": "Brasilia",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "estado": "RJ",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Rio de Janeiro",
+      "id_evento": 46510,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-rio-de-janeiro",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-rio-de-janeiro",
+      "cidade": "Rio de Janeiro",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "estado": "MA",
+      "nome_evento": "Circuito das Estações 2026 - Verão - São Luís",
+      "id_evento": 37770,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-luis",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-sao-luis",
+      "cidade": "São Luís",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "estado": "PE",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Recife",
+      "id_evento": 46509,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-recife",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-recife",
+      "cidade": "Recife",
+      "data_inicial": "2026-12-06"
+    },
+    {
+      "estado": "PB",
+      "nome_evento": "Circuito das Estações 2026 - Verão - João Pessoa",
+      "id_evento": 37766,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-jo-o-pessoa",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-joao-pessoa",
+      "cidade": "João Pessoa",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "estado": "BA",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Salvador",
+      "id_evento": 47176,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-salvador",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-salvador",
+      "cidade": "Salvador",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "estado": "GO",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Anápolis",
+      "id_evento": 37764,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-anapolis",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-anapolis",
+      "cidade": "Anápolis",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "estado": "MG",
+      "nome_evento": "2ª CORRIDA RUN DAS ESTAÇÕES",
+      "id_evento": 50019,
+      "url_hotsite": "https://dwsportsonline.com.br/eventos/2a-corrida-run-das-estacoes",
+      "memberships": null,
+      "tag": "2026-2-corrida-run-das-estacoes",
+      "cidade": "Pitangui",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "estado": "MA",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Imperatriz",
+      "id_evento": 37765,
+      "url_hotsite": "",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-imperatriz",
+      "cidade": "Imperatriz",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "estado": "MS",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Campo Grande",
+      "id_evento": 40742,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-campo-grande",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-campo-grande",
+      "cidade": "Campo Grande",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "estado": "PA",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Belém",
+      "id_evento": 46476,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-belem",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-belem",
+      "cidade": "Belém",
+      "data_inicial": "2026-12-13"
+    },
+    {
+      "estado": "ES",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Vitória",
+      "id_evento": 47168,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-vitoria",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-vitoria",
+      "cidade": "Vitória",
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "estado": "SP",
+      "nome_evento": "Circuito das Estações 2026 - Verão - São Paulo",
+      "id_evento": 46473,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-paulo",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-sao-paulo",
+      "cidade": "São Paulo",
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "estado": "RN",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Natal",
+      "id_evento": 37763,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-natal",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-natal",
+      "cidade": "Natal",
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "estado": "SP",
+      "nome_evento": "Circuito das Estações 2026 - Verão - São José dos Campos",
+      "id_evento": 46197,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-jose-dos-campos",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-sao-jose-dos-campos",
+      "cidade": "São José dos Campos",
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "estado": "GO",
+      "nome_evento": "Circuito das Estações 2026 - Verão - Goiânia",
+      "id_evento": 37762,
+      "url_hotsite": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-goiania",
+      "memberships": null,
+      "tag": "2026-circuito-das-estacoes-2026-verao-goiania",
+      "cidade": "Goiania",
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "estado": "PR",
+      "nome_evento": "Etapa - Verão Circuito 4 Estações de Corrida de Rua 5km",
+      "id_evento": 50485,
+      "url_hotsite": "https://agendaoffroad.com.br/_circuitodasestacoes_verao2026",
+      "memberships": null,
+      "tag": "2026-etapa-verao-circuito-4-estacoes-de-corrida-de-rua-5km",
+      "cidade": "Castro",
+      "data_inicial": "2026-12-20"
+    },
+    {
+      "estado": "BA",
+      "nome_evento": "Blog Run Estações Circuito Verão",
+      "id_evento": 50267,
+      "url_hotsite": "https://platoon.com.br/blogrunestacoes",
+      "memberships": null,
+      "tag": "2026-blog-run-estacoes-circuito-verao",
+      "cidade": "Conceição da Feira",
+      "data_inicial": "2026-12-20"
+    }
+  ],
+  "children": null
+}

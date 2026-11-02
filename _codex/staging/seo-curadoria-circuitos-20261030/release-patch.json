@@ -1,0 +1,8 @@
+{
+  "published": [
+    "includes/backend/backend_permanent_race.cfm",
+    "includes/permanent_race_overview.cfm"
+  ],
+  "backup": "/var/backups/seo-curadoria-circuitos-20261030-runtime/update-161928/baseline",
+  "verified_hashes": 5
+}

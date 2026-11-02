@@ -1,0 +1,9 @@
+{
+  "mode": "candidate",
+  "scenarios": 15,
+  "accessChecks": 8,
+  "hashes": {
+    "portal/includes/seo_search_evidence.cfm": "c1ae237131d3c6b2805c14118fef2b42ed47981f667a207d9bc3c2fb556d6dd2",
+    "portal/conteudo/seo_growth_baseline.cfm": "d2b3d4835d260a64bc2efd437e1dff3ead73f82af10494be218a4c1a1c0b087f"
+  }
+}

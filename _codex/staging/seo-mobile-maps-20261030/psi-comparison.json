@@ -1,0 +1,37 @@
+{
+  "observedOn": "2026-10-30",
+  "testUrl": "https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/",
+  "environment": {
+    "formFactor": "mobile",
+    "device": "Moto G Power emulated",
+    "network": "slow4G",
+    "lighthouse": "13.6.0",
+    "mode": "initialPageLoad"
+  },
+  "before": {
+    "reportUrl": "https://pagespeed.web.dev/analysis/https-roadrunners-run-evento-2026-maratona-de-aracaju-2026/8h9yx3klom?form_factor=mobile",
+    "reportedAtBrt": "2026-10-30 16:14",
+    "performance": 33,
+    "fcpMs": 2414,
+    "lcpMs": 8259,
+    "tbtMs": 8033,
+    "cls": 0.038,
+    "speedIndexMs": 12550,
+    "mapboxCpuMs": 14797,
+    "payloadKiB": 5741,
+    "longTasks": 20
+  },
+  "after": {
+    "reportUrl": "https://pagespeed.web.dev/analysis/https-roadrunners-run-evento-2026-maratona-de-aracaju-2026/c4zwyu0fz6?form_factor=mobile",
+    "reportedAtBrt": "2026-10-30 16:25",
+    "performance": 64,
+    "fcpMs": 2419,
+    "lcpMs": 7146,
+    "tbtMs": 247,
+    "cls": 0.038,
+    "speedIndexMs": 5438,
+    "payloadKiB": 4083,
+    "longTasks": 8
+  },
+  "interpretation": "Single laboratory comparison of initial loading, not field INP or Semrush Site Health. Maps still load when approached. LCP remains a priority. PSI field data for this event uses origin fallback, not individual event URL."
+}

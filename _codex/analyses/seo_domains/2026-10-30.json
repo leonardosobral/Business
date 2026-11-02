@@ -1,0 +1,2039 @@
+{
+  "schemaVersion": 1,
+  "source": "Semrush · Domínios para monitoramento",
+  "sourceUrl": "https://pt.semrush.com/home/",
+  "collectedAt": "2026-10-30T15:17:09.946000+00:00",
+  "collectedLabel": "30/10/2026 às 12:17 (Brasília)",
+  "country": "BR",
+  "period": "1m",
+  "periodLabel": "Mês",
+  "sourceSha256": "c42022cc9a1fb9b76240e27bb0a1322ab180dd9769f94c6dffd059e783d4d925",
+  "count": 27,
+  "domains": [
+    {
+      "domain": "focoradical.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 15700,
+          "display": "15,7K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 20.04,
+          "changeDisplay": "+20.04%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 497200,
+          "display": "497,2K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 17.69,
+          "changeDisplay": "+17.69%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 5400,
+          "display": "5,4K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 174.29,
+          "changeDisplay": "+174.29%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 49,
+          "display": "49",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 5,
+        "traffic": 1,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 4,
+        "authority": 2
+      }
+    },
+    {
+      "domain": "ticketsports.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 28100,
+          "display": "28,1K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 33.1,
+          "changeDisplay": "+33.1%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 167700,
+          "display": "167,7K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -4.28,
+          "changeDisplay": "-4.28%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 15,
+          "display": "15",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 15.38,
+          "changeDisplay": "+15.38%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 112,
+          "display": "112",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -36.72,
+          "changeDisplay": "-36.72%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 9300,
+          "display": "9,3K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 27.05,
+          "changeDisplay": "+27.05%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 49,
+          "display": "49",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 1.0,
+          "changeDisplay": "+1",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 2,
+        "traffic": 2,
+        "paidKeywords": 1,
+        "paidTraffic": 1,
+        "refDomains": 2,
+        "authority": 2
+      }
+    },
+    {
+      "domain": "ativo.com",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 43100,
+          "display": "43,1K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -2.4,
+          "changeDisplay": "-2.4%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 114100,
+          "display": "114,1K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -24.49,
+          "changeDisplay": "-24.49%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 5800,
+          "display": "5,8K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 39.02,
+          "changeDisplay": "+39.02%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 47,
+          "display": "47",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 1,
+        "traffic": 3,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 3,
+        "authority": 4
+      }
+    },
+    {
+      "domain": "fotop.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 20000,
+          "display": "20K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -2.63,
+          "changeDisplay": "-2.63%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 45400,
+          "display": "45,4K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 7.61,
+          "changeDisplay": "+7.61%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 4700,
+          "display": "4,7K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 94.97,
+          "changeDisplay": "+94.97%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 42,
+          "display": "42",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 1.0,
+          "changeDisplay": "+1",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 3,
+        "traffic": 4,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 5,
+        "authority": 5
+      }
+    },
+    {
+      "domain": "cbat.org.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 8000,
+          "display": "8K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 41.5,
+          "changeDisplay": "+41.5%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 23000,
+          "display": "23K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -11.31,
+          "changeDisplay": "-11.31%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 2800,
+          "display": "2,8K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -0.04,
+          "changeDisplay": "-0.04%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 40,
+          "display": "40",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 7,
+        "traffic": 5,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 6,
+        "authority": 6
+      }
+    },
+    {
+      "domain": "centraldacorrida.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 3600,
+          "display": "3,6K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 12.97,
+          "changeDisplay": "+12.97%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 23000,
+          "display": "23K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -47.25,
+          "changeDisplay": "-47.25%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 2100,
+          "display": "2,1K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 1.89,
+          "changeDisplay": "+1.89%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 37,
+          "display": "37",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -1.0,
+          "changeDisplay": "-1",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 9,
+        "traffic": 5,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 8,
+        "authority": 7
+      }
+    },
+    {
+      "domain": "corridasbr.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 5300,
+          "display": "5,3K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -11.6,
+          "changeDisplay": "-11.6%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 21700,
+          "display": "21,7K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -4.15,
+          "changeDisplay": "-4.15%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 809,
+          "display": "809",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 7.72,
+          "changeDisplay": "+7.72%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 30,
+          "display": "30",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 8,
+        "traffic": 7,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 13,
+        "authority": 10
+      }
+    },
+    {
+      "domain": "o2corre.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 12700,
+          "display": "12,7K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -4.46,
+          "changeDisplay": "-4.46%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 19900,
+          "display": "19,9K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -18.03,
+          "changeDisplay": "-18.03%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 641,
+          "display": "641",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 16.97,
+          "changeDisplay": "+16.97%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 35,
+          "display": "35",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 1.0,
+          "changeDisplay": "+1",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 6,
+        "traffic": 8,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 18,
+        "authority": 8
+      }
+    },
+    {
+      "domain": "portaldascorridas.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 1400,
+          "display": "1,4K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -12.75,
+          "changeDisplay": "-12.75%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 12200,
+          "display": "12,2K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 16.25,
+          "changeDisplay": "+16.25%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 469,
+          "display": "469",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 24.73,
+          "changeDisplay": "+24.73%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 28,
+          "display": "28",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 1.0,
+          "changeDisplay": "+1",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 15,
+        "traffic": 9,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 20,
+        "authority": 12
+      }
+    },
+    {
+      "domain": "webrun.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 18900,
+          "display": "18,9K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -3.0,
+          "changeDisplay": "-3%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 10700,
+          "display": "10,7K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -1.72,
+          "changeDisplay": "-1.72%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 2500,
+          "display": "2,5K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 0.78,
+          "changeDisplay": "+0.78%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 35,
+          "display": "35",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 4,
+        "traffic": 10,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 7,
+        "authority": 8
+      }
+    },
+    {
+      "domain": "brasilcorrida.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 700,
+          "display": "700",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 10.76,
+          "changeDisplay": "+10.76%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 10500,
+          "display": "10,5K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 33.29,
+          "changeDisplay": "+33.29%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 684,
+          "display": "684",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 9.62,
+          "changeDisplay": "+9.62%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 28,
+          "display": "28",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -1.0,
+          "changeDisplay": "-1",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 22,
+        "traffic": 11,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 17,
+        "authority": 12
+      }
+    },
+    {
+      "domain": "finishers.com",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 3100,
+          "display": "3,1K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -3.94,
+          "changeDisplay": "-3.94%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 8500,
+          "display": "8,5K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 3.88,
+          "changeDisplay": "+3.88%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 11300,
+          "display": "11,3K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 22.32,
+          "changeDisplay": "+22.32%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 51,
+          "display": "51",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 1.0,
+          "changeDisplay": "+1",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 11,
+        "traffic": 12,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 1,
+        "authority": 1
+      }
+    },
+    {
+      "domain": "runnerbrasil.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 992,
+          "display": "992",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -2.36,
+          "changeDisplay": "-2.36%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 6400,
+          "display": "6,4K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -7.01,
+          "changeDisplay": "-7.01%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 1100,
+          "display": "1,1K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 3.53,
+          "changeDisplay": "+3.53%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 29,
+          "display": "29",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 19,
+        "traffic": 13,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 10,
+        "authority": 11
+      }
+    },
+    {
+      "domain": "chelso.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 1900,
+          "display": "1,9K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -13.67,
+          "changeDisplay": "-13.67%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 6200,
+          "display": "6,2K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 14.03,
+          "changeDisplay": "+14.03%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 788,
+          "display": "788",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 10.52,
+          "changeDisplay": "+10.52%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 28,
+          "display": "28",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 14,
+        "traffic": 14,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 14,
+        "authority": 12
+      }
+    },
+    {
+      "domain": "soucorredor.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 3600,
+          "display": "3,6K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -4.81,
+          "changeDisplay": "-4.81%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 5000,
+          "display": "5K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 4.29,
+          "changeDisplay": "+4.29%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 399,
+          "display": "399",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 33.89,
+          "changeDisplay": "+33.89%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 24,
+          "display": "24",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -1.0,
+          "changeDisplay": "-1",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 9,
+        "traffic": 15,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 22,
+        "authority": 17
+      }
+    },
+    {
+      "domain": "roadrunners.run",
+      "country": "BR",
+      "own": true,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 1300,
+          "display": "1,3K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 41.3,
+          "changeDisplay": "+41.3%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 3900,
+          "display": "3,9K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 260.71,
+          "changeDisplay": "+260.71%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 689,
+          "display": "689",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 18.59,
+          "changeDisplay": "+18.59%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 22,
+          "display": "22",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 17,
+        "traffic": 16,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 16,
+        "authority": 20
+      }
+    },
+    {
+      "domain": "corridinhas.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 2700,
+          "display": "2,7K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -29.47,
+          "changeDisplay": "-29.47%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 3300,
+          "display": "3,3K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -13.84,
+          "changeDisplay": "-13.84%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 170,
+          "display": "170",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 66.67,
+          "changeDisplay": "+66.67%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 20,
+          "display": "20",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 1.0,
+          "changeDisplay": "+1",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 12,
+        "traffic": 17,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 27,
+        "authority": 22
+      }
+    },
+    {
+      "domain": "catarinarun.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 862,
+          "display": "862",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -3.15,
+          "changeDisplay": "-3.15%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 2200,
+          "display": "2,2K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -10.79,
+          "changeDisplay": "-10.79%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 354,
+          "display": "354",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 22.92,
+          "changeDisplay": "+22.92%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 19,
+          "display": "19",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -3.0,
+          "changeDisplay": "-3",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 21,
+        "traffic": 18,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 23,
+        "authority": 23
+      }
+    },
+    {
+      "domain": "contrarelogio.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 2000,
+          "display": "2K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -10.99,
+          "changeDisplay": "-10.99%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 2200,
+          "display": "2,2K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 0.72,
+          "changeDisplay": "+0.72%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 818,
+          "display": "818",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 16.36,
+          "changeDisplay": "+16.36%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 27,
+          "display": "27",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 1.0,
+          "changeDisplay": "+1",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 13,
+        "traffic": 18,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 11,
+        "authority": 15
+      }
+    },
+    {
+      "domain": "suacorrida.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 1400,
+          "display": "1,4K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": -10.87,
+          "changeDisplay": "-10.87%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 1800,
+          "display": "1,8K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 165.28,
+          "changeDisplay": "+165.28%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 810,
+          "display": "810",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 11.72,
+          "changeDisplay": "+11.72%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 27,
+          "display": "27",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 15,
+        "traffic": 20,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 12,
+        "authority": 15
+      }
+    },
+    {
+      "domain": "portaldocorredor.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 37,
+          "display": "37",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -15.91,
+          "changeDisplay": "-15.91%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 1300,
+          "display": "1,3K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 606.56,
+          "changeDisplay": "+606.56%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 331,
+          "display": "331",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 34.55,
+          "changeDisplay": "+34.55%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 24,
+          "display": "24",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -2.0,
+          "changeDisplay": "-2",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 27,
+        "traffic": 21,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 26,
+        "authority": 17
+      }
+    },
+    {
+      "domain": "openresults.run",
+      "country": "BR",
+      "own": true,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 479,
+          "display": "479",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "+0%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 1100,
+          "display": "1,1K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "+0%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 745,
+          "display": "745",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -0.8,
+          "changeDisplay": "-0.8%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 5,
+          "display": "5",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 23,
+        "traffic": 22,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 15,
+        "authority": 27
+      }
+    },
+    {
+      "domain": "movnow.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 368,
+          "display": "368",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -4.42,
+          "changeDisplay": "-4.42%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 811,
+          "display": "811",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 10.04,
+          "changeDisplay": "+10.04%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 423,
+          "display": "423",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 23.68,
+          "changeDisplay": "+23.68%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 24,
+          "display": "24",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 24,
+        "traffic": 23,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 21,
+        "authority": 17
+      }
+    },
+    {
+      "domain": "corridasemaratonas.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 936,
+          "display": "936",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -6.49,
+          "changeDisplay": "-6.49%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 409,
+          "display": "409",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 13.3,
+          "changeDisplay": "+13.3%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 344,
+          "display": "344",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 39.27,
+          "changeDisplay": "+39.27%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 10,
+          "display": "10",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 20,
+        "traffic": 24,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 25,
+        "authority": 25
+      }
+    },
+    {
+      "domain": "guiadacorrida.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 1000,
+          "display": "1K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 30.4,
+          "changeDisplay": "+30.4%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 320,
+          "display": "320",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 29.03,
+          "changeDisplay": "+29.03%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 346,
+          "display": "346",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 36.76,
+          "changeDisplay": "+36.76%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 8,
+          "display": "8",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 18,
+        "traffic": 25,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 24,
+        "authority": 26
+      }
+    },
+    {
+      "domain": "jornalcorrida.com.br",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 227,
+          "display": "227",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -5.42,
+          "changeDisplay": "-5.42%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 107,
+          "display": "107",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -31.85,
+          "changeDisplay": "-31.85%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 476,
+          "display": "476",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 35.61,
+          "changeDisplay": "+35.61%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 13,
+          "display": "13",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -1.0,
+          "changeDisplay": "-1",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 25,
+        "traffic": 26,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 19,
+        "authority": 24
+      }
+    },
+    {
+      "domain": "corridanoar.com",
+      "country": "BR",
+      "own": false,
+      "metrics": {
+        "keywords": {
+          "available": true,
+          "value": 203,
+          "display": "203",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -31.65,
+          "changeDisplay": "-31.65%",
+          "changeUnit": "percent"
+        },
+        "traffic": {
+          "available": true,
+          "value": 52,
+          "display": "52",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": -82.78,
+          "changeDisplay": "-82.78%",
+          "changeUnit": "percent"
+        },
+        "paidKeywords": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "paidTraffic": {
+          "available": true,
+          "value": 0,
+          "display": "0",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 0.0,
+          "changeDisplay": "0%",
+          "changeUnit": "percent"
+        },
+        "refDomains": {
+          "available": true,
+          "value": 1500,
+          "display": "1,5K",
+          "rounded": true,
+          "changeAvailable": true,
+          "change": 304.01,
+          "changeDisplay": "+304.01%",
+          "changeUnit": "percent"
+        },
+        "authority": {
+          "available": true,
+          "value": 21,
+          "display": "21",
+          "rounded": false,
+          "changeAvailable": true,
+          "change": 2.0,
+          "changeDisplay": "+2",
+          "changeUnit": "points"
+        }
+      },
+      "ranks": {
+        "keywords": 26,
+        "traffic": 27,
+        "paidKeywords": 2,
+        "paidTraffic": 2,
+        "refDomains": 9,
+        "authority": 21
+      }
+    }
+  ]
+}

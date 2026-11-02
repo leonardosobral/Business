@@ -1,0 +1,73 @@
+[
+  {
+    "path": "/maratona/maratona-de-curitiba/",
+    "status": 200
+  },
+  {
+    "path": "/maratona/maratona-monumental-de-brasilia/",
+    "status": 200
+  },
+  {
+    "path": "/maratona/maratona-internacional-de-floripa/",
+    "status": 200
+  },
+  {
+    "path": "/circuito/live-run-xp/",
+    "status": 200
+  },
+  {
+    "path": "/circuito/estacoes/",
+    "status": 200
+  },
+  {
+    "path": "/evento/2026-maratona-de-curitiba-santander-2026/",
+    "status": 200
+  },
+  {
+    "path": "/evento/2026-maratona-monumental-de-brasilia-2026/",
+    "status": 200
+  },
+  {
+    "path": "/evento/2026-santander-night-run-etapa-1-curitiba-2026/",
+    "status": 200
+  },
+  {
+    "path": "/estado/pr/curitiba/",
+    "status": 200
+  },
+  {
+    "path": "/estado/pr/pinhais/",
+    "status": 200
+  },
+  {
+    "path": "/estado/df/brasilia/",
+    "status": 200
+  },
+  {
+    "path": "/en/event/2026-maratona-monumental-de-brasilia-2026/",
+    "status": 200
+  },
+  {
+    "path": "/es/evento/2026-maratona-monumental-de-brasilia-2026/",
+    "status": 200
+  },
+  {
+    "path": "/evento/2026-night-run-etapa-1-curitiba-2026/",
+    "status": 301,
+    "location": "/evento/2026-santander-night-run-etapa-1-curitiba-2026/"
+  },
+  {
+    "path": "/en/event/2026-night-run-etapa-1-curitiba-2026/",
+    "status": 301,
+    "location": "/en/event/2026-santander-night-run-etapa-1-curitiba-2026/"
+  },
+  {
+    "path": "/es/evento/2026-night-run-etapa-1-curitiba-2026/",
+    "status": 301,
+    "location": "/es/evento/2026-santander-night-run-etapa-1-curitiba-2026/"
+  },
+  {
+    "path": "/includes/permanent_race_editorial.cfm",
+    "status": 403
+  }
+]

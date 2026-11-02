@@ -1,0 +1,446 @@
+[
+  {
+    "id": 47216,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-manaus",
+    "summary": [
+      "  - strong: \"15\"",
+      "  - generic: Nov",
+      "  - heading \"Circuito das Estações 2026 - Verão - Manaus\" [level=1]",
+      "    - strong: Manaus, AM",
+      "    - strong: 5K, 10K",
+      "  - heading \"Local\" [level=5]",
+      "  - heading \"Promo Relâmpago - R$199,99 por R$99,99\" [level=4]",
+      "  - strong: \"A partir de:\"",
+      "  - strong: R$ 99,99",
+      "  - heading \"Kit Estações\" [level=4]",
+      "  - strong: \"A partir de:\"",
+      "  - strong: R$ 199,99"
+    ]
+  },
+  {
+    "id": 37768,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-cuiaba",
+    "summary": [
+      "  - strong: \"6\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Cuiabá\" [level=1]",
+      "    - strong: Cuiabá, MT",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 48479,
+    "url": "https://www.runningland.com.br/circuito-da-estacoes-2026-ver-o-campinas",
+    "summary": [
+      "  - strong: \"15\"",
+      "  - generic: Nov",
+      "  - heading \"Circuito da Estações 2026 - Verão - Campinas\" [level=1]",
+      "    - strong: Campinas, SP",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 37769,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-palmas",
+    "summary": [
+      "  - strong: \"22\"",
+      "  - generic: Nov",
+      "  - heading \"Circuito das Estações 2026 - Verão - Palmas\" [level=1]",
+      "    - strong: Palmas, TO",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 46520,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-belo-horizonte",
+    "summary": [
+      "  - strong: \"29\"",
+      "  - generic: Nov",
+      "  - heading \"Circuito das Estações 2026 - Verão - Belo Horizonte\" [level=1]",
+      "    - strong: Belo Horizonte, MG",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 46522,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-fortaleza",
+    "summary": [
+      "  - strong: \"29\"",
+      "  - generic: Nov",
+      "  - heading \"Circuito das Estações 2026 - Verão - Fortaleza\" [level=1]",
+      "    - strong: Fortaleza, CE",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 37770,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-luis",
+    "summary": [
+      "  - strong: \"6\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - São Luís\" [level=1]",
+      "    - strong: São Luís, MA",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 38506,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-teresina",
+    "summary": [
+      "  - strong: \"6\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Teresina\" [level=1]",
+      "    - strong: Teresina, PI",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 46509,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-recife",
+    "summary": [
+      "  - strong: \"6\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Recife\" [level=1]",
+      "    - strong: Recife, PE",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 46510,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-rio-de-janeiro",
+    "summary": [
+      "  - strong: \"6\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Rio de Janeiro\" [level=1]",
+      "    - strong: Rio de Janeiro, RJ",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 47179,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-porto-alegre",
+    "summary": [
+      "  - strong: \"6\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Porto Alegre\" [level=1]",
+      "    - strong: Porto Alegre, RS",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 37764,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-anapolis",
+    "summary": [
+      "  - strong: \"13\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Anápolis\" [level=1]",
+      "    - strong: Anápolis , GO",
+      "    - strong: 5K, 10K",
+      "  - strong: \"A partir de:\"",
+      "  - strong: R$ 139,90",
+      "  - strong: \"A partir de:\""
+    ]
+  },
+  {
+    "id": 37765,
+    "url": "https://www.o2corre.com.br/calendario/circuito-das-estacoes-2026-ver-o-imperatriz/",
+    "summary": [
+      "    - strong: 10%* OFF PARA QUEM É CLUBE O2 PRIME",
+      "    - /url: https://checkout.ativo.com/user/login"
+    ]
+  },
+  {
+    "id": 37766,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-jo-o-pessoa",
+    "summary": [
+      "  - strong: \"13\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - João Pessoa\" [level=1]",
+      "    - strong: João Pessoa, PB",
+      "    - strong: 5K, 10K",
+      "  - strong: \"A partir de:\"",
+      "  - strong: R$ 220,00",
+      "  - strong: \"A partir de:\""
+    ]
+  },
+  {
+    "id": 40742,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-campo-grande",
+    "summary": [
+      "  - strong: \"13\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Campo Grande\" [level=1]",
+      "    - strong: Campo Grande, MS",
+      "    - strong: 5K, 10K",
+      "  - strong: \"A partir de:\"",
+      "  - strong: R$ 159,90",
+      "  - strong: \"A partir de:\""
+    ]
+  },
+  {
+    "id": 46476,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-belem",
+    "summary": [
+      "  - strong: \"13\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Belém\" [level=1]",
+      "    - strong: Belém, PA",
+      "    - strong: 5K, 10K",
+      "  - strong: \"A partir de:\"",
+      "  - strong: R$ 99,99",
+      "  - strong: \"A partir de:\""
+    ]
+  },
+  {
+    "id": 47176,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-salvador",
+    "summary": [
+      "  - strong: \"13\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Salvador\" [level=1]",
+      "    - strong: Salvador, BA",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 37762,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-goiania",
+    "summary": [
+      "  - strong: \"20\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Goiânia\" [level=1]",
+      "    - strong: Goiania, GO",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 37763,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-natal",
+    "summary": [
+      "  - strong: \"20\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Natal\" [level=1]",
+      "    - strong: Natal, RN",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 46197,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-jose-dos-campos",
+    "summary": [
+      "  - strong: \"20\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - São José dos Campos\" [level=1]",
+      "    - strong: São José dos Campos, SP",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 46473,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-s-o-paulo",
+    "summary": [
+      "  - strong: \"20\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - São Paulo\" [level=1]",
+      "    - strong: São Paulo, SP",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 47168,
+    "url": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-vitoria",
+    "summary": [
+      "  - strong: \"20\"",
+      "  - generic: Dez",
+      "  - heading \"Circuito das Estações 2026 - Verão - Vitória\" [level=1]",
+      "    - strong: Vitória, ES",
+      "    - strong: 5K, 10K"
+    ]
+  },
+  {
+    "id": 37556,
+    "url": "https://www.liverun.com.br/etapa/live-experience-jurer-2026",
+    "summary": [
+      "- heading \"Bonito - MS\" [level=1]",
+      "- paragraph: 01/11",
+      "  - listitem: 5 km",
+      "- paragraph: LIVE! EXPERIENCE - BONITO 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Temos 5 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP.",
+      "- paragraph: \"Período de entrega: 30/10/2026 à 31/10/2026\""
+    ]
+  },
+  {
+    "id": 40833,
+    "url": "https://www.liverun.com.br/etapa/live21k-rio-de-janeiro-2026",
+    "summary": [
+      "- heading \"Rio de Janeiro - RJ\" [level=1]",
+      "- paragraph: 02/11",
+      "  - listitem: 5 km",
+      "  - listitem: 10 km",
+      "  - listitem: 21 km",
+      "- paragraph: LIVE!21K XP - RIO DE JANEIRO 2026",
+      "- paragraph: \"Período de entrega: 30/10/2026 à 01/11/2026\""
+    ]
+  },
+  {
+    "id": 37570,
+    "url": "https://www.liverun.com.br/etapa/live21k-fortaleza-2026",
+    "summary": [
+      "- heading \"Fortaleza - CE\" [level=1]",
+      "- paragraph: 20/11",
+      "  - listitem: 21 Km",
+      "  - listitem: 5 Km",
+      "  - listitem: 10 Km",
+      "- paragraph: LIVE!21K - FORTALEZA 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km e 21 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP."
+    ]
+  },
+  {
+    "id": 40834,
+    "url": "https://www.liverun.com.br/etapa/live21k-recife-2026",
+    "summary": [
+      "- heading \"Recife - PE\" [level=1]",
+      "- paragraph: 20/11",
+      "  - listitem: 5 Km",
+      "  - listitem: 10 Km",
+      "  - listitem: 21 Km",
+      "- paragraph: LIVE!21K - RECIFE 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km, 21 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP.",
+      "- paragraph: \"Período de entrega: 16/11/2026 à 19/11/2026\""
+    ]
+  },
+  {
+    "id": 45366,
+    "url": "https://www.liverun.com.br/etapa/live21k-fortaleza-2026",
+    "summary": [
+      "- heading \"Fortaleza - CE\" [level=1]",
+      "- paragraph: 20/11",
+      "  - listitem: 21 Km",
+      "  - listitem: 5 Km",
+      "  - listitem: 10 Km",
+      "- paragraph: LIVE!21K - FORTALEZA 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km e 21 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP."
+    ]
+  },
+  {
+    "id": 37483,
+    "url": "https://www.liverun.com.br/etapa/live-run-xp-porto-alegre-2026",
+    "summary": [
+      "- heading \"Porto Alegre - RS\" [level=1]",
+      "- paragraph: 22/11",
+      "  - listitem: 5 km",
+      "  - listitem: 10 km",
+      "- paragraph: LIVE! RUN XP - PORTO ALEGRE 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP.",
+      "- paragraph: \"Período de entrega: 19/11/2026 à 21/11/2026\""
+    ]
+  },
+  {
+    "id": 41834,
+    "url": "https://www.liverun.com.br/etapa/live-run-xp-belo-horizonte-iii-2026",
+    "summary": [
+      "- heading \"Belo Horizonte - MG\" [level=1]",
+      "- paragraph: 22/11",
+      "  - listitem: 5 km",
+      "  - listitem: 10 km",
+      "  - listitem: 21 km",
+      "- paragraph: LIVE!21K - BELO HORIZONTE 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km, 21 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP.",
+      "- paragraph: \"Período de entrega: 19/11/2026 à 21/11/2026\""
+    ]
+  },
+  {
+    "id": 48557,
+    "url": "https://www.liverun.com.br/etapa/live-run-rio-de-janeiro-ii-2026",
+    "summary": [
+      "  - heading \"404\" [level=1]"
+    ]
+  },
+  {
+    "id": 37526,
+    "url": "https://www.liverun.com.br/etapa/live-run-niteri-2026",
+    "summary": [
+      "- heading \"Niterói - RJ\" [level=1]",
+      "- paragraph: 05/12",
+      "  - listitem: 5 km",
+      "  - listitem: 10 km",
+      "- paragraph: LIVE! RUN - NITERÓI 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP."
+    ]
+  },
+  {
+    "id": 37528,
+    "url": "https://www.liverun.com.br/etapa/live-run-osasco-2026",
+    "summary": [
+      "- heading \"Osasco - SP\" [level=1]",
+      "- paragraph: 06/12",
+      "  - listitem: 6 km",
+      "- paragraph: LIVE! RUN XP OSASCO 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Temos 6 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP."
+    ]
+  },
+  {
+    "id": 37572,
+    "url": "https://www.liverun.com.br/etapa/live-run-braslia-2026",
+    "summary": [
+      "- heading \"Brasília - DF\" [level=1]",
+      "- paragraph: 13/12",
+      "  - listitem: 5 km",
+      "  - listitem: 10 Km",
+      "  - listitem: 15 Km",
+      "- paragraph: LIVE! RUN - BRASÍLIA 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km, 15 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP."
+    ]
+  },
+  {
+    "id": 40103,
+    "url": "https://www.liverun.com.br/etapa/live21k-foz-do-iguau-2026",
+    "summary": [
+      "- heading \"Foz do Iguaçu - PR\" [level=1]",
+      "- paragraph: 13/12",
+      "  - listitem: 5 km",
+      "  - listitem: 21 km",
+      "- paragraph: LIVE!21K XP - FOZ DO IGUAÇU 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 21 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP."
+    ]
+  },
+  {
+    "id": 37564,
+    "url": "https://www.liverun.com.br/etapa/live21k-salvador-2026",
+    "summary": [
+      "- heading \"Salvador - BA\" [level=1]",
+      "- paragraph: 20/12",
+      "  - listitem: 5 km",
+      "  - listitem: 10 km",
+      "  - listitem: 21 km",
+      "- paragraph: LIVE!21K - SALVADOR 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km, 21 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP."
+    ]
+  },
+  {
+    "id": 48557,
+    "url": "https://www.liverun.com.br/etapa/live-run-ribeirao-preto-ii-2026",
+    "status": "confirmed-correct-source",
+    "summary": [
+      "- heading \"Ribeirão Preto - SP\" [level=1]",
+      "- paragraph: 22/11",
+      "  - listitem: 5 Km",
+      "  - listitem: 10 Km",
+      "  - listitem: 15 Km",
+      "- paragraph: LIVE! RUN XP - RIBEIRÃO PRETO II 2026",
+      "- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km, 15 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.",
+      "- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP."
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {createRequire} from 'node:module';
+import {createHash} from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+const stage=path.dirname(fileURLToPath(import.meta.url));
+const esbuild=createRequire(import.meta.url)('/private/tmp/rr-seo-mobile-20261030-tools/node_modules/esbuild');
+if(esbuild.version!=='0.28.2')throw new Error('Pinned compiler required');
+const source=await fs.readFile(path.join(stage,'candidate/assets/js/event-maps-lazy.js'),'utf8');
+const options={loader:'js',target:'es2017',charset:'utf8',legalComments:'inline',minifyIdentifiers:false,minifySyntax:false,minifyWhitespace:true};
+const result=await esbuild.transform(source,options);
+if(result.warnings.length||(await esbuild.transform(result.code,options)).code!==result.code)throw new Error('Compiler validation failed');
+await fs.writeFile(path.join(stage,'candidate/assets/js/event-maps-lazy.min.js'),result.code);
+const sha=s=>createHash('sha256').update(s).digest('hex');
+await fs.writeFile(path.join(stage,'build.json'),JSON.stringify({esbuild:esbuild.version,whitespaceOnly:true,roundtripStable:true,sourceBytes:Buffer.byteLength(source),outputBytes:Buffer.byteLength(result.code),sourceSha:sha(source),outputSha:sha(result.code)},null,2));
+console.log('Built with esbuild 0.28.2; whitespace only; compiler roundtrip passed.');

@@ -1,0 +1,71 @@
+- navigation "Indicadores de localização atual":
+  - link "Core Web Vitals":
+    - /url: ./search-console/core-web-vitals?resource_id=sc-domain%3Aroadrunners.run
+  - generic: 
+  - link "Celular":
+    - /url: ./search-console/core-web-vitals/summary?resource_id=sc-domain%3Aroadrunners.run&device=2
+  - generic: 
+  - 'heading "Problema de INP: mais de 200 ms (dispositivos móveis)" [level=1]'
+- button "EXPORTAR":
+  - generic: 
+  - generic: EXPORTAR
+- button "Gere um link compartilhável.":
+  - generic: 
+  - generic: COMPARTILHAR
+- text: "Fonte: Relatório de UX do Chrome"
+- button "null":
+  - generic: 
+- generic: "Última atualização: 28/10/2026"
+- main:
+  - generic: warning
+  - generic: "Problema de INP: mais de 200 ms (dispositivos móveis)"
+  - generic: Os URLs com esse problema precisam melhorar a experiência na página que eles oferecem
+  - link "Link para documentação mais elaborada":
+    - /url: https://web.dev/inp/
+    - generic: Saiba mais
+  - generic: "Detectada pela primeira vez: 14/12/2023"
+  - generic: Você terminou de corrigir os problemas?
+  - button "validar a correção":
+    - generic: validar a correção
+  - button "null":
+    - generic: 
+  - generic "URLs afetados"
+  - generic "926"
+  - generic: Grupos de URLs
+  - button "null":
+    - generic: 
+  - button "Filtrar linhas da tabela":
+    - generic: 
+  - table:
+    - rowgroup:
+      - row "URL de exemplo null População do grupo null Grupo INP":
+        - columnheader "URL de exemplo null":
+          - text: URL de exemplo
+          - button "null":
+            - generic: 
+        - columnheader "População do grupo null":
+          - text: População do grupo
+          - button "null":
+            - generic: 
+        - columnheader "Grupo INP":
+          - generic: Grupo INP
+    - rowgroup:
+      - row "https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/ 926 293ms":
+        - cell "https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/":
+          - generic "https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/"
+        - cell "926":
+          - generic: "926"
+        - cell "293ms":
+          - generic: 293ms
+  - generic: "Linhas por página:"
+  - listbox "Número de linhas por página":
+    - option "5"
+    - option "10" [selected]
+    - option "25"
+    - option "50"
+    - option "100"
+    - option "250"
+    - option "500"
+  - generic: 1-1 de 1
+  - generic: 
+  - generic: 

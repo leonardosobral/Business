@@ -1,0 +1,20 @@
+{
+  "names": [
+    "evento/index.cfm",
+    "evento/parts/circuit_links.cfm"
+  ],
+  "before": {
+    "evento/index.cfm": "0d90d138eb8b718603f4cbc2d35c1f93657a6e847d5aee42aee78a53008598c6"
+  },
+  "local": {
+    "evento/index.cfm": "0d90d138eb8b718603f4cbc2d35c1f93657a6e847d5aee42aee78a53008598c6",
+    "evento/parts/circuit_links.cfm": null
+  },
+  "watch": {
+    "Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "includes/estrutura/variaveis.cfm": "b4ab09efe0053cdb6b04ac0bf6b864fa718457824989123c27c90467e7e365aa",
+    "includes/estrutura/head.cfm": "84258c3f09772972a39d3f1870f46da6c598f6f218b2b192f6fb843f84695896",
+    "includes/estrutura/header.cfm": "69d0bf927acc0c8c8b878f43a5383fa23f2120546f992d1bc04e76ac2f632202",
+    ".htaccess": "3866eeac7aa05ceb1fe135a649618d531ca9d23edf42f77e3e6129ecce922688"
+  }
+}

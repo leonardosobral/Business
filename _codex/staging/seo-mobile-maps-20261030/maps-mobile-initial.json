@@ -1,0 +1,19 @@
+{
+  "mapboxScripts": [],
+  "maps": [
+    {
+      "canvases": 0,
+      "state": "waiting",
+      "top": 2278,
+      "type": "route"
+    },
+    {
+      "canvases": 0,
+      "state": "waiting",
+      "top": 2737,
+      "type": "location"
+    }
+  ],
+  "pageWidth": 390,
+  "width": 390
+}

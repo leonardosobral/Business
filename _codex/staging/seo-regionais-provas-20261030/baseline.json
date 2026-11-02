@@ -1,0 +1,29 @@
+{
+  "names": [
+    "estado/index.cfm",
+    "maratona/index.cfm",
+    "includes/backend/backend_permanent_race.cfm",
+    "includes/permanent_race_overview.cfm",
+    "includes/regional_races.cfm",
+    "assets/css/runnerhub-race-guides.css"
+  ],
+  "before": {
+    "estado/index.cfm": "904d12ef58fe5b7254241dc893a2c24894a4dcc2c47a69a9d561f241f64edce2",
+    "maratona/index.cfm": "ccea315c9172c4e40e10c7a31a1f08e174c7d7e39c2f46dc260dd633222155dd"
+  },
+  "local": {
+    "estado/index.cfm": "904d12ef58fe5b7254241dc893a2c24894a4dcc2c47a69a9d561f241f64edce2",
+    "maratona/index.cfm": "ccea315c9172c4e40e10c7a31a1f08e174c7d7e39c2f46dc260dd633222155dd",
+    "includes/backend/backend_permanent_race.cfm": null,
+    "includes/permanent_race_overview.cfm": null,
+    "includes/regional_races.cfm": null,
+    "assets/css/runnerhub-race-guides.css": null
+  },
+  "watch": {
+    "Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "includes/estrutura/variaveis.cfm": "b4ab09efe0053cdb6b04ac0bf6b864fa718457824989123c27c90467e7e365aa",
+    "includes/estrutura/head.cfm": "84258c3f09772972a39d3f1870f46da6c598f6f218b2b192f6fb843f84695896",
+    "includes/estrutura/header.cfm": "69d0bf927acc0c8c8b878f43a5383fa23f2120546f992d1bc04e76ac2f632202",
+    ".htaccess": "3866eeac7aa05ceb1fe135a649618d531ca9d23edf42f77e3e6129ecce922688"
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "route": "/portal/seo/?aba=ga4&site=roadrunners",
+    "status": 302,
+    "noMetricsLeaked": true
+  },
+  {
+    "route": "/portal/includes/seo_search_evidence.cfm",
+    "status": 403,
+    "noMetricsLeaked": true
+  },
+  {
+    "route": "/portal/conteudo/seo_growth_baseline.cfm",
+    "status": 403,
+    "noMetricsLeaked": true
+  }
+]

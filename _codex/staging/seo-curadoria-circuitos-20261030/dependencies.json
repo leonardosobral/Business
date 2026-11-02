@@ -1,0 +1,241 @@
+{
+  "reviews": [],
+  "historyMax": 6031,
+  "dependencies": {
+    "tb_evento_treinos_config.id_evento_pai": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_evento_foco_vinculos.id_evento": {
+      "duplicate_count": 0,
+      "count": 2,
+      "hash": "7097e889f6cba900eb236bb111be9461"
+    },
+    "tb_percurso_migracoes_strava.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_evento_geocoding.id_evento": {
+      "duplicate_count": 2,
+      "count": 11,
+      "hash": "ca26cb20cc7bf03c843edb37aeb8523b"
+    },
+    "tb_evento_corridas_fornecedores.id_evento": {
+      "duplicate_count": 0,
+      "count": 1,
+      "hash": "de45596ea39eb5b17d6ba4d65d816de3"
+    },
+    "tb_evento_corridas_relaciona.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_evento_descricao_rewrites.id_evento": {
+      "duplicate_count": 0,
+      "count": 3,
+      "hash": "9fa9e239069ae58d9b600564827459fd"
+    },
+    "tb_evento_saude_config.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_resultado_pistas_historicas.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_resultados.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_listas_importadas.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_evento_duplicidade_descartes.id_evento_a": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "crm.tb_crm_evento_versoes.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_evento_duplicidade_descartes.id_evento_b": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_evento_treinos_config.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_foco_event_match_state.id_evento": {
+      "duplicate_count": 1,
+      "count": 6,
+      "hash": "00d4c524a767519bada8044c1888a91e"
+    },
+    "tb_conta_eventos.id_evento": {
+      "duplicate_count": 0,
+      "count": 2,
+      "hash": "c24e8b7a72a93935b140a3bfb896e161"
+    },
+    "tb_evento_descricao_translations.id_evento": {
+      "duplicate_count": 0,
+      "count": 6,
+      "hash": "206ba9c1e2810bff9eec4093caa04042"
+    },
+    "crm.tb_crm_importacoes.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_resultados_resumo_2025.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_evento_saude_historico.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_resultados_resumo.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_media.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_resultado_pistas_historicas.id_evento_anterior": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_badges.id_evento": {
+      "duplicate_count": 0,
+      "count": 15,
+      "hash": "24bed30499e882b35c31423a1f007fe0"
+    },
+    "tb_runtrack_sessoes.event_id": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_evento_geocoding_audit.id_evento": {
+      "duplicate_count": 5,
+      "count": 39,
+      "hash": "12a72a66e227ddf33b1e5f9bcf8f13d5"
+    },
+    "tb_agregadores_eventos.id_evento": {
+      "duplicate_count": 0,
+      "count": 3,
+      "hash": "96821549c0917b045fe373dd379ad375"
+    },
+    "tb_evento_percursos_gpx.id_evento": {
+      "duplicate_count": 0,
+      "count": 3,
+      "hash": "a8361c08363ca2d50996928954369afb"
+    },
+    "tb_agenda_eventos.id_evento": {
+      "duplicate_count": 0,
+      "count": 1,
+      "hash": "864f45a4257e76aa37434439b184cf3d"
+    },
+    "ads.campaign_review_requests.core_event_id": {
+      "duplicate_count": 0,
+      "count": 2,
+      "hash": "e60579fcf9fadd4b02bbc6d35122cc8b"
+    },
+    "tb_conta_evento_solicitacoes.id_evento": {
+      "duplicate_count": 0,
+      "count": 3,
+      "hash": "59aa60c04be3ea2cb646252808f8d220"
+    },
+    "tb_evento_saude_acesso_solicitacoes.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_evento_agrega_review_candidates.id_evento": {
+      "duplicate_count": 0,
+      "count": 1,
+      "hash": "2b7fe5d1c1008e4bbb9603eb19c51e3a"
+    },
+    "tb_desafios_rr_provas.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_leaderboard_percurso.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "crm.tb_crm_participacoes.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_resultados_autodeclarados.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_leaderboard_config.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_evento_corridas_cupom.id_evento": {
+      "duplicate_count": 0,
+      "count": 1,
+      "hash": "da32a3544d8e88f00fcce84238362db7"
+    },
+    "tb_evento_percurso_embed_visualizacoes.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_evento_corridas_audits.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_leaderboard_startlist_importacao.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_resultados_importacoes.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "tb_foco_event_match_candidates.id_evento": {
+      "duplicate_count": 0,
+      "count": 3,
+      "hash": "44b5dee101272416ca9408ffceeff190"
+    },
+    "ads.advertisements.core_event_id": {
+      "duplicate_count": 0,
+      "count": 3,
+      "hash": "10946c1a85d96d7925b8fd45cd6e5565"
+    },
+    "tb_leaderboard_startlist.id_evento": {
+      "duplicate_count": 0,
+      "count": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+  }
+}

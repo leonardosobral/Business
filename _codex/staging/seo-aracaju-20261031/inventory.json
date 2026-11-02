@@ -1,0 +1,38 @@
+{
+  "events": [
+    {
+      "public_results": 0,
+      "family_tag": "maratona-de-aracaju",
+      "id_evento": 39399,
+      "id_agrega_evento": 77,
+      "url_resultado": "",
+      "data_inicial": "2026-10-31",
+      "estado": "SE",
+      "data_final": "2026-11-01",
+      "nome_evento": "Maratona de Aracaju 2026",
+      "galleries": 1,
+      "obs_resultado": null,
+      "status_evento": null,
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=74615&origem=novo-site&lang=en-US",
+      "tag": "2026-maratona-de-aracaju-2026",
+      "cidade": "Aracaju"
+    },
+    {
+      "public_results": 8787,
+      "family_tag": "maratona-de-aracaju",
+      "id_evento": 25481,
+      "id_agrega_evento": 77,
+      "url_resultado": "https://resultados.runking.com.br/Speed/maratona-de-aracaju-2025",
+      "data_inicial": "2025-10-26",
+      "estado": "SE",
+      "data_final": "2025-10-26",
+      "nome_evento": "Maratona de Aracaju 2025",
+      "galleries": 1,
+      "obs_resultado": "Runking",
+      "status_evento": null,
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=70387&origem=ticketsports&lang=pt-BR",
+      "tag": "2025-maratona-de-aracaju-2025",
+      "cidade": "Aracaju"
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "rc": 0,
+  "stderr": "",
+  "thread_groups": [
+    {
+      "count": 124,
+      "top_stack": [
+        "at jdk.internal.misc.Unsafe.park(java.base@21.0.10/Native Method)",
+        "at java.util.concurrent.locks.LockSupport.parkNanos(java.base@21.0.10/LockSupport.java:269)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(java.base@21.0.10/AbstractQueuedSynchronizer.java:756)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(java.base@21.0.10/AbstractQueuedSynchronizer.java:1126)",
+        "at java.util.concurrent.Semaphore.tryAcquire(java.base@21.0.10/Semaphore.java:415)",
+        "at coldfusion.CfmServlet.lock(CfmServlet.java:277)",
+        "at coldfusion.CfmServlet.service(CfmServlet.java:221)",
+        "at coldfusion.bootstrap.BootstrapServlet.service(BootstrapServlet.java:273)"
+      ]
+    },
+    {
+      "count": 17,
+      "top_stack": [
+        "at jdk.internal.misc.Unsafe.park(java.base@21.0.10/Native Method)",
+        "at java.util.concurrent.locks.LockSupport.parkNanos(java.base@21.0.10/LockSupport.java:269)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(java.base@21.0.10/AbstractQueuedSynchronizer.java:1763)",
+        "at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(java.base@21.0.10/ScheduledThreadPoolExecutor.java:1182)",
+        "at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(java.base@21.0.10/ScheduledThreadPoolExecutor.java:899)",
+        "at java.util.concurrent.ThreadPoolExecutor.getTask(java.base@21.0.10/ThreadPoolExecutor.java:1070)",
+        "at java.util.concurrent.ThreadPoolExecutor.runWorker(java.base@21.0.10/ThreadPoolExecutor.java:1130)",
+        "at java.util.concurrent.ThreadPoolExecutor$Worker.run(java.base@21.0.10/ThreadPoolExecutor.java:642)"
+      ]
+    },
+    {
+      "count": 11,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:339)",
+        "at coldfusion.util.AbstractCache.fetch(AbstractCache.java:38)",
+        "at coldfusion.util.SoftCache.get_statsOff(SoftCache.java:135)",
+        "at coldfusion.util.SoftCache.get(SoftCache.java:85)",
+        "at coldfusion.runtime.TemplateClassLoader.findClass(TemplateClassLoader.java:657)",
+        "at coldfusion.runtime.RuntimeServiceImpl.getFile(RuntimeServiceImpl.java:1175)"
+      ]
+    },
+    {
+      "count": 10,
+      "top_stack": []
+    },
+    {
+      "count": 10,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:568)"
+      ]
+    },
+    {
+      "count": 10,
+      "top_stack": [
+        "at jdk.internal.misc.Unsafe.park(java.base@21.0.10/Native Method)",
+        "at java.util.concurrent.locks.LockSupport.park(java.base@21.0.10/LockSupport.java:371)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(java.base@21.0.10/AbstractQueuedSynchronizer.java:519)",
+        "at java.util.concurrent.ForkJoinPool.unmanagedBlock(java.base@21.0.10/ForkJoinPool.java:3778)",
+        "at java.util.concurrent.ForkJoinPool.managedBlock(java.base@21.0.10/ForkJoinPool.java:3723)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(java.base@21.0.10/AbstractQueuedSynchronizer.java:1712)",
+        "at java.util.concurrent.LinkedBlockingQueue.take(java.base@21.0.10/LinkedBlockingQueue.java:435)",
+        "at org.apache.tomcat.util.threads.TaskQueue.take(TaskQueue.java:130)"
+      ]
+    },
+    {
+      "count": 7,
+      "top_stack": [
+        "at jdk.internal.misc.Unsafe.park(java.base@21.0.10/Native Method)",
+        "at java.util.concurrent.locks.LockSupport.park(java.base@21.0.10/LockSupport.java:371)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(java.base@21.0.10/AbstractQueuedSynchronizer.java:519)",
+        "at java.util.concurrent.ForkJoinPool.unmanagedBlock(java.base@21.0.10/ForkJoinPool.java:3778)",
+        "at java.util.concurrent.ForkJoinPool.managedBlock(java.base@21.0.10/ForkJoinPool.java:3723)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(java.base@21.0.10/AbstractQueuedSynchronizer.java:1712)",
+        "at java.util.concurrent.LinkedBlockingQueue.take(java.base@21.0.10/LinkedBlockingQueue.java:435)",
+        "at java.util.concurrent.ThreadPoolExecutor.getTask(java.base@21.0.10/ThreadPoolExecutor.java:1070)"
+      ]
+    },
+    {
+      "count": 6,
+      "top_stack": [
+        "at sun.nio.ch.Net.poll(java.base@21.0.10/Native Method)",
+        "at sun.nio.ch.NioSocketImpl.park(java.base@21.0.10/NioSocketImpl.java:191)",
+        "at sun.nio.ch.NioSocketImpl.timedRead(java.base@21.0.10/NioSocketImpl.java:280)",
+        "at sun.nio.ch.NioSocketImpl.implRead(java.base@21.0.10/NioSocketImpl.java:304)",
+        "at sun.nio.ch.NioSocketImpl.read(java.base@21.0.10/NioSocketImpl.java:346)",
+        "at sun.nio.ch.NioSocketImpl$1.read(java.base@21.0.10/NioSocketImpl.java:796)",
+        "at java.net.Socket$SocketInputStream.read(java.base@21.0.10/Socket.java:1099)",
+        "at java.net.Socket$SocketInputStream.read(java.base@21.0.10/Socket.java:1093)"
+      ]
+    },
+    {
+      "count": 5,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at coldfusion.server.j2ee.pool.PoolSkimmerThread.run(PoolSkimmerThread.java:44)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)",
+        "at java.lang.Thread.run(java.base@21.0.10/Thread.java:1583)"
+      ]
+    },
+    {
+      "count": 4,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:339)",
+        "at java.util.TimerThread.mainLoop(java.base@21.0.10/Timer.java:537)",
+        "at java.util.TimerThread.run(java.base@21.0.10/Timer.java:516)"
+      ]
+    },
+    {
+      "count": 4,
+      "top_stack": [
+        "at sun.nio.ch.Net.poll(java.base@21.0.10/Native Method)",
+        "at sun.nio.ch.NioSocketImpl.park(java.base@21.0.10/NioSocketImpl.java:191)",
+        "at sun.nio.ch.NioSocketImpl.timedRead(java.base@21.0.10/NioSocketImpl.java:280)",
+        "at sun.nio.ch.NioSocketImpl.implRead(java.base@21.0.10/NioSocketImpl.java:304)",
+        "at sun.nio.ch.NioSocketImpl.read(java.base@21.0.10/NioSocketImpl.java:346)",
+        "at sun.nio.ch.NioSocketImpl$1.read(java.base@21.0.10/NioSocketImpl.java:796)",
+        "at java.net.Socket$SocketInputStream.read(java.base@21.0.10/Socket.java:1099)",
+        "at sun.security.ssl.SSLSocketInputRecord.read(java.base@21.0.10/SSLSocketInputRecord.java:489)"
+      ]
+    },
+    {
+      "count": 3,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at coldfusion.scheduling.Scheduler.createRunnable(Scheduler.java:129)",
+        "at coldfusion.scheduling.ThreadPool.createRunnable(ThreadPool.java:175)",
+        "at coldfusion.scheduling.WorkerThread.run(WorkerThread.java:62)"
+      ]
+    },
+    {
+      "count": 2,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at java.util.TimerThread.mainLoop(java.base@21.0.10/Timer.java:563)",
+        "at java.util.TimerThread.run(java.base@21.0.10/Timer.java:516)"
+      ]
+    },
+    {
+      "count": 2,
+      "top_stack": [
+        "at sun.nio.ch.EPoll.wait(java.base@21.0.10/Native Method)",
+        "at sun.nio.ch.EPollSelectorImpl.doSelect(java.base@21.0.10/EPollSelectorImpl.java:121)",
+        "at sun.nio.ch.SelectorImpl.lockAndDoSelect(java.base@21.0.10/SelectorImpl.java:130)",
+        "at sun.nio.ch.SelectorImpl.select(java.base@21.0.10/SelectorImpl.java:142)",
+        "at org.apache.tomcat.util.net.NioEndpoint$Poller.run(NioEndpoint.java:907)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)",
+        "at java.lang.Thread.run(java.base@21.0.10/Thread.java:1583)"
+      ]
+    },
+    {
+      "count": 2,
+      "top_stack": [
+        "at sun.nio.ch.Net.accept(java.base@21.0.10/Native Method)",
+        "at sun.nio.ch.ServerSocketChannelImpl.implAccept(java.base@21.0.10/ServerSocketChannelImpl.java:433)",
+        "at sun.nio.ch.ServerSocketChannelImpl.accept(java.base@21.0.10/ServerSocketChannelImpl.java:399)",
+        "at org.apache.tomcat.util.net.NioEndpoint.serverSocketAccept(NioEndpoint.java:629)",
+        "at org.apache.tomcat.util.net.NioEndpoint.serverSocketAccept(NioEndpoint.java:70)",
+        "at org.apache.tomcat.util.net.Acceptor.run(Acceptor.java:145)",
+        "at java.lang.Thread.runWith(java.base@21.0.10/Thread.java:1596)",
+        "at java.lang.Thread.run(java.base@21.0.10/Thread.java:1583)"
+      ]
+    },
+    {
+      "count": 2,
+      "top_stack": [
+        "at jdk.internal.misc.Unsafe.park(java.base@21.0.10/Native Method)",
+        "at java.util.concurrent.locks.LockSupport.parkNanos(java.base@21.0.10/LockSupport.java:269)",
+        "at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(java.base@21.0.10/AbstractQueuedSynchronizer.java:1763)",
+        "at java.util.concurrent.LinkedBlockingQueue.poll(java.base@21.0.10/LinkedBlockingQueue.java:460)",
+        "at org.apache.tomcat.util.threads.TaskQueue.poll(TaskQueue.java:113)",
+        "at org.apache.tomcat.util.threads.TaskQueue.poll(TaskQueue.java:31)",
+        "at org.apache.tomcat.util.threads.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:916)",
+        "at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:963)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at java.lang.ref.Reference.waitForReferencePendingList(java.base@21.0.10/Native Method)",
+        "at java.lang.ref.Reference.processPendingReferences(java.base@21.0.10/Reference.java:246)",
+        "at java.lang.ref.Reference$ReferenceHandler.run(java.base@21.0.10/Reference.java:208)"
+      ]
+    },
+    {
+      "count": 1,
+      "top_stack": [
+        "at java.lang.Object.wait0(java.base@21.0.10/Native Method)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:366)",
+        "at java.lang.Object.wait(java.base@21.0.10/Object.java:339)",
+        "at java.lang.ref.NativeReferenceQueue.await(java.base@21.0.10/NativeReferenceQueue.java:48)",
+        "at java.lang.ref.ReferenceQueue.remove0(java.base@21.0.10/ReferenceQueue.java:158)",
+        "at java.lang.ref.NativeReferenceQueue.remove(java.base@21.0.10/NativeReferenceQueue.java:89)",
+        "at java.lang.ref.Finalizer$FinalizerThread.run(java.base@21.0.10/Finalizer.java:173)"
+      ]
+    }
+  ],
+  "cf_frames": {
+    "at cfApplication2ecfc547888388$funcONREQUEST.runFunction(/var/www/roadrunners.com.br/Application.cfc:2903)": 18,
+    "at cfindex2ecfm173335394.runPage(/var/www/roadrunners.com.br/evento/index.cfm:1)": 17,
+    "at cfbackend_evento2ecfm670595858._factor1(/var/www/roadrunners.com.br/includes/backend/backend_evento.cfm:265)": 7,
+    "at cfbackend_evento2ecfm670595858._factor13(/var/www/roadrunners.com.br/includes/backend/backend_evento.cfm:257)": 7,
+    "at cfbackend_evento2ecfm670595858.runPage(/var/www/roadrunners.com.br/includes/backend/backend_evento.cfm:1)": 7,
+    "at cfindex2ecfm173335394._factor12(/var/www/roadrunners.com.br/evento/index.cfm:55)": 7,
+    "at cfApplication2ecfc888653891$funcONREQUEST.runFunction(/var/www/openresults.run/Application.cfc:172)": 4,
+    "at cfindex2ecfm2071223495.runPage(/var/www/openresults.run/evento/index.cfm:1)": 2,
+    "at cfcron_jobs_service2ecfm948427289$funcCRONJOBSRUNJOB.runFunction(/var/www/business.roadrunners.run/includes/backend/cron_jobs_service.cfm:697)": 2,
+    "at cfrunner2ecfm2119934437.runPage(/var/www/business.roadrunners.run/cron-jobs/runner.cfm:69)": 2,
+    "at cfApplication2ecfc1415963226$funcONREQUEST.runFunction(/var/www/business.roadrunners.run/Application.cfc:270)": 2,
+    "at cfseo2dweb2dtools2dbody2dend2ecfm1882101351.runPage(/var/www/roadrunners.com.br/includes/estrutura/seo-web-tools-body-end.cfm:1675)": 1,
+    "at cfindex2ecfm173335394._factor14(/var/www/roadrunners.com.br/evento/index.cfm:1441)": 1,
+    "at cfconteudo_lateral_api2ecfm1906732367._factor8(/var/www/roadrunners.com.br/includes/estrutura/conteudo_lateral_api.cfm:154)": 1,
+    "at cfconteudo_lateral_api2ecfm1906732367.runPage(/var/www/roadrunners.com.br/includes/estrutura/conteudo_lateral_api.cfm:1)": 1,
+    "at cfindex2ecfm173335394._factor14(/var/www/roadrunners.com.br/evento/index.cfm:1367)": 1,
+    "at cfindex2ecfm173335394._factor14(/var/www/roadrunners.com.br/evento/index.cfm:1398)": 1,
+    "at cfindex2ecfm173335394._factor12(/var/www/roadrunners.com.br/evento/index.cfm:35)": 1,
+    "at cfindex2ecfm2071223495._factor13(/var/www/openresults.run/evento/index.cfm:24)": 1,
+    "at cfindex2ecfm601439097.runPage(/var/www/openresults.run/busca/index.cfm:29)": 1
+  }
+}

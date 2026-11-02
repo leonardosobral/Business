@@ -1,0 +1,18 @@
+{
+  "verifiedOn": "2026-10-30",
+  "audienceUrl": "https://business.roadrunners.run/portal/seo/?aba=ga4&site=roadrunners",
+  "reportUrl": "https://business.roadrunners.run/portal/seo/?aba=relatorio&site=roadrunners",
+  "realAdminRender": true,
+  "reportExactCounts": true,
+  "mobile390": {
+    "pageWidth": 390,
+    "keyboardDetails": true,
+    "tableOverflowContained": true
+  },
+  "viewportReset": true,
+  "ga4": "Google denied API read; no credentials or permissions changed",
+  "screenshots": [
+    "published-desktop.png",
+    "published-mobile.png"
+  ]
+}

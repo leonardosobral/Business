@@ -1,0 +1,80 @@
+{
+  "eventChanges": {
+    "48501": {
+      "ativo": false,
+      "tag_301": "2027-corrida-adc-zf-clube"
+    },
+    "48554": {
+      "ativo": false,
+      "tag_301": "2026-corrida-e-caminhada-outubro-rosa-chupinguaia"
+    },
+    "49606": {
+      "descricao": "A Corrida ADC ZF Clube está programada para 24 de janeiro de 2027, na Sede Campestre ADC ZF Clube, em Sorocaba (SP), com corridas de 4 km e 8 km e caminhada. A organização informa que a retirada de kits ainda será anunciada. Consulte a página oficial para horários, condições de inscrição e atualizações.",
+      "descricao_en": "The ADC ZF Clube race is scheduled for January 24, 2027, at Sede Campestre ADC ZF Clube in Sorocaba, São Paulo, with 4 km and 8 km races and a walk. The organizer says race kit collection details will be announced. Check the official event page for times, registration conditions and updates.",
+      "descricao_es": "La carrera ADC ZF Clube está programada para el 24 de enero de 2027, en la Sede Campestre ADC ZF Clube, en Sorocaba (SP), con carreras de 4 km y 8 km y caminata. La organización indica que la entrega de kits se anunciará. Consulte la página oficial para horarios, condiciones de inscripción y actualizaciones.",
+      "descricao_traducoes_meta": {
+        "en": {
+          "source_hash": "bf3fee9f854c5eccb3106932d56c27e6",
+          "description_hash": "8bd2164f38f2f390d45d6358353cf825"
+        },
+        "es": {
+          "source_hash": "bf3fee9f854c5eccb3106932d56c27e6",
+          "description_hash": "618f3cb070bb225146fc463472e1804e"
+        }
+      }
+    },
+    "48918": {
+      "descricao": "A Corrida e Caminhada Outubro Rosa de Chupinguaia está programada para 31 de outubro de 2026, com largada às 6h em frente ao Sicredi, em Chupinguaia (RO), e percurso de 5 km, conforme a página oficial do Corre Chupinguaia na Sympla. Consulte a fonte para condições de participação e atualizações.",
+      "descricao_en": "The Outubro Rosa Run and Walk in Chupinguaia is scheduled for October 31, 2026, starting at 6 a.m. in front of Sicredi in Chupinguaia, Rondônia, with a 5 km course, according to the official Corre Chupinguaia page on Sympla. Check the source for participation conditions and updates.",
+      "descricao_es": "La Carrera y Caminata Outubro Rosa de Chupinguaia está programada para el 31 de octubre de 2026, con salida a las 6h frente a Sicredi, en Chupinguaia (RO), y recorrido de 5 km, según la página oficial de Corre Chupinguaia en Sympla. Consulte la fuente para condiciones de participación y actualizaciones.",
+      "descricao_traducoes_meta": {
+        "en": {
+          "source_hash": "32ddf78f288bfb96dbba811ecab16546",
+          "description_hash": "89b4a57ec2194673700cacbc089fc402"
+        },
+        "es": {
+          "source_hash": "32ddf78f288bfb96dbba811ecab16546",
+          "description_hash": "3d1805e786762f6c2a0d4a1f42ef6845"
+        }
+      }
+    }
+  },
+  "sources": [
+    {
+      "eventId": 49606,
+      "url": "https://www.ticketsports.com.br/e/CORRIDA+ADC+ZF+CLUBE-88536",
+      "file": "../seo-reaudit-20261030/official-adc.txt",
+      "confirmed": [
+        "24/01/2027",
+        "Sorocaba",
+        "4 km",
+        "8 km",
+        "kit a informar"
+      ]
+    },
+    {
+      "eventId": 48918,
+      "url": "https://www.sympla.com.br/evento/corrida-e-caminhada-outubro-rosa/3594186",
+      "file": "../seo-reaudit-20261030/official-outubro.txt",
+      "confirmed": [
+        "31/10/2026",
+        "06h",
+        "Sicredi",
+        "Chupinguaia",
+        "5 km"
+      ]
+    }
+  ],
+  "eventDatesChanged": false,
+  "coursesChanged": false,
+  "duplicatePairs": [
+    [
+      48501,
+      49606
+    ],
+    [
+      48554,
+      48918
+    ]
+  ]
+}

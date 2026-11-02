@@ -1,0 +1,167 @@
+[
+  {
+    "path": "/circuito/estacoes/",
+    "status": 200,
+    "upcoming": 24
+  },
+  {
+    "path": "/circuito/live-run-xp/",
+    "status": 200,
+    "upcoming": 12
+  },
+  {
+    "id_evento": 37762,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-goiania/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 37763,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-natal/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 37764,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-anapolis/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 37766,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-joao-pessoa/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 37768,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-cuiaba/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 37769,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-palmas/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 37770,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-sao-luis/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 38506,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-teresina/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 40742,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-campo-grande/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 46197,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-sao-jose-dos-campos/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 46473,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-sao-paulo/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 46476,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-belem/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 46509,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-recife/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 46510,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-rio-de-janeiro/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 46520,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-belo-horizonte/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 46522,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-fortaleza/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 47168,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-vitoria/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 47176,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-salvador/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 47179,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-porto-alegre/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 47216,
+    "path": "/evento/2026-circuito-das-estacoes-2026-verao-manaus/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 48479,
+    "path": "/evento/2026-circuito-da-estacoes-2026-verao-campinas/",
+    "status": 200,
+    "circuit": "estacoes"
+  },
+  {
+    "id_evento": 48557,
+    "path": "/evento/2026-live-run-xp-ribeirao-preto-ii-2026/",
+    "status": 200,
+    "circuit": "live-run-xp"
+  },
+  {
+    "path": "/evento/2026-live21k-fortaleza-2026/",
+    "status": 301,
+    "location": "/evento/2026-live-run-xp-fortaleza-2026-ii/"
+  },
+  {
+    "path": "/en/event/2026-live21k-fortaleza-2026/",
+    "status": 301,
+    "location": "/en/event/2026-live-run-xp-fortaleza-2026-ii/"
+  },
+  {
+    "path": "/es/evento/2026-live21k-fortaleza-2026/",
+    "status": 301,
+    "location": "/es/evento/2026-live-run-xp-fortaleza-2026-ii/"
+  },
+  {
+    "path": "/en/event/2026-live-run-xp-ribeirao-preto-ii-2026/",
+    "status": 200
+  },
+  {
+    "path": "/es/evento/2026-live-run-xp-ribeirao-preto-ii-2026/",
+    "status": 200
+  }
+]

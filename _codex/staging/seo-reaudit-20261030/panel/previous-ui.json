@@ -1,0 +1,166 @@
+{
+  "source": "Semrush — interface autenticada no Chrome",
+  "projectId": 26661911,
+  "status": "complete",
+  "crawled": 5000,
+  "limit": 5000,
+  "deviceLabel": "Móvel",
+  "javascriptRendered": false,
+  "sourceUrl": "https://pt.semrush.com/siteaudit/campaign/26661911/review/overview",
+  "finishedPrecision": "minute",
+  "siteHealth": 79,
+  "errors": 20,
+  "warnings": 10079,
+  "notices": 2102,
+  "errorsByType": [
+    {
+      "issueId": 2,
+      "label": "Erros 4XX",
+      "count": 1
+    },
+    {
+      "issueId": 8,
+      "label": "Links internos quebrados",
+      "count": 14
+    },
+    {
+      "issueId": 24,
+      "label": "Conflitos de hreflang no código-fonte da página",
+      "count": 1
+    },
+    {
+      "issueId": 111,
+      "label": "Alto tempo de carregamento da página",
+      "count": 4
+    }
+  ],
+  "warningsByType": [
+    {
+      "issueId": 12,
+      "label": "Links externos quebrados",
+      "count": 21
+    },
+    {
+      "issueId": 14,
+      "label": "Imagens externas quebradas",
+      "count": 63
+    },
+    {
+      "issueId": 101,
+      "label": "Título curto demais",
+      "count": 1
+    },
+    {
+      "issueId": 102,
+      "label": "Título grande demais",
+      "count": 476
+    },
+    {
+      "issueId": 103,
+      "label": "Título h1 ausente",
+      "count": 1
+    },
+    {
+      "issueId": 109,
+      "label": "Redirecionamentos temporários",
+      "count": 4646
+    },
+    {
+      "issueId": 110,
+      "label": "Atributos alt ausentes",
+      "count": 18
+    },
+    {
+      "issueId": 112,
+      "label": "Baixa proporção texto/HTML",
+      "count": 3865
+    },
+    {
+      "issueId": 113,
+      "label": "Parâmetros de URL em excesso",
+      "count": 3
+    },
+    {
+      "issueId": 117,
+      "label": "Baixa quantidade de palavras",
+      "count": 2
+    },
+    {
+      "issueId": 123,
+      "label": "Atributos nofollow em links internos de saída",
+      "count": 939
+    },
+    {
+      "issueId": 133,
+      "label": "Tamanho total de JavaScript e CSS muito grande",
+      "count": 1
+    },
+    {
+      "issueId": 135,
+      "label": "Arquivos JavaScript e CSS não minificados",
+      "count": 43
+    }
+  ],
+  "noticesByType": [
+    {
+      "issueId": 4,
+      "label": "Bloqueada para rastreamento",
+      "count": 1
+    },
+    {
+      "issueId": 204,
+      "label": "Problemas de incompatibilidade de idiomas no hreflang",
+      "count": 27
+    },
+    {
+      "issueId": 205,
+      "label": "Sem suporte a HSTS",
+      "count": 4
+    },
+    {
+      "issueId": 212,
+      "label": "Profundidade do rastreamento da página superior a 3 cliques",
+      "count": 1000
+    },
+    {
+      "issueId": 213,
+      "label": "Páginas com apenas um link interno",
+      "count": 625
+    },
+    {
+      "issueId": 214,
+      "label": "Redirecionamentos permanentes",
+      "count": 3
+    },
+    {
+      "issueId": 216,
+      "label": "Links sem texto âncora",
+      "count": 12
+    },
+    {
+      "issueId": 217,
+      "label": "Links com texto âncora não descritivo",
+      "count": 168
+    },
+    {
+      "issueId": 218,
+      "label": "Páginas ou recursos externos com código de status HTTP 403",
+      "count": 251
+    },
+    {
+      "issueId": 222,
+      "label": "Baixo uso de HTML semântico",
+      "count": 1
+    },
+    {
+      "issueId": 223,
+      "label": "Conteúdo não otimizado",
+      "count": 10
+    }
+  ],
+  "lastFinishedAt": "2026-10-25T02:40:00Z",
+  "lastFinishedLabel": "24/10/2026, 23:40 (Brasília)",
+  "completedAuditDate": "2026-10-24",
+  "aiHealth": 80,
+  "aiHealthSource": "Overview current 84% and reported delta +4 points."
+}

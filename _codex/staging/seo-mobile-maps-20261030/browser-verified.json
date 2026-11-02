@@ -1,0 +1,26 @@
+{
+  "verifiedOn": "2026-10-30",
+  "url": "https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/",
+  "desktop": {
+    "offscreenMapCanvases": 0,
+    "initialMapboxScript": false,
+    "route42km": true,
+    "routeWithoutGeometryFallback": true,
+    "kilometerToggle": true,
+    "locationCanvas": true
+  },
+  "mobile390": {
+    "pageWidth": 390,
+    "initialOffscreenMapCanvases": 0,
+    "initialMapboxScript": false,
+    "route42km": true,
+    "keyboardArrows": true,
+    "locationCanvas": true
+  },
+  "viewportReset": true,
+  "screenshots": [
+    "published-map-desktop.png",
+    "published-map-mobile.png",
+    "psi-after.png"
+  ]
+}

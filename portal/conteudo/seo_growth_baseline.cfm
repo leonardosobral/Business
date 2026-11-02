@@ -1,5 +1,26 @@
 <cfprocessingdirective pageencoding="utf-8"/>
 <cfif compareNoCase(getBaseTemplatePath(),getCurrentTemplatePath()) EQ 0><cfheader statuscode="403"/><cfabort/></cfif>
+<section aria-labelledby="seo-search-main-title" class="ga4-help">
+<h3 class="h6" id="seo-search-main-title">Search Console · buscas no site principal</h3>
+<p><strong>10.026 cliques · +211,4% frente aos 28 dias anteriores</strong></p>
+<p class="seo-note">Registro manual de 30/10/2026. Pesquisa Web, todos os países e dispositivos, de 01/10 a 28/10/2026. Somente URLs HTTPS de roadrunners.run e www.roadrunners.run; outros subdomínios ficam fora deste recorte. Não mede tráfego direto nem referências do ChatGPT.</p>
+<details><summary>Ver comparação e prioridades de experiência no celular</summary>
+<div class="ga4-table"><table><caption>Mesma seleção de páginas nos dois períodos</caption><thead><tr><th scope="col">Métrica</th><th scope="col">01/10–28/10/2026</th><th scope="col">28 dias anteriores</th></tr></thead><tbody>
+<tr><th scope="row">Cliques</th><td>10.026</td><td>3.220</td></tr>
+<tr><th scope="row">Impressões</th><td>461.935</td><td>125.907</td></tr>
+<tr><th scope="row">CTR média</th><td>2,2%</td><td>2,6%</td></tr>
+<tr><th scope="row">Posição média</th><td>7,4</td><td>8,0</td></tr>
+</tbody></table></div>
+<p class="seo-note">A maior parte do período antecede as entregas de 25 e 30/10. Esta comparação não comprova o impacto dessas entregas. Filtro de página por expressão regular: <code>^https://(www\.)?roadrunners\.run/</code>. Totais filtrados podem ser parciais conforme o Google; não devem ser comparados com o total da propriedade que inclui subdomínios. CTR e posição seguem o arredondamento exibido na fonte.</p>
+<h4 class="h6">Core Web Vitals · atualização de 28/10/2026</h4>
+<p>No celular, o Google mostra <strong>1.317 URLs que precisam de melhorias e 173 boas</strong>; nenhuma ruim. No computador, 1.490 boas e nenhuma com necessidade de melhoria.</p>
+<div class="ga4-table"><table><caption>Grupos móveis que precisam de melhorias</caption><thead><tr><th scope="col">Métrica</th><th scope="col">URLs no grupo</th><th scope="col">Valor do grupo</th><th scope="col">Exemplo fornecido pelo Google</th></tr></thead><tbody>
+<tr><th scope="row">INP · resposta às interações</th><td>926</td><td>293 ms</td><td><a href="https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/">Maratona de Aracaju</a></td></tr>
+<tr><th scope="row">LCP · carregamento do conteúdo principal</th><td>391</td><td>2,5 s</td><td><a href="https://roadrunners.run/">Página inicial</a></td></tr>
+</tbody></table></div>
+<p class="seo-note">Dados de experiência real do Chrome agrupados pelo Google; o valor de um grupo não é uma medição individual de todas as suas URLs. LCP aparece como problema acima de 2,5 s, com valor arredondado de 2,5 s na fonte. Próxima revisão: diagnosticar as interações nas fichas e o carregamento da home, implementar o que for confirmado e acompanhar nova medição de campo.</p>
+<p class="seo-note">Fontes: <a href="https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Aroadrunners.run&amp;num_of_days=28&amp;compare_date=PREV&amp;breakdown=page&amp;page=~%5Ehttps%3A%2F%2F(www%5C.)%3Froadrunners%5C.run%2F" target="_blank" rel="noopener noreferrer">comparação no Search Console</a> e <a href="https://search.google.com/search-console/core-web-vitals?resource_id=sc-domain%3Aroadrunners.run" target="_blank" rel="noopener noreferrer">Core Web Vitals</a>. Registro manual, sem atualização automática. O ponto de partida do grupo piloto regional continua abaixo, com período próprio.</p>
+</details></section>
 <section aria-labelledby="seo-regional-baseline-title" class="ga4-help">
 <h3 class="h6" id="seo-regional-baseline-title">Search Console · ponto de partida das regionais</h3>
 <p><strong>316 cliques · 10,7 mil impressões · CTR 2,9% · posição média 7,4</strong></p>

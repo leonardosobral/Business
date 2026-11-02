@@ -1,0 +1,121 @@
+- banner:
+  - link "LIVE! RUN XP - Página inicial":
+    - /url: /
+    - text: LIVE! Run xp
+  - navigation:
+    - link:
+      - /url: /calendario
+      - text: Calendário
+    - link:
+      - /url: /resultados
+      - text: Resultados
+    - link:
+      - /url: /atracoes
+      - text: Atrações
+    - link:
+      - /url: /beneficios-xp
+      - text: Benefícios XP
+    - link:
+      - /url: /assessoria
+      - text: Assessoria
+    - link:
+      - /url: /faq
+      - text: FAQ
+    - link:
+      - /url: https://www.instagram.com/liveexperience
+      - text: Siga @liveexperience
+- heading "Ribeirão Preto - SP" [level=1]
+- paragraph: 22/11
+- generic: Inscrições abertas
+- link "Inscreva-se":
+  - /url: https://www.appliveexperience.com.br/evento/live-run-ribeirao-preto-ii-2026
+- text: 
+- generic: Largada
+- list:
+  - listitem: 5 Km
+  - listitem: 10 Km
+  - listitem: 15 Km
+  - listitem: Corrida Kids
+- heading "R. Joaquim Simões Gomes" [level=3]
+- paragraph: Nova Aliança, Ribeirão Preto - SP, 14026-580 - Próximo à Av. José Cesário M. da Silva
+- heading "Sobre o evento" [level=3]
+- paragraph: O único circuito de corrida de rua presente em todos os estados do Brasil terá 70 etapas em 53 cidades, de março a dezembro.
+- paragraph: LIVE! RUN XP - RIBEIRÃO PRETO II 2026
+- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km, 15 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.
+- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP.
+- button "Ver regulamento"
+- link "Inscreva-se":
+  - /url: https://www.appliveexperience.com.br/evento/live-run-ribeirao-preto-ii-2026
+- img "image"
+- img "Kit 5, 10 e 15 km (XP) Air"
+- img "Kit 5, 10 e 15 km Sky"
+- img "Kit 5, 10 e 15 km (XP) Sky"
+- img "Kit 5, 10 e 15 km Air"
+- img "Kit Kids"
+- generic: 
+- generic: 
+- generic: Kit 5, 10 e 15 km Air
+- generic: Kit Kids
+- generic: Kit 5, 10 e 15 km (XP) Air
+- generic: Kit 5, 10 e 15 km Sky
+- generic: Kit 5, 10 e 15 km (XP) Sky
+- generic: RETIRADA DE KITS
+- generic: Todos os atletas precisam escolher no ato da inscrição uma loja para a retirada de kits.
+- paragraph: Período de entrega de kit a confirmar
+- heading "LIVE! Iguatemi Ribeirão Preto" [level=3]
+- heading "Av. Luiz Eduardo de Toledo Prado, 900, Vila do Golf - Ribeirão Preto/São Paulo" [level=4]
+- paragraph: Horário a confirmar
+- strong: Retirada por terceiro.
+- paragraph: Caso um terceiro for retirar o seu kit, será necessário apresentar o documento com foto do titular do kit no ato da retirada.
+- heading "Programação da arena" [level=3]
+- list:
+  - generic: 5h30 – Abertura da Arena
+  - generic: 6h00 – Aquecimento 5, 10 e 15 km
+  - generic: 6h27 – Largada PCD 5, 10 e 15 km
+  - generic: 6h30 – Largada 5, 10 e 15 km
+  - generic: 8h40 – Premiação
+  - generic: 9h10 – Corrida Kids
+  - generic: 9h40 – Encerramento
+- heading "Corrida Kids" [level=3]
+- list:
+  - generic: 12 A 13 ANOS
+  - generic: 400m
+  - generic: 10 A 11 ANOS
+  - generic: 300m
+  - generic: 8 A 9 ANOS
+  - generic: 200m
+  - generic: 5 A 7 ANOS
+  - generic: 100m
+  - generic: CRIANÇAS MENORES DE 5 ANOS
+  - generic: 50m
+- iframe
+- button "5 Km" [pressed]
+- button "10 Km"
+- button "15 Km"
+- contentinfo:
+  - heading "SAC LIVE! Run" [level=3]
+  - list:
+    - text: WhatsApp
+    - link "(47) 2106-7460":
+      - /url: https://wa.me/+554721067460?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20suporte%20do%20LIVE!%20Run%20XP.
+    - listitem: Atendimento APP Experience LIVE! RUN XP
+    - text: E-mail
+    - link "liverunxp@liveoficial.com.br":
+      - /url: mailto:liverunxp@liveoficial.com.br
+    - text: .
+  - heading "Fique atento aos nossos canais oficiais" [level=3]
+  - link "":
+    - /url: https://www.tiktok.com/@live.oficial
+  - link "":
+    - /url: https://www.instagram.com/liveoficial
+  - link "":
+    - /url: https://www.threads.com/@liveexperience
+  - heading "Baixe o nosso app LIVE! Experience" [level=3]
+  - link "":
+    - /url: https://apps.apple.com/br/app/live-experience/id1544956484
+  - link "":
+    - /url: https://play.google.com/store/apps/details?id=live.experience
+  - paragraph:
+    - text: "LIVE! © 2025 - TODOS OS DIREITOS RESERVADOS - Rua Manoel Francisco da Costa, 1600 - Bairro Vieira - CEP 89257-207 - Jaraguá do Sul/SC - CNPJ: 05.108.435/0001-78 -"
+    - link "MAPA DO SITE":
+      - /url: /sitemap.xml

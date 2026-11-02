@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-10-30",
+  "curitiba": {
+    "homepage": "https://maratonadecuritiba.com.br/",
+    "regulation": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/86884/96bd2ae84b2848af9665c2c15721e39f639270721352025193.pdf",
+    "pdfSha256": "430dbe0132fde2495f5bbdd0432600c6a0975a528d31fd246e24ab1c83b9e6b4",
+    "facts": [
+      "15/11/2026",
+      "5,10,21,42 km",
+      "Praça Nossa Senhora de Salete",
+      "kits 12–14/11 no Museu Oscar Niemeyer"
+    ]
+  },
+  "monumental": {
+    "regulation": "https://maratonamonumentalbsb.com.br/wp-content/uploads/2026/07/v6-REGULAMENTO-MARATONA-MONUMENTAL-2026.pdf",
+    "facts": [
+      "21–22/11/2026",
+      "5/10 km em 21/11 às 17h",
+      "42 km em 22/11 às 05h",
+      "21 km em 22/11 às 06h"
+    ]
+  },
+  "night": {
+    "source": "https://www.runningland.com.br/night-run-etapa-1-curitiba-2026",
+    "crossReference": "https://www.o2corre.com.br/calendario/night-run-etapa-1-curitiba-2026/",
+    "facts": [
+      "31/10/2026",
+      "5,10 km",
+      "local físico Parque das Águas, Pinhais; marca comercial Curitiba"
+    ]
+  },
+  "liveBrasilia": {
+    "source": "https://www.liverun.com.br/etapa/live-run-braslia-2026",
+    "facts": [
+      "13/12/2026",
+      "5,10,15 km + Kids",
+      "horários de kits a confirmar"
+    ],
+    "externalCouponCheckoutTested": false
+  },
+  "floripa": {
+    "regulation": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88278/981d4d32a3fa41f499ed30cd8878329c639251782889640084.pdf",
+    "facts": [
+      "21 km em 28/08/2027",
+      "42 e 5 km em 29/08/2027",
+      "Praça Sesquicentenário, Beira-Mar Norte"
+    ],
+    "note": "Introdução menciona 2026; somente a programação explicitamente datada de 2027 foi usada."
+  },
+  "estacoesCuritiba": {
+    "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-curitiba",
+    "facts": [
+      "Verão 2026",
+      "29/11/2026",
+      "Curitiba PR"
+    ]
+  },
+  "estacoesBrasilia": {
+    "source": "https://www.runningland.com.br/circuito-das-estacoes-2026-ver-o-brasilia",
+    "facts": [
+      "Verão 2026",
+      "06/12/2026",
+      "Brasília DF"
+    ]
+  }
+}

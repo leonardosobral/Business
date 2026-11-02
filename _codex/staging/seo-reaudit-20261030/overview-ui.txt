@@ -1,0 +1,479 @@
+- button "Pular para o conteúdo"
+- paragraph: "Renove sua assinatura antes do término e mantenha seus dados. Dias restantes: 4"
+- button "Renovar assinatura"
+- button "Close"
+- banner:
+  - combobox "Acesse a ferramenta…"
+  - button "Pesquisar":
+  - navigation:
+    - menubar:
+      - button "Convide usuários"
+      - menuitem "Preços"
+      - menuitem "Empresarial"
+      - menuitem "Mais"
+      - menuitem "Meu perfil":
+        - generic: c
+- navigation:
+  - list:
+    - link "Início":
+      - /url: https://pt.semrush.com/home/
+      - generic: Início
+    - link "SEO":
+      - /url: https://pt.semrush.com/seo/
+      - generic: SEO
+    - link "IA":
+      - /url: https://pt.semrush.com/ai-seo/overview/
+      - generic: IA
+  - list:
+    - link "Tráfego e mercado":
+      - /url: https://pt.semrush.com/analytics/traffic/
+      - generic: Tráfego e mercado
+    - link "Local":
+      - /url: https://pt.semrush.com/local-business/
+      - generic: Local
+    - link "Conteúdo":
+      - /url: https://pt.semrush.com/content/
+      - generic: Conteúdo
+    - link "Anúncios":
+      - /url: https://pt.semrush.com/advertising/
+      - generic: Anúncios
+    - link "RP para IA":
+      - /url: https://pt.semrush.com/pr-toolkit/
+      - generic: RP para IA
+    - link "Social":
+      - /url: https://pt.semrush.com/social-media/
+      - generic: Social
+  - list:
+    - link "Relatórios":
+      - /url: https://pt.semrush.com/my_reports/grid/
+      - generic: Relatórios
+    - link "Apps":
+      - /url: https://pt.semrush.com/apps/
+      - generic: Apps
+  - generic: SEO
+  - list:
+    - link "Painel de ferramentas":
+      - /url: https://pt.semrush.com/seo/
+  - generic: Desempenho do site
+  - list:
+    - link "Auditoria do site":
+      - /url: https://pt.semrush.com/siteaudit/
+    - link "Monitoramento de posição":
+      - /url: https://pt.semrush.com/position-tracking/
+  - generic: Análise competitiva
+  - list:
+    - link "Visão geral do domínio":
+      - /url: https://pt.semrush.com/analytics/overview/?q=roadrunners.run&searchType=domain
+    - link "Rankings orgânicos":
+      - /url: https://pt.semrush.com/analytics/organic/overview/?q=roadrunners.run&searchType=domain
+    - link "Principais páginas":
+      - /url: https://pt.semrush.com/analytics/toppages/?q=roadrunners.run&searchType=domain
+    - link "Comparação de domínios":
+      - /url: https://pt.semrush.com/analytics/comparedomains/?q=roadrunners.run&searchType=domain
+    - link "Lacunas nas palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordgap/?q=roadrunners.run&searchType=domain
+    - link "Lacunas nos backlinks":
+      - /url: https://pt.semrush.com/analytics/gap/backlinks/?q=roadrunners.run&searchType=domain
+  - generic: Pesquisa de palavras-chave
+  - list:
+    - link "Visão geral de palavras-chave":
+      - /url: https://pt.semrush.com/analytics/keywordoverview/
+    - link "Keyword Magic Tool":
+      - /url: https://pt.semrush.com/analytics/keywordmagic/
+    - link "Keyword Strategy Builder":
+      - /url: https://pt.semrush.com/analytics/keywordmanager/
+    - link "Palavras-chave salvas":
+      - /url: https://pt.semrush.com/saved-keywords/
+  - generic: Ideias de conteúdo
+  - list:
+    - link "SEO Writing Assistant":
+      - /url: https://pt.semrush.com/swa/
+    - link "Topic Research":
+      - /url: https://pt.semrush.com/topic-research/
+    - link "SEO Content Template":
+      - /url: https://pt.semrush.com/seo-content-template/
+  - generic: Construção de links
+  - list:
+    - link "Backlinks":
+      - /url: https://pt.semrush.com/analytics/backlinks/overview/?db=us&q=roadrunners.run&searchType=domain
+    - link "Domínios de referência":
+      - /url: https://pt.semrush.com/analytics/refdomains/report/?q=roadrunners.run&searchType=domain
+    - link "Backlink Audit":
+      - /url: https://pt.semrush.com/backlink_audit/
+  - generic: Ferramentas extras
+  - list:
+    - link "Sensor":
+      - /url: https://pt.semrush.com/sensor/?utm_medium=footer&utm_source=semrush
+    - link "SEOquake":
+      - /url: https://www.seoquake.com/
+    - link "Ranking Semrush":
+      - /url: https://pt.semrush.com/analytics/ranks/rank/
+  - generic: Outros
+  - list:
+    - link "On Page SEO Checker":
+      - /url: https://pt.semrush.com/on-page-seo-checker/26661911/overview/
+    - link "Organic Traffic Insights":
+      - /url: https://pt.semrush.com/organic-traffic-insights/project/26661911/
+    - link "Construção de links":
+      - /url: https://pt.semrush.com/link_building/26661911/main/overview/
+- button "Ocultar navegação" [expanded]:
+- main:
+  - region "Cabeçalho da Auditoria do site":
+    - navigation "Trilhas de navegação":
+      - list:
+        - link "Início":
+          - /url: /home/
+        - link "SEO":
+          - /url: /seo/26661911/
+        - generic: Auditoria de Site
+    - button "Central de ajuda":
+      - text: Central de ajuda
+    - button "Enviar comentário":
+      - text: Enviar comentário
+    - heading [level=1]: "Auditoria de Site:"
+    - 'combobox "Projeto: Road Runners"':
+      - generic: Road Runners
+    - button "Reexecutar campanha":
+      - generic: Reexecutar campanha
+    - button "Export data from the Overview report to Google Data Studio":
+      - button "Export data from the Overview report to Google Data Studio":
+        - generic: Data Studio
+    - button "Exportar para PDF":
+      - generic: PDF
+    - button "Exportar para planilha":
+      - generic: Exportar
+    - button "Compartilhar":
+      - generic: Compartilhar
+    - button "Abrir configurações":
+    - generic: roadrunners.run
+    - generic: "Atualizado:"
+    - text: qui, 29 de out de 2026
+    - text: Móvel
+    - generic: "Renderização em JS:"
+    - text: Desativado
+    - generic: "Páginas rastreadas:"
+    - button "Problema nas páginas rastreadas":
+    - text: 5.000/5.000
+    - tablist "Relatórios de Auditoria do site":
+      - tab "Visão geral" [selected]:
+        - generic: Visão geral
+      - tab "Problemas":
+        - generic: Problemas
+      - tab "Páginas rastreadas":
+        - generic: Páginas rastreadas
+      - tab "Estatísticas":
+        - generic: Estatísticas
+      - tab "Comparar rastreamentos":
+        - generic: Comparar rastreamentos
+      - tab "Progresso":
+        - generic: Progresso
+      - tab "Impacto do JS":
+        - generic: Impacto do JS
+  - heading "Site Health" [level=2]
+  - button:
+  - img "Chart":
+    - button "Abrir resumo dos dados"
+    - status
+  - link "73%":
+    - /url: /siteaudit/campaign/26661911/review/issues
+    - generic: 73%
+  - link "A diferença desde o rastreamento anterior é de -6%, confira os detalhes no relatório Comparar rastreamentos":
+    - /url: /siteaudit/campaign/26661911/review/compare/overall_score
+    - generic: "-6"
+  - combobox "Site Health médio dos 10% principais sites da Internet":
+    - generic: Top 10% dos sites
+  - generic: 92%
+  - separator
+  - heading "Estado da pesquisa IA" [level=2]
+  - button:
+  - generic: Boa
+  - img "Chart":
+    - button "Abrir resumo dos dados"
+    - status
+  - link "84%":
+    - /url: /siteaudit/campaign/26661911/review/issues?restrictions=eyJjYXRlZ29yeSI6MTF9
+    - generic: 84%
+  - link "A diferença desde o rastreamento anterior é de +4%, confira os detalhes no relatório Problemas":
+    - /url: /siteaudit/campaign/26661911/review/compare/overall_score
+    - generic: "+4"
+  - link "11 problemas":
+    - /url: /siteaudit/campaign/26661911/review/issues?restrictions=eyJjYXRlZ29yeSI6MTF9
+    - generic: 11 problemas
+  - button "8 páginas bloqueadas":
+    - generic: 8 páginas bloqueadas
+  - separator
+  - heading "Erros" [level=2]
+  - button:
+  - link "Abrir 64 erros":
+    - /url: /siteaudit/campaign/26661911/review/issues?restrictions=errors
+    - generic: "64"
+  - link "A diferença nos erros é de +44, confira os detalhes no relatório Comparar rastreamentos":
+    - /url: /siteaudit/campaign/26661911/review/compare/errors_issues
+    - generic: "+44"
+  - img "Total de problemas":
+    - button "Abrir resumo dos dados"
+    - status
+  - separator
+  - heading "Advertências" [level=2]
+  - button:
+  - link "Abrir 8388 advertências":
+    - /url: /siteaudit/campaign/26661911/review/issues?restrictions=warnings
+    - generic: "8.388"
+  - link "A diferença nas advertências é de -1691, confira os detalhes no relatório Comparar rastreamentos":
+    - /url: /siteaudit/campaign/26661911/review/compare/warnings_issues
+    - generic: "-1.691"
+  - img "Total de problemas":
+    - button "Abrir resumo dos dados"
+    - status
+  - separator
+  - heading "Páginas rastreadas" [level=2]
+  - button:
+  - link "Abrir todas as 5000 páginas rastreadas":
+    - /url: /siteaudit/campaign/26661911/review/pagereport
+    - generic: "5.000"
+  - generic: "Quebradas:"
+  - link "Abrir 2 páginas quebradas":
+    - /url: /siteaudit/campaign/26661911/review/pagereport/pages?restrictions=eyJncm91cCI6WzRdfQ%253D%253D
+    - generic: "2"
+  - generic: "+1"
+  - generic: "Com problemas:"
+  - link "Abrir 3085 páginas com problemas":
+    - /url: /siteaudit/campaign/26661911/review/pagereport/pages?restrictions=eyJncm91cCI6WzJdfQ%253D%253D
+    - generic: "3.085"
+  - generic: "-784"
+  - img "Chart":
+    - button "Abrir resumo dos dados"
+    - status
+  - region "Principais problemas":
+    - generic: Principais problemas
+    - link "Ver todos":
+      - /url: /siteaudit/campaign/26661911/review/issues
+      - generic: Ver todos
+    - grid "Principais problemas":
+      - row "Descrição Problemas":
+        - columnheader "Descrição":
+          - generic: Descrição
+        - columnheader "Problemas":
+          - generic: Problemas
+      - generic: Sortable
+      - row "Error Conteúdo duplicado Novo Verifique se as páginas de conteúdo têm menos de 85% de similaridade +4 4":
+        - gridcell "Error Conteúdo duplicado Novo Verifique se as páginas de conteúdo têm menos de 85% de similaridade":
+          - button "Error":
+          - text: Conteúdo
+          - text: duplicado
+          - generic: Novo
+          - generic: Verifique se as páginas de conteúdo têm menos de 85% de similaridade
+        - gridcell "+4 4":
+          - generic: "+4"
+          - link "4":
+            - /url: /siteaudit/campaign/26661911/review/issue/detail/7
+            - generic: "4"
+      - row "Warning Baixa proporção texto/HTML Revise e otimize seu código HTML +698 3.081":
+        - gridcell "Warning Baixa proporção texto/HTML Revise e otimize seu código HTML":
+          - button "Warning":
+          - text: Baixa proporção
+          - generic: texto/HTML
+          - generic: Revise e otimize seu código HTML
+        - gridcell "+698 3.081":
+          - generic: "+698"
+          - link "3.081":
+            - /url: /siteaudit/campaign/26661911/review/issue/detail/112
+            - generic: "3.081"
+      - row "Warning Título grande demais Mantenha os títulos das suas páginas com menos de 70 caracteres +69 382":
+        - gridcell "Warning Título grande demais Mantenha os títulos das suas páginas com menos de 70 caracteres":
+          - button "Warning":
+          - text: Título grande
+          - generic: demais
+          - generic: Mantenha os títulos das suas páginas com menos de 70 caracteres
+        - gridcell "+69 382":
+          - generic: "+69"
+          - link "382":
+            - /url: /siteaudit/campaign/26661911/review/issue/detail/102
+            - generic: "382"
+      - row "Notice Conteúdo não otimizado Pesquisa com IA Verifique se seu conteúdo está claro e otimizado +11 11":
+        - gridcell "Notice Conteúdo não otimizado Pesquisa com IA Verifique se seu conteúdo está claro e otimizado":
+          - button "Notice":
+          - text: Conteúdo não
+          - text: otimizado
+          - generic: Pesquisa com IA
+          - generic: Verifique se seu conteúdo está claro e otimizado
+        - gridcell "+11 11":
+          - generic: "+11"
+          - link "11":
+            - /url: /siteaudit/campaign/26661911/review/issue/detail/223
+            - generic: "11"
+      - row "Notice Links com texto âncora não descritivo Pesquisa com IA Use textos âncora concisos que descrevam o conteúdo da página +3 52":
+        - gridcell "Notice Links com texto âncora não descritivo Pesquisa com IA Use textos âncora concisos que descrevam o conteúdo da página":
+          - button "Notice":
+          - text: Links com texto âncora não
+          - text: descritivo
+          - generic: Pesquisa com IA
+          - generic: Use textos âncora concisos que descrevam o conteúdo da página
+        - gridcell "+3 52":
+          - generic: "+3"
+          - link "52":
+            - /url: /siteaudit/campaign/26661911/review/issue/detail/217
+            - generic: "52"
+  - region "Páginas a melhorar":
+    - generic: Páginas a melhorar
+    - link "Ver todos":
+      - /url: /siteaudit/campaign/26661911/review/pagereport
+      - generic: Ver todos
+    - grid "Páginas a melhorar":
+      - row "Página Problemas":
+        - columnheader "Página":
+          - generic: Página
+        - columnheader "Problemas":
+          - generic: Problemas
+      - generic: Sortable
+      - row "roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ro/ Tags de título duplicadas, Conteúdo duplicado, Descrições meta duplicadas Redirecionamentos temporários, Baixa proporção texto/HTML +3 5":
+        - gridcell "roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ro/ Tags de título duplicadas, Conteúdo duplicado, Descrições meta duplicadas Redirecionamentos temporários, Baixa proporção texto/HTML":
+          - text: roadrunners.run/evento/20...aminhada-outubro-rosa-ro/
+          - generic: roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-ro/
+          - text: Tags de título duplicadas, Conteúdo duplicado, Descrições meta duplicadas
+          - text: Redirecionamentos temporários, Baixa proporção texto/HTML
+        - gridcell "+3 5":
+          - generic: "+3"
+          - link "5":
+            - /url: /siteaudit/campaign/26661911/review/page/6ae33ce82e9b9c620b6770f2
+            - generic: "5"
+      - row "roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-chupinguaia/ Tags de título duplicadas, Conteúdo duplicado, Descrições meta duplicadas Redirecionamentos temporários, Baixa proporção texto/HTML +3 5":
+        - gridcell "roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-chupinguaia/ Tags de título duplicadas, Conteúdo duplicado, Descrições meta duplicadas Redirecionamentos temporários, Baixa proporção texto/HTML":
+          - text: roadrunners.run/evento/20...outubro-rosa-chupinguaia/
+          - generic: roadrunners.run/evento/2026-corrida-e-caminhada-outubro-rosa-chupinguaia/
+          - text: Tags de título duplicadas, Conteúdo duplicado, Descrições meta duplicadas
+          - text: Redirecionamentos temporários, Baixa proporção texto/HTML
+        - gridcell "+3 5":
+          - generic: "+3"
+          - link "5":
+            - /url: /siteaudit/campaign/26661911/review/page/6ae33ce82e9b9c620b677cfe
+            - generic: "5"
+      - row "roadrunners.run/en/privacy/ Links internos quebrados Redirecionamentos temporários, Baixa proporção texto/HTML, Arquivos JavaScript e CSS não minificados 6":
+        - gridcell "roadrunners.run/en/privacy/ Links internos quebrados Redirecionamentos temporários, Baixa proporção texto/HTML, Arquivos JavaScript e CSS não minificados":
+          - generic: roadrunners.run/en/privacy/
+          - text: Links internos quebrados
+          - text: Redirecionamentos temporários, Baixa proporção texto/HTML, Arquivos JavaScript e CSS não minificados
+        - gridcell "6":
+          - link "6":
+            - /url: /siteaudit/campaign/26661911/review/page/6ae33ce82e9b9c620b6776e7
+            - generic: "6"
+      - row "roadrunners.run/es/privacidad/ Links internos quebrados Redirecionamentos temporários, Baixa proporção texto/HTML, Arquivos JavaScript e CSS não minificados 6":
+        - gridcell "roadrunners.run/es/privacidad/ Links internos quebrados Redirecionamentos temporários, Baixa proporção texto/HTML, Arquivos JavaScript e CSS não minificados":
+          - generic: roadrunners.run/es/privacidad/
+          - text: Links internos quebrados
+          - text: Redirecionamentos temporários, Baixa proporção texto/HTML, Arquivos JavaScript e CSS não minificados
+        - gridcell "6":
+          - link "6":
+            - /url: /siteaudit/campaign/26661911/review/page/6ae33ce82e9b9c620b6777c6
+            - generic: "6"
+      - row "roadrunners.run/privacidade/ Links internos quebrados Redirecionamentos temporários, Baixa proporção texto/HTML, Arquivos JavaScript e CSS não minificados 5":
+        - gridcell "roadrunners.run/privacidade/ Links internos quebrados Redirecionamentos temporários, Baixa proporção texto/HTML, Arquivos JavaScript e CSS não minificados":
+          - generic: roadrunners.run/privacidade/
+          - text: Links internos quebrados
+          - text: Redirecionamentos temporários, Baixa proporção texto/HTML, Arquivos JavaScript e CSS não minificados
+        - gridcell "5":
+          - link "5":
+            - /url: /siteaudit/campaign/26661911/review/page/6ae33ce82e9b9c620b677411
+            - generic: "5"
+  - region:
+    - generic: Tendência dos problemas
+    - combobox:
+      - generic: Site Health
+    - generic "Date field":
+      - generic: 10/13/2026
+      - combobox "From date": 10/13/2026
+      - generic: Oct 13, 2026
+      - generic: MM/DD/YYYY
+      - generic: –
+      - generic: 10/29/2026
+      - combobox "To Date field": 10/29/2026
+      - generic: Oct 29, 2026
+      - generic: MM/DD/YYYY
+    - checkbox "Site Health" [checked]
+    - generic: Site Health
+    - checkbox [checked]
+    - combobox:
+      - generic: Todos os problemas
+    - img "Chart":
+      - generic: out 13
+      - generic: out 15
+      - generic: out 17
+      - generic: out 19
+      - generic: out 21
+      - generic: out 23
+      - generic: out 25
+      - generic: out 27
+      - generic: out 29
+      - generic: 0%
+      - generic: 30%
+      - generic: 60%
+      - generic: 100%
+      - generic: "0"
+      - generic: 20K
+      - generic: 40K
+      - generic: 60K
+      - button "Abrir resumo dos dados"
+      - status
+  - region "Pontuação temática":
+    - heading "Pontuação temática" [level=2]
+    - heading "Robots.txt" [level=3]
+    - button:
+    - generic: Sem alterações
+    - link "Abrir o arquivo robots.txt de roadrunners.run":
+      - /url: https://roadrunners.run/robots.txt
+    - heading "Rastreabilidade" [level=3]
+    - generic "Abrir o relatório Rastreabilidade":
+      - generic: 71%
+    - generic: "-9"
+    - button "Conferir os detalhes":
+    - heading "HTTPS" [level=3]
+    - generic "Abrir o relatório HTTPS":
+      - generic: 98%
+    - button "Conferir os detalhes":
+    - heading "SEO internacional" [level=3]
+    - generic "Abrir o relatório SEO internacional":
+      - generic: 93%
+    - generic: "+1"
+    - button "Conferir os detalhes":
+    - heading "Core Web Vitals" [level=3]
+    - generic "Abrir o relatório Core Web Vitals":
+      - generic: 0%
+    - button "Conferir os detalhes":
+    - heading "Desempenho" [level=3]
+    - generic "Abrir o relatório Desempenho":
+      - generic: 89%
+    - button "Conferir os detalhes":
+    - heading "Links internos" [level=3]
+    - generic "Abrir o relatório Links internos":
+      - generic: 72%
+    - generic: "+2"
+    - button "Conferir os detalhes":
+    - heading "Marcação" [level=3]
+    - generic "Abrir o relatório Marcação":
+      - generic: 100%
+    - button "Conferir os detalhes":
+- contentinfo:
+  - link "Fale conosco":
+    - /url: /company/contacts/
+  - link "Sobre nós":
+    - /url: /company/
+  - link "Blog":
+    - /url: /blog/
+  - button "Português (Brasil)"
+  - link "Ver planos e preços":
+    - /url: /pricing/
+  - link "Comece a usar a Semrush":
+    - /url: https://www.semrush.com/academy/courses/getting-started-with-semrush/
+  - link "Configurações dos cookies":
+    - /url: javascript:window.showConsentSettings();
+  - link "Informações jurídicas":
+    - /url: /company/legal/
+  - link "Política de privacidade":
+    - /url: /company/legal/privacy-policy/
+  - link "Não venda minhas informações pessoais":
+    - /url: javascript:window.showConsentSettings();
+  - generic: © 2026 Semrush Holdings. Todos os direitos reservados.
+- region "Notificações"
+- button "Abrir painel de ajuda"
+- iframe [id="intercom-frame"]
+- region "Notifications"

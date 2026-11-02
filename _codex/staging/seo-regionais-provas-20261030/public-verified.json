@@ -1,0 +1,79 @@
+[
+  {
+    "path": "/estado/pr/",
+    "status": 200,
+    "canonical": "https://roadrunners.run/estado/pr/"
+  },
+  {
+    "path": "/estado/pr/curitiba/",
+    "status": 200,
+    "canonical": "https://roadrunners.run/estado/pr/curitiba/"
+  },
+  {
+    "path": "/estado/df/",
+    "status": 200,
+    "canonical": "https://roadrunners.run/estado/df/"
+  },
+  {
+    "path": "/estado/df/brasilia/",
+    "status": 200,
+    "canonical": "https://roadrunners.run/estado/df/brasilia/"
+  },
+  {
+    "path": "/estado/sc/",
+    "status": 200,
+    "canonical": "https://roadrunners.run/estado/sc/"
+  },
+  {
+    "path": "/estado/rs/",
+    "status": 200,
+    "canonical": "https://roadrunners.run/estado/rs/"
+  },
+  {
+    "path": "/estado/pr/?pagina=2",
+    "status": 200,
+    "canonical": "https://roadrunners.run/estado/pr/?pagina=2"
+  },
+  {
+    "path": "/estado/pr/curitiba/?cupom=true",
+    "status": 200,
+    "canonical": "https://roadrunners.run/estado/pr/curitiba/?cupom=true"
+  },
+  {
+    "path": "/maratona/maratona-internacional-de-floripa/",
+    "status": 200,
+    "canonical": "https://roadrunners.run/maratona/maratona-internacional-de-floripa/"
+  },
+  {
+    "path": "/maratona/maratona-de-curitiba/",
+    "status": 200,
+    "canonical": "https://roadrunners.run/maratona/maratona-de-curitiba/"
+  },
+  {
+    "path": "/maratona/maratona-monumental-de-brasilia/",
+    "status": 200,
+    "canonical": "https://roadrunners.run/maratona/maratona-monumental-de-brasilia/"
+  },
+  {
+    "path": "/maratona/maratona-internacional-de-porto-alegre/",
+    "status": 200,
+    "canonical": "https://roadrunners.run/maratona/maratona-internacional-de-porto-alegre/"
+  },
+  {
+    "path": "/assets/css/runnerhub-race-guides.css",
+    "status": 200,
+    "hashMatches": true
+  },
+  {
+    "path": "/includes/regional_races.cfm",
+    "status": 403
+  },
+  {
+    "path": "/includes/permanent_race_overview.cfm",
+    "status": 403
+  },
+  {
+    "path": "/includes/backend/backend_permanent_race.cfm",
+    "status": 403
+  }
+]

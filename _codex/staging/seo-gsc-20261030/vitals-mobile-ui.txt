@@ -1,0 +1,107 @@
+- navigation "Indicadores de localização atual":
+  - link "Core Web Vitals":
+    - /url: ./search-console/core-web-vitals?resource_id=sc-domain%3Aroadrunners.run
+  - generic: 
+  - heading "Celular" [level=1]
+- button "EXPORTAR":
+  - generic: 
+  - generic: EXPORTAR
+- text: "Fonte: Relatório de UX do Chrome"
+- button "null":
+  - generic: 
+- generic: "Última atualização: 28/10/2026"
+- main:
+  - button "Ruins 0 Nenhum problema":
+    - generic "Ruins":
+      - generic: 
+      - generic: Ruins
+    - generic "0"
+    - generic: Nenhum problema
+  - button "null":
+    - generic: 
+  - button "Melhorias necessárias 1,32 mil 2 problemas":
+    - generic "Melhorias necessárias":
+      - generic: Melhorias necessárias
+    - generic "1.317": 1,32 mil
+    - generic: 2 problemas
+  - button "null":
+    - generic: 
+  - button "Bom 173":
+    - generic "Bom":
+      - generic: Bom
+    - generic "173"
+  - button "null":
+    - generic: 
+  - generic: URLs
+  - link "Ver dados sobre URLs adequados":
+    - /url: ./search-console/core-web-vitals/drilldown?resource_id=sc-domain%3Aroadrunners.run&device=2
+    - generic: check_circle
+    - generic: Ver dados sobre URLs adequados
+    - generic: 
+  - generic: Por que os URLs não foram considerados bons
+  - generic: Os URLs com estes problemas não fornecem uma boa experiência
+  - button "Filtrar linhas da tabela":
+    - generic: 
+  - table:
+    - rowgroup:
+      - row "Gravidade Problema null Validação Tendência URLs":
+        - columnheader "Gravidade":
+          - generic: Gravidade
+        - columnheader "Problema null":
+          - text: Problema
+          - button "null":
+            - generic: 
+        - columnheader "Validação":
+          - generic: Validação
+        - columnheader "Tendência":
+          - generic: Tendência
+        - columnheader "URLs":
+          - generic: URLs
+    - rowgroup:
+      - 'row "Melhorias necessárias Problema de INP: mais de 200 ms (dispositivos móveis) Não foi iniciado 926"':
+        - cell "Melhorias necessárias":
+          - generic: warning
+          - text: Melhorias necessárias
+        - 'cell "Problema de INP: mais de 200 ms (dispositivos móveis)"':
+          - 'generic "Problema de INP: mais de 200 ms (dispositivos móveis)"'
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "926":
+          - generic: "926"
+      - 'row "Melhorias necessárias Problema de LCP: mais de 2,5s (dispositivos móveis) Não foi iniciado 391"':
+        - cell "Melhorias necessárias":
+          - generic: warning
+          - text: Melhorias necessárias
+        - 'cell "Problema de LCP: mais de 2,5s (dispositivos móveis)"':
+          - 'generic "Problema de LCP: mais de 2,5s (dispositivos móveis)"'
+        - cell "Não foi iniciado":
+          - generic: 
+          - text: Não foi iniciado
+        - cell:
+        - cell "391":
+          - generic: "391"
+      - 'row "Melhorias necessárias Problema de CLS: mais de 0,1 (dispositivos móveis) N/D 0"':
+        - cell "Melhorias necessárias":
+          - generic: warning
+          - text: Melhorias necessárias
+        - 'cell "Problema de CLS: mais de 0,1 (dispositivos móveis)"':
+          - 'generic "Problema de CLS: mais de 0,1 (dispositivos móveis)"'
+        - cell "N/D":
+          - generic: N/D
+        - cell:
+        - cell "0":
+          - generic: "0"
+  - generic: "Linhas por página:"
+  - listbox "Número de linhas por página":
+    - option "5"
+    - option "10" [selected]
+    - option "25"
+    - option "50"
+    - option "100"
+    - option "250"
+    - option "500"
+  - generic: 1-3 de 3
+  - generic: 
+  - generic: 

@@ -1,0 +1,166 @@
+- banner:
+  - link "LIVE! RUN XP - Página inicial":
+    - /url: /
+    - text: LIVE! Run xp
+  - navigation:
+    - link:
+      - /url: /calendario
+      - text: Calendário
+    - link:
+      - /url: /resultados
+      - text: Resultados
+    - link:
+      - /url: /atracoes
+      - text: Atrações
+    - link:
+      - /url: /beneficios-xp
+      - text: Benefícios XP
+    - link:
+      - /url: /assessoria
+      - text: Assessoria
+    - link:
+      - /url: /faq
+      - text: FAQ
+    - link:
+      - /url: https://www.instagram.com/liveexperience
+      - text: Siga @liveexperience
+- heading "Belo Horizonte - MG" [level=1]
+- paragraph: 22/11
+- generic: Inscrições abertas
+- link "Inscreva-se":
+  - /url: https://www.appliveexperience.com.br/evento/live-run-xp-belo-horizonte-iii-2026
+- text: 
+- generic: Largada
+- list:
+  - listitem: 5 km
+  - listitem: 10 km
+  - listitem: 21 km
+  - listitem: Corrida Kids
+- heading "Pampulha" [level=3]
+- paragraph: Pampulha - R. Versília, s/n - Pampulha, Belo Horizonte - MG, 31310-070
+- heading "Sobre o evento" [level=3]
+- paragraph: O único circuito de corrida de rua presente em todos os estados do Brasil terá 70 etapas em 53 cidades, de março a dezembro.
+- paragraph: LIVE!21K - BELO HORIZONTE 2026
+- paragraph: Muito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km, 21 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.
+- paragraph: Inscreva-se e venha sentir o ritmo da LIVE! RUN XP.
+- paragraph
+- table:
+  - rowgroup:
+    - 'row "Local de largada: Pampulha - R. Versília, s/n - Pampulha, Belo Horizonte - MG, 31310-070"':
+      - 'cell "Local de largada: Pampulha - R. Versília, s/n - Pampulha, Belo Horizonte - MG, 31310-070"'
+- button "Ver regulamento"
+- link "Inscreva-se":
+  - /url: https://www.appliveexperience.com.br/evento/live-run-xp-belo-horizonte-iii-2026
+- img "image"
+- img "Kit kids"
+- img "kit 5 km e 10 km (XP)"
+- img "Kit 21 km (XP)"
+- img "kit 5 km e 10 km"
+- img "kit 21 km"
+- generic: 
+- generic: 
+- generic: kit 5 km e 10 km
+- generic: kit 21 km
+- generic: Kit kids
+- generic: kit 5 km e 10 km (XP)
+- generic: Kit 21 km (XP)
+- generic: RETIRADA DE KITS
+- generic: Todos os atletas precisam escolher no ato da inscrição uma loja para a retirada de kits.
+- paragraph: "Período de entrega: 19/11/2026 à 21/11/2026"
+- heading "LIVE! Pátio Savassi" [level=3]
+- heading "Av. do Contorno, 6061, São Pedro - Belo Horizonte/Minas Gerais" [level=4]
+- paragraph: "Qui: 10:00 às 22:00"
+- paragraph: "Sex: 10:00 às 22:00"
+- paragraph: "Sáb: 10:00 às 22:00"
+- heading "LIVE! BH Shopping" [level=3]
+- heading "BR-356, 3049, Belvedere - Belo Horizonte/Minas Gerais" [level=4]
+- paragraph: "Qui: 10:00 às 22:00"
+- paragraph: "Sex: 10:00 às 22:00"
+- paragraph: "Sáb: 10:00 às 22:00"
+- strong: Retirada por terceiro.
+- paragraph: Caso um terceiro for retirar o seu kit, será necessário apresentar o documento com foto do titular do kit no ato da retirada.
+- heading "Programação da arena" [level=3]
+- list:
+  - generic: 6h00 - Abertura da Arena LIVE!
+  - generic: 6h50 - Aquecimento 21 e 10 km
+  - generic: 7h10 - Largada PCD 21 e 10 km
+  - generic: 7h15- Largada 21 e 10 km
+  - generic: 7h40 - Aquecimento 5km
+  - generic: 7h55 - Largada PCD 5 km
+  - generic: 8h00 - Largada 5 km
+  - generic: 8h30 - Banda
+  - generic: 9h10 - Corrida kids
+  - generic: 9h30 - Premiação
+  - generic: 10h30 - Banda
+  - generic: 11h00 - Encerramento
+- heading "Corrida Kids" [level=3]
+- list:
+  - generic: 12 A 13 ANOS
+  - generic: 400m
+  - generic: 10 A 11 ANOS
+  - generic: 300m
+  - generic: 8 A 9 ANOS
+  - generic: 200m
+  - generic: 5 A 7 ANOS
+  - generic: 100m
+  - generic: CRIANÇAS MENORES DE 5 ANOS
+  - generic: 50m
+- iframe:
+  - generic "Compartilhar":
+    - button
+  - generic "Ver mapa ampliado"
+  - generic "LIVE! RUN XP 2026 - BH 5 km"
+  - generic "Marcar este mapa com uma estrela para visualizá-lo no Google Maps":
+    - checkbox "Toggle star"
+  - text: Este mapa foi feito com o Google My Maps.
+  - link "Crie o seu":
+    - /url: //support.google.com/mymaps/answer/3024454?hl=en&amp;ref_topic=3188329
+  - text: .
+  - generic "Aumentar zoom"
+  - generic "Diminuir zoom"
+  - list:
+    - link "Termos":
+      - /url: //www.google.com/intl/pt_BR/help/terms_maps.html
+  - text: Este mapa foi criado por um usuário.
+  - link "Saiba como criar o seu.":
+    - /url: //support.google.com/mymaps/answer/3024454?hl=en&amp;ref_topic=3188329
+  - generic "Fechar"
+  - generic: Leonardo Sobral
+  - generic: leonardo.sobral@gmail.com
+  - generic: Criar novo mapa
+  - generic: Abrir mapa
+  - generic: Compartilhados com você
+  - generic: Ajuda
+  - generic: Feedback
+  - button "Denunciar conteúdo inadequado"
+  - generic: Google Drive
+- button "5 km" [pressed]
+- button "10 km"
+- button "21 km"
+- contentinfo:
+  - heading "SAC LIVE! Run" [level=3]
+  - list:
+    - text: WhatsApp
+    - link "(47) 2106-7460":
+      - /url: https://wa.me/+554721067460?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20suporte%20do%20LIVE!%20Run%20XP.
+    - listitem: Atendimento APP Experience LIVE! RUN XP
+    - text: E-mail
+    - link "liverunxp@liveoficial.com.br":
+      - /url: mailto:liverunxp@liveoficial.com.br
+    - text: .
+  - heading "Fique atento aos nossos canais oficiais" [level=3]
+  - link "":
+    - /url: https://www.tiktok.com/@live.oficial
+  - link "":
+    - /url: https://www.instagram.com/liveoficial
+  - link "":
+    - /url: https://www.threads.com/@liveexperience
+  - heading "Baixe o nosso app LIVE! Experience" [level=3]
+  - link "":
+    - /url: https://apps.apple.com/br/app/live-experience/id1544956484
+  - link "":
+    - /url: https://play.google.com/store/apps/details?id=live.experience
+  - paragraph:
+    - text: "LIVE! © 2025 - TODOS OS DIREITOS RESERVADOS - Rua Manoel Francisco da Costa, 1600 - Bairro Vieira - CEP 89257-207 - Jaraguá do Sul/SC - CNPJ: 05.108.435/0001-78 -"
+    - link "MAPA DO SITE":
+      - /url: /sitemap.xml

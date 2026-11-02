@@ -1,0 +1,218 @@
+[
+  {
+    "path": "/estado/al/",
+    "status": 200,
+    "description": "Calendário de corridas em Alagoas. Página 1 de 2. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/al/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas em Alagoas. Página 2 de 2. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/ba/",
+    "status": 200,
+    "description": "Calendário de corridas na Bahia. Página 1 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/ba/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas na Bahia. Página 2 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/ma/",
+    "status": 200,
+    "description": "Calendário de corridas no Maranhão. Página 1 de 2. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/ma/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas no Maranhão. Página 2 de 2. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/mg/",
+    "status": 200,
+    "description": "Calendário de corridas em Minas Gerais. Página 1 de 5. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/mg/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas em Minas Gerais. Página 2 de 5. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/pa/",
+    "status": 200,
+    "description": "Calendário de corridas no Pará. Página 1 de 3. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/pa/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas no Pará. Página 2 de 3. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/pb/",
+    "status": 200,
+    "description": "Calendário de corridas na Paraíba. Página 1 de 2. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/pb/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas na Paraíba. Página 2 de 2. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/pe/",
+    "status": 200,
+    "description": "Calendário de corridas em Pernambuco. Página 1 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/pe/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas em Pernambuco. Página 2 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/pr/",
+    "status": 200,
+    "description": "Calendário de corridas no Paraná. Página 1 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/pr/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas no Paraná. Página 2 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/rj/",
+    "status": 200,
+    "description": "Calendário de corridas no Rio de Janeiro. Página 1 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/rj/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas no Rio de Janeiro. Página 2 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/rj/rio-de-janeiro/",
+    "status": 200,
+    "description": "Calendário de corridas em Rio de Janeiro (RJ). Página 1 de 2. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/rj/rio-de-janeiro/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas em Rio de Janeiro (RJ). Página 2 de 2. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/evento/2026-corrida-adc-zf-clube/",
+    "status": 301,
+    "location": "/evento/2027-corrida-adc-zf-clube/"
+  },
+  {
+    "path": "/evento/2026-corrida-e-caminhada-outubro-rosa-chupinguaia/",
+    "status": 200,
+    "description": "Corrida e caminhada Outubro Rosa. acontece em 31 outubro 2026, em Sicredi - Chupinguaia - RO."
+  },
+  {
+    "path": "/evento/2026-corrida-e-caminhada-outubro-rosa-ro/",
+    "status": 301,
+    "location": "/evento/2026-corrida-e-caminhada-outubro-rosa-chupinguaia/"
+  },
+  {
+    "path": "/evento/2027-corrida-adc-zf-clube/",
+    "status": 200,
+    "description": "CORRIDA ADC ZF CLUBE acontece em 24 janeiro 2027, em Sede Campestre ADC ZF: Rua Dr Jurgen Ulderup, S/N, Sorocaba, SP, Brasil - Sorocaba - SP."
+  },
+  {
+    "path": "/estado/rn/",
+    "status": 200,
+    "description": "Calendário de corridas no Rio Grande do Norte. Página 1 de 2. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/rn/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas no Rio Grande do Norte. Página 2 de 2. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/rs/",
+    "status": 200,
+    "description": "Calendário de corridas no Rio Grande do Sul. Página 1 de 3. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/rs/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas no Rio Grande do Sul. Página 2 de 3. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/sc/",
+    "status": 200,
+    "description": "Calendário de corridas em Santa Catarina. Página 1 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/sc/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas em Santa Catarina. Página 2 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/sp/",
+    "status": 200,
+    "description": "Calendário de corridas em São Paulo. Página 1 de 12. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/sp/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas em São Paulo. Página 2 de 12. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/sp/sao-paulo/",
+    "status": 200,
+    "description": "Calendário de corridas em Sao Paulo (SP). Página 1 de 3. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/estado/sp/sao-paulo/?pagina=2",
+    "status": 200,
+    "description": "Calendário de corridas em Sao Paulo (SP). Página 2 de 3. Consulte datas, distâncias e inscrições das provas de rua e trail."
+  },
+  {
+    "path": "/evento/2026-corrida-adc-zf-clube/",
+    "status": 301,
+    "location": "/evento/2027-corrida-adc-zf-clube/"
+  },
+  {
+    "path": "/en/event/2026-corrida-adc-zf-clube/",
+    "status": 301,
+    "location": "/en/event/2027-corrida-adc-zf-clube/"
+  },
+  {
+    "path": "/es/evento/2026-corrida-adc-zf-clube/",
+    "status": 301,
+    "location": "/es/evento/2027-corrida-adc-zf-clube/"
+  },
+  {
+    "path": "/en/event/2027-corrida-adc-zf-clube/",
+    "status": 200
+  },
+  {
+    "path": "/es/evento/2027-corrida-adc-zf-clube/",
+    "status": 200
+  },
+  {
+    "path": "/evento/2026-corrida-e-caminhada-outubro-rosa-ro/",
+    "status": 301,
+    "location": "/evento/2026-corrida-e-caminhada-outubro-rosa-chupinguaia/"
+  },
+  {
+    "path": "/en/event/2026-corrida-e-caminhada-outubro-rosa-ro/",
+    "status": 301,
+    "location": "/en/event/2026-corrida-e-caminhada-outubro-rosa-chupinguaia/"
+  },
+  {
+    "path": "/es/evento/2026-corrida-e-caminhada-outubro-rosa-ro/",
+    "status": 301,
+    "location": "/es/evento/2026-corrida-e-caminhada-outubro-rosa-chupinguaia/"
+  },
+  {
+    "path": "/en/event/2026-corrida-e-caminhada-outubro-rosa-chupinguaia/",
+    "status": 200
+  },
+  {
+    "path": "/es/evento/2026-corrida-e-caminhada-outubro-rosa-chupinguaia/",
+    "status": 200
+  }
+]

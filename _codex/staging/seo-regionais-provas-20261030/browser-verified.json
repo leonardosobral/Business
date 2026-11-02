@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-30",
+  "desktopWidth": 1361,
+  "mobileWidth": 390,
+  "horizontalOverflow": false,
+  "floripaTabs": [
+    "Pr\u00f3ximos 1",
+    "Realizados 8"
+  ],
+  "curitibaKeyboardToggle": true,
+  "viewportRestored": true,
+  "screenshots": [
+    "floripa-desktop.png",
+    "floripa-mobile.png",
+    "curitiba-mobile.png",
+    "curitiba-desktop.png"
+  ]
+}

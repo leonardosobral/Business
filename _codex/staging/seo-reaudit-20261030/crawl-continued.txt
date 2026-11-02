@@ -1,0 +1,529 @@
+Início
+SEO
+Auditoria de Site
+Central de ajuda
+Enviar comentário
+Auditoria de Site:  
+Road Runners
+Rastreando páginas
+2.359/5.000
+PDF
+Exportar
+Compartilhar
+roadrunners.run
+Atualizado:
+qui, 29 de out de 2026
+Móvel
+Renderização em JS:
+Desativado
+Páginas rastreadas:
+5.000/5.000
+Visão geral
+Problemas
+Páginas rastreadas
+Estatísticas
+Comparar rastreamentos
+Progresso
+Impacto do JS
+Geral 
+	
+24 out 2026 (23:40)
+X
+	
+29 out 2026 (09:32)
+	Corrigidos	Novos
+
+Páginas rastreadas
+	5,000	5,000		
+
+Site Health
+	79	73		
+
+Total de problemas
+	12,201	10,095	
+5,491
+	
+3,385
+
+
+Total de erros
+	20	64	
+8
+	
+52
+
+
+Total de advertências
+	10,079	8,388	
+3,869
+	
+2,178
+
+
+Total de avisos
+	2,102	1,643	
+1,614
+	
+1,155
+
+Erros 
+				
+
+Erros 5XX
+Ler mais
+	0	0	—	—
+
+Erros 4XX
+Ler mais
+	1	2	—	
+1
+
+
+Tags de título ausentes
+Ler mais
+	0	0	—	—
+
+Tags de título duplicadas
+Ler mais
+	0	4	—	
+4
+
+
+Conteúdo duplicado
+Ler mais
+	0	4	—	
+4
+
+
+Links internos quebrados
+Ler mais
+	14	18	
+4
+	
+8
+
+
+Páginas não rastreadas
+Ler mais
+	0	0	—	—
+
+Problema de resolução DNS
+Ler mais
+	0	0	—	—
+
+Não conseguimos abrir a URL da página
+Ler mais
+	0	0	—	—
+
+Imagens internas quebradas
+Ler mais
+	0	0	—	—
+
+Descrições meta duplicadas
+Ler mais
+	0	34	—	
+34
+
+
+Formato do robots.txt inválido
+Ler mais
+	0	0	—	—
+
+Formato do sitemap.xml inválido
+Ler mais
+	0	0	—	—
+
+URLs incorretas no sitemap.xml
+Ler mais
+	0	0	—	—
+
+Problemas de resolução www
+Ler mais
+	0	0	—	—
+
+Viewport não configurado
+Ler mais
+	0	0	—	—
+
+Página HTML grande mais
+Ler mais
+	0	0	—	—
+
+Tag canônica ausente em páginas AMP
+Ler mais
+	0	0	—	—
+
+Problemas de implementação hreflang
+Ler mais
+	0	0	—	—
+
+Conflitos de hreflang no código-fonte da página
+Ler mais
+	1	1	—	—
+
+Problemas com links incorretos em hreflangs
+Ler mais
+	0	0	—	—
+
+Páginas não seguras
+Ler mais
+	0	0	—	—
+
+Certificado expirado
+Ler mais
+	0	0	—	—
+
+Versão antiga do protocolo de segurança
+Ler mais
+	0	0	—	—
+
+Certificado registrado com nome incorreto
+Ler mais
+	0	0	—	—
+
+Problemas de conteúdo misto
+Ler mais
+	0	0	—	—
+
+Ausência de URL canônica ou redirecionamento 301 na página inicial HTTP
+Ler mais
+	0	0	—	—
+
+Cadeias e loops de redirecionamento
+Ler mais
+	0	0	—	—
+
+URLs canônicas quebradas
+Ler mais
+	0	0	—	—
+
+Várias URLs canônicas
+Ler mais
+	0	0	—	—
+
+Redirecionamentos via meta refresh
+Ler mais
+	0	0	—	—
+
+Arquivos JavaScript e CSS internos quebrados
+Ler mais
+	0	0	—	—
+
+Algoritmos de criptografia inseguros
+Ler mais
+	0	0	—	—
+
+Sitemap.xml grande demais
+Ler mais
+	0	0	—	—
+
+Links com problemas no formato
+Ler mais
+	0	0	—	—
+
+Elementos de dados estruturados inválidos
+Ler mais
+	0	0	—	—
+
+Largura da viewport não definida
+Ler mais
+	0	0	—	—
+
+Alto tempo de carregamento da página
+Ler mais
+	4	1	
+4
+	
+1
+
+Advertências 
+				
+
+Links externos quebrados
+Ler mais
+	21	21	—	—
+
+Imagens externas quebradas
+Ler mais
+	63	15	
+48
+	—
+
+Links de site HTTPS que levam a páginas HTTP
+Ler mais
+	0	0	—	—
+
+Título curto demais
+Ler mais
+	1	1	—	—
+
+Título grande demais
+Ler mais
+	476	382	
+163
+	
+69
+
+
+Título h1 ausente
+Ler mais
+	1	1	—	—
+
+Conteúdo duplicado nas tags h1 e título
+Ler mais
+	0	0	—	—
+
+Descrição meta ausente
+Ler mais
+	0	0	—	—
+
+A página possui links em excesso
+Ler mais
+	0	0	—	—
+
+Redirecionamentos temporários
+Ler mais
+	4,646	3,843	
+1,230
+	
+427
+
+
+Atributos alt ausentes
+Ler mais
+	18	18	—	—
+
+Baixa proporção texto/HTML
+Ler mais
+	3,865	3,081	
+1,482
+	
+698
+
+
+Parâmetros de URL em excesso
+Ler mais
+	3	3	—	—
+
+Atributos hreflang e lang ausentes
+Ler mais
+	0	0	—	—
+
+Codificação não informada
+Ler mais
+	0	0	—	—
+
+Tipo de documento não informado
+Ler mais
+	0	0	—	—
+
+Baixa quantidade de palavras
+Ler mais
+	2	2	—	—
+
+Plug-ins incompatíveis usados
+Ler mais
+	0	0	—	—
+
+Quadros (frames) são utilizados
+Ler mais
+	0	0	—	—
+
+Caractere sublinhado em URL
+Ler mais
+	0	0	—	—
+
+Atributos nofollow em links internos de saída
+Ler mais
+	939	982	
+939
+	
+982
+
+
+O sitemap.xml não está especificado no robots.txt
+Ler mais
+	0	0	—	—
+
+Sitemap.xml não encontrado
+Ler mais
+	0	0	—	—
+
+Criptografia HTTPS não usada
+Ler mais
+	0	0	—	—
+
+Sem suporte a SNI
+Ler mais
+	0	0	—	—
+
+URLs HTTP no sitemap.xml para site HTTPS
+Ler mais
+	0	0	—	—
+
+Página não compactadas
+Ler mais
+	0	0	—	—
+
+Recursos internos bloqueados no robots.txt
+Ler mais
+	0	0	—	—
+
+Arquivos JavaScript e CSS não compactados
+Ler mais
+	0	0	—	—
+
+Arquivos JavaScript e CSS não armazenados em cache
+Ler mais
+	0	0	—	—
+
+Tamanho total de JavaScript e CSS muito grande
+Ler mais
+	1	1	
+1
+	
+1
+
+
+Muitos arquivos JavaScript e CSS
+Ler mais
+	0	0	—	—
+
+Arquivos JavaScript e CSS não minificados
+Ler mais
+	43	38	
+6
+	
+1
+
+
+URLs dos links grandes demais
+Ler mais
+	0	0	—	—
+Avisos 
+				
+
+Múltiplos títulos h1
+Ler mais
+	0	0	—	—
+
+Arquivo llms.txt não encontrado
+Ler mais
+	0	0	—	—
+
+Bloqueada para rastreamento
+Ler mais
+	1	1,024	—	
+1,023
+
+
+URLs com mais de 200 caracteres
+Ler mais
+	0	0	—	—
+
+Nofollow attributes outgoing in external links
+Ler mais
+	0	0	—	—
+
+Robots.txt não encontrado
+Ler mais
+	0	0	—	—
+
+Problemas de incompatibilidade de idiomas no hreflang
+Ler mais
+	27	11	
+26
+	
+10
+
+
+Sem suporte a HSTS
+Ler mais
+	4	4	—	—
+
+Páginas órfãs (Google Analytics)
+Ler mais
+	0	0	—	—
+
+Páginas órfãs no sitemap
+Ler mais
+	0	0	—	—
+
+Bloqueada por X-Robots-Tag: cabeçalho HTTP com noindex
+Ler mais
+	0	0	—	—
+
+Recursos externos bloqueados no robots.txt
+Ler mais
+	0	0	—	—
+
+Arquivos JavaScript e CSS externos quebrados
+Ler mais
+	0	0	—	—
+
+Profundidade do rastreamento da página superior a 3 cliques
+Ler mais
+	1,000	374	
+699
+	
+73
+
+
+Páginas com apenas um link interno
+Ler mais
+	625	131	
+529
+	
+35
+
+
+Redirecionamentos permanentes
+Ler mais
+	3	3	—	—
+
+Recursos formatados como links de páginas
+Ler mais
+	0	0	—	—
+
+Links sem texto âncora
+Ler mais
+	12	12	—	—
+
+Links com texto âncora não descritivo
+Ler mais
+	168	52	
+119
+	
+3
+
+
+Páginas ou recursos externos com código de status HTTP 403
+Ler mais
+	251	21	
+230
+	—
+
+O arquivo llms.txt está com problemas de formatação
+Ler mais
+	0	0	—	—
+
+Conteúdo demais
+Ler mais
+	0	0	—	—
+
+Conteúdo desatualizado
+Ler mais
+	0	0	—	—
+
+Baixo uso de HTML semântico
+Ler mais
+	1	0	
+1
+	—
+
+Conteúdo não otimizado
+Ler mais
+	10	11	
+10
+	
+11

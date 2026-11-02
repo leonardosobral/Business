@@ -1,0 +1,30 @@
+{
+  "scope": "single mobile initial page-load laboratory comparison; no improvement in LCP proven",
+  "url": "https://roadrunners.run/",
+  "before": {
+    "reportUrl": "https://pagespeed.web.dev/analysis/https-roadrunners-run/kjlhssb5d7?form_factor=mobile",
+    "performance": 60,
+    "fcpMs": 2254,
+    "lcpMs": 8863,
+    "tbtMs": 316,
+    "cls": 0.073,
+    "payloadKiB": 8330,
+    "longTasks": 10
+  },
+  "after": {
+    "reportUrl": "https://pagespeed.web.dev/analysis/https-roadrunners-run/15mutoos0l?form_factor=mobile",
+    "performance": 56,
+    "fcpMs": 2255,
+    "lcpMs": 10816,
+    "tbtMs": 447,
+    "cls": 0.073,
+    "payloadKiB": 6324,
+    "longTasks": 9
+  },
+  "implemented": {
+    "firstSpotlightImage": "eager/high",
+    "remainingSpotlightImages": "lazy/low/async",
+    "imageCount": 12
+  },
+  "nextEvidence": "PSI image delivery: 413.1KiB first image PNG, 726.9KiB Curitiba PNG, 824.4KiB Pampulha JPG; responsive sizes and modern formats remain to implement."
+}

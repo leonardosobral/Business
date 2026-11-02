@@ -1,0 +1,164 @@
+- main:
+  - button "Abrir / fechar painel de navegação":
+  - link "Logo Running Land":
+    - /url: /
+    - img "Logo Running Land"
+  - button "Abrir / fechar mini-carrinho. Você tem 0 itens no seu carrinho.":
+  - img "Circuito das Estações 2026 - Verão - Curitiba"
+  - strong: "29"
+  - generic: Nov
+  - heading "Circuito das Estações 2026 - Verão - Curitiba" [level=1]
+  - list:
+    - strong: Curitiba, PR
+    - strong: 5K, 10K
+  - button "Regulamento":
+    - text: Regulamento
+  - button "Percurso":
+    - text: Percurso
+  - button "Compartilhar":
+    - text: Compartilhar
+  - figure:
+    - img "Kit Estações"
+  - heading "Kit Estações" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 149,99
+  - paragraph: "O kit contém: camiseta, garrafa, mochila, número de peito e medalha (pós-prova)."
+  - generic: 5Km
+  - generic: R$ 134,99
+  - generic: "De:"
+  - generic: R$
+  - generic: "229"
+  - generic: ","
+  - generic: "99"
+  - generic: "por:"
+  - text: R$ 149,99
+  - button:
+  - textbox: "0"
+  - button:
+  - generic: 10Km
+  - generic: R$ 134,99
+  - generic: "De:"
+  - generic: R$
+  - generic: "229"
+  - generic: ","
+  - generic: "99"
+  - generic: "por:"
+  - text: R$ 149,99
+  - button:
+  - textbox: "0"
+  - button:
+  - figure:
+    - img "Kit Estações + Porta Mandala"
+  - heading "Kit Estações + Porta Mandala" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 299,98
+  - figure:
+    - img "Kit Plus"
+  - heading "Kit Plus" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 219,98
+  - figure:
+    - img "Kit Super"
+  - heading "Kit Super" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 339,98
+  - figure:
+    - img "Kit Bota Pra Correr"
+  - heading "Kit Bota Pra Correr" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 149,99
+  - figure:
+    - img "Kit Capitão"
+  - heading "Kit Capitão" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 103,99
+  - figure:
+    - img "Inscrição Participação"
+  - heading "Inscrição Participação" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 139,99
+  - figure:
+    - img "Meia Inscrição"
+  - heading "Meia Inscrição" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 69,99
+  - figure:
+    - img "Kit Patrocinador"
+  - heading "Kit Patrocinador" [level=4]
+  - strong: "A partir de:"
+  - strong: R$ 149,99
+  - heading "Descrição" [level=3]
+  - paragraph: Em 2026, o maior circuito de corridas de rua do mundo chega aos 20 anos celebrando histórias como a sua. No Circuito das Estações, cada etapa é um novo capítulo de superação, movimento e conquista. Complete sua mandala, reviva suas jornadas e escreva, passo a passo, a história que só você pode contar.
+  - paragraph
+  - paragraph: "Percursos:"
+  - paragraph
+  - paragraph:
+    - text: 5km -
+    - link "http://www.google.com/maps/d/embed?mid=1g3KaN8B4FWpM5DGEhJaXAs-bkp92cJ8&ehbc=2E312F":
+      - /url: http://www.google.com/maps/d/embed?mid=1g3KaN8B4FWpM5DGEhJaXAs-bkp92cJ8&ehbc=2E312F
+  - paragraph
+  - paragraph:
+    - text: 10km -
+    - link "http://www.google.com/maps/d/embed?mid=1-is-ZIRyqdIOPfTiIBYMWa4kPX8up0g&ehbc=2E312F":
+      - /url: http://www.google.com/maps/d/embed?mid=1-is-ZIRyqdIOPfTiIBYMWa4kPX8up0g&ehbc=2E312F
+  - button "Continuar lendo"
+  - figure:
+    - link:
+      - /url: https://loja.runningland.com.br/tenis-de-corrida.html?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=rodape_banner&utm_content=banner_rodape
+  - generic: Fique por
+  - generic: Dentro
+  - generic: Receba novidades da loja, calendário de corridas e benefícios Prime.
+  - textbox "Digite seu e-mail"
+  - button "Assinar":
+    - generic: Assinar
+  - img "Running Land"
+  - paragraph: "Mais do que loja: um ecossistema para quem vive corrida."
+  - heading "Loja Online +" [level=5]:
+    - generic: Loja Online
+    - text: +
+  - heading "Corridas +" [level=5]:
+    - generic: Corridas
+    - text: +
+  - heading "Institucional +" [level=5]:
+    - generic: Institucional
+    - text: +
+  - paragraph: "CNPJ: 03.787.821/0001-08 - VILLA OLÍMPICA SERVIÇO LTDA. Todos os direitos reservados."
+  - button "Whatsapp icon":
+    - img "Whatsapp icon"
+  - img "Whatsapp icon"
+  - generic: "Quero falar sobre:"
+  - button "Close icon":
+    - img "Close icon"
+  - link "File done icon illustration Inscrições, Pedidos e Assinaturas":
+    - /url: /chat
+    - img "File done icon illustration"
+    - generic: Inscrições, Pedidos e Assinaturas
+  - link "Store icon illustration Minhas Fotos":
+    - /url: https://www.fotto.com.br/contato
+    - img "Store icon illustration"
+    - generic: Minhas Fotos
+  - link "Store icon illustration Loja São Paulo":
+    - /url: https://wa.me/5511976513903
+    - img "Store icon illustration"
+    - generic: Loja São Paulo
+  - link "Store icon illustration Loja Rio de Janeiro":
+    - /url: https://wa.me/5511976513903
+    - img "Store icon illustration"
+    - generic: Loja Rio de Janeiro
+  - link "Whatsapp icon illustration Compre pelo WhatsApp":
+    - /url: https://wa.me/5511976513903
+    - img "Whatsapp icon illustration"
+    - generic: Compre pelo WhatsApp
+- navigation:
+  - list:
+    - link "Loja Online":
+      - /url: https://loja.runningland.com.br/?utm_source=portal_runningland&utm_medium=referral_interno&utm_campaign=menu_1&utm_content=loja_online
+    - link "Eventos":
+      - /url: /eventos
+    - link "O2 Prime":
+      - /url: /clube-prime
+    - link "Espaço Running Land":
+      - /url: /#espaco-running-land
+  - button "Conta":
+    - generic: Conta
+- paragraph

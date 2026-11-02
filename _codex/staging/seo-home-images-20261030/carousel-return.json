@@ -1,0 +1,11 @@
+{
+  "desktop": {
+    "left": 0,
+    "width": 1361
+  },
+  "mobile": {
+    "left": 0,
+    "pageWidth": 390,
+    "width": 390
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "source": "https://roadrunners.run/",
+  "observedOn": "2026-10-30",
+  "images": [
+    {
+      "event": "/evento/2026-maratona-de-aracaju-2026/",
+      "height": 450,
+      "name": "Maratona de Aracaju 2026",
+      "source": "https://cdn.ticketsports.com.br/ticketagora/images/7YMFGOKILUTZXQWZNMCAYAIBIN5T02ADV9BRUGBYE70O9I3FFQ.png",
+      "width": 1140
+    },
+    {
+      "event": "/evento/2026-maratona-de-curitiba-santander-2026/",
+      "height": 451,
+      "name": "MARATONA DE CURITIBA SANTANDER 2026",
+      "source": "https://cdn.ticketsports.com.br/ticketagora/images/6V8WJY7M1GF998GDF9DBLQMR2PA4T5NO46MQF1N6PBXJB5QCYL.png",
+      "width": 1141
+    },
+    {
+      "event": "/evento/2026-maratona-monumental-de-brasilia-2026/",
+      "height": 705,
+      "name": "MARATONA MONUMENTAL DE BRASÍLIA 2026",
+      "source": "https://cdn.ticketsports.com.br/ticketagora/images/2IB6HOALA87A1HEFVBB5UQ4NB0S97DLLUKDOY9E0PO540T8CWG.png",
+      "width": 1170
+    },
+    {
+      "event": "/evento/2026-9-maratona-sorocaba-novembro-azul/",
+      "height": 415,
+      "name": "9º MARATONA SOROCABA NOVEMBRO AZUL",
+      "source": "https://cdn.ticketsports.com.br/ticketagora/images/HBBKXJ6C668OQDQUYQ4X82EPVC3EU3QKY10RPIU8RRWVH0ZNOT.png",
+      "width": 1600
+    },
+    {
+      "event": "/evento/2026-maratona-internacional-de-maringa/",
+      "height": 253,
+      "name": "Maratona Internacional de Maringá",
+      "source": "https://www.ticketsports.com.br/_next/image?url=https%3A%2F%2Fcdn.ticketsports.com.br%2Fticketagora%2Fimages%2FM4VF7XDJE76JARFHGVD52VST3IGPNMV4MN9JADCG9RN83EEYH4.png&w=640&q=75",
+      "width": 640
+    },
+    {
+      "event": "/evento/2026-27-volta-intl-da-pampulha/",
+      "height": 2160,
+      "name": "27ª Volta Intl da Pampulha 2026",
+      "source": "https://www.yescom.com.br/voltadapampulha/2026/img/capa-comselo.jpg",
+      "width": 3840
+    },
+    {
+      "event": "/evento/2026-circuito-das-estacoes-2026-verao-rio-de-janeiro/",
+      "height": 498,
+      "name": "Circuito das Estações 2026 - Verão - Rio de Janeiro",
+      "source": "https://magento.runningland.com.br/media/catalog/product/cache/4ec0339e0e27010557b958cd357e7b98/b/a/bannerrl_estacoes_verao_1_1.jpg?auto=webp&format=pjpg&width=320",
+      "width": 394
+    },
+    {
+      "event": "/evento/2026-101-corrida-internacional-de-sao-silvestre/",
+      "height": 672,
+      "name": "101ª CORRIDA INTERNACIONAL DE SÃO SILVESTRE",
+      "source": "https://library.sportingnews.com/styles/crop_style_16_9_1280_webp/s3/2026-09/sao-silvestre-2026.jpg.webp",
+      "width": 1194
+    },
+    {
+      "event": "/evento/2027-maratona-internacional-de-campinas-2-edicao/",
+      "height": 450,
+      "name": "MARATONA INTERNACIONAL DE CAMPINAS - 2ª EDIÇÃO",
+      "source": "https://cdn.ticketsports.com.br/ticketagora/images/FL71TVZIHIOR4DD5E4Y2I3RWUERZ6TJ8ARX995020IRPNAZAIE.png",
+      "width": 1140
+    },
+    {
+      "event": "/evento/2027-maratona-internacional-do-parana-2027/",
+      "height": 450,
+      "name": "Maratona Internacional do Paraná 2027",
+      "source": "https://cdn.ticketsports.com.br/ticketagora/images/4SCZJ1Z5UT9CTYHUI9ZGEWBKO8GREDPRHE0A32HEBDGHH46H94.png",
+      "width": 1140
+    },
+    {
+      "event": "/evento/2027-maratona-internacional-de-sao-paulo-2027/",
+      "height": 273,
+      "name": "Maratona Internacional de São Paulo 2027",
+      "source": "https://minhasinscricoes.cdn.cl9.cloud/Gerenciador/Content/Images/Eventos/Logos/DC0FDBD4-F81A-446F-B65C-D6A010FE92CF.jpg",
+      "width": 500
+    },
+    {
+      "event": "/evento/2027-maratona-de-joao-pessoa-2027/",
+      "height": 253,
+      "name": "Maratona De João Pessoa 2027",
+      "source": "https://www.ticketsports.com.br/_next/image?url=https%3A%2F%2Fcdn.ticketsports.com.br%2Fticketagora%2Fimages%2FA9RKWIMNTFFWPQH0JV314RH05AST05TOQ9YPWV9M8LZ8S6PNYX.png&w=640&q=75",
+      "width": 640
+    }
+  ]
+}

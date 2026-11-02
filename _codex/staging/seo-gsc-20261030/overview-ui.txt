@@ -1,0 +1,162 @@
+
+  - generic: lightbulb_outline
+  - generic: Receba insights sobre a performance do seu site na Pesquisa
+  - generic: chevron_right
+  - generic: Descubra insights
+  - link "Descubra insights":
+    - /url: ./search-console/performance/insights?resource_id=sc-domain%3Aroadrunners.run
+  - generic: Desempenho
+  - generic: chevron_right
+  - generic: Relatório completo
+  - link "Relatório completo":
+    - /url: ./search-console/performance/search-analytics?resource_id=sc-domain%3Aroadrunners.run
+  - generic: Total de 14.902 cliques da pesquisa na Web
+  - generic: Recomendações
+  - button "null":
+    - generic: 
+  - button "Enviar feedback":
+    - generic: feedback
+    - generic: Enviar feedback
+  - generic: lightbulb
+  - generic: Recentemente, uma página recebeu mais cliques do que o normal
+  - text: Confira o desempenho da página para investigar mais
+  - generic: https://roadrunners.run/noticias/choque-no-trail-o-exame-positivo-de-rosalia/
+  - generic: Verificar o desempenho da página
+  - link "Verificar o desempenho da página":
+    - /url: ./search-console/performance/search-analytics?resource_id=sc-domain%3Aroadrunners.run&page=%21https%3A%2F%2Froadrunners.run%2Fnoticias%2Fchoque-no-trail-o-exame-positivo-de-rosalia%2F&start_date=20261021&end_date=20261027&compare_start_date=20261014&compare_end_date=20261020&metrics=CLICKS
+  - button "Enviar feedback positivo":
+    - generic: thumb_up_filled
+    - generic: thumb_up
+  - button "Enviar feedback negativo":
+    - generic: thumb_down_filled
+    - generic: thumb_down
+  - generic: lightbulb
+  - generic: Mostre seus 6 produtos na guia "Shopping"
+  - generic: Alcance mais clientes em potencial ao mostrar seus produtos na guia "Shopping" nos resultados da Pesquisa Google
+  - generic: Começar
+  - link "Começar":
+    - /url: ./search-console/merchant-opportunities?resource_id=sc-domain:roadrunners.run
+  - button "Enviar feedback positivo":
+    - generic: thumb_up_filled
+    - generic: thumb_up
+  - button "Enviar feedback negativo":
+    - generic: thumb_down_filled
+    - generic: thumb_down
+  - generic: Indexação
+  - text: Páginas
+  - generic: chevron_right
+  - generic: Relatório completo
+  - link "Relatório completo":
+    - /url: ./search-console/index?resource_id=sc-domain%3Aroadrunners.run
+  - generic: 116.687 páginas não indexadas
+  - generic: 21.335 páginas indexadas
+  - link "Abrir o relatório de indexação de vídeos.":
+    - /url: ./search-console/video-index?resource_id=sc-domain%3Aroadrunners.run
+    - generic: Vídeos
+    - generic: "Páginas de vídeo não indexadas: 143"
+    - generic: "Páginas de vídeo indexadas: 3"
+  - generic: Experiência
+  - table:
+    - rowgroup:
+      - row "Tipo Bom Melhorias necessárias Ruins Tendência":
+        - columnheader "Tipo"
+        - columnheader
+        - columnheader "Bom"
+        - columnheader "Melhorias necessárias"
+        - columnheader "Ruins"
+        - columnheader "Tendência"
+        - columnheader
+    - rowgroup:
+      - row "Core Web Vitals Celular Computador 173 1.490 1.317 0 0 0 Abrir relatório":
+        - cell "Core Web Vitals":
+          - generic: Core Web Vitals
+        - cell "Celular Computador":
+          - generic: Celular
+          - generic: Computador
+        - cell "173 1.490":
+          - generic: "173"
+          - generic: "1.490"
+        - cell "1.317 0":
+          - generic: "1.317"
+          - generic: "0"
+        - cell "0 0":
+          - generic: "0"
+          - generic: "0"
+        - cell:
+        - cell "Abrir relatório":
+          - button "Abrir relatório":
+            - generic: chevron_right
+      - row "HTTPS Não HTTPS":
+        - columnheader
+        - columnheader
+        - columnheader "HTTPS"
+        - columnheader
+        - columnheader "Não HTTPS"
+        - columnheader
+        - columnheader
+      - row "HTTPS 1.513 0 Abrir relatório":
+        - cell "HTTPS":
+          - generic: HTTPS
+        - cell
+        - cell "1.513":
+          - generic: "1.513"
+        - cell
+        - cell "0":
+          - generic: "0"
+        - cell:
+        - cell "Abrir relatório":
+          - button "Abrir relatório":
+            - generic: chevron_right
+  - generic: Compras
+  - table:
+    - rowgroup:
+      - row "Tipo Válidas Entidades inválidas Tendência":
+        - columnheader "Tipo"
+        - columnheader "Válidas"
+        - columnheader "Entidades inválidas"
+        - columnheader "Tendência"
+        - columnheader
+    - rowgroup:
+      - row "Snippets do produto 0 0 Abrir relatório":
+        - cell "Snippets do produto":
+          - generic: Snippets do produto
+        - cell "0":
+          - generic: "0"
+        - cell "0":
+          - generic: "0"
+        - cell:
+        - cell "Abrir relatório":
+          - button "Abrir relatório":
+            - generic: chevron_right
+  - generic: Melhorias
+  - table:
+    - rowgroup:
+      - row "Tipo Válidas Entidades inválidas Tendência":
+        - columnheader "Tipo"
+        - columnheader "Válidas"
+        - columnheader "Entidades inválidas"
+        - columnheader "Tendência"
+        - columnheader
+    - rowgroup:
+      - row "Indicadores de localização atual 1.157 0 Abrir relatório":
+        - cell "Indicadores de localização atual":
+          - generic: Indicadores de localização atual
+        - cell "1.157":
+          - generic: "1.157"
+        - cell "0":
+          - generic: "0"
+        - cell:
+        - cell "Abrir relatório":
+          - button "Abrir relatório":
+            - generic: chevron_right
+      - row "Eventos 1.167 0 Abrir relatório":
+        - cell "Eventos":
+          - generic: Eventos
+        - cell "1.167":
+          - generic: "1.167"
+        - cell "0":
+          - generic: "0"
+        - cell:
+        - cell "Abrir relatório":
+          - button "Abrir relatório":
+            - generic: chevron_right

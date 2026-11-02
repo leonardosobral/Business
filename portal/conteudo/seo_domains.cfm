@@ -75,7 +75,7 @@ for(VARIABLES.sdEntry in VARIABLES.seoDomains.domains){
     <p>O rank de tráfego permanece o mesmo quando você ordena outra coluna ou filtra o grupo. É a posição na lista completa, em ordem decrescente de tráfego orgânico estimado.</p>
     <p>As porcentagens são as variações do recorte “Mês” exibidas pela fonte. Authority Score varia em pontos. A classificação “em alta” ou “em queda” considera apenas o tráfego orgânico; não comprova causa, conversão nem tendência sustentada.</p>
     <p>Comece pelas referências próximas ao Road Runners e pelas que crescem em tráfego e palavras-chave. Abra o domínio no Semrush para comparar as páginas e consultas responsáveis. Sites de inscrições, fotos e notícias podem atender buscas diferentes das de um calendário.</p>
-    <p>Este é o primeiro registro desta lista no Business. Novas importações devem preservar cada coleta para construir o histórico. Os gráficos da fonte não foram reconstruídos com valores inferidos. Ausência de medição não equivale a zero.</p>
+    <p>As coletas desta lista são preservadas para comparação histórica. Os números acima correspondem à data de importação indicada nesta página. Os gráficos da fonte não foram reconstruídos com valores inferidos. Ausência de medição não equivale a zero.</p>
   </div></details>
 </section>
 <script src="/portal/seo/assets/domains.js?v=20261025-1" defer></script>

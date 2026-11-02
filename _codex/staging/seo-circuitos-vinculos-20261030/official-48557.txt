@@ -1,0 +1,61 @@
+- banner:
+  - link "LIVE! RUN XP - Página inicial":
+    - /url: /
+    - text: LIVE! Run xp
+  - navigation:
+    - link:
+      - /url: /calendario
+      - text: Calendário
+    - link:
+      - /url: /resultados
+      - text: Resultados
+    - link:
+      - /url: /atracoes
+      - text: Atrações
+    - link:
+      - /url: /beneficios-xp
+      - text: Benefícios XP
+    - link:
+      - /url: /assessoria
+      - text: Assessoria
+    - link:
+      - /url: /faq
+      - text: FAQ
+    - link:
+      - /url: https://www.instagram.com/liveexperience
+      - text: Siga @liveexperience
+- main:
+  - generic: Erro
+  - heading "404" [level=1]
+  - heading "Página não encontrada" [level=2]
+  - paragraph: A página que você procura não está disponível no momento. Verifique o endereço ou volte para a página inicial.
+  - link "Voltar ao início":
+    - /url: /
+  - button "Tentar novamente"
+- contentinfo:
+  - heading "SAC LIVE! Run" [level=3]
+  - list:
+    - text: WhatsApp
+    - link "(47) 2106-7460":
+      - /url: https://wa.me/+554721067460?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20suporte%20do%20LIVE!%20Run%20XP.
+    - listitem: Atendimento APP Experience LIVE! RUN XP
+    - text: E-mail
+    - link "liverunxp@liveoficial.com.br":
+      - /url: mailto:liverunxp@liveoficial.com.br
+    - text: .
+  - heading "Fique atento aos nossos canais oficiais" [level=3]
+  - link "":
+    - /url: https://www.tiktok.com/@live.oficial
+  - link "":
+    - /url: https://www.instagram.com/liveoficial
+  - link "":
+    - /url: https://www.threads.com/@liveexperience
+  - heading "Baixe o nosso app LIVE! Experience" [level=3]
+  - link "":
+    - /url: https://apps.apple.com/br/app/live-experience/id1544956484
+  - link "":
+    - /url: https://play.google.com/store/apps/details?id=live.experience
+  - paragraph:
+    - text: "LIVE! © 2025 - TODOS OS DIREITOS RESERVADOS - Rua Manoel Francisco da Costa, 1600 - Bairro Vieira - CEP 89257-207 - Jaraguá do Sul/SC - CNPJ: 05.108.435/0001-78 -"
+    - link "MAPA DO SITE":
+      - /url: /sitemap.xml

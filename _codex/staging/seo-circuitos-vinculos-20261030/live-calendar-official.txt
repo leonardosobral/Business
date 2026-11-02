@@ -1,0 +1,188 @@
+- banner:
+  - link "LIVE! RUN XP - Página inicial":
+    - /url: /
+    - text: LIVE! Run xp
+  - navigation:
+    - link:
+      - /url: /calendario
+      - text: Calendário
+    - link:
+      - /url: /resultados
+      - text: Resultados
+    - link:
+      - /url: /atracoes
+      - text: Atrações
+    - link:
+      - /url: /beneficios-xp
+      - text: Benefícios XP
+    - link:
+      - /url: /assessoria
+      - text: Assessoria
+    - link:
+      - /url: /faq
+      - text: FAQ
+    - link:
+      - /url: https://www.instagram.com/liveexperience
+      - text: Siga @liveexperience
+- heading "Calendário 2026" [level=1]:
+  - text: Calendário
+  - generic: "2026"
+- button ""
+- 'textbox "Pesquisa: São Paulo"'
+- list:
+  - button "Inscrições abertas"
+  - button "Encerrados"
+  - button "Todos"
+- link "Bonito - MS 01/11 5 km CORRIDA KIDS Inscrições abertas":
+  - /url: /etapa/live-experience-jurer-2026
+  - figure:
+    - img "image"
+  - generic: Bonito - MS
+  - generic: 01/11
+  - generic: 5 km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+- link "Rio de Janeiro - RJ 02/11 5 km 10 km 21 km CORRIDA KIDS Inscrições abertas Últimas vagas":
+  - /url: /etapa/live21k-rio-de-janeiro-2026
+  - figure:
+    - img "image"
+  - generic: Rio de Janeiro - RJ
+  - generic: 02/11
+  - generic: 5 km
+  - generic: 10 km
+  - generic: 21 km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+  - generic: Últimas vagas
+- link "Fortaleza - CE 20/11 21 Km 5 Km 10 Km CORRIDA KIDS Inscrições abertas":
+  - /url: /etapa/live21k-fortaleza-2026
+  - figure:
+    - img "image"
+  - generic: Fortaleza - CE
+  - generic: 20/11
+  - generic: 21 Km
+  - generic: 5 Km
+  - generic: 10 Km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+- link "Recife - PE 20/11 5 Km 10 Km 21 Km CORRIDA KIDS Inscrições abertas":
+  - /url: /etapa/live21k-recife-2026
+  - figure:
+    - img "image"
+  - generic: Recife - PE
+  - generic: 20/11
+  - generic: 5 Km
+  - generic: 10 Km
+  - generic: 21 Km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+- link "Porto Alegre - RS 22/11 5 km 10 km CORRIDA KIDS Inscrições abertas":
+  - /url: /etapa/live-run-xp-porto-alegre-2026
+  - figure:
+    - img "image"
+  - generic: Porto Alegre - RS
+  - generic: 22/11
+  - generic: 5 km
+  - generic: 10 km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+- link "Ribeirão Preto - SP 22/11 5 Km 10 Km 15 Km CORRIDA KIDS Inscrições abertas":
+  - /url: /etapa/live-run-ribeirao-preto-ii-2026
+  - figure:
+    - img "image"
+  - generic: Ribeirão Preto - SP
+  - generic: 22/11
+  - generic: 5 Km
+  - generic: 10 Km
+  - generic: 15 Km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+- link "Belo Horizonte - MG 22/11 5 km 10 km 21 km CORRIDA KIDS Inscrições abertas":
+  - /url: /etapa/live-run-xp-belo-horizonte-iii-2026
+  - figure:
+    - img "image"
+  - generic: Belo Horizonte - MG
+  - generic: 22/11
+  - generic: 5 km
+  - generic: 10 km
+  - generic: 21 km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+- link "Niterói - RJ 05/12 5 km 10 km CORRIDA KIDS Inscrições abertas":
+  - /url: /etapa/live-run-niteri-2026
+  - figure:
+    - img "image"
+  - generic: Niterói - RJ
+  - generic: 05/12
+  - generic: 5 km
+  - generic: 10 km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+- link "Osasco - SP 06/12 6 km CORRIDA KIDS Inscrições abertas":
+  - /url: /etapa/live-run-osasco-2026
+  - figure:
+    - img "image"
+  - generic: Osasco - SP
+  - generic: 06/12
+  - generic: 6 km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+- link "Brasília - DF 13/12 5 km 10 Km 15 Km CORRIDA KIDS Inscrições abertas":
+  - /url: /etapa/live-run-braslia-2026
+  - figure:
+    - img "image"
+  - generic: Brasília - DF
+  - generic: 13/12
+  - generic: 5 km
+  - generic: 10 Km
+  - generic: 15 Km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+- link "Foz do Iguaçu - PR 13/12 5 km 21 km CORRIDA KIDS Inscrições abertas":
+  - /url: /etapa/live21k-foz-do-iguau-2026
+  - figure:
+    - img "image"
+  - generic: Foz do Iguaçu - PR
+  - generic: 13/12
+  - generic: 5 km
+  - generic: 21 km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+- link "Salvador - BA 20/12 5 km 10 km 21 km CORRIDA KIDS Inscrições abertas":
+  - /url: /etapa/live21k-salvador-2026
+  - figure:
+    - img "image"
+  - generic: Salvador - BA
+  - generic: 20/12
+  - generic: 5 km
+  - generic: 10 km
+  - generic: 21 km
+  - generic: CORRIDA KIDS
+  - generic: Inscrições abertas
+- contentinfo:
+  - heading "SAC LIVE! Run" [level=3]
+  - list:
+    - text: WhatsApp
+    - link "(47) 2106-7460":
+      - /url: https://wa.me/+554721067460?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20suporte%20do%20LIVE!%20Run%20XP.
+    - listitem: Atendimento APP Experience LIVE! RUN XP
+    - text: E-mail
+    - link "liverunxp@liveoficial.com.br":
+      - /url: mailto:liverunxp@liveoficial.com.br
+    - text: .
+  - heading "Fique atento aos nossos canais oficiais" [level=3]
+  - link "":
+    - /url: https://www.tiktok.com/@live.oficial
+  - link "":
+    - /url: https://www.instagram.com/liveoficial
+  - link "":
+    - /url: https://www.threads.com/@liveexperience
+  - heading "Baixe o nosso app LIVE! Experience" [level=3]
+  - link "":
+    - /url: https://apps.apple.com/br/app/live-experience/id1544956484
+  - link "":
+    - /url: https://play.google.com/store/apps/details?id=live.experience
+  - paragraph:
+    - text: "LIVE! © 2025 - TODOS OS DIREITOS RESERVADOS - Rua Manoel Francisco da Costa, 1600 - Bairro Vieira - CEP 89257-207 - Jaraguá do Sul/SC - CNPJ: 05.108.435/0001-78 -"
+    - link "MAPA DO SITE":
+      - /url: /sitemap.xml

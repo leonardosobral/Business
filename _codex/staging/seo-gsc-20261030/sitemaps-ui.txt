@@ -1,0 +1,26 @@
+Adicionar um novo sitemap
+Insira o URL do sitemap
+ENVIAR
+Sitemaps enviados
+
+Sitemap
+	Tipo
+	Enviado
+	Última leitura
+	Status
+	
+Páginas encontradas	
+Vídeos encontrados	
+https://comparador.roadrunners.run/sitemap-comparacoes.xml	Sitemap	17 de out. de 2026	30 de out. de 2026	Processado	6	0	
+https://comparador.roadrunners.run/sitemap.xml	Sitemap	17 de out. de 2026	29 de out. de 2026	Processado	812	0	
+https://roadrunners.run/sitemap.xml	Índice de Sitemaps	7 de dez. de 2023	26 de out. de 2026	Processado	107.352	0	
+Linhas por página:
+5
+10
+25
+50
+100
+250
+500
+1-3 de 3
+

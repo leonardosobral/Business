@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/estado/se/",
+    "status": 200,
+    "target": "_blank",
+    "rel": "noopener noreferrer"
+  },
+  {
+    "path": "/estado/se/aracaju/",
+    "status": 200,
+    "target": "_blank",
+    "rel": "noopener noreferrer"
+  },
+  {
+    "path": "/maratona/maratona-de-aracaju/",
+    "status": 200,
+    "target": "_blank",
+    "rel": "noopener noreferrer"
+  },
+  {
+    "path": "/evento/2026-maratona-de-aracaju-2026/",
+    "status": 200,
+    "target": "_blank",
+    "rel": "noopener noreferrer"
+  }
+]

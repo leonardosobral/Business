@@ -1,0 +1,37 @@
+Última leitura
+26/10/2026
+Total de páginas descobertas
+107.352
+Total de vídeos descobertos
+0
+
+CONFERIR INDEXAÇÃO DE PÁGINAS
+
+CONFERIR INDEXAÇÃO DE PÁGINAS DE VÍDEO
+
+O índice do sitemap foi processado
+Sitemaps lidos
+
+Sitemap
+	Última leitura
+	Status
+	
+URLs descobertos	
+Vídeos encontrados	
+https://roadrunners.run/sitemaps/events-history-1.xml	28 de out. de 2026	Processado	45.000	0	
+https://roadrunners.run/sitemaps/events-history-2.xml	29 de out. de 2026	Processado	45.000	0	
+https://roadrunners.run/sitemaps/events-history-3.xml	29 de out. de 2026	Processado	8.253	0	
+https://roadrunners.run/sitemaps/events-upcoming-1.xml	30 de out. de 2026	Processado	8.094	0	
+https://roadrunners.run/sitemaps/news-recent.xml	29 de out. de 2026	Processado	8	0	
+https://roadrunners.run/sitemaps/static.xml	28 de out. de 2026	Processado	990	0	
+https://roadrunners.run/sitemaps/videos.xml	29 de out. de 2026	Processado	7	0	
+Linhas por página:
+5
+10
+25
+50
+100
+250
+500
+1-7 de 7
+

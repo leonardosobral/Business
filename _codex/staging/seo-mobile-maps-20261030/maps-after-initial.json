@@ -1,0 +1,23 @@
+{
+  "maps": [
+    {
+      "canvases": 0,
+      "state": "waiting",
+      "top": 1862,
+      "type": "route"
+    },
+    {
+      "canvases": 0,
+      "state": "waiting",
+      "top": 2367,
+      "type": "location"
+    }
+  ],
+  "scripts": [
+    "https://roadrunners.run/assets/js/event-maps-lazy.min.js?v=20261030maps"
+  ],
+  "viewport": {
+    "height": 834,
+    "width": 1283
+  }
+}

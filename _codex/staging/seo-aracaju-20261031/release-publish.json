@@ -1,0 +1,21 @@
+{
+  "rr": {
+    "published": [
+      "includes/aracaju_2026.cfm",
+      "estado/index.cfm",
+      "includes/permanent_race_editorial.cfm",
+      "evento/index.cfm"
+    ],
+    "backup": "/var/backups/seo-aracaju-20261031-rr/baseline"
+  },
+  "or": {
+    "published": [
+      "includes/aracaju_2026.cfm",
+      "estado/index.cfm",
+      "evento/index.cfm"
+    ],
+    "persistentServerBackup": false,
+    "recovery": "local exact baseline"
+  },
+  "at": "2026-10-31T16:58:53.234121+00:00"
+}

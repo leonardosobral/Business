@@ -1,0 +1,9 @@
+{
+  "published": [
+    "assets/js/event-maps-lazy.js",
+    "assets/js/event-maps-lazy.min.js",
+    "evento/index.cfm"
+  ],
+  "backup": "/var/backups/seo-mobile-maps-20261030/baseline",
+  "published_at": "2026-10-30T19:24:42.249439+00:00"
+}

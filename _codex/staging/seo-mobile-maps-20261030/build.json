@@ -1,0 +1,9 @@
+{
+  "esbuild": "0.28.2",
+  "whitespaceOnly": true,
+  "roundtripStable": true,
+  "sourceBytes": 6862,
+  "outputBytes": 4139,
+  "sourceSha": "a255fe113c90d603eef627f067fa1ba942d9a21aa5f191afcc07353e4a8d458f",
+  "outputSha": "dedb4f7cc416bfc2ba66799f8a64c34bd7c429d7620d5887d11654b7043f3276"
+}

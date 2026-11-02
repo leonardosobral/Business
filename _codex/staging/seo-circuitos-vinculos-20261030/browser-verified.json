@@ -1,0 +1,30 @@
+{
+  "method": "Chrome via CUA; páginas reais após publicação",
+  "date": "2026-10-30",
+  "desktop": {
+    "path": "/circuito/estacoes/",
+    "upcoming": 24,
+    "screenshot": "estacoes-published-desktop.png"
+  },
+  "mobile": {
+    "width": 390,
+    "cases": [
+      {
+        "path": "/circuito/estacoes/",
+        "upcoming": 24,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "screenshot": "estacoes-published-mobile.png"
+      },
+      {
+        "eventId": 48557,
+        "circuitLinkVisible": true,
+        "distance15kmVisible": true,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "screenshot": "ribeirao-published-mobile.png"
+      }
+    ]
+  },
+  "viewportReset": true
+}

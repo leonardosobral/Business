@@ -1,0 +1,123 @@
+{
+  "observedOn": "2026-10-30",
+  "property": "sc-domain:roadrunners.run",
+  "index": {
+    "updatedOn": "2026-10-22",
+    "includesSubdomains": true,
+    "indexed": 21335,
+    "notIndexed": 116687,
+    "reasons": {
+      "alternateCanonical": 12928,
+      "robots": 7241,
+      "redirects": 3638,
+      "noindex": 473,
+      "soft404": 225,
+      "notFound404": 80,
+      "server5xx": 34,
+      "forbidden403": 5,
+      "duplicateNoCanonical": 4,
+      "redirectError": 2,
+      "discoveredNotIndexed": 87026,
+      "crawledNotIndexed": 5025,
+      "differentGoogleCanonical": 6
+    },
+    "indexedButRobotsBlocked": 69
+  },
+  "sitemap": {
+    "url": "https://roadrunners.run/sitemap.xml",
+    "lastRead": "2026-10-26",
+    "status": "processed",
+    "discovered": 107352,
+    "batches": [
+      {
+        "name": "events-history-1.xml",
+        "readOn": "2026-10-28",
+        "urls": 45000
+      },
+      {
+        "name": "events-history-2.xml",
+        "readOn": "2026-10-29",
+        "urls": 45000
+      },
+      {
+        "name": "events-history-3.xml",
+        "readOn": "2026-10-29",
+        "urls": 8253
+      },
+      {
+        "name": "events-upcoming-1.xml",
+        "readOn": "2026-10-30",
+        "urls": 8094
+      },
+      {
+        "name": "news-recent.xml",
+        "readOn": "2026-10-29",
+        "urls": 8
+      },
+      {
+        "name": "static.xml",
+        "readOn": "2026-10-28",
+        "urls": 990
+      },
+      {
+        "name": "videos.xml",
+        "readOn": "2026-10-29",
+        "urls": 7
+      }
+    ]
+  },
+  "performance": {
+    "type": "web",
+    "from": "2026-10-01",
+    "to": "2026-10-28",
+    "comparison": "previous28Days",
+    "countries": "all",
+    "devices": "all",
+    "pageRegex": "^https://(www\\.)?roadrunners\\.run/",
+    "includesOtherSubdomains": false,
+    "current": {
+      "clicks": 10026,
+      "impressions": 461935,
+      "ctr": 2.2,
+      "position": 7.4
+    },
+    "previous": {
+      "clicks": 3220,
+      "impressions": 125907,
+      "ctr": 2.6,
+      "position": 8.0
+    },
+    "warning": "Filtered totals may be partial; not attributable to publications on 25/10 or 30/10",
+    "clicksChangePercent": 211.4
+  },
+  "cwv": {
+    "updatedOn": "2026-10-28",
+    "source": "Chrome UX Report via GSC",
+    "mobile": {
+      "poor": 0,
+      "needsImprovement": 1317,
+      "good": 173,
+      "inp": {
+        "urls": 926,
+        "groupMs": 293,
+        "example": "https://roadrunners.run/evento/2026-maratona-de-aracaju-2026/"
+      },
+      "lcp": {
+        "urls": 391,
+        "groupSecondsRounded": 2.5,
+        "example": "https://roadrunners.run/"
+      }
+    },
+    "desktop": {
+      "poor": 0,
+      "needsImprovement": 0,
+      "good": 1490
+    }
+  },
+  "preserved": {
+    "openresultsEvidence": true,
+    "pilotBaseline": true,
+    "technicalScore": true,
+    "ga4Permissions": true
+  }
+}

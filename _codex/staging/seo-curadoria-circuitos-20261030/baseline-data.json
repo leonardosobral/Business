@@ -1,0 +1,1505 @@
+{
+  "events": [
+    {
+      "data_processamento": null,
+      "url_imagem_listagem": "https://imagens.liveoficial.com.br/app-experience/events/xifbdubMY6BtWccIYhTgESmdMosh4IQX2SLBlxNl.png",
+      "obs_homologacao": null,
+      "data_inclusao": "2025-12-18T17:40:01.611825",
+      "row_hash": "b73a6a479c8d47f41b8f570ec5999004",
+      "ranking": null,
+      "estado": "DF",
+      "categorias": "5km,10km,15km",
+      "url_wiclax": null,
+      "tipo_corrida": "rua",
+      "ativo": true,
+      "endereco": "Esplanada dos Ministérios",
+      "descricao_en": "LIVE&#x21; RUN - BRAS&Iacute;LIA 2026<br>More than a race, a moment of energy and connection&#x21; Choose between the distances of 5 km, 10 km, 15 km or participate in the Corrida Kids and enjoy the LIVE&#x21; Arena, which offers music, wellness activities and exclusive activations.<br>Register and come experience the rhythm of LIVE&#x21; RUN XP.",
+      "imagem": null,
+      "precos": null,
+      "organizador": "Live!",
+      "tag_301": null,
+      "homologado": null,
+      "url_hotsite": "https://www.liverun.com.br/etapa/live-run-braslia-2026",
+      "localizacoes": {},
+      "status_evento": null,
+      "descricao_original": "LIVE! RUN - BRASÍLIA 2026\nMuito além da corrida, um momento de vibração e conexão! Escolha entre 5 km, 10 km, 15 km ou Corrida Kids e aproveite a Arena LIVE!, com música, bem-estar e ativações exclusivas.\nInscreva-se e venha sentir o ritmo da LIVE! RUN XP.",
+      "latitude": null,
+      "realizacao": null,
+      "coordenadas": "",
+      "nome_simplificado": "LIVE RUN XP BRASILIA",
+      "descricao_traducoes_meta": {
+        "en": {
+          "description_hash": "bea5edbd379a6b838c9b229098186829",
+          "source_hash": "0129c18bdf91b9fce74f3049b4874c5c"
+        },
+        "es": {
+          "description_hash": "6f67d8904ebc5433404ce803ab7fe947",
+          "source_hash": "0129c18bdf91b9fce74f3049b4874c5c"
+        }
+      },
+      "longitude": null,
+      "id_agrega_evento": null,
+      "id_localidade": 5486,
+      "url_regulamento": null,
+      "data_final": "2026-12-13",
+      "nome_evento": "LIVE! RUN XP Brasília 2026",
+      "valor_inscricao": null,
+      "resumo": null,
+      "descricao": "LIVE&#x21; RUN - BRAS&Iacute;LIA 2026<br>Mais do que uma corrida, um momento de energia e conex&atilde;o&#x21; Escolha entre as dist&acirc;ncias de 5 km, 10 km, 15 km ou participe da Corrida Kids e aproveite a Arena LIVE&#x21;, que oferece m&uacute;sica, atividades de bem-estar e ativa&ccedil;&otilde;es exclusivas.<br>Fa&ccedil;a sua inscri&ccedil;&atilde;o e venha experimentar o ritmo da LIVE&#x21; RUN XP.",
+      "url_inscricao": "https://www.liverun.com.br/etapa/live-run-braslia-2026",
+      "cobertura": null,
+      "destaque": null,
+      "cidade": "Brasília",
+      "inscricao_disponibilidade": null,
+      "cronometragem": null,
+      "resultado_completo": true,
+      "obs": "importado em {ts '2025-12-18 17:37:46'}",
+      "url_imagem": "https://static.wixstatic.com/media/dcc8f7_a53bf3a20d3d4c288d860755bc4b7c9b~mv2.jpg",
+      "descricao_es": "LIVE&#x21; RUN - BRAS&Iacute;LIA 2026<br>M&aacute;s que una carrera, &iexcl;un momento de energ&iacute;a y conexi&oacute;n&#x21; Elija entre las distancias de 5 km, 10 km, 15 km o participe en la Corrida Kids y disfrute de la Arena LIVE&#x21;, que ofrece m&uacute;sica, actividades de bienestar y activaciones exclusivas.<br>Haga su inscripci&oacute;n y venga a experimentar el ritmo de la LIVE&#x21; RUN XP.",
+      "id_evento": 37572,
+      "url_resultado": "",
+      "data_inicial": "2026-12-13",
+      "conferencia_datas_publica": null,
+      "obs_resultado": null,
+      "id_fornecedor": null,
+      "tag": "2026-live-run-xp-brasilia-2026-iii",
+      "id_tema": 2,
+      "cod_cidade": 5300108,
+      "nome_evento_full_text": "'2026':5 'brasíl':4 'liv':1 'run':2 'xp':3",
+      "pais": "BR",
+      "info_duplicado": null
+    },
+    {
+      "data_processamento": null,
+      "url_imagem_listagem": "",
+      "obs_homologacao": null,
+      "data_inclusao": "2026-01-05T11:13:16.494735",
+      "row_hash": "065a43ff3f44f8bcb1ae47a8148fbd39",
+      "ranking": null,
+      "estado": "PR",
+      "categorias": null,
+      "url_wiclax": null,
+      "tipo_corrida": "rua",
+      "ativo": true,
+      "endereco": "",
+      "descricao_en": null,
+      "imagem": null,
+      "precos": null,
+      "organizador": "",
+      "tag_301": null,
+      "homologado": null,
+      "url_hotsite": "",
+      "localizacoes": {
+        "enriquecimento": {
+          "fields": {},
+          "version": 1,
+          "checked_at": "2026-10-21T18:22:15-03:00",
+          "model": "gpt-6-astra"
+        }
+      },
+      "status_evento": null,
+      "descricao_original": "",
+      "latitude": null,
+      "realizacao": null,
+      "coordenadas": "",
+      "nome_simplificado": "NIGHT RUN ETAPA CURITIBA",
+      "descricao_traducoes_meta": null,
+      "longitude": null,
+      "id_agrega_evento": null,
+      "id_localidade": 3830,
+      "url_regulamento": null,
+      "data_final": "2026-11-07",
+      "nome_evento": "Night Run - Etapa 1 - Curitiba 2026",
+      "valor_inscricao": null,
+      "resumo": null,
+      "descricao": null,
+      "url_inscricao": "https://www.o2corre.com.br/calendario/night-run-etapa-1-curitiba-2026",
+      "cobertura": null,
+      "destaque": null,
+      "cidade": "Curitiba",
+      "inscricao_disponibilidade": null,
+      "cronometragem": null,
+      "resultado_completo": true,
+      "obs": "importado em {ts '2026-01-05 11:10:30'}",
+      "url_imagem": "https://magento.runningland.com.br/media/catalog/product/cache/4ec0339e0e27010557b958cd357e7b98/b/a/banner-evento_night-run_e1_5.jpg",
+      "descricao_es": null,
+      "id_evento": 37774,
+      "url_resultado": "",
+      "data_inicial": "2026-11-07",
+      "conferencia_datas_publica": null,
+      "obs_resultado": null,
+      "id_fornecedor": null,
+      "tag": "2026-night-run-etapa-1-curitiba-2026",
+      "id_tema": 1,
+      "cod_cidade": null,
+      "nome_evento_full_text": "'1':4 '2026':6 'curitib':5 'etap':3 'night':1 'run':2",
+      "pais": "BR",
+      "info_duplicado": null
+    },
+    {
+      "data_processamento": null,
+      "url_imagem_listagem": "",
+      "obs_homologacao": null,
+      "data_inclusao": "2026-02-11T11:28:20.091903",
+      "row_hash": "b8a769671f68835cd08ed8528ead6bc7",
+      "ranking": null,
+      "estado": "PR",
+      "categorias": "5km, 10km",
+      "url_wiclax": null,
+      "tipo_corrida": "rua",
+      "ativo": true,
+      "endereco": "",
+      "descricao_en": null,
+      "imagem": null,
+      "precos": [
+        {
+          "distancia": "5km",
+          "moeda": "BRL",
+          "nome": "Santander Night Run - Etapa 1 - Curitiba 2026 - 5km",
+          "valor": 99.99
+        },
+        {
+          "distancia": "10km",
+          "moeda": "BRL",
+          "nome": "Santander Night Run - Etapa 1 - Curitiba 2026 - 10km",
+          "valor": 99.99
+        }
+      ],
+      "organizador": "",
+      "tag_301": null,
+      "homologado": null,
+      "url_hotsite": "https://www.runningland.com.br/night-run-etapa-1-curitiba-2026",
+      "localizacoes": {
+        "enriquecimento": {
+          "fields": {},
+          "version": 1,
+          "checked_at": "2026-10-20T09:56:02-03:00",
+          "model": ""
+        }
+      },
+      "status_evento": null,
+      "descricao_original": "#html-body [data-pb-style=TWLN7DU]{justify-content:flex-start;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll} Mais do que uma corrida, a Santander Night Run é uma experiência. Quando a noite cai, a cidade se ilumina e vira palco para quem acredita que movimento também é celebração. Música, luz, suor, flow e liberdade — tudo se encontra na pista. Coloque seu tênis, vista sua melhor energia e venha correr com brilho nos olhos. A pista é sua.",
+      "latitude": null,
+      "realizacao": null,
+      "coordenadas": "",
+      "nome_simplificado": "SANTANDER NIGHT RUN ETAPA CURITIBA",
+      "descricao_traducoes_meta": null,
+      "longitude": null,
+      "id_agrega_evento": null,
+      "id_localidade": 3830,
+      "url_regulamento": "",
+      "data_final": "2026-10-31",
+      "nome_evento": "Santander Night Run - Etapa 1 - Curitiba 2026",
+      "valor_inscricao": 99.99,
+      "resumo": null,
+      "descricao": null,
+      "url_inscricao": "https://www.runningland.com.br/night-run-etapa-1-curitiba-2026",
+      "cobertura": null,
+      "destaque": null,
+      "cidade": "Curitiba",
+      "inscricao_disponibilidade": null,
+      "cronometragem": null,
+      "resultado_completo": true,
+      "obs": "importado em {ts '2026-02-11 11:24:28'}",
+      "url_imagem": "https://magento.runningland.com.br/media/catalog/product/cache/4ec0339e0e27010557b958cd357e7b98/b/a/bannerrl_night-run_e1_2_4.jpg",
+      "descricao_es": null,
+      "id_evento": 38982,
+      "url_resultado": "",
+      "data_inicial": "2026-10-31",
+      "conferencia_datas_publica": null,
+      "obs_resultado": null,
+      "id_fornecedor": null,
+      "tag": "2026-santander-night-run-etapa-1-curitiba-2026",
+      "id_tema": 1,
+      "cod_cidade": 4106902,
+      "nome_evento_full_text": "'1':5 '2026':7 'curitib':6 'etap':4 'night':2 'run':3 'santand':1",
+      "pais": "BR",
+      "info_duplicado": null
+    },
+    {
+      "data_processamento": null,
+      "url_imagem_listagem": "https://cdn.ticketsports.com.br/ticketagora/images/2IB6HOALA87A1HEFVBB5UQ4NB0S97DLLUKDOY9E0PO540T8CWG.png",
+      "obs_homologacao": null,
+      "data_inclusao": "2026-02-26T18:41:37.119522",
+      "row_hash": "1eea0ec7ceff187a8d039137004f97fb",
+      "ranking": null,
+      "estado": "DF",
+      "categorias": "kids",
+      "url_wiclax": null,
+      "tipo_corrida": "rua",
+      "ativo": true,
+      "endereco": "Brasília: Esplanada dos Ministérios, Brasília, DF, Brasil",
+      "descricao_en": null,
+      "imagem": null,
+      "precos": [
+        {
+          "distancia": "5km",
+          "taxa": 19.79,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO",
+          "nome": "KIT BÁSICO 5km",
+          "valor": 179.9
+        },
+        {
+          "distancia": "10km",
+          "taxa": 19.79,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO",
+          "nome": "KIT BÁSICO 10km",
+          "valor": 179.9
+        },
+        {
+          "distancia": "21km",
+          "taxa": 24.19,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO",
+          "nome": "KIT BÁSICO 21km",
+          "valor": 219.9
+        },
+        {
+          "distancia": "42km",
+          "taxa": 26.39,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO",
+          "nome": "KIT BÁSICO 42km",
+          "valor": 239.9
+        },
+        {
+          "distancia": "5km",
+          "taxa": 35.19,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO",
+          "nome": "Desafio 5km + 21km - Kit Básico",
+          "valor": 319.9
+        },
+        {
+          "distancia": "10km",
+          "taxa": 35.19,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO",
+          "nome": "Desafio 10km + 21km - Kit Básico",
+          "valor": 319.9
+        },
+        {
+          "distancia": "5km",
+          "taxa": 37.39,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO",
+          "nome": "Desafio 5km + 42km - Kit Básico",
+          "valor": 339.9
+        },
+        {
+          "distancia": "10km",
+          "taxa": 37.39,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO",
+          "nome": "Desafio 10km + 42km - Kit Básico",
+          "valor": 339.9
+        },
+        {
+          "distancia": "5km",
+          "taxa": 9.89,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "KIT BÁSICO 5km",
+          "valor": 89.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 9.89,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "KIT BÁSICO 10km",
+          "valor": 89.95
+        },
+        {
+          "distancia": "21km",
+          "taxa": 12.09,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "KIT BÁSICO 21km",
+          "valor": 109.95
+        },
+        {
+          "distancia": "42km",
+          "taxa": 13.19,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "KIT BÁSICO 42km",
+          "valor": 119.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 17.59,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "Desafio 5km + 21km - Kit Básico",
+          "valor": 159.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 17.59,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "Desafio 10km + 21km - Kit Básico",
+          "valor": 159.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 18.69,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "Desafio 5km + 42km - Kit Básico",
+          "valor": 169.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 18.69,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "Desafio 10km + 42km - Kit Básico",
+          "valor": 169.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 9.89,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO - IDOSO",
+          "nome": "KIT BÁSICO 5km",
+          "valor": 89.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 9.89,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO - IDOSO",
+          "nome": "KIT BÁSICO 10km",
+          "valor": 89.95
+        },
+        {
+          "distancia": "21km",
+          "taxa": 12.09,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO - IDOSO",
+          "nome": "KIT BÁSICO 21km",
+          "valor": 109.95
+        },
+        {
+          "distancia": "42km",
+          "taxa": 13.19,
+          "moeda": "BRL",
+          "grupo": "KIT BÁSICO - IDOSO",
+          "nome": "KIT BÁSICO 42km",
+          "valor": 119.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 17.59,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO - IDOSO",
+          "nome": "Desafio 5km + 21km - Kit Básico",
+          "valor": 159.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 17.59,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO - IDOSO",
+          "nome": "Desafio 10km + 21km - Kit Básico",
+          "valor": 159.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 18.69,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO - IDOSO",
+          "nome": "Desafio 5km + 42km - Kit Básico",
+          "valor": 169.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 18.69,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BÁSICO - IDOSO",
+          "nome": "Desafio 10km + 42km - Kit Básico",
+          "valor": 169.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 15.39,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO",
+          "nome": "KIT PARTICIPAÇÃO 5km",
+          "valor": 139.9
+        },
+        {
+          "distancia": "10km",
+          "taxa": 15.39,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO",
+          "nome": "KIT PARTICIPAÇÃO 10km",
+          "valor": 139.9
+        },
+        {
+          "distancia": "21km",
+          "taxa": 19.79,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO",
+          "nome": "KIT PARTICIPAÇÃO 21km",
+          "valor": 179.9
+        },
+        {
+          "distancia": "42km",
+          "taxa": 21.99,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO",
+          "nome": "KIT PARTICIPAÇÃO 42km",
+          "valor": 199.9
+        },
+        {
+          "distancia": "5km",
+          "taxa": 30.79,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO",
+          "nome": "Desafio 5km + 21km - Kit Participação",
+          "valor": 279.9
+        },
+        {
+          "distancia": "10km",
+          "taxa": 30.79,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO",
+          "nome": "Desafio 10km + 21km - Kit Participação",
+          "valor": 279.9
+        },
+        {
+          "distancia": "5km",
+          "taxa": 32.99,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO",
+          "nome": "Desafio 5km + 42km - Kit Participação",
+          "valor": 299.9
+        },
+        {
+          "distancia": "10km",
+          "taxa": 32.99,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO",
+          "nome": "Desafio 10km + 42km - Kit Participação",
+          "valor": 299.9
+        },
+        {
+          "distancia": "5km",
+          "taxa": 5,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "KIT PARTICIPAÇÃO 5km",
+          "valor": 69.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 5,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "KIT PARTICIPAÇÃO 10km",
+          "valor": 69.95
+        },
+        {
+          "distancia": "21km",
+          "taxa": 9.89,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "KIT PARTICIPAÇÃO 21km",
+          "valor": 89.95
+        },
+        {
+          "distancia": "42km",
+          "taxa": 10.99,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "KIT PARTICIPAÇÃO 42km",
+          "valor": 99.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 15.39,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "Desafio 5km + 21km - Kit Participação",
+          "valor": 139.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 15.39,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "Desafio 10km + 21km - Kit Participação",
+          "valor": 139.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 16.49,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "Desafio 5km + 42km - Kit Participação",
+          "valor": 149.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 16.49,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO - EXCLUSIVO PARA PCD (Persona con discapacidad)",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "Desafio 10km + 42km - Kit Participação",
+          "valor": 149.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 5,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO - IDOSO",
+          "nome": "KIT PARTICIPAÇÃO 5km",
+          "valor": 69.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 5,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO - IDOSO",
+          "nome": "KIT PARTICIPAÇÃO 10km",
+          "valor": 69.95
+        },
+        {
+          "distancia": "21km",
+          "taxa": 9.89,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO - IDOSO",
+          "nome": "KIT PARTICIPAÇÃO 21km",
+          "valor": 89.95
+        },
+        {
+          "distancia": "42km",
+          "taxa": 10.99,
+          "moeda": "BRL",
+          "grupo": "KIT PARTICIPAÇÃO - IDOSO",
+          "nome": "KIT PARTICIPAÇÃO 42km",
+          "valor": 99.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 15.39,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO - IDOSO",
+          "nome": "Desafio 5km + 21km - Kit Participação",
+          "valor": 139.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 15.39,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO - IDOSO",
+          "nome": "Desafio 10km + 21km - Kit Participação",
+          "valor": 139.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 16.49,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO - IDOSO",
+          "nome": "Desafio 5km + 42km - Kit Participação",
+          "valor": 149.95
+        },
+        {
+          "distancia": "10km",
+          "taxa": 16.49,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT PARTICIPAÇÃO - IDOSO",
+          "nome": "Desafio 10km + 42km - Kit Participação",
+          "valor": 149.95
+        },
+        {
+          "distancia": "5km",
+          "taxa": 76.49,
+          "moeda": "BRL",
+          "grupo": "KIT BLACK",
+          "nome": "KIT BLACK 5km",
+          "valor": 849.9
+        },
+        {
+          "distancia": "10km",
+          "taxa": 76.49,
+          "moeda": "BRL",
+          "grupo": "KIT BLACK",
+          "nome": "KIT BLACK 10km",
+          "valor": 849.9
+        },
+        {
+          "distancia": "21km",
+          "taxa": 76.49,
+          "moeda": "BRL",
+          "grupo": "KIT BLACK",
+          "nome": "KIT BLACK 21km",
+          "valor": 849.9
+        },
+        {
+          "distancia": "42km",
+          "taxa": 76.49,
+          "moeda": "BRL",
+          "grupo": "KIT BLACK",
+          "nome": "KIT BLACK 42km",
+          "valor": 849.9
+        },
+        {
+          "distancia": "5km",
+          "taxa": 89.99,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BLACK",
+          "nome": "DESAFIO KIT BLACK - 5km + 21km",
+          "valor": 999.9
+        },
+        {
+          "distancia": "10km",
+          "taxa": 89.99,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BLACK",
+          "nome": "DESAFIO KIT BLACK - 10km + 21km",
+          "valor": 999.9
+        },
+        {
+          "distancia": "5km",
+          "taxa": 89.99,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BLACK",
+          "nome": "DESAFIO KIT BLACK - 5km + 42km",
+          "valor": 999.9
+        },
+        {
+          "distancia": "10km",
+          "taxa": 89.99,
+          "moeda": "BRL",
+          "grupo": "DESAFIO MONUMENTAL - KIT BLACK",
+          "nome": "DESAFIO KIT BLACK - 10km + 42km",
+          "valor": 999.9
+        },
+        {
+          "taxa": 11.69,
+          "moeda": "BRL",
+          "grupo": "MONUMENTAL KIDS RUN",
+          "nome": "Crianças de 2 a 13 anos",
+          "valor": 129.9
+        },
+        {
+          "taxa": 5,
+          "moeda": "BRL",
+          "grupo": "MONUMENTAL KIDS RUN",
+          "restricao": "Solicite o cupom exclusivo PcD pelo email maratonamonumental@gmail.com",
+          "nome": "Crianças com Deficiência de 2 a 13 anos",
+          "valor": 64.95
+        }
+      ],
+      "organizador": "MMB Eventos Esportivos",
+      "tag_301": null,
+      "homologado": null,
+      "url_hotsite": "https://www.ticketsports.com.br/e/MARATONA+MONUMENTAL+DE+BRAS%C3%8DLIA+2026-74828",
+      "localizacoes": {},
+      "status_evento": null,
+      "descricao_original": "Maratona Monumental de Brasília 2026\nOrganização e Realização: Monumental Eventos Esportivos\nLocais de largada:\nMaratona, Meia Maratona, 5 km e 10 km: Esplanada dos Ministérios (Arena Monumental)\nInformações\nA Maratona Monumental Brasília tem o seu percurso passando pelos principais monumentos da capital federal, um aperitivo a mais para os desbravadores da desafiadora distância dos&nbsp; 42,195 km. Neste ano, maratonistas de todo o Brasil virão encarar o desafio de vencer o clima do planalto central e completar as suas respectivas distâncias, já que além da Maratona (42,195 km) teremos também as distâncias da Meia Maratona (21,097 km), 10 km e 5 km.\nInscrições\nAté 31/10/2026 ou até esgotarem as vagas\n- Os lotes serão limitados por quantidade de inscrições e será encerrado pela quantidade ou data limite.\n- Lotes extras podem ser abertos mediante necessidade.\n- Pessoas com 60 anos ou mais e Pessoas com deficiência têm o benefício de 50% de desconto, conforme previsto em lei e recebem o kit conforme escolhido no momento da inscrição.\nKit Básico\n- 1 Camiseta do Evento (100% poliamida);\n- 1 Número de Peito personalizado;\n- 1 Bolsa do Evento (material reciclável - PET)\n- 1 Medalha de Participação (Pós-prova);\n- Brindes promocionais dos parceiros;\n- Kit lanche (Pós-prova).\nKit Participação\n- Número de Peito personalizado;\n- 1 Bolsa do Evento (material reciclável - PET)\n- Medalha de Participação (Pós-prova);\n- Kit lanche (Pós-prova);\n- Brindes promocionais;\nKit Black\n- 1 Camiseta do Evento (100% Poliamida);\n- Acesso ao Espaço BLACK (sábado e domingo) na Arena Monumental;\n- Guichê exclusivo na retirada de kit ;\n- Buffet exclusivo* (sábado e domingo) ;\n- Pulseira Black\n- &nbsp;Casaco corta-vento do &nbsp;evento\n- Mochila Exclusiva do evento;\n- Medalha de Participação (Pós-prova);\n- Kit lanche (Pós-prova);\n- Brindes promocionais.\nITENS OPCIONAIS\n- Camiseta finish (42k e 21k): R$ 69,90;\n- Gravação da medalha: R$ 39,90.\nRETIRADA DO KIT ATLETA e EXPO MONUMENTAL\n-&nbsp;Local:\n&nbsp; &nbsp; - Pátio Brasil Shopping\n&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- Endereço: SCS Q. 7, Bloco A, Asa Sul, Brasília - DF\n- Datas da retirada público local:\nDia 19 e 20/11 – das 9h às 19h – Assessorias, PcD, Elite e Público Geral (Básico, Participação e Black) Dia 21/11 - das 9h às 14h – Assessorias, PcD, Elite e Público Geral (Básico, Participação e Black)\n- Datas da retirada para o inscrito em TRÂNSITO (outros Estados e países):\n&nbsp; &nbsp; - Os atletas/assessorias que estiverem em trânsito no dia 21/11/2026, e precisarem ESTENDER o horário até às 19h, deverão PREENCHER O FORMULÁRIO PARA ESTENDER O HORÁRIO DE ENTREGA DE KIT até às 23h59h do dia 17.11.2026 no seguinte link https://forms.gle/n7ezJythuZ2b7fuCA.\nNão será entregue kit atleta, após as datas e horários estabelecidos, perdendo seu direito ao mesmo.\nNão será entregue kit atleta no dia 22.11.2025. Favor não insistir.\nNa retirada do Kit Atleta, a organização, observando todos os protocolos sanitários, poderá restringir a entrada de pessoas não inscritas na prova, como também limitar temporariamente a entrada de atletas para um efetivo controle da quantidade de pessoas simultaneamente dentro do espaço.\nPara a retirada para terceiros, o atleta deverá apresentar uma cópia do documento com foto e do comprovante de pagamento e/ou inscrição + a autorização para retirada de kit por terceiros preenchida e assinada, disponível no seguinte link\nwww.maratonamonumentalbsb.com.br/documentos\nAs inscrições de idosos e dos PcD serão verificadas individualmente conferindo o DOCUMENTO DE IDENTIFICAÇÃO COM FOTO E O ATLETA PRESENTE.\nNo ato da retirada do Kit Atleta, o participante deverá conferir seus dados que estarão na etiqueta do envelope que contém o chip, e caso encontre erro, fazer obrigatoriamente a correção com a organização.\nA organização não se responsabiliza por erros no preenchimento dos dados cadastrais e eventuais erros de preenchimento.\n- Não haverá entrega de kit de participação no dia do evento e nem após o seu término.\nLargadas\nLocal da largada:\nArena Monumental - Esplanada dos Ministérios (Maratona, Meia Maratona, 5 km e 10 km)\nDia 21 de novembro de 2026\n▪ Atletas inscritos 5 km e 10 km\n▪ PCD - 17h00\n▪ Elite - 17h03\n▪ Pelotão Vip/Black - 17h03\n▪ Geral - 17h03\nDia 22 de novembro de 2026\n◦ Atletas inscritos na maratona\n▪ PCD - 5h00\n▪ Elite - 5h03\n▪ Pelotão Vip/Black - 5h03\n▪ Pelotão Verde A - 5h03\n▪ Pelotão Amarelo B - 5h05\n▪ Pelotão Azul C - 5h08\n▪ Pelotão Branco D - 5h10\n▪ Pelotão Vermelho E - 5h13\n▪ Pelotão Preto&nbsp; F - 5h15\n▪ Pelotão Roxo G - 5h18\n◦ Atletas inscritos na meia maratona\n▪&nbsp;PCD - 6h00\n▪&nbsp;Elite - 6h03\n▪ Pelotão Vip/Black - 6h03\n▪ Pelotão Verde A - 6h03\n▪ Pelotão Amarelo B - 6h05\n▪ Pelotão Azul C - 6h18\n▪ Pelotão Branco D - 6h10\n▪ Pelotão Vermelho E - 6h13\n▪ Pelotão Preto F - 6h15\n▪ Pelotão Roxo G - 6h18\nPremiação&nbsp;\nGeral e Faixas Etárias\nMaratona\nGeral: 5 primeiros colocados Masculinos e Femininos\nFaixas etárias: 3 primeiros colocados Masculinos e Femininos\nMeia Maratona\nGeral: 5 primeiros colocados Masculinos e Femininos\nFaixas etárias: 3 primeiros colocados Masculinos e Femininos\nCorridas de 5 e 10 km\nGeral: 5 primeiros colocados Masculinos e Femininos\nFaixas etárias: 3 primeiros colocados Masculinos e Femininos\nObs.: Os atletas que forem premiados na categoria geral não receberão premiação na faixa etária.\nDúvidas e atendimento ao atleta\nE-mail: maratonamonumental@gmail.com\n\nClique AQUI para acessar o regulamento.\n\nDisponível para atualizações via menu de Serviços Automatizados\nPara esse evento você pode fazer as seguintes alterações:\n- Troca de camiseta\n- Troca de titularidade\n- Upgrade de kit\n- Troca de distância\nAlterações no Pedido\nAlterações possíveis até 10/10/2026 dias antes do evento, faça aqui selecionando a opção \"Serviços Automatizados\"\nReembolso do Pedido\nReembolso somente dentro dos 7 dias, solicite aqui !\nStatus do Pedido/Comprovante de Inscrição\nPara visualizar seu protocolo siga o procedimento clicando\naqui .\nDúvidas Técnicas do evento\nDúvidas relacionadas ao percurso, entrega de kits, retirada de kits por terceiros.\nEntrar em contato com a organização através do botão \"Fale com o organizador\" abaixo do botão inscreva-se.\nRetirada de kits\nLocal:\n&nbsp;- Pátio Brasil Shopping\n&nbsp; &nbsp; &nbsp; - Endereço: SCS Q. 7, Bloco A, Asa Sul, Brasília - DF\nDatas da retirada público local:\n- Dia 19 e 20/11 – das 9h às 19h – Assessorias, PcD, Elite e Público Geral (Básico, Participação e Black) o Dia 21/11 - das 9h às 14h – Assessorias, PcD, Elite e Público Geral (Básico, Participação e Black)\nDemais Dúvidas ou outras solicitações\nAcesse nossa central de ajuda clicando aqui.\nVEJA COMO FUNCIONA O MENU DE SERVIÇOS AUTOMATIZADOS:",
+      "latitude": null,
+      "realizacao": null,
+      "coordenadas": "",
+      "nome_simplificado": "MARATONA MONUMENTAL DE BRASILIA",
+      "descricao_traducoes_meta": {
+        "es": {
+          "description_hash": "5ede829fb4abac90fdb8c4d84d3b0d8d",
+          "source_hash": "5118a8736284489d238a1fab5ccf6833"
+        }
+      },
+      "longitude": null,
+      "id_agrega_evento": 10,
+      "id_localidade": 5486,
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/74828/4e91b6e5359b4b4389243a2939d996ff639199082801291559.pdf",
+      "data_final": "2026-11-22",
+      "nome_evento": "MARATONA MONUMENTAL DE BRASÍLIA 2026",
+      "valor_inscricao": 64.95,
+      "resumo": null,
+      "descricao": "A Maratona Monumental de Brasília 2026, organizada pela Monumental Eventos Esportivos, acontecerá na Esplanada dos Ministérios, também conhecida como Arena Monumental. O percurso da maratona passará pelos monumentos icônicos da capital. O evento inclui as distâncias de 42,2 km, 21,1 km, 10 km e 5 km, atraindo corredores de todo o Brasil. As inscrições estão abertas até o final de outubro de 2026 ou enquanto houver vagas. Idosos e pessoas com deficiência têm desconto de 50% no registro. Os kits variam de básico a black, oferecendo camisetas, números personalizados e medalhas, entre outros itens. Retirada dos kits ocorre de 19 a 21 de novembro em horários específicos, com possibilidade de estender o horário até às 17h para inscritos de fora do Distrito Federal. A retirada não será realizada no dia 22 de novembro de 2025. A maratona terá início em 21 de novembro de 2026, com largadas às 18h para corridas de 5 km e 10 km, e em 22 de novembro para a maratona e meia maratona a partir das 5h. A premiação será para os cinco primeiros colocados gerais, masculinos e femininos de cada distância, e para os três primeiros em faixas etárias.",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=74828&origem=novo-site&lang=en-US",
+      "cobertura": null,
+      "destaque": null,
+      "cidade": "Brasília",
+      "inscricao_disponibilidade": null,
+      "cronometragem": null,
+      "resultado_completo": true,
+      "obs": "importado em {ts '2026-02-26 18:37:18'}",
+      "url_imagem": "https://cdn.ticketsports.com.br/ticketagora/images/2IB6HOALA87A1HEFVBB5UQ4NB0S97DLLUKDOY9E0PO540T8CWG.png",
+      "descricao_es": "La Marat&oacute;n Monumental de Bras&iacute;lia 2026, organizada por Monumental Eventos Esportivos, se llevar&aacute; a cabo en la Esplanada de los Ministerios, tambi&eacute;n conocida como Arena Monumental. El recorrido de la marat&oacute;n pasar&aacute; por los monumentos ic&oacute;nicos de la capital. El evento incluye las distancias de 42,2 km, 21,1 km, 10 km y 5 km, atrayendo corredores de todo Brasil. Las inscripciones est&aacute;n abiertas hasta finales de octubre de 2026 o mientras haya cupos disponibles. Los adultos mayores y personas con discapacidad tienen un descuento del 50&#x25; en el registro. Los kits var&iacute;an desde b&aacute;sico hasta black, ofreciendo camisetas, n&uacute;meros personalizados y medallas, entre otros art&iacute;culos. La entrega de los kits se realiza del 19 al 21 de noviembre en horarios espec&iacute;ficos, con posibilidad de extender el horario hasta las 17h para inscritos fuera del Distrito Federal. La entrega no se realizar&aacute; el d&iacute;a 22 de noviembre de 2025. La marat&oacute;n comenzar&aacute; el 21 de noviembre de 2026, con salidas a las 18h para las carreras de 5 km y 10 km, y el 22 de noviembre para la marat&oacute;n y media marat&oacute;n a partir de las 5h. La premiaci&oacute;n ser&aacute; para los cinco primeros lugares generales, masculinos y femeninos de cada distancia, y para los tres primeros en categor&iacute;as por edades.",
+      "id_evento": 39395,
+      "url_resultado": "",
+      "data_inicial": "2026-11-21",
+      "conferencia_datas_publica": null,
+      "obs_resultado": null,
+      "id_fornecedor": null,
+      "tag": "2026-maratona-monumental-de-brasilia-2026",
+      "id_tema": 1,
+      "cod_cidade": null,
+      "nome_evento_full_text": "'2026':5 'brasíl':4 'maraton':1 'monumental':2",
+      "pais": "BR",
+      "info_duplicado": null
+    },
+    {
+      "data_processamento": null,
+      "url_imagem_listagem": "https://cdn.ticketsports.com.br/ticketagora/images/thumb/6S2F2C8CROG9Y1TOCL69OHC838MSR2WOH5WHNP28FMFAZ5ZN3W.png",
+      "obs_homologacao": null,
+      "data_inclusao": "2026-06-16T09:12:06.515568",
+      "row_hash": "f92254de1125248fa8a4cf383a633c98",
+      "ranking": null,
+      "estado": "PR",
+      "categorias": "21km, 10km, 5km",
+      "url_wiclax": null,
+      "tipo_corrida": "rua",
+      "ativo": true,
+      "endereco": "Praça Nossa Senhora da Salete",
+      "descricao_en": null,
+      "imagem": null,
+      "precos": [
+        {
+          "taxa": 23.9,
+          "moeda": "BRL",
+          "grupo": "KIT SMART",
+          "nome": "MARATONA",
+          "valor": 239
+        },
+        {
+          "distancia": "21km",
+          "taxa": 21.9,
+          "moeda": "BRL",
+          "grupo": "KIT SMART",
+          "nome": "21k",
+          "valor": 219
+        },
+        {
+          "distancia": "10km",
+          "taxa": 19.9,
+          "moeda": "BRL",
+          "grupo": "KIT SMART",
+          "nome": "10 KM",
+          "valor": 199
+        },
+        {
+          "distancia": "5km",
+          "taxa": 18.9,
+          "moeda": "BRL",
+          "grupo": "KIT SMART",
+          "nome": "5 KM",
+          "valor": 189
+        },
+        {
+          "taxa": 11.95,
+          "moeda": "BRL",
+          "grupo": "KIT SMART",
+          "restricao": "Solicite código de acesso através do contato@globalvita.com.br conforme regras do regulamento",
+          "nome": "MARATONA - ACD (SOLICITE CÓDIGO DE ACESSO)",
+          "valor": 119.5
+        },
+        {
+          "distancia": "21km",
+          "taxa": 10.95,
+          "moeda": "BRL",
+          "grupo": "KIT SMART",
+          "restricao": "Solicite código de acesso através do contato@globalvita.com.br conforme regras do regulamento",
+          "nome": "21k - ACD (SOLICITE CÓDIGO DE ACESSO)",
+          "valor": 109.5
+        },
+        {
+          "distancia": "10km",
+          "taxa": 9.95,
+          "moeda": "BRL",
+          "grupo": "KIT SMART",
+          "restricao": "Solicite código de acesso através do contato@globalvita.com.br conforme regras do regulamento",
+          "nome": "10 KM - ACD (SOLICITE CÓDIGO DE ACESSO)",
+          "valor": 99.5
+        },
+        {
+          "distancia": "5km",
+          "taxa": 9.45,
+          "moeda": "BRL",
+          "grupo": "KIT SMART",
+          "restricao": "Solicite código de acesso através do contato@globalvita.com.br conforme regras do regulamento",
+          "nome": "5 KM - ACD (SOLICITE CÓDIGO DE ACESSO)",
+          "valor": 94.5
+        },
+        {
+          "taxa": 27.9,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "nome": "MARATONA",
+          "valor": 279
+        },
+        {
+          "distancia": "21km",
+          "taxa": 25.9,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "nome": "21K",
+          "valor": 259
+        },
+        {
+          "distancia": "10km",
+          "taxa": 23.9,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "nome": "10 KM",
+          "valor": 239
+        },
+        {
+          "distancia": "5km",
+          "taxa": 22.9,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "nome": "5 KM",
+          "valor": 229
+        },
+        {
+          "taxa": 15.95,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "nome": "MARATONA - Atleta 60+",
+          "valor": 159.5
+        },
+        {
+          "distancia": "21km",
+          "taxa": 14.95,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "nome": "21k - Atleta 60+",
+          "valor": 149.5
+        },
+        {
+          "distancia": "10km",
+          "taxa": 13.95,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "nome": "10 KM - Atleta 60+",
+          "valor": 139.5
+        },
+        {
+          "distancia": "5km",
+          "taxa": 13.45,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "nome": "5 KM - Atleta 60+",
+          "valor": 134.5
+        },
+        {
+          "taxa": 15.95,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "restricao": "Solicite código de acesso através do contato@globalvita.com.br conforme regras do regulamento",
+          "nome": "MARATONA - ACD (SOLICITE CÓDIGO DE ACESSO)",
+          "valor": 159.5
+        },
+        {
+          "distancia": "21km",
+          "taxa": 14.95,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "restricao": "Solicite código de acesso através do contato@globalvita.com.br conforme regras do regulamento",
+          "nome": "21k - ACD (SOLICITE CÓDIGO DE ACESSO)",
+          "valor": 149.5
+        },
+        {
+          "distancia": "10km",
+          "taxa": 13.95,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "restricao": "Solicite código de acesso através do contato@globalvita.com.br conforme regras do regulamento",
+          "nome": "10 KM - ACD (SOLICITE CÓDIGO DE ACESSO)",
+          "valor": 139.5
+        },
+        {
+          "distancia": "5km",
+          "taxa": 13.45,
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD",
+          "restricao": "Solicite código de acesso através do contato@globalvita.com.br conforme regras do regulamento",
+          "nome": "5 KM - ACD (SOLICITE CÓDIGO DE ACESSO)",
+          "valor": 134.5
+        },
+        {
+          "moeda": "BRL",
+          "grupo": "KIT SMART - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "MARATONA",
+          "valor": 239
+        },
+        {
+          "distancia": "21km",
+          "moeda": "BRL",
+          "grupo": "KIT SMART - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "21k",
+          "valor": 219
+        },
+        {
+          "distancia": "10km",
+          "moeda": "BRL",
+          "grupo": "KIT SMART - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "10 KM",
+          "valor": 199
+        },
+        {
+          "distancia": "5km",
+          "moeda": "BRL",
+          "grupo": "KIT SMART - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "5 KM",
+          "valor": 189
+        },
+        {
+          "moeda": "BRL",
+          "grupo": "KIT SMART - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "MARATONA - Atleta 60+",
+          "valor": 239
+        },
+        {
+          "distancia": "21km",
+          "moeda": "BRL",
+          "grupo": "KIT SMART - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "21k - Atleta 60+",
+          "valor": 219
+        },
+        {
+          "distancia": "10km",
+          "moeda": "BRL",
+          "grupo": "KIT SMART - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "10 KM - Atleta 60+",
+          "valor": 199
+        },
+        {
+          "distancia": "5km",
+          "moeda": "BRL",
+          "grupo": "KIT SMART - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "5 KM - Atleta 60+",
+          "valor": 189
+        },
+        {
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "MARATONA",
+          "valor": 279
+        },
+        {
+          "distancia": "21km",
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "21k",
+          "valor": 259
+        },
+        {
+          "distancia": "10km",
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "10 KM",
+          "valor": 239
+        },
+        {
+          "distancia": "5km",
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "5 KM",
+          "valor": 229
+        },
+        {
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "MARATONA - Atleta 60+",
+          "valor": 159.5
+        },
+        {
+          "distancia": "21km",
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "21k - Atleta 60+",
+          "valor": 149.5
+        },
+        {
+          "distancia": "10km",
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "10 KM - Atleta 60+",
+          "valor": 139.5
+        },
+        {
+          "distancia": "5km",
+          "moeda": "BRL",
+          "grupo": "KIT STANDARD - Assessorias e Grupos",
+          "restricao": "Insira seu cupom exclusivo para inscrição Assessorias e Grupos",
+          "nome": "5 KM - Atleta 60+",
+          "valor": 134.5
+        }
+      ],
+      "organizador": "AMAZING RUNS",
+      "tag_301": null,
+      "homologado": null,
+      "url_hotsite": "https://www.ticketsports.com.br/e/maratona-de-curitiba-santander-2026-86884",
+      "localizacoes": {},
+      "status_evento": null,
+      "descricao_original": "Santander Maratona de Curitiba 2026\nMuito antes da largada. Muito além da chegada.\nUma maratona não acontece apenas no dia da prova. É uma jornada que começa muito antes da largada.\nNo despertador que toca antes do amanhecer. No treino que ninguém viu. Na disciplina que venceu a preguiça. Nas escolhas que aproximam você da sua melhor versão.\nNo dia 15 de novembro, acontece a Santander Maratona de Curitiba 2026 – uma grande celebração ao esporte e à capital paranaense –, e você não pode deixar de viver esta emoção que vai lhe acompanhar muito além da chegada.\n2025 foi histórico. 2026 será épico. Escolha sua distância e venha descobrir porque a Maratona de Curitiba está entre as melhores maratonas do Brasil.\nREALIZAÇÃO E ORGANIZAÇÃO: ASSOCIAÇÃO AMAZING RUNS E GLOBAL VITA SPORTS\nDATA: 15/11/2026\nLOCAL DE LARGADA: Praça Nossa Senhora de Salete\nDISTÂNCIAS: 42Km (42.195km), 21Km (21,097km), 10km e 5km.\nHORA DA LARGADA: Em breve\nOs ATLETAS farão a LARGADA em ondas:\n1ª Largada: ACD -&nbsp;42km | 21k\n2ª Largada -&nbsp;&nbsp;Elite Feminina | Masculina 42k e 21k + Público Geral 42 e 21k\n3ª Largada - 10km e 5km\nVAGAS LIMITADAS&nbsp;\nPré-venda exclusiva para grupo VIP\nEntre os dias 16/06 e 16/06, os atletas do grupo VIP poderão garantir, com exclusividade, a sua vaga para Maratona de Curitiba.\nAlém disso, a partir do dia 17/06, clientes Santander irão contar com 10% de desconto sobre o valor do lote vigente. Benefícios válidos exclusivamente para compras com cartão de crédito.\nAbertura para público geral 17/06/2025 às 14h00\n*Sobre esses valores incide taxa de conveniência&nbsp;\nKIT STANDARD - Camiseta da distância escolhida + meia exclusiva + nº de peito + acesso a Expo Maratona 2026\nKIT SMART - Nº de peito + acesso a Expo Maratona 2026\nTABELA DE MEDIDAS\nMedalha de conclusão\nTodos os atletas inscritos na corrida que terminarem a prova dentro do prazo descrito no regulamento receberão medalha de conclusão.\nEXPO MARATONA DE CURITIBA\nLocal - Museu Oscar Niemeyer. (Rua Marechal Hermes, 999 Centro Cívico, Curitiba – PR).\nDatas e Horários\nQuinta-feira (12/11) 09h00 as 20h00\nSexta-feira (13/11) 09h00 as 20h00\nSábado (14/11) 09h00 as 16h00\n- É obrigatória a apresentação do termo de responsabilidade preenchido e assinado\n- É obrigatória a conferência de todos os itens que compõe o kit, bem como o tamanho da camiseta, no momento da retirada.\n- Em caso de item faltante, deverá ser informado de imediato para a organização presente. O item faltante será entregue de imediato.\n- Não serão aceitas reclamações ou alegações de itens faltantes após o momento da retirada do kit\n-&nbsp; Não serão entregues kits no dia do evento\n&nbsp;\nA organização irá disponibilizar camisetas nos tamanhos Unissex P, M, G, GG e Baby Look P e M e G. Garanta o seu tamanho fazendo sua inscrição com antecedência.\nNão será permitida a troca de tamanho de camisetas no momento da Retirada de Kit, nem em nenhum momento futuro.\nPara participar do pelotão de elite, o atleta deverá apresentar seus melhores tempos oficiais em provas de Maratona ou Meia Maratona, obtidos entre 2022 e 2025, conforme os tempos referenciais estabelecidos no item 6.1.4. Serão aceitas apenas provas oficiais reconhecidas pela World Athletics (WA), CBAt ou Federações Estaduais.\nOs interessados devem enviar os documetos solicitados no item 6.1.5 do regulamento oficial até 15/09/2026 para o e-mail: contato@globalvita.com.br\nPara inscrições via grupos e assessorias (mínimo 10 atletas) entrar em contato pelo WhatsApp 41.99989-0073\nEm breve\nCLIQUE AQUI para acessar o Regulamento_Maratona_V2.pdf\nCLIQUE AQUI para acessar a AutorizaçãoRetiradaTerceiros_2026.pdf\nCLIQUE AQUI para acessar o TermoResponsabilidade_2026.pdf\ncontato@globalvita.com.br\nWhatsApp +55 41 98712-6892\nAtenção atletas que estão na busca de mais comodidade em sua passagem por Curitiba! A rede HCC Hotels Brasil é parceira oficial da Santander Maratona de Curitiba 2026.\nCom 5 opções de hotéis em todas as categorias, para atender diferentes estilos de viagem e preferências, você pode desfrutar de toda essa comodidade com 25% de desconto pelo link abaixo:\nhttps://www.hcchotels.com.br/maratona-curitiba &nbsp;\nEscolha entre o Qoya, Radisson, Quality, Go Inn ou Suryaa e torne sua experiência inesquecível aproveitando o conforto e qualidade que eles possuem.",
+      "latitude": null,
+      "realizacao": null,
+      "coordenadas": "",
+      "nome_simplificado": "MARATONA DE CURITIBA SANTANDER",
+      "descricao_traducoes_meta": null,
+      "longitude": null,
+      "id_agrega_evento": null,
+      "id_localidade": 3830,
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/86884/7f977c97d0ac4cd982ecd9922e141c0f639171340990707350.pdf",
+      "data_final": "2026-11-15",
+      "nome_evento": "MARATONA DE CURITIBA SANTANDER 2026",
+      "valor_inscricao": 84.5,
+      "resumo": null,
+      "descricao": null,
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86884&origem=novo-site&lang=pt-BR",
+      "cobertura": null,
+      "destaque": null,
+      "cidade": "Curitiba",
+      "inscricao_disponibilidade": null,
+      "cronometragem": null,
+      "resultado_completo": true,
+      "obs": "importado em {ts '2026-06-16 09:04:30'}",
+      "url_imagem": "https://cdn.ticketsports.com.br/ticketagora/images/6V8WJY7M1GF998GDF9DBLQMR2PA4T5NO46MQF1N6PBXJB5QCYL.png",
+      "descricao_es": null,
+      "id_evento": 43657,
+      "url_resultado": "",
+      "data_inicial": "2026-11-15",
+      "conferencia_datas_publica": null,
+      "obs_resultado": null,
+      "id_fornecedor": null,
+      "tag": "2026-maratona-de-curitiba-santander-2026",
+      "id_tema": 1,
+      "cod_cidade": 4106902,
+      "nome_evento_full_text": "'2026':5 'curitib':3 'maraton':1 'santand':4",
+      "pais": "BR",
+      "info_duplicado": null
+    },
+    {
+      "data_processamento": null,
+      "url_imagem_listagem": "https://cdn.ticketsports.com.br/ticketagora/images/V1JTG1ZENZFRM0GQZ3NX1WHAD2F47P96UE6UPZUETXOK3RHNE0.png",
+      "obs_homologacao": null,
+      "data_inclusao": "2026-08-31T20:59:16.443387",
+      "row_hash": "ca0a312b6f5c800375a2da6b4b3a3f79",
+      "ranking": null,
+      "estado": "SC",
+      "categorias": "42km, 21km, 5km",
+      "url_wiclax": "",
+      "tipo_corrida": "rua",
+      "ativo": true,
+      "endereco": "Praça do Sesquicentenário da Policia Militar",
+      "descricao_en": "The MARATONA INTERNACIONAL DE FLORIPA FIBRA 2027 is perfect for achieving the best personal records. In 2018 it was considered the fastest marathon in Brazil by the magazine Contra Rel&oacute;gio. It is one of the largest road running races in Brazil. In 2026 it had 19 thousand registered participants. With an incredible view of the Beira-Mar Norte and Via Expressa Sul avenues, it is already a highlight in the national running calendar. Due to its course characteristics, it is widely used as a qualifier for the Boston Marathon. The Marathon and Half Marathon courses have the CBAt Gold seal, and the Marathon will also have the World Athletics Label.",
+      "imagem": null,
+      "precos": [
+        {
+          "distancia": "42km",
+          "taxa": 16,
+          "moeda": "BRL",
+          "grupo": "LOTES - INSCRIÇÃO GERAL",
+          "nome": "MARATONA 42Km (29.08.27, domingo)",
+          "valor": 200
+        },
+        {
+          "distancia": "21km",
+          "taxa": 15.2,
+          "moeda": "BRL",
+          "grupo": "LOTES - INSCRIÇÃO GERAL",
+          "nome": "MEIA MARATONA 21Km (28.08.27, sábado)",
+          "valor": 190
+        },
+        {
+          "distancia": "5km",
+          "taxa": 9.6,
+          "moeda": "BRL",
+          "grupo": "LOTES - INSCRIÇÃO GERAL",
+          "nome": "CORRIDA 5Km (29.08.27, domingo)",
+          "valor": 120
+        },
+        {
+          "distancia": "21km",
+          "taxa": 31.2,
+          "moeda": "BRL",
+          "grupo": "LOTES - INSCRIÇÃO GERAL",
+          "nome": "DESAFIO FLORIPA (21K, 28.08.27, sábado + 42K, 29.08.27, domingo)",
+          "valor": 390
+        },
+        {
+          "distancia": "21km",
+          "taxa": 24.8,
+          "moeda": "BRL",
+          "grupo": "LOTES - INSCRIÇÃO GERAL",
+          "nome": "DESAFIO 21K + 5K (21Km 28.08.27, sábado + 42Km 29.08.27)",
+          "valor": 310
+        }
+      ],
+      "organizador": "Grupo STC Eventos",
+      "tag_301": null,
+      "homologado": null,
+      "url_hotsite": "https://www.ticketsports.com.br/e/MARATONA+INTERNACIONAL+DE+FLORIPA+FIBRA+2027-88278",
+      "localizacoes": {},
+      "status_evento": null,
+      "descricao_original": "A MARATONA INTERNACIONAL DE FLORIPA FIBRA 2027 é perfeita para obter as melhores marcas pessoais. Em 2018 foi considerada a maratona mais rápida do Brasil, pela revista Contra Relógio. É uma das maiores provas de corrida de rua do Brasil. Em 2026 contou com a 19 mil inscritos. Com visual incrível das avenidas Beira-Mar Norte e Via Expressa Sul, já é destaque no calendário nacional de corridas. Por suas características de percurso é muito utilizada como classificatória para a Boston Marathon. Percursos da Maratona e Meia Maratona são selo Ouro da CBAt e a Maratona também terá Label da World Athletics.\nLOTE 1: (30/08/2026 – 15/09/2026)\n- MARATONA (42 Km): R$ 200,00 (Duzentos reais)\n- MEIA MARATONA (21 km): R$ 190,00 (Cento e noventa reais)\n- CORRIDA (5 Km): R$ 120,00 (Cento e vinte reais)\n- DESAFIO FLORIPA (21 Km + 42 Km): R$ 390,00 (Trezentos e noventa reais)\n- DESAFIO 21+5 (21 Km + 5 Km): R$ 310,00 (Trezentos e dez reais)\nLOTE 2: (16/09/2026 – 10/11/2026)\n- MARATONA (42 Km): R$ 225,00 (Duzentos e vinte cinco reais)\n- MEIA MARATONA (21 km): R$ 215,00 (Duzentos e quinze reais)\n- CORRIDA (5 Km): R$ 130,00 (Cento e trinta reais)\n- DESAFIO FLORIPA (21 Km + 42 Km): R$ 440,00 (Quatrocentos e quarenta reais)\n- DESAFIO 21+5 (21 Km + 5 Km): R$ 345,00 (Trezentos e quarenta e cinco reais)\nLOTE 3: (11/11/2026 – 12/01/2027)\n- MARATONA (42 Km): R$ 245,00 (Duzentos e quarenta e cinco reais)\n- MEIA MARATONA (21 km): R$ 235,00 (Duzentos e trinta e cinco reais)\n- CORRIDA (5 Km): R$ 140,00 (Cento e quarenta reais)\n- DESAFIO FLORIPA (21 Km + 42 Km): R$ 480,00 (Quatrocentos e oitenta reais)\n- DESAFIO 21+5 (21 Km + 5 Km): R$ 375,00 (Trezentos e setenta e cinco reais)\nLOTE 4: (13/01/2027 – 09/03/2027)\n- MARATONA (42 Km): R$ 265,00 (Duzentos e sessenta e cinco reais)\n- MEIA MARATONA (21 km): R$ 245,00 (Duzentos e quarenta e cinco reais)\n- CORRIDA (5 Km): R$ 150,00 (Cento e cinquenta reais)\n- DESAFIO FLORIPA (21 Km + 42 Km): R$ 510,00 (Quinhentos e dez reais)\n- DESAFIO 21+5 (21 Km + 5 Km): R$ 395,00 (Trezentos e noventa e cinco reais)\nLOTE 5: (10/03/2027 – 11/05/2027)\n- MARATONA (42 Km): R$ 285,00 (Duzentos e oitenta e cinco reais)\n- MEIA MARATONA (21 km): R$ 265,00 (Duzentos e sessenta e cinco reais)\n- CORRIDA (5 Km): R$ 160,00 (Cento e sessenta reais)\n- DESAFIO FLORIPA (21 Km + 42 Km): R$ 550,00 (Quinhentos e cinquenta reais)\n- DESAFIO 21+5 (21 Km + 5 Km): R$ 425,00 (Quatrocentos e vinte e cinco reais)\nLOTE 6 (12/05/2027 – 13/07/2027)\n- MARATONA (42 Km): R$ 305,00 (Trezentos e cinco reais)\n- MEIA MARATONA (21 km): R$ 285,00 (Duzentos e oitenta e cinco reais)\n- CORRIDA (5 Km): R$ 170,00 (Cento e setenta reais)\n- DESAFIO FLORIPA (21 Km + 42 Km): R$ 590,00 (Quinhentos e noventa reais)\n- DESAFIO 21+5 (21 Km + 5 Km): R$ 455,00 (Quatrocentos e cinquenta e cinco reais)\nLOTE 7 (14/07/2027 – 18/08/2027)\n- MARATONA (42 Km): R$ 315,00 (Trezentos e quinze reais)\n- MEIA MARATONA (21 km): R$ 295,00 (Duzentos e noventa e cinco reais)\n- CORRIDA (5 Km): R$ 190,00 (Cento e noventa reais)\n- DESAFIO FLORIPA (21 Km + 42 Km): R$ 610,00 (Quinhentos e noventa reais)\n- DESAFIO 21+5 (21 Km + 5 Km): R$ 485,00 (Quatrocentos e oitenta e cinco reais)\na) Idosos têm o benefício de metade do valor conforme previsto em lei.\nb) PCD (Pessoas com deficiência) têm o benefício de metade do valor conforme previsto em lei desde que siga os procedimentos previstos no Regulamento Geral deste evento.\nc) Os LOTES também serão limitados por quantidades de inscrições e será encerrado considerando esta quantidade OU a data limite conforme este Regulamento Geral.\nd) Inscrições online terão acréscimo de taxa.\ne) Lotes extras poderão acontecer mediante necessidade.\nDIA 30/07/2027, SEXTA-FEIRA\n– Data limite para inscrições de assessorias e grupos ou se atingir limite técnico conforme ITEM 3.1. do Regulamento Geral\n– Data limite para solicitação de troca de modalidade e/ou camiseta conforme ITEM 3.8. do Regulamento Geral ou se atingir limite técnico conforme ITEM 3.1. do Regulamento Geral\nDIA 30/07/2027, SEXTA-FEIRA\n– Data limite para solicitação de ingresso no Pelotão de Elite da MARATONA e da MEIA MARATONA conforme os ITEM 3.2. do Regulamento Geral ou se atingir limite técnico conforme ITEM 3.1. do Regulamento Geral\n– Data limite para solicitação de inscrição para atletas PCDs&nbsp;conforme o ITEM 3.3. do Regulamento Geral&nbsp;ou se atingir limite técnico conforme ITEM 3.1. do Regulamento Geral\nDIA 26/08/2027, QUINTA-FEIRA\n10h00 – 21h00 – Entrega de Kits (42K, 21K, 5K, DESAFIO e KIDS)&nbsp;| O local da Entrega de kits será no PISO G2 do Villa Romana Shopping, na Av. Madre Benvenutta, s.n, Santa Mônica Florianópolis/SC.\nDIA 27/08/2027, SEXTA-FEIRA\n10h00 – 21h00 – Entrega de Kits ( 21K,&nbsp; DESAFIO e KIDS)&nbsp;| O local da Entrega de kits será no PISO G2 do Villa Romana Shopping, na Av. Madre Benvenutta, s.n, Santa Mônica&nbsp;Florianópolis/SC.\n16h00 – Congresso técnico Elite Meia Maratona 21K |&nbsp;Mezanino do Restaurante Coco Bambu no PISO L1 do Villa Romana Shopping.\n18h30 – 21h30 – Jantar (com compra antecipada)* | Restaurante Coco Bambu no PISO L1 do Villa Romana Shopping.\nDIA 28/08/2027, SÁBADO\n05h10 – Largada da MEIA MARATONA – Pelotões de Elite e Geral\n07h30 – Início da Cerimônia de Premiação MEIA MARATONA (Geral) | Praça Sesquicentenário, conhecida\nem Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n07h40 – Horário limite para contestação de resultado | Praça Sesquicentenário, conhecida\nem Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n08h00 – Início da Cerimônia de Premiação MEIA MARATONA (Faixa Etária) | Praça Sesquicentenário, conhecida em Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n08h30 – Horário limite para a conclusão da MEIA MARATONA | Praça Sesquicentenário, conhecida&nbsp;em Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n10h00 – 18:00 – Entrega de Kits (42K e 5K) | PISO G2 do Villa Romana Shopping, na Av. Madre Benvenutta, s.n, Santa Mônica Florianópolis/SC.\n15H00 – Início da MARATONINHA DE FLORIPA (Kids) \"por baterias de idade\" | Praça Sesquicentenário, conhecida&nbsp;em Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n16h00 – Congresso técnico Elite Maratona 42K | Mezanino do Restaurante Coco Bambu no PISO L1 do Villa Romana Shopping\n18h30 – 21h30 – Jantar (com compra antecipada)* | Restaurante Coco Bambu no PISO L1 do Villa Romana Shopping.\nDIA 29/08/2027, DOMINGO\n05h10 – Largada da MARATONA – Pelotões de Elite e Geral\n06h00 – Largada da 5K CORRIDA – Geral\n07h00 – Horário limite para contestação de resultado (5K) | Praça Sesquicentenário, conhecida&nbsp;em Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n07h10 – Horário limite para a conclusão dos 5K CORRIDA | Praça Sesquicentenário, conhecida&nbsp;em Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n07h15 – Início da Cerimônia de Premiação 5K CORRIDA (Geral) |Praça Sesquicentenário, conhecida&nbsp;em Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n08h30 – Início da Cerimônia de Premiação MARATONA (Geral) | Praça Sesquicentenário, conhecida&nbsp;em Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n10h45 – Horário limite para contestação de resultado (42K) | Praça Sesquicentenário, conhecida&nbsp;em Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n10h50 – Início da Cerimônia de Premiação MARATONA (Faixa Etária) | Praça Sesquicentenário, conhecida&nbsp;em Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n11h30 – Horário limite para a conclusão da MARATONA | Praça Sesquicentenário, conhecida&nbsp;em Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n11h40 – Horário limite para retirada da medalha do DESAFIO FLORIPA | Praça Sesquicentenário, conhecida&nbsp;em Floripa como Bolsão da Casan na Avenida Beira-Mar Norte\n*Endereço local de Entrega de kits: PISO G2 do Villa Romana Shopping, na Av. Madre Benvenutta, s.n, Santa Mônica Florianópolis/SC.\nMARATONA 42K\nCLASSIFICAÇÃO GERAL - MASCULINO\n1º colocado - R$ 25.000,00 (Vinte e cinco mil reais) + troféu\n2º colocado - R$ 10.000,00 (Dez mil reais) + troféu\n3º colocado - R$ 6.000,00 (Seis mil reais) + troféu\n4º colocado - R$ 5.000,00 (Cinco mil reais) + troféu\n5º colocado - R$ 4.000,00 (Quatro mil reais) + troféu\n*Deduzidos os percentuais referentes ao Imposto de Renda\nCLASSIFICAÇÃO GERAL - FEMININO\n1ª colocada - R$ 25.000,00 ( Vinte e cinco mil reais) + troféu\n2ª colocada - R$ 10.000,00 (Dez mil reais) + troféu\n3ª colocada - R$ 6.000,00 (Seis mil reais) + troféu\n4ª colocada - R$ 5.000,00 (Cinco mil reais) + troféu\n5ª colocada - R$ 4.000,00 (Quatro mil reais) + troféu\n*Deduzidos os percentuais referentes ao Imposto de Renda\nCLASSIFICAÇÃO POR CATEGORIAS\nTroféus para os 3 primeiros colocados\n*Medalha de finisher para todos que completarem o percurso\nPREMIAÇÃO EXTRA - NOVO RECORDE DA MARATONA 42K\nSerá oferecida premiação extra de R$ 10.000,00 (Dez mil reais) para o vencedor e/ou vencedora que estabelecer um novo recorde da distância Maratona (42Km), além de pacote de viagens da Agência SUB4 no valor de R$ 5.000,00 (Cinco mil reais). A premiação extra pode ser cumulativa às outras premiações.\nMEIA MARATONA 21K\nCLASSIFICAÇÃO GERAL - MASCULINO\n1º colocado - R$ 10.000,00 (Dez mil reais) + troféu\n2º colocado - R$ 5.000,00 (Cinco mil reais) + troféu\n3º colocado - R$ 2.500,00 (Dois mil e quinhentos reais) + troféu\n4º colocado - R$ 1.500,00 (Mil e quinhentos reais) + troféu\n5º colocado - R$ 1.000,00 (Mil reais) + troféu\n*Deduzidos os percentuais referentes ao Imposto de Renda\nCLASSIFICAÇÃO GERAL - FEMININO\n1ª colocada - R$ 10.000,00 (Dez mil reais) + troféu\n2ª colocada - R$ 5.000,00 (Cinco mil reais) + troféu\n3ª colocada - R$ 2.500,00 (Dois mil e quinhentos reais) + troféu\n4ª colocada - R$ 1.500,00 (Mil e quinhentos reais)&nbsp;+ troféu\n5ª colocada - R$ 1.000,00 (Mil reais) + troféu\n*Deduzidos os percentuais referentes ao Imposto de Renda\nCLASSIFICAÇÃO POR CATEGORIAS\nTroféus para os 3 primeiros colocados\n*Medalha de finisher para todos que completarem o percurso\nPREMIAÇÃO EXTRA - QUEBRA DE RECORDE DA MEIA MARATONA 21K\nSerá oferecida premiação extra de R$ 10.000,00 (Dez mil reais) para o vencedor e/ou vencedora que estabelecer um novo recorde da distância Meia Maratona (21Km), além de pacote de viagens da Agência SUB4 no valor de R$ 5.000,00 (Cinco mil reais). A premiação extra pode ser cumulativa às outras premiações.\n*Percursos ainda poderão sofrer alterações\nREALIZAÇÃO/ORGANIZAÇÃO:\nGRUPO STC\nCanais Oficiais de Comunicação:\nEmail: contato@grupostc.net\nWhatsapp: (48)&nbsp;91687066\nDúvidas ou informações técnicas poderão ser esclarecidas com a organização técnica através dos canais acima.\nOs kits deverão ser retirados preferencialmente pelos ATLETAS inscritos na Prova. Não haverá entrega de kit de participação no dia do EVENTO, nem após o seu término.",
+      "latitude": -27.585071,
+      "realizacao": null,
+      "coordenadas": "-27.585071, -48.550029",
+      "nome_simplificado": "MARATONA INTERNACIONAL DE FLORIPA FIBRA",
+      "descricao_traducoes_meta": {
+        "en": {
+          "description_hash": "eb69de26e90c741b2ea5c6dec3bfa49e",
+          "source_hash": "1e283178831e21b0f2f5f329c21ab702"
+        },
+        "es": {
+          "description_hash": "ab4435a80d1d7362600021bfca5f473a",
+          "source_hash": "1e283178831e21b0f2f5f329c21ab702"
+        }
+      },
+      "longitude": -48.550029,
+      "id_agrega_evento": 28,
+      "id_localidade": 4223,
+      "url_regulamento": "https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/88278/981d4d32a3fa41f499ed30cd8878329c639251782889640084.pdf",
+      "data_final": "2027-08-29",
+      "nome_evento": "Maratona Internacional de Floripa 2027",
+      "valor_inscricao": 120.0,
+      "resumo": "",
+      "descricao": "A MARATONA INTERNACIONAL DE FLORIPA FIBRA 2027 é perfeita para obter as melhores marcas pessoais. Em 2018 foi considerada a maratona mais rápida do Brasil, pela revista Contra Relógio. É uma das maiores provas de corrida de rua do Brasil. Em 2026 contou com a 19 mil inscritos. Com visual incrível das avenidas Beira-Mar Norte e Via Expressa Sul, já é destaque no calendário nacional de corridas. Por suas características de percurso é muito utilizada como classificatória para a Boston Marathon. Percursos da Maratona e Meia Maratona são selo Ouro da CBAt e a Maratona também terá Label da World Athletics.",
+      "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88278&origem=roadrunners&lang=pt-BR",
+      "cobertura": null,
+      "destaque": null,
+      "cidade": "Florianópolis",
+      "inscricao_disponibilidade": null,
+      "cronometragem": null,
+      "resultado_completo": true,
+      "obs": "importado em {ts '2026-08-31 20:58:12'}",
+      "url_imagem": "https://cdn.ticketsports.com.br/ticketagora/images/C3H2ZT33TE2MWOJVXA0U0A46Z7E8M09J0POG2Z1KB34AU6N4AJ.png",
+      "descricao_es": "La MARAT&Oacute;N INTERNACIONAL DE FLORIPA FIBRA 2027 es perfecta para obtener las mejores marcas personales. En 2018 fue considerada la marat&oacute;n m&aacute;s r&aacute;pida de Brasil, por la revista Contra Rel&oacute;gio. Es una de las mayores pruebas de carrera callejera de Brasil. En 2026 cont&oacute; con 19 mil inscritos. Con un visual incre&iacute;ble de las avenidas Beira-Mar Norte y Via Expressa Sul, ya es un destaque en el calendario nacional de carreras. Por sus caracter&iacute;sticas de recorrido es muy utilizada como clasificatoria para la Boston Marathon. Los recorridos de la Marat&oacute;n y Media Marat&oacute;n tienen sello Oro de la CBAt y la Marat&oacute;n tambi&eacute;n tendr&aacute; Label de la World Athletics.",
+      "id_evento": 47147,
+      "url_resultado": "",
+      "data_inicial": "2027-08-28",
+      "conferencia_datas_publica": null,
+      "obs_resultado": null,
+      "id_fornecedor": null,
+      "tag": "2027-maratona-internacional-de-floripa-fibra-2027",
+      "id_tema": 4,
+      "cod_cidade": 4205407,
+      "nome_evento_full_text": "'2027':5 'florip':4 'internacional':2 'maraton':1",
+      "pais": "BR",
+      "info_duplicado": null
+    }
+  ],
+  "routes": [
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 37572,
+      "percurso_evento": 5,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "8068ffb2877d77f9e7092bf47c078ce2",
+      "percurso_bloqueado": false,
+      "tipo_corrida": "rua",
+      "data_percurso": "2026-12-13",
+      "id_evento_percurso": 54278
+    },
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 37572,
+      "percurso_evento": 10,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "060fb7338de91e24ab369e519ff1a1de",
+      "percurso_bloqueado": false,
+      "tipo_corrida": "rua",
+      "data_percurso": "2026-12-13",
+      "id_evento_percurso": 54279
+    },
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 37572,
+      "percurso_evento": 15,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "58ea6053d5ba0fe413a742fd31dbc534",
+      "percurso_bloqueado": false,
+      "tipo_corrida": "rua",
+      "data_percurso": "2026-12-13",
+      "id_evento_percurso": 54280
+    },
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 38982,
+      "percurso_evento": 5,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "19e91640e85d0370934b11269d213809",
+      "percurso_bloqueado": true,
+      "tipo_corrida": "rua",
+      "data_percurso": "2026-10-31",
+      "id_evento_percurso": 61748
+    },
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 38982,
+      "percurso_evento": 10,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "4e5e91631234bfc47c0f920c0a0c4acb",
+      "percurso_bloqueado": true,
+      "tipo_corrida": "rua",
+      "data_percurso": "2026-10-31",
+      "id_evento_percurso": 61749
+    },
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 43657,
+      "percurso_evento": 21,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "c10aa3a862206b5355ba9969ade5b36f",
+      "percurso_bloqueado": false,
+      "tipo_corrida": "rua",
+      "data_percurso": "2026-11-15",
+      "id_evento_percurso": 66725
+    },
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 43657,
+      "percurso_evento": 10,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "f59c7a1540823a2348e63f5503e19c8a",
+      "percurso_bloqueado": false,
+      "tipo_corrida": "rua",
+      "data_percurso": "2026-11-15",
+      "id_evento_percurso": 66726
+    },
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 43657,
+      "percurso_evento": 5,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "385edc158438c33dc237e7fc61a8e811",
+      "percurso_bloqueado": false,
+      "tipo_corrida": "rua",
+      "data_percurso": "2026-11-15",
+      "id_evento_percurso": 66727
+    },
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 47147,
+      "percurso_evento": 42,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "fd9beade6134d7cb61c629ca7310a237",
+      "percurso_bloqueado": true,
+      "tipo_corrida": "rua",
+      "data_percurso": "2027-08-29",
+      "id_evento_percurso": 68665
+    },
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 47147,
+      "percurso_evento": 21,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "08e5899e3e8741e251c8f43f1c800f67",
+      "percurso_bloqueado": true,
+      "tipo_corrida": "rua",
+      "data_percurso": "2027-08-28",
+      "id_evento_percurso": 68666
+    },
+    {
+      "hora_largada": null,
+      "hora_corte": null,
+      "rp_f": null,
+      "id_permit": null,
+      "mapa": null,
+      "id_evento": 47147,
+      "percurso_evento": 5,
+      "rp_m": null,
+      "unidade_de_medida": "km",
+      "row_hash": "1016b59efb1cab119ca19f41529be7ca",
+      "percurso_bloqueado": true,
+      "tipo_corrida": "rua",
+      "data_percurso": "2027-08-29",
+      "id_evento_percurso": 68667
+    }
+  ],
+  "memberships": [
+    {
+      "id_evento": 39395,
+      "agregador_tag": "contra-relogio",
+      "percursos": "42"
+    },
+    {
+      "id_evento": 43657,
+      "agregador_tag": "contra-relogio",
+      "percursos": "42"
+    },
+    {
+      "id_evento": 37572,
+      "agregador_tag": "live-run-xp",
+      "percursos": null
+    }
+  ],
+  "auditColumns": [
+    {
+      "table_name": "tb_evento_fatos_historico",
+      "column_name": "id_historico",
+      "data_type": "bigint"
+    },
+    {
+      "table_name": "tb_evento_fatos_historico",
+      "column_name": "registrado_em",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "tb_evento_fatos_historico",
+      "column_name": "entidade",
+      "data_type": "text"
+    },
+    {
+      "table_name": "tb_evento_fatos_historico",
+      "column_name": "id_entidade",
+      "data_type": "integer"
+    },
+    {
+      "table_name": "tb_evento_fatos_historico",
+      "column_name": "id_evento",
+      "data_type": "integer"
+    },
+    {
+      "table_name": "tb_evento_fatos_historico",
+      "column_name": "id_evento_anterior",
+      "data_type": "integer"
+    },
+    {
+      "table_name": "tb_evento_fatos_historico",
+      "column_name": "operacao",
+      "data_type": "text"
+    },
+    {
+      "table_name": "tb_evento_fatos_historico",
+      "column_name": "alteracoes",
+      "data_type": "jsonb"
+    },
+    {
+      "table_name": "tb_evento_fatos_revisao",
+      "column_name": "id_revisao",
+      "data_type": "bigint"
+    },
+    {
+      "table_name": "tb_evento_fatos_revisao",
+      "column_name": "id_evento",
+      "data_type": "integer"
+    },
+    {
+      "table_name": "tb_evento_fatos_revisao",
+      "column_name": "grupo",
+      "data_type": "text"
+    },
+    {
+      "table_name": "tb_evento_fatos_revisao",
+      "column_name": "fatos",
+      "data_type": "jsonb"
+    },
+    {
+      "table_name": "tb_evento_fatos_revisao",
+      "column_name": "fonte_url",
+      "data_type": "text"
+    },
+    {
+      "table_name": "tb_evento_fatos_revisao",
+      "column_name": "registrado_em",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "tb_evento_fatos_revisao",
+      "column_name": "revogado_em",
+      "data_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "tb_evento_fatos_revisao",
+      "column_name": "requisicao",
+      "data_type": "uuid"
+    }
+  ],
+  "functions": [
+    "CREATE OR REPLACE FUNCTION public.grava_evento_corridas_percursos()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\r\nDECLARE\r\n\r\nvar_data_percurso   date;\r\nvar_num_dias        integer;\r\nvar_arr_percursos   numeric[];\r\nvar_unidade         varchar;\r\nprc                 numeric;\r\n\r\n\r\nBEGIN\r\n\r\n    if NEW.categorias is distinct from  OLD.categorias then\r\n        delete from  tb_evento_corridas_percursos where id_evento = NEW.id_evento and percurso_bloqueado = false;\r\n\r\n        if NEW.categorias is null then\r\n            return NEW;\r\n        end if;\r\n\r\n        if position('km' in lower(NEW.categorias)) > 0 then\r\n            var_unidade := 'km';\r\n        else\r\n            if position('milha' in lower(NEW.categorias)) > 0 or position('milha' in lower(NEW.nome_evento)) > 0  then\r\n                var_unidade := 'mi';\r\n            else\r\n                var_unidade := '--';\r\n            end if;\r\n        end if;\r\n\r\n        var_arr_percursos := array_remove(string_to_array(regexp_replace(NEW.categorias, '[^0-9.,]','','g'),','),'');\r\n        var_num_dias := (NEW.data_final - NEW.data_inicial) + 1;\r\n\r\n        foreach prc in array var_arr_percursos loop\r\n            if prc < 21 then\r\n            var_data_percurso := NEW.data_inicial;\r\n            else\r\n                if prc < 42 then\r\n                    if var_num_dias = 1 then\r\n                    var_data_percurso := NEW.data_inicial;\r\n                    else\r\n                    var_data_percurso := NEW.data_inicial + 1;\r\n                    end if;\r\n                else\r\n                    if var_num_dias = 1 then\r\n                    var_data_percurso := NEW.data_inicial;\r\n                    else\r\n                    var_data_percurso := NEW.data_final;\r\n                    end if;\r\n                end if;\r\n            end if;\r\n\r\n            insert into tb_evento_corridas_percursos\r\n            ( percurso_evento, unidade_de_medida, id_evento, data_percurso, tipo_corrida )\r\n            values\r\n            ( prc, var_unidade, NEW.id_evento, var_data_percurso, NEW.tipo_corrida )\r\n            on CONFLICT (percurso_evento, id_evento) DO UPDATE\r\n            SET\r\n                percurso_evento   = excluded.percurso_evento,\r\n                unidade_de_medida = excluded.unidade_de_medida,\r\n                id_evento         = excluded.id_evento,\r\n                data_percurso     = excluded.data_percurso\r\n            -- A edição manual bloqueada prevalece sobre a geração automática.\r\n            WHERE NOT tb_evento_corridas_percursos.percurso_bloqueado;\r\n        end loop;\r\n    end if;\r\n\r\n    if NEW.organizador is distinct from OLD.organizador then\r\n        insert into tb_evento_corridas_fornecedores\r\n            ( id_evento, id_fornecedor_tipo, id_fornecedor )\r\n        select\r\n            NEW.id_evento,\r\n            1,\r\n            fo.id_fornecedor\r\n        from  tb_fornecedores fo\r\n            where to_tsvector(unaccent(fo.nome_fornecedor)) @@ plainto_tsquery('portuguese',unaccent(trim(NEW.organizador)))\r\n        on CONFLICT (id_evento, id_fornecedor_tipo, id_fornecedor) DO UPDATE\r\n        SET\r\n            id_fornecedor   = excluded.id_fornecedor;\r\n    end if;\r\n\r\nRETURN NEW;\r\nEND\r\n$function$\n",
+    "CREATE OR REPLACE PROCEDURE public.grava_evento_corridas_percursos(IN p_id_evento integer, IN p_nome_evento character varying, IN p_data_ini date, IN p_data_fim date, IN p_categorias character varying)\n LANGUAGE plpgsql\nAS $procedure$\r\nDECLARE\r\n\r\nvar_percurso        integer;\r\nvar_data_percurso   date;\r\nvar_num_dias        integer;\r\nvar_arr_percursos   numeric[];\r\nvar_unidade         varchar;\r\nprc                 integer;\r\n\r\nBEGIN\r\n    if p_categorias is null then\r\n        return;\r\n    end if;\r\n    if position('km' in lower(p_categorias)) > 0 then\r\n        var_unidade := 'km';\r\n    else\r\n        if position('milha' in lower(p_categorias)) > 0 or position('milha' in lower(p_nome_evento)) > 0  then\r\n            var_unidade := 'mi';\r\n        else\r\n            var_unidade := '--';\r\n        end if;\r\n    end if;\r\n\r\n    var_arr_percursos := array_remove(string_to_array(regexp_replace(p_categorias, '[^0-9.,]','','g'),','),'');\r\n    var_num_dias := (p_data_fim - p_data_ini) + 1;\r\n\r\n    foreach prc in array var_arr_percursos loop\r\n        if prc < 21 then\r\n           var_data_percurso := p_data_ini;\r\n        else\r\n            if prc < 42 then\r\n                if var_num_dias = 1 then\r\n                   var_data_percurso := p_data_ini;\r\n                 else\r\n                   var_data_percurso := p_data_ini + 1;\r\n                end if;\r\n            else\r\n                if var_num_dias = 1 then\r\n                   var_data_percurso := p_data_ini;\r\n                 else\r\n                   var_data_percurso := p_data_fim;\r\n                end if;\r\n            end if;\r\n        end if;\r\n\r\n        insert into tb_evento_corridas_percursos\r\n          ( percurso_evento, unidade_de_medida, id_evento, data_percurso )\r\n        values\r\n          ( prc, var_unidade, p_id_evento, var_data_percurso )\r\n        on CONFLICT (percurso_evento, id_evento) DO UPDATE\r\n        SET\r\n            percurso_evento   = excluded.percurso_evento,\r\n            unidade_de_medida = excluded.unidade_de_medida,\r\n            id_evento         = excluded.id_evento,\r\n            data_percurso     = excluded.data_percurso\r\n            -- A edição manual bloqueada prevalece sobre a geração automática.\r\n            WHERE NOT tb_evento_corridas_percursos.percurso_bloqueado;\r\n    end loop;\r\n\r\nEND\r\n$procedure$\n",
+    "CREATE OR REPLACE FUNCTION public.registra_evento_fatos_historico()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE\n    antes jsonb := '{}'::jsonb;\n    depois jsonb := '{}'::jsonb;\n    diferencas jsonb := '{}'::jsonb;\n    campos text[];\n    campo text;\n    tipo text;\n    entidade_id integer;\n    evento_id integer;\n    evento_anterior integer;\nBEGIN\n    IF TG_TABLE_SCHEMA <> 'public' OR TG_NARGS <> 0 OR TG_WHEN <> 'AFTER' OR TG_LEVEL <> 'ROW' THEN\n        RAISE EXCEPTION 'Unsupported factual history trigger';\n    END IF;\n    IF TG_TABLE_NAME = 'tb_evento_corridas' THEN\n        tipo := 'evento';\n        campos := ARRAY['id_evento','nome_evento','tag','data_inicial','data_final','cidade','estado','pais','endereco','coordenadas','categorias','tipo_corrida','status_evento','url_hotsite','url_regulamento','url_inscricao','ativo'];\n    ELSIF TG_TABLE_NAME = 'tb_evento_corridas_percursos' THEN\n        tipo := 'percurso';\n        campos := ARRAY['id_evento_percurso','id_evento','percurso_evento','unidade_de_medida','data_percurso','hora_largada','hora_corte','tipo_corrida'];\n    ELSE\n        RAISE EXCEPTION 'Unsupported factual history table';\n    END IF;\n    IF TG_OP <> 'INSERT' THEN antes := to_jsonb(OLD); END IF;\n    IF TG_OP <> 'DELETE' THEN depois := to_jsonb(NEW); END IF;\n    FOREACH campo IN ARRAY campos LOOP\n        IF TG_OP <> 'UPDATE' OR antes->campo IS DISTINCT FROM depois->campo THEN\n            diferencas := diferencas || jsonb_build_object(campo,\n                jsonb_build_object('antes', antes->campo, 'depois', depois->campo));\n        END IF;\n    END LOOP;\n    IF diferencas = '{}'::jsonb THEN RETURN NULL; END IF;\n    evento_id := COALESCE((depois->>'id_evento')::integer, (antes->>'id_evento')::integer);\n    evento_anterior := (antes->>'id_evento')::integer;\n    entidade_id := CASE WHEN tipo = 'evento' THEN evento_id\n        ELSE COALESCE((depois->>'id_evento_percurso')::integer,(antes->>'id_evento_percurso')::integer) END;\n    INSERT INTO public.tb_evento_fatos_historico\n        (entidade,id_entidade,id_evento,id_evento_anterior,operacao,alteracoes)\n    VALUES (tipo,entidade_id,evento_id,evento_anterior,TG_OP,diferencas);\n    RETURN NULL; -- AFTER trigger: never rewrites the originating row.\nEND;\n$function$\n"
+  ]
+}

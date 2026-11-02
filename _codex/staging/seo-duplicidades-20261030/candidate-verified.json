@@ -1,0 +1,27 @@
+{
+  "scenarios": 6,
+  "performance": {
+    "candidate": [
+      0.273,
+      0.280194,
+      0.255543
+    ],
+    "baseline": [
+      0.253316,
+      0.248077,
+      0.258901
+    ]
+  },
+  "compiledTemplates": 1,
+  "descriptions": {
+    "ba1": "Calendário de corridas na Bahia. Página 1 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail.",
+    "ba2": "Calendário de corridas na Bahia. Página 2 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail.",
+    "pr1": "Calendário de corridas no Paraná. Página 1 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail.",
+    "pr2": "Calendário de corridas no Paraná. Página 2 de 4. Consulte datas, distâncias e inscrições das provas de rua e trail.",
+    "curitiba": "Calendário de corridas de rua e trail em Curitiba (PR). Consulte datas, distâncias e informações de inscrição nas páginas das provas.",
+    "ac": "Calendário de corridas de rua e trail no Acre. Consulte datas, distâncias e informações de inscrição nas páginas das provas."
+  },
+  "hashes": {
+    "estado/index.cfm": "b4b7650c60a3e08c74ee9a881b50486b217583728b11c1f074cac75c5dcc43b6"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "published": [
+    "portal/includes/seo_search_evidence.cfm",
+    "portal/conteudo/seo_growth_baseline.cfm"
+  ],
+  "backup": "/var/backups/seo-gsc-20261030-panel/baseline",
+  "published_at": "2026-10-30T19:09:42.813925+00:00"
+}

@@ -1,0 +1,73 @@
+[
+  {
+    "url": "https://roadrunners.run/noticias/ranking-2026-atualizado-com-as-maratonas-fila-sp-sao-jose-criciuma-piracicaba-salvador-niteroi-pelotas-bonito-jurere-sta-maria-foz-e-pomerode/",
+    "status": 200,
+    "contentType": "text/html;charset=UTF-8",
+    "bytes": 372840,
+    "title": "Ranking Brasileiro de Maratonistas 2026 tem a penúltima atualização do ano - Road Runners",
+    "sourceArticleStillLinked": true
+  },
+  {
+    "url": "https://conteudo.roadrunners.run/rest/cmscf_api/v1/content/ranking-2026-atualizado-com-as-maratonas-fila-sp-sao-jose-criciuma-piracicaba-salvador-niteroi-pelotas-bonito-jurere-sta-maria-foz-e-pomerode",
+    "status": 200,
+    "contentType": "application/json;charset=UTF-8",
+    "bytes": 3891,
+    "keys": [
+      "original_url",
+      "id_evento",
+      "excerpt",
+      "gallery",
+      "author",
+      "slug",
+      "body_html",
+      "audio",
+      "editorial_status",
+      "event",
+      "featured_media",
+      "published_at",
+      "summary",
+      "content_type",
+      "category",
+      "title",
+      "updated_at",
+      "is_featured",
+      "tags"
+    ],
+    "publicMetadata": {
+      "slug": "ranking-2026-atualizado-com-as-maratonas-fila-sp-sao-jose-criciuma-piracicaba-salvador-niteroi-pelotas-bonito-jurere-sta-maria-foz-e-pomerode",
+      "title": "Ranking Brasileiro de Maratonistas 2026 tem a penúltima atualização do ano",
+      "published_at": "2026-10-22 10:29:53",
+      "original_url": "https://contrarelogio.com.br/ranking-2026-atualizado-comas-maratonas-fila-sp-sao-jose-criciuma-piracicaba-salvador-niteroi-pelotas-foz-bonito-sta-maria-jurere-e-pomerode/"
+    },
+    "content_type": {
+      "source_media_allowed": true,
+      "instagram_url": "https://www.instagram.com/revistacontrarelogio/",
+      "youtube_url": null,
+      "description": "O melhor site brasileiro sobre corridas de rua e maratonas.",
+      "logo_url": "https://conteudo.roadrunners.run/public/uploads/logo-vetor-cr-horizontal-color.png",
+      "website_url": "https://contrarelogio.com.br/",
+      "license_expires_at": "2030-12-31",
+      "authorized_republication": true,
+      "slug": "contra-relogio",
+      "publication_mode": "summary_link",
+      "name": "Contra Relógio"
+    },
+    "contentLength": 0
+  },
+  {
+    "url": "https://roadrunners.run/noticias/?page=2",
+    "status": 200,
+    "contentType": "text/html;charset=UTF-8",
+    "bytes": 367739,
+    "title": "Notícias - Road Runners - Página 2 de 215",
+    "sourceArticleStillLinked": true
+  },
+  {
+    "url": "https://roadrunners.run/noticias/canal/contra-relogio/",
+    "status": 200,
+    "contentType": "text/html;charset=UTF-8",
+    "bytes": 370289,
+    "title": "Notícias - Contra Rel&oacute;gio - Road Runners",
+    "sourceArticleStillLinked": true
+  }
+]

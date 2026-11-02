@@ -1,0 +1,37 @@
+{
+  "names": [
+    "evento/index.cfm",
+    "evento/parts/post_race_data.cfm",
+    "evento/parts/post_race.cfm",
+    "includes/backend/backend_permanent_race.cfm",
+    "includes/permanent_race_overview.cfm",
+    "assets/css/runnerhub-race-guides.css",
+    "maratona/index.cfm",
+    "circuito/index.cfm"
+  ],
+  "before": {
+    "evento/index.cfm": "eff880c82de238e3ab2ec08fc53b232bd2ef5397d21a8ad465495dc45d4fb73c",
+    "includes/backend/backend_permanent_race.cfm": "6bce2682725f14d7bb6aec4ea28ada482af1f521b79b8d24481c6dda6a73932d",
+    "includes/permanent_race_overview.cfm": "3a79400c5153284f6632e07cb2b178b7a265b21eda954afa215d973054a076cc",
+    "assets/css/runnerhub-race-guides.css": "ccca6b34cf911b2ab5dc84b67ff9e4cf5bc813eb0295c618d8ac477b72316a0b",
+    "maratona/index.cfm": "f7bdc2ef8cd1b47bcdaf8b0fb0d06c21c14ccd6c22d94e83374527f1248b2c06",
+    "circuito/index.cfm": "dc1a5415093c2c8f8d200f1f9d6b18a6a7804b04b90e4dcfdb0a6ea5ee573693"
+  },
+  "local": {
+    "evento/index.cfm": "eff880c82de238e3ab2ec08fc53b232bd2ef5397d21a8ad465495dc45d4fb73c",
+    "evento/parts/post_race_data.cfm": null,
+    "evento/parts/post_race.cfm": null,
+    "includes/backend/backend_permanent_race.cfm": "6bce2682725f14d7bb6aec4ea28ada482af1f521b79b8d24481c6dda6a73932d",
+    "includes/permanent_race_overview.cfm": "3a79400c5153284f6632e07cb2b178b7a265b21eda954afa215d973054a076cc",
+    "assets/css/runnerhub-race-guides.css": "ccca6b34cf911b2ab5dc84b67ff9e4cf5bc813eb0295c618d8ac477b72316a0b",
+    "maratona/index.cfm": "f7bdc2ef8cd1b47bcdaf8b0fb0d06c21c14ccd6c22d94e83374527f1248b2c06",
+    "circuito/index.cfm": "dc1a5415093c2c8f8d200f1f9d6b18a6a7804b04b90e4dcfdb0a6ea5ee573693"
+  },
+  "watch": {
+    "Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "includes/estrutura/variaveis.cfm": "b4ab09efe0053cdb6b04ac0bf6b864fa718457824989123c27c90467e7e365aa",
+    "includes/estrutura/head.cfm": "84258c3f09772972a39d3f1870f46da6c598f6f218b2b192f6fb843f84695896",
+    "includes/estrutura/header.cfm": "69d0bf927acc0c8c8b878f43a5383fa23f2120546f992d1bc04e76ac2f632202",
+    ".htaccess": "3866eeac7aa05ceb1fe135a649618d531ca9d23edf42f77e3e6129ecce922688"
+  }
+}

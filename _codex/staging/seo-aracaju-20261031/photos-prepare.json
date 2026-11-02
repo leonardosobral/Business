@@ -1,0 +1,12 @@
+{
+  "before": {
+    "includes/aracaju_2026.cfm": "f8f89ff4def6b540259d6d99b39fe2540e81bde1f2f8524534776d1dfbc7bbe7"
+  },
+  "candidate": {
+    "includes/aracaju_2026.cfm": "3a6e4a17ce093ec003e5dbbb839c57d2f94d528b2715db7b4f32fed6874634b6"
+  },
+  "order": [
+    "includes/aracaju_2026.cfm"
+  ],
+  "at": "2026-10-31T17:06:36.942865+00:00"
+}

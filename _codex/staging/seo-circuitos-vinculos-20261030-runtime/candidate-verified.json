@@ -1,0 +1,20 @@
+{
+  "scenarios": 5,
+  "performance": {
+    "candidate": [
+      0.220531,
+      0.228786,
+      0.215553
+    ],
+    "baseline": [
+      0.206237,
+      0.211381,
+      0.203502
+    ]
+  },
+  "compiledTemplates": 2,
+  "hashes": {
+    "evento/index.cfm": "eff880c82de238e3ab2ec08fc53b232bd2ef5397d21a8ad465495dc45d4fb73c",
+    "evento/parts/circuit_links.cfm": "0dd51412f29af259c145c8d8251cea93c04fcb7d2da72f4d6c2f6a8f52344221"
+  }
+}

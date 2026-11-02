@@ -1,0 +1,11 @@
+{
+  "mode": "candidate",
+  "scenarios": 16,
+  "accessChecks": 8,
+  "domains": 27,
+  "metricCellsVerified": 162,
+  "hashes": {
+    "portal/includes/seo_domains_data.cfm": "4829ec044975373641f4f8c82b8d4eae3da96c91e25a2b2a85bbc6080949fb29",
+    "portal/conteudo/seo_domains.cfm": "19763a96d5e306ea5f93ddb9e831f693c4d3854fc47be5bd8f8854e81d602e89"
+  }
+}

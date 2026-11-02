@@ -1,0 +1,85 @@
+- navigation "Indicadores de localização atual":
+  - heading "Desempenho" [level=1]
+- button "EXPORTAR":
+  - generic: 
+  - generic: EXPORTAR
+- radiogroup "Select time range":
+  - radio "24 horas":
+    - generic: 24 horas
+  - radio "7 dias":
+    - generic: 7 dias
+  - radio "28 dias":
+    - generic: 28 dias
+  - radio "3 meses":
+    - generic: 3 meses
+- button "More time ranges":
+  - generic: Comparar
+  - generic: arrow_drop_down
+- list:
+  - 'button "Tipo de pesquisa: Web"':
+    - generic: "Tipo de pesquisa: Web"
+    - generic: arrow_drop_down
+  - tooltip: "Tipo de pesquisa: Web"
+  - button "Adicionar filtro":
+    - generic: add
+    - generic: Adicionar filtro
+  - tooltip: Adicionar filtro
+  - button "Personalize seu relatório de performance usando IA":
+    - generic: filter_list_spark
+  - tooltip: Personalize seu relatório de performance usando IA
+  - button "Redefinir filtros":
+    - generic: Redefinir filtros
+  - tooltip: Redefinir filtros
+- generic: "Última atualização: há 4 horas"
+- main:
+  - button "Total de cliques 10,1 mil Últimos 28 dias 3,22 mil 28 dias anteriores":
+    - generic "Total de cliques":
+      - generic: 
+      - generic: Total de cliques
+    - generic "10.056": 10,1 mil
+    - generic "Últimos 28 dias"
+    - generic "3.219": 3,22 mil
+    - generic "28 dias anteriores"
+  - button "null":
+    - generic: 
+  - button "Total de impressões 463 mil Últimos 28 dias 123 mil 28 dias anteriores":
+    - generic "Total de impressões":
+      - generic: 
+      - generic: Total de impressões
+    - generic "462.664": 463 mil
+    - generic "Últimos 28 dias"
+    - generic "123.386": 123 mil
+    - generic "28 dias anteriores"
+  - button "null":
+    - generic: 
+  - button "CTR média 2,2% Últimos 28 dias 2,6% 28 dias anteriores":
+    - generic "CTR média":
+      - generic: CTR média
+    - generic "2,2%"
+    - generic "Últimos 28 dias"
+    - generic "2,6%"
+    - generic "28 dias anteriores"
+  - button "null":
+    - generic: 
+  - button "Posição média 7,4 Últimos 28 dias 7,8 28 dias anteriores":
+    - generic "Posição média":
+      - generic: Posição média
+    - generic "7,4"
+    - generic "Últimos 28 dias"
+    - generic "7,8"
+    - generic "28 dias anteriores"
+  - button "null":
+    - generic: 
+  - 'button "Granularidade de tempo selecionada: Diária"':
+    - generic: Diária
+  - generic: Cliques
+  - generic: Impressões
+  - application "chart":
+    - generic: Gráfico, contendo números de Últimos 28 dias Cliques, 28 dias anteriores Cliques, Últimos 28 dias Impressões, 28 dias anteriores Impressões, Últimos 28 dias CTR, 28 dias anteriores CTR, Últimos 28 dias Posição e 28 dias anteriores Posição de Invalid Date a 31 de dezembro de 1969
+  - generic: info
+  - generic: Saiba mais sobre o desempenho do seu site nos recursos de IA generativa da Pesquisa Google
+  - generic: Abrir relatório
+  - generic: chevron_forward
+  - link "Abra o relatório de performance dos recursos de IA generativa da Pesquisa Google.":
+    - /url: ./search-console/performance/search-analytics/ai?resource_id=sc-domain%3Aroadrunners.run
+  

@@ -1,0 +1,87 @@
+[
+  {
+    "path": "/evento/2026-maratona-internacional-de-floripa-2026/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/evento/2026-maratona-internacional-de-porto-alegre-206/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/evento/2025-circuito-da-estacoes-verao/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/evento/2025-circuito-das-estacoes-verao/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/evento/2026-live-run-xp-porto-seguro-2026/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/evento/2026-maratona-de-curitiba-santander-2026/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/en/event/2026-maratona-internacional-de-floripa-2026/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/es/evento/2026-maratona-internacional-de-floripa-2026/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/maratona/maratona-internacional-de-floripa/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/maratona/maratona-de-curitiba/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/maratona/maratona-monumental-de-brasilia/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/maratona/maratona-internacional-de-porto-alegre/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/circuito/estacoes/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/circuito/live-run-xp/",
+    "status": 200,
+    "passed": true
+  },
+  {
+    "path": "/evento/parts/post_race_data.cfm",
+    "status": 403,
+    "passed": true
+  },
+  {
+    "path": "/evento/parts/post_race.cfm",
+    "status": 403,
+    "passed": true
+  },
+  {
+    "path": "/assets/css/runnerhub-race-guides.css?v=20261030b",
+    "status": 200,
+    "hashMatched": true
+  }
+]
