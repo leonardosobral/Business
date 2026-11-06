@@ -1,6 +1,6 @@
 <cfset VARIABLES.audit=VARIABLES.vickyAudit/>
 <cfset VARIABLES.auditState=VARIABLES.audit.state/>
-<link rel="stylesheet" href="/administracao/vicky/assets/audit.css?v=20261010"/>
+<link rel="stylesheet" href="/administracao/vicky/assets/audit.css?v=rr-neutral-20261026"/>
 <div class="vp-audit" id="vp-audit-chat" data-vp-audit>
   <header class="vp-audit-intro">
     <div><div class="vp-audit-eyebrow">QUALIDADE DO ATENDIMENTO</div><h2>Auditoria de conversas</h2><p>Encontre um usuário e acompanhe suas interações com a Vicky.</p></div>

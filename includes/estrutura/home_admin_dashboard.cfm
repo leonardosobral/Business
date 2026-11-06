@@ -964,8 +964,8 @@ if (!VARIABLES.businessAdminHomeContentLoaded) {
     arrayAppend(VARIABLES.businessHomeSignals,{kind="Conteúdo",label="Qualidade dos eventos",description="Resumo de conteúdo indisponível",value=0,loaded=false,href="/portal/conteudo/",icon="fa-flag-checkered",priority=40});
 }
 </cfscript>
-<link rel="stylesheet" href="/assets/css/admin-suite.css?v=20260917-aimails"/>
-<link rel="stylesheet" href="/assets/css/admin-dashboard.css?v=20261024-decision1"/>
+<link rel="stylesheet" href="/assets/css/admin-suite.css?v=rr-neutral-20261026"/>
+<link rel="stylesheet" href="/assets/css/admin-dashboard.css?v=rr-neutral-20261026"/>
 <div class="col-12 business-global-dashboard admin-suite-page" data-business-home>
     <header class="admin-suite-header">
         <div class="admin-suite-heading">

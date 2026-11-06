@@ -283,7 +283,7 @@ component output="false" {
         var isDuration=false;
         while(durations.find()) {
             literal=durations.group();
-            prefix=replacePattern(left(arguments.source,durations.start()),"(?s)^.*[.!?\n]","");
+            prefix=replacePattern(durations.start() GT 0 ? left(arguments.source,durations.start()) : "","(?s)^.*[.!?\n]","");
             context=matcher("(?iu)\b(dura[çc][ãa]o|tempo\s+(?:limite|m[aá]ximo)|limite\s+de\s+tempo|duration|time\s+limit|duraci[oó]n)\b|\b(?:largada|concentra[çc][ãa]o|in[ií]cio|chegada|abertura|encerramento|start|salida|[àa]s)\b",prefix);
             durationContext=false;
             while(context.find()) durationContext=!isNull(context.group(1));
@@ -497,7 +497,7 @@ component output="false" {
     }
 
     private string function clockFormatContext(required string text,required struct token) {
-        var prefix=left(arguments.text,arguments.token.start);
+        var prefix=arguments.token.start GT 0 ? left(arguments.text,arguments.token.start) : "";
         var suffix=mid(arguments.text,arguments.token.finish+1,len(arguments.text));
         var labels="";
         var context="unknown";

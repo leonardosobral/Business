@@ -64,11 +64,11 @@
     <style>
         :root { color-scheme: light; }
         * { box-sizing: border-box; }
-        body { margin: 0; background: #f4f4f4; color: #202124; font-family: Arial, Helvetica, sans-serif; line-height: 1.65; }
+        body { margin: 0; background: #f4f4f4; color: #212121; font-family: Arial, Helvetica, sans-serif; line-height: 1.65; }
         .preview-shell { width: min(920px, calc(100% - 32px)); margin: 24px auto; padding: clamp(24px, 5vw, 56px); background: #fff; border-radius: 14px; box-shadow: 0 8px 28px rgba(0,0,0,.08); }
         .preview-status { display: inline-flex; margin-bottom: 18px; padding: 5px 10px; border-radius: 999px; background: #fff3cd; color: #664d03; font-size: 12px; font-weight: 700; text-transform: uppercase; }
         .preview-status.is-published { background: #d1e7dd; color: #0f5132; }
-        .preview-meta { color: #6b7280; font-size: 14px; }
+        .preview-meta { color: #727272; font-size: 14px; }
         h1 { margin: 10px 0 14px; font-size: clamp(30px, 5vw, 52px); line-height: 1.1; }
         .preview-excerpt { margin: 0 0 26px; color: #555; font-size: 19px; }
         .preview-cover { width: 100%; max-height: 520px; margin: 0 0 30px; border-radius: 10px; object-fit: cover; }

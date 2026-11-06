@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-10-24T17:06:30.512835+00:00",
+  "candidate_hashes": {
+    "roadrunners.com.br/repositories/VickyBrasilGiganteRepository.cfc": "15f98feed442afa894942bd61ebfec3471a4c754ab162d44133a3046bc053a8d",
+    "roadrunners.com.br/repositories/VickyProactiveRepository.cfc": "b7698c6501df0dcd4745c1f56224b8e752bc61a94deba6bec90fc8374eae42e9",
+    "roadrunners.com.br/services/VickyProactiveService.cfc": "523500298eca5fdbdbf723bff69cbf87e075a7b83c08cbcf12ee2fc798900ffa",
+    "business.roadrunners.run/administracao/vicky/includes/backend.cfm": "e7ffc3f5f7e4889e099984fcaa3e1e89f1cf46dcdc1094a3b4aab8ef8c2545e6",
+    "business.roadrunners.run/administracao/vicky/home.cfm": "fbe926bc6754b0b79211aa65826df6d762c4000ea1e69038d590b6150a1ebf90"
+  },
+  "tests": [
+    {
+      "mode": "native",
+      "ok": true,
+      "output": "VICKY_CBG_NATIVE_PASSED 7 ",
+      "archive": "/var/backups/business-vicky-cbg-test-u_9y5bx_",
+      "stage_removed": true
+    },
+    {
+      "mode": "service",
+      "ok": true,
+      "output": "VICKY_CBG_SERVICE_PASSED 7 ",
+      "archive": "/var/backups/business-vicky-cbg-test-42ufcu72",
+      "stage_removed": true
+    },
+    {
+      "mode": "queue",
+      "ok": true,
+      "output": "VICKY_CBG_QUEUE_PASSED 8 all writes rolled back; no delivery invoked ",
+      "archive": "/var/backups/business-vicky-cbg-test-1q28kr1u",
+      "stage_removed": true
+    },
+    {
+      "mode": "form",
+      "ok": true,
+      "output": "VICKY_CBG_FORM_PASSED ",
+      "archive": "/var/backups/business-vicky-cbg-test-12tegwvp",
+      "stage_removed": true
+    },
+    {
+      "mode": "render",
+      "ok": true,
+      "output": "VICKY_CBG_RENDER_PASSED ",
+      "archive": "/var/backups/business-vicky-cbg-test-4ssa4ylk",
+      "stage_removed": true
+    },
+    {
+      "mode": "meta",
+      "ok": true,
+      "output": "{\"language\":\"pt_BR\",\"status\":\"APPROVED\",\"components\":[{\"format\":\"TEXT\",\"text\":\"Mais uma etapa está chegando\",\"type\":\"HEADER\"},{\"text\":\"Lembre-se de reconhecer seus resultados nas etapas já concluídas e manter o seu perfil atualizado.\",\"type\":\"BODY\"},{\"text\":\"Você recebeu este aviso por fazer parte do Brasil Gigante\",\"type\":\"FOOTER\"},{\"type\":\"BUTTONS\",\"buttons\":[{\"text\":\"Acessar meu perfil\",\"type\":\"URL\",\"url\":\"https://circuitobrasilgigante.com.br/atleta/\"}]}],\"id\":\"1641335907524499\",\"name\":\"atualize_cbg\"}VICKY_CBG_META_PASSED ",
+      "archive": "/var/backups/business-vicky-cbg-test-ae5jmidy",
+      "stage_removed": true
+    }
+  ]
+}

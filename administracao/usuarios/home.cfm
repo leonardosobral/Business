@@ -40,7 +40,7 @@ function userManagerDateInput(any value = "") {
     right: -95px;
     top: -120px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(250, 177, 32, .2), transparent 68%);
+    background: radial-gradient(circle, rgba(244,177,32, .2), transparent 68%);
     pointer-events: none;
   }
 
@@ -74,7 +74,7 @@ function userManagerDateInput(any value = "") {
     justify-content: center;
     border-radius: 11px;
     color: var(--um-accent);
-    background: rgba(250, 177, 32, .12);
+    background: rgba(244,177,32, .12);
   }
 
   .user-manager-status-dot {
@@ -92,8 +92,8 @@ function userManagerDateInput(any value = "") {
   }
 
   .user-manager-status-dot.is-deleted {
-    background: #868e96;
-    box-shadow: 0 0 0 4px rgba(134, 142, 150, .1);
+    background: #8d8d8d;
+    box-shadow: 0 0 0 4px rgba(141,141,141, .1);
   }
 
   .user-manager-table th,

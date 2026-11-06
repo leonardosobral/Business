@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-10-26T10:22:56.734780+00:00",
+  "candidate_hashes": {
+    "business.roadrunners.run/services/HelpdeskAutoClose.cfc": "c77b0d4decf8b075ec285036d998f8cd948ff01a2ae26f6256c8cb89d20cab31",
+    "business.roadrunners.run/api/helpdesk/auto-close.cfm": "be8089f7635d0108e79e5f6898294cf8cab1c84534cd0f65d8859218e55d0b5d",
+    "business.roadrunners.run/includes/backend/cron_jobs_service.cfm": "dc20f19627942a2ebbbd9aa9fecfd4210d9b7a434c174533a19f63d0ea5f065d"
+  },
+  "tests": [
+    {
+      "mode": "native",
+      "ok": true,
+      "output": "HELPDESK_CLOSE_NATIVE_PASSED 2 ",
+      "archive": "/var/backups/business-helpdesk-close-test-7k4ge4hu",
+      "stage_removed": true
+    },
+    {
+      "mode": "transaction",
+      "ok": true,
+      "output": "HELPDESK_CLOSE_TRANSACTION_PASSED 9; all synthetic writes rolled back ",
+      "archive": "/var/backups/business-helpdesk-close-test-25hgt8dq",
+      "stage_removed": true
+    },
+    {
+      "mode": "security",
+      "ok": true,
+      "output": "HELPDESK_CLOSE_SECURITY_PASSED 14 ",
+      "archive": "/var/backups/business-helpdesk-close-test-r5dj4pvc",
+      "stage_removed": true
+    },
+    {
+      "mode": "cron",
+      "ok": true,
+      "output": "HELPDESK_CLOSE_CRON_PASSED ",
+      "archive": "/var/backups/business-helpdesk-close-test-rkke340m",
+      "stage_removed": true
+    },
+    {
+      "mode": "http",
+      "ok": true,
+      "output": "HELPDESK_CLOSE_HTTP_PASSED [{\"method\": \"GET\", \"expected\": 405, \"status\": \"405\", \"ok\": true}, {\"method\": \"POST\", \"expected\": 401, \"status\": \"401\", \"ok\": true}, {\"method\": \"POST\", \"expected\": 200, \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"expected\": 400, \"status\": \"400\", \"ok\": true}, {\"method\": \"POST\", \"expected\": 400, \"status\": \"400\", \"ok\": true}]",
+      "archive": "/var/backups/business-helpdesk-close-test-y22flecv",
+      "stage_removed": true
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-cbg-mandala-hi0w3x7r",
+  "manifest": {
+    "business.roadrunners.run/desafios/includes/MandalaDelivery.cfc": {
+      "before": null,
+      "after": "7e5b3a08188263e6d9cc096d64144a82418433acd28ccc8119d03f7e6e2d1d66"
+    },
+    "business.roadrunners.run/desafios/includes/brasil_gigante_mandala_action.cfm": {
+      "before": null,
+      "after": "a4b4f8b9b8e7792e016c96c7c77ee6a5fa9a01266f877c41640fc27bb0a9570e"
+    },
+    "business.roadrunners.run/desafios/includes/backend.cfm": {
+      "before": "bef6b5c908b8780f64d6b71c655485193cb8cbb2e177f47bd75dd134fe375246",
+      "after": "716cac261b2c8f0f9ab0455006320db985d662aa4245419319ba6208a6fbfa9d"
+    },
+    "business.roadrunners.run/desafios/includes/brasil_gigante_table.cfm": {
+      "before": "2d744e82479b3d8ae5e315e836597d36dd0ce04ac71559b7e2be8a7ace256a76",
+      "after": "202eced1773477648a56341226e6a145133d2d338e4669f598de66ad1db612cb"
+    },
+    "business.roadrunners.run/desafios/includes/brasil_gigante_panel.cfm": {
+      "before": "32475980fd9968589b066ead1e5bbd79363371114bd802e1945da054dde4a7a7",
+      "after": "c85fe0b5b01c977eedc99887c5728bbbd28f863c42a0260a4c53ca53ae3722c3"
+    },
+    "business.roadrunners.run/desafios/includes/exportar_brasil_gigante.cfm": {
+      "before": "aec25fef7ae86c4ea73e093eae4ea403c11464ee9b9cbdbf4c3afb082efb5fc1",
+      "after": "f05987dd6fa722cef198782ce3cddf60e81b830fbcd916eb354663af52d780a4"
+    }
+  },
+  "candidate_hashes": {
+    "business.roadrunners.run/desafios/includes/MandalaDelivery.cfc": "7e5b3a08188263e6d9cc096d64144a82418433acd28ccc8119d03f7e6e2d1d66",
+    "business.roadrunners.run/desafios/includes/brasil_gigante_mandala_action.cfm": "a4b4f8b9b8e7792e016c96c7c77ee6a5fa9a01266f877c41640fc27bb0a9570e",
+    "business.roadrunners.run/desafios/includes/backend.cfm": "716cac261b2c8f0f9ab0455006320db985d662aa4245419319ba6208a6fbfa9d",
+    "business.roadrunners.run/desafios/includes/brasil_gigante_table.cfm": "202eced1773477648a56341226e6a145133d2d338e4669f598de66ad1db612cb",
+    "business.roadrunners.run/desafios/includes/brasil_gigante_panel.cfm": "c85fe0b5b01c977eedc99887c5728bbbd28f863c42a0260a4c53ca53ae3722c3",
+    "business.roadrunners.run/desafios/includes/exportar_brasil_gigante.cfm": "f05987dd6fa722cef198782ce3cddf60e81b830fbcd916eb354663af52d780a4"
+  },
+  "preserved_files": {
+    "business.roadrunners.run/Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+    "business.roadrunners.run/.htaccess": "84704880597c6208f774a29d06a2f0bd9e373a0d9af4a6c3d8669300964ebdf8",
+    "business.roadrunners.run/includes/backend/brasil_gigante_challenge_access.cfm": "15f1ecb728021555aaba25954953de102e67c90792ec85e73fbda30a7ac2c417",
+    "business.roadrunners.run/includes/backend/require_brasil_gigante_challenge_access.cfm": "f767517cb9f961d0ffe9794e3dd3a9c02ddfc7e3e15898fd6857b91e91310802",
+    "business.roadrunners.run/desafios/index.cfm": "0c495e669ae46a2d31c589cfb753fbb73573f72c04fc29f8f9b9910c4c9a8dc3",
+    "business.roadrunners.run/desafios/home.cfm": "1f90cee22f8ac86af29367c0e960105c50bcc29ff263b5ba092bbfcbb0137bee",
+    "business.roadrunners.run/desafios/includes/brasil_gigante_validacoes_backend.cfm": "a4f14dc62464919075385152f0ae30f2192e59b37e9c7c5a5258e839bdd9cdbe",
+    "business.roadrunners.run/desafios/includes/catarinense_panel.cfm": "c05f5dbe9114f6b3f0b77b53f20b16a7f36e809ffd370c30e1936e8ac341b94b",
+    "business.roadrunners.run/desafios/includes/catarinense_table.cfm": "68f4e408ae6b261e2ed0f1580db92a5d6e07b76bb9128b04bc67284a5ce6bc95",
+    "business.roadrunners.run/desafios/includes/catarinense_contact_modal.cfm": "95cb4769e7eb1cf48f2f8ccd3d3d10840a01ed4e988179dee0457ec4faebf1a1",
+    "business.roadrunners.run/includes/estrutura/sidenav.cfm": "d204e7277067bd0bb1001e04b7b81cfef0c985ab0b013e8faebd04d54addff66",
+    "business.roadrunners.run/includes/estrutura/head.cfm": "991795f2b391e4c1551df644c14e01b8a6d8cab368e8570a862e9d0fce9c5f13",
+    "business.roadrunners.run/assets/css/business-ui.css": "a11ce771262c81b986799a45aa92f8167c8e5b797f23c96930553908f0c6904d",
+    "business.roadrunners.run/services/geocoding/Store.cfc": "04754874562ec47c2e6b1101213dd5229573f142c934d3e58389a6a0567c2e64",
+    "roadrunners.com.br/Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "roadrunners.com.br/config/settings.cfm": "0193445e88dc9841e4f40c2bc62dded82f18242fe47c140a879c7a8e109d5b08",
+    "roadrunners.com.br/config/meta_whatsapp.local.cfm": "f5f025791837b6279aca7a3f7f2e0c89419fe78b0e553781237657fc0573e305",
+    "roadrunners.com.br/includes/backend/vicky_meta_whatsapp_runtime_config.cfm": "4a77bdc99609f2978887e562e4286981ec1bee1475918887042ac0934b2505d9",
+    "roadrunners.com.br/services/VickyMetaWhatsappServiceV2.cfc": "8e1c8dcf517f170531320284a215e62b6c73425416a5f7b39a5906bbfa80e5e8",
+    "roadrunners.com.br/api/integrations/vicky-proactive/worker.cfm": "7cb2e6104a06c6601afe067dd781a4c122e77d104fff1154a2dd3813b3cf8d01",
+    "roadrunners.com.br/includes/estrutura/head.cfm": "84258c3f09772972a39d3f1870f46da6c598f6f218b2b192f6fb843f84695896",
+    "roadrunners.com.br/sso/comparador/_portal_nonce.cfm": "bef6a590a08b0048252664a130beff45e3025f57eb83506b0d99c52be3d7f45c"
+  },
+  "probes": [
+    {
+      "host": "business.roadrunners.run",
+      "path": "/desafios/circuitobrasilgigante/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/desafios/includes/exportar_brasil_gigante.cfm",
+      "status": "403",
+      "ok": true
+    }
+  ],
+  "checked_at": "2026-11-04T16:58:15.608832+00:00",
+  "tests": [
+    {
+      "mode": "validation",
+      "ok": true,
+      "output": "CBG_MANDALA_VALIDATION_PASSED 10 ",
+      "archive": "/var/backups/business-cbg-mandala-test-3f85g20i",
+      "stage_removed": true
+    },
+    {
+      "mode": "persistence",
+      "ok": true,
+      "output": "CBG_MANDALA_PERSISTENCE_PASSED 9 ",
+      "archive": "/var/backups/business-cbg-mandala-test-pj_c26xr",
+      "stage_removed": true
+    },
+    {
+      "mode": "render",
+      "ok": true,
+      "output": "CBG_MANDALA_RENDER_PASSED ",
+      "archive": "/var/backups/business-cbg-mandala-test-m9zvrbus",
+      "stage_removed": true
+    },
+    {
+      "mode": "guards",
+      "ok": true,
+      "output": "CBG_MANDALA_GUARDS_PASSED [{\"method\": \"POST\", \"admin\": \"0\", \"status\": \"403\", \"ok\": true}, {\"method\": \"GET\", \"admin\": \"1\", \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"status\": \"200\", \"ok\": true}]",
+      "archive": "/var/backups/business-cbg-mandala-test-mtzcca7l",
+      "stage_removed": true
+    },
+    {
+      "mode": "ranking",
+      "ok": true,
+      "output": "CBG_MANDALA_RANKING_PASSED rows=6061 ",
+      "archive": "/var/backups/business-cbg-mandala-test-v00gcu0t",
+      "stage_removed": true
+    }
+  ],
+  "acceptance": {
+    "browser_verified": true,
+    "browser_existing_deliveries": 3,
+    "legacy_backfill_form": true,
+    "required_serial_and_confirmation": true,
+    "real_delivery_submitted_in_browser": false,
+    "xlsx_download_verified": true,
+    "xlsx_columns": 21,
+    "xlsx_rows": 3,
+    "xlsx_serial_header": "U1",
+    "screenshot": "/private/tmp/business-cbg-mandala-number-20261104.png"
+  },
+  "ddl": false,
+  "credential_changes": false,
+  "git_mutations": false,
+  "real_deliveries_in_tests": false,
+  "previous_publications": []
+}

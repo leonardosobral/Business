@@ -3,6 +3,6 @@
 .paid-banner-summary>span{min-width:0;overflow-wrap:anywhere}
 .paid-banner-summary .banner-row-name{font-size:.95rem;line-height:1.4}
 .paid-banner-summary small{font-size:.78rem}
-.paid-banner-summary:focus-visible{outline:2px solid #62c7d8;outline-offset:-2px}
+.paid-banner-summary:focus-visible{outline:2px solid var(--business-accent, #f4b120);outline-offset:-2px}
 @media(max-width:1199px){.paid-banner-summary{grid-template-columns:minmax(180px,2fr) 1fr 1fr;gap:12px}.paid-banner-summary .banner-row-toggle{justify-self:end}}
 @media(max-width:575px){.paid-banner-summary{grid-template-columns:1fr 1fr}.paid-banner-summary .banner-row-name{grid-column:1/-1}.paid-banner-summary .banner-row-toggle{grid-column:1/-1}}

@@ -22,7 +22,7 @@
 <cfset VARIABLES.challengeExportHeaders = [
     "ID", "Nome", "Email", "Telefone", "Gênero", "Cidade", "UF", "Equipe",
     "São Paulo", "Paraná", "Porto Alegre", "Campo Grande", "João Pessoa", "Floripa", "Salvador", "Aracaju",
-    "Etapas reconhecidas", "Status mandala", "Data da entrega", "Data da inscrição"
+    "Etapas reconhecidas", "Status mandala", "Data da entrega", "Data da inscrição", "Número da mandala"
 ]/>
 
 <cfloop array="#VARIABLES.challengeExportHeaders#" item="VARIABLES.challengeExportHeader" index="VARIABLES.challengeExportColumn">
@@ -68,6 +68,7 @@
     <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, VARIABLES.challengeExportMandalaLabel, VARIABLES.challengeExportRow, 18)/>
     <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, isNull(qBrasilGiganteRanking.mandala_entregue_em) ? "" : qBrasilGiganteRanking.mandala_entregue_em, VARIABLES.challengeExportRow, 19)/>
     <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, isNull(qBrasilGiganteRanking.data_inscricao) ? "" : qBrasilGiganteRanking.data_inscricao, VARIABLES.challengeExportRow, 20)/>
+    <cfset spreadsheetSetCellValue(VARIABLES.challengeExportSheet, qBrasilGiganteRanking.mandala_numero & "", VARIABLES.challengeExportRow, 21, "String")/>
     <cfset VARIABLES.challengeExportRow++/>
 </cfloop>
 
@@ -79,6 +80,7 @@
 <cfset spreadsheetSetColumnWidth(VARIABLES.challengeExportSheet, 18, 28)/>
 <cfset spreadsheetSetColumnWidth(VARIABLES.challengeExportSheet, 19, 20)/>
 <cfset spreadsheetSetColumnWidth(VARIABLES.challengeExportSheet, 20, 20)/>
+<cfset spreadsheetSetColumnWidth(VARIABLES.challengeExportSheet, 21, 20)/>
 
 <cfset VARIABLES.challengeExportFilename = "circuito_brasil_gigante_#dateFormat(now(), 'yyyy-mm-dd')#_#timeFormat(now(), 'HH-mm')#.xlsx"/>
 <cfset VARIABLES.challengeExportBinary = spreadsheetReadBinary(VARIABLES.challengeExportSheet)/>

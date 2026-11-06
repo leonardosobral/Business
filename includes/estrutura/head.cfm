@@ -28,7 +28,7 @@
     <!--- CUSTOM STYLES --->
     <link rel="stylesheet" href="/assets/css/style.css?2026062704" />
     <link rel="stylesheet" href="/assets/css/cores_admin.css?202512062" />
-    <link rel="stylesheet" href="/assets/css/business-ui.css?2026062905" />
+    <link rel="stylesheet" href="/assets/css/business-ui.css?v=rr-neutral-20261026" />
 
     <cfif isDefined("VARIABLES.businessPendingWorkspace") AND VARIABLES.businessPendingWorkspace>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,7 +45,7 @@
     </cfif>
 
     <cfif isDefined("VARIABLES.template") AND VARIABLES.template EQ "/administracao/pesquisas/">
-        <link rel="stylesheet" href="/administracao/pesquisas/assets/pesquisas.css?v=20260824-8" />
+        <link rel="stylesheet" href="/administracao/pesquisas/assets/pesquisas.css?v=20260824-7" />
     </cfif>
 
 </head>

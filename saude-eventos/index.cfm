@@ -5,7 +5,7 @@
 <cfset VARIABLES.template = "/saude-eventos/"/>
 <cfinclude template="../includes/backend/backend_login.cfm"/>
 <cfinclude template="../includes/estrutura/head.cfm"/>
-<link rel="stylesheet" href="/saude-eventos/assets/saude-eventos.css?v=20260921"/>
+<link rel="stylesheet" href="/saude-eventos/assets/saude-eventos.css?v=rr-neutral-20261026"/>
 <body data-mdb-theme="dark" class="bg-dark-subtle">
     <cfinclude template="../includes/estrutura/header.cfm"/>
     <main class="saude-eventos-main">

@@ -1,0 +1,80 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-cbat-jzl0j9ic",
+  "manifest": {
+    "conteudo.roadrunners.run/admin/importer_cbat_corridaderua.cfm": {
+      "before": "19e876e8b141ab56cfeee04e30c1548a63b3a0452dcd00c7c40e3704a79a5d87",
+      "after": "b54346c1f4c9faaa09f50f17d34275eec8620abd6e1f4dec4b5790e71598c93d"
+    }
+  },
+  "candidate_hashes": {
+    "conteudo.roadrunners.run/admin/importer_cbat_corridaderua.cfm": "b54346c1f4c9faaa09f50f17d34275eec8620abd6e1f4dec4b5790e71598c93d"
+  },
+  "preserved_files": {
+    "conteudo.roadrunners.run/Application.cfc": "6d3e44b385237610e413f9d045edede55a73b78762447c45b6e31dba20485d30",
+    "conteudo.roadrunners.run/api/admin/importers/cbat.cfm": "8c65d8904ccb29dff2fe8fd9c5e574651b46e7327f61ccdb444c0b336810e1cb",
+    "conteudo.roadrunners.run/api/admin/importers/contrarelogio.cfm": "dc1291865f0812994e32057ff9cceab2ea8ffc577db4b8803a1de04564ff6d21",
+    "conteudo.roadrunners.run/admin/importer_jornalcorrida.cfm": "73e682f6fc90e87eef0312afa50a6a07b86d45f6c10f82c7d5412a3cf11a3b63",
+    "conteudo.roadrunners.run/admin/importer_contrarelogio.cfm": "e2f7221e45d13000e4881a280cc899b7bbc24d3994e24a56eaefa0c664d178d4",
+    "conteudo.roadrunners.run/config/content.local.cfm": "e2337e693484edd190f91e42d17924289e1ae38f13e43fac186c7d24eccbb396",
+    "conteudo.roadrunners.run/inc/article_summary_service.cfc": "12840edd8f8b43deb84d0d8adaeb208b2a28ffad6e22b399b68371c0effb2116",
+    "business.roadrunners.run/Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+    "business.roadrunners.run/config/business.local.cfm": "584c2e78df69c4c231b0d8b4846eb586a73c7abd792c71cfcc09bb0c7c861d51",
+    "business.roadrunners.run/cron-jobs/runner.cfm": "02b02ecd33113a4f31c0068c537c6e822f71ae452626f5bc5e8f9a3dbada0ddb",
+    "business.roadrunners.run/includes/backend/cron_jobs_service.cfm": "6f65a0a988ae8632efc30c945743dd0c9b47bb443c1fd8ac665880cc0a82ee34",
+    "business.roadrunners.run/services/geocoding/Store.cfc": "04754874562ec47c2e6b1101213dd5229573f142c934d3e58389a6a0567c2e64",
+    "business.roadrunners.run/includes/estrutura/sidenav.cfm": "d204e7277067bd0bb1001e04b7b81cfef0c985ab0b013e8faebd04d54addff66"
+  },
+  "probes": [
+    {
+      "host": "conteudo.roadrunners.run",
+      "path": "/api/admin/importers/cbat.cfm",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "host": "conteudo.roadrunners.run",
+      "path": "/api/admin/importers/cbat.cfm",
+      "status": "401",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/cron-jobs/?aba=historico&historico_job_id=5",
+      "status": "302",
+      "ok": true
+    }
+  ],
+  "checked_at": "2026-11-05T11:30:56.117878+00:00",
+  "tests": {
+    "ok": true,
+    "output": "USER_ACQUISITION_SOURCE_PASSED {\"CHECKS\":14.0}",
+    "archive": "/var/backups/business-cbat-test-itv3acs4",
+    "stage_removed": true
+  },
+  "ddl": false,
+  "credential_changes": false,
+  "cron_schedule_changes": false,
+  "git_mutations": false,
+  "runtime_import": {
+    "http": 200,
+    "pages": 1.0,
+    "success": true,
+    "source_name": "CBAt",
+    "updated": 1.0,
+    "importer_key": "cbat_corridaderua",
+    "importados": 1.0,
+    "status": "completed",
+    "created": 0,
+    "fatal_error": "",
+    "processed": 20.0,
+    "skipped": 19.0,
+    "erros": 0,
+    "duplicados": 19.0
+  },
+  "final_verification": {
+    "ok": true,
+    "changed": []
+  }
+}

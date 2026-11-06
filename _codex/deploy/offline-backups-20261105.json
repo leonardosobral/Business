@@ -1,0 +1,51 @@
+{
+  "ok": true,
+  "documentation_files": [
+    "OFFLINE-BACKUPS.md",
+    "offline-backups-index.json"
+  ],
+  "remaining_new_backups": [],
+  "free": 1496788992,
+  "available": 433979392,
+  "df": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda         20G   18G  414M  98% /\n",
+  "backups_size": "452K\t/var/backups\n",
+  "rsyslog_active": true,
+  "server": "172.233.2.76",
+  "local_root": "/Users/geraldoprotta/Backups/RunnerHub/172.233.2.76/2026-11-05",
+  "archives": [
+    {
+      "name": "geocoding-test-evidence",
+      "archive_local_path": "/Users/geraldoprotta/Backups/RunnerHub/172.233.2.76/2026-11-05/geocoding-test-evidence/old-geocoding-test-evidence.tar.gz",
+      "archive_sha256": "9ddbf114e5d43c7abe9cd7b7183824f3282b9d21d657805434f9ff41b47e8fc4",
+      "archive_bytes": 173201680,
+      "top_level_items": 1507,
+      "verified_members": 167902,
+      "manifest_local_path": "/Users/geraldoprotta/Backups/RunnerHub/172.233.2.76/2026-11-05/geocoding-test-evidence/verified-manifest.json"
+    },
+    {
+      "name": "var-backups",
+      "archive_local_path": "/Users/geraldoprotta/Backups/RunnerHub/172.233.2.76/2026-11-05/var-backups/var-backups.tar.gz",
+      "archive_sha256": "be978607a91cc05f90434811e446c1c8cf68d02161b86491966ae0d59a7cfa2f",
+      "archive_bytes": 151626764,
+      "top_level_items": 940,
+      "verified_members": 20780,
+      "manifest_local_path": "/Users/geraldoprotta/Backups/RunnerHub/172.233.2.76/2026-11-05/var-backups/verified-manifest.json"
+    }
+  ],
+  "restored_samples": 2,
+  "scope_top_level_items": 2447,
+  "git_mutations": false,
+  "multipart_probe": {
+    "ok": true,
+    "http": 302,
+    "no_space_error": false,
+    "multipart_bytes": 1048715,
+    "authenticated": false,
+    "route_created": false,
+    "scope": "Multipart reception and login guard only; route creation not tested."
+  },
+  "final_usage_percent": 98,
+  "final_available_mib": 414,
+  "server_backups_directory_kib": 452,
+  "completed_at": "2026-11-05T15:27:22.640877+00:00"
+}

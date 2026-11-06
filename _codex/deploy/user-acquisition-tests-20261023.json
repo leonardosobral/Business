@@ -1,0 +1,71 @@
+{
+  "checked_at": "2026-10-23T21:36:08.294799+00:00",
+  "candidate_hashes": {
+    "services/UserAcquisitionMetrics.cfc": "ff07eff3d80d10dc0ffd877a05ae6c3a90b48adcfe85d85378ab7412a36ad91f",
+    "administracao/usuarios/includes/acquisition.cfm": "006eb6b6532914d541ab3990e97711c4e1096a9e89d59158cc216f0f103aacd1",
+    "administracao/usuarios/assets/acquisition.js": "c3909a7e9ea450367d8cf51ab009596cc2d0e658eca6b7be48a7a612f64802cb",
+    "administracao/usuarios/assets/acquisition.css": "f493d399fcee1baac4ae07765b667a838939f9ab3da003e4b92d3e79dac414ee",
+    "administracao/usuarios/includes/backend.cfm": "a7a278dbab8c4af5e0a0c73d31d7176c94226ce8883f9f498be803f3b2b1f08f",
+    "administracao/usuarios/home.cfm": "84d96a597393575b8e5455a9d6d440cd776eed8c1a9a8d0821406d3b6fc643fa"
+  },
+  "native_tests": [
+    {
+      "ok": true,
+      "output": "{\"COVERAGE\":[{\"FUTURE_DATE\":0,\"DB_TIMEZONE\":\"America/Sao_Paulo\",\"MISSING_DATE\":0,\"LATEST_AT\":\"2026-10-23 18:28:50.217996\",\"USERS\":57519,\"FIRST_AT\":\"2022-06-19 10:52:53\"}],\"COLUMN\":[{\"IS_NULLABLE\":\"NO\",\"DATA_TYPE\":\"timestamp without time zone\",\"COLUMN_DEFAULT\":\"now()\"}],\"INDEXES\":[]}USER_ACQUISITION_SOURCE_PASSED ",
+      "archive": "/var/backups/business-user-acquisition-test-wwb0akrh",
+      "stage_removed": true
+    },
+    {
+      "ok": true,
+      "output": "{\"TOTAL\":1443.0,\"DAYS\":30.0,\"FROM\":\"2026-09-24\",\"TO\":\"2026-10-23\",\"ROWS\":365}USER_ACQUISITION_NATIVE_PASSED ",
+      "archive": "/var/backups/business-user-acquisition-test-im5rq_om",
+      "stage_removed": true
+    },
+    {
+      "ok": true,
+      "output": "USER_ACQUISITION_RENDER_PASSED ",
+      "archive": "/var/backups/business-user-acquisition-test-tqlk5eaw",
+      "stage_removed": true
+    }
+  ],
+  "frontend_tests": 4,
+  "merge_contract_tests": 3,
+  "dev_login_regression": {
+    "checks": 52.0,
+    "live_account_writes": 0,
+    "ok": true,
+    "dev_receiver_sha256": "17b4bc0ac4bf2b438d977e35b0ac33b7865c8e54ef24717b80fdfe2d467b6130",
+    "dev_receiver_baseline": "17b4bc0ac4bf2b438d977e35b0ac33b7865c8e54ef24717b80fdfe2d467b6130",
+    "dev_header_sha256": "891ed37114714c2d2bfcdbd54e349e1b973bf8175dc9699be6300ebff275c0b6",
+    "dev_return_sha256": "c3fa913eb0d6222eb5c845ce63ab5728427e0518b46f720e59a945df83c3246d",
+    "dev_return_baseline": "c3fa913eb0d6222eb5c845ce63ab5728427e0518b46f720e59a945df83c3246d",
+    "render_checks": [
+      {
+        "case": "list",
+        "ok": true,
+        "expected": 30,
+        "buttons": 30
+      },
+      {
+        "case": "detail",
+        "ok": true,
+        "expected": 1,
+        "buttons": 1
+      },
+      {
+        "case": "dev-list",
+        "ok": true,
+        "expected": 0,
+        "buttons": 0
+      },
+      {
+        "case": "dev-detail",
+        "ok": true,
+        "expected": 0,
+        "buttons": 0
+      }
+    ],
+    "archive": "/var/backups/business-dev-login-tests-l7bn_z32",
+    "stage_removed": true
+  }
+}

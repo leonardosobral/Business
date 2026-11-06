@@ -206,8 +206,11 @@
 
 <section class="cbg-dashboard">
   <cfif isDefined("URL.sucesso") AND URL.sucesso EQ "mandala_entregue">
-    <div class="alert alert-success"><i class="fa-solid fa-award me-2"></i>Mandala marcada como entregue.</div>
+    <div class="alert alert-success"><i class="fa-solid fa-award me-2"></i>Entrega confirmada com o número da mandala registrado.</div>
+  <cfelseif isDefined("URL.sucesso") AND URL.sucesso EQ "mandala_numero_salvo">
+    <div class="alert alert-success"><i class="fa-solid fa-award me-2"></i>Número da mandala registrado. A data original da entrega foi preservada.</div>
   </cfif>
+  <cfif len(VARIABLES.challengeMandalaError)><div class="alert alert-warning" role="alert"><cfoutput>#encodeForHTML(VARIABLES.challengeMandalaError)#</cfoutput></div></cfif>
 
   <div class="cbg-dashboard-hero p-3 p-lg-4 mb-3">
     <div class="d-flex flex-wrap align-items-start justify-content-between gap-3 mb-4">
@@ -281,8 +284,8 @@
     <div class="card-body p-3">
       <form method="get" class="row g-2 align-items-end">
         <div class="col-12 col-lg-3">
-          <label class="form-label">Atleta</label>
-          <input class="form-control" type="search" name="busca" value="<cfoutput>#encodeForHTMLAttribute(URL.busca)#</cfoutput>" placeholder="Nome do atleta"/>
+          <label class="form-label">Atleta ou mandala</label>
+          <input class="form-control" type="search" name="busca" value="<cfoutput>#encodeForHTMLAttribute(URL.busca)#</cfoutput>" placeholder="Nome ou número da mandala"/>
         </div>
         <div class="col-6 col-lg-2">
           <label class="form-label">Mandala</label>

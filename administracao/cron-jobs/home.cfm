@@ -374,7 +374,7 @@ function cronJobsBuildFriendlySummary(required string rawResponse, string rawErr
     position: sticky;
     top: 0;
     z-index: 1;
-    background: var(--mdb-body-bg, #212529);
+    background: var(--mdb-body-bg, #242424);
   }
 
   .cron-page .cron-notification-admins .cron-admin-email {

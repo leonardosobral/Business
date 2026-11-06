@@ -480,6 +480,9 @@ function cronJobsResponsePreview(required any value) {
     var parsedPayload = {};
     var compactPayload = {};
     var previewKey = "";
+    var errorSamples = [];
+    var resultItem = {};
+    var sample = {};
     var summaryKeys = listToArray("success,status,message,importados,created,updated,duplicados,skipped,vinculados,filtrados,ignorados,canais_processados,selected,processed,linked,review,high_confidence_matches,not_found,conflicts,errors,pages,executed,erros,fatal_error");
 
     if (isNull(arguments.value)) {
@@ -503,6 +506,23 @@ function cronJobsResponsePreview(required any value) {
                             }
                         }
                     }
+                    // Retain bounded failure details; counts alone hide the cause.
+                    if (structKeyExists(parsedPayload, "results") AND isArray(parsedPayload.results)) {
+                        for (resultItem in parsedPayload.results) {
+                            if (!isStruct(resultItem)) continue;
+                            if (!(structKeyExists(resultItem, "action") AND isSimpleValue(resultItem.action) AND compareNoCase(resultItem.action, "Erro") EQ 0)
+                                AND !(structKeyExists(resultItem, "status") AND isSimpleValue(resultItem.status) AND listFindNoCase("error,failed,rejected", resultItem.status))) continue;
+                            sample = {};
+                            for (previewKey in ["title", "message", "error_code"]) {
+                                if (structKeyExists(resultItem, previewKey) AND !isNull(resultItem[previewKey]) AND isSimpleValue(resultItem[previewKey])) {
+                                    sample[previewKey] = left(resultItem[previewKey] & "", previewKey EQ "message" ? 500 : 140);
+                                }
+                            }
+                            if (structCount(sample)) arrayAppend(errorSamples, sample);
+                            if (arrayLen(errorSamples) GTE 3) break;
+                        }
+                    }
+                    if (arrayLen(errorSamples)) compactPayload.error_samples = errorSamples;
                     compactPayload.response_compacted = true;
                     preview = serializeJSON(compactPayload);
                 }

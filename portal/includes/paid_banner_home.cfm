@@ -7,8 +7,8 @@
 <cfset VARIABLES.paidBannerFormUrl="/portal/banners/?section=form&novo=1&" & VARIABLES.paidBannerReturnQuery & "##paid-banner-form"/>
 <cfset VARIABLES.paidBannerListActionUrl="/portal/banners/?section=banners&" & VARIABLES.paidBannerReturnQuery/>
 <cfset VARIABLES.paidBannerFormActionUrl="/portal/banners/?section=form&" & VARIABLES.paidBannerReturnQuery & "##paid-banner-form"/>
-<link rel="stylesheet" href="/assets/css/portal-banner-dashboard.css?v=2026091601"/>
-<link rel="stylesheet" href="/assets/css/paid-banner-workspace.css?v=20260916"/>
+<link rel="stylesheet" href="/assets/css/portal-banner-dashboard.css?v=rr-neutral-20261026"/>
+<link rel="stylesheet" href="/assets/css/paid-banner-workspace.css?v=rr-neutral-20261026"/>
 <section class="banner-dashboard">
 <cfoutput>
     <header class="banner-header"><div><div class="banner-eyebrow">Marketing · marcas e parceiros</div><h1 class="h3 mb-1">Banners</h1><p class="text-muted mb-0">Divulgue sua marca, pague por cliques e acompanhe os resultados.</p></div><cfif VARIABLES.paidBannerReady AND VARIABLES.paidBannerContext.canManage><a class="btn btn-info" href="#encodeForHTMLAttribute(VARIABLES.paidBannerFormUrl)#">Criar banner</a></cfif></header>

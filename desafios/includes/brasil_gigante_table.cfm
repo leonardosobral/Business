@@ -82,18 +82,32 @@
               <td class="text-center fw-bold">#qBrasilGiganteRanking.nodesafio#/#VARIABLES.challengeCircuitTotalEvents#</td>
               <td>
                 <span class="badge #VARIABLES.challengeMandalaStatusClass#">#VARIABLES.challengeMandalaStatusLabel#</span>
+                <cfif len(trim(qBrasilGiganteRanking.mandala_numero & ''))>
+                  <div class="small fw-semibold mt-1">Mandala nº #encodeForHTML(qBrasilGiganteRanking.mandala_numero)#</div>
+                <cfelseif qBrasilGiganteRanking.mandala_status EQ 'entregue'>
+                  <div class="small text-warning mt-1">Número não informado</div>
+                </cfif>
                 <cfif qBrasilGiganteRanking.mandala_status EQ "entregue" AND len(trim(qBrasilGiganteRanking.mandala_entregue_em & ""))>
                   <div class="small text-muted mt-1"><cfif isDate(qBrasilGiganteRanking.mandala_entregue_em)>#dateFormat(qBrasilGiganteRanking.mandala_entregue_em, "dd/mm/yyyy")# #timeFormat(qBrasilGiganteRanking.mandala_entregue_em, "HH:mm")#<cfelse>#encodeForHTML(qBrasilGiganteRanking.mandala_entregue_em)#</cfif></div>
                 </cfif>
               </td>
               <td class="text-end">
-                <cfif listFindNoCase("proxima_etapa,imediata", qBrasilGiganteRanking.mandala_status)>
-                  <form method="post" class="d-inline" onsubmit="return confirm('Confirmar a entrega da mandala para este atleta?');">
+                <cfif listFindNoCase("proxima_etapa,imediata", qBrasilGiganteRanking.mandala_status) OR (qBrasilGiganteRanking.mandala_status EQ 'entregue' AND NOT len(trim(qBrasilGiganteRanking.mandala_numero & '')))>
+                  <cfset VARIABLES.cbgMandalaSelected=len(VARIABLES.challengeMandalaError) AND val(FORM.id_usuario ?: 0) EQ qBrasilGiganteRanking.id/>
+                  <details class="text-start" <cfif VARIABLES.cbgMandalaSelected>open</cfif>>
+                  <summary class="btn btn-success btn-sm text-nowrap"><i class="fa-solid fa-award me-1" aria-hidden="true"></i> <cfif qBrasilGiganteRanking.mandala_status EQ 'entregue'>Informar número<cfelse>Mandala entregue</cfif></summary>
+                  <form method="post" class="border rounded p-2 mt-2" style="min-width:220px;max-width:280px;white-space:normal;">
                     <input type="hidden" name="challenge_action" value="entregar_mandala"/>
                     <input type="hidden" name="challenge_medal_csrf" value="#encodeForHTMLAttribute(VARIABLES.challengeMedalCsrf)#"/>
                     <input type="hidden" name="id_usuario" value="#qBrasilGiganteRanking.id#"/>
-                    <button class="btn btn-success btn-sm text-nowrap" type="submit"><i class="fa-solid fa-award me-1"></i> Mandala entregue</button>
+                    <div class="small fw-semibold mb-2">#encodeForHTML(qBrasilGiganteRanking.nome)#</div>
+                    <label class="small d-block">Número gravado na mandala
+                      <input class="form-control form-control-sm mt-1" type="text" name="mandala_numero" inputmode="numeric" pattern="[0-9]{1,12}" maxlength="12" autocomplete="off" required placeholder="Ex.: 00123" value="<cfif VARIABLES.cbgMandalaSelected>#encodeForHTMLAttribute(FORM.mandala_numero ?: '')#</cfif>"/>
+                    </label>
+                    <label class="small d-flex align-items-start gap-2 my-2"><input type="checkbox" name="confirmar_mandala" value="1" required class="mt-1"/> Conferi o número da mandala entregue a este atleta.</label>
+                    <button class="btn btn-warning btn-sm" type="submit"><cfif qBrasilGiganteRanking.mandala_status EQ 'entregue'>Salvar número<cfelse>Confirmar entrega</cfif></button>
                   </form>
+                  </details>
                 <cfelse>
                   <span class="text-muted">-</span>
                 </cfif>

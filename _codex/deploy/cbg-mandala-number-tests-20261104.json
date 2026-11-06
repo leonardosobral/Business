@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-11-04T16:57:15.747349+00:00",
+  "candidate_hashes": {
+    "business.roadrunners.run/desafios/includes/MandalaDelivery.cfc": "7e5b3a08188263e6d9cc096d64144a82418433acd28ccc8119d03f7e6e2d1d66",
+    "business.roadrunners.run/desafios/includes/brasil_gigante_mandala_action.cfm": "a4b4f8b9b8e7792e016c96c7c77ee6a5fa9a01266f877c41640fc27bb0a9570e",
+    "business.roadrunners.run/desafios/includes/backend.cfm": "716cac261b2c8f0f9ab0455006320db985d662aa4245419319ba6208a6fbfa9d",
+    "business.roadrunners.run/desafios/includes/brasil_gigante_table.cfm": "202eced1773477648a56341226e6a145133d2d338e4669f598de66ad1db612cb",
+    "business.roadrunners.run/desafios/includes/brasil_gigante_panel.cfm": "c85fe0b5b01c977eedc99887c5728bbbd28f863c42a0260a4c53ca53ae3722c3",
+    "business.roadrunners.run/desafios/includes/exportar_brasil_gigante.cfm": "f05987dd6fa722cef198782ce3cddf60e81b830fbcd916eb354663af52d780a4"
+  },
+  "tests": [
+    {
+      "mode": "validation",
+      "ok": true,
+      "output": "CBG_MANDALA_VALIDATION_PASSED 10 ",
+      "archive": "/var/backups/business-cbg-mandala-test-3f85g20i",
+      "stage_removed": true
+    },
+    {
+      "mode": "persistence",
+      "ok": true,
+      "output": "CBG_MANDALA_PERSISTENCE_PASSED 9 ",
+      "archive": "/var/backups/business-cbg-mandala-test-pj_c26xr",
+      "stage_removed": true
+    },
+    {
+      "mode": "render",
+      "ok": true,
+      "output": "CBG_MANDALA_RENDER_PASSED ",
+      "archive": "/var/backups/business-cbg-mandala-test-m9zvrbus",
+      "stage_removed": true
+    },
+    {
+      "mode": "guards",
+      "ok": true,
+      "output": "CBG_MANDALA_GUARDS_PASSED [{\"method\": \"POST\", \"admin\": \"0\", \"status\": \"403\", \"ok\": true}, {\"method\": \"GET\", \"admin\": \"1\", \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"status\": \"200\", \"ok\": true}]",
+      "archive": "/var/backups/business-cbg-mandala-test-mtzcca7l",
+      "stage_removed": true
+    },
+    {
+      "mode": "ranking",
+      "ok": true,
+      "output": "CBG_MANDALA_RANKING_PASSED rows=6061 ",
+      "archive": "/var/backups/business-cbg-mandala-test-v00gcu0t",
+      "stage_removed": true
+    }
+  ]
+}

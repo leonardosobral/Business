@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-10-26T12:21:04.253700+00:00",
+  "candidate_hashes": {
+    "roadrunners.com.br/atendimento/index.cfm": "b34b9221c4c13093d8d94d527bd9bb8a63a673f160f579687361f1b1989f7c47",
+    "business.roadrunners.run/helpdesk/includes/HelpdeskNotes.cfc": "a89615b6358950b49967718179c10010a78f180f9988cc9fabf9b879e3e3efad",
+    "business.roadrunners.run/helpdesk/includes/HelpdeskReplies.cfc": "8dcbc97bc2019f59e37ddc6cd5a16bcf28b2e8f3c84e530c06bb86d7ba7da1e3",
+    "business.roadrunners.run/helpdesk/includes/workspace-replies-actions.cfm": "9ba7b6c9ff0aeb78aa29bf69347a868151b46afacf815d2d8bb50ad6efd16d26",
+    "business.roadrunners.run/helpdesk/includes/workspace-replies.cfm": "8ca17677f6103a8ab9cd5a013b33c994755d788be162b90fa0faed7277983fd4",
+    "business.roadrunners.run/helpdesk/includes/workspace-init.cfm": "0d94d34ab3ab8b23107094fffa93bb79e8946b14b3d0af167d9fb2bf73c8a6bc",
+    "business.roadrunners.run/helpdesk/includes/backend.cfm": "48dfbf16655722ac5516fbfe850f6aec990575f406b3c2c5802ec212f661878c",
+    "business.roadrunners.run/helpdesk/includes/workspace-actions.cfm": "ba10283e763077f0d1ca0fbd3dd7b3ac793bbf96a36acf0d9721ea635b3e1515",
+    "business.roadrunners.run/helpdesk/assets/workspace.css": "9992c15c24124c8e13ac8c4a7380d13b62746b035583f09a66907ba5eae0634e",
+    "business.roadrunners.run/helpdesk/assets/workspace.js": "0839250d088faa53c34d3048b06bb0a88219aeacf184c3c546d2b6f5cafadc71",
+    "business.roadrunners.run/helpdesk/includes/workspace.cfm": "f4e224bc70c51c370872ab64c64d342ad0e8f0201c78fdc705454aa430a5180f"
+  },
+  "tests": [
+    {
+      "mode": "notes",
+      "ok": true,
+      "output": "HELPDESK_TOOLS_NOTES_PASSED 7 ",
+      "archive": "/var/backups/business-helpdesk-tools-test-zb8zsdrn",
+      "stage_removed": true
+    },
+    {
+      "mode": "replies",
+      "ok": true,
+      "output": "HELPDESK_TOOLS_REPLIES_PASSED 7 ",
+      "archive": "/var/backups/business-helpdesk-tools-test-pmwy6n1u",
+      "stage_removed": true
+    },
+    {
+      "mode": "render",
+      "ok": true,
+      "output": "HELPDESK_TOOLS_RENDER_PASSED ",
+      "archive": "/var/backups/business-helpdesk-tools-test-omuvtgib",
+      "stage_removed": true
+    },
+    {
+      "mode": "guards",
+      "ok": true,
+      "output": "HELPDESK_TOOLS_GUARDS_PASSED [{\"method\": \"POST\", \"admin\": \"1\", \"expected\": 403, \"status\": \"403\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"expected\": 403, \"status\": \"403\", \"ok\": true}, {\"method\": \"GET\", \"admin\": \"1\", \"expected\": 403, \"status\": \"403\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"0\", \"expected\": 403, \"status\": \"403\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"expected\": 200, \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"expected\": 200, \"status\": \"200\", \"ok\": true}]",
+      "archive": "/var/backups/business-helpdesk-tools-test-m5673u70",
+      "stage_removed": true
+    }
+  ],
+  "js_tests": 4
+}

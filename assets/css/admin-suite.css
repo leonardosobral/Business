@@ -3,10 +3,10 @@
 }
 
 .admin-suite-page {
-    --admin-suite-accent: #fab120;
+    --admin-suite-accent: var(--business-accent, #f4b120);
     --admin-suite-border: rgba(255, 255, 255, .11);
     --admin-suite-border-strong: rgba(255, 255, 255, .18);
-    --admin-suite-surface: #202124;
+    --admin-suite-surface: var(--business-panel, #262626);
     --admin-suite-surface-soft: rgba(255, 255, 255, .04);
     --admin-suite-surface-strong: rgba(255, 255, 255, .075);
     --admin-suite-muted: rgba(255, 255, 255, .66);
@@ -18,7 +18,7 @@
 .admin-suite-header {
     align-items: end;
     background:
-        linear-gradient(135deg, rgba(250, 177, 32, .075), transparent 42%),
+        linear-gradient(135deg, rgba(244,177,32, .075), transparent 42%),
         var(--admin-suite-surface);
     border: 1px solid var(--admin-suite-border);
     border-radius: .85rem;
@@ -33,7 +33,7 @@
 }
 
 .admin-suite-header::before {
-    background: linear-gradient(90deg, var(--admin-suite-accent), rgba(250, 177, 32, .12) 58%, transparent);
+    background: linear-gradient(90deg, var(--admin-suite-accent), rgba(244,177,32, .12) 58%, transparent);
     content: "";
     height: 2px;
     inset: 0 0 auto;
@@ -49,8 +49,8 @@
 
 .admin-suite-heading-icon {
     align-items: center;
-    background: rgba(250, 177, 32, .1);
-    border: 1px solid rgba(250, 177, 32, .3);
+    background: rgba(244,177,32, .1);
+    border: 1px solid rgba(244,177,32, .3);
     border-radius: .7rem;
     color: var(--admin-suite-accent);
     display: inline-flex;
@@ -125,8 +125,8 @@
 }
 
 .admin-suite-nav-link.is-active {
-    background: rgba(250, 177, 32, .12);
-    border-color: rgba(250, 177, 32, .38);
+    background: rgba(244,177,32, .12);
+    border-color: rgba(244,177,32, .38);
     color: #fff;
 }
 
@@ -220,7 +220,7 @@
 
 .admin-suite-page .agenda-dialog,
 .admin-suite-page .drive-dialog {
-    background: #2b2c2e;
+    background: #2c2c2c;
     border-color: var(--admin-suite-border-strong);
     border-radius: .85rem;
     box-shadow: 0 24px 70px rgba(0, 0, 0, .42);

@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-11-05T11:24:21.049877+00:00",
+  "candidate_hashes": {
+    "conteudo.roadrunners.run/admin/importer_contrarelogio.cfm": "e2f7221e45d13000e4881a280cc899b7bbc24d3994e24a56eaefa0c664d178d4",
+    "business.roadrunners.run/includes/backend/cron_jobs_service.cfm": "6f65a0a988ae8632efc30c945743dd0c9b47bb443c1fd8ac665880cc0a82ee34"
+  },
+  "native_tests": {
+    "ok": true,
+    "output": "USER_ACQUISITION_SOURCE_PASSED {\"CHECKS\":11.0,\"BODY_LENGTH\":3926,\"PREVIEW_LENGTH\":1692}",
+    "archive": "/var/backups/business-jornalcorrida-test-kqkpkdmx",
+    "stage_removed": true
+  }
+}

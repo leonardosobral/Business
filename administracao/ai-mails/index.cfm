@@ -9,8 +9,8 @@
 <cfheader name="Referrer-Policy" value="same-origin"/>
 <!doctype html><html lang="pt-br">
 <cfinclude template="../../includes/estrutura/head.cfm"/>
-<link rel="stylesheet" href="/assets/css/admin-suite.css?v=20260917-aimails"/>
-<link rel="stylesheet" href="/administracao/ai-mails/assets/ai-mails.css?v=3"/>
+<link rel="stylesheet" href="/assets/css/admin-suite.css?v=rr-neutral-20261026"/>
+<link rel="stylesheet" href="/administracao/ai-mails/assets/ai-mails.css?v=rr-neutral-20261026"/>
 <body data-mdb-theme="dark" class="bg-dark-subtle">
 <cfinclude template="../../includes/estrutura/header.cfm"/>
 <main class="container-fluid px-3 px-lg-4 business-page admin-suite-page admin-suite-main ai-mails" id="aiMails" data-csrf="<cfoutput>#encodeForHtmlAttribute(session.aiMailCsrf)#</cfoutput>">

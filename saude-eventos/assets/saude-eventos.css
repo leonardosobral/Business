@@ -4,9 +4,9 @@
 }
 
 .saude-eventos-shell {
-  --saude-accent: #f6ad0f;
+  --saude-accent: var(--business-accent, #f4b120);
   --saude-line: rgba(255, 255, 255, 0.1);
-  --saude-panel: rgba(30, 30, 32, 0.92);
+  --saude-panel: rgba(30,30,30, 0.92);
   max-width: 1540px;
   margin: 0 auto;
 }
@@ -79,7 +79,7 @@
 .saude-event-status { display: inline-flex; align-items: center; gap: .4rem; padding: .28rem .55rem; border-radius: 999px; font-size: .72rem; font-weight: 800; background: rgba(255,255,255,.08); color: rgba(255,255,255,.7); }
 .saude-event-status.is-active { background: rgba(37, 191, 116, .14); color: #70dea5; }
 .saude-event-status.is-paused { background: rgba(246, 173, 15, .12); color: #ffc956; }
-.saude-event-status.is-new { background: rgba(132, 147, 170, .12); color: #aab6c8; }
+.saude-event-status.is-new { background: rgba(145,145,145, .12); color: #b5b5b5; }
 .saude-event-id { color: rgba(255,255,255,.38); font-size: .72rem; font-variant-numeric: tabular-nums; }
 .saude-event-card h2 { min-height: 2.7em; font-size: 1.02rem; line-height: 1.35; }
 .saude-event-meta { display: flex; flex-wrap: wrap; gap: .45rem .85rem; padding: .75rem 0; color: rgba(255,255,255,.58); font-size: .76rem; }

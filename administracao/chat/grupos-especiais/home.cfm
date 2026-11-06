@@ -12,7 +12,7 @@ function sgAudienceLabel(required struct policy) {
     return "Regra personalizada";
 }
 </cfscript>
-<link rel="stylesheet" href="/administracao/chat/grupos-especiais/assets/manager.css?v=20261002"/>
+<link rel="stylesheet" href="/administracao/chat/grupos-especiais/assets/manager.css?v=rr-neutral-20261026"/>
 <section class="communities py-4 py-lg-5">
   <header class="cm-hero mb-4">
     <span class="cm-hero-icon"><i class="fa-solid fa-comments"></i></span>

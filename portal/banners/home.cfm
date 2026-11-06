@@ -7,7 +7,7 @@
 <cfinclude template="../includes/banner_management_backend.cfm"/>
 <cfinclude template="../includes/banner_dashboard_backend.cfm"/>
 <cfset VARIABLES.bannerShowForm = qBannerManagementEdit.recordcount OR (isDefined('URL.banner_novo') AND URL.banner_novo) OR (isDefined('FORM.acao') AND FORM.acao EQ 'salvar_banner')/>
-<link rel="stylesheet" href="/assets/css/portal-banner-dashboard.css?v=2026091601"/>
+<link rel="stylesheet" href="/assets/css/portal-banner-dashboard.css?v=rr-neutral-20261026"/>
 <section class="banner-dashboard">
     <header class="banner-header">
         <div><div class="banner-eyebrow">Marketing</div><h1 class="h3 mb-1">Banners</h1><p class="text-muted mb-0">Acompanhe a exibição dos banners e gerencie onde cada um aparece.</p></div>

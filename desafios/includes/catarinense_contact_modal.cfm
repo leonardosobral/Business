@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/desafios/assets/catarinense-contact.css?v=20261013-1"/>
+<link rel="stylesheet" href="/desafios/assets/catarinense-contact.css?v=rr-neutral-20261026"/>
 <dialog id="catarinenseContactDialog" class="catarinense-contact-dialog" aria-labelledby="catarinenseContactTitle">
   <header class="catarinense-contact-header">
     <div><span class="catarinense-contact-eyebrow">CONTATO DO ATLETA</span><h2 id="catarinenseContactTitle" class="h5 mb-0">Dados e canais de contato</h2></div>

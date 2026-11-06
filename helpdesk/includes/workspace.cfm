@@ -1,5 +1,5 @@
 <cfif NOT structKeyExists(VARIABLES,"helpdeskCanManage") OR NOT VARIABLES.helpdeskCanManage><cfheader statuscode="403"/><cfabort/></cfif>
-<link rel="stylesheet" href="/helpdesk/assets/workspace.css?v=20261026-2"/>
+<link rel="stylesheet" href="/helpdesk/assets/workspace.css?v=rr-neutral-20261026"/>
 <section class="hd-workspace" aria-label="Central de atendimento">
 <cfoutput>
   <header class="hd-header">

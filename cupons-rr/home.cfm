@@ -1,5 +1,5 @@
 <cfif NOT structKeyExists(VARIABLES,'cpData')><cfheader statuscode="403"/><cfabort/></cfif>
-<link rel="stylesheet" href="/cupons-rr/assets/manager.css?v=20260916-1"/>
+<link rel="stylesheet" href="/cupons-rr/assets/manager.css?v=rr-neutral-20261026"/>
 <section class="cp-manager">
 <cfoutput>
 <header class="cp-header"><div><span class="cp-kicker">Benefícios e inscrições</span><h1>Cupons de desconto</h1><p>Organize os códigos, as condições e os eventos que recebem cada benefício.</p></div><cfif cuponsRrCanOperate><a class="btn btn-warning" href="./?novo=1##cp-editor">Novo cupom</a></cfif></header>

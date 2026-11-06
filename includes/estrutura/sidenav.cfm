@@ -789,6 +789,8 @@
                 </a>
             </li>
 
+            
+
             <!--- CONTAS E PARCEIROS --->
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Contas e parceiros</span>

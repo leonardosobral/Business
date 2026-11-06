@@ -1,0 +1,138 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-helpdesk-close-r4_wnagf",
+  "manifest": {
+    "business.roadrunners.run/services/HelpdeskAutoClose.cfc": {
+      "before": null,
+      "after": "c77b0d4decf8b075ec285036d998f8cd948ff01a2ae26f6256c8cb89d20cab31"
+    },
+    "business.roadrunners.run/api/helpdesk/auto-close.cfm": {
+      "before": null,
+      "after": "be8089f7635d0108e79e5f6898294cf8cab1c84534cd0f65d8859218e55d0b5d"
+    },
+    "business.roadrunners.run/includes/backend/cron_jobs_service.cfm": {
+      "before": "068f57f87e214ca9d34ec186c9af227649462068158b039861229cdf86fd203a",
+      "after": "dc20f19627942a2ebbbd9aa9fecfd4210d9b7a434c174533a19f63d0ea5f065d"
+    }
+  },
+  "candidate_hashes": {
+    "business.roadrunners.run/services/HelpdeskAutoClose.cfc": "c77b0d4decf8b075ec285036d998f8cd948ff01a2ae26f6256c8cb89d20cab31",
+    "business.roadrunners.run/api/helpdesk/auto-close.cfm": "be8089f7635d0108e79e5f6898294cf8cab1c84534cd0f65d8859218e55d0b5d",
+    "business.roadrunners.run/includes/backend/cron_jobs_service.cfm": "dc20f19627942a2ebbbd9aa9fecfd4210d9b7a434c174533a19f63d0ea5f065d"
+  },
+  "preserved_files": {
+    "business.roadrunners.run/Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+    "business.roadrunners.run/.htaccess": "84704880597c6208f774a29d06a2f0bd9e373a0d9af4a6c3d8669300964ebdf8",
+    "business.roadrunners.run/cron-jobs/runner.cfm": "02b02ecd33113a4f31c0068c537c6e822f71ae452626f5bc5e8f9a3dbada0ddb",
+    "business.roadrunners.run/helpdesk/index.cfm": "67318c5218eda07a0db2fe9b8cca8c23ce3544de4fe140d2da2a77902e633cb0",
+    "business.roadrunners.run/helpdesk/home.cfm": "e3cdb31802af6b555bd29444f932074b890bca5f5eeccdaa3c6ba22352159629",
+    "business.roadrunners.run/helpdesk/includes/backend.cfm": "068b4fd5b9cdf10e914521a17b69ab748c532752e68b73815419c1f27ab0a2e4",
+    "business.roadrunners.run/helpdesk/includes/workspace-actions.cfm": "0220e64972c570cbb50d450a882c461c7b0101862d7569561b8db11da1934410",
+    "business.roadrunners.run/helpdesk/includes/workspace.cfm": "5f7d3ecce68567c4e1731df31254a3dbaf99f872e4d3f7b8585ba1df85234779",
+    "business.roadrunners.run/includes/backend/require_admin.cfm": "c2f9659ac3db941cc543a9f86d5b39b573c365a36ca2d3fba5a58675f6e017d6",
+    "business.roadrunners.run/services/geocoding/Store.cfc": "04754874562ec47c2e6b1101213dd5229573f142c934d3e58389a6a0567c2e64",
+    "business.roadrunners.run/services/geocoding/LocationWorker.cfc": "08bf02725f6f4cfa1fd1b286dba6edf1cd9627ccded04141a5cf90e0522f6bd6",
+    "business.roadrunners.run/administracao/vicky/home.cfm": "fbe926bc6754b0b79211aa65826df6d762c4000ea1e69038d590b6150a1ebf90",
+    "business.roadrunners.run/administracao/vicky/includes/backend.cfm": "e7ffc3f5f7e4889e099984fcaa3e1e89f1cf46dcdc1094a3b4aab8ef8c2545e6",
+    "business.roadrunners.run/services/UserAcquisitionMetrics.cfc": "ff07eff3d80d10dc0ffd877a05ae6c3a90b48adcfe85d85378ab7412a36ad91f",
+    "business.roadrunners.run/administracao/usuarios/home.cfm": "84d96a597393575b8e5455a9d6d440cd776eed8c1a9a8d0821406d3b6fc643fa",
+    "business.roadrunners.run/administracao/usuarios/includes/backend.cfm": "a7a278dbab8c4af5e0a0c73d31d7176c94226ce8883f9f498be803f3b2b1f08f",
+    "roadrunners.com.br/Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "roadrunners.com.br/config/settings.cfm": "0193445e88dc9841e4f40c2bc62dded82f18242fe47c140a879c7a8e109d5b08",
+    "roadrunners.com.br/config/meta_whatsapp.local.cfm": "f5f025791837b6279aca7a3f7f2e0c89419fe78b0e553781237657fc0573e305",
+    "roadrunners.com.br/includes/backend/vicky_meta_whatsapp_runtime_config.cfm": "4a77bdc99609f2978887e562e4286981ec1bee1475918887042ac0934b2505d9",
+    "roadrunners.com.br/services/VickyMetaWhatsappServiceV2.cfc": "8e1c8dcf517f170531320284a215e62b6c73425416a5f7b39a5906bbfa80e5e8",
+    "roadrunners.com.br/api/integrations/vicky-proactive/worker.cfm": "7cb2e6104a06c6601afe067dd781a4c122e77d104fff1154a2dd3813b3cf8d01",
+    "roadrunners.com.br/includes/estrutura/head.cfm": "84258c3f09772972a39d3f1870f46da6c598f6f218b2b192f6fb843f84695896",
+    "roadrunners.com.br/sso/comparador/_portal_nonce.cfm": "bef6a590a08b0048252664a130beff45e3025f57eb83506b0d99c52be3d7f45c"
+  },
+  "probes": [
+    {
+      "host": "business.roadrunners.run",
+      "path": "/api/helpdesk/auto-close.cfm",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/api/helpdesk/auto-close.cfm",
+      "status": "401",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/helpdesk/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/cron-jobs/runner.cfm",
+      "status": "401",
+      "ok": true
+    }
+  ],
+  "checked_at": "2026-10-26T10:23:54.730773+00:00",
+  "tests": [
+    {
+      "mode": "native",
+      "ok": true,
+      "output": "HELPDESK_CLOSE_NATIVE_PASSED 2 ",
+      "archive": "/var/backups/business-helpdesk-close-test-7k4ge4hu",
+      "stage_removed": true
+    },
+    {
+      "mode": "transaction",
+      "ok": true,
+      "output": "HELPDESK_CLOSE_TRANSACTION_PASSED 9; all synthetic writes rolled back ",
+      "archive": "/var/backups/business-helpdesk-close-test-25hgt8dq",
+      "stage_removed": true
+    },
+    {
+      "mode": "security",
+      "ok": true,
+      "output": "HELPDESK_CLOSE_SECURITY_PASSED 14 ",
+      "archive": "/var/backups/business-helpdesk-close-test-r5dj4pvc",
+      "stage_removed": true
+    },
+    {
+      "mode": "cron",
+      "ok": true,
+      "output": "HELPDESK_CLOSE_CRON_PASSED ",
+      "archive": "/var/backups/business-helpdesk-close-test-rkke340m",
+      "stage_removed": true
+    },
+    {
+      "mode": "http",
+      "ok": true,
+      "output": "HELPDESK_CLOSE_HTTP_PASSED [{\"method\": \"GET\", \"expected\": 405, \"status\": \"405\", \"ok\": true}, {\"method\": \"POST\", \"expected\": 401, \"status\": \"401\", \"ok\": true}, {\"method\": \"POST\", \"expected\": 200, \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"expected\": 400, \"status\": \"400\", \"ok\": true}, {\"method\": \"POST\", \"expected\": 400, \"status\": \"400\", \"ok\": true}]",
+      "archive": "/var/backups/business-helpdesk-close-test-y22flecv",
+      "stage_removed": true
+    }
+  ],
+  "acceptance": {
+    "job_id": 26,
+    "active": true,
+    "interval_minutes": 15,
+    "steady_batch": 50,
+    "installed_dry_run_eligible": 81,
+    "initial_scheduler_cycle_utc": "2026-10-26T10:27:01Z",
+    "http_status": 200,
+    "selected": 81,
+    "closed": 81,
+    "ticket_121": {"status": "fechado", "latest_message_automatic": true},
+    "geolocation_paused": true,
+    "pre_activation_archive": "/var/backups/business-helpdesk-close-test-t8wdayg3",
+    "acceptance_archive": "/var/backups/business-helpdesk-close-test-urchehy8",
+    "steady_batch_archive": "/var/backups/business-helpdesk-close-test-1trn_lts",
+    "browser_verified": true,
+    "screenshot": "/private/tmp/business-helpdesk-auto-close-20261026.png",
+    "general_regression_tests": 273,
+    "review": "Independent review: no blockers; actual overlapping-connection stress and injected mid-transaction failure not exercised. Stale snapshot, idempotency, rollback, authorization and HTTP cases passed."
+  },
+  "ddl": false,
+  "credential_changes": false,
+  "git_mutations": false,
+  "previous_publications": []
+}

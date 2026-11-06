@@ -1,4 +1,21 @@
 <cfscript>
+// A regex matcher reports zero-based offsets; CF left(text,0) is invalid.
+// Boundary tokens must keep strict factual and semantic checks intact.
+check(service.validateRewrite("7h de duração.","7h de duração.").valid,"Duration at the very start must not throw on an empty prefix");
+check(!service.validateRewrite("7h de duração.","8h de duração.").valid,"Leading duration changes remain rejected");
+for(boundaryCase in [
+    {source="07:00 - Largada da prova.",candidate="07:00 - Race start."},
+    {source="7h - Abertura do evento.",candidate="7h - Event opening."},
+    {source="7 horas de duração.",candidate="7 hours duration."}
+]) {
+    fixture=createObject("component","services.ProviderFixture").init([responseFor({descricao=boundaryCase.candidate}),responseFor({preserved=true,target_language=true,reason="Same facts."})]);
+    boundaryResult=fixture.translate(boundaryCase.source,"en","SENSITIVE_FIXTURE");
+    check(len(boundaryResult.html) GT 0 AND arrayLen(fixture.getRequests()) EQ 2,"Leading time/duration completes strict guard and independent review: " & boundaryCase.source);
+}
+fixture=createObject("component","services.ProviderFixture").init([responseFor({descricao="08:00 - Race start."})]);
+expectError(function(){fixture.translate("07:00 - Largada da prova.","en","SENSITIVE_FIXTURE");},"EventDescriptionRewrite.Validation","Changed leading clock stays rejected");
+check(arrayLen(fixture.getRequests()) EQ 1,"Changed leading clock never reaches semantic reviewer");
+
 // These exercise the real translate path; only the paid provider is replaced.
 formatSource="Largada 7h. Até 7.000 participantes. Inscrições de 01/03/2026 a 21/08/2026. Taxa R$ 190,00. Duração: 2 horas.";
 formatCandidate="Start at 7 a.m. Up to 7,000 participants. Registration from 03/01/2026 to 08/21/2026. Fee R$ 190.00. Duration: 2 hours.";

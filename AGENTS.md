@@ -16,3 +16,4 @@ Complementa as instruções de `../AGENTS.md`.
 ## Preferência de interface
 
 - Preferência expressa em 26/09/2026: em páginas extensas, organizar conteúdos por abas para evitar rolagem excessiva. Separar tarefas e detalhes relacionados, preservando filtros, links diretos e navegação por teclado.
+- Identidade visual expressa em 26/10/2026: painéis fiéis ao tema base em escala de cinza, branco e amarelo RR (`--rh-yellow`, `#f4b120`). Não introduzir superfícies, bordas ou textos neutros com tonalidade azulada (por exemplo `#252d39`, `#1c232e`, `#151c26`). Usar os tokens compartilhados de `assets/css/business-ui.css`; preservar cores semânticas de perigo/sucesso/alerta e etiquetas personalizadas que transmitam informação.

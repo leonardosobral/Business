@@ -1,0 +1,3 @@
+Root cause: CF regex extraction silently missed the Wix post-description section in a 982787-character official article. DOM extraction restricted to that section succeeds.
+Baseline regression: 5 failing checks; corrected implementation: 11 passing native CF checks.
+No DDL, credentials, scheduling or Git changes.

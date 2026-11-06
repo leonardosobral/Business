@@ -10,8 +10,8 @@
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
 <cfinclude template="includes/backend.cfm"/>
 <cfinclude template="../../includes/estrutura/head.cfm"/>
-<link rel="stylesheet" href="/administracao/kanban/assets/kanban.css?v=20260904-2"/>
-<link rel="stylesheet" href="/assets/css/admin-suite.css?v=20260917-aimails"/>
+<link rel="stylesheet" href="/administracao/kanban/assets/kanban.css?v=rr-neutral-20261026"/>
+<link rel="stylesheet" href="/assets/css/admin-suite.css?v=rr-neutral-20261026"/>
 
 <body data-mdb-theme="dark" class="bg-dark-subtle">
     <cfinclude template="../../includes/estrutura/header.cfm"/>

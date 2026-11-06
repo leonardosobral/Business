@@ -12,8 +12,8 @@
 <!doctype html>
 <html lang="pt-br">
 <cfinclude template="../../includes/estrutura/head.cfm"/>
-<link rel="stylesheet" href="/administracao/drive/assets/drive.css?v=1"/>
-<link rel="stylesheet" href="/assets/css/admin-suite.css?v=20260917-aimails"/>
+<link rel="stylesheet" href="/administracao/drive/assets/drive.css?v=rr-neutral-20261026"/>
+<link rel="stylesheet" href="/assets/css/admin-suite.css?v=rr-neutral-20261026"/>
 <body data-mdb-theme="dark" class="bg-dark-subtle">
 <cfinclude template="../../includes/estrutura/header.cfm"/>
 <main class="container-fluid px-3 px-lg-4 business-page drive-page admin-suite-page admin-suite-main" id="googleDrive"

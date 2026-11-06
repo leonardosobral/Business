@@ -106,73 +106,10 @@
     <cfset URL.mandala = ""/>
 </cfif>
 
-<!--- ENTREGA DE MANDALA DO CIRCUITO BRASIL GIGANTE --->
-
-<cfif VARIABLES.challengeIsBrasilGigante
-    AND isDefined("FORM.challenge_action")
-    AND FORM.challenge_action EQ "entregar_mandala">
-    <cfset VARIABLES.challengeMandalaUserId = isDefined("FORM.id_usuario") ? val(FORM.id_usuario) : 0/>
-    <cfset VARIABLES.challengeMandalaPostedCsrf = isDefined("FORM.challenge_medal_csrf") ? trim(FORM.challenge_medal_csrf) : ""/>
-
-    <cfif VARIABLES.challengeMandalaUserId LTE 0
-        OR NOT len(VARIABLES.challengeMandalaPostedCsrf)
-        OR VARIABLES.challengeMandalaPostedCsrf NEQ VARIABLES.challengeMedalCsrf>
-        <cfthrow type="Challenge.Validation" message="A solicitacao de entrega da mandala e invalida ou expirou."/>
-    </cfif>
-
-    <cfquery name="qChallengeMandalaEligibility">
-        SELECT count(DISTINCT evt.id_agrega_evento) AS etapas
-        FROM tb_resultados res
-        INNER JOIN tb_evento_corridas evt
-            ON evt.id_evento = res.id_evento
-        INNER JOIN tb_agregadores_eventos agr
-            ON agr.id_evento = evt.id_evento
-           AND agr.agregador_tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="brasil-gigante"/>
-        WHERE res.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.challengeMandalaUserId#"/>
-          AND res.percurso = <cfqueryparam cfsqltype="cf_sql_decimal" value="42"/>
-          AND evt.id_agrega_evento IN (
-              <cfqueryparam cfsqltype="cf_sql_integer" value="17,1000,26,9,14,28,15,77" list="true"/>
-          )
-    </cfquery>
-
-    <cfif NOT qChallengeMandalaEligibility.recordcount OR val(qChallengeMandalaEligibility.etapas) LT 7>
-        <cfthrow type="Challenge.Validation" message="O atleta ainda nao possui sete etapas reconhecidas no Circuito Brasil Gigante."/>
-    </cfif>
-
-    <cfquery name="qChallengeMandalaDelivery">
-        WITH target AS (
-            SELECT id_usuario
-            FROM desafios
-            WHERE id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.challengeMandalaUserId#"/>
-              AND desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
-        ),
-        inserted AS (
-            INSERT INTO desafios_obs (id_usuario, produto, obs, id_atendente)
-            SELECT target.id_usuario,
-                   <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>,
-                   <cfqueryparam cfsqltype="cf_sql_varchar" value="mandala_entregue"/>,
-                   <cfqueryparam cfsqltype="cf_sql_bigint" value="#qPerfil.id#"/>
-            FROM target
-            WHERE NOT EXISTS (
-                SELECT 1
-                FROM desafios_obs history
-                WHERE history.id_usuario = target.id_usuario
-                  AND history.produto = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
-                  AND history.obs = <cfqueryparam cfsqltype="cf_sql_varchar" value="mandala_entregue"/>
-            )
-            RETURNING id_usuario
-        )
-        SELECT id_usuario FROM inserted
-        UNION ALL
-        SELECT id_usuario FROM target
-        LIMIT 1
-    </cfquery>
-
-    <cfif NOT qChallengeMandalaDelivery.recordcount>
-        <cfthrow type="Challenge.Validation" message="A inscricao do atleta nao foi encontrada no Circuito Brasil Gigante."/>
-    </cfif>
-
-    <cflocation addtoken="false" url="/desafios/#VARIABLES.challengeTag#/?sucesso=mandala_entregue&challenge_refresh=#getTickCount()#&busca=#urlEncodedFormat(URL.busca)#&mandala=#urlEncodedFormat(URL.mandala)#&regiao=#urlEncodedFormat(URL.regiao)#&estado=#urlEncodedFormat(URL.estado)#&cidade=#urlEncodedFormat(URL.cidade)#"/>
+<!--- ENTREGA NUMERADA DE MANDALA DO CIRCUITO BRASIL GIGANTE --->
+<cfset VARIABLES.challengeMandalaError=""/>
+<cfif VARIABLES.challengeIsBrasilGigante AND isDefined("FORM.challenge_action") AND FORM.challenge_action EQ "entregar_mandala">
+    <cfinclude template="brasil_gigante_mandala_action.cfm"/>
 </cfif>
 
 <!--- ENTREGA DE MEDALHA DOS CIRCUITOS CATARINENSES --->
@@ -417,6 +354,7 @@
         cr.ano_8,
         CASE WHEN mandala.data_entrega IS NOT NULL THEN 1 ELSE 0 END AS mandala_entregue,
         to_char(mandala.data_entrega, 'YYYY-MM-DD HH24:MI:SS') AS mandala_entregue_em,
+        coalesce(mandala.numero, '') AS mandala_numero,
         CASE
             WHEN mandala.data_entrega IS NOT NULL THEN 'entregue'
             WHEN coalesce(cr.eventos_concluidos, 0) >= 8 THEN 'imediata'
@@ -441,11 +379,13 @@
             LIMIT 1
         ) pag ON true
         LEFT JOIN LATERAL (
-            SELECT max(history.data_obs) AS data_entrega
+            SELECT max(history.data_obs) FILTER (WHERE history.obs='mandala_entregue') AS data_entrega,
+                   (array_agg(substring(history.obs FROM '^mandala_numero:([0-9]{1,12})$') ORDER BY history.data_obs DESC,history.id_desafio_obs DESC)
+                    FILTER (WHERE history.obs ~ '^mandala_numero:[0-9]{1,12}$'))[1] AS numero
             FROM desafios_obs history
             WHERE history.id_usuario = usr.id
               AND history.produto = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
-              AND history.obs = <cfqueryparam cfsqltype="cf_sql_varchar" value="mandala_entregue"/>
+              AND (history.obs='mandala_entregue' OR history.obs ~ '^mandala_numero:[0-9]{1,12}$')
         ) mandala ON true
         LEFT JOIN circuit_results cr ON cr.id_usuario = usr.id
         LEFT JOIN tb_uf uf
@@ -945,7 +885,8 @@
     select *
     from qBase
     <cfif len(trim(URL.busca))>
-        where nome like <cfqueryparam cfsqltype="cf_sql_varchar" value="%#ucase(URL.busca)#%"/>
+        where (nome like <cfqueryparam cfsqltype="cf_sql_varchar" value="%#ucase(URL.busca)#%"/>
+        <cfif VARIABLES.challengeIsBrasilGigante>OR mandala_numero like <cfqueryparam cfsqltype="cf_sql_varchar" value="%#trim(URL.busca)#%"/></cfif>)
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "pendentes">
         where status = 'I'

@@ -5,6 +5,12 @@
  */
 
 :root {
+    /* RR identity: neutral surfaces, white text and the base yellow. */
+    --business-background: #222222;
+    --business-panel: #262626;
+    --business-field: #1f1f1f;
+    --business-muted: #bdbdbd;
+    --business-accent: var(--rh-yellow, #f4b120);
     --business-ui-border: rgba(255,255,255,.1);
     --business-ui-border-strong: rgba(255,255,255,.18);
     --business-ui-surface: rgba(255,255,255,.025);

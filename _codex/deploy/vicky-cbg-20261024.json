@@ -1,0 +1,230 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-vicky-cbg-bl2txs7r",
+  "manifest": {
+    "roadrunners.com.br/repositories/VickyProactiveRepository.cfc": {
+      "before": "10accd4054d59c951d295366922a8618fb4978908f127736cdad5a3f726742ef",
+      "after": "b7698c6501df0dcd4745c1f56224b8e752bc61a94deba6bec90fc8374eae42e9"
+    },
+    "roadrunners.com.br/services/VickyProactiveService.cfc": {
+      "before": "76ea024551c5f6f2c61ff26586329886400c71e342f7ee459024c8711c10f6ac",
+      "after": "523500298eca5fdbdbf723bff69cbf87e075a7b83c08cbcf12ee2fc798900ffa"
+    }
+  },
+  "candidate_hashes": {
+    "roadrunners.com.br/repositories/VickyBrasilGiganteRepository.cfc": "15f98feed442afa894942bd61ebfec3471a4c754ab162d44133a3046bc053a8d",
+    "roadrunners.com.br/repositories/VickyProactiveRepository.cfc": "b7698c6501df0dcd4745c1f56224b8e752bc61a94deba6bec90fc8374eae42e9",
+    "roadrunners.com.br/services/VickyProactiveService.cfc": "523500298eca5fdbdbf723bff69cbf87e075a7b83c08cbcf12ee2fc798900ffa",
+    "business.roadrunners.run/administracao/vicky/includes/backend.cfm": "e7ffc3f5f7e4889e099984fcaa3e1e89f1cf46dcdc1094a3b4aab8ef8c2545e6",
+    "business.roadrunners.run/administracao/vicky/home.cfm": "fbe926bc6754b0b79211aa65826df6d762c4000ea1e69038d590b6150a1ebf90"
+  },
+  "preserved_files": {
+    "business.roadrunners.run/administracao/geolocalizacao/assets/geocoding.js": "8457e30f9fac88d0534ff3981b7c2b37e0f60a38511e292db3e823b39c00a6c7",
+    "business.roadrunners.run/administracao/geolocalizacao/assets/review-guide.css": "fd96006ff6732d4cd619cce05077dd9c7e0ae6639a7d961c700ebcd0d300f777",
+    "business.roadrunners.run/administracao/geolocalizacao/includes/ai_locations_view.cfm": "1f96fc104d0b22a0950a83179387ef75f37862ad4885bd809ada2042dcc7b76a",
+    "business.roadrunners.run/administracao/geolocalizacao/includes/enrichment_view.cfm": "4546aaaf87e2ee6e6b79d656d14b909361379abe244ff30bdfd9473ea2a7b9bc",
+    "business.roadrunners.run/administracao/geolocalizacao/includes/radar_view.cfm": "f6b6e699df1b656436c1639327fa49896831bd609d51050d01885e75895b1e98",
+    "business.roadrunners.run/administracao/geolocalizacao/includes/review_guide_view.cfm": "4c78c8d69f3e4024a16f40a2ce7b70765c2b3ce0a6ec4691ecc00b0397a4783e",
+    "business.roadrunners.run/administracao/geolocalizacao/index.cfm": "420bf253bc9ca663c16554df6f47196715fe7aa8ac4cd9e7071c4948c6b67ebc",
+    "business.roadrunners.run/eventos/assets/event-location.js": "9d761cb3a4dc1f16262f209e087ab50652293c4fda51132aa8960de14bafd603",
+    "business.roadrunners.run/eventos/filtro_resultados.cfm": "2d41c63a0e3a00a64de0e29ff9eb968897051f4759e702ef7432534c265bff3d",
+    "business.roadrunners.run/eventos/form_edicao.cfm": "9d967cd92d2474e60e977ded28a3840ddc8c95804166c3265b232a2d1b1b319f",
+    "business.roadrunners.run/eventos/form_edicao_configuracoes.cfm": "87f84a29999f6643ef72196703b52628ed40601aa0b7ac87bcdb5bdd7f527498",
+    "business.roadrunners.run/eventos/form_edicao_conteudo.cfm": "e9562e216ba56532c361ad25859aca5dbd6f2de0669299e17aa8383390e9af70",
+    "business.roadrunners.run/eventos/form_edicao_fontes.cfm": "272209223a9083b3c29fae8651dadb1b953299d52107c7940b24fdf65113f183",
+    "business.roadrunners.run/eventos/form_edicao_fornecedores.cfm": "4291ce066fbd1b3cf36e6d20efa0cec319c9278399232aad6c21461a3eeb1f9a",
+    "business.roadrunners.run/eventos/form_edicao_inscricoes.cfm": "4ac99fe6c3480b8c9f3c6feb2e13cdff0dea185a299e76f44182d7c34b91f65d",
+    "business.roadrunners.run/eventos/form_edicao_or.cfm": "c66b28496ba40a1b01b1af2385d32750e80bef708cac72a62532ce655333d7e9",
+    "business.roadrunners.run/eventos/form_edicao_percursos.cfm": "d6c3527590b6c28ed668ce28f75f0243749a4c100408e5ef77dc0c5da8e55f0c",
+    "business.roadrunners.run/eventos/guia_cliente_eventos.cfm": "f03f0d314e2a3e9b0c85278638a0dddca8c6bd2a6b2487b25068f0fdfe248566",
+    "business.roadrunners.run/eventos/home.cfm": "787d58b6b8a765e4c9dad89df8ecc94eb95472f9b6a6de63913a06b127245771",
+    "business.roadrunners.run/eventos/includes/backend/backend.cfm": "3fb82a673c0ac634ed1f0dd990ee0a83ae583ca64bbf597311eaa165d8947272",
+    "business.roadrunners.run/eventos/includes/backend/backend_evento_edicao.cfm": "320c4b14449d06f70ea5e69871a7d09ce124c363d7374cf16d31a5b81fb3c971",
+    "business.roadrunners.run/eventos/includes/backend/backend_evento_solicitacoes.cfm": "b64f95be4c03cdd1b3b620bc02dfdfeb6dbe732cff513082dbf3f1bd4fff0c16",
+    "business.roadrunners.run/eventos/includes/backend/backend_login.cfm": "2122996c2ea804eb43ef3027e854554a6e37ffd359aaee2dd25801063ba52ede",
+    "business.roadrunners.run/eventos/includes/backend/event_delegation.cfm": "4784c5125e2995114926bf67efbcab46cb791173a5a3d05c0fa07dcaaa4996ab",
+    "business.roadrunners.run/eventos/includes/backend/event_mutations.cfm": "d3af3de821c3a9b5a39f33853153e7eb03823cf98a04442dad065d39cbda832c",
+    "business.roadrunners.run/eventos/includes/backend/fontes_revisoes.cfm": "062964ae8b2dc1aa5332537fdb572c2352ee3f4b92c976487fddb91e64116a92",
+    "business.roadrunners.run/eventos/includes/backend/inscricao_disponibilidade.cfm": "91e89373d9f3aaf9756d36a62eae2ea59a62f267e93d05766988d89d4e875c7d",
+    "business.roadrunners.run/eventos/includes/enriquecimento_confirmado.cfm": "735ec3ceb667ad0e77517785dc7c6c2e05901bd0014c305a39204f9a97312f51",
+    "business.roadrunners.run/eventos/includes/event_location_error.cfm": "cdb9344724a6ce7787125b79221ec803774278251b8829d4c3379a059b8eb8b5",
+    "business.roadrunners.run/eventos/includes/event_location_fields.cfm": "57a2a61ab36dd948294b803cf7830cab14a8f180fdcd9360af53ff4484656aa5",
+    "business.roadrunners.run/eventos/includes/localizacoes_confirmadas.cfm": "90dda79d0ef500908be019998d461f1c1cc9003f6212cbfccc46bdac1b5c0a44",
+    "business.roadrunners.run/eventos/includes/variaveis.cfm": "1e032f1666a89a31c4f40541b792e50b73c46e04bde96139ddb609596abab5a5",
+    "business.roadrunners.run/eventos/index.cfm": "4856207b9d0c7e7dc7d78de009795ac5cd15bb5bf6ada2ef8dff63ffd13406c8",
+    "business.roadrunners.run/eventos/listagem_eventos.cfm": "be6ea8d6dac064850d0e28382e1ddab05a2675478f487a1cac1fec96b702dd07",
+    "business.roadrunners.run/eventos/onboarding_eventos.cfm": "8f15f8bb69c33c47c6f3f7eb41f5bcf50b7c832a74d465c3f1f38282ea7f6221",
+    "business.roadrunners.run/eventos/solicitacoes_eventos.cfm": "e575b1c4e353184bbf78ea611c78c4067b9b0a5a5866d5173738d84df2e7e909",
+    "business.roadrunners.run/services/geocoding/.htaccess": "fa28d421a28ed9b6f4b997d5119c2b8adbacff6e2dd119a179b71230f9664934",
+    "business.roadrunners.run/services/geocoding/DocumentReader.cfc": "7beaa29b8a8abd3be83491d7cb43e76c98d98105e5f26531960ae709f3dc0d9b",
+    "business.roadrunners.run/services/geocoding/EnrichmentPolicy.cfc": "0bf074c7bbec161701c6f62ea6485ed47b71c014d140cea0e78a63e181eb724a",
+    "business.roadrunners.run/services/geocoding/EnrichmentStore.cfc": "188ee5f1b7b75f2a0b18d0c3da00ebc1200ef296eefd88c7c4f3eb0f6fca4ea1",
+    "business.roadrunners.run/services/geocoding/GeoapifyClient.cfc": "651ed4a427c07b51fb7519e56684499182648b4a9fcb96c767ec679cfe2f5474",
+    "business.roadrunners.run/services/geocoding/JobSecurity.cfc": "fa5fe458d1d9254a924ff5040529b7a3c6882614314ce6105b1392b638ee8d10",
+    "business.roadrunners.run/services/geocoding/LocationPolicy.cfc": "15cda122b659680cc0a939aeb6a26fa733299c3b9b92a82326932a4d1fd4451a",
+    "business.roadrunners.run/services/geocoding/LocationStore.cfc": "007d2d8febcb222bc0c2aaed4af95edfa333fc02c4a15b9c1100e03b7846a886",
+    "business.roadrunners.run/services/geocoding/Policy.cfc": "a8a42ccdf4b656504b1fd5d82120c018f2f1a57acdac9a1ee3191ae27e6616e0",
+    "business.roadrunners.run/services/geocoding/RegionNames.cfc": "f191d9ab16a3f28d7a9c81a5c30c2fca405bae76bfa019b0340a8b95d22215ac",
+    "business.roadrunners.run/services/geocoding/ReviewGuide.cfc": "a927038095c0506cbfb368708df63b429546b95160baa9ba67d69fdc40d87c83",
+    "business.roadrunners.run/services/geocoding/ReviewInput.cfc": "f46338c0c60ed526debafe020d279581fed8f2d60b40fed3e8046907da199910",
+    "business.roadrunners.run/services/geocoding/Sources.cfc": "46a93406a36f552baf7cb982abc7ae5a95742ae81cab4bbd54860691db88b9fb",
+    "business.roadrunners.run/services/geocoding/Store.cfc": "04754874562ec47c2e6b1101213dd5229573f142c934d3e58389a6a0567c2e64",
+    "business.roadrunners.run/services/geocoding/Worker.cfc": "2787fa63354c3450de60e47f26b8eebe21ba871c88dc4b32f130c75e06e42d15",
+    "business.roadrunners.run/services/geocoding/source_fetcher.py": "4ec6e20690544eb6c96035b1f1d04448322d7302f4c71d66021c53965c25d1cd",
+    "business.roadrunners.run/services/openaiUsage/.htaccess": "16811ceffe8949402657ce24f4fdc4c72599eabb56eec23b6f657d0171a14668",
+    "business.roadrunners.run/services/openaiUsage/Access.cfc": "14dc087956c524e0f2df64f70e7164e9cc714b99e7768d3cf1b698d4b53022a4",
+    "business.roadrunners.run/services/openaiUsage/Catalog.cfc": "889824a590eb832fa58eb4ea4b4ca6815b6710713e99136dce2e6bf1cfe6fc89",
+    "business.roadrunners.run/services/openaiUsage/Legacy.cfc": "cca66af67f2146ad8fd3ae222385152dca908ac3f4a682f7cdf4420cd8e361ad",
+    "business.roadrunners.run/services/openaiUsage/Observer.cfc": "247e9bcc9cbd73c21cdf7fd381f3af810da475673d76eb3e63a223725f7b9f46",
+    "business.roadrunners.run/services/openaiUsage/Pricing.cfc": "b2d97ae75b1458b200532a3afd024ac23e639d191b3fcadfde41bc82c563b18a",
+    "business.roadrunners.run/services/openaiUsage/Store.cfc": "a2bf510c05a901511822fa53bd8714a747b92e21ed20fbee9c53d7797488e0bc",
+    "business.roadrunners.run/Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+    "business.roadrunners.run/includes/estrutura/sidenav.cfm": "7fbcdf1b3e5648a823cb4cdd25f4b7f027f220230c2bf813cb288b4ebc5e2641",
+    "business.roadrunners.run/services/EventDescriptionRewriteService.cfc": "b657b69d68a816355879580bc732fef5124c055cf3878a0d43a511efff09c288",
+    "business.roadrunners.run/helpdesk/includes/HelpdeskAI.cfc": "b22b237b1970ac300b80c157cb5445a29419ad2c7ada4acbd7c18beb2bb6aa81",
+    "business.roadrunners.run/administracao/ai-mails/includes/ai.cfm": "76605fa003a5979d0a7f2f4fbeac11e0001c5b841789ce4ceed6e2d3c0460755",
+    "business.roadrunners.run/includes/backend/cron_jobs_service.cfm": "068f57f87e214ca9d34ec186c9af227649462068158b039861229cdf86fd203a",
+    "business.roadrunners.run/cron-jobs/runner.cfm": "02b02ecd33113a4f31c0068c537c6e822f71ae452626f5bc5e8f9a3dbada0ddb",
+    "business.roadrunners.run/api/eventos/geolocalizar.cfm": "8251b99a054a0e65add2971a4baca30b234dce01f8a745588fd9936eea315457",
+    "business.roadrunners.run/services/geocoding/EconomyPolicy.cfc": "eb7b14a2cdd6ff998e730ddf897b70a38ac58786c69d7f36a03795c0b5679524",
+    "business.roadrunners.run/services/geocoding/EconomyAIClient.cfc": "8c54a20010ef43b1c89bf796bfc48db3201e8d8bf91f4edc7e21a963cfc6e077",
+    "business.roadrunners.run/services/geocoding/AIBudget.cfc": "e7bb333cb1a7dfe751e6d651e37f6786a80c4e2bfbcfdf0db0836edca90ce072",
+    "business.roadrunners.run/services/geocoding/BatchTransport.cfc": "9102fab07b6b8b9ddc8c7667b0ba0989a4def676c1fc12f3f3d60a28a18a26eb",
+    "business.roadrunners.run/services/geocoding/BatchClient.cfc": "5c6e016ba11f2362eef554d05fda51b47cd81b9a0ae2b5da88783ff93cad1428",
+    "business.roadrunners.run/services/geocoding/Economy.cfc": "5b8d1d677ba1ab544ff6b475f0ee9b4bc441a40f19e6f1bf804072c11a2f7491",
+    "business.roadrunners.run/services/geocoding/AIClient.cfc": "fe481a89603918cd3a20698f4541e428e9139a91f517893ccd305e99925e4d44",
+    "business.roadrunners.run/services/geocoding/LocationWorker.cfc": "08bf02725f6f4cfa1fd1b286dba6edf1cd9627ccded04141a5cf90e0522f6bd6",
+    "business.roadrunners.run/services/geocoding/config.cfm": "40bd5a44c617e79238dfa3dff977429ce43899f35cbe8e6653b732ba432ed290",
+    "business.roadrunners.run/administracao/geolocalizacao/includes/backend.cfm": "87e4ea80e744d24d52585633371df8c31ecd12c12a4760d197da54ab3b0a1d00",
+    "business.roadrunners.run/administracao/geolocalizacao/includes/view.cfm": "e127778d72ce28d4aa928acd9fd28b2d8b4f5dbca70bb4b8239ff3670a7c23e7",
+    "business.roadrunners.run/administracao/usuarios/index.cfm": "07619baaedf5123cdd5f83ddf02cca3c677e72c6c231f96af70f56ba90d222af",
+    "business.roadrunners.run/services/BusinessDevLogin.cfc": "06d60f6f5ae9e91c64d5ada4edbd4209280362430b83ff782bda9e3de701d986",
+    "business.roadrunners.run/includes/backend/require_admin_dev.cfm": "739c57b7ba6859d9f853ba3cd9f31d872fc736a6e67306aedc3201e7d4b1c4c1",
+    "business.roadrunners.run/includes/backend/require_real_platform_context.cfm": "c2197e66f72ab3ee7b844775bef53d53ec0f7e73c878f3390fdba271070615f4",
+    "business.roadrunners.run/services/UserAcquisitionMetrics.cfc": "ff07eff3d80d10dc0ffd877a05ae6c3a90b48adcfe85d85378ab7412a36ad91f",
+    "business.roadrunners.run/administracao/usuarios/includes/acquisition.cfm": "006eb6b6532914d541ab3990e97711c4e1096a9e89d59158cc216f0f103aacd1",
+    "business.roadrunners.run/administracao/usuarios/assets/acquisition.js": "c3909a7e9ea450367d8cf51ab009596cc2d0e658eca6b7be48a7a612f64802cb",
+    "business.roadrunners.run/administracao/usuarios/assets/acquisition.css": "f493d399fcee1baac4ae07765b667a838939f9ab3da003e4b92d3e79dac414ee",
+    "business.roadrunners.run/administracao/usuarios/includes/backend.cfm": "a7a278dbab8c4af5e0a0c73d31d7176c94226ce8883f9f498be803f3b2b1f08f",
+    "business.roadrunners.run/administracao/usuarios/home.cfm": "84d96a597393575b8e5455a9d6d440cd776eed8c1a9a8d0821406d3b6fc643fa",
+    "roadrunners.com.br/Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "roadrunners.com.br/config/settings.cfm": "2181446870686b8281d64af232ea7e1a7e822d4fdd1a9c5d35aea2652624da33",
+    "roadrunners.com.br/config/meta_whatsapp.local.cfm": "f5f025791837b6279aca7a3f7f2e0c89419fe78b0e553781237657fc0573e305",
+    "roadrunners.com.br/includes/backend/vicky_meta_whatsapp_runtime_config.cfm": "4a77bdc99609f2978887e562e4286981ec1bee1475918887042ac0934b2505d9",
+    "roadrunners.com.br/services/VickyMetaWhatsappServiceV2.cfc": "8e1c8dcf517f170531320284a215e62b6c73425416a5f7b39a5906bbfa80e5e8",
+    "roadrunners.com.br/api/integrations/vicky-proactive/worker.cfm": "7cb2e6104a06c6601afe067dd781a4c122e77d104fff1154a2dd3813b3cf8d01",
+    "roadrunners.com.br/includes/estrutura/head.cfm": "84258c3f09772972a39d3f1870f46da6c598f6f218b2b192f6fb843f84695896",
+    "roadrunners.com.br/sso/comparador/_portal_nonce.cfm": "bef6a590a08b0048252664a130beff45e3025f57eb83506b0d99c52be3d7f45c"
+  },
+  "probes": [
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/vicky/?secao=interacoes",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/api/integrations/vicky-proactive/worker.cfm",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/api/integrations/vicky-proactive/worker.cfm",
+      "status": "401",
+      "ok": true
+    }
+  ],
+  "checked_at": "2026-10-24T17:07:31.319751+00:00",
+  "tests": [
+    {
+      "mode": "native",
+      "ok": true,
+      "output": "VICKY_CBG_NATIVE_PASSED 7 ",
+      "archive": "/var/backups/business-vicky-cbg-test-u_9y5bx_",
+      "stage_removed": true
+    },
+    {
+      "mode": "service",
+      "ok": true,
+      "output": "VICKY_CBG_SERVICE_PASSED 7 ",
+      "archive": "/var/backups/business-vicky-cbg-test-42ufcu72",
+      "stage_removed": true
+    },
+    {
+      "mode": "queue",
+      "ok": true,
+      "output": "VICKY_CBG_QUEUE_PASSED 8 all writes rolled back; no delivery invoked ",
+      "archive": "/var/backups/business-vicky-cbg-test-1q28kr1u",
+      "stage_removed": true
+    },
+    {
+      "mode": "form",
+      "ok": true,
+      "output": "VICKY_CBG_FORM_PASSED ",
+      "archive": "/var/backups/business-vicky-cbg-test-12tegwvp",
+      "stage_removed": true
+    },
+    {
+      "mode": "render",
+      "ok": true,
+      "output": "VICKY_CBG_RENDER_PASSED ",
+      "archive": "/var/backups/business-vicky-cbg-test-4ssa4ylk",
+      "stage_removed": true
+    },
+    {
+      "mode": "meta",
+      "ok": true,
+      "output": "{\"language\":\"pt_BR\",\"status\":\"APPROVED\",\"components\":[{\"format\":\"TEXT\",\"text\":\"Mais uma etapa está chegando\",\"type\":\"HEADER\"},{\"text\":\"Lembre-se de reconhecer seus resultados nas etapas já concluídas e manter o seu perfil atualizado.\",\"type\":\"BODY\"},{\"text\":\"Você recebeu este aviso por fazer parte do Brasil Gigante\",\"type\":\"FOOTER\"},{\"type\":\"BUTTONS\",\"buttons\":[{\"text\":\"Acessar meu perfil\",\"type\":\"URL\",\"url\":\"https://circuitobrasilgigante.com.br/atleta/\"}]}],\"id\":\"1641335907524499\",\"name\":\"atualize_cbg\"}VICKY_CBG_META_PASSED ",
+      "archive": "/var/backups/business-vicky-cbg-test-ae5jmidy",
+      "stage_removed": true
+    }
+  ],
+  "meta_runtime_preserved": "VickyMetaWhatsappServiceV2",
+  "ddl": false,
+  "git_mutations": false,
+  "manual_test_deliveries": false,
+  "activation": {
+    "method": "authenticated Business form with CSRF",
+    "enabled": true,
+    "admin_only": false,
+    "days_before": 7,
+    "web_enabled": true,
+    "whatsapp_enabled": true,
+    "silence": "20:00–08:00 America/Sao_Paulo"
+  },
+  "acceptance": {
+    "archive": "/var/backups/business-vicky-cbg-test-4f2dyw8c",
+    "cron_job": 10,
+    "cron_interval_minutes": 1,
+    "cron_status": "success",
+    "http_status": "200 OK",
+    "web_total": 5860,
+    "web_completed_at_snapshot": 58,
+    "web_queued_at_snapshot": 5802,
+    "whatsapp_eligible": 1,
+    "whatsapp_api_accepted": 1,
+    "current_errors": 0,
+    "next_cycle_generated": 0,
+    "geocoding_paused": true,
+    "browser_validated": true,
+    "browser_console_errors": 0,
+    "screenshot": "/private/tmp/business-vicky-cbg-20261024.png",
+    "general_python_tests": 273,
+    "independent_review_blockers": 0
+  },
+  "previous_publications": [
+    {
+      "backup": "/var/backups/business-vicky-cbg-v28w2wrk",
+      "candidate_hashes": {
+        "roadrunners.com.br/repositories/VickyBrasilGiganteRepository.cfc": "15f98feed442afa894942bd61ebfec3471a4c754ab162d44133a3046bc053a8d",
+        "roadrunners.com.br/repositories/VickyProactiveRepository.cfc": "10accd4054d59c951d295366922a8618fb4978908f127736cdad5a3f726742ef",
+        "roadrunners.com.br/services/VickyProactiveService.cfc": "76ea024551c5f6f2c61ff26586329886400c71e342f7ee459024c8711c10f6ac",
+        "business.roadrunners.run/administracao/vicky/includes/backend.cfm": "e7ffc3f5f7e4889e099984fcaa3e1e89f1cf46dcdc1094a3b4aab8ef8c2545e6",
+        "business.roadrunners.run/administracao/vicky/home.cfm": "fbe926bc6754b0b79211aa65826df6d762c4000ea1e69038d590b6150a1ebf90"
+      }
+    }
+  ]
+}

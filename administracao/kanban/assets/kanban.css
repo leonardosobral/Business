@@ -1,5 +1,5 @@
 .trello-kanban-page {
-  --kanban-accent: #fab120;
+  --kanban-accent: var(--business-accent, #f4b120);
   --kanban-border: rgba(255, 255, 255, .11);
   --kanban-surface: rgba(255, 255, 255, .035);
   --kanban-surface-strong: rgba(255, 255, 255, .07);
@@ -101,8 +101,8 @@
 }
 
 .trello-kanban-list-cards.is-drop-target {
-  background: rgba(250, 177, 32, .1);
-  outline: 1px dashed rgba(250, 177, 32, .55);
+  background: rgba(244,177,32, .1);
+  outline: 1px dashed rgba(244,177,32, .55);
   outline-offset: -4px;
 }
 
@@ -127,7 +127,7 @@
 
 .trello-kanban-card:hover,
 .trello-kanban-card:focus-visible {
-  border-color: rgba(250, 177, 32, .58);
+  border-color: rgba(244,177,32, .58);
   box-shadow: 0 6px 18px rgba(0, 0, 0, .18);
   transform: translateY(-1px);
 }
@@ -155,7 +155,7 @@
 .trello-kanban-card.cover-sky { border-top-color: #6cc3e0; }
 .trello-kanban-card.cover-lime { border-top-color: #94c748; }
 .trello-kanban-card.cover-pink { border-top-color: #e774bb; }
-.trello-kanban-card.cover-black { border-top-color: #738496; }
+.trello-kanban-card.cover-black { border-top-color: #828282; }
 
 .trello-kanban-card-title {
   font-size: .9rem;
@@ -173,7 +173,7 @@
 }
 
 .trello-kanban-card-label {
-  background: #7a869a;
+  background: #858585;
   border-radius: 999px;
   color: #111;
   display: inline-block;
@@ -194,7 +194,7 @@
 .trello-kanban-card-label.is-sky { background: #00c2e0; }
 .trello-kanban-card-label.is-lime { background: #51e898; }
 .trello-kanban-card-label.is-pink { background: #ff78cb; }
-.trello-kanban-card-label.is-black { background: #344563; color: #fff; }
+.trello-kanban-card-label.is-black { background: #444444; color: #fff; }
 
 .trello-kanban-card-meta {
   align-items: center;
@@ -221,8 +221,8 @@
 
 .trello-kanban-avatar {
   align-items: center;
-  background: #596780;
-  border: 2px solid #343536;
+  background: #666666;
+  border: 2px solid #353535;
   border-radius: 50%;
   color: #fff;
   display: inline-flex;
@@ -284,7 +284,7 @@
 }
 
 .trello-kanban-dialog-shell {
-  background: #2b2c2e;
+  background: #2c2c2c;
   border: 1px solid rgba(255, 255, 255, .16);
   border-radius: .85rem;
   box-shadow: 0 24px 70px rgba(0, 0, 0, .42);
@@ -370,7 +370,7 @@
 
 .trello-kanban-label-choice {
   align-items: center;
-  background: #7a869a;
+  background: #858585;
   border-radius: .45rem;
   color: #111;
   cursor: pointer;
@@ -382,7 +382,7 @@
   padding: .42rem .55rem;
 }
 
-.trello-kanban-label-choice input { accent-color: #202124; }
+.trello-kanban-label-choice input { accent-color: #212121; }
 .trello-kanban-label-choice.is-green { background: #61bd4f; }
 .trello-kanban-label-choice.is-yellow { background: #f2d600; }
 .trello-kanban-label-choice.is-orange { background: #ff9f1a; }
@@ -392,7 +392,7 @@
 .trello-kanban-label-choice.is-sky { background: #00c2e0; }
 .trello-kanban-label-choice.is-lime { background: #51e898; }
 .trello-kanban-label-choice.is-pink { background: #ff78cb; }
-.trello-kanban-label-choice.is-black { background: #344563; color: #fff; }
+.trello-kanban-label-choice.is-black { background: #444444; color: #fff; }
 
 .trello-kanban-inline-form {
   display: grid;

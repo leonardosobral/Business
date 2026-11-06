@@ -1,0 +1,43 @@
+{
+  "checked_at": "2026-11-05T11:46:59.345405+00:00",
+  "candidate_hashes": {
+    "business.roadrunners.run/services/EventDescriptionRewriteService.cfc": "323068d27f442c9953779ad632356db5b419a99b23a883d3b4a7ba837b9928bd"
+  },
+  "native_tests": {
+    "ok": true,
+    "output": "iewer call\nPASS Real change or unproved format stays rejected: Race on 05/09/2027. type\nPASS Real change or unproved format stays rejected: Race on 05/09/2027. sanitized\nPASS Real change or unproved format stays rejected: Race on 05/09/2027. rejected\nPASS Unsafe equivalence never consumes the independent reviewer call\nPASS Real change or unproved format stays rejected: Race on 02/30/2026. type\nPASS Real change or unproved format stays rejected: Race on 02/30/2026. sanitized\nPASS Real change or unproved format stays rejected: Race on 02/30/2026. rejected\nPASS Unsafe equivalence never consumes the independent reviewer call\nPASS Real change or unproved format stays rejected: Registration https://example.com/7,000/08/21/2026/ . type\nPASS Real change or unproved format stays rejected: Registration https://example.com/7,000/08/21/2026/ . sanitized\nPASS Real change or unproved format stays rejected: Registration https://example.com/7,000/08/21/2026/ . rejected\nPASS Unsafe equivalence never consumes the independent reviewer call\nPASS Real change or unproved format stays rejected: Registration www.example.com/7,000 type\nPASS Real change or unproved format stays rejected: Registration www.example.com/7,000 sanitized\nPASS Real change or unproved format stays rejected: Registration www.example.com/7,000 rejected\nPASS Unsafe equivalence never consumes the independent reviewer call\nPASS Real change or unproved format stays rejected: Contact evento7,000@example.com. type\nPASS Real change or unproved format stays rejected: Contact evento7,000@example.com. sanitized\nPASS Real change or unproved format stays rejected: Contact evento7,000@example.com. rejected\nPASS Unsafe equivalence never consumes the independent reviewer call\nPASS Format normalization never bypasses semantic venue review type\nPASS Format normalization never bypasses semantic venue review sanitized\nPASS Format normalization never bypasses semantic venue review rejected\nPASS Private rejection retains the raw provider candidate, not a silently edited copy\nPASS Portuguese rewrite guards remain strict and unchanged\nPASS Rejected rewrite still cannot publish type\nPASS Rejected rewrite still cannot publish sanitized\nPASS Rejected rewrite still cannot publish rejected\nPASS Private evidence retains the exact rejected candidate\nPASS Private evidence binds the normalized source actually used\nPASS Private evidence retains all local reason codes\nPASS API credentials never enter private evidence\nPASS Audit shows the exact omitted and introduced distance\nPASS Audit preserves literal case-sensitive link differences\nPASS Equivalent duration is not reported as a factual difference\nPASS Translation audit compares canonical unit values without conversions\nPASS Audit exposes date inversion even when numeric sets coincide\nPASS Date inversion is rejected independently of translated distance type\nPASS Date inversion is rejected independently of translated distance sanitized\nPASS Date inversion is rejected independently of translated distance rejected\nPASS Translated distance is not incorrectly marked missing in audit\nPASS Translation audit still reports the actual changed date\nPASS Date inversion is rejected independently of translated distance type\nPASS Date inversion is rejected independently of translated distance sanitized\nPASS Date inversion is rejected independently of translated distance rejected\nPASS Translated distance is not incorrectly marked missing in audit\nPASS Translation audit still reports the actual changed date\nPASS Date inversion is rejected independently of translated distance type\nPASS Date inversion is rejected independently of translated distance sanitized\nPASS Date inversion is rejected independently of translated distance rejected\nPASS Translated distance is not incorrectly marked missing in audit\nPASS Translation audit still reports the actual changed date\nPASS Semantic rejection is retained privately type\nPASS Semantic rejection is retained privately sanitized\nPASS Semantic rejection is retained privately rejected\nPASS Private semantic evidence includes reviewer explanation and candidate\nPASS Rejected translation cannot publish type\nPASS Rejected translation cannot publish sanitized\nPASS Rejected translation cannot publish rejected\nPASS Rejected translation retains its own candidate\nPASS Preflight source issue never reuses an earlier candidate type\nPASS Preflight source issue never reuses an earlier candidate sanitized\nPASS Preflight source issue never reuses an earlier candidate rejected\nPASS Evidence is reset before each operation, including preflight rejection\nPASS Successful operation has no rejected evidence\nPASS Private viewer renders omitted and introduced factual values\nPASS Audit labels and reviewer notes cannot execute HTML\nPASS Rejected model HTML is displayed as inert text\nPASS Full source remains available beside the rejected response\nPASS Historical rejections without a saved candidate are clearly identified\nEVENT_REWRITE_TESTS_PASSED:362\n",
+    "guards_ok": true,
+    "guards_output": "Endpoint guards passed: 29\n",
+    "database_ok": true,
+    "database_output": "ected translation retains its own candidate\nPASS Preflight source issue never reuses an earlier candidate type\nPASS Preflight source issue never reuses an earlier candidate sanitized\nPASS Preflight source issue never reuses an earlier candidate rejected\nPASS Evidence is reset before each operation, including preflight rejection\nPASS Successful operation has no rejected evidence\nPASS Private viewer renders omitted and introduced factual values\nPASS Audit labels and reviewer notes cannot execute HTML\nPASS Rejected model HTML is displayed as inert text\nPASS Full source remains available beside the rejected response\nPASS Historical rejections without a saved candidate are clearly identified\nEVENT_REWRITE_TESTS_PASSED:362\nPASS Rollback audit fixture refuses to overwrite an existing record\nPASS Rollback fixture binds the event already placed in scope by the user\nPASS Actual Portuguese audit SQL retains private rejected text\nPASS Actual translation audit SQL retains its private rejection envelope\nPASS Saved rejection cannot satisfy the existing validated-output cache predicate\nPASS Global-admin reader loads the exact private audit envelope with bound IDs\nPASS Private reader exposes the real persisted factual differences\nPASS Event source, published descriptions and metadata remain unchanged\nPASS Rollback removed all fixture audit rows without advancing sequences\nAUDIT_DATABASE_PASSED\n",
+    "privacy_checks": [
+      {
+        "case": "defaults",
+        "status": "200",
+        "ok": true
+      },
+      {
+        "case": "denied",
+        "status": "403",
+        "ok": true
+      },
+      {
+        "case": "invalid",
+        "status": "400",
+        "ok": true
+      },
+      {
+        "case": "method",
+        "status": "405",
+        "ok": true
+      },
+      {
+        "case": "view",
+        "status": "403",
+        "ok": true
+      }
+    ],
+    "archive": "/var/backups/rewrite-tests-amv1pb57",
+    "stage_removed": true
+  }
+}

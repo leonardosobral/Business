@@ -47,7 +47,7 @@ VARIABLES.seoTabs = [{id="relatorio",label="Relatório técnico"},{id="ga4",labe
   .seo-queue .seo-detail-grid dd { margin: 0; font-size: .9rem; overflow-wrap: anywhere; white-space: pre-line; }
   .seo-queue .seo-urls { list-style: none; padding-left: 0; margin: .75rem 0 0; }
   .seo-queue .seo-urls li { margin-top: .4rem; }
-  .seo-queue .seo-urls a { color: #b9d8ff; overflow-wrap: anywhere; font-size: .875rem; text-decoration: underline; text-underline-offset: 3px; }
+  .seo-queue .seo-urls a { color: #d4d4d4; overflow-wrap: anywhere; font-size: .875rem; text-decoration: underline; text-underline-offset: 3px; }
   .seo-queue a:focus-visible, .seo-queue summary:focus-visible { outline: 2px solid #ffda86; outline-offset: 4px; }
   .seo-queue .seo-note { font-size: .8rem; line-height: 1.5; color: var(--mdb-secondary-color); }
   .seo-queue .seo-report { margin-bottom: 2rem; }
@@ -55,7 +55,7 @@ VARIABLES.seoTabs = [{id="relatorio",label="Relatório técnico"},{id="ga4",labe
   .seo-queue .seo-score-card { padding: 1.25rem; }
   .seo-queue .seo-search-health { margin: 1rem 0; padding: 1rem; border: 1px solid var(--seo-status-border); border-left: 4px solid var(--seo-status-color); border-radius: .6rem; background: var(--seo-status-bg); }
   .seo-queue .seo-search-health h4 { color: var(--seo-status-color); line-height: 1.5; }
-  .seo-queue .seo-search-eyebrow { font-size: .75rem; margin-bottom: .5rem; color: #bcc3cf; }
+  .seo-queue .seo-search-eyebrow { font-size: .75rem; margin-bottom: .5rem; color: #c2c2c2; }
   .seo-queue .seo-search-facts { margin: .85rem 0; }
   .seo-queue .seo-search-facts div + div { margin-top: .85rem; }
   .seo-queue .seo-search-facts dt { color: var(--seo-status-color); font-size: .85rem; }
@@ -65,8 +65,8 @@ VARIABLES.seoTabs = [{id="relatorio",label="Relatório técnico"},{id="ga4",labe
   .seo-queue .seo-technical-score summary:focus-visible { outline: 2px solid #ffce67; outline-offset: 4px; }
   .seo-queue .seo-score-main { display: flex; align-items: center; gap: 1.25rem; padding: 1rem 0; }
   .seo-queue .seo-score-number { display: flex; align-items: baseline; gap: .25rem; flex-shrink: 0; }
-  .seo-queue .seo-score-value { font-size: 3rem; line-height: 1; font-weight: 750; letter-spacing: -.05em; color: #f3f5f8; }
-  .seo-queue .seo-score-max { font-size: 1rem; color: #aab2bd; }
+  .seo-queue .seo-score-value { font-size: 3rem; line-height: 1; font-weight: 750; letter-spacing: -.05em; color: #f5f5f5; }
+  .seo-queue .seo-score-max { font-size: 1rem; color: #b1b1b1; }
   .seo-queue .seo-score-copy { min-width: 0; }
   .seo-queue .seo-score-copy strong { font-size: .9rem; }
   .seo-queue .seo-status-totals { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .5rem; padding: 0; margin: 0 0 1rem; list-style: none; }
@@ -76,10 +76,10 @@ VARIABLES.seoTabs = [{id="relatorio",label="Relatório técnico"},{id="ga4",labe
   .seo-queue .seo-status-pass { --seo-status-color: #94e3b0; --seo-status-bg: rgba(83,199,125,.07); --seo-status-border: rgba(83,199,125,.3); }
   .seo-queue .seo-status-warning { --seo-status-color: #ffda86; --seo-status-bg: rgba(255,193,7,.07); --seo-status-border: rgba(255,193,7,.3); }
   .seo-queue .seo-status-error { --seo-status-color: #ffaaa6; --seo-status-bg: rgba(250,100,100,.08); --seo-status-border: rgba(250,100,100,.34); }
-  .seo-queue .seo-status-unknown { --seo-status-color: #bcc3cf; --seo-status-bg: rgba(170,180,195,.06); --seo-status-border: rgba(170,180,195,.25); }
+  .seo-queue .seo-status-unknown { --seo-status-color: #c2c2c2; --seo-status-bg: rgba(179,179,179,.06); --seo-status-border: rgba(179,179,179,.25); }
   .seo-queue .seo-status-total, .seo-queue .seo-status-badge { color: var(--seo-status-color); background: var(--seo-status-bg); border-color: var(--seo-status-border); }
   .seo-queue .seo-score-card .seo-run-numbers { border-top: 1px solid var(--seo-border); padding-top: 1rem; }
-  .seo-queue .seo-report-note { border-left: 3px solid #7992ac; background: rgba(121,146,172,.06); padding: .8rem 1rem; margin-top: 1rem; }
+  .seo-queue .seo-report-note { border-left: 3px solid #8f8f8f; background: rgba(143,143,143,.06); padding: .8rem 1rem; margin-top: 1rem; }
   .seo-queue .seo-method, .seo-queue .seo-checklist, .seo-queue .seo-history { border: 1px solid var(--seo-border); border-radius: 8px; background: rgba(255,255,255,.02); }
   .seo-queue .seo-method { margin: 1rem 0 1.5rem; padding: 0 1rem; }
   .seo-queue .seo-method > summary { cursor: pointer; padding: .9rem 0; font-size: .9rem; font-weight: 600; }
@@ -100,7 +100,7 @@ VARIABLES.seoTabs = [{id="relatorio",label="Relatório técnico"},{id="ga4",labe
   .seo-queue .seo-check-summary-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; margin-top: .3rem; }
   .seo-queue .seo-check-summary-meta span { font-size: .7rem; }
   .seo-queue .seo-check-summary-meta .seo-status-text { color: var(--seo-status-color); font-weight: 600; }
-  .seo-queue .seo-check-chevron { color: #b7bfca; font-size: .85rem; line-height: 1.5; transition: transform .15s ease; }
+  .seo-queue .seo-check-chevron { color: #bebebe; font-size: .85rem; line-height: 1.5; transition: transform .15s ease; }
   .seo-queue .seo-check[open] > summary .seo-check-chevron { transform: rotate(90deg); }
   .seo-queue .seo-check[open] > summary { border-bottom: 1px solid var(--seo-border); }
   .seo-queue .seo-check-body { padding: .85rem .9rem; }
@@ -114,7 +114,7 @@ VARIABLES.seoTabs = [{id="relatorio",label="Relatório técnico"},{id="ga4",labe
   .seo-queue .seo-history-grid { margin-top: 1rem; }
   .seo-queue .seo-history { padding: 1rem; min-width: 0; }
   .seo-queue .seo-history .table { margin: .75rem 0; --mdb-table-bg: transparent; }
-  .seo-queue .seo-history th { font-size: .72rem; color: #aab2bd; font-weight: 500; }
+  .seo-queue .seo-history th { font-size: .72rem; color: #b1b1b1; font-weight: 500; }
   .seo-queue .seo-history td { font-size: .78rem; vertical-align: middle; }
   .seo-queue .seo-history th, .seo-queue .seo-history td { padding: .7rem .3rem; border-color: var(--seo-border); }
   .seo-queue .seo-history td:first-child { width: 48%; }

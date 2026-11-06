@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-11-05T11:29:47.692704+00:00",
+  "candidate_hashes": {
+    "conteudo.roadrunners.run/admin/importer_cbat_corridaderua.cfm": "b54346c1f4c9faaa09f50f17d34275eec8620abd6e1f4dec4b5790e71598c93d"
+  },
+  "native_tests": {
+    "ok": true,
+    "output": "USER_ACQUISITION_SOURCE_PASSED {\"CHECKS\":14.0}",
+    "archive": "/var/backups/business-cbat-test-itv3acs4",
+    "stage_removed": true
+  }
+}

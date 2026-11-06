@@ -1,0 +1,502 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-rr-neutral-wiuq_arg",
+  "manifest": {
+    "business.roadrunners.run/assets/css/business-ui.css": {
+      "before": "22aa59b452000e267c11e57d7347e8e12164d033de624b062776ae21d7004e82",
+      "after": "a11ce771262c81b986799a45aa92f8167c8e5b797f23c96930553908f0c6904d"
+    },
+    "business.roadrunners.run/assets/css/admin-suite.css": {
+      "before": "f4add275af44f8e110b23534b3f7403929ca4e101809bd4931b0caddb2c35978",
+      "after": "c5dbf0b2929b31dd6043d85c1878015ed1d79507b4ece233dc9fcc6563111ae1"
+    },
+    "business.roadrunners.run/assets/css/admin-dashboard.css": {
+      "before": "1d2dffb9092c086791cf57e53691646c41bdf0f8f2d14cfb151e1ef15bc440d8",
+      "after": "da46a827409d6f63865724e679243aae85a3413d6211a527e20c07e3b0247240"
+    },
+    "business.roadrunners.run/assets/css/audience-dashboard.css": {
+      "before": "cedc11b136d4ab058825a9dc75f50aaa8d55eded57400d3dc9c9d15f37d270fe",
+      "after": "20410aba9b9222af87281fabacb2f443b0edd75c6a5aac58587a56fbc9f2f83d"
+    },
+    "business.roadrunners.run/assets/css/portal-banner-dashboard.css": {
+      "before": "def035d145dd89dbbc5c4cc132fa1d8b199f63e7e64a27d18a5c66c2b959e95d",
+      "after": "4aca7a91a5fa8b299180d8030709a2f537f465f0bf0efd671d02f74db04489fc"
+    },
+    "business.roadrunners.run/assets/css/paid-banner-workspace.css": {
+      "before": "a7025bbf67166034b22e652d04c4b72255a2fedf96b92336dc7c3d7471270756",
+      "after": "0da0135c1f06e6214b48ec81453cafd6c0f2ef43bc3049348c8e901c04f98d4c"
+    },
+    "business.roadrunners.run/helpdesk/assets/workspace.css": {
+      "before": "9992c15c24124c8e13ac8c4a7380d13b62746b035583f09a66907ba5eae0634e",
+      "after": "2de5393d219507a0908190e569ed24e6ab4192085c6136bc79ff2a60e55bbfc1"
+    },
+    "business.roadrunners.run/administracao/drive/assets/drive.css": {
+      "before": "88ae50e7ff990b3799b0ada0cd301fb80c7b6378e47421384aafc627cee1deac",
+      "after": "8affda7e4dd1bd7ab44550a423fdc0c9d48cf47a524bd5dc7b76922a24488e0c"
+    },
+    "business.roadrunners.run/administracao/agenda/assets/agenda.css": {
+      "before": "c4366574c4b240914cfd2c920f272f0660ac4419d9dffe1c4031c054bfe8300e",
+      "after": "c4e5a4f3f037e67e862c2380082cde9db1db2ebffef65921e246b6ac62ad9f5b"
+    },
+    "business.roadrunners.run/administracao/kanban/assets/kanban.css": {
+      "before": "e400c722e28b96510d01e27a06874e077cefcabc8b589c86431df9672cdb0e11",
+      "after": "2a07f91b3ffa071b84cc907cf89ebc6257731f29c9a2cdc186e87dc39a2fb772"
+    },
+    "business.roadrunners.run/administracao/ai-mails/assets/ai-mails.css": {
+      "before": "9fc153b21759fdb73d712a7d4d17bd8134a0a67c38d39e09e999318f8649c750",
+      "after": "f3f06878f7a53b0ba48931b32b3acea432957c62bcd3d0a444a50583154f51ce"
+    },
+    "business.roadrunners.run/administracao/consumo-openai/assets/usage.css": {
+      "before": "0538e8fa0a3ab383069b3e246e59dfa3578547cf0b6a0d16676b520e664083a8",
+      "after": "03a83a80668c6134165aed9b6a6a98147597a5f7f2e9c4a13c76124dc0258a11"
+    },
+    "business.roadrunners.run/administracao/vicky/assets/audit.css": {
+      "before": "84c7438ce6b75792da8777e1d87e1168f6155d1db78833cfa08b1a41c5c98252",
+      "after": "5179f69d0819e2966f20c019695fd3e90533b7a56e2b6649ec43ae02333761d6"
+    },
+    "business.roadrunners.run/administracao/chat/grupos-especiais/assets/manager.css": {
+      "before": "3050fef459d33d5afe35629abcdb5808978dfa330c8eb8ebff0a1a1cbe326c09",
+      "after": "c493915f09a2b0928b28c13e1f740af00bb74d2479fe1c9234c9755413a7ec83"
+    },
+    "business.roadrunners.run/saude-eventos/assets/saude-eventos.css": {
+      "before": "06ca294c6de3e35c17fd064876e2e1abcd02645da35c33a261c7ea4af834b5dc",
+      "after": "d577983957a2a2cdc1676499b04a221441f627a01edd9ad0dd8115ab42030e45"
+    },
+    "business.roadrunners.run/saude-eventos/central/assets/saude-panel.css": {
+      "before": "c8c268e24331b57510d1530496aa0008a8445487cf029515b82006005eacc2a4",
+      "after": "06dfa323f7ee115d2054b7203a74ee200e99c9f811dd71bfecb4dca73f43e7a4"
+    },
+    "business.roadrunners.run/portal/funil/assets/funil.css": {
+      "before": "12ebb82f92145542c763ecbe816d5b21fe7e9d3318ecdade17d3e35b5775cce7",
+      "after": "a187b769505ea1c896a76e829544b280a16306e4a83e03a4bac2a62a3a85ba71"
+    },
+    "business.roadrunners.run/cupons-rr/assets/manager.css": {
+      "before": "770cc07d229dad884f922c21f922ddb0067031d5afa1945fcc72151f42d864c5",
+      "after": "81c0139dffd8efa92705cc26bbac1cd994360f0d91e6b8557fc4a615a214b631"
+    },
+    "business.roadrunners.run/desafios/assets/catarinense-contact.css": {
+      "before": "f91b8550b8462a085583ff3c75eec2d6923e92b5f0e3b541ba1ead210e113b70",
+      "after": "3a69bf433a5aba4c60f08c9616735cd32993b3c3eeb3f62722d1077f4dd363fd"
+    },
+    "business.roadrunners.run/administracao/cron-jobs/home.cfm": {
+      "before": "d9371c8561f2ff43b602f7b6f565212f0472de9ffc38509e9db9eaeed11f1384",
+      "after": "e9925a95ef1cfabc0c21b9aafc180888fc9d48e764e4e31c35e241eb8d42bd5b"
+    },
+    "business.roadrunners.run/administracao/usuarios/home.cfm": {
+      "before": "84d96a597393575b8e5455a9d6d440cd776eed8c1a9a8d0821406d3b6fc643fa",
+      "after": "5cf4d0f21d97dc9b88513080d36223832d0b3a960144ac54b6dcc6e0480fbf7f"
+    },
+    "business.roadrunners.run/administracao/vicky/index.cfm": {
+      "before": "e2463c20544b11a6ee9b4341625d55478aa9abe0a0e43e938372e9396693709f",
+      "after": "41d8551bb0abb6ec19d4a3c27c937d357c88095347fc83c80223caa603d252a6"
+    },
+    "business.roadrunners.run/administracao/vicky/home.cfm": {
+      "before": "fbe926bc6754b0b79211aa65826df6d762c4000ea1e69038d590b6150a1ebf90",
+      "after": "d13467fd14ee2d4ac9d8a1f2bdde1c62ee13290e755cdc6b4ec6754bbff1cd5e"
+    },
+    "business.roadrunners.run/portal/eventos-analytics/home.cfm": {
+      "before": "4766442dd98c452934a0f71054c960513ac7c35d21f72d8e96cf3447e0e12fbe",
+      "after": "00360096516e442d79f4bb8591f841aa3492f9b0092507b69e624efe6dd5b1c1"
+    },
+    "business.roadrunners.run/portal/conteudo/seo.cfm": {
+      "before": "1d6d39f89638460c09d94ef6c01ea1f2f77c1dbb4307ca40d10a241e4a097a28",
+      "after": "db68bb5e2742309c4a2d00e40562b874ed3e36066a679507fc6be60ae5dd2c3c"
+    },
+    "business.roadrunners.run/portal/agendas/home.cfm": {
+      "before": "8f1009b2c59020b43bdd8d545bdd3e60b8963ee61413bc1c1c0f8c4fd145019f",
+      "after": "c0c046bac5bf6f22a341e8b2d2dd23cc1d7ff188dad7784924fa3fd2e2a57ea0"
+    },
+    "business.roadrunners.run/portal/conteudos/preview.cfm": {
+      "before": "f84ef7f489693355a5da14a420c90fe7c325bb201b383eb4caec48be04217c0a",
+      "after": "bec5d4c74a3a89bfa0fc2293e5c4fa32a69b0b894c92f879ba9d977cfdbe2def"
+    },
+    "business.roadrunners.run/desafios/includes/catarinense_contact_modal.cfm": {
+      "before": "230e42876bb969ce8cd2373a5883db9c440dd6504df042a0d357a385794be97d",
+      "after": "95cb4769e7eb1cf48f2f8ccd3d3d10840a01ed4e988179dee0457ec4faebf1a1"
+    },
+    "business.roadrunners.run/administracao/chat/grupos-especiais/home.cfm": {
+      "before": "26c717b05427e8f55afde36701d21dc40706a41019c755e8b4ae4cbc13790e63",
+      "after": "10655d6e18330ed8f0cc26c18cb35cd6f9086ca0e2471debaeaa5e87cebe1d57"
+    },
+    "business.roadrunners.run/administracao/kanban/index.cfm": {
+      "before": "a5646507a1d178eac52e98f513a8f0605a474d64ca91689b27ddbe38b24a2992",
+      "after": "9519b6d6172e3196d44a3e5ade41c86a18a40ce51662db9c7da62b8984ca6073"
+    },
+    "business.roadrunners.run/administracao/vicky/includes/audit_view.cfm": {
+      "before": "b532a96d420de4d11dbd628c4b8d99b334687986c90aa189d6e5c7299b6dca4b",
+      "after": "a59e7475e8331c217e9e7d8f4aa66524ee7ef7611f64d69f8c92b97374399442"
+    },
+    "business.roadrunners.run/administracao/agenda/index.cfm": {
+      "before": "fc2b838aa1557790a131c18759c5f015590c14bf33ac779e8532b631ba116c61",
+      "after": "0229c93abc4815295e08ace5d55361d1d7d16cc728494f679de07d6678bec939"
+    },
+    "business.roadrunners.run/administracao/ai-mails/index.cfm": {
+      "before": "b8044a1c3cef65b9b1a2e621adb30f59f7674a794ae0cab9d5b8098eec9a11b3",
+      "after": "6bdc96768ed4ed02dd1c8527f18bb123f806de21a9fc72b02fdae03d270dd213"
+    },
+    "business.roadrunners.run/administracao/consumo-openai/index.cfm": {
+      "before": "c7b4f10a645a25d42f27c7413d6001672a159501c7a579054eeb06d89bdac2c2",
+      "after": "4bc8ec36924ce2104070fe46d7d3507886781540111f38e38f65311f865c1aa0"
+    },
+    "business.roadrunners.run/administracao/drive/index.cfm": {
+      "before": "bd23003b533e715cac749944aa5b3c26ebfac7a7db34757c02d51c4b83a8d9c8",
+      "after": "7ff8a491da77f5f77146070d843ed4259d563788d25752143e981ed1ee8db946"
+    },
+    "business.roadrunners.run/portal/funil/index.cfm": {
+      "before": "4c7608f2a87beb9a5ce4f60a89bd78c06dc36a14377e3ca738caaa711c6c0f07",
+      "after": "1ba4c8cffbb0c13f2b0570c5c90e7cf454deb838bdf2d5454b35d6777d657934"
+    },
+    "business.roadrunners.run/portal/includes/paid_banner_home.cfm": {
+      "before": "0ae1fb4533ecc53b32e95e7347571762fb7c3b62455853d873caa5110c7e888f",
+      "after": "e7ef1cd4159534561ee3f556fbc489ad4dfd2fdbae2b8282fd087f6e9ef25278"
+    },
+    "business.roadrunners.run/portal/banners/home.cfm": {
+      "before": "4f7ae1f54df1fcfe51795f5976b5e57d2d6ad04233cbab2cf6d298668ba7266e",
+      "after": "e40b91a2b0f938308144d465a31684698262d51408c875dfdf1d712bc2c185f9"
+    },
+    "business.roadrunners.run/portal/audiencia/home.cfm": {
+      "before": "501734c094b7052b46eb8758f9d0d5cff5e0f206698bafc2ddfda03be8c74ea4",
+      "after": "0e2c1076c87a199e92cef2156680246c1c38a03b982b2b98892b5136080708f2"
+    },
+    "business.roadrunners.run/saude-eventos/index.cfm": {
+      "before": "130921022a3f1f546b44c3e7a8eb79abe42c045be4771da05385bb8dc127c502",
+      "after": "e9a534cd8b65f7447dbc27e01a8846eeede12c391be9fcad716edbf8cbf1894f"
+    },
+    "business.roadrunners.run/saude-eventos/central/access-request.cfm": {
+      "before": "32d34b286c93c9d428c054fd9c468b91ef2f5e0cb026c7545c7f414fff1c17e9",
+      "after": "b8a29962fe44dca64dc10103cdaf0fc44b4fd70de9f6a2f4537540672042d098"
+    },
+    "business.roadrunners.run/saude-eventos/central/index.cfm": {
+      "before": "82d4e9ef844bcfd7a2d90a9ed6f0a48659eb7286dafe247acba51c865aaf5a5b",
+      "after": "b2604cfbda5f893401c59b3d31907670cfd436c46309ec9a3095278ff3f92c40"
+    },
+    "business.roadrunners.run/cupons-rr/home.cfm": {
+      "before": "5b97cbe255f8553c9b29b26acbd8b5fcc4a71646b00a515d7f781d8b7d44f85a",
+      "after": "c71f98e38ec4133f6b7a1c0afa62f07372622ecd668b7bea58430e64ccb9e1d3"
+    },
+    "business.roadrunners.run/includes/estrutura/head.cfm": {
+      "before": "37adbbbcc9a99f0cb8911aca76dda2e9ad456c086318bc812ab4e6ef8bd3673d",
+      "after": "8b686316e4ca909bf2414d5195d880681d1515da8a246a03d316361d6cd89244"
+    },
+    "business.roadrunners.run/includes/estrutura/home_admin_dashboard.cfm": {
+      "before": "8343710dfea3ebab2296e2de06e2712cf196201c2dcbe37f80e2d030319bc10a",
+      "after": "92a6e2781e24a03238c95982ac79ecd3594f2c2973fdf5edbc94380a5d151e7e"
+    },
+    "business.roadrunners.run/helpdesk/includes/workspace.cfm": {
+      "before": "f4e224bc70c51c370872ab64c64d342ad0e8f0201c78fdc705454aa430a5180f",
+      "after": "0cef78db31edaded928ef059f793a7bb095dfbfe418cf9e78b6d40ee3a2f1866"
+    }
+  },
+  "candidate_hashes": {
+    "business.roadrunners.run/assets/css/business-ui.css": "a11ce771262c81b986799a45aa92f8167c8e5b797f23c96930553908f0c6904d",
+    "business.roadrunners.run/assets/css/admin-suite.css": "c5dbf0b2929b31dd6043d85c1878015ed1d79507b4ece233dc9fcc6563111ae1",
+    "business.roadrunners.run/assets/css/admin-dashboard.css": "da46a827409d6f63865724e679243aae85a3413d6211a527e20c07e3b0247240",
+    "business.roadrunners.run/assets/css/audience-dashboard.css": "20410aba9b9222af87281fabacb2f443b0edd75c6a5aac58587a56fbc9f2f83d",
+    "business.roadrunners.run/assets/css/portal-banner-dashboard.css": "4aca7a91a5fa8b299180d8030709a2f537f465f0bf0efd671d02f74db04489fc",
+    "business.roadrunners.run/assets/css/paid-banner-workspace.css": "0da0135c1f06e6214b48ec81453cafd6c0f2ef43bc3049348c8e901c04f98d4c",
+    "business.roadrunners.run/helpdesk/assets/workspace.css": "2de5393d219507a0908190e569ed24e6ab4192085c6136bc79ff2a60e55bbfc1",
+    "business.roadrunners.run/administracao/drive/assets/drive.css": "8affda7e4dd1bd7ab44550a423fdc0c9d48cf47a524bd5dc7b76922a24488e0c",
+    "business.roadrunners.run/administracao/agenda/assets/agenda.css": "c4e5a4f3f037e67e862c2380082cde9db1db2ebffef65921e246b6ac62ad9f5b",
+    "business.roadrunners.run/administracao/kanban/assets/kanban.css": "2a07f91b3ffa071b84cc907cf89ebc6257731f29c9a2cdc186e87dc39a2fb772",
+    "business.roadrunners.run/administracao/ai-mails/assets/ai-mails.css": "f3f06878f7a53b0ba48931b32b3acea432957c62bcd3d0a444a50583154f51ce",
+    "business.roadrunners.run/administracao/consumo-openai/assets/usage.css": "03a83a80668c6134165aed9b6a6a98147597a5f7f2e9c4a13c76124dc0258a11",
+    "business.roadrunners.run/administracao/vicky/assets/audit.css": "5179f69d0819e2966f20c019695fd3e90533b7a56e2b6649ec43ae02333761d6",
+    "business.roadrunners.run/administracao/chat/grupos-especiais/assets/manager.css": "c493915f09a2b0928b28c13e1f740af00bb74d2479fe1c9234c9755413a7ec83",
+    "business.roadrunners.run/saude-eventos/assets/saude-eventos.css": "d577983957a2a2cdc1676499b04a221441f627a01edd9ad0dd8115ab42030e45",
+    "business.roadrunners.run/saude-eventos/central/assets/saude-panel.css": "06dfa323f7ee115d2054b7203a74ee200e99c9f811dd71bfecb4dca73f43e7a4",
+    "business.roadrunners.run/portal/funil/assets/funil.css": "a187b769505ea1c896a76e829544b280a16306e4a83e03a4bac2a62a3a85ba71",
+    "business.roadrunners.run/cupons-rr/assets/manager.css": "81c0139dffd8efa92705cc26bbac1cd994360f0d91e6b8557fc4a615a214b631",
+    "business.roadrunners.run/desafios/assets/catarinense-contact.css": "3a69bf433a5aba4c60f08c9616735cd32993b3c3eeb3f62722d1077f4dd363fd",
+    "business.roadrunners.run/administracao/cron-jobs/home.cfm": "e9925a95ef1cfabc0c21b9aafc180888fc9d48e764e4e31c35e241eb8d42bd5b",
+    "business.roadrunners.run/administracao/usuarios/home.cfm": "5cf4d0f21d97dc9b88513080d36223832d0b3a960144ac54b6dcc6e0480fbf7f",
+    "business.roadrunners.run/administracao/vicky/index.cfm": "41d8551bb0abb6ec19d4a3c27c937d357c88095347fc83c80223caa603d252a6",
+    "business.roadrunners.run/administracao/vicky/home.cfm": "d13467fd14ee2d4ac9d8a1f2bdde1c62ee13290e755cdc6b4ec6754bbff1cd5e",
+    "business.roadrunners.run/portal/eventos-analytics/home.cfm": "00360096516e442d79f4bb8591f841aa3492f9b0092507b69e624efe6dd5b1c1",
+    "business.roadrunners.run/portal/conteudo/seo.cfm": "db68bb5e2742309c4a2d00e40562b874ed3e36066a679507fc6be60ae5dd2c3c",
+    "business.roadrunners.run/portal/agendas/home.cfm": "c0c046bac5bf6f22a341e8b2d2dd23cc1d7ff188dad7784924fa3fd2e2a57ea0",
+    "business.roadrunners.run/portal/conteudos/preview.cfm": "bec5d4c74a3a89bfa0fc2293e5c4fa32a69b0b894c92f879ba9d977cfdbe2def",
+    "business.roadrunners.run/desafios/includes/catarinense_contact_modal.cfm": "95cb4769e7eb1cf48f2f8ccd3d3d10840a01ed4e988179dee0457ec4faebf1a1",
+    "business.roadrunners.run/administracao/chat/grupos-especiais/home.cfm": "10655d6e18330ed8f0cc26c18cb35cd6f9086ca0e2471debaeaa5e87cebe1d57",
+    "business.roadrunners.run/administracao/kanban/index.cfm": "9519b6d6172e3196d44a3e5ade41c86a18a40ce51662db9c7da62b8984ca6073",
+    "business.roadrunners.run/administracao/vicky/includes/audit_view.cfm": "a59e7475e8331c217e9e7d8f4aa66524ee7ef7611f64d69f8c92b97374399442",
+    "business.roadrunners.run/administracao/agenda/index.cfm": "0229c93abc4815295e08ace5d55361d1d7d16cc728494f679de07d6678bec939",
+    "business.roadrunners.run/administracao/ai-mails/index.cfm": "6bdc96768ed4ed02dd1c8527f18bb123f806de21a9fc72b02fdae03d270dd213",
+    "business.roadrunners.run/administracao/consumo-openai/index.cfm": "4bc8ec36924ce2104070fe46d7d3507886781540111f38e38f65311f865c1aa0",
+    "business.roadrunners.run/administracao/drive/index.cfm": "7ff8a491da77f5f77146070d843ed4259d563788d25752143e981ed1ee8db946",
+    "business.roadrunners.run/portal/funil/index.cfm": "1ba4c8cffbb0c13f2b0570c5c90e7cf454deb838bdf2d5454b35d6777d657934",
+    "business.roadrunners.run/portal/includes/paid_banner_home.cfm": "e7ef1cd4159534561ee3f556fbc489ad4dfd2fdbae2b8282fd087f6e9ef25278",
+    "business.roadrunners.run/portal/banners/home.cfm": "e40b91a2b0f938308144d465a31684698262d51408c875dfdf1d712bc2c185f9",
+    "business.roadrunners.run/portal/audiencia/home.cfm": "0e2c1076c87a199e92cef2156680246c1c38a03b982b2b98892b5136080708f2",
+    "business.roadrunners.run/saude-eventos/index.cfm": "e9a534cd8b65f7447dbc27e01a8846eeede12c391be9fcad716edbf8cbf1894f",
+    "business.roadrunners.run/saude-eventos/central/access-request.cfm": "b8a29962fe44dca64dc10103cdaf0fc44b4fd70de9f6a2f4537540672042d098",
+    "business.roadrunners.run/saude-eventos/central/index.cfm": "b2604cfbda5f893401c59b3d31907670cfd436c46309ec9a3095278ff3f92c40",
+    "business.roadrunners.run/cupons-rr/home.cfm": "c71f98e38ec4133f6b7a1c0afa62f07372622ecd668b7bea58430e64ccb9e1d3",
+    "business.roadrunners.run/includes/estrutura/head.cfm": "8b686316e4ca909bf2414d5195d880681d1515da8a246a03d316361d6cd89244",
+    "business.roadrunners.run/includes/estrutura/home_admin_dashboard.cfm": "92a6e2781e24a03238c95982ac79ecd3594f2c2973fdf5edbc94380a5d151e7e",
+    "business.roadrunners.run/helpdesk/includes/workspace.cfm": "0cef78db31edaded928ef059f793a7bb095dfbfe418cf9e78b6d40ee3a2f1866"
+  },
+  "preserved_files": {
+    "business.roadrunners.run/Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+    "business.roadrunners.run/.htaccess": "84704880597c6208f774a29d06a2f0bd9e373a0d9af4a6c3d8669300964ebdf8",
+    "business.roadrunners.run/helpdesk/includes/backend.cfm": "48dfbf16655722ac5516fbfe850f6aec990575f406b3c2c5802ec212f661878c",
+    "business.roadrunners.run/helpdesk/includes/workspace-actions.cfm": "ba10283e763077f0d1ca0fbd3dd7b3ac793bbf96a36acf0d9721ea635b3e1515",
+    "business.roadrunners.run/helpdesk/includes/workspace-init.cfm": "0d94d34ab3ab8b23107094fffa93bb79e8946b14b3d0af167d9fb2bf73c8a6bc",
+    "business.roadrunners.run/helpdesk/includes/HelpdeskNotes.cfc": "a89615b6358950b49967718179c10010a78f180f9988cc9fabf9b879e3e3efad",
+    "business.roadrunners.run/helpdesk/includes/HelpdeskReplies.cfc": "8dcbc97bc2019f59e37ddc6cd5a16bcf28b2e8f3c84e530c06bb86d7ba7da1e3",
+    "business.roadrunners.run/api/helpdesk/auto-close.cfm": "be8089f7635d0108e79e5f6898294cf8cab1c84534cd0f65d8859218e55d0b5d",
+    "business.roadrunners.run/services/HelpdeskAutoClose.cfc": "c77b0d4decf8b075ec285036d998f8cd948ff01a2ae26f6256c8cb89d20cab31",
+    "business.roadrunners.run/includes/backend/cron_jobs_service.cfm": "dc20f19627942a2ebbbd9aa9fecfd4210d9b7a434c174533a19f63d0ea5f065d",
+    "business.roadrunners.run/services/geocoding/Store.cfc": "04754874562ec47c2e6b1101213dd5229573f142c934d3e58389a6a0567c2e64",
+    "business.roadrunners.run/services/geocoding/LocationWorker.cfc": "08bf02725f6f4cfa1fd1b286dba6edf1cd9627ccded04141a5cf90e0522f6bd6",
+    "business.roadrunners.run/administracao/usuarios/includes/backend.cfm": "a7a278dbab8c4af5e0a0c73d31d7176c94226ce8883f9f498be803f3b2b1f08f",
+    "business.roadrunners.run/administracao/vicky/includes/backend.cfm": "e7ffc3f5f7e4889e099984fcaa3e1e89f1cf46dcdc1094a3b4aab8ef8c2545e6",
+    "roadrunners.com.br/Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "roadrunners.com.br/config/settings.cfm": "0193445e88dc9841e4f40c2bc62dded82f18242fe47c140a879c7a8e109d5b08",
+    "roadrunners.com.br/config/meta_whatsapp.local.cfm": "f5f025791837b6279aca7a3f7f2e0c89419fe78b0e553781237657fc0573e305",
+    "roadrunners.com.br/includes/backend/vicky_meta_whatsapp_runtime_config.cfm": "4a77bdc99609f2978887e562e4286981ec1bee1475918887042ac0934b2505d9",
+    "roadrunners.com.br/services/VickyMetaWhatsappServiceV2.cfc": "8e1c8dcf517f170531320284a215e62b6c73425416a5f7b39a5906bbfa80e5e8",
+    "roadrunners.com.br/api/integrations/vicky-proactive/worker.cfm": "7cb2e6104a06c6601afe067dd781a4c122e77d104fff1154a2dd3813b3cf8d01",
+    "roadrunners.com.br/includes/estrutura/head.cfm": "84258c3f09772972a39d3f1870f46da6c598f6f218b2b192f6fb843f84695896",
+    "roadrunners.com.br/sso/comparador/_portal_nonce.cfm": "bef6a590a08b0048252664a130beff45e3025f57eb83506b0d99c52be3d7f45c"
+  },
+  "probes": [
+    {
+      "host": "business.roadrunners.run",
+      "path": "/assets/css/business-ui.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/assets/css/admin-suite.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/assets/css/admin-dashboard.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/assets/css/audience-dashboard.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/assets/css/portal-banner-dashboard.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/assets/css/paid-banner-workspace.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/helpdesk/assets/workspace.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/drive/assets/drive.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/agenda/assets/agenda.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/kanban/assets/kanban.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/ai-mails/assets/ai-mails.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/consumo-openai/assets/usage.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/vicky/assets/audit.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/chat/grupos-especiais/assets/manager.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/saude-eventos/assets/saude-eventos.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/saude-eventos/central/assets/saude-panel.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/portal/funil/assets/funil.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/cupons-rr/assets/manager.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/desafios/assets/catarinense-contact.css?v=rr-neutral-20261026",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/helpdesk/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/drive/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/saude-eventos/central/",
+      "status": "302",
+      "ok": true
+    }
+  ],
+  "checked_at": "2026-10-26T13:13:47.952336+00:00",
+  "verification": {
+    "checked_at": "2026-10-26T13:13:36.343910+00:00",
+    "candidate_hashes": {
+      "business.roadrunners.run/assets/css/business-ui.css": "a11ce771262c81b986799a45aa92f8167c8e5b797f23c96930553908f0c6904d",
+      "business.roadrunners.run/assets/css/admin-suite.css": "c5dbf0b2929b31dd6043d85c1878015ed1d79507b4ece233dc9fcc6563111ae1",
+      "business.roadrunners.run/assets/css/admin-dashboard.css": "da46a827409d6f63865724e679243aae85a3413d6211a527e20c07e3b0247240",
+      "business.roadrunners.run/assets/css/audience-dashboard.css": "20410aba9b9222af87281fabacb2f443b0edd75c6a5aac58587a56fbc9f2f83d",
+      "business.roadrunners.run/assets/css/portal-banner-dashboard.css": "4aca7a91a5fa8b299180d8030709a2f537f465f0bf0efd671d02f74db04489fc",
+      "business.roadrunners.run/assets/css/paid-banner-workspace.css": "0da0135c1f06e6214b48ec81453cafd6c0f2ef43bc3049348c8e901c04f98d4c",
+      "business.roadrunners.run/helpdesk/assets/workspace.css": "2de5393d219507a0908190e569ed24e6ab4192085c6136bc79ff2a60e55bbfc1",
+      "business.roadrunners.run/administracao/drive/assets/drive.css": "8affda7e4dd1bd7ab44550a423fdc0c9d48cf47a524bd5dc7b76922a24488e0c",
+      "business.roadrunners.run/administracao/agenda/assets/agenda.css": "c4e5a4f3f037e67e862c2380082cde9db1db2ebffef65921e246b6ac62ad9f5b",
+      "business.roadrunners.run/administracao/kanban/assets/kanban.css": "2a07f91b3ffa071b84cc907cf89ebc6257731f29c9a2cdc186e87dc39a2fb772",
+      "business.roadrunners.run/administracao/ai-mails/assets/ai-mails.css": "f3f06878f7a53b0ba48931b32b3acea432957c62bcd3d0a444a50583154f51ce",
+      "business.roadrunners.run/administracao/consumo-openai/assets/usage.css": "03a83a80668c6134165aed9b6a6a98147597a5f7f2e9c4a13c76124dc0258a11",
+      "business.roadrunners.run/administracao/vicky/assets/audit.css": "5179f69d0819e2966f20c019695fd3e90533b7a56e2b6649ec43ae02333761d6",
+      "business.roadrunners.run/administracao/chat/grupos-especiais/assets/manager.css": "c493915f09a2b0928b28c13e1f740af00bb74d2479fe1c9234c9755413a7ec83",
+      "business.roadrunners.run/saude-eventos/assets/saude-eventos.css": "d577983957a2a2cdc1676499b04a221441f627a01edd9ad0dd8115ab42030e45",
+      "business.roadrunners.run/saude-eventos/central/assets/saude-panel.css": "06dfa323f7ee115d2054b7203a74ee200e99c9f811dd71bfecb4dca73f43e7a4",
+      "business.roadrunners.run/portal/funil/assets/funil.css": "a187b769505ea1c896a76e829544b280a16306e4a83e03a4bac2a62a3a85ba71",
+      "business.roadrunners.run/cupons-rr/assets/manager.css": "81c0139dffd8efa92705cc26bbac1cd994360f0d91e6b8557fc4a615a214b631",
+      "business.roadrunners.run/desafios/assets/catarinense-contact.css": "3a69bf433a5aba4c60f08c9616735cd32993b3c3eeb3f62722d1077f4dd363fd",
+      "business.roadrunners.run/administracao/cron-jobs/home.cfm": "e9925a95ef1cfabc0c21b9aafc180888fc9d48e764e4e31c35e241eb8d42bd5b",
+      "business.roadrunners.run/administracao/usuarios/home.cfm": "5cf4d0f21d97dc9b88513080d36223832d0b3a960144ac54b6dcc6e0480fbf7f",
+      "business.roadrunners.run/administracao/vicky/index.cfm": "41d8551bb0abb6ec19d4a3c27c937d357c88095347fc83c80223caa603d252a6",
+      "business.roadrunners.run/administracao/vicky/home.cfm": "d13467fd14ee2d4ac9d8a1f2bdde1c62ee13290e755cdc6b4ec6754bbff1cd5e",
+      "business.roadrunners.run/portal/eventos-analytics/home.cfm": "00360096516e442d79f4bb8591f841aa3492f9b0092507b69e624efe6dd5b1c1",
+      "business.roadrunners.run/portal/conteudo/seo.cfm": "db68bb5e2742309c4a2d00e40562b874ed3e36066a679507fc6be60ae5dd2c3c",
+      "business.roadrunners.run/portal/agendas/home.cfm": "c0c046bac5bf6f22a341e8b2d2dd23cc1d7ff188dad7784924fa3fd2e2a57ea0",
+      "business.roadrunners.run/portal/conteudos/preview.cfm": "bec5d4c74a3a89bfa0fc2293e5c4fa32a69b0b894c92f879ba9d977cfdbe2def",
+      "business.roadrunners.run/desafios/includes/catarinense_contact_modal.cfm": "95cb4769e7eb1cf48f2f8ccd3d3d10840a01ed4e988179dee0457ec4faebf1a1",
+      "business.roadrunners.run/administracao/chat/grupos-especiais/home.cfm": "10655d6e18330ed8f0cc26c18cb35cd6f9086ca0e2471debaeaa5e87cebe1d57",
+      "business.roadrunners.run/administracao/kanban/index.cfm": "9519b6d6172e3196d44a3e5ade41c86a18a40ce51662db9c7da62b8984ca6073",
+      "business.roadrunners.run/administracao/vicky/includes/audit_view.cfm": "a59e7475e8331c217e9e7d8f4aa66524ee7ef7611f64d69f8c92b97374399442",
+      "business.roadrunners.run/administracao/agenda/index.cfm": "0229c93abc4815295e08ace5d55361d1d7d16cc728494f679de07d6678bec939",
+      "business.roadrunners.run/administracao/ai-mails/index.cfm": "6bdc96768ed4ed02dd1c8527f18bb123f806de21a9fc72b02fdae03d270dd213",
+      "business.roadrunners.run/administracao/consumo-openai/index.cfm": "4bc8ec36924ce2104070fe46d7d3507886781540111f38e38f65311f865c1aa0",
+      "business.roadrunners.run/administracao/drive/index.cfm": "7ff8a491da77f5f77146070d843ed4259d563788d25752143e981ed1ee8db946",
+      "business.roadrunners.run/portal/funil/index.cfm": "1ba4c8cffbb0c13f2b0570c5c90e7cf454deb838bdf2d5454b35d6777d657934",
+      "business.roadrunners.run/portal/includes/paid_banner_home.cfm": "e7ef1cd4159534561ee3f556fbc489ad4dfd2fdbae2b8282fd087f6e9ef25278",
+      "business.roadrunners.run/portal/banners/home.cfm": "e40b91a2b0f938308144d465a31684698262d51408c875dfdf1d712bc2c185f9",
+      "business.roadrunners.run/portal/audiencia/home.cfm": "0e2c1076c87a199e92cef2156680246c1c38a03b982b2b98892b5136080708f2",
+      "business.roadrunners.run/saude-eventos/index.cfm": "e9a534cd8b65f7447dbc27e01a8846eeede12c391be9fcad716edbf8cbf1894f",
+      "business.roadrunners.run/saude-eventos/central/access-request.cfm": "b8a29962fe44dca64dc10103cdaf0fc44b4fd70de9f6a2f4537540672042d098",
+      "business.roadrunners.run/saude-eventos/central/index.cfm": "b2604cfbda5f893401c59b3d31907670cfd436c46309ec9a3095278ff3f92c40",
+      "business.roadrunners.run/cupons-rr/home.cfm": "c71f98e38ec4133f6b7a1c0afa62f07372622ecd668b7bea58430e64ccb9e1d3",
+      "business.roadrunners.run/includes/estrutura/head.cfm": "8b686316e4ca909bf2414d5195d880681d1515da8a246a03d316361d6cd89244",
+      "business.roadrunners.run/includes/estrutura/home_admin_dashboard.cfm": "92a6e2781e24a03238c95982ac79ecd3594f2c2973fdf5edbc94380a5d151e7e",
+      "business.roadrunners.run/helpdesk/includes/workspace.cfm": "0cef78db31edaded928ef059f793a7bb095dfbfe418cf9e78b6d40ee3a2f1866"
+    },
+    "native_render": {
+      "ok": true,
+      "output": "HELPDESK_TOOLS_RENDER_PASSED ",
+      "archive": "/var/backups/business-helpdesk-tools-test-pzclvvis",
+      "stage_removed": true
+    },
+    "structure_preserved_files": 46,
+    "layout_or_logic_changes": false
+  },
+  "ddl": false,
+  "credential_changes": false,
+  "git_mutations": false,
+  "palette_only": true,
+  "previous_publications": [],
+  "acceptance": {
+    "browser_pages": [
+      "helpdesk",
+      "drive",
+      "agenda",
+      "vicky_audit",
+      "global_dashboard",
+      "health_central_41703",
+      "ai_mails"
+    ],
+    "computed_panel_rgb": [
+      38,
+      38,
+      38
+    ],
+    "computed_input_rgb": [
+      27,
+      27,
+      27
+    ],
+    "computed_accent": "#f4b120",
+    "sample_text_contrast_ratios": {
+      "helpdesk_text": 12.93,
+      "helpdesk_muted": 8.06,
+      "field_text": 15.52,
+      "rr_accent": 8.04,
+      "agenda_text": 11.25
+    },
+    "mobile_verified": "390x844 AI-mails",
+    "viewport_restored": true,
+    "screenshot_desktop": "/private/tmp/business-neutral-helpdesk-20261026.png",
+    "screenshot_mobile": "/private/tmp/business-neutral-aimails-mobile-20261026.png",
+    "production_fronts_preserved": [
+      "assets/css/admin-dashboard.css",
+      "portal/conteudo/seo.cfm",
+      "includes/estrutura/head.cfm",
+      "includes/estrutura/home_admin_dashboard.cfm"
+    ],
+    "no_browser_mutations": true
+  }
+}

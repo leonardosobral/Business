@@ -1,0 +1,139 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-helpdesk-tools-4apr56i_",
+  "manifest": {
+    "business.roadrunners.run/helpdesk/includes/workspace-init.cfm": {
+      "before": "54d4ea01acfd35e39bcc10ac2ef777ba6ed08228e25c3b606e79e52d74b84826",
+      "after": "0d94d34ab3ab8b23107094fffa93bb79e8946b14b3d0af167d9fb2bf73c8a6bc"
+    }
+  },
+  "candidate_hashes": {
+    "roadrunners.com.br/atendimento/index.cfm": "b34b9221c4c13093d8d94d527bd9bb8a63a673f160f579687361f1b1989f7c47",
+    "business.roadrunners.run/helpdesk/includes/HelpdeskNotes.cfc": "a89615b6358950b49967718179c10010a78f180f9988cc9fabf9b879e3e3efad",
+    "business.roadrunners.run/helpdesk/includes/HelpdeskReplies.cfc": "8dcbc97bc2019f59e37ddc6cd5a16bcf28b2e8f3c84e530c06bb86d7ba7da1e3",
+    "business.roadrunners.run/helpdesk/includes/workspace-replies-actions.cfm": "9ba7b6c9ff0aeb78aa29bf69347a868151b46afacf815d2d8bb50ad6efd16d26",
+    "business.roadrunners.run/helpdesk/includes/workspace-replies.cfm": "8ca17677f6103a8ab9cd5a013b33c994755d788be162b90fa0faed7277983fd4",
+    "business.roadrunners.run/helpdesk/includes/workspace-init.cfm": "0d94d34ab3ab8b23107094fffa93bb79e8946b14b3d0af167d9fb2bf73c8a6bc",
+    "business.roadrunners.run/helpdesk/includes/backend.cfm": "48dfbf16655722ac5516fbfe850f6aec990575f406b3c2c5802ec212f661878c",
+    "business.roadrunners.run/helpdesk/includes/workspace-actions.cfm": "ba10283e763077f0d1ca0fbd3dd7b3ac793bbf96a36acf0d9721ea635b3e1515",
+    "business.roadrunners.run/helpdesk/assets/workspace.css": "9992c15c24124c8e13ac8c4a7380d13b62746b035583f09a66907ba5eae0634e",
+    "business.roadrunners.run/helpdesk/assets/workspace.js": "0839250d088faa53c34d3048b06bb0a88219aeacf184c3c546d2b6f5cafadc71",
+    "business.roadrunners.run/helpdesk/includes/workspace.cfm": "f4e224bc70c51c370872ab64c64d342ad0e8f0201c78fdc705454aa430a5180f"
+  },
+  "preserved_files": {
+    "business.roadrunners.run/Application.cfc": "bf08fda794e8791520592f59aa93d368e98465a11c93d7aa35af0daf8f98b970",
+    "business.roadrunners.run/.htaccess": "84704880597c6208f774a29d06a2f0bd9e373a0d9af4a6c3d8669300964ebdf8",
+    "business.roadrunners.run/helpdesk/home.cfm": "e3cdb31802af6b555bd29444f932074b890bca5f5eeccdaa3c6ba22352159629",
+    "business.roadrunners.run/helpdesk/includes/HelpdeskAI.cfc": "b22b237b1970ac300b80c157cb5445a29419ad2c7ada4acbd7c18beb2bb6aa81",
+    "business.roadrunners.run/api/helpdesk/auto-close.cfm": "be8089f7635d0108e79e5f6898294cf8cab1c84534cd0f65d8859218e55d0b5d",
+    "business.roadrunners.run/services/HelpdeskAutoClose.cfc": "c77b0d4decf8b075ec285036d998f8cd948ff01a2ae26f6256c8cb89d20cab31",
+    "business.roadrunners.run/includes/backend/cron_jobs_service.cfm": "dc20f19627942a2ebbbd9aa9fecfd4210d9b7a434c174533a19f63d0ea5f065d",
+    "business.roadrunners.run/cron-jobs/runner.cfm": "02b02ecd33113a4f31c0068c537c6e822f71ae452626f5bc5e8f9a3dbada0ddb",
+    "business.roadrunners.run/services/geocoding/Store.cfc": "04754874562ec47c2e6b1101213dd5229573f142c934d3e58389a6a0567c2e64",
+    "business.roadrunners.run/administracao/vicky/home.cfm": "fbe926bc6754b0b79211aa65826df6d762c4000ea1e69038d590b6150a1ebf90",
+    "business.roadrunners.run/administracao/vicky/includes/backend.cfm": "e7ffc3f5f7e4889e099984fcaa3e1e89f1cf46dcdc1094a3b4aab8ef8c2545e6",
+    "business.roadrunners.run/administracao/usuarios/home.cfm": "84d96a597393575b8e5455a9d6d440cd776eed8c1a9a8d0821406d3b6fc643fa",
+    "business.roadrunners.run/administracao/usuarios/includes/backend.cfm": "a7a278dbab8c4af5e0a0c73d31d7176c94226ce8883f9f498be803f3b2b1f08f",
+    "roadrunners.com.br/repositories/SupportRepository.cfc": "689212972270549cde9244033efb154a216451b8b6bbc83ae26de4119dbf4134",
+    "roadrunners.com.br/Application.cfc": "ca8017714246cec7170163e399125452740ee7ada156938ec4b67e2692fa8282",
+    "roadrunners.com.br/config/settings.cfm": "0193445e88dc9841e4f40c2bc62dded82f18242fe47c140a879c7a8e109d5b08",
+    "roadrunners.com.br/config/meta_whatsapp.local.cfm": "f5f025791837b6279aca7a3f7f2e0c89419fe78b0e553781237657fc0573e305",
+    "roadrunners.com.br/includes/backend/vicky_meta_whatsapp_runtime_config.cfm": "4a77bdc99609f2978887e562e4286981ec1bee1475918887042ac0934b2505d9",
+    "roadrunners.com.br/services/VickyMetaWhatsappServiceV2.cfc": "8e1c8dcf517f170531320284a215e62b6c73425416a5f7b39a5906bbfa80e5e8",
+    "roadrunners.com.br/api/integrations/vicky-proactive/worker.cfm": "7cb2e6104a06c6601afe067dd781a4c122e77d104fff1154a2dd3813b3cf8d01",
+    "roadrunners.com.br/includes/estrutura/head.cfm": "84258c3f09772972a39d3f1870f46da6c598f6f218b2b192f6fb843f84695896",
+    "roadrunners.com.br/sso/comparador/_portal_nonce.cfm": "bef6a590a08b0048252664a130beff45e3025f57eb83506b0d99c52be3d7f45c"
+  },
+  "probes": [
+    {
+      "host": "business.roadrunners.run",
+      "path": "/helpdesk/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/helpdesk/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/atendimento/",
+      "status": "302",
+      "ok": true
+    }
+  ],
+  "checked_at": "2026-10-26T12:21:46.831627+00:00",
+  "tests": [
+    {
+      "mode": "notes",
+      "ok": true,
+      "output": "HELPDESK_TOOLS_NOTES_PASSED 7 ",
+      "archive": "/var/backups/business-helpdesk-tools-test-zb8zsdrn",
+      "stage_removed": true
+    },
+    {
+      "mode": "replies",
+      "ok": true,
+      "output": "HELPDESK_TOOLS_REPLIES_PASSED 7 ",
+      "archive": "/var/backups/business-helpdesk-tools-test-pmwy6n1u",
+      "stage_removed": true
+    },
+    {
+      "mode": "render",
+      "ok": true,
+      "output": "HELPDESK_TOOLS_RENDER_PASSED ",
+      "archive": "/var/backups/business-helpdesk-tools-test-omuvtgib",
+      "stage_removed": true
+    },
+    {
+      "mode": "guards",
+      "ok": true,
+      "output": "HELPDESK_TOOLS_GUARDS_PASSED [{\"method\": \"POST\", \"admin\": \"1\", \"expected\": 403, \"status\": \"403\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"expected\": 403, \"status\": \"403\", \"ok\": true}, {\"method\": \"GET\", \"admin\": \"1\", \"expected\": 403, \"status\": \"403\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"0\", \"expected\": 403, \"status\": \"403\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"expected\": 200, \"status\": \"200\", \"ok\": true}, {\"method\": \"POST\", \"admin\": \"1\", \"expected\": 200, \"status\": \"200\", \"ok\": true}]",
+      "archive": "/var/backups/business-helpdesk-tools-test-m5673u70",
+      "stage_removed": true
+    }
+  ],
+  "js_tests": 4,
+  "private_library": "/var/lib/runnerhub-business/helpdesk/quick-replies.json",
+  "acceptance": {
+    "general_regression_tests": 273,
+    "browser_note_mode": true,
+    "browser_template_create_edit_insert": true,
+    "temporary_template_removed": true,
+    "original_templates_preserved": 3,
+    "no_public_test_messages": true,
+    "mobile_viewport_verified": "390x844",
+    "viewport_restored": true,
+    "keyboard_title_to_message": true,
+    "geolocation_paused": true,
+    "screenshot_notes": "/private/tmp/business-helpdesk-notes-20261026.png",
+    "screenshot_library": "/private/tmp/business-helpdesk-replies-20261026.png",
+    "screenshot_mobile": "/private/tmp/business-helpdesk-replies-mobile-20261026.png",
+    "cleanup_archive": "/var/backups/business-helpdesk-tools-test-rakgy0vb",
+    "review": "Single independent review; important private retry mode corrected with RED/GREEN render regression. Ticket context also corrected, including New ticket exception. No unresolved findings. Simultaneous requests and injected disk failure not experimentally exercised."
+  },
+  "ddl": false,
+  "credential_changes": false,
+  "git_mutations": false,
+  "previous_publications": [
+    {
+      "backup": "/var/backups/business-helpdesk-tools-xzaoo1f9",
+      "candidate_hashes": {
+        "roadrunners.com.br/atendimento/index.cfm": "b34b9221c4c13093d8d94d527bd9bb8a63a673f160f579687361f1b1989f7c47",
+        "business.roadrunners.run/helpdesk/includes/HelpdeskNotes.cfc": "a89615b6358950b49967718179c10010a78f180f9988cc9fabf9b879e3e3efad",
+        "business.roadrunners.run/helpdesk/includes/HelpdeskReplies.cfc": "8dcbc97bc2019f59e37ddc6cd5a16bcf28b2e8f3c84e530c06bb86d7ba7da1e3",
+        "business.roadrunners.run/helpdesk/includes/workspace-replies-actions.cfm": "9ba7b6c9ff0aeb78aa29bf69347a868151b46afacf815d2d8bb50ad6efd16d26",
+        "business.roadrunners.run/helpdesk/includes/workspace-replies.cfm": "8ca17677f6103a8ab9cd5a013b33c994755d788be162b90fa0faed7277983fd4",
+        "business.roadrunners.run/helpdesk/includes/workspace-init.cfm": "54d4ea01acfd35e39bcc10ac2ef777ba6ed08228e25c3b606e79e52d74b84826",
+        "business.roadrunners.run/helpdesk/includes/backend.cfm": "48dfbf16655722ac5516fbfe850f6aec990575f406b3c2c5802ec212f661878c",
+        "business.roadrunners.run/helpdesk/includes/workspace-actions.cfm": "ba10283e763077f0d1ca0fbd3dd7b3ac793bbf96a36acf0d9721ea635b3e1515",
+        "business.roadrunners.run/helpdesk/assets/workspace.css": "9992c15c24124c8e13ac8c4a7380d13b62746b035583f09a66907ba5eae0634e",
+        "business.roadrunners.run/helpdesk/assets/workspace.js": "0839250d088faa53c34d3048b06bb0a88219aeacf184c3c546d2b6f5cafadc71",
+        "business.roadrunners.run/helpdesk/includes/workspace.cfm": "f4e224bc70c51c370872ab64c64d342ad0e8f0201c78fdc705454aa430a5180f"
+      }
+    }
+  ]
+}

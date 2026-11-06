@@ -4,7 +4,7 @@
 <cfinclude template="includes/backend.cfm">
 <!doctype html><html lang="pt-br">
 <cfinclude template="../../includes/estrutura/head.cfm">
-<link rel="stylesheet" href="./assets/usage.css?v=20261023-1">
+<link rel="stylesheet" href="./assets/usage.css?v=rr-neutral-20261026">
 <body data-mdb-theme="dark" class="bg-dark-subtle">
 <cfinclude template="../../includes/estrutura/header.cfm">
 <main style="margin-top:-55px"><div class="container-fluid px-4 py-4 ou-page"><cfinclude template="includes/view.cfm"></div></main>
