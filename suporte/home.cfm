@@ -230,7 +230,10 @@
                     </div>
                   </form>
                 <cfelse>
-                  <cfoutput><form method="post" action="./?pagina=#VARIABLES.helpdeskPage#"></cfoutput>
+                  <cfif len(hdError)><cfoutput><div class="alert alert-warning" role="alert">#encodeForHTML(hdError)#</div></cfoutput></cfif>
+                  <cfoutput><form method="post" action="./?pagina=#VARIABLES.helpdeskPage#">
+                    <input type="hidden" name="helpdesk_csrf" value="#encodeForHTMLAttribute(SESSION.helpdeskCsrf)#"/>
+                  </cfoutput>
                     <input type="hidden" name="helpdesk_action" value="novo_ticket"/>
 
                     <div class="row support-form-grid">

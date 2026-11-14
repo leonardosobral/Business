@@ -39,6 +39,14 @@
 <cfset VARIABLES.helpdeskPublicMode = VARIABLES.helpdeskMode EQ "support"/>
 <cfset VARIABLES.helpdeskCanManage = VARIABLES.helpdeskIsAdmin AND NOT VARIABLES.helpdeskPublicMode/>
 <cfset VARIABLES.helpdeskCanAccess = VARIABLES.helpdeskCanManage OR VARIABLES.helpdeskPublicMode/>
+<cfset helpdeskTriage=new services.HelpdeskTriage()/>
+<cfset helpdeskTriageIds=helpdeskTriage.sectorIds()/>
+<cfif VARIABLES.helpdeskPublicMode>
+    <cfset hdError=""/>
+    <cfif NOT structKeyExists(SESSION,"helpdeskCsrf")>
+        <cfset SESSION.helpdeskCsrf=lCase(hash(generateSecretKey("AES",256),"SHA-256"))/>
+    </cfif>
+</cfif>
 
 <cfquery name="qHelpdeskTables">
     SELECT table_name
@@ -291,11 +299,16 @@
                coalesce(setr.descricao_setor, '') as descricao_setor,
                setr.id_usuario_responsavel,
                setr.ativo,
+               coalesce(resp.is_admin,false) AS responsavel_valido,
                setr.created_at,
                setr.updated_at,
                coalesce(resp.name, '') as nome_responsavel
         FROM tb_helpdesk_setores setr
         LEFT JOIN tb_usuarios resp ON resp.id = setr.id_usuario_responsavel
+        <cfif VARIABLES.helpdeskPublicMode>
+            WHERE setr.ativo AND resp.is_admin=true
+              AND setr.id_setor IN (<cfqueryparam value="#helpdeskTriageIds#" cfsqltype="cf_sql_integer" list="true"/>)
+        </cfif>
         ORDER BY setr.ativo DESC, setr.nome_setor
     </cfquery>
 </cfif>
@@ -313,15 +326,26 @@
         <cfset VARIABLES.helpdeskSetorAtivo = isDefined("FORM.setor_ativo") AND FORM.setor_ativo EQ "true"/>
 
         <cfif isDefined("FORM.setor_id") AND len(trim(FORM.setor_id))>
-            <cfquery>
-                UPDATE tb_helpdesk_setores
-                SET nome_setor = <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(FORM.setor_nome)#"/>,
-                    descricao_setor = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.helpdeskSetorDescricao#"/>,
-                    id_usuario_responsavel = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.helpdeskSetorResponsavelId#" null="#NOT len(trim(VARIABLES.helpdeskSetorResponsavelId))#"/>,
-                    ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.helpdeskSetorAtivo#"/>,
-                    updated_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
-                WHERE id_setor = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.setor_id#"/>
-            </cfquery>
+            <cfset hdEditingTriage=listFind(helpdeskTriageIds,val(FORM.setor_id)) GT 0/>
+            <cfif hdEditingTriage AND NOT listFind(valueList(qHelpdeskAdmins.id),VARIABLES.helpdeskSetorResponsavelId)>
+                <cfset hdError="Defina um administrador responsável pela triagem."/>
+            <cfelse>
+                <cfquery name="hdUpdatedSector">
+                    UPDATE tb_helpdesk_setores
+                    SET nome_setor = <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(FORM.setor_nome)#"/>,
+                        descricao_setor = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.helpdeskSetorDescricao#"/>,
+                        id_usuario_responsavel = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.helpdeskSetorResponsavelId#" null="#NOT len(trim(VARIABLES.helpdeskSetorResponsavelId))#"/>,
+                        ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#hdEditingTriage OR VARIABLES.helpdeskSetorAtivo#"/>,
+                        updated_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
+                    WHERE id_setor = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.setor_id#"/>
+                      AND (id_setor NOT IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#helpdeskTriageIds#" list="true"/>)
+                        OR id_usuario_responsavel = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>)
+                    RETURNING id_setor
+                </cfquery>
+                <cfif NOT hdUpdatedSector.recordcount>
+                    <cfset hdError="A configuração da triagem é restrita ao responsável pelo setor."/>
+                </cfif>
+            </cfif>
         <cfelse>
             <cfquery>
                 INSERT INTO tb_helpdesk_setores
@@ -338,72 +362,29 @@
             </cfquery>
         </cfif>
 
-        <cflocation addtoken="false" url="./?pagina=#VARIABLES.helpdeskPage#"/>
+        <cfif NOT len(hdError)><cflocation addtoken="false" url="./?pagina=#VARIABLES.helpdeskPage#"/></cfif>
+        <cfset URL.gestao=1/>
     </cfif>
 
     <cfif FORM.helpdesk_action EQ "novo_ticket">
-        <cfif isDefined("FORM.ticket_setor_id")
-            AND len(trim(FORM.ticket_setor_id))
-            AND isDefined("FORM.ticket_assunto")
-            AND len(trim(FORM.ticket_assunto))
-            AND isDefined("FORM.ticket_mensagem")
-            AND len(trim(FORM.ticket_mensagem))>
-
-            <cfset VARIABLES.helpdeskTicketProtocol = "HD-" & dateFormat(now(), "yyyymmdd") & "-" & right(replace(createUUID(), "-", "", "all"), 8)/>
-
-            <cftransaction>
-                <cfquery name="qHelpdeskTicketInsert">
-                    INSERT INTO tb_helpdesk_chamados
-                    (protocolo, id_usuario, id_setor, assunto, status, created_at, updated_at)
-                    VALUES
-                    (
-                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.helpdeskTicketProtocol#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.ticket_setor_id#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(FORM.ticket_assunto)#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_varchar" value="aberto"/>,
-                        <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>,
-                        <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
-                    )
-                    RETURNING id_chamado
-                </cfquery>
-
-                <cfif qHelpdeskTicketInsert.recordcount>
-                    <cfquery>
-                        INSERT INTO tb_helpdesk_mensagens
-                        (id_chamado, id_usuario, mensagem, interno, created_at)
-                        VALUES
-                        (
-                            <cfqueryparam cfsqltype="cf_sql_integer" value="#qHelpdeskTicketInsert.id_chamado#"/>,
-                            <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>,
-                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#trim(FORM.ticket_mensagem)#"/>,
-                            <cfqueryparam cfsqltype="cf_sql_bit" value="false"/>,
-                            <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
-                        )
-                    </cfquery>
-                </cfif>
-            </cftransaction>
-
-            <cfif qHelpdeskTicketInsert.recordcount>
-                <cftry>
-                    <cfset helpdeskNotifyResponsibleAdmin(
-                        qHelpdeskTicketInsert.id_chamado,
-                        FORM.ticket_setor_id,
-                        qPerfil.id,
-                        VARIABLES.helpdeskBusinessBaseUrl
-                    )/>
-                <cfcatch type="any">
-                </cfcatch>
-                </cftry>
+        <cftry>
+            <cfif CGI.request_method NEQ "POST" OR NOT reFind("^[1-9][0-9]{0,8}$", FORM.ticket_setor_id ?: "")>
+                <cfthrow type="HelpdeskTriage.SectorUnavailable" message="Selecione um setor disponível."/>
             </cfif>
-
-            <cfif qHelpdeskTicketInsert.recordcount>
-                <cflocation addtoken="false" url="./?pagina=#VARIABLES.helpdeskPage#&ticket_id=#qHelpdeskTicketInsert.id_chamado#"/>
+            <cfif compare(FORM.helpdesk_csrf ?: "",SESSION.helpdeskCsrf) NEQ 0>
+                <cfthrow type="HelpdeskTriage.Invalid" message="Recarregue a página antes de abrir o chamado."/>
             </cfif>
-        </cfif>
+            <cfset hdOpened=helpdeskTriage.openTicket(val(qPerfil.id),val(FORM.ticket_setor_id),FORM.ticket_assunto ?: "",FORM.ticket_mensagem ?: "",VARIABLES.helpdeskPublicMode)/>
+            <cfset helpdeskTriage.sendPush(hdOpened.notificationId,APPLICATION.notificationDispatch.secret ?: "")/>
+            <cflocation addtoken="false" url="./?pagina=#VARIABLES.helpdeskPage#&ticket_id=#hdOpened.ticketId#"/>
+            <cfcatch type="HelpdeskTriage.Invalid"><cfset hdError=cfcatch.message/></cfcatch>
+            <cfcatch type="HelpdeskTriage.SectorUnavailable"><cfset hdError=cfcatch.message/></cfcatch>
+            <cfcatch type="any"><cfset hdError="Não foi possível abrir o chamado. Tente novamente."/></cfcatch>
+        </cftry>
+        <cfset URL.ticket_novo=1/>
     </cfif>
 
-    <cfif FORM.helpdesk_action EQ "responder_ticket"
+    <cfif VARIABLES.helpdeskPublicMode AND FORM.helpdesk_action EQ "responder_ticket"
         AND isDefined("FORM.ticket_id")
         AND len(trim(FORM.ticket_id))
         AND isDefined("FORM.ticket_mensagem")
@@ -486,6 +467,7 @@
         SET ativo = <cfqueryparam cfsqltype="cf_sql_bit" value="#FORM.setor_status#"/>,
             updated_at = <cfqueryparam cfsqltype="cf_sql_timestamp" value="#now()#"/>
         WHERE id_setor = <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.setor_id#"/>
+          AND id_setor NOT IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#helpdeskTriageIds#" list="true"/>)
     </cfquery>
 
     <cflocation addtoken="false" url="./?pagina=#VARIABLES.helpdeskPage#"/>
@@ -571,6 +553,9 @@
             WHERE cham.id_chamado = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.ticket_id#"/>
             <cfif NOT VARIABLES.helpdeskCanManage>
                 AND cham.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>
+            <cfelse>
+                AND (setr.id_setor NOT IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#helpdeskTriageIds#" list="true"/>)
+                     OR setr.id_usuario_responsavel = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>)
             </cfif>
             LIMIT 1
         </cfquery>
@@ -588,8 +573,16 @@
                        usr.email as email_usuario
                 FROM tb_helpdesk_mensagens msg
                 INNER JOIN tb_usuarios usr ON usr.id = msg.id_usuario
+                INNER JOIN tb_helpdesk_chamados cham ON cham.id_chamado = msg.id_chamado
+                INNER JOIN tb_helpdesk_setores setr ON setr.id_setor = cham.id_setor
                 WHERE msg.id_chamado = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.ticket_id#"/>
-                <cfif NOT VARIABLES.helpdeskCanManage>AND msg.interno=false</cfif>
+                <cfif VARIABLES.helpdeskCanManage>
+                    AND (setr.id_setor NOT IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#helpdeskTriageIds#" list="true"/>)
+                         OR setr.id_usuario_responsavel = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>)
+                <cfelse>
+                    AND cham.id_usuario = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>
+                    AND msg.interno=false
+                </cfif>
                 ORDER BY msg.created_at ASC, msg.id_mensagem ASC
             </cfquery>
         </cfif>
@@ -607,6 +600,8 @@
                    ativo
             FROM tb_helpdesk_setores
             WHERE id_setor = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.setor_id#"/>
+              AND (id_setor NOT IN (<cfqueryparam cfsqltype="cf_sql_integer" value="#helpdeskTriageIds#" list="true"/>)
+                   OR id_usuario_responsavel = <cfqueryparam cfsqltype="cf_sql_integer" value="#qPerfil.id#"/>)
             LIMIT 1
         </cfquery>
     </cfif>

@@ -1,0 +1,219 @@
+{
+  "date": "2026-11-14",
+  "ok": true,
+  "root_cause": "DEV receiver/session support patches missing; prior administrator cookie overrode selected target.",
+  "backup": "/var/backups/business-dev-login-regression-20261114-g2nuqxsp",
+  "runtime_scope": [
+    "dev.roadrunners.run/Application.cfc",
+    "dev.roadrunners.run/includes/backend/backend.cfm",
+    "dev.roadrunners.run/includes/estrutura/header.cfm"
+  ],
+  "candidate_hashes": {
+    "dev.roadrunners.run/Application.cfc": "27c87a2153647471b39dfc9a86c2f4740e4e3c44f388ea9c4a09d159430b825c",
+    "dev.roadrunners.run/includes/backend/backend.cfm": "fc072c866c84956f2c071a100ec4045599638d9985e207b5bef4ccd4a4a4fdfb",
+    "dev.roadrunners.run/includes/estrutura/header.cfm": "cf5d07dbad9b0d3ecf21d09601f4a83bd03e6be9a1473f1f8064f48fcb6b332f"
+  },
+  "native_checks": 52.0,
+  "render_checks": [
+    {
+      "case": "list",
+      "ok": true,
+      "expected": 30,
+      "buttons": 30.0
+    },
+    {
+      "case": "detail",
+      "ok": true,
+      "expected": 1,
+      "buttons": 1.0
+    },
+    {
+      "case": "dev-list",
+      "ok": true,
+      "expected": 0,
+      "buttons": 0
+    },
+    {
+      "case": "dev-detail",
+      "ok": true,
+      "expected": 0,
+      "buttons": 0
+    }
+  ],
+  "confirmation_checks": 4,
+  "http": {
+    "ok": true,
+    "exchange_status": 302.0,
+    "target_confirmed_with_conflicting_admin_cookie": true,
+    "admin_restored_with_conflicting_target_cookie": true,
+    "return_status": 302.0,
+    "archive": "/var/backups/dev-login-probe-k_7ivjh8"
+  },
+  "guards": [
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/usuarios/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/?action=handoff_consume&token=invalid",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/?action=handoff_consume&token=invalid",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/meu-team/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/meu-team/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/entrar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/entrar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/convidar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/convidar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/api/profile/teams.cfm",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/api/profile/teams.cfm",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/meu-team/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/meu-team/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/entrar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/entrar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/convidar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/convidar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/api/profile/teams.cfm",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/api/profile/teams.cfm",
+      "status": "404",
+      "ok": true
+    }
+  ],
+  "preserved_runtime_files": [
+    "business.roadrunners.run/Application.cfc",
+    "business.roadrunners.run/services/BusinessDevLogin.cfc",
+    "business.roadrunners.run/administracao/usuarios/includes/backend.cfm",
+    "business.roadrunners.run/administracao/usuarios/home.cfm",
+    "roadrunners.com.br/Application.cfc",
+    "roadrunners.com.br/includes/backend/backend.cfm",
+    "roadrunners.com.br/includes/estrutura/header.cfm",
+    "roadrunners.com.br/atleta/index.cfm",
+    "roadrunners.com.br/atleta/parts/configuracoes.cfm",
+    "roadrunners.com.br/configuracoes/perfil/index.cfm",
+    "roadrunners.com.br/includes/backend/backend_profile_settings.cfm",
+    "roadrunners.com.br/api/profile/teams.cfm",
+    "roadrunners.com.br/teams/includes/start.cfm",
+    "dev.roadrunners.run/config/strava.local.cfm",
+    "dev.roadrunners.run/includes/models/Usuario.cfc",
+    "dev.roadrunners.run/services/VerifiedEntitlement.cfc",
+    "dev.roadrunners.run/atleta/index.cfm",
+    "dev.roadrunners.run/atleta/parts/configuracoes.cfm",
+    "dev.roadrunners.run/configuracoes/perfil/index.cfm",
+    "dev.roadrunners.run/includes/backend/backend_profile_settings.cfm",
+    "dev.roadrunners.run/api/profile/teams.cfm",
+    "dev.roadrunners.run/teams/includes/start.cfm"
+  ],
+  "account_data_mutations": false,
+  "credentials_changed": false,
+  "git_mutations": false
+}

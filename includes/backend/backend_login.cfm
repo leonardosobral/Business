@@ -338,7 +338,6 @@
                             SELECT MAX(ntf.data_publicacao)
                             FROM tb_notifica ntf
                             WHERE ntf.id_usuario = setr.id_usuario_responsavel
-                              AND ntf.id_notifica_template = 10
                               AND ntf.link = <cfqueryparam cfsqltype="cf_sql_varchar" value="https://#cgi.http_host#/helpdesk/?ticket_id="/> || cham.id_chamado
                         ),
                         timestamp '1900-01-01 00:00:00'

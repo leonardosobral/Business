@@ -266,21 +266,25 @@
 
     <cfif VARIABLES.businessAdminHomeHasHelpdeskTable>
         <cftry>
+            <cfset hdDashboardTriageIds=new services.HelpdeskTriage().sectorIds()/>
             <cfquery name="qBusinessAdminHomeHelpdeskPending">
                 SELECT
-                    (count(*) FILTER (WHERE status IN ('aberto', 'cliente_respondeu')))::integer AS a_responder,
+                    (count(*) FILTER (WHERE cham.status IN ('aberto', 'cliente_respondeu')))::integer AS a_responder,
                     (count(*) FILTER (
-                        WHERE status NOT IN ('resolvido', 'fechado')
-                          AND updated_at < now() - interval '48 hours'
+                        WHERE cham.status NOT IN ('resolvido', 'fechado')
+                          AND cham.updated_at < now() - interval '48 hours'
                     ))::integer AS sem_atualizacao,
                     (count(*) FILTER (
-                        WHERE status IN ('aberto', 'cliente_respondeu')
+                        WHERE cham.status IN ('aberto', 'cliente_respondeu')
                            OR (
-                               status NOT IN ('resolvido', 'fechado')
-                               AND updated_at < now() - interval '48 hours'
+                               cham.status NOT IN ('resolvido', 'fechado')
+                               AND cham.updated_at < now() - interval '48 hours'
                            )
                     ))::integer AS pendentes
-                FROM public.tb_helpdesk_chamados
+                FROM public.tb_helpdesk_chamados cham
+                JOIN public.tb_helpdesk_setores setr ON setr.id_setor = cham.id_setor
+                WHERE (setr.id_setor NOT IN (<cfqueryparam value="#hdDashboardTriageIds#" cfsqltype="cf_sql_integer" list="true"/>)
+                    OR setr.id_usuario_responsavel = <cfqueryparam value="#REQUEST.businessIdentity.id#" cfsqltype="cf_sql_integer"/>)
             </cfquery>
             <cfset VARIABLES.businessAdminHomeHelpdeskPendingTotal = val(qBusinessAdminHomeHelpdeskPending.pendentes)/>
             <cfset VARIABLES.businessAdminHomeHelpdeskReplyTotal = val(qBusinessAdminHomeHelpdeskPending.a_responder)/>

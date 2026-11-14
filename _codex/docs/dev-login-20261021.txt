@@ -53,3 +53,30 @@ webroot, ficando somente em arquivo privado para diagnóstico. A interface
 publicada e a auditoria foram conferidas no navegador interno. A automação
 do diálogo nativo de confirmação nesse navegador ficou indisponível;
 o aceite/cancelamento foi validado pelos testes de interação JavaScript.
+
+Regressão diagnosticada em 14/11/2026
+----------------------------------
+O receptor e a leitura de sessão do DEV estavam novamente sem os quatro
+patches acima. A emissão no Business continuava válida, porém um cookie
+legado de administrador prevalecia e /atleta/ redirecionava para seu perfil,
+em vez de carregar o atleta escolhido. O teste sobre o receptor atual falhou
+na vinculação por ID; a leitura HTTP confirmou o redirecionamento incorreto.
+
+Os quatro patches foram reconciliados no checkout RoadRunners em
+Application.cfc, includes/backend/backend.cfm e includes/estrutura/header.cfm,
+com documentação em _codex/docs/dev-login-business.md. A publicação do DEV
+usa seu baseline atual, preservando as verificações anuais de verificação
+que existem no servidor mas diferem do checkout. Nenhum arquivo de runtime
+do Business ou do portal RR em produção integra essa publicação.
+
+Validação: test_dev_login_regression.py baseline|candidate|published,
+com baseline/candidato/recibo privados em /private/tmp/dev-login-fix-20261114;
+52 verificações de autenticação, quatro cenários de renderização e os quatro
+checks JavaScript de confirmação. As fixtures usam nonce + acesso local,
+identidades fictícias e são removidas ao terminar. O teste HTTP adicional
+exercita sessões descartáveis, sem mutações de dados nas contas.
+
+Publicação: deploy_dev_login_regression.py [--publish], somente três arquivos
+no DEV, com hashes conferidos contra os testes, comparação do baseline,
+backup recuperável, substituição atômica, preservação de dependências e
+rollback se alguma proteção HTTP regredir. Não altera credenciais ou schema.

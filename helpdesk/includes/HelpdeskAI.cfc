@@ -26,13 +26,18 @@ public any function wire(required any value) {
 
 public struct function generate(required numeric ticketId, required numeric operatorId, string note="") {
     if (!len(variables.apiKey)) throw(type="HelpdeskAI.Unavailable", message="A integração OpenAI não está configurada no Business.");
-    var revision = ticketRevision(arguments.ticketId);
+    var revision = ticketRevision(arguments.ticketId,arguments.operatorId);
+    var scope = new services.HelpdeskTriage().staffScope();
+    var ticketParams = {
+        id={value=arguments.ticketId,cfsqltype="cf_sql_integer"},
+        helpdesk_actor={value=arguments.operatorId,cfsqltype="cf_sql_integer"}
+    };
     var config = queryExecute("SELECT model,system_instructions FROM tb_vicky_config WHERE id_config=1", {}, {datasource=variables.datasource});
     if (!config.recordCount || !len(trim(config.model&""))) throw(type="HelpdeskAI.Unavailable", message="Configure o modelo de IA na administração da Vicky.");
-    var ticket = queryExecute("SELECT c.assunto,c.status,c.updated_at,s.nome_setor FROM tb_helpdesk_chamados c JOIN tb_helpdesk_setores s ON s.id_setor=c.id_setor WHERE c.id_chamado=:id", {id={value=arguments.ticketId,cfsqltype="cf_sql_integer"}}, {datasource=variables.datasource});
+    var ticket = queryExecute("SELECT c.assunto,c.status,c.updated_at,setr.nome_setor FROM tb_helpdesk_chamados c JOIN tb_helpdesk_setores setr ON setr.id_setor=c.id_setor WHERE c.id_chamado=:id AND " & scope, ticketParams, {datasource=variables.datasource});
     if (!ticket.recordCount) throw(type="HelpdeskAI.NotFound", message="Chamado não encontrado.");
     // Abertura + últimas 39 mensagens. Não lê conversas ou dados de outros chamados.
-    var messages = queryExecute("WITH thread AS (SELECT m.id_mensagem,m.mensagem,m.created_at,coalesce(u.is_admin,false) AS is_admin,row_number() OVER (ORDER BY m.created_at,m.id_mensagem) AS rn,count(*) OVER () AS total FROM tb_helpdesk_mensagens m LEFT JOIN tb_usuarios u ON u.id=m.id_usuario WHERE m.id_chamado=:id AND coalesce(m.interno,false)=false) SELECT * FROM thread WHERE rn=1 OR rn>total-39 ORDER BY created_at,id_mensagem", {id={value=arguments.ticketId,cfsqltype="cf_sql_integer"}}, {datasource=variables.datasource});
+    var messages = queryExecute("WITH thread AS (SELECT m.id_mensagem,m.mensagem,m.created_at,coalesce(u.is_admin,false) AS is_admin,row_number() OVER (ORDER BY m.created_at,m.id_mensagem) AS rn,count(*) OVER () AS total FROM tb_helpdesk_mensagens m JOIN tb_helpdesk_chamados c ON c.id_chamado=m.id_chamado JOIN tb_helpdesk_setores setr ON setr.id_setor=c.id_setor LEFT JOIN tb_usuarios u ON u.id=m.id_usuario WHERE m.id_chamado=:id AND coalesce(m.interno,false)=false AND " & scope & ") SELECT * FROM thread WHERE rn=1 OR rn>total-39 ORDER BY created_at,id_mensagem", ticketParams, {datasource=variables.datasource});
     if (!messages.recordCount) throw(type="HelpdeskAI.Invalid", message="O chamado ainda não tem mensagens para contextualizar a resposta.");
     var history = [];
     var remaining = 32000;
@@ -71,7 +76,7 @@ public struct function generate(required numeric ticketId, required numeric oper
     }
     draft=trim(reReplace(draft,"【[^】]*】|filecite[^]*","","all"));
     if (!len(draft) || len(draft)>12000) throw(type="HelpdeskAI.Provider",message="A IA não retornou um rascunho válido. Tente novamente; seu texto foi preservado.");
-    if (revision!=ticketRevision(arguments.ticketId)) throw(type="HelpdeskAI.Changed",message="O chamado recebeu uma atualização durante a geração. Recarregue o histórico antes de gerar outra resposta.");
+    if (revision!=ticketRevision(arguments.ticketId,arguments.operatorId)) throw(type="HelpdeskAI.Changed",message="O chamado recebeu uma atualização durante a geração. Recarregue o histórico antes de gerar outra resposta.");
     var sources=[{title="Conhecimento do sistema · guia de atendimento",kind="system"}];
     for (var source in retrieval.sources) arrayAppend(sources,source);
     var warnings=[];
@@ -80,9 +85,13 @@ public struct function generate(required numeric ticketId, required numeric oper
     return wire({success=true,draft=draft,sources=sources,warnings=warnings});
 }
 
-private string function ticketRevision(required numeric ticketId) {
-    var q=queryExecute("SELECT c.updated_at,count(m.id_mensagem) AS total,coalesce(max(m.id_mensagem),0) AS last_id FROM tb_helpdesk_chamados c LEFT JOIN tb_helpdesk_mensagens m ON m.id_chamado=c.id_chamado WHERE c.id_chamado=:id GROUP BY c.updated_at",{id={value=arguments.ticketId,cfsqltype="cf_sql_integer"}},{datasource=variables.datasource});
-    return q.recordCount?serializeJSON([q.updated_at&"",q.total&"",q.last_id&""]):"missing";
+private string function ticketRevision(required numeric ticketId, required numeric operatorId) {
+    var scope = new services.HelpdeskTriage().staffScope();
+    var q=queryExecute("SELECT c.updated_at,count(m.id_mensagem) AS total,coalesce(max(m.id_mensagem),0) AS last_id FROM tb_helpdesk_chamados c JOIN tb_helpdesk_setores setr ON setr.id_setor=c.id_setor LEFT JOIN tb_helpdesk_mensagens m ON m.id_chamado=c.id_chamado WHERE c.id_chamado=:id AND " & scope & " GROUP BY c.updated_at",
+        {id={value=arguments.ticketId,cfsqltype="cf_sql_integer"},helpdesk_actor={value=arguments.operatorId,cfsqltype="cf_sql_integer"}},
+        {datasource=variables.datasource});
+    if (!q.recordCount) throw(type="HelpdeskAI.NotFound",message="Chamado não encontrado.");
+    return serializeJSON([q.updated_at&"",q.total&"",q.last_id&""]);
 }
 
 private struct function retrieve(required string question) {
