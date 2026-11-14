@@ -1,0 +1,247 @@
+{
+  "date": "2026-11-14",
+  "ok": true,
+  "backup": "/var/backups/profile-photo-prod-storage-20261114-fkw2qv0c",
+  "scope": [
+    "roadrunners.com.br/api/upload_foto_atleta.cfm",
+    "roadrunners.com.br/includes/backend/backend_perfil_edicao.cfm",
+    "dev.roadrunners.run/api/upload_foto_atleta.cfm",
+    "dev.roadrunners.run/includes/backend/backend_perfil_edicao.cfm"
+  ],
+  "hashes": {
+    "roadrunners.com.br/api/upload_foto_atleta.cfm": "52fb1a09d6ce9a634f8876d9fd943c0be4122e6d1078167150f49194dd542ca5",
+    "roadrunners.com.br/includes/backend/backend_perfil_edicao.cfm": "4d96b6689a4bb70232ee4d20fbf1f379ae766cb7ca9d0ebb08314e40323db4e3",
+    "dev.roadrunners.run/api/upload_foto_atleta.cfm": "52fb1a09d6ce9a634f8876d9fd943c0be4122e6d1078167150f49194dd542ca5",
+    "dev.roadrunners.run/includes/backend/backend_perfil_edicao.cfm": "f4ea7976d8075e1bc7f0161e39ccf508b627ca97c6eb7d07cd7fe1d0fc3a2346"
+  },
+  "tests": [
+    {
+      "host": "dev.roadrunners.run",
+      "flow": "editor",
+      "written_to_production": true,
+      "public_url_validated": true,
+      "width": 512
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "flow": "legacy",
+      "written_to_production": true,
+      "public_url_validated": true,
+      "width": 32
+    },
+    {
+      "host": "roadrunners.com.br",
+      "flow": "editor",
+      "written_to_production": true,
+      "public_url_validated": true,
+      "width": 512
+    },
+    {
+      "host": "roadrunners.com.br",
+      "flow": "legacy",
+      "written_to_production": true,
+      "public_url_validated": true,
+      "width": 32
+    }
+  ],
+  "probes": [
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/api/upload_foto_atleta.cfm",
+      "status": "400",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/api/upload_foto_atleta.cfm",
+      "status": "400",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/atleta/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/configuracoes/perfil/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/meu-team/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/meu-team/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/entrar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/entrar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/convidar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/teams/convidar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/api/profile/teams.cfm",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "dev.roadrunners.run",
+      "path": "/api/profile/teams.cfm",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/api/upload_foto_atleta.cfm",
+      "status": "400",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/api/upload_foto_atleta.cfm",
+      "status": "400",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/atleta/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/configuracoes/perfil/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/meu-team/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/meu-team/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/entrar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/entrar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/convidar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/teams/convidar/",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/api/profile/teams.cfm",
+      "status": "404",
+      "ok": true
+    },
+    {
+      "host": "roadrunners.run",
+      "path": "/api/profile/teams.cfm",
+      "status": "404",
+      "ok": true
+    }
+  ],
+  "fixtures_removed": true,
+  "account_data_mutations": false,
+  "storage_permissions_changed": false,
+  "git_mutations": false,
+  "preserved_runtime_files": [
+    "dev.roadrunners.run/Application.cfc",
+    "dev.roadrunners.run/config/strava.local.cfm",
+    "dev.roadrunners.run/includes/backend/backend.cfm",
+    "dev.roadrunners.run/includes/estrutura/header.cfm",
+    "dev.roadrunners.run/includes/estrutura/variaveis.cfm",
+    "dev.roadrunners.run/includes/modal/modal_profile_photo.cfm",
+    "dev.roadrunners.run/atleta/index.cfm",
+    "dev.roadrunners.run/atleta/parts/configuracoes.cfm",
+    "dev.roadrunners.run/configuracoes/perfil/index.cfm",
+    "dev.roadrunners.run/includes/backend/backend_profile_settings.cfm",
+    "dev.roadrunners.run/api/profile/teams.cfm",
+    "dev.roadrunners.run/teams/includes/start.cfm",
+    "roadrunners.com.br/Application.cfc",
+    "roadrunners.com.br/config/strava.local.cfm",
+    "roadrunners.com.br/includes/backend/backend.cfm",
+    "roadrunners.com.br/includes/estrutura/header.cfm",
+    "roadrunners.com.br/includes/estrutura/variaveis.cfm",
+    "roadrunners.com.br/includes/modal/modal_profile_photo.cfm",
+    "roadrunners.com.br/atleta/index.cfm",
+    "roadrunners.com.br/atleta/parts/configuracoes.cfm",
+    "roadrunners.com.br/configuracoes/perfil/index.cfm",
+    "roadrunners.com.br/includes/backend/backend_profile_settings.cfm",
+    "roadrunners.com.br/api/profile/teams.cfm",
+    "roadrunners.com.br/teams/includes/start.cfm"
+  ]
+}
