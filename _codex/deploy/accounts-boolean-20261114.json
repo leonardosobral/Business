@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-14",
+  "ok": true,
+  "scope": "administracao/contas/includes/backend.cfm",
+  "change": "cf_sql_boolean -> cf_sql_bit nos parâmetros de documento_pendente do INSERT e UPDATE",
+  "backup": "/var/backups/business-accounts-boolean-20261114-u4gmdv4y",
+  "hashes": {
+    "business.roadrunners.run/administracao/contas/includes/backend.cfm": "dad0190cfa1d27d559a9e78e8abf06281f6988965e39f944eb00458c1c6a5d34"
+  },
+  "tests": {
+    "ok": true,
+    "output": "ACCOUNT_BOOLEAN_SOURCE_PASSED 7 ",
+    "archive": "/run/business-user-acquisition-test-esutjl1a",
+    "stage_removed": true,
+    "sha256": "dad0190cfa1d27d559a9e78e8abf06281f6988965e39f944eb00458c1c6a5d34"
+  },
+  "probes": [
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/contas/?conta_id=38&tab=dados",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/administracao/contas/",
+      "status": "302",
+      "ok": true
+    }
+  ],
+  "company_38_modified": false,
+  "test_records_rolled_back": true
+}
