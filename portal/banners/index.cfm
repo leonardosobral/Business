@@ -1,13 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
 <cfprocessingdirective pageencoding="utf-8"/>
 
+<cfsilent>
 <cfset VARIABLES.theme = "dark"/>
 <cfset VARIABLES.template = "/portal/banners/"/>
 
 <cfinclude template="../../includes/backend/backend_login.cfm"/>
 <cfinclude template="../../ads/includes/access.cfm"/>
+<cfinclude template="../includes/paid_banner_helpers.cfm"/>
+<cfset VARIABLES.paidBannerWorkspaceView = paidBannerWorkspaceView(URL, FORM, VARIABLES.adsAccessCanReviewCampaign)/>
+<cfif VARIABLES.paidBannerWorkspaceView EQ "paid">
+<cfinclude template="../includes/paid_banner_backend.cfm"/>
+<cfelse>
+<cfinclude template="../includes/banner_management_backend.cfm"/>
+<cfinclude template="../includes/banner_dashboard_backend.cfm"/>
+</cfif>
+</cfsilent>
+<!DOCTYPE html>
+<html lang="pt-br">
 <cfinclude template="../../includes/estrutura/head.cfm"/>
 
 <body data-mdb-theme="dark" class="bg-dark-subtle">

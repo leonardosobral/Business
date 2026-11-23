@@ -2,7 +2,11 @@
 <cfif NOT structKeyExists(REQUEST,"businessAccessBoundaryLoaded")>
     <cfset REQUEST.businessAccessBoundaryLoaded=true/>
     <cfset REQUEST.businessDelegationEnabled=structKeyExists(APPLICATION,"businessAccountDelegationEnabled") AND APPLICATION.businessAccountDelegationEnabled/>
-    <cfset REQUEST.businessDelegationIdentity=createObject("component","services.BusinessAuthSession").delegationIdentity(SESSION)/>
+    <!--- The shared identity boundary also resolves audited support sessions. --->
+    <cfif NOT structKeyExists(REQUEST,"businessDelegationIdentity")><cfset REQUEST.businessDelegationIdentity=createObject("component","services.BusinessAuthSession").delegationIdentity(SESSION)/></cfif>
+    <!--- This endpoint validates its own operator identity and transition CSRF, even
+          when the supported user has selected a delegated or unavailable account. --->
+    <cfif CGI.script_name EQ "/suporte/acesso/index.cfm"><cfexit method="exittemplate"/></cfif>
     <cfset REQUEST.businessAccessInvalid=structKeyExists(SESSION,"businessAccessSelectionInvalid") AND SESSION.businessAccessSelectionInvalid/>
     <cfif REQUEST.businessDelegationEnabled OR REQUEST.businessAccessInvalid OR structKeyExists(SESSION,"businessAccessSelection") OR structKeyExists(FORM,"business_access_token")>
         <cfset REQUEST.businessDelegationService=createObject("component","services.BusinessAccountDelegation").init("runnerhub",REQUEST.businessDelegationEnabled)/>

@@ -1,0 +1,98 @@
+CONFERÊNCIA MOVNOW — 17/11/2026
+Fonte: https://www.movnow.com.br/#events-available
+Escopo: todos os 47 eventos das quatro páginas do catálogo disponível nesta data. Não inclui eventos passados ausentes desse catálogo.
+
+RESULTADO
+38 eventos encontrados no cadastro e 38 pedidos de vínculo criados para a conta Movnow (25).
+Pedidos 21 a 58, todos PENDENTES, atribuídos ao administrador solicitante Leonardo Sobral.
+Conferência independente após a gravação: 38 pedidos presentes na consulta da fila administrativa; zero vínculos ATIVOS.
+9 eventos sem correspondência para a edição anunciada: 8 eventos esportivos e 1 workshop.
+Não foram cadastradas provas ausentes, corrigidos eventos, aprovados vínculos ou alterado o perfil da conta.
+Nenhum arquivo de runtime foi alterado.
+
+NÃO LOCALIZADOS NA EDIÇÃO ANUNCIADA
+- Aquathlon Brava Amores — 21/11/2026 — Itajaí/SC
+  Sem correspondência de nome/edição e sem link Movnow 298.
+  https://www.movnow.com.br/eventos/298-aquathlon-brava-amores
+- Corrida Virtual CBCR - Campeonato Brasileiro de Corrida RunLab | Etapa 7 — 22/11/2026 — Palhoça/SC
+  Corrida virtual; sem correspondência da etapa 7 de 2026.
+  https://www.movnow.com.br/eventos/418-corrida-virtual-cbcr-campeonato-brasileiro-de-corrida-runlab-etapa-7
+- Workshop Foco no Fotógrafo Vitória — 23/11/2026 — Vitória/ES
+  Workshop de fotografia; não é prova esportiva.
+  https://www.movnow.com.br/eventos/400-workshop-foco-no-fotografo-vitoria
+- Aquathlon Alagados — 28/11/2026 — Ponta Grossa/PR
+  Existe apenas edição anterior: 36886, de 29/11/2025, Movnow 142. Não vinculada à edição de 2026.
+  https://www.movnow.com.br/eventos/296-aquathlon-alagados
+- Travessia Alagados — 29/11/2026 — Ponta Grossa/PR
+  Existe apenas edição anterior: 36885, de 30/11/2025, Movnow 143. Não vinculada à edição de 2026.
+  https://www.movnow.com.br/eventos/295-travessia-alagados
+- 6ª Corrida Etílica Bar do PP — 05/12/2026 — Balneário Camboriú/SC
+  Existe apenas edição anterior: 35081, 5ª edição de 01/11/2025.
+  https://www.movnow.com.br/eventos/419-6-corrida-etilica-bar-do-pp
+- Wellness Day - Rico Run — 30/12/2026 — Balneário Piçarras/SC
+  Rico Run 39542 é outra prova: Jaraguá do Sul, 23/05/2026, Movnow 180.
+  https://www.movnow.com.br/eventos/392-wellness-day-rico-run
+- 2° DESAFIO Solidário de Camapuã MTB xcm raiz — 17/01/2027 — Camapuã/MS
+  Mountain bike; sem correspondência da edição de 2027.
+  https://www.movnow.com.br/eventos/403-2-desafio-solidario-de-camapua-mtb-xcm-raiz
+- EVENTO JAMPA CIDADE ESPORTES E BIKE — 04/04/2027 — João Pessoa/PB
+  Sem correspondência da edição de 2027.
+  https://www.movnow.com.br/eventos/395-evento-jampa-cidade-esportes-e-bike
+
+RESSALVAS PARA REVISÃO
+- FLASH NIGHT RUN 3KM — cadastro 51260, pedido 24
+  REVISAR ANTES DE APROVAR: o cadastro 51260 informa São José/SC; o catálogo e a descrição da Movnow informam Taboão da Serra/SP. Mesmo ID Movnow 415, nome e data. Nenhum dado da prova foi corrigido nesta solicitação.
+- 27 run 5km — cadastro 46480, pedido 39
+  Possível duplicidade: cadastro 47432 na mesma data/cidade. Selecionado 46480 por conter o link exato da Movnow 338. Não vincular os dois sem revisar a duplicidade.
+- SAMPA RUN 5KM — cadastro 49669, pedido 42
+  Possível duplicidade: cadastro 49829 (SAMPA RUN 5K), mesma data, cidade e Parque Villa-Lobos. Selecionado 49669 com nome exato e organizador Atletas do Bem. Revisar antes de aprovar.
+- PAPANGU RUN — cadastro 48965, pedido 45
+  Duplicidade provável: cadastro 48874 (PAPAGUN RUN) aponta ao mesmo ID Movnow 393 com slug antigo. Selecionado 48965, com nome e slug atuais PAPANGU RUN.
+
+PEDIDOS CRIADOS
+Revisão no Business: https://business.roadrunners.run/eventos/
+Pedido | Cadastro | Data | Evento | Cidade/UF | Fonte
+21 | 46230 | 2026-11-20 | CONSCIÊNCIA RUN 5KM | São Paulo/SP | https://www.movnow.com.br/eventos/352-consciencia-run-5km
+22 | 46380 | 2026-11-21 | ESPIÃS RUN 5KM | São Paulo/SP | https://www.movnow.com.br/eventos/349-espias-run-5km
+23 | 47766 | 2026-11-22 | Sport Fitness Run | Rio Rufino/SC | https://www.movnow.com.br/eventos/380-sport-fitness-run
+24 | 51260 | 2026-11-28 | FLASH NIGHT RUN 3KM | Taboão da Serra/SP | https://www.movnow.com.br/eventos/415-flash-night-run-3km
+25 | 46902 | 2026-11-28 | Run 100% Jesus | Itapema/SC | https://www.movnow.com.br/eventos/356-run-100-jesus
+26 | 46180 | 2026-11-28 | Circuito Cervejeiro de Corrida – Etapa Cabo Frio | Cabo Frio/RJ | https://www.movnow.com.br/eventos/330-circuito-cervejeiro-de-corrida-etapa-cabo-frio
+27 | 43658 | 2026-11-29 | Desafio Pico do Olho D'Agua | Mairiporã/SP | https://www.movnow.com.br/eventos/404-desafio-pico-do-olho-d-agua
+28 | 42360 | 2026-11-29 | Meia Maratona SC21k | Florianópolis/SC | https://www.movnow.com.br/eventos/377-meia-maratona-sc21k
+29 | 46898 | 2026-11-29 | Corrida do Seu João Ano II | Arcoverde/PE | https://www.movnow.com.br/eventos/355-corrida-do-seu-joao-ano-ii
+30 | 46178 | 2026-11-29 | Ventus Trail Run | Bom Jardim da Serra/SC | https://www.movnow.com.br/eventos/333-ventus-trail-run
+31 | 41694 | 2026-12-05 | NIGHT RUN NATAL LIVORA PERNAS SOLIDÁRIAS | Santo Amaro da Imperatriz/SC | https://www.movnow.com.br/eventos/242-night-run-natal-livora-pernas-solidarias
+32 | 35532 | 2026-12-05 | Ultra Maratona dos Campos Gerais | Ponta Grossa/PR | https://www.movnow.com.br/eventos/93-ultra-maratona-dos-campos-gerais
+33 | 47736 | 2026-12-06 | Circuito Cervejeiro de Corrida – Etapa Confraternização | Petrópolis/RJ | https://www.movnow.com.br/eventos/376-circuito-cervejeiro-de-corrida-etapa-confraternizacao
+34 | 47182 | 2026-12-06 | PRINCESAS RUN ETAPA LONDRINA 2026 | Londrina/PR | https://www.movnow.com.br/eventos/360-princesas-run-etapa-londrina-2026
+35 | 49486 | 2026-12-12 | 16k Ginga com Tapioca | Natal/RN | https://www.movnow.com.br/eventos/401-16k-ginga-com-tapioca
+36 | 48738 | 2026-12-13 | Chama Run - 5 KM | Governador Celso Ramos/SC | https://www.movnow.com.br/eventos/409-chama-run-5-km
+37 | 46198 | 2026-12-20 | GOSPEL RUN 5KM | São Paulo/SP | https://www.movnow.com.br/eventos/336-gospel-run-5km
+38 | 50038 | 2026-12-24 | CORRIDA DE NATAL  RUN 5KM | São Paulo/SP | https://www.movnow.com.br/eventos/413-corrida-de-natal-run-5km
+39 | 46480 | 2026-12-27 | 27 run 5km | São Paulo/SP | https://www.movnow.com.br/eventos/338-27-run-5km
+40 | 46179 | 2026-12-27 | 1º A VIRADA RUN RECIFE | Recife/PE | https://www.movnow.com.br/eventos/331-1-a-virada-run-recife
+41 | 51225 | 2026-12-31 | CORRIDÃO DA VIRADA FORTALEZA | Fortaleza/CE | https://www.movnow.com.br/eventos/412-corridao-da-virada-fortaleza
+42 | 49669 | 2027-01-10 | SAMPA RUN 5KM | São Paulo/SP | https://www.movnow.com.br/eventos/414-sampa-run-5km
+43 | 48444 | 2027-01-10 | Corrida Pitombeira | Olinda/PE | https://www.movnow.com.br/eventos/385-corrida-pitombeira
+44 | 50829 | 2027-01-17 | 3º Trail Run - Uvas Fontana Maciel | Curitibanos/SC | https://www.movnow.com.br/eventos/408-3-trail-run-uvas-fontana-maciel
+45 | 48965 | 2027-01-17 | PAPANGU RUN | Bezerros/PE | https://www.movnow.com.br/eventos/393-papangu-run
+46 | 47375 | 2027-01-23 | Circuito Cervejeiro de Corrida – Ouro Preto | Ouro Preto/MG | https://www.movnow.com.br/eventos/372-circuito-cervejeiro-de-corrida-ouro-preto
+47 | 51751 | 2027-01-31 | Trilhas Secretas Trail Challenge Women | São Paulo/SP | https://www.movnow.com.br/eventos/410-trilhas-secretas-trail-challenge-women
+48 | 49169 | 2027-01-31 | Rota do Fantasma | Itupeva/SP | https://www.movnow.com.br/eventos/397-rota-do-fantasma
+49 | 49685 | 2027-02-27 | São Bernardo Backyard | São Bernardo do Campo/SP | https://www.movnow.com.br/eventos/405-sao-bernardo-backyard
+50 | 48716 | 2027-02-27 | Circuito Cervejeiro de Corrida – Etapa São Pedro da Serra | Nova Friburgo/RJ | https://www.movnow.com.br/eventos/391-circuito-cervejeiro-de-corrida-etapa-sao-pedro-da-serra
+51 | 49682 | 2027-03-07 | RUN MULHER FLORIANÓPOLIS | Florianópolis/SC | https://www.movnow.com.br/eventos/402-run-mulher-florianopolis
+52 | 47372 | 2027-03-07 | Baden Run | Blumenau/SC | https://www.movnow.com.br/eventos/369-baden-run
+53 | 40612 | 2027-03-21 | 10 Milhas Alagoas 2027 | Maceió/AL | https://www.movnow.com.br/eventos/399-10-milhas-alagoas-2027
+54 | 45673 | 2027-04-03 | Resta Uma Backyard | Itupeva/SP | https://www.movnow.com.br/eventos/398-resta-uma-backyard
+55 | 49675 | 2027-05-01 | Brasil Ultra Tri | Armação dos Búzios/RJ | https://www.movnow.com.br/eventos/406-brasil-ultra-tri
+56 | 48956 | 2027-05-02 | Adrena Race | Penápolis/SP | https://www.movnow.com.br/eventos/394-adrena-race
+57 | 47365 | 2027-09-04 | Maratona Internacional de Pernambuco | Recife/PE | https://www.movnow.com.br/eventos/323-maratona-internacional-de-pernambuco
+58 | 51200 | 2027-11-28 | Troca Trail | Cajamar/SP | https://www.movnow.com.br/eventos/411-troca-trail
+
+CRITÉRIOS
+A correspondência foi feita pelo ID/link da Movnow e pela edição/data, ou por nome, data e cidade com conferência de detalhes nas variações de título.
+As buscas complementares consideraram todo o cadastro para distinguir edições anteriores.
+Nos casos com duplicidade, foi criado apenas um pedido por evento do catálogo. A divergência de cidade da Flash Night Run foi registrada explicitamente no pedido.
+Os pedidos são solicitações administrativas baseadas no catálogo público; não representam aceite da ticketeira ou do organizador.

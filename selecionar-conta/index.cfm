@@ -24,7 +24,7 @@
     </div>
     <cfif NOT arrayLen(VARIABLES.businessSelectionOptions)><p>Nenhuma conta está disponível para este usuário.</p></cfif>
     <p><a href="/logout.cfm">Sair</a></p>
-    </main></body></html>
+    </main><cfinclude template="../includes/estrutura/business_support_banner.cfm"/></body></html>
     <cfexit method="exittemplate"/>
 </cfif>
 <!DOCTYPE html>

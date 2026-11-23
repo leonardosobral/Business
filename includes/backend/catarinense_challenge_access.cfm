@@ -1,7 +1,8 @@
+<cfinclude template="business_internal_privileges.cfm"/>
 <cfset VARIABLES.businessCatarinenseChallengeAccountId = 12/>
 <cfset VARIABLES.businessCanManageCatarinenseChallenges = false/>
 
-<cfif isDefined("qPerfil") AND qPerfil.recordcount>
+<cfif VARIABLES.businessInternalPrivilegesAllowed AND isDefined("qPerfil") AND qPerfil.recordcount>
     <cfif listFindNoCase(qPerfil.columnList, "is_admin")>
         <cfif isBoolean(qPerfil.is_admin)>
             <cfset VARIABLES.businessCanManageCatarinenseChallenges = qPerfil.is_admin/>

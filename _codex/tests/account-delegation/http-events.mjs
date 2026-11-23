@@ -12,7 +12,7 @@ export async function runEventsHttp({root,scratch,port,boxHome,execute,sql}) {
  writeFileSync(resolve(app,'suite.cfm'),`<cfinclude template="_codex/tests/account-delegation/assertions.cfm"><cfinclude template="_codex/tests/account-delegation/events.cfm"><cfoutput>PASS events CFML</cfoutput>`);
  for(const [name,id] of [['manager',903],['owner',902],['viewer',905]])writeFileSync(resolve(app,`bootstrap-${name}.cfm`),`<cfscript>createObject('component','services.BusinessAuthSession').establish(SESSION,${id},{sub='synthetic-verified',email='${name}@example.test',name='Synthetic',picture=''});SESSION.businessRememberCheckedAt=now();SESSION.businessAccessSelection={accountId=102,accessMode='DELEGATED',managerAccountId=101,relationshipId=2001};writeOutput('READY');</cfscript>`);
  // Exercise the real Events entry catch and handlers; the unrelated listing is omitted in this focused fixture.
- const entry=readFileSync(resolve(root,'eventos/home.cfm'),'utf8').split('<!--- FILTROS --->')[0].replace('<cfinclude template="includes/backend/backend.cfm"/>','');
+ const entry=readFileSync(resolve(root,'eventos/index.cfm'),'utf8').split('<cfinclude template="../includes/backend/backend_login.cfm"/>')[1].split('<!DOCTYPE html>')[0].replace('<cfinclude template="includes/backend/backend.cfm"/>','');
  writeFileSync(resolve(app,'eventos/index.cfm'),`<cfquery name="qPerfil">SELECT * FROM tb_usuarios WHERE id=<cfqueryparam value="#REQUEST.businessIdentity.id#" cfsqltype="cf_sql_integer"/></cfquery>
  <cfif CGI.request_method EQ 'POST' AND structKeyExists(FORM,'fixture_stale')><cfquery datasource="business_delegation_test">UPDATE tb_conta_gestao_vinculos SET version=version+1 WHERE id_vinculo=2001</cfquery></cfif>
  ${entry}

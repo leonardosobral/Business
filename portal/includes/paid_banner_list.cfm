@@ -13,7 +13,7 @@
         <div class="banner-row-details">
             <div class="banner-detail-grid">
                 <div class="portal-banner-thumb-set"><cfloop list="desktop,mobile" index="paidBannerKind"><div><span class="portal-banner-thumb-label">#paidBannerKind#</span><div class="portal-banner-thumb"><img loading="lazy" src="#encodeForHTMLAttribute(paidBannerRowItem['image_url_' & paidBannerKind])#" alt="#encodeForHTMLAttribute(paidBannerRowItem.alt_text)#"/></div></div></cfloop></div>
-                <dl class="banner-facts">
+                <dl class="banner-facts"><div class="banner-fact-wide"><dt>Site e spot</dt><dd>#encodeForHTML(publisherBannerLabel(paidBannerRowItem.placement_key))#</dd></div>
                     <div><dt>Estados</dt><dd>#paidBannerScope.regions_mode EQ 'ALL' ? 'Todo o Brasil' : encodeForHTML(arrayToList(paidBannerScope.regions,', '))#</dd></div>
                     <div><dt>Páginas</dt><dd>#paidBannerScope.pages_mode EQ 'ALL' ? 'Todas as páginas compatíveis' : encodeForHTML(bannerDashboardScopeLabel(paidBannerScope,'pages'))#</dd></div>
                     <div><dt>Período</dt><dd>#dateTimeFormat(paidBannerRowItem.starts_at,'dd/mm/yyyy HH:nn')# a #dateTimeFormat(paidBannerRowItem.ends_at,'dd/mm/yyyy HH:nn')# (Brasília)</dd></div>

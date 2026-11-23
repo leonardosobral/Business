@@ -12,7 +12,7 @@ html=replace(html,'<option value="2025">Edição 2025 · prévia</option>','');
 html=replace(html,'<body data-endpoint="dados.cfm">','<body data-endpoint="dados.cfm"><div class="reader-access"><a href="/estudos/">← Minha biblioteca</a><span>Prévia profissional · Janeiro–setembro de 2026 · Acesso pessoal</span></div>');
 html=replace(html,'<div class="hero-footnote">EDIÇÃO DIGITAL <span>•</span> PRÉVIA EM CONSTRUÇÃO</div>','<div class="hero-footnote">EDIÇÃO DIGITAL <span>•</span> PRÉVIA PROFISSIONAL POR CONVITE</div>');
 // Version presentation files together with the curated JSON contract.
-for(asset in ['estudo.css','dados.js','parcial.js','estudo.js']) html=replace(html,'"' & asset & '"','"' & asset & '?v=q3-20261010-fechamento2"','all');
+for(asset in ['estudo.css','dados.js','parcial.js','estudo.js']) html=replace(html,'"' & asset & '"','"' & asset & '?v=consumer-42-352"','all');
 html=replace(html,'</head>','<style>.reader-access{background:##ffcb05;color:##242424;padding:12px 5%;display:flex;gap:20px;justify-content:space-between;font:600 14px Poppins,sans-serif}.reader-access a{color:inherit} .hero-footnote{font-size:13px} @media(max-width:600px){.reader-access{flex-wrap:wrap;font-size:12px}}</style></head>');
 writeOutput(html);
 </cfscript>

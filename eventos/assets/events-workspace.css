@@ -1,0 +1,39 @@
+main.events-page > .container-fluid {
+    width: 100%;
+    max-width: none;
+}
+
+.events-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 1.5rem;
+    margin: 0;
+}
+
+.events-workspace > .events-list-column,
+.events-workspace > .events-editor-column {
+    width: auto;
+    min-width: 0;
+    padding: 0;
+}
+
+.events-workspace .table-responsive {
+    overflow-x: auto;
+}
+
+@media (min-width: 1200px) {
+    .events-workspace--editing {
+        grid-template-columns: minmax(0, 1fr) 32rem;
+    }
+
+    .events-workspace--editing > .events-editor-column {
+        position: sticky;
+        top: 4.75rem;
+        max-height: calc(100vh - 5.75rem);
+        max-height: calc(100dvh - 5.75rem);
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+        scrollbar-gutter: stable;
+    }
+}

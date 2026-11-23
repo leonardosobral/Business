@@ -1,3 +1,4 @@
+<cfif NOT structKeyExists(REQUEST,"publisherInventoryHelpers")><cfinclude template="publisher_inventory_helpers.cfm"/></cfif>
 <cfscript>
 function bannerManagementBuildBaseUrl() {
     var isHttps = false;
@@ -215,6 +216,8 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
         <cfswitch expression="#lCase(trim(FORM.acao & ''))#">
             <cfcase value="salvar_banner">
                 <cfset VARIABLES.bannerSaveErrors = []/>
+                <cfset VARIABLES.bannerPlacementKey=structKeyExists(FORM,"placement_key") AND isSimpleValue(FORM.placement_key) ? trim(FORM.placement_key) : "rr-sidebar-banner-300x250"/>
+                <cfset publisherAssertPlacement(VARIABLES.bannerPlacementKey)/>
                 <cfset VARIABLES.bannerRecordId = structKeyExists(FORM, "banner_id")
                     ? lCase(trim(FORM.banner_id & "")) : ""/>
                 <cfset VARIABLES.bannerNome = structKeyExists(FORM, "banner_nome")
@@ -425,7 +428,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                     )
                 </cfquery>
                 <cfset VARIABLES.bannerSaveCommitted = true/>
-                <cflocation addtoken="false" url="/portal/banners/?view=house&amp;sucesso=salvo"/>
+                <cflocation addtoken="false" url="/portal/banners/?view=house&sucesso=salvo"/>
             </cfcase>
 
             <cfcase value="alterar_status">
@@ -481,7 +484,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
                         )).status
                     </cfquery>
                 </cfif>
-                <cflocation addtoken="false" url="/portal/banners/?view=house&amp;sucesso=status"/>
+                <cflocation addtoken="false" url="/portal/banners/?view=house&sucesso=status"/>
             </cfcase>
 
             <cfdefaultcase>
@@ -550,7 +553,7 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
             SELECT campaign.campaign_id::text AS id_banner,
                    campaign.name AS nome,
                    campaign.metadata::text AS banner_metadata,
-                   'roadrunners'::text AS canal,
+                   placement.channel AS canal,
                    placement.placement_key AS local_layout,
                    'responsive'::text AS tamanho_nome,
                    creative.width AS largura,
@@ -596,9 +599,10 @@ function bannerManagementDirectoryWritable(required string directoryPath) {
             INNER JOIN ads.campaign_placements link
               ON link.campaign_id = campaign.campaign_id
              AND link.account_id = campaign.account_id
+             AND link.status = 'ACTIVE'
             INNER JOIN ads.placements placement
               ON placement.placement_id = link.placement_id
-             AND placement.placement_key = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerPlacementKey#"/>
+             AND placement.format_key = 'IMAGE'
             LEFT JOIN LATERAL (
                 SELECT sum(metric.viewable_impression_count)::bigint AS views,
                        sum(metric.valid_click_count)::bigint AS clicks

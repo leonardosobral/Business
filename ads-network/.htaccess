@@ -1,0 +1,11 @@
+Options -Indexes
+<IfModule mod_headers.c>
+ <Files "v1.js">
+  Header set Cache-Control "public, max-age=300"
+  Header set X-Content-Type-Options "nosniff"
+ </Files>
+</IfModule>
+<IfModule mod_rewrite.c>
+ RewriteEngine On
+ RewriteRule ^(?:includes/|Application\.|_codex/|\.) - [F,L,NC]
+</IfModule>

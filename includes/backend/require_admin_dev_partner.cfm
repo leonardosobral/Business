@@ -1,6 +1,7 @@
+<cfinclude template="business_internal_privileges.cfm"/>
 <cfset VARIABLES.requireAdminDevPartnerAllowed = false/>
 
-<cfif isDefined("qPerfil") AND qPerfil.recordcount>
+<cfif VARIABLES.businessInternalPrivilegesAllowed AND isDefined("qPerfil") AND qPerfil.recordcount>
     <cfif listFindNoCase(qPerfil.columnList, "is_admin")
         AND (
             (IsBoolean(qPerfil.is_admin) AND qPerfil.is_admin)

@@ -2,6 +2,7 @@
 VARIABLES.bannerSavedRow={};
 if(qBannerManagementEdit.recordCount) for(VARIABLES.bannerColumn in listToArray(qBannerManagementEdit.columnList)) VARIABLES.bannerSavedRow[VARIABLES.bannerColumn]=qBannerManagementEdit[VARIABLES.bannerColumn][1];
 VARIABLES.bannerForm=bannerFormValues(FORM,VARIABLES.bannerSavedRow);
+VARIABLES.bannerForm.placement_key=structKeyExists(FORM,'placement_key') AND isSimpleValue(FORM.placement_key) ? trim(FORM.placement_key) : (structKeyExists(VARIABLES.bannerSavedRow,'local_layout') ? VARIABLES.bannerSavedRow.local_layout : 'rr-sidebar-banner-300x250');
 VARIABLES.bannerPageLabels={home='Página inicial',search='Busca',state='Eventos por estado',event='Página de evento',athlete='Perfil do atleta'};
 </cfscript>
 <cfoutput>
@@ -13,6 +14,7 @@ VARIABLES.bannerPageLabels={home='Página inicial',search='Busca',state='Eventos
     <input type="hidden" name="acao" value="salvar_banner"/>
     <input type="hidden" name="banner_csrf" value="#encodeForHTMLAttribute(VARIABLES.bannerManagementCsrf)#"/>
     <input type="hidden" name="banner_id" value="#encodeForHTMLAttribute(VARIABLES.bannerForm.banner_id)#"/>
+    <div class="mb-3"><label class="form-label" for="house-placement">Site e spot</label><select class="form-select" id="house-placement" name="placement_key" required><cfloop array="#publisherBannerChoices()#" index="publisherChoice"><cfif publisherChoice.active OR VARIABLES.bannerForm.placement_key EQ publisherChoice.key><option value="#encodeForHTMLAttribute(publisherChoice.key)#"<cfif VARIABLES.bannerForm.placement_key EQ publisherChoice.key> selected</cfif><cfif NOT publisherChoice.active> disabled</cfif>>#encodeForHTML(publisherChoice.label)#</option></cfif></cfloop></select><small>O banner institucional participa quando não houver banner pago elegível neste spot.</small></div>
     <fieldset class="mb-4"><legend class="h6">Conteúdo</legend><div class="row g-3">
       <div class="col-12"><label for="banner_nome" class="form-label">Nome interno</label>
         <input id="banner_nome" type="text" class="form-control" name="banner_nome" required minlength="3" maxlength="160" value="#encodeForHTMLAttribute(VARIABLES.bannerForm.banner_nome)#"/>

@@ -31,6 +31,38 @@
 <cfset VARIABLES.challengeIsBrasilGigante = VARIABLES.challengeTag EQ "circuitobrasilgigante"/>
 <cfset VARIABLES.challengeIsRaceParticipation = VARIABLES.challengeIsCatarinenseCircuit OR VARIABLES.challengeIsBrasilGigante/>
 <cfset VARIABLES.challengeHasScore = VARIABLES.challengeIsCatarinenseCircuit/>
+<cfset VARIABLES.challengeWidgets = "no_desafio,em_andamento,vip,confirmados,pendentes,inscritos"/>
+<cfset VARIABLES.challengeUsesActivityDays = false/>
+<cfif NOT VARIABLES.challengeIsRaceParticipation>
+    <cfquery name="qChallengePanelConfig">
+        SELECT COALESCE((to_jsonb(evento)->'config_painel')::text, '{}') AS config
+        FROM desafios_eventos evento
+        WHERE evento.tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+        ORDER BY evento.id_desafio DESC
+        LIMIT 1
+    </cfquery>
+    <cfif qChallengePanelConfig.recordcount>
+        <cfset VARIABLES.challengePanelConfig = deserializeJSON(qChallengePanelConfig.config[1])/>
+        <cfif isStruct(VARIABLES.challengePanelConfig)>
+            <cfif structKeyExists(VARIABLES.challengePanelConfig, "widgets") AND isArray(VARIABLES.challengePanelConfig.widgets)>
+                <cfset VARIABLES.challengeWidgets = arrayToList(VARIABLES.challengePanelConfig.widgets)/>
+            </cfif>
+            <cfif structKeyExists(VARIABLES.challengePanelConfig, "progresso")>
+                <cfset VARIABLES.challengeUsesActivityDays = VARIABLES.challengePanelConfig.progresso EQ "dias_com_atividade"/>
+            </cfif>
+            <cfif structKeyExists(VARIABLES, "challengePeriodWasProvided")
+                AND NOT VARIABLES.challengePeriodWasProvided
+                AND structKeyExists(VARIABLES.challengePanelConfig, "periodo_padrao")
+                AND isSimpleValue(VARIABLES.challengePanelConfig.periodo_padrao)>
+                <cfset VARIABLES.challengeDefaultPeriod = lcase(trim(VARIABLES.challengePanelConfig.periodo_padrao))/>
+                <cfif listFindNoCase("inscritos,confirmados,pendentes", VARIABLES.challengeDefaultPeriod)
+                    OR (VARIABLES.challengeUsesActivityDays AND VARIABLES.challengeDefaultPeriod EQ "atividade")>
+                    <cfset URL.periodo = VARIABLES.challengeDefaultPeriod EQ "inscritos" ? "" : VARIABLES.challengeDefaultPeriod/>
+                </cfif>
+            </cfif>
+        </cfif>
+    </cfif>
+</cfif>
 <cfset VARIABLES.challengeCircuitTotalEvents = 3/>
 <cfset VARIABLES.challengeCircuitCompletionTarget = 3/>
 <cfset VARIABLES.challengeCircuitEvents = []/>
@@ -632,108 +664,100 @@
 
     <!--- OUTROS DESAFIOS --->
     <cfelse>
-        WITH atv as (
-        with atividades as
-        (
-            select
-            athlete_id,
-            count(distinct frequencia_fechamento) as frequencia_fechamento
-            from
-                (
-                    select
-                    athlete_id,
-                    activity_date as frequencia_fechamento
-                    from tb_strava_activities act
-                    <cfif lcase(trim(URL.desafio)) EQ "desafio365">
-                        where activity_date between '2025-01-01'::date and '2025-12-31'::date
-                    <cfelse>
-                        where activity_date between '2020-01-01'::date and current_date::date
-                    </cfif>
-                    AND type in ('Run','VirtualRun','TrailRun')
-                    AND distance >= 990
-                    UNION
-                    select
-                    id_athlete_donation as athlete_id,
-                    activity_date as frequencia_fechamento
-                    from tb_strava_activities act
-                    <cfif lcase(trim(URL.desafio)) EQ "desafio365">
-                        where activity_date between '2025-01-01'::date and '2025-12-31'::date
-                    <cfelse>
-                        where activity_date between '2020-01-01'::date and current_date::date
-                    </cfif>
-                    and id_athlete_donation > 0
-                    AND type in ('Run','VirtualRun','TrailRun')
-                    AND distance >= 990
-                ) as atv
-            group by
-            athlete_id
+        <cfif VARIABLES.challengeUsesActivityDays>
+        WITH evento AS (
+            SELECT data_inicio, data_fim
+            FROM desafios_eventos
+            WHERE tag = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+            ORDER BY id_desafio DESC
+            LIMIT 1
+        ),
+        atletas AS (
+            SELECT des.id_usuario, usr.strava_id,
+                   greatest(min(des.data_inscricao::date), evento.data_inicio) AS dia_inicial,
+                   least(evento.data_fim, (now() AT TIME ZONE 'America/Sao_Paulo')::date) AS dia_final
+            FROM desafios des
+            JOIN tb_usuarios usr ON usr.id = des.id_usuario
+            CROSS JOIN evento
+            WHERE des.desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+              AND des.status = 'C'
+              AND usr.strava_id > 0
+            GROUP BY des.id_usuario, usr.strava_id, evento.data_inicio, evento.data_fim
+        ),
+        atv AS (
+            SELECT atleta.id_usuario,
+                   sum(act.distance) AS distancia_percorrida, sum(act.total_elevation_gain) AS altimetria,
+                   count(*) AS atividades, count(DISTINCT act.activity_date) AS dias_correndo,
+                   count(DISTINCT act.activity_date) AS frequencia_fechamento,
+                   max(act.activity_date) AS data_final, min(act.activity_date) AS data_inicial,
+                   NULL::integer AS dias_do_ano
+            FROM atletas atleta
+            CROSS JOIN LATERAL generate_series(atleta.dia_inicial, atleta.dia_final, interval '1 day') dia(data)
+            JOIN tb_strava_activities act
+                ON act.activity_date = dia.data::date AND act.athlete_id = atleta.strava_id
+            WHERE act.activity_source = 'strava'
+              AND act.resource_state >= 2
+              AND act.strava_raw->>'aspect_type' IS DISTINCT FROM 'delete'
+            GROUP BY atleta.id_usuario
         )
-        SELECT
-        athlete_id,
-        sum(distance) as distancia_percorrida,
-        sum(total_elevation_gain) as altimetria,
-        count(activity_id) as atividades,
-        count(distinct activity_date::date) as dias_correndo,
-        max(frequencia_fechamento) as frequencia_fechamento,
-        max(activity_date::date) as data_final,
-        min(activity_date::date) as data_inicial,
-        max(dias_do_ano) as dias_do_ano
-        FROM
-        (
-            SELECT
-            at1.athlete_id,
-            distance,
-            total_elevation_gain,
-            activity_id,
-            activity_date::date,
-            frequencia_fechamento,
-            <cfif lcase(trim(URL.desafio)) EQ "desafio365">
-                365 as dias_do_ano
+        <cfelse>
+        WITH atletas AS (
+            SELECT DISTINCT usr.strava_id
+            FROM desafios des
+            JOIN tb_usuarios usr ON usr.id = des.id_usuario
+            WHERE des.desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+              AND usr.strava_id IS NOT NULL
+        ),
+        corridas AS (
+            SELECT act.athlete_id, act.activity_id, act.activity_date, act.start_date, act.distance, act.total_elevation_gain
+            FROM tb_strava_activities act
+            JOIN atletas ON atletas.strava_id = act.athlete_id
+            WHERE act.type IN ('Run','VirtualRun','TrailRun') AND act.distance >= 990
+            <cfif VARIABLES.challengeTag EQ "desafio365">
+              AND act.activity_date BETWEEN date '2025-01-01' AND date '2025-12-31'
             <cfelse>
-                EXTRACT('doy' FROM current_date) as dias_do_ano
-            </cfif>
-            FROM tb_strava_activities at1
-            inner join atividades on atividades.athlete_id = at1.athlete_id
-            WHERE type in ('Run','VirtualRun','TrailRun')
-            AND distance >= 990
-            <cfif lcase(trim(URL.desafio)) EQ "desafio365">
-                AND activity_date >= '2025-01-01'
-                AND activity_date <= '2025-12-31'
-                AND extract(year from start_date) = 2025
-            <cfelse>
-                AND activity_date >= '2020-01-01'
-                --AND extract(year from start_date) = extract(year from current_date)
+              AND act.activity_date >= date '2020-01-01'
             </cfif>
             UNION
-            SELECT
-            id_athlete_donation as athlete_id,
-            distance,
-            total_elevation_gain,
-            activity_id,
-            activity_date::date,
-            frequencia_fechamento,
-            <cfif lcase(trim(URL.desafio)) EQ "desafio365">
-                365 as dias_do_ano
+            SELECT act.id_athlete_donation AS athlete_id, act.activity_id, act.activity_date, act.start_date, act.distance, act.total_elevation_gain
+            FROM tb_strava_activities act
+            JOIN atletas ON atletas.strava_id = act.id_athlete_donation
+            WHERE act.id_athlete_donation > 0
+              AND act.type IN ('Run','VirtualRun','TrailRun') AND act.distance >= 990
+            <cfif VARIABLES.challengeTag EQ "desafio365">
+              AND act.activity_date BETWEEN date '2025-01-01' AND date '2025-12-31'
             <cfelse>
-                EXTRACT('doy' FROM current_date) as dias_do_ano
+              AND act.activity_date >= date '2020-01-01'
             </cfif>
-            FROM tb_strava_activities at2
-            inner join atividades on atividades.athlete_id = at2.id_athlete_donation
-            WHERE type in ('Run','VirtualRun','TrailRun')
-            AND distance >= 990
-            <cfif lcase(trim(URL.desafio)) EQ "desafio365">
-                AND activity_date >= '2025-01-01'
-                AND activity_date <= '2025-12-31'
-                AND extract(year from start_date) = 2025
+        ),
+        apuracao AS (
+            SELECT *,
+            <cfif VARIABLES.challengeTag EQ "desafio365">
+                extract(year FROM start_date) = 2025 AS entra_nos_totais,
+                true AS entra_na_frequencia,
+                365 AS dias_do_ano
             <cfelse>
-                AND activity_date >= '2020-01-01'
-                --AND extract(year from start_date) = extract(year from current_date)
+                true AS entra_nos_totais,
+                activity_date <= current_date AS entra_na_frequencia,
+                extract(doy FROM current_date) AS dias_do_ano
             </cfif>
-            AND id_athlete_donation > 0
-
-        ) as qry1
-         GROUP BY athlete_id
+            FROM corridas
+        ),
+        atv AS (
+            SELECT athlete_id,
+                   sum(distance) FILTER (WHERE entra_nos_totais) AS distancia_percorrida,
+                   sum(total_elevation_gain) FILTER (WHERE entra_nos_totais) AS altimetria,
+                   count(*) FILTER (WHERE entra_nos_totais) AS atividades,
+                   count(DISTINCT activity_date) FILTER (WHERE entra_nos_totais) AS dias_correndo,
+                   count(DISTINCT activity_date) FILTER (WHERE entra_na_frequencia) AS frequencia_fechamento,
+                   max(activity_date) FILTER (WHERE entra_nos_totais) AS data_final,
+                   min(activity_date) FILTER (WHERE entra_nos_totais) AS data_inicial,
+                   max(dias_do_ano) AS dias_do_ano
+            FROM apuracao
+            GROUP BY athlete_id
+            HAVING bool_or(entra_nos_totais) AND bool_or(entra_na_frequencia)
         )
+        </cfif>
         SELECT COALESCE(uf.nome_regiao, 'Exterior') as regiao,
         to_timestamp(usr.strava_expires_at) as strava_expires_at,
         des.status,
@@ -757,9 +781,9 @@
         usr.data_statisticas,
         (select status from tb_crm where id_usuario = usr.id order by id_interacao desc limit 1) as status_crm,
         CASE
-            WHEN (select count(*) from tb_transacoes where id_usuario = usr.id and status_atual = 'order.paid') > 1 THEN 'duplicado'
-            WHEN (select count(*) from tb_transacoes where id_usuario = usr.id and status_atual = 'order.paid') = 1 THEN 'pago'
-            WHEN (select count(*) from tb_transacoes where id_usuario = usr.id) > 0 THEN 'pendente'
+            WHEN pagamentos.pagos > 1 THEN 'duplicado'
+            WHEN pagamentos.pagos = 1 THEN 'pago'
+            WHEN pagamentos.id_usuario IS NOT NULL THEN 'pendente'
             ELSE null
         END as status_transacao,
         atv.distancia_percorrida,
@@ -778,7 +802,22 @@
         FROM desafios des
         INNER JOIN tb_usuarios usr ON (des.id_usuario = usr.id)
         LEFT JOIN tb_paginas pag ON pag.id_usuario_cadastro = usr.id and pag.tag_prefix = 'atleta'
-        LEFT JOIN atv on atv.athlete_id = usr.strava_id
+        <cfif VARIABLES.challengeUsesActivityDays>
+            LEFT JOIN atv ON atv.id_usuario = des.id_usuario AND des.status = 'C'
+        <cfelse>
+            LEFT JOIN atv ON atv.athlete_id = usr.strava_id
+        </cfif>
+        LEFT JOIN (
+            SELECT transacao.id_usuario, count(*) FILTER (WHERE transacao.status_atual = 'order.paid') AS pagos
+            FROM tb_transacoes transacao
+            WHERE EXISTS (
+                SELECT 1
+                FROM desafios inscricao
+                WHERE inscricao.id_usuario = transacao.id_usuario
+                  AND inscricao.desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
+            )
+            GROUP BY transacao.id_usuario
+        ) pagamentos ON pagamentos.id_usuario = usr.id
         LEFT JOIN tb_uf uf ON usr.estado = uf.uf
         where desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.challengeTag#"/>
     </cfif>
@@ -872,6 +911,19 @@
 </cfquery>
 <cfset desafiosAddQueryTiming("qCountConfirmados", VARIABLES.desafiosQueryStart, qCountConfirmados.recordcount, "qoq")/>
 
+<cfif VARIABLES.challengeUsesActivityDays>
+    <cfquery name="qAthletesWithActivity" dbtype="query">
+        SELECT id, max(frequencia_fechamento) AS dias
+        FROM qBase
+        WHERE status = 'C' AND frequencia_fechamento > 0
+        GROUP BY id
+    </cfquery>
+    <cfset VARIABLES.challengeActivityDays = 0/>
+    <cfloop query="qAthletesWithActivity">
+        <cfset VARIABLES.challengeActivityDays += qAthletesWithActivity.dias/>
+    </cfloop>
+</cfif>
+
 <cfset VARIABLES.desafiosQueryStart = getTickCount()/>
 <cfquery name="qCountTotal">
     select count(*) as total
@@ -890,6 +942,9 @@
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "pendentes">
         where status = 'I'
+    </cfif>
+    <cfif VARIABLES.challengeUsesActivityDays AND URL.periodo EQ "atividade">
+        <cfif len(trim(URL.busca))>and<cfelse>where</cfif> status = 'C' and frequencia_fechamento > 0
     </cfif>
     <cfif len(trim(URL.periodo)) AND URL.periodo EQ "nodesafio">
         <cfif VARIABLES.challengeIsRaceParticipation>
