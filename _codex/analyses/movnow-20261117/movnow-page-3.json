@@ -1,0 +1,270 @@
+{
+  "data": [
+    {
+      "id": "338",
+      "slug": "338-27-run-5km",
+      "name": "27 run 5km",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 22/12/2026",
+      "theme": null,
+      "date": "2026-12-27T00:00:00.000Z",
+      "hour": "1970-01-01T08:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "São Paulo",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "Atletas do Bem",
+      "modalities": [
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/160f30d4-4878-46a1-9d8a-1e54b7a4e8a1.jpg",
+      "calendarBannerUrl": null
+    },
+    {
+      "id": "331",
+      "slug": "331-1-a-virada-run-recife",
+      "name": "1º A VIRADA RUN RECIFE",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 30/11/2026",
+      "theme": null,
+      "date": "2026-12-27T00:00:00.000Z",
+      "hour": "1970-01-01T05:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "Recife",
+      "uf": "PE",
+      "state": "Pernambuco",
+      "organizer": "FEDERAÇÃO PERNAMBUCANA DE ESPORTES – FEPE",
+      "modalities": [
+        "10KM",
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/a63e4eac-c23a-48f3-a703-9265c556c36a.png",
+      "calendarBannerUrl": null
+    },
+    {
+      "id": "392",
+      "slug": "392-wellness-day-rico-run",
+      "name": "Wellness Day - Rico Run",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 20/12/2026",
+      "theme": null,
+      "date": "2026-12-30T00:00:00.000Z",
+      "hour": "1970-01-01T05:30:00.000Z",
+      "category": "Evento com caráter de entretenimento",
+      "city": "Balneário Piçarras",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "Rico Run",
+      "modalities": [
+        "Wellness Day"
+      ],
+      "competitive": false,
+      "bannerUrl": "event-requests/3568f422-4617-44c5-a342-558021cdbdd6.jpg",
+      "calendarBannerUrl": null
+    },
+    {
+      "id": "412",
+      "slug": "412-corridao-da-virada-fortaleza",
+      "name": "CORRIDÃO DA VIRADA FORTALEZA",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 30/11/2026",
+      "theme": null,
+      "date": "2026-12-31T00:00:00.000Z",
+      "hour": "1970-01-01T06:00:00.000Z",
+      "category": "CORRIDA",
+      "city": "Fortaleza",
+      "uf": "CE",
+      "state": "Ceará",
+      "organizer": "GUIA OFICIAL DO BRASIL",
+      "modalities": [
+        "15KM",
+        "7KM",
+        "3KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/1c7c820c-06a0-4675-b006-561c8e8e80e5.jpg",
+      "calendarBannerUrl": null
+    },
+    {
+      "id": "414",
+      "slug": "414-sampa-run-5km",
+      "name": "SAMPA RUN 5KM",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 01/01/2027",
+      "theme": null,
+      "date": "2027-01-10T00:00:00.000Z",
+      "hour": "1970-01-01T07:00:00.000Z",
+      "category": "CORRIDA",
+      "city": "São Paulo",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "Atletas do Bem",
+      "modalities": [
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/b5dff1df-d393-4ac1-95eb-8de0296f03a4.jpg",
+      "calendarBannerUrl": null
+    },
+    {
+      "id": "385",
+      "slug": "385-corrida-pitombeira",
+      "name": "Corrida Pitombeira",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 20/12/2026",
+      "theme": null,
+      "date": "2027-01-10T00:00:00.000Z",
+      "hour": "1970-01-01T05:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "Olinda",
+      "uf": "PE",
+      "state": "Pernambuco",
+      "organizer": "FEDERAÇÃO PERNAMBUCANA DE ESPORTES – FEPE",
+      "modalities": [
+        "10KM",
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/a6eeadce-7224-47ad-95ef-fdf9b64b1240.jpg",
+      "calendarBannerUrl": null
+    },
+    {
+      "id": "408",
+      "slug": "408-3-trail-run-uvas-fontana-maciel",
+      "name": "3º Trail Run - Uvas Fontana Maciel",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 20/12/2026",
+      "theme": null,
+      "date": "2027-01-17T00:00:00.000Z",
+      "hour": "1970-01-01T08:00:00.000Z",
+      "category": "Trail Run",
+      "city": "Curitibanos",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "Uvas Fontana Maciel",
+      "modalities": [
+        "12KM",
+        "6KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "event-requests/2f98b67f-0f3b-4262-bde6-796421a66e66.jpg",
+      "calendarBannerUrl": null
+    },
+    {
+      "id": "403",
+      "slug": "403-2-desafio-solidario-de-camapua-mtb-xcm-raiz",
+      "name": "2° DESAFIO Solidário de Camapuã MTB xcm raiz",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 11/01/2027",
+      "theme": null,
+      "date": "2027-01-17T00:00:00.000Z",
+      "hour": "1970-01-01T07:30:00.000Z",
+      "category": "Mountain Bike",
+      "city": "Camapuã",
+      "uf": "MS",
+      "state": "Mato Grosso do Sul",
+      "organizer": "Champions MR LTDA ",
+      "modalities": [
+        "80km",
+        "50km",
+        "20km",
+        "Kids"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/1dd16428-c175-431f-8a33-a8f45011ee21.jpg",
+      "calendarBannerUrl": null
+    },
+    {
+      "id": "393",
+      "slug": "393-papangu-run",
+      "name": "PAPANGU RUN",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 20/12/2026",
+      "theme": "corrida de carnaval cultural",
+      "date": "2027-01-17T00:00:00.000Z",
+      "hour": "1970-01-01T06:00:00.000Z",
+      "category": "Corrida de Rua",
+      "city": "Bezerros",
+      "uf": "PE",
+      "state": "Pernambuco",
+      "organizer": "FEDERAÇÃO PERNAMBUCANA DE ESPORTES – FEPE",
+      "modalities": [
+        "5KM",
+        "10Km"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/eda58585-5f41-46fb-a126-db1a9bb82c02.png",
+      "calendarBannerUrl": null
+    },
+    {
+      "id": "372",
+      "slug": "372-circuito-cervejeiro-de-corrida-ouro-preto",
+      "name": "Circuito Cervejeiro de Corrida – Ouro Preto",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 22/01/2027",
+      "theme": null,
+      "date": "2027-01-23T00:00:00.000Z",
+      "hour": "1970-01-01T11:00:00.000Z",
+      "category": "Evento com caráter de entretenimento",
+      "city": "Ouro Preto",
+      "uf": "MG",
+      "state": "Minas Gerais",
+      "organizer": "FF Eventos Esportivos",
+      "modalities": [
+        "3KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/de419c79-b251-490d-baf1-53931c91104a.jpeg",
+      "calendarBannerUrl": null
+    },
+    {
+      "id": "410",
+      "slug": "410-trilhas-secretas-trail-challenge-women",
+      "name": "Trilhas Secretas Trail Challenge Women",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 24/01/2027",
+      "theme": null,
+      "date": "2027-01-31T00:00:00.000Z",
+      "hour": "1970-01-01T07:00:00.000Z",
+      "category": "Trail Run",
+      "city": "São Paulo",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "4Pro Live Marketing",
+      "modalities": [
+        "7KM",
+        "Virtual"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/c56ae647-4e55-4980-96b7-053a1c43d4f0.png",
+      "calendarBannerUrl": null
+    },
+    {
+      "id": "397",
+      "slug": "397-rota-do-fantasma",
+      "name": "Rota do Fantasma",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 10/01/2027",
+      "theme": null,
+      "date": "2027-01-31T00:00:00.000Z",
+      "hour": "1970-01-01T08:00:00.000Z",
+      "category": "Trail Run",
+      "city": "Itupeva",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "LOOP ULTRA",
+      "modalities": [
+        "16KM",
+        "8KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "event-requests/c96d59fe-c416-4c5c-94f9-32171ce613dc.png",
+      "calendarBannerUrl": null
+    }
+  ],
+  "page": 3,
+  "perPage": 12,
+  "total": 47
+}

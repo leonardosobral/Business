@@ -1,0 +1,4 @@
+SELECT jsonb_build_object(
+'events',(SELECT coalesce(jsonb_agg(to_jsonb(e)),'[]') FROM (SELECT id_evento,nome_evento,cidade,estado,data_inicial,data_final,tag,ativo,url_inscricao,url_hotsite,tipo_corrida FROM tb_evento_corridas WHERE nome_evento ~* '(brava|alagados|cbcr|runlab|foco no fot|et.lica|wellness|rico run|camapu|jampa|cidade esporte|bar do pp)' ORDER BY data_inicial DESC,id_evento) e),
+'columns',(SELECT jsonb_agg(jsonb_build_object('table',table_name,'column',column_name,'type',data_type,'length',character_maximum_length,'nullable',is_nullable,'default',column_default) ORDER BY table_name,ordinal_position) FROM information_schema.columns WHERE table_name IN ('tb_conta_eventos','tb_conta_evento_solicitacoes','tb_log','tb_evento_corridas') AND table_schema='public')
+)::text AS payload

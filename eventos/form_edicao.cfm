@@ -1,6 +1,6 @@
 <cfif Len(trim(URL.id_evento))>
 
-    <div class="col-md-6">
+    <div class="col-md-6 events-editor-column">
 
         <div class="card">
 

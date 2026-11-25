@@ -18,7 +18,7 @@
     <cfset VARIABLES.eventosListIsLimited = true/>
 </cfif>
 
-<div class="<cfif Len(trim(URL.id_evento))>col-md-6<cfelse>col-md-12</cfif> <cfif VARIABLES.eventosScrollableListMode>business-page events-list-section</cfif>">
+<div class="events-list-column <cfif Len(trim(URL.id_evento))>col-md-6<cfelse>col-md-12</cfif> <cfif VARIABLES.eventosScrollableListMode>business-page events-list-section</cfif>">
 
     <div class="card <cfif VARIABLES.eventosScrollableListMode>shadow-0 business-page-card events-list-card</cfif>">
 

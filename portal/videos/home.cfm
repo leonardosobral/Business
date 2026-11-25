@@ -17,11 +17,11 @@
     <cfset VARIABLES.mediaHasDurationIso = true/>
   </cfif>
 </cfloop>
-<cfset VARIABLES.mediaTableColspan = 8/>
+<cfset VARIABLES.mediaTableColspan = 7/>
 
 <style>
   .media-table {
-    min-width: 1200px;
+    min-width: 1050px;
   }
 
   .media-table td,
@@ -36,7 +36,7 @@
   }
 
   .media-actions-cell {
-    min-width: 220px;
+    min-width: 190px;
   }
 
   .media-thumbnail-cell {
@@ -83,6 +83,15 @@
     background: rgba(250, 177, 32, 0.08);
   }
 
+  .media-event-cell { min-width: 210px; max-width: 280px; overflow-wrap: anywhere; }
+  .media-manager .media-kpis { grid-template-columns: repeat(4, minmax(70px, 1fr)); min-width: 320px; }
+  .media-manager .media-toolbar { gap: .75rem; }
+  .media-manager .media-toolbar > div:first-of-type { flex: 1 1 260px; }
+  .media-event-editor { border: 1px solid var(--business-ui-border-strong); border-radius: .65rem; background: var(--business-panel); scroll-margin-top: 90px; }
+  .media-event-editor:focus-within { border-color: var(--business-accent); }
+  .media-manager .media-title { max-width: 360px; }
+  @media (max-width: 575px) { .media-manager .media-kpis { min-width: 0; width: 100%; } .media-manager .media-toolbar > div { flex: 1 1 100%; } }
+
   .media-featured-event-panel {
     border-top: 1px solid rgba(250, 177, 32, 0.25);
   }
@@ -110,18 +119,18 @@
   }
 </style>
 
-<section>
+<section class="business-page media-manager">
   <div class="row gx-xl-5">
     <div class="col-lg-12 mb-4 mb-lg-0 h-100">
-      <div class="card shadow-0">
-        <div class="card-body">
+      <div class="card shadow-0 business-page-card">
+        <div class="card-body business-page-body">
 
           <div class="d-flex flex-column flex-lg-row justify-content-between gap-3">
             <div>
-              <h3 class="mb-1">Portal - Videos</h3>
-              <p class="text-muted mb-0">Gerencie os videos importados a partir dos canais de video e a exibicao no portal Road Runners.</p>
+              <div class="small text-warning fw-semibold text-uppercase mb-1">Portal Road Runners</div><h1 class="business-page-title mb-1">Vídeos</h1>
+              <p class="text-muted mb-0">Organize os vídeos, vincule eventos e escolha o destaque da home de forma independente.</p>
             </div>
-            <div class="text-lg-end d-flex gap-4">
+            <div class="business-kpi-grid media-kpis">
               <div>
                 <div class="small text-muted">Total</div>
                 <div class="h4 mb-0"><cfoutput>#LSNumberFormat(qMediaStats.total)#</cfoutput></div>
@@ -135,12 +144,13 @@
                 <div class="h4 mb-0"><cfoutput>#LSNumberFormat(qMediaStats.total_ocultos)#</cfoutput></div>
               </div>
               <div>
-                <div class="small text-muted">Destaques</div>
+                <div class="small text-muted">Destaque na home</div>
                 <div class="h4 mb-0 text-warning"><cfoutput>#LSNumberFormat(qMediaStats.total_destaques)#</cfoutput></div>
               </div>
             </div>
           </div>
 
+          <div class="small text-muted mt-2"><cfoutput>#LSNumberFormat(qMediaStats.total_vinculados)#</cfoutput> vídeos vinculados a eventos</div>
           <hr/>
 
           <cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT qPerfil.is_admin>
@@ -156,13 +166,13 @@
               <input type="hidden" name="pagina" value="1"/>
 
               <div>
-                <label class="form-label">Busca</label>
-                <input class="form-control" type="text" name="busca" value="<cfoutput>#encodeForHTMLAttribute(URL.busca)#</cfoutput>" placeholder="Titulo, canal ou URL"/>
+                <label class="form-label" for="media-search">Buscar vídeos</label>
+                <input class="form-control" id="media-search" type="search" name="busca" value="<cfoutput>#encodeForHTMLAttribute(URL.busca)#</cfoutput>" placeholder="Título, canal, URL ou evento"/>
               </div>
 
               <div>
-                <label class="form-label">Status</label>
-                <select class="form-select" name="status">
+                <label class="form-label" for="media-status">Publicação</label>
+                <select class="form-select" name="status" id="media-status">
                   <option value="todos" <cfif VARIABLES.mediaStatusFilter EQ "todos">selected</cfif>>Todos</option>
                   <option value="publicados" <cfif VARIABLES.mediaStatusFilter EQ "publicados">selected</cfif>>Publicados</option>
                   <option value="ocultos" <cfif VARIABLES.mediaStatusFilter EQ "ocultos">selected</cfif>>Ocultos</option>
@@ -170,8 +180,8 @@
               </div>
 
               <div>
-                <label class="form-label">Destaque na home</label>
-                <select class="form-select" name="destaque">
+                <label class="form-label" for="media-featured">Destaque na home</label>
+                <select class="form-select" name="destaque" id="media-featured">
                   <option value="todos" <cfif VARIABLES.mediaFeaturedFilter EQ "todos">selected</cfif>>Todos</option>
                   <option value="sim" <cfif VARIABLES.mediaFeaturedFilter EQ "sim">selected</cfif>>Em destaque</option>
                   <option value="nao" <cfif VARIABLES.mediaFeaturedFilter EQ "nao">selected</cfif>>Sem destaque</option>
@@ -179,163 +189,57 @@
               </div>
 
               <div>
-                <button class="btn btn-outline-warning" type="submit">Filtrar</button>
+                <label class="form-label" for="media-link">Vínculo com evento</label>
+                <select class="form-select" name="vinculo" id="media-link">
+                  <option value="todos" <cfif VARIABLES.mediaLinkFilter EQ "todos">selected</cfif>>Todos os vídeos</option>
+                  <option value="sim" <cfif VARIABLES.mediaLinkFilter EQ "sim">selected</cfif>>Com evento</option>
+                  <option value="nao" <cfif VARIABLES.mediaLinkFilter EQ "nao">selected</cfif>>Sem evento</option>
+                </select>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-warning" type="submit">Filtrar</button>
+                <a class="btn btn-outline-light" href="./">Limpar</a>
               </div>
             </form>
 
+            <cfif len(VARIABLES.mediaFeaturedEventAlert.message)>
+              <cfoutput><div role="alert" class="alert alert-#encodeForHTMLAttribute(VARIABLES.mediaFeaturedEventAlert.type)#">#encodeForHTML(VARIABLES.mediaFeaturedEventAlert.message)#</div></cfoutput>
+            <cfelseif URL.sucesso EQ "evento_vinculado">
+              <div role="status" class="alert alert-success">Evento vinculado ao vídeo. A publicação e o destaque foram mantidos.</div>
+            <cfelseif URL.sucesso EQ "evento_desvinculado">
+              <div role="status" class="alert alert-success">Vínculo com o evento removido. A publicação e o destaque foram mantidos.</div>
+            </cfif>
+
             <cfif VARIABLES.mediaHasIsFeatured>
-              <cfset VARIABLES.mediaFeaturedCurrentPublished = false/>
-              <cfset VARIABLES.mediaFeaturedCurrentEventId = 0/>
-              <cfif qMediaFeaturedCurrent.recordcount>
-                <cfset VARIABLES.mediaFeaturedCurrentPublished = IsBoolean(qMediaFeaturedCurrent.pub_status) ? qMediaFeaturedCurrent.pub_status : ListFindNoCase("true,1,yes,sim", trim(qMediaFeaturedCurrent.pub_status & "")) GT 0/>
-                <cfif VARIABLES.mediaHasEventId AND NOT isNull(qMediaFeaturedCurrent.id_evento) AND isNumeric(qMediaFeaturedCurrent.id_evento)>
-                  <cfset VARIABLES.mediaFeaturedCurrentEventId = val(qMediaFeaturedCurrent.id_evento)/>
-                </cfif>
-              </cfif>
-
-              <cfif URL.sucesso EQ "evento_vinculado">
-                <div class="alert alert-success mb-3">Evento vinculado ao video em destaque.</div>
-              <cfelseif URL.sucesso EQ "evento_desvinculado">
-                <div class="alert alert-success mb-3">Vinculo do evento removido do video em destaque.</div>
-              <cfelseif len(VARIABLES.mediaFeaturedEventAlert.message)>
-                <cfoutput><div class="alert alert-#encodeForHTMLAttribute(VARIABLES.mediaFeaturedEventAlert.type)# mb-3">#encodeForHTML(VARIABLES.mediaFeaturedEventAlert.message)#</div></cfoutput>
-              </cfif>
-
-              <div class="media-featured-card p-3 mb-4" id="video-destaque">
-                <cfoutput>
-                  <div class="d-flex flex-column flex-lg-row justify-content-between gap-3">
-                    <div>
-                      <div class="small text-warning fw-semibold text-uppercase">Video em destaque na home</div>
-                      <cfif qMediaFeaturedCurrent.recordcount>
-                        <div class="fw-semibold">
-                          <cfif len(trim(qMediaFeaturedCurrent.media_titulo))>#encodeForHTML(qMediaFeaturedCurrent.media_titulo)#<cfelse>Midia ###encodeForHTML(qMediaFeaturedCurrent.media_pk)#</cfif>
-                        </div>
-                        <div class="small text-muted">
-                          ID #encodeForHTML(qMediaFeaturedCurrent.media_pk)# ·
-                          <cfif VARIABLES.mediaFeaturedCurrentPublished>Publicado<cfelse>Oculto</cfif>
-                        </div>
-                      <cfelse>
-                        <div class="fw-semibold">Nenhum video destacado no momento.</div>
-                        <div class="small text-muted">Use o botao Destacar em um video publicado para definir o destaque da home.</div>
-                      </cfif>
-                    </div>
-                    <div class="d-flex flex-wrap gap-2 align-items-start">
-                      <cfif qMediaFeaturedCurrent.recordcount AND len(trim(qMediaFeaturedCurrent.media_url))>
-                        <button type="button" class="btn btn-sm btn-outline-secondary js-media-video" data-media-url="#encodeForHTMLAttribute(qMediaFeaturedCurrent.media_url)#" data-media-title="#encodeForHTMLAttribute(qMediaFeaturedCurrent.media_titulo)#">
-                          Ver video
-                        </button>
-                      </cfif>
-                      <a class="btn btn-sm btn-outline-warning" href="./?pagina=1&busca=#urlEncodedFormat(URL.busca)#&status=publicados&destaque=sim">
-                        Ver destaque
-                      </a>
-                    </div>
+              <div class="media-featured-card p-3 mb-3" id="video-destaque">
+                <cfoutput><div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+                  <div><div class="small text-warning fw-semibold text-uppercase"><i class="fa-solid fa-star me-1" aria-hidden="true"></i>Destaque atual da home</div>
+                    <cfif qMediaFeaturedCurrent.recordcount><div class="fw-semibold">#encodeForHTML(qMediaFeaturedCurrent.media_titulo)#</div>
+                    <cfelse><div class="text-muted small">Nenhum vídeo destacado. Use a estrela de um vídeo publicado para escolher.</div></cfif>
                   </div>
-                </cfoutput>
-
-                <cfif qMediaFeaturedCurrent.recordcount>
-                  <div class="media-featured-event-panel mt-3 pt-3">
-                    <div class="row g-3">
-                      <div class="col-12 col-xl-5">
-                        <div class="small text-muted text-uppercase fw-semibold mb-1">Evento vinculado</div>
-                        <cfif VARIABLES.mediaHasEventId>
-                          <cfoutput>
-                            <cfif VARIABLES.mediaFeaturedCurrentEventId GT 0>
-                              <div class="fw-semibold">#encodeForHTML(qMediaFeaturedCurrent.evento_nome)#</div>
-                              <div class="small text-muted">
-                                ID #VARIABLES.mediaFeaturedCurrentEventId#
-                                <cfif isDate(qMediaFeaturedCurrent.evento_data_inicial)> · #lsDateFormat(qMediaFeaturedCurrent.evento_data_inicial, "dd/mm/yyyy")#</cfif>
-                                <cfif len(trim(qMediaFeaturedCurrent.evento_cidade & ""))> · #encodeForHTML(qMediaFeaturedCurrent.evento_cidade)#<cfif len(trim(qMediaFeaturedCurrent.evento_estado & ""))>/#encodeForHTML(qMediaFeaturedCurrent.evento_estado)#</cfif></cfif>
-                              </div>
-                              <form method="post" action="./?pagina=#VARIABLES.mediaPage#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)###video-destaque" class="mt-2" onsubmit="return confirm('Remover o vinculo deste video com o evento?');">
-                                <input type="hidden" name="media_featured_event_action" value="salvar"/>
-                                <input type="hidden" name="media_id" value="#encodeForHTMLAttribute(qMediaFeaturedCurrent.media_pk)#"/>
-                                <input type="hidden" name="id_evento" value=""/>
-                                <button class="btn btn-sm btn-outline-danger" type="submit">Remover vinculo</button>
-                              </form>
-                            <cfelse>
-                              <div class="fw-semibold">Nenhum evento vinculado.</div>
-                              <div class="small text-muted">Busque um evento ao lado para contextualizar o destaque.</div>
-                            </cfif>
-                          </cfoutput>
-                        <cfelse>
-                          <div class="alert alert-warning mb-0">
-                            A coluna <strong>id_evento</strong> ainda nao existe em <strong>tb_media</strong>. Aplique o SQL desta funcionalidade para habilitar o vinculo.
-                          </div>
-                        </cfif>
-                      </div>
-
-                      <cfif VARIABLES.mediaHasEventId>
-                        <div class="col-12 col-xl-7">
-                          <cfoutput>
-                            <form method="get" action="./##video-destaque" class="row g-2 align-items-end">
-                              <input type="hidden" name="pagina" value="#VARIABLES.mediaPage#"/>
-                              <input type="hidden" name="busca" value="#encodeForHTMLAttribute(URL.busca)#"/>
-                              <input type="hidden" name="status" value="#encodeForHTMLAttribute(VARIABLES.mediaStatusFilter)#"/>
-                              <input type="hidden" name="destaque" value="#encodeForHTMLAttribute(VARIABLES.mediaFeaturedFilter)#"/>
-                              <div class="col-12 col-md-9">
-                                <label class="form-label">Buscar evento</label>
-                                <input class="form-control" type="text" name="evento_busca" value="#encodeForHTMLAttribute(URL.evento_busca)#" placeholder="Nome, ID, tag ou cidade" required/>
-                              </div>
-                              <div class="col-12 col-md-3">
-                                <button class="btn btn-outline-warning w-100" type="submit">Buscar</button>
-                              </div>
-                            </form>
-                          </cfoutput>
-
-                          <cfif len(trim(URL.evento_busca))>
-                            <cfif qMediaFeaturedEventSearch.recordcount>
-                              <cfoutput>
-                                <form method="post" action="./?pagina=#VARIABLES.mediaPage#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)###video-destaque" class="mt-3">
-                                  <input type="hidden" name="media_featured_event_action" value="salvar"/>
-                                  <input type="hidden" name="media_id" value="#encodeForHTMLAttribute(qMediaFeaturedCurrent.media_pk)#"/>
-                                  <div class="media-event-search-results mb-3">
-                                    <cfloop query="qMediaFeaturedEventSearch">
-                                      <cfset VARIABLES.mediaEventSearchActive = NOT isNull(qMediaFeaturedEventSearch.ativo) AND (IsBoolean(qMediaFeaturedEventSearch.ativo) ? qMediaFeaturedEventSearch.ativo : ListFindNoCase("true,1,yes,sim", trim(qMediaFeaturedEventSearch.ativo & "")) GT 0)/>
-                                      <label class="media-event-search-option">
-                                        <input class="form-check-input mt-1" type="radio" name="id_evento" value="#qMediaFeaturedEventSearch.id_evento#" <cfif qMediaFeaturedEventSearch.id_evento EQ VARIABLES.mediaFeaturedCurrentEventId>checked</cfif> required/>
-                                        <span>
-                                          <span class="fw-semibold d-block">#encodeForHTML(qMediaFeaturedEventSearch.nome_evento)#</span>
-                                          <span class="small text-muted d-block">
-                                            ID #qMediaFeaturedEventSearch.id_evento#
-                                            <cfif isDate(qMediaFeaturedEventSearch.data_inicial)> · #lsDateFormat(qMediaFeaturedEventSearch.data_inicial, "dd/mm/yyyy")#</cfif>
-                                            <cfif len(trim(qMediaFeaturedEventSearch.cidade & ""))> · #encodeForHTML(qMediaFeaturedEventSearch.cidade)#<cfif len(trim(qMediaFeaturedEventSearch.estado & ""))>/#encodeForHTML(qMediaFeaturedEventSearch.estado)#</cfif></cfif>
-                                          </span>
-                                          <span class="small <cfif VARIABLES.mediaEventSearchActive>text-success<cfelse>text-muted</cfif>"><cfif VARIABLES.mediaEventSearchActive>Ativo<cfelse>Inativo</cfif></span>
-                                        </span>
-                                      </label>
-                                    </cfloop>
-                                  </div>
-                                  <button class="btn btn-warning" type="submit">Vincular evento selecionado</button>
-                                </form>
-                              </cfoutput>
-                            <cfelse>
-                              <div class="alert alert-warning mt-3 mb-0">Nenhum evento encontrado para esta busca.</div>
-                            </cfif>
-                          </cfif>
-                        </div>
-                      </cfif>
-                    </div>
-                  </div>
-                </cfif>
-              </div>
-            <cfelse>
-              <div class="alert alert-warning mb-4">
-                O gerenciamento de destaque ainda nao esta habilitado porque a coluna <strong>is_featured</strong> nao foi localizada em <strong>tb_media</strong>.
+                  <cfif qMediaFeaturedCurrent.recordcount><div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-light js-media-video" type="button" data-media-url="#encodeForHTMLAttribute(qMediaFeaturedCurrent.media_url)#" data-media-title="#encodeForHTMLAttribute(qMediaFeaturedCurrent.media_titulo)#">Assistir</button>
+                    <cfif VARIABLES.mediaHasEventId><a class="btn btn-sm btn-outline-warning" href="#encodeForHTMLAttribute(VARIABLES.mediaListUrl)#&amp;video_id=#qMediaFeaturedCurrent.media_pk###video-evento">Gerenciar evento</a></cfif>
+                  </div></cfif>
+                </div></cfoutput>
               </div>
             </cfif>
 
+            <cfinclude template="event_editor.cfm"/>
+            <div class="d-flex flex-wrap justify-content-between gap-2 small text-muted mb-2">
+              <cfoutput><span>#LSNumberFormat(qMediaCount.total)# vídeo(s) encontrado(s)</span><span>Página #VARIABLES.mediaPage# de #VARIABLES.mediaTotalPages# · Mais recentes primeiro</span></cfoutput>
+            </div>
             <div class="table-responsive">
               <table class="table table-sm table-striped table-hover media-table">
                 <thead>
                   <tr>
-                    <th class="media-thumbnail-cell">Thumb</th>
-                    <th>ID</th>
-                    <th>Titulo</th>
+                    <th class="media-thumbnail-cell">Prévia</th>
+                    <th>Vídeo</th>
                     <th>Canal</th>
-                    <th>Publicacao</th>
-                    <th>Duração</th>
+                    <th>Publicação / duração</th>
+                    <th>Evento vinculado</th>
                     <th>Status</th>
-                    <th class="media-actions-cell">Acoes</th>
+                    <th class="media-actions-cell">Ações</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -392,16 +296,16 @@
                       <tr>
                         <td class="media-thumbnail-cell">
                           <cfif VARIABLES.mediaHasUrl AND len(trim(qMedia["media_url"][qMedia.currentRow]))>
-                            <button type="button" class="media-thumbnail-button js-media-video js-media-thumbnail" data-media-url="#encodeForHTMLAttribute(qMedia["media_url"][qMedia.currentRow])#" data-media-title="Midia ###encodeForHTMLAttribute(VARIABLES.mediaPkValue)#" aria-label="Abrir video">
+                            <button type="button" class="media-thumbnail-button js-media-video js-media-thumbnail" data-media-url="#encodeForHTMLAttribute(qMedia["media_url"][qMedia.currentRow])#" data-media-title="#encodeForHTMLAttribute(VARIABLES.mediaTitle)#" aria-label="Assistir #encodeForHTMLAttribute(VARIABLES.mediaTitle)#">
                               <img alt="Miniatura do video" loading="lazy"/>
                             </button>
                           <cfelse>
                             <span class="text-muted small">-</span>
                           </cfif>
                         </td>
-                        <td class="media-cell">#encodeForHTML(VARIABLES.mediaPkValue)#</td>
                         <td class="media-cell">
-                          <div class="fw-semibold"><cfif len(VARIABLES.mediaTitle)>#encodeForHTML(VARIABLES.mediaTitle)#<cfelse>Midia ###encodeForHTML(VARIABLES.mediaPkValue)#</cfif></div>
+                          <div class="fw-semibold media-title"><cfif len(VARIABLES.mediaTitle)>#encodeForHTML(VARIABLES.mediaTitle)#<cfelse>Mídia ###encodeForHTML(VARIABLES.mediaPkValue)#</cfif></div>
+                          <div class="small text-muted mt-1">ID #encodeForHTML(VARIABLES.mediaPkValue)#</div>
                         </td>
                         <td class="media-cell">
                           <cfif len(VARIABLES.mediaChannelName)>#encodeForHTML(VARIABLES.mediaChannelName)#<cfelse><span class="text-muted">-</span></cfif>
@@ -413,9 +317,17 @@
                           <cfelse>
                             <span class="text-muted">-</span>
                           </cfif>
+                          <div class="small mt-1"><span class="text-muted">Duração:</span>
+                          <span class="<cfif VARIABLES.mediaDurationSeconds GT 0 AND VARIABLES.mediaDurationSeconds LT VARIABLES.mediaMinimumPublishDurationSeconds>text-danger fw-bold</cfif>">#encodeForHTML(VARIABLES.mediaDurationFormatted)#</span></div>
                         </td>
-                        <td class="media-cell">
-                          <span class="<cfif VARIABLES.mediaDurationSeconds GT 0 AND VARIABLES.mediaDurationSeconds LT VARIABLES.mediaMinimumPublishDurationSeconds>text-danger fw-bold</cfif>">#encodeForHTML(VARIABLES.mediaDurationFormatted)#</span>
+                        <td class="media-event-cell">
+                          <cfif VARIABLES.mediaHasEventId>
+                            <cfif val(qMedia.id_evento) GT 0>
+                              <a class="fw-semibold text-reset" href="/eventos/?id_evento=#val(qMedia.id_evento)#"><cfif len(trim(qMedia.nome_evento & ''))>#encodeForHTML(qMedia.nome_evento)#<cfelse>Evento ###val(qMedia.id_evento)#</cfif></a>
+                              <div class="small text-muted"><cfif isDate(qMedia.evento_data)>#lsDateFormat(qMedia.evento_data,"dd/mm/yyyy")# · </cfif>#encodeForHTML(qMedia.evento_cidade ?: '')#<cfif len(qMedia.evento_estado ?: '')>/#encodeForHTML(qMedia.evento_estado)#</cfif></div>
+                            <cfelse><span class="text-muted small">Sem evento vinculado</span></cfif>
+                            <a class="btn btn-sm btn-outline-light mt-2" href="#encodeForHTMLAttribute(VARIABLES.mediaListUrl)#&amp;video_id=#urlEncodedFormat(VARIABLES.mediaPkValue)###video-evento"><i class="fa-solid fa-link me-1" aria-hidden="true"></i><cfif val(qMedia.id_evento) GT 0>Alterar vínculo<cfelse>Vincular evento</cfif></a>
+                          <cfelse><span class="text-muted">Indisponível</span></cfif>
                         </td>
                         <td class="media-cell">
                           <div class="mb-1">
@@ -434,7 +346,7 @@
                               <cfif NOT VARIABLES.mediaIsPublished AND VARIABLES.mediaDurationSeconds GT 0 AND VARIABLES.mediaDurationSeconds LT VARIABLES.mediaMinimumPublishDurationSeconds>
                                 <button class="btn btn-sm btn-outline-secondary" type="button" disabled title="Videos com menos de 3 minutos e 30 segundos permanecem ocultos">Exibir</button>
                               <cfelse>
-                                <a class="btn btn-sm <cfif VARIABLES.mediaIsPublished>btn-outline-danger<cfelse>btn-outline-success</cfif>" href="./?acao=pub_status&media_id=#urlEncodedFormat(VARIABLES.mediaPkValue)#&published=#NOT VARIABLES.mediaIsPublished#&pagina=#VARIABLES.mediaPage#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#">
+                                <a class="btn btn-sm <cfif VARIABLES.mediaIsPublished>btn-outline-danger<cfelse>btn-outline-success</cfif>" href="./?acao=pub_status&media_id=#urlEncodedFormat(VARIABLES.mediaPkValue)#&published=#NOT VARIABLES.mediaIsPublished#&pagina=#VARIABLES.mediaPage#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#&vinculo=#VARIABLES.mediaLinkFilter#">
                                   <cfif VARIABLES.mediaIsPublished>Ocultar<cfelse>Exibir</cfif>
                                 </a>
                               </cfif>
@@ -442,7 +354,7 @@
 
                             <cfif VARIABLES.mediaHasIsFeatured>
                               <cfif VARIABLES.mediaCanManageFeatured>
-                                <a class="btn btn-sm <cfif VARIABLES.mediaIsFeatured>btn-warning<cfelse>btn-outline-warning</cfif>" href="./?acao=destaque&media_id=#urlEncodedFormat(VARIABLES.mediaPkValue)#&featured=#NOT VARIABLES.mediaIsFeatured#&pagina=#VARIABLES.mediaPage#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#" title="<cfif VARIABLES.mediaIsFeatured>Remover da home<cfelse>Destacar na home</cfif>">
+                                <a class="btn btn-sm <cfif VARIABLES.mediaIsFeatured>btn-warning<cfelse>btn-outline-warning</cfif>" href="./?acao=destaque&media_id=#urlEncodedFormat(VARIABLES.mediaPkValue)#&featured=#NOT VARIABLES.mediaIsFeatured#&pagina=#VARIABLES.mediaPage#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#&vinculo=#VARIABLES.mediaLinkFilter#" title="<cfif VARIABLES.mediaIsFeatured>Remover da home<cfelse>Destacar na home</cfif>">
                                   <i class="fa-<cfif VARIABLES.mediaIsFeatured>solid<cfelse>regular</cfif> fa-star me-1"></i><cfif VARIABLES.mediaIsFeatured>Remover destaque<cfelse>Destacar</cfif>
                                 </a>
                               <cfelse>
@@ -452,7 +364,7 @@
                               </cfif>
                             </cfif>
 
-                            <a class="btn btn-sm btn-outline-danger" href="./?acao=excluir&media_id=#urlEncodedFormat(VARIABLES.mediaPkValue)#&pagina=#VARIABLES.mediaPage#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#" onclick="return confirm('Tem certeza que deseja remover este video do banco de dados?');">
+                            <a class="btn btn-sm btn-outline-danger" href="./?acao=excluir&media_id=#urlEncodedFormat(VARIABLES.mediaPkValue)#&pagina=#VARIABLES.mediaPage#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#&vinculo=#VARIABLES.mediaLinkFilter#" onclick="return confirm('Tem certeza que deseja remover este video do banco de dados?');">
                               Remover
                             </a>
                           </div>
@@ -461,7 +373,7 @@
                     </cfoutput>
                   <cfelse>
                     <tr>
-                      <td colspan="#VARIABLES.mediaTableColspan#" class="text-center text-muted py-4">Nenhum video encontrado para este recorte.</td>
+                      <td colspan="<cfoutput>#VARIABLES.mediaTableColspan#</cfoutput>" class="text-center text-muted py-4">Nenhum video encontrado para este recorte.</td>
                     </tr>
                   </cfif>
                 </tbody>
@@ -473,21 +385,21 @@
                 <ul class="pagination pagination-sm justify-content-center flex-wrap mt-3 mb-0">
                   <cfoutput>
                     <li class="page-item <cfif VARIABLES.mediaPage LTE 1>disabled</cfif>">
-                      <a class="page-link" href="./?pagina=#max(1, VARIABLES.mediaPage - 1)#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#">Anterior</a>
+                      <a class="page-link" href="./?pagina=#max(1, VARIABLES.mediaPage - 1)#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#&vinculo=#VARIABLES.mediaLinkFilter#">Anterior</a>
                     </li>
                   </cfoutput>
 
                   <cfloop from="#max(1, VARIABLES.mediaPage - 3)#" to="#min(VARIABLES.mediaTotalPages, VARIABLES.mediaPage + 3)#" index="mediaPageIndex">
                     <cfoutput>
                       <li class="page-item <cfif mediaPageIndex EQ VARIABLES.mediaPage>active</cfif>">
-                        <a class="page-link" href="./?pagina=#mediaPageIndex#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#">#mediaPageIndex#</a>
+                        <a class="page-link" href="./?pagina=#mediaPageIndex#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#&vinculo=#VARIABLES.mediaLinkFilter#">#mediaPageIndex#</a>
                       </li>
                     </cfoutput>
                   </cfloop>
 
                   <cfoutput>
                     <li class="page-item <cfif VARIABLES.mediaPage GTE VARIABLES.mediaTotalPages>disabled</cfif>">
-                      <a class="page-link" href="./?pagina=#min(VARIABLES.mediaTotalPages, VARIABLES.mediaPage + 1)#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#">Proxima</a>
+                      <a class="page-link" href="./?pagina=#min(VARIABLES.mediaTotalPages, VARIABLES.mediaPage + 1)#&busca=#urlEncodedFormat(URL.busca)#&status=#urlEncodedFormat(VARIABLES.mediaStatusFilter)#&destaque=#urlEncodedFormat(VARIABLES.mediaFeaturedFilter)#&vinculo=#VARIABLES.mediaLinkFilter#">Proxima</a>
                     </li>
                   </cfoutput>
                 </ul>

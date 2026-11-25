@@ -81,7 +81,7 @@ component output=false {
             FROM estudo.vouchers v JOIN estudo.campanhas c ON c.id=v.campanha_id
             WHERE c.codigo='abraceo-primeiro-acesso' AND v.email_destinatario=:email ORDER BY v.id DESC LIMIT 1 FOR UPDATE OF v",{email=p(u.email)});
         var camp=db("SELECT c.id,c.produto_id FROM estudo.campanhas c JOIN estudo.produtos p ON p.id=c.produto_id
-            WHERE c.codigo='abraceo-primeiro-acesso' AND c.status='ACTIVE' AND c.beneficio_percentual=0
+            WHERE c.codigo='abraceo-primeiro-acesso' AND c.status='ACTIVE' AND c.beneficio_percentual IN (0,50)
               AND (c.inicio_em IS NULL OR c.inicio_em<=clock_timestamp()) AND (c.fim_em IS NULL OR c.fim_em>clock_timestamp())
               AND p.codigo='previa-2026-q3' AND p.status='ACTIVE' AND p.publicacao_id IS NOT NULL FOR SHARE OF c,p");
         if(!camp.recordCount) throw(type='StudyAccess.Access',message='A prévia não está disponível para novo acesso.');
@@ -124,12 +124,19 @@ component output=false {
             var previous=db('SELECT r.id,a.status FROM estudo.primeiro_acesso_representantes r JOIN estudo.acessos a ON a.id=r.acesso_id WHERE r.id_conta=:c AND r.usuario_id=:u',
                 {c=p(c.id_conta,'cf_sql_bigint'),u=p(u.id,'cf_sql_bigint')});
             if(previous.recordCount && previous.status[1]!='ACTIVE') throw(type='StudyAccess.Access',message='Este acesso foi revogado. Procure a equipe do Business.');
-            var access=uCase(mode)=='VOUCHER'?variables.study.redeem(actorId,value).access:cnpjGrant(u);
+            var access={};var annualBenefit={};
+            if(uCase(mode)=='VOUCHER') {
+                var redemption=variables.study.redeem(actorId,value);
+                access=redemption.access;annualBenefit=redemption.benefit;
+            } else {
+                access=cnpjGrant(u);
+                annualBenefit=variables.study.ensureAnnualBenefit(actorId,access.id).benefit;
+            }
             var saved=db("INSERT INTO estudo.primeiro_acesso_representantes(id_conta,usuario_id,acesso_id,metodo,nome,email,funcao,observacoes)
                 VALUES(:c,:u,:a,:m,:n,:e,:f,:o) ON CONFLICT(id_conta,usuario_id) DO NOTHING RETURNING id",
                 {c=p(c.id_conta,'cf_sql_bigint'),u=p(u.id,'cf_sql_bigint'),a=p(access.id,'cf_sql_bigint'),m=p(uCase(mode)),n=p(left(u.name,200)),e=p(u.email),f=p(trim(role)),o=p(trim(corrections))});
             if(saved.recordCount) audit(u.id,'REPRESENTATIVE_DECLARED','first_access',saved.id[1],{'account_id':c.id_conta,'method':uCase(mode),'version':'abraceo-20261011-v1'});
-            result={'status':'ACTIVE','company':c.nome_empresa,'reader_url':'/estudos/leitor/?ano=2026','operational_access_granted':false};
+            result={'status':'ACTIVE','company':c.nome_empresa,'reader_url':'/estudos/leitor/?ano=2026','benefit':annualBenefit,'operational_access_granted':false};
         }
         return result;
     }

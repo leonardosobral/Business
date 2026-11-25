@@ -12,7 +12,7 @@
 <section class="banner-dashboard">
 <cfoutput>
     <header class="banner-header"><div><div class="banner-eyebrow">Marketing · marcas e parceiros</div><h1 class="h3 mb-1">Banners</h1><p class="text-muted mb-0">Divulgue sua marca, pague por cliques e acompanhe os resultados.</p></div><cfif VARIABLES.paidBannerReady AND VARIABLES.paidBannerContext.canManage><a class="btn btn-info" href="#encodeForHTMLAttribute(VARIABLES.paidBannerFormUrl)#">Criar banner</a></cfif></header>
-    <cfif VARIABLES.paidBannerContext.canReview><nav class="mb-4 d-flex gap-3"><span class="text-info">Banners pagos</span><a href="/portal/banners/?view=house">Institucionais (HOUSE)</a></nav></cfif>
+    <cfif VARIABLES.paidBannerContext.canReview><nav class="mb-4 d-flex gap-3"><span class="text-info">Banners pagos</span><a href="/portal/banners/?view=house">Institucionais (HOUSE)</a><a href="/portal/banners/sites/">Sites e spots</a></nav></cfif>
     <cfif len(VARIABLES.paidBannerError)><div class="alert alert-danger">#encodeForHTML(VARIABLES.paidBannerError)#</div></cfif>
     <cfif len(VARIABLES.paidBannerNotice)><div class="alert alert-success">#encodeForHTML(VARIABLES.paidBannerNotice)#</div></cfif>
     <cfif NOT VARIABLES.paidBannerContext.canView AND NOT VARIABLES.paidBannerContext.canReview><div class="alert alert-warning">Selecione uma conta autorizada no topo para acessar os banners.</div>

@@ -52,7 +52,7 @@
   $('change-company').addEventListener('click',()=>{selection=null;$('company-panel').hidden=true;$('lookup-panel').hidden=false;$('confirm').reset();$('lookup').elements.value.focus();status('');});
   $('confirm').addEventListener('submit',event=>{
     event.preventDefault();const form=event.currentTarget;if(!selection)return;
-    submit(form,async()=>{const data=await api('confirm',{...selection,role:form.elements.role.value,corrections:form.elements.corrections.value,declared:form.elements.declared.checked?'true':'false'});$('company-panel').hidden=true;$('lookup-panel').hidden=true;$('success-panel').hidden=false;$('success-message').textContent=`Representante registrado para ${data.company}. A leitura está disponível na sua conta pessoal.`;selection=null;$('lookup').reset();status('Prévia liberada.');$('success-panel').querySelector('a').focus();});
+    submit(form,async()=>{const data=await api('confirm',{...selection,role:form.elements.role.value,corrections:form.elements.corrections.value,declared:form.elements.declared.checked?'true':'false'});$('company-panel').hidden=true;$('lookup-panel').hidden=true;$('success-panel').hidden=false;$('success-message').textContent=`Representante registrado para ${data.company}. A leitura está disponível na sua conta pessoal.`;$('annual-benefit-message').hidden=!(data.benefit && data.benefit.status==='ELIGIBLE' && Number(data.benefit.percentual)===50);selection=null;$('lookup').reset();status('Prévia liberada.');$('success-panel').querySelector('a').focus();});
   });
   $('issue').addEventListener('submit',event=>{
     event.preventDefault();const form=event.currentTarget;$('issued').hidden=true;$('issued-code').textContent='';

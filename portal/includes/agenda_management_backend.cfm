@@ -1,4 +1,5 @@
 <cfinclude template="../../includes/backend/agenda_service.cfm"/>
+<cfinclude template="../../includes/backend/business_internal_privileges.cfm"/>
 
 <cfparam name="URL.agenda_id" default=""/>
 <cfparam name="URL.nova" default=""/>
@@ -23,9 +24,9 @@
 <cfset VARIABLES.agendaManagementNewFeedToken = ""/>
 <cfset VARIABLES.agendaManagementSelectedId = isNumeric(URL.agenda_id) ? val(URL.agenda_id) : 0/>
 <cfset VARIABLES.agendaManagementActorId = isDefined("qPerfil") AND qPerfil.recordcount ? val(agendaServiceQueryValue(qPerfil, "id", 1)) : 0/>
-<cfset VARIABLES.agendaManagementIsAdmin = isDefined("qPerfil") AND qPerfil.recordcount AND agendaServiceNormalizeBoolean(agendaServiceQueryValue(qPerfil, "is_admin", 1))/>
-<cfset VARIABLES.agendaManagementIsDev = isDefined("qPerfil") AND qPerfil.recordcount AND agendaServiceNormalizeBoolean(agendaServiceQueryValue(qPerfil, "is_dev", 1))/>
-<cfset VARIABLES.agendaManagementIsPartner = isDefined("qPerfil") AND qPerfil.recordcount AND agendaServiceNormalizeBoolean(agendaServiceQueryValue(qPerfil, "is_partner", 1))/>
+<cfset VARIABLES.agendaManagementIsAdmin = VARIABLES.businessInternalPrivilegesAllowed AND isDefined("qPerfil") AND qPerfil.recordcount AND agendaServiceNormalizeBoolean(agendaServiceQueryValue(qPerfil, "is_admin", 1))/>
+<cfset VARIABLES.agendaManagementIsDev = VARIABLES.businessInternalPrivilegesAllowed AND isDefined("qPerfil") AND qPerfil.recordcount AND agendaServiceNormalizeBoolean(agendaServiceQueryValue(qPerfil, "is_dev", 1))/>
+<cfset VARIABLES.agendaManagementIsPartner = VARIABLES.businessInternalPrivilegesAllowed AND isDefined("qPerfil") AND qPerfil.recordcount AND agendaServiceNormalizeBoolean(agendaServiceQueryValue(qPerfil, "is_partner", 1))/>
 <cfset VARIABLES.agendaManagementCanManageAll = VARIABLES.agendaManagementIsAdmin OR VARIABLES.agendaManagementIsDev/>
 <cfset VARIABLES.agendaManagementCanWrite = VARIABLES.agendaManagementCanManageAll OR VARIABLES.agendaManagementIsPartner/>
 <cfset VARIABLES.agendaManagementPostedAgendaAllowed = true/>

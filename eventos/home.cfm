@@ -1,30 +1,3 @@
-<!--- TEMPLATE --->
-<cfset VARIABLES.template = "/eventos/"/>
-
-<!--- VARIAVEIS --->
-<cfinclude template="includes/variaveis.cfm"/>
-
-<!--- BACKEND --->
-<cftry>
-<cfinclude template="includes/backend/backend_evento_edicao.cfm"/>
-<cfinclude template="includes/backend/backend_evento_solicitacoes.cfm"/>
-<cfinclude template="includes/backend/backend.cfm"/>
-    <cfcatch type="BusinessDelegation">
-        <cfset VARIABLES.eventDelegationStatus=403/>
-        <cfif cfcatch.type EQ "BusinessDelegation.NotFound"><cfset VARIABLES.eventDelegationStatus=404/></cfif>
-        <cfif cfcatch.type EQ "BusinessDelegation.Conflict"><cfset VARIABLES.eventDelegationStatus=409/></cfif>
-        <cfif cfcatch.type EQ "BusinessDelegation.Validation"><cfset VARIABLES.eventDelegationStatus=400/></cfif>
-        <cfif cfcatch.type EQ "BusinessDelegation.Unavailable"><cfset VARIABLES.eventDelegationStatus=503/></cfif>
-        <cfheader statuscode="#VARIABLES.eventDelegationStatus#"/>
-        <cfheader name="Cache-Control" value="no-store"/>
-        <cfif cfcatch.type EQ "BusinessDelegation.Validation" AND structKeyExists(cfcatch,"errorCode") AND cfcatch.errorCode EQ "event_location">
-            <cfset VARIABLES.eventLocationErrorMessage=cfcatch.message><cfset VARIABLES.eventLocationErrorEventId=structKeyExists(FORM,"id_evento") AND isSimpleValue(FORM.id_evento) ? FORM.id_evento : "">
-            <cfinclude template="includes/event_location_error.cfm">
-        <cfelse><cfoutput>#encodeForHTML("Não foi possível realizar esta operação. Reabra o evento e confira seu acesso.")#</cfoutput></cfif>
-        <cfabort/>
-    </cfcatch>
-</cftry>
-
 <!--- FILTROS --->
 
 <cfset VARIABLES.eventosShowOnboarding = false/>
@@ -83,7 +56,7 @@
 <!--- CONTEUDO --->
 
 <cfif NOT VARIABLES.eventosShowOnboarding>
-<div class="row">
+<div class="row events-workspace<cfif Len(trim(URL.id_evento)) AND isNumeric(URL.id_evento) AND val(URL.id_evento) GT 0> events-workspace--editing</cfif>">
 
     <cfif NOT (Len(trim(URL.id_evento)) AND isNumeric(URL.id_evento) AND val(URL.id_evento) EQ 0)>
         <cfinclude template="listagem_eventos.cfm"/>

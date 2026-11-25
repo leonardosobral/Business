@@ -11,6 +11,9 @@ centralDocuments={
 
     'maratonas-piloto':'maratonas-brasil-gigante-2025-previa-2026.pdf',
     'resumo':'brasil-que-corre-provas-guia-rapido-q3.pdf',
+    'execucao-v7':'brasil-que-corre-provas-lancamento-q3-execucao-v7.pdf',
+    'execucao-v6':'brasil-que-corre-provas-lancamento-q3-execucao-v6.pdf',
+    'execucao-v5':'brasil-que-corre-provas-lancamento-q3-execucao-v5.pdf',
     'execucao-v4':'brasil-que-corre-provas-lancamento-q3-execucao-v4.pdf',
     'execucao-v3':'brasil-que-corre-provas-lancamento-q3-execucao-v3.pdf',
     'conselho-v2':'brasil-que-corre-provas-proposta-visual-conselho-v2.pdf',

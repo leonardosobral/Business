@@ -107,14 +107,82 @@ component output=false {
                  WHERE s.selected_series @> jsonb_build_array(jsonb_build_object('id',c->>'serie'))
                    AND (c->>'serie'<>'maratonas_destaques' OR c->>'categoria' IN ('Top 10 soma','Mulheres'))) AS selected_comparisons
             FROM selected s
+        ), paired_source AS (
+            SELECT r.id,r.cell_id,r.cell_version,jsonb_extract_path(r.result,'rows','0','payload') AS summary,
+                a.payload AS publication
+            FROM authorized a
+            CROSS JOIN LATERAL jsonb_array_elements(CASE
+                WHEN jsonb_typeof(jsonb_extract_path(a.payload,'meta','notebook_fontes'))='array'
+                THEN jsonb_extract_path(a.payload,'meta','notebook_fontes') ELSE '[]'::jsonb END) f
+            JOIN estudo.notebook_runs r ON r.id=CASE WHEN f->>'execucao' ~ '^[1-9][0-9]{0,17}$'
+                    THEN (f->>'execucao')::bigint ELSE NULL END
+                AND r.cell_id=387 AND r.cell_version=CASE WHEN f->>'revisao' ~ '^[1-9][0-9]{0,8}$'
+                    THEN (f->>'revisao')::integer ELSE NULL END
+            WHERE f->>'celula'='387' AND r.frozen AND r.status='ok' AND NOT r.truncated AND r.row_count=1
+                AND a.publicacao_id=42 AND jsonb_extract_path_text(a.payload,'meta','corte')='2026-09-30'
+                AND jsonb_extract_path_text(a.payload,'meta','periodo_inicio')='2026-01-01'
+            LIMIT 1
+        ), paired_public AS (
+            SELECT jsonb_extract_path(result,'rows','0','payload','release') AS narrative
+            FROM estudo.notebook_runs
+            WHERE id=352 AND cell_id=420 AND cell_version=7 AND frozen AND status='ok' AND NOT truncated AND row_count=1
+        ), paired_checked AS (
+            SELECT p.*
+            FROM paired_source p CROSS JOIN paired_public n
+            WHERE p.summary->>'periodo'='Jan–Set de2025 e2026'
+              AND (jsonb_extract_path_text(p.summary,'coorte_pareada','pares')) ~ '^[1-9][0-9]*$'
+              AND (jsonb_extract_path_text(p.summary,'coorte_pareada','concluintes_2025')) ~ '^[1-9][0-9]*$'
+              AND (jsonb_extract_path_text(p.summary,'coorte_pareada','concluintes_2026')) ~ '^[0-9]+$'
+              AND n.narrative->>'periodo_inicio'='2026-01-01' AND n.narrative->>'periodo_fim'='2026-09-30'
+              AND CASE WHEN jsonb_extract_path_text(p.summary,'coorte_pareada','variacao_pct') ~ '^-?[0-9]+([.][0-9]+)?$'
+                    THEN round((jsonb_extract_path_text(p.summary,'coorte_pareada','variacao_pct'))::numeric,1)::text
+                    ELSE NULL END = jsonb_extract_path_text(n.narrative,'historias','pareadas','variacao_percentual')
+              AND CASE WHEN jsonb_extract_path_text(p.publication,'comparativo','provas','meses_completos','variacao_cadastradas') ~ '^-?[0-9]+([.][0-9]+)?$'
+                    THEN round((jsonb_extract_path_text(p.publication,'comparativo','provas','meses_completos','variacao_cadastradas'))::numeric,1)::text
+                    ELSE NULL END = jsonb_extract_path_text(n.narrative,'historias','provas','variacao_percentual')
+        ), paired_context AS (
+            SELECT (SELECT jsonb_build_object('status','disponivel','celula',cell_id,'execucao',id,'revisao',cell_version,
+                'coletado_em',summary->'coletado_em','periodo',summary->'periodo','metodologia',summary->'metodologia',
+                'fontes',summary->'fontes','coorte',summary->'coorte_pareada',
+                'narrativa',jsonb_build_object('celula',420,'execucao',352,'revisao',7),
+                'ressalva','Variação da soma de participações nas edições pareadas; não é a média das variações por prova. O pareamento não certifica captura completa nem isola crescimento real. Não conta pessoas únicas.')
+                FROM paired_checked) AS metadata,
+                (SELECT 'Notebook · célula ' || cell_id || ', revisão ' || cell_version || ', execução congelada ' || id
+                    || '; coleta ' || left(summary->>'coletado_em',10) || '; fontes ' || (summary->'fontes')::text
+                    FROM paired_checked) AS provenance,
+                (SELECT summary FROM paired_checked) AS summary
+        ), paired_metrics AS (
+            SELECT v.*,c.provenance,c.metadata,
+                'Participações das mesmas edições em 01/01–30/09 de 2025 e 2026; não são pessoas únicas. ' || coalesce(c.metadata->>'ressalva','Fonte congelada em revisão; ausência preservada, sem zero.') AS population
+            FROM paired_context c CROSS JOIN LATERAL (VALUES
+                ('comparativo_pareadas_concluintes','participacoes',0,'2025',jsonb_extract_path(c.summary,'coorte_pareada','concluintes_2025'),jsonb_extract_path(c.summary,'coorte_pareada','concluintes_2025'),jsonb_extract_path(c.summary,'totais','2025'),'Participações elegíveis no ano · Jan–Set'),
+                ('comparativo_pareadas_concluintes','participacoes',0,'2026',jsonb_extract_path(c.summary,'coorte_pareada','concluintes_2026'),jsonb_extract_path(c.summary,'coorte_pareada','concluintes_2026'),jsonb_extract_path(c.summary,'totais','2026'),'Participações elegíveis no ano · Jan–Set'),
+                ('comparativo_pareadas_variacao','percentual',1,'2026 / 2025',jsonb_extract_path(c.summary,'coorte_pareada','variacao_pct'),jsonb_extract_path(c.summary,'coorte_pareada','delta'),jsonb_extract_path(c.summary,'coorte_pareada','concluintes_2025'),'Concluintes de 2025 nas edições pareadas'),
+                ('comparativo_pareadas_amostra','provas',0,'Pares de edições',jsonb_extract_path(c.summary,'coorte_pareada','pares'),jsonb_extract_path(c.summary,'coorte_pareada','pares'),NULL::jsonb,'Um par liga uma edição de cada ano')
+            ) v(id,unit,decimals,label,value,count,denominator,base_label)
+        ), paired_additions AS (
+            SELECT coalesce((SELECT metadata FROM paired_context),jsonb_build_object('status','em_revisao',
+                'ressalva','Comparativo das mesmas provas indisponível: confira a fonte congelada e sua conciliação com a narrativa pública. Ausência não significa zero.')) AS metadata,
+                (SELECT jsonb_agg(s ORDER BY s->>'id') FROM (
+                    SELECT jsonb_build_object('id',id,'unidade',unit,'casas_decimais',decimals,'pagina_pdf',NULL,
+                        'ressalva','Edições pareadas por vínculo ou nome normalizado, cidade, UF, tipo, sazonalidade e unicidade. Mesma janela Jan–Set; a captura dos resultados pode variar. Soma de participações, não pessoas únicas.',
+                        'valores',jsonb_agg(jsonb_build_object('rotulo',label,'valor',NULL) ORDER BY label)) s
+                    FROM paired_metrics GROUP BY id,unit,decimals) defs) AS series,
+                (SELECT jsonb_agg(jsonb_build_object('serie',id,'categoria',label,
+                    'status',CASE WHEN metadata IS NULL THEN 'fonte_em_revisao' ELSE 'notebook_em_conciliacao' END,
+                    'atual',jsonb_build_object('valor',value,'contagem',count,'denominador',denominator,
+                        'fonte',provenance,'base_rotulo',base_label,'populacao',population,
+                        'nota',coalesce(metadata->>'ressalva','Fonte congelada em revisão; ausência preservada, sem zero.')))
+                    ORDER BY id,label) FROM paired_metrics) AS comparisons
+
         ) SELECT id,codigo,titulo,tipo,ano,publicacao_id,CAST(payload || jsonb_build_object(
-            'series',selected_series,
-            'comparacoes',selected_comparisons,
+            'series',selected_series || (SELECT series FROM paired_additions),
+            'comparacoes',selected_comparisons || (SELECT comparisons FROM paired_additions),
             'conciliacao',(SELECT coalesce(jsonb_object_agg(status,n),'{}'::jsonb) FROM (
                 SELECT c->>'status' AS status,count(*) AS n FROM jsonb_array_elements(selected_comparisons) c
                 WHERE c->>'status' IS NOT NULL GROUP BY c->>'status') counts),
             'meta',(payload->'meta') - ARRAY['inscricoes','inscricoes_geral','maratonas_revisao','maratonas_cadastro','maratonas_referencia_externa','notebook_fontes']
-                || jsonb_build_object('escopo_editorial',jsonb_build_object(
+                || jsonb_build_object('comparativo_pareado',(SELECT metadata FROM paired_additions),'escopo_editorial',jsonb_build_object(
                     'versao','q3-20261010-v1','produto',codigo,'publicacao_fonte',publicacao_id,
                     'criterio','Prévia profissional Jan–Set com recortes revisados. Consultas e congelamentos originais preservados no notebook.',
                     'temas_anuais_previstos',jsonb_build_array('Preços de inscrição, categorias, kits e lotes','Ritmo nacional dos 42 km e faixas de desempenho','Calendário completo de janeiro a dezembro'),
@@ -139,6 +207,46 @@ component output=false {
         var product=one(q);structDelete(product,"payload_json");structDelete(product,"payload_length");
         return {"product":product,"publication_id":product.publicacao_id,"payload_json":payload};
     }
+    public struct function ensureAnnualBenefit(required any actorId,required any accessId) {
+        actor(actorId);idp(accessId);
+        var result={"benefit":{}};
+        transaction {
+            // Match redemption/revocation lock order: voucher, then access/campaign.
+            var voucher=db("SELECT v.id FROM estudo.vouchers v JOIN estudo.acessos a ON a.voucher_id=v.id
+                WHERE a.id=:a AND a.usuario_id=:u FOR UPDATE OF v",{a=idp(accessId),u=idp(actorId)});
+            if(!voucher.recordCount) throw(type="StudyAccess.Access",message="Este acesso não está disponível para esta conta.");
+            var source=db("SELECT a.id,a.voucher_id,c.id AS campaign_id,c.codigo AS campaign_code,c.beneficio_percentual,c.beneficio_produto_id,
+                preview.ano AS preview_year,annual.tipo AS annual_type,annual.ano AS annual_year
+                FROM estudo.acessos a JOIN estudo.vouchers v ON v.id=a.voucher_id
+                JOIN estudo.campanhas c ON c.id=v.campanha_id AND c.produto_id=a.produto_id
+                JOIN estudo.produtos preview ON preview.id=a.produto_id
+                LEFT JOIN estudo.produtos annual ON annual.id=c.beneficio_produto_id
+                WHERE a.id=:a AND a.usuario_id=:u AND a.status='ACTIVE' AND v.status='REDEEMED' AND v.resgatado_por=:u
+                  AND preview.tipo='PREVIA' FOR SHARE OF a,c",{a=idp(accessId),u=idp(actorId)});
+            if(!source.recordCount) throw(type="StudyAccess.Access",message="O resgate deste convite não está ativo para esta conta.");
+            var origin=one(source);
+            if(origin.beneficio_percentual==50 && (origin.annual_type!='ANUAL' || origin.annual_year!=origin.preview_year))
+                throw(type="StudyAccess.Conflict",message="O benefício anual precisa ser conferido pela equipe do Business.");
+            var current=db("SELECT b.id,b.usuario_id,b.produto_id,p.codigo AS produto_codigo,b.percentual,b.status
+                FROM estudo.beneficios b JOIN estudo.produtos p ON p.id=b.produto_id WHERE b.acesso_id=:a",{a=idp(accessId)});
+            if(current.recordCount) {
+                var existing=one(current);
+                if(existing.usuario_id!=toString(actorId) || (origin.beneficio_percentual==50 && existing.produto_id!=origin.beneficio_produto_id))
+                    throw(type="StudyAccess.Conflict",message="O benefício deste convite precisa ser conferido pela equipe do Business.");
+                // A repeated redemption must never reactivate a revoked benefit.
+                result["benefit"]=existing;
+            } else if(origin.beneficio_percentual==50) {
+                var inserted=db("INSERT INTO estudo.beneficios(usuario_id,produto_id,acesso_id,percentual)
+                    VALUES(:u,:p,:a,50) ON CONFLICT(acesso_id) DO NOTHING RETURNING id",
+                    {u=idp(actorId),p=idp(origin.beneficio_produto_id),a=idp(accessId)});
+                if(inserted.recordCount) audit(actorId,"ANNUAL_EARLY_PURCHASE_BENEFIT","benefit",inserted.id[1],
+                    {"access_id":toString(accessId),"voucher_id":origin.voucher_id,"campaign":origin.campaign_code,"percent":50,"kind":"EARLY_PURCHASE"});
+                result["benefit"]=one(db("SELECT b.id,b.usuario_id,b.produto_id,p.codigo AS produto_codigo,b.percentual,b.status
+                    FROM estudo.beneficios b JOIN estudo.produtos p ON p.id=b.produto_id WHERE b.acesso_id=:a",{a=idp(accessId)}));
+            }
+        }
+        return result;
+    }
     public struct function redeem(required any actorId,required string code) {
         actor(actorId);
         var normalized=uCase(trim(code));
@@ -155,6 +263,8 @@ component output=false {
             if(voucher.status=="REDEEMED" && toString(voucher.resgatado_por)==toString(actorId)) {
                 result=accessResult(voucher.id);
                 if(result.access.status!="ACTIVE") throw(type="StudyAccess.Access",message="O acesso deste convite foi revogado.");
+                ensureAnnualBenefit(actorId,result.access.id);
+                result=accessResult(voucher.id);
             } else {
                 if(voucher.status!="READY" || !voucher.valid) throw(type="StudyAccess.Access",message="Este convite não está disponível ou já expirou.");
                 var campaign=one(db("SELECT c.id,c.produto_id,c.beneficio_percentual,c.beneficio_produto_id,
@@ -164,8 +274,7 @@ component output=false {
                 db("UPDATE estudo.vouchers SET status='REDEEMED',resgatado_por=:u,resgatado_em=clock_timestamp() WHERE id=:v",{u=idp(actorId),v=idp(voucher.id)});
                 var grant=one(db("INSERT INTO estudo.acessos(usuario_id,produto_id,voucher_id) VALUES(:u,:p,:v) RETURNING id",
                     {u=idp(actorId),p=idp(campaign.produto_id),v=idp(voucher.id)}));
-                if(campaign.beneficio_percentual==50) db("INSERT INTO estudo.beneficios(usuario_id,produto_id,acesso_id,percentual) VALUES(:u,:p,:a,50)",
-                    {u=idp(actorId),p=idp(campaign.beneficio_produto_id),a=idp(grant.id)});
+                ensureAnnualBenefit(actorId,grant.id);
                 audit(actorId,"REDEEM","voucher",voucher.id,{"access_id":grant.id,"benefit_percent":campaign.beneficio_percentual});
                 result=accessResult(voucher.id);
             }
@@ -201,6 +310,102 @@ component output=false {
         }
         return {"interest":result};
     }
+
+    // Launch validations share the existing immutable commercial audit, independently
+    // of notebook queries, grants, voucher campaigns and legal contract acceptance.
+    private array function launchStepDefinitions() {
+        return [
+            {"key":"organizar","date":"09 NOV · SEG","title":"Fechar e organizar","description":"Validar recorte e peças, nomear responsáveis e selecionar leitores e criadores."},
+            {"key":"piloto","date":"10–11 NOV · TER–QUA","title":"Pilotar o acesso","description":"Testar login, voucher e leitura com 5–10 leitores. Conferir convites e posts."},
+            {"key":"contrato-abraceo","date":"ATÉ 12 NOV · QUI","title":"Aprovar contrato com a ABRACEO","description":"Concluir a revisão e obter a aprovação das partes para o contrato e a comunicação da parceria."},
+            {"key":"liberacao","date":"12 NOV · QUI","title":"Conferir e liberar","description":"Resolver bloqueios e conferir links, peças, destinatários, contrato e comunicação antes de divulgar."},
+            {"key":"lancamento","date":"13 NOV · SEX","title":"Colocar na rua","description":"Publicar post principal e stories, disponibilizar o kit e realizar a primeira onda de convites autorizados."},
+            {"key":"continuidade","date":"14–20 NOV","title":"Dar continuidade","description":"Acompanhar dúvidas, feedback, entrevistas, pautas e reviews que surgirem."},
+            {"key":"venda-anual","date":"NOV–DEZ","title":"Preparar a venda","description":"Validar oferta, licença e relacionamento. Testar o checkout antes do recesso."},
+            {"key":"edicao-anual","date":"06 / 11 JAN 2027 · PROPOSTA","title":"Antecipado / geral","description":"Confirmar datas e oferta da edição anual. Preço e desconto seguem em validação comercial."}
+        ];
+    }
+    private struct function launchChecklistState() {
+        var steps=launchStepDefinitions();
+        var latest=db("SELECT DISTINCT ON (a.detalhes->>'step') a.id,a.detalhes->>'step' AS step,
+            coalesce((a.detalhes->>'completed')::boolean,false) AS completed,coalesce(u.name,'Administrador') AS author,
+            to_char(a.criado_em AT TIME ZONE 'America/Sao_Paulo','DD/MM/YYYY HH24:MI') AS changed_at
+            FROM estudo.auditoria_comercial a JOIN public.tb_usuarios u ON u.id=a.ator_id
+            WHERE a.entidade='launch_checklist' AND a.acao='LAUNCH_STEP_VALIDATION'
+              AND a.entidade_id=(SELECT id FROM estudo.produtos WHERE codigo='previa-2026-q3')
+              AND a.detalhes->>'release'='2026-q3-20261113'
+            ORDER BY a.detalhes->>'step',a.id DESC");
+        var known={};
+        for(var i=1;i<=latest.recordCount;i++) known[latest.step[i]]={"version":toString(latest.id[i]),"completed":latest.completed[i]?true:false,"author":latest.author[i],"changed_at":latest.changed_at[i]};
+        var details=db("SELECT DISTINCT ON (a.detalhes->>'step') a.id,a.detalhes->>'step' AS step,
+            coalesce(a.detalhes->>'responsible','') AS responsible,coalesce(a.detalhes->>'notes','') AS notes,
+            coalesce(u.name,'Administrador') AS author,
+            to_char(a.criado_em AT TIME ZONE 'America/Sao_Paulo','DD/MM/YYYY HH24:MI') AS changed_at
+            FROM estudo.auditoria_comercial a JOIN public.tb_usuarios u ON u.id=a.ator_id
+            WHERE a.entidade='launch_checklist' AND a.acao='LAUNCH_STEP_DETAILS'
+              AND a.entidade_id=(SELECT id FROM estudo.produtos WHERE codigo='previa-2026-q3')
+              AND a.detalhes->>'release'='2026-q3-20261113'
+            ORDER BY a.detalhes->>'step',a.id DESC");
+        var knownDetails={};
+        for(var j=1;j<=details.recordCount;j++) knownDetails[details.step[j]]={"details_version":toString(details.id[j]),"responsible":details.responsible[j],"notes":details.notes[j],"details_author":details.author[j],"details_changed_at":details.changed_at[j]};
+        var completed=0;
+        for(var step in steps) {
+            var state=structKeyExists(known,step.key)?known[step.key]:{"version":"0","completed":false,"author":"","changed_at":""};
+            structAppend(step,state,true);
+            var detailsState=structKeyExists(knownDetails,step.key)?knownDetails[step.key]:{"details_version":"0","responsible":"","notes":"","details_author":"","details_changed_at":""};
+            structAppend(step,detailsState,true);
+            if(step.completed) completed++;
+        }
+        return {"release":"2026-q3-20261113","steps":steps,"completed":completed,"total":arrayLen(steps)};
+    }
+    public struct function adminLaunchChecklist(required any actorId) {
+        actor(actorId,true);
+        return launchChecklistState();
+    }
+    public struct function adminValidateLaunchStep(required any actorId,required string stepKey,required boolean completed,required string expectedVersion) {
+        actor(actorId,true);
+        var allowed=false;
+        for(var definition in launchStepDefinitions()) if(compare(definition.key,stepKey)==0) allowed=true;
+        if(!allowed || !reFind("^(0|[1-9][0-9]{0,17})$",expectedVersion)) throw(type="StudyAccess.Validation",message="Etapa ou versão inválida.");
+        transaction {
+            actor(actorId,true);
+            db("SELECT pg_advisory_xact_lock(20261113,hashtext(:step))",{step=p(stepKey)});
+            var current=launchChecklistState();var prior={};
+            for(var step in current.steps) if(compare(step.key,stepKey)==0) prior=step;
+            if(compare(prior.version,expectedVersion)!=0) throw(type="StudyAccess.Conflict",message="Outro administrador atualizou esta etapa. Confira o estado atual antes de validar novamente.");
+            if(prior.completed!=completed) {
+                var product=one(db("SELECT id FROM estudo.produtos WHERE codigo='previa-2026-q3'"));
+                audit(actorId,"LAUNCH_STEP_VALIDATION","launch_checklist",product.id,
+                    {"release":"2026-q3-20261113","step":stepKey,"completed":completed,"previous_version":prior.version});
+            }
+            var result=launchChecklistState();
+        }
+        return result;
+    }
+
+    public struct function adminUpdateLaunchStepDetails(required any actorId,required string stepKey,required string responsible,required string notes,required string expectedVersion) {
+        actor(actorId,true);
+        limitText(responsible,120);limitText(notes,2000);
+        var allowed=false;
+        for(var definition in launchStepDefinitions()) if(compare(definition.key,stepKey)==0) allowed=true;
+        if(!allowed || !reFind("^(0|[1-9][0-9]{0,17})$",expectedVersion)) throw(type="StudyAccess.Validation",message="Etapa ou versão inválida.");
+        var owner=trim(responsible);var observations=trim(notes);
+        transaction {
+            actor(actorId,true);
+            db("SELECT pg_advisory_xact_lock(20261113,hashtext(:step))",{step=p(stepKey)});
+            var current=launchChecklistState();var prior={};
+            for(var step in current.steps) if(compare(step.key,stepKey)==0) prior=step;
+            if(compare(prior.details_version,expectedVersion)!=0) throw(type="StudyAccess.Conflict",message="Outro administrador alterou as informações desta etapa. Seu rascunho foi preservado; confira a versão salva abaixo.");
+            if(compare(prior.responsible,owner)!=0 || compare(prior.notes,observations)!=0) {
+                var product=one(db("SELECT id FROM estudo.produtos WHERE codigo='previa-2026-q3'"));
+                audit(actorId,"LAUNCH_STEP_DETAILS","launch_checklist",product.id,
+                    {"release":"2026-q3-20261113","step":stepKey,"responsible":owner,"notes":observations,"previous_version":prior.details_version});
+            }
+            var result=launchChecklistState();
+        }
+        return result;
+    }
+
     public struct function adminOverview(required any actorId) {
         actor(actorId,true);
         return {"campaigns":rows(db("SELECT c.id,c.codigo,c.titulo,c.status,c.version,c.beneficio_percentual,p.codigo AS produto_codigo FROM estudo.campanhas c JOIN estudo.produtos p ON p.id=c.produto_id ORDER BY c.id")),

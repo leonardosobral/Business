@@ -4,6 +4,14 @@ Proposta de 25/10/2026. A prioridade é aumentar a entrada por buscas úteis ao 
 
 ## Andamento da implementação
 
+### Preservação Semrush antes do fim da assinatura — 04/11/2026
+
+- [concluído] Preservados 62 CSVs originais das duas auditorias de 20.000 páginas e das posições orgânicas BR/desktop. Cópias privadas local e no Business, 67 arquivos com hashes conferidos; sem nova auditoria ou compra de recursos.
+- [concluído] Resumos de 101 tipos de verificação por site, inventários de 40.000 URLs com metadados e detalhes dos problemas. Totais por URL reconciliados. Um relatório de idiomas não ofereceu CSV específico; suas 167 URLs estão no inventário geral.
+- [concluído] Posições preservadas: Road Runners 1.376 linhas/1.117 termos distintos; Open Results 535/357. Datas e estimativas mantidas, valores ausentes não convertidos em zero.
+- [concluído] Publicado no Business em 04/11 às 13:35:43 (Brasília): consulta por verificações, URLs, palavras-chave e arquivos originais, com filtros, paginação, downloads administrativos e histórico preservado. Quatro templates compilados; 31 cenários ColdFusion e 62 downloads aprovados antes e depois da publicação. Hashes, cinco dependências e 67 arquivos privados conferidos; revisão autenticada Chrome desktop e celular 393 px. [Recibo e escopo](2026-11-04_seo_semrush_preservacao.md).
+- [próxima revisão] Road Runners: 72% Site Health, 305 ocorrências de erro; verificar primeiro 165 respostas 4xx e 66 links internos quebrados, depois duplicidades. Open Results: 76%, 1.166 erros; maiores frentes são descrições/títulos duplicados e lentidão. Mudança de amostra/configuração impede atribuir toda a variação da nota a regressão. Indexação e tráfego continuam com fontes próprias.
+
 ### Prioridade imediata — Aracaju / Sergipe / Maratona, 31/10/2026
 
 Por solicitação do usuário, esta frente precede agora as demais correções gerais: páginas de Aracaju e Sergipe, ficha da Maratona de Aracaju 2026, histórico permanente no Road Runners e consulta da edição no OpenResults. Objetivo: facilitar acesso às informações confirmadas, resultados efetivamente disponíveis e fotos durante o fim de semana de 31/10–01/11. Não presumir pico de audiência sem medição, publicação de resultados ou garantia de ranking/indexação.

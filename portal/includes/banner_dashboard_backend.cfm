@@ -21,8 +21,8 @@
               AND EXISTS (
                 SELECT 1 FROM ads.campaign_placements link
                 JOIN ads.placements placement ON placement.placement_id = link.placement_id
-                WHERE link.campaign_id = campaign.campaign_id AND link.account_id = campaign.account_id
-                  AND placement.placement_key = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.bannerPlacementKey#"/>
+                WHERE link.campaign_id = campaign.campaign_id AND link.account_id = campaign.account_id AND link.status='ACTIVE'
+                  AND placement.format_key = 'IMAGE'
               )
             ORDER BY lower(campaign.name), campaign.campaign_id
         </cfquery>

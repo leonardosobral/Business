@@ -1,0 +1,3581 @@
+[
+  {
+    "movnow": {
+      "id": "352",
+      "slug": "352-consciencia-run-5km",
+      "name": "CONSCIÊNCIA RUN 5KM",
+      "status": "batch_closed",
+      "statusCaption": "Inscrição Encerrada",
+      "theme": null,
+      "date": "2026-11-20T00:00:00.000Z",
+      "hour": "1970-01-01T08:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "São Paulo",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "Atletas do Bem",
+      "modalities": [
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/fcb0e475-4c16-4d82-b652-91d1e170c7d6.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2026-11-20",
+        "nome_evento": "CONSCIÊNCIA RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46230,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CONSCI%C3%8ANCIA+RUN+5KM-88031",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88031&origem=novo-site&lang=en-US",
+        "tag": "2026-consciencia-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-11-20"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-21",
+        "nome_evento": "ESPIÃS RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46380,
+        "url_hotsite": "https://www.ticketsports.com.br/e/ESPI%C3%83S+RUN+5KM-88012",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88012&origem=novo-site&lang=en-US",
+        "tag": "2026-espias-run-5km",
+        "cidade": "SÃO PAULO",
+        "data_inicial": "2026-11-21"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-20",
+        "nome_evento": "4ª CORRIDA DA CONSCIÊNCIA NEGRA SUMARÉ/SP",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50913,
+        "url_hotsite": "https://inscricoes.corridaeaventura.com.br/event/corrida-pedestre/1181-4-corrida-da-consciencia-negra-sumare-sp",
+        "url_inscricao": "https://inscricoes.corridaeaventura.com.br/event/corrida-pedestre/1181-4-corrida-da-consciencia-negra-sumare-sp",
+        "tag": "2026-4-corrida-da-consciencia-negra-sumaresp",
+        "cidade": "Sumaré",
+        "data_inicial": "2026-11-20"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-12-20",
+        "nome_evento": "GOSPEL RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46198,
+        "url_hotsite": "https://www.ticketsports.com.br/e/GOSPEL+RUN+5KM-88030",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88030&origem=novo-site&lang=en-US",
+        "tag": "2026-gospel-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-12-20"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "349",
+      "slug": "349-espias-run-5km",
+      "name": "ESPIÃS RUN 5KM",
+      "status": "batch_closed",
+      "statusCaption": "Inscrição Encerrada",
+      "theme": null,
+      "date": "2026-11-21T00:00:00.000Z",
+      "hour": "1970-01-01T08:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "São Paulo",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "Atletas do Bem",
+      "modalities": [
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/fa81f85b-2e58-4ce1-9e9b-a85ca5fd425a.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2026-11-21",
+        "nome_evento": "ESPIÃS RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46380,
+        "url_hotsite": "https://www.ticketsports.com.br/e/ESPI%C3%83S+RUN+5KM-88012",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88012&origem=novo-site&lang=en-US",
+        "tag": "2026-espias-run-5km",
+        "cidade": "SÃO PAULO",
+        "data_inicial": "2026-11-21"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-20",
+        "nome_evento": "CONSCIÊNCIA RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46230,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CONSCI%C3%8ANCIA+RUN+5KM-88031",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88031&origem=novo-site&lang=en-US",
+        "tag": "2026-consciencia-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-11-20"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-22",
+        "nome_evento": "PROPOSITO RUN",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47904,
+        "url_hotsite": "https://minhasinscricoes.com.br/Evento/PROPOSITORUN",
+        "url_inscricao": "https://minhasinscricoes.com.br/Evento/PROPOSITORUN",
+        "tag": "2026-proposito-run",
+        "cidade": "Guarulhos",
+        "data_inicial": "2026-11-22"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-01-10",
+        "nome_evento": "SAMPA RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49669,
+        "url_hotsite": "https://www.ticketsports.com.br/e/SAMPA+RUN+5KM-88815",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88815&origem=novo-site&lang=en-US",
+        "tag": "2027-sampa-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2027-01-10"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "298",
+      "slug": "298-aquathlon-brava-amores",
+      "name": "Aquathlon Brava Amores",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 20/11/2026",
+      "theme": null,
+      "date": "2026-11-21T00:00:00.000Z",
+      "hour": "1970-01-01T15:00:00.000Z",
+      "category": "Aquatlhon",
+      "city": "Itajaí",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "Correr e Nadar",
+      "modalities": [
+        "1500m",
+        "750m"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/graphic-material/d24d79ff-860b-446c-bbc6-498e83db8a42.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2026-11-20",
+        "nome_evento": "2ª CORRIDA AMVAGRA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47209,
+        "url_hotsite": "https://maissport.com.br/evento/2-corrida-amvagra-2026",
+        "url_inscricao": "https://www.maissport.com.br/inscricao-select/2-corrida-amvagra-2026",
+        "tag": "2026-2-corrida-amvagra",
+        "cidade": "Florianópolis",
+        "data_inicial": "2026-11-20"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-20",
+        "nome_evento": "I CORRIDA DO MARISTA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 45033,
+        "url_hotsite": "https://www.ticketsports.com.br/e/I+CORRIDA+DO+MARISTA-87692",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87692&origem=novo-site&lang=en-US",
+        "tag": "2026-i-corrida-do-marista",
+        "cidade": "Jaraguá do Sul",
+        "data_inicial": "2026-11-20"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-22",
+        "nome_evento": "CORRIDA DIAMANTE 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50905,
+        "url_hotsite": "https://www.onsportsoficial.com.br/evento/7160/corrida-diamante-2026",
+        "url_inscricao": "https://www.onsportsoficial.com.br/inscricao-select/7160/corrida-diamante-2026",
+        "tag": "2026-corrida-diamante-2026",
+        "cidade": "Tubarão",
+        "data_inicial": "2026-11-22"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-02-21",
+        "nome_evento": "Aquathlon Piçarras",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 38114,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/144-aquathlon-picarras",
+        "tag": "2026-aquathlon-picarras",
+        "cidade": "Balneário Piçarras",
+        "data_inicial": "2026-02-21"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-10-17",
+        "nome_evento": "Aquathlon de Porto Belo",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 39536,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/160-aquathlon-de-porto-belo",
+        "tag": "2026-aquathlon-de-porto-belo",
+        "cidade": "Porto Belo",
+        "data_inicial": "2026-10-17"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "418",
+      "slug": "418-corrida-virtual-cbcr-campeonato-brasileiro-de-corrida-runlab-etapa-7",
+      "name": "Corrida Virtual CBCR - Campeonato Brasileiro de Corrida RunLab | Etapa 7",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 22/11/2026",
+      "theme": null,
+      "date": "2026-11-22T00:00:00.000Z",
+      "hour": "1970-01-01T00:00:00.000Z",
+      "category": "CORRIDA",
+      "city": "Palhoça",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "Run Lab",
+      "modalities": [
+        "3KM",
+        "5KM",
+        "10KM",
+        "21KM",
+        "42KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/f016d89c-156c-4266-a0fe-b02f9d2974a6.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2026-11-22",
+        "nome_evento": "CORRIDAS UNIMED CIRCUITO SC - 2026 - ETAPA JOAÇABA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 40916,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDAS+UNIMED+CIRCUITO+SC+-+2026+-+ETAPA+JOA%C3%87ABA-86696",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86696&origem=novo-site&lang=en-US",
+        "tag": "2026-corridas-unimed-circuito-sc-2026-etapa-joacaba",
+        "cidade": "Joaçaba",
+        "data_inicial": "2026-11-22"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-22",
+        "nome_evento": "1ª Corrida Shark Run & Adc Seara",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 45198,
+        "url_hotsite": "https://www.pfeventos.com.br/evento/2026/corrida-de-rua/1-corrida-shark-run-adc-seara",
+        "url_inscricao": "https://www.pfeventos.com.br/evento/2026/corrida-de-rua/1-corrida-shark-run-adc-seara",
+        "tag": "2026-1-corrida-shark-run-adc-seara",
+        "cidade": "SEARA",
+        "data_inicial": "2026-11-22"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-22",
+        "nome_evento": "Corrida Sest Senat - Itajaí",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48128,
+        "url_hotsite": "https://www.eventooficial.com.br/evento/2026/corrida-de-rua/corrida-sest-senat-itajai",
+        "url_inscricao": "https://www.eventooficial.com.br/evento/2026/corrida-de-rua/corrida-sest-senat-itaja",
+        "tag": "2026-corrida-sest-senat-itajai",
+        "cidade": "ITAJAÍ",
+        "data_inicial": "2026-11-22"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "380",
+      "slug": "380-sport-fitness-run",
+      "name": "Sport Fitness Run",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 19/11/2026",
+      "theme": null,
+      "date": "2026-11-22T00:00:00.000Z",
+      "hour": "1970-01-01T09:00:00.000Z",
+      "category": "Corrida de Rua",
+      "city": "Rio Rufino",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "Academis Sport Fitness",
+      "modalities": [
+        "9KM",
+        "5KM",
+        "Caminhada"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/8b5e40d0-460b-4dfe-bd48-cfd2e324f693.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2026-11-22",
+        "nome_evento": "Sport Fitness Run",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47766,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/380-sport-fitness-run",
+        "tag": "2026-sport-fitness-run",
+        "cidade": "Rio Rufino",
+        "data_inicial": "2026-11-22"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-21",
+        "nome_evento": "PDS RUN",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48130,
+        "url_hotsite": "https://www.ticketsports.com.br/e/PDS+RUN-88457",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88457&origem=novo-site&lang=en-US",
+        "tag": "2026-pds-run",
+        "cidade": "São Francisco do Sul",
+        "data_inicial": "2026-11-21"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-21",
+        "nome_evento": "MATTRIC RUN 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 45208,
+        "url_hotsite": "https://www.lmdeventosesportivos.com.br/evento/mattric-run-2026",
+        "url_inscricao": "https://www.lmdeventosesportivos.com.br/inscricao-select/mattric-run-2026",
+        "tag": "2026-mattric-run-2026",
+        "cidade": "Santa Rosa Do Sul",
+        "data_inicial": "2026-11-21"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-29",
+        "nome_evento": "1ª RAFITEC RUN",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48463,
+        "url_hotsite": "https://www.pfeventos.com.br/evento/2026/corrida-de-rua/1-rafitec-run",
+        "url_inscricao": "https://www.pfeventos.com.br/inscricao-select/2026/corrida-de-rua/1-rafitec-run",
+        "tag": "2026-1-rafitec-run",
+        "cidade": "Xaxim",
+        "data_inicial": "2026-11-29"
+      }
+    ],
+    "exactUrlIds": [
+      47766
+    ]
+  },
+  {
+    "movnow": {
+      "id": "400",
+      "slug": "400-workshop-foco-no-fotografo-vitoria",
+      "name": "Workshop Foco no Fotógrafo Vitória",
+      "status": "batch_closed",
+      "statusCaption": "Inscrição Encerrada",
+      "theme": null,
+      "date": "2026-11-23T00:00:00.000Z",
+      "hour": "1970-01-01T18:00:00.000Z",
+      "category": "Conexões e Oportunidades",
+      "city": "Vitória",
+      "uf": "ES",
+      "state": "Espírito Santo",
+      "organizer": "Foco Radical",
+      "modalities": [
+        "Workshop"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/5915841a-61dd-4dab-a2ec-43d3f761a730.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "ES",
+        "data_final": "2026-11-20",
+        "nome_evento": "CORRIDA NIGHT RUN VITÓRIA AIRPORT",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47673,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+NIGHT+RUN+VIT%C3%93RIA+AIRPORT-88403",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88403&origem=novo-site&lang=en-US",
+        "tag": "2026-corrida-night-run-vitoria-airport",
+        "cidade": "Vitória",
+        "data_inicial": "2026-11-20"
+      },
+      {
+        "estado": "ES",
+        "data_final": "2026-11-29",
+        "nome_evento": "INSANITY MOUNTAIN FORNO GRANDE 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46379,
+        "url_hotsite": "https://www.ticketsports.com.br/e/INSANITY+MOUNTAIN+FORNO+GRANDE+2026-88078",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88078&origem=novo-site&lang=en-US",
+        "tag": "2026-insanity-mountain-forno-grande-2026",
+        "cidade": "Castelo",
+        "data_inicial": "2026-11-27"
+      },
+      {
+        "estado": "ES",
+        "data_final": "2026-11-28",
+        "nome_evento": "CORRIDA SOLIDÁRIA LIVE 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46054,
+        "url_hotsite": "https://www.sympla.com.br/evento/corrida-solidaria-live-2026/3465803",
+        "url_inscricao": "https://www.sympla.com.br/evento/corrida-solidaria-live-2026/3465803",
+        "tag": "2026-corrida-solidaria-live-2026",
+        "cidade": "Vila Velha",
+        "data_inicial": "2026-11-28"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "415",
+      "slug": "415-flash-night-run-3km",
+      "name": "FLASH NIGHT RUN 3KM",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 25/11/2026",
+      "theme": null,
+      "date": "2026-11-28T00:00:00.000Z",
+      "hour": "1970-01-01T20:00:00.000Z",
+      "category": "CORRIDA",
+      "city": "Taboão da Serra",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "Atletas do Bem",
+      "modalities": [
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/2065c521-37a8-4611-8d08-a88e286e0291.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2026-11-28",
+        "nome_evento": "FLASH NIGHT RUN 3KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 51260,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/415-flash-night-run-3km",
+        "tag": "2026-flash-night-run-3km",
+        "cidade": "São José",
+        "data_inicial": "2026-11-28"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-28",
+        "nome_evento": "1ª NIGHT RUN DOS NAMORADOS",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49766,
+        "url_hotsite": "https://www.ticketsports.com.br/e/1%C2%AA+NIGHT+RUN+DOS+NAMORADOS-88627",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88627&origem=novo-site&lang=en-US",
+        "tag": "2026-1-night-run-dos-namorados",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-11-28"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-28",
+        "nome_evento": "AMERICANA SPEED NIGHT RUN 2ª EDIÇÃO",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47197,
+        "url_hotsite": "https://www.ticketsports.com.br/e/AMERICANA+SPEED+NIGHT+RUN+2%C2%AA+EDI%C3%87%C3%83O-88270",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88270&origem=novo-site&lang=en-US",
+        "tag": "2026-americana-speed-night-run-2-edicao",
+        "cidade": "Americana",
+        "data_inicial": "2026-11-28"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-29",
+        "nome_evento": "2ª UNIFECAF RUN",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 44278,
+        "url_hotsite": "https://www.ticketsports.com.br/e/2%C2%AA+UNIFECAF+RUN-87550",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87550&origem=novo-site&lang=en-US",
+        "tag": "2026-2-unifecaf-run",
+        "cidade": "Taboão da Serra",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-10-17",
+        "nome_evento": "Drácula Night Run",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 44084,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/261-dracula-night-run",
+        "tag": "2026-dracula-night-run",
+        "cidade": "Osasco",
+        "data_inicial": "2026-10-17"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-14",
+        "nome_evento": "FLASH BACK NIGHT RUN ASSIS SP",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 45441,
+        "url_hotsite": "",
+        "url_inscricao": "https://tvcomrunning.com.br/flash-back-night-run-assis-sp",
+        "tag": "2026-flash-back-night-run-assis-sp",
+        "cidade": "ASSIS",
+        "data_inicial": "2026-11-14"
+      }
+    ],
+    "exactUrlIds": [
+      51260
+    ]
+  },
+  {
+    "movnow": {
+      "id": "356",
+      "slug": "356-run-100-jesus",
+      "name": "Run 100% Jesus",
+      "status": "batch_closed",
+      "statusCaption": "Inscrição Encerrada",
+      "theme": null,
+      "date": "2026-11-28T00:00:00.000Z",
+      "hour": "1970-01-01T07:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "Itapema",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "ROODAR SPORTS & EXPERIENCE LTDA",
+      "modalities": [
+        "10KM",
+        "5KM",
+        "3KM",
+        "KIDS"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/1ce5cab2-e77b-4e0c-bdeb-627e598ae157.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2026-11-28",
+        "nome_evento": "Run 100% Jesus",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46902,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/356-run-100-jesus",
+        "tag": "2026-run-100-jesus",
+        "cidade": "Itapema",
+        "data_inicial": "2026-11-28"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-28",
+        "nome_evento": "RUN FOR CHRIST",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48469,
+        "url_hotsite": "https://maissport.com.br/evento/2026/corrida-de-rua/run-for-christ",
+        "url_inscricao": "https://www.maissport.com.br/inscricao-select/2026/corrida-de-rua/run-for-christ",
+        "tag": "2026-run-for-christ",
+        "cidade": "Palhoça",
+        "data_inicial": "2026-11-28"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-28",
+        "nome_evento": "NEON MUSIC NIGHT RUN – BRUSQUE 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47431,
+        "url_hotsite": "https://app.sprinta.com.br/event/733996a1ecf6f732b4",
+        "url_inscricao": "https://app.sprinta.com.br/event/733996a1ecf6f732b4",
+        "tag": "2026-neon-music-night-run-–-brusque-2026",
+        "cidade": "Brusque",
+        "data_inicial": "2026-11-28"
+      }
+    ],
+    "exactUrlIds": [
+      46902
+    ]
+  },
+  {
+    "movnow": {
+      "id": "330",
+      "slug": "330-circuito-cervejeiro-de-corrida-etapa-cabo-frio",
+      "name": "Circuito Cervejeiro de Corrida – Etapa Cabo Frio",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 27/11/2026",
+      "theme": null,
+      "date": "2026-11-28T00:00:00.000Z",
+      "hour": "1970-01-01T11:00:00.000Z",
+      "category": "Evento com caráter de entretenimento",
+      "city": "Cabo Frio",
+      "uf": "RJ",
+      "state": "Rio de Janeiro",
+      "organizer": "FF Eventos Esportivos",
+      "modalities": [
+        "3KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/c5e53e0a-283f-4d3a-b36d-f0034b81314f.jpeg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "RJ",
+        "data_final": "2026-11-28",
+        "nome_evento": "Circuito Cervejeiro de Corrida – Etapa Cabo Frio",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46180,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/330-circuito-cervejeiro-de-corrida-etapa-cabo-frio",
+        "tag": "2026-circuito-cervejeiro-de-corrida-–-etapa-cabo-frio",
+        "cidade": "Cabo Frio",
+        "data_inicial": "2026-11-28"
+      },
+      {
+        "estado": "RJ",
+        "data_final": "2026-11-29",
+        "nome_evento": "CIRCUITO RIO ANTIGO - ETAPA PORTO MARAVILHA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47419,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CIRCUITO+RIO+ANTIGO+-+ETAPA+PORTO+MARAVILHA-88194",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88194&origem=novo-site&lang=en-US",
+        "tag": "2026-circuito-rio-antigo-etapa-porto-maravilha",
+        "cidade": "Rio de Janeiro",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "RJ",
+        "data_final": "2026-11-29",
+        "nome_evento": "1º CORRIDA AZUL MARINHO CABO FRIO 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47940,
+        "url_hotsite": "https://www.ticketsports.com.br/e/1%C2%BA+CORRIDA+AZUL+MARINHO+CABO+FRIO+2026-88443",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88443&origem=novo-site&lang=en-US",
+        "tag": "2026-1-corrida-azul-marinho-cabo-frio-2026",
+        "cidade": "Rio de Janeiro",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "RJ",
+        "data_final": "2025-11-29",
+        "nome_evento": "Circuito Cervejeiro de Corrida - Etapa Cabo Frio",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 34199,
+        "url_hotsite": "https://www.movnow.com.br/event/44-circuito-cervejeiro-de-corrida-etapa-cabo-frio",
+        "url_inscricao": "https://www.movnow.com.br/event/44-circuito-cervejeiro-de-corrida-etapa-cabo-frio",
+        "tag": "2025-circuito-cervejeiro-de-corrida-etapa-cabo-frio",
+        "cidade": "Cabo Frio",
+        "data_inicial": "2025-11-29"
+      }
+    ],
+    "exactUrlIds": [
+      46180
+    ]
+  },
+  {
+    "movnow": {
+      "id": "296",
+      "slug": "296-aquathlon-alagados",
+      "name": "Aquathlon Alagados",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 27/11/2026",
+      "theme": null,
+      "date": "2026-11-28T00:00:00.000Z",
+      "hour": "1970-01-01T15:00:00.000Z",
+      "category": "Aquatlhon",
+      "city": "Ponta Grossa",
+      "uf": "PR",
+      "state": "Paraná",
+      "organizer": "Correr e Nadar",
+      "modalities": [
+        "1500m",
+        "750m"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/graphic-material/e95b06ca-3dca-4ef3-81c4-26080d7ef2a4-1784562277.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "PR",
+        "data_final": "2026-11-29",
+        "nome_evento": "1ª RUN UMAFLEX - 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50128,
+        "url_hotsite": "https://feraesportes.com.br/evento/1-run-umaflex-2026",
+        "url_inscricao": "https://feraesportes.com.br/evento/1-run-umaflex-2026",
+        "tag": "2026-1-run-umaflex-2026",
+        "cidade": "Rua Manoel Ramires, PR 323, n°1544 - Parque Industrial, Umuarama",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2026-11-29",
+        "nome_evento": "Segunda Corrida Metodista pela Vida",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50500,
+        "url_hotsite": "https://agendaoffroad.com.br/corrida_metodista2026",
+        "url_inscricao": "https://agendaoffroad.com.br/corrida_metodista2026",
+        "tag": "2026-segunda-corrida-metodista-pela-vida",
+        "cidade": "Guarapuava",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2026-11-29",
+        "nome_evento": "1ª RUNINPG",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46213,
+        "url_hotsite": "https://www.ticketsports.com.br/e/1%C2%AA+RUNINPG-87998",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87998&origem=novo-site&lang=en-US",
+        "tag": "2026-1-runinpg",
+        "cidade": "Ponta Grossa",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2025-11-29",
+        "nome_evento": "Aquathlon Alagados",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 36886,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/142-aquathlon-alagados",
+        "tag": "2025-aquathlon-alagados",
+        "cidade": "Ponta Grossa",
+        "data_inicial": "2025-11-29"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2025-11-30",
+        "nome_evento": "Travessia Alagados",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 36885,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/143-travessia-alagados",
+        "tag": "2025-travessia-alagados",
+        "cidade": "Ponta Grossa",
+        "data_inicial": "2025-11-30"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "404",
+      "slug": "404-desafio-pico-do-olho-d-agua",
+      "name": "Desafio Pico do Olho D'Agua",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 23/11/2026",
+      "theme": null,
+      "date": "2026-11-29T00:00:00.000Z",
+      "hour": "1970-01-01T06:00:00.000Z",
+      "category": "Trail Run",
+      "city": "Mairiporã",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "Circuito Bikes",
+      "modalities": [
+        "15KM",
+        "10KM",
+        "6km",
+        "5KM",
+        "kids"
+      ],
+      "competitive": false,
+      "bannerUrl": "event-requests/dcdec6c4-7caf-4a19-af7b-57292629536f.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2026-11-29",
+        "nome_evento": "DESAFIO PICO DO OLHO D'ÁGUA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 43658,
+        "url_hotsite": "https://www.ticketsports.com.br/e/DESAFIO+PICO+DO+OLHO+D%27%C3%81GUA+-87434",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87434&origem=novo-site&lang=en-US",
+        "tag": "2026-desafio-pico-do-olho-dagua",
+        "cidade": "Mairiporã",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-29",
+        "nome_evento": "9º DESAFIO DO FORTE ITAIPU",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 39829,
+        "url_hotsite": "https://www.ticketsports.com.br/e/9o-desafio-do-forte-itaipu-86231",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86231&origem=novo-site&lang=en-US",
+        "tag": "2026-9-desafio-do-forte-itaipu",
+        "cidade": "Praia Grande",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-29",
+        "nome_evento": "I Corrida do Chopp Oktober Run 5k Guaruja",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48552,
+        "url_hotsite": "https://minhasinscricoes.com.br/Evento/ICorridadoChoppOktoberRun5kGuaruja",
+        "url_inscricao": "https://minhasinscricoes.com.br/Evento/ICorridadoChoppOktoberRun5kGuaruja",
+        "tag": "2026-i-corrida-do-chopp-oktober-run-5k-guaruja",
+        "cidade": "Guarujá",
+        "data_inicial": "2026-11-29"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "377",
+      "slug": "377-meia-maratona-sc21k",
+      "name": "Meia Maratona SC21k",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 16/11/2026",
+      "theme": null,
+      "date": "2026-11-29T00:00:00.000Z",
+      "hour": "1970-01-01T04:00:00.000Z",
+      "category": "Corrida de Rua",
+      "city": "Florianópolis",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": " Corre Brasil",
+      "modalities": [
+        "21Km",
+        "15KM",
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/c950b6c7-74b3-4423-8997-a04765cb7188.jpeg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2026-11-29",
+        "nome_evento": "Meia Maratona SC21k",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 42360,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.vemcorrer.com/evento/358-meia-maratona-sc21k-2026",
+        "tag": "2026-meia-maratona-sc21k",
+        "cidade": "Florianópolis",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-29",
+        "nome_evento": "1ª RAFITEC RUN",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48463,
+        "url_hotsite": "https://www.pfeventos.com.br/evento/2026/corrida-de-rua/1-rafitec-run",
+        "url_inscricao": "https://www.pfeventos.com.br/inscricao-select/2026/corrida-de-rua/1-rafitec-run",
+        "tag": "2026-1-rafitec-run",
+        "cidade": "Xaxim",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-29",
+        "nome_evento": "2ª Embraed Run",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49207,
+        "url_hotsite": "https://www.onsportsoficial.com.br/evento/2026/corrida-de-rua/2-embraed-run",
+        "url_inscricao": "https://www.onsportsoficial.com.br/evento/2026/corrida-de-rua/2-embraed-run",
+        "tag": "2026-2-embraed-run",
+        "cidade": "Balneário Camboriú",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2027-04-04",
+        "nome_evento": "MEIA MARATONA DE PALHOÇA 2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47369,
+        "url_hotsite": "https://www.ticketsports.com.br/e/MEIA+MARATONA+DE+PALHO%C3%87A+2027-88249",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88249&origem=novo-site&lang=en-US",
+        "tag": "2027-meia-maratona-de-palhoca-2027",
+        "cidade": "Palhoça",
+        "data_inicial": "2027-04-04"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "355",
+      "slug": "355-corrida-do-seu-joao-ano-ii",
+      "name": "Corrida do Seu João Ano II",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 28/11/2026",
+      "theme": null,
+      "date": "2026-11-29T00:00:00.000Z",
+      "hour": "1970-01-01T05:00:00.000Z",
+      "category": "CORRIDA",
+      "city": "Arcoverde",
+      "uf": "PE",
+      "state": "Pernambuco",
+      "organizer": "SEU JOAO EVENTOS",
+      "modalities": [
+        "10KM",
+        "5KM",
+        "3KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/59ba704a-b4c8-44e7-89fe-e9770d29b528.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "PE",
+        "data_final": "2026-11-29",
+        "nome_evento": "Corrida do Seu João Ano II",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46898,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/355-corrida-do-seu-joao-ano-ii",
+        "tag": "2026-corrida-do-seu-joao-ano-ii",
+        "cidade": "Arcoverde",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2026-11-29",
+        "nome_evento": "1ª Corrida da Laranja",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50051,
+        "url_hotsite": "https://www.eventosesportes.com.br/181/1-Corrida-da-Laranja",
+        "url_inscricao": "https://www.eventosesportes.com.br/181/1-Corrida-da-Laranja",
+        "tag": "2026-1-corrida-da-laranja",
+        "cidade": "Sairé",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2026-11-29",
+        "nome_evento": "2ª CORRIDA BONANZA 50 ANOS",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48464,
+        "url_hotsite": "https://www.ticketsports.com.br/e/2%C2%AA+CORRIDA+BONANZA+50+ANOS-88500",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88500&origem=novo-site&lang=en-US",
+        "tag": "2026-2-corrida-bonanza-50-anos",
+        "cidade": "Caruaru",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2025-11-16",
+        "nome_evento": "Corrida do Seu João",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 35526,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/101-corrida-do-seu-joao",
+        "tag": "2025-corrida-do-seu-joao",
+        "cidade": "Arcoverde",
+        "data_inicial": "2025-11-16"
+      }
+    ],
+    "exactUrlIds": [
+      46898
+    ]
+  },
+  {
+    "movnow": {
+      "id": "333",
+      "slug": "333-ventus-trail-run",
+      "name": "Ventus Trail Run",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 25/11/2026",
+      "theme": null,
+      "date": "2026-11-29T00:00:00.000Z",
+      "hour": "1970-01-01T08:00:00.000Z",
+      "category": "Trail Run",
+      "city": "Bom Jardim da Serra",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "Endorphhine Eventos Esportivos",
+      "modalities": [
+        "22KM",
+        "10KM",
+        "4KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/eec9aa42-af56-4732-ae54-dd931829029c.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2026-11-29",
+        "nome_evento": "Ventus Trail Run",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46178,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/333-ventus-trail-run",
+        "tag": "2026-ventus-trail-run",
+        "cidade": "Bom Jardim da Serra",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-29",
+        "nome_evento": "1ª RAFITEC RUN",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48463,
+        "url_hotsite": "https://www.pfeventos.com.br/evento/2026/corrida-de-rua/1-rafitec-run",
+        "url_inscricao": "https://www.pfeventos.com.br/inscricao-select/2026/corrida-de-rua/1-rafitec-run",
+        "tag": "2026-1-rafitec-run",
+        "cidade": "Xaxim",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-29",
+        "nome_evento": "2ª Embraed Run",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49207,
+        "url_hotsite": "https://www.onsportsoficial.com.br/evento/2026/corrida-de-rua/2-embraed-run",
+        "url_inscricao": "https://www.onsportsoficial.com.br/evento/2026/corrida-de-rua/2-embraed-run",
+        "tag": "2026-2-embraed-run",
+        "cidade": "Balneário Camboriú",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2027-02-14",
+        "nome_evento": "1ª TRAIL RUN FIRE",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49166,
+        "url_hotsite": "https://www.pfeventos.com.br/evento/2027/trail-run/1-trail-run-fire",
+        "url_inscricao": "https://www.pfeventos.com.br/inscricao-select/2027/trail-run/1-trail-run-fire",
+        "tag": "2027-1-trail-run-fire",
+        "cidade": "Mondai",
+        "data_inicial": "2027-02-14"
+      }
+    ],
+    "exactUrlIds": [
+      46178
+    ]
+  },
+  {
+    "movnow": {
+      "id": "295",
+      "slug": "295-travessia-alagados",
+      "name": "Travessia Alagados",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 28/11/2026",
+      "theme": null,
+      "date": "2026-11-29T00:00:00.000Z",
+      "hour": "1970-01-01T07:00:00.000Z",
+      "category": "Natação",
+      "city": "Ponta Grossa",
+      "uf": "PR",
+      "state": "Paraná",
+      "organizer": "Correr e Nadar",
+      "modalities": [
+        "10.000m",
+        "5.000m",
+        "2.500m",
+        "1500m",
+        "600m",
+        "200m"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/graphic-material/0c7ec18e-bf35-48f2-9a43-4c8d101cdb16-1784558922.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "PR",
+        "data_final": "2026-11-29",
+        "nome_evento": "CORRIDA DAS MISSÕES DE SANTO INÁCIO PR 2ª ETAPA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 42225,
+        "url_hotsite": "",
+        "url_inscricao": "https://tvcomrunning.com.br/corrida-das-missoes-de-santo-inacio-pr-2-etapa",
+        "tag": "2026-corrida-das-missoes-de-santo-inacio-pr-2-etapa",
+        "cidade": "SANTO INÁCIO",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2026-11-29",
+        "nome_evento": "PITANGUEIRAS RUNNING 6K",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50892,
+        "url_hotsite": "",
+        "url_inscricao": "https://tvcomrunning.com.br/pitangueiras-running-6k",
+        "tag": "2026-pitangueiras-running-6k",
+        "cidade": "PITANGUEIRAS",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2026-11-29",
+        "nome_evento": "Track&Field Run Series 2026 - Motiva Aeroportos - Curitiba",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 45554,
+        "url_hotsite": "https://www.tfsports.com.br/run-series/motiva-aeroportos-curitiba-2026",
+        "url_inscricao": "https://www.tfsports.com.br/run-series/motiva-aeroportos-curitiba-2026",
+        "tag": "2026-track-field-run-series-2026motiva-aeroportos-curitiba",
+        "cidade": "Curitiba",
+        "data_inicial": "2026-11-29"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2025-11-30",
+        "nome_evento": "Travessia Alagados",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 36885,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/143-travessia-alagados",
+        "tag": "2025-travessia-alagados",
+        "cidade": "Ponta Grossa",
+        "data_inicial": "2025-11-30"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2025-11-29",
+        "nome_evento": "Travessia Noturna de Alagados",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 36887,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/95-travessia-noturna-de-alagados",
+        "tag": "2025-travessia-noturna-de-alagados",
+        "cidade": "Ponta Grossa",
+        "data_inicial": "2025-11-29"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "419",
+      "slug": "419-6-corrida-etilica-bar-do-pp",
+      "name": "6ª Corrida Etílica Bar do PP",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 04/12/2026",
+      "theme": "6ª Corrida Etílica",
+      "date": "2026-12-05T00:00:00.000Z",
+      "hour": "1970-01-01T15:00:00.000Z",
+      "category": "Corrida de Rua",
+      "city": "Balneário Camboriú",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "Bar do PP",
+      "modalities": [
+        "1.5km"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/6b1dca90-882f-423a-a199-33bfe7940f63.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2026-12-05",
+        "nome_evento": "12ª Corrida De Angelina Cresol",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 43411,
+        "url_hotsite": "https://maissport.com.br/evento/12-corrida-de-angelina-cresol-2026",
+        "url_inscricao": "https://maissport.com.br/evento/12-corrida-de-angelina-cresol-2026",
+        "tag": "2026-12-corrida-de-angelina-cresol",
+        "cidade": "Angelina",
+        "data_inicial": "2026-12-05"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-12-06",
+        "nome_evento": "2ª Corrida Lions Treze Tilias",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 40066,
+        "url_hotsite": "https://www.pfeventos.com.br/evento/2026/corrida-de-rua/2-corrida-lions-treze-tilias",
+        "url_inscricao": "https://www.pfeventos.com.br/evento/2026/corrida-de-rua/2-corrida-lions-treze-tilias",
+        "tag": "2026-2-corrida-lions-treze-tilias",
+        "cidade": "Treze Tilias",
+        "data_inicial": "2026-12-06"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-12-06",
+        "nome_evento": "Corrida Rústica Trentina 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46297,
+        "url_hotsite": "https://www.kweventosesportivos.com.br/evento/corrida-rustica-trentina-2026",
+        "url_inscricao": "https://www.kweventosesportivos.com.br/inscricao-select/corrida-rustica-trentina-2026",
+        "tag": "2026-corrida-rustica-trentina-2026",
+        "cidade": "Rio Dos Cedros",
+        "data_inicial": "2026-12-06"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-12-20",
+        "nome_evento": "4ª CORRIDA DE NATAL DE APIÚNA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46874,
+        "url_hotsite": "https://www.ticketsports.com.br/e/4%C2%AA+CORRIDA+DE+NATAL+DE+API%C3%9ANA-88216",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88216&origem=novo-site&lang=en-US",
+        "tag": "2026-4-corrida-de-natal-de-apiuna",
+        "cidade": "Apiúna",
+        "data_inicial": "2026-12-20"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-22",
+        "nome_evento": "1ª CORRIDA DA SAÚDE",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49774,
+        "url_hotsite": "https://www.korremais.com/evento/1-corrida-da-saude-2026",
+        "url_inscricao": "https://www.korremais.com/inscricao-select/1-corrida-da-saude-2026",
+        "tag": "2026-1-corrida-da-saude",
+        "cidade": "Sangão",
+        "data_inicial": "2026-11-22"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "242",
+      "slug": "242-night-run-natal-livora-pernas-solidarias",
+      "name": "NIGHT RUN NATAL LIVORA PERNAS SOLIDÁRIAS",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 03/12/2026",
+      "theme": null,
+      "date": "2026-12-05T00:00:00.000Z",
+      "hour": "1970-01-01T18:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "Santo Amaro da Imperatriz",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "NTN Marketing e  Eventos Esportivos LTDA",
+      "modalities": [
+        "KIDS",
+        "10KM",
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/graphic-material/c09c7f3f-e6b3-4111-bd79-faec771c5f50-1779989075.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2026-12-05",
+        "nome_evento": "CORRIDA DE NATAL LIVORA PERNAS SOLIDÁRIAS",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 41694,
+        "url_hotsite": "https://www.ticketsports.com.br/e/+CORRIDA+DE+NATAL+LIVORA+PERNAS+SOLID%C3%81RIAS+-86874",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86874&origem=novo-site&lang=en-US",
+        "tag": "2026-corrida-de-natal-livora-pernas-solidarias",
+        "cidade": "Santo Amaro da Imperatriz",
+        "data_inicial": "2026-12-05"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-12-06",
+        "nome_evento": "CORRIDA DE NATAL – BLUMENAU 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49737,
+        "url_hotsite": "https://app.sprinta.com.br/event/733996ada0628e858e",
+        "url_inscricao": "https://app.sprinta.com.br/event/733996ada0628e858e",
+        "tag": "2026-corrida-de-natal-–-blumenau-2026",
+        "cidade": "Blumenau",
+        "data_inicial": "2026-12-06"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-12-05",
+        "nome_evento": "SUNSET RUN TIJUCAS",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48117,
+        "url_hotsite": "https://www.sprintcrono.com.br/evento/2026/corrida-de-rua/sunset-run-tijucas",
+        "url_inscricao": "https://www.sprintcrono.com.br/inscricao-select/2026/corrida-de-rua/sunset-run-tijucas",
+        "tag": "2026-sunset-run-tijucas",
+        "cidade": "Tijucas",
+        "data_inicial": "2026-12-05"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-12-19",
+        "nome_evento": "NIGHT RUN NATAL LUZ - KOERICH",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 45442,
+        "url_hotsite": "https://www.ticketsports.com.br/e/NIGHT+RUN+NATAL+LUZ+-+KOERICH+-87837",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87837&origem=novo-site&lang=en-US",
+        "tag": "2026-night-run-natal-luz-koerich",
+        "cidade": "Florianópolis",
+        "data_inicial": "2026-12-19"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "93",
+      "slug": "93-ultra-maratona-dos-campos-gerais",
+      "name": "Ultra Maratona dos Campos Gerais",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 03/12/2026",
+      "theme": null,
+      "date": "2026-12-05T00:00:00.000Z",
+      "hour": "1970-01-01T13:00:00.000Z",
+      "category": "CORRIDA",
+      "city": "Ponta Grossa",
+      "uf": "PR",
+      "state": "Paraná",
+      "organizer": "Correr e Nadar",
+      "modalities": [
+        "KIDS",
+        "5KM",
+        "10KM",
+        "21KM",
+        "50KM",
+        "100KM",
+        "150KM",
+        "200KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/graphic-material/9e9ea4f5-e32b-423c-9601-e50f4cdbbb7e.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "PR",
+        "data_final": "2026-12-05",
+        "nome_evento": "Ultra Maratona dos Campos Gerais",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 35532,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/93-ultra-maratona-dos-campos-gerais",
+        "tag": "2026-ultra-maratona-dos-campos-gerais",
+        "cidade": "Ponta Grossa",
+        "data_inicial": "2026-12-05"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2026-12-06",
+        "nome_evento": "2ª CORRIDA NOTURNA DO CHOQUE",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50493,
+        "url_hotsite": "https://agendaoffroad.com.br/corridadochoquefoz",
+        "url_inscricao": "https://agendaoffroad.com.br/corridadochoquefoz",
+        "tag": "2026-2-corrida-noturna-do-choque",
+        "cidade": "Foz do Iguaçu",
+        "data_inicial": "2026-12-05"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2026-12-05",
+        "nome_evento": "1ª CORRIDA GUARDIÕES DOS MANANCIAIS",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47183,
+        "url_hotsite": "",
+        "url_inscricao": "https://app.assessocor.online/evento/corrida-do-29o-bpm-piraquara/913",
+        "tag": "2026-1-corrida-guardioes-dos-mananciais",
+        "cidade": "Piraquara",
+        "data_inicial": "2026-12-05"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2025-12-12",
+        "nome_evento": "Ultra Maratona dos Campos Gerais",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 35518,
+        "url_hotsite": "https://www.movnow.com.br/event/93-ultra-maratona-dos-campos-gerais",
+        "url_inscricao": "https://www.movnow.com.br/event/93-ultra-maratona-dos-campos-gerais",
+        "tag": "2025-ultra-maratona-dos-campos-gerais",
+        "cidade": "Ponta Grossa",
+        "data_inicial": "2025-12-12"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "376",
+      "slug": "376-circuito-cervejeiro-de-corrida-etapa-confraternizacao",
+      "name": "Circuito Cervejeiro de Corrida – Etapa Confraternização",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 05/12/2026",
+      "theme": "Evento de carater de entretenimento ",
+      "date": "2026-12-06T00:00:00.000Z",
+      "hour": "1970-01-01T08:00:00.000Z",
+      "category": "Corrida de Rua",
+      "city": "Petrópolis",
+      "uf": "RJ",
+      "state": "Rio de Janeiro",
+      "organizer": "FF Eventos Esportivos",
+      "modalities": [
+        "3KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/1e1ac2b5-d965-4b50-b683-afa933c9a747.jpeg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "RJ",
+        "data_final": "2026-12-06",
+        "nome_evento": "Circuito Cervejeiro de Corrida – Etapa Confraternização",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47736,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/376-circuito-cervejeiro-de-corrida-etapa-confraternizacao",
+        "tag": "2026-circuito-cervejeiro-de-corrida-–-etapa-confraternizacao",
+        "cidade": "Petrópolis",
+        "data_inicial": "2026-12-06"
+      },
+      {
+        "estado": "RJ",
+        "data_final": "2026-12-06",
+        "nome_evento": "CIRCUITO DE CORRIDAS CAIXA - ETAPA RIO DE JANEIRO 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 45836,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CIRCUITO+DE+CORRIDAS+CAIXA+-+ETAPA+RIO+DE+JANEIRO+2026-86413",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86413&origem=novo-site&lang=en-US",
+        "tag": "2026-circuito-de-corridas-caixa-etapa-rio-de-janeiro-2026",
+        "cidade": "Rio de Janeiro",
+        "data_inicial": "2026-12-06"
+      },
+      {
+        "estado": "RJ",
+        "data_final": "2026-12-06",
+        "nome_evento": "CIRCUITO C-COM - ETAPA FINAL SÃO JOSÉ",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49734,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CIRCUITO+C-COM+-+ETAPA+FINAL+S%C3%83O+JOS%C3%89-88691",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88691&origem=novo-site&lang=en-US",
+        "tag": "2026-circuito-c-com-etapa-final-sao-jose",
+        "cidade": "São José do Vale do Rio Preto",
+        "data_inicial": "2026-12-06"
+      },
+      {
+        "estado": "RJ",
+        "data_final": "2025-12-07",
+        "nome_evento": "Circuito Cervejeiro de Corrida - Etapa Confraternização",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 35520,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/98-circuito-cervejeiro-de-corrida-etapa-confraternizacao",
+        "tag": "2025-circuito-cervejeiro-de-corrida-etapa-confraternizacao",
+        "cidade": "Petrópolis",
+        "data_inicial": "2025-12-07"
+      }
+    ],
+    "exactUrlIds": [
+      47736
+    ]
+  },
+  {
+    "movnow": {
+      "id": "360",
+      "slug": "360-princesas-run-etapa-londrina-2026",
+      "name": "PRINCESAS RUN ETAPA LONDRINA 2026",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 01/12/2026",
+      "theme": null,
+      "date": "2026-12-06T00:00:00.000Z",
+      "hour": "1970-01-01T07:00:00.000Z",
+      "category": "CORRIDA",
+      "city": "Londrina",
+      "uf": "PR",
+      "state": "Paraná",
+      "organizer": "TBFSPORTS",
+      "modalities": [
+        "6KM",
+        "3KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/52a1e365-9eba-4225-b2fa-c85556bd51f5.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "PR",
+        "data_final": "2026-12-06",
+        "nome_evento": "PRINCESAS RUN ETAPA LONDRINA 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47182,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/360-princesas-run-etapa-londrina-2026",
+        "tag": "2026-princesas-run-etapa-londrina-2026",
+        "cidade": "Londrina",
+        "data_inicial": "2026-12-06"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2026-12-05",
+        "nome_evento": "Garage Run -4ª Etapa Verão",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50496,
+        "url_hotsite": "https://agendaoffroad.com.br/garagerun_verao",
+        "url_inscricao": "https://agendaoffroad.com.br/garagerun_verao",
+        "tag": "2026-garage-run-4-etapa-verao",
+        "cidade": "Telêmaco Borba",
+        "data_inicial": "2026-12-05"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2026-12-06",
+        "nome_evento": "22ª PROVA PEDESTRE CIDADE DE LONDRINA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47406,
+        "url_hotsite": "https://www.ticketsports.com.br/e/22%C2%AA+PROVA+PEDESTRE+CIDADE+DE+LONDRINA-88298",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88298&origem=novo-site&lang=en-US",
+        "tag": "2026-22-prova-pedestre-cidade-de-londrina",
+        "cidade": "Londrina",
+        "data_inicial": "2026-12-06"
+      },
+      {
+        "estado": "PR",
+        "data_final": "2026-11-07",
+        "nome_evento": "Night Run - Etapa 1 - Curitiba 2026",
+        "tipo_corrida": "rua",
+        "ativo": false,
+        "id_evento": 37774,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.o2corre.com.br/calendario/night-run-etapa-1-curitiba-2026",
+        "tag": "2026-night-run-etapa-1-curitiba-2026",
+        "cidade": "Curitiba",
+        "data_inicial": "2026-11-07"
+      }
+    ],
+    "exactUrlIds": [
+      47182
+    ]
+  },
+  {
+    "movnow": {
+      "id": "401",
+      "slug": "401-16k-ginga-com-tapioca",
+      "name": "16k Ginga com Tapioca",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 29/11/2026",
+      "theme": "Confraternização em Forma de Corrida",
+      "date": "2026-12-12T00:00:00.000Z",
+      "hour": "1970-01-01T05:00:00.000Z",
+      "category": "CORRIDA",
+      "city": "Natal",
+      "uf": "RN",
+      "state": "Rio Grande do Norte",
+      "organizer": "Go Runners ",
+      "modalities": [
+        "16km"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/5b7c098b-f21b-4f75-be99-a2b671fedc3b.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "RN",
+        "data_final": "2026-12-12",
+        "nome_evento": "16k Ginga com Tapioca",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49486,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/401-16k-ginga-com-tapioca",
+        "tag": "2026-16k-ginga-com-tapioca",
+        "cidade": "Natal",
+        "data_inicial": "2026-12-12"
+      },
+      {
+        "estado": "RN",
+        "data_final": "2026-12-13",
+        "nome_evento": "3ª Corrida da Imaculada",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49720,
+        "url_hotsite": "https://tiquet.com.br/evento/2026-13-3a-corrida-da-imaculada/",
+        "url_inscricao": "https://tiquet.com.br/evento/2026-13-3a-corrida-da-imaculada/",
+        "tag": "2026-3-corrida-da-imaculada",
+        "cidade": "Canguaretama",
+        "data_inicial": "2026-12-13"
+      },
+      {
+        "estado": "RN",
+        "data_final": "2026-12-15",
+        "nome_evento": "2ª CORRIDA DA SAÚDE",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 51555,
+        "url_hotsite": "https://correparaiba.com.br/2-corrida-da-saude",
+        "url_inscricao": "https://correparaiba.com.br/2-corrida-da-saude",
+        "tag": "2026-2-corrida-da-saude-rn",
+        "cidade": "Baraúna",
+        "data_inicial": "2026-12-15"
+      }
+    ],
+    "exactUrlIds": [
+      49486
+    ]
+  },
+  {
+    "movnow": {
+      "id": "409",
+      "slug": "409-chama-run-5-km",
+      "name": "Chama Run - 5 KM",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 07/12/2026",
+      "theme": "Corrida",
+      "date": "2026-12-13T00:00:00.000Z",
+      "hour": "1970-01-01T07:00:00.000Z",
+      "category": "Corrida de Rua",
+      "city": "Governador Celso Ramos",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "CHAMA",
+      "modalities": [
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/a91175a7-45b0-4c12-a066-8226a7842c6f.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2026-12-13",
+        "nome_evento": "1° CHAMA RUN GCR",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48738,
+        "url_hotsite": "https://maissport.com.br/evento/1-chama-run-gcr-2026",
+        "url_inscricao": "https://www.maissport.com.br/inscricao-select/1-chama-run-gcr-2026",
+        "tag": "2026-1-chama-run-gcr",
+        "cidade": "Governador Celso Ramos",
+        "data_inicial": "2026-12-13"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-12-13",
+        "nome_evento": "3º TRAIL RUN DE NATAL COAS PARK",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50852,
+        "url_hotsite": "",
+        "url_inscricao": "https://app.assessocor.online/evento/trail-run-de-natal/944",
+        "tag": "2026-3-trail-run-de-natal-coas-park",
+        "cidade": "Porto União",
+        "data_inicial": "2026-12-13"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-12-12",
+        "nome_evento": "2ª NIGHT RUN - NATAL JARAGUÁ",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 44264,
+        "url_hotsite": "https://www.ticketsports.com.br/e/2%C2%AA+NIGHT+RUN+-+NATAL+JARAGU%C3%81-87549",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87549&origem=novo-site&lang=en-US",
+        "tag": "2026-2-night-run-natal-jaragua",
+        "cidade": "Jaraguá do Sul",
+        "data_inicial": "2026-12-12"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "336",
+      "slug": "336-gospel-run-5km",
+      "name": "GOSPEL RUN 5KM",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 14/12/2026",
+      "theme": null,
+      "date": "2026-12-20T00:00:00.000Z",
+      "hour": "1970-01-01T08:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "São Paulo",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "Atletas do Bem",
+      "modalities": [
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/750ef18b-ce26-4f36-a468-6e5e3f02d749.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2026-12-20",
+        "nome_evento": "GOSPEL RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46198,
+        "url_hotsite": "https://www.ticketsports.com.br/e/GOSPEL+RUN+5KM-88030",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88030&origem=novo-site&lang=en-US",
+        "tag": "2026-gospel-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-12-20"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-12-24",
+        "nome_evento": "CORRIDA DE NATAL RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50038,
+        "url_hotsite": "",
+        "url_inscricao": "https://eventiabr.com.br/eventos/corrida-de-natal-run-5km",
+        "tag": "2026-corrida-de-natal-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-12-24"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-12-19",
+        "nome_evento": "12 HORAS RUN SHOW",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49183,
+        "url_hotsite": "https://www.sympla.com.br/evento/12-horas-run-show/3610719",
+        "url_inscricao": "https://www.sympla.com.br/evento/12-horas-run-show/3610719",
+        "tag": "2026-12-horas-run-show",
+        "cidade": "Piracicaba",
+        "data_inicial": "2026-12-19"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-01-10",
+        "nome_evento": "SAMPA RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49669,
+        "url_hotsite": "https://www.ticketsports.com.br/e/SAMPA+RUN+5KM-88815",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88815&origem=novo-site&lang=en-US",
+        "tag": "2027-sampa-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2027-01-10"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "413",
+      "slug": "413-corrida-de-natal-run-5km",
+      "name": "CORRIDA DE NATAL  RUN 5KM",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 17/12/2026",
+      "theme": null,
+      "date": "2026-12-24T00:00:00.000Z",
+      "hour": "1970-01-01T08:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "São Paulo",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "Atletas do Bem",
+      "modalities": [
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/3b425685-47a8-44dd-8ede-f49c98c8d293.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2026-12-24",
+        "nome_evento": "CORRIDA DE NATAL RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50038,
+        "url_hotsite": "",
+        "url_inscricao": "https://eventiabr.com.br/eventos/corrida-de-natal-run-5km",
+        "tag": "2026-corrida-de-natal-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-12-24"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-12-19",
+        "nome_evento": "CORRIDA DE NATAL",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49049,
+        "url_hotsite": "https://www.ticketsports.com.br/e/++CORRIDA+DE+NATAL+-88632",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88632&origem=novo-site&lang=en-US",
+        "tag": "2026-corrida-de-natal",
+        "cidade": "Colina",
+        "data_inicial": "2026-12-19"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-12-20",
+        "nome_evento": "CORRIDA DE NATAL 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47721,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+DE+NATAL+2026-88368",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88368&origem=novo-site&lang=en-US",
+        "tag": "2026-corrida-de-natal-2026",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-12-20"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-12-21",
+        "nome_evento": "CORRIDA DE NATAL 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49828,
+        "url_hotsite": "https://www.sympla.com.br/evento/corrida-de-natal-5km/3632630",
+        "url_inscricao": "https://www.sympla.com.br/evento/corrida-de-natal-5km/3632630",
+        "tag": "2026-corrida-de-natal-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-10-26"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "338",
+      "slug": "338-27-run-5km",
+      "name": "27 run 5km",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 22/12/2026",
+      "theme": null,
+      "date": "2026-12-27T00:00:00.000Z",
+      "hour": "1970-01-01T08:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "São Paulo",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "Atletas do Bem",
+      "modalities": [
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/160f30d4-4878-46a1-9d8a-1e54b7a4e8a1.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2026-12-27",
+        "nome_evento": "27 run 5km",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46480,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/338-27-run-5km",
+        "tag": "2026-27-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-12-27"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-12-27",
+        "nome_evento": "27 RUN 5K ANO NOVO 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47432,
+        "url_hotsite": "https://www.sympla.com.br/evento/27-run-5k-ano-novo-5km/3566434",
+        "url_inscricao": "https://www.sympla.com.br/evento/27-run-5k-ano-novo-5km/3566434",
+        "tag": "2026-27-run-5k-ano-novo-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-12-27"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-12-24",
+        "nome_evento": "CORRIDA DE NATAL RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50038,
+        "url_hotsite": "",
+        "url_inscricao": "https://eventiabr.com.br/eventos/corrida-de-natal-run-5km",
+        "tag": "2026-corrida-de-natal-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-12-24"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-02",
+        "nome_evento": "ROCK  RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46256,
+        "url_hotsite": "https://www.ticketsports.com.br/e/ROCK++RUN+5KM-88028",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88028&origem=novo-site&lang=en-US",
+        "tag": "2026-rock-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-11-02"
+      }
+    ],
+    "exactUrlIds": [
+      46480
+    ]
+  },
+  {
+    "movnow": {
+      "id": "331",
+      "slug": "331-1-a-virada-run-recife",
+      "name": "1º A VIRADA RUN RECIFE",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 30/11/2026",
+      "theme": null,
+      "date": "2026-12-27T00:00:00.000Z",
+      "hour": "1970-01-01T05:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "Recife",
+      "uf": "PE",
+      "state": "Pernambuco",
+      "organizer": "FEDERAÇÃO PERNAMBUCANA DE ESPORTES – FEPE",
+      "modalities": [
+        "10KM",
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/a63e4eac-c23a-48f3-a703-9265c556c36a.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "PE",
+        "data_final": "2026-12-27",
+        "nome_evento": "1º A VIRADA RUN RECIFE",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46179,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/331-1-a-virada-run-recife",
+        "tag": "2026-1-a-virada-run-recife",
+        "cidade": "Recife",
+        "data_inicial": "2026-12-27"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2026-12-26",
+        "nome_evento": "2º Edição Corrida da Virada",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50044,
+        "url_hotsite": "https://www.eventosesportes.com.br/241/2-Edicao-Corrida-da-Virada",
+        "url_inscricao": "https://www.eventosesportes.com.br/241/2-Edicao-Corrida-da-Virada",
+        "tag": "2026-2-edicao-corrida-da-virada",
+        "cidade": "Arcoverde",
+        "data_inicial": "2026-12-26"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2026-12-31",
+        "nome_evento": "14ª Corrida João Silvestre - 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50659,
+        "url_hotsite": "",
+        "url_inscricao": "https://inscricoes.com.br/eventos/14a-corrida-joao-silvestre-2026",
+        "tag": "2026-14-corrida-joao-silvestre-2026",
+        "cidade": "Serra Talhada",
+        "data_inicial": "2026-12-31"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2026-11-22",
+        "nome_evento": "IV MEIA MARATONA DAS PRAIAS DO RECIFE",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 44997,
+        "url_hotsite": "https://www.ticketsports.com.br/e/IV+MEIA+MARATONA+DAS+PRAIAS+DO+RECIFE-87733",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87733&origem=novo-site&lang=en-US",
+        "tag": "2026-iv-meia-maratona-das-praias-do-recife",
+        "cidade": "Recife",
+        "data_inicial": "2026-11-22"
+      }
+    ],
+    "exactUrlIds": [
+      46179
+    ]
+  },
+  {
+    "movnow": {
+      "id": "392",
+      "slug": "392-wellness-day-rico-run",
+      "name": "Wellness Day - Rico Run",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 20/12/2026",
+      "theme": null,
+      "date": "2026-12-30T00:00:00.000Z",
+      "hour": "1970-01-01T05:30:00.000Z",
+      "category": "Evento com caráter de entretenimento",
+      "city": "Balneário Piçarras",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "Rico Run",
+      "modalities": [
+        "Wellness Day"
+      ],
+      "competitive": false,
+      "bannerUrl": "event-requests/3568f422-4617-44c5-a342-558021cdbdd6.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2026-12-30",
+        "nome_evento": "BC CELEBRATION 2026 - BALNEÁRIO CAMBORIÚ",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48730,
+        "url_hotsite": "https://app.sprinta.com.br/event/733996ab6c636ed3a9",
+        "url_inscricao": "https://app.sprinta.com.br/event/733996ab6c636ed3a9",
+        "tag": "2026-bc-celebration-2026-balneario-camboriu",
+        "cidade": "Balneário Camboriú",
+        "data_inicial": "2026-12-30"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-12-31",
+        "nome_evento": "Vi Corrida Da Virada Acorde",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 45346,
+        "url_hotsite": "https://www.kweventosesportivos.com.br/evento/vi-corrida-da-virada-acorde-2026",
+        "url_inscricao": "https://www.kweventosesportivos.com.br/evento/vi-corrida-da-virada-acorde-2026",
+        "tag": "2026-vi-corrida-da-virada-acorde",
+        "cidade": "Blumenau",
+        "data_inicial": "2026-12-31"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-12-31",
+        "nome_evento": "Corrida Da Virada 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 44892,
+        "url_hotsite": "https://maissport.com.br/evento/corrida-da-virada-2026",
+        "url_inscricao": "https://maissport.com.br/evento/corrida-da-virada-2026",
+        "tag": "2026-corrida-da-virada-2026-sc",
+        "cidade": "Florianópolis",
+        "data_inicial": "2026-12-31"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-12-12",
+        "nome_evento": "3ª ALLES PARK NIGHT RUN",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46884,
+        "url_hotsite": "https://www.ticketsports.com.br/e/3%C2%AA+ALLES+PARK+NIGHT+RUN-88234",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88234&origem=novo-site&lang=en-US",
+        "tag": "2026-3-alles-park-night-run",
+        "cidade": "Pomerode",
+        "data_inicial": "2026-12-12"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-29",
+        "nome_evento": "Ventus Trail Run",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46178,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/333-ventus-trail-run",
+        "tag": "2026-ventus-trail-run",
+        "cidade": "Bom Jardim da Serra",
+        "data_inicial": "2026-11-29"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "412",
+      "slug": "412-corridao-da-virada-fortaleza",
+      "name": "CORRIDÃO DA VIRADA FORTALEZA",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 30/11/2026",
+      "theme": null,
+      "date": "2026-12-31T00:00:00.000Z",
+      "hour": "1970-01-01T06:00:00.000Z",
+      "category": "CORRIDA",
+      "city": "Fortaleza",
+      "uf": "CE",
+      "state": "Ceará",
+      "organizer": "GUIA OFICIAL DO BRASIL",
+      "modalities": [
+        "15KM",
+        "7KM",
+        "3KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/1c7c820c-06a0-4675-b006-561c8e8e80e5.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "CE",
+        "data_final": "2026-12-31",
+        "nome_evento": "CORRIDÃO DA VIRADA FORTALEZA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 51225,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/412-corridao-da-virada-fortaleza",
+        "tag": "2026-corridao-da-virada-fortaleza",
+        "cidade": "Fortaleza",
+        "data_inicial": "2026-12-31"
+      },
+      {
+        "estado": "CE",
+        "data_final": "2026-12-31",
+        "nome_evento": "2ª CORRIDA DA VIRADA 2026",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49701,
+        "url_hotsite": "https://braziltiming.com.br/evento/2-corrida-da-virada-2026",
+        "url_inscricao": "https://www.braziltiming.com.br/inscricao-select/2-corrida-da-virada-2026",
+        "tag": "2026-2-corrida-da-virada-2026",
+        "cidade": "Limoeiro Do Norte",
+        "data_inicial": "2026-12-31"
+      },
+      {
+        "estado": "CE",
+        "data_final": "2026-12-27",
+        "nome_evento": "3ª Corrida de Rua da Radionet Telecom",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49947,
+        "url_hotsite": "",
+        "url_inscricao": "https://cronoscariri.com.br/event/3-corrida-de-rua-da-radionet-telecom",
+        "tag": "2026-3-corrida-de-rua-da-radionet-telecom",
+        "cidade": "Porteiras",
+        "data_inicial": "2026-12-27"
+      },
+      {
+        "estado": "CE",
+        "data_final": "2026-12-13",
+        "nome_evento": "CORRIDA ASSAÍ - FORTALEZA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49303,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+ASSA%C3%8D+-+FORTALEZA-88120",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88120&origem=novo-site&lang=en-US",
+        "tag": "2026-corrida-assai-fortaleza",
+        "cidade": "Fortaleza",
+        "data_inicial": "2026-12-13"
+      }
+    ],
+    "exactUrlIds": [
+      51225
+    ]
+  },
+  {
+    "movnow": {
+      "id": "414",
+      "slug": "414-sampa-run-5km",
+      "name": "SAMPA RUN 5KM",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 01/01/2027",
+      "theme": null,
+      "date": "2027-01-10T00:00:00.000Z",
+      "hour": "1970-01-01T07:00:00.000Z",
+      "category": "CORRIDA",
+      "city": "São Paulo",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "Atletas do Bem",
+      "modalities": [
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/b5dff1df-d393-4ac1-95eb-8de0296f03a4.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2027-01-10",
+        "nome_evento": "SAMPA RUN 5KM",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49669,
+        "url_hotsite": "https://www.ticketsports.com.br/e/SAMPA+RUN+5KM-88815",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88815&origem=novo-site&lang=en-US",
+        "tag": "2027-sampa-run-5km",
+        "cidade": "São Paulo",
+        "data_inicial": "2027-01-10"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-01-10",
+        "nome_evento": "SAMPA RUN 5K",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49829,
+        "url_hotsite": "https://www.sympla.com.br/evento/sampa-run-5k/3630382",
+        "url_inscricao": "https://www.sympla.com.br/evento/sampa-run-5k/3630382",
+        "tag": "2027-sampa-run-5k",
+        "cidade": "São Paulo",
+        "data_inicial": "2027-01-10"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-01-09",
+        "nome_evento": "2ª NIGHT RUN ROTA NOTURNA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 51574,
+        "url_hotsite": "https://www.ticketsports.com.br/e/2%C2%AA+NIGHT+RUN+ROTA+NOTURNA-88962",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88962&origem=novo-site&lang=en-US",
+        "tag": "2027-2-night-run-rota-noturna",
+        "cidade": "São Paulo",
+        "data_inicial": "2027-01-09"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "385",
+      "slug": "385-corrida-pitombeira",
+      "name": "Corrida Pitombeira",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 20/12/2026",
+      "theme": null,
+      "date": "2027-01-10T00:00:00.000Z",
+      "hour": "1970-01-01T05:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "Olinda",
+      "uf": "PE",
+      "state": "Pernambuco",
+      "organizer": "FEDERAÇÃO PERNAMBUCANA DE ESPORTES – FEPE",
+      "modalities": [
+        "10KM",
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/a6eeadce-7224-47ad-95ef-fdf9b64b1240.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "PE",
+        "data_final": "2027-01-10",
+        "nome_evento": "Corrida Pitombeira",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48444,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/385-corrida-pitombeira",
+        "tag": "2027-corrida-pitombeira",
+        "cidade": "Olinda",
+        "data_inicial": "2027-01-10"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2027-01-10",
+        "nome_evento": "Corrida Vale das Colinas",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50043,
+        "url_hotsite": "https://www.eventosesportes.com.br/271/Corrida-Vale-Das-Colinas",
+        "url_inscricao": "https://www.eventosesportes.com.br/271/Corrida-Vale-Das-Colinas",
+        "tag": "2027-corrida-vale-das-colinas",
+        "cidade": "Garanhuns",
+        "data_inicial": "2027-01-10"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2027-01-10",
+        "nome_evento": "2ª CORRIDA FÊNIX 2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48967,
+        "url_hotsite": "https://www.ticketsports.com.br/e/2%C2%AA+CORRIDA+F%C3%8ANIX+2027-88652",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88652&origem=novo-site&lang=en-US",
+        "tag": "2027-2-corrida-fenix-2027",
+        "cidade": "Sirinhaém",
+        "data_inicial": "2027-01-10"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2026-11-22",
+        "nome_evento": "Corrida de Verão",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47759,
+        "url_hotsite": "https://www.timecrono.com.br/evento/2026/corrida-de-rua/corrida-de-verao",
+        "url_inscricao": "https://www.timecrono.com.br/inscricao-select/2026/corrida-de-rua/corrida-de-verao",
+        "tag": "2026-corrida-de-verao",
+        "cidade": "Ilha de Itamaracá",
+        "data_inicial": "2026-11-22"
+      }
+    ],
+    "exactUrlIds": [
+      48444
+    ]
+  },
+  {
+    "movnow": {
+      "id": "408",
+      "slug": "408-3-trail-run-uvas-fontana-maciel",
+      "name": "3º Trail Run - Uvas Fontana Maciel",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 20/12/2026",
+      "theme": null,
+      "date": "2027-01-17T00:00:00.000Z",
+      "hour": "1970-01-01T08:00:00.000Z",
+      "category": "Trail Run",
+      "city": "Curitibanos",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "Uvas Fontana Maciel",
+      "modalities": [
+        "12KM",
+        "6KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "event-requests/2f98b67f-0f3b-4262-bde6-796421a66e66.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2027-01-17",
+        "nome_evento": "3º Trail Run - Uvas Fontana Maciel",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50829,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/408-3-trail-run-uvas-fontana-maciel",
+        "tag": "2027-3-trail-run-uvas-fontana-maciel",
+        "cidade": "Curitibanos",
+        "data_inicial": "2027-01-17"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2027-01-17",
+        "nome_evento": "CORRIDA MIL SORRISOS",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50830,
+        "url_hotsite": "https://eventos.rsfproeventos.com.br/evento/corrida-mil-sorrisos-5866",
+        "url_inscricao": "https://eventos.rsfproeventos.com.br/ingressos/corrida-mil-sorrisos-5866",
+        "tag": "2027-corrida-mil-sorrisos",
+        "cidade": "Balneário Rincão",
+        "data_inicial": "2027-01-17"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2027-01-17",
+        "nome_evento": "1ª CORRIDA DO FRITZ",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 46193,
+        "url_hotsite": "https://www.ticketsports.com.br/e/1%C2%AA+CORRIDA+DO+FRITZ-87974",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87974&origem=novo-site&lang=en-US",
+        "tag": "2027-1-corrida-do-fritz",
+        "cidade": "Joinville",
+        "data_inicial": "2027-01-17"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-01-18",
+        "nome_evento": "2ª Trail Run - Uvas Fontana Maciel",
+        "tipo_corrida": "trail",
+        "ativo": true,
+        "id_evento": 37469,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/158-2a-trail-run-uvas-fontana-maciel",
+        "tag": "2026-2-trail-run-uvas-fontana-maciel",
+        "cidade": "Curitibanos",
+        "data_inicial": "2026-01-18"
+      }
+    ],
+    "exactUrlIds": [
+      50829
+    ]
+  },
+  {
+    "movnow": {
+      "id": "403",
+      "slug": "403-2-desafio-solidario-de-camapua-mtb-xcm-raiz",
+      "name": "2° DESAFIO Solidário de Camapuã MTB xcm raiz",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 11/01/2027",
+      "theme": null,
+      "date": "2027-01-17T00:00:00.000Z",
+      "hour": "1970-01-01T07:30:00.000Z",
+      "category": "Mountain Bike",
+      "city": "Camapuã",
+      "uf": "MS",
+      "state": "Mato Grosso do Sul",
+      "organizer": "Champions MR LTDA ",
+      "modalities": [
+        "80km",
+        "50km",
+        "20km",
+        "Kids"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/1dd16428-c175-431f-8a33-a8f45011ee21.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "393",
+      "slug": "393-papangu-run",
+      "name": "PAPANGU RUN",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 20/12/2026",
+      "theme": "corrida de carnaval cultural",
+      "date": "2027-01-17T00:00:00.000Z",
+      "hour": "1970-01-01T06:00:00.000Z",
+      "category": "Corrida de Rua",
+      "city": "Bezerros",
+      "uf": "PE",
+      "state": "Pernambuco",
+      "organizer": "FEDERAÇÃO PERNAMBUCANA DE ESPORTES – FEPE",
+      "modalities": [
+        "5KM",
+        "10Km"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/eda58585-5f41-46fb-a126-db1a9bb82c02.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "PE",
+        "data_final": "2027-01-17",
+        "nome_evento": "PAPAGUN RUN",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48874,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/393-papagun-run",
+        "tag": "2027-papagun-run",
+        "cidade": "Bezerros",
+        "data_inicial": "2027-01-17"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2027-01-17",
+        "nome_evento": "PAPANGU RUN",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48965,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/393-papangu-run",
+        "tag": "2027-papangu-run",
+        "cidade": "Bezerros",
+        "data_inicial": "2027-01-17"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2027-01-17",
+        "nome_evento": "Aqc Run Verão",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50042,
+        "url_hotsite": "https://www.eventosesportes.com.br/258/AQC-RUN-VERAO",
+        "url_inscricao": "https://www.eventosesportes.com.br/258/AQC-RUN-VERAO",
+        "tag": "2027-aqc-run-verao",
+        "cidade": "Arcoverde",
+        "data_inicial": "2027-01-17"
+      }
+    ],
+    "exactUrlIds": [
+      48874,
+      48965
+    ]
+  },
+  {
+    "movnow": {
+      "id": "372",
+      "slug": "372-circuito-cervejeiro-de-corrida-ouro-preto",
+      "name": "Circuito Cervejeiro de Corrida – Ouro Preto",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 22/01/2027",
+      "theme": null,
+      "date": "2027-01-23T00:00:00.000Z",
+      "hour": "1970-01-01T11:00:00.000Z",
+      "category": "Evento com caráter de entretenimento",
+      "city": "Ouro Preto",
+      "uf": "MG",
+      "state": "Minas Gerais",
+      "organizer": "FF Eventos Esportivos",
+      "modalities": [
+        "3KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/de419c79-b251-490d-baf1-53931c91104a.jpeg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "MG",
+        "data_final": "2027-01-23",
+        "nome_evento": "Circuito Cervejeiro de Corrida – Ouro Preto",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47375,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/372-circuito-cervejeiro-de-corrida-ouro-preto",
+        "tag": "2027-circuito-cervejeiro-de-corrida-–-ouro-preto",
+        "cidade": "Ouro Preto",
+        "data_inicial": "2027-01-23"
+      },
+      {
+        "estado": "MG",
+        "data_final": "2027-01-24",
+        "nome_evento": "CIRCUITO ALÉM DO RITMO – 2ª ETAPA: CORRIDA DA INCLUSÃO",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48561,
+        "url_hotsite": "",
+        "url_inscricao": "https://inscricaodecorrida.com.br/evento/circuito-alem-do-ritmo-2a-etapa-corrida-da-inclusao",
+        "tag": "2027-circuito-alem-do-ritmo-–-2-etapa:-corrida-da-inclusao",
+        "cidade": "OURO BRANCO",
+        "data_inicial": "2027-01-24"
+      },
+      {
+        "estado": "MG",
+        "data_final": "2027-01-24",
+        "nome_evento": "10ª CORRIDA DE REIS DE BOM DESPACHO",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49458,
+        "url_hotsite": "",
+        "url_inscricao": "https://inscricaodecorrida.com.br/evento/10a-corrida-de-reis-de-bom-despacho",
+        "tag": "2027-10-corrida-de-reis-de-bom-despacho",
+        "cidade": "BOM DESPACHO",
+        "data_inicial": "2027-01-24"
+      },
+      {
+        "estado": "MG",
+        "data_final": "2026-01-31",
+        "nome_evento": "Circuito Cervejeiro de Corrida - Ouro Preto",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 35535,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/87-circuito-cervejeiro-de-corrida-ouro-preto",
+        "tag": "2026-circuito-cervejeiro-de-corrida-ouro-preto",
+        "cidade": "Ouro Preto",
+        "data_inicial": "2026-01-31"
+      }
+    ],
+    "exactUrlIds": [
+      47375
+    ]
+  },
+  {
+    "movnow": {
+      "id": "410",
+      "slug": "410-trilhas-secretas-trail-challenge-women",
+      "name": "Trilhas Secretas Trail Challenge Women",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 24/01/2027",
+      "theme": null,
+      "date": "2027-01-31T00:00:00.000Z",
+      "hour": "1970-01-01T07:00:00.000Z",
+      "category": "Trail Run",
+      "city": "São Paulo",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "4Pro Live Marketing",
+      "modalities": [
+        "7KM",
+        "Virtual"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/c56ae647-4e55-4980-96b7-053a1c43d4f0.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2027-01-31",
+        "nome_evento": "Trilhas Secretas Trail Challenge Women",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 51751,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/410-trilhas-secretas-trail-challenge-women",
+        "tag": "2027-trilhas-secretas-trail-challenge-women",
+        "cidade": "São Paulo",
+        "data_inicial": "2027-01-31"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-01-31",
+        "nome_evento": "5ª PEREIRA BARRETO RUNNING",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49168,
+        "url_hotsite": "https://incentivoesporte.com.br/#/evento/5-pereira-barreto-running",
+        "url_inscricao": "https://incentivoesporte.com.br/#/inscricao/5-pereira-barreto-running",
+        "tag": "2027-5-pereira-barreto-running",
+        "cidade": "PEREIRA BARRETO",
+        "data_inicial": "2027-01-31"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-01-31",
+        "nome_evento": "Corrida Cinderela - Paulínia",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48419,
+        "url_hotsite": "https://www.ticketsports.com.br/e/Corrida+Cinderela+-+Paul%C3%ADnia-88502",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88502&origem=novo-site&lang=en-US",
+        "tag": "2027-corrida-cinderela-paulinia",
+        "cidade": "Paulínia",
+        "data_inicial": "2027-01-31"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-10-03",
+        "nome_evento": "Trilhas Secretas",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48914,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/313-trilhas-secretas",
+        "tag": "2026-trilhas-secretas",
+        "cidade": "São Paulo",
+        "data_inicial": "2026-10-03"
+      }
+    ],
+    "exactUrlIds": [
+      51751
+    ]
+  },
+  {
+    "movnow": {
+      "id": "397",
+      "slug": "397-rota-do-fantasma",
+      "name": "Rota do Fantasma",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 10/01/2027",
+      "theme": null,
+      "date": "2027-01-31T00:00:00.000Z",
+      "hour": "1970-01-01T08:00:00.000Z",
+      "category": "Trail Run",
+      "city": "Itupeva",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "LOOP ULTRA",
+      "modalities": [
+        "16KM",
+        "8KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "event-requests/c96d59fe-c416-4c5c-94f9-32171ce613dc.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2027-01-31",
+        "nome_evento": "Rota do Fantasma",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49169,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/397-rota-do-fantasma",
+        "tag": "2027-rota-do-fantasma",
+        "cidade": "Itupeva",
+        "data_inicial": "2027-01-31"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-01-31",
+        "nome_evento": "Corrida Cinderela - Paulínia",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48419,
+        "url_hotsite": "https://www.ticketsports.com.br/e/Corrida+Cinderela+-+Paul%C3%ADnia-88502",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88502&origem=novo-site&lang=en-US",
+        "tag": "2027-corrida-cinderela-paulinia",
+        "cidade": "Paulínia",
+        "data_inicial": "2027-01-31"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-01-31",
+        "nome_evento": "CIRCUITO – EM MOVIMENTO - ETAPA ATIBAIA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50148,
+        "url_hotsite": "https://gominhasinscricoes.com.br/evento/circuito-em-movimento-etapa-atibaia",
+        "url_inscricao": "https://gominhasinscricoes.com.br/evento/circuito-em-movimento-etapa-atibaia",
+        "tag": "2027-circuito-–-em-movimento-etapa-atibaia",
+        "cidade": "Atibaia",
+        "data_inicial": "2027-01-31"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-12-20",
+        "nome_evento": "NATAL DOS PETS",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49180,
+        "url_hotsite": "https://app.sprinta.com.br/event/2970376ac61eeb2516a",
+        "url_inscricao": "https://app.sprinta.com.br/event/2970376ac61eeb2516a",
+        "tag": "2026-natal-dos-pets",
+        "cidade": "Sertãozinho",
+        "data_inicial": "2026-12-20"
+      }
+    ],
+    "exactUrlIds": [
+      49169
+    ]
+  },
+  {
+    "movnow": {
+      "id": "405",
+      "slug": "405-sao-bernardo-backyard",
+      "name": "São Bernardo Backyard",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 01/02/2027",
+      "theme": "Backyard",
+      "date": "2027-02-27T00:00:00.000Z",
+      "hour": "1970-01-01T09:00:00.000Z",
+      "category": "Trail Run",
+      "city": "São Bernardo do Campo",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "LOOP ULTRA",
+      "modalities": [],
+      "competitive": false,
+      "bannerUrl": "event-requests/07c58971-95f2-44eb-a640-d2893666064a.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2027-02-27",
+        "nome_evento": "São Bernardo Backyard",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49685,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/405-sao-bernardo-backyard",
+        "tag": "2027-sao-bernardo-backyard",
+        "cidade": "São Bernardo do Campo",
+        "data_inicial": "2027-02-27"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-02-28",
+        "nome_evento": "CORRENDO COM OS ODS 2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 51570,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CORRENDO+COM+OS+ODS+2027-88887",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88887&origem=novo-site&lang=en-US",
+        "tag": "2027-correndo-com-os-ods-2027",
+        "cidade": "Santos",
+        "data_inicial": "2027-02-28"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-02-28",
+        "nome_evento": "PODEROSAS DO ASFALTO – EDIÇÃO CARNAVAL 2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 51736,
+        "url_hotsite": "",
+        "url_inscricao": "https://runff.com.br/evento/468",
+        "tag": "2027-poderosas-do-asfalto-–-edicao-carnaval-2027",
+        "cidade": "São Vicente",
+        "data_inicial": "2027-02-28"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-12-05",
+        "nome_evento": "ALUMINIO BACKYARD ULTRA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 39605,
+        "url_hotsite": "https://www.ticketsports.com.br/e/aluminio-backyard-ultra-86160",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86160&origem=novo-site&lang=en-US",
+        "tag": "2026-aluminio-backyard-ultra",
+        "cidade": "Alumínio",
+        "data_inicial": "2026-12-05"
+      }
+    ],
+    "exactUrlIds": [
+      49685
+    ]
+  },
+  {
+    "movnow": {
+      "id": "391",
+      "slug": "391-circuito-cervejeiro-de-corrida-etapa-sao-pedro-da-serra",
+      "name": "Circuito Cervejeiro de Corrida – Etapa São Pedro da Serra",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 26/02/2027",
+      "theme": null,
+      "date": "2027-02-27T00:00:00.000Z",
+      "hour": "1970-01-01T11:00:00.000Z",
+      "category": "Evento com caráter de entretenimento",
+      "city": "Nova Friburgo",
+      "uf": "RJ",
+      "state": "Rio de Janeiro",
+      "organizer": "FF Eventos Esportivos",
+      "modalities": [
+        "3KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/eb95b9ee-2dc8-4fcf-9cec-943b38f7a074.jpeg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "RJ",
+        "data_final": "2027-02-27",
+        "nome_evento": "Circuito Cervejeiro de Corrida – Etapa São Pedro da Serra",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48716,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/391-circuito-cervejeiro-de-corrida-etapa-sao-pedro-da-serra",
+        "tag": "2027-circuito-cervejeiro-de-corrida-–-etapa-sao-pedro-da-serra",
+        "cidade": "Nova Friburgo",
+        "data_inicial": "2027-02-27"
+      },
+      {
+        "estado": "RJ",
+        "data_final": "2027-02-28",
+        "nome_evento": "CIRCUITO OCEÂNICO - PIRATININGA 2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50820,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CIRCUITO+OCE%C3%82NICO+-+PIRATININGA+2027-88828",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88828&origem=novo-site&lang=en-US",
+        "tag": "2027-circuito-oceanico-piratininga-2027",
+        "cidade": "Niterói",
+        "data_inicial": "2027-02-28"
+      },
+      {
+        "estado": "RJ",
+        "data_final": "2027-02-28",
+        "nome_evento": "CORRIDA E CAMINHADA CONTRA O CÂNCER DE MAMA - 2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49162,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+E+CAMINHADA+CONTRA+O+C%C3%82NCER+DE+MAMA+-+2027-88081",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88081&origem=novo-site&lang=en-US",
+        "tag": "2027-corrida-e-caminhada-contra-o-cancer-de-mama-2027",
+        "cidade": "Niterói",
+        "data_inicial": "2027-02-28"
+      },
+      {
+        "estado": "RJ",
+        "data_final": "2026-01-24",
+        "nome_evento": "Circuito Cervejeiro de Corrida - Etapa São Pedro da Serra",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 35537,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/68-circuito-cervejeiro-de-corrida-etapa-sao-pedro-da-serra",
+        "tag": "2026-circuito-cervejeiro-de-corrida-etapa-sao-pedro-da-serra",
+        "cidade": "Nova Friburgo",
+        "data_inicial": "2026-01-24"
+      }
+    ],
+    "exactUrlIds": [
+      48716
+    ]
+  },
+  {
+    "movnow": {
+      "id": "402",
+      "slug": "402-run-mulher-florianopolis",
+      "name": "RUN MULHER FLORIANÓPOLIS",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 28/02/2027",
+      "theme": null,
+      "date": "2027-03-07T00:00:00.000Z",
+      "hour": "1970-01-01T06:30:00.000Z",
+      "category": "Corrida de Rua",
+      "city": "Florianópolis",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "OUTBRAZIL",
+      "modalities": [
+        "10Km",
+        "5KM",
+        "3Km",
+        "PCD"
+      ],
+      "competitive": false,
+      "bannerUrl": "event-requests/496b1e49-b02b-4ee3-a064-368322faa211.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2027-03-07",
+        "nome_evento": "RUN MULHER FLORIANÓPOLIS",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49682,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/402-run-mulher-florianopolis",
+        "tag": "2027-run-mulher-florianopolis",
+        "cidade": "Florianópolis",
+        "data_inicial": "2027-03-07"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2027-03-07",
+        "nome_evento": "CORRIDA PELAS MULHERES 2027 - JOINVILLE-SC",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50981,
+        "url_hotsite": "https://www.ticketsports.com.br/e/CORRIDA+PELAS+MULHERES+2027+-+JOINVILLE-SC+-88897",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88897&origem=novo-site&lang=en-US",
+        "tag": "2027-corrida-pelas-mulheres-2027-joinville-sc",
+        "cidade": "Joinville",
+        "data_inicial": "2027-03-07"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2027-03-07",
+        "nome_evento": "Pulse Run",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 42359,
+        "url_hotsite": "https://www.onsportsoficial.com.br/evento/3511/pulse-run-2027",
+        "url_inscricao": "https://www.onsportsoficial.com.br/evento/3511/pulse-run-2027",
+        "tag": "2027-pulse-run",
+        "cidade": "Tubarão",
+        "data_inicial": "2027-03-07"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-01",
+        "nome_evento": "SRUN - FLORIPA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47860,
+        "url_hotsite": "https://www.ticketsports.com.br/e/SRUN+-+FLORIPA-88358",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88358&origem=novo-site&lang=en-US",
+        "tag": "2026-srun-floripa",
+        "cidade": "Florianópolis",
+        "data_inicial": "2026-11-01"
+      }
+    ],
+    "exactUrlIds": [
+      49682
+    ]
+  },
+  {
+    "movnow": {
+      "id": "369",
+      "slug": "369-baden-run",
+      "name": "Baden Run",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 03/03/2027",
+      "theme": null,
+      "date": "2027-03-07T00:00:00.000Z",
+      "hour": "1970-01-01T06:58:00.000Z",
+      "category": "CORRIDA",
+      "city": "Blumenau",
+      "uf": "SC",
+      "state": "Santa Catarina",
+      "organizer": "URBANOS ",
+      "modalities": [
+        "10KM",
+        "5KM",
+        "3KM",
+        "KIDS"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/e29e2cc5-c7ec-4ba8-9ba7-6fbcc1f8cc1c.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SC",
+        "data_final": "2027-03-07",
+        "nome_evento": "Baden Run",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47372,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/369-baden-run",
+        "tag": "2027-baden-run",
+        "cidade": "Blumenau",
+        "data_inicial": "2027-03-07"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2027-03-07",
+        "nome_evento": "Pulse Run",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 42359,
+        "url_hotsite": "https://www.onsportsoficial.com.br/evento/3511/pulse-run-2027",
+        "url_inscricao": "https://www.onsportsoficial.com.br/evento/3511/pulse-run-2027",
+        "tag": "2027-pulse-run",
+        "cidade": "Tubarão",
+        "data_inicial": "2027-03-07"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2027-03-07",
+        "nome_evento": "RUN MULHER FLORIANÓPOLIS",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49682,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/402-run-mulher-florianopolis",
+        "tag": "2027-run-mulher-florianopolis",
+        "cidade": "Florianópolis",
+        "data_inicial": "2027-03-07"
+      },
+      {
+        "estado": "SC",
+        "data_final": "2026-11-15",
+        "nome_evento": "Manah Run",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 40067,
+        "url_hotsite": "https://www.pfeventos.com.br/evento/2026/corrida-de-rua/manah-run",
+        "url_inscricao": "https://www.pfeventos.com.br/evento/2026/corrida-de-rua/manah-run",
+        "tag": "2026-manah-run",
+        "cidade": "Campos Novos",
+        "data_inicial": "2026-11-15"
+      }
+    ],
+    "exactUrlIds": [
+      47372
+    ]
+  },
+  {
+    "movnow": {
+      "id": "399",
+      "slug": "399-10-milhas-alagoas-2027",
+      "name": "10 Milhas Alagoas 2027",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 20/03/2027",
+      "theme": null,
+      "date": "2027-03-21T00:00:00.000Z",
+      "hour": "1970-01-01T05:30:00.000Z",
+      "category": "Corrida de Rua",
+      "city": "Maceió",
+      "uf": "AL",
+      "state": "Alagoas",
+      "organizer": "Snoc Eventos e Apoio Administrativos",
+      "modalities": [
+        "10 Milhas",
+        "5 Milhas"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/68859032-0b00-46cb-abdc-5cc3e9d215d6.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "AL",
+        "data_final": "2027-03-21",
+        "nome_evento": "10 MILHAS ALAGOAS 2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 40612,
+        "url_hotsite": "https://www.ticketsports.com.br/e/10+MILHAS+ALAGOAS+2027-86461",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86461&origem=novo-site&lang=en-US",
+        "tag": "2027-10-milhas-alagoas-2027",
+        "cidade": "Maceió",
+        "data_inicial": "2027-03-21"
+      },
+      {
+        "estado": "AL",
+        "data_final": "2027-01-31",
+        "nome_evento": "15k DAS PRAIAS - 2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 45190,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.realtiming.com.br/evento/15k-daspraias2027",
+        "tag": "2027-15k-das-praias-2027",
+        "cidade": "Maceió",
+        "data_inicial": "2027-01-31"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "398",
+      "slug": "398-resta-uma-backyard",
+      "name": "Resta Uma Backyard",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 10/03/2027",
+      "theme": "Backyard",
+      "date": "2027-04-03T00:00:00.000Z",
+      "hour": "1970-01-01T09:00:00.000Z",
+      "category": "Trail Run",
+      "city": "Itupeva",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "LOOP ULTRA",
+      "modalities": [
+        "6,5km"
+      ],
+      "competitive": false,
+      "bannerUrl": "event-requests/bb486920-b8a9-4306-ad0a-be771f083c59.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2027-04-03",
+        "nome_evento": "RESTA UMA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 45673,
+        "url_hotsite": "https://app.sprinta.com.br/event/34386869c4ae923060d",
+        "url_inscricao": "https://app.sprinta.com.br/event/34386869c4ae923060d",
+        "tag": "2027-resta-uma",
+        "cidade": "Itupeva",
+        "data_inicial": "2027-04-03"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-04-04",
+        "nome_evento": "Maratona Internacional de São Paulo 2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47883,
+        "url_hotsite": "https://www.yescom.com.br/maratonasp/2027/",
+        "url_inscricao": "https://www.yescom.com.br/maratonasp/2027/index.asp",
+        "tag": "2027-maratona-internacional-de-sao-paulo-2027",
+        "cidade": "São Paulo",
+        "data_inicial": "2027-04-04"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-04-04",
+        "nome_evento": "Corrida juntos pelo autismo",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47645,
+        "url_hotsite": "https://www.ticketsports.com.br/e/Corrida+juntos+pelo+autismo-88406",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88406&origem=novo-site&lang=en-US",
+        "tag": "2027-corrida-juntos-pelo-autismo",
+        "cidade": "Indaiatuba",
+        "data_inicial": "2027-04-04"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-12-05",
+        "nome_evento": "ALUMINIO BACKYARD ULTRA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 39605,
+        "url_hotsite": "https://www.ticketsports.com.br/e/aluminio-backyard-ultra-86160",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86160&origem=novo-site&lang=en-US",
+        "tag": "2026-aluminio-backyard-ultra",
+        "cidade": "Alumínio",
+        "data_inicial": "2026-12-05"
+      }
+    ],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "395",
+      "slug": "395-evento-jampa-cidade-esportes-e-bike",
+      "name": "EVENTO JAMPA CIDADE ESPORTES E BIKE",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 25/03/2027",
+      "theme": null,
+      "date": "2027-04-04T00:00:00.000Z",
+      "hour": "1970-01-01T05:30:00.000Z",
+      "category": "CORRIDA",
+      "city": "João Pessoa",
+      "uf": "PB",
+      "state": "Paraíba",
+      "organizer": "Gscard Mídias e Eventos ",
+      "modalities": [
+        "10KM",
+        "7KM",
+        "5KM"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/e8c3a997-7ea7-4a72-87d7-7601a922d7a9.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [],
+    "exactUrlIds": []
+  },
+  {
+    "movnow": {
+      "id": "406",
+      "slug": "406-brasil-ultra-tri",
+      "name": "Brasil Ultra Tri",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 13/05/2027",
+      "theme": "BRASIL ULTRA TRI 2027",
+      "date": "2027-05-01T00:00:00.000Z",
+      "hour": "1970-01-01T09:00:00.000Z",
+      "category": "Triathlon",
+      "city": "Armação dos Búzios",
+      "uf": "RJ",
+      "state": "Rio de Janeiro",
+      "organizer": "ULTRA EVENTOS",
+      "modalities": [
+        "Single Triathlon",
+        "Meio Triathlon",
+        "Corrida 100km",
+        "Corrida 24 Horas",
+        "Corrida 12 Horas",
+        "Corrida 06 Horas",
+        "Corrida 03 Horas",
+        "Pedal 1.000 Kms",
+        "Pedal 500 Kms",
+        "Pedal 100 Kms"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/7fde0be4-4178-4f7f-a154-743c154e9cac.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "RJ",
+        "data_final": "2027-05-01",
+        "nome_evento": "Brasil Ultra Tri",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 49675,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/406-brasil-ultra-tri",
+        "tag": "2027-brasil-ultra-tri",
+        "cidade": "Armação dos Búzios",
+        "data_inicial": "2027-05-01"
+      },
+      {
+        "estado": "RJ",
+        "data_final": "2027-05-02",
+        "nome_evento": "MARATONA DE PÁDUA RJ -2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47152,
+        "url_hotsite": "https://www.ticketsports.com.br/e/MARATONA+DE+P%C3%81DUA+RJ+-2027-88199",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=88199&origem=novo-site&lang=en-US",
+        "tag": "2027-maratona-de-padua-rj-2027",
+        "cidade": "Santo Antônio de Pádua",
+        "data_inicial": "2027-05-01"
+      }
+    ],
+    "exactUrlIds": [
+      49675
+    ]
+  },
+  {
+    "movnow": {
+      "id": "394",
+      "slug": "394-adrena-race",
+      "name": "Adrena Race",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 28/02/2027",
+      "theme": null,
+      "date": "2027-05-02T00:00:00.000Z",
+      "hour": "1970-01-01T07:30:00.000Z",
+      "category": "Corrida de Obstáculos",
+      "city": "Penápolis",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "Adrena Race",
+      "modalities": [
+        "Competidor",
+        "Livre"
+      ],
+      "competitive": false,
+      "bannerUrl": "event-requests/26a3e1b2-b948-4807-b1ab-efd04b43eb95.jpeg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2027-05-02",
+        "nome_evento": "Adrena Race",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 48956,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/394-adrena-race",
+        "tag": "2027-adrena-race",
+        "cidade": "Penápolis",
+        "data_inicial": "2027-05-02"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-05-02",
+        "nome_evento": "2ª MARATONA DE PIRACICABA",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 42061,
+        "url_hotsite": "https://www.ticketsports.com.br/e/2%C2%AA+MARATONA+DE+PIRACICABA-86973",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=86973&origem=novo-site&lang=en-US",
+        "tag": "2027-2-maratona-de-piracicaba",
+        "cidade": "Piracicaba",
+        "data_inicial": "2027-05-02"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-05-01",
+        "nome_evento": "CORRIDA DO TRABALHO 5K",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 50027,
+        "url_hotsite": "",
+        "url_inscricao": "https://eventiabr.com.br/eventos/corrida-do-trabalho-5k",
+        "tag": "2027-corrida-do-trabalho-5k",
+        "cidade": "São Paulo",
+        "data_inicial": "2027-05-01"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-04-26",
+        "nome_evento": "ADRENA RACE",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 39375,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/event/163-adrena-race",
+        "tag": "2026-adrena-race",
+        "cidade": "Penápolis",
+        "data_inicial": "2026-04-26"
+      }
+    ],
+    "exactUrlIds": [
+      48956
+    ]
+  },
+  {
+    "movnow": {
+      "id": "323",
+      "slug": "323-maratona-internacional-de-pernambuco",
+      "name": "Maratona Internacional de Pernambuco",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 31/12/2026",
+      "theme": null,
+      "date": "2027-09-04T00:00:00.000Z",
+      "hour": "1970-01-01T04:00:00.000Z",
+      "category": "CORRIDA",
+      "city": "Recife",
+      "uf": "PE",
+      "state": "Pernambuco",
+      "organizer": "FEDERAÇÃO PERNAMBUCANA DE ESPORTES – FEPE",
+      "modalities": [
+        "5KM",
+        "10KM",
+        "21KM",
+        "42KM",
+        "Desafio Pernambuco Imortal",
+        "Desafio Nova Roma de Bravos Guerreiros"
+      ],
+      "competitive": false,
+      "bannerUrl": "events/materials/89b953db-fbd6-4d81-85d1-0ba266c5a513.jpg",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "PE",
+        "data_final": "2027-09-04",
+        "nome_evento": "Maratona Internacional de Pernambuco",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47365,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/323-maratona-internacional-de-pernambuco",
+        "tag": "2027-maratona-internacional-de-pernambuco",
+        "cidade": "Recife",
+        "data_inicial": "2027-09-04"
+      },
+      {
+        "estado": "PE",
+        "data_final": "2027-06-13",
+        "nome_evento": "MARATONA INTERNACIONAL DE OLINDA 2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 43237,
+        "url_hotsite": "https://www.ticketsports.com.br/e/MARATONA+INTERNACIONAL+DE+OLINDA+2027-87264",
+        "url_inscricao": "https://site.ticketsports.com.br/Inscricao/categoria.aspx?__idEvento=87264&origem=novo-site&lang=en-US",
+        "tag": "2027-maratona-internacional-de-olinda-2027",
+        "cidade": "Recife",
+        "data_inicial": "2027-06-13"
+      }
+    ],
+    "exactUrlIds": [
+      47365
+    ]
+  },
+  {
+    "movnow": {
+      "id": "411",
+      "slug": "411-troca-trail",
+      "name": "Troca Trail",
+      "status": "for_sale",
+      "statusCaption": "Inscrições até 06/10/2027",
+      "theme": "Revezamento",
+      "date": "2027-11-28T00:00:00.000Z",
+      "hour": "1970-01-01T07:00:00.000Z",
+      "category": "Trail Run",
+      "city": "Cajamar",
+      "uf": "SP",
+      "state": "São Paulo",
+      "organizer": "LOOP ULTRA",
+      "modalities": [
+        "Dupla",
+        "Trio"
+      ],
+      "competitive": false,
+      "bannerUrl": "event-requests/865d284b-4721-4237-97c9-d9e3994e80fd.png",
+      "calendarBannerUrl": null
+    },
+    "candidates": [
+      {
+        "estado": "SP",
+        "data_final": "2027-11-28",
+        "nome_evento": "Troca Trail",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 51200,
+        "url_hotsite": "",
+        "url_inscricao": "https://www.movnow.com.br/eventos/411-troca-trail",
+        "tag": "2027-troca-trail",
+        "cidade": "Cajamar",
+        "data_inicial": "2027-11-28"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2027-11-28",
+        "nome_evento": "Venus Women's Half Marathon 2027",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 51704,
+        "url_hotsite": "https://iguanasports.com.br/blogs/calendario-corridas-de-rua/venus-womens-half-marathon",
+        "url_inscricao": "https://iguanasports.com.br/blogs/calendario-corridas-de-rua/venus-womens-half-marathon",
+        "tag": "2027-venus-womens-half-marathon-2027",
+        "cidade": "São Paulo",
+        "data_inicial": "2027-11-28"
+      },
+      {
+        "estado": "SP",
+        "data_final": "2026-11-15",
+        "nome_evento": "Urban Escape Trail",
+        "tipo_corrida": "rua",
+        "ativo": true,
+        "id_evento": 47771,
+        "url_hotsite": "https://www.sympla.com.br/evento/urban-escape-trail/3565267",
+        "url_inscricao": "https://www.sympla.com.br/evento/urban-escape-trail/3565267",
+        "tag": "2026-urban-escape-trail",
+        "cidade": "Pirapora do Bom Jesus",
+        "data_inicial": "2026-11-15"
+      }
+    ],
+    "exactUrlIds": [
+      51200
+    ]
+  }
+]

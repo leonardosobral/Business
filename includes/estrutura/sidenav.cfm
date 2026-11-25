@@ -251,9 +251,11 @@
         <cfset VARIABLES.businessCanShowAccountNavigation = true/>
     </cfif>
 
-    <cfif (isDefined("qPerfil.is_admin") AND qPerfil.is_admin)
+    <cfinclude template="../backend/business_internal_privileges.cfm"/>
+    <cfif VARIABLES.businessInternalPrivilegesAllowed AND (
+        (isDefined("qPerfil.is_admin") AND qPerfil.is_admin)
         OR (isDefined("qPerfil.is_dev") AND qPerfil.is_dev)
-        OR (isDefined("qPerfil.is_partner") AND qPerfil.is_partner)>
+        OR (isDefined("qPerfil.is_partner") AND qPerfil.is_partner))>
         <cfset VARIABLES.businessCanShowAgendaNavigation = true/>
     </cfif>
 
@@ -614,7 +616,6 @@
                 </a>
             </li>
 
-
             <!--- DESAFIOS E TREINOS --->
             <li class="sidenav-item pt-3">
                 <span class="sidenav-subheading text-muted text-uppercase fw-bold">Desafios e treinos</span>
@@ -790,6 +791,8 @@
             </li>
 
             
+
+
 
             <!--- CONTAS E PARCEIROS --->
             <li class="sidenav-item pt-3">
@@ -1143,7 +1146,7 @@
 
     </ul>
 
-    <script src="/assets/js/business-sidenav.js?v=20261017-comparador"></script>
+    <script src="/assets/js/business-sidenav.js?v=20261027-sync1"></script>
     <script>
         window.BusinessSidenav.init({
             isAdmin: <cfif VARIABLES.businessCanShowAdminNavigation>true<cfelse>false</cfif>,

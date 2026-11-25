@@ -8,9 +8,9 @@
 </cfif>
 <cfinclude template="../includes/seo_semrush_data.cfm"/>
 <cfscript>
-VARIABLES.srView = "oportunidades";
-if (structKeyExists(URL,"secao") AND isSimpleValue(URL.secao) AND listFind("oportunidades,palavras,concorrentes",URL.secao)) VARIABLES.srView=URL.secao;
-VARIABLES.srTabs=[{id="oportunidades",label="Oportunidades"},{id="palavras",label="Palavras-chave"},{id="concorrentes",label="Concorrentes"}];
+VARIABLES.srView = "auditorias";
+if (structKeyExists(URL,"secao") AND isSimpleValue(URL.secao) AND listFind("auditorias,oportunidades,palavras,concorrentes",URL.secao)) VARIABLES.srView=URL.secao;
+VARIABLES.srTabs=[{id="auditorias",label="Auditorias preservadas"},{id="oportunidades",label="Oportunidades históricas"},{id="palavras",label="Palavras-chave históricas"},{id="concorrentes",label="Concorrentes históricos"}];
 VARIABLES.srSearch="";
 if(structKeyExists(URL,"busca") AND isSimpleValue(URL.busca)) VARIABLES.srSearch=left(trim(URL.busca),100);
 VARIABLES.srSearchSuffix=len(VARIABLES.srSearch) ? "&busca=" & encodeForURL(VARIABLES.srSearch) : "";
@@ -47,6 +47,11 @@ for(VARIABLES.srKeyword in VARIABLES.seoSemrush.keywords){
 @media(max-width:767px){.seo-semrush .sr-metrics,.seo-semrush .sr-card-grid{grid-template-columns:1fr}.seo-semrush .sr-metric dd{font-size:1.5rem}.seo-semrush .sr-metric{padding:.75rem}}
 </style>
 <section class="seo-semrush" aria-labelledby="sr-title">
+<cfoutput><nav class="sr-nav" aria-label="Dados Semrush"><cfloop array="#VARIABLES.srTabs#" index="srArchiveNav"><a href="/portal/seo/?aba=semrush&amp;site=#encodeForHtmlAttribute(VARIABLES.seoQueueSiteFilter)#&amp;secao=#srArchiveNav.id#"<cfif VARIABLES.srView EQ srArchiveNav.id> aria-current="page"</cfif>>#srArchiveNav.label#</a></cfloop></nav></cfoutput>
+<cfif VARIABLES.srView EQ "auditorias">
+  <cfinclude template="seo_semrush_archive.cfm"/>
+<cfelse>
+<p class="seo-note">Esta seção preserva as coletas históricas. As auditorias de 20 mil páginas estão em <a href="/portal/seo/?aba=semrush&amp;secao=auditorias">Auditorias preservadas</a>.</p>
 <cfif VARIABLES.seoQueueSiteFilter EQ "openresults">
   <h2 class="h5" id="sr-title">Semrush · Open Results</h2>
   <p>Nenhuma coleta do Open Results foi importada nesta etapa.</p>
@@ -124,9 +129,6 @@ for(VARIABLES.srKeyword in VARIABLES.seoSemrush.keywords){
     <p class="seo-note">Comparação das auditorias de 04/10/2026, 14:39 e 15:40: Site Health Semrush de 68 para 76; erros de 114 para 9. Ambas rastrearam 500 páginas, com os mesmos limites e configurações observáveis. Hreflang passou de 42 para 0, descrições duplicadas de 27 para 0, problemas de sitemap de 4 para 0 e imagens quebradas de 1 para 0. Evidências: <a href="/portal/seo/?aba=fila&amp;site=roadrunners##RR-17">RR-17</a>, <a href="/portal/seo/?aba=fila&amp;site=roadrunners##RR-18">RR-18</a> e <a href="/portal/seo/?aba=fila&amp;site=roadrunners##RR-19">RR-19</a>. Estes são resultados históricos de outra amostra.</p>
     <p class="seo-note">Entregas posteriores: ranking RR-21, metadados dos circuitos RR-22, recursos compactados RR-23, reconciliação ABAVSE RR-25, diretório experimental llms.txt RR-26, ALT e H1 RR-27. Fontes e medições continuam na fila. Disponibilidade permanece em RR-24; revisões factuais com fonte permanecem em SH-02.</p>
   </div></details>
-  <nav class="sr-nav" aria-label="Dados do Semrush">
-    <cfloop array="#VARIABLES.srTabs#" index="srTab"><a href="/portal/seo/?aba=semrush&amp;secao=#srTab.id##encodeForHtmlAttribute(VARIABLES.seoTabFilters & VARIABLES.srSearchSuffix)#"<cfif VARIABLES.srView EQ srTab.id> aria-current="page"</cfif>>#encodeForHtml(srTab.label)#</a></cfloop>
-  </nav>
   <cfif VARIABLES.srView EQ "oportunidades">
     <h3 class="h6">Primeiras oportunidades de melhoria</h3>
     <p class="seo-note">Seleção revisada da amostra. Prioridade considera intenção da busca e página de destino; volume alto sozinho não define valor comercial. SR-03 recebeu a melhoria de intenção dos circuitos em RR-22. Calendários SP/ES/SC têm filtro de cidades e páginas locais publicadas; Aracaju recebeu resumo factual PT/EN/ES. Traduções de LIVE Porto Alegre e SP City conferidas sem reescrever fatos históricos. Efeitos em posições, aquisição e receita ainda não medidos; estes números são os da coleta.</p>
@@ -177,5 +179,6 @@ for(VARIABLES.srKeyword in VARIABLES.seoSemrush.keywords){
     <p>Atualização por importação de uma nova coleta validada e publicação do painel. Abrir esta tela não consulta o fornecedor nem consome unidades.</p>
   </div></details>
 </cfoutput>
+</cfif>
 </cfif>
 </section>

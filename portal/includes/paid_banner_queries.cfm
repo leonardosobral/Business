@@ -10,6 +10,7 @@ function paidBannerCampaigns(required struct context,string campaignId='') {
     p.campaign={value=campaignId,cfsqltype='cf_sql_varchar'};
     return queryExecute("SELECT CAST(c.campaign_id AS text),c.account_id,ac.nome_conta AS account_name,c.name,c.status,c.version,
         c.starts_at,c.ends_at,c.cpc_bid,c.budget_total,c.budget_daily,c.target_device_class AS target_device,CAST(c.metadata AS text),
+        (SELECT p.placement_key FROM ads.campaign_placements cp JOIN ads.placements p USING(placement_id) WHERE cp.campaign_id=c.campaign_id AND cp.status='ACTIVE' ORDER BY p.placement_key LIMIT 1) AS placement_key,
         a.destination_url,cr.alt_text,coalesce(cr.payload->>'desktop_image_url',cr.image_url) AS image_url_desktop,
         cr.payload->>'mobile_image_url' AS image_url_mobile,
         coalesce(cr.payload->>'desktop_width',CAST(cr.width AS text)) AS width_desktop,

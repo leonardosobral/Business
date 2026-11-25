@@ -510,3 +510,14 @@ html{scroll-padding-top:calc(var(--study-navigation-height) + 16px)}
 }
 
 .annual-draft-banner{background:#ffcb05;color:#242424;padding:14px 5%;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;font:600 14px Poppins,sans-serif}.annual-draft-banner a{color:inherit}.annual-work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.annual-work-grid small{display:block;margin-top:10px}.annual-work-status{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px}.annual-work-warning{background:#fff0b8;color:#242424;border:2px solid #cc9200;border-radius:12px;padding:22px;max-width:1200px;margin:20px auto}.annual-work-chapters .chapter{border-top:5px solid #cc9200}@media(max-width:760px){.annual-work-grid{grid-template-columns:1fr}.annual-draft-banner{font-size:12px}.annual-work-warning{margin:20px}}
+
+/* Two populations share a date window; their counts and limits stay together. */
+.comparativo-pareado{align-items:stretch;scroll-margin-top:220px}
+.comparativo-pareado .insight-card{display:flex;flex-direction:column;min-width:0}
+.comparativo-pareado .insight-card>p{max-width:none;margin-bottom:24px}
+.comparativo-pareado .year-pair{margin-top:auto;gap:16px}
+.comparativo-pareado .year-pair b{font-size:clamp(22px,2.5vw,34px);overflow-wrap:anywhere}
+.comparativo-pareado .paired-highlight{border-top:5px solid var(--yellow)}
+.comparativo-pareado .paired-unavailable{border-left:3px solid var(--yellow);padding-left:16px}
+.paired-method p{max-width:1050px}
+@media(max-width:640px){.comparativo-pareado .year-pair{gap:10px}.comparativo-pareado .year-pair b{font-size:24px}.comparativo-pareado{scroll-margin-top:260px}}

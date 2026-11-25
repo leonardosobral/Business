@@ -1,4 +1,5 @@
 <!--- Called only with a server-verified identity (Google callback or existing session). --->
+<cfif structKeyExists(REQUEST.businessIdentity,"supportAccess") AND REQUEST.businessIdentity.supportAccess><cfexit method="exittemplate"/></cfif>
 <cftry>
     <cfset REQUEST.businessRememberDevice.revoke(REQUEST.businessRememberCookie)/>
     <cfset VARIABLES.businessRememberIssued = REQUEST.businessRememberDevice.issue(REQUEST.businessIdentity)/>

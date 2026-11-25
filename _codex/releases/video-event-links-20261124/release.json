@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "mode": "published",
+  "backup": "/var/backups/business-video-event-links-20261124-5eoumhfp",
+  "manifest": {
+    "business.roadrunners.run/portal/includes/media_event_action.cfm": {
+      "before": null,
+      "after": "1a30e7e30b50ee5836d358bb9d56fee9a13630f65b81425b9aa09af7ca31a62a"
+    },
+    "business.roadrunners.run/portal/videos/event_editor.cfm": {
+      "before": null,
+      "after": "2a41505c6af761d9a641d505e1df192b090dfd63572655caa562a1c7c91ef3b6"
+    },
+    "business.roadrunners.run/portal/includes/media_backend.cfm": {
+      "before": "bc01544fc9cde0a436c1b264b766f63080a4c8f8aa9e912bc4b3722589f1eb96",
+      "after": "7d55c15fc0d6ec6a41f9cb7026c9af827688924e9cee83f797060f3e60729e94"
+    },
+    "business.roadrunners.run/portal/videos/home.cfm": {
+      "before": "eb611b06ba364ca9c535f4954fe3ef1dfd427321b4951d43e32fae8701864e2d",
+      "after": "d249fa647d4c6f6dd0c5b7c270ce61918b6a5acdd8f22a2a36f255a7a05c25b7"
+    }
+  },
+  "candidate_hashes": {
+    "business.roadrunners.run/portal/includes/media_event_action.cfm": "1a30e7e30b50ee5836d358bb9d56fee9a13630f65b81425b9aa09af7ca31a62a",
+    "business.roadrunners.run/portal/videos/event_editor.cfm": "2a41505c6af761d9a641d505e1df192b090dfd63572655caa562a1c7c91ef3b6",
+    "business.roadrunners.run/portal/includes/media_backend.cfm": "7d55c15fc0d6ec6a41f9cb7026c9af827688924e9cee83f797060f3e60729e94",
+    "business.roadrunners.run/portal/videos/home.cfm": "d249fa647d4c6f6dd0c5b7c270ce61918b6a5acdd8f22a2a36f255a7a05c25b7"
+  },
+  "preserved_files": {
+    "business.roadrunners.run/portal/videos/index.cfm": "ae089fa7eae478228a1520809ce7cfd6c3529f12630c8270cdd9f138e354f72a",
+    "business.roadrunners.run/assets/css/business-ui.css": "a11ce771262c81b986799a45aa92f8167c8e5b797f23c96930553908f0c6904d"
+  },
+  "probes": [
+    {
+      "path": "/portal/videos/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "path": "/portal/includes/media_event_action.cfm",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/portal/videos/event_editor.cfm",
+      "status": "403",
+      "ok": true
+    },
+    {
+      "path": "/portal/includes/media_backend.cfm",
+      "status": "403",
+      "ok": true
+    }
+  ]
+}

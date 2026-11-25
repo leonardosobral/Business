@@ -1,3 +1,4 @@
+<cfinclude template="publisher_inventory_helpers.cfm"/>
 <cfscript>
 function paidBannerWorkspaceView(required struct queryParams,required struct posted,required boolean canReview) {
     var view=paidBannerText(queryParams,'view',paidBannerText(posted,'view','paid'));
@@ -51,9 +52,10 @@ function paidBannerValues(required struct posted) {
         'cpc_bid'=paidBannerMoney(paidBannerText(posted,'cpc_bid')),
         'budget_total'=paidBannerMoney(paidBannerText(posted,'budget_total')),
         'target_device'=paidBannerText(posted,'target_device','ALL'),
-        'placement_key'='rr-sidebar-banner-300x250',
+        'placement_key'=paidBannerText(posted,'placement_key','rr-sidebar-banner-300x250'),
         'banner_scope_v1'=bannerScopeFromForm(posted)
     };
+    publisherAssertPlacement(v.placement_key);
     if (len(v.name)<3 OR len(v.name)>160 OR len(v.alt_text)<3 OR len(v.alt_text)>300) throw(type='AdsV1.Validation',message='Nome: 3 a 160 caracteres. Descrição da imagem: 3 a 300 caracteres.');
     if (!listFind('ALL,DESKTOP,MOBILE',v.target_device)) throw(type='AdsV1.Validation',message='Selecione um dispositivo válido.');
     if (!listFind('0,1',paidBannerText(posted,'open_new_tab','1'))) throw(type='AdsV1.Validation',message='Selecione como abrir o destino.');
@@ -67,7 +69,7 @@ function paidBannerValues(required struct posted) {
     return v;
 }
 function paidBannerForm(required struct posted, struct saved={}) {
-    var v={name='',alt_text='',destination_url='',open_new_tab='1',starts_at=dateTimeFormat(now(),"yyyy-mm-dd'T'HH:nn"),ends_at=dateTimeFormat(dateAdd('d',30,now()),"yyyy-mm-dd'T'HH:nn"),cpc_bid='0,94',budget_total='100,00',budget_daily='',target_device='ALL',banner_regions_mode='ALL',banner_regions='',banner_pages_mode='ALL',banner_pages=''};
+    var v={placement_key='rr-sidebar-banner-300x250',name='',alt_text='',destination_url='',open_new_tab='1',starts_at=dateTimeFormat(now(),"yyyy-mm-dd'T'HH:nn"),ends_at=dateTimeFormat(dateAdd('d',30,now()),"yyyy-mm-dd'T'HH:nn"),cpc_bid='0,94',budget_total='100,00',budget_daily='',target_device='ALL',banner_regions_mode='ALL',banner_regions='',banner_pages_mode='ALL',banner_pages=''};
     var k='';var scope={};
     for(k in v) if(structKeyExists(saved,k) AND !isNull(saved[k])) v[k]=saved[k] & '';
     for(k in ['starts_at','ends_at']) if(structKeyExists(saved,k) AND isDate(saved[k])) v[k]=dateTimeFormat(saved[k],"yyyy-mm-dd'T'HH:nn");

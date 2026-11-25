@@ -7,6 +7,8 @@
     <cfset VARIABLES.challengeShowsScoreColumn = VARIABLES.challengeHasScore/>
 </cfif>
 <cfset VARIABLES.challengeEventoApiToken = ""/>
+<cfset VARIABLES.challengeShowsVip = listFindNoCase(VARIABLES.challengeWidgets, "vip") GT 0/>
+<cfset VARIABLES.challengeShowsDistance = NOT VARIABLES.challengeUsesActivityDays AND (NOT VARIABLES.challengeIsCircuitPanel OR VARIABLES.challengeShowsScoreColumn)/>
 <cfif structKeyExists(APPLICATION, "eventoApiToken")>
     <cfset VARIABLES.challengeEventoApiToken = trim(APPLICATION.eventoApiToken)/>
 </cfif>
@@ -20,7 +22,7 @@
             <td>Nome</td>
             <cfif URL.periodo EQ "pendentes"><td>Email</td></cfif>
             <td>Tel</td>
-            <cfif URL.periodo NEQ "pendentes" AND (NOT VARIABLES.challengeIsCircuitPanel OR VARIABLES.challengeShowsScoreColumn)><td class="text-end"><cfif VARIABLES.challengeShowsScoreColumn>Pontos<cfelse>KM</cfif></td></cfif>
+            <cfif URL.periodo NEQ "pendentes" AND VARIABLES.challengeShowsDistance><td class="text-end"><cfif VARIABLES.challengeShowsScoreColumn>Pontos<cfelse>KM</cfif></td></cfif>
             <!---td class="text-end">Última</td--->
             <td class="text-end"><cfif VARIABLES.challengeIsCircuitPanel><cfif isDefined("VARIABLES.challengeIsBrasilGigante") AND VARIABLES.challengeIsBrasilGigante>Provas<cfelse>Etapas</cfif><cfelse>Dias</cfif></td>
             <cfif URL.periodo NEQ "pendentes" AND NOT VARIABLES.challengeIsCircuitPanel><td class="text-start">Atualizar</td></cfif>
@@ -73,14 +75,16 @@
                 <a target="_blank" href="https://roadrunners.run/atleta/#VARIABLES.rowTag#/?filtro=desafios"><img src="../../assets/rr_icon.jpg" width="24" class="shadow-5 px-1"></a>
                 <a target="_blank" href="https://roadrunners.run/carteira/visualizar.cfm?id_usuario=#qStatsEvento.id#&debug=true"><div class="badge <cfif VARIABLES.rowStatusTransacao EQ 'pago'>bg-success<cfelseif VARIABLES.rowStatusTransacao EQ 'duplicado'>bg-danger<cfelseif VARIABLES.rowStatusTransacao EQ 'pendente'>bg-warning<cfelse>bg-secondary</cfif> me-1"><i class="fa fa-wallet"></i></div></a>
                 <cfif len(trim(VARIABLES.rowStravaCode)) AND len(trim(VARIABLES.rowStravaId))><a target="_blank" href="https://www.strava.com/athletes/#VARIABLES.rowStravaId#/"><div class="badge bg-strava me-1"><i class="fa-brands fa-strava"></i></div></a></cfif>
-                <cfif VARIABLES.rowProduto CONTAINS "vip"><div class="badge bg-black me-1">V</div><cfelse><div class="badge badge-secondary me-1">N</div></cfif>
+                <cfif VARIABLES.challengeShowsVip>
+                    <cfif VARIABLES.rowProduto CONTAINS "vip"><div class="badge bg-black me-1">V</div><cfelse><div class="badge badge-secondary me-1">N</div></cfif>
+                </cfif>
                 #VARIABLES.rowNome#
             </td>
             <cfif URL.periodo EQ "pendentes"><td>#VARIABLES.rowEmail#</td></cfif>
             <td nowrap>
                 #VARIABLES.rowDdi# #VARIABLES.rowDdd# #VARIABLES.rowTelefone#
             </td>
-            <cfif URL.periodo NEQ "pendentes" AND (NOT VARIABLES.challengeIsCircuitPanel OR VARIABLES.challengeShowsScoreColumn)>
+            <cfif URL.periodo NEQ "pendentes" AND VARIABLES.challengeShowsDistance>
                 <td class="text-end">
                     <cfif len(trim(VARIABLES.rowDistancia))>
                         <cfif VARIABLES.challengeIsCircuitPanel>
