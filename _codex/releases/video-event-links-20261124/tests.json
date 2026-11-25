@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "output": "MEDIA_LINK_SOURCE_PASSED 42 ",
+  "archive": "/run/business-user-acquisition-test-ma6g3v5f",
+  "stage_removed": true,
+  "hashes": {
+    "portal/includes/media_backend.cfm": "7d55c15fc0d6ec6a41f9cb7026c9af827688924e9cee83f797060f3e60729e94",
+    "portal/includes/media_event_action.cfm": "1a30e7e30b50ee5836d358bb9d56fee9a13630f65b81425b9aa09af7ca31a62a",
+    "portal/videos/home.cfm": "d249fa647d4c6f6dd0c5b7c270ce61918b6a5acdd8f22a2a36f255a7a05c25b7",
+    "portal/videos/event_editor.cfm": "2a41505c6af761d9a641d505e1df192b090dfd63572655caa562a1c7c91ef3b6"
+  }
+}
