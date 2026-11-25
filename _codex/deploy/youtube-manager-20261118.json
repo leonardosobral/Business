@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-18",
+  "ok": true,
+  "backups": [
+    "/var/backups/business-youtube-manager-20261118-ktsq4v1p",
+    "/var/backups/business-youtube-neutral-20261118-u49wgucn"
+  ],
+  "runtime_hashes": {
+    "business.roadrunners.run/services/YoutubeChannelManager.cfc": "763e4b949742f94bdbc1909b2179ca2fac67393b5de7fee5b928c8e6a6a5d867",
+    "business.roadrunners.run/portal/canais/lookup.cfm": "a30999a70267d56912e9e77ca73f0b4ce0c468fbeefa5d9c385e0a94239aaf59",
+    "business.roadrunners.run/portal/canais/assets/manager.css": "3a96df2f9ec6e875aa7d15079a5a1e7c9e8d798858ed4375ee12e56a11f145c8",
+    "business.roadrunners.run/portal/canais/assets/manager.js": "4201a9da72c4bd642616e887263976602784a882183f2e592cc55f9cf321e742",
+    "business.roadrunners.run/portal/includes/channels_backend.cfm": "39d10be15fba9f8d598e07fd7a51fe50fefafa5e8b3729eb987c8c421c52c6c5",
+    "business.roadrunners.run/portal/canais/index.cfm": "3945f925ec1fa2bc35b09b0ad8b36a480a5e15fd184d5ccf758de12ba970cf8c",
+    "business.roadrunners.run/portal/canais/home.cfm": "e7ada49c2c2bd9fccfb0b93d27c89abc62c02c2160ecf3184651790d79767997"
+  },
+  "native_checks": 24,
+  "javascript_checks": 11,
+  "browser": {
+    "form_rendered": true,
+    "page_lookup_results": 12,
+    "registration_confirmed": true,
+    "record_id": 33
+  },
+  "registered_channel": {
+    "id": 33,
+    "name": "RunTV Brasil",
+    "code": "runtv-brasil",
+    "handle": "@RunTVBrasil",
+    "youtube_channel_id_verified": "UCBob1La6-WJ57YeG9pPG9xg",
+    "enabled": true,
+    "id_pagina": null,
+    "id_usuario": null
+  },
+  "import_validation": {
+    "mode": "dry_run",
+    "status": "blocked_by_youtube_quota",
+    "videos_written": false,
+    "google_metadata_verified": true,
+    "message": "A API do YouTube retornou quota excedida na consulta de vídeos. Fonte cadastrada e ativa para as próximas execuções."
+  },
+  "probes": [
+    {
+      "host": "business.roadrunners.run",
+      "path": "/portal/canais/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/portal/canais/",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/portal/canais/?lookup=user&q=ge",
+      "status": "302",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/api/youtube-import.cfm",
+      "status": "405",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/api/youtube-import.cfm",
+      "status": "401",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/portal/canais/assets/manager.js",
+      "status": "200",
+      "ok": true
+    },
+    {
+      "host": "business.roadrunners.run",
+      "path": "/portal/canais/assets/manager.css",
+      "status": "200",
+      "ok": true
+    }
+  ],
+  "schema_changed": false,
+  "credentials_changed": false,
+  "cron_changed": false,
+  "git_mutations": false
+}

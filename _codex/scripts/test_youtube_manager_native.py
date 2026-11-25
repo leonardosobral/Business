@@ -1,0 +1,15 @@
+"""Validate the YouTube manager in isolated CF2025 fixtures, with rollback."""
+import ast,hashlib,json,pathlib,shlex,subprocess,sys,tempfile
+root=pathlib.Path(__file__).resolve().parents[2];work=pathlib.Path(tempfile.gettempdir())/'business-youtube-manager-validation';work.mkdir(exist_ok=True)
+tree=ast.parse((root/'_codex/scripts/test_user_acquisition_native.py').read_text());remote=next(ast.literal_eval(n.value) for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='REMOTE' for t in n.targets))
+remote=remote.replace('import json,os,pathlib,secrets,subprocess,sys,tempfile','import json,os,pathlib,secrets,subprocess,sys,tempfile,shutil').replace("dir='/var/backups'","dir='/run'").replace("if stage.exists():stage.rename(archive/'fixture')","if stage.exists():shutil.rmtree(stage)\n shutil.rmtree(archive)").replace('USER_ACQUISITION_','YOUTUBE_MANAGER_').replace('new services.UserAcquisitionMetrics','new services.YoutubeChannelManager').replace("'.services.UserAcquisitionMetrics'","'.services.YoutubeChannelManager'")
+remote=remote.replace("p=json.load(sys.stdin);mode=p.pop('mode');root=", "p=json.load(sys.stdin);expected=p.pop('published_hashes',{});mode=p.pop('mode');root=")
+remote=remote.replace("name='user_acquisition_'", "\nif expected:\n import hashlib\n for rel,sha in expected.items():\n  if hashlib.sha256((root/rel).read_bytes()).hexdigest()!=sha:raise RuntimeError('Published runtime differs from tested source: '+rel)\nname='youtube_manager_'")
+payload={'mode':'source','tests/source.cfm':(root/'_codex/tests/youtube-manager/native.cfm').read_text()}
+for rel in ['services/YoutubeChannelManager.cfc','portal/canais/home.cfm','portal/includes/channels_backend.cfm']:
+ if (root/rel).exists():payload[rel]=(root/rel).read_text()
+if '--published' in sys.argv:
+ payload['published_hashes']={rel:hashlib.sha256((root/rel).read_bytes()).hexdigest() for rel in ['services/YoutubeChannelManager.cfc','portal/canais/home.cfm','portal/includes/channels_backend.cfm','portal/canais/lookup.cfm','portal/canais/index.cfm','portal/canais/assets/manager.js','portal/canais/assets/manager.css']}
+p=subprocess.run(['ssh','-o','BatchMode=yes','-o','StrictHostKeyChecking=yes','-o','ConnectTimeout=10','rr-prod','python3 -c '+shlex.quote(remote)],input=json.dumps(payload).encode(),capture_output=True,timeout=65)
+if not p.stdout:raise SystemExit(p.stderr.decode()[-600:])
+r=json.loads(p.stdout);r['hashes']={rel:hashlib.sha256((root/rel).read_bytes()).hexdigest() for rel in payload if rel!='mode' and (root/rel).is_file()};r['runtime_hashes']={rel:hashlib.sha256((root/rel).read_bytes()).hexdigest() for rel in ['services/YoutubeChannelManager.cfc','portal/canais/home.cfm','portal/includes/channels_backend.cfm','portal/canais/lookup.cfm','portal/canais/index.cfm','portal/canais/assets/manager.js','portal/canais/assets/manager.css']};(work/'tests.json').write_text(json.dumps(r,ensure_ascii=False,indent=2));print(json.dumps(r,ensure_ascii=False));raise SystemExit(0 if r['ok'] else 1)

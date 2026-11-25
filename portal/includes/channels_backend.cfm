@@ -1,248 +1,46 @@
-<cfparam name="URL.pagina" default="1" type="numeric"/>
-<cfset VARIABLES.mediaPage = max(1, int(URL.pagina))/>
-
-<cfquery name="qChannelColumns">
-    SELECT column_name, data_type, is_nullable, column_default, character_maximum_length
-    FROM information_schema.columns
-    WHERE table_schema = 'public'
-    AND table_name = 'tb_youtube_canais'
-    ORDER BY ordinal_position
-</cfquery>
-
-<cfset VARIABLES.channelColumns = ValueList(qChannelColumns.column_name)/>
-<cfset VARIABLES.channelPk = ""/>
-<cfset VARIABLES.channelSelectColumns = ""/>
-<cfset VARIABLES.channelFormExcludedColumns = "created_at,updated_at,createdon,modifiedon,data_cadastro,data_atualizacao,data_criacao,data_alteracao,data_importacao,ultima_importacao,data_ultima_importacao,logotipo,logo,logo_url,imagem_url,image_url,avatar_url,thumbnail_url,logotipo_arquivo,logo_arquivo,logotipo_blob,logo_blob,logotipo_mime,logo_mime,logotipo_nome_arquivo,logo_nome_arquivo,logotipo_atualizado_em,logo_atualizado_em"/>
-
-<cfloop list="id_canal,id_youtube_canal,youtube_canal_id,id" item="channelPkCandidate">
-    <cfif NOT len(trim(VARIABLES.channelPk)) AND ListFindNoCase(VARIABLES.channelColumns, channelPkCandidate)>
-        <cfset VARIABLES.channelPk = channelPkCandidate/>
-    </cfif>
-</cfloop>
-
-<cfif NOT len(trim(VARIABLES.channelPk)) AND qChannelColumns.recordcount>
-    <cfset VARIABLES.channelPk = qChannelColumns.column_name/>
-</cfif>
-
-<cfloop query="qChannelColumns">
-    <cfset VARIABLES.channelSelectColumns = ListAppend(VARIABLES.channelSelectColumns, '"' & Replace(qChannelColumns.column_name, '"', '""', 'all') & '"')/>
-</cfloop>
-
-<cfset VARIABLES.channelOrderColumn = len(trim(VARIABLES.channelPk)) ? VARIABLES.channelPk : (qChannelColumns.recordcount ? qChannelColumns.column_name : "")/>
-
-<cfset VARIABLES.channelActiveColumn = ""/>
-<cfloop query="qChannelColumns">
-    <cfif NOT len(trim(VARIABLES.channelActiveColumn))
-        AND lcase(qChannelColumns.data_type) EQ "boolean"
-        AND ListFindNoCase("ativo,is_active,active,habilitado,enabled,status,pub_status", qChannelColumns.column_name)>
-        <cfset VARIABLES.channelActiveColumn = qChannelColumns.column_name/>
-    </cfif>
-</cfloop>
-
-<cfif isDefined("FORM.canal_action")
-    AND isDefined("qPerfil")
-    AND qPerfil.recordcount
-    AND qPerfil.is_admin
-    AND FORM.canal_action EQ "salvar"
-    AND len(trim(VARIABLES.channelPk))
-    AND qChannelColumns.recordcount>
-
-    <cfset VARIABLES.savedChannelRecordId = ""/>
-
-    <cfif isDefined("FORM.canal_record_id") AND len(trim(FORM.canal_record_id))>
-        <cfset VARIABLES.savedChannelRecordId = FORM.canal_record_id/>
-        <cfquery>
-            UPDATE tb_youtube_canais
-            SET
-            <cfset VARIABLES.channelFieldSeparator = ""/>
-            <cfloop query="qChannelColumns">
-                <cfif qChannelColumns.column_name NEQ VARIABLES.channelPk
-                    AND NOT ListFindNoCase(VARIABLES.channelFormExcludedColumns, qChannelColumns.column_name)
-                    AND StructKeyExists(FORM, "canal_" & qChannelColumns.column_name)>
-                    <cfset VARIABLES.channelFieldValue = FORM["canal_" & qChannelColumns.column_name]/>
-                    <cfset VARIABLES.channelFieldType = lcase(qChannelColumns.data_type)/>
-                    <cfif VARIABLES.channelFieldType EQ "boolean">
-                        <cfset VARIABLES.channelFieldValue = ListFindNoCase(VARIABLES.channelFieldValue, "true")
-                            OR ListFindNoCase(VARIABLES.channelFieldValue, "1")
-                            OR ListFindNoCase(VARIABLES.channelFieldValue, "yes")
-                            OR ListFindNoCase(VARIABLES.channelFieldValue, "sim")
-                            OR ListFindNoCase(VARIABLES.channelFieldValue, "on")/>
-                    </cfif>
-                    <cfset VARIABLES.channelFieldNullable = qChannelColumns.is_nullable EQ "YES"/>
-                    <cfset VARIABLES.channelFieldHasValue = VARIABLES.channelFieldType EQ "boolean" OR (isSimpleValue(VARIABLES.channelFieldValue) AND len(trim(VARIABLES.channelFieldValue)))/>
-                    <cfset VARIABLES.channelFieldIsNull = VARIABLES.channelFieldType NEQ "boolean" AND NOT VARIABLES.channelFieldHasValue/>
-                    #VARIABLES.channelFieldSeparator#"#Replace(qChannelColumns.column_name, '"', '""', 'all')#" =
-                    <cfswitch expression="#VARIABLES.channelFieldType#">
-                        <cfcase value="boolean">
-                            <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.channelFieldValue#"/>
-                        </cfcase>
-                        <cfcase value="integer,smallint">
-                            <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfcase>
-                        <cfcase value="bigint">
-                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfcase>
-                        <cfcase value="numeric,decimal,real,double precision">
-                            <cfqueryparam cfsqltype="cf_sql_numeric" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfcase>
-                        <cfcase value="date">
-                            <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfcase>
-                        <cfcase value="timestamp without time zone,timestamp with time zone">
-                            <cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfcase>
-                        <cfdefaultcase>
-                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfdefaultcase>
-                    </cfswitch>
-                    <cfset VARIABLES.channelFieldSeparator = ", "/>
-                </cfif>
-            </cfloop>
-            WHERE "#Replace(VARIABLES.channelPk, '"', '""', 'all')#" =
-            <cfif IsNumeric(FORM.canal_record_id)>
-                <cfqueryparam cfsqltype="cf_sql_integer" value="#FORM.canal_record_id#"/>
-            <cfelse>
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="#FORM.canal_record_id#"/>
-            </cfif>
-        </cfquery>
-    <cfelse>
-        <cfquery name="qChannelInsert">
-            INSERT INTO tb_youtube_canais (
-            <cfset VARIABLES.channelFieldSeparator = ""/>
-            <cfloop query="qChannelColumns">
-                <cfif qChannelColumns.column_name NEQ VARIABLES.channelPk
-                    AND NOT ListFindNoCase(VARIABLES.channelFormExcludedColumns, qChannelColumns.column_name)
-                    AND StructKeyExists(FORM, "canal_" & qChannelColumns.column_name)>
-                    #VARIABLES.channelFieldSeparator#"#Replace(qChannelColumns.column_name, '"', '""', 'all')#"
-                    <cfset VARIABLES.channelFieldSeparator = ", "/>
-                </cfif>
-            </cfloop>
-            ) VALUES (
-            <cfset VARIABLES.channelFieldSeparator = ""/>
-            <cfloop query="qChannelColumns">
-                <cfif qChannelColumns.column_name NEQ VARIABLES.channelPk
-                    AND NOT ListFindNoCase(VARIABLES.channelFormExcludedColumns, qChannelColumns.column_name)
-                    AND StructKeyExists(FORM, "canal_" & qChannelColumns.column_name)>
-                    <cfset VARIABLES.channelFieldValue = FORM["canal_" & qChannelColumns.column_name]/>
-                    <cfset VARIABLES.channelFieldType = lcase(qChannelColumns.data_type)/>
-                    <cfif VARIABLES.channelFieldType EQ "boolean">
-                        <cfset VARIABLES.channelFieldValue = ListFindNoCase(VARIABLES.channelFieldValue, "true")
-                            OR ListFindNoCase(VARIABLES.channelFieldValue, "1")
-                            OR ListFindNoCase(VARIABLES.channelFieldValue, "yes")
-                            OR ListFindNoCase(VARIABLES.channelFieldValue, "sim")
-                            OR ListFindNoCase(VARIABLES.channelFieldValue, "on")/>
-                    </cfif>
-                    <cfset VARIABLES.channelFieldNullable = qChannelColumns.is_nullable EQ "YES"/>
-                    <cfset VARIABLES.channelFieldHasValue = VARIABLES.channelFieldType EQ "boolean" OR (isSimpleValue(VARIABLES.channelFieldValue) AND len(trim(VARIABLES.channelFieldValue)))/>
-                    <cfset VARIABLES.channelFieldIsNull = VARIABLES.channelFieldType NEQ "boolean" AND NOT VARIABLES.channelFieldHasValue/>
-                    #VARIABLES.channelFieldSeparator#
-                    <cfswitch expression="#VARIABLES.channelFieldType#">
-                        <cfcase value="boolean">
-                            <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.channelFieldValue#"/>
-                        </cfcase>
-                        <cfcase value="integer,smallint">
-                            <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfcase>
-                        <cfcase value="bigint">
-                            <cfqueryparam cfsqltype="cf_sql_bigint" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfcase>
-                        <cfcase value="numeric,decimal,real,double precision">
-                            <cfqueryparam cfsqltype="cf_sql_numeric" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfcase>
-                        <cfcase value="date">
-                            <cfqueryparam cfsqltype="cf_sql_date" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfcase>
-                        <cfcase value="timestamp without time zone,timestamp with time zone">
-                            <cfqueryparam cfsqltype="cf_sql_timestamp" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfcase>
-                        <cfdefaultcase>
-                            <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.channelFieldValue#" null="#VARIABLES.channelFieldIsNull#"/>
-                        </cfdefaultcase>
-                    </cfswitch>
-                    <cfset VARIABLES.channelFieldSeparator = ", "/>
-                </cfif>
-            </cfloop>
-            )
-            RETURNING "#Replace(VARIABLES.channelPk, '"', '""', 'all')#"
-        </cfquery>
-        <cfif qChannelInsert.recordcount>
-            <cfset VARIABLES.savedChannelRecordId = qChannelInsert[VARIABLES.channelPk][1]/>
-        </cfif>
-    </cfif>
-
-    <cfset VARIABLES.channelRedirectUrl = "./?pagina=" & VARIABLES.mediaPage/>
-    <cflocation addtoken="false" url="#VARIABLES.channelRedirectUrl#"/>
-</cfif>
-
-<cfif isDefined("URL.canal_acao")
-    AND isDefined("qPerfil")
-    AND qPerfil.recordcount
-    AND qPerfil.is_admin
-    AND len(trim(VARIABLES.channelPk))
-    AND isDefined("URL.canal_id")>
-
-    <cfif URL.canal_acao EQ "status"
-        AND len(trim(VARIABLES.channelActiveColumn))
-        AND isDefined("URL.status")>
-        <cfquery>
-            UPDATE tb_youtube_canais
-            SET "#Replace(VARIABLES.channelActiveColumn, '"', '""', 'all')#" = <cfqueryparam cfsqltype="cf_sql_bit" value="#URL.status#"/>
-            WHERE "#Replace(VARIABLES.channelPk, '"', '""', 'all')#" =
-            <cfif IsNumeric(URL.canal_id)>
-                <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.canal_id#"/>
-            <cfelse>
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.canal_id#"/>
-            </cfif>
-        </cfquery>
-
-        <cflocation addtoken="false" url="./?pagina=#VARIABLES.mediaPage#"/>
-    </cfif>
-
-    <cfif URL.canal_acao EQ "excluir">
-        <cfquery>
-            DELETE FROM tb_youtube_canais
-            WHERE "#Replace(VARIABLES.channelPk, '"', '""', 'all')#" =
-            <cfif IsNumeric(URL.canal_id)>
-                <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.canal_id#"/>
-            <cfelse>
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.canal_id#"/>
-            </cfif>
-        </cfquery>
-
-        <cflocation addtoken="false" url="./?pagina=#VARIABLES.mediaPage#"/>
-    </cfif>
-</cfif>
-
-<cfquery name="qChannelsCount">
-    SELECT count(*) as total
-    FROM tb_youtube_canais
-</cfquery>
-
-<cfif qChannelColumns.recordcount>
-    <cfquery name="qChannels">
-        SELECT #PreserveSingleQuotes(VARIABLES.channelSelectColumns)#
-        FROM tb_youtube_canais
-        ORDER BY "#Replace(VARIABLES.channelOrderColumn, '"', '""', 'all')#" DESC
-    </cfquery>
-<cfelse>
-    <cfset qChannels = QueryNew("")/>
-</cfif>
-
-<cfset qChannelEdit = QueryNew("")/>
-
-<cfif qChannelColumns.recordcount
-    AND len(trim(VARIABLES.channelPk))
-    AND isDefined("URL.canal_editar")
-    AND len(trim(URL.canal_editar))>
-    <cfquery name="qChannelEdit">
-        SELECT #PreserveSingleQuotes(VARIABLES.channelSelectColumns)#
-        FROM tb_youtube_canais
-        WHERE "#Replace(VARIABLES.channelPk, '"', '""', 'all')#" =
-        <cfif IsNumeric(URL.canal_editar)>
-            <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.canal_editar#"/>
-        <cfelse>
-            <cfqueryparam cfsqltype="cf_sql_varchar" value="#URL.canal_editar#"/>
-        </cfif>
-        LIMIT 1
-    </cfquery>
-</cfif>
+<cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT qPerfil.is_admin><cfheader statuscode="403"/><cfabort/></cfif>
+<cfscript>
+channelManager=new services.YoutubeChannelManager(val(qPerfil.id));
+if(!structKeyExists(SESSION,"youtubeChannelCsrf"))SESSION.youtubeChannelCsrf=lCase(hash(generateSecretKey("AES",256),"SHA-256"));
+channelError="";channelNotice="";
+channelSearch=left(trim(URL.busca ?: ""),100);
+channelStatus=lCase(trim(URL.status ?: "all"));if(!listFind("all,active,inactive",channelStatus))channelStatus="all";
+channelEditId=reFind("^[1-9][0-9]{0,9}$",URL.canal_editar ?: "") ? val(URL.canal_editar) : 0;
+channelShowForm=channelEditId GT 0 OR (URL.canal_novo ?: "") EQ "1";
+channelForm={id_youtube_canal="0",revision="",name="",source_type="channel",source="",id_pagina="",id_usuario="",page_label="",user_label="",max_results="3",sort_order="0",min_duration_minutes="",max_duration_minutes="",enabled="1",descricao="",instagram_url=""};
+qChannelEdit=channelManager.get(channelEditId);
+if(channelEditId AND !qChannelEdit.recordCount)channelError="Canal não encontrado. Atualize a lista.";
+if(qChannelEdit.recordCount){
+ row=queryGetRow(qChannelEdit,1);
+ for(key in ['id_youtube_canal','revision','name','source_type','max_results','sort_order','descricao','instagram_url'])channelForm[key]=isNull(row[key]) ? "" : row[key];
+ channelForm.enabled=row.enabled ? "1" : "0";channelForm.source=channelManager.sourceUrl(row);
+ channelForm.id_pagina=val(row.id_pagina ?: 0) GT 0 ? numberFormat(row.id_pagina,"0") : "";channelForm.id_usuario=val(row.id_usuario ?: 0) GT 0 ? numberFormat(row.id_usuario,"0") : "";
+ channelForm.page_label=len(channelForm.id_pagina) ? row.page_name&(len(row.page_tag ?: "") ? " · @"&row.page_tag : "") : "";
+ channelForm.user_label=len(channelForm.id_usuario) ? row.user_name&" · "&row.user_email : "";
+ channelForm.min_duration_minutes=isNumeric(row.min_duration_seconds ?: "") ? val(row.min_duration_seconds)/60 : "";
+ channelForm.max_duration_minutes=isNumeric(row.max_duration_seconds ?: "") ? val(row.max_duration_seconds)/60 : "";
+}
+if(structKeyExists(FORM,"canal_action")){
+ if(CGI.request_method NEQ "POST" OR compare(FORM.channel_csrf ?: "",SESSION.youtubeChannelCsrf) NEQ 0){cfheader(statuscode=403);writeOutput("Recarregue a página antes de tentar novamente.");abort;}
+ try{
+  if(FORM.canal_action EQ "salvar"){
+   for(key in channelForm)if(structKeyExists(FORM,key))channelForm[key]=FORM[key];
+   channelForm.enabled=structKeyExists(FORM,"enabled") ? "1" : "0";
+   savedId=channelManager.save(channelForm);
+   location(url="./?canal_editar="&savedId&"&sucesso=salvo##channel-editor",addtoken=false);
+  }else if(FORM.canal_action EQ "status"){
+   channelManager.toggle(val(FORM.id_youtube_canal ?: 0),FORM.revision ?: "");location(url="./?sucesso=status",addtoken=false);
+  }else if(FORM.canal_action EQ "remover"){
+   if((FORM.confirm_remove ?: "") NEQ "1")throw(type="YoutubeChannel.Validation",message="Confirme a remoção do canal.");
+   channelManager.remove(val(FORM.id_youtube_canal ?: 0),FORM.revision ?: "");location(url="./?sucesso=removido",addtoken=false);
+  }
+ }catch(YoutubeChannel.Validation e){channelError=e.message;channelShowForm=FORM.canal_action EQ "salvar" OR channelShowForm;}
+ catch(YoutubeChannel.Conflict e){channelError=e.message;channelShowForm=FORM.canal_action EQ "salvar" OR channelShowForm;}
+ catch(any e){channelError="Não foi possível salvar. Seus dados foram preservados; tente novamente.";channelShowForm=FORM.canal_action EQ "salvar" OR channelShowForm;writeLog(file="youtube-channels",type="error",text="Falha no gerenciador de canais: "&e.type);}
+}
+if((URL.sucesso ?: "") EQ "salvo")channelNotice="Canal salvo. Quando ativo, será considerado na próxima importação automática.";
+if((URL.sucesso ?: "") EQ "status")channelNotice="Status de importação atualizado.";
+if((URL.sucesso ?: "") EQ "removido")channelNotice="Fonte removida. Os vídeos já importados foram preservados.";
+qChannels=channelManager.listing(channelSearch,channelStatus);
+qChannelStats=queryExecute("SELECT count(*) AS total,count(*) FILTER(WHERE enabled) AS active,count(*) FILTER(WHERE NOT enabled) AS inactive FROM tb_youtube_canais",{},{datasource="runner_dba"});
+</cfscript>

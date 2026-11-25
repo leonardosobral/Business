@@ -8,6 +8,10 @@
 
 <cfinclude template="../../includes/backend/backend_login.cfm"/>
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
+<cfif structKeyExists(URL,"lookup")>
+    <cfinclude template="lookup.cfm"/>
+    <cfabort/>
+</cfif>
 <cfinclude template="../../includes/estrutura/head.cfm"/>
 
 <body data-mdb-theme="dark" class="bg-dark-subtle">

@@ -310,6 +310,7 @@
 <cfset VARIABLES.executadoEm = DateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss") />
 <cfset VARIABLES.maxPages = min(20, max(1, val(URL.maxPages))) />
 <cfset VARIABLES.dryRun = asBoolean(URL.dryRun) />
+<cfset VARIABLES.schedulesOnly = structKeyExists(VARIABLES.requestPayload, "schedulesOnly") AND asBoolean(VARIABLES.requestPayload.schedulesOnly) />
 
 <cfif NOT len(VARIABLES.jobToken)>
     <cfset jsonAbort(
@@ -369,7 +370,14 @@
             WHERE table_schema = 'public'
               AND table_name = 'tb_media'
               AND column_name IN ('youtube_duration_iso', 'youtube_duration_seconds', 'pub_status')
-        ) AS media_columns
+        ) AS media_columns,
+        EXISTS (
+            SELECT 1 FROM information_schema.columns
+            WHERE table_schema = 'public'
+              AND table_name = 'tb_media'
+              AND column_name = 'youtube_scheduled_start_at'
+              AND data_type = 'timestamp with time zone'
+        ) AS has_schedule
 </cfquery>
 <cfif NOT asBoolean(qYoutubeSchemaCheck.has_channels)
     OR NOT asBoolean(qYoutubeSchemaCheck.has_media)
@@ -381,6 +389,11 @@
         message="A estrutura da importacao YouTube esta incompleta. Verifique api/youtube/jobs/schema.sql."
     }) />
 </cfif>
+<cfset VARIABLES.hasYoutubeScheduleColumn = asBoolean(qYoutubeSchemaCheck.has_schedule) />
+<cfif VARIABLES.schedulesOnly AND NOT VARIABLES.hasYoutubeScheduleColumn>
+    <cfset jsonAbort(500, {success=false, status="schedule_schema_required", message="A coluna youtube_scheduled_start_at ainda nao esta disponivel."}) />
+</cfif>
+<cfset VARIABLES.youtubeScheduleParser = new services.YoutubeBroadcastSchedule() />
 
 <cfquery name="qYoutubeChannels">
     SELECT
@@ -557,7 +570,7 @@
         <cfhttp method="get" result="httpResult" url="https://www.googleapis.com/youtube/v3/videos" timeout="30">
             <cfhttpparam type="header" name="Referer" value="https://business.roadrunners.run/" />
             <cfhttpparam type="url" name="key" value="#VARIABLES.youtubeApiKey#" />
-            <cfhttpparam type="url" name="part" value="contentDetails" />
+            <cfhttpparam type="url" name="part" value="contentDetails,liveStreamingDetails" />
             <cfhttpparam type="url" name="id" value="#arrayToList(arguments.videoIds)#" />
             <cfhttpparam type="url" name="maxResults" value="#arrayLen(arguments.videoIds)#" />
         </cfhttp>
@@ -579,7 +592,8 @@
                     <cfset durationSeconds = isoDurationToSeconds(durationIso) />
                     <cfset result.details[trim(item.id)] = {
                         durationIso = durationIso,
-                        durationSeconds = durationSeconds
+                        durationSeconds = durationSeconds,
+                        schedule = VARIABLES.youtubeScheduleParser.fromYoutubeItem(item)
                     } />
                 </cfif>
             </cfloop>
@@ -589,7 +603,7 @@
             <cfset result.errorMessage = structKeyExists(payload, "error")
                 AND structKeyExists(payload.error, "message")
                 ? payload.error.message
-                : "Nao foi possivel buscar os detalhes de duracao dos videos no YouTube." />
+                : "Nao foi possivel buscar os detalhes dos videos no YouTube." />
         </cfif>
     <cfcatch type="any">
         <cfset result.errorMessage = cfcatch.message />
@@ -599,6 +613,52 @@
     </cfcatch>
     </cftry>
 
+    <cfreturn result />
+</cffunction>
+
+<cffunction name="refreshCuratedYoutubeSchedules" access="private" returntype="struct" output="false">
+    <cfset var result = {checked=0, scheduled=0, updated=0, errors=[]} />
+    <cfset var candidates = "" />
+    <cfset var batch = {} />
+    <cfset var videoId = "" />
+    <cfset var schedule = {} />
+    <cfset var updateMeta = {} />
+    <cfquery name="candidates">
+        SELECT media_url
+        FROM public.tb_media
+        WHERE pub_status
+          AND media_url ~ '^[a-zA-Z0-9_-]{11}$'
+          AND (is_featured OR (id_evento IS NOT NULL AND (
+                 data_publicacao >= current_date - 60
+                 OR youtube_scheduled_start_at >= now() - interval '7 days'
+          )))
+        ORDER BY is_featured DESC, data_publicacao DESC NULLS LAST, id_media DESC
+        LIMIT 50
+    </cfquery>
+    <cfset batch = fetchVideoDetailsBatch(listToArray(valueList(candidates.media_url))) />
+    <cfif NOT batch.success>
+        <cfset arrayAppend(result.errors, "RunTV: " & batch.errorMessage) />
+        <cfreturn result />
+    </cfif>
+
+    <cfloop query="candidates">
+        <cfset videoId = candidates.media_url />
+        <cfif NOT structKeyExists(batch.details, videoId)><cfcontinue/></cfif>
+        <cfset schedule = batch.details[videoId].schedule />
+        <cfif NOT schedule.authoritative><cfcontinue/></cfif>
+        <cfset result.checked++ />
+        <cfif len(schedule.utc)><cfset result.scheduled++ /></cfif>
+        <cfif NOT VARIABLES.dryRun>
+            <cfquery result="updateMeta">
+                UPDATE public.tb_media
+                SET youtube_scheduled_start_at = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#schedule.utc#" null="#NOT len(schedule.utc)#"/> AS timestamptz)
+                WHERE media_url = <cfqueryparam cfsqltype="cf_sql_varchar" value="#videoId#"/>
+                  AND pub_status AND (is_featured OR id_evento IS NOT NULL)
+                  AND youtube_scheduled_start_at IS DISTINCT FROM CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#schedule.utc#" null="#NOT len(schedule.utc)#"/> AS timestamptz)
+            </cfquery>
+            <cfset result.updated += val(updateMeta.recordCount) />
+        </cfif>
+    </cfloop>
     <cfreturn result />
 </cffunction>
 
@@ -828,6 +888,7 @@
     <cfset var detailData = {} />
     <cfset var durationIso = "" />
     <cfset var durationSeconds = 0 />
+    <cfset var schedule = {} />
     <cfset var publishStatus = true />
     <cfset var sourceIdentifier = getSourceIdentifier(arguments.channel) />
     <cfset var currentPageToken = trim(arguments.pageToken) />
@@ -941,6 +1002,7 @@
             <cfset detailData = structKeyExists(videoDetails, videoId) ? videoDetails[videoId] : {} />
             <cfset durationIso = structKeyExists(detailData, "durationIso") ? trim(detailData.durationIso) : "" />
             <cfset durationSeconds = structKeyExists(detailData, "durationSeconds") ? val(detailData.durationSeconds) : 0 />
+            <cfset schedule = structKeyExists(detailData, "schedule") ? detailData.schedule : {authoritative=false, utc=""} />
             <cfset publishStatus = shouldPublishYoutubeVideo(durationSeconds) />
 
             <cfif NOT passesDurationFilter(resolvedChannel, durationSeconds)>
@@ -974,6 +1036,9 @@
                         media_canal_slug = <cfqueryparam cfsqltype="cf_sql_varchar" value="#channelSlug#" />,
                         youtube_duration_iso = <cfqueryparam cfsqltype="cf_sql_varchar" value="#durationIso#" null="#NOT len(durationIso)#" />,
                         youtube_duration_seconds = <cfqueryparam cfsqltype="cf_sql_integer" value="#durationSeconds#" null="#durationSeconds LTE 0#" />,
+                        <cfif VARIABLES.hasYoutubeScheduleColumn AND schedule.authoritative>
+                            youtube_scheduled_start_at = CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#schedule.utc#" null="#NOT len(schedule.utc)#"/> AS timestamptz),
+                        </cfif>
                         pub_status = <cfqueryparam cfsqltype="cf_sql_bit" value="#publishStatus#" />
                     WHERE media_url = <cfqueryparam cfsqltype="cf_sql_varchar" value="#videoId#" />
                 </cfquery>
@@ -988,7 +1053,7 @@
             <cftry>
                 <cfquery result="insertResult">
                     INSERT INTO tb_media
-                    (media_url, media_tipo, media_titulo, media_descricao, data_publicacao, media_canal_nome, media_canal_slug, youtube_duration_iso, youtube_duration_seconds, pub_status)
+                    (media_url, media_tipo, media_titulo, media_descricao, data_publicacao, media_canal_nome, media_canal_slug, youtube_duration_iso, youtube_duration_seconds, pub_status<cfif VARIABLES.hasYoutubeScheduleColumn>, youtube_scheduled_start_at</cfif>)
                     VALUES
                     (
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#videoId#" />,
@@ -1001,6 +1066,9 @@
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="#durationIso#" null="#NOT len(durationIso)#" />,
                         <cfqueryparam cfsqltype="cf_sql_integer" value="#durationSeconds#" null="#durationSeconds LTE 0#" />,
                         <cfqueryparam cfsqltype="cf_sql_bit" value="#publishStatus#" />
+                        <cfif VARIABLES.hasYoutubeScheduleColumn>
+                            , CAST(<cfqueryparam cfsqltype="cf_sql_varchar" value="#schedule.utc#" null="#NOT len(schedule.utc)#"/> AS timestamptz)
+                        </cfif>
                     )
                     ON CONFLICT (media_url) DO NOTHING
                 </cfquery>
@@ -1088,7 +1156,7 @@
     <cfset VARIABLES.filteredChannels = VARIABLES.enabledChannels />
 </cfif>
 
-<cfif NOT arrayLen(VARIABLES.filteredChannels)>
+<cfif NOT VARIABLES.schedulesOnly AND NOT arrayLen(VARIABLES.filteredChannels)>
     <cfif VARIABLES.isTechnicalRun>
         <cfset jsonAbort(
             404,
@@ -1124,6 +1192,7 @@
 <cfset VARIABLES.totalSkipped = 0 />
 <cfset VARIABLES.allErrors = [] />
 <cfset VARIABLES.skipMessage = "" />
+<cfset VARIABLES.scheduleSummary = {checked=0, scheduled=0, updated=0, errors=[]} />
 
 <cfif NOT VARIABLES.lockAcquired>
     <cfif VARIABLES.isTechnicalRun>
@@ -1146,16 +1215,29 @@
     <cfset VARIABLES.skipMessage = "Job ja esta em execucao." />
 <cfelse>
     <cftry>
-        <cfloop array="#VARIABLES.filteredChannels#" item="channelConfig">
-            <cfset arrayAppend(
-                VARIABLES.summary,
-                processChannel(
-                    channelConfig,
-                    URL.maxResults,
-                    channelConfig.code EQ trim(URL.channel) ? trim(URL.pageToken) : ""
-                )
-            ) />
-        </cfloop>
+        <cfif NOT VARIABLES.schedulesOnly>
+            <cfloop array="#VARIABLES.filteredChannels#" item="channelConfig">
+                <cfset arrayAppend(
+                    VARIABLES.summary,
+                    processChannel(
+                        channelConfig,
+                        URL.maxResults,
+                        channelConfig.code EQ trim(URL.channel) ? trim(URL.pageToken) : ""
+                    )
+                ) />
+            </cfloop>
+        </cfif>
+        <cfif VARIABLES.hasYoutubeScheduleColumn AND (VARIABLES.schedulesOnly OR NOT len(trim(URL.channel)))>
+            <cftry>
+                <cfset VARIABLES.scheduleSummary = refreshCuratedYoutubeSchedules() />
+                <cfcatch type="any">
+                    <cfset arrayAppend(VARIABLES.scheduleSummary.errors, "RunTV: falha ao sincronizar a programacao.") />
+                </cfcatch>
+            </cftry>
+            <cfloop array="#VARIABLES.scheduleSummary.errors#" item="scheduleError">
+                <cfset arrayAppend(VARIABLES.allErrors, scheduleError) />
+            </cfloop>
+        </cfif>
 
         <cfset VARIABLES.totalChannelsProcessed = arrayLen(VARIABLES.summary) />
 
@@ -1201,12 +1283,13 @@
 </cfif>
 
 <cfif VARIABLES.isTechnicalRun>
+    <cfset VARIABLES.scheduleOnlyFailed = VARIABLES.schedulesOnly AND arrayLen(VARIABLES.scheduleSummary.errors) GT 0 />
     <cfset jsonAbort(
-        200,
+        VARIABLES.scheduleOnlyFailed ? 500 : 200,
         {
-            success = true,
-            status = VARIABLES.dryRun ? "dry_run" : "ok",
-            message = VARIABLES.dryRun ? "Simulacao concluida sem gravacoes" : "Importacao concluida",
+            success = NOT VARIABLES.scheduleOnlyFailed,
+            status = VARIABLES.scheduleOnlyFailed ? "schedule_error" : (VARIABLES.dryRun ? "dry_run" : "ok"),
+            message = VARIABLES.scheduleOnlyFailed ? "Sincronizacao RunTV falhou" : (VARIABLES.dryRun ? "Simulacao concluida sem gravacoes" : (VARIABLES.schedulesOnly ? "Programacao RunTV sincronizada" : "Importacao concluida")),
             dry_run = VARIABLES.dryRun,
             max_pages = VARIABLES.maxPages,
             api_key_source = VARIABLES.apiKeySource,
@@ -1217,6 +1300,11 @@
             vinculados = VARIABLES.totalLinked,
             filtrados = VARIABLES.totalFiltered,
             ignorados = VARIABLES.totalSkipped,
+            programacao = {
+                verificados = VARIABLES.scheduleSummary.checked,
+                agendados = VARIABLES.scheduleSummary.scheduled,
+                atualizados = VARIABLES.scheduleSummary.updated
+            },
             erros = VARIABLES.allErrors
         }
     ) />

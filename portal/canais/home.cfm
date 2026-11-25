@@ -1,288 +1,43 @@
 <cfinclude template="../includes/channels_backend.cfm"/>
-<cfset VARIABLES.channelVisibleColumns = "id_youtube_canal,name,id_pagina,id_usuario,max_results,sort"/>
-<cfset VARIABLES.channelShowForm = qChannelEdit.recordcount OR (isDefined("URL.canal_novo") AND URL.canal_novo)/>
-<cfset VARIABLES.channelVisibleCount = 0/>
-<cfset VARIABLES.channelDescriptionColumns = "descricao,description,bio"/>
-<cfset VARIABLES.channelInstagramColumns = "instagram,instagram_url,url_instagram,link_instagram"/>
-<cfset VARIABLES.channelUrlColumns = "url,channel_url,youtube_url,feed_url,api_url"/>
-<cfset VARIABLES.channelHasDescriptionField = false/>
-<cfset VARIABLES.channelHasInstagramField = false/>
-<cfloop list="#VARIABLES.channelDescriptionColumns#" item="channelDescriptionColumn">
-  <cfif NOT VARIABLES.channelHasDescriptionField AND ListFindNoCase(VARIABLES.channelColumns, channelDescriptionColumn)>
-    <cfset VARIABLES.channelHasDescriptionField = true/>
-  </cfif>
-</cfloop>
-<cfloop list="#VARIABLES.channelInstagramColumns#" item="channelInstagramColumn">
-  <cfif NOT VARIABLES.channelHasInstagramField AND ListFindNoCase(VARIABLES.channelColumns, channelInstagramColumn)>
-    <cfset VARIABLES.channelHasInstagramField = true/>
-  </cfif>
-</cfloop>
-
-<style>
-  .channel-form-grid {
-    row-gap: 1rem;
-  }
-
-  .channel-table td,
-  .channel-table th {
-    vertical-align: middle;
-  }
-
-  .channel-cell {
-    max-width: 280px;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
-
-  .channel-actions-cell {
-    min-width: 240px;
-  }
-
-  .channel-form-card {
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 1rem;
-  }
-
-  .channel-field-card {
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 1rem;
-    padding: 1rem;
-    height: 100%;
-  }
-
-  .channel-field-card .form-label {
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.7);
-  }
-
-  .channel-field-help {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.58);
-  }
-
-</style>
-
-<section>
-  <div class="row gx-xl-5">
-    <div class="col-lg-12 mb-4 mb-lg-0 h-100">
-      <div class="card shadow-0">
-        <div class="card-body">
-
-          <div class="d-flex flex-column flex-lg-row justify-content-between gap-3">
-            <div>
-              <h3 class="mb-1">Portal - Canais de Vídeo</h3>
-              <p class="text-muted mb-0">Gerencie os canais de origem usados na importacao automatica de videos para o portal.</p>
-            </div>
-            <div class="text-lg-end">
-              <div class="small text-muted">Total de canais</div>
-              <div class="h4 mb-0"><cfoutput>#LSNumberFormat(qChannelsCount.total)#</cfoutput></div>
-            </div>
-          </div>
-
-          <hr/>
-
-          <cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT qPerfil.is_admin>
-            <div class="alert alert-warning mb-0">
-              Voce nao tem permissao para acessar o gerenciamento de canais de video do Portal.
-            </div>
-          <cfelseif NOT qChannelColumns.recordcount>
-            <div class="alert alert-danger mb-0">
-              Nao foi possivel localizar as colunas da tabela <strong>tb_youtube_canais</strong>.
-            </div>
-          <cfelse>
-            <div class="d-flex justify-content-end mb-3">
-              <cfoutput>
-                <a class="btn btn-warning" href="./?pagina=#VARIABLES.mediaPage#&canal_novo=1">Novo canal</a>
-              </cfoutput>
-            </div>
-
-            <cfif VARIABLES.channelShowForm>
-              <div class="channel-form-card p-4 mb-4">
-                <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
-                  <div>
-                    <h5 class="mb-1"><cfif qChannelEdit.recordcount>Editar canal<cfelse>Novo canal</cfif></h5>
-                    <p class="text-muted small mb-0">Cadastre ou atualize os dados usados na importacao e exibicao do canal.</p>
-                  </div>
-                  <cfoutput><a class="btn btn-sm btn-outline-secondary" href="./?pagina=#VARIABLES.mediaPage#">Fechar</a></cfoutput>
-                </div>
-
-                <cfif NOT VARIABLES.channelHasDescriptionField OR NOT VARIABLES.channelHasInstagramField>
-                  <div class="alert alert-warning py-2 px-3 small mb-3">
-                    Alguns campos avançados do canal dependem de colunas na tabela <strong>tb_youtube_canais</strong>.
-                    <cfif NOT VARIABLES.channelHasDescriptionField>Descrição não encontrada. </cfif>
-                    <cfif NOT VARIABLES.channelHasInstagramField>Instagram não encontrado.</cfif>
-                  </div>
-                </cfif>
-
-                <cfoutput><form method="post" action="./?pagina=#VARIABLES.mediaPage#"></cfoutput>
-                  <input type="hidden" name="canal_action" value="salvar"/>
-                  <input type="hidden" name="canal_record_id" value="<cfif qChannelEdit.recordcount><cfoutput>#encodeForHTMLAttribute(qChannelEdit[VARIABLES.channelPk][1])#</cfoutput></cfif>"/>
-
-                  <div class="row channel-form-grid">
-                    <cfloop query="qChannelColumns">
-                      <cfif qChannelColumns.column_name NEQ VARIABLES.channelPk
-                          AND NOT ListFindNoCase(VARIABLES.channelFormExcludedColumns, qChannelColumns.column_name)>
-                        <cfset VARIABLES.channelFieldName = "canal_" & qChannelColumns.column_name/>
-                        <cfset VARIABLES.channelFieldValue = qChannelEdit.recordcount ? qChannelEdit[qChannelColumns.column_name][1] : ""/>
-                        <cfset VARIABLES.channelFieldType = lcase(qChannelColumns.data_type)/>
-                        <cfset VARIABLES.channelFieldLabel = Replace(qChannelColumns.column_name, "_", " ", "all")/>
-                        <cfset VARIABLES.channelFieldHelp = ""/>
-                        <cfset VARIABLES.channelFieldColClass = VARIABLES.channelFieldType EQ "text" ? "col-12" : "col-12 col-md-6 col-xl-4"/>
-                        <cfset VARIABLES.channelIsDescriptionField = ListFindNoCase(VARIABLES.channelDescriptionColumns, qChannelColumns.column_name)/>
-                        <cfset VARIABLES.channelIsInstagramField = ListFindNoCase(VARIABLES.channelInstagramColumns, qChannelColumns.column_name)/>
-                        <cfset VARIABLES.channelIsUrlField = VARIABLES.channelIsInstagramField OR ListFindNoCase(VARIABLES.channelUrlColumns, qChannelColumns.column_name) OR FindNoCase("url", qChannelColumns.column_name)/>
-                        <cfset VARIABLES.channelIsIntegerField = VARIABLES.channelFieldType EQ "integer" OR VARIABLES.channelFieldType EQ "smallint" OR VARIABLES.channelFieldType EQ "bigint"/>
-
-                        <cfswitch expression="#qChannelColumns.column_name#">
-                          <cfcase value="id_youtube_canal"><cfset VARIABLES.channelFieldLabel = "ID do Canal"/></cfcase>
-                          <cfcase value="name"><cfset VARIABLES.channelFieldLabel = "Nome do Canal"/><cfset VARIABLES.channelFieldHelp = "Nome interno para identificar facilmente o canal no Business."/></cfcase>
-                          <cfcase value="id_pagina"><cfset VARIABLES.channelFieldLabel = "ID da Página"/><cfset VARIABLES.channelFieldHelp = "Relaciona o canal com a pagina correspondente dentro do ecossistema Road Runners."/></cfcase>
-                          <cfcase value="id_usuario"><cfset VARIABLES.channelFieldLabel = "ID do Usuário"/><cfset VARIABLES.channelFieldHelp = "Usuário responsável ou proprietário vinculado ao canal."/></cfcase>
-                          <cfcase value="max_results"><cfset VARIABLES.channelFieldLabel = "Máx. de Resultados"/><cfset VARIABLES.channelFieldHelp = "Quantidade máxima de videos buscados em cada importação."/></cfcase>
-                          <cfcase value="sort"><cfset VARIABLES.channelFieldLabel = "Ordem"/><cfset VARIABLES.channelFieldHelp = "Define a ordem de prioridade ou exibição do canal."/></cfcase>
-                        </cfswitch>
-
-                        <cfif VARIABLES.channelIsDescriptionField>
-                          <cfset VARIABLES.channelFieldLabel = "Descrição"/>
-                          <cfset VARIABLES.channelFieldHelp = "Resumo editorial do canal, propósito ou observações internas."/>
-                          <cfset VARIABLES.channelFieldColClass = "col-12"/>
-                        <cfelseif VARIABLES.channelIsInstagramField>
-                          <cfset VARIABLES.channelFieldLabel = "URL do Instagram"/>
-                          <cfset VARIABLES.channelFieldHelp = "Cole a URL completa do Instagram do canal ou da marca."/>
-                          <cfset VARIABLES.channelFieldColClass = "col-12 col-lg-6"/>
-                        <cfelseif VARIABLES.channelIsUrlField>
-                          <cfset VARIABLES.channelFieldColClass = "col-12 col-lg-6"/>
-                        <cfelseif VARIABLES.channelIsIntegerField>
-                          <cfset VARIABLES.channelFieldColClass = "col-12 col-md-6 col-lg-4"/>
-                        <cfelseif VARIABLES.channelFieldType EQ "boolean">
-                          <cfset VARIABLES.channelFieldColClass = "col-12 col-md-6 col-lg-4"/>
-                        </cfif>
-
-                        <cfoutput>
-                          <div class="#VARIABLES.channelFieldColClass#">
-                            <div class="channel-field-card">
-                              <label class="form-label">#encodeForHTML(VARIABLES.channelFieldLabel)#</label>
-
-                              <cfif VARIABLES.channelFieldType EQ "boolean">
-                                <input type="hidden" name="#VARIABLES.channelFieldName#" value="false"/>
-                                <div class="form-check form-switch pt-2">
-                                  <input class="form-check-input" type="checkbox" role="switch" id="#VARIABLES.channelFieldName#" name="#VARIABLES.channelFieldName#" value="true" <cfif IsBoolean(VARIABLES.channelFieldValue) ? VARIABLES.channelFieldValue : ListFindNoCase('true,1,yes,sim', trim(VARIABLES.channelFieldValue))>checked</cfif>>
-                                  <label class="form-check-label" for="#VARIABLES.channelFieldName#">Canal ativo para importação e uso</label>
-                                </div>
-                              <cfelseif VARIABLES.channelIsInstagramField>
-                                <input class="form-control" type="url" name="#VARIABLES.channelFieldName#" value="#encodeForHTMLAttribute(VARIABLES.channelFieldValue)#" placeholder="https://instagram.com/..."/>
-                              <cfelseif VARIABLES.channelIsUrlField>
-                                <input class="form-control" type="url" name="#VARIABLES.channelFieldName#" value="#encodeForHTMLAttribute(VARIABLES.channelFieldValue)#" placeholder="https://..."/>
-                              <cfelseif VARIABLES.channelIsIntegerField>
-                                <input class="form-control" type="number" name="#VARIABLES.channelFieldName#" value="#encodeForHTMLAttribute(VARIABLES.channelFieldValue)#" step="1" inputmode="numeric"/>
-                              <cfelseif VARIABLES.channelIsDescriptionField OR VARIABLES.channelFieldType EQ "text" OR (isNumeric(qChannelColumns.character_maximum_length) AND qChannelColumns.character_maximum_length GT 160)>
-                                <textarea class="form-control" name="#VARIABLES.channelFieldName#" rows="<cfif VARIABLES.channelIsDescriptionField>5<cfelse>4</cfif>" placeholder="<cfif VARIABLES.channelIsDescriptionField>Descreva rapidamente o canal, sua linha editorial ou observações relevantes.</cfif>">#encodeForHTML(VARIABLES.channelFieldValue)#</textarea>
-                              <cfelse>
-                                <input class="form-control" type="text" name="#VARIABLES.channelFieldName#" value="#encodeForHTMLAttribute(VARIABLES.channelFieldValue)#"/>
-                              </cfif>
-
-                              <cfif len(trim(VARIABLES.channelFieldHelp))>
-                                <div class="channel-field-help mt-2">#encodeForHTML(VARIABLES.channelFieldHelp)#</div>
-                              </cfif>
-                            </div>
-                          </div>
-                        </cfoutput>
-                      </cfif>
-                    </cfloop>
-                  </div>
-
-                  <div class="d-flex flex-wrap gap-2 mt-3">
-                    <button type="submit" class="btn btn-warning"><cfif qChannelEdit.recordcount>Salvar alteracoes<cfelse>Cadastrar canal</cfif></button>
-                    <cfoutput><a class="btn btn-outline-secondary" href="./?pagina=#VARIABLES.mediaPage#">Cancelar</a></cfoutput>
-                  </div>
-                </form>
-              </div>
-            </cfif>
-
-            <div class="table-responsive">
-              <table class="table table-sm table-striped table-hover channel-table">
-                <thead>
-                  <tr>
-                    <cfloop query="qChannelColumns">
-                      <cfif ListFindNoCase(VARIABLES.channelVisibleColumns, qChannelColumns.column_name)
-                          OR (len(trim(VARIABLES.channelActiveColumn)) AND qChannelColumns.column_name EQ VARIABLES.channelActiveColumn)>
-                        <cfset VARIABLES.channelVisibleCount = VARIABLES.channelVisibleCount + 1/>
-                        <cfswitch expression="#qChannelColumns.column_name#">
-                          <cfcase value="id_youtube_canal"><cfset VARIABLES.channelColumnLabel = "ID do Canal"/></cfcase>
-                          <cfcase value="name"><cfset VARIABLES.channelColumnLabel = "Nome"/></cfcase>
-                          <cfcase value="id_pagina"><cfset VARIABLES.channelColumnLabel = "ID da Página"/></cfcase>
-                          <cfcase value="id_usuario"><cfset VARIABLES.channelColumnLabel = "ID do Usuário"/></cfcase>
-                          <cfcase value="max_results"><cfset VARIABLES.channelColumnLabel = "Máx. de Resultados"/></cfcase>
-                          <cfcase value="sort"><cfset VARIABLES.channelColumnLabel = "Ordem"/></cfcase>
-                          <cfcase value="#VARIABLES.channelActiveColumn#"><cfset VARIABLES.channelColumnLabel = "Status"/></cfcase>
-                          <cfdefaultcase><cfset VARIABLES.channelColumnLabel = qChannelColumns.column_name/></cfdefaultcase>
-                        </cfswitch>
-                        <cfoutput><th>#encodeForHTML(VARIABLES.channelColumnLabel)#</th></cfoutput>
-                      </cfif>
-                    </cfloop>
-                    <th class="channel-actions-cell">Ações</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <cfif qChannels.recordcount>
-                    <cfoutput query="qChannels">
-                      <cfset VARIABLES.channelPkValue = qChannels[VARIABLES.channelPk][qChannels.currentRow]/>
-                      <tr>
-                        <cfloop query="qChannelColumns">
-                          <cfset VARIABLES.channelColumnName = qChannelColumns.column_name/>
-                          <cfset VARIABLES.channelColumnValue = qChannels[VARIABLES.channelColumnName][qChannels.currentRow]/>
-                          <cfif ListFindNoCase(VARIABLES.channelVisibleColumns, VARIABLES.channelColumnName)
-                              OR (len(trim(VARIABLES.channelActiveColumn)) AND VARIABLES.channelColumnName EQ VARIABLES.channelActiveColumn)>
-                            <td class="channel-cell">
-                              <cfif len(trim(VARIABLES.channelActiveColumn)) AND VARIABLES.channelColumnName EQ VARIABLES.channelActiveColumn>
-                                <cfset VARIABLES.channelIsActive = IsBoolean(VARIABLES.channelColumnValue) ? VARIABLES.channelColumnValue : ListFindNoCase("true,1,yes,sim", trim(VARIABLES.channelColumnValue))/>
-                                <span class="badge <cfif VARIABLES.channelIsActive>badge-success<cfelse>badge-danger</cfif>">
-                                  <cfif VARIABLES.channelIsActive>Ativo<cfelse>Inativo</cfif>
-                                </span>
-                              <cfelse>
-                                #encodeForHTML(VARIABLES.channelColumnValue)#
-                              </cfif>
-                            </td>
-                          </cfif>
-                        </cfloop>
-                        <td class="channel-actions-cell">
-                          <div class="d-flex flex-wrap gap-2">
-                            <a class="btn btn-sm btn-outline-primary" href="./?pagina=#VARIABLES.mediaPage#&canal_editar=#urlEncodedFormat(VARIABLES.channelPkValue)#">Editar</a>
-
-                            <cfif len(trim(VARIABLES.channelActiveColumn))>
-                              <cfset VARIABLES.channelCurrentStatus = qChannels[VARIABLES.channelActiveColumn][qChannels.currentRow]/>
-                              <cfset VARIABLES.channelIsActive = IsBoolean(VARIABLES.channelCurrentStatus) ? VARIABLES.channelCurrentStatus : ListFindNoCase("true,1,yes,sim", trim(VARIABLES.channelCurrentStatus))/>
-                              <a class="btn btn-sm <cfif VARIABLES.channelIsActive>btn-outline-warning<cfelse>btn-outline-success</cfif>" href="./?pagina=#VARIABLES.mediaPage#&canal_acao=status&canal_id=#urlEncodedFormat(VARIABLES.channelPkValue)#&status=#NOT VARIABLES.channelIsActive#">
-                                <cfif VARIABLES.channelIsActive>Desativar<cfelse>Ativar</cfif>
-                              </a>
-                            </cfif>
-
-                            <a class="btn btn-sm btn-outline-danger" href="./?pagina=#VARIABLES.mediaPage#&canal_acao=excluir&canal_id=#urlEncodedFormat(VARIABLES.channelPkValue)#" onclick="return confirm('Tem certeza que deseja remover este canal do banco de dados?');">
-                              Remover
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                    </cfoutput>
-                  <cfelse>
-                    <cfoutput>
-                      <tr>
-                        <td colspan="#max(1, VARIABLES.channelVisibleCount + 1)#" class="text-center text-muted py-4">
-                          Nenhum canal cadastrado ate o momento.
-                        </td>
-                      </tr>
-                    </cfoutput>
-                  </cfif>
-                </tbody>
-              </table>
-            </div>
-          </cfif>
-        </div>
-      </div>
-    </div>
+<link rel="stylesheet" href="/portal/canais/assets/manager.css?v=20261118-2"/>
+<section class="business-page yt-manager" aria-labelledby="yt-title">
+<cfoutput>
+ <header class="yt-header"><div><span class="yt-kicker">Portal · Fontes de vídeo</span><h1 id="yt-title">Canais do YouTube</h1><p>Escolha de onde vêm os vídeos e quem eles representam no Road Runners.</p></div><div class="yt-actions"><a class="btn btn-outline-secondary" href="/portal/videos/">Vídeos importados</a><a class="btn btn-warning" href="./?canal_novo=1##channel-editor"><i class="fa-solid fa-plus me-2" aria-hidden="true"></i>Novo canal</a></div></header>
+ <div class="yt-kpis" aria-label="Resumo dos canais"><article><span>Fontes cadastradas</span><strong>#qChannelStats.total#</strong></article><article><span>Importação ativa</span><strong class="yt-accent">#qChannelStats.active#</strong></article><article><span>Fontes pausadas</span><strong>#qChannelStats.inactive#</strong></article></div>
+ <cfif len(channelNotice)><div class="alert alert-success" role="status">#encodeForHTML(channelNotice)#</div></cfif>
+ <cfif len(channelError)><div class="alert alert-warning" role="alert">#encodeForHTML(channelError)#</div></cfif>
+ <cfif channelShowForm>
+ <section class="yt-panel yt-editor" id="channel-editor" aria-labelledby="yt-editor-title">
+  <div class="yt-section-heading"><div><span class="yt-kicker"><cfif val(channelForm.id_youtube_canal)>Editar fonte<cfelse>Nova fonte</cfif></span><h2 id="yt-editor-title"><cfif val(channelForm.id_youtube_canal)>#encodeForHTML(channelForm.name)#<cfelse>Adicionar canal ou playlist</cfif></h2></div><a class="btn btn-sm btn-outline-secondary" href="./">Fechar cadastro</a></div>
+  <form method="post" action="./##channel-editor" data-channel-form>
+   <input type="hidden" name="canal_action" value="salvar"/><input type="hidden" name="channel_csrf" value="#encodeForHTMLAttribute(SESSION.youtubeChannelCsrf)#"/><input type="hidden" name="id_youtube_canal" value="#encodeForHTMLAttribute(channelForm.id_youtube_canal)#"/><input type="hidden" name="revision" value="#encodeForHTMLAttribute(channelForm.revision)#"/>
+   <fieldset><legend><span>1</span> Identifique a fonte</legend><div class="yt-form-grid">
+    <div><label for="yt-name">Nome do canal <span aria-hidden="true">*</span></label><input class="form-control" id="yt-name" name="name" required maxlength="255" placeholder="Ex.: RunTVBrasil" value="#encodeForHTMLAttribute(channelForm.name)#"/></div>
+    <div><label for="yt-kind">O que importar?</label><select class="form-select" id="yt-kind" name="source_type" data-source-kind><option value="channel" <cfif channelForm.source_type EQ 'channel'>selected</cfif>>Vídeos de um canal</option><option value="playlist" <cfif channelForm.source_type EQ 'playlist'>selected</cfif>>Vídeos de uma playlist</option></select></div>
+    <div class="yt-full"><label for="yt-source">Link do YouTube <span aria-hidden="true">*</span></label><input class="form-control" id="yt-source" name="source" required maxlength="500" value="#encodeForHTMLAttribute(channelForm.source)#" placeholder="https://www.youtube.com/@nomedocanal" aria-describedby="yt-source-help" data-source-input/><p id="yt-source-help" class="yt-help">Cole o link do canal ou da playlist. Também aceitamos @identificador e os identificadores técnicos já cadastrados.</p></div>
+   </div></fieldset>
+   <fieldset><legend><span>2</span> Vincule pelo nome <small>Opcional</small></legend><p class="yt-help">Os vídeos sempre entram no portal. Para também aparecerem no feed de uma página, selecione a página e um usuário vinculado a ela.</p><div class="yt-form-grid">
+    <div data-name-picker="page"><label for="yt-page-search">Página no Road Runners</label><input type="search" class="form-control" id="yt-page-search" name="page_label" list="yt-page-options" value="#encodeForHTMLAttribute(channelForm.page_label)#" placeholder="Digite o nome da página ou @endereço" autocomplete="off" data-picker-input aria-describedby="yt-page-help"/><input type="hidden" name="id_pagina" value="#encodeForHTMLAttribute(channelForm.id_pagina)#" data-picker-id/><datalist id="yt-page-options" data-picker-options></datalist><small class="yt-help" id="yt-page-help" role="status" data-picker-status><cfif len(channelForm.id_pagina)>Página selecionada.<cfelse>Digite pelo menos dois caracteres e escolha um resultado.</cfif></small></div>
+    <div data-name-picker="user"><label for="yt-user-search">Usuário responsável / autor</label><input type="search" class="form-control" id="yt-user-search" name="user_label" list="yt-user-options" value="#encodeForHTMLAttribute(channelForm.user_label)#" placeholder="Digite o nome ou e-mail do usuário" autocomplete="off" data-picker-input aria-describedby="yt-user-help"/><input type="hidden" name="id_usuario" value="#encodeForHTMLAttribute(channelForm.id_usuario)#" data-picker-id/><datalist id="yt-user-options" data-picker-options></datalist><small class="yt-help" id="yt-user-help" role="status" data-picker-status><cfif len(channelForm.id_usuario)>Usuário selecionado.<cfelse>O usuário da página pode ser preenchido automaticamente.</cfif></small></div>
+   </div></fieldset>
+   <fieldset><legend><span>3</span> Defina a importação</legend><label class="yt-switch" for="yt-enabled"><input type="checkbox" id="yt-enabled" name="enabled" value="1" <cfif channelForm.enabled EQ '1'>checked</cfif>/><span><strong>Importar automaticamente</strong><small>Desative para pausar esta fonte sem remover seus vídeos.</small></span></label>
+    <details class="yt-advanced"><summary>Limites e opções adicionais</summary><div class="yt-form-grid mt-3"><div><label for="yt-limit">Vídeos por página</label><input class="form-control" type="number" id="yt-limit" name="max_results" min="1" max="50" step="1" required value="#encodeForHTMLAttribute(channelForm.max_results)#"/><p class="yt-help">Limite padrão desta fonte. O cron pode definir outro valor para a execução.</p></div><div><label for="yt-order">Ordem de processamento</label><input class="form-control" type="number" id="yt-order" name="sort_order" min="0" max="10000" required value="#encodeForHTMLAttribute(channelForm.sort_order)#"/><p class="yt-help">Os menores números são processados primeiro.</p></div><div><label for="yt-min">Duração mínima (minutos)</label><input class="form-control" id="yt-min" type="number" name="min_duration_minutes" min="0" max="10080" step="0.01" value="#encodeForHTMLAttribute(channelForm.min_duration_minutes)#" placeholder="Sem limite"/></div><div><label for="yt-max">Duração máxima (minutos)</label><input class="form-control" id="yt-max" type="number" name="max_duration_minutes" min="0" max="10080" step="0.01" value="#encodeForHTMLAttribute(channelForm.max_duration_minutes)#" placeholder="Sem limite"/></div><div class="yt-full"><label for="yt-description">Descrição / observações</label><textarea class="form-control" id="yt-description" name="descricao" maxlength="5000" rows="3">#encodeForHTML(channelForm.descricao)#</textarea></div><div class="yt-full"><label for="yt-instagram">Instagram do canal</label><input class="form-control" type="url" id="yt-instagram" name="instagram_url" value="#encodeForHTMLAttribute(channelForm.instagram_url)#" placeholder="https://www.instagram.com/..."/></div></div></details>
+   </fieldset>
+   <div class="yt-save"><button class="btn btn-warning" type="submit"><i class="fa-solid fa-check me-2" aria-hidden="true"></i>Salvar canal</button><a class="btn btn-outline-secondary" href="./">Cancelar</a><small>Vídeos com menos de 3min30s continuam sujeitos à regra editorial do portal.</small></div>
+  </form>
+ </section>
+ </cfif>
+ <section class="yt-panel" aria-label="Fontes cadastradas">
+  <form method="get" action="./" class="yt-filters" role="search"><div><label for="yt-search">Buscar fonte</label><input class="form-control" id="yt-search" name="busca" value="#encodeForHTMLAttribute(channelSearch)#" placeholder="Nome ou @identificador"/></div><div><label for="yt-status">Importação</label><select class="form-select" id="yt-status" name="status"><option value="all" <cfif channelStatus EQ 'all'>selected</cfif>>Todas</option><option value="active" <cfif channelStatus EQ 'active'>selected</cfif>>Ativa</option><option value="inactive" <cfif channelStatus EQ 'inactive'>selected</cfif>>Pausada</option></select></div><button class="btn btn-outline-secondary" type="submit">Filtrar</button><a href="./" class="btn btn-link">Limpar</a></form>
+  <div class="yt-list">
+   <cfloop query="qChannels"><cfset ytRow=queryGetRow(qChannels,qChannels.currentRow)/>
+    <article class="yt-channel"><div class="yt-channel-icon" aria-hidden="true"><i class="fa-brands fa-youtube"></i></div><div class="yt-channel-body"><div class="yt-channel-title"><h2>#encodeForHTML(qChannels.name)#</h2><span class="yt-badge <cfif qChannels.enabled>is-active</cfif>"><cfif qChannels.enabled>Importação ativa<cfelse>Pausada</cfif></span></div><a class="yt-source-link" href="#encodeForHTMLAttribute(channelManager.sourceUrl(ytRow))#" target="_blank" rel="noopener noreferrer">#encodeForHTML(qChannels.source_type EQ 'playlist' ? 'Playlist do YouTube' : (len(qChannels.channel_handle ?: '') ? qChannels.channel_handle : 'Abrir canal no YouTube'))# <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a><div class="yt-associations"><span><i class="fa-regular fa-file-lines" aria-hidden="true"></i> <cfif len(qChannels.page_name)>#encodeForHTML(qChannels.page_name)#<cfelse>Sem página vinculada</cfif></span><span><i class="fa-regular fa-user" aria-hidden="true"></i> <cfif len(qChannels.user_name)>#encodeForHTML(qChannels.user_name)#<cfelse>Sem usuário vinculado</cfif></span></div><small class="yt-help">Padrão: #qChannels.max_results# vídeos por página · Ordem #qChannels.sort_order#<cfif NOT val(qChannels.id_pagina ?: 0) OR NOT val(qChannels.id_usuario ?: 0)> · Importação somente no portal</cfif></small></div>
+     <div class="yt-channel-actions"><a class="btn btn-sm btn-outline-secondary" href="./?canal_editar=#qChannels.id_youtube_canal###channel-editor">Editar</a><form method="post" action="./"><input type="hidden" name="channel_csrf" value="#encodeForHTMLAttribute(SESSION.youtubeChannelCsrf)#"/><input type="hidden" name="canal_action" value="status"/><input type="hidden" name="id_youtube_canal" value="#qChannels.id_youtube_canal#"/><input type="hidden" name="revision" value="#encodeForHTMLAttribute(qChannels.revision)#"/><button type="submit" class="btn btn-sm <cfif qChannels.enabled>btn-outline-warning<cfelse>btn-outline-success</cfif>"><cfif qChannels.enabled>Pausar<cfelse>Ativar</cfif></button></form><details class="yt-remove"><summary>Remover</summary><form method="post" action="./"><input type="hidden" name="channel_csrf" value="#encodeForHTMLAttribute(SESSION.youtubeChannelCsrf)#"/><input type="hidden" name="canal_action" value="remover"/><input type="hidden" name="id_youtube_canal" value="#qChannels.id_youtube_canal#"/><input type="hidden" name="revision" value="#encodeForHTMLAttribute(qChannels.revision)#"/><label><input type="checkbox" name="confirm_remove" value="1" required/> Confirmo remover esta fonte. Os vídeos já importados serão mantidos.</label><button type="submit" class="btn btn-sm btn-outline-danger">Confirmar remoção</button></form></details></div>
+    </article>
+   </cfloop>
+   <cfif NOT qChannels.recordCount><p class="yt-empty">Nenhuma fonte encontrada. Ajuste a busca ou cadastre um novo canal.</p></cfif>
   </div>
+ </section>
+</cfoutput>
 </section>
+<script src="/portal/canais/assets/manager.js?v=20261118-1" defer></script>
