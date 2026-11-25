@@ -50,3 +50,19 @@
 @media(max-width:1200px){#business-funnel .funnel-filters{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:850px){#business-funnel .funnel-layout{grid-template-columns:1fr}#business-funnel .funnel-side{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:600px){#business-funnel .funnel-filters{grid-template-columns:1fr 1fr;gap:.8rem}#business-funnel .funnel-filters label:nth-child(2),#business-funnel .funnel-filters label:nth-child(3){grid-column:1/-1}#business-funnel .funnel-side,#business-funnel .funnel-retention-grid{display:grid;grid-template-columns:1fr}#business-funnel .funnel-tabs{gap:.8rem}#business-funnel .funnel-tabs button{font-size:.78rem}#business-funnel .funnel-visual-panel{padding:1rem}#business-funnel .funnel-step{grid-template-columns:minmax(0,1fr) 70px;min-height:89px;gap:0}#business-funnel .funnel-band{right:76px}#business-funnel .funnel-step-text{margin-left:calc(var(--left) * .75 + 9px);max-width:calc(100% - var(--left) * 1.1 - 10px)}#business-funnel .funnel-step-text strong{font-size:1.4rem}#business-funnel .funnel-step-text span{font-size:.7rem}#business-funnel .funnel-step-rate{padding-left:.5rem;font-size:.68rem}#business-funnel .funnel-step-rate strong{font-size:.85rem}#business-funnel .funnel-step-rate small{font-size:.6rem}#business-funnel .funnel-panel-heading{display:block}}
+
+#business-funnel .funnel-event-metric{border-top:1px solid rgba(255,255,255,.12);padding-top:1rem;display:grid;gap:.55rem}
+#business-funnel .funnel-event-metric button{justify-self:start}
+#business-funnel .funnel-event-details summary{cursor:pointer;color:var(--rh-yellow,#f4b120)}
+#business-funnel .funnel-event-details ul{padding-left:1.1rem;margin:.55rem 0 0;min-width:180px}
+#business-funnel .funnel-event-details li{margin:.25rem 0}
+#business-funnel .funnel-tabs{flex-wrap:wrap}
+
+#business-funnel .funnel-group-note{grid-column:1/-1;color:var(--funnel-muted);font-size:.72rem}
+#business-funnel .funnel-general-intro{padding:1.5rem;display:flex;justify-content:space-between;align-items:end;gap:1.5rem;flex-wrap:wrap}
+#business-funnel .funnel-general-intro form{display:flex;align-items:end;gap:.75rem;flex-wrap:wrap}
+#business-funnel .funnel-general-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+#business-funnel .funnel-general-sources{grid-template-columns:repeat(3,minmax(0,1fr))}
+#business-funnel .funnel-general-details{display:grid;grid-template-columns:1fr auto;gap:.45rem 1rem;font-size:.82rem;padding:.8rem 0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);margin:.8rem 0}
+@media(max-width:1100px){#business-funnel .funnel-general-grid,#business-funnel .funnel-general-sources{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){#business-funnel .funnel-general-grid,#business-funnel .funnel-general-sources{grid-template-columns:1fr}}

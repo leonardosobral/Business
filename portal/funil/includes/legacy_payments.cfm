@@ -3,13 +3,14 @@
 <cfsavecontent variable="VARIABLES.funnelLegacySQL">
 /* Legacy Desafio confirmations used by the Business and wallet screens.
    Do not infer a paid order from desafios.status, registrations or an email join.
-   One order is one purchase, even if its webhook was delivered repeatedly. */
+   One order is one purchase, even if its webhook was delivered repeatedly.
+   Pagar.me timestamps without an offset are interpreted as UTC; explicit offsets are preserved. */
 legacy_raw AS (
     SELECT t.id_usuario AS user_id,
            trim(t.codigo_transacao::text) AS order_code,
            coalesce(nullif(t.json_transacao->'data'->>'id',''),nullif(trim(t.codigo_transacao::text),'')) AS order_key,
            lower(coalesce(t.json_transacao->'data'->'items'->0->>'code',t.json_transacao->'data'->'order'->'items'->0->>'code','')) AS product_code,
-           coalesce(nullif(t.json_transacao->'data'->'charges'->0->>'paid_at',''),nullif(t.json_transacao->>'created_at','')) AS paid_text
+           coalesce(nullif(t.json_transacao->'data'->'charges'->0->>'paid_at',''),nullif(t.json_transacao->'data'->>'paid_at','')) AS paid_text
     FROM public.tb_transacoes t
     WHERE t.origem_transacao='pagarme'
       AND t.status_atual='order.paid'
@@ -26,8 +27,12 @@ legacy_raw AS (
       )
 ), legacy_dated AS (
     SELECT user_id,order_key,order_code,product_code,
-           CASE WHEN paid_text ~ '^[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T[0-2][0-9]:[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|[+-][0-2][0-9]:[0-5][0-9])$'
-                THEN paid_text::timestamptz ELSE NULL END AS paid_at
+           CASE WHEN paid_text ~ '^[12][0-9]{3}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|[+-](0[0-9]|1[0-4]):[0-5][0-9])?$'
+                THEN CASE WHEN substring(paid_text,9,2)::integer <= extract(day FROM (make_date(substring(paid_text,1,4)::integer,substring(paid_text,6,2)::integer,1)+interval '1 month - 1 day'))
+                     THEN CASE WHEN paid_text ~ '(Z|[+-](0[0-9]|1[0-4]):[0-5][0-9])$' THEN paid_text::timestamptz
+                               ELSE paid_text::timestamp AT TIME ZONE 'UTC' END
+                     ELSE NULL END
+                ELSE NULL END AS paid_at
     FROM legacy_raw
     WHERE product_code IN ('desafio365','desafio365vip','inscricao365','inscricao365vip','todosantodia','todosantodiavip','todosantodiaupg') AND order_key IS NOT NULL
 ), legacy_paid AS (
