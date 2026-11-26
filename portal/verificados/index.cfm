@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
 <cfprocessingdirective pageencoding="utf-8"/>
 
 <cfset VARIABLES.theme = "dark"/>
@@ -8,6 +5,9 @@
 
 <cfinclude template="../../includes/backend/backend_login.cfm"/>
 <cfinclude template="../../includes/backend/require_admin.cfm"/>
+<cfinclude template="../includes/verified_backend.cfm"/>
+<!DOCTYPE html>
+<html lang="pt-br">
 <cfinclude template="../../includes/estrutura/head.cfm"/>
 
 <body data-mdb-theme="dark" class="bg-dark-subtle">

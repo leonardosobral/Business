@@ -1,313 +1,84 @@
-<cfparam name="URL.pagina" default="1" type="numeric"/>
-<cfparam name="URL.user_busca" default=""/>
-<cfparam name="URL.filter_logic" default="any"/>
-<cfparam name="URL.filter_desafio" default=""/>
-<cfparam name="URL.filter_produto" default=""/>
-<cfparam name="URL.filter_status" default="active"/>
-
-<cffunction name="verifiedDispatchWelcomeNotification" access="private" returntype="boolean" output="false">
-    <cfargument name="userId" type="numeric" required="true"/>
-    <cfset var dispatchConfig = structKeyExists(APPLICATION, "notificationDispatch") AND isStruct(APPLICATION.notificationDispatch)
-        ? APPLICATION.notificationDispatch
-        : {url="https://roadrunners.run/api/notifications/integrations/dispatch.cfm", secret=hash("RoadRunners::handoff::roadrunners.run::v1", "SHA-256"), timeoutSeconds=20}/>
-    <cfset var payload = {
-        origin = "business",
-        category = "verificados",
-        id_notifica_template = 13,
-        data_publicacao = dateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss"),
-        data_expiracao = dateTimeFormat(dateAdd("d", 30, now()), "yyyy-mm-dd HH:nn:ss"),
-        userIds = [int(arguments.userId)],
-        options = {
-            sendPush = true,
-            pushCategory = "sistema",
-            pushUrgency = "normal",
-            pushTtlSeconds = 86400
-        }
-    }/>
-    <cfset var rawBody = serializeJSON(payload)/>
-    <cfset var timestampHeader = dateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss")/>
-    <cfset var signatureHeader = lCase(hmac(timestampHeader & "." & rawBody, dispatchConfig.secret, "HmacSHA256"))/>
-    <cfset var httpResult = {}/>
-    <cfset var responsePayload = {}/>
-    <cfset var timeoutSeconds = structKeyExists(dispatchConfig, "timeoutSeconds") AND val(dispatchConfig.timeoutSeconds) GT 0
-        ? int(dispatchConfig.timeoutSeconds)
-        : 20/>
-
-    <cftry>
-        <cfhttp url="#dispatchConfig.url#" method="post" result="httpResult" timeout="#timeoutSeconds#" throwOnError="false">
-            <cfhttpparam type="header" name="Content-Type" value="application/json; charset=utf-8"/>
-            <cfhttpparam type="header" name="X-RR-Handoff-Timestamp" value="#timestampHeader#"/>
-            <cfhttpparam type="header" name="X-RR-Handoff-Signature" value="#signatureHeader#"/>
-            <cfhttpparam type="body" value="#rawBody#"/>
-        </cfhttp>
-        <cfif structKeyExists(httpResult, "fileContent")
-            AND len(trim(toString(httpResult.fileContent)))
-            AND isJSON(toString(httpResult.fileContent))>
-            <cfset responsePayload = deserializeJSON(toString(httpResult.fileContent))/>
-        </cfif>
-        <cfreturn structKeyExists(responsePayload, "success") AND responsePayload.success/>
-        <cfcatch type="any">
-            <cfreturn false/>
-        </cfcatch>
-    </cftry>
-</cffunction>
-
-<cfset VARIABLES.verifiedPage = max(1, int(URL.pagina))/>
-<cfset VARIABLES.verifiedFilterLogic = lcase(trim(URL.filter_logic))/>
-<cfif NOT listFindNoCase("any,all", VARIABLES.verifiedFilterLogic)>
-    <cfset VARIABLES.verifiedFilterLogic = "any"/>
+<cfprocessingdirective pageencoding="utf-8"/>
+<!--- Included only after the normal authenticated administrator gate. --->
+<cfif NOT isDefined("VARIABLES.requireAdminAllowed") OR NOT VARIABLES.requireAdminAllowed OR NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT qPerfil.is_admin>
+    <cfheader statuscode="403"/><cfabort/>
 </cfif>
-<cfset VARIABLES.verifiedFilterStatus = lcase(trim(URL.filter_status))/>
-<cfif NOT listFindNoCase("active,inactive,all", VARIABLES.verifiedFilterStatus)>
-    <cfset VARIABLES.verifiedFilterStatus = "active"/>
+<cfinclude template="../../includes/backend/require_real_platform_context.cfm"/>
+<cfheader name="Cache-Control" value="private, no-store"/>
+<cfscript>
+verifiedService=new services.VerifiedAdmin();
+verifiedCategories=verifiedService.categories();
+verifiedOrigins={manual="Concessão permanente",vip="Todo Santo Dia · VIP",upgrade="Todo Santo Dia · Upgrade VIP",annual="Compra anual do selo",refunded="Com estorno no histórico",registered_vip="Todo Santo Dia · VIP/upgrade confirmado no cadastro"};
+verifiedStates={active="Ativo",paid="Pagamento confirmado",refunded="Estornado",pending="Aguardando pagamento",creating="Checkout em criação",failed="Pagamento falhou",expired="Expirado",review="Em conferência"};
+verifiedReviewReasons={failed_only="Somente tentativas VIP recusadas",basic_only="Pagamento confirmado somente da Básica",refunded_only="Pedido estornado; upgrade no cadastro requer revisão",no_order_found="Nenhum pedido Todo Santo Dia localizado pelos vínculos consultados"};
+verifiedEvidence={vip_unconfirmed="TSD VIP/upgrade sem confirmação",historic_vip="VIP antigo · Desafio 365",basic="TSD Básica confirmada",none="Sem cadastro de desafio",bio="Com bio no perfil",social="Com Instagram público"};
+verifiedFilters={evidence=lcase(trim(URL.filter_evidence ?: "")),status=lcase(trim(URL.filter_status ?: "active")),origin=lcase(trim(URL.filter_origin ?: "")),search=left(trim(URL.user_busca ?: ""),120),page=max(1,int(val(URL.pagina ?: 1))),logic=lcase(trim(URL.filter_logic ?: "any")),desafio=trim(URL.filter_desafio ?: ""),produto=trim(URL.filter_produto ?: ""),admin=(URL.filter_admin ?: "") == "true",dev=(URL.filter_dev ?: "") == "true",partner=(URL.filter_partner ?: "") == "true"};
+if(!listFind("active,inactive,all,unclassified,reconcile,divergent",verifiedFilters.status))verifiedFilters.status="active";
+if(len(verifiedFilters.origin) AND !structKeyExists(verifiedOrigins,verifiedFilters.origin) AND !structKeyExists(verifiedCategories,verifiedFilters.origin))verifiedFilters.origin="";
+if(len(verifiedFilters.evidence) AND !structKeyExists(verifiedEvidence,verifiedFilters.evidence))verifiedFilters.evidence="";
+if(!listFind("any,all",verifiedFilters.logic))verifiedFilters.logic="any";
+verifiedDetailId=max(0,int(val(URL.page_id ?: 0)));
+verifiedError="";
+verifiedSaved=false;
+verifiedQuickCount=min(40,max(0,int(val(URL.classified ?: 0))));
+verifiedQuickCategory=trim(FORM.category ?: "");
+verifiedQuickNote=left(trim(FORM.note ?: ""),1800);
+function verifiedUrl(struct changes={}) {
+    var values={filter_evidence=verifiedFilters.evidence,filter_status=verifiedFilters.status,filter_origin=verifiedFilters.origin,user_busca=verifiedFilters.search,pagina=verifiedFilters.page,filter_logic=verifiedFilters.logic,filter_desafio=verifiedFilters.desafio,filter_produto=verifiedFilters.produto};
+    for(var flag in ["admin","dev","partner"])if(verifiedFilters[flag])values["filter_" & flag]="true";
+    structAppend(values,arguments.changes,true);
+    var parts=[];
+    for(var key in values)if(len(values[key] & ""))arrayAppend(parts,urlEncodedFormat(key)&"="&urlEncodedFormat(values[key] & ""));
+    return "/portal/verificados/?" & arrayToList(parts,"&");
+}
+function verifiedProfileUrl(required struct profile) {
+    return len(arguments.profile.tag) ? "https://roadrunners.run/atleta/" & urlEncodedFormat(arguments.profile.tag) & "/" : "https://roadrunners.run/atleta/?id=" & arguments.profile.profile_id;
+}
+</cfscript>
+<cflock scope="session" type="exclusive" timeout="5">
+    <cfif NOT structKeyExists(SESSION,"verifiedAdminCsrfSeed")><cfset SESSION.verifiedAdminCsrfSeed=generateSecretKey("AES",256)/></cfif>
+    <cfset verifiedCsrf=hmac(qPerfil.id & ":verified-origins",SESSION.verifiedAdminCsrfSeed,"HmacSHA256")/>
+</cflock>
+<cfif CGI.request_method EQ "POST">
+    <cfif NOT listFind("classify,quick",FORM.verified_action ?: "")>
+        <cfset verifiedError="Esta tela agora registra os motivos dos selos. Ativação e validade seguem as concessões e os pagamentos de cada perfil."/>
+        <cfheader statuscode="409"/>
+    <cfelseif compare(FORM.verified_csrf ?: "",verifiedCsrf) NEQ 0>
+        <cfset verifiedError="Sua sessão mudou. Reabra o perfil e tente novamente."/><cfheader statuscode="403"/>
+    <cfelseif NOT verifiedService.classificationReady()>
+        <cfset verifiedError="O cadastro de motivos ainda aguarda a preparação do banco."/><cfheader statuscode="409"/>
+    <cfelseif (FORM.verified_action ?: "") EQ "quick">
+        <cftry>
+            <cfset verifiedQuickCount=verifiedService.classifyQuick(selection=(FORM.selection ?: ""),category=trim(FORM.category ?: ""),note=trim(FORM.note ?: ""),actorId=qPerfil.id)/>
+            <cflocation addtoken="false" url="#verifiedUrl({classified=verifiedQuickCount,page_id=''})###lista-motivos"/>
+            <cfcatch type="VerifiedAdmin.Validation">
+                <cfset verifiedError=cfcatch.message/><cfset verifiedQuickCount=0/><cfheader statuscode="400"/>
+            </cfcatch>
+            <cfcatch>
+                <cfset verifiedError="Nenhuma classificação deste envio foi salva. Um dos perfis mudou ou não possui concessão permanente. Confira a lista atualizada e selecione novamente."/>
+                <cfset verifiedQuickCount=0/><cfheader statuscode="409"/>
+            </cfcatch>
+        </cftry>
+    <cfelseif NOT reFind("^[1-9][0-9]{0,8}$",FORM.profile_id ?: "") OR NOT reFind("^[0-9]{1,18}$",FORM.revision ?: "")>
+        <cfset verifiedError="Perfil ou versão inválidos. Reabra o perfil."/><cfheader statuscode="400"/>
+    <cfelse>
+        <cfset verifiedDetailId=int(FORM.profile_id)/>
+        <cftry>
+            <cfset verifiedService.classify(verifiedDetailId,trim(FORM.category ?: ""),trim(FORM.reason ?: ""),qPerfil.id,val(FORM.revision))/>
+            <cflocation addtoken="false" url="#verifiedUrl({page_id=verifiedDetailId,saved=1})#"/>
+            <cfcatch>
+                <cfset verifiedError="Não foi possível salvar. Confira o motivo e reabra o perfil se ele foi alterado em outra sessão."/>
+                <cfheader statuscode="409"/>
+            </cfcatch>
+        </cftry>
+    </cfif>
 </cfif>
-<cfset VARIABLES.verifiedRuleConnector = " OR "/>
-<cfif VARIABLES.verifiedFilterLogic EQ "all">
-    <cfset VARIABLES.verifiedRuleConnector = " AND "/>
-</cfif>
-<cfset VARIABLES.verifiedFilterDesafio = trim(URL.filter_desafio)/>
-<cfset VARIABLES.verifiedFilterProduto = trim(URL.filter_produto)/>
-<cfset VARIABLES.verifiedFilterAdmin = isDefined("URL.filter_admin") AND URL.filter_admin EQ "true"/>
-<cfset VARIABLES.verifiedFilterDev = isDefined("URL.filter_dev") AND URL.filter_dev EQ "true"/>
-<cfset VARIABLES.verifiedFilterPartner = isDefined("URL.filter_partner") AND URL.filter_partner EQ "true"/>
-<cfset VARIABLES.verifiedFilterChallenge = len(VARIABLES.verifiedFilterDesafio) OR len(VARIABLES.verifiedFilterProduto)/>
-<cfset VARIABLES.verifiedHasRuleFilters = VARIABLES.verifiedFilterChallenge OR VARIABLES.verifiedFilterAdmin OR VARIABLES.verifiedFilterDev OR VARIABLES.verifiedFilterPartner/>
-<cfset VARIABLES.verifiedBaseQueryString = "pagina=#VARIABLES.verifiedPage#"/>
-<cfif VARIABLES.verifiedFilterStatus NEQ "active">
-    <cfset VARIABLES.verifiedBaseQueryString &= "&filter_status=" & urlEncodedFormat(VARIABLES.verifiedFilterStatus)/>
-</cfif>
-<cfif VARIABLES.verifiedHasRuleFilters>
-    <cfset VARIABLES.verifiedBaseQueryString &= "&filter_logic=" & urlEncodedFormat(VARIABLES.verifiedFilterLogic)/>
-    <cfif len(VARIABLES.verifiedFilterDesafio)><cfset VARIABLES.verifiedBaseQueryString &= "&filter_desafio=" & urlEncodedFormat(VARIABLES.verifiedFilterDesafio)/></cfif>
-    <cfif len(VARIABLES.verifiedFilterProduto)><cfset VARIABLES.verifiedBaseQueryString &= "&filter_produto=" & urlEncodedFormat(VARIABLES.verifiedFilterProduto)/></cfif>
-    <cfif VARIABLES.verifiedFilterAdmin><cfset VARIABLES.verifiedBaseQueryString &= "&filter_admin=true"/></cfif>
-    <cfif VARIABLES.verifiedFilterDev><cfset VARIABLES.verifiedBaseQueryString &= "&filter_dev=true"/></cfif>
-    <cfif VARIABLES.verifiedFilterPartner><cfset VARIABLES.verifiedBaseQueryString &= "&filter_partner=true"/></cfif>
-</cfif>
-
-<cfif NOT isDefined("qPerfil") OR NOT qPerfil.recordcount OR NOT qPerfil.is_admin>
-    <cflocation addtoken="false" url="/"/>
-</cfif>
-
+<cfset verifiedData=verifiedService.overview(verifiedFilters)/>
+<cfset verifiedFilters.page=verifiedData.page/>
+<cfset verifiedDetail=verifiedDetailId GT 0 ? verifiedService.detail(verifiedDetailId) : {}/>
+<cfset verifiedSaved=(URL.saved ?: "") EQ "1" AND structKeyExists(verifiedDetail,"profile")/>
 <cfquery name="qVerifiedChallengeProducts">
-    SELECT des.desafio,
-           des.produto,
-           coalesce(nullif(min(dp.nome_produto), ''), des.produto) AS nome_produto,
-           count(DISTINCT des.id_usuario) AS total_usuarios
-    FROM desafios des
-    LEFT JOIN desafios_produtos dp ON dp.codigo_produto = des.produto
-    WHERE trim(coalesce(des.produto, '')) <> ''
-    GROUP BY des.desafio, des.produto
-    ORDER BY upper(coalesce(des.desafio, '')), upper(coalesce(nullif(min(dp.nome_produto), ''), des.produto)), upper(des.produto)
+    SELECT des.desafio,des.produto,coalesce(nullif(min(dp.nome_produto),''),des.produto) AS nome_produto
+    FROM desafios des LEFT JOIN desafios_produtos dp ON dp.codigo_produto=des.produto
+    WHERE trim(coalesce(des.produto,''))<>'' GROUP BY des.desafio,des.produto ORDER BY des.desafio,nome_produto
 </cfquery>
-
-<cfif isDefined("FORM.verified_action") AND listFindNoCase("salvar,toggle,bulk_status", FORM.verified_action)>
-    <cfset VARIABLES.verifiedPageId = ""/>
-    <cfset VARIABLES.verifiedPageIds = ""/>
-    <cfset VARIABLES.verifiedStatus = false/>
-    <cfset VARIABLES.verifiedNotifyUserId = 0/>
-    <cfset VARIABLES.verifiedWasActive = false/>
-
-    <cfif isDefined("FORM.verified_page_id")>
-        <cfset VARIABLES.verifiedPageId = trim(FORM.verified_page_id)/>
-    </cfif>
-
-    <cfif isDefined("FORM.verified_page_ids")>
-        <cfloop list="#FORM.verified_page_ids#" index="verifiedBulkPageId">
-            <cfif len(trim(verifiedBulkPageId)) AND isNumeric(verifiedBulkPageId)>
-                <cfset VARIABLES.verifiedPageIds = listAppend(VARIABLES.verifiedPageIds, int(verifiedBulkPageId))/>
-            </cfif>
-        </cfloop>
-    </cfif>
-
-    <cfif isDefined("FORM.verified_status") AND FORM.verified_status EQ "true">
-        <cfset VARIABLES.verifiedStatus = true/>
-    </cfif>
-
-    <cfif FORM.verified_action EQ "toggle">
-        <cfset VARIABLES.verifiedStatus = isDefined("FORM.verified_status") AND FORM.verified_status EQ "true"/>
-    </cfif>
-
-    <cfif FORM.verified_action EQ "bulk_status" AND len(VARIABLES.verifiedPageIds)>
-        <cfquery>
-            UPDATE tb_paginas
-            SET verificado = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.verifiedStatus#"/>
-            WHERE id_pagina IN (
-                <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.verifiedPageIds#" list="true"/>
-            )
-        </cfquery>
-    <cfelseif len(VARIABLES.verifiedPageId) AND isNumeric(VARIABLES.verifiedPageId)>
-        <cfif FORM.verified_action EQ "salvar">
-            <cfquery name="qVerifiedNotificationTarget">
-                SELECT usr.id AS id_usuario,
-                       coalesce(pg.verificado, false) AS verificado
-                FROM tb_paginas pg
-                INNER JOIN tb_paginas_usuarios pgusr ON pgusr.id_pagina = pg.id_pagina
-                INNER JOIN tb_usuarios usr ON usr.id = pgusr.id_usuario
-                WHERE pg.id_pagina = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.verifiedPageId#"/>
-                ORDER BY usr.id
-                LIMIT 1
-            </cfquery>
-            <cfif qVerifiedNotificationTarget.recordcount>
-                <cfset VARIABLES.verifiedNotifyUserId = int(qVerifiedNotificationTarget.id_usuario)/>
-                <cfset VARIABLES.verifiedWasActive = qVerifiedNotificationTarget.verificado/>
-            </cfif>
-        </cfif>
-        <cfquery>
-            UPDATE tb_paginas
-            SET verificado = <cfqueryparam cfsqltype="cf_sql_bit" value="#VARIABLES.verifiedStatus#"/>
-            WHERE id_pagina = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.verifiedPageId#"/>
-        </cfquery>
-        <cfif FORM.verified_action EQ "salvar"
-            AND VARIABLES.verifiedStatus
-            AND NOT VARIABLES.verifiedWasActive
-            AND VARIABLES.verifiedNotifyUserId GT 0>
-            <cfset verifiedDispatchWelcomeNotification(VARIABLES.verifiedNotifyUserId)/>
-        </cfif>
-    </cfif>
-
-    <cflocation addtoken="false" url="./?#VARIABLES.verifiedBaseQueryString#"/>
-</cfif>
-
-<cfquery name="qVerifiedPages">
-    SELECT verified_pages.id_pagina,
-           verified_pages.pagina_nome,
-           verified_pages.tag,
-           verified_pages.verificado,
-           verified_pages.id_usuario,
-           verified_pages.name,
-           verified_pages.email,
-           verified_pages.is_admin,
-           verified_pages.is_dev,
-           verified_pages.is_partner,
-           verified_pages.desafios_usuario
-    FROM (
-        SELECT DISTINCT ON (pg.id_pagina)
-               pg.id_pagina,
-               coalesce(pg.nome, usr.name) AS pagina_nome,
-               pg.tag,
-               coalesce(pg.verificado, false) AS verificado,
-               usr.id AS id_usuario,
-               usr.name,
-               usr.email,
-               coalesce(usr.is_admin, false) AS is_admin,
-               coalesce(usr.is_dev, false) AS is_dev,
-               coalesce(usr.is_partner, false) AS is_partner,
-               (
-                   SELECT string_agg(DISTINCT des.desafio || ' / ' || des.produto, ', ' ORDER BY des.desafio || ' / ' || des.produto)
-                   FROM desafios des
-                   WHERE des.id_usuario = usr.id
-                     AND trim(coalesce(des.produto, '')) <> ''
-               ) AS desafios_usuario
-        FROM tb_paginas pg
-        INNER JOIN tb_paginas_usuarios pgusr ON pgusr.id_pagina = pg.id_pagina
-        INNER JOIN tb_usuarios usr ON usr.id = pgusr.id_usuario
-        WHERE 1 = 1
-        <cfif VARIABLES.verifiedFilterStatus EQ "active">
-            AND pg.verificado = true
-        <cfelseif VARIABLES.verifiedFilterStatus EQ "inactive">
-            AND coalesce(pg.verificado, false) = false
-        </cfif>
-        <cfif VARIABLES.verifiedHasRuleFilters>
-            AND (
-                <cfset VARIABLES.verifiedRuleNeedsConnector = false/>
-                <cfif VARIABLES.verifiedFilterChallenge>
-                    EXISTS (
-                        SELECT 1
-                        FROM desafios des_filter
-                        WHERE des_filter.id_usuario = usr.id
-                        <cfif len(VARIABLES.verifiedFilterDesafio)>
-                            AND des_filter.desafio = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.verifiedFilterDesafio#"/>
-                        </cfif>
-                        <cfif len(VARIABLES.verifiedFilterProduto)>
-                            AND des_filter.produto = <cfqueryparam cfsqltype="cf_sql_varchar" value="#VARIABLES.verifiedFilterProduto#"/>
-                        </cfif>
-                    )
-                    <cfset VARIABLES.verifiedRuleNeedsConnector = true/>
-                </cfif>
-                <cfif VARIABLES.verifiedFilterAdmin>
-                    <cfif VARIABLES.verifiedRuleNeedsConnector>#VARIABLES.verifiedRuleConnector#</cfif>
-                    coalesce(usr.is_admin, false) = true
-                    <cfset VARIABLES.verifiedRuleNeedsConnector = true/>
-                </cfif>
-                <cfif VARIABLES.verifiedFilterDev>
-                    <cfif VARIABLES.verifiedRuleNeedsConnector>#VARIABLES.verifiedRuleConnector#</cfif>
-                    coalesce(usr.is_dev, false) = true
-                    <cfset VARIABLES.verifiedRuleNeedsConnector = true/>
-                </cfif>
-                <cfif VARIABLES.verifiedFilterPartner>
-                    <cfif VARIABLES.verifiedRuleNeedsConnector>#VARIABLES.verifiedRuleConnector#</cfif>
-                    coalesce(usr.is_partner, false) = true
-                </cfif>
-            )
-        </cfif>
-        ORDER BY pg.id_pagina, usr.name
-    ) verified_pages
-    ORDER BY upper(coalesce(verified_pages.pagina_nome, '')), upper(coalesce(verified_pages.name, ''))
-</cfquery>
-
-<cfset qVerifiedPagesSearch = QueryNew("id_pagina,pagina_nome,tag,id_usuario,name,email,verificado")/>
-
-<cfif isDefined("URL.page_novo")
-    AND URL.page_novo
-    AND len(trim(URL.user_busca))>
-    <cfset VARIABLES.verifiedSearchTerm = trim(URL.user_busca)/>
-    <cfquery name="qVerifiedPagesSearch">
-        SELECT verified_search.id_pagina,
-               verified_search.pagina_nome,
-               verified_search.tag,
-               verified_search.id_usuario,
-               verified_search.name,
-               verified_search.email,
-               verified_search.verificado
-        FROM (
-            SELECT DISTINCT ON (pg.id_pagina)
-                   pg.id_pagina,
-                   coalesce(pg.nome, usr.name) AS pagina_nome,
-                   pg.tag,
-                   usr.id AS id_usuario,
-                   usr.name,
-                   usr.email,
-                   coalesce(pg.verificado, false) AS verificado
-            FROM tb_paginas pg
-            INNER JOIN tb_paginas_usuarios pgusr ON pgusr.id_pagina = pg.id_pagina
-            INNER JOIN tb_usuarios usr ON usr.id = pgusr.id_usuario
-            WHERE coalesce(pg.verificado, false) = false
-              AND (
-                <cfif isNumeric(VARIABLES.verifiedSearchTerm)>
-                    usr.id = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.verifiedSearchTerm#"/>
-                    OR pg.id_pagina = <cfqueryparam cfsqltype="cf_sql_integer" value="#VARIABLES.verifiedSearchTerm#"/>
-                    OR
-                </cfif>
-                unaccent(upper(coalesce(usr.name, ''))) LIKE unaccent(upper(<cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.verifiedSearchTerm#%"/>))
-                OR unaccent(upper(coalesce(usr.email, ''))) LIKE unaccent(upper(<cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.verifiedSearchTerm#%"/>))
-                OR unaccent(upper(coalesce(pg.nome, ''))) LIKE unaccent(upper(<cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.verifiedSearchTerm#%"/>))
-                OR unaccent(upper(coalesce(pg.tag, ''))) LIKE unaccent(upper(<cfqueryparam cfsqltype="cf_sql_varchar" value="%#VARIABLES.verifiedSearchTerm#%"/>))
-              )
-            ORDER BY pg.id_pagina, usr.name
-        ) verified_search
-        ORDER BY upper(coalesce(verified_search.pagina_nome, '')), upper(coalesce(verified_search.name, ''))
-        LIMIT 50
-    </cfquery>
-</cfif>
-
-<cfset qVerifiedPageEdit = QueryNew("id_pagina,pagina_nome,tag,id_usuario,name,email,verificado")/>
-
-<cfif isDefined("URL.page_id") AND len(trim(URL.page_id)) AND isNumeric(URL.page_id)>
-    <cfquery name="qVerifiedPageEdit">
-        SELECT DISTINCT ON (pg.id_pagina)
-               pg.id_pagina,
-               coalesce(pg.nome, usr.name) AS pagina_nome,
-               pg.tag,
-               usr.id AS id_usuario,
-               usr.name,
-               usr.email,
-               coalesce(pg.verificado, false) AS verificado
-        FROM tb_paginas pg
-        INNER JOIN tb_paginas_usuarios pgusr ON pgusr.id_pagina = pg.id_pagina
-        INNER JOIN tb_usuarios usr ON usr.id = pgusr.id_usuario
-        WHERE pg.id_pagina = <cfqueryparam cfsqltype="cf_sql_integer" value="#URL.page_id#"/>
-        ORDER BY pg.id_pagina, usr.name
-        LIMIT 1
-    </cfquery>
-</cfif>

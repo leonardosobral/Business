@@ -94,7 +94,7 @@
         periodo = "atividade", css = "bg-5k", valor = numberFormat(qAthletesWithActivity.recordcount, "9"), titulo = "Atletas com atividade"
     }/>
     <cfset VARIABLES.challengeWidgetCards.dias_com_atividade = {
-        periodo = "atividade", css = "bg-8k", valor = numberFormat(VARIABLES.challengeActivityDays, "9"), titulo = "Dias com atividade"
+        periodo = "atividade", css = "bg-8k", valor = numberFormat(VARIABLES.challengeActivityDays, "9"), titulo = "Atividades registradas"
     }/>
 </cfif>
 <div class="row g-2 mb-2">
@@ -115,6 +115,9 @@
     </cfloop>
 </div>
 
+<cfif VARIABLES.challengeUsesActivityDays>
+    <cfinclude template="includes/atividade_diaria.cfm"/>
+</cfif>
 
 <!--- WIDGETS PRESETS --->
 

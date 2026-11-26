@@ -19,6 +19,12 @@ O Foco abre em `inscritos` e exibe os cartões de inscritos e de atividade.
 A migração `2026-11-19_desafios_config_painel_periodo_padrao.sql` aplica essa
 configuração ao registro existente.
 
+O cartão **Atividades registradas** usa a chave `dias_com_atividade` e soma
+uma atividade por atleta por dia. O painel exibe um gráfico de inscrições por
+dia, pela data de cadastro, e outro de atividades registradas por dia, pela
+contagem do cartão. Ambos incluem zeros nos dias sem registros entre o
+primeiro e o último dia exibido.
+
 Uma configuração vazia carrega os widgets anteriores. Os circuitos com painéis
 próprios mantêm seus painéis. Os dias de atividade medem participação. O
 resultado dos envios de pontos à Foco Radical fica na fila da integração.

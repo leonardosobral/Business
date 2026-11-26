@@ -625,7 +625,7 @@
                 SELECT *
                 FROM desafios_eventos
                 WHERE (
-                    (ativo = true AND data_fim + 30 > current_date)
+                    (ativo = true AND (data_fim IS NULL OR data_fim + 30 > current_date))
                     OR tag IN (
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensecorridaderua"/>,
                         <cfqueryparam cfsqltype="cf_sql_varchar" value="catarinensetrailrun"/>,
@@ -727,6 +727,7 @@
                     <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Publicidade</span>
                 </a>
             </li>
+            <cfinclude template="sidenav_gorunners.cfm"/>
 
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/banners/">link-warning</cfif>" href="/portal/banners/" data-menu-aliases="destaques capas">
@@ -822,6 +823,12 @@
             <cfif isDefined("qPerfil.is_admin") AND qPerfil.is_admin>
             <li class="sidenav-item"><a class="sidenav-link <cfif VARIABLES.template EQ '/administracao/teams/'>link-warning</cfif>" href="/administracao/teams/" data-menu-aliases="times assessorias clubes corrida aprovações"><i class="fa-solid fa-people-group fa-fw me-3"></i><span>Gestão de Teams</span></a></li>
             </cfif>
+
+            <li class="sidenav-item">
+                <a class="sidenav-link <cfif VARIABLES.template EQ '/administracao/produtos-servicos/'>link-warning</cfif>" href="/administracao/produtos-servicos/" data-menu-aliases="catálogo ofertas cobrança vigência produtos serviços">
+                    <i class="fa-solid fa-book-open fa-fw me-3" aria-hidden="true"></i><span>Produtos e serviços RH</span>
+                </a>
+            </li>
 
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/verificados/">link-warning</cfif>" href="/portal/verificados/" data-menu-aliases="perfis selo">
@@ -1073,6 +1080,7 @@
                     <i class="fa-solid fa-rectangle-ad fa-fw me-3"></i><span>Publicidade</span>
                 </a>
             </li>
+            <cfinclude template="sidenav_gorunners.cfm"/>
 
             <li class="sidenav-item">
                 <a class="sidenav-link <cfif VARIABLES.template EQ "/portal/banners/">link-warning</cfif>" href="/portal/banners/">

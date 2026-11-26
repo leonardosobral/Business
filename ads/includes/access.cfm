@@ -134,4 +134,7 @@
     <cfset VARIABLES.adsAccessCanPrepareCampaign=false/><cfset VARIABLES.adsAccessCanReviewCampaign=false/>
     <cfset VARIABLES.adsAccessCanAdminVouchers=false/>
 </cfif>
+<cfset VARIABLES.adsAccessCanViewZones = NOT VARIABLES.adsAccessDelegated
+    AND NOT VARIABLES.adsAccessIsPendingNewAccount
+    AND (VARIABLES.adsAccessCanView OR (NOT VARIABLES.adsAccessHasAccount AND VARIABLES.adsAccessCanReviewCampaign))/>
 <cfif NOT structKeyExists(VARIABLES,'adsDelegationMutation')><cfinclude template="delegation.cfm"/></cfif>

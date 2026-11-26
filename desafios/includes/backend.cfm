@@ -689,6 +689,7 @@
                    sum(act.distance) AS distancia_percorrida, sum(act.total_elevation_gain) AS altimetria,
                    count(*) AS atividades, count(DISTINCT act.activity_date) AS dias_correndo,
                    count(DISTINCT act.activity_date) AS frequencia_fechamento,
+                   string_agg(DISTINCT to_char(act.activity_date, 'YYYY-MM-DD'), ',') AS datas_atividade,
                    max(act.activity_date) AS data_final, min(act.activity_date) AS data_inicial,
                    NULL::integer AS dias_do_ano
             FROM atletas atleta
@@ -792,6 +793,7 @@
         atv.altimetria,
         atv.frequencia_fechamento as frequencia_fechamento,
         atv.frequencia_fechamento as nodesafio,
+        <cfif VARIABLES.challengeUsesActivityDays>atv.datas_atividade,</cfif>
         atv.data_final,
         atv.data_inicial,
         CASE WHEN atv.frequencia_fechamento > 1 THEN 1 ELSE 0 END as ativo,
@@ -913,14 +915,21 @@
 
 <cfif VARIABLES.challengeUsesActivityDays>
     <cfquery name="qAthletesWithActivity" dbtype="query">
-        SELECT id, max(frequencia_fechamento) AS dias
+        SELECT id, datas_atividade, max(frequencia_fechamento) AS dias
         FROM qBase
         WHERE status = 'C' AND frequencia_fechamento > 0
-        GROUP BY id
+        GROUP BY id, datas_atividade
     </cfquery>
     <cfset VARIABLES.challengeActivityDays = 0/>
+    <cfset VARIABLES.challengeActivitiesByDay = {}/>
     <cfloop query="qAthletesWithActivity">
         <cfset VARIABLES.challengeActivityDays += qAthletesWithActivity.dias/>
+        <cfloop list="#qAthletesWithActivity.datas_atividade#" index="challengeActivityDate">
+            <cfif NOT structKeyExists(VARIABLES.challengeActivitiesByDay, challengeActivityDate)>
+                <cfset VARIABLES.challengeActivitiesByDay[challengeActivityDate] = 0/>
+            </cfif>
+            <cfset VARIABLES.challengeActivitiesByDay[challengeActivityDate] += 1/>
+        </cfloop>
     </cfloop>
 </cfif>
 

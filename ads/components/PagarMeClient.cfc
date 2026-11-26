@@ -3,8 +3,24 @@ component output="false" hint="Cliente minimo e sanitizado para o checkout hospe
     variables.config = {};
 
     public any function init() output="false" {
+        variables.zoneSandbox = false;
         variables.config = loadConfig();
         return this;
+    }
+
+    // The zone pilot uses a separate sandbox merchant key and never reads Ads credentials.
+    public any function initZoneSandbox(required string testKey) output="false" {
+        variables.zoneSandbox = true;
+        variables.config = loadConfig(true, arguments.testKey);
+        return this;
+    }
+
+    private boolean function isZoneSandbox() {
+        return structKeyExists(variables, "zoneSandbox") AND variables.zoneSandbox;
+    }
+
+    private boolean function validOrderCode(required string code) {
+        return reFind(isZoneSandbox() ? "^RHGR-[0-9a-f]{32}$" : "^RHADS-[0-9a-f]{32}$", arguments.code) GT 0;
     }
 
     public struct function getStatus() output="false" {
@@ -77,7 +93,7 @@ component output="false" hint="Cliente minimo e sanitizado para o checkout hospe
         if (!variables.config.ready OR !variables.config.enabled) {
             return unavailableResult();
         }
-        if (!reFind("^RHADS-[0-9a-f]{32}$", normalizedCode)) {
+        if (!validOrderCode(normalizedCode)) {
             return failureResult("invalid_order_code", "A referencia do pagamento e invalida.");
         }
         if (normalizedAmount LT variables.config.minimumAmountCents
@@ -90,7 +106,7 @@ component output="false" hint="Cliente minimo e sanitizado para o checkout hospe
 
         payload = {
             "is_building" = false,
-            "name" = left("RunnerHub Ads " & right(normalizedCode, 12), 64),
+            "name" = left((isZoneSandbox() ? "GoRunners " : "RunnerHub Ads ") & right(normalizedCode, 12), 64),
             "order_code" = normalizedCode,
             "type" = "order",
             "expires_in" = variables.config.paymentLinkExpiresMinutes,
@@ -98,7 +114,7 @@ component output="false" hint="Cliente minimo e sanitizado para o checkout hospe
             "max_paid_sessions" = 1,
             "payment_settings" = {
                 "accepted_payment_methods" = ["credit_card", "pix"],
-                "statement_descriptor" = "RUNNERHUBADS",
+                "statement_descriptor" = isZoneSandbox() ? "GORUNNERS" : "RUNNERHUBADS",
                 "credit_card_settings" = {
                     "operation_type" = "auth_and_capture",
                     "installments" = [
@@ -158,7 +174,7 @@ component output="false" hint="Cliente minimo e sanitizado para o checkout hospe
         if (!variables.config.ready) {
             return unavailableResult();
         }
-        if (!reFind("^RHADS-[0-9a-f]{32}$", normalizedCode)) {
+        if (!validOrderCode(normalizedCode)) {
             return failureResult("invalid_order_code", "A referencia do pagamento e invalida.");
         }
 
@@ -191,7 +207,7 @@ component output="false" hint="Cliente minimo e sanitizado para o checkout hospe
         };
     }
 
-    private struct function loadConfig() output="false" {
+    private struct function loadConfig(boolean zone = false, string testKey = "") output="false" {
         var pagarMeLocalConfig = {};
         var raw = {};
         var config = {
@@ -212,7 +228,11 @@ component output="false" hint="Cliente minimo e sanitizado para o checkout hospe
             errorCode = "not_configured"
         };
 
-        if (fileExists(expandPath("/config/pagarme.local.cfm"))) {
+        if (arguments.zone) {
+            config.configured = true;
+            config.minimumAmountCents = 1;
+            pagarMeLocalConfig = {enabled = true, secretKey = arguments.testKey};
+        } else if (fileExists(expandPath("/config/pagarme.local.cfm"))) {
             include "/config/pagarme.local.cfm";
             config.configured = true;
         }
@@ -371,6 +391,7 @@ component output="false" hint="Cliente minimo e sanitizado para o checkout hospe
                 url = endpoint,
                 result = "httpResult",
                 method = uCase(arguments.method),
+                redirect = !isZoneSandbox(),
                 timeout = variables.config.requestTimeoutSeconds
             ) {
                 if (uCase(arguments.method) EQ "POST") {
@@ -640,6 +661,8 @@ component output="false" hint="Cliente minimo e sanitizado para o checkout hospe
             currency = currency,
             chargeId = structText(charge, "id", 200),
             chargeStatus = lCase(structText(charge, "status", 40)),
+            chargePaidCents = structNumber(charge, "paid_amount", 0),
+            chargeCount = arrayLen(charges),
             paymentMethod = lCase(structText(charge, "payment_method", 40)),
             paidAt = structText(charge, "paid_at", 80),
             providerUpdatedAt = len(structText(arguments.providerData, "updated_at", 80))
